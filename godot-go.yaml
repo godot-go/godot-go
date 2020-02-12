@@ -12,20 +12,6 @@ GENERATOR:
     StructAccessors: true
   FlagGroups:
     - {name: "CFLAGS", traits: ["linux"], flags: [-g, "-I${SRCDIR}/../../godot_headers"]}
-    # - {name: "LDFLAGS", traits: ["linux"], flags: [
-    #   -v, "-L${SRCDIR}/../../libs",
-    #   -lcore.x11.tools.64,
-    #   -lfreetype_builtin.x11.tools.64,
-    #   -lmain.x11.tools.64,
-    #   -lscene.x11.tools.64,
-    #   -ldrivers.x11.tools.64,
-    #   -lmodules.x11.tools.64,
-    #   -lservers.x11.tools.64,
-    #   -leditor.x11.tools.64,
-    #   -lplatform.x11.tools.64,
-    #   -ltests.x11.tools.64,
-    #   "-lstdc++",
-    #   "-lm"]}
 PARSER: 
   IncludePaths: ["godot_headers"]
   SourcesPaths:
@@ -35,22 +21,15 @@ TRANSLATOR:
     defines: eval
     enum: eval
   Rules:
-    function:
-      # - {action: accept, from: "^godot_class_constructor$"}
-      # - {action: accept, from: "^godot_gdnative_init$"}
-      # - {action: accept, from: "^godot_gdnative_terminate$"}
-      # - {action: accept, from: "^godot_gdnative_procedure$"}
-      # - {action: accept, from: "^godot_array_"}
-      # - {action: accept, from: "^godot_vector2"}
     type:
       - {action: ignore, from: "_ext_"}
       - {action: ignore, from: "_pluginscript_"}
       - {action: ignore, from: "_videodecoder_"}
+      - {action: accept, from: "^godot_gdnative_core_api_struct$"}
+      - {action: accept, from: "^godot_class_constructor$"}
       - {action: accept, from: "^godot_real$"}
       - {action: accept, from: "^godot_color$"}
       - {action: accept, from: "^godot_dictionary$"}
-      - {action: accept, from: "^godot_class_constructor$"}
-      - {action: accept, from: "^godot_gdnative_core_api_struct$"}
       - {action: accept, from: "^godot_int$"}
       - {action: accept, from: "^godot_char_string$"}
       - {action: accept, from: "^godot_object$"}
@@ -96,16 +75,14 @@ TRANSLATOR:
       - {action: accept, from: "^godot_rid$"}
       - {action: accept, from: "^godot_transform$"}
       - {action: accept, from: "^godot_transform2d$"}
-      - {action: accept, from: "_t$"}
-      # - {action: replace, from: "_t$"}
-      # - {action: accept, from: "^godot_"}
-      # - {action: accept, from: "^gd_native_"}
+      - {action: replace, from: "_t$"}
       # - {transform: export}
       # - {load: snakecase}
     const:
       - {action: accept, from: "^GODOT_"}
       - {action: accept, from: "^GDNATIVE_"}
     post-global: 
+      # - {from: "^godot_", load: snakecase}
   PtrTips:
     # function:
     #   - {target: ^godot_, tips: [plain,plain,plain,plain,plain]}

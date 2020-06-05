@@ -1,1 +1,8 @@
 dist/
+*.gen.go
+*.go.pre-fmt.md5
+*.classgen.go
+*.gen.h
+*.gen.c
+.idea
+tmp/

@@ -1,0 +1,7 @@
+[gd_resource type="GDNativeLibrary" format=2]
+
+[resource]
+load_once = false
+reloadable = false
+entry/X11.64 = "res://libs/libgodotgo-integration-tests-cgo-linux-amd64.so"
+dependency/X11.64 = [  ]

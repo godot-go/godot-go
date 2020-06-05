@@ -1,0 +1,34 @@
+{
+    "files.associations": {
+        "cgo_helpers.h": "c",
+        "string_view": "cpp",
+        "*.inc": "cpp",
+        "gdnative.gen.h": "c",
+        "array.h": "c",
+        "quat.h": "c",
+        "color.h": "c",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "functional": "cpp",
+        "future": "cpp",
+        "istream": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp",
+        "memory": "cpp",
+        "atomic": "cpp",
+        "string": "cpp",
+        "deque": "cpp",
+        "vector": "cpp",
+        "typeinfo": "c",
+        "gdnative_api_struct.gen.h": "c",
+        "gdnative.h": "c"
+    },
+    "files.exclude": {
+    },
+    "go.formatTool": "gofmt",
+    "C_Cpp.default.cppStandard": "c++11",
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.intelliSenseMode": "clang-x64",
+    "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
+    "C_Cpp.default.includePath": ["godot_headers", "pkg/gdnative"]
+}

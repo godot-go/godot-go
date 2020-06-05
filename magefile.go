@@ -7,9 +7,9 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
@@ -21,46 +21,54 @@ type BuildPlatform struct {
 }
 
 var (
-	cForGoCmd = "c-for-go"
+	godotBin     = "godot_engine/bin/godot.x11.tools.64.llvm"
 )
 
 func envWithPlatform(platform BuildPlatform) map[string]string {
 	return map[string]string{
-		"GOOS":        platform.OS,
-		"GOARCH":      platform.Arch,
-		"CGO_ENABLED": "1",
+		"GOOS":              platform.OS,
+		"GOARCH":            platform.Arch,
+		"GODEBUG":           "cgocheck=2",
+		"CGO_LDFLAGS_ALLOW": "pkg-config",
+		"CGO_CFLAGS_ALLOW":  "pkg-config",
+		"CGO_ENABLED":       "1",
 	}
 }
 
-// Remove the temporarily generated files from Release.
+func CleanGdnative() error {
+	return sh.RunV("go", "run", "cmd/main.go", "--verbose", "--clean-gdnative")
+}
+
+func CleanTypes() error {
+	return sh.RunV("go", "run", "cmd/main.go", "--verbose", "--clean-types")
+}
+
+func CleanClasses() error {
+	return sh.RunV("go", "run", "cmd/main.go", "--verbose", "--clean-classes")
+}
+
 func Clean() error {
-	files := []string{"cgo_helpers.go", "cgo_helpers.c", "cgo_helpers.h", "const.go", "godot.go", "types.go"}
-
-	for _, f := range files {
-		p := filepath.Join("pkg", "godot", f)
-		if err := sh.Rm(p); err != nil {
-			return err
-		}
-	}
-
+	mg.Deps(CleanClasses, CleanTypes, CleanGdnative)
 	return nil
 }
 
-// Generate c-for-go go files.
 func Generate() error {
-	mg.Deps(Clean)
-
-	return sh.RunV(cForGoCmd, "-ccdefs", "-ccincl", "-debug", "godot-go.yaml")
+	return sh.RunV("go", "generate", "main.go")
 }
 
-// Build Examples
-func BuildExamples() error {
+func InstallGoTools() error {
+	return sh.RunV("go", "get", "golang.org/x/tools/cmd/goimports")
+}
+
+func BuildTest() error {
 	mg.Deps(Generate)
 
-	appPath := filepath.Join("examples", "example-class-demo")
+	appPath := filepath.Join("tests", "core")
+	outputPath := filepath.Join(appPath, "project", "libs")
 
-	return buildExample(
+	return buildGodotPlugin(
 		appPath,
+		outputPath,
 		BuildPlatform{
 			OS:   runtime.GOOS,
 			Arch: runtime.GOARCH,
@@ -68,34 +76,32 @@ func BuildExamples() error {
 	)
 }
 
-func buildExample(appPath string, platform BuildPlatform) error {
-	gocmd := mg.GoCmd()
-	if _, err := os.Stat("dist"); os.IsNotExist(err) {
-		if err := os.Mkdir("dist", 0755); err != nil {
-			return err
-		}
-	}
-	return sh.RunWith(envWithPlatform(platform), gocmd, "build", "-x", "-work",
-		"-buildmode=c-shared",
-		"-o", filepath.Join("dist", platform.exampleBinaryName(appPath)),
+func Test() error {
+	mg.Deps(BuildTest)
+
+	appPath := filepath.Join("tests", "core")
+
+	return runPlugin(appPath)
+}
+
+func runPlugin(appPath string) error {
+	return sh.RunWith(map[string]string{"asyncpremptoff": "1", "cgocheck": "2", "LOG_LEVEL": "trace"}, godotBin, "--verbose", "-v", "-d", "--path", filepath.Join(appPath, "project"))
+}
+
+func buildGodotPlugin(appPath string, outputPath string, platform BuildPlatform) error {
+	return sh.RunWith(envWithPlatform(platform), mg.GoCmd(), "build", "-x", "-work",
+		"-buildmode=c-shared", "-ldflags=\"-static -d=checkptr -compressdwarf=false\"", "-gcflags=\"all=-N -l\"",
+		"-o", filepath.Join(outputPath, platform.godotPluginCSharedName(appPath)),
 		filepath.Join(appPath, "main.go"),
 	)
 }
 
-func (p *BuildPlatform) exampleBinaryName(appPath string) string {
-	return fmt.Sprintf("libgodotgo-%s-%s-%s.so", filepath.Base(appPath), p.OS, p.Arch)
+func (p *BuildPlatform) godotPluginCSharedName(appPath string, varargs ...string) string {
+	if len(varargs) == 0 {
+		return fmt.Sprintf("libgodotgo-%s-%s.so", p.OS, p.Arch)
+	}
+	
+	return fmt.Sprintf("libgodotgo-%s-%s.so", strings.Join(varargs, "-"), p.OS, p.Arch)
 }
 
-// tag returns the git tag for the current branch or "" if none.
-func tag() string {
-	s, _ := sh.Output("git", "describe", "--tags")
-	return s
-}
-
-// hash returns the git hash for the current repo or "" if none.
-func hash() string {
-	hash, _ := sh.Output("git", "rev-parse", "--short", "HEAD")
-	return hash
-}
-
-var Default = Generate
+var Default = BuildTest

@@ -1,0 +1,167 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://libs/libgodotgo-integration-tests-cgo-linux-amd64.tres" type="GDNativeLibrary" id=1]
+[ext_resource path="res://assets/entities/player/duran/duran.png" type="Texture" id=2]
+
+[sub_resource type="NativeScript" id=1]
+class_name = "PlayerCharacter"
+library = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 8, 12, 16, 20, 24 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 10, 14, 18, 22, 26 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 11, 15, 19, 23, 27 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 9, 13, 17, 21, 25 ]
+}
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 8, 8 )
+
+[node name="player" type="KinematicBody2D"]
+script = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -16 )
+vframes = 13
+hframes = 4
+frame = 4
+
+[node name="animation_player" type="AnimationPlayer" parent="sprite"]
+playback_process_mode = 0
+anims/idle-down = SubResource( 2 )
+anims/idle-left = SubResource( 3 )
+anims/idle-right = SubResource( 4 )
+anims/idle-up = SubResource( 5 )
+anims/walk-down = SubResource( 6 )
+anims/walk-left = SubResource( 7 )
+anims/walk-right = SubResource( 8 )
+anims/walk-up = SubResource( 9 )
+
+[node name="camera_2d" type="Camera2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+current = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -8 )
+shape = SubResource( 10 )

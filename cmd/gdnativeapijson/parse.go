@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 	"regexp"
 	"strings"
+
+	"github.com/pinzolo/casee"
 )
 
 type Argument []string
@@ -29,10 +31,30 @@ func (as *Arguments) DataTypeRegexMatch(r *regexp.Regexp) bool {
 	return false
 }
 
+type ApiFunctionName string
+
 type ApiFunctions []struct {
-	Name       string    `json:"name"`
-	ReturnType string    `json:"return_type"`
-	Arguments  Arguments `json:"arguments"`
+	Name       ApiFunctionName `json:"name"`
+	ReturnType string          `json:"return_type"`
+	Arguments  Arguments       `json:"arguments"`
+}
+
+func fixPascalCase(value string) string {
+	var (
+		result string
+	)
+
+	// TODO: hack to align cForGo names with typeName
+	result = strings.Replace(value, "Aabb", "AABB", 1)
+	result = strings.Replace(result, "Rid", "RID", 1)
+
+	return result
+}
+
+func (n ApiFunctionName) PascalName() string {
+	result := casee.ToPascalCase(string(n))
+
+	return fixPascalCase(result)
 }
 
 // APIVersion is a single APIVersion definition in `gdnative_api.json`

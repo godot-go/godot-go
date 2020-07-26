@@ -252,7 +252,7 @@ func Generate() {
 
 		if ok {
 			for _, api := range core.API {
-				if arrayContains(ignoreMethods, api.Name) {
+				if arrayContains(ignoreMethods, string(api.Name)) {
 					continue
 				}
 	
@@ -267,11 +267,11 @@ func Generate() {
 						log.Panicf("C constructor function %s is expected to have a void return type; however, actual type is %s", api.Name, api.ReturnType)
 					}
 	
-					if !strings.Contains(api.Name, "_new_") && !strings.HasSuffix(api.Name, "_new") {
+					if !strings.Contains(string(api.Name), "_new_") && !strings.HasSuffix(string(api.Name), "_new") {
 						log.Panicf("C constructor function %s is expected to have \"_new_\" in function name", api.Name)
 					}
 	
-					returnTypeName, methodName := toGoConstructorName(api.Name)
+					returnTypeName, methodName := toGoConstructorName(string(api.Name))
 					dest, args := parseDestAndArguments(api.Arguments)
 	
 					if returnTypeName != dest.Type.Name {
@@ -283,7 +283,7 @@ func Generate() {
 						ReturnType:  dest.Type,
 						Receiver:    nil,
 						Arguments:   args,
-						CName:       api.Name,
+						CName:       string(api.Name),
 						ApiMetadata: apiMetadata,
 					}
 	
@@ -297,14 +297,14 @@ func Generate() {
 					var method GoMethod
 					returnType := parseGoType(api.ReturnType)
 					receiver, args := parseDestAndArguments(api.Arguments)
-					methodName, isGlobal := toGoMethodName(api.Name, receiver)
+					methodName, isGlobal := toGoMethodName(string(api.Name), receiver)
 					if isGlobal {
 						method = GoMethod{
 							Name:        methodName,
 							ReturnType:  returnType,
 							Receiver:    nil,
 							Arguments:   append([]GoArgument{*receiver}, args...),
-							CName:       api.Name,
+							CName:       string(api.Name),
 							ApiMetadata: apiMetadata,
 						}
 	
@@ -315,7 +315,7 @@ func Generate() {
 							ReturnType:  returnType,
 							Receiver:    receiver,
 							Arguments:   args,
-							CName:       api.Name,
+							CName:       string(api.Name),
 							ApiMetadata: apiMetadata,
 						}
 	

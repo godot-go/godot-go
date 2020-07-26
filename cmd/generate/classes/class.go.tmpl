@@ -1,6 +1,7 @@
 package {{ .PackageName }}
 
 /*
+#cgo pkg-config: --define-variable=PROJECTDIR=${SRCDIR}/../.. ${SRCDIR}/../../godot.pc
 #include <stdlib.h>
 #include <gdnative.gen.h>
 #include <cgo_gateway_register_class.h>

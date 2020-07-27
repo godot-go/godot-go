@@ -10,3 +10,5 @@ dist/
 *.gen.c
 .idea
 tmp/
+dist/
+*.orig

@@ -234,9 +234,7 @@ var apiNameMap = map[string]ApiMetadata{
 }
 
 // Generate will generate Go wrappers for all Godot base types
-func Generate() {
-	packagePath := "."
-
+func Generate(packagePath string) {
 	// parseGodotHeaders all available receiverMethods
 	gdnativeAPI := gdnativeapijson.ParseGdnativeApiJson(packagePath)
 

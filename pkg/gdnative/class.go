@@ -1,9 +1,9 @@
 package gdnative
 
 /*
+#include <nativescript.wrappergen.h>
 #include <cgo_gateway_register_class.h>
 #include <gdnative_api_struct.gen.h>
-#include <nativescript.gen.h>
 #include <stdlib.h>
 */
 import "C"

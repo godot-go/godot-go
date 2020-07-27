@@ -1,7 +1,7 @@
 package gdnative
 
 /*
-#include "nativescript.gen.h"
+#include <nativescript.wrappergen.h>
 #include <cgo_gateway_instance_binding.h>
 #include <gdnative_api_struct.gen.h>
 #include <stdlib.h>

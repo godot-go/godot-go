@@ -109,13 +109,13 @@ func Generate(packagePath string) {
 		view,
 	)
 
-	log.Println("Generating", view.StructType, "Go bindings...")
-	writeTemplate(
-		filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.go.tmpl"),
-		filepath.Join(packagePath,"pkg/gdnative/gdnative.wrappergen.go"),
-		filepath.Join(packagePath,"tmp/gdnative.wrappergen.go.md5"),
-		view,
-	)
+	// log.Println("Generating", view.StructType, "Go bindings...")
+	// writeTemplate(
+	// 	filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.go.tmpl"),
+	// 	filepath.Join(packagePath,"pkg/gdnative/gdnative.wrappergen.go"),
+	// 	filepath.Join(packagePath,"tmp/gdnative.wrappergen.go.md5"),
+	// 	view,
+	// )
 
 	// Loop through all of our extensions and generate the bindings for those.
 	for _, api := range apis.Extensions {
@@ -139,13 +139,13 @@ func Generate(packagePath string) {
 			view,
 		)
 
-		log.Println("Generating", view.StructType, "Go bindings...")
-		writeTemplate(
-			filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.go.tmpl"),
-			filepath.Join(packagePath,"pkg/gdnative/"+view.Name+".wrappergen.go"),
-			filepath.Join(packagePath,"tmp/"+view.Name+".wrappergen.go.md5"),
-			view,
-		)
+		// log.Println("Generating", view.StructType, "Go bindings...")
+		// writeTemplate(
+		// 	filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.go.tmpl"),
+		// 	filepath.Join(packagePath,"pkg/gdnative/"+view.Name+".wrappergen.go"),
+		// 	filepath.Join(packagePath,"tmp/"+view.Name+".wrappergen.go.md5"),
+		// 	view,
+		// )
 	}
 }
 

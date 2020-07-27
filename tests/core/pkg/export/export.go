@@ -1,6 +1,5 @@
 package export
 
-//#cgo pkg-config: --define-variable=PROJECTDIR=${SRCDIR}/../../../.. ${SRCDIR}/../../../../godot.pc
 import "C"
 import (
 	"github.com/pcting/godot-go/pkg/gdnative"

@@ -113,8 +113,7 @@ func assertIsDirectory(dirPath string) error {
 	return nil
 }
 
-func Generate() {
-	packagePath := "."
+func Generate(packagePath string) {
 	outputPackageDirectoryPath := filepath.Join(packagePath, "pkg", "gdnative")
 	md5path := filepath.Join(packagePath, "tmp")
 	apiJsonFilePath := filepath.Join(packagePath, "godot_headers", "api.json")

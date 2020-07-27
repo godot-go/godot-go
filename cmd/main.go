@@ -27,6 +27,8 @@ var (
 )
 
 func init() {
+	absPath, _ := filepath.Abs(".")
+
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "Toggle extra debug output")
 	rootCmd.PersistentFlags().BoolVarP(&cleanAll, "clean", "", false, "Clean all generated files")
 	rootCmd.PersistentFlags().BoolVarP(&cleanGdnative, "clean-gdnative", "", false, "Clean generated GDNative files")
@@ -36,7 +38,7 @@ func init() {
 	rootCmd.PersistentFlags().BoolVarP(&genGdnative, "gdnative", "", false, "Generate gdnative")
 	rootCmd.PersistentFlags().BoolVarP(&genTypes, "types", "", false, "Generate types")
 	rootCmd.PersistentFlags().BoolVarP(&genClasses, "classes", "", false, "Generate classes")
-	rootCmd.PersistentFlags().StringVarP(&packagePath, "package-path", "p", ".", "Specified package path")
+	rootCmd.PersistentFlags().StringVarP(&packagePath, "package-path", "p", absPath, "Specified package path")
 	rootCmd.PersistentFlags().StringVarP(&godotPath, "godot-path", "", "godot", "Specified path where the Godot executable is located")
 }
 
@@ -144,21 +146,21 @@ var rootCmd = &cobra.Command{
 			if verbose {
 				println("Generating gdnative wrapper functions...")
 			}
-			gdnativewrapper.Generate(".")
+			gdnativewrapper.Generate(packagePath)
 		}
 
 		if genTypes {
 			if verbose {
 				println("Generating gdnative types...")
 			}
-			types.Generate()
+			types.Generate(packagePath)
 		}
 
 		if genClasses {
 			if verbose {
 				println("Generating gdnative classes...")
 			}
-			classes.Generate()
+			classes.Generate(packagePath)
 		}
 
 		if verbose {

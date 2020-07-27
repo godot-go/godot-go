@@ -11,12 +11,15 @@ CURRENT_BRANCH=$(git symbolic-ref -q HEAD)
 set -x -e
 
 go generate
-git checkout -b release-$1
-git add -f pkg/gdnative/*.gen.go
-git add -f pkg/gdnative/*.classgen.go
-git add -f pkg/gdnative/*.gen.c
-git add -f pkg/gdnative/*.gen.h
+rm -fr dist
+mkdir -p dist
+git archive master | tar -x -C dist/
+cd godot_headers
+git archive 3.2 | tar -x -C ../dist/godot_headers
+cd ../dist
+git init .
+git add .
 git commit -m "release $1"
 git tag $1 -f
-git push origin --tag $1
-git checkout master
+git remote add origin git@github.com:pcting/godot-go.git
+git push origin --tag -f $1

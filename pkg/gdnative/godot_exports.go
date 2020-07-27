@@ -1,7 +1,6 @@
 package gdnative
 
 /*
-#cgo pkg-config: --define-variable=PROJECTDIR=${SRCDIR}/../.. ${SRCDIR}/../../godot.pc
 #include <cgo_gateway_register_class.h>
 #include <gdnative_api_struct.gen.h>
 #include <stdlib.h>

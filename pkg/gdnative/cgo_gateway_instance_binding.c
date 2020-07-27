@@ -1,6 +1,6 @@
 #include <gdnative_api_struct.gen.h>
 #include <stdlib.h>
-#include <gdnative.gen.h>
+#include <gdnative.wrappergen.h>
 #include <cgo_gateway_instance_binding.h>
 
 void *cgo_gateway_alloc_instance_binding_data(void *data, const void *type_tag, godot_object *instance) {

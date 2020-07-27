@@ -51,7 +51,7 @@ func fixPascalCase(value string) string {
 	return result
 }
 
-func (n ApiFunctionName) PascalName() string {
+func (n ApiFunctionName) ToPascal() string {
 	result := casee.ToPascalCase(string(n))
 
 	return fixPascalCase(result)

@@ -354,7 +354,7 @@ func Generate() {
 
 		// Convert the header name into the Go filename
 		filename := filepath.Base(filePath)
-		outFileName := filename[:len(filename)-len(".h")] + ".gen.go"
+		outFileName := filename[:len(filename)-len(".h")] + ".typegen.go"
 		if strings.Index(outFileName, "godot_") == 0 {
 			outFileName = outFileName[len("godot_"):]
 		}
@@ -401,18 +401,18 @@ func Generate() {
 		md5Path := filepath.Join(packagePath, "tmp")
 		ret := writeTemplate(
 			filepath.Join(packagePath, "cmd", "generate", "types", "type.go.tmpl"),
-			filepath.Join(outPath, "globals.gen.go"),
-			filepath.Join(md5Path, "globals.gen.go.pre-fmt.md5"),
+			filepath.Join(outPath, "globals.typegen.go"),
+			filepath.Join(md5Path, "globals.typegen.go.pre-fmt.md5"),
 			view,
 		)
 
 		if ret {
 			// Run gofmt on the generated Go file.
-			goFmt(filepath.Join(outPath, "globals.gen.go"))
+			goFmt(filepath.Join(outPath, "globals.typegen.go"))
 
-			goImports(filepath.Join(outPath, "globals.gen.go"))
+			goImports(filepath.Join(outPath, "globals.typegen.go"))
 		} else {
-			log.Printf("No changes found for globals.gen.go; skipping go-fmt and go-imports")
+			log.Printf("No changes found for globals.typegen.go; skipping go-fmt and go-imports")
 		}
 	}
 }

@@ -1,7 +1,11 @@
 dist/
 *.gen.go
-*.go.pre-fmt.md5
+*.typegen.go
+*.wrappergen.go
 *.classgen.go
+*.go.pre-fmt.md5
+*.wrappergen.h
+*.wrappergen.c
 *.gen.h
 *.gen.c
 .idea

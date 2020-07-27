@@ -10,12 +10,16 @@
 
 package gdnative
 
+/*
+#cgo pkg-config: --define-variable=PROJECTDIR=${SRCDIR}/../.. ${SRCDIR}/../../godot.pc
+#include <{{ $view.Name }}.wrappergen.h>
+*/
 import "C"
 
 /* Go cannot call C function pointers directly, so we must generate C wrapper code to call the functions. */
 {{ range $i, $apiVersion := $view.ApiVersions -}}
 /* GDNative {{ $apiVersion.Type }} {{ $apiVersion.Version.Major }}.{{ $apiVersion.Version.Minor }} */
 {{ range $i, $api := $apiVersion.API -}}
-type Go{{ $api.PascalName }} C.go_{{ $api.Name }}
+type Go{{ $api.Name.ToPascal }} C.go_{{ $api.Name }}
 {{ end -}}
 {{ end -}}

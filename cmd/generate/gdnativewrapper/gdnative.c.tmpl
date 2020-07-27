@@ -7,7 +7,7 @@
 //   "gdnative.c.tmpl" so they can be included in the generated
 //   code.
 //----------------------------------------------------------------------------*/
-#include <gdnative.gen.h>
+#include <gdnative.wrappergen.h>
 #include <gdnative/aabb.h>
 #include <gdnative/array.h>
 #include <gdnative/basis.h>
@@ -28,7 +28,6 @@
 #include <gdnative/vector2.h>
 #include <gdnative/vector3.h>
 #include <gdnative_api_struct.gen.h>
-#include <gdnative.gen.h>
 
 /* Go cannot call C function pointers directly, so we must generate C wrapper code to call the functions. */
 {{ range $i, $apiVersion := $view.ApiVersions -}}

@@ -23,6 +23,7 @@ type View struct {
 	ApiVersions []gdnativeapijson.APIVersion
 	Type        string
 	StructType  string
+	Name        string
 }
 
 func (v View) ToCDefine() string {
@@ -119,30 +120,30 @@ func Generate(packagePath string) {
 	// Loop through all of our extensions and generate the bindings for those.
 	for _, api := range apis.Extensions {
 		view.ApiVersions = api.AllVersions()
-		name := *api.Name
-		view.StructType = "ext_" + name
+		view.Name = *api.Name
+		view.StructType = "ext_" + view.Name
 
 		log.Println("Generating", view.StructType, "C headers...")
 		writeTemplate(
 			filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.h.tmpl"),
-			filepath.Join(packagePath, "pkg/gdnative/"+name+".wrappergen.h"),
-			filepath.Join(packagePath, "tmp/"+name+".wrappergen.h.md5"),
+			filepath.Join(packagePath, "pkg/gdnative/"+view.Name+".wrappergen.h"),
+			filepath.Join(packagePath, "tmp/"+view.Name+".wrappergen.h.md5"),
 			view,
 		)
 
 		log.Println("Generating", view.StructType, "C bindings...")
 		writeTemplate(
 			filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.c.tmpl"),
-			filepath.Join(packagePath, "pkg/gdnative/"+name+".wrappergen.c"),
-			filepath.Join(packagePath, "tmp/"+name+".wrappergen.c.md5"),
+			filepath.Join(packagePath, "pkg/gdnative/"+view.Name+".wrappergen.c"),
+			filepath.Join(packagePath, "tmp/"+view.Name+".wrappergen.c.md5"),
 			view,
 		)
 
 		log.Println("Generating", view.StructType, "Go bindings...")
 		writeTemplate(
 			filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.go.tmpl"),
-			filepath.Join(packagePath,"pkg/gdnative/"+name+".wrappergen.go"),
-			filepath.Join(packagePath,"tmp/"+name+".wrappergen.go.md5"),
+			filepath.Join(packagePath,"pkg/gdnative/"+view.Name+".wrappergen.go"),
+			filepath.Join(packagePath,"tmp/"+view.Name+".wrappergen.go.md5"),
 			view,
 		)
 	}

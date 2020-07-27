@@ -1,5 +1,4 @@
 dist/
-*.gen.go
 *.typegen.go
 *.wrappergen.go
 *.classgen.go

@@ -33,7 +33,7 @@ git add -f pkg/gdnative/*.wrappergen.c
 git add -f pkg/gdnative/*.typegen.go
 git add -f pkg/gdnative/*.classgen.go
 git add .
-# git commit -m "release $1"
-# git tag ${GIT_TAG} -f
-# git remote add origin git@github.com:pcting/godot-go.git
-# git push origin --tag -f $1
+git commit -m "release $1"
+git tag ${GIT_TAG} -f
+git remote add origin git@github.com:pcting/godot-go.git
+git push origin --tag -f

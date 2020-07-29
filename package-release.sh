@@ -6,7 +6,12 @@
 CURRENT_BRANCH=$(git symbolic-ref -q HEAD)
 
 # current branch must be master
-[[ "${CURRENT_BRANCH}" != "refs/heads/master" ]] && { echo "current working branch must be master" ; exit 1;}
+if [[ "${CURRENT_BRANCH}" != "refs/heads/master" ]]; then
+    BRANCH_TAG=$(echo ${GIT_BRANCH} | tr -dc '[:alnum:]]')
+    GIT_TAG="$1-${BRANCH_TAG}"
+else
+    GIT_TAG="$1"
+fi
 
 set -x -e
 
@@ -28,7 +33,7 @@ git add -f pkg/gdnative/*.wrappergen.c
 git add -f pkg/gdnative/*.typegen.go
 git add -f pkg/gdnative/*.classgen.go
 git add .
-git commit -m "release $1"
-git tag $1 -f
-git remote add origin git@github.com:pcting/godot-go.git
-git push origin --tag -f $1
+# git commit -m "release $1"
+# git tag ${GIT_TAG} -f
+# git remote add origin git@github.com:pcting/godot-go.git
+# git push origin --tag -f $1

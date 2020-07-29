@@ -7,18 +7,29 @@ import (
 	"github.com/pinzolo/casee"
 	"io/ioutil"
 	"os"
+	"regexp"
 	"path/filepath"
 	"strings"
+	"github.com/pcting/godot-go/cmd/gdnativeapijson"
 )
 
+var cTypeRegex = regexp.MustCompile(`(const)?\s*([\w_][\w_\d]*)\s*(\**)`)
+
+type ConstructorIndex map[string][]gdnativeapijson.GoMethod
+type MethodIndex map[string][]gdnativeapijson.GoMethod
+
 // index by C header file name and then by C typedef name
-type GoTypeDefIndex map[string]map[string]GoTypeDef
+type GoTypeDefIndex map[string]map[string]gdnativeapijson.GoTypeDef
 
 // parseGodotHeaders will parse the GDNative headers. Takes a list of headers/structs to ignore.
 // Definitions in the given headers and definitions
 // with the given name will not be added to the returned list of type definitions.
 // We'll need to manually create these structures.
-func parseGodotHeaders(packagePath string, constructorIndex ConstructorIndex, methodIndex MethodIndex, excludeHeaders, excludeStructs []string) GoTypeDefIndex {
+func parseGodotHeaders(
+	packagePath string,
+	constructorIndex ConstructorIndex,
+	methodIndex MethodIndex,
+	excludeHeaders, excludeStructs []string) GoTypeDefIndex {
 	var (
 		index           = GoTypeDefIndex{}
 		relPath         string
@@ -56,7 +67,7 @@ func parseGodotHeaders(packagePath string, constructorIndex ConstructorIndex, me
 					if tdMap, ok := index[relPath]; ok {
 						tdMap[typeDef.CName] = typeDef
 					} else {
-						index[relPath] = map[string]GoTypeDef{
+						index[relPath] = map[string]gdnativeapijson.GoTypeDef{
 							typeDef.CName: typeDef,
 						}
 					}
@@ -73,11 +84,11 @@ func parseGodotHeaders(packagePath string, constructorIndex ConstructorIndex, me
 	return index
 }
 
-func parseTypeDef(typeLines []string, headerName string) GoTypeDef {
+func parseTypeDef(typeLines []string, headerName string) gdnativeapijson.GoTypeDef {
 	// Create a structure for our type definition.
-	typeDef := GoTypeDef{
+	typeDef := gdnativeapijson.GoTypeDef{
 		CHeaderFilename: headerName,
-		Properties:      []GoProperty{},
+		Properties:      []gdnativeapijson.GoProperty{},
 	}
 
 	// Small function for splitting a line to get the uncommented line and
@@ -108,13 +119,18 @@ func parseTypeDef(typeLines []string, headerName string) GoTypeDef {
 
 		var err error
 
+		
+
 		// Get the words of the line
 		words := strings.Split(line, " ")
 		typeDef.CName = strings.Replace(words[len(words)-1], ";", "", 1)
-		typeDef.Name = toPascalCase(stripGodotPrefix(typeDef.CName))
+
+		goTypeName, isBuiltIn := gdnativeapijson.ToGoTypeName(typeDef.CName)
+
+		typeDef.Name = goTypeName
 		typeDef.Base = words[len(words)-2]
 		typeDef.Comment = comment
-		typeDef.IsBuiltIn = true
+		typeDef.IsBuiltIn = isBuiltIn
 		
 		if err != nil {
 			panic(fmt.Errorf("%s\n%w", line, err))
@@ -140,7 +156,7 @@ func parseTypeDef(typeLines []string, headerName string) GoTypeDef {
 	}
 
 	// Convert the name of the type to a Go name
-	typeDef.Name = toPascalCase(stripGodotPrefix(typeDef.CName))
+	typeDef.Name, _ = gdnativeapijson.ToGoTypeName(typeDef.CName)
 
 	if len(typeDef.Name) == 0 {
 		typeDef.Name = words[2]
@@ -175,7 +191,7 @@ func parseTypeDef(typeLines []string, headerName string) GoTypeDef {
 		}
 
 		// Create a type definition for the property
-		property := GoProperty{}
+		property := gdnativeapijson.GoProperty{}
 
 		// Extract the comment if there is one.
 		line, comment := getComment(line)

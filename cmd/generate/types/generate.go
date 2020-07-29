@@ -7,18 +7,14 @@ import (
 	"crypto/md5"
 	"fmt"
 	"github.com/pcting/godot-go/cmd/gdnativeapijson"
-	"github.com/pcting/godot-go/cmd/generate/shared"
 	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
-	"regexp"
 	"sort"
 	"strings"
 	"text/template"
-
-	"github.com/pinzolo/casee"
 )
 
 // TODO: Some headers have been removed to reduce compile time.
@@ -80,8 +76,8 @@ var ignoreMethods = []string{
 // View is a structure that holds the api struct, so it can be used inside our template.
 type View struct {
 	TemplateName string
-	TypeDefs     []GoTypeDef
-	Globals      []GoMethod
+	TypeDefs     []gdnativeapijson.GoTypeDef
+	Globals      []gdnativeapijson.GoMethod
 }
 
 func arrayContains(arr []string, value string) bool {
@@ -94,145 +90,6 @@ func arrayContains(arr []string, value string) bool {
 	return false
 }
 
-func stripGodotPrefix(name string) string {
-	if name == "godot_object" {
-		return name
-	} else if strings.HasPrefix(name, "godot_") {
-		return name[len("godot_"):]
-	} else {
-		log.Panicf("name %s does not have the godot_ prefix. is this a built-in type?", name)
-	}
-
-	return name
-}
-
-var cConstructorFunctionRegex = regexp.MustCompile(`godot_([\w_][\w_\d]*)_new(_(?:[\w_][\w_\d]*))?`)
-
-func toGoConstructorName(cFunctionName string) (string, string) {
-	matches := cConstructorFunctionRegex.FindAllStringSubmatch(cFunctionName, 1)
-
-	if len(matches) == 0 {
-		log.Panicf("C function %s is unexpected. Please fix the regex", cFunctionName)
-	}
-
-	typeName := toPascalCase(matches[0][1])
-	method := fmt.Sprintf("New%s%s", typeName, toPascalCase(matches[0][2]))
-
-	return typeName, method
-}
-
-func fixPascalCase(value string) string {
-	var (
-		result string
-	)
-
-	// TODO: hack to align cForGo names with typeName
-	result = strings.Replace(value, "Aabb", "AABB", 1)
-	result = strings.Replace(result, "Rid", "RID", 1)
-
-	return result
-}
-
-func toPascalCase(value string) string {
-	result := casee.ToPascalCase(value)
-
-	return fixPascalCase(result)
-}
-
-func toGoMethodName(cFunctionName string, receiver *GoArgument) (string, bool) {
-	var method string
-
-	pascalCase := toPascalCase(stripGodotPrefix(cFunctionName))
-
-	if !strings.HasPrefix(pascalCase, receiver.Type.Name) {
-		return pascalCase, true
-	}
-
-	method = pascalCase[len(receiver.Type.Name):]
-
-	return method, false
-}
-
-var cTypeRegex = regexp.MustCompile(`(const)?\s*([\w_][\w_\d]*)\s*(\**)`)
-
-func parseGoType(cTypeName string) GoType {
-	matches := cTypeRegex.FindAllStringSubmatch(cTypeName, 1)
-
-	if len(matches) == 0 {
-		panic(fmt.Errorf("unrecognized argument: %+q", cTypeName))
-	}
-
-	tokens := matches[0]
-
-	var (
-		typeName         string
-		ok               bool
-		hasConst         bool
-		hasPointer       bool
-		hasDoublePointer bool
-		isBuiltIn        bool
-	)
-
-	hasConst = tokens[1] == "const"
-	hasPointer = tokens[3] == "*"
-	hasDoublePointer = tokens[3] == "**"
-
-	if typeName, ok = shared.CToGoValueTypeMap[tokens[2]]; ok {
-		isBuiltIn = true
-	} else {
-		typeName = toPascalCase(stripGodotPrefix(tokens[2]))
-
-		if typeName == "void" && hasPointer {
-			typeName = "[0]byte"
-		}
-	}
-
-	return GoType{
-		HasConst:         hasConst,
-		HasPointer:       hasPointer,
-		HasDoublePointer: hasDoublePointer,
-		IsBuiltIn:        isBuiltIn,
-		Name:             typeName,
-		CName:            tokens[2],
-	}
-}
-
-func parseArgument(argument []string) GoArgument {
-	goType := parseGoType(argument[0])
-
-	return GoArgument{
-		Type: goType,
-		Name: argument[1],
-	}
-}
-
-func parseDestAndArguments(cArguments []gdnativeapijson.Argument) (*GoArgument, []GoArgument) {
-	receiver := parseArgument(cArguments[0])
-
-	args := make([]GoArgument, len(cArguments)-1)
-
-	for i, a := range cArguments[1:] {
-		args[i] = parseArgument(a)
-	}
-	return &receiver, args
-}
-
-type ConstructorIndex map[string][]GoMethod
-type MethodIndex map[string][]GoMethod
-
-type ApiMetadata struct {
-	Name  string
-	CType string
-}
-
-var apiNameMap = map[string]ApiMetadata{
-	"CORE:1.0": {"CoreApi", "godot_gdnative_core_api_struct"},
-	"CORE:1.1": {"Core11Api", "godot_gdnative_core_1_1_api_struct"},
-	"CORE:1.2": {"Core12Api", "godot_gdnative_core_1_2_api_struct"},
-	"NATIVESCRIPT:1.0": {"NativescriptApi", "godot_gdnative_ext_nativescript_api_struct"},
-	"NATIVESCRIPT:1.1": {"Nativescript11Api", "godot_gdnative_ext_nativescript_1_1_api_struct"},
-}
-
 // Generate will generate Go wrappers for all Godot base types
 func Generate(packagePath string) {
 	// parseGodotHeaders all available receiverMethods
@@ -240,13 +97,13 @@ func Generate(packagePath string) {
 
 	// Convert the API definitions into a method struct
 	constructors := ConstructorIndex{}
-	globalMethods := make([]GoMethod, 0, len(gdnativeAPI.Core.API))
+	globalMethods := make([]gdnativeapijson.GoMethod, 0, len(gdnativeAPI.Core.API))
 	receiverMethods := MethodIndex{}
 	core := &gdnativeAPI.Core
 	
 	for core != nil {
 		apiNameKey := fmt.Sprintf("%s:%d.%d", core.Type, core.Version.Major, core.Version.Minor)
-		apiMetadata, ok := apiNameMap[apiNameKey]
+		apiMetadata, ok := gdnativeapijson.ApiNameMap[apiNameKey]
 
 		if ok {
 			for _, api := range core.API {
@@ -257,71 +114,25 @@ func Generate(packagePath string) {
 				if len(api.Arguments) == 0 {
 					log.Panicf("unable to handle C function %s with empty arguments", api.Name)
 				}
+
+				method := api.ToGoMethod(apiMetadata)
 	
-				// first argument is always r_dest for constructors and p_self for ms
-				switch api.Arguments[0][1] {
-				case "r_dest": // constructor
-					if api.ReturnType != "void" {
-						log.Panicf("C constructor function %s is expected to have a void return type; however, actual type is %s", api.Name, api.ReturnType)
-					}
-	
-					if !strings.Contains(string(api.Name), "_new_") && !strings.HasSuffix(string(api.Name), "_new") {
-						log.Panicf("C constructor function %s is expected to have \"_new_\" in function name", api.Name)
-					}
-	
-					returnTypeName, methodName := toGoConstructorName(string(api.Name))
-					dest, args := parseDestAndArguments(api.Arguments)
-	
-					if returnTypeName != dest.Type.Name {
-						log.Panicf("C constructor function %s prefix %s is expected to match 1st argument %s", api.Name, returnTypeName, dest.Type.Name)
-					}
-	
-					method := GoMethod{
-						Name:        methodName,
-						ReturnType:  dest.Type,
-						Receiver:    nil,
-						Arguments:   args,
-						CName:       string(api.Name),
-						ApiMetadata: apiMetadata,
-					}
-	
+				switch method.GoMethodType {
+				case gdnativeapijson.ConstructorGoMethodType:	
 					if cons, ok := constructors[method.ReturnType.CName]; ok {
 						constructors[method.ReturnType.CName] = append(cons, method)
 					} else {
-						constructors[method.ReturnType.CName] = []GoMethod{method}
+						constructors[method.ReturnType.CName] = []gdnativeapijson.GoMethod{method}
 					}
-	
-				default: // method
-					var method GoMethod
-					returnType := parseGoType(api.ReturnType)
-					receiver, args := parseDestAndArguments(api.Arguments)
-					methodName, isGlobal := toGoMethodName(string(api.Name), receiver)
-					if isGlobal {
-						method = GoMethod{
-							Name:        methodName,
-							ReturnType:  returnType,
-							Receiver:    nil,
-							Arguments:   append([]GoArgument{*receiver}, args...),
-							CName:       string(api.Name),
-							ApiMetadata: apiMetadata,
-						}
-	
-						globalMethods = append(globalMethods, method)
+
+				case gdnativeapijson.GlobalGoMethodType:
+					globalMethods = append(globalMethods, method)
+
+				case gdnativeapijson.ReceiverGoMethodType:
+					if ms, ok := receiverMethods[method.Receiver.Type.CName]; ok {
+						receiverMethods[method.Receiver.Type.CName] = append(ms, method)
 					} else {
-						method = GoMethod{
-							Name:        methodName,
-							ReturnType:  returnType,
-							Receiver:    receiver,
-							Arguments:   args,
-							CName:       string(api.Name),
-							ApiMetadata: apiMetadata,
-						}
-	
-						if ms, ok := receiverMethods[method.Receiver.Type.CName]; ok {
-							receiverMethods[method.Receiver.Type.CName] = append(ms, method)
-						} else {
-							receiverMethods[method.Receiver.Type.CName] = []GoMethod{method}
-						}
+						receiverMethods[method.Receiver.Type.CName] = []gdnativeapijson.GoMethod{method}
 					}
 				}
 			}
@@ -345,7 +156,7 @@ func Generate(packagePath string) {
 	for _, filePath := range headers {
 		typeDefMap := index[filePath]
 
-		typeDefs := make([]GoTypeDef, 0, len(typeDefMap))
+		typeDefs := make([]gdnativeapijson.GoTypeDef, 0, len(typeDefMap))
 		for _, td := range typeDefMap {
 			typeDefs = append(typeDefs, td)
 		}

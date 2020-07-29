@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"regexp"
 	"strings"
 
@@ -31,30 +32,163 @@ func (as *Arguments) DataTypeRegexMatch(r *regexp.Regexp) bool {
 	return false
 }
 
+var cTypeRegex = regexp.MustCompile(`(const)?\s*([\w_][\w_\d]*)\s*(\**)`)
+
+func parseGoType(cTypeName string) GoType {
+	matches := cTypeRegex.FindAllStringSubmatch(cTypeName, 1)
+
+	if len(matches) == 0 {
+		panic(fmt.Errorf("unrecognized argument: %+q", cTypeName))
+	}
+
+	tokens := matches[0]
+
+	var (
+		hasConst  bool
+		rt        ReferenceType
+	)
+
+	hasConst = tokens[1] == "const"
+
+	switch tokens[3] {
+	case "*":
+		rt = PointerReferenceType
+	case "**":
+		rt = PointerArrayReferenceType
+	}
+
+	return NewGoType(hasConst, rt, tokens[2])
+}
+
+func parseArgument(argument Argument) GoArgument {
+	goType := parseGoType(([]string)(argument)[0])
+
+	return GoArgument{
+		Type: goType,
+		Name: ([]string)(argument)[1],
+	}
+}
+
+func (as Arguments) ToDestAndArguments() (*GoArgument, []GoArgument) {
+	receiver := parseArgument(as[0])
+
+	args := make([]GoArgument, len(as)-1)
+
+	for i, a := range as[1:] {
+		args[i] = parseArgument(a)
+	}
+	return &receiver, args
+}
+
 type ApiFunctionName string
 
-type ApiFunctions []struct {
+type ApiFunction struct {
 	Name       ApiFunctionName `json:"name"`
 	ReturnType string          `json:"return_type"`
 	Arguments  Arguments       `json:"arguments"`
 }
 
-func fixPascalCase(value string) string {
-	var (
-		result string
-	)
+type ApiFunctions []ApiFunction
 
-	// TODO: hack to align cForGo names with typeName
-	result = strings.Replace(value, "Aabb", "AABB", 1)
-	result = strings.Replace(result, "Rid", "RID", 1)
-
-	return result
-}
-
-func (n ApiFunctionName) ToPascal() string {
-	result := casee.ToPascalCase(string(n))
+func (n ApiFunctionName) toPascal() string {
+	result := casee.ToPascalCase(stripGodotPrefix(string(n)))
 
 	return fixPascalCase(result)
+}
+
+//ToGoMethodName returns the Go method name and a flag specifying if the method is global
+func (n ApiFunctionName) toGoMethodName(receiver *GoArgument) (string, bool) {
+	pascalCase := n.toPascal()
+
+	if !strings.HasPrefix(pascalCase, receiver.Type.GoName) {
+		return pascalCase, true
+	}
+
+	// remove the receiver name from the prefix of the method name
+	method := pascalCase[len(receiver.Type.GoName):]
+
+	return method, false
+}
+
+var cConstructorFunctionRegex = regexp.MustCompile(`(godot_[\w_][\w_\d]*)_new(_(?:[\w_][\w_\d]*))?`)
+
+func (n ApiFunctionName) toGoConstructorName() (string, string, bool) {
+	matches := cConstructorFunctionRegex.FindAllStringSubmatch(string(n), 1)
+
+	if len(matches) == 0 {
+		return "", "", false
+	}
+
+	typeName := ToPascalCase(stripGodotPrefix(matches[0][1]))
+	method := fmt.Sprintf("New%s%s", typeName, ToPascalCase(matches[0][2]))
+
+	return typeName, method, true
+}
+
+func (f ApiFunction) IsConstructor() bool {
+	ret := f.Arguments[0][1] == "r_dest"
+
+	if ret {
+		if f.ReturnType != "void" {
+			log.Panicf("C constructor function %s is expected to have a void return type; however, actual type is %s", f.Name, f.ReturnType)
+		}
+
+		if !strings.Contains(string(f.Name), "_new_") && !strings.HasSuffix(string(f.Name), "_new") {
+			log.Panicf("C constructor function %s is expected to have \"_new_\" in function name", f.Name)
+		}
+	}
+
+	return ret
+}
+
+func (f ApiFunction) ToGoMethod(apiMetadata ApiMetadata) GoMethod {
+	returnTypeName, methodName, isConstructor := f.Name.toGoConstructorName()
+
+	if isConstructor {
+		dest, args := f.Arguments.ToDestAndArguments()
+
+		destTypeName := dest.Type.GoName
+
+		if returnTypeName != destTypeName {
+			log.Panicf("C constructor function %s prefix %s is expected to match 1st argument %s", f.Name, returnTypeName, destTypeName)
+		}
+
+		return GoMethod{
+			Name:         methodName,
+			GoMethodType: ConstructorGoMethodType,
+			ReturnType:   dest.Type,
+			Receiver:     nil,
+			Arguments:    args,
+			CName:        string(f.Name),
+			ApiMetadata:  apiMetadata,
+		}
+	}
+
+	returnType := parseGoType(f.ReturnType)
+	receiver, args := f.Arguments.ToDestAndArguments()
+	methodName, isGlobal := f.Name.toGoMethodName(receiver)
+
+	if isGlobal {
+		return GoMethod{
+			Name:         methodName,
+			GoMethodType: GlobalGoMethodType,
+			ReturnType:   returnType,
+			Receiver:     nil,
+			Arguments:    append([]GoArgument{*receiver}, args...),
+			CName:        string(f.Name),
+			ApiMetadata:  apiMetadata,
+		}
+	}
+
+	return GoMethod{
+		Name:         methodName,
+		GoMethodType: ReceiverGoMethodType,
+		ReturnType:   returnType,
+		Receiver:     receiver,
+		Arguments:    args,
+		CName:        string(f.Name),
+		ApiMetadata:  apiMetadata,
+	}
 }
 
 // APIVersion is a single APIVersion definition in `gdnative_api.json`

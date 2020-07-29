@@ -24,6 +24,7 @@
         "gdnative.h": "c"
     },
     "files.exclude": {
+        "dist": true,
     },
     "go.formatTool": "gofmt",
     "C_Cpp.default.cppStandard": "c++11",

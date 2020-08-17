@@ -10,7 +10,6 @@ package gdnative
 import "C"
 import (
 	"errors"
-	"fmt"
 	"github.com/pcting/godot-go/pkg/log"
 	"unsafe"
 )
@@ -28,9 +27,10 @@ func init() {
 }
 
 type Wrapped struct {
-	Owner   *GodotObject
-	TypeTag TypeTag
-	Name    string
+	Owner    *GodotObject
+	TypeTag  TypeTag
+
+	UserDataIdentifiable
 }
 
 func (w Wrapped) GetOwner() *GodotObject {
@@ -39,10 +39,6 @@ func (w Wrapped) GetOwner() *GodotObject {
 
 func (w Wrapped) GetTypeTag() TypeTag {
 	return w.TypeTag
-}
-
-func (w Wrapped) GetWrappedName() string {
-	return w.Name
 }
 
 func wrappedInitCallback() {
@@ -84,21 +80,23 @@ func GetWrapper(owner *GodotObject) Wrapped {
 	return *(*Wrapped)(unsafe.Pointer(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner))))
 }
 
-func GetCustomClassInstance(owner *GodotObject) Class {
+func GetCustomClassInstance(owner *GodotObject) NativeScriptClass {
 	if owner == nil {
 		log.Panic("cannot cast null owner as NativeScriptClass")
 	}
 
-	ud := *(*UserData)(C.go_godot_nativescript_get_userdata(NativescriptApi, unsafe.Pointer(owner)))
+	ud := (UserData)(uintptr(C.go_godot_nativescript_get_userdata(NativescriptApi, unsafe.Pointer(owner))))
 
-	if inst, ok := classInstances[ud]; ok {
-		return inst
+	classInst, ok := nativeScriptInstanceMap[ud]
+	
+	if !ok {
+		log.Panic("unable o find NativeScriptClass instance")
 	}
 
-	return nil
+	return classInst
 }
 
-func CreateCustomClassInstance(className string, baseClassName string) Class {
+func CreateCustomClassInstance(className string, baseClassName string) NativeScriptClass {
 	// Ported from godot-cpp: https://github.com/godotengine/godot-cpp/blob/master/include/core/Godot.hpp#L39
 
 	setLibraryArgs := [...]unsafe.Pointer{unsafe.Pointer(GDNativeLibObject)}
@@ -139,32 +137,16 @@ func CreateCustomClassInstance(className string, baseClassName string) Class {
 		nilptr,
 	)
 
-	ud := *(*UserData)(C.go_godot_nativescript_get_userdata(
+	ud := (UserData)(uintptr(C.go_godot_nativescript_get_userdata(
 		NativescriptApi,
 		unsafe.Pointer(baseObject),
-	))
+	)))
 
-	inst, ok := classInstances[ud]
-
+	classInst, ok := nativeScriptInstanceMap[ud]
+	
 	if !ok {
-		log.Panic(fmt.Sprintf("unable to find class instance %s", ud))
+		log.Panic("unable o find NativeScriptClass instance")
 	}
 
-	return inst
+	return classInst
 }
-
-// func NewClass(class string) Class {
-// 	c, ok := ConstructorMap[class]
-
-// 	if !ok {
-// 		log.WithField("class", class).Panic("unable to find constructor")
-// 	}
-
-// 	cClass := C.CString(class)
-// 	defer C.free(unsafe.Pointer(cClass))
-
-// 	owner := (*GodotObject)(C.go_godot_get_class_constructor_new(CoreApi, cClass))
-// 	wrapped := *(*Wrapped)(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner)))
-
-// 	return c(wrapped.Owner, wrapped.TypeTag)
-// }

@@ -6,14 +6,20 @@
 
 // helper typedef for godot_instance_create_func and godot_instance_destroy_func
 
-// instance pointer, method_data - return user data
+// owner, method_data - return user data
 typedef void *(*create_func)(godot_object *, void *);
 
-// instance pointer, method data, user data
+// owner, method data, user data
 typedef void (*destroy_func)(godot_object *, void *, void *);
 
-// instance pointer, method data, user data, num args, args - return result as varaint
+// owner, method data, user data, num args, args - return result as varaint
 typedef void (*method_func)(godot_object *, void *, void *, int, godot_variant **);
+
+// owner, method data, user data, property value
+typedef void (*set_func)(godot_object *, void *, void *, godot_variant *);
+
+// owner, method data, user data -> property value
+typedef godot_variant (*get_func)(godot_object *, void *, void *);
 
 // method data
 typedef void (*free_func)(void *);
@@ -41,10 +47,21 @@ void go_destroy_free_func(void *);
 godot_variant cgo_gateway_method_func(godot_object *, void *, void *, int, godot_variant **);
 godot_variant go_method_func(godot_object *, void *, void *, int, godot_variant **);
 
+void cgo_gateway_property_set_func(godot_object *, void *, void *, godot_variant *);
+void go_property_set_func(godot_object *, void *, void *, godot_variant *);
+
+godot_variant cgo_gateway_property_get_func(godot_object *, void *, void *);
+godot_variant go_property_get_func(godot_object *, void *, void *);
+
 void cgo_gateway_method_free_func(void *);
 void go_method_free_func(void *);
+void cgo_gateway_property_set_free_func(void *);
+void go_property_set_free_func(void *);
+void cgo_gateway_property_get_free_func(void *);
+void go_property_get_free_func(void *);
 
 char * get_class_name_from_type_tag(long);
 char * get_method_name_from_method_tag(long);
+char * get_property_name_from_method_tag(long);
 
 #endif

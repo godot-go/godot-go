@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "lldb-core-it",
+      "name": "lldb-test",
       "type": "lldb",
       "request": "launch",
       "program": "${workspaceFolder}/godot_engine/bin/godot.x11.tools.64.llvm",
@@ -13,7 +13,7 @@
         "-v",
         "-d",
         "--path",
-        "integration_tests/core/project"
+        "test/project"
       ],
       "env": {
         "cgocheck": "2",
@@ -27,7 +27,7 @@
       ],
     },
     {
-      "name": "gdb-core-it",
+      "name": "gdb-test",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/godot_engine/bin/godot.x11.tools.64.llvm",
@@ -35,7 +35,7 @@
         "-v",
         "-d",
         "--path",
-        "integration_tests/core/project"
+        "test/project"
       ],
       "stopAtEntry": false,
       // "customLaunchSetupCommands": [
@@ -51,6 +51,10 @@
         {
           "name": "GOGC",
           "value": "1"
+        },
+        {
+          "name": "LOG_LEVEL",
+          "value": "INFO"
         },
         {
           "name": "asyncpremptoff",
@@ -78,15 +82,16 @@
       "sourceFileMap": {}
     },
     {
-      "name": "gdb-cgo-it",
+      "name": "gdb-godot-editor",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/godot_engine/bin/godot.x11.tools.64.llvm",
       "args": [
         "-v",
         "-d",
+        "-e",
         "--path",
-        "integration_tests/cgo/project"
+        "test/project"
       ],
       "stopAtEntry": false,
       // "customLaunchSetupCommands": [
@@ -101,6 +106,14 @@
         },
         {
           "name": "GOGC",
+          "value": "1"
+        },
+        {
+          "name": "LOG_LEVEL",
+          "value": "INFO"
+        },
+        {
+          "name": "asyncpremptoff",
           "value": "1"
         }
       ],

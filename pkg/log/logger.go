@@ -62,6 +62,8 @@ func init() {
 		DisableColors: false,
 		FullTimestamp: false,
 	})
+
+	logger.Info("set log level to ", level)
 }
 
 func SetLevel(level Level) {

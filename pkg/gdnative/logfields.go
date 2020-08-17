@@ -8,10 +8,9 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func WithRegisteredClassCB(tt TypeTag, base string, userData UserData) logrus.Fields {
+func WithRegisteredClassCB(tt TypeTag, userData UserData) logrus.Fields {
 	return logrus.Fields{
 		"tt":       fmt.Sprintf("%d", uint32(tt)),
-		"base":     base,
 		"userData": fmt.Sprintf("%p", userData),
 	}
 }

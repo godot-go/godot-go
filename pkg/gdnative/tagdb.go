@@ -21,6 +21,7 @@ const (
 
 type classMethod struct {
 	className  string
+	bindName   string
 	methodName string
 }
 
@@ -28,20 +29,48 @@ func (c classMethod) String() string {
 	return c.className + "::" + c.methodName
 }
 
+type classPropertySet struct {
+	className           string
+	propertyName        string
+	propertySetFunction string
+}
+
+func (c classPropertySet) String() string {
+	return c.className + "::" + c.propertySetFunction
+}
+
+type classPropertyGet struct {
+	className           string
+	propertyName        string
+	propertyGetFunction string
+}
+
+func (c classPropertyGet) String() string {
+	return c.className + "::" + c.propertyGetFunction
+}
+
 type TypeTag uint
 
 type MethodTag uint
 
+type PropertySetTag uint
+
+type PropertyGetTag uint
+
 type tagDB struct {
-	parentTo   map[TypeTag]TypeTag
-	typeTags   map[TypeTag]string
-	methodTags map[MethodTag]classMethod
+	parentTo        map[TypeTag]TypeTag
+	typeTags        map[TypeTag]string
+	methodTags      map[MethodTag]classMethod
+	propertySetTags map[PropertySetTag]classPropertySet
+	propertyGetTags map[PropertyGetTag]classPropertyGet
 }
 
 type TagDBStats struct {
-	ParentCount    int
-	TypeTagCount   int
-	MethodTagCount int
+	ParentCount         int
+	TypeTagCount        int
+	MethodTagCount      int
+	PropertySetTagCount int
+	PropertyGetTagCount int
 }
 
 func newTypeTagFromString(className string) TypeTag {
@@ -56,19 +85,33 @@ func newMethodTagFromString(cm classMethod) MethodTag {
 	return MethodTag(uint(h.Sum32()))
 }
 
+func newPropertySetTagFromString(cps classPropertySet) PropertySetTag {
+	h := fnv.New32a()
+	h.Write([]byte(cps.String()))
+	return PropertySetTag(uint(h.Sum32()))
+}
+
+func newPropertyGetTagFromString(cpg classPropertyGet) PropertyGetTag {
+	h := fnv.New32a()
+	h.Write([]byte(cpg.String()))
+	return PropertyGetTag(uint(h.Sum32()))
+}
+
 func (t tagDB) Stats() TagDBStats {
 	return TagDBStats{
-		ParentCount:    len(t.parentTo),
-		TypeTagCount:   len(t.typeTags),
-		MethodTagCount: len(t.methodTags),
+		ParentCount:         len(t.parentTo),
+		TypeTagCount:        len(t.typeTags),
+		MethodTagCount:      len(t.methodTags),
+		PropertySetTagCount: len(t.propertySetTags),
+		PropertyGetTagCount: len(t.propertyGetTags),
 	}
 }
 
 func (t tagDB) RegisterType(typeTag, baseTypeTag string) (TypeTag, TypeTag) {
-	tt := newTypeTagFromString(typeTag)
+	ctt := newTypeTagFromString(typeTag)
 	btt := newTypeTagFromString(baseTypeTag)
 
-	if tt == btt {
+	if ctt == btt {
 		log.WithField(
 			"tagType", typeTag,
 		).WithField(
@@ -76,7 +119,7 @@ func (t tagDB) RegisterType(typeTag, baseTypeTag string) (TypeTag, TypeTag) {
 		).Panic("hash collision with tag and base tag")
 	}
 
-	if existing, ok := t.typeTags[tt]; ok {
+	if existing, ok := t.typeTags[ctt]; ok {
 		log.WithField(
 			"new", typeTag,
 		).WithField(
@@ -84,15 +127,16 @@ func (t tagDB) RegisterType(typeTag, baseTypeTag string) (TypeTag, TypeTag) {
 		).Panic("hash collision with new tag and existing tag")
 	}
 
-	t.parentTo[tt] = btt
-	t.typeTags[tt] = typeTag
+	t.parentTo[ctt] = btt
+	t.typeTags[ctt] = typeTag
 
-	return tt, btt
+	return ctt, btt
 }
 
-func (t tagDB) RegisterMethod(className, methodName string) MethodTag {
+func (t tagDB) RegisterMethod(className, bindName, methodName string) MethodTag {
 	cm := classMethod{
 		className:  className,
+		bindName:   bindName,
 		methodName: methodName,
 	}
 	mt := newMethodTagFromString(cm)
@@ -100,6 +144,8 @@ func (t tagDB) RegisterMethod(className, methodName string) MethodTag {
 	if existing, ok := t.methodTags[mt]; ok {
 		log.WithField(
 			"className", className,
+		).WithField(
+			"bindName", bindName,
 		).WithField(
 			"methodName", methodName,
 		).WithField(
@@ -112,6 +158,56 @@ func (t tagDB) RegisterMethod(className, methodName string) MethodTag {
 	return mt
 }
 
+func (t tagDB) RegisterPropertySet(className, propertyName, propertySetFunction string) PropertySetTag {
+	cps := classPropertySet{
+		className:           className,
+		propertyName:        propertyName,
+		propertySetFunction: propertySetFunction,
+	}
+	pt := newPropertySetTagFromString(cps)
+
+	if existing, ok := t.propertySetTags[pt]; ok {
+		log.WithField(
+			"className", className,
+		).WithField(
+			"propertyName", propertyName,
+		).WithField(
+			"propertySetFunction", propertySetFunction,
+		).WithField(
+			"existing", fmt.Sprintf("%+v", existing),
+		).Panic("hash collision with new and existing preoprty set tag")
+	}
+
+	t.propertySetTags[pt] = cps
+
+	return pt
+}
+
+func (t tagDB) RegisterPropertyGet(className, propertyName, propertyGetFunction string) PropertyGetTag {
+	cpg := classPropertyGet{
+		className:           className,
+		propertyName:        propertyName,
+		propertyGetFunction: propertyGetFunction,
+	}
+	pt := newPropertyGetTagFromString(cpg)
+
+	if existing, ok := t.propertyGetTags[pt]; ok {
+		log.WithField(
+			"className", className,
+		).WithField(
+			"propertyName", propertyName,
+		).WithField(
+			"propertyGetFunction", propertyGetFunction,
+		).WithField(
+			"existing", fmt.Sprintf("%+v", existing),
+		).Panic("hash collision with new and existing preoprty get tag")
+	}
+
+	t.propertyGetTags[pt] = cpg
+
+	return pt
+}
+
 func (t tagDB) IsTypeKnown(typeTag TypeTag) bool {
 	_, ok := t.parentTo[typeTag]
 	return ok
@@ -122,7 +218,7 @@ func (t tagDB) GetRegisteredClassName(typeTag TypeTag) string {
 		return tt
 	}
 
-	// log.Panic("unable to find type tag")
+	log.Panic("unable to find type tag")
 
 	return ""
 }
@@ -134,10 +230,30 @@ func (t tagDB) IsMethodKnown(methodTag MethodTag) bool {
 
 func (t tagDB) GetRegisteredMethodName(methodTag MethodTag) string {
 	if cm, ok := t.methodTags[methodTag]; ok {
-		return cm.String()
+		return cm.methodName
 	}
 
-	// log.Panic("unable to find method tag")
+	log.Panic("unable to find method tag")
+
+	return ""
+}
+
+func (t tagDB) GetRegisteredPropertySet(tag PropertySetTag) string {
+	if v, ok := t.propertySetTags[tag]; ok {
+		return v.propertySetFunction
+	}
+
+	log.Panic("unable to find property set tag")
+
+	return ""
+}
+
+func (t tagDB) GetRegisteredPropertyGet(tag PropertyGetTag) string {
+	if v, ok := t.propertyGetTags[tag]; ok {
+		return v.propertyGetFunction
+	}
+
+	log.Panic("unable to find property get tag")
 
 	return ""
 }

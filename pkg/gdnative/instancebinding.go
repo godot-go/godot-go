@@ -37,9 +37,15 @@ func go_alloc_instance_binding_data(data unsafe.Pointer, typeTag unsafe.Pointer,
 		log.Panic("memory allocation for Wrapped failed")
 	}
 
+	tt := TypeTag(uintptr(typeTag))
+
 	w.Owner = (*GodotObject)(instance)
-	w.TypeTag = TypeTag(uint32(uintptr(typeTag)))
-	w.Name = RegisterState.TagDB.GetRegisteredClassName(w.TypeTag)
+	w.TypeTag = tt
+	w.generateUserData(tt)
+
+	name := RegisterState.TagDB.GetRegisteredClassName(w.TypeTag)
+
+	log.WithField("tag_name", name).Info("alloc instance binding data")
 
 	return unsafe.Pointer(w)
 }

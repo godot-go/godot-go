@@ -32,6 +32,7 @@ func envWithPlatform(platform BuildPlatform) map[string]string {
 		"CGO_LDFLAGS_ALLOW": "pkg-config",
 		"CGO_CFLAGS_ALLOW":  "pkg-config",
 		"CGO_ENABLED":       "1",
+		"asyncpremptoff":    "1", 
 	}
 }
 
@@ -61,12 +62,11 @@ func InstallGoTools() error {
 }
 
 func BuildTest() error {
-	mg.Deps(Generate)
-
-	appPath := filepath.Join("tests", "core")
+	appPath := filepath.Join("test")
 	outputPath := filepath.Join(appPath, "project", "libs")
 
 	return buildGodotPlugin(
+		"test",
 		appPath,
 		outputPath,
 		BuildPlatform{
@@ -79,7 +79,7 @@ func BuildTest() error {
 func Test() error {
 	mg.Deps(BuildTest)
 
-	appPath := filepath.Join("tests", "core")
+	appPath := filepath.Join("test")
 
 	return runPlugin(appPath)
 }
@@ -88,10 +88,10 @@ func runPlugin(appPath string) error {
 	return sh.RunWith(map[string]string{"asyncpremptoff": "1", "cgocheck": "2", "LOG_LEVEL": "trace"}, godotBin, "--verbose", "-v", "-d", "--path", filepath.Join(appPath, "project"))
 }
 
-func buildGodotPlugin(appPath string, outputPath string, platform BuildPlatform) error {
+func buildGodotPlugin(name string, appPath string, outputPath string, platform BuildPlatform) error {
 	return sh.RunWith(envWithPlatform(platform), mg.GoCmd(), "build", "-x", "-work",
 		"-buildmode=c-shared", "-ldflags=\"-d=checkptr -compressdwarf=false\"", "-gcflags=\"all=-N -l\"",
-		"-o", filepath.Join(outputPath, platform.godotPluginCSharedName(appPath)),
+		"-o", filepath.Join(outputPath, platform.godotPluginCSharedName(appPath, name)),
 		filepath.Join(appPath, "main.go"),
 	)
 }
@@ -101,7 +101,7 @@ func (p *BuildPlatform) godotPluginCSharedName(appPath string, varargs ...string
 		return fmt.Sprintf("libgodotgo-%s-%s.so", p.OS, p.Arch)
 	}
 	
-	return fmt.Sprintf("libgodotgo-%s-%s.so", strings.Join(varargs, "-"), p.OS, p.Arch)
+	return fmt.Sprintf("libgodotgo-%s-%s-%s.so", strings.Join(varargs, "-"), p.OS, p.Arch)
 }
 
 var Default = BuildTest

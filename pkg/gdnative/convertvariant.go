@@ -144,6 +144,8 @@ func GoTypeToVariant(value reflect.Value) Variant {
 		return NewVariantPoolVector3Array(v)
 	case PoolColorArray:
 		return NewVariantPoolColorArray(v)
+	case Variant:
+		return v
 	}
 	log.WithField("value", fmt.Sprintf("%v", value)).Panic("value not handled")
 	return NewVariantNil()

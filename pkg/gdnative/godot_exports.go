@@ -39,9 +39,11 @@ func GodotGdnativeInit(options *GdnativeInitOptions) {
 	}
 
 	RegisterState.TagDB = tagDB{
-		parentTo:   map[TypeTag]TypeTag{},
-		typeTags:   map[TypeTag]string{},
-		methodTags: map[MethodTag]classMethod{},
+		parentTo:        map[TypeTag]TypeTag{},
+		typeTags:        map[TypeTag]string{},
+		methodTags:      map[MethodTag]classMethod{},
+		propertySetTags: map[PropertySetTag]classPropertySet{},
+		propertyGetTags: map[PropertyGetTag]classPropertyGet{},
 	}
 
 	cOpts := (*C.godot_gdnative_init_options)(unsafe.Pointer(options))

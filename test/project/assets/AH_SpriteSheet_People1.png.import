@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/AH_SpriteSheet_People1.png-23cf2e3dcd7fc5a0327e8265d426f1f0.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/AH_SpriteSheet_People1.png"
+dest_files=[ "res://.import/AH_SpriteSheet_People1.png-23cf2e3dcd7fc5a0327e8265d426f1f0.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=2
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=false
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

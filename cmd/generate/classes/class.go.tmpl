@@ -264,15 +264,17 @@ func (o *{{ .Api.PrefixName }}Impl) GetTypeTag() TypeTag {
 		registerMethodBinds(Init{{ .PrefixName }}MethodBinds)
 		registerTypeTag(Init{{ .PrefixName }}TypeTag)
 
+		/*
 		{{ if not .Singleton }}
-		if _, ok := ConstructorMap["{{ .PrefixName }}"]; ok {
+		if _, ok := constructorMap["{{ .PrefixName }}"]; ok {
 			log.WithField("class", "{{ .PrefixName }}").Panic("class already in map")
 		}
 
 		constructor := New{{ .PrefixName }}WithRefAsClass
 
-		ConstructorMap["{{ .PrefixName }}"] = constructor
+		constructorMap["{{ .PrefixName }}"] = constructor
 		{{ end }}
+		*/
 
 		// satisfy import reflect
 		_ = reflect.ValueOf(1)

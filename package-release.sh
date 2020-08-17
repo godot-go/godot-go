@@ -3,22 +3,35 @@
 # ensure a tag is passed in as an argument
 [[ -z "$1" ]] && { echo "tag parameter not specified" ; exit 1; }
 
-CURRENT_BRANCH=$(git symbolic-ref -q HEAD)
+GIT_BRANCH=$(git symbolic-ref -q HEAD)
+GIT_BRANCH=${GIT_BRANCH##refs/heads/}
 
-# current branch must be master
-if [[ "${CURRENT_BRANCH}" != "refs/heads/master" ]]; then
-    BRANCH_TAG=$(echo ${GIT_BRANCH} | tr -dc '[:alnum:]]')
-    GIT_TAG="$1-${BRANCH_TAG}"
+if [[ $(git diff --stat) != '' ]]; then
+  GIT_HASH=$(git stash create "dirty commit package")
+  GIT_TAG_BRANCH=$(echo ${GIT_BRANCH} | sed 's/\//-/g')
+  GIT_TAG="$1-${GIT_TAG_BRANCH}-${GIT_HASH}"
 else
-    GIT_TAG="$1"
+  GIT_HASH=${GIT_BRANCH}
+
+  if [[ "${GIT_BRANCH}" == "refs/heads/master" ]]; then
+      GIT_TAG="$1"
+  else
+      GIT_TAG_BRANCH=$(echo ${GIT_BRANCH} | sed 's/\//-/g')
+      GIT_TAG="$1-${GIT_TAG_BRANCH}"
+  fi
 fi
+
+echo "hash checkout ${GIT_HASH}, with tag ${GIT_TAG}"
+
+# echo "Wainting for cancellation..."
+# read -t 30 -n 1
 
 set -x -e
 
 go generate
 rm -fr dist
 mkdir -p dist
-git archive master | tar -x -C dist/
+git archive ${GIT_HASH} | tar -x -C dist/
 cd godot_headers
 git archive 3.2 | tar -x -C ../dist/godot_headers
 cd ../dist

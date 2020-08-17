@@ -30,7 +30,7 @@ type Wrapped struct {
 	Owner    *GodotObject
 	TypeTag  TypeTag
 
-	UserDataIdentifiable
+	UserDataIdentifiableImpl
 }
 
 func (w Wrapped) GetOwner() *GodotObject {

@@ -15,12 +15,12 @@ var (
 
 type PlayerCharacter struct {
 	gdnative.KinematicBody2DImpl
-	gdnative.UserDataIdentifiable
+	gdnative.UserDataIdentifiableImpl
 
 	walkAnimation gdnative.AnimationPlayer
-	velocity    gdnative.Vector2
-	floorNormal gdnative.Vector2
-	name         gdnative.String
+	velocity      gdnative.Vector2
+	floorNormal   gdnative.Vector2
+	name          gdnative.String
 }
 
 func (p *PlayerCharacter) ClassName() string {
@@ -31,20 +31,28 @@ func (p *PlayerCharacter) BaseClass() string {
 	return "KinematicBody2D"
 }
 
-func (p *PlayerCharacter) Blink() {
+func (p *PlayerCharacter) Teleport(distance float64) {
 	pos := p.GetPosition()
 	v := gdnative.NewVector2(0.5 - rand.Float32(), 0.5 - rand.Float32())
 	normalized := v.Normalized()
-	p.SetPosition(pos.OperatorAdd(normalized.OperatorMultiplyScalar(50.0)))
+	p.SetPosition(pos.OperatorAdd(normalized.OperatorMultiplyScalar(float32(distance))))
+}
+
+func (p *PlayerCharacter) Init() {
+
 }
 
 func (p *PlayerCharacter) OnClassRegistered(e gdnative.ClassRegisteredEvent) {
+	// methods
 	e.RegisterMethod("_ready", "Ready")
 	e.RegisterMethod("_physics_process", "PhysicsProcess")
-	e.RegisterMethod("blink", "Blink")
-	e.RegisterSignal("moved", gdnative.RegisterSignalArg{"velocity", gdnative.GODOT_VARIANT_TYPE_VECTOR2})
+	e.RegisterMethod("teleport", "Teleport")
 
+	// signals
+	e.RegisterSignal("moved", gdnative.RegisterSignalArg{"velocity", gdnative.GODOT_VARIANT_TYPE_VECTOR2})
+	e.RegisterSignal("name_changed")
 	
+	// properties
 	e.RegisterProperty("velocity", "SetVelocity", "GetVelocity", defaultVelocity)
 	e.RegisterProperty("name", "SetName", "GetName", defaultName)
 }
@@ -70,7 +78,13 @@ func (h *PlayerCharacter) GetName() gdnative.Variant {
 }
 
 func (h *PlayerCharacter) SetName(v gdnative.Variant) {
-	h.name = v.AsString()
+	newName := v.AsString()
+
+	if newName != h.name {
+		h.name = newName
+		h.EmitSignal(nameChanged)
+	}
+
 }
 
 func (h *PlayerCharacter) Ready() {
@@ -234,6 +248,7 @@ func NewPlayerCharacter() PlayerCharacter {
 
 var (
 	moved gdnative.String
+	nameChanged gdnative.String
 	velocity gdnative.String
 	velocityVariant gdnative.Variant
 
@@ -255,6 +270,7 @@ var (
 
 func PlayerCharacterNativescriptInit() {
 	moved = gdnative.NewStringFromGoString("moved")
+	nameChanged = gdnative.NewStringFromGoString("name_changed")
 	velocity = gdnative.NewStringFromGoString("velocity")
 	velocityVariant = gdnative.NewVariantString(velocity)
 
@@ -279,6 +295,7 @@ func PlayerCharacterNativescriptInit() {
 
 func PlayerCharacterNativescriptTerminate() {
 	moved.Destroy()
+	nameChanged.Destroy()
 	velocity.Destroy()
 	velocityVariant.Destroy()
 

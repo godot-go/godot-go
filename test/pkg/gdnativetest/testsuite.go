@@ -7,6 +7,8 @@ package gdnativetest
 */
 import "C"
 import (
+	"os"
+
 	"github.com/pcting/godot-go/pkg/gdnative"
 	"github.com/pcting/godot-go/pkg/log"
 
@@ -25,8 +27,19 @@ func initNativescript() {
 }
 
 func runTests() {
-	//defer GinkgoRecover()
-	// log.SetOutput(GinkgoWriter)
+	isSet := func(name string) bool {
+		v, _ := os.LookupEnv(name)
+		return v == "1"
+	}
+
+	if isSet("TEST_USE_GINKGO_RECOVER") {
+		defer GinkgoRecover()
+	}
+
+	if isSet("TEST_USE_GINKGO_WRITER") {
+		log.SetOutput(GinkgoWriter)
+	}
+
 	RegisterFailHandler(Fail)
 	RunSpecs(GinkgoT(), "Godot Integration Test Suite")
 }

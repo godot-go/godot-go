@@ -26,13 +26,14 @@ var (
 
 func envWithPlatform(platform BuildPlatform) map[string]string {
 	return map[string]string{
-		"GOOS":              platform.OS,
-		"GOARCH":            platform.Arch,
-		"GODEBUG":           "cgocheck=2",
-		"CGO_LDFLAGS_ALLOW": "pkg-config",
-		"CGO_CFLAGS_ALLOW":  "pkg-config",
-		"CGO_ENABLED":       "1",
-		"asyncpremptoff":    "1", 
+		"GOOS":                   platform.OS,
+		"GOARCH":                 platform.Arch,
+		"GODEBUG":                "cgocheck=2",
+		"CGO_LDFLAGS_ALLOW":      "pkg-config",
+		"CGO_CFLAGS_ALLOW":       "pkg-config",
+		"CGO_ENABLED":            "1",
+		"asyncpremptoff":         "1",
+		"TEST_USE_GINKGO_WRITER": "1",
 	}
 }
 

@@ -13,26 +13,29 @@ import (
 	"unsafe"
 )
 
-type UserDataHolder interface {
+type UserDataIdentifiable interface {
 	GetUserData() UserData
 	generateUserData(tt TypeTag)
 }
 
-type UserDataIdentifiable struct {
+type UserDataIdentifiableImpl struct {
 	UserData UserData
 }
 
-func (u *UserDataIdentifiable) GetUserData() UserData {
+func (u *UserDataIdentifiableImpl) GetUserData() UserData {
 	return u.UserData
 }
 
-func (u *UserDataIdentifiable) generateUserData(tt TypeTag) {
+func (u *UserDataIdentifiableImpl) generateUserData(tt TypeTag) {
+	// TODO: provide better method to reduce collision; maybe
+	//       an auto-increment method?
 	u.UserData = UserData(rand.Int())
 }
 
 type NativeScriptClass interface {
 	Class
-	UserDataHolder
+	UserDataIdentifiable
+	Init()
 	OnClassRegistered(e ClassRegisteredEvent)
 }
 

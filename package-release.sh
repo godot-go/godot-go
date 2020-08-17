@@ -13,7 +13,7 @@ if [[ $(git diff --stat) != '' ]]; then
 else
   GIT_HASH=${GIT_BRANCH}
 
-  if [[ "${GIT_BRANCH}" == "refs/heads/master" ]]; then
+  if [[ "${GIT_BRANCH}" == "master" ]]; then
       GIT_TAG="$1"
   else
       GIT_TAG_BRANCH=$(echo ${GIT_BRANCH} | sed 's/\//-/g')

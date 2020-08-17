@@ -10,37 +10,30 @@ bg_color = Color( 0, 0, 0, 0.705882 )
 [sub_resource type="GDScript" id=2]
 script/source = "extends Button
 
-
-# Declare member variables here. Examples:
-# var a = 2
-export var test = \"text\"
 var player: KinematicBody2D
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	player = $\"/root/World/Objects/Player\"
 
 
-func _toggled(button_pressed):
-	if button_pressed:
-		text = \"Resume\"
-	else:
-		text = \"Pause\"
+func _pressed():
+	player.teleport(100.0)
 "
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Button
 
 var player: KinematicBody2D
+var playerNames = ['John', 'Jake', 'Ollie', 'Steven', 'Charles']
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	player = $\"/root/World/Objects/Player\"
 
 
 func _pressed():
-	player.blink()
+	player.name = playerNames[randi() % len(playerNames)]
 "
 
 [node name="World" type="Node2D"]
@@ -86,7 +79,6 @@ tile_data = PoolIntArray( -196611, 5, 0, -196609, 5, 0, -262143, 5, 0, -262140, 
 
 [node name="Player" parent="Objects" instance=ExtResource( 2 )]
 collision/safe_margin = 0.01
-name = "Godot"
 
 [node name="Camera2D" type="Camera2D" parent="Objects/Player"]
 current = true
@@ -196,18 +188,17 @@ margin_top = 18.0
 margin_right = 316.0
 margin_bottom = 38.0
 
-[node name="EndTurn" type="Button" parent="HUD/TopPanel/Margin/Rows/Actions"]
-margin_right = 50.0
+[node name="Teleport" type="Button" parent="HUD/TopPanel/Margin/Rows/Actions"]
+margin_right = 65.0
 margin_bottom = 20.0
-toggle_mode = true
-text = "Pause"
+text = "Teleport"
 script = SubResource( 2 )
 
-[node name="Blink" type="Button" parent="HUD/TopPanel/Margin/Rows/Actions"]
-margin_left = 54.0
-margin_right = 98.0
+[node name="RandomName" type="Button" parent="HUD/TopPanel/Margin/Rows/Actions"]
+margin_left = 69.0
+margin_right = 175.0
 margin_bottom = 20.0
-text = "Blink"
+text = "Random Name"
 script = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="HUD"]

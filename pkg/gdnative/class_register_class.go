@@ -115,7 +115,7 @@ func go_create_func(godotObject *C.godot_object, methodData unsafe.Pointer) unsa
 		log.Panic("class must not be nil")
 	}
 
-	// pUserData := AllocCopy(unsafe.Pointer(&classInst), gint32(unsafe.Sizeof(classInst)))
+	classInst.Init()
 
 	ud := classInst.GetUserData()
 

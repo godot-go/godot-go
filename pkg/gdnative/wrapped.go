@@ -27,8 +27,8 @@ func init() {
 }
 
 type Wrapped struct {
-	Owner    *GodotObject
-	TypeTag  TypeTag
+	Owner   *GodotObject
+	TypeTag TypeTag
 
 	UserDataIdentifiableImpl
 }
@@ -88,7 +88,7 @@ func GetCustomClassInstance(owner *GodotObject) NativeScriptClass {
 	ud := (UserData)(uintptr(C.go_godot_nativescript_get_userdata(NativescriptApi, unsafe.Pointer(owner))))
 
 	classInst, ok := nativeScriptInstanceMap[ud]
-	
+
 	if !ok {
 		log.Panic("unable o find NativeScriptClass instance")
 	}
@@ -143,7 +143,7 @@ func CreateCustomClassInstance(className string, baseClassName string) NativeScr
 	)))
 
 	classInst, ok := nativeScriptInstanceMap[ud]
-	
+
 	if !ok {
 		log.Panic("unable o find NativeScriptClass instance")
 	}

@@ -48,13 +48,13 @@ type Class interface {
 }
 
 type ClassRegisteredEvent struct {
-	ClassName      string
-	ClassType      reflect.Type
-	ClassTypeTag   TypeTag
-	BaseName       string
-	BaseTypeTag    TypeTag
+	ClassName       string
+	ClassType       reflect.Type
+	ClassTypeTag    TypeTag
+	BaseName        string
+	BaseTypeTag     TypeTag
 	_pCharClassName *C.char
-	_pCharBaseName *C.char
+	_pCharBaseName  *C.char
 }
 
 func (e *ClassRegisteredEvent) Destroy() {
@@ -63,23 +63,23 @@ func (e *ClassRegisteredEvent) Destroy() {
 }
 
 func NewClassRegisteredEvent(
-	className    string,
-	classType    reflect.Type,
+	className string,
+	classType reflect.Type,
 	classTypeTag TypeTag,
-	baseName     string,
-	baseTypeTag  TypeTag,
+	baseName string,
+	baseTypeTag TypeTag,
 ) ClassRegisteredEvent {
 	_pCharClassName := C.CString(className)
 	_pCharBaseName := C.CString(baseName)
 
-	return ClassRegisteredEvent {
-		ClassName: className,
-		ClassType: classType,
-		ClassTypeTag: classTypeTag,
-		BaseName: baseName,
-		BaseTypeTag: baseTypeTag,
+	return ClassRegisteredEvent{
+		ClassName:       className,
+		ClassType:       classType,
+		ClassTypeTag:    classTypeTag,
+		BaseName:        baseName,
+		BaseTypeTag:     baseTypeTag,
 		_pCharClassName: _pCharClassName,
-		_pCharBaseName: _pCharBaseName,
+		_pCharBaseName:  _pCharBaseName,
 	}
 }
 

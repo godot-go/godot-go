@@ -205,6 +205,7 @@ margin_bottom = 38.0
 [node name="Button" type="Button" parent="HUD/TopPanel/Margin/Rows/Actions"]
 margin_right = 108.0
 margin_bottom = 20.0
+focus_mode = 0
 text = "Teleport Origin"
 script = SubResource( 2 )
 
@@ -212,6 +213,7 @@ script = SubResource( 2 )
 margin_left = 112.0
 margin_right = 177.0
 margin_bottom = 20.0
+focus_mode = 0
 text = "Teleport"
 script = SubResource( 3 )
 
@@ -219,6 +221,7 @@ script = SubResource( 3 )
 margin_left = 181.0
 margin_right = 287.0
 margin_bottom = 20.0
+focus_mode = 0
 text = "Random Name"
 script = SubResource( 4 )
 

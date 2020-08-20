@@ -24,11 +24,11 @@ func (d ClassRegisteredEvent) RegisterProperty(
 	var (
 		ok bool
 	)
-	
+
 	if _, ok = d.ClassType.MethodByName(setFunc); !ok {
 		log.WithField("setFunc", setFunc).Panic("setFunc not found")
 	}
-	
+
 	if _, ok = d.ClassType.MethodByName(getFunc); !ok {
 		log.WithField("getFunc", getFunc).Panic("getFunc not found")
 	}

@@ -33,7 +33,7 @@ func (p *PlayerCharacter) BaseClass() string {
 
 func (p *PlayerCharacter) Teleport(distance float64) {
 	pos := p.GetPosition()
-	v := gdnative.NewVector2(0.5 - rand.Float32(), 0.5 - rand.Float32())
+	v := gdnative.NewVector2(rand.Float32() - 0.5, rand.Float32() - 0.5)
 	normalized := v.Normalized()
 	p.SetPosition(pos.OperatorAdd(normalized.OperatorMultiplyScalar(float32(distance))))
 }

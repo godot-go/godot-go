@@ -48,5 +48,10 @@ git add -f pkg/gdnative/*.classgen.go
 git add .
 git commit -m "release $1"
 git tag ${GIT_TAG} -f
-git remote add origin git@github.com:pcting/godot-go.git
-git push origin --tag -f
+
+if [[ "$2" == "publish" ]]; then
+  git remote add origin git@github.com:pcting/godot-go.git
+  git push origin --tag -f
+fi
+
+cd ..

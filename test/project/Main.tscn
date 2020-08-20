@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/world-tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/entities/player/charlie/charlie.tscn" type="PackedScene" id=2]
@@ -18,10 +18,24 @@ func _ready():
 
 
 func _pressed():
-	player.teleport(100.0)
+	player.position = Vector2(0,0)
 "
 
 [sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+var player: KinematicBody2D
+
+
+func _ready():
+	player = $\"/root/World/Objects/Player\"
+
+
+func _pressed():
+	player.teleport(100.0)
+"
+
+[sub_resource type="GDScript" id=4]
 script/source = "extends Button
 
 var player: KinematicBody2D
@@ -188,17 +202,24 @@ margin_top = 18.0
 margin_right = 316.0
 margin_bottom = 38.0
 
-[node name="Teleport" type="Button" parent="HUD/TopPanel/Margin/Rows/Actions"]
-margin_right = 65.0
+[node name="Button" type="Button" parent="HUD/TopPanel/Margin/Rows/Actions"]
+margin_right = 108.0
 margin_bottom = 20.0
-text = "Teleport"
+text = "Teleport Origin"
 script = SubResource( 2 )
 
+[node name="Teleport" type="Button" parent="HUD/TopPanel/Margin/Rows/Actions"]
+margin_left = 112.0
+margin_right = 177.0
+margin_bottom = 20.0
+text = "Teleport"
+script = SubResource( 3 )
+
 [node name="RandomName" type="Button" parent="HUD/TopPanel/Margin/Rows/Actions"]
-margin_left = 69.0
-margin_right = 175.0
+margin_left = 181.0
+margin_right = 287.0
 margin_bottom = 20.0
 text = "Random Name"
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="HUD"]

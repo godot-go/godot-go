@@ -4,4 +4,5 @@
 load_once = false
 reloadable = false
 entry/X11.64 = "res://libs/libgodotgo-test-linux-amd64.so"
+entry/Server = "res://libs/libgodotgo-test-linux-amd64.so"
 dependency/X11.64 = [  ]

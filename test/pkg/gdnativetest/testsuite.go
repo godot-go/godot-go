@@ -24,6 +24,9 @@ func initNativescript() {
 	log.SetLevel(log.DebugLevel)
 	log.Trace("initNativescript called")
 	runTests()
+
+	// TODO: replace this with a better godot way of exiting
+	os.Exit(0)
 }
 
 func runTests() {

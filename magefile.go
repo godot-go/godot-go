@@ -7,6 +7,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -21,8 +22,42 @@ type BuildPlatform struct {
 }
 
 var (
-	godotBin     = "godot_engine/bin/godot.x11.tools.64.llvm"
+	godotBin string
+	ci       bool
 )
+
+func init() {
+	envCI, _ := os.LookupEnv("CI")
+
+	ci = envCI == "true"
+
+	var (
+		ok bool
+		err error
+	)
+
+	if ci {
+		if godotBin, err = which("godot3-server"); err == nil {
+			return
+		}
+	} else {
+		godotBin = "godot_engine/bin/godot.x11.tools.64.llvm"
+
+		if ok = fileExists(godotBin); ok {
+			return
+		}
+
+		if godotBin, err = which("godot3"); err == nil {
+			return
+		}
+
+		if godotBin, err = which("godot"); err == nil {
+			return
+		}
+	}
+
+	panic(err)
+}
 
 func envWithPlatform(platform BuildPlatform) map[string]string {
 	return map[string]string{
@@ -33,7 +68,6 @@ func envWithPlatform(platform BuildPlatform) map[string]string {
 		"CGO_CFLAGS_ALLOW":       "pkg-config",
 		"CGO_ENABLED":            "1",
 		"asyncpremptoff":         "1",
-		"TEST_USE_GINKGO_WRITER": "1",
 	}
 }
 
@@ -86,7 +120,15 @@ func Test() error {
 }
 
 func runPlugin(appPath string) error {
-	return sh.RunWith(map[string]string{"asyncpremptoff": "1", "cgocheck": "2", "LOG_LEVEL": "trace"}, godotBin, "--verbose", "-v", "-d", "--path", filepath.Join(appPath, "project"))
+	return sh.RunWith(
+		map[string]string{
+			"asyncpremptoff": "1",
+			"cgocheck": "2",
+			"LOG_LEVEL": "trace",
+			"TEST_USE_GINKGO_WRITER": "1",
+		}, 
+		godotBin, "--verbose", "-v", "-d", 
+		"--path", filepath.Join(appPath, "project"))
 }
 
 func buildGodotPlugin(name string, appPath string, outputPath string, platform BuildPlatform) error {
@@ -103,6 +145,18 @@ func (p *BuildPlatform) godotPluginCSharedName(appPath string, varargs ...string
 	}
 	
 	return fmt.Sprintf("libgodotgo-%s-%s-%s.so", strings.Join(varargs, "-"), p.OS, p.Arch)
+}
+
+func which(filename string) (string, error) {
+	return sh.Output("which", filename)
+}
+
+func fileExists(filename string) bool {
+    info, err := os.Stat(filename)
+    if os.IsNotExist(err) {
+        return false
+    }
+    return !info.IsDir()
 }
 
 var Default = BuildTest

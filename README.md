@@ -44,4 +44,4 @@ Generating releases manually should never be required.
 
 ---
 
-![Build Linux](https://github.com/pcting/godot-go/workflows/Build%20Linux/badge.svg?branch=master)
+[![Actions Build Status](https://github.com/pcting/godot-go/workflows/Build%20Linux/badge.svg?branch=master)](https://github.com/pcting/godot-go/actions)

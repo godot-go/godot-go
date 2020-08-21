@@ -41,6 +41,7 @@ Generating releases manually should never be required.
 * Cross compilation with cgo with [xgo](https://github.com/karalabe/xgo)
 * vscode-go patch to [support cgo](https://github.com/golang/go/issues/35721#issuecomment-568543991)
 * Check [unsafe pointer conversion](https://blog.gopheracademy.com/advent-2019/safe-use-of-unsafe-pointer/)
+* Loading nativescript libraries require modifying the library [.tres](https://godotengine.org/qa/63890/how-to-open-gdnative-projects-with-headless-server-godot).
 
 ---
 

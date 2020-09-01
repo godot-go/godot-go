@@ -1,10 +1,10 @@
 package gdnative
 
 /*
-#cgo pkg-config: --define-variable=PROJECTDIR=${SRCDIR}/../.. ${SRCDIR}/../../godot.pc
+#cgo CFLAGS: -DX86=1 -g -fPIC -std=c99 -I${SRCDIR}/../../godot_headers -I${SRCDIR}/../../pkg/gdnative
 #include <cgo_gateway_register_class.h>
 #include <cgo_gateway_class.h>
-#include <nativescript.wrappergen.h>
+#include <nativescript_wrappergen.h>
 #include <gdnative_api_struct.gen.h>
 #include <stdlib.h>
 #include <string.h>
@@ -49,7 +49,7 @@ var (
 func AllocZeros(p_bytes int32) unsafe.Pointer {
 	m := Alloc(p_bytes)
 
-	C.memset(m, 0, C.ulong(p_bytes))
+	C.memset(m, 0, C.size_t(p_bytes))
 
 	return m
 }
@@ -57,7 +57,7 @@ func AllocZeros(p_bytes int32) unsafe.Pointer {
 func AllocCopy(src unsafe.Pointer, p_bytes int32) unsafe.Pointer {
 	m := Alloc(p_bytes)
 
-	C.memcpy(m, src, C.ulong(p_bytes))
+	C.memcpy(m, src, C.size_t(p_bytes))
 
 	return m
 }

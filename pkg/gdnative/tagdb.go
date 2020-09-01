@@ -1,7 +1,7 @@
 package gdnative
 
 /*
-#include <nativescript.wrappergen.h>
+#include <nativescript_wrappergen.h>
 #include <stdlib.h>
 #include <string.h>
 */

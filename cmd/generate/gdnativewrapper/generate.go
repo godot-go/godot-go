@@ -96,24 +96,24 @@ func Generate(packagePath string) {
 	log.Println("Generating", view.StructType, "C headers...")
 	writeTemplate(
 		filepath.Join(packagePath,"cmd/generate/gdnativewrapper/gdnative.h.tmpl"),
-		filepath.Join(packagePath,"pkg/gdnative/gdnative.wrappergen.h"),
-		filepath.Join(packagePath,"tmp/gdnative.wrappergen.h.md5"),
+		filepath.Join(packagePath,"pkg/gdnative/gdnative_wrappergen.h"),
+		filepath.Join(packagePath,"tmp/gdnative_wrappergen.h.md5"),
 		view,
 	)
 
 	log.Println("Generating", view.StructType, "C bindings...")
 	writeTemplate(
 		filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.c.tmpl"),
-		filepath.Join(packagePath,"pkg/gdnative/gdnative.wrappergen.c"),
-		filepath.Join(packagePath,"tmp/gdnative.wrappergen.c.md5"),
+		filepath.Join(packagePath,"pkg/gdnative/gdnative_wrappergen.c"),
+		filepath.Join(packagePath,"tmp/gdnative_wrappergen.c.md5"),
 		view,
 	)
 
 	// log.Println("Generating", view.StructType, "Go bindings...")
 	// writeTemplate(
 	// 	filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.go.tmpl"),
-	// 	filepath.Join(packagePath,"pkg/gdnative/gdnative.wrappergen.go"),
-	// 	filepath.Join(packagePath,"tmp/gdnative.wrappergen.go.md5"),
+	// 	filepath.Join(packagePath,"pkg/gdnative/gdnative_wrappergen.go"),
+	// 	filepath.Join(packagePath,"tmp/gdnative_wrappergen.go.md5"),
 	// 	view,
 	// )
 
@@ -126,26 +126,18 @@ func Generate(packagePath string) {
 		log.Println("Generating", view.StructType, "C headers...")
 		writeTemplate(
 			filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.h.tmpl"),
-			filepath.Join(packagePath, "pkg/gdnative/"+view.Name+".wrappergen.h"),
-			filepath.Join(packagePath, "tmp/"+view.Name+".wrappergen.h.md5"),
+			filepath.Join(packagePath, "pkg/gdnative/"+view.Name+"_wrappergen.h"),
+			filepath.Join(packagePath, "tmp/"+view.Name+"_wrappergen.h.md5"),
 			view,
 		)
 
 		log.Println("Generating", view.StructType, "C bindings...")
 		writeTemplate(
 			filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.c.tmpl"),
-			filepath.Join(packagePath, "pkg/gdnative/"+view.Name+".wrappergen.c"),
-			filepath.Join(packagePath, "tmp/"+view.Name+".wrappergen.c.md5"),
+			filepath.Join(packagePath, "pkg/gdnative/"+view.Name+"_wrappergen.c"),
+			filepath.Join(packagePath, "tmp/"+view.Name+"_wrappergen.c.md5"),
 			view,
 		)
-
-		// log.Println("Generating", view.StructType, "Go bindings...")
-		// writeTemplate(
-		// 	filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.go.tmpl"),
-		// 	filepath.Join(packagePath,"pkg/gdnative/"+view.Name+".wrappergen.go"),
-		// 	filepath.Join(packagePath,"tmp/"+view.Name+".wrappergen.go.md5"),
-		// 	view,
-		// )
 	}
 }
 

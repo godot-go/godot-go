@@ -1,12 +1,9 @@
-dist/
-*.typegen.go
-*.wrappergen.go
-*.classgen.go
+*_typegen.go
+*_wrappergen.go
+*_classgen.go
+*_wrappergen.h
+*_wrappergen.c
 *.go.pre-fmt.md5
-*.wrappergen.h
-*.wrappergen.c
-*.gen.h
-*.gen.c
 .idea
 tmp/
 dist/

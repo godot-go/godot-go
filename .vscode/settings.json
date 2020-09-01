@@ -21,7 +21,8 @@
         "vector": "cpp",
         "typeinfo": "c",
         "gdnative_api_struct.gen.h": "c",
-        "gdnative.h": "c"
+        "gdnative.h": "c",
+        "cgo_gateway_instance_binding.h": "c"
     },
     "files.exclude": {
         "dist": true,

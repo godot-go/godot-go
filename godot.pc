@@ -1,7 +1,0 @@
-godot_headers_dir=${PROJECTDIR}/godot_headers
-include_dir=${PROJECTDIR}/pkg/gdnative
-
-Name: godot
-Description: Godot Headers
-Version: 0.0.1
-Cflags: -g -fPIC -std=c99 -I${godot_headers_dir} -I${include_dir}

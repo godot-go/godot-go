@@ -1,7 +1,7 @@
 package gdnativetest
 
 /*
-#cgo pkg-config: --define-variable=PROJECTDIR=${SRCDIR}/../../.. ${SRCDIR}/../../../godot.pc
+#cgo CFLAGS: -DX86=1 -g -fPIC -std=c99 -I${SRCDIR}/../../../godot_headers -I${SRCDIR}/../../../pkg/gdnative
 #include <cgo_example.h>
 #include <stdlib.h>
 */
@@ -26,7 +26,9 @@ func initNativescript() {
 	runTests()
 
 	// TODO: replace this with a better godot way of exiting
-	os.Exit(0)
+	if v, _ := os.LookupEnv("CI"); v == "1" {
+		os.Exit(0)
+	}
 }
 
 func runTests() {

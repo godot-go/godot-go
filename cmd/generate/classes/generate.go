@@ -181,7 +181,7 @@ func Generate(packagePath string) {
 
 		// Get the package name to generate
 		// Note: Some entities are prefixed with an underscore that we want to remove.
-		outFileName := fmt.Sprintf("%s.classgen.go", strings.TrimLeft(strings.ToLower(api.Name), "_"))
+		outFileName := fmt.Sprintf("%s_classgen.go", strings.TrimLeft(strings.ToLower(api.Name), "_"))
 
 		v := view{
 			PackageName:       filepath.Base(outputPackageDirectoryPath),

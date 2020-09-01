@@ -2,7 +2,7 @@ package gdnativetest
 
 /*
 #include <cgo_example.h>
-#include <gdnative.wrappergen.h>
+#include <gdnative_wrappergen.h>
 #include <stdlib.h>
 */
 import "C"
@@ -26,8 +26,8 @@ var _ = Describe("GodotObject", func() {
 		})
 	})
 
-	When("calling GetMethodList()", func() {
-		It("should return an array containing a 'get_class' method", func() {
+	When("calling GetMethodList() on an Object", func() {
+		It("should return an array of methods containing a 'get_class' method", func() {
 			obj := gdnative.NewObject()
 			defer obj.Free()
 
@@ -38,22 +38,31 @@ var _ = Describe("GodotObject", func() {
 
 			Ω(arr.Size()).Should(BeNumerically(">=", int32(40)))
 
-			v := arr.Get(7)
-			Ω(v.GetType()).Should(Equal(gdnative.GODOT_VARIANT_TYPE_DICTIONARY))
+			found := false
 
-			dict := v.AsDictionary()
-			nameStr := gdnative.NewStringFromGoString("name")
-			defer nameStr.Destroy()
+			for i := int32(0); i < arr.Size(); i++ {
+				v := arr.Get(i)
+				Ω(v.GetType()).Should(Equal(gdnative.GODOT_VARIANT_TYPE_DICTIONARY))
+				dict := v.AsDictionary()
 
-			vName := gdnative.NewVariantString(nameStr)
-			getClassV := dict.Get(vName)
-			defer getClassV.Destroy()
+				nameStr := gdnative.NewStringFromGoString("name")
+				defer nameStr.Destroy()
 
-			Ω(getClassV.GetType()).Should(Equal(gdnative.GODOT_VARIANT_TYPE_STRING))
+				vName := gdnative.NewVariantString(nameStr)
+				getClassV := dict.Get(vName)
+				defer getClassV.Destroy()
 
-			getClassStr := getClassV.AsString()
+				Ω(getClassV.GetType()).Should(Equal(gdnative.GODOT_VARIANT_TYPE_STRING))
 
-			Ω(getClassStr.AsGoString()).Should(Equal("get_class"))
+				getClassStr := getClassV.AsString()
+
+				if getClassStr.AsGoString() == "get_class" {
+					found = true
+					break
+				}
+			}
+
+			Ω(found).Should(BeTrue())
 		})
 	})
 })

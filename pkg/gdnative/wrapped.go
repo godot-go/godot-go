@@ -2,8 +2,8 @@ package gdnative
 
 /*
 #include <cgo_gateway_class.h>
-#include <nativescript.wrappergen.h>
-#include <gdnative.wrappergen.h>
+#include <nativescript_wrappergen.h>
+#include <gdnative_wrappergen.h>
 #include <stdlib.h>
 #include <string.h>
 */

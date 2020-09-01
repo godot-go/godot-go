@@ -22,36 +22,43 @@ type BuildPlatform struct {
 }
 
 var (
-	godotBin string
-	ci       bool
+	godotBin   string
+	ci         bool
+	targetOS   string
+	targetArch string
 )
 
 func init() {
-	envCI, _ := os.LookupEnv("CI")
-
-	ci = envCI == "true"
-
 	var (
-		ok bool
 		err error
+		ok  bool
 	)
 
-	if ci {
-		if godotBin, err = which("godot3-server"); err == nil {
-			return
-		}
-	} else {
-		godotBin = "godot_engine/bin/godot.x11.tools.64.llvm"
+	if targetOS, ok = os.LookupEnv("TARGET_OS"); !ok {
+		targetOS = runtime.GOOS
+	}
 
-		if ok = fileExists(godotBin); ok {
-			return
-		}
+	if targetArch, ok = os.LookupEnv("TARGET_ARCH"); !ok {
+		targetArch = runtime.GOARCH
+	}
 
+	godotBin, _ = os.LookupEnv("GODOT_BIN")
+	envCI, _ := os.LookupEnv("CI")
+	ci = envCI == "true"
+
+	if godotBin, err = which(godotBin); err == nil {
+		fmt.Printf("GODOT_BIN = %s\n", godotBin)
+		return
+	}
+
+	if !ci {
 		if godotBin, err = which("godot3"); err == nil {
+			fmt.Printf("GODOT_BIN = %s\n", godotBin)
 			return
 		}
 
 		if godotBin, err = which("godot"); err == nil {
+			fmt.Printf("GODOT_BIN = %s\n", godotBin)
 			return
 		}
 	}
@@ -60,15 +67,19 @@ func init() {
 }
 
 func envWithPlatform(platform BuildPlatform) map[string]string {
-	return map[string]string{
-		"GOOS":                   platform.OS,
-		"GOARCH":                 platform.Arch,
-		"GODEBUG":                "cgocheck=2",
-		"CGO_LDFLAGS_ALLOW":      "pkg-config",
-		"CGO_CFLAGS_ALLOW":       "pkg-config",
+	envs := map[string]string{
+		"GOOS":                   targetOS,
+		"GOARCH":                 targetArch,
 		"CGO_ENABLED":            "1",
 		"asyncpremptoff":         "1",
 	}
+
+	// enable for cross-compiling from linux
+	// case "windows":
+	// 	envs["CC"] = "i686-w64-mingw32-gcc"
+	// }
+
+	return envs
 }
 
 func CleanGdnative() error {
@@ -105,8 +116,8 @@ func BuildTest() error {
 		appPath,
 		outputPath,
 		BuildPlatform{
-			OS:   runtime.GOOS,
-			Arch: runtime.GOARCH,
+			OS:   targetOS,
+			Arch: targetArch,
 		},
 	)
 }
@@ -132,31 +143,35 @@ func runPlugin(appPath string) error {
 }
 
 func buildGodotPlugin(name string, appPath string, outputPath string, platform BuildPlatform) error {
-	return sh.RunWith(envWithPlatform(platform), mg.GoCmd(), "build", "-x", "-work",
-		"-buildmode=c-shared", "-ldflags=\"-d=checkptr -compressdwarf=false\"", "-gcflags=\"all=-N -l\"",
+	return sh.RunWith(envWithPlatform(platform), mg.GoCmd(), "build",
+		"-buildmode=c-shared", "-x", "-trimpath", "-p", "1",
 		"-o", filepath.Join(outputPath, platform.godotPluginCSharedName(appPath, name)),
 		filepath.Join(appPath, "main.go"),
 	)
 }
 
-func (p *BuildPlatform) godotPluginCSharedName(appPath string, varargs ...string) string {
-	if len(varargs) == 0 {
-		return fmt.Sprintf("libgodotgo-%s-%s.so", p.OS, p.Arch)
+func (p BuildPlatform) godotPluginCSharedName(appPath string, varargs ...string) string {
+	switch(p.OS) {
+		case "windows":
+			return fmt.Sprintf("libgodotgo-%s-%s.dll", strings.Join(varargs, "-"), p.Arch)
+		case "linux":
+			ext := "so"
+			
+			if len(varargs) == 0 {
+				return fmt.Sprintf("libgodotgo-%s-%s.%s", p.OS, p.Arch, ext)
+			}
+			
+			return fmt.Sprintf("libgodotgo-%s-%s-%s.%s", strings.Join(varargs, "-"), p.OS, p.Arch, ext)
+		default:
+			panic(fmt.Errorf("unsupported build platform: %s", p.OS))
 	}
-	
-	return fmt.Sprintf("libgodotgo-%s-%s-%s.so", strings.Join(varargs, "-"), p.OS, p.Arch)
 }
 
 func which(filename string) (string, error) {
+	if len(filename) == 0 {
+		return "", fmt.Errorf("no filename specified")
+	}
 	return sh.Output("which", filename)
-}
-
-func fileExists(filename string) bool {
-    info, err := os.Stat(filename)
-    if os.IsNotExist(err) {
-        return false
-    }
-    return !info.IsDir()
 }
 
 var Default = BuildTest

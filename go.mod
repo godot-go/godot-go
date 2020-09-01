@@ -10,7 +10,6 @@ require (
 	github.com/pinzolo/casee v0.0.0-20191019093852-17765ba5eb57
 	github.com/sirupsen/logrus v1.5.0
 	github.com/spf13/cobra v0.0.7
-	golang.org/x/net v0.0.0-20200625001655-4c5254603344 // indirect
-	golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543 // indirect
+	golang.org/x/tools v0.0.0-20200823205832-c024452afbcd // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )

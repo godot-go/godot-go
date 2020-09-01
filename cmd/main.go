@@ -101,9 +101,9 @@ var rootCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if cleanAll || cleanGdnative {
 			globPatterns := []string{
-				"/pkg/gdnative/*.wrappergen.c",
-				"/pkg/gdnative/*.wrappergen.h",
-				"/pkg/gdnative/*.wrappergen.go",
+				"/pkg/gdnative/*_wrappergen.c",
+				"/pkg/gdnative/*_wrappergen.h",
+				"/pkg/gdnative/*_wrappergen.go",
 			}
 			if err := cleanFiles(globPatterns); err != nil {
 				return err
@@ -112,7 +112,7 @@ var rootCmd = &cobra.Command{
 
 		if cleanAll || cleanTypes {
 			globPatterns := []string{
-				"/pkg/gdnative/*.typegen.go",
+				"/pkg/gdnative/*_typegen.go",
 			}
 			if err := cleanFiles(globPatterns); err != nil {
 				return err
@@ -121,7 +121,7 @@ var rootCmd = &cobra.Command{
 
 		if cleanAll || cleanClasses {
 			globPatterns := []string{
-				"/pkg/gdnative/*.classgen.go",
+				"/pkg/gdnative/*_classgen.go",
 			}
 			if err := cleanFiles(globPatterns); err != nil {
 				return err

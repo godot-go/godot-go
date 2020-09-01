@@ -3,6 +3,9 @@
 [resource]
 load_once = false
 reloadable = false
+entry/Windows.64 = "res://libs/libgodotgo-test-windows-amd64.dll"
+entry/Windows.32 = "res://libs/libgodotgo-test-windows-386.dll"
 entry/X11.64 = "res://libs/libgodotgo-test-linux-amd64.so"
 entry/Server = "res://libs/libgodotgo-test-linux-amd64.so"
+dependency/Windows.64 = [  ]
 dependency/X11.64 = [  ]

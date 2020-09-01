@@ -1,13 +1,27 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/world-tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/entities/player/charlie/charlie.tscn" type="PackedScene" id=2]
 [ext_resource path="res://hud.gd" type="Script" id=3]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+
+func _ready():
+	var p: KinematicBody2D = $\"Objects/Player\"
+
+	# the teleport method should be available
+	# if successfully loaded from the nativescript
+	# library; otherwise, exit
+	if not p.has_method(\"teleport\"):
+		get_tree().quit(1)
+"
+
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.705882 )
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Button
 
 var player: KinematicBody2D
@@ -21,7 +35,7 @@ func _pressed():
 	player.position = Vector2(0,0)
 "
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=4]
 script/source = "extends Button
 
 var player: KinematicBody2D
@@ -35,7 +49,7 @@ func _pressed():
 	player.teleport(100.0)
 "
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=5]
 script/source = "extends Button
 
 var player: KinematicBody2D
@@ -51,6 +65,7 @@ func _pressed():
 "
 
 [node name="World" type="Node2D"]
+script = SubResource( 1 )
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -106,7 +121,7 @@ margin_top = -0.5
 margin_bottom = 41.5
 rect_clip_content = true
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
@@ -207,7 +222,7 @@ margin_right = 108.0
 margin_bottom = 20.0
 focus_mode = 0
 text = "Teleport Origin"
-script = SubResource( 2 )
+script = SubResource( 3 )
 
 [node name="Teleport" type="Button" parent="HUD/TopPanel/Margin/Rows/Actions"]
 margin_left = 112.0
@@ -215,7 +230,7 @@ margin_right = 177.0
 margin_bottom = 20.0
 focus_mode = 0
 text = "Teleport"
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="RandomName" type="Button" parent="HUD/TopPanel/Margin/Rows/Actions"]
 margin_left = 181.0
@@ -223,6 +238,6 @@ margin_right = 287.0
 margin_bottom = 20.0
 focus_mode = 0
 text = "Random Name"
-script = SubResource( 4 )
+script = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="HUD"]

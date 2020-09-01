@@ -34,10 +34,6 @@ The release process include comitting codegen files on git tags. To package and 
 
 Generating releases manually should never be required.
 
-## Dependencies
-
-    go get golang.org/x/tools/cmd/goimports
-
 
 ## References
 

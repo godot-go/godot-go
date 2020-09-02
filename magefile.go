@@ -153,7 +153,7 @@ func buildGodotPlugin(name string, appPath string, outputPath string, platform B
 func (p BuildPlatform) godotPluginCSharedName(appPath string, varargs ...string) string {
 	switch(p.OS) {
 		case "windows":
-			return fmt.Sprintf("libgodotgo-%s-%s.dll", strings.Join(varargs, "-"), p.Arch)
+			return fmt.Sprintf("libgodotgo-%s-windows-4.0-%s.dll", strings.Join(varargs, "-"), p.Arch)
 		case "linux":
 			ext := "so"
 			

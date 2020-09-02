@@ -1,3 +1,7 @@
+[![Actions Build Status](https://github.com/godot-go/godot-go/workflows/CI/badge.svg?branch=master)](https://github.com/godot-go/godot-go/actions)
+
+---
+
 # Godot Go Binding
 
 [Godot](https://github.com/godotengine/godot) is a cross-platform game engine.
@@ -43,7 +47,3 @@ Generating releases manually should never be required.
 * Check [unsafe pointer conversion](https://blog.gopheracademy.com/advent-2019/safe-use-of-unsafe-pointer/)
 * Loading nativescript libraries with a godot server build requires manual modification to the library [.tres](https://godotengine.org/qa/63890/how-to-open-gdnative-projects-with-headless-server-godot).
 * Working with [GDB Go extension](https://nanxiao.me/en/the-tips-of-using-gdb-to-debug-golang-program/)
-
----
-
-[![Actions Build Status](https://github.com/godot-go/godot-go/workflows/CI/badge.svg?branch=master)](https://github.com/godot-go/godot-go/actions)

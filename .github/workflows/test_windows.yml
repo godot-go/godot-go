@@ -2,8 +2,12 @@ name: Test Windows
 
 on:
   push:
-  # release:
-  #   types: [published]
+    branches:
+      - master
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
 
 jobs:
   run_test:
@@ -28,8 +32,11 @@ jobs:
     - name: Set up scoop extras
       run: scoop bucket add extras;
 
-    - name: Install Godot
-      run: scoop install godot;
+    - name: Install Godot 3.2.2 server
+      run: |
+        wget https://downloads.tuxfamily.org/godotengine/3.2.2/Godot_v3.2.2-stable_win64.exe.zip
+        sudo unzip Godot_v3.2.2-stable_win64.exe.zip
+        sudo ln -s Godot_v3.2.2-stable_win64.exe godot
 
     - name: Set up Go
       uses: actions/setup-go@v2
@@ -59,14 +66,14 @@ jobs:
         go run mage.go -v buildtest || go run mage.go -v buildtest
       shell: bash
       env:
-        GODOT_BIN: godot
+        GODOT_BIN: ./godot
 
     - name: List Artifacts Directory
       run: ls -alh test/project/libs
       shell: bash
 
     - name: Run Test
-      run: godot --verbose -v -d --path test/project/
+      run: ./godot --verbose -v -d --path test/project/
       shell: bash
       env:
         cgocheck: 2

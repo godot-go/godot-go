@@ -30,7 +30,6 @@ var (
 
 func init() {
 	var (
-		err error
 		ok  bool
 	)
 
@@ -42,9 +41,16 @@ func init() {
 		targetArch = runtime.GOARCH
 	}
 
-	godotBin, _ = os.LookupEnv("GODOT_BIN")
 	envCI, _ := os.LookupEnv("CI")
 	ci = envCI == "true"
+}
+
+func initGodotBin() {
+	var (
+		err error
+	)
+
+	godotBin, _ = os.LookupEnv("GODOT_BIN")
 
 	if godotBin, err = which(godotBin); err == nil {
 		fmt.Printf("GODOT_BIN = %s\n", godotBin)
@@ -131,6 +137,8 @@ func Test() error {
 }
 
 func runPlugin(appPath string) error {
+	mg.Deps(initGodotBin)
+
 	return sh.RunWith(
 		map[string]string{
 			"asyncpremptoff": "1",

@@ -2,6 +2,10 @@ name: godot-go CI
 
 on:
   push:
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
 
 jobs:
   run_test:

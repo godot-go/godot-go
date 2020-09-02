@@ -61,8 +61,16 @@ jobs:
       env:
         GODOT_BIN: godot
 
+    - name: List Artifacts Directory
+      run: ls -alh test/project/libs
+      shell: bash
+
     - name: Run Test
-      run: go run mage.go -v test
+      run: godot --verbose -v -d --path test/project/
       shell: bash
       env:
-        GODOT_BIN: godot
+        cgocheck: 2
+        LOG_LEVEL: "trace"
+        TEST_USE_GINKGO_WRITER: 1
+        LANG: "en_US.utf8"
+        CI: 1

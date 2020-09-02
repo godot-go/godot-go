@@ -12,7 +12,7 @@ jobs:
         go_version:
           - 1.15.0
         targets:
-          - linux/amd64
+          - linux/amd64,windows/amd64
 
     runs-on: ubuntu-latest
     steps:

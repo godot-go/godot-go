@@ -1,37 +1,39 @@
-## Welcome to GitHub Pages
+# Godot Go Binding
 
-You can use the [editor on GitHub](https://github.com/godot-go/godot-go/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+[Godot](https://github.com/godotengine/godot) is a cross-platform game engine.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Getting Started
 
-### Markdown
+Please install Go version 1.15 or above to get the latest cgo improvements. I encourage everyone to install Go through [Go Version Manager](https://github.com/moovweb/gvm)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Generating Codegen
 
-```markdown
-Syntax highlighted code block
+The goimports package will need to be installed to run `go generate`:
 
-# Header 1
-## Header 2
-### Header 3
+    go get golang.org/x/tools/cmd/goimports
 
-- Bulleted
-- List
+Codegen files are not checked into the project. You will need to generate those codegen files like so:
 
-1. Numbered
-2. List
+    go generate
+    
+    
+### Testing
 
-**Bold** and _Italic_ and `Code` text
+Follow up by compiling and running the tests:
 
-[Link](url) and ![Image](src)
-```
+    go run mage.go test
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Compiling can take more than *10 minutes* because of the use of cgo. Please be patient. Once it finishes, the tests will run and also start the demo app afterwards.
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/godot-go/godot-go/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Releasing
 
-### Support or Contact
+The release process include comitting codegen files on git tags. To package and deploy a release:
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+    ./package-release.sh 0.0.1 publish
+
+Generating releases manually should never be required.
+
+---
+
+[![Actions Build Status](https://github.com/godot-go/godot-go/workflows/CI/badge.svg?branch=master)](https://github.com/godot-go/godot-go/actions)

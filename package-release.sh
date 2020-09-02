@@ -50,7 +50,7 @@ git commit -m "release $1"
 git tag ${GIT_TAG} -f
 
 if [[ "$2" == "publish" ]]; then
-  git remote add origin git@github.com:pcting/godot-go.git
+  git remote add origin git@github.com:godot-go/godot-go.git
   git push origin --tag -f
 fi
 

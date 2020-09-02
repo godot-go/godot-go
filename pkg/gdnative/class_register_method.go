@@ -1,7 +1,7 @@
 package gdnative
 
 /*
-#include <nativescript_wrappergen.h>
+#include <nativescript.wrapper.gen.h>
 #include <cgo_gateway_register_class.h>
 #include <gdnative_api_struct.gen.h>
 #include <stdlib.h>
@@ -9,9 +9,10 @@ package gdnative
 import "C"
 import (
 	"fmt"
-	"github.com/godot-go/godot-go/pkg/log"
 	"reflect"
 	"unsafe"
+
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 // MethodData is used as the key for the internal identity map

@@ -4,16 +4,12 @@ package types
 
 import (
 	"bytes"
-	"crypto/md5"
 	"fmt"
 	"github.com/godot-go/godot-go/cmd/gdnativeapijson"
-	"io/ioutil"
 	"log"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"sort"
-	"strings"
 	"text/template"
 )
 
@@ -92,12 +88,17 @@ func arrayContains(arr []string, value string) bool {
 
 // Generate will generate Go wrappers for all Godot base types
 func Generate(packagePath string) {
+	// Create a structure for our template view. This will contain all of
+	// the data we need to construct our Go wrappers.
+	view := View{
+		TemplateName: "type.go.tmpl",
+	}
+
 	// parseGodotHeaders all available receiverMethods
 	gdnativeAPI := gdnativeapijson.ParseGdnativeApiJson(packagePath)
 
 	// Convert the API definitions into a method struct
 	constructors := ConstructorIndex{}
-	globalMethods := make([]gdnativeapijson.GoMethod, 0, len(gdnativeAPI.Core.API))
 	receiverMethods := MethodIndex{}
 	core := &gdnativeAPI.Core
 	
@@ -126,7 +127,7 @@ func Generate(packagePath string) {
 					}
 
 				case gdnativeapijson.GlobalGoMethodType:
-					globalMethods = append(globalMethods, method)
+					view.Globals = append(view.Globals, method)
 
 				case gdnativeapijson.ReceiverGoMethodType:
 					if ms, ok := receiverMethods[method.Receiver.Type.CName]; ok {
@@ -156,74 +157,35 @@ func Generate(packagePath string) {
 	for _, filePath := range headers {
 		typeDefMap := index[filePath]
 
-		typeDefs := make([]gdnativeapijson.GoTypeDef, 0, len(typeDefMap))
-		for _, td := range typeDefMap {
-			typeDefs = append(typeDefs, td)
+		typeDefMapKeys := make([]string, 0, len(typeDefMap))
+		for d := range typeDefMap {
+			typeDefMapKeys = append(typeDefMapKeys, d)
 		}
+		sort.Strings(typeDefMapKeys)
 
-		// Convert the header name into the Go filename
-		filename := filepath.Base(filePath)
-		outFileName := filename[:len(filename)-len(".h")] + "_typegen.go"
-		if strings.Index(outFileName, "godot_") == 0 {
-			outFileName = outFileName[len("godot_"):]
-		}
-
-		log.Printf("  Generating Go code for %s...\n", outFileName)
-
-		// Create a structure for our template view. This will contain all of
-		// the data we need to construct our Go wrappers.
-		view := View{
-			TemplateName: "type.go.tmpl",
-			TypeDefs:     typeDefs,
-		}
-
-		// Write the file using our template.
-		outPath := filepath.Join(packagePath, "pkg", "gdnative")
-		md5Path := filepath.Join(packagePath, "tmp")
-		ret := writeTemplate(
-			filepath.Join(packagePath, "cmd", "generate", "types", "type.go.tmpl"),
-			filepath.Join(outPath, outFileName),
-			filepath.Join(md5Path, outFileName + ".pre-fmt.md5"),
-			view,
-		)
-
-		if ret {
-			// Run gofmt on the generated Go file.
-			goFmt(filepath.Join(outPath, outFileName))
-	
-			goImports(filepath.Join(outPath, outFileName))
-		} else {
-			log.Printf("No changes found for %s; skipping go-fmt and go-imports", outFileName)
+		for _, k := range typeDefMapKeys {
+			view.TypeDefs = append(view.TypeDefs, typeDefMap[k])
 		}
 	}
 
-	if len(globalMethods) > 0 {
-		// Create a structure for our template view. This will contain all of
-		// the data we need to construct our Go wrappers.
-		view := View{
-			TemplateName: "type.go.tmpl",
-			Globals:      globalMethods,
-		}
+	// Open the output file for writing
+	outputPackageDirectoryPath := filepath.Join(packagePath, "pkg", "gdnative")
+	outputPath := filepath.Join(outputPackageDirectoryPath, "types.gen.go")
 
-		// Write the file using our template.
-		outPath := filepath.Join(packagePath, "pkg", "gdnative")
-		md5Path := filepath.Join(packagePath, "tmp")
-		ret := writeTemplate(
-			filepath.Join(packagePath, "cmd", "generate", "types", "type.go.tmpl"),
-			filepath.Join(outPath, "globals_typegen.go"),
-			filepath.Join(md5Path, "globals_typegen.go.pre-fmt.md5"),
-			view,
-		)
+	var (
+		f *os.File
+		err error
+	)
 
-		if ret {
-			// Run gofmt on the generated Go file.
-			goFmt(filepath.Join(outPath, "globals_typegen.go"))
-
-			goImports(filepath.Join(outPath, "globals_typegen.go"))
-		} else {
-			log.Printf("No changes found for globals_typegen.go; skipping go-fmt and go-imports")
-		}
+	if f, err = os.Create(outputPath); err != nil {
+		panic(err)
 	}
+
+	writeTemplate(
+		f,
+		filepath.Join(packagePath, "cmd", "generate", "types", "type.go.tmpl"),
+		view,
+	)
 }
 
 // fileExists checks if a file exists and is not a directory before we
@@ -237,13 +199,10 @@ func fileExists(filename string) bool {
 }
 
 // returns true if there were changes
-func writeTemplate(templatePath, outputPath string, md5Path string, view View) bool {
+func writeTemplate(f *os.File, templatePath string, view View) {
 	var (
 		err error
 		generatedBuf bytes.Buffer
-		generatedMd5Bytes []byte
-		md5Bytes []byte
-		isSame int = -1
 		t *template.Template
 	)
 
@@ -261,64 +220,5 @@ func writeTemplate(templatePath, outputPath string, md5Path string, view View) b
 
 	generatedBytes := generatedBuf.Bytes()
 
-	// skip if the output is unchanged
-	if fileExists(outputPath) && fileExists(md5Path) {
-		md5Bytes, err = ioutil.ReadFile(md5Path)
-		
-		gsum := md5.Sum(generatedBytes)
-		generatedMd5Bytes = gsum[:]
-		isSame = bytes.Compare(generatedMd5Bytes, md5Bytes)
-
-		// log.Printf("%s: generated checksum %v, file checksum %v\n", outputPath, generatedMd5Bytes, md5Bytes)
-	}
-
-	if isSame == 0 {
-		log.Printf("No changes found; skip generating type %s\n", outputPath)
-		return false
-	}
-
-	// Open the output file for writing
-	f, err := os.Create(outputPath)
 	f.Write(generatedBytes)
-	defer f.Close()
-	if err != nil {
-		panic(err)
-	}
-
-	if err := os.MkdirAll(filepath.Dir(md5Path), os.ModePerm); err !=nil {
-		panic(err)
-	}
-
-	fmd5, err := os.Create(md5Path)
-	fmd5.Write(generatedMd5Bytes)
-	defer fmd5.Close()
-	if err != nil {
-		panic(err)
-	}
-
-	return true
-}
-
-func goFmt(filePath string) {
-	cmd := exec.Command("gofmt", "-w", filePath)
-	log.Println("Running:", cmd)
-	var stdErr bytes.Buffer
-	cmd.Stderr = &stdErr
-	err := cmd.Run()
-	if err != nil {
-		log.Println("Error running gofmt:", err)
-		panic(stdErr.String())
-	}
-}
-
-func goImports(filePath string) {
-	cmd := exec.Command("goimports", "-w", filePath)
-	log.Println("Running:", cmd)
-	var stdErr bytes.Buffer
-	cmd.Stderr = &stdErr
-	err := cmd.Run()
-	if err != nil {
-		log.Println("Error running goimports:", err)
-		panic(stdErr.String())
-	}
 }

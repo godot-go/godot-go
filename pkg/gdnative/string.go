@@ -1,7 +1,7 @@
 package gdnative
 
 /*
-#include <gdnative_wrappergen.h>
+#include <gdnative.wrapper.gen.h>
 #include <gdnative_api_struct.gen.h>
 #include <stdlib.h>
 */

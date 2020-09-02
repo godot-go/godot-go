@@ -6,8 +6,6 @@ package gdnativewrapper
 import (
 	"path/filepath"
 	"bytes"
-	"crypto/md5"
-	"io/ioutil"
 	"log"
 	"os"
 	"regexp"
@@ -96,16 +94,14 @@ func Generate(packagePath string) {
 	log.Println("Generating", view.StructType, "C headers...")
 	writeTemplate(
 		filepath.Join(packagePath,"cmd/generate/gdnativewrapper/gdnative.h.tmpl"),
-		filepath.Join(packagePath,"pkg/gdnative/gdnative_wrappergen.h"),
-		filepath.Join(packagePath,"tmp/gdnative_wrappergen.h.md5"),
+		filepath.Join(packagePath,"pkg/gdnative/gdnative.wrapper.gen.h"),
 		view,
 	)
 
 	log.Println("Generating", view.StructType, "C bindings...")
 	writeTemplate(
 		filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.c.tmpl"),
-		filepath.Join(packagePath,"pkg/gdnative/gdnative_wrappergen.c"),
-		filepath.Join(packagePath,"tmp/gdnative_wrappergen.c.md5"),
+		filepath.Join(packagePath,"pkg/gdnative/gdnative.wrapper.gen.c"),
 		view,
 	)
 
@@ -113,7 +109,6 @@ func Generate(packagePath string) {
 	// writeTemplate(
 	// 	filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.go.tmpl"),
 	// 	filepath.Join(packagePath,"pkg/gdnative/gdnative_wrappergen.go"),
-	// 	filepath.Join(packagePath,"tmp/gdnative_wrappergen.go.md5"),
 	// 	view,
 	// )
 
@@ -126,16 +121,14 @@ func Generate(packagePath string) {
 		log.Println("Generating", view.StructType, "C headers...")
 		writeTemplate(
 			filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.h.tmpl"),
-			filepath.Join(packagePath, "pkg/gdnative/"+view.Name+"_wrappergen.h"),
-			filepath.Join(packagePath, "tmp/"+view.Name+"_wrappergen.h.md5"),
+			filepath.Join(packagePath, "pkg/gdnative/"+view.Name+".wrapper.gen.h"),
 			view,
 		)
 
 		log.Println("Generating", view.StructType, "C bindings...")
 		writeTemplate(
 			filepath.Join(packagePath, "cmd/generate/gdnativewrapper/gdnative.c.tmpl"),
-			filepath.Join(packagePath, "pkg/gdnative/"+view.Name+"_wrappergen.c"),
-			filepath.Join(packagePath, "tmp/"+view.Name+"_wrappergen.c.md5"),
+			filepath.Join(packagePath, "pkg/gdnative/"+view.Name+".wrapper.gen.c"),
 			view,
 		)
 	}
@@ -152,13 +145,10 @@ func fileExists(filename string) bool {
 }
 
 // returns true if there were changes
-func writeTemplate(templatePath, outputPath string, md5Path string, view View) bool {
+func writeTemplate(templatePath, outputPath string, view View) {
 	var (
 		err error
 		generatedBuf bytes.Buffer
-		generatedMd5Bytes []byte
-		md5Bytes []byte
-		isSame int = -1
 		t *template.Template
 	)
 
@@ -176,22 +166,6 @@ func writeTemplate(templatePath, outputPath string, md5Path string, view View) b
 
 	generatedBytes := generatedBuf.Bytes()
 
-	// skip if the output is unchanged
-	if fileExists(outputPath) && fileExists(md5Path) {
-		md5Bytes, err = ioutil.ReadFile(md5Path)
-		
-		gsum := md5.Sum(generatedBytes)
-		generatedMd5Bytes = gsum[:]
-		isSame = bytes.Compare(generatedMd5Bytes, md5Bytes)
-
-		log.Printf("%s: generated checksum %v, file checksum %v", outputPath, generatedMd5Bytes, md5Bytes)
-	}
-
-	if isSame == 0 {
-		log.Printf("No changes found; skip generating type %s", outputPath)
-		return false
-	}
-
 	// Open the output file for writing
 	f, err := os.Create(outputPath)
 	f.Write(generatedBytes)
@@ -199,17 +173,4 @@ func writeTemplate(templatePath, outputPath string, md5Path string, view View) b
 	if err != nil {
 		panic(err)
 	}
-
-	if err := os.MkdirAll(filepath.Dir(md5Path), os.ModePerm); err !=nil {
-		panic(err)
-	}
-
-	fmd5, err := os.Create(md5Path)
-	fmd5.Write(generatedMd5Bytes)
-	defer fmd5.Close()
-	if err != nil {
-		panic(err)
-	}
-
-	return true
 }

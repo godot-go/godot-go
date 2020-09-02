@@ -2,7 +2,7 @@ package gdnativetest
 
 /*
 #include <cgo_example.h>
-#include <gdnative_wrappergen.h>
+#include <gdnative.wrapper.gen.h>
 #include <stdlib.h>
 */
 import "C"

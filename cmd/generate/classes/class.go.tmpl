@@ -2,8 +2,8 @@ package {{ .PackageName }}
 
 /*
 #include <stdlib.h>
-#include <gdnative_wrappergen.h>
-#include <nativescript_wrappergen.h>
+#include <gdnative.wrapper.gen.h>
+#include <nativescript.wrapper.gen.h>
 #include <cgo_gateway_register_class.h>
 #include <cgo_gateway_class.h>
 */
@@ -15,9 +15,7 @@ import (
 	"reflect"
 	"runtime"
 	"github.com/godot-go/godot-go/pkg/log"
-	{{ if .Api.Singleton -}}
 	"sync"
-	{{- end }}
 )
 
 /*------------------------------------------------------------------------------
@@ -29,55 +27,59 @@ import (
 //   code.
 //----------------------------------------------------------------------------*/
 
-{{ template "TYPEDEF_INTERFACE" .Api }}
+{{ range $j, $api := .Apis -}}
 
-type {{ .Api.PrefixName }}Impl struct {
-	{{ if eq .Api.BaseClass "" }}
-    	Wrapped
-	{{ else }}
-		{{ .Api.BaseClass }}Impl
-	{{ end }}
-}
+	{{ template "TYPEDEF_INTERFACE" $api }}
 
-var sizeof{{ .Api.PrefixName }} = int32(unsafe.Sizeof({{ .Api.PrefixName }}Impl{}))
-// var typeTag{{ .Api.PrefixName }} = NewTypeTagFromString("{{ .Api.Name }}")
-
-{{ template "CONSTRUCTOR" .Api }}
-
-func (o *{{ .Api.PrefixName }}Impl) ClassName() string {
-	return "{{ .Api.Name }}"
-}
-
-func (o *{{ .Api.PrefixName }}Impl) BaseClass() string {
-	return "{{ .Api.BaseClass }}"
-}
-
-{{ if eq .Api.BaseClass "" -}}
-func (o *{{ .Api.PrefixName }}Impl) Free() {
-	if o != nil {
-		Free(unsafe.Pointer(o))
-		o = nil
+	type {{ $api.PrefixName }}Impl struct {
+		{{ if eq $api.BaseClass "" }}
+			Wrapped
+		{{ else }}
+			{{ $api.BaseClass }}Impl
+		{{ end }}
 	}
-}
 
-func (o *{{ .Api.PrefixName }}Impl) GetOwnerObject() *GodotObject {
-	return o.Owner
-}
+	var sizeof{{ $api.PrefixName }} = int32(unsafe.Sizeof({{ $api.PrefixName }}Impl{}))
+	// var typeTag{{ $api.PrefixName }} = NewTypeTagFromString("{{ $api.Name }}")
 
-func (o *{{ .Api.PrefixName }}Impl) GetTypeTag() TypeTag {
-	return o.TypeTag
-}
+	{{ template "CONSTRUCTOR" $api }}
 
-{{/* func (o *{{ .Api.PrefixName }}Impl) GetUserData() UserData {
-	return UserData(fmt.Sprintf("{{ .Api.Name }}::%p", o.Owner))
-} */}}
-{{ end }}
+	func (o *{{ $api.PrefixName }}Impl) ClassName() string {
+		return "{{ $api.Name }}"
+	}
 
-{{ template "CLASS_METHODS" .Api }}
+	func (o *{{ $api.PrefixName }}Impl) BaseClass() string {
+		return "{{ $api.BaseClass }}"
+	}
 
-{{ template "CONSTANTS" .Api }}
+	{{ if eq $api.BaseClass "" -}}
+	func (o *{{ $api.PrefixName }}Impl) Free() {
+		if o != nil {
+			Free(unsafe.Pointer(o))
+			o = nil
+		}
+	}
 
-{{ template "ENUMS" .Api }}
+	func (o *{{ $api.PrefixName }}Impl) GetOwnerObject() *GodotObject {
+		return o.Owner
+	}
+
+	func (o *{{ $api.PrefixName }}Impl) GetTypeTag() TypeTag {
+		return o.TypeTag
+	}
+
+	{{/* func (o *{{ .Api.PrefixName }}Impl) GetUserData() UserData {
+		return UserData(fmt.Sprintf("{{ .Api.Name }}::%p", o.Owner))
+	} */}}
+	{{ end }}
+
+	{{ template "CLASS_METHODS" $api }}
+
+	{{ template "CONSTANTS" $api }}
+
+	{{ template "ENUMS" $api }}
+
+{{ end -}}
 
 {{ define "CONSTRUCTOR" }}
 	{{ if .Singleton }}

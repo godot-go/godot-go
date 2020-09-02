@@ -9,9 +9,10 @@ package gdnative
 import "C"
 import (
 	"fmt"
-	"github.com/godot-go/godot-go/pkg/log"
 	"strconv"
 	"unsafe"
+
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 //GodotGoVersion holds the relese version

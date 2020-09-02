@@ -37,20 +37,20 @@ git archive 3.2 | tar -x -C ../dist/godot_headers
 cd ../dist
 git init .
 rm .gitignore
-cp ../pkg/gdnative/*.wrappergen.h pkg/gdnative/
-cp ../pkg/gdnative/*.wrappergen.c pkg/gdnative/
-cp ../pkg/gdnative/*.typegen.go pkg/gdnative/
-cp ../pkg/gdnative/*.classgen.go pkg/gdnative/
-git add -f pkg/gdnative/*.wrappergen.h
-git add -f pkg/gdnative/*.wrappergen.c
-git add -f pkg/gdnative/*.typegen.go
-git add -f pkg/gdnative/*.classgen.go
+cp ../pkg/gdnative/*_wrappergen.h pkg/gdnative/
+cp ../pkg/gdnative/*_wrappergen.c pkg/gdnative/
+cp ../pkg/gdnative/*_typegen.go pkg/gdnative/
+cp ../pkg/gdnative/*_classgen.go pkg/gdnative/
+git add -f pkg/gdnative/*_wrappergen.h
+git add -f pkg/gdnative/*_wrappergen.c
+git add -f pkg/gdnative/*_typegen.go
+git add -f pkg/gdnative/*_classgen.go
 git add .
 git commit -m "release $1"
 git tag ${GIT_TAG} -f
 
 if [[ "$2" == "publish" ]]; then
-  git remote add origin git@github.com:godot-go/godot-go.git
+  git remote add origin git@github.com:godot-go/godot-go-binary.git
   git push origin --tag -f
 fi
 

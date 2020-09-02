@@ -8,6 +8,7 @@ on:
       - "**/*.go"
       - "**/*.c"
       - "**/*.h"
+  workflow_dispatch:
 
 jobs:
   run_test:

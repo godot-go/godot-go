@@ -23,7 +23,7 @@ Follow up by compiling and running the tests:
 
     go run mage.go test
 
-Compiling can take more than *10 minutes* because of the use of cgo. Please be patient.
+Compiling can take more than *10 minutes* because of the use of cgo. Please be patient. Once it finishes, the tests will run and also start the demo app afterwards.
 
 
 ## Releasing
@@ -41,7 +41,7 @@ Generating releases manually should never be required.
 * Cross compilation with cgo with [xgo](https://github.com/karalabe/xgo)
 * vscode-go patch to [support cgo](https://github.com/golang/go/issues/35721#issuecomment-568543991)
 * Check [unsafe pointer conversion](https://blog.gopheracademy.com/advent-2019/safe-use-of-unsafe-pointer/)
-* Loading nativescript libraries require modifying the library [.tres](https://godotengine.org/qa/63890/how-to-open-gdnative-projects-with-headless-server-godot).
+* Loading nativescript libraries with a godot server build requires manual modification to the library [.tres](https://godotengine.org/qa/63890/how-to-open-gdnative-projects-with-headless-server-godot).
 * Working with [GDB Go extension](https://nanxiao.me/en/the-tips-of-using-gdb-to-debug-golang-program/)
 
 ---

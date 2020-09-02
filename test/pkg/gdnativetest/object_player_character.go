@@ -1,8 +1,8 @@
 package gdnativetest
 
 import (
-	"github.com/pcting/godot-go/pkg/gdnative"
-	"github.com/pcting/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/gdnative"
+	"github.com/godot-go/godot-go/pkg/log"
 	"strings"
 	"unsafe"
 	"math/rand"

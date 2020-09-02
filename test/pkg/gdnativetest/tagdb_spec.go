@@ -7,7 +7,7 @@ package gdnativetest
 */
 import "C"
 import (
-	"github.com/pcting/godot-go/pkg/gdnative"
+	"github.com/godot-go/godot-go/pkg/gdnative"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

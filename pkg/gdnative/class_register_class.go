@@ -8,7 +8,7 @@ package gdnative
 */
 import "C"
 import (
-	"github.com/pcting/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/log"
 	"reflect"
 	"unsafe"
 )

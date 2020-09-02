@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/pcting/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 type GoPropertySetFunc func(Variant)

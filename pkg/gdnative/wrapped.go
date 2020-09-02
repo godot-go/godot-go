@@ -10,7 +10,7 @@ package gdnative
 import "C"
 import (
 	"errors"
-	"github.com/pcting/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/log"
 	"unsafe"
 )
 

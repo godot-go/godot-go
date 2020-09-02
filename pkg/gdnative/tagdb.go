@@ -11,7 +11,7 @@ import (
 	"hash/fnv"
 	"unsafe"
 
-	"github.com/pcting/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 const (

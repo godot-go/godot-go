@@ -14,7 +14,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/pcting/godot-go/cmd/gdnativeapijson"
+	"github.com/godot-go/godot-go/cmd/gdnativeapijson"
 )
 
 // View is a structure that holds the api struct, so it can be used inside

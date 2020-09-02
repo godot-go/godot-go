@@ -12,7 +12,7 @@ package gdnative
 import "C"
 import (
 	"fmt"
-	"github.com/pcting/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/log"
 	"reflect"
 	"unsafe"
 )

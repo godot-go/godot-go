@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/pcting/godot-go/cmd/generate/classes"
-	"github.com/pcting/godot-go/cmd/generate/gdnativewrapper"
-	"github.com/pcting/godot-go/cmd/generate/types"
+	"github.com/godot-go/godot-go/cmd/generate/classes"
+	"github.com/godot-go/godot-go/cmd/generate/gdnativewrapper"
+	"github.com/godot-go/godot-go/cmd/generate/types"
 	"os"
 	"os/exec"
 	"path"

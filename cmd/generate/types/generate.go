@@ -6,7 +6,7 @@ import (
 	"bytes"
 	"crypto/md5"
 	"fmt"
-	"github.com/pcting/godot-go/cmd/gdnativeapijson"
+	"github.com/godot-go/godot-go/cmd/gdnativeapijson"
 	"io/ioutil"
 	"log"
 	"os"

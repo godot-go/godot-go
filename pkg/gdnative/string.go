@@ -7,7 +7,7 @@ package gdnative
 */
 import "C"
 import (
-	"github.com/pcting/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 // // StringName as declared in gdnative/string_name.h:47

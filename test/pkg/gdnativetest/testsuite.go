@@ -9,8 +9,8 @@ import "C"
 import (
 	"os"
 
-	"github.com/pcting/godot-go/pkg/gdnative"
-	"github.com/pcting/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/gdnative"
+	"github.com/godot-go/godot-go/pkg/log"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

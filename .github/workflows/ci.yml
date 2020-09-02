@@ -1,15 +1,16 @@
-name: CI
+name: godot-go CI
 
 on:
   push:
 
 jobs:
   run_test:
+    name: "run tests"
     strategy:
       fail-fast: true
       matrix:
         go_version:
-          - 1.15.0
+          - 1.15.1
         targets:
           - linux/amd64
 

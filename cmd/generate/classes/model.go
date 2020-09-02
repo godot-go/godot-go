@@ -2,7 +2,7 @@ package classes
 
 import (
 	"fmt"
-	"github.com/pcting/godot-go/cmd/generate/shared"
+	"github.com/godot-go/godot-go/cmd/generate/shared"
 	"log"
 	"regexp"
 	"strings"

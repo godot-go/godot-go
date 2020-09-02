@@ -3,7 +3,7 @@ package gdnativetest
 import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"github.com/pcting/godot-go/pkg/gdnative"
+	"github.com/godot-go/godot-go/pkg/gdnative"
 	"math"
 )
 

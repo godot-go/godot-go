@@ -10,7 +10,7 @@ import (
 	"regexp"
 	"path/filepath"
 	"strings"
-	"github.com/pcting/godot-go/cmd/gdnativeapijson"
+	"github.com/godot-go/godot-go/cmd/gdnativeapijson"
 )
 
 var cTypeRegex = regexp.MustCompile(`(const)?\s*([\w_][\w_\d]*)\s*(\**)`)

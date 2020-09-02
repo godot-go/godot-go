@@ -58,6 +58,8 @@ jobs:
       run: | # need to run this twice to get a useful error message on failure
         go run mage.go -v buildtest || go run mage.go -v buildtest
       shell: bash
+      env:
+        GODOT_BIN: godot
 
     - name: Run Test
       run: go run mage.go -v test

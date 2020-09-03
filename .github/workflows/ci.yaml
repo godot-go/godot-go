@@ -29,10 +29,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
-      - name: Go get goimports
-        run: go get golang.org/x/tools/cmd/goimports
-      - name: Go generate
-        run: PATH=$PATH:~/go/bin go generate
+      # - name: Go get goimports
+      #   run: go get golang.org/x/tools/cmd/goimports
+      # - name: Go generate
+      #   run: PATH=$PATH:~/go/bin go generate
       - name: Build with xgo
         uses: crazy-max/ghaction-xgo@v1
         with:

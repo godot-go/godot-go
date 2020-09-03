@@ -4,23 +4,14 @@
 
 # Godot Go Binding
 
-[Godot](https://github.com/godotengine/godot) is a cross-platform game engine.
+[Godot](https://github.com/godotengine/godot) is a cross-platform game engine. Godot-go is a library to bring [Go](https://golang.org/) to Godot. Godot-go integrates into Godot's GDNative and NativeScript API through cgo.
+
 
 ## Getting Started
 
 Please install Go version 1.15 or above to get the latest cgo improvements. I encourage everyone to install Go through [Go Version Manager](https://github.com/moovweb/gvm)
 
-### Generating Codegen
 
-The goimports package will need to be installed to run `go generate`:
-
-    go get golang.org/x/tools/cmd/goimports
-
-Codegen files are not checked into the project. You will need to generate those codegen files like so:
-
-    go generate
-    
-    
 ### Testing
 
 Follow up by compiling and running the tests:
@@ -30,17 +21,20 @@ Follow up by compiling and running the tests:
 Compiling can take more than *10 minutes* because of the use of cgo. Please be patient. Once it finishes, the tests will run and also start the demo app afterwards.
 
 
-## Releasing
+### Generating Codegen
 
-The release process include comitting codegen files on git tags. To package and deploy a release:
+There is a bit of codegen as part of godot-go. If you've made modifications to the generation, the goimports package will need to be installed to run `go generate`:
 
-    ./package-release.sh 0.0.1 publish
+    go get golang.org/x/tools/cmd/goimports
 
-Generating releases manually should never be required.
+Codegen files are not checked into the project. You will need to generate those codegen files like so:
 
+    go generate
+    
 
 ## References
 
+* Inspiration was taken from ShadowApex's earlier [godot-go](https://github.com/ShadowApex/godot-go) project
 * Cheatsheet for [cgo data type conversion](https://gist.github.com/zchee/b9c99695463d8902cd33)
 * Cross compilation with cgo with [xgo](https://github.com/karalabe/xgo)
 * vscode-go patch to [support cgo](https://github.com/golang/go/issues/35721#issuecomment-568543991)

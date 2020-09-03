@@ -2,9 +2,11 @@
 
 ---
 
-# Godot Go Binding
+# Godot-Go
 
-[Godot](https://github.com/godotengine/godot) is a cross-platform game engine. Godot-go is a library to bring [Go](https://golang.org/) to Godot. Godot-go integrates into Godot's GDNative and NativeScript API through cgo.
+## What is Godot-go?
+
+Godot-go allows developers to implement their games in [Go](https://golang.org/) to leverage the [Godot](https://github.com/godotengine/godot) cross-platform game engine. Godot-go leverages cgo to interface with Godot's GDNative and NativeScript APIs.
 
 
 ## Getting Started

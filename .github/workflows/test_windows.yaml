@@ -38,8 +38,9 @@ jobs:
     - name: Install Godot 3.2.2 server
       run: |
         wget https://downloads.tuxfamily.org/godotengine/3.2.2/Godot_v3.2.2-stable_win64.exe.zip
-        sudo unzip Godot_v3.2.2-stable_win64.exe.zip
-        sudo ln -s Godot_v3.2.2-stable_win64.exe godot
+        unzip Godot_v3.2.2-stable_win64.exe.zip
+        ln -s Godot_v3.2.2-stable_win64.exe godot
+      shell: bash
 
     - name: Set up Go
       uses: actions/setup-go@v2

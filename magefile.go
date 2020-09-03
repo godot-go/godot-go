@@ -152,7 +152,7 @@ func runPlugin(appPath string) error {
 
 func buildGodotPlugin(name string, appPath string, outputPath string, platform BuildPlatform) error {
 	return sh.RunWith(envWithPlatform(platform), mg.GoCmd(), "build",
-		"-buildmode=c-shared", "-x", "-trimpath", "-p", "1",
+		"-buildmode=c-shared", "-x", "-trimpath",
 		"-o", filepath.Join(outputPath, platform.godotPluginCSharedName(appPath, name)),
 		filepath.Join(appPath, "main.go"),
 	)

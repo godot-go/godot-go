@@ -2,8 +2,6 @@ name: Test Windows
 
 on:
   push:
-    branches:
-      - master
     paths:
       - "**/*.go"
       - "**/*.c"

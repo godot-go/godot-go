@@ -31,6 +31,9 @@ jobs:
     - name: Set up scoop extras
       run: scoop bucket add extras;
 
+    - name: Install wget
+      run: scoop install wget;
+
     - name: Install Godot 3.2.2 server
       run: |
         wget https://downloads.tuxfamily.org/godotengine/3.2.2/Godot_v3.2.2-stable_win64.exe.zip

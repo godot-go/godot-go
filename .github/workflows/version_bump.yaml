@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - master
+    paths:
+        - "**/*.go"
+        - "**/*.c"
+        - "**/*.h"
 jobs:
   build:
     runs-on: ubuntu-latest

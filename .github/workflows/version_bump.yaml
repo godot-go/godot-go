@@ -4,9 +4,9 @@ on:
     branches:
       - master
     paths:
-        - "**/*.go"
-        - "**/*.c"
-        - "**/*.h"
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
 jobs:
   build:
     runs-on: ubuntu-latest

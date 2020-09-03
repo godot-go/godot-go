@@ -39,7 +39,6 @@ jobs:
       run: |
         wget https://downloads.tuxfamily.org/godotengine/3.2.2/Godot_v3.2.2-stable_win64.exe.zip
         unzip Godot_v3.2.2-stable_win64.exe.zip
-        ln -s Godot_v3.2.2-stable_win64.exe godot
       shell: bash
 
     - name: Set up Go
@@ -70,14 +69,18 @@ jobs:
         go run mage.go -v buildtest || go run mage.go -v buildtest
       shell: bash
       env:
-        GODOT_BIN: ./godot
+        GODOT_BIN: ./Godot_v3.2.2-stable_win64.exe
 
     - name: List Artifacts Directory
       run: ls -alh test/project/libs
       shell: bash
 
+    - name: List CWD
+      run: ls -alh .
+      shell: bash
+
     - name: Run Test
-      run: ./godot --verbose -v -d --path test/project/
+      run: ./Godot_v3.2.2-stable_win64.exe --verbose -v -d --path test/project/
       shell: bash
       env:
         cgocheck: 2

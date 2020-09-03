@@ -4,7 +4,7 @@ package gdnative
 #cgo CFLAGS: -DX86=1 -g -fPIC -std=c99 -I${SRCDIR}/../../godot_headers -I${SRCDIR}/../../pkg/gdnative
 #include <cgo_gateway_register_class.h>
 #include <cgo_gateway_class.h>
-#include <nativescript_wrappergen.h>
+#include <nativescript.wrapper.gen.h>
 #include <gdnative_api_struct.gen.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,9 +12,10 @@ package gdnative
 import "C"
 import (
 	"fmt"
-	"github.com/godot-go/godot-go/pkg/log"
 	"reflect"
 	"unsafe"
+
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 type RegisterStateStruct struct {

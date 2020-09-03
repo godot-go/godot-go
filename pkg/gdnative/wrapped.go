@@ -2,16 +2,17 @@ package gdnative
 
 /*
 #include <cgo_gateway_class.h>
-#include <nativescript_wrappergen.h>
-#include <gdnative_wrappergen.h>
+#include <nativescript.wrapper.gen.h>
+#include <gdnative.wrapper.gen.h>
 #include <stdlib.h>
 #include <string.h>
 */
 import "C"
 import (
 	"errors"
-	"github.com/godot-go/godot-go/pkg/log"
 	"unsafe"
+
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 var (

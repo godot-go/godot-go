@@ -1,0 +1,64 @@
+name: godot-go CI
+
+on:
+  push:
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - ".github/workflows/ci.yaml"
+
+jobs:
+  run_test:
+    name: "run tests"
+    strategy:
+      fail-fast: true
+      matrix:
+        go_version:
+          - 1.15.0
+        targets:
+          - linux/amd64
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go_version }}
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      # - name: Go get goimports
+      #   run: go get golang.org/x/tools/cmd/goimports
+      # - name: Go generate
+      #   run: PATH=$PATH:~/go/bin go generate
+      - name: Build with xgo
+        uses: crazy-max/ghaction-xgo@v1
+        with:
+          xgo_version: latest
+          go_version: ${{ matrix.go_version }}
+          dest: test/project/libs
+          prefix: libgodotgo-test
+          pkg: test/main.go
+          targets: ${{ matrix.targets }}
+          v: true
+          x: false
+          race: false
+          ldflags: '-compressdwarf=false'
+          buildmode: c-shared
+      - name: List Artifacts Directory
+        run: ls -alh test/project/libs
+      - name: Install Godot 3.2.2 server
+        run: |
+          wget https://downloads.tuxfamily.org/godotengine/3.2.2/Godot_v3.2.2-stable_linux_server.64.zip
+          sudo unzip Godot_v3.2.2-stable_linux_server.64.zip -d /usr/local/bin
+          sudo ln -s Godot_v3.2.2-stable_linux_server.64 /usr/local/bin/godot3-server
+      - name: Integration Test
+        run: godot3-server --verbose -v -d --path test/project/
+        env:
+          cgocheck: 2
+          LOG_LEVEL: "trace"
+          TEST_USE_GINKGO_WRITER: 1
+          LANG: "en_US.utf8"
+          CI: 1

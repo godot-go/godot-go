@@ -4,6 +4,8 @@ import (
 	"github.com/godot-go/godot-go/cmd/generate/classes"
 	"github.com/godot-go/godot-go/cmd/generate/gdnativewrapper"
 	"github.com/godot-go/godot-go/cmd/generate/types"
+	"fmt"
+	"log"
 	"os"
 	"os/exec"
 	"path"
@@ -99,11 +101,16 @@ var rootCmd = &cobra.Command{
 	Use:   "godot-go",
 	Short: "Godot Go",
 	RunE: func(cmd *cobra.Command, args []string) error {
+		hasGen := false
+
 		if cleanAll || cleanGdnative {
 			globPatterns := []string{
-				"/pkg/gdnative/*_wrappergen.c",
-				"/pkg/gdnative/*_wrappergen.h",
-				"/pkg/gdnative/*_wrappergen.go",
+				"/pkg/gdnative/*.wrapper.gen.c",
+				"/pkg/gdnative/*.wrapper.gen.h",
+				"/pkg/gdnative/*.wrapper.gen.go",
+				"/pkg/gdnative/wrappers.gen.c",
+				"/pkg/gdnative/wrappers.gen.h",
+				"/pkg/gdnative/wrappers.gen.go",
 			}
 			if err := cleanFiles(globPatterns); err != nil {
 				return err
@@ -112,7 +119,7 @@ var rootCmd = &cobra.Command{
 
 		if cleanAll || cleanTypes {
 			globPatterns := []string{
-				"/pkg/gdnative/*_typegen.go",
+				"/pkg/gdnative/types.gen.go",
 			}
 			if err := cleanFiles(globPatterns); err != nil {
 				return err
@@ -121,7 +128,7 @@ var rootCmd = &cobra.Command{
 
 		if cleanAll || cleanClasses {
 			globPatterns := []string{
-				"/pkg/gdnative/*_classgen.go",
+				"/pkg/gdnative/classes.gen.go",
 			}
 			if err := cleanFiles(globPatterns); err != nil {
 				return err
@@ -147,6 +154,8 @@ var rootCmd = &cobra.Command{
 				println("Generating gdnative wrapper functions...")
 			}
 			gdnativewrapper.Generate(packagePath)
+
+			hasGen = true
 		}
 
 		if genTypes {
@@ -154,6 +163,8 @@ var rootCmd = &cobra.Command{
 				println("Generating gdnative types...")
 			}
 			types.Generate(packagePath)
+
+			hasGen = true
 		}
 
 		if genClasses {
@@ -161,6 +172,18 @@ var rootCmd = &cobra.Command{
 				println("Generating gdnative classes...")
 			}
 			classes.Generate(packagePath)
+
+			hasGen = true
+		}
+
+		if hasGen {
+			outputPackageDirectoryPath := filepath.Join(packagePath, "pkg", "gdnative")
+
+			log.Println("running go fmt on files.")
+			execGoFmt(outputPackageDirectoryPath)
+
+			log.Println("running goimports on files.")
+			execGoImports(outputPackageDirectoryPath)
 		}
 
 		if verbose {
@@ -169,6 +192,22 @@ var rootCmd = &cobra.Command{
 
 		return nil
 	},
+}
+
+func execGoFmt(filePath string) {
+	cmd := exec.Command("gofmt", "-w", filePath)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		log.Panic(fmt.Errorf("error running gofmt: \n%s\n%w", string(output), err))
+	}
+}
+
+func execGoImports(filePath string) {
+	cmd := exec.Command("goimports", "-w", filePath)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		log.Panic(fmt.Errorf("error running goimports: \n%s\n%w", string(output), err))
+	}
 }
 
 func main() {

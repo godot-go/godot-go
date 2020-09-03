@@ -156,6 +156,25 @@ type GDAPIs []GDAPI
 
 type ApiTypeBaseClassIndex map[string]map[string][]GDAPI
 
+func (a GDAPIs) FilterForObject(index gdapiPathIndex) GDAPIs {
+	arr := GDAPIs{}
+	
+	if index == nil {
+		return arr
+	}
+
+	for _, api := range a {
+		if !arrayContains(index[api.Name], "Object") && api.Name != "Object" {
+			log.Printf("skipping class %s", api.Name)
+			continue
+		}
+
+		arr = append(arr, api)
+	}
+
+	return arr
+}
+
 func (a GDAPIs) PartitionByBaseApiTypeAndClass() ApiTypeBaseClassIndex {
 	parts := ApiTypeBaseClassIndex{
 		"core":  map[string][]GDAPI{},

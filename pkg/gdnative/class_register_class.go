@@ -1,16 +1,17 @@
 package gdnative
 
 /*
-#include <nativescript_wrappergen.h>
+#include <nativescript.wrapper.gen.h>
 #include <cgo_gateway_register_class.h>
 #include <gdnative_api_struct.gen.h>
 #include <stdlib.h>
 */
 import "C"
 import (
-	"github.com/godot-go/godot-go/pkg/log"
 	"reflect"
 	"unsafe"
+
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 // CreateNativeScriptClassFunc are functions defined by the user to return

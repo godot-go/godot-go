@@ -1,9 +1,3 @@
-*_typegen.go
-*_wrappergen.go
-*_classgen.go
-*_wrappergen.h
-*_wrappergen.c
-*.go.pre-fmt.md5
 .idea
 tmp/
 dist/

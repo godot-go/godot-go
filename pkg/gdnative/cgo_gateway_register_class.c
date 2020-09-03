@@ -1,7 +1,7 @@
 #include <gdnative_api_struct.gen.h>
 #include <stdlib.h>
 #include <cgo_gateway_register_class.h>
-#include <gdnative_wrappergen.h>
+#include <gdnative.wrapper.gen.h>
 
 
 // This is a gateway function for the create method.

@@ -30,7 +30,6 @@ var (
 
 func init() {
 	var (
-		err error
 		ok  bool
 	)
 
@@ -42,9 +41,16 @@ func init() {
 		targetArch = runtime.GOARCH
 	}
 
-	godotBin, _ = os.LookupEnv("GODOT_BIN")
 	envCI, _ := os.LookupEnv("CI")
 	ci = envCI == "true"
+}
+
+func initGodotBin() {
+	var (
+		err error
+	)
+
+	godotBin, _ = os.LookupEnv("GODOT_BIN")
 
 	if godotBin, err = which(godotBin); err == nil {
 		fmt.Printf("GODOT_BIN = %s\n", godotBin)
@@ -131,6 +137,8 @@ func Test() error {
 }
 
 func runPlugin(appPath string) error {
+	mg.Deps(initGodotBin)
+
 	return sh.RunWith(
 		map[string]string{
 			"asyncpremptoff": "1",
@@ -144,7 +152,7 @@ func runPlugin(appPath string) error {
 
 func buildGodotPlugin(name string, appPath string, outputPath string, platform BuildPlatform) error {
 	return sh.RunWith(envWithPlatform(platform), mg.GoCmd(), "build",
-		"-buildmode=c-shared", "-x", "-trimpath", "-p", "1",
+		"-buildmode=c-shared", "-x", "-trimpath",
 		"-o", filepath.Join(outputPath, platform.godotPluginCSharedName(appPath, name)),
 		filepath.Join(appPath, "main.go"),
 	)
@@ -153,7 +161,7 @@ func buildGodotPlugin(name string, appPath string, outputPath string, platform B
 func (p BuildPlatform) godotPluginCSharedName(appPath string, varargs ...string) string {
 	switch(p.OS) {
 		case "windows":
-			return fmt.Sprintf("libgodotgo-%s-%s.dll", strings.Join(varargs, "-"), p.Arch)
+			return fmt.Sprintf("libgodotgo-%s-windows-4.0-%s.dll", strings.Join(varargs, "-"), p.Arch)
 		case "linux":
 			ext := "so"
 			

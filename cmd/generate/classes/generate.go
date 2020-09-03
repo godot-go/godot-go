@@ -2,14 +2,12 @@ package classes
 
 import (
 	"bytes"
-	"crypto/md5"
 	"encoding/json"
 	"fmt"
 	"html/template"
 	"io/ioutil"
 	"log"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 
@@ -26,8 +24,7 @@ type convertClassView struct {
 type view struct {
 	PackageName       string
 	TemplateName      string
-	GeneratedFileName string
-	Api               GDAPI
+	Apis              GDAPIs
 }
 
 type gdapiTree struct {
@@ -115,11 +112,11 @@ func assertIsDirectory(dirPath string) error {
 
 func Generate(packagePath string) {
 	outputPackageDirectoryPath := filepath.Join(packagePath, "pkg", "gdnative")
-	md5path := filepath.Join(packagePath, "tmp")
 	apiJsonFilePath := filepath.Join(packagePath, "godot_headers", "api.json")
 	templateFilePath := filepath.Join(packagePath, "cmd", "generate", "classes", "class.go.tmpl")
 
 	var (
+		f               *os.File
 		err             error
 		templateContent []byte
 	)
@@ -169,49 +166,25 @@ func Generate(packagePath string) {
 	index := gdapiPathIndex{}
 	objectTree.BuildPathIndex(&index, []string{})
 
-	hasChanges := false
+	// Open the output file for writing
+	outputPath := filepath.Join(outputPackageDirectoryPath, "classes.gen.go")
 
-	// Loop through all of the ApiVersions and generate packages for them.
-	for i, api := range apis {
-		log.Printf("Generating %d/%d %s...\n", i+1, len(apis), api.PrefixName())
-		if !arrayContains(index[api.Name], "Object") && api.Name != "Object" {
-			log.Printf("skipping class %s", api.Name)
-			continue
-		}
-
-		// Get the package name to generate
-		// Note: Some entities are prefixed with an underscore that we want to remove.
-		outFileName := fmt.Sprintf("%s_classgen.go", strings.TrimLeft(strings.ToLower(api.Name), "_"))
-
-		v := view{
-			PackageName:       filepath.Base(outputPackageDirectoryPath),
-			TemplateName:      "class.go.tmpl",
-			GeneratedFileName: outFileName,
-			Api:               api,
-		}
-
-		if writeTemplate(
-			tmpl,
-			filepath.Join(outputPackageDirectoryPath, outFileName),
-			filepath.Join(md5path, outFileName + ".pre-fmt.md5"),
-			v,
-		) {
-			hasChanges = true
-		}
+	if f, err = os.Create(outputPath); err != nil {
+		panic(err)
 	}
 
-	log.Println("done generating files.")
+	// write header
+	writeTemplate(
+		f,
+		tmpl,
+		view{
+			PackageName:  filepath.Base(outputPackageDirectoryPath),
+			TemplateName: "class_header.go.tmpl",
+			Apis:         apis.FilterForObject(index),
+		},
+	)
 
-	// apply go fmt and go imports on the generated files
-	// filepath.Join(outputPackageDirectoryPath, "...")
-
-	if hasChanges {
-		log.Println("running go fmt on files.")
-		execGoFmt(outputPackageDirectoryPath)
-
-		// log.Println("running goimports on files.")
-		// execGoImports(outputPackageDirectoryPath)
-	}
+	f.Close()
 
 	log.Println("done generating classes")
 }
@@ -227,13 +200,10 @@ func fileExists(filename string) bool {
 }
 
 // returns true if there were changes
-func writeTemplate(tmpl *template.Template, outputPath string, md5Path string, v view) bool {
+func writeTemplate(f *os.File, tmpl *template.Template, v view) {
 	var (
 		err error
 		generatedBuf bytes.Buffer
-		generatedMd5Bytes []byte
-		md5Bytes []byte
-		isSame int = -1
 	)
 
 	// Write the template with the given view to a buffer.
@@ -243,58 +213,6 @@ func writeTemplate(tmpl *template.Template, outputPath string, md5Path string, v
 	}
 
 	generatedBytes := generatedBuf.Bytes()
-
-
-	// skip if the output is unchanged
-	if fileExists(outputPath) && fileExists(md5Path) {
-		md5Bytes, err = ioutil.ReadFile(md5Path)
-		
-		gsum := md5.Sum(generatedBytes)
-		generatedMd5Bytes = gsum[:]
-		isSame = bytes.Compare(generatedMd5Bytes, md5Bytes)
-
-		// log.Printf("%s: generated checksum %v, file checksum %v\n", outputPath, generatedMd5Bytes, md5Bytes)
-	}
-
-	if isSame == 0 {
-		log.Printf("No changes found; skip generating type %s\n", outputPath)
-		return false
-	}
-
-	// Open the output file for writing
-	f, err := os.Create(outputPath)
+	
 	f.Write(generatedBytes)
-	defer f.Close()
-	if err != nil {
-		panic(err)
-	}
-
-	if err := os.MkdirAll(filepath.Dir(md5Path), os.ModePerm); err !=nil {
-		panic(err)
-	}
-
-	fmd5, err := os.Create(md5Path)
-	fmd5.Write(generatedMd5Bytes)
-	defer fmd5.Close()
-	if err != nil {
-		panic(err)
-	}
-
-	return true
-}
-
-func execGoFmt(filePath string) {
-	cmd := exec.Command("gofmt", "-w", filePath)
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		log.Panic(fmt.Errorf("error running gofmt: \n%s\n%w", string(output), err))
-	}
-}
-
-func execGoImports(filePath string) {
-	cmd := exec.Command("goimports", "-w", filePath)
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		log.Panic(fmt.Errorf("error running goimports: \n%s\n%w", string(output), err))
-	}
 }

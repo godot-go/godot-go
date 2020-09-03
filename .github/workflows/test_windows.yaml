@@ -32,8 +32,8 @@ jobs:
     - name: Set up scoop extras
       run: scoop bucket add extras;
 
-    - name: Install wget
-      run: scoop install wget;
+    - name: Install packages
+      run: scoop install wget unzip
 
     - name: Install Godot 3.2.2 server
       run: |

@@ -6,6 +6,7 @@ on:
       - "**/*.go"
       - "**/*.c"
       - "**/*.h"
+      - ".github/workflows/test_windows.yaml"
   workflow_dispatch:
 
 jobs:

@@ -6,6 +6,7 @@ on:
       - "**/*.go"
       - "**/*.c"
       - "**/*.h"
+      - ".github/workflows/ci.yaml"
 
 jobs:
   run_test:

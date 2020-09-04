@@ -24,6 +24,12 @@ Subsequent changes to the test project will be quick.
 For those that are familiar with GDScript and are curious to see the code, here's an example class representing a [Player Charater](test/pkg/gdnativetest/object_player_character.go) in a 2D Top-down game.
 
 
+### Platforms and Support
+
+My development environment is on Ubuntu 20.04; therefore, support for Linux is primary for the project. The project also compiles for Windows and MacOS, but issues may pop up that might not be caught by the continuous integration process. Please feel free to file issues as they come up.
+
+You can find me (surgical#3758) on the [Godot Engine Discord](https://discord.gg/qvPZCG) servers. I primarily focus in the **gdnative-dev** room.
+
 ### Generating Codegen
 
 There is a bit of codegen as part of godot-go. If you've made modifications to the generation, the goimports package will need to be installed to run `go generate`:

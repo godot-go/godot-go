@@ -37,7 +37,7 @@ For those that are familiar with GDScript and are curious to see the code, here'
 
 My development environment is on Ubuntu 20.04; therefore, support for Linux is primary for the project. The project also compiles for Windows and MacOS, but issues may pop up that might not be caught by the continuous integration process. Please feel free to file issues as they come up.
 
-You can find me (surgical#3758) on the [Godot Engine Discord](https://discord.gg/qvPZCG) servers. I primarily focus in the **gdnative-dev** room.
+You can find me (surgical#3758) on the [Godot Engine Discord](https://discord.com/invite/E2HxJrt) servers. I primarily focus in the **gdnative-dev** room.
 
 ### Generating Codegen
 

@@ -1,4 +1,4 @@
-[![Actions Build Status](https://github.com/godot-go/godot-go/workflows/CI/badge.svg?branch=master)](https://github.com/godot-go/godot-go/actions)
+[![Actions Build Status](https://github.com/godot-go/godot-go/actions?query=workflow%3Agodot-go+branch%3Amaster)](https://github.com/godot-go/godot-go/actions)
 
 ---
 

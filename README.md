@@ -13,14 +13,13 @@ godot-go allows developers to implement their games in [Go](https://golang.org/)
 
 Please install Go version 1.15 or above to get the latest cgo improvements. I encourage everyone to install Go through [Go Version Manager](https://github.com/moovweb/gvm)
 
+Once you've checked out the project, you can go ahead and run the embedded project that's used for automated testing:
 
-### Testing
+    GODOT_BIN=godot go run mage.go test
 
-Follow up by compiling and running the tests:
+Please adjust `GODOT_BIN` to point to your godot executable. Compiling can take more than *10 minutes* because of the use of cgo. Please be patient. Once it finishes, the tests will run and also start the demo app afterwards.
 
-    go run mage.go test
-
-Compiling can take more than *10 minutes* because of the use of cgo. Please be patient. Once it finishes, the tests will run and also start the demo app afterwards.
+Subsequent changes to the test project will be quick.
 
 
 ### Generating Codegen

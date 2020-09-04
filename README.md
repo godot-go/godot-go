@@ -21,6 +21,8 @@ Please adjust `GODOT_BIN` to point to your godot executable. Compiling can take 
 
 Subsequent changes to the test project will be quick.
 
+For those that are familiar with GDScript and are curious to see the code, here's an example class representing a [Player Charater](test/pkg/gdnativetest/object_player_character.go) in a 2D Top-down game.
+
 
 ### Generating Codegen
 

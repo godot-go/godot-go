@@ -26,6 +26,8 @@ For those that are familiar with GDScript and are curious to see the code, here'
 
 ### Support
 
+godot-go has been tested to work with godot 3.2 in the following platforms and architectures:
+
 | Platform      | Builds Cross-Compile from Linux | Builds from native OS | Test Pass |
 | ------------- | ------------------------------- | --------------------- | --------- |
 | linux/amd64   | Yes                             | Yes                   | Yes       |
@@ -48,7 +50,7 @@ There is a bit of codegen as part of godot-go. If you've made modifications to t
 Codegen files are not checked into the project. You will need to generate those codegen files like so:
 
     go generate
-    
+
 
 ## References
 
@@ -59,3 +61,8 @@ Codegen files are not checked into the project. You will need to generate those 
 * Check [unsafe pointer conversion](https://blog.gopheracademy.com/advent-2019/safe-use-of-unsafe-pointer/)
 * Loading nativescript libraries with a godot server build requires manual modification to the library [.tres](https://godotengine.org/qa/63890/how-to-open-gdnative-projects-with-headless-server-godot).
 * Working with [GDB Go extension](https://nanxiao.me/en/the-tips-of-using-gdb-to-debug-golang-program/)
+
+
+## Credit
+
+* Test project art assets taken from [Free RPG Asset Pack](https://biloumaster.itch.io/free-rpg-asset)

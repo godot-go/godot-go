@@ -26,12 +26,14 @@ For those that are familiar with GDScript and are curious to see the code, here'
 
 ### Support
 
-| Platform      | Builds Cross-Compile from Linux | Builds from native OS | Test Pass | Notes |
-| ------------- | ------------------------------- | --------------------- | --------- | ----- |
-| linux/amd64   | Yes                             | Yes                   | Yes       |       |
-| darwin/amd64  | Yes                             | Unknown               | Unknown   |       |
-| windows/amd64 | Yes                             | Unknown               | Unknown   |       |
-| windows/386   | Yes                             | Unknown               | Unknown   |       |
+| Platform      | Builds Cross-Compile from Linux | Builds from native OS | Test Pass |
+| ------------- | ------------------------------- | --------------------- | --------- |
+| linux/amd64   | Yes                             | Yes                   | Yes       |
+| darwin/amd64  | Yes                             | Unknown               | Unknown   |
+| windows/amd64 | Yes                             | Yes                   | Unknown   |
+| windows/386   | Yes                             | Unknown               | Unknown   |
+
+* The Github Workflow [test_windows](master/.github/workflows/test_windows.yaml) tests building on a Windows machine. However, tests fail to finish when running with godot windows distributed binaries.
 
 My development environment is on Ubuntu 20.04; therefore, support for Linux is primary for the project. The project also compiles for Windows and MacOS, but issues may pop up that might not be caught by the continuous integration process. Please feel free to file issues as they come up.
 

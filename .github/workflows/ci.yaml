@@ -18,6 +18,7 @@ jobs:
           - 1.15.0
         targets:
           - linux/amd64
+          - macos/amd64
 
     runs-on: ubuntu-latest
     steps:

@@ -26,7 +26,7 @@ For those that are familiar with GDScript and are curious to see the code, here'
 
 ### Support
 
-godot-go has been tested to work with godot 3.2 in the following platforms and architectures:
+godot-go has been tested to work with Godot 3.2 in the following platforms and architectures:
 
 | Platform      | Builds Cross-Compile from Linux | Builds from native OS | Test Pass |
 | ------------- | ------------------------------- | --------------------- | --------- |

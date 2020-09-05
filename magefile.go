@@ -10,7 +10,6 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
-	"strings"
 
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
@@ -118,7 +117,6 @@ func BuildTest() error {
 	outputPath := filepath.Join(appPath, "project", "libs")
 
 	return buildGodotPlugin(
-		"test",
 		appPath,
 		outputPath,
 		BuildPlatform{
@@ -145,31 +143,29 @@ func runPlugin(appPath string) error {
 			"cgocheck": "2",
 			"LOG_LEVEL": "trace",
 			"TEST_USE_GINKGO_WRITER": "1",
-		}, 
-		godotBin, "--verbose", "-v", "-d", 
+		},
+		godotBin, "--verbose", "-v", "-d",
 		"--path", filepath.Join(appPath, "project"))
 }
 
-func buildGodotPlugin(name string, appPath string, outputPath string, platform BuildPlatform) error {
+func buildGodotPlugin(appPath string, outputPath string, platform BuildPlatform) error {
 	return sh.RunWith(envWithPlatform(platform), mg.GoCmd(), "build",
 		"-buildmode=c-shared", "-x", "-trimpath",
-		"-o", filepath.Join(outputPath, platform.godotPluginCSharedName(appPath, name)),
+		"-o", filepath.Join(outputPath, platform.godotPluginCSharedName(appPath)),
 		filepath.Join(appPath, "main.go"),
 	)
 }
 
-func (p BuildPlatform) godotPluginCSharedName(appPath string, varargs ...string) string {
+func (p BuildPlatform) godotPluginCSharedName(appPath string) string {
+	// NOTE: these files needs to line up with CI as well as the naming convention
+	//       expected by the test godot project
 	switch(p.OS) {
 		case "windows":
-			return fmt.Sprintf("libgodotgo-%s-windows-4.0-%s.dll", strings.Join(varargs, "-"), p.Arch)
+			return fmt.Sprintf("libgodotgo-test-windows-4.0-%s.dll", p.Arch)
+		case "darwin":
+			return fmt.Sprintf("libgodotgo-test-darwin-10.6-%s.dylib", p.Arch)
 		case "linux":
-			ext := "so"
-			
-			if len(varargs) == 0 {
-				return fmt.Sprintf("libgodotgo-%s-%s.%s", p.OS, p.Arch, ext)
-			}
-			
-			return fmt.Sprintf("libgodotgo-%s-%s-%s.%s", strings.Join(varargs, "-"), p.OS, p.Arch, ext)
+			return fmt.Sprintf("libgodotgo-test-linux-%s.so", p.Arch)
 		default:
 			panic(fmt.Errorf("unsupported build platform: %s", p.OS))
 	}

@@ -26,6 +26,8 @@ For those that are familiar with GDScript and are curious to see the code, here'
 
 ### Support
 
+godot_headers has to be copied into the project because `go get` does not [support git submodules](https://github.com/golang/go/issues/24094#issuecomment-377559768). Currently, I've exported godot_headers from [f2122198d5](https://github.com/godotengine/godot_headers/tree/f2122198d51f230d903f9585527248f6cf411494) git hash.
+
 godot-go has been tested to work with Godot 3.2 in the following platforms and architectures:
 
 | Platform      | Builds Cross-Compile from Linux | Builds from native OS | Test Pass |

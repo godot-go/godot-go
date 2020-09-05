@@ -4,9 +4,7 @@
 
 # godot-go
 
-## What is godot-go?
-
-godot-go allows developers to implement their games in [Go](https://golang.org/) to leverage the [Godot](https://github.com/godotengine/godot) cross-platform game engine. godot-go leverages cgo to interface with Godot's GDNative and NativeScript APIs.
+[Go](https://golang.org/) bindings for the [Godot Game Engine](https://github.com/godotengine/godot) cross-platform game engine. godot-go integrates into Godot through the Godot GDNative and NativeScript APIs through cgo.
 
 
 ## Getting Started

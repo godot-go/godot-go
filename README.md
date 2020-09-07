@@ -12,7 +12,7 @@
 To start using godot-go in your own go project:
 
     go get -u github.com/godot-go/godot-go@0.0.3
-    
+
 The only real documentation that currently exists is in the test Godot project embedded in the library; an example class representing a [Player Charater](test/pkg/gdnativetest/object_player_character.go) in a 2D Top-down game. Referencing the official C/C++ documentation of [GDNative](https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html) will help for the time being.
 
 To see the test demo application embedded in the project, run the following:
@@ -53,7 +53,7 @@ There is a bit of codegen as part of godot-go. If you've made modifications to t
 
     go get golang.org/x/tools/cmd/goimports
 
-Codegen files are not checked into the project. You will need to generate those codegen files like so:
+To regenerate the codegen files, run the following:
 
     go generate
 

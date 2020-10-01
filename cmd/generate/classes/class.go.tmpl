@@ -86,7 +86,7 @@ import (
 
 		var _{{ .PrefixName }}Once sync.Once
 		var _{{ .PrefixName }}Singleton {{ .PrefixName }}
-		
+
 		func GetSingleton{{ .PrefixName }}() {{ .PrefixName }} {
 			_{{ .PrefixName }}Once.Do(func() {
 				 _{{ .PrefixName }}Singleton = new{{ .PrefixName }}()
@@ -101,7 +101,7 @@ import (
 
 			owner := (*Object)(unsafe.Pointer(C.go_godot_global_get_singleton(CoreApi, cname)))
 			wrapped := *(*Wrapped)(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner)))
-			
+
 			m := (*{{ .PrefixName }}Impl)(AllocZeros(int32(sizeof{{ .PrefixName }})))
 			m.Wrapped = wrapped
 
@@ -320,7 +320,7 @@ import (
 		{{ range $j, $method := .GoMethods }}
 			{{ $goReturnType := GoType $method.ReturnType }}
 			{{ $goReturnUsage := GoTypeUsage $method.ReturnType -}}
-			
+
 			/* CLASS_METHOD
 			{{ $method.Name }} Args: {{ $method.Arguments }}, Returns: {{ $goReturnType }}
 			*/
@@ -331,7 +331,7 @@ import (
 				// prohibits passing nested go pointers to C.
 				ptrCArrSize := {{ len $method.Arguments }}{{ if $method.HasVarargs }} + len(varargs){{ end }}
 
-				ptrArguments, ptrCArr := NewVariantPtrSliceFromAlloc(ptrCArrSize)
+				ptrArguments, ptrCArr := AllocNewVariantPtrSlice(ptrCArrSize)
 
 				{{ range $k, $arg := $method.Arguments -}}
 					ra{{ $k }} := GoTypeToVariant(reflect.ValueOf({{ $arg.GoName }}))
@@ -370,7 +370,7 @@ import (
 				// prohibits passing nested go pointers to C.
 				ptrCArrSize := {{ len $method.Arguments }} + 1
 
-				ptrArguments, ptrCArr := NewSliceFromAlloc(ptrCArrSize)
+				ptrArguments, ptrCArr := AllocNewSlice(ptrCArrSize)
 
 				ptrArguments[ptrCArrSize - 1] = nil
 
@@ -408,7 +408,7 @@ import (
 						fail
 					{{ end -}}
 				{{ end }}
-				
+
 				{{ if eq $goReturnUsage USAGE_VOID -}}
 					/* USAGE_VOID ({{ $method.ReturnType }} / {{ $goReturnType }}) */
 					var ret unsafe.Pointer
@@ -468,7 +468,7 @@ import (
 					return {{ $goReturnType }}(ret)
 				{{ else if eq $goReturnUsage USAGE_GODOT_CLASS -}}
 					/* USAGE_GODOT_CLASS ({{ $method.ReturnType }} / {{ $goReturnType }}) */
-					return New{{ $method.ReturnType }}WithOwner(ret) 
+					return New{{ $method.ReturnType }}WithOwner(ret)
 				{{ else -}}
 					/* Else {{ $goReturnUsage }} ({{ $method.ReturnType }} / {{ $goReturnType }}) */
 					// TODO: This should never happen

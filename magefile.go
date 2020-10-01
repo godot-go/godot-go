@@ -76,7 +76,6 @@ func envWithPlatform(platform BuildPlatform) map[string]string {
 		"GOOS":                   targetOS,
 		"GOARCH":                 targetArch,
 		"CGO_ENABLED":            "1",
-		"asyncpremptoff":         "1",
 	}
 
 	// enable for cross-compiling from linux
@@ -105,7 +104,8 @@ func Clean() error {
 }
 
 func Generate() error {
-	return sh.RunV("go", "generate", "main.go")
+	mg.Deps(InstallGoTools)
+	return sh.RunV("go", "generate")
 }
 
 func InstallGoTools() error {
@@ -139,8 +139,8 @@ func runPlugin(appPath string) error {
 
 	return sh.RunWith(
 		map[string]string{
-			"asyncpremptoff": "1",
-			"cgocheck": "2",
+			"GOTRACEBACK": "crash",
+			"GODEBUG": "asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=3",
 			"LOG_LEVEL": "trace",
 			"TEST_USE_GINKGO_WRITER": "1",
 		},
@@ -150,7 +150,7 @@ func runPlugin(appPath string) error {
 
 func buildGodotPlugin(appPath string, outputPath string, platform BuildPlatform) error {
 	return sh.RunWith(envWithPlatform(platform), mg.GoCmd(), "build",
-		"-buildmode=c-shared", "-x", "-trimpath",
+		"-tags", "tools", "-buildmode=c-shared", "-x", "-trimpath",
 		"-o", filepath.Join(outputPath, platform.godotPluginCSharedName(appPath)),
 		filepath.Join(appPath, "main.go"),
 	)

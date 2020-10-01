@@ -47,6 +47,10 @@ var (
 	emptyUnsafePtrPtr = unsafe.Pointer(&emptyUnsafePtr)
 )
 
+// AllocZeros returns zeroed out bytes allocated in C memory.
+//
+// NOTE: Memory allocated in C is NOT managed by Go GC; therefore, gdnative#Free
+// must be called on the pointer to release the memory back to the OS.
 func AllocZeros(p_bytes int32) unsafe.Pointer {
 	m := Alloc(p_bytes)
 
@@ -55,6 +59,10 @@ func AllocZeros(p_bytes int32) unsafe.Pointer {
 	return m
 }
 
+// AllocCopy returns a duplicated data allocated in C memory.
+//
+// NOTE: Memory allocated in C is NOT managed by Go GC; therefore, gdnative#Free
+// must be called on the pointer to release the memory back to the OS.
 func AllocCopy(src unsafe.Pointer, p_bytes int32) unsafe.Pointer {
 	m := Alloc(p_bytes)
 
@@ -63,7 +71,13 @@ func AllocCopy(src unsafe.Pointer, p_bytes int32) unsafe.Pointer {
 	return m
 }
 
-func NewSliceFromAlloc(size int) ([]unsafe.Pointer, unsafe.Pointer) {
+// AllocNewSlice returns a new slice allocated in C memory at the specified
+// size and a pointer to the C memory. Please do not attempt to resize the
+// slice.
+//
+// NOTE: Memory allocated in C is NOT managed by Go GC; therefore, gdnative#Free
+// must be called on the pointer to release the memory back to the OS.
+func AllocNewSlice(size int) ([]unsafe.Pointer, unsafe.Pointer) {
 	ptrCArr := AllocZeros(int32(unsafe.Sizeof(uintptr(0))) * int32(size))
 
 	var arr []unsafe.Pointer
@@ -74,7 +88,7 @@ func NewSliceFromAlloc(size int) ([]unsafe.Pointer, unsafe.Pointer) {
 
 	for i := range arr {
 		if uintptr(arr[i]) != uintptr(0) {
-			log.WithField("method", "NewSliceFromAlloc").WithField("i", fmt.Sprintf("%d", i)).Panic("value should be a zero uintptr")
+			log.WithField("method", "AllocNewSlice").WithField("i", fmt.Sprintf("%d", i)).Panic("value should be a zero uintptr")
 		}
 	}
 
@@ -83,7 +97,12 @@ func NewSliceFromAlloc(size int) ([]unsafe.Pointer, unsafe.Pointer) {
 
 var sizeOfVariantPtr = unsafe.Sizeof(emptyVariantPtr)
 
-func CArrayFromVariantPtrSlice(p_args []*Variant) unsafe.Pointer {
+// AllocNewArrayAsUnsafePointer returns a C array of *Variant copy allocated in
+// C memory.
+//
+// NOTE: Memory allocated in C is NOT managed by Go GC; therefore, gdnative#Free
+// must be called on the pointer to release the memory back to the OS.
+func AllocNewArrayAsUnsafePointer(p_args []*Variant) unsafe.Pointer {
 	header := (*reflect.SliceHeader)(unsafe.Pointer(&p_args))
 
 	size := int32(sizeOfVariantPtr * uintptr(len(p_args)))
@@ -91,13 +110,19 @@ func CArrayFromVariantPtrSlice(p_args []*Variant) unsafe.Pointer {
 	return AllocCopy(unsafe.Pointer(header.Data), size)
 }
 
-func CArrayRefFromPtrSlice(p_args []unsafe.Pointer) unsafe.Pointer {
+// ArrayRefFromPtrSlice returns an unsafe.Pointer to specified slice's SliceHeader.Data.
+//
+// NOTE: Memory allocated in C is NOT managed by Go GC; therefore, gdnative#Free
+// must be called on the pointer to release the memory back to the OS.
+func ArrayRefFromPtrSlice(p_args []unsafe.Pointer) unsafe.Pointer {
 	header := (*reflect.SliceHeader)(unsafe.Pointer(&p_args))
 
 	return unsafe.Pointer(header.Data)
 }
 
-func NewVariantPtrSliceFromAlloc(size int) ([]*Variant, unsafe.Pointer) {
+// AllocNewVariantPtrSlice returns a C array of *Variant allocated in
+// C memory. Please do not attempt to resize the slice.
+func AllocNewVariantPtrSlice(size int) ([]*Variant, unsafe.Pointer) {
 	ptrCArr := Alloc(int32(unsafe.Sizeof(uintptr(0))) * int32(size))
 
 	var arr []*Variant
@@ -109,7 +134,12 @@ func NewVariantPtrSliceFromAlloc(size int) ([]*Variant, unsafe.Pointer) {
 	return arr, ptrCArr
 }
 
-func NewSliceFromCPtrPtrRef(size int, ref unsafe.Pointer) []unsafe.Pointer {
+// WrapUnsafePointerAsSlice returns a slice at the specified size wrapping ref.
+// Please do not attempt to resize the slice.
+//
+// NOTE: Memory allocated in C is NOT managed by Go GC; therefore, gdnative#Free
+// must be called on the pointer to release the memory back to the OS.
+func WrapUnsafePointerAsSlice(size int, ref unsafe.Pointer) []unsafe.Pointer {
 	var arr []unsafe.Pointer
 	header := (*reflect.SliceHeader)(unsafe.Pointer(&arr))
 	header.Data = uintptr(ref)
@@ -119,10 +149,15 @@ func NewSliceFromCPtrPtrRef(size int, ref unsafe.Pointer) []unsafe.Pointer {
 	return arr
 }
 
-func NewUnsafePointerSliceFromVariantSlice(variants []*Variant) []unsafe.Pointer {
+// CastVariantPtrSliceToUnsafePointerSlice casts []*Variant into []unsafe.Pointer.
+//
+// NOTE: Memory allocated in C is NOT managed by Go GC; therefore, gdnative#Free
+// must be called on the pointer to release the memory back to the OS.
+func CastVariantPtrSliceToUnsafePointerSlice(variants []*Variant) []unsafe.Pointer {
 	return *(*[]unsafe.Pointer)(unsafe.Pointer(&variants))
 }
 
+// AddrAsString return the memory addres of the GodotObject
 func (o GodotObject) AddrAsString() string {
 	return fmt.Sprintf("%p", &o)
 }

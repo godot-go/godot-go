@@ -92,15 +92,14 @@ import (
             {{- else if $arg.Type.IsVoidPointer }}
                 in{{ $k }} := unsafe.Pointer({{ $arg.Name }})
             {{- else if $arg.Type.IsCharPointer }}
-                /* {{ $arg.Type.CName }} */
                 in{{ $k }} := C.CString({{ $arg.Name }})
                 defer C.free(unsafe.Pointer(in{{ $k }}))
             {{- else if $arg.Type.IsGodotVariantPointerArray }}
-                cArr{{ $k }} := CArrayFromVariantPtrSlice({{ $arg.Name }})
-                defer Free(unsafe.Pointer(cArr{{ $k }}))
+                cArr{{ $k }} := AllocNewArrayAsUnsafePointer({{ $arg.Name }})
+                defer Free(cArr{{ $k }})
                 in{{ $k }} := (**C.{{ $arg.Type.CName }})(unsafe.Pointer(cArr{{ $k }}))
             {{- else if $arg.Type.IsVoidPointerArray }}
-                cArr{{ $k }} := CArrayRefFromPtrSlice({{ $arg.Name }})
+                cArr{{ $k }} := ArrayRefFromPtrSlice({{ $arg.Name }})
                 in{{ $k }} := (*unsafe.Pointer)(unsafe.Pointer(cArr{{ $k }}))
             {{- else if $arg.Type.IsPointer }}
                 in{{ $k }} := (*C.{{ $arg.Type.CName }})(unsafe.Pointer(&{{ $arg.Name }}))
@@ -111,7 +110,7 @@ import (
 
         {{ template "DESCRIBE_CMETHOD" . }}
         C.go_{{ .CName }}(
-            api, 
+            api,
             rcv,
             {{- range $k, $arg := .Arguments }}
                 in{{ $k }},
@@ -130,7 +129,7 @@ import (
     /* Setter Method: {{ .CName }} -> {{ .ReturnType.CName }} */
     func (gdt *{{ .Receiver.Type.GoName }}) {{ .Name }}({{ template "ARGUMENTS" .Arguments }}) {
         {{ template "DESCRIBE_CMETHOD" . }}
-        
+
         api := {{ .ApiMetadata.Name }}
         rcv := (*C.{{ .Receiver.Type.CName }})(unsafe.Pointer(gdt))
         {{- range $k, $arg := .Arguments }}
@@ -139,15 +138,14 @@ import (
             {{- else if $arg.Type.IsVoidPointer }}
                 in{{ $k }} := unsafe.Pointer({{ $arg.Name }})
             {{- else if $arg.Type.IsCharPointer }}
-                /* {{ $arg.Type.CName }} */
-                in{{ $k }} := unsafe.Pointer(C.CString({{ $arg.Name }}))
+                in{{ $k }} := C.CString({{ $arg.Name }})
                 defer C.free(unsafe.Pointer(in{{ $k }}))
             {{- else if $arg.Type.IsGodotVariantPointerArray }}
-                cArr{{ $k }} := CArrayFromVariantPtrSlice({{ $arg.Name }})
-                defer Free(unsafe.Pointer(cArr{{ $k }}))
+                cArr{{ $k }} := AllocNewArrayAsUnsafePointer({{ $arg.Name }})
+                defer Free(cArr{{ $k }})
                 in{{ $k }} := (**C.{{ $arg.Type.CName }})(unsafe.Pointer(cArr{{ $k }}))
             {{- else if $arg.Type.IsVoidPointerArray }}
-                cArr{{ $k }} := CArrayRefFromPtrSlice({{ $arg.Name }})
+                cArr{{ $k }} := ArrayRefFromPtrSlice({{ $arg.Name }})
                 in{{ $k }} := (*unsafe.Pointer)(unsafe.Pointer(cArr{{ $k }}))
             {{- else if $arg.Type.IsPointer }}
                 in{{ $k }} := (*C.{{ $arg.Type.CName }})(unsafe.Pointer(&{{ $arg.Name }}))
@@ -157,7 +155,7 @@ import (
         {{- end }}
 
         C.go_{{ .CName }}(
-            api, 
+            api,
             rcv,
             {{- range $k, $arg := .Arguments }}
                 in{{ $k }},
@@ -186,20 +184,19 @@ import (
         api := {{ .ApiMetadata.Name }}
         rcv := (*C.{{ .Receiver.Type.CName }})(unsafe.Pointer(gdt))
         {{- range $k, $arg := .Arguments }}
-            /* {{ $arg.Type.CName }} */
             {{- if $arg.Type.IsGodotObjectPointer }}
                 in{{ $k }} := unsafe.Pointer({{ $arg.Name }})
             {{- else if $arg.Type.IsVoidPointer }}
-                in{{ $k }} := unsafe.Pointer(&{{ $arg.Name }})
+                in{{ $k }} := unsafe.Pointer({{ $arg.Name }})
             {{- else if $arg.Type.IsCharPointer }}
                 in{{ $k }} := C.CString({{ $arg.Name }})
                 defer C.free(unsafe.Pointer(in{{ $k }}))
             {{- else if $arg.Type.IsGodotVariantPointerArray }}
-                cArr{{ $k }} := CArrayFromVariantPtrSlice({{ $arg.Name }})
-                defer Free(unsafe.Pointer(cArr{{ $k }}))
+                cArr{{ $k }} := AllocNewArrayAsUnsafePointer({{ $arg.Name }})
+                defer Free(cArr{{ $k }})
                 in{{ $k }} := (**C.{{ $arg.Type.CName }})(unsafe.Pointer(cArr{{ $k }}))
             {{- else if $arg.Type.IsVoidPointerArray }}
-                cArr{{ $k }} := CArrayRefFromPtrSlice({{ $arg.Name }})
+                cArr{{ $k }} := ArrayRefFromPtrSlice({{ $arg.Name }})
                 in{{ $k }} := (*unsafe.Pointer)(unsafe.Pointer(cArr{{ $k }}))
             {{- else if $arg.Type.IsPointer }}
                 in{{ $k }} := (*C.{{ $arg.Type.CName }})(unsafe.Pointer(&{{ $arg.Name }}))
@@ -209,7 +206,7 @@ import (
         {{- end }}
 
         ret := C.go_{{ .CName }}(
-            api, 
+            api,
             rcv,
             {{- range $k, $arg := .Arguments }}
                 in{{ $k }},
@@ -226,7 +223,7 @@ import (
             C.GoString(ret)
         {{- else if .ReturnType.IsVoidPointer -}}
             unsafe.Pointer(ret)
-        {{- else -}}            
+        {{- else -}}
             *(*{{ .ReturnType.GoName }})(unsafe.Pointer(&ret))
         {{- end }}
     }
@@ -254,15 +251,14 @@ import (
             {{- else if $arg.Type.IsVoidPointer }}
                 in{{ $k }} := unsafe.Pointer({{ $arg.Name }})
             {{- else if $arg.Type.IsCharPointer }}
-                /* {{ $arg.Type.CName }} */
                 in{{ $k }} := C.CString({{ $arg.Name }})
                 defer C.free(unsafe.Pointer(in{{ $k }}))
             {{- else if $arg.Type.IsGodotVariantPointerArray }}
-                cArr{{ $k }} := CArrayFromVariantPtrSlice({{ $arg.Name }})
-                defer Free(unsafe.Pointer(cArr{{ $k }}))
+                cArr{{ $k }} := AllocNewArrayAsUnsafePointer({{ $arg.Name }})
+                defer Free(cArr{{ $k }})
                 in{{ $k }} := (**C.{{ $arg.Type.CName }})(unsafe.Pointer(cArr{{ $k }}))
             {{- else if $arg.Type.IsVoidPointerArray }}
-                cArr{{ $k }} := CArrayRefFromPtrSlice({{ $arg.Name }})
+                cArr{{ $k }} := ArrayRefFromPtrSlice({{ $arg.Name }})
                 in{{ $k }} := (*unsafe.Pointer)(unsafe.Pointer(cArr{{ $k }}))
             {{- else if $arg.Type.IsPointer }}
                 in{{ $k }} := (*C.{{ $arg.Type.CName }})(unsafe.Pointer(&{{ $arg.Name }}))

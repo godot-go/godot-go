@@ -31,20 +31,20 @@ var _ = Describe("Array Helpers", func() {
 				i    int32   = 127
 				b    bool    = true
 			)
-		
+
 			var (
 				cn   *C.char = C.CString(name)
 				cf   C.float = (C.float)(f)
 				ci   C.int   = (C.int)(i)
 				cb   C.bool  = (C.bool)(b)
 			)
-		
+
 			defer C.free(unsafe.Pointer(cn))
 
 			api := (*C.godot_gdnative_core_api_struct)(unsafe.Pointer(gdnative.CoreApi))
-		
+
 			v := C.cgo_example_struct(api, cn, cf, ci, cb)
-		
+
 			ret := (*C.example_struct)(unsafe.Pointer(&v))
 
 			gs := (*gdnative.String)(unsafe.Pointer(&ret.name))
@@ -56,10 +56,10 @@ var _ = Describe("Array Helpers", func() {
 			Ω(ret.b).Should(BeEquivalentTo(b))
 		})
 	})
-	When("NewSliceFromAlloc", func() {
+	When("AllocNewSlice", func() {
 		It("should round-trip values in a []unsafe.Pointer", func() {
 			ptrCArrSize := 5
-			ptrArguments, ptrCArr := gdnative.NewSliceFromAlloc(ptrCArrSize)
+			ptrArguments, ptrCArr := gdnative.AllocNewSlice(ptrCArrSize)
 
 			defer gdnative.Free(unsafe.Pointer(ptrCArr))
 
@@ -120,16 +120,11 @@ var _ = Describe("Array Helpers", func() {
 				unsafe.Pointer(pc),
 			}
 
-			data := (*[3]*int32)(gdnative.CArrayRefFromPtrSlice(slice))
+			data := (*[3]*int32)(gdnative.ArrayRefFromPtrSlice(slice))
 
 			Ω(*data[0]).Should(BeEquivalentTo(10))
 			Ω(*data[1]).Should(BeEquivalentTo(20))
 			Ω(*data[2]).Should(BeEquivalentTo(30))
-
-
-		})
-		It("should copy pointer array", func() {
-			
 		})
 	})
 })

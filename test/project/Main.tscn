@@ -108,6 +108,7 @@ tile_data = PoolIntArray( -196611, 5, 0, -196609, 5, 0, -262143, 5, 0, -262140, 
 
 [node name="Player" parent="Objects" instance=ExtResource( 2 )]
 collision/safe_margin = 0.01
+name = "Aliso"
 
 [node name="Camera2D" type="Camera2D" parent="Objects/Player"]
 current = true

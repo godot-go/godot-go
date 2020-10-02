@@ -51,7 +51,7 @@ func (p *PlayerCharacter) OnClassRegistered(e gdnative.ClassRegisteredEvent) {
 	// signals
 	e.RegisterSignal("moved", gdnative.RegisterSignalArg{"velocity", gdnative.GODOT_VARIANT_TYPE_VECTOR2})
 	e.RegisterSignal("name_changed")
-	
+
 	// properties
 	e.RegisterProperty("velocity", "SetVelocity", "GetVelocity", defaultVelocity)
 	e.RegisterProperty("name", "SetName", "GetName", defaultName)
@@ -102,11 +102,11 @@ func (h *PlayerCharacter) Ready() {
 	if !h.walkAnimation.HasAnimation(walkRight) {
 		log.Panic("unable to find walk-right animation")
 	}
-	
+
 	if !h.walkAnimation.HasAnimation(walkLeft) {
 		log.Panic("unabel to find walk-left animation")
 	}
-	
+
 	if !h.walkAnimation.HasAnimation(walkDown) {
 		log.Panic("unable to find walk-down")
 	}
@@ -118,15 +118,15 @@ func (h *PlayerCharacter) Ready() {
 	if !h.walkAnimation.HasAnimation(idleRight) {
 		log.Panic("unable to find idle-right")
 	}
-	
+
 	if !h.walkAnimation.HasAnimation(idleLeft) {
 		log.Panic("unable to find idle-left")
 	}
-	
+
 	if !h.walkAnimation.HasAnimation(idleDown) {
 		log.Panic("unable to find idle-down")
 	}
-	
+
 	if !h.walkAnimation.HasAnimation(idleUp) {
 		log.Panic("unable to find idle-up")
 	}
@@ -178,7 +178,7 @@ func (h *PlayerCharacter) updateSprite(delta float64) {
 
 		if name != "" {
 			tokens := strings.Split(name, "-")
-			
+
 			if len(tokens) != 2  {
 				log.WithField("name", name).Panic("unable to parse animation name")
 			}

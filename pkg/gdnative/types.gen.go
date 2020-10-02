@@ -79,7 +79,6 @@ func ObjectDestroy(p_o *GodotObject) {
 
 func GlobalGetSingleton(p_name string) *GodotObject {
 	api := CoreApi
-	/* char */
 	in0 := C.CString(p_name)
 	defer C.free(unsafe.Pointer(in0))
 
@@ -99,10 +98,8 @@ func GlobalGetSingleton(p_name string) *GodotObject {
 
 func MethodBindGetMethod(p_classname string, p_methodname string) *MethodBind {
 	api := CoreApi
-	/* char */
 	in0 := C.CString(p_classname)
 	defer C.free(unsafe.Pointer(in0))
-	/* char */
 	in1 := C.CString(p_methodname)
 	defer C.free(unsafe.Pointer(in1))
 
@@ -179,13 +176,10 @@ func Free(p_ptr unsafe.Pointer) {
 
 func PrintError(p_description string, p_function string, p_file string, p_line int32) {
 	api := CoreApi
-	/* char */
 	in0 := C.CString(p_description)
 	defer C.free(unsafe.Pointer(in0))
-	/* char */
 	in1 := C.CString(p_function)
 	defer C.free(unsafe.Pointer(in1))
-	/* char */
 	in2 := C.CString(p_file)
 	defer C.free(unsafe.Pointer(in2))
 	in3 := *(*C.int)(unsafe.Pointer(&p_line))
@@ -210,13 +204,10 @@ func PrintError(p_description string, p_function string, p_file string, p_line i
 
 func PrintWarning(p_description string, p_function string, p_file string, p_line int32) {
 	api := CoreApi
-	/* char */
 	in0 := C.CString(p_description)
 	defer C.free(unsafe.Pointer(in0))
-	/* char */
 	in1 := C.CString(p_function)
 	defer C.free(unsafe.Pointer(in1))
-	/* char */
 	in2 := C.CString(p_file)
 	defer C.free(unsafe.Pointer(in2))
 	in3 := *(*C.int)(unsafe.Pointer(&p_line))
@@ -537,7 +528,6 @@ func (gdt *AABB) Intersects(p_with AABB) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_aabb */
 	in0 := (*C.godot_aabb)(unsafe.Pointer(&p_with))
 
 	ret := C.go_godot_aabb_intersects(
@@ -557,7 +547,6 @@ func (gdt *AABB) Encloses(p_with AABB) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_aabb */
 	in0 := (*C.godot_aabb)(unsafe.Pointer(&p_with))
 
 	ret := C.go_godot_aabb_encloses(
@@ -577,7 +566,6 @@ func (gdt *AABB) Merge(p_with AABB) AABB {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_aabb */
 	in0 := (*C.godot_aabb)(unsafe.Pointer(&p_with))
 
 	ret := C.go_godot_aabb_merge(
@@ -597,7 +585,6 @@ func (gdt *AABB) Intersection(p_with AABB) AABB {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_aabb */
 	in0 := (*C.godot_aabb)(unsafe.Pointer(&p_with))
 
 	ret := C.go_godot_aabb_intersection(
@@ -617,7 +604,6 @@ func (gdt *AABB) IntersectsPlane(p_plane Plane) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_plane */
 	in0 := (*C.godot_plane)(unsafe.Pointer(&p_plane))
 
 	ret := C.go_godot_aabb_intersects_plane(
@@ -637,9 +623,7 @@ func (gdt *AABB) IntersectsSegment(p_from Vector3, p_to Vector3) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_from))
-	/* godot_vector3 */
 	in1 := (*C.godot_vector3)(unsafe.Pointer(&p_to))
 
 	ret := C.go_godot_aabb_intersects_segment(
@@ -661,7 +645,6 @@ func (gdt *AABB) HasPoint(p_point Vector3) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_point))
 
 	ret := C.go_godot_aabb_has_point(
@@ -681,7 +664,6 @@ func (gdt *AABB) GetSupport(p_dir Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_dir))
 
 	ret := C.go_godot_aabb_get_support(
@@ -797,7 +779,6 @@ func (gdt *AABB) Expand(p_to_point Vector3) AABB {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_to_point))
 
 	ret := C.go_godot_aabb_expand(
@@ -817,7 +798,6 @@ func (gdt *AABB) Grow(p_by float32) AABB {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_by))
 
 	ret := C.go_godot_aabb_grow(
@@ -837,7 +817,6 @@ func (gdt *AABB) GetEndpoint(p_idx int32) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_aabb_get_endpoint(
@@ -857,7 +836,6 @@ func (gdt *AABB) OperatorEqual(p_b AABB) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_aabb)(unsafe.Pointer(gdt))
-	/* godot_aabb */
 	in0 := (*C.godot_aabb)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_aabb_operator_equal(
@@ -1076,7 +1054,6 @@ func (gdt *Array) Get(p_idx int32) Variant {
 
 	api := CoreApi
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_array_get(
@@ -1096,7 +1073,6 @@ func (gdt *Array) OperatorIndex(p_idx int32) Variant {
 
 	api := CoreApi
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_array_operator_index(
@@ -1116,7 +1092,6 @@ func (gdt *Array) OperatorIndexConst(p_idx int32) Variant {
 
 	api := CoreApi
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_array_operator_index_const(
@@ -1167,7 +1142,6 @@ func (gdt *Array) Count(p_value Variant) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_value))
 
 	ret := C.go_godot_array_count(
@@ -1252,9 +1226,7 @@ func (gdt *Array) Find(p_what Variant, p_from int32) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_what))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_from))
 
 	ret := C.go_godot_array_find(
@@ -1276,7 +1248,6 @@ func (gdt *Array) FindLast(p_what Variant) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_what))
 
 	ret := C.go_godot_array_find_last(
@@ -1296,7 +1267,6 @@ func (gdt *Array) Has(p_value Variant) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_value))
 
 	ret := C.go_godot_array_has(
@@ -1466,9 +1436,7 @@ func (gdt *Array) Rfind(p_what Variant, p_from int32) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_what))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_from))
 
 	ret := C.go_godot_array_rfind(
@@ -1540,9 +1508,7 @@ func (gdt *Array) Bsearch(p_value Variant, p_before bool) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_value))
-	/* godot_bool */
 	in1 := *(*C.godot_bool)(unsafe.Pointer(&p_before))
 
 	ret := C.go_godot_array_bsearch(
@@ -1564,13 +1530,9 @@ func (gdt *Array) BsearchCustom(p_value Variant, p_obj *GodotObject, p_func Stri
 
 	api := CoreApi
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_value))
-	/* godot_object */
 	in1 := unsafe.Pointer(p_obj)
-	/* godot_string */
 	in2 := (*C.godot_string)(unsafe.Pointer(&p_func))
-	/* godot_bool */
 	in3 := *(*C.godot_bool)(unsafe.Pointer(&p_before))
 
 	ret := C.go_godot_array_bsearch_custom(
@@ -1610,7 +1572,6 @@ func (gdt *Array) Duplicate(p_deep bool) Array {
 
 	api := Core11Api
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_bool */
 	in0 := *(*C.godot_bool)(unsafe.Pointer(&p_deep))
 
 	ret := C.go_godot_array_duplicate(
@@ -1676,13 +1637,9 @@ func (gdt *Array) Slice(p_begin int32, p_end int32, p_step int32, p_deep bool) A
 
 	api := Core12Api
 	rcv := (*C.godot_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_begin))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_end))
-	/* godot_int */
 	in2 := *(*C.godot_int)(unsafe.Pointer(&p_step))
-	/* godot_bool */
 	in3 := *(*C.godot_bool)(unsafe.Pointer(&p_deep))
 
 	ret := C.go_godot_array_slice(
@@ -1896,9 +1853,7 @@ func (gdt *Basis) Rotated(p_axis Vector3, p_phi float32) Basis {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_axis))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_phi))
 
 	ret := C.go_godot_basis_rotated(
@@ -1920,7 +1875,6 @@ func (gdt *Basis) Scaled(p_scale Vector3) Basis {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_scale))
 
 	ret := C.go_godot_basis_scaled(
@@ -1972,7 +1926,6 @@ func (gdt *Basis) Tdotx(p_with Vector3) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_with))
 
 	ret := C.go_godot_basis_tdotx(
@@ -1992,7 +1945,6 @@ func (gdt *Basis) Tdoty(p_with Vector3) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_with))
 
 	ret := C.go_godot_basis_tdoty(
@@ -2012,7 +1964,6 @@ func (gdt *Basis) Tdotz(p_with Vector3) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_with))
 
 	ret := C.go_godot_basis_tdotz(
@@ -2032,7 +1983,6 @@ func (gdt *Basis) Xform(p_v Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_basis_xform(
@@ -2052,7 +2002,6 @@ func (gdt *Basis) XformInv(p_v Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_basis_xform_inv(
@@ -2105,7 +2054,6 @@ func (gdt *Basis) GetAxis(p_axis int32) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_axis))
 
 	ret := C.go_godot_basis_get_axis(
@@ -2145,7 +2093,6 @@ func (gdt *Basis) GetRow(p_row int32) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_row))
 
 	ret := C.go_godot_basis_get_row(
@@ -2185,7 +2132,6 @@ func (gdt *Basis) OperatorEqual(p_b Basis) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_basis */
 	in0 := (*C.godot_basis)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_basis_operator_equal(
@@ -2205,7 +2151,6 @@ func (gdt *Basis) OperatorAdd(p_b Basis) Basis {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_basis */
 	in0 := (*C.godot_basis)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_basis_operator_add(
@@ -2225,7 +2170,6 @@ func (gdt *Basis) OperatorSubtract(p_b Basis) Basis {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_basis */
 	in0 := (*C.godot_basis)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_basis_operator_subtract(
@@ -2245,7 +2189,6 @@ func (gdt *Basis) OperatorMultiplyVector(p_b Basis) Basis {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_basis */
 	in0 := (*C.godot_basis)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_basis_operator_multiply_vector(
@@ -2265,7 +2208,6 @@ func (gdt *Basis) OperatorMultiplyScalar(p_b float32) Basis {
 
 	api := CoreApi
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_basis_operator_multiply_scalar(
@@ -2285,9 +2227,7 @@ func (gdt *Basis) Slerp(p_b Basis, p_t float32) Basis {
 
 	api := Core11Api
 	rcv := (*C.godot_basis)(unsafe.Pointer(gdt))
-	/* godot_basis */
 	in0 := (*C.godot_basis)(unsafe.Pointer(&p_b))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_t))
 
 	ret := C.go_godot_basis_slerp(
@@ -2738,9 +2678,7 @@ func (gdt *Color) LinearInterpolate(p_b Color, p_t float32) Color {
 
 	api := CoreApi
 	rcv := (*C.godot_color)(unsafe.Pointer(gdt))
-	/* godot_color */
 	in0 := (*C.godot_color)(unsafe.Pointer(&p_b))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_t))
 
 	ret := C.go_godot_color_linear_interpolate(
@@ -2762,7 +2700,6 @@ func (gdt *Color) Blend(p_over Color) Color {
 
 	api := CoreApi
 	rcv := (*C.godot_color)(unsafe.Pointer(gdt))
-	/* godot_color */
 	in0 := (*C.godot_color)(unsafe.Pointer(&p_over))
 
 	ret := C.go_godot_color_blend(
@@ -2782,7 +2719,6 @@ func (gdt *Color) ToHtml(p_with_alpha bool) String {
 
 	api := CoreApi
 	rcv := (*C.godot_color)(unsafe.Pointer(gdt))
-	/* godot_bool */
 	in0 := *(*C.godot_bool)(unsafe.Pointer(&p_with_alpha))
 
 	ret := C.go_godot_color_to_html(
@@ -2802,7 +2738,6 @@ func (gdt *Color) OperatorEqual(p_b Color) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_color)(unsafe.Pointer(gdt))
-	/* godot_color */
 	in0 := (*C.godot_color)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_color_operator_equal(
@@ -2822,7 +2757,6 @@ func (gdt *Color) OperatorLess(p_b Color) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_color)(unsafe.Pointer(gdt))
-	/* godot_color */
 	in0 := (*C.godot_color)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_color_operator_less(
@@ -2906,7 +2840,6 @@ func (gdt *Color) Darkened(p_amount float32) Color {
 
 	api := Core11Api
 	rcv := (*C.godot_color)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_amount))
 
 	ret := C.go_godot_color_darkened(
@@ -2926,13 +2859,9 @@ func (gdt *Color) FromHsv(p_h float32, p_s float32, p_v float32, p_a float32) Co
 
 	api := Core11Api
 	rcv := (*C.godot_color)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_h))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_s))
-	/* godot_real */
 	in2 := *(*C.godot_real)(unsafe.Pointer(&p_v))
-	/* godot_real */
 	in3 := *(*C.godot_real)(unsafe.Pointer(&p_a))
 
 	ret := C.go_godot_color_from_hsv(
@@ -2958,7 +2887,6 @@ func (gdt *Color) Lightened(p_amount float32) Color {
 
 	api := Core11Api
 	rcv := (*C.godot_color)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_amount))
 
 	ret := C.go_godot_color_lightened(
@@ -3077,7 +3005,6 @@ func (gdt *Dictionary) Has(p_key Variant) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_dictionary)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_key))
 
 	ret := C.go_godot_dictionary_has(
@@ -3097,7 +3024,6 @@ func (gdt *Dictionary) HasAll(p_keys Array) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_dictionary)(unsafe.Pointer(gdt))
-	/* godot_array */
 	in0 := (*C.godot_array)(unsafe.Pointer(&p_keys))
 
 	ret := C.go_godot_dictionary_has_all(
@@ -3182,7 +3108,6 @@ func (gdt *Dictionary) Get(p_key Variant) Variant {
 
 	api := CoreApi
 	rcv := (*C.godot_dictionary)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_key))
 
 	ret := C.go_godot_dictionary_get(
@@ -3222,7 +3147,6 @@ func (gdt *Dictionary) OperatorIndex(p_key Variant) Variant {
 
 	api := CoreApi
 	rcv := (*C.godot_dictionary)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_key))
 
 	ret := C.go_godot_dictionary_operator_index(
@@ -3242,7 +3166,6 @@ func (gdt *Dictionary) OperatorIndexConst(p_key Variant) Variant {
 
 	api := CoreApi
 	rcv := (*C.godot_dictionary)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_key))
 
 	ret := C.go_godot_dictionary_operator_index_const(
@@ -3262,7 +3185,6 @@ func (gdt *Dictionary) Next(p_key Variant) Variant {
 
 	api := CoreApi
 	rcv := (*C.godot_dictionary)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_key))
 
 	ret := C.go_godot_dictionary_next(
@@ -3282,7 +3204,6 @@ func (gdt *Dictionary) OperatorEqual(p_b Dictionary) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_dictionary)(unsafe.Pointer(gdt))
-	/* godot_dictionary */
 	in0 := (*C.godot_dictionary)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_dictionary_operator_equal(
@@ -3318,9 +3239,7 @@ func (gdt *Dictionary) GetWithDefault(p_key Variant, p_default Variant) Variant 
 
 	api := Core11Api
 	rcv := (*C.godot_dictionary)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_key))
-	/* godot_variant */
 	in1 := (*C.godot_variant)(unsafe.Pointer(&p_default))
 
 	ret := C.go_godot_dictionary_get_with_default(
@@ -3342,7 +3261,6 @@ func (gdt *Dictionary) EraseWithReturn(p_key Variant) bool {
 
 	api := Core11Api
 	rcv := (*C.godot_dictionary)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_key))
 
 	ret := C.go_godot_dictionary_erase_with_return(
@@ -3362,7 +3280,6 @@ func (gdt *Dictionary) Duplicate(p_deep bool) Dictionary {
 
 	api := Core12Api
 	rcv := (*C.godot_dictionary)(unsafe.Pointer(gdt))
-	/* godot_bool */
 	in0 := *(*C.godot_bool)(unsafe.Pointer(&p_deep))
 
 	ret := C.go_godot_dictionary_duplicate(
@@ -3448,7 +3365,7 @@ func (gdt *MethodBind) Ptrcall(p_instance *GodotObject, p_args []unsafe.Pointer,
 	api := CoreApi
 	rcv := (*C.godot_method_bind)(unsafe.Pointer(gdt))
 	in0 := unsafe.Pointer(p_instance)
-	cArr1 := CArrayRefFromPtrSlice(p_args)
+	cArr1 := ArrayRefFromPtrSlice(p_args)
 	in1 := (*unsafe.Pointer)(unsafe.Pointer(cArr1))
 	in2 := unsafe.Pointer(p_ret)
 
@@ -3471,15 +3388,11 @@ func (gdt *MethodBind) Call(p_instance *GodotObject, p_args []*Variant, p_arg_co
 
 	api := CoreApi
 	rcv := (*C.godot_method_bind)(unsafe.Pointer(gdt))
-	/* godot_object */
 	in0 := unsafe.Pointer(p_instance)
-	/* godot_variant */
-	cArr1 := CArrayFromVariantPtrSlice(p_args)
-	defer Free(unsafe.Pointer(cArr1))
+	cArr1 := AllocNewArrayAsUnsafePointer(p_args)
+	defer Free(cArr1)
 	in1 := (**C.godot_variant)(unsafe.Pointer(cArr1))
-	/* int */
 	in2 := *(*C.int)(unsafe.Pointer(&p_arg_count))
-	/* godot_variant_call_error */
 	in3 := (*C.godot_variant_call_error)(unsafe.Pointer(&p_call_error))
 
 	ret := C.go_godot_method_bind_call(
@@ -3611,7 +3524,6 @@ func (gdt *NodePath) GetName(p_idx int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_node_path)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_node_path_get_name(
@@ -3647,7 +3559,6 @@ func (gdt *NodePath) GetSubname(p_idx int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_node_path)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_node_path_get_subname(
@@ -3699,7 +3610,6 @@ func (gdt *NodePath) OperatorEqual(p_b NodePath) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_node_path)(unsafe.Pointer(gdt))
-	/* godot_node_path */
 	in0 := (*C.godot_node_path)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_node_path_operator_equal(
@@ -3879,7 +3789,6 @@ func (gdt *Plane) IsPointOver(p_point Vector3) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_plane)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_point))
 
 	ret := C.go_godot_plane_is_point_over(
@@ -3899,7 +3808,6 @@ func (gdt *Plane) DistanceTo(p_point Vector3) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_plane)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_point))
 
 	ret := C.go_godot_plane_distance_to(
@@ -3919,9 +3827,7 @@ func (gdt *Plane) HasPoint(p_point Vector3, p_epsilon float32) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_plane)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_point))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_epsilon))
 
 	ret := C.go_godot_plane_has_point(
@@ -3943,7 +3849,6 @@ func (gdt *Plane) Project(p_point Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_plane)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_point))
 
 	ret := C.go_godot_plane_project(
@@ -3963,11 +3868,8 @@ func (gdt *Plane) Intersect3(r_dest Vector3, p_b Plane, p_c Plane) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_plane)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&r_dest))
-	/* godot_plane */
 	in1 := (*C.godot_plane)(unsafe.Pointer(&p_b))
-	/* godot_plane */
 	in2 := (*C.godot_plane)(unsafe.Pointer(&p_c))
 
 	ret := C.go_godot_plane_intersect_3(
@@ -3991,11 +3893,8 @@ func (gdt *Plane) IntersectsRay(r_dest Vector3, p_from Vector3, p_dir Vector3) b
 
 	api := CoreApi
 	rcv := (*C.godot_plane)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&r_dest))
-	/* godot_vector3 */
 	in1 := (*C.godot_vector3)(unsafe.Pointer(&p_from))
-	/* godot_vector3 */
 	in2 := (*C.godot_vector3)(unsafe.Pointer(&p_dir))
 
 	ret := C.go_godot_plane_intersects_ray(
@@ -4019,11 +3918,8 @@ func (gdt *Plane) IntersectsSegment(r_dest Vector3, p_begin Vector3, p_end Vecto
 
 	api := CoreApi
 	rcv := (*C.godot_plane)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&r_dest))
-	/* godot_vector3 */
 	in1 := (*C.godot_vector3)(unsafe.Pointer(&p_begin))
-	/* godot_vector3 */
 	in2 := (*C.godot_vector3)(unsafe.Pointer(&p_end))
 
 	ret := C.go_godot_plane_intersects_segment(
@@ -4063,7 +3959,6 @@ func (gdt *Plane) OperatorEqual(p_b Plane) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_plane)(unsafe.Pointer(gdt))
-	/* godot_plane */
 	in0 := (*C.godot_plane)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_plane_operator_equal(
@@ -4246,9 +4141,7 @@ func (gdt *PoolByteArray) Insert(p_idx int32, p_data uint8) Error {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_byte_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
-	/* uint8_t */
 	in1 := *(*C.uint8_t)(unsafe.Pointer(&p_data))
 
 	ret := C.go_godot_pool_byte_array_insert(
@@ -4387,7 +4280,6 @@ func (gdt *PoolByteArray) Get(p_idx int32) uint8 {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_byte_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_pool_byte_array_get(
@@ -4676,9 +4568,7 @@ func (gdt *PoolColorArray) Insert(p_idx int32, p_data Color) Error {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_color_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
-	/* godot_color */
 	in1 := (*C.godot_color)(unsafe.Pointer(&p_data))
 
 	ret := C.go_godot_pool_color_array_insert(
@@ -4817,7 +4707,6 @@ func (gdt *PoolColorArray) Get(p_idx int32) Color {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_color_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_pool_color_array_get(
@@ -5106,9 +4995,7 @@ func (gdt *PoolIntArray) Insert(p_idx int32, p_data int32) Error {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_int_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_data))
 
 	ret := C.go_godot_pool_int_array_insert(
@@ -5247,7 +5134,6 @@ func (gdt *PoolIntArray) Get(p_idx int32) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_int_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_pool_int_array_get(
@@ -5536,9 +5422,7 @@ func (gdt *PoolRealArray) Insert(p_idx int32, p_data float32) Error {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_real_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_data))
 
 	ret := C.go_godot_pool_real_array_insert(
@@ -5677,7 +5561,6 @@ func (gdt *PoolRealArray) Get(p_idx int32) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_real_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_pool_real_array_get(
@@ -5966,9 +5849,7 @@ func (gdt *PoolStringArray) Insert(p_idx int32, p_data String) Error {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_string_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
-	/* godot_string */
 	in1 := (*C.godot_string)(unsafe.Pointer(&p_data))
 
 	ret := C.go_godot_pool_string_array_insert(
@@ -6107,7 +5988,6 @@ func (gdt *PoolStringArray) Get(p_idx int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_string_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_pool_string_array_get(
@@ -6396,9 +6276,7 @@ func (gdt *PoolVector2Array) Insert(p_idx int32, p_data Vector2) Error {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_vector2_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
-	/* godot_vector2 */
 	in1 := (*C.godot_vector2)(unsafe.Pointer(&p_data))
 
 	ret := C.go_godot_pool_vector2_array_insert(
@@ -6537,7 +6415,6 @@ func (gdt *PoolVector2Array) Get(p_idx int32) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_vector2_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_pool_vector2_array_get(
@@ -6826,9 +6703,7 @@ func (gdt *PoolVector3Array) Insert(p_idx int32, p_data Vector3) Error {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_vector3_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
-	/* godot_vector3 */
 	in1 := (*C.godot_vector3)(unsafe.Pointer(&p_data))
 
 	ret := C.go_godot_pool_vector3_array_insert(
@@ -6967,7 +6842,6 @@ func (gdt *PoolVector3Array) Get(p_idx int32) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_pool_vector3_array)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_pool_vector3_array_get(
@@ -7485,7 +7359,6 @@ func (gdt *Quat) Dot(p_b Quat) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_quat)(unsafe.Pointer(gdt))
-	/* godot_quat */
 	in0 := (*C.godot_quat)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_quat_dot(
@@ -7505,7 +7378,6 @@ func (gdt *Quat) Xform(p_v Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_quat)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_quat_xform(
@@ -7525,9 +7397,7 @@ func (gdt *Quat) Slerp(p_b Quat, p_t float32) Quat {
 
 	api := CoreApi
 	rcv := (*C.godot_quat)(unsafe.Pointer(gdt))
-	/* godot_quat */
 	in0 := (*C.godot_quat)(unsafe.Pointer(&p_b))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_t))
 
 	ret := C.go_godot_quat_slerp(
@@ -7549,9 +7419,7 @@ func (gdt *Quat) Slerpni(p_b Quat, p_t float32) Quat {
 
 	api := CoreApi
 	rcv := (*C.godot_quat)(unsafe.Pointer(gdt))
-	/* godot_quat */
 	in0 := (*C.godot_quat)(unsafe.Pointer(&p_b))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_t))
 
 	ret := C.go_godot_quat_slerpni(
@@ -7573,13 +7441,9 @@ func (gdt *Quat) CubicSlerp(p_b Quat, p_pre_a Quat, p_post_b Quat, p_t float32) 
 
 	api := CoreApi
 	rcv := (*C.godot_quat)(unsafe.Pointer(gdt))
-	/* godot_quat */
 	in0 := (*C.godot_quat)(unsafe.Pointer(&p_b))
-	/* godot_quat */
 	in1 := (*C.godot_quat)(unsafe.Pointer(&p_pre_a))
-	/* godot_quat */
 	in2 := (*C.godot_quat)(unsafe.Pointer(&p_post_b))
-	/* godot_real */
 	in3 := *(*C.godot_real)(unsafe.Pointer(&p_t))
 
 	ret := C.go_godot_quat_cubic_slerp(
@@ -7605,7 +7469,6 @@ func (gdt *Quat) OperatorMultiply(p_b float32) Quat {
 
 	api := CoreApi
 	rcv := (*C.godot_quat)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_quat_operator_multiply(
@@ -7625,7 +7488,6 @@ func (gdt *Quat) OperatorAdd(p_b Quat) Quat {
 
 	api := CoreApi
 	rcv := (*C.godot_quat)(unsafe.Pointer(gdt))
-	/* godot_quat */
 	in0 := (*C.godot_quat)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_quat_operator_add(
@@ -7645,7 +7507,6 @@ func (gdt *Quat) OperatorSubtract(p_b Quat) Quat {
 
 	api := CoreApi
 	rcv := (*C.godot_quat)(unsafe.Pointer(gdt))
-	/* godot_quat */
 	in0 := (*C.godot_quat)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_quat_operator_subtract(
@@ -7665,7 +7526,6 @@ func (gdt *Quat) OperatorDivide(p_b float32) Quat {
 
 	api := CoreApi
 	rcv := (*C.godot_quat)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_quat_operator_divide(
@@ -7685,7 +7545,6 @@ func (gdt *Quat) OperatorEqual(p_b Quat) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_quat)(unsafe.Pointer(gdt))
-	/* godot_quat */
 	in0 := (*C.godot_quat)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_quat_operator_equal(
@@ -7827,7 +7686,6 @@ func (gdt *Rect2) Intersects(p_b Rect2) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_rect2)(unsafe.Pointer(gdt))
-	/* godot_rect2 */
 	in0 := (*C.godot_rect2)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_rect2_intersects(
@@ -7847,7 +7705,6 @@ func (gdt *Rect2) Encloses(p_b Rect2) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_rect2)(unsafe.Pointer(gdt))
-	/* godot_rect2 */
 	in0 := (*C.godot_rect2)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_rect2_encloses(
@@ -7883,7 +7740,6 @@ func (gdt *Rect2) Clip(p_b Rect2) Rect2 {
 
 	api := CoreApi
 	rcv := (*C.godot_rect2)(unsafe.Pointer(gdt))
-	/* godot_rect2 */
 	in0 := (*C.godot_rect2)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_rect2_clip(
@@ -7903,7 +7759,6 @@ func (gdt *Rect2) Merge(p_b Rect2) Rect2 {
 
 	api := CoreApi
 	rcv := (*C.godot_rect2)(unsafe.Pointer(gdt))
-	/* godot_rect2 */
 	in0 := (*C.godot_rect2)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_rect2_merge(
@@ -7923,7 +7778,6 @@ func (gdt *Rect2) HasPoint(p_point Vector2) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_rect2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_point))
 
 	ret := C.go_godot_rect2_has_point(
@@ -7943,7 +7797,6 @@ func (gdt *Rect2) Grow(p_by float32) Rect2 {
 
 	api := CoreApi
 	rcv := (*C.godot_rect2)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_by))
 
 	ret := C.go_godot_rect2_grow(
@@ -7963,7 +7816,6 @@ func (gdt *Rect2) Expand(p_to Vector2) Rect2 {
 
 	api := CoreApi
 	rcv := (*C.godot_rect2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_to))
 
 	ret := C.go_godot_rect2_expand(
@@ -7983,7 +7835,6 @@ func (gdt *Rect2) OperatorEqual(p_b Rect2) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_rect2)(unsafe.Pointer(gdt))
-	/* godot_rect2 */
 	in0 := (*C.godot_rect2)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_rect2_operator_equal(
@@ -8069,13 +7920,9 @@ func (gdt *Rect2) GrowIndividual(p_left float32, p_top float32, p_right float32,
 
 	api := Core11Api
 	rcv := (*C.godot_rect2)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_left))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_top))
-	/* godot_real */
 	in2 := *(*C.godot_real)(unsafe.Pointer(&p_right))
-	/* godot_real */
 	in3 := *(*C.godot_real)(unsafe.Pointer(&p_bottom))
 
 	ret := C.go_godot_rect2_grow_individual(
@@ -8101,9 +7948,7 @@ func (gdt *Rect2) GrowMargin(p_margin int32, p_by float32) Rect2 {
 
 	api := Core11Api
 	rcv := (*C.godot_rect2)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_margin))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_by))
 
 	ret := C.go_godot_rect2_grow_margin(
@@ -8196,7 +8041,6 @@ func (gdt *RID) OperatorEqual(p_b RID) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_rid)(unsafe.Pointer(gdt))
-	/* godot_rid */
 	in0 := (*C.godot_rid)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_rid_operator_equal(
@@ -8216,7 +8060,6 @@ func (gdt *RID) OperatorLess(p_b RID) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_rid)(unsafe.Pointer(gdt))
-	/* godot_rid */
 	in0 := (*C.godot_rid)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_rid_operator_less(
@@ -8346,7 +8189,6 @@ func (gdt *String) OperatorIndex(p_idx int32) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_string_operator_index(
@@ -8366,7 +8208,6 @@ func (gdt *String) OperatorIndexConst(p_idx int32) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_string_operator_index_const(
@@ -8402,7 +8243,6 @@ func (gdt *String) OperatorEqual(p_b String) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_string_operator_equal(
@@ -8422,7 +8262,6 @@ func (gdt *String) OperatorLess(p_b String) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_string_operator_less(
@@ -8442,7 +8281,6 @@ func (gdt *String) OperatorPlus(p_b String) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_string_operator_plus(
@@ -8478,7 +8316,6 @@ func (gdt *String) BeginsWith(p_string String) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_string))
 
 	ret := C.go_godot_string_begins_with(
@@ -8514,7 +8351,6 @@ func (gdt *String) EndsWith(p_string String) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_string))
 
 	ret := C.go_godot_string_ends_with(
@@ -8534,7 +8370,6 @@ func (gdt *String) Find(p_what String) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_what))
 
 	ret := C.go_godot_string_find(
@@ -8554,9 +8389,7 @@ func (gdt *String) FindFrom(p_what String, p_from int32) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_what))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_from))
 
 	ret := C.go_godot_string_find_from(
@@ -8578,7 +8411,6 @@ func (gdt *String) Findmk(p_keys Array) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_array */
 	in0 := (*C.godot_array)(unsafe.Pointer(&p_keys))
 
 	ret := C.go_godot_string_findmk(
@@ -8598,9 +8430,7 @@ func (gdt *String) FindmkFrom(p_keys Array, p_from int32) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_array */
 	in0 := (*C.godot_array)(unsafe.Pointer(&p_keys))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_from))
 
 	ret := C.go_godot_string_findmk_from(
@@ -8622,7 +8452,6 @@ func (gdt *String) Findn(p_what String) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_what))
 
 	ret := C.go_godot_string_findn(
@@ -8642,9 +8471,7 @@ func (gdt *String) FindnFrom(p_what String, p_from int32) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_what))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_from))
 
 	ret := C.go_godot_string_findn_from(
@@ -8666,7 +8493,6 @@ func (gdt *String) FindLast(p_what String) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_what))
 
 	ret := C.go_godot_string_find_last(
@@ -8686,7 +8512,6 @@ func (gdt *String) Format(p_values Variant) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_values))
 
 	ret := C.go_godot_string_format(
@@ -8738,9 +8563,7 @@ func (gdt *String) Insert(p_at_pos int32, p_string String) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_at_pos))
-	/* godot_string */
 	in1 := *(*C.godot_string)(unsafe.Pointer(&p_string))
 
 	ret := C.go_godot_string_insert(
@@ -8778,7 +8601,6 @@ func (gdt *String) IsSubsequenceOf(p_string String) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_string))
 
 	ret := C.go_godot_string_is_subsequence_of(
@@ -8798,7 +8620,6 @@ func (gdt *String) IsSubsequenceOfi(p_string String) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_string))
 
 	ret := C.go_godot_string_is_subsequence_ofi(
@@ -8818,7 +8639,6 @@ func (gdt *String) Lpad(p_min_length int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_min_length))
 
 	ret := C.go_godot_string_lpad(
@@ -8838,9 +8658,7 @@ func (gdt *String) LpadWithCustomCharacter(p_min_length int32, p_character Strin
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_min_length))
-	/* godot_string */
 	in1 := (*C.godot_string)(unsafe.Pointer(&p_character))
 
 	ret := C.go_godot_string_lpad_with_custom_character(
@@ -8862,7 +8680,6 @@ func (gdt *String) Match(p_wildcard String) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_wildcard))
 
 	ret := C.go_godot_string_match(
@@ -8882,7 +8699,6 @@ func (gdt *String) Matchn(p_wildcard String) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_wildcard))
 
 	ret := C.go_godot_string_matchn(
@@ -8902,7 +8718,6 @@ func (gdt *String) PadDecimals(p_digits int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_digits))
 
 	ret := C.go_godot_string_pad_decimals(
@@ -8922,7 +8737,6 @@ func (gdt *String) PadZeros(p_digits int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_digits))
 
 	ret := C.go_godot_string_pad_zeros(
@@ -8942,9 +8756,7 @@ func (gdt *String) ReplaceFirst(p_key String, p_with String) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_key))
-	/* godot_string */
 	in1 := *(*C.godot_string)(unsafe.Pointer(&p_with))
 
 	ret := C.go_godot_string_replace_first(
@@ -8966,9 +8778,7 @@ func (gdt *String) Replace(p_key String, p_with String) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_key))
-	/* godot_string */
 	in1 := *(*C.godot_string)(unsafe.Pointer(&p_with))
 
 	ret := C.go_godot_string_replace(
@@ -8990,9 +8800,7 @@ func (gdt *String) Replacen(p_key String, p_with String) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_key))
-	/* godot_string */
 	in1 := *(*C.godot_string)(unsafe.Pointer(&p_with))
 
 	ret := C.go_godot_string_replacen(
@@ -9014,7 +8822,6 @@ func (gdt *String) Rfind(p_what String) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_what))
 
 	ret := C.go_godot_string_rfind(
@@ -9034,7 +8841,6 @@ func (gdt *String) Rfindn(p_what String) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_what))
 
 	ret := C.go_godot_string_rfindn(
@@ -9054,9 +8860,7 @@ func (gdt *String) RfindFrom(p_what String, p_from int32) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_what))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_from))
 
 	ret := C.go_godot_string_rfind_from(
@@ -9078,9 +8882,7 @@ func (gdt *String) RfindnFrom(p_what String, p_from int32) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_what))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_from))
 
 	ret := C.go_godot_string_rfindn_from(
@@ -9102,7 +8904,6 @@ func (gdt *String) Rpad(p_min_length int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_min_length))
 
 	ret := C.go_godot_string_rpad(
@@ -9122,9 +8923,7 @@ func (gdt *String) RpadWithCustomCharacter(p_min_length int32, p_character Strin
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_min_length))
-	/* godot_string */
 	in1 := (*C.godot_string)(unsafe.Pointer(&p_character))
 
 	ret := C.go_godot_string_rpad_with_custom_character(
@@ -9146,7 +8945,6 @@ func (gdt *String) Similarity(p_string String) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_string))
 
 	ret := C.go_godot_string_similarity(
@@ -9166,9 +8964,7 @@ func (gdt *String) Sprintf(p_values Array, p_error bool) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_array */
 	in0 := (*C.godot_array)(unsafe.Pointer(&p_values))
-	/* godot_bool */
 	in1 := (*C.godot_bool)(unsafe.Pointer(&p_error))
 
 	ret := C.go_godot_string_sprintf(
@@ -9190,9 +8986,7 @@ func (gdt *String) Substr(p_from int32, p_chars int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_from))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_chars))
 
 	ret := C.go_godot_string_substr(
@@ -9358,7 +9152,6 @@ func (gdt *String) GetSliceCount(p_splitter String) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_splitter))
 
 	ret := C.go_godot_string_get_slice_count(
@@ -9378,9 +9171,7 @@ func (gdt *String) GetSlice(p_splitter String, p_slice int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_splitter))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_slice))
 
 	ret := C.go_godot_string_get_slice(
@@ -9402,7 +9193,6 @@ func (gdt *String) Split(p_splitter String) Array {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_splitter))
 
 	ret := C.go_godot_string_split(
@@ -9422,7 +9212,6 @@ func (gdt *String) SplitAllowEmpty(p_splitter String) Array {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_splitter))
 
 	ret := C.go_godot_string_split_allow_empty(
@@ -9442,7 +9231,6 @@ func (gdt *String) SplitFloats(p_splitter String) Array {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_splitter))
 
 	ret := C.go_godot_string_split_floats(
@@ -9462,7 +9250,6 @@ func (gdt *String) SplitFloatsAllowsEmpty(p_splitter String) Array {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_splitter))
 
 	ret := C.go_godot_string_split_floats_allows_empty(
@@ -9482,7 +9269,6 @@ func (gdt *String) SplitFloatsMk(p_splitters Array) Array {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_array */
 	in0 := (*C.godot_array)(unsafe.Pointer(&p_splitters))
 
 	ret := C.go_godot_string_split_floats_mk(
@@ -9502,7 +9288,6 @@ func (gdt *String) SplitFloatsMkAllowsEmpty(p_splitters Array) Array {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_array */
 	in0 := (*C.godot_array)(unsafe.Pointer(&p_splitters))
 
 	ret := C.go_godot_string_split_floats_mk_allows_empty(
@@ -9522,7 +9307,6 @@ func (gdt *String) SplitInts(p_splitter String) Array {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_splitter))
 
 	ret := C.go_godot_string_split_ints(
@@ -9542,7 +9326,6 @@ func (gdt *String) SplitIntsAllowsEmpty(p_splitter String) Array {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_splitter))
 
 	ret := C.go_godot_string_split_ints_allows_empty(
@@ -9562,7 +9345,6 @@ func (gdt *String) SplitIntsMk(p_splitters Array) Array {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_array */
 	in0 := (*C.godot_array)(unsafe.Pointer(&p_splitters))
 
 	ret := C.go_godot_string_split_ints_mk(
@@ -9582,7 +9364,6 @@ func (gdt *String) SplitIntsMkAllowsEmpty(p_splitters Array) Array {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_array */
 	in0 := (*C.godot_array)(unsafe.Pointer(&p_splitters))
 
 	ret := C.go_godot_string_split_ints_mk_allows_empty(
@@ -9682,7 +9463,6 @@ func (gdt *String) Left(p_pos int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_pos))
 
 	ret := C.go_godot_string_left(
@@ -9702,7 +9482,6 @@ func (gdt *String) OrdAt(p_idx int32) int32 {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_idx))
 
 	ret := C.go_godot_string_ord_at(
@@ -9722,7 +9501,6 @@ func (gdt *String) PlusFile(p_file String) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_file))
 
 	ret := C.go_godot_string_plus_file(
@@ -9742,7 +9520,6 @@ func (gdt *String) Right(p_pos int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_pos))
 
 	ret := C.go_godot_string_right(
@@ -9762,9 +9539,7 @@ func (gdt *String) StripEdges(p_left bool, p_right bool) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_bool */
 	in0 := *(*C.godot_bool)(unsafe.Pointer(&p_left))
-	/* godot_bool */
 	in1 := *(*C.godot_bool)(unsafe.Pointer(&p_right))
 
 	ret := C.go_godot_string_strip_edges(
@@ -9870,7 +9645,6 @@ func (gdt *String) ParseUtf8(p_utf8 string) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* char */
 	in0 := C.CString(p_utf8)
 	defer C.free(unsafe.Pointer(in0))
 
@@ -9891,10 +9665,8 @@ func (gdt *String) ParseUtf8WithLen(p_utf8 string, p_len int32) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* char */
 	in0 := C.CString(p_utf8)
 	defer C.free(unsafe.Pointer(in0))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_len))
 
 	ret := C.go_godot_string_parse_utf8_with_len(
@@ -10092,7 +9864,6 @@ func (gdt *String) PathTo(p_path String) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_path))
 
 	ret := C.go_godot_string_path_to(
@@ -10112,7 +9883,6 @@ func (gdt *String) PathToFile(p_path String) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_path))
 
 	ret := C.go_godot_string_path_to_file(
@@ -10244,7 +10014,6 @@ func (gdt *String) WordWrap(p_chars_per_line int32) String {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_int */
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_chars_per_line))
 
 	ret := C.go_godot_string_word_wrap(
@@ -10360,7 +10129,6 @@ func (gdt *String) IsValidHexNumber(p_with_prefix bool) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_bool */
 	in0 := *(*C.godot_bool)(unsafe.Pointer(&p_with_prefix))
 
 	ret := C.go_godot_string_is_valid_hex_number(
@@ -10474,7 +10242,6 @@ func (gdt *String) TrimPrefix(p_prefix String) String {
 
 	api := Core11Api
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_prefix))
 
 	ret := C.go_godot_string_trim_prefix(
@@ -10494,7 +10261,6 @@ func (gdt *String) TrimSuffix(p_suffix String) String {
 
 	api := Core11Api
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_suffix))
 
 	ret := C.go_godot_string_trim_suffix(
@@ -10514,7 +10280,6 @@ func (gdt *String) Rstrip(p_chars String) String {
 
 	api := Core11Api
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_chars))
 
 	ret := C.go_godot_string_rstrip(
@@ -10534,11 +10299,8 @@ func (gdt *String) Rsplit(p_divisor String, p_allow_empty bool, p_maxsplit int32
 
 	api := Core11Api
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_divisor))
-	/* godot_bool */
 	in1 := *(*C.godot_bool)(unsafe.Pointer(&p_allow_empty))
-	/* godot_int */
 	in2 := *(*C.godot_int)(unsafe.Pointer(&p_maxsplit))
 
 	ret := C.go_godot_string_rsplit(
@@ -10562,11 +10324,8 @@ func (gdt *String) Count(p_what String, p_from int32, p_to int32) int32 {
 
 	api := Core12Api
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_what))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_from))
-	/* godot_int */
 	in2 := *(*C.godot_int)(unsafe.Pointer(&p_to))
 
 	ret := C.go_godot_string_count(
@@ -10590,11 +10349,8 @@ func (gdt *String) Countn(p_what String, p_from int32, p_to int32) int32 {
 
 	api := Core12Api
 	rcv := (*C.godot_string)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := *(*C.godot_string)(unsafe.Pointer(&p_what))
-	/* godot_int */
 	in1 := *(*C.godot_int)(unsafe.Pointer(&p_from))
-	/* godot_int */
 	in2 := *(*C.godot_int)(unsafe.Pointer(&p_to))
 
 	ret := C.go_godot_string_countn(
@@ -10638,7 +10394,6 @@ func NewStringNameData(p_name string) StringName {
 
 	api := CoreApi
 	rcv := (*C.godot_string_name)(unsafe.Pointer(&dest))
-	/* char */
 	in0 := C.CString(p_name)
 	defer C.free(unsafe.Pointer(in0))
 
@@ -10710,7 +10465,6 @@ func (gdt *StringName) OperatorEqual(p_other StringName) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string_name)(unsafe.Pointer(gdt))
-	/* godot_string_name */
 	in0 := (*C.godot_string_name)(unsafe.Pointer(&p_other))
 
 	ret := C.go_godot_string_name_operator_equal(
@@ -10730,7 +10484,6 @@ func (gdt *StringName) OperatorLess(p_other StringName) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_string_name)(unsafe.Pointer(gdt))
-	/* godot_string_name */
 	in0 := (*C.godot_string_name)(unsafe.Pointer(&p_other))
 
 	ret := C.go_godot_string_name_operator_less(
@@ -10985,9 +10738,7 @@ func (gdt *Transform) Rotated(p_axis Vector3, p_phi float32) Transform {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_axis))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_phi))
 
 	ret := C.go_godot_transform_rotated(
@@ -11009,7 +10760,6 @@ func (gdt *Transform) Scaled(p_scale Vector3) Transform {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_scale))
 
 	ret := C.go_godot_transform_scaled(
@@ -11029,7 +10779,6 @@ func (gdt *Transform) Translated(p_ofs Vector3) Transform {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_ofs))
 
 	ret := C.go_godot_transform_translated(
@@ -11049,9 +10798,7 @@ func (gdt *Transform) LookingAt(p_target Vector3, p_up Vector3) Transform {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_target))
-	/* godot_vector3 */
 	in1 := (*C.godot_vector3)(unsafe.Pointer(&p_up))
 
 	ret := C.go_godot_transform_looking_at(
@@ -11073,7 +10820,6 @@ func (gdt *Transform) XformPlane(p_v Plane) Plane {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_plane */
 	in0 := (*C.godot_plane)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform_xform_plane(
@@ -11093,7 +10839,6 @@ func (gdt *Transform) XformInvPlane(p_v Plane) Plane {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_plane */
 	in0 := (*C.godot_plane)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform_xform_inv_plane(
@@ -11113,7 +10858,6 @@ func (gdt *Transform) OperatorEqual(p_b Transform) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_transform */
 	in0 := (*C.godot_transform)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_transform_operator_equal(
@@ -11133,7 +10877,6 @@ func (gdt *Transform) OperatorMultiply(p_b Transform) Transform {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_transform */
 	in0 := (*C.godot_transform)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_transform_operator_multiply(
@@ -11153,7 +10896,6 @@ func (gdt *Transform) XformVector3(p_v Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform_xform_vector3(
@@ -11173,7 +10915,6 @@ func (gdt *Transform) XformInvVector3(p_v Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform_xform_inv_vector3(
@@ -11193,7 +10934,6 @@ func (gdt *Transform) XformAABB(p_v AABB) AABB {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_aabb */
 	in0 := (*C.godot_aabb)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform_xform_aabb(
@@ -11213,7 +10953,6 @@ func (gdt *Transform) XformInvAABB(p_v AABB) AABB {
 
 	api := CoreApi
 	rcv := (*C.godot_transform)(unsafe.Pointer(gdt))
-	/* godot_aabb */
 	in0 := (*C.godot_aabb)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform_xform_inv_aabb(
@@ -11413,7 +11152,6 @@ func (gdt *Transform2D) Rotated(p_phi float32) Transform2D {
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_phi))
 
 	ret := C.go_godot_transform2d_rotated(
@@ -11433,7 +11171,6 @@ func (gdt *Transform2D) Scaled(p_scale Vector2) Transform2D {
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_scale))
 
 	ret := C.go_godot_transform2d_scaled(
@@ -11453,7 +11190,6 @@ func (gdt *Transform2D) Translated(p_offset Vector2) Transform2D {
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_offset))
 
 	ret := C.go_godot_transform2d_translated(
@@ -11473,7 +11209,6 @@ func (gdt *Transform2D) XformVector2(p_v Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform2d_xform_vector2(
@@ -11493,7 +11228,6 @@ func (gdt *Transform2D) XformInvVector2(p_v Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform2d_xform_inv_vector2(
@@ -11513,7 +11247,6 @@ func (gdt *Transform2D) BasisXformVector2(p_v Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform2d_basis_xform_vector2(
@@ -11533,7 +11266,6 @@ func (gdt *Transform2D) BasisXformInvVector2(p_v Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform2d_basis_xform_inv_vector2(
@@ -11553,9 +11285,7 @@ func (gdt *Transform2D) InterpolateWith(p_m Transform2D, p_c float32) Transform2
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_transform2d */
 	in0 := (*C.godot_transform2d)(unsafe.Pointer(&p_m))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_c))
 
 	ret := C.go_godot_transform2d_interpolate_with(
@@ -11577,7 +11307,6 @@ func (gdt *Transform2D) OperatorEqual(p_b Transform2D) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_transform2d */
 	in0 := (*C.godot_transform2d)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_transform2d_operator_equal(
@@ -11597,7 +11326,6 @@ func (gdt *Transform2D) OperatorMultiply(p_b Transform2D) Transform2D {
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_transform2d */
 	in0 := (*C.godot_transform2d)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_transform2d_operator_multiply(
@@ -11617,7 +11345,6 @@ func (gdt *Transform2D) XformRect2(p_v Rect2) Rect2 {
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_rect2 */
 	in0 := (*C.godot_rect2)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform2d_xform_rect2(
@@ -11637,7 +11364,6 @@ func (gdt *Transform2D) XformInvRect2(p_v Rect2) Rect2 {
 
 	api := CoreApi
 	rcv := (*C.godot_transform2d)(unsafe.Pointer(gdt))
-	/* godot_rect2 */
 	in0 := (*C.godot_rect2)(unsafe.Pointer(&p_v))
 
 	ret := C.go_godot_transform2d_xform_inv_rect2(
@@ -12684,15 +12410,11 @@ func (gdt *Variant) Call(p_method String, p_args []*Variant, p_argcount int32, r
 
 	api := CoreApi
 	rcv := (*C.godot_variant)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_method))
-	/* godot_variant */
-	cArr1 := CArrayFromVariantPtrSlice(p_args)
-	defer Free(unsafe.Pointer(cArr1))
+	cArr1 := AllocNewArrayAsUnsafePointer(p_args)
+	defer Free(cArr1)
 	in1 := (**C.godot_variant)(unsafe.Pointer(cArr1))
-	/* godot_int */
 	in2 := *(*C.godot_int)(unsafe.Pointer(&p_argcount))
-	/* godot_variant_call_error */
 	in3 := (*C.godot_variant_call_error)(unsafe.Pointer(&r_error))
 
 	ret := C.go_godot_variant_call(
@@ -12718,7 +12440,6 @@ func (gdt *Variant) HasMethod(p_method String) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_variant)(unsafe.Pointer(gdt))
-	/* godot_string */
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_method))
 
 	ret := C.go_godot_variant_has_method(
@@ -12738,7 +12459,6 @@ func (gdt *Variant) OperatorEqual(p_other Variant) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_variant)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_other))
 
 	ret := C.go_godot_variant_operator_equal(
@@ -12758,7 +12478,6 @@ func (gdt *Variant) OperatorLess(p_other Variant) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_variant)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_other))
 
 	ret := C.go_godot_variant_operator_less(
@@ -12778,7 +12497,6 @@ func (gdt *Variant) HashCompare(p_other Variant) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_variant)(unsafe.Pointer(gdt))
-	/* godot_variant */
 	in0 := (*C.godot_variant)(unsafe.Pointer(&p_other))
 
 	ret := C.go_godot_variant_hash_compare(
@@ -13028,7 +12746,6 @@ func (gdt *Vector2) DistanceTo(p_to Vector2) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_to))
 
 	ret := C.go_godot_vector2_distance_to(
@@ -13048,7 +12765,6 @@ func (gdt *Vector2) DistanceSquaredTo(p_to Vector2) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_to))
 
 	ret := C.go_godot_vector2_distance_squared_to(
@@ -13068,7 +12784,6 @@ func (gdt *Vector2) AngleTo(p_to Vector2) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_to))
 
 	ret := C.go_godot_vector2_angle_to(
@@ -13088,7 +12803,6 @@ func (gdt *Vector2) AngleToPoint(p_to Vector2) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_to))
 
 	ret := C.go_godot_vector2_angle_to_point(
@@ -13108,9 +12822,7 @@ func (gdt *Vector2) LinearInterpolate(p_b Vector2, p_t float32) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_b))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_t))
 
 	ret := C.go_godot_vector2_linear_interpolate(
@@ -13132,13 +12844,9 @@ func (gdt *Vector2) CubicInterpolate(p_b Vector2, p_pre_a Vector2, p_post_b Vect
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_b))
-	/* godot_vector2 */
 	in1 := (*C.godot_vector2)(unsafe.Pointer(&p_pre_a))
-	/* godot_vector2 */
 	in2 := (*C.godot_vector2)(unsafe.Pointer(&p_post_b))
-	/* godot_real */
 	in3 := *(*C.godot_real)(unsafe.Pointer(&p_t))
 
 	ret := C.go_godot_vector2_cubic_interpolate(
@@ -13164,7 +12872,6 @@ func (gdt *Vector2) Rotated(p_phi float32) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_phi))
 
 	ret := C.go_godot_vector2_rotated(
@@ -13216,7 +12923,6 @@ func (gdt *Vector2) Snapped(p_by Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_by))
 
 	ret := C.go_godot_vector2_snapped(
@@ -13252,7 +12958,6 @@ func (gdt *Vector2) Dot(p_with Vector2) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_with))
 
 	ret := C.go_godot_vector2_dot(
@@ -13272,7 +12977,6 @@ func (gdt *Vector2) Slide(p_n Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_n))
 
 	ret := C.go_godot_vector2_slide(
@@ -13292,7 +12996,6 @@ func (gdt *Vector2) Bounce(p_n Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_n))
 
 	ret := C.go_godot_vector2_bounce(
@@ -13312,7 +13015,6 @@ func (gdt *Vector2) Reflect(p_n Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_n))
 
 	ret := C.go_godot_vector2_reflect(
@@ -13348,7 +13050,6 @@ func (gdt *Vector2) Clamped(p_length float32) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_length))
 
 	ret := C.go_godot_vector2_clamped(
@@ -13368,7 +13069,6 @@ func (gdt *Vector2) OperatorAdd(p_b Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector2_operator_add(
@@ -13388,7 +13088,6 @@ func (gdt *Vector2) OperatorSubtract(p_b Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector2_operator_subtract(
@@ -13408,7 +13107,6 @@ func (gdt *Vector2) OperatorMultiplyVector(p_b Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector2_operator_multiply_vector(
@@ -13428,7 +13126,6 @@ func (gdt *Vector2) OperatorMultiplyScalar(p_b float32) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector2_operator_multiply_scalar(
@@ -13448,7 +13145,6 @@ func (gdt *Vector2) OperatorDivideVector(p_b Vector2) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector2_operator_divide_vector(
@@ -13468,7 +13164,6 @@ func (gdt *Vector2) OperatorDivideScalar(p_b float32) Vector2 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector2_operator_divide_scalar(
@@ -13488,7 +13183,6 @@ func (gdt *Vector2) OperatorEqual(p_b Vector2) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector2_operator_equal(
@@ -13508,7 +13202,6 @@ func (gdt *Vector2) OperatorLess(p_b Vector2) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector2_operator_less(
@@ -13610,9 +13303,7 @@ func (gdt *Vector2) MoveToward(p_to Vector2, p_delta float32) Vector2 {
 
 	api := Core12Api
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_to))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_delta))
 
 	ret := C.go_godot_vector2_move_toward(
@@ -13634,7 +13325,6 @@ func (gdt *Vector2) DirectionTo(p_to Vector2) Vector2 {
 
 	api := Core12Api
 	rcv := (*C.godot_vector2)(unsafe.Pointer(gdt))
-	/* godot_vector2 */
 	in0 := (*C.godot_vector2)(unsafe.Pointer(&p_to))
 
 	ret := C.go_godot_vector2_direction_to(
@@ -13810,7 +13500,6 @@ func (gdt *Vector3) Snapped(p_by Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_by))
 
 	ret := C.go_godot_vector3_snapped(
@@ -13830,9 +13519,7 @@ func (gdt *Vector3) Rotated(p_axis Vector3, p_phi float32) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_axis))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_phi))
 
 	ret := C.go_godot_vector3_rotated(
@@ -13854,9 +13541,7 @@ func (gdt *Vector3) LinearInterpolate(p_b Vector3, p_t float32) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_t))
 
 	ret := C.go_godot_vector3_linear_interpolate(
@@ -13878,13 +13563,9 @@ func (gdt *Vector3) CubicInterpolate(p_b Vector3, p_pre_a Vector3, p_post_b Vect
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
-	/* godot_vector3 */
 	in1 := (*C.godot_vector3)(unsafe.Pointer(&p_pre_a))
-	/* godot_vector3 */
 	in2 := (*C.godot_vector3)(unsafe.Pointer(&p_post_b))
-	/* godot_real */
 	in3 := *(*C.godot_real)(unsafe.Pointer(&p_t))
 
 	ret := C.go_godot_vector3_cubic_interpolate(
@@ -13910,7 +13591,6 @@ func (gdt *Vector3) Dot(p_b Vector3) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_dot(
@@ -13930,7 +13610,6 @@ func (gdt *Vector3) Cross(p_b Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_cross(
@@ -13950,7 +13629,6 @@ func (gdt *Vector3) Outer(p_b Vector3) Basis {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_outer(
@@ -14034,7 +13712,6 @@ func (gdt *Vector3) DistanceTo(p_b Vector3) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_distance_to(
@@ -14054,7 +13731,6 @@ func (gdt *Vector3) DistanceSquaredTo(p_b Vector3) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_distance_squared_to(
@@ -14074,7 +13750,6 @@ func (gdt *Vector3) AngleTo(p_to Vector3) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_to))
 
 	ret := C.go_godot_vector3_angle_to(
@@ -14094,7 +13769,6 @@ func (gdt *Vector3) Slide(p_n Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_n))
 
 	ret := C.go_godot_vector3_slide(
@@ -14114,7 +13788,6 @@ func (gdt *Vector3) Bounce(p_n Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_n))
 
 	ret := C.go_godot_vector3_bounce(
@@ -14134,7 +13807,6 @@ func (gdt *Vector3) Reflect(p_n Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_n))
 
 	ret := C.go_godot_vector3_reflect(
@@ -14154,7 +13826,6 @@ func (gdt *Vector3) OperatorAdd(p_b Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_operator_add(
@@ -14174,7 +13845,6 @@ func (gdt *Vector3) OperatorSubtract(p_b Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_operator_subtract(
@@ -14194,7 +13864,6 @@ func (gdt *Vector3) OperatorMultiplyVector(p_b Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_operator_multiply_vector(
@@ -14214,7 +13883,6 @@ func (gdt *Vector3) OperatorMultiplyScalar(p_b float32) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_operator_multiply_scalar(
@@ -14234,7 +13902,6 @@ func (gdt *Vector3) OperatorDivideVector(p_b Vector3) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_operator_divide_vector(
@@ -14254,7 +13921,6 @@ func (gdt *Vector3) OperatorDivideScalar(p_b float32) Vector3 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_real */
 	in0 := *(*C.godot_real)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_operator_divide_scalar(
@@ -14274,7 +13940,6 @@ func (gdt *Vector3) OperatorEqual(p_b Vector3) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_operator_equal(
@@ -14294,7 +13959,6 @@ func (gdt *Vector3) OperatorLess(p_b Vector3) bool {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_b))
 
 	ret := C.go_godot_vector3_operator_less(
@@ -14350,7 +14014,6 @@ func (gdt *Vector3) GetAxis(p_axis Vector3Axis) float32 {
 
 	api := CoreApi
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3_axis */
 	in0 := *(*C.godot_vector3_axis)(unsafe.Pointer(&p_axis))
 
 	ret := C.go_godot_vector3_get_axis(
@@ -14370,9 +14033,7 @@ func (gdt *Vector3) MoveToward(p_to Vector3, p_delta float32) Vector3 {
 
 	api := Core12Api
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_to))
-	/* godot_real */
 	in1 := *(*C.godot_real)(unsafe.Pointer(&p_delta))
 
 	ret := C.go_godot_vector3_move_toward(
@@ -14394,7 +14055,6 @@ func (gdt *Vector3) DirectionTo(p_to Vector3) Vector3 {
 
 	api := Core12Api
 	rcv := (*C.godot_vector3)(unsafe.Pointer(gdt))
-	/* godot_vector3 */
 	in0 := (*C.godot_vector3)(unsafe.Pointer(&p_to))
 
 	ret := C.go_godot_vector3_direction_to(

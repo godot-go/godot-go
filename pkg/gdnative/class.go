@@ -27,7 +27,7 @@ func (u *UserDataIdentifiableImpl) GetUserData() UserData {
 }
 
 func (u *UserDataIdentifiableImpl) generateUserData(tt TypeTag) {
-	// TODO: provide better method to reduce collision; maybe
+	// TODO: provide better method to reduce collisiosn; maybe
 	//       an auto-increment method?
 	u.UserData = UserData(rand.Int())
 }

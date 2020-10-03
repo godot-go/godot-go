@@ -66,6 +66,11 @@ func initGodotBin() {
 			fmt.Printf("GODOT_BIN = %s\n", godotBin)
 			return
 		}
+
+		if godotBin, err = which("/Applications/Godot.app/Contents/MacOS/Godot"); err == nil {
+			fmt.Printf("GODOT_BIN = %s\n", godotBin)
+			return
+		}
 	}
 
 	panic(err)

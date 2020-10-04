@@ -37,7 +37,7 @@ godot-go has been tested to work with Godot 3.2 in the following platforms and a
 | Platform      | Builds Cross-Compile from Linux | Builds from native OS | Test Pass |
 | ------------- | ------------------------------- | --------------------- | --------- |
 | linux/amd64   | Yes                             | Yes                   | Yes       |
-| darwin/amd64  | Yes                             | Unknown               | Unknown   |
+| darwin/amd64  | Yes                             | Yes                   | Unknown   |
 | windows/amd64 | Yes                             | Yes                   | Unknown   |
 | windows/386   | Yes                             | Unknown               | Unknown   |
 

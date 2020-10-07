@@ -26,28 +26,3 @@ void cgo_gateway_property_set_func(godot_object *owner, void *method_data, void 
 godot_variant cgo_gateway_property_get_func(godot_object *owner, void *method_data, void *user_data) {
 	return go_property_get_func(owner, method_data, user_data);
 }
-
-// This is a gateway function for the free method.
-void cgo_gateway_create_free_func(void *method_data) {
-	go_create_free_func(method_data);
-}
-
-// This is a gateway function for the free method.
-void cgo_gateway_destroy_free_func(void *method_data) {
-	go_destroy_free_func(method_data);
-}
-
-// This is a gateway function for the free method.
-void cgo_gateway_method_free_func(void *method_data) {
-	go_method_free_func(method_data);
-}
-
-// This is a gateway function for the free method.
-void cgo_gateway_property_set_free_func(void *method_data) {
-	go_property_set_free_func(method_data);
-}
-
-// This is a gateway function for the free method.
-void cgo_gateway_property_get_free_func(void *method_data) {
-	go_property_get_free_func(method_data);
-}

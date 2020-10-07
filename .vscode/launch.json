@@ -5,149 +5,119 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "lldb-test",
-      "type": "lldb",
-      "request": "launch",
-      "program": "${workspaceFolder}/godot_engine/bin/godot.x11.tools.64.llvm",
-      "args": [
-        "-v",
-        "-d",
-        "--path",
-        "test/project"
-      ],
-      "env": {
-        "cgocheck": "2",
-        "GOGC": "1",
-        "asyncpremptoff": "1"
-      },
-      "stopOnEntry": false,
-      "preRunCommands": [
-      ],
-      "initCommands": [
-      ],
-    },
-    {
-      "name": "gdb-test",
+      "name": "test",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/godot_engine/bin/godot.x11.tools.64.llvm",
-      "args": [
-        "-v",
-        "-d",
-        "--path",
-        "test/project"
-      ],
-      "stopAtEntry": false,
-      // "customLaunchSetupCommands": [
-      //   { "text": "target-run", "description": "run target", "ignoreFailures": false }
-      // ],
-      "cwd": "${workspaceFolder}",
-      "launchCompleteCommand": "exec-run",
-      "environment": [
-        {
-          "name": "cgocheck",
-          "value": "2"
-        },
-        {
-          "name": "GOGC",
-          "value": "1"
-        },
-        {
-          "name": "LOG_LEVEL",
-          "value": "INFO"
-        },
-        {
-          "name": "asyncpremptoff",
-          "value": "1"
-        }
-      ],
-      "linux": {
-        "MIMode": "gdb",
-        "miDebuggerPath": "/usr/bin/gdb"
-      },
-      "osx": {
-        "MIMode": "lldb"
-      },
-      "windows": {
-        "MIMode": "gdb",
-        "miDebuggerPath": "C:\\MinGw\\bin\\gdb.exe"
-      },
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ],
-      "sourceFileMap": {}
-    },
-    {
-      "name": "gdb-godot-editor",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${workspaceFolder}/godot_engine/bin/godot.x11.tools.64.llvm",
-      "args": [
-        "-v",
-        "-d",
-        "-e",
-        "--path",
-        "test/project"
-      ],
-      "stopAtEntry": false,
-      // "customLaunchSetupCommands": [
-      //   { "text": "target-run", "description": "run target", "ignoreFailures": false }
-      // ],
-      "cwd": "${workspaceFolder}",
-      "launchCompleteCommand": "exec-run",
-      "environment": [
-        {
-          "name": "cgocheck",
-          "value": "2"
-        },
-        {
-          "name": "GOGC",
-          "value": "1"
-        },
-        {
-          "name": "LOG_LEVEL",
-          "value": "INFO"
-        },
-        {
-          "name": "asyncpremptoff",
-          "value": "1"
-        }
-      ],
-      "linux": {
-        "MIMode": "gdb",
-        "miDebuggerPath": "/usr/bin/gdb"
-      },
-      "osx": {
-        "MIMode": "lldb"
-      },
-      "windows": {
-        "MIMode": "gdb",
-        "miDebuggerPath": "C:\\MinGw\\bin\\gdb.exe"
-      },
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ],
-      "sourceFileMap": {}
-    },
-    {
-      "name": "run generate class",
-      "type": "go",
-      "request": "launch",
-      "mode": "debug",
-      "program": "${workspaceFolder}/cmd/main.go",
+      "program": "${env:HOME}/bin/godot",
       "args": [
         "--verbose",
-        "--classes"
+        "--debug",
+        "--path",
+        "test/project"
       ],
+      "stopAtEntry": false,
+      // "customLaunchSetupCommands": [
+      //   { "text": "target-run", "description": "run target", "ignoreFailures": false }
+      // ],
       "cwd": "${workspaceFolder}",
+      "launchCompleteCommand": "exec-run",
+      "environment": [
+        {
+          "name": "GOGC",
+          "value": "1"
+        },
+        {
+          "name": "LOG_LEVEL",
+          "value": "DEBUG"
+        },
+        {
+          "name": "TEST_USE_GINKGO_WRITER",
+          "value": "1"
+        },
+        {
+          "name": "GODEBUG",
+          "value": "asyncpremptoff=1,cgocheck=1"
+        }
+      ],
+      "linux": {
+        "MIMode": "gdb",
+        "miDebuggerPath": "/usr/bin/gdb"
+      },
+      "osx": {
+        "MIMode": "gdb"
+      },
+      "windows": {
+        "MIMode": "gdb",
+        "miDebuggerPath": "C:\\MinGw\\bin\\gdb.exe"
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "sourceFileMap": {
+        "./github.com/godot-go/godot-go/": "${workspaceFolder}/",
+      }
+    },
+    {
+      "name": "editor",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${env:HOME}/bin/godot",
+      "args": [
+        "--editor",
+        "--verbose",
+        "--debug",
+        "--path",
+        "test/project"
+      ],
+      "stopAtEntry": false,
+      // "customLaunchSetupCommands": [
+      //   { "text": "target-run", "description": "run target", "ignoreFailures": false }
+      // ],
+      "cwd": "${workspaceFolder}",
+      "launchCompleteCommand": "exec-run",
+      "environment": [
+        {
+          "name": "GOGC",
+          "value": "1"
+        },
+        {
+          "name": "LOG_LEVEL",
+          "value": "DEBUG"
+        },
+        {
+          "name": "TEST_USE_GINKGO_WRITER",
+          "value": "1"
+        },
+        {
+          "name": "GODEBUG",
+          "value": "asyncpremptoff=1,cgocheck=1"
+        }
+      ],
+      "linux": {
+        "MIMode": "gdb",
+        "miDebuggerPath": "/usr/bin/gdb"
+      },
+      "osx": {
+        "MIMode": "gdb"
+      },
+      "windows": {
+        "MIMode": "gdb",
+        "miDebuggerPath": "C:\\MinGw\\bin\\gdb.exe"
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "sourceFileMap": {
+        "./github.com/godot-go/godot-go/": "${workspaceFolder}/",
+      }
     }
   ]
 }

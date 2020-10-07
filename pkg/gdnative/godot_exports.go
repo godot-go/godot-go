@@ -33,7 +33,7 @@ func apiStructOffset(extensions **C.godot_gdnative_api_struct, i int) *C.godot_g
 func GodotGdnativeInit(options *GdnativeInitOptions) {
 	RegisterState.InitCount += 1
 
-	log.WithField("InitCount", fmt.Sprintf("%d", RegisterState.InitCount)).Debug("GodotGdnativeInit called")
+	log.Debug("GodotGdnativeInit called", AnyField("InitCount", RegisterState.InitCount))
 
 	if CoreApi != nil {
 		log.Panic("godot gdnative is already initialized!")
@@ -41,7 +41,8 @@ func GodotGdnativeInit(options *GdnativeInitOptions) {
 
 	RegisterState.TagDB = tagDB{
 		parentTo:        map[TypeTag]TypeTag{},
-		typeTags:        map[TypeTag]string{},
+		classNames:      map[TypeTag]string{},
+		typeTags:        map[string]TypeTag{},
 		methodTags:      map[MethodTag]classMethod{},
 		propertySetTags: map[PropertySetTag]classPropertySet{},
 		propertyGetTags: map[PropertyGetTag]classPropertyGet{},
@@ -66,7 +67,7 @@ func GodotGdnativeInit(options *GdnativeInitOptions) {
 	// output library path
 	activeLibraryPath := *(*String)(unsafe.Pointer(cOpts.active_library_path))
 	charString := activeLibraryPath.Ascii()
-	log.Info("active_library_path: ", charString.GetData())
+	log.Info("active_library_path", StringField("path", charString.GetData()))
 
 	// output extension versions
 	for i := 0; i < int(cOpts.api_struct.num_extensions); i++ {
@@ -131,7 +132,7 @@ func GodotGdnativeInit(options *GdnativeInitOptions) {
 // }
 
 func GodotGdnativeTerminate(options *GdnativeTerminateOptions) {
-	log.Trace("GodotGdnativeTerminate called")
+	log.Debug("GodotGdnativeTerminate called")
 
 	if Nativescript11Api == nil {
 		log.Panic("godot extension nativescript 1.1 api is already nil")
@@ -151,11 +152,11 @@ func GodotGdnativeTerminate(options *GdnativeTerminateOptions) {
 
 	CoreApi = nil
 
-	log.Trace("GodotGdnativeTerminate finished")
+	log.Debug("GodotGdnativeTerminate finished")
 }
 
 func GodotNativescriptInit(handle unsafe.Pointer) {
-	log.Trace("GodotNativescriptInit called")
+	log.Debug("GodotNativescriptInit called")
 
 	if len(initNativescriptCallbacks) == 0 {
 		log.Warn("no gdnative init callbacks registered gdnative.RegisterInitCallback ")
@@ -180,18 +181,18 @@ func GodotNativescriptInit(handle unsafe.Pointer) {
 	}
 
 	RegisterInstanceBindingFunctions()
-	log.WithField("language_index", strconv.Itoa(int(RegisterState.LanguageIndex))).Info("language index assigned")
+	log.Info("language index assigned", AnyField("language_index", strconv.Itoa(int(RegisterState.LanguageIndex))))
 
-	log.Info(fmt.Sprintf("init %d callback(s)...", len(initNativescriptCallbacks)))
+	log.Info("init callbacks", AnyField("count", len(initNativescriptCallbacks)))
 	for _, cb := range initNativescriptCallbacks {
 		cb()
 	}
 
-	log.Trace("GodotNativescriptInit finished")
+	log.Debug("GodotNativescriptInit finished")
 }
 
 func GodotNativescriptTerminate(handle unsafe.Pointer) {
-	log.Trace("GodotNativescriptTerminate called")
+	log.Debug("GodotNativescriptTerminate called")
 
 	wrappedTerminateCallback()
 
@@ -207,5 +208,5 @@ func GodotNativescriptTerminate(handle unsafe.Pointer) {
 
 	RegisterState.NativescriptHandle = nil
 
-	log.Trace("GodotNativescriptTerminate finished")
+	log.Debug("GodotNativescriptTerminate finished")
 }

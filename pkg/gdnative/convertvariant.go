@@ -67,7 +67,9 @@ func VariantToGoType(variant Variant) reflect.Value {
 	case GODOT_VARIANT_TYPE_POOL_COLOR_ARRAY:
 		return reflect.ValueOf(variant.AsPoolColorArray())
 	}
-	log.WithField("type", fmt.Sprintf("%d", variant.GetType())).Panic("variant to native built-in type version unhandled")
+	log.Panic("variant to native built-in type version unhandled",
+		StringField("type", fmt.Sprintf("%d", variant.GetType())),
+	)
 	return reflect.ValueOf(nil)
 }
 
@@ -95,9 +97,9 @@ func GoTypeToVariant(value reflect.Value) Variant {
 	case float64:
 		return NewVariantReal(v)
 	case string:
-		log.
-			WithField("value", fmt.Sprintf("%v", value)).
-			Panic("unable to handle native go string. please wrap string in a Godot String with gdnative.NewStringFromGoString")
+		log.Panic("unable to handle native go string. please wrap string in a Godot String with gdnative.NewStringFromGoString",
+			StringField("value", fmt.Sprintf("%v", value)),
+		)
 	case String:
 		return NewVariantString(v)
 	case Vector2:
@@ -147,6 +149,6 @@ func GoTypeToVariant(value reflect.Value) Variant {
 	case Variant:
 		return v
 	}
-	log.WithField("value", fmt.Sprintf("%v", value)).Panic("value not handled")
+	log.Panic("value not handled", StringField("value", fmt.Sprintf("%v", value)))
 	return NewVariantNil()
 }

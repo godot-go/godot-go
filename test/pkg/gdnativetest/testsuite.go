@@ -21,8 +21,7 @@ func init() {
 }
 
 func initNativescript() {
-	log.SetLevel(log.DebugLevel)
-	log.Trace("initNativescript called")
+	log.Debug("initNativescript called")
 	runTests()
 
 	// TODO: replace this with a better godot way of exiting
@@ -42,7 +41,7 @@ func runTests() {
 	}
 
 	if isSet("TEST_USE_GINKGO_WRITER") {
-		log.SetOutput(GinkgoWriter)
+		log.SetWriteSyncer(GinkgoWriter)
 	}
 
 	RegisterFailHandler(Fail)

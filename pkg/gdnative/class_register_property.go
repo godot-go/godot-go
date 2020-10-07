@@ -26,11 +26,11 @@ func (d ClassRegisteredEvent) RegisterProperty(
 	)
 
 	if _, ok = d.ClassType.MethodByName(setFunc); !ok {
-		log.WithField("setFunc", setFunc).Panic("setFunc not found")
+		log.Panic("setFunc not found", StringField("setFunc", setFunc))
 	}
 
 	if _, ok = d.ClassType.MethodByName(getFunc); !ok {
-		log.WithField("getFunc", getFunc).Panic("getFunc not found")
+		log.Panic("getFunc not found", StringField("getFunc", getFunc))
 	}
 
 	pst := RegisterState.TagDB.RegisterPropertySet(d.ClassName, name, setFunc)
@@ -65,12 +65,10 @@ func (d ClassRegisteredEvent) RegisterProperty(
 
 	set_func := C.godot_property_set_func{}
 	set_func.method_data = unsafe.Pointer(uintptr(uint(pst)))
-	set_func.free_func = (C.free_func)(unsafe.Pointer(C.cgo_gateway_property_set_free_func))
 	set_func.set_func = (C.set_func)(unsafe.Pointer(C.cgo_gateway_property_set_func))
 
 	get_func := C.godot_property_get_func{}
 	get_func.method_data = unsafe.Pointer(uintptr(uint(pgt)))
-	get_func.free_func = (C.free_func)(unsafe.Pointer(C.cgo_gateway_property_get_free_func))
 	get_func.get_func = (C.get_func)(unsafe.Pointer(C.cgo_gateway_property_get_func))
 
 	C.go_godot_nativescript_register_property(NativescriptApi, RegisterState.NativescriptHandle, cClassName, cName, &attr, set_func, get_func)
@@ -92,10 +90,10 @@ func go_property_set_func(owner *C.godot_object, methodData unsafe.Pointer, user
 	}
 
 	// assert this is a valid instance
-	log.
-		WithField("className", classInst.ClassName()).
-		WithField("baseName", classInst.BaseClass()).
-		Info("assert class and base names")
+	log.Info("assert class and base names",
+		StringField("className", classInst.ClassName()),
+		StringField("baseName", classInst.BaseClass()),
+	)
 
 	valueInst := reflect.ValueOf(classInst)
 
@@ -104,7 +102,7 @@ func go_property_set_func(owner *C.godot_object, methodData unsafe.Pointer, user
 	instMethod := valueInst.MethodByName(methodName)
 
 	if instMethod == (reflect.Value{}) {
-		log.WithField("methodName", methodName).Panic("unable to find property set method")
+		log.Panic("unable to find property set method", StringField("methodName", methodName))
 	}
 
 	instMethod.Call(callArgs)
@@ -124,10 +122,10 @@ func go_property_get_func(owner *C.godot_object, methodData unsafe.Pointer, user
 	}
 
 	// assert this is a valid instance
-	log.
-		WithField("className", classInst.ClassName()).
-		WithField("baseName", classInst.BaseClass()).
-		Info("assert class and base names")
+	log.Info("assert class and base names",
+		StringField("className", classInst.ClassName()),
+		StringField("baseName", classInst.BaseClass()),
+	)
 
 	valueInst := reflect.ValueOf(classInst)
 
@@ -136,7 +134,7 @@ func go_property_get_func(owner *C.godot_object, methodData unsafe.Pointer, user
 	instMethod := valueInst.MethodByName(methodName)
 
 	if instMethod == (reflect.Value{}) {
-		log.WithField("methodName", methodName).Panic("unable to find property get method")
+		log.Panic("unable to find property get method", StringField("methodName", methodName))
 	}
 
 	result := instMethod.Call(callArgs)
@@ -155,14 +153,4 @@ func go_property_get_func(owner *C.godot_object, methodData unsafe.Pointer, user
 	ret := GoTypeToVariant(result[0])
 
 	return *(*C.godot_variant)(unsafe.Pointer(&ret))
-}
-
-//export go_property_set_free_func
-func go_property_set_free_func(methodData unsafe.Pointer) {
-
-}
-
-//export go_property_get_free_func
-func go_property_get_free_func(methodData unsafe.Pointer) {
-
 }

@@ -24,7 +24,10 @@ func (d ClassRegisteredEvent) RegisterMethod(bindName string, methodName string)
 	_, ok := d.ClassType.MethodByName(methodName)
 
 	if !ok {
-		log.WithField("bind", bindName).WithField("method", methodName).Panic("method not found")
+		log.Panic("method not found",
+			StringField("bind", bindName),
+			StringField("method", methodName),
+		)
 	}
 
 	attribs := C.godot_method_attributes{}
@@ -35,7 +38,6 @@ func (d ClassRegisteredEvent) RegisterMethod(bindName string, methodName string)
 	inst := C.godot_instance_method{}
 	inst.method = (C.create_func)(unsafe.Pointer(C.cgo_gateway_method_func))
 	inst.method_data = unsafe.Pointer(uintptr(tag))
-	inst.free_func = (C.free_func)(unsafe.Pointer(C.cgo_gateway_method_free_func))
 
 	cClassName := C.CString(d.ClassName)
 	defer C.free(unsafe.Pointer(cClassName))
@@ -52,7 +54,12 @@ func (d ClassRegisteredEvent) RegisterMethod(bindName string, methodName string)
 		inst,
 	)
 
-	log.WithFields(WithMethodTag(tag)).Trace("class method registered")
+	log.Debug("class method registered",
+		StringField("class", d.ClassName),
+		StringField("bind", bindName),
+		StringField("method", methodName),
+		MethodTagField("methodTag", tag),
+	)
 }
 
 //export go_method_func
@@ -64,11 +71,10 @@ func go_method_func(godotObject *C.godot_object, methodData unsafe.Pointer, user
 	argArr := WrapUnsafePointerAsSlice(na, unsafe.Pointer(args))
 
 	if fmt.Sprintf("%p", args) != fmt.Sprintf("%p", argArr) {
-		log.WithField(
-			"arg", fmt.Sprintf("%p", args),
-		).WithField(
-			"argArr", fmt.Sprintf("%p", argArr),
-		).Panic("wrong address for args slice")
+		log.Panic("wrong address for args slice",
+			StringField("arg", fmt.Sprintf("%p", args)),
+			StringField("argArr", fmt.Sprintf("%p", argArr)),
+		)
 	}
 
 	as := make([]*Variant, na)
@@ -97,7 +103,7 @@ func go_method_func(godotObject *C.godot_object, methodData unsafe.Pointer, user
 	instMethod := instValue.MethodByName(methodName)
 
 	if instMethod == (reflect.Value{}) {
-		log.WithField("method", methodName).Panic("unable to find method")
+		log.Panic("method not found", StringField("method", methodName))
 	}
 
 	result := instMethod.Call(callArgs)
@@ -110,7 +116,7 @@ func go_method_func(godotObject *C.godot_object, methodData unsafe.Pointer, user
 	}
 
 	if resultSize > 1 {
-		log.Panic(fmt.Sprintf("only one value is expected: %v", result))
+		log.Panic("unexpected multiple results", AnyField("result", result))
 	}
 
 	valueInterface := result[0].Interface()
@@ -121,9 +127,4 @@ func go_method_func(godotObject *C.godot_object, methodData unsafe.Pointer, user
 
 	ret := NewVariantNil()
 	return *(*C.godot_variant)(unsafe.Pointer(&ret))
-}
-
-//export go_method_free_func
-func go_method_free_func(methodData unsafe.Pointer) {
-
 }

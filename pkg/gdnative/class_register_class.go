@@ -20,25 +20,46 @@ type CreateNativeScriptClassFunc func(owner *GodotObject, typeTag TypeTag) Nativ
 
 var (
 	// TODO: this currently doesn't empty out since there is no "unregister" method
-	registeredCreateClassInstanceFuncs = map[TypeTag]CreateNativeScriptClassFunc{}
+	registeredNativeScriptClassTypes = map[TypeTag]reflect.Type{}
 
 	// TODO: do we want to nest this map to reduce the chance of hash collisions?
 	nativeScriptInstanceMap UserDataMap = UserDataMap{}
+
+	nativeScriptClassType = reflect.TypeOf(new(NativeScriptClass)).Elem()
 )
 
-func RegisterClass(instance NativeScriptClass, classFunc CreateNativeScriptClassFunc) {
+func RegisterClass(instance NativeScriptClass) {
+	// godot-cpp implementation:
+	//
+	// template <class T>
+	// void register_class() {
+	// 	godot_instance_create_func create = {};
+	// 	create.create_func = _godot_class_instance_func<T>;
+
+	// 	godot_instance_destroy_func destroy = {};
+	// 	destroy.destroy_func = _godot_class_destroy_func<T>;
+
+	// 	_TagDB::register_type(T::___get_id(), T::___get_base_id());
+
+	// 	godot::nativescript_api->godot_nativescript_register_class(godot::_RegisterState::nativescript_handle, T::___get_type_name(), T::___get_base_type_name(), create, destroy);
+	// 	godot::nativescript_1_1_api->godot_nativescript_set_type_tag(godot::_RegisterState::nativescript_handle, T::___get_type_name(), (const void *)typeid(T).hash_code());
+	// 	T::_register_methods();
+	// }
+
 	baseName := instance.BaseClass()
 
+	// classType should hold the type: *MyCustomClassStruct
 	classType := reflect.TypeOf(instance)
 
-	if classType.Kind() != reflect.Ptr {
-		log.Panic("instance should be a pointer to a struct")
+	// all classTypes should implement gdnative.NativeScriptClass
+	if !classType.Implements(nativeScriptClassType) {
+		log.Panic("class type must implement NativeScriptClass")
 	}
 
 	className := classType.Elem().Name()
 
 	if len(className) == 0 {
-		log.WithField("class", className).Panic("invalid class name")
+		log.Panic("invalid class name", StringField("class", className))
 	}
 
 	ctt, btt := RegisterState.TagDB.RegisterType(className, baseName)
@@ -48,18 +69,19 @@ func RegisterClass(instance NativeScriptClass, classFunc CreateNativeScriptClass
 	createFunc := C.godot_instance_create_func{}
 	createFunc.create_func = (C.create_func)(unsafe.Pointer(C.cgo_gateway_create_func))
 	createFunc.method_data = unsafe.Pointer(uintptr(classMethodData))
-	createFunc.free_func = (C.free_func)(unsafe.Pointer(C.cgo_gateway_create_free_func))
 
 	destroyFunc := C.godot_instance_destroy_func{}
 	destroyFunc.destroy_func = (C.destroy_func)(unsafe.Pointer(C.cgo_gateway_destroy_func))
 	destroyFunc.method_data = unsafe.Pointer(uintptr(classMethodData))
-	destroyFunc.free_func = (C.free_func)(unsafe.Pointer(C.cgo_gateway_destroy_free_func))
 
-	if _, ok := registeredCreateClassInstanceFuncs[ctt]; ok {
-		log.WithFields(WithRegisteredClass(className, baseName)).Panic("create class function with the same name already registered")
+	if _, ok := registeredNativeScriptClassTypes[ctt]; ok {
+		log.Panic("create class function with the same name already registered",
+			StringField("class", className),
+			StringField("base", baseName),
+		)
 	}
 
-	registeredCreateClassInstanceFuncs[ctt] = classFunc
+	registeredNativeScriptClassTypes[ctt] = classType
 
 	event := NewClassRegisteredEvent(
 		className,
@@ -90,23 +112,49 @@ func RegisterClass(instance NativeScriptClass, classFunc CreateNativeScriptClass
 	// it can begin registering methods, signals, and properties
 	instance.OnClassRegistered(event)
 
-	log.WithFields(WithRegisteredClass(className, baseName)).Info("class registered")
+	log.Info("class registered", StringField("class", className))
 }
 
 //export go_create_func
 func go_create_func(godotObject *C.godot_object, methodData unsafe.Pointer) unsafe.Pointer {
+	// godot-cpp implementation:
+	//
+	// template <class T>
+	// void *_godot_class_instance_func(godot_object *p, void *method_data) {
+	// 	T *d = new T();
+	// 	d->_owner = p;
+	// 	d->_type_tag = typeid(T).hash_code();
+	// 	d->_init();
+	// 	return d;
+	// }
+
 	obj := (*GodotObject)(godotObject)
 	tt := TypeTag(uintptr(methodData))
 
-	createClassFunc, ok := registeredCreateClassInstanceFuncs[tt]
+	classType, ok := registeredNativeScriptClassTypes[tt]
 
 	if !ok {
-		log.WithFields(WithTypeTag(tt)).Panic("create func callback not found")
+		log.Info("create func callback not found",
+			StringField("class", RegisterState.TagDB.GetRegisteredClassName(tt)),
+		)
 	}
 
-	classInst := createClassFunc(obj, tt)
+	// returns an instance of *MyCustomClassStruct{}
+	reflectedClassInst := reflect.New(classType.Elem())
 
-	classInst.generateUserData(tt)
+	classInst := reflectedClassInst.Interface().(NativeScriptClass)
+
+	if classInst == nil {
+		log.Panic("cast failure", AnyField("inst", classInst))
+	}
+
+	if obj == nil {
+		log.Panic("owner object cannot be nil", AnyField("owner", obj))
+	}
+
+	classInst.setOwnerObject(obj)
+	classInst.setTypeTag(tt)
+	classInst.setUserDataFromTypeTag(tt)
 
 	if classInst.GetUserData() == UserData(0) {
 		log.Panic("class must have a user data identifier")
@@ -124,6 +172,12 @@ func go_create_func(godotObject *C.godot_object, methodData unsafe.Pointer) unsa
 		log.Panic("user data error: collision found")
 	}
 
+	log.Debug("go_create_func: created instance",
+		StringField("class", RegisterState.TagDB.GetRegisteredClassName(tt)),
+		GodotObjectField("owner", obj),
+		NativeScriptClassField("inst", classInst),
+	)
+
 	nativeScriptInstanceMap[ud] = classInst
 
 	return (unsafe.Pointer)(uintptr(ud))
@@ -132,14 +186,4 @@ func go_create_func(godotObject *C.godot_object, methodData unsafe.Pointer) unsa
 //export go_destroy_func
 func go_destroy_func(godotObject *C.godot_object, methodData unsafe.Pointer, userData unsafe.Pointer) {
 	delete(nativeScriptInstanceMap, UserData(uintptr(userData)))
-}
-
-//export go_create_free_func
-func go_create_free_func(methodData unsafe.Pointer) {
-
-}
-
-//export go_destroy_free_func
-func go_destroy_free_func(methodData unsafe.Pointer) {
-
 }

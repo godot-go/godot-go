@@ -17,7 +17,7 @@ func NewStringFromGoString(value string) String {
 	// https://github.com/godotengine/godot/blob/ef5891091bceef2800b4fae4cd85af219e791467/core/ustring.h#L300
 	// return true on error
 	if str.ParseUtf8(value) {
-		log.WithField("value", value).Info("unable to parse '%s' as utf-8", value)
+		log.Info("unable to parse utf-8", StringField("value", value))
 	}
 	return str
 }

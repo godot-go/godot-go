@@ -87,14 +87,7 @@ func go_method_func(godotObject *C.godot_object, methodData unsafe.Pointer, user
 
 	// Unwrap the Variants
 	for i, v := range as {
-		x := VariantToGoType(*v)
-		// if x.IsValid() && x.Kind() == reflect.Int64 {
-		// 	int32v := int32(x.Int())
-		// 	callArgs[i] = reflect.ValueOf(int32v)
-		// } else {
-		// 	callArgs[i] = x
-		// }
-		callArgs[i] = x
+		callArgs[i] = VariantToGoType(*v)
 	}
 
 	classInst, ok := nativeScriptInstanceMap[ud]
@@ -111,10 +104,6 @@ func go_method_func(godotObject *C.godot_object, methodData unsafe.Pointer, user
 
 	if instMethod == (reflect.Value{}) {
 		log.Panic("method not found", StringField("method", methodName))
-	}
-
-	if methodName != "PhysicsProcess" {
-		log.Info("call", StringField("method", methodName), AnyField("args", callArgs))
 	}
 
 	result := instMethod.Call(callArgs)

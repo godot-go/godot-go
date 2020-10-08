@@ -88,11 +88,6 @@ func envWithPlatform(platform BuildPlatform) map[string]string {
 		"CGO_ENABLED":            "1",
 	}
 
-	// enable for cross-compiling from linux
-	// case "windows":
-	// 	envs["CC"] = "i686-w64-mingw32-gcc"
-	// }
-
 	return envs
 }
 

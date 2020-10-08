@@ -68,7 +68,7 @@ func go_method_func(godotObject *C.godot_object, methodData unsafe.Pointer, user
 	ud := UserData(uintptr(userData))
 	na := int(nargs)
 
-	argArr := WrapUnsafePointerAsSlice(na, unsafe.Pointer(args))
+	argArr := WrapUnsafePointerAsSlice(int(na), unsafe.Pointer(args))
 
 	if fmt.Sprintf("%p", args) != fmt.Sprintf("%p", argArr) {
 		log.Panic("wrong address for args slice",

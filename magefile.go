@@ -88,11 +88,6 @@ func envWithPlatform(platform BuildPlatform) map[string]string {
 		"CGO_ENABLED":            "1",
 	}
 
-	// enable for cross-compiling from linux
-	// case "windows":
-	// 	envs["CC"] = "i686-w64-mingw32-gcc"
-	// }
-
 	return envs
 }
 
@@ -150,9 +145,10 @@ func runPlugin(appPath string) error {
 	return sh.RunWith(
 		map[string]string{
 			"GOTRACEBACK": "crash",
-			"GODEBUG": "asyncpreemptoff=0,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=1",
+			"GODEBUG": "asyncpreemptoff=0,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=0",
 			"LOG_LEVEL": "debug",
-			// "TEST_USE_GINKGO_WRITER": "1",
+			"TEST_USE_GINKGO_RECOVER": "1",
+			"TEST_USE_GINKGO_WRITER": "1",
 		},
 		godotBin, "--verbose", "-v", "-d",
 		"--path", filepath.Join(appPath, "project"))

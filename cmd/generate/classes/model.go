@@ -91,7 +91,7 @@ func goTypeAndUsage(value string) (string, Usage) {
 	case "bool":
 		return "bool", USAGE_GO_PRIMATIVE
 	case "int":
-		return "int32", USAGE_GO_PRIMATIVE
+		return "int64", USAGE_GO_PRIMATIVE
 	case "float":
 		return "float32", USAGE_GO_PRIMATIVE
 	case "double":
@@ -158,7 +158,7 @@ type ApiTypeBaseClassIndex map[string]map[string][]GDAPI
 
 func (a GDAPIs) FilterForObject(index gdapiPathIndex) GDAPIs {
 	arr := GDAPIs{}
-	
+
 	if index == nil {
 		return arr
 	}

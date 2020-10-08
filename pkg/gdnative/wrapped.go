@@ -20,7 +20,7 @@ var (
 	wrappedNativeScriptSetLibraryMethodBind   *C.godot_method_bind
 	wrappedNativeScriptSetScriptMethodBind    *C.godot_method_bind
 	nilptr                                    = unsafe.Pointer(uintptr(0))
-	strNativeScript                           = C.CString("NativeScript")
+	strNativeScript                           *C.char
 )
 
 func init() {
@@ -59,6 +59,8 @@ func (w *WrappedImpl) setTypeTag(tt TypeTag) {
 }
 
 func wrappedInitCallback() {
+	strNativeScript = C.CString("NativeScript")
+
 	// Ported from godot-cpp: https://github.com/godotengine/godot-cpp/blob/master/include/core/Godot.hpp#L39
 	// these are static members in create_custom_class_instance()
 	strSetClassName := C.CString("set_class_name")

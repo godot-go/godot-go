@@ -68,7 +68,7 @@ func go_method_func(godotObject *C.godot_object, methodData unsafe.Pointer, user
 	ud := UserData(uintptr(userData))
 	na := int(nargs)
 
-	argArr := WrapUnsafePointerAsSlice(na, unsafe.Pointer(args))
+	argArr := WrapUnsafePointerAsSlice(int(na), unsafe.Pointer(args))
 
 	if fmt.Sprintf("%p", args) != fmt.Sprintf("%p", argArr) {
 		log.Panic("wrong address for args slice",
@@ -87,7 +87,14 @@ func go_method_func(godotObject *C.godot_object, methodData unsafe.Pointer, user
 
 	// Unwrap the Variants
 	for i, v := range as {
-		callArgs[i] = VariantToGoType(*v)
+		x := VariantToGoType(*v)
+		// if x.IsValid() && x.Kind() == reflect.Int64 {
+		// 	int32v := int32(x.Int())
+		// 	callArgs[i] = reflect.ValueOf(int32v)
+		// } else {
+		// 	callArgs[i] = x
+		// }
+		callArgs[i] = x
 	}
 
 	classInst, ok := nativeScriptInstanceMap[ud]
@@ -104,6 +111,10 @@ func go_method_func(godotObject *C.godot_object, methodData unsafe.Pointer, user
 
 	if instMethod == (reflect.Value{}) {
 		log.Panic("method not found", StringField("method", methodName))
+	}
+
+	if methodName != "PhysicsProcess" {
+		log.Info("call", StringField("method", methodName), AnyField("args", callArgs))
 	}
 
 	result := instMethod.Call(callArgs)

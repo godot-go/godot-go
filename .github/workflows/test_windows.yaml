@@ -79,7 +79,6 @@ jobs:
     #   run: ./Godot_v3.2.2-stable_win64.exe --verbose -v -d --path test/project/
     #   shell: bash
     #   env:
-    #     cgocheck: 2
     #     LOG_LEVEL: "trace"
     #     TEST_USE_GINKGO_WRITER: 1
     #     LANG: "en_US.utf8"

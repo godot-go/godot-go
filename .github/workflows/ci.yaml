@@ -59,8 +59,7 @@ jobs:
         if: ${{ contains(matrix.targets, 'linux/amd64') }}
         run: godot3-server --verbose -v -d --path test/project/
         env:
-          cgocheck: 2
-          LOG_LEVEL: "trace"
+          LOG_LEVEL: "debug"
           TEST_USE_GINKGO_WRITER: 1
           LANG: "en_US.utf8"
           CI: 1

@@ -29,7 +29,7 @@ typedef void *(*alloc_instance_binding_data)(void *, const void *, godot_object 
 typedef void (*free_instance_binding_data)(void *, void *);
 
 // cgo gateway / proxy: https://dev.to/mattn/call-go-function-from-c-function-1n3
-// cgo_* functions are written in C. the cgo_* functions are assigned as callbacks 
+// cgo_* functions are written in C. the cgo_* functions are assigned as callbacks
 // for godot to call. These cgo_* functions will call the go_* functions.
 
 void *cgo_gateway_create_func(godot_object *, void *);
@@ -52,13 +52,6 @@ void go_property_set_func(godot_object *, void *, void *, godot_variant *);
 
 godot_variant cgo_gateway_property_get_func(godot_object *, void *, void *);
 godot_variant go_property_get_func(godot_object *, void *, void *);
-
-void cgo_gateway_method_free_func(void *);
-void go_method_free_func(void *);
-void cgo_gateway_property_set_free_func(void *);
-void go_property_set_free_func(void *);
-void cgo_gateway_property_get_free_func(void *);
-void go_property_get_free_func(void *);
 
 char * get_class_name_from_type_tag(long);
 char * get_method_name_from_method_tag(long);

@@ -3,6 +3,7 @@ package gdnative
 /*
 #include <nativescript.wrapper.gen.h>
 #include <cgo_gateway_instance_binding.h>
+#include <cgo_gateway_register_class.h>
 #include <gdnative_api_struct.gen.h>
 #include <stdlib.h>
 */
@@ -14,7 +15,7 @@ import (
 )
 
 var (
-	sizeofWrapped = int32(unsafe.Sizeof(Wrapped{}))
+	sizeofWrapped = int32(unsafe.Sizeof(WrappedImpl{}))
 )
 
 func RegisterInstanceBindingFunctions() {
@@ -32,7 +33,7 @@ func UnregisterInstanceBindingFunctions() {
 
 //export go_alloc_instance_binding_data
 func go_alloc_instance_binding_data(data unsafe.Pointer, typeTag unsafe.Pointer, instance *C.godot_object) unsafe.Pointer {
-	w := (*Wrapped)(Alloc(sizeofWrapped))
+	w := (*WrappedImpl)(Alloc(sizeofWrapped))
 
 	if w == nil {
 		log.Panic("memory allocation for Wrapped failed")
@@ -42,11 +43,11 @@ func go_alloc_instance_binding_data(data unsafe.Pointer, typeTag unsafe.Pointer,
 
 	w.Owner = (*GodotObject)(instance)
 	w.TypeTag = tt
-	w.generateUserData(tt)
+	w.setUserDataFromTypeTag(tt)
 
 	name := RegisterState.TagDB.GetRegisteredClassName(w.TypeTag)
 
-	log.WithField("tag_name", name).Info("alloc instance binding data")
+	log.Info("alloc instance binding data", StringField("tag_name", name))
 
 	return unsafe.Pointer(w)
 }

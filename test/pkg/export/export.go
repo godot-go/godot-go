@@ -22,7 +22,7 @@ func godot_nativescript_init(handle unsafe.Pointer) {
 	gdnative.GodotNativescriptInit(handle)
 
 	gdnativetest.PlayerCharacterNativescriptInit()
-	gdnative.RegisterClass(&gdnativetest.PlayerCharacter{}, gdnativetest.PlayerCharacterCreateFunc)
+	gdnative.RegisterClass(&gdnativetest.PlayerCharacter{})
 }
 
 //export godot_nativescript_terminate

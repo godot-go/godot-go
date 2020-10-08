@@ -33,7 +33,7 @@ import (
 
 	type {{ $api.PrefixName }}Impl struct {
 		{{ if eq $api.BaseClass "" }}
-			Wrapped
+			WrappedImpl
 		{{ else }}
 			{{ $api.BaseClass }}Impl
 		{{ end }}
@@ -67,10 +67,6 @@ import (
 	func (o *{{ $api.PrefixName }}Impl) GetTypeTag() TypeTag {
 		return o.TypeTag
 	}
-
-	{{/* func (o *{{ .Api.PrefixName }}Impl) GetUserData() UserData {
-		return UserData(fmt.Sprintf("{{ .Api.Name }}::%p", o.Owner))
-	} */}}
 	{{ end }}
 
 	{{ template "CLASS_METHODS" $api }}
@@ -100,10 +96,10 @@ import (
 			defer C.free(unsafe.Pointer(cname))
 
 			owner := (*Object)(unsafe.Pointer(C.go_godot_global_get_singleton(CoreApi, cname)))
-			wrapped := *(*Wrapped)(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner)))
+			wrapped := *(*WrappedImpl)(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner)))
 
 			m := (*{{ .PrefixName }}Impl)(AllocZeros(int32(sizeof{{ .PrefixName }})))
-			m.Wrapped = wrapped
+			m.WrappedImpl = wrapped
 
 			if m.Owner == nil {
 				log.Panic("owner should not be null")
@@ -120,10 +116,10 @@ import (
 			cname := C.CString("{{ .Name }}")
 			defer C.free(unsafe.Pointer(cname))
 			owner := (*GodotObject)(C.go_godot_get_class_constructor_new(CoreApi, cname))
-		    wrapped := *(*Wrapped)(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner)))
+		    wrapped := *(*WrappedImpl)(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner)))
 
 			m := (*{{ .PrefixName }}Impl)(AllocZeros(int32(sizeof{{ .PrefixName }})))
-			m.Wrapped = wrapped
+			m.WrappedImpl = wrapped
 
 			if m.Owner == nil {
 				log.Panic("owner should not be null")
@@ -137,10 +133,10 @@ import (
 		}
 
 		func New{{ .PrefixName }}WithOwner(owner *GodotObject) {{ .PrefixName }} {
-		    wrapped := *(*Wrapped)(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner)))
+		    wrapped := *(*WrappedImpl)(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner)))
 
 			m := (*{{ .PrefixName }}Impl)(AllocZeros(int32(sizeof{{ .PrefixName }})))
-			m.Wrapped = wrapped
+			m.WrappedImpl = wrapped
 
 			if m.Owner == nil {
 				log.Panic("owner should not be null")
@@ -153,9 +149,9 @@ import (
 			return m
 		}
 
-		{{/* func New{{ .PrefixName }}WithWrapped(wrapped Wrapped) Class {
+		{{/* func New{{ .PrefixName }}WithWrappedImpl(wrapped WrappedImpl) Class {
 			m := (*{{ .PrefixName }}Impl)(AllocZeros(int32(sizeof{{ .PrefixName }})))
-			m.Wrapped = wrapped
+			m.WrappedImpl = wrapped
 
 			if m.Owner == nil {
 				log.Panic("owner should not be null")
@@ -264,32 +260,11 @@ import (
 	func init() {
 		registerMethodBinds(Init{{ .PrefixName }}MethodBinds)
 		registerTypeTag(Init{{ .PrefixName }}TypeTag)
-
-		/*
-		{{ if not .Singleton }}
-		if _, ok := constructorMap["{{ .PrefixName }}"]; ok {
-			log.WithField("class", "{{ .PrefixName }}").Panic("class already in map")
-		}
-
-		constructor := New{{ .PrefixName }}WithRefAsClass
-
-		constructorMap["{{ .PrefixName }}"] = constructor
-		{{ end }}
-		*/
-
-		// satisfy import reflect
-		_ = reflect.ValueOf(1)
-
-		// satisfy import runtime
-		runtime.KeepAlive(1)
-
-		// satisfy import fmt
-		fmt.Sprintf("test")
 	}
 
 	func Init{{ .PrefixName }}TypeTag() {
 		if CoreApi == nil {
-			log.Panic(errors.New("godot core api not initialized"))
+			log.Panic("godot core api not initialized")
 		}
 
 		RegisterState.TagDB.RegisterGlobalType("{{ .Name }}", "{{ .PrefixName }}", "{{ .BaseClass }}")
@@ -297,7 +272,7 @@ import (
 
 	func Init{{ .PrefixName }}MethodBinds() {
 		if CoreApi == nil {
-			log.Panic(errors.New("godot core api not initialized"))
+			log.Panic("godot core api not initialized")
 		}
 
 		cClassName{{ $className }} := C.CString("{{ $className }}")
@@ -310,7 +285,7 @@ import (
 			{{ $classPrefix }}{{ $method.MethodBindName }} = (*MethodBind)(unsafe.Pointer(C.go_godot_method_bind_get_method(CoreApi, cClassName{{ $className }}, cMethodName{{ $method.Name }})))
 
 			if {{ $classPrefix }}{{ $method.MethodBindName }} == nil {
-				log.Debug(errors.New("failed to initialize method bind {{ $classPrefix }}{{ $method.MethodBindName }}"))
+				log.Debug("failed to initialize method bind {{ $classPrefix }}{{ $method.MethodBindName }}")
 			}
 		{{ end }}
 	}

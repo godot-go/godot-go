@@ -98,7 +98,7 @@ var _ = Describe("Array Helpers", func() {
 			Ω(ret.b).Should(BeEquivalentTo(b))
 		})
 	})
-	When("CArrayFromPtrSlice", func() {
+	When("ArrayRefFromPtrSlice", func() {
 		It("should return a copy of the data as an array", func() {
 			var (
 				pa = (*int32)(gdnative.AllocZeros(int32(unsafe.Sizeof(uintptr(0)))))

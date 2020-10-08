@@ -19,7 +19,7 @@ To see the test demo application embedded in the project, run the following:
 
     git clone github.com/godot-go/godot-go
     cd godot-go
-    GODOT_BIN=godot go run mage.go test
+    GODOT_BIN=godot go run mage.go -v test
 
 Please adjust `GODOT_BIN` to point to your godot executable. Compiling can take more than *10 minutes* because of the use of cgo. Please be patient. Once it finishes, the tests will run and also start the demo app afterwards.
 

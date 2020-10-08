@@ -88,11 +88,12 @@ func (h *PlayerCharacter) SetName(v gdnative.Variant) {
 }
 
 func (h *PlayerCharacter) Ready() {
-	log.WithFields(gdnative.WithObject(h.GetOwnerObject())).Trace("Start PlayerCharacter::Ready")
-	strP := gdnative.NewStringFromGoString("sprite/animation_player")
+	log.Debug("start PlayerCharacter::Ready", gdnative.GodotObjectField("owner", h.GetOwnerObject()))
+	path := "sprite/animation_player"
+	strP := gdnative.NewStringFromGoString(path)
 	p := gdnative.NewNodePath(strP)
 
-	log.WithFields(gdnative.WithGodotString("path", p.AsString())).Info("searching path...")
+	log.Info("searching path...", gdnative.StringField("path", path))
 
 	n := h.GetNode(p)
 	pno := n.GetOwnerObject()
@@ -131,7 +132,7 @@ func (h *PlayerCharacter) Ready() {
 		log.Panic("unable to find idle-up")
 	}
 
-	log.WithFields(gdnative.WithObject(h.GetOwnerObject())).Trace("End PlayerCharacter::Ready")
+	log.Debug("End PlayerCharacter::Ready", gdnative.GodotObjectField("owner", h.GetOwnerObject()))
 }
 
 func (h *PlayerCharacter) PhysicsProcess(delta float64) {
@@ -180,7 +181,7 @@ func (h *PlayerCharacter) updateSprite(delta float64) {
 			tokens := strings.Split(name, "-")
 
 			if len(tokens) != 2  {
-				log.WithField("name", name).Panic("unable to parse animation name")
+				log.Panic("unable to parse animation name", gdnative.StringField("name", name))
 			}
 
 			var animationName gdnative.String
@@ -194,7 +195,7 @@ func (h *PlayerCharacter) updateSprite(delta float64) {
 			case "right":
 				animationName = idleRight
 			default:
-				log.WithField("name", name).Warn("unhandled animation name")
+				log.Warn("unhandled animation name", gdnative.StringField("name", name))
 			}
 
 			if !pca.OperatorEqual(animationName) {
@@ -220,7 +221,7 @@ func getKeyInputDirectionAsVector2() gdnative.Vector2 {
 }
 
 func (p *PlayerCharacter) Free() {
-	log.WithFields(gdnative.WithObject(p.GetOwnerObject())).Trace("free PlayerCharacter")
+	log.Debug("free PlayerCharacter")
 
 	p.walkAnimation = nil
 
@@ -231,7 +232,7 @@ func (p *PlayerCharacter) Free() {
 }
 
 func PlayerCharacterCreateFunc(owner *gdnative.GodotObject, typeTag gdnative.TypeTag) gdnative.NativeScriptClass {
-	log.WithFields(gdnative.WithObject(owner)).Trace("create_func new PlayerCharacter")
+	log.Debug("create_func new PlayerCharacter")
 
 	m := &PlayerCharacter{}
 	m.Owner = owner
@@ -241,7 +242,7 @@ func PlayerCharacterCreateFunc(owner *gdnative.GodotObject, typeTag gdnative.Typ
 }
 
 func NewPlayerCharacter() PlayerCharacter {
-	log.Trace("NewPlayerCharacter")
+	log.Debug("NewPlayerCharacter")
 	inst := *(gdnative.CreateCustomClassInstance("PlayerCharacter", "KinematicBody2D").(*PlayerCharacter))
 	return inst
 }

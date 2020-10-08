@@ -7,11 +7,11 @@ package gdnative
 */
 import "C"
 import (
-	"fmt"
 	"hash/fnv"
 	"unsafe"
 
 	"github.com/godot-go/godot-go/pkg/log"
+	"go.uber.org/zap"
 )
 
 const (
@@ -59,7 +59,8 @@ type PropertyGetTag uint
 
 type tagDB struct {
 	parentTo        map[TypeTag]TypeTag
-	typeTags        map[TypeTag]string
+	classNames      map[TypeTag]string
+	typeTags        map[string]TypeTag
 	methodTags      map[MethodTag]classMethod
 	propertySetTags map[PropertySetTag]classPropertySet
 	propertyGetTags map[PropertyGetTag]classPropertyGet
@@ -67,7 +68,7 @@ type tagDB struct {
 
 type TagDBStats struct {
 	ParentCount         int
-	TypeTagCount        int
+	ClassNameCount      int
 	MethodTagCount      int
 	PropertySetTagCount int
 	PropertyGetTagCount int
@@ -100,35 +101,34 @@ func newPropertyGetTagFromString(cpg classPropertyGet) PropertyGetTag {
 func (t tagDB) Stats() TagDBStats {
 	return TagDBStats{
 		ParentCount:         len(t.parentTo),
-		TypeTagCount:        len(t.typeTags),
+		ClassNameCount:      len(t.classNames),
 		MethodTagCount:      len(t.methodTags),
 		PropertySetTagCount: len(t.propertySetTags),
 		PropertyGetTagCount: len(t.propertyGetTags),
 	}
 }
 
-func (t tagDB) RegisterType(typeTag, baseTypeTag string) (TypeTag, TypeTag) {
-	ctt := newTypeTagFromString(typeTag)
-	btt := newTypeTagFromString(baseTypeTag)
+func (t tagDB) RegisterType(className, baseClassName string) (TypeTag, TypeTag) {
+	ctt := newTypeTagFromString(className)
+	btt := newTypeTagFromString(baseClassName)
 
 	if ctt == btt {
-		log.WithField(
-			"tagType", typeTag,
-		).WithField(
-			"baseTypeTag", baseTypeTag,
-		).Panic("hash collision with tag and base tag")
+		log.Panic("hash collision with tag and base tag",
+			zap.String("className", className),
+			zap.String("baseClassName", baseClassName),
+		)
 	}
 
-	if existing, ok := t.typeTags[ctt]; ok {
-		log.WithField(
-			"new", typeTag,
-		).WithField(
-			"existing", existing,
-		).Panic("hash collision with new tag and existing tag")
+	if existing, ok := t.classNames[ctt]; ok {
+		log.Panic("hash collision with new tag and existing tag",
+			zap.String("new", className),
+			zap.String("existing", existing),
+		)
 	}
 
 	t.parentTo[ctt] = btt
-	t.typeTags[ctt] = typeTag
+	t.classNames[ctt] = className
+	t.typeTags[className] = ctt
 
 	return ctt, btt
 }
@@ -142,15 +142,12 @@ func (t tagDB) RegisterMethod(className, bindName, methodName string) MethodTag 
 	mt := newMethodTagFromString(cm)
 
 	if existing, ok := t.methodTags[mt]; ok {
-		log.WithField(
-			"className", className,
-		).WithField(
-			"bindName", bindName,
-		).WithField(
-			"methodName", methodName,
-		).WithField(
-			"existing", fmt.Sprintf("%+v", existing),
-		).Panic("hash collision with new and existing method tag")
+		log.Panic("hash collision with new and existing method tag",
+			zap.String("className", className),
+			zap.String("bindName", bindName),
+			zap.String("methodName", methodName),
+			zap.Any("existing", existing),
+		)
 	}
 
 	t.methodTags[mt] = cm
@@ -167,15 +164,12 @@ func (t tagDB) RegisterPropertySet(className, propertyName, propertySetFunction 
 	pt := newPropertySetTagFromString(cps)
 
 	if existing, ok := t.propertySetTags[pt]; ok {
-		log.WithField(
-			"className", className,
-		).WithField(
-			"propertyName", propertyName,
-		).WithField(
-			"propertySetFunction", propertySetFunction,
-		).WithField(
-			"existing", fmt.Sprintf("%+v", existing),
-		).Panic("hash collision with new and existing preoprty set tag")
+		log.Panic("hash collision with new and existing preoprty set tag",
+			zap.String("className", className),
+			zap.String("propertyName", propertyName),
+			zap.String("propertySetFunction", propertySetFunction),
+			zap.Any("existing", existing),
+		)
 	}
 
 	t.propertySetTags[pt] = cps
@@ -192,15 +186,12 @@ func (t tagDB) RegisterPropertyGet(className, propertyName, propertyGetFunction 
 	pt := newPropertyGetTagFromString(cpg)
 
 	if existing, ok := t.propertyGetTags[pt]; ok {
-		log.WithField(
-			"className", className,
-		).WithField(
-			"propertyName", propertyName,
-		).WithField(
-			"propertyGetFunction", propertyGetFunction,
-		).WithField(
-			"existing", fmt.Sprintf("%+v", existing),
-		).Panic("hash collision with new and existing preoprty get tag")
+		log.Panic("hash collision with new and existing preoprty get tag",
+			zap.String("className", className),
+			zap.String("propertyName", propertyName),
+			zap.String("propertyGetFunction", propertyGetFunction),
+			zap.Any("existing", existing),
+		)
 	}
 
 	t.propertyGetTags[pt] = cpg
@@ -213,12 +204,22 @@ func (t tagDB) IsTypeKnown(typeTag TypeTag) bool {
 	return ok
 }
 
-func (t tagDB) GetRegisteredClassName(typeTag TypeTag) string {
-	if tt, ok := t.typeTags[typeTag]; ok {
+func (t tagDB) GetRegisteredTypeTag(name string) TypeTag {
+	if tt, ok := t.typeTags[name]; ok {
 		return tt
 	}
 
 	log.Panic("unable to find type tag")
+
+	return EmptyTypeTag
+}
+
+func (t tagDB) GetRegisteredClassName(typeTag TypeTag) string {
+	if tt, ok := t.classNames[typeTag]; ok {
+		return tt
+	}
+
+	log.Panic("unable to find class name", zap.Uint("typeTag", uint(typeTag)))
 
 	return ""
 }

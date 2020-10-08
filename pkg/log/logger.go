@@ -2,106 +2,122 @@ package log
 
 import (
 	"io"
+	"log"
 	"os"
-	"github.com/sirupsen/logrus"
+
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 )
 
-// Pattern sourced from here: https://stackoverflow.com/questions/30257622/golang-logrus-how-to-do-a-centralized-configuration
+// Pattern sourced from here: https://stackoverflow.com/questions/30257622/golang-zap-how-to-do-a-centralized-configuration
 var (
-	logger *logrus.Logger
+	output io.Writer = os.Stdout
+	logger *zap.Logger
 	envLogLevel = "LOG_LEVEL"
-	defaultLogLevel = logrus.WarnLevel
+	defaultLogLevel = zap.WarnLevel
+	atomicLevel zap.AtomicLevel
 )
 
-type Level logrus.Level
+// Level of logging
+type Level = zapcore.Level
 
-// pulled from logrus
-// These are the different logging levels. You can set the logging level to log
-// on your instance of logger, obtained with `logrus.New()`.
 const (
-	// PanicLevel level, highest level of severity. Logs and then calls panic with the
-	// message passed to Debug, Info, ...
-	PanicLevel Level = iota
-	// FatalLevel level. Logs and then calls `logger.Exit(1)`. It will exit even if the
-	// logging level is set to Panic.
-	FatalLevel
-	// ErrorLevel level. Logs. Used for errors that should definitely be noted.
-	// Commonly used for hooks to send errors to an error tracking service.
-	ErrorLevel
-	// WarnLevel level. Non-critical entries that deserve eyes.
-	WarnLevel
-	// InfoLevel level. General operational entries about what's going on inside the
-	// application.
-	InfoLevel
-	// DebugLevel level. Usually only enabled when debugging. Very verbose logging.
-	DebugLevel
-	// TraceLevel level. Designates finer-grained informational events than the Debug.
-	TraceLevel
+	// DebugLevel logs are typically voluminous, and are usually disabled in
+	// production.
+	DebugLevel Level = zapcore.DebugLevel
+	// InfoLevel is the default logging priority.
+	InfoLevel Level = zapcore.InfoLevel
+	// WarnLevel logs are more important than Info, but don't need individual
+	// human review.
+	WarnLevel Level = zapcore.WarnLevel
+	// ErrorLevel logs are high-priority. If an application is running smoothly,
+	// it shouldn't generate any error-level logs.
+	ErrorLevel Level = zapcore.ErrorLevel
+	// DPanicLevel logs are particularly important errors. In development the
+	// logger panics after writing the message.
+	DPanicLevel Level = zapcore.DPanicLevel
+	// PanicLevel logs a message, then panics.
+	PanicLevel Level = zapcore.PanicLevel
+	// FatalLevel logs a message, then calls os.Exit(1).
+	FatalLevel Level = zapcore.FatalLevel
+
+	_minLevel = DebugLevel
+	_maxLevel = FatalLevel
 )
+
+// Field represents the key-value pair for logging
+type Field = zap.Field
+type WriteSyncer = zapcore.WriteSyncer
 
 func init() {
 	var (
 		envLevel string
-		level logrus.Level
+		level zapcore.Level
 		ok bool
 		err error
 	)
 
-	logger = logrus.New()
-
 	if envLevel, ok = os.LookupEnv(envLogLevel); !ok {
 		level = defaultLogLevel
-	} else if level, err = logrus.ParseLevel(envLevel); err != nil {
-		logrus.Errorf("error parsing %s: %v", envLogLevel, err)
+	} else if err = level.UnmarshalText([]byte(envLevel)); err != nil {
+		log.Fatalf("parsing error %s %w", envLogLevel, err)
 		level = defaultLogLevel
 	}
 
-	logger.SetLevel(level)
-	// logger.SetReportCaller(true)
-	logger.SetFormatter(&logrus.TextFormatter{
-		DisableColors: false,
-		FullTimestamp: false,
-	})
+	atomicLevel = zap.NewAtomicLevelAt(level)
 
-	logger.Info("set log level to ", level)
+	encoderCfg := zap.NewProductionEncoderConfig()
+	encoderCfg.TimeKey = ""
+
+	logger = zap.New(
+		zapcore.NewCore(
+			zapcore.NewConsoleEncoder(encoderCfg),
+			zapcore.Lock(zapcore.AddSync(output)),
+			atomicLevel,
+		),
+		zap.AddCaller(),
+		zap.AddCallerSkip(3),
+	)
+}
+
+func SetWriteSyncer(out io.Writer) {
+	output = out
 }
 
 func SetLevel(level Level) {
-	logger.SetLevel(logrus.Level(level))
+	atomicLevel.SetLevel(level)
 }
 
-func SetOutput(writer io.Writer) {
-	logger.SetOutput(writer)
+func Sync() {
+	logger.Sync()
 }
 
-func Trace(args ...interface{}) {
-	logger.Trace(args...)
+func Debug(msg string, fields ...Field) {
+	logger.Debug(msg, fields...)
 }
 
-func Debug(args ...interface{}) {
-	logger.Debug(args...)
+func Info(msg string, fields ...Field) {
+	logger.Info(msg, fields...)
 }
 
-func Info(args ...interface{}) {
-	logger.Info(args...)
+func Warn(msg string, fields ...Field) {
+	logger.Warn(msg, fields...)
 }
 
-func Warn(args ...interface{}) {
-	logger.Warn(args...)
+func Fatal(msg string, fields ...Field) {
+	logger.Fatal(msg, fields...)
 }
 
-func Fatal(args ...interface{}) {
-	logger.Fatal(args...)
+func Panic(msg string, fields ...Field) {
+	logger.Panic(msg, fields...)
 }
 
-func Panic(args ...interface{}) {
-	logger.Panic(args...)
+// writeSyncer decorates an io.Writer with a no-op Sync() function.
+type writeSyncer struct {
+	io.Writer
 }
 
-func WithField(name, value string) *logrus.Entry {
-	return logger.WithField(name, value)
-}
-
-func WithFields(fields logrus.Fields) *logrus.Entry {
-	return logger.WithFields(fields)
+// Sync does nothing since all output was written to the writer immediately.
+func (ws writeSyncer) Sync() error {
+	return nil
 }

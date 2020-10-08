@@ -15,7 +15,7 @@ import (
 
 type UserDataIdentifiable interface {
 	GetUserData() UserData
-	generateUserData(tt TypeTag)
+	setUserDataFromTypeTag(tt TypeTag)
 }
 
 type UserDataIdentifiableImpl struct {
@@ -26,7 +26,7 @@ func (u *UserDataIdentifiableImpl) GetUserData() UserData {
 	return u.UserData
 }
 
-func (u *UserDataIdentifiableImpl) generateUserData(tt TypeTag) {
+func (u *UserDataIdentifiableImpl) setUserDataFromTypeTag(tt TypeTag) {
 	// TODO: provide better method to reduce collisiosn; maybe
 	//       an auto-increment method?
 	u.UserData = UserData(rand.Int())
@@ -40,8 +40,7 @@ type NativeScriptClass interface {
 }
 
 type Class interface {
-	GetOwnerObject() *GodotObject
-	GetTypeTag() TypeTag
+	Wrapped
 	ClassName() string
 	BaseClass() string
 	Free()

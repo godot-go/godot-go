@@ -88,7 +88,7 @@ func AllocNewSlice(size int) ([]unsafe.Pointer, unsafe.Pointer) {
 
 	for i := range arr {
 		if uintptr(arr[i]) != uintptr(0) {
-			log.WithField("method", "AllocNewSlice").WithField("i", fmt.Sprintf("%d", i)).Panic("value should be a zero uintptr")
+			log.Panic("value should be a zero uintptr", StringField("method", "AllocNewSlice"), AnyField("i", i))
 		}
 	}
 

@@ -1,104 +1,30 @@
 package gdnative
 
 import (
-	"fmt"
-	"reflect"
-	"strings"
-
-	"github.com/sirupsen/logrus"
+	"github.com/godot-go/godot-go/pkg/log"
+	"go.uber.org/zap"
 )
 
-func WithRegisteredClassCB(tt TypeTag, userData UserData) logrus.Fields {
-	return logrus.Fields{
-		"tt":       fmt.Sprintf("%d", uint32(tt)),
-		"userData": fmt.Sprintf("%p", userData),
-	}
+func GodotObjectField(key string, obj *GodotObject) log.Field {
+	return zap.String(key, obj.AddrAsString())
 }
 
-func WithRegisteredClassFreeCB(tt TypeTag, base string) logrus.Fields {
-	return logrus.Fields{
-		"tt":   fmt.Sprintf("%d", uint32(tt)),
-		"base": base,
-	}
+func StringField(key string, value string) log.Field {
+	return zap.String(key, value)
 }
 
-func WithRegisteredMethodCB(md MethodData, method string, args []reflect.Value) logrus.Fields {
-	strArgs := make([]string, len(args))
-
-	for i, a := range args {
-		strArgs[i] = fmt.Sprintf("%v", a)
-	}
-
-	return logrus.Fields{
-		"md":     fmt.Sprintf("%d", uint32(md)),
-		"method": method,
-		"args":   "[" + strings.Join(strArgs, ",") + "]",
-	}
+func TypeTagField(key string, typeTag TypeTag) log.Field {
+	return zap.Uint(key, uint(typeTag))
 }
 
-func WithRegisteredMethodFreeCB(md MethodData, base string) logrus.Fields {
-	return logrus.Fields{
-		"md":   fmt.Sprintf("%d", uint32(md)),
-		"base": base,
-	}
+func MethodTagField(key string, methodTag MethodTag) log.Field {
+	return zap.Uint(key, uint(methodTag))
 }
 
-func WithVector2(v Vector2) logrus.Fields {
-	return logrus.Fields{
-		"vector2": fmt.Sprintf("vector2(%.2f, %.2f)", v.GetX(), v.GetY()),
-	}
+func NativeScriptClassField(key string, value NativeScriptClass) log.Field {
+	return zap.Any(key, value)
 }
 
-func WithRegisteredClass(name, base string) logrus.Fields {
-	return logrus.Fields{
-		"class": name,
-		"base":  base,
-	}
-}
-
-func WithObject(o *GodotObject) logrus.Fields {
-	if o == nil {
-		return logrus.Fields{
-			"userData": "null",
-		}
-	} else {
-		return logrus.Fields{
-			"userData": o.AddrAsString(),
-		}
-	}
-}
-
-func WithUserData(userData UserData) logrus.Fields {
-	return logrus.Fields{
-		"userData": fmt.Sprintf("%p", userData),
-	}
-}
-
-func WithTypeTag(tt TypeTag) logrus.Fields {
-	name := RegisterState.TagDB.GetRegisteredClassName(tt)
-	return logrus.Fields{
-		"tt":       fmt.Sprintf("%d", uint32(tt)),
-		"type_tag": name,
-	}
-}
-
-func WithMethodTag(mt MethodTag) logrus.Fields {
-	name := RegisterState.TagDB.GetRegisteredMethodName(mt)
-	return logrus.Fields{
-		"mt":         fmt.Sprintf("%d", uint32(mt)),
-		"method_tag": name,
-	}
-}
-
-func WithGodotString(key string, value String) logrus.Fields {
-	return logrus.Fields{
-		key: value.AsGoString(),
-	}
-}
-
-func WithGodotStringName(key string, value StringName) logrus.Fields {
-	n := value.GetName()
-	return logrus.Fields{
-		key: n.AsGoString(),
-	}
+func AnyField(key string, value interface{}) log.Field {
+	return zap.Any(key, value)
 }

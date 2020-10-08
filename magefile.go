@@ -25,12 +25,17 @@ var (
 	ci         bool
 	targetOS   string
 	targetArch string
+	logLevel   string
 )
 
 func init() {
 	var (
 		ok  bool
 	)
+
+	if logLevel, ok = os.LookupEnv("LOG_LEVEL"); !ok {
+		logLevel = "trace"
+	}
 
 	if targetOS, ok = os.LookupEnv("TARGET_OS"); !ok {
 		targetOS = runtime.GOOS
@@ -145,9 +150,9 @@ func runPlugin(appPath string) error {
 	return sh.RunWith(
 		map[string]string{
 			"GOTRACEBACK": "crash",
-			"GODEBUG": "asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=3",
-			"LOG_LEVEL": "trace",
-			"TEST_USE_GINKGO_WRITER": "1",
+			"GODEBUG": "asyncpreemptoff=0,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=1",
+			"LOG_LEVEL": "debug",
+			// "TEST_USE_GINKGO_WRITER": "1",
 		},
 		godotBin, "--verbose", "-v", "-d",
 		"--path", filepath.Join(appPath, "project"))
@@ -155,6 +160,7 @@ func runPlugin(appPath string) error {
 
 func buildGodotPlugin(appPath string, outputPath string, platform BuildPlatform) error {
 	return sh.RunWith(envWithPlatform(platform), mg.GoCmd(), "build",
+		"-gcflags=all=-d=checkptr",
 		"-tags", "tools", "-buildmode=c-shared", "-x", "-trimpath",
 		"-o", filepath.Join(outputPath, platform.godotPluginCSharedName(appPath)),
 		filepath.Join(appPath, "main.go"),

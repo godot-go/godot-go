@@ -104,6 +104,10 @@ func Warn(msg string, fields ...Field) {
 	logger.Warn(msg, fields...)
 }
 
+func Error(msg string, fields ...Field) {
+	logger.Error(msg, fields...)
+}
+
 func Fatal(msg string, fields ...Field) {
 	logger.Fatal(msg, fields...)
 }

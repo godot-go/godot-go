@@ -1,0 +1,8 @@
+[gd_resource type="NativeScript" load_steps=2 format=2]
+
+[ext_resource path="res://libs/libgodotgo-test.gdnlib" type="GDNativeLibrary" id=1]
+
+[resource]
+resource_name = "player_character"
+class_name = "PlayerCharacter"
+library = ExtResource( 1 )

@@ -1,10 +1,11 @@
 package gdnativetest
 
 import (
+	"math"
+
+	"github.com/godot-go/godot-go/pkg/gdnative"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"github.com/godot-go/godot-go/pkg/gdnative"
-	"math"
 )
 
 var _ = Describe("Vector2", func() {

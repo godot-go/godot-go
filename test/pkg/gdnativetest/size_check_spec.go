@@ -8,6 +8,7 @@ package gdnativetest
 import "C"
 import (
 	"unsafe"
+
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -20,7 +21,7 @@ var _ = Describe("Data width", func() {
 			i    int32   = 127
 			b    bool    = true
 		)
-	
+
 		var (
 			cd   C.double = (C.double)(f64)
 			cf   C.float  = (C.float)(f32)

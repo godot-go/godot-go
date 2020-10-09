@@ -1,11 +1,12 @@
 package gdnativetest
 
 import (
-	"github.com/godot-go/godot-go/pkg/gdnative"
-	"github.com/godot-go/godot-go/pkg/log"
+	"math/rand"
 	"strings"
 	"unsafe"
-	"math/rand"
+
+	"github.com/godot-go/godot-go/pkg/gdnative"
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 var (

@@ -7,8 +7,9 @@ package gdnativetest
 */
 import "C"
 import (
-	"github.com/godot-go/godot-go/pkg/gdnative"
 	"reflect"
+
+	"github.com/godot-go/godot-go/pkg/gdnative"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -118,7 +119,7 @@ var _ = Describe("Variant", func() {
 
 			n.AddChild(n2, true)
 
-			Ω(n.GetChildCount()).Should(Equal(int32(1)))
+			Ω(n.GetChildCount()).Should(Equal(int64(1)))
 
 			v := gdnative.GoTypeToVariant(reflect.ValueOf(o))
 			defer v.Destroy()

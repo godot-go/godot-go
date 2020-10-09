@@ -1,4 +1,3 @@
-
 [![Actions Build Status](https://github.com/godot-go/godot-go/workflows/godot-go%20CI/badge.svg)](https://github.com/godot-go/godot-go/actions?query=workflow%3Agodot-go+branch%3Amaster)
 
 ---
@@ -7,12 +6,14 @@
 
 [Go](https://golang.org/) bindings for the [Godot Game Engine](https://github.com/godotengine/godot) cross-platform game engine. godot-go integrates into Godot through the Godot GDNative and NativeScript APIs through cgo.
 
+The project is currently under heavy development. The API should be considered __EXPERIMENTAL__ and is subject to change. The API is expected to become more stable as we get closer to a 1.0 release.
+
 
 ## Getting Started
 
 To start using godot-go in your own go project:
 
-    go get -u github.com/godot-go/godot-go@0.0.3
+    go get -u github.com/godot-go/godot-go@0.0.7
 
 The only real documentation that currently exists is in the test Godot project embedded in the library; an example class representing a [Player Charater](test/pkg/gdnativetest/object_player_character.go) in a 2D Top-down game. Referencing the official C/C++ documentation of [GDNative](https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html) will help for the time being.
 
@@ -20,33 +21,31 @@ To see the test demo application embedded in the project, run the following:
 
     git clone github.com/godot-go/godot-go
     cd godot-go
-    GODOT_BIN=godot go run mage.go test
+    GODOT_BIN=godot go run mage.go -v test
 
-Please adjust `GODOT_BIN` to point to your godot executable. Compiling can take more than *10 minutes* because of the use of cgo. Please be patient. Once it finishes, the tests will run and also start the demo app afterwards.
-
-Subsequent changes to the test project will be quick.
+Please adjust `GODOT_BIN` to point to your godot executable. Changes to godot-go package has a compile time of roughly *4 minutes* on my setup; so, please be patient. Once it finishes compiling, the tests will run and the demo app will automatically start.
 
 Please install Go version 1.15 or above to get the latest cgo improvements. I encourage everyone to install Go through [Go Version Manager](https://github.com/moovweb/gvm)
 
 
 ### Support
 
-godot_headers has to be copied into the project because `go get` does not [support git submodules](https://github.com/golang/go/issues/24094#issuecomment-377559768). Currently, I've exported godot_headers from [f2122198d5](https://github.com/godotengine/godot_headers/tree/f2122198d51f230d903f9585527248f6cf411494) git hash.
-
-godot-go has been tested to work with Godot 3.2 in the following platforms and architectures:
+godot-go has been tested to work with Godot 3.2.x in the following platforms and architectures:
 
 | Platform      | Builds Cross-Compile from Linux | Builds from native OS | Test Pass |
 | ------------- | ------------------------------- | --------------------- | --------- |
 | linux/amd64   | Yes                             | Yes                   | Yes       |
-| darwin/amd64  | Yes                             | Unknown               | Unknown   |
+| darwin/amd64  | Yes                             | Yes                   | Unknown   |
 | windows/amd64 | Yes                             | Yes                   | Unknown   |
 | windows/386   | Yes                             | Unknown               | Unknown   |
+| android/arm   | Unknown                         | Unknown               | Unknown   |
 
 * The Github Workflow [test_windows](.github/workflows/test_windows.yaml) tests building on a Windows machine. However, tests stall indefinitely and thus the results are unknown.
 
 My development environment is on Ubuntu 20.04; therefore, support for Linux is primary for the project. The project also compiles for Windows and MacOS, but issues may pop up that might not be caught by the continuous integration process. Please feel free to file issues as they come up.
 
-You can find me (surgical#3758) on the [Godot Engine Discord](https://discord.gg/qZHMsDg) servers. I primarily focus in the **gdnative-dev** room.
+The initial goal is to support Linux, MacOS, and Windows out of the gates. Eventually, we plan to support all platforms where Godot and Go is supported.
+
 
 ### Generating Codegen
 
@@ -57,6 +56,13 @@ There is a bit of codegen as part of godot-go. If you've made modifications to t
 To regenerate the codegen files, run the following:
 
     go generate
+
+godot_headers has to be copied into the project because `go get` does not [support git submodules](https://github.com/golang/go/issues/24094#issuecomment-377559768). Currently, I've exported godot_headers from [f2122198d5](https://github.com/godotengine/godot_headers/tree/f2122198d51f230d903f9585527248f6cf411494) git hash.
+
+
+## Contact
+
+I'm happy to help out anyone interested in the project. You can add me (surgical#3758) as a friend on the [Godot Engine Discord](https://discord.gg/qZHMsDg) servers. I primarily frequent the **gdnative-dev** room.
 
 
 ## References

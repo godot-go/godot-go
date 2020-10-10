@@ -97,9 +97,7 @@ func GoTypeToVariant(value reflect.Value) Variant {
 	case float64:
 		return NewVariantReal(v)
 	case string:
-		log.Panic("unable to handle native go string. please wrap string in a Godot String with gdnative.NewStringFromGoString",
-			StringField("value", fmt.Sprintf("%v", value)),
-		)
+		return NewVariantString(internWithGoString(v))
 	case String:
 		return NewVariantString(v)
 	case Vector2:

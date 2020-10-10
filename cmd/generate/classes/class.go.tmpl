@@ -369,9 +369,13 @@ import (
 						/* USAGE_GODOT_CLASS ({{ $arg.Type }} / {{ $goType }}) */
 						var _arg{{ $k }} *C.godot_object = (*C.godot_object)(unsafe.Pointer({{ $arg.GoName }}.GetOwnerObject()))
 						ptrArguments[{{ $k }}] = unsafe.Pointer(_arg{{ $k }})
-					{{ else if eq $usage USAGE_GDNATIVE_RAW }}
-						/* USAGE_GDNATIVE_RAW ({{ $arg.Type }} / {{ $goType }}) */
-						_arg{{ $k }} := {{ $arg.GoName }}
+					{{ else if eq $usage USAGE_GODOT_STRING }}
+						/* USAGE_GODOT_STRING ({{ $arg.Type }} / {{ $goType }}) */
+						_arg{{ $k }} := internWithGoString({{ $arg.GoName }})
+						ptrArguments[{{ $k }}] = unsafe.Pointer(&_arg{{ $k }})
+					{{ else if eq $usage USAGE_GODOT_STRING_NAME }}
+						/* USAGE_GODOT_STRING_NAME ({{ $arg.Type }} / {{ $goType }}) */
+						_arg{{ $k }} := NewStringName(internWithGoString({{ $arg.GoName }}))
 						ptrArguments[{{ $k }}] = unsafe.Pointer(&_arg{{ $k }})
 					{{ else if eq $usage USAGE_GDNATIVE_REF }}
 						/* USAGE_GDNATIVE_REF ({{ $arg.Type }} / {{ $goType }}) */
@@ -399,8 +403,11 @@ import (
 				{{ else if eq $goReturnUsage USAGE_GDNATIVE_REF -}}
 					/* USAGE_GDNATIVE_REF ({{ $method.ReturnType }} / {{ $goReturnType }}) */
 					var ret {{ $method.ReturnType }}
-				{{ else if eq $goReturnUsage USAGE_GDNATIVE_RAW -}}
-					/* USAGE_GDNATIVE_RAW ({{ $method.ReturnType }} / {{ $goReturnType }}) */
+				{{ else if eq $goReturnUsage USAGE_GODOT_STRING -}}
+					/* USAGE_GODOT_STRING ({{ $method.ReturnType }} / {{ $goReturnType }}) */
+					var ret {{ $method.ReturnType }}
+				{{ else if eq $goReturnUsage USAGE_GODOT_STRING_NAME -}}
+					/* USAGE_GODOT_STRING_NAME ({{ $method.ReturnType }} / {{ $goReturnType }}) */
 					var ret {{ $method.ReturnType }}
 				{{ else if eq $goReturnUsage USAGE_GODOT_CONST_OR_ENUM -}}
 					/* USAGE_GODOT_CONST_OR_ENUM ({{ $method.ReturnType }} / {{ $goReturnType }}) */
@@ -432,9 +439,12 @@ import (
 				{{ else if eq $goReturnUsage USAGE_GDNATIVE_CONST_OR_ENUM -}}
 					/* USAGE_GDNATIVE_CONST_OR_ENUM ({{ $method.ReturnType }} / {{ $goReturnType }}) */
 					return ret
-				{{ else if eq $goReturnUsage USAGE_GDNATIVE_RAW -}}
-					/* USAGE_GDNATIVE_RAW ({{ $method.ReturnType }} / {{ $goReturnType }}) */
-					return ret
+				{{ else if eq $goReturnUsage USAGE_GODOT_STRING -}}
+					/* USAGE_GODOT_STRING ({{ $method.ReturnType }} / {{ $goReturnType }}) */
+					return internWithGodotString(ret)
+				{{ else if eq $goReturnUsage USAGE_GODOT_STRING_NAME -}}
+					/* USAGE_GODOT_STRING_NAME ({{ $method.ReturnType }} / {{ $goReturnType }}) */
+					return internWithGodotStringName(ret)
 				{{ else if eq $goReturnUsage USAGE_GDNATIVE_REF -}}
 					/* USAGE_GDNATIVE_REF ({{ $method.ReturnType }} / {{ $goReturnType }}) */
 					return ret

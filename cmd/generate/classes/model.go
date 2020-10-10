@@ -31,13 +31,6 @@ func ParseApiType(value string) ApiType {
 
 var enumTypeRegex = regexp.MustCompile(`^enum\._?([\w\d_]+)::([\w\d_]+)$`)
 
-// TODO: this method is no longer needed since merging gdnative and godot
-//       packages
-func prefixGdnative(value string) string {
-	// return fmt.Sprintf("gdnative.%s", value)
-	return fmt.Sprintf("%s", value)
-}
-
 func cType(value string) string {
 	switch value {
 	case "bool":
@@ -51,10 +44,11 @@ type Usage int8
 
 const (
 	USAGE_VOID         Usage = iota
-	USAGE_GO_PRIMATIVE       // go primative
+	USAGE_GO_PRIMATIVE
 	USAGE_GDNATIVE_CONST_OR_ENUM
-	USAGE_GDNATIVE_RAW // c-for-go PtrTips: raw
-	USAGE_GDNATIVE_REF // c-for-go PtrTips: ref
+	USAGE_GODOT_STRING
+	USAGE_GODOT_STRING_NAME
+	USAGE_GDNATIVE_REF
 	USAGE_GODOT_CONST_OR_ENUM
 	USAGE_GODOT_CLASS
 )
@@ -67,8 +61,10 @@ func (u Usage) String() string {
 		return "USAGE_GO_PRIMATIVE"
 	case USAGE_GDNATIVE_CONST_OR_ENUM:
 		return "USAGE_GDNATIVE_CONST_OR_ENUM"
-	case USAGE_GDNATIVE_RAW:
-		return "USAGE_GDNATIVE_RAW"
+	case USAGE_GODOT_STRING:
+		return "USAGE_GODOT_STRING"
+	case USAGE_GODOT_STRING_NAME:
+		return "USAGE_GODOT_STRING_NAME"
 	case USAGE_GDNATIVE_REF:
 		return "USAGE_GDNATIVE_REF"
 	case USAGE_GODOT_CONST_OR_ENUM:
@@ -84,8 +80,10 @@ func (u Usage) String() string {
 
 func goTypeAndUsage(value string) (string, Usage) {
 	switch value {
-	case "String", "StringName":
-		return prefixGdnative(value), USAGE_GDNATIVE_RAW
+	case "String":
+		return "string", USAGE_GODOT_STRING
+	case "StringName":
+		return "string", USAGE_GODOT_STRING_NAME
 	case "void":
 		return "", USAGE_VOID
 	case "bool":
@@ -103,7 +101,7 @@ func goTypeAndUsage(value string) (string, Usage) {
 		"PoolStringArray", "PoolVector2Array", "PoolVector3Array", "Quat", "Rect2",
 		"RID", "Transform", "Transform2D", "Variant", "VariantType", "Vector2",
 		"Vector3", "Vector3Axis":
-		return prefixGdnative(value), USAGE_GDNATIVE_REF
+		return value, USAGE_GDNATIVE_REF
 	}
 
 	matches := enumTypeRegex.FindAllStringSubmatch(value, 1)

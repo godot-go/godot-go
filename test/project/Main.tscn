@@ -15,7 +15,7 @@ func _ready():
 	# if successfully loaded from the nativescript
 	# library; otherwise, exit
 	if not p.has_method(\"teleport\"):
-		print \"existing app: nativescript library did not load correctly\"
+		print(\"existing app: nativescript library did not load correctly\")
 		get_tree().quit(1)
 "
 
@@ -109,7 +109,6 @@ tile_data = PoolIntArray( -196611, 5, 0, -196609, 5, 0, -262143, 5, 0, -262140, 
 
 [node name="Player" parent="Objects" instance=ExtResource( 2 )]
 collision/safe_margin = 0.01
-script = null
 
 [node name="Camera2D" type="Camera2D" parent="Objects/Player"]
 current = true

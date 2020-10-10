@@ -2,48 +2,65 @@ package gdnative
 
 import "sync"
 
+type stringHash uint64
+
 var (
-	goStringMap    map[string]*String
-	godotStringMap map[*String]string
+	goStringMap    map[string]String
+	godotStringMap map[stringHash]string
 	mut            sync.RWMutex
 )
 
 func init() {
-	goStringMap = map[string]*String{}
-	godotStringMap = map[*String]string{}
+	goStringMap = map[string]String{}
+	godotStringMap = map[stringHash]string{}
 }
 
-func internGoString(str string) *String {
+func internWithGoString(str string) String {
 	mut.RLock()
-	if gStr, ok := goStringMap[str]; ok {
+	if gdstr, ok := goStringMap[str]; ok {
 		mut.RUnlock()
-		return gStr
+		return gdstr
 	}
 	mut.RUnlock()
 
 	mut.Lock()
-	x := NewStringFromGoString(str)
-	gStr := &x
-	goStringMap[str] = gStr
-	godotStringMap[gStr] = str
+	gdstr := NewStringFromGoString(str)
+	hash := stringHash(gdstr.Hash64())
+	goStringMap[str] = gdstr
+	godotStringMap[hash] = str
 	mut.Unlock()
 
-	return gStr
+	return gdstr
 }
 
-func internGodotString(gStr *String) string {
+func internWithGodotString(gdstr String) string {
+	hash := stringHash(gdstr.Hash64())
 	mut.RLock()
-	if str, ok := godotStringMap[gStr]; ok {
+	if str, ok := godotStringMap[hash]; ok {
 		mut.RUnlock()
 		return str
 	}
 	mut.RUnlock()
 
 	mut.Lock()
-	str := gStr.AsGoString()
-	goStringMap[str] = gStr
-	godotStringMap[gStr] = str
+	str := gdstr.AsGoString()
+	goStringMap[str] = gdstr
+	godotStringMap[hash] = str
 	mut.Unlock()
 
 	return str
+}
+
+func internWithGodotStringName(gdstrname StringName) string {
+	return internWithGodotString(gdstrname.GetName())
+}
+
+func internClear() {
+	mut.Lock()
+	godotStringMap = make(map[stringHash]string)
+	for k, v := range goStringMap {
+		v.Destroy()
+		delete(goStringMap, k)
+	}
+	mut.Unlock()
 }

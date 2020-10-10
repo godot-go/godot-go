@@ -15,9 +15,8 @@ import (
 
 var _ = Describe("TagDB", func() {
 	It("should exist through TagDB.ClassExists", func() {
-		str := gdnative.NewStringFromGoString("KinematicBody2D")
-		Ω(gdnative.GetSingletonClassDB().IsClassEnabled(str)).Should(BeTrue())
-		Ω(gdnative.GetSingletonClassDB().CanInstance(str)).Should(BeTrue())
-		Ω(gdnative.GetSingletonClassDB().ClassExists(str)).Should(BeTrue())
+		Ω(gdnative.GetSingletonClassDB().IsClassEnabled("KinematicBody2D")).Should(BeTrue())
+		Ω(gdnative.GetSingletonClassDB().CanInstance("KinematicBody2D")).Should(BeTrue())
+		Ω(gdnative.GetSingletonClassDB().ClassExists("KinematicBody2D")).Should(BeTrue())
 	})
 })

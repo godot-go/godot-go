@@ -72,6 +72,12 @@ func (d ClassRegisteredEvent) RegisterProperty(
 	get_func.get_func = (C.get_func)(unsafe.Pointer(C.cgo_gateway_property_get_func))
 
 	C.go_godot_nativescript_register_property(NativescriptApi, RegisterState.NativescriptHandle, cClassName, cName, &attr, set_func, get_func)
+
+	log.Debug("class property registered",
+		StringField("class", d.ClassName),
+		StringField("name", name),
+		StringField("property", name),
+	)
 }
 
 //export go_property_set_func

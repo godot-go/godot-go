@@ -20,9 +20,8 @@ var _ = Describe("GodotObject", func() {
 			defer obj.Free()
 
 			c := obj.GetClass()
-			className := c.AsGoString()
 
-			Ω(className).Should(Equal("Object"))
+			Ω(c).Should(Equal("Object"))
 		})
 	})
 

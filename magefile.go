@@ -150,8 +150,7 @@ func runPlugin(appPath string) error {
 			"TEST_USE_GINKGO_RECOVER": "1",
 			"TEST_USE_GINKGO_WRITER": "1",
 		},
-		godotBin, "--verbose", "-v", "-d",
-		"--path", filepath.Join(appPath, "project"))
+		godotBin, "--verbose", "--path", filepath.Join(appPath, "project"))
 }
 
 func buildGodotPlugin(appPath string, outputPath string, platform BuildPlatform) error {

@@ -100,9 +100,8 @@ var _ = Describe("Variant", func() {
 			defer n.Free()
 			o := n.GetOwnerObject()
 			strClassName := n.GetClass()
-			gs := strClassName.AsGoString()
 
-			Ω(gs).Should(Equal("Node2D"))
+			Ω(strClassName).Should(Equal("Node2D"))
 
 			vec := gdnative.NewVector2(1.0, 5.0)
 

@@ -9,6 +9,8 @@ package gdnative
 import "C"
 import (
 	"unsafe"
+
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 type RegisterSignalArg struct {
@@ -47,4 +49,10 @@ func (d ClassRegisteredEvent) RegisterSignal(signalName string, varargs ...Regis
 	}
 
 	C.go_godot_nativescript_register_signal(NativescriptApi, RegisterState.NativescriptHandle, cClassName, &signal)
+
+	log.Debug("class signal registered",
+		StringField("class", d.ClassName),
+		StringField("signal", signalName),
+		AnyField("args", varargs),
+	)
 }

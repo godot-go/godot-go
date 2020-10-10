@@ -134,7 +134,8 @@ func Generate(packagePath string) {
 		"USAGE_VOID":                   func() string { return "USAGE_VOID" },
 		"USAGE_GO_PRIMATIVE":           func() string { return "USAGE_GO_PRIMATIVE" },
 		"USAGE_GDNATIVE_CONST_OR_ENUM": func() string { return "USAGE_GDNATIVE_CONST_OR_ENUM" },
-		"USAGE_GDNATIVE_RAW":           func() string { return "USAGE_GDNATIVE_RAW" },
+		"USAGE_GODOT_STRING":           func() string { return "USAGE_GODOT_STRING" },
+		"USAGE_GODOT_STRING_NAME":      func() string { return "USAGE_GODOT_STRING_NAME" },
 		"USAGE_GDNATIVE_REF":           func() string { return "USAGE_GDNATIVE_REF" },
 		"USAGE_GODOT_CONST_OR_ENUM":    func() string { return "USAGE_GODOT_CONST_OR_ENUM" },
 		"USAGE_GODOT_CLASS":            func() string { return "USAGE_GODOT_CLASS" },
@@ -213,6 +214,6 @@ func writeTemplate(f *os.File, tmpl *template.Template, v view) {
 	}
 
 	generatedBytes := generatedBuf.Bytes()
-	
+
 	f.Write(generatedBytes)
 }

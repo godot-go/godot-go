@@ -9,11 +9,6 @@ import (
 	"github.com/godot-go/godot-go/pkg/log"
 )
 
-var (
-	defaultVelocity gdnative.Variant
-	defaultName gdnative.Variant
-)
-
 type PlayerCharacter struct {
 	gdnative.KinematicBody2DImpl
 	gdnative.UserDataIdentifiableImpl
@@ -83,7 +78,7 @@ func (h *PlayerCharacter) SetName(v gdnative.Variant) {
 
 	if newName != h.name {
 		h.name = newName
-		h.EmitSignal(nameChanged)
+		h.EmitSignal("name_changed")
 	}
 
 }
@@ -101,35 +96,35 @@ func (h *PlayerCharacter) Ready() {
 	tt := n.GetTypeTag()
 	h.walkAnimation = gdnative.NewAnimationPlayerWithRef(pno, tt)
 
-	if !h.walkAnimation.HasAnimation(walkRight) {
+	if !h.walkAnimation.HasAnimation("walk-right") {
 		log.Panic("unable to find walk-right animation")
 	}
 
-	if !h.walkAnimation.HasAnimation(walkLeft) {
+	if !h.walkAnimation.HasAnimation("walk-left") {
 		log.Panic("unabel to find walk-left animation")
 	}
 
-	if !h.walkAnimation.HasAnimation(walkDown) {
+	if !h.walkAnimation.HasAnimation("walk-down") {
 		log.Panic("unable to find walk-down")
 	}
 
-	if !h.walkAnimation.HasAnimation(walkUp) {
+	if !h.walkAnimation.HasAnimation("walk-up") {
 		log.Panic("unable to find walk-up")
 	}
 
-	if !h.walkAnimation.HasAnimation(idleRight) {
+	if !h.walkAnimation.HasAnimation("idle-right") {
 		log.Panic("unable to find idle-right")
 	}
 
-	if !h.walkAnimation.HasAnimation(idleLeft) {
+	if !h.walkAnimation.HasAnimation("idle-left") {
 		log.Panic("unable to find idle-left")
 	}
 
-	if !h.walkAnimation.HasAnimation(idleDown) {
+	if !h.walkAnimation.HasAnimation("idle-down") {
 		log.Panic("unable to find idle-down")
 	}
 
-	if !h.walkAnimation.HasAnimation(idleUp) {
+	if !h.walkAnimation.HasAnimation("idle-up") {
 		log.Panic("unable to find idle-up")
 	}
 
@@ -147,7 +142,7 @@ func (h *PlayerCharacter) PhysicsProcess(delta float64) {
 
 	variant := gdnative.NewVariantVector2(nv)
 	defer variant.Destroy()
-	h.EmitSignal(moved, &variant)
+	h.EmitSignal("moved", &variant)
 }
 
 func (h *PlayerCharacter) updateSprite(delta float64) {
@@ -156,57 +151,51 @@ func (h *PlayerCharacter) updateSprite(delta float64) {
 
 	a := h.walkAnimation
 	ca := a.GetCurrentAnimation()
-	pca := &ca
 
 	if x > 0 {
-		if !pca.OperatorEqual(walkRight) {
-			a.Play(walkRight, -1, 1.0, false)
+		if ca != "walk-right" {
+			a.Play("walk-right", -1, 1.0, false)
 		}
 	} else if x < 0 {
-		if !pca.OperatorEqual(walkLeft) {
-			a.Play(walkLeft, -1, 1.0, true)
+		if ca != "walk-left" {
+			a.Play("walk-left", -1, 1.0, true)
 		}
 	} else if y > 0 {
-		if !pca.OperatorEqual(walkDown) {
-			a.Play(walkDown, -1, 1.0, false)
+		if ca != "walk-down" {
+			a.Play("walk-down", -1, 1.0, false)
 		}
 	} else if y < 0 {
-		if !pca.OperatorEqual(walkUp) {
-			a.Play(walkUp, -1, 1.0, false)
+		if ca != "walk-up" {
+			a.Play("walk-up", -1, 1.0, false)
 		}
-	} else {
-		// switch to idle animation if the character isn't moving
-		name := pca.AsGoString()
+	} else if ca != "" {
+		tokens := strings.Split(ca, "-")
 
-		if name != "" {
-			tokens := strings.Split(name, "-")
+		if len(tokens) != 2  {
+			log.Panic("unable to parse animation name", gdnative.StringField("name", ca))
+		}
 
-			if len(tokens) != 2  {
-				log.Panic("unable to parse animation name", gdnative.StringField("name", name))
-			}
+		var animationName string
+		switch tokens[1] {
+		case "up":
+			animationName = "idle-up"
+		case "down":
+			animationName = "idle-down"
+		case "left":
+			animationName = "idle-left"
+		case "right":
+			animationName = "idle-right"
+		default:
+			log.Warn("unhandled animation name", gdnative.StringField("name", ca))
+		}
 
-			var animationName gdnative.String
-			switch tokens[1] {
-			case "up":
-				animationName = idleUp
-			case "down":
-				animationName = idleDown
-			case "left":
-				animationName = idleLeft
-			case "right":
-				animationName = idleRight
-			default:
-				log.Warn("unhandled animation name", gdnative.StringField("name", name))
-			}
-
-			if !pca.OperatorEqual(animationName) {
-				a.Play(animationName, -1, 1.0, false)
-			}
+		if ca != animationName {
+			a.Play(animationName, -1, 1.0, false)
 		}
 	}
 }
 
-func isActionPressedToInt8(a gdnative.String) int8 {
+func isActionPressedToInt8(a string) int8 {
 	if gdnative.GetSingletonInput().IsActionPressed(a) {
 		return 1
 	} else {
@@ -216,8 +205,8 @@ func isActionPressedToInt8(a gdnative.String) int8 {
 
 func getKeyInputDirectionAsVector2() gdnative.Vector2 {
 	return gdnative.NewVector2(
-		float32(isActionPressedToInt8(uiRight)-isActionPressedToInt8(uiLeft)),
-		float32(isActionPressedToInt8(uiDown)-isActionPressedToInt8(uiUp)),
+		float32(isActionPressedToInt8("ui_right")-isActionPressedToInt8("ui_left")),
+		float32(isActionPressedToInt8("ui_down")-isActionPressedToInt8("ui_up")),
 	)
 }
 
@@ -232,16 +221,6 @@ func (p *PlayerCharacter) Free() {
 	}
 }
 
-func PlayerCharacterCreateFunc(owner *gdnative.GodotObject, typeTag gdnative.TypeTag) gdnative.NativeScriptClass {
-	log.Debug("create_func new PlayerCharacter")
-
-	m := &PlayerCharacter{}
-	m.Owner = owner
-	m.TypeTag = typeTag
-
-	return m
-}
-
 func NewPlayerCharacter() PlayerCharacter {
 	log.Debug("NewPlayerCharacter")
 	inst := *(gdnative.CreateCustomClassInstance("PlayerCharacter", "KinematicBody2D").(*PlayerCharacter))
@@ -249,72 +228,24 @@ func NewPlayerCharacter() PlayerCharacter {
 }
 
 var (
-	moved gdnative.String
-	nameChanged gdnative.String
 	velocity gdnative.String
 	velocityVariant gdnative.Variant
 
-	uiRight gdnative.String
-	uiLeft gdnative.String
-	uiUp gdnative.String
-	uiDown gdnative.String
-
-	walkRight gdnative.String
-	walkLeft gdnative.String
-	walkUp gdnative.String
-	walkDown gdnative.String
-
-	idleRight gdnative.String
-	idleLeft gdnative.String
-	idleUp gdnative.String
-	idleDown gdnative.String
+	defaultVelocity gdnative.Variant
+	defaultName gdnative.Variant
 )
 
 func PlayerCharacterNativescriptInit() {
-	moved = gdnative.NewStringFromGoString("moved")
-	nameChanged = gdnative.NewStringFromGoString("name_changed")
 	velocity = gdnative.NewStringFromGoString("velocity")
 	velocityVariant = gdnative.NewVariantString(velocity)
-
-	uiRight = gdnative.NewStringFromGoString("ui_right")
-	uiLeft = gdnative.NewStringFromGoString("ui_left")
-	uiUp = gdnative.NewStringFromGoString("ui_up")
-	uiDown = gdnative.NewStringFromGoString("ui_down")
-
-	walkRight = gdnative.NewStringFromGoString("walk-right")
-	walkLeft = gdnative.NewStringFromGoString("walk-left")
-	walkUp = gdnative.NewStringFromGoString("walk-up")
-	walkDown = gdnative.NewStringFromGoString("walk-down")
-
-	idleRight = gdnative.NewStringFromGoString("idle-right")
-	idleLeft = gdnative.NewStringFromGoString("idle-left")
-	idleUp = gdnative.NewStringFromGoString("idle-up")
-	idleDown = gdnative.NewStringFromGoString("idle-down")
 
 	defaultVelocity = gdnative.NewVariantVector2(gdnative.NewVector2(0.0, 0.0))
 	defaultName = gdnative.NewVariantString(gdnative.NewStringFromGoString("No_Name"))
 }
 
 func PlayerCharacterNativescriptTerminate() {
-	moved.Destroy()
-	nameChanged.Destroy()
 	velocity.Destroy()
 	velocityVariant.Destroy()
-
-	uiRight.Destroy()
-	uiLeft.Destroy()
-	uiUp.Destroy()
-	uiDown.Destroy()
-
-	walkRight.Destroy()
-	walkLeft.Destroy()
-	walkUp.Destroy()
-	walkDown.Destroy()
-
-	idleRight.Destroy()
-	idleLeft.Destroy()
-	idleUp.Destroy()
-	idleDown.Destroy()
 
 	defaultVelocity.Destroy()
 	defaultName.Destroy()

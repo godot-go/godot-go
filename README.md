@@ -67,7 +67,6 @@ I'm happy to help out anyone interested in the project. You can add me (surgical
 
 ## References
 
-* Inspiration was taken from ShadowApex's earlier [godot-go](https://github.com/ShadowApex/godot-go) project
 * Cheatsheet for [cgo data type conversion](https://gist.github.com/zchee/b9c99695463d8902cd33)
 * Cross compilation with cgo with [xgo](https://github.com/karalabe/xgo)
 * vscode-go patch to [support cgo](https://github.com/golang/go/issues/35721#issuecomment-568543991)
@@ -78,4 +77,5 @@ I'm happy to help out anyone interested in the project. You can add me (surgical
 
 ## Credit
 
+* Inspiration for the project was taken from ShadowApex's earlier project: [godot-go](https://github.com/ShadowApex/godot-go)
 * Test project art assets taken from [Free RPG Asset Pack](https://biloumaster.itch.io/free-rpg-asset)

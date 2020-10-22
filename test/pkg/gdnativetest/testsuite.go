@@ -22,7 +22,7 @@ func init() {
 
 func initNativescript() {
 	log.Debug("initNativescript called")
-	// runTests()
+	runTests()
 
 	// TODO: replace this with a better godot way of exiting
 	if v, _ := os.LookupEnv("CI"); v == "1" {

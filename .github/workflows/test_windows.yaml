@@ -15,7 +15,7 @@ jobs:
       fail-fast: true
       matrix:
         go_version:
-          - 1.15.0
+          - 1.15.3
         targets:
           - windows/amd64
 
@@ -56,14 +56,6 @@ jobs:
       run: go get -v -t -d ./...
       shell: bash
 
-    # - name: Go get goimports
-    #   run: go get golang.org/x/tools/cmd/goimports
-    #   shell: bash
-
-    # - name: Go generate
-    #   run: go generate
-    #   shell: bash
-
     - name: Build test
       run: | # need to run this twice to get a useful error message on failure
         go run mage.go -v buildtest || go run mage.go -v buildtest
@@ -76,9 +68,10 @@ jobs:
       shell: bash
 
     # - name: Run Test
-    #   run: ./Godot_v3.2.2-stable_win64.exe --verbose -v -d --path test/project/
+    #   run: go run mage.go -v test
     #   shell: bash
     #   env:
+    #     GODOT_BIN: ./Godot_v3.2.2-stable_win64.exe
     #     LOG_LEVEL: "trace"
     #     TEST_USE_GINKGO_WRITER: 1
     #     LANG: "en_US.utf8"

@@ -55,6 +55,7 @@ jobs:
         if: ${{ contains(matrix.targets, 'linux/amd64') }}
         run: go run mage.go -v test
         env:
+          GODOT_BIN: "/usr/local/bin/godot3-server"
           LOG_LEVEL: "debug"
           TEST_USE_GINKGO_WRITER: 1
           LANG: "en_US.utf8"

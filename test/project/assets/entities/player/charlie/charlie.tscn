@@ -1,7 +1,8 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://libs/libgodotgo-test.gdns" type="Script" id=1]
+[ext_resource path="res://libs/player_character.gdns" type="Script" id=1]
 [ext_resource path="res://assets/AH_SpriteSheet_People1.png" type="Texture" id=2]
+
 
 [sub_resource type="Animation" id=1]
 loop = true

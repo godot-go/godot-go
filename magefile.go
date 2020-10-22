@@ -136,10 +136,10 @@ func Test() error {
 
 	appPath := filepath.Join("test")
 
-	return runPlugin(appPath)
+	return runGUT(appPath)
 }
 
-func runPlugin(appPath string) error {
+func runGUT(appPath string) error {
 	mg.Deps(initGodotBin)
 
 	return sh.RunWith(
@@ -150,12 +150,11 @@ func runPlugin(appPath string) error {
 			"TEST_USE_GINKGO_RECOVER": "1",
 			"TEST_USE_GINKGO_WRITER": "1",
 		},
-		godotBin, "--verbose", "--path", filepath.Join(appPath, "project"))
+		godotBin, "--verbose", "--path", filepath.Join(appPath, "project"), "-s", "res://addons/gut/gut_cmdln.gd")
 }
 
 func buildGodotPlugin(appPath string, outputPath string, platform BuildPlatform) error {
 	return sh.RunWith(envWithPlatform(platform), mg.GoCmd(), "build",
-		"-gcflags=all=-d=checkptr",
 		"-tags", "tools", "-buildmode=c-shared", "-x", "-trimpath",
 		"-o", filepath.Join(outputPath, platform.godotPluginCSharedName(appPath)),
 		filepath.Join(appPath, "main.go"),

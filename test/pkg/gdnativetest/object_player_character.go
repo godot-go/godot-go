@@ -27,11 +27,29 @@ func (p *PlayerCharacter) BaseClass() string {
 	return "KinematicBody2D"
 }
 
-func (p *PlayerCharacter) Teleport(distance float64) {
+func (p *PlayerCharacter) RandomTeleport(distance float64) {
 	pos := p.GetPosition()
 	v := gdnative.NewVector2(rand.Float32() - 0.5, rand.Float32() - 0.5)
 	normalized := v.Normalized()
 	p.SetPosition(pos.OperatorAdd(normalized.OperatorMultiplyScalar(float32(distance))))
+}
+
+func randomString(len int) string {
+	randomInt := func (min, max int) int {
+		return min + rand.Intn(max-min)
+	}
+
+    bytes := make([]byte, len)
+    for i := 0; i < len; i++ {
+        bytes[i] = byte(randomInt(65, 90))
+    }
+    return string(bytes)
+}
+
+func (p *PlayerCharacter) RandomName() {
+	name := randomString(10)
+	gstrName := gdnative.NewStringFromGoString(name)
+	p.SetName(gstrName)
 }
 
 func (p *PlayerCharacter) Init() {
@@ -42,7 +60,8 @@ func (p *PlayerCharacter) OnClassRegistered(e gdnative.ClassRegisteredEvent) {
 	// methods
 	e.RegisterMethod("_ready", "Ready")
 	e.RegisterMethod("_physics_process", "PhysicsProcess")
-	e.RegisterMethod("teleport", "Teleport")
+	e.RegisterMethod("random_teleport", "RandomTeleport")
+	e.RegisterMethod("random_name", "RandomName")
 
 	// signals
 	e.RegisterSignal("moved", gdnative.RegisterSignalArg{"velocity", gdnative.GODOT_VARIANT_TYPE_VECTOR2})
@@ -68,16 +87,13 @@ func (h *PlayerCharacter) SetVelocity(v gdnative.Variant) {
 	h.setVelocity(vec2)
 }
 
-func (h *PlayerCharacter) GetName() gdnative.Variant {
-	v := gdnative.NewVariantString(h.name)
-	return v
+func (h *PlayerCharacter) GetName() gdnative.String {
+	return h.name
 }
 
-func (h *PlayerCharacter) SetName(v gdnative.Variant) {
-	newName := v.AsString()
-
-	if newName != h.name {
-		h.name = newName
+func (h *PlayerCharacter) SetName(v gdnative.String) {
+	if v != h.name {
+		h.name = v
 		h.EmitSignal("name_changed")
 	}
 
@@ -213,6 +229,8 @@ func getKeyInputDirectionAsVector2() gdnative.Vector2 {
 func (p *PlayerCharacter) Free() {
 	log.Debug("free PlayerCharacter")
 
+	p.name.Destroy()
+
 	p.walkAnimation = nil
 
 	if p != nil {
@@ -228,25 +246,16 @@ func NewPlayerCharacter() PlayerCharacter {
 }
 
 var (
-	velocity gdnative.String
-	velocityVariant gdnative.Variant
-
 	defaultVelocity gdnative.Variant
 	defaultName gdnative.Variant
 )
 
 func PlayerCharacterNativescriptInit() {
-	velocity = gdnative.NewStringFromGoString("velocity")
-	velocityVariant = gdnative.NewVariantString(velocity)
-
 	defaultVelocity = gdnative.NewVariantVector2(gdnative.NewVector2(0.0, 0.0))
 	defaultName = gdnative.NewVariantString(gdnative.NewStringFromGoString("No_Name"))
 }
 
 func PlayerCharacterNativescriptTerminate() {
-	velocity.Destroy()
-	velocityVariant.Destroy()
-
 	defaultVelocity.Destroy()
 	defaultName.Destroy()
 }

@@ -101,6 +101,10 @@ func GetCustomClassInstance(obj Object) NativeScriptClass {
 
 	owner := obj.GetOwnerObject()
 
+	return GetCustomClassInstanceWithOwner(owner)
+}
+
+func GetCustomClassInstanceWithOwner(owner *GodotObject) NativeScriptClass {
 	ud := (UserData)(uintptr(C.go_godot_nativescript_get_userdata(NativescriptApi, unsafe.Pointer(owner))))
 
 	classInst, ok := nativeScriptInstanceMap[ud]

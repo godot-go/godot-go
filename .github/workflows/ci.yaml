@@ -51,7 +51,10 @@ jobs:
           wget https://downloads.tuxfamily.org/godotengine/3.2.2/Godot_v3.2.2-stable_linux_server.64.zip
           sudo unzip Godot_v3.2.2-stable_linux_server.64.zip -d /usr/local/bin
           sudo ln -s Godot_v3.2.2-stable_linux_server.64 /usr/local/bin/godot3-server
-      - name: Integration Test
+      - name: Build Test
+        if: ${{ contains(matrix.targets, 'linux/amd64') }}
+        run: go run mage.go -v buildTest
+      - name: Test
         if: ${{ contains(matrix.targets, 'linux/amd64') }}
         run: go run mage.go -v test
         env:

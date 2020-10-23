@@ -34,8 +34,8 @@ func internWithGoString(str string) String {
 }
 
 func internWithGodotString(gdstr String) string {
-	hash := stringHash(gdstr.Hash64())
 	mut.RLock()
+	hash := stringHash(gdstr.Hash64())
 	if str, ok := godotStringMap[hash]; ok {
 		mut.RUnlock()
 		return str
@@ -43,8 +43,9 @@ func internWithGodotString(gdstr String) string {
 	mut.RUnlock()
 
 	mut.Lock()
-	str := gdstr.AsGoString()
-	goStringMap[str] = gdstr
+	copy := NewStringCopy(gdstr)
+	str := copy.AsGoString()
+	goStringMap[str] = copy
 	godotStringMap[hash] = str
 	mut.Unlock()
 

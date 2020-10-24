@@ -35,6 +35,8 @@ func cType(value string) string {
 	switch value {
 	case "bool":
 		return "char"
+	case "float":
+		return "double"
 	}
 
 	return value

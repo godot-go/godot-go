@@ -9,26 +9,11 @@ import "C"
 import (
 	"os"
 
-	"github.com/godot-go/godot-go/pkg/gdnative"
 	"github.com/godot-go/godot-go/pkg/log"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
-
-func init() {
-	gdnative.RegisterInitCallback(initNativescript)
-}
-
-func initNativescript() {
-	log.Debug("initNativescript called")
-	runTests()
-
-	// TODO: replace this with a better godot way of exiting
-	if v, _ := os.LookupEnv("CI"); v == "1" {
-		os.Exit(0)
-	}
-}
 
 func runTests() {
 	isSet := func(name string) bool {

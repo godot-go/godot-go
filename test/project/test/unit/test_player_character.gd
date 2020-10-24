@@ -27,3 +27,9 @@ func test_player_characater_name():
 	inst.random_name()
 	assert_true(inst.name != '')
 	inst.free()
+
+
+func test_run_go_ginkgo_testsuite():
+	var inst = PlayerCharacter.new()
+	inst.run_ginkgo_testsuite()
+	inst.free()

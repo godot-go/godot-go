@@ -1,9 +1,14 @@
 package gdnative
 
 import (
+	"fmt"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )
+
+func Vector2Field(key string, vec2 Vector2) log.Field {
+	return zap.String(key, fmt.Sprintf("vec2(%.2f,%.2f)", vec2.GetX(), vec2.GetY()))
+}
 
 func GodotObjectField(key string, obj *GodotObject) log.Field {
 	return zap.String(key, obj.AddrAsString())
@@ -11,6 +16,10 @@ func GodotObjectField(key string, obj *GodotObject) log.Field {
 
 func StringField(key string, value string) log.Field {
 	return zap.String(key, value)
+}
+
+func VariantField(key string, value Variant) log.Field {
+	return zap.String(key, fmt.Sprintf("%d:%+v", value.GetType(), VariantToGoType(value)))
 }
 
 func TypeTagField(key string, typeTag TypeTag) log.Field {

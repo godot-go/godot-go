@@ -68,7 +68,7 @@ func VariantToGoType(variant Variant) reflect.Value {
 		return reflect.ValueOf(variant.AsPoolColorArray())
 	}
 	log.Panic("variant to native built-in type version unhandled",
-		StringField("type", fmt.Sprintf("%d", variant.GetType())),
+		VariantField("variant", variant),
 	)
 	return reflect.ValueOf(nil)
 }

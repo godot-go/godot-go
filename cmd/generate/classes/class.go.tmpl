@@ -26,6 +26,12 @@ import (
 //   "{{ .TemplateName }}" so they can be included in the generated
 //   code.
 //----------------------------------------------------------------------------*/
+func init() {
+	{{ range $j, $api := .Apis -}}
+	registerMethodBinds(Init{{ $api.PrefixName }}MethodBinds)
+	registerTypeTag(Init{{ $api.PrefixName }}TypeTag)
+	{{ end -}}
+}
 
 {{ range $j, $api := .Apis -}}
 
@@ -256,11 +262,6 @@ import (
 		{{ end }}
 		)
 	{{ end }}
-
-	func init() {
-		registerMethodBinds(Init{{ .PrefixName }}MethodBinds)
-		registerTypeTag(Init{{ .PrefixName }}TypeTag)
-	}
 
 	func Init{{ .PrefixName }}TypeTag() {
 		if CoreApi == nil {

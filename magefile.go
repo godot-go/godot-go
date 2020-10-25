@@ -119,7 +119,7 @@ func InstallGoTools() error {
 
 func BuildTest() error {
 	appPath := filepath.Join("test")
-	outputPath := filepath.Join(appPath, "project", "libs")
+	outputPath := filepath.Join(appPath, "libs")
 
 	return buildGodotPlugin(
 		appPath,
@@ -150,7 +150,7 @@ func runGUT(appPath string) error {
 			"TEST_USE_GINKGO_RECOVER": "1",
 			"TEST_USE_GINKGO_WRITER": "1",
 		},
-		godotBin, "--verbose", "--path", filepath.Join(appPath, "project"), "-glog=3", "-s", "res://addons/gut/gut_cmdln.gd")
+		godotBin, "--verbose", "--path", appPath, "-glog=3", "-s", "res://addons/gut/gut_cmdln.gd")
 }
 
 func buildGodotPlugin(appPath string, outputPath string, platform BuildPlatform) error {

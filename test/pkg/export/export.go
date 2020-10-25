@@ -20,14 +20,9 @@ func godot_gdnative_terminate(options unsafe.Pointer) {
 //export godot_nativescript_init
 func godot_nativescript_init(handle unsafe.Pointer) {
 	gdnative.GodotNativescriptInit(handle)
-
-	gdnativetest.PlayerCharacterNativescriptInit()
-	gdnative.RegisterClass(&gdnativetest.PlayerCharacter{})
 }
 
 //export godot_nativescript_terminate
 func godot_nativescript_terminate(handle unsafe.Pointer) {
 	gdnativetest.PlayerCharacterNativescriptTerminate()
-
-	gdnative.GodotNativescriptTerminate(handle)
 }

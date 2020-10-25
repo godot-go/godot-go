@@ -110,6 +110,7 @@ func assertIsDirectory(dirPath string) error {
 	return nil
 }
 
+// Generate reads in Godot's api.json and generates codegen of all the classes
 func Generate(packagePath string) {
 	outputPackageDirectoryPath := filepath.Join(packagePath, "pkg", "gdnative")
 	apiJsonFilePath := filepath.Join(packagePath, "godot_headers", "api.json")

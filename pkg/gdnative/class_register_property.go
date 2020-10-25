@@ -63,15 +63,15 @@ func (d ClassRegisteredEvent) RegisterProperty(
 	attr.usage = (C.godot_property_usage_flags)(usage)
 	attr.hint_string = *(*C.godot_string)(unsafe.Pointer(&hintString))
 
-	set_func := C.godot_property_set_func{}
-	set_func.method_data = unsafe.Pointer(uintptr(uint(pst)))
-	set_func.set_func = (C.set_func)(unsafe.Pointer(C.cgo_gateway_property_set_func))
+	propSetFunc := C.godot_property_set_func{}
+	propSetFunc.method_data = unsafe.Pointer(uintptr(uint(pst)))
+	propSetFunc.set_func = (C.set_func)(unsafe.Pointer(C.cgo_gateway_property_set_func))
 
-	get_func := C.godot_property_get_func{}
-	get_func.method_data = unsafe.Pointer(uintptr(uint(pgt)))
-	get_func.get_func = (C.get_func)(unsafe.Pointer(C.cgo_gateway_property_get_func))
+	propGetFunc := C.godot_property_get_func{}
+	propGetFunc.method_data = unsafe.Pointer(uintptr(uint(pgt)))
+	propGetFunc.get_func = (C.get_func)(unsafe.Pointer(C.cgo_gateway_property_get_func))
 
-	C.go_godot_nativescript_register_property(NativescriptApi, RegisterState.NativescriptHandle, cClassName, cName, &attr, set_func, get_func)
+	C.go_godot_nativescript_register_property(NativescriptApi, RegisterState.NativescriptHandle, cClassName, cName, &attr, propSetFunc, propGetFunc)
 
 	log.Debug("class property registered",
 		StringField("class", d.ClassName),

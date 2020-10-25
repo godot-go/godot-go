@@ -9,6 +9,7 @@ package gdnative
 //   code.
 //----------------------------------------------------------------------------*/
 
+//revive:disable
 /*
 #include <gdnative.wrapper.gen.h>
 #include <gdnative/aabb.h>
@@ -75,6 +76,7 @@ import (
         {{ end }}
     {{ end }}
 {{ end }}
+//revive:enable
 
 {{ define "CONSTRUCTOR_METHOD" }}
     func {{ .Name }}({{ template "ARGUMENTS" .Arguments }}) {{ .ReturnType.GoName }} {

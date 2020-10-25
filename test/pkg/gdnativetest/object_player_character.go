@@ -104,12 +104,12 @@ func (p *PlayerCharacter) SetVelocity(v gdnative.Variant) {
 	p.setVelocity(vec2)
 }
 
-// GetVelocity returns the velocity to Godot
+// GetName returns the name to Godot
 func (p *PlayerCharacter) GetName() gdnative.String {
 	return p.name
 }
 
-// SetVelocity is called when the velocity property is modified by Godot
+// SetName is called when the name property is modified by Godot
 func (p *PlayerCharacter) SetName(v gdnative.String) {
 	if v != p.name {
 		p.name = v
@@ -118,6 +118,7 @@ func (p *PlayerCharacter) SetName(v gdnative.String) {
 
 }
 
+// Ready is mapped to the _ready method, which is called after being added to the Scene.
 func (p *PlayerCharacter) Ready() {
 	log.Debug("start PlayerCharacter::Ready", gdnative.GodotObjectField("owner", p.GetOwnerObject()))
 	path := "sprite/animation_player"
@@ -166,6 +167,7 @@ func (p *PlayerCharacter) Ready() {
 	log.Debug("End PlayerCharacter::Ready", gdnative.GodotObjectField("owner", p.GetOwnerObject()))
 }
 
+// PhysicsProcess is mapped to the _physics_process method.
 func (p *PlayerCharacter) PhysicsProcess(delta float64) {
 	p.setVelocity(getKeyInputDirectionAsVector2())
 
@@ -245,6 +247,7 @@ func getKeyInputDirectionAsVector2() gdnative.Vector2 {
 	)
 }
 
+// Free should be called to clean up memory
 func (p *PlayerCharacter) Free() {
 	log.Debug("free PlayerCharacter")
 
@@ -258,6 +261,7 @@ func (p *PlayerCharacter) Free() {
 	}
 }
 
+// NewPlayerCharacter is the constructor that creates an instance recognized by Godot
 func NewPlayerCharacter() PlayerCharacter {
 	log.Debug("NewPlayerCharacter")
 	inst := *(gdnative.CreateCustomClassInstance("PlayerCharacter", "KinematicBody2D").(*PlayerCharacter))
@@ -269,12 +273,21 @@ var (
 	defaultName gdnative.Variant
 )
 
+// PlayerCharacterNativescriptInit called after NativeScript initializes
 func PlayerCharacterNativescriptInit() {
 	defaultVelocity = gdnative.NewVariantVector2(gdnative.NewVector2(0.0, 0.0))
 	defaultName = gdnative.NewVariantString(gdnative.NewStringFromGoString("No_Name"))
+
+	gdnative.RegisterClass(&PlayerCharacter{})
 }
 
+// PlayerCharacterNativescriptTerminate called before NativeScript terminates
 func PlayerCharacterNativescriptTerminate() {
 	defaultVelocity.Destroy()
 	defaultName.Destroy()
+}
+
+func init() {
+	gdnative.RegisterInitCallback(PlayerCharacterNativescriptInit)
+	gdnative.RegisterTerminateCallback(PlayerCharacterNativescriptTerminate)
 }

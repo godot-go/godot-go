@@ -10,8 +10,10 @@ import (
 	"github.com/godot-go/godot-go/pkg/gdnative"
 	"unsafe"
 
+	//revive:disable:dot-imports
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	//revive:enable:dot-imports
 )
 
 func testcall(api unsafe.Pointer, pArgs []unsafe.Pointer, pRet unsafe.Pointer) {

@@ -44,6 +44,7 @@ func cType(value string) string {
 
 type Usage int8
 
+//revive:disable:var-naming
 const (
 	USAGE_VOID         Usage = iota
 	USAGE_GO_PRIMATIVE
@@ -54,6 +55,7 @@ const (
 	USAGE_GODOT_CONST_OR_ENUM
 	USAGE_GODOT_CLASS
 )
+//revive:enable:var-naming
 
 func (u Usage) String() string {
 	switch u {
@@ -132,7 +134,7 @@ func GoType(value string) string {
 	return t
 }
 
-// GoType converts types in the api.json into generated Go types.
+// GoTypeUsage converts types in the api.json into generated Go types.
 func GoTypeUsage(value string) string {
 	_, u := goTypeAndUsage(value)
 	return u.String()
@@ -183,7 +185,7 @@ func (a GDAPIs) PartitionByBaseApiTypeAndClass() ApiTypeBaseClassIndex {
 	for _, api := range a {
 		parentClasses, ok := parts[api.APIType]
 		if !ok {
-			log.Printf("api type '%s' unsupported", api.ApiType)
+			log.Printf("api type '%v' unsupported", api.ApiType())
 			continue
 		}
 		parentClasses[api.BaseClass] = append(parentClasses[api.BaseClass], api)
@@ -210,7 +212,7 @@ type GDAPI struct {
 
 func (a GDAPI) HasEnumValue(value string) bool {
 	for _, e := range a.Enums {
-		for v, _ := range e.Values {
+		for v := range e.Values {
 			if v == value {
 				return true
 			}
@@ -223,9 +225,9 @@ func (a GDAPI) HasEnumValue(value string) bool {
 func (a GDAPI) ParentInterface() string {
 	if a.Name == "Object" {
 		return "Class"
-	} else {
-		return a.BaseClass
 	}
+
+	return a.BaseClass
 }
 
 func (a GDAPI) PrefixName() string {

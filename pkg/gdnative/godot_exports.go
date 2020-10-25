@@ -31,7 +31,7 @@ func apiStructOffset(extensions **C.godot_gdnative_api_struct, i int) *C.godot_g
 }
 
 func GodotGdnativeInit(options *GdnativeInitOptions) {
-	RegisterState.InitCount += 1
+	RegisterState.InitCount++
 
 	log.Debug("GodotGdnativeInit called", AnyField("InitCount", RegisterState.InitCount))
 

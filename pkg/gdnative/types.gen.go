@@ -9,6 +9,7 @@ package gdnative
 //   code.
 //----------------------------------------------------------------------------*/
 
+//revive:disable
 /*
 #include <gdnative.wrapper.gen.h>
 #include <gdnative/aabb.h>
@@ -14177,3 +14178,5 @@ type NetWebrtcLibrary C.godot_net_webrtc_library
 type NetWebrtcPeerConnection C.godot_net_webrtc_peer_connection
 
 type VideodecoderInterfaceGdnative C.godot_videodecoder_interface_gdnative
+
+//revive:enable

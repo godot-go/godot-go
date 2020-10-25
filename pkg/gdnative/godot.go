@@ -24,11 +24,12 @@ func registerTypeTag(callbacks ...RegisterTypeTagCallback) {
 	registerTypeTagCallbacks = append(registerTypeTagCallbacks, callbacks...)
 }
 
-//RegisterInitCallback is called for each Godot class that needs to be initialzied as well as to initialize custom code.
+//RegisterInitCallback registers funcions to be called after NativeScript initializes.
 func RegisterInitCallback(callbacks ...ExtNativescriptInitCallback) {
 	initNativescriptCallbacks = append(initNativescriptCallbacks, callbacks...)
 }
 
-func RegisterTerminateCallbacks(callbacks ...ExtNativescriptTerminateCallback) {
+//RegisterTerminateCallback registers funcions to be called before NativeScript terminates.
+func RegisterTerminateCallback(callbacks ...ExtNativescriptTerminateCallback) {
 	terminateCallbacks = append(terminateCallbacks, callbacks...)
 }

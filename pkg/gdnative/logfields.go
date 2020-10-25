@@ -2,6 +2,7 @@ package gdnative
 
 import (
 	"fmt"
+
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )

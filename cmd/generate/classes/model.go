@@ -42,6 +42,7 @@ func cType(value string) string {
 	return value
 }
 
+// Usage is an enum type categorizing data types for parsing and generating NativeScript classes.
 type Usage int8
 
 //revive:disable:var-naming

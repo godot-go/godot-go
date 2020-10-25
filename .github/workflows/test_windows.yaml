@@ -64,7 +64,7 @@ jobs:
         GODOT_BIN: ./Godot_v3.2.2-stable_win64.exe
 
     - name: List Artifacts Directory
-      run: ls -alh test/project/libs
+      run: ls -alh test/libs
       shell: bash
 
     # - name: Run Test

@@ -10,6 +10,7 @@ package gdnative
 //----------------------------------------------------------------------------*/
 
 //revive:disable
+
 /*
 #include <gdnative.wrapper.gen.h>
 #include <gdnative/aabb.h>

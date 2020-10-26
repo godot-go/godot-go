@@ -9,11 +9,12 @@ type ExtNativescriptInitCallback func()
 type ExtNativescriptTerminateCallback func()
 
 var (
-	registerMethodBindsCallbacks []RegisterMethodBindsCallback
-	registerTypeTagCallbacks     []RegisterTypeTagCallback
-	initClassCallbacks           []InitClassCallback
-	initNativescriptCallbacks    []ExtNativescriptInitCallback
-	terminateCallbacks           []ExtNativescriptTerminateCallback
+	registerMethodBindsCallbacks           []RegisterMethodBindsCallback
+	registerTypeTagCallbacks               []RegisterTypeTagCallback
+	initInternalNativescriptCallbacks      []ExtNativescriptInitCallback
+	terminateInternalNativescriptCallbacks []ExtNativescriptTerminateCallback
+	initNativescriptCallbacks              []ExtNativescriptInitCallback
+	terminateNativescriptCallbacks         []ExtNativescriptTerminateCallback
 )
 
 func registerMethodBinds(callbacks ...RegisterMethodBindsCallback) {
@@ -24,6 +25,14 @@ func registerTypeTag(callbacks ...RegisterTypeTagCallback) {
 	registerTypeTagCallbacks = append(registerTypeTagCallbacks, callbacks...)
 }
 
+func registerInternalInitCallback(callbacks ...ExtNativescriptInitCallback) {
+	initInternalNativescriptCallbacks = append(initInternalNativescriptCallbacks, callbacks...)
+}
+
+func registerInternalTerminateCallback(callbacks ...ExtNativescriptTerminateCallback) {
+	terminateInternalNativescriptCallbacks = append(terminateInternalNativescriptCallbacks, callbacks...)
+}
+
 //RegisterInitCallback registers funcions to be called after NativeScript initializes.
 func RegisterInitCallback(callbacks ...ExtNativescriptInitCallback) {
 	initNativescriptCallbacks = append(initNativescriptCallbacks, callbacks...)
@@ -31,5 +40,5 @@ func RegisterInitCallback(callbacks ...ExtNativescriptInitCallback) {
 
 //RegisterTerminateCallback registers funcions to be called before NativeScript terminates.
 func RegisterTerminateCallback(callbacks ...ExtNativescriptTerminateCallback) {
-	terminateCallbacks = append(terminateCallbacks, callbacks...)
+	terminateNativescriptCallbacks = append(terminateNativescriptCallbacks, callbacks...)
 }

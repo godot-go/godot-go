@@ -158,8 +158,8 @@ func GodotGdnativeTerminate(options *GdnativeTerminateOptions) {
 func GodotNativescriptInit(handle unsafe.Pointer) {
 	log.Debug("GodotNativescriptInit called")
 
-	if len(initNativescriptCallbacks) == 0 {
-		log.Warn("no gdnative init callbacks registered gdnative.RegisterInitCallback ")
+	if len(initInternalNativescriptCallbacks) == 0 {
+		log.Warn("no gdnative init callbacks registered")
 	}
 
 	if Nativescript11Api == nil {
@@ -183,6 +183,11 @@ func GodotNativescriptInit(handle unsafe.Pointer) {
 	RegisterInstanceBindingFunctions()
 	log.Info("language index assigned", AnyField("language_index", strconv.Itoa(int(RegisterState.LanguageIndex))))
 
+	log.Info("init internal callbacks", AnyField("count", len(initInternalNativescriptCallbacks)))
+	for _, cb := range initInternalNativescriptCallbacks {
+		cb()
+	}
+
 	log.Info("init callbacks", AnyField("count", len(initNativescriptCallbacks)))
 	for _, cb := range initNativescriptCallbacks {
 		cb()
@@ -194,9 +199,11 @@ func GodotNativescriptInit(handle unsafe.Pointer) {
 func GodotNativescriptTerminate(handle unsafe.Pointer) {
 	log.Debug("GodotNativescriptTerminate called")
 
-	wrappedTerminateCallback()
+	for _, cb := range terminateNativescriptCallbacks {
+		cb()
+	}
 
-	for _, cb := range terminateCallbacks {
+	for _, cb := range terminateInternalNativescriptCallbacks {
 		cb()
 	}
 

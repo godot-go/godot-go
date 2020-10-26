@@ -24,9 +24,11 @@ var (
 )
 
 func init() {
-	RegisterInitCallback(wrappedInitCallback)
+	registerInternalInitCallback(wrappedInitCallback)
+	registerInternalTerminateCallback(wrappedTerminateCallback)
 }
 
+// Wrapped is used to decorate the godot_object with godot-go specific binding information.
 type Wrapped interface {
 	GetOwnerObject() *GodotObject
 	GetTypeTag() TypeTag
@@ -35,6 +37,7 @@ type Wrapped interface {
 	setTypeTag(tt TypeTag)
 }
 
+// WrappedImpl implements Wrapped
 type WrappedImpl struct {
 	Owner   *GodotObject
 	TypeTag TypeTag
@@ -42,10 +45,12 @@ type WrappedImpl struct {
 	UserDataIdentifiableImpl
 }
 
+// GetOwnerObject returns the underlying GodotObject.
 func (w *WrappedImpl) GetOwnerObject() *GodotObject {
 	return w.Owner
 }
 
+// GetTypeTag returns the TypeTag for the class.
 func (w *WrappedImpl) GetTypeTag() TypeTag {
 	return w.TypeTag
 }

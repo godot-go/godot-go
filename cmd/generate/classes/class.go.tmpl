@@ -380,6 +380,7 @@ func init() {
 					{{ else if eq $usage USAGE_GODOT_STRING_NAME }}
 						/* USAGE_GODOT_STRING_NAME ({{ $arg.Type }} / {{ $goType }}) */
 						_arg{{ $k }} := NewStringName(internWithGoString({{ $arg.GoName }}))
+						defer _arg{{ $k }}.Destroy()
 						ptrArguments[{{ $k }}] = unsafe.Pointer(&_arg{{ $k }})
 					{{ else if eq $usage USAGE_GDNATIVE_REF }}
 						/* USAGE_GDNATIVE_REF ({{ $arg.Type }} / {{ $goType }}) */

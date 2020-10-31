@@ -3,14 +3,16 @@
 package types
 
 import (
-	"bytes"
 	"fmt"
-	"github.com/godot-go/godot-go/cmd/gdnativeapijson"
+	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
 	"sort"
 	"text/template"
+
+	"github.com/godot-go/godot-go/cmd/gdnativeapijson"
+	"github.com/godot-go/godot-go/cmd/generate/classes"
 )
 
 // TODO: Some headers have been removed to reduce compile time.
@@ -86,22 +88,15 @@ func arrayContains(arr []string, value string) bool {
 	return false
 }
 
-// Generate will generate Go wrappers for all Godot base types
-func Generate(packagePath string) {
-	// Create a structure for our template view. This will contain all of
-	// the data we need to construct our Go wrappers.
-	view := View{
-		TemplateName: "type.go.tmpl",
-	}
+// partitionAndBuildMethodIndexes traverse through the APIVersion to separate the methods into
+// their respective types to construct indexes used in generating deterministic codegen.
+func partitionAndBuildMethodIndexes(core *gdnativeapijson.APIVersion) (GlobalMethods, ConstructorIndex, MethodIndex) {
+	var (
+		globals         = GlobalMethods{}
+		constructors    = ConstructorIndex{}
+		receiverMethods = MethodIndex{}
+	)
 
-	// parseGodotHeaders all available receiverMethods
-	gdnativeAPI := gdnativeapijson.ParseGdnativeApiJson(packagePath)
-
-	// Convert the API definitions into a method struct
-	constructors := ConstructorIndex{}
-	receiverMethods := MethodIndex{}
-	core := &gdnativeAPI.Core
-	
 	for core != nil {
 		apiNameKey := fmt.Sprintf("%s:%d.%d", core.Type, core.Version.Major, core.Version.Minor)
 		apiMetadata, ok := gdnativeapijson.ApiNameMap[apiNameKey]
@@ -111,15 +106,15 @@ func Generate(packagePath string) {
 				if arrayContains(ignoreMethods, string(api.Name)) {
 					continue
 				}
-	
+
 				if len(api.Arguments) == 0 {
 					log.Panicf("unable to handle C function %s with empty arguments", api.Name)
 				}
 
 				method := api.ToGoMethod(apiMetadata)
-	
+
 				switch method.GoMethodType {
-				case gdnativeapijson.ConstructorGoMethodType:	
+				case gdnativeapijson.ConstructorGoMethodType:
 					if cons, ok := constructors[method.ReturnType.CName]; ok {
 						constructors[method.ReturnType.CName] = append(cons, method)
 					} else {
@@ -127,7 +122,7 @@ func Generate(packagePath string) {
 					}
 
 				case gdnativeapijson.GlobalGoMethodType:
-					view.Globals = append(view.Globals, method)
+					globals = append(globals, method)
 
 				case gdnativeapijson.ReceiverGoMethodType:
 					if ms, ok := receiverMethods[method.Receiver.Type.CName]; ok {
@@ -142,6 +137,49 @@ func Generate(packagePath string) {
 		core = core.Next
 	}
 
+	return globals, constructors, receiverMethods
+}
+
+type receiverAndArgumentPair struct {
+	receiver *gdnativeapijson.GoArgument
+	argument *gdnativeapijson.GoArgument
+}
+
+func receiverAndArgument(receiver, argument *gdnativeapijson.GoArgument) receiverAndArgumentPair {
+	return receiverAndArgumentPair{
+		receiver: receiver,
+		argument: argument,
+	}
+}
+
+// Generate will generate Go wrappers for all Godot base types
+func Generate(packagePath string) {
+	var (
+		templateFilePath = filepath.Join(packagePath, "cmd", "generate", "types", "type.go.tmpl")
+		typeDefs         = []gdnativeapijson.GoTypeDef{}
+		tmpl             *template.Template
+		outputFile       *os.File
+		err              error
+		templateContent  []byte
+	)
+
+	// Open the output file for writing
+	outputPackageDirectoryPath := filepath.Join(packagePath, "pkg", "gdnative")
+
+	// pre-condition check output directory
+	if err = classes.AssertIsDirectory(outputPackageDirectoryPath); err != nil {
+		log.Panicln("pre-condition error:", err)
+	}
+
+	// parseGodotHeaders all available receiverMethods
+	gdnativeAPI := gdnativeapijson.ParseGdnativeApiJson(packagePath)
+
+	// Convert the API definitions into a method struct
+	core := &gdnativeAPI.Core
+
+	// Extract methods from core
+	globals, constructors, receiverMethods := partitionAndBuildMethodIndexes(core)
+
 	// parseGodotHeaders the Godot header files for type definitions
 	index := parseGodotHeaders(packagePath, constructors, receiverMethods, ignoreHeaders, ignoreStructs)
 
@@ -149,6 +187,8 @@ func Generate(packagePath string) {
 	for h := range index {
 		headers = append(headers, h)
 	}
+
+	// need to sort the keys of the maps to makes the output deterministic
 	sort.Strings(headers)
 
 	// Loop through each header name and generate the Go code in a file based
@@ -164,61 +204,51 @@ func Generate(packagePath string) {
 		sort.Strings(typeDefMapKeys)
 
 		for _, k := range typeDefMapKeys {
-			view.TypeDefs = append(view.TypeDefs, typeDefMap[k])
+			typeDefs = append(typeDefs, typeDefMap[k])
 		}
 	}
 
-	// Open the output file for writing
-	outputPackageDirectoryPath := filepath.Join(packagePath, "pkg", "gdnative")
-	outputPath := filepath.Join(outputPackageDirectoryPath, "types.gen.go")
-
-	var (
-		f *os.File
-		err error
-	)
-
-	if f, err = os.Create(outputPath); err != nil {
-		panic(err)
+	funcMap := template.FuncMap{
+		"ReceiverAndArgument":          receiverAndArgument,
+		"GoTypeUsage":                  classes.GoTypeUsage,
+		"ConstructorGoMethodType":      func() gdnativeapijson.GoMethodType { return gdnativeapijson.ConstructorGoMethodType },
+		"GlobalGoMethodType":           func() gdnativeapijson.GoMethodType { return gdnativeapijson.GlobalGoMethodType },
+		"ReceiverGoMethodType":         func() gdnativeapijson.GoMethodType { return gdnativeapijson.ReceiverGoMethodType },
+		"USAGE_VOID":                   func() classes.Usage { return classes.USAGE_VOID },
+		"USAGE_GO_PRIMATIVE":           func() classes.Usage { return classes.USAGE_GO_PRIMATIVE },
+		"USAGE_GDNATIVE_CONST_OR_ENUM": func() classes.Usage { return classes.USAGE_GDNATIVE_CONST_OR_ENUM },
+		"USAGE_GODOT_STRING":           func() classes.Usage { return classes.USAGE_GODOT_STRING },
+		"USAGE_GODOT_STRING_NAME":      func() classes.Usage { return classes.USAGE_GODOT_STRING_NAME },
+		"USAGE_GDNATIVE_REF":           func() classes.Usage { return classes.USAGE_GDNATIVE_REF },
+		"USAGE_GODOT_CONST_OR_ENUM":    func() classes.Usage { return classes.USAGE_GODOT_CONST_OR_ENUM },
+		"USAGE_GODOT_CLASS":            func() classes.Usage { return classes.USAGE_GODOT_CLASS },
 	}
 
-	writeTemplate(
-		f,
-		filepath.Join(packagePath, "cmd", "generate", "types", "type.go.tmpl"),
-		view,
-	)
-}
-
-// fileExists checks if a file exists and is not a directory before we
-// try using it to prevent further errors.
-func fileExists(filename string) bool {
-    info, err := os.Stat(filename)
-    if os.IsNotExist(err) {
-        return false
-    }
-    return !info.IsDir()
-}
-
-// returns true if there were changes
-func writeTemplate(f *os.File, templatePath string, view View) {
-	var (
-		err error
-		generatedBuf bytes.Buffer
-		t *template.Template
-	)
+	templateContent, err = ioutil.ReadFile(templateFilePath)
+	if err != nil {
+		log.Panic(fmt.Errorf("error reading template file \"%s\": %w", templateFilePath, err))
+	}
 
 	// Create a template from our template file.
-	t, err = template.ParseFiles(templatePath)
-	if err != nil {
-		log.Fatal("Error parsing template:", err)
+	if tmpl, err = template.New(templateFilePath).Funcs(funcMap).Parse(string(templateContent)); err != nil {
+		log.Panic(fmt.Errorf("Error parsing template: %s %w", templateContent, err))
 	}
 
-	// Write the template with the given view to a buffer.
-	err = t.Execute(&generatedBuf, view)
-	if err != nil {
+	outputPath := filepath.Join(outputPackageDirectoryPath, "types.gen.go")
+
+	if outputFile, err = os.Create(outputPath); err != nil {
 		panic(err)
 	}
 
-	generatedBytes := generatedBuf.Bytes()
+	defer outputFile.Close()
 
-	f.Write(generatedBytes)
+	classes.WriteTemplate(
+		outputFile,
+		tmpl,
+		View{
+			TemplateName: "type.go.tmpl",
+			Globals:      globals,
+			TypeDefs:     typeDefs,
+		},
+	)
 }

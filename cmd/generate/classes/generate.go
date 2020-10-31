@@ -4,12 +4,12 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"html/template"
 	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
 	"strings"
+	"text/template"
 
 	"github.com/pinzolo/casee"
 )
@@ -22,9 +22,9 @@ type convertClassView struct {
 }
 
 type view struct {
-	PackageName       string
-	TemplateName      string
-	Apis              GDAPIs
+	PackageName  string
+	TemplateName string
+	Apis         GDAPIs
 }
 
 type gdapiTree struct {
@@ -93,7 +93,7 @@ func buildAncestryTree(parts ApiTypeBaseClassIndex, apiType, parent, class strin
 	return tree
 }
 
-func assertIsDirectory(dirPath string) error {
+func AssertIsDirectory(dirPath string) error {
 	fi, err := os.Stat(dirPath)
 
 	if err != nil {
@@ -117,13 +117,14 @@ func Generate(packagePath string) {
 	templateFilePath := filepath.Join(packagePath, "cmd", "generate", "classes", "class.go.tmpl")
 
 	var (
-		f               *os.File
+		outputFile      *os.File
 		err             error
+		tmpl            *template.Template
 		templateContent []byte
 	)
 
 	// pre-condition check output directory
-	if err = assertIsDirectory(outputPackageDirectoryPath); err != nil {
+	if err = AssertIsDirectory(outputPackageDirectoryPath); err != nil {
 		log.Panicln("pre-condition error:", err)
 	}
 
@@ -147,8 +148,7 @@ func Generate(packagePath string) {
 		log.Panicln("error reading template file:", err)
 	}
 
-	tmpl, err := template.New(templateFilePath).Funcs(funcMap).Parse(string(templateContent))
-	if err != nil {
+	if tmpl, err = template.New(templateFilePath).Funcs(funcMap).Parse(string(templateContent)); err != nil {
 		log.Panicln("error parsing template:", err)
 	}
 
@@ -171,13 +171,15 @@ func Generate(packagePath string) {
 	// Open the output file for writing
 	outputPath := filepath.Join(outputPackageDirectoryPath, "classes.gen.go")
 
-	if f, err = os.Create(outputPath); err != nil {
+	if outputFile, err = os.Create(outputPath); err != nil {
 		panic(err)
 	}
 
+	defer outputFile.Close()
+
 	// write header
-	writeTemplate(
-		f,
+	WriteTemplate(
+		outputFile,
 		tmpl,
 		view{
 			PackageName:  filepath.Base(outputPackageDirectoryPath),
@@ -186,35 +188,22 @@ func Generate(packagePath string) {
 		},
 	)
 
-	f.Close()
-
 	log.Println("done generating classes")
 }
 
-// fileExists checks if a file exists and is not a directory before we
-// try using it to prevent further errors.
-func fileExists(filename string) bool {
-    info, err := os.Stat(filename)
-    if os.IsNotExist(err) {
-        return false
-    }
-    return !info.IsDir()
-}
-
-// returns true if there were changes
-func writeTemplate(f *os.File, tmpl *template.Template, v view) {
+// WriteTemplate writes the output of the specified template to outfile.
+func WriteTemplate(outfile *os.File, tmpl *template.Template, view interface{}) {
 	var (
-		err error
+		err          error
 		generatedBuf bytes.Buffer
 	)
 
 	// Write the template with the given view to a buffer.
-	err = tmpl.Execute(&generatedBuf, v)
-	if err != nil {
+	if err = tmpl.Execute(&generatedBuf, view); err != nil {
 		panic(err)
 	}
 
 	generatedBytes := generatedBuf.Bytes()
 
-	f.Write(generatedBytes)
+	outfile.Write(generatedBytes)
 }

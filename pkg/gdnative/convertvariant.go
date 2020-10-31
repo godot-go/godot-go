@@ -97,9 +97,9 @@ func GoTypeToVariant(value reflect.Value) Variant {
 	case float64:
 		return NewVariantReal(v)
 	case string:
-		return NewVariantString(internWithGoString(v))
-	case String:
 		return NewVariantString(v)
+	case String:
+		return NewVariantString(v.AsGoString())
 	case Vector2:
 		return NewVariantVector2(v)
 	case Rect2:

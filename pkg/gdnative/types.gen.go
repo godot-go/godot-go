@@ -45,7 +45,9 @@ import (
 
 /* Global Method: godot_string_chr -> godot_string */
 
-func StringChr(p_character int32) String {
+func StringChr(
+	p_character int32, /* else case */
+) String {
 	api := CoreApi
 	in0 := *(*C.wchar_t)(unsafe.Pointer(&p_character))
 
@@ -63,7 +65,9 @@ func StringChr(p_character int32) String {
 
 /* Global Method: godot_object_destroy -> void */
 
-func ObjectDestroy(p_o *GodotObject) {
+func ObjectDestroy(
+	p_o *GodotObject,
+) {
 	api := CoreApi
 	in0 := unsafe.Pointer(p_o)
 
@@ -79,7 +83,9 @@ func ObjectDestroy(p_o *GodotObject) {
 
 /* Global Method: *godot_global_get_singleton -> *godot_object */
 
-func GlobalGetSingleton(p_name string) *GodotObject {
+func GlobalGetSingleton(
+	p_name string,
+) *GodotObject {
 	api := CoreApi
 	in0 := C.CString(p_name)
 	defer C.free(unsafe.Pointer(in0))
@@ -98,7 +104,9 @@ func GlobalGetSingleton(p_name string) *GodotObject {
 
 /* Global Method: *godot_method_bind_get_method -> *godot_method_bind */
 
-func MethodBindGetMethod(p_classname string, p_methodname string) *MethodBind {
+func MethodBindGetMethod(
+	p_classname string, p_methodname string,
+) *MethodBind {
 	api := CoreApi
 	in0 := C.CString(p_classname)
 	defer C.free(unsafe.Pointer(in0))
@@ -121,7 +129,9 @@ func MethodBindGetMethod(p_classname string, p_methodname string) *MethodBind {
 
 /* Global Method: *godot_alloc -> *void */
 
-func Alloc(p_bytes int32) unsafe.Pointer {
+func Alloc(
+	p_bytes int32, /* else case */
+) unsafe.Pointer {
 	api := CoreApi
 	in0 := *(*C.int)(unsafe.Pointer(&p_bytes))
 
@@ -139,7 +149,9 @@ func Alloc(p_bytes int32) unsafe.Pointer {
 
 /* Global Method: *godot_realloc -> *void */
 
-func Realloc(p_ptr unsafe.Pointer, p_bytes int32) unsafe.Pointer {
+func Realloc(
+	p_ptr unsafe.Pointer, p_bytes int32, /* else case */
+) unsafe.Pointer {
 	api := CoreApi
 	in0 := unsafe.Pointer(p_ptr)
 	in1 := *(*C.int)(unsafe.Pointer(&p_bytes))
@@ -160,7 +172,9 @@ func Realloc(p_ptr unsafe.Pointer, p_bytes int32) unsafe.Pointer {
 
 /* Global Method: godot_free -> void */
 
-func Free(p_ptr unsafe.Pointer) {
+func Free(
+	p_ptr unsafe.Pointer,
+) {
 	api := CoreApi
 	in0 := unsafe.Pointer(p_ptr)
 
@@ -176,7 +190,9 @@ func Free(p_ptr unsafe.Pointer) {
 
 /* Global Method: godot_print_error -> void */
 
-func PrintError(p_description string, p_function string, p_file string, p_line int32) {
+func PrintError(
+	p_description string, p_function string, p_file string, p_line int32, /* else case */
+) {
 	api := CoreApi
 	in0 := C.CString(p_description)
 	defer C.free(unsafe.Pointer(in0))
@@ -204,7 +220,9 @@ func PrintError(p_description string, p_function string, p_file string, p_line i
 
 /* Global Method: godot_print_warning -> void */
 
-func PrintWarning(p_description string, p_function string, p_file string, p_line int32) {
+func PrintWarning(
+	p_description string, p_function string, p_file string, p_line int32, /* else case */
+) {
 	api := CoreApi
 	in0 := C.CString(p_description)
 	defer C.free(unsafe.Pointer(in0))
@@ -232,7 +250,9 @@ func PrintWarning(p_description string, p_function string, p_file string, p_line
 
 /* Global Method: godot_print -> void */
 
-func Print(p_message String) {
+func Print(
+	p_message String, /* godot_string */
+) {
 	api := CoreApi
 	in0 := (*C.godot_string)(unsafe.Pointer(&p_message))
 
@@ -248,7 +268,9 @@ func Print(p_message String) {
 
 /* Global Method: godot_is_instance_valid -> bool */
 
-func IsInstanceValid(p_object *GodotObject) bool {
+func IsInstanceValid(
+	p_object *GodotObject,
+) bool {
 	api := Core11Api
 	in0 := unsafe.Pointer(p_object)
 
@@ -266,7 +288,9 @@ func IsInstanceValid(p_object *GodotObject) bool {
 
 /* Global Method: godot_variant_get_operator_name -> godot_string */
 
-func VariantGetOperatorName(p_op VariantOperator) String {
+func VariantGetOperatorName(
+	p_op VariantOperator, /* else case */
+) String {
 	api := Core11Api
 	in0 := *(*C.godot_variant_operator)(unsafe.Pointer(&p_op))
 
@@ -284,7 +308,9 @@ func VariantGetOperatorName(p_op VariantOperator) String {
 
 /* Global Method: godot_variant_evaluate -> void */
 
-func VariantEvaluate(p_op VariantOperator, p_a Variant, p_b Variant, r_ret Variant, r_valid bool) {
+func VariantEvaluate(
+	p_op VariantOperator /* else case */, p_a Variant /* godot_variant */, p_b Variant /* godot_variant */, r_ret Variant /* godot_variant */, r_valid bool, /* godot_bool */
+) {
 	api := Core11Api
 	in0 := *(*C.godot_variant_operator)(unsafe.Pointer(&p_op))
 	in1 := (*C.godot_variant)(unsafe.Pointer(&p_a))
@@ -312,7 +338,9 @@ func VariantEvaluate(p_op VariantOperator, p_a Variant, p_b Variant, r_ret Varia
 
 /* Global Method: *godot_get_class_tag -> *void */
 
-func GetClassTag(p_class StringName) unsafe.Pointer {
+func GetClassTag(
+	p_class StringName, /* godot_string_name */
+) unsafe.Pointer {
 	api := Core12Api
 	in0 := (*C.godot_string_name)(unsafe.Pointer(&p_class))
 
@@ -330,7 +358,9 @@ func GetClassTag(p_class StringName) unsafe.Pointer {
 
 /* Global Method: *godot_object_cast_to -> *godot_object */
 
-func ObjectCastTo(p_object *GodotObject, p_class_tag unsafe.Pointer) *GodotObject {
+func ObjectCastTo(
+	p_object *GodotObject, p_class_tag unsafe.Pointer,
+) *GodotObject {
 	api := Core12Api
 	in0 := unsafe.Pointer(p_object)
 	in1 := unsafe.Pointer(p_class_tag)
@@ -351,7 +381,9 @@ func ObjectCastTo(p_object *GodotObject, p_class_tag unsafe.Pointer) *GodotObjec
 
 /* Global Method: *godot_instance_from_id -> *godot_object */
 
-func InstanceFromId(p_instance_id int32) *GodotObject {
+func InstanceFromId(
+	p_instance_id int32, /* else case */
+) *GodotObject {
 	api := Core12Api
 	in0 := *(*C.godot_int)(unsafe.Pointer(&p_instance_id))
 
@@ -370,7 +402,9 @@ func InstanceFromId(p_instance_id int32) *GodotObject {
 /* TypeDefs */
 type AABB C.godot_aabb
 
-func NewAABB(p_pos Vector3, p_size Vector3) AABB {
+func NewAABB(
+	p_pos Vector3 /* godot_vector3 */, p_size Vector3, /* godot_vector3 */
+) AABB {
 	dest := AABB{}
 
 	api := CoreApi
@@ -410,7 +444,9 @@ func (gdt *AABB) GetPosition() Vector3 {
 }
 
 /* Setter Method: godot_aabb_set_position -> void */
-func (gdt *AABB) SetPosition(p_v Vector3) {
+func (gdt *AABB) SetPosition(
+	p_v Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_aabb_set_position(API_STRUCT, *godot_vector3) ->void */
 
@@ -443,7 +479,9 @@ func (gdt *AABB) GetSize() Vector3 {
 }
 
 /* Setter Method: godot_aabb_set_size -> void */
-func (gdt *AABB) SetSize(p_v Vector3) {
+func (gdt *AABB) SetSize(
+	p_v Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_aabb_set_size(API_STRUCT, *godot_vector3) ->void */
 
@@ -524,7 +562,9 @@ func (gdt *AABB) HasNoSurface() bool {
 }
 
 /* Getter Method: godot_aabb_intersects -> godot_bool */
-func (gdt *AABB) Intersects(p_with AABB) bool {
+func (gdt *AABB) Intersects(
+	p_with AABB, /* godot_aabb */
+) bool {
 
 	/* go_godot_aabb_intersects(API_STRUCT, *godot_aabb) ->godot_bool */
 
@@ -543,7 +583,9 @@ func (gdt *AABB) Intersects(p_with AABB) bool {
 }
 
 /* Getter Method: godot_aabb_encloses -> godot_bool */
-func (gdt *AABB) Encloses(p_with AABB) bool {
+func (gdt *AABB) Encloses(
+	p_with AABB, /* godot_aabb */
+) bool {
 
 	/* go_godot_aabb_encloses(API_STRUCT, *godot_aabb) ->godot_bool */
 
@@ -562,7 +604,9 @@ func (gdt *AABB) Encloses(p_with AABB) bool {
 }
 
 /* Getter Method: godot_aabb_merge -> godot_aabb */
-func (gdt *AABB) Merge(p_with AABB) AABB {
+func (gdt *AABB) Merge(
+	p_with AABB, /* godot_aabb */
+) AABB {
 
 	/* go_godot_aabb_merge(API_STRUCT, *godot_aabb) ->godot_aabb */
 
@@ -581,7 +625,9 @@ func (gdt *AABB) Merge(p_with AABB) AABB {
 }
 
 /* Getter Method: godot_aabb_intersection -> godot_aabb */
-func (gdt *AABB) Intersection(p_with AABB) AABB {
+func (gdt *AABB) Intersection(
+	p_with AABB, /* godot_aabb */
+) AABB {
 
 	/* go_godot_aabb_intersection(API_STRUCT, *godot_aabb) ->godot_aabb */
 
@@ -600,7 +646,9 @@ func (gdt *AABB) Intersection(p_with AABB) AABB {
 }
 
 /* Getter Method: godot_aabb_intersects_plane -> godot_bool */
-func (gdt *AABB) IntersectsPlane(p_plane Plane) bool {
+func (gdt *AABB) IntersectsPlane(
+	p_plane Plane, /* godot_plane */
+) bool {
 
 	/* go_godot_aabb_intersects_plane(API_STRUCT, *godot_plane) ->godot_bool */
 
@@ -619,7 +667,9 @@ func (gdt *AABB) IntersectsPlane(p_plane Plane) bool {
 }
 
 /* Getter Method: godot_aabb_intersects_segment -> godot_bool */
-func (gdt *AABB) IntersectsSegment(p_from Vector3, p_to Vector3) bool {
+func (gdt *AABB) IntersectsSegment(
+	p_from Vector3 /* godot_vector3 */, p_to Vector3, /* godot_vector3 */
+) bool {
 
 	/* go_godot_aabb_intersects_segment(API_STRUCT, *godot_vector3, *godot_vector3) ->godot_bool */
 
@@ -641,7 +691,9 @@ func (gdt *AABB) IntersectsSegment(p_from Vector3, p_to Vector3) bool {
 }
 
 /* Getter Method: godot_aabb_has_point -> godot_bool */
-func (gdt *AABB) HasPoint(p_point Vector3) bool {
+func (gdt *AABB) HasPoint(
+	p_point Vector3, /* godot_vector3 */
+) bool {
 
 	/* go_godot_aabb_has_point(API_STRUCT, *godot_vector3) ->godot_bool */
 
@@ -660,7 +712,9 @@ func (gdt *AABB) HasPoint(p_point Vector3) bool {
 }
 
 /* Getter Method: godot_aabb_get_support -> godot_vector3 */
-func (gdt *AABB) GetSupport(p_dir Vector3) Vector3 {
+func (gdt *AABB) GetSupport(
+	p_dir Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_aabb_get_support(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -775,7 +829,9 @@ func (gdt *AABB) GetShortestAxisSize() float32 {
 }
 
 /* Getter Method: godot_aabb_expand -> godot_aabb */
-func (gdt *AABB) Expand(p_to_point Vector3) AABB {
+func (gdt *AABB) Expand(
+	p_to_point Vector3, /* godot_vector3 */
+) AABB {
 
 	/* go_godot_aabb_expand(API_STRUCT, *godot_vector3) ->godot_aabb */
 
@@ -794,7 +850,9 @@ func (gdt *AABB) Expand(p_to_point Vector3) AABB {
 }
 
 /* Getter Method: godot_aabb_grow -> godot_aabb */
-func (gdt *AABB) Grow(p_by float32) AABB {
+func (gdt *AABB) Grow(
+	p_by float32, /* else case */
+) AABB {
 
 	/* go_godot_aabb_grow(API_STRUCT,godot_real) ->godot_aabb */
 
@@ -813,7 +871,9 @@ func (gdt *AABB) Grow(p_by float32) AABB {
 }
 
 /* Getter Method: godot_aabb_get_endpoint -> godot_vector3 */
-func (gdt *AABB) GetEndpoint(p_idx int32) Vector3 {
+func (gdt *AABB) GetEndpoint(
+	p_idx int32, /* else case */
+) Vector3 {
 
 	/* go_godot_aabb_get_endpoint(API_STRUCT,godot_int) ->godot_vector3 */
 
@@ -832,7 +892,9 @@ func (gdt *AABB) GetEndpoint(p_idx int32) Vector3 {
 }
 
 /* Getter Method: godot_aabb_operator_equal -> godot_bool */
-func (gdt *AABB) OperatorEqual(p_b AABB) bool {
+func (gdt *AABB) OperatorEqual(
+	p_b AABB, /* godot_aabb */
+) bool {
 
 	/* go_godot_aabb_operator_equal(API_STRUCT, *godot_aabb) ->godot_bool */
 
@@ -869,7 +931,9 @@ func NewArray() Array {
 	return dest
 }
 
-func NewArrayCopy(p_src Array) Array {
+func NewArrayCopy(
+	p_src Array, /* godot_array */
+) Array {
 	dest := Array{}
 
 	api := CoreApi
@@ -889,7 +953,9 @@ func NewArrayCopy(p_src Array) Array {
 	return dest
 }
 
-func NewArrayPoolColorArray(p_pca PoolColorArray) Array {
+func NewArrayPoolColorArray(
+	p_pca PoolColorArray, /* godot_pool_color_array */
+) Array {
 	dest := Array{}
 
 	api := CoreApi
@@ -909,7 +975,9 @@ func NewArrayPoolColorArray(p_pca PoolColorArray) Array {
 	return dest
 }
 
-func NewArrayPoolVector3Array(p_pv3a PoolVector3Array) Array {
+func NewArrayPoolVector3Array(
+	p_pv3a PoolVector3Array, /* godot_pool_vector3_array */
+) Array {
 	dest := Array{}
 
 	api := CoreApi
@@ -929,7 +997,9 @@ func NewArrayPoolVector3Array(p_pv3a PoolVector3Array) Array {
 	return dest
 }
 
-func NewArrayPoolVector2Array(p_pv2a PoolVector2Array) Array {
+func NewArrayPoolVector2Array(
+	p_pv2a PoolVector2Array, /* godot_pool_vector2_array */
+) Array {
 	dest := Array{}
 
 	api := CoreApi
@@ -949,7 +1019,9 @@ func NewArrayPoolVector2Array(p_pv2a PoolVector2Array) Array {
 	return dest
 }
 
-func NewArrayPoolStringArray(p_psa PoolStringArray) Array {
+func NewArrayPoolStringArray(
+	p_psa PoolStringArray, /* godot_pool_string_array */
+) Array {
 	dest := Array{}
 
 	api := CoreApi
@@ -969,7 +1041,9 @@ func NewArrayPoolStringArray(p_psa PoolStringArray) Array {
 	return dest
 }
 
-func NewArrayPoolRealArray(p_pra PoolRealArray) Array {
+func NewArrayPoolRealArray(
+	p_pra PoolRealArray, /* godot_pool_real_array */
+) Array {
 	dest := Array{}
 
 	api := CoreApi
@@ -989,7 +1063,9 @@ func NewArrayPoolRealArray(p_pra PoolRealArray) Array {
 	return dest
 }
 
-func NewArrayPoolIntArray(p_pia PoolIntArray) Array {
+func NewArrayPoolIntArray(
+	p_pia PoolIntArray, /* godot_pool_int_array */
+) Array {
 	dest := Array{}
 
 	api := CoreApi
@@ -1009,7 +1085,9 @@ func NewArrayPoolIntArray(p_pia PoolIntArray) Array {
 	return dest
 }
 
-func NewArrayPoolByteArray(p_pba PoolByteArray) Array {
+func NewArrayPoolByteArray(
+	p_pba PoolByteArray, /* godot_pool_byte_array */
+) Array {
 	dest := Array{}
 
 	api := CoreApi
@@ -1030,7 +1108,9 @@ func NewArrayPoolByteArray(p_pba PoolByteArray) Array {
 }
 
 /* Setter Method: godot_array_set -> void */
-func (gdt *Array) Set(p_idx int32, p_value Variant) {
+func (gdt *Array) Set(
+	p_idx int32 /* else case */, p_value Variant, /* godot_variant */
+) {
 
 	/* go_godot_array_set(API_STRUCT,godot_int, *godot_variant) ->void */
 
@@ -1050,7 +1130,9 @@ func (gdt *Array) Set(p_idx int32, p_value Variant) {
 }
 
 /* Getter Method: godot_array_get -> godot_variant */
-func (gdt *Array) Get(p_idx int32) Variant {
+func (gdt *Array) Get(
+	p_idx int32, /* else case */
+) Variant {
 
 	/* go_godot_array_get(API_STRUCT,godot_int) ->godot_variant */
 
@@ -1069,7 +1151,9 @@ func (gdt *Array) Get(p_idx int32) Variant {
 }
 
 /* Getter Method: godot_array_operator_index -> godot_variant */
-func (gdt *Array) OperatorIndex(p_idx int32) Variant {
+func (gdt *Array) OperatorIndex(
+	p_idx int32, /* else case */
+) Variant {
 
 	/* go_godot_array_operator_index(API_STRUCT,godot_int) -> *Variant */
 
@@ -1088,7 +1172,9 @@ func (gdt *Array) OperatorIndex(p_idx int32) Variant {
 }
 
 /* Getter Method: godot_array_operator_index_const -> godot_variant */
-func (gdt *Array) OperatorIndexConst(p_idx int32) Variant {
+func (gdt *Array) OperatorIndexConst(
+	p_idx int32, /* else case */
+) Variant {
 
 	/* go_godot_array_operator_index_const(API_STRUCT,godot_int) -> *Variant */
 
@@ -1107,7 +1193,9 @@ func (gdt *Array) OperatorIndexConst(p_idx int32) Variant {
 }
 
 /* Setter Method: godot_array_append -> void */
-func (gdt *Array) Append(p_value Variant) {
+func (gdt *Array) Append(
+	p_value Variant, /* godot_variant */
+) {
 
 	/* go_godot_array_append(API_STRUCT, *godot_variant) ->void */
 
@@ -1138,7 +1226,9 @@ func (gdt *Array) Clear() {
 }
 
 /* Getter Method: godot_array_count -> godot_int */
-func (gdt *Array) Count(p_value Variant) int32 {
+func (gdt *Array) Count(
+	p_value Variant, /* godot_variant */
+) int32 {
 
 	/* go_godot_array_count(API_STRUCT, *godot_variant) ->godot_int */
 
@@ -1173,7 +1263,9 @@ func (gdt *Array) Empty() bool {
 }
 
 /* Setter Method: godot_array_erase -> void */
-func (gdt *Array) Erase(p_value Variant) {
+func (gdt *Array) Erase(
+	p_value Variant, /* godot_variant */
+) {
 
 	/* go_godot_array_erase(API_STRUCT, *godot_variant) ->void */
 
@@ -1222,7 +1314,9 @@ func (gdt *Array) Back() Variant {
 }
 
 /* Getter Method: godot_array_find -> godot_int */
-func (gdt *Array) Find(p_what Variant, p_from int32) int32 {
+func (gdt *Array) Find(
+	p_what Variant /* godot_variant */, p_from int32, /* else case */
+) int32 {
 
 	/* go_godot_array_find(API_STRUCT, *godot_variant,godot_int) ->godot_int */
 
@@ -1244,7 +1338,9 @@ func (gdt *Array) Find(p_what Variant, p_from int32) int32 {
 }
 
 /* Getter Method: godot_array_find_last -> godot_int */
-func (gdt *Array) FindLast(p_what Variant) int32 {
+func (gdt *Array) FindLast(
+	p_what Variant, /* godot_variant */
+) int32 {
 
 	/* go_godot_array_find_last(API_STRUCT, *godot_variant) ->godot_int */
 
@@ -1263,7 +1359,9 @@ func (gdt *Array) FindLast(p_what Variant) int32 {
 }
 
 /* Getter Method: godot_array_has -> godot_bool */
-func (gdt *Array) Has(p_value Variant) bool {
+func (gdt *Array) Has(
+	p_value Variant, /* godot_variant */
+) bool {
 
 	/* go_godot_array_has(API_STRUCT, *godot_variant) ->godot_bool */
 
@@ -1298,7 +1396,9 @@ func (gdt *Array) Hash() int32 {
 }
 
 /* Setter Method: godot_array_insert -> void */
-func (gdt *Array) Insert(p_pos int32, p_value Variant) {
+func (gdt *Array) Insert(
+	p_pos int32 /* else case */, p_value Variant, /* godot_variant */
+) {
 
 	/* go_godot_array_insert(API_STRUCT,godot_int, *godot_variant) ->void */
 
@@ -1364,7 +1464,9 @@ func (gdt *Array) PopFront() Variant {
 }
 
 /* Setter Method: godot_array_push_back -> void */
-func (gdt *Array) PushBack(p_value Variant) {
+func (gdt *Array) PushBack(
+	p_value Variant, /* godot_variant */
+) {
 
 	/* go_godot_array_push_back(API_STRUCT, *godot_variant) ->void */
 
@@ -1381,7 +1483,9 @@ func (gdt *Array) PushBack(p_value Variant) {
 }
 
 /* Setter Method: godot_array_push_front -> void */
-func (gdt *Array) PushFront(p_value Variant) {
+func (gdt *Array) PushFront(
+	p_value Variant, /* godot_variant */
+) {
 
 	/* go_godot_array_push_front(API_STRUCT, *godot_variant) ->void */
 
@@ -1398,7 +1502,9 @@ func (gdt *Array) PushFront(p_value Variant) {
 }
 
 /* Setter Method: godot_array_remove -> void */
-func (gdt *Array) Remove(p_idx int32) {
+func (gdt *Array) Remove(
+	p_idx int32, /* else case */
+) {
 
 	/* go_godot_array_remove(API_STRUCT,godot_int) ->void */
 
@@ -1415,7 +1521,9 @@ func (gdt *Array) Remove(p_idx int32) {
 }
 
 /* Setter Method: godot_array_resize -> void */
-func (gdt *Array) Resize(p_size int32) {
+func (gdt *Array) Resize(
+	p_size int32, /* else case */
+) {
 
 	/* go_godot_array_resize(API_STRUCT,godot_int) ->void */
 
@@ -1432,7 +1540,9 @@ func (gdt *Array) Resize(p_size int32) {
 }
 
 /* Getter Method: godot_array_rfind -> godot_int */
-func (gdt *Array) Rfind(p_what Variant, p_from int32) int32 {
+func (gdt *Array) Rfind(
+	p_what Variant /* godot_variant */, p_from int32, /* else case */
+) int32 {
 
 	/* go_godot_array_rfind(API_STRUCT, *godot_variant,godot_int) ->godot_int */
 
@@ -1484,7 +1594,9 @@ func (gdt *Array) Sort() {
 }
 
 /* Setter Method: godot_array_sort_custom -> void */
-func (gdt *Array) SortCustom(p_obj *GodotObject, p_func String) {
+func (gdt *Array) SortCustom(
+	p_obj *GodotObject, p_func String, /* godot_string */
+) {
 
 	/* go_godot_array_sort_custom(API_STRUCT, *godot_object, *godot_string) ->void */
 
@@ -1504,7 +1616,9 @@ func (gdt *Array) SortCustom(p_obj *GodotObject, p_func String) {
 }
 
 /* Getter Method: godot_array_bsearch -> godot_int */
-func (gdt *Array) Bsearch(p_value Variant, p_before bool) int32 {
+func (gdt *Array) Bsearch(
+	p_value Variant /* godot_variant */, p_before bool, /* else case */
+) int32 {
 
 	/* go_godot_array_bsearch(API_STRUCT, *godot_variant,godot_bool) ->godot_int */
 
@@ -1526,7 +1640,9 @@ func (gdt *Array) Bsearch(p_value Variant, p_before bool) int32 {
 }
 
 /* Getter Method: godot_array_bsearch_custom -> godot_int */
-func (gdt *Array) BsearchCustom(p_value Variant, p_obj *GodotObject, p_func String, p_before bool) int32 {
+func (gdt *Array) BsearchCustom(
+	p_value Variant /* godot_variant */, p_obj *GodotObject, p_func String /* godot_string */, p_before bool, /* else case */
+) int32 {
 
 	/* go_godot_array_bsearch_custom(API_STRUCT, *godot_variant, *godot_object, *godot_string,godot_bool) ->godot_int */
 
@@ -1568,7 +1684,9 @@ func (gdt *Array) Destroy() {
 }
 
 /* Getter Method: godot_array_duplicate -> godot_array */
-func (gdt *Array) Duplicate(p_deep bool) Array {
+func (gdt *Array) Duplicate(
+	p_deep bool, /* else case */
+) Array {
 
 	/* go_godot_array_duplicate(API_STRUCT,godot_bool) ->godot_array */
 
@@ -1633,7 +1751,9 @@ func (gdt *Array) Shuffle() {
 }
 
 /* Getter Method: godot_array_slice -> godot_array */
-func (gdt *Array) Slice(p_begin int32, p_end int32, p_step int32, p_deep bool) Array {
+func (gdt *Array) Slice(
+	p_begin int32 /* else case */, p_end int32 /* else case */, p_step int32 /* else case */, p_deep bool, /* else case */
+) Array {
 
 	/* go_godot_array_slice(API_STRUCT,godot_int,godot_int,godot_int,godot_bool) ->godot_array */
 
@@ -1662,7 +1782,9 @@ func (gdt *Array) Slice(p_begin int32, p_end int32, p_step int32, p_deep bool) A
 
 type Basis C.godot_basis
 
-func NewBasisWithRows(p_x_axis Vector3, p_y_axis Vector3, p_z_axis Vector3) Basis {
+func NewBasisWithRows(
+	p_x_axis Vector3 /* godot_vector3 */, p_y_axis Vector3 /* godot_vector3 */, p_z_axis Vector3, /* godot_vector3 */
+) Basis {
 	dest := Basis{}
 
 	api := CoreApi
@@ -1688,7 +1810,9 @@ func NewBasisWithRows(p_x_axis Vector3, p_y_axis Vector3, p_z_axis Vector3) Basi
 	return dest
 }
 
-func NewBasisWithAxisAndAngle(p_axis Vector3, p_phi float32) Basis {
+func NewBasisWithAxisAndAngle(
+	p_axis Vector3 /* godot_vector3 */, p_phi float32, /* else case */
+) Basis {
 	dest := Basis{}
 
 	api := CoreApi
@@ -1711,7 +1835,9 @@ func NewBasisWithAxisAndAngle(p_axis Vector3, p_phi float32) Basis {
 	return dest
 }
 
-func NewBasisWithEuler(p_euler Vector3) Basis {
+func NewBasisWithEuler(
+	p_euler Vector3, /* godot_vector3 */
+) Basis {
 	dest := Basis{}
 
 	api := CoreApi
@@ -1748,7 +1874,9 @@ func NewBasis() Basis {
 	return dest
 }
 
-func NewBasisWithEulerQuat(p_euler Quat) Basis {
+func NewBasisWithEulerQuat(
+	p_euler Quat, /* godot_quat */
+) Basis {
 	dest := Basis{}
 
 	api := CoreApi
@@ -1849,7 +1977,9 @@ func (gdt *Basis) Determinant() float32 {
 }
 
 /* Getter Method: godot_basis_rotated -> godot_basis */
-func (gdt *Basis) Rotated(p_axis Vector3, p_phi float32) Basis {
+func (gdt *Basis) Rotated(
+	p_axis Vector3 /* godot_vector3 */, p_phi float32, /* else case */
+) Basis {
 
 	/* go_godot_basis_rotated(API_STRUCT, *godot_vector3,godot_real) ->godot_basis */
 
@@ -1871,7 +2001,9 @@ func (gdt *Basis) Rotated(p_axis Vector3, p_phi float32) Basis {
 }
 
 /* Getter Method: godot_basis_scaled -> godot_basis */
-func (gdt *Basis) Scaled(p_scale Vector3) Basis {
+func (gdt *Basis) Scaled(
+	p_scale Vector3, /* godot_vector3 */
+) Basis {
 
 	/* go_godot_basis_scaled(API_STRUCT, *godot_vector3) ->godot_basis */
 
@@ -1922,7 +2054,9 @@ func (gdt *Basis) GetEuler() Vector3 {
 }
 
 /* Getter Method: godot_basis_tdotx -> godot_real */
-func (gdt *Basis) Tdotx(p_with Vector3) float32 {
+func (gdt *Basis) Tdotx(
+	p_with Vector3, /* godot_vector3 */
+) float32 {
 
 	/* go_godot_basis_tdotx(API_STRUCT, *godot_vector3) ->godot_real */
 
@@ -1941,7 +2075,9 @@ func (gdt *Basis) Tdotx(p_with Vector3) float32 {
 }
 
 /* Getter Method: godot_basis_tdoty -> godot_real */
-func (gdt *Basis) Tdoty(p_with Vector3) float32 {
+func (gdt *Basis) Tdoty(
+	p_with Vector3, /* godot_vector3 */
+) float32 {
 
 	/* go_godot_basis_tdoty(API_STRUCT, *godot_vector3) ->godot_real */
 
@@ -1960,7 +2096,9 @@ func (gdt *Basis) Tdoty(p_with Vector3) float32 {
 }
 
 /* Getter Method: godot_basis_tdotz -> godot_real */
-func (gdt *Basis) Tdotz(p_with Vector3) float32 {
+func (gdt *Basis) Tdotz(
+	p_with Vector3, /* godot_vector3 */
+) float32 {
 
 	/* go_godot_basis_tdotz(API_STRUCT, *godot_vector3) ->godot_real */
 
@@ -1979,7 +2117,9 @@ func (gdt *Basis) Tdotz(p_with Vector3) float32 {
 }
 
 /* Getter Method: godot_basis_xform -> godot_vector3 */
-func (gdt *Basis) Xform(p_v Vector3) Vector3 {
+func (gdt *Basis) Xform(
+	p_v Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_basis_xform(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -1998,7 +2138,9 @@ func (gdt *Basis) Xform(p_v Vector3) Vector3 {
 }
 
 /* Getter Method: godot_basis_xform_inv -> godot_vector3 */
-func (gdt *Basis) XformInv(p_v Vector3) Vector3 {
+func (gdt *Basis) XformInv(
+	p_v Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_basis_xform_inv(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -2033,7 +2175,9 @@ func (gdt *Basis) GetOrthogonalIndex() int32 {
 }
 
 /* Setter Method: godot_basis_get_elements -> void */
-func (gdt *Basis) GetElements(p_elements Vector3) {
+func (gdt *Basis) GetElements(
+	p_elements Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_basis_get_elements(API_STRUCT, *godot_vector3) ->void */
 
@@ -2050,7 +2194,9 @@ func (gdt *Basis) GetElements(p_elements Vector3) {
 }
 
 /* Getter Method: godot_basis_get_axis -> godot_vector3 */
-func (gdt *Basis) GetAxis(p_axis int32) Vector3 {
+func (gdt *Basis) GetAxis(
+	p_axis int32, /* else case */
+) Vector3 {
 
 	/* go_godot_basis_get_axis(API_STRUCT,godot_int) ->godot_vector3 */
 
@@ -2069,7 +2215,9 @@ func (gdt *Basis) GetAxis(p_axis int32) Vector3 {
 }
 
 /* Setter Method: godot_basis_set_axis -> void */
-func (gdt *Basis) SetAxis(p_axis int32, p_value Vector3) {
+func (gdt *Basis) SetAxis(
+	p_axis int32 /* else case */, p_value Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_basis_set_axis(API_STRUCT,godot_int, *godot_vector3) ->void */
 
@@ -2089,7 +2237,9 @@ func (gdt *Basis) SetAxis(p_axis int32, p_value Vector3) {
 }
 
 /* Getter Method: godot_basis_get_row -> godot_vector3 */
-func (gdt *Basis) GetRow(p_row int32) Vector3 {
+func (gdt *Basis) GetRow(
+	p_row int32, /* else case */
+) Vector3 {
 
 	/* go_godot_basis_get_row(API_STRUCT,godot_int) ->godot_vector3 */
 
@@ -2108,7 +2258,9 @@ func (gdt *Basis) GetRow(p_row int32) Vector3 {
 }
 
 /* Setter Method: godot_basis_set_row -> void */
-func (gdt *Basis) SetRow(p_row int32, p_value Vector3) {
+func (gdt *Basis) SetRow(
+	p_row int32 /* else case */, p_value Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_basis_set_row(API_STRUCT,godot_int, *godot_vector3) ->void */
 
@@ -2128,7 +2280,9 @@ func (gdt *Basis) SetRow(p_row int32, p_value Vector3) {
 }
 
 /* Getter Method: godot_basis_operator_equal -> godot_bool */
-func (gdt *Basis) OperatorEqual(p_b Basis) bool {
+func (gdt *Basis) OperatorEqual(
+	p_b Basis, /* godot_basis */
+) bool {
 
 	/* go_godot_basis_operator_equal(API_STRUCT, *godot_basis) ->godot_bool */
 
@@ -2147,7 +2301,9 @@ func (gdt *Basis) OperatorEqual(p_b Basis) bool {
 }
 
 /* Getter Method: godot_basis_operator_add -> godot_basis */
-func (gdt *Basis) OperatorAdd(p_b Basis) Basis {
+func (gdt *Basis) OperatorAdd(
+	p_b Basis, /* godot_basis */
+) Basis {
 
 	/* go_godot_basis_operator_add(API_STRUCT, *godot_basis) ->godot_basis */
 
@@ -2166,7 +2322,9 @@ func (gdt *Basis) OperatorAdd(p_b Basis) Basis {
 }
 
 /* Getter Method: godot_basis_operator_subtract -> godot_basis */
-func (gdt *Basis) OperatorSubtract(p_b Basis) Basis {
+func (gdt *Basis) OperatorSubtract(
+	p_b Basis, /* godot_basis */
+) Basis {
 
 	/* go_godot_basis_operator_subtract(API_STRUCT, *godot_basis) ->godot_basis */
 
@@ -2185,7 +2343,9 @@ func (gdt *Basis) OperatorSubtract(p_b Basis) Basis {
 }
 
 /* Getter Method: godot_basis_operator_multiply_vector -> godot_basis */
-func (gdt *Basis) OperatorMultiplyVector(p_b Basis) Basis {
+func (gdt *Basis) OperatorMultiplyVector(
+	p_b Basis, /* godot_basis */
+) Basis {
 
 	/* go_godot_basis_operator_multiply_vector(API_STRUCT, *godot_basis) ->godot_basis */
 
@@ -2204,7 +2364,9 @@ func (gdt *Basis) OperatorMultiplyVector(p_b Basis) Basis {
 }
 
 /* Getter Method: godot_basis_operator_multiply_scalar -> godot_basis */
-func (gdt *Basis) OperatorMultiplyScalar(p_b float32) Basis {
+func (gdt *Basis) OperatorMultiplyScalar(
+	p_b float32, /* else case */
+) Basis {
 
 	/* go_godot_basis_operator_multiply_scalar(API_STRUCT,godot_real) ->godot_basis */
 
@@ -2223,7 +2385,9 @@ func (gdt *Basis) OperatorMultiplyScalar(p_b float32) Basis {
 }
 
 /* Getter Method: godot_basis_slerp -> godot_basis */
-func (gdt *Basis) Slerp(p_b Basis, p_t float32) Basis {
+func (gdt *Basis) Slerp(
+	p_b Basis /* godot_basis */, p_t float32, /* else case */
+) Basis {
 
 	/* go_godot_basis_slerp(API_STRUCT, *godot_basis,godot_real) ->godot_basis */
 
@@ -2261,7 +2425,9 @@ func (gdt *Basis) GetQuat() Quat {
 }
 
 /* Setter Method: godot_basis_set_quat -> void */
-func (gdt *Basis) SetQuat(p_quat Quat) {
+func (gdt *Basis) SetQuat(
+	p_quat Quat, /* godot_quat */
+) {
 
 	/* go_godot_basis_set_quat(API_STRUCT, *godot_quat) ->void */
 
@@ -2278,7 +2444,9 @@ func (gdt *Basis) SetQuat(p_quat Quat) {
 }
 
 /* Setter Method: godot_basis_set_axis_angle_scale -> void */
-func (gdt *Basis) SetAxisAngleScale(p_axis Vector3, p_phi float32, p_scale Vector3) {
+func (gdt *Basis) SetAxisAngleScale(
+	p_axis Vector3 /* godot_vector3 */, p_phi float32 /* else case */, p_scale Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_basis_set_axis_angle_scale(API_STRUCT, *godot_vector3,godot_real, *godot_vector3) ->void */
 
@@ -2301,7 +2469,9 @@ func (gdt *Basis) SetAxisAngleScale(p_axis Vector3, p_phi float32, p_scale Vecto
 }
 
 /* Setter Method: godot_basis_set_euler_scale -> void */
-func (gdt *Basis) SetEulerScale(p_euler Vector3, p_scale Vector3) {
+func (gdt *Basis) SetEulerScale(
+	p_euler Vector3 /* godot_vector3 */, p_scale Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_basis_set_euler_scale(API_STRUCT, *godot_vector3, *godot_vector3) ->void */
 
@@ -2321,7 +2491,9 @@ func (gdt *Basis) SetEulerScale(p_euler Vector3, p_scale Vector3) {
 }
 
 /* Setter Method: godot_basis_set_quat_scale -> void */
-func (gdt *Basis) SetQuatScale(p_quat Quat, p_scale Vector3) {
+func (gdt *Basis) SetQuatScale(
+	p_quat Quat /* godot_quat */, p_scale Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_basis_set_quat_scale(API_STRUCT, *godot_quat, *godot_vector3) ->void */
 
@@ -2342,7 +2514,9 @@ func (gdt *Basis) SetQuatScale(p_quat Quat, p_scale Vector3) {
 
 type Color C.godot_color
 
-func NewColorRgba(p_r float32, p_g float32, p_b float32, p_a float32) Color {
+func NewColorRgba(
+	p_r float32 /* else case */, p_g float32 /* else case */, p_b float32 /* else case */, p_a float32, /* else case */
+) Color {
 	dest := Color{}
 
 	api := CoreApi
@@ -2371,7 +2545,9 @@ func NewColorRgba(p_r float32, p_g float32, p_b float32, p_a float32) Color {
 	return dest
 }
 
-func NewColorRgb(p_r float32, p_g float32, p_b float32) Color {
+func NewColorRgb(
+	p_r float32 /* else case */, p_g float32 /* else case */, p_b float32, /* else case */
+) Color {
 	dest := Color{}
 
 	api := CoreApi
@@ -2414,7 +2590,9 @@ func (gdt *Color) GetR() float32 {
 }
 
 /* Setter Method: godot_color_set_r -> void */
-func (gdt *Color) SetR(r float32) {
+func (gdt *Color) SetR(
+	r float32, /* else case */
+) {
 
 	/* go_godot_color_set_r(API_STRUCT,godot_real) ->void */
 
@@ -2447,7 +2625,9 @@ func (gdt *Color) GetG() float32 {
 }
 
 /* Setter Method: godot_color_set_g -> void */
-func (gdt *Color) SetG(g float32) {
+func (gdt *Color) SetG(
+	g float32, /* else case */
+) {
 
 	/* go_godot_color_set_g(API_STRUCT,godot_real) ->void */
 
@@ -2480,7 +2660,9 @@ func (gdt *Color) GetB() float32 {
 }
 
 /* Setter Method: godot_color_set_b -> void */
-func (gdt *Color) SetB(b float32) {
+func (gdt *Color) SetB(
+	b float32, /* else case */
+) {
 
 	/* go_godot_color_set_b(API_STRUCT,godot_real) ->void */
 
@@ -2513,7 +2695,9 @@ func (gdt *Color) GetA() float32 {
 }
 
 /* Setter Method: godot_color_set_a -> void */
-func (gdt *Color) SetA(a float32) {
+func (gdt *Color) SetA(
+	a float32, /* else case */
+) {
 
 	/* go_godot_color_set_a(API_STRUCT,godot_real) ->void */
 
@@ -2674,7 +2858,9 @@ func (gdt *Color) Contrasted() Color {
 }
 
 /* Getter Method: godot_color_linear_interpolate -> godot_color */
-func (gdt *Color) LinearInterpolate(p_b Color, p_t float32) Color {
+func (gdt *Color) LinearInterpolate(
+	p_b Color /* godot_color */, p_t float32, /* else case */
+) Color {
 
 	/* go_godot_color_linear_interpolate(API_STRUCT, *godot_color,godot_real) ->godot_color */
 
@@ -2696,7 +2882,9 @@ func (gdt *Color) LinearInterpolate(p_b Color, p_t float32) Color {
 }
 
 /* Getter Method: godot_color_blend -> godot_color */
-func (gdt *Color) Blend(p_over Color) Color {
+func (gdt *Color) Blend(
+	p_over Color, /* godot_color */
+) Color {
 
 	/* go_godot_color_blend(API_STRUCT, *godot_color) ->godot_color */
 
@@ -2715,7 +2903,9 @@ func (gdt *Color) Blend(p_over Color) Color {
 }
 
 /* Getter Method: godot_color_to_html -> godot_string */
-func (gdt *Color) ToHtml(p_with_alpha bool) String {
+func (gdt *Color) ToHtml(
+	p_with_alpha bool, /* else case */
+) String {
 
 	/* go_godot_color_to_html(API_STRUCT,godot_bool) ->godot_string */
 
@@ -2734,7 +2924,9 @@ func (gdt *Color) ToHtml(p_with_alpha bool) String {
 }
 
 /* Getter Method: godot_color_operator_equal -> godot_bool */
-func (gdt *Color) OperatorEqual(p_b Color) bool {
+func (gdt *Color) OperatorEqual(
+	p_b Color, /* godot_color */
+) bool {
 
 	/* go_godot_color_operator_equal(API_STRUCT, *godot_color) ->godot_bool */
 
@@ -2753,7 +2945,9 @@ func (gdt *Color) OperatorEqual(p_b Color) bool {
 }
 
 /* Getter Method: godot_color_operator_less -> godot_bool */
-func (gdt *Color) OperatorLess(p_b Color) bool {
+func (gdt *Color) OperatorLess(
+	p_b Color, /* godot_color */
+) bool {
 
 	/* go_godot_color_operator_less(API_STRUCT, *godot_color) ->godot_bool */
 
@@ -2836,7 +3030,9 @@ func (gdt *Color) ToRgba64() int32 {
 }
 
 /* Getter Method: godot_color_darkened -> godot_color */
-func (gdt *Color) Darkened(p_amount float32) Color {
+func (gdt *Color) Darkened(
+	p_amount float32, /* else case */
+) Color {
 
 	/* go_godot_color_darkened(API_STRUCT,godot_real) ->godot_color */
 
@@ -2855,7 +3051,9 @@ func (gdt *Color) Darkened(p_amount float32) Color {
 }
 
 /* Getter Method: godot_color_from_hsv -> godot_color */
-func (gdt *Color) FromHsv(p_h float32, p_s float32, p_v float32, p_a float32) Color {
+func (gdt *Color) FromHsv(
+	p_h float32 /* else case */, p_s float32 /* else case */, p_v float32 /* else case */, p_a float32, /* else case */
+) Color {
 
 	/* go_godot_color_from_hsv(API_STRUCT,godot_real,godot_real,godot_real,godot_real) ->godot_color */
 
@@ -2883,7 +3081,9 @@ func (gdt *Color) FromHsv(p_h float32, p_s float32, p_v float32, p_a float32) Co
 }
 
 /* Getter Method: godot_color_lightened -> godot_color */
-func (gdt *Color) Lightened(p_amount float32) Color {
+func (gdt *Color) Lightened(
+	p_amount float32, /* else case */
+) Color {
 
 	/* go_godot_color_lightened(API_STRUCT,godot_real) ->godot_color */
 
@@ -2920,7 +3120,9 @@ func NewDictionary() Dictionary {
 	return dest
 }
 
-func NewDictionaryCopy(p_src Dictionary) Dictionary {
+func NewDictionaryCopy(
+	p_src Dictionary, /* godot_dictionary */
+) Dictionary {
 	dest := Dictionary{}
 
 	api := CoreApi
@@ -3001,7 +3203,9 @@ func (gdt *Dictionary) Clear() {
 }
 
 /* Getter Method: godot_dictionary_has -> godot_bool */
-func (gdt *Dictionary) Has(p_key Variant) bool {
+func (gdt *Dictionary) Has(
+	p_key Variant, /* godot_variant */
+) bool {
 
 	/* go_godot_dictionary_has(API_STRUCT, *godot_variant) ->godot_bool */
 
@@ -3020,7 +3224,9 @@ func (gdt *Dictionary) Has(p_key Variant) bool {
 }
 
 /* Getter Method: godot_dictionary_has_all -> godot_bool */
-func (gdt *Dictionary) HasAll(p_keys Array) bool {
+func (gdt *Dictionary) HasAll(
+	p_keys Array, /* godot_array */
+) bool {
 
 	/* go_godot_dictionary_has_all(API_STRUCT, *godot_array) ->godot_bool */
 
@@ -3039,7 +3245,9 @@ func (gdt *Dictionary) HasAll(p_keys Array) bool {
 }
 
 /* Setter Method: godot_dictionary_erase -> void */
-func (gdt *Dictionary) Erase(p_key Variant) {
+func (gdt *Dictionary) Erase(
+	p_key Variant, /* godot_variant */
+) {
 
 	/* go_godot_dictionary_erase(API_STRUCT, *godot_variant) ->void */
 
@@ -3104,7 +3312,9 @@ func (gdt *Dictionary) Values() Array {
 }
 
 /* Getter Method: godot_dictionary_get -> godot_variant */
-func (gdt *Dictionary) Get(p_key Variant) Variant {
+func (gdt *Dictionary) Get(
+	p_key Variant, /* godot_variant */
+) Variant {
 
 	/* go_godot_dictionary_get(API_STRUCT, *godot_variant) ->godot_variant */
 
@@ -3123,7 +3333,9 @@ func (gdt *Dictionary) Get(p_key Variant) Variant {
 }
 
 /* Setter Method: godot_dictionary_set -> void */
-func (gdt *Dictionary) Set(p_key Variant, p_value Variant) {
+func (gdt *Dictionary) Set(
+	p_key Variant /* godot_variant */, p_value Variant, /* godot_variant */
+) {
 
 	/* go_godot_dictionary_set(API_STRUCT, *godot_variant, *godot_variant) ->void */
 
@@ -3143,7 +3355,9 @@ func (gdt *Dictionary) Set(p_key Variant, p_value Variant) {
 }
 
 /* Getter Method: godot_dictionary_operator_index -> godot_variant */
-func (gdt *Dictionary) OperatorIndex(p_key Variant) Variant {
+func (gdt *Dictionary) OperatorIndex(
+	p_key Variant, /* godot_variant */
+) Variant {
 
 	/* go_godot_dictionary_operator_index(API_STRUCT, *godot_variant) -> *Variant */
 
@@ -3162,7 +3376,9 @@ func (gdt *Dictionary) OperatorIndex(p_key Variant) Variant {
 }
 
 /* Getter Method: godot_dictionary_operator_index_const -> godot_variant */
-func (gdt *Dictionary) OperatorIndexConst(p_key Variant) Variant {
+func (gdt *Dictionary) OperatorIndexConst(
+	p_key Variant, /* godot_variant */
+) Variant {
 
 	/* go_godot_dictionary_operator_index_const(API_STRUCT, *godot_variant) -> *Variant */
 
@@ -3181,7 +3397,9 @@ func (gdt *Dictionary) OperatorIndexConst(p_key Variant) Variant {
 }
 
 /* Getter Method: godot_dictionary_next -> godot_variant */
-func (gdt *Dictionary) Next(p_key Variant) Variant {
+func (gdt *Dictionary) Next(
+	p_key Variant, /* godot_variant */
+) Variant {
 
 	/* go_godot_dictionary_next(API_STRUCT, *godot_variant) -> *Variant */
 
@@ -3200,7 +3418,9 @@ func (gdt *Dictionary) Next(p_key Variant) Variant {
 }
 
 /* Getter Method: godot_dictionary_operator_equal -> godot_bool */
-func (gdt *Dictionary) OperatorEqual(p_b Dictionary) bool {
+func (gdt *Dictionary) OperatorEqual(
+	p_b Dictionary, /* godot_dictionary */
+) bool {
 
 	/* go_godot_dictionary_operator_equal(API_STRUCT, *godot_dictionary) ->godot_bool */
 
@@ -3235,7 +3455,9 @@ func (gdt *Dictionary) ToJson() String {
 }
 
 /* Getter Method: godot_dictionary_get_with_default -> godot_variant */
-func (gdt *Dictionary) GetWithDefault(p_key Variant, p_default Variant) Variant {
+func (gdt *Dictionary) GetWithDefault(
+	p_key Variant /* godot_variant */, p_default Variant, /* godot_variant */
+) Variant {
 
 	/* go_godot_dictionary_get_with_default(API_STRUCT, *godot_variant, *godot_variant) ->godot_variant */
 
@@ -3257,7 +3479,9 @@ func (gdt *Dictionary) GetWithDefault(p_key Variant, p_default Variant) Variant 
 }
 
 /* Getter Method: godot_dictionary_erase_with_return -> bool */
-func (gdt *Dictionary) EraseWithReturn(p_key Variant) bool {
+func (gdt *Dictionary) EraseWithReturn(
+	p_key Variant, /* godot_variant */
+) bool {
 
 	/* go_godot_dictionary_erase_with_return(API_STRUCT, *godot_variant) ->bool */
 
@@ -3276,7 +3500,9 @@ func (gdt *Dictionary) EraseWithReturn(p_key Variant) bool {
 }
 
 /* Getter Method: godot_dictionary_duplicate -> godot_dictionary */
-func (gdt *Dictionary) Duplicate(p_deep bool) Dictionary {
+func (gdt *Dictionary) Duplicate(
+	p_deep bool, /* else case */
+) Dictionary {
 
 	/* go_godot_dictionary_duplicate(API_STRUCT,godot_bool) ->godot_dictionary */
 
@@ -3293,6 +3519,8 @@ func (gdt *Dictionary) Duplicate(p_deep bool) Dictionary {
 
 	return *(*Dictionary)(unsafe.Pointer(&ret))
 }
+
+// mapped C.godot_bool to native go type bool
 
 type Error C.godot_error
 
@@ -3357,10 +3585,14 @@ type GdnativeInitOptions C.godot_gdnative_init_options
 
 type GdnativeTerminateOptions C.godot_gdnative_terminate_options
 
+// mapped C.godot_int to native go type int32
+
 type MethodBind C.godot_method_bind
 
 /* Setter Method: godot_method_bind_ptrcall -> void */
-func (gdt *MethodBind) Ptrcall(p_instance *GodotObject, p_args []unsafe.Pointer, p_ret unsafe.Pointer) {
+func (gdt *MethodBind) Ptrcall(
+	p_instance *GodotObject, p_args []unsafe.Pointer, p_ret unsafe.Pointer,
+) {
 
 	/* go_godot_method_bind_ptrcall(API_STRUCT, *godot_object, **void, *void) ->void */
 
@@ -3384,7 +3616,9 @@ func (gdt *MethodBind) Ptrcall(p_instance *GodotObject, p_args []unsafe.Pointer,
 }
 
 /* Getter Method: godot_method_bind_call -> godot_variant */
-func (gdt *MethodBind) Call(p_instance *GodotObject, p_args []*Variant, p_arg_count int32, p_call_error VariantCallError) Variant {
+func (gdt *MethodBind) Call(
+	p_instance *GodotObject, p_args []*Variant, p_arg_count int32 /* else case */, p_call_error VariantCallError, /* godot_variant_call_error */
+) Variant {
 
 	/* go_godot_method_bind_call(API_STRUCT, *godot_object, **godot_variant,int, *godot_variant_call_error) ->godot_variant */
 
@@ -3415,14 +3649,20 @@ func (gdt *MethodBind) Call(p_instance *GodotObject, p_args []*Variant, p_arg_co
 
 type GodotObject C.godot_object
 
+// mapped C.godot_real to native go type float32
+
 type NodePath C.godot_node_path
 
-func NewNodePath(p_from String) NodePath {
+func NewNodePath(
+	p_from string, /* Hides String */
+) NodePath {
 	dest := NodePath{}
 
 	api := CoreApi
 	rcv := (*C.godot_node_path)(unsafe.Pointer(&dest))
-	in0 := (*C.godot_string)(unsafe.Pointer(&p_from))
+	// hide godot_string / String and expose native go string
+	strIn0 := internWithGoString(p_from)
+	in0 := (*C.godot_string)(unsafe.Pointer(&strIn0))
 
 	/* go_godot_node_path_new(API_STRUCT, *godot_string) -> *NodePath */
 
@@ -3437,7 +3677,9 @@ func NewNodePath(p_from String) NodePath {
 	return dest
 }
 
-func NewNodePathCopy(p_src NodePath) NodePath {
+func NewNodePathCopy(
+	p_src NodePath, /* godot_node_path */
+) NodePath {
 	dest := NodePath{}
 
 	api := CoreApi
@@ -3520,7 +3762,9 @@ func (gdt *NodePath) GetNameCount() int32 {
 }
 
 /* Getter Method: godot_node_path_get_name -> godot_string */
-func (gdt *NodePath) GetName(p_idx int32) String {
+func (gdt *NodePath) GetName(
+	p_idx int32, /* else case */
+) String {
 
 	/* go_godot_node_path_get_name(API_STRUCT,godot_int) ->godot_string */
 
@@ -3555,7 +3799,9 @@ func (gdt *NodePath) GetSubnameCount() int32 {
 }
 
 /* Getter Method: godot_node_path_get_subname -> godot_string */
-func (gdt *NodePath) GetSubname(p_idx int32) String {
+func (gdt *NodePath) GetSubname(
+	p_idx int32, /* else case */
+) String {
 
 	/* go_godot_node_path_get_subname(API_STRUCT,godot_int) ->godot_string */
 
@@ -3606,7 +3852,9 @@ func (gdt *NodePath) IsEmpty() bool {
 }
 
 /* Getter Method: godot_node_path_operator_equal -> godot_bool */
-func (gdt *NodePath) OperatorEqual(p_b NodePath) bool {
+func (gdt *NodePath) OperatorEqual(
+	p_b NodePath, /* godot_node_path */
+) bool {
 
 	/* go_godot_node_path_operator_equal(API_STRUCT, *godot_node_path) ->godot_bool */
 
@@ -3642,7 +3890,9 @@ func (gdt *NodePath) GetAsPropertyPath() NodePath {
 
 type Plane C.godot_plane
 
-func NewPlaneWithReals(p_a float32, p_b float32, p_c float32, p_d float32) Plane {
+func NewPlaneWithReals(
+	p_a float32 /* else case */, p_b float32 /* else case */, p_c float32 /* else case */, p_d float32, /* else case */
+) Plane {
 	dest := Plane{}
 
 	api := CoreApi
@@ -3671,7 +3921,9 @@ func NewPlaneWithReals(p_a float32, p_b float32, p_c float32, p_d float32) Plane
 	return dest
 }
 
-func NewPlaneWithVectors(p_v1 Vector3, p_v2 Vector3, p_v3 Vector3) Plane {
+func NewPlaneWithVectors(
+	p_v1 Vector3 /* godot_vector3 */, p_v2 Vector3 /* godot_vector3 */, p_v3 Vector3, /* godot_vector3 */
+) Plane {
 	dest := Plane{}
 
 	api := CoreApi
@@ -3697,7 +3949,9 @@ func NewPlaneWithVectors(p_v1 Vector3, p_v2 Vector3, p_v3 Vector3) Plane {
 	return dest
 }
 
-func NewPlaneWithNormal(p_normal Vector3, p_d float32) Plane {
+func NewPlaneWithNormal(
+	p_normal Vector3 /* godot_vector3 */, p_d float32, /* else case */
+) Plane {
 	dest := Plane{}
 
 	api := CoreApi
@@ -3785,7 +4039,9 @@ func (gdt *Plane) GetAnyPoint() Vector3 {
 }
 
 /* Getter Method: godot_plane_is_point_over -> godot_bool */
-func (gdt *Plane) IsPointOver(p_point Vector3) bool {
+func (gdt *Plane) IsPointOver(
+	p_point Vector3, /* godot_vector3 */
+) bool {
 
 	/* go_godot_plane_is_point_over(API_STRUCT, *godot_vector3) ->godot_bool */
 
@@ -3804,7 +4060,9 @@ func (gdt *Plane) IsPointOver(p_point Vector3) bool {
 }
 
 /* Getter Method: godot_plane_distance_to -> godot_real */
-func (gdt *Plane) DistanceTo(p_point Vector3) float32 {
+func (gdt *Plane) DistanceTo(
+	p_point Vector3, /* godot_vector3 */
+) float32 {
 
 	/* go_godot_plane_distance_to(API_STRUCT, *godot_vector3) ->godot_real */
 
@@ -3823,7 +4081,9 @@ func (gdt *Plane) DistanceTo(p_point Vector3) float32 {
 }
 
 /* Getter Method: godot_plane_has_point -> godot_bool */
-func (gdt *Plane) HasPoint(p_point Vector3, p_epsilon float32) bool {
+func (gdt *Plane) HasPoint(
+	p_point Vector3 /* godot_vector3 */, p_epsilon float32, /* else case */
+) bool {
 
 	/* go_godot_plane_has_point(API_STRUCT, *godot_vector3,godot_real) ->godot_bool */
 
@@ -3845,7 +4105,9 @@ func (gdt *Plane) HasPoint(p_point Vector3, p_epsilon float32) bool {
 }
 
 /* Getter Method: godot_plane_project -> godot_vector3 */
-func (gdt *Plane) Project(p_point Vector3) Vector3 {
+func (gdt *Plane) Project(
+	p_point Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_plane_project(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -3864,7 +4126,9 @@ func (gdt *Plane) Project(p_point Vector3) Vector3 {
 }
 
 /* Getter Method: godot_plane_intersect_3 -> godot_bool */
-func (gdt *Plane) Intersect3(r_dest Vector3, p_b Plane, p_c Plane) bool {
+func (gdt *Plane) Intersect3(
+	r_dest Vector3 /* godot_vector3 */, p_b Plane /* godot_plane */, p_c Plane, /* godot_plane */
+) bool {
 
 	/* go_godot_plane_intersect_3(API_STRUCT, *godot_vector3, *godot_plane, *godot_plane) ->godot_bool */
 
@@ -3889,7 +4153,9 @@ func (gdt *Plane) Intersect3(r_dest Vector3, p_b Plane, p_c Plane) bool {
 }
 
 /* Getter Method: godot_plane_intersects_ray -> godot_bool */
-func (gdt *Plane) IntersectsRay(r_dest Vector3, p_from Vector3, p_dir Vector3) bool {
+func (gdt *Plane) IntersectsRay(
+	r_dest Vector3 /* godot_vector3 */, p_from Vector3 /* godot_vector3 */, p_dir Vector3, /* godot_vector3 */
+) bool {
 
 	/* go_godot_plane_intersects_ray(API_STRUCT, *godot_vector3, *godot_vector3, *godot_vector3) ->godot_bool */
 
@@ -3914,7 +4180,9 @@ func (gdt *Plane) IntersectsRay(r_dest Vector3, p_from Vector3, p_dir Vector3) b
 }
 
 /* Getter Method: godot_plane_intersects_segment -> godot_bool */
-func (gdt *Plane) IntersectsSegment(r_dest Vector3, p_begin Vector3, p_end Vector3) bool {
+func (gdt *Plane) IntersectsSegment(
+	r_dest Vector3 /* godot_vector3 */, p_begin Vector3 /* godot_vector3 */, p_end Vector3, /* godot_vector3 */
+) bool {
 
 	/* go_godot_plane_intersects_segment(API_STRUCT, *godot_vector3, *godot_vector3, *godot_vector3) ->godot_bool */
 
@@ -3955,7 +4223,9 @@ func (gdt *Plane) OperatorNeg() Plane {
 }
 
 /* Getter Method: godot_plane_operator_equal -> godot_bool */
-func (gdt *Plane) OperatorEqual(p_b Plane) bool {
+func (gdt *Plane) OperatorEqual(
+	p_b Plane, /* godot_plane */
+) bool {
 
 	/* go_godot_plane_operator_equal(API_STRUCT, *godot_plane) ->godot_bool */
 
@@ -3974,7 +4244,9 @@ func (gdt *Plane) OperatorEqual(p_b Plane) bool {
 }
 
 /* Setter Method: godot_plane_set_normal -> void */
-func (gdt *Plane) SetNormal(p_normal Vector3) {
+func (gdt *Plane) SetNormal(
+	p_normal Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_plane_set_normal(API_STRUCT, *godot_vector3) ->void */
 
@@ -4023,7 +4295,9 @@ func (gdt *Plane) GetD() float32 {
 }
 
 /* Setter Method: godot_plane_set_d -> void */
-func (gdt *Plane) SetD(p_d float32) {
+func (gdt *Plane) SetD(
+	p_d float32, /* else case */
+) {
 
 	/* go_godot_plane_set_d(API_STRUCT,godot_real) ->void */
 
@@ -4062,7 +4336,9 @@ func NewPoolByteArray() PoolByteArray {
 	return dest
 }
 
-func NewPoolByteArrayCopy(p_src PoolByteArray) PoolByteArray {
+func NewPoolByteArrayCopy(
+	p_src PoolByteArray, /* godot_pool_byte_array */
+) PoolByteArray {
 	dest := PoolByteArray{}
 
 	api := CoreApi
@@ -4082,7 +4358,9 @@ func NewPoolByteArrayCopy(p_src PoolByteArray) PoolByteArray {
 	return dest
 }
 
-func NewPoolByteArrayWithArray(p_a Array) PoolByteArray {
+func NewPoolByteArrayWithArray(
+	p_a Array, /* godot_array */
+) PoolByteArray {
 	dest := PoolByteArray{}
 
 	api := CoreApi
@@ -4103,7 +4381,9 @@ func NewPoolByteArrayWithArray(p_a Array) PoolByteArray {
 }
 
 /* Setter Method: godot_pool_byte_array_append -> void */
-func (gdt *PoolByteArray) Append(p_data uint8) {
+func (gdt *PoolByteArray) Append(
+	p_data uint8, /* else case */
+) {
 
 	/* go_godot_pool_byte_array_append(API_STRUCT,uint8_t) ->void */
 
@@ -4120,7 +4400,9 @@ func (gdt *PoolByteArray) Append(p_data uint8) {
 }
 
 /* Setter Method: godot_pool_byte_array_append_array -> void */
-func (gdt *PoolByteArray) AppendArray(p_array PoolByteArray) {
+func (gdt *PoolByteArray) AppendArray(
+	p_array PoolByteArray, /* godot_pool_byte_array */
+) {
 
 	/* go_godot_pool_byte_array_append_array(API_STRUCT, *godot_pool_byte_array) ->void */
 
@@ -4137,7 +4419,9 @@ func (gdt *PoolByteArray) AppendArray(p_array PoolByteArray) {
 }
 
 /* Getter Method: godot_pool_byte_array_insert -> godot_error */
-func (gdt *PoolByteArray) Insert(p_idx int32, p_data uint8) Error {
+func (gdt *PoolByteArray) Insert(
+	p_idx int32 /* else case */, p_data uint8, /* else case */
+) Error {
 
 	/* go_godot_pool_byte_array_insert(API_STRUCT,godot_int,uint8_t) ->godot_error */
 
@@ -4173,7 +4457,9 @@ func (gdt *PoolByteArray) Invert() {
 }
 
 /* Setter Method: godot_pool_byte_array_push_back -> void */
-func (gdt *PoolByteArray) PushBack(p_data uint8) {
+func (gdt *PoolByteArray) PushBack(
+	p_data uint8, /* else case */
+) {
 
 	/* go_godot_pool_byte_array_push_back(API_STRUCT,uint8_t) ->void */
 
@@ -4190,7 +4476,9 @@ func (gdt *PoolByteArray) PushBack(p_data uint8) {
 }
 
 /* Setter Method: godot_pool_byte_array_remove -> void */
-func (gdt *PoolByteArray) Remove(p_idx int32) {
+func (gdt *PoolByteArray) Remove(
+	p_idx int32, /* else case */
+) {
 
 	/* go_godot_pool_byte_array_remove(API_STRUCT,godot_int) ->void */
 
@@ -4207,7 +4495,9 @@ func (gdt *PoolByteArray) Remove(p_idx int32) {
 }
 
 /* Setter Method: godot_pool_byte_array_resize -> void */
-func (gdt *PoolByteArray) Resize(p_size int32) {
+func (gdt *PoolByteArray) Resize(
+	p_size int32, /* else case */
+) {
 
 	/* go_godot_pool_byte_array_resize(API_STRUCT,godot_int) ->void */
 
@@ -4256,7 +4546,9 @@ func (gdt *PoolByteArray) Write() PoolByteArrayWriteAccess {
 }
 
 /* Setter Method: godot_pool_byte_array_set -> void */
-func (gdt *PoolByteArray) Set(p_idx int32, p_data uint8) {
+func (gdt *PoolByteArray) Set(
+	p_idx int32 /* else case */, p_data uint8, /* else case */
+) {
 
 	/* go_godot_pool_byte_array_set(API_STRUCT,godot_int,uint8_t) ->void */
 
@@ -4276,7 +4568,9 @@ func (gdt *PoolByteArray) Set(p_idx int32, p_data uint8) {
 }
 
 /* Getter Method: godot_pool_byte_array_get -> uint8_t */
-func (gdt *PoolByteArray) Get(p_idx int32) uint8 {
+func (gdt *PoolByteArray) Get(
+	p_idx int32, /* else case */
+) uint8 {
 
 	/* go_godot_pool_byte_array_get(API_STRUCT,godot_int) ->uint8_t */
 
@@ -4375,7 +4669,9 @@ func (gdt *PoolByteArrayReadAccess) Ptr() uint8 {
 }
 
 /* Setter Method: godot_pool_byte_array_read_access_operator_assign -> void */
-func (gdt *PoolByteArrayReadAccess) OperatorAssign(p_other PoolByteArrayReadAccess) {
+func (gdt *PoolByteArrayReadAccess) OperatorAssign(
+	p_other PoolByteArrayReadAccess, /* godot_pool_byte_array_read_access */
+) {
 
 	/* go_godot_pool_byte_array_read_access_operator_assign(API_STRUCT, *godot_pool_byte_array_read_access) ->void */
 
@@ -4440,7 +4736,9 @@ func (gdt *PoolByteArrayWriteAccess) Ptr() uint8 {
 }
 
 /* Setter Method: godot_pool_byte_array_write_access_operator_assign -> void */
-func (gdt *PoolByteArrayWriteAccess) OperatorAssign(p_other PoolByteArrayWriteAccess) {
+func (gdt *PoolByteArrayWriteAccess) OperatorAssign(
+	p_other PoolByteArrayWriteAccess, /* godot_pool_byte_array_write_access */
+) {
 
 	/* go_godot_pool_byte_array_write_access_operator_assign(API_STRUCT, *godot_pool_byte_array_write_access) ->void */
 
@@ -4489,7 +4787,9 @@ func NewPoolColorArray() PoolColorArray {
 	return dest
 }
 
-func NewPoolColorArrayCopy(p_src PoolColorArray) PoolColorArray {
+func NewPoolColorArrayCopy(
+	p_src PoolColorArray, /* godot_pool_color_array */
+) PoolColorArray {
 	dest := PoolColorArray{}
 
 	api := CoreApi
@@ -4509,7 +4809,9 @@ func NewPoolColorArrayCopy(p_src PoolColorArray) PoolColorArray {
 	return dest
 }
 
-func NewPoolColorArrayWithArray(p_a Array) PoolColorArray {
+func NewPoolColorArrayWithArray(
+	p_a Array, /* godot_array */
+) PoolColorArray {
 	dest := PoolColorArray{}
 
 	api := CoreApi
@@ -4530,7 +4832,9 @@ func NewPoolColorArrayWithArray(p_a Array) PoolColorArray {
 }
 
 /* Setter Method: godot_pool_color_array_append -> void */
-func (gdt *PoolColorArray) Append(p_data Color) {
+func (gdt *PoolColorArray) Append(
+	p_data Color, /* godot_color */
+) {
 
 	/* go_godot_pool_color_array_append(API_STRUCT, *godot_color) ->void */
 
@@ -4547,7 +4851,9 @@ func (gdt *PoolColorArray) Append(p_data Color) {
 }
 
 /* Setter Method: godot_pool_color_array_append_array -> void */
-func (gdt *PoolColorArray) AppendArray(p_array PoolColorArray) {
+func (gdt *PoolColorArray) AppendArray(
+	p_array PoolColorArray, /* godot_pool_color_array */
+) {
 
 	/* go_godot_pool_color_array_append_array(API_STRUCT, *godot_pool_color_array) ->void */
 
@@ -4564,7 +4870,9 @@ func (gdt *PoolColorArray) AppendArray(p_array PoolColorArray) {
 }
 
 /* Getter Method: godot_pool_color_array_insert -> godot_error */
-func (gdt *PoolColorArray) Insert(p_idx int32, p_data Color) Error {
+func (gdt *PoolColorArray) Insert(
+	p_idx int32 /* else case */, p_data Color, /* godot_color */
+) Error {
 
 	/* go_godot_pool_color_array_insert(API_STRUCT,godot_int, *godot_color) ->godot_error */
 
@@ -4600,7 +4908,9 @@ func (gdt *PoolColorArray) Invert() {
 }
 
 /* Setter Method: godot_pool_color_array_push_back -> void */
-func (gdt *PoolColorArray) PushBack(p_data Color) {
+func (gdt *PoolColorArray) PushBack(
+	p_data Color, /* godot_color */
+) {
 
 	/* go_godot_pool_color_array_push_back(API_STRUCT, *godot_color) ->void */
 
@@ -4617,7 +4927,9 @@ func (gdt *PoolColorArray) PushBack(p_data Color) {
 }
 
 /* Setter Method: godot_pool_color_array_remove -> void */
-func (gdt *PoolColorArray) Remove(p_idx int32) {
+func (gdt *PoolColorArray) Remove(
+	p_idx int32, /* else case */
+) {
 
 	/* go_godot_pool_color_array_remove(API_STRUCT,godot_int) ->void */
 
@@ -4634,7 +4946,9 @@ func (gdt *PoolColorArray) Remove(p_idx int32) {
 }
 
 /* Setter Method: godot_pool_color_array_resize -> void */
-func (gdt *PoolColorArray) Resize(p_size int32) {
+func (gdt *PoolColorArray) Resize(
+	p_size int32, /* else case */
+) {
 
 	/* go_godot_pool_color_array_resize(API_STRUCT,godot_int) ->void */
 
@@ -4683,7 +4997,9 @@ func (gdt *PoolColorArray) Write() PoolColorArrayWriteAccess {
 }
 
 /* Setter Method: godot_pool_color_array_set -> void */
-func (gdt *PoolColorArray) Set(p_idx int32, p_data Color) {
+func (gdt *PoolColorArray) Set(
+	p_idx int32 /* else case */, p_data Color, /* godot_color */
+) {
 
 	/* go_godot_pool_color_array_set(API_STRUCT,godot_int, *godot_color) ->void */
 
@@ -4703,7 +5019,9 @@ func (gdt *PoolColorArray) Set(p_idx int32, p_data Color) {
 }
 
 /* Getter Method: godot_pool_color_array_get -> godot_color */
-func (gdt *PoolColorArray) Get(p_idx int32) Color {
+func (gdt *PoolColorArray) Get(
+	p_idx int32, /* else case */
+) Color {
 
 	/* go_godot_pool_color_array_get(API_STRUCT,godot_int) ->godot_color */
 
@@ -4802,7 +5120,9 @@ func (gdt *PoolColorArrayReadAccess) Ptr() Color {
 }
 
 /* Setter Method: godot_pool_color_array_read_access_operator_assign -> void */
-func (gdt *PoolColorArrayReadAccess) OperatorAssign(p_other PoolColorArrayReadAccess) {
+func (gdt *PoolColorArrayReadAccess) OperatorAssign(
+	p_other PoolColorArrayReadAccess, /* godot_pool_color_array_read_access */
+) {
 
 	/* go_godot_pool_color_array_read_access_operator_assign(API_STRUCT, *godot_pool_color_array_read_access) ->void */
 
@@ -4867,7 +5187,9 @@ func (gdt *PoolColorArrayWriteAccess) Ptr() Color {
 }
 
 /* Setter Method: godot_pool_color_array_write_access_operator_assign -> void */
-func (gdt *PoolColorArrayWriteAccess) OperatorAssign(p_other PoolColorArrayWriteAccess) {
+func (gdt *PoolColorArrayWriteAccess) OperatorAssign(
+	p_other PoolColorArrayWriteAccess, /* godot_pool_color_array_write_access */
+) {
 
 	/* go_godot_pool_color_array_write_access_operator_assign(API_STRUCT, *godot_pool_color_array_write_access) ->void */
 
@@ -4916,7 +5238,9 @@ func NewPoolIntArray() PoolIntArray {
 	return dest
 }
 
-func NewPoolIntArrayCopy(p_src PoolIntArray) PoolIntArray {
+func NewPoolIntArrayCopy(
+	p_src PoolIntArray, /* godot_pool_int_array */
+) PoolIntArray {
 	dest := PoolIntArray{}
 
 	api := CoreApi
@@ -4936,7 +5260,9 @@ func NewPoolIntArrayCopy(p_src PoolIntArray) PoolIntArray {
 	return dest
 }
 
-func NewPoolIntArrayWithArray(p_a Array) PoolIntArray {
+func NewPoolIntArrayWithArray(
+	p_a Array, /* godot_array */
+) PoolIntArray {
 	dest := PoolIntArray{}
 
 	api := CoreApi
@@ -4957,7 +5283,9 @@ func NewPoolIntArrayWithArray(p_a Array) PoolIntArray {
 }
 
 /* Setter Method: godot_pool_int_array_append -> void */
-func (gdt *PoolIntArray) Append(p_data int32) {
+func (gdt *PoolIntArray) Append(
+	p_data int32, /* else case */
+) {
 
 	/* go_godot_pool_int_array_append(API_STRUCT,godot_int) ->void */
 
@@ -4974,7 +5302,9 @@ func (gdt *PoolIntArray) Append(p_data int32) {
 }
 
 /* Setter Method: godot_pool_int_array_append_array -> void */
-func (gdt *PoolIntArray) AppendArray(p_array PoolIntArray) {
+func (gdt *PoolIntArray) AppendArray(
+	p_array PoolIntArray, /* godot_pool_int_array */
+) {
 
 	/* go_godot_pool_int_array_append_array(API_STRUCT, *godot_pool_int_array) ->void */
 
@@ -4991,7 +5321,9 @@ func (gdt *PoolIntArray) AppendArray(p_array PoolIntArray) {
 }
 
 /* Getter Method: godot_pool_int_array_insert -> godot_error */
-func (gdt *PoolIntArray) Insert(p_idx int32, p_data int32) Error {
+func (gdt *PoolIntArray) Insert(
+	p_idx int32 /* else case */, p_data int32, /* else case */
+) Error {
 
 	/* go_godot_pool_int_array_insert(API_STRUCT,godot_int,godot_int) ->godot_error */
 
@@ -5027,7 +5359,9 @@ func (gdt *PoolIntArray) Invert() {
 }
 
 /* Setter Method: godot_pool_int_array_push_back -> void */
-func (gdt *PoolIntArray) PushBack(p_data int32) {
+func (gdt *PoolIntArray) PushBack(
+	p_data int32, /* else case */
+) {
 
 	/* go_godot_pool_int_array_push_back(API_STRUCT,godot_int) ->void */
 
@@ -5044,7 +5378,9 @@ func (gdt *PoolIntArray) PushBack(p_data int32) {
 }
 
 /* Setter Method: godot_pool_int_array_remove -> void */
-func (gdt *PoolIntArray) Remove(p_idx int32) {
+func (gdt *PoolIntArray) Remove(
+	p_idx int32, /* else case */
+) {
 
 	/* go_godot_pool_int_array_remove(API_STRUCT,godot_int) ->void */
 
@@ -5061,7 +5397,9 @@ func (gdt *PoolIntArray) Remove(p_idx int32) {
 }
 
 /* Setter Method: godot_pool_int_array_resize -> void */
-func (gdt *PoolIntArray) Resize(p_size int32) {
+func (gdt *PoolIntArray) Resize(
+	p_size int32, /* else case */
+) {
 
 	/* go_godot_pool_int_array_resize(API_STRUCT,godot_int) ->void */
 
@@ -5110,7 +5448,9 @@ func (gdt *PoolIntArray) Write() PoolIntArrayWriteAccess {
 }
 
 /* Setter Method: godot_pool_int_array_set -> void */
-func (gdt *PoolIntArray) Set(p_idx int32, p_data int32) {
+func (gdt *PoolIntArray) Set(
+	p_idx int32 /* else case */, p_data int32, /* else case */
+) {
 
 	/* go_godot_pool_int_array_set(API_STRUCT,godot_int,godot_int) ->void */
 
@@ -5130,7 +5470,9 @@ func (gdt *PoolIntArray) Set(p_idx int32, p_data int32) {
 }
 
 /* Getter Method: godot_pool_int_array_get -> godot_int */
-func (gdt *PoolIntArray) Get(p_idx int32) int32 {
+func (gdt *PoolIntArray) Get(
+	p_idx int32, /* else case */
+) int32 {
 
 	/* go_godot_pool_int_array_get(API_STRUCT,godot_int) ->godot_int */
 
@@ -5229,7 +5571,9 @@ func (gdt *PoolIntArrayReadAccess) Ptr() int32 {
 }
 
 /* Setter Method: godot_pool_int_array_read_access_operator_assign -> void */
-func (gdt *PoolIntArrayReadAccess) OperatorAssign(p_other PoolIntArrayReadAccess) {
+func (gdt *PoolIntArrayReadAccess) OperatorAssign(
+	p_other PoolIntArrayReadAccess, /* godot_pool_int_array_read_access */
+) {
 
 	/* go_godot_pool_int_array_read_access_operator_assign(API_STRUCT, *godot_pool_int_array_read_access) ->void */
 
@@ -5294,7 +5638,9 @@ func (gdt *PoolIntArrayWriteAccess) Ptr() int32 {
 }
 
 /* Setter Method: godot_pool_int_array_write_access_operator_assign -> void */
-func (gdt *PoolIntArrayWriteAccess) OperatorAssign(p_other PoolIntArrayWriteAccess) {
+func (gdt *PoolIntArrayWriteAccess) OperatorAssign(
+	p_other PoolIntArrayWriteAccess, /* godot_pool_int_array_write_access */
+) {
 
 	/* go_godot_pool_int_array_write_access_operator_assign(API_STRUCT, *godot_pool_int_array_write_access) ->void */
 
@@ -5343,7 +5689,9 @@ func NewPoolRealArray() PoolRealArray {
 	return dest
 }
 
-func NewPoolRealArrayCopy(p_src PoolRealArray) PoolRealArray {
+func NewPoolRealArrayCopy(
+	p_src PoolRealArray, /* godot_pool_real_array */
+) PoolRealArray {
 	dest := PoolRealArray{}
 
 	api := CoreApi
@@ -5363,7 +5711,9 @@ func NewPoolRealArrayCopy(p_src PoolRealArray) PoolRealArray {
 	return dest
 }
 
-func NewPoolRealArrayWithArray(p_a Array) PoolRealArray {
+func NewPoolRealArrayWithArray(
+	p_a Array, /* godot_array */
+) PoolRealArray {
 	dest := PoolRealArray{}
 
 	api := CoreApi
@@ -5384,7 +5734,9 @@ func NewPoolRealArrayWithArray(p_a Array) PoolRealArray {
 }
 
 /* Setter Method: godot_pool_real_array_append -> void */
-func (gdt *PoolRealArray) Append(p_data float32) {
+func (gdt *PoolRealArray) Append(
+	p_data float32, /* else case */
+) {
 
 	/* go_godot_pool_real_array_append(API_STRUCT,godot_real) ->void */
 
@@ -5401,7 +5753,9 @@ func (gdt *PoolRealArray) Append(p_data float32) {
 }
 
 /* Setter Method: godot_pool_real_array_append_array -> void */
-func (gdt *PoolRealArray) AppendArray(p_array PoolRealArray) {
+func (gdt *PoolRealArray) AppendArray(
+	p_array PoolRealArray, /* godot_pool_real_array */
+) {
 
 	/* go_godot_pool_real_array_append_array(API_STRUCT, *godot_pool_real_array) ->void */
 
@@ -5418,7 +5772,9 @@ func (gdt *PoolRealArray) AppendArray(p_array PoolRealArray) {
 }
 
 /* Getter Method: godot_pool_real_array_insert -> godot_error */
-func (gdt *PoolRealArray) Insert(p_idx int32, p_data float32) Error {
+func (gdt *PoolRealArray) Insert(
+	p_idx int32 /* else case */, p_data float32, /* else case */
+) Error {
 
 	/* go_godot_pool_real_array_insert(API_STRUCT,godot_int,godot_real) ->godot_error */
 
@@ -5454,7 +5810,9 @@ func (gdt *PoolRealArray) Invert() {
 }
 
 /* Setter Method: godot_pool_real_array_push_back -> void */
-func (gdt *PoolRealArray) PushBack(p_data float32) {
+func (gdt *PoolRealArray) PushBack(
+	p_data float32, /* else case */
+) {
 
 	/* go_godot_pool_real_array_push_back(API_STRUCT,godot_real) ->void */
 
@@ -5471,7 +5829,9 @@ func (gdt *PoolRealArray) PushBack(p_data float32) {
 }
 
 /* Setter Method: godot_pool_real_array_remove -> void */
-func (gdt *PoolRealArray) Remove(p_idx int32) {
+func (gdt *PoolRealArray) Remove(
+	p_idx int32, /* else case */
+) {
 
 	/* go_godot_pool_real_array_remove(API_STRUCT,godot_int) ->void */
 
@@ -5488,7 +5848,9 @@ func (gdt *PoolRealArray) Remove(p_idx int32) {
 }
 
 /* Setter Method: godot_pool_real_array_resize -> void */
-func (gdt *PoolRealArray) Resize(p_size int32) {
+func (gdt *PoolRealArray) Resize(
+	p_size int32, /* else case */
+) {
 
 	/* go_godot_pool_real_array_resize(API_STRUCT,godot_int) ->void */
 
@@ -5537,7 +5899,9 @@ func (gdt *PoolRealArray) Write() PoolRealArrayWriteAccess {
 }
 
 /* Setter Method: godot_pool_real_array_set -> void */
-func (gdt *PoolRealArray) Set(p_idx int32, p_data float32) {
+func (gdt *PoolRealArray) Set(
+	p_idx int32 /* else case */, p_data float32, /* else case */
+) {
 
 	/* go_godot_pool_real_array_set(API_STRUCT,godot_int,godot_real) ->void */
 
@@ -5557,7 +5921,9 @@ func (gdt *PoolRealArray) Set(p_idx int32, p_data float32) {
 }
 
 /* Getter Method: godot_pool_real_array_get -> godot_real */
-func (gdt *PoolRealArray) Get(p_idx int32) float32 {
+func (gdt *PoolRealArray) Get(
+	p_idx int32, /* else case */
+) float32 {
 
 	/* go_godot_pool_real_array_get(API_STRUCT,godot_int) ->godot_real */
 
@@ -5656,7 +6022,9 @@ func (gdt *PoolRealArrayReadAccess) Ptr() float32 {
 }
 
 /* Setter Method: godot_pool_real_array_read_access_operator_assign -> void */
-func (gdt *PoolRealArrayReadAccess) OperatorAssign(p_other PoolRealArrayReadAccess) {
+func (gdt *PoolRealArrayReadAccess) OperatorAssign(
+	p_other PoolRealArrayReadAccess, /* godot_pool_real_array_read_access */
+) {
 
 	/* go_godot_pool_real_array_read_access_operator_assign(API_STRUCT, *godot_pool_real_array_read_access) ->void */
 
@@ -5721,7 +6089,9 @@ func (gdt *PoolRealArrayWriteAccess) Ptr() float32 {
 }
 
 /* Setter Method: godot_pool_real_array_write_access_operator_assign -> void */
-func (gdt *PoolRealArrayWriteAccess) OperatorAssign(p_other PoolRealArrayWriteAccess) {
+func (gdt *PoolRealArrayWriteAccess) OperatorAssign(
+	p_other PoolRealArrayWriteAccess, /* godot_pool_real_array_write_access */
+) {
 
 	/* go_godot_pool_real_array_write_access_operator_assign(API_STRUCT, *godot_pool_real_array_write_access) ->void */
 
@@ -5770,7 +6140,9 @@ func NewPoolStringArray() PoolStringArray {
 	return dest
 }
 
-func NewPoolStringArrayCopy(p_src PoolStringArray) PoolStringArray {
+func NewPoolStringArrayCopy(
+	p_src PoolStringArray, /* godot_pool_string_array */
+) PoolStringArray {
 	dest := PoolStringArray{}
 
 	api := CoreApi
@@ -5790,7 +6162,9 @@ func NewPoolStringArrayCopy(p_src PoolStringArray) PoolStringArray {
 	return dest
 }
 
-func NewPoolStringArrayWithArray(p_a Array) PoolStringArray {
+func NewPoolStringArrayWithArray(
+	p_a Array, /* godot_array */
+) PoolStringArray {
 	dest := PoolStringArray{}
 
 	api := CoreApi
@@ -5811,7 +6185,9 @@ func NewPoolStringArrayWithArray(p_a Array) PoolStringArray {
 }
 
 /* Setter Method: godot_pool_string_array_append -> void */
-func (gdt *PoolStringArray) Append(p_data String) {
+func (gdt *PoolStringArray) Append(
+	p_data String, /* godot_string */
+) {
 
 	/* go_godot_pool_string_array_append(API_STRUCT, *godot_string) ->void */
 
@@ -5828,7 +6204,9 @@ func (gdt *PoolStringArray) Append(p_data String) {
 }
 
 /* Setter Method: godot_pool_string_array_append_array -> void */
-func (gdt *PoolStringArray) AppendArray(p_array PoolStringArray) {
+func (gdt *PoolStringArray) AppendArray(
+	p_array PoolStringArray, /* godot_pool_string_array */
+) {
 
 	/* go_godot_pool_string_array_append_array(API_STRUCT, *godot_pool_string_array) ->void */
 
@@ -5845,7 +6223,9 @@ func (gdt *PoolStringArray) AppendArray(p_array PoolStringArray) {
 }
 
 /* Getter Method: godot_pool_string_array_insert -> godot_error */
-func (gdt *PoolStringArray) Insert(p_idx int32, p_data String) Error {
+func (gdt *PoolStringArray) Insert(
+	p_idx int32 /* else case */, p_data String, /* godot_string */
+) Error {
 
 	/* go_godot_pool_string_array_insert(API_STRUCT,godot_int, *godot_string) ->godot_error */
 
@@ -5881,7 +6261,9 @@ func (gdt *PoolStringArray) Invert() {
 }
 
 /* Setter Method: godot_pool_string_array_push_back -> void */
-func (gdt *PoolStringArray) PushBack(p_data String) {
+func (gdt *PoolStringArray) PushBack(
+	p_data String, /* godot_string */
+) {
 
 	/* go_godot_pool_string_array_push_back(API_STRUCT, *godot_string) ->void */
 
@@ -5898,7 +6280,9 @@ func (gdt *PoolStringArray) PushBack(p_data String) {
 }
 
 /* Setter Method: godot_pool_string_array_remove -> void */
-func (gdt *PoolStringArray) Remove(p_idx int32) {
+func (gdt *PoolStringArray) Remove(
+	p_idx int32, /* else case */
+) {
 
 	/* go_godot_pool_string_array_remove(API_STRUCT,godot_int) ->void */
 
@@ -5915,7 +6299,9 @@ func (gdt *PoolStringArray) Remove(p_idx int32) {
 }
 
 /* Setter Method: godot_pool_string_array_resize -> void */
-func (gdt *PoolStringArray) Resize(p_size int32) {
+func (gdt *PoolStringArray) Resize(
+	p_size int32, /* else case */
+) {
 
 	/* go_godot_pool_string_array_resize(API_STRUCT,godot_int) ->void */
 
@@ -5964,7 +6350,9 @@ func (gdt *PoolStringArray) Write() PoolStringArrayWriteAccess {
 }
 
 /* Setter Method: godot_pool_string_array_set -> void */
-func (gdt *PoolStringArray) Set(p_idx int32, p_data String) {
+func (gdt *PoolStringArray) Set(
+	p_idx int32 /* else case */, p_data String, /* godot_string */
+) {
 
 	/* go_godot_pool_string_array_set(API_STRUCT,godot_int, *godot_string) ->void */
 
@@ -5984,7 +6372,9 @@ func (gdt *PoolStringArray) Set(p_idx int32, p_data String) {
 }
 
 /* Getter Method: godot_pool_string_array_get -> godot_string */
-func (gdt *PoolStringArray) Get(p_idx int32) String {
+func (gdt *PoolStringArray) Get(
+	p_idx int32, /* else case */
+) String {
 
 	/* go_godot_pool_string_array_get(API_STRUCT,godot_int) ->godot_string */
 
@@ -6083,7 +6473,9 @@ func (gdt *PoolStringArrayReadAccess) Ptr() String {
 }
 
 /* Setter Method: godot_pool_string_array_read_access_operator_assign -> void */
-func (gdt *PoolStringArrayReadAccess) OperatorAssign(p_other PoolStringArrayReadAccess) {
+func (gdt *PoolStringArrayReadAccess) OperatorAssign(
+	p_other PoolStringArrayReadAccess, /* godot_pool_string_array_read_access */
+) {
 
 	/* go_godot_pool_string_array_read_access_operator_assign(API_STRUCT, *godot_pool_string_array_read_access) ->void */
 
@@ -6148,7 +6540,9 @@ func (gdt *PoolStringArrayWriteAccess) Ptr() String {
 }
 
 /* Setter Method: godot_pool_string_array_write_access_operator_assign -> void */
-func (gdt *PoolStringArrayWriteAccess) OperatorAssign(p_other PoolStringArrayWriteAccess) {
+func (gdt *PoolStringArrayWriteAccess) OperatorAssign(
+	p_other PoolStringArrayWriteAccess, /* godot_pool_string_array_write_access */
+) {
 
 	/* go_godot_pool_string_array_write_access_operator_assign(API_STRUCT, *godot_pool_string_array_write_access) ->void */
 
@@ -6197,7 +6591,9 @@ func NewPoolVector2Array() PoolVector2Array {
 	return dest
 }
 
-func NewPoolVector2ArrayCopy(p_src PoolVector2Array) PoolVector2Array {
+func NewPoolVector2ArrayCopy(
+	p_src PoolVector2Array, /* godot_pool_vector2_array */
+) PoolVector2Array {
 	dest := PoolVector2Array{}
 
 	api := CoreApi
@@ -6217,7 +6613,9 @@ func NewPoolVector2ArrayCopy(p_src PoolVector2Array) PoolVector2Array {
 	return dest
 }
 
-func NewPoolVector2ArrayWithArray(p_a Array) PoolVector2Array {
+func NewPoolVector2ArrayWithArray(
+	p_a Array, /* godot_array */
+) PoolVector2Array {
 	dest := PoolVector2Array{}
 
 	api := CoreApi
@@ -6238,7 +6636,9 @@ func NewPoolVector2ArrayWithArray(p_a Array) PoolVector2Array {
 }
 
 /* Setter Method: godot_pool_vector2_array_append -> void */
-func (gdt *PoolVector2Array) Append(p_data Vector2) {
+func (gdt *PoolVector2Array) Append(
+	p_data Vector2, /* godot_vector2 */
+) {
 
 	/* go_godot_pool_vector2_array_append(API_STRUCT, *godot_vector2) ->void */
 
@@ -6255,7 +6655,9 @@ func (gdt *PoolVector2Array) Append(p_data Vector2) {
 }
 
 /* Setter Method: godot_pool_vector2_array_append_array -> void */
-func (gdt *PoolVector2Array) AppendArray(p_array PoolVector2Array) {
+func (gdt *PoolVector2Array) AppendArray(
+	p_array PoolVector2Array, /* godot_pool_vector2_array */
+) {
 
 	/* go_godot_pool_vector2_array_append_array(API_STRUCT, *godot_pool_vector2_array) ->void */
 
@@ -6272,7 +6674,9 @@ func (gdt *PoolVector2Array) AppendArray(p_array PoolVector2Array) {
 }
 
 /* Getter Method: godot_pool_vector2_array_insert -> godot_error */
-func (gdt *PoolVector2Array) Insert(p_idx int32, p_data Vector2) Error {
+func (gdt *PoolVector2Array) Insert(
+	p_idx int32 /* else case */, p_data Vector2, /* godot_vector2 */
+) Error {
 
 	/* go_godot_pool_vector2_array_insert(API_STRUCT,godot_int, *godot_vector2) ->godot_error */
 
@@ -6308,7 +6712,9 @@ func (gdt *PoolVector2Array) Invert() {
 }
 
 /* Setter Method: godot_pool_vector2_array_push_back -> void */
-func (gdt *PoolVector2Array) PushBack(p_data Vector2) {
+func (gdt *PoolVector2Array) PushBack(
+	p_data Vector2, /* godot_vector2 */
+) {
 
 	/* go_godot_pool_vector2_array_push_back(API_STRUCT, *godot_vector2) ->void */
 
@@ -6325,7 +6731,9 @@ func (gdt *PoolVector2Array) PushBack(p_data Vector2) {
 }
 
 /* Setter Method: godot_pool_vector2_array_remove -> void */
-func (gdt *PoolVector2Array) Remove(p_idx int32) {
+func (gdt *PoolVector2Array) Remove(
+	p_idx int32, /* else case */
+) {
 
 	/* go_godot_pool_vector2_array_remove(API_STRUCT,godot_int) ->void */
 
@@ -6342,7 +6750,9 @@ func (gdt *PoolVector2Array) Remove(p_idx int32) {
 }
 
 /* Setter Method: godot_pool_vector2_array_resize -> void */
-func (gdt *PoolVector2Array) Resize(p_size int32) {
+func (gdt *PoolVector2Array) Resize(
+	p_size int32, /* else case */
+) {
 
 	/* go_godot_pool_vector2_array_resize(API_STRUCT,godot_int) ->void */
 
@@ -6391,7 +6801,9 @@ func (gdt *PoolVector2Array) Write() PoolVector2ArrayWriteAccess {
 }
 
 /* Setter Method: godot_pool_vector2_array_set -> void */
-func (gdt *PoolVector2Array) Set(p_idx int32, p_data Vector2) {
+func (gdt *PoolVector2Array) Set(
+	p_idx int32 /* else case */, p_data Vector2, /* godot_vector2 */
+) {
 
 	/* go_godot_pool_vector2_array_set(API_STRUCT,godot_int, *godot_vector2) ->void */
 
@@ -6411,7 +6823,9 @@ func (gdt *PoolVector2Array) Set(p_idx int32, p_data Vector2) {
 }
 
 /* Getter Method: godot_pool_vector2_array_get -> godot_vector2 */
-func (gdt *PoolVector2Array) Get(p_idx int32) Vector2 {
+func (gdt *PoolVector2Array) Get(
+	p_idx int32, /* else case */
+) Vector2 {
 
 	/* go_godot_pool_vector2_array_get(API_STRUCT,godot_int) ->godot_vector2 */
 
@@ -6510,7 +6924,9 @@ func (gdt *PoolVector2ArrayReadAccess) Ptr() Vector2 {
 }
 
 /* Setter Method: godot_pool_vector2_array_read_access_operator_assign -> void */
-func (gdt *PoolVector2ArrayReadAccess) OperatorAssign(p_other PoolVector2ArrayReadAccess) {
+func (gdt *PoolVector2ArrayReadAccess) OperatorAssign(
+	p_other PoolVector2ArrayReadAccess, /* godot_pool_vector2_array_read_access */
+) {
 
 	/* go_godot_pool_vector2_array_read_access_operator_assign(API_STRUCT, *godot_pool_vector2_array_read_access) ->void */
 
@@ -6575,7 +6991,9 @@ func (gdt *PoolVector2ArrayWriteAccess) Ptr() Vector2 {
 }
 
 /* Setter Method: godot_pool_vector2_array_write_access_operator_assign -> void */
-func (gdt *PoolVector2ArrayWriteAccess) OperatorAssign(p_other PoolVector2ArrayWriteAccess) {
+func (gdt *PoolVector2ArrayWriteAccess) OperatorAssign(
+	p_other PoolVector2ArrayWriteAccess, /* godot_pool_vector2_array_write_access */
+) {
 
 	/* go_godot_pool_vector2_array_write_access_operator_assign(API_STRUCT, *godot_pool_vector2_array_write_access) ->void */
 
@@ -6624,7 +7042,9 @@ func NewPoolVector3Array() PoolVector3Array {
 	return dest
 }
 
-func NewPoolVector3ArrayCopy(p_src PoolVector3Array) PoolVector3Array {
+func NewPoolVector3ArrayCopy(
+	p_src PoolVector3Array, /* godot_pool_vector3_array */
+) PoolVector3Array {
 	dest := PoolVector3Array{}
 
 	api := CoreApi
@@ -6644,7 +7064,9 @@ func NewPoolVector3ArrayCopy(p_src PoolVector3Array) PoolVector3Array {
 	return dest
 }
 
-func NewPoolVector3ArrayWithArray(p_a Array) PoolVector3Array {
+func NewPoolVector3ArrayWithArray(
+	p_a Array, /* godot_array */
+) PoolVector3Array {
 	dest := PoolVector3Array{}
 
 	api := CoreApi
@@ -6665,7 +7087,9 @@ func NewPoolVector3ArrayWithArray(p_a Array) PoolVector3Array {
 }
 
 /* Setter Method: godot_pool_vector3_array_append -> void */
-func (gdt *PoolVector3Array) Append(p_data Vector3) {
+func (gdt *PoolVector3Array) Append(
+	p_data Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_pool_vector3_array_append(API_STRUCT, *godot_vector3) ->void */
 
@@ -6682,7 +7106,9 @@ func (gdt *PoolVector3Array) Append(p_data Vector3) {
 }
 
 /* Setter Method: godot_pool_vector3_array_append_array -> void */
-func (gdt *PoolVector3Array) AppendArray(p_array PoolVector3Array) {
+func (gdt *PoolVector3Array) AppendArray(
+	p_array PoolVector3Array, /* godot_pool_vector3_array */
+) {
 
 	/* go_godot_pool_vector3_array_append_array(API_STRUCT, *godot_pool_vector3_array) ->void */
 
@@ -6699,7 +7125,9 @@ func (gdt *PoolVector3Array) AppendArray(p_array PoolVector3Array) {
 }
 
 /* Getter Method: godot_pool_vector3_array_insert -> godot_error */
-func (gdt *PoolVector3Array) Insert(p_idx int32, p_data Vector3) Error {
+func (gdt *PoolVector3Array) Insert(
+	p_idx int32 /* else case */, p_data Vector3, /* godot_vector3 */
+) Error {
 
 	/* go_godot_pool_vector3_array_insert(API_STRUCT,godot_int, *godot_vector3) ->godot_error */
 
@@ -6735,7 +7163,9 @@ func (gdt *PoolVector3Array) Invert() {
 }
 
 /* Setter Method: godot_pool_vector3_array_push_back -> void */
-func (gdt *PoolVector3Array) PushBack(p_data Vector3) {
+func (gdt *PoolVector3Array) PushBack(
+	p_data Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_pool_vector3_array_push_back(API_STRUCT, *godot_vector3) ->void */
 
@@ -6752,7 +7182,9 @@ func (gdt *PoolVector3Array) PushBack(p_data Vector3) {
 }
 
 /* Setter Method: godot_pool_vector3_array_remove -> void */
-func (gdt *PoolVector3Array) Remove(p_idx int32) {
+func (gdt *PoolVector3Array) Remove(
+	p_idx int32, /* else case */
+) {
 
 	/* go_godot_pool_vector3_array_remove(API_STRUCT,godot_int) ->void */
 
@@ -6769,7 +7201,9 @@ func (gdt *PoolVector3Array) Remove(p_idx int32) {
 }
 
 /* Setter Method: godot_pool_vector3_array_resize -> void */
-func (gdt *PoolVector3Array) Resize(p_size int32) {
+func (gdt *PoolVector3Array) Resize(
+	p_size int32, /* else case */
+) {
 
 	/* go_godot_pool_vector3_array_resize(API_STRUCT,godot_int) ->void */
 
@@ -6818,7 +7252,9 @@ func (gdt *PoolVector3Array) Write() PoolVector3ArrayWriteAccess {
 }
 
 /* Setter Method: godot_pool_vector3_array_set -> void */
-func (gdt *PoolVector3Array) Set(p_idx int32, p_data Vector3) {
+func (gdt *PoolVector3Array) Set(
+	p_idx int32 /* else case */, p_data Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_pool_vector3_array_set(API_STRUCT,godot_int, *godot_vector3) ->void */
 
@@ -6838,7 +7274,9 @@ func (gdt *PoolVector3Array) Set(p_idx int32, p_data Vector3) {
 }
 
 /* Getter Method: godot_pool_vector3_array_get -> godot_vector3 */
-func (gdt *PoolVector3Array) Get(p_idx int32) Vector3 {
+func (gdt *PoolVector3Array) Get(
+	p_idx int32, /* else case */
+) Vector3 {
 
 	/* go_godot_pool_vector3_array_get(API_STRUCT,godot_int) ->godot_vector3 */
 
@@ -6937,7 +7375,9 @@ func (gdt *PoolVector3ArrayReadAccess) Ptr() Vector3 {
 }
 
 /* Setter Method: godot_pool_vector3_array_read_access_operator_assign -> void */
-func (gdt *PoolVector3ArrayReadAccess) OperatorAssign(p_other PoolVector3ArrayReadAccess) {
+func (gdt *PoolVector3ArrayReadAccess) OperatorAssign(
+	p_other PoolVector3ArrayReadAccess, /* godot_pool_vector3_array_read_access */
+) {
 
 	/* go_godot_pool_vector3_array_read_access_operator_assign(API_STRUCT, *godot_pool_vector3_array_read_access) ->void */
 
@@ -7002,7 +7442,9 @@ func (gdt *PoolVector3ArrayWriteAccess) Ptr() Vector3 {
 }
 
 /* Setter Method: godot_pool_vector3_array_write_access_operator_assign -> void */
-func (gdt *PoolVector3ArrayWriteAccess) OperatorAssign(p_other PoolVector3ArrayWriteAccess) {
+func (gdt *PoolVector3ArrayWriteAccess) OperatorAssign(
+	p_other PoolVector3ArrayWriteAccess, /* godot_pool_vector3_array_write_access */
+) {
 
 	/* go_godot_pool_vector3_array_write_access_operator_assign(API_STRUCT, *godot_pool_vector3_array_write_access) ->void */
 
@@ -7034,7 +7476,9 @@ func (gdt *PoolVector3ArrayWriteAccess) Destroy() {
 
 type Quat C.godot_quat
 
-func NewQuat(p_x float32, p_y float32, p_z float32, p_w float32) Quat {
+func NewQuat(
+	p_x float32 /* else case */, p_y float32 /* else case */, p_z float32 /* else case */, p_w float32, /* else case */
+) Quat {
 	dest := Quat{}
 
 	api := CoreApi
@@ -7063,7 +7507,9 @@ func NewQuat(p_x float32, p_y float32, p_z float32, p_w float32) Quat {
 	return dest
 }
 
-func NewQuatWithAxisAngle(p_axis Vector3, p_angle float32) Quat {
+func NewQuatWithAxisAngle(
+	p_axis Vector3 /* godot_vector3 */, p_angle float32, /* else case */
+) Quat {
 	dest := Quat{}
 
 	api := CoreApi
@@ -7086,7 +7532,9 @@ func NewQuatWithAxisAngle(p_axis Vector3, p_angle float32) Quat {
 	return dest
 }
 
-func NewQuatWithBasis(p_basis Basis) Quat {
+func NewQuatWithBasis(
+	p_basis Basis, /* godot_basis */
+) Quat {
 	dest := Quat{}
 
 	api := Core11Api
@@ -7106,7 +7554,9 @@ func NewQuatWithBasis(p_basis Basis) Quat {
 	return dest
 }
 
-func NewQuatWithEuler(p_euler Vector3) Quat {
+func NewQuatWithEuler(
+	p_euler Vector3, /* godot_vector3 */
+) Quat {
 	dest := Quat{}
 
 	api := Core11Api
@@ -7143,7 +7593,9 @@ func (gdt *Quat) GetX() float32 {
 }
 
 /* Setter Method: godot_quat_set_x -> void */
-func (gdt *Quat) SetX(val float32) {
+func (gdt *Quat) SetX(
+	val float32, /* else case */
+) {
 
 	/* go_godot_quat_set_x(API_STRUCT,godot_real) ->void */
 
@@ -7176,7 +7628,9 @@ func (gdt *Quat) GetY() float32 {
 }
 
 /* Setter Method: godot_quat_set_y -> void */
-func (gdt *Quat) SetY(val float32) {
+func (gdt *Quat) SetY(
+	val float32, /* else case */
+) {
 
 	/* go_godot_quat_set_y(API_STRUCT,godot_real) ->void */
 
@@ -7209,7 +7663,9 @@ func (gdt *Quat) GetZ() float32 {
 }
 
 /* Setter Method: godot_quat_set_z -> void */
-func (gdt *Quat) SetZ(val float32) {
+func (gdt *Quat) SetZ(
+	val float32, /* else case */
+) {
 
 	/* go_godot_quat_set_z(API_STRUCT,godot_real) ->void */
 
@@ -7242,7 +7698,9 @@ func (gdt *Quat) GetW() float32 {
 }
 
 /* Setter Method: godot_quat_set_w -> void */
-func (gdt *Quat) SetW(val float32) {
+func (gdt *Quat) SetW(
+	val float32, /* else case */
+) {
 
 	/* go_godot_quat_set_w(API_STRUCT,godot_real) ->void */
 
@@ -7355,7 +7813,9 @@ func (gdt *Quat) Inverse() Quat {
 }
 
 /* Getter Method: godot_quat_dot -> godot_real */
-func (gdt *Quat) Dot(p_b Quat) float32 {
+func (gdt *Quat) Dot(
+	p_b Quat, /* godot_quat */
+) float32 {
 
 	/* go_godot_quat_dot(API_STRUCT, *godot_quat) ->godot_real */
 
@@ -7374,7 +7834,9 @@ func (gdt *Quat) Dot(p_b Quat) float32 {
 }
 
 /* Getter Method: godot_quat_xform -> godot_vector3 */
-func (gdt *Quat) Xform(p_v Vector3) Vector3 {
+func (gdt *Quat) Xform(
+	p_v Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_quat_xform(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -7393,7 +7855,9 @@ func (gdt *Quat) Xform(p_v Vector3) Vector3 {
 }
 
 /* Getter Method: godot_quat_slerp -> godot_quat */
-func (gdt *Quat) Slerp(p_b Quat, p_t float32) Quat {
+func (gdt *Quat) Slerp(
+	p_b Quat /* godot_quat */, p_t float32, /* else case */
+) Quat {
 
 	/* go_godot_quat_slerp(API_STRUCT, *godot_quat,godot_real) ->godot_quat */
 
@@ -7415,7 +7879,9 @@ func (gdt *Quat) Slerp(p_b Quat, p_t float32) Quat {
 }
 
 /* Getter Method: godot_quat_slerpni -> godot_quat */
-func (gdt *Quat) Slerpni(p_b Quat, p_t float32) Quat {
+func (gdt *Quat) Slerpni(
+	p_b Quat /* godot_quat */, p_t float32, /* else case */
+) Quat {
 
 	/* go_godot_quat_slerpni(API_STRUCT, *godot_quat,godot_real) ->godot_quat */
 
@@ -7437,7 +7903,9 @@ func (gdt *Quat) Slerpni(p_b Quat, p_t float32) Quat {
 }
 
 /* Getter Method: godot_quat_cubic_slerp -> godot_quat */
-func (gdt *Quat) CubicSlerp(p_b Quat, p_pre_a Quat, p_post_b Quat, p_t float32) Quat {
+func (gdt *Quat) CubicSlerp(
+	p_b Quat /* godot_quat */, p_pre_a Quat /* godot_quat */, p_post_b Quat /* godot_quat */, p_t float32, /* else case */
+) Quat {
 
 	/* go_godot_quat_cubic_slerp(API_STRUCT, *godot_quat, *godot_quat, *godot_quat,godot_real) ->godot_quat */
 
@@ -7465,7 +7933,9 @@ func (gdt *Quat) CubicSlerp(p_b Quat, p_pre_a Quat, p_post_b Quat, p_t float32) 
 }
 
 /* Getter Method: godot_quat_operator_multiply -> godot_quat */
-func (gdt *Quat) OperatorMultiply(p_b float32) Quat {
+func (gdt *Quat) OperatorMultiply(
+	p_b float32, /* else case */
+) Quat {
 
 	/* go_godot_quat_operator_multiply(API_STRUCT,godot_real) ->godot_quat */
 
@@ -7484,7 +7954,9 @@ func (gdt *Quat) OperatorMultiply(p_b float32) Quat {
 }
 
 /* Getter Method: godot_quat_operator_add -> godot_quat */
-func (gdt *Quat) OperatorAdd(p_b Quat) Quat {
+func (gdt *Quat) OperatorAdd(
+	p_b Quat, /* godot_quat */
+) Quat {
 
 	/* go_godot_quat_operator_add(API_STRUCT, *godot_quat) ->godot_quat */
 
@@ -7503,7 +7975,9 @@ func (gdt *Quat) OperatorAdd(p_b Quat) Quat {
 }
 
 /* Getter Method: godot_quat_operator_subtract -> godot_quat */
-func (gdt *Quat) OperatorSubtract(p_b Quat) Quat {
+func (gdt *Quat) OperatorSubtract(
+	p_b Quat, /* godot_quat */
+) Quat {
 
 	/* go_godot_quat_operator_subtract(API_STRUCT, *godot_quat) ->godot_quat */
 
@@ -7522,7 +7996,9 @@ func (gdt *Quat) OperatorSubtract(p_b Quat) Quat {
 }
 
 /* Getter Method: godot_quat_operator_divide -> godot_quat */
-func (gdt *Quat) OperatorDivide(p_b float32) Quat {
+func (gdt *Quat) OperatorDivide(
+	p_b float32, /* else case */
+) Quat {
 
 	/* go_godot_quat_operator_divide(API_STRUCT,godot_real) ->godot_quat */
 
@@ -7541,7 +8017,9 @@ func (gdt *Quat) OperatorDivide(p_b float32) Quat {
 }
 
 /* Getter Method: godot_quat_operator_equal -> godot_bool */
-func (gdt *Quat) OperatorEqual(p_b Quat) bool {
+func (gdt *Quat) OperatorEqual(
+	p_b Quat, /* godot_quat */
+) bool {
 
 	/* go_godot_quat_operator_equal(API_STRUCT, *godot_quat) ->godot_bool */
 
@@ -7576,7 +8054,9 @@ func (gdt *Quat) OperatorNeg() Quat {
 }
 
 /* Setter Method: godot_quat_set_axis_angle -> void */
-func (gdt *Quat) SetAxisAngle(p_axis Vector3, p_angle float32) {
+func (gdt *Quat) SetAxisAngle(
+	p_axis Vector3 /* godot_vector3 */, p_angle float32, /* else case */
+) {
 
 	/* go_godot_quat_set_axis_angle(API_STRUCT, *godot_vector3,godot_real) ->void */
 
@@ -7597,7 +8077,9 @@ func (gdt *Quat) SetAxisAngle(p_axis Vector3, p_angle float32) {
 
 type Rect2 C.godot_rect2
 
-func NewRect2WithPositionAndSize(p_pos Vector2, p_size Vector2) Rect2 {
+func NewRect2WithPositionAndSize(
+	p_pos Vector2 /* godot_vector2 */, p_size Vector2, /* godot_vector2 */
+) Rect2 {
 	dest := Rect2{}
 
 	api := CoreApi
@@ -7620,7 +8102,9 @@ func NewRect2WithPositionAndSize(p_pos Vector2, p_size Vector2) Rect2 {
 	return dest
 }
 
-func NewRect2(p_x float32, p_y float32, p_width float32, p_height float32) Rect2 {
+func NewRect2(
+	p_x float32 /* else case */, p_y float32 /* else case */, p_width float32 /* else case */, p_height float32, /* else case */
+) Rect2 {
 	dest := Rect2{}
 
 	api := CoreApi
@@ -7682,7 +8166,9 @@ func (gdt *Rect2) GetArea() float32 {
 }
 
 /* Getter Method: godot_rect2_intersects -> godot_bool */
-func (gdt *Rect2) Intersects(p_b Rect2) bool {
+func (gdt *Rect2) Intersects(
+	p_b Rect2, /* godot_rect2 */
+) bool {
 
 	/* go_godot_rect2_intersects(API_STRUCT, *godot_rect2) ->godot_bool */
 
@@ -7701,7 +8187,9 @@ func (gdt *Rect2) Intersects(p_b Rect2) bool {
 }
 
 /* Getter Method: godot_rect2_encloses -> godot_bool */
-func (gdt *Rect2) Encloses(p_b Rect2) bool {
+func (gdt *Rect2) Encloses(
+	p_b Rect2, /* godot_rect2 */
+) bool {
 
 	/* go_godot_rect2_encloses(API_STRUCT, *godot_rect2) ->godot_bool */
 
@@ -7736,7 +8224,9 @@ func (gdt *Rect2) HasNoArea() bool {
 }
 
 /* Getter Method: godot_rect2_clip -> godot_rect2 */
-func (gdt *Rect2) Clip(p_b Rect2) Rect2 {
+func (gdt *Rect2) Clip(
+	p_b Rect2, /* godot_rect2 */
+) Rect2 {
 
 	/* go_godot_rect2_clip(API_STRUCT, *godot_rect2) ->godot_rect2 */
 
@@ -7755,7 +8245,9 @@ func (gdt *Rect2) Clip(p_b Rect2) Rect2 {
 }
 
 /* Getter Method: godot_rect2_merge -> godot_rect2 */
-func (gdt *Rect2) Merge(p_b Rect2) Rect2 {
+func (gdt *Rect2) Merge(
+	p_b Rect2, /* godot_rect2 */
+) Rect2 {
 
 	/* go_godot_rect2_merge(API_STRUCT, *godot_rect2) ->godot_rect2 */
 
@@ -7774,7 +8266,9 @@ func (gdt *Rect2) Merge(p_b Rect2) Rect2 {
 }
 
 /* Getter Method: godot_rect2_has_point -> godot_bool */
-func (gdt *Rect2) HasPoint(p_point Vector2) bool {
+func (gdt *Rect2) HasPoint(
+	p_point Vector2, /* godot_vector2 */
+) bool {
 
 	/* go_godot_rect2_has_point(API_STRUCT, *godot_vector2) ->godot_bool */
 
@@ -7793,7 +8287,9 @@ func (gdt *Rect2) HasPoint(p_point Vector2) bool {
 }
 
 /* Getter Method: godot_rect2_grow -> godot_rect2 */
-func (gdt *Rect2) Grow(p_by float32) Rect2 {
+func (gdt *Rect2) Grow(
+	p_by float32, /* else case */
+) Rect2 {
 
 	/* go_godot_rect2_grow(API_STRUCT,godot_real) ->godot_rect2 */
 
@@ -7812,7 +8308,9 @@ func (gdt *Rect2) Grow(p_by float32) Rect2 {
 }
 
 /* Getter Method: godot_rect2_expand -> godot_rect2 */
-func (gdt *Rect2) Expand(p_to Vector2) Rect2 {
+func (gdt *Rect2) Expand(
+	p_to Vector2, /* godot_vector2 */
+) Rect2 {
 
 	/* go_godot_rect2_expand(API_STRUCT, *godot_vector2) ->godot_rect2 */
 
@@ -7831,7 +8329,9 @@ func (gdt *Rect2) Expand(p_to Vector2) Rect2 {
 }
 
 /* Getter Method: godot_rect2_operator_equal -> godot_bool */
-func (gdt *Rect2) OperatorEqual(p_b Rect2) bool {
+func (gdt *Rect2) OperatorEqual(
+	p_b Rect2, /* godot_rect2 */
+) bool {
 
 	/* go_godot_rect2_operator_equal(API_STRUCT, *godot_rect2) ->godot_bool */
 
@@ -7882,7 +8382,9 @@ func (gdt *Rect2) GetSize() Vector2 {
 }
 
 /* Setter Method: godot_rect2_set_position -> void */
-func (gdt *Rect2) SetPosition(p_pos Vector2) {
+func (gdt *Rect2) SetPosition(
+	p_pos Vector2, /* godot_vector2 */
+) {
 
 	/* go_godot_rect2_set_position(API_STRUCT, *godot_vector2) ->void */
 
@@ -7899,7 +8401,9 @@ func (gdt *Rect2) SetPosition(p_pos Vector2) {
 }
 
 /* Setter Method: godot_rect2_set_size -> void */
-func (gdt *Rect2) SetSize(p_size Vector2) {
+func (gdt *Rect2) SetSize(
+	p_size Vector2, /* godot_vector2 */
+) {
 
 	/* go_godot_rect2_set_size(API_STRUCT, *godot_vector2) ->void */
 
@@ -7916,7 +8420,9 @@ func (gdt *Rect2) SetSize(p_size Vector2) {
 }
 
 /* Getter Method: godot_rect2_grow_individual -> godot_rect2 */
-func (gdt *Rect2) GrowIndividual(p_left float32, p_top float32, p_right float32, p_bottom float32) Rect2 {
+func (gdt *Rect2) GrowIndividual(
+	p_left float32 /* else case */, p_top float32 /* else case */, p_right float32 /* else case */, p_bottom float32, /* else case */
+) Rect2 {
 
 	/* go_godot_rect2_grow_individual(API_STRUCT,godot_real,godot_real,godot_real,godot_real) ->godot_rect2 */
 
@@ -7944,7 +8450,9 @@ func (gdt *Rect2) GrowIndividual(p_left float32, p_top float32, p_right float32,
 }
 
 /* Getter Method: godot_rect2_grow_margin -> godot_rect2 */
-func (gdt *Rect2) GrowMargin(p_margin int32, p_by float32) Rect2 {
+func (gdt *Rect2) GrowMargin(
+	p_margin int32 /* else case */, p_by float32, /* else case */
+) Rect2 {
 
 	/* go_godot_rect2_grow_margin(API_STRUCT,godot_int,godot_real) ->godot_rect2 */
 
@@ -8000,7 +8508,9 @@ func NewRID() RID {
 	return dest
 }
 
-func NewRIDWithResource(p_from *GodotObject) RID {
+func NewRIDWithResource(
+	p_from *GodotObject,
+) RID {
 	dest := RID{}
 
 	api := CoreApi
@@ -8037,7 +8547,9 @@ func (gdt *RID) GetId() int32 {
 }
 
 /* Getter Method: godot_rid_operator_equal -> godot_bool */
-func (gdt *RID) OperatorEqual(p_b RID) bool {
+func (gdt *RID) OperatorEqual(
+	p_b RID, /* godot_rid */
+) bool {
 
 	/* go_godot_rid_operator_equal(API_STRUCT, *godot_rid) ->godot_bool */
 
@@ -8056,7 +8568,9 @@ func (gdt *RID) OperatorEqual(p_b RID) bool {
 }
 
 /* Getter Method: godot_rid_operator_less -> godot_bool */
-func (gdt *RID) OperatorLess(p_b RID) bool {
+func (gdt *RID) OperatorLess(
+	p_b RID, /* godot_rid */
+) bool {
 
 	/* go_godot_rid_operator_less(API_STRUCT, *godot_rid) ->godot_bool */
 
@@ -8141,7 +8655,9 @@ func NewString() String {
 	return dest
 }
 
-func NewStringCopy(p_src String) String {
+func NewStringCopy(
+	p_src String, /* godot_string */
+) String {
 	dest := String{}
 
 	api := CoreApi
@@ -8161,7 +8677,9 @@ func NewStringCopy(p_src String) String {
 	return dest
 }
 
-func NewStringWithWideString(p_contents int32, p_size int32) String {
+func NewStringWithWideString(
+	p_contents int32 /* wchar_t */, p_size int32, /* else case */
+) String {
 	dest := String{}
 
 	api := CoreApi
@@ -8185,7 +8703,9 @@ func NewStringWithWideString(p_contents int32, p_size int32) String {
 }
 
 /* Getter Method: godot_string_operator_index -> wchar_t */
-func (gdt *String) OperatorIndex(p_idx int32) int32 {
+func (gdt *String) OperatorIndex(
+	p_idx int32, /* else case */
+) int32 {
 
 	/* go_godot_string_operator_index(API_STRUCT,godot_int) -> *int32 */
 
@@ -8204,7 +8724,9 @@ func (gdt *String) OperatorIndex(p_idx int32) int32 {
 }
 
 /* Getter Method: godot_string_operator_index_const -> wchar_t */
-func (gdt *String) OperatorIndexConst(p_idx int32) int32 {
+func (gdt *String) OperatorIndexConst(
+	p_idx int32, /* else case */
+) int32 {
 
 	/* go_godot_string_operator_index_const(API_STRUCT,godot_int) ->wchar_t */
 
@@ -8239,7 +8761,9 @@ func (gdt *String) WideStr() int32 {
 }
 
 /* Getter Method: godot_string_operator_equal -> godot_bool */
-func (gdt *String) OperatorEqual(p_b String) bool {
+func (gdt *String) OperatorEqual(
+	p_b String, /* godot_string */
+) bool {
 
 	/* go_godot_string_operator_equal(API_STRUCT, *godot_string) ->godot_bool */
 
@@ -8258,7 +8782,9 @@ func (gdt *String) OperatorEqual(p_b String) bool {
 }
 
 /* Getter Method: godot_string_operator_less -> godot_bool */
-func (gdt *String) OperatorLess(p_b String) bool {
+func (gdt *String) OperatorLess(
+	p_b String, /* godot_string */
+) bool {
 
 	/* go_godot_string_operator_less(API_STRUCT, *godot_string) ->godot_bool */
 
@@ -8277,7 +8803,9 @@ func (gdt *String) OperatorLess(p_b String) bool {
 }
 
 /* Getter Method: godot_string_operator_plus -> godot_string */
-func (gdt *String) OperatorPlus(p_b String) String {
+func (gdt *String) OperatorPlus(
+	p_b String, /* godot_string */
+) String {
 
 	/* go_godot_string_operator_plus(API_STRUCT, *godot_string) ->godot_string */
 
@@ -8312,7 +8840,9 @@ func (gdt *String) Length() int32 {
 }
 
 /* Getter Method: godot_string_begins_with -> godot_bool */
-func (gdt *String) BeginsWith(p_string String) bool {
+func (gdt *String) BeginsWith(
+	p_string String, /* godot_string */
+) bool {
 
 	/* go_godot_string_begins_with(API_STRUCT, *godot_string) ->godot_bool */
 
@@ -8347,7 +8877,9 @@ func (gdt *String) Bigrams() Array {
 }
 
 /* Getter Method: godot_string_ends_with -> godot_bool */
-func (gdt *String) EndsWith(p_string String) bool {
+func (gdt *String) EndsWith(
+	p_string String, /* godot_string */
+) bool {
 
 	/* go_godot_string_ends_with(API_STRUCT, *godot_string) ->godot_bool */
 
@@ -8366,7 +8898,9 @@ func (gdt *String) EndsWith(p_string String) bool {
 }
 
 /* Getter Method: godot_string_find -> godot_int */
-func (gdt *String) Find(p_what String) int32 {
+func (gdt *String) Find(
+	p_what String, /* else case */
+) int32 {
 
 	/* go_godot_string_find(API_STRUCT,godot_string) ->godot_int */
 
@@ -8385,7 +8919,9 @@ func (gdt *String) Find(p_what String) int32 {
 }
 
 /* Getter Method: godot_string_find_from -> godot_int */
-func (gdt *String) FindFrom(p_what String, p_from int32) int32 {
+func (gdt *String) FindFrom(
+	p_what String /* else case */, p_from int32, /* else case */
+) int32 {
 
 	/* go_godot_string_find_from(API_STRUCT,godot_string,godot_int) ->godot_int */
 
@@ -8407,7 +8943,9 @@ func (gdt *String) FindFrom(p_what String, p_from int32) int32 {
 }
 
 /* Getter Method: godot_string_findmk -> godot_int */
-func (gdt *String) Findmk(p_keys Array) int32 {
+func (gdt *String) Findmk(
+	p_keys Array, /* godot_array */
+) int32 {
 
 	/* go_godot_string_findmk(API_STRUCT, *godot_array) ->godot_int */
 
@@ -8426,7 +8964,9 @@ func (gdt *String) Findmk(p_keys Array) int32 {
 }
 
 /* Getter Method: godot_string_findmk_from -> godot_int */
-func (gdt *String) FindmkFrom(p_keys Array, p_from int32) int32 {
+func (gdt *String) FindmkFrom(
+	p_keys Array /* godot_array */, p_from int32, /* else case */
+) int32 {
 
 	/* go_godot_string_findmk_from(API_STRUCT, *godot_array,godot_int) ->godot_int */
 
@@ -8448,7 +8988,9 @@ func (gdt *String) FindmkFrom(p_keys Array, p_from int32) int32 {
 }
 
 /* Getter Method: godot_string_findn -> godot_int */
-func (gdt *String) Findn(p_what String) int32 {
+func (gdt *String) Findn(
+	p_what String, /* else case */
+) int32 {
 
 	/* go_godot_string_findn(API_STRUCT,godot_string) ->godot_int */
 
@@ -8467,7 +9009,9 @@ func (gdt *String) Findn(p_what String) int32 {
 }
 
 /* Getter Method: godot_string_findn_from -> godot_int */
-func (gdt *String) FindnFrom(p_what String, p_from int32) int32 {
+func (gdt *String) FindnFrom(
+	p_what String /* else case */, p_from int32, /* else case */
+) int32 {
 
 	/* go_godot_string_findn_from(API_STRUCT,godot_string,godot_int) ->godot_int */
 
@@ -8489,7 +9033,9 @@ func (gdt *String) FindnFrom(p_what String, p_from int32) int32 {
 }
 
 /* Getter Method: godot_string_find_last -> godot_int */
-func (gdt *String) FindLast(p_what String) int32 {
+func (gdt *String) FindLast(
+	p_what String, /* else case */
+) int32 {
 
 	/* go_godot_string_find_last(API_STRUCT,godot_string) ->godot_int */
 
@@ -8508,7 +9054,9 @@ func (gdt *String) FindLast(p_what String) int32 {
 }
 
 /* Getter Method: godot_string_format -> godot_string */
-func (gdt *String) Format(p_values Variant) String {
+func (gdt *String) Format(
+	p_values Variant, /* godot_variant */
+) String {
 
 	/* go_godot_string_format(API_STRUCT, *godot_variant) ->godot_string */
 
@@ -8559,7 +9107,9 @@ func (gdt *String) HexToIntWithoutPrefix() int32 {
 }
 
 /* Getter Method: godot_string_insert -> godot_string */
-func (gdt *String) Insert(p_at_pos int32, p_string String) String {
+func (gdt *String) Insert(
+	p_at_pos int32 /* else case */, p_string String, /* else case */
+) String {
 
 	/* go_godot_string_insert(API_STRUCT,godot_int,godot_string) ->godot_string */
 
@@ -8597,7 +9147,9 @@ func (gdt *String) IsNumeric() bool {
 }
 
 /* Getter Method: godot_string_is_subsequence_of -> godot_bool */
-func (gdt *String) IsSubsequenceOf(p_string String) bool {
+func (gdt *String) IsSubsequenceOf(
+	p_string String, /* godot_string */
+) bool {
 
 	/* go_godot_string_is_subsequence_of(API_STRUCT, *godot_string) ->godot_bool */
 
@@ -8616,7 +9168,9 @@ func (gdt *String) IsSubsequenceOf(p_string String) bool {
 }
 
 /* Getter Method: godot_string_is_subsequence_ofi -> godot_bool */
-func (gdt *String) IsSubsequenceOfi(p_string String) bool {
+func (gdt *String) IsSubsequenceOfi(
+	p_string String, /* godot_string */
+) bool {
 
 	/* go_godot_string_is_subsequence_ofi(API_STRUCT, *godot_string) ->godot_bool */
 
@@ -8635,7 +9189,9 @@ func (gdt *String) IsSubsequenceOfi(p_string String) bool {
 }
 
 /* Getter Method: godot_string_lpad -> godot_string */
-func (gdt *String) Lpad(p_min_length int32) String {
+func (gdt *String) Lpad(
+	p_min_length int32, /* else case */
+) String {
 
 	/* go_godot_string_lpad(API_STRUCT,godot_int) ->godot_string */
 
@@ -8654,7 +9210,9 @@ func (gdt *String) Lpad(p_min_length int32) String {
 }
 
 /* Getter Method: godot_string_lpad_with_custom_character -> godot_string */
-func (gdt *String) LpadWithCustomCharacter(p_min_length int32, p_character String) String {
+func (gdt *String) LpadWithCustomCharacter(
+	p_min_length int32 /* else case */, p_character String, /* godot_string */
+) String {
 
 	/* go_godot_string_lpad_with_custom_character(API_STRUCT,godot_int, *godot_string) ->godot_string */
 
@@ -8676,7 +9234,9 @@ func (gdt *String) LpadWithCustomCharacter(p_min_length int32, p_character Strin
 }
 
 /* Getter Method: godot_string_match -> godot_bool */
-func (gdt *String) Match(p_wildcard String) bool {
+func (gdt *String) Match(
+	p_wildcard String, /* godot_string */
+) bool {
 
 	/* go_godot_string_match(API_STRUCT, *godot_string) ->godot_bool */
 
@@ -8695,7 +9255,9 @@ func (gdt *String) Match(p_wildcard String) bool {
 }
 
 /* Getter Method: godot_string_matchn -> godot_bool */
-func (gdt *String) Matchn(p_wildcard String) bool {
+func (gdt *String) Matchn(
+	p_wildcard String, /* godot_string */
+) bool {
 
 	/* go_godot_string_matchn(API_STRUCT, *godot_string) ->godot_bool */
 
@@ -8714,7 +9276,9 @@ func (gdt *String) Matchn(p_wildcard String) bool {
 }
 
 /* Getter Method: godot_string_pad_decimals -> godot_string */
-func (gdt *String) PadDecimals(p_digits int32) String {
+func (gdt *String) PadDecimals(
+	p_digits int32, /* else case */
+) String {
 
 	/* go_godot_string_pad_decimals(API_STRUCT,godot_int) ->godot_string */
 
@@ -8733,7 +9297,9 @@ func (gdt *String) PadDecimals(p_digits int32) String {
 }
 
 /* Getter Method: godot_string_pad_zeros -> godot_string */
-func (gdt *String) PadZeros(p_digits int32) String {
+func (gdt *String) PadZeros(
+	p_digits int32, /* else case */
+) String {
 
 	/* go_godot_string_pad_zeros(API_STRUCT,godot_int) ->godot_string */
 
@@ -8752,7 +9318,9 @@ func (gdt *String) PadZeros(p_digits int32) String {
 }
 
 /* Getter Method: godot_string_replace_first -> godot_string */
-func (gdt *String) ReplaceFirst(p_key String, p_with String) String {
+func (gdt *String) ReplaceFirst(
+	p_key String /* else case */, p_with String, /* else case */
+) String {
 
 	/* go_godot_string_replace_first(API_STRUCT,godot_string,godot_string) ->godot_string */
 
@@ -8774,7 +9342,9 @@ func (gdt *String) ReplaceFirst(p_key String, p_with String) String {
 }
 
 /* Getter Method: godot_string_replace -> godot_string */
-func (gdt *String) Replace(p_key String, p_with String) String {
+func (gdt *String) Replace(
+	p_key String /* else case */, p_with String, /* else case */
+) String {
 
 	/* go_godot_string_replace(API_STRUCT,godot_string,godot_string) ->godot_string */
 
@@ -8796,7 +9366,9 @@ func (gdt *String) Replace(p_key String, p_with String) String {
 }
 
 /* Getter Method: godot_string_replacen -> godot_string */
-func (gdt *String) Replacen(p_key String, p_with String) String {
+func (gdt *String) Replacen(
+	p_key String /* else case */, p_with String, /* else case */
+) String {
 
 	/* go_godot_string_replacen(API_STRUCT,godot_string,godot_string) ->godot_string */
 
@@ -8818,7 +9390,9 @@ func (gdt *String) Replacen(p_key String, p_with String) String {
 }
 
 /* Getter Method: godot_string_rfind -> godot_int */
-func (gdt *String) Rfind(p_what String) int32 {
+func (gdt *String) Rfind(
+	p_what String, /* else case */
+) int32 {
 
 	/* go_godot_string_rfind(API_STRUCT,godot_string) ->godot_int */
 
@@ -8837,7 +9411,9 @@ func (gdt *String) Rfind(p_what String) int32 {
 }
 
 /* Getter Method: godot_string_rfindn -> godot_int */
-func (gdt *String) Rfindn(p_what String) int32 {
+func (gdt *String) Rfindn(
+	p_what String, /* else case */
+) int32 {
 
 	/* go_godot_string_rfindn(API_STRUCT,godot_string) ->godot_int */
 
@@ -8856,7 +9432,9 @@ func (gdt *String) Rfindn(p_what String) int32 {
 }
 
 /* Getter Method: godot_string_rfind_from -> godot_int */
-func (gdt *String) RfindFrom(p_what String, p_from int32) int32 {
+func (gdt *String) RfindFrom(
+	p_what String /* else case */, p_from int32, /* else case */
+) int32 {
 
 	/* go_godot_string_rfind_from(API_STRUCT,godot_string,godot_int) ->godot_int */
 
@@ -8878,7 +9456,9 @@ func (gdt *String) RfindFrom(p_what String, p_from int32) int32 {
 }
 
 /* Getter Method: godot_string_rfindn_from -> godot_int */
-func (gdt *String) RfindnFrom(p_what String, p_from int32) int32 {
+func (gdt *String) RfindnFrom(
+	p_what String /* else case */, p_from int32, /* else case */
+) int32 {
 
 	/* go_godot_string_rfindn_from(API_STRUCT,godot_string,godot_int) ->godot_int */
 
@@ -8900,7 +9480,9 @@ func (gdt *String) RfindnFrom(p_what String, p_from int32) int32 {
 }
 
 /* Getter Method: godot_string_rpad -> godot_string */
-func (gdt *String) Rpad(p_min_length int32) String {
+func (gdt *String) Rpad(
+	p_min_length int32, /* else case */
+) String {
 
 	/* go_godot_string_rpad(API_STRUCT,godot_int) ->godot_string */
 
@@ -8919,7 +9501,9 @@ func (gdt *String) Rpad(p_min_length int32) String {
 }
 
 /* Getter Method: godot_string_rpad_with_custom_character -> godot_string */
-func (gdt *String) RpadWithCustomCharacter(p_min_length int32, p_character String) String {
+func (gdt *String) RpadWithCustomCharacter(
+	p_min_length int32 /* else case */, p_character String, /* godot_string */
+) String {
 
 	/* go_godot_string_rpad_with_custom_character(API_STRUCT,godot_int, *godot_string) ->godot_string */
 
@@ -8941,7 +9525,9 @@ func (gdt *String) RpadWithCustomCharacter(p_min_length int32, p_character Strin
 }
 
 /* Getter Method: godot_string_similarity -> godot_real */
-func (gdt *String) Similarity(p_string String) float32 {
+func (gdt *String) Similarity(
+	p_string String, /* godot_string */
+) float32 {
 
 	/* go_godot_string_similarity(API_STRUCT, *godot_string) ->godot_real */
 
@@ -8960,7 +9546,9 @@ func (gdt *String) Similarity(p_string String) float32 {
 }
 
 /* Getter Method: godot_string_sprintf -> godot_string */
-func (gdt *String) Sprintf(p_values Array, p_error bool) String {
+func (gdt *String) Sprintf(
+	p_values Array /* godot_array */, p_error bool, /* godot_bool */
+) String {
 
 	/* go_godot_string_sprintf(API_STRUCT, *godot_array, *godot_bool) ->godot_string */
 
@@ -8982,7 +9570,9 @@ func (gdt *String) Sprintf(p_values Array, p_error bool) String {
 }
 
 /* Getter Method: godot_string_substr -> godot_string */
-func (gdt *String) Substr(p_from int32, p_chars int32) String {
+func (gdt *String) Substr(
+	p_from int32 /* else case */, p_chars int32, /* else case */
+) String {
 
 	/* go_godot_string_substr(API_STRUCT,godot_int,godot_int) ->godot_string */
 
@@ -9148,7 +9738,9 @@ func (gdt *String) ToInt64() int64 {
 }
 
 /* Getter Method: godot_string_get_slice_count -> godot_int */
-func (gdt *String) GetSliceCount(p_splitter String) int32 {
+func (gdt *String) GetSliceCount(
+	p_splitter String, /* else case */
+) int32 {
 
 	/* go_godot_string_get_slice_count(API_STRUCT,godot_string) ->godot_int */
 
@@ -9167,7 +9759,9 @@ func (gdt *String) GetSliceCount(p_splitter String) int32 {
 }
 
 /* Getter Method: godot_string_get_slice -> godot_string */
-func (gdt *String) GetSlice(p_splitter String, p_slice int32) String {
+func (gdt *String) GetSlice(
+	p_splitter String /* else case */, p_slice int32, /* else case */
+) String {
 
 	/* go_godot_string_get_slice(API_STRUCT,godot_string,godot_int) ->godot_string */
 
@@ -9189,7 +9783,9 @@ func (gdt *String) GetSlice(p_splitter String, p_slice int32) String {
 }
 
 /* Getter Method: godot_string_split -> godot_array */
-func (gdt *String) Split(p_splitter String) Array {
+func (gdt *String) Split(
+	p_splitter String, /* godot_string */
+) Array {
 
 	/* go_godot_string_split(API_STRUCT, *godot_string) ->godot_array */
 
@@ -9208,7 +9804,9 @@ func (gdt *String) Split(p_splitter String) Array {
 }
 
 /* Getter Method: godot_string_split_allow_empty -> godot_array */
-func (gdt *String) SplitAllowEmpty(p_splitter String) Array {
+func (gdt *String) SplitAllowEmpty(
+	p_splitter String, /* godot_string */
+) Array {
 
 	/* go_godot_string_split_allow_empty(API_STRUCT, *godot_string) ->godot_array */
 
@@ -9227,7 +9825,9 @@ func (gdt *String) SplitAllowEmpty(p_splitter String) Array {
 }
 
 /* Getter Method: godot_string_split_floats -> godot_array */
-func (gdt *String) SplitFloats(p_splitter String) Array {
+func (gdt *String) SplitFloats(
+	p_splitter String, /* godot_string */
+) Array {
 
 	/* go_godot_string_split_floats(API_STRUCT, *godot_string) ->godot_array */
 
@@ -9246,7 +9846,9 @@ func (gdt *String) SplitFloats(p_splitter String) Array {
 }
 
 /* Getter Method: godot_string_split_floats_allows_empty -> godot_array */
-func (gdt *String) SplitFloatsAllowsEmpty(p_splitter String) Array {
+func (gdt *String) SplitFloatsAllowsEmpty(
+	p_splitter String, /* godot_string */
+) Array {
 
 	/* go_godot_string_split_floats_allows_empty(API_STRUCT, *godot_string) ->godot_array */
 
@@ -9265,7 +9867,9 @@ func (gdt *String) SplitFloatsAllowsEmpty(p_splitter String) Array {
 }
 
 /* Getter Method: godot_string_split_floats_mk -> godot_array */
-func (gdt *String) SplitFloatsMk(p_splitters Array) Array {
+func (gdt *String) SplitFloatsMk(
+	p_splitters Array, /* godot_array */
+) Array {
 
 	/* go_godot_string_split_floats_mk(API_STRUCT, *godot_array) ->godot_array */
 
@@ -9284,7 +9888,9 @@ func (gdt *String) SplitFloatsMk(p_splitters Array) Array {
 }
 
 /* Getter Method: godot_string_split_floats_mk_allows_empty -> godot_array */
-func (gdt *String) SplitFloatsMkAllowsEmpty(p_splitters Array) Array {
+func (gdt *String) SplitFloatsMkAllowsEmpty(
+	p_splitters Array, /* godot_array */
+) Array {
 
 	/* go_godot_string_split_floats_mk_allows_empty(API_STRUCT, *godot_array) ->godot_array */
 
@@ -9303,7 +9909,9 @@ func (gdt *String) SplitFloatsMkAllowsEmpty(p_splitters Array) Array {
 }
 
 /* Getter Method: godot_string_split_ints -> godot_array */
-func (gdt *String) SplitInts(p_splitter String) Array {
+func (gdt *String) SplitInts(
+	p_splitter String, /* godot_string */
+) Array {
 
 	/* go_godot_string_split_ints(API_STRUCT, *godot_string) ->godot_array */
 
@@ -9322,7 +9930,9 @@ func (gdt *String) SplitInts(p_splitter String) Array {
 }
 
 /* Getter Method: godot_string_split_ints_allows_empty -> godot_array */
-func (gdt *String) SplitIntsAllowsEmpty(p_splitter String) Array {
+func (gdt *String) SplitIntsAllowsEmpty(
+	p_splitter String, /* godot_string */
+) Array {
 
 	/* go_godot_string_split_ints_allows_empty(API_STRUCT, *godot_string) ->godot_array */
 
@@ -9341,7 +9951,9 @@ func (gdt *String) SplitIntsAllowsEmpty(p_splitter String) Array {
 }
 
 /* Getter Method: godot_string_split_ints_mk -> godot_array */
-func (gdt *String) SplitIntsMk(p_splitters Array) Array {
+func (gdt *String) SplitIntsMk(
+	p_splitters Array, /* godot_array */
+) Array {
 
 	/* go_godot_string_split_ints_mk(API_STRUCT, *godot_array) ->godot_array */
 
@@ -9360,7 +9972,9 @@ func (gdt *String) SplitIntsMk(p_splitters Array) Array {
 }
 
 /* Getter Method: godot_string_split_ints_mk_allows_empty -> godot_array */
-func (gdt *String) SplitIntsMkAllowsEmpty(p_splitters Array) Array {
+func (gdt *String) SplitIntsMkAllowsEmpty(
+	p_splitters Array, /* godot_array */
+) Array {
 
 	/* go_godot_string_split_ints_mk_allows_empty(API_STRUCT, *godot_array) ->godot_array */
 
@@ -9459,7 +10073,9 @@ func (gdt *String) GetExtension() String {
 }
 
 /* Getter Method: godot_string_left -> godot_string */
-func (gdt *String) Left(p_pos int32) String {
+func (gdt *String) Left(
+	p_pos int32, /* else case */
+) String {
 
 	/* go_godot_string_left(API_STRUCT,godot_int) ->godot_string */
 
@@ -9478,7 +10094,9 @@ func (gdt *String) Left(p_pos int32) String {
 }
 
 /* Getter Method: godot_string_ord_at -> wchar_t */
-func (gdt *String) OrdAt(p_idx int32) int32 {
+func (gdt *String) OrdAt(
+	p_idx int32, /* else case */
+) int32 {
 
 	/* go_godot_string_ord_at(API_STRUCT,godot_int) ->wchar_t */
 
@@ -9497,7 +10115,9 @@ func (gdt *String) OrdAt(p_idx int32) int32 {
 }
 
 /* Getter Method: godot_string_plus_file -> godot_string */
-func (gdt *String) PlusFile(p_file String) String {
+func (gdt *String) PlusFile(
+	p_file String, /* godot_string */
+) String {
 
 	/* go_godot_string_plus_file(API_STRUCT, *godot_string) ->godot_string */
 
@@ -9516,7 +10136,9 @@ func (gdt *String) PlusFile(p_file String) String {
 }
 
 /* Getter Method: godot_string_right -> godot_string */
-func (gdt *String) Right(p_pos int32) String {
+func (gdt *String) Right(
+	p_pos int32, /* else case */
+) String {
 
 	/* go_godot_string_right(API_STRUCT,godot_int) ->godot_string */
 
@@ -9535,7 +10157,9 @@ func (gdt *String) Right(p_pos int32) String {
 }
 
 /* Getter Method: godot_string_strip_edges -> godot_string */
-func (gdt *String) StripEdges(p_left bool, p_right bool) String {
+func (gdt *String) StripEdges(
+	p_left bool /* else case */, p_right bool, /* else case */
+) String {
 
 	/* go_godot_string_strip_edges(API_STRUCT,godot_bool,godot_bool) ->godot_string */
 
@@ -9573,7 +10197,9 @@ func (gdt *String) StripEscapes() String {
 }
 
 /* Setter Method: godot_string_erase -> void */
-func (gdt *String) Erase(p_pos int32, p_chars int32) {
+func (gdt *String) Erase(
+	p_pos int32 /* else case */, p_chars int32, /* else case */
+) {
 
 	/* go_godot_string_erase(API_STRUCT,godot_int,godot_int) ->void */
 
@@ -9641,7 +10267,9 @@ func (gdt *String) Utf8() CharString {
 }
 
 /* Getter Method: godot_string_parse_utf8 -> godot_bool */
-func (gdt *String) ParseUtf8(p_utf8 string) bool {
+func (gdt *String) ParseUtf8(
+	p_utf8 string,
+) bool {
 
 	/* go_godot_string_parse_utf8(API_STRUCT, *char) ->godot_bool */
 
@@ -9661,7 +10289,9 @@ func (gdt *String) ParseUtf8(p_utf8 string) bool {
 }
 
 /* Getter Method: godot_string_parse_utf8_with_len -> godot_bool */
-func (gdt *String) ParseUtf8WithLen(p_utf8 string, p_len int32) bool {
+func (gdt *String) ParseUtf8WithLen(
+	p_utf8 string, p_len int32, /* else case */
+) bool {
 
 	/* go_godot_string_parse_utf8_with_len(API_STRUCT, *char,godot_int) ->godot_bool */
 
@@ -9860,7 +10490,9 @@ func (gdt *String) IsResourceFile() bool {
 }
 
 /* Getter Method: godot_string_path_to -> godot_string */
-func (gdt *String) PathTo(p_path String) String {
+func (gdt *String) PathTo(
+	p_path String, /* godot_string */
+) String {
 
 	/* go_godot_string_path_to(API_STRUCT, *godot_string) ->godot_string */
 
@@ -9879,7 +10511,9 @@ func (gdt *String) PathTo(p_path String) String {
 }
 
 /* Getter Method: godot_string_path_to_file -> godot_string */
-func (gdt *String) PathToFile(p_path String) String {
+func (gdt *String) PathToFile(
+	p_path String, /* godot_string */
+) String {
 
 	/* go_godot_string_path_to_file(API_STRUCT, *godot_string) ->godot_string */
 
@@ -10010,7 +10644,9 @@ func (gdt *String) JsonEscape() String {
 }
 
 /* Getter Method: godot_string_word_wrap -> godot_string */
-func (gdt *String) WordWrap(p_chars_per_line int32) String {
+func (gdt *String) WordWrap(
+	p_chars_per_line int32, /* else case */
+) String {
 
 	/* go_godot_string_word_wrap(API_STRUCT,godot_int) ->godot_string */
 
@@ -10125,7 +10761,9 @@ func (gdt *String) IsValidFloat() bool {
 }
 
 /* Getter Method: godot_string_is_valid_hex_number -> godot_bool */
-func (gdt *String) IsValidHexNumber(p_with_prefix bool) bool {
+func (gdt *String) IsValidHexNumber(
+	p_with_prefix bool, /* else case */
+) bool {
 
 	/* go_godot_string_is_valid_hex_number(API_STRUCT,godot_bool) ->godot_bool */
 
@@ -10238,7 +10876,9 @@ func (gdt *String) Dedent() String {
 }
 
 /* Getter Method: godot_string_trim_prefix -> godot_string */
-func (gdt *String) TrimPrefix(p_prefix String) String {
+func (gdt *String) TrimPrefix(
+	p_prefix String, /* godot_string */
+) String {
 
 	/* go_godot_string_trim_prefix(API_STRUCT, *godot_string) ->godot_string */
 
@@ -10257,7 +10897,9 @@ func (gdt *String) TrimPrefix(p_prefix String) String {
 }
 
 /* Getter Method: godot_string_trim_suffix -> godot_string */
-func (gdt *String) TrimSuffix(p_suffix String) String {
+func (gdt *String) TrimSuffix(
+	p_suffix String, /* godot_string */
+) String {
 
 	/* go_godot_string_trim_suffix(API_STRUCT, *godot_string) ->godot_string */
 
@@ -10276,7 +10918,9 @@ func (gdt *String) TrimSuffix(p_suffix String) String {
 }
 
 /* Getter Method: godot_string_rstrip -> godot_string */
-func (gdt *String) Rstrip(p_chars String) String {
+func (gdt *String) Rstrip(
+	p_chars String, /* godot_string */
+) String {
 
 	/* go_godot_string_rstrip(API_STRUCT, *godot_string) ->godot_string */
 
@@ -10295,7 +10939,9 @@ func (gdt *String) Rstrip(p_chars String) String {
 }
 
 /* Getter Method: godot_string_rsplit -> godot_pool_string_array */
-func (gdt *String) Rsplit(p_divisor String, p_allow_empty bool, p_maxsplit int32) PoolStringArray {
+func (gdt *String) Rsplit(
+	p_divisor String /* godot_string */, p_allow_empty bool /* else case */, p_maxsplit int32, /* else case */
+) PoolStringArray {
 
 	/* go_godot_string_rsplit(API_STRUCT, *godot_string,godot_bool,godot_int) ->godot_pool_string_array */
 
@@ -10320,7 +10966,9 @@ func (gdt *String) Rsplit(p_divisor String, p_allow_empty bool, p_maxsplit int32
 }
 
 /* Getter Method: godot_string_count -> godot_int */
-func (gdt *String) Count(p_what String, p_from int32, p_to int32) int32 {
+func (gdt *String) Count(
+	p_what String /* else case */, p_from int32 /* else case */, p_to int32, /* else case */
+) int32 {
 
 	/* go_godot_string_count(API_STRUCT,godot_string,godot_int,godot_int) ->godot_int */
 
@@ -10345,7 +10993,9 @@ func (gdt *String) Count(p_what String, p_from int32, p_to int32) int32 {
 }
 
 /* Getter Method: godot_string_countn -> godot_int */
-func (gdt *String) Countn(p_what String, p_from int32, p_to int32) int32 {
+func (gdt *String) Countn(
+	p_what String /* else case */, p_from int32 /* else case */, p_to int32, /* else case */
+) int32 {
 
 	/* go_godot_string_countn(API_STRUCT,godot_string,godot_int,godot_int) ->godot_int */
 
@@ -10371,7 +11021,9 @@ func (gdt *String) Countn(p_what String, p_from int32, p_to int32) int32 {
 
 type StringName C.godot_string_name
 
-func NewStringName(p_name String) StringName {
+func NewStringName(
+	p_name String, /* godot_string */
+) StringName {
 	dest := StringName{}
 
 	api := CoreApi
@@ -10391,7 +11043,9 @@ func NewStringName(p_name String) StringName {
 	return dest
 }
 
-func NewStringNameData(p_name string) StringName {
+func NewStringNameData(
+	p_name string,
+) StringName {
 	dest := StringName{}
 
 	api := CoreApi
@@ -10461,7 +11115,9 @@ func (gdt *StringName) GetDataUniquePointer() unsafe.Pointer {
 }
 
 /* Getter Method: godot_string_name_operator_equal -> godot_bool */
-func (gdt *StringName) OperatorEqual(p_other StringName) bool {
+func (gdt *StringName) OperatorEqual(
+	p_other StringName, /* godot_string_name */
+) bool {
 
 	/* go_godot_string_name_operator_equal(API_STRUCT, *godot_string_name) ->godot_bool */
 
@@ -10480,7 +11136,9 @@ func (gdt *StringName) OperatorEqual(p_other StringName) bool {
 }
 
 /* Getter Method: godot_string_name_operator_less -> godot_bool */
-func (gdt *StringName) OperatorLess(p_other StringName) bool {
+func (gdt *StringName) OperatorLess(
+	p_other StringName, /* godot_string_name */
+) bool {
 
 	/* go_godot_string_name_operator_less(API_STRUCT, *godot_string_name) ->godot_bool */
 
@@ -10514,7 +11172,9 @@ func (gdt *StringName) Destroy() {
 
 type Transform C.godot_transform
 
-func NewTransformWithAxisOrigin(p_x_axis Vector3, p_y_axis Vector3, p_z_axis Vector3, p_origin Vector3) Transform {
+func NewTransformWithAxisOrigin(
+	p_x_axis Vector3 /* godot_vector3 */, p_y_axis Vector3 /* godot_vector3 */, p_z_axis Vector3 /* godot_vector3 */, p_origin Vector3, /* godot_vector3 */
+) Transform {
 	dest := Transform{}
 
 	api := CoreApi
@@ -10543,7 +11203,9 @@ func NewTransformWithAxisOrigin(p_x_axis Vector3, p_y_axis Vector3, p_z_axis Vec
 	return dest
 }
 
-func NewTransform(p_basis Basis, p_origin Vector3) Transform {
+func NewTransform(
+	p_basis Basis /* godot_basis */, p_origin Vector3, /* godot_vector3 */
+) Transform {
 	dest := Transform{}
 
 	api := CoreApi
@@ -10583,7 +11245,9 @@ func NewTransformIdentity() Transform {
 	return dest
 }
 
-func NewTransformWithQuat(p_quat Quat) Transform {
+func NewTransformWithQuat(
+	p_quat Quat, /* godot_quat */
+) Transform {
 	dest := Transform{}
 
 	api := Core11Api
@@ -10620,7 +11284,9 @@ func (gdt *Transform) GetBasis() Basis {
 }
 
 /* Setter Method: godot_transform_set_basis -> void */
-func (gdt *Transform) SetBasis(p_v Basis) {
+func (gdt *Transform) SetBasis(
+	p_v Basis, /* godot_basis */
+) {
 
 	/* go_godot_transform_set_basis(API_STRUCT, *godot_basis) ->void */
 
@@ -10653,7 +11319,9 @@ func (gdt *Transform) GetOrigin() Vector3 {
 }
 
 /* Setter Method: godot_transform_set_origin -> void */
-func (gdt *Transform) SetOrigin(p_v Vector3) {
+func (gdt *Transform) SetOrigin(
+	p_v Vector3, /* godot_vector3 */
+) {
 
 	/* go_godot_transform_set_origin(API_STRUCT, *godot_vector3) ->void */
 
@@ -10734,7 +11402,9 @@ func (gdt *Transform) Orthonormalized() Transform {
 }
 
 /* Getter Method: godot_transform_rotated -> godot_transform */
-func (gdt *Transform) Rotated(p_axis Vector3, p_phi float32) Transform {
+func (gdt *Transform) Rotated(
+	p_axis Vector3 /* godot_vector3 */, p_phi float32, /* else case */
+) Transform {
 
 	/* go_godot_transform_rotated(API_STRUCT, *godot_vector3,godot_real) ->godot_transform */
 
@@ -10756,7 +11426,9 @@ func (gdt *Transform) Rotated(p_axis Vector3, p_phi float32) Transform {
 }
 
 /* Getter Method: godot_transform_scaled -> godot_transform */
-func (gdt *Transform) Scaled(p_scale Vector3) Transform {
+func (gdt *Transform) Scaled(
+	p_scale Vector3, /* godot_vector3 */
+) Transform {
 
 	/* go_godot_transform_scaled(API_STRUCT, *godot_vector3) ->godot_transform */
 
@@ -10775,7 +11447,9 @@ func (gdt *Transform) Scaled(p_scale Vector3) Transform {
 }
 
 /* Getter Method: godot_transform_translated -> godot_transform */
-func (gdt *Transform) Translated(p_ofs Vector3) Transform {
+func (gdt *Transform) Translated(
+	p_ofs Vector3, /* godot_vector3 */
+) Transform {
 
 	/* go_godot_transform_translated(API_STRUCT, *godot_vector3) ->godot_transform */
 
@@ -10794,7 +11468,9 @@ func (gdt *Transform) Translated(p_ofs Vector3) Transform {
 }
 
 /* Getter Method: godot_transform_looking_at -> godot_transform */
-func (gdt *Transform) LookingAt(p_target Vector3, p_up Vector3) Transform {
+func (gdt *Transform) LookingAt(
+	p_target Vector3 /* godot_vector3 */, p_up Vector3, /* godot_vector3 */
+) Transform {
 
 	/* go_godot_transform_looking_at(API_STRUCT, *godot_vector3, *godot_vector3) ->godot_transform */
 
@@ -10816,7 +11492,9 @@ func (gdt *Transform) LookingAt(p_target Vector3, p_up Vector3) Transform {
 }
 
 /* Getter Method: godot_transform_xform_plane -> godot_plane */
-func (gdt *Transform) XformPlane(p_v Plane) Plane {
+func (gdt *Transform) XformPlane(
+	p_v Plane, /* godot_plane */
+) Plane {
 
 	/* go_godot_transform_xform_plane(API_STRUCT, *godot_plane) ->godot_plane */
 
@@ -10835,7 +11513,9 @@ func (gdt *Transform) XformPlane(p_v Plane) Plane {
 }
 
 /* Getter Method: godot_transform_xform_inv_plane -> godot_plane */
-func (gdt *Transform) XformInvPlane(p_v Plane) Plane {
+func (gdt *Transform) XformInvPlane(
+	p_v Plane, /* godot_plane */
+) Plane {
 
 	/* go_godot_transform_xform_inv_plane(API_STRUCT, *godot_plane) ->godot_plane */
 
@@ -10854,7 +11534,9 @@ func (gdt *Transform) XformInvPlane(p_v Plane) Plane {
 }
 
 /* Getter Method: godot_transform_operator_equal -> godot_bool */
-func (gdt *Transform) OperatorEqual(p_b Transform) bool {
+func (gdt *Transform) OperatorEqual(
+	p_b Transform, /* godot_transform */
+) bool {
 
 	/* go_godot_transform_operator_equal(API_STRUCT, *godot_transform) ->godot_bool */
 
@@ -10873,7 +11555,9 @@ func (gdt *Transform) OperatorEqual(p_b Transform) bool {
 }
 
 /* Getter Method: godot_transform_operator_multiply -> godot_transform */
-func (gdt *Transform) OperatorMultiply(p_b Transform) Transform {
+func (gdt *Transform) OperatorMultiply(
+	p_b Transform, /* godot_transform */
+) Transform {
 
 	/* go_godot_transform_operator_multiply(API_STRUCT, *godot_transform) ->godot_transform */
 
@@ -10892,7 +11576,9 @@ func (gdt *Transform) OperatorMultiply(p_b Transform) Transform {
 }
 
 /* Getter Method: godot_transform_xform_vector3 -> godot_vector3 */
-func (gdt *Transform) XformVector3(p_v Vector3) Vector3 {
+func (gdt *Transform) XformVector3(
+	p_v Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_transform_xform_vector3(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -10911,7 +11597,9 @@ func (gdt *Transform) XformVector3(p_v Vector3) Vector3 {
 }
 
 /* Getter Method: godot_transform_xform_inv_vector3 -> godot_vector3 */
-func (gdt *Transform) XformInvVector3(p_v Vector3) Vector3 {
+func (gdt *Transform) XformInvVector3(
+	p_v Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_transform_xform_inv_vector3(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -10930,7 +11618,9 @@ func (gdt *Transform) XformInvVector3(p_v Vector3) Vector3 {
 }
 
 /* Getter Method: godot_transform_xform_aabb -> godot_aabb */
-func (gdt *Transform) XformAABB(p_v AABB) AABB {
+func (gdt *Transform) XformAABB(
+	p_v AABB, /* godot_aabb */
+) AABB {
 
 	/* go_godot_transform_xform_aabb(API_STRUCT, *godot_aabb) ->godot_aabb */
 
@@ -10949,7 +11639,9 @@ func (gdt *Transform) XformAABB(p_v AABB) AABB {
 }
 
 /* Getter Method: godot_transform_xform_inv_aabb -> godot_aabb */
-func (gdt *Transform) XformInvAABB(p_v AABB) AABB {
+func (gdt *Transform) XformInvAABB(
+	p_v AABB, /* godot_aabb */
+) AABB {
 
 	/* go_godot_transform_xform_inv_aabb(API_STRUCT, *godot_aabb) ->godot_aabb */
 
@@ -10969,7 +11661,9 @@ func (gdt *Transform) XformInvAABB(p_v AABB) AABB {
 
 type Transform2D C.godot_transform2d
 
-func NewTransform2D(p_rot float32, p_pos Vector2) Transform2D {
+func NewTransform2D(
+	p_rot float32 /* else case */, p_pos Vector2, /* godot_vector2 */
+) Transform2D {
 	dest := Transform2D{}
 
 	api := CoreApi
@@ -10992,7 +11686,9 @@ func NewTransform2D(p_rot float32, p_pos Vector2) Transform2D {
 	return dest
 }
 
-func NewTransform2DAxisOrigin(p_x_axis Vector2, p_y_axis Vector2, p_origin Vector2) Transform2D {
+func NewTransform2DAxisOrigin(
+	p_x_axis Vector2 /* godot_vector2 */, p_y_axis Vector2 /* godot_vector2 */, p_origin Vector2, /* godot_vector2 */
+) Transform2D {
 	dest := Transform2D{}
 
 	api := CoreApi
@@ -11148,7 +11844,9 @@ func (gdt *Transform2D) Orthonormalized() Transform2D {
 }
 
 /* Getter Method: godot_transform2d_rotated -> godot_transform2d */
-func (gdt *Transform2D) Rotated(p_phi float32) Transform2D {
+func (gdt *Transform2D) Rotated(
+	p_phi float32, /* else case */
+) Transform2D {
 
 	/* go_godot_transform2d_rotated(API_STRUCT,godot_real) ->godot_transform2d */
 
@@ -11167,7 +11865,9 @@ func (gdt *Transform2D) Rotated(p_phi float32) Transform2D {
 }
 
 /* Getter Method: godot_transform2d_scaled -> godot_transform2d */
-func (gdt *Transform2D) Scaled(p_scale Vector2) Transform2D {
+func (gdt *Transform2D) Scaled(
+	p_scale Vector2, /* godot_vector2 */
+) Transform2D {
 
 	/* go_godot_transform2d_scaled(API_STRUCT, *godot_vector2) ->godot_transform2d */
 
@@ -11186,7 +11886,9 @@ func (gdt *Transform2D) Scaled(p_scale Vector2) Transform2D {
 }
 
 /* Getter Method: godot_transform2d_translated -> godot_transform2d */
-func (gdt *Transform2D) Translated(p_offset Vector2) Transform2D {
+func (gdt *Transform2D) Translated(
+	p_offset Vector2, /* godot_vector2 */
+) Transform2D {
 
 	/* go_godot_transform2d_translated(API_STRUCT, *godot_vector2) ->godot_transform2d */
 
@@ -11205,7 +11907,9 @@ func (gdt *Transform2D) Translated(p_offset Vector2) Transform2D {
 }
 
 /* Getter Method: godot_transform2d_xform_vector2 -> godot_vector2 */
-func (gdt *Transform2D) XformVector2(p_v Vector2) Vector2 {
+func (gdt *Transform2D) XformVector2(
+	p_v Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_transform2d_xform_vector2(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -11224,7 +11928,9 @@ func (gdt *Transform2D) XformVector2(p_v Vector2) Vector2 {
 }
 
 /* Getter Method: godot_transform2d_xform_inv_vector2 -> godot_vector2 */
-func (gdt *Transform2D) XformInvVector2(p_v Vector2) Vector2 {
+func (gdt *Transform2D) XformInvVector2(
+	p_v Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_transform2d_xform_inv_vector2(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -11243,7 +11949,9 @@ func (gdt *Transform2D) XformInvVector2(p_v Vector2) Vector2 {
 }
 
 /* Getter Method: godot_transform2d_basis_xform_vector2 -> godot_vector2 */
-func (gdt *Transform2D) BasisXformVector2(p_v Vector2) Vector2 {
+func (gdt *Transform2D) BasisXformVector2(
+	p_v Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_transform2d_basis_xform_vector2(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -11262,7 +11970,9 @@ func (gdt *Transform2D) BasisXformVector2(p_v Vector2) Vector2 {
 }
 
 /* Getter Method: godot_transform2d_basis_xform_inv_vector2 -> godot_vector2 */
-func (gdt *Transform2D) BasisXformInvVector2(p_v Vector2) Vector2 {
+func (gdt *Transform2D) BasisXformInvVector2(
+	p_v Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_transform2d_basis_xform_inv_vector2(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -11281,7 +11991,9 @@ func (gdt *Transform2D) BasisXformInvVector2(p_v Vector2) Vector2 {
 }
 
 /* Getter Method: godot_transform2d_interpolate_with -> godot_transform2d */
-func (gdt *Transform2D) InterpolateWith(p_m Transform2D, p_c float32) Transform2D {
+func (gdt *Transform2D) InterpolateWith(
+	p_m Transform2D /* godot_transform2d */, p_c float32, /* else case */
+) Transform2D {
 
 	/* go_godot_transform2d_interpolate_with(API_STRUCT, *godot_transform2d,godot_real) ->godot_transform2d */
 
@@ -11303,7 +12015,9 @@ func (gdt *Transform2D) InterpolateWith(p_m Transform2D, p_c float32) Transform2
 }
 
 /* Getter Method: godot_transform2d_operator_equal -> godot_bool */
-func (gdt *Transform2D) OperatorEqual(p_b Transform2D) bool {
+func (gdt *Transform2D) OperatorEqual(
+	p_b Transform2D, /* godot_transform2d */
+) bool {
 
 	/* go_godot_transform2d_operator_equal(API_STRUCT, *godot_transform2d) ->godot_bool */
 
@@ -11322,7 +12036,9 @@ func (gdt *Transform2D) OperatorEqual(p_b Transform2D) bool {
 }
 
 /* Getter Method: godot_transform2d_operator_multiply -> godot_transform2d */
-func (gdt *Transform2D) OperatorMultiply(p_b Transform2D) Transform2D {
+func (gdt *Transform2D) OperatorMultiply(
+	p_b Transform2D, /* godot_transform2d */
+) Transform2D {
 
 	/* go_godot_transform2d_operator_multiply(API_STRUCT, *godot_transform2d) ->godot_transform2d */
 
@@ -11341,7 +12057,9 @@ func (gdt *Transform2D) OperatorMultiply(p_b Transform2D) Transform2D {
 }
 
 /* Getter Method: godot_transform2d_xform_rect2 -> godot_rect2 */
-func (gdt *Transform2D) XformRect2(p_v Rect2) Rect2 {
+func (gdt *Transform2D) XformRect2(
+	p_v Rect2, /* godot_rect2 */
+) Rect2 {
 
 	/* go_godot_transform2d_xform_rect2(API_STRUCT, *godot_rect2) ->godot_rect2 */
 
@@ -11360,7 +12078,9 @@ func (gdt *Transform2D) XformRect2(p_v Rect2) Rect2 {
 }
 
 /* Getter Method: godot_transform2d_xform_inv_rect2 -> godot_rect2 */
-func (gdt *Transform2D) XformInvRect2(p_v Rect2) Rect2 {
+func (gdt *Transform2D) XformInvRect2(
+	p_v Rect2, /* godot_rect2 */
+) Rect2 {
 
 	/* go_godot_transform2d_xform_inv_rect2(API_STRUCT, *godot_rect2) ->godot_rect2 */
 
@@ -11380,7 +12100,9 @@ func (gdt *Transform2D) XformInvRect2(p_v Rect2) Rect2 {
 
 type Variant C.godot_variant
 
-func NewVariantCopy(p_src Variant) Variant {
+func NewVariantCopy(
+	p_src Variant, /* godot_variant */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11417,7 +12139,9 @@ func NewVariantNil() Variant {
 	return dest
 }
 
-func NewVariantBool(p_b bool) Variant {
+func NewVariantBool(
+	p_b bool, /* else case */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11437,7 +12161,9 @@ func NewVariantBool(p_b bool) Variant {
 	return dest
 }
 
-func NewVariantUint(p_i uint64) Variant {
+func NewVariantUint(
+	p_i uint64, /* else case */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11457,7 +12183,9 @@ func NewVariantUint(p_i uint64) Variant {
 	return dest
 }
 
-func NewVariantInt(p_i int64) Variant {
+func NewVariantInt(
+	p_i int64, /* else case */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11477,7 +12205,9 @@ func NewVariantInt(p_i int64) Variant {
 	return dest
 }
 
-func NewVariantReal(p_r float64) Variant {
+func NewVariantReal(
+	p_r float64, /* else case */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11497,12 +12227,16 @@ func NewVariantReal(p_r float64) Variant {
 	return dest
 }
 
-func NewVariantString(p_s String) Variant {
+func NewVariantString(
+	p_s string, /* Hides String */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
 	rcv := (*C.godot_variant)(unsafe.Pointer(&dest))
-	in0 := (*C.godot_string)(unsafe.Pointer(&p_s))
+	// hide godot_string / String and expose native go string
+	strIn0 := internWithGoString(p_s)
+	in0 := (*C.godot_string)(unsafe.Pointer(&strIn0))
 
 	/* go_godot_variant_new_string(API_STRUCT, *godot_string) -> *Variant */
 
@@ -11517,7 +12251,9 @@ func NewVariantString(p_s String) Variant {
 	return dest
 }
 
-func NewVariantVector2(p_v2 Vector2) Variant {
+func NewVariantVector2(
+	p_v2 Vector2, /* godot_vector2 */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11537,7 +12273,9 @@ func NewVariantVector2(p_v2 Vector2) Variant {
 	return dest
 }
 
-func NewVariantRect2(p_rect2 Rect2) Variant {
+func NewVariantRect2(
+	p_rect2 Rect2, /* godot_rect2 */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11557,7 +12295,9 @@ func NewVariantRect2(p_rect2 Rect2) Variant {
 	return dest
 }
 
-func NewVariantVector3(p_v3 Vector3) Variant {
+func NewVariantVector3(
+	p_v3 Vector3, /* godot_vector3 */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11577,7 +12317,9 @@ func NewVariantVector3(p_v3 Vector3) Variant {
 	return dest
 }
 
-func NewVariantTransform2D(p_t2d Transform2D) Variant {
+func NewVariantTransform2D(
+	p_t2d Transform2D, /* godot_transform2d */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11597,7 +12339,9 @@ func NewVariantTransform2D(p_t2d Transform2D) Variant {
 	return dest
 }
 
-func NewVariantPlane(p_plane Plane) Variant {
+func NewVariantPlane(
+	p_plane Plane, /* godot_plane */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11617,7 +12361,9 @@ func NewVariantPlane(p_plane Plane) Variant {
 	return dest
 }
 
-func NewVariantQuat(p_quat Quat) Variant {
+func NewVariantQuat(
+	p_quat Quat, /* godot_quat */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11637,7 +12383,9 @@ func NewVariantQuat(p_quat Quat) Variant {
 	return dest
 }
 
-func NewVariantAABB(p_aabb AABB) Variant {
+func NewVariantAABB(
+	p_aabb AABB, /* godot_aabb */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11657,7 +12405,9 @@ func NewVariantAABB(p_aabb AABB) Variant {
 	return dest
 }
 
-func NewVariantBasis(p_basis Basis) Variant {
+func NewVariantBasis(
+	p_basis Basis, /* godot_basis */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11677,7 +12427,9 @@ func NewVariantBasis(p_basis Basis) Variant {
 	return dest
 }
 
-func NewVariantTransform(p_trans Transform) Variant {
+func NewVariantTransform(
+	p_trans Transform, /* godot_transform */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11697,7 +12449,9 @@ func NewVariantTransform(p_trans Transform) Variant {
 	return dest
 }
 
-func NewVariantColor(p_color Color) Variant {
+func NewVariantColor(
+	p_color Color, /* godot_color */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11717,7 +12471,9 @@ func NewVariantColor(p_color Color) Variant {
 	return dest
 }
 
-func NewVariantNodePath(p_np NodePath) Variant {
+func NewVariantNodePath(
+	p_np NodePath, /* godot_node_path */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11737,7 +12493,9 @@ func NewVariantNodePath(p_np NodePath) Variant {
 	return dest
 }
 
-func NewVariantRID(p_rid RID) Variant {
+func NewVariantRID(
+	p_rid RID, /* godot_rid */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11757,7 +12515,9 @@ func NewVariantRID(p_rid RID) Variant {
 	return dest
 }
 
-func NewVariantObject(p_obj *GodotObject) Variant {
+func NewVariantObject(
+	p_obj *GodotObject,
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11777,7 +12537,9 @@ func NewVariantObject(p_obj *GodotObject) Variant {
 	return dest
 }
 
-func NewVariantDictionary(p_dict Dictionary) Variant {
+func NewVariantDictionary(
+	p_dict Dictionary, /* godot_dictionary */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11797,7 +12559,9 @@ func NewVariantDictionary(p_dict Dictionary) Variant {
 	return dest
 }
 
-func NewVariantArray(p_arr Array) Variant {
+func NewVariantArray(
+	p_arr Array, /* godot_array */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11817,7 +12581,9 @@ func NewVariantArray(p_arr Array) Variant {
 	return dest
 }
 
-func NewVariantPoolByteArray(p_pba PoolByteArray) Variant {
+func NewVariantPoolByteArray(
+	p_pba PoolByteArray, /* godot_pool_byte_array */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11837,7 +12603,9 @@ func NewVariantPoolByteArray(p_pba PoolByteArray) Variant {
 	return dest
 }
 
-func NewVariantPoolIntArray(p_pia PoolIntArray) Variant {
+func NewVariantPoolIntArray(
+	p_pia PoolIntArray, /* godot_pool_int_array */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11857,7 +12625,9 @@ func NewVariantPoolIntArray(p_pia PoolIntArray) Variant {
 	return dest
 }
 
-func NewVariantPoolRealArray(p_pra PoolRealArray) Variant {
+func NewVariantPoolRealArray(
+	p_pra PoolRealArray, /* godot_pool_real_array */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11877,7 +12647,9 @@ func NewVariantPoolRealArray(p_pra PoolRealArray) Variant {
 	return dest
 }
 
-func NewVariantPoolStringArray(p_psa PoolStringArray) Variant {
+func NewVariantPoolStringArray(
+	p_psa PoolStringArray, /* godot_pool_string_array */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11897,7 +12669,9 @@ func NewVariantPoolStringArray(p_psa PoolStringArray) Variant {
 	return dest
 }
 
-func NewVariantPoolVector2Array(p_pv2a PoolVector2Array) Variant {
+func NewVariantPoolVector2Array(
+	p_pv2a PoolVector2Array, /* godot_pool_vector2_array */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11917,7 +12691,9 @@ func NewVariantPoolVector2Array(p_pv2a PoolVector2Array) Variant {
 	return dest
 }
 
-func NewVariantPoolVector3Array(p_pv3a PoolVector3Array) Variant {
+func NewVariantPoolVector3Array(
+	p_pv3a PoolVector3Array, /* godot_pool_vector3_array */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -11937,7 +12713,9 @@ func NewVariantPoolVector3Array(p_pv3a PoolVector3Array) Variant {
 	return dest
 }
 
-func NewVariantPoolColorArray(p_pca PoolColorArray) Variant {
+func NewVariantPoolColorArray(
+	p_pca PoolColorArray, /* godot_pool_color_array */
+) Variant {
 	dest := Variant{}
 
 	api := CoreApi
@@ -12406,7 +13184,9 @@ func (gdt *Variant) AsPoolColorArray() PoolColorArray {
 }
 
 /* Getter Method: godot_variant_call -> godot_variant */
-func (gdt *Variant) Call(p_method String, p_args []*Variant, p_argcount int32, r_error VariantCallError) Variant {
+func (gdt *Variant) Call(
+	p_method String /* godot_string */, p_args []*Variant, p_argcount int32 /* else case */, r_error VariantCallError, /* godot_variant_call_error */
+) Variant {
 
 	/* go_godot_variant_call(API_STRUCT, *godot_string, **godot_variant,godot_int, *godot_variant_call_error) ->godot_variant */
 
@@ -12436,7 +13216,9 @@ func (gdt *Variant) Call(p_method String, p_args []*Variant, p_argcount int32, r
 }
 
 /* Getter Method: godot_variant_has_method -> godot_bool */
-func (gdt *Variant) HasMethod(p_method String) bool {
+func (gdt *Variant) HasMethod(
+	p_method String, /* godot_string */
+) bool {
 
 	/* go_godot_variant_has_method(API_STRUCT, *godot_string) ->godot_bool */
 
@@ -12455,7 +13237,9 @@ func (gdt *Variant) HasMethod(p_method String) bool {
 }
 
 /* Getter Method: godot_variant_operator_equal -> godot_bool */
-func (gdt *Variant) OperatorEqual(p_other Variant) bool {
+func (gdt *Variant) OperatorEqual(
+	p_other Variant, /* godot_variant */
+) bool {
 
 	/* go_godot_variant_operator_equal(API_STRUCT, *godot_variant) ->godot_bool */
 
@@ -12474,7 +13258,9 @@ func (gdt *Variant) OperatorEqual(p_other Variant) bool {
 }
 
 /* Getter Method: godot_variant_operator_less -> godot_bool */
-func (gdt *Variant) OperatorLess(p_other Variant) bool {
+func (gdt *Variant) OperatorLess(
+	p_other Variant, /* godot_variant */
+) bool {
 
 	/* go_godot_variant_operator_less(API_STRUCT, *godot_variant) ->godot_bool */
 
@@ -12493,7 +13279,9 @@ func (gdt *Variant) OperatorLess(p_other Variant) bool {
 }
 
 /* Getter Method: godot_variant_hash_compare -> godot_bool */
-func (gdt *Variant) HashCompare(p_other Variant) bool {
+func (gdt *Variant) HashCompare(
+	p_other Variant, /* godot_variant */
+) bool {
 
 	/* go_godot_variant_hash_compare(API_STRUCT, *godot_variant) ->godot_bool */
 
@@ -12622,7 +13410,9 @@ const (
 
 type Vector2 C.godot_vector2
 
-func NewVector2(p_x float32, p_y float32) Vector2 {
+func NewVector2(
+	p_x float32 /* else case */, p_y float32, /* else case */
+) Vector2 {
 	dest := Vector2{}
 
 	api := CoreApi
@@ -12742,7 +13532,9 @@ func (gdt *Vector2) IsNormalized() bool {
 }
 
 /* Getter Method: godot_vector2_distance_to -> godot_real */
-func (gdt *Vector2) DistanceTo(p_to Vector2) float32 {
+func (gdt *Vector2) DistanceTo(
+	p_to Vector2, /* godot_vector2 */
+) float32 {
 
 	/* go_godot_vector2_distance_to(API_STRUCT, *godot_vector2) ->godot_real */
 
@@ -12761,7 +13553,9 @@ func (gdt *Vector2) DistanceTo(p_to Vector2) float32 {
 }
 
 /* Getter Method: godot_vector2_distance_squared_to -> godot_real */
-func (gdt *Vector2) DistanceSquaredTo(p_to Vector2) float32 {
+func (gdt *Vector2) DistanceSquaredTo(
+	p_to Vector2, /* godot_vector2 */
+) float32 {
 
 	/* go_godot_vector2_distance_squared_to(API_STRUCT, *godot_vector2) ->godot_real */
 
@@ -12780,7 +13574,9 @@ func (gdt *Vector2) DistanceSquaredTo(p_to Vector2) float32 {
 }
 
 /* Getter Method: godot_vector2_angle_to -> godot_real */
-func (gdt *Vector2) AngleTo(p_to Vector2) float32 {
+func (gdt *Vector2) AngleTo(
+	p_to Vector2, /* godot_vector2 */
+) float32 {
 
 	/* go_godot_vector2_angle_to(API_STRUCT, *godot_vector2) ->godot_real */
 
@@ -12799,7 +13595,9 @@ func (gdt *Vector2) AngleTo(p_to Vector2) float32 {
 }
 
 /* Getter Method: godot_vector2_angle_to_point -> godot_real */
-func (gdt *Vector2) AngleToPoint(p_to Vector2) float32 {
+func (gdt *Vector2) AngleToPoint(
+	p_to Vector2, /* godot_vector2 */
+) float32 {
 
 	/* go_godot_vector2_angle_to_point(API_STRUCT, *godot_vector2) ->godot_real */
 
@@ -12818,7 +13616,9 @@ func (gdt *Vector2) AngleToPoint(p_to Vector2) float32 {
 }
 
 /* Getter Method: godot_vector2_linear_interpolate -> godot_vector2 */
-func (gdt *Vector2) LinearInterpolate(p_b Vector2, p_t float32) Vector2 {
+func (gdt *Vector2) LinearInterpolate(
+	p_b Vector2 /* godot_vector2 */, p_t float32, /* else case */
+) Vector2 {
 
 	/* go_godot_vector2_linear_interpolate(API_STRUCT, *godot_vector2,godot_real) ->godot_vector2 */
 
@@ -12840,7 +13640,9 @@ func (gdt *Vector2) LinearInterpolate(p_b Vector2, p_t float32) Vector2 {
 }
 
 /* Getter Method: godot_vector2_cubic_interpolate -> godot_vector2 */
-func (gdt *Vector2) CubicInterpolate(p_b Vector2, p_pre_a Vector2, p_post_b Vector2, p_t float32) Vector2 {
+func (gdt *Vector2) CubicInterpolate(
+	p_b Vector2 /* godot_vector2 */, p_pre_a Vector2 /* godot_vector2 */, p_post_b Vector2 /* godot_vector2 */, p_t float32, /* else case */
+) Vector2 {
 
 	/* go_godot_vector2_cubic_interpolate(API_STRUCT, *godot_vector2, *godot_vector2, *godot_vector2,godot_real) ->godot_vector2 */
 
@@ -12868,7 +13670,9 @@ func (gdt *Vector2) CubicInterpolate(p_b Vector2, p_pre_a Vector2, p_post_b Vect
 }
 
 /* Getter Method: godot_vector2_rotated -> godot_vector2 */
-func (gdt *Vector2) Rotated(p_phi float32) Vector2 {
+func (gdt *Vector2) Rotated(
+	p_phi float32, /* else case */
+) Vector2 {
 
 	/* go_godot_vector2_rotated(API_STRUCT,godot_real) ->godot_vector2 */
 
@@ -12919,7 +13723,9 @@ func (gdt *Vector2) Floor() Vector2 {
 }
 
 /* Getter Method: godot_vector2_snapped -> godot_vector2 */
-func (gdt *Vector2) Snapped(p_by Vector2) Vector2 {
+func (gdt *Vector2) Snapped(
+	p_by Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_vector2_snapped(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -12954,7 +13760,9 @@ func (gdt *Vector2) Aspect() float32 {
 }
 
 /* Getter Method: godot_vector2_dot -> godot_real */
-func (gdt *Vector2) Dot(p_with Vector2) float32 {
+func (gdt *Vector2) Dot(
+	p_with Vector2, /* godot_vector2 */
+) float32 {
 
 	/* go_godot_vector2_dot(API_STRUCT, *godot_vector2) ->godot_real */
 
@@ -12973,7 +13781,9 @@ func (gdt *Vector2) Dot(p_with Vector2) float32 {
 }
 
 /* Getter Method: godot_vector2_slide -> godot_vector2 */
-func (gdt *Vector2) Slide(p_n Vector2) Vector2 {
+func (gdt *Vector2) Slide(
+	p_n Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_vector2_slide(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -12992,7 +13802,9 @@ func (gdt *Vector2) Slide(p_n Vector2) Vector2 {
 }
 
 /* Getter Method: godot_vector2_bounce -> godot_vector2 */
-func (gdt *Vector2) Bounce(p_n Vector2) Vector2 {
+func (gdt *Vector2) Bounce(
+	p_n Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_vector2_bounce(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -13011,7 +13823,9 @@ func (gdt *Vector2) Bounce(p_n Vector2) Vector2 {
 }
 
 /* Getter Method: godot_vector2_reflect -> godot_vector2 */
-func (gdt *Vector2) Reflect(p_n Vector2) Vector2 {
+func (gdt *Vector2) Reflect(
+	p_n Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_vector2_reflect(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -13046,7 +13860,9 @@ func (gdt *Vector2) Abs() Vector2 {
 }
 
 /* Getter Method: godot_vector2_clamped -> godot_vector2 */
-func (gdt *Vector2) Clamped(p_length float32) Vector2 {
+func (gdt *Vector2) Clamped(
+	p_length float32, /* else case */
+) Vector2 {
 
 	/* go_godot_vector2_clamped(API_STRUCT,godot_real) ->godot_vector2 */
 
@@ -13065,7 +13881,9 @@ func (gdt *Vector2) Clamped(p_length float32) Vector2 {
 }
 
 /* Getter Method: godot_vector2_operator_add -> godot_vector2 */
-func (gdt *Vector2) OperatorAdd(p_b Vector2) Vector2 {
+func (gdt *Vector2) OperatorAdd(
+	p_b Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_vector2_operator_add(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -13084,7 +13902,9 @@ func (gdt *Vector2) OperatorAdd(p_b Vector2) Vector2 {
 }
 
 /* Getter Method: godot_vector2_operator_subtract -> godot_vector2 */
-func (gdt *Vector2) OperatorSubtract(p_b Vector2) Vector2 {
+func (gdt *Vector2) OperatorSubtract(
+	p_b Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_vector2_operator_subtract(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -13103,7 +13923,9 @@ func (gdt *Vector2) OperatorSubtract(p_b Vector2) Vector2 {
 }
 
 /* Getter Method: godot_vector2_operator_multiply_vector -> godot_vector2 */
-func (gdt *Vector2) OperatorMultiplyVector(p_b Vector2) Vector2 {
+func (gdt *Vector2) OperatorMultiplyVector(
+	p_b Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_vector2_operator_multiply_vector(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -13122,7 +13944,9 @@ func (gdt *Vector2) OperatorMultiplyVector(p_b Vector2) Vector2 {
 }
 
 /* Getter Method: godot_vector2_operator_multiply_scalar -> godot_vector2 */
-func (gdt *Vector2) OperatorMultiplyScalar(p_b float32) Vector2 {
+func (gdt *Vector2) OperatorMultiplyScalar(
+	p_b float32, /* else case */
+) Vector2 {
 
 	/* go_godot_vector2_operator_multiply_scalar(API_STRUCT,godot_real) ->godot_vector2 */
 
@@ -13141,7 +13965,9 @@ func (gdt *Vector2) OperatorMultiplyScalar(p_b float32) Vector2 {
 }
 
 /* Getter Method: godot_vector2_operator_divide_vector -> godot_vector2 */
-func (gdt *Vector2) OperatorDivideVector(p_b Vector2) Vector2 {
+func (gdt *Vector2) OperatorDivideVector(
+	p_b Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_vector2_operator_divide_vector(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -13160,7 +13986,9 @@ func (gdt *Vector2) OperatorDivideVector(p_b Vector2) Vector2 {
 }
 
 /* Getter Method: godot_vector2_operator_divide_scalar -> godot_vector2 */
-func (gdt *Vector2) OperatorDivideScalar(p_b float32) Vector2 {
+func (gdt *Vector2) OperatorDivideScalar(
+	p_b float32, /* else case */
+) Vector2 {
 
 	/* go_godot_vector2_operator_divide_scalar(API_STRUCT,godot_real) ->godot_vector2 */
 
@@ -13179,7 +14007,9 @@ func (gdt *Vector2) OperatorDivideScalar(p_b float32) Vector2 {
 }
 
 /* Getter Method: godot_vector2_operator_equal -> godot_bool */
-func (gdt *Vector2) OperatorEqual(p_b Vector2) bool {
+func (gdt *Vector2) OperatorEqual(
+	p_b Vector2, /* godot_vector2 */
+) bool {
 
 	/* go_godot_vector2_operator_equal(API_STRUCT, *godot_vector2) ->godot_bool */
 
@@ -13198,7 +14028,9 @@ func (gdt *Vector2) OperatorEqual(p_b Vector2) bool {
 }
 
 /* Getter Method: godot_vector2_operator_less -> godot_bool */
-func (gdt *Vector2) OperatorLess(p_b Vector2) bool {
+func (gdt *Vector2) OperatorLess(
+	p_b Vector2, /* godot_vector2 */
+) bool {
 
 	/* go_godot_vector2_operator_less(API_STRUCT, *godot_vector2) ->godot_bool */
 
@@ -13233,7 +14065,9 @@ func (gdt *Vector2) OperatorNeg() Vector2 {
 }
 
 /* Setter Method: godot_vector2_set_x -> void */
-func (gdt *Vector2) SetX(p_x float32) {
+func (gdt *Vector2) SetX(
+	p_x float32, /* else case */
+) {
 
 	/* go_godot_vector2_set_x(API_STRUCT,godot_real) ->void */
 
@@ -13250,7 +14084,9 @@ func (gdt *Vector2) SetX(p_x float32) {
 }
 
 /* Setter Method: godot_vector2_set_y -> void */
-func (gdt *Vector2) SetY(p_y float32) {
+func (gdt *Vector2) SetY(
+	p_y float32, /* else case */
+) {
 
 	/* go_godot_vector2_set_y(API_STRUCT,godot_real) ->void */
 
@@ -13299,7 +14135,9 @@ func (gdt *Vector2) GetY() float32 {
 }
 
 /* Getter Method: godot_vector2_move_toward -> godot_vector2 */
-func (gdt *Vector2) MoveToward(p_to Vector2, p_delta float32) Vector2 {
+func (gdt *Vector2) MoveToward(
+	p_to Vector2 /* godot_vector2 */, p_delta float32, /* else case */
+) Vector2 {
 
 	/* go_godot_vector2_move_toward(API_STRUCT, *godot_vector2,godot_real) ->godot_vector2 */
 
@@ -13321,7 +14159,9 @@ func (gdt *Vector2) MoveToward(p_to Vector2, p_delta float32) Vector2 {
 }
 
 /* Getter Method: godot_vector2_direction_to -> godot_vector2 */
-func (gdt *Vector2) DirectionTo(p_to Vector2) Vector2 {
+func (gdt *Vector2) DirectionTo(
+	p_to Vector2, /* godot_vector2 */
+) Vector2 {
 
 	/* go_godot_vector2_direction_to(API_STRUCT, *godot_vector2) ->godot_vector2 */
 
@@ -13341,7 +14181,9 @@ func (gdt *Vector2) DirectionTo(p_to Vector2) Vector2 {
 
 type Vector3 C.godot_vector3
 
-func NewVector3(p_x float32, p_y float32, p_z float32) Vector3 {
+func NewVector3(
+	p_x float32 /* else case */, p_y float32 /* else case */, p_z float32, /* else case */
+) Vector3 {
 	dest := Vector3{}
 
 	api := CoreApi
@@ -13496,7 +14338,9 @@ func (gdt *Vector3) Inverse() Vector3 {
 }
 
 /* Getter Method: godot_vector3_snapped -> godot_vector3 */
-func (gdt *Vector3) Snapped(p_by Vector3) Vector3 {
+func (gdt *Vector3) Snapped(
+	p_by Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_vector3_snapped(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -13515,7 +14359,9 @@ func (gdt *Vector3) Snapped(p_by Vector3) Vector3 {
 }
 
 /* Getter Method: godot_vector3_rotated -> godot_vector3 */
-func (gdt *Vector3) Rotated(p_axis Vector3, p_phi float32) Vector3 {
+func (gdt *Vector3) Rotated(
+	p_axis Vector3 /* godot_vector3 */, p_phi float32, /* else case */
+) Vector3 {
 
 	/* go_godot_vector3_rotated(API_STRUCT, *godot_vector3,godot_real) ->godot_vector3 */
 
@@ -13537,7 +14383,9 @@ func (gdt *Vector3) Rotated(p_axis Vector3, p_phi float32) Vector3 {
 }
 
 /* Getter Method: godot_vector3_linear_interpolate -> godot_vector3 */
-func (gdt *Vector3) LinearInterpolate(p_b Vector3, p_t float32) Vector3 {
+func (gdt *Vector3) LinearInterpolate(
+	p_b Vector3 /* godot_vector3 */, p_t float32, /* else case */
+) Vector3 {
 
 	/* go_godot_vector3_linear_interpolate(API_STRUCT, *godot_vector3,godot_real) ->godot_vector3 */
 
@@ -13559,7 +14407,9 @@ func (gdt *Vector3) LinearInterpolate(p_b Vector3, p_t float32) Vector3 {
 }
 
 /* Getter Method: godot_vector3_cubic_interpolate -> godot_vector3 */
-func (gdt *Vector3) CubicInterpolate(p_b Vector3, p_pre_a Vector3, p_post_b Vector3, p_t float32) Vector3 {
+func (gdt *Vector3) CubicInterpolate(
+	p_b Vector3 /* godot_vector3 */, p_pre_a Vector3 /* godot_vector3 */, p_post_b Vector3 /* godot_vector3 */, p_t float32, /* else case */
+) Vector3 {
 
 	/* go_godot_vector3_cubic_interpolate(API_STRUCT, *godot_vector3, *godot_vector3, *godot_vector3,godot_real) ->godot_vector3 */
 
@@ -13587,7 +14437,9 @@ func (gdt *Vector3) CubicInterpolate(p_b Vector3, p_pre_a Vector3, p_post_b Vect
 }
 
 /* Getter Method: godot_vector3_dot -> godot_real */
-func (gdt *Vector3) Dot(p_b Vector3) float32 {
+func (gdt *Vector3) Dot(
+	p_b Vector3, /* godot_vector3 */
+) float32 {
 
 	/* go_godot_vector3_dot(API_STRUCT, *godot_vector3) ->godot_real */
 
@@ -13606,7 +14458,9 @@ func (gdt *Vector3) Dot(p_b Vector3) float32 {
 }
 
 /* Getter Method: godot_vector3_cross -> godot_vector3 */
-func (gdt *Vector3) Cross(p_b Vector3) Vector3 {
+func (gdt *Vector3) Cross(
+	p_b Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_vector3_cross(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -13625,7 +14479,9 @@ func (gdt *Vector3) Cross(p_b Vector3) Vector3 {
 }
 
 /* Getter Method: godot_vector3_outer -> godot_basis */
-func (gdt *Vector3) Outer(p_b Vector3) Basis {
+func (gdt *Vector3) Outer(
+	p_b Vector3, /* godot_vector3 */
+) Basis {
 
 	/* go_godot_vector3_outer(API_STRUCT, *godot_vector3) ->godot_basis */
 
@@ -13708,7 +14564,9 @@ func (gdt *Vector3) Ceil() Vector3 {
 }
 
 /* Getter Method: godot_vector3_distance_to -> godot_real */
-func (gdt *Vector3) DistanceTo(p_b Vector3) float32 {
+func (gdt *Vector3) DistanceTo(
+	p_b Vector3, /* godot_vector3 */
+) float32 {
 
 	/* go_godot_vector3_distance_to(API_STRUCT, *godot_vector3) ->godot_real */
 
@@ -13727,7 +14585,9 @@ func (gdt *Vector3) DistanceTo(p_b Vector3) float32 {
 }
 
 /* Getter Method: godot_vector3_distance_squared_to -> godot_real */
-func (gdt *Vector3) DistanceSquaredTo(p_b Vector3) float32 {
+func (gdt *Vector3) DistanceSquaredTo(
+	p_b Vector3, /* godot_vector3 */
+) float32 {
 
 	/* go_godot_vector3_distance_squared_to(API_STRUCT, *godot_vector3) ->godot_real */
 
@@ -13746,7 +14606,9 @@ func (gdt *Vector3) DistanceSquaredTo(p_b Vector3) float32 {
 }
 
 /* Getter Method: godot_vector3_angle_to -> godot_real */
-func (gdt *Vector3) AngleTo(p_to Vector3) float32 {
+func (gdt *Vector3) AngleTo(
+	p_to Vector3, /* godot_vector3 */
+) float32 {
 
 	/* go_godot_vector3_angle_to(API_STRUCT, *godot_vector3) ->godot_real */
 
@@ -13765,7 +14627,9 @@ func (gdt *Vector3) AngleTo(p_to Vector3) float32 {
 }
 
 /* Getter Method: godot_vector3_slide -> godot_vector3 */
-func (gdt *Vector3) Slide(p_n Vector3) Vector3 {
+func (gdt *Vector3) Slide(
+	p_n Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_vector3_slide(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -13784,7 +14648,9 @@ func (gdt *Vector3) Slide(p_n Vector3) Vector3 {
 }
 
 /* Getter Method: godot_vector3_bounce -> godot_vector3 */
-func (gdt *Vector3) Bounce(p_n Vector3) Vector3 {
+func (gdt *Vector3) Bounce(
+	p_n Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_vector3_bounce(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -13803,7 +14669,9 @@ func (gdt *Vector3) Bounce(p_n Vector3) Vector3 {
 }
 
 /* Getter Method: godot_vector3_reflect -> godot_vector3 */
-func (gdt *Vector3) Reflect(p_n Vector3) Vector3 {
+func (gdt *Vector3) Reflect(
+	p_n Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_vector3_reflect(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -13822,7 +14690,9 @@ func (gdt *Vector3) Reflect(p_n Vector3) Vector3 {
 }
 
 /* Getter Method: godot_vector3_operator_add -> godot_vector3 */
-func (gdt *Vector3) OperatorAdd(p_b Vector3) Vector3 {
+func (gdt *Vector3) OperatorAdd(
+	p_b Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_vector3_operator_add(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -13841,7 +14711,9 @@ func (gdt *Vector3) OperatorAdd(p_b Vector3) Vector3 {
 }
 
 /* Getter Method: godot_vector3_operator_subtract -> godot_vector3 */
-func (gdt *Vector3) OperatorSubtract(p_b Vector3) Vector3 {
+func (gdt *Vector3) OperatorSubtract(
+	p_b Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_vector3_operator_subtract(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -13860,7 +14732,9 @@ func (gdt *Vector3) OperatorSubtract(p_b Vector3) Vector3 {
 }
 
 /* Getter Method: godot_vector3_operator_multiply_vector -> godot_vector3 */
-func (gdt *Vector3) OperatorMultiplyVector(p_b Vector3) Vector3 {
+func (gdt *Vector3) OperatorMultiplyVector(
+	p_b Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_vector3_operator_multiply_vector(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -13879,7 +14753,9 @@ func (gdt *Vector3) OperatorMultiplyVector(p_b Vector3) Vector3 {
 }
 
 /* Getter Method: godot_vector3_operator_multiply_scalar -> godot_vector3 */
-func (gdt *Vector3) OperatorMultiplyScalar(p_b float32) Vector3 {
+func (gdt *Vector3) OperatorMultiplyScalar(
+	p_b float32, /* else case */
+) Vector3 {
 
 	/* go_godot_vector3_operator_multiply_scalar(API_STRUCT,godot_real) ->godot_vector3 */
 
@@ -13898,7 +14774,9 @@ func (gdt *Vector3) OperatorMultiplyScalar(p_b float32) Vector3 {
 }
 
 /* Getter Method: godot_vector3_operator_divide_vector -> godot_vector3 */
-func (gdt *Vector3) OperatorDivideVector(p_b Vector3) Vector3 {
+func (gdt *Vector3) OperatorDivideVector(
+	p_b Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_vector3_operator_divide_vector(API_STRUCT, *godot_vector3) ->godot_vector3 */
 
@@ -13917,7 +14795,9 @@ func (gdt *Vector3) OperatorDivideVector(p_b Vector3) Vector3 {
 }
 
 /* Getter Method: godot_vector3_operator_divide_scalar -> godot_vector3 */
-func (gdt *Vector3) OperatorDivideScalar(p_b float32) Vector3 {
+func (gdt *Vector3) OperatorDivideScalar(
+	p_b float32, /* else case */
+) Vector3 {
 
 	/* go_godot_vector3_operator_divide_scalar(API_STRUCT,godot_real) ->godot_vector3 */
 
@@ -13936,7 +14816,9 @@ func (gdt *Vector3) OperatorDivideScalar(p_b float32) Vector3 {
 }
 
 /* Getter Method: godot_vector3_operator_equal -> godot_bool */
-func (gdt *Vector3) OperatorEqual(p_b Vector3) bool {
+func (gdt *Vector3) OperatorEqual(
+	p_b Vector3, /* godot_vector3 */
+) bool {
 
 	/* go_godot_vector3_operator_equal(API_STRUCT, *godot_vector3) ->godot_bool */
 
@@ -13955,7 +14837,9 @@ func (gdt *Vector3) OperatorEqual(p_b Vector3) bool {
 }
 
 /* Getter Method: godot_vector3_operator_less -> godot_bool */
-func (gdt *Vector3) OperatorLess(p_b Vector3) bool {
+func (gdt *Vector3) OperatorLess(
+	p_b Vector3, /* godot_vector3 */
+) bool {
 
 	/* go_godot_vector3_operator_less(API_STRUCT, *godot_vector3) ->godot_bool */
 
@@ -13990,7 +14874,9 @@ func (gdt *Vector3) OperatorNeg() Vector3 {
 }
 
 /* Setter Method: godot_vector3_set_axis -> void */
-func (gdt *Vector3) SetAxis(p_axis Vector3Axis, p_val float32) {
+func (gdt *Vector3) SetAxis(
+	p_axis Vector3Axis /* else case */, p_val float32, /* else case */
+) {
 
 	/* go_godot_vector3_set_axis(API_STRUCT,godot_vector3_axis,godot_real) ->void */
 
@@ -14010,7 +14896,9 @@ func (gdt *Vector3) SetAxis(p_axis Vector3Axis, p_val float32) {
 }
 
 /* Getter Method: godot_vector3_get_axis -> godot_real */
-func (gdt *Vector3) GetAxis(p_axis Vector3Axis) float32 {
+func (gdt *Vector3) GetAxis(
+	p_axis Vector3Axis, /* else case */
+) float32 {
 
 	/* go_godot_vector3_get_axis(API_STRUCT,godot_vector3_axis) ->godot_real */
 
@@ -14029,7 +14917,9 @@ func (gdt *Vector3) GetAxis(p_axis Vector3Axis) float32 {
 }
 
 /* Getter Method: godot_vector3_move_toward -> godot_vector3 */
-func (gdt *Vector3) MoveToward(p_to Vector3, p_delta float32) Vector3 {
+func (gdt *Vector3) MoveToward(
+	p_to Vector3 /* godot_vector3 */, p_delta float32, /* else case */
+) Vector3 {
 
 	/* go_godot_vector3_move_toward(API_STRUCT, *godot_vector3,godot_real) ->godot_vector3 */
 
@@ -14051,7 +14941,9 @@ func (gdt *Vector3) MoveToward(p_to Vector3, p_delta float32) Vector3 {
 }
 
 /* Getter Method: godot_vector3_direction_to -> godot_vector3 */
-func (gdt *Vector3) DirectionTo(p_to Vector3) Vector3 {
+func (gdt *Vector3) DirectionTo(
+	p_to Vector3, /* godot_vector3 */
+) Vector3 {
 
 	/* go_godot_vector3_direction_to(API_STRUCT, *godot_vector3) ->godot_vector3 */
 

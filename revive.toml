@@ -19,7 +19,7 @@ warningCode = 0
 [rule.var-naming]
     arguments = [["API", "ID", "JSON"], []]
 [rule.line-length-limit]
-    arguments = [120]
+    arguments = [140]
 [rule.package-comments]
 [rule.range]
 [rule.receiver-naming]

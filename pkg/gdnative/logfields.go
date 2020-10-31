@@ -7,6 +7,10 @@ import (
 	"go.uber.org/zap"
 )
 
+func NodePathField(key string, np NodePath) log.Field {
+	return zap.String(key, fmt.Sprintf("NodePath(%s)", np.AsString()))
+}
+
 func Vector2Field(key string, vec2 Vector2) log.Field {
 	return zap.String(key, fmt.Sprintf("vec2(%.2f,%.2f)", vec2.GetX(), vec2.GetY()))
 }

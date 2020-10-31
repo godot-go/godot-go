@@ -121,11 +121,9 @@ func (p *PlayerCharacter) SetName(v gdnative.String) {
 // Ready is mapped to the _ready method, which is called after being added to the Scene.
 func (p *PlayerCharacter) Ready() {
 	log.Debug("start PlayerCharacter::Ready", gdnative.GodotObjectField("owner", p.GetOwnerObject()))
-	path := "sprite/animation_player"
-	strPath := gdnative.NewStringFromGoString(path)
-	nodePath := gdnative.NewNodePath(strPath)
+	nodePath := gdnative.NewNodePath("sprite/animation_player")
 
-	log.Info("searching path...", gdnative.StringField("path", path))
+	log.Info("searching path...", gdnative.NodePathField("path", nodePath))
 
 	n := p.GetNode(nodePath)
 	pno := n.GetOwnerObject()
@@ -276,7 +274,7 @@ var (
 // PlayerCharacterNativescriptInit called after NativeScript initializes
 func PlayerCharacterNativescriptInit() {
 	defaultVelocity = gdnative.NewVariantVector2(gdnative.NewVector2(0.0, 0.0))
-	defaultName = gdnative.NewVariantString(gdnative.NewStringFromGoString("No_Name"))
+	defaultName = gdnative.NewVariantString("No_Name")
 
 	gdnative.RegisterClass(&PlayerCharacter{})
 }

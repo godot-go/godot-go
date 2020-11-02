@@ -32,5 +32,14 @@
     "C_Cpp.default.cStandard": "c11",
     "C_Cpp.default.intelliSenseMode": "clang-x64",
     "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
-    "C_Cpp.default.includePath": ["godot_headers", "pkg/gdnative"]
+    "C_Cpp.default.includePath": [
+        "godot_headers",
+        "pkg/gdnative"
+    ],
+    "go.lintTool": "revive",
+    "gut-extension.additionalOptions": "-d --path test/project",
+    "godot_tools.project_path": "test/project",
+    "go.lintFlags": [
+        "-config=${workspaceFolder}/revive.toml"
+    ]
 }

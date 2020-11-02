@@ -23,11 +23,12 @@ var (
 	registeredNativeScriptClassTypes = map[TypeTag]reflect.Type{}
 
 	// TODO: do we want to nest this map to reduce the chance of hash collisions?
-	nativeScriptInstanceMap UserDataMap = UserDataMap{}
+	nativeScriptInstanceMap = UserDataMap{}
 
 	nativeScriptClassType = reflect.TypeOf(new(NativeScriptClass)).Elem()
 )
 
+// RegisterClass registers with Godot the specified custom NativeScript class.
 func RegisterClass(instance NativeScriptClass) {
 	// godot-cpp implementation:
 	//

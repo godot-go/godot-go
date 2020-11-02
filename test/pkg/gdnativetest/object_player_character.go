@@ -9,6 +9,8 @@ import (
 	"github.com/godot-go/godot-go/pkg/log"
 )
 
+// PlayerCharacter is a custom NativeScript class that represents an entity in the game
+// that the player controls
 type PlayerCharacter struct {
 	gdnative.KinematicBody2DImpl
 	gdnative.UserDataIdentifiableImpl
@@ -19,30 +21,57 @@ type PlayerCharacter struct {
 	name          gdnative.String
 }
 
+// ClassName is required for NativeScript class registration with Godot.
 func (p *PlayerCharacter) ClassName() string {
 	return "PlayerCharacter"
 }
 
+// BaseClass is required for NativeScript class registration with Godot.
 func (p *PlayerCharacter) BaseClass() string {
 	return "KinematicBody2D"
 }
 
-func (p *PlayerCharacter) Teleport(distance float64) {
+// RandomTeleport teleports the player to a random location within the range of distance.
+func (p *PlayerCharacter) RandomTeleport(distance float64) {
 	pos := p.GetPosition()
 	v := gdnative.NewVector2(rand.Float32() - 0.5, rand.Float32() - 0.5)
 	normalized := v.Normalized()
 	p.SetPosition(pos.OperatorAdd(normalized.OperatorMultiplyScalar(float32(distance))))
 }
 
+func randomString(len int) string {
+	randomInt := func (min, max int) int {
+		return min + rand.Intn(max-min)
+	}
+
+    bytes := make([]byte, len)
+    for i := 0; i < len; i++ {
+        bytes[i] = byte(randomInt(65, 90))
+    }
+    return string(bytes)
+}
+
+
+// RandomName generates a random 10 character string to assign as the player's name.
+func (p *PlayerCharacter) RandomName() {
+	name := randomString(10)
+	gstrName := gdnative.NewStringFromGoString(name)
+	p.SetName(gstrName)
+}
+
+// Init should be used to initialize anything before the class gets added to a Scene.
 func (p *PlayerCharacter) Init() {
 
 }
 
+// OnClassRegistered is designed have all methods, signals, and properties registered in the function.
 func (p *PlayerCharacter) OnClassRegistered(e gdnative.ClassRegisteredEvent) {
 	// methods
 	e.RegisterMethod("_ready", "Ready")
 	e.RegisterMethod("_physics_process", "PhysicsProcess")
-	e.RegisterMethod("teleport", "Teleport")
+	e.RegisterMethod("random_teleport", "RandomTeleport")
+	e.RegisterMethod("random_name", "RandomName")
+	e.RegisterMethod("run_ginkgo_testsuite", "RunGinkgoTestSuite")
 
 	// signals
 	e.RegisterSignal("moved", gdnative.RegisterSignalArg{"velocity", gdnative.GODOT_VARIANT_TYPE_VECTOR2})
@@ -53,103 +82,109 @@ func (p *PlayerCharacter) OnClassRegistered(e gdnative.ClassRegisteredEvent) {
 	e.RegisterProperty("name", "SetName", "GetName", defaultName)
 }
 
-func (h *PlayerCharacter) GetVelocity() gdnative.Variant {
-	return gdnative.NewVariantVector2(h.velocity)
+// RunGinkgoTestSuite is the entrypoint for the ginkgo test suite
+func (p *PlayerCharacter) RunGinkgoTestSuite() {
+	runTests()
 }
 
-func (h *PlayerCharacter) setVelocity(v gdnative.Vector2) {
+// GetVelocity returns the velocity to Godot
+func (p *PlayerCharacter) GetVelocity() gdnative.Variant {
+	return gdnative.NewVariantVector2(p.velocity)
+}
+
+func (p *PlayerCharacter) setVelocity(v gdnative.Vector2) {
 	m := 2 * 5 * 16 * 16
 	n := v.Normalized()
-	h.velocity = n.OperatorMultiplyScalar(float32(m))
+	p.velocity = n.OperatorMultiplyScalar(float32(m))
 }
 
-func (h *PlayerCharacter) SetVelocity(v gdnative.Variant) {
+// SetVelocity is called when the velocity property is modified by Godot
+func (p *PlayerCharacter) SetVelocity(v gdnative.Variant) {
 	vec2 := v.AsVector2()
-	h.setVelocity(vec2)
+	p.setVelocity(vec2)
 }
 
-func (h *PlayerCharacter) GetName() gdnative.Variant {
-	v := gdnative.NewVariantString(h.name)
-	return v
+// GetName returns the name to Godot
+func (p *PlayerCharacter) GetName() gdnative.String {
+	return p.name
 }
 
-func (h *PlayerCharacter) SetName(v gdnative.Variant) {
-	newName := v.AsString()
-
-	if newName != h.name {
-		h.name = newName
-		h.EmitSignal("name_changed")
+// SetName is called when the name property is modified by Godot
+func (p *PlayerCharacter) SetName(v gdnative.String) {
+	if v != p.name {
+		p.name = v
+		p.EmitSignal("name_changed")
 	}
 
 }
 
-func (h *PlayerCharacter) Ready() {
-	log.Debug("start PlayerCharacter::Ready", gdnative.GodotObjectField("owner", h.GetOwnerObject()))
-	path := "sprite/animation_player"
-	strP := gdnative.NewStringFromGoString(path)
-	p := gdnative.NewNodePath(strP)
+// Ready is mapped to the _ready method, which is called after being added to the Scene.
+func (p *PlayerCharacter) Ready() {
+	log.Debug("start PlayerCharacter::Ready", gdnative.GodotObjectField("owner", p.GetOwnerObject()))
+	nodePath := gdnative.NewNodePath("sprite/animation_player")
 
-	log.Info("searching path...", gdnative.StringField("path", path))
+	log.Info("searching path...", gdnative.NodePathField("path", nodePath))
 
-	n := h.GetNode(p)
+	n := p.GetNode(nodePath)
 	pno := n.GetOwnerObject()
 	tt := n.GetTypeTag()
-	h.walkAnimation = gdnative.NewAnimationPlayerWithRef(pno, tt)
+	p.walkAnimation = gdnative.NewAnimationPlayerWithRef(pno, tt)
 
-	if !h.walkAnimation.HasAnimation("walk-right") {
+	if !p.walkAnimation.HasAnimation("walk-right") {
 		log.Panic("unable to find walk-right animation")
 	}
 
-	if !h.walkAnimation.HasAnimation("walk-left") {
+	if !p.walkAnimation.HasAnimation("walk-left") {
 		log.Panic("unabel to find walk-left animation")
 	}
 
-	if !h.walkAnimation.HasAnimation("walk-down") {
+	if !p.walkAnimation.HasAnimation("walk-down") {
 		log.Panic("unable to find walk-down")
 	}
 
-	if !h.walkAnimation.HasAnimation("walk-up") {
+	if !p.walkAnimation.HasAnimation("walk-up") {
 		log.Panic("unable to find walk-up")
 	}
 
-	if !h.walkAnimation.HasAnimation("idle-right") {
+	if !p.walkAnimation.HasAnimation("idle-right") {
 		log.Panic("unable to find idle-right")
 	}
 
-	if !h.walkAnimation.HasAnimation("idle-left") {
+	if !p.walkAnimation.HasAnimation("idle-left") {
 		log.Panic("unable to find idle-left")
 	}
 
-	if !h.walkAnimation.HasAnimation("idle-down") {
+	if !p.walkAnimation.HasAnimation("idle-down") {
 		log.Panic("unable to find idle-down")
 	}
 
-	if !h.walkAnimation.HasAnimation("idle-up") {
+	if !p.walkAnimation.HasAnimation("idle-up") {
 		log.Panic("unable to find idle-up")
 	}
 
-	log.Debug("End PlayerCharacter::Ready", gdnative.GodotObjectField("owner", h.GetOwnerObject()))
+	log.Debug("End PlayerCharacter::Ready", gdnative.GodotObjectField("owner", p.GetOwnerObject()))
 }
 
-func (h *PlayerCharacter) PhysicsProcess(delta float64) {
-	h.setVelocity(getKeyInputDirectionAsVector2())
+// PhysicsProcess is mapped to the _physics_process method.
+func (p *PlayerCharacter) PhysicsProcess(delta float64) {
+	p.setVelocity(getKeyInputDirectionAsVector2())
 
-	h.updateSprite(delta)
+	p.updateSprite(delta)
 
-	v := h.velocity.OperatorMultiplyScalar(float32(delta))
+	v := p.velocity.OperatorMultiplyScalar(float32(delta))
 
-	nv := h.MoveAndSlide(v, h.floorNormal, false, 4, 0.785398, true)
+	nv := p.MoveAndSlide(v, p.floorNormal, false, 4, 0.785398, true)
 
 	variant := gdnative.NewVariantVector2(nv)
 	defer variant.Destroy()
-	h.EmitSignal("moved", &variant)
+	p.EmitSignal("moved", &variant)
 }
 
-func (h *PlayerCharacter) updateSprite(delta float64) {
-	x := h.velocity.GetX()
-	y := h.velocity.GetY()
+func (p *PlayerCharacter) updateSprite(delta float64) {
+	x := p.velocity.GetX()
+	y := p.velocity.GetY()
 
-	a := h.walkAnimation
+	a := p.walkAnimation
 	ca := a.GetCurrentAnimation()
 
 	if x > 0 {
@@ -210,8 +245,11 @@ func getKeyInputDirectionAsVector2() gdnative.Vector2 {
 	)
 }
 
+// Free should be called to clean up memory
 func (p *PlayerCharacter) Free() {
 	log.Debug("free PlayerCharacter")
+
+	p.name.Destroy()
 
 	p.walkAnimation = nil
 
@@ -221,6 +259,7 @@ func (p *PlayerCharacter) Free() {
 	}
 }
 
+// NewPlayerCharacter is the constructor that creates an instance recognized by Godot
 func NewPlayerCharacter() PlayerCharacter {
 	log.Debug("NewPlayerCharacter")
 	inst := *(gdnative.CreateCustomClassInstance("PlayerCharacter", "KinematicBody2D").(*PlayerCharacter))
@@ -228,25 +267,25 @@ func NewPlayerCharacter() PlayerCharacter {
 }
 
 var (
-	velocity gdnative.String
-	velocityVariant gdnative.Variant
-
 	defaultVelocity gdnative.Variant
 	defaultName gdnative.Variant
 )
 
+// PlayerCharacterNativescriptInit called after NativeScript initializes
 func PlayerCharacterNativescriptInit() {
-	velocity = gdnative.NewStringFromGoString("velocity")
-	velocityVariant = gdnative.NewVariantString(velocity)
-
 	defaultVelocity = gdnative.NewVariantVector2(gdnative.NewVector2(0.0, 0.0))
-	defaultName = gdnative.NewVariantString(gdnative.NewStringFromGoString("No_Name"))
+	defaultName = gdnative.NewVariantString("No_Name")
+
+	gdnative.RegisterClass(&PlayerCharacter{})
 }
 
+// PlayerCharacterNativescriptTerminate called before NativeScript terminates
 func PlayerCharacterNativescriptTerminate() {
-	velocity.Destroy()
-	velocityVariant.Destroy()
-
 	defaultVelocity.Destroy()
 	defaultName.Destroy()
+}
+
+func init() {
+	gdnative.RegisterInitCallback(PlayerCharacterNativescriptInit)
+	gdnative.RegisterTerminateCallback(PlayerCharacterNativescriptTerminate)
 }

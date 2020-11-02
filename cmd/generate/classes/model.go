@@ -2,7 +2,6 @@ package classes
 
 import (
 	"fmt"
-	"github.com/godot-go/godot-go/cmd/generate/shared"
 	"log"
 	"regexp"
 	"strings"
@@ -35,15 +34,19 @@ func cType(value string) string {
 	switch value {
 	case "bool":
 		return "char"
+	case "float":
+		return "double"
 	}
 
 	return value
 }
 
+// Usage is an enum type categorizing data types for parsing and generating NativeScript classes.
 type Usage int8
 
+//revive:disable:var-naming
 const (
-	USAGE_VOID         Usage = iota
+	USAGE_VOID Usage = iota
 	USAGE_GO_PRIMATIVE
 	USAGE_GDNATIVE_CONST_OR_ENUM
 	USAGE_GODOT_STRING
@@ -52,6 +55,7 @@ const (
 	USAGE_GODOT_CONST_OR_ENUM
 	USAGE_GODOT_CLASS
 )
+//revive:enable:var-naming
 
 func (u Usage) String() string {
 	switch u {
@@ -78,7 +82,7 @@ func (u Usage) String() string {
 	return "___UNKNOWN"
 }
 
-func goTypeAndUsage(value string) (string, Usage) {
+func GoTypeAndUsage(value string) (string, Usage) {
 	switch value {
 	case "String":
 		return "string", USAGE_GODOT_STRING
@@ -126,13 +130,13 @@ func goTypeAndUsage(value string) (string, Usage) {
 
 // GoType converts types in the api.json into generated Go types.
 func GoType(value string) string {
-	t, _ := goTypeAndUsage(value)
+	t, _ := GoTypeAndUsage(value)
 	return t
 }
 
-// GoType converts types in the api.json into generated Go types.
+// GoTypeUsage converts types in the api.json into generated Go types.
 func GoTypeUsage(value string) string {
-	_, u := goTypeAndUsage(value)
+	_, u := GoTypeAndUsage(value)
 	return u.String()
 }
 
@@ -181,7 +185,7 @@ func (a GDAPIs) PartitionByBaseApiTypeAndClass() ApiTypeBaseClassIndex {
 	for _, api := range a {
 		parentClasses, ok := parts[api.APIType]
 		if !ok {
-			log.Printf("api type '%s' unsupported", api.ApiType)
+			log.Printf("api type '%v' unsupported", api.ApiType())
 			continue
 		}
 		parentClasses[api.BaseClass] = append(parentClasses[api.BaseClass], api)
@@ -208,7 +212,7 @@ type GDAPI struct {
 
 func (a GDAPI) HasEnumValue(value string) bool {
 	for _, e := range a.Enums {
-		for v, _ := range e.Values {
+		for v := range e.Values {
 			if v == value {
 				return true
 			}
@@ -221,9 +225,9 @@ func (a GDAPI) HasEnumValue(value string) bool {
 func (a GDAPI) ParentInterface() string {
 	if a.Name == "Object" {
 		return "Class"
-	} else {
-		return a.BaseClass
 	}
+
+	return a.BaseClass
 }
 
 func (a GDAPI) PrefixName() string {
@@ -298,8 +302,33 @@ func (m GDMethod) MethodBindName() string {
 	return casee.ToPascalCase(m.Name) + "MethodBind"
 }
 
+// CToGoValueTypeMap proves a translation between C to Go
+var CToGoValueTypeMap = map[string]string{
+	"bool":               "bool",
+	"uint8_t":            "uint8",
+	"uint32_t":           "uint32",
+	"uint64_t":           "uint64",
+	"int64_t":            "int64",
+	"double":             "float64",
+	"wchar_t":            "int32",
+	"char":               "C.char",
+	"int":                "int32",
+	"size_t":             "int64",
+	"void":               "void",
+	"string":             "string",
+	"float":              "float32",
+	"godot_real":         "float32",
+	"godot_bool":         "bool",
+	"godot_int":          "int32",
+	"godot_object":       "GodotObject",
+	"godot_vector3_axis": "Vector3Axis",
+	"godot_variant_type": "VariantType",
+	"godot_error":        "Error",
+	"godot_string":       "String",
+}
+
 func (m GDMethod) IsBuiltinReturnType() bool {
-	_, ok := shared.CToGoValueTypeMap[m.ReturnType]
+	_, ok := CToGoValueTypeMap[m.ReturnType]
 	return ok
 }
 

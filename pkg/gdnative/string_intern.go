@@ -5,62 +5,70 @@ import "sync"
 type stringHash uint64
 
 var (
-	goStringMap    map[string]String
-	godotStringMap map[stringHash]string
-	mut            sync.RWMutex
+	goStringNameMap    map[string]StringName
+	godotStringNameMap map[stringHash]string
+	mut                sync.RWMutex
 )
 
 func init() {
-	goStringMap = map[string]String{}
-	godotStringMap = map[stringHash]string{}
+	goStringNameMap = map[string]StringName{}
+	godotStringNameMap = map[stringHash]string{}
 }
 
 func internWithGoString(str string) String {
+	gdsn := internNameWithGoString(str)
+	return gdsn.GetName()
+}
+
+func internNameWithGoString(str string) StringName {
 	mut.RLock()
-	if gdstr, ok := goStringMap[str]; ok {
+	if gdsn, ok := goStringNameMap[str]; ok {
 		mut.RUnlock()
-		return gdstr
+		return gdsn
 	}
 	mut.RUnlock()
 
 	mut.Lock()
-	gdstr := NewStringFromGoString(str)
-	hash := stringHash(gdstr.Hash64())
-	goStringMap[str] = gdstr
-	godotStringMap[hash] = str
+	gdsn := NewStringNameData(str)
+	gds := gdsn.GetName()
+	hash := stringHash(gds.Hash64())
+	goStringNameMap[str] = gdsn
+	godotStringNameMap[hash] = str
 	mut.Unlock()
 
-	return gdstr
+	return gdsn
 }
 
-func internWithGodotString(gdstr String) string {
-	hash := stringHash(gdstr.Hash64())
+func internWithGodotStringName(gdsn StringName) string {
+	gds := gdsn.GetName()
+	hash := stringHash(gds.Hash64())
 	mut.RLock()
-	if str, ok := godotStringMap[hash]; ok {
+	if str, ok := godotStringNameMap[hash]; ok {
 		mut.RUnlock()
 		return str
 	}
 	mut.RUnlock()
 
 	mut.Lock()
-	str := gdstr.AsGoString()
-	goStringMap[str] = gdstr
-	godotStringMap[hash] = str
+	str := gds.AsGoString()
+	goStringNameMap[str] = NewStringName(gds)
+	godotStringNameMap[hash] = str
 	mut.Unlock()
 
 	return str
 }
 
-func internWithGodotStringName(gdstrname StringName) string {
-	return internWithGodotString(gdstrname.GetName())
+func internWithGodotString(gds String) string {
+	gdsn := NewStringName(gds)
+	return internWithGodotStringName(gdsn)
 }
 
 func internClear() {
 	mut.Lock()
-	godotStringMap = make(map[stringHash]string)
-	for k, v := range goStringMap {
+	godotStringNameMap = make(map[stringHash]string)
+	for k, v := range goStringNameMap {
 		v.Destroy()
-		delete(goStringMap, k)
+		delete(goStringNameMap, k)
 	}
 	mut.Unlock()
 }

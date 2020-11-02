@@ -15,10 +15,16 @@ import (
 
 var cTypeRegex = regexp.MustCompile(`(const)?\s*([\w_][\w_\d]*)\s*(\**)`)
 
+// GlobalMethods contains the list of methods not associated with a GoTypeDef
+type GlobalMethods []gdnativeapijson.GoMethod
+
+// ConstructorIndex indexes by gdnativeapijson.GoTypeDef.CName
 type ConstructorIndex map[string][]gdnativeapijson.GoMethod
+
+// MethodIndex indexes by gdnativeapijson.GoTypeDef.CName
 type MethodIndex map[string][]gdnativeapijson.GoMethod
 
-// index by C header file name and then by C typedef name
+// GoTypeDefIndex indexes by C header file name and then by C typedef name
 type GoTypeDefIndex map[string]map[string]gdnativeapijson.GoTypeDef
 
 // parseGodotHeaders will parse the GDNative headers. Takes a list of headers/structs to ignore.
@@ -119,19 +125,19 @@ func parseTypeDef(typeLines []string, headerName string) gdnativeapijson.GoTypeD
 
 		var err error
 
-		
+
 
 		// Get the words of the line
 		words := strings.Split(line, " ")
 		typeDef.CName = strings.Replace(words[len(words)-1], ";", "", 1)
 
-		goTypeName, isBuiltIn := gdnativeapijson.ToGoTypeName(typeDef.CName)
+		goTypeName, usage := gdnativeapijson.ToGoTypeName(typeDef.CName)
 
 		typeDef.Name = goTypeName
 		typeDef.Base = words[len(words)-2]
 		typeDef.Comment = comment
-		typeDef.IsBuiltIn = isBuiltIn
-		
+		typeDef.Usage = usage
+
 		if err != nil {
 			panic(fmt.Errorf("%s\n%w", line, err))
 		}
@@ -240,7 +246,7 @@ func parseTypeDef(typeLines []string, headerName string) gdnativeapijson.GoTypeD
 		}
 
 		if strings.Contains(property.Name, "}") {
-			panic(fmt.Errorf("malformed Name: %v+", property))
+			panic(fmt.Errorf("malformed Name: %+v", property))
 		}
 
 		// Append the property to the type definition
@@ -263,8 +269,7 @@ const (
 func findTypeDefs(content []byte) [][]string {
 	lines := strings.Split(string(content), "\n")
 
-	// Create a structure that will hold the lines that define the
-	// type.
+	// Create a structure that will hold the lines that define the type.
 	var (
 		singleType []string
 		foundTypes [][]string

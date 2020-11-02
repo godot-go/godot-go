@@ -9,6 +9,8 @@ package gdnative
 //   code.
 //----------------------------------------------------------------------------*/
 
+//revive:disable
+
 /*
 #include <gdnative.wrapper.gen.h>
 #include <gdnative/aabb.h>
@@ -46,8 +48,10 @@ import (
 
 /* TypeDefs */
 {{ range $j, $typeDef := .TypeDefs -}}
-    {{ if not $typeDef.IsBuiltIn -}}
+    {{ if not (eq $typeDef.Usage USAGE_GO_PRIMATIVE) -}}
     type {{ $typeDef.Name }} C.{{ $typeDef.CName }}
+    {{ else -}}
+    // mapped C.{{ $typeDef.CName }} to native go type {{ $typeDef.Name }}
     {{ end -}}
 
     {{ if eq $typeDef.Base "enum" -}}
@@ -75,10 +79,12 @@ import (
         {{ end }}
     {{ end }}
 {{ end }}
+//revive:enable
 
 {{ define "CONSTRUCTOR_METHOD" }}
-    func {{ .Name }}({{ template "ARGUMENTS" .Arguments }}) {{ .ReturnType.GoName }} {
-        dest := {{ .ReturnType.GoName }}{}
+    {{ $returnTypeGoName := .ReturnType.GoName }}
+    func {{ .Name }}({{ template "ARGUMENTS" . }}) {{ $returnTypeGoName }} {
+        dest := {{ $returnTypeGoName }}{}
 
         api := {{ .ApiMetadata.Name }}
         {{- if or .ReturnType.IsGodotObjectPointer .ReturnType.IsVoidPointer }}
@@ -89,6 +95,10 @@ import (
         {{- range $k, $arg := .Arguments }}
             {{- if $arg.Type.IsGodotObjectPointer }}
                 in{{ $k }} := unsafe.Pointer({{ $arg.Name }})
+            {{- else if and (or $arg.Type.IsString $arg.Type.IsStringName) (ne $returnTypeGoName "String") (ne $returnTypeGoName "StringName") }}
+                // hide {{ $arg.Type.CName }} / {{ $arg.Type.GoName }} and expose native go string
+                strIn{{ $k }} := internWithGoString({{ $arg.Name }})
+                in{{ $k }} := (*C.{{ $arg.Type.CName }})(unsafe.Pointer(&strIn{{ $k }}))
             {{- else if $arg.Type.IsVoidPointer }}
                 in{{ $k }} := unsafe.Pointer({{ $arg.Name }})
             {{- else if $arg.Type.IsCharPointer }}
@@ -127,7 +137,7 @@ import (
 
 {{ define "SETTER_METHOD" }}
     /* Setter Method: {{ .CName }} -> {{ .ReturnType.CName }} */
-    func (gdt *{{ .Receiver.Type.GoName }}) {{ .Name }}({{ template "ARGUMENTS" .Arguments }}) {
+    func (gdt *{{ .Receiver.Type.GoName }}) {{ .Name }}({{ template "ARGUMENTS" . }}) {
         {{ template "DESCRIBE_CMETHOD" . }}
 
         api := {{ .ApiMetadata.Name }}
@@ -170,7 +180,7 @@ import (
 
 {{ define "GETTER_METHOD" }}
     /* Getter Method: {{ .CName }} -> {{ .ReturnType.CName }} */
-    func (gdt *{{ .Receiver.Type.GoName }}) {{ .Name }}({{ template "ARGUMENTS" .Arguments }})
+    func (gdt *{{ .Receiver.Type.GoName }}) {{ .Name }}({{ template "ARGUMENTS" . }})
     {{- if .ReturnType.IsGodotObjectPointer -}}
         *GodotObject
     {{- else if .ReturnType.IsCharPointer -}}
@@ -232,7 +242,7 @@ import (
 {{ define "GLOBAL_METHOD" }}
     /* Global Method: {{ if .ReturnType.IsPointer }}*{{ end }}{{ .CName }} -> {{ if .ReturnType.IsPointer }}*{{ end }}{{ .ReturnType.CName }} */
     {{ $methodName := .Name }}
-    func {{ .Name }}({{ template "ARGUMENTS" .Arguments }})
+    func {{ .Name }}({{ template "ARGUMENTS" . }})
     {{- if .ReturnType.IsCharPointer -}}
         string
     {{- else if .ReturnType.NoReturnValue -}}
@@ -318,14 +328,17 @@ import (
 {{ end }}
 
 {{ define "ARGUMENTS" }}
-    {{- range $k, $arg := . -}}
-        {{ $arg.Name }}
+    {{ $gomethod := . }}
+    {{- range $k, $arg := .Arguments -}}
+        {{ $arg.Name -}}
         {{- if $arg.Type.IsCharPointer }} string,
+        {{- else if and (eq $gomethod.GoMethodType ConstructorGoMethodType) (or $arg.Type.IsString $arg.Type.IsStringName) (ne $gomethod.ReturnType.GoName "String") (ne $gomethod.ReturnType.GoName "StringName") }} string /* Hides {{ $arg.Type.GoName }} */,
         {{- else if $arg.Type.IsGodotObjectPointer }} *GodotObject,
         {{- else if $arg.Type.IsVoidPointer }} unsafe.Pointer,
         {{- else if $arg.Type.IsVoidPointerArray }} []unsafe.Pointer,
-        {{- else if $arg.Type.IsPointer }} {{ $arg.Type.GoName }},
+        {{- else if $arg.Type.IsPointer }} {{ $arg.Type.GoName }} /* {{ $arg.Type.CName }} */,
         {{- else if $arg.Type.IsPointerArray }} []*{{ $arg.Type.GoName }},
-        {{- else }} {{ $arg.Type.GoName }},{{ end -}}
-    {{- end -}}
+        {{- else }} {{ $arg.Type.GoName }} /* else case */,
+        {{- end }}
+    {{- end}}
 {{ end }}

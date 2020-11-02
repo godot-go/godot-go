@@ -44,10 +44,9 @@ var _ = Describe("GodotObject", func() {
 				Ω(v.GetType()).Should(Equal(gdnative.GODOT_VARIANT_TYPE_DICTIONARY))
 				dict := v.AsDictionary()
 
-				nameStr := gdnative.NewStringFromGoString("name")
-				defer nameStr.Destroy()
+				vName := gdnative.NewVariantString("name")
+				defer vName.Destroy()
 
-				vName := gdnative.NewVariantString(nameStr)
 				getClassV := dict.Get(vName)
 				defer getClassV.Destroy()
 

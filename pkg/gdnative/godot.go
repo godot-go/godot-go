@@ -9,11 +9,12 @@ type ExtNativescriptInitCallback func()
 type ExtNativescriptTerminateCallback func()
 
 var (
-	registerMethodBindsCallbacks []RegisterMethodBindsCallback
-	registerTypeTagCallbacks     []RegisterTypeTagCallback
-	initClassCallbacks           []InitClassCallback
-	initNativescriptCallbacks    []ExtNativescriptInitCallback
-	terminateCallbacks           []ExtNativescriptTerminateCallback
+	registerMethodBindsCallbacks           []RegisterMethodBindsCallback
+	registerTypeTagCallbacks               []RegisterTypeTagCallback
+	initInternalNativescriptCallbacks      []ExtNativescriptInitCallback
+	terminateInternalNativescriptCallbacks []ExtNativescriptTerminateCallback
+	initNativescriptCallbacks              []ExtNativescriptInitCallback
+	terminateNativescriptCallbacks         []ExtNativescriptTerminateCallback
 )
 
 func registerMethodBinds(callbacks ...RegisterMethodBindsCallback) {
@@ -24,11 +25,20 @@ func registerTypeTag(callbacks ...RegisterTypeTagCallback) {
 	registerTypeTagCallbacks = append(registerTypeTagCallbacks, callbacks...)
 }
 
-//RegisterInitCallback is called for each Godot class that needs to be initialzied as well as to initialize custom code.
+func registerInternalInitCallback(callbacks ...ExtNativescriptInitCallback) {
+	initInternalNativescriptCallbacks = append(initInternalNativescriptCallbacks, callbacks...)
+}
+
+func registerInternalTerminateCallback(callbacks ...ExtNativescriptTerminateCallback) {
+	terminateInternalNativescriptCallbacks = append(terminateInternalNativescriptCallbacks, callbacks...)
+}
+
+//RegisterInitCallback registers funcions to be called after NativeScript initializes.
 func RegisterInitCallback(callbacks ...ExtNativescriptInitCallback) {
 	initNativescriptCallbacks = append(initNativescriptCallbacks, callbacks...)
 }
 
-func RegisterTerminateCallbacks(callbacks ...ExtNativescriptTerminateCallback) {
-	terminateCallbacks = append(terminateCallbacks, callbacks...)
+//RegisterTerminateCallback registers funcions to be called before NativeScript terminates.
+func RegisterTerminateCallback(callbacks ...ExtNativescriptTerminateCallback) {
+	terminateNativescriptCallbacks = append(terminateNativescriptCallbacks, callbacks...)
 }

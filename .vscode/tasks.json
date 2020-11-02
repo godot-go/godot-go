@@ -4,14 +4,20 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "mage buildExamples",
+            "label": "build:test",
             "type": "shell",
-            "command": "go run mage.go -v buildExamples",
+            "command": "go run mage.go -v buildTest",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "go:env",
+            "type": "shell",
+            "command": "go env",
+            "problemMatcher": []
         }
     ]
 }

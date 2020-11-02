@@ -5,6 +5,17 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "godot test",
+      "type": "godot",
+      "request": "launch",
+      "project": "${workspaceFolder}/test/project",
+      "port": 6007,
+      "address": "127.0.0.1",
+      "launch_game_instance": true,
+      "launch_scene": false,
+      "preLaunchTask": "build:test",
+    },
+    {
       "name": "test",
       "type": "cppdbg",
       "request": "launch",

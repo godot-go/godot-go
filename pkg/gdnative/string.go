@@ -22,15 +22,20 @@ func NewStringFromGoString(value string) String {
 	return str
 }
 
+// NewStringNameFromGoString create a new string and fills it with the go string.
+func NewStringNameFromGoString(value string) StringName {
+	gds := NewStringFromGoString(value)
+	defer gds.Destroy()
+	return NewStringName(gds)
+}
+
 func (x *String) AsGoString() string {
 	a := x.Ascii()
 	defer a.Destroy()
 	return a.GetData()
 }
 
-func NewVariantGoString(value string) Variant {
-	gs := NewStringFromGoString(value)
-	defer gs.Destroy()
-
-	return NewVariantString(gs)
+func (x *StringName) AsGoString() string {
+	a := x.GetName()
+	return a.AsGoString()
 }

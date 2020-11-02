@@ -16,9 +16,9 @@ type Argument []string
 func (a *Argument) FunctionArgument() string {
 	if strings.HasSuffix((*a)[0], "**") {
 		return fmt.Sprintf("%s* %s[]", (*a)[0][:len((*a)[0])-2], (*a)[1])
-	} else {
-		return fmt.Sprintf("%s %s", (*a)[0], (*a)[1])
 	}
+
+	return fmt.Sprintf("%s %s", (*a)[0], (*a)[1])
 }
 
 type Arguments []Argument
@@ -44,8 +44,8 @@ func parseGoType(cTypeName string) GoType {
 	tokens := matches[0]
 
 	var (
-		hasConst  bool
-		rt        ReferenceType
+		hasConst bool
+		rt       ReferenceType
 	)
 
 	hasConst = tokens[1] == "const"
@@ -119,7 +119,7 @@ func (n ApiFunctionName) toGoConstructorName() (string, string, bool) {
 		return "", "", false
 	}
 
-	typeName := ToPascalCase(stripGodotPrefix(matches[0][1]))
+	typeName, _ := ToGoTypeName(ToPascalCase(stripGodotPrefix(matches[0][1])))
 	method := fmt.Sprintf("New%s%s", typeName, ToPascalCase(matches[0][2]))
 
 	return typeName, method, true
@@ -235,6 +235,7 @@ type APIJson struct {
 	Extensions []APIVersion `json:"extensions"`
 }
 
+// ParseGdnativeApiJson parses gdnative_api.json into a APIJson struct.
 func ParseGdnativeApiJson(packagePath string) APIJson {
 	filename := packagePath + "/godot_headers/gdnative_api.json"
 	// Open the gdnative_api.json file that defines the GDNative APIVersion.

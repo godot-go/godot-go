@@ -1,5 +1,7 @@
 package {{ .PackageName }}
 
+//revive:disable
+
 /*
 #include <stdlib.h>
 #include <gdnative.wrapper.gen.h>
@@ -26,6 +28,12 @@ import (
 //   "{{ .TemplateName }}" so they can be included in the generated
 //   code.
 //----------------------------------------------------------------------------*/
+func init() {
+	{{ range $j, $api := .Apis -}}
+	registerMethodBinds(Init{{ $api.PrefixName }}MethodBinds)
+	registerTypeTag(Init{{ $api.PrefixName }}TypeTag)
+	{{ end -}}
+}
 
 {{ range $j, $api := .Apis -}}
 
@@ -76,6 +84,7 @@ import (
 	{{ template "ENUMS" $api }}
 
 {{ end -}}
+//revive:enable
 
 {{ define "CONSTRUCTOR" }}
 	{{ if .Singleton }}
@@ -257,11 +266,6 @@ import (
 		)
 	{{ end }}
 
-	func init() {
-		registerMethodBinds(Init{{ .PrefixName }}MethodBinds)
-		registerTypeTag(Init{{ .PrefixName }}TypeTag)
-	}
-
 	func Init{{ .PrefixName }}TypeTag() {
 		if CoreApi == nil {
 			log.Panic("godot core api not initialized")
@@ -376,6 +380,7 @@ import (
 					{{ else if eq $usage USAGE_GODOT_STRING_NAME }}
 						/* USAGE_GODOT_STRING_NAME ({{ $arg.Type }} / {{ $goType }}) */
 						_arg{{ $k }} := NewStringName(internWithGoString({{ $arg.GoName }}))
+						defer _arg{{ $k }}.Destroy()
 						ptrArguments[{{ $k }}] = unsafe.Pointer(&_arg{{ $k }})
 					{{ else if eq $usage USAGE_GDNATIVE_REF }}
 						/* USAGE_GDNATIVE_REF ({{ $arg.Type }} / {{ $goType }}) */

@@ -68,7 +68,7 @@ func VariantToGoType(variant Variant) reflect.Value {
 		return reflect.ValueOf(variant.AsPoolColorArray())
 	}
 	log.Panic("variant to native built-in type version unhandled",
-		StringField("type", fmt.Sprintf("%d", variant.GetType())),
+		VariantField("variant", variant),
 	)
 	return reflect.ValueOf(nil)
 }
@@ -97,9 +97,9 @@ func GoTypeToVariant(value reflect.Value) Variant {
 	case float64:
 		return NewVariantReal(v)
 	case string:
-		return NewVariantString(internWithGoString(v))
-	case String:
 		return NewVariantString(v)
+	case String:
+		return NewVariantString(v.AsGoString())
 	case Vector2:
 		return NewVariantVector2(v)
 	case Rect2:

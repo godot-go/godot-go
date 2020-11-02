@@ -31,5 +31,5 @@ func test_player_characater_name():
 
 func test_run_go_ginkgo_testsuite():
 	var inst = PlayerCharacter.new()
-	inst.run_ginkgo_testsuite()
+	assert_true(inst.run_ginkgo_testsuite())
 	inst.free()

@@ -34,23 +34,22 @@ func (p *PlayerCharacter) BaseClass() string {
 // RandomTeleport teleports the player to a random location within the range of distance.
 func (p *PlayerCharacter) RandomTeleport(distance float64) {
 	pos := p.GetPosition()
-	v := gdnative.NewVector2(rand.Float32() - 0.5, rand.Float32() - 0.5)
+	v := gdnative.NewVector2(rand.Float32()-0.5, rand.Float32()-0.5)
 	normalized := v.Normalized()
 	p.SetPosition(pos.OperatorAdd(normalized.OperatorMultiplyScalar(float32(distance))))
 }
 
 func randomString(len int) string {
-	randomInt := func (min, max int) int {
+	randomInt := func(min, max int) int {
 		return min + rand.Intn(max-min)
 	}
 
-    bytes := make([]byte, len)
-    for i := 0; i < len; i++ {
-        bytes[i] = byte(randomInt(65, 90))
-    }
-    return string(bytes)
+	bytes := make([]byte, len)
+	for i := 0; i < len; i++ {
+		bytes[i] = byte(randomInt(65, 90))
+	}
+	return string(bytes)
 }
-
 
 // RandomName generates a random 10 character string to assign as the player's name.
 func (p *PlayerCharacter) RandomName() {
@@ -83,8 +82,10 @@ func (p *PlayerCharacter) OnClassRegistered(e gdnative.ClassRegisteredEvent) {
 }
 
 // RunGinkgoTestSuite is the entrypoint for the ginkgo test suite
-func (p *PlayerCharacter) RunGinkgoTestSuite() {
-	runTests()
+func (p *PlayerCharacter) RunGinkgoTestSuite() gdnative.Variant {
+	ret := runTests()
+
+	return gdnative.NewVariantBool(ret)
 }
 
 // GetVelocity returns the velocity to Godot
@@ -206,7 +207,7 @@ func (p *PlayerCharacter) updateSprite(delta float64) {
 	} else if ca != "" {
 		tokens := strings.Split(ca, "-")
 
-		if len(tokens) != 2  {
+		if len(tokens) != 2 {
 			log.Panic("unable to parse animation name", gdnative.StringField("name", ca))
 		}
 
@@ -268,7 +269,7 @@ func NewPlayerCharacter() PlayerCharacter {
 
 var (
 	defaultVelocity gdnative.Variant
-	defaultName gdnative.Variant
+	defaultName     gdnative.Variant
 )
 
 // PlayerCharacterNativescriptInit called after NativeScript initializes

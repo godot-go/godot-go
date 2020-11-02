@@ -15,7 +15,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func runTests() {
+func runTests() bool {
 	isSet := func(name string) bool {
 		v, _ := os.LookupEnv(name)
 		return v == "1"
@@ -30,5 +30,5 @@ func runTests() {
 	}
 
 	RegisterFailHandler(Fail)
-	RunSpecs(GinkgoT(), "Godot Integration Test Suite")
+	return RunSpecs(GinkgoT(), "Godot Integration Test Suite")
 }

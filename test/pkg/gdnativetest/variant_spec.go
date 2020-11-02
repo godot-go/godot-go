@@ -92,7 +92,7 @@ var _ = Describe("Variant", func() {
 			Ω(rf.Interface()).Should(Equal(f))
 
 			rs := gdnative.VariantToGoType(arr.Get(1))
-			Ω(rs.Interface()).Should(Equal(str))
+			Ω(rs.Interface()).Should(Equal("my name"))
 		})
 
 		It("should return an Object type", func() {

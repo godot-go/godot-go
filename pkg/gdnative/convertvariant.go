@@ -21,7 +21,7 @@ func VariantToGoType(variant Variant) reflect.Value {
 	case GODOT_VARIANT_TYPE_REAL:
 		return reflect.ValueOf(variant.AsReal())
 	case GODOT_VARIANT_TYPE_STRING:
-		return reflect.ValueOf(variant.AsString())
+		return reflect.ValueOf(internWithGodotString(variant.AsString()))
 	case GODOT_VARIANT_TYPE_VECTOR2:
 		return reflect.ValueOf(variant.AsVector2())
 	case GODOT_VARIANT_TYPE_RECT2:
@@ -99,7 +99,7 @@ func GoTypeToVariant(value reflect.Value) Variant {
 	case string:
 		return NewVariantString(v)
 	case String:
-		return NewVariantString(v.AsGoString())
+		return NewVariantString(internWithGodotString(v))
 	case Vector2:
 		return NewVariantVector2(v)
 	case Rect2:

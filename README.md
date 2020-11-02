@@ -15,9 +15,9 @@ To start using godot-go in your own go project:
 
     go get -u github.com/godot-go/godot-go@0.0.7
 
-The only real documentation that currently exists is in the test Godot project embedded in the library; an example class representing a [Player Charater](test/pkg/gdnativetest/object_player_character.go) in a 2D Top-down game. Referencing the official C/C++ documentation of [GDNative](https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html) will help for the time being.
+The only real documentation that currently exists is in the test Godot project embedded in the library and the [Dodge the Creeps port](https://github.com/godot-go/godot-go-demo-projects/tree/master/2d/dodge_the_creeps) in the godot-go-demo-projects repository. Referencing the official C/C++ documentation of [GDNative](https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html) will help for the time being.
 
-To see the test demo application embedded in the project, run the following:
+To run the tests in the project, run the following:
 
     git clone github.com/godot-go/godot-go
     cd godot-go
@@ -25,7 +25,7 @@ To see the test demo application embedded in the project, run the following:
 
 Please adjust `GODOT_BIN` to point to your godot executable. Changes to godot-go package has a compile time of roughly *4 minutes* on my setup; so, please be patient. Once it finishes compiling, the tests will run and the demo app will automatically start.
 
-Please install Go version 1.15 or above to get the latest cgo improvements. I encourage everyone to install Go through [Go Version Manager](https://github.com/moovweb/gvm)
+Please install Go version 1.15.3 or above to get the latest cgo improvements. I encourage everyone to install Go through [Go Version Manager](https://github.com/moovweb/gvm)
 
 
 ### Support

@@ -37,9 +37,9 @@
         "pkg/gdnative"
     ],
     "go.lintTool": "revive",
-    "gut-extension.additionalOptions": "-d --path test/project",
-    "godot_tools.project_path": "test/project",
     "go.lintFlags": [
         "-config=${workspaceFolder}/revive.toml"
-    ]
+    ],
+    "godot_tools.project_path": "test",
+    "gut-extension.additionalOptions": "-d --path test"
 }

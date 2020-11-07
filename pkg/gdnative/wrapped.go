@@ -16,11 +16,11 @@ import (
 )
 
 var (
-	wrappedNativeScriptSetClassNameMethodBind *C.godot_method_bind
-	wrappedNativeScriptSetLibraryMethodBind   *C.godot_method_bind
-	wrappedNativeScriptSetScriptMethodBind    *C.godot_method_bind
-	nilptr                                    = unsafe.Pointer(uintptr(0))
-	strNativeScript                           *C.char
+	wrappedSetClassNameMethodBind *C.godot_method_bind
+	wrappedSetLibraryMethodBind   *C.godot_method_bind
+	wrappedSetScriptMethodBind    *C.godot_method_bind
+	nilptr                        = unsafe.Pointer(uintptr(0))
+	strNativeScript               *C.char
 )
 
 func init() {
@@ -70,17 +70,17 @@ func wrappedInitCallback() {
 	// these are static members in create_custom_class_instance()
 	strSetClassName := C.CString("set_class_name")
 	defer C.free(unsafe.Pointer(strSetClassName))
-	wrappedNativeScriptSetClassNameMethodBind = (*C.godot_method_bind)(unsafe.Pointer(C.go_godot_method_bind_get_method(CoreApi, strNativeScript, strSetClassName)))
+	wrappedSetClassNameMethodBind = (*C.godot_method_bind)(unsafe.Pointer(C.go_godot_method_bind_get_method(CoreApi, strNativeScript, strSetClassName)))
 
-	if wrappedNativeScriptSetClassNameMethodBind == nil {
+	if wrappedSetClassNameMethodBind == nil {
 		log.Debug("failed to initialize method bind wrappedNativeScriptSetClassNameMethodBind")
 	}
 
 	strSetLibrary := C.CString("set_library")
 	defer C.free(unsafe.Pointer(strSetLibrary))
-	wrappedNativeScriptSetLibraryMethodBind = (*C.godot_method_bind)(unsafe.Pointer(C.go_godot_method_bind_get_method(CoreApi, strNativeScript, strSetLibrary)))
+	wrappedSetLibraryMethodBind = (*C.godot_method_bind)(unsafe.Pointer(C.go_godot_method_bind_get_method(CoreApi, strNativeScript, strSetLibrary)))
 
-	if wrappedNativeScriptSetLibraryMethodBind == nil {
+	if wrappedSetLibraryMethodBind == nil {
 		log.Debug("failed to initialize method bind wrappedNativeScriptSetLibraryMethodBind")
 	}
 
@@ -88,27 +88,16 @@ func wrappedInitCallback() {
 	defer C.free(unsafe.Pointer(strObject))
 	strSetScript := C.CString("set_script")
 	defer C.free(unsafe.Pointer(strSetScript))
-	wrappedNativeScriptSetScriptMethodBind = (*C.godot_method_bind)(unsafe.Pointer(C.go_godot_method_bind_get_method(CoreApi, strObject, strSetScript)))
+	wrappedSetScriptMethodBind = (*C.godot_method_bind)(unsafe.Pointer(C.go_godot_method_bind_get_method(CoreApi, strObject, strSetScript)))
 }
 
 func wrappedTerminateCallback() {
 	C.free(unsafe.Pointer(strNativeScript))
 }
 
-func GetWrapper(owner *GodotObject) WrappedImpl {
-	return *(*WrappedImpl)(unsafe.Pointer(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner))))
-}
-
-func GetCustomClassInstance(obj Object) NativeScriptClass {
-	if obj == nil {
-		log.Panic("cannot cast null owner as NativeScriptClass")
-	}
-
-	owner := obj.GetOwnerObject()
-
-	return GetCustomClassInstanceWithOwner(owner)
-}
-
+// GetCustomClassInstanceWithOwner creates a NativeScriptClass instance from the specified GodotObject.
+// This is used to create constructors for NativeScriptClass instances.
+//
 func GetCustomClassInstanceWithOwner(owner *GodotObject) NativeScriptClass {
 	ud := (UserData)(uintptr(C.go_godot_nativescript_get_userdata(NativescriptApi, unsafe.Pointer(owner))))
 
@@ -121,6 +110,8 @@ func GetCustomClassInstanceWithOwner(owner *GodotObject) NativeScriptClass {
 	return classInst
 }
 
+// CreateCustomClassInstance creates an NativeScriptClass instance that matches the
+// specified class name and base class name.
 func CreateCustomClassInstance(className, baseClassName string) NativeScriptClass {
 	// Comments and code ported from godot-cpp: https://github.com/godotengine/godot-cpp/blob/master/include/core/Godot.hpp#L39
 
@@ -144,7 +135,7 @@ func CreateCustomClassInstance(className, baseClassName string) NativeScriptClas
 
 	C.go_godot_method_bind_ptrcall(
 		CoreApi,
-		wrappedNativeScriptSetLibraryMethodBind,
+		wrappedSetLibraryMethodBind,
 		unsafe.Pointer(script),
 		(*unsafe.Pointer)(unsafe.Pointer(&setLibraryArgs[0])),
 		nilptr,
@@ -157,7 +148,7 @@ func CreateCustomClassInstance(className, baseClassName string) NativeScriptClas
 
 	C.go_godot_method_bind_ptrcall(
 		CoreApi,
-		wrappedNativeScriptSetClassNameMethodBind,
+		wrappedSetClassNameMethodBind,
 		unsafe.Pointer(script),
 		(*unsafe.Pointer)(unsafe.Pointer(&setClassNameArgs[0])),
 		nilptr,
@@ -183,7 +174,7 @@ func CreateCustomClassInstance(className, baseClassName string) NativeScriptClas
 
 	C.go_godot_method_bind_ptrcall(
 		CoreApi,
-		wrappedNativeScriptSetScriptMethodBind,
+		wrappedSetScriptMethodBind,
 		unsafe.Pointer(baseObject),
 		(*unsafe.Pointer)(unsafe.Pointer(&setScriptArgs[0])),
 		nilptr,

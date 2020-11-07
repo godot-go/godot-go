@@ -44,6 +44,16 @@ type GoTypeDef struct {
 	Methods         []GoMethod
 }
 
+func (o GoTypeDef) HasDestroyMethod() bool {
+	for _, m := range o.Methods {
+		if m.Name == "Destroy" {
+			return true
+		}
+	}
+
+	return false
+}
+
 // GoMethodType represents categories for each gdnative function exposed.
 type GoMethodType int8
 
@@ -196,6 +206,12 @@ func (t GoType) IsGodotObjectPointer() bool {
 	}
 
 	return ret
+}
+
+func (t GoType) IsGoPrimative() bool {
+	_, ok := cgoBuiltInTypeMap[t.CName]
+
+	return ok || t.CName == "godot_variant_type"
 }
 
 func (t GoType) IsMethodBindPointer() bool {

@@ -1,6 +1,6 @@
 package gdnative
 
-const Version = "0.1"
+const Version = "0.1-WIP"
 
 type RegisterMethodBindsCallback func()
 type RegisterTypeTagCallback func()

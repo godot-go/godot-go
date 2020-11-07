@@ -1,6 +1,10 @@
 package gdnative
 
-import "sync"
+import (
+	"sync"
+
+	"github.com/godot-go/godot-go/pkg/log"
+)
 
 type stringHash uint64
 
@@ -13,6 +17,8 @@ var (
 func init() {
 	goStringNameMap = map[string]StringName{}
 	godotStringNameMap = map[stringHash]string{}
+
+	// registerInternalTerminateCallback(internClear)
 }
 
 func internWithGoString(str string) String {
@@ -65,6 +71,7 @@ func internWithGodotString(gds String) string {
 
 func internClear() {
 	mut.Lock()
+	log.Debug("clear string intern", AnyField("count", len(goStringNameMap)))
 	godotStringNameMap = make(map[stringHash]string)
 	for k, v := range goStringNameMap {
 		v.Destroy()

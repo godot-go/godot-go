@@ -28,7 +28,9 @@ func VariantField(key string, value Variant) log.Field {
 }
 
 func TypeTagField(key string, typeTag TypeTag) log.Field {
-	return zap.Uint(key, uint(typeTag))
+	name := RegisterState.TagDB.GetRegisteredClassName(typeTag)
+
+	return zap.String(key, name)
 }
 
 func MethodTagField(key string, methodTag MethodTag) log.Field {

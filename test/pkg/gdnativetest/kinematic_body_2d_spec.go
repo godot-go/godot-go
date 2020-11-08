@@ -9,15 +9,18 @@ import (
 var _ = Describe("KinematicBody2D", func() {
 	Context("MoveAndCollide()", func() {
 		It("returns nil for no collision", func() {
-			n := gdnative.NewKinematicBody2D()
+			body := gdnative.NewKinematicBody2D()
+
+			scene := gdnative.NewNode2D()
 
 			tree := gdnative.NewSceneTree()
-			scene := tree.GetCurrentScene()
-			scene.AddChild(n, true)
+			tree.SetCurrentScene(scene)
+
+			scene.AddChild(body, true)
 
 			v := gdnative.NewVector2(1.0, 0.0)
 
-			collision := n.MoveAndCollide(v, true, true, true)
+			collision := body.MoveAndCollide(v, true, true, true)
 
 			Ω(collision).Should(BeNil())
 		})

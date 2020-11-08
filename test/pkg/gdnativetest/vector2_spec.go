@@ -55,4 +55,23 @@ var _ = Describe("Vector2", func() {
 			Ω(tangent.GetY()).Should(BeNumerically("~", -1.0, 0.001))
 		})
 	})
+
+	Context("calling OperatorMultiplyScalar()", func() {
+		It("should be valid", func() {
+			v := gdnative.NewVector2(1.0, 3.0)
+			v2 := v.OperatorMultiplyScalar(5)
+			gdstr := v2.AsString()
+			str := gdstr.AsGoString()
+			Ω(v2.GetX()).Should(BeNumerically("~", 5.0, 0.001), str)
+			Ω(v2.GetY()).Should(BeNumerically("~", 15.0, 0.001), str)
+		})
+	})
+
+	Context("calling Length()", func() {
+		It("should be valid", func() {
+			v := gdnative.NewVector2(2.0, 10.0)
+			length := v.Length()
+			Ω(length).Should(BeNumerically("~", 10.198, 0.001))
+		})
+	})
 })

@@ -115,7 +115,7 @@ func GetCustomClassInstanceWithOwner(owner *GodotObject) NativeScriptClass {
 	classInst, ok := nativeScriptInstanceMap[ud]
 
 	if !ok {
-		log.Panic("unable o find NativeScriptClass instance")
+		log.Panic("unable to find NativeScriptClass instance")
 	}
 
 	return classInst

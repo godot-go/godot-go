@@ -457,6 +457,10 @@ func init() {
 					/* USAGE_GODOT_CONST_OR_ENUM ({{ $method.ReturnType }} / {{ $goReturnType }}) */
 					return {{ $goReturnType }}(ret)
 				{{ else if eq $goReturnUsage USAGE_GODOT_CLASS -}}
+					if ret == nil {
+						return nil
+					}
+
 					/* USAGE_GODOT_CLASS ({{ $method.ReturnType }} / {{ $goReturnType }}) */
 					return New{{ $method.ReturnType }}WithOwner(ret)
 				{{ else -}}

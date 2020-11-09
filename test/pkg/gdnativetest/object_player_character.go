@@ -126,10 +126,7 @@ func (p *PlayerCharacter) Ready() {
 
 	log.Info("searching path...", gdnative.NodePathField("path", nodePath))
 
-	n := p.GetNode(nodePath)
-	pno := n.GetOwnerObject()
-	tt := n.GetTypeTag()
-	p.walkAnimation = gdnative.NewAnimationPlayerWithRef(pno, tt)
+	p.walkAnimation = gdnative.NewAnimationPlayerWithOwner(p.GetNode(nodePath).GetOwnerObject())
 
 	if !p.walkAnimation.HasAnimation("walk-right") {
 		log.Panic("unable to find walk-right animation")

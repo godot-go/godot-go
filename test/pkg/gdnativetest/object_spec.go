@@ -17,7 +17,6 @@ var _ = Describe("GodotObject", func() {
 	When("calling GetClass()", func() {
 		It("should return 'Object'", func() {
 			obj := gdnative.NewObject()
-			defer obj.Free()
 
 			c := obj.GetClass()
 
@@ -28,7 +27,6 @@ var _ = Describe("GodotObject", func() {
 	When("calling GetMethodList() on an Object", func() {
 		It("should return an array of methods containing a 'get_class' method", func() {
 			obj := gdnative.NewObject()
-			defer obj.Free()
 
 			Ω(obj).Should(Not(BeNil()))
 

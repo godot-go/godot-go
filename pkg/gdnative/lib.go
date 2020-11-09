@@ -13,6 +13,7 @@ import "C"
 import (
 	"fmt"
 	"reflect"
+	"sort"
 	"unsafe"
 
 	"github.com/godot-go/godot-go/pkg/log"
@@ -22,7 +23,52 @@ type RegisterStateStruct struct {
 	NativescriptHandle unsafe.Pointer
 	LanguageIndex      C.int
 	TagDB              tagDB
+	Stats              RuntimeStats
+}
+
+type RuntimeStats struct {
 	InitCount          int
+	NativeScriptAllocs map[string]int
+	NativeScriptFrees  map[string]int
+	GodotTypeAllocs    map[string]int
+	GodotTypeFrees     map[string]int
+}
+
+// LogMemoeryLeak will log memory leak messages if there's an imbalance
+// of allocs and frees per entity.
+func (r RuntimeStats) LogObjectLeak() {
+	checkAllocsAndFrees := func(category string, allocMap map[string]int, freeMap map[string]int) {
+		if len(allocMap) != len(freeMap) {
+			log.Error(
+				"alloc and free maps not aligned",
+				StringField("category", category),
+			)
+		}
+
+		// keys is a sorted set of keys in the GodotTypeAllocs map
+		keys := make([]string, 0, len(allocMap))
+		for k := range allocMap {
+			keys = append(keys, k)
+		}
+		sort.Strings(keys)
+
+		for _, k := range keys {
+			allocs := allocMap[k]
+			frees := freeMap[k]
+			if allocs > frees {
+				log.Warn(
+					"memory leak detected",
+					StringField("category", category),
+					StringField("type", k),
+					AnyField("allocs", allocs),
+					AnyField("frees", frees),
+				)
+			}
+		}
+	}
+
+	checkAllocsAndFrees("godot_type", r.GodotTypeAllocs, r.GodotTypeFrees)
+	checkAllocsAndFrees("nativescript", r.NativeScriptAllocs, r.NativeScriptFrees)
 }
 
 var (
@@ -39,12 +85,6 @@ var (
 	NetApi            *C.godot_gdnative_ext_net_api_struct
 	Net32Api          *C.godot_gdnative_ext_net_3_2_api_struct
 	RegisterState     RegisterStateStruct
-)
-
-var (
-	emptyVariantPtr   = &Variant{}
-	emptyUnsafePtr    = unsafe.Pointer(&emptyVariantPtr)
-	emptyUnsafePtrPtr = unsafe.Pointer(&emptyUnsafePtr)
 )
 
 // AllocZeros returns zeroed out bytes allocated in C memory.
@@ -95,7 +135,7 @@ func AllocNewSlice(size int) ([]unsafe.Pointer, unsafe.Pointer) {
 	return arr, ptrCArr
 }
 
-var sizeOfVariantPtr = unsafe.Sizeof(emptyVariantPtr)
+var sizeOfVariantPtr = unsafe.Sizeof(&Variant{})
 
 // AllocNewArrayAsUnsafePointer returns a C array of *Variant copy allocated in
 // C memory.

@@ -41,6 +41,87 @@ import (
 	"unsafe"
 )
 
+func init() {
+	registerInternalInitCallback(InitAABBGodotType)
+	registerInternalInitCallback(InitArrayGodotType)
+	registerInternalInitCallback(InitBasisGodotType)
+	registerInternalInitCallback(InitColorGodotType)
+	registerInternalInitCallback(InitDictionaryGodotType)
+	registerInternalInitCallback(InitErrorGodotType)
+	registerInternalInitCallback(InitGdnativeApiStructGodotType)
+	registerInternalInitCallback(InitGdnativeApiVersionGodotType)
+	registerInternalInitCallback(InitGdnativeInitOptionsGodotType)
+	registerInternalInitCallback(InitGdnativeTerminateOptionsGodotType)
+	registerInternalInitCallback(InitMethodBindGodotType)
+	registerInternalInitCallback(InitGodotObjectGodotType)
+	registerInternalInitCallback(InitNodePathGodotType)
+	registerInternalInitCallback(InitPlaneGodotType)
+	registerInternalInitCallback(InitPoolArrayReadAccessGodotType)
+	registerInternalInitCallback(InitPoolArrayWriteAccessGodotType)
+	registerInternalInitCallback(InitPoolByteArrayGodotType)
+	registerInternalInitCallback(InitPoolByteArrayReadAccessGodotType)
+	registerInternalInitCallback(InitPoolByteArrayWriteAccessGodotType)
+	registerInternalInitCallback(InitPoolColorArrayGodotType)
+	registerInternalInitCallback(InitPoolColorArrayReadAccessGodotType)
+	registerInternalInitCallback(InitPoolColorArrayWriteAccessGodotType)
+	registerInternalInitCallback(InitPoolIntArrayGodotType)
+	registerInternalInitCallback(InitPoolIntArrayReadAccessGodotType)
+	registerInternalInitCallback(InitPoolIntArrayWriteAccessGodotType)
+	registerInternalInitCallback(InitPoolRealArrayGodotType)
+	registerInternalInitCallback(InitPoolRealArrayReadAccessGodotType)
+	registerInternalInitCallback(InitPoolRealArrayWriteAccessGodotType)
+	registerInternalInitCallback(InitPoolStringArrayGodotType)
+	registerInternalInitCallback(InitPoolStringArrayReadAccessGodotType)
+	registerInternalInitCallback(InitPoolStringArrayWriteAccessGodotType)
+	registerInternalInitCallback(InitPoolVector2ArrayGodotType)
+	registerInternalInitCallback(InitPoolVector2ArrayReadAccessGodotType)
+	registerInternalInitCallback(InitPoolVector2ArrayWriteAccessGodotType)
+	registerInternalInitCallback(InitPoolVector3ArrayGodotType)
+	registerInternalInitCallback(InitPoolVector3ArrayReadAccessGodotType)
+	registerInternalInitCallback(InitPoolVector3ArrayWriteAccessGodotType)
+	registerInternalInitCallback(InitQuatGodotType)
+	registerInternalInitCallback(InitRect2GodotType)
+	registerInternalInitCallback(InitRIDGodotType)
+	registerInternalInitCallback(InitCharStringGodotType)
+	registerInternalInitCallback(InitStringGodotType)
+	registerInternalInitCallback(InitStringNameGodotType)
+	registerInternalInitCallback(InitTransformGodotType)
+	registerInternalInitCallback(InitTransform2DGodotType)
+	registerInternalInitCallback(InitVariantGodotType)
+	registerInternalInitCallback(InitVariantCallErrorGodotType)
+	registerInternalInitCallback(InitVariantCallErrorErrorGodotType)
+	registerInternalInitCallback(InitVariantOperatorGodotType)
+	registerInternalInitCallback(InitVariantTypeGodotType)
+	registerInternalInitCallback(InitVector2GodotType)
+	registerInternalInitCallback(InitVector3GodotType)
+	registerInternalInitCallback(InitVector3AxisGodotType)
+	registerInternalInitCallback(InitGdnativeCore11ApiStructGodotType)
+	registerInternalInitCallback(InitGdnativeCore12ApiStructGodotType)
+	registerInternalInitCallback(InitGdnativeCoreApiStructGodotType)
+	registerInternalInitCallback(InitGdnativeExtAndroidApiStructGodotType)
+	registerInternalInitCallback(InitGdnativeExtArvrApiStructGodotType)
+	registerInternalInitCallback(InitGdnativeExtNativescript11ApiStructGodotType)
+	registerInternalInitCallback(InitGdnativeExtNativescriptApiStructGodotType)
+	registerInternalInitCallback(InitGdnativeExtNet32ApiStructGodotType)
+	registerInternalInitCallback(InitGdnativeExtNetApiStructGodotType)
+	registerInternalInitCallback(InitGdnativeExtPluginscriptApiStructGodotType)
+	registerInternalInitCallback(InitGdnativeExtVideodecoderApiStructGodotType)
+	registerInternalInitCallback(InitInstanceBindingFunctionsGodotType)
+	registerInternalInitCallback(InitMethodArgGodotType)
+	registerInternalInitCallback(InitMethodRpcModeGodotType)
+	registerInternalInitCallback(InitPropertyAttributesGodotType)
+	registerInternalInitCallback(InitPropertyHintGodotType)
+	registerInternalInitCallback(InitSignalGodotType)
+	registerInternalInitCallback(InitSignalArgumentGodotType)
+	registerInternalInitCallback(InitNetMultiplayerPeerGodotType)
+	registerInternalInitCallback(InitNetPacketPeerGodotType)
+	registerInternalInitCallback(InitNetStreamPeerGodotType)
+	registerInternalInitCallback(InitNetWebrtcDataChannelGodotType)
+	registerInternalInitCallback(InitNetWebrtcLibraryGodotType)
+	registerInternalInitCallback(InitNetWebrtcPeerConnectionGodotType)
+	registerInternalInitCallback(InitVideodecoderInterfaceGdnativeGodotType)
+}
+
 /* Global Functions */
 
 /* Global Method: godot_string_chr -> godot_string */
@@ -402,6 +483,11 @@ func InstanceFromId(
 /* TypeDefs */
 type AABB C.godot_aabb
 
+func InitAABBGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["AABB"] = 0
+	RegisterState.Stats.GodotTypeFrees["AABB"] = 0
+}
+
 func NewAABB(
 	p_pos Vector3 /* godot_vector3 */, p_size Vector3, /* godot_vector3 */
 ) AABB {
@@ -424,6 +510,9 @@ func NewAABB(
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
+
+	RegisterState.Stats.GodotTypeAllocs["AABB"]++
+
 	return dest
 }
 
@@ -914,6 +1003,11 @@ func (gdt *AABB) OperatorEqual(
 
 type Array C.godot_array
 
+func InitArrayGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Array"] = 0
+	RegisterState.Stats.GodotTypeFrees["Array"] = 0
+}
+
 func NewArray() Array {
 	dest := Array{}
 
@@ -928,6 +1022,9 @@ func NewArray() Array {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["Array"]++
+
 	return dest
 }
 
@@ -950,6 +1047,9 @@ func NewArrayCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Array"]++
+
 	return dest
 }
 
@@ -972,6 +1072,9 @@ func NewArrayPoolColorArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Array"]++
+
 	return dest
 }
 
@@ -994,6 +1097,9 @@ func NewArrayPoolVector3Array(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Array"]++
+
 	return dest
 }
 
@@ -1016,6 +1122,9 @@ func NewArrayPoolVector2Array(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Array"]++
+
 	return dest
 }
 
@@ -1038,6 +1147,9 @@ func NewArrayPoolStringArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Array"]++
+
 	return dest
 }
 
@@ -1060,6 +1172,9 @@ func NewArrayPoolRealArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Array"]++
+
 	return dest
 }
 
@@ -1082,6 +1197,9 @@ func NewArrayPoolIntArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Array"]++
+
 	return dest
 }
 
@@ -1104,6 +1222,9 @@ func NewArrayPoolByteArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Array"]++
+
 	return dest
 }
 
@@ -1681,6 +1802,8 @@ func (gdt *Array) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["Array"]++
+
 }
 
 /* Getter Method: godot_array_duplicate -> godot_array */
@@ -1782,6 +1905,11 @@ func (gdt *Array) Slice(
 
 type Basis C.godot_basis
 
+func InitBasisGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Basis"] = 0
+	RegisterState.Stats.GodotTypeFrees["Basis"] = 0
+}
+
 func NewBasisWithRows(
 	p_x_axis Vector3 /* godot_vector3 */, p_y_axis Vector3 /* godot_vector3 */, p_z_axis Vector3, /* godot_vector3 */
 ) Basis {
@@ -1807,6 +1935,9 @@ func NewBasisWithRows(
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
 	runtime.KeepAlive(in2)
+
+	RegisterState.Stats.GodotTypeAllocs["Basis"]++
+
 	return dest
 }
 
@@ -1832,6 +1963,9 @@ func NewBasisWithAxisAndAngle(
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
+
+	RegisterState.Stats.GodotTypeAllocs["Basis"]++
+
 	return dest
 }
 
@@ -1854,6 +1988,9 @@ func NewBasisWithEuler(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Basis"]++
+
 	return dest
 }
 
@@ -1871,6 +2008,9 @@ func NewBasis() Basis {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["Basis"]++
+
 	return dest
 }
 
@@ -1893,6 +2033,9 @@ func NewBasisWithEulerQuat(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Basis"]++
+
 	return dest
 }
 
@@ -2514,6 +2657,11 @@ func (gdt *Basis) SetQuatScale(
 
 type Color C.godot_color
 
+func InitColorGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Color"] = 0
+	RegisterState.Stats.GodotTypeFrees["Color"] = 0
+}
+
 func NewColorRgba(
 	p_r float32 /* else case */, p_g float32 /* else case */, p_b float32 /* else case */, p_a float32, /* else case */
 ) Color {
@@ -2542,6 +2690,9 @@ func NewColorRgba(
 	runtime.KeepAlive(in1)
 	runtime.KeepAlive(in2)
 	runtime.KeepAlive(in3)
+
+	RegisterState.Stats.GodotTypeAllocs["Color"]++
+
 	return dest
 }
 
@@ -2570,6 +2721,9 @@ func NewColorRgb(
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
 	runtime.KeepAlive(in2)
+
+	RegisterState.Stats.GodotTypeAllocs["Color"]++
+
 	return dest
 }
 
@@ -3103,6 +3257,11 @@ func (gdt *Color) Lightened(
 
 type Dictionary C.godot_dictionary
 
+func InitDictionaryGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Dictionary"] = 0
+	RegisterState.Stats.GodotTypeFrees["Dictionary"] = 0
+}
+
 func NewDictionary() Dictionary {
 	dest := Dictionary{}
 
@@ -3117,6 +3276,9 @@ func NewDictionary() Dictionary {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["Dictionary"]++
+
 	return dest
 }
 
@@ -3139,6 +3301,9 @@ func NewDictionaryCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Dictionary"]++
+
 	return dest
 }
 
@@ -3154,6 +3319,8 @@ func (gdt *Dictionary) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["Dictionary"]++
+
 }
 
 /* Getter Method: godot_dictionary_size -> godot_int */
@@ -3524,6 +3691,11 @@ func (gdt *Dictionary) Duplicate(
 
 type Error C.godot_error
 
+func InitErrorGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Error"] = 0
+	RegisterState.Stats.GodotTypeFrees["Error"] = 0
+}
+
 /* Enum Error */
 const (
 	GODOT_OK Error = iota
@@ -3579,15 +3751,40 @@ const (
 
 type GdnativeApiStruct C.godot_gdnative_api_struct
 
+func InitGdnativeApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeApiStruct"] = 0
+}
+
 type GdnativeApiVersion C.godot_gdnative_api_version
+
+func InitGdnativeApiVersionGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeApiVersion"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeApiVersion"] = 0
+}
 
 type GdnativeInitOptions C.godot_gdnative_init_options
 
+func InitGdnativeInitOptionsGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeInitOptions"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeInitOptions"] = 0
+}
+
 type GdnativeTerminateOptions C.godot_gdnative_terminate_options
+
+func InitGdnativeTerminateOptionsGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeTerminateOptions"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeTerminateOptions"] = 0
+}
 
 // mapped C.godot_int to native go type int32
 
 type MethodBind C.godot_method_bind
+
+func InitMethodBindGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["MethodBind"] = 0
+	RegisterState.Stats.GodotTypeFrees["MethodBind"] = 0
+}
 
 /* Setter Method: godot_method_bind_ptrcall -> void */
 func (gdt *MethodBind) Ptrcall(
@@ -3649,9 +3846,19 @@ func (gdt *MethodBind) Call(
 
 type GodotObject C.godot_object
 
+func InitGodotObjectGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GodotObject"] = 0
+	RegisterState.Stats.GodotTypeFrees["GodotObject"] = 0
+}
+
 // mapped C.godot_real to native go type float32
 
 type NodePath C.godot_node_path
+
+func InitNodePathGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["NodePath"] = 0
+	RegisterState.Stats.GodotTypeFrees["NodePath"] = 0
+}
 
 func NewNodePath(
 	p_from string, /* Hides String */
@@ -3674,6 +3881,9 @@ func NewNodePath(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["NodePath"]++
+
 	return dest
 }
 
@@ -3696,6 +3906,9 @@ func NewNodePathCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["NodePath"]++
+
 	return dest
 }
 
@@ -3711,6 +3924,8 @@ func (gdt *NodePath) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["NodePath"]++
+
 }
 
 /* Getter Method: godot_node_path_as_string -> godot_string */
@@ -3890,6 +4105,11 @@ func (gdt *NodePath) GetAsPropertyPath() NodePath {
 
 type Plane C.godot_plane
 
+func InitPlaneGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Plane"] = 0
+	RegisterState.Stats.GodotTypeFrees["Plane"] = 0
+}
+
 func NewPlaneWithReals(
 	p_a float32 /* else case */, p_b float32 /* else case */, p_c float32 /* else case */, p_d float32, /* else case */
 ) Plane {
@@ -3918,6 +4138,9 @@ func NewPlaneWithReals(
 	runtime.KeepAlive(in1)
 	runtime.KeepAlive(in2)
 	runtime.KeepAlive(in3)
+
+	RegisterState.Stats.GodotTypeAllocs["Plane"]++
+
 	return dest
 }
 
@@ -3946,6 +4169,9 @@ func NewPlaneWithVectors(
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
 	runtime.KeepAlive(in2)
+
+	RegisterState.Stats.GodotTypeAllocs["Plane"]++
+
 	return dest
 }
 
@@ -3971,6 +4197,9 @@ func NewPlaneWithNormal(
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
+
+	RegisterState.Stats.GodotTypeAllocs["Plane"]++
+
 	return dest
 }
 
@@ -4315,9 +4544,24 @@ func (gdt *Plane) SetD(
 
 type PoolArrayReadAccess C.godot_pool_array_read_access
 
+func InitPoolArrayReadAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolArrayReadAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolArrayReadAccess"] = 0
+}
+
 type PoolArrayWriteAccess C.godot_pool_array_write_access
 
+func InitPoolArrayWriteAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolArrayWriteAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolArrayWriteAccess"] = 0
+}
+
 type PoolByteArray C.godot_pool_byte_array
+
+func InitPoolByteArrayGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolByteArray"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolByteArray"] = 0
+}
 
 func NewPoolByteArray() PoolByteArray {
 	dest := PoolByteArray{}
@@ -4333,6 +4577,9 @@ func NewPoolByteArray() PoolByteArray {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolByteArray"]++
+
 	return dest
 }
 
@@ -4355,6 +4602,9 @@ func NewPoolByteArrayCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolByteArray"]++
+
 	return dest
 }
 
@@ -4377,6 +4627,9 @@ func NewPoolByteArrayWithArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolByteArray"]++
+
 	return dest
 }
 
@@ -4616,6 +4869,8 @@ func (gdt *PoolByteArray) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolByteArray"]++
+
 }
 
 /* Getter Method: godot_pool_byte_array_empty -> godot_bool */
@@ -4635,6 +4890,11 @@ func (gdt *PoolByteArray) Empty() bool {
 }
 
 type PoolByteArrayReadAccess C.godot_pool_byte_array_read_access
+
+func InitPoolByteArrayReadAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolByteArrayReadAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolByteArrayReadAccess"] = 0
+}
 
 /* Getter Method: godot_pool_byte_array_read_access_copy -> godot_pool_byte_array_read_access */
 func (gdt *PoolByteArrayReadAccess) Copy() PoolByteArrayReadAccess {
@@ -4699,9 +4959,16 @@ func (gdt *PoolByteArrayReadAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolByteArrayReadAccess"]++
+
 }
 
 type PoolByteArrayWriteAccess C.godot_pool_byte_array_write_access
+
+func InitPoolByteArrayWriteAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolByteArrayWriteAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolByteArrayWriteAccess"] = 0
+}
 
 /* Getter Method: godot_pool_byte_array_write_access_copy -> godot_pool_byte_array_write_access */
 func (gdt *PoolByteArrayWriteAccess) Copy() PoolByteArrayWriteAccess {
@@ -4766,9 +5033,16 @@ func (gdt *PoolByteArrayWriteAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolByteArrayWriteAccess"]++
+
 }
 
 type PoolColorArray C.godot_pool_color_array
+
+func InitPoolColorArrayGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolColorArray"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolColorArray"] = 0
+}
 
 func NewPoolColorArray() PoolColorArray {
 	dest := PoolColorArray{}
@@ -4784,6 +5058,9 @@ func NewPoolColorArray() PoolColorArray {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolColorArray"]++
+
 	return dest
 }
 
@@ -4806,6 +5083,9 @@ func NewPoolColorArrayCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolColorArray"]++
+
 	return dest
 }
 
@@ -4828,6 +5108,9 @@ func NewPoolColorArrayWithArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolColorArray"]++
+
 	return dest
 }
 
@@ -5067,6 +5350,8 @@ func (gdt *PoolColorArray) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolColorArray"]++
+
 }
 
 /* Getter Method: godot_pool_color_array_empty -> godot_bool */
@@ -5086,6 +5371,11 @@ func (gdt *PoolColorArray) Empty() bool {
 }
 
 type PoolColorArrayReadAccess C.godot_pool_color_array_read_access
+
+func InitPoolColorArrayReadAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolColorArrayReadAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolColorArrayReadAccess"] = 0
+}
 
 /* Getter Method: godot_pool_color_array_read_access_copy -> godot_pool_color_array_read_access */
 func (gdt *PoolColorArrayReadAccess) Copy() PoolColorArrayReadAccess {
@@ -5150,9 +5440,16 @@ func (gdt *PoolColorArrayReadAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolColorArrayReadAccess"]++
+
 }
 
 type PoolColorArrayWriteAccess C.godot_pool_color_array_write_access
+
+func InitPoolColorArrayWriteAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolColorArrayWriteAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolColorArrayWriteAccess"] = 0
+}
 
 /* Getter Method: godot_pool_color_array_write_access_copy -> godot_pool_color_array_write_access */
 func (gdt *PoolColorArrayWriteAccess) Copy() PoolColorArrayWriteAccess {
@@ -5217,9 +5514,16 @@ func (gdt *PoolColorArrayWriteAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolColorArrayWriteAccess"]++
+
 }
 
 type PoolIntArray C.godot_pool_int_array
+
+func InitPoolIntArrayGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolIntArray"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolIntArray"] = 0
+}
 
 func NewPoolIntArray() PoolIntArray {
 	dest := PoolIntArray{}
@@ -5235,6 +5539,9 @@ func NewPoolIntArray() PoolIntArray {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolIntArray"]++
+
 	return dest
 }
 
@@ -5257,6 +5564,9 @@ func NewPoolIntArrayCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolIntArray"]++
+
 	return dest
 }
 
@@ -5279,6 +5589,9 @@ func NewPoolIntArrayWithArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolIntArray"]++
+
 	return dest
 }
 
@@ -5518,6 +5831,8 @@ func (gdt *PoolIntArray) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolIntArray"]++
+
 }
 
 /* Getter Method: godot_pool_int_array_empty -> godot_bool */
@@ -5537,6 +5852,11 @@ func (gdt *PoolIntArray) Empty() bool {
 }
 
 type PoolIntArrayReadAccess C.godot_pool_int_array_read_access
+
+func InitPoolIntArrayReadAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolIntArrayReadAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolIntArrayReadAccess"] = 0
+}
 
 /* Getter Method: godot_pool_int_array_read_access_copy -> godot_pool_int_array_read_access */
 func (gdt *PoolIntArrayReadAccess) Copy() PoolIntArrayReadAccess {
@@ -5601,9 +5921,16 @@ func (gdt *PoolIntArrayReadAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolIntArrayReadAccess"]++
+
 }
 
 type PoolIntArrayWriteAccess C.godot_pool_int_array_write_access
+
+func InitPoolIntArrayWriteAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolIntArrayWriteAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolIntArrayWriteAccess"] = 0
+}
 
 /* Getter Method: godot_pool_int_array_write_access_copy -> godot_pool_int_array_write_access */
 func (gdt *PoolIntArrayWriteAccess) Copy() PoolIntArrayWriteAccess {
@@ -5668,9 +5995,16 @@ func (gdt *PoolIntArrayWriteAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolIntArrayWriteAccess"]++
+
 }
 
 type PoolRealArray C.godot_pool_real_array
+
+func InitPoolRealArrayGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolRealArray"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolRealArray"] = 0
+}
 
 func NewPoolRealArray() PoolRealArray {
 	dest := PoolRealArray{}
@@ -5686,6 +6020,9 @@ func NewPoolRealArray() PoolRealArray {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolRealArray"]++
+
 	return dest
 }
 
@@ -5708,6 +6045,9 @@ func NewPoolRealArrayCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolRealArray"]++
+
 	return dest
 }
 
@@ -5730,6 +6070,9 @@ func NewPoolRealArrayWithArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolRealArray"]++
+
 	return dest
 }
 
@@ -5969,6 +6312,8 @@ func (gdt *PoolRealArray) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolRealArray"]++
+
 }
 
 /* Getter Method: godot_pool_real_array_empty -> godot_bool */
@@ -5988,6 +6333,11 @@ func (gdt *PoolRealArray) Empty() bool {
 }
 
 type PoolRealArrayReadAccess C.godot_pool_real_array_read_access
+
+func InitPoolRealArrayReadAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolRealArrayReadAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolRealArrayReadAccess"] = 0
+}
 
 /* Getter Method: godot_pool_real_array_read_access_copy -> godot_pool_real_array_read_access */
 func (gdt *PoolRealArrayReadAccess) Copy() PoolRealArrayReadAccess {
@@ -6052,9 +6402,16 @@ func (gdt *PoolRealArrayReadAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolRealArrayReadAccess"]++
+
 }
 
 type PoolRealArrayWriteAccess C.godot_pool_real_array_write_access
+
+func InitPoolRealArrayWriteAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolRealArrayWriteAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolRealArrayWriteAccess"] = 0
+}
 
 /* Getter Method: godot_pool_real_array_write_access_copy -> godot_pool_real_array_write_access */
 func (gdt *PoolRealArrayWriteAccess) Copy() PoolRealArrayWriteAccess {
@@ -6119,9 +6476,16 @@ func (gdt *PoolRealArrayWriteAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolRealArrayWriteAccess"]++
+
 }
 
 type PoolStringArray C.godot_pool_string_array
+
+func InitPoolStringArrayGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolStringArray"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolStringArray"] = 0
+}
 
 func NewPoolStringArray() PoolStringArray {
 	dest := PoolStringArray{}
@@ -6137,6 +6501,9 @@ func NewPoolStringArray() PoolStringArray {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolStringArray"]++
+
 	return dest
 }
 
@@ -6159,6 +6526,9 @@ func NewPoolStringArrayCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolStringArray"]++
+
 	return dest
 }
 
@@ -6181,6 +6551,9 @@ func NewPoolStringArrayWithArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolStringArray"]++
+
 	return dest
 }
 
@@ -6420,6 +6793,8 @@ func (gdt *PoolStringArray) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolStringArray"]++
+
 }
 
 /* Getter Method: godot_pool_string_array_empty -> godot_bool */
@@ -6439,6 +6814,11 @@ func (gdt *PoolStringArray) Empty() bool {
 }
 
 type PoolStringArrayReadAccess C.godot_pool_string_array_read_access
+
+func InitPoolStringArrayReadAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolStringArrayReadAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolStringArrayReadAccess"] = 0
+}
 
 /* Getter Method: godot_pool_string_array_read_access_copy -> godot_pool_string_array_read_access */
 func (gdt *PoolStringArrayReadAccess) Copy() PoolStringArrayReadAccess {
@@ -6503,9 +6883,16 @@ func (gdt *PoolStringArrayReadAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolStringArrayReadAccess"]++
+
 }
 
 type PoolStringArrayWriteAccess C.godot_pool_string_array_write_access
+
+func InitPoolStringArrayWriteAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolStringArrayWriteAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolStringArrayWriteAccess"] = 0
+}
 
 /* Getter Method: godot_pool_string_array_write_access_copy -> godot_pool_string_array_write_access */
 func (gdt *PoolStringArrayWriteAccess) Copy() PoolStringArrayWriteAccess {
@@ -6570,9 +6957,16 @@ func (gdt *PoolStringArrayWriteAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolStringArrayWriteAccess"]++
+
 }
 
 type PoolVector2Array C.godot_pool_vector2_array
+
+func InitPoolVector2ArrayGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolVector2Array"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolVector2Array"] = 0
+}
 
 func NewPoolVector2Array() PoolVector2Array {
 	dest := PoolVector2Array{}
@@ -6588,6 +6982,9 @@ func NewPoolVector2Array() PoolVector2Array {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolVector2Array"]++
+
 	return dest
 }
 
@@ -6610,6 +7007,9 @@ func NewPoolVector2ArrayCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolVector2Array"]++
+
 	return dest
 }
 
@@ -6632,6 +7032,9 @@ func NewPoolVector2ArrayWithArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolVector2Array"]++
+
 	return dest
 }
 
@@ -6871,6 +7274,8 @@ func (gdt *PoolVector2Array) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolVector2Array"]++
+
 }
 
 /* Getter Method: godot_pool_vector2_array_empty -> godot_bool */
@@ -6890,6 +7295,11 @@ func (gdt *PoolVector2Array) Empty() bool {
 }
 
 type PoolVector2ArrayReadAccess C.godot_pool_vector2_array_read_access
+
+func InitPoolVector2ArrayReadAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolVector2ArrayReadAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolVector2ArrayReadAccess"] = 0
+}
 
 /* Getter Method: godot_pool_vector2_array_read_access_copy -> godot_pool_vector2_array_read_access */
 func (gdt *PoolVector2ArrayReadAccess) Copy() PoolVector2ArrayReadAccess {
@@ -6954,9 +7364,16 @@ func (gdt *PoolVector2ArrayReadAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolVector2ArrayReadAccess"]++
+
 }
 
 type PoolVector2ArrayWriteAccess C.godot_pool_vector2_array_write_access
+
+func InitPoolVector2ArrayWriteAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolVector2ArrayWriteAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolVector2ArrayWriteAccess"] = 0
+}
 
 /* Getter Method: godot_pool_vector2_array_write_access_copy -> godot_pool_vector2_array_write_access */
 func (gdt *PoolVector2ArrayWriteAccess) Copy() PoolVector2ArrayWriteAccess {
@@ -7021,9 +7438,16 @@ func (gdt *PoolVector2ArrayWriteAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolVector2ArrayWriteAccess"]++
+
 }
 
 type PoolVector3Array C.godot_pool_vector3_array
+
+func InitPoolVector3ArrayGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolVector3Array"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolVector3Array"] = 0
+}
 
 func NewPoolVector3Array() PoolVector3Array {
 	dest := PoolVector3Array{}
@@ -7039,6 +7463,9 @@ func NewPoolVector3Array() PoolVector3Array {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolVector3Array"]++
+
 	return dest
 }
 
@@ -7061,6 +7488,9 @@ func NewPoolVector3ArrayCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolVector3Array"]++
+
 	return dest
 }
 
@@ -7083,6 +7513,9 @@ func NewPoolVector3ArrayWithArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["PoolVector3Array"]++
+
 	return dest
 }
 
@@ -7322,6 +7755,8 @@ func (gdt *PoolVector3Array) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolVector3Array"]++
+
 }
 
 /* Getter Method: godot_pool_vector3_array_empty -> godot_bool */
@@ -7341,6 +7776,11 @@ func (gdt *PoolVector3Array) Empty() bool {
 }
 
 type PoolVector3ArrayReadAccess C.godot_pool_vector3_array_read_access
+
+func InitPoolVector3ArrayReadAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolVector3ArrayReadAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolVector3ArrayReadAccess"] = 0
+}
 
 /* Getter Method: godot_pool_vector3_array_read_access_copy -> godot_pool_vector3_array_read_access */
 func (gdt *PoolVector3ArrayReadAccess) Copy() PoolVector3ArrayReadAccess {
@@ -7405,9 +7845,16 @@ func (gdt *PoolVector3ArrayReadAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolVector3ArrayReadAccess"]++
+
 }
 
 type PoolVector3ArrayWriteAccess C.godot_pool_vector3_array_write_access
+
+func InitPoolVector3ArrayWriteAccessGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PoolVector3ArrayWriteAccess"] = 0
+	RegisterState.Stats.GodotTypeFrees["PoolVector3ArrayWriteAccess"] = 0
+}
 
 /* Getter Method: godot_pool_vector3_array_write_access_copy -> godot_pool_vector3_array_write_access */
 func (gdt *PoolVector3ArrayWriteAccess) Copy() PoolVector3ArrayWriteAccess {
@@ -7472,9 +7919,16 @@ func (gdt *PoolVector3ArrayWriteAccess) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["PoolVector3ArrayWriteAccess"]++
+
 }
 
 type Quat C.godot_quat
+
+func InitQuatGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Quat"] = 0
+	RegisterState.Stats.GodotTypeFrees["Quat"] = 0
+}
 
 func NewQuat(
 	p_x float32 /* else case */, p_y float32 /* else case */, p_z float32 /* else case */, p_w float32, /* else case */
@@ -7504,6 +7958,9 @@ func NewQuat(
 	runtime.KeepAlive(in1)
 	runtime.KeepAlive(in2)
 	runtime.KeepAlive(in3)
+
+	RegisterState.Stats.GodotTypeAllocs["Quat"]++
+
 	return dest
 }
 
@@ -7529,6 +7986,9 @@ func NewQuatWithAxisAngle(
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
+
+	RegisterState.Stats.GodotTypeAllocs["Quat"]++
+
 	return dest
 }
 
@@ -7551,6 +8011,9 @@ func NewQuatWithBasis(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Quat"]++
+
 	return dest
 }
 
@@ -7573,6 +8036,9 @@ func NewQuatWithEuler(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Quat"]++
+
 	return dest
 }
 
@@ -8077,6 +8543,11 @@ func (gdt *Quat) SetAxisAngle(
 
 type Rect2 C.godot_rect2
 
+func InitRect2GodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Rect2"] = 0
+	RegisterState.Stats.GodotTypeFrees["Rect2"] = 0
+}
+
 func NewRect2WithPositionAndSize(
 	p_pos Vector2 /* godot_vector2 */, p_size Vector2, /* godot_vector2 */
 ) Rect2 {
@@ -8099,6 +8570,9 @@ func NewRect2WithPositionAndSize(
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
+
+	RegisterState.Stats.GodotTypeAllocs["Rect2"]++
+
 	return dest
 }
 
@@ -8130,6 +8604,9 @@ func NewRect2(
 	runtime.KeepAlive(in1)
 	runtime.KeepAlive(in2)
 	runtime.KeepAlive(in3)
+
+	RegisterState.Stats.GodotTypeAllocs["Rect2"]++
+
 	return dest
 }
 
@@ -8491,6 +8968,11 @@ func (gdt *Rect2) Abs() Rect2 {
 
 type RID C.godot_rid
 
+func InitRIDGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["RID"] = 0
+	RegisterState.Stats.GodotTypeFrees["RID"] = 0
+}
+
 func NewRID() RID {
 	dest := RID{}
 
@@ -8505,6 +8987,9 @@ func NewRID() RID {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["RID"]++
+
 	return dest
 }
 
@@ -8527,6 +9012,9 @@ func NewRIDWithResource(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["RID"]++
+
 	return dest
 }
 
@@ -8590,6 +9078,11 @@ func (gdt *RID) OperatorLess(
 
 type CharString C.godot_char_string
 
+func InitCharStringGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["CharString"] = 0
+	RegisterState.Stats.GodotTypeFrees["CharString"] = 0
+}
+
 /* Getter Method: godot_char_string_length -> godot_int */
 func (gdt *CharString) Length() int32 {
 
@@ -8634,9 +9127,16 @@ func (gdt *CharString) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["CharString"]++
+
 }
 
 type String C.godot_string
+
+func InitStringGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["String"] = 0
+	RegisterState.Stats.GodotTypeFrees["String"] = 0
+}
 
 func NewString() String {
 	dest := String{}
@@ -8652,6 +9152,9 @@ func NewString() String {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["String"]++
+
 	return dest
 }
 
@@ -8674,6 +9177,9 @@ func NewStringCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["String"]++
+
 	return dest
 }
 
@@ -8699,6 +9205,9 @@ func NewStringWithWideString(
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
+
+	RegisterState.Stats.GodotTypeAllocs["String"]++
+
 	return dest
 }
 
@@ -10857,6 +11366,8 @@ func (gdt *String) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["String"]++
+
 }
 
 /* Getter Method: godot_string_dedent -> godot_string */
@@ -11021,6 +11532,11 @@ func (gdt *String) Countn(
 
 type StringName C.godot_string_name
 
+func InitStringNameGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["StringName"] = 0
+	RegisterState.Stats.GodotTypeFrees["StringName"] = 0
+}
+
 func NewStringName(
 	p_name String, /* godot_string */
 ) StringName {
@@ -11040,6 +11556,9 @@ func NewStringName(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["StringName"]++
+
 	return dest
 }
 
@@ -11063,6 +11582,9 @@ func NewStringNameData(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["StringName"]++
+
 	return dest
 }
 
@@ -11168,9 +11690,16 @@ func (gdt *StringName) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["StringName"]++
+
 }
 
 type Transform C.godot_transform
+
+func InitTransformGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Transform"] = 0
+	RegisterState.Stats.GodotTypeFrees["Transform"] = 0
+}
 
 func NewTransformWithAxisOrigin(
 	p_x_axis Vector3 /* godot_vector3 */, p_y_axis Vector3 /* godot_vector3 */, p_z_axis Vector3 /* godot_vector3 */, p_origin Vector3, /* godot_vector3 */
@@ -11200,6 +11729,9 @@ func NewTransformWithAxisOrigin(
 	runtime.KeepAlive(in1)
 	runtime.KeepAlive(in2)
 	runtime.KeepAlive(in3)
+
+	RegisterState.Stats.GodotTypeAllocs["Transform"]++
+
 	return dest
 }
 
@@ -11225,6 +11757,9 @@ func NewTransform(
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
+
+	RegisterState.Stats.GodotTypeAllocs["Transform"]++
+
 	return dest
 }
 
@@ -11242,6 +11777,9 @@ func NewTransformIdentity() Transform {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["Transform"]++
+
 	return dest
 }
 
@@ -11264,6 +11802,9 @@ func NewTransformWithQuat(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Transform"]++
+
 	return dest
 }
 
@@ -11661,6 +12202,11 @@ func (gdt *Transform) XformInvAABB(
 
 type Transform2D C.godot_transform2d
 
+func InitTransform2DGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Transform2D"] = 0
+	RegisterState.Stats.GodotTypeFrees["Transform2D"] = 0
+}
+
 func NewTransform2D(
 	p_rot float32 /* else case */, p_pos Vector2, /* godot_vector2 */
 ) Transform2D {
@@ -11683,6 +12229,9 @@ func NewTransform2D(
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
+
+	RegisterState.Stats.GodotTypeAllocs["Transform2D"]++
+
 	return dest
 }
 
@@ -11711,6 +12260,9 @@ func NewTransform2DAxisOrigin(
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
 	runtime.KeepAlive(in2)
+
+	RegisterState.Stats.GodotTypeAllocs["Transform2D"]++
+
 	return dest
 }
 
@@ -11728,6 +12280,9 @@ func NewTransform2DIdentity() Transform2D {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["Transform2D"]++
+
 	return dest
 }
 
@@ -12100,6 +12655,11 @@ func (gdt *Transform2D) XformInvRect2(
 
 type Variant C.godot_variant
 
+func InitVariantGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Variant"] = 0
+	RegisterState.Stats.GodotTypeFrees["Variant"] = 0
+}
+
 func NewVariantCopy(
 	p_src Variant, /* godot_variant */
 ) Variant {
@@ -12119,6 +12679,9 @@ func NewVariantCopy(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12136,6 +12699,9 @@ func NewVariantNil() Variant {
 	)
 
 	runtime.KeepAlive(rcv)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12158,6 +12724,9 @@ func NewVariantBool(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12180,6 +12749,9 @@ func NewVariantUint(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12202,6 +12774,9 @@ func NewVariantInt(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12224,6 +12799,9 @@ func NewVariantReal(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12248,6 +12826,9 @@ func NewVariantString(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12270,6 +12851,9 @@ func NewVariantVector2(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12292,6 +12876,9 @@ func NewVariantRect2(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12314,6 +12901,9 @@ func NewVariantVector3(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12336,6 +12926,9 @@ func NewVariantTransform2D(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12358,6 +12951,9 @@ func NewVariantPlane(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12380,6 +12976,9 @@ func NewVariantQuat(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12402,6 +13001,9 @@ func NewVariantAABB(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12424,6 +13026,9 @@ func NewVariantBasis(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12446,6 +13051,9 @@ func NewVariantTransform(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12468,6 +13076,9 @@ func NewVariantColor(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12490,6 +13101,9 @@ func NewVariantNodePath(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12512,6 +13126,9 @@ func NewVariantRID(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12534,6 +13151,9 @@ func NewVariantObject(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12556,6 +13176,9 @@ func NewVariantDictionary(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12578,6 +13201,9 @@ func NewVariantArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12600,6 +13226,9 @@ func NewVariantPoolByteArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12622,6 +13251,9 @@ func NewVariantPoolIntArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12644,6 +13276,9 @@ func NewVariantPoolRealArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12666,6 +13301,9 @@ func NewVariantPoolStringArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12688,6 +13326,9 @@ func NewVariantPoolVector2Array(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12710,6 +13351,9 @@ func NewVariantPoolVector3Array(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -12732,6 +13376,9 @@ func NewVariantPoolColorArray(
 
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
+
+	RegisterState.Stats.GodotTypeAllocs["Variant"]++
+
 	return dest
 }
 
@@ -13327,11 +13974,23 @@ func (gdt *Variant) Destroy() {
 		api,
 		rcv,
 	)
+	RegisterState.Stats.GodotTypeFrees["Variant"]++
+
 }
 
 type VariantCallError C.godot_variant_call_error
 
+func InitVariantCallErrorGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["VariantCallError"] = 0
+	RegisterState.Stats.GodotTypeFrees["VariantCallError"] = 0
+}
+
 type VariantCallErrorError C.godot_variant_call_error_error
+
+func InitVariantCallErrorErrorGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["VariantCallErrorError"] = 0
+	RegisterState.Stats.GodotTypeFrees["VariantCallErrorError"] = 0
+}
 
 /* Enum VariantCallErrorError */
 const (
@@ -13344,6 +14003,11 @@ const (
 )
 
 type VariantOperator C.godot_variant_operator
+
+func InitVariantOperatorGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["VariantOperator"] = 0
+	RegisterState.Stats.GodotTypeFrees["VariantOperator"] = 0
+}
 
 /* Enum VariantOperator */
 const (
@@ -13376,6 +14040,11 @@ const (
 )
 
 type VariantType C.godot_variant_type
+
+func InitVariantTypeGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["VariantType"] = 0
+	RegisterState.Stats.GodotTypeFrees["VariantType"] = 0
+}
 
 /* Enum VariantType */
 const (
@@ -13410,6 +14079,11 @@ const (
 
 type Vector2 C.godot_vector2
 
+func InitVector2GodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Vector2"] = 0
+	RegisterState.Stats.GodotTypeFrees["Vector2"] = 0
+}
+
 func NewVector2(
 	p_x float32 /* else case */, p_y float32, /* else case */
 ) Vector2 {
@@ -13432,6 +14106,9 @@ func NewVector2(
 	runtime.KeepAlive(rcv)
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
+
+	RegisterState.Stats.GodotTypeAllocs["Vector2"]++
+
 	return dest
 }
 
@@ -14181,6 +14858,11 @@ func (gdt *Vector2) DirectionTo(
 
 type Vector3 C.godot_vector3
 
+func InitVector3GodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Vector3"] = 0
+	RegisterState.Stats.GodotTypeFrees["Vector3"] = 0
+}
+
 func NewVector3(
 	p_x float32 /* else case */, p_y float32 /* else case */, p_z float32, /* else case */
 ) Vector3 {
@@ -14206,6 +14888,9 @@ func NewVector3(
 	runtime.KeepAlive(in0)
 	runtime.KeepAlive(in1)
 	runtime.KeepAlive(in2)
+
+	RegisterState.Stats.GodotTypeAllocs["Vector3"]++
+
 	return dest
 }
 
@@ -14963,6 +15648,11 @@ func (gdt *Vector3) DirectionTo(
 
 type Vector3Axis C.godot_vector3_axis
 
+func InitVector3AxisGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Vector3Axis"] = 0
+	RegisterState.Stats.GodotTypeFrees["Vector3Axis"] = 0
+}
+
 /* Enum Vector3Axis */
 const (
 	GODOT_VECTOR3_AXIS_X Vector3Axis = iota
@@ -14972,31 +15662,101 @@ const (
 
 type GdnativeCore11ApiStruct C.godot_gdnative_core_1_1_api_struct
 
+func InitGdnativeCore11ApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeCore11ApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeCore11ApiStruct"] = 0
+}
+
 type GdnativeCore12ApiStruct C.godot_gdnative_core_1_2_api_struct
+
+func InitGdnativeCore12ApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeCore12ApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeCore12ApiStruct"] = 0
+}
 
 type GdnativeCoreApiStruct C.godot_gdnative_core_api_struct
 
+func InitGdnativeCoreApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeCoreApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeCoreApiStruct"] = 0
+}
+
 type GdnativeExtAndroidApiStruct C.godot_gdnative_ext_android_api_struct
+
+func InitGdnativeExtAndroidApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeExtAndroidApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeExtAndroidApiStruct"] = 0
+}
 
 type GdnativeExtArvrApiStruct C.godot_gdnative_ext_arvr_api_struct
 
+func InitGdnativeExtArvrApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeExtArvrApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeExtArvrApiStruct"] = 0
+}
+
 type GdnativeExtNativescript11ApiStruct C.godot_gdnative_ext_nativescript_1_1_api_struct
+
+func InitGdnativeExtNativescript11ApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeExtNativescript11ApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeExtNativescript11ApiStruct"] = 0
+}
 
 type GdnativeExtNativescriptApiStruct C.godot_gdnative_ext_nativescript_api_struct
 
+func InitGdnativeExtNativescriptApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeExtNativescriptApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeExtNativescriptApiStruct"] = 0
+}
+
 type GdnativeExtNet32ApiStruct C.godot_gdnative_ext_net_3_2_api_struct
+
+func InitGdnativeExtNet32ApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeExtNet32ApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeExtNet32ApiStruct"] = 0
+}
 
 type GdnativeExtNetApiStruct C.godot_gdnative_ext_net_api_struct
 
+func InitGdnativeExtNetApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeExtNetApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeExtNetApiStruct"] = 0
+}
+
 type GdnativeExtPluginscriptApiStruct C.godot_gdnative_ext_pluginscript_api_struct
+
+func InitGdnativeExtPluginscriptApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeExtPluginscriptApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeExtPluginscriptApiStruct"] = 0
+}
 
 type GdnativeExtVideodecoderApiStruct C.godot_gdnative_ext_videodecoder_api_struct
 
+func InitGdnativeExtVideodecoderApiStructGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["GdnativeExtVideodecoderApiStruct"] = 0
+	RegisterState.Stats.GodotTypeFrees["GdnativeExtVideodecoderApiStruct"] = 0
+}
+
 type InstanceBindingFunctions C.godot_instance_binding_functions
+
+func InitInstanceBindingFunctionsGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["InstanceBindingFunctions"] = 0
+	RegisterState.Stats.GodotTypeFrees["InstanceBindingFunctions"] = 0
+}
 
 type MethodArg C.godot_method_arg
 
+func InitMethodArgGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["MethodArg"] = 0
+	RegisterState.Stats.GodotTypeFrees["MethodArg"] = 0
+}
+
 type MethodRpcMode C.godot_method_rpc_mode
+
+func InitMethodRpcModeGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["MethodRpcMode"] = 0
+	RegisterState.Stats.GodotTypeFrees["MethodRpcMode"] = 0
+}
 
 /* Enum MethodRpcMode */
 const (
@@ -15013,7 +15773,17 @@ const (
 
 type PropertyAttributes C.godot_property_attributes
 
+func InitPropertyAttributesGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PropertyAttributes"] = 0
+	RegisterState.Stats.GodotTypeFrees["PropertyAttributes"] = 0
+}
+
 type PropertyHint C.godot_property_hint
+
+func InitPropertyHintGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["PropertyHint"] = 0
+	RegisterState.Stats.GodotTypeFrees["PropertyHint"] = 0
+}
 
 /* Enum PropertyHint */
 const (
@@ -15056,20 +15826,65 @@ const (
 
 type Signal C.godot_signal
 
+func InitSignalGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["Signal"] = 0
+	RegisterState.Stats.GodotTypeFrees["Signal"] = 0
+}
+
 type SignalArgument C.godot_signal_argument
+
+func InitSignalArgumentGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["SignalArgument"] = 0
+	RegisterState.Stats.GodotTypeFrees["SignalArgument"] = 0
+}
 
 type NetMultiplayerPeer C.godot_net_multiplayer_peer
 
+func InitNetMultiplayerPeerGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["NetMultiplayerPeer"] = 0
+	RegisterState.Stats.GodotTypeFrees["NetMultiplayerPeer"] = 0
+}
+
 type NetPacketPeer C.godot_net_packet_peer
+
+func InitNetPacketPeerGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["NetPacketPeer"] = 0
+	RegisterState.Stats.GodotTypeFrees["NetPacketPeer"] = 0
+}
 
 type NetStreamPeer C.godot_net_stream_peer
 
+func InitNetStreamPeerGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["NetStreamPeer"] = 0
+	RegisterState.Stats.GodotTypeFrees["NetStreamPeer"] = 0
+}
+
 type NetWebrtcDataChannel C.godot_net_webrtc_data_channel
+
+func InitNetWebrtcDataChannelGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["NetWebrtcDataChannel"] = 0
+	RegisterState.Stats.GodotTypeFrees["NetWebrtcDataChannel"] = 0
+}
 
 type NetWebrtcLibrary C.godot_net_webrtc_library
 
+func InitNetWebrtcLibraryGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["NetWebrtcLibrary"] = 0
+	RegisterState.Stats.GodotTypeFrees["NetWebrtcLibrary"] = 0
+}
+
 type NetWebrtcPeerConnection C.godot_net_webrtc_peer_connection
 
+func InitNetWebrtcPeerConnectionGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["NetWebrtcPeerConnection"] = 0
+	RegisterState.Stats.GodotTypeFrees["NetWebrtcPeerConnection"] = 0
+}
+
 type VideodecoderInterfaceGdnative C.godot_videodecoder_interface_gdnative
+
+func InitVideodecoderInterfaceGdnativeGodotType() {
+	RegisterState.Stats.GodotTypeAllocs["VideodecoderInterfaceGdnative"] = 0
+	RegisterState.Stats.GodotTypeFrees["VideodecoderInterfaceGdnative"] = 0
+}
 
 //revive:enable

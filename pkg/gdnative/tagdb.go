@@ -7,6 +7,7 @@ package gdnative
 */
 import "C"
 import (
+	"fmt"
 	"hash/fnv"
 	"unsafe"
 
@@ -219,9 +220,7 @@ func (t tagDB) GetRegisteredClassName(typeTag TypeTag) string {
 		return tt
 	}
 
-	log.Panic("unable to find class name", zap.Uint("typeTag", uint(typeTag)))
-
-	return ""
+	return fmt.Sprintf("unknown:%d", typeTag)
 }
 
 func (t tagDB) IsMethodKnown(methodTag MethodTag) bool {
@@ -234,9 +233,7 @@ func (t tagDB) GetRegisteredMethodName(methodTag MethodTag) string {
 		return cm.methodName
 	}
 
-	log.Panic("unable to find method tag")
-
-	return ""
+	return fmt.Sprintf("unknown:%d", methodTag)
 }
 
 func (t tagDB) GetRegisteredPropertySet(tag PropertySetTag) string {
@@ -244,9 +241,7 @@ func (t tagDB) GetRegisteredPropertySet(tag PropertySetTag) string {
 		return v.propertySetFunction
 	}
 
-	log.Panic("unable to find property set tag")
-
-	return ""
+	return fmt.Sprintf("unknown:%d", tag)
 }
 
 func (t tagDB) GetRegisteredPropertyGet(tag PropertyGetTag) string {
@@ -254,9 +249,7 @@ func (t tagDB) GetRegisteredPropertyGet(tag PropertyGetTag) string {
 		return v.propertyGetFunction
 	}
 
-	log.Panic("unable to find property get tag")
-
-	return ""
+	return fmt.Sprintf("unknown:%d", tag)
 }
 
 func (t tagDB) RegisterGlobalType(name string, typeTag, baseTypeTag string) (TypeTag, TypeTag) {

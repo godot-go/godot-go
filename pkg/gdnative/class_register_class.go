@@ -84,14 +84,14 @@ func RegisterClass(instance NativeScriptClass) {
 
 	registeredNativeScriptClassTypes[ctt] = classType
 
-	event := NewClassRegisteredEvent(
+	event := newClassRegisteredEvent(
 		className,
 		classType,
 		ctt,
 		baseName,
 		btt,
 	)
-	defer event.Destroy()
+	defer event.destroy()
 
 	C.go_godot_nativescript_register_class(
 		NativescriptApi,
@@ -185,6 +185,6 @@ func go_create_func(godotObject *C.godot_object, methodData unsafe.Pointer) unsa
 }
 
 //export go_destroy_func
-func go_destroy_func(godotObject *C.godot_object, methodData unsafe.Pointer, userData unsafe.Pointer) {
+func go_destroy_func(_ *C.godot_object, methodData unsafe.Pointer, userData unsafe.Pointer) {
 	delete(nativeScriptInstanceMap, UserData(uintptr(userData)))
 }

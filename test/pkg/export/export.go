@@ -3,7 +3,6 @@ package export
 import "C"
 import (
 	"github.com/godot-go/godot-go/pkg/gdnative"
-	"github.com/godot-go/godot-go/test/pkg/gdnativetest"
 	"unsafe"
 )
 
@@ -24,5 +23,7 @@ func godot_nativescript_init(handle unsafe.Pointer) {
 
 //export godot_nativescript_terminate
 func godot_nativescript_terminate(handle unsafe.Pointer) {
-	gdnativetest.PlayerCharacterNativescriptTerminate()
+	gdnative.RegisterState.Stats.LogObjectLeak()
+
+	gdnative.GodotNativescriptTerminate(handle)
 }

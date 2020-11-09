@@ -30,13 +30,22 @@ func apiStructOffset(extensions **C.godot_gdnative_api_struct, i int) *C.godot_g
 	return *ptrPtr
 }
 
+// GodotGdnativeInit should be called from the exported gdnative_init function.
 func GodotGdnativeInit(options *GdnativeInitOptions) {
-	RegisterState.InitCount++
+	RegisterState.Stats.InitCount++
 
-	log.Debug("GodotGdnativeInit called", AnyField("InitCount", RegisterState.InitCount))
+	log.Debug("GodotGdnativeInit called", AnyField("InitCount", RegisterState.Stats.InitCount))
 
 	if CoreApi != nil {
 		log.Panic("godot gdnative is already initialized!")
+	}
+
+	RegisterState.Stats = RuntimeStats{
+		InitCount:          0,
+		NativeScriptAllocs: map[string]int{},
+		NativeScriptFrees:  map[string]int{},
+		GodotTypeAllocs:    map[string]int{},
+		GodotTypeFrees:     map[string]int{},
 	}
 
 	RegisterState.TagDB = tagDB{
@@ -131,6 +140,7 @@ func GodotGdnativeInit(options *GdnativeInitOptions) {
 // 	C.go_godot_nativescript_profiling_add_data(Nativescript11Api, sig, t)
 // }
 
+// GodotGdnativeTerminate should be called from the exported gdnative_terminate function.
 func GodotGdnativeTerminate(options *GdnativeTerminateOptions) {
 	log.Debug("GodotGdnativeTerminate called")
 
@@ -155,6 +165,7 @@ func GodotGdnativeTerminate(options *GdnativeTerminateOptions) {
 	log.Debug("GodotGdnativeTerminate finished")
 }
 
+// GodotNativescriptInit should be called from the exported nativescript_init function.
 func GodotNativescriptInit(handle unsafe.Pointer) {
 	log.Debug("GodotNativescriptInit called")
 
@@ -180,7 +191,7 @@ func GodotNativescriptInit(handle unsafe.Pointer) {
 		log.Panic("godot nativescript handle is nil!")
 	}
 
-	RegisterInstanceBindingFunctions()
+	registerInstanceBindingFunctions()
 	log.Info("language index assigned", AnyField("language_index", strconv.Itoa(int(RegisterState.LanguageIndex))))
 
 	log.Info("init internal callbacks", AnyField("count", len(initInternalNativescriptCallbacks)))
@@ -196,6 +207,7 @@ func GodotNativescriptInit(handle unsafe.Pointer) {
 	log.Debug("GodotNativescriptInit finished")
 }
 
+// GodotNativescriptTerminate should be called from the exported nativescript_terminate function.
 func GodotNativescriptTerminate(handle unsafe.Pointer) {
 	log.Debug("GodotNativescriptTerminate called")
 
@@ -207,7 +219,7 @@ func GodotNativescriptTerminate(handle unsafe.Pointer) {
 		cb()
 	}
 
-	UnregisterInstanceBindingFunctions()
+	unregisterInstanceBindingFunctions()
 
 	if RegisterState.NativescriptHandle == nil {
 		log.Panic("godot nativescript handle is already nil")

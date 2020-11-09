@@ -1,3 +1,4 @@
 libs/*.so
 libs/*.dll
+libs/*.dylib
 .import/

@@ -61,11 +61,16 @@ func init() {
 	}
 
 	{{ if eq $api.BaseClass "" -}}
-	func (o *{{ $api.PrefixName }}Impl) Free() {
-		if o != nil {
-			Free(unsafe.Pointer(o))
-			o = nil
+	func (o *{{ $api.PrefixName }}Impl) Destroy() {
+		if o.Owner == nil {
+			log.Error("Object.Destroy already called")
+			return
 		}
+
+		RegisterState.Stats.NativeScriptFrees["{{ .PrefixName }}"]++
+
+		ObjectDestroy(o.Owner)
+		o.Owner = nil
 	}
 
 	func (o *{{ $api.PrefixName }}Impl) GetOwnerObject() *GodotObject {
@@ -107,7 +112,7 @@ func init() {
 			owner := (*Object)(unsafe.Pointer(C.go_godot_global_get_singleton(CoreApi, cname)))
 			wrapped := *(*WrappedImpl)(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner)))
 
-			m := (*{{ .PrefixName }}Impl)(AllocZeros(int32(sizeof{{ .PrefixName }})))
+			m := &{{ .PrefixName }}Impl{}
 			m.WrappedImpl = wrapped
 
 			if m.Owner == nil {
@@ -117,34 +122,30 @@ func init() {
 			if m.TypeTag == EmptyTypeTag {
 				log.Panic("type tag should not be zero")
 			}
+
+			{{/* runtime.SetFinalizer(m, func(m *{{ .PrefixName }}Impl) {
+				m.Destroy()
+			}) */}}
+
+			RegisterState.Stats.NativeScriptAllocs["{{ .PrefixName }}"]++
 
 			return m
 		}
 	{{ else }}
+		// New{{ .PrefixName }} creates a new {{ .PrefixName }}.
 		func New{{ .PrefixName }}() {{ .PrefixName }} {
 			cname := C.CString("{{ .Name }}")
 			defer C.free(unsafe.Pointer(cname))
 			owner := (*GodotObject)(C.go_godot_get_class_constructor_new(CoreApi, cname))
-		    wrapped := *(*WrappedImpl)(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner)))
 
-			m := (*{{ .PrefixName }}Impl)(AllocZeros(int32(sizeof{{ .PrefixName }})))
-			m.WrappedImpl = wrapped
-
-			if m.Owner == nil {
-				log.Panic("owner should not be null")
-			}
-
-			if m.TypeTag == EmptyTypeTag {
-				log.Panic("type tag should not be zero")
-			}
-
-			return m
+			return New{{ .PrefixName }}WithOwner(owner)
 		}
 
+		// New{{ .PrefixName }}WithOwner wraps the GodotObject.
 		func New{{ .PrefixName }}WithOwner(owner *GodotObject) {{ .PrefixName }} {
 		    wrapped := *(*WrappedImpl)(C.go_godot_nativescript_get_instance_binding_data(Nativescript11Api, RegisterState.LanguageIndex, unsafe.Pointer(owner)))
 
-			m := (*{{ .PrefixName }}Impl)(AllocZeros(int32(sizeof{{ .PrefixName }})))
+			m := &{{ .PrefixName }}Impl{}
 			m.WrappedImpl = wrapped
 
 			if m.Owner == nil {
@@ -156,41 +157,6 @@ func init() {
 			}
 
 			return m
-		}
-
-		{{/* func New{{ .PrefixName }}WithWrappedImpl(wrapped WrappedImpl) Class {
-			m := (*{{ .PrefixName }}Impl)(AllocZeros(int32(sizeof{{ .PrefixName }})))
-			m.WrappedImpl = wrapped
-
-			if m.Owner == nil {
-				log.Panic("owner should not be null")
-			}
-
-			if m.TypeTag == EmptyTypeTag {
-				log.Panic("type tag should not be zero")
-			}
-
-			return m
-		} */}}
-
-		func New{{ .PrefixName }}WithRef(owner *GodotObject, typeTag TypeTag) {{ .PrefixName }} {
-			m := (*{{ .PrefixName }}Impl)(AllocZeros(int32(sizeof{{ .PrefixName }})))
-			m.Owner = owner
-			m.TypeTag = typeTag
-
-			if m.Owner == nil {
-				log.Panic("owner should not be null")
-			}
-
-			if m.TypeTag == EmptyTypeTag {
-				log.Panic("type tag should not be zero")
-			}
-
-			return m
-		}
-
-		func New{{ .PrefixName }}WithRefAsClass(owner *GodotObject, typeTag TypeTag) Class {
-			return New{{ .PrefixName }}WithRef(owner, typeTag)
 		}
 
 		func new{{ .PrefixName }}AsClass() Class {
@@ -272,6 +238,8 @@ func init() {
 		}
 
 		RegisterState.TagDB.RegisterGlobalType("{{ .Name }}", "{{ .PrefixName }}", "{{ .BaseClass }}")
+		RegisterState.Stats.NativeScriptAllocs["{{ .PrefixName }}"] = 0
+		RegisterState.Stats.NativeScriptFrees["{{ .PrefixName }}"] = 0
 	}
 
 	func Init{{ .PrefixName }}MethodBinds() {
@@ -327,17 +295,17 @@ func init() {
 				{{ if eq $goReturnUsage USAGE_VOID -}}
 					{{ $classPrefix }}{{ $method.MethodBindName }}.Call(o.Owner, ptrArguments, int32(ptrCArrSize), godotErr)
 
-					{{ range $k, $arg := $method.Arguments -}}
+					{{/* {{ range $k, $arg := $method.Arguments -}}
 						ra{{ $k }}.Destroy()
-					{{ end }}
+					{{ end }} */}}
 
 					defer Free(ptrCArr)
 				{{ else }}
 					ret := {{ $classPrefix }}{{ $method.MethodBindName }}.Call(o.Owner, ptrArguments, int32(ptrCArrSize), godotErr)
 
-					{{ range $k, $arg := $method.Arguments -}}
+					{{/* {{ range $k, $arg := $method.Arguments -}}
 						ra{{ $k }}.Destroy()
-					{{ end }}
+					{{ end }} */}}
 
 					defer Free(ptrCArr)
 
@@ -376,11 +344,12 @@ func init() {
 					{{ else if eq $usage USAGE_GODOT_STRING }}
 						/* USAGE_GODOT_STRING ({{ $arg.Type }} / {{ $goType }}) */
 						_arg{{ $k }} := internWithGoString({{ $arg.GoName }})
+						{{/* defer _arg{{ $k }}.Destroy() */}}
 						ptrArguments[{{ $k }}] = unsafe.Pointer(&_arg{{ $k }})
 					{{ else if eq $usage USAGE_GODOT_STRING_NAME }}
 						/* USAGE_GODOT_STRING_NAME ({{ $arg.Type }} / {{ $goType }}) */
-						_arg{{ $k }} := NewStringName(internWithGoString({{ $arg.GoName }}))
-						defer _arg{{ $k }}.Destroy()
+						_arg{{ $k }} := internNameWithGoString({{ $arg.GoName }})
+						{{/* defer _arg{{ $k }}.Destroy() */}}
 						ptrArguments[{{ $k }}] = unsafe.Pointer(&_arg{{ $k }})
 					{{ else if eq $usage USAGE_GDNATIVE_REF }}
 						/* USAGE_GDNATIVE_REF ({{ $arg.Type }} / {{ $goType }}) */
@@ -431,6 +400,8 @@ func init() {
 				{{ range $k, $arg := $method.Arguments -}}
 					runtime.KeepAlive(_arg{{ $k }})
 				{{ end }}
+
+				runtime.KeepAlive(ptrArguments)
 
 				{{ if eq $goReturnUsage USAGE_VOID }}
 					/* USAGE_VOID ({{ $method.ReturnType }} / {{ $goReturnType }}) */

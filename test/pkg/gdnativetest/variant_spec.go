@@ -74,9 +74,7 @@ var _ = Describe("Variant", func() {
 			f := 1.0
 			vf := gdnative.GoTypeToVariant(reflect.ValueOf(f))
 			defer vf.Destroy()
-			str := gdnative.NewStringFromGoString("my name")
-			defer str.Destroy()
-			vs := gdnative.GoTypeToVariant(reflect.ValueOf(str))
+			vs := gdnative.GoTypeToVariant(reflect.ValueOf("my name"))
 			defer vs.Destroy()
 			arr := gdnative.NewArray()
 			defer arr.Destroy()
@@ -97,7 +95,7 @@ var _ = Describe("Variant", func() {
 
 		It("should return an Object type", func() {
 			n := gdnative.NewNode2D()
-			defer n.Free()
+
 			o := n.GetOwnerObject()
 			strClassName := n.GetClass()
 
@@ -127,6 +125,8 @@ var _ = Describe("Variant", func() {
 
 			newNode2d := gdnative.NewNode2DWithOwner(v.AsObject())
 			Ω(n).Should(Equal(newNode2d))
+
+			
 		})
 	})
 })

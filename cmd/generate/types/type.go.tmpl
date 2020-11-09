@@ -41,6 +41,14 @@ import (
 "runtime"
 )
 
+func init() {
+	{{ range $j, $typeDef := .TypeDefs -}}
+        {{ if not (eq $typeDef.Usage USAGE_GO_PRIMATIVE) -}}
+	        registerInternalInitCallback(Init{{ $typeDef.Name }}GodotType)
+        {{ end -}}
+	{{ end -}}
+}
+
 /* Global Functions */
 {{ range $j, $method := .Globals -}}
     {{ template "GLOBAL_METHOD" $method }}
@@ -50,6 +58,12 @@ import (
 {{ range $j, $typeDef := .TypeDefs -}}
     {{ if not (eq $typeDef.Usage USAGE_GO_PRIMATIVE) -}}
     type {{ $typeDef.Name }} C.{{ $typeDef.CName }}
+
+    func Init{{ $typeDef.Name }}GodotType() {
+        RegisterState.Stats.GodotTypeAllocs["{{ $typeDef.Name }}"] = 0
+        RegisterState.Stats.GodotTypeFrees["{{ $typeDef.Name }}"] = 0
+    }
+
     {{ else -}}
     // mapped C.{{ $typeDef.CName }} to native go type {{ $typeDef.Name }}
     {{ end -}}
@@ -67,9 +81,7 @@ import (
     )
     {{ end }}
 
-    {{ range $j, $constructor := $typeDef.Constructors }}
-        {{ template "CONSTRUCTOR_METHOD" $constructor }}
-    {{ end }}
+    {{ template "CONSTRUCTOR_METHODS" . }}
 
     {{ range $j, $method := $typeDef.Methods }}
         {{ if $method.IsSetter }}
@@ -81,7 +93,10 @@ import (
 {{ end }}
 //revive:enable
 
-{{ define "CONSTRUCTOR_METHOD" }}
+{{ define "CONSTRUCTOR_METHODS" }}
+    {{ $hasDestroyMethod := .HasDestroyMethod }}
+    {{ range $j, $constructor := .Constructors }}
+        {{ with $constructor }}
     {{ $returnTypeGoName := .ReturnType.GoName }}
     func {{ .Name }}({{ template "ARGUMENTS" . }}) {{ $returnTypeGoName }} {
         dest := {{ $returnTypeGoName }}{}
@@ -131,8 +146,17 @@ import (
         {{- range $k, $arg := .Arguments }}
             runtime.KeepAlive(in{{$k}})
         {{- end }}
+
+        RegisterState.Stats.GodotTypeAllocs["{{ $returnTypeGoName }}"]++
+
+        {{/* {{- if $hasDestroyMethod }}
+            runtime.SetFinalizer(dest, dest.Destroy)
+        {{- end }} */}}
+
         return dest
     }
+        {{ end }}
+    {{ end }}
 {{ end }}
 
 {{ define "SETTER_METHOD" }}
@@ -175,6 +199,11 @@ import (
         {{- range $k, $arg := .Arguments }}
             runtime.KeepAlive(in{{$k}})
         {{- end }}
+
+        {{- if eq .Name "Destroy" }}
+            RegisterState.Stats.GodotTypeFrees["{{ .Receiver.Type.GoName }}"]++
+            {{/* runtime.SetFinalizer(gdt, nil) */}}
+        {{- end }}
     }
 {{ end }}
 
@@ -187,6 +216,8 @@ import (
         string
     {{- else if .ReturnType.IsVoidPointer -}}
         unsafe.Pointer
+    {{- else if .ReturnType.IsGoPrimative -}}
+        {{ .ReturnType.GoName }}
     {{- else -}}
         {{ .ReturnType.GoName }}
     {{- end }} {

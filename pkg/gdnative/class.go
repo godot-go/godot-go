@@ -51,7 +51,7 @@ type Class interface {
 	Wrapped
 	ClassName() string
 	BaseClass() string
-	destroy()
+	Destroy()
 }
 
 // ClassRegisteredEvent contains the event context for when Godot has

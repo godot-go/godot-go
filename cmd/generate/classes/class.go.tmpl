@@ -61,9 +61,9 @@ func init() {
 	}
 
 	{{ if eq $api.BaseClass "" -}}
-	func (o *{{ $api.PrefixName }}Impl) destroy() {
+	func (o *{{ $api.PrefixName }}Impl) Destroy() {
 		if o.Owner == nil {
-			log.Error("Object.destroy already called")
+			log.Error("Object.Destroy already called")
 			return
 		}
 
@@ -124,7 +124,7 @@ func init() {
 			}
 
 			{{/* runtime.SetFinalizer(m, func(m *{{ .PrefixName }}Impl) {
-				m.destroy()
+				m.Destroy()
 			}) */}}
 
 			RegisterState.Stats.NativeScriptAllocs["{{ .PrefixName }}"]++
@@ -296,7 +296,7 @@ func init() {
 					{{ $classPrefix }}{{ $method.MethodBindName }}.Call(o.Owner, ptrArguments, int32(ptrCArrSize), godotErr)
 
 					{{/* {{ range $k, $arg := $method.Arguments -}}
-						ra{{ $k }}.destroy()
+						ra{{ $k }}.Destroy()
 					{{ end }} */}}
 
 					defer Free(ptrCArr)
@@ -304,7 +304,7 @@ func init() {
 					ret := {{ $classPrefix }}{{ $method.MethodBindName }}.Call(o.Owner, ptrArguments, int32(ptrCArrSize), godotErr)
 
 					{{/* {{ range $k, $arg := $method.Arguments -}}
-						ra{{ $k }}.destroy()
+						ra{{ $k }}.Destroy()
 					{{ end }} */}}
 
 					defer Free(ptrCArr)
@@ -344,11 +344,12 @@ func init() {
 					{{ else if eq $usage USAGE_GODOT_STRING }}
 						/* USAGE_GODOT_STRING ({{ $arg.Type }} / {{ $goType }}) */
 						_arg{{ $k }} := internWithGoString({{ $arg.GoName }})
+						{{/* defer _arg{{ $k }}.Destroy() */}}
 						ptrArguments[{{ $k }}] = unsafe.Pointer(&_arg{{ $k }})
 					{{ else if eq $usage USAGE_GODOT_STRING_NAME }}
 						/* USAGE_GODOT_STRING_NAME ({{ $arg.Type }} / {{ $goType }}) */
-						_arg{{ $k }} := NewStringName(internWithGoString({{ $arg.GoName }}))
-						{{/* defer _arg{{ $k }}.destroy() */}}
+						_arg{{ $k }} := internNameWithGoString({{ $arg.GoName }})
+						{{/* defer _arg{{ $k }}.Destroy() */}}
 						ptrArguments[{{ $k }}] = unsafe.Pointer(&_arg{{ $k }})
 					{{ else if eq $usage USAGE_GDNATIVE_REF }}
 						/* USAGE_GDNATIVE_REF ({{ $arg.Type }} / {{ $goType }}) */
@@ -399,6 +400,8 @@ func init() {
 				{{ range $k, $arg := $method.Arguments -}}
 					runtime.KeepAlive(_arg{{ $k }})
 				{{ end }}
+
+				runtime.KeepAlive(ptrArguments)
 
 				{{ if eq $goReturnUsage USAGE_VOID }}
 					/* USAGE_VOID ({{ $method.ReturnType }} / {{ $goReturnType }}) */

@@ -1,6 +1,13 @@
 name: godot-go CI
 
 on:
+  pull_request:
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - ".github/workflows/ci.yaml"
+
   push:
     paths:
       - "**/*.go"

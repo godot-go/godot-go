@@ -159,27 +159,6 @@ func init() {
 			return m
 		}
 
-		// New{{ .PrefixName }}WithRef wraps the GodotObject wihtout going back to godot.
-		func New{{ .PrefixName }}WithRef(owner *GodotObject, typeTag TypeTag) {{ .PrefixName }} {
-			m := &{{ .PrefixName }}Impl{}
-			m.Owner = owner
-			m.TypeTag = typeTag
-
-			if m.Owner == nil {
-				log.Panic("owner should not be null")
-			}
-
-			if m.TypeTag == EmptyTypeTag {
-				log.Panic("type tag should not be zero")
-			}
-
-			return m
-		}
-
-		func New{{ .PrefixName }}WithRefAsClass(owner *GodotObject, typeTag TypeTag) Class {
-			return New{{ .PrefixName }}WithRef(owner, typeTag)
-		}
-
 		func new{{ .PrefixName }}AsClass() Class {
 			return New{{ .PrefixName }}()
 		}

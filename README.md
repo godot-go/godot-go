@@ -2,6 +2,8 @@
 
 ---
 
+__This branch has been deprecated in favor of godot-4__
+
 # godot-go
 
 [Go](https://golang.org/) bindings for the [Godot Game Engine](https://github.com/godotengine/godot) cross-platform game engine. godot-go integrates into Godot through the Godot GDNative and NativeScript APIs through cgo.

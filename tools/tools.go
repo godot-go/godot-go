@@ -1,3 +1,4 @@
+//go:build tools
 // +build tools
 
 // idiomatic way of tracking your tool dependencies:
@@ -6,7 +7,5 @@
 package tools
 
 import (
-  _ "github.com/onsi/ginkgo/ginkgo"
-  _ "github.com/onsi/gomega"
-  _ "golang.org/x/tools/cmd/goimports"
+	_ "golang.org/x/tools/cmd/goimports"
 )

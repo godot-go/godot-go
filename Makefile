@@ -44,7 +44,7 @@ clean: clean_gdnative
 
 test:
 	CI=1 \
-	LOG_LEVEL=error \
+	LOG_LEVEL=debug \
 	GOTRACEBACK=crash \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
 	godot --headless --verbose --debug --path test/demo/ -glog=3

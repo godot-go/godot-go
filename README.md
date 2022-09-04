@@ -2,7 +2,7 @@
 
 ---
 
-# godot-go for Godot 4
+# godot-go: Go bindings for Godot 4
 
 [Go](https://golang.org/) bindings for the [Godot Game Engine](https://github.com/godotengine/godot) cross-platform game engine. godot-go integrates into Godot through the Godot GDNative and NativeScript APIs through cgo.
 

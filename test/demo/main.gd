@@ -47,6 +47,8 @@ func _ready():
 	prints("  ANSWER_TO_EVERYTHING", $Example.ANSWER_TO_EVERYTHING)
 	prints("  CONSTANT_WITHOUT_ENUM", $Example.CONSTANT_WITHOUT_ENUM)
 
+	prints("app is ready")
+
 	if OS.get_environment("CI") == "1":
 		prints("CI env var detected: automating interactions")
 		# force a button click event
@@ -54,8 +56,6 @@ func _ready():
 
 		prints("force quit")
 		get_tree().quit()
-	
-	prints("app is ready")
 
 func _on_Example_custom_signal(signal_name, value):
 	prints("Example emitted:", signal_name, value)

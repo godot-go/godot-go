@@ -50,7 +50,7 @@ func _ready():
 	if OS.get_environment("CI") == "1":
 		prints("CI env var detected: automating interactions")
 		# force a button click event
-		# $Button.emit_signal("button_up")
+		$Button.emit_signal("button_up")
 
 		prints("force quit")
 		get_tree().quit()

@@ -86,6 +86,13 @@ const GDNativePropertyInfo *cgo_GDNativeExtensionClassGetPropertyList(
 void cgo_GDNativeExtensionClassFreePropertyList(
     const GDNativeExtensionClassFreePropertyList cb,
     GDExtensionClassInstancePtr p_instance, const GDNativePropertyInfo *p_list);
+GDNativeBool cgo_GDNativeExtensionClassPropertyCanRevert(
+    const GDNativeExtensionClassPropertyCanRevert cb,
+    GDExtensionClassInstancePtr p_instance, const GDNativeStringNamePtr p_name);
+GDNativeBool cgo_GDNativeExtensionClassPropertyGetRevert(
+    const GDNativeExtensionClassPropertyGetRevert cb,
+    GDExtensionClassInstancePtr p_instance, const GDNativeStringNamePtr p_name,
+    GDNativeVariantPtr r_ret);
 void cgo_GDNativeExtensionClassNotification(
     const GDNativeExtensionClassNotification cb,
     GDExtensionClassInstancePtr p_instance, int32_t p_what);
@@ -152,6 +159,14 @@ GDNativeVariantType cgo_GDNativeExtensionScriptInstanceGetPropertyType(
     const GDNativeExtensionScriptInstanceGetPropertyType cb,
     GDNativeExtensionScriptInstanceDataPtr p_instance,
     const GDNativeStringNamePtr p_name, GDNativeBool *r_is_valid);
+GDNativeBool cgo_GDNativeExtensionScriptInstancePropertyCanRevert(
+    const GDNativeExtensionScriptInstancePropertyCanRevert cb,
+    GDNativeExtensionScriptInstanceDataPtr p_instance,
+    const GDNativeStringNamePtr p_name);
+GDNativeBool cgo_GDNativeExtensionScriptInstancePropertyGetRevert(
+    const GDNativeExtensionScriptInstancePropertyGetRevert cb,
+    GDNativeExtensionScriptInstanceDataPtr p_instance,
+    const GDNativeStringNamePtr p_name, GDNativeVariantPtr r_ret);
 GDNativeObjectPtr cgo_GDNativeExtensionScriptInstanceGetOwner(
     const GDNativeExtensionScriptInstanceGetOwner cb,
     GDNativeExtensionScriptInstanceDataPtr p_instance);

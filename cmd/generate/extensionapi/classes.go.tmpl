@@ -78,7 +78,7 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
 {{range $k, $a := $m.Arguments -}}
 {{ goArgumentName $a.Name }} {{ goArgumentType $a.Type }},
 {{end -}}
-{{- if $m.IsVararg }}varargs ...Variant,{{ end }}
+{{- if $m.IsVararg }}varargs ...Variant,{{ end -}}
 ) {{ $fnReturnType }} {
     {{/* TODO: refactor for static instantiation */}}
 	cGdiPtr := (*C.GDNativeInterface)(internal.gdnInterface)
@@ -93,6 +93,7 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
 		panic("could not find method function {{ $c.Name }}.{{ $m.Name }} ({{ $m.Hash }})")
 	}
 
+	{{/* init return type */}}
 	{{ if $fnReturnType -}}
 	var ret {{ $fnReturnType }}
 	{{ if $m.IsVararg}}
@@ -112,20 +113,26 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
 
 	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
 
-	{{ if $m.IsVararg }}
-	argsPtr := (*[{{ len $m.Arguments }}]unsafe.Pointer)(argBytes)
+	{{ if $hasSomeArguments -}}
+	argsPtr := (*[MAX_ARG_COUNT]unsafe.Pointer)(argBytes)
+	{{ end -}}
 
+	{{ if $m.IsVararg -}}
+	{{ range $j, $a := $m.Arguments -}}
+		arg{{ $j }} := {{ goVariantConstructor $a.Type (goArgumentName $a.Name) }}
+		argsPtr[{{ $j }}] = unsafe.Pointer(&arg{{ $j }})
+	{{ end }}
+	{{ else }}
 	{{ range $j, $a := $m.Arguments -}}
 		argsPtr[{{ $j }}] = unsafe.Pointer(&{{ goArgumentName $a.Name }})
+	{{ end }}
 	{{ end }}
 
     {{ if $m.IsVararg -}}
     for i := range varargs {
-        argsPtr[i + {{ len $m.Arguments }}] = unsafe.Pointer(&varargs[i])
+        argsPtr[i + {{ len $m.Arguments }}] = unsafe.Pointer(&varargs[i]) // variant
     }
     {{ end -}}
-
-	{{ end }}
 
 	cOwner := (C.GDNativeObjectPtr)(unsafe.Pointer(cx.GetGodotObjectOwner()))
 

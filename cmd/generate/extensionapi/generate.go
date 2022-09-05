@@ -261,11 +261,12 @@ func GenerateBuiltinClasses(projectPath string, extensionApi extensionapiparser.
 func GenerateClasses(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
 	tmpl, err := template.New("classes.gen.go").
 		Funcs(template.FuncMap{
-			"goMethodName":    goMethodName,
-			"goArgumentName":  goArgumentName,
-			"goArgumentType":  goArgumentType,
-			"goReturnType":    goReturnType,
-			"goClassEnumName": goClassEnumName,
+			"goVariantConstructor": goVariantConstructor,
+			"goMethodName":         goMethodName,
+			"goArgumentName":       goArgumentName,
+			"goArgumentType":       goArgumentType,
+			"goReturnType":         goReturnType,
+			"goClassEnumName":      goClassEnumName,
 		}).
 		Parse(classesText)
 

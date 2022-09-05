@@ -30,6 +30,23 @@ func screamingSnake(v string) string {
 	return digitDRe.ReplaceAllString(underscoreDigitRe.ReplaceAllString(v, `$1`), `${1}${2}`)
 }
 
+func goVariantConstructor(t, innerText string) string {
+	switch t {
+	case "float", "real_t", "double":
+		return fmt.Sprintf("NewVariantFloat64(%s)", innerText)
+	case "int", "uint64_t":
+		return fmt.Sprintf("NewVariantInt64(%s)", innerText)
+	case "bool":
+		return fmt.Sprintf("NewVariantBool(%s)", innerText)
+	case "String":
+		return fmt.Sprintf("NewVariantString(%s)", innerText)
+	case "StringName":
+		return fmt.Sprintf("NewVariantStringName(%s)", innerText)
+	default:
+		return fmt.Sprintf("NewVariantWrapped(&%s)", innerText)
+	}
+}
+
 func goArgumentName(t string) string {
 	switch t {
 	case "string":
@@ -167,6 +184,7 @@ func goHasArgumentTypeEncoder(t string) bool {
 			panic("unexepected pointer indirection")
 		}
 	case "Vector2i", "Vector3i", "Vector4i", "Rect2i":
+		return true
 	case "float", "real_t":
 		return true
 	case "double":

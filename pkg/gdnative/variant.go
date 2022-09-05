@@ -388,6 +388,36 @@ func (c *Variant) ToString() String {
 	return v
 }
 
+func NewVariantStringName(v StringName) Variant {
+	// MAKE_PTRARG(String);
+	ret := Variant{}
+	fn := variantFromTypeConstructor[GDNATIVE_VARIANT_TYPE_STRING_NAME]
+
+	C.cgo_GDNativeVariantFromTypeConstructorFunc(
+		(C.GDNativeVariantFromTypeConstructorFunc)(fn),
+		(C.GDNativeVariantPtr)(ret.ptr()),
+		(C.GDNativeTypePtr)(v.ptr()),
+	)
+
+	return ret
+}
+
+func (c *Variant) ToStringName() StringName {
+	fn := variantToTypeConstructor[GDNATIVE_VARIANT_TYPE_STRING_NAME]
+
+	var (
+		v StringName
+	)
+
+	C.cgo_GDNativeTypeFromVariantConstructorFunc(
+		(C.GDNativeTypeFromVariantConstructorFunc)(fn),
+		(C.GDNativeTypePtr)(v.ptr()),
+		(C.GDNativeVariantPtr)(c.ptr()),
+	)
+
+	return v
+}
+
 func NewVariantWrapped(w Wrapped) Variant {
 	ret := Variant{}
 	fn := variantFromTypeConstructor[GDNATIVE_VARIANT_TYPE_OBJECT]

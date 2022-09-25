@@ -1,8 +1,8 @@
 [configuration]
 
-entry_symbol = "ExampleLibraryInit"
+entry_symbol = "TestDemoInit"
 
 [libraries]
 
-linux.debug.x86_64 = "../libs/libgodotgo-test-linux-amd64.so"
-linux.release.x86_64 = "../libs/libgodotgo-test-linux-amd64.so"
+linux.debug.x86_64 = "res://lib/libgodotgo-test-linux-amd64.so"
+linux.release.x86_64 = "res://lib/libgodotgo-test-linux-amd64.so"

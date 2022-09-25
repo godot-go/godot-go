@@ -10,6 +10,8 @@
 
 package gdnative
 
+//revive:disable
+
 // #include <godot/gdnative_interface.h>
 // #include "gdnative_wrapper.gen.h"
 // #include <stdint.h>
@@ -49,6 +51,136 @@ const (
 	type {{ $f.Name }} C.{{ $f.Name }}
 {{ end -}}
 
+// custom functions
+func CallFunc_GDNativePtrConstructor(
+	cb GDNativePtrConstructor,
+	p_base GDNativeTypePtr,
+	p_args *GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrConstructor(
+		(C.GDNativePtrConstructor)(cb),
+		(C.GDNativeTypePtr)(p_base),
+		(*C.GDNativeTypePtr)(p_args),
+	)
+}
+
+func CallFunc_GDNativePtrDestructor(
+	cb GDNativePtrDestructor,
+	ptr GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrDestructor(
+		(C.GDNativePtrDestructor)(cb),
+		(C.GDNativeTypePtr)(ptr),
+	)
+}
+
+func CallFunc_GDNativePtrOperatorEvaluator(
+	cb GDNativePtrOperatorEvaluator,
+	p_left GDNativeTypePtr,
+	p_right GDNativeTypePtr,
+	r_result GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrOperatorEvaluator(
+		(C.GDNativePtrOperatorEvaluator)(cb),
+		(C.GDNativeTypePtr)(p_left),
+		(C.GDNativeTypePtr)(p_right),
+		(C.GDNativeTypePtr)(r_result),
+	)
+}
+
+func CallFunc_GDNativePtrBuiltInMethod(
+	cb GDNativePtrBuiltInMethod,
+	p_base GDNativeTypePtr,
+	p_args *GDNativeTypePtr,
+	r_return GDNativeTypePtr,
+	p_argument_count int32,
+) {
+	C.cgo_callfn_GDNativePtrBuiltInMethod(
+		(C.GDNativePtrBuiltInMethod)(cb),
+		(C.GDNativeTypePtr)(p_base),
+		(*C.GDNativeTypePtr)(p_args),
+		(C.GDNativeTypePtr)(r_return),
+		(C.int)(p_argument_count),
+	);
+}
+
+func CallFunc_GDNativePtrUtilityFunction(
+	cb GDNativePtrUtilityFunction,
+	r_return GDNativeTypePtr,
+	p_arguments *GDNativeTypePtr,
+	p_argument_count int32,
+) {
+	C.cgo_callfn_GDNativePtrUtilityFunction(
+		(C.GDNativePtrUtilityFunction)(cb),
+		(C.GDNativeTypePtr)(r_return),
+		(*C.GDNativeTypePtr)(p_arguments),
+		(C.int)(p_argument_count),
+	)
+}
+
+func CallFunc_GDNativePtrGetter(
+	cb GDNativePtrGetter,
+	p_base GDNativeTypePtr,
+	r_value GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrGetter(
+		(C.GDNativePtrGetter)(cb),
+		(C.GDNativeTypePtr)(p_base),
+		(C.GDNativeTypePtr)(r_value),
+	)
+}
+
+func CallFunc_GDNativePtrSetter(
+	cb GDNativePtrSetter,
+	p_base GDNativeTypePtr,
+	p_value GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrSetter(
+		(C.GDNativePtrSetter)(cb),
+		(C.GDNativeTypePtr)(p_base),
+		(C.GDNativeTypePtr)(p_value),
+	)
+}
+
+func CallFunc_GDNativeVariantFromTypeConstructorFunc(
+	cb GDNativeVariantFromTypeConstructorFunc,
+	arg_0 GDNativeVariantPtr,
+    arg_1 GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativeVariantFromTypeConstructorFunc(
+		(C.GDNativeVariantFromTypeConstructorFunc)(cb),
+		(C.GDNativeVariantPtr)(arg_0),
+		(C.GDNativeTypePtr)(arg_1),
+	)
+}
+
+func CallFunc_GDNativeTypeFromVariantConstructorFunc(
+	cb GDNativeTypeFromVariantConstructorFunc,
+	arg_0 GDNativeTypePtr,
+    arg_1 GDNativeVariantPtr,
+) {
+	C.cgo_callfn_GDNativeTypeFromVariantConstructorFunc(
+		(C.GDNativeTypeFromVariantConstructorFunc)(cb),
+		(C.GDNativeTypePtr)(arg_0),
+		(C.GDNativeVariantPtr)(arg_1),
+	)
+}
+
+{{/*
+	func Call{{ $f.Name }}(cb {{ $f.Name }}
+		{{- range $j, $arg := $f.Arguments -}}
+			, {{ if $arg.Name }}{{ $arg.Name }}{{ else }}arg_{{ $j }}{{ end }} {{ goArgumentType $arg.Type $arg.Name }}
+		{{- end -}}
+	) {{ goReturnType $f.ReturnType }} {
+		{{ if (gt (len (goReturnType $f.ReturnType)) 0) }}return {{ end }}  C.cgo_{{ $f.Name -}}
+			((C.{{ $f.Name }})(cb)
+			{{- range $j, $arg := $f.Arguments -}}
+				, (C.{{ goArgumentType $arg.Type $arg.Name }})({{ if $arg.Name }}{{ $arg.Name }}{{ else }}arg_{{ $j }}{{ end }})
+			{{- end -}}
+		)
+	}
+*/}}
+
 // structs
 {{ range $i, $t := $view.CollectStructs -}}
 	type {{ $t.Name }} C.{{ $t.Name }}
@@ -73,7 +205,7 @@ const (
 				{{ end }}
 
 				{{ if $rt }}ret := {{ end -}}
-				C.cgo_{{ $t.Name }}_{{ $f.Name }}(arg0
+				C.cgo_callfn_{{ $t.Name }}_{{ $f.Name }}(arg0
 					{{- range $j, $arg := $f.Arguments -}}
 						, arg{{ add $j 1 }}
 					{{- end -}}

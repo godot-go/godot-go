@@ -43,7 +43,7 @@ func goVariantConstructor(t, innerText string) string {
 	case "StringName":
 		return fmt.Sprintf("NewVariantStringName(%s)", innerText)
 	default:
-		return fmt.Sprintf("NewVariantWrapped(&%s)", innerText)
+		return fmt.Sprintf("NewVariantWrapped(%s)", innerText)
 	}
 }
 
@@ -206,15 +206,27 @@ func goHasArgumentTypeEncoder(t string) bool {
 	return true
 }
 
-// func goClassImpl(c string) string {
-// 	return strcase.ToLowerCamel(c)
-// }
+func goClassInterfaceName(c string) string {
+	return c
+}
+
+func goClassStructName(c string) string {
+	return fmt.Sprintf("%sImpl", c)
+}
 
 func goClassEnumName(c, e, n string) string {
 	return fmt.Sprintf("%s_%s_%s",
 		strings.ToUpper(strcase.ToSnake(c)),
 		strings.ToUpper(strcase.ToSnake(e)),
-		strings.ToUpper(strcase.ToSnake(n)))
+		strings.ToUpper(strcase.ToSnake(n)),
+	)
+}
+
+func goClassConstantName(c string, n string) string {
+	return fmt.Sprintf("%s_%s",
+		strings.ToUpper(strcase.ToSnake(c)),
+		strings.ToUpper(strcase.ToSnake(n)),
+	)
 }
 
 func goMethodName(n string) string {
@@ -270,11 +282,15 @@ func nativeStructureFormatToFields(f string) string {
 			sb.WriteString(goFormatFieldName(n))
 			sb.WriteString(" ")
 
-			if strings.HasPrefix(n, "*") {
-				sb.WriteString("*")
-			}
+			if t == "void" && hasPointer {
+				sb.WriteString("unsafe.Pointer")
+			} else {
+				if strings.HasPrefix(n, "*") {
+					sb.WriteString("*")
+				}
 
-			sb.WriteString(goArgumentType(t))
+				sb.WriteString(goArgumentType(t))
+			}
 			sb.WriteString("\n")
 		}
 	}

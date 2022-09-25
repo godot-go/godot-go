@@ -11,7 +11,7 @@ func _ready():
 	prints("Static method calls")
 	prints("  static (109)", Example.test_static(9, 100));
 	Example.test_static2();
-	
+
 	# Call methods.
 	prints("Instance method calls")
 	$Example.simple_func()
@@ -46,6 +46,9 @@ func _ready():
 	prints("  FIRST", $Example.FIRST)
 	prints("  ANSWER_TO_EVERYTHING", $Example.ANSWER_TO_EVERYTHING)
 	prints("  CONSTANT_WITHOUT_ENUM", $Example.CONSTANT_WITHOUT_ENUM)
+
+	prints("Others")
+	prints("  CastTo", $Example.test_cast_to())
 
 	prints("app is ready")
 

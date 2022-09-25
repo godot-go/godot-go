@@ -11,11 +11,11 @@ import (
 
 // Pattern sourced from here: https://stackoverflow.com/questions/30257622/golang-zap-how-to-do-a-centralized-configuration
 var (
-	output io.Writer = os.Stdout
-	logger *zap.Logger
-	envLogLevel = "LOG_LEVEL"
+	output          io.Writer = os.Stdout
+	logger          *zap.Logger
+	envLogLevel     = "LOG_LEVEL"
 	defaultLogLevel = zap.WarnLevel
-	atomicLevel zap.AtomicLevel
+	atomicLevel     zap.AtomicLevel
 )
 
 // Level of logging
@@ -54,9 +54,9 @@ type WriteSyncer = zapcore.WriteSyncer
 func init() {
 	var (
 		envLevel string
-		level zapcore.Level
-		ok bool
-		err error
+		level    zapcore.Level
+		ok       bool
+		err      error
 	)
 
 	if envLevel, ok = os.LookupEnv(envLogLevel); !ok {
@@ -91,6 +91,10 @@ func SetWriteSyncer(out io.Writer) {
 // SetLevel calls SetLevel on the underlying logger
 func SetLevel(level Level) {
 	atomicLevel.SetLevel(level)
+}
+
+func GetLevel() Level {
+	return atomicLevel.Level()
 }
 
 // Sync calls Sync on the underlying logger

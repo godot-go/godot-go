@@ -231,6 +231,30 @@ func (a ExtensionApi) Float64BuiltinClassSize() *BuiltinClassSize {
 	return nil
 }
 
+func (a ExtensionApi) ContainsClassName(name string) bool {
+	for _, c := range a.Classes {
+		// remove editor classes to speed up compilation
+		if c.Name == name {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (a ExtensionApi) FilterClasses() []Class {
+	values := make([]Class, 0, len(a.Classes))
+
+	for _, c := range a.Classes {
+		// remove editor classes to speed up compilation
+		if !strings.Contains(c.Name, "Editor") {
+			values = append(values, c)
+		}
+	}
+
+	return values
+}
+
 func (a ExtensionApi) FilterBuiltinClasses() []BuiltinClass {
 	values := make([]BuiltinClass, 0, len(a.BuiltinClasses))
 

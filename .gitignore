@@ -16,3 +16,4 @@ __debug_bin
 test/libs/
 .*.md
 .deprecated*/
+tmp/

@@ -29,13 +29,28 @@ var (
 	//go:embed builtinclasses.go.tmpl
 	builtinClassesText string
 
+	//go:embed classes.interfaces.go.tmpl
+	classesInterfacesText string
+
+	//go:embed classes.enums.go.tmpl
+	classesEnumsText string
+
+	//go:embed classes.constants.go.tmpl
+	classesConstantsText string
+
 	//go:embed classes.go.tmpl
 	classesText string
 
-	//go:embed classes.h.tmpl
+	// //go:embed classes.callbacks.go.tmpl
+	// classesCallbacksText string
+
+	//go:embed classes.init.go.tmpl
+	classesInitText string
+
+	//go:embed classes.callbacks.h.tmpl
 	cHeaderClassesText string
 
-	//go:embed classes.c.tmpl
+	//go:embed classes.callbacks.c.tmpl
 	cClassesText string
 
 	//go:embed nativestructures.go.tmpl
@@ -49,6 +64,8 @@ func Generate(projectPath string) {
 	if err != nil {
 		panic(err)
 	}
+
+	eapi.Classes = eapi.FilterClasses()
 
 	err = GenerateGlobalConstants(projectPath, eapi)
 
@@ -74,19 +91,43 @@ func Generate(projectPath string) {
 		panic(err)
 	}
 
-	err = GenerateCHeaderClasses(projectPath, eapi)
+	err = GenerateCHeaderClassCallbacks(projectPath, eapi)
 
 	if err != nil {
 		panic(err)
 	}
 
-	err = GenerateCClasses(projectPath, eapi)
+	err = GenerateCClassCallbacks(projectPath, eapi)
+
+	if err != nil {
+		panic(err)
+	}
+
+	err = GenerateClassInterfaces(projectPath, eapi)
+
+	if err != nil {
+		panic(err)
+	}
+
+	err = GenerateClassEnums(projectPath, eapi)
+
+	if err != nil {
+		panic(err)
+	}
+
+	err = GenerateClassConstants(projectPath, eapi)
 
 	if err != nil {
 		panic(err)
 	}
 
 	err = GenerateClasses(projectPath, eapi)
+
+	if err != nil {
+		panic(err)
+	}
+
+	err = GenerateClassInit(projectPath, eapi)
 
 	if err != nil {
 		panic(err)
@@ -100,6 +141,10 @@ func Generate(projectPath string) {
 }
 
 func GenerateGlobalConstants(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	if len(extensionApi.GlobalConstants) == 0 {
+		return nil
+	}
+
 	tmpl, err := template.New("globalconstants.gen.go").
 		Parse(globalConstantsText)
 
@@ -115,7 +160,7 @@ func GenerateGlobalConstants(projectPath string, extensionApi extensionapiparser
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdnative", fmt.Sprintf("globalconstants.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("globalconstants.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -154,7 +199,7 @@ func GenerateNativeStrucutres(projectPath string, extensionApi extensionapiparse
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdnative", fmt.Sprintf("nativeStructures.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("nativeStructures.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -174,6 +219,10 @@ func GenerateNativeStrucutres(projectPath string, extensionApi extensionapiparse
 }
 
 func GenerateGlobalEnums(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	if len(extensionApi.GlobalEnums) == 0 {
+		return nil
+	}
+
 	tmpl, err := template.New("globalenums.gen.go").
 		Parse(globalEnumsText)
 
@@ -189,7 +238,7 @@ func GenerateGlobalEnums(projectPath string, extensionApi extensionapiparser.Ext
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdnative", fmt.Sprintf("globalenums.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("globalenums.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -239,7 +288,143 @@ func GenerateBuiltinClasses(projectPath string, extensionApi extensionapiparser.
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdnative", fmt.Sprintf("builtinclasses.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("builtinclasses.gen.go"))
+
+	f, err := os.Create(filename)
+
+	if err != nil {
+		return err
+	}
+
+	defer f.Close()
+
+	_, err = f.Write(b.Bytes())
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func GenerateClassInterfaces(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	tmpl, err := template.New("classes.interfaces.gen.go").
+		Funcs(template.FuncMap{
+			"goVariantConstructor": goVariantConstructor,
+			"goMethodName":         goMethodName,
+			"goArgumentName":       goArgumentName,
+			"goArgumentType":       goArgumentType,
+			"goReturnType":         goReturnType,
+			"goClassEnumName":      goClassEnumName,
+			"goClassStructName":    goClassStructName,
+			"goClassInterfaceName": goClassInterfaceName,
+		}).
+		Parse(classesInterfacesText)
+
+	if err != nil {
+		return err
+	}
+
+	var b bytes.Buffer
+
+	err = tmpl.Execute(&b, extensionApi)
+
+	if err != nil {
+		return err
+	}
+
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("classes.interfaces.gen.go"))
+
+	f, err := os.Create(filename)
+
+	if err != nil {
+		return err
+	}
+
+	defer f.Close()
+
+	_, err = f.Write(b.Bytes())
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func GenerateClassEnums(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	tmpl, err := template.New("classes.enums.gen.go").
+		Funcs(template.FuncMap{
+			"goVariantConstructor": goVariantConstructor,
+			"goMethodName":         goMethodName,
+			"goArgumentName":       goArgumentName,
+			"goArgumentType":       goArgumentType,
+			"goReturnType":         goReturnType,
+			"goClassEnumName":      goClassEnumName,
+			"goClassStructName":    goClassStructName,
+			"goClassInterfaceName": goClassInterfaceName,
+		}).
+		Parse(classesEnumsText)
+
+	if err != nil {
+		return err
+	}
+
+	var b bytes.Buffer
+
+	err = tmpl.Execute(&b, extensionApi)
+
+	if err != nil {
+		return err
+	}
+
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("classes.enums.gen.go"))
+
+	f, err := os.Create(filename)
+
+	if err != nil {
+		return err
+	}
+
+	defer f.Close()
+
+	_, err = f.Write(b.Bytes())
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func GenerateClassConstants(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	tmpl, err := template.New("classes.constants.gen.go").
+		Funcs(template.FuncMap{
+			"goVariantConstructor": goVariantConstructor,
+			"goMethodName":         goMethodName,
+			"goArgumentName":       goArgumentName,
+			"goArgumentType":       goArgumentType,
+			"goReturnType":         goReturnType,
+			"goClassEnumName":      goClassEnumName,
+			"goClassConstantName":  goClassConstantName,
+			"goClassStructName":    goClassStructName,
+			"goClassInterfaceName": goClassInterfaceName,
+		}).
+		Parse(classesConstantsText)
+
+	if err != nil {
+		return err
+	}
+
+	var b bytes.Buffer
+
+	err = tmpl.Execute(&b, extensionApi)
+
+	if err != nil {
+		return err
+	}
+
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("classes.constants.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -267,6 +452,8 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 			"goArgumentType":       goArgumentType,
 			"goReturnType":         goReturnType,
 			"goClassEnumName":      goClassEnumName,
+			"goClassStructName":    goClassStructName,
+			"goClassInterfaceName": goClassInterfaceName,
 		}).
 		Parse(classesText)
 
@@ -282,7 +469,7 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdnative", fmt.Sprintf("classes.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("classes.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -301,8 +488,53 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 	return nil
 }
 
-func GenerateCHeaderClasses(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
-	tmpl, err := template.New("classes.gen.h").
+func GenerateClassInit(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	tmpl, err := template.New("classes.init.gen.go").
+		Funcs(template.FuncMap{
+			"goVariantConstructor": goVariantConstructor,
+			"goMethodName":         goMethodName,
+			"goArgumentName":       goArgumentName,
+			"goArgumentType":       goArgumentType,
+			"goReturnType":         goReturnType,
+			"goClassEnumName":      goClassEnumName,
+			"goClassStructName":    goClassStructName,
+			"goClassInterfaceName": goClassInterfaceName,
+		}).
+		Parse(classesInitText)
+
+	if err != nil {
+		return err
+	}
+
+	var b bytes.Buffer
+
+	err = tmpl.Execute(&b, extensionApi)
+
+	if err != nil {
+		return err
+	}
+
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("classes.init.gen.go"))
+
+	f, err := os.Create(filename)
+
+	if err != nil {
+		return err
+	}
+
+	defer f.Close()
+
+	_, err = f.Write(b.Bytes())
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func GenerateCHeaderClassCallbacks(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	tmpl, err := template.New("classes.callbacks.gen.h").
 		Funcs(template.FuncMap{
 			"goMethodName":    goMethodName,
 			"goArgumentName":  goArgumentName,
@@ -324,7 +556,7 @@ func GenerateCHeaderClasses(projectPath string, extensionApi extensionapiparser.
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdnative", fmt.Sprintf("classes.gen.h"))
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("classes.callbacks.gen.h"))
 
 	f, err := os.Create(filename)
 
@@ -343,8 +575,8 @@ func GenerateCHeaderClasses(projectPath string, extensionApi extensionapiparser.
 	return nil
 }
 
-func GenerateCClasses(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
-	tmpl, err := template.New("classes.gen.c").
+func GenerateCClassCallbacks(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	tmpl, err := template.New("classes.callbacks.gen.c").
 		Funcs(template.FuncMap{
 			"goMethodName":    goMethodName,
 			"goArgumentName":  goArgumentName,
@@ -366,7 +598,7 @@ func GenerateCClasses(projectPath string, extensionApi extensionapiparser.Extens
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdnative", fmt.Sprintf("classes.gen.c"))
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("classes.callbacks.gen.c"))
 
 	f, err := os.Create(filename)
 
@@ -406,7 +638,7 @@ func GenerateUtilityFunctions(projectPath string, extensionApi extensionapiparse
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdnative", fmt.Sprintf("utilityfunctions.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("utilityfunctions.gen.go"))
 
 	f, err := os.Create(filename)
 

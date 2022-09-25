@@ -10,6 +10,8 @@
 */
 package gdnative
 
+//revive:disable
+
 // #include <godot/gdnative_interface.h>
 // #include "gdnative_wrapper.gen.h"
 // #include <stdint.h>
@@ -238,6 +240,121 @@ type GDNativeExtensionScriptInstanceGetLanguage C.GDNativeExtensionScriptInstanc
 type GDNativeExtensionScriptInstanceFree C.GDNativeExtensionScriptInstanceFree
 type GDNativeInitializationFunction C.GDNativeInitializationFunction
 
+// custom functions
+func CallFunc_GDNativePtrConstructor(
+	cb GDNativePtrConstructor,
+	p_base GDNativeTypePtr,
+	p_args *GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrConstructor(
+		(C.GDNativePtrConstructor)(cb),
+		(C.GDNativeTypePtr)(p_base),
+		(*C.GDNativeTypePtr)(p_args),
+	)
+}
+
+func CallFunc_GDNativePtrDestructor(
+	cb GDNativePtrDestructor,
+	ptr GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrDestructor(
+		(C.GDNativePtrDestructor)(cb),
+		(C.GDNativeTypePtr)(ptr),
+	)
+}
+
+func CallFunc_GDNativePtrOperatorEvaluator(
+	cb GDNativePtrOperatorEvaluator,
+	p_left GDNativeTypePtr,
+	p_right GDNativeTypePtr,
+	r_result GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrOperatorEvaluator(
+		(C.GDNativePtrOperatorEvaluator)(cb),
+		(C.GDNativeTypePtr)(p_left),
+		(C.GDNativeTypePtr)(p_right),
+		(C.GDNativeTypePtr)(r_result),
+	)
+}
+
+func CallFunc_GDNativePtrBuiltInMethod(
+	cb GDNativePtrBuiltInMethod,
+	p_base GDNativeTypePtr,
+	p_args *GDNativeTypePtr,
+	r_return GDNativeTypePtr,
+	p_argument_count int32,
+) {
+	C.cgo_callfn_GDNativePtrBuiltInMethod(
+		(C.GDNativePtrBuiltInMethod)(cb),
+		(C.GDNativeTypePtr)(p_base),
+		(*C.GDNativeTypePtr)(p_args),
+		(C.GDNativeTypePtr)(r_return),
+		(C.int)(p_argument_count),
+	)
+}
+
+func CallFunc_GDNativePtrUtilityFunction(
+	cb GDNativePtrUtilityFunction,
+	r_return GDNativeTypePtr,
+	p_arguments *GDNativeTypePtr,
+	p_argument_count int32,
+) {
+	C.cgo_callfn_GDNativePtrUtilityFunction(
+		(C.GDNativePtrUtilityFunction)(cb),
+		(C.GDNativeTypePtr)(r_return),
+		(*C.GDNativeTypePtr)(p_arguments),
+		(C.int)(p_argument_count),
+	)
+}
+
+func CallFunc_GDNativePtrGetter(
+	cb GDNativePtrGetter,
+	p_base GDNativeTypePtr,
+	r_value GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrGetter(
+		(C.GDNativePtrGetter)(cb),
+		(C.GDNativeTypePtr)(p_base),
+		(C.GDNativeTypePtr)(r_value),
+	)
+}
+
+func CallFunc_GDNativePtrSetter(
+	cb GDNativePtrSetter,
+	p_base GDNativeTypePtr,
+	p_value GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrSetter(
+		(C.GDNativePtrSetter)(cb),
+		(C.GDNativeTypePtr)(p_base),
+		(C.GDNativeTypePtr)(p_value),
+	)
+}
+
+func CallFunc_GDNativeVariantFromTypeConstructorFunc(
+	cb GDNativeVariantFromTypeConstructorFunc,
+	arg_0 GDNativeVariantPtr,
+	arg_1 GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativeVariantFromTypeConstructorFunc(
+		(C.GDNativeVariantFromTypeConstructorFunc)(cb),
+		(C.GDNativeVariantPtr)(arg_0),
+		(C.GDNativeTypePtr)(arg_1),
+	)
+}
+
+func CallFunc_GDNativeTypeFromVariantConstructorFunc(
+	cb GDNativeTypeFromVariantConstructorFunc,
+	arg_0 GDNativeTypePtr,
+	arg_1 GDNativeVariantPtr,
+) {
+	C.cgo_callfn_GDNativeTypeFromVariantConstructorFunc(
+		(C.GDNativeTypeFromVariantConstructorFunc)(cb),
+		(C.GDNativeTypePtr)(arg_0),
+		(C.GDNativeVariantPtr)(arg_1),
+	)
+}
+
 // structs
 type GDNativeCallError C.GDNativeCallError
 type GDNativeInstanceBindingCallbacks C.GDNativeInstanceBindingCallbacks
@@ -256,7 +373,7 @@ func GDNativeInterface_mem_alloc(p_struct *GDNativeInterface, p_bytes uint64) un
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.size_t)(p_bytes)              // size_t
 
-	ret := C.cgo_GDNativeInterface_mem_alloc(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_mem_alloc(arg0, arg1)
 
 	// void *
 	return unsafe.Pointer(ret)
@@ -267,7 +384,7 @@ func GDNativeInterface_mem_realloc(p_struct *GDNativeInterface, p_ptr unsafe.Poi
 	arg1 := unsafe.Pointer(p_ptr)            // void *
 	arg2 := (C.size_t)(p_bytes)              // size_t
 
-	ret := C.cgo_GDNativeInterface_mem_realloc(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_mem_realloc(arg0, arg1, arg2)
 
 	// void *
 	return unsafe.Pointer(ret)
@@ -277,7 +394,7 @@ func GDNativeInterface_mem_free(p_struct *GDNativeInterface, p_ptr unsafe.Pointe
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := unsafe.Pointer(p_ptr)            // void *
 
-	C.cgo_GDNativeInterface_mem_free(arg0, arg1)
+	C.cgo_callfn_GDNativeInterface_mem_free(arg0, arg1)
 
 }
 
@@ -288,7 +405,7 @@ func GDNativeInterface_print_error(p_struct *GDNativeInterface, p_description st
 	arg3 := C.CString(p_file)                // const char *
 	arg4 := (C.int32_t)(p_line)              // int32_t
 
-	C.cgo_GDNativeInterface_print_error(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_print_error(arg0, arg1, arg2, arg3, arg4)
 
 	C.free(unsafe.Pointer(arg1))
 	C.free(unsafe.Pointer(arg2))
@@ -303,7 +420,7 @@ func GDNativeInterface_print_warning(p_struct *GDNativeInterface, p_description 
 	arg3 := C.CString(p_file)                // const char *
 	arg4 := (C.int32_t)(p_line)              // int32_t
 
-	C.cgo_GDNativeInterface_print_warning(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_print_warning(arg0, arg1, arg2, arg3, arg4)
 
 	C.free(unsafe.Pointer(arg1))
 	C.free(unsafe.Pointer(arg2))
@@ -318,7 +435,7 @@ func GDNativeInterface_print_script_error(p_struct *GDNativeInterface, p_descrip
 	arg3 := C.CString(p_file)                // const char *
 	arg4 := (C.int32_t)(p_line)              // int32_t
 
-	C.cgo_GDNativeInterface_print_script_error(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_print_script_error(arg0, arg1, arg2, arg3, arg4)
 
 	C.free(unsafe.Pointer(arg1))
 	C.free(unsafe.Pointer(arg2))
@@ -330,7 +447,7 @@ func GDNativeInterface_get_native_struct_size(p_struct *GDNativeInterface, p_nam
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := C.CString(p_name)                // const char *
 
-	ret := C.cgo_GDNativeInterface_get_native_struct_size(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_get_native_struct_size(arg0, arg1)
 
 	C.free(unsafe.Pointer(arg1))
 
@@ -343,7 +460,7 @@ func GDNativeInterface_variant_new_copy(p_struct *GDNativeInterface, r_dest GDNa
 	arg1 := (C.GDNativeVariantPtr)(r_dest)   // GDNativeVariantPtr
 	arg2 := (C.GDNativeVariantPtr)(p_src)    // const GDNativeVariantPtr
 
-	C.cgo_GDNativeInterface_variant_new_copy(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInterface_variant_new_copy(arg0, arg1, arg2)
 
 }
 
@@ -351,7 +468,7 @@ func GDNativeInterface_variant_new_nil(p_struct *GDNativeInterface, r_dest GDNat
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantPtr)(r_dest)   // GDNativeVariantPtr
 
-	C.cgo_GDNativeInterface_variant_new_nil(arg0, arg1)
+	C.cgo_callfn_GDNativeInterface_variant_new_nil(arg0, arg1)
 
 }
 
@@ -359,7 +476,7 @@ func GDNativeInterface_variant_destroy(p_struct *GDNativeInterface, p_self GDNat
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantPtr)(p_self)   // GDNativeVariantPtr
 
-	C.cgo_GDNativeInterface_variant_destroy(arg0, arg1)
+	C.cgo_callfn_GDNativeInterface_variant_destroy(arg0, arg1)
 
 }
 
@@ -372,7 +489,7 @@ func GDNativeInterface_variant_call(p_struct *GDNativeInterface, p_self GDNative
 	arg5 := (C.GDNativeVariantPtr)(r_return)    // GDNativeVariantPtr
 	arg6 := (*C.GDNativeCallError)(r_error)     // GDNativeCallError *
 
-	C.cgo_GDNativeInterface_variant_call(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+	C.cgo_callfn_GDNativeInterface_variant_call(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 
 }
 
@@ -385,7 +502,7 @@ func GDNativeInterface_variant_call_static(p_struct *GDNativeInterface, p_type G
 	arg5 := (C.GDNativeVariantPtr)(r_return)    // GDNativeVariantPtr
 	arg6 := (*C.GDNativeCallError)(r_error)     // GDNativeCallError *
 
-	C.cgo_GDNativeInterface_variant_call_static(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+	C.cgo_callfn_GDNativeInterface_variant_call_static(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 
 }
 
@@ -397,7 +514,7 @@ func GDNativeInterface_variant_evaluate(p_struct *GDNativeInterface, p_op GDNati
 	arg4 := (C.GDNativeVariantPtr)(r_return)  // GDNativeVariantPtr
 	arg5 := (*C.GDNativeBool)(r_valid)        // GDNativeBool *
 
-	C.cgo_GDNativeInterface_variant_evaluate(arg0, arg1, arg2, arg3, arg4, arg5)
+	C.cgo_callfn_GDNativeInterface_variant_evaluate(arg0, arg1, arg2, arg3, arg4, arg5)
 
 }
 
@@ -408,7 +525,7 @@ func GDNativeInterface_variant_set(p_struct *GDNativeInterface, p_self GDNativeV
 	arg3 := (C.GDNativeVariantPtr)(p_value)  // const GDNativeVariantPtr
 	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 
-	C.cgo_GDNativeInterface_variant_set(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_variant_set(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -419,7 +536,7 @@ func GDNativeInterface_variant_set_named(p_struct *GDNativeInterface, p_self GDN
 	arg3 := (C.GDNativeVariantPtr)(p_value)  // const GDNativeVariantPtr
 	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 
-	C.cgo_GDNativeInterface_variant_set_named(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_variant_set_named(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -430,7 +547,7 @@ func GDNativeInterface_variant_set_keyed(p_struct *GDNativeInterface, p_self GDN
 	arg3 := (C.GDNativeVariantPtr)(p_value)  // const GDNativeVariantPtr
 	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 
-	C.cgo_GDNativeInterface_variant_set_keyed(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_variant_set_keyed(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -442,7 +559,7 @@ func GDNativeInterface_variant_set_indexed(p_struct *GDNativeInterface, p_self G
 	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 	arg5 := (*C.GDNativeBool)(r_oob)         // GDNativeBool *
 
-	C.cgo_GDNativeInterface_variant_set_indexed(arg0, arg1, arg2, arg3, arg4, arg5)
+	C.cgo_callfn_GDNativeInterface_variant_set_indexed(arg0, arg1, arg2, arg3, arg4, arg5)
 
 }
 
@@ -453,7 +570,7 @@ func GDNativeInterface_variant_get(p_struct *GDNativeInterface, p_self GDNativeV
 	arg3 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
 	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 
-	C.cgo_GDNativeInterface_variant_get(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_variant_get(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -464,7 +581,7 @@ func GDNativeInterface_variant_get_named(p_struct *GDNativeInterface, p_self GDN
 	arg3 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
 	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 
-	C.cgo_GDNativeInterface_variant_get_named(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_variant_get_named(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -475,7 +592,7 @@ func GDNativeInterface_variant_get_keyed(p_struct *GDNativeInterface, p_self GDN
 	arg3 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
 	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 
-	C.cgo_GDNativeInterface_variant_get_keyed(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_variant_get_keyed(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -487,7 +604,7 @@ func GDNativeInterface_variant_get_indexed(p_struct *GDNativeInterface, p_self G
 	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 	arg5 := (*C.GDNativeBool)(r_oob)         // GDNativeBool *
 
-	C.cgo_GDNativeInterface_variant_get_indexed(arg0, arg1, arg2, arg3, arg4, arg5)
+	C.cgo_callfn_GDNativeInterface_variant_get_indexed(arg0, arg1, arg2, arg3, arg4, arg5)
 
 }
 
@@ -497,7 +614,7 @@ func GDNativeInterface_variant_iter_init(p_struct *GDNativeInterface, p_self GDN
 	arg2 := (C.GDNativeVariantPtr)(r_iter)   // GDNativeVariantPtr
 	arg3 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 
-	ret := C.cgo_GDNativeInterface_variant_iter_init(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_variant_iter_init(arg0, arg1, arg2, arg3)
 
 	// GDNativeBool
 	return (GDNativeBool)(ret)
@@ -509,7 +626,7 @@ func GDNativeInterface_variant_iter_next(p_struct *GDNativeInterface, p_self GDN
 	arg2 := (C.GDNativeVariantPtr)(r_iter)   // GDNativeVariantPtr
 	arg3 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 
-	ret := C.cgo_GDNativeInterface_variant_iter_next(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_variant_iter_next(arg0, arg1, arg2, arg3)
 
 	// GDNativeBool
 	return (GDNativeBool)(ret)
@@ -522,7 +639,7 @@ func GDNativeInterface_variant_iter_get(p_struct *GDNativeInterface, p_self GDNa
 	arg3 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
 	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 
-	C.cgo_GDNativeInterface_variant_iter_get(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_variant_iter_get(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -530,7 +647,7 @@ func GDNativeInterface_variant_hash(p_struct *GDNativeInterface, p_self GDNative
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
 
-	ret := C.cgo_GDNativeInterface_variant_hash(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_variant_hash(arg0, arg1)
 
 	// GDNativeInt
 	return (GDNativeInt)(ret)
@@ -541,7 +658,7 @@ func GDNativeInterface_variant_recursive_hash(p_struct *GDNativeInterface, p_sel
 	arg1 := (C.GDNativeVariantPtr)(p_self)     // const GDNativeVariantPtr
 	arg2 := (C.GDNativeInt)(p_recursion_count) // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_variant_recursive_hash(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_variant_recursive_hash(arg0, arg1, arg2)
 
 	// GDNativeInt
 	return (GDNativeInt)(ret)
@@ -552,7 +669,7 @@ func GDNativeInterface_variant_hash_compare(p_struct *GDNativeInterface, p_self 
 	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
 	arg2 := (C.GDNativeVariantPtr)(p_other)  // const GDNativeVariantPtr
 
-	ret := C.cgo_GDNativeInterface_variant_hash_compare(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_variant_hash_compare(arg0, arg1, arg2)
 
 	// GDNativeBool
 	return (GDNativeBool)(ret)
@@ -562,42 +679,10 @@ func GDNativeInterface_variant_booleanize(p_struct *GDNativeInterface, p_self GD
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
 
-	ret := C.cgo_GDNativeInterface_variant_booleanize(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_variant_booleanize(arg0, arg1)
 
 	// GDNativeBool
 	return (GDNativeBool)(ret)
-}
-
-func GDNativeInterface_variant_sub(p_struct *GDNativeInterface, p_a GDNativeVariantPtr, p_b GDNativeVariantPtr, r_dst GDNativeVariantPtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_a)      // const GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(p_b)      // const GDNativeVariantPtr
-	arg3 := (C.GDNativeVariantPtr)(r_dst)    // GDNativeVariantPtr
-
-	C.cgo_GDNativeInterface_variant_sub(arg0, arg1, arg2, arg3)
-
-}
-
-func GDNativeInterface_variant_blend(p_struct *GDNativeInterface, p_a GDNativeVariantPtr, p_b GDNativeVariantPtr, p_c float32, r_dst GDNativeVariantPtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_a)      // const GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(p_b)      // const GDNativeVariantPtr
-	arg3 := (C.float)(p_c)                   // float
-	arg4 := (C.GDNativeVariantPtr)(r_dst)    // GDNativeVariantPtr
-
-	C.cgo_GDNativeInterface_variant_blend(arg0, arg1, arg2, arg3, arg4)
-
-}
-
-func GDNativeInterface_variant_interpolate(p_struct *GDNativeInterface, p_a GDNativeVariantPtr, p_b GDNativeVariantPtr, p_c float32, r_dst GDNativeVariantPtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_a)      // const GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(p_b)      // const GDNativeVariantPtr
-	arg3 := (C.float)(p_c)                   // float
-	arg4 := (C.GDNativeVariantPtr)(r_dst)    // GDNativeVariantPtr
-
-	C.cgo_GDNativeInterface_variant_interpolate(arg0, arg1, arg2, arg3, arg4)
-
 }
 
 func GDNativeInterface_variant_duplicate(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, r_ret GDNativeVariantPtr, p_deep GDNativeBool) {
@@ -606,7 +691,7 @@ func GDNativeInterface_variant_duplicate(p_struct *GDNativeInterface, p_self GDN
 	arg2 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
 	arg3 := (C.GDNativeBool)(p_deep)         // GDNativeBool
 
-	C.cgo_GDNativeInterface_variant_duplicate(arg0, arg1, arg2, arg3)
+	C.cgo_callfn_GDNativeInterface_variant_duplicate(arg0, arg1, arg2, arg3)
 
 }
 
@@ -615,7 +700,7 @@ func GDNativeInterface_variant_stringify(p_struct *GDNativeInterface, p_self GDN
 	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
 	arg2 := (C.GDNativeStringPtr)(r_ret)     // GDNativeStringPtr
 
-	C.cgo_GDNativeInterface_variant_stringify(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInterface_variant_stringify(arg0, arg1, arg2)
 
 }
 
@@ -623,7 +708,7 @@ func GDNativeInterface_variant_get_type(p_struct *GDNativeInterface, p_self GDNa
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
 
-	ret := C.cgo_GDNativeInterface_variant_get_type(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_type(arg0, arg1)
 
 	// GDNativeVariantType
 	return (GDNativeVariantType)(ret)
@@ -634,7 +719,7 @@ func GDNativeInterface_variant_has_method(p_struct *GDNativeInterface, p_self GD
 	arg1 := (C.GDNativeVariantPtr)(p_self)      // const GDNativeVariantPtr
 	arg2 := (C.GDNativeStringNamePtr)(p_method) // const GDNativeStringNamePtr
 
-	ret := C.cgo_GDNativeInterface_variant_has_method(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_variant_has_method(arg0, arg1, arg2)
 
 	// GDNativeBool
 	return (GDNativeBool)(ret)
@@ -645,7 +730,7 @@ func GDNativeInterface_variant_has_member(p_struct *GDNativeInterface, p_type GD
 	arg1 := (C.GDNativeVariantType)(p_type)     // GDNativeVariantType
 	arg2 := (C.GDNativeStringNamePtr)(p_member) // const GDNativeStringNamePtr
 
-	ret := C.cgo_GDNativeInterface_variant_has_member(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_variant_has_member(arg0, arg1, arg2)
 
 	// GDNativeBool
 	return (GDNativeBool)(ret)
@@ -657,7 +742,7 @@ func GDNativeInterface_variant_has_key(p_struct *GDNativeInterface, p_self GDNat
 	arg2 := (C.GDNativeVariantPtr)(p_key)    // const GDNativeVariantPtr
 	arg3 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
 
-	ret := C.cgo_GDNativeInterface_variant_has_key(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_variant_has_key(arg0, arg1, arg2, arg3)
 
 	// GDNativeBool
 	return (GDNativeBool)(ret)
@@ -668,7 +753,7 @@ func GDNativeInterface_variant_get_type_name(p_struct *GDNativeInterface, p_type
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 	arg2 := (C.GDNativeStringPtr)(r_name)    // GDNativeStringPtr
 
-	C.cgo_GDNativeInterface_variant_get_type_name(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInterface_variant_get_type_name(arg0, arg1, arg2)
 
 }
 
@@ -677,7 +762,7 @@ func GDNativeInterface_variant_can_convert(p_struct *GDNativeInterface, p_from G
 	arg1 := (C.GDNativeVariantType)(p_from)  // GDNativeVariantType
 	arg2 := (C.GDNativeVariantType)(p_to)    // GDNativeVariantType
 
-	ret := C.cgo_GDNativeInterface_variant_can_convert(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_variant_can_convert(arg0, arg1, arg2)
 
 	// GDNativeBool
 	return (GDNativeBool)(ret)
@@ -688,7 +773,7 @@ func GDNativeInterface_variant_can_convert_strict(p_struct *GDNativeInterface, p
 	arg1 := (C.GDNativeVariantType)(p_from)  // GDNativeVariantType
 	arg2 := (C.GDNativeVariantType)(p_to)    // GDNativeVariantType
 
-	ret := C.cgo_GDNativeInterface_variant_can_convert_strict(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_variant_can_convert_strict(arg0, arg1, arg2)
 
 	// GDNativeBool
 	return (GDNativeBool)(ret)
@@ -698,7 +783,7 @@ func GDNativeInterface_get_variant_from_type_constructor(p_struct *GDNativeInter
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 
-	ret := C.cgo_GDNativeInterface_get_variant_from_type_constructor(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_get_variant_from_type_constructor(arg0, arg1)
 
 	// GDNativeVariantFromTypeConstructorFunc
 	return (GDNativeVariantFromTypeConstructorFunc)(ret)
@@ -708,7 +793,7 @@ func GDNativeInterface_get_variant_to_type_constructor(p_struct *GDNativeInterfa
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 
-	ret := C.cgo_GDNativeInterface_get_variant_to_type_constructor(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_get_variant_to_type_constructor(arg0, arg1)
 
 	// GDNativeTypeFromVariantConstructorFunc
 	return (GDNativeTypeFromVariantConstructorFunc)(ret)
@@ -720,7 +805,7 @@ func GDNativeInterface_variant_get_ptr_operator_evaluator(p_struct *GDNativeInte
 	arg2 := (C.GDNativeVariantType)(p_type_a)       // GDNativeVariantType
 	arg3 := (C.GDNativeVariantType)(p_type_b)       // GDNativeVariantType
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_operator_evaluator(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_operator_evaluator(arg0, arg1, arg2, arg3)
 
 	// GDNativePtrOperatorEvaluator
 	return (GDNativePtrOperatorEvaluator)(ret)
@@ -732,7 +817,7 @@ func GDNativeInterface_variant_get_ptr_builtin_method(p_struct *GDNativeInterfac
 	arg2 := C.CString(p_method)              // const char *
 	arg3 := (C.GDNativeInt)(p_hash)          // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_builtin_method(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_builtin_method(arg0, arg1, arg2, arg3)
 
 	C.free(unsafe.Pointer(arg2))
 
@@ -745,7 +830,7 @@ func GDNativeInterface_variant_get_ptr_constructor(p_struct *GDNativeInterface, 
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 	arg2 := (C.int32_t)(p_constructor)       // int32_t
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_constructor(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_constructor(arg0, arg1, arg2)
 
 	// GDNativePtrConstructor
 	return (GDNativePtrConstructor)(ret)
@@ -755,7 +840,7 @@ func GDNativeInterface_variant_get_ptr_destructor(p_struct *GDNativeInterface, p
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_destructor(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_destructor(arg0, arg1)
 
 	// GDNativePtrDestructor
 	return (GDNativePtrDestructor)(ret)
@@ -769,7 +854,7 @@ func GDNativeInterface_variant_construct(p_struct *GDNativeInterface, p_type GDN
 	arg4 := (C.int32_t)(p_argument_count)    // int32_t
 	arg5 := (*C.GDNativeCallError)(r_error)  // GDNativeCallError *
 
-	C.cgo_GDNativeInterface_variant_construct(arg0, arg1, arg2, arg3, arg4, arg5)
+	C.cgo_callfn_GDNativeInterface_variant_construct(arg0, arg1, arg2, arg3, arg4, arg5)
 
 }
 
@@ -778,7 +863,7 @@ func GDNativeInterface_variant_get_ptr_setter(p_struct *GDNativeInterface, p_typ
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 	arg2 := C.CString(p_member)              // const char *
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_setter(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_setter(arg0, arg1, arg2)
 
 	C.free(unsafe.Pointer(arg2))
 
@@ -791,7 +876,7 @@ func GDNativeInterface_variant_get_ptr_getter(p_struct *GDNativeInterface, p_typ
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 	arg2 := C.CString(p_member)              // const char *
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_getter(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_getter(arg0, arg1, arg2)
 
 	C.free(unsafe.Pointer(arg2))
 
@@ -803,7 +888,7 @@ func GDNativeInterface_variant_get_ptr_indexed_setter(p_struct *GDNativeInterfac
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_indexed_setter(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_indexed_setter(arg0, arg1)
 
 	// GDNativePtrIndexedSetter
 	return (GDNativePtrIndexedSetter)(ret)
@@ -813,7 +898,7 @@ func GDNativeInterface_variant_get_ptr_indexed_getter(p_struct *GDNativeInterfac
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_indexed_getter(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_indexed_getter(arg0, arg1)
 
 	// GDNativePtrIndexedGetter
 	return (GDNativePtrIndexedGetter)(ret)
@@ -823,7 +908,7 @@ func GDNativeInterface_variant_get_ptr_keyed_setter(p_struct *GDNativeInterface,
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_keyed_setter(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_keyed_setter(arg0, arg1)
 
 	// GDNativePtrKeyedSetter
 	return (GDNativePtrKeyedSetter)(ret)
@@ -833,7 +918,7 @@ func GDNativeInterface_variant_get_ptr_keyed_getter(p_struct *GDNativeInterface,
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_keyed_getter(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_keyed_getter(arg0, arg1)
 
 	// GDNativePtrKeyedGetter
 	return (GDNativePtrKeyedGetter)(ret)
@@ -843,7 +928,7 @@ func GDNativeInterface_variant_get_ptr_keyed_checker(p_struct *GDNativeInterface
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_keyed_checker(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_keyed_checker(arg0, arg1)
 
 	// GDNativePtrKeyedChecker
 	return (GDNativePtrKeyedChecker)(ret)
@@ -855,7 +940,7 @@ func GDNativeInterface_variant_get_constant_value(p_struct *GDNativeInterface, p
 	arg2 := C.CString(p_constant)            // const char *
 	arg3 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
 
-	C.cgo_GDNativeInterface_variant_get_constant_value(arg0, arg1, arg2, arg3)
+	C.cgo_callfn_GDNativeInterface_variant_get_constant_value(arg0, arg1, arg2, arg3)
 
 	C.free(unsafe.Pointer(arg2))
 
@@ -866,7 +951,7 @@ func GDNativeInterface_variant_get_ptr_utility_function(p_struct *GDNativeInterf
 	arg1 := C.CString(p_function)            // const char *
 	arg2 := (C.GDNativeInt)(p_hash)          // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_variant_get_ptr_utility_function(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_utility_function(arg0, arg1, arg2)
 
 	C.free(unsafe.Pointer(arg1))
 
@@ -879,7 +964,7 @@ func GDNativeInterface_string_new_with_latin1_chars(p_struct *GDNativeInterface,
 	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
 	arg2 := C.CString(p_contents)            // const char *
 
-	C.cgo_GDNativeInterface_string_new_with_latin1_chars(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInterface_string_new_with_latin1_chars(arg0, arg1, arg2)
 
 	C.free(unsafe.Pointer(arg2))
 }
@@ -889,7 +974,7 @@ func GDNativeInterface_string_new_with_utf8_chars(p_struct *GDNativeInterface, r
 	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
 	arg2 := C.CString(p_contents)            // const char *
 
-	C.cgo_GDNativeInterface_string_new_with_utf8_chars(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInterface_string_new_with_utf8_chars(arg0, arg1, arg2)
 
 	C.free(unsafe.Pointer(arg2))
 }
@@ -899,7 +984,7 @@ func GDNativeInterface_string_new_with_utf16_chars(p_struct *GDNativeInterface, 
 	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
 	arg2 := (*C.char16_t)(p_contents)        // const char16_t *
 
-	C.cgo_GDNativeInterface_string_new_with_utf16_chars(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInterface_string_new_with_utf16_chars(arg0, arg1, arg2)
 
 }
 
@@ -908,7 +993,7 @@ func GDNativeInterface_string_new_with_utf32_chars(p_struct *GDNativeInterface, 
 	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
 	arg2 := (*C.char32_t)(p_contents)        // const char32_t *
 
-	C.cgo_GDNativeInterface_string_new_with_utf32_chars(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInterface_string_new_with_utf32_chars(arg0, arg1, arg2)
 
 }
 
@@ -917,7 +1002,7 @@ func GDNativeInterface_string_new_with_wide_chars(p_struct *GDNativeInterface, r
 	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
 	arg2 := (*C.wchar_t)(p_contents)         // const wchar_t *
 
-	C.cgo_GDNativeInterface_string_new_with_wide_chars(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInterface_string_new_with_wide_chars(arg0, arg1, arg2)
 
 }
 
@@ -927,7 +1012,7 @@ func GDNativeInterface_string_new_with_latin1_chars_and_len(p_struct *GDNativeIn
 	arg2 := C.CString(p_contents)            // const char *
 	arg3 := (C.GDNativeInt)(p_size)          // const GDNativeInt
 
-	C.cgo_GDNativeInterface_string_new_with_latin1_chars_and_len(arg0, arg1, arg2, arg3)
+	C.cgo_callfn_GDNativeInterface_string_new_with_latin1_chars_and_len(arg0, arg1, arg2, arg3)
 
 	C.free(unsafe.Pointer(arg2))
 
@@ -939,7 +1024,7 @@ func GDNativeInterface_string_new_with_utf8_chars_and_len(p_struct *GDNativeInte
 	arg2 := C.CString(p_contents)            // const char *
 	arg3 := (C.GDNativeInt)(p_size)          // const GDNativeInt
 
-	C.cgo_GDNativeInterface_string_new_with_utf8_chars_and_len(arg0, arg1, arg2, arg3)
+	C.cgo_callfn_GDNativeInterface_string_new_with_utf8_chars_and_len(arg0, arg1, arg2, arg3)
 
 	C.free(unsafe.Pointer(arg2))
 
@@ -951,7 +1036,7 @@ func GDNativeInterface_string_new_with_utf16_chars_and_len(p_struct *GDNativeInt
 	arg2 := (*C.char16_t)(p_contents)        // const char16_t *
 	arg3 := (C.GDNativeInt)(p_size)          // const GDNativeInt
 
-	C.cgo_GDNativeInterface_string_new_with_utf16_chars_and_len(arg0, arg1, arg2, arg3)
+	C.cgo_callfn_GDNativeInterface_string_new_with_utf16_chars_and_len(arg0, arg1, arg2, arg3)
 
 }
 
@@ -961,7 +1046,7 @@ func GDNativeInterface_string_new_with_utf32_chars_and_len(p_struct *GDNativeInt
 	arg2 := (*C.char32_t)(p_contents)        // const char32_t *
 	arg3 := (C.GDNativeInt)(p_size)          // const GDNativeInt
 
-	C.cgo_GDNativeInterface_string_new_with_utf32_chars_and_len(arg0, arg1, arg2, arg3)
+	C.cgo_callfn_GDNativeInterface_string_new_with_utf32_chars_and_len(arg0, arg1, arg2, arg3)
 
 }
 
@@ -971,7 +1056,7 @@ func GDNativeInterface_string_new_with_wide_chars_and_len(p_struct *GDNativeInte
 	arg2 := (*C.wchar_t)(p_contents)         // const wchar_t *
 	arg3 := (C.GDNativeInt)(p_size)          // const GDNativeInt
 
-	C.cgo_GDNativeInterface_string_new_with_wide_chars_and_len(arg0, arg1, arg2, arg3)
+	C.cgo_callfn_GDNativeInterface_string_new_with_wide_chars_and_len(arg0, arg1, arg2, arg3)
 
 }
 
@@ -981,7 +1066,7 @@ func GDNativeInterface_string_to_latin1_chars(p_struct *GDNativeInterface, p_sel
 	arg2 := (*C.char)(r_text)                   // char *
 	arg3 := (C.GDNativeInt)(p_max_write_length) // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_string_to_latin1_chars(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_string_to_latin1_chars(arg0, arg1, arg2, arg3)
 
 	// GDNativeInt
 	return (GDNativeInt)(ret)
@@ -993,7 +1078,7 @@ func GDNativeInterface_string_to_utf8_chars(p_struct *GDNativeInterface, p_self 
 	arg2 := (*C.char)(r_text)                   // char *
 	arg3 := (C.GDNativeInt)(p_max_write_length) // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_string_to_utf8_chars(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_string_to_utf8_chars(arg0, arg1, arg2, arg3)
 
 	// GDNativeInt
 	return (GDNativeInt)(ret)
@@ -1005,7 +1090,7 @@ func GDNativeInterface_string_to_utf16_chars(p_struct *GDNativeInterface, p_self
 	arg2 := (*C.char16_t)(r_text)               // char16_t *
 	arg3 := (C.GDNativeInt)(p_max_write_length) // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_string_to_utf16_chars(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_string_to_utf16_chars(arg0, arg1, arg2, arg3)
 
 	// GDNativeInt
 	return (GDNativeInt)(ret)
@@ -1017,7 +1102,7 @@ func GDNativeInterface_string_to_utf32_chars(p_struct *GDNativeInterface, p_self
 	arg2 := (*C.char32_t)(r_text)               // char32_t *
 	arg3 := (C.GDNativeInt)(p_max_write_length) // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_string_to_utf32_chars(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_string_to_utf32_chars(arg0, arg1, arg2, arg3)
 
 	// GDNativeInt
 	return (GDNativeInt)(ret)
@@ -1029,7 +1114,7 @@ func GDNativeInterface_string_to_wide_chars(p_struct *GDNativeInterface, p_self 
 	arg2 := (*C.wchar_t)(r_text)                // wchar_t *
 	arg3 := (C.GDNativeInt)(p_max_write_length) // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_string_to_wide_chars(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_string_to_wide_chars(arg0, arg1, arg2, arg3)
 
 	// GDNativeInt
 	return (GDNativeInt)(ret)
@@ -1040,7 +1125,7 @@ func GDNativeInterface_string_operator_index(p_struct *GDNativeInterface, p_self
 	arg1 := (C.GDNativeStringPtr)(p_self)    // GDNativeStringPtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_string_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_string_operator_index(arg0, arg1, arg2)
 
 	// char32_t *
 	return (*Char32T)(ret)
@@ -1051,7 +1136,7 @@ func GDNativeInterface_string_operator_index_const(p_struct *GDNativeInterface, 
 	arg1 := (C.GDNativeStringPtr)(p_self)    // const GDNativeStringPtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_string_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_string_operator_index_const(arg0, arg1, arg2)
 
 	// const char32_t *
 	return (*Char32T)(ret)
@@ -1062,7 +1147,7 @@ func GDNativeInterface_packed_byte_array_operator_index(p_struct *GDNativeInterf
 	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_byte_array_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_byte_array_operator_index(arg0, arg1, arg2)
 
 	// uint8_t *
 	return (*uint8)(ret)
@@ -1073,7 +1158,7 @@ func GDNativeInterface_packed_byte_array_operator_index_const(p_struct *GDNative
 	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_byte_array_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_byte_array_operator_index_const(arg0, arg1, arg2)
 
 	// const uint8_t *
 	return (*uint8)(ret)
@@ -1084,7 +1169,7 @@ func GDNativeInterface_packed_color_array_operator_index(p_struct *GDNativeInter
 	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_color_array_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_color_array_operator_index(arg0, arg1, arg2)
 
 	// GDNativeTypePtr
 	return (GDNativeTypePtr)(ret)
@@ -1095,7 +1180,7 @@ func GDNativeInterface_packed_color_array_operator_index_const(p_struct *GDNativ
 	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_color_array_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_color_array_operator_index_const(arg0, arg1, arg2)
 
 	// GDNativeTypePtr
 	return (GDNativeTypePtr)(ret)
@@ -1106,7 +1191,7 @@ func GDNativeInterface_packed_float32_array_operator_index(p_struct *GDNativeInt
 	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_float32_array_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_float32_array_operator_index(arg0, arg1, arg2)
 
 	// float *
 	return (*float32)(ret)
@@ -1117,7 +1202,7 @@ func GDNativeInterface_packed_float32_array_operator_index_const(p_struct *GDNat
 	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_float32_array_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_float32_array_operator_index_const(arg0, arg1, arg2)
 
 	// const float *
 	return (*float32)(ret)
@@ -1128,7 +1213,7 @@ func GDNativeInterface_packed_float64_array_operator_index(p_struct *GDNativeInt
 	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_float64_array_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_float64_array_operator_index(arg0, arg1, arg2)
 
 	// double *
 	return (*float64)(ret)
@@ -1139,7 +1224,7 @@ func GDNativeInterface_packed_float64_array_operator_index_const(p_struct *GDNat
 	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_float64_array_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_float64_array_operator_index_const(arg0, arg1, arg2)
 
 	// const double *
 	return (*float64)(ret)
@@ -1150,7 +1235,7 @@ func GDNativeInterface_packed_int32_array_operator_index(p_struct *GDNativeInter
 	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_int32_array_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_int32_array_operator_index(arg0, arg1, arg2)
 
 	// int32_t *
 	return (*int32)(ret)
@@ -1161,7 +1246,7 @@ func GDNativeInterface_packed_int32_array_operator_index_const(p_struct *GDNativ
 	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_int32_array_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_int32_array_operator_index_const(arg0, arg1, arg2)
 
 	// const int32_t *
 	return (*int32)(ret)
@@ -1172,7 +1257,7 @@ func GDNativeInterface_packed_int64_array_operator_index(p_struct *GDNativeInter
 	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_int64_array_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_int64_array_operator_index(arg0, arg1, arg2)
 
 	// int64_t *
 	return (*int64)(ret)
@@ -1183,7 +1268,7 @@ func GDNativeInterface_packed_int64_array_operator_index_const(p_struct *GDNativ
 	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_int64_array_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_int64_array_operator_index_const(arg0, arg1, arg2)
 
 	// const int64_t *
 	return (*int64)(ret)
@@ -1194,7 +1279,7 @@ func GDNativeInterface_packed_string_array_operator_index(p_struct *GDNativeInte
 	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_string_array_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_string_array_operator_index(arg0, arg1, arg2)
 
 	// GDNativeStringPtr
 	return (GDNativeStringPtr)(ret)
@@ -1205,7 +1290,7 @@ func GDNativeInterface_packed_string_array_operator_index_const(p_struct *GDNati
 	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_string_array_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_string_array_operator_index_const(arg0, arg1, arg2)
 
 	// GDNativeStringPtr
 	return (GDNativeStringPtr)(ret)
@@ -1216,7 +1301,7 @@ func GDNativeInterface_packed_vector2_array_operator_index(p_struct *GDNativeInt
 	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_vector2_array_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_vector2_array_operator_index(arg0, arg1, arg2)
 
 	// GDNativeTypePtr
 	return (GDNativeTypePtr)(ret)
@@ -1227,7 +1312,7 @@ func GDNativeInterface_packed_vector2_array_operator_index_const(p_struct *GDNat
 	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_vector2_array_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_vector2_array_operator_index_const(arg0, arg1, arg2)
 
 	// GDNativeTypePtr
 	return (GDNativeTypePtr)(ret)
@@ -1238,7 +1323,7 @@ func GDNativeInterface_packed_vector3_array_operator_index(p_struct *GDNativeInt
 	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_vector3_array_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_vector3_array_operator_index(arg0, arg1, arg2)
 
 	// GDNativeTypePtr
 	return (GDNativeTypePtr)(ret)
@@ -1249,7 +1334,7 @@ func GDNativeInterface_packed_vector3_array_operator_index_const(p_struct *GDNat
 	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_packed_vector3_array_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_packed_vector3_array_operator_index_const(arg0, arg1, arg2)
 
 	// GDNativeTypePtr
 	return (GDNativeTypePtr)(ret)
@@ -1260,7 +1345,7 @@ func GDNativeInterface_array_operator_index(p_struct *GDNativeInterface, p_self 
 	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_array_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_array_operator_index(arg0, arg1, arg2)
 
 	// GDNativeVariantPtr
 	return (GDNativeVariantPtr)(ret)
@@ -1271,7 +1356,7 @@ func GDNativeInterface_array_operator_index_const(p_struct *GDNativeInterface, p
 	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
 	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_array_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_array_operator_index_const(arg0, arg1, arg2)
 
 	// GDNativeVariantPtr
 	return (GDNativeVariantPtr)(ret)
@@ -1282,7 +1367,7 @@ func GDNativeInterface_dictionary_operator_index(p_struct *GDNativeInterface, p_
 	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
 	arg2 := (C.GDNativeVariantPtr)(p_key)    // const GDNativeVariantPtr
 
-	ret := C.cgo_GDNativeInterface_dictionary_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_dictionary_operator_index(arg0, arg1, arg2)
 
 	// GDNativeVariantPtr
 	return (GDNativeVariantPtr)(ret)
@@ -1293,7 +1378,7 @@ func GDNativeInterface_dictionary_operator_index_const(p_struct *GDNativeInterfa
 	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
 	arg2 := (C.GDNativeVariantPtr)(p_key)    // const GDNativeVariantPtr
 
-	ret := C.cgo_GDNativeInterface_dictionary_operator_index_const(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_dictionary_operator_index_const(arg0, arg1, arg2)
 
 	// GDNativeVariantPtr
 	return (GDNativeVariantPtr)(ret)
@@ -1308,7 +1393,7 @@ func GDNativeInterface_object_method_bind_call(p_struct *GDNativeInterface, p_me
 	arg5 := (C.GDNativeVariantPtr)(r_ret)            // GDNativeVariantPtr
 	arg6 := (*C.GDNativeCallError)(r_error)          // GDNativeCallError *
 
-	C.cgo_GDNativeInterface_object_method_bind_call(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+	C.cgo_callfn_GDNativeInterface_object_method_bind_call(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 
 }
 
@@ -1319,7 +1404,7 @@ func GDNativeInterface_object_method_bind_ptrcall(p_struct *GDNativeInterface, p
 	arg3 := (*C.GDNativeTypePtr)(p_args)             // const GDNativeTypePtr *
 	arg4 := (C.GDNativeTypePtr)(r_ret)               // GDNativeTypePtr
 
-	C.cgo_GDNativeInterface_object_method_bind_ptrcall(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_object_method_bind_ptrcall(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -1327,7 +1412,7 @@ func GDNativeInterface_object_destroy(p_struct *GDNativeInterface, p_o GDNativeO
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeObjectPtr)(p_o)       // GDNativeObjectPtr
 
-	C.cgo_GDNativeInterface_object_destroy(arg0, arg1)
+	C.cgo_callfn_GDNativeInterface_object_destroy(arg0, arg1)
 
 }
 
@@ -1335,7 +1420,7 @@ func GDNativeInterface_global_get_singleton(p_struct *GDNativeInterface, p_name 
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := C.CString(p_name)                // const char *
 
-	ret := C.cgo_GDNativeInterface_global_get_singleton(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_global_get_singleton(arg0, arg1)
 
 	C.free(unsafe.Pointer(arg1))
 
@@ -1349,7 +1434,7 @@ func GDNativeInterface_object_get_instance_binding(p_struct *GDNativeInterface, 
 	arg2 := unsafe.Pointer(p_token)                            // void *
 	arg3 := (*C.GDNativeInstanceBindingCallbacks)(p_callbacks) // const GDNativeInstanceBindingCallbacks *
 
-	ret := C.cgo_GDNativeInterface_object_get_instance_binding(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_object_get_instance_binding(arg0, arg1, arg2, arg3)
 
 	// void *
 	return unsafe.Pointer(ret)
@@ -1362,7 +1447,7 @@ func GDNativeInterface_object_set_instance_binding(p_struct *GDNativeInterface, 
 	arg3 := unsafe.Pointer(p_binding)                          // void *
 	arg4 := (*C.GDNativeInstanceBindingCallbacks)(p_callbacks) // const GDNativeInstanceBindingCallbacks *
 
-	C.cgo_GDNativeInterface_object_set_instance_binding(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_object_set_instance_binding(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -1372,7 +1457,7 @@ func GDNativeInterface_object_set_instance(p_struct *GDNativeInterface, p_o GDNa
 	arg2 := C.CString(p_classname)                      // const char *
 	arg3 := (C.GDExtensionClassInstancePtr)(p_instance) // GDExtensionClassInstancePtr
 
-	C.cgo_GDNativeInterface_object_set_instance(arg0, arg1, arg2, arg3)
+	C.cgo_callfn_GDNativeInterface_object_set_instance(arg0, arg1, arg2, arg3)
 
 	C.free(unsafe.Pointer(arg2))
 
@@ -1383,7 +1468,7 @@ func GDNativeInterface_object_cast_to(p_struct *GDNativeInterface, p_object GDNa
 	arg1 := (C.GDNativeObjectPtr)(p_object)  // const GDNativeObjectPtr
 	arg2 := unsafe.Pointer(p_class_tag)      // void *
 
-	ret := C.cgo_GDNativeInterface_object_cast_to(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_object_cast_to(arg0, arg1, arg2)
 
 	// GDNativeObjectPtr
 	return (GDNativeObjectPtr)(ret)
@@ -1393,7 +1478,7 @@ func GDNativeInterface_object_get_instance_from_id(p_struct *GDNativeInterface, 
 	arg0 := (*C.GDNativeInterface)(p_struct)      // GDNativeInterface
 	arg1 := (C.GDObjectInstanceID)(p_instance_id) // GDObjectInstanceID
 
-	ret := C.cgo_GDNativeInterface_object_get_instance_from_id(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_object_get_instance_from_id(arg0, arg1)
 
 	// GDNativeObjectPtr
 	return (GDNativeObjectPtr)(ret)
@@ -1403,7 +1488,7 @@ func GDNativeInterface_object_get_instance_id(p_struct *GDNativeInterface, p_obj
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeObjectPtr)(p_object)  // const GDNativeObjectPtr
 
-	ret := C.cgo_GDNativeInterface_object_get_instance_id(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_object_get_instance_id(arg0, arg1)
 
 	// GDObjectInstanceID
 	return (GDObjectInstanceID)(ret)
@@ -1414,7 +1499,7 @@ func GDNativeInterface_script_instance_create(p_struct *GDNativeInterface, p_inf
 	arg1 := (*C.GDNativeExtensionScriptInstanceInfo)(p_info)            // const GDNativeExtensionScriptInstanceInfo *
 	arg2 := (C.GDNativeExtensionScriptInstanceDataPtr)(p_instance_data) // GDNativeExtensionScriptInstanceDataPtr
 
-	ret := C.cgo_GDNativeInterface_script_instance_create(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDNativeInterface_script_instance_create(arg0, arg1, arg2)
 
 	// GDNativeScriptInstancePtr
 	return (GDNativeScriptInstancePtr)(ret)
@@ -1424,7 +1509,7 @@ func GDNativeInterface_classdb_construct_object(p_struct *GDNativeInterface, p_c
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := C.CString(p_classname)           // const char *
 
-	ret := C.cgo_GDNativeInterface_classdb_construct_object(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_classdb_construct_object(arg0, arg1)
 
 	C.free(unsafe.Pointer(arg1))
 
@@ -1438,7 +1523,7 @@ func GDNativeInterface_classdb_get_method_bind(p_struct *GDNativeInterface, p_cl
 	arg2 := C.CString(p_methodname)          // const char *
 	arg3 := (C.GDNativeInt)(p_hash)          // GDNativeInt
 
-	ret := C.cgo_GDNativeInterface_classdb_get_method_bind(arg0, arg1, arg2, arg3)
+	ret := C.cgo_callfn_GDNativeInterface_classdb_get_method_bind(arg0, arg1, arg2, arg3)
 
 	C.free(unsafe.Pointer(arg1))
 	C.free(unsafe.Pointer(arg2))
@@ -1451,7 +1536,7 @@ func GDNativeInterface_classdb_get_class_tag(p_struct *GDNativeInterface, p_clas
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := C.CString(p_classname)           // const char *
 
-	ret := C.cgo_GDNativeInterface_classdb_get_class_tag(arg0, arg1)
+	ret := C.cgo_callfn_GDNativeInterface_classdb_get_class_tag(arg0, arg1)
 
 	C.free(unsafe.Pointer(arg1))
 
@@ -1466,7 +1551,7 @@ func GDNativeInterface_classdb_register_extension_class(p_struct *GDNativeInterf
 	arg3 := C.CString(p_parent_class_name)                             // const char *
 	arg4 := (*C.GDNativeExtensionClassCreationInfo)(p_extension_funcs) // const GDNativeExtensionClassCreationInfo *
 
-	C.cgo_GDNativeInterface_classdb_register_extension_class(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class(arg0, arg1, arg2, arg3, arg4)
 
 	C.free(unsafe.Pointer(arg2))
 	C.free(unsafe.Pointer(arg3))
@@ -1479,7 +1564,7 @@ func GDNativeInterface_classdb_register_extension_class_method(p_struct *GDNativ
 	arg2 := C.CString(p_class_name)                              // const char *
 	arg3 := (*C.GDNativeExtensionClassMethodInfo)(p_method_info) // const GDNativeExtensionClassMethodInfo *
 
-	C.cgo_GDNativeInterface_classdb_register_extension_class_method(arg0, arg1, arg2, arg3)
+	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_method(arg0, arg1, arg2, arg3)
 
 	C.free(unsafe.Pointer(arg2))
 
@@ -1494,7 +1579,7 @@ func GDNativeInterface_classdb_register_extension_class_integer_constant(p_struc
 	arg5 := (C.GDNativeInt)(p_constant_value)               // GDNativeInt
 	arg6 := (C.GDNativeBool)(p_is_bitfield)                 // GDNativeBool
 
-	C.cgo_GDNativeInterface_classdb_register_extension_class_integer_constant(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_integer_constant(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 
 	C.free(unsafe.Pointer(arg2))
 	C.free(unsafe.Pointer(arg3))
@@ -1510,7 +1595,7 @@ func GDNativeInterface_classdb_register_extension_class_property(p_struct *GDNat
 	arg4 := C.CString(p_setter)                             // const char *
 	arg5 := C.CString(p_getter)                             // const char *
 
-	C.cgo_GDNativeInterface_classdb_register_extension_class_property(arg0, arg1, arg2, arg3, arg4, arg5)
+	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_property(arg0, arg1, arg2, arg3, arg4, arg5)
 
 	C.free(unsafe.Pointer(arg2))
 
@@ -1525,7 +1610,7 @@ func GDNativeInterface_classdb_register_extension_class_property_group(p_struct 
 	arg3 := C.CString(p_group_name)                         // const char *
 	arg4 := C.CString(p_prefix)                             // const char *
 
-	C.cgo_GDNativeInterface_classdb_register_extension_class_property_group(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_property_group(arg0, arg1, arg2, arg3, arg4)
 
 	C.free(unsafe.Pointer(arg2))
 	C.free(unsafe.Pointer(arg3))
@@ -1539,7 +1624,7 @@ func GDNativeInterface_classdb_register_extension_class_property_subgroup(p_stru
 	arg3 := C.CString(p_subgroup_name)                      // const char *
 	arg4 := C.CString(p_prefix)                             // const char *
 
-	C.cgo_GDNativeInterface_classdb_register_extension_class_property_subgroup(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_property_subgroup(arg0, arg1, arg2, arg3, arg4)
 
 	C.free(unsafe.Pointer(arg2))
 	C.free(unsafe.Pointer(arg3))
@@ -1554,7 +1639,7 @@ func GDNativeInterface_classdb_register_extension_class_signal(p_struct *GDNativ
 	arg4 := (*C.GDNativePropertyInfo)(p_argument_info)      // const GDNativePropertyInfo *
 	arg5 := (C.GDNativeInt)(p_argument_count)               // GDNativeInt
 
-	C.cgo_GDNativeInterface_classdb_register_extension_class_signal(arg0, arg1, arg2, arg3, arg4, arg5)
+	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_signal(arg0, arg1, arg2, arg3, arg4, arg5)
 
 	C.free(unsafe.Pointer(arg2))
 	C.free(unsafe.Pointer(arg3))
@@ -1566,7 +1651,7 @@ func GDNativeInterface_classdb_unregister_extension_class(p_struct *GDNativeInte
 	arg1 := (C.GDNativeExtensionClassLibraryPtr)(p_library) // const GDNativeExtensionClassLibraryPtr
 	arg2 := C.CString(p_class_name)                         // const char *
 
-	C.cgo_GDNativeInterface_classdb_unregister_extension_class(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInterface_classdb_unregister_extension_class(arg0, arg1, arg2)
 
 	C.free(unsafe.Pointer(arg2))
 }
@@ -1576,7 +1661,7 @@ func GDNativeInterface_get_library_path(p_struct *GDNativeInterface, p_library G
 	arg1 := (C.GDNativeExtensionClassLibraryPtr)(p_library) // const GDNativeExtensionClassLibraryPtr
 	arg2 := (C.GDNativeStringPtr)(r_path)                   // GDNativeStringPtr
 
-	C.cgo_GDNativeInterface_get_library_path(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInterface_get_library_path(arg0, arg1, arg2)
 
 }
 
@@ -1587,7 +1672,7 @@ func GDNativeInitialization_initialize(p_struct *GDNativeInitialization, userdat
 	arg1 := unsafe.Pointer(userdata)                 // void *
 	arg2 := (C.GDNativeInitializationLevel)(p_level) // GDNativeInitializationLevel
 
-	C.cgo_GDNativeInitialization_initialize(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInitialization_initialize(arg0, arg1, arg2)
 
 }
 
@@ -1596,6 +1681,6 @@ func GDNativeInitialization_deinitialize(p_struct *GDNativeInitialization, userd
 	arg1 := unsafe.Pointer(userdata)                 // void *
 	arg2 := (C.GDNativeInitializationLevel)(p_level) // GDNativeInitializationLevel
 
-	C.cgo_GDNativeInitialization_deinitialize(arg0, arg1, arg2)
+	C.cgo_callfn_GDNativeInitialization_deinitialize(arg0, arg1, arg2)
 
 }

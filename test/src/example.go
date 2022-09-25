@@ -1,7 +1,5 @@
 package main
 
-// #cgo CFLAGS: -DX86=1 -g -fPIC -std=c99 -I${SRCDIR}/../../godot_headers -I${SRCDIR}/../../pkg/gdnative
-// #include <godot/gdnative_interface.h>
 import "C"
 
 import (
@@ -9,24 +7,25 @@ import (
 	"unsafe"
 
 	"github.com/godot-go/godot-go/pkg/gdnative"
+	"github.com/godot-go/godot-go/pkg/gdextension"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )
 
-// ExampleRef implements GDClass evidence
-var _ gdnative.GDClass = new(ExampleRef)
+// // ExampleRef implements GDClass evidence
+// var _ gdextension.GDClass = new(ExampleRef)
 
-type ExampleRef struct {
-	gdnative.RefCounted
-}
+// type ExampleRef struct {
+// 	gdextension.RefCounted
+// }
 
-func (c *ExampleRef) GetExtensionClass() gdnative.TypeName {
-	return (gdnative.TypeName)("Example")
-}
+// func (c *ExampleRef) GetExtensionClass() gdextension.TypeName {
+// 	return (gdextension.TypeName)("Example")
+// }
 
-func (c *ExampleRef) GetExtensionParentClass() gdnative.TypeName {
-	return (gdnative.TypeName)("RefCounted")
-}
+// func (c *ExampleRef) GetExtensionParentClass() gdextension.TypeName {
+// 	return (gdextension.TypeName)("RefCounted")
+// }
 
 type ExampleEnum int64
 
@@ -40,19 +39,19 @@ const (
 )
 
 // Example implements GDClass evidence
-var _ gdnative.GDClass = new(Example)
+var _ gdextension.GDClass = new(Example)
 
 type Example struct {
-	gdnative.Control
-	customPosition gdnative.Vector2
+	gdextension.ControlImpl
+	customPosition gdextension.Vector2
 }
 
-func (c *Example) GetExtensionClass() gdnative.TypeName {
-	return (gdnative.TypeName)("Example")
+func (c *Example) GetClassName() gdextension.TypeName {
+	return (gdextension.TypeName)("Example")
 }
 
-func (c *Example) GetExtensionParentClass() gdnative.TypeName {
-	return (gdnative.TypeName)("Control")
+func (c *Example) GetParentClassName() gdextension.TypeName {
+	return (gdextension.TypeName)("Control")
 }
 
 func (e *Example) TestStatic(p_a, p_b int32) int32 {
@@ -77,21 +76,31 @@ func (e *Example) ReturnSomething(base string, f32 float32, f64 float64,
 	return fmt.Sprintf("(1. %s, 2. %f, 3. %f, 4. %d, 5. %d, 6. %d, 7. %d, 8. %d)", base, f32, f64, i, i8, i16, i32, i64)
 }
 
-func (e *Example) ReturnSomethingConst() (gdnative.Viewport, error) {
+func (e *Example) ReturnSomethingConst() (gdextension.Viewport, error) {
 	println("  Return something const called.")
 	if e.IsInsideTree() {
 		result := e.GetViewport()
+
+		if result == nil {
+			println("null viewport encountered")
+			return nil, fmt.Errorf("null viewport")
+		}
+
+		fmt.Printf("viewport instance id: %v\n", result.GetInstanceId())
+
+
+
 		return result, nil
 	}
-	return gdnative.Viewport{}, fmt.Errorf("unable to get viewport")
+	return nil, fmt.Errorf("unable to get viewport")
 }
 
 // func (e *Example) ReturnExtendedRef() *ExampleRef {
 // 	return NewExampleRef()
 // }
 
-func (e *Example) GetV4() gdnative.Vector4 {
-	v4 := gdnative.NewVector4WithFloat32Float32Float32Float32(1.2, 3.4, 5.6, 7.8)
+func (e *Example) GetV4() gdextension.Vector4 {
+	v4 := gdextension.NewVector4WithFloat32Float32Float32Float32(1.2, 3.4, 5.6, 7.8)
 	log.Debug("vector4 members",
 		zap.Any("x", v4.MemberGetx()),
 		zap.Any("y", v4.MemberGety()),
@@ -105,80 +114,97 @@ func (e *Example) DefArgs(p_a, p_b int32) int32 {
 	return p_a + p_b
 }
 
-func (e *Example) TestArray() gdnative.Array {
-	arr := gdnative.NewArray()
+func (e *Example) TestArray() gdextension.Array {
+	arr := gdextension.NewArray()
 
 	arr.Resize(2)
-	arr.Insert(0, gdnative.NewVariantInt64(1))
-	arr.Insert(1, gdnative.NewVariantInt64(2))
+	arr.Insert(0, gdextension.NewVariantInt64(1))
+	arr.Insert(1, gdextension.NewVariantInt64(2))
 
 	return arr
 }
 
-func (e *Example) TestDictionary() gdnative.Dictionary {
-	dict := gdnative.NewDictionary()
-	v := gdnative.NewVariantDictionary(dict)
+func (e *Example) TestDictionary() gdextension.Dictionary {
+	dict := gdextension.NewDictionary()
+	v := gdextension.NewVariantDictionary(dict)
 
-	v.SetNamed(gdnative.NewStringNameWithLatin1Chars("hello"), gdnative.NewVariantString(gdnative.NewStringWithLatin1Chars("world")))
-	v.SetNamed(gdnative.NewStringNameWithLatin1Chars("foo"), gdnative.NewVariantString(gdnative.NewStringWithLatin1Chars("bar")))
+	v.SetNamed(gdextension.NewStringNameWithLatin1Chars("hello"), gdextension.NewVariantString(gdextension.NewStringWithLatin1Chars("world")))
+	v.SetNamed(gdextension.NewStringNameWithLatin1Chars("foo"), gdextension.NewVariantString(gdextension.NewStringWithLatin1Chars("bar")))
 
 	return dict
 }
 
-func (e *Example) SetCustomPosition(pos gdnative.Vector2) {
+func (e *Example) SetCustomPosition(pos gdextension.Vector2) {
 	e.customPosition = pos
 }
 
-func (e *Example) GetCustomPosition() gdnative.Vector2 {
+func (e *Example) GetCustomPosition() gdextension.Vector2 {
 	return e.customPosition
 }
 
 func (e *Example) EmitCustomSignal(name string, value int64) {
-	e.EmitSignal(gdnative.NewStringNameWithLatin1Chars("custom_signal"))
-	log.Debug("EmitCustomSignal called")
+	e.EmitSignal(
+		gdextension.NewStringNameWithLatin1Chars("custom_signal"),
+		gdextension.NewVariantString(gdextension.NewStringWithLatin1Chars(name)),
+		gdextension.NewVariantInt64(value),
+	)
+	log.Debug("EmitCustomSignal called",
+		zap.String("name", name),
+		zap.Int64("value", value),
+	)
+}
+
+func (e *Example) TestCastTo() {
+	n, ok := e.CastTo("Node").(gdextension.Node)
+	if !ok {
+		log.Panic("failed to cast to cast Example to Node")
+	}
+	log.Debug("TestCastTo called", zap.Any("class", n.GetClassName()))
 }
 
 func RegisterExampleTypes() {
 	log.Debug("RegisterExampleTypes called")
-	gdnative.ClassDBRegisterClass(&Example{}, func(t gdnative.GDClass) {
-		gdnative.ClassDBBindMethodStatic(t, "TestStatic", "test_static", []string{"a", "b"}, nil)
-		gdnative.ClassDBBindMethodStatic(t, "TestStatic2", "test_static2", nil, nil)
-		gdnative.ClassDBBindMethod(t, "SimpleFunc", "simple_func", nil, nil)
-		gdnative.ClassDBBindMethod(t, "SimpleConstFunc", "simple_const_func", []string{"a"}, nil)
-		gdnative.ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
-		gdnative.ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
-		// gdnative.ClassDBBindMethod(t, "ReturnExtendedRef", "return_extended_ref", nil, nil)
-		gdnative.ClassDBBindMethod(t, "GetV4", "get_v4", nil, nil)
-		defArgA := gdnative.NewVariantInt64(100)
-		defArgB := gdnative.NewVariantInt64(200)
-		gdnative.ClassDBBindMethod(t, "DefArgs", "def_args", []string{"a", "b"}, []*gdnative.Variant{&defArgA, &defArgB})
-		gdnative.ClassDBBindMethod(t, "TestArray", "test_array", nil, nil)
-		gdnative.ClassDBBindMethod(t, "TestDictionary", "test_dictionary", nil, nil)
+	gdextension.ClassDBRegisterClass(&Example{}, func(t gdextension.GDClass) {
+		gdextension.ClassDBBindMethodStatic(t, "TestStatic", "test_static", []string{"a", "b"}, nil)
+		gdextension.ClassDBBindMethodStatic(t, "TestStatic2", "test_static2", nil, nil)
+		gdextension.ClassDBBindMethod(t, "SimpleFunc", "simple_func", nil, nil)
+		gdextension.ClassDBBindMethod(t, "SimpleConstFunc", "simple_const_func", []string{"a"}, nil)
+		gdextension.ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
+		gdextension.ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
+		// gdextension.ClassDBBindMethod(t, "ReturnExtendedRef", "return_extended_ref", nil, nil)
+		gdextension.ClassDBBindMethod(t, "GetV4", "get_v4", nil, nil)
+		defArgA := gdextension.NewVariantInt64(100)
+		defArgB := gdextension.NewVariantInt64(200)
+		gdextension.ClassDBBindMethod(t, "DefArgs", "def_args", []string{"a", "b"}, []*gdextension.Variant{&defArgA, &defArgB})
+		gdextension.ClassDBBindMethod(t, "TestArray", "test_array", nil, nil)
+		gdextension.ClassDBBindMethod(t, "TestDictionary", "test_dictionary", nil, nil)
 
-		gdnative.ClassDBAddPropertyGroup(t, "Test group", "group_")
-		gdnative.ClassDBAddPropertySubgroup(t, "Test subgroup", "group_subgroup_")
+		gdextension.ClassDBAddPropertyGroup(t, "Test group", "group_")
+		gdextension.ClassDBAddPropertySubgroup(t, "Test subgroup", "group_subgroup_")
 
-		gdnative.ClassDBBindMethod(t, "GetCustomPosition", "get_custom_position", nil, nil)
-		gdnative.ClassDBBindMethod(t, "SetCustomPosition", "set_custom_position", []string{"position"}, nil)
+		gdextension.ClassDBBindMethod(t, "GetCustomPosition", "get_custom_position", nil, nil)
+		gdextension.ClassDBBindMethod(t, "SetCustomPosition", "set_custom_position", []string{"position"}, nil)
 
-		gdnative.ClassDBAddProperty(t, gdnative.GDNATIVE_VARIANT_TYPE_VECTOR2, (gdnative.PropertyName)("group_subgroup_custom_position"), "SetCustomPosition", "GetCustomPosition")
+		gdextension.ClassDBAddProperty(t, gdnative.GDNATIVE_VARIANT_TYPE_VECTOR2, (gdextension.PropertyName)("group_subgroup_custom_position"), "SetCustomPosition", "GetCustomPosition")
 
 		// Signals.
-		gdnative.ClassDBAddSignal(t, "custom_signal",
-			gdnative.SignalParam{
+		gdextension.ClassDBAddSignal(t, "custom_signal",
+			gdextension.SignalParam{
 				Type: gdnative.GDNATIVE_VARIANT_TYPE_STRING,
 				Name: "name"},
-			gdnative.SignalParam{
+			gdextension.SignalParam{
 				Type: gdnative.GDNATIVE_VARIANT_TYPE_INT,
 				Name: "value",
 			})
-		gdnative.ClassDBBindMethod(t, "EmitCustomSignal", "emit_custom_signal", []string{"name", "value"}, nil)
+		gdextension.ClassDBBindMethod(t, "EmitCustomSignal", "emit_custom_signal", []string{"name", "value"}, nil)
 
 		// constants
-		gdnative.ClassDBBindEnumConstant(t, "ExampleEnum", "FIRST", int(ExampleFirst))
-		gdnative.ClassDBBindEnumConstant(t, "ExampleEnum", "ANSWER_TO_EVERYTHING", int(AnswerToEverything))
+		gdextension.ClassDBBindEnumConstant(t, "ExampleEnum", "FIRST", int(ExampleFirst))
+		gdextension.ClassDBBindEnumConstant(t, "ExampleEnum", "ANSWER_TO_EVERYTHING", int(AnswerToEverything))
+		gdextension.ClassDBBindConstant(t, "CONSTANT_WITHOUT_ENUM", int(EXAMPLE_ENUM_CONSTANT_WITHOUT_ENUM))
 
-		gdnative.ClassDBBindConstant(t, "CONSTANT_WITHOUT_ENUM", int(EXAMPLE_ENUM_CONSTANT_WITHOUT_ENUM))
+		// others
+		gdextension.ClassDBBindMethod(t, "TestCastTo", "test_cast_to", nil, nil)
 	})
 }
 
@@ -186,10 +212,10 @@ func UnregisterExampleTypes() {
 	log.Debug("UnregisterExampleTypes called")
 }
 
-//export ExampleLibraryInit
-func ExampleLibraryInit(p_interface *C.GDNativeInterface, p_library C.GDNativeExtensionClassLibraryPtr, r_initialization *C.GDNativeInitialization) bool {
+//export TestDemoInit
+func TestDemoInit(p_interface unsafe.Pointer, p_library unsafe.Pointer, r_initialization unsafe.Pointer) bool {
 	log.Debug("ExampleLibraryInit called")
-	initObj := gdnative.NewInitObject(
+	initObj := gdextension.NewInitObject(
 		(*gdnative.GDNativeInterface)(unsafe.Pointer(p_interface)),
 		(gdnative.GDNativeExtensionClassLibraryPtr)(p_library),
 		(*gdnative.GDNativeInitialization)(unsafe.Pointer(r_initialization)),

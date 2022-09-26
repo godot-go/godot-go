@@ -1,86 +1,86 @@
-name: Test Windows
+# name: Test Windows
 
-on:
-  push:
-    paths:
-      - "**/*.go"
-      - "**/*.c"
-      - "**/*.h"
-      - ".github/workflows/test_windows.yaml"
-  workflow_dispatch:
+# on:
+#   push:
+#     paths:
+#       - "**/*.go"
+#       - "**/*.c"
+#       - "**/*.h"
+#       - ".github/workflows/test_windows.yaml"
+#   workflow_dispatch:
 
-jobs:
-  run_test:
-    strategy:
-      fail-fast: true
-      matrix:
-        go_version:
-          - 1.19.1
-        targets:
-          - windows/amd64
+# jobs:
+#   run_test:
+#     strategy:
+#       fail-fast: true
+#       matrix:
+#         go_version:
+#           - 1.19.1
+#         targets:
+#           - windows/amd64
 
-    runs-on: windows-latest
-    steps:
-    - name: Set up scoop
-      run: |
-        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh');
-        echo "::add-path::$HOME\scoop\shims";
+#     runs-on: windows-latest
+#     steps:
+#     - name: Set up scoop
+#       run: |
+#         Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh');
+#         echo "::add-path::$HOME\scoop\shims";
 
-    - name: Debug PATH
-      run: echo "$Env:Path"
+#     - name: Debug PATH
+#       run: echo "$Env:Path"
 
-    - name: Set up scoop extras
-      run: scoop bucket add extras;
+#     - name: Set up scoop extras
+#       run: scoop bucket add extras;
 
-    - name: Install packages
-      run: scoop install wget unzip
+#     - name: Install packages
+#       run: scoop install wget unzip
 
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: ${{ matrix.go_version }}
-        stable: true
+#     - name: Set up Go
+#       uses: actions/setup-go@v2
+#       with:
+#         go-version: ${{ matrix.go_version }}
+#         stable: true
 
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v2
-      with:
-        submodules: true
+#     - name: Check out code into the Go module directory
+#       uses: actions/checkout@v2
+#       with:
+#         submodules: true
 
-    - name: Install Godot 4.0 beta1 server
-      run: |
-        wget https://downloads.tuxfamily.org/godotengine/4.0/beta1/Godot_v4.0-beta1_win64.exe.zip
-        unzip Godot_v4.0-beta1_win64.exe.zip -d ./
-      shell: bash
+#     - name: Install Godot 4.0 beta1 server
+#       run: |
+#         wget https://downloads.tuxfamily.org/godotengine/4.0/beta1/Godot_v4.0-beta1_win64.exe.zip
+#         unzip Godot_v4.0-beta1_win64.exe.zip -d ./
+#       shell: bash
 
-    - name: Get dependencies
-      run: go get -v -t -d ./...
-      shell: bash
+#     - name: Get dependencies
+#       run: go get -v -t -d ./...
+#       shell: bash
 
-    # - name: Go get goimports
-    #   run: go get golang.org/x/tools/cmd/goimports
-    #   shell: bash
+#     # - name: Go get goimports
+#     #   run: go get golang.org/x/tools/cmd/goimports
+#     #   shell: bash
 
-    # - name: Go generate
-    #   run: go generate
-    #   shell: bash
+#     # - name: Go generate
+#     #   run: go generate
+#     #   shell: bash
 
-    - name: Build test
-      run: |
-        make buildtest
-      shell: bash
-      env:
-        GODOT_BIN: ./Godot_v4.0-beta1_win64.exe
+#     - name: Build test
+#       run: |
+#         make buildtest
+#       shell: bash
+#       env:
+#         GODOT_BIN: ./Godot_v4.0-beta1_win64.exe
 
-    - name: List Artifacts Directory
-      run: ls -alh test/demo/lib
-      shell: bash
+#     - name: List Artifacts Directory
+#       run: ls -alh test/demo/lib
+#       shell: bash
 
-    # - name: Run Test
-    #   run: ./Godot_v4.0-beta1_win64.exe --verbose -v -d --path test/demo/
-    #   shell: bash
-    #   env:
-    #     cgocheck: 2
-    #     LOG_LEVEL: "trace"
-    #     TEST_USE_GINKGO_WRITER: 1
-    #     LANG: "en_US.utf8"
-    #     CI: 1
+#     # - name: Run Test
+#     #   run: ./Godot_v4.0-beta1_win64.exe --verbose -v -d --path test/demo/
+#     #   shell: bash
+#     #   env:
+#     #     cgocheck: 2
+#     #     LOG_LEVEL: "trace"
+#     #     TEST_USE_GINKGO_WRITER: 1
+#     #     LANG: "en_US.utf8"
+#     #     CI: 1

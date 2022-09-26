@@ -64,13 +64,14 @@ remotedebugtest:
 	GOTRACEBACK=crash \
 	DISPLAY=:0 \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
-	gdbserver --once :55555 $(GODOT) --headless --verbose --debug --path $(CWD)/test/demo/
+	gdbserver --once :55555 $(GODOT) --headless --verbose --debug --path test/demo/
 
 test:
 	CI=1 \
 	LOG_LEVEL=debug \
 	GOTRACEBACK=crash \
 	DISPLAY=:0 \
+	LD_DEBUG=libs \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
 	$(GODOT) --headless --verbose --debug --path test/demo/ 2>&1
 

@@ -28,6 +28,7 @@ jobs:
           # - darwin/amd64
 
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Install Go
         uses: actions/setup-go@v2

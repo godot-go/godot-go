@@ -14,20 +14,29 @@ The project is currently under heavy development. The API should be considered _
 Requirements:
 * clang-format
 * gcc
+* go 1.19.x
 
 TODO
 
 
 ### Support
 
-TODO
+Development is generally bulding and testing off of Godot's master branch. As of 2022 Sept 26, runs off of [ca1ebf9fee8d58718d41b2c08d22d484764b7f54](https://github.com/godotengine/godot/tree/581db8b4e60c2a2fa4d0be076030b326784c69bb)
 
 
-### Building from Source
+## Building Godot
+```
+$ git checkout ca1ebf9fee8d58718d41b2c08d22d484764b7f54
+$ scons platform=linuxbsd use_llvm=yes
+```
+
+
+### Building Godot-Go from Source
 
 To quickly build from source, check out the code and run the following commands:
 
     make generate && make build
+
 
 ### Test
 
@@ -35,7 +44,10 @@ Once the project successfully builds, run the following commands to test:
 
     make test
 
-This will run the demo project in the test directory
+This will run the demo project in the test directory.
+
+**NOTE:** The GDExtension interface isn't stable. If the tests fail to pass, please rebuild godot against the latest version documented here under [Support](#Support)
+
 
 ## Contact
 

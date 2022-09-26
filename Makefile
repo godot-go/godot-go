@@ -39,7 +39,7 @@ dumpextensionapi:
 	echo "**** remember to run cp \${GODOT_SRC}/core/extension/gdnative_interface.h godot_headers/godot/"
 	echo "**** alternatively, you can visit https://github.com/godotengine/godot-headers for the latest stable headers ****"
 
-buildtest: goenv
+build: goenv
 	CGO_ENABLED=1 \
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \

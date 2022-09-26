@@ -65,7 +65,7 @@ jobs:
         if: ${{ contains(matrix.targets, 'linux/amd64') }}
         run: make test
         env:
-          GODOT_BIN: "/usr/local/bin/godot4-server"
+          GODOT: "/usr/local/bin/godot4-server"
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
           CI: 1

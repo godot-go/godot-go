@@ -28,7 +28,7 @@ jobs:
           # - darwin/amd64
 
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - name: Install Go
         uses: actions/setup-go@v2
@@ -50,7 +50,7 @@ jobs:
       - name: List Artifacts Directory
         run: ls -alh test/demo/lib
       - name: Test
-        timeout-minutes: 3
+        timeout-minutes: 13
         run: make test
         env:
           DISPLAY: ":0"

@@ -79,9 +79,9 @@ test:
 	LOG_LEVEL=debug \
 	GOTRACEBACK=crash \
 	DISPLAY=:0 \
-	LD_DEBUG=libs \
+	LD_DEBUG=libs \w
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
-	$(GODOT) --headless --verbose --path test/demo/ 2>&1
+	$(GODOT) --headless --verbose --path test/demo/
 
 interactive_test:
 	LOG_LEVEL=debug \

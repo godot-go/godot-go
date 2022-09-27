@@ -21,17 +21,29 @@ TODO
 
 ### Support
 
-Development is generally bulding and testing off of Godot's master branch. As of 2022 Sept 26, runs off of [ca1ebf9fee8d58718d41b2c08d22d484764b7f54](https://github.com/godotengine/godot/tree/581db8b4e60c2a2fa4d0be076030b326784c69bb)
+**The GDExtension interface hasn't been stable.** In order for godot-go to work correctly, you must make sure the following are setup correctly:
+
+1. Ensure your godot binary and godot-go are running off the same godot_headers.
+2. Run `make generate` to regenerate the `*.gen.go`, `*.gen.h`, and `*.gen.c` files.
+3. Run `make build` to rebuild the godot-go.
+4. Run `make test` to validate that the test suite runs successfully.
+
+Development is built and tested off of Godot's latest master branch. The godot_headers is currently copied from [ca1ebf9fee8d58718d41b2c08d22d484764b7f54](https://github.com/godotengine/godot/tree/581db8b4e60c2a2fa4d0be076030b326784c69bb).
 
 
 ## Building Godot
+
 ```
+$ git checkout git@github.com:godotengine/godot.git
+$ cd godot
 $ git checkout ca1ebf9fee8d58718d41b2c08d22d484764b7f54
 $ scons platform=linuxbsd use_llvm=yes
 ```
 
 
-### Building Godot-Go from Source
+### Building Godot-Go
+
+
 
 To quickly build from source, check out the code and run the following commands:
 
@@ -45,9 +57,6 @@ Once the project successfully builds, run the following commands to test:
     make test
 
 This will run the demo project in the test directory.
-
-**NOTE:** The GDExtension interface isn't stable. If the tests fail to pass, please rebuild godot against the latest version documented here under [Support](#Support)
-
 
 ## Contact
 

@@ -1,9 +1,9 @@
 #include "stacktrace.h"
 
-bool printDebugStacktrace = false;
+bool enablePrintStacktrace = false;
 
 void printStacktrace() {
-    if (printDebugStacktrace) {
+    if (enablePrintStacktrace) {
         printf("===============\n\n");
         void* callstack[128];
         int i, frames = backtrace(callstack, 128);

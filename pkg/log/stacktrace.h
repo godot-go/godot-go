@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern bool printDebugStacktrace;
+extern bool enablePrintStacktrace;
 
 void printStacktrace();
 

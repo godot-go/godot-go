@@ -32,12 +32,19 @@ generate: clean
 		$(CLANG_FORMAT) -i pkg/gdnative/gdnative_wrapper.gen.c; \
 	fi
 
-dumpextensionapi:
+update_godot_headers_from_source:
 	cd godot_headers; \
 	DISPLAY=:0 \
 	$(GODOT) --dump-extension-api extension_api.json; \
-	echo "**** remember to run cp \${GODOT_SRC}/core/extension/gdnative_interface.h godot_headers/godot/"
-	echo "**** alternatively, you can visit https://github.com/godotengine/godot-headers for the latest stable headers ****"
+	if [ -z "${GODOT_SRC}" ]; then \
+		echo "plase set GODOT_SRC to copy gdnative_interface.h"
+		exit 1
+	fi \
+	cp ${GODOT_SRC}/core/extension/gdnative_interface.h godot_headers/godot/
+
+update_godot_headers_from_github:
+	wget https://raw.githubusercontent.com/godotengine/godot-headers/master/godot/gdnative_interface.h -o godot_headers/godot/gdnative_interface.h
+	wget https://raw.githubusercontent.com/godotengine/godot-headers/master/extension_api.json -o godot_headers/extension_api.json
 
 build: goenv
 	CGO_ENABLED=1 \
@@ -68,7 +75,7 @@ remotedebugtest:
 
 test:
 	CI=1 \
-	LOG_LEVEL=debug \
+	LOG_LEVEL=trace \
 	GOTRACEBACK=crash \
 	DISPLAY=:0 \
 	LD_DEBUG=libs \

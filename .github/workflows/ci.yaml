@@ -38,11 +38,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
-      - name: Install Godot 4.0 beta1 server
+      - name: Install Godot 4.0 beta1
         run: |
           wget https://downloads.tuxfamily.org/godotengine/4.0/beta1/Godot_v4.0-beta1_linux.x86_64.zip
           sudo unzip Godot_v4.0-beta1_linux.x86_64.zip -d /usr/local/bin
-          sudo ln -s Godot_v4.0-beta1_linux.x86_64 /usr/local/bin/godot4-server
+          sudo ln -s Godot_v4.0-beta1_linux.x86_64 /usr/local/bin/godot4
       # - name: Update Godot Headers
       #   run: make update_godot_headers_from_github
       - name: Build
@@ -53,7 +53,8 @@ jobs:
         timeout-minutes: 1
         run: make test
         env:
-          GODOT: "/usr/local/bin/godot4-server"
+          DISPLAY: ":0"
+          GODOT: "/usr/local/bin/godot4"
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
           CI: 1

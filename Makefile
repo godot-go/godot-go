@@ -4,7 +4,7 @@ GOOS?=$(shell go env GOOS)
 GOARCH?=$(shell go env GOARCH)
 CLANG_FORMAT?=$(shell which clang-format | which clang-format-10 | which clang-format-11 | which clang-format-12)
 GODOT?=$(shell which godot)
-GODOT_HEADER_COMMIT_HASH?="62e5472d8e12b6e098f95c5d9f472857d7724a04"
+GODOT_HEADER_COMMIT_HASH?="62e5472d8e12b6e098f95c5d9f472857d7724a04" # godot 4 beta1
 CWD=$(shell pwd)
 
 OUTPUT_PATH=test/demo/lib
@@ -21,7 +21,7 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
-.PHONY: goenv generate update_godot_headers_from_source update_godot_headers_from_github build clean_gdnative clean test interactivetest
+.PHONY: goenv generate update_godot_headers_from_source update_godot_headers_from_github build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
 
 goenv:
 	go env
@@ -55,18 +55,18 @@ build: goenv
 	CGO_LDFLAGS='-Og -ggdb' \
 	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
-clean_gdnative:
+clean_src:
 	rm -f pkg/gdnative/*.gen.c
 	rm -f pkg/gdnative/*.gen.h
 	rm -f pkg/gdnative/*.gen.go
 	rm -f pkg/gdextension/*.gen.c
 	rm -f pkg/gdextension/*.gen.h
 	rm -f pkg/gdextension/*.gen.go
+
+clean: clean_src
 	rm -f test/demo/lib/libgodotgo-*
 
-clean: clean_gdnative
-
-remotedebugtest:
+remote_debug_test:
 	CI=1 \
 	LOG_LEVEL=debug \
 	GOTRACEBACK=crash \
@@ -76,20 +76,20 @@ remotedebugtest:
 
 test:
 	CI=1 \
-	LOG_LEVEL=trace \
+	LOG_LEVEL=debug \
 	GOTRACEBACK=crash \
 	DISPLAY=:0 \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
-	$(GODOT) --headless --verbose --debug --path test/demo/ 2>&1
+	$(GODOT) --headless --verbose --path test/demo/ 2>&1
 
-interactivetest:
+interactive_test:
 	LOG_LEVEL=debug \
 	GOTRACEBACK=1 \
 	DISPLAY=:0 \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
 	$(GODOT) --verbose --debug --path test/demo/
 
-opendemoeditor:
+open_demo_in_editor:
 	LOG_LEVEL=debug \
 	GOTRACEBACK=1 \
 	DISPLAY=:0 \

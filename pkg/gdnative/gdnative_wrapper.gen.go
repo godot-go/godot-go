@@ -685,6 +685,38 @@ func GDNativeInterface_variant_booleanize(p_struct *GDNativeInterface, p_self GD
 	return (GDNativeBool)(ret)
 }
 
+func GDNativeInterface_variant_sub(p_struct *GDNativeInterface, p_a GDNativeVariantPtr, p_b GDNativeVariantPtr, r_dst GDNativeVariantPtr) {
+	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
+	arg1 := (C.GDNativeVariantPtr)(p_a)      // const GDNativeVariantPtr
+	arg2 := (C.GDNativeVariantPtr)(p_b)      // const GDNativeVariantPtr
+	arg3 := (C.GDNativeVariantPtr)(r_dst)    // GDNativeVariantPtr
+
+	C.cgo_callfn_GDNativeInterface_variant_sub(arg0, arg1, arg2, arg3)
+
+}
+
+func GDNativeInterface_variant_blend(p_struct *GDNativeInterface, p_a GDNativeVariantPtr, p_b GDNativeVariantPtr, p_c float32, r_dst GDNativeVariantPtr) {
+	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
+	arg1 := (C.GDNativeVariantPtr)(p_a)      // const GDNativeVariantPtr
+	arg2 := (C.GDNativeVariantPtr)(p_b)      // const GDNativeVariantPtr
+	arg3 := (C.float)(p_c)                   // float
+	arg4 := (C.GDNativeVariantPtr)(r_dst)    // GDNativeVariantPtr
+
+	C.cgo_callfn_GDNativeInterface_variant_blend(arg0, arg1, arg2, arg3, arg4)
+
+}
+
+func GDNativeInterface_variant_interpolate(p_struct *GDNativeInterface, p_a GDNativeVariantPtr, p_b GDNativeVariantPtr, p_c float32, r_dst GDNativeVariantPtr) {
+	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
+	arg1 := (C.GDNativeVariantPtr)(p_a)      // const GDNativeVariantPtr
+	arg2 := (C.GDNativeVariantPtr)(p_b)      // const GDNativeVariantPtr
+	arg3 := (C.float)(p_c)                   // float
+	arg4 := (C.GDNativeVariantPtr)(r_dst)    // GDNativeVariantPtr
+
+	C.cgo_callfn_GDNativeInterface_variant_interpolate(arg0, arg1, arg2, arg3, arg4)
+
+}
+
 func GDNativeInterface_variant_duplicate(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, r_ret GDNativeVariantPtr, p_deep GDNativeBool) {
 	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
 	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr

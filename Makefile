@@ -4,6 +4,7 @@ GOOS?=$(shell go env GOOS)
 GOARCH?=$(shell go env GOARCH)
 CLANG_FORMAT?=$(shell which clang-format | which clang-format-10 | which clang-format-11 | which clang-format-12)
 GODOT?=$(shell which godot)
+GODOT_HEADER_COMMIT_HASH?="62e5472d8e12b6e098f95c5d9f472857d7724a04"
 CWD=$(shell pwd)
 
 OUTPUT_PATH=test/demo/lib
@@ -20,7 +21,7 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
-.PHONY: goenv generate dumpextensionapi build clean_gdnative clean test interactivetest
+.PHONY: goenv generate update_godot_headers_from_source update_godot_headers_from_github build clean_gdnative clean test interactivetest
 
 goenv:
 	go env
@@ -32,7 +33,7 @@ generate: clean
 		$(CLANG_FORMAT) -i pkg/gdnative/gdnative_wrapper.gen.c; \
 	fi
 
-update_godot_headers_from_source:
+update_godot_headers_from_source: ## update godot_headers to align with the latest godot srouce code on master
 	cd godot_headers; \
 	DISPLAY=:0 \
 	$(GODOT) --dump-extension-api extension_api.json; \
@@ -42,9 +43,9 @@ update_godot_headers_from_source:
 	fi \
 	cp ${GODOT_SRC}/core/extension/gdnative_interface.h godot_headers/godot/
 
-update_godot_headers_from_github:
-	wget https://raw.githubusercontent.com/godotengine/godot-headers/master/godot/gdnative_interface.h -o godot_headers/godot/gdnative_interface.h
-	wget https://raw.githubusercontent.com/godotengine/godot-headers/master/extension_api.json -o godot_headers/extension_api.json
+update_godot_headers_from_github: ## update godot_headers to align with the latest godot 4 beta1 stable binary
+	wget https://raw.githubusercontent.com/godotengine/godot-headers/${GODOT_HEADER_COMMIT_HASH}/godot/gdnative_interface.h -O godot_headers/godot/gdnative_interface.h
+	wget https://raw.githubusercontent.com/godotengine/godot-headers/${GODOT_HEADER_COMMIT_HASH}/extension_api.json -O godot_headers/extension_api.json
 
 build: goenv
 	CGO_ENABLED=1 \
@@ -78,7 +79,6 @@ test:
 	LOG_LEVEL=trace \
 	GOTRACEBACK=crash \
 	DISPLAY=:0 \
-	LD_DEBUG=libs \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
 	$(GODOT) --headless --verbose --debug --path test/demo/ 2>&1
 

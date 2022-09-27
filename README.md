@@ -19,35 +19,23 @@ Requirements:
 TODO
 
 
-### Support
-
-**The GDExtension interface hasn't been stable.** In order for godot-go to work correctly, you must make sure the following are setup correctly:
-
-1. Ensure your godot binary and godot-go are running off the same godot_headers.
-2. Run `make generate` to regenerate the `*.gen.go`, `*.gen.h`, and `*.gen.c` files.
-3. Run `make build` to rebuild the godot-go.
-4. Run `make test` to validate that the test suite runs successfully.
-
-Development is built and tested off of Godot's latest master branch. The godot_headers is currently copied from [ca1ebf9fee8d58718d41b2c08d22d484764b7f54](https://github.com/godotengine/godot/tree/581db8b4e60c2a2fa4d0be076030b326784c69bb).
-
-
-## Building Godot
-
-```
-$ git checkout git@github.com:godotengine/godot.git
-$ cd godot
-$ git checkout ca1ebf9fee8d58718d41b2c08d22d484764b7f54
-$ scons platform=linuxbsd use_llvm=yes
-```
-
-
 ### Building Godot-Go
 
+**The GDExtension interface hasn't been stable.** In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. There's a helper task in the Makefile for this:
 
+    make update_godot_headers_from_github
+    make generate
 
-To quickly build from source, check out the code and run the following commands:
+If your godot binary is built from source, you can run this:
 
-    make generate && make build
+    GODOT_SRC=/usr/local/src/godot/ make update_godot_headers_from_source
+    make generate
+
+Development is built and tested off of Godot 4 beta1 [snapshot](https://github.com/godotengine/godot-headers/tree/62e5472d8e12b6e098f95c5d9f472857d7724a04).
+
+Once that's done, you can run the following to build:
+
+    make build
 
 
 ### Test

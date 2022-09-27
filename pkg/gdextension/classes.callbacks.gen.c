@@ -3021,23 +3021,6 @@ GDNativeBool cgo_gdnative_class_binding_reference_callback_Decal(void *p_token, 
 
 
 
-void *cgo_gdnative_class_binding_create_callback_DirAccess(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("DirAccess", p_token, p_instance);
-}
-
-void cgo_gdnative_class_binding_free_callback_DirAccess(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDNativeBindingFree("DirAccess", p_token, p_instance, p_binding);
-}
-
-GDNativeBool cgo_gdnative_class_binding_reference_callback_DirAccess(void *p_token, void *p_instance, GDNativeBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingReference("DirAccess", p_token, p_instance, p_reference);
-}
-
-
-
 void *cgo_gdnative_class_binding_create_callback_DirectionalLight2D(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingCreate("DirectionalLight2D", p_token, p_instance);
@@ -3068,6 +3051,23 @@ void cgo_gdnative_class_binding_free_callback_DirectionalLight3D(void *p_token, 
 GDNativeBool cgo_gdnative_class_binding_reference_callback_DirectionalLight3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingReference("DirectionalLight3D", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_Directory(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("Directory", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_Directory(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("Directory", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_Directory(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("Directory", p_token, p_instance, p_reference);
 }
 
 
@@ -3259,19 +3259,19 @@ GDNativeBool cgo_gdnative_class_binding_reference_callback_FastNoiseLite(void *p
 
 
 
-void *cgo_gdnative_class_binding_create_callback_FileAccess(void *p_token, void *p_instance) {
+void *cgo_gdnative_class_binding_create_callback_File(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FileAccess", p_token, p_instance);
+	return GoCallback_GDNativeBindingCreate("File", p_token, p_instance);
 }
 
-void cgo_gdnative_class_binding_free_callback_FileAccess(void *p_token, void *p_instance, void *p_binding) {
+void cgo_gdnative_class_binding_free_callback_File(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("FileAccess", p_token, p_instance, p_binding);
+	GoCallback_GDNativeBindingFree("File", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FileAccess(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDNativeBool cgo_gdnative_class_binding_reference_callback_File(void *p_token, void *p_instance, GDNativeBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FileAccess", p_token, p_instance, p_reference);
+	return GoCallback_GDNativeBindingReference("File", p_token, p_instance, p_reference);
 }
 
 
@@ -3408,23 +3408,6 @@ void cgo_gdnative_class_binding_free_callback_FontVariation(void *p_token, void 
 GDNativeBool cgo_gdnative_class_binding_reference_callback_FontVariation(void *p_token, void *p_instance, GDNativeBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingReference("FontVariation", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdnative_class_binding_create_callback_FramebufferCacheRD(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FramebufferCacheRD", p_token, p_instance);
-}
-
-void cgo_gdnative_class_binding_free_callback_FramebufferCacheRD(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDNativeBindingFree("FramebufferCacheRD", p_token, p_instance, p_binding);
-}
-
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FramebufferCacheRD(void *p_token, void *p_instance, GDNativeBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FramebufferCacheRD", p_token, p_instance, p_reference);
 }
 
 
@@ -7798,23 +7781,6 @@ GDNativeBool cgo_gdnative_class_binding_reference_callback_PropertyTweener(void 
 
 
 
-void *cgo_gdnative_class_binding_create_callback_QuadMesh(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("QuadMesh", p_token, p_instance);
-}
-
-void cgo_gdnative_class_binding_free_callback_QuadMesh(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDNativeBindingFree("QuadMesh", p_token, p_instance, p_binding);
-}
-
-GDNativeBool cgo_gdnative_class_binding_reference_callback_QuadMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingReference("QuadMesh", p_token, p_instance, p_reference);
-}
-
-
-
 void *cgo_gdnative_class_binding_create_callback_QuadOccluder3D(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingCreate("QuadOccluder3D", p_token, p_instance);
@@ -10769,23 +10735,6 @@ void cgo_gdnative_class_binding_free_callback_UndoRedo(void *p_token, void *p_in
 GDNativeBool cgo_gdnative_class_binding_reference_callback_UndoRedo(void *p_token, void *p_instance, GDNativeBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingReference("UndoRedo", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdnative_class_binding_create_callback_UniformSetCacheRD(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("UniformSetCacheRD", p_token, p_instance);
-}
-
-void cgo_gdnative_class_binding_free_callback_UniformSetCacheRD(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDNativeBindingFree("UniformSetCacheRD", p_token, p_instance, p_binding);
-}
-
-GDNativeBool cgo_gdnative_class_binding_reference_callback_UniformSetCacheRD(void *p_token, void *p_instance, GDNativeBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingReference("UniformSetCacheRD", p_token, p_instance, p_reference);
 }
 
 

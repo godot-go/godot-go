@@ -1787,16 +1787,6 @@ extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, 
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
 extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
 
-void *cgo_gdnative_class_binding_create_callback_DirAccess(void *p_token, void *p_instance);
-void cgo_gdnative_class_binding_free_callback_DirAccess(void *p_token, void *p_instance, void *p_binding);
-GDNativeBool cgo_gdnative_class_binding_reference_callback_DirAccess(void *p_token, void *p_instance, GDNativeBool p_reference);
-
-// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_DirAccess;
-
-extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
 void *cgo_gdnative_class_binding_create_callback_DirectionalLight2D(void *p_token, void *p_instance);
 void cgo_gdnative_class_binding_free_callback_DirectionalLight2D(void *p_token, void *p_instance, void *p_binding);
 GDNativeBool cgo_gdnative_class_binding_reference_callback_DirectionalLight2D(void *p_token, void *p_instance, GDNativeBool p_reference);
@@ -1812,6 +1802,16 @@ void cgo_gdnative_class_binding_free_callback_DirectionalLight3D(void *p_token, 
 GDNativeBool cgo_gdnative_class_binding_reference_callback_DirectionalLight3D(void *p_token, void *p_instance, GDNativeBool p_reference);
 
 // extern GDNativeInstanceBindingCallbacks ___binding_callbacks_DirectionalLight3D;
+
+extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
+extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
+extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
+
+void *cgo_gdnative_class_binding_create_callback_Directory(void *p_token, void *p_instance);
+void cgo_gdnative_class_binding_free_callback_Directory(void *p_token, void *p_instance, void *p_binding);
+GDNativeBool cgo_gdnative_class_binding_reference_callback_Directory(void *p_token, void *p_instance, GDNativeBool p_reference);
+
+// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_Directory;
 
 extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
@@ -1927,11 +1927,11 @@ extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, 
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
 extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
 
-void *cgo_gdnative_class_binding_create_callback_FileAccess(void *p_token, void *p_instance);
-void cgo_gdnative_class_binding_free_callback_FileAccess(void *p_token, void *p_instance, void *p_binding);
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FileAccess(void *p_token, void *p_instance, GDNativeBool p_reference);
+void *cgo_gdnative_class_binding_create_callback_File(void *p_token, void *p_instance);
+void cgo_gdnative_class_binding_free_callback_File(void *p_token, void *p_instance, void *p_binding);
+GDNativeBool cgo_gdnative_class_binding_reference_callback_File(void *p_token, void *p_instance, GDNativeBool p_reference);
 
-// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_FileAccess;
+// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_File;
 
 extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
@@ -2012,16 +2012,6 @@ void cgo_gdnative_class_binding_free_callback_FontVariation(void *p_token, void 
 GDNativeBool cgo_gdnative_class_binding_reference_callback_FontVariation(void *p_token, void *p_instance, GDNativeBool p_reference);
 
 // extern GDNativeInstanceBindingCallbacks ___binding_callbacks_FontVariation;
-
-extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
-void *cgo_gdnative_class_binding_create_callback_FramebufferCacheRD(void *p_token, void *p_instance);
-void cgo_gdnative_class_binding_free_callback_FramebufferCacheRD(void *p_token, void *p_instance, void *p_binding);
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FramebufferCacheRD(void *p_token, void *p_instance, GDNativeBool p_reference);
-
-// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_FramebufferCacheRD;
 
 extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
@@ -4597,16 +4587,6 @@ extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, 
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
 extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
 
-void *cgo_gdnative_class_binding_create_callback_QuadMesh(void *p_token, void *p_instance);
-void cgo_gdnative_class_binding_free_callback_QuadMesh(void *p_token, void *p_instance, void *p_binding);
-GDNativeBool cgo_gdnative_class_binding_reference_callback_QuadMesh(void *p_token, void *p_instance, GDNativeBool p_reference);
-
-// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_QuadMesh;
-
-extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
 void *cgo_gdnative_class_binding_create_callback_QuadOccluder3D(void *p_token, void *p_instance);
 void cgo_gdnative_class_binding_free_callback_QuadOccluder3D(void *p_token, void *p_instance, void *p_binding);
 GDNativeBool cgo_gdnative_class_binding_reference_callback_QuadOccluder3D(void *p_token, void *p_instance, GDNativeBool p_reference);
@@ -6342,16 +6322,6 @@ void cgo_gdnative_class_binding_free_callback_UndoRedo(void *p_token, void *p_in
 GDNativeBool cgo_gdnative_class_binding_reference_callback_UndoRedo(void *p_token, void *p_instance, GDNativeBool p_reference);
 
 // extern GDNativeInstanceBindingCallbacks ___binding_callbacks_UndoRedo;
-
-extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
-void *cgo_gdnative_class_binding_create_callback_UniformSetCacheRD(void *p_token, void *p_instance);
-void cgo_gdnative_class_binding_free_callback_UniformSetCacheRD(void *p_token, void *p_instance, void *p_binding);
-GDNativeBool cgo_gdnative_class_binding_reference_callback_UniformSetCacheRD(void *p_token, void *p_instance, GDNativeBool p_reference);
-
-// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_UniformSetCacheRD;
 
 extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);

@@ -8710,88 +8710,6 @@ type Decal interface {
 
 	GetCullMask() int64
 }
-type DirAccess interface {
-	
-	RefCounted
-	
-
-	
-	
-
-	Open(path String,) DirAccess
-	
-
-	GetOpenError() Error
-	
-
-	ListDirBegin() Error
-	
-
-	GetNext() String
-	
-
-	CurrentIsDir() bool
-	
-
-	ListDirEnd() 
-	
-
-	GetFiles() PackedStringArray
-	
-
-	GetDirectories() PackedStringArray
-	
-
-	GetDriveCount() int64
-	
-
-	GetDrive(idx int64,) String
-	
-
-	GetCurrentDrive() int64
-	
-
-	ChangeDir(todir String,) Error
-	
-
-	GetCurrentDir(include_drive bool,) String
-	
-
-	MakeDir(path String,) Error
-	
-
-	MakeDirRecursive(path String,) Error
-	
-
-	FileExists(path String,) bool
-	
-
-	DirExists(path String,) bool
-	
-
-	GetSpaceLeft() int64
-	
-
-	Copy(from String,to String,chmod_flags int64,) Error
-	
-
-	Rename(from String,to String,) Error
-	
-
-	Remove(path String,) Error
-	
-
-	SetIncludeNavigational(enable bool,) 
-	
-
-	GetIncludeNavigational() bool
-	
-
-	SetIncludeHidden(enable bool,) 
-	
-
-	GetIncludeHidden() bool
-}
 type DirectionalLight2D interface {
 	
 	Light2D
@@ -8829,6 +8747,85 @@ type DirectionalLight3D interface {
 	
 
 	GetSkyMode() DirectionalLight3DSkyMode
+}
+type Directory interface {
+	
+	RefCounted
+	
+
+	
+	
+
+	Open(path String,) Error
+	
+
+	ListDirBegin() Error
+	
+
+	GetNext() String
+	
+
+	CurrentIsDir() bool
+	
+
+	ListDirEnd() 
+	
+
+	GetFiles() PackedStringArray
+	
+
+	GetDirectories() PackedStringArray
+	
+
+	GetDriveCount() int64
+	
+
+	GetDrive(idx int64,) String
+	
+
+	GetCurrentDrive() int64
+	
+
+	ChangeDir(todir String,) Error
+	
+
+	GetCurrentDir() String
+	
+
+	MakeDir(path String,) Error
+	
+
+	MakeDirRecursive(path String,) Error
+	
+
+	FileExists(path String,) bool
+	
+
+	DirExists(path String,) bool
+	
+
+	GetSpaceLeft() int64
+	
+
+	Copy(from String,to String,) Error
+	
+
+	Rename(from String,to String,) Error
+	
+
+	Remove(path String,) Error
+	
+
+	SetIncludeNavigational(enable bool,) 
+	
+
+	GetIncludeNavigational() bool
+	
+
+	SetIncludeHidden(enable bool,) 
+	
+
+	GetIncludeHidden() bool
 }
 type DisplayServer interface {
 	
@@ -10308,7 +10305,7 @@ type FastNoiseLite interface {
 
 	GetDomainWarpFractalGain() float32
 }
-type FileAccess interface {
+type File interface {
 	
 	RefCounted
 	
@@ -10316,22 +10313,22 @@ type FileAccess interface {
 	
 	
 
-	Open(path String,flags FileAccessModeFlags,) FileAccess
+	OpenEncrypted(path String,mode_flags FileModeFlags,key PackedByteArray,) Error
 	
 
-	OpenEncrypted(path String,mode_flags FileAccessModeFlags,key PackedByteArray,) FileAccess
+	OpenEncryptedWithPass(path String,mode_flags FileModeFlags,pass String,) Error
 	
 
-	OpenEncryptedWithPass(path String,mode_flags FileAccessModeFlags,pass String,) FileAccess
+	OpenCompressed(path String,mode_flags FileModeFlags,compression_mode FileCompressionMode,) Error
 	
 
-	OpenCompressed(path String,mode_flags FileAccessModeFlags,compression_mode FileAccessCompressionMode,) FileAccess
-	
-
-	GetOpenError() Error
+	Open(path String,flags FileModeFlags,) Error
 	
 
 	Flush() 
+	
+
+	Close() 
 	
 
 	GetPath() String
@@ -11045,13 +11042,6 @@ type FontVariation interface {
 	
 
 	SetSpacing(spacing TextServerSpacingType,value int64,) 
-}
-type FramebufferCacheRD interface {
-	
-	Object
-	
-
-	
 }
 type GDScript interface {
 	
@@ -14834,9 +14824,6 @@ type JSON interface {
 	
 
 	GetData() Variant
-	
-
-	SetData(data Variant,) 
 	
 
 	GetErrorLine() int64
@@ -19396,12 +19383,6 @@ type OS interface {
 	GetName() String
 	
 
-	GetDistributionName() String
-	
-
-	GetVersion() String
-	
-
 	GetCmdlineArgs() PackedStringArray
 	
 
@@ -20967,10 +20948,10 @@ type PhysicsBody2D interface {
 	
 	
 
-	MoveAndCollide(distance Vector2,test_only bool,safe_margin float32,recovery_as_collision bool,) KinematicCollision2D
+	MoveAndCollide(distance Vector2,test_only bool,safe_margin float32,) KinematicCollision2D
 	
 
-	TestMove(from Transform2D,distance Vector2,collision KinematicCollision2D,safe_margin float32,recovery_as_collision bool,) bool
+	TestMove(from Transform2D,distance Vector2,collision KinematicCollision2D,safe_margin float32,) bool
 	
 
 	GetCollisionExceptions() Array
@@ -20989,10 +20970,10 @@ type PhysicsBody3D interface {
 	
 	
 
-	MoveAndCollide(distance Vector3,test_only bool,safe_margin float32,recovery_as_collision bool,max_collisions int64,) KinematicCollision3D
+	MoveAndCollide(distance Vector3,test_only bool,safe_margin float32,max_collisions int64,) KinematicCollision3D
 	
 
-	TestMove(from Transform3D,distance Vector3,collision KinematicCollision3D,safe_margin float32,recovery_as_collision bool,max_collisions int64,) bool
+	TestMove(from Transform3D,distance Vector3,collision KinematicCollision3D,safe_margin float32,max_collisions int64,) bool
 	
 
 	SetAxisLock(axis PhysicsServer3DBodyAxis,lock bool,) 
@@ -25166,9 +25147,6 @@ type ProjectSettings interface {
 	AddPropertyInfo(hint Dictionary,) 
 	
 
-	SetRestartIfChanged(name String,restart bool,) 
-	
-
 	Clear(name String,) 
 	
 
@@ -25210,13 +25188,6 @@ type PropertyTweener interface {
 	
 
 	SetDelay(delay float32,) PropertyTweener
-}
-type QuadMesh interface {
-	
-	PlaneMesh
-	
-
-	
 }
 type QuadOccluder3D interface {
 	
@@ -38466,10 +38437,10 @@ type UndoRedo interface {
 	IsCommittingAction() bool
 	
 
-	AddDoMethod(callable Callable,) 
+	AddDoMethod(object Object,method StringName,varargs ...Variant,) 
 	
 
-	AddUndoMethod(callable Callable,) 
+	AddUndoMethod(object Object,method StringName,varargs ...Variant,) 
 	
 
 	AddDoProperty(object Object,property StringName,value Variant,) 
@@ -38518,13 +38489,6 @@ type UndoRedo interface {
 	
 
 	Undo() bool
-}
-type UniformSetCacheRD interface {
-	
-	Object
-	
-
-	
 }
 type VBoxContainer interface {
 	

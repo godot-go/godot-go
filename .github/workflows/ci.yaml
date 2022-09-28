@@ -56,8 +56,11 @@ jobs:
           lscpu
           uname -a
       - name: Test
-        timeout-minutes: 2
-        run: make test || make test
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 2
+          max_attempts: 3
+          run: make test || make test
         env:
           DISPLAY: ":0"
           GODOT: "/usr/local/bin/godot4"

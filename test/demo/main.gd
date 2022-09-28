@@ -11,10 +11,10 @@ func _ready():
 
 	# prints("")
 
-	# # Call static methods.
-	# # prints("Static method calls")
-	# # prints("  static (109)", Example.test_static(9, 100));
-	# # Example.test_static2();
+	# Call static methods.
+	prints("Static method calls")
+	prints("  static (109)", Example.test_static(9, 100));
+	Example.test_static2();
 
 	# # # Call methods.
 	# # prints("Instance method calls")

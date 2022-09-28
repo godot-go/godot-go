@@ -5,9 +5,7 @@
 [node name="Node" type="Node"]
 script = ExtResource( "1_c326s" )
 
-[node name="Example" type="Example" parent="."]
-
-[node name="Label" type="Label" parent="Example"]
+[node name="Label" type="Label" parent="."]
 offset_left = 194.0
 offset_top = -2.0
 offset_right = 234.0
@@ -23,5 +21,3 @@ text = "Click me!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[connection signal="custom_signal" from="Example" to="." method="_on_Example_custom_signal"]

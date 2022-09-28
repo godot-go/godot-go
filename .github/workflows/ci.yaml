@@ -57,7 +57,7 @@ jobs:
           uname -a
       - name: Test
         timeout-minutes: 2
-        run: make test
+        run: make test || make test
         env:
           DISPLAY: ":0"
           GODOT: "/usr/local/bin/godot4"

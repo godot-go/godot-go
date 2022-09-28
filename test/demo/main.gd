@@ -1,6 +1,8 @@
 extends Node
 
 func _ready():
+	load("res://main.tscn")
+
 	# Bind signals
 	prints("Signal bind")
 	$Button.button_up.connect($Example.emit_custom_signal.bind("Button", 42))

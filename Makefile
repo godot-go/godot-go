@@ -82,7 +82,7 @@ test:
 	DISPLAY=:0 \
 	LD_DEBUG=libs \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
-	$(GODOT) --headless --verbose --path test/demo/
+	$(GODOT) --headless --verbose --render-thread safe --audio-driver Dummy --display-driver headless --path test/demo/
 
 interactive_test:
 	LOG_LEVEL=debug \

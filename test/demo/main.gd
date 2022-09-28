@@ -1,11 +1,11 @@
 extends Node
 
-var exa = preload("example.gdextension")
+# var exa = preload("example.gdextension")
 
 func _ready():
-	prints("is_library_open =", exa.is_library_open(), "min level =", exa.get_minimum_library_initialization_level())
+	# prints("is_library_open =", exa.is_library_open(), "min level =", exa.get_minimum_library_initialization_level())
 
-	exa.setup_local_to_scene()
+	# exa.setup_local_to_scene()
 
 	# # Bind signals
 	# prints("Signal bind")
@@ -14,9 +14,9 @@ func _ready():
 	# prints("")
 
 	# Call static methods.
-	prints("Static method calls")
-	prints("  static (109)", Example.test_static(9, 100));
-	Example.test_static2();
+	# prints("Static method calls")
+	# prints("  static (109)", Example.test_static(9, 100));
+	# Example.test_static2();
 
 	# # # Call methods.
 	# # prints("Instance method calls")

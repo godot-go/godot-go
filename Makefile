@@ -4,7 +4,8 @@ GOOS?=$(shell go env GOOS)
 GOARCH?=$(shell go env GOARCH)
 CLANG_FORMAT?=$(shell which clang-format | which clang-format-10 | which clang-format-11 | which clang-format-12)
 GODOT?=$(shell which godot)
-GODOT_HEADER_COMMIT_HASH?="62e5472d8e12b6e098f95c5d9f472857d7724a04" # godot 4 beta1
+# godot 4 beta1
+GODOT_HEADER_COMMIT_HASH?=62e5472d8e12b6e098f95c5d9f472857d7724a04
 CWD=$(shell pwd)
 
 OUTPUT_PATH=test/demo/lib
@@ -79,9 +80,9 @@ test:
 	LOG_LEVEL=debug \
 	GOTRACEBACK=crash \
 	DISPLAY=:0 \
-	LD_DEBUG=libs \w
+	LD_DEBUG=libs \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
-	$(GODOT) --headless --verbose --path test/demo/
+	$(GODOT) --headless --verbose --debug --path test/demo/
 
 interactive_test:
 	LOG_LEVEL=debug \

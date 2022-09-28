@@ -50,7 +50,7 @@ func _ready():
 	prints("Others")
 	prints("  CastTo", $Example.test_cast_to())
 
-	prints("app is ready")
+	prints("app is ready CI=", OS.get_environment("CI"))
 
 	if OS.get_environment("CI") == "1":
 		prints("CI env var detected: automating interactions")

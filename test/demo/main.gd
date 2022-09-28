@@ -1,7 +1,9 @@
 extends Node
 
+var exa = preload("example.gdextension")
+
 func _ready():
-	load("res://main.tscn")
+	prints("is_library_open =", exa.is_library_open())
 
 	# Bind signals
 	prints("Signal bind")

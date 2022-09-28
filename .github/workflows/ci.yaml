@@ -48,11 +48,13 @@ jobs:
       - name: Build
         run: make build
       - name: List Artifacts Directory
-        run: ls -alh test/demo/lib
-      - name: Output CPU
-        run: lscpu
-      - name: Output Kernel
-        run: uname -a
+        run: |
+          ls -alh test/demo/lib
+          ls -alh test/demo/
+      - name: Output System Stats
+        run: |
+          lscpu
+          uname -a
       - name: Test
         timeout-minutes: 2
         run: make test

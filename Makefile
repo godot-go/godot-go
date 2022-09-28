@@ -77,12 +77,12 @@ remote_debug_test:
 
 test:
 	CI=1 \
-	LOG_LEVEL=debug \
+	LOG_LEVEL=info \
 	GOTRACEBACK=crash \
 	DISPLAY=:0 \
 	LD_DEBUG=libs \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
-	$(GODOT) --headless --verbose --debug --path test/demo/
+	$(GODOT) --headless --verbose --path test/demo/
 
 interactive_test:
 	LOG_LEVEL=debug \

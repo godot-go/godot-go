@@ -2,9 +2,8 @@
 #define CGO_GODOT_GO_STACKTRACE_H
 
 #ifdef _WIN64
-#include <processthreadsapi.h>
+#include <windows.h>
 #include <dbghelp.h>
-#include <verrsrc.h>
 #else
 #include <execinfo.h>
 #endif

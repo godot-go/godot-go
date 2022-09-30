@@ -35,32 +35,26 @@ jobs:
         with:
           go-version: ${{ matrix.go_version }}
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Install Godot 4.0 beta1
+      - name: Install Godot 4.0 beta 2
         run: |
           wget https://downloads.tuxfamily.org/godotengine/4.0/beta2/Godot_v4.0-beta2_linux.x86_64.zip
           sudo unzip Godot_v4.0-beta2_linux.x86_64.zip -d /usr/local/bin
           sudo ln -s Godot_v4.0-beta2_linux.x86_64 /usr/local/bin/godot4
-      # - name: Update Godot Headers
-      #   run: make update_godot_headers_from_github
       - name: Build
         run: make build
       - name: List Artifacts Directory
         run: |
           ls -alh test/demo/lib
           ls -alh test/demo/
-      - name: Output System Stats
-        run: |
-          lscpu
-          uname -a
       - name: Test
         timeout-minutes: 2
-        run: make test 2>&1
+        run: make test
         env:
           DISPLAY: ":0"
-          GODOT: "/usr/local/bin/godot4"
+          CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          CI: 1
+          GODOT: "/usr/local/bin/godot4"

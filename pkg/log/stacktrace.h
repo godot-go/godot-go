@@ -4,6 +4,7 @@
 #ifdef _WIN64
 #include <processthreadsapi.h>
 #include <dbghelp.h>
+#include <verrsrc.h>
 #else
 #include <execinfo.h>
 #endif

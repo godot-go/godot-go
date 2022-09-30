@@ -30,16 +30,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
       - name: Install Go
         uses: actions/setup-go@v3
         with:
           go-version: ${{ matrix.go_version }}
           check-latest: true
           cache: true
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          submodules: true
       - name: Install Godot 4.0 beta 2
         run: |
           wget https://downloads.tuxfamily.org/godotengine/4.0/beta2/Godot_v4.0-beta2_linux.x86_64.zip

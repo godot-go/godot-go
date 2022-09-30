@@ -16,8 +16,6 @@ package gdextension
 // #include <stdlib.h>
 import "C"
 import (
-	"unsafe"
-
 	. "github.com/godot-go/godot-go/pkg/gdnative"
 )
 
@@ -92,11 +90,6 @@ Collider Object
 Shape int64
 
 		}
-type PhysicsServer2DExtensionStateCallback struct {
-		Instance unsafe.Pointer
-/* (*callback)(void *p_instance, PhysicsDirectBodyState2D *p_state) */
-
-		}
 type PhysicsServer3DExtensionMotionCollision struct {
 		}
 type PhysicsServer3DExtensionMotionResult struct {
@@ -106,8 +99,6 @@ type PhysicsServer3DExtensionRayResult struct {
 type PhysicsServer3DExtensionShapeRestInfo struct {
 		}
 type PhysicsServer3DExtensionShapeResult struct {
-		}
-type PhysicsServer3DExtensionStateCallback struct {
 		}
 type ScriptLanguageExtensionProfilingInfo struct {
 		Signature StringName

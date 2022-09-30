@@ -753,7 +753,7 @@ type AnimationLibrary interface {
 	GetAnimation(name StringName,) Animation
 	
 
-	GetAnimationList() Array
+	GetAnimationList() []StringName
 }
 type AnimationNode interface {
 	
@@ -1361,7 +1361,7 @@ type AnimationPlayer interface {
 	GetAnimationLibrary(name StringName,) AnimationLibrary
 	
 
-	GetAnimationLibraryList() Array
+	GetAnimationLibraryList() []StringName
 	
 
 	HasAnimation(name StringName,) bool
@@ -1647,10 +1647,10 @@ type Area2D interface {
 	IsMonitorable() bool
 	
 
-	GetOverlappingBodies() Array
+	GetOverlappingBodies() []Node2D
 	
 
-	GetOverlappingAreas() Array
+	GetOverlappingAreas() []Area2D
 	
 
 	HasOverlappingBodies() bool
@@ -1780,10 +1780,10 @@ type Area3D interface {
 	IsMonitoring() bool
 	
 
-	GetOverlappingBodies() Array
+	GetOverlappingBodies() []Node3D
 	
 
-	GetOverlappingAreas() Array
+	GetOverlappingAreas() []Area3D
 	
 
 	HasOverlappingBodies() bool
@@ -1862,7 +1862,7 @@ type ArrayMesh interface {
 	GetBlendShapeMode() MeshBlendShapeMode
 	
 
-	AddSurfaceFromArrays(primitive MeshPrimitiveType,arrays Array,blend_shapes Array,lods Dictionary,compress_flags int64,) 
+	AddSurfaceFromArrays(primitive MeshPrimitiveType,arrays Array,blend_shapes []Array,lods Dictionary,compress_flags int64,) 
 	
 
 	ClearSurfaces() 
@@ -4058,7 +4058,7 @@ type BitMap interface {
 	ConvertToImage() Image
 	
 
-	OpaqueToPolygons(rect Rect2i,epsilon float32,) Array
+	OpaqueToPolygons(rect Rect2i,epsilon float32,) []PackedVector2Array
 }
 type Bone2D interface {
 	
@@ -4331,7 +4331,7 @@ type ButtonGroup interface {
 	GetPressedButton() BaseButton
 	
 
-	GetButtons() Array
+	GetButtons() []BaseButton
 }
 type CPUParticles2D interface {
 	
@@ -5172,10 +5172,10 @@ type Camera2D interface {
 	GetAnchorMode() Camera2DAnchorMode
 	
 
-	SetRotating(rotating bool,) 
+	SetIgnoreRotation(ignore bool,) 
 	
 
-	IsRotating() bool
+	IsIgnoringRotation() bool
 	
 
 	SetProcessCallback(mode Camera2DCamera2DProcessCallback,) 
@@ -5416,7 +5416,7 @@ type Camera3D interface {
 	GetDopplerTracking() Camera3DDopplerTracking
 	
 
-	GetFrustum() Array
+	GetFrustum() []Plane
 	
 
 	IsPositionInFrustum(world_point Vector3,) bool
@@ -5634,7 +5634,7 @@ type CameraServer interface {
 	GetFeedCount() int64
 	
 
-	Feeds() Array
+	Feeds() []CameraFeed
 	
 
 	AddFeed(feed CameraFeed,) 
@@ -6619,10 +6619,10 @@ type ClassDB interface {
 	ClassGetSignal(class StringName,signal StringName,) Dictionary
 	
 
-	ClassGetSignalList(class StringName,no_inheritance bool,) Array
+	ClassGetSignalList(class StringName,no_inheritance bool,) []Dictionary
 	
 
-	ClassGetPropertyList(class StringName,no_inheritance bool,) Array
+	ClassGetPropertyList(class StringName,no_inheritance bool,) []Dictionary
 	
 
 	ClassGetProperty(object Object,property StringName,) Variant
@@ -6634,7 +6634,7 @@ type ClassDB interface {
 	ClassHasMethod(class StringName,method StringName,no_inheritance bool,) bool
 	
 
-	ClassGetMethodList(class StringName,no_inheritance bool,) Array
+	ClassGetMethodList(class StringName,no_inheritance bool,) []Dictionary
 	
 
 	ClassGetIntegerConstantList(class StringName,no_inheritance bool,) PackedStringArray
@@ -6677,7 +6677,7 @@ type CodeEdit interface {
 	
 
 	
-	// VIRTUAL: Internal_FilterCodeCompletionCandidates(candidates Array,) Array
+	// VIRTUAL: Internal_FilterCodeCompletionCandidates(candidates []Dictionary,) []Dictionary
 	
 
 	SetIndentSize(size int64,) 
@@ -6698,10 +6698,10 @@ type CodeEdit interface {
 	IsAutoIndentEnabled() bool
 	
 
-	SetAutoIndentPrefixes(prefixes Array,) 
+	SetAutoIndentPrefixes(prefixes []String,) 
 	
 
-	GetAutoIndentPrefixes() Array
+	GetAutoIndentPrefixes() []String
 	
 
 	DoIndent() 
@@ -6845,7 +6845,7 @@ type CodeEdit interface {
 	IsLineFolded(line int64,) bool
 	
 
-	GetFoldedLines() Array
+	GetFoldedLines() []int64
 	
 
 	AddStringDelimiter(start_key String,end_key String,line_only bool,) 
@@ -6857,13 +6857,13 @@ type CodeEdit interface {
 	HasStringDelimiter(start_key String,) bool
 	
 
-	SetStringDelimiters(string_delimiters Array,) 
+	SetStringDelimiters(string_delimiters []String,) 
 	
 
 	ClearStringDelimiters() 
 	
 
-	GetStringDelimiters() Array
+	GetStringDelimiters() []String
 	
 
 	IsInString(line int64,column int64,) int64
@@ -6878,13 +6878,13 @@ type CodeEdit interface {
 	HasCommentDelimiter(start_key String,) bool
 	
 
-	SetCommentDelimiters(comment_delimiters Array,) 
+	SetCommentDelimiters(comment_delimiters []String,) 
 	
 
 	ClearCommentDelimiters() 
 	
 
-	GetCommentDelimiters() Array
+	GetCommentDelimiters() []String
 	
 
 	IsInComment(line int64,column int64,) int64
@@ -6920,7 +6920,7 @@ type CodeEdit interface {
 	UpdateCodeCompletionOptions(force bool,) 
 	
 
-	GetCodeCompletionOptions() Array
+	GetCodeCompletionOptions() []Dictionary
 	
 
 	GetCodeCompletionOption(index int64,) Dictionary
@@ -6944,16 +6944,16 @@ type CodeEdit interface {
 	IsCodeCompletionEnabled() bool
 	
 
-	SetCodeCompletionPrefixes(prefixes Array,) 
+	SetCodeCompletionPrefixes(prefixes []String,) 
 	
 
-	GetCodeComletionPrefixes() Array
+	GetCodeComletionPrefixes() []String
 	
 
-	SetLineLengthGuidelines(guideline_columns Array,) 
+	SetLineLengthGuidelines(guideline_columns []int64,) 
 	
 
-	GetLineLengthGuidelines() Array
+	GetLineLengthGuidelines() []int64
 	
 
 	SetSymbolLookupOnClickEnabled(enable bool,) 
@@ -7735,7 +7735,7 @@ type Control interface {
 	
 
 	
-	// VIRTUAL: Internal_StructuredTextParser(args Array,text String,) Array
+	// VIRTUAL: Internal_StructuredTextParser(args Array,text String,) []Vector2i
 	
 
 	
@@ -8710,6 +8710,112 @@ type Decal interface {
 
 	GetCullMask() int64
 }
+type DirAccess interface {
+	
+	RefCounted
+	
+
+	
+	
+
+	Open(path String,) DirAccess
+	
+
+	GetOpenError() Error
+	
+
+	ListDirBegin() Error
+	
+
+	GetNext() String
+	
+
+	CurrentIsDir() bool
+	
+
+	ListDirEnd() 
+	
+
+	GetFiles() PackedStringArray
+	
+
+	GetFilesAt(path String,) PackedStringArray
+	
+
+	GetDirectories() PackedStringArray
+	
+
+	GetDirectoriesAt(path String,) PackedStringArray
+	
+
+	GetDriveCount() int64
+	
+
+	GetDriveName(idx int64,) String
+	
+
+	GetCurrentDrive() int64
+	
+
+	ChangeDir(to_dir String,) Error
+	
+
+	GetCurrentDir(include_drive bool,) String
+	
+
+	MakeDir(path String,) Error
+	
+
+	MakeDirAbsolute(path String,) Error
+	
+
+	MakeDirRecursive(path String,) Error
+	
+
+	MakeDirRecursiveAbsolute(path String,) Error
+	
+
+	FileExists(path String,) bool
+	
+
+	DirExists(path String,) bool
+	
+
+	DirExistsAbsolute(path String,) bool
+	
+
+	GetSpaceLeft() int64
+	
+
+	Copy(from String,to String,chmod_flags int64,) Error
+	
+
+	CopyAbsolute(from String,to String,chmod_flags int64,) Error
+	
+
+	Rename(from String,to String,) Error
+	
+
+	RenameAbsolute(from String,to String,) Error
+	
+
+	Remove(path String,) Error
+	
+
+	RemoveAbsolute(path String,) Error
+	
+
+	SetIncludeNavigational(enable bool,) 
+	
+
+	GetIncludeNavigational() bool
+	
+
+	SetIncludeHidden(enable bool,) 
+	
+
+	GetIncludeHidden() bool
+}
 type DirectionalLight2D interface {
 	
 	Light2D
@@ -8747,85 +8853,6 @@ type DirectionalLight3D interface {
 	
 
 	GetSkyMode() DirectionalLight3DSkyMode
-}
-type Directory interface {
-	
-	RefCounted
-	
-
-	
-	
-
-	Open(path String,) Error
-	
-
-	ListDirBegin() Error
-	
-
-	GetNext() String
-	
-
-	CurrentIsDir() bool
-	
-
-	ListDirEnd() 
-	
-
-	GetFiles() PackedStringArray
-	
-
-	GetDirectories() PackedStringArray
-	
-
-	GetDriveCount() int64
-	
-
-	GetDrive(idx int64,) String
-	
-
-	GetCurrentDrive() int64
-	
-
-	ChangeDir(todir String,) Error
-	
-
-	GetCurrentDir() String
-	
-
-	MakeDir(path String,) Error
-	
-
-	MakeDirRecursive(path String,) Error
-	
-
-	FileExists(path String,) bool
-	
-
-	DirExists(path String,) bool
-	
-
-	GetSpaceLeft() int64
-	
-
-	Copy(from String,to String,) Error
-	
-
-	Rename(from String,to String,) Error
-	
-
-	Remove(path String,) Error
-	
-
-	SetIncludeNavigational(enable bool,) 
-	
-
-	GetIncludeNavigational() bool
-	
-
-	SetIncludeHidden(enable bool,) 
-	
-
-	GetIncludeHidden() bool
 }
 type DisplayServer interface {
 	
@@ -8976,7 +9003,7 @@ type DisplayServer interface {
 	TtsIsPaused() bool
 	
 
-	TtsGetVoices() Array
+	TtsGetVoices() []Dictionary
 	
 
 	TtsGetVoicesForLanguage(language String,) PackedStringArray
@@ -9036,7 +9063,7 @@ type DisplayServer interface {
 	ClipboardGetPrimary() String
 	
 
-	GetDisplayCutouts() Array
+	GetDisplayCutouts() []Rect2
 	
 
 	GetDisplaySafeArea() Rect2i
@@ -9175,6 +9202,9 @@ type DisplayServer interface {
 	
 
 	WindowGetFlag(flag DisplayServerWindowFlags,window_id int64,) bool
+	
+
+	WindowSetWindowButtonsOffset(offset Vector2i,window_id int64,) 
 	
 
 	WindowGetSafeTitleMargins(window_id int64,) Vector2i
@@ -9346,7 +9376,7 @@ type ENetConnection interface {
 	GetLocalPort() int64
 	
 
-	GetPeers() Array
+	GetPeers() []ENetPacketPeer
 }
 type ENetMultiplayerPeer interface {
 	
@@ -9506,7 +9536,7 @@ type Engine interface {
 	GetAuthorInfo() Dictionary
 	
 
-	GetCopyrightInfo() Array
+	GetCopyrightInfo() []Dictionary
 	
 
 	GetDonorInfo() Dictionary
@@ -10305,7 +10335,7 @@ type FastNoiseLite interface {
 
 	GetDomainWarpFractalGain() float32
 }
-type File interface {
+type FileAccess interface {
 	
 	RefCounted
 	
@@ -10313,22 +10343,22 @@ type File interface {
 	
 	
 
-	OpenEncrypted(path String,mode_flags FileModeFlags,key PackedByteArray,) Error
+	Open(path String,flags FileAccessModeFlags,) FileAccess
 	
 
-	OpenEncryptedWithPass(path String,mode_flags FileModeFlags,pass String,) Error
+	OpenEncrypted(path String,mode_flags FileAccessModeFlags,key PackedByteArray,) FileAccess
 	
 
-	OpenCompressed(path String,mode_flags FileModeFlags,compression_mode FileCompressionMode,) Error
+	OpenEncryptedWithPass(path String,mode_flags FileAccessModeFlags,pass String,) FileAccess
 	
 
-	Open(path String,flags FileModeFlags,) Error
+	OpenCompressed(path String,mode_flags FileAccessModeFlags,compression_mode FileAccessCompressionMode,) FileAccess
+	
+
+	GetOpenError() Error
 	
 
 	Flush() 
-	
-
-	Close() 
 	
 
 	GetPath() String
@@ -10634,16 +10664,16 @@ type Font interface {
 	
 	
 
-	SetFallbacks(fallbacks Array,) 
+	SetFallbacks(fallbacks []Font,) 
 	
 
-	GetFallbacks() Array
+	GetFallbacks() []Font
 	
 
 	FindVariation(variation_coordinates Dictionary,face_index int64,strength float32,transform Transform2D,) RID
 	
 
-	GetRids() Array
+	GetRids() []RID
 	
 
 	GetHeight(font_size int64,) float32
@@ -10824,7 +10854,7 @@ type FontFile interface {
 	RemoveCache(cache_index int64,) 
 	
 
-	GetSizeCacheList(cache_index int64,) Array
+	GetSizeCacheList(cache_index int64,) []Vector2i
 	
 
 	ClearSizeCache(cache_index int64,) 
@@ -10947,7 +10977,7 @@ type FontFile interface {
 	GetGlyphTextureIdx(cache_index int64,size Vector2i,glyph int64,) int64
 	
 
-	GetKerningList(cache_index int64,size int64,) Array
+	GetKerningList(cache_index int64,size int64,) []Vector2i
 	
 
 	ClearKerningMap(cache_index int64,size int64,) 
@@ -11042,6 +11072,13 @@ type FontVariation interface {
 	
 
 	SetSpacing(spacing TextServerSpacingType,value int64,) 
+}
+type FramebufferCacheRD interface {
+	
+	Object
+	
+
+	
 }
 type GDScript interface {
 	
@@ -11282,10 +11319,10 @@ type GLTFDocument interface {
 	WriteToFilesystem(state GLTFState,path String,) Error
 	
 
-	SetExtensions(extensions Array,) 
+	SetExtensions(extensions []GLTFDocumentExtension,) 
 	
 
-	GetExtensions() Array
+	GetExtensions() []GLTFDocumentExtension
 }
 type GLTFDocumentExtension interface {
 	
@@ -11293,6 +11330,10 @@ type GLTFDocumentExtension interface {
 	
 
 	
+	
+
+	
+	// VIRTUAL: Internal_GetSupportedExtensions() PackedStringArray
 	
 
 	
@@ -11404,10 +11445,10 @@ type GLTFMesh interface {
 	SetBlendWeights(blend_weights PackedFloat32Array,) 
 	
 
-	GetInstanceMaterials() Array
+	GetInstanceMaterials() []Material
 	
 
-	SetInstanceMaterials(instance_materials Array,) 
+	SetInstanceMaterials(instance_materials []Material,) 
 }
 type GLTFNode interface {
 	
@@ -11517,10 +11558,10 @@ type GLTFSkeleton interface {
 	GetGodotSkeleton() Skeleton3D
 	
 
-	GetUniqueNames() Array
+	GetUniqueNames() []String
 	
 
-	SetUniqueNames(unique_names Array,) 
+	SetUniqueNames(unique_names []String,) 
 	
 
 	GetGodotBoneNode() Dictionary
@@ -11554,10 +11595,10 @@ type GLTFSkin interface {
 	SetJointsOriginal(joints_original PackedInt32Array,) 
 	
 
-	GetInverseBinds() Array
+	GetInverseBinds() []Transform3D
 	
 
-	SetInverseBinds(inverse_binds Array,) 
+	SetInverseBinds(inverse_binds []Transform3D,) 
 	
 
 	GetJoints() PackedInt32Array
@@ -11646,6 +11687,9 @@ type GLTFState interface {
 	
 	
 
+	AddUsedExtension(extension_name String,required bool,) 
+	
+
 	GetJson() Dictionary
 	
 
@@ -11676,34 +11720,34 @@ type GLTFState interface {
 	SetUseNamedSkinBinds(use_named_skin_binds bool,) 
 	
 
-	GetNodes() Array
+	GetNodes() []GLTFNode
 	
 
-	SetNodes(nodes Array,) 
+	SetNodes(nodes []GLTFNode,) 
 	
 
-	GetBuffers() Array
+	GetBuffers() []PackedByteArray
 	
 
-	SetBuffers(buffers Array,) 
+	SetBuffers(buffers []PackedByteArray,) 
 	
 
-	GetBufferViews() Array
+	GetBufferViews() []GLTFBufferView
 	
 
-	SetBufferViews(buffer_views Array,) 
+	SetBufferViews(buffer_views []GLTFBufferView,) 
 	
 
-	GetAccessors() Array
+	GetAccessors() []GLTFAccessor
 	
 
-	SetAccessors(accessors Array,) 
+	SetAccessors(accessors []GLTFAccessor,) 
 	
 
-	GetMeshes() Array
+	GetMeshes() []GLTFMesh
 	
 
-	SetMeshes(meshes Array,) 
+	SetMeshes(meshes []GLTFMesh,) 
 	
 
 	GetAnimationPlayersCount(idx int64,) int64
@@ -11712,10 +11756,10 @@ type GLTFState interface {
 	GetAnimationPlayer(idx int64,) AnimationPlayer
 	
 
-	GetMaterials() Array
+	GetMaterials() []BaseMaterial3D
 	
 
-	SetMaterials(materials Array,) 
+	SetMaterials(materials []BaseMaterial3D,) 
 	
 
 	GetSceneName() String
@@ -11736,52 +11780,52 @@ type GLTFState interface {
 	SetRootNodes(root_nodes PackedInt32Array,) 
 	
 
-	GetTextures() Array
+	GetTextures() []GLTFTexture
 	
 
-	SetTextures(textures Array,) 
+	SetTextures(textures []GLTFTexture,) 
 	
 
-	GetImages() Array
+	GetImages() []Texture2D
 	
 
-	SetImages(images Array,) 
+	SetImages(images []Texture2D,) 
 	
 
-	GetSkins() Array
+	GetSkins() []GLTFSkin
 	
 
-	SetSkins(skins Array,) 
+	SetSkins(skins []GLTFSkin,) 
 	
 
-	GetCameras() Array
+	GetCameras() []GLTFCamera
 	
 
-	SetCameras(cameras Array,) 
+	SetCameras(cameras []GLTFCamera,) 
 	
 
-	GetLights() Array
+	GetLights() []GLTFLight
 	
 
-	SetLights(lights Array,) 
+	SetLights(lights []GLTFLight,) 
 	
 
-	GetUniqueNames() Array
+	GetUniqueNames() []String
 	
 
-	SetUniqueNames(unique_names Array,) 
+	SetUniqueNames(unique_names []String,) 
 	
 
-	GetUniqueAnimationNames() Array
+	GetUniqueAnimationNames() []String
 	
 
-	SetUniqueAnimationNames(unique_animation_names Array,) 
+	SetUniqueAnimationNames(unique_animation_names []String,) 
 	
 
-	GetSkeletons() Array
+	GetSkeletons() []GLTFSkeleton
 	
 
-	SetSkeletons(skeletons Array,) 
+	SetSkeletons(skeletons []GLTFSkeleton,) 
 	
 
 	GetSkeletonToNode() Dictionary
@@ -11796,10 +11840,10 @@ type GLTFState interface {
 	SetCreateAnimations(create_animations bool,) 
 	
 
-	GetAnimations() Array
+	GetAnimations() []GLTFAnimation
 	
 
-	SetAnimations(animations Array,) 
+	SetAnimations(animations []GLTFAnimation,) 
 	
 
 	GetSceneNode(idx int64,) Node
@@ -12398,28 +12442,31 @@ type Geometry2D interface {
 	ConvexHull(points PackedVector2Array,) PackedVector2Array
 	
 
-	MergePolygons(polygon_a PackedVector2Array,polygon_b PackedVector2Array,) Array
+	DecomposePolygonInConvex(polygon PackedVector2Array,) []PackedVector2Array
 	
 
-	ClipPolygons(polygon_a PackedVector2Array,polygon_b PackedVector2Array,) Array
+	MergePolygons(polygon_a PackedVector2Array,polygon_b PackedVector2Array,) []PackedVector2Array
 	
 
-	IntersectPolygons(polygon_a PackedVector2Array,polygon_b PackedVector2Array,) Array
+	ClipPolygons(polygon_a PackedVector2Array,polygon_b PackedVector2Array,) []PackedVector2Array
 	
 
-	ExcludePolygons(polygon_a PackedVector2Array,polygon_b PackedVector2Array,) Array
+	IntersectPolygons(polygon_a PackedVector2Array,polygon_b PackedVector2Array,) []PackedVector2Array
 	
 
-	ClipPolylineWithPolygon(polyline PackedVector2Array,polygon PackedVector2Array,) Array
+	ExcludePolygons(polygon_a PackedVector2Array,polygon_b PackedVector2Array,) []PackedVector2Array
 	
 
-	IntersectPolylineWithPolygon(polyline PackedVector2Array,polygon PackedVector2Array,) Array
+	ClipPolylineWithPolygon(polyline PackedVector2Array,polygon PackedVector2Array,) []PackedVector2Array
 	
 
-	OffsetPolygon(polygon PackedVector2Array,delta float32,join_type Geometry2DPolyJoinType,) Array
+	IntersectPolylineWithPolygon(polyline PackedVector2Array,polygon PackedVector2Array,) []PackedVector2Array
 	
 
-	OffsetPolyline(polyline PackedVector2Array,delta float32,join_type Geometry2DPolyJoinType,end_type Geometry2DPolyEndType,) Array
+	OffsetPolygon(polygon PackedVector2Array,delta float32,join_type Geometry2DPolyJoinType,) []PackedVector2Array
+	
+
+	OffsetPolyline(polyline PackedVector2Array,delta float32,join_type Geometry2DPolyJoinType,end_type Geometry2DPolyEndType,) []PackedVector2Array
 	
 
 	MakeAtlas(sizes PackedVector2Array,) Dictionary
@@ -12432,13 +12479,13 @@ type Geometry3D interface {
 	
 	
 
-	BuildBoxPlanes(extents Vector3,) Array
+	BuildBoxPlanes(extents Vector3,) []Plane
 	
 
-	BuildCylinderPlanes(radius float32,height float32,sides int64,axis Vector3Axis,) Array
+	BuildCylinderPlanes(radius float32,height float32,sides int64,axis Vector3Axis,) []Plane
 	
 
-	BuildCapsulePlanes(radius float32,height float32,sides int64,lats int64,axis Vector3Axis,) Array
+	BuildCapsulePlanes(radius float32,height float32,sides int64,lats int64,axis Vector3Axis,) []Plane
 	
 
 	GetClosestPointsBetweenSegments(p1 Vector3,p2 Vector3,q1 Vector3,q2 Vector3,) PackedVector3Array
@@ -12740,7 +12787,7 @@ type GraphEdit interface {
 	SetConnectionActivity(from_node StringName,from_port int64,to_node StringName,to_port int64,amount float32,) 
 	
 
-	GetConnectionList() Array
+	GetConnectionList() []Dictionary
 	
 
 	ClearConnections() 
@@ -13190,10 +13237,10 @@ type GridMap interface {
 	Clear() 
 	
 
-	GetUsedCells() Array
+	GetUsedCells() []Vector3i
 	
 
-	GetUsedCellsByItem(item int64,) Array
+	GetUsedCellsByItem(item int64,) []Vector3i
 	
 
 	GetMeshes() Array
@@ -13525,7 +13572,7 @@ type IP interface {
 	GetLocalAddresses() PackedStringArray
 	
 
-	GetLocalInterfaces() Array
+	GetLocalInterfaces() []Dictionary
 	
 
 	ClearCache(hostname String,) 
@@ -13736,6 +13783,34 @@ type Image interface {
 
 	LoadBmpFromBuffer(buffer PackedByteArray,) Error
 }
+type ImageFormatLoader interface {
+	
+	RefCounted
+	
+
+	
+}
+type ImageFormatLoaderExtension interface {
+	
+	ImageFormatLoader
+	
+
+	
+	
+
+	
+	// VIRTUAL: Internal_GetRecognizedExtensions() PackedStringArray
+	
+
+	
+	// VIRTUAL: Internal_LoadImage(image Image,fileaccess FileAccess,flags ImageFormatLoaderLoaderFlags,scale float32,) Error
+	
+
+	AddFormatLoader() 
+	
+
+	RemoveFormatLoader() 
+}
 type ImageTexture interface {
 	
 	Texture2D
@@ -13766,10 +13841,10 @@ type ImageTexture3D interface {
 	
 	
 
-	Create(format ImageFormat,width int64,height int64,depth int64,use_mipmaps bool,data Array,) Error
+	Create(format ImageFormat,width int64,height int64,depth int64,use_mipmaps bool,data []Image,) Error
 	
 
-	Update(data Array,) 
+	Update(data []Image,) 
 }
 type ImageTextureLayered interface {
 	
@@ -13779,7 +13854,7 @@ type ImageTextureLayered interface {
 	
 	
 
-	CreateFromImages(images Array,) Error
+	CreateFromImages(images []Image,) Error
 	
 
 	UpdateLayer(image Image,layer int64,) 
@@ -13844,7 +13919,7 @@ type ImporterMesh interface {
 	GetBlendShapeMode() MeshBlendShapeMode
 	
 
-	AddSurface(primitive MeshPrimitiveType,arrays Array,blend_shapes Array,lods Dictionary,material Material,name String,flags int64,) 
+	AddSurface(primitive MeshPrimitiveType,arrays Array,blend_shapes []Array,lods Dictionary,material Material,name String,flags int64,) 
 	
 
 	GetSurfaceCount() int64
@@ -13984,7 +14059,7 @@ type Input interface {
 	GetJoyGuid(device int64,) String
 	
 
-	GetConnectedJoypads() Array
+	GetConnectedJoypads() []int64
 	
 
 	GetJoyVibrationStrength(device int64,) Vector2
@@ -14527,7 +14602,7 @@ type InputMap interface {
 	HasAction(action StringName,) bool
 	
 
-	GetActions() Array
+	GetActions() []StringName
 	
 
 	AddAction(action StringName,deadzone float32,) 
@@ -14554,7 +14629,7 @@ type InputMap interface {
 	ActionEraseEvents(action StringName,) 
 	
 
-	ActionGetEvents(action StringName,) Array
+	ActionGetEvents(action StringName,) []InputEvent
 	
 
 	EventIsAction(event InputEvent,action StringName,exact_match bool,) bool
@@ -14824,6 +14899,9 @@ type JSON interface {
 	
 
 	GetData() Variant
+	
+
+	SetData(data Variant,) 
 	
 
 	GetErrorLine() int64
@@ -16386,7 +16464,7 @@ type Mesh interface {
 	
 
 	
-	// VIRTUAL: Internal_SurfaceGetBlendShapeArrays(index int64,) Array
+	// VIRTUAL: Internal_SurfaceGetBlendShapeArrays(index int64,) []Array
 	
 
 	
@@ -16440,7 +16518,7 @@ type Mesh interface {
 	SurfaceGetArrays(surf_idx int64,) Array
 	
 
-	SurfaceGetBlendShapeArrays(surf_idx int64,) Array
+	SurfaceGetBlendShapeArrays(surf_idx int64,) []Array
 	
 
 	SurfaceSetMaterial(surf_idx int64,material Material,) 
@@ -17987,6 +18065,118 @@ type NavigationObstacle3D interface {
 
 	GetRadius() float32
 }
+type NavigationPathQueryParameters2D interface {
+	
+	RefCounted
+	
+
+	
+	
+
+	SetPathfindingAlgorithm(pathfinding_algorithm NavigationPathQueryParameters2DPathfindingAlgorithm,) 
+	
+
+	GetPathfindingAlgorithm() NavigationPathQueryParameters2DPathfindingAlgorithm
+	
+
+	SetPathPostprocessing(path_postprocessing NavigationPathQueryParameters2DPathPostProcessing,) 
+	
+
+	GetPathPostprocessing() NavigationPathQueryParameters2DPathPostProcessing
+	
+
+	SetMap(resourceMap RID,) 
+	
+
+	GetMap() RID
+	
+
+	SetStartPosition(start_position Vector2,) 
+	
+
+	GetStartPosition() Vector2
+	
+
+	SetTargetPosition(target_position Vector2,) 
+	
+
+	GetTargetPosition() Vector2
+	
+
+	SetNavigationLayers(navigation_layers int64,) 
+	
+
+	GetNavigationLayers() int64
+}
+type NavigationPathQueryParameters3D interface {
+	
+	RefCounted
+	
+
+	
+	
+
+	SetPathfindingAlgorithm(pathfinding_algorithm NavigationPathQueryParameters3DPathfindingAlgorithm,) 
+	
+
+	GetPathfindingAlgorithm() NavigationPathQueryParameters3DPathfindingAlgorithm
+	
+
+	SetPathPostprocessing(path_postprocessing NavigationPathQueryParameters3DPathPostProcessing,) 
+	
+
+	GetPathPostprocessing() NavigationPathQueryParameters3DPathPostProcessing
+	
+
+	SetMap(resourceMap RID,) 
+	
+
+	GetMap() RID
+	
+
+	SetStartPosition(start_position Vector3,) 
+	
+
+	GetStartPosition() Vector3
+	
+
+	SetTargetPosition(target_position Vector3,) 
+	
+
+	GetTargetPosition() Vector3
+	
+
+	SetNavigationLayers(navigation_layers int64,) 
+	
+
+	GetNavigationLayers() int64
+}
+type NavigationPathQueryResult2D interface {
+	
+	RefCounted
+	
+
+	
+	
+
+	SetPath(path PackedVector2Array,) 
+	
+
+	GetPath() PackedVector2Array
+}
+type NavigationPathQueryResult3D interface {
+	
+	RefCounted
+	
+
+	
+	
+
+	SetPath(path PackedVector3Array,) 
+	
+
+	GetPath() PackedVector3Array
+}
 type NavigationPolygon interface {
 	
 	Resource
@@ -18142,7 +18332,7 @@ type NavigationServer2D interface {
 	
 	
 
-	GetMaps() Array
+	GetMaps() []RID
 	
 
 	MapCreate() RID
@@ -18181,16 +18371,19 @@ type NavigationServer2D interface {
 	MapGetClosestPointOwner(resourceMap RID,to_point Vector2,) RID
 	
 
-	MapGetLinks(resourceMap RID,) Array
+	MapGetLinks(resourceMap RID,) []RID
 	
 
-	MapGetRegions(resourceMap RID,) Array
+	MapGetRegions(resourceMap RID,) []RID
 	
 
-	MapGetAgents(resourceMap RID,) Array
+	MapGetAgents(resourceMap RID,) []RID
 	
 
 	MapForceUpdate(resourceMap RID,) 
+	
+
+	QueryPath(parameters NavigationPathQueryParameters2D,result NavigationPathQueryResult2D,) 
 	
 
 	RegionCreate() RID
@@ -18332,7 +18525,7 @@ type NavigationServer3D interface {
 	
 	
 
-	GetMaps() Array
+	GetMaps() []RID
 	
 
 	MapCreate() RID
@@ -18383,16 +18576,19 @@ type NavigationServer3D interface {
 	MapGetClosestPointOwner(resourceMap RID,to_point Vector3,) RID
 	
 
-	MapGetLinks(resourceMap RID,) Array
+	MapGetLinks(resourceMap RID,) []RID
 	
 
-	MapGetRegions(resourceMap RID,) Array
+	MapGetRegions(resourceMap RID,) []RID
 	
 
-	MapGetAgents(resourceMap RID,) Array
+	MapGetAgents(resourceMap RID,) []RID
 	
 
 	MapForceUpdate(resourceMap RID,) 
+	
+
+	QueryPath(parameters NavigationPathQueryParameters3D,result NavigationPathQueryResult3D,) 
 	
 
 	RegionCreate() RID
@@ -18644,7 +18840,7 @@ type Node interface {
 	GetChildCount(include_internal bool,) int64
 	
 
-	GetChildren(include_internal bool,) Array
+	GetChildren(include_internal bool,) []Node
 	
 
 	GetChild(idx int64,include_internal bool,) Node
@@ -18665,7 +18861,7 @@ type Node interface {
 	FindChild(pattern String,recursive bool,owned bool,) Node
 	
 
-	FindChildren(pattern String,typeName String,recursive bool,owned bool,) Array
+	FindChildren(pattern String,typeName String,recursive bool,owned bool,) []Node
 	
 
 	FindParent(pattern String,) Node
@@ -18704,7 +18900,7 @@ type Node interface {
 	MoveChild(child_node Node,to_position int64,) 
 	
 
-	GetGroups() Array
+	GetGroups() []StringName
 	
 
 	SetOwner(owner Node,) 
@@ -19102,7 +19298,7 @@ type Node3D interface {
 	AddGizmo(gizmo Node3DGizmo,) 
 	
 
-	GetGizmos() Array
+	GetGizmos() []Node3DGizmo
 	
 
 	ClearGizmos() 
@@ -19383,6 +19579,12 @@ type OS interface {
 	GetName() String
 	
 
+	GetDistributionName() String
+	
+
+	GetVersion() String
+	
+
 	GetCmdlineArgs() PackedStringArray
 	
 
@@ -19510,10 +19712,10 @@ type Object interface {
 	GetIndexed(property NodePath,) Variant
 	
 
-	GetPropertyList() Array
+	GetPropertyList() []Dictionary
 	
 
-	GetMethodList() Array
+	GetMethodList() []Dictionary
 	
 
 	Notification(what int64,reversed bool,) 
@@ -19573,13 +19775,13 @@ type Object interface {
 	HasSignal(signal StringName,) bool
 	
 
-	GetSignalList() Array
+	GetSignalList() []Dictionary
 	
 
-	GetSignalConnectionList(signal StringName,) Array
+	GetSignalConnectionList(signal StringName,) []Dictionary
 	
 
-	GetIncomingConnections() Array
+	GetIncomingConnections() []Dictionary
 	
 
 	Connect(signal StringName,callable Callable,flags int64,) Error
@@ -19691,10 +19893,10 @@ type OggPacketSequence interface {
 	
 	
 
-	SetPacketData(packet_data Array,) 
+	SetPacketData(packet_data []Array,) 
 	
 
-	GetPacketData() Array
+	GetPacketData() []Array
 	
 
 	SetPacketGranulePositions(granule_positions PackedInt64Array,) 
@@ -19841,6 +20043,31 @@ type OpenXRActionSet interface {
 	
 
 	RemoveAction(action OpenXRAction,) 
+}
+type OpenXRHand interface {
+	
+	Node3D
+	
+
+	
+	
+
+	SetHand(hand OpenXRHandHands,) 
+	
+
+	GetHand() OpenXRHandHands
+	
+
+	SetHandSkeleton(hand_skeleton NodePath,) 
+	
+
+	GetHandSkeleton() NodePath
+	
+
+	SetMotionRange(motion_range OpenXRHandMotionRange,) 
+	
+
+	GetMotionRange() OpenXRHandMotionRange
 }
 type OpenXRIPBinding interface {
 	
@@ -20700,7 +20927,7 @@ type Performance interface {
 	GetMonitorModificationTime() int64
 	
 
-	GetCustomMonitorNames() Array
+	GetCustomMonitorNames() []StringName
 }
 type PhysicalBone2D interface {
 	
@@ -20948,13 +21175,13 @@ type PhysicsBody2D interface {
 	
 	
 
-	MoveAndCollide(distance Vector2,test_only bool,safe_margin float32,) KinematicCollision2D
+	MoveAndCollide(distance Vector2,test_only bool,safe_margin float32,recovery_as_collision bool,) KinematicCollision2D
 	
 
-	TestMove(from Transform2D,distance Vector2,collision KinematicCollision2D,safe_margin float32,) bool
+	TestMove(from Transform2D,distance Vector2,collision KinematicCollision2D,safe_margin float32,recovery_as_collision bool,) bool
 	
 
-	GetCollisionExceptions() Array
+	GetCollisionExceptions() []PhysicsBody2D
 	
 
 	AddCollisionExceptionWith(body Node,) 
@@ -20970,10 +21197,10 @@ type PhysicsBody3D interface {
 	
 	
 
-	MoveAndCollide(distance Vector3,test_only bool,safe_margin float32,max_collisions int64,) KinematicCollision3D
+	MoveAndCollide(distance Vector3,test_only bool,safe_margin float32,recovery_as_collision bool,max_collisions int64,) KinematicCollision3D
 	
 
-	TestMove(from Transform3D,distance Vector3,collision KinematicCollision3D,safe_margin float32,max_collisions int64,) bool
+	TestMove(from Transform3D,distance Vector3,collision KinematicCollision3D,safe_margin float32,recovery_as_collision bool,max_collisions int64,) bool
 	
 
 	SetAxisLock(axis PhysicsServer3DBodyAxis,lock bool,) 
@@ -20982,7 +21209,7 @@ type PhysicsBody3D interface {
 	GetAxisLock(axis PhysicsServer3DBodyAxis,) bool
 	
 
-	GetCollisionExceptions() Array
+	GetCollisionExceptions() []PhysicsBody3D
 	
 
 	AddCollisionExceptionWith(body Node,) 
@@ -21628,19 +21855,19 @@ type PhysicsDirectSpaceState2D interface {
 	
 	
 
-	IntersectPoint(parameters PhysicsPointQueryParameters2D,max_results int64,) Array
+	IntersectPoint(parameters PhysicsPointQueryParameters2D,max_results int64,) []Dictionary
 	
 
 	IntersectRay(parameters PhysicsRayQueryParameters2D,) Dictionary
 	
 
-	IntersectShape(parameters PhysicsShapeQueryParameters2D,max_results int64,) Array
+	IntersectShape(parameters PhysicsShapeQueryParameters2D,max_results int64,) []Dictionary
 	
 
 	CastMotion(parameters PhysicsShapeQueryParameters2D,) PackedFloat32Array
 	
 
-	CollideShape(parameters PhysicsShapeQueryParameters2D,max_results int64,) Array
+	CollideShape(parameters PhysicsShapeQueryParameters2D,max_results int64,) []PackedVector2Array
 	
 
 	GetRestInfo(parameters PhysicsShapeQueryParameters2D,) Dictionary
@@ -21684,19 +21911,19 @@ type PhysicsDirectSpaceState3D interface {
 	
 	
 
-	IntersectPoint(parameters PhysicsPointQueryParameters3D,max_results int64,) Array
+	IntersectPoint(parameters PhysicsPointQueryParameters3D,max_results int64,) []Dictionary
 	
 
 	IntersectRay(parameters PhysicsRayQueryParameters3D,) Dictionary
 	
 
-	IntersectShape(parameters PhysicsShapeQueryParameters3D,max_results int64,) Array
+	IntersectShape(parameters PhysicsShapeQueryParameters3D,max_results int64,) []Dictionary
 	
 
 	CastMotion(parameters PhysicsShapeQueryParameters3D,) PackedFloat32Array
 	
 
-	CollideShape(parameters PhysicsShapeQueryParameters3D,max_results int64,) Array
+	CollideShape(parameters PhysicsShapeQueryParameters3D,max_results int64,) []PackedVector2Array
 	
 
 	GetRestInfo(parameters PhysicsShapeQueryParameters3D,) Dictionary
@@ -21793,10 +22020,10 @@ type PhysicsPointQueryParameters2D interface {
 	GetCollisionMask() int64
 	
 
-	SetExclude(exclude Array,) 
+	SetExclude(exclude []RID,) 
 	
 
-	GetExclude() Array
+	GetExclude() []RID
 	
 
 	SetCollideWithBodies(enable bool,) 
@@ -21855,7 +22082,7 @@ type PhysicsRayQueryParameters2D interface {
 	
 	
 
-	Create(from Vector2,to Vector2,collision_mask int64,exclude Array,) PhysicsRayQueryParameters2D
+	Create(from Vector2,to Vector2,collision_mask int64,exclude []RID,) PhysicsRayQueryParameters2D
 	
 
 	SetFrom(from Vector2,) 
@@ -21876,10 +22103,10 @@ type PhysicsRayQueryParameters2D interface {
 	GetCollisionMask() int64
 	
 
-	SetExclude(exclude Array,) 
+	SetExclude(exclude []RID,) 
 	
 
-	GetExclude() Array
+	GetExclude() []RID
 	
 
 	SetCollideWithBodies(enable bool,) 
@@ -22055,7 +22282,13 @@ type PhysicsServer2D interface {
 	AreaSetCollisionLayer(area RID,layer int64,) 
 	
 
+	AreaGetCollisionLayer(area RID,) int64
+	
+
 	AreaSetCollisionMask(area RID,mask int64,) 
+	
+
+	AreaGetCollisionMask(area RID,) int64
 	
 
 	AreaSetParam(area RID,param PhysicsServer2DAreaParameter,value Variant,) 
@@ -22479,7 +22712,15 @@ type PhysicsServer2DExtension interface {
 	
 
 	
+	// VIRTUAL: Internal_AreaGetCollisionLayer(area RID,) int64
+	
+
+	
 	// VIRTUAL: Internal_AreaSetCollisionMask(area RID,mask int64,) 
+	
+
+	
+	// VIRTUAL: Internal_AreaGetCollisionMask(area RID,) int64
 	
 
 	
@@ -22691,7 +22932,7 @@ type PhysicsServer2DExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_BodyGetCollisionExceptions(body RID,) Array
+	// VIRTUAL: Internal_BodyGetCollisionExceptions(body RID,) []RID
 	
 
 	
@@ -22719,7 +22960,7 @@ type PhysicsServer2DExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_BodySetStateSyncCallback(body RID,callback *PhysicsServer2DExtensionStateCallback,) 
+	// VIRTUAL: Internal_BodySetStateSyncCallback(body RID,callable Callable,) 
 	
 
 	
@@ -22954,7 +23195,13 @@ type PhysicsServer3D interface {
 	AreaSetCollisionLayer(area RID,layer int64,) 
 	
 
+	AreaGetCollisionLayer(area RID,) int64
+	
+
 	AreaSetCollisionMask(area RID,mask int64,) 
+	
+
+	AreaGetCollisionMask(area RID,) int64
 	
 
 	AreaSetParam(area RID,param PhysicsServer3DAreaParameter,value Variant,) 
@@ -23436,7 +23683,15 @@ type PhysicsServer3DExtension interface {
 	
 
 	
+	// VIRTUAL: Internal_AreaGetCollisionLayer(area RID,) int64
+	
+
+	
 	// VIRTUAL: Internal_AreaSetCollisionMask(area RID,mask int64,) 
+	
+
+	
+	// VIRTUAL: Internal_AreaGetCollisionMask(area RID,) int64
 	
 
 	
@@ -23652,7 +23907,7 @@ type PhysicsServer3DExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_BodyGetCollisionExceptions(body RID,) Array
+	// VIRTUAL: Internal_BodyGetCollisionExceptions(body RID,) []RID
 	
 
 	
@@ -23680,7 +23935,7 @@ type PhysicsServer3DExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_BodySetStateSyncCallback(body RID,callback *PhysicsServer3DExtensionStateCallback,) 
+	// VIRTUAL: Internal_BodySetStateSyncCallback(body RID,callable Callable,) 
 	
 
 	
@@ -23744,7 +23999,7 @@ type PhysicsServer3DExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_SoftBodyGetCollisionExceptions(body RID,) Array
+	// VIRTUAL: Internal_SoftBodyGetCollisionExceptions(body RID,) []RID
 	
 
 	
@@ -24066,10 +24321,10 @@ type PhysicsShapeQueryParameters2D interface {
 	GetCollisionMask() int64
 	
 
-	SetExclude(exclude Array,) 
+	SetExclude(exclude []RID,) 
 	
 
-	GetExclude() Array
+	GetExclude() []RID
 	
 
 	SetCollideWithBodies(enable bool,) 
@@ -24176,10 +24431,10 @@ type PhysicsTestMotionParameters2D interface {
 	SetCollideSeparationRayEnabled(enabled bool,) 
 	
 
-	GetExcludeBodies() Array
+	GetExcludeBodies() []RID
 	
 
-	SetExcludeBodies(exclude_list Array,) 
+	SetExcludeBodies(exclude_list []RID,) 
 	
 
 	GetExcludeObjects() Array
@@ -25147,6 +25402,9 @@ type ProjectSettings interface {
 	AddPropertyInfo(hint Dictionary,) 
 	
 
+	SetRestartIfChanged(name String,restart bool,) 
+	
+
 	Clear(name String,) 
 	
 
@@ -25188,6 +25446,13 @@ type PropertyTweener interface {
 	
 
 	SetDelay(delay float32,) PropertyTweener
+}
+type QuadMesh interface {
+	
+	PlaneMesh
+	
+
+	
 }
 type QuadOccluder3D interface {
 	
@@ -25290,10 +25555,10 @@ type RDPipelineColorBlendState interface {
 	GetBlendConstant() Color
 	
 
-	SetAttachments(attachments Array,) 
+	SetAttachments(attachments []RDPipelineColorBlendStateAttachment,) 
 	
 
-	GetAttachments() Array
+	GetAttachments() []RDPipelineColorBlendStateAttachment
 }
 type RDPipelineColorBlendStateAttachment interface {
 	
@@ -25542,10 +25807,10 @@ type RDPipelineMultisampleState interface {
 	GetEnableAlphaToOne() bool
 	
 
-	SetSampleMasks(masks Array,) 
+	SetSampleMasks(masks []int64,) 
 	
 
-	GetSampleMasks() Array
+	GetSampleMasks() []int64
 }
 type RDPipelineRasterizationState interface {
 	
@@ -25926,7 +26191,7 @@ type RDUniform interface {
 	ClearIds() 
 	
 
-	GetIds() Array
+	GetIds() []RID
 }
 type RDVertexAttribute interface {
 	
@@ -26301,6 +26566,9 @@ type RefCounted interface {
 	
 
 	Unreference() bool
+	
+
+	GetReferenceCount() int64
 }
 type ReferenceRect interface {
 	
@@ -26432,7 +26700,7 @@ type RegEx interface {
 	Search(subject String,offset int64,end int64,) RegExMatch
 	
 
-	SearchAll(subject String,offset int64,end int64,) Array
+	SearchAll(subject String,offset int64,end int64,) []RegExMatch
 	
 
 	Sub(subject String,replacement String,all bool,offset int64,end int64,) String
@@ -26565,7 +26833,7 @@ type RenderingDevice interface {
 	
 	
 
-	TextureCreate(format RDTextureFormat,view RDTextureView,data Array,) RID
+	TextureCreate(format RDTextureFormat,view RDTextureView,data []PackedByteArray,) RID
 	
 
 	TextureCreateShared(view RDTextureView,with_texture RID,) RID
@@ -26598,10 +26866,10 @@ type RenderingDevice interface {
 	TextureResolveMultisample(from_texture RID,to_texture RID,post_barrier int64,) Error
 	
 
-	FramebufferFormatCreate(attachments Array,view_count int64,) int64
+	FramebufferFormatCreate(attachments []RDAttachmentFormat,view_count int64,) int64
 	
 
-	FramebufferFormatCreateMultipass(attachments Array,passes Array,view_count int64,) int64
+	FramebufferFormatCreateMultipass(attachments []RDAttachmentFormat,passes []RDFramebufferPass,view_count int64,) int64
 	
 
 	FramebufferFormatCreateEmpty(samples RenderingDeviceTextureSamples,) int64
@@ -26610,10 +26878,10 @@ type RenderingDevice interface {
 	FramebufferFormatGetTextureSamples(format int64,render_pass int64,) RenderingDeviceTextureSamples
 	
 
-	FramebufferCreate(textures Array,validate_with_format int64,view_count int64,) RID
+	FramebufferCreate(textures []RID,validate_with_format int64,view_count int64,) RID
 	
 
-	FramebufferCreateMultipass(textures Array,passes Array,validate_with_format int64,view_count int64,) RID
+	FramebufferCreateMultipass(textures []RID,passes []RDFramebufferPass,validate_with_format int64,view_count int64,) RID
 	
 
 	FramebufferCreateEmpty(size Vector2i,samples RenderingDeviceTextureSamples,validate_with_format int64,) RID
@@ -26631,7 +26899,7 @@ type RenderingDevice interface {
 	VertexBufferCreate(size_bytes int64,data PackedByteArray,use_as_storage bool,) RID
 	
 
-	VertexFormatCreate(vertex_descriptions Array,) int64
+	VertexFormatCreate(vertex_descriptions []RDVertexAttribute,) int64
 	
 
 	IndexBufferCreate(size_indices int64,format RenderingDeviceIndexBufferFormat,data PackedByteArray,use_restart_indices bool,) RID
@@ -26664,7 +26932,7 @@ type RenderingDevice interface {
 	TextureBufferCreate(size_bytes int64,format RenderingDeviceDataFormat,data PackedByteArray,) RID
 	
 
-	UniformSetCreate(uniforms Array,shader RID,shader_set int64,) RID
+	UniformSetCreate(uniforms []RDUniform,shader RID,shader_set int64,) RID
 	
 
 	UniformSetIsValid(uniform_set RID,) bool
@@ -26679,13 +26947,13 @@ type RenderingDevice interface {
 	BufferGetData(buffer RID,) PackedByteArray
 	
 
-	RenderPipelineCreate(shader RID,framebuffer_format int64,vertex_format int64,primitive RenderingDeviceRenderPrimitive,rasterization_state RDPipelineRasterizationState,multisample_state RDPipelineMultisampleState,stencil_state RDPipelineDepthStencilState,color_blend_state RDPipelineColorBlendState,dynamic_state_flags int64,for_render_pass int64,specialization_constants Array,) RID
+	RenderPipelineCreate(shader RID,framebuffer_format int64,vertex_format int64,primitive RenderingDeviceRenderPrimitive,rasterization_state RDPipelineRasterizationState,multisample_state RDPipelineMultisampleState,stencil_state RDPipelineDepthStencilState,color_blend_state RDPipelineColorBlendState,dynamic_state_flags int64,for_render_pass int64,specialization_constants []RDPipelineSpecializationConstant,) RID
 	
 
 	RenderPipelineIsValid(render_pipeline RID,) bool
 	
 
-	ComputePipelineCreate(shader RID,specialization_constants Array,) RID
+	ComputePipelineCreate(shader RID,specialization_constants []RDPipelineSpecializationConstant,) RID
 	
 
 	ComputePipelineIsValid(compute_pieline RID,) bool
@@ -26706,7 +26974,7 @@ type RenderingDevice interface {
 	DrawListBegin(framebuffer RID,initial_color_action RenderingDeviceInitialAction,final_color_action RenderingDeviceFinalAction,initial_depth_action RenderingDeviceInitialAction,final_depth_action RenderingDeviceFinalAction,clear_color_values PackedColorArray,clear_depth float32,clear_stencil int64,region Rect2,storage_textures Array,) int64
 	
 
-	DrawListBeginSplit(framebuffer RID,splits int64,initial_color_action RenderingDeviceInitialAction,final_color_action RenderingDeviceFinalAction,initial_depth_action RenderingDeviceInitialAction,final_depth_action RenderingDeviceFinalAction,clear_color_values PackedColorArray,clear_depth float32,clear_stencil int64,region Rect2,storage_textures Array,) PackedInt64Array
+	DrawListBeginSplit(framebuffer RID,splits int64,initial_color_action RenderingDeviceInitialAction,final_color_action RenderingDeviceFinalAction,initial_depth_action RenderingDeviceInitialAction,final_depth_action RenderingDeviceFinalAction,clear_color_values PackedColorArray,clear_depth float32,clear_stencil int64,region Rect2,storage_textures []RID,) PackedInt64Array
 	
 
 	DrawListSetBlendConstants(draw_list int64,color Color,) 
@@ -26845,10 +27113,10 @@ type RenderingServer interface {
 	Texture2DCreate(image Image,) RID
 	
 
-	Texture2DLayeredCreate(layers Array,layered_type RenderingServerTextureLayeredType,) RID
+	Texture2DLayeredCreate(layers []Image,layered_type RenderingServerTextureLayeredType,) RID
 	
 
-	Texture3DCreate(format ImageFormat,width int64,height int64,depth int64,mipmaps bool,data Array,) RID
+	Texture3DCreate(format ImageFormat,width int64,height int64,depth int64,mipmaps bool,data []Image,) RID
 	
 
 	TextureProxyCreate(base RID,) RID
@@ -26857,7 +27125,7 @@ type RenderingServer interface {
 	Texture2DUpdate(texture RID,image Image,layer int64,) 
 	
 
-	Texture3DUpdate(texture RID,data Array,) 
+	Texture3DUpdate(texture RID,data []Image,) 
 	
 
 	TextureProxyUpdate(texture RID,proxy_to RID,) 
@@ -26878,7 +27146,7 @@ type RenderingServer interface {
 	Texture2DLayerGet(texture RID,layer int64,) Image
 	
 
-	Texture3DGet(texture RID,) Array
+	Texture3DGet(texture RID,) []Image
 	
 
 	TextureReplace(texture RID,by_texture RID,) 
@@ -26908,7 +27176,7 @@ type RenderingServer interface {
 	ShaderGetCode(shader RID,) String
 	
 
-	GetShaderParameterList(shader RID,) Array
+	GetShaderParameterList(shader RID,) []Dictionary
 	
 
 	ShaderGetParameterDefault(shader RID,name StringName,) Variant
@@ -26938,7 +27206,7 @@ type RenderingServer interface {
 	MaterialSetNextPass(material RID,next_material RID,) 
 	
 
-	MeshCreateFromSurfaces(surfaces Array,blend_shape_count int64,) RID
+	MeshCreateFromSurfaces(surfaces []Dictionary,blend_shape_count int64,) RID
 	
 
 	MeshCreate() RID
@@ -26983,7 +27251,7 @@ type RenderingServer interface {
 	MeshSurfaceGetArrays(mesh RID,surface int64,) Array
 	
 
-	MeshSurfaceGetBlendShapeArrays(mesh RID,surface int64,) Array
+	MeshSurfaceGetBlendShapeArrays(mesh RID,surface int64,) []Array
 	
 
 	MeshGetSurfaceCount(mesh RID,) int64
@@ -27376,7 +27644,7 @@ type RenderingServer interface {
 	ParticlesSetTrails(particles RID,enable bool,length_sec float32,) 
 	
 
-	ParticlesSetTrailBindPoses(particles RID,bind_poses Array,) 
+	ParticlesSetTrailBindPoses(particles RID,bind_poses []Transform3D,) 
 	
 
 	ParticlesIsInactive(particles RID,) bool
@@ -27853,7 +28121,7 @@ type RenderingServer interface {
 	InstanceGeometryGetShaderParameterDefaultValue(instance RID,parameter StringName,) Variant
 	
 
-	InstanceGeometryGetShaderParameterList(instance RID,) Array
+	InstanceGeometryGetShaderParameterList(instance RID,) []Dictionary
 	
 
 	InstancesCullAabb(aabb AABB,scenario RID,) PackedInt64Array
@@ -27862,10 +28130,10 @@ type RenderingServer interface {
 	InstancesCullRay(from Vector3,to Vector3,scenario RID,) PackedInt64Array
 	
 
-	InstancesCullConvex(convex Array,scenario RID,) PackedInt64Array
+	InstancesCullConvex(convex []Plane,scenario RID,) PackedInt64Array
 	
 
-	BakeRenderUv2(base RID,material_overrides Array,image_size Vector2i,) Array
+	BakeRenderUv2(base RID,material_overrides []RID,image_size Vector2i,) []Image
 	
 
 	CanvasCreate() RID
@@ -28998,7 +29266,7 @@ type RigidBody2D interface {
 	GetFreezeMode() RigidBody2DFreezeMode
 	
 
-	GetCollidingBodies() Array
+	GetCollidingBodies() []Node2D
 }
 type RigidBody3D interface {
 	
@@ -29186,7 +29454,7 @@ type RigidBody3D interface {
 	GetFreezeMode() RigidBody3DFreezeMode
 	
 
-	GetCollidingBodies() Array
+	GetCollidingBodies() []Node3D
 }
 type RootMotionView interface {
 	
@@ -29264,7 +29532,7 @@ type SceneReplicationConfig interface {
 	
 	
 
-	GetProperties() Array
+	GetProperties() []NodePath
 	
 
 	AddProperty(path NodePath,index int64,) 
@@ -29422,7 +29690,7 @@ type SceneTree interface {
 	CreateTween() Tween
 	
 
-	GetProcessedTweens() Array
+	GetProcessedTweens() []Tween
 	
 
 	GetNodeCount() int64
@@ -29455,7 +29723,7 @@ type SceneTree interface {
 	SetGroup(group StringName,property String,value Variant,) 
 	
 
-	GetNodesInGroup(group StringName,) Array
+	GetNodesInGroup(group StringName,) []Node
 	
 
 	GetFirstNodeInGroup(group StringName,) Node
@@ -29535,13 +29803,13 @@ type Script interface {
 	HasScriptSignal(signal_name StringName,) bool
 	
 
-	GetScriptPropertyList() Array
+	GetScriptPropertyList() []Dictionary
 	
 
-	GetScriptMethodList() Array
+	GetScriptMethodList() []Dictionary
 	
 
-	GetScriptSignalList() Array
+	GetScriptSignalList() []Dictionary
 	
 
 	GetScriptConstantMap() Dictionary
@@ -29623,7 +29891,7 @@ type ScriptExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_GetDocumentation() Array
+	// VIRTUAL: Internal_GetDocumentation() []Dictionary
 	
 
 	
@@ -29651,7 +29919,7 @@ type ScriptExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_GetScriptSignalList() Array
+	// VIRTUAL: Internal_GetScriptSignalList() []Dictionary
 	
 
 	
@@ -29667,11 +29935,11 @@ type ScriptExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_GetScriptMethodList() Array
+	// VIRTUAL: Internal_GetScriptMethodList() []Dictionary
 	
 
 	
-	// VIRTUAL: Internal_GetScriptPropertyList() Array
+	// VIRTUAL: Internal_GetScriptPropertyList() []Dictionary
 	
 
 	
@@ -29683,7 +29951,7 @@ type ScriptExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_GetMembers() Array
+	// VIRTUAL: Internal_GetMembers() []StringName
 	
 
 	
@@ -29753,7 +30021,7 @@ type ScriptLanguageExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_GetBuiltInTemplates(object StringName,) Array
+	// VIRTUAL: Internal_GetBuiltInTemplates(object StringName,) []Dictionary
 	
 
 	
@@ -29873,7 +30141,7 @@ type ScriptLanguageExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_DebugGetCurrentStackInfo() Array
+	// VIRTUAL: Internal_DebugGetCurrentStackInfo() []Dictionary
 	
 
 	
@@ -29889,7 +30157,7 @@ type ScriptLanguageExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_GetPublicFunctions() Array
+	// VIRTUAL: Internal_GetPublicFunctions() []Dictionary
 	
 
 	
@@ -29897,7 +30165,7 @@ type ScriptLanguageExtension interface {
 	
 
 	
-	// VIRTUAL: Internal_GetPublicAnnotations() Array
+	// VIRTUAL: Internal_GetPublicAnnotations() []Dictionary
 	
 
 	
@@ -30640,7 +30908,7 @@ type Skeleton3D interface {
 	PhysicalBonesStopSimulation() 
 	
 
-	PhysicalBonesStartSimulation(bones Array,) 
+	PhysicalBonesStartSimulation(bones []StringName,) 
 	
 
 	PhysicalBonesAddCollisionException(exception RID,) 
@@ -31082,10 +31350,10 @@ type SkeletonModification2DPhysicalBones interface {
 	FetchPhysicalBones() 
 	
 
-	StartSimulation(bones Array,) 
+	StartSimulation(bones []StringName,) 
 	
 
-	StopSimulation(bones Array,) 
+	StopSimulation(bones []StringName,) 
 }
 type SkeletonModification2DStackHolder interface {
 	
@@ -31979,7 +32247,7 @@ type SoftBody3D interface {
 	GetDisableMode() SoftBody3DDisableMode
 	
 
-	GetCollisionExceptions() Array
+	GetCollisionExceptions() []PhysicsBody3D
 	
 
 	AddCollisionExceptionWith(body Node,) 
@@ -32728,6 +32996,25 @@ type StreamPeerExtension interface {
 
 	
 	// VIRTUAL: Internal_GetAvailableBytes() int64
+}
+type StreamPeerGZIP interface {
+	
+	StreamPeer
+	
+
+	
+	
+
+	StartCompression(use_deflate bool,buffer_size int64,) Error
+	
+
+	StartDecompression(use_deflate bool,buffer_size int64,) Error
+	
+
+	Finish() Error
+	
+
+	Clear() 
 }
 type StreamPeerTCP interface {
 	
@@ -34723,7 +35010,7 @@ type TextServer interface {
 	FontGetOversampling(font_rid RID,) float32
 	
 
-	FontGetSizeCacheList(font_rid RID,) Array
+	FontGetSizeCacheList(font_rid RID,) []Vector2i
 	
 
 	FontClearSizeCache(font_rid RID,) 
@@ -34831,7 +35118,7 @@ type TextServer interface {
 	FontGetGlyphContours(font RID,size int64,index int64,) Dictionary
 	
 
-	FontGetKerningList(font_rid RID,size int64,) Array
+	FontGetKerningList(font_rid RID,size int64,) []Vector2i
 	
 
 	FontClearKerningMap(font_rid RID,size int64,) 
@@ -34969,7 +35256,7 @@ type TextServer interface {
 	ShapedTextGetSpacing(shaped RID,spacing TextServerSpacingType,) int64
 	
 
-	ShapedTextAddString(shaped RID,text String,fonts Array,size int64,opentype_features Dictionary,language String,meta Variant,) bool
+	ShapedTextAddString(shaped RID,text String,fonts []RID,size int64,opentype_features Dictionary,language String,meta Variant,) bool
 	
 
 	ShapedTextAddObject(shaped RID,key Variant,size Vector2,inline_align InlineAlignment,length int64,) bool
@@ -34984,7 +35271,7 @@ type TextServer interface {
 	ShapedGetSpanMeta(shaped RID,index int64,) Variant
 	
 
-	ShapedSetSpanUpdateFont(shaped RID,index int64,fonts Array,size int64,opentype_features Dictionary,) 
+	ShapedSetSpanUpdateFont(shaped RID,index int64,fonts []RID,size int64,opentype_features Dictionary,) 
 	
 
 	ShapedTextSubstr(shaped RID,start int64,length int64,) RID
@@ -35005,10 +35292,10 @@ type TextServer interface {
 	ShapedTextIsReady(shaped RID,) bool
 	
 
-	ShapedTextGetGlyphs(shaped RID,) Array
+	ShapedTextGetGlyphs(shaped RID,) []Dictionary
 	
 
-	ShapedTextSortLogical(shaped RID,) Array
+	ShapedTextSortLogical(shaped RID,) []Dictionary
 	
 
 	ShapedTextGetGlyphCount(shaped RID,) int64
@@ -35032,7 +35319,7 @@ type TextServer interface {
 	ShapedTextGetEllipsisPos(shaped RID,) int64
 	
 
-	ShapedTextGetEllipsisGlyphs(shaped RID,) Array
+	ShapedTextGetEllipsisGlyphs(shaped RID,) []Dictionary
 	
 
 	ShapedTextGetEllipsisGlyphCount(shaped RID,) int64
@@ -35125,7 +35412,7 @@ type TextServer interface {
 	StringToLower(strValue String,language String,) String
 	
 
-	ParseStructuredText(parser_type TextServerStructuredTextParser,args Array,text String,) Array
+	ParseStructuredText(parser_type TextServerStructuredTextParser,args Array,text String,) []Vector2i
 }
 type TextServerAdvanced interface {
 	
@@ -35150,751 +35437,751 @@ type TextServerExtension interface {
 	
 
 	
-	// VIRTUAL: HasFeature(feature TextServerFeature,) bool
+	// VIRTUAL: Internal_HasFeature(feature TextServerFeature,) bool
 	
 
 	
-	// VIRTUAL: GetName() String
+	// VIRTUAL: Internal_GetName() String
 	
 
 	
-	// VIRTUAL: GetFeatures() int64
+	// VIRTUAL: Internal_GetFeatures() int64
 	
 
 	
-	// VIRTUAL: FreeRid(rid RID,) 
+	// VIRTUAL: Internal_FreeRid(rid RID,) 
 	
 
 	
-	// VIRTUAL: Has(rid RID,) bool
+	// VIRTUAL: Internal_Has(rid RID,) bool
 	
 
 	
-	// VIRTUAL: LoadSupportData(filename String,) bool
+	// VIRTUAL: Internal_LoadSupportData(filename String,) bool
 	
 
 	
-	// VIRTUAL: GetSupportDataFilename() String
+	// VIRTUAL: Internal_GetSupportDataFilename() String
 	
 
 	
-	// VIRTUAL: GetSupportDataInfo() String
+	// VIRTUAL: Internal_GetSupportDataInfo() String
 	
 
 	
-	// VIRTUAL: SaveSupportData(filename String,) bool
+	// VIRTUAL: Internal_SaveSupportData(filename String,) bool
 	
 
 	
-	// VIRTUAL: IsLocaleRightToLeft(locale String,) bool
+	// VIRTUAL: Internal_IsLocaleRightToLeft(locale String,) bool
 	
 
 	
-	// VIRTUAL: NameToTag(name String,) int64
+	// VIRTUAL: Internal_NameToTag(name String,) int64
 	
 
 	
-	// VIRTUAL: TagToName(tag int64,) String
+	// VIRTUAL: Internal_TagToName(tag int64,) String
 	
 
 	
-	// VIRTUAL: CreateFont() RID
+	// VIRTUAL: Internal_CreateFont() RID
 	
 
 	
-	// VIRTUAL: FontSetData(font_rid RID,data PackedByteArray,) 
+	// VIRTUAL: Internal_FontSetData(font_rid RID,data PackedByteArray,) 
 	
 
 	
-	// VIRTUAL: FontSetDataPtr(font_rid RID,data_ptr *Uint8T,data_size int64,) 
+	// VIRTUAL: Internal_FontSetDataPtr(font_rid RID,data_ptr *Uint8T,data_size int64,) 
 	
 
 	
-	// VIRTUAL: FontSetFaceIndex(font_rid RID,face_index int64,) 
+	// VIRTUAL: Internal_FontSetFaceIndex(font_rid RID,face_index int64,) 
 	
 
 	
-	// VIRTUAL: FontGetFaceIndex(font_rid RID,) int64
+	// VIRTUAL: Internal_FontGetFaceIndex(font_rid RID,) int64
 	
 
 	
-	// VIRTUAL: FontGetFaceCount(font_rid RID,) int64
+	// VIRTUAL: Internal_FontGetFaceCount(font_rid RID,) int64
 	
 
 	
-	// VIRTUAL: FontSetStyle(font_rid RID,style TextServerFontStyle,) 
+	// VIRTUAL: Internal_FontSetStyle(font_rid RID,style TextServerFontStyle,) 
 	
 
 	
-	// VIRTUAL: FontGetStyle(font_rid RID,) TextServerFontStyle
+	// VIRTUAL: Internal_FontGetStyle(font_rid RID,) TextServerFontStyle
 	
 
 	
-	// VIRTUAL: FontSetName(font_rid RID,name String,) 
+	// VIRTUAL: Internal_FontSetName(font_rid RID,name String,) 
 	
 
 	
-	// VIRTUAL: FontGetName(font_rid RID,) String
+	// VIRTUAL: Internal_FontGetName(font_rid RID,) String
 	
 
 	
-	// VIRTUAL: FontSetStyleName(font_rid RID,name_style String,) 
+	// VIRTUAL: Internal_FontSetStyleName(font_rid RID,name_style String,) 
 	
 
 	
-	// VIRTUAL: FontGetStyleName(font_rid RID,) String
+	// VIRTUAL: Internal_FontGetStyleName(font_rid RID,) String
 	
 
 	
-	// VIRTUAL: FontSetAntialiasing(font_rid RID,antialiasing TextServerFontAntialiasing,) 
+	// VIRTUAL: Internal_FontSetAntialiasing(font_rid RID,antialiasing TextServerFontAntialiasing,) 
 	
 
 	
-	// VIRTUAL: FontGetAntialiasing(font_rid RID,) TextServerFontAntialiasing
+	// VIRTUAL: Internal_FontGetAntialiasing(font_rid RID,) TextServerFontAntialiasing
 	
 
 	
-	// VIRTUAL: FontSetGenerateMipmaps(font_rid RID,generate_mipmaps bool,) 
+	// VIRTUAL: Internal_FontSetGenerateMipmaps(font_rid RID,generate_mipmaps bool,) 
 	
 
 	
-	// VIRTUAL: FontGetGenerateMipmaps(font_rid RID,) bool
+	// VIRTUAL: Internal_FontGetGenerateMipmaps(font_rid RID,) bool
 	
 
 	
-	// VIRTUAL: FontSetMultichannelSignedDistanceField(font_rid RID,msdf bool,) 
+	// VIRTUAL: Internal_FontSetMultichannelSignedDistanceField(font_rid RID,msdf bool,) 
 	
 
 	
-	// VIRTUAL: FontIsMultichannelSignedDistanceField(font_rid RID,) bool
+	// VIRTUAL: Internal_FontIsMultichannelSignedDistanceField(font_rid RID,) bool
 	
 
 	
-	// VIRTUAL: FontSetMsdfPixelRange(font_rid RID,msdf_pixel_range int64,) 
+	// VIRTUAL: Internal_FontSetMsdfPixelRange(font_rid RID,msdf_pixel_range int64,) 
 	
 
 	
-	// VIRTUAL: FontGetMsdfPixelRange(font_rid RID,) int64
+	// VIRTUAL: Internal_FontGetMsdfPixelRange(font_rid RID,) int64
 	
 
 	
-	// VIRTUAL: FontSetMsdfSize(font_rid RID,msdf_size int64,) 
+	// VIRTUAL: Internal_FontSetMsdfSize(font_rid RID,msdf_size int64,) 
 	
 
 	
-	// VIRTUAL: FontGetMsdfSize(font_rid RID,) int64
+	// VIRTUAL: Internal_FontGetMsdfSize(font_rid RID,) int64
 	
 
 	
-	// VIRTUAL: FontSetFixedSize(font_rid RID,fixed_size int64,) 
+	// VIRTUAL: Internal_FontSetFixedSize(font_rid RID,fixed_size int64,) 
 	
 
 	
-	// VIRTUAL: FontGetFixedSize(font_rid RID,) int64
+	// VIRTUAL: Internal_FontGetFixedSize(font_rid RID,) int64
 	
 
 	
-	// VIRTUAL: FontSetForceAutohinter(font_rid RID,force_autohinter bool,) 
+	// VIRTUAL: Internal_FontSetForceAutohinter(font_rid RID,force_autohinter bool,) 
 	
 
 	
-	// VIRTUAL: FontIsForceAutohinter(font_rid RID,) bool
+	// VIRTUAL: Internal_FontIsForceAutohinter(font_rid RID,) bool
 	
 
 	
-	// VIRTUAL: FontSetHinting(font_rid RID,hinting TextServerHinting,) 
+	// VIRTUAL: Internal_FontSetHinting(font_rid RID,hinting TextServerHinting,) 
 	
 
 	
-	// VIRTUAL: FontGetHinting(font_rid RID,) TextServerHinting
+	// VIRTUAL: Internal_FontGetHinting(font_rid RID,) TextServerHinting
 	
 
 	
-	// VIRTUAL: FontSetSubpixelPositioning(font_rid RID,subpixel_positioning TextServerSubpixelPositioning,) 
+	// VIRTUAL: Internal_FontSetSubpixelPositioning(font_rid RID,subpixel_positioning TextServerSubpixelPositioning,) 
 	
 
 	
-	// VIRTUAL: FontGetSubpixelPositioning(font_rid RID,) TextServerSubpixelPositioning
+	// VIRTUAL: Internal_FontGetSubpixelPositioning(font_rid RID,) TextServerSubpixelPositioning
 	
 
 	
-	// VIRTUAL: FontSetEmbolden(font_rid RID,strength float32,) 
+	// VIRTUAL: Internal_FontSetEmbolden(font_rid RID,strength float32,) 
 	
 
 	
-	// VIRTUAL: FontGetEmbolden(font_rid RID,) float32
+	// VIRTUAL: Internal_FontGetEmbolden(font_rid RID,) float32
 	
 
 	
-	// VIRTUAL: FontSetTransform(font_rid RID,transform Transform2D,) 
+	// VIRTUAL: Internal_FontSetTransform(font_rid RID,transform Transform2D,) 
 	
 
 	
-	// VIRTUAL: FontGetTransform(font_rid RID,) Transform2D
+	// VIRTUAL: Internal_FontGetTransform(font_rid RID,) Transform2D
 	
 
 	
-	// VIRTUAL: FontSetVariationCoordinates(font_rid RID,variation_coordinates Dictionary,) 
+	// VIRTUAL: Internal_FontSetVariationCoordinates(font_rid RID,variation_coordinates Dictionary,) 
 	
 
 	
-	// VIRTUAL: FontGetVariationCoordinates(font_rid RID,) Dictionary
+	// VIRTUAL: Internal_FontGetVariationCoordinates(font_rid RID,) Dictionary
 	
 
 	
-	// VIRTUAL: FontSetOversampling(font_rid RID,oversampling float32,) 
+	// VIRTUAL: Internal_FontSetOversampling(font_rid RID,oversampling float32,) 
 	
 
 	
-	// VIRTUAL: FontGetOversampling(font_rid RID,) float32
+	// VIRTUAL: Internal_FontGetOversampling(font_rid RID,) float32
 	
 
 	
-	// VIRTUAL: FontGetSizeCacheList(font_rid RID,) Array
+	// VIRTUAL: Internal_FontGetSizeCacheList(font_rid RID,) []Vector2i
 	
 
 	
-	// VIRTUAL: FontClearSizeCache(font_rid RID,) 
+	// VIRTUAL: Internal_FontClearSizeCache(font_rid RID,) 
 	
 
 	
-	// VIRTUAL: FontRemoveSizeCache(font_rid RID,size Vector2i,) 
+	// VIRTUAL: Internal_FontRemoveSizeCache(font_rid RID,size Vector2i,) 
 	
 
 	
-	// VIRTUAL: FontSetAscent(font_rid RID,size int64,ascent float32,) 
+	// VIRTUAL: Internal_FontSetAscent(font_rid RID,size int64,ascent float32,) 
 	
 
 	
-	// VIRTUAL: FontGetAscent(font_rid RID,size int64,) float32
+	// VIRTUAL: Internal_FontGetAscent(font_rid RID,size int64,) float32
 	
 
 	
-	// VIRTUAL: FontSetDescent(font_rid RID,size int64,descent float32,) 
+	// VIRTUAL: Internal_FontSetDescent(font_rid RID,size int64,descent float32,) 
 	
 
 	
-	// VIRTUAL: FontGetDescent(font_rid RID,size int64,) float32
+	// VIRTUAL: Internal_FontGetDescent(font_rid RID,size int64,) float32
 	
 
 	
-	// VIRTUAL: FontSetUnderlinePosition(font_rid RID,size int64,underline_position float32,) 
+	// VIRTUAL: Internal_FontSetUnderlinePosition(font_rid RID,size int64,underline_position float32,) 
 	
 
 	
-	// VIRTUAL: FontGetUnderlinePosition(font_rid RID,size int64,) float32
+	// VIRTUAL: Internal_FontGetUnderlinePosition(font_rid RID,size int64,) float32
 	
 
 	
-	// VIRTUAL: FontSetUnderlineThickness(font_rid RID,size int64,underline_thickness float32,) 
+	// VIRTUAL: Internal_FontSetUnderlineThickness(font_rid RID,size int64,underline_thickness float32,) 
 	
 
 	
-	// VIRTUAL: FontGetUnderlineThickness(font_rid RID,size int64,) float32
+	// VIRTUAL: Internal_FontGetUnderlineThickness(font_rid RID,size int64,) float32
 	
 
 	
-	// VIRTUAL: FontSetScale(font_rid RID,size int64,scale float32,) 
+	// VIRTUAL: Internal_FontSetScale(font_rid RID,size int64,scale float32,) 
 	
 
 	
-	// VIRTUAL: FontGetScale(font_rid RID,size int64,) float32
+	// VIRTUAL: Internal_FontGetScale(font_rid RID,size int64,) float32
 	
 
 	
-	// VIRTUAL: FontGetTextureCount(font_rid RID,size Vector2i,) int64
+	// VIRTUAL: Internal_FontGetTextureCount(font_rid RID,size Vector2i,) int64
 	
 
 	
-	// VIRTUAL: FontClearTextures(font_rid RID,size Vector2i,) 
+	// VIRTUAL: Internal_FontClearTextures(font_rid RID,size Vector2i,) 
 	
 
 	
-	// VIRTUAL: FontRemoveTexture(font_rid RID,size Vector2i,texture_index int64,) 
+	// VIRTUAL: Internal_FontRemoveTexture(font_rid RID,size Vector2i,texture_index int64,) 
 	
 
 	
-	// VIRTUAL: FontSetTextureImage(font_rid RID,size Vector2i,texture_index int64,image Image,) 
+	// VIRTUAL: Internal_FontSetTextureImage(font_rid RID,size Vector2i,texture_index int64,image Image,) 
 	
 
 	
-	// VIRTUAL: FontGetTextureImage(font_rid RID,size Vector2i,texture_index int64,) Image
+	// VIRTUAL: Internal_FontGetTextureImage(font_rid RID,size Vector2i,texture_index int64,) Image
 	
 
 	
-	// VIRTUAL: FontSetTextureOffsets(font_rid RID,size Vector2i,texture_index int64,offset PackedInt32Array,) 
+	// VIRTUAL: Internal_FontSetTextureOffsets(font_rid RID,size Vector2i,texture_index int64,offset PackedInt32Array,) 
 	
 
 	
-	// VIRTUAL: FontGetTextureOffsets(font_rid RID,size Vector2i,texture_index int64,) PackedInt32Array
+	// VIRTUAL: Internal_FontGetTextureOffsets(font_rid RID,size Vector2i,texture_index int64,) PackedInt32Array
 	
 
 	
-	// VIRTUAL: FontGetGlyphList(font_rid RID,size Vector2i,) PackedInt32Array
+	// VIRTUAL: Internal_FontGetGlyphList(font_rid RID,size Vector2i,) PackedInt32Array
 	
 
 	
-	// VIRTUAL: FontClearGlyphs(font_rid RID,size Vector2i,) 
+	// VIRTUAL: Internal_FontClearGlyphs(font_rid RID,size Vector2i,) 
 	
 
 	
-	// VIRTUAL: FontRemoveGlyph(font_rid RID,size Vector2i,glyph int64,) 
+	// VIRTUAL: Internal_FontRemoveGlyph(font_rid RID,size Vector2i,glyph int64,) 
 	
 
 	
-	// VIRTUAL: FontGetGlyphAdvance(font_rid RID,size int64,glyph int64,) Vector2
+	// VIRTUAL: Internal_FontGetGlyphAdvance(font_rid RID,size int64,glyph int64,) Vector2
 	
 
 	
-	// VIRTUAL: FontSetGlyphAdvance(font_rid RID,size int64,glyph int64,advance Vector2,) 
+	// VIRTUAL: Internal_FontSetGlyphAdvance(font_rid RID,size int64,glyph int64,advance Vector2,) 
 	
 
 	
-	// VIRTUAL: FontGetGlyphOffset(font_rid RID,size Vector2i,glyph int64,) Vector2
+	// VIRTUAL: Internal_FontGetGlyphOffset(font_rid RID,size Vector2i,glyph int64,) Vector2
 	
 
 	
-	// VIRTUAL: FontSetGlyphOffset(font_rid RID,size Vector2i,glyph int64,offset Vector2,) 
+	// VIRTUAL: Internal_FontSetGlyphOffset(font_rid RID,size Vector2i,glyph int64,offset Vector2,) 
 	
 
 	
-	// VIRTUAL: FontGetGlyphSize(font_rid RID,size Vector2i,glyph int64,) Vector2
+	// VIRTUAL: Internal_FontGetGlyphSize(font_rid RID,size Vector2i,glyph int64,) Vector2
 	
 
 	
-	// VIRTUAL: FontSetGlyphSize(font_rid RID,size Vector2i,glyph int64,gl_size Vector2,) 
+	// VIRTUAL: Internal_FontSetGlyphSize(font_rid RID,size Vector2i,glyph int64,gl_size Vector2,) 
 	
 
 	
-	// VIRTUAL: FontGetGlyphUvRect(font_rid RID,size Vector2i,glyph int64,) Rect2
+	// VIRTUAL: Internal_FontGetGlyphUvRect(font_rid RID,size Vector2i,glyph int64,) Rect2
 	
 
 	
-	// VIRTUAL: FontSetGlyphUvRect(font_rid RID,size Vector2i,glyph int64,uv_rect Rect2,) 
+	// VIRTUAL: Internal_FontSetGlyphUvRect(font_rid RID,size Vector2i,glyph int64,uv_rect Rect2,) 
 	
 
 	
-	// VIRTUAL: FontGetGlyphTextureIdx(font_rid RID,size Vector2i,glyph int64,) int64
+	// VIRTUAL: Internal_FontGetGlyphTextureIdx(font_rid RID,size Vector2i,glyph int64,) int64
 	
 
 	
-	// VIRTUAL: FontSetGlyphTextureIdx(font_rid RID,size Vector2i,glyph int64,texture_idx int64,) 
+	// VIRTUAL: Internal_FontSetGlyphTextureIdx(font_rid RID,size Vector2i,glyph int64,texture_idx int64,) 
 	
 
 	
-	// VIRTUAL: FontGetGlyphTextureRid(font_rid RID,size Vector2i,glyph int64,) RID
+	// VIRTUAL: Internal_FontGetGlyphTextureRid(font_rid RID,size Vector2i,glyph int64,) RID
 	
 
 	
-	// VIRTUAL: FontGetGlyphTextureSize(font_rid RID,size Vector2i,glyph int64,) Vector2
+	// VIRTUAL: Internal_FontGetGlyphTextureSize(font_rid RID,size Vector2i,glyph int64,) Vector2
 	
 
 	
-	// VIRTUAL: FontGetGlyphContours(font_rid RID,size int64,index int64,) Dictionary
+	// VIRTUAL: Internal_FontGetGlyphContours(font_rid RID,size int64,index int64,) Dictionary
 	
 
 	
-	// VIRTUAL: FontGetKerningList(font_rid RID,size int64,) Array
+	// VIRTUAL: Internal_FontGetKerningList(font_rid RID,size int64,) []Vector2i
 	
 
 	
-	// VIRTUAL: FontClearKerningMap(font_rid RID,size int64,) 
+	// VIRTUAL: Internal_FontClearKerningMap(font_rid RID,size int64,) 
 	
 
 	
-	// VIRTUAL: FontRemoveKerning(font_rid RID,size int64,glyph_pair Vector2i,) 
+	// VIRTUAL: Internal_FontRemoveKerning(font_rid RID,size int64,glyph_pair Vector2i,) 
 	
 
 	
-	// VIRTUAL: FontSetKerning(font_rid RID,size int64,glyph_pair Vector2i,kerning Vector2,) 
+	// VIRTUAL: Internal_FontSetKerning(font_rid RID,size int64,glyph_pair Vector2i,kerning Vector2,) 
 	
 
 	
-	// VIRTUAL: FontGetKerning(font_rid RID,size int64,glyph_pair Vector2i,) Vector2
+	// VIRTUAL: Internal_FontGetKerning(font_rid RID,size int64,glyph_pair Vector2i,) Vector2
 	
 
 	
-	// VIRTUAL: FontGetGlyphIndex(font_rid RID,size int64,char int64,variation_selector int64,) int64
+	// VIRTUAL: Internal_FontGetGlyphIndex(font_rid RID,size int64,char int64,variation_selector int64,) int64
 	
 
 	
-	// VIRTUAL: FontHasChar(font_rid RID,char int64,) bool
+	// VIRTUAL: Internal_FontHasChar(font_rid RID,char int64,) bool
 	
 
 	
-	// VIRTUAL: FontGetSupportedChars(font_rid RID,) String
+	// VIRTUAL: Internal_FontGetSupportedChars(font_rid RID,) String
 	
 
 	
-	// VIRTUAL: FontRenderRange(font_rid RID,size Vector2i,start int64,end int64,) 
+	// VIRTUAL: Internal_FontRenderRange(font_rid RID,size Vector2i,start int64,end int64,) 
 	
 
 	
-	// VIRTUAL: FontRenderGlyph(font_rid RID,size Vector2i,index int64,) 
+	// VIRTUAL: Internal_FontRenderGlyph(font_rid RID,size Vector2i,index int64,) 
 	
 
 	
-	// VIRTUAL: FontDrawGlyph(font_rid RID,canvas RID,size int64,pos Vector2,index int64,color Color,) 
+	// VIRTUAL: Internal_FontDrawGlyph(font_rid RID,canvas RID,size int64,pos Vector2,index int64,color Color,) 
 	
 
 	
-	// VIRTUAL: FontDrawGlyphOutline(font_rid RID,canvas RID,size int64,outline_size int64,pos Vector2,index int64,color Color,) 
+	// VIRTUAL: Internal_FontDrawGlyphOutline(font_rid RID,canvas RID,size int64,outline_size int64,pos Vector2,index int64,color Color,) 
 	
 
 	
-	// VIRTUAL: FontIsLanguageSupported(font_rid RID,language String,) bool
+	// VIRTUAL: Internal_FontIsLanguageSupported(font_rid RID,language String,) bool
 	
 
 	
-	// VIRTUAL: FontSetLanguageSupportOverride(font_rid RID,language String,supported bool,) 
+	// VIRTUAL: Internal_FontSetLanguageSupportOverride(font_rid RID,language String,supported bool,) 
 	
 
 	
-	// VIRTUAL: FontGetLanguageSupportOverride(font_rid RID,language String,) bool
+	// VIRTUAL: Internal_FontGetLanguageSupportOverride(font_rid RID,language String,) bool
 	
 
 	
-	// VIRTUAL: FontRemoveLanguageSupportOverride(font_rid RID,language String,) 
+	// VIRTUAL: Internal_FontRemoveLanguageSupportOverride(font_rid RID,language String,) 
 	
 
 	
-	// VIRTUAL: FontGetLanguageSupportOverrides(font_rid RID,) PackedStringArray
+	// VIRTUAL: Internal_FontGetLanguageSupportOverrides(font_rid RID,) PackedStringArray
 	
 
 	
-	// VIRTUAL: FontIsScriptSupported(font_rid RID,script String,) bool
+	// VIRTUAL: Internal_FontIsScriptSupported(font_rid RID,script String,) bool
 	
 
 	
-	// VIRTUAL: FontSetScriptSupportOverride(font_rid RID,script String,supported bool,) 
+	// VIRTUAL: Internal_FontSetScriptSupportOverride(font_rid RID,script String,supported bool,) 
 	
 
 	
-	// VIRTUAL: FontGetScriptSupportOverride(font_rid RID,script String,) bool
+	// VIRTUAL: Internal_FontGetScriptSupportOverride(font_rid RID,script String,) bool
 	
 
 	
-	// VIRTUAL: FontRemoveScriptSupportOverride(font_rid RID,script String,) 
+	// VIRTUAL: Internal_FontRemoveScriptSupportOverride(font_rid RID,script String,) 
 	
 
 	
-	// VIRTUAL: FontGetScriptSupportOverrides(font_rid RID,) PackedStringArray
+	// VIRTUAL: Internal_FontGetScriptSupportOverrides(font_rid RID,) PackedStringArray
 	
 
 	
-	// VIRTUAL: FontSetOpentypeFeatureOverrides(font_rid RID,overrides Dictionary,) 
+	// VIRTUAL: Internal_FontSetOpentypeFeatureOverrides(font_rid RID,overrides Dictionary,) 
 	
 
 	
-	// VIRTUAL: FontGetOpentypeFeatureOverrides(font_rid RID,) Dictionary
+	// VIRTUAL: Internal_FontGetOpentypeFeatureOverrides(font_rid RID,) Dictionary
 	
 
 	
-	// VIRTUAL: FontSupportedFeatureList(font_rid RID,) Dictionary
+	// VIRTUAL: Internal_FontSupportedFeatureList(font_rid RID,) Dictionary
 	
 
 	
-	// VIRTUAL: FontSupportedVariationList(font_rid RID,) Dictionary
+	// VIRTUAL: Internal_FontSupportedVariationList(font_rid RID,) Dictionary
 	
 
 	
-	// VIRTUAL: FontGetGlobalOversampling() float32
+	// VIRTUAL: Internal_FontGetGlobalOversampling() float32
 	
 
 	
-	// VIRTUAL: FontSetGlobalOversampling(oversampling float32,) 
+	// VIRTUAL: Internal_FontSetGlobalOversampling(oversampling float32,) 
 	
 
 	
-	// VIRTUAL: GetHexCodeBoxSize(size int64,index int64,) Vector2
+	// VIRTUAL: Internal_GetHexCodeBoxSize(size int64,index int64,) Vector2
 	
 
 	
-	// VIRTUAL: DrawHexCodeBox(canvas RID,size int64,pos Vector2,index int64,color Color,) 
+	// VIRTUAL: Internal_DrawHexCodeBox(canvas RID,size int64,pos Vector2,index int64,color Color,) 
 	
 
 	
-	// VIRTUAL: CreateShapedText(direction TextServerDirection,orientation TextServerOrientation,) RID
+	// VIRTUAL: Internal_CreateShapedText(direction TextServerDirection,orientation TextServerOrientation,) RID
 	
 
 	
-	// VIRTUAL: ShapedTextClear(shaped RID,) 
+	// VIRTUAL: Internal_ShapedTextClear(shaped RID,) 
 	
 
 	
-	// VIRTUAL: ShapedTextSetDirection(shaped RID,direction TextServerDirection,) 
+	// VIRTUAL: Internal_ShapedTextSetDirection(shaped RID,direction TextServerDirection,) 
 	
 
 	
-	// VIRTUAL: ShapedTextGetDirection(shaped RID,) TextServerDirection
+	// VIRTUAL: Internal_ShapedTextGetDirection(shaped RID,) TextServerDirection
 	
 
 	
-	// VIRTUAL: ShapedTextGetInferredDirection(shaped RID,) TextServerDirection
+	// VIRTUAL: Internal_ShapedTextGetInferredDirection(shaped RID,) TextServerDirection
 	
 
 	
-	// VIRTUAL: ShapedTextSetBidiOverride(shaped RID,override Array,) 
+	// VIRTUAL: Internal_ShapedTextSetBidiOverride(shaped RID,override Array,) 
 	
 
 	
-	// VIRTUAL: ShapedTextSetCustomPunctuation(shaped RID,punct String,) 
+	// VIRTUAL: Internal_ShapedTextSetCustomPunctuation(shaped RID,punct String,) 
 	
 
 	
-	// VIRTUAL: ShapedTextGetCustomPunctuation(shaped RID,) String
+	// VIRTUAL: Internal_ShapedTextGetCustomPunctuation(shaped RID,) String
 	
 
 	
-	// VIRTUAL: ShapedTextSetOrientation(shaped RID,orientation TextServerOrientation,) 
+	// VIRTUAL: Internal_ShapedTextSetOrientation(shaped RID,orientation TextServerOrientation,) 
 	
 
 	
-	// VIRTUAL: ShapedTextGetOrientation(shaped RID,) TextServerOrientation
+	// VIRTUAL: Internal_ShapedTextGetOrientation(shaped RID,) TextServerOrientation
 	
 
 	
-	// VIRTUAL: ShapedTextSetPreserveInvalid(shaped RID,enabled bool,) 
+	// VIRTUAL: Internal_ShapedTextSetPreserveInvalid(shaped RID,enabled bool,) 
 	
 
 	
-	// VIRTUAL: ShapedTextGetPreserveInvalid(shaped RID,) bool
+	// VIRTUAL: Internal_ShapedTextGetPreserveInvalid(shaped RID,) bool
 	
 
 	
-	// VIRTUAL: ShapedTextSetPreserveControl(shaped RID,enabled bool,) 
+	// VIRTUAL: Internal_ShapedTextSetPreserveControl(shaped RID,enabled bool,) 
 	
 
 	
-	// VIRTUAL: ShapedTextGetPreserveControl(shaped RID,) bool
+	// VIRTUAL: Internal_ShapedTextGetPreserveControl(shaped RID,) bool
 	
 
 	
-	// VIRTUAL: ShapedTextSetSpacing(shaped RID,spacing TextServerSpacingType,value int64,) 
+	// VIRTUAL: Internal_ShapedTextSetSpacing(shaped RID,spacing TextServerSpacingType,value int64,) 
 	
 
 	
-	// VIRTUAL: ShapedTextGetSpacing(shaped RID,spacing TextServerSpacingType,) int64
+	// VIRTUAL: Internal_ShapedTextGetSpacing(shaped RID,spacing TextServerSpacingType,) int64
 	
 
 	
-	// VIRTUAL: ShapedTextAddString(shaped RID,text String,fonts Array,size int64,opentype_features Dictionary,language String,meta Variant,) bool
+	// VIRTUAL: Internal_ShapedTextAddString(shaped RID,text String,fonts []RID,size int64,opentype_features Dictionary,language String,meta Variant,) bool
 	
 
 	
-	// VIRTUAL: ShapedTextAddObject(shaped RID,key Variant,size Vector2,inline_align InlineAlignment,length int64,) bool
+	// VIRTUAL: Internal_ShapedTextAddObject(shaped RID,key Variant,size Vector2,inline_align InlineAlignment,length int64,) bool
 	
 
 	
-	// VIRTUAL: ShapedTextResizeObject(shaped RID,key Variant,size Vector2,inline_align InlineAlignment,) bool
+	// VIRTUAL: Internal_ShapedTextResizeObject(shaped RID,key Variant,size Vector2,inline_align InlineAlignment,) bool
 	
 
 	
-	// VIRTUAL: ShapedGetSpanCount(shaped RID,) int64
+	// VIRTUAL: Internal_ShapedGetSpanCount(shaped RID,) int64
 	
 
 	
-	// VIRTUAL: ShapedGetSpanMeta(shaped RID,index int64,) Variant
+	// VIRTUAL: Internal_ShapedGetSpanMeta(shaped RID,index int64,) Variant
 	
 
 	
-	// VIRTUAL: ShapedSetSpanUpdateFont(shaped RID,index int64,fonts Array,size int64,opentype_features Dictionary,) 
+	// VIRTUAL: Internal_ShapedSetSpanUpdateFont(shaped RID,index int64,fonts []RID,size int64,opentype_features Dictionary,) 
 	
 
 	
-	// VIRTUAL: ShapedTextSubstr(shaped RID,start int64,length int64,) RID
+	// VIRTUAL: Internal_ShapedTextSubstr(shaped RID,start int64,length int64,) RID
 	
 
 	
-	// VIRTUAL: ShapedTextGetParent(shaped RID,) RID
+	// VIRTUAL: Internal_ShapedTextGetParent(shaped RID,) RID
 	
 
 	
-	// VIRTUAL: ShapedTextFitToWidth(shaped RID,width float32,jst_flags TextServerJustificationFlag,) float32
+	// VIRTUAL: Internal_ShapedTextFitToWidth(shaped RID,width float32,jst_flags TextServerJustificationFlag,) float32
 	
 
 	
-	// VIRTUAL: ShapedTextTabAlign(shaped RID,tab_stops PackedFloat32Array,) float32
+	// VIRTUAL: Internal_ShapedTextTabAlign(shaped RID,tab_stops PackedFloat32Array,) float32
 	
 
 	
-	// VIRTUAL: ShapedTextShape(shaped RID,) bool
+	// VIRTUAL: Internal_ShapedTextShape(shaped RID,) bool
 	
 
 	
-	// VIRTUAL: ShapedTextUpdateBreaks(shaped RID,) bool
+	// VIRTUAL: Internal_ShapedTextUpdateBreaks(shaped RID,) bool
 	
 
 	
-	// VIRTUAL: ShapedTextUpdateJustificationOps(shaped RID,) bool
+	// VIRTUAL: Internal_ShapedTextUpdateJustificationOps(shaped RID,) bool
 	
 
 	
-	// VIRTUAL: ShapedTextIsReady(shaped RID,) bool
+	// VIRTUAL: Internal_ShapedTextIsReady(shaped RID,) bool
 	
 
 	
-	// VIRTUAL: ShapedTextGetGlyphs(shaped RID,) *Glyph
+	// VIRTUAL: Internal_ShapedTextGetGlyphs(shaped RID,) *Glyph
 	
 
 	
-	// VIRTUAL: ShapedTextSortLogical(shaped RID,) *Glyph
+	// VIRTUAL: Internal_ShapedTextSortLogical(shaped RID,) *Glyph
 	
 
 	
-	// VIRTUAL: ShapedTextGetGlyphCount(shaped RID,) int64
+	// VIRTUAL: Internal_ShapedTextGetGlyphCount(shaped RID,) int64
 	
 
 	
-	// VIRTUAL: ShapedTextGetRange(shaped RID,) Vector2i
+	// VIRTUAL: Internal_ShapedTextGetRange(shaped RID,) Vector2i
 	
 
 	
-	// VIRTUAL: ShapedTextGetLineBreaksAdv(shaped RID,width PackedFloat32Array,start int64,once bool,break_flags TextServerLineBreakFlag,) PackedInt32Array
+	// VIRTUAL: Internal_ShapedTextGetLineBreaksAdv(shaped RID,width PackedFloat32Array,start int64,once bool,break_flags TextServerLineBreakFlag,) PackedInt32Array
 	
 
 	
-	// VIRTUAL: ShapedTextGetLineBreaks(shaped RID,width float32,start int64,break_flags TextServerLineBreakFlag,) PackedInt32Array
+	// VIRTUAL: Internal_ShapedTextGetLineBreaks(shaped RID,width float32,start int64,break_flags TextServerLineBreakFlag,) PackedInt32Array
 	
 
 	
-	// VIRTUAL: ShapedTextGetWordBreaks(shaped RID,grapheme_flags TextServerGraphemeFlag,) PackedInt32Array
+	// VIRTUAL: Internal_ShapedTextGetWordBreaks(shaped RID,grapheme_flags TextServerGraphemeFlag,) PackedInt32Array
 	
 
 	
-	// VIRTUAL: ShapedTextGetTrimPos(shaped RID,) int64
+	// VIRTUAL: Internal_ShapedTextGetTrimPos(shaped RID,) int64
 	
 
 	
-	// VIRTUAL: ShapedTextGetEllipsisPos(shaped RID,) int64
+	// VIRTUAL: Internal_ShapedTextGetEllipsisPos(shaped RID,) int64
 	
 
 	
-	// VIRTUAL: ShapedTextGetEllipsisGlyphCount(shaped RID,) int64
+	// VIRTUAL: Internal_ShapedTextGetEllipsisGlyphCount(shaped RID,) int64
 	
 
 	
-	// VIRTUAL: ShapedTextGetEllipsisGlyphs(shaped RID,) *Glyph
+	// VIRTUAL: Internal_ShapedTextGetEllipsisGlyphs(shaped RID,) *Glyph
 	
 
 	
-	// VIRTUAL: ShapedTextOverrunTrimToWidth(shaped RID,width float32,trim_flags TextServerTextOverrunFlag,) 
+	// VIRTUAL: Internal_ShapedTextOverrunTrimToWidth(shaped RID,width float32,trim_flags TextServerTextOverrunFlag,) 
 	
 
 	
-	// VIRTUAL: ShapedTextGetObjects(shaped RID,) Array
+	// VIRTUAL: Internal_ShapedTextGetObjects(shaped RID,) Array
 	
 
 	
-	// VIRTUAL: ShapedTextGetObjectRect(shaped RID,key Variant,) Rect2
+	// VIRTUAL: Internal_ShapedTextGetObjectRect(shaped RID,key Variant,) Rect2
 	
 
 	
-	// VIRTUAL: ShapedTextGetSize(shaped RID,) Vector2
+	// VIRTUAL: Internal_ShapedTextGetSize(shaped RID,) Vector2
 	
 
 	
-	// VIRTUAL: ShapedTextGetAscent(shaped RID,) float32
+	// VIRTUAL: Internal_ShapedTextGetAscent(shaped RID,) float32
 	
 
 	
-	// VIRTUAL: ShapedTextGetDescent(shaped RID,) float32
+	// VIRTUAL: Internal_ShapedTextGetDescent(shaped RID,) float32
 	
 
 	
-	// VIRTUAL: ShapedTextGetWidth(shaped RID,) float32
+	// VIRTUAL: Internal_ShapedTextGetWidth(shaped RID,) float32
 	
 
 	
-	// VIRTUAL: ShapedTextGetUnderlinePosition(shaped RID,) float32
+	// VIRTUAL: Internal_ShapedTextGetUnderlinePosition(shaped RID,) float32
 	
 
 	
-	// VIRTUAL: ShapedTextGetUnderlineThickness(shaped RID,) float32
+	// VIRTUAL: Internal_ShapedTextGetUnderlineThickness(shaped RID,) float32
 	
 
 	
-	// VIRTUAL: ShapedTextGetDominantDirectionInRange(shaped RID,start int64,end int64,) int64
+	// VIRTUAL: Internal_ShapedTextGetDominantDirectionInRange(shaped RID,start int64,end int64,) int64
 	
 
 	
-	// VIRTUAL: ShapedTextGetCarets(shaped RID,position int64,caret *CaretInfo,) 
+	// VIRTUAL: Internal_ShapedTextGetCarets(shaped RID,position int64,caret *CaretInfo,) 
 	
 
 	
-	// VIRTUAL: ShapedTextGetSelection(shaped RID,start int64,end int64,) PackedVector2Array
+	// VIRTUAL: Internal_ShapedTextGetSelection(shaped RID,start int64,end int64,) PackedVector2Array
 	
 
 	
-	// VIRTUAL: ShapedTextHitTestGrapheme(shaped RID,coord float32,) int64
+	// VIRTUAL: Internal_ShapedTextHitTestGrapheme(shaped RID,coord float32,) int64
 	
 
 	
-	// VIRTUAL: ShapedTextHitTestPosition(shaped RID,coord float32,) int64
+	// VIRTUAL: Internal_ShapedTextHitTestPosition(shaped RID,coord float32,) int64
 	
 
 	
-	// VIRTUAL: ShapedTextDraw(shaped RID,canvas RID,pos Vector2,clip_l float32,clip_r float32,color Color,) 
+	// VIRTUAL: Internal_ShapedTextDraw(shaped RID,canvas RID,pos Vector2,clip_l float32,clip_r float32,color Color,) 
 	
 
 	
-	// VIRTUAL: ShapedTextDrawOutline(shaped RID,canvas RID,pos Vector2,clip_l float32,clip_r float32,outline_size int64,color Color,) 
+	// VIRTUAL: Internal_ShapedTextDrawOutline(shaped RID,canvas RID,pos Vector2,clip_l float32,clip_r float32,outline_size int64,color Color,) 
 	
 
 	
-	// VIRTUAL: ShapedTextGetGraphemeBounds(shaped RID,pos int64,) Vector2
+	// VIRTUAL: Internal_ShapedTextGetGraphemeBounds(shaped RID,pos int64,) Vector2
 	
 
 	
-	// VIRTUAL: ShapedTextNextGraphemePos(shaped RID,pos int64,) int64
+	// VIRTUAL: Internal_ShapedTextNextGraphemePos(shaped RID,pos int64,) int64
 	
 
 	
-	// VIRTUAL: ShapedTextPrevGraphemePos(shaped RID,pos int64,) int64
+	// VIRTUAL: Internal_ShapedTextPrevGraphemePos(shaped RID,pos int64,) int64
 	
 
 	
-	// VIRTUAL: FormatNumber(strValue String,language String,) String
+	// VIRTUAL: Internal_FormatNumber(strValue String,language String,) String
 	
 
 	
-	// VIRTUAL: ParseNumber(strValue String,language String,) String
+	// VIRTUAL: Internal_ParseNumber(strValue String,language String,) String
 	
 
 	
-	// VIRTUAL: PercentSign(language String,) String
+	// VIRTUAL: Internal_PercentSign(language String,) String
 	
 
 	
-	// VIRTUAL: StripDiacritics(strValue String,) String
+	// VIRTUAL: Internal_StripDiacritics(strValue String,) String
 	
 
 	
-	// VIRTUAL: IsValidIdentifier(strValue String,) bool
+	// VIRTUAL: Internal_IsValidIdentifier(strValue String,) bool
 	
 
 	
-	// VIRTUAL: StringGetWordBreaks(strValue String,language String,) PackedInt32Array
+	// VIRTUAL: Internal_StringGetWordBreaks(strValue String,language String,) PackedInt32Array
 	
 
 	
-	// VIRTUAL: IsConfusable(strValue String,dict PackedStringArray,) int64
+	// VIRTUAL: Internal_IsConfusable(strValue String,dict PackedStringArray,) int64
 	
 
 	
-	// VIRTUAL: SpoofCheck(strValue String,) bool
+	// VIRTUAL: Internal_SpoofCheck(strValue String,) bool
 	
 
 	
-	// VIRTUAL: StringToUpper(strValue String,language String,) String
+	// VIRTUAL: Internal_StringToUpper(strValue String,language String,) String
 	
 
 	
-	// VIRTUAL: StringToLower(strValue String,language String,) String
+	// VIRTUAL: Internal_StringToLower(strValue String,language String,) String
 	
 
 	
-	// VIRTUAL: ParseStructuredText(parser_type TextServerStructuredTextParser,args Array,text String,) Array
+	// VIRTUAL: Internal_ParseStructuredText(parser_type TextServerStructuredTextParser,args Array,text String,) []Vector2i
 }
 type TextServerManager interface {
 	
@@ -35916,7 +36203,7 @@ type TextServerManager interface {
 	GetInterface(idx int64,) TextServer
 	
 
-	GetInterfaces() Array
+	GetInterfaces() []Dictionary
 	
 
 	FindInterface(name String,) TextServer
@@ -36029,7 +36316,7 @@ type Texture3D interface {
 	
 
 	
-	// VIRTUAL: Internal_GetData() Array
+	// VIRTUAL: Internal_GetData() []Image
 	
 
 	GetFormat() ImageFormat
@@ -36047,7 +36334,7 @@ type Texture3D interface {
 	HasMipmaps() bool
 	
 
-	GetData() Array
+	GetData() []Image
 }
 type TextureButton interface {
 	
@@ -36830,7 +37117,7 @@ type TileMap interface {
 	GetCoordsForBodyRid(body RID,) Vector2i
 	
 
-	GetPattern(layer int64,coords_array Array,) TileMapPattern
+	GetPattern(layer int64,coords_array []Vector2i,) TileMapPattern
 	
 
 	MapPattern(position_in_tilemap Vector2i,coords_in_pattern Vector2i,pattern TileMapPattern,) Vector2i
@@ -36839,10 +37126,10 @@ type TileMap interface {
 	SetPattern(layer int64,position Vector2i,pattern TileMapPattern,) 
 	
 
-	SetCellsTerrainConnect(layer int64,cells Array,terrain_set int64,terrain int64,ignore_empty_terrains bool,) 
+	SetCellsTerrainConnect(layer int64,cells []Vector2i,terrain_set int64,terrain int64,ignore_empty_terrains bool,) 
 	
 
-	SetCellsTerrainPath(layer int64,path Array,terrain_set int64,terrain int64,ignore_empty_terrains bool,) 
+	SetCellsTerrainPath(layer int64,path []Vector2i,terrain_set int64,terrain int64,ignore_empty_terrains bool,) 
 	
 
 	FixInvalidTiles() 
@@ -36857,13 +37144,13 @@ type TileMap interface {
 	ForceUpdate(layer int64,) 
 	
 
-	GetSurroundingTiles(coords Vector2i,) Array
+	GetSurroundingTiles(coords Vector2i,) []Vector2i
 	
 
-	GetUsedCells(layer int64,) Array
+	GetUsedCells(layer int64,) []Vector2i
 	
 
-	GetUsedRect() Rect2
+	GetUsedRect() Rect2i
 	
 
 	MapToLocal(map_position Vector2i,) Vector2
@@ -36900,7 +37187,7 @@ type TileMapPattern interface {
 	GetCellAlternativeTile(coords Vector2i,) int64
 	
 
-	GetUsedCells() Array
+	GetUsedCells() []Vector2i
 	
 
 	GetSize() Vector2i
@@ -37834,6 +38121,12 @@ type Tree interface {
 	IsFoldingHidden() bool
 	
 
+	SetEnableRecursiveFolding(enable bool,) 
+	
+
+	IsRecursiveFoldingEnabled() bool
+	
+
 	SetDropModeFlags(flags int64,) 
 	
 
@@ -37965,6 +38258,12 @@ type TreeItem interface {
 	
 
 	IsCollapsed() bool
+	
+
+	SetCollapsedRecursive(enable bool,) 
+	
+
+	IsAnyCollapsed(only_visible bool,) bool
 	
 
 	SetVisible(enable bool,) 
@@ -38123,7 +38422,7 @@ type TreeItem interface {
 	GetChildCount() int64
 	
 
-	GetChildren() Array
+	GetChildren() []TreeItem
 	
 
 	GetIndex() int64
@@ -38437,10 +38736,10 @@ type UndoRedo interface {
 	IsCommittingAction() bool
 	
 
-	AddDoMethod(object Object,method StringName,varargs ...Variant,) 
+	AddDoMethod(callable Callable,) 
 	
 
-	AddUndoMethod(object Object,method StringName,varargs ...Variant,) 
+	AddUndoMethod(callable Callable,) 
 	
 
 	AddDoProperty(object Object,property StringName,value Variant,) 
@@ -38489,6 +38788,13 @@ type UndoRedo interface {
 	
 
 	Undo() bool
+}
+type UniformSetCacheRD interface {
+	
+	Object
+	
+
+	
 }
 type VBoxContainer interface {
 	
@@ -39228,7 +39534,7 @@ type VisualShader interface {
 	ConnectNodesForced(typeName VisualShaderType,from_node int64,from_port int64,to_node int64,to_port int64,) 
 	
 
-	GetNodeConnections(typeName VisualShaderType,) Array
+	GetNodeConnections(typeName VisualShaderType,) []Dictionary
 	
 
 	SetGraphOffset(offset Vector2,) 
@@ -39556,7 +39862,7 @@ type VisualShaderNodeCustom interface {
 	
 
 	
-	// VIRTUAL: Internal_GetCode(input_vars Array,output_vars Array,mode ShaderMode,typeName VisualShaderType,) String
+	// VIRTUAL: Internal_GetCode(input_vars []String,output_vars []String,mode ShaderMode,typeName VisualShaderType,) String
 	
 
 	
@@ -41759,6 +42065,18 @@ type XRInterface interface {
 	
 
 	GetCameraFeedId() int64
+	
+
+	IsPassthroughSupported() bool
+	
+
+	IsPassthroughEnabled() bool
+	
+
+	StartPassthrough() bool
+	
+
+	StopPassthrough() 
 }
 type XRInterfaceExtension interface {
 	
@@ -42065,7 +42383,7 @@ type XRServer interface {
 	GetInterface(idx int64,) XRInterface
 	
 
-	GetInterfaces() Array
+	GetInterfaces() []Dictionary
 	
 
 	FindInterface(name String,) XRInterface

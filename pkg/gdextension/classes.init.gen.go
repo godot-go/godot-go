@@ -1084,6 +1084,12 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("Decal",
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_Decal),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_Decal),
 		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("DirAccess",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_DirAccess),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_DirAccess),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_DirAccess),
+		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("DirectionalLight2D",
 		NewGDNativeInstanceBindingCallbacks(
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_DirectionalLight2D),
@@ -1095,12 +1101,6 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("DirectionalLight3D",
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_DirectionalLight3D),
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_DirectionalLight3D),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_DirectionalLight3D),
-		))
-gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("Directory",
-		NewGDNativeInstanceBindingCallbacks(
-			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_Directory),
-			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_Directory),
-			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_Directory),
 		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("DisplayServer",
 		NewGDNativeInstanceBindingCallbacks(
@@ -1168,11 +1168,11 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("FastNoiseLite",
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_FastNoiseLite),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_FastNoiseLite),
 		))
-gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("File",
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("FileAccess",
 		NewGDNativeInstanceBindingCallbacks(
-			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_File),
-			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_File),
-			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_File),
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_FileAccess),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_FileAccess),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_FileAccess),
 		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("FileDialog",
 		NewGDNativeInstanceBindingCallbacks(
@@ -1221,6 +1221,12 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("FontVariation",
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_FontVariation),
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_FontVariation),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_FontVariation),
+		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("FramebufferCacheRD",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_FramebufferCacheRD),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_FramebufferCacheRD),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_FramebufferCacheRD),
 		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("GDScript",
 		NewGDNativeInstanceBindingCallbacks(
@@ -1563,6 +1569,18 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("Image",
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_Image),
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_Image),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_Image),
+		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("ImageFormatLoader",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_ImageFormatLoader),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_ImageFormatLoader),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_ImageFormatLoader),
+		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("ImageFormatLoaderExtension",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_ImageFormatLoaderExtension),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_ImageFormatLoaderExtension),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_ImageFormatLoaderExtension),
 		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("ImageTexture",
 		NewGDNativeInstanceBindingCallbacks(
@@ -2128,6 +2146,30 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("NavigationObstacle3D",
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_NavigationObstacle3D),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_NavigationObstacle3D),
 		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("NavigationPathQueryParameters2D",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_NavigationPathQueryParameters2D),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_NavigationPathQueryParameters2D),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_NavigationPathQueryParameters2D),
+		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("NavigationPathQueryParameters3D",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_NavigationPathQueryParameters3D),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_NavigationPathQueryParameters3D),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_NavigationPathQueryParameters3D),
+		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("NavigationPathQueryResult2D",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_NavigationPathQueryResult2D),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_NavigationPathQueryResult2D),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_NavigationPathQueryResult2D),
+		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("NavigationPathQueryResult3D",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_NavigationPathQueryResult3D),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_NavigationPathQueryResult3D),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_NavigationPathQueryResult3D),
+		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("NavigationPolygon",
 		NewGDNativeInstanceBindingCallbacks(
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_NavigationPolygon),
@@ -2271,6 +2313,12 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("OpenXRActionSet",
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_OpenXRActionSet),
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_OpenXRActionSet),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_OpenXRActionSet),
+		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("OpenXRHand",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_OpenXRHand),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_OpenXRHand),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_OpenXRHand),
 		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("OpenXRIPBinding",
 		NewGDNativeInstanceBindingCallbacks(
@@ -2763,6 +2811,12 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("PropertyTweener",
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_PropertyTweener),
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_PropertyTweener),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_PropertyTweener),
+		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("QuadMesh",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_QuadMesh),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_QuadMesh),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_QuadMesh),
 		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("QuadOccluder3D",
 		NewGDNativeInstanceBindingCallbacks(
@@ -3460,6 +3514,12 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("StreamPeerExtension",
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_StreamPeerExtension),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_StreamPeerExtension),
 		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("StreamPeerGZIP",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_StreamPeerGZIP),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_StreamPeerGZIP),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_StreamPeerGZIP),
+		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("StreamPeerTCP",
 		NewGDNativeInstanceBindingCallbacks(
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_StreamPeerTCP),
@@ -3807,6 +3867,12 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("UndoRedo",
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_UndoRedo),
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_UndoRedo),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_UndoRedo),
+		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("UniformSetCacheRD",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_UniformSetCacheRD),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_UniformSetCacheRD),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_UniformSetCacheRD),
 		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("VBoxContainer",
 		NewGDNativeInstanceBindingCallbacks(
@@ -4904,9 +4970,9 @@ gdNativeConstructors.Set("CylinderShape3D", NewGDNativeClassFromCylinderShape3DO
 gdNativeConstructors.Set("DTLSServer", NewGDNativeClassFromDTLSServerOwner)
 gdNativeConstructors.Set("DampedSpringJoint2D", NewGDNativeClassFromDampedSpringJoint2DOwner)
 gdNativeConstructors.Set("Decal", NewGDNativeClassFromDecalOwner)
+gdNativeConstructors.Set("DirAccess", NewGDNativeClassFromDirAccessOwner)
 gdNativeConstructors.Set("DirectionalLight2D", NewGDNativeClassFromDirectionalLight2DOwner)
 gdNativeConstructors.Set("DirectionalLight3D", NewGDNativeClassFromDirectionalLight3DOwner)
-gdNativeConstructors.Set("Directory", NewGDNativeClassFromDirectoryOwner)
 gdNativeConstructors.Set("DisplayServer", NewGDNativeClassFromDisplayServerOwner)
 gdNativeConstructors.Set("ENetConnection", NewGDNativeClassFromENetConnectionOwner)
 gdNativeConstructors.Set("ENetMultiplayerPeer", NewGDNativeClassFromENetMultiplayerPeerOwner)
@@ -4918,7 +4984,7 @@ gdNativeConstructors.Set("EngineProfiler", NewGDNativeClassFromEngineProfilerOwn
 gdNativeConstructors.Set("Environment", NewGDNativeClassFromEnvironmentOwner)
 gdNativeConstructors.Set("Expression", NewGDNativeClassFromExpressionOwner)
 gdNativeConstructors.Set("FastNoiseLite", NewGDNativeClassFromFastNoiseLiteOwner)
-gdNativeConstructors.Set("File", NewGDNativeClassFromFileOwner)
+gdNativeConstructors.Set("FileAccess", NewGDNativeClassFromFileAccessOwner)
 gdNativeConstructors.Set("FileDialog", NewGDNativeClassFromFileDialogOwner)
 gdNativeConstructors.Set("FileSystemDock", NewGDNativeClassFromFileSystemDockOwner)
 gdNativeConstructors.Set("FlowContainer", NewGDNativeClassFromFlowContainerOwner)
@@ -4927,6 +4993,7 @@ gdNativeConstructors.Set("FogVolume", NewGDNativeClassFromFogVolumeOwner)
 gdNativeConstructors.Set("Font", NewGDNativeClassFromFontOwner)
 gdNativeConstructors.Set("FontFile", NewGDNativeClassFromFontFileOwner)
 gdNativeConstructors.Set("FontVariation", NewGDNativeClassFromFontVariationOwner)
+gdNativeConstructors.Set("FramebufferCacheRD", NewGDNativeClassFromFramebufferCacheRDOwner)
 gdNativeConstructors.Set("GDScript", NewGDNativeClassFromGDScriptOwner)
 gdNativeConstructors.Set("GDScriptNativeClass", NewGDNativeClassFromGDScriptNativeClassOwner)
 gdNativeConstructors.Set("GLTFAccessor", NewGDNativeClassFromGLTFAccessorOwner)
@@ -4984,6 +5051,8 @@ gdNativeConstructors.Set("HingeJoint3D", NewGDNativeClassFromHingeJoint3DOwner)
 gdNativeConstructors.Set("IP", NewGDNativeClassFromIPOwner)
 gdNativeConstructors.Set("IPUnix", NewGDNativeClassFromIPUnixOwner)
 gdNativeConstructors.Set("Image", NewGDNativeClassFromImageOwner)
+gdNativeConstructors.Set("ImageFormatLoader", NewGDNativeClassFromImageFormatLoaderOwner)
+gdNativeConstructors.Set("ImageFormatLoaderExtension", NewGDNativeClassFromImageFormatLoaderExtensionOwner)
 gdNativeConstructors.Set("ImageTexture", NewGDNativeClassFromImageTextureOwner)
 gdNativeConstructors.Set("ImageTexture3D", NewGDNativeClassFromImageTexture3DOwner)
 gdNativeConstructors.Set("ImageTextureLayered", NewGDNativeClassFromImageTextureLayeredOwner)
@@ -5078,6 +5147,10 @@ gdNativeConstructors.Set("NavigationMesh", NewGDNativeClassFromNavigationMeshOwn
 gdNativeConstructors.Set("NavigationMeshGenerator", NewGDNativeClassFromNavigationMeshGeneratorOwner)
 gdNativeConstructors.Set("NavigationObstacle2D", NewGDNativeClassFromNavigationObstacle2DOwner)
 gdNativeConstructors.Set("NavigationObstacle3D", NewGDNativeClassFromNavigationObstacle3DOwner)
+gdNativeConstructors.Set("NavigationPathQueryParameters2D", NewGDNativeClassFromNavigationPathQueryParameters2DOwner)
+gdNativeConstructors.Set("NavigationPathQueryParameters3D", NewGDNativeClassFromNavigationPathQueryParameters3DOwner)
+gdNativeConstructors.Set("NavigationPathQueryResult2D", NewGDNativeClassFromNavigationPathQueryResult2DOwner)
+gdNativeConstructors.Set("NavigationPathQueryResult3D", NewGDNativeClassFromNavigationPathQueryResult3DOwner)
 gdNativeConstructors.Set("NavigationPolygon", NewGDNativeClassFromNavigationPolygonOwner)
 gdNativeConstructors.Set("NavigationRegion2D", NewGDNativeClassFromNavigationRegion2DOwner)
 gdNativeConstructors.Set("NavigationRegion3D", NewGDNativeClassFromNavigationRegion3DOwner)
@@ -5102,6 +5175,7 @@ gdNativeConstructors.Set("OmniLight3D", NewGDNativeClassFromOmniLight3DOwner)
 gdNativeConstructors.Set("OpenXRAction", NewGDNativeClassFromOpenXRActionOwner)
 gdNativeConstructors.Set("OpenXRActionMap", NewGDNativeClassFromOpenXRActionMapOwner)
 gdNativeConstructors.Set("OpenXRActionSet", NewGDNativeClassFromOpenXRActionSetOwner)
+gdNativeConstructors.Set("OpenXRHand", NewGDNativeClassFromOpenXRHandOwner)
 gdNativeConstructors.Set("OpenXRIPBinding", NewGDNativeClassFromOpenXRIPBindingOwner)
 gdNativeConstructors.Set("OpenXRInteractionProfile", NewGDNativeClassFromOpenXRInteractionProfileOwner)
 gdNativeConstructors.Set("OpenXRInterface", NewGDNativeClassFromOpenXRInterfaceOwner)
@@ -5184,6 +5258,7 @@ gdNativeConstructors.Set("ProceduralSkyMaterial", NewGDNativeClassFromProcedural
 gdNativeConstructors.Set("ProgressBar", NewGDNativeClassFromProgressBarOwner)
 gdNativeConstructors.Set("ProjectSettings", NewGDNativeClassFromProjectSettingsOwner)
 gdNativeConstructors.Set("PropertyTweener", NewGDNativeClassFromPropertyTweenerOwner)
+gdNativeConstructors.Set("QuadMesh", NewGDNativeClassFromQuadMeshOwner)
 gdNativeConstructors.Set("QuadOccluder3D", NewGDNativeClassFromQuadOccluder3DOwner)
 gdNativeConstructors.Set("RDAttachmentFormat", NewGDNativeClassFromRDAttachmentFormatOwner)
 gdNativeConstructors.Set("RDFramebufferPass", NewGDNativeClassFromRDFramebufferPassOwner)
@@ -5300,6 +5375,7 @@ gdNativeConstructors.Set("StaticBody3D", NewGDNativeClassFromStaticBody3DOwner)
 gdNativeConstructors.Set("StreamPeer", NewGDNativeClassFromStreamPeerOwner)
 gdNativeConstructors.Set("StreamPeerBuffer", NewGDNativeClassFromStreamPeerBufferOwner)
 gdNativeConstructors.Set("StreamPeerExtension", NewGDNativeClassFromStreamPeerExtensionOwner)
+gdNativeConstructors.Set("StreamPeerGZIP", NewGDNativeClassFromStreamPeerGZIPOwner)
 gdNativeConstructors.Set("StreamPeerTCP", NewGDNativeClassFromStreamPeerTCPOwner)
 gdNativeConstructors.Set("StreamPeerTLS", NewGDNativeClassFromStreamPeerTLSOwner)
 gdNativeConstructors.Set("StyleBox", NewGDNativeClassFromStyleBoxOwner)
@@ -5358,6 +5434,7 @@ gdNativeConstructors.Set("UDPServer", NewGDNativeClassFromUDPServerOwner)
 gdNativeConstructors.Set("UPNP", NewGDNativeClassFromUPNPOwner)
 gdNativeConstructors.Set("UPNPDevice", NewGDNativeClassFromUPNPDeviceOwner)
 gdNativeConstructors.Set("UndoRedo", NewGDNativeClassFromUndoRedoOwner)
+gdNativeConstructors.Set("UniformSetCacheRD", NewGDNativeClassFromUniformSetCacheRDOwner)
 gdNativeConstructors.Set("VBoxContainer", NewGDNativeClassFromVBoxContainerOwner)
 gdNativeConstructors.Set("VFlowContainer", NewGDNativeClassFromVFlowContainerOwner)
 gdNativeConstructors.Set("VScrollBar", NewGDNativeClassFromVScrollBarOwner)

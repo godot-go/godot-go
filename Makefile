@@ -4,8 +4,8 @@ GOOS?=$(shell go env GOOS)
 GOARCH?=$(shell go env GOARCH)
 CLANG_FORMAT?=$(shell which clang-format | which clang-format-10 | which clang-format-11 | which clang-format-12)
 GODOT?=$(shell which godot)
-# godot 4 beta1
-GODOT_HEADER_COMMIT_HASH?=62e5472d8e12b6e098f95c5d9f472857d7724a04
+# godot 4 beta2
+GODOT_HEADER_COMMIT_HASH?=dd5d3b3be0c4030fa09e1b30f3c41bacee5e0f42
 CWD=$(shell pwd)
 
 OUTPUT_PATH=test/demo/lib

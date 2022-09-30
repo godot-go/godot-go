@@ -40,9 +40,9 @@ jobs:
           submodules: true
       - name: Install Godot 4.0 beta1
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.0/beta1/Godot_v4.0-beta1_linux.x86_64.zip
-          sudo unzip Godot_v4.0-beta1_linux.x86_64.zip -d /usr/local/bin
-          sudo ln -s Godot_v4.0-beta1_linux.x86_64 /usr/local/bin/godot4
+          wget https://downloads.tuxfamily.org/godotengine/4.0/beta2/Godot_v4.0-beta2_linux.x86_64.zip
+          sudo unzip Godot_v4.0-beta2_linux.x86_64.zip -d /usr/local/bin
+          sudo ln -s Godot_v4.0-beta2_linux.x86_64 /usr/local/bin/godot4
       # - name: Update Godot Headers
       #   run: make update_godot_headers_from_github
       - name: Build
@@ -56,11 +56,8 @@ jobs:
           lscpu
           uname -a
       - name: Test
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 2
-          max_attempts: 3
-          run: make test || make test
+        timeout-minutes: 2
+        run: make test 2>&1
         env:
           DISPLAY: ":0"
           GODOT: "/usr/local/bin/godot4"

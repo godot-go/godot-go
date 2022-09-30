@@ -25,7 +25,7 @@ import (
 /*
  * String
  * indexingReturnType: String
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type String struct {
@@ -138,9 +138,6 @@ type stringMethodBindings struct {
     method_humanize_size GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_module_Nil GDNativePtrOperatorEvaluator
@@ -306,9 +303,6 @@ func stringInitBindings() {
     globalStringMethodBindings.method_humanize_size = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING, "humanize_size", 897497541)
     globalStringMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING)
     globalStringMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING)
-    globalStringMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING)
-    globalStringMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING)
-    globalStringMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING)
     globalStringMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_NIL)
         globalStringMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_NIL)
         globalStringMethodBindings.operator_module_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MODULE, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_NIL)
@@ -390,7 +384,7 @@ func NewStringWithStringName(from StringName,) String {
     var args [1]GDNativeTypePtr
 
     // StringName
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalStringMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -404,7 +398,7 @@ func NewStringWithNodePath(from NodePath,) String {
     var args [1]GDNativeTypePtr
 
     // NodePath
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalStringMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -2863,18 +2857,6 @@ func (cx *String) HumanizeSize(size int64,) String {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *String) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -3211,7 +3193,7 @@ func (cx *String) Module_PackedColorArray(right PackedColorArray) String {
 /*
  * Vector2
  * indexingReturnType: float
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Vector2 struct {
@@ -3269,9 +3251,6 @@ type vector2MethodBindings struct {
     member_y_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
@@ -3349,9 +3328,6 @@ func vector2InitBindings() {
     globalVector2MethodBindings.member_y_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2, "y")
     globalVector2MethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2)
     globalVector2MethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2)
-    globalVector2MethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2)
-    globalVector2MethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2)
-    globalVector2MethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2)
     globalVector2MethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector2MethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector2MethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR2, GDNATIVE_VARIANT_TYPE_NIL)
@@ -3400,7 +3376,7 @@ func NewVector2WithVector2(from Vector2,) Vector2 {
     var args [1]GDNativeTypePtr
 
     // Vector2
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector2MethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -3414,7 +3390,7 @@ func NewVector2WithVector2i(from Vector2i,) Vector2 {
     var args [1]GDNativeTypePtr
 
     // Vector2i
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector2MethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -4491,18 +4467,6 @@ func (cx *Vector2) FromAngle(angle float32,) Vector2 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Vector2) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Vector2) MemberGetx() float32 {
@@ -4651,7 +4615,7 @@ func (cx *Vector2) In_PackedVector2Array(right PackedVector2Array) bool {
 /*
  * Vector2i
  * indexingReturnType: int
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Vector2i struct {
@@ -4677,9 +4641,6 @@ type vector2iMethodBindings struct {
     member_y_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
@@ -4725,9 +4686,6 @@ func vector2iInitBindings() {
     globalVector2iMethodBindings.member_y_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2I, "y")
     globalVector2iMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2I)
     globalVector2iMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2I)
-    globalVector2iMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2I)
-    globalVector2iMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2I)
-    globalVector2iMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2I)
     globalVector2iMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector2iMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector2iMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR2I, GDNATIVE_VARIANT_TYPE_NIL)
@@ -4776,7 +4734,7 @@ func NewVector2iWithVector2i(from Vector2i,) Vector2i {
     var args [1]GDNativeTypePtr
 
     // Vector2i
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector2iMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -4790,7 +4748,7 @@ func NewVector2iWithVector2(from Vector2,) Vector2i {
     var args [1]GDNativeTypePtr
 
     // Vector2
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector2iMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -4983,18 +4941,6 @@ func (cx *Vector2i) Clamp(min Vector2i,max Vector2i,) Vector2i {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Vector2i) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Vector2i) MemberGetx() int64 {
@@ -5143,7 +5089,7 @@ func (cx *Vector2i) In_Array(right Array) bool {
 /*
  * Rect2
  * indexingReturnType: 
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Rect2 struct {
@@ -5176,9 +5122,6 @@ type rect2MethodBindings struct {
     member_size_getter GDNativePtrGetter
     member_end_setter GDNativePtrSetter
     member_end_getter GDNativePtrGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_equal_Rect2 GDNativePtrOperatorEvaluator
@@ -5216,9 +5159,6 @@ func rect2InitBindings() {
     globalRect2MethodBindings.member_size_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "size")
     globalRect2MethodBindings.member_end_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "end")
     globalRect2MethodBindings.member_end_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "end")
-    globalRect2MethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2)
-    globalRect2MethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2)
-    globalRect2MethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2)
     globalRect2MethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2, GDNATIVE_VARIANT_TYPE_NIL)
         globalRect2MethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2, GDNATIVE_VARIANT_TYPE_NIL)
         globalRect2MethodBindings.operator_equal_Rect2 = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2, GDNATIVE_VARIANT_TYPE_RECT2)
@@ -5252,7 +5192,7 @@ func NewRect2WithRect2(from Rect2,) Rect2 {
     var args [1]GDNativeTypePtr
 
     // Rect2
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalRect2MethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -5266,7 +5206,7 @@ func NewRect2WithRect2i(from Rect2i,) Rect2 {
     var args [1]GDNativeTypePtr
 
     // Rect2i
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalRect2MethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -5280,9 +5220,9 @@ func NewRect2WithVector2Vector2(position Vector2,size Vector2,) Rect2 {
     var args [2]GDNativeTypePtr
 
     // Vector2
-        args[0] = position.ptr()
+        args[0] = (GDNativeTypePtr)(position.ptr())
         // Vector2
-        args[1] = size.ptr()
+        args[1] = (GDNativeTypePtr)(size.ptr())
         callBuiltinConstructor(globalRect2MethodBindings.constructor_3, ptr, args[0],args[1],)
 
     return cx
@@ -5690,18 +5630,6 @@ func (cx *Rect2) Abs() Rect2 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Rect2) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Rect2) MemberGetposition() Vector2 {
@@ -5765,7 +5693,7 @@ func (cx *Rect2) In_Array(right Array) bool {
 /*
  * Rect2i
  * indexingReturnType: 
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Rect2i struct {
@@ -5797,9 +5725,6 @@ type rect2iMethodBindings struct {
     member_size_getter GDNativePtrGetter
     member_end_setter GDNativePtrSetter
     member_end_getter GDNativePtrGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_equal_Rect2i GDNativePtrOperatorEvaluator
@@ -5835,9 +5760,6 @@ func rect2iInitBindings() {
     globalRect2iMethodBindings.member_size_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2I, "size")
     globalRect2iMethodBindings.member_end_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2I, "end")
     globalRect2iMethodBindings.member_end_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2I, "end")
-    globalRect2iMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2I)
-    globalRect2iMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2I)
-    globalRect2iMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2I)
     globalRect2iMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2I, GDNATIVE_VARIANT_TYPE_NIL)
         globalRect2iMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2I, GDNATIVE_VARIANT_TYPE_NIL)
         globalRect2iMethodBindings.operator_equal_Rect2i = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2I, GDNATIVE_VARIANT_TYPE_RECT2I)
@@ -5870,7 +5792,7 @@ func NewRect2iWithRect2i(from Rect2i,) Rect2i {
     var args [1]GDNativeTypePtr
 
     // Rect2i
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalRect2iMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -5884,7 +5806,7 @@ func NewRect2iWithRect2(from Rect2,) Rect2i {
     var args [1]GDNativeTypePtr
 
     // Rect2
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalRect2iMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -5898,9 +5820,9 @@ func NewRect2iWithVector2iVector2i(position Vector2i,size Vector2i,) Rect2i {
     var args [2]GDNativeTypePtr
 
     // Vector2i
-        args[0] = position.ptr()
+        args[0] = (GDNativeTypePtr)(position.ptr())
         // Vector2i
-        args[1] = size.ptr()
+        args[1] = (GDNativeTypePtr)(size.ptr())
         callBuiltinConstructor(globalRect2iMethodBindings.constructor_3, ptr, args[0],args[1],)
 
     return cx
@@ -6276,18 +6198,6 @@ func (cx *Rect2i) Abs() Rect2i {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Rect2i) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Rect2i) MemberGetposition() Vector2i {
@@ -6345,7 +6255,7 @@ func (cx *Rect2i) In_Array(right Array) bool {
 /*
  * Vector3
  * indexingReturnType: float
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Vector3 struct {
@@ -6405,9 +6315,6 @@ type vector3MethodBindings struct {
     member_z_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
@@ -6489,9 +6396,6 @@ func vector3InitBindings() {
     globalVector3MethodBindings.member_z_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3, "z")
     globalVector3MethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3)
     globalVector3MethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3)
-    globalVector3MethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3)
-    globalVector3MethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3)
-    globalVector3MethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3)
     globalVector3MethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector3MethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector3MethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR3, GDNATIVE_VARIANT_TYPE_NIL)
@@ -6542,7 +6446,7 @@ func NewVector3WithVector3(from Vector3,) Vector3 {
     var args [1]GDNativeTypePtr
 
     // Vector3
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector3MethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -6556,7 +6460,7 @@ func NewVector3WithVector3i(from Vector3i,) Vector3 {
     var args [1]GDNativeTypePtr
 
     // Vector3i
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector3MethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -7652,18 +7556,6 @@ func (cx *Vector3) OctahedronDecode(uv Vector2,) Vector3 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Vector3) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Vector3) MemberGetx() float32 {
@@ -7829,7 +7721,7 @@ func (cx *Vector3) In_PackedVector3Array(right PackedVector3Array) bool {
 /*
  * Vector3i
  * indexingReturnType: int
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Vector3i struct {
@@ -7856,9 +7748,6 @@ type vector3iMethodBindings struct {
     member_z_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
@@ -7905,9 +7794,6 @@ func vector3iInitBindings() {
     globalVector3iMethodBindings.member_z_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3I, "z")
     globalVector3iMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3I)
     globalVector3iMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3I)
-    globalVector3iMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3I)
-    globalVector3iMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3I)
-    globalVector3iMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3I)
     globalVector3iMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector3iMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector3iMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR3I, GDNATIVE_VARIANT_TYPE_NIL)
@@ -7956,7 +7842,7 @@ func NewVector3iWithVector3i(from Vector3i,) Vector3i {
     var args [1]GDNativeTypePtr
 
     // Vector3i
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector3iMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -7970,7 +7856,7 @@ func NewVector3iWithVector3(from Vector3,) Vector3i {
     var args [1]GDNativeTypePtr
 
     // Vector3
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector3iMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -8146,18 +8032,6 @@ func (cx *Vector3i) Clamp(min Vector3i,max Vector3i,) Vector3i {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Vector3i) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Vector3i) MemberGetx() int64 {
@@ -8311,7 +8185,7 @@ func (cx *Vector3i) In_Array(right Array) bool {
 /*
  * Transform2D
  * indexingReturnType: Vector2
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type Transform2D struct {
@@ -8354,9 +8228,6 @@ type transform2DMethodBindings struct {
     member_origin_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
@@ -8409,9 +8280,6 @@ func transform2DInitBindings() {
     globalTransform2DMethodBindings.member_origin_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "origin")
     globalTransform2DMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D)
     globalTransform2DMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D)
-    globalTransform2DMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D)
-    globalTransform2DMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D)
-    globalTransform2DMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D)
     globalTransform2DMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, GDNATIVE_VARIANT_TYPE_NIL)
         globalTransform2DMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, GDNATIVE_VARIANT_TYPE_NIL)
         globalTransform2DMethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, GDNATIVE_VARIANT_TYPE_INT)
@@ -8450,7 +8318,7 @@ func NewTransform2DWithTransform2D(from Transform2D,) Transform2D {
     var args [1]GDNativeTypePtr
 
     // Transform2D
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalTransform2DMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -8466,7 +8334,7 @@ func NewTransform2DWithFloat32Vector2(rotation float32,position Vector2,) Transf
     // float
         args[0] = (GDNativeTypePtr)(unsafe.Pointer(&rotation))
         // Vector2
-        args[1] = position.ptr()
+        args[1] = (GDNativeTypePtr)(position.ptr())
         callBuiltinConstructor(globalTransform2DMethodBindings.constructor_2, ptr, args[0],args[1],)
 
     return cx
@@ -8482,11 +8350,11 @@ func NewTransform2DWithFloat32Vector2Float32Vector2(rotation float32,scale Vecto
     // float
         args[0] = (GDNativeTypePtr)(unsafe.Pointer(&rotation))
         // Vector2
-        args[1] = scale.ptr()
+        args[1] = (GDNativeTypePtr)(scale.ptr())
         // float
         args[2] = (GDNativeTypePtr)(unsafe.Pointer(&skew))
         // Vector2
-        args[3] = position.ptr()
+        args[3] = (GDNativeTypePtr)(position.ptr())
         callBuiltinConstructor(globalTransform2DMethodBindings.constructor_3, ptr, args[0],args[1],args[2],args[3],)
 
     return cx
@@ -8500,11 +8368,11 @@ func NewTransform2DWithVector2Vector2Vector2(x_axis Vector2,y_axis Vector2,origi
     var args [3]GDNativeTypePtr
 
     // Vector2
-        args[0] = x_axis.ptr()
+        args[0] = (GDNativeTypePtr)(x_axis.ptr())
         // Vector2
-        args[1] = y_axis.ptr()
+        args[1] = (GDNativeTypePtr)(y_axis.ptr())
         // Vector2
-        args[2] = origin.ptr()
+        args[2] = (GDNativeTypePtr)(origin.ptr())
         callBuiltinConstructor(globalTransform2DMethodBindings.constructor_4, ptr, args[0],args[1],args[2],)
 
     return cx
@@ -9047,18 +8915,6 @@ func (cx *Transform2D) LookingAt(target Vector2,) Transform2D {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Transform2D) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Transform2D) MemberGetx() Vector2 {
@@ -9152,7 +9008,7 @@ func (cx *Transform2D) Multiply_PackedVector2Array(right PackedVector2Array) Pac
 /*
  * Vector4
  * indexingReturnType: float
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Vector4 struct {
@@ -9199,9 +9055,6 @@ type vector4MethodBindings struct {
     member_w_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
@@ -9267,9 +9120,6 @@ func vector4InitBindings() {
     globalVector4MethodBindings.member_w_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4, "w")
     globalVector4MethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4)
     globalVector4MethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4)
-    globalVector4MethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4)
-    globalVector4MethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4)
-    globalVector4MethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4)
     globalVector4MethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector4MethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector4MethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR4, GDNATIVE_VARIANT_TYPE_NIL)
@@ -9317,7 +9167,7 @@ func NewVector4WithVector4(from Vector4,) Vector4 {
     var args [1]GDNativeTypePtr
 
     // Vector4
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector4MethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -9331,7 +9181,7 @@ func NewVector4WithVector4i(from Vector4i,) Vector4 {
     var args [1]GDNativeTypePtr
 
     // Vector4i
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector4MethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -9990,18 +9840,6 @@ func (cx *Vector4) IsZeroApprox() bool {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Vector4) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Vector4) MemberGetx() float32 {
@@ -10154,7 +9992,7 @@ func (cx *Vector4) In_Array(right Array) bool {
 /*
  * Vector4i
  * indexingReturnType: int
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Vector4i struct {
@@ -10183,9 +10021,6 @@ type vector4iMethodBindings struct {
     member_w_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
@@ -10234,9 +10069,6 @@ func vector4iInitBindings() {
     globalVector4iMethodBindings.member_w_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4I, "w")
     globalVector4iMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4I)
     globalVector4iMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4I)
-    globalVector4iMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4I)
-    globalVector4iMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4I)
-    globalVector4iMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4I)
     globalVector4iMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector4iMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector4iMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR4I, GDNATIVE_VARIANT_TYPE_NIL)
@@ -10285,7 +10117,7 @@ func NewVector4iWithVector4i(from Vector4i,) Vector4i {
     var args [1]GDNativeTypePtr
 
     // Vector4i
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector4iMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -10299,7 +10131,7 @@ func NewVector4iWithVector4(from Vector4,) Vector4i {
     var args [1]GDNativeTypePtr
 
     // Vector4
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalVector4iMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -10477,18 +10309,6 @@ func (cx *Vector4i) Clamp(min Vector4i,max Vector4i,) Vector4i {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Vector4i) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Vector4i) MemberGetx() int64 {
@@ -10647,7 +10467,7 @@ func (cx *Vector4i) In_Array(right Array) bool {
 /*
  * Plane
  * indexingReturnType: 
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Plane struct {
@@ -10682,9 +10502,6 @@ type planeMethodBindings struct {
     member_d_getter GDNativePtrGetter
     member_normal_setter GDNativePtrSetter
     member_normal_getter GDNativePtrGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
@@ -10726,9 +10543,6 @@ func planeInitBindings() {
     globalPlaneMethodBindings.member_d_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "d")
     globalPlaneMethodBindings.member_normal_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "normal")
     globalPlaneMethodBindings.member_normal_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "normal")
-    globalPlaneMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE)
-    globalPlaneMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE)
-    globalPlaneMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE)
     globalPlaneMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PLANE, GDNATIVE_VARIANT_TYPE_NIL)
         globalPlaneMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PLANE, GDNATIVE_VARIANT_TYPE_NIL)
         globalPlaneMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_PLANE, GDNATIVE_VARIANT_TYPE_NIL)
@@ -10764,7 +10578,7 @@ func NewPlaneWithPlane(from Plane,) Plane {
     var args [1]GDNativeTypePtr
 
     // Plane
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPlaneMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -10778,7 +10592,7 @@ func NewPlaneWithVector3(normal Vector3,) Plane {
     var args [1]GDNativeTypePtr
 
     // Vector3
-        args[0] = normal.ptr()
+        args[0] = (GDNativeTypePtr)(normal.ptr())
         callBuiltinConstructor(globalPlaneMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -10792,7 +10606,7 @@ func NewPlaneWithVector3Float32(normal Vector3,d float32,) Plane {
     var args [2]GDNativeTypePtr
 
     // Vector3
-        args[0] = normal.ptr()
+        args[0] = (GDNativeTypePtr)(normal.ptr())
         // float
         args[1] = (GDNativeTypePtr)(unsafe.Pointer(&d))
         callBuiltinConstructor(globalPlaneMethodBindings.constructor_3, ptr, args[0],args[1],)
@@ -10808,9 +10622,9 @@ func NewPlaneWithVector3Vector3(normal Vector3,point Vector3,) Plane {
     var args [2]GDNativeTypePtr
 
     // Vector3
-        args[0] = normal.ptr()
+        args[0] = (GDNativeTypePtr)(normal.ptr())
         // Vector3
-        args[1] = point.ptr()
+        args[1] = (GDNativeTypePtr)(point.ptr())
         callBuiltinConstructor(globalPlaneMethodBindings.constructor_4, ptr, args[0],args[1],)
 
     return cx
@@ -10824,11 +10638,11 @@ func NewPlaneWithVector3Vector3Vector3(point1 Vector3,point2 Vector3,point3 Vect
     var args [3]GDNativeTypePtr
 
     // Vector3
-        args[0] = point1.ptr()
+        args[0] = (GDNativeTypePtr)(point1.ptr())
         // Vector3
-        args[1] = point2.ptr()
+        args[1] = (GDNativeTypePtr)(point2.ptr())
         // Vector3
-        args[2] = point3.ptr()
+        args[2] = (GDNativeTypePtr)(point3.ptr())
         callBuiltinConstructor(globalPlaneMethodBindings.constructor_5, ptr, args[0],args[1],args[2],)
 
     return cx
@@ -11138,18 +10952,6 @@ func (cx *Plane) IntersectsSegment(from Vector3,to Vector3,) Variant {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Plane) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Plane) MemberGetx() float32 {
@@ -11235,7 +11037,7 @@ func (cx *Plane) In_Array(right Array) bool {
 /*
  * Quaternion
  * indexingReturnType: float
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Quaternion struct {
@@ -11277,9 +11079,6 @@ type quaternionMethodBindings struct {
     member_w_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
@@ -11335,9 +11134,6 @@ func quaternionInitBindings() {
     globalQuaternionMethodBindings.member_w_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION, "w")
     globalQuaternionMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION)
     globalQuaternionMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION)
-    globalQuaternionMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION)
-    globalQuaternionMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION)
-    globalQuaternionMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION)
     globalQuaternionMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_QUATERNION, GDNATIVE_VARIANT_TYPE_NIL)
         globalQuaternionMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_QUATERNION, GDNATIVE_VARIANT_TYPE_NIL)
         globalQuaternionMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_QUATERNION, GDNATIVE_VARIANT_TYPE_NIL)
@@ -11380,7 +11176,7 @@ func NewQuaternionWithQuaternion(from Quaternion,) Quaternion {
     var args [1]GDNativeTypePtr
 
     // Quaternion
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalQuaternionMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -11394,7 +11190,7 @@ func NewQuaternionWithBasis(from Basis,) Quaternion {
     var args [1]GDNativeTypePtr
 
     // Basis
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalQuaternionMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -11408,7 +11204,7 @@ func NewQuaternionWithVector3Float32(axis Vector3,angle float32,) Quaternion {
     var args [2]GDNativeTypePtr
 
     // Vector3
-        args[0] = axis.ptr()
+        args[0] = (GDNativeTypePtr)(axis.ptr())
         // float
         args[1] = (GDNativeTypePtr)(unsafe.Pointer(&angle))
         callBuiltinConstructor(globalQuaternionMethodBindings.constructor_3, ptr, args[0],args[1],)
@@ -11424,9 +11220,9 @@ func NewQuaternionWithVector3Vector3(arc_from Vector3,arc_to Vector3,) Quaternio
     var args [2]GDNativeTypePtr
 
     // Vector3
-        args[0] = arc_from.ptr()
+        args[0] = (GDNativeTypePtr)(arc_from.ptr())
         // Vector3
-        args[1] = arc_to.ptr()
+        args[1] = (GDNativeTypePtr)(arc_to.ptr())
         callBuiltinConstructor(globalQuaternionMethodBindings.constructor_4, ptr, args[0],args[1],)
 
     return cx
@@ -11460,7 +11256,7 @@ func NewQuaternionWithVector3(euler_yxz Vector3,) Quaternion {
     var args [1]GDNativeTypePtr
 
     // Vector3
-        args[0] = euler_yxz.ptr()
+        args[0] = (GDNativeTypePtr)(euler_yxz.ptr())
         callBuiltinConstructor(globalQuaternionMethodBindings.constructor_6, ptr, args[0],)
 
     return cx
@@ -11902,18 +11698,6 @@ func (cx *Quaternion) GetAngle() float32 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Quaternion) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Quaternion) MemberGetx() float32 {
@@ -12036,7 +11820,7 @@ func (cx *Quaternion) In_Array(right Array) bool {
 /*
  * AABB
  * indexingReturnType: 
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type AABB struct {
@@ -12078,9 +11862,6 @@ type aABBMethodBindings struct {
     member_size_getter GDNativePtrGetter
     member_end_setter GDNativePtrSetter
     member_end_getter GDNativePtrGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_equal_AABB GDNativePtrOperatorEvaluator
@@ -12127,9 +11908,6 @@ func aABBInitBindings() {
     globalAABBMethodBindings.member_size_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "size")
     globalAABBMethodBindings.member_end_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "end")
     globalAABBMethodBindings.member_end_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "end")
-    globalAABBMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB)
-    globalAABBMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB)
-    globalAABBMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB)
     globalAABBMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_AABB, GDNATIVE_VARIANT_TYPE_NIL)
         globalAABBMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_AABB, GDNATIVE_VARIANT_TYPE_NIL)
         globalAABBMethodBindings.operator_equal_AABB = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_AABB, GDNATIVE_VARIANT_TYPE_AABB)
@@ -12163,7 +11941,7 @@ func NewAABBWithAABB(from AABB,) AABB {
     var args [1]GDNativeTypePtr
 
     // AABB
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalAABBMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -12177,9 +11955,9 @@ func NewAABBWithVector3Vector3(position Vector3,size Vector3,) AABB {
     var args [2]GDNativeTypePtr
 
     // Vector3
-        args[0] = position.ptr()
+        args[0] = (GDNativeTypePtr)(position.ptr())
         // Vector3
-        args[1] = size.ptr()
+        args[1] = (GDNativeTypePtr)(size.ptr())
         callBuiltinConstructor(globalAABBMethodBindings.constructor_2, ptr, args[0],args[1],)
 
     return cx
@@ -12777,18 +12555,6 @@ func (cx *AABB) IntersectsRay(from Vector3,dir Vector3,) Variant {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *AABB) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *AABB) MemberGetposition() Vector3 {
@@ -12852,7 +12618,7 @@ func (cx *AABB) In_Array(right Array) bool {
 /*
  * Basis
  * indexingReturnType: Vector3
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type Basis struct {
@@ -12891,9 +12657,6 @@ type basisMethodBindings struct {
     member_z_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
@@ -12940,9 +12703,6 @@ func basisInitBindings() {
     globalBasisMethodBindings.member_z_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "z")
     globalBasisMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS)
     globalBasisMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS)
-    globalBasisMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS)
-    globalBasisMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS)
-    globalBasisMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS)
     globalBasisMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_BASIS, GDNATIVE_VARIANT_TYPE_NIL)
         globalBasisMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_BASIS, GDNATIVE_VARIANT_TYPE_NIL)
         globalBasisMethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_BASIS, GDNATIVE_VARIANT_TYPE_INT)
@@ -12979,7 +12739,7 @@ func NewBasisWithBasis(from Basis,) Basis {
     var args [1]GDNativeTypePtr
 
     // Basis
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalBasisMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -12993,7 +12753,7 @@ func NewBasisWithQuaternion(from Quaternion,) Basis {
     var args [1]GDNativeTypePtr
 
     // Quaternion
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalBasisMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -13007,7 +12767,7 @@ func NewBasisWithVector3Float32(axis Vector3,angle float32,) Basis {
     var args [2]GDNativeTypePtr
 
     // Vector3
-        args[0] = axis.ptr()
+        args[0] = (GDNativeTypePtr)(axis.ptr())
         // float
         args[1] = (GDNativeTypePtr)(unsafe.Pointer(&angle))
         callBuiltinConstructor(globalBasisMethodBindings.constructor_3, ptr, args[0],args[1],)
@@ -13023,11 +12783,11 @@ func NewBasisWithVector3Vector3Vector3(x_axis Vector3,y_axis Vector3,z_axis Vect
     var args [3]GDNativeTypePtr
 
     // Vector3
-        args[0] = x_axis.ptr()
+        args[0] = (GDNativeTypePtr)(x_axis.ptr())
         // Vector3
-        args[1] = y_axis.ptr()
+        args[1] = (GDNativeTypePtr)(y_axis.ptr())
         // Vector3
-        args[2] = z_axis.ptr()
+        args[2] = (GDNativeTypePtr)(z_axis.ptr())
         callBuiltinConstructor(globalBasisMethodBindings.constructor_4, ptr, args[0],args[1],args[2],)
 
     return cx
@@ -13482,18 +13242,6 @@ func (cx *Basis) FromEuler(euler Vector3,order int64,) Basis {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Basis) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Basis) MemberGetx() Vector3 {
@@ -13575,7 +13323,7 @@ func (cx *Basis) In_Array(right Array) bool {
 /*
  * Transform3D
  * indexingReturnType: 
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type Transform3D struct {
@@ -13605,9 +13353,6 @@ type transform3DMethodBindings struct {
     member_basis_getter GDNativePtrGetter
     member_origin_setter GDNativePtrSetter
     member_origin_getter GDNativePtrGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
@@ -13648,9 +13393,6 @@ func transform3DInitBindings() {
     globalTransform3DMethodBindings.member_basis_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "basis")
     globalTransform3DMethodBindings.member_origin_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "origin")
     globalTransform3DMethodBindings.member_origin_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "origin")
-    globalTransform3DMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D)
-    globalTransform3DMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D)
-    globalTransform3DMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D)
     globalTransform3DMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, GDNATIVE_VARIANT_TYPE_NIL)
         globalTransform3DMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, GDNATIVE_VARIANT_TYPE_NIL)
         globalTransform3DMethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, GDNATIVE_VARIANT_TYPE_INT)
@@ -13690,7 +13432,7 @@ func NewTransform3DWithTransform3D(from Transform3D,) Transform3D {
     var args [1]GDNativeTypePtr
 
     // Transform3D
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalTransform3DMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -13704,9 +13446,9 @@ func NewTransform3DWithBasisVector3(basis Basis,origin Vector3,) Transform3D {
     var args [2]GDNativeTypePtr
 
     // Basis
-        args[0] = basis.ptr()
+        args[0] = (GDNativeTypePtr)(basis.ptr())
         // Vector3
-        args[1] = origin.ptr()
+        args[1] = (GDNativeTypePtr)(origin.ptr())
         callBuiltinConstructor(globalTransform3DMethodBindings.constructor_2, ptr, args[0],args[1],)
 
     return cx
@@ -13720,13 +13462,13 @@ func NewTransform3DWithVector3Vector3Vector3Vector3(x_axis Vector3,y_axis Vector
     var args [4]GDNativeTypePtr
 
     // Vector3
-        args[0] = x_axis.ptr()
+        args[0] = (GDNativeTypePtr)(x_axis.ptr())
         // Vector3
-        args[1] = y_axis.ptr()
+        args[1] = (GDNativeTypePtr)(y_axis.ptr())
         // Vector3
-        args[2] = z_axis.ptr()
+        args[2] = (GDNativeTypePtr)(z_axis.ptr())
         // Vector3
-        args[3] = origin.ptr()
+        args[3] = (GDNativeTypePtr)(origin.ptr())
         callBuiltinConstructor(globalTransform3DMethodBindings.constructor_3, ptr, args[0],args[1],args[2],args[3],)
 
     return cx
@@ -13740,7 +13482,7 @@ func NewTransform3DWithProjection(from Projection,) Transform3D {
     var args [1]GDNativeTypePtr
 
     // Projection
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalTransform3DMethodBindings.constructor_4, ptr, args[0],)
 
     return cx
@@ -14082,18 +13824,6 @@ func (cx *Transform3D) IsEqualApprox(xform Transform3D,) bool {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Transform3D) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Transform3D) MemberGetbasis() Basis {
@@ -14188,7 +13918,7 @@ func (cx *Transform3D) Multiply_PackedVector3Array(right PackedVector3Array) Pac
 /*
  * Projection
  * indexingReturnType: Vector4
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Projection struct {
@@ -14236,9 +13966,6 @@ type projectionMethodBindings struct {
     member_w_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_multiply_Vector4 GDNativePtrOperatorEvaluator
         operator_equal_Projection GDNativePtrOperatorEvaluator
         operator_not_equal_Projection GDNativePtrOperatorEvaluator
@@ -14290,9 +14017,6 @@ func projectionInitBindings() {
     globalProjectionMethodBindings.member_w_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PROJECTION, "w")
     globalProjectionMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PROJECTION)
     globalProjectionMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PROJECTION)
-    globalProjectionMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PROJECTION)
-    globalProjectionMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PROJECTION)
-    globalProjectionMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PROJECTION)
     globalProjectionMethodBindings.operator_multiply_Vector4 = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_PROJECTION, GDNATIVE_VARIANT_TYPE_VECTOR4)
         globalProjectionMethodBindings.operator_equal_Projection = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PROJECTION, GDNATIVE_VARIANT_TYPE_PROJECTION)
         globalProjectionMethodBindings.operator_not_equal_Projection = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PROJECTION, GDNATIVE_VARIANT_TYPE_PROJECTION)
@@ -14325,7 +14049,7 @@ func NewProjectionWithProjection(from Projection,) Projection {
     var args [1]GDNativeTypePtr
 
     // Projection
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalProjectionMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -14339,7 +14063,7 @@ func NewProjectionWithTransform3D(from Transform3D,) Projection {
     var args [1]GDNativeTypePtr
 
     // Transform3D
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalProjectionMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -14353,13 +14077,13 @@ func NewProjectionWithVector4Vector4Vector4Vector4(x_axis Vector4,y_axis Vector4
     var args [4]GDNativeTypePtr
 
     // Vector4
-        args[0] = x_axis.ptr()
+        args[0] = (GDNativeTypePtr)(x_axis.ptr())
         // Vector4
-        args[1] = y_axis.ptr()
+        args[1] = (GDNativeTypePtr)(y_axis.ptr())
         // Vector4
-        args[2] = z_axis.ptr()
+        args[2] = (GDNativeTypePtr)(z_axis.ptr())
         // Vector4
-        args[3] = w_axis.ptr()
+        args[3] = (GDNativeTypePtr)(w_axis.ptr())
         callBuiltinConstructor(globalProjectionMethodBindings.constructor_3, ptr, args[0],args[1],args[2],args[3],)
 
     return cx
@@ -15152,18 +14876,6 @@ func (cx *Projection) GetLodMultiplier() float32 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Projection) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Projection) MemberGetx() Vector4 {
@@ -15226,7 +14938,7 @@ func (cx *Projection) In_Array(right Array) bool {
 /*
  * Color
  * indexingReturnType: float
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: false
  */
 type Color struct {
@@ -15294,9 +15006,6 @@ type colorMethodBindings struct {
     member_v_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
@@ -15379,9 +15088,6 @@ func colorInitBindings() {
     globalColorMethodBindings.member_v_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_COLOR, "v")
     globalColorMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_COLOR)
     globalColorMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_COLOR)
-    globalColorMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_COLOR)
-    globalColorMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_COLOR)
-    globalColorMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_COLOR)
     globalColorMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_COLOR, GDNATIVE_VARIANT_TYPE_NIL)
         globalColorMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_COLOR, GDNATIVE_VARIANT_TYPE_NIL)
         globalColorMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_COLOR, GDNATIVE_VARIANT_TYPE_NIL)
@@ -15425,7 +15131,7 @@ func NewColorWithColor(from Color,) Color {
     var args [1]GDNativeTypePtr
 
     // Color
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalColorMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -15439,7 +15145,7 @@ func NewColorWithColorFloat32(from Color,alpha float32,) Color {
     var args [2]GDNativeTypePtr
 
     // Color
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         // float
         args[1] = (GDNativeTypePtr)(unsafe.Pointer(&alpha))
         callBuiltinConstructor(globalColorMethodBindings.constructor_2, ptr, args[0],args[1],)
@@ -15493,7 +15199,7 @@ func NewColorWithString(code String,) Color {
     var args [1]GDNativeTypePtr
 
     // String
-        args[0] = code.ptr()
+        args[0] = (GDNativeTypePtr)(code.ptr())
         callBuiltinConstructor(globalColorMethodBindings.constructor_5, ptr, args[0],)
 
     return cx
@@ -15507,7 +15213,7 @@ func NewColorWithStringFloat32(code String,alpha float32,) Color {
     var args [2]GDNativeTypePtr
 
     // String
-        args[0] = code.ptr()
+        args[0] = (GDNativeTypePtr)(code.ptr())
         // float
         args[1] = (GDNativeTypePtr)(unsafe.Pointer(&alpha))
         callBuiltinConstructor(globalColorMethodBindings.constructor_6, ptr, args[0],args[1],)
@@ -16270,18 +15976,6 @@ func (cx *Color) FromRgbe9995(rgbe int64,) Color {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Color) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 func (cx *Color) MemberGetr() float32 {
@@ -16445,7 +16139,7 @@ func (cx *Color) In_PackedColorArray(right PackedColorArray) bool {
 /*
  * StringName
  * indexingReturnType: 
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type StringName struct {
@@ -16458,9 +16152,6 @@ type stringNameMethodBindings struct {
     constructor_2 GDNativePtrConstructor
     destructor GDNativePtrDestructor
     method_hash GDNativePtrBuiltInMethod
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_equal_String GDNativePtrOperatorEvaluator
@@ -16486,9 +16177,6 @@ func stringNameInitBindings() {
     globalStringNameMethodBindings.constructor_2 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING_NAME, 2)
     globalStringNameMethodBindings.destructor = GDNativeInterface_variant_get_ptr_destructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING_NAME)
     globalStringNameMethodBindings.method_hash = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING_NAME, "hash", 3173160232)
-    globalStringNameMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING_NAME)
-    globalStringNameMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING_NAME)
-    globalStringNameMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING_NAME)
     globalStringNameMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_STRING_NAME, GDNATIVE_VARIANT_TYPE_NIL)
         globalStringNameMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_STRING_NAME, GDNATIVE_VARIANT_TYPE_NIL)
         globalStringNameMethodBindings.operator_equal_String = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_STRING_NAME, GDNATIVE_VARIANT_TYPE_STRING)
@@ -16530,7 +16218,7 @@ func NewStringNameWithStringName(from StringName,) StringName {
     var args [1]GDNativeTypePtr
 
     // StringName
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalStringNameMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -16544,7 +16232,7 @@ func NewStringNameWithString(from String,) StringName {
     var args [1]GDNativeTypePtr
 
     // String
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalStringNameMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -16579,18 +16267,6 @@ func (cx *StringName) Hash() int64 {
     
 }
 
-
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *StringName) SetKey(const Variant &p_key) Variant {
-
-}
-*/
 
 // members
 
@@ -16688,7 +16364,7 @@ func (cx *StringName) In_Array(right Array) bool {
 /*
  * NodePath
  * indexingReturnType: 
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type NodePath struct {
@@ -16710,9 +16386,6 @@ type nodePathMethodBindings struct {
     method_get_concatenated_subnames GDNativePtrBuiltInMethod
     method_get_as_property_path GDNativePtrBuiltInMethod
     method_is_empty GDNativePtrBuiltInMethod
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_equal_NodePath GDNativePtrOperatorEvaluator
@@ -16738,9 +16411,6 @@ func nodePathInitBindings() {
     globalNodePathMethodBindings.method_get_concatenated_subnames = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_NODE_PATH, "get_concatenated_subnames", 1825232092)
     globalNodePathMethodBindings.method_get_as_property_path = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_NODE_PATH, "get_as_property_path", 1598598043)
     globalNodePathMethodBindings.method_is_empty = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_NODE_PATH, "is_empty", 3918633141)
-    globalNodePathMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_NODE_PATH)
-    globalNodePathMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_NODE_PATH)
-    globalNodePathMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_NODE_PATH)
     globalNodePathMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_NODE_PATH, GDNATIVE_VARIANT_TYPE_NIL)
         globalNodePathMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_NODE_PATH, GDNATIVE_VARIANT_TYPE_NIL)
         globalNodePathMethodBindings.operator_equal_NodePath = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_NODE_PATH, GDNATIVE_VARIANT_TYPE_NODE_PATH)
@@ -16773,7 +16443,7 @@ func NewNodePathWithNodePath(from NodePath,) NodePath {
     var args [1]GDNativeTypePtr
 
     // NodePath
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalNodePathMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -16787,7 +16457,7 @@ func NewNodePathWithString(from String,) NodePath {
     var args [1]GDNativeTypePtr
 
     // String
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalNodePathMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -17012,18 +16682,6 @@ func (cx *NodePath) IsEmpty() bool {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *NodePath) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -17066,7 +16724,7 @@ func (cx *NodePath) In_Array(right Array) bool {
 /*
  * RID
  * indexingReturnType: 
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type RID struct {
@@ -17079,9 +16737,6 @@ type rIDMethodBindings struct {
     destructor GDNativePtrDestructor
     method_is_valid GDNativePtrBuiltInMethod
     method_get_id GDNativePtrBuiltInMethod
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_equal_RID GDNativePtrOperatorEvaluator
@@ -17100,9 +16755,6 @@ func rIDInitBindings() {
     globalRIDMethodBindings.destructor = GDNativeInterface_variant_get_ptr_destructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RID)
     globalRIDMethodBindings.method_is_valid = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RID, "is_valid", 3918633141)
     globalRIDMethodBindings.method_get_id = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RID, "get_id", 3173160232)
-    globalRIDMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RID)
-    globalRIDMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RID)
-    globalRIDMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RID)
     globalRIDMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RID, GDNATIVE_VARIANT_TYPE_NIL)
         globalRIDMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RID, GDNATIVE_VARIANT_TYPE_NIL)
         globalRIDMethodBindings.operator_equal_RID = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RID, GDNATIVE_VARIANT_TYPE_RID)
@@ -17137,7 +16789,7 @@ func NewRIDWithRID(from RID,) RID {
     var args [1]GDNativeTypePtr
 
     // RID
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalRIDMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -17191,18 +16843,6 @@ func (cx *RID) GetId() int64 {
     
 }
 
-
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *RID) SetKey(const Variant &p_key) Variant {
-
-}
-*/
 
 // members
 
@@ -17258,7 +16898,7 @@ func (cx *RID) Greater_equal_RID(right RID) bool {
 /*
  * Callable
  * indexingReturnType: 
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type Callable struct {
@@ -17270,6 +16910,7 @@ type callableMethodBindings struct {
     constructor_1 GDNativePtrConstructor
     constructor_2 GDNativePtrConstructor
     destructor GDNativePtrDestructor
+    method_callv GDNativePtrBuiltInMethod
     method_is_null GDNativePtrBuiltInMethod
     method_is_custom GDNativePtrBuiltInMethod
     method_is_standard GDNativePtrBuiltInMethod
@@ -17284,9 +16925,6 @@ type callableMethodBindings struct {
     method_rpc GDNativePtrBuiltInMethod
     method_rpc_id GDNativePtrBuiltInMethod
     method_bind GDNativePtrBuiltInMethod
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_equal_Callable GDNativePtrOperatorEvaluator
@@ -17302,6 +16940,7 @@ func callableInitBindings() {
     globalCallableMethodBindings.constructor_1 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, 1)
     globalCallableMethodBindings.constructor_2 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, 2)
     globalCallableMethodBindings.destructor = GDNativeInterface_variant_get_ptr_destructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE)
+    globalCallableMethodBindings.method_callv = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, "callv", 413578926)
     globalCallableMethodBindings.method_is_null = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, "is_null", 3918633141)
     globalCallableMethodBindings.method_is_custom = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, "is_custom", 3918633141)
     globalCallableMethodBindings.method_is_standard = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, "is_standard", 3918633141)
@@ -17316,9 +16955,6 @@ func callableInitBindings() {
     globalCallableMethodBindings.method_rpc = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, "rpc", 3286317445)
     globalCallableMethodBindings.method_rpc_id = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, "rpc_id", 2270047679)
     globalCallableMethodBindings.method_bind = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, "bind", 3224143119)
-    globalCallableMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE)
-    globalCallableMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE)
-    globalCallableMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE)
     globalCallableMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_CALLABLE, GDNATIVE_VARIANT_TYPE_NIL)
         globalCallableMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_CALLABLE, GDNATIVE_VARIANT_TYPE_NIL)
         globalCallableMethodBindings.operator_equal_Callable = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_CALLABLE, GDNATIVE_VARIANT_TYPE_CALLABLE)
@@ -17351,7 +16987,7 @@ func NewCallableWithCallable(from Callable,) Callable {
     var args [1]GDNativeTypePtr
 
     // Callable
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalCallableMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -17367,7 +17003,7 @@ func NewCallableWithObjectStringName(object Object,method StringName,) Callable 
     // Object
         args[0] = (GDNativeTypePtr)(unsafe.Pointer(&object))
         // StringName
-        args[1] = method.ptr()
+        args[1] = (GDNativeTypePtr)(method.ptr())
         callBuiltinConstructor(globalCallableMethodBindings.constructor_2, ptr, args[0],args[1],)
 
     return cx
@@ -17382,6 +17018,34 @@ func (cx *Callable) Destroy() {
 
 
 // methods
+
+
+/* Callv : callv
+ * is_vararg = false, is_static = false
+ * goReturnType(Variant) -> Variant
+ */
+func (cx *Callable) Callv(arguments Array,) Variant {
+    mb := globalCallableMethodBindings.method_callv
+
+    bx := cx.ptr()
+    sz := unsafe.Sizeof(nullptr) * uintptr(1)
+    argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+
+	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
+    
+    // ArrayEncoder
+    args[0] = (GDNativeTypePtr)(unsafe.Pointer(&arguments))
+    
+    
+
+    ret := callBuiltinMethodPtrRet[Variant](mb, bx, args)
+
+    C.free(argBytes)
+    return ret
+    
+
+    
+}
 
 
 /* IsNull : is_null
@@ -17700,18 +17364,6 @@ func (cx *Callable) Bind(varargs ...Variant) Callable {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Callable) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -17754,7 +17406,7 @@ func (cx *Callable) In_Array(right Array) bool {
 /*
  * Signal
  * indexingReturnType: 
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type Signal struct {
@@ -17775,9 +17427,6 @@ type signalMethodBindings struct {
     method_is_connected GDNativePtrBuiltInMethod
     method_get_connections GDNativePtrBuiltInMethod
     method_emit GDNativePtrBuiltInMethod
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_equal_Signal GDNativePtrOperatorEvaluator
@@ -17802,9 +17451,6 @@ func signalInitBindings() {
     globalSignalMethodBindings.method_is_connected = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_SIGNAL, "is_connected", 4129521963)
     globalSignalMethodBindings.method_get_connections = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_SIGNAL, "get_connections", 4144163970)
     globalSignalMethodBindings.method_emit = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_SIGNAL, "emit", 3286317445)
-    globalSignalMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_SIGNAL)
-    globalSignalMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_SIGNAL)
-    globalSignalMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_SIGNAL)
     globalSignalMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_SIGNAL, GDNATIVE_VARIANT_TYPE_NIL)
         globalSignalMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_SIGNAL, GDNATIVE_VARIANT_TYPE_NIL)
         globalSignalMethodBindings.operator_equal_Signal = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_SIGNAL, GDNATIVE_VARIANT_TYPE_SIGNAL)
@@ -17837,7 +17483,7 @@ func NewSignalWithSignal(from Signal,) Signal {
     var args [1]GDNativeTypePtr
 
     // Signal
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalSignalMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -17853,7 +17499,7 @@ func NewSignalWithObjectStringName(object Object,signal StringName,) Signal {
     // Object
         args[0] = (GDNativeTypePtr)(unsafe.Pointer(&object))
         // StringName
-        args[1] = signal.ptr()
+        args[1] = (GDNativeTypePtr)(signal.ptr())
         callBuiltinConstructor(globalSignalMethodBindings.constructor_2, ptr, args[0],args[1],)
 
     return cx
@@ -18078,18 +17724,6 @@ func (cx *Signal) Emit(varargs ...Variant)  {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *Signal) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -18225,7 +17859,7 @@ func NewDictionaryWithDictionary(from Dictionary,) Dictionary {
     var args [1]GDNativeTypePtr
 
     // Dictionary
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalDictionaryMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -18612,7 +18246,7 @@ func (cx *Dictionary) In_Array(right Array) bool {
 /*
  * Array
  * indexingReturnType: Variant
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type Array struct {
@@ -18631,6 +18265,7 @@ type arrayMethodBindings struct {
     constructor_8 GDNativePtrConstructor
     constructor_9 GDNativePtrConstructor
     constructor_10 GDNativePtrConstructor
+    constructor_11 GDNativePtrConstructor
     destructor GDNativePtrDestructor
     method_size GDNativePtrBuiltInMethod
     method_is_empty GDNativePtrBuiltInMethod
@@ -18670,11 +18305,16 @@ type arrayMethodBindings struct {
     method_all GDNativePtrBuiltInMethod
     method_max GDNativePtrBuiltInMethod
     method_min GDNativePtrBuiltInMethod
+    method_typed_assign GDNativePtrBuiltInMethod
+    method_set_typed GDNativePtrBuiltInMethod
+    method_is_typed GDNativePtrBuiltInMethod
+    method_get_typed_builtin GDNativePtrBuiltInMethod
+    method_get_typed_class_name GDNativePtrBuiltInMethod
+    method_get_typed_script GDNativePtrBuiltInMethod
+    method_set_read_only GDNativePtrBuiltInMethod
+    method_is_read_only GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -18702,6 +18342,7 @@ func arrayInitBindings() {
     globalArrayMethodBindings.constructor_8 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, 8)
     globalArrayMethodBindings.constructor_9 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, 9)
     globalArrayMethodBindings.constructor_10 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, 10)
+    globalArrayMethodBindings.constructor_11 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, 11)
     globalArrayMethodBindings.destructor = GDNativeInterface_variant_get_ptr_destructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY)
     globalArrayMethodBindings.method_size = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "size", 3173160232)
     globalArrayMethodBindings.method_is_empty = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "is_empty", 3918633141)
@@ -18741,11 +18382,16 @@ func arrayInitBindings() {
     globalArrayMethodBindings.method_all = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "all", 4129521963)
     globalArrayMethodBindings.method_max = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "max", 1460142086)
     globalArrayMethodBindings.method_min = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "min", 1460142086)
+    globalArrayMethodBindings.method_typed_assign = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "typed_assign", 1485459766)
+    globalArrayMethodBindings.method_set_typed = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "set_typed", 2557487401)
+    globalArrayMethodBindings.method_is_typed = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "is_typed", 3918633141)
+    globalArrayMethodBindings.method_get_typed_builtin = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "get_typed_builtin", 3173160232)
+    globalArrayMethodBindings.method_get_typed_class_name = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "get_typed_class_name", 1825232092)
+    globalArrayMethodBindings.method_get_typed_script = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "get_typed_script", 1460142086)
+    globalArrayMethodBindings.method_set_read_only = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "set_read_only", 315553568)
+    globalArrayMethodBindings.method_is_read_only = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "is_read_only", 3918633141)
     globalArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY)
     globalArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY)
-    globalArrayMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY)
-    globalArrayMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY)
-    globalArrayMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY)
     globalArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -18783,12 +18429,32 @@ func NewArrayWithArray(from Array,) Array {
     var args [1]GDNativeTypePtr
 
     // Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalArrayMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
 }
 // NewArray, index: 2
+func NewArrayWithArrayInt64StringNameVariant(base Array,typeName int64,class_name StringName,script Variant,) Array {
+    cx := Array{}
+
+    ptr := cx.ptr()
+
+    var args [4]GDNativeTypePtr
+
+    // Array
+        args[0] = (GDNativeTypePtr)(base.ptr())
+        // int
+        args[1] = (GDNativeTypePtr)(unsafe.Pointer(&typeName))
+        // StringName
+        args[2] = (GDNativeTypePtr)(class_name.ptr())
+        // Nil
+        args[3] = (GDNativeTypePtr)(script.ptr())
+        callBuiltinConstructor(globalArrayMethodBindings.constructor_2, ptr, args[0],args[1],args[2],args[3],)
+
+    return cx
+}
+// NewArray, index: 3
 func NewArrayWithPackedByteArray(from PackedByteArray,) Array {
     cx := Array{}
 
@@ -18797,12 +18463,12 @@ func NewArrayWithPackedByteArray(from PackedByteArray,) Array {
     var args [1]GDNativeTypePtr
 
     // PackedByteArray
-        args[0] = from.ptr()
-        callBuiltinConstructor(globalArrayMethodBindings.constructor_2, ptr, args[0],)
+        args[0] = (GDNativeTypePtr)(from.ptr())
+        callBuiltinConstructor(globalArrayMethodBindings.constructor_3, ptr, args[0],)
 
     return cx
 }
-// NewArray, index: 3
+// NewArray, index: 4
 func NewArrayWithPackedInt32Array(from PackedInt32Array,) Array {
     cx := Array{}
 
@@ -18811,12 +18477,12 @@ func NewArrayWithPackedInt32Array(from PackedInt32Array,) Array {
     var args [1]GDNativeTypePtr
 
     // PackedInt32Array
-        args[0] = from.ptr()
-        callBuiltinConstructor(globalArrayMethodBindings.constructor_3, ptr, args[0],)
+        args[0] = (GDNativeTypePtr)(from.ptr())
+        callBuiltinConstructor(globalArrayMethodBindings.constructor_4, ptr, args[0],)
 
     return cx
 }
-// NewArray, index: 4
+// NewArray, index: 5
 func NewArrayWithPackedInt64Array(from PackedInt64Array,) Array {
     cx := Array{}
 
@@ -18825,12 +18491,12 @@ func NewArrayWithPackedInt64Array(from PackedInt64Array,) Array {
     var args [1]GDNativeTypePtr
 
     // PackedInt64Array
-        args[0] = from.ptr()
-        callBuiltinConstructor(globalArrayMethodBindings.constructor_4, ptr, args[0],)
+        args[0] = (GDNativeTypePtr)(from.ptr())
+        callBuiltinConstructor(globalArrayMethodBindings.constructor_5, ptr, args[0],)
 
     return cx
 }
-// NewArray, index: 5
+// NewArray, index: 6
 func NewArrayWithPackedFloat32Array(from PackedFloat32Array,) Array {
     cx := Array{}
 
@@ -18839,12 +18505,12 @@ func NewArrayWithPackedFloat32Array(from PackedFloat32Array,) Array {
     var args [1]GDNativeTypePtr
 
     // PackedFloat32Array
-        args[0] = from.ptr()
-        callBuiltinConstructor(globalArrayMethodBindings.constructor_5, ptr, args[0],)
+        args[0] = (GDNativeTypePtr)(from.ptr())
+        callBuiltinConstructor(globalArrayMethodBindings.constructor_6, ptr, args[0],)
 
     return cx
 }
-// NewArray, index: 6
+// NewArray, index: 7
 func NewArrayWithPackedFloat64Array(from PackedFloat64Array,) Array {
     cx := Array{}
 
@@ -18853,12 +18519,12 @@ func NewArrayWithPackedFloat64Array(from PackedFloat64Array,) Array {
     var args [1]GDNativeTypePtr
 
     // PackedFloat64Array
-        args[0] = from.ptr()
-        callBuiltinConstructor(globalArrayMethodBindings.constructor_6, ptr, args[0],)
+        args[0] = (GDNativeTypePtr)(from.ptr())
+        callBuiltinConstructor(globalArrayMethodBindings.constructor_7, ptr, args[0],)
 
     return cx
 }
-// NewArray, index: 7
+// NewArray, index: 8
 func NewArrayWithPackedStringArray(from PackedStringArray,) Array {
     cx := Array{}
 
@@ -18867,12 +18533,12 @@ func NewArrayWithPackedStringArray(from PackedStringArray,) Array {
     var args [1]GDNativeTypePtr
 
     // PackedStringArray
-        args[0] = from.ptr()
-        callBuiltinConstructor(globalArrayMethodBindings.constructor_7, ptr, args[0],)
+        args[0] = (GDNativeTypePtr)(from.ptr())
+        callBuiltinConstructor(globalArrayMethodBindings.constructor_8, ptr, args[0],)
 
     return cx
 }
-// NewArray, index: 8
+// NewArray, index: 9
 func NewArrayWithPackedVector2Array(from PackedVector2Array,) Array {
     cx := Array{}
 
@@ -18881,12 +18547,12 @@ func NewArrayWithPackedVector2Array(from PackedVector2Array,) Array {
     var args [1]GDNativeTypePtr
 
     // PackedVector2Array
-        args[0] = from.ptr()
-        callBuiltinConstructor(globalArrayMethodBindings.constructor_8, ptr, args[0],)
+        args[0] = (GDNativeTypePtr)(from.ptr())
+        callBuiltinConstructor(globalArrayMethodBindings.constructor_9, ptr, args[0],)
 
     return cx
 }
-// NewArray, index: 9
+// NewArray, index: 10
 func NewArrayWithPackedVector3Array(from PackedVector3Array,) Array {
     cx := Array{}
 
@@ -18895,12 +18561,12 @@ func NewArrayWithPackedVector3Array(from PackedVector3Array,) Array {
     var args [1]GDNativeTypePtr
 
     // PackedVector3Array
-        args[0] = from.ptr()
-        callBuiltinConstructor(globalArrayMethodBindings.constructor_9, ptr, args[0],)
+        args[0] = (GDNativeTypePtr)(from.ptr())
+        callBuiltinConstructor(globalArrayMethodBindings.constructor_10, ptr, args[0],)
 
     return cx
 }
-// NewArray, index: 10
+// NewArray, index: 11
 func NewArrayWithPackedColorArray(from PackedColorArray,) Array {
     cx := Array{}
 
@@ -18909,8 +18575,8 @@ func NewArrayWithPackedColorArray(from PackedColorArray,) Array {
     var args [1]GDNativeTypePtr
 
     // PackedColorArray
-        args[0] = from.ptr()
-        callBuiltinConstructor(globalArrayMethodBindings.constructor_10, ptr, args[0],)
+        args[0] = (GDNativeTypePtr)(from.ptr())
+        callBuiltinConstructor(globalArrayMethodBindings.constructor_11, ptr, args[0],)
 
     return cx
 }
@@ -19901,17 +19567,190 @@ func (cx *Array) Min() Variant {
 }
 
 
-/* TODO: implement keyed built-in classes
+/* TypedAssign : typed_assign
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Array) TypedAssign(array Array,) bool {
+    mb := globalArrayMethodBindings.method_typed_assign
 
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
+    bx := cx.ptr()
+    sz := unsafe.Sizeof(nullptr) * uintptr(1)
+    argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
 
+	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
+    
+    // ArrayEncoder
+    args[0] = (GDNativeTypePtr)(unsafe.Pointer(&array))
+    
+    
 
-// keyed
-func (cx *Array) SetKey(const Variant &p_key) Variant {
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, args)
 
+    C.free(argBytes)
+    return ret
+    
+
+    
 }
-*/
+
+
+/* SetTyped : set_typed
+ * is_vararg = false, is_static = false
+ * goReturnType() -> 
+ */
+func (cx *Array) SetTyped(typeName int64,class_name StringName,script Variant,)  {
+    mb := globalArrayMethodBindings.method_set_typed
+
+    bx := cx.ptr()
+    sz := unsafe.Sizeof(nullptr) * uintptr(3)
+    argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+
+	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
+    
+    // Int64Encoder
+    args[0] = (GDNativeTypePtr)(unsafe.Pointer(&typeName))
+    
+    
+    // StringNameEncoder
+    args[1] = (GDNativeTypePtr)(unsafe.Pointer(&class_name))
+    
+    
+    // VariantEncoder
+    args[2] = (GDNativeTypePtr)(unsafe.Pointer(&script))
+    
+    
+
+    callBuiltinMethodPtrNoRet(mb, bx, args)
+
+    C.free(argBytes)
+    
+
+    
+}
+
+
+/* IsTyped : is_typed
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Array) IsTyped() bool {
+    mb := globalArrayMethodBindings.method_is_typed
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
+
+/* GetTypedBuiltin : get_typed_builtin
+ * is_vararg = false, is_static = false
+ * goReturnType(int) -> int64
+ */
+func (cx *Array) GetTypedBuiltin() int64 {
+    mb := globalArrayMethodBindings.method_get_typed_builtin
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
+
+/* GetTypedClassName : get_typed_class_name
+ * is_vararg = false, is_static = false
+ * goReturnType(StringName) -> StringName
+ */
+func (cx *Array) GetTypedClassName() StringName {
+    mb := globalArrayMethodBindings.method_get_typed_class_name
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[StringName](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
+
+/* GetTypedScript : get_typed_script
+ * is_vararg = false, is_static = false
+ * goReturnType(Variant) -> Variant
+ */
+func (cx *Array) GetTypedScript() Variant {
+    mb := globalArrayMethodBindings.method_get_typed_script
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[Variant](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
+
+/* SetReadOnly : set_read_only
+ * is_vararg = false, is_static = false
+ * goReturnType() -> 
+ */
+func (cx *Array) SetReadOnly(enable bool,)  {
+    mb := globalArrayMethodBindings.method_set_read_only
+
+    bx := cx.ptr()
+    sz := unsafe.Sizeof(nullptr) * uintptr(1)
+    argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+
+	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
+    
+    // BoolEncoder
+    args[0] = (GDNativeTypePtr)(unsafe.Pointer(&enable))
+    
+    
+
+    callBuiltinMethodPtrNoRet(mb, bx, args)
+
+    C.free(argBytes)
+    
+
+    
+}
+
+
+/* IsReadOnly : is_read_only
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Array) IsReadOnly() bool {
+    mb := globalArrayMethodBindings.method_is_read_only
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
 
 // members
 
@@ -19985,7 +19824,7 @@ func (cx *Array) In_Array(right Array) bool {
 /*
  * PackedByteArray
  * indexingReturnType: int
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type PackedByteArray struct {
@@ -20057,9 +19896,6 @@ type packedByteArrayMethodBindings struct {
     method_encode_var GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -20136,9 +19972,6 @@ func packedByteArrayInitBindings() {
     globalPackedByteArrayMethodBindings.method_encode_var = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, "encode_var", 2604460497)
     globalPackedByteArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY)
     globalPackedByteArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY)
-    globalPackedByteArrayMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY)
-    globalPackedByteArrayMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY)
-    globalPackedByteArrayMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY)
     globalPackedByteArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedByteArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedByteArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -20172,7 +20005,7 @@ func NewPackedByteArrayWithPackedByteArray(from PackedByteArray,) PackedByteArra
     var args [1]GDNativeTypePtr
 
     // PackedByteArray
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedByteArrayMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -20186,7 +20019,7 @@ func NewPackedByteArrayWithArray(from Array,) PackedByteArray {
     var args [1]GDNativeTypePtr
 
     // Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedByteArrayMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -21770,18 +21603,6 @@ func (cx *PackedByteArray) EncodeVar(byte_offset int64,value Variant,allow_objec
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *PackedByteArray) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -21830,7 +21651,7 @@ func (cx *PackedByteArray) Add_PackedByteArray(right PackedByteArray) PackedByte
 /*
  * PackedInt32Array
  * indexingReturnType: int
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type PackedInt32Array struct {
@@ -21865,9 +21686,6 @@ type packedInt32ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -21907,9 +21725,6 @@ func packedInt32ArrayInitBindings() {
     globalPackedInt32ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, "count", 4103005248)
     globalPackedInt32ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY)
     globalPackedInt32ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY)
-    globalPackedInt32ArrayMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY)
-    globalPackedInt32ArrayMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY)
-    globalPackedInt32ArrayMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY)
     globalPackedInt32ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedInt32ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedInt32ArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -21943,7 +21758,7 @@ func NewPackedInt32ArrayWithPackedInt32Array(from PackedInt32Array,) PackedInt32
     var args [1]GDNativeTypePtr
 
     // PackedInt32Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedInt32ArrayMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -21957,7 +21772,7 @@ func NewPackedInt32ArrayWithArray(from Array,) PackedInt32Array {
     var args [1]GDNativeTypePtr
 
     // Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedInt32ArrayMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -22516,18 +22331,6 @@ func (cx *PackedInt32Array) Count(value int64,) int64 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *PackedInt32Array) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -22576,7 +22379,7 @@ func (cx *PackedInt32Array) Add_PackedInt32Array(right PackedInt32Array) PackedI
 /*
  * PackedInt64Array
  * indexingReturnType: int
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type PackedInt64Array struct {
@@ -22611,9 +22414,6 @@ type packedInt64ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -22653,9 +22453,6 @@ func packedInt64ArrayInitBindings() {
     globalPackedInt64ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, "count", 4103005248)
     globalPackedInt64ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY)
     globalPackedInt64ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY)
-    globalPackedInt64ArrayMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY)
-    globalPackedInt64ArrayMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY)
-    globalPackedInt64ArrayMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY)
     globalPackedInt64ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedInt64ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedInt64ArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -22689,7 +22486,7 @@ func NewPackedInt64ArrayWithPackedInt64Array(from PackedInt64Array,) PackedInt64
     var args [1]GDNativeTypePtr
 
     // PackedInt64Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedInt64ArrayMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -22703,7 +22500,7 @@ func NewPackedInt64ArrayWithArray(from Array,) PackedInt64Array {
     var args [1]GDNativeTypePtr
 
     // Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedInt64ArrayMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -23262,18 +23059,6 @@ func (cx *PackedInt64Array) Count(value int64,) int64 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *PackedInt64Array) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -23322,7 +23107,7 @@ func (cx *PackedInt64Array) Add_PackedInt64Array(right PackedInt64Array) PackedI
 /*
  * PackedFloat32Array
  * indexingReturnType: float
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type PackedFloat32Array struct {
@@ -23357,9 +23142,6 @@ type packedFloat32ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -23399,9 +23181,6 @@ func packedFloat32ArrayInitBindings() {
     globalPackedFloat32ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, "count", 2859915090)
     globalPackedFloat32ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY)
     globalPackedFloat32ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY)
-    globalPackedFloat32ArrayMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY)
-    globalPackedFloat32ArrayMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY)
-    globalPackedFloat32ArrayMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY)
     globalPackedFloat32ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedFloat32ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedFloat32ArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -23435,7 +23214,7 @@ func NewPackedFloat32ArrayWithPackedFloat32Array(from PackedFloat32Array,) Packe
     var args [1]GDNativeTypePtr
 
     // PackedFloat32Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedFloat32ArrayMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -23449,7 +23228,7 @@ func NewPackedFloat32ArrayWithArray(from Array,) PackedFloat32Array {
     var args [1]GDNativeTypePtr
 
     // Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedFloat32ArrayMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -24008,18 +23787,6 @@ func (cx *PackedFloat32Array) Count(value float32,) int64 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *PackedFloat32Array) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -24068,7 +23835,7 @@ func (cx *PackedFloat32Array) Add_PackedFloat32Array(right PackedFloat32Array) P
 /*
  * PackedFloat64Array
  * indexingReturnType: float
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type PackedFloat64Array struct {
@@ -24103,9 +23870,6 @@ type packedFloat64ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -24145,9 +23909,6 @@ func packedFloat64ArrayInitBindings() {
     globalPackedFloat64ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, "count", 2859915090)
     globalPackedFloat64ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY)
     globalPackedFloat64ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY)
-    globalPackedFloat64ArrayMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY)
-    globalPackedFloat64ArrayMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY)
-    globalPackedFloat64ArrayMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY)
     globalPackedFloat64ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedFloat64ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedFloat64ArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -24181,7 +23942,7 @@ func NewPackedFloat64ArrayWithPackedFloat64Array(from PackedFloat64Array,) Packe
     var args [1]GDNativeTypePtr
 
     // PackedFloat64Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedFloat64ArrayMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -24195,7 +23956,7 @@ func NewPackedFloat64ArrayWithArray(from Array,) PackedFloat64Array {
     var args [1]GDNativeTypePtr
 
     // Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedFloat64ArrayMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -24754,18 +24515,6 @@ func (cx *PackedFloat64Array) Count(value float32,) int64 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *PackedFloat64Array) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -24814,7 +24563,7 @@ func (cx *PackedFloat64Array) Add_PackedFloat64Array(right PackedFloat64Array) P
 /*
  * PackedStringArray
  * indexingReturnType: String
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type PackedStringArray struct {
@@ -24849,9 +24598,6 @@ type packedStringArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -24891,9 +24637,6 @@ func packedStringArrayInitBindings() {
     globalPackedStringArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, "count", 2920860731)
     globalPackedStringArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY)
     globalPackedStringArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY)
-    globalPackedStringArrayMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY)
-    globalPackedStringArrayMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY)
-    globalPackedStringArrayMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY)
     globalPackedStringArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedStringArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedStringArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -24927,7 +24670,7 @@ func NewPackedStringArrayWithPackedStringArray(from PackedStringArray,) PackedSt
     var args [1]GDNativeTypePtr
 
     // PackedStringArray
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedStringArrayMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -24941,7 +24684,7 @@ func NewPackedStringArrayWithArray(from Array,) PackedStringArray {
     var args [1]GDNativeTypePtr
 
     // Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedStringArrayMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -25500,18 +25243,6 @@ func (cx *PackedStringArray) Count(value String,) int64 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *PackedStringArray) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -25560,7 +25291,7 @@ func (cx *PackedStringArray) Add_PackedStringArray(right PackedStringArray) Pack
 /*
  * PackedVector2Array
  * indexingReturnType: Vector2
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type PackedVector2Array struct {
@@ -25595,9 +25326,6 @@ type packedVector2ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_multiply_Transform2D GDNativePtrOperatorEvaluator
@@ -25638,9 +25366,6 @@ func packedVector2ArrayInitBindings() {
     globalPackedVector2ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, "count", 2798848307)
     globalPackedVector2ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY)
     globalPackedVector2ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY)
-    globalPackedVector2ArrayMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY)
-    globalPackedVector2ArrayMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY)
-    globalPackedVector2ArrayMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY)
     globalPackedVector2ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedVector2ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedVector2ArrayMethodBindings.operator_multiply_Transform2D = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, GDNATIVE_VARIANT_TYPE_TRANSFORM2D)
@@ -25675,7 +25400,7 @@ func NewPackedVector2ArrayWithPackedVector2Array(from PackedVector2Array,) Packe
     var args [1]GDNativeTypePtr
 
     // PackedVector2Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedVector2ArrayMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -25689,7 +25414,7 @@ func NewPackedVector2ArrayWithArray(from Array,) PackedVector2Array {
     var args [1]GDNativeTypePtr
 
     // Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedVector2ArrayMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -26248,18 +25973,6 @@ func (cx *PackedVector2Array) Count(value Vector2,) int64 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *PackedVector2Array) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -26314,7 +26027,7 @@ func (cx *PackedVector2Array) Add_PackedVector2Array(right PackedVector2Array) P
 /*
  * PackedVector3Array
  * indexingReturnType: Vector3
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type PackedVector3Array struct {
@@ -26349,9 +26062,6 @@ type packedVector3ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_multiply_Transform3D GDNativePtrOperatorEvaluator
@@ -26392,9 +26102,6 @@ func packedVector3ArrayInitBindings() {
     globalPackedVector3ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, "count", 194580386)
     globalPackedVector3ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY)
     globalPackedVector3ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY)
-    globalPackedVector3ArrayMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY)
-    globalPackedVector3ArrayMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY)
-    globalPackedVector3ArrayMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY)
     globalPackedVector3ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedVector3ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedVector3ArrayMethodBindings.operator_multiply_Transform3D = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, GDNATIVE_VARIANT_TYPE_TRANSFORM3D)
@@ -26429,7 +26136,7 @@ func NewPackedVector3ArrayWithPackedVector3Array(from PackedVector3Array,) Packe
     var args [1]GDNativeTypePtr
 
     // PackedVector3Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedVector3ArrayMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -26443,7 +26150,7 @@ func NewPackedVector3ArrayWithArray(from Array,) PackedVector3Array {
     var args [1]GDNativeTypePtr
 
     // Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedVector3ArrayMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -27002,18 +26709,6 @@ func (cx *PackedVector3Array) Count(value Vector3,) int64 {
 }
 
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *PackedVector3Array) SetKey(const Variant &p_key) Variant {
-
-}
-*/
-
 // members
 
 
@@ -27068,7 +26763,7 @@ func (cx *PackedVector3Array) Add_PackedVector3Array(right PackedVector3Array) P
 /*
  * PackedColorArray
  * indexingReturnType: Color
- * isKeyed: true
+ * isKeyed: false
  * hasDestructor: true
  */
 type PackedColorArray struct {
@@ -27103,9 +26798,6 @@ type packedColorArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    keyed_setter  GDNativePtrKeyedSetter
-    keyed_getter  GDNativePtrKeyedGetter
-    keyed_checker GDNativePtrKeyedChecker
     operator_equal_Nil GDNativePtrOperatorEvaluator
         operator_not_equal_Nil GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -27145,9 +26837,6 @@ func packedColorArrayInitBindings() {
     globalPackedColorArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, "count", 1682108616)
     globalPackedColorArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY)
     globalPackedColorArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY)
-    globalPackedColorArrayMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY)
-    globalPackedColorArrayMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY)
-    globalPackedColorArrayMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY)
     globalPackedColorArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedColorArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedColorArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -27181,7 +26870,7 @@ func NewPackedColorArrayWithPackedColorArray(from PackedColorArray,) PackedColor
     var args [1]GDNativeTypePtr
 
     // PackedColorArray
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_1, ptr, args[0],)
 
     return cx
@@ -27195,7 +26884,7 @@ func NewPackedColorArrayWithArray(from Array,) PackedColorArray {
     var args [1]GDNativeTypePtr
 
     // Array
-        args[0] = from.ptr()
+        args[0] = (GDNativeTypePtr)(from.ptr())
         callBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_2, ptr, args[0],)
 
     return cx
@@ -27753,18 +27442,6 @@ func (cx *PackedColorArray) Count(value Color,) int64 {
     
 }
 
-
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDNativePtrKeyedSetter)(GDNativeTypePtr p_base, const GDNativeTypePtr p_key, const GDNativeTypePtr p_value);
-typedef void (*GDNativePtrKeyedGetter)(const GDNativeTypePtr p_base, const GDNativeTypePtr p_key, GDNativeTypePtr r_value);
-
-
-// keyed
-func (cx *PackedColorArray) SetKey(const Variant &p_key) Variant {
-
-}
-*/
 
 // members
 

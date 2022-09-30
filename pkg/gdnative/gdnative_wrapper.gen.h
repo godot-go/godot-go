@@ -328,16 +328,6 @@ GDNativeBool cgo_callfn_GDNativeInterface_variant_hash_compare(
     const GDNativeVariantPtr p_other);
 GDNativeBool cgo_callfn_GDNativeInterface_variant_booleanize(
     const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self);
-void cgo_callfn_GDNativeInterface_variant_sub(const GDNativeInterface *p_struct,
-                                              const GDNativeVariantPtr p_a,
-                                              const GDNativeVariantPtr p_b,
-                                              GDNativeVariantPtr r_dst);
-void cgo_callfn_GDNativeInterface_variant_blend(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_a,
-    const GDNativeVariantPtr p_b, float p_c, GDNativeVariantPtr r_dst);
-void cgo_callfn_GDNativeInterface_variant_interpolate(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_a,
-    const GDNativeVariantPtr p_b, float p_c, GDNativeVariantPtr r_dst);
 void cgo_callfn_GDNativeInterface_variant_duplicate(
     const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
     GDNativeVariantPtr r_ret, GDNativeBool p_deep);

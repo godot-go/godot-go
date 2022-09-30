@@ -4,7 +4,7 @@ bool enablePrintStacktrace = false;
 
 void printStacktrace() {
     if (enablePrintStacktrace) {
-        printf("===============\n\n");
+        printf("=[ start backtrace ]=============\n\n");
         void* callstack[128];
         int i, frames = backtrace(callstack, 128);
         char** strs = backtrace_symbols(callstack, frames);
@@ -12,6 +12,6 @@ void printStacktrace() {
             printf("%s\n", strs[i]);
         }
         free(strs);
-        printf("===============\n\n");
+        printf("=[ end backtrace ]===============\n\n");
     }
 }

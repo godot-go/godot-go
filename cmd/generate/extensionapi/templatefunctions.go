@@ -2,6 +2,7 @@ package extensionapi
 
 import (
 	"fmt"
+	"log"
 	"regexp"
 	"strings"
 
@@ -96,7 +97,13 @@ func goArgumentType(t string) string {
 
 	var (
 		indirection int
+		isTypedArray bool
 	)
+
+	if strings.HasPrefix(t, "typedarray::") {
+		t = t[12:]
+		isTypedArray = true
+	}
 
 	if strings.HasSuffix(t, "**") {
 		indirection = 2
@@ -110,6 +117,10 @@ func goArgumentType(t string) string {
 
 	switch t {
 	case "void":
+		if isTypedArray {
+			log.Panic("unexpected type array")
+		}
+
 		switch indirection {
 		case 0:
 			return ""
@@ -141,7 +152,11 @@ func goArgumentType(t string) string {
 		t = strcase.ToCamel(t)
 	}
 
-	return strings.Repeat("*", indirection) + t
+	if isTypedArray {
+		return "[]" + strings.Repeat("*", indirection) + t
+	} else {
+		return strings.Repeat("*", indirection) + t
+	}
 }
 
 func goHasArgumentTypeEncoder(t string) bool {

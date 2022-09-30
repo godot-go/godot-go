@@ -31,7 +31,7 @@ If your godot binary is built from source, you can run this:
     GODOT_SRC=/usr/local/src/godot/ make update_godot_headers_from_source
     make generate
 
-Development is built and tested off of Godot 4 beta1 [snapshot](https://github.com/godotengine/godot-headers/tree/62e5472d8e12b6e098f95c5d9f472857d7724a04).
+Development is built and tested off of Godot 4 beta2 [snapshot](https://github.com/godotengine/godot-headers/tree/f8745f2f71c79972df66f17a3da75f6e328bc55d).
 
 Once that's done, you can run the following to build:
 

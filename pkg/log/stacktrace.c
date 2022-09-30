@@ -5,70 +5,72 @@ bool enablePrintStacktrace = false;
 void printStacktrace() {
     if (enablePrintStacktrace) {
     #ifdef _WIN64
-    BOOL                result;
-    HANDLE              process;
-    HANDLE              thread;
-    CONTEXT             context;
-    STACKFRAME64        stack;
-    ULONG               frame;
-    IMAGEHLP_SYMBOL64   symbol;
-    DWORD64             displacement;
-    char name[ 256 ];
+        HANDLE process = GetCurrentProcess();
+        HANDLE thread = GetCurrentThread();
 
-    RtlCaptureContext( &context );
-    memset( &stack, 0, sizeof( STACKFRAME64 ) );
+        CONTEXT context;
+        memset(&context, 0, sizeof(CONTEXT));
+        context.ContextFlags = CONTEXT_FULL;
+        RtlCaptureContext(&context);
 
-    process                = GetCurrentProcess();
-    thread                 = GetCurrentThread();
-    displacement           = 0;
-    stack.AddrPC.Offset    = context.Eip;
-    stack.AddrPC.Mode      = AddrModeFlat;
-    stack.AddrStack.Offset = context.Esp;
-    stack.AddrStack.Mode   = AddrModeFlat;
-    stack.AddrFrame.Offset = context.Ebp;
-    stack.AddrFrame.Mode   = AddrModeFlat;
+        SymInitialize(process, NULL, TRUE);
 
-    for( frame = 0; ; frame++ )
-    {
-        result = StackWalk64
-        (
-            IMAGE_FILE_MACHINE_I386,
-            process,
-            thread,
-            &stack,
-            &context,
-            NULL,
-            SymFunctionTableAccess64,
-            SymGetModuleBase64,
-            NULL
-        );
+        DWORD image;
+        STACKFRAME64 stackframe;
+        ZeroMemory(&stackframe, sizeof(STACKFRAME64));
 
-        symbol.SizeOfStruct  = sizeof( IMAGEHLP_SYMBOL64 );
-        symbol.MaxNameLength = 255;
+        #ifdef _M_IX86
+        image = IMAGE_FILE_MACHINE_I386;
+        stackframe.AddrPC.Offset = context.Eip;
+        stackframe.AddrPC.Mode = AddrModeFlat;
+        stackframe.AddrFrame.Offset = context.Ebp;
+        stackframe.AddrFrame.Mode = AddrModeFlat;
+        stackframe.AddrStack.Offset = context.Esp;
+        stackframe.AddrStack.Mode = AddrModeFlat;
+        #elif _M_X64
+        image = IMAGE_FILE_MACHINE_AMD64;
+        stackframe.AddrPC.Offset = context.Rip;
+        stackframe.AddrPC.Mode = AddrModeFlat;
+        stackframe.AddrFrame.Offset = context.Rsp;
+        stackframe.AddrFrame.Mode = AddrModeFlat;
+        stackframe.AddrStack.Offset = context.Rsp;
+        stackframe.AddrStack.Mode = AddrModeFlat;
+        #elif _M_IA64
+        image = IMAGE_FILE_MACHINE_IA64;
+        stackframe.AddrPC.Offset = context.StIIP;
+        stackframe.AddrPC.Mode = AddrModeFlat;
+        stackframe.AddrFrame.Offset = context.IntSp;
+        stackframe.AddrFrame.Mode = AddrModeFlat;
+        stackframe.AddrBStore.Offset = context.RsBSP;
+        stackframe.AddrBStore.Mode = AddrModeFlat;
+        stackframe.AddrStack.Offset = context.IntSp;
+        stackframe.AddrStack.Mode = AddrModeFlat;
+        #endif
 
-        SymGetSymFromAddr64( process, ( ULONG64 )stack.AddrPC.Offset, &displacement, &symbol );
-        UnDecorateSymbolName( symbol.Name, ( PSTR )name, 256, UNDNAME_COMPLETE );
+        for (size_t i = 0; i < 25; i++) {
 
-        printf
-        (
-            "Frame %lu:\n"
-            "    Symbol name:    %s\n"
-            "    PC address:     0x%08LX\n"
-            "    Stack address:  0x%08LX\n"
-            "    Frame address:  0x%08LX\n"
-            "\n",
-            frame,
-            symbol.Name,
-            ( ULONG64 )stack.AddrPC.Offset,
-            ( ULONG64 )stack.AddrStack.Offset,
-            ( ULONG64 )stack.AddrFrame.Offset
-        );
+            BOOL result = StackWalk64(
+            image, process, thread,
+            &stackframe, &context, NULL,
+            SymFunctionTableAccess64, SymGetModuleBase64, NULL);
 
-        if( !result )
-        {
-            break;
+            if (!result) { break; }
+
+            char buffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR)];
+            PSYMBOL_INFO symbol = (PSYMBOL_INFO)buffer;
+            symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
+            symbol->MaxNameLen = MAX_SYM_NAME;
+
+            DWORD64 displacement = 0;
+            if (SymFromAddr(process, stackframe.AddrPC.Offset, &displacement, symbol)) {
+            printf("[%i] %s\n", i, symbol->Name);
+            } else {
+            printf("[%i] ???\n", i);
+            }
+
         }
-    }
+
+        SymCleanup(process);
     #else
         printf("=[ start backtrace ]=============\n\n");
         void* callstack[128];

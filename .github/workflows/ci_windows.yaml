@@ -21,9 +21,10 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Set up scoop
-      run: |
-        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh');
-        echo "::add-path::$HOME\scoop\shims";
+      uses: MinoruSekine/setup-scoop@v1
+      with:
+        add_extras_bucket: 'true'
+        scoop_checkup: 'true'
 
     - name: Debug PATH
       run: echo "$Env:Path"

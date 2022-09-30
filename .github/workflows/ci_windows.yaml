@@ -21,7 +21,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Set up scoop
-      uses: MinoruSekine/setup-scoop@v1
+      uses: MinoruSekine/setup-scoop@main
       with:
         add_extras_bucket: 'true'
         scoop_checkup: 'true'

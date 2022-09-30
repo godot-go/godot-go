@@ -70,8 +70,7 @@ clean: clean_src
 remote_debug_test:
 	CI=1 \
 	LOG_LEVEL=debug \
-	GOTRACEBACK=crash \
-	DISPLAY=:0 \
+	GOTRACEBACK=crash \e
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
 	gdbserver --once :55555 $(GODOT) --headless --verbose --debug --path test/demo/
 
@@ -79,7 +78,6 @@ test:
 	CI=1 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=crash \
-	DISPLAY=:0 \
 	LD_DEBUG=libs \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
 	$(GODOT) --headless --verbose --path test/demo/
@@ -87,7 +85,6 @@ test:
 interactive_test:
 	LOG_LEVEL=debug \
 	GOTRACEBACK=1 \
-	DISPLAY=:0 \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
 	$(GODOT) --verbose --debug --path test/demo/
 

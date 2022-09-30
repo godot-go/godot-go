@@ -1,12 +1,6 @@
 extends Node
 
-var exa = preload("example.gdextension")
-
 func _ready():
-	prints("is_library_open =", exa.is_library_open(), ", min level =", exa.get_minimum_library_initialization_level())
-
-	exa.setup_local_to_scene()
-
 	# Bind signals
 	prints("Signal bind")
 	$Button.button_up.connect($Example.emit_custom_signal.bind("Button", 42))

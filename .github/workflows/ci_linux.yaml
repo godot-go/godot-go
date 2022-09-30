@@ -22,7 +22,7 @@ jobs:
       fail-fast: true
       matrix:
         go_version:
-          - 1.19.x
+          - ^1.13.1
         targets:
           - linux/amd64
           # - darwin/amd64
@@ -31,9 +31,11 @@ jobs:
     timeout-minutes: 6
     steps:
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: ${{ matrix.go_version }}
+          check-latest: true
+          cache: true
       - name: Checkout
         uses: actions/checkout@v3
         with:

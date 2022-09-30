@@ -14,62 +14,62 @@ jobs:
       fail-fast: true
       matrix:
         go_version:
-          - 1.19.x
+          - ^1.13.1
         targets:
           - windows/amd64
 
     runs-on: windows-latest
     steps:
-    - name: Set up scoop
-      uses: MinoruSekine/setup-scoop@main
-      with:
-        add_extras_bucket: 'true'
-        scoop_checkup: 'true'
+      - name: Set up scoop
+        uses: MinoruSekine/setup-scoop@main
+        with:
+          scoop_checkup: 'true'
 
-    - name: Debug PATH
-      run: echo "$Env:Path"
+      - name: Debug PATH
+        run: echo "$Env:Path"
 
-    - name: Set up scoop extras
-      run: scoop bucket add extras;
+      - name: Set up scoop extras
+        run: scoop bucket add extras;
 
-    - name: Install packages
-      run: scoop install wget unzip
+      - name: Install packages
+        run: scoop install wget unzip
 
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: ${{ matrix.go_version }}
-        stable: true
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ matrix.go_version }}
+          check-latest: true
+          cache: true
 
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v2
-      with:
-        submodules: true
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+        with:
+          submodules: true
 
-    - name: Install Godot 4.0 beta 2
-      run: |
-        wget https://downloads.tuxfamily.org/godotengine/4.0/beta2/Godot_v4.0-beta1_win64.exe.zip
-        unzip Godot_v4.0-beta2_win64.exe.zip -d ./
-      shell: bash
+      - name: Install Godot 4.0 beta 2
+        run: |
+          wget https://downloads.tuxfamily.org/godotengine/4.0/beta2/Godot_v4.0-beta1_win64.exe.zip
+          unzip Godot_v4.0-beta2_win64.exe.zip -d ./
+        shell: bash
 
-    - name: Build
-      run: |
-        make build
-      shell: bash
-      env:
-        GODOT_BIN: ./Godot_v4.0-beta2_win64.exe
+      - name: Build
+        run: |
+          make build
+        shell: bash
+        env:
+          GODOT_BIN: ./Godot_v4.0-beta2_win64.exe
 
-    - name: List Artifacts Directory
-      run: |
-        ls -alh test/demo/lib
-        ls -alh test/demo/
-      shell: bash
+      - name: List Artifacts Directory
+        run: |
+          ls -alh test/demo/lib
+          ls -alh test/demo/
+        shell: bash
 
-    - name: Test
-      run: make test
-      shell: bash
-      env:
-        CI: 1
-        LOG_LEVEL: "trace"
-        LANG: "en_US.utf8"
-        GODOT: "./Godot_v4.0-beta2_win64.exe"
+      - name: Test
+        run: make test
+        shell: bash
+        env:
+          CI: 1
+          LOG_LEVEL: "trace"
+          LANG: "en_US.utf8"
+          GODOT: "./Godot_v4.0-beta2_win64.exe"

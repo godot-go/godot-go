@@ -24,16 +24,14 @@ jobs:
         uses: MinoruSekine/setup-scoop@main
         with:
           scoop_checkup: 'true'
-      - name: Debug PATH
-        run: echo "$Env:Path"
+      - name: Set up scoop extras
+        run: scoop bucket add extras;
+      - name: Install scoop packages
+        run: scoop install wget unzip
       - name: Checkout
         uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Set up scoop extras
-        run: scoop bucket add extras;
-      - name: Install packages
-        run: scoop install wget unzip
       - name: Install Go
         uses: actions/setup-go@v3
         with:

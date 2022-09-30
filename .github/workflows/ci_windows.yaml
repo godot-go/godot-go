@@ -14,7 +14,7 @@ jobs:
       fail-fast: true
       matrix:
         go_version:
-          - ^1.13.1
+          - ^1.19.1
         targets:
           - windows/amd64
 

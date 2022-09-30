@@ -1,12 +1,12 @@
 name: godot-go CI
 
-on:
-  pull_request:
-    paths:
-      - "**/*.go"
-      - "**/*.c"
-      - "**/*.h"
-      - ".github/workflows/ci.yaml"
+# on:
+#   pull_request:
+#     paths:
+#       - "**/*.go"
+#       - "**/*.c"
+#       - "**/*.h"
+#       - ".github/workflows/ci.yaml"
 
   # push:
   #   paths:
@@ -22,7 +22,7 @@ jobs:
       fail-fast: true
       matrix:
         go_version:
-          - ^1.13.1
+          - ^1.19.1
         targets:
           - linux/amd64
           # - darwin/amd64

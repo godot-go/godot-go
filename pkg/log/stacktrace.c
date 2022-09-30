@@ -4,7 +4,7 @@ bool enablePrintStacktrace = false;
 
 void printStacktrace() {
     if (enablePrintStacktrace) {
-    #ifdef __MINGW64__
+    #ifdef __MINGW32__ || __MINGW64__
         HANDLE process = GetCurrentProcess();
         HANDLE thread = GetCurrentThread();
 

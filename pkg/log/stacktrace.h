@@ -1,7 +1,7 @@
 #ifndef CGO_GODOT_GO_STACKTRACE_H
 #define CGO_GODOT_GO_STACKTRACE_H
 
-#ifdef __MINGW64__
+#ifdef defined(__MINGW32__) || defined(__MINGW64__)
 #include <windows.h>
 #include <dbghelp.h>
 #else

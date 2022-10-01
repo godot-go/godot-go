@@ -19,7 +19,7 @@ jobs:
           - windows/amd64
 
     runs-on: windows-latest
-    timeout-minutes: 6
+    timeout-minutes: 15
     steps:
       - name: Add Go 1.19.1 To System Path
         shell: bash
@@ -63,7 +63,7 @@ jobs:
           ls -alh test/demo/
         shell: bash
       - name: Test
-        timeout-minutes: 2
+        timeout-minutes: 5
         run: make test
         shell: bash
         env:

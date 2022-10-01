@@ -21,6 +21,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Add Go 1.19.1 To System Path
+        shell: bash
         run: |
           ls "${GOROOT_1_19_X64}"
           "${GOROOT_1_19_X64}/bin/go" env

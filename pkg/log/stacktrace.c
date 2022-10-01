@@ -4,7 +4,7 @@ bool enablePrintStacktrace = false;
 
 void printStacktrace() {
     if (enablePrintStacktrace) {
-    #ifdef _WIN64
+    #ifdef _M_IX86 || _M_X64
         // HANDLE process = GetCurrentProcess();
         // HANDLE thread = GetCurrentThread();
 

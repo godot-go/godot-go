@@ -1,7 +1,7 @@
 #ifndef CGO_GODOT_GO_STACKTRACE_H
 #define CGO_GODOT_GO_STACKTRACE_H
 
-#ifdef _WIN32 || _WIN64
+#ifdef _WIN64
 #include <windows.h>
 #include <dbghelp.h>
 #else

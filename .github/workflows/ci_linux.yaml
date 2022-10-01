@@ -33,7 +33,7 @@ jobs:
         with:
           submodules: true
       - name: Install libfontconfig
-        run: sudo apt-get install -y libfontconfig libfreetype libexpat1 libuuid1 libpng16-16 libz3-4
+        run: sudo apt-get install -y libfontconfig libfreetype6 libexpat1 libuuid1 libpng16-16 libz3-4
       - name: Update ldcache
         run: |
           sudo su -c rm -f /etc/ld.so.cache || true

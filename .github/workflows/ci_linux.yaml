@@ -1,12 +1,12 @@
-name: godot-go CI
+name: godot-go CI on Linux
 
-# on:
-#   pull_request:
-#     paths:
-#       - "**/*.go"
-#       - "**/*.c"
-#       - "**/*.h"
-#       - ".github/workflows/ci.yaml"
+on:
+  pull_request:
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - ".github/workflows/ci.yaml"
 
   # push:
   #   paths:
@@ -55,7 +55,6 @@ jobs:
         timeout-minutes: 2
         run: make test
         env:
-          DISPLAY: ":0"
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"

@@ -21,8 +21,6 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        go_version:
-          - ^1.19.1
         targets:
           - linux/amd64
           # - darwin/amd64
@@ -34,12 +32,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Install Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: ${{ matrix.go_version }}
-          check-latest: true
-          cache: true
+      - name: Install libfontconfig
+        run: sudo apt-get install -y libfontconfig
+      - name: Add Go 1.19.1 To System Path
+        run: |
+          echo "${GOROOT_1_19_X64}/bin" >> $GITHUB_PATH
+          echo "GITHUB_PATH=${GITHUB_PATH}"
       - name: Install Godot 4.0 beta 2
         run: |
           wget https://downloads.tuxfamily.org/godotengine/4.0/beta2/Godot_v4.0-beta2_linux.x86_64.zip

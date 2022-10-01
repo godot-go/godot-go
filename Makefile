@@ -75,13 +75,12 @@ remote_debug_test:
 	gdbserver --once :55555 $(GODOT) --headless --verbose --debug --path test/demo/
 
 test:
-	DISPLAY=:0 \
 	CI=1 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=crash \
 	LD_DEBUG=libs \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
-	$(GODOT) --verbose --path test/demo/
+	$(GODOT) --headless --verbose --path test/demo/
 
 interactive_test:
 	LOG_LEVEL=debug \

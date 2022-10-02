@@ -21,6 +21,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
+        go_version:
+          - ${GOROOT_1_19_X64}
         targets:
           - linux/amd64
           # - darwin/amd64
@@ -40,7 +42,7 @@ jobs:
       #   run: |
       #     sudo su -c 'rm -f /etc/ld.so.cache || true'
       #     sudo su -c ldconfig
-      - name: Add Go 1.19.1 To System Path
+      - name: Add Go 1.19.1 To System Path (${GOROOT_1_19_X64})
         run: |
           echo "${GOROOT_1_19_X64}/bin" >> $GITHUB_PATH
           echo "GITHUB_PATH=${GITHUB_PATH}"
@@ -58,6 +60,7 @@ jobs:
       - name: Gen Project Files
         timeout-minutes: 3
         run: make ci_gen_project_files
+        continue-on-error: true
         env:
           CI: 1
           LOG_LEVEL: "debug"

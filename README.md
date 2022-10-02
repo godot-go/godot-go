@@ -1,4 +1,4 @@
-[![Actions Build Status](https://github.com/godot-go/godot-go/workflows/godot-go%20CI/badge.svg)](https://github.com/godot-go/godot-go/actions?query=workflow%3Agodot-go+branch%3Amaster)
+[![Build Status](https://github.com/godot-go/godot-go/actions/workflows/ci_linux.yaml/badge.svg)](https://github.com/godot-go/godot-go/actions/workflows/ci_linux.yaml)
 
 ---
 
@@ -21,7 +21,7 @@ TODO
 
 ### Building Godot-Go
 
-**The GDExtension interface hasn't been stable.** In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. There's a helper task in the Makefile for this:
+**The GDExtension interface isn't currently stable.** In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. There's a helper task in the Makefile for this:
 
     make update_godot_headers_from_github
     make generate
@@ -40,7 +40,11 @@ Once that's done, you can run the following to build:
 
 ### Test
 
-Once the project successfully builds, run the following commands to test:
+Once the project successfully builds, run the following commands to generate cached files for the test demo project for the first time:
+
+    make ci_gen_test_project_files
+
+From here on out, you will just need to run the following command to iteratively test:
 
     make test
 

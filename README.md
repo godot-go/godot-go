@@ -14,20 +14,29 @@ The project is currently under heavy development. The API should be considered _
 Requirements:
 * clang-format
 * gcc
+* go 1.19.x
 
 TODO
 
 
-### Support
+### Building Godot-Go
 
-TODO
+**The GDExtension interface hasn't been stable.** In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. There's a helper task in the Makefile for this:
 
+    make update_godot_headers_from_github
+    make generate
 
-### Building from Source
+If your godot binary is built from source, you can run this:
 
-To quickly build from source, check out the code and run the following commands:
+    GODOT_SRC=/usr/local/src/godot/ make update_godot_headers_from_source
+    make generate
 
-    make generate && make build
+Development is built and tested off of Godot 4 beta2 [snapshot](https://github.com/godotengine/godot-headers/tree/f8745f2f71c79972df66f17a3da75f6e328bc55d).
+
+Once that's done, you can run the following to build:
+
+    make build
+
 
 ### Test
 
@@ -35,7 +44,7 @@ Once the project successfully builds, run the following commands to test:
 
     make test
 
-This will run the demo project in the test directory
+This will run the demo project in the test directory.
 
 ## Contact
 

@@ -1,0 +1,64 @@
+name: godot-go CI on Linux
+
+on:
+  pull_request:
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - ".github/workflows/ci_linux.yaml"
+
+jobs:
+  run_test:
+    name: "run tests"
+    strategy:
+      fail-fast: true
+      matrix:
+        os:
+          - linux
+        arch:
+          - amd64
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Add Go 1.19.1 To System Path
+        run: |
+          echo "${GOROOT_1_19_X64}/bin" >> $GITHUB_PATH
+          echo "GITHUB_PATH=${GITHUB_PATH}"
+      - name: Install Godot 4.0 beta 2
+        run: |
+          wget https://downloads.tuxfamily.org/godotengine/4.0/beta2/Godot_v4.0-beta2_linux.x86_64.zip
+          sudo unzip Godot_v4.0-beta2_linux.x86_64.zip -d /usr/local/bin
+          sudo ln -s Godot_v4.0-beta2_linux.x86_64 /usr/local/bin/godot4
+      - name: Build
+        run: make build
+        env:
+          GOOS: ${{ matrix.os }}
+          GOARCH: ${{ matrix.arch }}
+      - name: List Artifacts Directory
+        run: |
+          ls -alh test/demo/lib
+      - name: Gen Test Project Files
+        if: ${{ matrix.os == 'linux' }}
+        timeout-minutes: 3
+        run: make ci_gen_test_project_files
+        continue-on-error: true
+        env:
+          CI: 1
+          LOG_LEVEL: "debug"
+          LANG: "en_US.utf8"
+          GODOT: "/usr/local/bin/godot4"
+      - name: Test
+        if: ${{ matrix.os == 'linux' }}
+        timeout-minutes: 2
+        run: make test
+        env:
+          CI: 1
+          LOG_LEVEL: "debug"
+          LANG: "en_US.utf8"
+          GODOT: "/usr/local/bin/godot4"

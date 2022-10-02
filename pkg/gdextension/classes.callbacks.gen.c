@@ -4398,6 +4398,40 @@ GDNativeBool cgo_gdnative_class_binding_reference_callback_Image(void *p_token, 
 
 
 
+void *cgo_gdnative_class_binding_create_callback_ImageFormatLoader(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("ImageFormatLoader", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_ImageFormatLoader(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("ImageFormatLoader", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_ImageFormatLoader(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("ImageFormatLoader", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_ImageFormatLoaderExtension(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("ImageFormatLoaderExtension", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_ImageFormatLoaderExtension(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("ImageFormatLoaderExtension", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_ImageFormatLoaderExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("ImageFormatLoaderExtension", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdnative_class_binding_create_callback_ImageTexture(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingCreate("ImageTexture", p_token, p_instance);
@@ -5996,6 +6030,74 @@ GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationObstacle3D(
 
 
 
+void *cgo_gdnative_class_binding_create_callback_NavigationPathQueryParameters2D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("NavigationPathQueryParameters2D", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_NavigationPathQueryParameters2D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("NavigationPathQueryParameters2D", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryParameters2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("NavigationPathQueryParameters2D", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_NavigationPathQueryParameters3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("NavigationPathQueryParameters3D", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_NavigationPathQueryParameters3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("NavigationPathQueryParameters3D", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryParameters3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("NavigationPathQueryParameters3D", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_NavigationPathQueryResult2D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("NavigationPathQueryResult2D", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_NavigationPathQueryResult2D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("NavigationPathQueryResult2D", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryResult2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("NavigationPathQueryResult2D", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_NavigationPathQueryResult3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("NavigationPathQueryResult3D", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_NavigationPathQueryResult3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("NavigationPathQueryResult3D", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryResult3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("NavigationPathQueryResult3D", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdnative_class_binding_create_callback_NavigationPolygon(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingCreate("NavigationPolygon", p_token, p_instance);
@@ -6400,6 +6502,23 @@ void cgo_gdnative_class_binding_free_callback_OpenXRActionSet(void *p_token, voi
 GDNativeBool cgo_gdnative_class_binding_reference_callback_OpenXRActionSet(void *p_token, void *p_instance, GDNativeBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingReference("OpenXRActionSet", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_OpenXRHand(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("OpenXRHand", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_OpenXRHand(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("OpenXRHand", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_OpenXRHand(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("OpenXRHand", p_token, p_instance, p_reference);
 }
 
 
@@ -9783,6 +9902,23 @@ void cgo_gdnative_class_binding_free_callback_StreamPeerExtension(void *p_token,
 GDNativeBool cgo_gdnative_class_binding_reference_callback_StreamPeerExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingReference("StreamPeerExtension", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_StreamPeerGZIP(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("StreamPeerGZIP", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_StreamPeerGZIP(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("StreamPeerGZIP", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_StreamPeerGZIP(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("StreamPeerGZIP", p_token, p_instance, p_reference);
 }
 
 

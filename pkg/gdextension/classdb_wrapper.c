@@ -1,4 +1,3 @@
-#include <execinfo.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <godot/gdnative_interface.h>

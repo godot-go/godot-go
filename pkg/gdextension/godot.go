@@ -47,7 +47,7 @@ func _GDExtensionBindingInit(
 	pLibrary GDNativeExtensionClassLibraryPtr,
 	rInitialization *GDNativeInitialization,
 ) bool {
-	C.printDebugStacktrace = log.GetLevel() == log.DebugLevel
+	C.enablePrintStacktrace = log.GetLevel() == log.DebugLevel
 
 	internal.gdnInterface = pInterface
 	internal.library = pLibrary

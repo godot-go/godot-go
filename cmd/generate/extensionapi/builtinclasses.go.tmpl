@@ -130,7 +130,7 @@ func (c *{{ $c.Name }}) ptr() GDNativeTypePtr {
 // New{{ $c.Name }}, index: {{ $con.Index }}
 func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arguments -}}{{ upperFirstChar (goArgumentType $arg.Type) }}{{- end -}}{{- end -}}(
     {{- range $k, $arg := $con.Arguments -}}
-		{{ $arg.Name }} {{ goArgumentType $arg.Type }},
+		{{ goArgumentName $arg.Name }} {{ goArgumentType $arg.Type }},
 	{{- end -}}
 ) {{ $c.Name }} {
     cx := {{ $c.Name }}{}
@@ -143,15 +143,15 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
     {{ range $k, $arg := $con.Arguments -}}
         // {{ $arg.Type }}
         {{ if eq (goArgumentType $arg.Type) "string" -}}
-        cv{{ $k }} := NewStringWithLatin1Chars({{ $arg.Name }})
+        cv{{ $k }} := NewStringWithLatin1Chars({{ goArgumentName $arg.Name }})
         defer cv{{ $k }}.Destroy()
         args[{{ $k }}] = cv{{ $k }}.ptr()
 
         {{ else -}}
         {{ if typeHasPtr $arg.Type -}}
-        args[{{ $k }}] = {{ $arg.Name }}.ptr()
+        args[{{ $k }}] = (GDNativeTypePtr)({{ goArgumentName $arg.Name }}.ptr())
         {{ else -}}
-        args[{{ $k }}] = (GDNativeTypePtr)(unsafe.Pointer(&{{ $arg.Name }}))
+        args[{{ $k }}] = (GDNativeTypePtr)(unsafe.Pointer(&{{ goArgumentName $arg.Name }}))
         {{ end -}}
         {{ end -}}
 	{{ end -}}

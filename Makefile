@@ -13,9 +13,9 @@ CGO_ENABLED=1
 TEST_MAIN=test/src/example.go
 
 ifeq ($(GOOS),windows)
-	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-windows-4.0-$(GOARCH).dll
+	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-windows-$(GOARCH).dll
 else ifeq ($(GOOS),darwin)
-	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-darwin-10.6-$(GOARCH).dylib
+	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-macos-$(GOARCH).framework
 else ifeq ($(GOOS),linux)
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-linux-$(GOARCH).so
 else

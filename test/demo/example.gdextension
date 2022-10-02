@@ -4,7 +4,9 @@ entry_symbol = "TestDemoInit"
 
 [libraries]
 
-windows.debug.x86_64 = "res://lib/libgodotgo-test-windows-4.0-amd64.dll"
-windows.release.x86_64 = "res://lib/libgodotgo-test-windows-4.0-amd64.dll"
+macos.debug = "res://bin/libgodotgo-test-macos-amd64.framework"
+macos.release = "res://bin/libgodotgo-test-macos-amd64.framework"
+windows.debug.x86_64 = "res://lib/libgodotgo-test-windows-amd64.dll"
+windows.release.x86_64 = "res://lib/libgodotgo-test-windows-amd64.dll"
 linux.debug.x86_64 = "res://lib/libgodotgo-test-linux-amd64.so"
 linux.release.x86_64 = "res://lib/libgodotgo-test-linux-amd64.so"

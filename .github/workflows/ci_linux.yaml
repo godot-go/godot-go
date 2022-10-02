@@ -1,12 +1,12 @@
 name: godot-go CI on Linux
 
 on:
-  pull_request:
-    paths:
-      - "**/*.go"
-      - "**/*.c"
-      - "**/*.h"
-      - ".github/workflows/ci.yaml"
+  # pull_request:
+  #   paths:
+  #     - "**/*.go"
+  #     - "**/*.c"
+  #     - "**/*.h"
+  #     - ".github/workflows/ci.yaml"
 
   # push:
   #   paths:
@@ -21,11 +21,9 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        go_version:
-          - ${GOROOT_1_19_X64}
         targets:
           - linux/amd64
-          # - darwin/amd64
+          - darwin/amd64
 
     runs-on: ubuntu-latest
     timeout-minutes: 6
@@ -34,15 +32,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Install tree
-        run: sudo apt-get install -y tree
-      # - name: Install libfontconfig
-      #   run: sudo apt-get install -y libfontconfig libfreetype6 libexpat1 libuuid1 libpng16-16 libz3-4
-      # - name: Update ldcache
-      #   run: |
-      #     sudo su -c 'rm -f /etc/ld.so.cache || true'
-      #     sudo su -c ldconfig
-      - name: Add Go 1.19.1 To System Path (${GOROOT_1_19_X64})
+      - name: Add Go 1.19.1 To System Path
         run: |
           echo "${GOROOT_1_19_X64}/bin" >> $GITHUB_PATH
           echo "GITHUB_PATH=${GITHUB_PATH}"
@@ -55,9 +45,9 @@ jobs:
         run: make build
       - name: List Artifacts Directory
         run: |
-          tree test/demo/
-          tree test/demo/.godot
+          ls -alh test/demo/lib
       - name: Gen Project Files
+        if: ${{ matrix.platform == 'linux/amd64' }}
         timeout-minutes: 3
         run: make ci_gen_project_files
         continue-on-error: true
@@ -67,6 +57,7 @@ jobs:
           LANG: "en_US.utf8"
           GODOT: "/usr/local/bin/godot4"
       - name: Test
+        if: ${{ matrix.platform == 'linux/amd64' }}
         timeout-minutes: 2
         run: make test
         env:

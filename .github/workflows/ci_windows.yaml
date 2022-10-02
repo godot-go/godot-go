@@ -1,12 +1,12 @@
 name: godot-go CI on Windows
 
-# on:
-#   pull_request:
-#     paths:
-#       - "**/*.go"
-#       - "**/*.c"
-#       - "**/*.h"
-#       - ".github/workflows/ci_windows.yaml"
+on:
+  pull_request:
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - ".github/workflows/ci_windows.yaml"
 
 jobs:
   run_test:
@@ -60,6 +60,15 @@ jobs:
           ls -alh test/demo/lib
           ls -alh test/demo/
         shell: bash
+      - name: Gen Project Files
+        timeout-minutes: 3
+        run: make ci_gen_project_files
+        continue-on-error: true
+        env:
+          CI: 1
+          LOG_LEVEL: "debug"
+          LANG: "en_US.utf8"
+          GODOT: "/usr/local/bin/godot4"
       - name: Test
         timeout-minutes: 5
         run: make test

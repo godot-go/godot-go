@@ -449,7 +449,7 @@ func ClassDBRegisterClass(inst GDClass, bindMethodsFunc func(t GDClass)) {
 
 	gdClassRegisterInstanceBindingCallbacks(name)
 
-	log.Debug("gdclass registered", zap.String("name", (string)(name)), zap.String("parent_type", (string)(parentName)))
+	log.Info("gdclass registered", zap.String("name", (string)(name)), zap.String("parent_type", (string)(parentName)))
 
 	cName := C.CString((string)(name))
 

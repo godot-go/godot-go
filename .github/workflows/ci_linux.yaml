@@ -47,7 +47,7 @@ jobs:
         run: |
           ls -alh test/demo/lib
       - name: Gen Test Project Files
-        if: ${{ matrix.platform == 'linux/amd64' }}
+        if: ${{ matrix.targets == 'linux/amd64' }}
         timeout-minutes: 3
         run: make ci_gen_project_files
         continue-on-error: true
@@ -57,7 +57,7 @@ jobs:
           LANG: "en_US.utf8"
           GODOT: "/usr/local/bin/godot4"
       - name: Test
-        if: ${{ matrix.platform == 'linux/amd64' }}
+        if: ${{ matrix.targets == 'linux/amd64' }}
         timeout-minutes: 2
         run: make test
         env:

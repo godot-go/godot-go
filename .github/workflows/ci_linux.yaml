@@ -32,12 +32,14 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Install libfontconfig
-        run: sudo apt-get install -y libfontconfig libfreetype6 libexpat1 libuuid1 libpng16-16 libz3-4
-      - name: Update ldcache
-        run: |
-          sudo su -c 'rm -f /etc/ld.so.cache || true'
-          sudo su -c ldconfig
+      - name: Install tree
+        run: sudo apt-get install -y tree
+      # - name: Install libfontconfig
+      #   run: sudo apt-get install -y libfontconfig libfreetype6 libexpat1 libuuid1 libpng16-16 libz3-4
+      # - name: Update ldcache
+      #   run: |
+      #     sudo su -c 'rm -f /etc/ld.so.cache || true'
+      #     sudo su -c ldconfig
       - name: Add Go 1.19.1 To System Path
         run: |
           echo "${GOROOT_1_19_X64}/bin" >> $GITHUB_PATH
@@ -51,8 +53,8 @@ jobs:
         run: make build
       - name: List Artifacts Directory
         run: |
-          ls -alh test/demo/lib
-          ls -alh test/demo/
+          tree test/demo/
+          tree test/demo/.godot
       - name: Test
         timeout-minutes: 2
         run: make test

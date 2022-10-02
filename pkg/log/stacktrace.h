@@ -2,10 +2,10 @@
 #define CGO_GODOT_GO_STACKTRACE_H
 
 #ifdef _WIN32
-#  include <windows.h>
-#  include <dbghelp.h>
+#include <windows.h>
+#include <dbghelp.h>
 #else
-#  include <execinfo.h>
+#include <execinfo.h>
 #endif
 
 #include <stdbool.h>

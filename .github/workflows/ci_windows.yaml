@@ -8,6 +8,15 @@ on:
       - "**/*.h"
       - ".github/workflows/ci_windows.yaml"
 
+  push:
+    branches:
+      - 'master'
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - ".github/workflows/ci_windows.yaml"
+
 jobs:
   run_test:
     strategy:

@@ -8,6 +8,15 @@ on:
       - "**/*.h"
       - ".github/workflows/ci_linux.yaml"
 
+  push:
+    branches:
+      - 'master'
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - ".github/workflows/ci_linux.yaml"
+
 jobs:
   run_test:
     name: "run tests"

@@ -1,12 +1,12 @@
 name: godot-go CI on Linux
 
 on:
-  # pull_request:
-  #   paths:
-  #     - "**/*.go"
-  #     - "**/*.c"
-  #     - "**/*.h"
-  #     - ".github/workflows/ci.yaml"
+  pull_request:
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - ".github/workflows/ci.yaml"
 
   # push:
   #   paths:
@@ -46,7 +46,7 @@ jobs:
       - name: List Artifacts Directory
         run: |
           ls -alh test/demo/lib
-      - name: Gen Project Files
+      - name: Gen Test Project Files
         if: ${{ matrix.platform == 'linux/amd64' }}
         timeout-minutes: 3
         run: make ci_gen_project_files

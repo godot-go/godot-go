@@ -17,3 +17,4 @@ test/libs/
 .*.md
 .deprecated*/
 tmp/
+test/demo/lib

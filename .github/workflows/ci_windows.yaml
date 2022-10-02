@@ -54,13 +54,13 @@ jobs:
           make build
         shell: bash
         env:
-          GODOT_BIN: ./Godot_v4.0-beta2_win64.exe
+          GODOT: ./Godot_v4.0-beta2_win64.exe
       - name: List Artifacts Directory
         run: |
           ls -alh test/demo/lib
           ls -alh test/demo/
         shell: bash
-      - name: Gen Project Files
+      - name: Gen Test Project Files
         timeout-minutes: 3
         run: make ci_gen_project_files
         continue-on-error: true
@@ -68,9 +68,9 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "/usr/local/bin/godot4"
+          GODOT: "./Godot_v4.0-beta2_win64.exe"
       - name: Test
-        timeout-minutes: 5
+        timeout-minutes: 2
         run: make test
         shell: bash
         env:

@@ -6,14 +6,14 @@ on:
       - "**/*.go"
       - "**/*.c"
       - "**/*.h"
-      - ".github/workflows/ci.yaml"
+      - ".github/workflows/ci_linux.yaml"
 
-  # push:
-  #   paths:
-  #     - "**/*.go"
-  #     - "**/*.c"
-  #     - "**/*.h"
-  #     - ".github/workflows/ci.yaml"
+  push:
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - ".github/workflows/ci_linux.yaml"
 
 jobs:
   run_test:
@@ -23,7 +23,6 @@ jobs:
       matrix:
         os:
           - linux
-          - darwin
         arch:
           - amd64
 

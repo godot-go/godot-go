@@ -8,13 +8,6 @@ on:
       - "**/*.h"
       - ".github/workflows/ci_linux.yaml"
 
-  push:
-    paths:
-      - "**/*.go"
-      - "**/*.c"
-      - "**/*.h"
-      - ".github/workflows/ci_linux.yaml"
-
 jobs:
   run_test:
     name: "run tests"
@@ -53,7 +46,7 @@ jobs:
       - name: Gen Test Project Files
         if: ${{ matrix.os == 'linux' }}
         timeout-minutes: 3
-        run: make ci_gen_project_files
+        run: make ci_gen_test_project_files
         continue-on-error: true
         env:
           CI: 1

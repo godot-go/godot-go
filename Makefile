@@ -74,7 +74,7 @@ remote_debug_test:
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
 	gdbserver --once :55555 $(GODOT) --headless --verbose --debug --path test/demo/
 
-ci_gen_project_files:
+ci_gen_test_project_files:
 	CI=1 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=crash \

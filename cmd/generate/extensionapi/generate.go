@@ -41,9 +41,6 @@ var (
 	//go:embed classes.go.tmpl
 	classesText string
 
-	// //go:embed classes.callbacks.go.tmpl
-	// classesCallbacksText string
-
 	//go:embed classes.init.go.tmpl
 	classesInitText string
 

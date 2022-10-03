@@ -9,16 +9,21 @@ on:
       - "**/*.h"
 
   workflow_dispatch:
+    inputs:
+      DEFAULT_BUMP:
+        description: 'Which type of bump to use when none explicitly provided'
+        required: true
+        default: 'patch'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
       with:
         fetch-depth: '0'
     - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.26.0
+      uses: anothrNick/github-tag-action@1.40.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: false

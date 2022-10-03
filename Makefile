@@ -85,7 +85,6 @@ test:
 	CI=1 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=crash \
-	LD_DEBUG=libs \
 	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
 	$(GODOT) --headless --verbose --path test/demo/
 

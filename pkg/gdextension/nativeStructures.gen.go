@@ -33,8 +33,8 @@ Trailing_direction TextServerDirection
 
 		}
 type Glyph struct {
-		Start  int64
-End  int64
+		Start  int32
+End  int32
 Count  Uint8T
 Repeat  Uint8T
 Flags  Uint16T
@@ -42,7 +42,7 @@ X_off  float32
 Y_off  float32
 Advance  float32
 Font_rid RID
-Font_size  int64
+Font_size  int32
 Index  Int32T
 
 		}
@@ -59,10 +59,10 @@ Collider_velocity Vector2
 Collision_depth float32
 Collision_safe_fraction float32
 Collision_unsafe_fraction float32
-Collision_local_shape int64
+Collision_local_shape int32
 Collider_id ObjectID
 Collider RID
-Collider_shape int64
+Collider_shape int32
 
 		}
 type PhysicsServer2DExtensionRayResult struct {
@@ -71,7 +71,7 @@ Normal Vector2
 Rid RID
 Collider_id ObjectID
 Collider Object
-Shape int64
+Shape int32
 
 		}
 type PhysicsServer2DExtensionShapeRestInfo struct {
@@ -79,7 +79,7 @@ type PhysicsServer2DExtensionShapeRestInfo struct {
 Normal Vector2
 Rid RID
 Collider_id ObjectID
-Shape int64
+Shape int32
 Linear_velocity Vector2
 
 		}
@@ -87,7 +87,7 @@ type PhysicsServer2DExtensionShapeResult struct {
 		Rid RID
 Collider_id ObjectID
 Collider Object
-Shape int64
+Shape int32
 
 		}
 type PhysicsServer3DExtensionMotionCollision struct {

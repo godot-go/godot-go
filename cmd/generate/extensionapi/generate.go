@@ -257,11 +257,13 @@ func GenerateGlobalEnums(projectPath string, extensionApi extensionapiparser.Ext
 func GenerateBuiltinClasses(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
 	tmpl, err := template.New("builtinclasses.gen.go").
 		Funcs(template.FuncMap{
+			"contains":                 strings.Contains,
 			"upper":                    strings.ToUpper,
 			"lowerFirstChar":           lowerFirstChar,
 			"upperFirstChar":           upperFirstChar,
 			"lowerCamel":               strcase.ToLowerCamel,
 			"screamingSnake":           screamingSnake,
+			"snakeCase":                snakeCase,
 			"goMethodName":             goMethodName,
 			"goArgumentName":           goArgumentName,
 			"goArgumentType":           goArgumentType,

@@ -9,7 +9,7 @@ import (
 	"go.uber.org/zap"
 )
 
-func zapGDNativeVariantPtrp(key string, val *GDNativeVariantPtr, len int) zap.Field {
+func zapGDExtensionVariantPtrp(key string, val *GDExtensionVariantPtr, len int) zap.Field {
 	if val == nil {
 		return zap.Reflect(key, nil)
 	}

@@ -51,17 +51,17 @@ jobs:
       #     go-version: ${{ matrix.go_version }}
       #     check-latest: true
       #     cache: true
-      - name: Install Godot 4.0 beta 3
+      - name: Install Godot 4.0 beta8
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.0/beta3/Godot_v4.0-beta3_win64.exe.zip
-          unzip Godot_v4.0-beta3_win64.exe.zip -d ./
+          wget https://downloads.tuxfamily.org/godotengine/4.0/beta8/Godot_v4.0-beta8_win64.exe.zip
+          unzip Godot_v4.0-beta8_win64.exe.zip -d ./
         shell: bash
       - name: Build
         run: |
           make build
         shell: bash
         env:
-          GODOT: ./Godot_v4.0-beta3_win64.exe
+          GODOT: ./Godot_v4.0-beta8_win64.exe
       - name: List Artifacts Directory
         run: |
           ls -alh test/demo/lib
@@ -75,7 +75,7 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "./Godot_v4.0-beta3_win64.exe"
+          GODOT: "./Godot_v4.0-beta8_win64.exe"
       - name: Test
         timeout-minutes: 2
         run: make test
@@ -84,4 +84,4 @@ jobs:
           CI: 1
           LOG_LEVEL: "trace"
           LANG: "en_US.utf8"
-          GODOT: "./Godot_v4.0-beta3_win64.exe"
+          GODOT: "./Godot_v4.0-beta8_win64.exe"

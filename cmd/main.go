@@ -28,7 +28,7 @@ func init() {
 	absPath, _ := filepath.Abs(".")
 
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "Toggle extra debug output")
-	rootCmd.PersistentFlags().BoolVarP(&genClangAPI, "clangApi", "", false, "Generate GDNative C wrapper")
+	rootCmd.PersistentFlags().BoolVarP(&genClangAPI, "clangApi", "", false, "Generate GDExtension C wrapper")
 	rootCmd.PersistentFlags().BoolVarP(&genExtensionApi, "extensionApi", "", false, "Generate Extension API")
 	rootCmd.PersistentFlags().StringVarP(&packagePath, "package-path", "p", absPath, "Specified package path")
 	rootCmd.PersistentFlags().StringVarP(&godotPath, "godot-path", "", "godot", "Specified path where the Godot executable is located")
@@ -80,7 +80,7 @@ func execGoFmt(filePath string) {
 	cmd := exec.Command("gofmt", "-w", filePath)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		log.Panic(fmt.Errorf("error running gofmt: \n%s\n%w", string(output), err))
+		log.Panic(fmt.Errorf("error running gofmt: \n%s\n%w", output, err))
 	}
 }
 
@@ -88,7 +88,7 @@ func execGoImports(filePath string) {
 	cmd := exec.Command("goimports", "-w", filePath)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		log.Panic(fmt.Errorf("error running goimports: \n%s\n%w", string(output), err))
+		log.Panic(fmt.Errorf("error running goimports: \n%s\n%w", output, err))
 	}
 }
 

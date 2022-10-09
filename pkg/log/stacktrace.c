@@ -72,7 +72,7 @@ void printStacktrace() {
 
         // SymCleanup(process);
     #else
-        printf("=[ start backtrace ]=============\n\n");
+        printf("___ C start backtrace ___________\n");
         void* callstack[128];
         int i, frames = backtrace(callstack, 128);
         char** strs = backtrace_symbols(callstack, frames);
@@ -80,7 +80,7 @@ void printStacktrace() {
             printf("%s\n", strs[i]);
         }
         free(strs);
-        printf("=[ end backtrace ]===============\n\n");
+        printf("___ C end backtrace   ___________\n\n");
     #endif
     }
 }

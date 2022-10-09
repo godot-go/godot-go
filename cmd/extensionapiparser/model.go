@@ -37,6 +37,7 @@ func (sz BuiltinClassSize) FindSize(name string) int {
 type BuiltinClassMemberOffsetClassMember struct {
 	Member string `json:"member"`
 	Offset int    `json:"offset"`
+	Meta   string `json:"meta"`
 }
 
 type BuiltinClassMemberOffsetClass struct {
@@ -196,6 +197,21 @@ type Class struct {
 	Methods        []ClassMethod   `json:"methods"`
 	Signals        []ClassSignal   `json:"signals"`
 	Properties     []ClassProperty `json:"properties"`
+}
+
+func (a Class) FilterEnums() []Enum {
+	values := make([]Enum, 0, len(a.Enums))
+
+	for _, e := range a.Enums {
+		switch fmt.Sprintf("%s%s", a.Name, e.GoName()) {
+		case "GDExtensionInitializationLevel":
+			continue
+		default:
+			values = append(values, e)
+		}
+	}
+
+	return values
 }
 
 type Singleton struct {

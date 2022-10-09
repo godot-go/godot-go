@@ -4,86 +4,98 @@ import (
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/gdnative"
+
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
-func callBuiltinConstructor(constructor GDNativePtrConstructor, base GDNativeTypePtr, args ...GDNativeTypePtr) {
-	c := (GDNativePtrConstructor)(constructor)
-	b := (GDNativeTypePtr)(base)
+func callBuiltinConstructor(constructor GDExtensionPtrConstructor, base GDExtensionTypePtr, args ...GDExtensionConstTypePtr) {
+	c := (GDExtensionPtrConstructor)(constructor)
+	b := (GDExtensionTypePtr)(base)
 
-	var a *GDNativeTypePtr
-	if len(args) > 0 {
-		a = (*GDNativeTypePtr)(unsafe.Pointer(&args[0]))
+	if c == nil {
+		log.Panic("constructor is null")
 	}
 
-	CallFunc_GDNativePtrConstructor(c, b, a)
-}
-
-func callBuiltinMethodPtrRet[T any](method GDNativePtrBuiltInMethod, base GDNativeTypePtr, args *[MAX_ARG_COUNT]GDNativeTypePtr) T {
-	m := (GDNativePtrBuiltInMethod)(method)
-	b := (GDNativeTypePtr)(base)
-	var a *GDNativeTypePtr
+	var a *GDExtensionConstTypePtr
 	if len(args) > 0 {
-		a = (*GDNativeTypePtr)(unsafe.Pointer(&args[0]))
+		a = (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	} else {
+		a = (*GDExtensionConstTypePtr)(nullptr)
 	}
-	ca := (int32)(len(args))
 
-	var ret T
-
-	ptr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
-
-	CallFunc_GDNativePtrBuiltInMethod(m, b, a, ptr, ca)
-
-	return ret
+	CallFunc_GDExtensionPtrConstructor(c, b, a)
 }
 
-func callBuiltinMethodPtrNoRet(method GDNativePtrBuiltInMethod, base GDNativeTypePtr, args *[MAX_ARG_COUNT]GDNativeTypePtr) {
-	m := (GDNativePtrBuiltInMethod)(method)
-	b := (GDNativeTypePtr)(base)
-	var a *GDNativeTypePtr
+func callBuiltinMethodPtrRet[T any](method GDExtensionPtrBuiltInMethod, base GDExtensionTypePtr, args ...GDExtensionTypePtr) T {
+	m := (GDExtensionPtrBuiltInMethod)(method)
+	b := (GDExtensionTypePtr)(base)
+	var a *GDExtensionConstTypePtr
 	if len(args) > 0 {
-		a = (*GDNativeTypePtr)(unsafe.Pointer(&args[0]))
+		a = (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	} else {
+		a = (*GDExtensionConstTypePtr)(nullptr)
 	}
 	ca := (int32)(len(args))
 
-	CallFunc_GDNativePtrBuiltInMethod(m, b, a, nil, ca)
-}
-
-func callBuiltinOperatorPtr[T any](operator GDNativePtrOperatorEvaluator, left GDNativeTypePtr, right GDNativeTypePtr) T {
-	op := (GDNativePtrOperatorEvaluator)(operator)
-	l := (GDNativeTypePtr)(left)
-	r := (GDNativeTypePtr)(right)
-
 	var ret T
 
-	ptr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	ptr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	CallFunc_GDNativePtrOperatorEvaluator(op, l, r, ptr)
+	CallFunc_GDExtensionPtrBuiltInMethod(m, b, a, ptr, ca)
 
 	return ret
 }
 
-func callBuiltinPtrGetter[T any](getter GDNativePtrGetter, base GDNativeTypePtr) T {
-	g := (GDNativePtrGetter)(getter)
-	b := (GDNativeTypePtr)(base)
+func callBuiltinMethodPtrNoRet(method GDExtensionPtrBuiltInMethod, base GDExtensionTypePtr, args ...GDExtensionTypePtr) {
+	m := (GDExtensionPtrBuiltInMethod)(method)
+	b := (GDExtensionTypePtr)(base)
+	var a *GDExtensionConstTypePtr
+	if len(args) > 0 {
+		a = (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	} else {
+		a = (*GDExtensionConstTypePtr)(nullptr)
+	}
+	ca := (int32)(len(args))
+
+	CallFunc_GDExtensionPtrBuiltInMethod(m, b, a, nil, ca)
+}
+
+func callBuiltinOperatorPtr[T any](operator GDExtensionPtrOperatorEvaluator, left GDExtensionConstTypePtr, right GDExtensionConstTypePtr) T {
+	op := (GDExtensionPtrOperatorEvaluator)(operator)
+	l := (GDExtensionConstTypePtr)(left)
+	r := (GDExtensionConstTypePtr)(right)
 
 	var ret T
 
-	ptr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	ptr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	CallFunc_GDNativePtrGetter(g, b, ptr)
+	CallFunc_GDExtensionPtrOperatorEvaluator(op, l, r, ptr)
 
 	return ret
 }
 
-func callBuiltinPtrSetter[T any](setter GDNativePtrSetter, base GDNativeTypePtr) T {
-	g := (GDNativePtrSetter)(setter)
-	b := (GDNativeTypePtr)(base)
+func callBuiltinPtrGetter[T any](getter GDExtensionPtrGetter, base GDExtensionConstTypePtr) T {
+	g := (GDExtensionPtrGetter)(getter)
+	b := (GDExtensionConstTypePtr)(base)
 
 	var ret T
 
-	ptr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	ptr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	CallFunc_GDNativePtrSetter(g, b, ptr)
+	CallFunc_GDExtensionPtrGetter(g, b, ptr)
+
+	return ret
+}
+
+func callBuiltinPtrSetter[T any](setter GDExtensionPtrSetter, base GDExtensionTypePtr) T {
+	g := (GDExtensionPtrSetter)(setter)
+	b := (GDExtensionTypePtr)(base)
+
+	var ret T
+
+	ptr := (GDExtensionConstTypePtr)(unsafe.Pointer(&ret))
+
+	CallFunc_GDExtensionPtrSetter(g, b, ptr)
 
 	return ret
 }

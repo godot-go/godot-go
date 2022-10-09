@@ -12,7 +12,7 @@ package gdextension
 
 //revive:disable
 
-// #include <godot/gdnative_interface.h>
+// #include <godot/gdextension_interface.h>
 // #include <stdio.h>
 // #include <stdlib.h>
 import "C"
@@ -37,7 +37,7 @@ func {{ camelCase $f.Name }}(
 {{- end -}}
 ) {{ $fnReturnType }} {
 	{{/* TODO: refactor for static instantiation */}}
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "{{ $f.Name }}", {{ $f.Hash }})
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("{{ $f.Name }}").AsGDExtensionStringNamePtr(), {{ $f.Hash }})
 
 	if fn == nil {
 		panic("could not find utility function {{ $f.Name }} ({{ $f.Hash }})")
@@ -45,14 +45,14 @@ func {{ camelCase $f.Name }}(
 
 	{{ if $fnReturnType -}}
 	var ret {{ $fnReturnType }}
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 	{{- else -}}
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 	{{- end }}
 
-	sz := unsafe.Sizeof(nullptr) * uintptr({{ len $f.Arguments }})
+	sz := int(unsafe.Sizeof(nullptr) * uintptr({{ len $f.Arguments }}))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	{{ if $f.Arguments }}
 	argsPtr := (*[{{ len $f.Arguments }}]unsafe.Pointer)(argBytes)
@@ -62,14 +62,14 @@ func {{ camelCase $f.Name }}(
 	{{ end }}
 	{{ end }}
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)({{ len $f.Arguments }})
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	{{ with $fnReturnType -}}
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 	{{- end }}
 }

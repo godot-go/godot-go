@@ -2,7 +2,7 @@ package gdextension
 
 //revive:disable
 
-// #include <godot/gdnative_interface.h>
+// #include <godot/gdextension_interface.h>
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include "gdextension_binding_init.h"
@@ -17,42 +17,42 @@ import (
 )
 
 type internalImpl struct {
-	gdnInterface      *GDNativeInterface
-	library           GDNativeExtensionClassLibraryPtr
+	gdnInterface      *GDExtensionInterface
+	library           GDExtensionClassLibraryPtr
 	token             unsafe.Pointer
-	gdNativeInstances *SyncMap[ObjectID, GDNativeClass]
+	gdNativeInstances *SyncMap[ObjectID, GDExtensionClass]
 	gdClassInstances  *SyncMap[GDObjectInstanceID, GDClass]
 }
 
 type GDExtensionBindingCallback func()
 
-type GDNativeClassGoConstructorFromOwner func(*GodotObject) GDNativeClass
+type GDExtensionClassGoConstructorFromOwner func(*GodotObject) GDExtensionClass
 
-type GDClassGoConstructor func(data unsafe.Pointer) GDNativeObjectPtr
+type GDClassGoConstructor func(data unsafe.Pointer) GDExtensionObjectPtr
 
 var (
 	internal internalImpl
 
 	nullptr = unsafe.Pointer(nil)
 
-	gdNativeConstructors                               = NewSyncMap[TypeName, GDNativeClassGoConstructorFromOwner]()
-	gdExtensionBindingGDNativeInstanceBindingCallbacks = NewSyncMap[TypeName, GDNativeInstanceBindingCallbacks]()
-	gdRegisteredGDClasses                              = NewSyncMap[TypeName, *ClassInfo]()
-	gdExtensionBindingInitCallbacks                    [GDNATIVE_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
-	gdExtensionBindingTerminateCallbacks               [GDNATIVE_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
+	gdNativeConstructors                               = NewSyncMap[string, GDExtensionClassGoConstructorFromOwner]()
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks = NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
+	gdRegisteredGDClasses                              = NewSyncMap[string, *ClassInfo]()
+	gdExtensionBindingInitCallbacks                    [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
+	gdExtensionBindingTerminateCallbacks               [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
 )
 
 func _GDExtensionBindingInit(
-	pInterface *GDNativeInterface,
-	pLibrary GDNativeExtensionClassLibraryPtr,
-	rInitialization *GDNativeInitialization,
+	pInterface *GDExtensionInterface,
+	pLibrary GDExtensionClassLibraryPtr,
+	rInitialization *GDExtensionInitialization,
 ) bool {
 	C.enablePrintStacktrace = log.GetLevel() == log.DebugLevel
 
 	internal.gdnInterface = pInterface
 	internal.library = pLibrary
 	internal.token = unsafe.Pointer(&pLibrary)
-	internal.gdNativeInstances = NewSyncMap[ObjectID, GDNativeClass]()
+	internal.gdNativeInstances = NewSyncMap[ObjectID, GDExtensionClass]()
 	internal.gdClassInstances = NewSyncMap[GDObjectInstanceID, GDClass]()
 
 	rInitialization.SetCallbacks(
@@ -62,7 +62,7 @@ func _GDExtensionBindingInit(
 
 	var hasInit bool
 
-	for i := GDNativeInitializationLevel(0); i < GDNATIVE_MAX_INITIALIZATION_LEVEL; i++ {
+	for i := GDExtensionInitializationLevel(0); i < GDEXTENSION_MAX_INITIALIZATION_LEVEL; i++ {
 		if gdExtensionBindingInitCallbacks[i] != nil {
 			rInitialization.SetInitializationLevel(i)
 			hasInit = true
@@ -80,8 +80,8 @@ func _GDExtensionBindingInit(
 }
 
 //export GDExtensionBindingInitializeLevel
-func GDExtensionBindingInitializeLevel(userdata unsafe.Pointer, pLevel C.GDNativeInitializationLevel) {
-	classdbCurrentLevel = (GDNativeInitializationLevel)(pLevel)
+func GDExtensionBindingInitializeLevel(userdata unsafe.Pointer, pLevel C.GDExtensionInitializationLevel) {
+	classdbCurrentLevel = (GDExtensionInitializationLevel)(pLevel)
 
 	if fn := gdExtensionBindingInitCallbacks[pLevel]; fn != nil {
 		log.Debug("GDExtensionBindingInitializeLevel init", zap.Int32("level", (int32)(pLevel)))
@@ -92,8 +92,8 @@ func GDExtensionBindingInitializeLevel(userdata unsafe.Pointer, pLevel C.GDNativ
 }
 
 //export GDExtensionBindingDeinitializeLevel
-func GDExtensionBindingDeinitializeLevel(userdata unsafe.Pointer, pLevel C.GDNativeInitializationLevel) {
-	classdbCurrentLevel = (GDNativeInitializationLevel)(pLevel)
+func GDExtensionBindingDeinitializeLevel(userdata unsafe.Pointer, pLevel C.GDExtensionInitializationLevel) {
+	classdbCurrentLevel = (GDExtensionInitializationLevel)(pLevel)
 	classDBDeinitialize(classdbCurrentLevel)
 
 	if gdExtensionBindingTerminateCallbacks[pLevel] != nil {
@@ -108,15 +108,15 @@ func GDExtensionBindingCreateInstanceCallback(pToken unsafe.Pointer, pInstance u
 
 	owner := (*GodotObject)(pInstance)
 
-	id := GDNativeInterface_object_get_instance_id(internal.gdnInterface, (GDNativeObjectPtr)(owner))
+	id := GDExtensionInterface_object_get_instance_id(internal.gdnInterface, (GDExtensionConstObjectPtr)(owner))
 
 	log.Debug("GDExtensionBindingCreateInstanceCallback called", zap.Any("id", id))
 
-	obj := NewGDNativeClassFromObjectOwner(owner).(Object)
+	obj := NewGDExtensionClassFromObjectOwner(owner).(Object)
 
 	strClass := obj.GetClass()
 
-	cn := TypeName(strClass.ToAscii())
+	cn := strClass.ToAscii()
 
 	w := obj.CastTo(cn)
 	return w
@@ -129,48 +129,48 @@ func GDExtensionBindingFreeInstanceCallback(pToken unsafe.Pointer, pInstance uns
 
 	w := (*WrappedImpl)(pBinding)
 
-	GDNativeInterface_object_destroy(internal.gdnInterface, (GDNativeObjectPtr)(w.Owner))
+	GDExtensionInterface_object_destroy(internal.gdnInterface, (GDExtensionObjectPtr)(w.Owner))
 }
 
 type GDExtensionBinding struct {
 }
 
 type InitObject struct {
-	gdnInterface   *GDNativeInterface
-	library        GDNativeExtensionClassLibraryPtr
-	initialization *GDNativeInitialization
+	gdnInterface   *GDExtensionInterface
+	library        GDExtensionClassLibraryPtr
+	initialization *GDExtensionInitialization
 }
 
 func (o InitObject) RegisterCoreInitializer(pCoreInit GDExtensionBindingCallback) {
-	gdExtensionBindingInitCallbacks[GDNATIVE_INITIALIZATION_CORE] = pCoreInit
+	gdExtensionBindingInitCallbacks[GDEXTENSION_INITIALIZATION_CORE] = pCoreInit
 }
 
 func (o InitObject) RegisterServerInitializer(pServerInit GDExtensionBindingCallback) {
-	gdExtensionBindingInitCallbacks[GDNATIVE_INITIALIZATION_SERVERS] = pServerInit
+	gdExtensionBindingInitCallbacks[GDEXTENSION_INITIALIZATION_SERVERS] = pServerInit
 }
 
 func (o InitObject) RegisterSceneInitializer(pSceneInit GDExtensionBindingCallback) {
-	gdExtensionBindingInitCallbacks[GDNATIVE_INITIALIZATION_SCENE] = pSceneInit
+	gdExtensionBindingInitCallbacks[GDEXTENSION_INITIALIZATION_SCENE] = pSceneInit
 }
 
 func (o InitObject) RegisterEditorInitializer(pEditorInit GDExtensionBindingCallback) {
-	gdExtensionBindingInitCallbacks[GDNATIVE_INITIALIZATION_EDITOR] = pEditorInit
+	gdExtensionBindingInitCallbacks[GDEXTENSION_INITIALIZATION_EDITOR] = pEditorInit
 }
 
 func (o InitObject) RegisterCoreTerminator(pCoreTerminate GDExtensionBindingCallback) {
-	gdExtensionBindingTerminateCallbacks[GDNATIVE_INITIALIZATION_CORE] = pCoreTerminate
+	gdExtensionBindingTerminateCallbacks[GDEXTENSION_INITIALIZATION_CORE] = pCoreTerminate
 }
 
 func (o InitObject) RegisterServerTerminator(pServerTerminate GDExtensionBindingCallback) {
-	gdExtensionBindingTerminateCallbacks[GDNATIVE_INITIALIZATION_SERVERS] = pServerTerminate
+	gdExtensionBindingTerminateCallbacks[GDEXTENSION_INITIALIZATION_SERVERS] = pServerTerminate
 }
 
 func (o InitObject) RegisterSceneTerminator(pSceneTerminate GDExtensionBindingCallback) {
-	gdExtensionBindingTerminateCallbacks[GDNATIVE_INITIALIZATION_SCENE] = pSceneTerminate
+	gdExtensionBindingTerminateCallbacks[GDEXTENSION_INITIALIZATION_SCENE] = pSceneTerminate
 }
 
 func (o InitObject) RegisterEditorTerminator(pEditorTerminate GDExtensionBindingCallback) {
-	gdExtensionBindingTerminateCallbacks[GDNATIVE_INITIALIZATION_EDITOR] = pEditorTerminate
+	gdExtensionBindingTerminateCallbacks[GDEXTENSION_INITIALIZATION_EDITOR] = pEditorTerminate
 }
 
 func (o InitObject) Init() bool {
@@ -178,9 +178,9 @@ func (o InitObject) Init() bool {
 }
 
 func NewInitObject(
-	gdnInterface *GDNativeInterface,
-	library GDNativeExtensionClassLibraryPtr,
-	initialization *GDNativeInitialization,
+	gdnInterface *GDExtensionInterface,
+	library GDExtensionClassLibraryPtr,
+	initialization *GDExtensionInitialization,
 ) *InitObject {
 	return &InitObject{
 		gdnInterface:   gdnInterface,

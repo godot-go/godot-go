@@ -12,19 +12,19 @@
 #define CGO_GODOT_GO_CLASSES_CALLBACK_H
 
 #include <stdbool.h>
-#include <godot/gdnative_interface.h>
+#include <godot/gdextension_interface.h>
 
 {{ range $i, $c := $view.Classes -}}
 
-extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
+extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
+extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
+extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
 
 void *cgo_gdnative_class_binding_create_callback_{{ $c.Name }}(void *p_token, void *p_instance);
 void cgo_gdnative_class_binding_free_callback_{{ $c.Name }}(void *p_token, void *p_instance, void *p_binding);
-GDNativeBool cgo_gdnative_class_binding_reference_callback_{{ $c.Name }}(void *p_token, void *p_instance, GDNativeBool p_reference);
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_{{ $c.Name }}(void *p_token, void *p_instance, GDExtensionBool p_reference);
 
-// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_{{ $c.Name }};
+// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_{{ $c.Name }};
 
 {{ end }}
 

@@ -12,7 +12,7 @@ package gdnative
 
 //revive:disable
 
-// #include <godot/gdnative_interface.h>
+// #include <godot/gdextension_interface.h>
 // #include "gdnative_wrapper.gen.h"
 // #include <stdint.h>
 // #include <stdio.h>
@@ -20,6 +20,8 @@ package gdnative
 import "C"
 import (
 	"unsafe"
+
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 // aliases
@@ -34,405 +36,427 @@ type Char C.char
 type WcharT C.wchar_t
 type Char32T C.char32_t
 type Char16T C.char16_t
-type GDNativeVariantPtr C.GDNativeVariantPtr
-type GDNativeStringNamePtr C.GDNativeStringNamePtr
-type GDNativeStringPtr C.GDNativeStringPtr
-type GDNativeObjectPtr C.GDNativeObjectPtr
-type GDNativeTypePtr C.GDNativeTypePtr
-type GDNativeExtensionPtr C.GDNativeExtensionPtr
-type GDNativeMethodBindPtr C.GDNativeMethodBindPtr
-type GDNativeInt C.GDNativeInt
-type GDNativeBool C.GDNativeBool
+type GDExtensionVariantPtr C.GDExtensionVariantPtr
+type GDExtensionConstVariantPtr C.GDExtensionConstVariantPtr
+type GDExtensionStringNamePtr C.GDExtensionStringNamePtr
+type GDExtensionConstStringNamePtr C.GDExtensionConstStringNamePtr
+type GDExtensionStringPtr C.GDExtensionStringPtr
+type GDExtensionConstStringPtr C.GDExtensionConstStringPtr
+type GDExtensionObjectPtr C.GDExtensionObjectPtr
+type GDExtensionConstObjectPtr C.GDExtensionConstObjectPtr
+type GDExtensionTypePtr C.GDExtensionTypePtr
+type GDExtensionConstTypePtr C.GDExtensionConstTypePtr
+type GDExtensionMethodBindPtr C.GDExtensionMethodBindPtr
+type GDExtensionInt C.GDExtensionInt
+type GDExtensionBool C.GDExtensionBool
 type GDObjectInstanceID C.GDObjectInstanceID
+type GDExtensionRefPtr C.GDExtensionRefPtr
+type GDExtensionConstRefPtr C.GDExtensionConstRefPtr
 type GDExtensionClassInstancePtr C.GDExtensionClassInstancePtr
-type GDNativeExtensionClassLibraryPtr C.GDNativeExtensionClassLibraryPtr
-type GDNativeExtensionScriptInstanceDataPtr C.GDNativeExtensionScriptInstanceDataPtr
-type GDNativeExtensionScriptLanguagePtr C.GDNativeExtensionScriptLanguagePtr
-type GDNativeScriptInstancePtr C.GDNativeScriptInstancePtr
+type GDExtensionClassLibraryPtr C.GDExtensionClassLibraryPtr
+type GDExtensionScriptInstanceDataPtr C.GDExtensionScriptInstanceDataPtr
+type GDExtensionScriptLanguagePtr C.GDExtensionScriptLanguagePtr
+type GDExtensionScriptInstancePtr C.GDExtensionScriptInstancePtr
 
 // enums
-type GDNativeVariantType C.GDNativeVariantType
+type GDExtensionVariantType C.GDExtensionVariantType
 
 const (
-	GDNATIVE_VARIANT_TYPE_NIL GDNativeVariantType = iota
-	GDNATIVE_VARIANT_TYPE_BOOL
-	GDNATIVE_VARIANT_TYPE_INT
-	GDNATIVE_VARIANT_TYPE_FLOAT
-	GDNATIVE_VARIANT_TYPE_STRING
-	GDNATIVE_VARIANT_TYPE_VECTOR2
-	GDNATIVE_VARIANT_TYPE_VECTOR2I
-	GDNATIVE_VARIANT_TYPE_RECT2
-	GDNATIVE_VARIANT_TYPE_RECT2I
-	GDNATIVE_VARIANT_TYPE_VECTOR3
-	GDNATIVE_VARIANT_TYPE_VECTOR3I
-	GDNATIVE_VARIANT_TYPE_TRANSFORM2D
-	GDNATIVE_VARIANT_TYPE_VECTOR4
-	GDNATIVE_VARIANT_TYPE_VECTOR4I
-	GDNATIVE_VARIANT_TYPE_PLANE
-	GDNATIVE_VARIANT_TYPE_QUATERNION
-	GDNATIVE_VARIANT_TYPE_AABB
-	GDNATIVE_VARIANT_TYPE_BASIS
-	GDNATIVE_VARIANT_TYPE_TRANSFORM3D
-	GDNATIVE_VARIANT_TYPE_PROJECTION
-	GDNATIVE_VARIANT_TYPE_COLOR
-	GDNATIVE_VARIANT_TYPE_STRING_NAME
-	GDNATIVE_VARIANT_TYPE_NODE_PATH
-	GDNATIVE_VARIANT_TYPE_RID
-	GDNATIVE_VARIANT_TYPE_OBJECT
-	GDNATIVE_VARIANT_TYPE_CALLABLE
-	GDNATIVE_VARIANT_TYPE_SIGNAL
-	GDNATIVE_VARIANT_TYPE_DICTIONARY
-	GDNATIVE_VARIANT_TYPE_ARRAY
-	GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY
-	GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY
-	GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY
-	GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY
-	GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY
-	GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY
-	GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY
-	GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY
-	GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY
-	GDNATIVE_VARIANT_TYPE_VARIANT_MAX
+	GDEXTENSION_VARIANT_TYPE_NIL GDExtensionVariantType = iota
+	GDEXTENSION_VARIANT_TYPE_BOOL
+	GDEXTENSION_VARIANT_TYPE_INT
+	GDEXTENSION_VARIANT_TYPE_FLOAT
+	GDEXTENSION_VARIANT_TYPE_STRING
+	GDEXTENSION_VARIANT_TYPE_VECTOR2
+	GDEXTENSION_VARIANT_TYPE_VECTOR2I
+	GDEXTENSION_VARIANT_TYPE_RECT2
+	GDEXTENSION_VARIANT_TYPE_RECT2I
+	GDEXTENSION_VARIANT_TYPE_VECTOR3
+	GDEXTENSION_VARIANT_TYPE_VECTOR3I
+	GDEXTENSION_VARIANT_TYPE_TRANSFORM2D
+	GDEXTENSION_VARIANT_TYPE_VECTOR4
+	GDEXTENSION_VARIANT_TYPE_VECTOR4I
+	GDEXTENSION_VARIANT_TYPE_PLANE
+	GDEXTENSION_VARIANT_TYPE_QUATERNION
+	GDEXTENSION_VARIANT_TYPE_AABB
+	GDEXTENSION_VARIANT_TYPE_BASIS
+	GDEXTENSION_VARIANT_TYPE_TRANSFORM3D
+	GDEXTENSION_VARIANT_TYPE_PROJECTION
+	GDEXTENSION_VARIANT_TYPE_COLOR
+	GDEXTENSION_VARIANT_TYPE_STRING_NAME
+	GDEXTENSION_VARIANT_TYPE_NODE_PATH
+	GDEXTENSION_VARIANT_TYPE_RID
+	GDEXTENSION_VARIANT_TYPE_OBJECT
+	GDEXTENSION_VARIANT_TYPE_CALLABLE
+	GDEXTENSION_VARIANT_TYPE_SIGNAL
+	GDEXTENSION_VARIANT_TYPE_DICTIONARY
+	GDEXTENSION_VARIANT_TYPE_ARRAY
+	GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY
+	GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY
+	GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY
+	GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY
+	GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY
+	GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY
+	GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY
+	GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY
+	GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY
+	GDEXTENSION_VARIANT_TYPE_VARIANT_MAX
 )
 
-type GDNativeVariantOperator C.GDNativeVariantOperator
+type GDExtensionVariantOperator C.GDExtensionVariantOperator
 
 const (
-	GDNATIVE_VARIANT_OP_EQUAL GDNativeVariantOperator = iota
-	GDNATIVE_VARIANT_OP_NOT_EQUAL
-	GDNATIVE_VARIANT_OP_LESS
-	GDNATIVE_VARIANT_OP_LESS_EQUAL
-	GDNATIVE_VARIANT_OP_GREATER
-	GDNATIVE_VARIANT_OP_GREATER_EQUAL
-	GDNATIVE_VARIANT_OP_ADD
-	GDNATIVE_VARIANT_OP_SUBTRACT
-	GDNATIVE_VARIANT_OP_MULTIPLY
-	GDNATIVE_VARIANT_OP_DIVIDE
-	GDNATIVE_VARIANT_OP_NEGATE
-	GDNATIVE_VARIANT_OP_POSITIVE
-	GDNATIVE_VARIANT_OP_MODULE
-	GDNATIVE_VARIANT_OP_POWER
-	GDNATIVE_VARIANT_OP_SHIFT_LEFT
-	GDNATIVE_VARIANT_OP_SHIFT_RIGHT
-	GDNATIVE_VARIANT_OP_BIT_AND
-	GDNATIVE_VARIANT_OP_BIT_OR
-	GDNATIVE_VARIANT_OP_BIT_XOR
-	GDNATIVE_VARIANT_OP_BIT_NEGATE
-	GDNATIVE_VARIANT_OP_AND
-	GDNATIVE_VARIANT_OP_OR
-	GDNATIVE_VARIANT_OP_XOR
-	GDNATIVE_VARIANT_OP_NOT
-	GDNATIVE_VARIANT_OP_IN
-	GDNATIVE_VARIANT_OP_MAX
+	GDEXTENSION_VARIANT_OP_EQUAL GDExtensionVariantOperator = iota
+	GDEXTENSION_VARIANT_OP_NOT_EQUAL
+	GDEXTENSION_VARIANT_OP_LESS
+	GDEXTENSION_VARIANT_OP_LESS_EQUAL
+	GDEXTENSION_VARIANT_OP_GREATER
+	GDEXTENSION_VARIANT_OP_GREATER_EQUAL
+	GDEXTENSION_VARIANT_OP_ADD
+	GDEXTENSION_VARIANT_OP_SUBTRACT
+	GDEXTENSION_VARIANT_OP_MULTIPLY
+	GDEXTENSION_VARIANT_OP_DIVIDE
+	GDEXTENSION_VARIANT_OP_NEGATE
+	GDEXTENSION_VARIANT_OP_POSITIVE
+	GDEXTENSION_VARIANT_OP_MODULE
+	GDEXTENSION_VARIANT_OP_POWER
+	GDEXTENSION_VARIANT_OP_SHIFT_LEFT
+	GDEXTENSION_VARIANT_OP_SHIFT_RIGHT
+	GDEXTENSION_VARIANT_OP_BIT_AND
+	GDEXTENSION_VARIANT_OP_BIT_OR
+	GDEXTENSION_VARIANT_OP_BIT_XOR
+	GDEXTENSION_VARIANT_OP_BIT_NEGATE
+	GDEXTENSION_VARIANT_OP_AND
+	GDEXTENSION_VARIANT_OP_OR
+	GDEXTENSION_VARIANT_OP_XOR
+	GDEXTENSION_VARIANT_OP_NOT
+	GDEXTENSION_VARIANT_OP_IN
+	GDEXTENSION_VARIANT_OP_MAX
 )
 
-type GDNativeCallErrorType C.GDNativeCallErrorType
+type GDExtensionCallErrorType C.GDExtensionCallErrorType
 
 const (
-	GDNATIVE_CALL_OK GDNativeCallErrorType = iota
-	GDNATIVE_CALL_ERROR_INVALID_METHOD
-	GDNATIVE_CALL_ERROR_INVALID_ARGUMENT
-	GDNATIVE_CALL_ERROR_TOO_MANY_ARGUMENTS
-	GDNATIVE_CALL_ERROR_TOO_FEW_ARGUMENTS
-	GDNATIVE_CALL_ERROR_INSTANCE_IS_NULL
-	GDNATIVE_CALL_ERROR_METHOD_NOT_CONST
+	GDEXTENSION_CALL_OK GDExtensionCallErrorType = iota
+	GDEXTENSION_CALL_ERROR_INVALID_METHOD
+	GDEXTENSION_CALL_ERROR_INVALID_ARGUMENT
+	GDEXTENSION_CALL_ERROR_TOO_MANY_ARGUMENTS
+	GDEXTENSION_CALL_ERROR_TOO_FEW_ARGUMENTS
+	GDEXTENSION_CALL_ERROR_INSTANCE_IS_NULL
+	GDEXTENSION_CALL_ERROR_METHOD_NOT_CONST
 )
 
-type GDNativeExtensionClassMethodFlags C.GDNativeExtensionClassMethodFlags
+type GDExtensionClassMethodFlags C.GDExtensionClassMethodFlags
 
 const (
-	GDNATIVE_EXTENSION_METHOD_FLAG_NORMAL   GDNativeExtensionClassMethodFlags = 1
-	GDNATIVE_EXTENSION_METHOD_FLAG_EDITOR                                     = 2
-	GDNATIVE_EXTENSION_METHOD_FLAG_CONST                                      = 4
-	GDNATIVE_EXTENSION_METHOD_FLAG_VIRTUAL                                    = 8
-	GDNATIVE_EXTENSION_METHOD_FLAG_VARARG                                     = 16
-	GDNATIVE_EXTENSION_METHOD_FLAG_STATIC                                     = 32
-	GDNATIVE_EXTENSION_METHOD_FLAGS_DEFAULT                                   = GDNATIVE_EXTENSION_METHOD_FLAG_NORMAL
+	GDEXTENSION_METHOD_FLAG_NORMAL   GDExtensionClassMethodFlags = 1
+	GDEXTENSION_METHOD_FLAG_EDITOR                               = 2
+	GDEXTENSION_METHOD_FLAG_CONST                                = 4
+	GDEXTENSION_METHOD_FLAG_VIRTUAL                              = 8
+	GDEXTENSION_METHOD_FLAG_VARARG                               = 16
+	GDEXTENSION_METHOD_FLAG_STATIC                               = 32
+	GDEXTENSION_METHOD_FLAGS_DEFAULT                             = GDEXTENSION_METHOD_FLAG_NORMAL
 )
 
-type GDNativeExtensionClassMethodArgumentMetadata C.GDNativeExtensionClassMethodArgumentMetadata
+type GDExtensionClassMethodArgumentMetadata C.GDExtensionClassMethodArgumentMetadata
 
 const (
-	GDNATIVE_EXTENSION_METHOD_ARGUMENT_METADATA_NONE GDNativeExtensionClassMethodArgumentMetadata = iota
-	GDNATIVE_EXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT8
-	GDNATIVE_EXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT16
-	GDNATIVE_EXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT32
-	GDNATIVE_EXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT64
-	GDNATIVE_EXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT8
-	GDNATIVE_EXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT16
-	GDNATIVE_EXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT32
-	GDNATIVE_EXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT64
-	GDNATIVE_EXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT
-	GDNATIVE_EXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE GDExtensionClassMethodArgumentMetadata = iota
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT8
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT16
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT32
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT64
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT8
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT16
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT32
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT64
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE
 )
 
-type GDNativeInitializationLevel C.GDNativeInitializationLevel
+type GDExtensionInitializationLevel C.GDExtensionInitializationLevel
 
 const (
-	GDNATIVE_INITIALIZATION_CORE GDNativeInitializationLevel = iota
-	GDNATIVE_INITIALIZATION_SERVERS
-	GDNATIVE_INITIALIZATION_SCENE
-	GDNATIVE_INITIALIZATION_EDITOR
-	GDNATIVE_MAX_INITIALIZATION_LEVEL
+	GDEXTENSION_INITIALIZATION_CORE GDExtensionInitializationLevel = iota
+	GDEXTENSION_INITIALIZATION_SERVERS
+	GDEXTENSION_INITIALIZATION_SCENE
+	GDEXTENSION_INITIALIZATION_EDITOR
+	GDEXTENSION_MAX_INITIALIZATION_LEVEL
 )
 
 // functions
-type GDNativeVariantFromTypeConstructorFunc C.GDNativeVariantFromTypeConstructorFunc
-type GDNativeTypeFromVariantConstructorFunc C.GDNativeTypeFromVariantConstructorFunc
-type GDNativePtrOperatorEvaluator C.GDNativePtrOperatorEvaluator
-type GDNativePtrBuiltInMethod C.GDNativePtrBuiltInMethod
-type GDNativePtrConstructor C.GDNativePtrConstructor
-type GDNativePtrDestructor C.GDNativePtrDestructor
-type GDNativePtrSetter C.GDNativePtrSetter
-type GDNativePtrGetter C.GDNativePtrGetter
-type GDNativePtrIndexedSetter C.GDNativePtrIndexedSetter
-type GDNativePtrIndexedGetter C.GDNativePtrIndexedGetter
-type GDNativePtrKeyedSetter C.GDNativePtrKeyedSetter
-type GDNativePtrKeyedGetter C.GDNativePtrKeyedGetter
-type GDNativePtrKeyedChecker C.GDNativePtrKeyedChecker
-type GDNativePtrUtilityFunction C.GDNativePtrUtilityFunction
-type GDNativeClassConstructor C.GDNativeClassConstructor
-type GDNativeInstanceBindingCreateCallback C.GDNativeInstanceBindingCreateCallback
-type GDNativeInstanceBindingFreeCallback C.GDNativeInstanceBindingFreeCallback
-type GDNativeInstanceBindingReferenceCallback C.GDNativeInstanceBindingReferenceCallback
-type GDNativeExtensionClassSet C.GDNativeExtensionClassSet
-type GDNativeExtensionClassGet C.GDNativeExtensionClassGet
-type GDNativeExtensionClassGetRID C.GDNativeExtensionClassGetRID
-type GDNativeExtensionClassGetPropertyList C.GDNativeExtensionClassGetPropertyList
-type GDNativeExtensionClassFreePropertyList C.GDNativeExtensionClassFreePropertyList
-type GDNativeExtensionClassPropertyCanRevert C.GDNativeExtensionClassPropertyCanRevert
-type GDNativeExtensionClassPropertyGetRevert C.GDNativeExtensionClassPropertyGetRevert
-type GDNativeExtensionClassNotification C.GDNativeExtensionClassNotification
-type GDNativeExtensionClassToString C.GDNativeExtensionClassToString
-type GDNativeExtensionClassReference C.GDNativeExtensionClassReference
-type GDNativeExtensionClassUnreference C.GDNativeExtensionClassUnreference
-type GDNativeExtensionClassCallVirtual C.GDNativeExtensionClassCallVirtual
-type GDNativeExtensionClassCreateInstance C.GDNativeExtensionClassCreateInstance
-type GDNativeExtensionClassFreeInstance C.GDNativeExtensionClassFreeInstance
-type GDNativeExtensionClassGetVirtual C.GDNativeExtensionClassGetVirtual
-type GDNativeExtensionClassMethodCall C.GDNativeExtensionClassMethodCall
-type GDNativeExtensionClassMethodPtrCall C.GDNativeExtensionClassMethodPtrCall
-type GDNativeExtensionClassMethodGetArgumentType C.GDNativeExtensionClassMethodGetArgumentType
-type GDNativeExtensionClassMethodGetArgumentInfo C.GDNativeExtensionClassMethodGetArgumentInfo
-type GDNativeExtensionClassMethodGetArgumentMetadata C.GDNativeExtensionClassMethodGetArgumentMetadata
-type GDNativeExtensionScriptInstanceSet C.GDNativeExtensionScriptInstanceSet
-type GDNativeExtensionScriptInstanceGet C.GDNativeExtensionScriptInstanceGet
-type GDNativeExtensionScriptInstanceGetPropertyList C.GDNativeExtensionScriptInstanceGetPropertyList
-type GDNativeExtensionScriptInstanceFreePropertyList C.GDNativeExtensionScriptInstanceFreePropertyList
-type GDNativeExtensionScriptInstanceGetPropertyType C.GDNativeExtensionScriptInstanceGetPropertyType
-type GDNativeExtensionScriptInstancePropertyCanRevert C.GDNativeExtensionScriptInstancePropertyCanRevert
-type GDNativeExtensionScriptInstancePropertyGetRevert C.GDNativeExtensionScriptInstancePropertyGetRevert
-type GDNativeExtensionScriptInstanceGetOwner C.GDNativeExtensionScriptInstanceGetOwner
-type GDNativeExtensionScriptInstancePropertyStateAdd C.GDNativeExtensionScriptInstancePropertyStateAdd
-type GDNativeExtensionScriptInstanceGetPropertyState C.GDNativeExtensionScriptInstanceGetPropertyState
-type GDNativeExtensionScriptInstanceGetMethodList C.GDNativeExtensionScriptInstanceGetMethodList
-type GDNativeExtensionScriptInstanceFreeMethodList C.GDNativeExtensionScriptInstanceFreeMethodList
-type GDNativeExtensionScriptInstanceHasMethod C.GDNativeExtensionScriptInstanceHasMethod
-type GDNativeExtensionScriptInstanceCall C.GDNativeExtensionScriptInstanceCall
-type GDNativeExtensionScriptInstanceNotification C.GDNativeExtensionScriptInstanceNotification
-type GDNativeExtensionScriptInstanceToString C.GDNativeExtensionScriptInstanceToString
-type GDNativeExtensionScriptInstanceRefCountIncremented C.GDNativeExtensionScriptInstanceRefCountIncremented
-type GDNativeExtensionScriptInstanceRefCountDecremented C.GDNativeExtensionScriptInstanceRefCountDecremented
-type GDNativeExtensionScriptInstanceGetScript C.GDNativeExtensionScriptInstanceGetScript
-type GDNativeExtensionScriptInstanceIsPlaceholder C.GDNativeExtensionScriptInstanceIsPlaceholder
-type GDNativeExtensionScriptInstanceGetLanguage C.GDNativeExtensionScriptInstanceGetLanguage
-type GDNativeExtensionScriptInstanceFree C.GDNativeExtensionScriptInstanceFree
-type GDNativeInitializationFunction C.GDNativeInitializationFunction
+type GDExtensionVariantFromTypeConstructorFunc C.GDExtensionVariantFromTypeConstructorFunc
+type GDExtensionTypeFromVariantConstructorFunc C.GDExtensionTypeFromVariantConstructorFunc
+type GDExtensionPtrOperatorEvaluator C.GDExtensionPtrOperatorEvaluator
+type GDExtensionPtrBuiltInMethod C.GDExtensionPtrBuiltInMethod
+type GDExtensionPtrConstructor C.GDExtensionPtrConstructor
+type GDExtensionPtrDestructor C.GDExtensionPtrDestructor
+type GDExtensionPtrSetter C.GDExtensionPtrSetter
+type GDExtensionPtrGetter C.GDExtensionPtrGetter
+type GDExtensionPtrIndexedSetter C.GDExtensionPtrIndexedSetter
+type GDExtensionPtrIndexedGetter C.GDExtensionPtrIndexedGetter
+type GDExtensionPtrKeyedSetter C.GDExtensionPtrKeyedSetter
+type GDExtensionPtrKeyedGetter C.GDExtensionPtrKeyedGetter
+type GDExtensionPtrKeyedChecker C.GDExtensionPtrKeyedChecker
+type GDExtensionPtrUtilityFunction C.GDExtensionPtrUtilityFunction
+type GDExtensionClassConstructor C.GDExtensionClassConstructor
+type GDExtensionInstanceBindingCreateCallback C.GDExtensionInstanceBindingCreateCallback
+type GDExtensionInstanceBindingFreeCallback C.GDExtensionInstanceBindingFreeCallback
+type GDExtensionInstanceBindingReferenceCallback C.GDExtensionInstanceBindingReferenceCallback
+type GDExtensionClassSet C.GDExtensionClassSet
+type GDExtensionClassGet C.GDExtensionClassGet
+type GDExtensionClassGetRID C.GDExtensionClassGetRID
+type GDExtensionClassGetPropertyList C.GDExtensionClassGetPropertyList
+type GDExtensionClassFreePropertyList C.GDExtensionClassFreePropertyList
+type GDExtensionClassPropertyCanRevert C.GDExtensionClassPropertyCanRevert
+type GDExtensionClassPropertyGetRevert C.GDExtensionClassPropertyGetRevert
+type GDExtensionClassNotification C.GDExtensionClassNotification
+type GDExtensionClassToString C.GDExtensionClassToString
+type GDExtensionClassReference C.GDExtensionClassReference
+type GDExtensionClassUnreference C.GDExtensionClassUnreference
+type GDExtensionClassCallVirtual C.GDExtensionClassCallVirtual
+type GDExtensionClassCreateInstance C.GDExtensionClassCreateInstance
+type GDExtensionClassFreeInstance C.GDExtensionClassFreeInstance
+type GDExtensionClassGetVirtual C.GDExtensionClassGetVirtual
+type GDExtensionClassMethodCall C.GDExtensionClassMethodCall
+type GDExtensionClassMethodPtrCall C.GDExtensionClassMethodPtrCall
+type GDExtensionScriptInstanceSet C.GDExtensionScriptInstanceSet
+type GDExtensionScriptInstanceGet C.GDExtensionScriptInstanceGet
+type GDExtensionScriptInstanceGetPropertyList C.GDExtensionScriptInstanceGetPropertyList
+type GDExtensionScriptInstanceFreePropertyList C.GDExtensionScriptInstanceFreePropertyList
+type GDExtensionScriptInstanceGetPropertyType C.GDExtensionScriptInstanceGetPropertyType
+type GDExtensionScriptInstancePropertyCanRevert C.GDExtensionScriptInstancePropertyCanRevert
+type GDExtensionScriptInstancePropertyGetRevert C.GDExtensionScriptInstancePropertyGetRevert
+type GDExtensionScriptInstanceGetOwner C.GDExtensionScriptInstanceGetOwner
+type GDExtensionScriptInstancePropertyStateAdd C.GDExtensionScriptInstancePropertyStateAdd
+type GDExtensionScriptInstanceGetPropertyState C.GDExtensionScriptInstanceGetPropertyState
+type GDExtensionScriptInstanceGetMethodList C.GDExtensionScriptInstanceGetMethodList
+type GDExtensionScriptInstanceFreeMethodList C.GDExtensionScriptInstanceFreeMethodList
+type GDExtensionScriptInstanceHasMethod C.GDExtensionScriptInstanceHasMethod
+type GDExtensionScriptInstanceCall C.GDExtensionScriptInstanceCall
+type GDExtensionScriptInstanceNotification C.GDExtensionScriptInstanceNotification
+type GDExtensionScriptInstanceToString C.GDExtensionScriptInstanceToString
+type GDExtensionScriptInstanceRefCountIncremented C.GDExtensionScriptInstanceRefCountIncremented
+type GDExtensionScriptInstanceRefCountDecremented C.GDExtensionScriptInstanceRefCountDecremented
+type GDExtensionScriptInstanceGetScript C.GDExtensionScriptInstanceGetScript
+type GDExtensionScriptInstanceIsPlaceholder C.GDExtensionScriptInstanceIsPlaceholder
+type GDExtensionScriptInstanceGetLanguage C.GDExtensionScriptInstanceGetLanguage
+type GDExtensionScriptInstanceFree C.GDExtensionScriptInstanceFree
+type GDExtensionInitializationFunction C.GDExtensionInitializationFunction
 
 // custom functions
-func CallFunc_GDNativePtrConstructor(
-	cb GDNativePtrConstructor,
-	p_base GDNativeTypePtr,
-	p_args *GDNativeTypePtr,
+func CallFunc_GDExtensionPtrConstructor(
+	cb GDExtensionPtrConstructor,
+	p_base GDExtensionTypePtr,
+	p_args *GDExtensionConstTypePtr,
 ) {
-	C.cgo_callfn_GDNativePtrConstructor(
-		(C.GDNativePtrConstructor)(cb),
-		(C.GDNativeTypePtr)(p_base),
-		(*C.GDNativeTypePtr)(p_args),
+	log.Debug("called CallFunc_GDExtensionPtrConstructor")
+	C.cgo_callfn_GDExtensionPtrConstructor(
+		(C.GDExtensionPtrConstructor)(cb),
+		(C.GDExtensionTypePtr)(p_base),
+		(*C.GDExtensionConstTypePtr)(p_args),
 	)
 }
 
-func CallFunc_GDNativePtrDestructor(
-	cb GDNativePtrDestructor,
-	ptr GDNativeTypePtr,
+func CallFunc_GDExtensionPtrDestructor(
+	cb GDExtensionPtrDestructor,
+	ptr GDExtensionTypePtr,
 ) {
-	C.cgo_callfn_GDNativePtrDestructor(
-		(C.GDNativePtrDestructor)(cb),
-		(C.GDNativeTypePtr)(ptr),
+	log.Debug("called C.cgo_callfn_GDExtensionPtrDestructor")
+	C.cgo_callfn_GDExtensionPtrDestructor(
+		(C.GDExtensionPtrDestructor)(cb),
+		(C.GDExtensionTypePtr)(ptr),
 	)
 }
 
-func CallFunc_GDNativePtrOperatorEvaluator(
-	cb GDNativePtrOperatorEvaluator,
-	p_left GDNativeTypePtr,
-	p_right GDNativeTypePtr,
-	r_result GDNativeTypePtr,
+func CallFunc_GDExtensionPtrOperatorEvaluator(
+	cb GDExtensionPtrOperatorEvaluator,
+	p_left GDExtensionConstTypePtr,
+	p_right GDExtensionConstTypePtr,
+	r_result GDExtensionTypePtr,
 ) {
-	C.cgo_callfn_GDNativePtrOperatorEvaluator(
-		(C.GDNativePtrOperatorEvaluator)(cb),
-		(C.GDNativeTypePtr)(p_left),
-		(C.GDNativeTypePtr)(p_right),
-		(C.GDNativeTypePtr)(r_result),
+	log.Debug("called C.cgo_callfn_GDExtensionPtrOperatorEvaluator")
+	C.cgo_callfn_GDExtensionPtrOperatorEvaluator(
+		(C.GDExtensionPtrOperatorEvaluator)(cb),
+		(C.GDExtensionConstTypePtr)(p_left),
+		(C.GDExtensionConstTypePtr)(p_right),
+		(C.GDExtensionTypePtr)(r_result),
 	)
 }
 
-func CallFunc_GDNativePtrBuiltInMethod(
-	cb GDNativePtrBuiltInMethod,
-	p_base GDNativeTypePtr,
-	p_args *GDNativeTypePtr,
-	r_return GDNativeTypePtr,
+func CallFunc_GDExtensionPtrBuiltInMethod(
+	cb GDExtensionPtrBuiltInMethod,
+	p_base GDExtensionTypePtr,
+	p_args *GDExtensionConstTypePtr,
+	r_return GDExtensionTypePtr,
 	p_argument_count int32,
 ) {
-	C.cgo_callfn_GDNativePtrBuiltInMethod(
-		(C.GDNativePtrBuiltInMethod)(cb),
-		(C.GDNativeTypePtr)(p_base),
-		(*C.GDNativeTypePtr)(p_args),
-		(C.GDNativeTypePtr)(r_return),
+	log.Debug("called C.cgo_callfn_GDExtensionPtrBuiltInMethod")
+	C.cgo_callfn_GDExtensionPtrBuiltInMethod(
+		(C.GDExtensionPtrBuiltInMethod)(cb),
+		(C.GDExtensionTypePtr)(p_base),
+		(*C.GDExtensionConstTypePtr)(p_args),
+		(C.GDExtensionTypePtr)(r_return),
 		(C.int)(p_argument_count),
 	)
 }
 
-func CallFunc_GDNativePtrUtilityFunction(
-	cb GDNativePtrUtilityFunction,
-	r_return GDNativeTypePtr,
-	p_arguments *GDNativeTypePtr,
+func CallFunc_GDExtensionPtrUtilityFunction(
+	cb GDExtensionPtrUtilityFunction,
+	r_return GDExtensionTypePtr,
+	p_arguments *GDExtensionConstTypePtr,
 	p_argument_count int32,
 ) {
-	C.cgo_callfn_GDNativePtrUtilityFunction(
-		(C.GDNativePtrUtilityFunction)(cb),
-		(C.GDNativeTypePtr)(r_return),
-		(*C.GDNativeTypePtr)(p_arguments),
+	log.Debug("called C.cgo_callfn_GDExtensionPtrUtilityFunction")
+	C.cgo_callfn_GDExtensionPtrUtilityFunction(
+		(C.GDExtensionPtrUtilityFunction)(cb),
+		(C.GDExtensionTypePtr)(r_return),
+		(*C.GDExtensionConstTypePtr)(p_arguments),
 		(C.int)(p_argument_count),
 	)
 }
 
-func CallFunc_GDNativePtrGetter(
-	cb GDNativePtrGetter,
-	p_base GDNativeTypePtr,
-	r_value GDNativeTypePtr,
+func CallFunc_GDExtensionPtrGetter(
+	cb GDExtensionPtrGetter,
+	p_base GDExtensionConstTypePtr,
+	r_value GDExtensionTypePtr,
 ) {
-	C.cgo_callfn_GDNativePtrGetter(
-		(C.GDNativePtrGetter)(cb),
-		(C.GDNativeTypePtr)(p_base),
-		(C.GDNativeTypePtr)(r_value),
+	log.Debug("called C.cgo_callfn_GDExtensionPtrGetter")
+	C.cgo_callfn_GDExtensionPtrGetter(
+		(C.GDExtensionPtrGetter)(cb),
+		(C.GDExtensionConstTypePtr)(p_base),
+		(C.GDExtensionTypePtr)(r_value),
 	)
 }
 
-func CallFunc_GDNativePtrSetter(
-	cb GDNativePtrSetter,
-	p_base GDNativeTypePtr,
-	p_value GDNativeTypePtr,
+func CallFunc_GDExtensionPtrSetter(
+	cb GDExtensionPtrSetter,
+	p_base GDExtensionTypePtr,
+	p_value GDExtensionConstTypePtr,
 ) {
-	C.cgo_callfn_GDNativePtrSetter(
-		(C.GDNativePtrSetter)(cb),
-		(C.GDNativeTypePtr)(p_base),
-		(C.GDNativeTypePtr)(p_value),
+	log.Debug("called C.cgo_callfn_GDExtensionPtrSetter")
+	C.cgo_callfn_GDExtensionPtrSetter(
+		(C.GDExtensionPtrSetter)(cb),
+		(C.GDExtensionTypePtr)(p_base),
+		(C.GDExtensionConstTypePtr)(p_value),
 	)
 }
 
-func CallFunc_GDNativePtrIndexedGetter(
-	cb GDNativePtrIndexedGetter,
-	p_base GDNativeTypePtr,
-	p_index GDNativeInt,
-	r_value GDNativeTypePtr,
+func CallFunc_GDExtensionPtrIndexedGetter(
+	cb GDExtensionPtrIndexedGetter,
+	p_base GDExtensionConstTypePtr,
+	p_index GDExtensionInt,
+	r_value GDExtensionTypePtr,
 ) {
-	C.cgo_callfn_GDNativePtrIndexedGetter(
-		(C.GDNativePtrIndexedGetter)(cb),
-		(C.GDNativeTypePtr)(p_base),
-		(C.GDNativeInt)(p_index),
-		(C.GDNativeTypePtr)(r_value),
+	log.Debug("called C.cgo_callfn_GDExtensionPtrIndexedGetter")
+	C.cgo_callfn_GDExtensionPtrIndexedGetter(
+		(C.GDExtensionPtrIndexedGetter)(cb),
+		(C.GDExtensionConstTypePtr)(p_base),
+		(C.GDExtensionInt)(p_index),
+		(C.GDExtensionTypePtr)(r_value),
 	)
 }
 
-func CallFunc_GDNativePtrIndexedSetter(
-	cb GDNativePtrIndexedSetter,
-	p_base GDNativeTypePtr,
-	p_index GDNativeInt,
-	p_value GDNativeTypePtr,
+func CallFunc_GDExtensionPtrIndexedSetter(
+	cb GDExtensionPtrIndexedSetter,
+	p_base GDExtensionTypePtr,
+	p_index GDExtensionInt,
+	p_value GDExtensionConstTypePtr,
 ) {
-	C.cgo_callfn_GDNativePtrIndexedSetter(
-		(C.GDNativePtrIndexedSetter)(cb),
-		(C.GDNativeTypePtr)(p_base),
-		(C.GDNativeInt)(p_index),
-		(C.GDNativeTypePtr)(p_value),
+	log.Debug("called C.cgo_callfn_GDExtensionPtrIndexedSetter")
+	C.cgo_callfn_GDExtensionPtrIndexedSetter(
+		(C.GDExtensionPtrIndexedSetter)(cb),
+		(C.GDExtensionTypePtr)(p_base),
+		(C.GDExtensionInt)(p_index),
+		(C.GDExtensionConstTypePtr)(p_value),
 	)
 }
 
-func CallFunc_GDNativeVariantFromTypeConstructorFunc(
-	cb GDNativeVariantFromTypeConstructorFunc,
-	arg_0 GDNativeVariantPtr,
-	arg_1 GDNativeTypePtr,
+func CallFunc_GDExtensionVariantFromTypeConstructorFunc(
+	cb GDExtensionVariantFromTypeConstructorFunc,
+	arg_0 GDExtensionVariantPtr,
+	arg_1 GDExtensionTypePtr,
 ) {
-	C.cgo_callfn_GDNativeVariantFromTypeConstructorFunc(
-		(C.GDNativeVariantFromTypeConstructorFunc)(cb),
-		(C.GDNativeVariantPtr)(arg_0),
-		(C.GDNativeTypePtr)(arg_1),
+	log.Debug("called C.cgo_callfn_GDExtensionVariantFromTypeConstructorFunc")
+	C.cgo_callfn_GDExtensionVariantFromTypeConstructorFunc(
+		(C.GDExtensionVariantFromTypeConstructorFunc)(cb),
+		(C.GDExtensionVariantPtr)(arg_0),
+		(C.GDExtensionTypePtr)(arg_1),
 	)
 }
 
-func CallFunc_GDNativeTypeFromVariantConstructorFunc(
-	cb GDNativeTypeFromVariantConstructorFunc,
-	arg_0 GDNativeTypePtr,
-	arg_1 GDNativeVariantPtr,
+func CallFunc_GDExtensionTypeFromVariantConstructorFunc(
+	cb GDExtensionTypeFromVariantConstructorFunc,
+	arg_0 GDExtensionTypePtr,
+	arg_1 GDExtensionVariantPtr,
 ) {
-	C.cgo_callfn_GDNativeTypeFromVariantConstructorFunc(
-		(C.GDNativeTypeFromVariantConstructorFunc)(cb),
-		(C.GDNativeTypePtr)(arg_0),
-		(C.GDNativeVariantPtr)(arg_1),
+	log.Debug("called C.cgo_callfn_GDExtensionTypeFromVariantConstructorFunc")
+	C.cgo_callfn_GDExtensionTypeFromVariantConstructorFunc(
+		(C.GDExtensionTypeFromVariantConstructorFunc)(cb),
+		(C.GDExtensionTypePtr)(arg_0),
+		(C.GDExtensionVariantPtr)(arg_1),
 	)
 }
 
 // structs
-type GDNativeCallError C.GDNativeCallError
-type GDNativeInstanceBindingCallbacks C.GDNativeInstanceBindingCallbacks
-type GDNativePropertyInfo C.GDNativePropertyInfo
-type GDNativeMethodInfo C.GDNativeMethodInfo
-type GDNativeExtensionClassCreationInfo C.GDNativeExtensionClassCreationInfo
-type GDNativeExtensionClassMethodInfo C.GDNativeExtensionClassMethodInfo
-type GDNativeExtensionScriptInstanceInfo C.GDNativeExtensionScriptInstanceInfo
-type GDNativeInterface C.GDNativeInterface
-type GDNativeInitialization C.GDNativeInitialization
+type GDExtensionCallError C.GDExtensionCallError
+type GDExtensionInstanceBindingCallbacks C.GDExtensionInstanceBindingCallbacks
+type GDExtensionPropertyInfo C.GDExtensionPropertyInfo
+type GDExtensionMethodInfo C.GDExtensionMethodInfo
+type GDExtensionClassCreationInfo C.GDExtensionClassCreationInfo
+type GDExtensionClassMethodInfo C.GDExtensionClassMethodInfo
+type GDExtensionScriptInstanceInfo C.GDExtensionScriptInstanceInfo
+type GDExtensionInterface C.GDExtensionInterface
+type GDExtensionInitialization C.GDExtensionInitialization
 
 // struct functions
-/* struct (7) GDNativeInterface */
+/* struct (7) GDExtensionInterface */
 
-func GDNativeInterface_mem_alloc(p_struct *GDNativeInterface, p_bytes uint64) unsafe.Pointer {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.size_t)(p_bytes)              // size_t
+func GDExtensionInterface_mem_alloc(p_struct *GDExtensionInterface, p_bytes uint64) unsafe.Pointer {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.size_t)(p_bytes)                 // size_t
 
-	ret := C.cgo_callfn_GDNativeInterface_mem_alloc(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_mem_alloc")
 
-	// void *
-	return unsafe.Pointer(ret)
-}
-
-func GDNativeInterface_mem_realloc(p_struct *GDNativeInterface, p_ptr unsafe.Pointer, p_bytes uint64) unsafe.Pointer {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := unsafe.Pointer(p_ptr)            // void *
-	arg2 := (C.size_t)(p_bytes)              // size_t
-
-	ret := C.cgo_callfn_GDNativeInterface_mem_realloc(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDExtensionInterface_mem_alloc(arg0, arg1)
 
 	// void *
 	return unsafe.Pointer(ret)
 }
 
-func GDNativeInterface_mem_free(p_struct *GDNativeInterface, p_ptr unsafe.Pointer) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := unsafe.Pointer(p_ptr)            // void *
+func GDExtensionInterface_mem_realloc(p_struct *GDExtensionInterface, p_ptr unsafe.Pointer, p_bytes uint64) unsafe.Pointer {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := unsafe.Pointer(p_ptr)               // void *
+	arg2 := (C.size_t)(p_bytes)                 // size_t
 
-	C.cgo_callfn_GDNativeInterface_mem_free(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_mem_realloc")
+
+	ret := C.cgo_callfn_GDExtensionInterface_mem_realloc(arg0, arg1, arg2)
+
+	// void *
+	return unsafe.Pointer(ret)
+}
+
+func GDExtensionInterface_mem_free(p_struct *GDExtensionInterface, p_ptr unsafe.Pointer) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := unsafe.Pointer(p_ptr)               // void *
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_mem_free")
+
+	C.cgo_callfn_GDExtensionInterface_mem_free(arg0, arg1)
 
 }
 
-func GDNativeInterface_print_error(p_struct *GDNativeInterface, p_description string, p_function string, p_file string, p_line int32) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := C.CString(p_description)         // const char *
-	arg2 := C.CString(p_function)            // const char *
-	arg3 := C.CString(p_file)                // const char *
-	arg4 := (C.int32_t)(p_line)              // int32_t
+func GDExtensionInterface_print_error(p_struct *GDExtensionInterface, p_description string, p_function string, p_file string, p_line int32) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := C.CString(p_description)            // const char *
+	arg2 := C.CString(p_function)               // const char *
+	arg3 := C.CString(p_file)                   // const char *
+	arg4 := (C.int32_t)(p_line)                 // int32_t
 
-	C.cgo_callfn_GDNativeInterface_print_error(arg0, arg1, arg2, arg3, arg4)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_print_error")
+
+	C.cgo_callfn_GDExtensionInterface_print_error(arg0, arg1, arg2, arg3, arg4)
 
 	C.free(unsafe.Pointer(arg1))
 	C.free(unsafe.Pointer(arg2))
@@ -440,29 +464,16 @@ func GDNativeInterface_print_error(p_struct *GDNativeInterface, p_description st
 
 }
 
-func GDNativeInterface_print_warning(p_struct *GDNativeInterface, p_description string, p_function string, p_file string, p_line int32) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := C.CString(p_description)         // const char *
-	arg2 := C.CString(p_function)            // const char *
-	arg3 := C.CString(p_file)                // const char *
-	arg4 := (C.int32_t)(p_line)              // int32_t
+func GDExtensionInterface_print_warning(p_struct *GDExtensionInterface, p_description string, p_function string, p_file string, p_line int32) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := C.CString(p_description)            // const char *
+	arg2 := C.CString(p_function)               // const char *
+	arg3 := C.CString(p_file)                   // const char *
+	arg4 := (C.int32_t)(p_line)                 // int32_t
 
-	C.cgo_callfn_GDNativeInterface_print_warning(arg0, arg1, arg2, arg3, arg4)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_print_warning")
 
-	C.free(unsafe.Pointer(arg1))
-	C.free(unsafe.Pointer(arg2))
-	C.free(unsafe.Pointer(arg3))
-
-}
-
-func GDNativeInterface_print_script_error(p_struct *GDNativeInterface, p_description string, p_function string, p_file string, p_line int32) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := C.CString(p_description)         // const char *
-	arg2 := C.CString(p_function)            // const char *
-	arg3 := C.CString(p_file)                // const char *
-	arg4 := (C.int32_t)(p_line)              // int32_t
-
-	C.cgo_callfn_GDNativeInterface_print_script_error(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDExtensionInterface_print_warning(arg0, arg1, arg2, arg3, arg4)
 
 	C.free(unsafe.Pointer(arg1))
 	C.free(unsafe.Pointer(arg2))
@@ -470,1244 +481,1460 @@ func GDNativeInterface_print_script_error(p_struct *GDNativeInterface, p_descrip
 
 }
 
-func GDNativeInterface_get_native_struct_size(p_struct *GDNativeInterface, p_name string) uint64 {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := C.CString(p_name)                // const char *
+func GDExtensionInterface_print_script_error(p_struct *GDExtensionInterface, p_description string, p_function string, p_file string, p_line int32) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := C.CString(p_description)            // const char *
+	arg2 := C.CString(p_function)               // const char *
+	arg3 := C.CString(p_file)                   // const char *
+	arg4 := (C.int32_t)(p_line)                 // int32_t
 
-	ret := C.cgo_callfn_GDNativeInterface_get_native_struct_size(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_print_script_error")
+
+	C.cgo_callfn_GDExtensionInterface_print_script_error(arg0, arg1, arg2, arg3, arg4)
 
 	C.free(unsafe.Pointer(arg1))
+	C.free(unsafe.Pointer(arg2))
+	C.free(unsafe.Pointer(arg3))
+
+}
+
+func GDExtensionInterface_get_native_struct_size(p_struct *GDExtensionInterface, p_name GDExtensionConstStringNamePtr) uint64 {
+	arg0 := (*C.GDExtensionInterface)(p_struct)       // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringNamePtr)(p_name) // GDExtensionConstStringNamePtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_get_native_struct_size")
+
+	ret := C.cgo_callfn_GDExtensionInterface_get_native_struct_size(arg0, arg1)
 
 	// uint64_t
 	return uint64(ret)
 }
 
-func GDNativeInterface_variant_new_copy(p_struct *GDNativeInterface, r_dest GDNativeVariantPtr, p_src GDNativeVariantPtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(r_dest)   // GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(p_src)    // const GDNativeVariantPtr
+func GDExtensionInterface_variant_new_copy(p_struct *GDExtensionInterface, r_dest GDExtensionVariantPtr, p_src GDExtensionConstVariantPtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)   // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantPtr)(r_dest)     // GDExtensionVariantPtr
+	arg2 := (C.GDExtensionConstVariantPtr)(p_src) // GDExtensionConstVariantPtr
 
-	C.cgo_callfn_GDNativeInterface_variant_new_copy(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_new_copy")
 
-}
-
-func GDNativeInterface_variant_new_nil(p_struct *GDNativeInterface, r_dest GDNativeVariantPtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(r_dest)   // GDNativeVariantPtr
-
-	C.cgo_callfn_GDNativeInterface_variant_new_nil(arg0, arg1)
+	C.cgo_callfn_GDExtensionInterface_variant_new_copy(arg0, arg1, arg2)
 
 }
 
-func GDNativeInterface_variant_destroy(p_struct *GDNativeInterface, p_self GDNativeVariantPtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // GDNativeVariantPtr
+func GDExtensionInterface_variant_new_nil(p_struct *GDExtensionInterface, r_dest GDExtensionVariantPtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantPtr)(r_dest)   // GDExtensionVariantPtr
 
-	C.cgo_callfn_GDNativeInterface_variant_destroy(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_new_nil")
 
-}
-
-func GDNativeInterface_variant_call(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_method GDNativeStringNamePtr, p_args *GDNativeVariantPtr, p_argument_count GDNativeInt, r_return GDNativeVariantPtr, r_error *GDNativeCallError) {
-	arg0 := (*C.GDNativeInterface)(p_struct)    // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)      // GDNativeVariantPtr
-	arg2 := (C.GDNativeStringNamePtr)(p_method) // const GDNativeStringNamePtr
-	arg3 := (*C.GDNativeVariantPtr)(p_args)     // const GDNativeVariantPtr *
-	arg4 := (C.GDNativeInt)(p_argument_count)   // const GDNativeInt
-	arg5 := (C.GDNativeVariantPtr)(r_return)    // GDNativeVariantPtr
-	arg6 := (*C.GDNativeCallError)(r_error)     // GDNativeCallError *
-
-	C.cgo_callfn_GDNativeInterface_variant_call(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+	C.cgo_callfn_GDExtensionInterface_variant_new_nil(arg0, arg1)
 
 }
 
-func GDNativeInterface_variant_call_static(p_struct *GDNativeInterface, p_type GDNativeVariantType, p_method GDNativeStringNamePtr, p_args *GDNativeVariantPtr, p_argument_count GDNativeInt, r_return GDNativeVariantPtr, r_error *GDNativeCallError) {
-	arg0 := (*C.GDNativeInterface)(p_struct)    // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)     // GDNativeVariantType
-	arg2 := (C.GDNativeStringNamePtr)(p_method) // const GDNativeStringNamePtr
-	arg3 := (*C.GDNativeVariantPtr)(p_args)     // const GDNativeVariantPtr *
-	arg4 := (C.GDNativeInt)(p_argument_count)   // const GDNativeInt
-	arg5 := (C.GDNativeVariantPtr)(r_return)    // GDNativeVariantPtr
-	arg6 := (*C.GDNativeCallError)(r_error)     // GDNativeCallError *
+func GDExtensionInterface_variant_destroy(p_struct *GDExtensionInterface, p_self GDExtensionVariantPtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantPtr)(p_self)   // GDExtensionVariantPtr
 
-	C.cgo_callfn_GDNativeInterface_variant_call_static(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_destroy")
+
+	C.cgo_callfn_GDExtensionInterface_variant_destroy(arg0, arg1)
 
 }
 
-func GDNativeInterface_variant_evaluate(p_struct *GDNativeInterface, p_op GDNativeVariantOperator, p_a GDNativeVariantPtr, p_b GDNativeVariantPtr, r_return GDNativeVariantPtr, r_valid *GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct)  // GDNativeInterface
-	arg1 := (C.GDNativeVariantOperator)(p_op) // GDNativeVariantOperator
-	arg2 := (C.GDNativeVariantPtr)(p_a)       // const GDNativeVariantPtr
-	arg3 := (C.GDNativeVariantPtr)(p_b)       // const GDNativeVariantPtr
-	arg4 := (C.GDNativeVariantPtr)(r_return)  // GDNativeVariantPtr
-	arg5 := (*C.GDNativeBool)(r_valid)        // GDNativeBool *
+func GDExtensionInterface_variant_call(p_struct *GDExtensionInterface, p_self GDExtensionVariantPtr, p_method GDExtensionConstStringNamePtr, p_args *GDExtensionConstVariantPtr, p_argument_count GDExtensionInt, r_return GDExtensionVariantPtr, r_error *GDExtensionCallError) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)         // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantPtr)(p_self)           // GDExtensionVariantPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_method) // GDExtensionConstStringNamePtr
+	arg3 := (*C.GDExtensionConstVariantPtr)(p_args)     // const GDExtensionConstVariantPtr *
+	arg4 := (C.GDExtensionInt)(p_argument_count)        // GDExtensionInt
+	arg5 := (C.GDExtensionVariantPtr)(r_return)         // GDExtensionVariantPtr
+	arg6 := (*C.GDExtensionCallError)(r_error)          // GDExtensionCallError *
 
-	C.cgo_callfn_GDNativeInterface_variant_evaluate(arg0, arg1, arg2, arg3, arg4, arg5)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_call")
 
-}
-
-func GDNativeInterface_variant_set(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_key GDNativeVariantPtr, p_value GDNativeVariantPtr, r_valid *GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(p_key)    // const GDNativeVariantPtr
-	arg3 := (C.GDNativeVariantPtr)(p_value)  // const GDNativeVariantPtr
-	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
-
-	C.cgo_callfn_GDNativeInterface_variant_set(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDExtensionInterface_variant_call(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 
 }
 
-func GDNativeInterface_variant_set_named(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_key GDNativeStringNamePtr, p_value GDNativeVariantPtr, r_valid *GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // GDNativeVariantPtr
-	arg2 := (C.GDNativeStringNamePtr)(p_key) // const GDNativeStringNamePtr
-	arg3 := (C.GDNativeVariantPtr)(p_value)  // const GDNativeVariantPtr
-	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
+func GDExtensionInterface_variant_call_static(p_struct *GDExtensionInterface, p_type GDExtensionVariantType, p_method GDExtensionConstStringNamePtr, p_args *GDExtensionConstVariantPtr, p_argument_count GDExtensionInt, r_return GDExtensionVariantPtr, r_error *GDExtensionCallError) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)         // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)          // GDExtensionVariantType
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_method) // GDExtensionConstStringNamePtr
+	arg3 := (*C.GDExtensionConstVariantPtr)(p_args)     // const GDExtensionConstVariantPtr *
+	arg4 := (C.GDExtensionInt)(p_argument_count)        // GDExtensionInt
+	arg5 := (C.GDExtensionVariantPtr)(r_return)         // GDExtensionVariantPtr
+	arg6 := (*C.GDExtensionCallError)(r_error)          // GDExtensionCallError *
 
-	C.cgo_callfn_GDNativeInterface_variant_set_named(arg0, arg1, arg2, arg3, arg4)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_call_static")
 
-}
-
-func GDNativeInterface_variant_set_keyed(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_key GDNativeVariantPtr, p_value GDNativeVariantPtr, r_valid *GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(p_key)    // const GDNativeVariantPtr
-	arg3 := (C.GDNativeVariantPtr)(p_value)  // const GDNativeVariantPtr
-	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
-
-	C.cgo_callfn_GDNativeInterface_variant_set_keyed(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDExtensionInterface_variant_call_static(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 
 }
 
-func GDNativeInterface_variant_set_indexed(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_index GDNativeInt, p_value GDNativeVariantPtr, r_valid *GDNativeBool, r_oob *GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // GDNativeVariantPtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
-	arg3 := (C.GDNativeVariantPtr)(p_value)  // const GDNativeVariantPtr
-	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
-	arg5 := (*C.GDNativeBool)(r_oob)         // GDNativeBool *
+func GDExtensionInterface_variant_evaluate(p_struct *GDExtensionInterface, p_op GDExtensionVariantOperator, p_a GDExtensionConstVariantPtr, p_b GDExtensionConstVariantPtr, r_return GDExtensionVariantPtr, r_valid *GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)  // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantOperator)(p_op) // GDExtensionVariantOperator
+	arg2 := (C.GDExtensionConstVariantPtr)(p_a)  // GDExtensionConstVariantPtr
+	arg3 := (C.GDExtensionConstVariantPtr)(p_b)  // GDExtensionConstVariantPtr
+	arg4 := (C.GDExtensionVariantPtr)(r_return)  // GDExtensionVariantPtr
+	arg5 := (*C.GDExtensionBool)(r_valid)        // GDExtensionBool *
 
-	C.cgo_callfn_GDNativeInterface_variant_set_indexed(arg0, arg1, arg2, arg3, arg4, arg5)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_evaluate")
 
-}
-
-func GDNativeInterface_variant_get(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_key GDNativeVariantPtr, r_ret GDNativeVariantPtr, r_valid *GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(p_key)    // const GDNativeVariantPtr
-	arg3 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
-	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
-
-	C.cgo_callfn_GDNativeInterface_variant_get(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDExtensionInterface_variant_evaluate(arg0, arg1, arg2, arg3, arg4, arg5)
 
 }
 
-func GDNativeInterface_variant_get_named(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_key GDNativeStringNamePtr, r_ret GDNativeVariantPtr, r_valid *GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-	arg2 := (C.GDNativeStringNamePtr)(p_key) // const GDNativeStringNamePtr
-	arg3 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
-	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
+func GDExtensionInterface_variant_set(p_struct *GDExtensionInterface, p_self GDExtensionVariantPtr, p_key GDExtensionConstVariantPtr, p_value GDExtensionConstVariantPtr, r_valid *GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)     // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantPtr)(p_self)       // GDExtensionVariantPtr
+	arg2 := (C.GDExtensionConstVariantPtr)(p_key)   // GDExtensionConstVariantPtr
+	arg3 := (C.GDExtensionConstVariantPtr)(p_value) // GDExtensionConstVariantPtr
+	arg4 := (*C.GDExtensionBool)(r_valid)           // GDExtensionBool *
 
-	C.cgo_callfn_GDNativeInterface_variant_get_named(arg0, arg1, arg2, arg3, arg4)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_set")
 
-}
-
-func GDNativeInterface_variant_get_keyed(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_key GDNativeVariantPtr, r_ret GDNativeVariantPtr, r_valid *GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(p_key)    // const GDNativeVariantPtr
-	arg3 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
-	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
-
-	C.cgo_callfn_GDNativeInterface_variant_get_keyed(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDExtensionInterface_variant_set(arg0, arg1, arg2, arg3, arg4)
 
 }
 
-func GDNativeInterface_variant_get_indexed(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_index GDNativeInt, r_ret GDNativeVariantPtr, r_valid *GDNativeBool, r_oob *GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
-	arg3 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
-	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
-	arg5 := (*C.GDNativeBool)(r_oob)         // GDNativeBool *
+func GDExtensionInterface_variant_set_named(p_struct *GDExtensionInterface, p_self GDExtensionVariantPtr, p_key GDExtensionConstStringNamePtr, p_value GDExtensionConstVariantPtr, r_valid *GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)      // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantPtr)(p_self)        // GDExtensionVariantPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_key) // GDExtensionConstStringNamePtr
+	arg3 := (C.GDExtensionConstVariantPtr)(p_value)  // GDExtensionConstVariantPtr
+	arg4 := (*C.GDExtensionBool)(r_valid)            // GDExtensionBool *
 
-	C.cgo_callfn_GDNativeInterface_variant_get_indexed(arg0, arg1, arg2, arg3, arg4, arg5)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_set_named")
 
-}
-
-func GDNativeInterface_variant_iter_init(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, r_iter GDNativeVariantPtr, r_valid *GDNativeBool) GDNativeBool {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(r_iter)   // GDNativeVariantPtr
-	arg3 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_iter_init(arg0, arg1, arg2, arg3)
-
-	// GDNativeBool
-	return (GDNativeBool)(ret)
-}
-
-func GDNativeInterface_variant_iter_next(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, r_iter GDNativeVariantPtr, r_valid *GDNativeBool) GDNativeBool {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(r_iter)   // GDNativeVariantPtr
-	arg3 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_iter_next(arg0, arg1, arg2, arg3)
-
-	// GDNativeBool
-	return (GDNativeBool)(ret)
-}
-
-func GDNativeInterface_variant_iter_get(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, r_iter GDNativeVariantPtr, r_ret GDNativeVariantPtr, r_valid *GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(r_iter)   // GDNativeVariantPtr
-	arg3 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
-	arg4 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
-
-	C.cgo_callfn_GDNativeInterface_variant_iter_get(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDExtensionInterface_variant_set_named(arg0, arg1, arg2, arg3, arg4)
 
 }
 
-func GDNativeInterface_variant_hash(p_struct *GDNativeInterface, p_self GDNativeVariantPtr) GDNativeInt {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
+func GDExtensionInterface_variant_set_keyed(p_struct *GDExtensionInterface, p_self GDExtensionVariantPtr, p_key GDExtensionConstVariantPtr, p_value GDExtensionConstVariantPtr, r_valid *GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)     // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantPtr)(p_self)       // GDExtensionVariantPtr
+	arg2 := (C.GDExtensionConstVariantPtr)(p_key)   // GDExtensionConstVariantPtr
+	arg3 := (C.GDExtensionConstVariantPtr)(p_value) // GDExtensionConstVariantPtr
+	arg4 := (*C.GDExtensionBool)(r_valid)           // GDExtensionBool *
 
-	ret := C.cgo_callfn_GDNativeInterface_variant_hash(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_set_keyed")
 
-	// GDNativeInt
-	return (GDNativeInt)(ret)
-}
-
-func GDNativeInterface_variant_recursive_hash(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_recursion_count GDNativeInt) GDNativeInt {
-	arg0 := (*C.GDNativeInterface)(p_struct)   // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)     // const GDNativeVariantPtr
-	arg2 := (C.GDNativeInt)(p_recursion_count) // GDNativeInt
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_recursive_hash(arg0, arg1, arg2)
-
-	// GDNativeInt
-	return (GDNativeInt)(ret)
-}
-
-func GDNativeInterface_variant_hash_compare(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_other GDNativeVariantPtr) GDNativeBool {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(p_other)  // const GDNativeVariantPtr
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_hash_compare(arg0, arg1, arg2)
-
-	// GDNativeBool
-	return (GDNativeBool)(ret)
-}
-
-func GDNativeInterface_variant_booleanize(p_struct *GDNativeInterface, p_self GDNativeVariantPtr) GDNativeBool {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_booleanize(arg0, arg1)
-
-	// GDNativeBool
-	return (GDNativeBool)(ret)
-}
-
-func GDNativeInterface_variant_duplicate(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, r_ret GDNativeVariantPtr, p_deep GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
-	arg3 := (C.GDNativeBool)(p_deep)         // GDNativeBool
-
-	C.cgo_callfn_GDNativeInterface_variant_duplicate(arg0, arg1, arg2, arg3)
+	C.cgo_callfn_GDExtensionInterface_variant_set_keyed(arg0, arg1, arg2, arg3, arg4)
 
 }
 
-func GDNativeInterface_variant_stringify(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, r_ret GDNativeStringPtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-	arg2 := (C.GDNativeStringPtr)(r_ret)     // GDNativeStringPtr
+func GDExtensionInterface_variant_set_indexed(p_struct *GDExtensionInterface, p_self GDExtensionVariantPtr, p_index GDExtensionInt, p_value GDExtensionConstVariantPtr, r_valid *GDExtensionBool, r_oob *GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)     // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantPtr)(p_self)       // GDExtensionVariantPtr
+	arg2 := (C.GDExtensionInt)(p_index)             // GDExtensionInt
+	arg3 := (C.GDExtensionConstVariantPtr)(p_value) // GDExtensionConstVariantPtr
+	arg4 := (*C.GDExtensionBool)(r_valid)           // GDExtensionBool *
+	arg5 := (*C.GDExtensionBool)(r_oob)             // GDExtensionBool *
 
-	C.cgo_callfn_GDNativeInterface_variant_stringify(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_set_indexed")
 
-}
-
-func GDNativeInterface_variant_get_type(p_struct *GDNativeInterface, p_self GDNativeVariantPtr) GDNativeVariantType {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_type(arg0, arg1)
-
-	// GDNativeVariantType
-	return (GDNativeVariantType)(ret)
-}
-
-func GDNativeInterface_variant_has_method(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_method GDNativeStringNamePtr) GDNativeBool {
-	arg0 := (*C.GDNativeInterface)(p_struct)    // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)      // const GDNativeVariantPtr
-	arg2 := (C.GDNativeStringNamePtr)(p_method) // const GDNativeStringNamePtr
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_has_method(arg0, arg1, arg2)
-
-	// GDNativeBool
-	return (GDNativeBool)(ret)
-}
-
-func GDNativeInterface_variant_has_member(p_struct *GDNativeInterface, p_type GDNativeVariantType, p_member GDNativeStringNamePtr) GDNativeBool {
-	arg0 := (*C.GDNativeInterface)(p_struct)    // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)     // GDNativeVariantType
-	arg2 := (C.GDNativeStringNamePtr)(p_member) // const GDNativeStringNamePtr
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_has_member(arg0, arg1, arg2)
-
-	// GDNativeBool
-	return (GDNativeBool)(ret)
-}
-
-func GDNativeInterface_variant_has_key(p_struct *GDNativeInterface, p_self GDNativeVariantPtr, p_key GDNativeVariantPtr, r_valid *GDNativeBool) GDNativeBool {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantPtr)(p_self)   // const GDNativeVariantPtr
-	arg2 := (C.GDNativeVariantPtr)(p_key)    // const GDNativeVariantPtr
-	arg3 := (*C.GDNativeBool)(r_valid)       // GDNativeBool *
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_has_key(arg0, arg1, arg2, arg3)
-
-	// GDNativeBool
-	return (GDNativeBool)(ret)
-}
-
-func GDNativeInterface_variant_get_type_name(p_struct *GDNativeInterface, p_type GDNativeVariantType, r_name GDNativeStringPtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-	arg2 := (C.GDNativeStringPtr)(r_name)    // GDNativeStringPtr
-
-	C.cgo_callfn_GDNativeInterface_variant_get_type_name(arg0, arg1, arg2)
+	C.cgo_callfn_GDExtensionInterface_variant_set_indexed(arg0, arg1, arg2, arg3, arg4, arg5)
 
 }
 
-func GDNativeInterface_variant_can_convert(p_struct *GDNativeInterface, p_from GDNativeVariantType, p_to GDNativeVariantType) GDNativeBool {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_from)  // GDNativeVariantType
-	arg2 := (C.GDNativeVariantType)(p_to)    // GDNativeVariantType
+func GDExtensionInterface_variant_get(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, p_key GDExtensionConstVariantPtr, r_ret GDExtensionVariantPtr, r_valid *GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionConstVariantPtr)(p_key)  // GDExtensionConstVariantPtr
+	arg3 := (C.GDExtensionVariantPtr)(r_ret)       // GDExtensionVariantPtr
+	arg4 := (*C.GDExtensionBool)(r_valid)          // GDExtensionBool *
 
-	ret := C.cgo_callfn_GDNativeInterface_variant_can_convert(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get")
 
-	// GDNativeBool
-	return (GDNativeBool)(ret)
+	C.cgo_callfn_GDExtensionInterface_variant_get(arg0, arg1, arg2, arg3, arg4)
+
 }
 
-func GDNativeInterface_variant_can_convert_strict(p_struct *GDNativeInterface, p_from GDNativeVariantType, p_to GDNativeVariantType) GDNativeBool {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_from)  // GDNativeVariantType
-	arg2 := (C.GDNativeVariantType)(p_to)    // GDNativeVariantType
+func GDExtensionInterface_variant_get_named(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, p_key GDExtensionConstStringNamePtr, r_ret GDExtensionVariantPtr, r_valid *GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)      // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self)   // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_key) // GDExtensionConstStringNamePtr
+	arg3 := (C.GDExtensionVariantPtr)(r_ret)         // GDExtensionVariantPtr
+	arg4 := (*C.GDExtensionBool)(r_valid)            // GDExtensionBool *
 
-	ret := C.cgo_callfn_GDNativeInterface_variant_can_convert_strict(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_named")
 
-	// GDNativeBool
-	return (GDNativeBool)(ret)
+	C.cgo_callfn_GDExtensionInterface_variant_get_named(arg0, arg1, arg2, arg3, arg4)
+
 }
 
-func GDNativeInterface_get_variant_from_type_constructor(p_struct *GDNativeInterface, p_type GDNativeVariantType) GDNativeVariantFromTypeConstructorFunc {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
+func GDExtensionInterface_variant_get_keyed(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, p_key GDExtensionConstVariantPtr, r_ret GDExtensionVariantPtr, r_valid *GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionConstVariantPtr)(p_key)  // GDExtensionConstVariantPtr
+	arg3 := (C.GDExtensionVariantPtr)(r_ret)       // GDExtensionVariantPtr
+	arg4 := (*C.GDExtensionBool)(r_valid)          // GDExtensionBool *
 
-	ret := C.cgo_callfn_GDNativeInterface_get_variant_from_type_constructor(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_keyed")
 
-	// GDNativeVariantFromTypeConstructorFunc
-	return (GDNativeVariantFromTypeConstructorFunc)(ret)
+	C.cgo_callfn_GDExtensionInterface_variant_get_keyed(arg0, arg1, arg2, arg3, arg4)
+
 }
 
-func GDNativeInterface_get_variant_to_type_constructor(p_struct *GDNativeInterface, p_type GDNativeVariantType) GDNativeTypeFromVariantConstructorFunc {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
+func GDExtensionInterface_variant_get_indexed(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, p_index GDExtensionInt, r_ret GDExtensionVariantPtr, r_valid *GDExtensionBool, r_oob *GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionInt)(p_index)            // GDExtensionInt
+	arg3 := (C.GDExtensionVariantPtr)(r_ret)       // GDExtensionVariantPtr
+	arg4 := (*C.GDExtensionBool)(r_valid)          // GDExtensionBool *
+	arg5 := (*C.GDExtensionBool)(r_oob)            // GDExtensionBool *
 
-	ret := C.cgo_callfn_GDNativeInterface_get_variant_to_type_constructor(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_indexed")
 
-	// GDNativeTypeFromVariantConstructorFunc
-	return (GDNativeTypeFromVariantConstructorFunc)(ret)
+	C.cgo_callfn_GDExtensionInterface_variant_get_indexed(arg0, arg1, arg2, arg3, arg4, arg5)
+
 }
 
-func GDNativeInterface_variant_get_ptr_operator_evaluator(p_struct *GDNativeInterface, p_operator GDNativeVariantOperator, p_type_a GDNativeVariantType, p_type_b GDNativeVariantType) GDNativePtrOperatorEvaluator {
-	arg0 := (*C.GDNativeInterface)(p_struct)        // GDNativeInterface
-	arg1 := (C.GDNativeVariantOperator)(p_operator) // GDNativeVariantOperator
-	arg2 := (C.GDNativeVariantType)(p_type_a)       // GDNativeVariantType
-	arg3 := (C.GDNativeVariantType)(p_type_b)       // GDNativeVariantType
+func GDExtensionInterface_variant_iter_init(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, r_iter GDExtensionVariantPtr, r_valid *GDExtensionBool) GDExtensionBool {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionVariantPtr)(r_iter)      // GDExtensionVariantPtr
+	arg3 := (*C.GDExtensionBool)(r_valid)          // GDExtensionBool *
 
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_operator_evaluator(arg0, arg1, arg2, arg3)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_iter_init")
 
-	// GDNativePtrOperatorEvaluator
-	return (GDNativePtrOperatorEvaluator)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_variant_iter_init(arg0, arg1, arg2, arg3)
+
+	// GDExtensionBool
+	return (GDExtensionBool)(ret)
 }
 
-func GDNativeInterface_variant_get_ptr_builtin_method(p_struct *GDNativeInterface, p_type GDNativeVariantType, p_method string, p_hash GDNativeInt) GDNativePtrBuiltInMethod {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-	arg2 := C.CString(p_method)              // const char *
-	arg3 := (C.GDNativeInt)(p_hash)          // GDNativeInt
+func GDExtensionInterface_variant_iter_next(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, r_iter GDExtensionVariantPtr, r_valid *GDExtensionBool) GDExtensionBool {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionVariantPtr)(r_iter)      // GDExtensionVariantPtr
+	arg3 := (*C.GDExtensionBool)(r_valid)          // GDExtensionBool *
 
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_builtin_method(arg0, arg1, arg2, arg3)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_iter_next")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_iter_next(arg0, arg1, arg2, arg3)
+
+	// GDExtensionBool
+	return (GDExtensionBool)(ret)
+}
+
+func GDExtensionInterface_variant_iter_get(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, r_iter GDExtensionVariantPtr, r_ret GDExtensionVariantPtr, r_valid *GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionVariantPtr)(r_iter)      // GDExtensionVariantPtr
+	arg3 := (C.GDExtensionVariantPtr)(r_ret)       // GDExtensionVariantPtr
+	arg4 := (*C.GDExtensionBool)(r_valid)          // GDExtensionBool *
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_iter_get")
+
+	C.cgo_callfn_GDExtensionInterface_variant_iter_get(arg0, arg1, arg2, arg3, arg4)
+
+}
+
+func GDExtensionInterface_variant_hash(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr) GDExtensionInt {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_hash")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_hash(arg0, arg1)
+
+	// GDExtensionInt
+	return (GDExtensionInt)(ret)
+}
+
+func GDExtensionInterface_variant_recursive_hash(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, p_recursion_count GDExtensionInt) GDExtensionInt {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionInt)(p_recursion_count)  // GDExtensionInt
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_recursive_hash")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_recursive_hash(arg0, arg1, arg2)
+
+	// GDExtensionInt
+	return (GDExtensionInt)(ret)
+}
+
+func GDExtensionInterface_variant_hash_compare(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, p_other GDExtensionConstVariantPtr) GDExtensionBool {
+	arg0 := (*C.GDExtensionInterface)(p_struct)     // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self)  // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionConstVariantPtr)(p_other) // GDExtensionConstVariantPtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_hash_compare")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_hash_compare(arg0, arg1, arg2)
+
+	// GDExtensionBool
+	return (GDExtensionBool)(ret)
+}
+
+func GDExtensionInterface_variant_booleanize(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr) GDExtensionBool {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_booleanize")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_booleanize(arg0, arg1)
+
+	// GDExtensionBool
+	return (GDExtensionBool)(ret)
+}
+
+func GDExtensionInterface_variant_duplicate(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, r_ret GDExtensionVariantPtr, p_deep GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionVariantPtr)(r_ret)       // GDExtensionVariantPtr
+	arg3 := (C.GDExtensionBool)(p_deep)            // GDExtensionBool
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_duplicate")
+
+	C.cgo_callfn_GDExtensionInterface_variant_duplicate(arg0, arg1, arg2, arg3)
+
+}
+
+func GDExtensionInterface_variant_stringify(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, r_ret GDExtensionStringPtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionStringPtr)(r_ret)        // GDExtensionStringPtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_stringify")
+
+	C.cgo_callfn_GDExtensionInterface_variant_stringify(arg0, arg1, arg2)
+
+}
+
+func GDExtensionInterface_variant_get_type(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr) GDExtensionVariantType {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_type")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_type(arg0, arg1)
+
+	// GDExtensionVariantType
+	return (GDExtensionVariantType)(ret)
+}
+
+func GDExtensionInterface_variant_has_method(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, p_method GDExtensionConstStringNamePtr) GDExtensionBool {
+	arg0 := (*C.GDExtensionInterface)(p_struct)         // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self)      // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_method) // GDExtensionConstStringNamePtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_has_method")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_has_method(arg0, arg1, arg2)
+
+	// GDExtensionBool
+	return (GDExtensionBool)(ret)
+}
+
+func GDExtensionInterface_variant_has_member(p_struct *GDExtensionInterface, p_type GDExtensionVariantType, p_member GDExtensionConstStringNamePtr) GDExtensionBool {
+	arg0 := (*C.GDExtensionInterface)(p_struct)         // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)          // GDExtensionVariantType
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_member) // GDExtensionConstStringNamePtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_has_member")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_has_member(arg0, arg1, arg2)
+
+	// GDExtensionBool
+	return (GDExtensionBool)(ret)
+}
+
+func GDExtensionInterface_variant_has_key(p_struct *GDExtensionInterface, p_self GDExtensionConstVariantPtr, p_key GDExtensionConstVariantPtr, r_valid *GDExtensionBool) GDExtensionBool {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self) // GDExtensionConstVariantPtr
+	arg2 := (C.GDExtensionConstVariantPtr)(p_key)  // GDExtensionConstVariantPtr
+	arg3 := (*C.GDExtensionBool)(r_valid)          // GDExtensionBool *
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_has_key")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_has_key(arg0, arg1, arg2, arg3)
+
+	// GDExtensionBool
+	return (GDExtensionBool)(ret)
+}
+
+func GDExtensionInterface_variant_get_type_name(p_struct *GDExtensionInterface, p_type GDExtensionVariantType, r_name GDExtensionStringPtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)  // GDExtensionVariantType
+	arg2 := (C.GDExtensionStringPtr)(r_name)    // GDExtensionStringPtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_type_name")
+
+	C.cgo_callfn_GDExtensionInterface_variant_get_type_name(arg0, arg1, arg2)
+
+}
+
+func GDExtensionInterface_variant_can_convert(p_struct *GDExtensionInterface, p_from GDExtensionVariantType, p_to GDExtensionVariantType) GDExtensionBool {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_from)  // GDExtensionVariantType
+	arg2 := (C.GDExtensionVariantType)(p_to)    // GDExtensionVariantType
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_can_convert")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_can_convert(arg0, arg1, arg2)
+
+	// GDExtensionBool
+	return (GDExtensionBool)(ret)
+}
+
+func GDExtensionInterface_variant_can_convert_strict(p_struct *GDExtensionInterface, p_from GDExtensionVariantType, p_to GDExtensionVariantType) GDExtensionBool {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_from)  // GDExtensionVariantType
+	arg2 := (C.GDExtensionVariantType)(p_to)    // GDExtensionVariantType
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_can_convert_strict")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_can_convert_strict(arg0, arg1, arg2)
+
+	// GDExtensionBool
+	return (GDExtensionBool)(ret)
+}
+
+func GDExtensionInterface_get_variant_from_type_constructor(p_struct *GDExtensionInterface, p_type GDExtensionVariantType) GDExtensionVariantFromTypeConstructorFunc {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)  // GDExtensionVariantType
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_get_variant_from_type_constructor")
+
+	ret := C.cgo_callfn_GDExtensionInterface_get_variant_from_type_constructor(arg0, arg1)
+
+	// GDExtensionVariantFromTypeConstructorFunc
+	return (GDExtensionVariantFromTypeConstructorFunc)(ret)
+}
+
+func GDExtensionInterface_get_variant_to_type_constructor(p_struct *GDExtensionInterface, p_type GDExtensionVariantType) GDExtensionTypeFromVariantConstructorFunc {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)  // GDExtensionVariantType
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_get_variant_to_type_constructor")
+
+	ret := C.cgo_callfn_GDExtensionInterface_get_variant_to_type_constructor(arg0, arg1)
+
+	// GDExtensionTypeFromVariantConstructorFunc
+	return (GDExtensionTypeFromVariantConstructorFunc)(ret)
+}
+
+func GDExtensionInterface_variant_get_ptr_operator_evaluator(p_struct *GDExtensionInterface, p_operator GDExtensionVariantOperator, p_type_a GDExtensionVariantType, p_type_b GDExtensionVariantType) GDExtensionPtrOperatorEvaluator {
+	arg0 := (*C.GDExtensionInterface)(p_struct)        // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantOperator)(p_operator) // GDExtensionVariantOperator
+	arg2 := (C.GDExtensionVariantType)(p_type_a)       // GDExtensionVariantType
+	arg3 := (C.GDExtensionVariantType)(p_type_b)       // GDExtensionVariantType
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_operator_evaluator")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_operator_evaluator(arg0, arg1, arg2, arg3)
+
+	// GDExtensionPtrOperatorEvaluator
+	return (GDExtensionPtrOperatorEvaluator)(ret)
+}
+
+func GDExtensionInterface_variant_get_ptr_builtin_method(p_struct *GDExtensionInterface, p_type GDExtensionVariantType, p_method GDExtensionConstStringNamePtr, p_hash GDExtensionInt) GDExtensionPtrBuiltInMethod {
+	arg0 := (*C.GDExtensionInterface)(p_struct)         // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)          // GDExtensionVariantType
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_method) // GDExtensionConstStringNamePtr
+	arg3 := (C.GDExtensionInt)(p_hash)                  // GDExtensionInt
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_builtin_method")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_builtin_method(arg0, arg1, arg2, arg3)
+
+	// GDExtensionPtrBuiltInMethod
+	return (GDExtensionPtrBuiltInMethod)(ret)
+}
+
+func GDExtensionInterface_variant_get_ptr_constructor(p_struct *GDExtensionInterface, p_type GDExtensionVariantType, p_constructor int32) GDExtensionPtrConstructor {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)  // GDExtensionVariantType
+	arg2 := (C.int32_t)(p_constructor)          // int32_t
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_constructor")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_constructor(arg0, arg1, arg2)
+
+	// GDExtensionPtrConstructor
+	return (GDExtensionPtrConstructor)(ret)
+}
+
+func GDExtensionInterface_variant_get_ptr_destructor(p_struct *GDExtensionInterface, p_type GDExtensionVariantType) GDExtensionPtrDestructor {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)  // GDExtensionVariantType
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_destructor")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_destructor(arg0, arg1)
+
+	// GDExtensionPtrDestructor
+	return (GDExtensionPtrDestructor)(ret)
+}
+
+func GDExtensionInterface_variant_construct(p_struct *GDExtensionInterface, p_type GDExtensionVariantType, p_base GDExtensionVariantPtr, p_args *GDExtensionConstVariantPtr, p_argument_count int32, r_error *GDExtensionCallError) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)     // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)      // GDExtensionVariantType
+	arg2 := (C.GDExtensionVariantPtr)(p_base)       // GDExtensionVariantPtr
+	arg3 := (*C.GDExtensionConstVariantPtr)(p_args) // const GDExtensionConstVariantPtr *
+	arg4 := (C.int32_t)(p_argument_count)           // int32_t
+	arg5 := (*C.GDExtensionCallError)(r_error)      // GDExtensionCallError *
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_construct")
+
+	C.cgo_callfn_GDExtensionInterface_variant_construct(arg0, arg1, arg2, arg3, arg4, arg5)
+
+}
+
+func GDExtensionInterface_variant_get_ptr_setter(p_struct *GDExtensionInterface, p_type GDExtensionVariantType, p_member GDExtensionConstStringNamePtr) GDExtensionPtrSetter {
+	arg0 := (*C.GDExtensionInterface)(p_struct)         // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)          // GDExtensionVariantType
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_member) // GDExtensionConstStringNamePtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_setter")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_setter(arg0, arg1, arg2)
+
+	// GDExtensionPtrSetter
+	return (GDExtensionPtrSetter)(ret)
+}
+
+func GDExtensionInterface_variant_get_ptr_getter(p_struct *GDExtensionInterface, p_type GDExtensionVariantType, p_member GDExtensionConstStringNamePtr) GDExtensionPtrGetter {
+	arg0 := (*C.GDExtensionInterface)(p_struct)         // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)          // GDExtensionVariantType
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_member) // GDExtensionConstStringNamePtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_getter")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_getter(arg0, arg1, arg2)
+
+	// GDExtensionPtrGetter
+	return (GDExtensionPtrGetter)(ret)
+}
+
+func GDExtensionInterface_variant_get_ptr_indexed_setter(p_struct *GDExtensionInterface, p_type GDExtensionVariantType) GDExtensionPtrIndexedSetter {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)  // GDExtensionVariantType
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_indexed_setter")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_indexed_setter(arg0, arg1)
+
+	// GDExtensionPtrIndexedSetter
+	return (GDExtensionPtrIndexedSetter)(ret)
+}
+
+func GDExtensionInterface_variant_get_ptr_indexed_getter(p_struct *GDExtensionInterface, p_type GDExtensionVariantType) GDExtensionPtrIndexedGetter {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)  // GDExtensionVariantType
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_indexed_getter")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_indexed_getter(arg0, arg1)
+
+	// GDExtensionPtrIndexedGetter
+	return (GDExtensionPtrIndexedGetter)(ret)
+}
+
+func GDExtensionInterface_variant_get_ptr_keyed_setter(p_struct *GDExtensionInterface, p_type GDExtensionVariantType) GDExtensionPtrKeyedSetter {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)  // GDExtensionVariantType
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_keyed_setter")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_keyed_setter(arg0, arg1)
+
+	// GDExtensionPtrKeyedSetter
+	return (GDExtensionPtrKeyedSetter)(ret)
+}
+
+func GDExtensionInterface_variant_get_ptr_keyed_getter(p_struct *GDExtensionInterface, p_type GDExtensionVariantType) GDExtensionPtrKeyedGetter {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)  // GDExtensionVariantType
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_keyed_getter")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_keyed_getter(arg0, arg1)
+
+	// GDExtensionPtrKeyedGetter
+	return (GDExtensionPtrKeyedGetter)(ret)
+}
+
+func GDExtensionInterface_variant_get_ptr_keyed_checker(p_struct *GDExtensionInterface, p_type GDExtensionVariantType) GDExtensionPtrKeyedChecker {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)  // GDExtensionVariantType
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_keyed_checker")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_keyed_checker(arg0, arg1)
+
+	// GDExtensionPtrKeyedChecker
+	return (GDExtensionPtrKeyedChecker)(ret)
+}
+
+func GDExtensionInterface_variant_get_constant_value(p_struct *GDExtensionInterface, p_type GDExtensionVariantType, p_constant GDExtensionConstStringNamePtr, r_ret GDExtensionVariantPtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)           // GDExtensionInterface
+	arg1 := (C.GDExtensionVariantType)(p_type)            // GDExtensionVariantType
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_constant) // GDExtensionConstStringNamePtr
+	arg3 := (C.GDExtensionVariantPtr)(r_ret)              // GDExtensionVariantPtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_constant_value")
+
+	C.cgo_callfn_GDExtensionInterface_variant_get_constant_value(arg0, arg1, arg2, arg3)
+
+}
+
+func GDExtensionInterface_variant_get_ptr_utility_function(p_struct *GDExtensionInterface, p_function GDExtensionConstStringNamePtr, p_hash GDExtensionInt) GDExtensionPtrUtilityFunction {
+	arg0 := (*C.GDExtensionInterface)(p_struct)           // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringNamePtr)(p_function) // GDExtensionConstStringNamePtr
+	arg2 := (C.GDExtensionInt)(p_hash)                    // GDExtensionInt
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_variant_get_ptr_utility_function")
+
+	ret := C.cgo_callfn_GDExtensionInterface_variant_get_ptr_utility_function(arg0, arg1, arg2)
+
+	// GDExtensionPtrUtilityFunction
+	return (GDExtensionPtrUtilityFunction)(ret)
+}
+
+func GDExtensionInterface_string_new_with_latin1_chars(p_struct *GDExtensionInterface, r_dest GDExtensionStringPtr, p_contents string) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionStringPtr)(r_dest)    // GDExtensionStringPtr
+	arg2 := C.CString(p_contents)               // const char *
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_new_with_latin1_chars")
+
+	C.cgo_callfn_GDExtensionInterface_string_new_with_latin1_chars(arg0, arg1, arg2)
+
+	C.free(unsafe.Pointer(arg2))
+}
+
+func GDExtensionInterface_string_new_with_utf8_chars(p_struct *GDExtensionInterface, r_dest GDExtensionStringPtr, p_contents string) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionStringPtr)(r_dest)    // GDExtensionStringPtr
+	arg2 := C.CString(p_contents)               // const char *
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_new_with_utf8_chars")
+
+	C.cgo_callfn_GDExtensionInterface_string_new_with_utf8_chars(arg0, arg1, arg2)
+
+	C.free(unsafe.Pointer(arg2))
+}
+
+func GDExtensionInterface_string_new_with_utf16_chars(p_struct *GDExtensionInterface, r_dest GDExtensionStringPtr, p_contents *Char16T) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionStringPtr)(r_dest)    // GDExtensionStringPtr
+	arg2 := (*C.char16_t)(p_contents)           // const char16_t *
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_new_with_utf16_chars")
+
+	C.cgo_callfn_GDExtensionInterface_string_new_with_utf16_chars(arg0, arg1, arg2)
+
+}
+
+func GDExtensionInterface_string_new_with_utf32_chars(p_struct *GDExtensionInterface, r_dest GDExtensionStringPtr, p_contents *Char32T) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionStringPtr)(r_dest)    // GDExtensionStringPtr
+	arg2 := (*C.char32_t)(p_contents)           // const char32_t *
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_new_with_utf32_chars")
+
+	C.cgo_callfn_GDExtensionInterface_string_new_with_utf32_chars(arg0, arg1, arg2)
+
+}
+
+func GDExtensionInterface_string_new_with_wide_chars(p_struct *GDExtensionInterface, r_dest GDExtensionStringPtr, p_contents *WcharT) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionStringPtr)(r_dest)    // GDExtensionStringPtr
+	arg2 := (*C.wchar_t)(p_contents)            // const wchar_t *
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_new_with_wide_chars")
+
+	C.cgo_callfn_GDExtensionInterface_string_new_with_wide_chars(arg0, arg1, arg2)
+
+}
+
+func GDExtensionInterface_string_new_with_latin1_chars_and_len(p_struct *GDExtensionInterface, r_dest GDExtensionStringPtr, p_contents string, p_size GDExtensionInt) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionStringPtr)(r_dest)    // GDExtensionStringPtr
+	arg2 := C.CString(p_contents)               // const char *
+	arg3 := (C.GDExtensionInt)(p_size)          // GDExtensionInt
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_new_with_latin1_chars_and_len")
+
+	C.cgo_callfn_GDExtensionInterface_string_new_with_latin1_chars_and_len(arg0, arg1, arg2, arg3)
 
 	C.free(unsafe.Pointer(arg2))
 
-	// GDNativePtrBuiltInMethod
-	return (GDNativePtrBuiltInMethod)(ret)
 }
 
-func GDNativeInterface_variant_get_ptr_constructor(p_struct *GDNativeInterface, p_type GDNativeVariantType, p_constructor int32) GDNativePtrConstructor {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-	arg2 := (C.int32_t)(p_constructor)       // int32_t
+func GDExtensionInterface_string_new_with_utf8_chars_and_len(p_struct *GDExtensionInterface, r_dest GDExtensionStringPtr, p_contents string, p_size GDExtensionInt) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionStringPtr)(r_dest)    // GDExtensionStringPtr
+	arg2 := C.CString(p_contents)               // const char *
+	arg3 := (C.GDExtensionInt)(p_size)          // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_constructor(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_new_with_utf8_chars_and_len")
 
-	// GDNativePtrConstructor
-	return (GDNativePtrConstructor)(ret)
-}
-
-func GDNativeInterface_variant_get_ptr_destructor(p_struct *GDNativeInterface, p_type GDNativeVariantType) GDNativePtrDestructor {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_destructor(arg0, arg1)
-
-	// GDNativePtrDestructor
-	return (GDNativePtrDestructor)(ret)
-}
-
-func GDNativeInterface_variant_construct(p_struct *GDNativeInterface, p_type GDNativeVariantType, p_base GDNativeVariantPtr, p_args *GDNativeVariantPtr, p_argument_count int32, r_error *GDNativeCallError) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-	arg2 := (C.GDNativeVariantPtr)(p_base)   // GDNativeVariantPtr
-	arg3 := (*C.GDNativeVariantPtr)(p_args)  // const GDNativeVariantPtr *
-	arg4 := (C.int32_t)(p_argument_count)    // int32_t
-	arg5 := (*C.GDNativeCallError)(r_error)  // GDNativeCallError *
-
-	C.cgo_callfn_GDNativeInterface_variant_construct(arg0, arg1, arg2, arg3, arg4, arg5)
-
-}
-
-func GDNativeInterface_variant_get_ptr_setter(p_struct *GDNativeInterface, p_type GDNativeVariantType, p_member string) GDNativePtrSetter {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-	arg2 := C.CString(p_member)              // const char *
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_setter(arg0, arg1, arg2)
-
-	C.free(unsafe.Pointer(arg2))
-
-	// GDNativePtrSetter
-	return (GDNativePtrSetter)(ret)
-}
-
-func GDNativeInterface_variant_get_ptr_getter(p_struct *GDNativeInterface, p_type GDNativeVariantType, p_member string) GDNativePtrGetter {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-	arg2 := C.CString(p_member)              // const char *
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_getter(arg0, arg1, arg2)
-
-	C.free(unsafe.Pointer(arg2))
-
-	// GDNativePtrGetter
-	return (GDNativePtrGetter)(ret)
-}
-
-func GDNativeInterface_variant_get_ptr_indexed_setter(p_struct *GDNativeInterface, p_type GDNativeVariantType) GDNativePtrIndexedSetter {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_indexed_setter(arg0, arg1)
-
-	// GDNativePtrIndexedSetter
-	return (GDNativePtrIndexedSetter)(ret)
-}
-
-func GDNativeInterface_variant_get_ptr_indexed_getter(p_struct *GDNativeInterface, p_type GDNativeVariantType) GDNativePtrIndexedGetter {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_indexed_getter(arg0, arg1)
-
-	// GDNativePtrIndexedGetter
-	return (GDNativePtrIndexedGetter)(ret)
-}
-
-func GDNativeInterface_variant_get_ptr_keyed_setter(p_struct *GDNativeInterface, p_type GDNativeVariantType) GDNativePtrKeyedSetter {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_keyed_setter(arg0, arg1)
-
-	// GDNativePtrKeyedSetter
-	return (GDNativePtrKeyedSetter)(ret)
-}
-
-func GDNativeInterface_variant_get_ptr_keyed_getter(p_struct *GDNativeInterface, p_type GDNativeVariantType) GDNativePtrKeyedGetter {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_keyed_getter(arg0, arg1)
-
-	// GDNativePtrKeyedGetter
-	return (GDNativePtrKeyedGetter)(ret)
-}
-
-func GDNativeInterface_variant_get_ptr_keyed_checker(p_struct *GDNativeInterface, p_type GDNativeVariantType) GDNativePtrKeyedChecker {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_keyed_checker(arg0, arg1)
-
-	// GDNativePtrKeyedChecker
-	return (GDNativePtrKeyedChecker)(ret)
-}
-
-func GDNativeInterface_variant_get_constant_value(p_struct *GDNativeInterface, p_type GDNativeVariantType, p_constant string, r_ret GDNativeVariantPtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeVariantType)(p_type)  // GDNativeVariantType
-	arg2 := C.CString(p_constant)            // const char *
-	arg3 := (C.GDNativeVariantPtr)(r_ret)    // GDNativeVariantPtr
-
-	C.cgo_callfn_GDNativeInterface_variant_get_constant_value(arg0, arg1, arg2, arg3)
+	C.cgo_callfn_GDExtensionInterface_string_new_with_utf8_chars_and_len(arg0, arg1, arg2, arg3)
 
 	C.free(unsafe.Pointer(arg2))
 
 }
 
-func GDNativeInterface_variant_get_ptr_utility_function(p_struct *GDNativeInterface, p_function string, p_hash GDNativeInt) GDNativePtrUtilityFunction {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := C.CString(p_function)            // const char *
-	arg2 := (C.GDNativeInt)(p_hash)          // GDNativeInt
+func GDExtensionInterface_string_new_with_utf16_chars_and_len(p_struct *GDExtensionInterface, r_dest GDExtensionStringPtr, p_contents *Char16T, p_size GDExtensionInt) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionStringPtr)(r_dest)    // GDExtensionStringPtr
+	arg2 := (*C.char16_t)(p_contents)           // const char16_t *
+	arg3 := (C.GDExtensionInt)(p_size)          // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_variant_get_ptr_utility_function(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_new_with_utf16_chars_and_len")
 
-	C.free(unsafe.Pointer(arg1))
-
-	// GDNativePtrUtilityFunction
-	return (GDNativePtrUtilityFunction)(ret)
-}
-
-func GDNativeInterface_string_new_with_latin1_chars(p_struct *GDNativeInterface, r_dest GDNativeStringPtr, p_contents string) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
-	arg2 := C.CString(p_contents)            // const char *
-
-	C.cgo_callfn_GDNativeInterface_string_new_with_latin1_chars(arg0, arg1, arg2)
-
-	C.free(unsafe.Pointer(arg2))
-}
-
-func GDNativeInterface_string_new_with_utf8_chars(p_struct *GDNativeInterface, r_dest GDNativeStringPtr, p_contents string) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
-	arg2 := C.CString(p_contents)            // const char *
-
-	C.cgo_callfn_GDNativeInterface_string_new_with_utf8_chars(arg0, arg1, arg2)
-
-	C.free(unsafe.Pointer(arg2))
-}
-
-func GDNativeInterface_string_new_with_utf16_chars(p_struct *GDNativeInterface, r_dest GDNativeStringPtr, p_contents *Char16T) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
-	arg2 := (*C.char16_t)(p_contents)        // const char16_t *
-
-	C.cgo_callfn_GDNativeInterface_string_new_with_utf16_chars(arg0, arg1, arg2)
+	C.cgo_callfn_GDExtensionInterface_string_new_with_utf16_chars_and_len(arg0, arg1, arg2, arg3)
 
 }
 
-func GDNativeInterface_string_new_with_utf32_chars(p_struct *GDNativeInterface, r_dest GDNativeStringPtr, p_contents *Char32T) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
-	arg2 := (*C.char32_t)(p_contents)        // const char32_t *
+func GDExtensionInterface_string_new_with_utf32_chars_and_len(p_struct *GDExtensionInterface, r_dest GDExtensionStringPtr, p_contents *Char32T, p_size GDExtensionInt) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionStringPtr)(r_dest)    // GDExtensionStringPtr
+	arg2 := (*C.char32_t)(p_contents)           // const char32_t *
+	arg3 := (C.GDExtensionInt)(p_size)          // GDExtensionInt
 
-	C.cgo_callfn_GDNativeInterface_string_new_with_utf32_chars(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_new_with_utf32_chars_and_len")
 
-}
-
-func GDNativeInterface_string_new_with_wide_chars(p_struct *GDNativeInterface, r_dest GDNativeStringPtr, p_contents *WcharT) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
-	arg2 := (*C.wchar_t)(p_contents)         // const wchar_t *
-
-	C.cgo_callfn_GDNativeInterface_string_new_with_wide_chars(arg0, arg1, arg2)
+	C.cgo_callfn_GDExtensionInterface_string_new_with_utf32_chars_and_len(arg0, arg1, arg2, arg3)
 
 }
 
-func GDNativeInterface_string_new_with_latin1_chars_and_len(p_struct *GDNativeInterface, r_dest GDNativeStringPtr, p_contents string, p_size GDNativeInt) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
-	arg2 := C.CString(p_contents)            // const char *
-	arg3 := (C.GDNativeInt)(p_size)          // const GDNativeInt
+func GDExtensionInterface_string_new_with_wide_chars_and_len(p_struct *GDExtensionInterface, r_dest GDExtensionStringPtr, p_contents *WcharT, p_size GDExtensionInt) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionStringPtr)(r_dest)    // GDExtensionStringPtr
+	arg2 := (*C.wchar_t)(p_contents)            // const wchar_t *
+	arg3 := (C.GDExtensionInt)(p_size)          // GDExtensionInt
 
-	C.cgo_callfn_GDNativeInterface_string_new_with_latin1_chars_and_len(arg0, arg1, arg2, arg3)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_new_with_wide_chars_and_len")
 
-	C.free(unsafe.Pointer(arg2))
-
-}
-
-func GDNativeInterface_string_new_with_utf8_chars_and_len(p_struct *GDNativeInterface, r_dest GDNativeStringPtr, p_contents string, p_size GDNativeInt) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
-	arg2 := C.CString(p_contents)            // const char *
-	arg3 := (C.GDNativeInt)(p_size)          // const GDNativeInt
-
-	C.cgo_callfn_GDNativeInterface_string_new_with_utf8_chars_and_len(arg0, arg1, arg2, arg3)
-
-	C.free(unsafe.Pointer(arg2))
+	C.cgo_callfn_GDExtensionInterface_string_new_with_wide_chars_and_len(arg0, arg1, arg2, arg3)
 
 }
 
-func GDNativeInterface_string_new_with_utf16_chars_and_len(p_struct *GDNativeInterface, r_dest GDNativeStringPtr, p_contents *Char16T, p_size GDNativeInt) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
-	arg2 := (*C.char16_t)(p_contents)        // const char16_t *
-	arg3 := (C.GDNativeInt)(p_size)          // const GDNativeInt
+func GDExtensionInterface_string_to_latin1_chars(p_struct *GDExtensionInterface, p_self GDExtensionConstStringPtr, r_text *Char, p_max_write_length GDExtensionInt) GDExtensionInt {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringPtr)(p_self)  // GDExtensionConstStringPtr
+	arg2 := (*C.char)(r_text)                      // char *
+	arg3 := (C.GDExtensionInt)(p_max_write_length) // GDExtensionInt
 
-	C.cgo_callfn_GDNativeInterface_string_new_with_utf16_chars_and_len(arg0, arg1, arg2, arg3)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_to_latin1_chars")
 
+	ret := C.cgo_callfn_GDExtensionInterface_string_to_latin1_chars(arg0, arg1, arg2, arg3)
+
+	// GDExtensionInt
+	return (GDExtensionInt)(ret)
 }
 
-func GDNativeInterface_string_new_with_utf32_chars_and_len(p_struct *GDNativeInterface, r_dest GDNativeStringPtr, p_contents *Char32T, p_size GDNativeInt) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
-	arg2 := (*C.char32_t)(p_contents)        // const char32_t *
-	arg3 := (C.GDNativeInt)(p_size)          // const GDNativeInt
+func GDExtensionInterface_string_to_utf8_chars(p_struct *GDExtensionInterface, p_self GDExtensionConstStringPtr, r_text *Char, p_max_write_length GDExtensionInt) GDExtensionInt {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringPtr)(p_self)  // GDExtensionConstStringPtr
+	arg2 := (*C.char)(r_text)                      // char *
+	arg3 := (C.GDExtensionInt)(p_max_write_length) // GDExtensionInt
 
-	C.cgo_callfn_GDNativeInterface_string_new_with_utf32_chars_and_len(arg0, arg1, arg2, arg3)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_to_utf8_chars")
 
+	ret := C.cgo_callfn_GDExtensionInterface_string_to_utf8_chars(arg0, arg1, arg2, arg3)
+
+	// GDExtensionInt
+	return (GDExtensionInt)(ret)
 }
 
-func GDNativeInterface_string_new_with_wide_chars_and_len(p_struct *GDNativeInterface, r_dest GDNativeStringPtr, p_contents *WcharT, p_size GDNativeInt) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(r_dest)    // GDNativeStringPtr
-	arg2 := (*C.wchar_t)(p_contents)         // const wchar_t *
-	arg3 := (C.GDNativeInt)(p_size)          // const GDNativeInt
+func GDExtensionInterface_string_to_utf16_chars(p_struct *GDExtensionInterface, p_self GDExtensionConstStringPtr, r_text *Char16T, p_max_write_length GDExtensionInt) GDExtensionInt {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringPtr)(p_self)  // GDExtensionConstStringPtr
+	arg2 := (*C.char16_t)(r_text)                  // char16_t *
+	arg3 := (C.GDExtensionInt)(p_max_write_length) // GDExtensionInt
 
-	C.cgo_callfn_GDNativeInterface_string_new_with_wide_chars_and_len(arg0, arg1, arg2, arg3)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_to_utf16_chars")
 
+	ret := C.cgo_callfn_GDExtensionInterface_string_to_utf16_chars(arg0, arg1, arg2, arg3)
+
+	// GDExtensionInt
+	return (GDExtensionInt)(ret)
 }
 
-func GDNativeInterface_string_to_latin1_chars(p_struct *GDNativeInterface, p_self GDNativeStringPtr, r_text *Char, p_max_write_length GDNativeInt) GDNativeInt {
-	arg0 := (*C.GDNativeInterface)(p_struct)    // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(p_self)       // const GDNativeStringPtr
-	arg2 := (*C.char)(r_text)                   // char *
-	arg3 := (C.GDNativeInt)(p_max_write_length) // GDNativeInt
+func GDExtensionInterface_string_to_utf32_chars(p_struct *GDExtensionInterface, p_self GDExtensionConstStringPtr, r_text *Char32T, p_max_write_length GDExtensionInt) GDExtensionInt {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringPtr)(p_self)  // GDExtensionConstStringPtr
+	arg2 := (*C.char32_t)(r_text)                  // char32_t *
+	arg3 := (C.GDExtensionInt)(p_max_write_length) // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_string_to_latin1_chars(arg0, arg1, arg2, arg3)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_to_utf32_chars")
 
-	// GDNativeInt
-	return (GDNativeInt)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_string_to_utf32_chars(arg0, arg1, arg2, arg3)
+
+	// GDExtensionInt
+	return (GDExtensionInt)(ret)
 }
 
-func GDNativeInterface_string_to_utf8_chars(p_struct *GDNativeInterface, p_self GDNativeStringPtr, r_text *Char, p_max_write_length GDNativeInt) GDNativeInt {
-	arg0 := (*C.GDNativeInterface)(p_struct)    // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(p_self)       // const GDNativeStringPtr
-	arg2 := (*C.char)(r_text)                   // char *
-	arg3 := (C.GDNativeInt)(p_max_write_length) // GDNativeInt
+func GDExtensionInterface_string_to_wide_chars(p_struct *GDExtensionInterface, p_self GDExtensionConstStringPtr, r_text *WcharT, p_max_write_length GDExtensionInt) GDExtensionInt {
+	arg0 := (*C.GDExtensionInterface)(p_struct)    // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringPtr)(p_self)  // GDExtensionConstStringPtr
+	arg2 := (*C.wchar_t)(r_text)                   // wchar_t *
+	arg3 := (C.GDExtensionInt)(p_max_write_length) // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_string_to_utf8_chars(arg0, arg1, arg2, arg3)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_to_wide_chars")
 
-	// GDNativeInt
-	return (GDNativeInt)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_string_to_wide_chars(arg0, arg1, arg2, arg3)
+
+	// GDExtensionInt
+	return (GDExtensionInt)(ret)
 }
 
-func GDNativeInterface_string_to_utf16_chars(p_struct *GDNativeInterface, p_self GDNativeStringPtr, r_text *Char16T, p_max_write_length GDNativeInt) GDNativeInt {
-	arg0 := (*C.GDNativeInterface)(p_struct)    // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(p_self)       // const GDNativeStringPtr
-	arg2 := (*C.char16_t)(r_text)               // char16_t *
-	arg3 := (C.GDNativeInt)(p_max_write_length) // GDNativeInt
+func GDExtensionInterface_string_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionStringPtr, p_index GDExtensionInt) *Char32T {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionStringPtr)(p_self)    // GDExtensionStringPtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_string_to_utf16_chars(arg0, arg1, arg2, arg3)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_operator_index")
 
-	// GDNativeInt
-	return (GDNativeInt)(ret)
-}
-
-func GDNativeInterface_string_to_utf32_chars(p_struct *GDNativeInterface, p_self GDNativeStringPtr, r_text *Char32T, p_max_write_length GDNativeInt) GDNativeInt {
-	arg0 := (*C.GDNativeInterface)(p_struct)    // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(p_self)       // const GDNativeStringPtr
-	arg2 := (*C.char32_t)(r_text)               // char32_t *
-	arg3 := (C.GDNativeInt)(p_max_write_length) // GDNativeInt
-
-	ret := C.cgo_callfn_GDNativeInterface_string_to_utf32_chars(arg0, arg1, arg2, arg3)
-
-	// GDNativeInt
-	return (GDNativeInt)(ret)
-}
-
-func GDNativeInterface_string_to_wide_chars(p_struct *GDNativeInterface, p_self GDNativeStringPtr, r_text *WcharT, p_max_write_length GDNativeInt) GDNativeInt {
-	arg0 := (*C.GDNativeInterface)(p_struct)    // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(p_self)       // const GDNativeStringPtr
-	arg2 := (*C.wchar_t)(r_text)                // wchar_t *
-	arg3 := (C.GDNativeInt)(p_max_write_length) // GDNativeInt
-
-	ret := C.cgo_callfn_GDNativeInterface_string_to_wide_chars(arg0, arg1, arg2, arg3)
-
-	// GDNativeInt
-	return (GDNativeInt)(ret)
-}
-
-func GDNativeInterface_string_operator_index(p_struct *GDNativeInterface, p_self GDNativeStringPtr, p_index GDNativeInt) *Char32T {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(p_self)    // GDNativeStringPtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
-
-	ret := C.cgo_callfn_GDNativeInterface_string_operator_index(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDExtensionInterface_string_operator_index(arg0, arg1, arg2)
 
 	// char32_t *
 	return (*Char32T)(ret)
 }
 
-func GDNativeInterface_string_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeStringPtr, p_index GDNativeInt) *Char32T {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeStringPtr)(p_self)    // const GDNativeStringPtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_string_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstStringPtr, p_index GDExtensionInt) *Char32T {
+	arg0 := (*C.GDExtensionInterface)(p_struct)   // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringPtr)(p_self) // GDExtensionConstStringPtr
+	arg2 := (C.GDExtensionInt)(p_index)           // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_string_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_string_operator_index_const")
+
+	ret := C.cgo_callfn_GDExtensionInterface_string_operator_index_const(arg0, arg1, arg2)
 
 	// const char32_t *
 	return (*Char32T)(ret)
 }
 
-func GDNativeInterface_packed_byte_array_operator_index(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) *uint8 {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_byte_array_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_index GDExtensionInt) *uint8 {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionTypePtr)(p_self)      // GDExtensionTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_byte_array_operator_index(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_byte_array_operator_index")
+
+	ret := C.cgo_callfn_GDExtensionInterface_packed_byte_array_operator_index(arg0, arg1, arg2)
 
 	// uint8_t *
 	return (*uint8)(ret)
 }
 
-func GDNativeInterface_packed_byte_array_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) *uint8 {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_byte_array_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstTypePtr, p_index GDExtensionInt) *uint8 {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionConstTypePtr)(p_self) // GDExtensionConstTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_byte_array_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_byte_array_operator_index_const")
+
+	ret := C.cgo_callfn_GDExtensionInterface_packed_byte_array_operator_index_const(arg0, arg1, arg2)
 
 	// const uint8_t *
 	return (*uint8)(ret)
 }
 
-func GDNativeInterface_packed_color_array_operator_index(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) GDNativeTypePtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_color_array_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_index GDExtensionInt) GDExtensionTypePtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionTypePtr)(p_self)      // GDExtensionTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_color_array_operator_index(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_color_array_operator_index")
 
-	// GDNativeTypePtr
-	return (GDNativeTypePtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_packed_color_array_operator_index(arg0, arg1, arg2)
+
+	// GDExtensionTypePtr
+	return (GDExtensionTypePtr)(ret)
 }
 
-func GDNativeInterface_packed_color_array_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) GDNativeTypePtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_color_array_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstTypePtr, p_index GDExtensionInt) GDExtensionTypePtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionConstTypePtr)(p_self) // GDExtensionConstTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_color_array_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_color_array_operator_index_const")
 
-	// GDNativeTypePtr
-	return (GDNativeTypePtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_packed_color_array_operator_index_const(arg0, arg1, arg2)
+
+	// GDExtensionTypePtr
+	return (GDExtensionTypePtr)(ret)
 }
 
-func GDNativeInterface_packed_float32_array_operator_index(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) *float32 {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_float32_array_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_index GDExtensionInt) *float32 {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionTypePtr)(p_self)      // GDExtensionTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_float32_array_operator_index(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_float32_array_operator_index")
+
+	ret := C.cgo_callfn_GDExtensionInterface_packed_float32_array_operator_index(arg0, arg1, arg2)
 
 	// float *
 	return (*float32)(ret)
 }
 
-func GDNativeInterface_packed_float32_array_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) *float32 {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_float32_array_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstTypePtr, p_index GDExtensionInt) *float32 {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionConstTypePtr)(p_self) // GDExtensionConstTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_float32_array_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_float32_array_operator_index_const")
+
+	ret := C.cgo_callfn_GDExtensionInterface_packed_float32_array_operator_index_const(arg0, arg1, arg2)
 
 	// const float *
 	return (*float32)(ret)
 }
 
-func GDNativeInterface_packed_float64_array_operator_index(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) *float64 {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_float64_array_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_index GDExtensionInt) *float64 {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionTypePtr)(p_self)      // GDExtensionTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_float64_array_operator_index(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_float64_array_operator_index")
+
+	ret := C.cgo_callfn_GDExtensionInterface_packed_float64_array_operator_index(arg0, arg1, arg2)
 
 	// double *
 	return (*float64)(ret)
 }
 
-func GDNativeInterface_packed_float64_array_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) *float64 {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_float64_array_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstTypePtr, p_index GDExtensionInt) *float64 {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionConstTypePtr)(p_self) // GDExtensionConstTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_float64_array_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_float64_array_operator_index_const")
+
+	ret := C.cgo_callfn_GDExtensionInterface_packed_float64_array_operator_index_const(arg0, arg1, arg2)
 
 	// const double *
 	return (*float64)(ret)
 }
 
-func GDNativeInterface_packed_int32_array_operator_index(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) *int32 {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_int32_array_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_index GDExtensionInt) *int32 {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionTypePtr)(p_self)      // GDExtensionTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_int32_array_operator_index(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_int32_array_operator_index")
+
+	ret := C.cgo_callfn_GDExtensionInterface_packed_int32_array_operator_index(arg0, arg1, arg2)
 
 	// int32_t *
 	return (*int32)(ret)
 }
 
-func GDNativeInterface_packed_int32_array_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) *int32 {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_int32_array_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstTypePtr, p_index GDExtensionInt) *int32 {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionConstTypePtr)(p_self) // GDExtensionConstTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_int32_array_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_int32_array_operator_index_const")
+
+	ret := C.cgo_callfn_GDExtensionInterface_packed_int32_array_operator_index_const(arg0, arg1, arg2)
 
 	// const int32_t *
 	return (*int32)(ret)
 }
 
-func GDNativeInterface_packed_int64_array_operator_index(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) *int64 {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_int64_array_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_index GDExtensionInt) *int64 {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionTypePtr)(p_self)      // GDExtensionTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_int64_array_operator_index(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_int64_array_operator_index")
+
+	ret := C.cgo_callfn_GDExtensionInterface_packed_int64_array_operator_index(arg0, arg1, arg2)
 
 	// int64_t *
 	return (*int64)(ret)
 }
 
-func GDNativeInterface_packed_int64_array_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) *int64 {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_int64_array_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstTypePtr, p_index GDExtensionInt) *int64 {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionConstTypePtr)(p_self) // GDExtensionConstTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_int64_array_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_int64_array_operator_index_const")
+
+	ret := C.cgo_callfn_GDExtensionInterface_packed_int64_array_operator_index_const(arg0, arg1, arg2)
 
 	// const int64_t *
 	return (*int64)(ret)
 }
 
-func GDNativeInterface_packed_string_array_operator_index(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) GDNativeStringPtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_string_array_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_index GDExtensionInt) GDExtensionStringPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionTypePtr)(p_self)      // GDExtensionTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_string_array_operator_index(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_string_array_operator_index")
 
-	// GDNativeStringPtr
-	return (GDNativeStringPtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_packed_string_array_operator_index(arg0, arg1, arg2)
+
+	// GDExtensionStringPtr
+	return (GDExtensionStringPtr)(ret)
 }
 
-func GDNativeInterface_packed_string_array_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) GDNativeStringPtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_string_array_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstTypePtr, p_index GDExtensionInt) GDExtensionStringPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionConstTypePtr)(p_self) // GDExtensionConstTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_string_array_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_string_array_operator_index_const")
 
-	// GDNativeStringPtr
-	return (GDNativeStringPtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_packed_string_array_operator_index_const(arg0, arg1, arg2)
+
+	// GDExtensionStringPtr
+	return (GDExtensionStringPtr)(ret)
 }
 
-func GDNativeInterface_packed_vector2_array_operator_index(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) GDNativeTypePtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_vector2_array_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_index GDExtensionInt) GDExtensionTypePtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionTypePtr)(p_self)      // GDExtensionTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_vector2_array_operator_index(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_vector2_array_operator_index")
 
-	// GDNativeTypePtr
-	return (GDNativeTypePtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_packed_vector2_array_operator_index(arg0, arg1, arg2)
+
+	// GDExtensionTypePtr
+	return (GDExtensionTypePtr)(ret)
 }
 
-func GDNativeInterface_packed_vector2_array_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) GDNativeTypePtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_vector2_array_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstTypePtr, p_index GDExtensionInt) GDExtensionTypePtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionConstTypePtr)(p_self) // GDExtensionConstTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_vector2_array_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_vector2_array_operator_index_const")
 
-	// GDNativeTypePtr
-	return (GDNativeTypePtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_packed_vector2_array_operator_index_const(arg0, arg1, arg2)
+
+	// GDExtensionTypePtr
+	return (GDExtensionTypePtr)(ret)
 }
 
-func GDNativeInterface_packed_vector3_array_operator_index(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) GDNativeTypePtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_vector3_array_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_index GDExtensionInt) GDExtensionTypePtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionTypePtr)(p_self)      // GDExtensionTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_vector3_array_operator_index(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_vector3_array_operator_index")
 
-	// GDNativeTypePtr
-	return (GDNativeTypePtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_packed_vector3_array_operator_index(arg0, arg1, arg2)
+
+	// GDExtensionTypePtr
+	return (GDExtensionTypePtr)(ret)
 }
 
-func GDNativeInterface_packed_vector3_array_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) GDNativeTypePtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_packed_vector3_array_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstTypePtr, p_index GDExtensionInt) GDExtensionTypePtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionConstTypePtr)(p_self) // GDExtensionConstTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_packed_vector3_array_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_packed_vector3_array_operator_index_const")
 
-	// GDNativeTypePtr
-	return (GDNativeTypePtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_packed_vector3_array_operator_index_const(arg0, arg1, arg2)
+
+	// GDExtensionTypePtr
+	return (GDExtensionTypePtr)(ret)
 }
 
-func GDNativeInterface_array_operator_index(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) GDNativeVariantPtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_array_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_index GDExtensionInt) GDExtensionVariantPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionTypePtr)(p_self)      // GDExtensionTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_array_operator_index(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_array_operator_index")
 
-	// GDNativeVariantPtr
-	return (GDNativeVariantPtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_array_operator_index(arg0, arg1, arg2)
+
+	// GDExtensionVariantPtr
+	return (GDExtensionVariantPtr)(ret)
 }
 
-func GDNativeInterface_array_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_index GDNativeInt) GDNativeVariantPtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
-	arg2 := (C.GDNativeInt)(p_index)         // GDNativeInt
+func GDExtensionInterface_array_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstTypePtr, p_index GDExtensionInt) GDExtensionVariantPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionConstTypePtr)(p_self) // GDExtensionConstTypePtr
+	arg2 := (C.GDExtensionInt)(p_index)         // GDExtensionInt
 
-	ret := C.cgo_callfn_GDNativeInterface_array_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_array_operator_index_const")
 
-	// GDNativeVariantPtr
-	return (GDNativeVariantPtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_array_operator_index_const(arg0, arg1, arg2)
+
+	// GDExtensionVariantPtr
+	return (GDExtensionVariantPtr)(ret)
 }
 
-func GDNativeInterface_dictionary_operator_index(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_key GDNativeVariantPtr) GDNativeVariantPtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // GDNativeTypePtr
-	arg2 := (C.GDNativeVariantPtr)(p_key)    // const GDNativeVariantPtr
+func GDExtensionInterface_dictionary_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_key GDExtensionConstVariantPtr) GDExtensionVariantPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct)   // GDExtensionInterface
+	arg1 := (C.GDExtensionTypePtr)(p_self)        // GDExtensionTypePtr
+	arg2 := (C.GDExtensionConstVariantPtr)(p_key) // GDExtensionConstVariantPtr
 
-	ret := C.cgo_callfn_GDNativeInterface_dictionary_operator_index(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_dictionary_operator_index")
 
-	// GDNativeVariantPtr
-	return (GDNativeVariantPtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_dictionary_operator_index(arg0, arg1, arg2)
+
+	// GDExtensionVariantPtr
+	return (GDExtensionVariantPtr)(ret)
 }
 
-func GDNativeInterface_dictionary_operator_index_const(p_struct *GDNativeInterface, p_self GDNativeTypePtr, p_key GDNativeVariantPtr) GDNativeVariantPtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeTypePtr)(p_self)      // const GDNativeTypePtr
-	arg2 := (C.GDNativeVariantPtr)(p_key)    // const GDNativeVariantPtr
+func GDExtensionInterface_dictionary_operator_index_const(p_struct *GDExtensionInterface, p_self GDExtensionConstTypePtr, p_key GDExtensionConstVariantPtr) GDExtensionVariantPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct)   // GDExtensionInterface
+	arg1 := (C.GDExtensionConstTypePtr)(p_self)   // GDExtensionConstTypePtr
+	arg2 := (C.GDExtensionConstVariantPtr)(p_key) // GDExtensionConstVariantPtr
 
-	ret := C.cgo_callfn_GDNativeInterface_dictionary_operator_index_const(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_dictionary_operator_index_const")
 
-	// GDNativeVariantPtr
-	return (GDNativeVariantPtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_dictionary_operator_index_const(arg0, arg1, arg2)
+
+	// GDExtensionVariantPtr
+	return (GDExtensionVariantPtr)(ret)
 }
 
-func GDNativeInterface_object_method_bind_call(p_struct *GDNativeInterface, p_method_bind GDNativeMethodBindPtr, p_instance GDNativeObjectPtr, p_args *GDNativeVariantPtr, p_arg_count GDNativeInt, r_ret GDNativeVariantPtr, r_error *GDNativeCallError) {
-	arg0 := (*C.GDNativeInterface)(p_struct)         // GDNativeInterface
-	arg1 := (C.GDNativeMethodBindPtr)(p_method_bind) // const GDNativeMethodBindPtr
-	arg2 := (C.GDNativeObjectPtr)(p_instance)        // GDNativeObjectPtr
-	arg3 := (*C.GDNativeVariantPtr)(p_args)          // const GDNativeVariantPtr *
-	arg4 := (C.GDNativeInt)(p_arg_count)             // GDNativeInt
-	arg5 := (C.GDNativeVariantPtr)(r_ret)            // GDNativeVariantPtr
-	arg6 := (*C.GDNativeCallError)(r_error)          // GDNativeCallError *
+func GDExtensionInterface_object_method_bind_call(p_struct *GDExtensionInterface, p_method_bind GDExtensionMethodBindPtr, p_instance GDExtensionObjectPtr, p_args *GDExtensionConstVariantPtr, p_arg_count GDExtensionInt, r_ret GDExtensionVariantPtr, r_error *GDExtensionCallError) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)         // GDExtensionInterface
+	arg1 := (C.GDExtensionMethodBindPtr)(p_method_bind) // GDExtensionMethodBindPtr
+	arg2 := (C.GDExtensionObjectPtr)(p_instance)        // GDExtensionObjectPtr
+	arg3 := (*C.GDExtensionConstVariantPtr)(p_args)     // const GDExtensionConstVariantPtr *
+	arg4 := (C.GDExtensionInt)(p_arg_count)             // GDExtensionInt
+	arg5 := (C.GDExtensionVariantPtr)(r_ret)            // GDExtensionVariantPtr
+	arg6 := (*C.GDExtensionCallError)(r_error)          // GDExtensionCallError *
 
-	C.cgo_callfn_GDNativeInterface_object_method_bind_call(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_object_method_bind_call")
 
-}
-
-func GDNativeInterface_object_method_bind_ptrcall(p_struct *GDNativeInterface, p_method_bind GDNativeMethodBindPtr, p_instance GDNativeObjectPtr, p_args *GDNativeTypePtr, r_ret GDNativeTypePtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct)         // GDNativeInterface
-	arg1 := (C.GDNativeMethodBindPtr)(p_method_bind) // const GDNativeMethodBindPtr
-	arg2 := (C.GDNativeObjectPtr)(p_instance)        // GDNativeObjectPtr
-	arg3 := (*C.GDNativeTypePtr)(p_args)             // const GDNativeTypePtr *
-	arg4 := (C.GDNativeTypePtr)(r_ret)               // GDNativeTypePtr
-
-	C.cgo_callfn_GDNativeInterface_object_method_bind_ptrcall(arg0, arg1, arg2, arg3, arg4)
-
-}
-
-func GDNativeInterface_object_destroy(p_struct *GDNativeInterface, p_o GDNativeObjectPtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeObjectPtr)(p_o)       // GDNativeObjectPtr
-
-	C.cgo_callfn_GDNativeInterface_object_destroy(arg0, arg1)
+	C.cgo_callfn_GDExtensionInterface_object_method_bind_call(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 
 }
 
-func GDNativeInterface_global_get_singleton(p_struct *GDNativeInterface, p_name string) GDNativeObjectPtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := C.CString(p_name)                // const char *
+func GDExtensionInterface_object_method_bind_ptrcall(p_struct *GDExtensionInterface, p_method_bind GDExtensionMethodBindPtr, p_instance GDExtensionObjectPtr, p_args *GDExtensionConstTypePtr, r_ret GDExtensionTypePtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)         // GDExtensionInterface
+	arg1 := (C.GDExtensionMethodBindPtr)(p_method_bind) // GDExtensionMethodBindPtr
+	arg2 := (C.GDExtensionObjectPtr)(p_instance)        // GDExtensionObjectPtr
+	arg3 := (*C.GDExtensionConstTypePtr)(p_args)        // const GDExtensionConstTypePtr *
+	arg4 := (C.GDExtensionTypePtr)(r_ret)               // GDExtensionTypePtr
 
-	ret := C.cgo_callfn_GDNativeInterface_global_get_singleton(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_object_method_bind_ptrcall")
 
-	C.free(unsafe.Pointer(arg1))
+	C.cgo_callfn_GDExtensionInterface_object_method_bind_ptrcall(arg0, arg1, arg2, arg3, arg4)
 
-	// GDNativeObjectPtr
-	return (GDNativeObjectPtr)(ret)
 }
 
-func GDNativeInterface_object_get_instance_binding(p_struct *GDNativeInterface, p_o GDNativeObjectPtr, p_token unsafe.Pointer, p_callbacks *GDNativeInstanceBindingCallbacks) unsafe.Pointer {
-	arg0 := (*C.GDNativeInterface)(p_struct)                   // GDNativeInterface
-	arg1 := (C.GDNativeObjectPtr)(p_o)                         // GDNativeObjectPtr
-	arg2 := unsafe.Pointer(p_token)                            // void *
-	arg3 := (*C.GDNativeInstanceBindingCallbacks)(p_callbacks) // const GDNativeInstanceBindingCallbacks *
+func GDExtensionInterface_object_destroy(p_struct *GDExtensionInterface, p_o GDExtensionObjectPtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionObjectPtr)(p_o)       // GDExtensionObjectPtr
 
-	ret := C.cgo_callfn_GDNativeInterface_object_get_instance_binding(arg0, arg1, arg2, arg3)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_object_destroy")
+
+	C.cgo_callfn_GDExtensionInterface_object_destroy(arg0, arg1)
+
+}
+
+func GDExtensionInterface_global_get_singleton(p_struct *GDExtensionInterface, p_name GDExtensionConstStringNamePtr) GDExtensionObjectPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct)       // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringNamePtr)(p_name) // GDExtensionConstStringNamePtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_global_get_singleton")
+
+	ret := C.cgo_callfn_GDExtensionInterface_global_get_singleton(arg0, arg1)
+
+	// GDExtensionObjectPtr
+	return (GDExtensionObjectPtr)(ret)
+}
+
+func GDExtensionInterface_object_get_instance_binding(p_struct *GDExtensionInterface, p_o GDExtensionObjectPtr, p_token unsafe.Pointer, p_callbacks *GDExtensionInstanceBindingCallbacks) unsafe.Pointer {
+	arg0 := (*C.GDExtensionInterface)(p_struct)                   // GDExtensionInterface
+	arg1 := (C.GDExtensionObjectPtr)(p_o)                         // GDExtensionObjectPtr
+	arg2 := unsafe.Pointer(p_token)                               // void *
+	arg3 := (*C.GDExtensionInstanceBindingCallbacks)(p_callbacks) // const GDExtensionInstanceBindingCallbacks *
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_object_get_instance_binding")
+
+	ret := C.cgo_callfn_GDExtensionInterface_object_get_instance_binding(arg0, arg1, arg2, arg3)
 
 	// void *
 	return unsafe.Pointer(ret)
 }
 
-func GDNativeInterface_object_set_instance_binding(p_struct *GDNativeInterface, p_o GDNativeObjectPtr, p_token unsafe.Pointer, p_binding unsafe.Pointer, p_callbacks *GDNativeInstanceBindingCallbacks) {
-	arg0 := (*C.GDNativeInterface)(p_struct)                   // GDNativeInterface
-	arg1 := (C.GDNativeObjectPtr)(p_o)                         // GDNativeObjectPtr
-	arg2 := unsafe.Pointer(p_token)                            // void *
-	arg3 := unsafe.Pointer(p_binding)                          // void *
-	arg4 := (*C.GDNativeInstanceBindingCallbacks)(p_callbacks) // const GDNativeInstanceBindingCallbacks *
+func GDExtensionInterface_object_set_instance_binding(p_struct *GDExtensionInterface, p_o GDExtensionObjectPtr, p_token unsafe.Pointer, p_binding unsafe.Pointer, p_callbacks *GDExtensionInstanceBindingCallbacks) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)                   // GDExtensionInterface
+	arg1 := (C.GDExtensionObjectPtr)(p_o)                         // GDExtensionObjectPtr
+	arg2 := unsafe.Pointer(p_token)                               // void *
+	arg3 := unsafe.Pointer(p_binding)                             // void *
+	arg4 := (*C.GDExtensionInstanceBindingCallbacks)(p_callbacks) // const GDExtensionInstanceBindingCallbacks *
 
-	C.cgo_callfn_GDNativeInterface_object_set_instance_binding(arg0, arg1, arg2, arg3, arg4)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_object_set_instance_binding")
 
-}
-
-func GDNativeInterface_object_set_instance(p_struct *GDNativeInterface, p_o GDNativeObjectPtr, p_classname string, p_instance GDExtensionClassInstancePtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct)            // GDNativeInterface
-	arg1 := (C.GDNativeObjectPtr)(p_o)                  // GDNativeObjectPtr
-	arg2 := C.CString(p_classname)                      // const char *
-	arg3 := (C.GDExtensionClassInstancePtr)(p_instance) // GDExtensionClassInstancePtr
-
-	C.cgo_callfn_GDNativeInterface_object_set_instance(arg0, arg1, arg2, arg3)
-
-	C.free(unsafe.Pointer(arg2))
+	C.cgo_callfn_GDExtensionInterface_object_set_instance_binding(arg0, arg1, arg2, arg3, arg4)
 
 }
 
-func GDNativeInterface_object_cast_to(p_struct *GDNativeInterface, p_object GDNativeObjectPtr, p_class_tag unsafe.Pointer) GDNativeObjectPtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeObjectPtr)(p_object)  // const GDNativeObjectPtr
-	arg2 := unsafe.Pointer(p_class_tag)      // void *
+func GDExtensionInterface_object_set_instance(p_struct *GDExtensionInterface, p_o GDExtensionObjectPtr, p_classname GDExtensionConstStringNamePtr, p_instance GDExtensionClassInstancePtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)            // GDExtensionInterface
+	arg1 := (C.GDExtensionObjectPtr)(p_o)                  // GDExtensionObjectPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_classname) // GDExtensionConstStringNamePtr
+	arg3 := (C.GDExtensionClassInstancePtr)(p_instance)    // GDExtensionClassInstancePtr
 
-	ret := C.cgo_callfn_GDNativeInterface_object_cast_to(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_object_set_instance")
 
-	// GDNativeObjectPtr
-	return (GDNativeObjectPtr)(ret)
+	C.cgo_callfn_GDExtensionInterface_object_set_instance(arg0, arg1, arg2, arg3)
+
 }
 
-func GDNativeInterface_object_get_instance_from_id(p_struct *GDNativeInterface, p_instance_id GDObjectInstanceID) GDNativeObjectPtr {
-	arg0 := (*C.GDNativeInterface)(p_struct)      // GDNativeInterface
+func GDExtensionInterface_object_cast_to(p_struct *GDExtensionInterface, p_object GDExtensionConstObjectPtr, p_class_tag unsafe.Pointer) GDExtensionObjectPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct)     // GDExtensionInterface
+	arg1 := (C.GDExtensionConstObjectPtr)(p_object) // GDExtensionConstObjectPtr
+	arg2 := unsafe.Pointer(p_class_tag)             // void *
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_object_cast_to")
+
+	ret := C.cgo_callfn_GDExtensionInterface_object_cast_to(arg0, arg1, arg2)
+
+	// GDExtensionObjectPtr
+	return (GDExtensionObjectPtr)(ret)
+}
+
+func GDExtensionInterface_object_get_instance_from_id(p_struct *GDExtensionInterface, p_instance_id GDObjectInstanceID) GDExtensionObjectPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct)   // GDExtensionInterface
 	arg1 := (C.GDObjectInstanceID)(p_instance_id) // GDObjectInstanceID
 
-	ret := C.cgo_callfn_GDNativeInterface_object_get_instance_from_id(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_object_get_instance_from_id")
 
-	// GDNativeObjectPtr
-	return (GDNativeObjectPtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_object_get_instance_from_id(arg0, arg1)
+
+	// GDExtensionObjectPtr
+	return (GDExtensionObjectPtr)(ret)
 }
 
-func GDNativeInterface_object_get_instance_id(p_struct *GDNativeInterface, p_object GDNativeObjectPtr) GDObjectInstanceID {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := (C.GDNativeObjectPtr)(p_object)  // const GDNativeObjectPtr
+func GDExtensionInterface_object_get_instance_id(p_struct *GDExtensionInterface, p_object GDExtensionConstObjectPtr) GDObjectInstanceID {
+	arg0 := (*C.GDExtensionInterface)(p_struct)     // GDExtensionInterface
+	arg1 := (C.GDExtensionConstObjectPtr)(p_object) // GDExtensionConstObjectPtr
 
-	ret := C.cgo_callfn_GDNativeInterface_object_get_instance_id(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_object_get_instance_id")
+
+	ret := C.cgo_callfn_GDExtensionInterface_object_get_instance_id(arg0, arg1)
 
 	// GDObjectInstanceID
 	return (GDObjectInstanceID)(ret)
 }
 
-func GDNativeInterface_script_instance_create(p_struct *GDNativeInterface, p_info *GDNativeExtensionScriptInstanceInfo, p_instance_data GDNativeExtensionScriptInstanceDataPtr) GDNativeScriptInstancePtr {
-	arg0 := (*C.GDNativeInterface)(p_struct)                            // GDNativeInterface
-	arg1 := (*C.GDNativeExtensionScriptInstanceInfo)(p_info)            // const GDNativeExtensionScriptInstanceInfo *
-	arg2 := (C.GDNativeExtensionScriptInstanceDataPtr)(p_instance_data) // GDNativeExtensionScriptInstanceDataPtr
+func GDExtensionInterface_ref_get_object(p_struct *GDExtensionInterface, p_ref GDExtensionConstRefPtr) GDExtensionObjectPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionConstRefPtr)(p_ref)   // GDExtensionConstRefPtr
 
-	ret := C.cgo_callfn_GDNativeInterface_script_instance_create(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_ref_get_object")
 
-	// GDNativeScriptInstancePtr
-	return (GDNativeScriptInstancePtr)(ret)
+	ret := C.cgo_callfn_GDExtensionInterface_ref_get_object(arg0, arg1)
+
+	// GDExtensionObjectPtr
+	return (GDExtensionObjectPtr)(ret)
 }
 
-func GDNativeInterface_classdb_construct_object(p_struct *GDNativeInterface, p_classname string) GDNativeObjectPtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := C.CString(p_classname)           // const char *
+func GDExtensionInterface_ref_set_object(p_struct *GDExtensionInterface, p_ref GDExtensionRefPtr, p_object GDExtensionObjectPtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+	arg1 := (C.GDExtensionRefPtr)(p_ref)        // GDExtensionRefPtr
+	arg2 := (C.GDExtensionObjectPtr)(p_object)  // GDExtensionObjectPtr
 
-	ret := C.cgo_callfn_GDNativeInterface_classdb_construct_object(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_ref_set_object")
 
-	C.free(unsafe.Pointer(arg1))
+	C.cgo_callfn_GDExtensionInterface_ref_set_object(arg0, arg1, arg2)
 
-	// GDNativeObjectPtr
-	return (GDNativeObjectPtr)(ret)
 }
 
-func GDNativeInterface_classdb_get_method_bind(p_struct *GDNativeInterface, p_classname string, p_methodname string, p_hash GDNativeInt) GDNativeMethodBindPtr {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := C.CString(p_classname)           // const char *
-	arg2 := C.CString(p_methodname)          // const char *
-	arg3 := (C.GDNativeInt)(p_hash)          // GDNativeInt
+func GDExtensionInterface_script_instance_create(p_struct *GDExtensionInterface, p_info *GDExtensionScriptInstanceInfo, p_instance_data GDExtensionScriptInstanceDataPtr) GDExtensionScriptInstancePtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct)                   // GDExtensionInterface
+	arg1 := (*C.GDExtensionScriptInstanceInfo)(p_info)            // const GDExtensionScriptInstanceInfo *
+	arg2 := (C.GDExtensionScriptInstanceDataPtr)(p_instance_data) // GDExtensionScriptInstanceDataPtr
 
-	ret := C.cgo_callfn_GDNativeInterface_classdb_get_method_bind(arg0, arg1, arg2, arg3)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_script_instance_create")
 
-	C.free(unsafe.Pointer(arg1))
-	C.free(unsafe.Pointer(arg2))
+	ret := C.cgo_callfn_GDExtensionInterface_script_instance_create(arg0, arg1, arg2)
 
-	// GDNativeMethodBindPtr
-	return (GDNativeMethodBindPtr)(ret)
+	// GDExtensionScriptInstancePtr
+	return (GDExtensionScriptInstancePtr)(ret)
 }
 
-func GDNativeInterface_classdb_get_class_tag(p_struct *GDNativeInterface, p_classname string) unsafe.Pointer {
-	arg0 := (*C.GDNativeInterface)(p_struct) // GDNativeInterface
-	arg1 := C.CString(p_classname)           // const char *
+func GDExtensionInterface_classdb_construct_object(p_struct *GDExtensionInterface, p_classname GDExtensionConstStringNamePtr) GDExtensionObjectPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct)            // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringNamePtr)(p_classname) // GDExtensionConstStringNamePtr
 
-	ret := C.cgo_callfn_GDNativeInterface_classdb_get_class_tag(arg0, arg1)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_construct_object")
 
-	C.free(unsafe.Pointer(arg1))
+	ret := C.cgo_callfn_GDExtensionInterface_classdb_construct_object(arg0, arg1)
+
+	// GDExtensionObjectPtr
+	return (GDExtensionObjectPtr)(ret)
+}
+
+func GDExtensionInterface_classdb_get_method_bind(p_struct *GDExtensionInterface, p_classname GDExtensionConstStringNamePtr, p_methodname GDExtensionConstStringNamePtr, p_hash GDExtensionInt) GDExtensionMethodBindPtr {
+	arg0 := (*C.GDExtensionInterface)(p_struct)             // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringNamePtr)(p_classname)  // GDExtensionConstStringNamePtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_methodname) // GDExtensionConstStringNamePtr
+	arg3 := (C.GDExtensionInt)(p_hash)                      // GDExtensionInt
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_get_method_bind")
+
+	ret := C.cgo_callfn_GDExtensionInterface_classdb_get_method_bind(arg0, arg1, arg2, arg3)
+
+	// GDExtensionMethodBindPtr
+	return (GDExtensionMethodBindPtr)(ret)
+}
+
+func GDExtensionInterface_classdb_get_class_tag(p_struct *GDExtensionInterface, p_classname GDExtensionConstStringNamePtr) unsafe.Pointer {
+	arg0 := (*C.GDExtensionInterface)(p_struct)            // GDExtensionInterface
+	arg1 := (C.GDExtensionConstStringNamePtr)(p_classname) // GDExtensionConstStringNamePtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_get_class_tag")
+
+	ret := C.cgo_callfn_GDExtensionInterface_classdb_get_class_tag(arg0, arg1)
 
 	// void *
 	return unsafe.Pointer(ret)
 }
 
-func GDNativeInterface_classdb_register_extension_class(p_struct *GDNativeInterface, p_library GDNativeExtensionClassLibraryPtr, p_class_name string, p_parent_class_name string, p_extension_funcs *GDNativeExtensionClassCreationInfo) {
-	arg0 := (*C.GDNativeInterface)(p_struct)                           // GDNativeInterface
-	arg1 := (C.GDNativeExtensionClassLibraryPtr)(p_library)            // const GDNativeExtensionClassLibraryPtr
-	arg2 := C.CString(p_class_name)                                    // const char *
-	arg3 := C.CString(p_parent_class_name)                             // const char *
-	arg4 := (*C.GDNativeExtensionClassCreationInfo)(p_extension_funcs) // const GDNativeExtensionClassCreationInfo *
+func GDExtensionInterface_classdb_register_extension_class(p_struct *GDExtensionInterface, p_library GDExtensionClassLibraryPtr, p_class_name GDExtensionConstStringNamePtr, p_parent_class_name GDExtensionConstStringNamePtr, p_extension_funcs *GDExtensionClassCreationInfo) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)                    // GDExtensionInterface
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library)              // GDExtensionClassLibraryPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_class_name)        // GDExtensionConstStringNamePtr
+	arg3 := (C.GDExtensionConstStringNamePtr)(p_parent_class_name) // GDExtensionConstStringNamePtr
+	arg4 := (*C.GDExtensionClassCreationInfo)(p_extension_funcs)   // const GDExtensionClassCreationInfo *
 
-	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class(arg0, arg1, arg2, arg3, arg4)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class")
 
-	C.free(unsafe.Pointer(arg2))
-	C.free(unsafe.Pointer(arg3))
-
-}
-
-func GDNativeInterface_classdb_register_extension_class_method(p_struct *GDNativeInterface, p_library GDNativeExtensionClassLibraryPtr, p_class_name string, p_method_info *GDNativeExtensionClassMethodInfo) {
-	arg0 := (*C.GDNativeInterface)(p_struct)                     // GDNativeInterface
-	arg1 := (C.GDNativeExtensionClassLibraryPtr)(p_library)      // const GDNativeExtensionClassLibraryPtr
-	arg2 := C.CString(p_class_name)                              // const char *
-	arg3 := (*C.GDNativeExtensionClassMethodInfo)(p_method_info) // const GDNativeExtensionClassMethodInfo *
-
-	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_method(arg0, arg1, arg2, arg3)
-
-	C.free(unsafe.Pointer(arg2))
+	C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class(arg0, arg1, arg2, arg3, arg4)
 
 }
 
-func GDNativeInterface_classdb_register_extension_class_integer_constant(p_struct *GDNativeInterface, p_library GDNativeExtensionClassLibraryPtr, p_class_name string, p_enum_name string, p_constant_name string, p_constant_value GDNativeInt, p_is_bitfield GDNativeBool) {
-	arg0 := (*C.GDNativeInterface)(p_struct)                // GDNativeInterface
-	arg1 := (C.GDNativeExtensionClassLibraryPtr)(p_library) // const GDNativeExtensionClassLibraryPtr
-	arg2 := C.CString(p_class_name)                         // const char *
-	arg3 := C.CString(p_enum_name)                          // const char *
-	arg4 := C.CString(p_constant_name)                      // const char *
-	arg5 := (C.GDNativeInt)(p_constant_value)               // GDNativeInt
-	arg6 := (C.GDNativeBool)(p_is_bitfield)                 // GDNativeBool
+func GDExtensionInterface_classdb_register_extension_class_method(p_struct *GDExtensionInterface, p_library GDExtensionClassLibraryPtr, p_class_name GDExtensionConstStringNamePtr, p_method_info *GDExtensionClassMethodInfo) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)             // GDExtensionInterface
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library)       // GDExtensionClassLibraryPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_class_name) // GDExtensionConstStringNamePtr
+	arg3 := (*C.GDExtensionClassMethodInfo)(p_method_info)  // const GDExtensionClassMethodInfo *
 
-	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_integer_constant(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_method")
 
-	C.free(unsafe.Pointer(arg2))
-	C.free(unsafe.Pointer(arg3))
-	C.free(unsafe.Pointer(arg4))
+	C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_method(arg0, arg1, arg2, arg3)
 
 }
 
-func GDNativeInterface_classdb_register_extension_class_property(p_struct *GDNativeInterface, p_library GDNativeExtensionClassLibraryPtr, p_class_name string, p_info *GDNativePropertyInfo, p_setter string, p_getter string) {
-	arg0 := (*C.GDNativeInterface)(p_struct)                // GDNativeInterface
-	arg1 := (C.GDNativeExtensionClassLibraryPtr)(p_library) // const GDNativeExtensionClassLibraryPtr
-	arg2 := C.CString(p_class_name)                         // const char *
-	arg3 := (*C.GDNativePropertyInfo)(p_info)               // const GDNativePropertyInfo *
-	arg4 := C.CString(p_setter)                             // const char *
-	arg5 := C.CString(p_getter)                             // const char *
+func GDExtensionInterface_classdb_register_extension_class_integer_constant(p_struct *GDExtensionInterface, p_library GDExtensionClassLibraryPtr, p_class_name GDExtensionConstStringNamePtr, p_enum_name GDExtensionConstStringNamePtr, p_constant_name GDExtensionConstStringNamePtr, p_constant_value GDExtensionInt, p_is_bitfield GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)                // GDExtensionInterface
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library)          // GDExtensionClassLibraryPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_class_name)    // GDExtensionConstStringNamePtr
+	arg3 := (C.GDExtensionConstStringNamePtr)(p_enum_name)     // GDExtensionConstStringNamePtr
+	arg4 := (C.GDExtensionConstStringNamePtr)(p_constant_name) // GDExtensionConstStringNamePtr
+	arg5 := (C.GDExtensionInt)(p_constant_value)               // GDExtensionInt
+	arg6 := (C.GDExtensionBool)(p_is_bitfield)                 // GDExtensionBool
 
-	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_property(arg0, arg1, arg2, arg3, arg4, arg5)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_integer_constant")
 
-	C.free(unsafe.Pointer(arg2))
-
-	C.free(unsafe.Pointer(arg4))
-	C.free(unsafe.Pointer(arg5))
-}
-
-func GDNativeInterface_classdb_register_extension_class_property_group(p_struct *GDNativeInterface, p_library GDNativeExtensionClassLibraryPtr, p_class_name string, p_group_name string, p_prefix string) {
-	arg0 := (*C.GDNativeInterface)(p_struct)                // GDNativeInterface
-	arg1 := (C.GDNativeExtensionClassLibraryPtr)(p_library) // const GDNativeExtensionClassLibraryPtr
-	arg2 := C.CString(p_class_name)                         // const char *
-	arg3 := C.CString(p_group_name)                         // const char *
-	arg4 := C.CString(p_prefix)                             // const char *
-
-	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_property_group(arg0, arg1, arg2, arg3, arg4)
-
-	C.free(unsafe.Pointer(arg2))
-	C.free(unsafe.Pointer(arg3))
-	C.free(unsafe.Pointer(arg4))
-}
-
-func GDNativeInterface_classdb_register_extension_class_property_subgroup(p_struct *GDNativeInterface, p_library GDNativeExtensionClassLibraryPtr, p_class_name string, p_subgroup_name string, p_prefix string) {
-	arg0 := (*C.GDNativeInterface)(p_struct)                // GDNativeInterface
-	arg1 := (C.GDNativeExtensionClassLibraryPtr)(p_library) // const GDNativeExtensionClassLibraryPtr
-	arg2 := C.CString(p_class_name)                         // const char *
-	arg3 := C.CString(p_subgroup_name)                      // const char *
-	arg4 := C.CString(p_prefix)                             // const char *
-
-	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_property_subgroup(arg0, arg1, arg2, arg3, arg4)
-
-	C.free(unsafe.Pointer(arg2))
-	C.free(unsafe.Pointer(arg3))
-	C.free(unsafe.Pointer(arg4))
-}
-
-func GDNativeInterface_classdb_register_extension_class_signal(p_struct *GDNativeInterface, p_library GDNativeExtensionClassLibraryPtr, p_class_name string, p_signal_name string, p_argument_info *GDNativePropertyInfo, p_argument_count GDNativeInt) {
-	arg0 := (*C.GDNativeInterface)(p_struct)                // GDNativeInterface
-	arg1 := (C.GDNativeExtensionClassLibraryPtr)(p_library) // const GDNativeExtensionClassLibraryPtr
-	arg2 := C.CString(p_class_name)                         // const char *
-	arg3 := C.CString(p_signal_name)                        // const char *
-	arg4 := (*C.GDNativePropertyInfo)(p_argument_info)      // const GDNativePropertyInfo *
-	arg5 := (C.GDNativeInt)(p_argument_count)               // GDNativeInt
-
-	C.cgo_callfn_GDNativeInterface_classdb_register_extension_class_signal(arg0, arg1, arg2, arg3, arg4, arg5)
-
-	C.free(unsafe.Pointer(arg2))
-	C.free(unsafe.Pointer(arg3))
+	C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_integer_constant(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 
 }
 
-func GDNativeInterface_classdb_unregister_extension_class(p_struct *GDNativeInterface, p_library GDNativeExtensionClassLibraryPtr, p_class_name string) {
-	arg0 := (*C.GDNativeInterface)(p_struct)                // GDNativeInterface
-	arg1 := (C.GDNativeExtensionClassLibraryPtr)(p_library) // const GDNativeExtensionClassLibraryPtr
-	arg2 := C.CString(p_class_name)                         // const char *
+func GDExtensionInterface_classdb_register_extension_class_property(p_struct *GDExtensionInterface, p_library GDExtensionClassLibraryPtr, p_class_name GDExtensionConstStringNamePtr, p_info *GDExtensionPropertyInfo, p_setter GDExtensionConstStringNamePtr, p_getter GDExtensionConstStringNamePtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)             // GDExtensionInterface
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library)       // GDExtensionClassLibraryPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_class_name) // GDExtensionConstStringNamePtr
+	arg3 := (*C.GDExtensionPropertyInfo)(p_info)            // const GDExtensionPropertyInfo *
+	arg4 := (C.GDExtensionConstStringNamePtr)(p_setter)     // GDExtensionConstStringNamePtr
+	arg5 := (C.GDExtensionConstStringNamePtr)(p_getter)     // GDExtensionConstStringNamePtr
 
-	C.cgo_callfn_GDNativeInterface_classdb_unregister_extension_class(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_property")
 
-	C.free(unsafe.Pointer(arg2))
-}
-
-func GDNativeInterface_get_library_path(p_struct *GDNativeInterface, p_library GDNativeExtensionClassLibraryPtr, r_path GDNativeStringPtr) {
-	arg0 := (*C.GDNativeInterface)(p_struct)                // GDNativeInterface
-	arg1 := (C.GDNativeExtensionClassLibraryPtr)(p_library) // const GDNativeExtensionClassLibraryPtr
-	arg2 := (C.GDNativeStringPtr)(r_path)                   // GDNativeStringPtr
-
-	C.cgo_callfn_GDNativeInterface_get_library_path(arg0, arg1, arg2)
+	C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_property(arg0, arg1, arg2, arg3, arg4, arg5)
 
 }
 
-/* struct (8) GDNativeInitialization */
+func GDExtensionInterface_classdb_register_extension_class_property_group(p_struct *GDExtensionInterface, p_library GDExtensionClassLibraryPtr, p_class_name GDExtensionConstStringNamePtr, p_group_name GDExtensionConstStringPtr, p_prefix GDExtensionConstStringPtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)             // GDExtensionInterface
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library)       // GDExtensionClassLibraryPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_class_name) // GDExtensionConstStringNamePtr
+	arg3 := (C.GDExtensionConstStringPtr)(p_group_name)     // GDExtensionConstStringPtr
+	arg4 := (C.GDExtensionConstStringPtr)(p_prefix)         // GDExtensionConstStringPtr
 
-func GDNativeInitialization_initialize(p_struct *GDNativeInitialization, userdata unsafe.Pointer, p_level GDNativeInitializationLevel) {
-	arg0 := (*C.GDNativeInitialization)(p_struct)    // GDNativeInitialization
-	arg1 := unsafe.Pointer(userdata)                 // void *
-	arg2 := (C.GDNativeInitializationLevel)(p_level) // GDNativeInitializationLevel
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_property_group")
 
-	C.cgo_callfn_GDNativeInitialization_initialize(arg0, arg1, arg2)
+	C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_property_group(arg0, arg1, arg2, arg3, arg4)
 
 }
 
-func GDNativeInitialization_deinitialize(p_struct *GDNativeInitialization, userdata unsafe.Pointer, p_level GDNativeInitializationLevel) {
-	arg0 := (*C.GDNativeInitialization)(p_struct)    // GDNativeInitialization
-	arg1 := unsafe.Pointer(userdata)                 // void *
-	arg2 := (C.GDNativeInitializationLevel)(p_level) // GDNativeInitializationLevel
+func GDExtensionInterface_classdb_register_extension_class_property_subgroup(p_struct *GDExtensionInterface, p_library GDExtensionClassLibraryPtr, p_class_name GDExtensionConstStringNamePtr, p_subgroup_name GDExtensionConstStringPtr, p_prefix GDExtensionConstStringPtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)             // GDExtensionInterface
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library)       // GDExtensionClassLibraryPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_class_name) // GDExtensionConstStringNamePtr
+	arg3 := (C.GDExtensionConstStringPtr)(p_subgroup_name)  // GDExtensionConstStringPtr
+	arg4 := (C.GDExtensionConstStringPtr)(p_prefix)         // GDExtensionConstStringPtr
 
-	C.cgo_callfn_GDNativeInitialization_deinitialize(arg0, arg1, arg2)
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_property_subgroup")
+
+	C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_property_subgroup(arg0, arg1, arg2, arg3, arg4)
+
+}
+
+func GDExtensionInterface_classdb_register_extension_class_signal(p_struct *GDExtensionInterface, p_library GDExtensionClassLibraryPtr, p_class_name GDExtensionConstStringNamePtr, p_signal_name GDExtensionConstStringNamePtr, p_argument_info *GDExtensionPropertyInfo, p_argument_count GDExtensionInt) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)              // GDExtensionInterface
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library)        // GDExtensionClassLibraryPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_class_name)  // GDExtensionConstStringNamePtr
+	arg3 := (C.GDExtensionConstStringNamePtr)(p_signal_name) // GDExtensionConstStringNamePtr
+	arg4 := (*C.GDExtensionPropertyInfo)(p_argument_info)    // const GDExtensionPropertyInfo *
+	arg5 := (C.GDExtensionInt)(p_argument_count)             // GDExtensionInt
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_signal")
+
+	C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_signal(arg0, arg1, arg2, arg3, arg4, arg5)
+
+}
+
+func GDExtensionInterface_classdb_unregister_extension_class(p_struct *GDExtensionInterface, p_library GDExtensionClassLibraryPtr, p_class_name GDExtensionConstStringNamePtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)             // GDExtensionInterface
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library)       // GDExtensionClassLibraryPtr
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_class_name) // GDExtensionConstStringNamePtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_unregister_extension_class")
+
+	C.cgo_callfn_GDExtensionInterface_classdb_unregister_extension_class(arg0, arg1, arg2)
+
+}
+
+func GDExtensionInterface_get_library_path(p_struct *GDExtensionInterface, p_library GDExtensionClassLibraryPtr, r_path GDExtensionStringPtr) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)       // GDExtensionInterface
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library) // GDExtensionClassLibraryPtr
+	arg2 := (C.GDExtensionStringPtr)(r_path)          // GDExtensionStringPtr
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_get_library_path")
+
+	C.cgo_callfn_GDExtensionInterface_get_library_path(arg0, arg1, arg2)
+
+}
+
+/* struct (8) GDExtensionInitialization */
+
+func GDExtensionInitialization_initialize(p_struct *GDExtensionInitialization, userdata unsafe.Pointer, p_level GDExtensionInitializationLevel) {
+	arg0 := (*C.GDExtensionInitialization)(p_struct)    // GDExtensionInitialization
+	arg1 := unsafe.Pointer(userdata)                    // void *
+	arg2 := (C.GDExtensionInitializationLevel)(p_level) // GDExtensionInitializationLevel
+
+	log.Debug("called C.cgo_callfn_GDExtensionInitialization_initialize")
+
+	C.cgo_callfn_GDExtensionInitialization_initialize(arg0, arg1, arg2)
+
+}
+
+func GDExtensionInitialization_deinitialize(p_struct *GDExtensionInitialization, userdata unsafe.Pointer, p_level GDExtensionInitializationLevel) {
+	arg0 := (*C.GDExtensionInitialization)(p_struct)    // GDExtensionInitialization
+	arg1 := unsafe.Pointer(userdata)                    // void *
+	arg2 := (C.GDExtensionInitializationLevel)(p_level) // GDExtensionInitializationLevel
+
+	log.Debug("called C.cgo_callfn_GDExtensionInitialization_deinitialize")
+
+	C.cgo_callfn_GDExtensionInitialization_deinitialize(arg0, arg1, arg2)
 
 }

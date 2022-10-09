@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       DEFAULT_BUMP:
-        description: 'Which type of bump to use when none explicitly provided'
+        description: 'Version Bump (major, minor, patch, none)'
         required: true
         default: 'patch'
 

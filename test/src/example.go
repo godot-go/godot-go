@@ -118,8 +118,8 @@ func (e *Example) TestArray() gdextension.Array {
 	arr := gdextension.NewArray()
 
 	arr.Resize(2)
-	arr.Insert(0, gdextension.NewVariantInt64(1))
-	arr.Insert(1, gdextension.NewVariantInt64(2))
+	arr.SetIndexed(0, gdextension.NewVariantInt64(1))
+	arr.SetIndexed(1, gdextension.NewVariantInt64(2))
 
 	return arr
 }

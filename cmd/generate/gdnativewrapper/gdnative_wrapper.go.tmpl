@@ -142,6 +142,34 @@ func CallFunc_GDNativePtrSetter(
 	)
 }
 
+func CallFunc_GDNativePtrIndexedGetter(
+	cb GDNativePtrIndexedGetter,
+	p_base GDNativeTypePtr,
+	p_index GDNativeInt,
+	r_value GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrIndexedGetter(
+		(C.GDNativePtrIndexedGetter)(cb),
+		(C.GDNativeTypePtr)(p_base),
+		(C.GDNativeInt)(p_index),
+		(C.GDNativeTypePtr)(r_value),
+	)
+}
+
+func CallFunc_GDNativePtrIndexedSetter(
+	cb GDNativePtrIndexedSetter,
+	p_base GDNativeTypePtr,
+	p_index GDNativeInt,
+	p_value GDNativeTypePtr,
+) {
+	C.cgo_callfn_GDNativePtrIndexedSetter(
+		(C.GDNativePtrIndexedSetter)(cb),
+		(C.GDNativeTypePtr)(p_base),
+		(C.GDNativeInt)(p_index),
+		(C.GDNativeTypePtr)(p_value),
+	)
+}
+
 func CallFunc_GDNativeVariantFromTypeConstructorFunc(
 	cb GDNativeVariantFromTypeConstructorFunc,
 	arg_0 GDNativeVariantPtr,

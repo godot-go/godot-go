@@ -253,23 +253,26 @@ func (cx *{{ $c.Name }}) SetKey(const Variant &p_key) Variant {
 
 {{ if and (gt (len $c.IndexingReturnType) 0) (contains $c.Name "Array") -}}
 func (cx *{{ $c.Name }}) GetIndexed(i int64) {{ goReturnType $c.IndexingReturnType }} {
-    ret := GDNativeInterface_{{ snakeCase $c.Name }}_operator_index(
-        internal.gdnInterface,
+
+    var ret {{ goReturnType $c.IndexingReturnType }}
+
+    CallFunc_GDNativePtrIndexedGetter(
+        global{{ $c.Name }}MethodBindings.indexed_getter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
     )
 
-	return *(*{{ goReturnType $c.IndexingReturnType }})(unsafe.Pointer(ret));
+	return ret
 }
 
-func (cx *{{ $c.Name }}) SetIndexedValue(i int64) {{ goReturnType $c.IndexingReturnType }} {
-    ret := GDNativeInterface_{{ snakeCase $c.Name }}_operator_index(
-        internal.gdnInterface,
+func (cx *{{ $c.Name }}) SetIndexed(i int64, value {{ goReturnType $c.IndexingReturnType }}) {
+    CallFunc_GDNativePtrIndexedSetter(
+        global{{ $c.Name }}MethodBindings.indexed_setter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
     )
-
-	return *(*{{ goReturnType $c.IndexingReturnType }})(unsafe.Pointer(ret));
 }
 {{ end -}}
 

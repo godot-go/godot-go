@@ -19753,13 +19753,26 @@ func (cx *Array) IsReadOnly() bool {
 
 
 func (cx *Array) GetIndexed(i int64) Variant {
-    ret := GDNativeInterface_array_operator_index(
-        internal.gdnInterface,
+
+    var ret Variant
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalArrayMethodBindings.indexed_getter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
     )
 
-	return *(*Variant)(unsafe.Pointer(ret));
+	return ret
+}
+
+func (cx *Array) SetIndexed(i int64, value Variant) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
 }
 // members
 
@@ -21613,13 +21626,26 @@ func (cx *PackedByteArray) EncodeVar(byte_offset int32,value Variant,allow_objec
 
 
 func (cx *PackedByteArray) GetIndexed(i int64) int32 {
-    ret := GDNativeInterface_packed_byte_array_operator_index(
-        internal.gdnInterface,
+
+    var ret int32
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedByteArrayMethodBindings.indexed_getter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
     )
 
-	return *(*int32)(unsafe.Pointer(ret));
+	return ret
+}
+
+func (cx *PackedByteArray) SetIndexed(i int64, value int32) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedByteArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
 }
 // members
 
@@ -22350,13 +22376,26 @@ func (cx *PackedInt32Array) Count(value int32,) int32 {
 
 
 func (cx *PackedInt32Array) GetIndexed(i int64) int32 {
-    ret := GDNativeInterface_packed_int32_array_operator_index(
-        internal.gdnInterface,
+
+    var ret int32
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedInt32ArrayMethodBindings.indexed_getter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
     )
 
-	return *(*int32)(unsafe.Pointer(ret));
+	return ret
+}
+
+func (cx *PackedInt32Array) SetIndexed(i int64, value int32) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedInt32ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
 }
 // members
 
@@ -23087,13 +23126,26 @@ func (cx *PackedInt64Array) Count(value int32,) int32 {
 
 
 func (cx *PackedInt64Array) GetIndexed(i int64) int32 {
-    ret := GDNativeInterface_packed_int64_array_operator_index(
-        internal.gdnInterface,
+
+    var ret int32
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedInt64ArrayMethodBindings.indexed_getter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
     )
 
-	return *(*int32)(unsafe.Pointer(ret));
+	return ret
+}
+
+func (cx *PackedInt64Array) SetIndexed(i int64, value int32) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedInt64ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
 }
 // members
 
@@ -23824,13 +23876,26 @@ func (cx *PackedFloat32Array) Count(value float32,) int32 {
 
 
 func (cx *PackedFloat32Array) GetIndexed(i int64) float32 {
-    ret := GDNativeInterface_packed_float32_array_operator_index(
-        internal.gdnInterface,
+
+    var ret float32
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedFloat32ArrayMethodBindings.indexed_getter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
     )
 
-	return *(*float32)(unsafe.Pointer(ret));
+	return ret
+}
+
+func (cx *PackedFloat32Array) SetIndexed(i int64, value float32) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedFloat32ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
 }
 // members
 
@@ -24561,13 +24626,26 @@ func (cx *PackedFloat64Array) Count(value float32,) int32 {
 
 
 func (cx *PackedFloat64Array) GetIndexed(i int64) float32 {
-    ret := GDNativeInterface_packed_float64_array_operator_index(
-        internal.gdnInterface,
+
+    var ret float32
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedFloat64ArrayMethodBindings.indexed_getter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
     )
 
-	return *(*float32)(unsafe.Pointer(ret));
+	return ret
+}
+
+func (cx *PackedFloat64Array) SetIndexed(i int64, value float32) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedFloat64ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
 }
 // members
 
@@ -25298,13 +25376,26 @@ func (cx *PackedStringArray) Count(value String,) int32 {
 
 
 func (cx *PackedStringArray) GetIndexed(i int64) String {
-    ret := GDNativeInterface_packed_string_array_operator_index(
-        internal.gdnInterface,
+
+    var ret String
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedStringArrayMethodBindings.indexed_getter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
     )
 
-	return *(*String)(unsafe.Pointer(ret));
+	return ret
+}
+
+func (cx *PackedStringArray) SetIndexed(i int64, value String) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedStringArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
 }
 // members
 
@@ -26037,13 +26128,26 @@ func (cx *PackedVector2Array) Count(value Vector2,) int32 {
 
 
 func (cx *PackedVector2Array) GetIndexed(i int64) Vector2 {
-    ret := GDNativeInterface_packed_vector2_array_operator_index(
-        internal.gdnInterface,
+
+    var ret Vector2
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedVector2ArrayMethodBindings.indexed_getter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
     )
 
-	return *(*Vector2)(unsafe.Pointer(ret));
+	return ret
+}
+
+func (cx *PackedVector2Array) SetIndexed(i int64, value Vector2) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedVector2ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
 }
 // members
 
@@ -26782,13 +26886,26 @@ func (cx *PackedVector3Array) Count(value Vector3,) int32 {
 
 
 func (cx *PackedVector3Array) GetIndexed(i int64) Vector3 {
-    ret := GDNativeInterface_packed_vector3_array_operator_index(
-        internal.gdnInterface,
+
+    var ret Vector3
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedVector3ArrayMethodBindings.indexed_getter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
     )
 
-	return *(*Vector3)(unsafe.Pointer(ret));
+	return ret
+}
+
+func (cx *PackedVector3Array) SetIndexed(i int64, value Vector3) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedVector3ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
 }
 // members
 
@@ -27525,13 +27642,26 @@ func (cx *PackedColorArray) Count(value Color,) int32 {
 
 
 func (cx *PackedColorArray) GetIndexed(i int64) Color {
-    ret := GDNativeInterface_packed_color_array_operator_index(
-        internal.gdnInterface,
+
+    var ret Color
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedColorArrayMethodBindings.indexed_getter,
         (GDNativeTypePtr)(unsafe.Pointer(cx)),
         (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
     )
 
-	return *(*Color)(unsafe.Pointer(ret));
+	return ret
+}
+
+func (cx *PackedColorArray) SetIndexed(i int64, value Color) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedColorArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
 }
 // members
 

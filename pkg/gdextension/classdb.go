@@ -204,7 +204,7 @@ func classDBBindMethodGodot(p_class_name TypeName, p_method *MethodBind) {
 		cDefArgs = (*GDNativeVariantPtr)(nullptr)
 	}
 
-	method_info := NewGDNativeExtensionClassMethodInfo(
+	methodInfo := NewGDNativeExtensionClassMethodInfo(
 		(string)(p_method.GDName),
 		unsafe.Pointer(p_method),
 		(GDNativeExtensionClassMethodCall)(C.cgo_method_bind_method_call),
@@ -219,7 +219,7 @@ func classDBBindMethodGodot(p_class_name TypeName, p_method *MethodBind) {
 		cDefArgs,
 	)
 
-	GDNativeInterface_classdb_register_extension_class_method(internal.gdnInterface, internal.library, (string)(p_class_name), &method_info)
+	GDNativeInterface_classdb_register_extension_class_method(internal.gdnInterface, internal.library, (string)(p_class_name), &methodInfo)
 }
 
 type SignalParam struct {
@@ -325,7 +325,7 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 	GDNativeInterface_classdb_register_extension_class_integer_constant(internal.gdnInterface, internal.library, (string)(typeName), p_enum_name, p_constant_name, p_constant_value, bitfield)
 }
 
-func classDBBindVirtualMethod(t GDClass, p_method_name MethodName, p_arg_names ...string) {
+func ClassDBBindMethodVirtual(t GDClass, p_method_name MethodName, p_call GDNativeExtensionClassCallVirtual) {
 
 	cn := t.GetClassName()
 
@@ -346,10 +346,7 @@ func classDBBindVirtualMethod(t GDClass, p_method_name MethodName, p_arg_names .
 		return
 	}
 
-	// TODO: implement
-	log.Panic("missing implementation")
-
-	// ci.VirtualMethodMap[p_method_name] = p_call
+	ci.VirtualMethodMap[p_method_name] = p_call
 }
 
 func classDBInitialize(pLevel GDNativeInitializationLevel) {
@@ -530,8 +527,4 @@ func GoCallback_ClassDBGetVirtualFunc(pUserdata unsafe.Pointer, pName *C.char) C
 	}
 
 	return (C.GDNativeExtensionClassCallVirtual)(m)
-}
-
-func BindVirtualMethod[T any](methodName string) {
-	panic("TODO: implement BindVirtualMethod")
 }

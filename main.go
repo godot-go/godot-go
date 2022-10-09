@@ -2,16 +2,22 @@ package main
 
 //go:generate go run cmd/main.go --clangApi --extensionApi
 
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <string.h>
+/*
+typedef void (*CallVirtual)(void *p_instance, int a, int b);
+
+
+static int testfunc(void *user_data) {
+	CallVirtual cb = (CallVirtual)(user_data);
+	cb(NULL, 1, 2);
+	return 123;
+}
+*/
 import "C"
 import (
 	"fmt"
+	"log"
+	"runtime/cgo"
 	"unsafe"
-
-	. "github.com/godot-go/godot-go/pkg/gdnative"
-	. "github.com/godot-go/godot-go/pkg/gdextension"
 )
 
 type TestOpaque struct {
@@ -23,6 +29,15 @@ func (c *TestOpaque) ptr() unsafe.Pointer {
 }
 
 func (c *TestOpaque) TestMethod(name string) {
+}
+
+func (c *TestOpaque) TestCallback(a C.int, b C.int) {
+	log.Printf("TestCallback: %d, %d", a, b)
+}
+
+//export TestCallbackFunction
+func TestCallbackFunction(c unsafe.Pointer, a C.int, b C.int) {
+	log.Printf("TestCallback: %d, %d", a, b)
 }
 
 func NewTestOpaque() *TestOpaque {
@@ -51,19 +66,15 @@ func TestExamplePtr() {
 	a := &Example{}
 	iface := (interface{})(a)
 
-	fmt.Printf("%p\n", a)
-	fmt.Printf("%p\n", a.ptr())
-	fmt.Printf("%p\n", iface)
+	fmt.Printf("a: %p\n", a)
+	fmt.Printf("a.ptr(): %p\n", a.ptr())
+	fmt.Printf("iface: %p\n", iface)
 }
 
 func main() {
-	TestExamplePtr()
+	userData := unsafe.Pointer(cgo.NewHandle(TestCallbackFunction))
 
-	var (
-		ptr GDNativeTypePtr
-		obj ObjectImpl
-	)
+	a := C.testfunc(userData)
 
-	println(ptr)
-	println(obj.GetClassName())
+	log.Printf("%p %d\n", &userData, a)
 }

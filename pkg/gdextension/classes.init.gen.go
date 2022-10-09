@@ -1222,6 +1222,12 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("FontVariation",
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_FontVariation),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_FontVariation),
 		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("FramebufferCacheRD",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_FramebufferCacheRD),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_FramebufferCacheRD),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_FramebufferCacheRD),
+		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("GDScript",
 		NewGDNativeInstanceBindingCallbacks(
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_GDScript),
@@ -3868,6 +3874,12 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("UndoRedo",
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_UndoRedo),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_UndoRedo),
 		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("UniformSetCacheRD",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_UniformSetCacheRD),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_UniformSetCacheRD),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_UniformSetCacheRD),
+		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("VBoxContainer",
 		NewGDNativeInstanceBindingCallbacks(
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_VBoxContainer),
@@ -4774,6 +4786,18 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("XRServer",
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_XRServer),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_XRServer),
 		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("ZIPPacker",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_ZIPPacker),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_ZIPPacker),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_ZIPPacker),
+		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("ZIPReader",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_ZIPReader),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_ZIPReader),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_ZIPReader),
+		))
 gdNativeConstructors = NewSyncMap[TypeName, GDNativeClassGoConstructorFromOwner]()
 gdNativeConstructors.Set("AESContext", NewGDNativeClassFromAESContextOwner)
 gdNativeConstructors.Set("AStar2D", NewGDNativeClassFromAStar2DOwner)
@@ -4975,6 +4999,7 @@ gdNativeConstructors.Set("FogVolume", NewGDNativeClassFromFogVolumeOwner)
 gdNativeConstructors.Set("Font", NewGDNativeClassFromFontOwner)
 gdNativeConstructors.Set("FontFile", NewGDNativeClassFromFontFileOwner)
 gdNativeConstructors.Set("FontVariation", NewGDNativeClassFromFontVariationOwner)
+gdNativeConstructors.Set("FramebufferCacheRD", NewGDNativeClassFromFramebufferCacheRDOwner)
 gdNativeConstructors.Set("GDScript", NewGDNativeClassFromGDScriptOwner)
 gdNativeConstructors.Set("GDScriptNativeClass", NewGDNativeClassFromGDScriptNativeClassOwner)
 gdNativeConstructors.Set("GLTFAccessor", NewGDNativeClassFromGLTFAccessorOwner)
@@ -5416,6 +5441,7 @@ gdNativeConstructors.Set("UDPServer", NewGDNativeClassFromUDPServerOwner)
 gdNativeConstructors.Set("UPNP", NewGDNativeClassFromUPNPOwner)
 gdNativeConstructors.Set("UPNPDevice", NewGDNativeClassFromUPNPDeviceOwner)
 gdNativeConstructors.Set("UndoRedo", NewGDNativeClassFromUndoRedoOwner)
+gdNativeConstructors.Set("UniformSetCacheRD", NewGDNativeClassFromUniformSetCacheRDOwner)
 gdNativeConstructors.Set("VBoxContainer", NewGDNativeClassFromVBoxContainerOwner)
 gdNativeConstructors.Set("VFlowContainer", NewGDNativeClassFromVFlowContainerOwner)
 gdNativeConstructors.Set("VScrollBar", NewGDNativeClassFromVScrollBarOwner)
@@ -5567,4 +5593,6 @@ gdNativeConstructors.Set("XROrigin3D", NewGDNativeClassFromXROrigin3DOwner)
 gdNativeConstructors.Set("XRPose", NewGDNativeClassFromXRPoseOwner)
 gdNativeConstructors.Set("XRPositionalTracker", NewGDNativeClassFromXRPositionalTrackerOwner)
 gdNativeConstructors.Set("XRServer", NewGDNativeClassFromXRServerOwner)
+gdNativeConstructors.Set("ZIPPacker", NewGDNativeClassFromZIPPackerOwner)
+gdNativeConstructors.Set("ZIPReader", NewGDNativeClassFromZIPReaderOwner)
 }

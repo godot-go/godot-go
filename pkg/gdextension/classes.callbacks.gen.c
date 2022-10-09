@@ -3412,6 +3412,23 @@ GDNativeBool cgo_gdnative_class_binding_reference_callback_FontVariation(void *p
 
 
 
+void *cgo_gdnative_class_binding_create_callback_FramebufferCacheRD(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("FramebufferCacheRD", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_FramebufferCacheRD(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("FramebufferCacheRD", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_FramebufferCacheRD(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("FramebufferCacheRD", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdnative_class_binding_create_callback_GDScript(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingCreate("GDScript", p_token, p_instance);
@@ -10909,6 +10926,23 @@ GDNativeBool cgo_gdnative_class_binding_reference_callback_UndoRedo(void *p_toke
 
 
 
+void *cgo_gdnative_class_binding_create_callback_UniformSetCacheRD(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("UniformSetCacheRD", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_UniformSetCacheRD(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("UniformSetCacheRD", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_UniformSetCacheRD(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("UniformSetCacheRD", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdnative_class_binding_create_callback_VBoxContainer(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingCreate("VBoxContainer", p_token, p_instance);
@@ -13472,6 +13506,40 @@ void cgo_gdnative_class_binding_free_callback_XRServer(void *p_token, void *p_in
 GDNativeBool cgo_gdnative_class_binding_reference_callback_XRServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingReference("XRServer", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_ZIPPacker(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("ZIPPacker", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_ZIPPacker(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("ZIPPacker", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_ZIPPacker(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("ZIPPacker", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_ZIPReader(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("ZIPReader", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_ZIPReader(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("ZIPReader", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_ZIPReader(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("ZIPReader", p_token, p_instance, p_reference);
 }
 
 

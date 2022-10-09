@@ -10,7 +10,7 @@ CWD=$(shell pwd)
 
 OUTPUT_PATH=test/demo/lib
 CGO_ENABLED=1
-TEST_MAIN=test/src/example.go
+TEST_MAIN=test/main.go
 
 ifeq ($(GOOS),windows)
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-windows-$(GOARCH).dll
@@ -22,7 +22,7 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
-.PHONY: goenv generate update_godot_headers_from_source update_godot_headers_from_github build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
+.PHONY: goenv generate update_godot_headers_from_binary update_godot_headers_from_github build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
 
 goenv:
 	go env
@@ -34,15 +34,11 @@ generate: clean
 		$(CLANG_FORMAT) -i pkg/gdnative/gdnative_wrapper.gen.c; \
 	fi
 
-update_godot_headers_from_source: ## update godot_headers to align with the latest godot srouce code on master
-	cd godot_headers; \
-	DISPLAY=:0 \
-	$(GODOT) --dump-extension-api extension_api.json; \
-	if [ -z "${GODOT_SRC}" ]; then \
-		echo "plase set GODOT_SRC to copy gdnative_interface.h"
-		exit 1
-	fi \
-	cp ${GODOT_SRC}/core/extension/gdnative_interface.h godot_headers/godot/
+update_godot_headers_from_binary: ## update godot_headers from the godot binary
+	DISPLAY=:0 $(GODOT) --dump-extension-api; \
+	mv extension_api.json godot_headers/extension_api.json; \
+	DISPLAY=:0 $(GODOT) --dump-gdextension-interface; \
+	mv gdnative_interface.h godot_headers/godot/
 
 update_godot_headers_from_github: ## update godot_headers to align with the latest godot 4 beta1 stable binary
 	wget https://raw.githubusercontent.com/godotengine/godot-headers/${GODOT_HEADER_COMMIT_HASH}/godot/gdnative_interface.h -O godot_headers/godot/gdnative_interface.h
@@ -55,6 +51,14 @@ build: goenv
 	CGO_CFLAGS='-Og -ggdb -DX86=1 -fPIC' \
 	CGO_LDFLAGS='-Og -ggdb' \
 	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
+
+run_playground:
+	CGO_ENABLED=1 \
+	GOOS=$(GOOS) \
+	GOARCH=$(GOARCH) \
+	CGO_CFLAGS='-Og -ggdb -DX86=1 -fPIC' \
+	CGO_LDFLAGS='-Og -ggdb' \
+	go run -gcflags=all="-N -l" -trimpath main.go
 
 clean_src:
 	rm -f pkg/gdnative/*.gen.c
@@ -91,7 +95,7 @@ test:
 interactive_test:
 	LOG_LEVEL=debug \
 	GOTRACEBACK=1 \
-	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=0 \
+	GODEBUG=asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	$(GODOT) --verbose --debug --path test/demo/
 
 open_demo_in_editor:

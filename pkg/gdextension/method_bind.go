@@ -439,8 +439,11 @@ func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance 
 
 	log.Debug("argument converted",
 		zap.String("method_name", (string)(b.GoName)),
-		zapGDNativeVariantPtrp("vargs", (*GDNativeVariantPtr)(p_args), (int)(p_argument_count)),
-		zap.String("args", spew.Sdump(args)),
+		zap.Int("args_cap", cap(args)),
+		zap.Int("args_len", len(args)),
+		zap.Any("func", spew.Sdump(b.Func)),
+		// zapGDNativeVariantPtrp("vargs", (*GDNativeVariantPtr)(p_args), (int)(p_argument_count)),
+		// zap.String("args", spew.Sdump(args)),
 	)
 
 	reflectedRet := b.Func.Call(args)
@@ -461,7 +464,6 @@ func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance 
 
 		log.Debug("returned", zap.String("value", spew.Sdump(reflectedRet[0])))
 
-
 		switch len(reflectedRet) {
 		case 0:
 			if b.HasReturn {
@@ -480,6 +482,7 @@ func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance 
 			}
 
 			// 2nd value can only be of type error
+			// panic if an error is returned
 			if !reflectedRet[1].IsNil() {
 				err, ok := reflectedRet[1].Interface().(error)
 				if !ok {
@@ -504,7 +507,10 @@ func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance 
 			ret = NewVariantFromReflectValue(reflectedRet[0])
 			defer ret.Destroy()
 		default:
-			log.Panic("too many values returned", zap.Any("ret", reflectedRet))
+			log.Panic("too many values returned",
+				zap.Any("go_name", b.GoName),
+				zap.Any("gd_name", b.GDName),
+			)
 		}
 	}
 

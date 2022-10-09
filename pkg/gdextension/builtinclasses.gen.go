@@ -18457,6 +18457,7 @@ type arrayMethodBindings struct {
     method_erase GDNativePtrBuiltInMethod
     method_front GDNativePtrBuiltInMethod
     method_back GDNativePtrBuiltInMethod
+    method_pick_random GDNativePtrBuiltInMethod
     method_find GDNativePtrBuiltInMethod
     method_rfind GDNativePtrBuiltInMethod
     method_find_last GDNativePtrBuiltInMethod
@@ -18534,6 +18535,7 @@ func arrayInitBindings() {
     globalArrayMethodBindings.method_erase = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "erase", 3316032543)
     globalArrayMethodBindings.method_front = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "front", 1460142086)
     globalArrayMethodBindings.method_back = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "back", 1460142086)
+    globalArrayMethodBindings.method_pick_random = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "pick_random", 1460142086)
     globalArrayMethodBindings.method_find = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "find", 2336346817)
     globalArrayMethodBindings.method_rfind = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "rfind", 2336346817)
     globalArrayMethodBindings.method_find_last = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "find_last", 1481661226)
@@ -19116,6 +19118,25 @@ func (cx *Array) Front() Variant {
  */
 func (cx *Array) Back() Variant {
     mb := globalArrayMethodBindings.method_back
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[Variant](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
+
+/* PickRandom : pick_random
+ * is_vararg = false, is_static = false
+ * goReturnType(Variant) -> Variant
+ */
+func (cx *Array) PickRandom() Variant {
+    mb := globalArrayMethodBindings.method_pick_random
 
     bx := cx.ptr()
     

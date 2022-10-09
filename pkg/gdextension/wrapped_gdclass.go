@@ -4,11 +4,12 @@ package gdextension
 // #include "wrapped.h"
 import "C"
 import (
+	"fmt"
 	"reflect"
 	"unsafe"
 
-	. "github.com/godot-go/godot-go/pkg/gdnative"
 	"github.com/davecgh/go-spew/spew"
+	. "github.com/godot-go/godot-go/pkg/gdnative"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )
@@ -58,9 +59,14 @@ func WrappedPostInitialize(tn TypeName, w Wrapped) {
 	extensionClassName := (string)(tn)
 	owner := w.GetGodotObjectOwner()
 	inst := (GDExtensionClassInstancePtr)(unsafe.Pointer(&w))
-	if len(extensionClassName) > 0 {
-		GDNativeInterface_object_set_instance(internal.gdnInterface, (GDNativeObjectPtr)(owner), extensionClassName, inst)
+	if len(extensionClassName) == 0 {
+		log.Panic("extension class name cannot be empty",
+			zap.String("w", fmt.Sprintf("%p", w)),
+			zap.String("w.GetGodotObjectOwner()", fmt.Sprintf("%p", w.GetGodotObjectOwner())),
+		)
 	}
+
+	GDNativeInterface_object_set_instance(internal.gdnInterface, (GDNativeObjectPtr)(owner), extensionClassName, inst)
 
 	callbacks, ok := gdExtensionBindingGDNativeInstanceBindingCallbacks.Get(tn)
 
@@ -86,10 +92,16 @@ func CreateGDClassInstance(tn TypeName) GDClass {
 	ci, ok := gdRegisteredGDClasses.Get(tn)
 
 	if !ok {
-		log.Panic("type not found", zap.String("name", (string)(tn)), zap.String("dump", spew.Sdump(gdRegisteredGDClasses)))
+		log.Panic("type not found",
+			zap.String("name", (string)(tn)),
+			zap.String("dump", spew.Sdump(gdRegisteredGDClasses)),
+		)
 	}
 
-	log.Debug("GoCallback_GDNativeExtensionClassCreateInstance called", zap.String("class_name", (string)(tn)), zap.Any("parent_name", ci.ParentName))
+	log.Debug("GoCallback_GDNativeExtensionClassCreateInstance called",
+		zap.String("class_name", (string)(tn)),
+		zap.Any("parent_name", ci.ParentName),
+	)
 
 	// create inherited GDNativeClass first
 	owner := GDNativeInterface_classdb_construct_object(internal.gdnInterface, string(ci.ParentName))
@@ -117,10 +129,15 @@ func CreateGDClassInstance(tn TypeName) GDClass {
 
 	internal.gdClassInstances.Set(id, inst)
 
-	log.Debug("GDClass instance created",
+	log.Info("GDClass instance created",
 		zap.Any("object_id", id),
 		zap.String("class_name", (string)(tn)),
-		zap.Any("parent_name", ci.ParentName))
+		zap.Any("parent_name", ci.ParentName),
+		zap.String("inst", fmt.Sprintf("%p", inst)),
+		zap.String("owner", fmt.Sprintf("%p", owner)),
+		zap.String("object", fmt.Sprintf("%p", object)),
+		zap.String("inst.GetGodotObjectOwner", fmt.Sprintf("%p", inst.GetGodotObjectOwner())),
+	)
 
 	return inst
 }
@@ -129,10 +146,15 @@ func CreateGDClassInstance(tn TypeName) GDClass {
 func GoCallback_GDNativeExtensionClassFreeInstance(data unsafe.Pointer, ptr C.GDExtensionClassInstancePtr) {
 	tn := (TypeName)(C.GoString((*C.char)(data)))
 
-	log.Debug("GoCallback_GDNativeExtensionClassFreeInstance called", zap.String("type_name", (string)(tn)))
-
 	// ptr is assigned in function WrappedPostInitialize as a (*Wrapped)
 	w := *(*Wrapped)(unsafe.Pointer(ptr))
+
+	log.Info("GoCallback_GDNativeExtensionClassFreeInstance called",
+		zap.String("type_name", (string)(tn)),
+		zap.String("ptr", fmt.Sprintf("%p", ptr)),
+		zap.String("w", fmt.Sprintf("%p", w)),
+		zap.String("w.GetGodotObjectOwner()", fmt.Sprintf("%p", w.GetGodotObjectOwner())),
+	)
 
 	id := GDNativeInterface_object_get_instance_id(internal.gdnInterface, (GDNativeObjectPtr)(unsafe.Pointer(w.GetGodotObjectOwner())))
 
@@ -142,7 +164,7 @@ func GoCallback_GDNativeExtensionClassFreeInstance(data unsafe.Pointer, ptr C.GD
 
 	internal.gdClassInstances.Delete(id)
 
-	log.Debug("GDClass instance freed", zap.Any("id", id))
+	log.Info("GDClass instance freed", zap.Any("id", id))
 }
 
 //export GoCallback_GDClassBindingCreate

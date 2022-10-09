@@ -5926,10 +5926,10 @@ type CanvasItem interface {
 	GetTextureRepeat() CanvasItemTextureRepeat
 	
 
-	SetClipChildren(enable bool,) 
+	SetClipChildrenMode(mode CanvasItemClipChildrenMode,) 
 	
 
-	IsClippingChildren() bool
+	GetClipChildrenMode() CanvasItemClipChildrenMode
 }
 type CanvasItemMaterial interface {
 	
@@ -7825,7 +7825,7 @@ type Control interface {
 	ResetSize() 
 	
 
-	SetCustomMinimumSize(size Vector2i,) 
+	SetCustomMinimumSize(size Vector2,) 
 	
 
 	SetGlobalPosition(position Vector2,keep_offsets bool,) 
@@ -7861,7 +7861,7 @@ type Control interface {
 	GetPivotOffset() Vector2
 	
 
-	GetCustomMinimumSize() Vector2i
+	GetCustomMinimumSize() Vector2
 	
 
 	GetParentAreaSize() Vector2
@@ -9012,6 +9012,9 @@ type DisplayServer interface {
 	GlobalMenuSetItemIndentationLevel(menu_root String,idx int32,level int32,) 
 	
 
+	GlobalMenuGetItemCount(menu_root String,) int32
+	
+
 	GlobalMenuRemoveItem(menu_root String,idx int32,) 
 	
 
@@ -9135,12 +9138,6 @@ type DisplayServer interface {
 	GetWindowAtScreenPosition(position Vector2i,) int32
 	
 
-	CreateSubWindow(mode DisplayServerWindowMode,vsync_mode DisplayServerVSyncMode,flags int32,rect Rect2i,) int32
-	
-
-	DeleteSubWindow(window_id int32,) 
-	
-
 	WindowGetNativeHandle(handle_type DisplayServerHandleType,window_id int32,) int32
 	
 
@@ -9190,9 +9187,6 @@ type DisplayServer interface {
 	
 
 	WindowSetDropFilesCallback(callback Callable,window_id int32,) 
-	
-
-	WindowAttachInstanceId(instance_id int32,window_id int32,) 
 	
 
 	WindowGetAttachedInstanceId(window_id int32,) int32
@@ -9256,6 +9250,9 @@ type DisplayServer interface {
 	
 
 	WindowGetVsyncMode(window_id int32,) DisplayServerVSyncMode
+	
+
+	WindowIsMaximizeAllowed(window_id int32,) bool
 	
 
 	WindowMaximizeOnTitleDblClick() bool
@@ -9423,12 +9420,6 @@ type ENetMultiplayerPeer interface {
 	
 
 	SetBindIp(ip String,) 
-	
-
-	SetServerRelayEnabled(enabled bool,) 
-	
-
-	IsServerRelayEnabled() bool
 	
 
 	GetHost() ENetConnection
@@ -11094,6 +11085,13 @@ type FontVariation interface {
 
 	SetSpacing(spacing TextServerSpacingType,value int32,) 
 }
+type FramebufferCacheRD interface {
+	
+	Object
+	
+
+	
+}
 type GDScript interface {
 	
 	Script
@@ -11548,6 +11546,12 @@ type GLTFNode interface {
 	
 
 	SetLight(light int32,) 
+	
+
+	GetAdditionalData(extension_name StringName,) Variant
+	
+
+	SetAdditionalData(extension_name StringName,additional_data Variant,) 
 }
 type GLTFSkeleton interface {
 	
@@ -11867,6 +11871,12 @@ type GLTFState interface {
 	
 
 	GetSceneNode(idx int32,) Node
+	
+
+	GetAdditionalData(extension_name StringName,) Variant
+	
+
+	SetAdditionalData(extension_name StringName,additional_data Variant,) 
 }
 type GLTFTexture interface {
 	
@@ -13697,10 +13707,13 @@ type Image interface {
 	ClearMipmaps() 
 	
 
-	Create(width int32,height int32,use_mipmaps bool,format ImageFormat,) 
+	Create(width int32,height int32,use_mipmaps bool,format ImageFormat,) Image
 	
 
-	CreateFromData(width int32,height int32,use_mipmaps bool,format ImageFormat,data PackedByteArray,) 
+	CreateFromData(width int32,height int32,use_mipmaps bool,format ImageFormat,data PackedByteArray,) Image
+	
+
+	SetData(width int32,height int32,use_mipmaps bool,format ImageFormat,data PackedByteArray,) 
 	
 
 	IsEmpty() bool
@@ -14594,6 +14607,12 @@ type InputEventScreenTouch interface {
 	
 
 	SetPressed(pressed bool,) 
+	
+
+	SetDoubleTap(double_tap bool,) 
+	
+
+	IsDoubleTap() bool
 }
 type InputEventShortcut interface {
 	
@@ -16229,6 +16248,12 @@ type LineEdit interface {
 	
 
 	IsFlat() bool
+	
+
+	SetSelectAllOnFocus(enabled bool,) 
+	
+
+	IsSelectAllOnFocus() bool
 }
 type LinkButton interface {
 	
@@ -16322,6 +16347,12 @@ type Marker3D interface {
 	
 
 	
+	
+
+	SetGizmoExtents(extents float32,) 
+	
+
+	GetGizmoExtents() float32
 }
 type Marshalls interface {
 	
@@ -17277,6 +17308,12 @@ type MultiplayerPeer interface {
 	GetPacketPeer() int32
 	
 
+	GetPacketChannel() int32
+	
+
+	GetPacketMode() MultiplayerPeerTransferMode
+	
+
 	Poll() 
 	
 
@@ -17293,6 +17330,9 @@ type MultiplayerPeer interface {
 	
 
 	IsRefusingNewConnections() bool
+	
+
+	IsServerRelaySupported() bool
 }
 type MultiplayerPeerExtension interface {
 	
@@ -18957,7 +18997,7 @@ type Node interface {
 	IsInGroup(group StringName,) bool
 	
 
-	MoveChild(child_node Node,to_position int32,) 
+	MoveChild(child_node Node,to_index int32,) 
 	
 
 	GetGroups() []StringName
@@ -20194,6 +20234,15 @@ type OpenXRInterface interface {
 	
 
 	
+	
+
+	GetDisplayRefreshRate() float32
+	
+
+	SetDisplayRefreshRate(refresh_rate float32,) 
+	
+
+	GetAvailableDisplayRefreshRates() Array
 }
 type OptimizedTranslation interface {
 	
@@ -28655,6 +28704,10 @@ type ResourceFormatSaver interface {
 
 	
 	// VIRTUAL: Internal_GetRecognizedExtensions(resource Resource,) PackedStringArray
+	
+
+	
+	// VIRTUAL: Internal_RecognizePath(resource Resource,path String,) bool
 }
 type ResourceImporter interface {
 	
@@ -28988,12 +29041,6 @@ type RichTextLabel interface {
 	
 
 	IsHintUnderlined() bool
-	
-
-	SetOverrideSelectedFontColor(override bool,) 
-	
-
-	IsOverridingSelectedFontColor() bool
 	
 
 	SetScrollActive(active bool,) 
@@ -29603,6 +29650,12 @@ type SceneMultiplayer interface {
 	
 
 	IsObjectDecodingAllowed() bool
+	
+
+	SetServerRelayEnabled(enabled bool,) 
+	
+
+	IsServerRelayEnabled() bool
 	
 
 	SendBytes(bytes PackedByteArray,id int32,mode MultiplayerPeerTransferMode,channel int32,) Error
@@ -30530,6 +30583,9 @@ type Shape2D interface {
 	
 
 	Draw(canvas_item RID,color Color,) 
+	
+
+	GetRect() Rect2
 }
 type Shape3D interface {
 	
@@ -32496,6 +32552,12 @@ type SpinBox interface {
 	GetUpdateOnTextChanged() bool
 	
 
+	SetSelectAllOnFocus(enabled bool,) 
+	
+
+	IsSelectAllOnFocus() bool
+	
+
 	Apply() 
 	
 
@@ -34249,6 +34311,9 @@ type TextEdit interface {
 	GetCaretCount() int32
 	
 
+	AddCaretAtCarets(below bool,) 
+	
+
 	GetCaretIndexEditOrder() PackedInt32Array
 	
 
@@ -34297,12 +34362,6 @@ type TextEdit interface {
 	IsDragAndDropSelectionEnabled() bool
 	
 
-	SetOverrideSelectedFontColor(override bool,) 
-	
-
-	IsOverridingSelectedFontColor() bool
-	
-
 	SetSelectionMode(mode TextEditSelectionMode,line int32,column int32,caret_index int32,) 
 	
 
@@ -34313,6 +34372,9 @@ type TextEdit interface {
 	
 
 	SelectWordUnderCaret(caret_index int32,) 
+	
+
+	AddSelectionForNextOccurrence() 
 	
 
 	Select(from_line int32,from_column int32,to_line int32,to_column int32,caret_index int32,) 
@@ -36379,7 +36441,7 @@ type Texture2D interface {
 	
 
 	
-	// VIRTUAL: Internal_DrawRectRegion(tp_canvas_item RID,rect Rect2,src_rect Rect2,modulate Color,transpose bool,clip_uv bool,) 
+	// VIRTUAL: Internal_DrawRectRegion(to_canvas_item RID,rect Rect2,src_rect Rect2,modulate Color,transpose bool,clip_uv bool,) 
 	
 
 	GetWidth() int32
@@ -38917,6 +38979,13 @@ type UndoRedo interface {
 
 	Undo() bool
 }
+type UniformSetCacheRD interface {
+	
+	Object
+	
+
+	
+}
 type VBoxContainer interface {
 	
 	BoxContainer
@@ -39219,6 +39288,9 @@ type Viewport interface {
 	
 
 	GetFinalTransform() Transform2D
+	
+
+	GetScreenTransform() Transform2D
 	
 
 	GetVisibleRect() Rect2
@@ -39598,9 +39670,6 @@ type VisualInstance3D interface {
 	
 
 	GetLayerMaskValue(layer_number int32,) bool
-	
-
-	GetTransformedAabb() AABB
 	
 
 	GetAabb() AABB
@@ -41341,7 +41410,13 @@ type WebRTCMultiplayerPeer interface {
 	
 	
 
-	Initialize(peer_id int32,server_compatibility bool,channels_config Array,) Error
+	CreateServer(channels_config Array,) Error
+	
+
+	CreateClient(peer_id int32,channels_config Array,) Error
+	
+
+	CreateMesh(peer_id int32,channels_config Array,) Error
 	
 
 	AddPeer(peer WebRTCPeerConnection,peer_id int32,unreliable_lifetime int32,) Error
@@ -42398,6 +42473,12 @@ type XROrigin3D interface {
 	
 
 	GetWorldScale() float32
+	
+
+	SetCurrent(enabled bool,) 
+	
+
+	IsCurrent() bool
 }
 type XRPose interface {
 	
@@ -42557,4 +42638,45 @@ type XRServer interface {
 	
 
 	SetPrimaryInterface(interfaceName XRInterface,) 
+}
+type ZIPPacker interface {
+	
+	RefCounted
+	
+
+	
+	
+
+	Open(path String,append ZIPPackerZipAppend,) Error
+	
+
+	StartFile(path String,) Error
+	
+
+	WriteFile(data PackedByteArray,) Error
+	
+
+	CloseFile() Error
+	
+
+	Close() Error
+}
+type ZIPReader interface {
+	
+	RefCounted
+	
+
+	
+	
+
+	Open(path String,) Error
+	
+
+	Close() Error
+	
+
+	GetFiles() PackedStringArray
+	
+
+	ReadFile(path String,case_sensitive bool,) PackedByteArray
 }

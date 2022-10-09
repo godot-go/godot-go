@@ -455,7 +455,7 @@ func Fposmod(x float32,y float32,) float32 {
 }
 
 // Posmod is under the category "math".
-func Posmod(x int64,y int64,) int64 {
+func Posmod(x int32,y int32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "posmod", 3133453818)
 
@@ -463,7 +463,7 @@ func Posmod(x int64,y int64,) int64 {
 		panic("could not find utility function posmod (3133453818)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(2)
@@ -555,7 +555,7 @@ func Floorf(x float32,) float32 {
 }
 
 // Floori is under the category "math".
-func Floori(x float32,) int64 {
+func Floori(x float32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "floori", 2780425386)
 
@@ -563,7 +563,7 @@ func Floori(x float32,) int64 {
 		panic("could not find utility function floori (2780425386)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(1)
@@ -654,7 +654,7 @@ func Ceilf(x float32,) float32 {
 }
 
 // Ceili is under the category "math".
-func Ceili(x float32,) int64 {
+func Ceili(x float32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "ceili", 2780425386)
 
@@ -662,7 +662,7 @@ func Ceili(x float32,) int64 {
 		panic("could not find utility function ceili (2780425386)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(1)
@@ -753,7 +753,7 @@ func Roundf(x float32,) float32 {
 }
 
 // Roundi is under the category "math".
-func Roundi(x float32,) int64 {
+func Roundi(x float32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "roundi", 2780425386)
 
@@ -761,7 +761,7 @@ func Roundi(x float32,) int64 {
 		panic("could not find utility function roundi (2780425386)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(1)
@@ -852,7 +852,7 @@ func Absf(x float32,) float32 {
 }
 
 // Absi is under the category "math".
-func Absi(x int64,) int64 {
+func Absi(x int32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "absi", 2157319888)
 
@@ -860,7 +860,7 @@ func Absi(x int64,) int64 {
 		panic("could not find utility function absi (2157319888)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(1)
@@ -951,7 +951,7 @@ func Signf(x float32,) float32 {
 }
 
 // Signi is under the category "math".
-func Signi(x int64,) int64 {
+func Signi(x int32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "signi", 2157319888)
 
@@ -959,7 +959,7 @@ func Signi(x int64,) int64 {
 		panic("could not find utility function signi (2157319888)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(1)
@@ -1251,7 +1251,7 @@ func Ease(x float32,curve float32,) float32 {
 }
 
 // StepDecimals is under the category "math".
-func StepDecimals(x float32,) int64 {
+func StepDecimals(x float32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "step_decimals", 2780425386)
 
@@ -1259,7 +1259,7 @@ func StepDecimals(x float32,) int64 {
 		panic("could not find utility function step_decimals (2780425386)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(1)
@@ -1923,7 +1923,7 @@ func Wrap(value Variant,min Variant,max Variant,) Variant {
 }
 
 // Wrapi is under the category "math".
-func Wrapi(value int64,min int64,max int64,) int64 {
+func Wrapi(value int32,min int32,max int32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "wrapi", 650295447)
 
@@ -1931,7 +1931,7 @@ func Wrapi(value int64,min int64,max int64,) int64 {
 		panic("could not find utility function wrapi (650295447)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(3)
@@ -2027,7 +2027,7 @@ func Max(arg1 Variant,arg2 Variant,) Variant {
 }
 
 // Maxi is under the category "math".
-func Maxi(a int64,b int64,) int64 {
+func Maxi(a int32,b int32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "maxi", 3133453818)
 
@@ -2035,7 +2035,7 @@ func Maxi(a int64,b int64,) int64 {
 		panic("could not find utility function maxi (3133453818)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(2)
@@ -2129,7 +2129,7 @@ func Min(arg1 Variant,arg2 Variant,) Variant {
 }
 
 // Mini is under the category "math".
-func Mini(a int64,b int64,) int64 {
+func Mini(a int32,b int32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "mini", 3133453818)
 
@@ -2137,7 +2137,7 @@ func Mini(a int64,b int64,) int64 {
 		panic("could not find utility function mini (3133453818)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(2)
@@ -2232,7 +2232,7 @@ func Clamp(value Variant,min Variant,max Variant,) Variant {
 }
 
 // Clampi is under the category "math".
-func Clampi(value int64,min int64,max int64,) int64 {
+func Clampi(value int32,min int32,max int32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "clampi", 650295447)
 
@@ -2240,7 +2240,7 @@ func Clampi(value int64,min int64,max int64,) int64 {
 		panic("could not find utility function clampi (650295447)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(3)
@@ -2302,7 +2302,7 @@ func Clampf(value float32,min float32,max float32,) float32 {
 }
 
 // NearestPo2 is under the category "math".
-func NearestPo2(value int64,) int64 {
+func NearestPo2(value int32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "nearest_po2", 2157319888)
 
@@ -2310,7 +2310,7 @@ func NearestPo2(value int64,) int64 {
 		panic("could not find utility function nearest_po2 (2157319888)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(1)
@@ -2395,7 +2395,7 @@ func Randomize()  {
 }
 
 // Randi is under the category "random".
-func Randi() int64 {
+func Randi() int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "randi", 701202648)
 
@@ -2403,7 +2403,7 @@ func Randi() int64 {
 		panic("could not find utility function randi (701202648)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(0)
@@ -2451,7 +2451,7 @@ func Randf() float32 {
 }
 
 // RandiRange is under the category "random".
-func RandiRange(from int64,to int64,) int64 {
+func RandiRange(from int32,to int32,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "randi_range", 3133453818)
 
@@ -2459,7 +2459,7 @@ func RandiRange(from int64,to int64,) int64 {
 		panic("could not find utility function randi_range (3133453818)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(2)
@@ -2553,7 +2553,7 @@ func Randfn(mean float32,deviation float32,) float32 {
 }
 
 // Seed is under the category "random".
-func Seed(base int64,)  {
+func Seed(base int32,)  {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "seed", 382931173)
 
@@ -2584,7 +2584,7 @@ func Seed(base int64,)  {
 }
 
 // RandFromSeed is under the category "random".
-func RandFromSeed(seed int64,) PackedInt64Array {
+func RandFromSeed(seed int32,) PackedInt64Array {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "rand_from_seed", 1391063685)
 
@@ -2650,7 +2650,7 @@ func Weakref(obj Variant,) Variant {
 }
 
 // Typeof is under the category "general".
-func Typeof(variable Variant,) int64 {
+func Typeof(variable Variant,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "typeof", 326422594)
 
@@ -2658,7 +2658,7 @@ func Typeof(variable Variant,) int64 {
 		panic("could not find utility function typeof (326422594)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(1)
@@ -2716,7 +2716,7 @@ func Str(arg1 Variant,) String {
 }
 
 // ErrorString is under the category "general".
-func ErrorString(error int64,) String {
+func ErrorString(error int32,) String {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "error_string", 942708242)
 
@@ -3226,7 +3226,7 @@ func BytesToVarWithObjects(bytes PackedByteArray,) Variant {
 }
 
 // Hash is under the category "general".
-func Hash(variable Variant,) int64 {
+func Hash(variable Variant,) int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "hash", 326422594)
 
@@ -3234,7 +3234,7 @@ func Hash(variable Variant,) int64 {
 		panic("could not find utility function hash (326422594)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(1)
@@ -3259,7 +3259,7 @@ func Hash(variable Variant,) int64 {
 }
 
 // InstanceFromId is under the category "general".
-func InstanceFromId(instance_id int64,) Object {
+func InstanceFromId(instance_id int32,) Object {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "instance_from_id", 1156694636)
 
@@ -3292,7 +3292,7 @@ func InstanceFromId(instance_id int64,) Object {
 }
 
 // IsInstanceIdValid is under the category "general".
-func IsInstanceIdValid(id int64,) bool {
+func IsInstanceIdValid(id int32,) bool {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "is_instance_id_valid", 2232439758)
 
@@ -3358,7 +3358,7 @@ func IsInstanceValid(instance Variant,) bool {
 }
 
 // RidAllocateId is under the category "general".
-func RidAllocateId() int64 {
+func RidAllocateId() int32 {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "rid_allocate_id", 701202648)
 
@@ -3366,7 +3366,7 @@ func RidAllocateId() int64 {
 		panic("could not find utility function rid_allocate_id (701202648)")
 	}
 
-	var ret int64
+	var ret int32
 	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
 
 	sz := unsafe.Sizeof(nullptr) * uintptr(0)
@@ -3386,7 +3386,7 @@ func RidAllocateId() int64 {
 }
 
 // RidFromInt64 is under the category "general".
-func RidFromInt64(base int64,) RID {
+func RidFromInt64(base int32,) RID {
 	
 	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "rid_from_int64", 3426892196)
 

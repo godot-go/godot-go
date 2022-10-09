@@ -417,9 +417,9 @@ func (cx *String) Destroy() {
 
 /* CasecmpTo : casecmp_to
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) CasecmpTo(to String,) int64 {
+func (cx *String) CasecmpTo(to String,) int32 {
     mb := globalStringMethodBindings.method_casecmp_to
 
     bx := cx.ptr()
@@ -433,7 +433,7 @@ func (cx *String) CasecmpTo(to String,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -445,9 +445,9 @@ func (cx *String) CasecmpTo(to String,) int64 {
 
 /* NocasecmpTo : nocasecmp_to
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) NocasecmpTo(to String,) int64 {
+func (cx *String) NocasecmpTo(to String,) int32 {
     mb := globalStringMethodBindings.method_nocasecmp_to
 
     bx := cx.ptr()
@@ -461,7 +461,7 @@ func (cx *String) NocasecmpTo(to String,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -473,9 +473,9 @@ func (cx *String) NocasecmpTo(to String,) int64 {
 
 /* NaturalnocasecmpTo : naturalnocasecmp_to
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) NaturalnocasecmpTo(to String,) int64 {
+func (cx *String) NaturalnocasecmpTo(to String,) int32 {
     mb := globalStringMethodBindings.method_naturalnocasecmp_to
 
     bx := cx.ptr()
@@ -489,7 +489,7 @@ func (cx *String) NaturalnocasecmpTo(to String,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -501,15 +501,15 @@ func (cx *String) NaturalnocasecmpTo(to String,) int64 {
 
 /* Length : length
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) Length() int64 {
+func (cx *String) Length() int32 {
     mb := globalStringMethodBindings.method_length
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -522,7 +522,7 @@ func (cx *String) Length() int64 {
  * is_vararg = false, is_static = false
  * goReturnType(String) -> String
  */
-func (cx *String) Substr(from int64,len int64,) String {
+func (cx *String) Substr(from int32,len int32,) String {
     mb := globalStringMethodBindings.method_substr
 
     bx := cx.ptr()
@@ -531,11 +531,11 @@ func (cx *String) Substr(from int64,len int64,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&len))
     
     
@@ -554,7 +554,7 @@ func (cx *String) Substr(from int64,len int64,) String {
  * is_vararg = false, is_static = false
  * goReturnType(String) -> String
  */
-func (cx *String) GetSlice(delimiter String,slice int64,) String {
+func (cx *String) GetSlice(delimiter String,slice int32,) String {
     mb := globalStringMethodBindings.method_get_slice
 
     bx := cx.ptr()
@@ -567,7 +567,7 @@ func (cx *String) GetSlice(delimiter String,slice int64,) String {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&delimiter))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&slice))
     
     
@@ -586,7 +586,7 @@ func (cx *String) GetSlice(delimiter String,slice int64,) String {
  * is_vararg = false, is_static = false
  * goReturnType(String) -> String
  */
-func (cx *String) GetSlicec(delimiter int64,slice int64,) String {
+func (cx *String) GetSlicec(delimiter int32,slice int32,) String {
     mb := globalStringMethodBindings.method_get_slicec
 
     bx := cx.ptr()
@@ -595,11 +595,11 @@ func (cx *String) GetSlicec(delimiter int64,slice int64,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&delimiter))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&slice))
     
     
@@ -616,9 +616,9 @@ func (cx *String) GetSlicec(delimiter int64,slice int64,) String {
 
 /* GetSliceCount : get_slice_count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) GetSliceCount(delimiter String,) int64 {
+func (cx *String) GetSliceCount(delimiter String,) int32 {
     mb := globalStringMethodBindings.method_get_slice_count
 
     bx := cx.ptr()
@@ -632,7 +632,7 @@ func (cx *String) GetSliceCount(delimiter String,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -644,9 +644,9 @@ func (cx *String) GetSliceCount(delimiter String,) int64 {
 
 /* Find : find
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) Find(what String,from int64,) int64 {
+func (cx *String) Find(what String,from int32,) int32 {
     mb := globalStringMethodBindings.method_find
 
     bx := cx.ptr()
@@ -659,12 +659,12 @@ func (cx *String) Find(what String,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&what))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -676,9 +676,9 @@ func (cx *String) Find(what String,from int64,) int64 {
 
 /* Count : count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) Count(what String,from int64,to int64,) int64 {
+func (cx *String) Count(what String,from int32,to int32,) int32 {
     mb := globalStringMethodBindings.method_count
 
     bx := cx.ptr()
@@ -691,16 +691,16 @@ func (cx *String) Count(what String,from int64,to int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&what))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[2] = (GDNativeTypePtr)(unsafe.Pointer(&to))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -712,9 +712,9 @@ func (cx *String) Count(what String,from int64,to int64,) int64 {
 
 /* Countn : countn
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) Countn(what String,from int64,to int64,) int64 {
+func (cx *String) Countn(what String,from int32,to int32,) int32 {
     mb := globalStringMethodBindings.method_countn
 
     bx := cx.ptr()
@@ -727,16 +727,16 @@ func (cx *String) Countn(what String,from int64,to int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&what))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[2] = (GDNativeTypePtr)(unsafe.Pointer(&to))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -748,9 +748,9 @@ func (cx *String) Countn(what String,from int64,to int64,) int64 {
 
 /* Findn : findn
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) Findn(what String,from int64,) int64 {
+func (cx *String) Findn(what String,from int32,) int32 {
     mb := globalStringMethodBindings.method_findn
 
     bx := cx.ptr()
@@ -763,12 +763,12 @@ func (cx *String) Findn(what String,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&what))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -780,9 +780,9 @@ func (cx *String) Findn(what String,from int64,) int64 {
 
 /* Rfind : rfind
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) Rfind(what String,from int64,) int64 {
+func (cx *String) Rfind(what String,from int32,) int32 {
     mb := globalStringMethodBindings.method_rfind
 
     bx := cx.ptr()
@@ -795,12 +795,12 @@ func (cx *String) Rfind(what String,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&what))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -812,9 +812,9 @@ func (cx *String) Rfind(what String,from int64,) int64 {
 
 /* Rfindn : rfindn
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) Rfindn(what String,from int64,) int64 {
+func (cx *String) Rfindn(what String,from int32,) int32 {
     mb := globalStringMethodBindings.method_rfindn
 
     bx := cx.ptr()
@@ -827,12 +827,12 @@ func (cx *String) Rfindn(what String,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&what))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -1157,7 +1157,7 @@ func (cx *String) Replacen(what String,forwhat String,) String {
  * is_vararg = false, is_static = false
  * goReturnType(String) -> String
  */
-func (cx *String) Repeat(count int64,) String {
+func (cx *String) Repeat(count int32,) String {
     mb := globalStringMethodBindings.method_repeat
 
     bx := cx.ptr()
@@ -1166,7 +1166,7 @@ func (cx *String) Repeat(count int64,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&count))
     
     
@@ -1185,7 +1185,7 @@ func (cx *String) Repeat(count int64,) String {
  * is_vararg = false, is_static = false
  * goReturnType(String) -> String
  */
-func (cx *String) Insert(position int64,what String,) String {
+func (cx *String) Insert(position int32,what String,) String {
     mb := globalStringMethodBindings.method_insert
 
     bx := cx.ptr()
@@ -1194,7 +1194,7 @@ func (cx *String) Insert(position int64,what String,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&position))
     
     
@@ -1293,7 +1293,7 @@ func (cx *String) ToSnakeCase() String {
  * is_vararg = false, is_static = false
  * goReturnType(PackedStringArray) -> PackedStringArray
  */
-func (cx *String) Split(delimiter String,allow_empty bool,maxsplit int64,) PackedStringArray {
+func (cx *String) Split(delimiter String,allow_empty bool,maxsplit int32,) PackedStringArray {
     mb := globalStringMethodBindings.method_split
 
     bx := cx.ptr()
@@ -1310,7 +1310,7 @@ func (cx *String) Split(delimiter String,allow_empty bool,maxsplit int64,) Packe
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&allow_empty))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[2] = (GDNativeTypePtr)(unsafe.Pointer(&maxsplit))
     
     
@@ -1329,7 +1329,7 @@ func (cx *String) Split(delimiter String,allow_empty bool,maxsplit int64,) Packe
  * is_vararg = false, is_static = false
  * goReturnType(PackedStringArray) -> PackedStringArray
  */
-func (cx *String) Rsplit(delimiter String,allow_empty bool,maxsplit int64,) PackedStringArray {
+func (cx *String) Rsplit(delimiter String,allow_empty bool,maxsplit int32,) PackedStringArray {
     mb := globalStringMethodBindings.method_rsplit
 
     bx := cx.ptr()
@@ -1346,7 +1346,7 @@ func (cx *String) Rsplit(delimiter String,allow_empty bool,maxsplit int64,) Pack
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&allow_empty))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[2] = (GDNativeTypePtr)(unsafe.Pointer(&maxsplit))
     
     
@@ -1463,7 +1463,7 @@ func (cx *String) ToLower() String {
  * is_vararg = false, is_static = false
  * goReturnType(String) -> String
  */
-func (cx *String) Left(length int64,) String {
+func (cx *String) Left(length int32,) String {
     mb := globalStringMethodBindings.method_left
 
     bx := cx.ptr()
@@ -1472,7 +1472,7 @@ func (cx *String) Left(length int64,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&length))
     
     
@@ -1491,7 +1491,7 @@ func (cx *String) Left(length int64,) String {
  * is_vararg = false, is_static = false
  * goReturnType(String) -> String
  */
-func (cx *String) Right(length int64,) String {
+func (cx *String) Right(length int32,) String {
     mb := globalStringMethodBindings.method_right
 
     bx := cx.ptr()
@@ -1500,7 +1500,7 @@ func (cx *String) Right(length int64,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&length))
     
     
@@ -1690,9 +1690,9 @@ func (cx *String) PathJoin(file String,) String {
 
 /* UnicodeAt : unicode_at
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) UnicodeAt(at int64,) int64 {
+func (cx *String) UnicodeAt(at int32,) int32 {
     mb := globalStringMethodBindings.method_unicode_at
 
     bx := cx.ptr()
@@ -1701,12 +1701,12 @@ func (cx *String) UnicodeAt(at int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&at))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -1765,15 +1765,15 @@ func (cx *String) Dedent() String {
 
 /* Hash : hash
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) Hash() int64 {
+func (cx *String) Hash() int32 {
     mb := globalStringMethodBindings.method_hash
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -2343,15 +2343,15 @@ func (cx *String) IsValidFilename() bool {
 
 /* ToInt : to_int
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) ToInt() int64 {
+func (cx *String) ToInt() int32 {
     mb := globalStringMethodBindings.method_to_int
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -2381,15 +2381,15 @@ func (cx *String) ToFloat() float32 {
 
 /* HexToInt : hex_to_int
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) HexToInt() int64 {
+func (cx *String) HexToInt() int32 {
     mb := globalStringMethodBindings.method_hex_to_int
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -2400,15 +2400,15 @@ func (cx *String) HexToInt() int64 {
 
 /* BinToInt : bin_to_int
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *String) BinToInt() int64 {
+func (cx *String) BinToInt() int32 {
     mb := globalStringMethodBindings.method_bin_to_int
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -2421,7 +2421,7 @@ func (cx *String) BinToInt() int64 {
  * is_vararg = false, is_static = false
  * goReturnType(String) -> String
  */
-func (cx *String) Lpad(min_length int64,character String,) String {
+func (cx *String) Lpad(min_length int32,character String,) String {
     mb := globalStringMethodBindings.method_lpad
 
     bx := cx.ptr()
@@ -2430,7 +2430,7 @@ func (cx *String) Lpad(min_length int64,character String,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&min_length))
     
     
@@ -2453,7 +2453,7 @@ func (cx *String) Lpad(min_length int64,character String,) String {
  * is_vararg = false, is_static = false
  * goReturnType(String) -> String
  */
-func (cx *String) Rpad(min_length int64,character String,) String {
+func (cx *String) Rpad(min_length int32,character String,) String {
     mb := globalStringMethodBindings.method_rpad
 
     bx := cx.ptr()
@@ -2462,7 +2462,7 @@ func (cx *String) Rpad(min_length int64,character String,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&min_length))
     
     
@@ -2485,7 +2485,7 @@ func (cx *String) Rpad(min_length int64,character String,) String {
  * is_vararg = false, is_static = false
  * goReturnType(String) -> String
  */
-func (cx *String) PadDecimals(digits int64,) String {
+func (cx *String) PadDecimals(digits int32,) String {
     mb := globalStringMethodBindings.method_pad_decimals
 
     bx := cx.ptr()
@@ -2494,7 +2494,7 @@ func (cx *String) PadDecimals(digits int64,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&digits))
     
     
@@ -2513,7 +2513,7 @@ func (cx *String) PadDecimals(digits int64,) String {
  * is_vararg = false, is_static = false
  * goReturnType(String) -> String
  */
-func (cx *String) PadZeros(digits int64,) String {
+func (cx *String) PadZeros(digits int32,) String {
     mb := globalStringMethodBindings.method_pad_zeros
 
     bx := cx.ptr()
@@ -2522,7 +2522,7 @@ func (cx *String) PadZeros(digits int64,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&digits))
     
     
@@ -2701,7 +2701,7 @@ func (cx *String) NumScientific(number float32,) String {
  * is_vararg = false, is_static = true
  * goReturnType(String) -> String
  */
-func (cx *String) Num(number float32,decimals int64,) String {
+func (cx *String) Num(number float32,decimals int32,) String {
     mb := globalStringMethodBindings.method_num
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -2714,7 +2714,7 @@ func (cx *String) Num(number float32,decimals int64,) String {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&number))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&decimals))
     
     
@@ -2733,7 +2733,7 @@ func (cx *String) Num(number float32,decimals int64,) String {
  * is_vararg = false, is_static = true
  * goReturnType(String) -> String
  */
-func (cx *String) NumInt64(number int64,base int64,capitalize_hex bool,) String {
+func (cx *String) NumInt64(number int32,base int32,capitalize_hex bool,) String {
     mb := globalStringMethodBindings.method_num_int64
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -2742,11 +2742,11 @@ func (cx *String) NumInt64(number int64,base int64,capitalize_hex bool,) String 
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&number))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&base))
     
     
@@ -2769,7 +2769,7 @@ func (cx *String) NumInt64(number int64,base int64,capitalize_hex bool,) String 
  * is_vararg = false, is_static = true
  * goReturnType(String) -> String
  */
-func (cx *String) NumUint64(number int64,base int64,capitalize_hex bool,) String {
+func (cx *String) NumUint64(number int32,base int32,capitalize_hex bool,) String {
     mb := globalStringMethodBindings.method_num_uint64
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -2778,11 +2778,11 @@ func (cx *String) NumUint64(number int64,base int64,capitalize_hex bool,) String
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&number))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&base))
     
     
@@ -2805,7 +2805,7 @@ func (cx *String) NumUint64(number int64,base int64,capitalize_hex bool,) String
  * is_vararg = false, is_static = true
  * goReturnType(String) -> String
  */
-func (cx *String) Chr(char int64,) String {
+func (cx *String) Chr(char int32,) String {
     mb := globalStringMethodBindings.method_chr
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -2814,7 +2814,7 @@ func (cx *String) Chr(char int64,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&char))
     
     
@@ -2833,7 +2833,7 @@ func (cx *String) Chr(char int64,) String {
  * is_vararg = false, is_static = true
  * goReturnType(String) -> String
  */
-func (cx *String) HumanizeSize(size int64,) String {
+func (cx *String) HumanizeSize(size int32,) String {
     mb := globalStringMethodBindings.method_humanize_size
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -2842,7 +2842,7 @@ func (cx *String) HumanizeSize(size int64,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&size))
     
     
@@ -2885,13 +2885,13 @@ func (cx *String) Module_bool(right bool) String {
     return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_bool, lt, rt)
     }
 // Add_int operator
-func (cx *String) Add_int(right int64) String {
+func (cx *String) Add_int(right int32) String {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_add_int, lt, rt)
     }
 // Module_int operator
-func (cx *String) Module_int(right int64) String {
+func (cx *String) Module_int(right int32) String {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_int, lt, rt)
@@ -4010,15 +4010,15 @@ func (cx *Vector2) BezierInterpolate(control_1 Vector2,control_2 Vector2,end Vec
 
 /* MaxAxisIndex : max_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector2) MaxAxisIndex() int64 {
+func (cx *Vector2) MaxAxisIndex() int32 {
     mb := globalVector2MethodBindings.method_max_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -4029,15 +4029,15 @@ func (cx *Vector2) MaxAxisIndex() int64 {
 
 /* MinAxisIndex : min_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector2) MinAxisIndex() int64 {
+func (cx *Vector2) MinAxisIndex() int32 {
     mb := globalVector2MethodBindings.method_min_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -4505,13 +4505,13 @@ func (cx *Vector2) Positive() Vector2 {
     return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_positive, lt, rt)
     }
 // Multiply_int operator
-func (cx *Vector2) Multiply_int(right int64) Vector2 {
+func (cx *Vector2) Multiply_int(right int32) Vector2 {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_multiply_int, lt, rt)
     }
 // Divide_int operator
-func (cx *Vector2) Divide_int(right int64) Vector2 {
+func (cx *Vector2) Divide_int(right int32) Vector2 {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_divide_int, lt, rt)
@@ -4754,7 +4754,7 @@ func NewVector2iWithVector2(from Vector2,) Vector2i {
     return cx
 }
 // NewVector2i, index: 3
-func NewVector2iWithInt64Int64(x int64,y int64,) Vector2i {
+func NewVector2iWithInt32Int32(x int32,y int32,) Vector2i {
     cx := Vector2i{}
 
     ptr := cx.ptr()
@@ -4797,15 +4797,15 @@ func (cx *Vector2i) Aspect() float32 {
 
 /* MaxAxisIndex : max_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector2i) MaxAxisIndex() int64 {
+func (cx *Vector2i) MaxAxisIndex() int32 {
     mb := globalVector2iMethodBindings.method_max_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -4816,15 +4816,15 @@ func (cx *Vector2i) MaxAxisIndex() int64 {
 
 /* MinAxisIndex : min_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector2i) MinAxisIndex() int64 {
+func (cx *Vector2i) MinAxisIndex() int32 {
     mb := globalVector2iMethodBindings.method_min_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -4854,15 +4854,15 @@ func (cx *Vector2i) Length() float32 {
 
 /* LengthSquared : length_squared
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector2i) LengthSquared() int64 {
+func (cx *Vector2i) LengthSquared() int32 {
     mb := globalVector2iMethodBindings.method_length_squared
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -4943,14 +4943,14 @@ func (cx *Vector2i) Clamp(min Vector2i,max Vector2i,) Vector2i {
 
 // members
 
-func (cx *Vector2i) MemberGetx() int64 {
+func (cx *Vector2i) MemberGetx() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalVector2iMethodBindings.member_x_getter, bx)
+    return callBuiltinPtrGetter[int32](globalVector2iMethodBindings.member_x_getter, bx)
 }
 
-func (cx *Vector2i) MemberGety() int64 {
+func (cx *Vector2i) MemberGety() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalVector2iMethodBindings.member_y_getter, bx)
+    return callBuiltinPtrGetter[int32](globalVector2iMethodBindings.member_y_getter, bx)
 }
 
 
@@ -4979,19 +4979,19 @@ func (cx *Vector2i) Positive() Vector2i {
     return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_positive, lt, rt)
     }
 // Multiply_int operator
-func (cx *Vector2i) Multiply_int(right int64) Vector2i {
+func (cx *Vector2i) Multiply_int(right int32) Vector2i {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_multiply_int, lt, rt)
     }
 // Divide_int operator
-func (cx *Vector2i) Divide_int(right int64) Vector2i {
+func (cx *Vector2i) Divide_int(right int32) Vector2i {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_divide_int, lt, rt)
     }
 // Module_int operator
-func (cx *Vector2i) Module_int(right int64) Vector2i {
+func (cx *Vector2i) Module_int(right int32) Vector2i {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_module_int, lt, rt)
@@ -5543,7 +5543,7 @@ func (cx *Rect2) Grow(amount float32,) Rect2 {
  * is_vararg = false, is_static = false
  * goReturnType(Rect2) -> Rect2
  */
-func (cx *Rect2) GrowSide(side int64,amount float32,) Rect2 {
+func (cx *Rect2) GrowSide(side int32,amount float32,) Rect2 {
     mb := globalRect2MethodBindings.method_grow_side
 
     bx := cx.ptr()
@@ -5552,7 +5552,7 @@ func (cx *Rect2) GrowSide(side int64,amount float32,) Rect2 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&side))
     
     
@@ -5828,7 +5828,7 @@ func NewRect2iWithVector2iVector2i(position Vector2i,size Vector2i,) Rect2i {
     return cx
 }
 // NewRect2i, index: 4
-func NewRect2iWithInt64Int64Int64Int64(x int64,y int64,width int64,height int64,) Rect2i {
+func NewRect2iWithInt32Int32Int32Int32(x int32,y int32,width int32,height int32,) Rect2i {
     cx := Rect2i{}
 
     ptr := cx.ptr()
@@ -5875,15 +5875,15 @@ func (cx *Rect2i) GetCenter() Vector2i {
 
 /* GetArea : get_area
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Rect2i) GetArea() int64 {
+func (cx *Rect2i) GetArea() int32 {
     mb := globalRect2iMethodBindings.method_get_area
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -6083,7 +6083,7 @@ func (cx *Rect2i) Expand(to Vector2i,) Rect2i {
  * is_vararg = false, is_static = false
  * goReturnType(Rect2i) -> Rect2i
  */
-func (cx *Rect2i) Grow(amount int64,) Rect2i {
+func (cx *Rect2i) Grow(amount int32,) Rect2i {
     mb := globalRect2iMethodBindings.method_grow
 
     bx := cx.ptr()
@@ -6092,7 +6092,7 @@ func (cx *Rect2i) Grow(amount int64,) Rect2i {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&amount))
     
     
@@ -6111,7 +6111,7 @@ func (cx *Rect2i) Grow(amount int64,) Rect2i {
  * is_vararg = false, is_static = false
  * goReturnType(Rect2i) -> Rect2i
  */
-func (cx *Rect2i) GrowSide(side int64,amount int64,) Rect2i {
+func (cx *Rect2i) GrowSide(side int32,amount int32,) Rect2i {
     mb := globalRect2iMethodBindings.method_grow_side
 
     bx := cx.ptr()
@@ -6120,11 +6120,11 @@ func (cx *Rect2i) GrowSide(side int64,amount int64,) Rect2i {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&side))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&amount))
     
     
@@ -6143,7 +6143,7 @@ func (cx *Rect2i) GrowSide(side int64,amount int64,) Rect2i {
  * is_vararg = false, is_static = false
  * goReturnType(Rect2i) -> Rect2i
  */
-func (cx *Rect2i) GrowIndividual(left int64,top int64,right int64,bottom int64,) Rect2i {
+func (cx *Rect2i) GrowIndividual(left int32,top int32,right int32,bottom int32,) Rect2i {
     mb := globalRect2iMethodBindings.method_grow_individual
 
     bx := cx.ptr()
@@ -6152,19 +6152,19 @@ func (cx *Rect2i) GrowIndividual(left int64,top int64,right int64,bottom int64,)
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&left))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&top))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[2] = (GDNativeTypePtr)(unsafe.Pointer(&right))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[3] = (GDNativeTypePtr)(unsafe.Pointer(&bottom))
     
     
@@ -6492,15 +6492,15 @@ func NewVector3WithFloat32Float32Float32(x float32,y float32,z float32,) Vector3
 
 /* MinAxisIndex : min_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector3) MinAxisIndex() int64 {
+func (cx *Vector3) MinAxisIndex() int32 {
     mb := globalVector3MethodBindings.method_min_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -6511,15 +6511,15 @@ func (cx *Vector3) MinAxisIndex() int64 {
 
 /* MaxAxisIndex : max_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector3) MaxAxisIndex() int64 {
+func (cx *Vector3) MaxAxisIndex() int32 {
     mb := globalVector3MethodBindings.method_max_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -7599,13 +7599,13 @@ func (cx *Vector3) Positive() Vector3 {
     return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_positive, lt, rt)
     }
 // Multiply_int operator
-func (cx *Vector3) Multiply_int(right int64) Vector3 {
+func (cx *Vector3) Multiply_int(right int32) Vector3 {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_int, lt, rt)
     }
 // Divide_int operator
-func (cx *Vector3) Divide_int(right int64) Vector3 {
+func (cx *Vector3) Divide_int(right int32) Vector3 {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_divide_int, lt, rt)
@@ -7862,7 +7862,7 @@ func NewVector3iWithVector3(from Vector3,) Vector3i {
     return cx
 }
 // NewVector3i, index: 3
-func NewVector3iWithInt64Int64Int64(x int64,y int64,z int64,) Vector3i {
+func NewVector3iWithInt32Int32Int32(x int32,y int32,z int32,) Vector3i {
     cx := Vector3i{}
 
     ptr := cx.ptr()
@@ -7888,15 +7888,15 @@ func NewVector3iWithInt64Int64Int64(x int64,y int64,z int64,) Vector3i {
 
 /* MinAxisIndex : min_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector3i) MinAxisIndex() int64 {
+func (cx *Vector3i) MinAxisIndex() int32 {
     mb := globalVector3iMethodBindings.method_min_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -7907,15 +7907,15 @@ func (cx *Vector3i) MinAxisIndex() int64 {
 
 /* MaxAxisIndex : max_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector3i) MaxAxisIndex() int64 {
+func (cx *Vector3i) MaxAxisIndex() int32 {
     mb := globalVector3iMethodBindings.method_max_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -7945,15 +7945,15 @@ func (cx *Vector3i) Length() float32 {
 
 /* LengthSquared : length_squared
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector3i) LengthSquared() int64 {
+func (cx *Vector3i) LengthSquared() int32 {
     mb := globalVector3iMethodBindings.method_length_squared
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -8034,19 +8034,19 @@ func (cx *Vector3i) Clamp(min Vector3i,max Vector3i,) Vector3i {
 
 // members
 
-func (cx *Vector3i) MemberGetx() int64 {
+func (cx *Vector3i) MemberGetx() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalVector3iMethodBindings.member_x_getter, bx)
+    return callBuiltinPtrGetter[int32](globalVector3iMethodBindings.member_x_getter, bx)
 }
 
-func (cx *Vector3i) MemberGety() int64 {
+func (cx *Vector3i) MemberGety() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalVector3iMethodBindings.member_y_getter, bx)
+    return callBuiltinPtrGetter[int32](globalVector3iMethodBindings.member_y_getter, bx)
 }
 
-func (cx *Vector3i) MemberGetz() int64 {
+func (cx *Vector3i) MemberGetz() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalVector3iMethodBindings.member_z_getter, bx)
+    return callBuiltinPtrGetter[int32](globalVector3iMethodBindings.member_z_getter, bx)
 }
 
 
@@ -8075,19 +8075,19 @@ func (cx *Vector3i) Positive() Vector3i {
     return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_positive, lt, rt)
     }
 // Multiply_int operator
-func (cx *Vector3i) Multiply_int(right int64) Vector3i {
+func (cx *Vector3i) Multiply_int(right int32) Vector3i {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_multiply_int, lt, rt)
     }
 // Divide_int operator
-func (cx *Vector3i) Divide_int(right int64) Vector3i {
+func (cx *Vector3i) Divide_int(right int32) Vector3i {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_divide_int, lt, rt)
     }
 // Module_int operator
-func (cx *Vector3i) Module_int(right int64) Vector3i {
+func (cx *Vector3i) Module_int(right int32) Vector3i {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_module_int, lt, rt)
@@ -8946,7 +8946,7 @@ func (cx *Transform2D) Not_equal_Nil(right Variant) bool {
     return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_not_equal_Nil, lt, rt)
     }
 // Multiply_int operator
-func (cx *Transform2D) Multiply_int(right int64) Transform2D {
+func (cx *Transform2D) Multiply_int(right int32) Transform2D {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Transform2D](globalTransform2DMethodBindings.operator_multiply_int, lt, rt)
@@ -9215,15 +9215,15 @@ func NewVector4WithFloat32Float32Float32Float32(x float32,y float32,z float32,w 
 
 /* MinAxisIndex : min_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector4) MinAxisIndex() int64 {
+func (cx *Vector4) MinAxisIndex() int32 {
     mb := globalVector4MethodBindings.method_min_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -9234,15 +9234,15 @@ func (cx *Vector4) MinAxisIndex() int64 {
 
 /* MaxAxisIndex : max_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector4) MaxAxisIndex() int64 {
+func (cx *Vector4) MaxAxisIndex() int32 {
     mb := globalVector4MethodBindings.method_max_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -9888,13 +9888,13 @@ func (cx *Vector4) Positive() Vector4 {
     return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_positive, lt, rt)
     }
 // Multiply_int operator
-func (cx *Vector4) Multiply_int(right int64) Vector4 {
+func (cx *Vector4) Multiply_int(right int32) Vector4 {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_multiply_int, lt, rt)
     }
 // Divide_int operator
-func (cx *Vector4) Divide_int(right int64) Vector4 {
+func (cx *Vector4) Divide_int(right int32) Vector4 {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_divide_int, lt, rt)
@@ -10137,7 +10137,7 @@ func NewVector4iWithVector4(from Vector4,) Vector4i {
     return cx
 }
 // NewVector4i, index: 3
-func NewVector4iWithInt64Int64Int64Int64(x int64,y int64,z int64,w int64,) Vector4i {
+func NewVector4iWithInt32Int32Int32Int32(x int32,y int32,z int32,w int32,) Vector4i {
     cx := Vector4i{}
 
     ptr := cx.ptr()
@@ -10165,15 +10165,15 @@ func NewVector4iWithInt64Int64Int64Int64(x int64,y int64,z int64,w int64,) Vecto
 
 /* MinAxisIndex : min_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector4i) MinAxisIndex() int64 {
+func (cx *Vector4i) MinAxisIndex() int32 {
     mb := globalVector4iMethodBindings.method_min_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -10184,15 +10184,15 @@ func (cx *Vector4i) MinAxisIndex() int64 {
 
 /* MaxAxisIndex : max_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector4i) MaxAxisIndex() int64 {
+func (cx *Vector4i) MaxAxisIndex() int32 {
     mb := globalVector4iMethodBindings.method_max_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -10222,15 +10222,15 @@ func (cx *Vector4i) Length() float32 {
 
 /* LengthSquared : length_squared
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Vector4i) LengthSquared() int64 {
+func (cx *Vector4i) LengthSquared() int32 {
     mb := globalVector4iMethodBindings.method_length_squared
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -10311,24 +10311,24 @@ func (cx *Vector4i) Clamp(min Vector4i,max Vector4i,) Vector4i {
 
 // members
 
-func (cx *Vector4i) MemberGetx() int64 {
+func (cx *Vector4i) MemberGetx() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_x_getter, bx)
+    return callBuiltinPtrGetter[int32](globalVector4iMethodBindings.member_x_getter, bx)
 }
 
-func (cx *Vector4i) MemberGety() int64 {
+func (cx *Vector4i) MemberGety() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_y_getter, bx)
+    return callBuiltinPtrGetter[int32](globalVector4iMethodBindings.member_y_getter, bx)
 }
 
-func (cx *Vector4i) MemberGetz() int64 {
+func (cx *Vector4i) MemberGetz() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_z_getter, bx)
+    return callBuiltinPtrGetter[int32](globalVector4iMethodBindings.member_z_getter, bx)
 }
 
-func (cx *Vector4i) MemberGetw() int64 {
+func (cx *Vector4i) MemberGetw() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_w_getter, bx)
+    return callBuiltinPtrGetter[int32](globalVector4iMethodBindings.member_w_getter, bx)
 }
 
 
@@ -10357,19 +10357,19 @@ func (cx *Vector4i) Positive() Vector4i {
     return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_positive, lt, rt)
     }
 // Multiply_int operator
-func (cx *Vector4i) Multiply_int(right int64) Vector4i {
+func (cx *Vector4i) Multiply_int(right int32) Vector4i {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_multiply_int, lt, rt)
     }
 // Divide_int operator
-func (cx *Vector4i) Divide_int(right int64) Vector4i {
+func (cx *Vector4i) Divide_int(right int32) Vector4i {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_divide_int, lt, rt)
     }
 // Module_int operator
-func (cx *Vector4i) Module_int(right int64) Vector4i {
+func (cx *Vector4i) Module_int(right int32) Vector4i {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_module_int, lt, rt)
@@ -11746,13 +11746,13 @@ func (cx *Quaternion) Positive() Quaternion {
     return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_positive, lt, rt)
     }
 // Multiply_int operator
-func (cx *Quaternion) Multiply_int(right int64) Quaternion {
+func (cx *Quaternion) Multiply_int(right int32) Quaternion {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_multiply_int, lt, rt)
     }
 // Divide_int operator
-func (cx *Quaternion) Divide_int(right int64) Quaternion {
+func (cx *Quaternion) Divide_int(right int32) Quaternion {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_divide_int, lt, rt)
@@ -12370,15 +12370,15 @@ func (cx *AABB) GetLongestAxis() Vector3 {
 
 /* GetLongestAxisIndex : get_longest_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *AABB) GetLongestAxisIndex() int64 {
+func (cx *AABB) GetLongestAxisIndex() int32 {
     mb := globalAABBMethodBindings.method_get_longest_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -12427,15 +12427,15 @@ func (cx *AABB) GetShortestAxis() Vector3 {
 
 /* GetShortestAxisIndex : get_shortest_axis_index
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *AABB) GetShortestAxisIndex() int64 {
+func (cx *AABB) GetShortestAxisIndex() int32 {
     mb := globalAABBMethodBindings.method_get_shortest_axis_index
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -12467,7 +12467,7 @@ func (cx *AABB) GetShortestAxisSize() float32 {
  * is_vararg = false, is_static = false
  * goReturnType(Vector3) -> Vector3
  */
-func (cx *AABB) GetEndpoint(idx int64,) Vector3 {
+func (cx *AABB) GetEndpoint(idx int32,) Vector3 {
     mb := globalAABBMethodBindings.method_get_endpoint
 
     bx := cx.ptr()
@@ -12476,7 +12476,7 @@ func (cx *AABB) GetEndpoint(idx int64,) Vector3 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&idx))
     
     
@@ -12963,7 +12963,7 @@ func (cx *Basis) GetScale() Vector3 {
  * is_vararg = false, is_static = false
  * goReturnType(Vector3) -> Vector3
  */
-func (cx *Basis) GetEuler(order int64,) Vector3 {
+func (cx *Basis) GetEuler(order int32,) Vector3 {
     mb := globalBasisMethodBindings.method_get_euler
 
     bx := cx.ptr()
@@ -12972,7 +12972,7 @@ func (cx *Basis) GetEuler(order int64,) Vector3 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&order))
     
     
@@ -13214,7 +13214,7 @@ func (cx *Basis) FromScale(scale Vector3,) Basis {
  * is_vararg = false, is_static = true
  * goReturnType(Basis) -> Basis
  */
-func (cx *Basis) FromEuler(euler Vector3,order int64,) Basis {
+func (cx *Basis) FromEuler(euler Vector3,order int32,) Basis {
     mb := globalBasisMethodBindings.method_from_euler
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -13227,7 +13227,7 @@ func (cx *Basis) FromEuler(euler Vector3,order int64,) Basis {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&euler))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&order))
     
     
@@ -13273,7 +13273,7 @@ func (cx *Basis) Not_equal_Nil(right Variant) bool {
     return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_not_equal_Nil, lt, rt)
     }
 // Multiply_int operator
-func (cx *Basis) Multiply_int(right int64) Basis {
+func (cx *Basis) Multiply_int(right int32) Basis {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Basis](globalBasisMethodBindings.operator_multiply_int, lt, rt)
@@ -13850,7 +13850,7 @@ func (cx *Transform3D) Not_equal_Nil(right Variant) bool {
     return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_not_equal_Nil, lt, rt)
     }
 // Multiply_int operator
-func (cx *Transform3D) Multiply_int(right int64) Transform3D {
+func (cx *Transform3D) Multiply_int(right int32) Transform3D {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Transform3D](globalTransform3DMethodBindings.operator_multiply_int, lt, rt)
@@ -14199,7 +14199,7 @@ func (cx *Projection) CreatePerspective(fovy float32,aspect float32,z_near float
  * is_vararg = false, is_static = true
  * goReturnType(Projection) -> Projection
  */
-func (cx *Projection) CreatePerspectiveHmd(fovy float32,aspect float32,z_near float32,z_far float32,flip_fov bool,eye int64,intraocular_dist float32, convergence_dist float32,) Projection {
+func (cx *Projection) CreatePerspectiveHmd(fovy float32,aspect float32,z_near float32,z_far float32,flip_fov bool,eye int32,intraocular_dist float32, convergence_dist float32,) Projection {
     mb := globalProjectionMethodBindings.method_create_perspective_hmd
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -14228,7 +14228,7 @@ func (cx *Projection) CreatePerspectiveHmd(fovy float32,aspect float32,z_near fl
     args[4] = (GDNativeTypePtr)(unsafe.Pointer(&flip_fov))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[5] = (GDNativeTypePtr)(unsafe.Pointer(&eye))
     
     
@@ -14255,7 +14255,7 @@ func (cx *Projection) CreatePerspectiveHmd(fovy float32,aspect float32,z_near fl
  * is_vararg = false, is_static = true
  * goReturnType(Projection) -> Projection
  */
-func (cx *Projection) CreateForHmd(eye int64,aspect float32,intraocular_dist float32,display_width float32,display_to_lens float32,oversample float32,z_near float32,z_far float32,) Projection {
+func (cx *Projection) CreateForHmd(eye int32,aspect float32,intraocular_dist float32,display_width float32,display_to_lens float32,oversample float32,z_near float32,z_far float32,) Projection {
     mb := globalProjectionMethodBindings.method_create_for_hmd
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -14264,7 +14264,7 @@ func (cx *Projection) CreateForHmd(eye int64,aspect float32,intraocular_dist flo
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&eye))
     
     
@@ -14574,7 +14574,7 @@ func (cx *Projection) PerspectiveZnearAdjusted(new_znear float32,) Projection {
  * is_vararg = false, is_static = false
  * goReturnType(Plane) -> Plane
  */
-func (cx *Projection) GetProjectionPlane(plane int64,) Plane {
+func (cx *Projection) GetProjectionPlane(plane int32,) Plane {
     mb := globalProjectionMethodBindings.method_get_projection_plane
 
     bx := cx.ptr()
@@ -14583,7 +14583,7 @@ func (cx *Projection) GetProjectionPlane(plane int64,) Plane {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&plane))
     
     
@@ -14831,9 +14831,9 @@ func (cx *Projection) Inverse() Projection {
 
 /* GetPixelsPerMeter : get_pixels_per_meter
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Projection) GetPixelsPerMeter(for_pixel_width int64,) int64 {
+func (cx *Projection) GetPixelsPerMeter(for_pixel_width int32,) int32 {
     mb := globalProjectionMethodBindings.method_get_pixels_per_meter
 
     bx := cx.ptr()
@@ -14842,12 +14842,12 @@ func (cx *Projection) GetPixelsPerMeter(for_pixel_width int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&for_pixel_width))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -15229,15 +15229,15 @@ func NewColorWithStringFloat32(code String,alpha float32,) Color {
 
 /* ToArgb32 : to_argb32
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Color) ToArgb32() int64 {
+func (cx *Color) ToArgb32() int32 {
     mb := globalColorMethodBindings.method_to_argb32
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -15248,15 +15248,15 @@ func (cx *Color) ToArgb32() int64 {
 
 /* ToAbgr32 : to_abgr32
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Color) ToAbgr32() int64 {
+func (cx *Color) ToAbgr32() int32 {
     mb := globalColorMethodBindings.method_to_abgr32
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -15267,15 +15267,15 @@ func (cx *Color) ToAbgr32() int64 {
 
 /* ToRgba32 : to_rgba32
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Color) ToRgba32() int64 {
+func (cx *Color) ToRgba32() int32 {
     mb := globalColorMethodBindings.method_to_rgba32
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -15286,15 +15286,15 @@ func (cx *Color) ToRgba32() int64 {
 
 /* ToArgb64 : to_argb64
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Color) ToArgb64() int64 {
+func (cx *Color) ToArgb64() int32 {
     mb := globalColorMethodBindings.method_to_argb64
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -15305,15 +15305,15 @@ func (cx *Color) ToArgb64() int64 {
 
 /* ToAbgr64 : to_abgr64
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Color) ToAbgr64() int64 {
+func (cx *Color) ToAbgr64() int32 {
     mb := globalColorMethodBindings.method_to_abgr64
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -15324,15 +15324,15 @@ func (cx *Color) ToAbgr64() int64 {
 
 /* ToRgba64 : to_rgba64
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Color) ToRgba64() int64 {
+func (cx *Color) ToRgba64() int32 {
     mb := globalColorMethodBindings.method_to_rgba64
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -15625,7 +15625,7 @@ func (cx *Color) IsEqualApprox(to Color,) bool {
  * is_vararg = false, is_static = true
  * goReturnType(Color) -> Color
  */
-func (cx *Color) Hex(hex int64,) Color {
+func (cx *Color) Hex(hex int32,) Color {
     mb := globalColorMethodBindings.method_hex
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -15634,7 +15634,7 @@ func (cx *Color) Hex(hex int64,) Color {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&hex))
     
     
@@ -15653,7 +15653,7 @@ func (cx *Color) Hex(hex int64,) Color {
  * is_vararg = false, is_static = true
  * goReturnType(Color) -> Color
  */
-func (cx *Color) Hex64(hex int64,) Color {
+func (cx *Color) Hex64(hex int32,) Color {
     mb := globalColorMethodBindings.method_hex64
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -15662,7 +15662,7 @@ func (cx *Color) Hex64(hex int64,) Color {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&hex))
     
     
@@ -15735,9 +15735,9 @@ func (cx *Color) HtmlIsValid(color String,) bool {
 
 /* FindNamedColor : find_named_color
  * is_vararg = false, is_static = true
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Color) FindNamedColor(name String,) int64 {
+func (cx *Color) FindNamedColor(name String,) int32 {
     mb := globalColorMethodBindings.method_find_named_color
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -15751,7 +15751,7 @@ func (cx *Color) FindNamedColor(name String,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -15763,15 +15763,15 @@ func (cx *Color) FindNamedColor(name String,) int64 {
 
 /* GetNamedColorCount : get_named_color_count
  * is_vararg = false, is_static = true
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Color) GetNamedColorCount() int64 {
+func (cx *Color) GetNamedColorCount() int32 {
     mb := globalColorMethodBindings.method_get_named_color_count
 
     bx := (GDNativeTypePtr)(nullptr)
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -15784,7 +15784,7 @@ func (cx *Color) GetNamedColorCount() int64 {
  * is_vararg = false, is_static = true
  * goReturnType(String) -> String
  */
-func (cx *Color) GetNamedColorName(idx int64,) String {
+func (cx *Color) GetNamedColorName(idx int32,) String {
     mb := globalColorMethodBindings.method_get_named_color_name
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -15793,7 +15793,7 @@ func (cx *Color) GetNamedColorName(idx int64,) String {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&idx))
     
     
@@ -15812,7 +15812,7 @@ func (cx *Color) GetNamedColorName(idx int64,) String {
  * is_vararg = false, is_static = true
  * goReturnType(Color) -> Color
  */
-func (cx *Color) GetNamedColor(idx int64,) Color {
+func (cx *Color) GetNamedColor(idx int32,) Color {
     mb := globalColorMethodBindings.method_get_named_color
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -15821,7 +15821,7 @@ func (cx *Color) GetNamedColor(idx int64,) Color {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&idx))
     
     
@@ -15952,7 +15952,7 @@ func (cx *Color) FromOkHsl(h float32,s float32,l float32,alpha float32,) Color {
  * is_vararg = false, is_static = true
  * goReturnType(Color) -> Color
  */
-func (cx *Color) FromRgbe9995(rgbe int64,) Color {
+func (cx *Color) FromRgbe9995(rgbe int32,) Color {
     mb := globalColorMethodBindings.method_from_rgbe9995
 
     bx := (GDNativeTypePtr)(nullptr)
@@ -15961,7 +15961,7 @@ func (cx *Color) FromRgbe9995(rgbe int64,) Color {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&rgbe))
     
     
@@ -15998,24 +15998,24 @@ func (cx *Color) MemberGeta() float32 {
     return callBuiltinPtrGetter[float32](globalColorMethodBindings.member_a_getter, bx)
 }
 
-func (cx *Color) MemberGetr8() int64 {
+func (cx *Color) MemberGetr8() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalColorMethodBindings.member_r8_getter, bx)
+    return callBuiltinPtrGetter[int32](globalColorMethodBindings.member_r8_getter, bx)
 }
 
-func (cx *Color) MemberGetg8() int64 {
+func (cx *Color) MemberGetg8() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalColorMethodBindings.member_g8_getter, bx)
+    return callBuiltinPtrGetter[int32](globalColorMethodBindings.member_g8_getter, bx)
 }
 
-func (cx *Color) MemberGetb8() int64 {
+func (cx *Color) MemberGetb8() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalColorMethodBindings.member_b8_getter, bx)
+    return callBuiltinPtrGetter[int32](globalColorMethodBindings.member_b8_getter, bx)
 }
 
-func (cx *Color) MemberGeta8() int64 {
+func (cx *Color) MemberGeta8() int32 {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[int64](globalColorMethodBindings.member_a8_getter, bx)
+    return callBuiltinPtrGetter[int32](globalColorMethodBindings.member_a8_getter, bx)
 }
 
 func (cx *Color) MemberGeth() float32 {
@@ -16059,13 +16059,13 @@ func (cx *Color) Positive() Color {
     return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_positive, lt, rt)
     }
 // Multiply_int operator
-func (cx *Color) Multiply_int(right int64) Color {
+func (cx *Color) Multiply_int(right int32) Color {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_multiply_int, lt, rt)
     }
 // Divide_int operator
-func (cx *Color) Divide_int(right int64) Color {
+func (cx *Color) Divide_int(right int32) Color {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
     return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_divide_int, lt, rt)
@@ -16251,15 +16251,15 @@ func (cx *StringName) Destroy() {
 
 /* Hash : hash
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *StringName) Hash() int64 {
+func (cx *StringName) Hash() int32 {
     mb := globalStringNameMethodBindings.method_hash
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -16495,15 +16495,15 @@ func (cx *NodePath) IsAbsolute() bool {
 
 /* GetNameCount : get_name_count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *NodePath) GetNameCount() int64 {
+func (cx *NodePath) GetNameCount() int32 {
     mb := globalNodePathMethodBindings.method_get_name_count
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -16516,7 +16516,7 @@ func (cx *NodePath) GetNameCount() int64 {
  * is_vararg = false, is_static = false
  * goReturnType(StringName) -> StringName
  */
-func (cx *NodePath) GetName(idx int64,) StringName {
+func (cx *NodePath) GetName(idx int32,) StringName {
     mb := globalNodePathMethodBindings.method_get_name
 
     bx := cx.ptr()
@@ -16525,7 +16525,7 @@ func (cx *NodePath) GetName(idx int64,) StringName {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&idx))
     
     
@@ -16542,15 +16542,15 @@ func (cx *NodePath) GetName(idx int64,) StringName {
 
 /* GetSubnameCount : get_subname_count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *NodePath) GetSubnameCount() int64 {
+func (cx *NodePath) GetSubnameCount() int32 {
     mb := globalNodePathMethodBindings.method_get_subname_count
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -16561,15 +16561,15 @@ func (cx *NodePath) GetSubnameCount() int64 {
 
 /* Hash : hash
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *NodePath) Hash() int64 {
+func (cx *NodePath) Hash() int32 {
     mb := globalNodePathMethodBindings.method_hash
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -16582,7 +16582,7 @@ func (cx *NodePath) Hash() int64 {
  * is_vararg = false, is_static = false
  * goReturnType(StringName) -> StringName
  */
-func (cx *NodePath) GetSubname(idx int64,) StringName {
+func (cx *NodePath) GetSubname(idx int32,) StringName {
     mb := globalNodePathMethodBindings.method_get_subname
 
     bx := cx.ptr()
@@ -16591,7 +16591,7 @@ func (cx *NodePath) GetSubname(idx int64,) StringName {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&idx))
     
     
@@ -16827,15 +16827,15 @@ func (cx *RID) IsValid() bool {
 
 /* GetId : get_id
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *RID) GetId() int64 {
+func (cx *RID) GetId() int32 {
     mb := globalRIDMethodBindings.method_get_id
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -17145,15 +17145,15 @@ func (cx *Callable) GetObject() Object {
 
 /* GetObjectId : get_object_id
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Callable) GetObjectId() int64 {
+func (cx *Callable) GetObjectId() int32 {
     mb := globalCallableMethodBindings.method_get_object_id
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -17183,15 +17183,15 @@ func (cx *Callable) GetMethod() StringName {
 
 /* Hash : hash
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Callable) Hash() int64 {
+func (cx *Callable) Hash() int32 {
     mb := globalCallableMethodBindings.method_hash
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -17204,7 +17204,7 @@ func (cx *Callable) Hash() int64 {
  * is_vararg = false, is_static = false
  * goReturnType(Callable) -> Callable
  */
-func (cx *Callable) Unbind(argcount int64,) Callable {
+func (cx *Callable) Unbind(argcount int32,) Callable {
     mb := globalCallableMethodBindings.method_unbind
 
     bx := cx.ptr()
@@ -17213,7 +17213,7 @@ func (cx *Callable) Unbind(argcount int64,) Callable {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&argcount))
     
     
@@ -17311,7 +17311,7 @@ func (cx *Callable) Rpc(varargs ...Variant)  {
  * is_vararg = true, is_static = false
  * goReturnType() -> 
  */
-func (cx *Callable) RpcId(peer_id int64,varargs ...Variant)  {
+func (cx *Callable) RpcId(peer_id int32,varargs ...Variant)  {
     mb := globalCallableMethodBindings.method_rpc_id
 
     bx := cx.ptr()
@@ -17320,7 +17320,7 @@ func (cx *Callable) RpcId(peer_id int64,varargs ...Variant)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&peer_id))
     
     
@@ -17556,15 +17556,15 @@ func (cx *Signal) GetObject() Object {
 
 /* GetObjectId : get_object_id
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Signal) GetObjectId() int64 {
+func (cx *Signal) GetObjectId() int32 {
     mb := globalSignalMethodBindings.method_get_object_id
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -17594,9 +17594,9 @@ func (cx *Signal) GetName() StringName {
 
 /* Connect : connect
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Signal) Connect(callable Callable,flags int64,) int64 {
+func (cx *Signal) Connect(callable Callable,flags int32,) int32 {
     mb := globalSignalMethodBindings.method_connect
 
     bx := cx.ptr()
@@ -17609,12 +17609,12 @@ func (cx *Signal) Connect(callable Callable,flags int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&callable))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&flags))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -17878,15 +17878,15 @@ func (cx *Dictionary) Destroy() {
 
 /* Size : size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Dictionary) Size() int64 {
+func (cx *Dictionary) Size() int32 {
     mb := globalDictionaryMethodBindings.method_size
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -18077,15 +18077,15 @@ func (cx *Dictionary) Erase(key Variant,) bool {
 
 /* Hash : hash
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Dictionary) Hash() int64 {
+func (cx *Dictionary) Hash() int32 {
     mb := globalDictionaryMethodBindings.method_hash
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -18435,7 +18435,7 @@ func NewArrayWithArray(from Array,) Array {
     return cx
 }
 // NewArray, index: 2
-func NewArrayWithArrayInt64StringNameVariant(base Array,typeName int64,class_name StringName,script Variant,) Array {
+func NewArrayWithArrayInt32StringNameVariant(base Array,typeName int32,class_name StringName,script Variant,) Array {
     cx := Array{}
 
     ptr := cx.ptr()
@@ -18594,15 +18594,15 @@ func (cx *Array) Destroy() {
 
 /* Size : size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Array) Size() int64 {
+func (cx *Array) Size() int32 {
     mb := globalArrayMethodBindings.method_size
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -18650,15 +18650,15 @@ func (cx *Array) Clear()  {
 
 /* Hash : hash
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Array) Hash() int64 {
+func (cx *Array) Hash() int32 {
     mb := globalArrayMethodBindings.method_hash
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -18777,9 +18777,9 @@ func (cx *Array) AppendArray(array Array,)  {
 
 /* Resize : resize
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Array) Resize(size int64,) int64 {
+func (cx *Array) Resize(size int32,) int32 {
     mb := globalArrayMethodBindings.method_resize
 
     bx := cx.ptr()
@@ -18788,12 +18788,12 @@ func (cx *Array) Resize(size int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&size))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -18805,9 +18805,9 @@ func (cx *Array) Resize(size int64,) int64 {
 
 /* Insert : insert
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Array) Insert(position int64,value Variant,) int64 {
+func (cx *Array) Insert(position int32,value Variant,) int32 {
     mb := globalArrayMethodBindings.method_insert
 
     bx := cx.ptr()
@@ -18816,7 +18816,7 @@ func (cx *Array) Insert(position int64,value Variant,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&position))
     
     
@@ -18825,7 +18825,7 @@ func (cx *Array) Insert(position int64,value Variant,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -18839,7 +18839,7 @@ func (cx *Array) Insert(position int64,value Variant,) int64 {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *Array) RemoveAt(position int64,)  {
+func (cx *Array) RemoveAt(position int32,)  {
     mb := globalArrayMethodBindings.method_remove_at
 
     bx := cx.ptr()
@@ -18848,7 +18848,7 @@ func (cx *Array) RemoveAt(position int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&position))
     
     
@@ -18956,9 +18956,9 @@ func (cx *Array) Back() Variant {
 
 /* Find : find
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Array) Find(what Variant,from int64,) int64 {
+func (cx *Array) Find(what Variant,from int32,) int32 {
     mb := globalArrayMethodBindings.method_find
 
     bx := cx.ptr()
@@ -18971,12 +18971,12 @@ func (cx *Array) Find(what Variant,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&what))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -18988,9 +18988,9 @@ func (cx *Array) Find(what Variant,from int64,) int64 {
 
 /* Rfind : rfind
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Array) Rfind(what Variant,from int64,) int64 {
+func (cx *Array) Rfind(what Variant,from int32,) int32 {
     mb := globalArrayMethodBindings.method_rfind
 
     bx := cx.ptr()
@@ -19003,12 +19003,12 @@ func (cx *Array) Rfind(what Variant,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&what))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -19020,9 +19020,9 @@ func (cx *Array) Rfind(what Variant,from int64,) int64 {
 
 /* FindLast : find_last
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Array) FindLast(value Variant,) int64 {
+func (cx *Array) FindLast(value Variant,) int32 {
     mb := globalArrayMethodBindings.method_find_last
 
     bx := cx.ptr()
@@ -19036,7 +19036,7 @@ func (cx *Array) FindLast(value Variant,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -19048,9 +19048,9 @@ func (cx *Array) FindLast(value Variant,) int64 {
 
 /* Count : count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Array) Count(value Variant,) int64 {
+func (cx *Array) Count(value Variant,) int32 {
     mb := globalArrayMethodBindings.method_count
 
     bx := cx.ptr()
@@ -19064,7 +19064,7 @@ func (cx *Array) Count(value Variant,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -19144,7 +19144,7 @@ func (cx *Array) PopFront() Variant {
  * is_vararg = false, is_static = false
  * goReturnType(Variant) -> Variant
  */
-func (cx *Array) PopAt(position int64,) Variant {
+func (cx *Array) PopAt(position int32,) Variant {
     mb := globalArrayMethodBindings.method_pop_at
 
     bx := cx.ptr()
@@ -19153,7 +19153,7 @@ func (cx *Array) PopAt(position int64,) Variant {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&position))
     
     
@@ -19233,9 +19233,9 @@ func (cx *Array) Shuffle()  {
 
 /* Bsearch : bsearch
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Array) Bsearch(value Variant,before bool,) int64 {
+func (cx *Array) Bsearch(value Variant,before bool,) int32 {
     mb := globalArrayMethodBindings.method_bsearch
 
     bx := cx.ptr()
@@ -19253,7 +19253,7 @@ func (cx *Array) Bsearch(value Variant,before bool,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -19265,9 +19265,9 @@ func (cx *Array) Bsearch(value Variant,before bool,) int64 {
 
 /* BsearchCustom : bsearch_custom
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Array) BsearchCustom(value Variant,callbackFunc Callable,before bool,) int64 {
+func (cx *Array) BsearchCustom(value Variant,callbackFunc Callable,before bool,) int32 {
     mb := globalArrayMethodBindings.method_bsearch_custom
 
     bx := cx.ptr()
@@ -19289,7 +19289,7 @@ func (cx *Array) BsearchCustom(value Variant,callbackFunc Callable,before bool,)
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -19349,7 +19349,7 @@ func (cx *Array) Duplicate(deep bool,) Array {
  * is_vararg = false, is_static = false
  * goReturnType(Array) -> Array
  */
-func (cx *Array) Slice(begin int64,end int64,step int64,deep bool,) Array {
+func (cx *Array) Slice(begin int32,end int32,step int32,deep bool,) Array {
     mb := globalArrayMethodBindings.method_slice
 
     bx := cx.ptr()
@@ -19358,15 +19358,15 @@ func (cx *Array) Slice(begin int64,end int64,step int64,deep bool,) Array {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&begin))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&end))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[2] = (GDNativeTypePtr)(unsafe.Pointer(&step))
     
     
@@ -19599,7 +19599,7 @@ func (cx *Array) TypedAssign(array Array,) bool {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *Array) SetTyped(typeName int64,class_name StringName,script Variant,)  {
+func (cx *Array) SetTyped(typeName int32,class_name StringName,script Variant,)  {
     mb := globalArrayMethodBindings.method_set_typed
 
     bx := cx.ptr()
@@ -19608,7 +19608,7 @@ func (cx *Array) SetTyped(typeName int64,class_name StringName,script Variant,) 
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&typeName))
     
     
@@ -19651,15 +19651,15 @@ func (cx *Array) IsTyped() bool {
 
 /* GetTypedBuiltin : get_typed_builtin
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *Array) GetTypedBuiltin() int64 {
+func (cx *Array) GetTypedBuiltin() int32 {
     mb := globalArrayMethodBindings.method_get_typed_builtin
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -19752,6 +19752,28 @@ func (cx *Array) IsReadOnly() bool {
 }
 
 
+func (cx *Array) GetIndexed(i int64) Variant {
+
+    var ret Variant
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalArrayMethodBindings.indexed_getter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
+    )
+
+	return ret
+}
+
+func (cx *Array) SetIndexed(i int64, value Variant) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
+}
 // members
 
 
@@ -20038,15 +20060,15 @@ func (cx *PackedByteArray) Destroy() {
 
 /* Size : size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) Size() int64 {
+func (cx *PackedByteArray) Size() int32 {
     mb := globalPackedByteArrayMethodBindings.method_size
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -20078,7 +20100,7 @@ func (cx *PackedByteArray) IsEmpty() bool {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) Set(index int64,value int64,)  {
+func (cx *PackedByteArray) Set(index int32,value int32,)  {
     mb := globalPackedByteArrayMethodBindings.method_set
 
     bx := cx.ptr()
@@ -20087,11 +20109,11 @@ func (cx *PackedByteArray) Set(index int64,value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -20109,7 +20131,7 @@ func (cx *PackedByteArray) Set(index int64,value int64,)  {
  * is_vararg = false, is_static = false
  * goReturnType(bool) -> bool
  */
-func (cx *PackedByteArray) PushBack(value int64,) bool {
+func (cx *PackedByteArray) PushBack(value int32,) bool {
     mb := globalPackedByteArrayMethodBindings.method_push_back
 
     bx := cx.ptr()
@@ -20118,7 +20140,7 @@ func (cx *PackedByteArray) PushBack(value int64,) bool {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -20137,7 +20159,7 @@ func (cx *PackedByteArray) PushBack(value int64,) bool {
  * is_vararg = false, is_static = false
  * goReturnType(bool) -> bool
  */
-func (cx *PackedByteArray) Append(value int64,) bool {
+func (cx *PackedByteArray) Append(value int32,) bool {
     mb := globalPackedByteArrayMethodBindings.method_append
 
     bx := cx.ptr()
@@ -20146,7 +20168,7 @@ func (cx *PackedByteArray) Append(value int64,) bool {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -20192,7 +20214,7 @@ func (cx *PackedByteArray) AppendArray(array PackedByteArray,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) RemoveAt(index int64,)  {
+func (cx *PackedByteArray) RemoveAt(index int32,)  {
     mb := globalPackedByteArrayMethodBindings.method_remove_at
 
     bx := cx.ptr()
@@ -20201,7 +20223,7 @@ func (cx *PackedByteArray) RemoveAt(index int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -20217,9 +20239,9 @@ func (cx *PackedByteArray) RemoveAt(index int64,)  {
 
 /* Insert : insert
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) Insert(at_index int64,value int64,) int64 {
+func (cx *PackedByteArray) Insert(at_index int32,value int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_insert
 
     bx := cx.ptr()
@@ -20228,16 +20250,16 @@ func (cx *PackedByteArray) Insert(at_index int64,value int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&at_index))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20251,7 +20273,7 @@ func (cx *PackedByteArray) Insert(at_index int64,value int64,) int64 {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) Fill(value int64,)  {
+func (cx *PackedByteArray) Fill(value int32,)  {
     mb := globalPackedByteArrayMethodBindings.method_fill
 
     bx := cx.ptr()
@@ -20260,7 +20282,7 @@ func (cx *PackedByteArray) Fill(value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -20276,9 +20298,9 @@ func (cx *PackedByteArray) Fill(value int64,)  {
 
 /* Resize : resize
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) Resize(new_size int64,) int64 {
+func (cx *PackedByteArray) Resize(new_size int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_resize
 
     bx := cx.ptr()
@@ -20287,12 +20309,12 @@ func (cx *PackedByteArray) Resize(new_size int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&new_size))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20324,7 +20346,7 @@ func (cx *PackedByteArray) Clear()  {
  * is_vararg = false, is_static = false
  * goReturnType(bool) -> bool
  */
-func (cx *PackedByteArray) Has(value int64,) bool {
+func (cx *PackedByteArray) Has(value int32,) bool {
     mb := globalPackedByteArrayMethodBindings.method_has
 
     bx := cx.ptr()
@@ -20333,7 +20355,7 @@ func (cx *PackedByteArray) Has(value int64,) bool {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -20370,7 +20392,7 @@ func (cx *PackedByteArray) Reverse()  {
  * is_vararg = false, is_static = false
  * goReturnType(PackedByteArray) -> PackedByteArray
  */
-func (cx *PackedByteArray) Slice(begin int64,end int64,) PackedByteArray {
+func (cx *PackedByteArray) Slice(begin int32,end int32,) PackedByteArray {
     mb := globalPackedByteArrayMethodBindings.method_slice
 
     bx := cx.ptr()
@@ -20379,11 +20401,11 @@ func (cx *PackedByteArray) Slice(begin int64,end int64,) PackedByteArray {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&begin))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&end))
     
     
@@ -20418,9 +20440,9 @@ func (cx *PackedByteArray) Sort()  {
 
 /* Bsearch : bsearch
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) Bsearch(value int64,before bool,) int64 {
+func (cx *PackedByteArray) Bsearch(value int32,before bool,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_bsearch
 
     bx := cx.ptr()
@@ -20429,7 +20451,7 @@ func (cx *PackedByteArray) Bsearch(value int64,before bool,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -20438,7 +20460,7 @@ func (cx *PackedByteArray) Bsearch(value int64,before bool,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20469,9 +20491,9 @@ func (cx *PackedByteArray) Duplicate() PackedByteArray {
 
 /* Find : find
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) Find(value int64,from int64,) int64 {
+func (cx *PackedByteArray) Find(value int32,from int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_find
 
     bx := cx.ptr()
@@ -20480,16 +20502,16 @@ func (cx *PackedByteArray) Find(value int64,from int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20501,9 +20523,9 @@ func (cx *PackedByteArray) Find(value int64,from int64,) int64 {
 
 /* Rfind : rfind
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) Rfind(value int64,from int64,) int64 {
+func (cx *PackedByteArray) Rfind(value int32,from int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_rfind
 
     bx := cx.ptr()
@@ -20512,16 +20534,16 @@ func (cx *PackedByteArray) Rfind(value int64,from int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20533,9 +20555,9 @@ func (cx *PackedByteArray) Rfind(value int64,from int64,) int64 {
 
 /* Count : count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) Count(value int64,) int64 {
+func (cx *PackedByteArray) Count(value int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_count
 
     bx := cx.ptr()
@@ -20544,12 +20566,12 @@ func (cx *PackedByteArray) Count(value int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20658,7 +20680,7 @@ func (cx *PackedByteArray) HexEncode() String {
  * is_vararg = false, is_static = false
  * goReturnType(PackedByteArray) -> PackedByteArray
  */
-func (cx *PackedByteArray) Compress(compression_mode int64,) PackedByteArray {
+func (cx *PackedByteArray) Compress(compression_mode int32,) PackedByteArray {
     mb := globalPackedByteArrayMethodBindings.method_compress
 
     bx := cx.ptr()
@@ -20667,7 +20689,7 @@ func (cx *PackedByteArray) Compress(compression_mode int64,) PackedByteArray {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&compression_mode))
     
     
@@ -20686,7 +20708,7 @@ func (cx *PackedByteArray) Compress(compression_mode int64,) PackedByteArray {
  * is_vararg = false, is_static = false
  * goReturnType(PackedByteArray) -> PackedByteArray
  */
-func (cx *PackedByteArray) Decompress(buffer_size int64,compression_mode int64,) PackedByteArray {
+func (cx *PackedByteArray) Decompress(buffer_size int32,compression_mode int32,) PackedByteArray {
     mb := globalPackedByteArrayMethodBindings.method_decompress
 
     bx := cx.ptr()
@@ -20695,11 +20717,11 @@ func (cx *PackedByteArray) Decompress(buffer_size int64,compression_mode int64,)
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&buffer_size))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&compression_mode))
     
     
@@ -20718,7 +20740,7 @@ func (cx *PackedByteArray) Decompress(buffer_size int64,compression_mode int64,)
  * is_vararg = false, is_static = false
  * goReturnType(PackedByteArray) -> PackedByteArray
  */
-func (cx *PackedByteArray) DecompressDynamic(max_output_size int64,compression_mode int64,) PackedByteArray {
+func (cx *PackedByteArray) DecompressDynamic(max_output_size int32,compression_mode int32,) PackedByteArray {
     mb := globalPackedByteArrayMethodBindings.method_decompress_dynamic
 
     bx := cx.ptr()
@@ -20727,11 +20749,11 @@ func (cx *PackedByteArray) DecompressDynamic(max_output_size int64,compression_m
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&max_output_size))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&compression_mode))
     
     
@@ -20748,9 +20770,9 @@ func (cx *PackedByteArray) DecompressDynamic(max_output_size int64,compression_m
 
 /* DecodeU8 : decode_u8
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) DecodeU8(byte_offset int64,) int64 {
+func (cx *PackedByteArray) DecodeU8(byte_offset int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_u8
 
     bx := cx.ptr()
@@ -20759,12 +20781,12 @@ func (cx *PackedByteArray) DecodeU8(byte_offset int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20776,9 +20798,9 @@ func (cx *PackedByteArray) DecodeU8(byte_offset int64,) int64 {
 
 /* DecodeS8 : decode_s8
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) DecodeS8(byte_offset int64,) int64 {
+func (cx *PackedByteArray) DecodeS8(byte_offset int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_s8
 
     bx := cx.ptr()
@@ -20787,12 +20809,12 @@ func (cx *PackedByteArray) DecodeS8(byte_offset int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20804,9 +20826,9 @@ func (cx *PackedByteArray) DecodeS8(byte_offset int64,) int64 {
 
 /* DecodeU16 : decode_u16
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) DecodeU16(byte_offset int64,) int64 {
+func (cx *PackedByteArray) DecodeU16(byte_offset int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_u16
 
     bx := cx.ptr()
@@ -20815,12 +20837,12 @@ func (cx *PackedByteArray) DecodeU16(byte_offset int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20832,9 +20854,9 @@ func (cx *PackedByteArray) DecodeU16(byte_offset int64,) int64 {
 
 /* DecodeS16 : decode_s16
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) DecodeS16(byte_offset int64,) int64 {
+func (cx *PackedByteArray) DecodeS16(byte_offset int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_s16
 
     bx := cx.ptr()
@@ -20843,12 +20865,12 @@ func (cx *PackedByteArray) DecodeS16(byte_offset int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20860,9 +20882,9 @@ func (cx *PackedByteArray) DecodeS16(byte_offset int64,) int64 {
 
 /* DecodeU32 : decode_u32
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) DecodeU32(byte_offset int64,) int64 {
+func (cx *PackedByteArray) DecodeU32(byte_offset int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_u32
 
     bx := cx.ptr()
@@ -20871,12 +20893,12 @@ func (cx *PackedByteArray) DecodeU32(byte_offset int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20888,9 +20910,9 @@ func (cx *PackedByteArray) DecodeU32(byte_offset int64,) int64 {
 
 /* DecodeS32 : decode_s32
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) DecodeS32(byte_offset int64,) int64 {
+func (cx *PackedByteArray) DecodeS32(byte_offset int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_s32
 
     bx := cx.ptr()
@@ -20899,12 +20921,12 @@ func (cx *PackedByteArray) DecodeS32(byte_offset int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20916,9 +20938,9 @@ func (cx *PackedByteArray) DecodeS32(byte_offset int64,) int64 {
 
 /* DecodeU64 : decode_u64
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) DecodeU64(byte_offset int64,) int64 {
+func (cx *PackedByteArray) DecodeU64(byte_offset int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_u64
 
     bx := cx.ptr()
@@ -20927,12 +20949,12 @@ func (cx *PackedByteArray) DecodeU64(byte_offset int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20944,9 +20966,9 @@ func (cx *PackedByteArray) DecodeU64(byte_offset int64,) int64 {
 
 /* DecodeS64 : decode_s64
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) DecodeS64(byte_offset int64,) int64 {
+func (cx *PackedByteArray) DecodeS64(byte_offset int32,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_s64
 
     bx := cx.ptr()
@@ -20955,12 +20977,12 @@ func (cx *PackedByteArray) DecodeS64(byte_offset int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -20974,7 +20996,7 @@ func (cx *PackedByteArray) DecodeS64(byte_offset int64,) int64 {
  * is_vararg = false, is_static = false
  * goReturnType(float) -> float32
  */
-func (cx *PackedByteArray) DecodeHalf(byte_offset int64,) float32 {
+func (cx *PackedByteArray) DecodeHalf(byte_offset int32,) float32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_half
 
     bx := cx.ptr()
@@ -20983,7 +21005,7 @@ func (cx *PackedByteArray) DecodeHalf(byte_offset int64,) float32 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
@@ -21002,7 +21024,7 @@ func (cx *PackedByteArray) DecodeHalf(byte_offset int64,) float32 {
  * is_vararg = false, is_static = false
  * goReturnType(float) -> float32
  */
-func (cx *PackedByteArray) DecodeFloat(byte_offset int64,) float32 {
+func (cx *PackedByteArray) DecodeFloat(byte_offset int32,) float32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_float
 
     bx := cx.ptr()
@@ -21011,7 +21033,7 @@ func (cx *PackedByteArray) DecodeFloat(byte_offset int64,) float32 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
@@ -21030,7 +21052,7 @@ func (cx *PackedByteArray) DecodeFloat(byte_offset int64,) float32 {
  * is_vararg = false, is_static = false
  * goReturnType(float) -> float32
  */
-func (cx *PackedByteArray) DecodeDouble(byte_offset int64,) float32 {
+func (cx *PackedByteArray) DecodeDouble(byte_offset int32,) float32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_double
 
     bx := cx.ptr()
@@ -21039,7 +21061,7 @@ func (cx *PackedByteArray) DecodeDouble(byte_offset int64,) float32 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
@@ -21058,7 +21080,7 @@ func (cx *PackedByteArray) DecodeDouble(byte_offset int64,) float32 {
  * is_vararg = false, is_static = false
  * goReturnType(bool) -> bool
  */
-func (cx *PackedByteArray) HasEncodedVar(byte_offset int64,allow_objects bool,) bool {
+func (cx *PackedByteArray) HasEncodedVar(byte_offset int32,allow_objects bool,) bool {
     mb := globalPackedByteArrayMethodBindings.method_has_encoded_var
 
     bx := cx.ptr()
@@ -21067,7 +21089,7 @@ func (cx *PackedByteArray) HasEncodedVar(byte_offset int64,allow_objects bool,) 
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
@@ -21090,7 +21112,7 @@ func (cx *PackedByteArray) HasEncodedVar(byte_offset int64,allow_objects bool,) 
  * is_vararg = false, is_static = false
  * goReturnType(Variant) -> Variant
  */
-func (cx *PackedByteArray) DecodeVar(byte_offset int64,allow_objects bool,) Variant {
+func (cx *PackedByteArray) DecodeVar(byte_offset int32,allow_objects bool,) Variant {
     mb := globalPackedByteArrayMethodBindings.method_decode_var
 
     bx := cx.ptr()
@@ -21099,7 +21121,7 @@ func (cx *PackedByteArray) DecodeVar(byte_offset int64,allow_objects bool,) Vari
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
@@ -21120,9 +21142,9 @@ func (cx *PackedByteArray) DecodeVar(byte_offset int64,allow_objects bool,) Vari
 
 /* DecodeVarSize : decode_var_size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) DecodeVarSize(byte_offset int64,allow_objects bool,) int64 {
+func (cx *PackedByteArray) DecodeVarSize(byte_offset int32,allow_objects bool,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_decode_var_size
 
     bx := cx.ptr()
@@ -21131,7 +21153,7 @@ func (cx *PackedByteArray) DecodeVarSize(byte_offset int64,allow_objects bool,) 
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
@@ -21140,7 +21162,7 @@ func (cx *PackedByteArray) DecodeVarSize(byte_offset int64,allow_objects bool,) 
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -21230,7 +21252,7 @@ func (cx *PackedByteArray) ToFloat64Array() PackedFloat64Array {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) EncodeU8(byte_offset int64,value int64,)  {
+func (cx *PackedByteArray) EncodeU8(byte_offset int32,value int32,)  {
     mb := globalPackedByteArrayMethodBindings.method_encode_u8
 
     bx := cx.ptr()
@@ -21239,11 +21261,11 @@ func (cx *PackedByteArray) EncodeU8(byte_offset int64,value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -21261,7 +21283,7 @@ func (cx *PackedByteArray) EncodeU8(byte_offset int64,value int64,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) EncodeS8(byte_offset int64,value int64,)  {
+func (cx *PackedByteArray) EncodeS8(byte_offset int32,value int32,)  {
     mb := globalPackedByteArrayMethodBindings.method_encode_s8
 
     bx := cx.ptr()
@@ -21270,11 +21292,11 @@ func (cx *PackedByteArray) EncodeS8(byte_offset int64,value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -21292,7 +21314,7 @@ func (cx *PackedByteArray) EncodeS8(byte_offset int64,value int64,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) EncodeU16(byte_offset int64,value int64,)  {
+func (cx *PackedByteArray) EncodeU16(byte_offset int32,value int32,)  {
     mb := globalPackedByteArrayMethodBindings.method_encode_u16
 
     bx := cx.ptr()
@@ -21301,11 +21323,11 @@ func (cx *PackedByteArray) EncodeU16(byte_offset int64,value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -21323,7 +21345,7 @@ func (cx *PackedByteArray) EncodeU16(byte_offset int64,value int64,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) EncodeS16(byte_offset int64,value int64,)  {
+func (cx *PackedByteArray) EncodeS16(byte_offset int32,value int32,)  {
     mb := globalPackedByteArrayMethodBindings.method_encode_s16
 
     bx := cx.ptr()
@@ -21332,11 +21354,11 @@ func (cx *PackedByteArray) EncodeS16(byte_offset int64,value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -21354,7 +21376,7 @@ func (cx *PackedByteArray) EncodeS16(byte_offset int64,value int64,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) EncodeU32(byte_offset int64,value int64,)  {
+func (cx *PackedByteArray) EncodeU32(byte_offset int32,value int32,)  {
     mb := globalPackedByteArrayMethodBindings.method_encode_u32
 
     bx := cx.ptr()
@@ -21363,11 +21385,11 @@ func (cx *PackedByteArray) EncodeU32(byte_offset int64,value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -21385,7 +21407,7 @@ func (cx *PackedByteArray) EncodeU32(byte_offset int64,value int64,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) EncodeS32(byte_offset int64,value int64,)  {
+func (cx *PackedByteArray) EncodeS32(byte_offset int32,value int32,)  {
     mb := globalPackedByteArrayMethodBindings.method_encode_s32
 
     bx := cx.ptr()
@@ -21394,11 +21416,11 @@ func (cx *PackedByteArray) EncodeS32(byte_offset int64,value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -21416,7 +21438,7 @@ func (cx *PackedByteArray) EncodeS32(byte_offset int64,value int64,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) EncodeU64(byte_offset int64,value int64,)  {
+func (cx *PackedByteArray) EncodeU64(byte_offset int32,value int32,)  {
     mb := globalPackedByteArrayMethodBindings.method_encode_u64
 
     bx := cx.ptr()
@@ -21425,11 +21447,11 @@ func (cx *PackedByteArray) EncodeU64(byte_offset int64,value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -21447,7 +21469,7 @@ func (cx *PackedByteArray) EncodeU64(byte_offset int64,value int64,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) EncodeS64(byte_offset int64,value int64,)  {
+func (cx *PackedByteArray) EncodeS64(byte_offset int32,value int32,)  {
     mb := globalPackedByteArrayMethodBindings.method_encode_s64
 
     bx := cx.ptr()
@@ -21456,11 +21478,11 @@ func (cx *PackedByteArray) EncodeS64(byte_offset int64,value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -21478,7 +21500,7 @@ func (cx *PackedByteArray) EncodeS64(byte_offset int64,value int64,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) EncodeHalf(byte_offset int64,value float32,)  {
+func (cx *PackedByteArray) EncodeHalf(byte_offset int32,value float32,)  {
     mb := globalPackedByteArrayMethodBindings.method_encode_half
 
     bx := cx.ptr()
@@ -21487,7 +21509,7 @@ func (cx *PackedByteArray) EncodeHalf(byte_offset int64,value float32,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
@@ -21509,7 +21531,7 @@ func (cx *PackedByteArray) EncodeHalf(byte_offset int64,value float32,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) EncodeFloat(byte_offset int64,value float32,)  {
+func (cx *PackedByteArray) EncodeFloat(byte_offset int32,value float32,)  {
     mb := globalPackedByteArrayMethodBindings.method_encode_float
 
     bx := cx.ptr()
@@ -21518,7 +21540,7 @@ func (cx *PackedByteArray) EncodeFloat(byte_offset int64,value float32,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
@@ -21540,7 +21562,7 @@ func (cx *PackedByteArray) EncodeFloat(byte_offset int64,value float32,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedByteArray) EncodeDouble(byte_offset int64,value float32,)  {
+func (cx *PackedByteArray) EncodeDouble(byte_offset int32,value float32,)  {
     mb := globalPackedByteArrayMethodBindings.method_encode_double
 
     bx := cx.ptr()
@@ -21549,7 +21571,7 @@ func (cx *PackedByteArray) EncodeDouble(byte_offset int64,value float32,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
@@ -21569,9 +21591,9 @@ func (cx *PackedByteArray) EncodeDouble(byte_offset int64,value float32,)  {
 
 /* EncodeVar : encode_var
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedByteArray) EncodeVar(byte_offset int64,value Variant,allow_objects bool,) int64 {
+func (cx *PackedByteArray) EncodeVar(byte_offset int32,value Variant,allow_objects bool,) int32 {
     mb := globalPackedByteArrayMethodBindings.method_encode_var
 
     bx := cx.ptr()
@@ -21580,7 +21602,7 @@ func (cx *PackedByteArray) EncodeVar(byte_offset int64,value Variant,allow_objec
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&byte_offset))
     
     
@@ -21593,7 +21615,7 @@ func (cx *PackedByteArray) EncodeVar(byte_offset int64,value Variant,allow_objec
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -21603,6 +21625,28 @@ func (cx *PackedByteArray) EncodeVar(byte_offset int64,value Variant,allow_objec
 }
 
 
+func (cx *PackedByteArray) GetIndexed(i int64) int32 {
+
+    var ret int32
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedByteArrayMethodBindings.indexed_getter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
+    )
+
+	return ret
+}
+
+func (cx *PackedByteArray) SetIndexed(i int64, value int32) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedByteArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
+}
 // members
 
 
@@ -21791,15 +21835,15 @@ func (cx *PackedInt32Array) Destroy() {
 
 /* Size : size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt32Array) Size() int64 {
+func (cx *PackedInt32Array) Size() int32 {
     mb := globalPackedInt32ArrayMethodBindings.method_size
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -21831,7 +21875,7 @@ func (cx *PackedInt32Array) IsEmpty() bool {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedInt32Array) Set(index int64,value int64,)  {
+func (cx *PackedInt32Array) Set(index int32,value int32,)  {
     mb := globalPackedInt32ArrayMethodBindings.method_set
 
     bx := cx.ptr()
@@ -21840,11 +21884,11 @@ func (cx *PackedInt32Array) Set(index int64,value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -21862,7 +21906,7 @@ func (cx *PackedInt32Array) Set(index int64,value int64,)  {
  * is_vararg = false, is_static = false
  * goReturnType(bool) -> bool
  */
-func (cx *PackedInt32Array) PushBack(value int64,) bool {
+func (cx *PackedInt32Array) PushBack(value int32,) bool {
     mb := globalPackedInt32ArrayMethodBindings.method_push_back
 
     bx := cx.ptr()
@@ -21871,7 +21915,7 @@ func (cx *PackedInt32Array) PushBack(value int64,) bool {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -21890,7 +21934,7 @@ func (cx *PackedInt32Array) PushBack(value int64,) bool {
  * is_vararg = false, is_static = false
  * goReturnType(bool) -> bool
  */
-func (cx *PackedInt32Array) Append(value int64,) bool {
+func (cx *PackedInt32Array) Append(value int32,) bool {
     mb := globalPackedInt32ArrayMethodBindings.method_append
 
     bx := cx.ptr()
@@ -21899,7 +21943,7 @@ func (cx *PackedInt32Array) Append(value int64,) bool {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -21945,7 +21989,7 @@ func (cx *PackedInt32Array) AppendArray(array PackedInt32Array,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedInt32Array) RemoveAt(index int64,)  {
+func (cx *PackedInt32Array) RemoveAt(index int32,)  {
     mb := globalPackedInt32ArrayMethodBindings.method_remove_at
 
     bx := cx.ptr()
@@ -21954,7 +21998,7 @@ func (cx *PackedInt32Array) RemoveAt(index int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -21970,9 +22014,9 @@ func (cx *PackedInt32Array) RemoveAt(index int64,)  {
 
 /* Insert : insert
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt32Array) Insert(at_index int64,value int64,) int64 {
+func (cx *PackedInt32Array) Insert(at_index int32,value int32,) int32 {
     mb := globalPackedInt32ArrayMethodBindings.method_insert
 
     bx := cx.ptr()
@@ -21981,16 +22025,16 @@ func (cx *PackedInt32Array) Insert(at_index int64,value int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&at_index))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -22004,7 +22048,7 @@ func (cx *PackedInt32Array) Insert(at_index int64,value int64,) int64 {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedInt32Array) Fill(value int64,)  {
+func (cx *PackedInt32Array) Fill(value int32,)  {
     mb := globalPackedInt32ArrayMethodBindings.method_fill
 
     bx := cx.ptr()
@@ -22013,7 +22057,7 @@ func (cx *PackedInt32Array) Fill(value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -22029,9 +22073,9 @@ func (cx *PackedInt32Array) Fill(value int64,)  {
 
 /* Resize : resize
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt32Array) Resize(new_size int64,) int64 {
+func (cx *PackedInt32Array) Resize(new_size int32,) int32 {
     mb := globalPackedInt32ArrayMethodBindings.method_resize
 
     bx := cx.ptr()
@@ -22040,12 +22084,12 @@ func (cx *PackedInt32Array) Resize(new_size int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&new_size))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -22077,7 +22121,7 @@ func (cx *PackedInt32Array) Clear()  {
  * is_vararg = false, is_static = false
  * goReturnType(bool) -> bool
  */
-func (cx *PackedInt32Array) Has(value int64,) bool {
+func (cx *PackedInt32Array) Has(value int32,) bool {
     mb := globalPackedInt32ArrayMethodBindings.method_has
 
     bx := cx.ptr()
@@ -22086,7 +22130,7 @@ func (cx *PackedInt32Array) Has(value int64,) bool {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -22123,7 +22167,7 @@ func (cx *PackedInt32Array) Reverse()  {
  * is_vararg = false, is_static = false
  * goReturnType(PackedInt32Array) -> PackedInt32Array
  */
-func (cx *PackedInt32Array) Slice(begin int64,end int64,) PackedInt32Array {
+func (cx *PackedInt32Array) Slice(begin int32,end int32,) PackedInt32Array {
     mb := globalPackedInt32ArrayMethodBindings.method_slice
 
     bx := cx.ptr()
@@ -22132,11 +22176,11 @@ func (cx *PackedInt32Array) Slice(begin int64,end int64,) PackedInt32Array {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&begin))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&end))
     
     
@@ -22190,9 +22234,9 @@ func (cx *PackedInt32Array) Sort()  {
 
 /* Bsearch : bsearch
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt32Array) Bsearch(value int64,before bool,) int64 {
+func (cx *PackedInt32Array) Bsearch(value int32,before bool,) int32 {
     mb := globalPackedInt32ArrayMethodBindings.method_bsearch
 
     bx := cx.ptr()
@@ -22201,7 +22245,7 @@ func (cx *PackedInt32Array) Bsearch(value int64,before bool,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -22210,7 +22254,7 @@ func (cx *PackedInt32Array) Bsearch(value int64,before bool,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -22241,9 +22285,9 @@ func (cx *PackedInt32Array) Duplicate() PackedInt32Array {
 
 /* Find : find
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt32Array) Find(value int64,from int64,) int64 {
+func (cx *PackedInt32Array) Find(value int32,from int32,) int32 {
     mb := globalPackedInt32ArrayMethodBindings.method_find
 
     bx := cx.ptr()
@@ -22252,16 +22296,16 @@ func (cx *PackedInt32Array) Find(value int64,from int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -22273,9 +22317,9 @@ func (cx *PackedInt32Array) Find(value int64,from int64,) int64 {
 
 /* Rfind : rfind
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt32Array) Rfind(value int64,from int64,) int64 {
+func (cx *PackedInt32Array) Rfind(value int32,from int32,) int32 {
     mb := globalPackedInt32ArrayMethodBindings.method_rfind
 
     bx := cx.ptr()
@@ -22284,16 +22328,16 @@ func (cx *PackedInt32Array) Rfind(value int64,from int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -22305,9 +22349,9 @@ func (cx *PackedInt32Array) Rfind(value int64,from int64,) int64 {
 
 /* Count : count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt32Array) Count(value int64,) int64 {
+func (cx *PackedInt32Array) Count(value int32,) int32 {
     mb := globalPackedInt32ArrayMethodBindings.method_count
 
     bx := cx.ptr()
@@ -22316,12 +22360,12 @@ func (cx *PackedInt32Array) Count(value int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -22331,6 +22375,28 @@ func (cx *PackedInt32Array) Count(value int64,) int64 {
 }
 
 
+func (cx *PackedInt32Array) GetIndexed(i int64) int32 {
+
+    var ret int32
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedInt32ArrayMethodBindings.indexed_getter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
+    )
+
+	return ret
+}
+
+func (cx *PackedInt32Array) SetIndexed(i int64, value int32) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedInt32ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
+}
 // members
 
 
@@ -22519,15 +22585,15 @@ func (cx *PackedInt64Array) Destroy() {
 
 /* Size : size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt64Array) Size() int64 {
+func (cx *PackedInt64Array) Size() int32 {
     mb := globalPackedInt64ArrayMethodBindings.method_size
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -22559,7 +22625,7 @@ func (cx *PackedInt64Array) IsEmpty() bool {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedInt64Array) Set(index int64,value int64,)  {
+func (cx *PackedInt64Array) Set(index int32,value int32,)  {
     mb := globalPackedInt64ArrayMethodBindings.method_set
 
     bx := cx.ptr()
@@ -22568,11 +22634,11 @@ func (cx *PackedInt64Array) Set(index int64,value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -22590,7 +22656,7 @@ func (cx *PackedInt64Array) Set(index int64,value int64,)  {
  * is_vararg = false, is_static = false
  * goReturnType(bool) -> bool
  */
-func (cx *PackedInt64Array) PushBack(value int64,) bool {
+func (cx *PackedInt64Array) PushBack(value int32,) bool {
     mb := globalPackedInt64ArrayMethodBindings.method_push_back
 
     bx := cx.ptr()
@@ -22599,7 +22665,7 @@ func (cx *PackedInt64Array) PushBack(value int64,) bool {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -22618,7 +22684,7 @@ func (cx *PackedInt64Array) PushBack(value int64,) bool {
  * is_vararg = false, is_static = false
  * goReturnType(bool) -> bool
  */
-func (cx *PackedInt64Array) Append(value int64,) bool {
+func (cx *PackedInt64Array) Append(value int32,) bool {
     mb := globalPackedInt64ArrayMethodBindings.method_append
 
     bx := cx.ptr()
@@ -22627,7 +22693,7 @@ func (cx *PackedInt64Array) Append(value int64,) bool {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -22673,7 +22739,7 @@ func (cx *PackedInt64Array) AppendArray(array PackedInt64Array,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedInt64Array) RemoveAt(index int64,)  {
+func (cx *PackedInt64Array) RemoveAt(index int32,)  {
     mb := globalPackedInt64ArrayMethodBindings.method_remove_at
 
     bx := cx.ptr()
@@ -22682,7 +22748,7 @@ func (cx *PackedInt64Array) RemoveAt(index int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -22698,9 +22764,9 @@ func (cx *PackedInt64Array) RemoveAt(index int64,)  {
 
 /* Insert : insert
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt64Array) Insert(at_index int64,value int64,) int64 {
+func (cx *PackedInt64Array) Insert(at_index int32,value int32,) int32 {
     mb := globalPackedInt64ArrayMethodBindings.method_insert
 
     bx := cx.ptr()
@@ -22709,16 +22775,16 @@ func (cx *PackedInt64Array) Insert(at_index int64,value int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&at_index))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -22732,7 +22798,7 @@ func (cx *PackedInt64Array) Insert(at_index int64,value int64,) int64 {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedInt64Array) Fill(value int64,)  {
+func (cx *PackedInt64Array) Fill(value int32,)  {
     mb := globalPackedInt64ArrayMethodBindings.method_fill
 
     bx := cx.ptr()
@@ -22741,7 +22807,7 @@ func (cx *PackedInt64Array) Fill(value int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -22757,9 +22823,9 @@ func (cx *PackedInt64Array) Fill(value int64,)  {
 
 /* Resize : resize
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt64Array) Resize(new_size int64,) int64 {
+func (cx *PackedInt64Array) Resize(new_size int32,) int32 {
     mb := globalPackedInt64ArrayMethodBindings.method_resize
 
     bx := cx.ptr()
@@ -22768,12 +22834,12 @@ func (cx *PackedInt64Array) Resize(new_size int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&new_size))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -22805,7 +22871,7 @@ func (cx *PackedInt64Array) Clear()  {
  * is_vararg = false, is_static = false
  * goReturnType(bool) -> bool
  */
-func (cx *PackedInt64Array) Has(value int64,) bool {
+func (cx *PackedInt64Array) Has(value int32,) bool {
     mb := globalPackedInt64ArrayMethodBindings.method_has
 
     bx := cx.ptr()
@@ -22814,7 +22880,7 @@ func (cx *PackedInt64Array) Has(value int64,) bool {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -22851,7 +22917,7 @@ func (cx *PackedInt64Array) Reverse()  {
  * is_vararg = false, is_static = false
  * goReturnType(PackedInt64Array) -> PackedInt64Array
  */
-func (cx *PackedInt64Array) Slice(begin int64,end int64,) PackedInt64Array {
+func (cx *PackedInt64Array) Slice(begin int32,end int32,) PackedInt64Array {
     mb := globalPackedInt64ArrayMethodBindings.method_slice
 
     bx := cx.ptr()
@@ -22860,11 +22926,11 @@ func (cx *PackedInt64Array) Slice(begin int64,end int64,) PackedInt64Array {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&begin))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&end))
     
     
@@ -22918,9 +22984,9 @@ func (cx *PackedInt64Array) Sort()  {
 
 /* Bsearch : bsearch
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt64Array) Bsearch(value int64,before bool,) int64 {
+func (cx *PackedInt64Array) Bsearch(value int32,before bool,) int32 {
     mb := globalPackedInt64ArrayMethodBindings.method_bsearch
 
     bx := cx.ptr()
@@ -22929,7 +22995,7 @@ func (cx *PackedInt64Array) Bsearch(value int64,before bool,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
@@ -22938,7 +23004,7 @@ func (cx *PackedInt64Array) Bsearch(value int64,before bool,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -22969,9 +23035,9 @@ func (cx *PackedInt64Array) Duplicate() PackedInt64Array {
 
 /* Find : find
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt64Array) Find(value int64,from int64,) int64 {
+func (cx *PackedInt64Array) Find(value int32,from int32,) int32 {
     mb := globalPackedInt64ArrayMethodBindings.method_find
 
     bx := cx.ptr()
@@ -22980,16 +23046,16 @@ func (cx *PackedInt64Array) Find(value int64,from int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -23001,9 +23067,9 @@ func (cx *PackedInt64Array) Find(value int64,from int64,) int64 {
 
 /* Rfind : rfind
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt64Array) Rfind(value int64,from int64,) int64 {
+func (cx *PackedInt64Array) Rfind(value int32,from int32,) int32 {
     mb := globalPackedInt64ArrayMethodBindings.method_rfind
 
     bx := cx.ptr()
@@ -23012,16 +23078,16 @@ func (cx *PackedInt64Array) Rfind(value int64,from int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -23033,9 +23099,9 @@ func (cx *PackedInt64Array) Rfind(value int64,from int64,) int64 {
 
 /* Count : count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedInt64Array) Count(value int64,) int64 {
+func (cx *PackedInt64Array) Count(value int32,) int32 {
     mb := globalPackedInt64ArrayMethodBindings.method_count
 
     bx := cx.ptr()
@@ -23044,12 +23110,12 @@ func (cx *PackedInt64Array) Count(value int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -23059,6 +23125,28 @@ func (cx *PackedInt64Array) Count(value int64,) int64 {
 }
 
 
+func (cx *PackedInt64Array) GetIndexed(i int64) int32 {
+
+    var ret int32
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedInt64ArrayMethodBindings.indexed_getter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
+    )
+
+	return ret
+}
+
+func (cx *PackedInt64Array) SetIndexed(i int64, value int32) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedInt64ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
+}
 // members
 
 
@@ -23247,15 +23335,15 @@ func (cx *PackedFloat32Array) Destroy() {
 
 /* Size : size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat32Array) Size() int64 {
+func (cx *PackedFloat32Array) Size() int32 {
     mb := globalPackedFloat32ArrayMethodBindings.method_size
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -23287,7 +23375,7 @@ func (cx *PackedFloat32Array) IsEmpty() bool {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedFloat32Array) Set(index int64,value float32,)  {
+func (cx *PackedFloat32Array) Set(index int32,value float32,)  {
     mb := globalPackedFloat32ArrayMethodBindings.method_set
 
     bx := cx.ptr()
@@ -23296,7 +23384,7 @@ func (cx *PackedFloat32Array) Set(index int64,value float32,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -23401,7 +23489,7 @@ func (cx *PackedFloat32Array) AppendArray(array PackedFloat32Array,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedFloat32Array) RemoveAt(index int64,)  {
+func (cx *PackedFloat32Array) RemoveAt(index int32,)  {
     mb := globalPackedFloat32ArrayMethodBindings.method_remove_at
 
     bx := cx.ptr()
@@ -23410,7 +23498,7 @@ func (cx *PackedFloat32Array) RemoveAt(index int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -23426,9 +23514,9 @@ func (cx *PackedFloat32Array) RemoveAt(index int64,)  {
 
 /* Insert : insert
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat32Array) Insert(at_index int64,value float32,) int64 {
+func (cx *PackedFloat32Array) Insert(at_index int32,value float32,) int32 {
     mb := globalPackedFloat32ArrayMethodBindings.method_insert
 
     bx := cx.ptr()
@@ -23437,7 +23525,7 @@ func (cx *PackedFloat32Array) Insert(at_index int64,value float32,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&at_index))
     
     
@@ -23446,7 +23534,7 @@ func (cx *PackedFloat32Array) Insert(at_index int64,value float32,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -23485,9 +23573,9 @@ func (cx *PackedFloat32Array) Fill(value float32,)  {
 
 /* Resize : resize
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat32Array) Resize(new_size int64,) int64 {
+func (cx *PackedFloat32Array) Resize(new_size int32,) int32 {
     mb := globalPackedFloat32ArrayMethodBindings.method_resize
 
     bx := cx.ptr()
@@ -23496,12 +23584,12 @@ func (cx *PackedFloat32Array) Resize(new_size int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&new_size))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -23579,7 +23667,7 @@ func (cx *PackedFloat32Array) Reverse()  {
  * is_vararg = false, is_static = false
  * goReturnType(PackedFloat32Array) -> PackedFloat32Array
  */
-func (cx *PackedFloat32Array) Slice(begin int64,end int64,) PackedFloat32Array {
+func (cx *PackedFloat32Array) Slice(begin int32,end int32,) PackedFloat32Array {
     mb := globalPackedFloat32ArrayMethodBindings.method_slice
 
     bx := cx.ptr()
@@ -23588,11 +23676,11 @@ func (cx *PackedFloat32Array) Slice(begin int64,end int64,) PackedFloat32Array {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&begin))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&end))
     
     
@@ -23646,9 +23734,9 @@ func (cx *PackedFloat32Array) Sort()  {
 
 /* Bsearch : bsearch
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat32Array) Bsearch(value float32,before bool,) int64 {
+func (cx *PackedFloat32Array) Bsearch(value float32,before bool,) int32 {
     mb := globalPackedFloat32ArrayMethodBindings.method_bsearch
 
     bx := cx.ptr()
@@ -23666,7 +23754,7 @@ func (cx *PackedFloat32Array) Bsearch(value float32,before bool,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -23697,9 +23785,9 @@ func (cx *PackedFloat32Array) Duplicate() PackedFloat32Array {
 
 /* Find : find
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat32Array) Find(value float32,from int64,) int64 {
+func (cx *PackedFloat32Array) Find(value float32,from int32,) int32 {
     mb := globalPackedFloat32ArrayMethodBindings.method_find
 
     bx := cx.ptr()
@@ -23712,12 +23800,12 @@ func (cx *PackedFloat32Array) Find(value float32,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -23729,9 +23817,9 @@ func (cx *PackedFloat32Array) Find(value float32,from int64,) int64 {
 
 /* Rfind : rfind
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat32Array) Rfind(value float32,from int64,) int64 {
+func (cx *PackedFloat32Array) Rfind(value float32,from int32,) int32 {
     mb := globalPackedFloat32ArrayMethodBindings.method_rfind
 
     bx := cx.ptr()
@@ -23744,12 +23832,12 @@ func (cx *PackedFloat32Array) Rfind(value float32,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -23761,9 +23849,9 @@ func (cx *PackedFloat32Array) Rfind(value float32,from int64,) int64 {
 
 /* Count : count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat32Array) Count(value float32,) int64 {
+func (cx *PackedFloat32Array) Count(value float32,) int32 {
     mb := globalPackedFloat32ArrayMethodBindings.method_count
 
     bx := cx.ptr()
@@ -23777,7 +23865,7 @@ func (cx *PackedFloat32Array) Count(value float32,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -23787,6 +23875,28 @@ func (cx *PackedFloat32Array) Count(value float32,) int64 {
 }
 
 
+func (cx *PackedFloat32Array) GetIndexed(i int64) float32 {
+
+    var ret float32
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedFloat32ArrayMethodBindings.indexed_getter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
+    )
+
+	return ret
+}
+
+func (cx *PackedFloat32Array) SetIndexed(i int64, value float32) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedFloat32ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
+}
 // members
 
 
@@ -23975,15 +24085,15 @@ func (cx *PackedFloat64Array) Destroy() {
 
 /* Size : size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat64Array) Size() int64 {
+func (cx *PackedFloat64Array) Size() int32 {
     mb := globalPackedFloat64ArrayMethodBindings.method_size
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -24015,7 +24125,7 @@ func (cx *PackedFloat64Array) IsEmpty() bool {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedFloat64Array) Set(index int64,value float32,)  {
+func (cx *PackedFloat64Array) Set(index int32,value float32,)  {
     mb := globalPackedFloat64ArrayMethodBindings.method_set
 
     bx := cx.ptr()
@@ -24024,7 +24134,7 @@ func (cx *PackedFloat64Array) Set(index int64,value float32,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -24129,7 +24239,7 @@ func (cx *PackedFloat64Array) AppendArray(array PackedFloat64Array,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedFloat64Array) RemoveAt(index int64,)  {
+func (cx *PackedFloat64Array) RemoveAt(index int32,)  {
     mb := globalPackedFloat64ArrayMethodBindings.method_remove_at
 
     bx := cx.ptr()
@@ -24138,7 +24248,7 @@ func (cx *PackedFloat64Array) RemoveAt(index int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -24154,9 +24264,9 @@ func (cx *PackedFloat64Array) RemoveAt(index int64,)  {
 
 /* Insert : insert
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat64Array) Insert(at_index int64,value float32,) int64 {
+func (cx *PackedFloat64Array) Insert(at_index int32,value float32,) int32 {
     mb := globalPackedFloat64ArrayMethodBindings.method_insert
 
     bx := cx.ptr()
@@ -24165,7 +24275,7 @@ func (cx *PackedFloat64Array) Insert(at_index int64,value float32,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&at_index))
     
     
@@ -24174,7 +24284,7 @@ func (cx *PackedFloat64Array) Insert(at_index int64,value float32,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -24213,9 +24323,9 @@ func (cx *PackedFloat64Array) Fill(value float32,)  {
 
 /* Resize : resize
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat64Array) Resize(new_size int64,) int64 {
+func (cx *PackedFloat64Array) Resize(new_size int32,) int32 {
     mb := globalPackedFloat64ArrayMethodBindings.method_resize
 
     bx := cx.ptr()
@@ -24224,12 +24334,12 @@ func (cx *PackedFloat64Array) Resize(new_size int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&new_size))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -24307,7 +24417,7 @@ func (cx *PackedFloat64Array) Reverse()  {
  * is_vararg = false, is_static = false
  * goReturnType(PackedFloat64Array) -> PackedFloat64Array
  */
-func (cx *PackedFloat64Array) Slice(begin int64,end int64,) PackedFloat64Array {
+func (cx *PackedFloat64Array) Slice(begin int32,end int32,) PackedFloat64Array {
     mb := globalPackedFloat64ArrayMethodBindings.method_slice
 
     bx := cx.ptr()
@@ -24316,11 +24426,11 @@ func (cx *PackedFloat64Array) Slice(begin int64,end int64,) PackedFloat64Array {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&begin))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&end))
     
     
@@ -24374,9 +24484,9 @@ func (cx *PackedFloat64Array) Sort()  {
 
 /* Bsearch : bsearch
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat64Array) Bsearch(value float32,before bool,) int64 {
+func (cx *PackedFloat64Array) Bsearch(value float32,before bool,) int32 {
     mb := globalPackedFloat64ArrayMethodBindings.method_bsearch
 
     bx := cx.ptr()
@@ -24394,7 +24504,7 @@ func (cx *PackedFloat64Array) Bsearch(value float32,before bool,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -24425,9 +24535,9 @@ func (cx *PackedFloat64Array) Duplicate() PackedFloat64Array {
 
 /* Find : find
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat64Array) Find(value float32,from int64,) int64 {
+func (cx *PackedFloat64Array) Find(value float32,from int32,) int32 {
     mb := globalPackedFloat64ArrayMethodBindings.method_find
 
     bx := cx.ptr()
@@ -24440,12 +24550,12 @@ func (cx *PackedFloat64Array) Find(value float32,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -24457,9 +24567,9 @@ func (cx *PackedFloat64Array) Find(value float32,from int64,) int64 {
 
 /* Rfind : rfind
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat64Array) Rfind(value float32,from int64,) int64 {
+func (cx *PackedFloat64Array) Rfind(value float32,from int32,) int32 {
     mb := globalPackedFloat64ArrayMethodBindings.method_rfind
 
     bx := cx.ptr()
@@ -24472,12 +24582,12 @@ func (cx *PackedFloat64Array) Rfind(value float32,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -24489,9 +24599,9 @@ func (cx *PackedFloat64Array) Rfind(value float32,from int64,) int64 {
 
 /* Count : count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedFloat64Array) Count(value float32,) int64 {
+func (cx *PackedFloat64Array) Count(value float32,) int32 {
     mb := globalPackedFloat64ArrayMethodBindings.method_count
 
     bx := cx.ptr()
@@ -24505,7 +24615,7 @@ func (cx *PackedFloat64Array) Count(value float32,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -24515,6 +24625,28 @@ func (cx *PackedFloat64Array) Count(value float32,) int64 {
 }
 
 
+func (cx *PackedFloat64Array) GetIndexed(i int64) float32 {
+
+    var ret float32
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedFloat64ArrayMethodBindings.indexed_getter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
+    )
+
+	return ret
+}
+
+func (cx *PackedFloat64Array) SetIndexed(i int64, value float32) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedFloat64ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
+}
 // members
 
 
@@ -24703,15 +24835,15 @@ func (cx *PackedStringArray) Destroy() {
 
 /* Size : size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedStringArray) Size() int64 {
+func (cx *PackedStringArray) Size() int32 {
     mb := globalPackedStringArrayMethodBindings.method_size
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -24743,7 +24875,7 @@ func (cx *PackedStringArray) IsEmpty() bool {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedStringArray) Set(index int64,value String,)  {
+func (cx *PackedStringArray) Set(index int32,value String,)  {
     mb := globalPackedStringArrayMethodBindings.method_set
 
     bx := cx.ptr()
@@ -24752,7 +24884,7 @@ func (cx *PackedStringArray) Set(index int64,value String,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -24857,7 +24989,7 @@ func (cx *PackedStringArray) AppendArray(array PackedStringArray,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedStringArray) RemoveAt(index int64,)  {
+func (cx *PackedStringArray) RemoveAt(index int32,)  {
     mb := globalPackedStringArrayMethodBindings.method_remove_at
 
     bx := cx.ptr()
@@ -24866,7 +24998,7 @@ func (cx *PackedStringArray) RemoveAt(index int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -24882,9 +25014,9 @@ func (cx *PackedStringArray) RemoveAt(index int64,)  {
 
 /* Insert : insert
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedStringArray) Insert(at_index int64,value String,) int64 {
+func (cx *PackedStringArray) Insert(at_index int32,value String,) int32 {
     mb := globalPackedStringArrayMethodBindings.method_insert
 
     bx := cx.ptr()
@@ -24893,7 +25025,7 @@ func (cx *PackedStringArray) Insert(at_index int64,value String,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&at_index))
     
     
@@ -24902,7 +25034,7 @@ func (cx *PackedStringArray) Insert(at_index int64,value String,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -24941,9 +25073,9 @@ func (cx *PackedStringArray) Fill(value String,)  {
 
 /* Resize : resize
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedStringArray) Resize(new_size int64,) int64 {
+func (cx *PackedStringArray) Resize(new_size int32,) int32 {
     mb := globalPackedStringArrayMethodBindings.method_resize
 
     bx := cx.ptr()
@@ -24952,12 +25084,12 @@ func (cx *PackedStringArray) Resize(new_size int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&new_size))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -25035,7 +25167,7 @@ func (cx *PackedStringArray) Reverse()  {
  * is_vararg = false, is_static = false
  * goReturnType(PackedStringArray) -> PackedStringArray
  */
-func (cx *PackedStringArray) Slice(begin int64,end int64,) PackedStringArray {
+func (cx *PackedStringArray) Slice(begin int32,end int32,) PackedStringArray {
     mb := globalPackedStringArrayMethodBindings.method_slice
 
     bx := cx.ptr()
@@ -25044,11 +25176,11 @@ func (cx *PackedStringArray) Slice(begin int64,end int64,) PackedStringArray {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&begin))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&end))
     
     
@@ -25102,9 +25234,9 @@ func (cx *PackedStringArray) Sort()  {
 
 /* Bsearch : bsearch
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedStringArray) Bsearch(value String,before bool,) int64 {
+func (cx *PackedStringArray) Bsearch(value String,before bool,) int32 {
     mb := globalPackedStringArrayMethodBindings.method_bsearch
 
     bx := cx.ptr()
@@ -25122,7 +25254,7 @@ func (cx *PackedStringArray) Bsearch(value String,before bool,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -25153,9 +25285,9 @@ func (cx *PackedStringArray) Duplicate() PackedStringArray {
 
 /* Find : find
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedStringArray) Find(value String,from int64,) int64 {
+func (cx *PackedStringArray) Find(value String,from int32,) int32 {
     mb := globalPackedStringArrayMethodBindings.method_find
 
     bx := cx.ptr()
@@ -25168,12 +25300,12 @@ func (cx *PackedStringArray) Find(value String,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -25185,9 +25317,9 @@ func (cx *PackedStringArray) Find(value String,from int64,) int64 {
 
 /* Rfind : rfind
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedStringArray) Rfind(value String,from int64,) int64 {
+func (cx *PackedStringArray) Rfind(value String,from int32,) int32 {
     mb := globalPackedStringArrayMethodBindings.method_rfind
 
     bx := cx.ptr()
@@ -25200,12 +25332,12 @@ func (cx *PackedStringArray) Rfind(value String,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -25217,9 +25349,9 @@ func (cx *PackedStringArray) Rfind(value String,from int64,) int64 {
 
 /* Count : count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedStringArray) Count(value String,) int64 {
+func (cx *PackedStringArray) Count(value String,) int32 {
     mb := globalPackedStringArrayMethodBindings.method_count
 
     bx := cx.ptr()
@@ -25233,7 +25365,7 @@ func (cx *PackedStringArray) Count(value String,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -25243,6 +25375,28 @@ func (cx *PackedStringArray) Count(value String,) int64 {
 }
 
 
+func (cx *PackedStringArray) GetIndexed(i int64) String {
+
+    var ret String
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedStringArrayMethodBindings.indexed_getter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
+    )
+
+	return ret
+}
+
+func (cx *PackedStringArray) SetIndexed(i int64, value String) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedStringArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
+}
 // members
 
 
@@ -25433,15 +25587,15 @@ func (cx *PackedVector2Array) Destroy() {
 
 /* Size : size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector2Array) Size() int64 {
+func (cx *PackedVector2Array) Size() int32 {
     mb := globalPackedVector2ArrayMethodBindings.method_size
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -25473,7 +25627,7 @@ func (cx *PackedVector2Array) IsEmpty() bool {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedVector2Array) Set(index int64,value Vector2,)  {
+func (cx *PackedVector2Array) Set(index int32,value Vector2,)  {
     mb := globalPackedVector2ArrayMethodBindings.method_set
 
     bx := cx.ptr()
@@ -25482,7 +25636,7 @@ func (cx *PackedVector2Array) Set(index int64,value Vector2,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -25587,7 +25741,7 @@ func (cx *PackedVector2Array) AppendArray(array PackedVector2Array,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedVector2Array) RemoveAt(index int64,)  {
+func (cx *PackedVector2Array) RemoveAt(index int32,)  {
     mb := globalPackedVector2ArrayMethodBindings.method_remove_at
 
     bx := cx.ptr()
@@ -25596,7 +25750,7 @@ func (cx *PackedVector2Array) RemoveAt(index int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -25612,9 +25766,9 @@ func (cx *PackedVector2Array) RemoveAt(index int64,)  {
 
 /* Insert : insert
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector2Array) Insert(at_index int64,value Vector2,) int64 {
+func (cx *PackedVector2Array) Insert(at_index int32,value Vector2,) int32 {
     mb := globalPackedVector2ArrayMethodBindings.method_insert
 
     bx := cx.ptr()
@@ -25623,7 +25777,7 @@ func (cx *PackedVector2Array) Insert(at_index int64,value Vector2,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&at_index))
     
     
@@ -25632,7 +25786,7 @@ func (cx *PackedVector2Array) Insert(at_index int64,value Vector2,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -25671,9 +25825,9 @@ func (cx *PackedVector2Array) Fill(value Vector2,)  {
 
 /* Resize : resize
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector2Array) Resize(new_size int64,) int64 {
+func (cx *PackedVector2Array) Resize(new_size int32,) int32 {
     mb := globalPackedVector2ArrayMethodBindings.method_resize
 
     bx := cx.ptr()
@@ -25682,12 +25836,12 @@ func (cx *PackedVector2Array) Resize(new_size int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&new_size))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -25765,7 +25919,7 @@ func (cx *PackedVector2Array) Reverse()  {
  * is_vararg = false, is_static = false
  * goReturnType(PackedVector2Array) -> PackedVector2Array
  */
-func (cx *PackedVector2Array) Slice(begin int64,end int64,) PackedVector2Array {
+func (cx *PackedVector2Array) Slice(begin int32,end int32,) PackedVector2Array {
     mb := globalPackedVector2ArrayMethodBindings.method_slice
 
     bx := cx.ptr()
@@ -25774,11 +25928,11 @@ func (cx *PackedVector2Array) Slice(begin int64,end int64,) PackedVector2Array {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&begin))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&end))
     
     
@@ -25832,9 +25986,9 @@ func (cx *PackedVector2Array) Sort()  {
 
 /* Bsearch : bsearch
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector2Array) Bsearch(value Vector2,before bool,) int64 {
+func (cx *PackedVector2Array) Bsearch(value Vector2,before bool,) int32 {
     mb := globalPackedVector2ArrayMethodBindings.method_bsearch
 
     bx := cx.ptr()
@@ -25852,7 +26006,7 @@ func (cx *PackedVector2Array) Bsearch(value Vector2,before bool,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -25883,9 +26037,9 @@ func (cx *PackedVector2Array) Duplicate() PackedVector2Array {
 
 /* Find : find
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector2Array) Find(value Vector2,from int64,) int64 {
+func (cx *PackedVector2Array) Find(value Vector2,from int32,) int32 {
     mb := globalPackedVector2ArrayMethodBindings.method_find
 
     bx := cx.ptr()
@@ -25898,12 +26052,12 @@ func (cx *PackedVector2Array) Find(value Vector2,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -25915,9 +26069,9 @@ func (cx *PackedVector2Array) Find(value Vector2,from int64,) int64 {
 
 /* Rfind : rfind
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector2Array) Rfind(value Vector2,from int64,) int64 {
+func (cx *PackedVector2Array) Rfind(value Vector2,from int32,) int32 {
     mb := globalPackedVector2ArrayMethodBindings.method_rfind
 
     bx := cx.ptr()
@@ -25930,12 +26084,12 @@ func (cx *PackedVector2Array) Rfind(value Vector2,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -25947,9 +26101,9 @@ func (cx *PackedVector2Array) Rfind(value Vector2,from int64,) int64 {
 
 /* Count : count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector2Array) Count(value Vector2,) int64 {
+func (cx *PackedVector2Array) Count(value Vector2,) int32 {
     mb := globalPackedVector2ArrayMethodBindings.method_count
 
     bx := cx.ptr()
@@ -25963,7 +26117,7 @@ func (cx *PackedVector2Array) Count(value Vector2,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -25973,6 +26127,28 @@ func (cx *PackedVector2Array) Count(value Vector2,) int64 {
 }
 
 
+func (cx *PackedVector2Array) GetIndexed(i int64) Vector2 {
+
+    var ret Vector2
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedVector2ArrayMethodBindings.indexed_getter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
+    )
+
+	return ret
+}
+
+func (cx *PackedVector2Array) SetIndexed(i int64, value Vector2) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedVector2ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
+}
 // members
 
 
@@ -26169,15 +26345,15 @@ func (cx *PackedVector3Array) Destroy() {
 
 /* Size : size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector3Array) Size() int64 {
+func (cx *PackedVector3Array) Size() int32 {
     mb := globalPackedVector3ArrayMethodBindings.method_size
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -26209,7 +26385,7 @@ func (cx *PackedVector3Array) IsEmpty() bool {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedVector3Array) Set(index int64,value Vector3,)  {
+func (cx *PackedVector3Array) Set(index int32,value Vector3,)  {
     mb := globalPackedVector3ArrayMethodBindings.method_set
 
     bx := cx.ptr()
@@ -26218,7 +26394,7 @@ func (cx *PackedVector3Array) Set(index int64,value Vector3,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -26323,7 +26499,7 @@ func (cx *PackedVector3Array) AppendArray(array PackedVector3Array,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedVector3Array) RemoveAt(index int64,)  {
+func (cx *PackedVector3Array) RemoveAt(index int32,)  {
     mb := globalPackedVector3ArrayMethodBindings.method_remove_at
 
     bx := cx.ptr()
@@ -26332,7 +26508,7 @@ func (cx *PackedVector3Array) RemoveAt(index int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -26348,9 +26524,9 @@ func (cx *PackedVector3Array) RemoveAt(index int64,)  {
 
 /* Insert : insert
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector3Array) Insert(at_index int64,value Vector3,) int64 {
+func (cx *PackedVector3Array) Insert(at_index int32,value Vector3,) int32 {
     mb := globalPackedVector3ArrayMethodBindings.method_insert
 
     bx := cx.ptr()
@@ -26359,7 +26535,7 @@ func (cx *PackedVector3Array) Insert(at_index int64,value Vector3,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&at_index))
     
     
@@ -26368,7 +26544,7 @@ func (cx *PackedVector3Array) Insert(at_index int64,value Vector3,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -26407,9 +26583,9 @@ func (cx *PackedVector3Array) Fill(value Vector3,)  {
 
 /* Resize : resize
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector3Array) Resize(new_size int64,) int64 {
+func (cx *PackedVector3Array) Resize(new_size int32,) int32 {
     mb := globalPackedVector3ArrayMethodBindings.method_resize
 
     bx := cx.ptr()
@@ -26418,12 +26594,12 @@ func (cx *PackedVector3Array) Resize(new_size int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&new_size))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -26501,7 +26677,7 @@ func (cx *PackedVector3Array) Reverse()  {
  * is_vararg = false, is_static = false
  * goReturnType(PackedVector3Array) -> PackedVector3Array
  */
-func (cx *PackedVector3Array) Slice(begin int64,end int64,) PackedVector3Array {
+func (cx *PackedVector3Array) Slice(begin int32,end int32,) PackedVector3Array {
     mb := globalPackedVector3ArrayMethodBindings.method_slice
 
     bx := cx.ptr()
@@ -26510,11 +26686,11 @@ func (cx *PackedVector3Array) Slice(begin int64,end int64,) PackedVector3Array {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&begin))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&end))
     
     
@@ -26568,9 +26744,9 @@ func (cx *PackedVector3Array) Sort()  {
 
 /* Bsearch : bsearch
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector3Array) Bsearch(value Vector3,before bool,) int64 {
+func (cx *PackedVector3Array) Bsearch(value Vector3,before bool,) int32 {
     mb := globalPackedVector3ArrayMethodBindings.method_bsearch
 
     bx := cx.ptr()
@@ -26588,7 +26764,7 @@ func (cx *PackedVector3Array) Bsearch(value Vector3,before bool,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -26619,9 +26795,9 @@ func (cx *PackedVector3Array) Duplicate() PackedVector3Array {
 
 /* Find : find
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector3Array) Find(value Vector3,from int64,) int64 {
+func (cx *PackedVector3Array) Find(value Vector3,from int32,) int32 {
     mb := globalPackedVector3ArrayMethodBindings.method_find
 
     bx := cx.ptr()
@@ -26634,12 +26810,12 @@ func (cx *PackedVector3Array) Find(value Vector3,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -26651,9 +26827,9 @@ func (cx *PackedVector3Array) Find(value Vector3,from int64,) int64 {
 
 /* Rfind : rfind
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector3Array) Rfind(value Vector3,from int64,) int64 {
+func (cx *PackedVector3Array) Rfind(value Vector3,from int32,) int32 {
     mb := globalPackedVector3ArrayMethodBindings.method_rfind
 
     bx := cx.ptr()
@@ -26666,12 +26842,12 @@ func (cx *PackedVector3Array) Rfind(value Vector3,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -26683,9 +26859,9 @@ func (cx *PackedVector3Array) Rfind(value Vector3,from int64,) int64 {
 
 /* Count : count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedVector3Array) Count(value Vector3,) int64 {
+func (cx *PackedVector3Array) Count(value Vector3,) int32 {
     mb := globalPackedVector3ArrayMethodBindings.method_count
 
     bx := cx.ptr()
@@ -26699,7 +26875,7 @@ func (cx *PackedVector3Array) Count(value Vector3,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -26709,6 +26885,28 @@ func (cx *PackedVector3Array) Count(value Vector3,) int64 {
 }
 
 
+func (cx *PackedVector3Array) GetIndexed(i int64) Vector3 {
+
+    var ret Vector3
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedVector3ArrayMethodBindings.indexed_getter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
+    )
+
+	return ret
+}
+
+func (cx *PackedVector3Array) SetIndexed(i int64, value Vector3) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedVector3ArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
+}
 // members
 
 
@@ -26903,15 +27101,15 @@ func (cx *PackedColorArray) Destroy() {
 
 /* Size : size
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedColorArray) Size() int64 {
+func (cx *PackedColorArray) Size() int32 {
     mb := globalPackedColorArrayMethodBindings.method_size
 
     bx := cx.ptr()
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, nil)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 
     return ret
     
@@ -26943,7 +27141,7 @@ func (cx *PackedColorArray) IsEmpty() bool {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedColorArray) Set(index int64,value Color,)  {
+func (cx *PackedColorArray) Set(index int32,value Color,)  {
     mb := globalPackedColorArrayMethodBindings.method_set
 
     bx := cx.ptr()
@@ -26952,7 +27150,7 @@ func (cx *PackedColorArray) Set(index int64,value Color,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -27057,7 +27255,7 @@ func (cx *PackedColorArray) AppendArray(array PackedColorArray,)  {
  * is_vararg = false, is_static = false
  * goReturnType() -> 
  */
-func (cx *PackedColorArray) RemoveAt(index int64,)  {
+func (cx *PackedColorArray) RemoveAt(index int32,)  {
     mb := globalPackedColorArrayMethodBindings.method_remove_at
 
     bx := cx.ptr()
@@ -27066,7 +27264,7 @@ func (cx *PackedColorArray) RemoveAt(index int64,)  {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&index))
     
     
@@ -27082,9 +27280,9 @@ func (cx *PackedColorArray) RemoveAt(index int64,)  {
 
 /* Insert : insert
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedColorArray) Insert(at_index int64,value Color,) int64 {
+func (cx *PackedColorArray) Insert(at_index int32,value Color,) int32 {
     mb := globalPackedColorArrayMethodBindings.method_insert
 
     bx := cx.ptr()
@@ -27093,7 +27291,7 @@ func (cx *PackedColorArray) Insert(at_index int64,value Color,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&at_index))
     
     
@@ -27102,7 +27300,7 @@ func (cx *PackedColorArray) Insert(at_index int64,value Color,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -27141,9 +27339,9 @@ func (cx *PackedColorArray) Fill(value Color,)  {
 
 /* Resize : resize
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedColorArray) Resize(new_size int64,) int64 {
+func (cx *PackedColorArray) Resize(new_size int32,) int32 {
     mb := globalPackedColorArrayMethodBindings.method_resize
 
     bx := cx.ptr()
@@ -27152,12 +27350,12 @@ func (cx *PackedColorArray) Resize(new_size int64,) int64 {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&new_size))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -27235,7 +27433,7 @@ func (cx *PackedColorArray) Reverse()  {
  * is_vararg = false, is_static = false
  * goReturnType(PackedColorArray) -> PackedColorArray
  */
-func (cx *PackedColorArray) Slice(begin int64,end int64,) PackedColorArray {
+func (cx *PackedColorArray) Slice(begin int32,end int32,) PackedColorArray {
     mb := globalPackedColorArrayMethodBindings.method_slice
 
     bx := cx.ptr()
@@ -27244,11 +27442,11 @@ func (cx *PackedColorArray) Slice(begin int64,end int64,) PackedColorArray {
 
 	args := (*[MAX_ARG_COUNT]GDNativeTypePtr)(argBytes)
     
-    // Int64Encoder
+    // Int32Encoder
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&begin))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&end))
     
     
@@ -27302,9 +27500,9 @@ func (cx *PackedColorArray) Sort()  {
 
 /* Bsearch : bsearch
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedColorArray) Bsearch(value Color,before bool,) int64 {
+func (cx *PackedColorArray) Bsearch(value Color,before bool,) int32 {
     mb := globalPackedColorArrayMethodBindings.method_bsearch
 
     bx := cx.ptr()
@@ -27322,7 +27520,7 @@ func (cx *PackedColorArray) Bsearch(value Color,before bool,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -27353,9 +27551,9 @@ func (cx *PackedColorArray) Duplicate() PackedColorArray {
 
 /* Find : find
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedColorArray) Find(value Color,from int64,) int64 {
+func (cx *PackedColorArray) Find(value Color,from int32,) int32 {
     mb := globalPackedColorArrayMethodBindings.method_find
 
     bx := cx.ptr()
@@ -27368,12 +27566,12 @@ func (cx *PackedColorArray) Find(value Color,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -27385,9 +27583,9 @@ func (cx *PackedColorArray) Find(value Color,from int64,) int64 {
 
 /* Rfind : rfind
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedColorArray) Rfind(value Color,from int64,) int64 {
+func (cx *PackedColorArray) Rfind(value Color,from int32,) int32 {
     mb := globalPackedColorArrayMethodBindings.method_rfind
 
     bx := cx.ptr()
@@ -27400,12 +27598,12 @@ func (cx *PackedColorArray) Rfind(value Color,from int64,) int64 {
     args[0] = (GDNativeTypePtr)(unsafe.Pointer(&value))
     
     
-    // Int64Encoder
+    // Int32Encoder
     args[1] = (GDNativeTypePtr)(unsafe.Pointer(&from))
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -27417,9 +27615,9 @@ func (cx *PackedColorArray) Rfind(value Color,from int64,) int64 {
 
 /* Count : count
  * is_vararg = false, is_static = false
- * goReturnType(int) -> int64
+ * goReturnType(int) -> int32
  */
-func (cx *PackedColorArray) Count(value Color,) int64 {
+func (cx *PackedColorArray) Count(value Color,) int32 {
     mb := globalPackedColorArrayMethodBindings.method_count
 
     bx := cx.ptr()
@@ -27433,7 +27631,7 @@ func (cx *PackedColorArray) Count(value Color,) int64 {
     
     
 
-    ret := callBuiltinMethodPtrRet[int64](mb, bx, args)
+    ret := callBuiltinMethodPtrRet[int32](mb, bx, args)
 
     C.free(argBytes)
     return ret
@@ -27443,6 +27641,28 @@ func (cx *PackedColorArray) Count(value Color,) int64 {
 }
 
 
+func (cx *PackedColorArray) GetIndexed(i int64) Color {
+
+    var ret Color
+
+    CallFunc_GDNativePtrIndexedGetter(
+        globalPackedColorArrayMethodBindings.indexed_getter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&ret)),
+    )
+
+	return ret
+}
+
+func (cx *PackedColorArray) SetIndexed(i int64, value Color) {
+    CallFunc_GDNativePtrIndexedSetter(
+        globalPackedColorArrayMethodBindings.indexed_setter,
+        (GDNativeTypePtr)(unsafe.Pointer(cx)),
+        (GDNativeInt)(i),
+        (GDNativeTypePtr)(unsafe.Pointer(&value)),
+    )
+}
 // members
 
 

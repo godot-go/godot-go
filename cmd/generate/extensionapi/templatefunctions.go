@@ -36,7 +36,7 @@ func goVariantConstructor(t, innerText string) string {
 	case "float", "real_t", "double":
 		return fmt.Sprintf("NewVariantFloat64(%s)", innerText)
 	case "int", "uint64_t":
-		return fmt.Sprintf("NewVariantInt64(%s)", innerText)
+		return fmt.Sprintf("NewVariantInt64(int64(%s))", innerText)
 	case "bool":
 		return fmt.Sprintf("NewVariantBool(%s)", innerText)
 	case "String":
@@ -137,7 +137,7 @@ func goArgumentType(t string) string {
 	case "double":
 		t = "float64"
 	case "int":
-		t = "int64"
+		t = "int32"
 	case "uint64_t":
 		t = "uint64"
 	case "bool":
@@ -235,6 +235,20 @@ func goClassEnumName(c, e, n string) string {
 		strings.ToUpper(strcase.ToSnake(e)),
 		strings.ToUpper(strcase.ToSnake(n)),
 	)
+}
+
+func snakeCase(v string) string {
+	ret := strcase.ToSnake(v)
+
+	ret = strings.Replace(ret, "_64_", "64_", 1)
+	ret = strings.Replace(ret, "_32_", "32_", 1)
+	ret = strings.Replace(ret, "_16_", "16_", 1)
+	ret = strings.Replace(ret, "_8_", "8_", 1)
+	ret = strings.Replace(ret, "_4_", "4_", 1)
+	ret = strings.Replace(ret, "_3_", "3_", 1)
+	ret = strings.Replace(ret, "_2_", "2_", 1)
+
+	return ret
 }
 
 func goClassConstantName(c string, n string) string {

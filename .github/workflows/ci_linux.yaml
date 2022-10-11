@@ -6,6 +6,7 @@ on:
       - "**/*.go"
       - "**/*.c"
       - "**/*.h"
+      - "**/*.gdextension"
       - ".github/workflows/ci_linux.yaml"
 
   push:
@@ -15,6 +16,7 @@ on:
       - "**/*.go"
       - "**/*.c"
       - "**/*.h"
+      - "**/*.gdextension"
       - ".github/workflows/ci_linux.yaml"
 
 jobs:

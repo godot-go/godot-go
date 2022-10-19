@@ -112,8 +112,12 @@ func {{ lowerFirstChar $c.Name }}InitBindings() {
     {{ range $j, $op := $c.Operators -}}
         {{ $enumOpName := (print "GDNATIVE_VARIANT_OP_" (upper (getOperatorIdName $op.Name))) -}}
         {{ if gt (len $op.RightType) 0 -}}
+        {{ if eq $op.RightType "Variant" -}}
+        global{{ $c.Name }}MethodBindings.operator_{{ getOperatorIdName $op.Name }}_{{ $op.RightType }} = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, {{ $enumOpName }}, {{ $enumTypeName }}, GDNATIVE_VARIANT_TYPE_NIL)
+        {{ else -}}
         {{ $enumRightTypeName := (print "GDNATIVE_VARIANT_TYPE_" (screamingSnake $op.RightType)) -}}
         global{{ $c.Name }}MethodBindings.operator_{{ getOperatorIdName $op.Name }}_{{ $op.RightType }} = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, {{ $enumOpName }}, {{ $enumTypeName }}, {{ $enumRightTypeName }})
+        {{ end -}}
         {{ else -}}
         global{{ $c.Name }}MethodBindings.operator_{{ getOperatorIdName $op.Name }} = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, {{ $enumOpName }}, {{ $enumTypeName }}, GDNATIVE_VARIANT_TYPE_NIL)
         {{ end -}}

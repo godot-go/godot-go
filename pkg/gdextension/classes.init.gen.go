@@ -1222,12 +1222,6 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("FontVariation",
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_FontVariation),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_FontVariation),
 		))
-gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("FramebufferCacheRD",
-		NewGDNativeInstanceBindingCallbacks(
-			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_FramebufferCacheRD),
-			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_FramebufferCacheRD),
-			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_FramebufferCacheRD),
-		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("GDScript",
 		NewGDNativeInstanceBindingCallbacks(
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_GDScript),
@@ -1329,6 +1323,12 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("GLTFTexture",
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_GLTFTexture),
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_GLTFTexture),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_GLTFTexture),
+		))
+gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("GLTFTextureSampler",
+		NewGDNativeInstanceBindingCallbacks(
+			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_GLTFTextureSampler),
+			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_GLTFTextureSampler),
+			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_GLTFTextureSampler),
 		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("GPUParticles2D",
 		NewGDNativeInstanceBindingCallbacks(
@@ -3868,12 +3868,6 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("UndoRedo",
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_UndoRedo),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_UndoRedo),
 		))
-gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("UniformSetCacheRD",
-		NewGDNativeInstanceBindingCallbacks(
-			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_UniformSetCacheRD),
-			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_UniformSetCacheRD),
-			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_UniformSetCacheRD),
-		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("VBoxContainer",
 		NewGDNativeInstanceBindingCallbacks(
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_VBoxContainer),
@@ -4648,12 +4642,6 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("WebRTCPeerConnectionExte
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_WebRTCPeerConnectionExtension),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_WebRTCPeerConnectionExtension),
 		))
-gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("WebSocketClient",
-		NewGDNativeInstanceBindingCallbacks(
-			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_WebSocketClient),
-			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_WebSocketClient),
-			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_WebSocketClient),
-		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("WebSocketMultiplayerPeer",
 		NewGDNativeInstanceBindingCallbacks(
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_WebSocketMultiplayerPeer),
@@ -4665,12 +4653,6 @@ gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("WebSocketPeer",
 			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_WebSocketPeer),
 			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_WebSocketPeer),
 			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_WebSocketPeer),
-		))
-gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("WebSocketServer",
-		NewGDNativeInstanceBindingCallbacks(
-			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_WebSocketServer),
-			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_WebSocketServer),
-			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_WebSocketServer),
 		))
 gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("WebXRInterface",
 		NewGDNativeInstanceBindingCallbacks(
@@ -4993,7 +4975,6 @@ gdNativeConstructors.Set("FogVolume", NewGDNativeClassFromFogVolumeOwner)
 gdNativeConstructors.Set("Font", NewGDNativeClassFromFontOwner)
 gdNativeConstructors.Set("FontFile", NewGDNativeClassFromFontFileOwner)
 gdNativeConstructors.Set("FontVariation", NewGDNativeClassFromFontVariationOwner)
-gdNativeConstructors.Set("FramebufferCacheRD", NewGDNativeClassFromFramebufferCacheRDOwner)
 gdNativeConstructors.Set("GDScript", NewGDNativeClassFromGDScriptOwner)
 gdNativeConstructors.Set("GDScriptNativeClass", NewGDNativeClassFromGDScriptNativeClassOwner)
 gdNativeConstructors.Set("GLTFAccessor", NewGDNativeClassFromGLTFAccessorOwner)
@@ -5011,6 +4992,7 @@ gdNativeConstructors.Set("GLTFSkin", NewGDNativeClassFromGLTFSkinOwner)
 gdNativeConstructors.Set("GLTFSpecGloss", NewGDNativeClassFromGLTFSpecGlossOwner)
 gdNativeConstructors.Set("GLTFState", NewGDNativeClassFromGLTFStateOwner)
 gdNativeConstructors.Set("GLTFTexture", NewGDNativeClassFromGLTFTextureOwner)
+gdNativeConstructors.Set("GLTFTextureSampler", NewGDNativeClassFromGLTFTextureSamplerOwner)
 gdNativeConstructors.Set("GPUParticles2D", NewGDNativeClassFromGPUParticles2DOwner)
 gdNativeConstructors.Set("GPUParticles3D", NewGDNativeClassFromGPUParticles3DOwner)
 gdNativeConstructors.Set("GPUParticlesAttractor3D", NewGDNativeClassFromGPUParticlesAttractor3DOwner)
@@ -5434,7 +5416,6 @@ gdNativeConstructors.Set("UDPServer", NewGDNativeClassFromUDPServerOwner)
 gdNativeConstructors.Set("UPNP", NewGDNativeClassFromUPNPOwner)
 gdNativeConstructors.Set("UPNPDevice", NewGDNativeClassFromUPNPDeviceOwner)
 gdNativeConstructors.Set("UndoRedo", NewGDNativeClassFromUndoRedoOwner)
-gdNativeConstructors.Set("UniformSetCacheRD", NewGDNativeClassFromUniformSetCacheRDOwner)
 gdNativeConstructors.Set("VBoxContainer", NewGDNativeClassFromVBoxContainerOwner)
 gdNativeConstructors.Set("VFlowContainer", NewGDNativeClassFromVFlowContainerOwner)
 gdNativeConstructors.Set("VScrollBar", NewGDNativeClassFromVScrollBarOwner)
@@ -5564,10 +5545,8 @@ gdNativeConstructors.Set("WebRTCDataChannelExtension", NewGDNativeClassFromWebRT
 gdNativeConstructors.Set("WebRTCMultiplayerPeer", NewGDNativeClassFromWebRTCMultiplayerPeerOwner)
 gdNativeConstructors.Set("WebRTCPeerConnection", NewGDNativeClassFromWebRTCPeerConnectionOwner)
 gdNativeConstructors.Set("WebRTCPeerConnectionExtension", NewGDNativeClassFromWebRTCPeerConnectionExtensionOwner)
-gdNativeConstructors.Set("WebSocketClient", NewGDNativeClassFromWebSocketClientOwner)
 gdNativeConstructors.Set("WebSocketMultiplayerPeer", NewGDNativeClassFromWebSocketMultiplayerPeerOwner)
 gdNativeConstructors.Set("WebSocketPeer", NewGDNativeClassFromWebSocketPeerOwner)
-gdNativeConstructors.Set("WebSocketServer", NewGDNativeClassFromWebSocketServerOwner)
 gdNativeConstructors.Set("WebXRInterface", NewGDNativeClassFromWebXRInterfaceOwner)
 gdNativeConstructors.Set("Window", NewGDNativeClassFromWindowOwner)
 gdNativeConstructors.Set("WorkerThreadPool", NewGDNativeClassFromWorkerThreadPoolOwner)

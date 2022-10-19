@@ -2017,16 +2017,6 @@ extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, 
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
 extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
 
-void *cgo_gdnative_class_binding_create_callback_FramebufferCacheRD(void *p_token, void *p_instance);
-void cgo_gdnative_class_binding_free_callback_FramebufferCacheRD(void *p_token, void *p_instance, void *p_binding);
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FramebufferCacheRD(void *p_token, void *p_instance, GDNativeBool p_reference);
-
-// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_FramebufferCacheRD;
-
-extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
 void *cgo_gdnative_class_binding_create_callback_GDScript(void *p_token, void *p_instance);
 void cgo_gdnative_class_binding_free_callback_GDScript(void *p_token, void *p_instance, void *p_binding);
 GDNativeBool cgo_gdnative_class_binding_reference_callback_GDScript(void *p_token, void *p_instance, GDNativeBool p_reference);
@@ -2192,6 +2182,16 @@ void cgo_gdnative_class_binding_free_callback_GLTFTexture(void *p_token, void *p
 GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFTexture(void *p_token, void *p_instance, GDNativeBool p_reference);
 
 // extern GDNativeInstanceBindingCallbacks ___binding_callbacks_GLTFTexture;
+
+extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
+extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
+extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
+
+void *cgo_gdnative_class_binding_create_callback_GLTFTextureSampler(void *p_token, void *p_instance);
+void cgo_gdnative_class_binding_free_callback_GLTFTextureSampler(void *p_token, void *p_instance, void *p_binding);
+GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFTextureSampler(void *p_token, void *p_instance, GDNativeBool p_reference);
+
+// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_GLTFTextureSampler;
 
 extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
@@ -6427,16 +6427,6 @@ extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, 
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
 extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
 
-void *cgo_gdnative_class_binding_create_callback_UniformSetCacheRD(void *p_token, void *p_instance);
-void cgo_gdnative_class_binding_free_callback_UniformSetCacheRD(void *p_token, void *p_instance, void *p_binding);
-GDNativeBool cgo_gdnative_class_binding_reference_callback_UniformSetCacheRD(void *p_token, void *p_instance, GDNativeBool p_reference);
-
-// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_UniformSetCacheRD;
-
-extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
 void *cgo_gdnative_class_binding_create_callback_VBoxContainer(void *p_token, void *p_instance);
 void cgo_gdnative_class_binding_free_callback_VBoxContainer(void *p_token, void *p_instance, void *p_binding);
 GDNativeBool cgo_gdnative_class_binding_reference_callback_VBoxContainer(void *p_token, void *p_instance, GDNativeBool p_reference);
@@ -7727,16 +7717,6 @@ extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, 
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
 extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
 
-void *cgo_gdnative_class_binding_create_callback_WebSocketClient(void *p_token, void *p_instance);
-void cgo_gdnative_class_binding_free_callback_WebSocketClient(void *p_token, void *p_instance, void *p_binding);
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebSocketClient(void *p_token, void *p_instance, GDNativeBool p_reference);
-
-// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_WebSocketClient;
-
-extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
 void *cgo_gdnative_class_binding_create_callback_WebSocketMultiplayerPeer(void *p_token, void *p_instance);
 void cgo_gdnative_class_binding_free_callback_WebSocketMultiplayerPeer(void *p_token, void *p_instance, void *p_binding);
 GDNativeBool cgo_gdnative_class_binding_reference_callback_WebSocketMultiplayerPeer(void *p_token, void *p_instance, GDNativeBool p_reference);
@@ -7752,16 +7732,6 @@ void cgo_gdnative_class_binding_free_callback_WebSocketPeer(void *p_token, void 
 GDNativeBool cgo_gdnative_class_binding_reference_callback_WebSocketPeer(void *p_token, void *p_instance, GDNativeBool p_reference);
 
 // extern GDNativeInstanceBindingCallbacks ___binding_callbacks_WebSocketPeer;
-
-extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDNativeBool GoCallback_GDNativeBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
-void *cgo_gdnative_class_binding_create_callback_WebSocketServer(void *p_token, void *p_instance);
-void cgo_gdnative_class_binding_free_callback_WebSocketServer(void *p_token, void *p_instance, void *p_binding);
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebSocketServer(void *p_token, void *p_instance, GDNativeBool p_reference);
-
-// extern GDNativeInstanceBindingCallbacks ___binding_callbacks_WebSocketServer;
 
 extern void *GoCallback_GDNativeBindingCreate(char *p_type_name, void *p_token, void *p_instance);
 extern void GoCallback_GDNativeBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);

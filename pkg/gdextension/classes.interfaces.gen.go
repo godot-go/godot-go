@@ -274,7 +274,7 @@ type AStarGrid2D interface {
 	GetPointPath(from_id Vector2i,to_id Vector2i,) PackedVector2Array
 	
 
-	GetIdPath(from_id Vector2i,to_id Vector2i,) PackedVector2Array
+	GetIdPath(from_id Vector2i,to_id Vector2i,) []Vector2i
 }
 type AcceptDialog interface {
 	
@@ -1261,12 +1261,6 @@ type AnimationNodeStateMachineTransition interface {
 	
 
 	GetAdvanceExpression() String
-	
-
-	SetAdvanceExpressionBaseNode(path NodePath,) 
-	
-
-	GetAdvanceExpressionBaseNode() NodePath
 }
 type AnimationNodeSync interface {
 	
@@ -1816,10 +1810,10 @@ type Area3D interface {
 	IsUsingReverbBus() bool
 	
 
-	SetReverbBus(name StringName,) 
+	SetReverbBusName(name StringName,) 
 	
 
-	GetReverbBus() StringName
+	GetReverbBusName() StringName
 	
 
 	SetReverbAmount(amount float32,) 
@@ -3267,10 +3261,10 @@ type AudioStreamPlayer3D interface {
 	GetStream() AudioStream
 	
 
-	SetUnitDb(unit_db float32,) 
+	SetVolumeDb(volume_db float32,) 
 	
 
-	GetUnitDb() float32
+	GetVolumeDb() float32
 	
 
 	SetUnitSize(unit_size float32,) 
@@ -3592,12 +3586,6 @@ type BaseButton interface {
 	
 
 	GetButtonGroup() ButtonGroup
-	
-
-	SetShortcutContext(node Node,) 
-	
-
-	GetShortcutContext() Node
 }
 type BaseMaterial3D interface {
 	
@@ -3973,7 +3961,7 @@ type BaseMaterial3D interface {
 	GetRefractionTextureChannel() BaseMaterial3DTextureChannel
 	
 
-	SetProximityFade(enabled bool,) 
+	SetProximityFadeEnabled(enabled bool,) 
 	
 
 	IsProximityFadeEnabled() bool
@@ -5250,16 +5238,28 @@ type Camera2D interface {
 	GetCustomViewport() Node
 	
 
-	SetFollowSmoothing(follow_smoothing float32,) 
+	SetPositionSmoothingSpeed(position_smoothing_speed float32,) 
 	
 
-	GetFollowSmoothing() float32
+	GetPositionSmoothingSpeed() float32
 	
 
-	SetEnableFollowSmoothing(follow_smoothing bool,) 
+	SetPositionSmoothingEnabled(position_smoothing_speed bool,) 
 	
 
-	IsFollowSmoothingEnabled() bool
+	IsPositionSmoothingEnabled() bool
+	
+
+	SetRotationSmoothingEnabled(enabled bool,) 
+	
+
+	IsRotationSmoothingEnabled() bool
+	
+
+	SetRotationSmoothingSpeed(speed float32,) 
+	
+
+	GetRotationSmoothingSpeed() float32
 	
 
 	ForceUpdateScroll() 
@@ -7400,6 +7400,12 @@ type CollisionShape2D interface {
 	
 
 	GetOneWayCollisionMargin() float32
+	
+
+	SetDebugColor(color Color,) 
+	
+
+	GetDebugColor() Color
 }
 type CollisionShape3D interface {
 	
@@ -7477,6 +7483,15 @@ type ColorPicker interface {
 	
 
 	GetPresets() PackedColorArray
+	
+
+	AddRecentPreset(color Color,) 
+	
+
+	EraseRecentPreset(color Color,) 
+	
+
+	GetRecentPresets() PackedColorArray
 	
 
 	SetPickerShape(shape ColorPickerPickerShapeType,) 
@@ -8105,6 +8120,12 @@ type Control interface {
 	
 
 	WarpMouse(position Vector2,) 
+	
+
+	SetShortcutContext(node Node,) 
+	
+
+	GetShortcutContext() Node
 	
 
 	UpdateMinimumSize() 
@@ -9207,7 +9228,7 @@ type DisplayServer interface {
 	WindowSetWindowButtonsOffset(offset Vector2i,window_id int32,) 
 	
 
-	WindowGetSafeTitleMargins(window_id int32,) Vector2i
+	WindowGetSafeTitleMargins(window_id int32,) Vector3i
 	
 
 	WindowRequestAttention(window_id int32,) 
@@ -9503,10 +9524,10 @@ type Engine interface {
 	GetPhysicsInterpolationFraction() float32
 	
 
-	SetTargetFps(target_fps int32,) 
+	SetMaxFps(max_fps int32,) 
 	
 
-	GetTargetFps() int32
+	GetMaxFps() int32
 	
 
 	SetTimeScale(time_scale float32,) 
@@ -11073,13 +11094,6 @@ type FontVariation interface {
 
 	SetSpacing(spacing TextServerSpacingType,value int32,) 
 }
-type FramebufferCacheRD interface {
-	
-	Object
-	
-
-	
-}
 type GDScript interface {
 	
 	Script
@@ -11786,6 +11800,12 @@ type GLTFState interface {
 	SetTextures(textures []GLTFTexture,) 
 	
 
+	GetTextureSamplers() []GLTFTextureSampler
+	
+
+	SetTextureSamplers(texture_samplers []GLTFTextureSampler,) 
+	
+
 	GetImages() []Texture2D
 	
 
@@ -11860,6 +11880,43 @@ type GLTFTexture interface {
 	
 
 	SetSrcImage(src_image int32,) 
+	
+
+	GetSampler() int32
+	
+
+	SetSampler(sampler int32,) 
+}
+type GLTFTextureSampler interface {
+	
+	Resource
+	
+
+	
+	
+
+	GetMagFilter() int32
+	
+
+	SetMagFilter(filter_mode int32,) 
+	
+
+	GetMinFilter() int32
+	
+
+	SetMinFilter(filter_mode int32,) 
+	
+
+	GetWrapS() int32
+	
+
+	SetWrapS(wrap_mode int32,) 
+	
+
+	GetWrapT() int32
+	
+
+	SetWrapT(wrap_mode int32,) 
 }
 type GPUParticles2D interface {
 	
@@ -16406,12 +16463,6 @@ type MenuBar interface {
 	IsMenuHidden(menu int32,) bool
 	
 
-	SetShortcutContext(node Node,) 
-	
-
-	GetShortcutContext() Node
-	
-
 	GetMenuPopup(menu int32,) PopupMenu
 }
 type MenuButton interface {
@@ -16423,6 +16474,9 @@ type MenuButton interface {
 	
 
 	GetPopup() PopupMenu
+	
+
+	ShowPopup() 
 	
 
 	SetSwitchOnHover(enable bool,) 
@@ -18163,6 +18217,9 @@ type NavigationPathQueryResult2D interface {
 	
 
 	GetPath() PackedVector2Array
+	
+
+	Reset() 
 }
 type NavigationPathQueryResult3D interface {
 	
@@ -18176,6 +18233,9 @@ type NavigationPathQueryResult3D interface {
 	
 
 	GetPath() PackedVector3Array
+	
+
+	Reset() 
 }
 type NavigationPolygon interface {
 	
@@ -19546,6 +19606,9 @@ type OS interface {
 	GetExecutablePath() String
 	
 
+	ReadStringFromStdin(block bool,) String
+	
+
 	Execute(path String,arguments PackedStringArray,output Array,read_stderr bool,open_console bool,) int32
 	
 
@@ -19591,6 +19654,9 @@ type OS interface {
 	GetCmdlineUserArgs() PackedStringArray
 	
 
+	GetVideoAdapterDriverInfo() PackedStringArray
+	
+
 	SetRestartOnExit(restart bool,arguments PackedStringArray,) 
 	
 
@@ -19619,9 +19685,6 @@ type OS interface {
 	
 
 	IsStdoutVerbose() bool
-	
-
-	CanUseThreads() bool
 	
 
 	IsDebugBuild() bool
@@ -19706,10 +19769,10 @@ type Object interface {
 	Get(property StringName,) Variant
 	
 
-	SetIndexed(property NodePath,value Variant,) 
+	SetIndexed(property_path NodePath,value Variant,) 
 	
 
-	GetIndexed(property NodePath,) Variant
+	GetIndexed(property_path NodePath,) Variant
 	
 
 	GetPropertyList() []Dictionary
@@ -20220,6 +20283,9 @@ type OptionButton interface {
 	
 
 	GetPopup() PopupMenu
+	
+
+	ShowPopup() 
 	
 
 	SetItemCount(count int32,) 
@@ -20734,6 +20800,12 @@ type ParticleProcessMaterial interface {
 	
 
 	SetSubEmitterAmountAtEnd(amount int32,) 
+	
+
+	GetSubEmitterAmountAtCollision() int32
+	
+
+	SetSubEmitterAmountAtCollision(amount int32,) 
 	
 
 	GetSubEmitterKeepVelocity() bool
@@ -21557,6 +21629,9 @@ type PhysicsDirectBodyState3D interface {
 	GetInverseInertia() Vector3
 	
 
+	GetInverseInertiaTensor() Basis
+	
+
 	SetLinearVelocity(velocity Vector3,) 
 	
 
@@ -21702,6 +21777,10 @@ type PhysicsDirectBodyState3DExtension interface {
 
 	
 	// VIRTUAL: Internal_GetInverseInertia() Vector3
+	
+
+	
+	// VIRTUAL: Internal_GetInverseInertiaTensor() Basis
 	
 
 	
@@ -25850,10 +25929,10 @@ type RDPipelineRasterizationState interface {
 	GetFrontFace() RenderingDevicePolygonFrontFace
 	
 
-	SetDepthBiasEnable(p_member bool,) 
+	SetDepthBiasEnabled(p_member bool,) 
 	
 
-	GetDepthBiasEnable() bool
+	GetDepthBiasEnabled() bool
 	
 
 	SetDepthBiasConstantFactor(p_member float32,) 
@@ -28524,6 +28603,10 @@ type ResourceFormatLoader interface {
 	
 
 	
+	// VIRTUAL: Internal_RecognizePath(path String,typeName StringName,) bool
+	
+
+	
 	// VIRTUAL: Internal_HandlesType(typeName StringName,) bool
 	
 
@@ -28769,7 +28852,7 @@ type RichTextLabel interface {
 	SetText(text String,) 
 	
 
-	AddImage(image Texture2D,width int32,height int32,color Color,inline_align InlineAlignment,) 
+	AddImage(image Texture2D,width int32,height int32,color Color,inline_align InlineAlignment,region Rect2,) 
 	
 
 	Newline() 
@@ -33879,27 +33962,27 @@ type TextEdit interface {
 	
 
 	
-	// VIRTUAL: Internal_HandleUnicodeInput(unicode_char int32,) 
+	// VIRTUAL: Internal_HandleUnicodeInput(unicode_char int32,caret_index int32,) 
 	
 
 	
-	// VIRTUAL: Internal_Backspace() 
+	// VIRTUAL: Internal_Backspace(caret_index int32,) 
 	
 
 	
-	// VIRTUAL: Internal_Cut() 
+	// VIRTUAL: Internal_Cut(caret_index int32,) 
 	
 
 	
-	// VIRTUAL: Internal_Copy() 
+	// VIRTUAL: Internal_Copy(caret_index int32,) 
 	
 
 	
-	// VIRTUAL: Internal_Paste() 
+	// VIRTUAL: Internal_Paste(caret_index int32,) 
 	
 
 	
-	// VIRTUAL: Internal_PastePrimaryClipboard() 
+	// VIRTUAL: Internal_PastePrimaryClipboard(caret_index int32,) 
 	
 
 	HasImeText() bool
@@ -34013,7 +34096,7 @@ type TextEdit interface {
 	InsertLineAt(line int32,text String,) 
 	
 
-	InsertTextAtCaret(text String,) 
+	InsertTextAtCaret(text String,caret_index int32,) 
 	
 
 	RemoveText(from_line int32,from_column int32,to_line int32,to_column int32,) 
@@ -34028,16 +34111,25 @@ type TextEdit interface {
 	GetNextVisibleLineIndexOffsetFrom(line int32,wrap_index int32,visible_amount int32,) Vector2i
 	
 
-	Backspace() 
+	Backspace(caret_index int32,) 
 	
 
-	Cut() 
+	Cut(caret_index int32,) 
 	
 
-	Copy() 
+	Copy(caret_index int32,) 
 	
 
-	Paste() 
+	Paste(caret_index int32,) 
+	
+
+	PastePrimaryClipboard(caret_index int32,) 
+	
+
+	StartAction(action TextEditEditAction,) 
+	
+
+	EndAction() 
 	
 
 	BeginComplexOperation() 
@@ -34103,7 +34195,7 @@ type TextEdit interface {
 	IsDraggingCursor() bool
 	
 
-	IsMouseOverSelection(edges bool,) bool
+	IsMouseOverSelection(edges bool,caret_index int32,) bool
 	
 
 	SetCaretType(typeName TextEditCaretType,) 
@@ -34136,28 +34228,55 @@ type TextEdit interface {
 	IsCaretMidGraphemeEnabled() bool
 	
 
-	IsCaretVisible() bool
+	SetMultipleCaretsEnabled(enabled bool,) 
 	
 
-	GetCaretDrawPos() Vector2
+	IsMultipleCaretsEnabled() bool
 	
 
-	SetCaretLine(line int32,adjust_viewport bool,can_be_hidden bool,wrap_index int32,) 
+	AddCaret(line int32,col int32,) int32
 	
 
-	GetCaretLine() int32
+	RemoveCaret(caret int32,) 
 	
 
-	SetCaretColumn(column int32,adjust_viewport bool,) 
+	RemoveSecondaryCarets() 
 	
 
-	GetCaretColumn() int32
+	MergeOverlappingCarets() 
 	
 
-	GetCaretWrapIndex() int32
+	GetCaretCount() int32
 	
 
-	GetWordUnderCaret() String
+	GetCaretIndexEditOrder() PackedInt32Array
+	
+
+	AdjustCaretsAfterEdit(caret int32,from_line int32,from_col int32,to_line int32,to_col int32,) 
+	
+
+	IsCaretVisible(caret_index int32,) bool
+	
+
+	GetCaretDrawPos(caret_index int32,) Vector2
+	
+
+	SetCaretLine(line int32,adjust_viewport bool,can_be_hidden bool,wrap_index int32,caret_index int32,) 
+	
+
+	GetCaretLine(caret_index int32,) int32
+	
+
+	SetCaretColumn(column int32,adjust_viewport bool,caret_index int32,) 
+	
+
+	GetCaretColumn(caret_index int32,) int32
+	
+
+	GetCaretWrapIndex(caret_index int32,) int32
+	
+
+	GetWordUnderCaret(caret_index int32,) String
 	
 
 	SetSelectingEnabled(enable bool,) 
@@ -34184,7 +34303,7 @@ type TextEdit interface {
 	IsOverridingSelectedFontColor() bool
 	
 
-	SetSelectionMode(mode TextEditSelectionMode,line int32,column int32,) 
+	SetSelectionMode(mode TextEditSelectionMode,line int32,column int32,caret_index int32,) 
 	
 
 	GetSelectionMode() TextEditSelectionMode
@@ -34193,40 +34312,40 @@ type TextEdit interface {
 	SelectAll() 
 	
 
-	SelectWordUnderCaret() 
+	SelectWordUnderCaret(caret_index int32,) 
 	
 
-	Select(from_line int32,from_column int32,to_line int32,to_column int32,) 
+	Select(from_line int32,from_column int32,to_line int32,to_column int32,caret_index int32,) 
 	
 
-	HasSelection() bool
+	HasSelection(caret_index int32,) bool
 	
 
-	GetSelectedText() String
+	GetSelectedText(caret_index int32,) String
 	
 
-	GetSelectionLine() int32
+	GetSelectionLine(caret_index int32,) int32
 	
 
-	GetSelectionColumn() int32
+	GetSelectionColumn(caret_index int32,) int32
 	
 
-	GetSelectionFromLine() int32
+	GetSelectionFromLine(caret_index int32,) int32
 	
 
-	GetSelectionFromColumn() int32
+	GetSelectionFromColumn(caret_index int32,) int32
 	
 
-	GetSelectionToLine() int32
+	GetSelectionToLine(caret_index int32,) int32
 	
 
-	GetSelectionToColumn() int32
+	GetSelectionToColumn(caret_index int32,) int32
 	
 
-	Deselect() 
+	Deselect(caret_index int32,) 
 	
 
-	DeleteSelection() 
+	DeleteSelection(caret_index int32,) 
 	
 
 	SetLineWrappingMode(mode TextEditLineWrappingMode,) 
@@ -34251,6 +34370,12 @@ type TextEdit interface {
 	
 
 	IsSmoothScrollEnabled() bool
+	
+
+	GetVScrollBar() VScrollBar
+	
+
+	GetHScrollBar() HScrollBar
 	
 
 	SetVScroll(value float32,) 
@@ -34313,10 +34438,10 @@ type TextEdit interface {
 	GetTotalVisibleLineCount() int32
 	
 
-	AdjustViewportToCaret() 
+	AdjustViewportToCaret(caret_index int32,) 
 	
 
-	CenterViewportToCaret() 
+	CenterViewportToCaret(caret_index int32,) 
 	
 
 	SetDrawMinimap(enabled bool,) 
@@ -38365,6 +38490,9 @@ type TreeItem interface {
 	SetButtonDisabled(column int32,button_idx int32,disabled bool,) 
 	
 
+	SetButtonColor(column int32,button_idx int32,color Color,) 
+	
+
 	IsButtonDisabled(column int32,button_idx int32,) bool
 	
 
@@ -38788,13 +38916,6 @@ type UndoRedo interface {
 	
 
 	Undo() bool
-}
-type UniformSetCacheRD interface {
-	
-	Object
-	
-
-	
 }
 type VBoxContainer interface {
 	
@@ -41334,37 +41455,6 @@ type WebRTCPeerConnectionExtension interface {
 	
 	// VIRTUAL: Internal_Close() 
 }
-type WebSocketClient interface {
-	
-	WebSocketMultiplayerPeer
-	
-
-	
-	
-
-	ConnectToUrl(url String,protocols PackedStringArray,gd_mp_api bool,custom_headers PackedStringArray,) Error
-	
-
-	DisconnectFromHost(code int32,reason String,) 
-	
-
-	GetConnectedHost() String
-	
-
-	GetConnectedPort() int32
-	
-
-	SetVerifyTlsEnabled(enabled bool,) 
-	
-
-	IsVerifyTlsEnabled() bool
-	
-
-	GetTrustedTlsCertificate() X509Certificate
-	
-
-	SetTrustedTlsCertificate(cert X509Certificate,) 
-}
 type WebSocketMultiplayerPeer interface {
 	
 	MultiplayerPeer
@@ -41373,66 +41463,16 @@ type WebSocketMultiplayerPeer interface {
 	
 	
 
-	SetBuffers(input_buffer_size_kb int32,input_max_packets int32,output_buffer_size_kb int32,output_max_packets int32,) Error
+	CreateClient(url String,verify_tls bool,tls_certificate X509Certificate,) Error
+	
+
+	CreateServer(port int32,bind_address String,tls_key CryptoKey,tls_certificate X509Certificate,) Error
+	
+
+	Close() 
 	
 
 	GetPeer(peer_id int32,) WebSocketPeer
-}
-type WebSocketPeer interface {
-	
-	PacketPeer
-	
-
-	
-	
-
-	GetWriteMode() WebSocketPeerWriteMode
-	
-
-	SetWriteMode(mode WebSocketPeerWriteMode,) 
-	
-
-	IsConnectedToHost() bool
-	
-
-	WasStringPacket() bool
-	
-
-	Close(code int32,reason String,) 
-	
-
-	GetConnectedHost() String
-	
-
-	GetConnectedPort() int32
-	
-
-	SetNoDelay(enabled bool,) 
-	
-
-	GetCurrentOutboundBufferedAmount() int32
-}
-type WebSocketServer interface {
-	
-	WebSocketMultiplayerPeer
-	
-
-	
-	
-
-	IsListening() bool
-	
-
-	SetExtraHeaders(headers PackedStringArray,) 
-	
-
-	Listen(port int32,protocols PackedStringArray,gd_mp_api bool,) Error
-	
-
-	Stop() 
-	
-
-	HasPeer(id int32,) bool
 	
 
 	GetPeerAddress(id int32,) String
@@ -41444,34 +41484,125 @@ type WebSocketServer interface {
 	DisconnectPeer(id int32,code int32,reason String,) 
 	
 
-	GetBindIp() String
+	GetSupportedProtocols() PackedStringArray
 	
 
-	SetBindIp(ip String,) 
+	SetSupportedProtocols(protocols PackedStringArray,) 
 	
 
-	GetPrivateKey() CryptoKey
+	GetHandshakeHeaders() PackedStringArray
 	
 
-	SetPrivateKey(key CryptoKey,) 
+	SetHandshakeHeaders(protocols PackedStringArray,) 
 	
 
-	GetTlsCertificate() X509Certificate
+	GetInboundBufferSize() int32
 	
 
-	SetTlsCertificate(cert X509Certificate,) 
+	SetInboundBufferSize(buffer_size int32,) 
 	
 
-	GetCaChain() X509Certificate
+	GetOutboundBufferSize() int32
 	
 
-	SetCaChain(ca_chain X509Certificate,) 
+	SetOutboundBufferSize(buffer_size int32,) 
 	
 
 	GetHandshakeTimeout() float32
 	
 
 	SetHandshakeTimeout(timeout float32,) 
+	
+
+	SetMaxQueuedPackets(max_queued_packets int32,) 
+	
+
+	GetMaxQueuedPackets() int32
+}
+type WebSocketPeer interface {
+	
+	PacketPeer
+	
+
+	
+	
+
+	ConnectToUrl(url String,verify_tls bool,trusted_tls_certificate X509Certificate,) Error
+	
+
+	AcceptStream(stream StreamPeer,) Error
+	
+
+	Send(message PackedByteArray,write_mode WebSocketPeerWriteMode,) Error
+	
+
+	SendText(message String,) Error
+	
+
+	WasStringPacket() bool
+	
+
+	Poll() 
+	
+
+	Close(code int32,reason String,) 
+	
+
+	GetConnectedHost() String
+	
+
+	GetConnectedPort() int32
+	
+
+	GetSelectedProtocol() String
+	
+
+	GetRequestedUrl() String
+	
+
+	SetNoDelay(enabled bool,) 
+	
+
+	GetCurrentOutboundBufferedAmount() int32
+	
+
+	GetReadyState() WebSocketPeerState
+	
+
+	GetCloseCode() int32
+	
+
+	GetCloseReason() String
+	
+
+	GetSupportedProtocols() PackedStringArray
+	
+
+	SetSupportedProtocols(protocols PackedStringArray,) 
+	
+
+	GetHandshakeHeaders() PackedStringArray
+	
+
+	SetHandshakeHeaders(protocols PackedStringArray,) 
+	
+
+	GetInboundBufferSize() int32
+	
+
+	SetInboundBufferSize(buffer_size int32,) 
+	
+
+	GetOutboundBufferSize() int32
+	
+
+	SetOutboundBufferSize(buffer_size int32,) 
+	
+
+	SetMaxQueuedPackets(buffer_size int32,) 
+	
+
+	GetMaxQueuedPackets() int32
 }
 type WebXRInterface interface {
 	
@@ -42196,6 +42327,27 @@ type XRInterfaceExtension interface {
 
 	
 	// VIRTUAL: Internal_GetCameraFeedId() int32
+	
+
+	
+	// VIRTUAL: Internal_GetColorTexture() RID
+	
+
+	
+	// VIRTUAL: Internal_GetDepthTexture() RID
+	
+
+	
+	// VIRTUAL: Internal_GetVelocityTexture() RID
+	
+
+	GetColorTexture() RID
+	
+
+	GetDepthTexture() RID
+	
+
+	GetVelocityTexture() RID
 	
 
 	AddBlit(render_target RID,src_rect Rect2,dst_rect Rect2i,use_layer bool,layer int32,apply_lens_distortion bool,eye_center Vector2,k1 float32,k2 float32,upscale float32,aspect_ratio float32,) 

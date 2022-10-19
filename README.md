@@ -31,7 +31,7 @@ If your godot binary is built from source, you can run this:
     GODOT_SRC=/usr/local/src/godot/ make update_godot_headers_from_source
     make generate
 
-Development is built and tested off of Godot 4 beta2 [snapshot](https://github.com/godotengine/godot-headers/tree/f8745f2f71c79972df66f17a3da75f6e328bc55d).
+Development is built and tested off of Godot 4 beta 3 [snapshot](https://github.com/godotengine/godot-headers/tree/abd59875d9242ee68600d0bade0da5527f2253d2).
 
 Once that's done, you can run the following to build:
 
@@ -40,7 +40,7 @@ Once that's done, you can run the following to build:
 
 ### Test
 
-Once the project successfully builds, run the following commands to generate cached files for the test demo project for the first time:
+Once the project successfully builds, run the following commands to generate cached files for the test demo project for the first time (don't be concerned if it fails):
 
     make ci_gen_test_project_files
 

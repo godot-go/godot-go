@@ -138,9 +138,9 @@ type stringMethodBindings struct {
     method_humanize_size GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
-        operator_module_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
+        operator_module_Variant GDNativePtrOperatorEvaluator
         operator_module_bool GDNativePtrOperatorEvaluator
         operator_add_int GDNativePtrOperatorEvaluator
         operator_module_int GDNativePtrOperatorEvaluator
@@ -303,9 +303,9 @@ func stringInitBindings() {
     globalStringMethodBindings.method_humanize_size = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING, "humanize_size", 897497541)
     globalStringMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING)
     globalStringMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING)
-    globalStringMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_NIL)
-        globalStringMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_NIL)
-        globalStringMethodBindings.operator_module_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MODULE, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_NIL)
+    globalStringMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_NIL)
+        globalStringMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_NIL)
+        globalStringMethodBindings.operator_module_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MODULE, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_NIL)
         globalStringMethodBindings.operator_module_bool = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MODULE, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_BOOL)
         globalStringMethodBindings.operator_add_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_ADD, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_INT)
         globalStringMethodBindings.operator_module_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MODULE, GDNATIVE_VARIANT_TYPE_STRING, GDNATIVE_VARIANT_TYPE_INT)
@@ -2860,23 +2860,23 @@ func (cx *String) HumanizeSize(size int32,) String {
 // members
 
 
-// Equal_Nil operator
-func (cx *String) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *String) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *String) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *String) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_not_equal_Variant, lt, rt)
     }
-// Module_Nil operator
-func (cx *String) Module_Nil(right Variant) String {
+// Module_Variant operator
+func (cx *String) Module_Variant(right Variant) String {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Nil, lt, rt)
+    return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Variant, lt, rt)
     }
 // Module_bool operator
 func (cx *String) Module_bool(right bool) String {
@@ -3218,6 +3218,7 @@ type vector2MethodBindings struct {
     method_is_normalized GDNativePtrBuiltInMethod
     method_is_equal_approx GDNativePtrBuiltInMethod
     method_is_zero_approx GDNativePtrBuiltInMethod
+    method_is_finite GDNativePtrBuiltInMethod
     method_posmod GDNativePtrBuiltInMethod
     method_posmodv GDNativePtrBuiltInMethod
     method_project GDNativePtrBuiltInMethod
@@ -3251,8 +3252,8 @@ type vector2MethodBindings struct {
     member_y_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
         operator_positive GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
@@ -3295,6 +3296,7 @@ func vector2InitBindings() {
     globalVector2MethodBindings.method_is_normalized = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2, "is_normalized", 3918633141)
     globalVector2MethodBindings.method_is_equal_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2, "is_equal_approx", 3190634762)
     globalVector2MethodBindings.method_is_zero_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2, "is_zero_approx", 3918633141)
+    globalVector2MethodBindings.method_is_finite = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2, "is_finite", 3918633141)
     globalVector2MethodBindings.method_posmod = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2, "posmod", 2544004089)
     globalVector2MethodBindings.method_posmodv = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2, "posmodv", 2026743667)
     globalVector2MethodBindings.method_project = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2, "project", 2026743667)
@@ -3328,8 +3330,8 @@ func vector2InitBindings() {
     globalVector2MethodBindings.member_y_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2, "y")
     globalVector2MethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2)
     globalVector2MethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2)
-    globalVector2MethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2, GDNATIVE_VARIANT_TYPE_NIL)
-        globalVector2MethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2, GDNATIVE_VARIANT_TYPE_NIL)
+    globalVector2MethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2, GDNATIVE_VARIANT_TYPE_NIL)
+        globalVector2MethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector2MethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR2, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector2MethodBindings.operator_positive = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_POSITIVE, GDNATIVE_VARIANT_TYPE_VECTOR2, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector2MethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_VECTOR2, GDNATIVE_VARIANT_TYPE_INT)
@@ -3715,6 +3717,25 @@ func (cx *Vector2) IsEqualApprox(to Vector2,) bool {
  */
 func (cx *Vector2) IsZeroApprox() bool {
     mb := globalVector2MethodBindings.method_is_zero_approx
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
+
+/* IsFinite : is_finite
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Vector2) IsFinite() bool {
+    mb := globalVector2MethodBindings.method_is_finite
 
     bx := cx.ptr()
     
@@ -4480,17 +4501,17 @@ func (cx *Vector2) MemberGety() float32 {
 }
 
 
-// Equal_Nil operator
-func (cx *Vector2) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Vector2) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Vector2) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Vector2) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Negate operator
 func (cx *Vector2) Negate() Vector2 {
@@ -4641,8 +4662,8 @@ type vector2iMethodBindings struct {
     member_y_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
         operator_positive GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
@@ -4686,8 +4707,8 @@ func vector2iInitBindings() {
     globalVector2iMethodBindings.member_y_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2I, "y")
     globalVector2iMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2I)
     globalVector2iMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR2I)
-    globalVector2iMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2I, GDNATIVE_VARIANT_TYPE_NIL)
-        globalVector2iMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2I, GDNATIVE_VARIANT_TYPE_NIL)
+    globalVector2iMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2I, GDNATIVE_VARIANT_TYPE_NIL)
+        globalVector2iMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR2I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector2iMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR2I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector2iMethodBindings.operator_positive = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_POSITIVE, GDNATIVE_VARIANT_TYPE_VECTOR2I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector2iMethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_VECTOR2I, GDNATIVE_VARIANT_TYPE_INT)
@@ -4954,17 +4975,17 @@ func (cx *Vector2i) MemberGety() int32 {
 }
 
 
-// Equal_Nil operator
-func (cx *Vector2i) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Vector2i) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Vector2i) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Vector2i) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Negate operator
 func (cx *Vector2i) Negate() Vector2i {
@@ -5107,6 +5128,7 @@ type rect2MethodBindings struct {
     method_has_area GDNativePtrBuiltInMethod
     method_has_point GDNativePtrBuiltInMethod
     method_is_equal_approx GDNativePtrBuiltInMethod
+    method_is_finite GDNativePtrBuiltInMethod
     method_intersects GDNativePtrBuiltInMethod
     method_encloses GDNativePtrBuiltInMethod
     method_intersection GDNativePtrBuiltInMethod
@@ -5122,8 +5144,8 @@ type rect2MethodBindings struct {
     member_size_getter GDNativePtrGetter
     member_end_setter GDNativePtrSetter
     member_end_getter GDNativePtrGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_equal_Rect2 GDNativePtrOperatorEvaluator
         operator_not_equal_Rect2 GDNativePtrOperatorEvaluator
         operator_multiply_Transform2D GDNativePtrOperatorEvaluator
@@ -5144,6 +5166,7 @@ func rect2InitBindings() {
     globalRect2MethodBindings.method_has_area = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "has_area", 3918633141)
     globalRect2MethodBindings.method_has_point = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "has_point", 3190634762)
     globalRect2MethodBindings.method_is_equal_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "is_equal_approx", 1908192260)
+    globalRect2MethodBindings.method_is_finite = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "is_finite", 3918633141)
     globalRect2MethodBindings.method_intersects = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "intersects", 819294880)
     globalRect2MethodBindings.method_encloses = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "encloses", 1908192260)
     globalRect2MethodBindings.method_intersection = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "intersection", 2282977743)
@@ -5159,8 +5182,8 @@ func rect2InitBindings() {
     globalRect2MethodBindings.member_size_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "size")
     globalRect2MethodBindings.member_end_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "end")
     globalRect2MethodBindings.member_end_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2, "end")
-    globalRect2MethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2, GDNATIVE_VARIANT_TYPE_NIL)
-        globalRect2MethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2, GDNATIVE_VARIANT_TYPE_NIL)
+    globalRect2MethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2, GDNATIVE_VARIANT_TYPE_NIL)
+        globalRect2MethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2, GDNATIVE_VARIANT_TYPE_NIL)
         globalRect2MethodBindings.operator_equal_Rect2 = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2, GDNATIVE_VARIANT_TYPE_RECT2)
         globalRect2MethodBindings.operator_not_equal_Rect2 = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2, GDNATIVE_VARIANT_TYPE_RECT2)
         globalRect2MethodBindings.operator_multiply_Transform2D = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_RECT2, GDNATIVE_VARIANT_TYPE_TRANSFORM2D)
@@ -5360,6 +5383,25 @@ func (cx *Rect2) IsEqualApprox(rect Rect2,) bool {
     ret := callBuiltinMethodPtrRet[bool](mb, bx, args)
 
     C.free(argBytes)
+    return ret
+    
+
+    
+}
+
+
+/* IsFinite : is_finite
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Rect2) IsFinite() bool {
+    mb := globalRect2MethodBindings.method_is_finite
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
     return ret
     
 
@@ -5648,17 +5690,17 @@ func (cx *Rect2) MemberGetend() Vector2 {
 }
 
 
-// Equal_Nil operator
-func (cx *Rect2) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Rect2) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Rect2) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Rect2) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Equal_Rect2 operator
 func (cx *Rect2) Equal_Rect2(right Rect2) bool {
@@ -5725,8 +5767,8 @@ type rect2iMethodBindings struct {
     member_size_getter GDNativePtrGetter
     member_end_setter GDNativePtrSetter
     member_end_getter GDNativePtrGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_equal_Rect2i GDNativePtrOperatorEvaluator
         operator_not_equal_Rect2i GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -5760,8 +5802,8 @@ func rect2iInitBindings() {
     globalRect2iMethodBindings.member_size_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2I, "size")
     globalRect2iMethodBindings.member_end_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2I, "end")
     globalRect2iMethodBindings.member_end_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RECT2I, "end")
-    globalRect2iMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2I, GDNATIVE_VARIANT_TYPE_NIL)
-        globalRect2iMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2I, GDNATIVE_VARIANT_TYPE_NIL)
+    globalRect2iMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2I, GDNATIVE_VARIANT_TYPE_NIL)
+        globalRect2iMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2I, GDNATIVE_VARIANT_TYPE_NIL)
         globalRect2iMethodBindings.operator_equal_Rect2i = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2I, GDNATIVE_VARIANT_TYPE_RECT2I)
         globalRect2iMethodBindings.operator_not_equal_Rect2i = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RECT2I, GDNATIVE_VARIANT_TYPE_RECT2I)
         globalRect2iMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_RECT2I, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -6216,17 +6258,17 @@ func (cx *Rect2i) MemberGetend() Vector2i {
 }
 
 
-// Equal_Nil operator
-func (cx *Rect2i) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Rect2i) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Rect2i) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Rect2i) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Equal_Rect2i operator
 func (cx *Rect2i) Equal_Rect2i(right Rect2i) bool {
@@ -6281,6 +6323,7 @@ type vector3MethodBindings struct {
     method_is_normalized GDNativePtrBuiltInMethod
     method_is_equal_approx GDNativePtrBuiltInMethod
     method_is_zero_approx GDNativePtrBuiltInMethod
+    method_is_finite GDNativePtrBuiltInMethod
     method_inverse GDNativePtrBuiltInMethod
     method_clamp GDNativePtrBuiltInMethod
     method_snapped GDNativePtrBuiltInMethod
@@ -6315,8 +6358,8 @@ type vector3MethodBindings struct {
     member_z_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
         operator_positive GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
@@ -6362,6 +6405,7 @@ func vector3InitBindings() {
     globalVector3MethodBindings.method_is_normalized = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3, "is_normalized", 3918633141)
     globalVector3MethodBindings.method_is_equal_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3, "is_equal_approx", 1749054343)
     globalVector3MethodBindings.method_is_zero_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3, "is_zero_approx", 3918633141)
+    globalVector3MethodBindings.method_is_finite = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3, "is_finite", 3918633141)
     globalVector3MethodBindings.method_inverse = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3, "inverse", 1776574132)
     globalVector3MethodBindings.method_clamp = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3, "clamp", 4145107892)
     globalVector3MethodBindings.method_snapped = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3, "snapped", 2923479887)
@@ -6396,8 +6440,8 @@ func vector3InitBindings() {
     globalVector3MethodBindings.member_z_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3, "z")
     globalVector3MethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3)
     globalVector3MethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3)
-    globalVector3MethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3, GDNATIVE_VARIANT_TYPE_NIL)
-        globalVector3MethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3, GDNATIVE_VARIANT_TYPE_NIL)
+    globalVector3MethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3, GDNATIVE_VARIANT_TYPE_NIL)
+        globalVector3MethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector3MethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR3, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector3MethodBindings.operator_positive = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_POSITIVE, GDNATIVE_VARIANT_TYPE_VECTOR3, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector3MethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_VECTOR3, GDNATIVE_VARIANT_TYPE_INT)
@@ -6810,6 +6854,25 @@ func (cx *Vector3) IsEqualApprox(to Vector3,) bool {
  */
 func (cx *Vector3) IsZeroApprox() bool {
     mb := globalVector3MethodBindings.method_is_zero_approx
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
+
+/* IsFinite : is_finite
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Vector3) IsFinite() bool {
+    mb := globalVector3MethodBindings.method_is_finite
 
     bx := cx.ptr()
     
@@ -7574,17 +7637,17 @@ func (cx *Vector3) MemberGetz() float32 {
 }
 
 
-// Equal_Nil operator
-func (cx *Vector3) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Vector3) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Vector3) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Vector3) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Negate operator
 func (cx *Vector3) Negate() Vector3 {
@@ -7748,8 +7811,8 @@ type vector3iMethodBindings struct {
     member_z_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
         operator_positive GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
@@ -7794,8 +7857,8 @@ func vector3iInitBindings() {
     globalVector3iMethodBindings.member_z_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3I, "z")
     globalVector3iMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3I)
     globalVector3iMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR3I)
-    globalVector3iMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3I, GDNATIVE_VARIANT_TYPE_NIL)
-        globalVector3iMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3I, GDNATIVE_VARIANT_TYPE_NIL)
+    globalVector3iMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3I, GDNATIVE_VARIANT_TYPE_NIL)
+        globalVector3iMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR3I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector3iMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR3I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector3iMethodBindings.operator_positive = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_POSITIVE, GDNATIVE_VARIANT_TYPE_VECTOR3I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector3iMethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_VECTOR3I, GDNATIVE_VARIANT_TYPE_INT)
@@ -8050,17 +8113,17 @@ func (cx *Vector3i) MemberGetz() int32 {
 }
 
 
-// Equal_Nil operator
-func (cx *Vector3i) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Vector3i) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Vector3i) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Vector3i) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Negate operator
 func (cx *Vector3i) Negate() Vector3i {
@@ -8186,7 +8249,7 @@ func (cx *Vector3i) In_Array(right Array) bool {
  * Transform2D
  * indexingReturnType: Vector2
  * isKeyed: false
- * hasDestructor: true
+ * hasDestructor: false
  */
 type Transform2D struct {
     opaque [24]uint8
@@ -8198,7 +8261,6 @@ type transform2DMethodBindings struct {
     constructor_2 GDNativePtrConstructor
     constructor_3 GDNativePtrConstructor
     constructor_4 GDNativePtrConstructor
-    destructor GDNativePtrDestructor
     method_inverse GDNativePtrBuiltInMethod
     method_affine_inverse GDNativePtrBuiltInMethod
     method_get_rotation GDNativePtrBuiltInMethod
@@ -8216,6 +8278,7 @@ type transform2DMethodBindings struct {
     method_basis_xform_inv GDNativePtrBuiltInMethod
     method_interpolate_with GDNativePtrBuiltInMethod
     method_is_equal_approx GDNativePtrBuiltInMethod
+    method_is_finite GDNativePtrBuiltInMethod
     method_set_rotation GDNativePtrBuiltInMethod
     method_set_scale GDNativePtrBuiltInMethod
     method_set_skew GDNativePtrBuiltInMethod
@@ -8228,8 +8291,8 @@ type transform2DMethodBindings struct {
     member_origin_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
         operator_multiply_float GDNativePtrOperatorEvaluator
         operator_multiply_Vector2 GDNativePtrOperatorEvaluator
@@ -8250,7 +8313,6 @@ func transform2DInitBindings() {
     globalTransform2DMethodBindings.constructor_2 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, 2)
     globalTransform2DMethodBindings.constructor_3 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, 3)
     globalTransform2DMethodBindings.constructor_4 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, 4)
-    globalTransform2DMethodBindings.destructor = GDNativeInterface_variant_get_ptr_destructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D)
     globalTransform2DMethodBindings.method_inverse = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "inverse", 1420440541)
     globalTransform2DMethodBindings.method_affine_inverse = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "affine_inverse", 1420440541)
     globalTransform2DMethodBindings.method_get_rotation = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "get_rotation", 466405837)
@@ -8268,6 +8330,7 @@ func transform2DInitBindings() {
     globalTransform2DMethodBindings.method_basis_xform_inv = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "basis_xform_inv", 2026743667)
     globalTransform2DMethodBindings.method_interpolate_with = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "interpolate_with", 359399686)
     globalTransform2DMethodBindings.method_is_equal_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "is_equal_approx", 3837431929)
+    globalTransform2DMethodBindings.method_is_finite = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "is_finite", 3918633141)
     globalTransform2DMethodBindings.method_set_rotation = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "set_rotation", 833936903)
     globalTransform2DMethodBindings.method_set_scale = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "set_scale", 3790411178)
     globalTransform2DMethodBindings.method_set_skew = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "set_skew", 833936903)
@@ -8280,8 +8343,8 @@ func transform2DInitBindings() {
     globalTransform2DMethodBindings.member_origin_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, "origin")
     globalTransform2DMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D)
     globalTransform2DMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM2D)
-    globalTransform2DMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, GDNATIVE_VARIANT_TYPE_NIL)
-        globalTransform2DMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, GDNATIVE_VARIANT_TYPE_NIL)
+    globalTransform2DMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, GDNATIVE_VARIANT_TYPE_NIL)
+        globalTransform2DMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, GDNATIVE_VARIANT_TYPE_NIL)
         globalTransform2DMethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, GDNATIVE_VARIANT_TYPE_INT)
         globalTransform2DMethodBindings.operator_multiply_float = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, GDNATIVE_VARIANT_TYPE_FLOAT)
         globalTransform2DMethodBindings.operator_multiply_Vector2 = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_TRANSFORM2D, GDNATIVE_VARIANT_TYPE_VECTOR2)
@@ -8379,11 +8442,6 @@ func NewTransform2DWithVector2Vector2Vector2(x_axis Vector2,y_axis Vector2,origi
 }
 
 
-func (cx *Transform2D) Destroy() {
-    md := (GDNativePtrDestructor)(globalTransform2DMethodBindings.destructor)
-    bx := (GDNativeTypePtr)(cx.ptr())
-    CallFunc_GDNativePtrDestructor(md, bx)
-}
 
 
 // methods
@@ -8806,6 +8864,25 @@ func (cx *Transform2D) IsEqualApprox(xform Transform2D,) bool {
 }
 
 
+/* IsFinite : is_finite
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Transform2D) IsFinite() bool {
+    mb := globalTransform2DMethodBindings.method_is_finite
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
+
 /* SetRotation : set_rotation
  * is_vararg = false, is_static = false
  * goReturnType() -> 
@@ -8933,17 +9010,17 @@ func (cx *Transform2D) MemberGetorigin() Vector2 {
 }
 
 
-// Equal_Nil operator
-func (cx *Transform2D) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Transform2D) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Transform2D) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Transform2D) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Multiply_int operator
 func (cx *Transform2D) Multiply_int(right int32) Transform2D {
@@ -9045,6 +9122,7 @@ type vector4MethodBindings struct {
     method_inverse GDNativePtrBuiltInMethod
     method_is_equal_approx GDNativePtrBuiltInMethod
     method_is_zero_approx GDNativePtrBuiltInMethod
+    method_is_finite GDNativePtrBuiltInMethod
     member_x_setter GDNativePtrSetter
     member_x_getter GDNativePtrGetter
     member_y_setter GDNativePtrSetter
@@ -9055,8 +9133,8 @@ type vector4MethodBindings struct {
     member_w_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
         operator_positive GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
@@ -9110,6 +9188,7 @@ func vector4InitBindings() {
     globalVector4MethodBindings.method_inverse = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4, "inverse", 80860099)
     globalVector4MethodBindings.method_is_equal_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4, "is_equal_approx", 88913544)
     globalVector4MethodBindings.method_is_zero_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4, "is_zero_approx", 3918633141)
+    globalVector4MethodBindings.method_is_finite = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4, "is_finite", 3918633141)
     globalVector4MethodBindings.member_x_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4, "x")
     globalVector4MethodBindings.member_x_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4, "x")
     globalVector4MethodBindings.member_y_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4, "y")
@@ -9120,8 +9199,8 @@ func vector4InitBindings() {
     globalVector4MethodBindings.member_w_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4, "w")
     globalVector4MethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4)
     globalVector4MethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4)
-    globalVector4MethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4, GDNATIVE_VARIANT_TYPE_NIL)
-        globalVector4MethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4, GDNATIVE_VARIANT_TYPE_NIL)
+    globalVector4MethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4, GDNATIVE_VARIANT_TYPE_NIL)
+        globalVector4MethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector4MethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR4, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector4MethodBindings.operator_positive = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_POSITIVE, GDNATIVE_VARIANT_TYPE_VECTOR4, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector4MethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_VECTOR4, GDNATIVE_VARIANT_TYPE_INT)
@@ -9840,6 +9919,25 @@ func (cx *Vector4) IsZeroApprox() bool {
 }
 
 
+/* IsFinite : is_finite
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Vector4) IsFinite() bool {
+    mb := globalVector4MethodBindings.method_is_finite
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
+
 // members
 
 func (cx *Vector4) MemberGetx() float32 {
@@ -9863,17 +9961,17 @@ func (cx *Vector4) MemberGetw() float32 {
 }
 
 
-// Equal_Nil operator
-func (cx *Vector4) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Vector4) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Vector4) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Vector4) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Negate operator
 func (cx *Vector4) Negate() Vector4 {
@@ -10021,8 +10119,8 @@ type vector4iMethodBindings struct {
     member_w_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
         operator_positive GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
@@ -10069,8 +10167,8 @@ func vector4iInitBindings() {
     globalVector4iMethodBindings.member_w_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4I, "w")
     globalVector4iMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4I)
     globalVector4iMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_VECTOR4I)
-    globalVector4iMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4I, GDNATIVE_VARIANT_TYPE_NIL)
-        globalVector4iMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4I, GDNATIVE_VARIANT_TYPE_NIL)
+    globalVector4iMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4I, GDNATIVE_VARIANT_TYPE_NIL)
+        globalVector4iMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_VECTOR4I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector4iMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_VECTOR4I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector4iMethodBindings.operator_positive = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_POSITIVE, GDNATIVE_VARIANT_TYPE_VECTOR4I, GDNATIVE_VARIANT_TYPE_NIL)
         globalVector4iMethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_VECTOR4I, GDNATIVE_VARIANT_TYPE_INT)
@@ -10332,17 +10430,17 @@ func (cx *Vector4i) MemberGetw() int32 {
 }
 
 
-// Equal_Nil operator
-func (cx *Vector4i) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Vector4i) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Vector4i) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Vector4i) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Negate operator
 func (cx *Vector4i) Negate() Vector4i {
@@ -10485,6 +10583,7 @@ type planeMethodBindings struct {
     method_normalized GDNativePtrBuiltInMethod
     method_center GDNativePtrBuiltInMethod
     method_is_equal_approx GDNativePtrBuiltInMethod
+    method_is_finite GDNativePtrBuiltInMethod
     method_is_point_over GDNativePtrBuiltInMethod
     method_distance_to GDNativePtrBuiltInMethod
     method_has_point GDNativePtrBuiltInMethod
@@ -10502,8 +10601,8 @@ type planeMethodBindings struct {
     member_d_getter GDNativePtrGetter
     member_normal_setter GDNativePtrSetter
     member_normal_getter GDNativePtrGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
         operator_positive GDNativePtrOperatorEvaluator
         operator_equal_Plane GDNativePtrOperatorEvaluator
@@ -10526,6 +10625,7 @@ func planeInitBindings() {
     globalPlaneMethodBindings.method_normalized = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "normalized", 1051796340)
     globalPlaneMethodBindings.method_center = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "center", 1776574132)
     globalPlaneMethodBindings.method_is_equal_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "is_equal_approx", 1150170233)
+    globalPlaneMethodBindings.method_is_finite = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "is_finite", 3918633141)
     globalPlaneMethodBindings.method_is_point_over = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "is_point_over", 1749054343)
     globalPlaneMethodBindings.method_distance_to = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "distance_to", 1047977935)
     globalPlaneMethodBindings.method_has_point = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "has_point", 1258189072)
@@ -10543,8 +10643,8 @@ func planeInitBindings() {
     globalPlaneMethodBindings.member_d_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "d")
     globalPlaneMethodBindings.member_normal_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "normal")
     globalPlaneMethodBindings.member_normal_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PLANE, "normal")
-    globalPlaneMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PLANE, GDNATIVE_VARIANT_TYPE_NIL)
-        globalPlaneMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PLANE, GDNATIVE_VARIANT_TYPE_NIL)
+    globalPlaneMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PLANE, GDNATIVE_VARIANT_TYPE_NIL)
+        globalPlaneMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PLANE, GDNATIVE_VARIANT_TYPE_NIL)
         globalPlaneMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_PLANE, GDNATIVE_VARIANT_TYPE_NIL)
         globalPlaneMethodBindings.operator_positive = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_POSITIVE, GDNATIVE_VARIANT_TYPE_PLANE, GDNATIVE_VARIANT_TYPE_NIL)
         globalPlaneMethodBindings.operator_equal_Plane = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PLANE, GDNATIVE_VARIANT_TYPE_PLANE)
@@ -10733,6 +10833,25 @@ func (cx *Plane) IsEqualApprox(to_plane Plane,) bool {
     ret := callBuiltinMethodPtrRet[bool](mb, bx, args)
 
     C.free(argBytes)
+    return ret
+    
+
+    
+}
+
+
+/* IsFinite : is_finite
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Plane) IsFinite() bool {
+    mb := globalPlaneMethodBindings.method_is_finite
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
     return ret
     
 
@@ -10980,17 +11099,17 @@ func (cx *Plane) MemberGetnormal() Vector3 {
 }
 
 
-// Equal_Nil operator
-func (cx *Plane) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Plane) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Plane) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Plane) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Negate operator
 func (cx *Plane) Negate() Plane {
@@ -11057,6 +11176,7 @@ type quaternionMethodBindings struct {
     method_normalized GDNativePtrBuiltInMethod
     method_is_normalized GDNativePtrBuiltInMethod
     method_is_equal_approx GDNativePtrBuiltInMethod
+    method_is_finite GDNativePtrBuiltInMethod
     method_inverse GDNativePtrBuiltInMethod
     method_log GDNativePtrBuiltInMethod
     method_exp GDNativePtrBuiltInMethod
@@ -11079,8 +11199,8 @@ type quaternionMethodBindings struct {
     member_w_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
         operator_positive GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
@@ -11112,6 +11232,7 @@ func quaternionInitBindings() {
     globalQuaternionMethodBindings.method_normalized = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION, "normalized", 4274879941)
     globalQuaternionMethodBindings.method_is_normalized = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION, "is_normalized", 3918633141)
     globalQuaternionMethodBindings.method_is_equal_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION, "is_equal_approx", 1682156903)
+    globalQuaternionMethodBindings.method_is_finite = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION, "is_finite", 3918633141)
     globalQuaternionMethodBindings.method_inverse = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION, "inverse", 4274879941)
     globalQuaternionMethodBindings.method_log = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION, "log", 4274879941)
     globalQuaternionMethodBindings.method_exp = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION, "exp", 4274879941)
@@ -11134,8 +11255,8 @@ func quaternionInitBindings() {
     globalQuaternionMethodBindings.member_w_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION, "w")
     globalQuaternionMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION)
     globalQuaternionMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_QUATERNION)
-    globalQuaternionMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_QUATERNION, GDNATIVE_VARIANT_TYPE_NIL)
-        globalQuaternionMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_QUATERNION, GDNATIVE_VARIANT_TYPE_NIL)
+    globalQuaternionMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_QUATERNION, GDNATIVE_VARIANT_TYPE_NIL)
+        globalQuaternionMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_QUATERNION, GDNATIVE_VARIANT_TYPE_NIL)
         globalQuaternionMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_QUATERNION, GDNATIVE_VARIANT_TYPE_NIL)
         globalQuaternionMethodBindings.operator_positive = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_POSITIVE, GDNATIVE_VARIANT_TYPE_QUATERNION, GDNATIVE_VARIANT_TYPE_NIL)
         globalQuaternionMethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_QUATERNION, GDNATIVE_VARIANT_TYPE_INT)
@@ -11365,6 +11486,25 @@ func (cx *Quaternion) IsEqualApprox(to Quaternion,) bool {
     ret := callBuiltinMethodPtrRet[bool](mb, bx, args)
 
     C.free(argBytes)
+    return ret
+    
+
+    
+}
+
+
+/* IsFinite : is_finite
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Quaternion) IsFinite() bool {
+    mb := globalQuaternionMethodBindings.method_is_finite
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
     return ret
     
 
@@ -11721,17 +11861,17 @@ func (cx *Quaternion) MemberGetw() float32 {
 }
 
 
-// Equal_Nil operator
-func (cx *Quaternion) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Quaternion) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Quaternion) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Quaternion) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Negate operator
 func (cx *Quaternion) Negate() Quaternion {
@@ -11821,7 +11961,7 @@ func (cx *Quaternion) In_Array(right Array) bool {
  * AABB
  * indexingReturnType: 
  * isKeyed: false
- * hasDestructor: true
+ * hasDestructor: false
  */
 type AABB struct {
     opaque [24]uint8
@@ -11831,7 +11971,6 @@ type aABBMethodBindings struct {
     constructor_0 GDNativePtrConstructor
     constructor_1 GDNativePtrConstructor
     constructor_2 GDNativePtrConstructor
-    destructor GDNativePtrDestructor
     method_abs GDNativePtrBuiltInMethod
     method_get_center GDNativePtrBuiltInMethod
     method_get_volume GDNativePtrBuiltInMethod
@@ -11839,6 +11978,7 @@ type aABBMethodBindings struct {
     method_has_surface GDNativePtrBuiltInMethod
     method_has_point GDNativePtrBuiltInMethod
     method_is_equal_approx GDNativePtrBuiltInMethod
+    method_is_finite GDNativePtrBuiltInMethod
     method_intersects GDNativePtrBuiltInMethod
     method_encloses GDNativePtrBuiltInMethod
     method_intersects_plane GDNativePtrBuiltInMethod
@@ -11862,8 +12002,8 @@ type aABBMethodBindings struct {
     member_size_getter GDNativePtrGetter
     member_end_setter GDNativePtrSetter
     member_end_getter GDNativePtrGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_equal_AABB GDNativePtrOperatorEvaluator
         operator_not_equal_AABB GDNativePtrOperatorEvaluator
         operator_multiply_Transform3D GDNativePtrOperatorEvaluator
@@ -11877,7 +12017,6 @@ func aABBInitBindings() {
     globalAABBMethodBindings.constructor_0 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, 0)
     globalAABBMethodBindings.constructor_1 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, 1)
     globalAABBMethodBindings.constructor_2 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, 2)
-    globalAABBMethodBindings.destructor = GDNativeInterface_variant_get_ptr_destructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB)
     globalAABBMethodBindings.method_abs = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "abs", 1576868580)
     globalAABBMethodBindings.method_get_center = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "get_center", 1776574132)
     globalAABBMethodBindings.method_get_volume = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "get_volume", 466405837)
@@ -11885,6 +12024,7 @@ func aABBInitBindings() {
     globalAABBMethodBindings.method_has_surface = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "has_surface", 3918633141)
     globalAABBMethodBindings.method_has_point = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "has_point", 1749054343)
     globalAABBMethodBindings.method_is_equal_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "is_equal_approx", 299946684)
+    globalAABBMethodBindings.method_is_finite = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "is_finite", 3918633141)
     globalAABBMethodBindings.method_intersects = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "intersects", 299946684)
     globalAABBMethodBindings.method_encloses = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "encloses", 299946684)
     globalAABBMethodBindings.method_intersects_plane = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "intersects_plane", 1150170233)
@@ -11908,8 +12048,8 @@ func aABBInitBindings() {
     globalAABBMethodBindings.member_size_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "size")
     globalAABBMethodBindings.member_end_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "end")
     globalAABBMethodBindings.member_end_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_AABB, "end")
-    globalAABBMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_AABB, GDNATIVE_VARIANT_TYPE_NIL)
-        globalAABBMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_AABB, GDNATIVE_VARIANT_TYPE_NIL)
+    globalAABBMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_AABB, GDNATIVE_VARIANT_TYPE_NIL)
+        globalAABBMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_AABB, GDNATIVE_VARIANT_TYPE_NIL)
         globalAABBMethodBindings.operator_equal_AABB = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_AABB, GDNATIVE_VARIANT_TYPE_AABB)
         globalAABBMethodBindings.operator_not_equal_AABB = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_AABB, GDNATIVE_VARIANT_TYPE_AABB)
         globalAABBMethodBindings.operator_multiply_Transform3D = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_AABB, GDNATIVE_VARIANT_TYPE_TRANSFORM3D)
@@ -11964,11 +12104,6 @@ func NewAABBWithVector3Vector3(position Vector3,size Vector3,) AABB {
 }
 
 
-func (cx *AABB) Destroy() {
-    md := (GDNativePtrDestructor)(globalAABBMethodBindings.destructor)
-    bx := (GDNativeTypePtr)(cx.ptr())
-    CallFunc_GDNativePtrDestructor(md, bx)
-}
 
 
 // methods
@@ -12118,6 +12253,25 @@ func (cx *AABB) IsEqualApprox(aabb AABB,) bool {
     ret := callBuiltinMethodPtrRet[bool](mb, bx, args)
 
     C.free(argBytes)
+    return ret
+    
+
+    
+}
+
+
+/* IsFinite : is_finite
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *AABB) IsFinite() bool {
+    mb := globalAABBMethodBindings.method_is_finite
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
     return ret
     
 
@@ -12573,17 +12727,17 @@ func (cx *AABB) MemberGetend() Vector3 {
 }
 
 
-// Equal_Nil operator
-func (cx *AABB) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *AABB) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *AABB) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *AABB) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Equal_AABB operator
 func (cx *AABB) Equal_AABB(right AABB) bool {
@@ -12619,7 +12773,7 @@ func (cx *AABB) In_Array(right Array) bool {
  * Basis
  * indexingReturnType: Vector3
  * isKeyed: false
- * hasDestructor: true
+ * hasDestructor: false
  */
 type Basis struct {
     opaque [36]uint8
@@ -12631,7 +12785,6 @@ type basisMethodBindings struct {
     constructor_2 GDNativePtrConstructor
     constructor_3 GDNativePtrConstructor
     constructor_4 GDNativePtrConstructor
-    destructor GDNativePtrDestructor
     method_inverse GDNativePtrBuiltInMethod
     method_transposed GDNativePtrBuiltInMethod
     method_orthonormalized GDNativePtrBuiltInMethod
@@ -12645,6 +12798,7 @@ type basisMethodBindings struct {
     method_tdotz GDNativePtrBuiltInMethod
     method_slerp GDNativePtrBuiltInMethod
     method_is_equal_approx GDNativePtrBuiltInMethod
+    method_is_finite GDNativePtrBuiltInMethod
     method_get_rotation_quaternion GDNativePtrBuiltInMethod
     method_looking_at GDNativePtrBuiltInMethod
     method_from_scale GDNativePtrBuiltInMethod
@@ -12657,8 +12811,8 @@ type basisMethodBindings struct {
     member_z_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
         operator_multiply_float GDNativePtrOperatorEvaluator
         operator_multiply_Vector3 GDNativePtrOperatorEvaluator
@@ -12677,7 +12831,6 @@ func basisInitBindings() {
     globalBasisMethodBindings.constructor_2 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, 2)
     globalBasisMethodBindings.constructor_3 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, 3)
     globalBasisMethodBindings.constructor_4 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, 4)
-    globalBasisMethodBindings.destructor = GDNativeInterface_variant_get_ptr_destructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS)
     globalBasisMethodBindings.method_inverse = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "inverse", 594669093)
     globalBasisMethodBindings.method_transposed = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "transposed", 594669093)
     globalBasisMethodBindings.method_orthonormalized = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "orthonormalized", 594669093)
@@ -12691,6 +12844,7 @@ func basisInitBindings() {
     globalBasisMethodBindings.method_tdotz = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "tdotz", 1047977935)
     globalBasisMethodBindings.method_slerp = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "slerp", 3118673011)
     globalBasisMethodBindings.method_is_equal_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "is_equal_approx", 3165333982)
+    globalBasisMethodBindings.method_is_finite = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "is_finite", 3918633141)
     globalBasisMethodBindings.method_get_rotation_quaternion = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "get_rotation_quaternion", 4274879941)
     globalBasisMethodBindings.method_looking_at = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "looking_at", 419916660)
     globalBasisMethodBindings.method_from_scale = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "from_scale", 3703240166)
@@ -12703,8 +12857,8 @@ func basisInitBindings() {
     globalBasisMethodBindings.member_z_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS, "z")
     globalBasisMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS)
     globalBasisMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_BASIS)
-    globalBasisMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_BASIS, GDNATIVE_VARIANT_TYPE_NIL)
-        globalBasisMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_BASIS, GDNATIVE_VARIANT_TYPE_NIL)
+    globalBasisMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_BASIS, GDNATIVE_VARIANT_TYPE_NIL)
+        globalBasisMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_BASIS, GDNATIVE_VARIANT_TYPE_NIL)
         globalBasisMethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_BASIS, GDNATIVE_VARIANT_TYPE_INT)
         globalBasisMethodBindings.operator_multiply_float = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_BASIS, GDNATIVE_VARIANT_TYPE_FLOAT)
         globalBasisMethodBindings.operator_multiply_Vector3 = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_BASIS, GDNATIVE_VARIANT_TYPE_VECTOR3)
@@ -12794,11 +12948,6 @@ func NewBasisWithVector3Vector3Vector3(x_axis Vector3,y_axis Vector3,z_axis Vect
 }
 
 
-func (cx *Basis) Destroy() {
-    md := (GDNativePtrDestructor)(globalBasisMethodBindings.destructor)
-    bx := (GDNativeTypePtr)(cx.ptr())
-    CallFunc_GDNativePtrDestructor(md, bx)
-}
 
 
 // methods
@@ -13131,6 +13280,25 @@ func (cx *Basis) IsEqualApprox(b Basis,) bool {
 }
 
 
+/* IsFinite : is_finite
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Basis) IsFinite() bool {
+    mb := globalBasisMethodBindings.method_is_finite
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
+
 /* GetRotationQuaternion : get_rotation_quaternion
  * is_vararg = false, is_static = false
  * goReturnType(Quaternion) -> Quaternion
@@ -13260,17 +13428,17 @@ func (cx *Basis) MemberGetz() Vector3 {
 }
 
 
-// Equal_Nil operator
-func (cx *Basis) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Basis) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Basis) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Basis) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Multiply_int operator
 func (cx *Basis) Multiply_int(right int32) Basis {
@@ -13324,7 +13492,7 @@ func (cx *Basis) In_Array(right Array) bool {
  * Transform3D
  * indexingReturnType: 
  * isKeyed: false
- * hasDestructor: true
+ * hasDestructor: false
  */
 type Transform3D struct {
     opaque [48]uint8
@@ -13336,7 +13504,6 @@ type transform3DMethodBindings struct {
     constructor_2 GDNativePtrConstructor
     constructor_3 GDNativePtrConstructor
     constructor_4 GDNativePtrConstructor
-    destructor GDNativePtrDestructor
     method_inverse GDNativePtrBuiltInMethod
     method_affine_inverse GDNativePtrBuiltInMethod
     method_orthonormalized GDNativePtrBuiltInMethod
@@ -13349,12 +13516,13 @@ type transform3DMethodBindings struct {
     method_looking_at GDNativePtrBuiltInMethod
     method_interpolate_with GDNativePtrBuiltInMethod
     method_is_equal_approx GDNativePtrBuiltInMethod
+    method_is_finite GDNativePtrBuiltInMethod
     member_basis_setter GDNativePtrSetter
     member_basis_getter GDNativePtrGetter
     member_origin_setter GDNativePtrSetter
     member_origin_getter GDNativePtrGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
         operator_multiply_float GDNativePtrOperatorEvaluator
         operator_multiply_Vector3 GDNativePtrOperatorEvaluator
@@ -13376,7 +13544,6 @@ func transform3DInitBindings() {
     globalTransform3DMethodBindings.constructor_2 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, 2)
     globalTransform3DMethodBindings.constructor_3 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, 3)
     globalTransform3DMethodBindings.constructor_4 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, 4)
-    globalTransform3DMethodBindings.destructor = GDNativeInterface_variant_get_ptr_destructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D)
     globalTransform3DMethodBindings.method_inverse = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "inverse", 3816817146)
     globalTransform3DMethodBindings.method_affine_inverse = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "affine_inverse", 3816817146)
     globalTransform3DMethodBindings.method_orthonormalized = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "orthonormalized", 3816817146)
@@ -13389,12 +13556,13 @@ func transform3DInitBindings() {
     globalTransform3DMethodBindings.method_looking_at = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "looking_at", 806929180)
     globalTransform3DMethodBindings.method_interpolate_with = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "interpolate_with", 1786453358)
     globalTransform3DMethodBindings.method_is_equal_approx = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "is_equal_approx", 696001652)
+    globalTransform3DMethodBindings.method_is_finite = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "is_finite", 3918633141)
     globalTransform3DMethodBindings.member_basis_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "basis")
     globalTransform3DMethodBindings.member_basis_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "basis")
     globalTransform3DMethodBindings.member_origin_setter = GDNativeInterface_variant_get_ptr_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "origin")
     globalTransform3DMethodBindings.member_origin_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, "origin")
-    globalTransform3DMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, GDNATIVE_VARIANT_TYPE_NIL)
-        globalTransform3DMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, GDNATIVE_VARIANT_TYPE_NIL)
+    globalTransform3DMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, GDNATIVE_VARIANT_TYPE_NIL)
+        globalTransform3DMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, GDNATIVE_VARIANT_TYPE_NIL)
         globalTransform3DMethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, GDNATIVE_VARIANT_TYPE_INT)
         globalTransform3DMethodBindings.operator_multiply_float = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, GDNATIVE_VARIANT_TYPE_FLOAT)
         globalTransform3DMethodBindings.operator_multiply_Vector3 = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_TRANSFORM3D, GDNATIVE_VARIANT_TYPE_VECTOR3)
@@ -13489,11 +13657,6 @@ func NewTransform3DWithProjection(from Projection,) Transform3D {
 }
 
 
-func (cx *Transform3D) Destroy() {
-    md := (GDNativePtrDestructor)(globalTransform3DMethodBindings.destructor)
-    bx := (GDNativeTypePtr)(cx.ptr())
-    CallFunc_GDNativePtrDestructor(md, bx)
-}
 
 
 // methods
@@ -13824,6 +13987,25 @@ func (cx *Transform3D) IsEqualApprox(xform Transform3D,) bool {
 }
 
 
+/* IsFinite : is_finite
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Transform3D) IsFinite() bool {
+    mb := globalTransform3DMethodBindings.method_is_finite
+
+    bx := cx.ptr()
+    
+
+    ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+
+    return ret
+    
+
+    
+}
+
+
 // members
 
 func (cx *Transform3D) MemberGetbasis() Basis {
@@ -13837,17 +14019,17 @@ func (cx *Transform3D) MemberGetorigin() Vector3 {
 }
 
 
-// Equal_Nil operator
-func (cx *Transform3D) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Transform3D) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Transform3D) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Transform3D) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Multiply_int operator
 func (cx *Transform3D) Multiply_int(right int32) Transform3D {
@@ -15006,8 +15188,8 @@ type colorMethodBindings struct {
     member_v_getter GDNativePtrGetter
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_negate GDNativePtrOperatorEvaluator
         operator_positive GDNativePtrOperatorEvaluator
         operator_multiply_int GDNativePtrOperatorEvaluator
@@ -15088,8 +15270,8 @@ func colorInitBindings() {
     globalColorMethodBindings.member_v_getter = GDNativeInterface_variant_get_ptr_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_COLOR, "v")
     globalColorMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_COLOR)
     globalColorMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_COLOR)
-    globalColorMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_COLOR, GDNATIVE_VARIANT_TYPE_NIL)
-        globalColorMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_COLOR, GDNATIVE_VARIANT_TYPE_NIL)
+    globalColorMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_COLOR, GDNATIVE_VARIANT_TYPE_NIL)
+        globalColorMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_COLOR, GDNATIVE_VARIANT_TYPE_NIL)
         globalColorMethodBindings.operator_negate = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NEGATE, GDNATIVE_VARIANT_TYPE_COLOR, GDNATIVE_VARIANT_TYPE_NIL)
         globalColorMethodBindings.operator_positive = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_POSITIVE, GDNATIVE_VARIANT_TYPE_COLOR, GDNATIVE_VARIANT_TYPE_NIL)
         globalColorMethodBindings.operator_multiply_int = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_COLOR, GDNATIVE_VARIANT_TYPE_INT)
@@ -16034,17 +16216,17 @@ func (cx *Color) MemberGetv() float32 {
 }
 
 
-// Equal_Nil operator
-func (cx *Color) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Color) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Color) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Color) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Negate operator
 func (cx *Color) Negate() Color {
@@ -16152,8 +16334,8 @@ type stringNameMethodBindings struct {
     constructor_2 GDNativePtrConstructor
     destructor GDNativePtrDestructor
     method_hash GDNativePtrBuiltInMethod
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_equal_String GDNativePtrOperatorEvaluator
         operator_not_equal_String GDNativePtrOperatorEvaluator
         operator_in_String GDNativePtrOperatorEvaluator
@@ -16177,8 +16359,8 @@ func stringNameInitBindings() {
     globalStringNameMethodBindings.constructor_2 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING_NAME, 2)
     globalStringNameMethodBindings.destructor = GDNativeInterface_variant_get_ptr_destructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING_NAME)
     globalStringNameMethodBindings.method_hash = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_STRING_NAME, "hash", 3173160232)
-    globalStringNameMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_STRING_NAME, GDNATIVE_VARIANT_TYPE_NIL)
-        globalStringNameMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_STRING_NAME, GDNATIVE_VARIANT_TYPE_NIL)
+    globalStringNameMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_STRING_NAME, GDNATIVE_VARIANT_TYPE_NIL)
+        globalStringNameMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_STRING_NAME, GDNATIVE_VARIANT_TYPE_NIL)
         globalStringNameMethodBindings.operator_equal_String = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_STRING_NAME, GDNATIVE_VARIANT_TYPE_STRING)
         globalStringNameMethodBindings.operator_not_equal_String = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_STRING_NAME, GDNATIVE_VARIANT_TYPE_STRING)
         globalStringNameMethodBindings.operator_in_String = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_STRING_NAME, GDNATIVE_VARIANT_TYPE_STRING)
@@ -16271,17 +16453,17 @@ func (cx *StringName) Hash() int32 {
 // members
 
 
-// Equal_Nil operator
-func (cx *StringName) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *StringName) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *StringName) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *StringName) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Equal_String operator
 func (cx *StringName) Equal_String(right String) bool {
@@ -16386,8 +16568,8 @@ type nodePathMethodBindings struct {
     method_get_concatenated_subnames GDNativePtrBuiltInMethod
     method_get_as_property_path GDNativePtrBuiltInMethod
     method_is_empty GDNativePtrBuiltInMethod
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_equal_NodePath GDNativePtrOperatorEvaluator
         operator_not_equal_NodePath GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -16411,8 +16593,8 @@ func nodePathInitBindings() {
     globalNodePathMethodBindings.method_get_concatenated_subnames = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_NODE_PATH, "get_concatenated_subnames", 1825232092)
     globalNodePathMethodBindings.method_get_as_property_path = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_NODE_PATH, "get_as_property_path", 1598598043)
     globalNodePathMethodBindings.method_is_empty = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_NODE_PATH, "is_empty", 3918633141)
-    globalNodePathMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_NODE_PATH, GDNATIVE_VARIANT_TYPE_NIL)
-        globalNodePathMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_NODE_PATH, GDNATIVE_VARIANT_TYPE_NIL)
+    globalNodePathMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_NODE_PATH, GDNATIVE_VARIANT_TYPE_NIL)
+        globalNodePathMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_NODE_PATH, GDNATIVE_VARIANT_TYPE_NIL)
         globalNodePathMethodBindings.operator_equal_NodePath = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_NODE_PATH, GDNATIVE_VARIANT_TYPE_NODE_PATH)
         globalNodePathMethodBindings.operator_not_equal_NodePath = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_NODE_PATH, GDNATIVE_VARIANT_TYPE_NODE_PATH)
         globalNodePathMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_NODE_PATH, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -16685,17 +16867,17 @@ func (cx *NodePath) IsEmpty() bool {
 // members
 
 
-// Equal_Nil operator
-func (cx *NodePath) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *NodePath) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *NodePath) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *NodePath) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Equal_NodePath operator
 func (cx *NodePath) Equal_NodePath(right NodePath) bool {
@@ -16725,7 +16907,7 @@ func (cx *NodePath) In_Array(right Array) bool {
  * RID
  * indexingReturnType: 
  * isKeyed: false
- * hasDestructor: true
+ * hasDestructor: false
  */
 type RID struct {
     opaque [8]uint8
@@ -16734,11 +16916,10 @@ type RID struct {
 type rIDMethodBindings struct {
     constructor_0 GDNativePtrConstructor
     constructor_1 GDNativePtrConstructor
-    destructor GDNativePtrDestructor
     method_is_valid GDNativePtrBuiltInMethod
     method_get_id GDNativePtrBuiltInMethod
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_equal_RID GDNativePtrOperatorEvaluator
         operator_not_equal_RID GDNativePtrOperatorEvaluator
         operator_less_RID GDNativePtrOperatorEvaluator
@@ -16752,11 +16933,10 @@ var globalRIDMethodBindings rIDMethodBindings
 func rIDInitBindings() {
     globalRIDMethodBindings.constructor_0 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RID, 0)
     globalRIDMethodBindings.constructor_1 = GDNativeInterface_variant_get_ptr_constructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RID, 1)
-    globalRIDMethodBindings.destructor = GDNativeInterface_variant_get_ptr_destructor(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RID)
     globalRIDMethodBindings.method_is_valid = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RID, "is_valid", 3918633141)
     globalRIDMethodBindings.method_get_id = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_RID, "get_id", 3173160232)
-    globalRIDMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RID, GDNATIVE_VARIANT_TYPE_NIL)
-        globalRIDMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RID, GDNATIVE_VARIANT_TYPE_NIL)
+    globalRIDMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RID, GDNATIVE_VARIANT_TYPE_NIL)
+        globalRIDMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RID, GDNATIVE_VARIANT_TYPE_NIL)
         globalRIDMethodBindings.operator_equal_RID = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_RID, GDNATIVE_VARIANT_TYPE_RID)
         globalRIDMethodBindings.operator_not_equal_RID = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_RID, GDNATIVE_VARIANT_TYPE_RID)
         globalRIDMethodBindings.operator_less_RID = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_LESS, GDNATIVE_VARIANT_TYPE_RID, GDNATIVE_VARIANT_TYPE_RID)
@@ -16796,11 +16976,6 @@ func NewRIDWithRID(from RID,) RID {
 }
 
 
-func (cx *RID) Destroy() {
-    md := (GDNativePtrDestructor)(globalRIDMethodBindings.destructor)
-    bx := (GDNativeTypePtr)(cx.ptr())
-    CallFunc_GDNativePtrDestructor(md, bx)
-}
 
 
 // methods
@@ -16847,17 +17022,17 @@ func (cx *RID) GetId() int32 {
 // members
 
 
-// Equal_Nil operator
-func (cx *RID) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *RID) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *RID) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *RID) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Equal_RID operator
 func (cx *RID) Equal_RID(right RID) bool {
@@ -16925,8 +17100,8 @@ type callableMethodBindings struct {
     method_rpc GDNativePtrBuiltInMethod
     method_rpc_id GDNativePtrBuiltInMethod
     method_bind GDNativePtrBuiltInMethod
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_equal_Callable GDNativePtrOperatorEvaluator
         operator_not_equal_Callable GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -16955,8 +17130,8 @@ func callableInitBindings() {
     globalCallableMethodBindings.method_rpc = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, "rpc", 3286317445)
     globalCallableMethodBindings.method_rpc_id = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, "rpc_id", 2270047679)
     globalCallableMethodBindings.method_bind = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_CALLABLE, "bind", 3224143119)
-    globalCallableMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_CALLABLE, GDNATIVE_VARIANT_TYPE_NIL)
-        globalCallableMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_CALLABLE, GDNATIVE_VARIANT_TYPE_NIL)
+    globalCallableMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_CALLABLE, GDNATIVE_VARIANT_TYPE_NIL)
+        globalCallableMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_CALLABLE, GDNATIVE_VARIANT_TYPE_NIL)
         globalCallableMethodBindings.operator_equal_Callable = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_CALLABLE, GDNATIVE_VARIANT_TYPE_CALLABLE)
         globalCallableMethodBindings.operator_not_equal_Callable = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_CALLABLE, GDNATIVE_VARIANT_TYPE_CALLABLE)
         globalCallableMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_CALLABLE, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -17367,17 +17542,17 @@ func (cx *Callable) Bind(varargs ...Variant) Callable {
 // members
 
 
-// Equal_Nil operator
-func (cx *Callable) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Callable) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Callable) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Callable) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Equal_Callable operator
 func (cx *Callable) Equal_Callable(right Callable) bool {
@@ -17427,8 +17602,8 @@ type signalMethodBindings struct {
     method_is_connected GDNativePtrBuiltInMethod
     method_get_connections GDNativePtrBuiltInMethod
     method_emit GDNativePtrBuiltInMethod
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_equal_Signal GDNativePtrOperatorEvaluator
         operator_not_equal_Signal GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -17451,8 +17626,8 @@ func signalInitBindings() {
     globalSignalMethodBindings.method_is_connected = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_SIGNAL, "is_connected", 4129521963)
     globalSignalMethodBindings.method_get_connections = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_SIGNAL, "get_connections", 4144163970)
     globalSignalMethodBindings.method_emit = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_SIGNAL, "emit", 3286317445)
-    globalSignalMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_SIGNAL, GDNATIVE_VARIANT_TYPE_NIL)
-        globalSignalMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_SIGNAL, GDNATIVE_VARIANT_TYPE_NIL)
+    globalSignalMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_SIGNAL, GDNATIVE_VARIANT_TYPE_NIL)
+        globalSignalMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_SIGNAL, GDNATIVE_VARIANT_TYPE_NIL)
         globalSignalMethodBindings.operator_equal_Signal = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_SIGNAL, GDNATIVE_VARIANT_TYPE_SIGNAL)
         globalSignalMethodBindings.operator_not_equal_Signal = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_SIGNAL, GDNATIVE_VARIANT_TYPE_SIGNAL)
         globalSignalMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_SIGNAL, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -17727,17 +17902,17 @@ func (cx *Signal) Emit(varargs ...Variant)  {
 // members
 
 
-// Equal_Nil operator
-func (cx *Signal) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Signal) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Signal) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Signal) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Equal_Signal operator
 func (cx *Signal) Equal_Signal(right Signal) bool {
@@ -17795,8 +17970,8 @@ type dictionaryMethodBindings struct {
     keyed_setter  GDNativePtrKeyedSetter
     keyed_getter  GDNativePtrKeyedGetter
     keyed_checker GDNativePtrKeyedChecker
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_equal_Dictionary GDNativePtrOperatorEvaluator
         operator_not_equal_Dictionary GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
@@ -17827,8 +18002,8 @@ func dictionaryInitBindings() {
     globalDictionaryMethodBindings.keyed_setter  = GDNativeInterface_variant_get_ptr_keyed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_DICTIONARY)
     globalDictionaryMethodBindings.keyed_getter  = GDNativeInterface_variant_get_ptr_keyed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_DICTIONARY)
     globalDictionaryMethodBindings.keyed_checker = GDNativeInterface_variant_get_ptr_keyed_checker(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_DICTIONARY)
-    globalDictionaryMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_DICTIONARY, GDNATIVE_VARIANT_TYPE_NIL)
-        globalDictionaryMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_DICTIONARY, GDNATIVE_VARIANT_TYPE_NIL)
+    globalDictionaryMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_DICTIONARY, GDNATIVE_VARIANT_TYPE_NIL)
+        globalDictionaryMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_DICTIONARY, GDNATIVE_VARIANT_TYPE_NIL)
         globalDictionaryMethodBindings.operator_equal_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_DICTIONARY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalDictionaryMethodBindings.operator_not_equal_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_DICTIONARY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalDictionaryMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_DICTIONARY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
@@ -18207,17 +18382,17 @@ func (cx *Dictionary) SetKey(const Variant &p_key) Variant {
 // members
 
 
-// Equal_Nil operator
-func (cx *Dictionary) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Dictionary) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Dictionary) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Dictionary) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Equal_Dictionary operator
 func (cx *Dictionary) Equal_Dictionary(right Dictionary) bool {
@@ -18315,8 +18490,8 @@ type arrayMethodBindings struct {
     method_is_read_only GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
         operator_equal_Array GDNativePtrOperatorEvaluator
         operator_not_equal_Array GDNativePtrOperatorEvaluator
@@ -18392,8 +18567,8 @@ func arrayInitBindings() {
     globalArrayMethodBindings.method_is_read_only = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY, "is_read_only", 3918633141)
     globalArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY)
     globalArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_ARRAY)
-    globalArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
-        globalArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+    globalArrayMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+        globalArrayMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalArrayMethodBindings.operator_equal_Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_ARRAY, GDNATIVE_VARIANT_TYPE_ARRAY)
         globalArrayMethodBindings.operator_not_equal_Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_ARRAY, GDNATIVE_VARIANT_TYPE_ARRAY)
@@ -18448,7 +18623,7 @@ func NewArrayWithArrayInt32StringNameVariant(base Array,typeName int32,class_nam
         args[1] = (GDNativeTypePtr)(unsafe.Pointer(&typeName))
         // StringName
         args[2] = (GDNativeTypePtr)(class_name.ptr())
-        // Nil
+        // Variant
         args[3] = (GDNativeTypePtr)(script.ptr())
         callBuiltinConstructor(globalArrayMethodBindings.constructor_2, ptr, args[0],args[1],args[2],args[3],)
 
@@ -19777,17 +19952,17 @@ func (cx *Array) SetIndexed(i int64, value Variant) {
 // members
 
 
-// Equal_Nil operator
-func (cx *Array) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *Array) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *Array) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *Array) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // In_Dictionary operator
 func (cx *Array) In_Dictionary(right Dictionary) bool {
@@ -19918,8 +20093,8 @@ type packedByteArrayMethodBindings struct {
     method_encode_var GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
         operator_in_Array GDNativePtrOperatorEvaluator
         operator_equal_PackedByteArray GDNativePtrOperatorEvaluator
@@ -19994,8 +20169,8 @@ func packedByteArrayInitBindings() {
     globalPackedByteArrayMethodBindings.method_encode_var = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, "encode_var", 2604460497)
     globalPackedByteArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY)
     globalPackedByteArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY)
-    globalPackedByteArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
-        globalPackedByteArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+    globalPackedByteArrayMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+        globalPackedByteArrayMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedByteArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalPackedByteArrayMethodBindings.operator_in_Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, GDNATIVE_VARIANT_TYPE_ARRAY)
         globalPackedByteArrayMethodBindings.operator_equal_PackedByteArray = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY, GDNATIVE_VARIANT_TYPE_PACKED_BYTE_ARRAY)
@@ -21650,17 +21825,17 @@ func (cx *PackedByteArray) SetIndexed(i int64, value int32) {
 // members
 
 
-// Equal_Nil operator
-func (cx *PackedByteArray) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *PackedByteArray) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *PackedByteArray) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *PackedByteArray) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // In_Dictionary operator
 func (cx *PackedByteArray) In_Dictionary(right Dictionary) bool {
@@ -21730,8 +21905,8 @@ type packedInt32ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
         operator_in_Array GDNativePtrOperatorEvaluator
         operator_equal_PackedInt32Array GDNativePtrOperatorEvaluator
@@ -21769,8 +21944,8 @@ func packedInt32ArrayInitBindings() {
     globalPackedInt32ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, "count", 4103005248)
     globalPackedInt32ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY)
     globalPackedInt32ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY)
-    globalPackedInt32ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
-        globalPackedInt32ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+    globalPackedInt32ArrayMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+        globalPackedInt32ArrayMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedInt32ArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalPackedInt32ArrayMethodBindings.operator_in_Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, GDNATIVE_VARIANT_TYPE_ARRAY)
         globalPackedInt32ArrayMethodBindings.operator_equal_PackedInt32Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY, GDNATIVE_VARIANT_TYPE_PACKED_INT32_ARRAY)
@@ -22400,17 +22575,17 @@ func (cx *PackedInt32Array) SetIndexed(i int64, value int32) {
 // members
 
 
-// Equal_Nil operator
-func (cx *PackedInt32Array) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *PackedInt32Array) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *PackedInt32Array) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *PackedInt32Array) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // In_Dictionary operator
 func (cx *PackedInt32Array) In_Dictionary(right Dictionary) bool {
@@ -22480,8 +22655,8 @@ type packedInt64ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
         operator_in_Array GDNativePtrOperatorEvaluator
         operator_equal_PackedInt64Array GDNativePtrOperatorEvaluator
@@ -22519,8 +22694,8 @@ func packedInt64ArrayInitBindings() {
     globalPackedInt64ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, "count", 4103005248)
     globalPackedInt64ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY)
     globalPackedInt64ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY)
-    globalPackedInt64ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
-        globalPackedInt64ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+    globalPackedInt64ArrayMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+        globalPackedInt64ArrayMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedInt64ArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalPackedInt64ArrayMethodBindings.operator_in_Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, GDNATIVE_VARIANT_TYPE_ARRAY)
         globalPackedInt64ArrayMethodBindings.operator_equal_PackedInt64Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY, GDNATIVE_VARIANT_TYPE_PACKED_INT64_ARRAY)
@@ -23150,17 +23325,17 @@ func (cx *PackedInt64Array) SetIndexed(i int64, value int32) {
 // members
 
 
-// Equal_Nil operator
-func (cx *PackedInt64Array) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *PackedInt64Array) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *PackedInt64Array) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *PackedInt64Array) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // In_Dictionary operator
 func (cx *PackedInt64Array) In_Dictionary(right Dictionary) bool {
@@ -23230,8 +23405,8 @@ type packedFloat32ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
         operator_in_Array GDNativePtrOperatorEvaluator
         operator_equal_PackedFloat32Array GDNativePtrOperatorEvaluator
@@ -23269,8 +23444,8 @@ func packedFloat32ArrayInitBindings() {
     globalPackedFloat32ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, "count", 2859915090)
     globalPackedFloat32ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY)
     globalPackedFloat32ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY)
-    globalPackedFloat32ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
-        globalPackedFloat32ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+    globalPackedFloat32ArrayMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+        globalPackedFloat32ArrayMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedFloat32ArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalPackedFloat32ArrayMethodBindings.operator_in_Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, GDNATIVE_VARIANT_TYPE_ARRAY)
         globalPackedFloat32ArrayMethodBindings.operator_equal_PackedFloat32Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT32_ARRAY)
@@ -23900,17 +24075,17 @@ func (cx *PackedFloat32Array) SetIndexed(i int64, value float32) {
 // members
 
 
-// Equal_Nil operator
-func (cx *PackedFloat32Array) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *PackedFloat32Array) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *PackedFloat32Array) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *PackedFloat32Array) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // In_Dictionary operator
 func (cx *PackedFloat32Array) In_Dictionary(right Dictionary) bool {
@@ -23980,8 +24155,8 @@ type packedFloat64ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
         operator_in_Array GDNativePtrOperatorEvaluator
         operator_equal_PackedFloat64Array GDNativePtrOperatorEvaluator
@@ -24019,8 +24194,8 @@ func packedFloat64ArrayInitBindings() {
     globalPackedFloat64ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, "count", 2859915090)
     globalPackedFloat64ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY)
     globalPackedFloat64ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY)
-    globalPackedFloat64ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
-        globalPackedFloat64ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+    globalPackedFloat64ArrayMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+        globalPackedFloat64ArrayMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedFloat64ArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalPackedFloat64ArrayMethodBindings.operator_in_Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, GDNATIVE_VARIANT_TYPE_ARRAY)
         globalPackedFloat64ArrayMethodBindings.operator_equal_PackedFloat64Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, GDNATIVE_VARIANT_TYPE_PACKED_FLOAT64_ARRAY)
@@ -24650,17 +24825,17 @@ func (cx *PackedFloat64Array) SetIndexed(i int64, value float32) {
 // members
 
 
-// Equal_Nil operator
-func (cx *PackedFloat64Array) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *PackedFloat64Array) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *PackedFloat64Array) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *PackedFloat64Array) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // In_Dictionary operator
 func (cx *PackedFloat64Array) In_Dictionary(right Dictionary) bool {
@@ -24730,8 +24905,8 @@ type packedStringArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
         operator_in_Array GDNativePtrOperatorEvaluator
         operator_equal_PackedStringArray GDNativePtrOperatorEvaluator
@@ -24769,8 +24944,8 @@ func packedStringArrayInitBindings() {
     globalPackedStringArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, "count", 2920860731)
     globalPackedStringArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY)
     globalPackedStringArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY)
-    globalPackedStringArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
-        globalPackedStringArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+    globalPackedStringArrayMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+        globalPackedStringArrayMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedStringArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalPackedStringArrayMethodBindings.operator_in_Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, GDNATIVE_VARIANT_TYPE_ARRAY)
         globalPackedStringArrayMethodBindings.operator_equal_PackedStringArray = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY, GDNATIVE_VARIANT_TYPE_PACKED_STRING_ARRAY)
@@ -25400,17 +25575,17 @@ func (cx *PackedStringArray) SetIndexed(i int64, value String) {
 // members
 
 
-// Equal_Nil operator
-func (cx *PackedStringArray) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *PackedStringArray) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *PackedStringArray) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *PackedStringArray) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // In_Dictionary operator
 func (cx *PackedStringArray) In_Dictionary(right Dictionary) bool {
@@ -25480,8 +25655,8 @@ type packedVector2ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_multiply_Transform2D GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
         operator_in_Array GDNativePtrOperatorEvaluator
@@ -25520,8 +25695,8 @@ func packedVector2ArrayInitBindings() {
     globalPackedVector2ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, "count", 2798848307)
     globalPackedVector2ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY)
     globalPackedVector2ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY)
-    globalPackedVector2ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
-        globalPackedVector2ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+    globalPackedVector2ArrayMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+        globalPackedVector2ArrayMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedVector2ArrayMethodBindings.operator_multiply_Transform2D = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, GDNATIVE_VARIANT_TYPE_TRANSFORM2D)
         globalPackedVector2ArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalPackedVector2ArrayMethodBindings.operator_in_Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, GDNATIVE_VARIANT_TYPE_ARRAY)
@@ -26152,17 +26327,17 @@ func (cx *PackedVector2Array) SetIndexed(i int64, value Vector2) {
 // members
 
 
-// Equal_Nil operator
-func (cx *PackedVector2Array) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *PackedVector2Array) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *PackedVector2Array) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *PackedVector2Array) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Multiply_Transform2D operator
 func (cx *PackedVector2Array) Multiply_Transform2D(right Transform2D) PackedVector2Array {
@@ -26238,8 +26413,8 @@ type packedVector3ArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_multiply_Transform3D GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
         operator_in_Array GDNativePtrOperatorEvaluator
@@ -26278,8 +26453,8 @@ func packedVector3ArrayInitBindings() {
     globalPackedVector3ArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, "count", 194580386)
     globalPackedVector3ArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY)
     globalPackedVector3ArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY)
-    globalPackedVector3ArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
-        globalPackedVector3ArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+    globalPackedVector3ArrayMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+        globalPackedVector3ArrayMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedVector3ArrayMethodBindings.operator_multiply_Transform3D = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_MULTIPLY, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, GDNATIVE_VARIANT_TYPE_TRANSFORM3D)
         globalPackedVector3ArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalPackedVector3ArrayMethodBindings.operator_in_Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, GDNATIVE_VARIANT_TYPE_ARRAY)
@@ -26910,17 +27085,17 @@ func (cx *PackedVector3Array) SetIndexed(i int64, value Vector3) {
 // members
 
 
-// Equal_Nil operator
-func (cx *PackedVector3Array) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *PackedVector3Array) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *PackedVector3Array) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *PackedVector3Array) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // Multiply_Transform3D operator
 func (cx *PackedVector3Array) Multiply_Transform3D(right Transform3D) PackedVector3Array {
@@ -26996,8 +27171,8 @@ type packedColorArrayMethodBindings struct {
     method_count GDNativePtrBuiltInMethod
     indexed_setter GDNativePtrIndexedSetter
     indexed_getter GDNativePtrIndexedGetter
-    operator_equal_Nil GDNativePtrOperatorEvaluator
-        operator_not_equal_Nil GDNativePtrOperatorEvaluator
+    operator_equal_Variant GDNativePtrOperatorEvaluator
+        operator_not_equal_Variant GDNativePtrOperatorEvaluator
         operator_in_Dictionary GDNativePtrOperatorEvaluator
         operator_in_Array GDNativePtrOperatorEvaluator
         operator_equal_PackedColorArray GDNativePtrOperatorEvaluator
@@ -27035,8 +27210,8 @@ func packedColorArrayInitBindings() {
     globalPackedColorArrayMethodBindings.method_count = GDNativeInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, "count", 1682108616)
     globalPackedColorArrayMethodBindings.indexed_setter = GDNativeInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY)
     globalPackedColorArrayMethodBindings.indexed_getter = GDNativeInterface_variant_get_ptr_indexed_getter(internal.gdnInterface, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY)
-    globalPackedColorArrayMethodBindings.operator_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
-        globalPackedColorArrayMethodBindings.operator_not_equal_Nil = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+    globalPackedColorArrayMethodBindings.operator_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
+        globalPackedColorArrayMethodBindings.operator_not_equal_Variant = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_NOT_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, GDNATIVE_VARIANT_TYPE_NIL)
         globalPackedColorArrayMethodBindings.operator_in_Dictionary = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, GDNATIVE_VARIANT_TYPE_DICTIONARY)
         globalPackedColorArrayMethodBindings.operator_in_Array = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_IN, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, GDNATIVE_VARIANT_TYPE_ARRAY)
         globalPackedColorArrayMethodBindings.operator_equal_PackedColorArray = GDNativeInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDNATIVE_VARIANT_OP_EQUAL, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY, GDNATIVE_VARIANT_TYPE_PACKED_COLOR_ARRAY)
@@ -27666,17 +27841,17 @@ func (cx *PackedColorArray) SetIndexed(i int64, value Color) {
 // members
 
 
-// Equal_Nil operator
-func (cx *PackedColorArray) Equal_Nil(right Variant) bool {
+// Equal_Variant operator
+func (cx *PackedColorArray) Equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_equal_Variant, lt, rt)
     }
-// Not_equal_Nil operator
-func (cx *PackedColorArray) Not_equal_Nil(right Variant) bool {
+// Not_equal_Variant operator
+func (cx *PackedColorArray) Not_equal_Variant(right Variant) bool {
     lt := cx.ptr()
     rt := (GDNativeTypePtr)(unsafe.Pointer(&right))
-    return callBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_not_equal_Nil, lt, rt)
+    return callBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_not_equal_Variant, lt, rt)
     }
 // In_Dictionary operator
 func (cx *PackedColorArray) In_Dictionary(right Dictionary) bool {

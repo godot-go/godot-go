@@ -3412,23 +3412,6 @@ GDNativeBool cgo_gdnative_class_binding_reference_callback_FontVariation(void *p
 
 
 
-void *cgo_gdnative_class_binding_create_callback_FramebufferCacheRD(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FramebufferCacheRD", p_token, p_instance);
-}
-
-void cgo_gdnative_class_binding_free_callback_FramebufferCacheRD(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDNativeBindingFree("FramebufferCacheRD", p_token, p_instance, p_binding);
-}
-
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FramebufferCacheRD(void *p_token, void *p_instance, GDNativeBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FramebufferCacheRD", p_token, p_instance, p_reference);
-}
-
-
-
 void *cgo_gdnative_class_binding_create_callback_GDScript(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingCreate("GDScript", p_token, p_instance);
@@ -3714,6 +3697,23 @@ void cgo_gdnative_class_binding_free_callback_GLTFTexture(void *p_token, void *p
 GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingReference("GLTFTexture", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_GLTFTextureSampler(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingCreate("GLTFTextureSampler", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_GLTFTextureSampler(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDNativeBindingFree("GLTFTextureSampler", p_token, p_instance, p_binding);
+}
+
+GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFTextureSampler(void *p_token, void *p_instance, GDNativeBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDNativeBindingReference("GLTFTextureSampler", p_token, p_instance, p_reference);
 }
 
 
@@ -10909,23 +10909,6 @@ GDNativeBool cgo_gdnative_class_binding_reference_callback_UndoRedo(void *p_toke
 
 
 
-void *cgo_gdnative_class_binding_create_callback_UniformSetCacheRD(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("UniformSetCacheRD", p_token, p_instance);
-}
-
-void cgo_gdnative_class_binding_free_callback_UniformSetCacheRD(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDNativeBindingFree("UniformSetCacheRD", p_token, p_instance, p_binding);
-}
-
-GDNativeBool cgo_gdnative_class_binding_reference_callback_UniformSetCacheRD(void *p_token, void *p_instance, GDNativeBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingReference("UniformSetCacheRD", p_token, p_instance, p_reference);
-}
-
-
-
 void *cgo_gdnative_class_binding_create_callback_VBoxContainer(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingCreate("VBoxContainer", p_token, p_instance);
@@ -13119,23 +13102,6 @@ GDNativeBool cgo_gdnative_class_binding_reference_callback_WebRTCPeerConnectionE
 
 
 
-void *cgo_gdnative_class_binding_create_callback_WebSocketClient(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WebSocketClient", p_token, p_instance);
-}
-
-void cgo_gdnative_class_binding_free_callback_WebSocketClient(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDNativeBindingFree("WebSocketClient", p_token, p_instance, p_binding);
-}
-
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebSocketClient(void *p_token, void *p_instance, GDNativeBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WebSocketClient", p_token, p_instance, p_reference);
-}
-
-
-
 void *cgo_gdnative_class_binding_create_callback_WebSocketMultiplayerPeer(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingCreate("WebSocketMultiplayerPeer", p_token, p_instance);
@@ -13166,23 +13132,6 @@ void cgo_gdnative_class_binding_free_callback_WebSocketPeer(void *p_token, void 
 GDNativeBool cgo_gdnative_class_binding_reference_callback_WebSocketPeer(void *p_token, void *p_instance, GDNativeBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDNativeBindingReference("WebSocketPeer", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdnative_class_binding_create_callback_WebSocketServer(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WebSocketServer", p_token, p_instance);
-}
-
-void cgo_gdnative_class_binding_free_callback_WebSocketServer(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDNativeBindingFree("WebSocketServer", p_token, p_instance, p_binding);
-}
-
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebSocketServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WebSocketServer", p_token, p_instance, p_reference);
 }
 
 

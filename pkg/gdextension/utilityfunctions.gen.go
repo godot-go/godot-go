@@ -1216,6 +1216,39 @@ func IsZeroApprox(x float32,) bool {
 	return ret
 }
 
+// IsFinite is under the category "math".
+func IsFinite(x float32,) bool {
+	
+	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "is_finite", 3569215213)
+
+	if fn == nil {
+		panic("could not find utility function is_finite (3569215213)")
+	}
+
+	var ret bool
+	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+
+	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+
+	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+
+	
+	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&x)
+	
+	
+
+	args := (*GDNativeTypePtr)(argBytes)
+
+	argCount := (int32)(1)
+
+	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+
+	C.free(argBytes)
+	return ret
+}
+
 // Ease is under the category "math".
 func Ease(x float32,curve float32,) float32 {
 	

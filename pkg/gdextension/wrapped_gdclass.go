@@ -17,38 +17,6 @@ type GDClass interface {
 	Wrapped
 }
 
-// var _ GDClass = GDClassImpl[struct{}, struct{}]{}
-
-// type gdClass[T any, P Wrapped] struct {
-// 	typeName   TypeName
-// 	parentName TypeName
-// }
-
-// func NewGDClass[T any, P Wrapped]() GDClass {
-// 	var t T
-// 	var p P
-
-// 	tn := (TypeName)(reflect.TypeOf(t).Name())
-// 	pn := (TypeName)(reflect.TypeOf(p).Name())
-
-// 	return &gdClass[T, P]{
-// 		typeName:   tn,
-// 		parentName: pn,
-// 	}
-// }
-
-// // just for reference, godot-cpp uses this to redirect to their static class:
-// // virtual const char *_get_extension_class() const override {
-// // 	return get_class_static();
-// // }
-// func (c gdClass[T, P]) GetExtensionClass() TypeName {
-// 	return c.typeName
-// }
-
-// func (c gdClass[T, P]) GetExtensionParentClass() TypeName {
-// 	return c.parentName
-// }
-
 func gdClassInitializeClass(c GDClass) {
 	gdClassRegisterVirtuals(c)
 }
@@ -109,6 +77,12 @@ func WrappedPostInitialize(tn TypeName, w Wrapped) {
 func GoCallback_GDNativeExtensionClassCreateInstance(data unsafe.Pointer) C.GDNativeObjectPtr {
 	tn := (TypeName)(C.GoString((*C.char)(data)))
 
+	inst := CreateGDClassInstance(tn)
+
+	return (C.GDNativeObjectPtr)(unsafe.Pointer(inst.GetGodotObjectOwner()))
+}
+
+func CreateGDClassInstance(tn TypeName) GDClass {
 	ci, ok := gdRegisteredGDClasses.Get(tn)
 
 	if !ok {
@@ -148,7 +122,7 @@ func GoCallback_GDNativeExtensionClassCreateInstance(data unsafe.Pointer) C.GDNa
 		zap.String("class_name", (string)(tn)),
 		zap.Any("parent_name", ci.ParentName))
 
-	return (C.GDNativeObjectPtr)(owner)
+	return inst
 }
 
 //export GoCallback_GDNativeExtensionClassFreeInstance

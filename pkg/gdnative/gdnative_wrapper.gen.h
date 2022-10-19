@@ -116,10 +116,6 @@ GDNativeObjectPtr cgo_callfn_GDNativeExtensionClassCreateInstance(
 void cgo_callfn_GDNativeExtensionClassFreeInstance(
     const GDNativeExtensionClassFreeInstance cb, void *p_userdata,
     GDExtensionClassInstancePtr p_instance);
-void cgo_callfn_GDNativeExtensionClassObjectInstance(
-    const GDNativeExtensionClassObjectInstance cb,
-    GDExtensionClassInstancePtr p_instance,
-    GDNativeObjectPtr p_object_instance);
 GDNativeExtensionClassCallVirtual cgo_callfn_GDNativeExtensionClassGetVirtual(
     const GDNativeExtensionClassGetVirtual cb, void *p_userdata,
     const char *p_name);

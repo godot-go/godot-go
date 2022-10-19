@@ -51,7 +51,7 @@ func NewGDNativePropertyInfo(
 	cHintString := C.CString(hintString)
 
 	pi := C.GDNativePropertyInfo{
-		_type:       (C.uint32_t)(propertyType),
+		_type:       (C.GDNativeVariantType)(propertyType),
 		name:        cPropName,
 		class_name:  cClassName,
 		hint:        (C.uint32_t)(hint),

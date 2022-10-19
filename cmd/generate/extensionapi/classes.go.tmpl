@@ -43,6 +43,13 @@ func NewGDNativeClassFrom{{ $c.Name }}Owner(owner *GodotObject) GDNativeClass {
 	return (GDNativeClass)(inst)
 }
 
+func New{{ $c.Name }}WithGodotOwnerObject(owner *GodotObject) {{ $c.Name }} {
+	inst := &{{ goClassStructName $c.Name }}{}
+	inst.Owner = owner
+
+	return inst
+}
+
 {{ if $c.Methods -}}
 
 // section: methods

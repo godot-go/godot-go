@@ -11,7 +11,7 @@ package gdextension
 
 //revive:disable
 
-// #include <godot/gdnative_interface.h>
+// #include <godot/gdextension_interface.h>
 // #include <stdio.h>
 // #include <stdlib.h>
 import "C"

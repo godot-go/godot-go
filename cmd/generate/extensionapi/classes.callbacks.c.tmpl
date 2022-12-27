@@ -9,7 +9,7 @@
 //----------------------------------------------------------------------------*/
 
 #include <stdbool.h>
-#include <godot/gdnative_interface.h>
+#include <godot/gdextension_interface.h>
 #include "classes.callbacks.gen.h"
 #include "stacktrace.h"
 
@@ -17,21 +17,21 @@
 
 void *cgo_gdnative_class_binding_create_callback_{{ $c.Name }}(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("{{ $c.Name }}", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("{{ $c.Name }}", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_{{ $c.Name }}(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("{{ $c.Name }}", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("{{ $c.Name }}", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_{{ $c.Name }}(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_{{ $c.Name }}(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("{{ $c.Name }}", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("{{ $c.Name }}", p_token, p_instance, p_reference);
 }
 
 {{/*
-GDNativeInstanceBindingCallbacks ___binding_callbacks_{{ $c.Name }} = {
+GDExtensionInstanceBindingCallbacks ___binding_callbacks_{{ $c.Name }} = {
 	cgo_gdnative_class_binding_create_callback_{{ $c.Name }},
 	cgo_gdnative_class_binding_free_callback_{{ $c.Name }},
 	cgo_gdnative_class_binding_reference_callback_{{ $c.Name }},

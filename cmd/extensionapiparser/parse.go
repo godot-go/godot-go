@@ -15,7 +15,7 @@ func strictUnmarshal(data []byte, v interface{}) error {
 // ParseGdnativeApiJson parses gdnative_api.json into a APIJson struct.
 func ParseExtensionApiJson(projectPath string) (ExtensionApi, error) {
 	filename := projectPath + "/godot_headers/extension_api.json"
-	// Open the gdnative_api.json file that defines the GDNative APIVersion.
+	// Open the gdnative_api.json file that defines the GDExtension APIVersion.
 	body, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return ExtensionApi{}, err

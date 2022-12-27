@@ -8,13470 +8,13555 @@
 //----------------------------------------------------------------------------*/
 
 #include <stdbool.h>
-#include <godot/gdnative_interface.h>
+#include <godot/gdextension_interface.h>
 #include "classes.callbacks.gen.h"
 #include "stacktrace.h"
 
 void *cgo_gdnative_class_binding_create_callback_AESContext(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AESContext", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AESContext", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AESContext(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AESContext", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AESContext", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AESContext(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AESContext(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AESContext", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AESContext", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AStar2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AStar2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AStar2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AStar2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AStar2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AStar2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AStar2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AStar2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AStar2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AStar2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AStar3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AStar3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AStar3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AStar3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AStar3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AStar3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AStar3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AStar3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AStar3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AStar3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AStarGrid2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AStarGrid2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AStarGrid2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AStarGrid2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AStarGrid2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AStarGrid2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AStarGrid2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AStarGrid2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AStarGrid2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AStarGrid2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AcceptDialog(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AcceptDialog", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AcceptDialog", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AcceptDialog(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AcceptDialog", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AcceptDialog", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AcceptDialog(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AcceptDialog(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AcceptDialog", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AcceptDialog", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimatableBody2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimatableBody2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimatableBody2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimatableBody2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimatableBody2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimatableBody2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimatableBody2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimatableBody2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimatableBody2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimatableBody2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimatableBody3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimatableBody3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimatableBody3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimatableBody3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimatableBody3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimatableBody3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimatableBody3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimatableBody3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimatableBody3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimatableBody3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimatedSprite2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimatedSprite2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimatedSprite2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimatedSprite2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimatedSprite2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimatedSprite2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimatedSprite2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimatedSprite2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimatedSprite2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimatedSprite2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimatedSprite3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimatedSprite3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimatedSprite3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimatedSprite3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimatedSprite3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimatedSprite3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimatedSprite3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimatedSprite3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimatedSprite3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimatedSprite3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimatedTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimatedTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimatedTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimatedTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimatedTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimatedTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimatedTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimatedTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimatedTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimatedTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Animation(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Animation", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Animation", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Animation(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Animation", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Animation", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Animation(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Animation(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Animation", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Animation", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationLibrary(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationLibrary", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationLibrary", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationLibrary(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationLibrary", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationLibrary", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationLibrary(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationLibrary(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationLibrary", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationLibrary", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNode(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNode", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNode", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNode(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNode", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNode", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNode(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNode(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNode", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNode", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeAdd2(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeAdd2", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeAdd2", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeAdd2(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeAdd2", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeAdd2", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeAdd2(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeAdd2(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeAdd2", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeAdd2", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeAdd3(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeAdd3", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeAdd3", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeAdd3(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeAdd3", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeAdd3", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeAdd3(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeAdd3(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeAdd3", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeAdd3", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeAnimation(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeAnimation", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeAnimation", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeAnimation(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeAnimation", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeAnimation", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeAnimation(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeAnimation(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeAnimation", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeAnimation", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeBlend2(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeBlend2", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeBlend2", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeBlend2(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeBlend2", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeBlend2", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeBlend2(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeBlend2(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeBlend2", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeBlend2", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeBlend3(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeBlend3", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeBlend3", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeBlend3(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeBlend3", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeBlend3", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeBlend3(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeBlend3(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeBlend3", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeBlend3", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeBlendSpace1D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeBlendSpace1D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeBlendSpace1D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeBlendSpace1D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeBlendSpace1D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeBlendSpace1D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeBlendSpace1D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeBlendSpace1D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeBlendSpace1D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeBlendSpace1D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeBlendSpace2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeBlendSpace2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeBlendSpace2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeBlendSpace2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeBlendSpace2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeBlendSpace2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeBlendSpace2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeBlendSpace2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeBlendSpace2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeBlendSpace2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeBlendTree(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeBlendTree", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeBlendTree", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeBlendTree(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeBlendTree", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeBlendTree", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeBlendTree(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeBlendTree(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeBlendTree", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeBlendTree", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeOneShot(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeOneShot", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeOneShot", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeOneShot(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeOneShot", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeOneShot", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeOneShot(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeOneShot(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeOneShot", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeOneShot", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeOutput(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeOutput", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeOutput", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeOutput(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeOutput", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeOutput", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeOutput(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeOutput(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeOutput", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeOutput", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeStateMachine(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeStateMachine", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeStateMachine", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeStateMachine(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeStateMachine", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeStateMachine", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeStateMachine(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeStateMachine(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeStateMachine", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeStateMachine", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeStateMachinePlayback(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeStateMachinePlayback", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeStateMachinePlayback", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeStateMachinePlayback(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeStateMachinePlayback", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeStateMachinePlayback", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeStateMachinePlayback(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeStateMachinePlayback(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeStateMachinePlayback", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeStateMachinePlayback", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeStateMachineTransition(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeStateMachineTransition", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeStateMachineTransition", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeStateMachineTransition(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeStateMachineTransition", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeStateMachineTransition", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeStateMachineTransition(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeStateMachineTransition(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeStateMachineTransition", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeStateMachineTransition", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeSync(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeSync", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeSync", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeSync(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeSync", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeSync", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeSync(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeSync(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeSync", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeSync", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeTimeScale(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeTimeScale", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeTimeScale", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeTimeScale(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeTimeScale", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeTimeScale", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeTimeScale(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeTimeScale(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeTimeScale", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeTimeScale", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeTimeSeek(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeTimeSeek", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeTimeSeek", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeTimeSeek(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeTimeSeek", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeTimeSeek", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeTimeSeek(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeTimeSeek(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeTimeSeek", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeTimeSeek", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationNodeTransition(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationNodeTransition", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationNodeTransition", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationNodeTransition(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationNodeTransition", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationNodeTransition", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationNodeTransition(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationNodeTransition(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationNodeTransition", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationNodeTransition", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationPlayer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationPlayer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationPlayer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationPlayer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationPlayer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationPlayer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationPlayer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationPlayer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationPlayer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationPlayer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationRootNode(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationRootNode", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationRootNode", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationRootNode(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationRootNode", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationRootNode", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationRootNode(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationRootNode(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationRootNode", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationRootNode", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationTrackEditPlugin(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationTrackEditPlugin", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationTrackEditPlugin", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationTrackEditPlugin(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationTrackEditPlugin", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationTrackEditPlugin", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationTrackEditPlugin(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationTrackEditPlugin(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationTrackEditPlugin", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationTrackEditPlugin", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AnimationTree(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AnimationTree", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AnimationTree", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AnimationTree(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AnimationTree", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AnimationTree", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AnimationTree(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AnimationTree(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AnimationTree", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AnimationTree", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Area2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Area2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Area2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Area2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Area2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Area2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Area2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Area2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Area2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Area2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Area3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Area3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Area3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Area3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Area3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Area3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Area3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Area3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Area3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Area3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ArrayMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ArrayMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ArrayMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ArrayMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ArrayMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ArrayMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ArrayMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ArrayMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ArrayMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ArrayMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ArrayOccluder3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ArrayOccluder3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ArrayOccluder3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ArrayOccluder3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ArrayOccluder3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ArrayOccluder3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ArrayOccluder3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ArrayOccluder3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ArrayOccluder3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ArrayOccluder3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AspectRatioContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AspectRatioContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AspectRatioContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AspectRatioContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AspectRatioContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AspectRatioContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AspectRatioContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AspectRatioContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AspectRatioContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AspectRatioContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AtlasTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AtlasTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AtlasTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AtlasTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AtlasTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AtlasTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AtlasTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AtlasTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AtlasTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AtlasTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioBusLayout(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioBusLayout", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioBusLayout", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioBusLayout(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioBusLayout", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioBusLayout", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioBusLayout(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioBusLayout(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioBusLayout", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioBusLayout", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffect(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffect", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffect", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffect(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffect", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffect", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffect(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffect(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffect", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffect", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectAmplify(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectAmplify", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectAmplify", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectAmplify(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectAmplify", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectAmplify", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectAmplify(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectAmplify(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectAmplify", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectAmplify", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectBandLimitFilter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectBandLimitFilter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectBandLimitFilter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectBandLimitFilter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectBandLimitFilter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectBandLimitFilter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectBandLimitFilter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectBandLimitFilter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectBandLimitFilter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectBandLimitFilter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectBandPassFilter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectBandPassFilter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectBandPassFilter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectBandPassFilter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectBandPassFilter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectBandPassFilter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectBandPassFilter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectBandPassFilter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectBandPassFilter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectBandPassFilter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectCapture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectCapture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectCapture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectCapture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectCapture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectCapture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectCapture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectCapture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectCapture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectCapture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectChorus(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectChorus", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectChorus", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectChorus(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectChorus", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectChorus", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectChorus(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectChorus(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectChorus", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectChorus", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectCompressor(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectCompressor", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectCompressor", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectCompressor(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectCompressor", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectCompressor", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectCompressor(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectCompressor(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectCompressor", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectCompressor", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectDelay(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectDelay", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectDelay", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectDelay(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectDelay", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectDelay", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectDelay(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectDelay(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectDelay", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectDelay", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectDistortion(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectDistortion", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectDistortion", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectDistortion(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectDistortion", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectDistortion", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectDistortion(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectDistortion(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectDistortion", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectDistortion", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectEQ(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectEQ", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectEQ", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectEQ(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectEQ", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectEQ", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectEQ(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectEQ(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectEQ", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectEQ", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectEQ10(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectEQ10", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectEQ10", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectEQ10(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectEQ10", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectEQ10", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectEQ10(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectEQ10(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectEQ10", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectEQ10", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectEQ21(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectEQ21", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectEQ21", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectEQ21(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectEQ21", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectEQ21", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectEQ21(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectEQ21(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectEQ21", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectEQ21", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectEQ6(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectEQ6", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectEQ6", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectEQ6(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectEQ6", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectEQ6", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectEQ6(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectEQ6(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectEQ6", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectEQ6", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectFilter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectFilter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectFilter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectFilter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectFilter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectFilter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectFilter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectFilter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectFilter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectFilter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectHighPassFilter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectHighPassFilter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectHighPassFilter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectHighPassFilter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectHighPassFilter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectHighPassFilter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectHighPassFilter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectHighPassFilter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectHighPassFilter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectHighPassFilter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectHighShelfFilter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectHighShelfFilter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectHighShelfFilter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectHighShelfFilter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectHighShelfFilter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectHighShelfFilter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectHighShelfFilter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectHighShelfFilter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectHighShelfFilter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectHighShelfFilter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectInstance(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectInstance", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectInstance", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectInstance(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectInstance", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectInstance", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectInstance(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectInstance(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectInstance", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectInstance", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectLimiter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectLimiter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectLimiter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectLimiter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectLimiter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectLimiter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectLimiter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectLimiter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectLimiter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectLimiter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectLowPassFilter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectLowPassFilter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectLowPassFilter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectLowPassFilter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectLowPassFilter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectLowPassFilter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectLowPassFilter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectLowPassFilter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectLowPassFilter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectLowPassFilter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectLowShelfFilter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectLowShelfFilter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectLowShelfFilter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectLowShelfFilter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectLowShelfFilter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectLowShelfFilter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectLowShelfFilter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectLowShelfFilter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectLowShelfFilter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectLowShelfFilter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectNotchFilter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectNotchFilter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectNotchFilter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectNotchFilter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectNotchFilter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectNotchFilter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectNotchFilter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectNotchFilter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectNotchFilter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectNotchFilter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectPanner(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectPanner", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectPanner", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectPanner(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectPanner", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectPanner", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectPanner(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectPanner(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectPanner", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectPanner", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectPhaser(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectPhaser", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectPhaser", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectPhaser(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectPhaser", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectPhaser", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectPhaser(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectPhaser(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectPhaser", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectPhaser", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectPitchShift(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectPitchShift", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectPitchShift", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectPitchShift(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectPitchShift", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectPitchShift", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectPitchShift(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectPitchShift(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectPitchShift", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectPitchShift", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectRecord(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectRecord", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectRecord", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectRecord(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectRecord", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectRecord", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectRecord(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectRecord(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectRecord", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectRecord", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectReverb(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectReverb", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectReverb", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectReverb(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectReverb", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectReverb", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectReverb(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectReverb(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectReverb", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectReverb", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectSpectrumAnalyzer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectSpectrumAnalyzer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectSpectrumAnalyzer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectSpectrumAnalyzer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectSpectrumAnalyzer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectSpectrumAnalyzer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectSpectrumAnalyzer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectSpectrumAnalyzer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectSpectrumAnalyzer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectSpectrumAnalyzer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectSpectrumAnalyzerInstance(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectSpectrumAnalyzerInstance", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectSpectrumAnalyzerInstance", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectSpectrumAnalyzerInstance(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectSpectrumAnalyzerInstance", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectSpectrumAnalyzerInstance", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectSpectrumAnalyzerInstance(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectSpectrumAnalyzerInstance(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectSpectrumAnalyzerInstance", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectSpectrumAnalyzerInstance", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioEffectStereoEnhance(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioEffectStereoEnhance", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioEffectStereoEnhance", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioEffectStereoEnhance(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioEffectStereoEnhance", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioEffectStereoEnhance", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioEffectStereoEnhance(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioEffectStereoEnhance(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioEffectStereoEnhance", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioEffectStereoEnhance", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioListener2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioListener2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioListener2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioListener2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioListener2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioListener2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioListener2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioListener2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioListener2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioListener2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioListener3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioListener3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioListener3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioListener3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioListener3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioListener3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioListener3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioListener3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioListener3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioListener3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioServer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioServer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioServer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioServer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioServer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioServer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioServer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioServer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStream(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStream", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStream", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStream(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStream", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStream", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStream(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStream(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStream", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStream", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamGenerator(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamGenerator", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamGenerator", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamGenerator(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamGenerator", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamGenerator", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamGenerator(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamGenerator(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamGenerator", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamGenerator", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamGeneratorPlayback(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamGeneratorPlayback", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamGeneratorPlayback", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamGeneratorPlayback(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamGeneratorPlayback", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamGeneratorPlayback", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamGeneratorPlayback(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamGeneratorPlayback(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamGeneratorPlayback", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamGeneratorPlayback", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamMP3(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamMP3", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamMP3", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamMP3(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamMP3", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamMP3", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamMP3(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamMP3(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamMP3", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamMP3", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamMicrophone(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamMicrophone", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamMicrophone", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamMicrophone(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamMicrophone", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamMicrophone", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamMicrophone(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamMicrophone(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamMicrophone", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamMicrophone", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamOggVorbis(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamOggVorbis", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamOggVorbis", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamOggVorbis(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamOggVorbis", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamOggVorbis", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamOggVorbis(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamOggVorbis(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamOggVorbis", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamOggVorbis", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamPlayback(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamPlayback", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamPlayback", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamPlayback(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamPlayback", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamPlayback", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlayback(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlayback(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamPlayback", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamPlayback", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamPlaybackOggVorbis(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamPlaybackOggVorbis", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamPlaybackOggVorbis", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamPlaybackOggVorbis(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamPlaybackOggVorbis", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamPlaybackOggVorbis", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlaybackOggVorbis(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlaybackOggVorbis(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamPlaybackOggVorbis", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamPlaybackOggVorbis", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamPlaybackResampled(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamPlaybackResampled", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamPlaybackResampled", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamPlaybackResampled(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamPlaybackResampled", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamPlaybackResampled", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlaybackResampled(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlaybackResampled(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamPlaybackResampled", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamPlaybackResampled", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamPlayer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamPlayer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamPlayer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamPlayer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamPlayer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamPlayer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlayer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlayer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamPlayer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamPlayer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamPlayer2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamPlayer2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamPlayer2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamPlayer2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamPlayer2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamPlayer2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlayer2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlayer2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamPlayer2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamPlayer2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamPlayer3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamPlayer3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamPlayer3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamPlayer3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamPlayer3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamPlayer3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlayer3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamPlayer3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamPlayer3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamPlayer3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamRandomizer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamRandomizer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamRandomizer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamRandomizer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamRandomizer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamRandomizer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamRandomizer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamRandomizer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamRandomizer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamRandomizer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_AudioStreamWAV(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("AudioStreamWAV", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("AudioStreamWAV", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_AudioStreamWAV(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("AudioStreamWAV", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("AudioStreamWAV", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_AudioStreamWAV(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_AudioStreamWAV(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("AudioStreamWAV", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("AudioStreamWAV", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_BackBufferCopy(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("BackBufferCopy", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("BackBufferCopy", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_BackBufferCopy(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("BackBufferCopy", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("BackBufferCopy", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_BackBufferCopy(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_BackBufferCopy(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("BackBufferCopy", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("BackBufferCopy", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_BaseButton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("BaseButton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("BaseButton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_BaseButton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("BaseButton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("BaseButton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_BaseButton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_BaseButton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("BaseButton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("BaseButton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_BaseMaterial3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("BaseMaterial3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("BaseMaterial3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_BaseMaterial3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("BaseMaterial3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("BaseMaterial3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_BaseMaterial3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_BaseMaterial3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("BaseMaterial3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("BaseMaterial3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_BitMap(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("BitMap", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("BitMap", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_BitMap(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("BitMap", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("BitMap", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_BitMap(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_BitMap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("BitMap", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("BitMap", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Bone2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Bone2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Bone2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Bone2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Bone2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Bone2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Bone2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Bone2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Bone2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Bone2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_BoneAttachment3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("BoneAttachment3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("BoneAttachment3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_BoneAttachment3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("BoneAttachment3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("BoneAttachment3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_BoneAttachment3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_BoneAttachment3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("BoneAttachment3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("BoneAttachment3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_BoneMap(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("BoneMap", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("BoneMap", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_BoneMap(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("BoneMap", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("BoneMap", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_BoneMap(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_BoneMap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("BoneMap", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("BoneMap", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_BoxContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("BoxContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("BoxContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_BoxContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("BoxContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("BoxContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_BoxContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_BoxContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("BoxContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("BoxContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_BoxMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("BoxMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("BoxMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_BoxMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("BoxMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("BoxMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_BoxMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_BoxMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("BoxMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("BoxMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_BoxOccluder3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("BoxOccluder3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("BoxOccluder3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_BoxOccluder3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("BoxOccluder3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("BoxOccluder3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_BoxOccluder3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_BoxOccluder3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("BoxOccluder3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("BoxOccluder3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_BoxShape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("BoxShape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("BoxShape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_BoxShape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("BoxShape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("BoxShape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_BoxShape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_BoxShape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("BoxShape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("BoxShape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Button(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Button", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Button", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Button(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Button", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Button", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Button(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Button(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Button", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Button", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ButtonGroup(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ButtonGroup", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ButtonGroup", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ButtonGroup(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ButtonGroup", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ButtonGroup", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ButtonGroup(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ButtonGroup(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ButtonGroup", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ButtonGroup", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CPUParticles2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CPUParticles2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CPUParticles2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CPUParticles2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CPUParticles2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CPUParticles2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CPUParticles2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CPUParticles2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CPUParticles2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CPUParticles2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CPUParticles3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CPUParticles3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CPUParticles3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CPUParticles3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CPUParticles3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CPUParticles3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CPUParticles3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CPUParticles3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CPUParticles3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CPUParticles3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CSGBox3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CSGBox3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CSGBox3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CSGBox3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CSGBox3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CSGBox3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CSGBox3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CSGBox3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CSGBox3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CSGBox3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CSGCombiner3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CSGCombiner3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CSGCombiner3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CSGCombiner3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CSGCombiner3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CSGCombiner3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CSGCombiner3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CSGCombiner3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CSGCombiner3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CSGCombiner3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CSGCylinder3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CSGCylinder3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CSGCylinder3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CSGCylinder3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CSGCylinder3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CSGCylinder3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CSGCylinder3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CSGCylinder3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CSGCylinder3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CSGCylinder3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CSGMesh3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CSGMesh3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CSGMesh3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CSGMesh3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CSGMesh3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CSGMesh3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CSGMesh3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CSGMesh3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CSGMesh3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CSGMesh3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CSGPolygon3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CSGPolygon3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CSGPolygon3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CSGPolygon3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CSGPolygon3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CSGPolygon3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CSGPolygon3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CSGPolygon3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CSGPolygon3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CSGPolygon3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CSGPrimitive3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CSGPrimitive3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CSGPrimitive3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CSGPrimitive3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CSGPrimitive3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CSGPrimitive3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CSGPrimitive3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CSGPrimitive3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CSGPrimitive3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CSGPrimitive3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CSGShape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CSGShape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CSGShape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CSGShape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CSGShape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CSGShape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CSGShape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CSGShape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CSGShape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CSGShape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CSGSphere3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CSGSphere3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CSGSphere3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CSGSphere3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CSGSphere3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CSGSphere3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CSGSphere3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CSGSphere3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CSGSphere3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CSGSphere3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CSGTorus3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CSGTorus3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CSGTorus3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CSGTorus3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CSGTorus3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CSGTorus3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CSGTorus3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CSGTorus3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CSGTorus3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CSGTorus3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CallbackTweener(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CallbackTweener", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CallbackTweener", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CallbackTweener(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CallbackTweener", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CallbackTweener", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CallbackTweener(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CallbackTweener(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CallbackTweener", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CallbackTweener", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Camera2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Camera2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Camera2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Camera2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Camera2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Camera2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Camera2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Camera2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Camera2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Camera2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Camera3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Camera3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Camera3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Camera3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Camera3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Camera3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Camera3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Camera3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Camera3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Camera3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CameraAttributes(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CameraAttributes", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CameraAttributes", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CameraAttributes(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CameraAttributes", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CameraAttributes", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CameraAttributes(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CameraAttributes(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CameraAttributes", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CameraAttributes", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CameraAttributesPhysical(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CameraAttributesPhysical", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CameraAttributesPhysical", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CameraAttributesPhysical(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CameraAttributesPhysical", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CameraAttributesPhysical", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CameraAttributesPhysical(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CameraAttributesPhysical(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CameraAttributesPhysical", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CameraAttributesPhysical", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CameraAttributesPractical(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CameraAttributesPractical", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CameraAttributesPractical", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CameraAttributesPractical(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CameraAttributesPractical", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CameraAttributesPractical", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CameraAttributesPractical(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CameraAttributesPractical(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CameraAttributesPractical", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CameraAttributesPractical", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CameraFeed(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CameraFeed", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CameraFeed", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CameraFeed(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CameraFeed", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CameraFeed", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CameraFeed(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CameraFeed(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CameraFeed", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CameraFeed", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CameraServer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CameraServer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CameraServer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CameraServer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CameraServer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CameraServer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CameraServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CameraServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CameraServer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CameraServer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CameraTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CameraTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CameraTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CameraTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CameraTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CameraTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CameraTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CameraTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CameraTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CameraTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CanvasGroup(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CanvasGroup", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CanvasGroup", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CanvasGroup(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CanvasGroup", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CanvasGroup", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CanvasGroup(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CanvasGroup(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CanvasGroup", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CanvasGroup", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CanvasItem(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CanvasItem", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CanvasItem", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CanvasItem(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CanvasItem", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CanvasItem", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CanvasItem(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CanvasItem(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CanvasItem", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CanvasItem", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CanvasItemMaterial(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CanvasItemMaterial", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CanvasItemMaterial", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CanvasItemMaterial(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CanvasItemMaterial", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CanvasItemMaterial", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CanvasItemMaterial(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CanvasItemMaterial(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CanvasItemMaterial", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CanvasItemMaterial", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CanvasLayer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CanvasLayer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CanvasLayer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CanvasLayer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CanvasLayer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CanvasLayer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CanvasLayer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CanvasLayer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CanvasLayer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CanvasLayer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CanvasModulate(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CanvasModulate", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CanvasModulate", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CanvasModulate(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CanvasModulate", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CanvasModulate", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CanvasModulate(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CanvasModulate(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CanvasModulate", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CanvasModulate", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CanvasTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CanvasTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CanvasTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CanvasTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CanvasTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CanvasTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CanvasTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CanvasTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CanvasTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CanvasTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CapsuleMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CapsuleMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CapsuleMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CapsuleMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CapsuleMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CapsuleMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CapsuleMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CapsuleMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CapsuleMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CapsuleMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CapsuleShape2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CapsuleShape2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CapsuleShape2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CapsuleShape2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CapsuleShape2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CapsuleShape2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CapsuleShape2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CapsuleShape2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CapsuleShape2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CapsuleShape2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CapsuleShape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CapsuleShape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CapsuleShape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CapsuleShape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CapsuleShape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CapsuleShape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CapsuleShape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CapsuleShape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CapsuleShape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CapsuleShape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CenterContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CenterContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CenterContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CenterContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CenterContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CenterContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CenterContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CenterContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CenterContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CenterContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CharFXTransform(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CharFXTransform", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CharFXTransform", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CharFXTransform(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CharFXTransform", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CharFXTransform", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CharFXTransform(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CharFXTransform(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CharFXTransform", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CharFXTransform", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CharacterBody2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CharacterBody2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CharacterBody2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CharacterBody2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CharacterBody2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CharacterBody2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CharacterBody2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CharacterBody2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CharacterBody2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CharacterBody2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CharacterBody3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CharacterBody3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CharacterBody3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CharacterBody3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CharacterBody3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CharacterBody3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CharacterBody3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CharacterBody3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CharacterBody3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CharacterBody3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CheckBox(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CheckBox", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CheckBox", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CheckBox(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CheckBox", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CheckBox", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CheckBox(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CheckBox(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CheckBox", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CheckBox", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CheckButton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CheckButton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CheckButton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CheckButton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CheckButton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CheckButton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CheckButton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CheckButton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CheckButton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CheckButton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CircleShape2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CircleShape2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CircleShape2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CircleShape2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CircleShape2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CircleShape2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CircleShape2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CircleShape2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CircleShape2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CircleShape2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ClassDB(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ClassDB", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ClassDB", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ClassDB(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ClassDB", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ClassDB", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ClassDB(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ClassDB(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ClassDB", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ClassDB", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CodeEdit(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CodeEdit", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CodeEdit", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CodeEdit(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CodeEdit", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CodeEdit", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CodeEdit(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CodeEdit(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CodeEdit", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CodeEdit", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CodeHighlighter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CodeHighlighter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CodeHighlighter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CodeHighlighter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CodeHighlighter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CodeHighlighter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CodeHighlighter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CodeHighlighter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CodeHighlighter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CodeHighlighter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CollisionObject2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CollisionObject2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CollisionObject2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CollisionObject2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CollisionObject2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CollisionObject2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CollisionObject2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CollisionObject2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CollisionObject2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CollisionObject2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CollisionObject3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CollisionObject3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CollisionObject3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CollisionObject3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CollisionObject3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CollisionObject3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CollisionObject3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CollisionObject3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CollisionObject3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CollisionObject3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CollisionPolygon2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CollisionPolygon2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CollisionPolygon2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CollisionPolygon2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CollisionPolygon2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CollisionPolygon2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CollisionPolygon2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CollisionPolygon2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CollisionPolygon2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CollisionPolygon2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CollisionPolygon3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CollisionPolygon3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CollisionPolygon3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CollisionPolygon3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CollisionPolygon3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CollisionPolygon3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CollisionPolygon3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CollisionPolygon3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CollisionPolygon3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CollisionPolygon3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CollisionShape2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CollisionShape2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CollisionShape2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CollisionShape2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CollisionShape2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CollisionShape2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CollisionShape2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CollisionShape2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CollisionShape2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CollisionShape2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CollisionShape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CollisionShape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CollisionShape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CollisionShape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CollisionShape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CollisionShape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CollisionShape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CollisionShape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CollisionShape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CollisionShape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ColorPicker(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ColorPicker", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ColorPicker", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ColorPicker(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ColorPicker", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ColorPicker", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ColorPicker(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ColorPicker(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ColorPicker", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ColorPicker", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ColorPickerButton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ColorPickerButton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ColorPickerButton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ColorPickerButton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ColorPickerButton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ColorPickerButton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ColorPickerButton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ColorPickerButton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ColorPickerButton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ColorPickerButton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ColorRect(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ColorRect", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ColorRect", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ColorRect(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ColorRect", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ColorRect", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ColorRect(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ColorRect(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ColorRect", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ColorRect", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CompressedCubemap(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CompressedCubemap", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CompressedCubemap", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CompressedCubemap(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CompressedCubemap", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CompressedCubemap", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CompressedCubemap(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CompressedCubemap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CompressedCubemap", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CompressedCubemap", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CompressedCubemapArray(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CompressedCubemapArray", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CompressedCubemapArray", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CompressedCubemapArray(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CompressedCubemapArray", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CompressedCubemapArray", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CompressedCubemapArray(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CompressedCubemapArray(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CompressedCubemapArray", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CompressedCubemapArray", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CompressedTexture2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CompressedTexture2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CompressedTexture2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CompressedTexture2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CompressedTexture2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CompressedTexture2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CompressedTexture2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CompressedTexture2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CompressedTexture2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CompressedTexture2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CompressedTexture2DArray(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CompressedTexture2DArray", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CompressedTexture2DArray", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CompressedTexture2DArray(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CompressedTexture2DArray", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CompressedTexture2DArray", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CompressedTexture2DArray(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CompressedTexture2DArray(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CompressedTexture2DArray", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CompressedTexture2DArray", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CompressedTexture3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CompressedTexture3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CompressedTexture3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CompressedTexture3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CompressedTexture3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CompressedTexture3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CompressedTexture3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CompressedTexture3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CompressedTexture3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CompressedTexture3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CompressedTextureLayered(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CompressedTextureLayered", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CompressedTextureLayered", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CompressedTextureLayered(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CompressedTextureLayered", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CompressedTextureLayered", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CompressedTextureLayered(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CompressedTextureLayered(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CompressedTextureLayered", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CompressedTextureLayered", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ConcavePolygonShape2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ConcavePolygonShape2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ConcavePolygonShape2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ConcavePolygonShape2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ConcavePolygonShape2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ConcavePolygonShape2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ConcavePolygonShape2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ConcavePolygonShape2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ConcavePolygonShape2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ConcavePolygonShape2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ConcavePolygonShape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ConcavePolygonShape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ConcavePolygonShape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ConcavePolygonShape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ConcavePolygonShape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ConcavePolygonShape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ConcavePolygonShape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ConcavePolygonShape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ConcavePolygonShape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ConcavePolygonShape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ConeTwistJoint3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ConeTwistJoint3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ConeTwistJoint3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ConeTwistJoint3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ConeTwistJoint3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ConeTwistJoint3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ConeTwistJoint3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ConeTwistJoint3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ConeTwistJoint3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ConeTwistJoint3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ConfigFile(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ConfigFile", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ConfigFile", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ConfigFile(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ConfigFile", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ConfigFile", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ConfigFile(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ConfigFile(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ConfigFile", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ConfigFile", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ConfirmationDialog(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ConfirmationDialog", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ConfirmationDialog", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ConfirmationDialog(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ConfirmationDialog", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ConfirmationDialog", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ConfirmationDialog(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ConfirmationDialog(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ConfirmationDialog", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ConfirmationDialog", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Container(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Container", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Container", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Container(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Container", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Container", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Container(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Container(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Container", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Container", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Control(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Control", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Control", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Control(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Control", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Control", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Control(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Control(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Control", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Control", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ConvexPolygonShape2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ConvexPolygonShape2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ConvexPolygonShape2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ConvexPolygonShape2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ConvexPolygonShape2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ConvexPolygonShape2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ConvexPolygonShape2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ConvexPolygonShape2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ConvexPolygonShape2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ConvexPolygonShape2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ConvexPolygonShape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ConvexPolygonShape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ConvexPolygonShape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ConvexPolygonShape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ConvexPolygonShape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ConvexPolygonShape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ConvexPolygonShape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ConvexPolygonShape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ConvexPolygonShape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ConvexPolygonShape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Crypto(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Crypto", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Crypto", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Crypto(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Crypto", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Crypto", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Crypto(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Crypto(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Crypto", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Crypto", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CryptoKey(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CryptoKey", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CryptoKey", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CryptoKey(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CryptoKey", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CryptoKey", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CryptoKey(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CryptoKey(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CryptoKey", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CryptoKey", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Cubemap(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Cubemap", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Cubemap", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Cubemap(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Cubemap", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Cubemap", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Cubemap(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Cubemap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Cubemap", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Cubemap", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CubemapArray(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CubemapArray", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CubemapArray", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CubemapArray(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CubemapArray", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CubemapArray", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CubemapArray(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CubemapArray(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CubemapArray", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CubemapArray", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Curve(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Curve", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Curve", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Curve(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Curve", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Curve", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Curve(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Curve(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Curve", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Curve", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Curve2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Curve2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Curve2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Curve2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Curve2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Curve2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Curve2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Curve2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Curve2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Curve2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Curve3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Curve3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Curve3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Curve3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Curve3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Curve3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Curve3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Curve3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Curve3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Curve3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CurveTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CurveTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CurveTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CurveTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CurveTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CurveTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CurveTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CurveTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CurveTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CurveTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CurveXYZTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CurveXYZTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CurveXYZTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CurveXYZTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CurveXYZTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CurveXYZTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CurveXYZTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CurveXYZTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CurveXYZTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CurveXYZTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CylinderMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CylinderMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CylinderMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CylinderMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CylinderMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CylinderMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CylinderMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CylinderMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CylinderMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CylinderMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_CylinderShape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("CylinderShape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("CylinderShape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_CylinderShape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("CylinderShape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("CylinderShape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_CylinderShape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_CylinderShape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("CylinderShape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("CylinderShape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_DTLSServer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("DTLSServer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("DTLSServer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_DTLSServer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("DTLSServer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("DTLSServer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_DTLSServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_DTLSServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("DTLSServer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("DTLSServer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_DampedSpringJoint2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("DampedSpringJoint2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("DampedSpringJoint2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_DampedSpringJoint2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("DampedSpringJoint2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("DampedSpringJoint2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_DampedSpringJoint2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_DampedSpringJoint2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("DampedSpringJoint2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("DampedSpringJoint2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Decal(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Decal", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Decal", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Decal(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Decal", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Decal", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Decal(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Decal(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Decal", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Decal", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_DirAccess(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("DirAccess", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("DirAccess", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_DirAccess(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("DirAccess", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("DirAccess", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_DirAccess(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_DirAccess(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("DirAccess", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("DirAccess", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_DirectionalLight2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("DirectionalLight2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("DirectionalLight2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_DirectionalLight2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("DirectionalLight2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("DirectionalLight2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_DirectionalLight2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_DirectionalLight2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("DirectionalLight2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("DirectionalLight2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_DirectionalLight3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("DirectionalLight3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("DirectionalLight3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_DirectionalLight3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("DirectionalLight3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("DirectionalLight3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_DirectionalLight3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_DirectionalLight3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("DirectionalLight3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("DirectionalLight3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_DisplayServer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("DisplayServer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("DisplayServer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_DisplayServer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("DisplayServer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("DisplayServer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_DisplayServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_DisplayServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("DisplayServer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("DisplayServer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ENetConnection(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ENetConnection", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ENetConnection", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ENetConnection(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ENetConnection", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ENetConnection", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ENetConnection(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ENetConnection(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ENetConnection", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ENetConnection", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ENetMultiplayerPeer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ENetMultiplayerPeer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ENetMultiplayerPeer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ENetMultiplayerPeer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ENetMultiplayerPeer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ENetMultiplayerPeer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ENetMultiplayerPeer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ENetMultiplayerPeer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ENetMultiplayerPeer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ENetMultiplayerPeer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ENetPacketPeer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ENetPacketPeer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ENetPacketPeer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ENetPacketPeer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ENetPacketPeer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ENetPacketPeer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ENetPacketPeer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ENetPacketPeer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ENetPacketPeer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ENetPacketPeer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_EncodedObjectAsID(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("EncodedObjectAsID", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("EncodedObjectAsID", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_EncodedObjectAsID(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("EncodedObjectAsID", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("EncodedObjectAsID", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_EncodedObjectAsID(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_EncodedObjectAsID(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("EncodedObjectAsID", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("EncodedObjectAsID", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Engine(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Engine", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Engine", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Engine(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Engine", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Engine", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Engine(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Engine(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Engine", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Engine", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_EngineDebugger(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("EngineDebugger", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("EngineDebugger", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_EngineDebugger(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("EngineDebugger", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("EngineDebugger", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_EngineDebugger(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_EngineDebugger(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("EngineDebugger", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("EngineDebugger", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_EngineProfiler(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("EngineProfiler", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("EngineProfiler", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_EngineProfiler(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("EngineProfiler", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("EngineProfiler", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_EngineProfiler(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_EngineProfiler(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("EngineProfiler", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("EngineProfiler", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Environment(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Environment", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Environment", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Environment(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Environment", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Environment", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Environment(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Environment(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Environment", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Environment", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Expression(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Expression", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Expression", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Expression(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Expression", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Expression", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Expression(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Expression(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Expression", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Expression", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_FastNoiseLite(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FastNoiseLite", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("FastNoiseLite", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_FastNoiseLite(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("FastNoiseLite", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("FastNoiseLite", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FastNoiseLite(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_FastNoiseLite(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FastNoiseLite", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("FastNoiseLite", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_FileAccess(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FileAccess", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("FileAccess", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_FileAccess(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("FileAccess", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("FileAccess", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FileAccess(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_FileAccess(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FileAccess", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("FileAccess", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_FileDialog(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FileDialog", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("FileDialog", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_FileDialog(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("FileDialog", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("FileDialog", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FileDialog(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_FileDialog(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FileDialog", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("FileDialog", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_FileSystemDock(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FileSystemDock", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("FileSystemDock", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_FileSystemDock(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("FileSystemDock", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("FileSystemDock", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FileSystemDock(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_FileSystemDock(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FileSystemDock", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("FileSystemDock", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_FlowContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FlowContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("FlowContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_FlowContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("FlowContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("FlowContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FlowContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_FlowContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FlowContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("FlowContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_FogMaterial(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FogMaterial", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("FogMaterial", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_FogMaterial(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("FogMaterial", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("FogMaterial", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FogMaterial(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_FogMaterial(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FogMaterial", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("FogMaterial", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_FogVolume(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FogVolume", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("FogVolume", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_FogVolume(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("FogVolume", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("FogVolume", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FogVolume(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_FogVolume(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FogVolume", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("FogVolume", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Font(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Font", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Font", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Font(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Font", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Font", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Font(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Font(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Font", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Font", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_FontFile(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FontFile", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("FontFile", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_FontFile(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("FontFile", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("FontFile", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FontFile(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_FontFile(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FontFile", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("FontFile", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_FontVariation(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("FontVariation", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("FontVariation", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_FontVariation(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("FontVariation", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("FontVariation", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_FontVariation(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_FontVariation(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("FontVariation", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("FontVariation", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_FramebufferCacheRD(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("FramebufferCacheRD", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_FramebufferCacheRD(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("FramebufferCacheRD", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_FramebufferCacheRD(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("FramebufferCacheRD", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_GDExtension(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("GDExtension", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_GDExtension(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("GDExtension", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GDExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("GDExtension", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_GDExtensionManager(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("GDExtensionManager", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_GDExtensionManager(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("GDExtensionManager", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GDExtensionManager(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("GDExtensionManager", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GDScript(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GDScript", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GDScript", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GDScript(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GDScript", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GDScript", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GDScript(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GDScript(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GDScript", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GDScript", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GDScriptNativeClass(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GDScriptNativeClass", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GDScriptNativeClass", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GDScriptNativeClass(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GDScriptNativeClass", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GDScriptNativeClass", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GDScriptNativeClass(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GDScriptNativeClass(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GDScriptNativeClass", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GDScriptNativeClass", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFAccessor(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFAccessor", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFAccessor", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFAccessor(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFAccessor", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFAccessor", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFAccessor(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFAccessor(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFAccessor", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFAccessor", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFAnimation(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFAnimation", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFAnimation", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFAnimation(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFAnimation", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFAnimation", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFAnimation(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFAnimation(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFAnimation", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFAnimation", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFBufferView(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFBufferView", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFBufferView", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFBufferView(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFBufferView", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFBufferView", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFBufferView(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFBufferView(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFBufferView", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFBufferView", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFCamera(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFCamera", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFCamera", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFCamera(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFCamera", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFCamera", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFCamera(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFCamera(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFCamera", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFCamera", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFDocument(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFDocument", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFDocument", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFDocument(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFDocument", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFDocument", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFDocument(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFDocument(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFDocument", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFDocument", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFDocumentExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFDocumentExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFDocumentExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFDocumentExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFDocumentExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFDocumentExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFDocumentExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFDocumentExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFDocumentExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFDocumentExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFDocumentExtensionConvertImporterMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFDocumentExtensionConvertImporterMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFDocumentExtensionConvertImporterMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFDocumentExtensionConvertImporterMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFDocumentExtensionConvertImporterMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFDocumentExtensionConvertImporterMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFDocumentExtensionConvertImporterMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFDocumentExtensionConvertImporterMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFDocumentExtensionConvertImporterMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFDocumentExtensionConvertImporterMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFLight(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFLight", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFLight", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFLight(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFLight", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFLight", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFLight(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFLight(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFLight", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFLight", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFNode(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFNode", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFNode", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFNode(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFNode", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFNode", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFNode(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFNode(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFNode", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFNode", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFSkeleton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFSkeleton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFSkeleton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFSkeleton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFSkeleton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFSkeleton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFSkeleton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFSkeleton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFSkeleton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFSkeleton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFSkin(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFSkin", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFSkin", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFSkin(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFSkin", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFSkin", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFSkin(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFSkin(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFSkin", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFSkin", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFSpecGloss(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFSpecGloss", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFSpecGloss", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFSpecGloss(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFSpecGloss", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFSpecGloss", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFSpecGloss(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFSpecGloss(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFSpecGloss", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFSpecGloss", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFState(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFState", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFState", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFState(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFState", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFState", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFState(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFState(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFState", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFState", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GLTFTextureSampler(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GLTFTextureSampler", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GLTFTextureSampler", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GLTFTextureSampler(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GLTFTextureSampler", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GLTFTextureSampler", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GLTFTextureSampler(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GLTFTextureSampler(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GLTFTextureSampler", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GLTFTextureSampler", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GPUParticles2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GPUParticles2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GPUParticles2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GPUParticles2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GPUParticles2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GPUParticles2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GPUParticles2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GPUParticles2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GPUParticles2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GPUParticles2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GPUParticles3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GPUParticles3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GPUParticles3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GPUParticles3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GPUParticles3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GPUParticles3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GPUParticles3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GPUParticles3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GPUParticles3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GPUParticles3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GPUParticlesAttractor3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GPUParticlesAttractor3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GPUParticlesAttractor3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GPUParticlesAttractor3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GPUParticlesAttractor3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GPUParticlesAttractor3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GPUParticlesAttractor3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GPUParticlesAttractor3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GPUParticlesAttractor3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GPUParticlesAttractor3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GPUParticlesAttractorBox3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GPUParticlesAttractorBox3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GPUParticlesAttractorBox3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GPUParticlesAttractorBox3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GPUParticlesAttractorBox3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GPUParticlesAttractorBox3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GPUParticlesAttractorBox3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GPUParticlesAttractorBox3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GPUParticlesAttractorBox3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GPUParticlesAttractorBox3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GPUParticlesAttractorSphere3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GPUParticlesAttractorSphere3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GPUParticlesAttractorSphere3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GPUParticlesAttractorSphere3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GPUParticlesAttractorSphere3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GPUParticlesAttractorSphere3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GPUParticlesAttractorSphere3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GPUParticlesAttractorSphere3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GPUParticlesAttractorSphere3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GPUParticlesAttractorSphere3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GPUParticlesAttractorVectorField3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GPUParticlesAttractorVectorField3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GPUParticlesAttractorVectorField3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GPUParticlesAttractorVectorField3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GPUParticlesAttractorVectorField3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GPUParticlesAttractorVectorField3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GPUParticlesAttractorVectorField3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GPUParticlesAttractorVectorField3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GPUParticlesAttractorVectorField3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GPUParticlesAttractorVectorField3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GPUParticlesCollision3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GPUParticlesCollision3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GPUParticlesCollision3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GPUParticlesCollision3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GPUParticlesCollision3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GPUParticlesCollision3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GPUParticlesCollision3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GPUParticlesCollision3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GPUParticlesCollision3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GPUParticlesCollision3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GPUParticlesCollisionBox3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GPUParticlesCollisionBox3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GPUParticlesCollisionBox3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GPUParticlesCollisionBox3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GPUParticlesCollisionBox3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GPUParticlesCollisionBox3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GPUParticlesCollisionBox3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GPUParticlesCollisionBox3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GPUParticlesCollisionBox3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GPUParticlesCollisionBox3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GPUParticlesCollisionHeightField3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GPUParticlesCollisionHeightField3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GPUParticlesCollisionHeightField3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GPUParticlesCollisionHeightField3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GPUParticlesCollisionHeightField3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GPUParticlesCollisionHeightField3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GPUParticlesCollisionHeightField3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GPUParticlesCollisionHeightField3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GPUParticlesCollisionHeightField3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GPUParticlesCollisionHeightField3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GPUParticlesCollisionSDF3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GPUParticlesCollisionSDF3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GPUParticlesCollisionSDF3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GPUParticlesCollisionSDF3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GPUParticlesCollisionSDF3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GPUParticlesCollisionSDF3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GPUParticlesCollisionSDF3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GPUParticlesCollisionSDF3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GPUParticlesCollisionSDF3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GPUParticlesCollisionSDF3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GPUParticlesCollisionSphere3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GPUParticlesCollisionSphere3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GPUParticlesCollisionSphere3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GPUParticlesCollisionSphere3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GPUParticlesCollisionSphere3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GPUParticlesCollisionSphere3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GPUParticlesCollisionSphere3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GPUParticlesCollisionSphere3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GPUParticlesCollisionSphere3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GPUParticlesCollisionSphere3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Generic6DOFJoint3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Generic6DOFJoint3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Generic6DOFJoint3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Generic6DOFJoint3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Generic6DOFJoint3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Generic6DOFJoint3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Generic6DOFJoint3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Generic6DOFJoint3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Generic6DOFJoint3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Generic6DOFJoint3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Geometry2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Geometry2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Geometry2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Geometry2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Geometry2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Geometry2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Geometry2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Geometry2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Geometry2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Geometry2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Geometry3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Geometry3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Geometry3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Geometry3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Geometry3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Geometry3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Geometry3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Geometry3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Geometry3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Geometry3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GeometryInstance3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GeometryInstance3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GeometryInstance3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GeometryInstance3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GeometryInstance3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GeometryInstance3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GeometryInstance3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GeometryInstance3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GeometryInstance3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GeometryInstance3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GodotPhysicsServer2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GodotPhysicsServer2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GodotPhysicsServer2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GodotPhysicsServer2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GodotPhysicsServer2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GodotPhysicsServer2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GodotPhysicsServer2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GodotPhysicsServer2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GodotPhysicsServer2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GodotPhysicsServer2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GodotPhysicsServer3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GodotPhysicsServer3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GodotPhysicsServer3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GodotPhysicsServer3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GodotPhysicsServer3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GodotPhysicsServer3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GodotPhysicsServer3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GodotPhysicsServer3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GodotPhysicsServer3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GodotPhysicsServer3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Gradient(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Gradient", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Gradient", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Gradient(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Gradient", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Gradient", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Gradient(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Gradient(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Gradient", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Gradient", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GradientTexture1D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GradientTexture1D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GradientTexture1D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GradientTexture1D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GradientTexture1D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GradientTexture1D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GradientTexture1D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GradientTexture1D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GradientTexture1D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GradientTexture1D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GradientTexture2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GradientTexture2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GradientTexture2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GradientTexture2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GradientTexture2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GradientTexture2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GradientTexture2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GradientTexture2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GradientTexture2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GradientTexture2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GraphEdit(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GraphEdit", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GraphEdit", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GraphEdit(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GraphEdit", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GraphEdit", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GraphEdit(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GraphEdit(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GraphEdit", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GraphEdit", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GraphNode(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GraphNode", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GraphNode", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GraphNode(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GraphNode", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GraphNode", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GraphNode(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GraphNode(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GraphNode", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GraphNode", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GridContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GridContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GridContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GridContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GridContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GridContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GridContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GridContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GridContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GridContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GridMap(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GridMap", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GridMap", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GridMap(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GridMap", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GridMap", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GridMap(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GridMap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GridMap", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GridMap", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_GrooveJoint2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("GrooveJoint2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("GrooveJoint2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_GrooveJoint2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("GrooveJoint2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("GrooveJoint2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_GrooveJoint2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_GrooveJoint2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("GrooveJoint2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("GrooveJoint2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HBoxContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HBoxContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HBoxContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HBoxContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HBoxContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HBoxContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HBoxContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HBoxContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HBoxContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HBoxContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HFlowContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HFlowContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HFlowContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HFlowContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HFlowContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HFlowContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HFlowContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HFlowContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HFlowContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HFlowContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HMACContext(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HMACContext", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HMACContext", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HMACContext(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HMACContext", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HMACContext", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HMACContext(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HMACContext(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HMACContext", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HMACContext", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HScrollBar(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HScrollBar", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HScrollBar", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HScrollBar(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HScrollBar", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HScrollBar", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HScrollBar(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HScrollBar(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HScrollBar", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HScrollBar", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HSeparator(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HSeparator", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HSeparator", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HSeparator(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HSeparator", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HSeparator", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HSeparator(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HSeparator(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HSeparator", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HSeparator", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HSlider(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HSlider", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HSlider", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HSlider(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HSlider", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HSlider", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HSlider(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HSlider(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HSlider", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HSlider", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HSplitContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HSplitContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HSplitContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HSplitContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HSplitContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HSplitContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HSplitContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HSplitContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HSplitContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HSplitContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HTTPClient(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HTTPClient", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HTTPClient", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HTTPClient(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HTTPClient", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HTTPClient", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HTTPClient(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HTTPClient(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HTTPClient", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HTTPClient", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HTTPRequest(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HTTPRequest", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HTTPRequest", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HTTPRequest(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HTTPRequest", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HTTPRequest", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HTTPRequest(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HTTPRequest(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HTTPRequest", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HTTPRequest", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HashingContext(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HashingContext", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HashingContext", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HashingContext(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HashingContext", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HashingContext", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HashingContext(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HashingContext(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HashingContext", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HashingContext", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HeightMapShape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HeightMapShape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HeightMapShape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HeightMapShape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HeightMapShape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HeightMapShape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HeightMapShape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HeightMapShape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HeightMapShape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HeightMapShape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_HingeJoint3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("HingeJoint3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("HingeJoint3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_HingeJoint3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("HingeJoint3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("HingeJoint3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_HingeJoint3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_HingeJoint3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("HingeJoint3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("HingeJoint3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_IP(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("IP", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("IP", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_IP(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("IP", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("IP", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_IP(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_IP(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("IP", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("IP", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_IPUnix(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("IPUnix", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("IPUnix", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_IPUnix(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("IPUnix", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("IPUnix", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_IPUnix(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_IPUnix(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("IPUnix", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("IPUnix", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Image(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Image", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Image", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Image(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Image", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Image", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Image(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Image(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Image", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Image", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ImageFormatLoader(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ImageFormatLoader", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ImageFormatLoader", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ImageFormatLoader(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ImageFormatLoader", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ImageFormatLoader", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ImageFormatLoader(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ImageFormatLoader(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ImageFormatLoader", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ImageFormatLoader", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ImageFormatLoaderExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ImageFormatLoaderExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ImageFormatLoaderExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ImageFormatLoaderExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ImageFormatLoaderExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ImageFormatLoaderExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ImageFormatLoaderExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ImageFormatLoaderExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ImageFormatLoaderExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ImageFormatLoaderExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ImageTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ImageTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ImageTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ImageTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ImageTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ImageTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ImageTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ImageTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ImageTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ImageTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ImageTexture3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ImageTexture3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ImageTexture3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ImageTexture3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ImageTexture3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ImageTexture3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ImageTexture3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ImageTexture3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ImageTexture3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ImageTexture3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ImageTextureLayered(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ImageTextureLayered", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ImageTextureLayered", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ImageTextureLayered(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ImageTextureLayered", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ImageTextureLayered", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ImageTextureLayered(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ImageTextureLayered(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ImageTextureLayered", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ImageTextureLayered", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ImmediateMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ImmediateMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ImmediateMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ImmediateMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ImmediateMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ImmediateMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ImmediateMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ImmediateMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ImmediateMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ImmediateMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ImporterMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ImporterMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ImporterMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ImporterMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ImporterMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ImporterMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ImporterMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ImporterMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ImporterMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ImporterMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ImporterMeshInstance3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ImporterMeshInstance3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ImporterMeshInstance3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ImporterMeshInstance3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ImporterMeshInstance3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ImporterMeshInstance3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ImporterMeshInstance3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ImporterMeshInstance3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ImporterMeshInstance3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ImporterMeshInstance3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Input(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Input", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Input", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Input(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Input", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Input", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Input(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Input(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Input", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Input", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEvent(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEvent", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEvent", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEvent(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEvent", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEvent", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEvent(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEvent(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEvent", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEvent", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventAction(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventAction", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventAction", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventAction(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventAction", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventAction", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventAction(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventAction(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventAction", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventAction", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventFromWindow(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventFromWindow", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventFromWindow", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventFromWindow(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventFromWindow", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventFromWindow", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventFromWindow(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventFromWindow(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventFromWindow", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventFromWindow", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventGesture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventGesture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventGesture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventGesture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventGesture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventGesture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventGesture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventGesture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventGesture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventGesture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventJoypadButton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventJoypadButton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventJoypadButton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventJoypadButton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventJoypadButton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventJoypadButton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventJoypadButton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventJoypadButton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventJoypadButton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventJoypadButton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventJoypadMotion(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventJoypadMotion", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventJoypadMotion", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventJoypadMotion(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventJoypadMotion", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventJoypadMotion", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventJoypadMotion(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventJoypadMotion(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventJoypadMotion", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventJoypadMotion", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventKey(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventKey", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventKey", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventKey(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventKey", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventKey", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventKey(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventKey(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventKey", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventKey", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventMIDI(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventMIDI", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventMIDI", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventMIDI(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventMIDI", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventMIDI", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventMIDI(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventMIDI(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventMIDI", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventMIDI", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventMagnifyGesture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventMagnifyGesture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventMagnifyGesture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventMagnifyGesture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventMagnifyGesture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventMagnifyGesture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventMagnifyGesture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventMagnifyGesture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventMagnifyGesture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventMagnifyGesture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventMouse(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventMouse", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventMouse", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventMouse(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventMouse", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventMouse", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventMouse(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventMouse(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventMouse", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventMouse", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventMouseButton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventMouseButton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventMouseButton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventMouseButton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventMouseButton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventMouseButton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventMouseButton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventMouseButton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventMouseButton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventMouseButton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventMouseMotion(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventMouseMotion", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventMouseMotion", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventMouseMotion(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventMouseMotion", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventMouseMotion", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventMouseMotion(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventMouseMotion(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventMouseMotion", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventMouseMotion", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventPanGesture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventPanGesture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventPanGesture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventPanGesture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventPanGesture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventPanGesture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventPanGesture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventPanGesture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventPanGesture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventPanGesture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventScreenDrag(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventScreenDrag", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventScreenDrag", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventScreenDrag(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventScreenDrag", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventScreenDrag", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventScreenDrag(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventScreenDrag(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventScreenDrag", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventScreenDrag", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventScreenTouch(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventScreenTouch", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventScreenTouch", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventScreenTouch(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventScreenTouch", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventScreenTouch", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventScreenTouch(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventScreenTouch(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventScreenTouch", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventScreenTouch", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventShortcut(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventShortcut", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventShortcut", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventShortcut(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventShortcut", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventShortcut", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventShortcut(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventShortcut(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventShortcut", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventShortcut", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputEventWithModifiers(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputEventWithModifiers", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputEventWithModifiers", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputEventWithModifiers(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputEventWithModifiers", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputEventWithModifiers", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputEventWithModifiers(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputEventWithModifiers(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputEventWithModifiers", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputEventWithModifiers", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InputMap(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InputMap", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InputMap", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InputMap(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InputMap", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InputMap", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InputMap(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InputMap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InputMap", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InputMap", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_InstancePlaceholder(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("InstancePlaceholder", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("InstancePlaceholder", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_InstancePlaceholder(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("InstancePlaceholder", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("InstancePlaceholder", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_InstancePlaceholder(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_InstancePlaceholder(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("InstancePlaceholder", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("InstancePlaceholder", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_IntervalTweener(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("IntervalTweener", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("IntervalTweener", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_IntervalTweener(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("IntervalTweener", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("IntervalTweener", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_IntervalTweener(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_IntervalTweener(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("IntervalTweener", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("IntervalTweener", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ItemList(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ItemList", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ItemList", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ItemList(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ItemList", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ItemList", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ItemList(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ItemList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ItemList", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ItemList", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_JNISingleton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("JNISingleton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("JNISingleton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_JNISingleton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("JNISingleton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("JNISingleton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_JNISingleton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_JNISingleton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("JNISingleton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("JNISingleton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_JSON(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("JSON", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("JSON", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_JSON(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("JSON", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("JSON", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_JSON(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_JSON(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("JSON", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("JSON", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_JSONRPC(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("JSONRPC", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("JSONRPC", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_JSONRPC(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("JSONRPC", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("JSONRPC", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_JSONRPC(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_JSONRPC(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("JSONRPC", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("JSONRPC", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_JavaClass(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("JavaClass", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("JavaClass", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_JavaClass(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("JavaClass", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("JavaClass", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_JavaClass(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_JavaClass(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("JavaClass", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("JavaClass", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_JavaClassWrapper(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("JavaClassWrapper", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("JavaClassWrapper", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_JavaClassWrapper(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("JavaClassWrapper", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("JavaClassWrapper", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_JavaClassWrapper(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_JavaClassWrapper(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("JavaClassWrapper", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("JavaClassWrapper", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_JavaScriptBridge(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("JavaScriptBridge", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("JavaScriptBridge", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_JavaScriptBridge(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("JavaScriptBridge", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("JavaScriptBridge", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_JavaScriptBridge(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_JavaScriptBridge(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("JavaScriptBridge", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("JavaScriptBridge", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_JavaScriptObject(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("JavaScriptObject", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("JavaScriptObject", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_JavaScriptObject(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("JavaScriptObject", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("JavaScriptObject", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_JavaScriptObject(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_JavaScriptObject(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("JavaScriptObject", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("JavaScriptObject", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Joint2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Joint2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Joint2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Joint2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Joint2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Joint2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Joint2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Joint2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Joint2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Joint2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Joint3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Joint3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Joint3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Joint3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Joint3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Joint3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Joint3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Joint3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Joint3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Joint3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_KinematicCollision2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("KinematicCollision2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("KinematicCollision2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_KinematicCollision2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("KinematicCollision2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("KinematicCollision2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_KinematicCollision2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_KinematicCollision2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("KinematicCollision2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("KinematicCollision2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_KinematicCollision3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("KinematicCollision3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("KinematicCollision3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_KinematicCollision3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("KinematicCollision3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("KinematicCollision3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_KinematicCollision3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_KinematicCollision3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("KinematicCollision3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("KinematicCollision3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Label(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Label", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Label", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Label(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Label", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Label", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Label(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Label(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Label", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Label", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Label3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Label3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Label3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Label3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Label3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Label3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Label3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Label3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Label3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Label3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_LabelSettings(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("LabelSettings", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("LabelSettings", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_LabelSettings(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("LabelSettings", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("LabelSettings", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_LabelSettings(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_LabelSettings(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("LabelSettings", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("LabelSettings", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Light2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Light2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Light2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Light2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Light2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Light2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Light2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Light2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Light2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Light2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Light3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Light3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Light3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Light3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Light3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Light3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Light3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Light3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Light3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Light3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_LightOccluder2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("LightOccluder2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("LightOccluder2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_LightOccluder2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("LightOccluder2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("LightOccluder2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_LightOccluder2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_LightOccluder2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("LightOccluder2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("LightOccluder2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_LightmapGI(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("LightmapGI", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("LightmapGI", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_LightmapGI(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("LightmapGI", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("LightmapGI", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_LightmapGI(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_LightmapGI(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("LightmapGI", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("LightmapGI", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_LightmapGIData(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("LightmapGIData", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("LightmapGIData", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_LightmapGIData(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("LightmapGIData", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("LightmapGIData", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_LightmapGIData(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_LightmapGIData(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("LightmapGIData", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("LightmapGIData", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_LightmapProbe(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("LightmapProbe", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("LightmapProbe", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_LightmapProbe(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("LightmapProbe", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("LightmapProbe", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_LightmapProbe(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_LightmapProbe(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("LightmapProbe", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("LightmapProbe", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Lightmapper(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Lightmapper", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Lightmapper", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Lightmapper(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Lightmapper", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Lightmapper", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Lightmapper(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Lightmapper(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Lightmapper", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Lightmapper", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_LightmapperRD(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("LightmapperRD", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("LightmapperRD", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_LightmapperRD(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("LightmapperRD", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("LightmapperRD", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_LightmapperRD(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_LightmapperRD(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("LightmapperRD", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("LightmapperRD", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Line2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Line2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Line2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Line2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Line2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Line2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Line2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Line2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Line2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Line2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_LineEdit(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("LineEdit", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("LineEdit", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_LineEdit(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("LineEdit", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("LineEdit", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_LineEdit(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_LineEdit(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("LineEdit", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("LineEdit", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_LinkButton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("LinkButton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("LinkButton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_LinkButton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("LinkButton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("LinkButton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_LinkButton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_LinkButton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("LinkButton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("LinkButton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MainLoop(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MainLoop", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MainLoop", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MainLoop(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MainLoop", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MainLoop", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MainLoop(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MainLoop(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MainLoop", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MainLoop", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MarginContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MarginContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MarginContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MarginContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MarginContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MarginContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MarginContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MarginContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MarginContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MarginContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Marker2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Marker2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Marker2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Marker2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Marker2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Marker2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Marker2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Marker2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Marker2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Marker2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Marker3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Marker3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Marker3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Marker3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Marker3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Marker3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Marker3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Marker3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Marker3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Marker3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Marshalls(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Marshalls", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Marshalls", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Marshalls(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Marshalls", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Marshalls", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Marshalls(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Marshalls(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Marshalls", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Marshalls", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Material(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Material", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Material", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Material(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Material", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Material", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Material(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Material(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Material", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Material", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MenuBar(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MenuBar", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MenuBar", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MenuBar(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MenuBar", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MenuBar", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MenuBar(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MenuBar(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MenuBar", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MenuBar", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MenuButton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MenuButton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MenuButton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MenuButton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MenuButton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MenuButton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MenuButton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MenuButton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MenuButton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MenuButton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Mesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Mesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Mesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Mesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Mesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Mesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Mesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Mesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Mesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Mesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MeshDataTool(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MeshDataTool", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MeshDataTool", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MeshDataTool(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MeshDataTool", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MeshDataTool", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MeshDataTool(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MeshDataTool(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MeshDataTool", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MeshDataTool", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MeshInstance2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MeshInstance2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MeshInstance2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MeshInstance2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MeshInstance2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MeshInstance2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MeshInstance2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MeshInstance2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MeshInstance2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MeshInstance2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MeshInstance3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MeshInstance3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MeshInstance3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MeshInstance3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MeshInstance3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MeshInstance3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MeshInstance3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MeshInstance3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MeshInstance3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MeshInstance3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MeshLibrary(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MeshLibrary", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MeshLibrary", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MeshLibrary(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MeshLibrary", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MeshLibrary", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MeshLibrary(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MeshLibrary(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MeshLibrary", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MeshLibrary", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MeshTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MeshTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MeshTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MeshTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MeshTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MeshTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MeshTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MeshTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MeshTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MeshTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MethodTweener(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MethodTweener", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MethodTweener", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MethodTweener(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MethodTweener", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MethodTweener", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MethodTweener(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MethodTweener(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MethodTweener", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MethodTweener", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MissingNode(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MissingNode", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MissingNode", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MissingNode(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MissingNode", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MissingNode", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MissingNode(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MissingNode(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MissingNode", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MissingNode", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MissingResource(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MissingResource", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MissingResource", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MissingResource(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MissingResource", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MissingResource", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MissingResource(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MissingResource(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MissingResource", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MissingResource", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MobileVRInterface(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MobileVRInterface", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MobileVRInterface", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MobileVRInterface(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MobileVRInterface", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MobileVRInterface", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MobileVRInterface(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MobileVRInterface(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MobileVRInterface", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MobileVRInterface", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MovieWriter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MovieWriter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MovieWriter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MovieWriter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MovieWriter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MovieWriter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MovieWriter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MovieWriter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MovieWriter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MovieWriter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MovieWriterMJPEG(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MovieWriterMJPEG", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MovieWriterMJPEG", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MovieWriterMJPEG(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MovieWriterMJPEG", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MovieWriterMJPEG", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MovieWriterMJPEG(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MovieWriterMJPEG(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MovieWriterMJPEG", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MovieWriterMJPEG", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MovieWriterPNGWAV(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MovieWriterPNGWAV", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MovieWriterPNGWAV", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MovieWriterPNGWAV(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MovieWriterPNGWAV", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MovieWriterPNGWAV", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MovieWriterPNGWAV(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MovieWriterPNGWAV(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MovieWriterPNGWAV", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MovieWriterPNGWAV", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MultiMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MultiMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MultiMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MultiMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MultiMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MultiMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MultiMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MultiMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MultiMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MultiMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MultiMeshInstance2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MultiMeshInstance2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MultiMeshInstance2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MultiMeshInstance2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MultiMeshInstance2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MultiMeshInstance2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MultiMeshInstance2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MultiMeshInstance2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MultiMeshInstance2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MultiMeshInstance2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MultiMeshInstance3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MultiMeshInstance3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MultiMeshInstance3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MultiMeshInstance3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MultiMeshInstance3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MultiMeshInstance3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MultiMeshInstance3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MultiMeshInstance3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MultiMeshInstance3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MultiMeshInstance3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MultiplayerAPI(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MultiplayerAPI", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MultiplayerAPI", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MultiplayerAPI(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MultiplayerAPI", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MultiplayerAPI", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MultiplayerAPI(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MultiplayerAPI(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MultiplayerAPI", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MultiplayerAPI", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MultiplayerAPIExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MultiplayerAPIExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MultiplayerAPIExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MultiplayerAPIExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MultiplayerAPIExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MultiplayerAPIExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MultiplayerAPIExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MultiplayerAPIExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MultiplayerAPIExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MultiplayerAPIExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MultiplayerPeer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MultiplayerPeer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MultiplayerPeer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MultiplayerPeer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MultiplayerPeer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MultiplayerPeer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MultiplayerPeer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MultiplayerPeer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MultiplayerPeer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MultiplayerPeer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MultiplayerPeerExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MultiplayerPeerExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MultiplayerPeerExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MultiplayerPeerExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MultiplayerPeerExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MultiplayerPeerExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MultiplayerPeerExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MultiplayerPeerExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MultiplayerPeerExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MultiplayerPeerExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MultiplayerSpawner(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MultiplayerSpawner", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MultiplayerSpawner", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MultiplayerSpawner(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MultiplayerSpawner", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MultiplayerSpawner", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MultiplayerSpawner(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MultiplayerSpawner(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MultiplayerSpawner", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MultiplayerSpawner", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_MultiplayerSynchronizer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("MultiplayerSynchronizer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("MultiplayerSynchronizer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_MultiplayerSynchronizer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("MultiplayerSynchronizer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("MultiplayerSynchronizer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_MultiplayerSynchronizer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_MultiplayerSynchronizer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("MultiplayerSynchronizer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("MultiplayerSynchronizer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Mutex(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Mutex", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Mutex", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Mutex(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Mutex", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Mutex", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Mutex(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Mutex(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Mutex", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdnative_class_binding_create_callback_NativeExtension(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NativeExtension", p_token, p_instance);
-}
-
-void cgo_gdnative_class_binding_free_callback_NativeExtension(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDNativeBindingFree("NativeExtension", p_token, p_instance, p_binding);
-}
-
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NativeExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NativeExtension", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdnative_class_binding_create_callback_NativeExtensionManager(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NativeExtensionManager", p_token, p_instance);
-}
-
-void cgo_gdnative_class_binding_free_callback_NativeExtensionManager(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDNativeBindingFree("NativeExtensionManager", p_token, p_instance, p_binding);
-}
-
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NativeExtensionManager(void *p_token, void *p_instance, GDNativeBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NativeExtensionManager", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Mutex", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationAgent2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationAgent2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationAgent2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationAgent2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationAgent2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationAgent2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationAgent2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationAgent2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationAgent2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationAgent2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationAgent3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationAgent3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationAgent3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationAgent3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationAgent3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationAgent3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationAgent3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationAgent3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationAgent3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationAgent3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationLink2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationLink2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationLink2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationLink2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationLink2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationLink2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationLink2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationLink2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationLink2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationLink2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationLink3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationLink3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationLink3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationLink3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationLink3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationLink3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationLink3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationLink3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationLink3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationLink3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationMeshGenerator(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationMeshGenerator", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationMeshGenerator", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationMeshGenerator(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationMeshGenerator", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationMeshGenerator", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationMeshGenerator(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationMeshGenerator(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationMeshGenerator", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationMeshGenerator", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationObstacle2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationObstacle2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationObstacle2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationObstacle2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationObstacle2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationObstacle2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationObstacle2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationObstacle2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationObstacle2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationObstacle2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationObstacle3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationObstacle3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationObstacle3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationObstacle3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationObstacle3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationObstacle3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationObstacle3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationObstacle3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationObstacle3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationObstacle3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationPathQueryParameters2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationPathQueryParameters2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationPathQueryParameters2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationPathQueryParameters2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationPathQueryParameters2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationPathQueryParameters2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryParameters2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryParameters2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationPathQueryParameters2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationPathQueryParameters2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationPathQueryParameters3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationPathQueryParameters3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationPathQueryParameters3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationPathQueryParameters3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationPathQueryParameters3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationPathQueryParameters3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryParameters3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryParameters3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationPathQueryParameters3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationPathQueryParameters3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationPathQueryResult2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationPathQueryResult2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationPathQueryResult2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationPathQueryResult2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationPathQueryResult2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationPathQueryResult2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryResult2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryResult2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationPathQueryResult2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationPathQueryResult2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationPathQueryResult3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationPathQueryResult3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationPathQueryResult3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationPathQueryResult3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationPathQueryResult3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationPathQueryResult3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryResult3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationPathQueryResult3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationPathQueryResult3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationPathQueryResult3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationPolygon(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationPolygon", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationPolygon", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationPolygon(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationPolygon", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationPolygon", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationPolygon(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationPolygon(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationPolygon", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationPolygon", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationRegion2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationRegion2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationRegion2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationRegion2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationRegion2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationRegion2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationRegion2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationRegion2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationRegion2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationRegion2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationRegion3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationRegion3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationRegion3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationRegion3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationRegion3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationRegion3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationRegion3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationRegion3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationRegion3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationRegion3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationServer2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationServer2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationServer2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationServer2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationServer2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationServer2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationServer2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationServer2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationServer2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationServer2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NavigationServer3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NavigationServer3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NavigationServer3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NavigationServer3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NavigationServer3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NavigationServer3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NavigationServer3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NavigationServer3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NavigationServer3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NavigationServer3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NinePatchRect(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NinePatchRect", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NinePatchRect", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NinePatchRect(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NinePatchRect", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NinePatchRect", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NinePatchRect(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NinePatchRect(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NinePatchRect", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NinePatchRect", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Node(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Node", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Node", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Node(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Node", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Node", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Node(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Node(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Node", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Node", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Node2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Node2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Node2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Node2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Node2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Node2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Node2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Node2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Node2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Node2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Node3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Node3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Node3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Node3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Node3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Node3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Node3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Node3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Node3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Node3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Node3DGizmo(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Node3DGizmo", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Node3DGizmo", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Node3DGizmo(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Node3DGizmo", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Node3DGizmo", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Node3DGizmo(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Node3DGizmo(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Node3DGizmo", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Node3DGizmo", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Noise(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Noise", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Noise", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Noise(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Noise", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Noise", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Noise(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Noise(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Noise", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Noise", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_NoiseTexture2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("NoiseTexture2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("NoiseTexture2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_NoiseTexture2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("NoiseTexture2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("NoiseTexture2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_NoiseTexture2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_NoiseTexture2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("NoiseTexture2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("NoiseTexture2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ORMMaterial3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ORMMaterial3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ORMMaterial3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ORMMaterial3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ORMMaterial3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ORMMaterial3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ORMMaterial3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ORMMaterial3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ORMMaterial3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ORMMaterial3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OS(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OS", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OS", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OS(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OS", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OS", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OS(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OS(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OS", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OS", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Object(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Object", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Object", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Object(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Object", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Object", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Object(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Object(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Object", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Object", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Occluder3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Occluder3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Occluder3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Occluder3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Occluder3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Occluder3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Occluder3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Occluder3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Occluder3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Occluder3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OccluderInstance3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OccluderInstance3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OccluderInstance3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OccluderInstance3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OccluderInstance3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OccluderInstance3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OccluderInstance3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OccluderInstance3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OccluderInstance3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OccluderInstance3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OccluderPolygon2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OccluderPolygon2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OccluderPolygon2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OccluderPolygon2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OccluderPolygon2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OccluderPolygon2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OccluderPolygon2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OccluderPolygon2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OccluderPolygon2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OccluderPolygon2D", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_OfflineMultiplayerPeer(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OfflineMultiplayerPeer", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_OfflineMultiplayerPeer(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OfflineMultiplayerPeer", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OfflineMultiplayerPeer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OfflineMultiplayerPeer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OggPacketSequence(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OggPacketSequence", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OggPacketSequence", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OggPacketSequence(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OggPacketSequence", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OggPacketSequence", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OggPacketSequence(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OggPacketSequence(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OggPacketSequence", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OggPacketSequence", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OggPacketSequencePlayback(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OggPacketSequencePlayback", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OggPacketSequencePlayback", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OggPacketSequencePlayback(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OggPacketSequencePlayback", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OggPacketSequencePlayback", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OggPacketSequencePlayback(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OggPacketSequencePlayback(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OggPacketSequencePlayback", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OggPacketSequencePlayback", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OmniLight3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OmniLight3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OmniLight3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OmniLight3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OmniLight3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OmniLight3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OmniLight3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OmniLight3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OmniLight3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OmniLight3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OpenXRAction(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OpenXRAction", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OpenXRAction", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OpenXRAction(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OpenXRAction", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OpenXRAction", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OpenXRAction(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OpenXRAction(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OpenXRAction", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OpenXRAction", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OpenXRActionMap(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OpenXRActionMap", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OpenXRActionMap", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OpenXRActionMap(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OpenXRActionMap", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OpenXRActionMap", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OpenXRActionMap(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OpenXRActionMap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OpenXRActionMap", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OpenXRActionMap", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OpenXRActionSet(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OpenXRActionSet", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OpenXRActionSet", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OpenXRActionSet(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OpenXRActionSet", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OpenXRActionSet", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OpenXRActionSet(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OpenXRActionSet(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OpenXRActionSet", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OpenXRActionSet", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OpenXRHand(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OpenXRHand", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OpenXRHand", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OpenXRHand(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OpenXRHand", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OpenXRHand", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OpenXRHand(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OpenXRHand(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OpenXRHand", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OpenXRHand", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OpenXRIPBinding(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OpenXRIPBinding", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OpenXRIPBinding", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OpenXRIPBinding(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OpenXRIPBinding", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OpenXRIPBinding", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OpenXRIPBinding(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OpenXRIPBinding(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OpenXRIPBinding", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OpenXRIPBinding", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OpenXRInteractionProfile(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OpenXRInteractionProfile", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OpenXRInteractionProfile", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OpenXRInteractionProfile(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OpenXRInteractionProfile", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OpenXRInteractionProfile", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OpenXRInteractionProfile(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OpenXRInteractionProfile(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OpenXRInteractionProfile", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OpenXRInteractionProfile", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OpenXRInterface(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OpenXRInterface", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OpenXRInterface", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OpenXRInterface(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OpenXRInterface", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OpenXRInterface", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OpenXRInterface(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OpenXRInterface(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OpenXRInterface", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OpenXRInterface", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OptimizedTranslation(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OptimizedTranslation", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OptimizedTranslation", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OptimizedTranslation(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OptimizedTranslation", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OptimizedTranslation", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OptimizedTranslation(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OptimizedTranslation(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OptimizedTranslation", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OptimizedTranslation", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_OptionButton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("OptionButton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("OptionButton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_OptionButton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("OptionButton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("OptionButton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_OptionButton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_OptionButton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("OptionButton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("OptionButton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PCKPacker(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PCKPacker", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PCKPacker", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PCKPacker(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PCKPacker", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PCKPacker", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PCKPacker(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PCKPacker(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PCKPacker", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PCKPacker", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PackedDataContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PackedDataContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PackedDataContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PackedDataContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PackedDataContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PackedDataContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PackedDataContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PackedDataContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PackedDataContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PackedDataContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PackedDataContainerRef(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PackedDataContainerRef", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PackedDataContainerRef", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PackedDataContainerRef(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PackedDataContainerRef", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PackedDataContainerRef", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PackedDataContainerRef(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PackedDataContainerRef(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PackedDataContainerRef", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PackedDataContainerRef", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PackedScene(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PackedScene", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PackedScene", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PackedScene(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PackedScene", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PackedScene", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PackedScene(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PackedScene(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PackedScene", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PackedScene", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PacketPeer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PacketPeer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PacketPeer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PacketPeer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PacketPeer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PacketPeer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PacketPeer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PacketPeer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PacketPeer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PacketPeer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PacketPeerDTLS(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PacketPeerDTLS", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PacketPeerDTLS", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PacketPeerDTLS(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PacketPeerDTLS", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PacketPeerDTLS", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PacketPeerDTLS(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PacketPeerDTLS(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PacketPeerDTLS", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PacketPeerDTLS", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PacketPeerExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PacketPeerExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PacketPeerExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PacketPeerExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PacketPeerExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PacketPeerExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PacketPeerExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PacketPeerExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PacketPeerExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PacketPeerExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PacketPeerStream(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PacketPeerStream", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PacketPeerStream", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PacketPeerStream(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PacketPeerStream", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PacketPeerStream", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PacketPeerStream(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PacketPeerStream(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PacketPeerStream", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PacketPeerStream", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PacketPeerUDP(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PacketPeerUDP", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PacketPeerUDP", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PacketPeerUDP(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PacketPeerUDP", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PacketPeerUDP", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PacketPeerUDP(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PacketPeerUDP(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PacketPeerUDP", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PacketPeerUDP", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Panel(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Panel", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Panel", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Panel(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Panel", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Panel", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Panel(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Panel(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Panel", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Panel", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PanelContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PanelContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PanelContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PanelContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PanelContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PanelContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PanelContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PanelContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PanelContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PanelContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PanoramaSkyMaterial(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PanoramaSkyMaterial", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PanoramaSkyMaterial", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PanoramaSkyMaterial(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PanoramaSkyMaterial", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PanoramaSkyMaterial", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PanoramaSkyMaterial(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PanoramaSkyMaterial(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PanoramaSkyMaterial", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PanoramaSkyMaterial", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ParallaxBackground(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ParallaxBackground", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ParallaxBackground", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ParallaxBackground(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ParallaxBackground", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ParallaxBackground", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ParallaxBackground(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ParallaxBackground(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ParallaxBackground", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ParallaxBackground", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ParallaxLayer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ParallaxLayer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ParallaxLayer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ParallaxLayer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ParallaxLayer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ParallaxLayer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ParallaxLayer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ParallaxLayer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ParallaxLayer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ParallaxLayer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ParticleProcessMaterial(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ParticleProcessMaterial", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ParticleProcessMaterial", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ParticleProcessMaterial(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ParticleProcessMaterial", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ParticleProcessMaterial", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ParticleProcessMaterial(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ParticleProcessMaterial(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ParticleProcessMaterial", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ParticleProcessMaterial", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Path2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Path2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Path2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Path2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Path2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Path2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Path2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Path2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Path2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Path2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Path3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Path3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Path3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Path3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Path3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Path3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Path3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Path3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Path3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Path3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PathFollow2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PathFollow2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PathFollow2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PathFollow2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PathFollow2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PathFollow2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PathFollow2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PathFollow2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PathFollow2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PathFollow2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PathFollow3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PathFollow3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PathFollow3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PathFollow3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PathFollow3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PathFollow3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PathFollow3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PathFollow3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PathFollow3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PathFollow3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Performance(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Performance", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Performance", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Performance(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Performance", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Performance", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Performance(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Performance(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Performance", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Performance", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicalBone2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicalBone2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicalBone2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicalBone2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicalBone2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicalBone2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicalBone2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicalBone2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicalBone2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicalBone2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicalBone3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicalBone3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicalBone3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicalBone3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicalBone3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicalBone3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicalBone3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicalBone3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicalBone3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicalBone3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicalSkyMaterial(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicalSkyMaterial", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicalSkyMaterial", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicalSkyMaterial(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicalSkyMaterial", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicalSkyMaterial", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicalSkyMaterial(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicalSkyMaterial(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicalSkyMaterial", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicalSkyMaterial", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsBody2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsBody2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsBody2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsBody2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsBody2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsBody2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsBody2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsBody2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsBody2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsBody2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsBody3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsBody3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsBody3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsBody3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsBody3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsBody3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsBody3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsBody3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsBody3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsBody3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsDirectBodyState2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsDirectBodyState2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsDirectBodyState2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsDirectBodyState2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsDirectBodyState2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsDirectBodyState2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectBodyState2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectBodyState2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsDirectBodyState2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsDirectBodyState2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsDirectBodyState2DExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsDirectBodyState2DExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsDirectBodyState2DExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsDirectBodyState2DExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsDirectBodyState2DExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsDirectBodyState2DExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectBodyState2DExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectBodyState2DExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsDirectBodyState2DExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsDirectBodyState2DExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsDirectBodyState3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsDirectBodyState3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsDirectBodyState3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsDirectBodyState3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsDirectBodyState3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsDirectBodyState3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectBodyState3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectBodyState3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsDirectBodyState3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsDirectBodyState3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsDirectBodyState3DExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsDirectBodyState3DExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsDirectBodyState3DExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsDirectBodyState3DExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsDirectBodyState3DExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsDirectBodyState3DExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectBodyState3DExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectBodyState3DExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsDirectBodyState3DExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsDirectBodyState3DExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsDirectSpaceState2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsDirectSpaceState2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsDirectSpaceState2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsDirectSpaceState2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsDirectSpaceState2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsDirectSpaceState2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectSpaceState2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectSpaceState2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsDirectSpaceState2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsDirectSpaceState2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsDirectSpaceState2DExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsDirectSpaceState2DExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsDirectSpaceState2DExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsDirectSpaceState2DExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsDirectSpaceState2DExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsDirectSpaceState2DExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectSpaceState2DExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectSpaceState2DExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsDirectSpaceState2DExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsDirectSpaceState2DExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsDirectSpaceState3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsDirectSpaceState3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsDirectSpaceState3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsDirectSpaceState3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsDirectSpaceState3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsDirectSpaceState3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectSpaceState3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectSpaceState3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsDirectSpaceState3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsDirectSpaceState3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsDirectSpaceState3DExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsDirectSpaceState3DExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsDirectSpaceState3DExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsDirectSpaceState3DExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsDirectSpaceState3DExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsDirectSpaceState3DExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectSpaceState3DExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsDirectSpaceState3DExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsDirectSpaceState3DExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsDirectSpaceState3DExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsMaterial(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsMaterial", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsMaterial", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsMaterial(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsMaterial", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsMaterial", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsMaterial(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsMaterial(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsMaterial", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsMaterial", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsPointQueryParameters2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsPointQueryParameters2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsPointQueryParameters2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsPointQueryParameters2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsPointQueryParameters2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsPointQueryParameters2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsPointQueryParameters2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsPointQueryParameters2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsPointQueryParameters2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsPointQueryParameters2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsPointQueryParameters3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsPointQueryParameters3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsPointQueryParameters3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsPointQueryParameters3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsPointQueryParameters3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsPointQueryParameters3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsPointQueryParameters3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsPointQueryParameters3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsPointQueryParameters3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsPointQueryParameters3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsRayQueryParameters2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsRayQueryParameters2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsRayQueryParameters2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsRayQueryParameters2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsRayQueryParameters2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsRayQueryParameters2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsRayQueryParameters2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsRayQueryParameters2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsRayQueryParameters2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsRayQueryParameters2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsRayQueryParameters3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsRayQueryParameters3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsRayQueryParameters3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsRayQueryParameters3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsRayQueryParameters3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsRayQueryParameters3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsRayQueryParameters3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsRayQueryParameters3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsRayQueryParameters3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsRayQueryParameters3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsServer2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsServer2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsServer2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsServer2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsServer2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsServer2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsServer2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsServer2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsServer2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsServer2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsServer2DExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsServer2DExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsServer2DExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsServer2DExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsServer2DExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsServer2DExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsServer2DExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsServer2DExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsServer2DExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsServer2DExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsServer2DManager(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsServer2DManager", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsServer2DManager", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsServer2DManager(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsServer2DManager", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsServer2DManager", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsServer2DManager(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsServer2DManager(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsServer2DManager", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsServer2DManager", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsServer3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsServer3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsServer3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsServer3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsServer3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsServer3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsServer3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsServer3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsServer3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsServer3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsServer3DExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsServer3DExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsServer3DExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsServer3DExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsServer3DExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsServer3DExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsServer3DExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsServer3DExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsServer3DExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsServer3DExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsServer3DManager(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsServer3DManager", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsServer3DManager", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsServer3DManager(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsServer3DManager", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsServer3DManager", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsServer3DManager(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsServer3DManager(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsServer3DManager", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsServer3DManager", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsServer3DRenderingServerHandler(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsServer3DRenderingServerHandler", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsServer3DRenderingServerHandler", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsServer3DRenderingServerHandler(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsServer3DRenderingServerHandler", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsServer3DRenderingServerHandler", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsServer3DRenderingServerHandler(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsServer3DRenderingServerHandler(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsServer3DRenderingServerHandler", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsServer3DRenderingServerHandler", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsShapeQueryParameters2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsShapeQueryParameters2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsShapeQueryParameters2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsShapeQueryParameters2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsShapeQueryParameters2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsShapeQueryParameters2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsShapeQueryParameters2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsShapeQueryParameters2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsShapeQueryParameters2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsShapeQueryParameters2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsShapeQueryParameters3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsShapeQueryParameters3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsShapeQueryParameters3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsShapeQueryParameters3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsShapeQueryParameters3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsShapeQueryParameters3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsShapeQueryParameters3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsShapeQueryParameters3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsShapeQueryParameters3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsShapeQueryParameters3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsTestMotionParameters2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsTestMotionParameters2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsTestMotionParameters2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsTestMotionParameters2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsTestMotionParameters2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsTestMotionParameters2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsTestMotionParameters2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsTestMotionParameters2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsTestMotionParameters2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsTestMotionParameters2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsTestMotionParameters3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsTestMotionParameters3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsTestMotionParameters3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsTestMotionParameters3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsTestMotionParameters3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsTestMotionParameters3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsTestMotionParameters3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsTestMotionParameters3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsTestMotionParameters3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsTestMotionParameters3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsTestMotionResult2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsTestMotionResult2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsTestMotionResult2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsTestMotionResult2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsTestMotionResult2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsTestMotionResult2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsTestMotionResult2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsTestMotionResult2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsTestMotionResult2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsTestMotionResult2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PhysicsTestMotionResult3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PhysicsTestMotionResult3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PhysicsTestMotionResult3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PhysicsTestMotionResult3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PhysicsTestMotionResult3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PhysicsTestMotionResult3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PhysicsTestMotionResult3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PhysicsTestMotionResult3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PhysicsTestMotionResult3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PhysicsTestMotionResult3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PinJoint2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PinJoint2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PinJoint2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PinJoint2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PinJoint2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PinJoint2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PinJoint2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PinJoint2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PinJoint2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PinJoint2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PinJoint3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PinJoint3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PinJoint3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PinJoint3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PinJoint3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PinJoint3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PinJoint3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PinJoint3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PinJoint3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PinJoint3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PlaceholderCubemap(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PlaceholderCubemap", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PlaceholderCubemap", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PlaceholderCubemap(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PlaceholderCubemap", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PlaceholderCubemap", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PlaceholderCubemap(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PlaceholderCubemap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PlaceholderCubemap", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PlaceholderCubemap", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PlaceholderCubemapArray(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PlaceholderCubemapArray", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PlaceholderCubemapArray", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PlaceholderCubemapArray(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PlaceholderCubemapArray", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PlaceholderCubemapArray", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PlaceholderCubemapArray(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PlaceholderCubemapArray(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PlaceholderCubemapArray", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PlaceholderCubemapArray", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PlaceholderMaterial(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PlaceholderMaterial", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PlaceholderMaterial", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PlaceholderMaterial(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PlaceholderMaterial", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PlaceholderMaterial", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PlaceholderMaterial(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PlaceholderMaterial(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PlaceholderMaterial", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PlaceholderMaterial", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PlaceholderMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PlaceholderMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PlaceholderMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PlaceholderMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PlaceholderMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PlaceholderMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PlaceholderMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PlaceholderMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PlaceholderMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PlaceholderMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PlaceholderTexture2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PlaceholderTexture2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PlaceholderTexture2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PlaceholderTexture2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PlaceholderTexture2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PlaceholderTexture2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PlaceholderTexture2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PlaceholderTexture2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PlaceholderTexture2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PlaceholderTexture2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PlaceholderTexture2DArray(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PlaceholderTexture2DArray", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PlaceholderTexture2DArray", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PlaceholderTexture2DArray(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PlaceholderTexture2DArray", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PlaceholderTexture2DArray", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PlaceholderTexture2DArray(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PlaceholderTexture2DArray(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PlaceholderTexture2DArray", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PlaceholderTexture2DArray", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PlaceholderTexture3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PlaceholderTexture3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PlaceholderTexture3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PlaceholderTexture3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PlaceholderTexture3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PlaceholderTexture3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PlaceholderTexture3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PlaceholderTexture3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PlaceholderTexture3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PlaceholderTexture3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PlaceholderTextureLayered(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PlaceholderTextureLayered", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PlaceholderTextureLayered", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PlaceholderTextureLayered(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PlaceholderTextureLayered", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PlaceholderTextureLayered", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PlaceholderTextureLayered(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PlaceholderTextureLayered(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PlaceholderTextureLayered", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PlaceholderTextureLayered", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PlaneMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PlaneMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PlaneMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PlaneMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PlaneMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PlaneMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PlaneMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PlaneMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PlaneMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PlaneMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PointLight2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PointLight2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PointLight2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PointLight2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PointLight2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PointLight2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PointLight2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PointLight2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PointLight2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PointLight2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PointMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PointMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PointMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PointMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PointMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PointMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PointMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PointMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PointMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PointMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Polygon2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Polygon2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Polygon2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Polygon2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Polygon2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Polygon2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Polygon2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Polygon2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Polygon2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Polygon2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PolygonOccluder3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PolygonOccluder3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PolygonOccluder3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PolygonOccluder3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PolygonOccluder3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PolygonOccluder3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PolygonOccluder3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PolygonOccluder3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PolygonOccluder3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PolygonOccluder3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PolygonPathFinder(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PolygonPathFinder", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PolygonPathFinder", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PolygonPathFinder(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PolygonPathFinder", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PolygonPathFinder", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PolygonPathFinder(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PolygonPathFinder(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PolygonPathFinder", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PolygonPathFinder", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Popup(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Popup", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Popup", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Popup(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Popup", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Popup", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Popup(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Popup(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Popup", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Popup", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PopupMenu(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PopupMenu", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PopupMenu", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PopupMenu(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PopupMenu", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PopupMenu", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PopupMenu(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PopupMenu(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PopupMenu", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PopupMenu", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PopupPanel(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PopupPanel", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PopupPanel", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PopupPanel(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PopupPanel", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PopupPanel", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PopupPanel(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PopupPanel(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PopupPanel", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PopupPanel", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PortableCompressedTexture2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PortableCompressedTexture2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PortableCompressedTexture2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PortableCompressedTexture2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PortableCompressedTexture2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PortableCompressedTexture2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PortableCompressedTexture2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PortableCompressedTexture2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PortableCompressedTexture2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PortableCompressedTexture2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PrimitiveMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PrimitiveMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PrimitiveMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PrimitiveMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PrimitiveMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PrimitiveMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PrimitiveMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PrimitiveMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PrimitiveMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PrimitiveMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PrismMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PrismMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PrismMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PrismMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PrismMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PrismMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PrismMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PrismMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PrismMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PrismMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ProceduralSkyMaterial(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ProceduralSkyMaterial", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ProceduralSkyMaterial", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ProceduralSkyMaterial(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ProceduralSkyMaterial", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ProceduralSkyMaterial", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ProceduralSkyMaterial(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ProceduralSkyMaterial(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ProceduralSkyMaterial", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ProceduralSkyMaterial", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ProgressBar(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ProgressBar", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ProgressBar", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ProgressBar(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ProgressBar", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ProgressBar", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ProgressBar(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ProgressBar(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ProgressBar", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ProgressBar", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ProjectSettings(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ProjectSettings", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ProjectSettings", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ProjectSettings(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ProjectSettings", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ProjectSettings", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ProjectSettings(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ProjectSettings(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ProjectSettings", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ProjectSettings", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_PropertyTweener(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("PropertyTweener", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("PropertyTweener", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_PropertyTweener(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("PropertyTweener", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("PropertyTweener", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_PropertyTweener(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_PropertyTweener(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("PropertyTweener", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("PropertyTweener", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_QuadMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("QuadMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("QuadMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_QuadMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("QuadMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("QuadMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_QuadMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_QuadMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("QuadMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("QuadMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_QuadOccluder3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("QuadOccluder3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("QuadOccluder3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_QuadOccluder3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("QuadOccluder3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("QuadOccluder3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_QuadOccluder3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_QuadOccluder3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("QuadOccluder3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("QuadOccluder3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDAttachmentFormat(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDAttachmentFormat", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDAttachmentFormat", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDAttachmentFormat(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDAttachmentFormat", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDAttachmentFormat", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDAttachmentFormat(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDAttachmentFormat(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDAttachmentFormat", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDAttachmentFormat", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDFramebufferPass(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDFramebufferPass", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDFramebufferPass", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDFramebufferPass(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDFramebufferPass", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDFramebufferPass", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDFramebufferPass(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDFramebufferPass(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDFramebufferPass", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDFramebufferPass", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDPipelineColorBlendState(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDPipelineColorBlendState", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDPipelineColorBlendState", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDPipelineColorBlendState(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDPipelineColorBlendState", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDPipelineColorBlendState", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDPipelineColorBlendState(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDPipelineColorBlendState(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDPipelineColorBlendState", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDPipelineColorBlendState", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDPipelineColorBlendStateAttachment(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDPipelineColorBlendStateAttachment", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDPipelineColorBlendStateAttachment", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDPipelineColorBlendStateAttachment(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDPipelineColorBlendStateAttachment", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDPipelineColorBlendStateAttachment", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDPipelineColorBlendStateAttachment(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDPipelineColorBlendStateAttachment(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDPipelineColorBlendStateAttachment", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDPipelineColorBlendStateAttachment", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDPipelineDepthStencilState(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDPipelineDepthStencilState", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDPipelineDepthStencilState", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDPipelineDepthStencilState(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDPipelineDepthStencilState", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDPipelineDepthStencilState", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDPipelineDepthStencilState(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDPipelineDepthStencilState(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDPipelineDepthStencilState", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDPipelineDepthStencilState", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDPipelineMultisampleState(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDPipelineMultisampleState", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDPipelineMultisampleState", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDPipelineMultisampleState(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDPipelineMultisampleState", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDPipelineMultisampleState", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDPipelineMultisampleState(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDPipelineMultisampleState(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDPipelineMultisampleState", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDPipelineMultisampleState", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDPipelineRasterizationState(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDPipelineRasterizationState", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDPipelineRasterizationState", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDPipelineRasterizationState(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDPipelineRasterizationState", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDPipelineRasterizationState", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDPipelineRasterizationState(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDPipelineRasterizationState(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDPipelineRasterizationState", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDPipelineRasterizationState", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDPipelineSpecializationConstant(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDPipelineSpecializationConstant", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDPipelineSpecializationConstant", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDPipelineSpecializationConstant(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDPipelineSpecializationConstant", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDPipelineSpecializationConstant", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDPipelineSpecializationConstant(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDPipelineSpecializationConstant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDPipelineSpecializationConstant", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDPipelineSpecializationConstant", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDSamplerState(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDSamplerState", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDSamplerState", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDSamplerState(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDSamplerState", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDSamplerState", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDSamplerState(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDSamplerState(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDSamplerState", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDSamplerState", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDShaderFile(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDShaderFile", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDShaderFile", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDShaderFile(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDShaderFile", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDShaderFile", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDShaderFile(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDShaderFile(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDShaderFile", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDShaderFile", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDShaderSPIRV(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDShaderSPIRV", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDShaderSPIRV", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDShaderSPIRV(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDShaderSPIRV", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDShaderSPIRV", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDShaderSPIRV(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDShaderSPIRV(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDShaderSPIRV", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDShaderSPIRV", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDShaderSource(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDShaderSource", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDShaderSource", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDShaderSource(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDShaderSource", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDShaderSource", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDShaderSource(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDShaderSource(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDShaderSource", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDShaderSource", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDTextureFormat(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDTextureFormat", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDTextureFormat", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDTextureFormat(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDTextureFormat", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDTextureFormat", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDTextureFormat(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDTextureFormat(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDTextureFormat", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDTextureFormat", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDTextureView(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDTextureView", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDTextureView", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDTextureView(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDTextureView", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDTextureView", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDTextureView(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDTextureView(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDTextureView", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDTextureView", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDUniform(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDUniform", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDUniform", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDUniform(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDUniform", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDUniform", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDUniform(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDUniform(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDUniform", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDUniform", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RDVertexAttribute(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RDVertexAttribute", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RDVertexAttribute", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RDVertexAttribute(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RDVertexAttribute", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RDVertexAttribute", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RDVertexAttribute(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RDVertexAttribute(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RDVertexAttribute", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RDVertexAttribute", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RandomNumberGenerator(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RandomNumberGenerator", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RandomNumberGenerator", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RandomNumberGenerator(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RandomNumberGenerator", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RandomNumberGenerator", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RandomNumberGenerator(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RandomNumberGenerator(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RandomNumberGenerator", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RandomNumberGenerator", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Range(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Range", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Range", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Range(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Range", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Range", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Range(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Range(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Range", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Range", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RayCast2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RayCast2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RayCast2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RayCast2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RayCast2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RayCast2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RayCast2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RayCast2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RayCast2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RayCast2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RayCast3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RayCast3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RayCast3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RayCast3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RayCast3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RayCast3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RayCast3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RayCast3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RayCast3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RayCast3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RectangleShape2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RectangleShape2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RectangleShape2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RectangleShape2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RectangleShape2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RectangleShape2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RectangleShape2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RectangleShape2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RectangleShape2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RectangleShape2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RefCounted(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RefCounted", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RefCounted", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RefCounted(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RefCounted", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RefCounted", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RefCounted(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RefCounted(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RefCounted", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RefCounted", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ReferenceRect(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ReferenceRect", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ReferenceRect", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ReferenceRect(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ReferenceRect", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ReferenceRect", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ReferenceRect(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ReferenceRect(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ReferenceRect", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ReferenceRect", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ReflectionProbe(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ReflectionProbe", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ReflectionProbe", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ReflectionProbe(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ReflectionProbe", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ReflectionProbe", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ReflectionProbe(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ReflectionProbe(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ReflectionProbe", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ReflectionProbe", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RegEx(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RegEx", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RegEx", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RegEx(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RegEx", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RegEx", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RegEx(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RegEx(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RegEx", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RegEx", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RegExMatch(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RegExMatch", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RegExMatch", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RegExMatch(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RegExMatch", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RegExMatch", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RegExMatch(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RegExMatch(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RegExMatch", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RegExMatch", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RemoteTransform2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RemoteTransform2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RemoteTransform2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RemoteTransform2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RemoteTransform2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RemoteTransform2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RemoteTransform2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RemoteTransform2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RemoteTransform2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RemoteTransform2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RemoteTransform3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RemoteTransform3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RemoteTransform3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RemoteTransform3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RemoteTransform3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RemoteTransform3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RemoteTransform3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RemoteTransform3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RemoteTransform3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RemoteTransform3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RenderingDevice(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RenderingDevice", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RenderingDevice", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RenderingDevice(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RenderingDevice", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RenderingDevice", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RenderingDevice(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RenderingDevice(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RenderingDevice", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RenderingDevice", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RenderingServer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RenderingServer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RenderingServer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RenderingServer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RenderingServer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RenderingServer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RenderingServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RenderingServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RenderingServer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RenderingServer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Resource(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Resource", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Resource", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Resource(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Resource", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Resource", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Resource(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Resource(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Resource", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Resource", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ResourceFormatLoader(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ResourceFormatLoader", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ResourceFormatLoader", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ResourceFormatLoader(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ResourceFormatLoader", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ResourceFormatLoader", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ResourceFormatLoader(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ResourceFormatLoader(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ResourceFormatLoader", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ResourceFormatLoader", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ResourceFormatSaver(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ResourceFormatSaver", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ResourceFormatSaver", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ResourceFormatSaver(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ResourceFormatSaver", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ResourceFormatSaver", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ResourceFormatSaver(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ResourceFormatSaver(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ResourceFormatSaver", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ResourceFormatSaver", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ResourceImporter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ResourceImporter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ResourceImporter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ResourceImporter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ResourceImporter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ResourceImporter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ResourceImporter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ResourceImporter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ResourceImporter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ResourceImporter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ResourceLoader(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ResourceLoader", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ResourceLoader", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ResourceLoader(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ResourceLoader", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ResourceLoader", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ResourceLoader(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ResourceLoader(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ResourceLoader", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ResourceLoader", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ResourcePreloader(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ResourcePreloader", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ResourcePreloader", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ResourcePreloader(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ResourcePreloader", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ResourcePreloader", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ResourcePreloader(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ResourcePreloader(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ResourcePreloader", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ResourcePreloader", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ResourceSaver(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ResourceSaver", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ResourceSaver", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ResourceSaver(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ResourceSaver", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ResourceSaver", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ResourceSaver(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ResourceSaver(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ResourceSaver", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ResourceSaver", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ResourceUID(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ResourceUID", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ResourceUID", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ResourceUID(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ResourceUID", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ResourceUID", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ResourceUID(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ResourceUID(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ResourceUID", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ResourceUID", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RibbonTrailMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RibbonTrailMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RibbonTrailMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RibbonTrailMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RibbonTrailMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RibbonTrailMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RibbonTrailMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RibbonTrailMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RibbonTrailMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RibbonTrailMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RichTextEffect(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RichTextEffect", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RichTextEffect", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RichTextEffect(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RichTextEffect", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RichTextEffect", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RichTextEffect(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RichTextEffect(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RichTextEffect", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RichTextEffect", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RichTextLabel(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RichTextLabel", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RichTextLabel", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RichTextLabel(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RichTextLabel", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RichTextLabel", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RichTextLabel(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RichTextLabel(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RichTextLabel", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RichTextLabel", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RigidBody2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RigidBody2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RigidBody2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RigidBody2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RigidBody2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RigidBody2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RigidBody2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RigidBody2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RigidBody2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RigidBody2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RigidBody3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RigidBody3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RigidBody3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RigidBody3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RigidBody3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RigidBody3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RigidBody3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RigidBody3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RigidBody3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RigidBody3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_RootMotionView(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("RootMotionView", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("RootMotionView", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_RootMotionView(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("RootMotionView", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("RootMotionView", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_RootMotionView(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_RootMotionView(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("RootMotionView", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("RootMotionView", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SceneMultiplayer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SceneMultiplayer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SceneMultiplayer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SceneMultiplayer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SceneMultiplayer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SceneMultiplayer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SceneMultiplayer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SceneMultiplayer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SceneMultiplayer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SceneMultiplayer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SceneReplicationConfig(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SceneReplicationConfig", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SceneReplicationConfig", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SceneReplicationConfig(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SceneReplicationConfig", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SceneReplicationConfig", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SceneReplicationConfig(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SceneReplicationConfig(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SceneReplicationConfig", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SceneReplicationConfig", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SceneState(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SceneState", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SceneState", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SceneState(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SceneState", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SceneState", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SceneState(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SceneState(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SceneState", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SceneState", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SceneTree(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SceneTree", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SceneTree", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SceneTree(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SceneTree", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SceneTree", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SceneTree(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SceneTree(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SceneTree", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SceneTree", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SceneTreeTimer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SceneTreeTimer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SceneTreeTimer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SceneTreeTimer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SceneTreeTimer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SceneTreeTimer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SceneTreeTimer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SceneTreeTimer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SceneTreeTimer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SceneTreeTimer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Script(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Script", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Script", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Script(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Script", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Script", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Script(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Script(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Script", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Script", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ScriptCreateDialog(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ScriptCreateDialog", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ScriptCreateDialog", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ScriptCreateDialog(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ScriptCreateDialog", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ScriptCreateDialog", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ScriptCreateDialog(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ScriptCreateDialog(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ScriptCreateDialog", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ScriptCreateDialog", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ScriptExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ScriptExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ScriptExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ScriptExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ScriptExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ScriptExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ScriptExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ScriptExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ScriptExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ScriptExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ScriptLanguage(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ScriptLanguage", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ScriptLanguage", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ScriptLanguage(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ScriptLanguage", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ScriptLanguage", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ScriptLanguage(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ScriptLanguage(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ScriptLanguage", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ScriptLanguage", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ScriptLanguageExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ScriptLanguageExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ScriptLanguageExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ScriptLanguageExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ScriptLanguageExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ScriptLanguageExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ScriptLanguageExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ScriptLanguageExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ScriptLanguageExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ScriptLanguageExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ScrollBar(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ScrollBar", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ScrollBar", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ScrollBar(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ScrollBar", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ScrollBar", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ScrollBar(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ScrollBar(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ScrollBar", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ScrollBar", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ScrollContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ScrollContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ScrollContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ScrollContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ScrollContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ScrollContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ScrollContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ScrollContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ScrollContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ScrollContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SegmentShape2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SegmentShape2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SegmentShape2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SegmentShape2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SegmentShape2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SegmentShape2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SegmentShape2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SegmentShape2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SegmentShape2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SegmentShape2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Semaphore(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Semaphore", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Semaphore", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Semaphore(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Semaphore", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Semaphore", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Semaphore(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Semaphore(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Semaphore", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Semaphore", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SeparationRayShape2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SeparationRayShape2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SeparationRayShape2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SeparationRayShape2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SeparationRayShape2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SeparationRayShape2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SeparationRayShape2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SeparationRayShape2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SeparationRayShape2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SeparationRayShape2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SeparationRayShape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SeparationRayShape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SeparationRayShape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SeparationRayShape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SeparationRayShape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SeparationRayShape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SeparationRayShape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SeparationRayShape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SeparationRayShape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SeparationRayShape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Separator(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Separator", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Separator", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Separator(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Separator", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Separator", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Separator(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Separator(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Separator", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Separator", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Shader(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Shader", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Shader", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Shader(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Shader", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Shader", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Shader(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Shader(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Shader", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Shader", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ShaderGlobalsOverride(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ShaderGlobalsOverride", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ShaderGlobalsOverride", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ShaderGlobalsOverride(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ShaderGlobalsOverride", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ShaderGlobalsOverride", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ShaderGlobalsOverride(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ShaderGlobalsOverride(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ShaderGlobalsOverride", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ShaderGlobalsOverride", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ShaderInclude(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ShaderInclude", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ShaderInclude", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ShaderInclude(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ShaderInclude", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ShaderInclude", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ShaderInclude(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ShaderInclude(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ShaderInclude", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ShaderInclude", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ShaderMaterial(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ShaderMaterial", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ShaderMaterial", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ShaderMaterial(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ShaderMaterial", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ShaderMaterial", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ShaderMaterial(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ShaderMaterial(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ShaderMaterial", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ShaderMaterial", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Shape2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Shape2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Shape2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Shape2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Shape2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Shape2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Shape2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Shape2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Shape2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Shape2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Shape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Shape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Shape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Shape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Shape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Shape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Shape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Shape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Shape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Shape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ShapeCast2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ShapeCast2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ShapeCast2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ShapeCast2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ShapeCast2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ShapeCast2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ShapeCast2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ShapeCast2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ShapeCast2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ShapeCast2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ShapeCast3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ShapeCast3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ShapeCast3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ShapeCast3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ShapeCast3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ShapeCast3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ShapeCast3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ShapeCast3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ShapeCast3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ShapeCast3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Shortcut(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Shortcut", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Shortcut", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Shortcut(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Shortcut", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Shortcut", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Shortcut(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Shortcut(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Shortcut", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Shortcut", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Skeleton2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Skeleton2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Skeleton2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Skeleton2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Skeleton2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Skeleton2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Skeleton2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Skeleton2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Skeleton2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Skeleton2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Skeleton3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Skeleton3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Skeleton3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Skeleton3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Skeleton3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Skeleton3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Skeleton3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Skeleton3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Skeleton3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Skeleton3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonIK3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonIK3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonIK3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonIK3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonIK3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonIK3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonIK3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonIK3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonIK3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonIK3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification2DCCDIK(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification2DCCDIK", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification2DCCDIK", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification2DCCDIK(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification2DCCDIK", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification2DCCDIK", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DCCDIK(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DCCDIK(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification2DCCDIK", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification2DCCDIK", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification2DFABRIK(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification2DFABRIK", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification2DFABRIK", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification2DFABRIK(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification2DFABRIK", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification2DFABRIK", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DFABRIK(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DFABRIK(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification2DFABRIK", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification2DFABRIK", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification2DJiggle(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification2DJiggle", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification2DJiggle", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification2DJiggle(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification2DJiggle", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification2DJiggle", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DJiggle(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DJiggle(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification2DJiggle", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification2DJiggle", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification2DLookAt(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification2DLookAt", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification2DLookAt", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification2DLookAt(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification2DLookAt", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification2DLookAt", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DLookAt(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DLookAt(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification2DLookAt", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification2DLookAt", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification2DPhysicalBones(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification2DPhysicalBones", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification2DPhysicalBones", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification2DPhysicalBones(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification2DPhysicalBones", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification2DPhysicalBones", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DPhysicalBones(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DPhysicalBones(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification2DPhysicalBones", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification2DPhysicalBones", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification2DStackHolder(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification2DStackHolder", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification2DStackHolder", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification2DStackHolder(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification2DStackHolder", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification2DStackHolder", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DStackHolder(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DStackHolder(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification2DStackHolder", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification2DStackHolder", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification2DTwoBoneIK(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification2DTwoBoneIK", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification2DTwoBoneIK", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification2DTwoBoneIK(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification2DTwoBoneIK", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification2DTwoBoneIK", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DTwoBoneIK(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification2DTwoBoneIK(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification2DTwoBoneIK", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification2DTwoBoneIK", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification3DCCDIK(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification3DCCDIK", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DCCDIK", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification3DCCDIK(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification3DCCDIK", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification3DCCDIK", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DCCDIK(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DCCDIK(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification3DCCDIK", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification3DCCDIK", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification3DFABRIK(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification3DFABRIK", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DFABRIK", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification3DFABRIK(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification3DFABRIK", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification3DFABRIK", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DFABRIK(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DFABRIK(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification3DFABRIK", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification3DFABRIK", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification3DJiggle(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification3DJiggle", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DJiggle", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification3DJiggle(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification3DJiggle", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification3DJiggle", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DJiggle(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DJiggle(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification3DJiggle", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification3DJiggle", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification3DLookAt(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification3DLookAt", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DLookAt", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification3DLookAt(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification3DLookAt", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification3DLookAt", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DLookAt(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DLookAt(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification3DLookAt", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification3DLookAt", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification3DStackHolder(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification3DStackHolder", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DStackHolder", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification3DStackHolder(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification3DStackHolder", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification3DStackHolder", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DStackHolder(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DStackHolder(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification3DStackHolder", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification3DStackHolder", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModification3DTwoBoneIK(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModification3DTwoBoneIK", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DTwoBoneIK", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModification3DTwoBoneIK(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModification3DTwoBoneIK", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModification3DTwoBoneIK", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DTwoBoneIK(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModification3DTwoBoneIK(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModification3DTwoBoneIK", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModification3DTwoBoneIK", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModificationStack2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModificationStack2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModificationStack2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModificationStack2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModificationStack2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModificationStack2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModificationStack2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModificationStack2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModificationStack2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModificationStack2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonModificationStack3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonModificationStack3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonModificationStack3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonModificationStack3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonModificationStack3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonModificationStack3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonModificationStack3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonModificationStack3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonModificationStack3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonModificationStack3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonProfile(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonProfile", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonProfile", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonProfile(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonProfile", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonProfile", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonProfile(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonProfile(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonProfile", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonProfile", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkeletonProfileHumanoid(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkeletonProfileHumanoid", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkeletonProfileHumanoid", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkeletonProfileHumanoid(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkeletonProfileHumanoid", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkeletonProfileHumanoid", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkeletonProfileHumanoid(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkeletonProfileHumanoid(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkeletonProfileHumanoid", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkeletonProfileHumanoid", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Skin(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Skin", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Skin", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Skin(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Skin", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Skin", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Skin(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Skin(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Skin", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Skin", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SkinReference(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SkinReference", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SkinReference", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SkinReference(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SkinReference", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SkinReference", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SkinReference(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SkinReference(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SkinReference", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SkinReference", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Sky(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Sky", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Sky", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Sky(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Sky", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Sky", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Sky(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Sky(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Sky", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Sky", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Slider(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Slider", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Slider", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Slider(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Slider", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Slider", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Slider(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Slider(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Slider", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Slider", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SliderJoint3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SliderJoint3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SliderJoint3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SliderJoint3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SliderJoint3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SliderJoint3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SliderJoint3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SliderJoint3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SliderJoint3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SliderJoint3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SoftBody3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SoftBody3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SoftBody3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SoftBody3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SoftBody3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SoftBody3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SoftBody3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SoftBody3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SoftBody3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SoftBody3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SphereMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SphereMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SphereMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SphereMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SphereMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SphereMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SphereMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SphereMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SphereMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SphereMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SphereOccluder3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SphereOccluder3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SphereOccluder3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SphereOccluder3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SphereOccluder3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SphereOccluder3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SphereOccluder3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SphereOccluder3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SphereOccluder3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SphereOccluder3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SphereShape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SphereShape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SphereShape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SphereShape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SphereShape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SphereShape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SphereShape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SphereShape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SphereShape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SphereShape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SpinBox(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SpinBox", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SpinBox", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SpinBox(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SpinBox", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SpinBox", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SpinBox(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SpinBox(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SpinBox", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SpinBox", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SplitContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SplitContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SplitContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SplitContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SplitContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SplitContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SplitContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SplitContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SplitContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SplitContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SpotLight3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SpotLight3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SpotLight3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SpotLight3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SpotLight3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SpotLight3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SpotLight3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SpotLight3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SpotLight3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SpotLight3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SpringArm3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SpringArm3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SpringArm3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SpringArm3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SpringArm3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SpringArm3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SpringArm3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SpringArm3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SpringArm3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SpringArm3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Sprite2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Sprite2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Sprite2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Sprite2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Sprite2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Sprite2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Sprite2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Sprite2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Sprite2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Sprite2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Sprite3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Sprite3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Sprite3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Sprite3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Sprite3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Sprite3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Sprite3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Sprite3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Sprite3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Sprite3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SpriteBase3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SpriteBase3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SpriteBase3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SpriteBase3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SpriteBase3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SpriteBase3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SpriteBase3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SpriteBase3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SpriteBase3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SpriteBase3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SpriteFrames(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SpriteFrames", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SpriteFrames", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SpriteFrames(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SpriteFrames", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SpriteFrames", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SpriteFrames(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SpriteFrames(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SpriteFrames", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SpriteFrames", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StandardMaterial3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StandardMaterial3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StandardMaterial3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StandardMaterial3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StandardMaterial3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StandardMaterial3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StandardMaterial3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StandardMaterial3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StandardMaterial3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StandardMaterial3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StaticBody2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StaticBody2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StaticBody2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StaticBody2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StaticBody2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StaticBody2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StaticBody2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StaticBody2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StaticBody2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StaticBody2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StaticBody3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StaticBody3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StaticBody3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StaticBody3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StaticBody3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StaticBody3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StaticBody3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StaticBody3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StaticBody3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StaticBody3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StreamPeer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StreamPeer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StreamPeer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StreamPeer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StreamPeer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StreamPeer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StreamPeer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StreamPeer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StreamPeer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StreamPeer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StreamPeerBuffer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StreamPeerBuffer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StreamPeerBuffer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StreamPeerBuffer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StreamPeerBuffer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StreamPeerBuffer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StreamPeerBuffer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StreamPeerBuffer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StreamPeerBuffer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StreamPeerBuffer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StreamPeerExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StreamPeerExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StreamPeerExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StreamPeerExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StreamPeerExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StreamPeerExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StreamPeerExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StreamPeerExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StreamPeerExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StreamPeerExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StreamPeerGZIP(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StreamPeerGZIP", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StreamPeerGZIP", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StreamPeerGZIP(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StreamPeerGZIP", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StreamPeerGZIP", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StreamPeerGZIP(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StreamPeerGZIP(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StreamPeerGZIP", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StreamPeerGZIP", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StreamPeerTCP(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StreamPeerTCP", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StreamPeerTCP", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StreamPeerTCP(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StreamPeerTCP", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StreamPeerTCP", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StreamPeerTCP(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StreamPeerTCP(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StreamPeerTCP", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StreamPeerTCP", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StreamPeerTLS(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StreamPeerTLS", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StreamPeerTLS", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StreamPeerTLS(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StreamPeerTLS", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StreamPeerTLS", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StreamPeerTLS(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StreamPeerTLS(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StreamPeerTLS", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StreamPeerTLS", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StyleBox(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StyleBox", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StyleBox", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StyleBox(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StyleBox", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StyleBox", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StyleBox(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StyleBox(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StyleBox", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StyleBox", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StyleBoxEmpty(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StyleBoxEmpty", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StyleBoxEmpty", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StyleBoxEmpty(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StyleBoxEmpty", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StyleBoxEmpty", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StyleBoxEmpty(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StyleBoxEmpty(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StyleBoxEmpty", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StyleBoxEmpty", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StyleBoxFlat(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StyleBoxFlat", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StyleBoxFlat", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StyleBoxFlat(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StyleBoxFlat", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StyleBoxFlat", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StyleBoxFlat(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StyleBoxFlat(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StyleBoxFlat", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StyleBoxFlat", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StyleBoxLine(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StyleBoxLine", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StyleBoxLine", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StyleBoxLine(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StyleBoxLine", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StyleBoxLine", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StyleBoxLine(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StyleBoxLine(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StyleBoxLine", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StyleBoxLine", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_StyleBoxTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("StyleBoxTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("StyleBoxTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_StyleBoxTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("StyleBoxTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("StyleBoxTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_StyleBoxTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_StyleBoxTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("StyleBoxTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("StyleBoxTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SubViewport(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SubViewport", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SubViewport", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SubViewport(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SubViewport", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SubViewport", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SubViewport(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SubViewport(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SubViewport", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SubViewport", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SubViewportContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SubViewportContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SubViewportContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SubViewportContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SubViewportContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SubViewportContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SubViewportContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SubViewportContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SubViewportContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SubViewportContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SurfaceTool(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SurfaceTool", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SurfaceTool", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SurfaceTool(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SurfaceTool", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SurfaceTool", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SurfaceTool(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SurfaceTool(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SurfaceTool", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SurfaceTool", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SyntaxHighlighter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SyntaxHighlighter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SyntaxHighlighter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SyntaxHighlighter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SyntaxHighlighter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SyntaxHighlighter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SyntaxHighlighter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SyntaxHighlighter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SyntaxHighlighter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SyntaxHighlighter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_SystemFont(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("SystemFont", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("SystemFont", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_SystemFont(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("SystemFont", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("SystemFont", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_SystemFont(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_SystemFont(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("SystemFont", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("SystemFont", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TCPServer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TCPServer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TCPServer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TCPServer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TCPServer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TCPServer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TCPServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TCPServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TCPServer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TCPServer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TabBar(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TabBar", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TabBar", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TabBar(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TabBar", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TabBar", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TabBar(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TabBar(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TabBar", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TabBar", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TabContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TabContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TabContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TabContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TabContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TabContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TabContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TabContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TabContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TabContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextEdit(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextEdit", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextEdit", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextEdit(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextEdit", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextEdit", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextEdit(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextEdit(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextEdit", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextEdit", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextLine(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextLine", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextLine", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextLine(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextLine", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextLine", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextLine(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextLine(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextLine", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextLine", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextParagraph(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextParagraph", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextParagraph", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextParagraph(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextParagraph", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextParagraph", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextParagraph(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextParagraph(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextParagraph", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextParagraph", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextServer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextServer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextServer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextServer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextServer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextServer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextServer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextServer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextServerAdvanced(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextServerAdvanced", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextServerAdvanced", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextServerAdvanced(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextServerAdvanced", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextServerAdvanced", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextServerAdvanced(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextServerAdvanced(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextServerAdvanced", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextServerAdvanced", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextServerDummy(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextServerDummy", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextServerDummy", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextServerDummy(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextServerDummy", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextServerDummy", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextServerDummy(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextServerDummy(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextServerDummy", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextServerDummy", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextServerExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextServerExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextServerExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextServerExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextServerExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextServerExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextServerExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextServerExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextServerExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextServerExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextServerManager(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextServerManager", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextServerManager", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextServerManager(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextServerManager", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextServerManager", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextServerManager(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextServerManager(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextServerManager", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextServerManager", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Texture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Texture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Texture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Texture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Texture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Texture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Texture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Texture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Texture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Texture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Texture2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Texture2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Texture2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Texture2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Texture2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Texture2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Texture2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Texture2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Texture2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Texture2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Texture2DArray(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Texture2DArray", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Texture2DArray", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Texture2DArray(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Texture2DArray", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Texture2DArray", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Texture2DArray(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Texture2DArray(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Texture2DArray", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Texture2DArray", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Texture3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Texture3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Texture3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Texture3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Texture3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Texture3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Texture3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Texture3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Texture3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Texture3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextureButton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextureButton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextureButton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextureButton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextureButton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextureButton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextureButton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextureButton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextureButton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextureButton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextureLayered(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextureLayered", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextureLayered", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextureLayered(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextureLayered", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextureLayered", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextureLayered(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextureLayered(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextureLayered", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextureLayered", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextureProgressBar(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextureProgressBar", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextureProgressBar", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextureProgressBar(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextureProgressBar", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextureProgressBar", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextureProgressBar(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextureProgressBar(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextureProgressBar", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextureProgressBar", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TextureRect(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TextureRect", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TextureRect", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TextureRect(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TextureRect", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TextureRect", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TextureRect(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TextureRect(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TextureRect", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TextureRect", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Theme(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Theme", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Theme", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Theme(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Theme", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Theme", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Theme(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Theme(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Theme", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Theme", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ThemeDB(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ThemeDB", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ThemeDB", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ThemeDB(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ThemeDB", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ThemeDB", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ThemeDB(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ThemeDB(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ThemeDB", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ThemeDB", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Thread(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Thread", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Thread", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Thread(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Thread", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Thread", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Thread(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Thread(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Thread", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Thread", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TileData(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TileData", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TileData", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TileData(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TileData", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TileData", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TileData(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TileData(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TileData", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TileData", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TileMap(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TileMap", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TileMap", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TileMap(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TileMap", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TileMap", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TileMap(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TileMap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TileMap", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TileMap", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TileMapPattern(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TileMapPattern", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TileMapPattern", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TileMapPattern(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TileMapPattern", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TileMapPattern", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TileMapPattern(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TileMapPattern(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TileMapPattern", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TileMapPattern", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TileSet(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TileSet", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TileSet", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TileSet(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TileSet", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TileSet", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TileSet(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TileSet(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TileSet", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TileSet", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TileSetAtlasSource(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TileSetAtlasSource", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TileSetAtlasSource", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TileSetAtlasSource(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TileSetAtlasSource", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TileSetAtlasSource", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TileSetAtlasSource(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TileSetAtlasSource(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TileSetAtlasSource", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TileSetAtlasSource", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TileSetScenesCollectionSource(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TileSetScenesCollectionSource", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TileSetScenesCollectionSource", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TileSetScenesCollectionSource(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TileSetScenesCollectionSource", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TileSetScenesCollectionSource", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TileSetScenesCollectionSource(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TileSetScenesCollectionSource(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TileSetScenesCollectionSource", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TileSetScenesCollectionSource", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TileSetSource(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TileSetSource", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TileSetSource", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TileSetSource(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TileSetSource", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TileSetSource", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TileSetSource(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TileSetSource(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TileSetSource", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TileSetSource", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Time(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Time", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Time", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Time(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Time", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Time", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Time(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Time(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Time", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Time", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Timer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Timer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Timer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Timer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Timer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Timer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Timer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Timer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Timer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Timer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TorusMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TorusMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TorusMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TorusMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TorusMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TorusMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TorusMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TorusMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TorusMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TorusMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TouchScreenButton(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TouchScreenButton", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TouchScreenButton", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TouchScreenButton(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TouchScreenButton", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TouchScreenButton", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TouchScreenButton(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TouchScreenButton(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TouchScreenButton", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TouchScreenButton", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Translation(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Translation", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Translation", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Translation(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Translation", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Translation", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Translation(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Translation(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Translation", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Translation", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TranslationServer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TranslationServer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TranslationServer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TranslationServer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TranslationServer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TranslationServer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TranslationServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TranslationServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TranslationServer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TranslationServer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Tree(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Tree", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Tree", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Tree(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Tree", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Tree", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Tree(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Tree(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Tree", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Tree", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TreeItem(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TreeItem", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TreeItem", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TreeItem(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TreeItem", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TreeItem", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TreeItem(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TreeItem(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TreeItem", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TreeItem", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TriangleMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TriangleMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TriangleMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TriangleMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TriangleMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TriangleMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TriangleMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TriangleMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TriangleMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TriangleMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_TubeTrailMesh(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("TubeTrailMesh", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("TubeTrailMesh", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_TubeTrailMesh(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("TubeTrailMesh", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("TubeTrailMesh", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_TubeTrailMesh(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_TubeTrailMesh(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("TubeTrailMesh", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("TubeTrailMesh", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Tween(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Tween", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Tween", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Tween(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Tween", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Tween", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Tween(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Tween(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Tween", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Tween", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Tweener(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Tweener", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Tweener", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Tweener(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Tweener", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Tweener", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Tweener(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Tweener(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Tweener", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Tweener", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_UDPServer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("UDPServer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("UDPServer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_UDPServer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("UDPServer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("UDPServer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_UDPServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_UDPServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("UDPServer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("UDPServer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_UPNP(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("UPNP", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("UPNP", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_UPNP(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("UPNP", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("UPNP", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_UPNP(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_UPNP(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("UPNP", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("UPNP", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_UPNPDevice(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("UPNPDevice", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("UPNPDevice", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_UPNPDevice(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("UPNPDevice", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("UPNPDevice", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_UPNPDevice(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_UPNPDevice(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("UPNPDevice", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("UPNPDevice", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_UndoRedo(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("UndoRedo", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("UndoRedo", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_UndoRedo(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("UndoRedo", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("UndoRedo", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_UndoRedo(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_UndoRedo(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("UndoRedo", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("UndoRedo", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_UniformSetCacheRD(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("UniformSetCacheRD", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_UniformSetCacheRD(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("UniformSetCacheRD", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_UniformSetCacheRD(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("UniformSetCacheRD", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VBoxContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VBoxContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VBoxContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VBoxContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VBoxContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VBoxContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VBoxContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VBoxContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VBoxContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VBoxContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VFlowContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VFlowContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VFlowContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VFlowContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VFlowContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VFlowContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VFlowContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VFlowContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VFlowContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VFlowContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VScrollBar(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VScrollBar", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VScrollBar", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VScrollBar(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VScrollBar", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VScrollBar", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VScrollBar(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VScrollBar(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VScrollBar", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VScrollBar", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VSeparator(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VSeparator", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VSeparator", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VSeparator(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VSeparator", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VSeparator", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VSeparator(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VSeparator(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VSeparator", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VSeparator", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VSlider(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VSlider", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VSlider", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VSlider(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VSlider", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VSlider", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VSlider(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VSlider(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VSlider", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VSlider", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VSplitContainer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VSplitContainer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VSplitContainer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VSplitContainer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VSplitContainer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VSplitContainer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VSplitContainer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VSplitContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VSplitContainer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VSplitContainer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VehicleBody3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VehicleBody3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VehicleBody3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VehicleBody3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VehicleBody3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VehicleBody3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VehicleBody3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VehicleBody3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VehicleBody3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VehicleBody3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VehicleWheel3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VehicleWheel3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VehicleWheel3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VehicleWheel3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VehicleWheel3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VehicleWheel3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VehicleWheel3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VehicleWheel3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VehicleWheel3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VehicleWheel3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VideoStream(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VideoStream", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VideoStream", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VideoStream(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VideoStream", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VideoStream", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VideoStream(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VideoStream(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VideoStream", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VideoStream", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VideoStreamPlayer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VideoStreamPlayer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VideoStreamPlayer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VideoStreamPlayer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VideoStreamPlayer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VideoStreamPlayer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VideoStreamPlayer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VideoStreamPlayer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VideoStreamPlayer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VideoStreamPlayer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VideoStreamTheora(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VideoStreamTheora", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VideoStreamTheora", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VideoStreamTheora(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VideoStreamTheora", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VideoStreamTheora", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VideoStreamTheora(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VideoStreamTheora(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VideoStreamTheora", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VideoStreamTheora", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Viewport(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Viewport", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Viewport", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Viewport(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Viewport", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Viewport", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Viewport(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Viewport(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Viewport", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Viewport", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_ViewportTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("ViewportTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("ViewportTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_ViewportTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("ViewportTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("ViewportTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_ViewportTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ViewportTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("ViewportTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("ViewportTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisibleOnScreenEnabler2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisibleOnScreenEnabler2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisibleOnScreenEnabler2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisibleOnScreenEnabler2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisibleOnScreenEnabler2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisibleOnScreenEnabler2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisibleOnScreenEnabler2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisibleOnScreenEnabler2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisibleOnScreenEnabler2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisibleOnScreenEnabler2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisibleOnScreenEnabler3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisibleOnScreenEnabler3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisibleOnScreenEnabler3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisibleOnScreenEnabler3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisibleOnScreenEnabler3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisibleOnScreenEnabler3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisibleOnScreenEnabler3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisibleOnScreenEnabler3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisibleOnScreenEnabler3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisibleOnScreenEnabler3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisibleOnScreenNotifier2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisibleOnScreenNotifier2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisibleOnScreenNotifier2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisibleOnScreenNotifier2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisibleOnScreenNotifier2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisibleOnScreenNotifier2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisibleOnScreenNotifier2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisibleOnScreenNotifier2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisibleOnScreenNotifier2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisibleOnScreenNotifier2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisibleOnScreenNotifier3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisibleOnScreenNotifier3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisibleOnScreenNotifier3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisibleOnScreenNotifier3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisibleOnScreenNotifier3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisibleOnScreenNotifier3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisibleOnScreenNotifier3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisibleOnScreenNotifier3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisibleOnScreenNotifier3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisibleOnScreenNotifier3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualInstance3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualInstance3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualInstance3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualInstance3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualInstance3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualInstance3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualInstance3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualInstance3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualInstance3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualInstance3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShader(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShader", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShader", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShader(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShader", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShader", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShader(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShader(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShader", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShader", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNode(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNode", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNode", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNode(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNode", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNode", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNode(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNode(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNode", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNode", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeBillboard(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeBillboard", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeBillboard", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeBillboard(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeBillboard", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeBillboard", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeBillboard(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeBillboard(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeBillboard", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeBillboard", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeBooleanConstant(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeBooleanConstant", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeBooleanConstant", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeBooleanConstant(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeBooleanConstant", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeBooleanConstant", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeBooleanConstant(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeBooleanConstant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeBooleanConstant", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeBooleanConstant", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeBooleanParameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeBooleanParameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeBooleanParameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeBooleanParameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeBooleanParameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeBooleanParameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeBooleanParameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeBooleanParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeBooleanParameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeBooleanParameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeClamp(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeClamp", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeClamp", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeClamp(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeClamp", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeClamp", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeClamp(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeClamp(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeClamp", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeClamp", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeColorConstant(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeColorConstant", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeColorConstant", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeColorConstant(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeColorConstant", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeColorConstant", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeColorConstant(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeColorConstant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeColorConstant", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeColorConstant", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeColorFunc(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeColorFunc", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeColorFunc", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeColorFunc(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeColorFunc", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeColorFunc", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeColorFunc(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeColorFunc(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeColorFunc", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeColorFunc", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeColorOp(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeColorOp", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeColorOp", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeColorOp(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeColorOp", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeColorOp", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeColorOp(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeColorOp(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeColorOp", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeColorOp", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeColorParameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeColorParameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeColorParameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeColorParameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeColorParameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeColorParameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeColorParameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeColorParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeColorParameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeColorParameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeComment(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeComment", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeComment", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeComment(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeComment", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeComment", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeComment(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeComment(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeComment", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeComment", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeCompare(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeCompare", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeCompare", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeCompare(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeCompare", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeCompare", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCompare(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCompare(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeCompare", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeCompare", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeConstant(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeConstant", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeConstant", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeConstant(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeConstant", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeConstant", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeConstant(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeConstant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeConstant", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeConstant", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeCubemap(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeCubemap", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeCubemap", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeCubemap(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeCubemap", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeCubemap", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCubemap(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCubemap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeCubemap", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeCubemap", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeCubemapParameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeCubemapParameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeCubemapParameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeCubemapParameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeCubemapParameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeCubemapParameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCubemapParameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCubemapParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeCubemapParameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeCubemapParameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeCurveTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeCurveTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeCurveTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeCurveTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeCurveTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeCurveTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCurveTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCurveTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeCurveTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeCurveTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeCurveXYZTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeCurveXYZTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeCurveXYZTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeCurveXYZTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeCurveXYZTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeCurveXYZTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCurveXYZTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCurveXYZTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeCurveXYZTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeCurveXYZTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeCustom(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeCustom", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeCustom", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeCustom(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeCustom", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeCustom", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCustom(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeCustom(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeCustom", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeCustom", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeDerivativeFunc(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeDerivativeFunc", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeDerivativeFunc", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeDerivativeFunc(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeDerivativeFunc", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeDerivativeFunc", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeDerivativeFunc(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeDerivativeFunc(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeDerivativeFunc", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeDerivativeFunc", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeDeterminant(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeDeterminant", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeDeterminant", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeDeterminant(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeDeterminant", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeDeterminant", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeDeterminant(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeDeterminant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeDeterminant", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeDeterminant", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeDistanceFade(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeDistanceFade", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeDistanceFade", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeDistanceFade(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeDistanceFade", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeDistanceFade", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeDistanceFade(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeDistanceFade(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeDistanceFade", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeDistanceFade", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeDotProduct(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeDotProduct", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeDotProduct", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeDotProduct(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeDotProduct", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeDotProduct", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeDotProduct(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeDotProduct(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeDotProduct", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeDotProduct", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeExpression(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeExpression", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeExpression", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeExpression(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeExpression", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeExpression", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeExpression(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeExpression(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeExpression", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeExpression", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeFaceForward(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeFaceForward", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeFaceForward", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeFaceForward(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeFaceForward", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeFaceForward", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFaceForward(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFaceForward(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeFaceForward", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeFaceForward", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeFloatConstant(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeFloatConstant", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeFloatConstant", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeFloatConstant(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeFloatConstant", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeFloatConstant", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFloatConstant(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFloatConstant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeFloatConstant", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeFloatConstant", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeFloatFunc(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeFloatFunc", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeFloatFunc", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeFloatFunc(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeFloatFunc", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeFloatFunc", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFloatFunc(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFloatFunc(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeFloatFunc", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeFloatFunc", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeFloatOp(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeFloatOp", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeFloatOp", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeFloatOp(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeFloatOp", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeFloatOp", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFloatOp(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFloatOp(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeFloatOp", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeFloatOp", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeFloatParameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeFloatParameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeFloatParameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeFloatParameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeFloatParameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeFloatParameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFloatParameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFloatParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeFloatParameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeFloatParameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeFresnel(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeFresnel", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeFresnel", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeFresnel(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeFresnel", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeFresnel", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFresnel(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeFresnel(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeFresnel", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeFresnel", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeGlobalExpression(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeGlobalExpression", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeGlobalExpression", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeGlobalExpression(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeGlobalExpression", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeGlobalExpression", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeGlobalExpression(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeGlobalExpression(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeGlobalExpression", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeGlobalExpression", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeGroupBase(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeGroupBase", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeGroupBase", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeGroupBase(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeGroupBase", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeGroupBase", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeGroupBase(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeGroupBase(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeGroupBase", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeGroupBase", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeIf(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeIf", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeIf", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeIf(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeIf", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeIf", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIf(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIf(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeIf", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeIf", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeInput(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeInput", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeInput", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeInput(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeInput", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeInput", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeInput(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeInput(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeInput", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeInput", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeIntConstant(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeIntConstant", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeIntConstant", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeIntConstant(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeIntConstant", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeIntConstant", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIntConstant(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIntConstant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeIntConstant", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeIntConstant", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeIntFunc(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeIntFunc", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeIntFunc", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeIntFunc(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeIntFunc", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeIntFunc", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIntFunc(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIntFunc(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeIntFunc", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeIntFunc", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeIntOp(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeIntOp", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeIntOp", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeIntOp(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeIntOp", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeIntOp", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIntOp(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIntOp(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeIntOp", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeIntOp", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeIntParameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeIntParameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeIntParameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeIntParameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeIntParameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeIntParameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIntParameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIntParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeIntParameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeIntParameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeIs(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeIs", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeIs", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeIs(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeIs", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeIs", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIs(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeIs(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeIs", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeIs", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeLinearSceneDepth(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeLinearSceneDepth", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeLinearSceneDepth", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeLinearSceneDepth(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeLinearSceneDepth", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeLinearSceneDepth", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeLinearSceneDepth(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeLinearSceneDepth(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeLinearSceneDepth", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeLinearSceneDepth", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeMix(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeMix", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeMix", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeMix(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeMix", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeMix", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeMix(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeMix(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeMix", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeMix", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeMultiplyAdd(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeMultiplyAdd", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeMultiplyAdd", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeMultiplyAdd(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeMultiplyAdd", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeMultiplyAdd", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeMultiplyAdd(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeMultiplyAdd(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeMultiplyAdd", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeMultiplyAdd", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeOuterProduct(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeOuterProduct", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeOuterProduct", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeOuterProduct(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeOuterProduct", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeOuterProduct", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeOuterProduct(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeOuterProduct(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeOuterProduct", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeOuterProduct", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeOutput(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeOutput", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeOutput", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeOutput(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeOutput", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeOutput", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeOutput(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeOutput(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeOutput", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeOutput", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParameterRef(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParameterRef", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParameterRef", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParameterRef(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParameterRef", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParameterRef", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParameterRef(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParameterRef(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParameterRef", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParameterRef", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParticleAccelerator(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParticleAccelerator", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParticleAccelerator", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParticleAccelerator(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParticleAccelerator", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParticleAccelerator", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleAccelerator(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleAccelerator(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParticleAccelerator", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParticleAccelerator", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParticleBoxEmitter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParticleBoxEmitter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParticleBoxEmitter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParticleBoxEmitter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParticleBoxEmitter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParticleBoxEmitter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleBoxEmitter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleBoxEmitter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParticleBoxEmitter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParticleBoxEmitter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParticleConeVelocity(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParticleConeVelocity", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParticleConeVelocity", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParticleConeVelocity(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParticleConeVelocity", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParticleConeVelocity", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleConeVelocity(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleConeVelocity(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParticleConeVelocity", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParticleConeVelocity", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParticleEmit(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParticleEmit", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParticleEmit", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParticleEmit(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParticleEmit", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParticleEmit", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleEmit(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleEmit(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParticleEmit", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParticleEmit", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParticleEmitter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParticleEmitter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParticleEmitter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParticleEmitter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParticleEmitter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParticleEmitter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleEmitter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleEmitter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParticleEmitter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParticleEmitter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParticleMeshEmitter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParticleMeshEmitter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParticleMeshEmitter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParticleMeshEmitter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParticleMeshEmitter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParticleMeshEmitter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleMeshEmitter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleMeshEmitter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParticleMeshEmitter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParticleMeshEmitter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParticleMultiplyByAxisAngle(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParticleMultiplyByAxisAngle", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParticleMultiplyByAxisAngle", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParticleMultiplyByAxisAngle(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParticleMultiplyByAxisAngle", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParticleMultiplyByAxisAngle", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleMultiplyByAxisAngle(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleMultiplyByAxisAngle(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParticleMultiplyByAxisAngle", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParticleMultiplyByAxisAngle", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParticleOutput(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParticleOutput", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParticleOutput", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParticleOutput(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParticleOutput", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParticleOutput", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleOutput(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleOutput(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParticleOutput", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParticleOutput", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParticleRandomness(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParticleRandomness", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParticleRandomness", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParticleRandomness(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParticleRandomness", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParticleRandomness", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleRandomness(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleRandomness(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParticleRandomness", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParticleRandomness", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParticleRingEmitter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParticleRingEmitter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParticleRingEmitter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParticleRingEmitter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParticleRingEmitter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParticleRingEmitter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleRingEmitter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleRingEmitter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParticleRingEmitter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParticleRingEmitter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeParticleSphereEmitter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeParticleSphereEmitter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeParticleSphereEmitter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeParticleSphereEmitter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeParticleSphereEmitter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeParticleSphereEmitter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleSphereEmitter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeParticleSphereEmitter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeParticleSphereEmitter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeParticleSphereEmitter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeProximityFade(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeProximityFade", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeProximityFade", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeProximityFade(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeProximityFade", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeProximityFade", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeProximityFade(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeProximityFade(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeProximityFade", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeProximityFade", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeRandomRange(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeRandomRange", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeRandomRange", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeRandomRange(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeRandomRange", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeRandomRange", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeRandomRange(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeRandomRange(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeRandomRange", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeRandomRange", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeRemap(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeRemap", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeRemap", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeRemap(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeRemap", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeRemap", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeRemap(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeRemap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeRemap", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeRemap", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeResizableBase(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeResizableBase", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeResizableBase", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeResizableBase(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeResizableBase", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeResizableBase", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeResizableBase(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeResizableBase(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeResizableBase", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeResizableBase", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeSDFRaymarch(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeSDFRaymarch", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeSDFRaymarch", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeSDFRaymarch(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeSDFRaymarch", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeSDFRaymarch", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeSDFRaymarch(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeSDFRaymarch(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeSDFRaymarch", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeSDFRaymarch", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeSDFToScreenUV(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeSDFToScreenUV", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeSDFToScreenUV", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeSDFToScreenUV(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeSDFToScreenUV", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeSDFToScreenUV", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeSDFToScreenUV(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeSDFToScreenUV(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeSDFToScreenUV", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeSDFToScreenUV", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeSample3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeSample3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeSample3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeSample3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeSample3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeSample3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeSample3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeSample3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeSample3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeSample3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeScreenUVToSDF(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeScreenUVToSDF", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeScreenUVToSDF", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeScreenUVToSDF(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeScreenUVToSDF", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeScreenUVToSDF", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeScreenUVToSDF(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeScreenUVToSDF(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeScreenUVToSDF", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeScreenUVToSDF", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeSmoothStep(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeSmoothStep", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeSmoothStep", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeSmoothStep(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeSmoothStep", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeSmoothStep", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeSmoothStep(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeSmoothStep(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeSmoothStep", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeSmoothStep", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeStep(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeStep", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeStep", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeStep(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeStep", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeStep", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeStep(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeStep(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeStep", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeStep", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeSwitch(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeSwitch", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeSwitch", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeSwitch(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeSwitch", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeSwitch", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeSwitch(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeSwitch(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeSwitch", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeSwitch", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTexture(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTexture", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTexture", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTexture(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTexture", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTexture", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTexture", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTexture", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTexture2DArray(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTexture2DArray", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTexture2DArray", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTexture2DArray(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTexture2DArray", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTexture2DArray", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture2DArray(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture2DArray(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTexture2DArray", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTexture2DArray", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTexture2DArrayParameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTexture2DArrayParameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTexture2DArrayParameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTexture2DArrayParameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTexture2DArrayParameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTexture2DArrayParameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture2DArrayParameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture2DArrayParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTexture2DArrayParameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTexture2DArrayParameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTexture2DParameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTexture2DParameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTexture2DParameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTexture2DParameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTexture2DParameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTexture2DParameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture2DParameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture2DParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTexture2DParameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTexture2DParameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTexture3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTexture3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTexture3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTexture3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTexture3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTexture3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTexture3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTexture3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTexture3DParameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTexture3DParameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTexture3DParameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTexture3DParameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTexture3DParameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTexture3DParameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture3DParameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTexture3DParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTexture3DParameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTexture3DParameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTextureParameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTextureParameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTextureParameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTextureParameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTextureParameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTextureParameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTextureParameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTextureParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTextureParameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTextureParameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTextureParameterTriplanar(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTextureParameterTriplanar", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTextureParameterTriplanar", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTextureParameterTriplanar(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTextureParameterTriplanar", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTextureParameterTriplanar", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTextureParameterTriplanar(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTextureParameterTriplanar(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTextureParameterTriplanar", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTextureParameterTriplanar", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTextureSDF(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTextureSDF", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTextureSDF", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTextureSDF(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTextureSDF", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTextureSDF", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTextureSDF(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTextureSDF(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTextureSDF", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTextureSDF", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTextureSDFNormal(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTextureSDFNormal", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTextureSDFNormal", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTextureSDFNormal(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTextureSDFNormal", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTextureSDFNormal", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTextureSDFNormal(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTextureSDFNormal(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTextureSDFNormal", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTextureSDFNormal", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTransformCompose(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTransformCompose", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTransformCompose", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTransformCompose(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTransformCompose", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTransformCompose", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformCompose(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformCompose(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTransformCompose", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTransformCompose", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTransformConstant(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTransformConstant", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTransformConstant", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTransformConstant(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTransformConstant", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTransformConstant", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformConstant(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformConstant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTransformConstant", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTransformConstant", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTransformDecompose(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTransformDecompose", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTransformDecompose", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTransformDecompose(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTransformDecompose", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTransformDecompose", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformDecompose(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformDecompose(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTransformDecompose", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTransformDecompose", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTransformFunc(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTransformFunc", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTransformFunc", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTransformFunc(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTransformFunc", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTransformFunc", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformFunc(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformFunc(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTransformFunc", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTransformFunc", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTransformOp(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTransformOp", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTransformOp", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTransformOp(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTransformOp", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTransformOp", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformOp(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformOp(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTransformOp", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTransformOp", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTransformParameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTransformParameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTransformParameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTransformParameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTransformParameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTransformParameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformParameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTransformParameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTransformParameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeTransformVecMult(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeTransformVecMult", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeTransformVecMult", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeTransformVecMult(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeTransformVecMult", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeTransformVecMult", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformVecMult(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeTransformVecMult(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeTransformVecMult", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTransformVecMult", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeUVFunc(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeUVFunc", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeUVFunc", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeUVFunc(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeUVFunc", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeUVFunc", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeUVFunc(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeUVFunc(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeUVFunc", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeUVFunc", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeUVPolarCoord(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeUVPolarCoord", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeUVPolarCoord", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeUVPolarCoord(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeUVPolarCoord", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeUVPolarCoord", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeUVPolarCoord(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeUVPolarCoord(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeUVPolarCoord", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeUVPolarCoord", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVarying(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVarying", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVarying", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVarying(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVarying", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVarying", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVarying(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVarying(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVarying", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVarying", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVaryingGetter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVaryingGetter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVaryingGetter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVaryingGetter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVaryingGetter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVaryingGetter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVaryingGetter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVaryingGetter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVaryingGetter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVaryingGetter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVaryingSetter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVaryingSetter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVaryingSetter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVaryingSetter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVaryingSetter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVaryingSetter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVaryingSetter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVaryingSetter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVaryingSetter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVaryingSetter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVec2Constant(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVec2Constant", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVec2Constant", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVec2Constant(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVec2Constant", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVec2Constant", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec2Constant(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec2Constant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVec2Constant", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVec2Constant", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVec2Parameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVec2Parameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVec2Parameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVec2Parameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVec2Parameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVec2Parameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec2Parameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec2Parameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVec2Parameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVec2Parameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVec3Constant(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVec3Constant", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVec3Constant", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVec3Constant(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVec3Constant", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVec3Constant", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec3Constant(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec3Constant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVec3Constant", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVec3Constant", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVec3Parameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVec3Parameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVec3Parameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVec3Parameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVec3Parameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVec3Parameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec3Parameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec3Parameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVec3Parameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVec3Parameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVec4Constant(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVec4Constant", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVec4Constant", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVec4Constant(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVec4Constant", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVec4Constant", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec4Constant(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec4Constant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVec4Constant", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVec4Constant", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVec4Parameter(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVec4Parameter", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVec4Parameter", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVec4Parameter(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVec4Parameter", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVec4Parameter", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec4Parameter(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVec4Parameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVec4Parameter", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVec4Parameter", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVectorBase(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVectorBase", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVectorBase", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVectorBase(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVectorBase", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVectorBase", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorBase(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorBase(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVectorBase", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVectorBase", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVectorCompose(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVectorCompose", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVectorCompose", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVectorCompose(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVectorCompose", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVectorCompose", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorCompose(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorCompose(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVectorCompose", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVectorCompose", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVectorDecompose(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVectorDecompose", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVectorDecompose", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVectorDecompose(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVectorDecompose", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVectorDecompose", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorDecompose(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorDecompose(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVectorDecompose", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVectorDecompose", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVectorDistance(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVectorDistance", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVectorDistance", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVectorDistance(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVectorDistance", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVectorDistance", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorDistance(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorDistance(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVectorDistance", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVectorDistance", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVectorFunc(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVectorFunc", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVectorFunc", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVectorFunc(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVectorFunc", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVectorFunc", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorFunc(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorFunc(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVectorFunc", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVectorFunc", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVectorLen(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVectorLen", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVectorLen", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVectorLen(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVectorLen", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVectorLen", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorLen(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorLen(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVectorLen", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVectorLen", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVectorOp(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVectorOp", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVectorOp", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVectorOp(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVectorOp", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVectorOp", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorOp(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorOp(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVectorOp", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVectorOp", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VisualShaderNodeVectorRefract(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VisualShaderNodeVectorRefract", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeVectorRefract", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VisualShaderNodeVectorRefract(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VisualShaderNodeVectorRefract", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeVectorRefract", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorRefract(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VisualShaderNodeVectorRefract(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VisualShaderNodeVectorRefract", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeVectorRefract", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VoxelGI(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VoxelGI", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VoxelGI", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VoxelGI(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VoxelGI", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VoxelGI", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VoxelGI(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VoxelGI(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VoxelGI", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VoxelGI", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_VoxelGIData(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("VoxelGIData", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("VoxelGIData", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_VoxelGIData(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("VoxelGIData", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("VoxelGIData", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_VoxelGIData(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_VoxelGIData(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("VoxelGIData", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("VoxelGIData", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WeakRef(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WeakRef", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WeakRef", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WeakRef(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WeakRef", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WeakRef", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WeakRef(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WeakRef(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WeakRef", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WeakRef", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WebRTCDataChannel(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WebRTCDataChannel", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WebRTCDataChannel", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WebRTCDataChannel(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WebRTCDataChannel", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WebRTCDataChannel", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebRTCDataChannel(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WebRTCDataChannel(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WebRTCDataChannel", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WebRTCDataChannel", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WebRTCDataChannelExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WebRTCDataChannelExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WebRTCDataChannelExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WebRTCDataChannelExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WebRTCDataChannelExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WebRTCDataChannelExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebRTCDataChannelExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WebRTCDataChannelExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WebRTCDataChannelExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WebRTCDataChannelExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WebRTCMultiplayerPeer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WebRTCMultiplayerPeer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WebRTCMultiplayerPeer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WebRTCMultiplayerPeer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WebRTCMultiplayerPeer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WebRTCMultiplayerPeer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebRTCMultiplayerPeer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WebRTCMultiplayerPeer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WebRTCMultiplayerPeer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WebRTCMultiplayerPeer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WebRTCPeerConnection(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WebRTCPeerConnection", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WebRTCPeerConnection", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WebRTCPeerConnection(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WebRTCPeerConnection", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WebRTCPeerConnection", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebRTCPeerConnection(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WebRTCPeerConnection(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WebRTCPeerConnection", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WebRTCPeerConnection", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WebRTCPeerConnectionExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WebRTCPeerConnectionExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WebRTCPeerConnectionExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WebRTCPeerConnectionExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WebRTCPeerConnectionExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WebRTCPeerConnectionExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebRTCPeerConnectionExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WebRTCPeerConnectionExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WebRTCPeerConnectionExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WebRTCPeerConnectionExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WebSocketMultiplayerPeer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WebSocketMultiplayerPeer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WebSocketMultiplayerPeer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WebSocketMultiplayerPeer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WebSocketMultiplayerPeer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WebSocketMultiplayerPeer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebSocketMultiplayerPeer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WebSocketMultiplayerPeer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WebSocketMultiplayerPeer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WebSocketMultiplayerPeer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WebSocketPeer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WebSocketPeer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WebSocketPeer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WebSocketPeer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WebSocketPeer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WebSocketPeer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebSocketPeer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WebSocketPeer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WebSocketPeer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WebSocketPeer", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WebXRInterface(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WebXRInterface", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WebXRInterface", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WebXRInterface(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WebXRInterface", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WebXRInterface", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WebXRInterface(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WebXRInterface(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WebXRInterface", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WebXRInterface", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_Window(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("Window", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("Window", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_Window(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("Window", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("Window", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_Window(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_Window(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("Window", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("Window", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WorkerThreadPool(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WorkerThreadPool", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WorkerThreadPool", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WorkerThreadPool(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WorkerThreadPool", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WorkerThreadPool", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WorkerThreadPool(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WorkerThreadPool(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WorkerThreadPool", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WorkerThreadPool", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_World2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("World2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("World2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_World2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("World2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("World2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_World2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_World2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("World2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("World2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_World3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("World3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("World3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_World3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("World3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("World3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_World3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_World3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("World3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("World3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WorldBoundaryShape2D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WorldBoundaryShape2D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WorldBoundaryShape2D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WorldBoundaryShape2D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WorldBoundaryShape2D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WorldBoundaryShape2D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WorldBoundaryShape2D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WorldBoundaryShape2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WorldBoundaryShape2D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WorldBoundaryShape2D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WorldBoundaryShape3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WorldBoundaryShape3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WorldBoundaryShape3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WorldBoundaryShape3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WorldBoundaryShape3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WorldBoundaryShape3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WorldBoundaryShape3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WorldBoundaryShape3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WorldBoundaryShape3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WorldBoundaryShape3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_WorldEnvironment(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("WorldEnvironment", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("WorldEnvironment", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_WorldEnvironment(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("WorldEnvironment", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("WorldEnvironment", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_WorldEnvironment(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_WorldEnvironment(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("WorldEnvironment", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("WorldEnvironment", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_X509Certificate(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("X509Certificate", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("X509Certificate", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_X509Certificate(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("X509Certificate", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("X509Certificate", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_X509Certificate(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_X509Certificate(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("X509Certificate", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("X509Certificate", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_XMLParser(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("XMLParser", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("XMLParser", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_XMLParser(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("XMLParser", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("XMLParser", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_XMLParser(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_XMLParser(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("XMLParser", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("XMLParser", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_XRAnchor3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("XRAnchor3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("XRAnchor3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_XRAnchor3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("XRAnchor3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("XRAnchor3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_XRAnchor3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_XRAnchor3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("XRAnchor3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("XRAnchor3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_XRCamera3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("XRCamera3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("XRCamera3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_XRCamera3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("XRCamera3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("XRCamera3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_XRCamera3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_XRCamera3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("XRCamera3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("XRCamera3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_XRController3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("XRController3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("XRController3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_XRController3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("XRController3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("XRController3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_XRController3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_XRController3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("XRController3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("XRController3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_XRInterface(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("XRInterface", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("XRInterface", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_XRInterface(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("XRInterface", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("XRInterface", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_XRInterface(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_XRInterface(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("XRInterface", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("XRInterface", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_XRInterfaceExtension(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("XRInterfaceExtension", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("XRInterfaceExtension", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_XRInterfaceExtension(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("XRInterfaceExtension", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("XRInterfaceExtension", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_XRInterfaceExtension(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_XRInterfaceExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("XRInterfaceExtension", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("XRInterfaceExtension", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_XRNode3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("XRNode3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("XRNode3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_XRNode3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("XRNode3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("XRNode3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_XRNode3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_XRNode3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("XRNode3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("XRNode3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_XROrigin3D(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("XROrigin3D", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("XROrigin3D", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_XROrigin3D(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("XROrigin3D", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("XROrigin3D", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_XROrigin3D(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_XROrigin3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("XROrigin3D", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("XROrigin3D", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_XRPose(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("XRPose", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("XRPose", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_XRPose(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("XRPose", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("XRPose", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_XRPose(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_XRPose(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("XRPose", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("XRPose", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_XRPositionalTracker(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("XRPositionalTracker", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("XRPositionalTracker", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_XRPositionalTracker(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("XRPositionalTracker", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("XRPositionalTracker", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_XRPositionalTracker(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_XRPositionalTracker(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("XRPositionalTracker", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("XRPositionalTracker", p_token, p_instance, p_reference);
 }
 
 
 
 void *cgo_gdnative_class_binding_create_callback_XRServer(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingCreate("XRServer", p_token, p_instance);
+	return GoCallback_GDExtensionBindingCreate("XRServer", p_token, p_instance);
 }
 
 void cgo_gdnative_class_binding_free_callback_XRServer(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDNativeBindingFree("XRServer", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("XRServer", p_token, p_instance, p_binding);
 }
 
-GDNativeBool cgo_gdnative_class_binding_reference_callback_XRServer(void *p_token, void *p_instance, GDNativeBool p_reference) {
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_XRServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDNativeBindingReference("XRServer", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("XRServer", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_ZIPPacker(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("ZIPPacker", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_ZIPPacker(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("ZIPPacker", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ZIPPacker(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("ZIPPacker", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdnative_class_binding_create_callback_ZIPReader(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("ZIPReader", p_token, p_instance);
+}
+
+void cgo_gdnative_class_binding_free_callback_ZIPReader(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("ZIPReader", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdnative_class_binding_reference_callback_ZIPReader(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("ZIPReader", p_token, p_instance, p_reference);
 }
 
 

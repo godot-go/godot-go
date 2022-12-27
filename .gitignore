@@ -18,3 +18,4 @@ test/libs/
 .deprecated*/
 tmp/
 test/demo/lib
+main

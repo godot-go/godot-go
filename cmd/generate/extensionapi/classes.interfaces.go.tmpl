@@ -12,6 +12,10 @@ package gdextension
 
 //revive:disable
 
+import (
+	. "github.com/godot-go/godot-go/pkg/gdnative"
+)
+
 {{ range $i, $c := $view.Classes -}}
 type {{ goClassInterfaceName $c.Name }} interface {
 	{{ if $c.Inherits }}

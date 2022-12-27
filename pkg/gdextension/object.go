@@ -1,6 +1,6 @@
 package gdextension
 
-// #include <godot/gdnative_interface.h>
+// #include <godot/gdextension_interface.h>
 import "C"
 import (
 	"sync/atomic"
@@ -9,66 +9,20 @@ import (
 	"github.com/godot-go/godot-go/pkg/log"
 )
 
-type PropertyInfo struct {
-	Type       GDNativeVariantType
-	Name       PropertyName
-	ClassName  TypeName
-	Hint       PropertyHint
-	HintString string
-	Usage      PropertyUsageFlags
-}
-
-func NewPropertyInfo(
-	p_type GDNativeVariantType,
-	p_name PropertyName,
-	p_hint PropertyHint,
-	p_hint_string string,
-	p_usage PropertyUsageFlags,
-	p_class_name TypeName,
-) *PropertyInfo {
-	var (
-		cn TypeName
+func NewSimpleGDExtensionPropertyInfo(
+	className string,
+	variantType GDExtensionVariantType,
+	name string,
+) GDExtensionPropertyInfo {
+	// TODO: move to alloc memory in C?
+	return NewGDExtensionPropertyInfo(
+		NewStringNameWithLatin1Chars(className).AsGDExtensionStringNamePtr(),
+		variantType,
+		NewStringNameWithLatin1Chars(name).AsGDExtensionStringNamePtr(),
+		uint32(PROPERTY_HINT_NONE),
+		NewStringWithLatin1Chars("").AsGDExtensionStringPtr(),
+		uint32(PROPERTY_USAGE_DEFAULT),
 	)
-
-	// behavior ported from godot-cpp
-	switch p_hint {
-	case PROPERTY_HINT_RESOURCE_TYPE:
-		cn = (TypeName)(p_hint_string)
-	default:
-		cn = p_class_name
-	}
-
-	return &PropertyInfo{
-		Type:       p_type,
-		Name:       p_name,
-		ClassName:  cn,
-		Hint:       p_hint,
-		HintString: p_hint_string,
-		Usage:      p_usage,
-	}
-}
-
-// MethodInfo implements sorting operations in godot-cpp
-type MethodInfo struct {
-	Name             string
-	ReturnVal        PropertyInfo
-	Flags            MethodFlags
-	Arguments        []PropertyInfo
-	DefaultArguments []Variant
-}
-
-func NewMethodInfo(
-	p_ret PropertyInfo,
-	p_name string,
-	args []PropertyInfo,
-) *MethodInfo {
-	return &MethodInfo{
-		Name:             p_name,
-		ReturnVal:        p_ret,
-		Flags:            METHOD_FLAG_NORMAL,
-		Arguments:        args,
-		DefaultArguments: []Variant{},
-	}
 }
 
 func (o ObjectID) compare(other ObjectID) int {
@@ -103,20 +57,20 @@ func NewObjectID() ObjectID {
 }
 
 func objectDBGetInstance(p_object_id GDObjectInstanceID) *Object {
-	obj := GDNativeInterface_object_get_instance_from_id(internal.gdnInterface, (GDObjectInstanceID)((C.uint64_t)(p_object_id)))
+	obj := GDExtensionInterface_object_get_instance_from_id(internal.gdnInterface, (GDObjectInstanceID)((C.uint64_t)(p_object_id)))
 
 	if obj == nil {
 		return nil
 	}
 
-	cbs, ok := gdExtensionBindingGDNativeInstanceBindingCallbacks.Get("Object")
+	cbs, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get("Object")
 
 	if !ok {
 		log.Warn("unable to find callbacks for Object")
 		return nil
 	}
 
-	binding := GDNativeInterface_object_get_instance_binding(
+	binding := GDExtensionInterface_object_get_instance_binding(
 		internal.gdnInterface,
 		obj,
 		internal.token,

@@ -1,23 +1,26 @@
 package gdextension
 
-// #include <godot/gdnative_interface.h>
+// #include <godot/gdextension_interface.h>
 // #include "method_bind.h"
 // #include <stdio.h>
 // #include <stdlib.h>
 import "C"
 import (
+	"unsafe"
+
 	"github.com/godot-go/godot-go/pkg/gdnative"
 )
 
-func getSingleton(name string) gdnative.GDNativeObjectPtr {
-	ret := gdnative.GDNativeInterface_global_get_singleton(
+func getSingleton(name string) gdnative.GDExtensionObjectPtr {
+	ret := gdnative.GDExtensionInterface_global_get_singleton(
 		internal.gdnInterface,
-		name,
+		NewStringNameWithLatin1Chars(name).AsGDExtensionStringNamePtr(),
 	)
 
-	return (gdnative.GDNativeObjectPtr)(ret)
+	return (gdnative.GDExtensionObjectPtr)(ret)
 }
 
 func GetInputSingleton() Input {
-	return *(*Input)(getSingleton("input"))
+	owner := (*GodotObject)(unsafe.Pointer(getSingleton("Input")))
+	return NewInputWithGodotOwnerObject(owner)
 }

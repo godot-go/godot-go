@@ -6,29 +6,29 @@ import (
 	. "github.com/godot-go/godot-go/pkg/gdnative"
 )
 
-// TypeName represents a the name of a type in Godot
-type TypeName string
+// // TypeName represents a the name of a type in Godot
+// type TypeName string
 
-func (n TypeName) compare(other TypeName) int {
-	if n < other {
-		return -1
-	} else if n == other {
-		return 0
-	}
-	return 1
-}
+// func (n TypeName) compare(other TypeName) int {
+// 	if n < other {
+// 		return -1
+// 	} else if n == other {
+// 		return 0
+// 	}
+// 	return 1
+// }
 
-// MethodName represents a method name in Godot.
-type MethodName string
+// // MethodName represents a method name in Godot.
+// type MethodName string
 
-// SignalName represents a signal name in Godot.
-type SignalName string
+// // SignalName represents a signal name in Godot.
+// type SignalName string
 
-// PropertyName represents a property name in Godot.
-type PropertyName string
+// // PropertyName represents a property name in Godot.
+// type PropertyName string
 
-// ConstantName represents a constant name in Godot.
-type ConstantName string
+// // ConstantName represents a constant name in Godot.
+// type ConstantName string
 
 // PropertySetGet holds metadata of the getter and setting functions of a Godot property.
 type PropertySetGet struct {
@@ -37,39 +37,42 @@ type PropertySetGet struct {
 	Getter  string
 	_setptr *MethodBind
 	_getptr *MethodBind
-	Type    GDNativeVariantType
+	Type    GDExtensionVariantType
 }
 
 type ClassInfo struct {
-	Name             TypeName
-	ParentName       TypeName
-	Level            GDNativeInitializationLevel
-	MethodMap        map[MethodName]*MethodBind
-	SignalNameMap    map[SignalName]struct{}
-	VirtualMethodMap map[MethodName]GDNativeExtensionClassCallVirtual
-	PropertyNameMap  map[PropertyName]struct{}
-	ConstantNameMap  map[ConstantName]struct{}
-	ParentPtr        *ClassInfo
-	ClassType        reflect.Type
-	InheritType      reflect.Type
+	Name                      string
+	NameAsStringNamePtr       GDExtensionConstStringNamePtr
+	ParentName                string
+	ParentNameAsStringNamePtr GDExtensionConstStringNamePtr
+	Level                     GDExtensionInitializationLevel
+	MethodMap                 map[string]*MethodBind
+	SignalNameMap             map[string]struct{}
+	VirtualMethodMap          map[string]GDExtensionClassCallVirtual
+	PropertyNameMap           map[string]struct{}
+	ConstantNameMap           map[string]struct{}
+	ParentPtr                 *ClassInfo
+	ClassType                 reflect.Type
+	InheritType               reflect.Type
 }
 
-func NewClassInfo(name, parentName TypeName, level GDNativeInitializationLevel, classType, inheritType reflect.Type, parentPtr *ClassInfo) *ClassInfo {
+func NewClassInfo(name, parentName string, level GDExtensionInitializationLevel, classType, inheritType reflect.Type, parentPtr *ClassInfo) *ClassInfo {
 	return &ClassInfo{
-		Name:             name,
-		ParentName:       parentName,
-		Level:            level,
-		MethodMap:        map[MethodName]*MethodBind{},
-		SignalNameMap:    map[SignalName]struct{}{},
-		VirtualMethodMap: map[MethodName]GDNativeExtensionClassCallVirtual{},
-		PropertyNameMap:  map[PropertyName]struct{}{},
-		ConstantNameMap:  map[ConstantName]struct{}{},
-		ParentPtr:        parentPtr,
-		ClassType:        classType,
-		InheritType:      inheritType,
+		Name:                name,
+		NameAsStringNamePtr: NewStringNameWithLatin1Chars(name).AsGDExtensionStringNamePtr(),
+		ParentName:          parentName,
+		Level:               level,
+		MethodMap:           map[string]*MethodBind{},
+		SignalNameMap:       map[string]struct{}{},
+		VirtualMethodMap:    map[string]GDExtensionClassCallVirtual{},
+		PropertyNameMap:     map[string]struct{}{},
+		ConstantNameMap:     map[string]struct{}{},
+		ParentPtr:           parentPtr,
+		ClassType:           classType,
+		InheritType:         inheritType,
 	}
 }
 
 var (
-	classdbCurrentLevel GDNativeInitializationLevel = GDNATIVE_INITIALIZATION_CORE
+	classdbCurrentLevel GDExtensionInitializationLevel = GDEXTENSION_INITIALIZATION_CORE
 )

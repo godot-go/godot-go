@@ -7,986 +7,1045 @@
 //   code.
 //----------------------------------------------------------------------------*/
 #include "gdnative_wrapper.gen.h"
-#include <godot/gdnative_interface.h>
+#include "stacktrace.h"
+#include <godot/gdextension_interface.h>
 
 /* Go cannot call C function pointers directly, so we must generate C wrapper
  * code to call the functions. */
 
-void cgo_callfn_GDNativeVariantFromTypeConstructorFunc(
-    const GDNativeVariantFromTypeConstructorFunc cb, GDNativeVariantPtr arg_0,
-    GDNativeTypePtr arg_1) {
+void cgo_callfn_GDExtensionVariantFromTypeConstructorFunc(
+    const GDExtensionVariantFromTypeConstructorFunc cb,
+    GDExtensionVariantPtr arg_0, GDExtensionTypePtr arg_1) {
+  printStacktrace();
   cb(arg_0, arg_1);
 }
-void cgo_callfn_GDNativeTypeFromVariantConstructorFunc(
-    const GDNativeTypeFromVariantConstructorFunc cb, GDNativeTypePtr arg_0,
-    GDNativeVariantPtr arg_1) {
+void cgo_callfn_GDExtensionTypeFromVariantConstructorFunc(
+    const GDExtensionTypeFromVariantConstructorFunc cb,
+    GDExtensionTypePtr arg_0, GDExtensionVariantPtr arg_1) {
+  printStacktrace();
   cb(arg_0, arg_1);
 }
-void cgo_callfn_GDNativePtrOperatorEvaluator(
-    const GDNativePtrOperatorEvaluator cb, const GDNativeTypePtr p_left,
-    const GDNativeTypePtr p_right, GDNativeTypePtr r_result) {
+void cgo_callfn_GDExtensionPtrOperatorEvaluator(
+    const GDExtensionPtrOperatorEvaluator cb, GDExtensionConstTypePtr p_left,
+    GDExtensionConstTypePtr p_right, GDExtensionTypePtr r_result) {
+  printStacktrace();
   cb(p_left, p_right, r_result);
 }
-void cgo_callfn_GDNativePtrBuiltInMethod(const GDNativePtrBuiltInMethod cb,
-                                         GDNativeTypePtr p_base,
-                                         const GDNativeTypePtr *p_args,
-                                         GDNativeTypePtr r_return,
-                                         int p_argument_count) {
+void cgo_callfn_GDExtensionPtrBuiltInMethod(
+    const GDExtensionPtrBuiltInMethod cb, GDExtensionTypePtr p_base,
+    const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_return,
+    int p_argument_count) {
+  printStacktrace();
   cb(p_base, p_args, r_return, p_argument_count);
 }
-void cgo_callfn_GDNativePtrConstructor(const GDNativePtrConstructor cb,
-                                       GDNativeTypePtr p_base,
-                                       const GDNativeTypePtr *p_args) {
+void cgo_callfn_GDExtensionPtrConstructor(
+    const GDExtensionPtrConstructor cb, GDExtensionTypePtr p_base,
+    const GDExtensionConstTypePtr *p_args) {
+  printStacktrace();
   cb(p_base, p_args);
 }
-void cgo_callfn_GDNativePtrDestructor(const GDNativePtrDestructor cb,
-                                      GDNativeTypePtr p_base) {
+void cgo_callfn_GDExtensionPtrDestructor(const GDExtensionPtrDestructor cb,
+                                         GDExtensionTypePtr p_base) {
+  printStacktrace();
   cb(p_base);
 }
-void cgo_callfn_GDNativePtrSetter(const GDNativePtrSetter cb,
-                                  GDNativeTypePtr p_base,
-                                  const GDNativeTypePtr p_value) {
+void cgo_callfn_GDExtensionPtrSetter(const GDExtensionPtrSetter cb,
+                                     GDExtensionTypePtr p_base,
+                                     GDExtensionConstTypePtr p_value) {
+  printStacktrace();
   cb(p_base, p_value);
 }
-void cgo_callfn_GDNativePtrGetter(const GDNativePtrGetter cb,
-                                  const GDNativeTypePtr p_base,
-                                  GDNativeTypePtr r_value) {
+void cgo_callfn_GDExtensionPtrGetter(const GDExtensionPtrGetter cb,
+                                     GDExtensionConstTypePtr p_base,
+                                     GDExtensionTypePtr r_value) {
+  printStacktrace();
   cb(p_base, r_value);
 }
-void cgo_callfn_GDNativePtrIndexedSetter(const GDNativePtrIndexedSetter cb,
-                                         GDNativeTypePtr p_base,
-                                         GDNativeInt p_index,
-                                         const GDNativeTypePtr p_value) {
+void cgo_callfn_GDExtensionPtrIndexedSetter(
+    const GDExtensionPtrIndexedSetter cb, GDExtensionTypePtr p_base,
+    GDExtensionInt p_index, GDExtensionConstTypePtr p_value) {
+  printStacktrace();
   cb(p_base, p_index, p_value);
 }
-void cgo_callfn_GDNativePtrIndexedGetter(const GDNativePtrIndexedGetter cb,
-                                         const GDNativeTypePtr p_base,
-                                         GDNativeInt p_index,
-                                         GDNativeTypePtr r_value) {
+void cgo_callfn_GDExtensionPtrIndexedGetter(
+    const GDExtensionPtrIndexedGetter cb, GDExtensionConstTypePtr p_base,
+    GDExtensionInt p_index, GDExtensionTypePtr r_value) {
+  printStacktrace();
   cb(p_base, p_index, r_value);
 }
-void cgo_callfn_GDNativePtrKeyedSetter(const GDNativePtrKeyedSetter cb,
-                                       GDNativeTypePtr p_base,
-                                       const GDNativeTypePtr p_key,
-                                       const GDNativeTypePtr p_value) {
+void cgo_callfn_GDExtensionPtrKeyedSetter(const GDExtensionPtrKeyedSetter cb,
+                                          GDExtensionTypePtr p_base,
+                                          GDExtensionConstTypePtr p_key,
+                                          GDExtensionConstTypePtr p_value) {
+  printStacktrace();
   cb(p_base, p_key, p_value);
 }
-void cgo_callfn_GDNativePtrKeyedGetter(const GDNativePtrKeyedGetter cb,
-                                       const GDNativeTypePtr p_base,
-                                       const GDNativeTypePtr p_key,
-                                       GDNativeTypePtr r_value) {
+void cgo_callfn_GDExtensionPtrKeyedGetter(const GDExtensionPtrKeyedGetter cb,
+                                          GDExtensionConstTypePtr p_base,
+                                          GDExtensionConstTypePtr p_key,
+                                          GDExtensionTypePtr r_value) {
+  printStacktrace();
   cb(p_base, p_key, r_value);
 }
-uint32_t cgo_callfn_GDNativePtrKeyedChecker(const GDNativePtrKeyedChecker cb,
-                                            const GDNativeVariantPtr p_base,
-                                            const GDNativeVariantPtr p_key) {
+uint32_t
+cgo_callfn_GDExtensionPtrKeyedChecker(const GDExtensionPtrKeyedChecker cb,
+                                      GDExtensionConstVariantPtr p_base,
+                                      GDExtensionConstVariantPtr p_key) {
+  printStacktrace();
   return cb(p_base, p_key);
 }
-void cgo_callfn_GDNativePtrUtilityFunction(const GDNativePtrUtilityFunction cb,
-                                           GDNativeTypePtr r_return,
-                                           const GDNativeTypePtr *p_arguments,
-                                           int p_argument_count) {
-  cb(r_return, p_arguments, p_argument_count);
+void cgo_callfn_GDExtensionPtrUtilityFunction(
+    const GDExtensionPtrUtilityFunction cb, GDExtensionTypePtr r_return,
+    const GDExtensionConstTypePtr *p_args, int p_argument_count) {
+  printStacktrace();
+  cb(r_return, p_args, p_argument_count);
 }
-GDNativeObjectPtr
-cgo_callfn_GDNativeClassConstructor(const GDNativeClassConstructor cb) {
+GDExtensionObjectPtr
+cgo_callfn_GDExtensionClassConstructor(const GDExtensionClassConstructor cb) {
+  printStacktrace();
   return cb();
 }
-void *cgo_callfn_GDNativeInstanceBindingCreateCallback(
-    const GDNativeInstanceBindingCreateCallback cb, void *p_token,
+void *cgo_callfn_GDExtensionInstanceBindingCreateCallback(
+    const GDExtensionInstanceBindingCreateCallback cb, void *p_token,
     void *p_instance) {
+  printStacktrace();
   return cb(p_token, p_instance);
 }
-void cgo_callfn_GDNativeInstanceBindingFreeCallback(
-    const GDNativeInstanceBindingFreeCallback cb, void *p_token,
+void cgo_callfn_GDExtensionInstanceBindingFreeCallback(
+    const GDExtensionInstanceBindingFreeCallback cb, void *p_token,
     void *p_instance, void *p_binding) {
+  printStacktrace();
   cb(p_token, p_instance, p_binding);
 }
-GDNativeBool cgo_callfn_GDNativeInstanceBindingReferenceCallback(
-    const GDNativeInstanceBindingReferenceCallback cb, void *p_token,
-    void *p_binding, GDNativeBool p_reference) {
+GDExtensionBool cgo_callfn_GDExtensionInstanceBindingReferenceCallback(
+    const GDExtensionInstanceBindingReferenceCallback cb, void *p_token,
+    void *p_binding, GDExtensionBool p_reference) {
+  printStacktrace();
   return cb(p_token, p_binding, p_reference);
 }
-GDNativeBool cgo_callfn_GDNativeExtensionClassSet(
-    const GDNativeExtensionClassSet cb, GDExtensionClassInstancePtr p_instance,
-    const GDNativeStringNamePtr p_name, const GDNativeVariantPtr p_value) {
+GDExtensionBool cgo_callfn_GDExtensionClassSet(
+    const GDExtensionClassSet cb, GDExtensionClassInstancePtr p_instance,
+    GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value) {
+  printStacktrace();
   return cb(p_instance, p_name, p_value);
 }
-GDNativeBool cgo_callfn_GDNativeExtensionClassGet(
-    const GDNativeExtensionClassGet cb, GDExtensionClassInstancePtr p_instance,
-    const GDNativeStringNamePtr p_name, GDNativeVariantPtr r_ret) {
+GDExtensionBool cgo_callfn_GDExtensionClassGet(
+    const GDExtensionClassGet cb, GDExtensionClassInstancePtr p_instance,
+    GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
+  printStacktrace();
   return cb(p_instance, p_name, r_ret);
 }
-uint64_t cgo_callfn_GDNativeExtensionClassGetRID(
-    const GDNativeExtensionClassGetRID cb,
-    GDExtensionClassInstancePtr p_instance) {
+uint64_t
+cgo_callfn_GDExtensionClassGetRID(const GDExtensionClassGetRID cb,
+                                  GDExtensionClassInstancePtr p_instance) {
+  printStacktrace();
   return cb(p_instance);
 }
-const GDNativePropertyInfo *cgo_callfn_GDNativeExtensionClassGetPropertyList(
-    const GDNativeExtensionClassGetPropertyList cb,
+const GDExtensionPropertyInfo *cgo_callfn_GDExtensionClassGetPropertyList(
+    const GDExtensionClassGetPropertyList cb,
     GDExtensionClassInstancePtr p_instance, uint32_t *r_count) {
+  printStacktrace();
   return cb(p_instance, r_count);
 }
-void cgo_callfn_GDNativeExtensionClassFreePropertyList(
-    const GDNativeExtensionClassFreePropertyList cb,
+void cgo_callfn_GDExtensionClassFreePropertyList(
+    const GDExtensionClassFreePropertyList cb,
     GDExtensionClassInstancePtr p_instance,
-    const GDNativePropertyInfo *p_list) {
+    const GDExtensionPropertyInfo *p_list) {
+  printStacktrace();
   cb(p_instance, p_list);
 }
-GDNativeBool cgo_callfn_GDNativeExtensionClassPropertyCanRevert(
-    const GDNativeExtensionClassPropertyCanRevert cb,
+GDExtensionBool cgo_callfn_GDExtensionClassPropertyCanRevert(
+    const GDExtensionClassPropertyCanRevert cb,
     GDExtensionClassInstancePtr p_instance,
-    const GDNativeStringNamePtr p_name) {
+    GDExtensionConstStringNamePtr p_name) {
+  printStacktrace();
   return cb(p_instance, p_name);
 }
-GDNativeBool cgo_callfn_GDNativeExtensionClassPropertyGetRevert(
-    const GDNativeExtensionClassPropertyGetRevert cb,
-    GDExtensionClassInstancePtr p_instance, const GDNativeStringNamePtr p_name,
-    GDNativeVariantPtr r_ret) {
+GDExtensionBool cgo_callfn_GDExtensionClassPropertyGetRevert(
+    const GDExtensionClassPropertyGetRevert cb,
+    GDExtensionClassInstancePtr p_instance,
+    GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
+  printStacktrace();
   return cb(p_instance, p_name, r_ret);
 }
-void cgo_callfn_GDNativeExtensionClassNotification(
-    const GDNativeExtensionClassNotification cb,
+void cgo_callfn_GDExtensionClassNotification(
+    const GDExtensionClassNotification cb,
     GDExtensionClassInstancePtr p_instance, int32_t p_what) {
+  printStacktrace();
   cb(p_instance, p_what);
 }
-void cgo_callfn_GDNativeExtensionClassToString(
-    const GDNativeExtensionClassToString cb,
-    GDExtensionClassInstancePtr p_instance, GDNativeStringPtr p_out) {
-  cb(p_instance, p_out);
+void cgo_callfn_GDExtensionClassToString(const GDExtensionClassToString cb,
+                                         GDExtensionClassInstancePtr p_instance,
+                                         GDExtensionBool *r_is_valid,
+                                         GDExtensionStringPtr p_out) {
+  printStacktrace();
+  cb(p_instance, r_is_valid, p_out);
 }
-void cgo_callfn_GDNativeExtensionClassReference(
-    const GDNativeExtensionClassReference cb,
+void cgo_callfn_GDExtensionClassReference(
+    const GDExtensionClassReference cb,
     GDExtensionClassInstancePtr p_instance) {
+  printStacktrace();
   cb(p_instance);
 }
-void cgo_callfn_GDNativeExtensionClassUnreference(
-    const GDNativeExtensionClassUnreference cb,
+void cgo_callfn_GDExtensionClassUnreference(
+    const GDExtensionClassUnreference cb,
     GDExtensionClassInstancePtr p_instance) {
+  printStacktrace();
   cb(p_instance);
 }
-void cgo_callfn_GDNativeExtensionClassCallVirtual(
-    const GDNativeExtensionClassCallVirtual cb,
-    GDExtensionClassInstancePtr p_instance, const GDNativeTypePtr *p_args,
-    GDNativeTypePtr r_ret) {
+void cgo_callfn_GDExtensionClassCallVirtual(
+    const GDExtensionClassCallVirtual cb,
+    GDExtensionClassInstancePtr p_instance,
+    const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
+  printStacktrace();
   cb(p_instance, p_args, r_ret);
 }
-GDNativeObjectPtr cgo_callfn_GDNativeExtensionClassCreateInstance(
-    const GDNativeExtensionClassCreateInstance cb, void *p_userdata) {
+GDExtensionObjectPtr cgo_callfn_GDExtensionClassCreateInstance(
+    const GDExtensionClassCreateInstance cb, void *p_userdata) {
+  printStacktrace();
   return cb(p_userdata);
 }
-void cgo_callfn_GDNativeExtensionClassFreeInstance(
-    const GDNativeExtensionClassFreeInstance cb, void *p_userdata,
+void cgo_callfn_GDExtensionClassFreeInstance(
+    const GDExtensionClassFreeInstance cb, void *p_userdata,
     GDExtensionClassInstancePtr p_instance) {
+  printStacktrace();
   cb(p_userdata, p_instance);
 }
-GDNativeExtensionClassCallVirtual cgo_callfn_GDNativeExtensionClassGetVirtual(
-    const GDNativeExtensionClassGetVirtual cb, void *p_userdata,
-    const char *p_name) {
+GDExtensionClassCallVirtual
+cgo_callfn_GDExtensionClassGetVirtual(const GDExtensionClassGetVirtual cb,
+                                      void *p_userdata,
+                                      GDExtensionConstStringNamePtr p_name) {
+  printStacktrace();
   return cb(p_userdata, p_name);
 }
-void cgo_callfn_GDNativeExtensionClassMethodCall(
-    const GDNativeExtensionClassMethodCall cb, void *method_userdata,
-    GDExtensionClassInstancePtr p_instance, const GDNativeVariantPtr *p_args,
-    const GDNativeInt p_argument_count, GDNativeVariantPtr r_return,
-    GDNativeCallError *r_error) {
+void cgo_callfn_GDExtensionClassMethodCall(
+    const GDExtensionClassMethodCall cb, void *method_userdata,
+    GDExtensionClassInstancePtr p_instance,
+    const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count,
+    GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
+  printStacktrace();
   cb(method_userdata, p_instance, p_args, p_argument_count, r_return, r_error);
 }
-void cgo_callfn_GDNativeExtensionClassMethodPtrCall(
-    const GDNativeExtensionClassMethodPtrCall cb, void *method_userdata,
-    GDExtensionClassInstancePtr p_instance, const GDNativeTypePtr *p_args,
-    GDNativeTypePtr r_ret) {
+void cgo_callfn_GDExtensionClassMethodPtrCall(
+    const GDExtensionClassMethodPtrCall cb, void *method_userdata,
+    GDExtensionClassInstancePtr p_instance,
+    const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
+  printStacktrace();
   cb(method_userdata, p_instance, p_args, r_ret);
 }
-GDNativeVariantType cgo_callfn_GDNativeExtensionClassMethodGetArgumentType(
-    const GDNativeExtensionClassMethodGetArgumentType cb,
-    void *p_method_userdata, int32_t p_argument) {
-  return cb(p_method_userdata, p_argument);
-}
-void cgo_callfn_GDNativeExtensionClassMethodGetArgumentInfo(
-    const GDNativeExtensionClassMethodGetArgumentInfo cb,
-    void *p_method_userdata, int32_t p_argument, GDNativePropertyInfo *r_info) {
-  cb(p_method_userdata, p_argument, r_info);
-}
-GDNativeExtensionClassMethodArgumentMetadata
-cgo_callfn_GDNativeExtensionClassMethodGetArgumentMetadata(
-    const GDNativeExtensionClassMethodGetArgumentMetadata cb,
-    void *p_method_userdata, int32_t p_argument) {
-  return cb(p_method_userdata, p_argument);
-}
-GDNativeBool cgo_callfn_GDNativeExtensionScriptInstanceSet(
-    const GDNativeExtensionScriptInstanceSet cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance,
-    const GDNativeStringNamePtr p_name, const GDNativeVariantPtr p_value) {
+GDExtensionBool cgo_callfn_GDExtensionScriptInstanceSet(
+    const GDExtensionScriptInstanceSet cb,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value) {
+  printStacktrace();
   return cb(p_instance, p_name, p_value);
 }
-GDNativeBool cgo_callfn_GDNativeExtensionScriptInstanceGet(
-    const GDNativeExtensionScriptInstanceGet cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance,
-    const GDNativeStringNamePtr p_name, GDNativeVariantPtr r_ret) {
+GDExtensionBool cgo_callfn_GDExtensionScriptInstanceGet(
+    const GDExtensionScriptInstanceGet cb,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
+  printStacktrace();
   return cb(p_instance, p_name, r_ret);
 }
-const GDNativePropertyInfo *
-cgo_callfn_GDNativeExtensionScriptInstanceGetPropertyList(
-    const GDNativeExtensionScriptInstanceGetPropertyList cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count) {
+const GDExtensionPropertyInfo *
+cgo_callfn_GDExtensionScriptInstanceGetPropertyList(
+    const GDExtensionScriptInstanceGetPropertyList cb,
+    GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count) {
+  printStacktrace();
   return cb(p_instance, r_count);
 }
-void cgo_callfn_GDNativeExtensionScriptInstanceFreePropertyList(
-    const GDNativeExtensionScriptInstanceFreePropertyList cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance,
-    const GDNativePropertyInfo *p_list) {
+void cgo_callfn_GDExtensionScriptInstanceFreePropertyList(
+    const GDExtensionScriptInstanceFreePropertyList cb,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    const GDExtensionPropertyInfo *p_list) {
+  printStacktrace();
   cb(p_instance, p_list);
 }
-GDNativeVariantType cgo_callfn_GDNativeExtensionScriptInstanceGetPropertyType(
-    const GDNativeExtensionScriptInstanceGetPropertyType cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance,
-    const GDNativeStringNamePtr p_name, GDNativeBool *r_is_valid) {
+GDExtensionVariantType cgo_callfn_GDExtensionScriptInstanceGetPropertyType(
+    const GDExtensionScriptInstanceGetPropertyType cb,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid) {
+  printStacktrace();
   return cb(p_instance, p_name, r_is_valid);
 }
-GDNativeBool cgo_callfn_GDNativeExtensionScriptInstancePropertyCanRevert(
-    const GDNativeExtensionScriptInstancePropertyCanRevert cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance,
-    const GDNativeStringNamePtr p_name) {
+GDExtensionBool cgo_callfn_GDExtensionScriptInstancePropertyCanRevert(
+    const GDExtensionScriptInstancePropertyCanRevert cb,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    GDExtensionConstStringNamePtr p_name) {
+  printStacktrace();
   return cb(p_instance, p_name);
 }
-GDNativeBool cgo_callfn_GDNativeExtensionScriptInstancePropertyGetRevert(
-    const GDNativeExtensionScriptInstancePropertyGetRevert cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance,
-    const GDNativeStringNamePtr p_name, GDNativeVariantPtr r_ret) {
+GDExtensionBool cgo_callfn_GDExtensionScriptInstancePropertyGetRevert(
+    const GDExtensionScriptInstancePropertyGetRevert cb,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
+  printStacktrace();
   return cb(p_instance, p_name, r_ret);
 }
-GDNativeObjectPtr cgo_callfn_GDNativeExtensionScriptInstanceGetOwner(
-    const GDNativeExtensionScriptInstanceGetOwner cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance) {
+GDExtensionObjectPtr cgo_callfn_GDExtensionScriptInstanceGetOwner(
+    const GDExtensionScriptInstanceGetOwner cb,
+    GDExtensionScriptInstanceDataPtr p_instance) {
+  printStacktrace();
   return cb(p_instance);
 }
-void cgo_callfn_GDNativeExtensionScriptInstancePropertyStateAdd(
-    const GDNativeExtensionScriptInstancePropertyStateAdd cb,
-    const GDNativeStringNamePtr p_name, const GDNativeVariantPtr p_value,
+void cgo_callfn_GDExtensionScriptInstancePropertyStateAdd(
+    const GDExtensionScriptInstancePropertyStateAdd cb,
+    GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value,
     void *p_userdata) {
+  printStacktrace();
   cb(p_name, p_value, p_userdata);
 }
-void cgo_callfn_GDNativeExtensionScriptInstanceGetPropertyState(
-    const GDNativeExtensionScriptInstanceGetPropertyState cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance,
-    GDNativeExtensionScriptInstancePropertyStateAdd p_add_func,
-    void *p_userdata) {
+void cgo_callfn_GDExtensionScriptInstanceGetPropertyState(
+    const GDExtensionScriptInstanceGetPropertyState cb,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    GDExtensionScriptInstancePropertyStateAdd p_add_func, void *p_userdata) {
+  printStacktrace();
   cb(p_instance, p_add_func, p_userdata);
 }
-const GDNativeMethodInfo *
-cgo_callfn_GDNativeExtensionScriptInstanceGetMethodList(
-    const GDNativeExtensionScriptInstanceGetMethodList cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count) {
+const GDExtensionMethodInfo *cgo_callfn_GDExtensionScriptInstanceGetMethodList(
+    const GDExtensionScriptInstanceGetMethodList cb,
+    GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count) {
+  printStacktrace();
   return cb(p_instance, r_count);
 }
-void cgo_callfn_GDNativeExtensionScriptInstanceFreeMethodList(
-    const GDNativeExtensionScriptInstanceFreeMethodList cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance,
-    const GDNativeMethodInfo *p_list) {
+void cgo_callfn_GDExtensionScriptInstanceFreeMethodList(
+    const GDExtensionScriptInstanceFreeMethodList cb,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    const GDExtensionMethodInfo *p_list) {
+  printStacktrace();
   cb(p_instance, p_list);
 }
-GDNativeBool cgo_callfn_GDNativeExtensionScriptInstanceHasMethod(
-    const GDNativeExtensionScriptInstanceHasMethod cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance,
-    const GDNativeStringNamePtr p_name) {
+GDExtensionBool cgo_callfn_GDExtensionScriptInstanceHasMethod(
+    const GDExtensionScriptInstanceHasMethod cb,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    GDExtensionConstStringNamePtr p_name) {
+  printStacktrace();
   return cb(p_instance, p_name);
 }
-void cgo_callfn_GDNativeExtensionScriptInstanceCall(
-    const GDNativeExtensionScriptInstanceCall cb,
-    GDNativeExtensionScriptInstanceDataPtr p_self,
-    const GDNativeStringNamePtr p_method, const GDNativeVariantPtr *p_args,
-    const GDNativeInt p_argument_count, GDNativeVariantPtr r_return,
-    GDNativeCallError *r_error) {
+void cgo_callfn_GDExtensionScriptInstanceCall(
+    const GDExtensionScriptInstanceCall cb,
+    GDExtensionScriptInstanceDataPtr p_self,
+    GDExtensionConstStringNamePtr p_method,
+    const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count,
+    GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
+  printStacktrace();
   cb(p_self, p_method, p_args, p_argument_count, r_return, r_error);
 }
-void cgo_callfn_GDNativeExtensionScriptInstanceNotification(
-    const GDNativeExtensionScriptInstanceNotification cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance, int32_t p_what) {
+void cgo_callfn_GDExtensionScriptInstanceNotification(
+    const GDExtensionScriptInstanceNotification cb,
+    GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what) {
+  printStacktrace();
   cb(p_instance, p_what);
 }
-const char *cgo_callfn_GDNativeExtensionScriptInstanceToString(
-    const GDNativeExtensionScriptInstanceToString cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance,
-    GDNativeBool *r_is_valid) {
-  return cb(p_instance, r_is_valid);
+void cgo_callfn_GDExtensionScriptInstanceToString(
+    const GDExtensionScriptInstanceToString cb,
+    GDExtensionScriptInstanceDataPtr p_instance, GDExtensionBool *r_is_valid,
+    GDExtensionStringPtr r_out) {
+  printStacktrace();
+  cb(p_instance, r_is_valid, r_out);
 }
-void cgo_callfn_GDNativeExtensionScriptInstanceRefCountIncremented(
-    const GDNativeExtensionScriptInstanceRefCountIncremented cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance) {
+void cgo_callfn_GDExtensionScriptInstanceRefCountIncremented(
+    const GDExtensionScriptInstanceRefCountIncremented cb,
+    GDExtensionScriptInstanceDataPtr p_instance) {
+  printStacktrace();
   cb(p_instance);
 }
-GDNativeBool cgo_callfn_GDNativeExtensionScriptInstanceRefCountDecremented(
-    const GDNativeExtensionScriptInstanceRefCountDecremented cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance) {
+GDExtensionBool cgo_callfn_GDExtensionScriptInstanceRefCountDecremented(
+    const GDExtensionScriptInstanceRefCountDecremented cb,
+    GDExtensionScriptInstanceDataPtr p_instance) {
+  printStacktrace();
   return cb(p_instance);
 }
-GDNativeObjectPtr cgo_callfn_GDNativeExtensionScriptInstanceGetScript(
-    const GDNativeExtensionScriptInstanceGetScript cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance) {
+GDExtensionObjectPtr cgo_callfn_GDExtensionScriptInstanceGetScript(
+    const GDExtensionScriptInstanceGetScript cb,
+    GDExtensionScriptInstanceDataPtr p_instance) {
+  printStacktrace();
   return cb(p_instance);
 }
-GDNativeBool cgo_callfn_GDNativeExtensionScriptInstanceIsPlaceholder(
-    const GDNativeExtensionScriptInstanceIsPlaceholder cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance) {
+GDExtensionBool cgo_callfn_GDExtensionScriptInstanceIsPlaceholder(
+    const GDExtensionScriptInstanceIsPlaceholder cb,
+    GDExtensionScriptInstanceDataPtr p_instance) {
+  printStacktrace();
   return cb(p_instance);
 }
-GDNativeExtensionScriptLanguagePtr
-cgo_callfn_GDNativeExtensionScriptInstanceGetLanguage(
-    const GDNativeExtensionScriptInstanceGetLanguage cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance) {
+GDExtensionScriptLanguagePtr cgo_callfn_GDExtensionScriptInstanceGetLanguage(
+    const GDExtensionScriptInstanceGetLanguage cb,
+    GDExtensionScriptInstanceDataPtr p_instance) {
+  printStacktrace();
   return cb(p_instance);
 }
-void cgo_callfn_GDNativeExtensionScriptInstanceFree(
-    const GDNativeExtensionScriptInstanceFree cb,
-    GDNativeExtensionScriptInstanceDataPtr p_instance) {
+void cgo_callfn_GDExtensionScriptInstanceFree(
+    const GDExtensionScriptInstanceFree cb,
+    GDExtensionScriptInstanceDataPtr p_instance) {
+  printStacktrace();
   cb(p_instance);
 }
-GDNativeBool cgo_callfn_GDNativeInitializationFunction(
-    const GDNativeInitializationFunction cb,
-    const GDNativeInterface *p_interface,
-    const GDNativeExtensionClassLibraryPtr p_library,
-    GDNativeInitialization *r_initialization) {
+GDExtensionBool cgo_callfn_GDExtensionInitializationFunction(
+    const GDExtensionInitializationFunction cb,
+    const GDExtensionInterface *p_interface,
+    GDExtensionClassLibraryPtr p_library,
+    GDExtensionInitialization *r_initialization) {
+  printStacktrace();
   return cb(p_interface, p_library, r_initialization);
 }
-/* struct (7) GDNativeInterface */
-void *cgo_callfn_GDNativeInterface_mem_alloc(const GDNativeInterface *p_struct,
-                                             size_t p_bytes) {
+/* struct (7) GDExtensionInterface */
+void *
+cgo_callfn_GDExtensionInterface_mem_alloc(const GDExtensionInterface *p_struct,
+                                          size_t p_bytes) {
   return p_struct->mem_alloc(p_bytes);
 }
-void *
-cgo_callfn_GDNativeInterface_mem_realloc(const GDNativeInterface *p_struct,
-                                         void *p_ptr, size_t p_bytes) {
+void *cgo_callfn_GDExtensionInterface_mem_realloc(
+    const GDExtensionInterface *p_struct, void *p_ptr, size_t p_bytes) {
   return p_struct->mem_realloc(p_ptr, p_bytes);
 }
-void cgo_callfn_GDNativeInterface_mem_free(const GDNativeInterface *p_struct,
-                                           void *p_ptr) {
+void cgo_callfn_GDExtensionInterface_mem_free(
+    const GDExtensionInterface *p_struct, void *p_ptr) {
   p_struct->mem_free(p_ptr);
 }
-void cgo_callfn_GDNativeInterface_print_error(const GDNativeInterface *p_struct,
-                                              const char *p_description,
-                                              const char *p_function,
-                                              const char *p_file,
-                                              int32_t p_line) {
+void cgo_callfn_GDExtensionInterface_print_error(
+    const GDExtensionInterface *p_struct, const char *p_description,
+    const char *p_function, const char *p_file, int32_t p_line) {
   p_struct->print_error(p_description, p_function, p_file, p_line);
 }
-void cgo_callfn_GDNativeInterface_print_warning(
-    const GDNativeInterface *p_struct, const char *p_description,
+void cgo_callfn_GDExtensionInterface_print_warning(
+    const GDExtensionInterface *p_struct, const char *p_description,
     const char *p_function, const char *p_file, int32_t p_line) {
   p_struct->print_warning(p_description, p_function, p_file, p_line);
 }
-void cgo_callfn_GDNativeInterface_print_script_error(
-    const GDNativeInterface *p_struct, const char *p_description,
+void cgo_callfn_GDExtensionInterface_print_script_error(
+    const GDExtensionInterface *p_struct, const char *p_description,
     const char *p_function, const char *p_file, int32_t p_line) {
   p_struct->print_script_error(p_description, p_function, p_file, p_line);
 }
-uint64_t cgo_callfn_GDNativeInterface_get_native_struct_size(
-    const GDNativeInterface *p_struct, const char *p_name) {
+uint64_t cgo_callfn_GDExtensionInterface_get_native_struct_size(
+    const GDExtensionInterface *p_struct,
+    GDExtensionConstStringNamePtr p_name) {
   return p_struct->get_native_struct_size(p_name);
 }
-void cgo_callfn_GDNativeInterface_variant_new_copy(
-    const GDNativeInterface *p_struct, GDNativeVariantPtr r_dest,
-    const GDNativeVariantPtr p_src) {
+void cgo_callfn_GDExtensionInterface_variant_new_copy(
+    const GDExtensionInterface *p_struct, GDExtensionVariantPtr r_dest,
+    GDExtensionConstVariantPtr p_src) {
   p_struct->variant_new_copy(r_dest, p_src);
 }
-void cgo_callfn_GDNativeInterface_variant_new_nil(
-    const GDNativeInterface *p_struct, GDNativeVariantPtr r_dest) {
+void cgo_callfn_GDExtensionInterface_variant_new_nil(
+    const GDExtensionInterface *p_struct, GDExtensionVariantPtr r_dest) {
   p_struct->variant_new_nil(r_dest);
 }
-void cgo_callfn_GDNativeInterface_variant_destroy(
-    const GDNativeInterface *p_struct, GDNativeVariantPtr p_self) {
+void cgo_callfn_GDExtensionInterface_variant_destroy(
+    const GDExtensionInterface *p_struct, GDExtensionVariantPtr p_self) {
   p_struct->variant_destroy(p_self);
 }
-void cgo_callfn_GDNativeInterface_variant_call(
-    const GDNativeInterface *p_struct, GDNativeVariantPtr p_self,
-    const GDNativeStringNamePtr p_method, const GDNativeVariantPtr *p_args,
-    const GDNativeInt p_argument_count, GDNativeVariantPtr r_return,
-    GDNativeCallError *r_error) {
+void cgo_callfn_GDExtensionInterface_variant_call(
+    const GDExtensionInterface *p_struct, GDExtensionVariantPtr p_self,
+    GDExtensionConstStringNamePtr p_method,
+    const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count,
+    GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
   p_struct->variant_call(p_self, p_method, p_args, p_argument_count, r_return,
                          r_error);
 }
-void cgo_callfn_GDNativeInterface_variant_call_static(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type,
-    const GDNativeStringNamePtr p_method, const GDNativeVariantPtr *p_args,
-    const GDNativeInt p_argument_count, GDNativeVariantPtr r_return,
-    GDNativeCallError *r_error) {
+void cgo_callfn_GDExtensionInterface_variant_call_static(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type,
+    GDExtensionConstStringNamePtr p_method,
+    const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count,
+    GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
   p_struct->variant_call_static(p_type, p_method, p_args, p_argument_count,
                                 r_return, r_error);
 }
-void cgo_callfn_GDNativeInterface_variant_evaluate(
-    const GDNativeInterface *p_struct, GDNativeVariantOperator p_op,
-    const GDNativeVariantPtr p_a, const GDNativeVariantPtr p_b,
-    GDNativeVariantPtr r_return, GDNativeBool *r_valid) {
+void cgo_callfn_GDExtensionInterface_variant_evaluate(
+    const GDExtensionInterface *p_struct, GDExtensionVariantOperator p_op,
+    GDExtensionConstVariantPtr p_a, GDExtensionConstVariantPtr p_b,
+    GDExtensionVariantPtr r_return, GDExtensionBool *r_valid) {
   p_struct->variant_evaluate(p_op, p_a, p_b, r_return, r_valid);
 }
-void cgo_callfn_GDNativeInterface_variant_set(const GDNativeInterface *p_struct,
-                                              GDNativeVariantPtr p_self,
-                                              const GDNativeVariantPtr p_key,
-                                              const GDNativeVariantPtr p_value,
-                                              GDNativeBool *r_valid) {
+void cgo_callfn_GDExtensionInterface_variant_set(
+    const GDExtensionInterface *p_struct, GDExtensionVariantPtr p_self,
+    GDExtensionConstVariantPtr p_key, GDExtensionConstVariantPtr p_value,
+    GDExtensionBool *r_valid) {
   p_struct->variant_set(p_self, p_key, p_value, r_valid);
 }
-void cgo_callfn_GDNativeInterface_variant_set_named(
-    const GDNativeInterface *p_struct, GDNativeVariantPtr p_self,
-    const GDNativeStringNamePtr p_key, const GDNativeVariantPtr p_value,
-    GDNativeBool *r_valid) {
+void cgo_callfn_GDExtensionInterface_variant_set_named(
+    const GDExtensionInterface *p_struct, GDExtensionVariantPtr p_self,
+    GDExtensionConstStringNamePtr p_key, GDExtensionConstVariantPtr p_value,
+    GDExtensionBool *r_valid) {
   p_struct->variant_set_named(p_self, p_key, p_value, r_valid);
 }
-void cgo_callfn_GDNativeInterface_variant_set_keyed(
-    const GDNativeInterface *p_struct, GDNativeVariantPtr p_self,
-    const GDNativeVariantPtr p_key, const GDNativeVariantPtr p_value,
-    GDNativeBool *r_valid) {
+void cgo_callfn_GDExtensionInterface_variant_set_keyed(
+    const GDExtensionInterface *p_struct, GDExtensionVariantPtr p_self,
+    GDExtensionConstVariantPtr p_key, GDExtensionConstVariantPtr p_value,
+    GDExtensionBool *r_valid) {
   p_struct->variant_set_keyed(p_self, p_key, p_value, r_valid);
 }
-void cgo_callfn_GDNativeInterface_variant_set_indexed(
-    const GDNativeInterface *p_struct, GDNativeVariantPtr p_self,
-    GDNativeInt p_index, const GDNativeVariantPtr p_value,
-    GDNativeBool *r_valid, GDNativeBool *r_oob) {
+void cgo_callfn_GDExtensionInterface_variant_set_indexed(
+    const GDExtensionInterface *p_struct, GDExtensionVariantPtr p_self,
+    GDExtensionInt p_index, GDExtensionConstVariantPtr p_value,
+    GDExtensionBool *r_valid, GDExtensionBool *r_oob) {
   p_struct->variant_set_indexed(p_self, p_index, p_value, r_valid, r_oob);
 }
-void cgo_callfn_GDNativeInterface_variant_get(const GDNativeInterface *p_struct,
-                                              const GDNativeVariantPtr p_self,
-                                              const GDNativeVariantPtr p_key,
-                                              GDNativeVariantPtr r_ret,
-                                              GDNativeBool *r_valid) {
+void cgo_callfn_GDExtensionInterface_variant_get(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionConstVariantPtr p_key, GDExtensionVariantPtr r_ret,
+    GDExtensionBool *r_valid) {
   p_struct->variant_get(p_self, p_key, r_ret, r_valid);
 }
-void cgo_callfn_GDNativeInterface_variant_get_named(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    const GDNativeStringNamePtr p_key, GDNativeVariantPtr r_ret,
-    GDNativeBool *r_valid) {
+void cgo_callfn_GDExtensionInterface_variant_get_named(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionConstStringNamePtr p_key, GDExtensionVariantPtr r_ret,
+    GDExtensionBool *r_valid) {
   p_struct->variant_get_named(p_self, p_key, r_ret, r_valid);
 }
-void cgo_callfn_GDNativeInterface_variant_get_keyed(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    const GDNativeVariantPtr p_key, GDNativeVariantPtr r_ret,
-    GDNativeBool *r_valid) {
+void cgo_callfn_GDExtensionInterface_variant_get_keyed(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionConstVariantPtr p_key, GDExtensionVariantPtr r_ret,
+    GDExtensionBool *r_valid) {
   p_struct->variant_get_keyed(p_self, p_key, r_ret, r_valid);
 }
-void cgo_callfn_GDNativeInterface_variant_get_indexed(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    GDNativeInt p_index, GDNativeVariantPtr r_ret, GDNativeBool *r_valid,
-    GDNativeBool *r_oob) {
+void cgo_callfn_GDExtensionInterface_variant_get_indexed(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionInt p_index, GDExtensionVariantPtr r_ret,
+    GDExtensionBool *r_valid, GDExtensionBool *r_oob) {
   p_struct->variant_get_indexed(p_self, p_index, r_ret, r_valid, r_oob);
 }
-GDNativeBool cgo_callfn_GDNativeInterface_variant_iter_init(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    GDNativeVariantPtr r_iter, GDNativeBool *r_valid) {
+GDExtensionBool cgo_callfn_GDExtensionInterface_variant_iter_init(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionVariantPtr r_iter, GDExtensionBool *r_valid) {
   return p_struct->variant_iter_init(p_self, r_iter, r_valid);
 }
-GDNativeBool cgo_callfn_GDNativeInterface_variant_iter_next(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    GDNativeVariantPtr r_iter, GDNativeBool *r_valid) {
+GDExtensionBool cgo_callfn_GDExtensionInterface_variant_iter_next(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionVariantPtr r_iter, GDExtensionBool *r_valid) {
   return p_struct->variant_iter_next(p_self, r_iter, r_valid);
 }
-void cgo_callfn_GDNativeInterface_variant_iter_get(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    GDNativeVariantPtr r_iter, GDNativeVariantPtr r_ret,
-    GDNativeBool *r_valid) {
+void cgo_callfn_GDExtensionInterface_variant_iter_get(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionVariantPtr r_iter, GDExtensionVariantPtr r_ret,
+    GDExtensionBool *r_valid) {
   p_struct->variant_iter_get(p_self, r_iter, r_ret, r_valid);
 }
-GDNativeInt
-cgo_callfn_GDNativeInterface_variant_hash(const GDNativeInterface *p_struct,
-                                          const GDNativeVariantPtr p_self) {
+GDExtensionInt cgo_callfn_GDExtensionInterface_variant_hash(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self) {
   return p_struct->variant_hash(p_self);
 }
-GDNativeInt cgo_callfn_GDNativeInterface_variant_recursive_hash(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    GDNativeInt p_recursion_count) {
+GDExtensionInt cgo_callfn_GDExtensionInterface_variant_recursive_hash(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionInt p_recursion_count) {
   return p_struct->variant_recursive_hash(p_self, p_recursion_count);
 }
-GDNativeBool cgo_callfn_GDNativeInterface_variant_hash_compare(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    const GDNativeVariantPtr p_other) {
+GDExtensionBool cgo_callfn_GDExtensionInterface_variant_hash_compare(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionConstVariantPtr p_other) {
   return p_struct->variant_hash_compare(p_self, p_other);
 }
-GDNativeBool cgo_callfn_GDNativeInterface_variant_booleanize(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self) {
+GDExtensionBool cgo_callfn_GDExtensionInterface_variant_booleanize(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self) {
   return p_struct->variant_booleanize(p_self);
 }
-void cgo_callfn_GDNativeInterface_variant_duplicate(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    GDNativeVariantPtr r_ret, GDNativeBool p_deep) {
+void cgo_callfn_GDExtensionInterface_variant_duplicate(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionVariantPtr r_ret, GDExtensionBool p_deep) {
   p_struct->variant_duplicate(p_self, r_ret, p_deep);
 }
-void cgo_callfn_GDNativeInterface_variant_stringify(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    GDNativeStringPtr r_ret) {
+void cgo_callfn_GDExtensionInterface_variant_stringify(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionStringPtr r_ret) {
   p_struct->variant_stringify(p_self, r_ret);
 }
-GDNativeVariantType
-cgo_callfn_GDNativeInterface_variant_get_type(const GDNativeInterface *p_struct,
-                                              const GDNativeVariantPtr p_self) {
+GDExtensionVariantType cgo_callfn_GDExtensionInterface_variant_get_type(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self) {
   return p_struct->variant_get_type(p_self);
 }
-GDNativeBool cgo_callfn_GDNativeInterface_variant_has_method(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    const GDNativeStringNamePtr p_method) {
+GDExtensionBool cgo_callfn_GDExtensionInterface_variant_has_method(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionConstStringNamePtr p_method) {
   return p_struct->variant_has_method(p_self, p_method);
 }
-GDNativeBool cgo_callfn_GDNativeInterface_variant_has_member(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type,
-    const GDNativeStringNamePtr p_member) {
+GDExtensionBool cgo_callfn_GDExtensionInterface_variant_has_member(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type,
+    GDExtensionConstStringNamePtr p_member) {
   return p_struct->variant_has_member(p_type, p_member);
 }
-GDNativeBool cgo_callfn_GDNativeInterface_variant_has_key(
-    const GDNativeInterface *p_struct, const GDNativeVariantPtr p_self,
-    const GDNativeVariantPtr p_key, GDNativeBool *r_valid) {
+GDExtensionBool cgo_callfn_GDExtensionInterface_variant_has_key(
+    const GDExtensionInterface *p_struct, GDExtensionConstVariantPtr p_self,
+    GDExtensionConstVariantPtr p_key, GDExtensionBool *r_valid) {
   return p_struct->variant_has_key(p_self, p_key, r_valid);
 }
-void cgo_callfn_GDNativeInterface_variant_get_type_name(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type,
-    GDNativeStringPtr r_name) {
+void cgo_callfn_GDExtensionInterface_variant_get_type_name(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type,
+    GDExtensionStringPtr r_name) {
   p_struct->variant_get_type_name(p_type, r_name);
 }
-GDNativeBool cgo_callfn_GDNativeInterface_variant_can_convert(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_from,
-    GDNativeVariantType p_to) {
+GDExtensionBool cgo_callfn_GDExtensionInterface_variant_can_convert(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_from,
+    GDExtensionVariantType p_to) {
   return p_struct->variant_can_convert(p_from, p_to);
 }
-GDNativeBool cgo_callfn_GDNativeInterface_variant_can_convert_strict(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_from,
-    GDNativeVariantType p_to) {
+GDExtensionBool cgo_callfn_GDExtensionInterface_variant_can_convert_strict(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_from,
+    GDExtensionVariantType p_to) {
   return p_struct->variant_can_convert_strict(p_from, p_to);
 }
-GDNativeVariantFromTypeConstructorFunc
-cgo_callfn_GDNativeInterface_get_variant_from_type_constructor(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type) {
+GDExtensionVariantFromTypeConstructorFunc
+cgo_callfn_GDExtensionInterface_get_variant_from_type_constructor(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type) {
   return p_struct->get_variant_from_type_constructor(p_type);
 }
-GDNativeTypeFromVariantConstructorFunc
-cgo_callfn_GDNativeInterface_get_variant_to_type_constructor(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type) {
+GDExtensionTypeFromVariantConstructorFunc
+cgo_callfn_GDExtensionInterface_get_variant_to_type_constructor(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type) {
   return p_struct->get_variant_to_type_constructor(p_type);
 }
-GDNativePtrOperatorEvaluator
-cgo_callfn_GDNativeInterface_variant_get_ptr_operator_evaluator(
-    const GDNativeInterface *p_struct, GDNativeVariantOperator p_operator,
-    GDNativeVariantType p_type_a, GDNativeVariantType p_type_b) {
+GDExtensionPtrOperatorEvaluator
+cgo_callfn_GDExtensionInterface_variant_get_ptr_operator_evaluator(
+    const GDExtensionInterface *p_struct, GDExtensionVariantOperator p_operator,
+    GDExtensionVariantType p_type_a, GDExtensionVariantType p_type_b) {
   return p_struct->variant_get_ptr_operator_evaluator(p_operator, p_type_a,
                                                       p_type_b);
 }
-GDNativePtrBuiltInMethod
-cgo_callfn_GDNativeInterface_variant_get_ptr_builtin_method(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type,
-    const char *p_method, GDNativeInt p_hash) {
+GDExtensionPtrBuiltInMethod
+cgo_callfn_GDExtensionInterface_variant_get_ptr_builtin_method(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type,
+    GDExtensionConstStringNamePtr p_method, GDExtensionInt p_hash) {
   return p_struct->variant_get_ptr_builtin_method(p_type, p_method, p_hash);
 }
-GDNativePtrConstructor cgo_callfn_GDNativeInterface_variant_get_ptr_constructor(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type,
+GDExtensionPtrConstructor
+cgo_callfn_GDExtensionInterface_variant_get_ptr_constructor(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type,
     int32_t p_constructor) {
   return p_struct->variant_get_ptr_constructor(p_type, p_constructor);
 }
-GDNativePtrDestructor cgo_callfn_GDNativeInterface_variant_get_ptr_destructor(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type) {
+GDExtensionPtrDestructor
+cgo_callfn_GDExtensionInterface_variant_get_ptr_destructor(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type) {
   return p_struct->variant_get_ptr_destructor(p_type);
 }
-void cgo_callfn_GDNativeInterface_variant_construct(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type,
-    GDNativeVariantPtr p_base, const GDNativeVariantPtr *p_args,
-    int32_t p_argument_count, GDNativeCallError *r_error) {
+void cgo_callfn_GDExtensionInterface_variant_construct(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type,
+    GDExtensionVariantPtr p_base, const GDExtensionConstVariantPtr *p_args,
+    int32_t p_argument_count, GDExtensionCallError *r_error) {
   p_struct->variant_construct(p_type, p_base, p_args, p_argument_count,
                               r_error);
 }
-GDNativePtrSetter cgo_callfn_GDNativeInterface_variant_get_ptr_setter(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type,
-    const char *p_member) {
+GDExtensionPtrSetter cgo_callfn_GDExtensionInterface_variant_get_ptr_setter(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type,
+    GDExtensionConstStringNamePtr p_member) {
   return p_struct->variant_get_ptr_setter(p_type, p_member);
 }
-GDNativePtrGetter cgo_callfn_GDNativeInterface_variant_get_ptr_getter(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type,
-    const char *p_member) {
+GDExtensionPtrGetter cgo_callfn_GDExtensionInterface_variant_get_ptr_getter(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type,
+    GDExtensionConstStringNamePtr p_member) {
   return p_struct->variant_get_ptr_getter(p_type, p_member);
 }
-GDNativePtrIndexedSetter
-cgo_callfn_GDNativeInterface_variant_get_ptr_indexed_setter(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type) {
+GDExtensionPtrIndexedSetter
+cgo_callfn_GDExtensionInterface_variant_get_ptr_indexed_setter(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type) {
   return p_struct->variant_get_ptr_indexed_setter(p_type);
 }
-GDNativePtrIndexedGetter
-cgo_callfn_GDNativeInterface_variant_get_ptr_indexed_getter(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type) {
+GDExtensionPtrIndexedGetter
+cgo_callfn_GDExtensionInterface_variant_get_ptr_indexed_getter(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type) {
   return p_struct->variant_get_ptr_indexed_getter(p_type);
 }
-GDNativePtrKeyedSetter
-cgo_callfn_GDNativeInterface_variant_get_ptr_keyed_setter(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type) {
+GDExtensionPtrKeyedSetter
+cgo_callfn_GDExtensionInterface_variant_get_ptr_keyed_setter(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type) {
   return p_struct->variant_get_ptr_keyed_setter(p_type);
 }
-GDNativePtrKeyedGetter
-cgo_callfn_GDNativeInterface_variant_get_ptr_keyed_getter(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type) {
+GDExtensionPtrKeyedGetter
+cgo_callfn_GDExtensionInterface_variant_get_ptr_keyed_getter(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type) {
   return p_struct->variant_get_ptr_keyed_getter(p_type);
 }
-GDNativePtrKeyedChecker
-cgo_callfn_GDNativeInterface_variant_get_ptr_keyed_checker(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type) {
+GDExtensionPtrKeyedChecker
+cgo_callfn_GDExtensionInterface_variant_get_ptr_keyed_checker(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type) {
   return p_struct->variant_get_ptr_keyed_checker(p_type);
 }
-void cgo_callfn_GDNativeInterface_variant_get_constant_value(
-    const GDNativeInterface *p_struct, GDNativeVariantType p_type,
-    const char *p_constant, GDNativeVariantPtr r_ret) {
+void cgo_callfn_GDExtensionInterface_variant_get_constant_value(
+    const GDExtensionInterface *p_struct, GDExtensionVariantType p_type,
+    GDExtensionConstStringNamePtr p_constant, GDExtensionVariantPtr r_ret) {
   p_struct->variant_get_constant_value(p_type, p_constant, r_ret);
 }
-GDNativePtrUtilityFunction
-cgo_callfn_GDNativeInterface_variant_get_ptr_utility_function(
-    const GDNativeInterface *p_struct, const char *p_function,
-    GDNativeInt p_hash) {
+GDExtensionPtrUtilityFunction
+cgo_callfn_GDExtensionInterface_variant_get_ptr_utility_function(
+    const GDExtensionInterface *p_struct,
+    GDExtensionConstStringNamePtr p_function, GDExtensionInt p_hash) {
   return p_struct->variant_get_ptr_utility_function(p_function, p_hash);
 }
-void cgo_callfn_GDNativeInterface_string_new_with_latin1_chars(
-    const GDNativeInterface *p_struct, GDNativeStringPtr r_dest,
+void cgo_callfn_GDExtensionInterface_string_new_with_latin1_chars(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr r_dest,
     const char *p_contents) {
   p_struct->string_new_with_latin1_chars(r_dest, p_contents);
 }
-void cgo_callfn_GDNativeInterface_string_new_with_utf8_chars(
-    const GDNativeInterface *p_struct, GDNativeStringPtr r_dest,
+void cgo_callfn_GDExtensionInterface_string_new_with_utf8_chars(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr r_dest,
     const char *p_contents) {
   p_struct->string_new_with_utf8_chars(r_dest, p_contents);
 }
-void cgo_callfn_GDNativeInterface_string_new_with_utf16_chars(
-    const GDNativeInterface *p_struct, GDNativeStringPtr r_dest,
+void cgo_callfn_GDExtensionInterface_string_new_with_utf16_chars(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr r_dest,
     const char16_t *p_contents) {
   p_struct->string_new_with_utf16_chars(r_dest, p_contents);
 }
-void cgo_callfn_GDNativeInterface_string_new_with_utf32_chars(
-    const GDNativeInterface *p_struct, GDNativeStringPtr r_dest,
+void cgo_callfn_GDExtensionInterface_string_new_with_utf32_chars(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr r_dest,
     const char32_t *p_contents) {
   p_struct->string_new_with_utf32_chars(r_dest, p_contents);
 }
-void cgo_callfn_GDNativeInterface_string_new_with_wide_chars(
-    const GDNativeInterface *p_struct, GDNativeStringPtr r_dest,
+void cgo_callfn_GDExtensionInterface_string_new_with_wide_chars(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr r_dest,
     const wchar_t *p_contents) {
   p_struct->string_new_with_wide_chars(r_dest, p_contents);
 }
-void cgo_callfn_GDNativeInterface_string_new_with_latin1_chars_and_len(
-    const GDNativeInterface *p_struct, GDNativeStringPtr r_dest,
-    const char *p_contents, const GDNativeInt p_size) {
+void cgo_callfn_GDExtensionInterface_string_new_with_latin1_chars_and_len(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr r_dest,
+    const char *p_contents, GDExtensionInt p_size) {
   p_struct->string_new_with_latin1_chars_and_len(r_dest, p_contents, p_size);
 }
-void cgo_callfn_GDNativeInterface_string_new_with_utf8_chars_and_len(
-    const GDNativeInterface *p_struct, GDNativeStringPtr r_dest,
-    const char *p_contents, const GDNativeInt p_size) {
+void cgo_callfn_GDExtensionInterface_string_new_with_utf8_chars_and_len(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr r_dest,
+    const char *p_contents, GDExtensionInt p_size) {
   p_struct->string_new_with_utf8_chars_and_len(r_dest, p_contents, p_size);
 }
-void cgo_callfn_GDNativeInterface_string_new_with_utf16_chars_and_len(
-    const GDNativeInterface *p_struct, GDNativeStringPtr r_dest,
-    const char16_t *p_contents, const GDNativeInt p_size) {
+void cgo_callfn_GDExtensionInterface_string_new_with_utf16_chars_and_len(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr r_dest,
+    const char16_t *p_contents, GDExtensionInt p_size) {
   p_struct->string_new_with_utf16_chars_and_len(r_dest, p_contents, p_size);
 }
-void cgo_callfn_GDNativeInterface_string_new_with_utf32_chars_and_len(
-    const GDNativeInterface *p_struct, GDNativeStringPtr r_dest,
-    const char32_t *p_contents, const GDNativeInt p_size) {
+void cgo_callfn_GDExtensionInterface_string_new_with_utf32_chars_and_len(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr r_dest,
+    const char32_t *p_contents, GDExtensionInt p_size) {
   p_struct->string_new_with_utf32_chars_and_len(r_dest, p_contents, p_size);
 }
-void cgo_callfn_GDNativeInterface_string_new_with_wide_chars_and_len(
-    const GDNativeInterface *p_struct, GDNativeStringPtr r_dest,
-    const wchar_t *p_contents, const GDNativeInt p_size) {
+void cgo_callfn_GDExtensionInterface_string_new_with_wide_chars_and_len(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr r_dest,
+    const wchar_t *p_contents, GDExtensionInt p_size) {
   p_struct->string_new_with_wide_chars_and_len(r_dest, p_contents, p_size);
 }
-GDNativeInt cgo_callfn_GDNativeInterface_string_to_latin1_chars(
-    const GDNativeInterface *p_struct, const GDNativeStringPtr p_self,
-    char *r_text, GDNativeInt p_max_write_length) {
+GDExtensionInt cgo_callfn_GDExtensionInterface_string_to_latin1_chars(
+    const GDExtensionInterface *p_struct, GDExtensionConstStringPtr p_self,
+    char *r_text, GDExtensionInt p_max_write_length) {
   return p_struct->string_to_latin1_chars(p_self, r_text, p_max_write_length);
 }
-GDNativeInt cgo_callfn_GDNativeInterface_string_to_utf8_chars(
-    const GDNativeInterface *p_struct, const GDNativeStringPtr p_self,
-    char *r_text, GDNativeInt p_max_write_length) {
+GDExtensionInt cgo_callfn_GDExtensionInterface_string_to_utf8_chars(
+    const GDExtensionInterface *p_struct, GDExtensionConstStringPtr p_self,
+    char *r_text, GDExtensionInt p_max_write_length) {
   return p_struct->string_to_utf8_chars(p_self, r_text, p_max_write_length);
 }
-GDNativeInt cgo_callfn_GDNativeInterface_string_to_utf16_chars(
-    const GDNativeInterface *p_struct, const GDNativeStringPtr p_self,
-    char16_t *r_text, GDNativeInt p_max_write_length) {
+GDExtensionInt cgo_callfn_GDExtensionInterface_string_to_utf16_chars(
+    const GDExtensionInterface *p_struct, GDExtensionConstStringPtr p_self,
+    char16_t *r_text, GDExtensionInt p_max_write_length) {
   return p_struct->string_to_utf16_chars(p_self, r_text, p_max_write_length);
 }
-GDNativeInt cgo_callfn_GDNativeInterface_string_to_utf32_chars(
-    const GDNativeInterface *p_struct, const GDNativeStringPtr p_self,
-    char32_t *r_text, GDNativeInt p_max_write_length) {
+GDExtensionInt cgo_callfn_GDExtensionInterface_string_to_utf32_chars(
+    const GDExtensionInterface *p_struct, GDExtensionConstStringPtr p_self,
+    char32_t *r_text, GDExtensionInt p_max_write_length) {
   return p_struct->string_to_utf32_chars(p_self, r_text, p_max_write_length);
 }
-GDNativeInt cgo_callfn_GDNativeInterface_string_to_wide_chars(
-    const GDNativeInterface *p_struct, const GDNativeStringPtr p_self,
-    wchar_t *r_text, GDNativeInt p_max_write_length) {
+GDExtensionInt cgo_callfn_GDExtensionInterface_string_to_wide_chars(
+    const GDExtensionInterface *p_struct, GDExtensionConstStringPtr p_self,
+    wchar_t *r_text, GDExtensionInt p_max_write_length) {
   return p_struct->string_to_wide_chars(p_self, r_text, p_max_write_length);
 }
-char32_t *cgo_callfn_GDNativeInterface_string_operator_index(
-    const GDNativeInterface *p_struct, GDNativeStringPtr p_self,
-    GDNativeInt p_index) {
+char32_t *cgo_callfn_GDExtensionInterface_string_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->string_operator_index(p_self, p_index);
 }
-const char32_t *cgo_callfn_GDNativeInterface_string_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeStringPtr p_self,
-    GDNativeInt p_index) {
+const char32_t *cgo_callfn_GDExtensionInterface_string_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstStringPtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->string_operator_index_const(p_self, p_index);
 }
-uint8_t *cgo_callfn_GDNativeInterface_packed_byte_array_operator_index(
-    const GDNativeInterface *p_struct, GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+uint8_t *cgo_callfn_GDExtensionInterface_packed_byte_array_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_byte_array_operator_index(p_self, p_index);
 }
 const uint8_t *
-cgo_callfn_GDNativeInterface_packed_byte_array_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+cgo_callfn_GDExtensionInterface_packed_byte_array_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_byte_array_operator_index_const(p_self, p_index);
 }
-GDNativeTypePtr cgo_callfn_GDNativeInterface_packed_color_array_operator_index(
-    const GDNativeInterface *p_struct, GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+GDExtensionTypePtr
+cgo_callfn_GDExtensionInterface_packed_color_array_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_color_array_operator_index(p_self, p_index);
 }
-GDNativeTypePtr
-cgo_callfn_GDNativeInterface_packed_color_array_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+GDExtensionTypePtr
+cgo_callfn_GDExtensionInterface_packed_color_array_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_color_array_operator_index_const(p_self, p_index);
 }
-float *cgo_callfn_GDNativeInterface_packed_float32_array_operator_index(
-    const GDNativeInterface *p_struct, GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+float *cgo_callfn_GDExtensionInterface_packed_float32_array_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_float32_array_operator_index(p_self, p_index);
 }
 const float *
-cgo_callfn_GDNativeInterface_packed_float32_array_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+cgo_callfn_GDExtensionInterface_packed_float32_array_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_float32_array_operator_index_const(p_self, p_index);
 }
-double *cgo_callfn_GDNativeInterface_packed_float64_array_operator_index(
-    const GDNativeInterface *p_struct, GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+double *cgo_callfn_GDExtensionInterface_packed_float64_array_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_float64_array_operator_index(p_self, p_index);
 }
 const double *
-cgo_callfn_GDNativeInterface_packed_float64_array_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+cgo_callfn_GDExtensionInterface_packed_float64_array_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_float64_array_operator_index_const(p_self, p_index);
 }
-int32_t *cgo_callfn_GDNativeInterface_packed_int32_array_operator_index(
-    const GDNativeInterface *p_struct, GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+int32_t *cgo_callfn_GDExtensionInterface_packed_int32_array_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_int32_array_operator_index(p_self, p_index);
 }
 const int32_t *
-cgo_callfn_GDNativeInterface_packed_int32_array_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+cgo_callfn_GDExtensionInterface_packed_int32_array_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_int32_array_operator_index_const(p_self, p_index);
 }
-int64_t *cgo_callfn_GDNativeInterface_packed_int64_array_operator_index(
-    const GDNativeInterface *p_struct, GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+int64_t *cgo_callfn_GDExtensionInterface_packed_int64_array_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_int64_array_operator_index(p_self, p_index);
 }
 const int64_t *
-cgo_callfn_GDNativeInterface_packed_int64_array_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+cgo_callfn_GDExtensionInterface_packed_int64_array_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_int64_array_operator_index_const(p_self, p_index);
 }
-GDNativeStringPtr
-cgo_callfn_GDNativeInterface_packed_string_array_operator_index(
-    const GDNativeInterface *p_struct, GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+GDExtensionStringPtr
+cgo_callfn_GDExtensionInterface_packed_string_array_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_string_array_operator_index(p_self, p_index);
 }
-GDNativeStringPtr
-cgo_callfn_GDNativeInterface_packed_string_array_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+GDExtensionStringPtr
+cgo_callfn_GDExtensionInterface_packed_string_array_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_string_array_operator_index_const(p_self, p_index);
 }
-GDNativeTypePtr
-cgo_callfn_GDNativeInterface_packed_vector2_array_operator_index(
-    const GDNativeInterface *p_struct, GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+GDExtensionTypePtr
+cgo_callfn_GDExtensionInterface_packed_vector2_array_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_vector2_array_operator_index(p_self, p_index);
 }
-GDNativeTypePtr
-cgo_callfn_GDNativeInterface_packed_vector2_array_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+GDExtensionTypePtr
+cgo_callfn_GDExtensionInterface_packed_vector2_array_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_vector2_array_operator_index_const(p_self, p_index);
 }
-GDNativeTypePtr
-cgo_callfn_GDNativeInterface_packed_vector3_array_operator_index(
-    const GDNativeInterface *p_struct, GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+GDExtensionTypePtr
+cgo_callfn_GDExtensionInterface_packed_vector3_array_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_vector3_array_operator_index(p_self, p_index);
 }
-GDNativeTypePtr
-cgo_callfn_GDNativeInterface_packed_vector3_array_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+GDExtensionTypePtr
+cgo_callfn_GDExtensionInterface_packed_vector3_array_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->packed_vector3_array_operator_index_const(p_self, p_index);
 }
-GDNativeVariantPtr cgo_callfn_GDNativeInterface_array_operator_index(
-    const GDNativeInterface *p_struct, GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+GDExtensionVariantPtr cgo_callfn_GDExtensionInterface_array_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->array_operator_index(p_self, p_index);
 }
-GDNativeVariantPtr cgo_callfn_GDNativeInterface_array_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeTypePtr p_self,
-    GDNativeInt p_index) {
+GDExtensionVariantPtr
+cgo_callfn_GDExtensionInterface_array_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
+    GDExtensionInt p_index) {
   return p_struct->array_operator_index_const(p_self, p_index);
 }
-GDNativeVariantPtr cgo_callfn_GDNativeInterface_dictionary_operator_index(
-    const GDNativeInterface *p_struct, GDNativeTypePtr p_self,
-    const GDNativeVariantPtr p_key) {
+GDExtensionVariantPtr cgo_callfn_GDExtensionInterface_dictionary_operator_index(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionConstVariantPtr p_key) {
   return p_struct->dictionary_operator_index(p_self, p_key);
 }
-GDNativeVariantPtr cgo_callfn_GDNativeInterface_dictionary_operator_index_const(
-    const GDNativeInterface *p_struct, const GDNativeTypePtr p_self,
-    const GDNativeVariantPtr p_key) {
+GDExtensionVariantPtr
+cgo_callfn_GDExtensionInterface_dictionary_operator_index_const(
+    const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
+    GDExtensionConstVariantPtr p_key) {
   return p_struct->dictionary_operator_index_const(p_self, p_key);
 }
-void cgo_callfn_GDNativeInterface_object_method_bind_call(
-    const GDNativeInterface *p_struct,
-    const GDNativeMethodBindPtr p_method_bind, GDNativeObjectPtr p_instance,
-    const GDNativeVariantPtr *p_args, GDNativeInt p_arg_count,
-    GDNativeVariantPtr r_ret, GDNativeCallError *r_error) {
+void cgo_callfn_GDExtensionInterface_object_method_bind_call(
+    const GDExtensionInterface *p_struct,
+    GDExtensionMethodBindPtr p_method_bind, GDExtensionObjectPtr p_instance,
+    const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_arg_count,
+    GDExtensionVariantPtr r_ret, GDExtensionCallError *r_error) {
   p_struct->object_method_bind_call(p_method_bind, p_instance, p_args,
                                     p_arg_count, r_ret, r_error);
 }
-void cgo_callfn_GDNativeInterface_object_method_bind_ptrcall(
-    const GDNativeInterface *p_struct,
-    const GDNativeMethodBindPtr p_method_bind, GDNativeObjectPtr p_instance,
-    const GDNativeTypePtr *p_args, GDNativeTypePtr r_ret) {
+void cgo_callfn_GDExtensionInterface_object_method_bind_ptrcall(
+    const GDExtensionInterface *p_struct,
+    GDExtensionMethodBindPtr p_method_bind, GDExtensionObjectPtr p_instance,
+    const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
   p_struct->object_method_bind_ptrcall(p_method_bind, p_instance, p_args,
                                        r_ret);
 }
-void cgo_callfn_GDNativeInterface_object_destroy(
-    const GDNativeInterface *p_struct, GDNativeObjectPtr p_o) {
+void cgo_callfn_GDExtensionInterface_object_destroy(
+    const GDExtensionInterface *p_struct, GDExtensionObjectPtr p_o) {
   p_struct->object_destroy(p_o);
 }
-GDNativeObjectPtr cgo_callfn_GDNativeInterface_global_get_singleton(
-    const GDNativeInterface *p_struct, const char *p_name) {
+GDExtensionObjectPtr cgo_callfn_GDExtensionInterface_global_get_singleton(
+    const GDExtensionInterface *p_struct,
+    GDExtensionConstStringNamePtr p_name) {
   return p_struct->global_get_singleton(p_name);
 }
-void *cgo_callfn_GDNativeInterface_object_get_instance_binding(
-    const GDNativeInterface *p_struct, GDNativeObjectPtr p_o, void *p_token,
-    const GDNativeInstanceBindingCallbacks *p_callbacks) {
+void *cgo_callfn_GDExtensionInterface_object_get_instance_binding(
+    const GDExtensionInterface *p_struct, GDExtensionObjectPtr p_o,
+    void *p_token, const GDExtensionInstanceBindingCallbacks *p_callbacks) {
   return p_struct->object_get_instance_binding(p_o, p_token, p_callbacks);
 }
-void cgo_callfn_GDNativeInterface_object_set_instance_binding(
-    const GDNativeInterface *p_struct, GDNativeObjectPtr p_o, void *p_token,
-    void *p_binding, const GDNativeInstanceBindingCallbacks *p_callbacks) {
+void cgo_callfn_GDExtensionInterface_object_set_instance_binding(
+    const GDExtensionInterface *p_struct, GDExtensionObjectPtr p_o,
+    void *p_token, void *p_binding,
+    const GDExtensionInstanceBindingCallbacks *p_callbacks) {
   p_struct->object_set_instance_binding(p_o, p_token, p_binding, p_callbacks);
 }
-void cgo_callfn_GDNativeInterface_object_set_instance(
-    const GDNativeInterface *p_struct, GDNativeObjectPtr p_o,
-    const char *p_classname, GDExtensionClassInstancePtr p_instance) {
+void cgo_callfn_GDExtensionInterface_object_set_instance(
+    const GDExtensionInterface *p_struct, GDExtensionObjectPtr p_o,
+    GDExtensionConstStringNamePtr p_classname,
+    GDExtensionClassInstancePtr p_instance) {
   p_struct->object_set_instance(p_o, p_classname, p_instance);
 }
-GDNativeObjectPtr
-cgo_callfn_GDNativeInterface_object_cast_to(const GDNativeInterface *p_struct,
-                                            const GDNativeObjectPtr p_object,
-                                            void *p_class_tag) {
+GDExtensionObjectPtr cgo_callfn_GDExtensionInterface_object_cast_to(
+    const GDExtensionInterface *p_struct, GDExtensionConstObjectPtr p_object,
+    void *p_class_tag) {
   return p_struct->object_cast_to(p_object, p_class_tag);
 }
-GDNativeObjectPtr cgo_callfn_GDNativeInterface_object_get_instance_from_id(
-    const GDNativeInterface *p_struct, GDObjectInstanceID p_instance_id) {
+GDExtensionObjectPtr
+cgo_callfn_GDExtensionInterface_object_get_instance_from_id(
+    const GDExtensionInterface *p_struct, GDObjectInstanceID p_instance_id) {
   return p_struct->object_get_instance_from_id(p_instance_id);
 }
-GDObjectInstanceID cgo_callfn_GDNativeInterface_object_get_instance_id(
-    const GDNativeInterface *p_struct, const GDNativeObjectPtr p_object) {
+GDObjectInstanceID cgo_callfn_GDExtensionInterface_object_get_instance_id(
+    const GDExtensionInterface *p_struct, GDExtensionConstObjectPtr p_object) {
   return p_struct->object_get_instance_id(p_object);
 }
-GDNativeScriptInstancePtr cgo_callfn_GDNativeInterface_script_instance_create(
-    const GDNativeInterface *p_struct,
-    const GDNativeExtensionScriptInstanceInfo *p_info,
-    GDNativeExtensionScriptInstanceDataPtr p_instance_data) {
+GDExtensionObjectPtr cgo_callfn_GDExtensionInterface_ref_get_object(
+    const GDExtensionInterface *p_struct, GDExtensionConstRefPtr p_ref) {
+  return p_struct->ref_get_object(p_ref);
+}
+void cgo_callfn_GDExtensionInterface_ref_set_object(
+    const GDExtensionInterface *p_struct, GDExtensionRefPtr p_ref,
+    GDExtensionObjectPtr p_object) {
+  p_struct->ref_set_object(p_ref, p_object);
+}
+GDExtensionScriptInstancePtr
+cgo_callfn_GDExtensionInterface_script_instance_create(
+    const GDExtensionInterface *p_struct,
+    const GDExtensionScriptInstanceInfo *p_info,
+    GDExtensionScriptInstanceDataPtr p_instance_data) {
   return p_struct->script_instance_create(p_info, p_instance_data);
 }
-GDNativeObjectPtr cgo_callfn_GDNativeInterface_classdb_construct_object(
-    const GDNativeInterface *p_struct, const char *p_classname) {
+GDExtensionObjectPtr cgo_callfn_GDExtensionInterface_classdb_construct_object(
+    const GDExtensionInterface *p_struct,
+    GDExtensionConstStringNamePtr p_classname) {
   return p_struct->classdb_construct_object(p_classname);
 }
-GDNativeMethodBindPtr cgo_callfn_GDNativeInterface_classdb_get_method_bind(
-    const GDNativeInterface *p_struct, const char *p_classname,
-    const char *p_methodname, GDNativeInt p_hash) {
+GDExtensionMethodBindPtr
+cgo_callfn_GDExtensionInterface_classdb_get_method_bind(
+    const GDExtensionInterface *p_struct,
+    GDExtensionConstStringNamePtr p_classname,
+    GDExtensionConstStringNamePtr p_methodname, GDExtensionInt p_hash) {
   return p_struct->classdb_get_method_bind(p_classname, p_methodname, p_hash);
 }
-void *cgo_callfn_GDNativeInterface_classdb_get_class_tag(
-    const GDNativeInterface *p_struct, const char *p_classname) {
+void *cgo_callfn_GDExtensionInterface_classdb_get_class_tag(
+    const GDExtensionInterface *p_struct,
+    GDExtensionConstStringNamePtr p_classname) {
   return p_struct->classdb_get_class_tag(p_classname);
 }
-void cgo_callfn_GDNativeInterface_classdb_register_extension_class(
-    const GDNativeInterface *p_struct,
-    const GDNativeExtensionClassLibraryPtr p_library, const char *p_class_name,
-    const char *p_parent_class_name,
-    const GDNativeExtensionClassCreationInfo *p_extension_funcs) {
+void cgo_callfn_GDExtensionInterface_classdb_register_extension_class(
+    const GDExtensionInterface *p_struct, GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstStringNamePtr p_parent_class_name,
+    const GDExtensionClassCreationInfo *p_extension_funcs) {
   p_struct->classdb_register_extension_class(
       p_library, p_class_name, p_parent_class_name, p_extension_funcs);
 }
-void cgo_callfn_GDNativeInterface_classdb_register_extension_class_method(
-    const GDNativeInterface *p_struct,
-    const GDNativeExtensionClassLibraryPtr p_library, const char *p_class_name,
-    const GDNativeExtensionClassMethodInfo *p_method_info) {
+void cgo_callfn_GDExtensionInterface_classdb_register_extension_class_method(
+    const GDExtensionInterface *p_struct, GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    const GDExtensionClassMethodInfo *p_method_info) {
   p_struct->classdb_register_extension_class_method(p_library, p_class_name,
                                                     p_method_info);
 }
-void cgo_callfn_GDNativeInterface_classdb_register_extension_class_integer_constant(
-    const GDNativeInterface *p_struct,
-    const GDNativeExtensionClassLibraryPtr p_library, const char *p_class_name,
-    const char *p_enum_name, const char *p_constant_name,
-    GDNativeInt p_constant_value, GDNativeBool p_is_bitfield) {
+void cgo_callfn_GDExtensionInterface_classdb_register_extension_class_integer_constant(
+    const GDExtensionInterface *p_struct, GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstStringNamePtr p_enum_name,
+    GDExtensionConstStringNamePtr p_constant_name,
+    GDExtensionInt p_constant_value, GDExtensionBool p_is_bitfield) {
   p_struct->classdb_register_extension_class_integer_constant(
       p_library, p_class_name, p_enum_name, p_constant_name, p_constant_value,
       p_is_bitfield);
 }
-void cgo_callfn_GDNativeInterface_classdb_register_extension_class_property(
-    const GDNativeInterface *p_struct,
-    const GDNativeExtensionClassLibraryPtr p_library, const char *p_class_name,
-    const GDNativePropertyInfo *p_info, const char *p_setter,
-    const char *p_getter) {
+void cgo_callfn_GDExtensionInterface_classdb_register_extension_class_property(
+    const GDExtensionInterface *p_struct, GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    const GDExtensionPropertyInfo *p_info,
+    GDExtensionConstStringNamePtr p_setter,
+    GDExtensionConstStringNamePtr p_getter) {
   p_struct->classdb_register_extension_class_property(
       p_library, p_class_name, p_info, p_setter, p_getter);
 }
-void cgo_callfn_GDNativeInterface_classdb_register_extension_class_property_group(
-    const GDNativeInterface *p_struct,
-    const GDNativeExtensionClassLibraryPtr p_library, const char *p_class_name,
-    const char *p_group_name, const char *p_prefix) {
+void cgo_callfn_GDExtensionInterface_classdb_register_extension_class_property_group(
+    const GDExtensionInterface *p_struct, GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstStringPtr p_group_name,
+    GDExtensionConstStringPtr p_prefix) {
   p_struct->classdb_register_extension_class_property_group(
       p_library, p_class_name, p_group_name, p_prefix);
 }
-void cgo_callfn_GDNativeInterface_classdb_register_extension_class_property_subgroup(
-    const GDNativeInterface *p_struct,
-    const GDNativeExtensionClassLibraryPtr p_library, const char *p_class_name,
-    const char *p_subgroup_name, const char *p_prefix) {
+void cgo_callfn_GDExtensionInterface_classdb_register_extension_class_property_subgroup(
+    const GDExtensionInterface *p_struct, GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstStringPtr p_subgroup_name,
+    GDExtensionConstStringPtr p_prefix) {
   p_struct->classdb_register_extension_class_property_subgroup(
       p_library, p_class_name, p_subgroup_name, p_prefix);
 }
-void cgo_callfn_GDNativeInterface_classdb_register_extension_class_signal(
-    const GDNativeInterface *p_struct,
-    const GDNativeExtensionClassLibraryPtr p_library, const char *p_class_name,
-    const char *p_signal_name, const GDNativePropertyInfo *p_argument_info,
-    GDNativeInt p_argument_count) {
+void cgo_callfn_GDExtensionInterface_classdb_register_extension_class_signal(
+    const GDExtensionInterface *p_struct, GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstStringNamePtr p_signal_name,
+    const GDExtensionPropertyInfo *p_argument_info,
+    GDExtensionInt p_argument_count) {
   p_struct->classdb_register_extension_class_signal(
       p_library, p_class_name, p_signal_name, p_argument_info,
       p_argument_count);
 }
-void cgo_callfn_GDNativeInterface_classdb_unregister_extension_class(
-    const GDNativeInterface *p_struct,
-    const GDNativeExtensionClassLibraryPtr p_library,
-    const char *p_class_name) {
+void cgo_callfn_GDExtensionInterface_classdb_unregister_extension_class(
+    const GDExtensionInterface *p_struct, GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name) {
   p_struct->classdb_unregister_extension_class(p_library, p_class_name);
 }
-void cgo_callfn_GDNativeInterface_get_library_path(
-    const GDNativeInterface *p_struct,
-    const GDNativeExtensionClassLibraryPtr p_library,
-    GDNativeStringPtr r_path) {
+void cgo_callfn_GDExtensionInterface_get_library_path(
+    const GDExtensionInterface *p_struct, GDExtensionClassLibraryPtr p_library,
+    GDExtensionStringPtr r_path) {
   p_struct->get_library_path(p_library, r_path);
 }
-/* struct (8) GDNativeInitialization */
-void cgo_callfn_GDNativeInitialization_initialize(
-    const GDNativeInitialization *p_struct, void *userdata,
-    GDNativeInitializationLevel p_level) {
+/* struct (8) GDExtensionInitialization */
+void cgo_callfn_GDExtensionInitialization_initialize(
+    const GDExtensionInitialization *p_struct, void *userdata,
+    GDExtensionInitializationLevel p_level) {
   p_struct->initialize(userdata, p_level);
 }
-void cgo_callfn_GDNativeInitialization_deinitialize(
-    const GDNativeInitialization *p_struct, void *userdata,
-    GDNativeInitializationLevel p_level) {
+void cgo_callfn_GDExtensionInitialization_deinitialize(
+    const GDExtensionInitialization *p_struct, void *userdata,
+    GDExtensionInitializationLevel p_level) {
   p_struct->deinitialize(userdata, p_level);
 }

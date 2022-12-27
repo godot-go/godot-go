@@ -81,7 +81,7 @@ ci_gen_test_project_files:
 
 test:
 	CI=1 \
-	LOG_LEVEL=debug \
+	LOG_LEVEL=warn \
 	GOGC=off \
 	GODEBUG=gctrace=1 \
 	GOTRACEBACK=1 \
@@ -89,13 +89,13 @@ test:
 	$(GODOT) --headless --verbose --path test/demo/
 
 interactive_test:
-	LOG_LEVEL=debug \
+	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=sbrk=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	$(GODOT) --verbose --debug --path test/demo/
 
 open_demo_in_editor:
-	LOG_LEVEL=debug \
+	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	DISPLAY=:0 \
 	GODEBUG=sbrk=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \

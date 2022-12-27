@@ -12,7 +12,7 @@ type CHeaderFileAST struct {
 }
 
 func (a CHeaderFileAST) CollectFunctions() []TypedefFunction {
-	// there's a duplicate of GDNativeExtensionClassGetPropertyList
+	// there's a duplicate of GDExtensionClassGetPropertyList
 	distinct := map[string]struct{}{}
 	fns := make([]TypedefFunction, 0, len(a.Expr))
 

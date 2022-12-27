@@ -28,32 +28,32 @@ var (
 )
 
 func Generate(projectPath string) {
-	ast, err := generateGDNativeInterfaceAST(projectPath)
+	ast, err := generateGDExtensionInterfaceAST(projectPath)
 
 	if err != nil {
 		panic(err)
 	}
 
-	err = GenerateGDNativeWrapperHeaderFile(projectPath, ast)
+	err = GenerateGDExtensionWrapperHeaderFile(projectPath, ast)
 
 	if err != nil {
 		panic(err)
 	}
 
-	err = GenerateGDNativeWrapperSrcFile(projectPath, ast)
+	err = GenerateGDExtensionWrapperSrcFile(projectPath, ast)
 
 	if err != nil {
 		panic(err)
 	}
 
-	err = GenerateGDNativeWrapperGoFile(projectPath, ast)
+	err = GenerateGDExtensionWrapperGoFile(projectPath, ast)
 
 	if err != nil {
 		panic(err)
 	}
 }
 
-func GenerateGDNativeWrapperHeaderFile(projectPath string, ast clang.CHeaderFileAST) error {
+func GenerateGDExtensionWrapperHeaderFile(projectPath string, ast clang.CHeaderFileAST) error {
 	tmpl, err := template.New("gdnative_wrapper.gen.h").
 		Funcs(template.FuncMap{
 			"snakeCase": strcase.ToSnake,
@@ -91,7 +91,7 @@ func GenerateGDNativeWrapperHeaderFile(projectPath string, ast clang.CHeaderFile
 	return nil
 }
 
-func GenerateGDNativeWrapperSrcFile(projectPath string, ast clang.CHeaderFileAST) error {
+func GenerateGDExtensionWrapperSrcFile(projectPath string, ast clang.CHeaderFileAST) error {
 	tmpl, err := template.New("gdnative_wrapper.gen.c").
 		Funcs(template.FuncMap{
 			"snakeCase": strcase.ToSnake,
@@ -119,7 +119,7 @@ func GenerateGDNativeWrapperSrcFile(projectPath string, ast clang.CHeaderFileAST
 	return nil
 }
 
-func GenerateGDNativeWrapperGoFile(projectPath string, ast clang.CHeaderFileAST) error {
+func GenerateGDExtensionWrapperGoFile(projectPath string, ast clang.CHeaderFileAST) error {
 	tmpl, err := template.New("gdnative_wrapper.gen.go").
 		Funcs(template.FuncMap{
 			"snakeCase":          strcase.ToSnake,
@@ -155,8 +155,8 @@ func GenerateGDNativeWrapperGoFile(projectPath string, ast clang.CHeaderFileAST)
 	return nil
 }
 
-func generateGDNativeInterfaceAST(projectPath string) (clang.CHeaderFileAST, error) {
-	n := filepath.Join(projectPath, "/godot_headers/godot/gdnative_interface.h")
+func generateGDExtensionInterfaceAST(projectPath string) (clang.CHeaderFileAST, error) {
+	n := filepath.Join(projectPath, "/godot_headers/godot/gdextension_interface.h")
 	b, err := os.ReadFile(n)
 
 	if err != nil {

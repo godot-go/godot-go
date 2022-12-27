@@ -11,12 +11,11 @@ type GodotObject [0]byte
 
 // Base for all engine classes, to contain the pointer to the engine instance.
 type Wrapped interface {
-	// GetExtensionClass() TypeName
 	GetGodotObjectOwner() *GodotObject
 	SetGodotObjectOwner(owner *GodotObject)
-	GetClassName() TypeName
-	GetParentClassName() TypeName
-	CastTo(className TypeName) Wrapped
+	GetClassName() string
+	GetParentClassName() string
+	CastTo(className string) Wrapped
 }
 
 type WrappedImpl struct {
@@ -32,21 +31,21 @@ func (w *WrappedImpl) SetGodotObjectOwner(owner *GodotObject) {
 	w.Owner = owner
 }
 
-func (w *WrappedImpl) CastTo(className TypeName) Wrapped {
+func (w *WrappedImpl) CastTo(className string) Wrapped {
 	owner := w.Owner
 
-	tag := GDNativeInterface_classdb_get_class_tag(
+	tag := GDExtensionInterface_classdb_get_class_tag(
 		internal.gdnInterface,
-		string(className),
+		NewStringNameWithLatin1Chars(className).AsGDExtensionStringNamePtr(),
 	)
 
 	if tag == nil {
-		log.Panic("classTag unexpectedly came back nil", zap.String("type", string(className)))
+		log.Panic("classTag unexpectedly came back nil", zap.String("type", className))
 	}
 
-	casted := GDNativeInterface_object_cast_to(
+	casted := GDExtensionInterface_object_cast_to(
 		internal.gdnInterface,
-		(GDNativeObjectPtr)(owner),
+		(GDExtensionConstObjectPtr)(owner),
 		tag,
 	)
 
@@ -54,14 +53,14 @@ func (w *WrappedImpl) CastTo(className TypeName) Wrapped {
 		return nil
 	}
 
-	cbs, ok := gdExtensionBindingGDNativeInstanceBindingCallbacks.Get(className)
+	cbs, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
 
 	if !ok {
 		log.Warn("unable to find callbacks for Object")
 		return nil
 	}
 
-	ret := GDNativeInterface_object_get_instance_binding(
+	ret := GDExtensionInterface_object_get_instance_binding(
 		internal.gdnInterface,
 		casted,
 		internal.token,

@@ -12,7 +12,7 @@ package gdextension
 
 //revive:disable
 
-// #include <godot/gdnative_interface.h>
+// #include <godot/gdextension_interface.h>
 // #include "classes.callbacks.gen.h"
 // #include <stdio.h>
 // #include <stdlib.h>
@@ -22,18 +22,18 @@ import (
 )
 
 func init() {
-	gdExtensionBindingGDNativeInstanceBindingCallbacks = NewSyncMap[TypeName, GDNativeInstanceBindingCallbacks]()
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks = NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
 {{ range $i, $c := $view.Classes -}}
-	gdExtensionBindingGDNativeInstanceBindingCallbacks.Set("{{ $c.Name }}",
-		NewGDNativeInstanceBindingCallbacks(
-			(GDNativeInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_{{ $c.Name }}),
-			(GDNativeInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_{{ $c.Name }}),
-			(GDNativeInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_{{ $c.Name }}),
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("{{ $c.Name }}",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_{{ $c.Name }}),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_{{ $c.Name }}),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_{{ $c.Name }}),
 		))
 {{ end -}}
 
-	gdNativeConstructors = NewSyncMap[TypeName, GDNativeClassGoConstructorFromOwner]()
+	gdNativeConstructors = NewSyncMap[string, GDExtensionClassGoConstructorFromOwner]()
 {{ range $i, $c := $view.Classes -}}
-	gdNativeConstructors.Set("{{ $c.Name }}", NewGDNativeClassFrom{{ $c.Name }}Owner)
+	gdNativeConstructors.Set("{{ $c.Name }}", NewGDExtensionClassFrom{{ $c.Name }}Owner)
 {{ end -}}
 }

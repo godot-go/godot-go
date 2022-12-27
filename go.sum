@@ -1,6 +1,8 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
+github.com/CannibalVox/cgoalloc v1.2.1 h1:5UKpiIRk5rHEO3vNBrCgi8x36K9hUET4Piyyhje2no8=
+github.com/CannibalVox/cgoalloc v1.2.1/go.mod h1:/O2DJI63phdTMjYasQIv7ib3XAi29LEM6BXS+plQJic=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/alecthomas/participle/v2 v2.0.0-alpha7.0.20211016225504-c321d39d8829 h1:He7HwKA7Qh3gGnRRpPZCWbMkIn62nRm+EzlRk7PxHlU=
 github.com/alecthomas/participle/v2 v2.0.0-alpha7.0.20211016225504-c321d39d8829/go.mod h1:NumScqsC42o9x+dGj8/YqsIfhrIQjFEOFovxotbBirA=

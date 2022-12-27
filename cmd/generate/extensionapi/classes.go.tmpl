@@ -12,7 +12,7 @@ package gdextension
 
 //revive:disable
 
-// #include <godot/gdnative_interface.h>
+// #include <godot/gdextension_interface.h>
 // #include "classes.callbacks.gen.h"
 // #include <stdio.h>
 // #include <stdlib.h>
@@ -36,11 +36,11 @@ type {{ goClassStructName $c.Name }} struct {
 	{{ end }}
 }
 
-func NewGDNativeClassFrom{{ $c.Name }}Owner(owner *GodotObject) GDNativeClass {
+func NewGDExtensionClassFrom{{ $c.Name }}Owner(owner *GodotObject) GDExtensionClass {
 	inst := &{{ goClassStructName $c.Name }}{}
 	inst.Owner = owner
 
-	return (GDNativeClass)(inst)
+	return (GDExtensionClass)(inst)
 }
 
 func New{{ $c.Name }}WithGodotOwnerObject(owner *GodotObject) {{ $c.Name }} {
@@ -53,12 +53,12 @@ func New{{ $c.Name }}WithGodotOwnerObject(owner *GodotObject) {{ $c.Name }} {
 {{ if $c.Methods -}}
 
 // section: methods
-func (cx *{{ goClassStructName $c.Name }}) GetClassName() TypeName {
-	return TypeName("{{ $c.Name }}")
+func (cx *{{ goClassStructName $c.Name }}) GetClassName() string {
+	return "{{ $c.Name }}"
 }
 
-func (cx *{{ goClassStructName $c.Name }}) GetParentClassName() TypeName {
-	return TypeName("{{ $c.Inherits }}")
+func (cx *{{ goClassStructName $c.Name }}) GetParentClassName() string {
+	return "{{ $c.Inherits }}"
 }
 
 {{ range $j, $m := $c.Methods -}}
@@ -79,8 +79,8 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 {{- if $m.IsVararg }}varargs ...Variant,{{ end -}}
 ) {{ $fnReturnType }} {
     {{/* TODO: refactor for static instantiation */}}
-	fn := GDNativeInterface_classdb_get_method_bind(
-		internal.gdnInterface, "{{ $c.Name }}", "{{ $m.Name }}", {{ $m.Hash }})
+	fn := GDExtensionInterface_classdb_get_method_bind(
+		internal.gdnInterface, NewStringNameWithLatin1Chars("{{ $c.Name }}").AsGDExtensionStringNamePtr(), NewStringNameWithLatin1Chars("{{ $m.Name }}").AsGDExtensionStringNamePtr(), {{ $m.Hash }})
 
 	if fn == nil {
 		panic("could not find method function {{ $c.Name }}.{{ $m.Name }} ({{ $m.Hash }})")
@@ -94,15 +94,15 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	var ret {{ $fnReturnType }}
 	{{ end -}}
 	{{ if $m.IsVararg}}
-	retPtr := (GDNativeVariantPtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionVariantPtr)(unsafe.Pointer(&ret))
 	{{ else -}}
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 	{{ end -}}
 	{{- else -}}
 	{{ if $m.IsVararg}}
-	retPtr := (GDNativeVariantPtr)(nullptr)
+	retPtr := (GDExtensionVariantPtr)(nullptr)
 	{{ else -}}
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 	{{ end -}}
 	{{- end }}
 
@@ -112,49 +112,49 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	callArgCount := {{ len $m.Arguments }}
 	{{ end -}}
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(callArgCount)
+	argsPtr := AllocArrayPtr[GDExtensionConstVariantPtr](int(callArgCount))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
-
-	{{ if $hasSomeArguments -}}
-	argsPtr := (*[MAX_ARG_COUNT]unsafe.Pointer)(argBytes)
+	{{ if or $m.IsVararg (gt (len $m.Arguments) 0) -}}
+	argsPtrSlice := unsafe.Slice(argsPtr, int(callArgCount))
 	{{ end -}}
 
 	{{ if $m.IsVararg -}}
 	{{ range $j, $a := $m.Arguments -}}
 	arg{{ $j }} := {{ goVariantConstructor $a.Type (goArgumentName $a.Name) }}
-	argsPtr[{{ $j }}] = unsafe.Pointer(&arg{{ $j }})
+	argsPtrSlice[{{ $j }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&arg{{ $j }}))
 	{{ end -}}
 	{{ else -}}
 	{{ range $j, $a := $m.Arguments -}}
-		argsPtr[{{ $j }}] = unsafe.Pointer(&{{ goArgumentName $a.Name }})
+		argsPtrSlice[{{ $j }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))
 	{{ end -}}
 	{{ end -}}
 
     {{ if $m.IsVararg -}}
     for i := range varargs {
-        argsPtr[i + {{ len $m.Arguments }}] = unsafe.Pointer(&varargs[i]) // variant
+		argsPtrSlice[i + {{ len $m.Arguments }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&varargs[i])) // variant
     }
     {{ end -}}
 
-	cOwner := (GDNativeObjectPtr)(unsafe.Pointer(cx.GetGodotObjectOwner()))
+	cOwner := (GDExtensionObjectPtr)(unsafe.Pointer(cx.GetGodotObjectOwner()))
 
 	{{ if $m.IsVararg -}}
-	var err GDNativeCallError
+	var err GDExtensionCallError
 
-	GDNativeInterface_object_method_bind_call(internal.gdnInterface, fn, cOwner, (*GDNativeVariantPtr)(unsafe.Pointer(argsPtr)), (GDNativeInt)(callArgCount), retPtr, &err)
+	GDExtensionInterface_object_method_bind_call(internal.gdnInterface, fn, cOwner, (*GDExtensionConstVariantPtr)(unsafe.Pointer(argsPtr)), (GDExtensionInt)(callArgCount), retPtr, &err)
 
 	if !err.Ok() {
 		log.Panic("method bind call error", zap.Error(&err))
 	}
 	{{ else -}}
-	cArgs := (*GDNativeTypePtr)(argBytes)
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(argsPtr))
 
-	GDNativeInterface_object_method_bind_ptrcall(internal.gdnInterface, fn, cOwner, cArgs, retPtr)
+	GDExtensionInterface_object_method_bind_ptrcall(internal.gdnInterface, fn, cOwner, cArgs, retPtr)
 	{{ end -}}
 
 	{{ with $fnReturnType -}}
-	C.free(argBytes)
+
+	Free(unsafe.Pointer(argsPtr))
+
 	{{ if $view.ContainsClassName $fnReturnType -}}
 	return &ret
 	{{ else -}}

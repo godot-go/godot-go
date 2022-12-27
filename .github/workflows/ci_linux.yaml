@@ -41,11 +41,11 @@ jobs:
         run: |
           echo "${GOROOT_1_19_X64}/bin" >> $GITHUB_PATH
           echo "GITHUB_PATH=${GITHUB_PATH}"
-      - name: Install Godot 4.0 beta 3
+      - name: Install Godot 4.0 beta10
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.0/beta3/Godot_v4.0-beta3_linux.x86_64.zip
-          sudo unzip Godot_v4.0-beta3_linux.x86_64.zip -d /usr/local/bin
-          sudo ln -s Godot_v4.0-beta3_linux.x86_64 /usr/local/bin/godot4
+          wget https://downloads.tuxfamily.org/godotengine/4.0/beta10/Godot_v4.0-beta10_linux.x86_64.zip
+          sudo unzip Godot_v4.0-beta10_linux.x86_64.zip -d /usr/local/bin
+          sudo ln -s Godot_v4.0-beta10_linux.x86_64 /usr/local/bin/godot
       - name: Build
         run: make build
         env:
@@ -63,7 +63,7 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "/usr/local/bin/godot4"
+          GODOT: "/usr/local/bin/godot"
       - name: Test
         if: ${{ matrix.os == 'linux' }}
         timeout-minutes: 2
@@ -72,4 +72,4 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "/usr/local/bin/godot4"
+          GODOT: "/usr/local/bin/godot"

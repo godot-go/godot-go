@@ -7,8 +7,9 @@
 //   "gdnative.h.tmpl" so they can be included in the generated
 //   code.
 //----------------------------------------------------------------------------*/
-#include <godot/gdnative_interface.h>
+#include <godot/gdextension_interface.h>
 #include "gdnative_wrapper.gen.h"
+#include "stacktrace.h"
 
 /* Go cannot call C function pointers directly, so we must generate C wrapper code to call the functions. */
 
@@ -19,6 +20,7 @@
 			, {{ $arg.Type.String }} {{ if $arg.Name }}{{ $arg.Name }}{{ else }}arg_{{ $j }}{{ end }}
 		{{- end -}}
 	) {
+		printStacktrace();
 		{{ if ne "void" $f.ReturnType.String -}} return {{- end }} cb(
 			{{- range $j, $arg := $f.Arguments }}
 				{{- if gt $j 0 }}, {{ end }}

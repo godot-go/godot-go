@@ -341,7 +341,7 @@ var (
 		"/":      "divide",
 		"unary-": "negate",
 		"unary+": "positive",
-		"%":      "module", // this seems like a mispelling, but it stems from gdnative_interface.h constant GDNATIVE_VARIANT_OP_MODULE
+		"%":      "module", // this seems like a mispelling, but it stems from gdextension_interface.h constant GDEXTENSION_VARIANT_OP_MODULE
 		"<<":     "shift_left",
 		">>":     "shift_right",
 		"&":      "bit_and",

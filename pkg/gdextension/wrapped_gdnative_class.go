@@ -1,6 +1,6 @@
 package gdextension
 
-// #include <godot/gdnative_interface.h>
+// #include <godot/gdextension_interface.h>
 // #include "wrapped.h"
 import "C"
 import (
@@ -10,18 +10,16 @@ import (
 	"go.uber.org/zap"
 )
 
-type GDNativeClass interface {
+type GDExtensionClass interface {
 	Wrapped
 }
 
-//export GoCallback_GDNativeBindingCreate
-func GoCallback_GDNativeBindingCreate(typeName string, p_token unsafe.Pointer, p_instance unsafe.Pointer) unsafe.Pointer {
-	tn := (TypeName)(typeName)
-
-	fn, ok := gdNativeConstructors.Get(tn)
+//export GoCallback_GDExtensionBindingCreate
+func GoCallback_GDExtensionBindingCreate(typeName string, p_token unsafe.Pointer, p_instance unsafe.Pointer) unsafe.Pointer {
+	fn, ok := gdNativeConstructors.Get(typeName)
 
 	if !ok {
-		log.Panic("unable to find GDNative constructor", zap.String("type", (string)(tn)))
+		log.Panic("unable to find GDExtension constructor", zap.String("type", typeName))
 	}
 
 	owner := (*GodotObject)(p_instance)
@@ -35,22 +33,22 @@ func GoCallback_GDNativeBindingCreate(typeName string, p_token unsafe.Pointer, p
 	return (unsafe.Pointer)(uintptr(objId.Id))
 }
 
-//export GoCallback_GDNativeBindingFree
-func GoCallback_GDNativeBindingFree(typeName string, p_token unsafe.Pointer, p_instance unsafe.Pointer, p_binding unsafe.Pointer) {
+//export GoCallback_GDExtensionBindingFree
+func GoCallback_GDExtensionBindingFree(typeName string, p_token unsafe.Pointer, p_instance unsafe.Pointer, p_binding unsafe.Pointer) {
 	objId := ObjectID{Id: uint64(uintptr(p_binding))}
 
 	if _, ok := internal.gdNativeInstances.Get(objId); !ok {
-		log.Panic("GDNativeClass instance not found to free", zap.Uint64("id", objId.Id))
+		log.Panic("GDExtensionClass instance not found to free", zap.Uint64("id", objId.Id))
 	}
 
-	// inst := (*GDNativeClass)(p_binding)
+	// inst := (*GDExtensionClass)(p_binding)
 
 	// inst.GetGodotObjectOwner()
 
 	internal.gdNativeInstances.Delete(objId)
 }
 
-//export GoCallback_GDNativeBindingReference
-func GoCallback_GDNativeBindingReference(typeName string, p_token unsafe.Pointer, p_instance unsafe.Pointer, p_reference bool) bool {
+//export GoCallback_GDExtensionBindingReference
+func GoCallback_GDExtensionBindingReference(typeName string, p_token unsafe.Pointer, p_instance unsafe.Pointer, p_reference bool) bool {
 	return true
 }

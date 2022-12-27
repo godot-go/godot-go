@@ -12,11 +12,6 @@ package gdextension
 
 //revive:disable
 
-// #include <godot/gdnative_interface.h>
-// #include <stdio.h>
-// #include <stdlib.h>
-import "C"
-
 {{ range $i, $e := $view.GlobalEnums -}}
 type {{ $e.GoName }} int
 const (

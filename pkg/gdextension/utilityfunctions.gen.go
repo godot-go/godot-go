@@ -11,7 +11,7 @@ package gdextension
 
 //revive:disable
 
-// #include <godot/gdnative_interface.h>
+// #include <godot/gdextension_interface.h>
 // #include <stdio.h>
 // #include <stdlib.h>
 import "C"
@@ -25,18 +25,18 @@ import (
 // Sin is under the category "math".
 func Sin(angle_rad float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "sin", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("sin").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function sin (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -45,31 +45,31 @@ func Sin(angle_rad float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Cos is under the category "math".
 func Cos(angle_rad float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "cos", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("cos").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function cos (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -78,31 +78,31 @@ func Cos(angle_rad float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Tan is under the category "math".
 func Tan(angle_rad float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "tan", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("tan").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function tan (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -111,31 +111,31 @@ func Tan(angle_rad float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Sinh is under the category "math".
 func Sinh(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "sinh", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("sinh").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function sinh (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -144,31 +144,31 @@ func Sinh(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Cosh is under the category "math".
 func Cosh(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "cosh", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("cosh").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function cosh (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -177,31 +177,31 @@ func Cosh(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Tanh is under the category "math".
 func Tanh(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "tanh", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("tanh").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function tanh (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -210,31 +210,31 @@ func Tanh(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Asin is under the category "math".
 func Asin(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "asin", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("asin").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function asin (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -243,31 +243,31 @@ func Asin(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Acos is under the category "math".
 func Acos(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "acos", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("acos").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function acos (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -276,31 +276,31 @@ func Acos(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Atan is under the category "math".
 func Atan(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "atan", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("atan").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function atan (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -309,31 +309,31 @@ func Atan(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Atan2 is under the category "math".
 func Atan2(y float32,x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "atan2", 92296394)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("atan2").AsGDExtensionStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function atan2 (92296394)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -343,31 +343,31 @@ func Atan2(y float32,x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Sqrt is under the category "math".
 func Sqrt(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "sqrt", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("sqrt").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function sqrt (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -376,31 +376,31 @@ func Sqrt(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Fmod is under the category "math".
 func Fmod(x float32,y float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "fmod", 92296394)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("fmod").AsGDExtensionStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function fmod (92296394)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -410,31 +410,31 @@ func Fmod(x float32,y float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Fposmod is under the category "math".
 func Fposmod(x float32,y float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "fposmod", 92296394)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("fposmod").AsGDExtensionStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function fposmod (92296394)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -444,31 +444,31 @@ func Fposmod(x float32,y float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Posmod is under the category "math".
 func Posmod(x int32,y int32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "posmod", 3133453818)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("posmod").AsGDExtensionStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function posmod (3133453818)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -478,31 +478,31 @@ func Posmod(x int32,y int32,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Floor is under the category "math".
 func Floor(x Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "floor", 4776452)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("floor").AsGDExtensionStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function floor (4776452)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -511,31 +511,31 @@ func Floor(x Variant,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Floorf is under the category "math".
 func Floorf(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "floorf", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("floorf").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function floorf (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -544,31 +544,31 @@ func Floorf(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Floori is under the category "math".
 func Floori(x float32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "floori", 2780425386)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("floori").AsGDExtensionStringNamePtr(), 2780425386)
 
 	if fn == nil {
 		panic("could not find utility function floori (2780425386)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -577,31 +577,31 @@ func Floori(x float32,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Ceil is under the category "math".
 func Ceil(x Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "ceil", 4776452)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("ceil").AsGDExtensionStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function ceil (4776452)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -610,31 +610,31 @@ func Ceil(x Variant,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Ceilf is under the category "math".
 func Ceilf(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "ceilf", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("ceilf").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function ceilf (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -643,31 +643,31 @@ func Ceilf(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Ceili is under the category "math".
 func Ceili(x float32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "ceili", 2780425386)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("ceili").AsGDExtensionStringNamePtr(), 2780425386)
 
 	if fn == nil {
 		panic("could not find utility function ceili (2780425386)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -676,31 +676,31 @@ func Ceili(x float32,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Round is under the category "math".
 func Round(x Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "round", 4776452)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("round").AsGDExtensionStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function round (4776452)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -709,31 +709,31 @@ func Round(x Variant,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Roundf is under the category "math".
 func Roundf(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "roundf", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("roundf").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function roundf (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -742,31 +742,31 @@ func Roundf(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Roundi is under the category "math".
 func Roundi(x float32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "roundi", 2780425386)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("roundi").AsGDExtensionStringNamePtr(), 2780425386)
 
 	if fn == nil {
 		panic("could not find utility function roundi (2780425386)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -775,31 +775,31 @@ func Roundi(x float32,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Abs is under the category "math".
 func Abs(x Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "abs", 4776452)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("abs").AsGDExtensionStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function abs (4776452)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -808,31 +808,31 @@ func Abs(x Variant,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Absf is under the category "math".
 func Absf(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "absf", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("absf").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function absf (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -841,31 +841,31 @@ func Absf(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Absi is under the category "math".
 func Absi(x int32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "absi", 2157319888)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("absi").AsGDExtensionStringNamePtr(), 2157319888)
 
 	if fn == nil {
 		panic("could not find utility function absi (2157319888)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -874,31 +874,31 @@ func Absi(x int32,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Sign is under the category "math".
 func Sign(x Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "sign", 4776452)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("sign").AsGDExtensionStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function sign (4776452)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -907,31 +907,31 @@ func Sign(x Variant,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Signf is under the category "math".
 func Signf(x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "signf", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("signf").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function signf (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -940,98 +940,31 @@ func Signf(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Signi is under the category "math".
 func Signi(x int32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "signi", 2157319888)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("signi").AsGDExtensionStringNamePtr(), 2157319888)
 
 	if fn == nil {
 		panic("could not find utility function signi (2157319888)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
-
-	
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
-
-	argsPtr[0] = unsafe.Pointer(&x)
-	
-	
-
-	args := (*GDNativeTypePtr)(argBytes)
-
-	argCount := (int32)(1)
-
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
-
-	C.free(argBytes)
-	return ret
-}
-
-// Pow is under the category "math".
-func Pow(base float32,exp float32,) float32 {
-	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "pow", 92296394)
-
-	if fn == nil {
-		panic("could not find utility function pow (92296394)")
-	}
-
-	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
-
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
-
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
-
-	
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
-
-	argsPtr[0] = unsafe.Pointer(&base)
-	argsPtr[1] = unsafe.Pointer(&exp)
-	
-	
-
-	args := (*GDNativeTypePtr)(argBytes)
-
-	argCount := (int32)(2)
-
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
-
-	C.free(argBytes)
-	return ret
-}
-
-// Log is under the category "math".
-func Log(x float32,) float32 {
-	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "log", 2140049587)
-
-	if fn == nil {
-		panic("could not find utility function log (2140049587)")
-	}
-
-	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
-
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
-
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -1040,297 +973,31 @@ func Log(x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
-	return ret
-}
-
-// Exp is under the category "math".
-func Exp(x float32,) float32 {
-	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "exp", 2140049587)
-
-	if fn == nil {
-		panic("could not find utility function exp (2140049587)")
-	}
-
-	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
-
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
-
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
-
-	
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
-
-	argsPtr[0] = unsafe.Pointer(&x)
-	
-	
-
-	args := (*GDNativeTypePtr)(argBytes)
-
-	argCount := (int32)(1)
-
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
-
-	C.free(argBytes)
-	return ret
-}
-
-// IsNan is under the category "math".
-func IsNan(x float32,) bool {
-	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "is_nan", 3569215213)
-
-	if fn == nil {
-		panic("could not find utility function is_nan (3569215213)")
-	}
-
-	var ret bool
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
-
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
-
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
-
-	
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
-
-	argsPtr[0] = unsafe.Pointer(&x)
-	
-	
-
-	args := (*GDNativeTypePtr)(argBytes)
-
-	argCount := (int32)(1)
-
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
-
-	C.free(argBytes)
-	return ret
-}
-
-// IsInf is under the category "math".
-func IsInf(x float32,) bool {
-	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "is_inf", 3569215213)
-
-	if fn == nil {
-		panic("could not find utility function is_inf (3569215213)")
-	}
-
-	var ret bool
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
-
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
-
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
-
-	
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
-
-	argsPtr[0] = unsafe.Pointer(&x)
-	
-	
-
-	args := (*GDNativeTypePtr)(argBytes)
-
-	argCount := (int32)(1)
-
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
-
-	C.free(argBytes)
-	return ret
-}
-
-// IsEqualApprox is under the category "math".
-func IsEqualApprox(a float32,b float32,) bool {
-	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "is_equal_approx", 1400789633)
-
-	if fn == nil {
-		panic("could not find utility function is_equal_approx (1400789633)")
-	}
-
-	var ret bool
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
-
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
-
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
-
-	
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
-
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
-	
-	
-
-	args := (*GDNativeTypePtr)(argBytes)
-
-	argCount := (int32)(2)
-
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
-
-	C.free(argBytes)
-	return ret
-}
-
-// IsZeroApprox is under the category "math".
-func IsZeroApprox(x float32,) bool {
-	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "is_zero_approx", 3569215213)
-
-	if fn == nil {
-		panic("could not find utility function is_zero_approx (3569215213)")
-	}
-
-	var ret bool
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
-
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
-
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
-
-	
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
-
-	argsPtr[0] = unsafe.Pointer(&x)
-	
-	
-
-	args := (*GDNativeTypePtr)(argBytes)
-
-	argCount := (int32)(1)
-
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
-
-	C.free(argBytes)
-	return ret
-}
-
-// IsFinite is under the category "math".
-func IsFinite(x float32,) bool {
-	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "is_finite", 3569215213)
-
-	if fn == nil {
-		panic("could not find utility function is_finite (3569215213)")
-	}
-
-	var ret bool
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
-
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
-
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
-
-	
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
-
-	argsPtr[0] = unsafe.Pointer(&x)
-	
-	
-
-	args := (*GDNativeTypePtr)(argBytes)
-
-	argCount := (int32)(1)
-
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
-
-	C.free(argBytes)
-	return ret
-}
-
-// Ease is under the category "math".
-func Ease(x float32,curve float32,) float32 {
-	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "ease", 92296394)
-
-	if fn == nil {
-		panic("could not find utility function ease (92296394)")
-	}
-
-	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
-
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
-
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
-
-	
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
-
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&curve)
-	
-	
-
-	args := (*GDNativeTypePtr)(argBytes)
-
-	argCount := (int32)(2)
-
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
-
-	C.free(argBytes)
-	return ret
-}
-
-// StepDecimals is under the category "math".
-func StepDecimals(x float32,) int32 {
-	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "step_decimals", 2780425386)
-
-	if fn == nil {
-		panic("could not find utility function step_decimals (2780425386)")
-	}
-
-	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
-
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
-
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
-
-	
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
-
-	argsPtr[0] = unsafe.Pointer(&x)
-	
-	
-
-	args := (*GDNativeTypePtr)(argBytes)
-
-	argCount := (int32)(1)
-
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
-
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Snapped is under the category "math".
-func Snapped(x float32,step float32,) float32 {
+func Snapped(x Variant,step Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "snapped", 92296394)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("snapped").AsGDExtensionStringNamePtr(), 459914704)
 
 	if fn == nil {
-		panic("could not find utility function snapped (92296394)")
+		panic("could not find utility function snapped (459914704)")
 	}
 
-	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	var ret Variant
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -1340,31 +1007,432 @@ func Snapped(x float32,step float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
+	return ret
+}
+
+// Snappedf is under the category "math".
+func Snappedf(x float32,step float32,) float32 {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("snappedf").AsGDExtensionStringNamePtr(), 92296394)
+
+	if fn == nil {
+		panic("could not find utility function snappedf (92296394)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&x)
+	argsPtr[1] = unsafe.Pointer(&step)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(2)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// Snappedi is under the category "math".
+func Snappedi(x float32,step int32,) int32 {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("snappedi").AsGDExtensionStringNamePtr(), 3570758393)
+
+	if fn == nil {
+		panic("could not find utility function snappedi (3570758393)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&x)
+	argsPtr[1] = unsafe.Pointer(&step)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(2)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// Pow is under the category "math".
+func Pow(base float32,exp float32,) float32 {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("pow").AsGDExtensionStringNamePtr(), 92296394)
+
+	if fn == nil {
+		panic("could not find utility function pow (92296394)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&base)
+	argsPtr[1] = unsafe.Pointer(&exp)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(2)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// Log is under the category "math".
+func Log(x float32,) float32 {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("log").AsGDExtensionStringNamePtr(), 2140049587)
+
+	if fn == nil {
+		panic("could not find utility function log (2140049587)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&x)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(1)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// Exp is under the category "math".
+func Exp(x float32,) float32 {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("exp").AsGDExtensionStringNamePtr(), 2140049587)
+
+	if fn == nil {
+		panic("could not find utility function exp (2140049587)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&x)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(1)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// IsNan is under the category "math".
+func IsNan(x float32,) bool {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("is_nan").AsGDExtensionStringNamePtr(), 3569215213)
+
+	if fn == nil {
+		panic("could not find utility function is_nan (3569215213)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&x)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(1)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// IsInf is under the category "math".
+func IsInf(x float32,) bool {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("is_inf").AsGDExtensionStringNamePtr(), 3569215213)
+
+	if fn == nil {
+		panic("could not find utility function is_inf (3569215213)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&x)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(1)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// IsEqualApprox is under the category "math".
+func IsEqualApprox(a float32,b float32,) bool {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("is_equal_approx").AsGDExtensionStringNamePtr(), 1400789633)
+
+	if fn == nil {
+		panic("could not find utility function is_equal_approx (1400789633)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&a)
+	argsPtr[1] = unsafe.Pointer(&b)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(2)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// IsZeroApprox is under the category "math".
+func IsZeroApprox(x float32,) bool {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("is_zero_approx").AsGDExtensionStringNamePtr(), 3569215213)
+
+	if fn == nil {
+		panic("could not find utility function is_zero_approx (3569215213)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&x)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(1)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// IsFinite is under the category "math".
+func IsFinite(x float32,) bool {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("is_finite").AsGDExtensionStringNamePtr(), 3569215213)
+
+	if fn == nil {
+		panic("could not find utility function is_finite (3569215213)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&x)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(1)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// Ease is under the category "math".
+func Ease(x float32,curve float32,) float32 {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("ease").AsGDExtensionStringNamePtr(), 92296394)
+
+	if fn == nil {
+		panic("could not find utility function ease (92296394)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&x)
+	argsPtr[1] = unsafe.Pointer(&curve)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(2)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// StepDecimals is under the category "math".
+func StepDecimals(x float32,) int32 {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("step_decimals").AsGDExtensionStringNamePtr(), 2780425386)
+
+	if fn == nil {
+		panic("could not find utility function step_decimals (2780425386)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&x)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(1)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
 	return ret
 }
 
 // Lerp is under the category "math".
 func Lerp(from Variant,to Variant,weight Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "lerp", 3389874542)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("lerp").AsGDExtensionStringNamePtr(), 3389874542)
 
 	if fn == nil {
 		panic("could not find utility function lerp (3389874542)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -1375,31 +1443,31 @@ func Lerp(from Variant,to Variant,weight Variant,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Lerpf is under the category "math".
 func Lerpf(from float32,to float32,weight float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "lerpf", 998901048)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("lerpf").AsGDExtensionStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function lerpf (998901048)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -1410,31 +1478,31 @@ func Lerpf(from float32,to float32,weight float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // CubicInterpolate is under the category "math".
 func CubicInterpolate(from float32,to float32,pre float32,post float32,weight float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "cubic_interpolate", 1090965791)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("cubic_interpolate").AsGDExtensionStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate (1090965791)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(5)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(5))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[5]unsafe.Pointer)(argBytes)
@@ -1447,31 +1515,31 @@ func CubicInterpolate(from float32,to float32,pre float32,post float32,weight fl
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(5)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // CubicInterpolateAngle is under the category "math".
 func CubicInterpolateAngle(from float32,to float32,pre float32,post float32,weight float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "cubic_interpolate_angle", 1090965791)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("cubic_interpolate_angle").AsGDExtensionStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_angle (1090965791)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(5)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(5))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[5]unsafe.Pointer)(argBytes)
@@ -1484,31 +1552,31 @@ func CubicInterpolateAngle(from float32,to float32,pre float32,post float32,weig
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(5)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // CubicInterpolateInTime is under the category "math".
 func CubicInterpolateInTime(from float32,to float32,pre float32,post float32,weight float32,to_t float32,pre_t float32,post_t float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "cubic_interpolate_in_time", 388121036)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("cubic_interpolate_in_time").AsGDExtensionStringNamePtr(), 388121036)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_in_time (388121036)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(8)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(8))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[8]unsafe.Pointer)(argBytes)
@@ -1524,31 +1592,31 @@ func CubicInterpolateInTime(from float32,to float32,pre float32,post float32,wei
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(8)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // CubicInterpolateAngleInTime is under the category "math".
 func CubicInterpolateAngleInTime(from float32,to float32,pre float32,post float32,weight float32,to_t float32,pre_t float32,post_t float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "cubic_interpolate_angle_in_time", 388121036)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("cubic_interpolate_angle_in_time").AsGDExtensionStringNamePtr(), 388121036)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_angle_in_time (388121036)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(8)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(8))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[8]unsafe.Pointer)(argBytes)
@@ -1564,31 +1632,31 @@ func CubicInterpolateAngleInTime(from float32,to float32,pre float32,post float3
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(8)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // BezierInterpolate is under the category "math".
 func BezierInterpolate(start float32,control_1 float32,control_2 float32,end float32,t float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "bezier_interpolate", 1090965791)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("bezier_interpolate").AsGDExtensionStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function bezier_interpolate (1090965791)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(5)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(5))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[5]unsafe.Pointer)(argBytes)
@@ -1601,31 +1669,68 @@ func BezierInterpolate(start float32,control_1 float32,control_2 float32,end flo
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(5)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
+	return ret
+}
+
+// BezierDerivative is under the category "math".
+func BezierDerivative(start float32,control_1 float32,control_2 float32,end float32,t float32,) float32 {
+	
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("bezier_derivative").AsGDExtensionStringNamePtr(), 1090965791)
+
+	if fn == nil {
+		panic("could not find utility function bezier_derivative (1090965791)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(5))
+
+	argBytes := AllocZeros(sz)
+
+	
+	argsPtr := (*[5]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&start)
+	argsPtr[1] = unsafe.Pointer(&control_1)
+	argsPtr[2] = unsafe.Pointer(&control_2)
+	argsPtr[3] = unsafe.Pointer(&end)
+	argsPtr[4] = unsafe.Pointer(&t)
+	
+	
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(5)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
 	return ret
 }
 
 // LerpAngle is under the category "math".
 func LerpAngle(from float32,to float32,weight float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "lerp_angle", 998901048)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("lerp_angle").AsGDExtensionStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function lerp_angle (998901048)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -1636,31 +1741,31 @@ func LerpAngle(from float32,to float32,weight float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // InverseLerp is under the category "math".
 func InverseLerp(from float32,to float32,weight float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "inverse_lerp", 998901048)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("inverse_lerp").AsGDExtensionStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function inverse_lerp (998901048)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -1671,31 +1776,31 @@ func InverseLerp(from float32,to float32,weight float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Remap is under the category "math".
 func Remap(value float32,istart float32,istop float32,ostart float32,ostop float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "remap", 1090965791)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("remap").AsGDExtensionStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function remap (1090965791)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(5)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(5))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[5]unsafe.Pointer)(argBytes)
@@ -1708,31 +1813,31 @@ func Remap(value float32,istart float32,istop float32,ostart float32,ostop float
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(5)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Smoothstep is under the category "math".
 func Smoothstep(from float32,to float32,x float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "smoothstep", 998901048)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("smoothstep").AsGDExtensionStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function smoothstep (998901048)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -1743,31 +1848,31 @@ func Smoothstep(from float32,to float32,x float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // MoveToward is under the category "math".
 func MoveToward(from float32,to float32,delta float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "move_toward", 998901048)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("move_toward").AsGDExtensionStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function move_toward (998901048)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -1778,31 +1883,31 @@ func MoveToward(from float32,to float32,delta float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // DegToRad is under the category "math".
 func DegToRad(deg float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "deg_to_rad", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("deg_to_rad").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function deg_to_rad (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -1811,31 +1916,31 @@ func DegToRad(deg float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // RadToDeg is under the category "math".
 func RadToDeg(rad float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "rad_to_deg", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("rad_to_deg").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function rad_to_deg (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -1844,31 +1949,31 @@ func RadToDeg(rad float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // LinearToDb is under the category "math".
 func LinearToDb(lin float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "linear_to_db", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("linear_to_db").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function linear_to_db (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -1877,31 +1982,31 @@ func LinearToDb(lin float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // DbToLinear is under the category "math".
 func DbToLinear(db float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "db_to_linear", 2140049587)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("db_to_linear").AsGDExtensionStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function db_to_linear (2140049587)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -1910,31 +2015,31 @@ func DbToLinear(db float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Wrap is under the category "math".
 func Wrap(value Variant,min Variant,max Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "wrap", 3389874542)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("wrap").AsGDExtensionStringNamePtr(), 3389874542)
 
 	if fn == nil {
 		panic("could not find utility function wrap (3389874542)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -1945,31 +2050,31 @@ func Wrap(value Variant,min Variant,max Variant,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Wrapi is under the category "math".
 func Wrapi(value int32,min int32,max int32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "wrapi", 650295447)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("wrapi").AsGDExtensionStringNamePtr(), 650295447)
 
 	if fn == nil {
 		panic("could not find utility function wrapi (650295447)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -1980,31 +2085,31 @@ func Wrapi(value int32,min int32,max int32,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Wrapf is under the category "math".
 func Wrapf(value float32,min float32,max float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "wrapf", 998901048)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("wrapf").AsGDExtensionStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function wrapf (998901048)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -2015,31 +2120,31 @@ func Wrapf(value float32,min float32,max float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Max is under the category "math".
 func Max(arg1 Variant,arg2 Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "max", 3896050336)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("max").AsGDExtensionStringNamePtr(), 3896050336)
 
 	if fn == nil {
 		panic("could not find utility function max (3896050336)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -2049,31 +2154,31 @@ func Max(arg1 Variant,arg2 Variant,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Maxi is under the category "math".
 func Maxi(a int32,b int32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "maxi", 3133453818)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("maxi").AsGDExtensionStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function maxi (3133453818)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -2083,31 +2188,31 @@ func Maxi(a int32,b int32,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Maxf is under the category "math".
 func Maxf(a float32,b float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "maxf", 92296394)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("maxf").AsGDExtensionStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function maxf (92296394)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -2117,31 +2222,31 @@ func Maxf(a float32,b float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Min is under the category "math".
 func Min(arg1 Variant,arg2 Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "min", 3896050336)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("min").AsGDExtensionStringNamePtr(), 3896050336)
 
 	if fn == nil {
 		panic("could not find utility function min (3896050336)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -2151,31 +2256,31 @@ func Min(arg1 Variant,arg2 Variant,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Mini is under the category "math".
 func Mini(a int32,b int32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "mini", 3133453818)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("mini").AsGDExtensionStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function mini (3133453818)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -2185,31 +2290,31 @@ func Mini(a int32,b int32,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Minf is under the category "math".
 func Minf(a float32,b float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "minf", 92296394)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("minf").AsGDExtensionStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function minf (92296394)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -2219,31 +2324,31 @@ func Minf(a float32,b float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Clamp is under the category "math".
 func Clamp(value Variant,min Variant,max Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "clamp", 3389874542)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("clamp").AsGDExtensionStringNamePtr(), 3389874542)
 
 	if fn == nil {
 		panic("could not find utility function clamp (3389874542)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -2254,31 +2359,31 @@ func Clamp(value Variant,min Variant,max Variant,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Clampi is under the category "math".
 func Clampi(value int32,min int32,max int32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "clampi", 650295447)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("clampi").AsGDExtensionStringNamePtr(), 650295447)
 
 	if fn == nil {
 		panic("could not find utility function clampi (650295447)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -2289,31 +2394,31 @@ func Clampi(value int32,min int32,max int32,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Clampf is under the category "math".
 func Clampf(value float32,min float32,max float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "clampf", 998901048)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("clampf").AsGDExtensionStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function clampf (998901048)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(3)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(3))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[3]unsafe.Pointer)(argBytes)
@@ -2324,31 +2429,31 @@ func Clampf(value float32,min float32,max float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(3)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // NearestPo2 is under the category "math".
 func NearestPo2(value int32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "nearest_po2", 2157319888)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("nearest_po2").AsGDExtensionStringNamePtr(), 2157319888)
 
 	if fn == nil {
 		panic("could not find utility function nearest_po2 (2157319888)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2357,31 +2462,31 @@ func NearestPo2(value int32,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Pingpong is under the category "math".
 func Pingpong(value float32,length float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "pingpong", 92296394)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("pingpong").AsGDExtensionStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function pingpong (92296394)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -2391,38 +2496,38 @@ func Pingpong(value float32,length float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Randomize is under the category "random".
 func Randomize()  {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "randomize", 1691721052)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("randomize").AsGDExtensionStringNamePtr(), 1691721052)
 
 	if fn == nil {
 		panic("could not find utility function randomize (1691721052)")
 	}
 
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(0)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(0))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(0)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	
 }
@@ -2430,74 +2535,74 @@ func Randomize()  {
 // Randi is under the category "random".
 func Randi() int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "randi", 701202648)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("randi").AsGDExtensionStringNamePtr(), 701202648)
 
 	if fn == nil {
 		panic("could not find utility function randi (701202648)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(0)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(0))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(0)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Randf is under the category "random".
 func Randf() float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "randf", 2086227845)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("randf").AsGDExtensionStringNamePtr(), 2086227845)
 
 	if fn == nil {
 		panic("could not find utility function randf (2086227845)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(0)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(0))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(0)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // RandiRange is under the category "random".
 func RandiRange(from int32,to int32,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "randi_range", 3133453818)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("randi_range").AsGDExtensionStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function randi_range (3133453818)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -2507,31 +2612,31 @@ func RandiRange(from int32,to int32,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // RandfRange is under the category "random".
 func RandfRange(from float32,to float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "randf_range", 92296394)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("randf_range").AsGDExtensionStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function randf_range (92296394)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -2541,31 +2646,31 @@ func RandfRange(from float32,to float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Randfn is under the category "random".
 func Randfn(mean float32,deviation float32,) float32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "randfn", 92296394)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("randfn").AsGDExtensionStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function randfn (92296394)")
 	}
 
 	var ret float32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(2)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[2]unsafe.Pointer)(argBytes)
@@ -2575,30 +2680,30 @@ func Randfn(mean float32,deviation float32,) float32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Seed is under the category "random".
 func Seed(base int32,)  {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "seed", 382931173)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("seed").AsGDExtensionStringNamePtr(), 382931173)
 
 	if fn == nil {
 		panic("could not find utility function seed (382931173)")
 	}
 
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2607,11 +2712,11 @@ func Seed(base int32,)  {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	
 }
@@ -2619,18 +2724,18 @@ func Seed(base int32,)  {
 // RandFromSeed is under the category "random".
 func RandFromSeed(seed int32,) PackedInt64Array {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "rand_from_seed", 1391063685)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("rand_from_seed").AsGDExtensionStringNamePtr(), 1391063685)
 
 	if fn == nil {
 		panic("could not find utility function rand_from_seed (1391063685)")
 	}
 
 	var ret PackedInt64Array
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2639,31 +2744,31 @@ func RandFromSeed(seed int32,) PackedInt64Array {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Weakref is under the category "general".
 func Weakref(obj Variant,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "weakref", 4776452)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("weakref").AsGDExtensionStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function weakref (4776452)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2672,31 +2777,31 @@ func Weakref(obj Variant,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Typeof is under the category "general".
 func Typeof(variable Variant,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "typeof", 326422594)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("typeof").AsGDExtensionStringNamePtr(), 326422594)
 
 	if fn == nil {
 		panic("could not find utility function typeof (326422594)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2705,31 +2810,31 @@ func Typeof(variable Variant,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Str is under the category "general".
 func Str(arg1 Variant,) String {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "str", 32569176)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("str").AsGDExtensionStringNamePtr(), 32569176)
 
 	if fn == nil {
 		panic("could not find utility function str (32569176)")
 	}
 
 	var ret String
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2738,31 +2843,31 @@ func Str(arg1 Variant,) String {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // ErrorString is under the category "general".
 func ErrorString(error int32,) String {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "error_string", 942708242)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("error_string").AsGDExtensionStringNamePtr(), 942708242)
 
 	if fn == nil {
 		panic("could not find utility function error_string (942708242)")
 	}
 
 	var ret String
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2771,30 +2876,30 @@ func ErrorString(error int32,) String {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Print is under the category "general".
 func Print(arg1 Variant,)  {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "print", 2648703342)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("print").AsGDExtensionStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function print (2648703342)")
 	}
 
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2803,11 +2908,11 @@ func Print(arg1 Variant,)  {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	
 }
@@ -2815,17 +2920,17 @@ func Print(arg1 Variant,)  {
 // PrintRich is under the category "general".
 func PrintRich(arg1 Variant,)  {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "print_rich", 2648703342)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("print_rich").AsGDExtensionStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function print_rich (2648703342)")
 	}
 
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2834,11 +2939,11 @@ func PrintRich(arg1 Variant,)  {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	
 }
@@ -2846,17 +2951,17 @@ func PrintRich(arg1 Variant,)  {
 // Printerr is under the category "general".
 func Printerr(arg1 Variant,)  {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "printerr", 2648703342)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("printerr").AsGDExtensionStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function printerr (2648703342)")
 	}
 
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2865,11 +2970,11 @@ func Printerr(arg1 Variant,)  {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	
 }
@@ -2877,17 +2982,17 @@ func Printerr(arg1 Variant,)  {
 // Printt is under the category "general".
 func Printt(arg1 Variant,)  {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "printt", 2648703342)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("printt").AsGDExtensionStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function printt (2648703342)")
 	}
 
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2896,11 +3001,11 @@ func Printt(arg1 Variant,)  {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	
 }
@@ -2908,17 +3013,17 @@ func Printt(arg1 Variant,)  {
 // Prints is under the category "general".
 func Prints(arg1 Variant,)  {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "prints", 2648703342)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("prints").AsGDExtensionStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function prints (2648703342)")
 	}
 
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2927,11 +3032,11 @@ func Prints(arg1 Variant,)  {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	
 }
@@ -2939,17 +3044,17 @@ func Prints(arg1 Variant,)  {
 // Printraw is under the category "general".
 func Printraw(arg1 Variant,)  {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "printraw", 2648703342)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("printraw").AsGDExtensionStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function printraw (2648703342)")
 	}
 
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2958,11 +3063,11 @@ func Printraw(arg1 Variant,)  {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	
 }
@@ -2970,17 +3075,17 @@ func Printraw(arg1 Variant,)  {
 // PrintVerbose is under the category "general".
 func PrintVerbose(arg1 Variant,)  {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "print_verbose", 2648703342)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("print_verbose").AsGDExtensionStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function print_verbose (2648703342)")
 	}
 
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -2989,11 +3094,11 @@ func PrintVerbose(arg1 Variant,)  {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	
 }
@@ -3001,17 +3106,17 @@ func PrintVerbose(arg1 Variant,)  {
 // PushError is under the category "general".
 func PushError(arg1 Variant,)  {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "push_error", 2648703342)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("push_error").AsGDExtensionStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function push_error (2648703342)")
 	}
 
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3020,11 +3125,11 @@ func PushError(arg1 Variant,)  {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	
 }
@@ -3032,17 +3137,17 @@ func PushError(arg1 Variant,)  {
 // PushWarning is under the category "general".
 func PushWarning(arg1 Variant,)  {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "push_warning", 2648703342)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("push_warning").AsGDExtensionStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function push_warning (2648703342)")
 	}
 
-	retPtr := (GDNativeTypePtr)(nullptr)
+	retPtr := (GDExtensionTypePtr)(nullptr)
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3051,11 +3156,11 @@ func PushWarning(arg1 Variant,)  {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
 	
 }
@@ -3063,18 +3168,18 @@ func PushWarning(arg1 Variant,)  {
 // VarToStr is under the category "general".
 func VarToStr(variable Variant,) String {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "var_to_str", 866625479)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("var_to_str").AsGDExtensionStringNamePtr(), 866625479)
 
 	if fn == nil {
 		panic("could not find utility function var_to_str (866625479)")
 	}
 
 	var ret String
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3083,31 +3188,31 @@ func VarToStr(variable Variant,) String {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // StrToVar is under the category "general".
 func StrToVar(string String,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "str_to_var", 1891498491)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("str_to_var").AsGDExtensionStringNamePtr(), 1891498491)
 
 	if fn == nil {
 		panic("could not find utility function str_to_var (1891498491)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3116,31 +3221,31 @@ func StrToVar(string String,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // VarToBytes is under the category "general".
 func VarToBytes(variable Variant,) PackedByteArray {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "var_to_bytes", 2947269930)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("var_to_bytes").AsGDExtensionStringNamePtr(), 2947269930)
 
 	if fn == nil {
 		panic("could not find utility function var_to_bytes (2947269930)")
 	}
 
 	var ret PackedByteArray
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3149,31 +3254,31 @@ func VarToBytes(variable Variant,) PackedByteArray {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // BytesToVar is under the category "general".
 func BytesToVar(bytes PackedByteArray,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "bytes_to_var", 4249819452)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("bytes_to_var").AsGDExtensionStringNamePtr(), 4249819452)
 
 	if fn == nil {
 		panic("could not find utility function bytes_to_var (4249819452)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3182,31 +3287,31 @@ func BytesToVar(bytes PackedByteArray,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // VarToBytesWithObjects is under the category "general".
 func VarToBytesWithObjects(variable Variant,) PackedByteArray {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "var_to_bytes_with_objects", 2947269930)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("var_to_bytes_with_objects").AsGDExtensionStringNamePtr(), 2947269930)
 
 	if fn == nil {
 		panic("could not find utility function var_to_bytes_with_objects (2947269930)")
 	}
 
 	var ret PackedByteArray
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3215,31 +3320,31 @@ func VarToBytesWithObjects(variable Variant,) PackedByteArray {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // BytesToVarWithObjects is under the category "general".
 func BytesToVarWithObjects(bytes PackedByteArray,) Variant {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "bytes_to_var_with_objects", 4249819452)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("bytes_to_var_with_objects").AsGDExtensionStringNamePtr(), 4249819452)
 
 	if fn == nil {
 		panic("could not find utility function bytes_to_var_with_objects (4249819452)")
 	}
 
 	var ret Variant
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3248,31 +3353,31 @@ func BytesToVarWithObjects(bytes PackedByteArray,) Variant {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // Hash is under the category "general".
 func Hash(variable Variant,) int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "hash", 326422594)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("hash").AsGDExtensionStringNamePtr(), 326422594)
 
 	if fn == nil {
 		panic("could not find utility function hash (326422594)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3281,31 +3386,31 @@ func Hash(variable Variant,) int32 {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // InstanceFromId is under the category "general".
 func InstanceFromId(instance_id int32,) Object {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "instance_from_id", 1156694636)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("instance_from_id").AsGDExtensionStringNamePtr(), 1156694636)
 
 	if fn == nil {
 		panic("could not find utility function instance_from_id (1156694636)")
 	}
 
 	var ret Object
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3314,31 +3419,31 @@ func InstanceFromId(instance_id int32,) Object {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // IsInstanceIdValid is under the category "general".
 func IsInstanceIdValid(id int32,) bool {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "is_instance_id_valid", 2232439758)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("is_instance_id_valid").AsGDExtensionStringNamePtr(), 2232439758)
 
 	if fn == nil {
 		panic("could not find utility function is_instance_id_valid (2232439758)")
 	}
 
 	var ret bool
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3347,31 +3452,31 @@ func IsInstanceIdValid(id int32,) bool {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // IsInstanceValid is under the category "general".
 func IsInstanceValid(instance Variant,) bool {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "is_instance_valid", 996128841)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("is_instance_valid").AsGDExtensionStringNamePtr(), 996128841)
 
 	if fn == nil {
 		panic("could not find utility function is_instance_valid (996128841)")
 	}
 
 	var ret bool
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3380,59 +3485,59 @@ func IsInstanceValid(instance Variant,) bool {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // RidAllocateId is under the category "general".
 func RidAllocateId() int32 {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "rid_allocate_id", 701202648)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("rid_allocate_id").AsGDExtensionStringNamePtr(), 701202648)
 
 	if fn == nil {
 		panic("could not find utility function rid_allocate_id (701202648)")
 	}
 
 	var ret int32
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(0)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(0))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(0)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 
 // RidFromInt64 is under the category "general".
 func RidFromInt64(base int32,) RID {
 	
-	fn := GDNativeInterface_variant_get_ptr_utility_function(internal.gdnInterface, "rid_from_int64", 3426892196)
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("rid_from_int64").AsGDExtensionStringNamePtr(), 3426892196)
 
 	if fn == nil {
 		panic("could not find utility function rid_from_int64 (3426892196)")
 	}
 
 	var ret RID
-	retPtr := (GDNativeTypePtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	sz := unsafe.Sizeof(nullptr) * uintptr(1)
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
 
-	argBytes := unsafe.Pointer(C.malloc(C.size_t(sz)))
+	argBytes := AllocZeros(sz)
 
 	
 	argsPtr := (*[1]unsafe.Pointer)(argBytes)
@@ -3441,13 +3546,13 @@ func RidFromInt64(base int32,) RID {
 	
 	
 
-	args := (*GDNativeTypePtr)(argBytes)
+	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
 
-	CallFunc_GDNativePtrUtilityFunction(fn, retPtr, args, argCount)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
-	C.free(argBytes)
+	Free(argBytes)
 	return ret
 }
 

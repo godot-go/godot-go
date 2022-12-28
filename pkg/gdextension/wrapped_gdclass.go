@@ -9,7 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/davecgh/go-spew/spew"
-	. "github.com/godot-go/godot-go/pkg/gdnative"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )

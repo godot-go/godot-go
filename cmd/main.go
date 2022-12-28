@@ -7,21 +7,21 @@ import (
 	"path/filepath"
 
 	"github.com/godot-go/godot-go/cmd/generate/extensionapi"
-	"github.com/godot-go/godot-go/cmd/generate/gdnativewrapper"
+	"github.com/godot-go/godot-go/cmd/generate/gdextensionwrapper"
 
 	"github.com/spf13/cobra"
 )
 
 var (
-	verbose         bool
-	cleanAll        bool
-	cleanGdnative   bool
-	cleanTypes      bool
-	cleanClasses    bool
-	genClangAPI     bool
-	genExtensionApi bool
-	packagePath     string
-	godotPath       string
+	verbose          bool
+	cleanAll         bool
+	cleanGdextension bool
+	cleanTypes       bool
+	cleanClasses     bool
+	genClangAPI      bool
+	genExtensionApi  bool
+	packagePath      string
+	godotPath        string
 )
 
 func init() {
@@ -42,9 +42,9 @@ var rootCmd = &cobra.Command{
 
 		if genClangAPI {
 			if verbose {
-				println("Generating gdnative C wrapper functions...")
+				println("Generating gdextension C wrapper functions...")
 			}
-			gdnativewrapper.Generate(packagePath)
+			gdextensionwrapper.Generate(packagePath)
 
 			hasGen = true
 		}
@@ -59,7 +59,7 @@ var rootCmd = &cobra.Command{
 		}
 
 		if hasGen {
-			outputPackageDirectoryPath := filepath.Join(packagePath, "pkg", "gdnative")
+			outputPackageDirectoryPath := filepath.Join(packagePath, "pkg", "gdextension")
 
 			log.Println("running go fmt on files.")
 			execGoFmt(outputPackageDirectoryPath)

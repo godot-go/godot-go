@@ -10,7 +10,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	. "github.com/godot-go/godot-go/pkg/gdnative"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 
 	"github.com/CannibalVox/cgoalloc"
 )
@@ -85,7 +85,7 @@ func AllocCopyVariantPtrSliceAsGDExtensionVariantPtrPtr(ptrs []*Variant) *GDExte
 
 var _ cgoalloc.Allocator = &GodotAllocator{}
 
-type GodotAllocator struct {}
+type GodotAllocator struct{}
 
 func (a *GodotAllocator) Malloc(size int) unsafe.Pointer {
 	return Alloc(size)

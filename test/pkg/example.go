@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/godot-go/godot-go/pkg/gdnative"
+	"github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/gdextension"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
@@ -161,7 +161,7 @@ func Example_Ready(inst unsafe.Pointer) {
 func RegisterExampleTypes() {
 	log.Debug("RegisterExampleTypes called")
 	gdextension.ClassDBRegisterClass(&Example{}, func(t gdextension.GDClass) {
-		gdextension.ClassDBBindMethodVirtual(t, "_ready", (gdnative.GDExtensionClassCallVirtual)(C.cgo_callback_example_ready))
+		gdextension.ClassDBBindMethodVirtual(t, "_ready", (gdextensionffi.GDExtensionClassCallVirtual)(C.cgo_callback_example_ready))
 		gdextension.ClassDBBindMethodStatic(t, "TestStatic", "test_static", []string{"a", "b"}, nil)
 		gdextension.ClassDBBindMethodStatic(t, "TestStatic2", "test_static2", nil, nil)
 		gdextension.ClassDBBindMethod(t, "SimpleFunc", "simple_func", nil, nil)
@@ -181,15 +181,15 @@ func RegisterExampleTypes() {
 		gdextension.ClassDBBindMethod(t, "GetCustomPosition", "get_custom_position", nil, nil)
 		gdextension.ClassDBBindMethod(t, "SetCustomPosition", "set_custom_position", []string{"position"}, nil)
 
-		gdextension.ClassDBAddProperty(t, gdnative.GDEXTENSION_VARIANT_TYPE_VECTOR2, "group_subgroup_custom_position", "SetCustomPosition", "GetCustomPosition")
+		gdextension.ClassDBAddProperty(t, gdextensionffi.GDEXTENSION_VARIANT_TYPE_VECTOR2, "group_subgroup_custom_position", "SetCustomPosition", "GetCustomPosition")
 
 		// Signals.
 		gdextension.ClassDBAddSignal(t, "custom_signal",
 			gdextension.SignalParam{
-				Type: gdnative.GDEXTENSION_VARIANT_TYPE_STRING,
+				Type: gdextensionffi.GDEXTENSION_VARIANT_TYPE_STRING,
 				Name: "name"},
 			gdextension.SignalParam{
-				Type: gdnative.GDEXTENSION_VARIANT_TYPE_INT,
+				Type: gdextensionffi.GDEXTENSION_VARIANT_TYPE_INT,
 				Name: "value",
 			})
 		gdextension.ClassDBBindMethod(t, "EmitCustomSignal", "emit_custom_signal", []string{"name", "value"}, nil)
@@ -212,9 +212,9 @@ func UnregisterExampleTypes() {
 func TestDemoInit(p_interface unsafe.Pointer, p_library unsafe.Pointer, r_initialization unsafe.Pointer) bool {
 	log.Debug("ExampleLibraryInit called")
 	initObj := gdextension.NewInitObject(
-		(*gdnative.GDExtensionInterface)(unsafe.Pointer(p_interface)),
-		(gdnative.GDExtensionClassLibraryPtr)(p_library),
-		(*gdnative.GDExtensionInitialization)(unsafe.Pointer(r_initialization)),
+		(*gdextensionffi.GDExtensionInterface)(unsafe.Pointer(p_interface)),
+		(gdextensionffi.GDExtensionClassLibraryPtr)(p_library),
+		(*gdextensionffi.GDExtensionInitialization)(unsafe.Pointer(r_initialization)),
 	)
 
 	initObj.RegisterSceneInitializer(RegisterExampleTypes)

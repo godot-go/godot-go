@@ -3,7 +3,7 @@ package gdextension
 import (
 	"unsafe"
 
-	. "github.com/godot-go/godot-go/pkg/gdnative"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 
 	"github.com/davecgh/go-spew/spew"
 	"go.uber.org/zap"

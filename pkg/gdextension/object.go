@@ -5,7 +5,7 @@ import "C"
 import (
 	"sync/atomic"
 
-	. "github.com/godot-go/godot-go/pkg/gdnative"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 )
 

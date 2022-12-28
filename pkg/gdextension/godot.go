@@ -11,7 +11,7 @@ import "C"
 import (
 	"unsafe"
 
-	. "github.com/godot-go/godot-go/pkg/gdnative"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )
@@ -35,11 +35,11 @@ var (
 
 	nullptr = unsafe.Pointer(nil)
 
-	gdNativeConstructors                               = NewSyncMap[string, GDExtensionClassGoConstructorFromOwner]()
+	gdNativeConstructors                                  = NewSyncMap[string, GDExtensionClassGoConstructorFromOwner]()
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks = NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
-	gdRegisteredGDClasses                              = NewSyncMap[string, *ClassInfo]()
-	gdExtensionBindingInitCallbacks                    [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
-	gdExtensionBindingTerminateCallbacks               [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
+	gdRegisteredGDClasses                                 = NewSyncMap[string, *ClassInfo]()
+	gdExtensionBindingInitCallbacks                       [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
+	gdExtensionBindingTerminateCallbacks                  [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
 )
 
 func _GDExtensionBindingInit(

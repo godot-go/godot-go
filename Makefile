@@ -28,8 +28,8 @@ goenv:
 generate: clean
 	go generate
 	if [ ! -z "$(CLANG_FORMAT)" ]; then \
-		$(CLANG_FORMAT) -i pkg/gdnative/gdnative_wrapper.gen.h; \
-		$(CLANG_FORMAT) -i pkg/gdnative/gdnative_wrapper.gen.c; \
+		$(CLANG_FORMAT) -i pkg/gdextensionffi/ffi_wrapper.gen.h; \
+		$(CLANG_FORMAT) -i pkg/gdextensionffi/ffi_wrapper.gen.c; \
 	fi
 
 update_godot_headers_from_binary: ## update godot_headers from the godot binary
@@ -55,9 +55,9 @@ run_playground:
 	go run -gcflags=all="-N -l" -trimpath main.go
 
 clean_src:
-	rm -f pkg/gdnative/*.gen.c
-	rm -f pkg/gdnative/*.gen.h
-	rm -f pkg/gdnative/*.gen.go
+	rm -f pkg/gdextensionffi/*.gen.c
+	rm -f pkg/gdextensionffi/*.gen.h
+	rm -f pkg/gdextensionffi/*.gen.go
 	rm -f pkg/gdextension/*.gen.c
 	rm -f pkg/gdextension/*.gen.h
 	rm -f pkg/gdextension/*.gen.go

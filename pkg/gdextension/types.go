@@ -3,7 +3,7 @@ package gdextension
 import (
 	"reflect"
 
-	. "github.com/godot-go/godot-go/pkg/gdnative"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
 
 // // TypeName represents a the name of a type in Godot

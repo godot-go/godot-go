@@ -304,6 +304,7 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 			hint.AsGDExtensionStringPtr(),
 			(uint32)(PROPERTY_USAGE_DEFAULT),
 		)
+		defer paramArr[i].Destroy(internal.gdnInterface)
 	}
 
 	var argsPtr *GDExtensionPropertyInfo

@@ -81,7 +81,7 @@ ci_gen_test_project_files:
 
 test:
 	CI=1 \
-	LOG_LEVEL=warn \
+	LOG_LEVEL=info \
 	GOGC=off \
 	GODEBUG=gctrace=1 \
 	GOTRACEBACK=1 \

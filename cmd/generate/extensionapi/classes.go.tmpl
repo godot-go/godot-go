@@ -79,8 +79,18 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 {{- if $m.IsVararg }}varargs ...Variant,{{ end -}}
 ) {{ $fnReturnType }} {
     {{/* TODO: refactor for static instantiation */}}
+	className := NewStringNameWithLatin1Chars("{{ $c.Name }}")
+	defer className.Destroy()
+
+	methodName := NewStringNameWithLatin1Chars("{{ $m.Name }}")
+	defer methodName.Destroy()
+
 	fn := GDExtensionInterface_classdb_get_method_bind(
-		internal.gdnInterface, NewStringNameWithLatin1Chars("{{ $c.Name }}").AsGDExtensionStringNamePtr(), NewStringNameWithLatin1Chars("{{ $m.Name }}").AsGDExtensionStringNamePtr(), {{ $m.Hash }})
+		internal.gdnInterface,
+		className.AsGDExtensionStringNamePtr(),
+		methodName.AsGDExtensionStringNamePtr(),
+		{{ $m.Hash }},
+	)
 
 	if fn == nil {
 		panic("could not find method function {{ $c.Name }}.{{ $m.Name }} ({{ $m.Hash }})")

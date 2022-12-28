@@ -2,6 +2,7 @@ package gdextension
 
 import (
 	"reflect"
+	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
@@ -54,6 +55,22 @@ type ClassInfo struct {
 	ParentPtr                 *ClassInfo
 	ClassType                 reflect.Type
 	InheritType               reflect.Type
+}
+
+func (c *ClassInfo) Destroy() {
+	name := (*StringName)(unsafe.Pointer(c.NameAsStringNamePtr))
+	if name != nil {
+		name.Destroy()
+	}
+
+	parentName := (*StringName)(unsafe.Pointer(c.ParentNameAsStringNamePtr))
+	if parentName != nil {
+		parentName.Destroy()
+	}
+
+	for _, v := range c.MethodMap {
+		v.Destroy(internal.gdnInterface)
+	}
 }
 
 func NewClassInfo(name, parentName string, level GDExtensionInitializationLevel, classType, inheritType reflect.Type, parentPtr *ClassInfo) *ClassInfo {

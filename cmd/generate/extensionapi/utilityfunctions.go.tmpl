@@ -37,7 +37,9 @@ func {{ camelCase $f.Name }}(
 {{- end -}}
 ) {{ $fnReturnType }} {
 	{{/* TODO: refactor for static instantiation */}}
-	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, NewStringNameWithLatin1Chars("{{ $f.Name }}").AsGDExtensionStringNamePtr(), {{ $f.Hash }})
+	fName := NewStringNameWithLatin1Chars("{{ $f.Name }}")
+	defer fName.Destroy()
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, fName.AsGDExtensionStringNamePtr(), {{ $f.Hash }})
 
 	if fn == nil {
 		panic("could not find utility function {{ $f.Name }} ({{ $f.Hash }})")

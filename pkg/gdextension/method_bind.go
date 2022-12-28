@@ -184,12 +184,15 @@ func (b *MethodBind) Call(
 	vReturn := NewVariantNil()
 	var (
 		r_return GDExtensionVariantPtr = (GDExtensionVariantPtr)(vReturn.ptr())
+		bindName                       = NewStringNameWithLatin1Chars(b.Name)
 	)
+
+	defer bindName.Destroy()
 
 	GDExtensionInterface_variant_call(
 		internal.gdnInterface,
 		(GDExtensionVariantPtr)(&vInstance),
-		NewStringNameWithLatin1Chars(b.Name).AsGDExtensionStringNamePtr(),
+		bindName.AsGDExtensionStringNamePtr(),
 		p_args,
 		p_argument_count,
 		r_return,
@@ -346,9 +349,8 @@ func (b *MethodBind) Ptrcall(
 	}
 }
 
-func (b *MethodBind) Destroy() {
-	// TODO: wire this up
-	// b.ClassMethodInfo.Destroy()
+func (b *MethodBind) Destroy(gdnInterface *GDExtensionInterface) {
+	b.ClassMethodInfo.Destroy(gdnInterface)
 }
 
 // //export GoCallback_MethodBindBindGetArgumentType

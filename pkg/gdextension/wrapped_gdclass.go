@@ -65,10 +65,13 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 		)
 	}
 
+	snExtensionClassName := NewStringNameWithLatin1Chars(extensionClassName)
+	defer snExtensionClassName.Destroy()
+
 	GDExtensionInterface_object_set_instance(
 		internal.gdnInterface,
 		(GDExtensionObjectPtr)(owner),
-		NewStringNameWithLatin1Chars(extensionClassName).AsGDExtensionStringNamePtr(),
+		snExtensionClassName.AsGDExtensionStringNamePtr(),
 		inst,
 	)
 
@@ -107,10 +110,13 @@ func CreateGDClassInstance(tn string) GDClass {
 		zap.Any("parent_name", ci.ParentName),
 	)
 
+	snParentName := NewStringNameWithLatin1Chars(ci.ParentName)
+	defer snParentName.Destroy()
+
 	// create inherited GDExtensionClass first
 	owner := GDExtensionInterface_classdb_construct_object(
 		internal.gdnInterface,
-		NewStringNameWithLatin1Chars(ci.ParentName).AsGDExtensionStringNamePtr(),
+		snParentName.AsGDExtensionStringNamePtr(),
 	)
 
 	if owner == nil {

@@ -8,16 +8,16 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/godot-go/godot-go/pkg/gdnative"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
 
-func getSingleton(name string) gdnative.GDExtensionObjectPtr {
-	ret := gdnative.GDExtensionInterface_global_get_singleton(
+func getSingleton(name string) GDExtensionObjectPtr {
+	ret := GDExtensionInterface_global_get_singleton(
 		internal.gdnInterface,
 		NewStringNameWithLatin1Chars(name).AsGDExtensionStringNamePtr(),
 	)
 
-	return (gdnative.GDExtensionObjectPtr)(ret)
+	return (GDExtensionObjectPtr)(ret)
 }
 
 func GetInputSingleton() Input {

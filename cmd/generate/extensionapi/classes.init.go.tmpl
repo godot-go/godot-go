@@ -18,7 +18,7 @@ package gdextension
 // #include <stdlib.h>
 import "C"
 import (
-	. "github.com/godot-go/godot-go/pkg/gdnative"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
 
 func init() {
@@ -26,9 +26,9 @@ func init() {
 {{ range $i, $c := $view.Classes -}}
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("{{ $c.Name }}",
 		NewGDExtensionInstanceBindingCallbacks(
-			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdnative_class_binding_create_callback_{{ $c.Name }}),
-			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdnative_class_binding_free_callback_{{ $c.Name }}),
-			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdnative_class_binding_reference_callback_{{ $c.Name }}),
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_{{ $c.Name }}),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_{{ $c.Name }}),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_{{ $c.Name }}),
 		))
 {{ end -}}
 

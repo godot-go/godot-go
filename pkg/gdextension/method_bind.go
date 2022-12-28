@@ -10,7 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/davecgh/go-spew/spew"
-	. "github.com/godot-go/godot-go/pkg/gdnative"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )
@@ -20,15 +20,15 @@ const (
 )
 
 type MethodBind struct {
-	ClassMethodInfo    GDExtensionClassMethodInfo
-	Name               string
-	InstanceClass      string
-	GoName             string
-	GoReturnType       reflect.Type
+	ClassMethodInfo  GDExtensionClassMethodInfo
+	Name             string
+	InstanceClass    string
+	GoName           string
+	GoReturnType     reflect.Type
 	GoArgumentTypes  []reflect.Type
 	ArgumentTypes    []GDExtensionVariantType
 	DefaultArguments []*Variant
-	Func               reflect.Value
+	Func             reflect.Value
 }
 
 func NewMethodBind(
@@ -67,8 +67,8 @@ func NewMethodBind(
 
 	var (
 		goReturnValueType reflect.Type
-		returnValueType GDExtensionVariantType
-		returnValueInfo GDExtensionPropertyInfo
+		returnValueType   GDExtensionVariantType
+		returnValueInfo   GDExtensionPropertyInfo
 	)
 
 	switch returnCount {
@@ -122,14 +122,14 @@ func NewMethodBind(
 	}
 
 	methodBind := &MethodBind{
-		Name:               p_name,
-		InstanceClass:      instanceClass,
-		GoName:             p_method.Name,
-		GoReturnType:       goReturnValueType,
-		GoArgumentTypes:    goArgumentTypes,
-		ArgumentTypes:      variantTypes,
-		DefaultArguments:   p_defaultArguments,
-		Func:               fn,
+		Name:             p_name,
+		InstanceClass:    instanceClass,
+		GoName:           p_method.Name,
+		GoReturnType:     goReturnValueType,
+		GoArgumentTypes:  goArgumentTypes,
+		ArgumentTypes:    variantTypes,
+		DefaultArguments: p_defaultArguments,
+		Func:             fn,
 	}
 
 	classMethodInfo := NewGDExtensionClassMethodInfo(
@@ -140,7 +140,7 @@ func NewMethodBind(
 		(uint32)(p_methodFlags),
 		hasReturnValue,
 		&returnValueInfo,
-	    GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE,
+		GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE,
 		(uint32)(argumentCount),
 		argumentsInfo,
 		argumentsMetadata,

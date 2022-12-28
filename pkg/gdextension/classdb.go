@@ -11,7 +11,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	. "github.com/godot-go/godot-go/pkg/gdnative"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	. "github.com/godot-go/godot-go/pkg/util"
 	"go.uber.org/zap"
@@ -237,7 +237,6 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 		ok bool
 	)
 	typeName := t.GetClassName()
-
 
 	if ci, ok = gdRegisteredGDClasses.Get(typeName); !ok {
 		log.Panic("Class doesn't exist.", zap.String("class", typeName))
@@ -466,8 +465,8 @@ func ClassDBRegisterClass(inst GDClass, bindMethodsFunc func(t GDClass)) {
 
 	// Register this class with Godot
 	info := NewGDExtensionClassCreationInfo(
-		(GDExtensionClassCreateInstance)(C.cgo_gdnative_extension_class_create_instance),
-		(GDExtensionClassFreeInstance)(C.cgo_gdnative_extension_class_free_instance),
+		(GDExtensionClassCreateInstance)(C.cgo_gdextension_extension_class_create_instance),
+		(GDExtensionClassFreeInstance)(C.cgo_gdextension_extension_class_free_instance),
 		(GDExtensionClassGetVirtual)(C.cgo_classdb_get_virtual_func),
 		unsafe.Pointer(cName),
 	)

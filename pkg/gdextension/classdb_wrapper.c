@@ -13,12 +13,12 @@ GDExtensionClassCallVirtual cgo_classdb_get_virtual_func(void *p_userdata, const
     return GoCallback_ClassDBGetVirtualFunc(p_userdata, (char *)p_name);
 }
 
-GDExtensionObjectPtr cgo_gdnative_extension_class_create_instance(void *data) {
+GDExtensionObjectPtr cgo_gdextension_extension_class_create_instance(void *data) {
     printStacktrace();
     return GoCallback_GDExtensionClassCreateInstance(data);
 }
 
-void cgo_gdnative_extension_class_free_instance(void *data, GDExtensionClassInstancePtr ptr) {
+void cgo_gdextension_extension_class_free_instance(void *data, GDExtensionClassInstancePtr ptr) {
     printStacktrace();
     return GoCallback_GDExtensionClassFreeInstance(data, ptr);
 }

@@ -94,7 +94,7 @@ func GDExtensionBindingInitializeLevel(userdata unsafe.Pointer, pLevel C.GDExten
 //export GDExtensionBindingDeinitializeLevel
 func GDExtensionBindingDeinitializeLevel(userdata unsafe.Pointer, pLevel C.GDExtensionInitializationLevel) {
 	classdbCurrentLevel = (GDExtensionInitializationLevel)(pLevel)
-	classDBDeinitialize(classdbCurrentLevel)
+	// classDBDeinitialize(classdbCurrentLevel)
 
 	if gdExtensionBindingTerminateCallbacks[pLevel] != nil {
 		gdExtensionBindingTerminateCallbacks[pLevel]()

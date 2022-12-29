@@ -46,14 +46,6 @@ build: goenv
 	CGO_LDFLAGS='-Og -ggdb' \
 	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
-run_playground:
-	CGO_ENABLED=1 \
-	GOOS=$(GOOS) \
-	GOARCH=$(GOARCH) \
-	CGO_CFLAGS='-Og -ggdb -DX86=1 -fPIC' \
-	CGO_LDFLAGS='-Og -ggdb' \
-	go run -gcflags=all="-N -l" -trimpath main.go
-
 clean_src:
 	rm -f pkg/gdextensionffi/*.gen.c
 	rm -f pkg/gdextensionffi/*.gen.h

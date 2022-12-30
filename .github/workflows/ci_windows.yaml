@@ -45,12 +45,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-      # - name: Install Go
-      #   uses: actions/setup-go@v3
-      #   with:
-      #     go-version: ${{ matrix.go_version }}
-      #     check-latest: true
-      #     cache: true
       - name: Install Godot 4.0 beta10
         run: |
           wget https://downloads.tuxfamily.org/godotengine/4.0/beta10/Godot_v4.0-beta10_win64.exe.zip

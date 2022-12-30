@@ -46,14 +46,6 @@ build: goenv
 	CGO_LDFLAGS='-Og -ggdb' \
 	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
-run_playground:
-	CGO_ENABLED=1 \
-	GOOS=$(GOOS) \
-	GOARCH=$(GOARCH) \
-	CGO_CFLAGS='-Og -ggdb -DX86=1 -fPIC' \
-	CGO_LDFLAGS='-Og -ggdb' \
-	go run -gcflags=all="-N -l" -trimpath main.go
-
 clean_src:
 	rm -f pkg/gdextensionffi/*.gen.c
 	rm -f pkg/gdextensionffi/*.gen.h
@@ -67,7 +59,7 @@ clean: clean_src
 
 remote_debug_test:
 	CI=1 \
-	LOG_LEVEL=debug \
+	LOG_LEVEL=info \
 	GOTRACEBACK=crash \e
 	GODEBUG=sbrk=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	gdbserver --once :55555 $(GODOT) --headless --verbose --debug --path test/demo/
@@ -75,28 +67,28 @@ remote_debug_test:
 ci_gen_test_project_files:
 	CI=1 \
 	LOG_LEVEL=info \
-	GOTRACEBACK=crash \
-	GODEBUG=sbrk=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
+	GOTRACEBACK=1 \
+	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	$(GODOT) --headless --verbose --path test/demo/ --editor --quit
 
 test:
 	CI=1 \
-	LOG_LEVEL=warn \
-	GOGC=off \
-	GODEBUG=gctrace=1 \
+	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
-	GODEBUG=sbrk=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
+	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	$(GODOT) --headless --verbose --path test/demo/
 
 interactive_test:
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
-	GODEBUG=sbrk=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
+	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	$(GODOT) --verbose --debug --path test/demo/
 
 open_demo_in_editor:
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
-	DISPLAY=:0 \
-	GODEBUG=sbrk=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
+	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	$(GODOT) --verbose --debug --path test/demo/ --editor
+
+godot_unit_test:
+	$(GODOT) --test

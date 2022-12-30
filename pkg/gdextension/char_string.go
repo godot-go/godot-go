@@ -66,11 +66,6 @@ func NewStringWithLatin1Chars(content string) String {
 	return cx
 }
 
-func NewGDExtensionStringPtrWithLatin1Chars(content string) GDExtensionConstStringPtr {
-	strName := NewStringWithLatin1Chars(content)
-	return (GDExtensionConstStringPtr)(unsafe.Pointer(&strName))
-}
-
 func NewStringWithUtf8Chars(content string) String {
 	cx := String{}
 
@@ -88,7 +83,8 @@ func (cx String) AsGDExtensionStringPtr() GDExtensionConstStringPtr {
 func (cx *String) ToAscii() string {
 	size := GDExtensionInterface_string_to_latin1_chars(internal.gdnInterface, (GDExtensionConstStringPtr)(unsafe.Pointer(cx.ptr())), (*Char)(nullptr), (GDExtensionInt)(0))
 
-	cstr := AllocArrayPtr[C.char](int(C.sizeof_char) * (int(size) + 1))
+	cstr := AllocArrayPtr[C.char](int(size) + 1)
+	defer Free(unsafe.Pointer(cstr))
 
 	GDExtensionInterface_string_to_latin1_chars(internal.gdnInterface, (GDExtensionConstStringPtr)(unsafe.Pointer(cx.ptr())), (*Char)(cstr), (GDExtensionInt)(size+1))
 
@@ -102,7 +98,8 @@ func (cx *String) ToAscii() string {
 func (cx *String) ToUtf8() string {
 	size := GDExtensionInterface_string_to_utf8_chars(internal.gdnInterface, (GDExtensionConstStringPtr)(cx.ptr()), (*Char)(nullptr), (GDExtensionInt)(0))
 
-	cstr := AllocArrayPtr[C.char](int(C.sizeof_char) * (int(size) + 1))
+	cstr := AllocArrayPtr[C.char](int(size) + 1)
+	defer Free(unsafe.Pointer(cstr))
 
 	GDExtensionInterface_string_to_utf8_chars(internal.gdnInterface, (GDExtensionConstStringPtr)(cx.ptr()), (*Char)(cstr), (GDExtensionInt)(size+1))
 

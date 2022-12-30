@@ -77,8 +77,6 @@ func (e *Example) ReturnSomethingConst() (gdextension.Viewport, error) {
 
 		fmt.Printf("viewport instance id: %v\n", result.GetInstanceId())
 
-
-
 		return result, nil
 	}
 	return nil, fmt.Errorf("unable to get viewport")
@@ -113,8 +111,20 @@ func (e *Example) TestDictionary() gdextension.Dictionary {
 	dict := gdextension.NewDictionary()
 	v := gdextension.NewVariantDictionary(dict)
 
-	v.SetNamed(gdextension.NewStringNameWithLatin1Chars("hello"), gdextension.NewVariantString(gdextension.NewStringWithLatin1Chars("world")))
-	v.SetNamed(gdextension.NewStringNameWithLatin1Chars("foo"), gdextension.NewVariantString(gdextension.NewStringWithLatin1Chars("bar")))
+	hello := gdextension.NewStringNameWithLatin1Chars("hello")
+	defer hello.Destroy()
+
+	world := gdextension.NewStringWithLatin1Chars("world")
+	defer world.Destroy()
+
+	foo := gdextension.NewStringNameWithLatin1Chars("foo")
+	defer foo.Destroy()
+
+	bar := gdextension.NewStringWithLatin1Chars("bar")
+	defer bar.Destroy()
+
+	v.SetNamed(hello, gdextension.NewVariantString(world))
+	v.SetNamed(foo, gdextension.NewVariantString(bar))
 
 	return dict
 }
@@ -128,9 +138,15 @@ func (e *Example) GetCustomPosition() gdextension.Vector2 {
 }
 
 func (e *Example) EmitCustomSignal(name string, value int64) {
+	customSignal := gdextension.NewStringNameWithLatin1Chars("custom_signal")
+	defer customSignal.Destroy()
+
+	snName := gdextension.NewStringWithLatin1Chars(name)
+	defer snName.Destroy()
+
 	e.EmitSignal(
-		gdextension.NewStringNameWithLatin1Chars("custom_signal"),
-		gdextension.NewVariantString(gdextension.NewStringWithLatin1Chars(name)),
+		customSignal,
+		gdextension.NewVariantString(snName),
 		gdextension.NewVariantInt64(value),
 	)
 	log.Debug("EmitCustomSignal called",
@@ -154,6 +170,7 @@ func Example_Ready(inst unsafe.Pointer) {
 	input := gdextension.GetInputSingleton()
 
 	uiRight := gdextension.NewStringNameWithLatin1Chars("ui_right")
+	defer uiRight.Destroy()
 
 	input.IsActionPressed(uiRight, true)
 }
@@ -212,9 +229,9 @@ func UnregisterExampleTypes() {
 func TestDemoInit(p_interface unsafe.Pointer, p_library unsafe.Pointer, r_initialization unsafe.Pointer) bool {
 	log.Debug("ExampleLibraryInit called")
 	initObj := gdextension.NewInitObject(
-		(*gdextensionffi.GDExtensionInterface)(unsafe.Pointer(p_interface)),
+		(*gdextensionffi.GDExtensionInterface)(p_interface),
 		(gdextensionffi.GDExtensionClassLibraryPtr)(p_library),
-		(*gdextensionffi.GDExtensionInitialization)(unsafe.Pointer(r_initialization)),
+		(*gdextensionffi.GDExtensionInitialization)(r_initialization),
 	)
 
 	initObj.RegisterSceneInitializer(RegisterExampleTypes)

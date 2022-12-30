@@ -14,379 +14,379 @@
  * code to call the functions. */
 
 void cgo_callfn_GDExtensionVariantFromTypeConstructorFunc(
-    const GDExtensionVariantFromTypeConstructorFunc cb,
+    const GDExtensionVariantFromTypeConstructorFunc fn,
     GDExtensionVariantPtr arg_0, GDExtensionTypePtr arg_1) {
   printStacktrace();
-  cb(arg_0, arg_1);
+  fn(arg_0, arg_1);
 }
 void cgo_callfn_GDExtensionTypeFromVariantConstructorFunc(
-    const GDExtensionTypeFromVariantConstructorFunc cb,
+    const GDExtensionTypeFromVariantConstructorFunc fn,
     GDExtensionTypePtr arg_0, GDExtensionVariantPtr arg_1) {
   printStacktrace();
-  cb(arg_0, arg_1);
+  fn(arg_0, arg_1);
 }
 void cgo_callfn_GDExtensionPtrOperatorEvaluator(
-    const GDExtensionPtrOperatorEvaluator cb, GDExtensionConstTypePtr p_left,
+    const GDExtensionPtrOperatorEvaluator fn, GDExtensionConstTypePtr p_left,
     GDExtensionConstTypePtr p_right, GDExtensionTypePtr r_result) {
   printStacktrace();
-  cb(p_left, p_right, r_result);
+  fn(p_left, p_right, r_result);
 }
 void cgo_callfn_GDExtensionPtrBuiltInMethod(
-    const GDExtensionPtrBuiltInMethod cb, GDExtensionTypePtr p_base,
+    const GDExtensionPtrBuiltInMethod fn, GDExtensionTypePtr p_base,
     const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_return,
     int p_argument_count) {
   printStacktrace();
-  cb(p_base, p_args, r_return, p_argument_count);
+  fn(p_base, p_args, r_return, p_argument_count);
 }
 void cgo_callfn_GDExtensionPtrConstructor(
-    const GDExtensionPtrConstructor cb, GDExtensionTypePtr p_base,
+    const GDExtensionPtrConstructor fn, GDExtensionTypePtr p_base,
     const GDExtensionConstTypePtr *p_args) {
   printStacktrace();
-  cb(p_base, p_args);
+  fn(p_base, p_args);
 }
-void cgo_callfn_GDExtensionPtrDestructor(const GDExtensionPtrDestructor cb,
+void cgo_callfn_GDExtensionPtrDestructor(const GDExtensionPtrDestructor fn,
                                          GDExtensionTypePtr p_base) {
   printStacktrace();
-  cb(p_base);
+  fn(p_base);
 }
-void cgo_callfn_GDExtensionPtrSetter(const GDExtensionPtrSetter cb,
+void cgo_callfn_GDExtensionPtrSetter(const GDExtensionPtrSetter fn,
                                      GDExtensionTypePtr p_base,
                                      GDExtensionConstTypePtr p_value) {
   printStacktrace();
-  cb(p_base, p_value);
+  fn(p_base, p_value);
 }
-void cgo_callfn_GDExtensionPtrGetter(const GDExtensionPtrGetter cb,
+void cgo_callfn_GDExtensionPtrGetter(const GDExtensionPtrGetter fn,
                                      GDExtensionConstTypePtr p_base,
                                      GDExtensionTypePtr r_value) {
   printStacktrace();
-  cb(p_base, r_value);
+  fn(p_base, r_value);
 }
 void cgo_callfn_GDExtensionPtrIndexedSetter(
-    const GDExtensionPtrIndexedSetter cb, GDExtensionTypePtr p_base,
+    const GDExtensionPtrIndexedSetter fn, GDExtensionTypePtr p_base,
     GDExtensionInt p_index, GDExtensionConstTypePtr p_value) {
   printStacktrace();
-  cb(p_base, p_index, p_value);
+  fn(p_base, p_index, p_value);
 }
 void cgo_callfn_GDExtensionPtrIndexedGetter(
-    const GDExtensionPtrIndexedGetter cb, GDExtensionConstTypePtr p_base,
+    const GDExtensionPtrIndexedGetter fn, GDExtensionConstTypePtr p_base,
     GDExtensionInt p_index, GDExtensionTypePtr r_value) {
   printStacktrace();
-  cb(p_base, p_index, r_value);
+  fn(p_base, p_index, r_value);
 }
-void cgo_callfn_GDExtensionPtrKeyedSetter(const GDExtensionPtrKeyedSetter cb,
+void cgo_callfn_GDExtensionPtrKeyedSetter(const GDExtensionPtrKeyedSetter fn,
                                           GDExtensionTypePtr p_base,
                                           GDExtensionConstTypePtr p_key,
                                           GDExtensionConstTypePtr p_value) {
   printStacktrace();
-  cb(p_base, p_key, p_value);
+  fn(p_base, p_key, p_value);
 }
-void cgo_callfn_GDExtensionPtrKeyedGetter(const GDExtensionPtrKeyedGetter cb,
+void cgo_callfn_GDExtensionPtrKeyedGetter(const GDExtensionPtrKeyedGetter fn,
                                           GDExtensionConstTypePtr p_base,
                                           GDExtensionConstTypePtr p_key,
                                           GDExtensionTypePtr r_value) {
   printStacktrace();
-  cb(p_base, p_key, r_value);
+  fn(p_base, p_key, r_value);
 }
 uint32_t
-cgo_callfn_GDExtensionPtrKeyedChecker(const GDExtensionPtrKeyedChecker cb,
+cgo_callfn_GDExtensionPtrKeyedChecker(const GDExtensionPtrKeyedChecker fn,
                                       GDExtensionConstVariantPtr p_base,
                                       GDExtensionConstVariantPtr p_key) {
   printStacktrace();
-  return cb(p_base, p_key);
+  return fn(p_base, p_key);
 }
 void cgo_callfn_GDExtensionPtrUtilityFunction(
-    const GDExtensionPtrUtilityFunction cb, GDExtensionTypePtr r_return,
+    const GDExtensionPtrUtilityFunction fn, GDExtensionTypePtr r_return,
     const GDExtensionConstTypePtr *p_args, int p_argument_count) {
   printStacktrace();
-  cb(r_return, p_args, p_argument_count);
+  fn(r_return, p_args, p_argument_count);
 }
 GDExtensionObjectPtr
-cgo_callfn_GDExtensionClassConstructor(const GDExtensionClassConstructor cb) {
+cgo_callfn_GDExtensionClassConstructor(const GDExtensionClassConstructor fn) {
   printStacktrace();
-  return cb();
+  return fn();
 }
 void *cgo_callfn_GDExtensionInstanceBindingCreateCallback(
-    const GDExtensionInstanceBindingCreateCallback cb, void *p_token,
+    const GDExtensionInstanceBindingCreateCallback fn, void *p_token,
     void *p_instance) {
   printStacktrace();
-  return cb(p_token, p_instance);
+  return fn(p_token, p_instance);
 }
 void cgo_callfn_GDExtensionInstanceBindingFreeCallback(
-    const GDExtensionInstanceBindingFreeCallback cb, void *p_token,
+    const GDExtensionInstanceBindingFreeCallback fn, void *p_token,
     void *p_instance, void *p_binding) {
   printStacktrace();
-  cb(p_token, p_instance, p_binding);
+  fn(p_token, p_instance, p_binding);
 }
 GDExtensionBool cgo_callfn_GDExtensionInstanceBindingReferenceCallback(
-    const GDExtensionInstanceBindingReferenceCallback cb, void *p_token,
+    const GDExtensionInstanceBindingReferenceCallback fn, void *p_token,
     void *p_binding, GDExtensionBool p_reference) {
   printStacktrace();
-  return cb(p_token, p_binding, p_reference);
+  return fn(p_token, p_binding, p_reference);
 }
 GDExtensionBool cgo_callfn_GDExtensionClassSet(
-    const GDExtensionClassSet cb, GDExtensionClassInstancePtr p_instance,
+    const GDExtensionClassSet fn, GDExtensionClassInstancePtr p_instance,
     GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value) {
   printStacktrace();
-  return cb(p_instance, p_name, p_value);
+  return fn(p_instance, p_name, p_value);
 }
 GDExtensionBool cgo_callfn_GDExtensionClassGet(
-    const GDExtensionClassGet cb, GDExtensionClassInstancePtr p_instance,
+    const GDExtensionClassGet fn, GDExtensionClassInstancePtr p_instance,
     GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
   printStacktrace();
-  return cb(p_instance, p_name, r_ret);
+  return fn(p_instance, p_name, r_ret);
 }
 uint64_t
-cgo_callfn_GDExtensionClassGetRID(const GDExtensionClassGetRID cb,
+cgo_callfn_GDExtensionClassGetRID(const GDExtensionClassGetRID fn,
                                   GDExtensionClassInstancePtr p_instance) {
   printStacktrace();
-  return cb(p_instance);
+  return fn(p_instance);
 }
 const GDExtensionPropertyInfo *cgo_callfn_GDExtensionClassGetPropertyList(
-    const GDExtensionClassGetPropertyList cb,
+    const GDExtensionClassGetPropertyList fn,
     GDExtensionClassInstancePtr p_instance, uint32_t *r_count) {
   printStacktrace();
-  return cb(p_instance, r_count);
+  return fn(p_instance, r_count);
 }
 void cgo_callfn_GDExtensionClassFreePropertyList(
-    const GDExtensionClassFreePropertyList cb,
+    const GDExtensionClassFreePropertyList fn,
     GDExtensionClassInstancePtr p_instance,
     const GDExtensionPropertyInfo *p_list) {
   printStacktrace();
-  cb(p_instance, p_list);
+  fn(p_instance, p_list);
 }
 GDExtensionBool cgo_callfn_GDExtensionClassPropertyCanRevert(
-    const GDExtensionClassPropertyCanRevert cb,
+    const GDExtensionClassPropertyCanRevert fn,
     GDExtensionClassInstancePtr p_instance,
     GDExtensionConstStringNamePtr p_name) {
   printStacktrace();
-  return cb(p_instance, p_name);
+  return fn(p_instance, p_name);
 }
 GDExtensionBool cgo_callfn_GDExtensionClassPropertyGetRevert(
-    const GDExtensionClassPropertyGetRevert cb,
+    const GDExtensionClassPropertyGetRevert fn,
     GDExtensionClassInstancePtr p_instance,
     GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
   printStacktrace();
-  return cb(p_instance, p_name, r_ret);
+  return fn(p_instance, p_name, r_ret);
 }
 void cgo_callfn_GDExtensionClassNotification(
-    const GDExtensionClassNotification cb,
+    const GDExtensionClassNotification fn,
     GDExtensionClassInstancePtr p_instance, int32_t p_what) {
   printStacktrace();
-  cb(p_instance, p_what);
+  fn(p_instance, p_what);
 }
-void cgo_callfn_GDExtensionClassToString(const GDExtensionClassToString cb,
+void cgo_callfn_GDExtensionClassToString(const GDExtensionClassToString fn,
                                          GDExtensionClassInstancePtr p_instance,
                                          GDExtensionBool *r_is_valid,
                                          GDExtensionStringPtr p_out) {
   printStacktrace();
-  cb(p_instance, r_is_valid, p_out);
+  fn(p_instance, r_is_valid, p_out);
 }
 void cgo_callfn_GDExtensionClassReference(
-    const GDExtensionClassReference cb,
+    const GDExtensionClassReference fn,
     GDExtensionClassInstancePtr p_instance) {
   printStacktrace();
-  cb(p_instance);
+  fn(p_instance);
 }
 void cgo_callfn_GDExtensionClassUnreference(
-    const GDExtensionClassUnreference cb,
+    const GDExtensionClassUnreference fn,
     GDExtensionClassInstancePtr p_instance) {
   printStacktrace();
-  cb(p_instance);
+  fn(p_instance);
 }
 void cgo_callfn_GDExtensionClassCallVirtual(
-    const GDExtensionClassCallVirtual cb,
+    const GDExtensionClassCallVirtual fn,
     GDExtensionClassInstancePtr p_instance,
     const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
   printStacktrace();
-  cb(p_instance, p_args, r_ret);
+  fn(p_instance, p_args, r_ret);
 }
 GDExtensionObjectPtr cgo_callfn_GDExtensionClassCreateInstance(
-    const GDExtensionClassCreateInstance cb, void *p_userdata) {
+    const GDExtensionClassCreateInstance fn, void *p_userdata) {
   printStacktrace();
-  return cb(p_userdata);
+  return fn(p_userdata);
 }
 void cgo_callfn_GDExtensionClassFreeInstance(
-    const GDExtensionClassFreeInstance cb, void *p_userdata,
+    const GDExtensionClassFreeInstance fn, void *p_userdata,
     GDExtensionClassInstancePtr p_instance) {
   printStacktrace();
-  cb(p_userdata, p_instance);
+  fn(p_userdata, p_instance);
 }
 GDExtensionClassCallVirtual
-cgo_callfn_GDExtensionClassGetVirtual(const GDExtensionClassGetVirtual cb,
+cgo_callfn_GDExtensionClassGetVirtual(const GDExtensionClassGetVirtual fn,
                                       void *p_userdata,
                                       GDExtensionConstStringNamePtr p_name) {
   printStacktrace();
-  return cb(p_userdata, p_name);
+  return fn(p_userdata, p_name);
 }
 void cgo_callfn_GDExtensionClassMethodCall(
-    const GDExtensionClassMethodCall cb, void *method_userdata,
+    const GDExtensionClassMethodCall fn, void *method_userdata,
     GDExtensionClassInstancePtr p_instance,
     const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count,
     GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
   printStacktrace();
-  cb(method_userdata, p_instance, p_args, p_argument_count, r_return, r_error);
+  fn(method_userdata, p_instance, p_args, p_argument_count, r_return, r_error);
 }
 void cgo_callfn_GDExtensionClassMethodPtrCall(
-    const GDExtensionClassMethodPtrCall cb, void *method_userdata,
+    const GDExtensionClassMethodPtrCall fn, void *method_userdata,
     GDExtensionClassInstancePtr p_instance,
     const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
   printStacktrace();
-  cb(method_userdata, p_instance, p_args, r_ret);
+  fn(method_userdata, p_instance, p_args, r_ret);
 }
 GDExtensionBool cgo_callfn_GDExtensionScriptInstanceSet(
-    const GDExtensionScriptInstanceSet cb,
+    const GDExtensionScriptInstanceSet fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value) {
   printStacktrace();
-  return cb(p_instance, p_name, p_value);
+  return fn(p_instance, p_name, p_value);
 }
 GDExtensionBool cgo_callfn_GDExtensionScriptInstanceGet(
-    const GDExtensionScriptInstanceGet cb,
+    const GDExtensionScriptInstanceGet fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
   printStacktrace();
-  return cb(p_instance, p_name, r_ret);
+  return fn(p_instance, p_name, r_ret);
 }
 const GDExtensionPropertyInfo *
 cgo_callfn_GDExtensionScriptInstanceGetPropertyList(
-    const GDExtensionScriptInstanceGetPropertyList cb,
+    const GDExtensionScriptInstanceGetPropertyList fn,
     GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count) {
   printStacktrace();
-  return cb(p_instance, r_count);
+  return fn(p_instance, r_count);
 }
 void cgo_callfn_GDExtensionScriptInstanceFreePropertyList(
-    const GDExtensionScriptInstanceFreePropertyList cb,
+    const GDExtensionScriptInstanceFreePropertyList fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     const GDExtensionPropertyInfo *p_list) {
   printStacktrace();
-  cb(p_instance, p_list);
+  fn(p_instance, p_list);
 }
 GDExtensionVariantType cgo_callfn_GDExtensionScriptInstanceGetPropertyType(
-    const GDExtensionScriptInstanceGetPropertyType cb,
+    const GDExtensionScriptInstanceGetPropertyType fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid) {
   printStacktrace();
-  return cb(p_instance, p_name, r_is_valid);
+  return fn(p_instance, p_name, r_is_valid);
 }
 GDExtensionBool cgo_callfn_GDExtensionScriptInstancePropertyCanRevert(
-    const GDExtensionScriptInstancePropertyCanRevert cb,
+    const GDExtensionScriptInstancePropertyCanRevert fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     GDExtensionConstStringNamePtr p_name) {
   printStacktrace();
-  return cb(p_instance, p_name);
+  return fn(p_instance, p_name);
 }
 GDExtensionBool cgo_callfn_GDExtensionScriptInstancePropertyGetRevert(
-    const GDExtensionScriptInstancePropertyGetRevert cb,
+    const GDExtensionScriptInstancePropertyGetRevert fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
   printStacktrace();
-  return cb(p_instance, p_name, r_ret);
+  return fn(p_instance, p_name, r_ret);
 }
 GDExtensionObjectPtr cgo_callfn_GDExtensionScriptInstanceGetOwner(
-    const GDExtensionScriptInstanceGetOwner cb,
+    const GDExtensionScriptInstanceGetOwner fn,
     GDExtensionScriptInstanceDataPtr p_instance) {
   printStacktrace();
-  return cb(p_instance);
+  return fn(p_instance);
 }
 void cgo_callfn_GDExtensionScriptInstancePropertyStateAdd(
-    const GDExtensionScriptInstancePropertyStateAdd cb,
+    const GDExtensionScriptInstancePropertyStateAdd fn,
     GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value,
     void *p_userdata) {
   printStacktrace();
-  cb(p_name, p_value, p_userdata);
+  fn(p_name, p_value, p_userdata);
 }
 void cgo_callfn_GDExtensionScriptInstanceGetPropertyState(
-    const GDExtensionScriptInstanceGetPropertyState cb,
+    const GDExtensionScriptInstanceGetPropertyState fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     GDExtensionScriptInstancePropertyStateAdd p_add_func, void *p_userdata) {
   printStacktrace();
-  cb(p_instance, p_add_func, p_userdata);
+  fn(p_instance, p_add_func, p_userdata);
 }
 const GDExtensionMethodInfo *cgo_callfn_GDExtensionScriptInstanceGetMethodList(
-    const GDExtensionScriptInstanceGetMethodList cb,
+    const GDExtensionScriptInstanceGetMethodList fn,
     GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count) {
   printStacktrace();
-  return cb(p_instance, r_count);
+  return fn(p_instance, r_count);
 }
 void cgo_callfn_GDExtensionScriptInstanceFreeMethodList(
-    const GDExtensionScriptInstanceFreeMethodList cb,
+    const GDExtensionScriptInstanceFreeMethodList fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     const GDExtensionMethodInfo *p_list) {
   printStacktrace();
-  cb(p_instance, p_list);
+  fn(p_instance, p_list);
 }
 GDExtensionBool cgo_callfn_GDExtensionScriptInstanceHasMethod(
-    const GDExtensionScriptInstanceHasMethod cb,
+    const GDExtensionScriptInstanceHasMethod fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     GDExtensionConstStringNamePtr p_name) {
   printStacktrace();
-  return cb(p_instance, p_name);
+  return fn(p_instance, p_name);
 }
 void cgo_callfn_GDExtensionScriptInstanceCall(
-    const GDExtensionScriptInstanceCall cb,
+    const GDExtensionScriptInstanceCall fn,
     GDExtensionScriptInstanceDataPtr p_self,
     GDExtensionConstStringNamePtr p_method,
     const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count,
     GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
   printStacktrace();
-  cb(p_self, p_method, p_args, p_argument_count, r_return, r_error);
+  fn(p_self, p_method, p_args, p_argument_count, r_return, r_error);
 }
 void cgo_callfn_GDExtensionScriptInstanceNotification(
-    const GDExtensionScriptInstanceNotification cb,
+    const GDExtensionScriptInstanceNotification fn,
     GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what) {
   printStacktrace();
-  cb(p_instance, p_what);
+  fn(p_instance, p_what);
 }
 void cgo_callfn_GDExtensionScriptInstanceToString(
-    const GDExtensionScriptInstanceToString cb,
+    const GDExtensionScriptInstanceToString fn,
     GDExtensionScriptInstanceDataPtr p_instance, GDExtensionBool *r_is_valid,
     GDExtensionStringPtr r_out) {
   printStacktrace();
-  cb(p_instance, r_is_valid, r_out);
+  fn(p_instance, r_is_valid, r_out);
 }
 void cgo_callfn_GDExtensionScriptInstanceRefCountIncremented(
-    const GDExtensionScriptInstanceRefCountIncremented cb,
+    const GDExtensionScriptInstanceRefCountIncremented fn,
     GDExtensionScriptInstanceDataPtr p_instance) {
   printStacktrace();
-  cb(p_instance);
+  fn(p_instance);
 }
 GDExtensionBool cgo_callfn_GDExtensionScriptInstanceRefCountDecremented(
-    const GDExtensionScriptInstanceRefCountDecremented cb,
+    const GDExtensionScriptInstanceRefCountDecremented fn,
     GDExtensionScriptInstanceDataPtr p_instance) {
   printStacktrace();
-  return cb(p_instance);
+  return fn(p_instance);
 }
 GDExtensionObjectPtr cgo_callfn_GDExtensionScriptInstanceGetScript(
-    const GDExtensionScriptInstanceGetScript cb,
+    const GDExtensionScriptInstanceGetScript fn,
     GDExtensionScriptInstanceDataPtr p_instance) {
   printStacktrace();
-  return cb(p_instance);
+  return fn(p_instance);
 }
 GDExtensionBool cgo_callfn_GDExtensionScriptInstanceIsPlaceholder(
-    const GDExtensionScriptInstanceIsPlaceholder cb,
+    const GDExtensionScriptInstanceIsPlaceholder fn,
     GDExtensionScriptInstanceDataPtr p_instance) {
   printStacktrace();
-  return cb(p_instance);
+  return fn(p_instance);
 }
 GDExtensionScriptLanguagePtr cgo_callfn_GDExtensionScriptInstanceGetLanguage(
-    const GDExtensionScriptInstanceGetLanguage cb,
+    const GDExtensionScriptInstanceGetLanguage fn,
     GDExtensionScriptInstanceDataPtr p_instance) {
   printStacktrace();
-  return cb(p_instance);
+  return fn(p_instance);
 }
 void cgo_callfn_GDExtensionScriptInstanceFree(
-    const GDExtensionScriptInstanceFree cb,
+    const GDExtensionScriptInstanceFree fn,
     GDExtensionScriptInstanceDataPtr p_instance) {
   printStacktrace();
-  cb(p_instance);
+  fn(p_instance);
 }
 GDExtensionBool cgo_callfn_GDExtensionInitializationFunction(
-    const GDExtensionInitializationFunction cb,
+    const GDExtensionInitializationFunction fn,
     const GDExtensionInterface *p_interface,
     GDExtensionClassLibraryPtr p_library,
     GDExtensionInitialization *r_initialization) {
   printStacktrace();
-  return cb(p_interface, p_library, r_initialization);
+  return fn(p_interface, p_library, r_initialization);
 }
 /* struct (7) GDExtensionInterface */
 void *

@@ -56,12 +56,23 @@ func NewGDExtensionPropertyInfo(
 	})
 }
 
-func (p *GDExtensionPropertyInfo) Destroy() {
+func (p *GDExtensionPropertyInfo) Destroy(gdnInterface *GDExtensionInterface) {
 	cp := (*C.GDExtensionPropertyInfo)(p)
 
-	C.free(unsafe.Pointer(cp.name))
-	C.free(unsafe.Pointer(cp.class_name))
-	C.free(unsafe.Pointer(cp.hint_string))
+	stringNameDestructor := (GDExtensionPtrDestructor)(GDExtensionInterface_variant_get_ptr_destructor(gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME))
+	stringDestructor := (GDExtensionPtrDestructor)(GDExtensionInterface_variant_get_ptr_destructor(gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING))
+
+	if cp.name != nil {
+		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(unsafe.Pointer(cp.name)))
+	}
+
+	if cp.class_name != nil {
+		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(unsafe.Pointer(cp.class_name)))
+	}
+
+	if cp.hint_string != nil {
+		CallFunc_GDExtensionPtrDestructor(stringDestructor, (GDExtensionTypePtr)(unsafe.Pointer(cp.hint_string)))
+	}
 }
 
 func NewGDExtensionClassMethodInfo(
@@ -106,10 +117,22 @@ func NewGDExtensionClassMethodInfo(
 	})
 }
 
-func (m *GDExtensionClassMethodInfo) Destroy() {
+func (m *GDExtensionClassMethodInfo) Destroy(gdnInterface *GDExtensionInterface) {
 	cm := (*C.GDExtensionClassMethodInfo)(m)
 
-	C.free(unsafe.Pointer(cm.name))
+	if cm != nil {
+		stringNameDestructor := (GDExtensionPtrDestructor)(GDExtensionInterface_variant_get_ptr_destructor(gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME))
+
+		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(unsafe.Pointer(cm.name)))
+	}
+
+	if cm.return_value_info != nil {
+		(*GDExtensionPropertyInfo)(cm.return_value_info).Destroy(gdnInterface)
+	}
+
+	if cm.argument_count > 0 && cm.arguments_info != nil {
+		(*GDExtensionPropertyInfo)(cm.arguments_info).Destroy(gdnInterface)
+	}
 }
 
 func NewGDExtensionClassCreationInfo(

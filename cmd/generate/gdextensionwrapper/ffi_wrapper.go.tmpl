@@ -55,38 +55,38 @@ const (
 
 // custom functions
 func CallFunc_GDExtensionPtrConstructor(
-	cb GDExtensionPtrConstructor,
+	fn GDExtensionPtrConstructor,
 	p_base GDExtensionTypePtr,
 	p_args *GDExtensionConstTypePtr,
 ) {
 	log.Debug("called CallFunc_GDExtensionPtrConstructor")
 	C.cgo_callfn_GDExtensionPtrConstructor(
-		(C.GDExtensionPtrConstructor)(cb),
+		(C.GDExtensionPtrConstructor)(fn),
 		(C.GDExtensionTypePtr)(p_base),
 		(*C.GDExtensionConstTypePtr)(p_args),
 	)
 }
 
 func CallFunc_GDExtensionPtrDestructor(
-	cb GDExtensionPtrDestructor,
+	fn GDExtensionPtrDestructor,
 	ptr GDExtensionTypePtr,
 ) {
 	log.Debug("called C.cgo_callfn_GDExtensionPtrDestructor")
 	C.cgo_callfn_GDExtensionPtrDestructor(
-		(C.GDExtensionPtrDestructor)(cb),
+		(C.GDExtensionPtrDestructor)(fn),
 		(C.GDExtensionTypePtr)(ptr),
 	)
 }
 
 func CallFunc_GDExtensionPtrOperatorEvaluator(
-	cb GDExtensionPtrOperatorEvaluator,
+	fn GDExtensionPtrOperatorEvaluator,
 	p_left GDExtensionConstTypePtr,
 	p_right GDExtensionConstTypePtr,
 	r_result GDExtensionTypePtr,
 ) {
 	log.Debug("called C.cgo_callfn_GDExtensionPtrOperatorEvaluator")
 	C.cgo_callfn_GDExtensionPtrOperatorEvaluator(
-		(C.GDExtensionPtrOperatorEvaluator)(cb),
+		(C.GDExtensionPtrOperatorEvaluator)(fn),
 		(C.GDExtensionConstTypePtr)(p_left),
 		(C.GDExtensionConstTypePtr)(p_right),
 		(C.GDExtensionTypePtr)(r_result),
@@ -94,7 +94,7 @@ func CallFunc_GDExtensionPtrOperatorEvaluator(
 }
 
 func CallFunc_GDExtensionPtrBuiltInMethod(
-	cb GDExtensionPtrBuiltInMethod,
+	fn GDExtensionPtrBuiltInMethod,
 	p_base GDExtensionTypePtr,
 	p_args *GDExtensionConstTypePtr,
 	r_return GDExtensionTypePtr,
@@ -102,7 +102,7 @@ func CallFunc_GDExtensionPtrBuiltInMethod(
 ) {
 	log.Debug("called C.cgo_callfn_GDExtensionPtrBuiltInMethod")
 	C.cgo_callfn_GDExtensionPtrBuiltInMethod(
-		(C.GDExtensionPtrBuiltInMethod)(cb),
+		(C.GDExtensionPtrBuiltInMethod)(fn),
 		(C.GDExtensionTypePtr)(p_base),
 		(*C.GDExtensionConstTypePtr)(p_args),
 		(C.GDExtensionTypePtr)(r_return),
@@ -111,14 +111,14 @@ func CallFunc_GDExtensionPtrBuiltInMethod(
 }
 
 func CallFunc_GDExtensionPtrUtilityFunction(
-	cb GDExtensionPtrUtilityFunction,
+	fn GDExtensionPtrUtilityFunction,
 	r_return GDExtensionTypePtr,
 	p_arguments *GDExtensionConstTypePtr,
 	p_argument_count int32,
 ) {
 	log.Debug("called C.cgo_callfn_GDExtensionPtrUtilityFunction")
 	C.cgo_callfn_GDExtensionPtrUtilityFunction(
-		(C.GDExtensionPtrUtilityFunction)(cb),
+		(C.GDExtensionPtrUtilityFunction)(fn),
 		(C.GDExtensionTypePtr)(r_return),
 		(*C.GDExtensionConstTypePtr)(p_arguments),
 		(C.int)(p_argument_count),
@@ -126,40 +126,40 @@ func CallFunc_GDExtensionPtrUtilityFunction(
 }
 
 func CallFunc_GDExtensionPtrGetter(
-	cb GDExtensionPtrGetter,
+	fn GDExtensionPtrGetter,
 	p_base GDExtensionConstTypePtr,
 	r_value GDExtensionTypePtr,
 ) {
 	log.Debug("called C.cgo_callfn_GDExtensionPtrGetter")
 	C.cgo_callfn_GDExtensionPtrGetter(
-		(C.GDExtensionPtrGetter)(cb),
+		(C.GDExtensionPtrGetter)(fn),
 		(C.GDExtensionConstTypePtr)(p_base),
 		(C.GDExtensionTypePtr)(r_value),
 	)
 }
 
 func CallFunc_GDExtensionPtrSetter(
-	cb GDExtensionPtrSetter,
+	fn GDExtensionPtrSetter,
 	p_base GDExtensionTypePtr,
 	p_value GDExtensionConstTypePtr,
 ) {
 	log.Debug("called C.cgo_callfn_GDExtensionPtrSetter")
 	C.cgo_callfn_GDExtensionPtrSetter(
-		(C.GDExtensionPtrSetter)(cb),
+		(C.GDExtensionPtrSetter)(fn),
 		(C.GDExtensionTypePtr)(p_base),
 		(C.GDExtensionConstTypePtr)(p_value),
 	)
 }
 
 func CallFunc_GDExtensionPtrIndexedGetter(
-	cb GDExtensionPtrIndexedGetter,
+	fn GDExtensionPtrIndexedGetter,
 	p_base GDExtensionConstTypePtr,
 	p_index GDExtensionInt,
 	r_value GDExtensionTypePtr,
 ) {
 	log.Debug("called C.cgo_callfn_GDExtensionPtrIndexedGetter")
 	C.cgo_callfn_GDExtensionPtrIndexedGetter(
-		(C.GDExtensionPtrIndexedGetter)(cb),
+		(C.GDExtensionPtrIndexedGetter)(fn),
 		(C.GDExtensionConstTypePtr)(p_base),
 		(C.GDExtensionInt)(p_index),
 		(C.GDExtensionTypePtr)(r_value),
@@ -167,14 +167,14 @@ func CallFunc_GDExtensionPtrIndexedGetter(
 }
 
 func CallFunc_GDExtensionPtrIndexedSetter(
-	cb GDExtensionPtrIndexedSetter,
+	fn GDExtensionPtrIndexedSetter,
 	p_base GDExtensionTypePtr,
 	p_index GDExtensionInt,
 	p_value GDExtensionConstTypePtr,
 ) {
 	log.Debug("called C.cgo_callfn_GDExtensionPtrIndexedSetter")
 	C.cgo_callfn_GDExtensionPtrIndexedSetter(
-		(C.GDExtensionPtrIndexedSetter)(cb),
+		(C.GDExtensionPtrIndexedSetter)(fn),
 		(C.GDExtensionTypePtr)(p_base),
 		(C.GDExtensionInt)(p_index),
 		(C.GDExtensionConstTypePtr)(p_value),
@@ -182,39 +182,39 @@ func CallFunc_GDExtensionPtrIndexedSetter(
 }
 
 func CallFunc_GDExtensionVariantFromTypeConstructorFunc(
-	cb GDExtensionVariantFromTypeConstructorFunc,
+	fn GDExtensionVariantFromTypeConstructorFunc,
 	arg_0 GDExtensionVariantPtr,
     arg_1 GDExtensionTypePtr,
 ) {
 	log.Debug("called C.cgo_callfn_GDExtensionVariantFromTypeConstructorFunc")
 	C.cgo_callfn_GDExtensionVariantFromTypeConstructorFunc(
-		(C.GDExtensionVariantFromTypeConstructorFunc)(cb),
+		(C.GDExtensionVariantFromTypeConstructorFunc)(fn),
 		(C.GDExtensionVariantPtr)(arg_0),
 		(C.GDExtensionTypePtr)(arg_1),
 	)
 }
 
 func CallFunc_GDExtensionTypeFromVariantConstructorFunc(
-	cb GDExtensionTypeFromVariantConstructorFunc,
+	fn GDExtensionTypeFromVariantConstructorFunc,
 	arg_0 GDExtensionTypePtr,
     arg_1 GDExtensionVariantPtr,
 ) {
 	log.Debug("called C.cgo_callfn_GDExtensionTypeFromVariantConstructorFunc")
 	C.cgo_callfn_GDExtensionTypeFromVariantConstructorFunc(
-		(C.GDExtensionTypeFromVariantConstructorFunc)(cb),
+		(C.GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(C.GDExtensionTypePtr)(arg_0),
 		(C.GDExtensionVariantPtr)(arg_1),
 	)
 }
 
 {{/*
-	func Call{{ $f.Name }}(cb {{ $f.Name }}
+	func Call{{ $f.Name }}(fn {{ $f.Name }}
 		{{- range $j, $arg := $f.Arguments -}}
 			, {{ if $arg.Name }}{{ $arg.Name }}{{ else }}arg_{{ $j }}{{ end }} {{ goArgumentType $arg.Type $arg.Name }}
 		{{- end -}}
 	) {{ goReturnType $f.ReturnType }} {
 		{{ if (gt (len (goReturnType $f.ReturnType)) 0) }}return {{ end }}  C.cgo_{{ $f.Name -}}
-			((C.{{ $f.Name }})(cb)
+			((C.{{ $f.Name }})(fn)
 			{{- range $j, $arg := $f.Arguments -}}
 				, (C.{{ goArgumentType $arg.Type $arg.Name }})({{ if $arg.Name }}{{ $arg.Name }}{{ else }}arg_{{ $j }}{{ end }})
 			{{- end -}}

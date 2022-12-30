@@ -33,9 +33,12 @@ func (w *WrappedImpl) SetGodotObjectOwner(owner *GodotObject) {
 func (w *WrappedImpl) CastTo(className string) Wrapped {
 	owner := w.Owner
 
+	cn := NewStringNameWithLatin1Chars(className)
+	defer cn.Destroy()
+
 	tag := GDExtensionInterface_classdb_get_class_tag(
 		internal.gdnInterface,
-		NewStringNameWithLatin1Chars(className).AsGDExtensionStringNamePtr(),
+		cn.AsGDExtensionStringNamePtr(),
 	)
 
 	if tag == nil {

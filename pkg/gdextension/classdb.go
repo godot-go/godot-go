@@ -24,12 +24,21 @@ func ClassDBAddPropertyGroup(t GDClass, p_name string, p_prefix string) {
 		panic(fmt.Sprintf(`Trying to add property group "%s" to non-existing class "%s".`, p_name, cn))
 	}
 
-	snClassName := NewStringNameWithLatin1Chars(cn).AsGDExtensionStringNamePtr()
-	snName := NewStringWithLatin1Chars(p_name).AsGDExtensionStringPtr()
-	snPrefix := NewStringWithLatin1Chars(p_prefix).AsGDExtensionStringPtr()
+	className := NewStringNameWithLatin1Chars(cn)
+	defer className.Destroy()
+
+	name := NewStringWithLatin1Chars(p_name)
+	defer name.Destroy()
+
+	prefix := NewStringWithLatin1Chars(p_prefix)
+	defer prefix.Destroy()
 
 	GDExtensionInterface_classdb_register_extension_class_property_group(
-		internal.gdnInterface, internal.library, snClassName, snName, snPrefix)
+		internal.gdnInterface, internal.library,
+		className.AsGDExtensionStringNamePtr(),
+		name.AsGDExtensionStringPtr(),
+		prefix.AsGDExtensionStringPtr(),
+	)
 }
 
 func ClassDBAddPropertySubgroup(t GDClass, p_name string, p_prefix string) {
@@ -39,12 +48,21 @@ func ClassDBAddPropertySubgroup(t GDClass, p_name string, p_prefix string) {
 		panic(fmt.Sprintf(`Trying to add property sub-group "%s" to non-existing class "%s".`, p_name, cn))
 	}
 
-	snClassName := NewStringNameWithLatin1Chars((string)(cn)).AsGDExtensionStringNamePtr()
-	snName := NewStringWithLatin1Chars(p_name).AsGDExtensionStringPtr()
-	snPrefix := NewStringWithLatin1Chars(p_prefix).AsGDExtensionStringPtr()
+	className := NewStringNameWithLatin1Chars(cn)
+	defer className.Destroy()
+
+	name := NewStringWithLatin1Chars(p_name)
+	defer name.Destroy()
+
+	prefix := NewStringWithLatin1Chars(p_prefix)
+	defer prefix.Destroy()
 
 	GDExtensionInterface_classdb_register_extension_class_property_subgroup(
-		internal.gdnInterface, internal.library, snClassName, snName, snPrefix)
+		internal.gdnInterface, internal.library,
+		className.AsGDExtensionStringNamePtr(),
+		name.AsGDExtensionStringPtr(),
+		prefix.AsGDExtensionStringPtr(),
+	)
 }
 
 // ClassDBAddProperty default p_index = -1
@@ -134,22 +152,38 @@ func ClassDBAddProperty(
 	// register property with plugin
 	ci.PropertyNameMap[pn] = struct{}{}
 
+	className := NewStringNameWithLatin1Chars(cn)
+	defer className.Destroy()
+
+	propName := NewStringNameWithLatin1Chars(pn)
+	defer propName.Destroy()
+
+	hint := NewStringWithLatin1Chars("")
+	defer hint.Destroy()
+
 	// register with Godot
 	prop_info := NewGDExtensionPropertyInfo(
-		NewStringNameWithLatin1Chars(cn).AsGDExtensionStringNamePtr(),
+		className.AsGDExtensionStringNamePtr(),
 		p_property_type,
-		NewStringNameWithLatin1Chars(pn).AsGDExtensionStringNamePtr(),
+		propName.AsGDExtensionStringNamePtr(),
 		uint32(PROPERTY_HINT_NONE),
-		NewStringWithLatin1Chars("").AsGDExtensionStringPtr(),
+		hint.AsGDExtensionStringPtr(),
 		uint32(PROPERTY_USAGE_DEFAULT),
 	)
 
-	snSetterGDName := NewStringNameWithLatin1Chars(setterGDName).AsGDExtensionStringNamePtr()
-	snGetterGDName := NewStringNameWithLatin1Chars(getterGDName).AsGDExtensionStringNamePtr()
+	snSetterGDName := NewStringNameWithLatin1Chars(setterGDName)
+	defer snSetterGDName.Destroy()
 
-	GDExtensionInterface_classdb_register_extension_class_property(internal.gdnInterface, internal.library, ci.NameAsStringNamePtr, &prop_info, snSetterGDName, snGetterGDName)
+	snGetterGDName := NewStringNameWithLatin1Chars(getterGDName)
+	defer snGetterGDName.Destroy()
 
-	// TODO: release CStrings?
+	GDExtensionInterface_classdb_register_extension_class_property(
+		internal.gdnInterface, internal.library,
+		ci.NameAsStringNamePtr,
+		&prop_info,
+		snSetterGDName.AsGDExtensionStringNamePtr(),
+		snGetterGDName.AsGDExtensionStringNamePtr(),
+	)
 }
 
 func classDBGetMethod(p_class string, p_method string) *MethodBind {
@@ -253,14 +287,24 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 	paramArr := make([]GDExtensionPropertyInfo, len(params))
 
 	for i, p := range params {
+		snTypeName := NewStringNameWithLatin1Chars(typeName)
+		defer snTypeName.Destroy()
+
+		snName := NewStringNameWithLatin1Chars(p.Name)
+		defer snName.Destroy()
+
+		hint := NewStringWithLatin1Chars("")
+		defer hint.Destroy()
+
 		paramArr[i] = NewGDExtensionPropertyInfo(
-			NewStringNameWithLatin1Chars(typeName).AsGDExtensionStringNamePtr(),
+			snTypeName.AsGDExtensionStringNamePtr(),
 			p.Type,
-			NewStringNameWithLatin1Chars(p.Name).AsGDExtensionStringNamePtr(),
+			snName.AsGDExtensionStringNamePtr(),
 			(uint32)(PROPERTY_HINT_NONE),
-			NewStringWithLatin1Chars("").AsGDExtensionStringPtr(),
+			hint.AsGDExtensionStringPtr(),
 			(uint32)(PROPERTY_USAGE_DEFAULT),
 		)
+		defer paramArr[i].Destroy(internal.gdnInterface)
 	}
 
 	var argsPtr *GDExtensionPropertyInfo
@@ -271,11 +315,17 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 		argsPtr = (*GDExtensionPropertyInfo)(nullptr)
 	}
 
+	snTypeName := NewStringNameWithLatin1Chars(typeName)
+	defer snTypeName.Destroy()
+
+	snSignalName := NewStringNameWithLatin1Chars(signalName)
+	defer snSignalName.Destroy()
+
 	GDExtensionInterface_classdb_register_extension_class_signal(
 		internal.gdnInterface,
 		internal.library,
-		NewStringNameWithLatin1Chars(typeName).AsGDExtensionStringNamePtr(),
-		NewStringNameWithLatin1Chars(signalName).AsGDExtensionStringNamePtr(),
+		snTypeName.AsGDExtensionStringNamePtr(),
+		snSignalName.AsGDExtensionStringNamePtr(),
 		argsPtr,
 		GDExtensionInt(len(params)))
 }
@@ -323,12 +373,21 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 
 	bitfield := (GDExtensionBool)(BoolEncoder.EncodeArg(p_is_bitfield))
 
+	snTypeName := NewStringNameWithLatin1Chars(typeName)
+	defer snTypeName.Destroy()
+
+	snEnumName := NewStringNameWithLatin1Chars(p_enum_name)
+	defer snEnumName.Destroy()
+
+	snConstantName := NewStringNameWithLatin1Chars(p_constant_name)
+	defer snConstantName.Destroy()
+
 	GDExtensionInterface_classdb_register_extension_class_integer_constant(
 		internal.gdnInterface,
 		internal.library,
-		NewStringNameWithLatin1Chars(typeName).AsGDExtensionStringNamePtr(),
-		NewStringNameWithLatin1Chars(p_enum_name).AsGDExtensionStringNamePtr(),
-		NewStringNameWithLatin1Chars(p_constant_name).AsGDExtensionStringNamePtr(),
+		snTypeName.AsGDExtensionStringNamePtr(),
+		snEnumName.AsGDExtensionStringNamePtr(),
+		snConstantName.AsGDExtensionStringNamePtr(),
 		p_constant_value,
 		bitfield,
 	)
@@ -374,16 +433,19 @@ func classDBDeinitialize(pLevel GDExtensionInitializationLevel) {
 			continue
 		}
 
+		name := NewStringNameWithLatin1Chars(ci.Name)
+		defer name.Destroy()
+
 		GDExtensionInterface_classdb_unregister_extension_class(
 			internal.gdnInterface,
 			internal.library,
-			NewStringNameWithLatin1Chars(ci.Name).AsGDExtensionStringNamePtr(),
+			name.AsGDExtensionStringNamePtr(),
 		)
 
 		// NOTE: godot-cpp iterates through the map to delete all method binds
 		for n, mb := range ci.MethodMap {
 			delete(ci.MethodMap, n)
-			mb.Destroy()
+			mb.Destroy(internal.gdnInterface)
 		}
 	}
 }
@@ -471,12 +533,18 @@ func ClassDBRegisterClass(inst GDClass, bindMethodsFunc func(t GDClass)) {
 		unsafe.Pointer(cName),
 	)
 
+	snName := NewStringNameWithLatin1Chars(name)
+	defer snName.Destroy()
+
+	snParentName := NewStringNameWithLatin1Chars(parentName)
+	defer snParentName.Destroy()
+
 	// register with Godot
 	GDExtensionInterface_classdb_register_extension_class(
 		(*GDExtensionInterface)(internal.gdnInterface),
 		(GDExtensionClassLibraryPtr)(internal.library),
-		NewStringNameWithLatin1Chars(string(name)).AsGDExtensionStringNamePtr(),
-		NewStringNameWithLatin1Chars(string(parentName)).AsGDExtensionStringNamePtr(),
+		snName.AsGDExtensionStringNamePtr(),
+		snParentName.AsGDExtensionStringNamePtr(),
 		&info,
 	)
 

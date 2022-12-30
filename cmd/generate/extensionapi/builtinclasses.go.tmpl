@@ -101,15 +101,19 @@ func {{ lowerFirstChar $c.Name }}InitMethodBindings() {
     log.Debug("{{ lowerFirstChar $c.Name }}InitMethodBindings called")
 
     {{ range $j, $mb := $c.Methods -}}
+    methodName{{ $j }} := NewStringNameWithLatin1Chars("{{ $mb.Name }}")
+    defer methodName{{ $j }}.Destroy()
     log.Debug("global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }}")
-    global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }} = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, {{ $enumTypeName }}, NewStringNameWithLatin1Chars("{{ $mb.Name }}").AsGDExtensionStringNamePtr(), {{ $mb.Hash }})
+    global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }} = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, {{ $enumTypeName }}, methodName{{ $j }}.AsGDExtensionStringNamePtr(), {{ $mb.Hash }})
     {{ end -}}
 
     {{ range $j, $mb := $c.Members -}}
+    memberName{{ $j }} := NewStringNameWithLatin1Chars("{{ $mb.Name }}")
+    defer memberName{{ $j }}.Destroy()
     log.Debug("global{{ $c.Name }}MethodBindings.member_{{ $mb.Name }}_setter")
-    global{{ $c.Name }}MethodBindings.member_{{ $mb.Name }}_setter = GDExtensionInterface_variant_get_ptr_setter(internal.gdnInterface, {{ $enumTypeName }}, NewStringNameWithLatin1Chars("{{ $mb.Name }}").AsGDExtensionStringNamePtr())
+    global{{ $c.Name }}MethodBindings.member_{{ $mb.Name }}_setter = GDExtensionInterface_variant_get_ptr_setter(internal.gdnInterface, {{ $enumTypeName }}, memberName{{ $j }}.AsGDExtensionStringNamePtr())
     log.Debug("global{{ $c.Name }}MethodBindings.member_{{ $mb.Name }}_getter")
-    global{{ $c.Name }}MethodBindings.member_{{ $mb.Name }}_getter = GDExtensionInterface_variant_get_ptr_getter(internal.gdnInterface, {{ $enumTypeName }}, NewStringNameWithLatin1Chars("{{ $mb.Name }}").AsGDExtensionStringNamePtr())
+    global{{ $c.Name }}MethodBindings.member_{{ $mb.Name }}_getter = GDExtensionInterface_variant_get_ptr_getter(internal.gdnInterface, {{ $enumTypeName }}, memberName{{ $j }}.AsGDExtensionStringNamePtr())
     {{ end -}}
 
     {{ if gt (len $c.IndexingReturnType) 0 -}}

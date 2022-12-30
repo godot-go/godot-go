@@ -67,6 +67,12 @@ jobs:
           ls -alh test/demo/lib
           ls -alh test/demo/
         shell: bash
+      - name: Run Godot Unit Tests
+        timeout-minutes: 3
+        run: ./Godot_v4.0-beta10_win64.exe --test
+        continue-on-error: true
+        env:
+          LANG: "en_US.utf8"
       - name: Gen Test Project Files
         timeout-minutes: 3
         run: make ci_gen_test_project_files
@@ -79,7 +85,6 @@ jobs:
       - name: Test
         timeout-minutes: 5
         run: make test
-        continue-on-error: true
         shell: bash
         env:
           CI: 1

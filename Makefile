@@ -89,3 +89,6 @@ open_demo_in_editor:
 	GOTRACEBACK=1 \
 	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	$(GODOT) --verbose --debug --path test/demo/ --editor
+
+godot_unit_test:
+	$(GODOT) --test

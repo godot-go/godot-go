@@ -590,22 +590,31 @@ func classDBBindMethod(p_instance GDClass, p_go_method_name string, p_method_nam
 }
 
 //export GoCallback_ClassDBGetVirtualFunc
-func GoCallback_ClassDBGetVirtualFunc(pUserdata unsafe.Pointer, pName *C.char) C.GDExtensionClassCallVirtual {
+func GoCallback_ClassDBGetVirtualFunc(pUserdata unsafe.Pointer, pName C.GDExtensionConstStringNamePtr) C.GDExtensionClassCallVirtual {
 	className := C.GoString((*C.char)(pUserdata))
-	methodName := C.GoString(pName)
+	snMethodName := (*StringName)(unsafe.Pointer(pName))
+	sMethodName := snMethodName.AsString()
+	methodName := (&sMethodName).ToAscii()
 
-	log.Debug("GoCallback_ClassDBGetVirtualFunc called", zap.String("type_name", className), zap.String("method", methodName))
+	log.Info("GoCallback_ClassDBGetVirtualFunc called",
+	    zap.String("type_name", className),
+		zap.String("method", methodName),
+	)
 
 	ci, ok := gdRegisteredGDClasses.Get(className)
 
 	if !ok {
-		log.Warn(fmt.Sprintf("class \"%s\" doesn't exist", className))
+		log.Warn("class not found", zap.String("className", className))
 		return (C.GDExtensionClassCallVirtual)(nullptr)
 	}
 
 	m, ok := ci.VirtualMethodMap[methodName]
 
 	if !ok {
+		log.Debug("no virtual method found",
+			zap.String("className", className),
+			zap.String("method", methodName),
+		)
 		return (C.GDExtensionClassCallVirtual)(nullptr)
 	}
 

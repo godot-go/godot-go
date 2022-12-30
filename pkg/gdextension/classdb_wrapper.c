@@ -4,13 +4,13 @@
 #include "classdb_wrapper.h"
 #include "stacktrace.h"
 
-extern GDExtensionClassCallVirtual GoCallback_ClassDBGetVirtualFunc(void *p_userdata, char *p_name);
+extern GDExtensionClassCallVirtual GoCallback_ClassDBGetVirtualFunc(void *p_userdata, GDExtensionConstStringNamePtr p_name);
 extern GDExtensionObjectPtr GoCallback_GDExtensionClassCreateInstance(void *data);
 extern void GoCallback_GDExtensionClassFreeInstance(void *data, GDExtensionClassInstancePtr ptr);
 
-GDExtensionClassCallVirtual cgo_classdb_get_virtual_func(void *p_userdata, const char *p_name) {
+GDExtensionClassCallVirtual cgo_classdb_get_virtual_func(void *p_userdata, GDExtensionConstStringNamePtr p_name) {
     printStacktrace();
-    return GoCallback_ClassDBGetVirtualFunc(p_userdata, (char *)p_name);
+    return GoCallback_ClassDBGetVirtualFunc(p_userdata, p_name);
 }
 
 GDExtensionObjectPtr cgo_gdextension_extension_class_create_instance(void *data) {

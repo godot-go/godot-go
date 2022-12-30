@@ -31,6 +31,12 @@ func NewStringNameWithLatin1Chars(content string) StringName {
 	return NewStringNameWithString(cx)
 }
 
+func (cx *StringName) AsString() String {
+	rt := NewStringWithLatin1Chars("")
+	defer rt.Destroy()
+	return cx.Add_String(rt)
+}
+
 func NewStringNameWithUtf8Chars(content string) StringName {
 	cx := String{}
 	defer cx.Destroy()

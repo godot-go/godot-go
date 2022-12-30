@@ -11,7 +11,7 @@ on:
 
   push:
     branches:
-      - 'master'
+      - main
     paths:
       - "**/*.go"
       - "**/*.c"

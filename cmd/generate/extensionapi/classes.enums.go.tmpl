@@ -16,7 +16,7 @@ package gdextension
 
 {{ if $c.Enums -}}
 
-{{ range $i, $e := $c.FilterEnums -}}
+{{ range $i, $e := $c.FilteredEnums -}}
 type {{ $c.Name }}{{ $e.GoName }} int
 const (
 	{{ range $j, $v := $e.Values -}}

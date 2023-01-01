@@ -20,6 +20,7 @@ import (
 	"unsafe"
 
 	"github.com/godot-go/godot-go/pkg/log"
+	"go.uber.org/zap"
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
@@ -218,398 +219,698 @@ func stringInitConstructorBindings() {
 func stringInitMethodBindings() {
 	log.Debug("stringInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 98)
+
 	methodName0 := NewStringNameWithLatin1Chars("casecmp_to")
 	defer methodName0.Destroy()
 	log.Debug("globalStringMethodBindings.method_casecmp_to")
 	globalStringMethodBindings.method_casecmp_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName0.AsGDExtensionStringNamePtr(), 2920860731)
+	if globalStringMethodBindings.method_casecmp_to == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_casecmp_to")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("nocasecmp_to")
 	defer methodName1.Destroy()
 	log.Debug("globalStringMethodBindings.method_nocasecmp_to")
 	globalStringMethodBindings.method_nocasecmp_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName1.AsGDExtensionStringNamePtr(), 2920860731)
+	if globalStringMethodBindings.method_nocasecmp_to == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_nocasecmp_to")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("naturalnocasecmp_to")
 	defer methodName2.Destroy()
 	log.Debug("globalStringMethodBindings.method_naturalnocasecmp_to")
 	globalStringMethodBindings.method_naturalnocasecmp_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName2.AsGDExtensionStringNamePtr(), 2920860731)
+	if globalStringMethodBindings.method_naturalnocasecmp_to == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_naturalnocasecmp_to")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("length")
 	defer methodName3.Destroy()
 	log.Debug("globalStringMethodBindings.method_length")
 	globalStringMethodBindings.method_length = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName3.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalStringMethodBindings.method_length == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_length")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("substr")
 	defer methodName4.Destroy()
 	log.Debug("globalStringMethodBindings.method_substr")
 	globalStringMethodBindings.method_substr = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName4.AsGDExtensionStringNamePtr(), 787537301)
+	if globalStringMethodBindings.method_substr == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_substr")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("get_slice")
 	defer methodName5.Destroy()
 	log.Debug("globalStringMethodBindings.method_get_slice")
 	globalStringMethodBindings.method_get_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName5.AsGDExtensionStringNamePtr(), 3535100402)
+	if globalStringMethodBindings.method_get_slice == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_get_slice")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("get_slicec")
 	defer methodName6.Destroy()
 	log.Debug("globalStringMethodBindings.method_get_slicec")
 	globalStringMethodBindings.method_get_slicec = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName6.AsGDExtensionStringNamePtr(), 787537301)
+	if globalStringMethodBindings.method_get_slicec == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_get_slicec")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("get_slice_count")
 	defer methodName7.Destroy()
 	log.Debug("globalStringMethodBindings.method_get_slice_count")
 	globalStringMethodBindings.method_get_slice_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName7.AsGDExtensionStringNamePtr(), 2920860731)
+	if globalStringMethodBindings.method_get_slice_count == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_get_slice_count")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("find")
 	defer methodName8.Destroy()
 	log.Debug("globalStringMethodBindings.method_find")
 	globalStringMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName8.AsGDExtensionStringNamePtr(), 1760645412)
+	if globalStringMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_find")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("count")
 	defer methodName9.Destroy()
 	log.Debug("globalStringMethodBindings.method_count")
 	globalStringMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName9.AsGDExtensionStringNamePtr(), 2343087891)
+	if globalStringMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_count")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("countn")
 	defer methodName10.Destroy()
 	log.Debug("globalStringMethodBindings.method_countn")
 	globalStringMethodBindings.method_countn = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName10.AsGDExtensionStringNamePtr(), 2343087891)
+	if globalStringMethodBindings.method_countn == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_countn")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("findn")
 	defer methodName11.Destroy()
 	log.Debug("globalStringMethodBindings.method_findn")
 	globalStringMethodBindings.method_findn = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName11.AsGDExtensionStringNamePtr(), 1760645412)
+	if globalStringMethodBindings.method_findn == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_findn")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName12.Destroy()
 	log.Debug("globalStringMethodBindings.method_rfind")
 	globalStringMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName12.AsGDExtensionStringNamePtr(), 1760645412)
+	if globalStringMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_rfind")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("rfindn")
 	defer methodName13.Destroy()
 	log.Debug("globalStringMethodBindings.method_rfindn")
 	globalStringMethodBindings.method_rfindn = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName13.AsGDExtensionStringNamePtr(), 1760645412)
+	if globalStringMethodBindings.method_rfindn == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_rfindn")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("match")
 	defer methodName14.Destroy()
 	log.Debug("globalStringMethodBindings.method_match")
 	globalStringMethodBindings.method_match = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName14.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringMethodBindings.method_match == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_match")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("matchn")
 	defer methodName15.Destroy()
 	log.Debug("globalStringMethodBindings.method_matchn")
 	globalStringMethodBindings.method_matchn = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName15.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringMethodBindings.method_matchn == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_matchn")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("begins_with")
 	defer methodName16.Destroy()
 	log.Debug("globalStringMethodBindings.method_begins_with")
 	globalStringMethodBindings.method_begins_with = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName16.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringMethodBindings.method_begins_with == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_begins_with")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("ends_with")
 	defer methodName17.Destroy()
 	log.Debug("globalStringMethodBindings.method_ends_with")
 	globalStringMethodBindings.method_ends_with = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName17.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringMethodBindings.method_ends_with == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_ends_with")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("is_subsequence_of")
 	defer methodName18.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_subsequence_of")
 	globalStringMethodBindings.method_is_subsequence_of = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName18.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringMethodBindings.method_is_subsequence_of == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_subsequence_of")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("is_subsequence_ofn")
 	defer methodName19.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_subsequence_ofn")
 	globalStringMethodBindings.method_is_subsequence_ofn = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName19.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringMethodBindings.method_is_subsequence_ofn == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_subsequence_ofn")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("bigrams")
 	defer methodName20.Destroy()
 	log.Debug("globalStringMethodBindings.method_bigrams")
 	globalStringMethodBindings.method_bigrams = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName20.AsGDExtensionStringNamePtr(), 747180633)
+	if globalStringMethodBindings.method_bigrams == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_bigrams")
+	}
 	methodName21 := NewStringNameWithLatin1Chars("similarity")
 	defer methodName21.Destroy()
 	log.Debug("globalStringMethodBindings.method_similarity")
 	globalStringMethodBindings.method_similarity = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName21.AsGDExtensionStringNamePtr(), 2697460964)
+	if globalStringMethodBindings.method_similarity == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_similarity")
+	}
 	methodName22 := NewStringNameWithLatin1Chars("format")
 	defer methodName22.Destroy()
 	log.Debug("globalStringMethodBindings.method_format")
 	globalStringMethodBindings.method_format = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName22.AsGDExtensionStringNamePtr(), 3212199029)
+	if globalStringMethodBindings.method_format == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_format")
+	}
 	methodName23 := NewStringNameWithLatin1Chars("replace")
 	defer methodName23.Destroy()
 	log.Debug("globalStringMethodBindings.method_replace")
 	globalStringMethodBindings.method_replace = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName23.AsGDExtensionStringNamePtr(), 1340436205)
+	if globalStringMethodBindings.method_replace == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_replace")
+	}
 	methodName24 := NewStringNameWithLatin1Chars("replacen")
 	defer methodName24.Destroy()
 	log.Debug("globalStringMethodBindings.method_replacen")
 	globalStringMethodBindings.method_replacen = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName24.AsGDExtensionStringNamePtr(), 1340436205)
+	if globalStringMethodBindings.method_replacen == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_replacen")
+	}
 	methodName25 := NewStringNameWithLatin1Chars("repeat")
 	defer methodName25.Destroy()
 	log.Debug("globalStringMethodBindings.method_repeat")
 	globalStringMethodBindings.method_repeat = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName25.AsGDExtensionStringNamePtr(), 2162347432)
+	if globalStringMethodBindings.method_repeat == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_repeat")
+	}
 	methodName26 := NewStringNameWithLatin1Chars("insert")
 	defer methodName26.Destroy()
 	log.Debug("globalStringMethodBindings.method_insert")
 	globalStringMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName26.AsGDExtensionStringNamePtr(), 248737229)
+	if globalStringMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_insert")
+	}
 	methodName27 := NewStringNameWithLatin1Chars("capitalize")
 	defer methodName27.Destroy()
 	log.Debug("globalStringMethodBindings.method_capitalize")
 	globalStringMethodBindings.method_capitalize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName27.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_capitalize == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_capitalize")
+	}
 	methodName28 := NewStringNameWithLatin1Chars("to_camel_case")
 	defer methodName28.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_camel_case")
 	globalStringMethodBindings.method_to_camel_case = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName28.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_to_camel_case == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_camel_case")
+	}
 	methodName29 := NewStringNameWithLatin1Chars("to_pascal_case")
 	defer methodName29.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_pascal_case")
 	globalStringMethodBindings.method_to_pascal_case = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName29.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_to_pascal_case == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_pascal_case")
+	}
 	methodName30 := NewStringNameWithLatin1Chars("to_snake_case")
 	defer methodName30.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_snake_case")
 	globalStringMethodBindings.method_to_snake_case = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName30.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_to_snake_case == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_snake_case")
+	}
 	methodName31 := NewStringNameWithLatin1Chars("split")
 	defer methodName31.Destroy()
 	log.Debug("globalStringMethodBindings.method_split")
 	globalStringMethodBindings.method_split = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName31.AsGDExtensionStringNamePtr(), 1252735785)
+	if globalStringMethodBindings.method_split == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_split")
+	}
 	methodName32 := NewStringNameWithLatin1Chars("rsplit")
 	defer methodName32.Destroy()
 	log.Debug("globalStringMethodBindings.method_rsplit")
 	globalStringMethodBindings.method_rsplit = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName32.AsGDExtensionStringNamePtr(), 1252735785)
+	if globalStringMethodBindings.method_rsplit == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_rsplit")
+	}
 	methodName33 := NewStringNameWithLatin1Chars("split_floats")
 	defer methodName33.Destroy()
 	log.Debug("globalStringMethodBindings.method_split_floats")
 	globalStringMethodBindings.method_split_floats = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName33.AsGDExtensionStringNamePtr(), 2092079095)
+	if globalStringMethodBindings.method_split_floats == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_split_floats")
+	}
 	methodName34 := NewStringNameWithLatin1Chars("join")
 	defer methodName34.Destroy()
 	log.Debug("globalStringMethodBindings.method_join")
 	globalStringMethodBindings.method_join = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName34.AsGDExtensionStringNamePtr(), 3595973238)
+	if globalStringMethodBindings.method_join == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_join")
+	}
 	methodName35 := NewStringNameWithLatin1Chars("to_upper")
 	defer methodName35.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_upper")
 	globalStringMethodBindings.method_to_upper = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName35.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_to_upper == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_upper")
+	}
 	methodName36 := NewStringNameWithLatin1Chars("to_lower")
 	defer methodName36.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_lower")
 	globalStringMethodBindings.method_to_lower = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName36.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_to_lower == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_lower")
+	}
 	methodName37 := NewStringNameWithLatin1Chars("left")
 	defer methodName37.Destroy()
 	log.Debug("globalStringMethodBindings.method_left")
 	globalStringMethodBindings.method_left = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName37.AsGDExtensionStringNamePtr(), 2162347432)
+	if globalStringMethodBindings.method_left == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_left")
+	}
 	methodName38 := NewStringNameWithLatin1Chars("right")
 	defer methodName38.Destroy()
 	log.Debug("globalStringMethodBindings.method_right")
 	globalStringMethodBindings.method_right = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName38.AsGDExtensionStringNamePtr(), 2162347432)
+	if globalStringMethodBindings.method_right == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_right")
+	}
 	methodName39 := NewStringNameWithLatin1Chars("strip_edges")
 	defer methodName39.Destroy()
 	log.Debug("globalStringMethodBindings.method_strip_edges")
 	globalStringMethodBindings.method_strip_edges = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName39.AsGDExtensionStringNamePtr(), 907855311)
+	if globalStringMethodBindings.method_strip_edges == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_strip_edges")
+	}
 	methodName40 := NewStringNameWithLatin1Chars("strip_escapes")
 	defer methodName40.Destroy()
 	log.Debug("globalStringMethodBindings.method_strip_escapes")
 	globalStringMethodBindings.method_strip_escapes = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName40.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_strip_escapes == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_strip_escapes")
+	}
 	methodName41 := NewStringNameWithLatin1Chars("lstrip")
 	defer methodName41.Destroy()
 	log.Debug("globalStringMethodBindings.method_lstrip")
 	globalStringMethodBindings.method_lstrip = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName41.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringMethodBindings.method_lstrip == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_lstrip")
+	}
 	methodName42 := NewStringNameWithLatin1Chars("rstrip")
 	defer methodName42.Destroy()
 	log.Debug("globalStringMethodBindings.method_rstrip")
 	globalStringMethodBindings.method_rstrip = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName42.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringMethodBindings.method_rstrip == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_rstrip")
+	}
 	methodName43 := NewStringNameWithLatin1Chars("get_extension")
 	defer methodName43.Destroy()
 	log.Debug("globalStringMethodBindings.method_get_extension")
 	globalStringMethodBindings.method_get_extension = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName43.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_get_extension == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_get_extension")
+	}
 	methodName44 := NewStringNameWithLatin1Chars("get_basename")
 	defer methodName44.Destroy()
 	log.Debug("globalStringMethodBindings.method_get_basename")
 	globalStringMethodBindings.method_get_basename = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName44.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_get_basename == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_get_basename")
+	}
 	methodName45 := NewStringNameWithLatin1Chars("path_join")
 	defer methodName45.Destroy()
 	log.Debug("globalStringMethodBindings.method_path_join")
 	globalStringMethodBindings.method_path_join = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName45.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringMethodBindings.method_path_join == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_path_join")
+	}
 	methodName46 := NewStringNameWithLatin1Chars("unicode_at")
 	defer methodName46.Destroy()
 	log.Debug("globalStringMethodBindings.method_unicode_at")
 	globalStringMethodBindings.method_unicode_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName46.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalStringMethodBindings.method_unicode_at == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_unicode_at")
+	}
 	methodName47 := NewStringNameWithLatin1Chars("indent")
 	defer methodName47.Destroy()
 	log.Debug("globalStringMethodBindings.method_indent")
 	globalStringMethodBindings.method_indent = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName47.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringMethodBindings.method_indent == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_indent")
+	}
 	methodName48 := NewStringNameWithLatin1Chars("dedent")
 	defer methodName48.Destroy()
 	log.Debug("globalStringMethodBindings.method_dedent")
 	globalStringMethodBindings.method_dedent = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName48.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_dedent == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_dedent")
+	}
 	methodName49 := NewStringNameWithLatin1Chars("hash")
 	defer methodName49.Destroy()
 	log.Debug("globalStringMethodBindings.method_hash")
 	globalStringMethodBindings.method_hash = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName49.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalStringMethodBindings.method_hash == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_hash")
+	}
 	methodName50 := NewStringNameWithLatin1Chars("md5_text")
 	defer methodName50.Destroy()
 	log.Debug("globalStringMethodBindings.method_md5_text")
 	globalStringMethodBindings.method_md5_text = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName50.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_md5_text == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_md5_text")
+	}
 	methodName51 := NewStringNameWithLatin1Chars("sha1_text")
 	defer methodName51.Destroy()
 	log.Debug("globalStringMethodBindings.method_sha1_text")
 	globalStringMethodBindings.method_sha1_text = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName51.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_sha1_text == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_sha1_text")
+	}
 	methodName52 := NewStringNameWithLatin1Chars("sha256_text")
 	defer methodName52.Destroy()
 	log.Debug("globalStringMethodBindings.method_sha256_text")
 	globalStringMethodBindings.method_sha256_text = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName52.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_sha256_text == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_sha256_text")
+	}
 	methodName53 := NewStringNameWithLatin1Chars("md5_buffer")
 	defer methodName53.Destroy()
 	log.Debug("globalStringMethodBindings.method_md5_buffer")
 	globalStringMethodBindings.method_md5_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName53.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringMethodBindings.method_md5_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_md5_buffer")
+	}
 	methodName54 := NewStringNameWithLatin1Chars("sha1_buffer")
 	defer methodName54.Destroy()
 	log.Debug("globalStringMethodBindings.method_sha1_buffer")
 	globalStringMethodBindings.method_sha1_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName54.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringMethodBindings.method_sha1_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_sha1_buffer")
+	}
 	methodName55 := NewStringNameWithLatin1Chars("sha256_buffer")
 	defer methodName55.Destroy()
 	log.Debug("globalStringMethodBindings.method_sha256_buffer")
 	globalStringMethodBindings.method_sha256_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName55.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringMethodBindings.method_sha256_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_sha256_buffer")
+	}
 	methodName56 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName56.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_empty")
 	globalStringMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName56.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_empty")
+	}
 	methodName57 := NewStringNameWithLatin1Chars("contains")
 	defer methodName57.Destroy()
 	log.Debug("globalStringMethodBindings.method_contains")
 	globalStringMethodBindings.method_contains = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName57.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringMethodBindings.method_contains == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_contains")
+	}
 	methodName58 := NewStringNameWithLatin1Chars("is_absolute_path")
 	defer methodName58.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_absolute_path")
 	globalStringMethodBindings.method_is_absolute_path = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName58.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringMethodBindings.method_is_absolute_path == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_absolute_path")
+	}
 	methodName59 := NewStringNameWithLatin1Chars("is_relative_path")
 	defer methodName59.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_relative_path")
 	globalStringMethodBindings.method_is_relative_path = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName59.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringMethodBindings.method_is_relative_path == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_relative_path")
+	}
 	methodName60 := NewStringNameWithLatin1Chars("simplify_path")
 	defer methodName60.Destroy()
 	log.Debug("globalStringMethodBindings.method_simplify_path")
 	globalStringMethodBindings.method_simplify_path = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName60.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_simplify_path == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_simplify_path")
+	}
 	methodName61 := NewStringNameWithLatin1Chars("get_base_dir")
 	defer methodName61.Destroy()
 	log.Debug("globalStringMethodBindings.method_get_base_dir")
 	globalStringMethodBindings.method_get_base_dir = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName61.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_get_base_dir == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_get_base_dir")
+	}
 	methodName62 := NewStringNameWithLatin1Chars("get_file")
 	defer methodName62.Destroy()
 	log.Debug("globalStringMethodBindings.method_get_file")
 	globalStringMethodBindings.method_get_file = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName62.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_get_file == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_get_file")
+	}
 	methodName63 := NewStringNameWithLatin1Chars("xml_escape")
 	defer methodName63.Destroy()
 	log.Debug("globalStringMethodBindings.method_xml_escape")
 	globalStringMethodBindings.method_xml_escape = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName63.AsGDExtensionStringNamePtr(), 3429816538)
+	if globalStringMethodBindings.method_xml_escape == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_xml_escape")
+	}
 	methodName64 := NewStringNameWithLatin1Chars("xml_unescape")
 	defer methodName64.Destroy()
 	log.Debug("globalStringMethodBindings.method_xml_unescape")
 	globalStringMethodBindings.method_xml_unescape = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName64.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_xml_unescape == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_xml_unescape")
+	}
 	methodName65 := NewStringNameWithLatin1Chars("uri_encode")
 	defer methodName65.Destroy()
 	log.Debug("globalStringMethodBindings.method_uri_encode")
 	globalStringMethodBindings.method_uri_encode = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName65.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_uri_encode == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_uri_encode")
+	}
 	methodName66 := NewStringNameWithLatin1Chars("uri_decode")
 	defer methodName66.Destroy()
 	log.Debug("globalStringMethodBindings.method_uri_decode")
 	globalStringMethodBindings.method_uri_decode = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName66.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_uri_decode == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_uri_decode")
+	}
 	methodName67 := NewStringNameWithLatin1Chars("c_escape")
 	defer methodName67.Destroy()
 	log.Debug("globalStringMethodBindings.method_c_escape")
 	globalStringMethodBindings.method_c_escape = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName67.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_c_escape == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_c_escape")
+	}
 	methodName68 := NewStringNameWithLatin1Chars("c_unescape")
 	defer methodName68.Destroy()
 	log.Debug("globalStringMethodBindings.method_c_unescape")
 	globalStringMethodBindings.method_c_unescape = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName68.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_c_unescape == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_c_unescape")
+	}
 	methodName69 := NewStringNameWithLatin1Chars("json_escape")
 	defer methodName69.Destroy()
 	log.Debug("globalStringMethodBindings.method_json_escape")
 	globalStringMethodBindings.method_json_escape = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName69.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_json_escape == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_json_escape")
+	}
 	methodName70 := NewStringNameWithLatin1Chars("validate_node_name")
 	defer methodName70.Destroy()
 	log.Debug("globalStringMethodBindings.method_validate_node_name")
 	globalStringMethodBindings.method_validate_node_name = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName70.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_validate_node_name == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_validate_node_name")
+	}
 	methodName71 := NewStringNameWithLatin1Chars("is_valid_identifier")
 	defer methodName71.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_identifier")
 	globalStringMethodBindings.method_is_valid_identifier = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName71.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringMethodBindings.method_is_valid_identifier == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_identifier")
+	}
 	methodName72 := NewStringNameWithLatin1Chars("is_valid_int")
 	defer methodName72.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_int")
 	globalStringMethodBindings.method_is_valid_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName72.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringMethodBindings.method_is_valid_int == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_int")
+	}
 	methodName73 := NewStringNameWithLatin1Chars("is_valid_float")
 	defer methodName73.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_float")
 	globalStringMethodBindings.method_is_valid_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName73.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringMethodBindings.method_is_valid_float == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_float")
+	}
 	methodName74 := NewStringNameWithLatin1Chars("is_valid_hex_number")
 	defer methodName74.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_hex_number")
 	globalStringMethodBindings.method_is_valid_hex_number = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName74.AsGDExtensionStringNamePtr(), 593672999)
+	if globalStringMethodBindings.method_is_valid_hex_number == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_hex_number")
+	}
 	methodName75 := NewStringNameWithLatin1Chars("is_valid_html_color")
 	defer methodName75.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_html_color")
 	globalStringMethodBindings.method_is_valid_html_color = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName75.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringMethodBindings.method_is_valid_html_color == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_html_color")
+	}
 	methodName76 := NewStringNameWithLatin1Chars("is_valid_ip_address")
 	defer methodName76.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_ip_address")
 	globalStringMethodBindings.method_is_valid_ip_address = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName76.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringMethodBindings.method_is_valid_ip_address == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_ip_address")
+	}
 	methodName77 := NewStringNameWithLatin1Chars("is_valid_filename")
 	defer methodName77.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_filename")
 	globalStringMethodBindings.method_is_valid_filename = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName77.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringMethodBindings.method_is_valid_filename == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_filename")
+	}
 	methodName78 := NewStringNameWithLatin1Chars("to_int")
 	defer methodName78.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_int")
 	globalStringMethodBindings.method_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName78.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalStringMethodBindings.method_to_int == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_int")
+	}
 	methodName79 := NewStringNameWithLatin1Chars("to_float")
 	defer methodName79.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_float")
 	globalStringMethodBindings.method_to_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName79.AsGDExtensionStringNamePtr(), 466405837)
+	if globalStringMethodBindings.method_to_float == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_float")
+	}
 	methodName80 := NewStringNameWithLatin1Chars("hex_to_int")
 	defer methodName80.Destroy()
 	log.Debug("globalStringMethodBindings.method_hex_to_int")
 	globalStringMethodBindings.method_hex_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName80.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalStringMethodBindings.method_hex_to_int == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_hex_to_int")
+	}
 	methodName81 := NewStringNameWithLatin1Chars("bin_to_int")
 	defer methodName81.Destroy()
 	log.Debug("globalStringMethodBindings.method_bin_to_int")
 	globalStringMethodBindings.method_bin_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName81.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalStringMethodBindings.method_bin_to_int == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_bin_to_int")
+	}
 	methodName82 := NewStringNameWithLatin1Chars("lpad")
 	defer methodName82.Destroy()
 	log.Debug("globalStringMethodBindings.method_lpad")
 	globalStringMethodBindings.method_lpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName82.AsGDExtensionStringNamePtr(), 248737229)
+	if globalStringMethodBindings.method_lpad == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_lpad")
+	}
 	methodName83 := NewStringNameWithLatin1Chars("rpad")
 	defer methodName83.Destroy()
 	log.Debug("globalStringMethodBindings.method_rpad")
 	globalStringMethodBindings.method_rpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName83.AsGDExtensionStringNamePtr(), 248737229)
+	if globalStringMethodBindings.method_rpad == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_rpad")
+	}
 	methodName84 := NewStringNameWithLatin1Chars("pad_decimals")
 	defer methodName84.Destroy()
 	log.Debug("globalStringMethodBindings.method_pad_decimals")
 	globalStringMethodBindings.method_pad_decimals = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName84.AsGDExtensionStringNamePtr(), 2162347432)
+	if globalStringMethodBindings.method_pad_decimals == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_pad_decimals")
+	}
 	methodName85 := NewStringNameWithLatin1Chars("pad_zeros")
 	defer methodName85.Destroy()
 	log.Debug("globalStringMethodBindings.method_pad_zeros")
 	globalStringMethodBindings.method_pad_zeros = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName85.AsGDExtensionStringNamePtr(), 2162347432)
+	if globalStringMethodBindings.method_pad_zeros == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_pad_zeros")
+	}
 	methodName86 := NewStringNameWithLatin1Chars("trim_prefix")
 	defer methodName86.Destroy()
 	log.Debug("globalStringMethodBindings.method_trim_prefix")
 	globalStringMethodBindings.method_trim_prefix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName86.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringMethodBindings.method_trim_prefix == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_trim_prefix")
+	}
 	methodName87 := NewStringNameWithLatin1Chars("trim_suffix")
 	defer methodName87.Destroy()
 	log.Debug("globalStringMethodBindings.method_trim_suffix")
 	globalStringMethodBindings.method_trim_suffix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName87.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringMethodBindings.method_trim_suffix == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_trim_suffix")
+	}
 	methodName88 := NewStringNameWithLatin1Chars("to_ascii_buffer")
 	defer methodName88.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_ascii_buffer")
 	globalStringMethodBindings.method_to_ascii_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName88.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringMethodBindings.method_to_ascii_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_ascii_buffer")
+	}
 	methodName89 := NewStringNameWithLatin1Chars("to_utf8_buffer")
 	defer methodName89.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_utf8_buffer")
 	globalStringMethodBindings.method_to_utf8_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName89.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringMethodBindings.method_to_utf8_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_utf8_buffer")
+	}
 	methodName90 := NewStringNameWithLatin1Chars("to_utf16_buffer")
 	defer methodName90.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_utf16_buffer")
 	globalStringMethodBindings.method_to_utf16_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName90.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringMethodBindings.method_to_utf16_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_utf16_buffer")
+	}
 	methodName91 := NewStringNameWithLatin1Chars("to_utf32_buffer")
 	defer methodName91.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_utf32_buffer")
 	globalStringMethodBindings.method_to_utf32_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName91.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringMethodBindings.method_to_utf32_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_utf32_buffer")
+	}
 	methodName92 := NewStringNameWithLatin1Chars("num_scientific")
 	defer methodName92.Destroy()
 	log.Debug("globalStringMethodBindings.method_num_scientific")
 	globalStringMethodBindings.method_num_scientific = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName92.AsGDExtensionStringNamePtr(), 2710373411)
+	if globalStringMethodBindings.method_num_scientific == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_num_scientific")
+	}
 	methodName93 := NewStringNameWithLatin1Chars("num")
 	defer methodName93.Destroy()
 	log.Debug("globalStringMethodBindings.method_num")
 	globalStringMethodBindings.method_num = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName93.AsGDExtensionStringNamePtr(), 1555901022)
+	if globalStringMethodBindings.method_num == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_num")
+	}
 	methodName94 := NewStringNameWithLatin1Chars("num_int64")
 	defer methodName94.Destroy()
 	log.Debug("globalStringMethodBindings.method_num_int64")
 	globalStringMethodBindings.method_num_int64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName94.AsGDExtensionStringNamePtr(), 2111271071)
+	if globalStringMethodBindings.method_num_int64 == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_num_int64")
+	}
 	methodName95 := NewStringNameWithLatin1Chars("num_uint64")
 	defer methodName95.Destroy()
 	log.Debug("globalStringMethodBindings.method_num_uint64")
 	globalStringMethodBindings.method_num_uint64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName95.AsGDExtensionStringNamePtr(), 2111271071)
+	if globalStringMethodBindings.method_num_uint64 == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_num_uint64")
+	}
 	methodName96 := NewStringNameWithLatin1Chars("chr")
 	defer methodName96.Destroy()
 	log.Debug("globalStringMethodBindings.method_chr")
 	globalStringMethodBindings.method_chr = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName96.AsGDExtensionStringNamePtr(), 897497541)
+	if globalStringMethodBindings.method_chr == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_chr")
+	}
 	methodName97 := NewStringNameWithLatin1Chars("humanize_size")
 	defer methodName97.Destroy()
 	log.Debug("globalStringMethodBindings.method_humanize_size")
 	globalStringMethodBindings.method_humanize_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName97.AsGDExtensionStringNamePtr(), 897497541)
+	if globalStringMethodBindings.method_humanize_size == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_humanize_size")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalStringMethodBindings.indexed_setter")
 	globalStringMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING)
 	log.Debug("globalStringMethodBindings.indexed_getter")
@@ -3831,174 +4132,306 @@ func vector2InitConstructorBindings() {
 func vector2InitMethodBindings() {
 	log.Debug("vector2InitMethodBindings called")
 
+	missingMethods := make([]string, 0, 42)
+
 	methodName0 := NewStringNameWithLatin1Chars("angle")
 	defer methodName0.Destroy()
 	log.Debug("globalVector2MethodBindings.method_angle")
 	globalVector2MethodBindings.method_angle = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName0.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector2MethodBindings.method_angle == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_angle")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("angle_to")
 	defer methodName1.Destroy()
 	log.Debug("globalVector2MethodBindings.method_angle_to")
 	globalVector2MethodBindings.method_angle_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName1.AsGDExtensionStringNamePtr(), 3819070308)
+	if globalVector2MethodBindings.method_angle_to == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_angle_to")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("angle_to_point")
 	defer methodName2.Destroy()
 	log.Debug("globalVector2MethodBindings.method_angle_to_point")
 	globalVector2MethodBindings.method_angle_to_point = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName2.AsGDExtensionStringNamePtr(), 3819070308)
+	if globalVector2MethodBindings.method_angle_to_point == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_angle_to_point")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("direction_to")
 	defer methodName3.Destroy()
 	log.Debug("globalVector2MethodBindings.method_direction_to")
 	globalVector2MethodBindings.method_direction_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName3.AsGDExtensionStringNamePtr(), 2026743667)
+	if globalVector2MethodBindings.method_direction_to == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_direction_to")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("distance_to")
 	defer methodName4.Destroy()
 	log.Debug("globalVector2MethodBindings.method_distance_to")
 	globalVector2MethodBindings.method_distance_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName4.AsGDExtensionStringNamePtr(), 3819070308)
+	if globalVector2MethodBindings.method_distance_to == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_distance_to")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("distance_squared_to")
 	defer methodName5.Destroy()
 	log.Debug("globalVector2MethodBindings.method_distance_squared_to")
 	globalVector2MethodBindings.method_distance_squared_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName5.AsGDExtensionStringNamePtr(), 3819070308)
+	if globalVector2MethodBindings.method_distance_squared_to == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_distance_squared_to")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("length")
 	defer methodName6.Destroy()
 	log.Debug("globalVector2MethodBindings.method_length")
 	globalVector2MethodBindings.method_length = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName6.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector2MethodBindings.method_length == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_length")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("length_squared")
 	defer methodName7.Destroy()
 	log.Debug("globalVector2MethodBindings.method_length_squared")
 	globalVector2MethodBindings.method_length_squared = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName7.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector2MethodBindings.method_length_squared == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_length_squared")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("limit_length")
 	defer methodName8.Destroy()
 	log.Debug("globalVector2MethodBindings.method_limit_length")
 	globalVector2MethodBindings.method_limit_length = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName8.AsGDExtensionStringNamePtr(), 2544004089)
+	if globalVector2MethodBindings.method_limit_length == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_limit_length")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("normalized")
 	defer methodName9.Destroy()
 	log.Debug("globalVector2MethodBindings.method_normalized")
 	globalVector2MethodBindings.method_normalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName9.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalVector2MethodBindings.method_normalized == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_normalized")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("is_normalized")
 	defer methodName10.Destroy()
 	log.Debug("globalVector2MethodBindings.method_is_normalized")
 	globalVector2MethodBindings.method_is_normalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName10.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalVector2MethodBindings.method_is_normalized == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_is_normalized")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer methodName11.Destroy()
 	log.Debug("globalVector2MethodBindings.method_is_equal_approx")
 	globalVector2MethodBindings.method_is_equal_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName11.AsGDExtensionStringNamePtr(), 3190634762)
+	if globalVector2MethodBindings.method_is_equal_approx == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_is_equal_approx")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("is_zero_approx")
 	defer methodName12.Destroy()
 	log.Debug("globalVector2MethodBindings.method_is_zero_approx")
 	globalVector2MethodBindings.method_is_zero_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName12.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalVector2MethodBindings.method_is_zero_approx == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_is_zero_approx")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("is_finite")
 	defer methodName13.Destroy()
 	log.Debug("globalVector2MethodBindings.method_is_finite")
 	globalVector2MethodBindings.method_is_finite = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName13.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalVector2MethodBindings.method_is_finite == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_is_finite")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("posmod")
 	defer methodName14.Destroy()
 	log.Debug("globalVector2MethodBindings.method_posmod")
 	globalVector2MethodBindings.method_posmod = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName14.AsGDExtensionStringNamePtr(), 2544004089)
+	if globalVector2MethodBindings.method_posmod == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_posmod")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("posmodv")
 	defer methodName15.Destroy()
 	log.Debug("globalVector2MethodBindings.method_posmodv")
 	globalVector2MethodBindings.method_posmodv = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName15.AsGDExtensionStringNamePtr(), 2026743667)
+	if globalVector2MethodBindings.method_posmodv == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_posmodv")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("project")
 	defer methodName16.Destroy()
 	log.Debug("globalVector2MethodBindings.method_project")
 	globalVector2MethodBindings.method_project = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName16.AsGDExtensionStringNamePtr(), 2026743667)
+	if globalVector2MethodBindings.method_project == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_project")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("lerp")
 	defer methodName17.Destroy()
 	log.Debug("globalVector2MethodBindings.method_lerp")
 	globalVector2MethodBindings.method_lerp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName17.AsGDExtensionStringNamePtr(), 4250033116)
+	if globalVector2MethodBindings.method_lerp == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_lerp")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("slerp")
 	defer methodName18.Destroy()
 	log.Debug("globalVector2MethodBindings.method_slerp")
 	globalVector2MethodBindings.method_slerp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName18.AsGDExtensionStringNamePtr(), 4250033116)
+	if globalVector2MethodBindings.method_slerp == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_slerp")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("cubic_interpolate")
 	defer methodName19.Destroy()
 	log.Debug("globalVector2MethodBindings.method_cubic_interpolate")
 	globalVector2MethodBindings.method_cubic_interpolate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName19.AsGDExtensionStringNamePtr(), 193522989)
+	if globalVector2MethodBindings.method_cubic_interpolate == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_cubic_interpolate")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("cubic_interpolate_in_time")
 	defer methodName20.Destroy()
 	log.Debug("globalVector2MethodBindings.method_cubic_interpolate_in_time")
 	globalVector2MethodBindings.method_cubic_interpolate_in_time = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName20.AsGDExtensionStringNamePtr(), 1957055074)
+	if globalVector2MethodBindings.method_cubic_interpolate_in_time == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_cubic_interpolate_in_time")
+	}
 	methodName21 := NewStringNameWithLatin1Chars("bezier_interpolate")
 	defer methodName21.Destroy()
 	log.Debug("globalVector2MethodBindings.method_bezier_interpolate")
 	globalVector2MethodBindings.method_bezier_interpolate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName21.AsGDExtensionStringNamePtr(), 193522989)
+	if globalVector2MethodBindings.method_bezier_interpolate == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_bezier_interpolate")
+	}
 	methodName22 := NewStringNameWithLatin1Chars("bezier_derivative")
 	defer methodName22.Destroy()
 	log.Debug("globalVector2MethodBindings.method_bezier_derivative")
 	globalVector2MethodBindings.method_bezier_derivative = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName22.AsGDExtensionStringNamePtr(), 193522989)
+	if globalVector2MethodBindings.method_bezier_derivative == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_bezier_derivative")
+	}
 	methodName23 := NewStringNameWithLatin1Chars("max_axis_index")
 	defer methodName23.Destroy()
 	log.Debug("globalVector2MethodBindings.method_max_axis_index")
 	globalVector2MethodBindings.method_max_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName23.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector2MethodBindings.method_max_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_max_axis_index")
+	}
 	methodName24 := NewStringNameWithLatin1Chars("min_axis_index")
 	defer methodName24.Destroy()
 	log.Debug("globalVector2MethodBindings.method_min_axis_index")
 	globalVector2MethodBindings.method_min_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName24.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector2MethodBindings.method_min_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_min_axis_index")
+	}
 	methodName25 := NewStringNameWithLatin1Chars("move_toward")
 	defer methodName25.Destroy()
 	log.Debug("globalVector2MethodBindings.method_move_toward")
 	globalVector2MethodBindings.method_move_toward = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName25.AsGDExtensionStringNamePtr(), 4250033116)
+	if globalVector2MethodBindings.method_move_toward == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_move_toward")
+	}
 	methodName26 := NewStringNameWithLatin1Chars("rotated")
 	defer methodName26.Destroy()
 	log.Debug("globalVector2MethodBindings.method_rotated")
 	globalVector2MethodBindings.method_rotated = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName26.AsGDExtensionStringNamePtr(), 2544004089)
+	if globalVector2MethodBindings.method_rotated == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_rotated")
+	}
 	methodName27 := NewStringNameWithLatin1Chars("orthogonal")
 	defer methodName27.Destroy()
 	log.Debug("globalVector2MethodBindings.method_orthogonal")
 	globalVector2MethodBindings.method_orthogonal = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName27.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalVector2MethodBindings.method_orthogonal == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_orthogonal")
+	}
 	methodName28 := NewStringNameWithLatin1Chars("floor")
 	defer methodName28.Destroy()
 	log.Debug("globalVector2MethodBindings.method_floor")
 	globalVector2MethodBindings.method_floor = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName28.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalVector2MethodBindings.method_floor == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_floor")
+	}
 	methodName29 := NewStringNameWithLatin1Chars("ceil")
 	defer methodName29.Destroy()
 	log.Debug("globalVector2MethodBindings.method_ceil")
 	globalVector2MethodBindings.method_ceil = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName29.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalVector2MethodBindings.method_ceil == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_ceil")
+	}
 	methodName30 := NewStringNameWithLatin1Chars("round")
 	defer methodName30.Destroy()
 	log.Debug("globalVector2MethodBindings.method_round")
 	globalVector2MethodBindings.method_round = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName30.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalVector2MethodBindings.method_round == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_round")
+	}
 	methodName31 := NewStringNameWithLatin1Chars("aspect")
 	defer methodName31.Destroy()
 	log.Debug("globalVector2MethodBindings.method_aspect")
 	globalVector2MethodBindings.method_aspect = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName31.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector2MethodBindings.method_aspect == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_aspect")
+	}
 	methodName32 := NewStringNameWithLatin1Chars("dot")
 	defer methodName32.Destroy()
 	log.Debug("globalVector2MethodBindings.method_dot")
 	globalVector2MethodBindings.method_dot = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName32.AsGDExtensionStringNamePtr(), 3819070308)
+	if globalVector2MethodBindings.method_dot == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_dot")
+	}
 	methodName33 := NewStringNameWithLatin1Chars("slide")
 	defer methodName33.Destroy()
 	log.Debug("globalVector2MethodBindings.method_slide")
 	globalVector2MethodBindings.method_slide = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName33.AsGDExtensionStringNamePtr(), 2026743667)
+	if globalVector2MethodBindings.method_slide == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_slide")
+	}
 	methodName34 := NewStringNameWithLatin1Chars("bounce")
 	defer methodName34.Destroy()
 	log.Debug("globalVector2MethodBindings.method_bounce")
 	globalVector2MethodBindings.method_bounce = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName34.AsGDExtensionStringNamePtr(), 2026743667)
+	if globalVector2MethodBindings.method_bounce == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_bounce")
+	}
 	methodName35 := NewStringNameWithLatin1Chars("reflect")
 	defer methodName35.Destroy()
 	log.Debug("globalVector2MethodBindings.method_reflect")
 	globalVector2MethodBindings.method_reflect = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName35.AsGDExtensionStringNamePtr(), 2026743667)
+	if globalVector2MethodBindings.method_reflect == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_reflect")
+	}
 	methodName36 := NewStringNameWithLatin1Chars("cross")
 	defer methodName36.Destroy()
 	log.Debug("globalVector2MethodBindings.method_cross")
 	globalVector2MethodBindings.method_cross = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName36.AsGDExtensionStringNamePtr(), 3819070308)
+	if globalVector2MethodBindings.method_cross == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_cross")
+	}
 	methodName37 := NewStringNameWithLatin1Chars("abs")
 	defer methodName37.Destroy()
 	log.Debug("globalVector2MethodBindings.method_abs")
 	globalVector2MethodBindings.method_abs = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName37.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalVector2MethodBindings.method_abs == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_abs")
+	}
 	methodName38 := NewStringNameWithLatin1Chars("sign")
 	defer methodName38.Destroy()
 	log.Debug("globalVector2MethodBindings.method_sign")
 	globalVector2MethodBindings.method_sign = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName38.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalVector2MethodBindings.method_sign == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_sign")
+	}
 	methodName39 := NewStringNameWithLatin1Chars("clamp")
 	defer methodName39.Destroy()
 	log.Debug("globalVector2MethodBindings.method_clamp")
 	globalVector2MethodBindings.method_clamp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName39.AsGDExtensionStringNamePtr(), 318031021)
+	if globalVector2MethodBindings.method_clamp == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_clamp")
+	}
 	methodName40 := NewStringNameWithLatin1Chars("snapped")
 	defer methodName40.Destroy()
 	log.Debug("globalVector2MethodBindings.method_snapped")
 	globalVector2MethodBindings.method_snapped = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName40.AsGDExtensionStringNamePtr(), 2026743667)
+	if globalVector2MethodBindings.method_snapped == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_snapped")
+	}
 	methodName41 := NewStringNameWithLatin1Chars("from_angle")
 	defer methodName41.Destroy()
 	log.Debug("globalVector2MethodBindings.method_from_angle")
 	globalVector2MethodBindings.method_from_angle = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2, methodName41.AsGDExtensionStringNamePtr(), 889263119)
+	if globalVector2MethodBindings.method_from_angle == nil {
+		missingMethods = append(missingMethods, "globalVector2MethodBindings.method_from_angle")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("x")
 	defer memberName0.Destroy()
 	log.Debug("globalVector2MethodBindings.member_x_setter")
@@ -5512,42 +5945,75 @@ func vector2iInitConstructorBindings() {
 func vector2iInitMethodBindings() {
 	log.Debug("vector2iInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 9)
+
 	methodName0 := NewStringNameWithLatin1Chars("aspect")
 	defer methodName0.Destroy()
 	log.Debug("globalVector2iMethodBindings.method_aspect")
 	globalVector2iMethodBindings.method_aspect = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2I, methodName0.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector2iMethodBindings.method_aspect == nil {
+		missingMethods = append(missingMethods, "globalVector2iMethodBindings.method_aspect")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("max_axis_index")
 	defer methodName1.Destroy()
 	log.Debug("globalVector2iMethodBindings.method_max_axis_index")
 	globalVector2iMethodBindings.method_max_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2I, methodName1.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector2iMethodBindings.method_max_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector2iMethodBindings.method_max_axis_index")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("min_axis_index")
 	defer methodName2.Destroy()
 	log.Debug("globalVector2iMethodBindings.method_min_axis_index")
 	globalVector2iMethodBindings.method_min_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2I, methodName2.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector2iMethodBindings.method_min_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector2iMethodBindings.method_min_axis_index")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("length")
 	defer methodName3.Destroy()
 	log.Debug("globalVector2iMethodBindings.method_length")
 	globalVector2iMethodBindings.method_length = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2I, methodName3.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector2iMethodBindings.method_length == nil {
+		missingMethods = append(missingMethods, "globalVector2iMethodBindings.method_length")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("length_squared")
 	defer methodName4.Destroy()
 	log.Debug("globalVector2iMethodBindings.method_length_squared")
 	globalVector2iMethodBindings.method_length_squared = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2I, methodName4.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector2iMethodBindings.method_length_squared == nil {
+		missingMethods = append(missingMethods, "globalVector2iMethodBindings.method_length_squared")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("sign")
 	defer methodName5.Destroy()
 	log.Debug("globalVector2iMethodBindings.method_sign")
 	globalVector2iMethodBindings.method_sign = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2I, methodName5.AsGDExtensionStringNamePtr(), 3444277866)
+	if globalVector2iMethodBindings.method_sign == nil {
+		missingMethods = append(missingMethods, "globalVector2iMethodBindings.method_sign")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("abs")
 	defer methodName6.Destroy()
 	log.Debug("globalVector2iMethodBindings.method_abs")
 	globalVector2iMethodBindings.method_abs = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2I, methodName6.AsGDExtensionStringNamePtr(), 3444277866)
+	if globalVector2iMethodBindings.method_abs == nil {
+		missingMethods = append(missingMethods, "globalVector2iMethodBindings.method_abs")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("clamp")
 	defer methodName7.Destroy()
 	log.Debug("globalVector2iMethodBindings.method_clamp")
 	globalVector2iMethodBindings.method_clamp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2I, methodName7.AsGDExtensionStringNamePtr(), 186568249)
+	if globalVector2iMethodBindings.method_clamp == nil {
+		missingMethods = append(missingMethods, "globalVector2iMethodBindings.method_clamp")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("snapped")
 	defer methodName8.Destroy()
 	log.Debug("globalVector2iMethodBindings.method_snapped")
 	globalVector2iMethodBindings.method_snapped = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR2I, methodName8.AsGDExtensionStringNamePtr(), 1735278196)
+	if globalVector2iMethodBindings.method_snapped == nil {
+		missingMethods = append(missingMethods, "globalVector2iMethodBindings.method_snapped")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("x")
 	defer memberName0.Destroy()
 	log.Debug("globalVector2iMethodBindings.member_x_setter")
@@ -6116,66 +6582,117 @@ func rect2InitConstructorBindings() {
 func rect2InitMethodBindings() {
 	log.Debug("rect2InitMethodBindings called")
 
+	missingMethods := make([]string, 0, 15)
+
 	methodName0 := NewStringNameWithLatin1Chars("get_center")
 	defer methodName0.Destroy()
 	log.Debug("globalRect2MethodBindings.method_get_center")
 	globalRect2MethodBindings.method_get_center = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName0.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalRect2MethodBindings.method_get_center == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_get_center")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("get_area")
 	defer methodName1.Destroy()
 	log.Debug("globalRect2MethodBindings.method_get_area")
 	globalRect2MethodBindings.method_get_area = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName1.AsGDExtensionStringNamePtr(), 466405837)
+	if globalRect2MethodBindings.method_get_area == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_get_area")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("has_area")
 	defer methodName2.Destroy()
 	log.Debug("globalRect2MethodBindings.method_has_area")
 	globalRect2MethodBindings.method_has_area = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName2.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalRect2MethodBindings.method_has_area == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_has_area")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("has_point")
 	defer methodName3.Destroy()
 	log.Debug("globalRect2MethodBindings.method_has_point")
 	globalRect2MethodBindings.method_has_point = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName3.AsGDExtensionStringNamePtr(), 3190634762)
+	if globalRect2MethodBindings.method_has_point == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_has_point")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer methodName4.Destroy()
 	log.Debug("globalRect2MethodBindings.method_is_equal_approx")
 	globalRect2MethodBindings.method_is_equal_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName4.AsGDExtensionStringNamePtr(), 1908192260)
+	if globalRect2MethodBindings.method_is_equal_approx == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_is_equal_approx")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("is_finite")
 	defer methodName5.Destroy()
 	log.Debug("globalRect2MethodBindings.method_is_finite")
 	globalRect2MethodBindings.method_is_finite = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName5.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalRect2MethodBindings.method_is_finite == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_is_finite")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("intersects")
 	defer methodName6.Destroy()
 	log.Debug("globalRect2MethodBindings.method_intersects")
 	globalRect2MethodBindings.method_intersects = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName6.AsGDExtensionStringNamePtr(), 819294880)
+	if globalRect2MethodBindings.method_intersects == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_intersects")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("encloses")
 	defer methodName7.Destroy()
 	log.Debug("globalRect2MethodBindings.method_encloses")
 	globalRect2MethodBindings.method_encloses = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName7.AsGDExtensionStringNamePtr(), 1908192260)
+	if globalRect2MethodBindings.method_encloses == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_encloses")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("intersection")
 	defer methodName8.Destroy()
 	log.Debug("globalRect2MethodBindings.method_intersection")
 	globalRect2MethodBindings.method_intersection = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName8.AsGDExtensionStringNamePtr(), 2282977743)
+	if globalRect2MethodBindings.method_intersection == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_intersection")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("merge")
 	defer methodName9.Destroy()
 	log.Debug("globalRect2MethodBindings.method_merge")
 	globalRect2MethodBindings.method_merge = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName9.AsGDExtensionStringNamePtr(), 2282977743)
+	if globalRect2MethodBindings.method_merge == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_merge")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("expand")
 	defer methodName10.Destroy()
 	log.Debug("globalRect2MethodBindings.method_expand")
 	globalRect2MethodBindings.method_expand = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName10.AsGDExtensionStringNamePtr(), 293272265)
+	if globalRect2MethodBindings.method_expand == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_expand")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("grow")
 	defer methodName11.Destroy()
 	log.Debug("globalRect2MethodBindings.method_grow")
 	globalRect2MethodBindings.method_grow = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName11.AsGDExtensionStringNamePtr(), 39664498)
+	if globalRect2MethodBindings.method_grow == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_grow")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("grow_side")
 	defer methodName12.Destroy()
 	log.Debug("globalRect2MethodBindings.method_grow_side")
 	globalRect2MethodBindings.method_grow_side = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName12.AsGDExtensionStringNamePtr(), 4177736158)
+	if globalRect2MethodBindings.method_grow_side == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_grow_side")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("grow_individual")
 	defer methodName13.Destroy()
 	log.Debug("globalRect2MethodBindings.method_grow_individual")
 	globalRect2MethodBindings.method_grow_individual = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName13.AsGDExtensionStringNamePtr(), 3203390369)
+	if globalRect2MethodBindings.method_grow_individual == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_grow_individual")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("abs")
 	defer methodName14.Destroy()
 	log.Debug("globalRect2MethodBindings.method_abs")
 	globalRect2MethodBindings.method_abs = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2, methodName14.AsGDExtensionStringNamePtr(), 3107653634)
+	if globalRect2MethodBindings.method_abs == nil {
+		missingMethods = append(missingMethods, "globalRect2MethodBindings.method_abs")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("position")
 	defer memberName0.Destroy()
 	log.Debug("globalRect2MethodBindings.member_position_setter")
@@ -6836,58 +7353,103 @@ func rect2iInitConstructorBindings() {
 func rect2iInitMethodBindings() {
 	log.Debug("rect2iInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 13)
+
 	methodName0 := NewStringNameWithLatin1Chars("get_center")
 	defer methodName0.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_get_center")
 	globalRect2iMethodBindings.method_get_center = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName0.AsGDExtensionStringNamePtr(), 3444277866)
+	if globalRect2iMethodBindings.method_get_center == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_get_center")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("get_area")
 	defer methodName1.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_get_area")
 	globalRect2iMethodBindings.method_get_area = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName1.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalRect2iMethodBindings.method_get_area == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_get_area")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("has_area")
 	defer methodName2.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_has_area")
 	globalRect2iMethodBindings.method_has_area = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName2.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalRect2iMethodBindings.method_has_area == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_has_area")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("has_point")
 	defer methodName3.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_has_point")
 	globalRect2iMethodBindings.method_has_point = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName3.AsGDExtensionStringNamePtr(), 328189994)
+	if globalRect2iMethodBindings.method_has_point == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_has_point")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("intersects")
 	defer methodName4.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_intersects")
 	globalRect2iMethodBindings.method_intersects = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName4.AsGDExtensionStringNamePtr(), 3434691493)
+	if globalRect2iMethodBindings.method_intersects == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_intersects")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("encloses")
 	defer methodName5.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_encloses")
 	globalRect2iMethodBindings.method_encloses = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName5.AsGDExtensionStringNamePtr(), 3434691493)
+	if globalRect2iMethodBindings.method_encloses == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_encloses")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("intersection")
 	defer methodName6.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_intersection")
 	globalRect2iMethodBindings.method_intersection = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName6.AsGDExtensionStringNamePtr(), 717431873)
+	if globalRect2iMethodBindings.method_intersection == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_intersection")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("merge")
 	defer methodName7.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_merge")
 	globalRect2iMethodBindings.method_merge = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName7.AsGDExtensionStringNamePtr(), 717431873)
+	if globalRect2iMethodBindings.method_merge == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_merge")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("expand")
 	defer methodName8.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_expand")
 	globalRect2iMethodBindings.method_expand = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName8.AsGDExtensionStringNamePtr(), 1355196872)
+	if globalRect2iMethodBindings.method_expand == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_expand")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("grow")
 	defer methodName9.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_grow")
 	globalRect2iMethodBindings.method_grow = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName9.AsGDExtensionStringNamePtr(), 1578070074)
+	if globalRect2iMethodBindings.method_grow == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_grow")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("grow_side")
 	defer methodName10.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_grow_side")
 	globalRect2iMethodBindings.method_grow_side = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName10.AsGDExtensionStringNamePtr(), 3191154199)
+	if globalRect2iMethodBindings.method_grow_side == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_grow_side")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("grow_individual")
 	defer methodName11.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_grow_individual")
 	globalRect2iMethodBindings.method_grow_individual = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName11.AsGDExtensionStringNamePtr(), 1893743416)
+	if globalRect2iMethodBindings.method_grow_individual == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_grow_individual")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("abs")
 	defer methodName12.Destroy()
 	log.Debug("globalRect2iMethodBindings.method_abs")
 	globalRect2iMethodBindings.method_abs = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RECT2I, methodName12.AsGDExtensionStringNamePtr(), 1469025700)
+	if globalRect2iMethodBindings.method_abs == nil {
+		missingMethods = append(missingMethods, "globalRect2iMethodBindings.method_abs")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("position")
 	defer memberName0.Destroy()
 	log.Debug("globalRect2iMethodBindings.member_position_setter")
@@ -7532,174 +8094,306 @@ func vector3InitConstructorBindings() {
 func vector3InitMethodBindings() {
 	log.Debug("vector3InitMethodBindings called")
 
+	missingMethods := make([]string, 0, 42)
+
 	methodName0 := NewStringNameWithLatin1Chars("min_axis_index")
 	defer methodName0.Destroy()
 	log.Debug("globalVector3MethodBindings.method_min_axis_index")
 	globalVector3MethodBindings.method_min_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector3MethodBindings.method_min_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_min_axis_index")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("max_axis_index")
 	defer methodName1.Destroy()
 	log.Debug("globalVector3MethodBindings.method_max_axis_index")
 	globalVector3MethodBindings.method_max_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName1.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector3MethodBindings.method_max_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_max_axis_index")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("angle_to")
 	defer methodName2.Destroy()
 	log.Debug("globalVector3MethodBindings.method_angle_to")
 	globalVector3MethodBindings.method_angle_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName2.AsGDExtensionStringNamePtr(), 1047977935)
+	if globalVector3MethodBindings.method_angle_to == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_angle_to")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("signed_angle_to")
 	defer methodName3.Destroy()
 	log.Debug("globalVector3MethodBindings.method_signed_angle_to")
 	globalVector3MethodBindings.method_signed_angle_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName3.AsGDExtensionStringNamePtr(), 2781412522)
+	if globalVector3MethodBindings.method_signed_angle_to == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_signed_angle_to")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("direction_to")
 	defer methodName4.Destroy()
 	log.Debug("globalVector3MethodBindings.method_direction_to")
 	globalVector3MethodBindings.method_direction_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName4.AsGDExtensionStringNamePtr(), 2923479887)
+	if globalVector3MethodBindings.method_direction_to == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_direction_to")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("distance_to")
 	defer methodName5.Destroy()
 	log.Debug("globalVector3MethodBindings.method_distance_to")
 	globalVector3MethodBindings.method_distance_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName5.AsGDExtensionStringNamePtr(), 1047977935)
+	if globalVector3MethodBindings.method_distance_to == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_distance_to")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("distance_squared_to")
 	defer methodName6.Destroy()
 	log.Debug("globalVector3MethodBindings.method_distance_squared_to")
 	globalVector3MethodBindings.method_distance_squared_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName6.AsGDExtensionStringNamePtr(), 1047977935)
+	if globalVector3MethodBindings.method_distance_squared_to == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_distance_squared_to")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("length")
 	defer methodName7.Destroy()
 	log.Debug("globalVector3MethodBindings.method_length")
 	globalVector3MethodBindings.method_length = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName7.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector3MethodBindings.method_length == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_length")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("length_squared")
 	defer methodName8.Destroy()
 	log.Debug("globalVector3MethodBindings.method_length_squared")
 	globalVector3MethodBindings.method_length_squared = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName8.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector3MethodBindings.method_length_squared == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_length_squared")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("limit_length")
 	defer methodName9.Destroy()
 	log.Debug("globalVector3MethodBindings.method_limit_length")
 	globalVector3MethodBindings.method_limit_length = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName9.AsGDExtensionStringNamePtr(), 514930144)
+	if globalVector3MethodBindings.method_limit_length == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_limit_length")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("normalized")
 	defer methodName10.Destroy()
 	log.Debug("globalVector3MethodBindings.method_normalized")
 	globalVector3MethodBindings.method_normalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName10.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalVector3MethodBindings.method_normalized == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_normalized")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("is_normalized")
 	defer methodName11.Destroy()
 	log.Debug("globalVector3MethodBindings.method_is_normalized")
 	globalVector3MethodBindings.method_is_normalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName11.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalVector3MethodBindings.method_is_normalized == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_is_normalized")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer methodName12.Destroy()
 	log.Debug("globalVector3MethodBindings.method_is_equal_approx")
 	globalVector3MethodBindings.method_is_equal_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName12.AsGDExtensionStringNamePtr(), 1749054343)
+	if globalVector3MethodBindings.method_is_equal_approx == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_is_equal_approx")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("is_zero_approx")
 	defer methodName13.Destroy()
 	log.Debug("globalVector3MethodBindings.method_is_zero_approx")
 	globalVector3MethodBindings.method_is_zero_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName13.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalVector3MethodBindings.method_is_zero_approx == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_is_zero_approx")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("is_finite")
 	defer methodName14.Destroy()
 	log.Debug("globalVector3MethodBindings.method_is_finite")
 	globalVector3MethodBindings.method_is_finite = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName14.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalVector3MethodBindings.method_is_finite == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_is_finite")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("inverse")
 	defer methodName15.Destroy()
 	log.Debug("globalVector3MethodBindings.method_inverse")
 	globalVector3MethodBindings.method_inverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName15.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalVector3MethodBindings.method_inverse == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_inverse")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("clamp")
 	defer methodName16.Destroy()
 	log.Debug("globalVector3MethodBindings.method_clamp")
 	globalVector3MethodBindings.method_clamp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName16.AsGDExtensionStringNamePtr(), 4145107892)
+	if globalVector3MethodBindings.method_clamp == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_clamp")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("snapped")
 	defer methodName17.Destroy()
 	log.Debug("globalVector3MethodBindings.method_snapped")
 	globalVector3MethodBindings.method_snapped = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName17.AsGDExtensionStringNamePtr(), 2923479887)
+	if globalVector3MethodBindings.method_snapped == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_snapped")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("rotated")
 	defer methodName18.Destroy()
 	log.Debug("globalVector3MethodBindings.method_rotated")
 	globalVector3MethodBindings.method_rotated = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName18.AsGDExtensionStringNamePtr(), 1682608829)
+	if globalVector3MethodBindings.method_rotated == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_rotated")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("lerp")
 	defer methodName19.Destroy()
 	log.Debug("globalVector3MethodBindings.method_lerp")
 	globalVector3MethodBindings.method_lerp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName19.AsGDExtensionStringNamePtr(), 1682608829)
+	if globalVector3MethodBindings.method_lerp == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_lerp")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("slerp")
 	defer methodName20.Destroy()
 	log.Debug("globalVector3MethodBindings.method_slerp")
 	globalVector3MethodBindings.method_slerp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName20.AsGDExtensionStringNamePtr(), 1682608829)
+	if globalVector3MethodBindings.method_slerp == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_slerp")
+	}
 	methodName21 := NewStringNameWithLatin1Chars("cubic_interpolate")
 	defer methodName21.Destroy()
 	log.Debug("globalVector3MethodBindings.method_cubic_interpolate")
 	globalVector3MethodBindings.method_cubic_interpolate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName21.AsGDExtensionStringNamePtr(), 2597922253)
+	if globalVector3MethodBindings.method_cubic_interpolate == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_cubic_interpolate")
+	}
 	methodName22 := NewStringNameWithLatin1Chars("cubic_interpolate_in_time")
 	defer methodName22.Destroy()
 	log.Debug("globalVector3MethodBindings.method_cubic_interpolate_in_time")
 	globalVector3MethodBindings.method_cubic_interpolate_in_time = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName22.AsGDExtensionStringNamePtr(), 3256682901)
+	if globalVector3MethodBindings.method_cubic_interpolate_in_time == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_cubic_interpolate_in_time")
+	}
 	methodName23 := NewStringNameWithLatin1Chars("bezier_interpolate")
 	defer methodName23.Destroy()
 	log.Debug("globalVector3MethodBindings.method_bezier_interpolate")
 	globalVector3MethodBindings.method_bezier_interpolate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName23.AsGDExtensionStringNamePtr(), 2597922253)
+	if globalVector3MethodBindings.method_bezier_interpolate == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_bezier_interpolate")
+	}
 	methodName24 := NewStringNameWithLatin1Chars("bezier_derivative")
 	defer methodName24.Destroy()
 	log.Debug("globalVector3MethodBindings.method_bezier_derivative")
 	globalVector3MethodBindings.method_bezier_derivative = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName24.AsGDExtensionStringNamePtr(), 2597922253)
+	if globalVector3MethodBindings.method_bezier_derivative == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_bezier_derivative")
+	}
 	methodName25 := NewStringNameWithLatin1Chars("move_toward")
 	defer methodName25.Destroy()
 	log.Debug("globalVector3MethodBindings.method_move_toward")
 	globalVector3MethodBindings.method_move_toward = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName25.AsGDExtensionStringNamePtr(), 1682608829)
+	if globalVector3MethodBindings.method_move_toward == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_move_toward")
+	}
 	methodName26 := NewStringNameWithLatin1Chars("dot")
 	defer methodName26.Destroy()
 	log.Debug("globalVector3MethodBindings.method_dot")
 	globalVector3MethodBindings.method_dot = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName26.AsGDExtensionStringNamePtr(), 1047977935)
+	if globalVector3MethodBindings.method_dot == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_dot")
+	}
 	methodName27 := NewStringNameWithLatin1Chars("cross")
 	defer methodName27.Destroy()
 	log.Debug("globalVector3MethodBindings.method_cross")
 	globalVector3MethodBindings.method_cross = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName27.AsGDExtensionStringNamePtr(), 2923479887)
+	if globalVector3MethodBindings.method_cross == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_cross")
+	}
 	methodName28 := NewStringNameWithLatin1Chars("outer")
 	defer methodName28.Destroy()
 	log.Debug("globalVector3MethodBindings.method_outer")
 	globalVector3MethodBindings.method_outer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName28.AsGDExtensionStringNamePtr(), 3934786792)
+	if globalVector3MethodBindings.method_outer == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_outer")
+	}
 	methodName29 := NewStringNameWithLatin1Chars("abs")
 	defer methodName29.Destroy()
 	log.Debug("globalVector3MethodBindings.method_abs")
 	globalVector3MethodBindings.method_abs = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName29.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalVector3MethodBindings.method_abs == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_abs")
+	}
 	methodName30 := NewStringNameWithLatin1Chars("floor")
 	defer methodName30.Destroy()
 	log.Debug("globalVector3MethodBindings.method_floor")
 	globalVector3MethodBindings.method_floor = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName30.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalVector3MethodBindings.method_floor == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_floor")
+	}
 	methodName31 := NewStringNameWithLatin1Chars("ceil")
 	defer methodName31.Destroy()
 	log.Debug("globalVector3MethodBindings.method_ceil")
 	globalVector3MethodBindings.method_ceil = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName31.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalVector3MethodBindings.method_ceil == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_ceil")
+	}
 	methodName32 := NewStringNameWithLatin1Chars("round")
 	defer methodName32.Destroy()
 	log.Debug("globalVector3MethodBindings.method_round")
 	globalVector3MethodBindings.method_round = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName32.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalVector3MethodBindings.method_round == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_round")
+	}
 	methodName33 := NewStringNameWithLatin1Chars("posmod")
 	defer methodName33.Destroy()
 	log.Debug("globalVector3MethodBindings.method_posmod")
 	globalVector3MethodBindings.method_posmod = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName33.AsGDExtensionStringNamePtr(), 514930144)
+	if globalVector3MethodBindings.method_posmod == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_posmod")
+	}
 	methodName34 := NewStringNameWithLatin1Chars("posmodv")
 	defer methodName34.Destroy()
 	log.Debug("globalVector3MethodBindings.method_posmodv")
 	globalVector3MethodBindings.method_posmodv = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName34.AsGDExtensionStringNamePtr(), 2923479887)
+	if globalVector3MethodBindings.method_posmodv == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_posmodv")
+	}
 	methodName35 := NewStringNameWithLatin1Chars("project")
 	defer methodName35.Destroy()
 	log.Debug("globalVector3MethodBindings.method_project")
 	globalVector3MethodBindings.method_project = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName35.AsGDExtensionStringNamePtr(), 2923479887)
+	if globalVector3MethodBindings.method_project == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_project")
+	}
 	methodName36 := NewStringNameWithLatin1Chars("slide")
 	defer methodName36.Destroy()
 	log.Debug("globalVector3MethodBindings.method_slide")
 	globalVector3MethodBindings.method_slide = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName36.AsGDExtensionStringNamePtr(), 2923479887)
+	if globalVector3MethodBindings.method_slide == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_slide")
+	}
 	methodName37 := NewStringNameWithLatin1Chars("bounce")
 	defer methodName37.Destroy()
 	log.Debug("globalVector3MethodBindings.method_bounce")
 	globalVector3MethodBindings.method_bounce = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName37.AsGDExtensionStringNamePtr(), 2923479887)
+	if globalVector3MethodBindings.method_bounce == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_bounce")
+	}
 	methodName38 := NewStringNameWithLatin1Chars("reflect")
 	defer methodName38.Destroy()
 	log.Debug("globalVector3MethodBindings.method_reflect")
 	globalVector3MethodBindings.method_reflect = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName38.AsGDExtensionStringNamePtr(), 2923479887)
+	if globalVector3MethodBindings.method_reflect == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_reflect")
+	}
 	methodName39 := NewStringNameWithLatin1Chars("sign")
 	defer methodName39.Destroy()
 	log.Debug("globalVector3MethodBindings.method_sign")
 	globalVector3MethodBindings.method_sign = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName39.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalVector3MethodBindings.method_sign == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_sign")
+	}
 	methodName40 := NewStringNameWithLatin1Chars("octahedron_encode")
 	defer methodName40.Destroy()
 	log.Debug("globalVector3MethodBindings.method_octahedron_encode")
 	globalVector3MethodBindings.method_octahedron_encode = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName40.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalVector3MethodBindings.method_octahedron_encode == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_octahedron_encode")
+	}
 	methodName41 := NewStringNameWithLatin1Chars("octahedron_decode")
 	defer methodName41.Destroy()
 	log.Debug("globalVector3MethodBindings.method_octahedron_decode")
 	globalVector3MethodBindings.method_octahedron_decode = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3, methodName41.AsGDExtensionStringNamePtr(), 3991820552)
+	if globalVector3MethodBindings.method_octahedron_decode == nil {
+		missingMethods = append(missingMethods, "globalVector3MethodBindings.method_octahedron_decode")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("x")
 	defer memberName0.Destroy()
 	log.Debug("globalVector3MethodBindings.member_x_setter")
@@ -9259,38 +9953,68 @@ func vector3iInitConstructorBindings() {
 func vector3iInitMethodBindings() {
 	log.Debug("vector3iInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 8)
+
 	methodName0 := NewStringNameWithLatin1Chars("min_axis_index")
 	defer methodName0.Destroy()
 	log.Debug("globalVector3iMethodBindings.method_min_axis_index")
 	globalVector3iMethodBindings.method_min_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3I, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector3iMethodBindings.method_min_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector3iMethodBindings.method_min_axis_index")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("max_axis_index")
 	defer methodName1.Destroy()
 	log.Debug("globalVector3iMethodBindings.method_max_axis_index")
 	globalVector3iMethodBindings.method_max_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3I, methodName1.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector3iMethodBindings.method_max_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector3iMethodBindings.method_max_axis_index")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("length")
 	defer methodName2.Destroy()
 	log.Debug("globalVector3iMethodBindings.method_length")
 	globalVector3iMethodBindings.method_length = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3I, methodName2.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector3iMethodBindings.method_length == nil {
+		missingMethods = append(missingMethods, "globalVector3iMethodBindings.method_length")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("length_squared")
 	defer methodName3.Destroy()
 	log.Debug("globalVector3iMethodBindings.method_length_squared")
 	globalVector3iMethodBindings.method_length_squared = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3I, methodName3.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector3iMethodBindings.method_length_squared == nil {
+		missingMethods = append(missingMethods, "globalVector3iMethodBindings.method_length_squared")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("sign")
 	defer methodName4.Destroy()
 	log.Debug("globalVector3iMethodBindings.method_sign")
 	globalVector3iMethodBindings.method_sign = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3I, methodName4.AsGDExtensionStringNamePtr(), 3729604559)
+	if globalVector3iMethodBindings.method_sign == nil {
+		missingMethods = append(missingMethods, "globalVector3iMethodBindings.method_sign")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("abs")
 	defer methodName5.Destroy()
 	log.Debug("globalVector3iMethodBindings.method_abs")
 	globalVector3iMethodBindings.method_abs = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3I, methodName5.AsGDExtensionStringNamePtr(), 3729604559)
+	if globalVector3iMethodBindings.method_abs == nil {
+		missingMethods = append(missingMethods, "globalVector3iMethodBindings.method_abs")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("clamp")
 	defer methodName6.Destroy()
 	log.Debug("globalVector3iMethodBindings.method_clamp")
 	globalVector3iMethodBindings.method_clamp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3I, methodName6.AsGDExtensionStringNamePtr(), 1086892323)
+	if globalVector3iMethodBindings.method_clamp == nil {
+		missingMethods = append(missingMethods, "globalVector3iMethodBindings.method_clamp")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("snapped")
 	defer methodName7.Destroy()
 	log.Debug("globalVector3iMethodBindings.method_snapped")
 	globalVector3iMethodBindings.method_snapped = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR3I, methodName7.AsGDExtensionStringNamePtr(), 1989319750)
+	if globalVector3iMethodBindings.method_snapped == nil {
+		missingMethods = append(missingMethods, "globalVector3iMethodBindings.method_snapped")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("x")
 	defer memberName0.Destroy()
 	log.Debug("globalVector3iMethodBindings.member_x_setter")
@@ -9865,94 +10589,166 @@ func transform2DInitConstructorBindings() {
 func transform2DInitMethodBindings() {
 	log.Debug("transform2DInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 22)
+
 	methodName0 := NewStringNameWithLatin1Chars("inverse")
 	defer methodName0.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_inverse")
 	globalTransform2DMethodBindings.method_inverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName0.AsGDExtensionStringNamePtr(), 1420440541)
+	if globalTransform2DMethodBindings.method_inverse == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_inverse")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("affine_inverse")
 	defer methodName1.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_affine_inverse")
 	globalTransform2DMethodBindings.method_affine_inverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName1.AsGDExtensionStringNamePtr(), 1420440541)
+	if globalTransform2DMethodBindings.method_affine_inverse == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_affine_inverse")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("get_rotation")
 	defer methodName2.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_get_rotation")
 	globalTransform2DMethodBindings.method_get_rotation = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName2.AsGDExtensionStringNamePtr(), 466405837)
+	if globalTransform2DMethodBindings.method_get_rotation == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_get_rotation")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("get_origin")
 	defer methodName3.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_get_origin")
 	globalTransform2DMethodBindings.method_get_origin = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName3.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalTransform2DMethodBindings.method_get_origin == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_get_origin")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("get_scale")
 	defer methodName4.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_get_scale")
 	globalTransform2DMethodBindings.method_get_scale = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName4.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalTransform2DMethodBindings.method_get_scale == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_get_scale")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("get_skew")
 	defer methodName5.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_get_skew")
 	globalTransform2DMethodBindings.method_get_skew = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName5.AsGDExtensionStringNamePtr(), 466405837)
+	if globalTransform2DMethodBindings.method_get_skew == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_get_skew")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("orthonormalized")
 	defer methodName6.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_orthonormalized")
 	globalTransform2DMethodBindings.method_orthonormalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName6.AsGDExtensionStringNamePtr(), 1420440541)
+	if globalTransform2DMethodBindings.method_orthonormalized == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_orthonormalized")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("rotated")
 	defer methodName7.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_rotated")
 	globalTransform2DMethodBindings.method_rotated = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName7.AsGDExtensionStringNamePtr(), 729597514)
+	if globalTransform2DMethodBindings.method_rotated == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_rotated")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("rotated_local")
 	defer methodName8.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_rotated_local")
 	globalTransform2DMethodBindings.method_rotated_local = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName8.AsGDExtensionStringNamePtr(), 729597514)
+	if globalTransform2DMethodBindings.method_rotated_local == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_rotated_local")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("scaled")
 	defer methodName9.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_scaled")
 	globalTransform2DMethodBindings.method_scaled = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName9.AsGDExtensionStringNamePtr(), 1446323263)
+	if globalTransform2DMethodBindings.method_scaled == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_scaled")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("scaled_local")
 	defer methodName10.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_scaled_local")
 	globalTransform2DMethodBindings.method_scaled_local = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName10.AsGDExtensionStringNamePtr(), 1446323263)
+	if globalTransform2DMethodBindings.method_scaled_local == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_scaled_local")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("translated")
 	defer methodName11.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_translated")
 	globalTransform2DMethodBindings.method_translated = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName11.AsGDExtensionStringNamePtr(), 1446323263)
+	if globalTransform2DMethodBindings.method_translated == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_translated")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("translated_local")
 	defer methodName12.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_translated_local")
 	globalTransform2DMethodBindings.method_translated_local = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName12.AsGDExtensionStringNamePtr(), 1446323263)
+	if globalTransform2DMethodBindings.method_translated_local == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_translated_local")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("basis_xform")
 	defer methodName13.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_basis_xform")
 	globalTransform2DMethodBindings.method_basis_xform = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName13.AsGDExtensionStringNamePtr(), 2026743667)
+	if globalTransform2DMethodBindings.method_basis_xform == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_basis_xform")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("basis_xform_inv")
 	defer methodName14.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_basis_xform_inv")
 	globalTransform2DMethodBindings.method_basis_xform_inv = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName14.AsGDExtensionStringNamePtr(), 2026743667)
+	if globalTransform2DMethodBindings.method_basis_xform_inv == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_basis_xform_inv")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("interpolate_with")
 	defer methodName15.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_interpolate_with")
 	globalTransform2DMethodBindings.method_interpolate_with = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName15.AsGDExtensionStringNamePtr(), 359399686)
+	if globalTransform2DMethodBindings.method_interpolate_with == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_interpolate_with")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer methodName16.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_is_equal_approx")
 	globalTransform2DMethodBindings.method_is_equal_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName16.AsGDExtensionStringNamePtr(), 3837431929)
+	if globalTransform2DMethodBindings.method_is_equal_approx == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_is_equal_approx")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("is_finite")
 	defer methodName17.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_is_finite")
 	globalTransform2DMethodBindings.method_is_finite = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName17.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalTransform2DMethodBindings.method_is_finite == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_is_finite")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("set_rotation")
 	defer methodName18.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_set_rotation")
 	globalTransform2DMethodBindings.method_set_rotation = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName18.AsGDExtensionStringNamePtr(), 833936903)
+	if globalTransform2DMethodBindings.method_set_rotation == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_set_rotation")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("set_scale")
 	defer methodName19.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_set_scale")
 	globalTransform2DMethodBindings.method_set_scale = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName19.AsGDExtensionStringNamePtr(), 3790411178)
+	if globalTransform2DMethodBindings.method_set_scale == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_set_scale")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("set_skew")
 	defer methodName20.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_set_skew")
 	globalTransform2DMethodBindings.method_set_skew = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName20.AsGDExtensionStringNamePtr(), 833936903)
+	if globalTransform2DMethodBindings.method_set_skew == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_set_skew")
+	}
 	methodName21 := NewStringNameWithLatin1Chars("looking_at")
 	defer methodName21.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_looking_at")
 	globalTransform2DMethodBindings.method_looking_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName21.AsGDExtensionStringNamePtr(), 1446323263)
+	if globalTransform2DMethodBindings.method_looking_at == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_looking_at")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("x")
 	defer memberName0.Destroy()
 	log.Debug("globalTransform2DMethodBindings.member_x_setter")
@@ -10859,110 +11655,194 @@ func vector4InitConstructorBindings() {
 func vector4InitMethodBindings() {
 	log.Debug("vector4InitMethodBindings called")
 
+	missingMethods := make([]string, 0, 26)
+
 	methodName0 := NewStringNameWithLatin1Chars("min_axis_index")
 	defer methodName0.Destroy()
 	log.Debug("globalVector4MethodBindings.method_min_axis_index")
 	globalVector4MethodBindings.method_min_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector4MethodBindings.method_min_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_min_axis_index")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("max_axis_index")
 	defer methodName1.Destroy()
 	log.Debug("globalVector4MethodBindings.method_max_axis_index")
 	globalVector4MethodBindings.method_max_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName1.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector4MethodBindings.method_max_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_max_axis_index")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("length")
 	defer methodName2.Destroy()
 	log.Debug("globalVector4MethodBindings.method_length")
 	globalVector4MethodBindings.method_length = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName2.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector4MethodBindings.method_length == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_length")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("length_squared")
 	defer methodName3.Destroy()
 	log.Debug("globalVector4MethodBindings.method_length_squared")
 	globalVector4MethodBindings.method_length_squared = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName3.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector4MethodBindings.method_length_squared == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_length_squared")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("abs")
 	defer methodName4.Destroy()
 	log.Debug("globalVector4MethodBindings.method_abs")
 	globalVector4MethodBindings.method_abs = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName4.AsGDExtensionStringNamePtr(), 80860099)
+	if globalVector4MethodBindings.method_abs == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_abs")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("sign")
 	defer methodName5.Destroy()
 	log.Debug("globalVector4MethodBindings.method_sign")
 	globalVector4MethodBindings.method_sign = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName5.AsGDExtensionStringNamePtr(), 80860099)
+	if globalVector4MethodBindings.method_sign == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_sign")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("floor")
 	defer methodName6.Destroy()
 	log.Debug("globalVector4MethodBindings.method_floor")
 	globalVector4MethodBindings.method_floor = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName6.AsGDExtensionStringNamePtr(), 80860099)
+	if globalVector4MethodBindings.method_floor == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_floor")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("ceil")
 	defer methodName7.Destroy()
 	log.Debug("globalVector4MethodBindings.method_ceil")
 	globalVector4MethodBindings.method_ceil = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName7.AsGDExtensionStringNamePtr(), 80860099)
+	if globalVector4MethodBindings.method_ceil == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_ceil")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("round")
 	defer methodName8.Destroy()
 	log.Debug("globalVector4MethodBindings.method_round")
 	globalVector4MethodBindings.method_round = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName8.AsGDExtensionStringNamePtr(), 80860099)
+	if globalVector4MethodBindings.method_round == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_round")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("lerp")
 	defer methodName9.Destroy()
 	log.Debug("globalVector4MethodBindings.method_lerp")
 	globalVector4MethodBindings.method_lerp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName9.AsGDExtensionStringNamePtr(), 2329757942)
+	if globalVector4MethodBindings.method_lerp == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_lerp")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("cubic_interpolate")
 	defer methodName10.Destroy()
 	log.Debug("globalVector4MethodBindings.method_cubic_interpolate")
 	globalVector4MethodBindings.method_cubic_interpolate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName10.AsGDExtensionStringNamePtr(), 726768410)
+	if globalVector4MethodBindings.method_cubic_interpolate == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_cubic_interpolate")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("cubic_interpolate_in_time")
 	defer methodName11.Destroy()
 	log.Debug("globalVector4MethodBindings.method_cubic_interpolate_in_time")
 	globalVector4MethodBindings.method_cubic_interpolate_in_time = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName11.AsGDExtensionStringNamePtr(), 681631873)
+	if globalVector4MethodBindings.method_cubic_interpolate_in_time == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_cubic_interpolate_in_time")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("posmod")
 	defer methodName12.Destroy()
 	log.Debug("globalVector4MethodBindings.method_posmod")
 	globalVector4MethodBindings.method_posmod = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName12.AsGDExtensionStringNamePtr(), 3129671720)
+	if globalVector4MethodBindings.method_posmod == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_posmod")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("posmodv")
 	defer methodName13.Destroy()
 	log.Debug("globalVector4MethodBindings.method_posmodv")
 	globalVector4MethodBindings.method_posmodv = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName13.AsGDExtensionStringNamePtr(), 2031281584)
+	if globalVector4MethodBindings.method_posmodv == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_posmodv")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("snapped")
 	defer methodName14.Destroy()
 	log.Debug("globalVector4MethodBindings.method_snapped")
 	globalVector4MethodBindings.method_snapped = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName14.AsGDExtensionStringNamePtr(), 2031281584)
+	if globalVector4MethodBindings.method_snapped == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_snapped")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("clamp")
 	defer methodName15.Destroy()
 	log.Debug("globalVector4MethodBindings.method_clamp")
 	globalVector4MethodBindings.method_clamp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName15.AsGDExtensionStringNamePtr(), 823915692)
+	if globalVector4MethodBindings.method_clamp == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_clamp")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("normalized")
 	defer methodName16.Destroy()
 	log.Debug("globalVector4MethodBindings.method_normalized")
 	globalVector4MethodBindings.method_normalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName16.AsGDExtensionStringNamePtr(), 80860099)
+	if globalVector4MethodBindings.method_normalized == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_normalized")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("is_normalized")
 	defer methodName17.Destroy()
 	log.Debug("globalVector4MethodBindings.method_is_normalized")
 	globalVector4MethodBindings.method_is_normalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName17.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalVector4MethodBindings.method_is_normalized == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_is_normalized")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("direction_to")
 	defer methodName18.Destroy()
 	log.Debug("globalVector4MethodBindings.method_direction_to")
 	globalVector4MethodBindings.method_direction_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName18.AsGDExtensionStringNamePtr(), 2031281584)
+	if globalVector4MethodBindings.method_direction_to == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_direction_to")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("distance_to")
 	defer methodName19.Destroy()
 	log.Debug("globalVector4MethodBindings.method_distance_to")
 	globalVector4MethodBindings.method_distance_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName19.AsGDExtensionStringNamePtr(), 3770801042)
+	if globalVector4MethodBindings.method_distance_to == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_distance_to")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("distance_squared_to")
 	defer methodName20.Destroy()
 	log.Debug("globalVector4MethodBindings.method_distance_squared_to")
 	globalVector4MethodBindings.method_distance_squared_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName20.AsGDExtensionStringNamePtr(), 3770801042)
+	if globalVector4MethodBindings.method_distance_squared_to == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_distance_squared_to")
+	}
 	methodName21 := NewStringNameWithLatin1Chars("dot")
 	defer methodName21.Destroy()
 	log.Debug("globalVector4MethodBindings.method_dot")
 	globalVector4MethodBindings.method_dot = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName21.AsGDExtensionStringNamePtr(), 3770801042)
+	if globalVector4MethodBindings.method_dot == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_dot")
+	}
 	methodName22 := NewStringNameWithLatin1Chars("inverse")
 	defer methodName22.Destroy()
 	log.Debug("globalVector4MethodBindings.method_inverse")
 	globalVector4MethodBindings.method_inverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName22.AsGDExtensionStringNamePtr(), 80860099)
+	if globalVector4MethodBindings.method_inverse == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_inverse")
+	}
 	methodName23 := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer methodName23.Destroy()
 	log.Debug("globalVector4MethodBindings.method_is_equal_approx")
 	globalVector4MethodBindings.method_is_equal_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName23.AsGDExtensionStringNamePtr(), 88913544)
+	if globalVector4MethodBindings.method_is_equal_approx == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_is_equal_approx")
+	}
 	methodName24 := NewStringNameWithLatin1Chars("is_zero_approx")
 	defer methodName24.Destroy()
 	log.Debug("globalVector4MethodBindings.method_is_zero_approx")
 	globalVector4MethodBindings.method_is_zero_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName24.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalVector4MethodBindings.method_is_zero_approx == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_is_zero_approx")
+	}
 	methodName25 := NewStringNameWithLatin1Chars("is_finite")
 	defer methodName25.Destroy()
 	log.Debug("globalVector4MethodBindings.method_is_finite")
 	globalVector4MethodBindings.method_is_finite = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4, methodName25.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalVector4MethodBindings.method_is_finite == nil {
+		missingMethods = append(missingMethods, "globalVector4MethodBindings.method_is_finite")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("x")
 	defer memberName0.Destroy()
 	log.Debug("globalVector4MethodBindings.member_x_setter")
@@ -12024,38 +12904,68 @@ func vector4iInitConstructorBindings() {
 func vector4iInitMethodBindings() {
 	log.Debug("vector4iInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 8)
+
 	methodName0 := NewStringNameWithLatin1Chars("min_axis_index")
 	defer methodName0.Destroy()
 	log.Debug("globalVector4iMethodBindings.method_min_axis_index")
 	globalVector4iMethodBindings.method_min_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4I, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector4iMethodBindings.method_min_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector4iMethodBindings.method_min_axis_index")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("max_axis_index")
 	defer methodName1.Destroy()
 	log.Debug("globalVector4iMethodBindings.method_max_axis_index")
 	globalVector4iMethodBindings.method_max_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4I, methodName1.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector4iMethodBindings.method_max_axis_index == nil {
+		missingMethods = append(missingMethods, "globalVector4iMethodBindings.method_max_axis_index")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("length")
 	defer methodName2.Destroy()
 	log.Debug("globalVector4iMethodBindings.method_length")
 	globalVector4iMethodBindings.method_length = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4I, methodName2.AsGDExtensionStringNamePtr(), 466405837)
+	if globalVector4iMethodBindings.method_length == nil {
+		missingMethods = append(missingMethods, "globalVector4iMethodBindings.method_length")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("length_squared")
 	defer methodName3.Destroy()
 	log.Debug("globalVector4iMethodBindings.method_length_squared")
 	globalVector4iMethodBindings.method_length_squared = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4I, methodName3.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalVector4iMethodBindings.method_length_squared == nil {
+		missingMethods = append(missingMethods, "globalVector4iMethodBindings.method_length_squared")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("sign")
 	defer methodName4.Destroy()
 	log.Debug("globalVector4iMethodBindings.method_sign")
 	globalVector4iMethodBindings.method_sign = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4I, methodName4.AsGDExtensionStringNamePtr(), 4134919947)
+	if globalVector4iMethodBindings.method_sign == nil {
+		missingMethods = append(missingMethods, "globalVector4iMethodBindings.method_sign")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("abs")
 	defer methodName5.Destroy()
 	log.Debug("globalVector4iMethodBindings.method_abs")
 	globalVector4iMethodBindings.method_abs = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4I, methodName5.AsGDExtensionStringNamePtr(), 4134919947)
+	if globalVector4iMethodBindings.method_abs == nil {
+		missingMethods = append(missingMethods, "globalVector4iMethodBindings.method_abs")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("clamp")
 	defer methodName6.Destroy()
 	log.Debug("globalVector4iMethodBindings.method_clamp")
 	globalVector4iMethodBindings.method_clamp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4I, methodName6.AsGDExtensionStringNamePtr(), 3046490913)
+	if globalVector4iMethodBindings.method_clamp == nil {
+		missingMethods = append(missingMethods, "globalVector4iMethodBindings.method_clamp")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("snapped")
 	defer methodName7.Destroy()
 	log.Debug("globalVector4iMethodBindings.method_snapped")
 	globalVector4iMethodBindings.method_snapped = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_VECTOR4I, methodName7.AsGDExtensionStringNamePtr(), 1181693102)
+	if globalVector4iMethodBindings.method_snapped == nil {
+		missingMethods = append(missingMethods, "globalVector4iMethodBindings.method_snapped")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("x")
 	defer memberName0.Destroy()
 	log.Debug("globalVector4iMethodBindings.member_x_setter")
@@ -12637,50 +13547,89 @@ func planeInitConstructorBindings() {
 func planeInitMethodBindings() {
 	log.Debug("planeInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 11)
+
 	methodName0 := NewStringNameWithLatin1Chars("normalized")
 	defer methodName0.Destroy()
 	log.Debug("globalPlaneMethodBindings.method_normalized")
 	globalPlaneMethodBindings.method_normalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PLANE, methodName0.AsGDExtensionStringNamePtr(), 1051796340)
+	if globalPlaneMethodBindings.method_normalized == nil {
+		missingMethods = append(missingMethods, "globalPlaneMethodBindings.method_normalized")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("center")
 	defer methodName1.Destroy()
 	log.Debug("globalPlaneMethodBindings.method_center")
 	globalPlaneMethodBindings.method_center = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PLANE, methodName1.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalPlaneMethodBindings.method_center == nil {
+		missingMethods = append(missingMethods, "globalPlaneMethodBindings.method_center")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer methodName2.Destroy()
 	log.Debug("globalPlaneMethodBindings.method_is_equal_approx")
 	globalPlaneMethodBindings.method_is_equal_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PLANE, methodName2.AsGDExtensionStringNamePtr(), 1150170233)
+	if globalPlaneMethodBindings.method_is_equal_approx == nil {
+		missingMethods = append(missingMethods, "globalPlaneMethodBindings.method_is_equal_approx")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("is_finite")
 	defer methodName3.Destroy()
 	log.Debug("globalPlaneMethodBindings.method_is_finite")
 	globalPlaneMethodBindings.method_is_finite = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PLANE, methodName3.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalPlaneMethodBindings.method_is_finite == nil {
+		missingMethods = append(missingMethods, "globalPlaneMethodBindings.method_is_finite")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("is_point_over")
 	defer methodName4.Destroy()
 	log.Debug("globalPlaneMethodBindings.method_is_point_over")
 	globalPlaneMethodBindings.method_is_point_over = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PLANE, methodName4.AsGDExtensionStringNamePtr(), 1749054343)
+	if globalPlaneMethodBindings.method_is_point_over == nil {
+		missingMethods = append(missingMethods, "globalPlaneMethodBindings.method_is_point_over")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("distance_to")
 	defer methodName5.Destroy()
 	log.Debug("globalPlaneMethodBindings.method_distance_to")
 	globalPlaneMethodBindings.method_distance_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PLANE, methodName5.AsGDExtensionStringNamePtr(), 1047977935)
+	if globalPlaneMethodBindings.method_distance_to == nil {
+		missingMethods = append(missingMethods, "globalPlaneMethodBindings.method_distance_to")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("has_point")
 	defer methodName6.Destroy()
 	log.Debug("globalPlaneMethodBindings.method_has_point")
 	globalPlaneMethodBindings.method_has_point = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PLANE, methodName6.AsGDExtensionStringNamePtr(), 1258189072)
+	if globalPlaneMethodBindings.method_has_point == nil {
+		missingMethods = append(missingMethods, "globalPlaneMethodBindings.method_has_point")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("project")
 	defer methodName7.Destroy()
 	log.Debug("globalPlaneMethodBindings.method_project")
 	globalPlaneMethodBindings.method_project = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PLANE, methodName7.AsGDExtensionStringNamePtr(), 2923479887)
+	if globalPlaneMethodBindings.method_project == nil {
+		missingMethods = append(missingMethods, "globalPlaneMethodBindings.method_project")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("intersect_3")
 	defer methodName8.Destroy()
 	log.Debug("globalPlaneMethodBindings.method_intersect_3")
 	globalPlaneMethodBindings.method_intersect_3 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PLANE, methodName8.AsGDExtensionStringNamePtr(), 2012052692)
+	if globalPlaneMethodBindings.method_intersect_3 == nil {
+		missingMethods = append(missingMethods, "globalPlaneMethodBindings.method_intersect_3")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("intersects_ray")
 	defer methodName9.Destroy()
 	log.Debug("globalPlaneMethodBindings.method_intersects_ray")
 	globalPlaneMethodBindings.method_intersects_ray = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PLANE, methodName9.AsGDExtensionStringNamePtr(), 2048133369)
+	if globalPlaneMethodBindings.method_intersects_ray == nil {
+		missingMethods = append(missingMethods, "globalPlaneMethodBindings.method_intersects_ray")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("intersects_segment")
 	defer methodName10.Destroy()
 	log.Debug("globalPlaneMethodBindings.method_intersects_segment")
 	globalPlaneMethodBindings.method_intersects_segment = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PLANE, methodName10.AsGDExtensionStringNamePtr(), 2048133369)
+	if globalPlaneMethodBindings.method_intersects_segment == nil {
+		missingMethods = append(missingMethods, "globalPlaneMethodBindings.method_intersects_segment")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("x")
 	defer memberName0.Destroy()
 	log.Debug("globalPlaneMethodBindings.member_x_setter")
@@ -13337,82 +14286,145 @@ func quaternionInitConstructorBindings() {
 func quaternionInitMethodBindings() {
 	log.Debug("quaternionInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 19)
+
 	methodName0 := NewStringNameWithLatin1Chars("length")
 	defer methodName0.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_length")
 	globalQuaternionMethodBindings.method_length = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName0.AsGDExtensionStringNamePtr(), 466405837)
+	if globalQuaternionMethodBindings.method_length == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_length")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("length_squared")
 	defer methodName1.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_length_squared")
 	globalQuaternionMethodBindings.method_length_squared = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName1.AsGDExtensionStringNamePtr(), 466405837)
+	if globalQuaternionMethodBindings.method_length_squared == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_length_squared")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("normalized")
 	defer methodName2.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_normalized")
 	globalQuaternionMethodBindings.method_normalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName2.AsGDExtensionStringNamePtr(), 4274879941)
+	if globalQuaternionMethodBindings.method_normalized == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_normalized")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("is_normalized")
 	defer methodName3.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_is_normalized")
 	globalQuaternionMethodBindings.method_is_normalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName3.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalQuaternionMethodBindings.method_is_normalized == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_is_normalized")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer methodName4.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_is_equal_approx")
 	globalQuaternionMethodBindings.method_is_equal_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName4.AsGDExtensionStringNamePtr(), 1682156903)
+	if globalQuaternionMethodBindings.method_is_equal_approx == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_is_equal_approx")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("is_finite")
 	defer methodName5.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_is_finite")
 	globalQuaternionMethodBindings.method_is_finite = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName5.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalQuaternionMethodBindings.method_is_finite == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_is_finite")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("inverse")
 	defer methodName6.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_inverse")
 	globalQuaternionMethodBindings.method_inverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName6.AsGDExtensionStringNamePtr(), 4274879941)
+	if globalQuaternionMethodBindings.method_inverse == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_inverse")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("log")
 	defer methodName7.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_log")
 	globalQuaternionMethodBindings.method_log = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName7.AsGDExtensionStringNamePtr(), 4274879941)
+	if globalQuaternionMethodBindings.method_log == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_log")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("exp")
 	defer methodName8.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_exp")
 	globalQuaternionMethodBindings.method_exp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName8.AsGDExtensionStringNamePtr(), 4274879941)
+	if globalQuaternionMethodBindings.method_exp == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_exp")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("angle_to")
 	defer methodName9.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_angle_to")
 	globalQuaternionMethodBindings.method_angle_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName9.AsGDExtensionStringNamePtr(), 3244682419)
+	if globalQuaternionMethodBindings.method_angle_to == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_angle_to")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("dot")
 	defer methodName10.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_dot")
 	globalQuaternionMethodBindings.method_dot = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName10.AsGDExtensionStringNamePtr(), 3244682419)
+	if globalQuaternionMethodBindings.method_dot == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_dot")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("slerp")
 	defer methodName11.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_slerp")
 	globalQuaternionMethodBindings.method_slerp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName11.AsGDExtensionStringNamePtr(), 1773590316)
+	if globalQuaternionMethodBindings.method_slerp == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_slerp")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("slerpni")
 	defer methodName12.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_slerpni")
 	globalQuaternionMethodBindings.method_slerpni = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName12.AsGDExtensionStringNamePtr(), 1773590316)
+	if globalQuaternionMethodBindings.method_slerpni == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_slerpni")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("spherical_cubic_interpolate")
 	defer methodName13.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_spherical_cubic_interpolate")
 	globalQuaternionMethodBindings.method_spherical_cubic_interpolate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName13.AsGDExtensionStringNamePtr(), 2150967576)
+	if globalQuaternionMethodBindings.method_spherical_cubic_interpolate == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_spherical_cubic_interpolate")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("spherical_cubic_interpolate_in_time")
 	defer methodName14.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_spherical_cubic_interpolate_in_time")
 	globalQuaternionMethodBindings.method_spherical_cubic_interpolate_in_time = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName14.AsGDExtensionStringNamePtr(), 1436023539)
+	if globalQuaternionMethodBindings.method_spherical_cubic_interpolate_in_time == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_spherical_cubic_interpolate_in_time")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("get_euler")
 	defer methodName15.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_get_euler")
 	globalQuaternionMethodBindings.method_get_euler = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName15.AsGDExtensionStringNamePtr(), 1394941017)
+	if globalQuaternionMethodBindings.method_get_euler == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_get_euler")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("from_euler")
 	defer methodName16.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_from_euler")
 	globalQuaternionMethodBindings.method_from_euler = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName16.AsGDExtensionStringNamePtr(), 4053467903)
+	if globalQuaternionMethodBindings.method_from_euler == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_from_euler")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("get_axis")
 	defer methodName17.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_get_axis")
 	globalQuaternionMethodBindings.method_get_axis = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName17.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalQuaternionMethodBindings.method_get_axis == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_get_axis")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("get_angle")
 	defer methodName18.Destroy()
 	log.Debug("globalQuaternionMethodBindings.method_get_angle")
 	globalQuaternionMethodBindings.method_get_angle = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_QUATERNION, methodName18.AsGDExtensionStringNamePtr(), 466405837)
+	if globalQuaternionMethodBindings.method_get_angle == nil {
+		missingMethods = append(missingMethods, "globalQuaternionMethodBindings.method_get_angle")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("x")
 	defer memberName0.Destroy()
 	log.Debug("globalQuaternionMethodBindings.member_x_setter")
@@ -14287,106 +15299,187 @@ func aABBInitConstructorBindings() {
 func aABBInitMethodBindings() {
 	log.Debug("aABBInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 25)
+
 	methodName0 := NewStringNameWithLatin1Chars("abs")
 	defer methodName0.Destroy()
 	log.Debug("globalAABBMethodBindings.method_abs")
 	globalAABBMethodBindings.method_abs = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName0.AsGDExtensionStringNamePtr(), 1576868580)
+	if globalAABBMethodBindings.method_abs == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_abs")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("get_center")
 	defer methodName1.Destroy()
 	log.Debug("globalAABBMethodBindings.method_get_center")
 	globalAABBMethodBindings.method_get_center = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName1.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalAABBMethodBindings.method_get_center == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_get_center")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("get_volume")
 	defer methodName2.Destroy()
 	log.Debug("globalAABBMethodBindings.method_get_volume")
 	globalAABBMethodBindings.method_get_volume = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName2.AsGDExtensionStringNamePtr(), 466405837)
+	if globalAABBMethodBindings.method_get_volume == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_get_volume")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("has_volume")
 	defer methodName3.Destroy()
 	log.Debug("globalAABBMethodBindings.method_has_volume")
 	globalAABBMethodBindings.method_has_volume = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName3.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalAABBMethodBindings.method_has_volume == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_has_volume")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("has_surface")
 	defer methodName4.Destroy()
 	log.Debug("globalAABBMethodBindings.method_has_surface")
 	globalAABBMethodBindings.method_has_surface = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName4.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalAABBMethodBindings.method_has_surface == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_has_surface")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("has_point")
 	defer methodName5.Destroy()
 	log.Debug("globalAABBMethodBindings.method_has_point")
 	globalAABBMethodBindings.method_has_point = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName5.AsGDExtensionStringNamePtr(), 1749054343)
+	if globalAABBMethodBindings.method_has_point == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_has_point")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer methodName6.Destroy()
 	log.Debug("globalAABBMethodBindings.method_is_equal_approx")
 	globalAABBMethodBindings.method_is_equal_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName6.AsGDExtensionStringNamePtr(), 299946684)
+	if globalAABBMethodBindings.method_is_equal_approx == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_is_equal_approx")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("is_finite")
 	defer methodName7.Destroy()
 	log.Debug("globalAABBMethodBindings.method_is_finite")
 	globalAABBMethodBindings.method_is_finite = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName7.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalAABBMethodBindings.method_is_finite == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_is_finite")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("intersects")
 	defer methodName8.Destroy()
 	log.Debug("globalAABBMethodBindings.method_intersects")
 	globalAABBMethodBindings.method_intersects = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName8.AsGDExtensionStringNamePtr(), 299946684)
+	if globalAABBMethodBindings.method_intersects == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_intersects")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("encloses")
 	defer methodName9.Destroy()
 	log.Debug("globalAABBMethodBindings.method_encloses")
 	globalAABBMethodBindings.method_encloses = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName9.AsGDExtensionStringNamePtr(), 299946684)
+	if globalAABBMethodBindings.method_encloses == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_encloses")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("intersects_plane")
 	defer methodName10.Destroy()
 	log.Debug("globalAABBMethodBindings.method_intersects_plane")
 	globalAABBMethodBindings.method_intersects_plane = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName10.AsGDExtensionStringNamePtr(), 1150170233)
+	if globalAABBMethodBindings.method_intersects_plane == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_intersects_plane")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("intersection")
 	defer methodName11.Destroy()
 	log.Debug("globalAABBMethodBindings.method_intersection")
 	globalAABBMethodBindings.method_intersection = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName11.AsGDExtensionStringNamePtr(), 1271470306)
+	if globalAABBMethodBindings.method_intersection == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_intersection")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("merge")
 	defer methodName12.Destroy()
 	log.Debug("globalAABBMethodBindings.method_merge")
 	globalAABBMethodBindings.method_merge = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName12.AsGDExtensionStringNamePtr(), 1271470306)
+	if globalAABBMethodBindings.method_merge == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_merge")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("expand")
 	defer methodName13.Destroy()
 	log.Debug("globalAABBMethodBindings.method_expand")
 	globalAABBMethodBindings.method_expand = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName13.AsGDExtensionStringNamePtr(), 2851643018)
+	if globalAABBMethodBindings.method_expand == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_expand")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("grow")
 	defer methodName14.Destroy()
 	log.Debug("globalAABBMethodBindings.method_grow")
 	globalAABBMethodBindings.method_grow = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName14.AsGDExtensionStringNamePtr(), 239217291)
+	if globalAABBMethodBindings.method_grow == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_grow")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("get_support")
 	defer methodName15.Destroy()
 	log.Debug("globalAABBMethodBindings.method_get_support")
 	globalAABBMethodBindings.method_get_support = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName15.AsGDExtensionStringNamePtr(), 2923479887)
+	if globalAABBMethodBindings.method_get_support == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_get_support")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("get_longest_axis")
 	defer methodName16.Destroy()
 	log.Debug("globalAABBMethodBindings.method_get_longest_axis")
 	globalAABBMethodBindings.method_get_longest_axis = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName16.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalAABBMethodBindings.method_get_longest_axis == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_get_longest_axis")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("get_longest_axis_index")
 	defer methodName17.Destroy()
 	log.Debug("globalAABBMethodBindings.method_get_longest_axis_index")
 	globalAABBMethodBindings.method_get_longest_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName17.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalAABBMethodBindings.method_get_longest_axis_index == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_get_longest_axis_index")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("get_longest_axis_size")
 	defer methodName18.Destroy()
 	log.Debug("globalAABBMethodBindings.method_get_longest_axis_size")
 	globalAABBMethodBindings.method_get_longest_axis_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName18.AsGDExtensionStringNamePtr(), 466405837)
+	if globalAABBMethodBindings.method_get_longest_axis_size == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_get_longest_axis_size")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("get_shortest_axis")
 	defer methodName19.Destroy()
 	log.Debug("globalAABBMethodBindings.method_get_shortest_axis")
 	globalAABBMethodBindings.method_get_shortest_axis = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName19.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalAABBMethodBindings.method_get_shortest_axis == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_get_shortest_axis")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("get_shortest_axis_index")
 	defer methodName20.Destroy()
 	log.Debug("globalAABBMethodBindings.method_get_shortest_axis_index")
 	globalAABBMethodBindings.method_get_shortest_axis_index = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName20.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalAABBMethodBindings.method_get_shortest_axis_index == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_get_shortest_axis_index")
+	}
 	methodName21 := NewStringNameWithLatin1Chars("get_shortest_axis_size")
 	defer methodName21.Destroy()
 	log.Debug("globalAABBMethodBindings.method_get_shortest_axis_size")
 	globalAABBMethodBindings.method_get_shortest_axis_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName21.AsGDExtensionStringNamePtr(), 466405837)
+	if globalAABBMethodBindings.method_get_shortest_axis_size == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_get_shortest_axis_size")
+	}
 	methodName22 := NewStringNameWithLatin1Chars("get_endpoint")
 	defer methodName22.Destroy()
 	log.Debug("globalAABBMethodBindings.method_get_endpoint")
 	globalAABBMethodBindings.method_get_endpoint = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName22.AsGDExtensionStringNamePtr(), 1394941017)
+	if globalAABBMethodBindings.method_get_endpoint == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_get_endpoint")
+	}
 	methodName23 := NewStringNameWithLatin1Chars("intersects_segment")
 	defer methodName23.Destroy()
 	log.Debug("globalAABBMethodBindings.method_intersects_segment")
 	globalAABBMethodBindings.method_intersects_segment = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName23.AsGDExtensionStringNamePtr(), 2048133369)
+	if globalAABBMethodBindings.method_intersects_segment == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_intersects_segment")
+	}
 	methodName24 := NewStringNameWithLatin1Chars("intersects_ray")
 	defer methodName24.Destroy()
 	log.Debug("globalAABBMethodBindings.method_intersects_ray")
 	globalAABBMethodBindings.method_intersects_ray = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_AABB, methodName24.AsGDExtensionStringNamePtr(), 2048133369)
+	if globalAABBMethodBindings.method_intersects_ray == nil {
+		missingMethods = append(missingMethods, "globalAABBMethodBindings.method_intersects_ray")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("position")
 	defer memberName0.Destroy()
 	log.Debug("globalAABBMethodBindings.member_position_setter")
@@ -15247,78 +16340,138 @@ func basisInitConstructorBindings() {
 func basisInitMethodBindings() {
 	log.Debug("basisInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 18)
+
 	methodName0 := NewStringNameWithLatin1Chars("inverse")
 	defer methodName0.Destroy()
 	log.Debug("globalBasisMethodBindings.method_inverse")
 	globalBasisMethodBindings.method_inverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName0.AsGDExtensionStringNamePtr(), 594669093)
+	if globalBasisMethodBindings.method_inverse == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_inverse")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("transposed")
 	defer methodName1.Destroy()
 	log.Debug("globalBasisMethodBindings.method_transposed")
 	globalBasisMethodBindings.method_transposed = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName1.AsGDExtensionStringNamePtr(), 594669093)
+	if globalBasisMethodBindings.method_transposed == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_transposed")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("orthonormalized")
 	defer methodName2.Destroy()
 	log.Debug("globalBasisMethodBindings.method_orthonormalized")
 	globalBasisMethodBindings.method_orthonormalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName2.AsGDExtensionStringNamePtr(), 594669093)
+	if globalBasisMethodBindings.method_orthonormalized == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_orthonormalized")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("determinant")
 	defer methodName3.Destroy()
 	log.Debug("globalBasisMethodBindings.method_determinant")
 	globalBasisMethodBindings.method_determinant = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName3.AsGDExtensionStringNamePtr(), 466405837)
+	if globalBasisMethodBindings.method_determinant == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_determinant")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("rotated")
 	defer methodName4.Destroy()
 	log.Debug("globalBasisMethodBindings.method_rotated")
 	globalBasisMethodBindings.method_rotated = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName4.AsGDExtensionStringNamePtr(), 1998708965)
+	if globalBasisMethodBindings.method_rotated == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_rotated")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("scaled")
 	defer methodName5.Destroy()
 	log.Debug("globalBasisMethodBindings.method_scaled")
 	globalBasisMethodBindings.method_scaled = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName5.AsGDExtensionStringNamePtr(), 3934786792)
+	if globalBasisMethodBindings.method_scaled == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_scaled")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("get_scale")
 	defer methodName6.Destroy()
 	log.Debug("globalBasisMethodBindings.method_get_scale")
 	globalBasisMethodBindings.method_get_scale = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName6.AsGDExtensionStringNamePtr(), 1776574132)
+	if globalBasisMethodBindings.method_get_scale == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_get_scale")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("get_euler")
 	defer methodName7.Destroy()
 	log.Debug("globalBasisMethodBindings.method_get_euler")
 	globalBasisMethodBindings.method_get_euler = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName7.AsGDExtensionStringNamePtr(), 1394941017)
+	if globalBasisMethodBindings.method_get_euler == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_get_euler")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("tdotx")
 	defer methodName8.Destroy()
 	log.Debug("globalBasisMethodBindings.method_tdotx")
 	globalBasisMethodBindings.method_tdotx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName8.AsGDExtensionStringNamePtr(), 1047977935)
+	if globalBasisMethodBindings.method_tdotx == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_tdotx")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("tdoty")
 	defer methodName9.Destroy()
 	log.Debug("globalBasisMethodBindings.method_tdoty")
 	globalBasisMethodBindings.method_tdoty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName9.AsGDExtensionStringNamePtr(), 1047977935)
+	if globalBasisMethodBindings.method_tdoty == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_tdoty")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("tdotz")
 	defer methodName10.Destroy()
 	log.Debug("globalBasisMethodBindings.method_tdotz")
 	globalBasisMethodBindings.method_tdotz = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName10.AsGDExtensionStringNamePtr(), 1047977935)
+	if globalBasisMethodBindings.method_tdotz == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_tdotz")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("slerp")
 	defer methodName11.Destroy()
 	log.Debug("globalBasisMethodBindings.method_slerp")
 	globalBasisMethodBindings.method_slerp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName11.AsGDExtensionStringNamePtr(), 3118673011)
+	if globalBasisMethodBindings.method_slerp == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_slerp")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer methodName12.Destroy()
 	log.Debug("globalBasisMethodBindings.method_is_equal_approx")
 	globalBasisMethodBindings.method_is_equal_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName12.AsGDExtensionStringNamePtr(), 3165333982)
+	if globalBasisMethodBindings.method_is_equal_approx == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_is_equal_approx")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("is_finite")
 	defer methodName13.Destroy()
 	log.Debug("globalBasisMethodBindings.method_is_finite")
 	globalBasisMethodBindings.method_is_finite = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName13.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalBasisMethodBindings.method_is_finite == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_is_finite")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("get_rotation_quaternion")
 	defer methodName14.Destroy()
 	log.Debug("globalBasisMethodBindings.method_get_rotation_quaternion")
 	globalBasisMethodBindings.method_get_rotation_quaternion = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName14.AsGDExtensionStringNamePtr(), 4274879941)
+	if globalBasisMethodBindings.method_get_rotation_quaternion == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_get_rotation_quaternion")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("looking_at")
 	defer methodName15.Destroy()
 	log.Debug("globalBasisMethodBindings.method_looking_at")
 	globalBasisMethodBindings.method_looking_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName15.AsGDExtensionStringNamePtr(), 419916660)
+	if globalBasisMethodBindings.method_looking_at == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_looking_at")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("from_scale")
 	defer methodName16.Destroy()
 	log.Debug("globalBasisMethodBindings.method_from_scale")
 	globalBasisMethodBindings.method_from_scale = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName16.AsGDExtensionStringNamePtr(), 3703240166)
+	if globalBasisMethodBindings.method_from_scale == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_from_scale")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("from_euler")
 	defer methodName17.Destroy()
 	log.Debug("globalBasisMethodBindings.method_from_euler")
 	globalBasisMethodBindings.method_from_euler = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_BASIS, methodName17.AsGDExtensionStringNamePtr(), 2802321791)
+	if globalBasisMethodBindings.method_from_euler == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_from_euler")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("x")
 	defer memberName0.Destroy()
 	log.Debug("globalBasisMethodBindings.member_x_setter")
@@ -16081,58 +17234,103 @@ func transform3DInitConstructorBindings() {
 func transform3DInitMethodBindings() {
 	log.Debug("transform3DInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 13)
+
 	methodName0 := NewStringNameWithLatin1Chars("inverse")
 	defer methodName0.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_inverse")
 	globalTransform3DMethodBindings.method_inverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName0.AsGDExtensionStringNamePtr(), 3816817146)
+	if globalTransform3DMethodBindings.method_inverse == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_inverse")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("affine_inverse")
 	defer methodName1.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_affine_inverse")
 	globalTransform3DMethodBindings.method_affine_inverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName1.AsGDExtensionStringNamePtr(), 3816817146)
+	if globalTransform3DMethodBindings.method_affine_inverse == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_affine_inverse")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("orthonormalized")
 	defer methodName2.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_orthonormalized")
 	globalTransform3DMethodBindings.method_orthonormalized = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName2.AsGDExtensionStringNamePtr(), 3816817146)
+	if globalTransform3DMethodBindings.method_orthonormalized == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_orthonormalized")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("rotated")
 	defer methodName3.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_rotated")
 	globalTransform3DMethodBindings.method_rotated = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName3.AsGDExtensionStringNamePtr(), 1563203923)
+	if globalTransform3DMethodBindings.method_rotated == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_rotated")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("rotated_local")
 	defer methodName4.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_rotated_local")
 	globalTransform3DMethodBindings.method_rotated_local = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName4.AsGDExtensionStringNamePtr(), 1563203923)
+	if globalTransform3DMethodBindings.method_rotated_local == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_rotated_local")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("scaled")
 	defer methodName5.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_scaled")
 	globalTransform3DMethodBindings.method_scaled = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName5.AsGDExtensionStringNamePtr(), 1405596198)
+	if globalTransform3DMethodBindings.method_scaled == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_scaled")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("scaled_local")
 	defer methodName6.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_scaled_local")
 	globalTransform3DMethodBindings.method_scaled_local = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName6.AsGDExtensionStringNamePtr(), 1405596198)
+	if globalTransform3DMethodBindings.method_scaled_local == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_scaled_local")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("translated")
 	defer methodName7.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_translated")
 	globalTransform3DMethodBindings.method_translated = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName7.AsGDExtensionStringNamePtr(), 1405596198)
+	if globalTransform3DMethodBindings.method_translated == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_translated")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("translated_local")
 	defer methodName8.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_translated_local")
 	globalTransform3DMethodBindings.method_translated_local = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName8.AsGDExtensionStringNamePtr(), 1405596198)
+	if globalTransform3DMethodBindings.method_translated_local == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_translated_local")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("looking_at")
 	defer methodName9.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_looking_at")
 	globalTransform3DMethodBindings.method_looking_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName9.AsGDExtensionStringNamePtr(), 806929180)
+	if globalTransform3DMethodBindings.method_looking_at == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_looking_at")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("interpolate_with")
 	defer methodName10.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_interpolate_with")
 	globalTransform3DMethodBindings.method_interpolate_with = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName10.AsGDExtensionStringNamePtr(), 1786453358)
+	if globalTransform3DMethodBindings.method_interpolate_with == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_interpolate_with")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer methodName11.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_is_equal_approx")
 	globalTransform3DMethodBindings.method_is_equal_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName11.AsGDExtensionStringNamePtr(), 696001652)
+	if globalTransform3DMethodBindings.method_is_equal_approx == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_is_equal_approx")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("is_finite")
 	defer methodName12.Destroy()
 	log.Debug("globalTransform3DMethodBindings.method_is_finite")
 	globalTransform3DMethodBindings.method_is_finite = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_TRANSFORM3D, methodName12.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalTransform3DMethodBindings.method_is_finite == nil {
+		missingMethods = append(missingMethods, "globalTransform3DMethodBindings.method_is_finite")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("basis")
 	defer memberName0.Destroy()
 	log.Debug("globalTransform3DMethodBindings.member_basis_setter")
@@ -16799,110 +17997,194 @@ func projectionInitConstructorBindings() {
 func projectionInitMethodBindings() {
 	log.Debug("projectionInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 26)
+
 	methodName0 := NewStringNameWithLatin1Chars("create_depth_correction")
 	defer methodName0.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_create_depth_correction")
 	globalProjectionMethodBindings.method_create_depth_correction = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName0.AsGDExtensionStringNamePtr(), 1228516048)
+	if globalProjectionMethodBindings.method_create_depth_correction == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_create_depth_correction")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("create_light_atlas_rect")
 	defer methodName1.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_create_light_atlas_rect")
 	globalProjectionMethodBindings.method_create_light_atlas_rect = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName1.AsGDExtensionStringNamePtr(), 2654950662)
+	if globalProjectionMethodBindings.method_create_light_atlas_rect == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_create_light_atlas_rect")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("create_perspective")
 	defer methodName2.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_create_perspective")
 	globalProjectionMethodBindings.method_create_perspective = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName2.AsGDExtensionStringNamePtr(), 390915442)
+	if globalProjectionMethodBindings.method_create_perspective == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_create_perspective")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("create_perspective_hmd")
 	defer methodName3.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_create_perspective_hmd")
 	globalProjectionMethodBindings.method_create_perspective_hmd = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName3.AsGDExtensionStringNamePtr(), 2857674800)
+	if globalProjectionMethodBindings.method_create_perspective_hmd == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_create_perspective_hmd")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("create_for_hmd")
 	defer methodName4.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_create_for_hmd")
 	globalProjectionMethodBindings.method_create_for_hmd = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName4.AsGDExtensionStringNamePtr(), 4184144994)
+	if globalProjectionMethodBindings.method_create_for_hmd == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_create_for_hmd")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("create_orthogonal")
 	defer methodName5.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_create_orthogonal")
 	globalProjectionMethodBindings.method_create_orthogonal = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName5.AsGDExtensionStringNamePtr(), 3707929169)
+	if globalProjectionMethodBindings.method_create_orthogonal == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_create_orthogonal")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("create_orthogonal_aspect")
 	defer methodName6.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_create_orthogonal_aspect")
 	globalProjectionMethodBindings.method_create_orthogonal_aspect = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName6.AsGDExtensionStringNamePtr(), 390915442)
+	if globalProjectionMethodBindings.method_create_orthogonal_aspect == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_create_orthogonal_aspect")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("create_frustum")
 	defer methodName7.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_create_frustum")
 	globalProjectionMethodBindings.method_create_frustum = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName7.AsGDExtensionStringNamePtr(), 3707929169)
+	if globalProjectionMethodBindings.method_create_frustum == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_create_frustum")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("create_frustum_aspect")
 	defer methodName8.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_create_frustum_aspect")
 	globalProjectionMethodBindings.method_create_frustum_aspect = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName8.AsGDExtensionStringNamePtr(), 1535076251)
+	if globalProjectionMethodBindings.method_create_frustum_aspect == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_create_frustum_aspect")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("create_fit_aabb")
 	defer methodName9.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_create_fit_aabb")
 	globalProjectionMethodBindings.method_create_fit_aabb = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName9.AsGDExtensionStringNamePtr(), 2264694907)
+	if globalProjectionMethodBindings.method_create_fit_aabb == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_create_fit_aabb")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("determinant")
 	defer methodName10.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_determinant")
 	globalProjectionMethodBindings.method_determinant = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName10.AsGDExtensionStringNamePtr(), 466405837)
+	if globalProjectionMethodBindings.method_determinant == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_determinant")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("perspective_znear_adjusted")
 	defer methodName11.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_perspective_znear_adjusted")
 	globalProjectionMethodBindings.method_perspective_znear_adjusted = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName11.AsGDExtensionStringNamePtr(), 3584785443)
+	if globalProjectionMethodBindings.method_perspective_znear_adjusted == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_perspective_znear_adjusted")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("get_projection_plane")
 	defer methodName12.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_get_projection_plane")
 	globalProjectionMethodBindings.method_get_projection_plane = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName12.AsGDExtensionStringNamePtr(), 1551184160)
+	if globalProjectionMethodBindings.method_get_projection_plane == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_get_projection_plane")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("flipped_y")
 	defer methodName13.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_flipped_y")
 	globalProjectionMethodBindings.method_flipped_y = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName13.AsGDExtensionStringNamePtr(), 4212530932)
+	if globalProjectionMethodBindings.method_flipped_y == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_flipped_y")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("jitter_offseted")
 	defer methodName14.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_jitter_offseted")
 	globalProjectionMethodBindings.method_jitter_offseted = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName14.AsGDExtensionStringNamePtr(), 2448438599)
+	if globalProjectionMethodBindings.method_jitter_offseted == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_jitter_offseted")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("get_fovy")
 	defer methodName15.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_get_fovy")
 	globalProjectionMethodBindings.method_get_fovy = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName15.AsGDExtensionStringNamePtr(), 3514207532)
+	if globalProjectionMethodBindings.method_get_fovy == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_get_fovy")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("get_z_far")
 	defer methodName16.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_get_z_far")
 	globalProjectionMethodBindings.method_get_z_far = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName16.AsGDExtensionStringNamePtr(), 466405837)
+	if globalProjectionMethodBindings.method_get_z_far == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_get_z_far")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("get_z_near")
 	defer methodName17.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_get_z_near")
 	globalProjectionMethodBindings.method_get_z_near = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName17.AsGDExtensionStringNamePtr(), 466405837)
+	if globalProjectionMethodBindings.method_get_z_near == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_get_z_near")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("get_aspect")
 	defer methodName18.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_get_aspect")
 	globalProjectionMethodBindings.method_get_aspect = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName18.AsGDExtensionStringNamePtr(), 466405837)
+	if globalProjectionMethodBindings.method_get_aspect == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_get_aspect")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("get_fov")
 	defer methodName19.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_get_fov")
 	globalProjectionMethodBindings.method_get_fov = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName19.AsGDExtensionStringNamePtr(), 466405837)
+	if globalProjectionMethodBindings.method_get_fov == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_get_fov")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("is_orthogonal")
 	defer methodName20.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_is_orthogonal")
 	globalProjectionMethodBindings.method_is_orthogonal = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName20.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalProjectionMethodBindings.method_is_orthogonal == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_is_orthogonal")
+	}
 	methodName21 := NewStringNameWithLatin1Chars("get_viewport_half_extents")
 	defer methodName21.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_get_viewport_half_extents")
 	globalProjectionMethodBindings.method_get_viewport_half_extents = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName21.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalProjectionMethodBindings.method_get_viewport_half_extents == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_get_viewport_half_extents")
+	}
 	methodName22 := NewStringNameWithLatin1Chars("get_far_plane_half_extents")
 	defer methodName22.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_get_far_plane_half_extents")
 	globalProjectionMethodBindings.method_get_far_plane_half_extents = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName22.AsGDExtensionStringNamePtr(), 2428350749)
+	if globalProjectionMethodBindings.method_get_far_plane_half_extents == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_get_far_plane_half_extents")
+	}
 	methodName23 := NewStringNameWithLatin1Chars("inverse")
 	defer methodName23.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_inverse")
 	globalProjectionMethodBindings.method_inverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName23.AsGDExtensionStringNamePtr(), 4212530932)
+	if globalProjectionMethodBindings.method_inverse == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_inverse")
+	}
 	methodName24 := NewStringNameWithLatin1Chars("get_pixels_per_meter")
 	defer methodName24.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_get_pixels_per_meter")
 	globalProjectionMethodBindings.method_get_pixels_per_meter = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName24.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalProjectionMethodBindings.method_get_pixels_per_meter == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_get_pixels_per_meter")
+	}
 	methodName25 := NewStringNameWithLatin1Chars("get_lod_multiplier")
 	defer methodName25.Destroy()
 	log.Debug("globalProjectionMethodBindings.method_get_lod_multiplier")
 	globalProjectionMethodBindings.method_get_lod_multiplier = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PROJECTION, methodName25.AsGDExtensionStringNamePtr(), 466405837)
+	if globalProjectionMethodBindings.method_get_lod_multiplier == nil {
+		missingMethods = append(missingMethods, "globalProjectionMethodBindings.method_get_lod_multiplier")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("x")
 	defer memberName0.Destroy()
 	log.Debug("globalProjectionMethodBindings.member_x_setter")
@@ -17987,106 +19269,187 @@ func colorInitConstructorBindings() {
 func colorInitMethodBindings() {
 	log.Debug("colorInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 25)
+
 	methodName0 := NewStringNameWithLatin1Chars("to_argb32")
 	defer methodName0.Destroy()
 	log.Debug("globalColorMethodBindings.method_to_argb32")
 	globalColorMethodBindings.method_to_argb32 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalColorMethodBindings.method_to_argb32 == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_to_argb32")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("to_abgr32")
 	defer methodName1.Destroy()
 	log.Debug("globalColorMethodBindings.method_to_abgr32")
 	globalColorMethodBindings.method_to_abgr32 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName1.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalColorMethodBindings.method_to_abgr32 == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_to_abgr32")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("to_rgba32")
 	defer methodName2.Destroy()
 	log.Debug("globalColorMethodBindings.method_to_rgba32")
 	globalColorMethodBindings.method_to_rgba32 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName2.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalColorMethodBindings.method_to_rgba32 == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_to_rgba32")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("to_argb64")
 	defer methodName3.Destroy()
 	log.Debug("globalColorMethodBindings.method_to_argb64")
 	globalColorMethodBindings.method_to_argb64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName3.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalColorMethodBindings.method_to_argb64 == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_to_argb64")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("to_abgr64")
 	defer methodName4.Destroy()
 	log.Debug("globalColorMethodBindings.method_to_abgr64")
 	globalColorMethodBindings.method_to_abgr64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName4.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalColorMethodBindings.method_to_abgr64 == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_to_abgr64")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("to_rgba64")
 	defer methodName5.Destroy()
 	log.Debug("globalColorMethodBindings.method_to_rgba64")
 	globalColorMethodBindings.method_to_rgba64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName5.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalColorMethodBindings.method_to_rgba64 == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_to_rgba64")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("to_html")
 	defer methodName6.Destroy()
 	log.Debug("globalColorMethodBindings.method_to_html")
 	globalColorMethodBindings.method_to_html = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName6.AsGDExtensionStringNamePtr(), 3429816538)
+	if globalColorMethodBindings.method_to_html == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_to_html")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("clamp")
 	defer methodName7.Destroy()
 	log.Debug("globalColorMethodBindings.method_clamp")
 	globalColorMethodBindings.method_clamp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName7.AsGDExtensionStringNamePtr(), 105651410)
+	if globalColorMethodBindings.method_clamp == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_clamp")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("inverted")
 	defer methodName8.Destroy()
 	log.Debug("globalColorMethodBindings.method_inverted")
 	globalColorMethodBindings.method_inverted = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName8.AsGDExtensionStringNamePtr(), 3334027602)
+	if globalColorMethodBindings.method_inverted == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_inverted")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("lerp")
 	defer methodName9.Destroy()
 	log.Debug("globalColorMethodBindings.method_lerp")
 	globalColorMethodBindings.method_lerp = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName9.AsGDExtensionStringNamePtr(), 402949615)
+	if globalColorMethodBindings.method_lerp == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_lerp")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("lightened")
 	defer methodName10.Destroy()
 	log.Debug("globalColorMethodBindings.method_lightened")
 	globalColorMethodBindings.method_lightened = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName10.AsGDExtensionStringNamePtr(), 1466039168)
+	if globalColorMethodBindings.method_lightened == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_lightened")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("darkened")
 	defer methodName11.Destroy()
 	log.Debug("globalColorMethodBindings.method_darkened")
 	globalColorMethodBindings.method_darkened = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName11.AsGDExtensionStringNamePtr(), 1466039168)
+	if globalColorMethodBindings.method_darkened == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_darkened")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("blend")
 	defer methodName12.Destroy()
 	log.Debug("globalColorMethodBindings.method_blend")
 	globalColorMethodBindings.method_blend = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName12.AsGDExtensionStringNamePtr(), 3803690977)
+	if globalColorMethodBindings.method_blend == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_blend")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("get_luminance")
 	defer methodName13.Destroy()
 	log.Debug("globalColorMethodBindings.method_get_luminance")
 	globalColorMethodBindings.method_get_luminance = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName13.AsGDExtensionStringNamePtr(), 466405837)
+	if globalColorMethodBindings.method_get_luminance == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_get_luminance")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("srgb_to_linear")
 	defer methodName14.Destroy()
 	log.Debug("globalColorMethodBindings.method_srgb_to_linear")
 	globalColorMethodBindings.method_srgb_to_linear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName14.AsGDExtensionStringNamePtr(), 3334027602)
+	if globalColorMethodBindings.method_srgb_to_linear == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_srgb_to_linear")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("linear_to_srgb")
 	defer methodName15.Destroy()
 	log.Debug("globalColorMethodBindings.method_linear_to_srgb")
 	globalColorMethodBindings.method_linear_to_srgb = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName15.AsGDExtensionStringNamePtr(), 3334027602)
+	if globalColorMethodBindings.method_linear_to_srgb == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_linear_to_srgb")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer methodName16.Destroy()
 	log.Debug("globalColorMethodBindings.method_is_equal_approx")
 	globalColorMethodBindings.method_is_equal_approx = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName16.AsGDExtensionStringNamePtr(), 3167426256)
+	if globalColorMethodBindings.method_is_equal_approx == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_is_equal_approx")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("hex")
 	defer methodName17.Destroy()
 	log.Debug("globalColorMethodBindings.method_hex")
 	globalColorMethodBindings.method_hex = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName17.AsGDExtensionStringNamePtr(), 351421375)
+	if globalColorMethodBindings.method_hex == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_hex")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("hex64")
 	defer methodName18.Destroy()
 	log.Debug("globalColorMethodBindings.method_hex64")
 	globalColorMethodBindings.method_hex64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName18.AsGDExtensionStringNamePtr(), 351421375)
+	if globalColorMethodBindings.method_hex64 == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_hex64")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("html")
 	defer methodName19.Destroy()
 	log.Debug("globalColorMethodBindings.method_html")
 	globalColorMethodBindings.method_html = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName19.AsGDExtensionStringNamePtr(), 2500054655)
+	if globalColorMethodBindings.method_html == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_html")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("html_is_valid")
 	defer methodName20.Destroy()
 	log.Debug("globalColorMethodBindings.method_html_is_valid")
 	globalColorMethodBindings.method_html_is_valid = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName20.AsGDExtensionStringNamePtr(), 2942997125)
+	if globalColorMethodBindings.method_html_is_valid == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_html_is_valid")
+	}
 	methodName21 := NewStringNameWithLatin1Chars("from_string")
 	defer methodName21.Destroy()
 	log.Debug("globalColorMethodBindings.method_from_string")
 	globalColorMethodBindings.method_from_string = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName21.AsGDExtensionStringNamePtr(), 3755044230)
+	if globalColorMethodBindings.method_from_string == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_from_string")
+	}
 	methodName22 := NewStringNameWithLatin1Chars("from_hsv")
 	defer methodName22.Destroy()
 	log.Debug("globalColorMethodBindings.method_from_hsv")
 	globalColorMethodBindings.method_from_hsv = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName22.AsGDExtensionStringNamePtr(), 1573799446)
+	if globalColorMethodBindings.method_from_hsv == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_from_hsv")
+	}
 	methodName23 := NewStringNameWithLatin1Chars("from_ok_hsl")
 	defer methodName23.Destroy()
 	log.Debug("globalColorMethodBindings.method_from_ok_hsl")
 	globalColorMethodBindings.method_from_ok_hsl = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName23.AsGDExtensionStringNamePtr(), 1573799446)
+	if globalColorMethodBindings.method_from_ok_hsl == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_from_ok_hsl")
+	}
 	methodName24 := NewStringNameWithLatin1Chars("from_rgbe9995")
 	defer methodName24.Destroy()
 	log.Debug("globalColorMethodBindings.method_from_rgbe9995")
 	globalColorMethodBindings.method_from_rgbe9995 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_COLOR, methodName24.AsGDExtensionStringNamePtr(), 351421375)
+	if globalColorMethodBindings.method_from_rgbe9995 == nil {
+		missingMethods = append(missingMethods, "globalColorMethodBindings.method_from_rgbe9995")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	memberName0 := NewStringNameWithLatin1Chars("r")
 	defer memberName0.Destroy()
 	log.Debug("globalColorMethodBindings.member_r_setter")
@@ -19346,374 +20709,656 @@ func stringNameInitConstructorBindings() {
 func stringNameInitMethodBindings() {
 	log.Debug("stringNameInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 92)
+
 	methodName0 := NewStringNameWithLatin1Chars("casecmp_to")
 	defer methodName0.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_casecmp_to")
 	globalStringNameMethodBindings.method_casecmp_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName0.AsGDExtensionStringNamePtr(), 2920860731)
+	if globalStringNameMethodBindings.method_casecmp_to == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_casecmp_to")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("nocasecmp_to")
 	defer methodName1.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_nocasecmp_to")
 	globalStringNameMethodBindings.method_nocasecmp_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName1.AsGDExtensionStringNamePtr(), 2920860731)
+	if globalStringNameMethodBindings.method_nocasecmp_to == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_nocasecmp_to")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("naturalnocasecmp_to")
 	defer methodName2.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_naturalnocasecmp_to")
 	globalStringNameMethodBindings.method_naturalnocasecmp_to = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName2.AsGDExtensionStringNamePtr(), 2920860731)
+	if globalStringNameMethodBindings.method_naturalnocasecmp_to == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_naturalnocasecmp_to")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("length")
 	defer methodName3.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_length")
 	globalStringNameMethodBindings.method_length = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName3.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalStringNameMethodBindings.method_length == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_length")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("substr")
 	defer methodName4.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_substr")
 	globalStringNameMethodBindings.method_substr = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName4.AsGDExtensionStringNamePtr(), 787537301)
+	if globalStringNameMethodBindings.method_substr == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_substr")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("get_slice")
 	defer methodName5.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_get_slice")
 	globalStringNameMethodBindings.method_get_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName5.AsGDExtensionStringNamePtr(), 3535100402)
+	if globalStringNameMethodBindings.method_get_slice == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_get_slice")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("get_slicec")
 	defer methodName6.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_get_slicec")
 	globalStringNameMethodBindings.method_get_slicec = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName6.AsGDExtensionStringNamePtr(), 787537301)
+	if globalStringNameMethodBindings.method_get_slicec == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_get_slicec")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("get_slice_count")
 	defer methodName7.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_get_slice_count")
 	globalStringNameMethodBindings.method_get_slice_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName7.AsGDExtensionStringNamePtr(), 2920860731)
+	if globalStringNameMethodBindings.method_get_slice_count == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_get_slice_count")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("find")
 	defer methodName8.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_find")
 	globalStringNameMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName8.AsGDExtensionStringNamePtr(), 1760645412)
+	if globalStringNameMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_find")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("count")
 	defer methodName9.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_count")
 	globalStringNameMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName9.AsGDExtensionStringNamePtr(), 2343087891)
+	if globalStringNameMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_count")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("countn")
 	defer methodName10.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_countn")
 	globalStringNameMethodBindings.method_countn = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName10.AsGDExtensionStringNamePtr(), 2343087891)
+	if globalStringNameMethodBindings.method_countn == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_countn")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("findn")
 	defer methodName11.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_findn")
 	globalStringNameMethodBindings.method_findn = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName11.AsGDExtensionStringNamePtr(), 1760645412)
+	if globalStringNameMethodBindings.method_findn == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_findn")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName12.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_rfind")
 	globalStringNameMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName12.AsGDExtensionStringNamePtr(), 1760645412)
+	if globalStringNameMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_rfind")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("rfindn")
 	defer methodName13.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_rfindn")
 	globalStringNameMethodBindings.method_rfindn = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName13.AsGDExtensionStringNamePtr(), 1760645412)
+	if globalStringNameMethodBindings.method_rfindn == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_rfindn")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("match")
 	defer methodName14.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_match")
 	globalStringNameMethodBindings.method_match = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName14.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringNameMethodBindings.method_match == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_match")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("matchn")
 	defer methodName15.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_matchn")
 	globalStringNameMethodBindings.method_matchn = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName15.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringNameMethodBindings.method_matchn == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_matchn")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("begins_with")
 	defer methodName16.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_begins_with")
 	globalStringNameMethodBindings.method_begins_with = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName16.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringNameMethodBindings.method_begins_with == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_begins_with")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("ends_with")
 	defer methodName17.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_ends_with")
 	globalStringNameMethodBindings.method_ends_with = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName17.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringNameMethodBindings.method_ends_with == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_ends_with")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("is_subsequence_of")
 	defer methodName18.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_subsequence_of")
 	globalStringNameMethodBindings.method_is_subsequence_of = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName18.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringNameMethodBindings.method_is_subsequence_of == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_subsequence_of")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("is_subsequence_ofn")
 	defer methodName19.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_subsequence_ofn")
 	globalStringNameMethodBindings.method_is_subsequence_ofn = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName19.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringNameMethodBindings.method_is_subsequence_ofn == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_subsequence_ofn")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("bigrams")
 	defer methodName20.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_bigrams")
 	globalStringNameMethodBindings.method_bigrams = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName20.AsGDExtensionStringNamePtr(), 747180633)
+	if globalStringNameMethodBindings.method_bigrams == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_bigrams")
+	}
 	methodName21 := NewStringNameWithLatin1Chars("similarity")
 	defer methodName21.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_similarity")
 	globalStringNameMethodBindings.method_similarity = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName21.AsGDExtensionStringNamePtr(), 2697460964)
+	if globalStringNameMethodBindings.method_similarity == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_similarity")
+	}
 	methodName22 := NewStringNameWithLatin1Chars("format")
 	defer methodName22.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_format")
 	globalStringNameMethodBindings.method_format = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName22.AsGDExtensionStringNamePtr(), 3212199029)
+	if globalStringNameMethodBindings.method_format == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_format")
+	}
 	methodName23 := NewStringNameWithLatin1Chars("replace")
 	defer methodName23.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_replace")
 	globalStringNameMethodBindings.method_replace = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName23.AsGDExtensionStringNamePtr(), 1340436205)
+	if globalStringNameMethodBindings.method_replace == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_replace")
+	}
 	methodName24 := NewStringNameWithLatin1Chars("replacen")
 	defer methodName24.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_replacen")
 	globalStringNameMethodBindings.method_replacen = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName24.AsGDExtensionStringNamePtr(), 1340436205)
+	if globalStringNameMethodBindings.method_replacen == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_replacen")
+	}
 	methodName25 := NewStringNameWithLatin1Chars("repeat")
 	defer methodName25.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_repeat")
 	globalStringNameMethodBindings.method_repeat = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName25.AsGDExtensionStringNamePtr(), 2162347432)
+	if globalStringNameMethodBindings.method_repeat == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_repeat")
+	}
 	methodName26 := NewStringNameWithLatin1Chars("insert")
 	defer methodName26.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_insert")
 	globalStringNameMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName26.AsGDExtensionStringNamePtr(), 248737229)
+	if globalStringNameMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_insert")
+	}
 	methodName27 := NewStringNameWithLatin1Chars("capitalize")
 	defer methodName27.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_capitalize")
 	globalStringNameMethodBindings.method_capitalize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName27.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_capitalize == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_capitalize")
+	}
 	methodName28 := NewStringNameWithLatin1Chars("to_camel_case")
 	defer methodName28.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_camel_case")
 	globalStringNameMethodBindings.method_to_camel_case = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName28.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_to_camel_case == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_camel_case")
+	}
 	methodName29 := NewStringNameWithLatin1Chars("to_pascal_case")
 	defer methodName29.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_pascal_case")
 	globalStringNameMethodBindings.method_to_pascal_case = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName29.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_to_pascal_case == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_pascal_case")
+	}
 	methodName30 := NewStringNameWithLatin1Chars("to_snake_case")
 	defer methodName30.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_snake_case")
 	globalStringNameMethodBindings.method_to_snake_case = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName30.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_to_snake_case == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_snake_case")
+	}
 	methodName31 := NewStringNameWithLatin1Chars("split")
 	defer methodName31.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_split")
 	globalStringNameMethodBindings.method_split = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName31.AsGDExtensionStringNamePtr(), 1252735785)
+	if globalStringNameMethodBindings.method_split == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_split")
+	}
 	methodName32 := NewStringNameWithLatin1Chars("rsplit")
 	defer methodName32.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_rsplit")
 	globalStringNameMethodBindings.method_rsplit = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName32.AsGDExtensionStringNamePtr(), 1252735785)
+	if globalStringNameMethodBindings.method_rsplit == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_rsplit")
+	}
 	methodName33 := NewStringNameWithLatin1Chars("split_floats")
 	defer methodName33.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_split_floats")
 	globalStringNameMethodBindings.method_split_floats = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName33.AsGDExtensionStringNamePtr(), 2092079095)
+	if globalStringNameMethodBindings.method_split_floats == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_split_floats")
+	}
 	methodName34 := NewStringNameWithLatin1Chars("join")
 	defer methodName34.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_join")
 	globalStringNameMethodBindings.method_join = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName34.AsGDExtensionStringNamePtr(), 3595973238)
+	if globalStringNameMethodBindings.method_join == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_join")
+	}
 	methodName35 := NewStringNameWithLatin1Chars("to_upper")
 	defer methodName35.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_upper")
 	globalStringNameMethodBindings.method_to_upper = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName35.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_to_upper == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_upper")
+	}
 	methodName36 := NewStringNameWithLatin1Chars("to_lower")
 	defer methodName36.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_lower")
 	globalStringNameMethodBindings.method_to_lower = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName36.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_to_lower == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_lower")
+	}
 	methodName37 := NewStringNameWithLatin1Chars("left")
 	defer methodName37.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_left")
 	globalStringNameMethodBindings.method_left = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName37.AsGDExtensionStringNamePtr(), 2162347432)
+	if globalStringNameMethodBindings.method_left == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_left")
+	}
 	methodName38 := NewStringNameWithLatin1Chars("right")
 	defer methodName38.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_right")
 	globalStringNameMethodBindings.method_right = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName38.AsGDExtensionStringNamePtr(), 2162347432)
+	if globalStringNameMethodBindings.method_right == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_right")
+	}
 	methodName39 := NewStringNameWithLatin1Chars("strip_edges")
 	defer methodName39.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_strip_edges")
 	globalStringNameMethodBindings.method_strip_edges = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName39.AsGDExtensionStringNamePtr(), 907855311)
+	if globalStringNameMethodBindings.method_strip_edges == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_strip_edges")
+	}
 	methodName40 := NewStringNameWithLatin1Chars("strip_escapes")
 	defer methodName40.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_strip_escapes")
 	globalStringNameMethodBindings.method_strip_escapes = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName40.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_strip_escapes == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_strip_escapes")
+	}
 	methodName41 := NewStringNameWithLatin1Chars("lstrip")
 	defer methodName41.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_lstrip")
 	globalStringNameMethodBindings.method_lstrip = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName41.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringNameMethodBindings.method_lstrip == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_lstrip")
+	}
 	methodName42 := NewStringNameWithLatin1Chars("rstrip")
 	defer methodName42.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_rstrip")
 	globalStringNameMethodBindings.method_rstrip = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName42.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringNameMethodBindings.method_rstrip == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_rstrip")
+	}
 	methodName43 := NewStringNameWithLatin1Chars("get_extension")
 	defer methodName43.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_get_extension")
 	globalStringNameMethodBindings.method_get_extension = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName43.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_get_extension == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_get_extension")
+	}
 	methodName44 := NewStringNameWithLatin1Chars("get_basename")
 	defer methodName44.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_get_basename")
 	globalStringNameMethodBindings.method_get_basename = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName44.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_get_basename == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_get_basename")
+	}
 	methodName45 := NewStringNameWithLatin1Chars("path_join")
 	defer methodName45.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_path_join")
 	globalStringNameMethodBindings.method_path_join = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName45.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringNameMethodBindings.method_path_join == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_path_join")
+	}
 	methodName46 := NewStringNameWithLatin1Chars("unicode_at")
 	defer methodName46.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_unicode_at")
 	globalStringNameMethodBindings.method_unicode_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName46.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalStringNameMethodBindings.method_unicode_at == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_unicode_at")
+	}
 	methodName47 := NewStringNameWithLatin1Chars("indent")
 	defer methodName47.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_indent")
 	globalStringNameMethodBindings.method_indent = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName47.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringNameMethodBindings.method_indent == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_indent")
+	}
 	methodName48 := NewStringNameWithLatin1Chars("dedent")
 	defer methodName48.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_dedent")
 	globalStringNameMethodBindings.method_dedent = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName48.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_dedent == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_dedent")
+	}
 	methodName49 := NewStringNameWithLatin1Chars("md5_text")
 	defer methodName49.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_md5_text")
 	globalStringNameMethodBindings.method_md5_text = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName49.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_md5_text == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_md5_text")
+	}
 	methodName50 := NewStringNameWithLatin1Chars("sha1_text")
 	defer methodName50.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_sha1_text")
 	globalStringNameMethodBindings.method_sha1_text = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName50.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_sha1_text == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_sha1_text")
+	}
 	methodName51 := NewStringNameWithLatin1Chars("sha256_text")
 	defer methodName51.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_sha256_text")
 	globalStringNameMethodBindings.method_sha256_text = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName51.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_sha256_text == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_sha256_text")
+	}
 	methodName52 := NewStringNameWithLatin1Chars("md5_buffer")
 	defer methodName52.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_md5_buffer")
 	globalStringNameMethodBindings.method_md5_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName52.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringNameMethodBindings.method_md5_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_md5_buffer")
+	}
 	methodName53 := NewStringNameWithLatin1Chars("sha1_buffer")
 	defer methodName53.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_sha1_buffer")
 	globalStringNameMethodBindings.method_sha1_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName53.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringNameMethodBindings.method_sha1_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_sha1_buffer")
+	}
 	methodName54 := NewStringNameWithLatin1Chars("sha256_buffer")
 	defer methodName54.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_sha256_buffer")
 	globalStringNameMethodBindings.method_sha256_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName54.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringNameMethodBindings.method_sha256_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_sha256_buffer")
+	}
 	methodName55 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName55.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_empty")
 	globalStringNameMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName55.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringNameMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_empty")
+	}
 	methodName56 := NewStringNameWithLatin1Chars("contains")
 	defer methodName56.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_contains")
 	globalStringNameMethodBindings.method_contains = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName56.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalStringNameMethodBindings.method_contains == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_contains")
+	}
 	methodName57 := NewStringNameWithLatin1Chars("is_absolute_path")
 	defer methodName57.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_absolute_path")
 	globalStringNameMethodBindings.method_is_absolute_path = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName57.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringNameMethodBindings.method_is_absolute_path == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_absolute_path")
+	}
 	methodName58 := NewStringNameWithLatin1Chars("is_relative_path")
 	defer methodName58.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_relative_path")
 	globalStringNameMethodBindings.method_is_relative_path = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName58.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringNameMethodBindings.method_is_relative_path == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_relative_path")
+	}
 	methodName59 := NewStringNameWithLatin1Chars("simplify_path")
 	defer methodName59.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_simplify_path")
 	globalStringNameMethodBindings.method_simplify_path = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName59.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_simplify_path == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_simplify_path")
+	}
 	methodName60 := NewStringNameWithLatin1Chars("get_base_dir")
 	defer methodName60.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_get_base_dir")
 	globalStringNameMethodBindings.method_get_base_dir = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName60.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_get_base_dir == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_get_base_dir")
+	}
 	methodName61 := NewStringNameWithLatin1Chars("get_file")
 	defer methodName61.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_get_file")
 	globalStringNameMethodBindings.method_get_file = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName61.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_get_file == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_get_file")
+	}
 	methodName62 := NewStringNameWithLatin1Chars("xml_escape")
 	defer methodName62.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_xml_escape")
 	globalStringNameMethodBindings.method_xml_escape = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName62.AsGDExtensionStringNamePtr(), 3429816538)
+	if globalStringNameMethodBindings.method_xml_escape == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_xml_escape")
+	}
 	methodName63 := NewStringNameWithLatin1Chars("xml_unescape")
 	defer methodName63.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_xml_unescape")
 	globalStringNameMethodBindings.method_xml_unescape = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName63.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_xml_unescape == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_xml_unescape")
+	}
 	methodName64 := NewStringNameWithLatin1Chars("uri_encode")
 	defer methodName64.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_uri_encode")
 	globalStringNameMethodBindings.method_uri_encode = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName64.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_uri_encode == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_uri_encode")
+	}
 	methodName65 := NewStringNameWithLatin1Chars("uri_decode")
 	defer methodName65.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_uri_decode")
 	globalStringNameMethodBindings.method_uri_decode = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName65.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_uri_decode == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_uri_decode")
+	}
 	methodName66 := NewStringNameWithLatin1Chars("c_escape")
 	defer methodName66.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_c_escape")
 	globalStringNameMethodBindings.method_c_escape = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName66.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_c_escape == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_c_escape")
+	}
 	methodName67 := NewStringNameWithLatin1Chars("c_unescape")
 	defer methodName67.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_c_unescape")
 	globalStringNameMethodBindings.method_c_unescape = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName67.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_c_unescape == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_c_unescape")
+	}
 	methodName68 := NewStringNameWithLatin1Chars("json_escape")
 	defer methodName68.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_json_escape")
 	globalStringNameMethodBindings.method_json_escape = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName68.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_json_escape == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_json_escape")
+	}
 	methodName69 := NewStringNameWithLatin1Chars("validate_node_name")
 	defer methodName69.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_validate_node_name")
 	globalStringNameMethodBindings.method_validate_node_name = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName69.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_validate_node_name == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_validate_node_name")
+	}
 	methodName70 := NewStringNameWithLatin1Chars("is_valid_identifier")
 	defer methodName70.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_identifier")
 	globalStringNameMethodBindings.method_is_valid_identifier = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName70.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringNameMethodBindings.method_is_valid_identifier == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_identifier")
+	}
 	methodName71 := NewStringNameWithLatin1Chars("is_valid_int")
 	defer methodName71.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_int")
 	globalStringNameMethodBindings.method_is_valid_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName71.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringNameMethodBindings.method_is_valid_int == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_int")
+	}
 	methodName72 := NewStringNameWithLatin1Chars("is_valid_float")
 	defer methodName72.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_float")
 	globalStringNameMethodBindings.method_is_valid_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName72.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringNameMethodBindings.method_is_valid_float == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_float")
+	}
 	methodName73 := NewStringNameWithLatin1Chars("is_valid_hex_number")
 	defer methodName73.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_hex_number")
 	globalStringNameMethodBindings.method_is_valid_hex_number = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName73.AsGDExtensionStringNamePtr(), 593672999)
+	if globalStringNameMethodBindings.method_is_valid_hex_number == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_hex_number")
+	}
 	methodName74 := NewStringNameWithLatin1Chars("is_valid_html_color")
 	defer methodName74.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_html_color")
 	globalStringNameMethodBindings.method_is_valid_html_color = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName74.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringNameMethodBindings.method_is_valid_html_color == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_html_color")
+	}
 	methodName75 := NewStringNameWithLatin1Chars("is_valid_ip_address")
 	defer methodName75.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_ip_address")
 	globalStringNameMethodBindings.method_is_valid_ip_address = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName75.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringNameMethodBindings.method_is_valid_ip_address == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_ip_address")
+	}
 	methodName76 := NewStringNameWithLatin1Chars("is_valid_filename")
 	defer methodName76.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_filename")
 	globalStringNameMethodBindings.method_is_valid_filename = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName76.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalStringNameMethodBindings.method_is_valid_filename == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_filename")
+	}
 	methodName77 := NewStringNameWithLatin1Chars("to_int")
 	defer methodName77.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_int")
 	globalStringNameMethodBindings.method_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName77.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalStringNameMethodBindings.method_to_int == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_int")
+	}
 	methodName78 := NewStringNameWithLatin1Chars("to_float")
 	defer methodName78.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_float")
 	globalStringNameMethodBindings.method_to_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName78.AsGDExtensionStringNamePtr(), 466405837)
+	if globalStringNameMethodBindings.method_to_float == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_float")
+	}
 	methodName79 := NewStringNameWithLatin1Chars("hex_to_int")
 	defer methodName79.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_hex_to_int")
 	globalStringNameMethodBindings.method_hex_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName79.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalStringNameMethodBindings.method_hex_to_int == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_hex_to_int")
+	}
 	methodName80 := NewStringNameWithLatin1Chars("bin_to_int")
 	defer methodName80.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_bin_to_int")
 	globalStringNameMethodBindings.method_bin_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName80.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalStringNameMethodBindings.method_bin_to_int == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_bin_to_int")
+	}
 	methodName81 := NewStringNameWithLatin1Chars("lpad")
 	defer methodName81.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_lpad")
 	globalStringNameMethodBindings.method_lpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName81.AsGDExtensionStringNamePtr(), 248737229)
+	if globalStringNameMethodBindings.method_lpad == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_lpad")
+	}
 	methodName82 := NewStringNameWithLatin1Chars("rpad")
 	defer methodName82.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_rpad")
 	globalStringNameMethodBindings.method_rpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName82.AsGDExtensionStringNamePtr(), 248737229)
+	if globalStringNameMethodBindings.method_rpad == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_rpad")
+	}
 	methodName83 := NewStringNameWithLatin1Chars("pad_decimals")
 	defer methodName83.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_pad_decimals")
 	globalStringNameMethodBindings.method_pad_decimals = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName83.AsGDExtensionStringNamePtr(), 2162347432)
+	if globalStringNameMethodBindings.method_pad_decimals == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_pad_decimals")
+	}
 	methodName84 := NewStringNameWithLatin1Chars("pad_zeros")
 	defer methodName84.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_pad_zeros")
 	globalStringNameMethodBindings.method_pad_zeros = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName84.AsGDExtensionStringNamePtr(), 2162347432)
+	if globalStringNameMethodBindings.method_pad_zeros == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_pad_zeros")
+	}
 	methodName85 := NewStringNameWithLatin1Chars("trim_prefix")
 	defer methodName85.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_trim_prefix")
 	globalStringNameMethodBindings.method_trim_prefix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName85.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringNameMethodBindings.method_trim_prefix == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_trim_prefix")
+	}
 	methodName86 := NewStringNameWithLatin1Chars("trim_suffix")
 	defer methodName86.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_trim_suffix")
 	globalStringNameMethodBindings.method_trim_suffix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName86.AsGDExtensionStringNamePtr(), 3134094431)
+	if globalStringNameMethodBindings.method_trim_suffix == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_trim_suffix")
+	}
 	methodName87 := NewStringNameWithLatin1Chars("to_ascii_buffer")
 	defer methodName87.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_ascii_buffer")
 	globalStringNameMethodBindings.method_to_ascii_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName87.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringNameMethodBindings.method_to_ascii_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_ascii_buffer")
+	}
 	methodName88 := NewStringNameWithLatin1Chars("to_utf8_buffer")
 	defer methodName88.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_utf8_buffer")
 	globalStringNameMethodBindings.method_to_utf8_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName88.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringNameMethodBindings.method_to_utf8_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_utf8_buffer")
+	}
 	methodName89 := NewStringNameWithLatin1Chars("to_utf16_buffer")
 	defer methodName89.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_utf16_buffer")
 	globalStringNameMethodBindings.method_to_utf16_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName89.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringNameMethodBindings.method_to_utf16_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_utf16_buffer")
+	}
 	methodName90 := NewStringNameWithLatin1Chars("to_utf32_buffer")
 	defer methodName90.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_utf32_buffer")
 	globalStringNameMethodBindings.method_to_utf32_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName90.AsGDExtensionStringNamePtr(), 247621236)
+	if globalStringNameMethodBindings.method_to_utf32_buffer == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_utf32_buffer")
+	}
 	methodName91 := NewStringNameWithLatin1Chars("hash")
 	defer methodName91.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_hash")
 	globalStringNameMethodBindings.method_hash = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName91.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalStringNameMethodBindings.method_hash == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_hash")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalStringNameMethodBindings.operator: equal Variant")
 	globalStringNameMethodBindings.operator_equal_Variant = GDExtensionInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDEXTENSION_VARIANT_OP_EQUAL, GDEXTENSION_VARIANT_TYPE_STRING_NAME, GDEXTENSION_VARIANT_TYPE_NIL)
 	log.Debug("globalStringNameMethodBindings.operator: not_equal Variant")
@@ -22688,46 +24333,82 @@ func nodePathInitConstructorBindings() {
 func nodePathInitMethodBindings() {
 	log.Debug("nodePathInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 10)
+
 	methodName0 := NewStringNameWithLatin1Chars("is_absolute")
 	defer methodName0.Destroy()
 	log.Debug("globalNodePathMethodBindings.method_is_absolute")
 	globalNodePathMethodBindings.method_is_absolute = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_NODE_PATH, methodName0.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalNodePathMethodBindings.method_is_absolute == nil {
+		missingMethods = append(missingMethods, "globalNodePathMethodBindings.method_is_absolute")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("get_name_count")
 	defer methodName1.Destroy()
 	log.Debug("globalNodePathMethodBindings.method_get_name_count")
 	globalNodePathMethodBindings.method_get_name_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_NODE_PATH, methodName1.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalNodePathMethodBindings.method_get_name_count == nil {
+		missingMethods = append(missingMethods, "globalNodePathMethodBindings.method_get_name_count")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("get_name")
 	defer methodName2.Destroy()
 	log.Debug("globalNodePathMethodBindings.method_get_name")
 	globalNodePathMethodBindings.method_get_name = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_NODE_PATH, methodName2.AsGDExtensionStringNamePtr(), 2948586938)
+	if globalNodePathMethodBindings.method_get_name == nil {
+		missingMethods = append(missingMethods, "globalNodePathMethodBindings.method_get_name")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("get_subname_count")
 	defer methodName3.Destroy()
 	log.Debug("globalNodePathMethodBindings.method_get_subname_count")
 	globalNodePathMethodBindings.method_get_subname_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_NODE_PATH, methodName3.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalNodePathMethodBindings.method_get_subname_count == nil {
+		missingMethods = append(missingMethods, "globalNodePathMethodBindings.method_get_subname_count")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("hash")
 	defer methodName4.Destroy()
 	log.Debug("globalNodePathMethodBindings.method_hash")
 	globalNodePathMethodBindings.method_hash = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_NODE_PATH, methodName4.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalNodePathMethodBindings.method_hash == nil {
+		missingMethods = append(missingMethods, "globalNodePathMethodBindings.method_hash")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("get_subname")
 	defer methodName5.Destroy()
 	log.Debug("globalNodePathMethodBindings.method_get_subname")
 	globalNodePathMethodBindings.method_get_subname = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_NODE_PATH, methodName5.AsGDExtensionStringNamePtr(), 2948586938)
+	if globalNodePathMethodBindings.method_get_subname == nil {
+		missingMethods = append(missingMethods, "globalNodePathMethodBindings.method_get_subname")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("get_concatenated_names")
 	defer methodName6.Destroy()
 	log.Debug("globalNodePathMethodBindings.method_get_concatenated_names")
 	globalNodePathMethodBindings.method_get_concatenated_names = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_NODE_PATH, methodName6.AsGDExtensionStringNamePtr(), 1825232092)
+	if globalNodePathMethodBindings.method_get_concatenated_names == nil {
+		missingMethods = append(missingMethods, "globalNodePathMethodBindings.method_get_concatenated_names")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("get_concatenated_subnames")
 	defer methodName7.Destroy()
 	log.Debug("globalNodePathMethodBindings.method_get_concatenated_subnames")
 	globalNodePathMethodBindings.method_get_concatenated_subnames = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_NODE_PATH, methodName7.AsGDExtensionStringNamePtr(), 1825232092)
+	if globalNodePathMethodBindings.method_get_concatenated_subnames == nil {
+		missingMethods = append(missingMethods, "globalNodePathMethodBindings.method_get_concatenated_subnames")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("get_as_property_path")
 	defer methodName8.Destroy()
 	log.Debug("globalNodePathMethodBindings.method_get_as_property_path")
 	globalNodePathMethodBindings.method_get_as_property_path = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_NODE_PATH, methodName8.AsGDExtensionStringNamePtr(), 1598598043)
+	if globalNodePathMethodBindings.method_get_as_property_path == nil {
+		missingMethods = append(missingMethods, "globalNodePathMethodBindings.method_get_as_property_path")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName9.Destroy()
 	log.Debug("globalNodePathMethodBindings.method_is_empty")
 	globalNodePathMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_NODE_PATH, methodName9.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalNodePathMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalNodePathMethodBindings.method_is_empty")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalNodePathMethodBindings.operator: equal Variant")
 	globalNodePathMethodBindings.operator_equal_Variant = GDExtensionInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDEXTENSION_VARIANT_OP_EQUAL, GDEXTENSION_VARIANT_TYPE_NODE_PATH, GDEXTENSION_VARIANT_TYPE_NIL)
 	log.Debug("globalNodePathMethodBindings.operator: not_equal Variant")
@@ -23106,14 +24787,26 @@ func rIDInitConstructorBindings() {
 func rIDInitMethodBindings() {
 	log.Debug("rIDInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 2)
+
 	methodName0 := NewStringNameWithLatin1Chars("is_valid")
 	defer methodName0.Destroy()
 	log.Debug("globalRIDMethodBindings.method_is_valid")
 	globalRIDMethodBindings.method_is_valid = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RID, methodName0.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalRIDMethodBindings.method_is_valid == nil {
+		missingMethods = append(missingMethods, "globalRIDMethodBindings.method_is_valid")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("get_id")
 	defer methodName1.Destroy()
 	log.Debug("globalRIDMethodBindings.method_get_id")
 	globalRIDMethodBindings.method_get_id = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_RID, methodName1.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalRIDMethodBindings.method_get_id == nil {
+		missingMethods = append(missingMethods, "globalRIDMethodBindings.method_get_id")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalRIDMethodBindings.operator: equal Variant")
 	globalRIDMethodBindings.operator_equal_Variant = GDExtensionInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDEXTENSION_VARIANT_OP_EQUAL, GDEXTENSION_VARIANT_TYPE_RID, GDEXTENSION_VARIANT_TYPE_NIL)
 	log.Debug("globalRIDMethodBindings.operator: not_equal Variant")
@@ -23291,11 +24984,6 @@ type callableMethodBindings struct {
 	method_get_method           GDExtensionPtrBuiltInMethod
 	method_hash                 GDExtensionPtrBuiltInMethod
 	method_unbind               GDExtensionPtrBuiltInMethod
-	method_call                 GDExtensionPtrBuiltInMethod
-	method_call_deferred        GDExtensionPtrBuiltInMethod
-	method_rpc                  GDExtensionPtrBuiltInMethod
-	method_rpc_id               GDExtensionPtrBuiltInMethod
-	method_bind                 GDExtensionPtrBuiltInMethod
 	operator_equal_Variant      GDExtensionPtrOperatorEvaluator
 	operator_not_equal_Variant  GDExtensionPtrOperatorEvaluator
 	operator_equal_Callable     GDExtensionPtrOperatorEvaluator
@@ -23322,66 +25010,82 @@ func callableInitConstructorBindings() {
 func callableInitMethodBindings() {
 	log.Debug("callableInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 10)
+
 	methodName0 := NewStringNameWithLatin1Chars("callv")
 	defer methodName0.Destroy()
 	log.Debug("globalCallableMethodBindings.method_callv")
 	globalCallableMethodBindings.method_callv = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName0.AsGDExtensionStringNamePtr(), 413578926)
+	if globalCallableMethodBindings.method_callv == nil {
+		missingMethods = append(missingMethods, "globalCallableMethodBindings.method_callv")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_null")
 	defer methodName1.Destroy()
 	log.Debug("globalCallableMethodBindings.method_is_null")
 	globalCallableMethodBindings.method_is_null = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalCallableMethodBindings.method_is_null == nil {
+		missingMethods = append(missingMethods, "globalCallableMethodBindings.method_is_null")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("is_custom")
 	defer methodName2.Destroy()
 	log.Debug("globalCallableMethodBindings.method_is_custom")
 	globalCallableMethodBindings.method_is_custom = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName2.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalCallableMethodBindings.method_is_custom == nil {
+		missingMethods = append(missingMethods, "globalCallableMethodBindings.method_is_custom")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("is_standard")
 	defer methodName3.Destroy()
 	log.Debug("globalCallableMethodBindings.method_is_standard")
 	globalCallableMethodBindings.method_is_standard = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName3.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalCallableMethodBindings.method_is_standard == nil {
+		missingMethods = append(missingMethods, "globalCallableMethodBindings.method_is_standard")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("is_valid")
 	defer methodName4.Destroy()
 	log.Debug("globalCallableMethodBindings.method_is_valid")
 	globalCallableMethodBindings.method_is_valid = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName4.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalCallableMethodBindings.method_is_valid == nil {
+		missingMethods = append(missingMethods, "globalCallableMethodBindings.method_is_valid")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("get_object")
 	defer methodName5.Destroy()
 	log.Debug("globalCallableMethodBindings.method_get_object")
 	globalCallableMethodBindings.method_get_object = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName5.AsGDExtensionStringNamePtr(), 4008621732)
+	if globalCallableMethodBindings.method_get_object == nil {
+		missingMethods = append(missingMethods, "globalCallableMethodBindings.method_get_object")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("get_object_id")
 	defer methodName6.Destroy()
 	log.Debug("globalCallableMethodBindings.method_get_object_id")
 	globalCallableMethodBindings.method_get_object_id = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName6.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalCallableMethodBindings.method_get_object_id == nil {
+		missingMethods = append(missingMethods, "globalCallableMethodBindings.method_get_object_id")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("get_method")
 	defer methodName7.Destroy()
 	log.Debug("globalCallableMethodBindings.method_get_method")
 	globalCallableMethodBindings.method_get_method = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName7.AsGDExtensionStringNamePtr(), 1825232092)
+	if globalCallableMethodBindings.method_get_method == nil {
+		missingMethods = append(missingMethods, "globalCallableMethodBindings.method_get_method")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("hash")
 	defer methodName8.Destroy()
 	log.Debug("globalCallableMethodBindings.method_hash")
 	globalCallableMethodBindings.method_hash = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName8.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalCallableMethodBindings.method_hash == nil {
+		missingMethods = append(missingMethods, "globalCallableMethodBindings.method_hash")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("unbind")
 	defer methodName9.Destroy()
 	log.Debug("globalCallableMethodBindings.method_unbind")
 	globalCallableMethodBindings.method_unbind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName9.AsGDExtensionStringNamePtr(), 755001590)
-	methodName10 := NewStringNameWithLatin1Chars("call")
-	defer methodName10.Destroy()
-	log.Debug("globalCallableMethodBindings.method_call")
-	globalCallableMethodBindings.method_call = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName10.AsGDExtensionStringNamePtr(), 3643564216)
-	methodName11 := NewStringNameWithLatin1Chars("call_deferred")
-	defer methodName11.Destroy()
-	log.Debug("globalCallableMethodBindings.method_call_deferred")
-	globalCallableMethodBindings.method_call_deferred = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName11.AsGDExtensionStringNamePtr(), 3286317445)
-	methodName12 := NewStringNameWithLatin1Chars("rpc")
-	defer methodName12.Destroy()
-	log.Debug("globalCallableMethodBindings.method_rpc")
-	globalCallableMethodBindings.method_rpc = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName12.AsGDExtensionStringNamePtr(), 3286317445)
-	methodName13 := NewStringNameWithLatin1Chars("rpc_id")
-	defer methodName13.Destroy()
-	log.Debug("globalCallableMethodBindings.method_rpc_id")
-	globalCallableMethodBindings.method_rpc_id = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName13.AsGDExtensionStringNamePtr(), 2270047679)
-	methodName14 := NewStringNameWithLatin1Chars("bind")
-	defer methodName14.Destroy()
-	log.Debug("globalCallableMethodBindings.method_bind")
-	globalCallableMethodBindings.method_bind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_CALLABLE, methodName14.AsGDExtensionStringNamePtr(), 3224143119)
+	if globalCallableMethodBindings.method_unbind == nil {
+		missingMethods = append(missingMethods, "globalCallableMethodBindings.method_unbind")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalCallableMethodBindings.operator: equal Variant")
 	globalCallableMethodBindings.operator_equal_Variant = GDExtensionInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDEXTENSION_VARIANT_OP_EQUAL, GDEXTENSION_VARIANT_TYPE_CALLABLE, GDEXTENSION_VARIANT_TYPE_NIL)
 	log.Debug("globalCallableMethodBindings.operator: not_equal Variant")
@@ -23679,151 +25383,6 @@ func (cx *Callable) Unbind(argcount int32) Callable {
 
 }
 
-/* Call : call
- * is_vararg = true, is_static = false
- * goReturnType(Variant) -> Variant
- */
-func (cx *Callable) Call(varargs ...Variant) Variant {
-	mb := globalCallableMethodBindings.method_call
-
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-
-	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-
-	sz := 0 + len(varargs) + 1
-	args := make([]GDExtensionTypePtr, sz, sz)
-
-	for i := range varargs {
-		args[i+0] = (GDExtensionTypePtr)(unsafe.Pointer(&varargs[i]))
-	}
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
-	runtime.KeepAlive(args)
-	// C.free(argBytes)
-	return ret
-
-}
-
-/* CallDeferred : call_deferred
- * is_vararg = true, is_static = false
- * goReturnType() ->
- */
-func (cx *Callable) CallDeferred(varargs ...Variant) {
-	mb := globalCallableMethodBindings.method_call_deferred
-
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-
-	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-
-	sz := 0 + len(varargs) + 1
-	args := make([]GDExtensionTypePtr, sz, sz)
-
-	for i := range varargs {
-		args[i+0] = (GDExtensionTypePtr)(unsafe.Pointer(&varargs[i]))
-	}
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-	// C.free(argBytes)
-
-}
-
-/* Rpc : rpc
- * is_vararg = true, is_static = false
- * goReturnType() ->
- */
-func (cx *Callable) Rpc(varargs ...Variant) {
-	mb := globalCallableMethodBindings.method_rpc
-
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-
-	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-
-	sz := 0 + len(varargs) + 1
-	args := make([]GDExtensionTypePtr, sz, sz)
-
-	for i := range varargs {
-		args[i+0] = (GDExtensionTypePtr)(unsafe.Pointer(&varargs[i]))
-	}
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-	// C.free(argBytes)
-
-}
-
-/* RpcId : rpc_id
- * is_vararg = true, is_static = false
- * goReturnType() ->
- */
-func (cx *Callable) RpcId(peer_id int32, varargs ...Variant) {
-	mb := globalCallableMethodBindings.method_rpc_id
-
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-
-	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-
-	sz := 1 + len(varargs) + 1
-	args := make([]GDExtensionTypePtr, sz, sz)
-
-	// Int32Encoder
-	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&peer_id))
-
-	for i := range varargs {
-		args[i+1] = (GDExtensionTypePtr)(unsafe.Pointer(&varargs[i]))
-	}
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-	// C.free(argBytes)
-
-}
-
-/* Bind : bind
- * is_vararg = true, is_static = false
- * goReturnType(Callable) -> Callable
- */
-func (cx *Callable) Bind(varargs ...Variant) Callable {
-	mb := globalCallableMethodBindings.method_bind
-
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-
-	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-
-	sz := 0 + len(varargs) + 1
-	args := make([]GDExtensionTypePtr, sz, sz)
-
-	for i := range varargs {
-		args[i+0] = (GDExtensionTypePtr)(unsafe.Pointer(&varargs[i]))
-	}
-	ret := callBuiltinMethodPtrRet[Callable](mb, bx, args...)
-	runtime.KeepAlive(args)
-	// C.free(argBytes)
-	return ret
-
-}
-
 // members
 
 // Equal_Variant operator
@@ -23891,7 +25450,6 @@ type signalMethodBindings struct {
 	method_disconnect          GDExtensionPtrBuiltInMethod
 	method_is_connected        GDExtensionPtrBuiltInMethod
 	method_get_connections     GDExtensionPtrBuiltInMethod
-	method_emit                GDExtensionPtrBuiltInMethod
 	operator_equal_Variant     GDExtensionPtrOperatorEvaluator
 	operator_not_equal_Variant GDExtensionPtrOperatorEvaluator
 	operator_equal_Signal      GDExtensionPtrOperatorEvaluator
@@ -23918,42 +25476,68 @@ func signalInitConstructorBindings() {
 func signalInitMethodBindings() {
 	log.Debug("signalInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 8)
+
 	methodName0 := NewStringNameWithLatin1Chars("is_null")
 	defer methodName0.Destroy()
 	log.Debug("globalSignalMethodBindings.method_is_null")
 	globalSignalMethodBindings.method_is_null = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_SIGNAL, methodName0.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalSignalMethodBindings.method_is_null == nil {
+		missingMethods = append(missingMethods, "globalSignalMethodBindings.method_is_null")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("get_object")
 	defer methodName1.Destroy()
 	log.Debug("globalSignalMethodBindings.method_get_object")
 	globalSignalMethodBindings.method_get_object = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_SIGNAL, methodName1.AsGDExtensionStringNamePtr(), 4008621732)
+	if globalSignalMethodBindings.method_get_object == nil {
+		missingMethods = append(missingMethods, "globalSignalMethodBindings.method_get_object")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("get_object_id")
 	defer methodName2.Destroy()
 	log.Debug("globalSignalMethodBindings.method_get_object_id")
 	globalSignalMethodBindings.method_get_object_id = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_SIGNAL, methodName2.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalSignalMethodBindings.method_get_object_id == nil {
+		missingMethods = append(missingMethods, "globalSignalMethodBindings.method_get_object_id")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("get_name")
 	defer methodName3.Destroy()
 	log.Debug("globalSignalMethodBindings.method_get_name")
 	globalSignalMethodBindings.method_get_name = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_SIGNAL, methodName3.AsGDExtensionStringNamePtr(), 1825232092)
+	if globalSignalMethodBindings.method_get_name == nil {
+		missingMethods = append(missingMethods, "globalSignalMethodBindings.method_get_name")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("connect")
 	defer methodName4.Destroy()
 	log.Debug("globalSignalMethodBindings.method_connect")
 	globalSignalMethodBindings.method_connect = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_SIGNAL, methodName4.AsGDExtensionStringNamePtr(), 979702392)
+	if globalSignalMethodBindings.method_connect == nil {
+		missingMethods = append(missingMethods, "globalSignalMethodBindings.method_connect")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("disconnect")
 	defer methodName5.Destroy()
 	log.Debug("globalSignalMethodBindings.method_disconnect")
 	globalSignalMethodBindings.method_disconnect = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_SIGNAL, methodName5.AsGDExtensionStringNamePtr(), 3470848906)
+	if globalSignalMethodBindings.method_disconnect == nil {
+		missingMethods = append(missingMethods, "globalSignalMethodBindings.method_disconnect")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("is_connected")
 	defer methodName6.Destroy()
 	log.Debug("globalSignalMethodBindings.method_is_connected")
 	globalSignalMethodBindings.method_is_connected = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_SIGNAL, methodName6.AsGDExtensionStringNamePtr(), 4129521963)
+	if globalSignalMethodBindings.method_is_connected == nil {
+		missingMethods = append(missingMethods, "globalSignalMethodBindings.method_is_connected")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("get_connections")
 	defer methodName7.Destroy()
 	log.Debug("globalSignalMethodBindings.method_get_connections")
 	globalSignalMethodBindings.method_get_connections = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_SIGNAL, methodName7.AsGDExtensionStringNamePtr(), 4144163970)
-	methodName8 := NewStringNameWithLatin1Chars("emit")
-	defer methodName8.Destroy()
-	log.Debug("globalSignalMethodBindings.method_emit")
-	globalSignalMethodBindings.method_emit = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_SIGNAL, methodName8.AsGDExtensionStringNamePtr(), 3286317445)
+	if globalSignalMethodBindings.method_get_connections == nil {
+		missingMethods = append(missingMethods, "globalSignalMethodBindings.method_get_connections")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalSignalMethodBindings.operator: equal Variant")
 	globalSignalMethodBindings.operator_equal_Variant = GDExtensionInterface_variant_get_ptr_operator_evaluator(internal.gdnInterface, GDEXTENSION_VARIANT_OP_EQUAL, GDEXTENSION_VARIANT_TYPE_SIGNAL, GDEXTENSION_VARIANT_TYPE_NIL)
 	log.Debug("globalSignalMethodBindings.operator: not_equal Variant")
@@ -24219,34 +25803,6 @@ func (cx *Signal) GetConnections() Array {
 
 }
 
-/* Emit : emit
- * is_vararg = true, is_static = false
- * goReturnType() ->
- */
-func (cx *Signal) Emit(varargs ...Variant) {
-	mb := globalSignalMethodBindings.method_emit
-
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-
-	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-
-	sz := 0 + len(varargs) + 1
-	args := make([]GDExtensionTypePtr, sz, sz)
-
-	for i := range varargs {
-		args[i+0] = (GDExtensionTypePtr)(unsafe.Pointer(&varargs[i]))
-	}
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-	// C.free(argBytes)
-
-}
-
 // members
 
 // Equal_Variant operator
@@ -24347,58 +25903,103 @@ func dictionaryInitConstructorBindings() {
 func dictionaryInitMethodBindings() {
 	log.Debug("dictionaryInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 13)
+
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_size")
 	globalDictionaryMethodBindings.method_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalDictionaryMethodBindings.method_size == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_size")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName1.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_is_empty")
 	globalDictionaryMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalDictionaryMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_is_empty")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("clear")
 	defer methodName2.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_clear")
 	globalDictionaryMethodBindings.method_clear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName2.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalDictionaryMethodBindings.method_clear == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_clear")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("merge")
 	defer methodName3.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_merge")
 	globalDictionaryMethodBindings.method_merge = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName3.AsGDExtensionStringNamePtr(), 2079548978)
+	if globalDictionaryMethodBindings.method_merge == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_merge")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("has")
 	defer methodName4.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_has")
 	globalDictionaryMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName4.AsGDExtensionStringNamePtr(), 3680194679)
+	if globalDictionaryMethodBindings.method_has == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_has")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("has_all")
 	defer methodName5.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_has_all")
 	globalDictionaryMethodBindings.method_has_all = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName5.AsGDExtensionStringNamePtr(), 2988181878)
+	if globalDictionaryMethodBindings.method_has_all == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_has_all")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("find_key")
 	defer methodName6.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_find_key")
 	globalDictionaryMethodBindings.method_find_key = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName6.AsGDExtensionStringNamePtr(), 1988825835)
+	if globalDictionaryMethodBindings.method_find_key == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_find_key")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("erase")
 	defer methodName7.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_erase")
 	globalDictionaryMethodBindings.method_erase = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName7.AsGDExtensionStringNamePtr(), 1776646889)
+	if globalDictionaryMethodBindings.method_erase == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_erase")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("hash")
 	defer methodName8.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_hash")
 	globalDictionaryMethodBindings.method_hash = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName8.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalDictionaryMethodBindings.method_hash == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_hash")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("keys")
 	defer methodName9.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_keys")
 	globalDictionaryMethodBindings.method_keys = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName9.AsGDExtensionStringNamePtr(), 4144163970)
+	if globalDictionaryMethodBindings.method_keys == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_keys")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("values")
 	defer methodName10.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_values")
 	globalDictionaryMethodBindings.method_values = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName10.AsGDExtensionStringNamePtr(), 4144163970)
+	if globalDictionaryMethodBindings.method_values == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_values")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName11.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_duplicate")
 	globalDictionaryMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName11.AsGDExtensionStringNamePtr(), 830099069)
+	if globalDictionaryMethodBindings.method_duplicate == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_duplicate")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("get")
 	defer methodName12.Destroy()
 	log.Debug("globalDictionaryMethodBindings.method_get")
 	globalDictionaryMethodBindings.method_get = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName12.AsGDExtensionStringNamePtr(), 2205440559)
+	if globalDictionaryMethodBindings.method_get == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_get")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalDictionaryMethodBindings.indexed_setter")
 	globalDictionaryMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY)
 	log.Debug("globalDictionaryMethodBindings.indexed_getter")
@@ -24973,190 +26574,334 @@ func arrayInitConstructorBindings() {
 func arrayInitMethodBindings() {
 	log.Debug("arrayInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 46)
+
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
 	log.Debug("globalArrayMethodBindings.method_size")
 	globalArrayMethodBindings.method_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalArrayMethodBindings.method_size == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_size")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName1.Destroy()
 	log.Debug("globalArrayMethodBindings.method_is_empty")
 	globalArrayMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalArrayMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_is_empty")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("clear")
 	defer methodName2.Destroy()
 	log.Debug("globalArrayMethodBindings.method_clear")
 	globalArrayMethodBindings.method_clear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName2.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalArrayMethodBindings.method_clear == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_clear")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("hash")
 	defer methodName3.Destroy()
 	log.Debug("globalArrayMethodBindings.method_hash")
 	globalArrayMethodBindings.method_hash = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName3.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalArrayMethodBindings.method_hash == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_hash")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("push_back")
 	defer methodName4.Destroy()
 	log.Debug("globalArrayMethodBindings.method_push_back")
 	globalArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 3316032543)
+	if globalArrayMethodBindings.method_push_back == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_push_back")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("push_front")
 	defer methodName5.Destroy()
 	log.Debug("globalArrayMethodBindings.method_push_front")
 	globalArrayMethodBindings.method_push_front = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 3316032543)
+	if globalArrayMethodBindings.method_push_front == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_push_front")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("append")
 	defer methodName6.Destroy()
 	log.Debug("globalArrayMethodBindings.method_append")
 	globalArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 3316032543)
+	if globalArrayMethodBindings.method_append == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_append")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("append_array")
 	defer methodName7.Destroy()
 	log.Debug("globalArrayMethodBindings.method_append_array")
 	globalArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 2307260970)
+	if globalArrayMethodBindings.method_append_array == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_append_array")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("resize")
 	defer methodName8.Destroy()
 	log.Debug("globalArrayMethodBindings.method_resize")
 	globalArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 848867239)
+	if globalArrayMethodBindings.method_resize == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_resize")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("insert")
 	defer methodName9.Destroy()
 	log.Debug("globalArrayMethodBindings.method_insert")
 	globalArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 3176316662)
+	if globalArrayMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_insert")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("remove_at")
 	defer methodName10.Destroy()
 	log.Debug("globalArrayMethodBindings.method_remove_at")
 	globalArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalArrayMethodBindings.method_remove_at == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_remove_at")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("fill")
 	defer methodName11.Destroy()
 	log.Debug("globalArrayMethodBindings.method_fill")
 	globalArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 3316032543)
+	if globalArrayMethodBindings.method_fill == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_fill")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("erase")
 	defer methodName12.Destroy()
 	log.Debug("globalArrayMethodBindings.method_erase")
 	globalArrayMethodBindings.method_erase = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3316032543)
+	if globalArrayMethodBindings.method_erase == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_erase")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("front")
 	defer methodName13.Destroy()
 	log.Debug("globalArrayMethodBindings.method_front")
 	globalArrayMethodBindings.method_front = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 1460142086)
+	if globalArrayMethodBindings.method_front == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_front")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("back")
 	defer methodName14.Destroy()
 	log.Debug("globalArrayMethodBindings.method_back")
 	globalArrayMethodBindings.method_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 1460142086)
+	if globalArrayMethodBindings.method_back == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_back")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("pick_random")
 	defer methodName15.Destroy()
 	log.Debug("globalArrayMethodBindings.method_pick_random")
 	globalArrayMethodBindings.method_pick_random = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 1460142086)
+	if globalArrayMethodBindings.method_pick_random == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_pick_random")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("find")
 	defer methodName16.Destroy()
 	log.Debug("globalArrayMethodBindings.method_find")
 	globalArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 2336346817)
+	if globalArrayMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_find")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName17.Destroy()
 	log.Debug("globalArrayMethodBindings.method_rfind")
 	globalArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 2336346817)
+	if globalArrayMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_rfind")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("count")
 	defer methodName18.Destroy()
 	log.Debug("globalArrayMethodBindings.method_count")
 	globalArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 1481661226)
+	if globalArrayMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_count")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("has")
 	defer methodName19.Destroy()
 	log.Debug("globalArrayMethodBindings.method_has")
 	globalArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 3680194679)
+	if globalArrayMethodBindings.method_has == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_has")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("pop_back")
 	defer methodName20.Destroy()
 	log.Debug("globalArrayMethodBindings.method_pop_back")
 	globalArrayMethodBindings.method_pop_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 1321915136)
+	if globalArrayMethodBindings.method_pop_back == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_pop_back")
+	}
 	methodName21 := NewStringNameWithLatin1Chars("pop_front")
 	defer methodName21.Destroy()
 	log.Debug("globalArrayMethodBindings.method_pop_front")
 	globalArrayMethodBindings.method_pop_front = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName21.AsGDExtensionStringNamePtr(), 1321915136)
+	if globalArrayMethodBindings.method_pop_front == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_pop_front")
+	}
 	methodName22 := NewStringNameWithLatin1Chars("pop_at")
 	defer methodName22.Destroy()
 	log.Debug("globalArrayMethodBindings.method_pop_at")
 	globalArrayMethodBindings.method_pop_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName22.AsGDExtensionStringNamePtr(), 3518259424)
+	if globalArrayMethodBindings.method_pop_at == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_pop_at")
+	}
 	methodName23 := NewStringNameWithLatin1Chars("sort")
 	defer methodName23.Destroy()
 	log.Debug("globalArrayMethodBindings.method_sort")
 	globalArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName23.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalArrayMethodBindings.method_sort == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_sort")
+	}
 	methodName24 := NewStringNameWithLatin1Chars("sort_custom")
 	defer methodName24.Destroy()
 	log.Debug("globalArrayMethodBindings.method_sort_custom")
 	globalArrayMethodBindings.method_sort_custom = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName24.AsGDExtensionStringNamePtr(), 3470848906)
+	if globalArrayMethodBindings.method_sort_custom == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_sort_custom")
+	}
 	methodName25 := NewStringNameWithLatin1Chars("shuffle")
 	defer methodName25.Destroy()
 	log.Debug("globalArrayMethodBindings.method_shuffle")
 	globalArrayMethodBindings.method_shuffle = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName25.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalArrayMethodBindings.method_shuffle == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_shuffle")
+	}
 	methodName26 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName26.Destroy()
 	log.Debug("globalArrayMethodBindings.method_bsearch")
 	globalArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName26.AsGDExtensionStringNamePtr(), 2634019015)
+	if globalArrayMethodBindings.method_bsearch == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_bsearch")
+	}
 	methodName27 := NewStringNameWithLatin1Chars("bsearch_custom")
 	defer methodName27.Destroy()
 	log.Debug("globalArrayMethodBindings.method_bsearch_custom")
 	globalArrayMethodBindings.method_bsearch_custom = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName27.AsGDExtensionStringNamePtr(), 135832563)
+	if globalArrayMethodBindings.method_bsearch_custom == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_bsearch_custom")
+	}
 	methodName28 := NewStringNameWithLatin1Chars("reverse")
 	defer methodName28.Destroy()
 	log.Debug("globalArrayMethodBindings.method_reverse")
 	globalArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName28.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalArrayMethodBindings.method_reverse == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_reverse")
+	}
 	methodName29 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName29.Destroy()
 	log.Debug("globalArrayMethodBindings.method_duplicate")
 	globalArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName29.AsGDExtensionStringNamePtr(), 636440122)
+	if globalArrayMethodBindings.method_duplicate == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_duplicate")
+	}
 	methodName30 := NewStringNameWithLatin1Chars("slice")
 	defer methodName30.Destroy()
 	log.Debug("globalArrayMethodBindings.method_slice")
 	globalArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName30.AsGDExtensionStringNamePtr(), 1393718243)
+	if globalArrayMethodBindings.method_slice == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_slice")
+	}
 	methodName31 := NewStringNameWithLatin1Chars("filter")
 	defer methodName31.Destroy()
 	log.Debug("globalArrayMethodBindings.method_filter")
 	globalArrayMethodBindings.method_filter = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName31.AsGDExtensionStringNamePtr(), 4075186556)
+	if globalArrayMethodBindings.method_filter == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_filter")
+	}
 	methodName32 := NewStringNameWithLatin1Chars("map")
 	defer methodName32.Destroy()
 	log.Debug("globalArrayMethodBindings.method_map")
 	globalArrayMethodBindings.method_map = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName32.AsGDExtensionStringNamePtr(), 4075186556)
+	if globalArrayMethodBindings.method_map == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_map")
+	}
 	methodName33 := NewStringNameWithLatin1Chars("reduce")
 	defer methodName33.Destroy()
 	log.Debug("globalArrayMethodBindings.method_reduce")
 	globalArrayMethodBindings.method_reduce = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName33.AsGDExtensionStringNamePtr(), 4272450342)
+	if globalArrayMethodBindings.method_reduce == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_reduce")
+	}
 	methodName34 := NewStringNameWithLatin1Chars("any")
 	defer methodName34.Destroy()
 	log.Debug("globalArrayMethodBindings.method_any")
 	globalArrayMethodBindings.method_any = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName34.AsGDExtensionStringNamePtr(), 4129521963)
+	if globalArrayMethodBindings.method_any == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_any")
+	}
 	methodName35 := NewStringNameWithLatin1Chars("all")
 	defer methodName35.Destroy()
 	log.Debug("globalArrayMethodBindings.method_all")
 	globalArrayMethodBindings.method_all = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName35.AsGDExtensionStringNamePtr(), 4129521963)
+	if globalArrayMethodBindings.method_all == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_all")
+	}
 	methodName36 := NewStringNameWithLatin1Chars("max")
 	defer methodName36.Destroy()
 	log.Debug("globalArrayMethodBindings.method_max")
 	globalArrayMethodBindings.method_max = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName36.AsGDExtensionStringNamePtr(), 1460142086)
+	if globalArrayMethodBindings.method_max == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_max")
+	}
 	methodName37 := NewStringNameWithLatin1Chars("min")
 	defer methodName37.Destroy()
 	log.Debug("globalArrayMethodBindings.method_min")
 	globalArrayMethodBindings.method_min = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName37.AsGDExtensionStringNamePtr(), 1460142086)
+	if globalArrayMethodBindings.method_min == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_min")
+	}
 	methodName38 := NewStringNameWithLatin1Chars("typed_assign")
 	defer methodName38.Destroy()
 	log.Debug("globalArrayMethodBindings.method_typed_assign")
 	globalArrayMethodBindings.method_typed_assign = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName38.AsGDExtensionStringNamePtr(), 1485459766)
+	if globalArrayMethodBindings.method_typed_assign == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_typed_assign")
+	}
 	methodName39 := NewStringNameWithLatin1Chars("set_typed")
 	defer methodName39.Destroy()
 	log.Debug("globalArrayMethodBindings.method_set_typed")
 	globalArrayMethodBindings.method_set_typed = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName39.AsGDExtensionStringNamePtr(), 2557487401)
+	if globalArrayMethodBindings.method_set_typed == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_set_typed")
+	}
 	methodName40 := NewStringNameWithLatin1Chars("is_typed")
 	defer methodName40.Destroy()
 	log.Debug("globalArrayMethodBindings.method_is_typed")
 	globalArrayMethodBindings.method_is_typed = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName40.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalArrayMethodBindings.method_is_typed == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_is_typed")
+	}
 	methodName41 := NewStringNameWithLatin1Chars("get_typed_builtin")
 	defer methodName41.Destroy()
 	log.Debug("globalArrayMethodBindings.method_get_typed_builtin")
 	globalArrayMethodBindings.method_get_typed_builtin = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName41.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalArrayMethodBindings.method_get_typed_builtin == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_get_typed_builtin")
+	}
 	methodName42 := NewStringNameWithLatin1Chars("get_typed_class_name")
 	defer methodName42.Destroy()
 	log.Debug("globalArrayMethodBindings.method_get_typed_class_name")
 	globalArrayMethodBindings.method_get_typed_class_name = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName42.AsGDExtensionStringNamePtr(), 1825232092)
+	if globalArrayMethodBindings.method_get_typed_class_name == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_get_typed_class_name")
+	}
 	methodName43 := NewStringNameWithLatin1Chars("get_typed_script")
 	defer methodName43.Destroy()
 	log.Debug("globalArrayMethodBindings.method_get_typed_script")
 	globalArrayMethodBindings.method_get_typed_script = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName43.AsGDExtensionStringNamePtr(), 1460142086)
+	if globalArrayMethodBindings.method_get_typed_script == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_get_typed_script")
+	}
 	methodName44 := NewStringNameWithLatin1Chars("set_read_only")
 	defer methodName44.Destroy()
 	log.Debug("globalArrayMethodBindings.method_set_read_only")
 	globalArrayMethodBindings.method_set_read_only = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName44.AsGDExtensionStringNamePtr(), 315553568)
+	if globalArrayMethodBindings.method_set_read_only == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_set_read_only")
+	}
 	methodName45 := NewStringNameWithLatin1Chars("is_read_only")
 	defer methodName45.Destroy()
 	log.Debug("globalArrayMethodBindings.method_is_read_only")
 	globalArrayMethodBindings.method_is_read_only = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName45.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalArrayMethodBindings.method_is_read_only == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_is_read_only")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalArrayMethodBindings.indexed_setter")
 	globalArrayMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY)
 	log.Debug("globalArrayMethodBindings.indexed_getter")
@@ -26789,238 +28534,418 @@ func packedByteArrayInitConstructorBindings() {
 func packedByteArrayInitMethodBindings() {
 	log.Debug("packedByteArrayInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 58)
+
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_size")
 	globalPackedByteArrayMethodBindings.method_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalPackedByteArrayMethodBindings.method_size == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_size")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName1.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_is_empty")
 	globalPackedByteArrayMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalPackedByteArrayMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_is_empty")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("set")
 	defer methodName2.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_set")
 	globalPackedByteArrayMethodBindings.method_set = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName2.AsGDExtensionStringNamePtr(), 3638975848)
+	if globalPackedByteArrayMethodBindings.method_set == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_set")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("push_back")
 	defer methodName3.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_push_back")
 	globalPackedByteArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName3.AsGDExtensionStringNamePtr(), 694024632)
+	if globalPackedByteArrayMethodBindings.method_push_back == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_push_back")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("append")
 	defer methodName4.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_append")
 	globalPackedByteArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 694024632)
+	if globalPackedByteArrayMethodBindings.method_append == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_append")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("append_array")
 	defer methodName5.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_append_array")
 	globalPackedByteArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 791097111)
+	if globalPackedByteArrayMethodBindings.method_append_array == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_append_array")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("remove_at")
 	defer methodName6.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_remove_at")
 	globalPackedByteArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedByteArrayMethodBindings.method_remove_at == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_remove_at")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("insert")
 	defer methodName7.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_insert")
 	globalPackedByteArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 1487112728)
+	if globalPackedByteArrayMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_insert")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("fill")
 	defer methodName8.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_fill")
 	globalPackedByteArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedByteArrayMethodBindings.method_fill == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_fill")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("resize")
 	defer methodName9.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_resize")
 	globalPackedByteArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 848867239)
+	if globalPackedByteArrayMethodBindings.method_resize == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_resize")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("clear")
 	defer methodName10.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_clear")
 	globalPackedByteArrayMethodBindings.method_clear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedByteArrayMethodBindings.method_clear == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_clear")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("has")
 	defer methodName11.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_has")
 	globalPackedByteArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 931488181)
+	if globalPackedByteArrayMethodBindings.method_has == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_has")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("reverse")
 	defer methodName12.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_reverse")
 	globalPackedByteArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedByteArrayMethodBindings.method_reverse == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_reverse")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("slice")
 	defer methodName13.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_slice")
 	globalPackedByteArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 2278869132)
+	if globalPackedByteArrayMethodBindings.method_slice == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_slice")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("sort")
 	defer methodName14.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_sort")
 	globalPackedByteArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedByteArrayMethodBindings.method_sort == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_sort")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName15.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_bsearch")
 	globalPackedByteArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 3380005890)
+	if globalPackedByteArrayMethodBindings.method_bsearch == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_bsearch")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName16.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_duplicate")
 	globalPackedByteArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 851781288)
+	if globalPackedByteArrayMethodBindings.method_duplicate == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_duplicate")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("find")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_find")
 	globalPackedByteArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 2984303840)
+	if globalPackedByteArrayMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_find")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_rfind")
 	globalPackedByteArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 2984303840)
+	if globalPackedByteArrayMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_rfind")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("count")
 	defer methodName19.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_count")
 	globalPackedByteArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalPackedByteArrayMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_count")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("get_string_from_ascii")
 	defer methodName20.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_get_string_from_ascii")
 	globalPackedByteArrayMethodBindings.method_get_string_from_ascii = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalPackedByteArrayMethodBindings.method_get_string_from_ascii == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_get_string_from_ascii")
+	}
 	methodName21 := NewStringNameWithLatin1Chars("get_string_from_utf8")
 	defer methodName21.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_get_string_from_utf8")
 	globalPackedByteArrayMethodBindings.method_get_string_from_utf8 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName21.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalPackedByteArrayMethodBindings.method_get_string_from_utf8 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_get_string_from_utf8")
+	}
 	methodName22 := NewStringNameWithLatin1Chars("get_string_from_utf16")
 	defer methodName22.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_get_string_from_utf16")
 	globalPackedByteArrayMethodBindings.method_get_string_from_utf16 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName22.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalPackedByteArrayMethodBindings.method_get_string_from_utf16 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_get_string_from_utf16")
+	}
 	methodName23 := NewStringNameWithLatin1Chars("get_string_from_utf32")
 	defer methodName23.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_get_string_from_utf32")
 	globalPackedByteArrayMethodBindings.method_get_string_from_utf32 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName23.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalPackedByteArrayMethodBindings.method_get_string_from_utf32 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_get_string_from_utf32")
+	}
 	methodName24 := NewStringNameWithLatin1Chars("hex_encode")
 	defer methodName24.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_hex_encode")
 	globalPackedByteArrayMethodBindings.method_hex_encode = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName24.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalPackedByteArrayMethodBindings.method_hex_encode == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_hex_encode")
+	}
 	methodName25 := NewStringNameWithLatin1Chars("compress")
 	defer methodName25.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_compress")
 	globalPackedByteArrayMethodBindings.method_compress = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName25.AsGDExtensionStringNamePtr(), 1845905913)
+	if globalPackedByteArrayMethodBindings.method_compress == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_compress")
+	}
 	methodName26 := NewStringNameWithLatin1Chars("decompress")
 	defer methodName26.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decompress")
 	globalPackedByteArrayMethodBindings.method_decompress = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName26.AsGDExtensionStringNamePtr(), 2278869132)
+	if globalPackedByteArrayMethodBindings.method_decompress == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decompress")
+	}
 	methodName27 := NewStringNameWithLatin1Chars("decompress_dynamic")
 	defer methodName27.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decompress_dynamic")
 	globalPackedByteArrayMethodBindings.method_decompress_dynamic = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName27.AsGDExtensionStringNamePtr(), 2278869132)
+	if globalPackedByteArrayMethodBindings.method_decompress_dynamic == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decompress_dynamic")
+	}
 	methodName28 := NewStringNameWithLatin1Chars("decode_u8")
 	defer methodName28.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_u8")
 	globalPackedByteArrayMethodBindings.method_decode_u8 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName28.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalPackedByteArrayMethodBindings.method_decode_u8 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_u8")
+	}
 	methodName29 := NewStringNameWithLatin1Chars("decode_s8")
 	defer methodName29.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_s8")
 	globalPackedByteArrayMethodBindings.method_decode_s8 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName29.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalPackedByteArrayMethodBindings.method_decode_s8 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_s8")
+	}
 	methodName30 := NewStringNameWithLatin1Chars("decode_u16")
 	defer methodName30.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_u16")
 	globalPackedByteArrayMethodBindings.method_decode_u16 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName30.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalPackedByteArrayMethodBindings.method_decode_u16 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_u16")
+	}
 	methodName31 := NewStringNameWithLatin1Chars("decode_s16")
 	defer methodName31.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_s16")
 	globalPackedByteArrayMethodBindings.method_decode_s16 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName31.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalPackedByteArrayMethodBindings.method_decode_s16 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_s16")
+	}
 	methodName32 := NewStringNameWithLatin1Chars("decode_u32")
 	defer methodName32.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_u32")
 	globalPackedByteArrayMethodBindings.method_decode_u32 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName32.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalPackedByteArrayMethodBindings.method_decode_u32 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_u32")
+	}
 	methodName33 := NewStringNameWithLatin1Chars("decode_s32")
 	defer methodName33.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_s32")
 	globalPackedByteArrayMethodBindings.method_decode_s32 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName33.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalPackedByteArrayMethodBindings.method_decode_s32 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_s32")
+	}
 	methodName34 := NewStringNameWithLatin1Chars("decode_u64")
 	defer methodName34.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_u64")
 	globalPackedByteArrayMethodBindings.method_decode_u64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName34.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalPackedByteArrayMethodBindings.method_decode_u64 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_u64")
+	}
 	methodName35 := NewStringNameWithLatin1Chars("decode_s64")
 	defer methodName35.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_s64")
 	globalPackedByteArrayMethodBindings.method_decode_s64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName35.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalPackedByteArrayMethodBindings.method_decode_s64 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_s64")
+	}
 	methodName36 := NewStringNameWithLatin1Chars("decode_half")
 	defer methodName36.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_half")
 	globalPackedByteArrayMethodBindings.method_decode_half = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName36.AsGDExtensionStringNamePtr(), 1401583798)
+	if globalPackedByteArrayMethodBindings.method_decode_half == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_half")
+	}
 	methodName37 := NewStringNameWithLatin1Chars("decode_float")
 	defer methodName37.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_float")
 	globalPackedByteArrayMethodBindings.method_decode_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName37.AsGDExtensionStringNamePtr(), 1401583798)
+	if globalPackedByteArrayMethodBindings.method_decode_float == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_float")
+	}
 	methodName38 := NewStringNameWithLatin1Chars("decode_double")
 	defer methodName38.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_double")
 	globalPackedByteArrayMethodBindings.method_decode_double = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName38.AsGDExtensionStringNamePtr(), 1401583798)
+	if globalPackedByteArrayMethodBindings.method_decode_double == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_double")
+	}
 	methodName39 := NewStringNameWithLatin1Chars("has_encoded_var")
 	defer methodName39.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_has_encoded_var")
 	globalPackedByteArrayMethodBindings.method_has_encoded_var = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName39.AsGDExtensionStringNamePtr(), 2914632957)
+	if globalPackedByteArrayMethodBindings.method_has_encoded_var == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_has_encoded_var")
+	}
 	methodName40 := NewStringNameWithLatin1Chars("decode_var")
 	defer methodName40.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_var")
 	globalPackedByteArrayMethodBindings.method_decode_var = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName40.AsGDExtensionStringNamePtr(), 1740420038)
+	if globalPackedByteArrayMethodBindings.method_decode_var == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_var")
+	}
 	methodName41 := NewStringNameWithLatin1Chars("decode_var_size")
 	defer methodName41.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_decode_var_size")
 	globalPackedByteArrayMethodBindings.method_decode_var_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName41.AsGDExtensionStringNamePtr(), 954237325)
+	if globalPackedByteArrayMethodBindings.method_decode_var_size == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_decode_var_size")
+	}
 	methodName42 := NewStringNameWithLatin1Chars("to_int32_array")
 	defer methodName42.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_to_int32_array")
 	globalPackedByteArrayMethodBindings.method_to_int32_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName42.AsGDExtensionStringNamePtr(), 3158844420)
+	if globalPackedByteArrayMethodBindings.method_to_int32_array == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_to_int32_array")
+	}
 	methodName43 := NewStringNameWithLatin1Chars("to_int64_array")
 	defer methodName43.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_to_int64_array")
 	globalPackedByteArrayMethodBindings.method_to_int64_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName43.AsGDExtensionStringNamePtr(), 1961294120)
+	if globalPackedByteArrayMethodBindings.method_to_int64_array == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_to_int64_array")
+	}
 	methodName44 := NewStringNameWithLatin1Chars("to_float32_array")
 	defer methodName44.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_to_float32_array")
 	globalPackedByteArrayMethodBindings.method_to_float32_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName44.AsGDExtensionStringNamePtr(), 3575107827)
+	if globalPackedByteArrayMethodBindings.method_to_float32_array == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_to_float32_array")
+	}
 	methodName45 := NewStringNameWithLatin1Chars("to_float64_array")
 	defer methodName45.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_to_float64_array")
 	globalPackedByteArrayMethodBindings.method_to_float64_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName45.AsGDExtensionStringNamePtr(), 1627308337)
+	if globalPackedByteArrayMethodBindings.method_to_float64_array == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_to_float64_array")
+	}
 	methodName46 := NewStringNameWithLatin1Chars("encode_u8")
 	defer methodName46.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_u8")
 	globalPackedByteArrayMethodBindings.method_encode_u8 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName46.AsGDExtensionStringNamePtr(), 3638975848)
+	if globalPackedByteArrayMethodBindings.method_encode_u8 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_u8")
+	}
 	methodName47 := NewStringNameWithLatin1Chars("encode_s8")
 	defer methodName47.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_s8")
 	globalPackedByteArrayMethodBindings.method_encode_s8 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName47.AsGDExtensionStringNamePtr(), 3638975848)
+	if globalPackedByteArrayMethodBindings.method_encode_s8 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_s8")
+	}
 	methodName48 := NewStringNameWithLatin1Chars("encode_u16")
 	defer methodName48.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_u16")
 	globalPackedByteArrayMethodBindings.method_encode_u16 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName48.AsGDExtensionStringNamePtr(), 3638975848)
+	if globalPackedByteArrayMethodBindings.method_encode_u16 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_u16")
+	}
 	methodName49 := NewStringNameWithLatin1Chars("encode_s16")
 	defer methodName49.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_s16")
 	globalPackedByteArrayMethodBindings.method_encode_s16 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName49.AsGDExtensionStringNamePtr(), 3638975848)
+	if globalPackedByteArrayMethodBindings.method_encode_s16 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_s16")
+	}
 	methodName50 := NewStringNameWithLatin1Chars("encode_u32")
 	defer methodName50.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_u32")
 	globalPackedByteArrayMethodBindings.method_encode_u32 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName50.AsGDExtensionStringNamePtr(), 3638975848)
+	if globalPackedByteArrayMethodBindings.method_encode_u32 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_u32")
+	}
 	methodName51 := NewStringNameWithLatin1Chars("encode_s32")
 	defer methodName51.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_s32")
 	globalPackedByteArrayMethodBindings.method_encode_s32 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName51.AsGDExtensionStringNamePtr(), 3638975848)
+	if globalPackedByteArrayMethodBindings.method_encode_s32 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_s32")
+	}
 	methodName52 := NewStringNameWithLatin1Chars("encode_u64")
 	defer methodName52.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_u64")
 	globalPackedByteArrayMethodBindings.method_encode_u64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName52.AsGDExtensionStringNamePtr(), 3638975848)
+	if globalPackedByteArrayMethodBindings.method_encode_u64 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_u64")
+	}
 	methodName53 := NewStringNameWithLatin1Chars("encode_s64")
 	defer methodName53.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_s64")
 	globalPackedByteArrayMethodBindings.method_encode_s64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName53.AsGDExtensionStringNamePtr(), 3638975848)
+	if globalPackedByteArrayMethodBindings.method_encode_s64 == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_s64")
+	}
 	methodName54 := NewStringNameWithLatin1Chars("encode_half")
 	defer methodName54.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_half")
 	globalPackedByteArrayMethodBindings.method_encode_half = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName54.AsGDExtensionStringNamePtr(), 1113000516)
+	if globalPackedByteArrayMethodBindings.method_encode_half == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_half")
+	}
 	methodName55 := NewStringNameWithLatin1Chars("encode_float")
 	defer methodName55.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_float")
 	globalPackedByteArrayMethodBindings.method_encode_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName55.AsGDExtensionStringNamePtr(), 1113000516)
+	if globalPackedByteArrayMethodBindings.method_encode_float == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_float")
+	}
 	methodName56 := NewStringNameWithLatin1Chars("encode_double")
 	defer methodName56.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_double")
 	globalPackedByteArrayMethodBindings.method_encode_double = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName56.AsGDExtensionStringNamePtr(), 1113000516)
+	if globalPackedByteArrayMethodBindings.method_encode_double == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_double")
+	}
 	methodName57 := NewStringNameWithLatin1Chars("encode_var")
 	defer methodName57.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_encode_var")
 	globalPackedByteArrayMethodBindings.method_encode_var = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName57.AsGDExtensionStringNamePtr(), 2604460497)
+	if globalPackedByteArrayMethodBindings.method_encode_var == nil {
+		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_encode_var")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalPackedByteArrayMethodBindings.indexed_setter")
 	globalPackedByteArrayMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY)
 	log.Debug("globalPackedByteArrayMethodBindings.indexed_getter")
@@ -28851,90 +30776,159 @@ func packedInt32ArrayInitConstructorBindings() {
 func packedInt32ArrayInitMethodBindings() {
 	log.Debug("packedInt32ArrayInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 21)
+
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_size")
 	globalPackedInt32ArrayMethodBindings.method_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalPackedInt32ArrayMethodBindings.method_size == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_size")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName1.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_is_empty")
 	globalPackedInt32ArrayMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalPackedInt32ArrayMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_is_empty")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("set")
 	defer methodName2.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_set")
 	globalPackedInt32ArrayMethodBindings.method_set = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName2.AsGDExtensionStringNamePtr(), 3638975848)
+	if globalPackedInt32ArrayMethodBindings.method_set == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_set")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("push_back")
 	defer methodName3.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_push_back")
 	globalPackedInt32ArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName3.AsGDExtensionStringNamePtr(), 694024632)
+	if globalPackedInt32ArrayMethodBindings.method_push_back == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_push_back")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("append")
 	defer methodName4.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_append")
 	globalPackedInt32ArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 694024632)
+	if globalPackedInt32ArrayMethodBindings.method_append == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_append")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("append_array")
 	defer methodName5.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_append_array")
 	globalPackedInt32ArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 1087733270)
+	if globalPackedInt32ArrayMethodBindings.method_append_array == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_append_array")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("remove_at")
 	defer methodName6.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_remove_at")
 	globalPackedInt32ArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedInt32ArrayMethodBindings.method_remove_at == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_remove_at")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("insert")
 	defer methodName7.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_insert")
 	globalPackedInt32ArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 1487112728)
+	if globalPackedInt32ArrayMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_insert")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("fill")
 	defer methodName8.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_fill")
 	globalPackedInt32ArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedInt32ArrayMethodBindings.method_fill == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_fill")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("resize")
 	defer methodName9.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_resize")
 	globalPackedInt32ArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 848867239)
+	if globalPackedInt32ArrayMethodBindings.method_resize == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_resize")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("clear")
 	defer methodName10.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_clear")
 	globalPackedInt32ArrayMethodBindings.method_clear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedInt32ArrayMethodBindings.method_clear == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_clear")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("has")
 	defer methodName11.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_has")
 	globalPackedInt32ArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 931488181)
+	if globalPackedInt32ArrayMethodBindings.method_has == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_has")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("reverse")
 	defer methodName12.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_reverse")
 	globalPackedInt32ArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedInt32ArrayMethodBindings.method_reverse == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_reverse")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("slice")
 	defer methodName13.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_slice")
 	globalPackedInt32ArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 1216021098)
+	if globalPackedInt32ArrayMethodBindings.method_slice == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_slice")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("to_byte_array")
 	defer methodName14.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_to_byte_array")
 	globalPackedInt32ArrayMethodBindings.method_to_byte_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 247621236)
+	if globalPackedInt32ArrayMethodBindings.method_to_byte_array == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_to_byte_array")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("sort")
 	defer methodName15.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_sort")
 	globalPackedInt32ArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedInt32ArrayMethodBindings.method_sort == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_sort")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName16.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_bsearch")
 	globalPackedInt32ArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 3380005890)
+	if globalPackedInt32ArrayMethodBindings.method_bsearch == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_bsearch")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_duplicate")
 	globalPackedInt32ArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 1997843129)
+	if globalPackedInt32ArrayMethodBindings.method_duplicate == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_duplicate")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("find")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_find")
 	globalPackedInt32ArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 2984303840)
+	if globalPackedInt32ArrayMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_find")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName19.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_rfind")
 	globalPackedInt32ArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 2984303840)
+	if globalPackedInt32ArrayMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_rfind")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("count")
 	defer methodName20.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_count")
 	globalPackedInt32ArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalPackedInt32ArrayMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_count")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalPackedInt32ArrayMethodBindings.indexed_setter")
 	globalPackedInt32ArrayMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY)
 	log.Debug("globalPackedInt32ArrayMethodBindings.indexed_getter")
@@ -29713,90 +31707,159 @@ func packedInt64ArrayInitConstructorBindings() {
 func packedInt64ArrayInitMethodBindings() {
 	log.Debug("packedInt64ArrayInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 21)
+
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_size")
 	globalPackedInt64ArrayMethodBindings.method_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalPackedInt64ArrayMethodBindings.method_size == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_size")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName1.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_is_empty")
 	globalPackedInt64ArrayMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalPackedInt64ArrayMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_is_empty")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("set")
 	defer methodName2.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_set")
 	globalPackedInt64ArrayMethodBindings.method_set = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName2.AsGDExtensionStringNamePtr(), 3638975848)
+	if globalPackedInt64ArrayMethodBindings.method_set == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_set")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("push_back")
 	defer methodName3.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_push_back")
 	globalPackedInt64ArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName3.AsGDExtensionStringNamePtr(), 694024632)
+	if globalPackedInt64ArrayMethodBindings.method_push_back == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_push_back")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("append")
 	defer methodName4.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_append")
 	globalPackedInt64ArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 694024632)
+	if globalPackedInt64ArrayMethodBindings.method_append == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_append")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("append_array")
 	defer methodName5.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_append_array")
 	globalPackedInt64ArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 2090311302)
+	if globalPackedInt64ArrayMethodBindings.method_append_array == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_append_array")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("remove_at")
 	defer methodName6.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_remove_at")
 	globalPackedInt64ArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedInt64ArrayMethodBindings.method_remove_at == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_remove_at")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("insert")
 	defer methodName7.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_insert")
 	globalPackedInt64ArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 1487112728)
+	if globalPackedInt64ArrayMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_insert")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("fill")
 	defer methodName8.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_fill")
 	globalPackedInt64ArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedInt64ArrayMethodBindings.method_fill == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_fill")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("resize")
 	defer methodName9.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_resize")
 	globalPackedInt64ArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 848867239)
+	if globalPackedInt64ArrayMethodBindings.method_resize == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_resize")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("clear")
 	defer methodName10.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_clear")
 	globalPackedInt64ArrayMethodBindings.method_clear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedInt64ArrayMethodBindings.method_clear == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_clear")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("has")
 	defer methodName11.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_has")
 	globalPackedInt64ArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 931488181)
+	if globalPackedInt64ArrayMethodBindings.method_has == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_has")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("reverse")
 	defer methodName12.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_reverse")
 	globalPackedInt64ArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedInt64ArrayMethodBindings.method_reverse == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_reverse")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("slice")
 	defer methodName13.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_slice")
 	globalPackedInt64ArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 1726550804)
+	if globalPackedInt64ArrayMethodBindings.method_slice == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_slice")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("to_byte_array")
 	defer methodName14.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_to_byte_array")
 	globalPackedInt64ArrayMethodBindings.method_to_byte_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 247621236)
+	if globalPackedInt64ArrayMethodBindings.method_to_byte_array == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_to_byte_array")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("sort")
 	defer methodName15.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_sort")
 	globalPackedInt64ArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedInt64ArrayMethodBindings.method_sort == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_sort")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName16.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_bsearch")
 	globalPackedInt64ArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 3380005890)
+	if globalPackedInt64ArrayMethodBindings.method_bsearch == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_bsearch")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_duplicate")
 	globalPackedInt64ArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 2376370016)
+	if globalPackedInt64ArrayMethodBindings.method_duplicate == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_duplicate")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("find")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_find")
 	globalPackedInt64ArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 2984303840)
+	if globalPackedInt64ArrayMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_find")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName19.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_rfind")
 	globalPackedInt64ArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 2984303840)
+	if globalPackedInt64ArrayMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_rfind")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("count")
 	defer methodName20.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_count")
 	globalPackedInt64ArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 4103005248)
+	if globalPackedInt64ArrayMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_count")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalPackedInt64ArrayMethodBindings.indexed_setter")
 	globalPackedInt64ArrayMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY)
 	log.Debug("globalPackedInt64ArrayMethodBindings.indexed_getter")
@@ -30575,90 +32638,159 @@ func packedFloat32ArrayInitConstructorBindings() {
 func packedFloat32ArrayInitMethodBindings() {
 	log.Debug("packedFloat32ArrayInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 21)
+
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_size")
 	globalPackedFloat32ArrayMethodBindings.method_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalPackedFloat32ArrayMethodBindings.method_size == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_size")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName1.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_is_empty")
 	globalPackedFloat32ArrayMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalPackedFloat32ArrayMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_is_empty")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("set")
 	defer methodName2.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_set")
 	globalPackedFloat32ArrayMethodBindings.method_set = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName2.AsGDExtensionStringNamePtr(), 1113000516)
+	if globalPackedFloat32ArrayMethodBindings.method_set == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_set")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("push_back")
 	defer methodName3.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_push_back")
 	globalPackedFloat32ArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName3.AsGDExtensionStringNamePtr(), 4094791666)
+	if globalPackedFloat32ArrayMethodBindings.method_push_back == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_push_back")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("append")
 	defer methodName4.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_append")
 	globalPackedFloat32ArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 4094791666)
+	if globalPackedFloat32ArrayMethodBindings.method_append == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_append")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("append_array")
 	defer methodName5.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_append_array")
 	globalPackedFloat32ArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 2981316639)
+	if globalPackedFloat32ArrayMethodBindings.method_append_array == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_append_array")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("remove_at")
 	defer methodName6.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_remove_at")
 	globalPackedFloat32ArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedFloat32ArrayMethodBindings.method_remove_at == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_remove_at")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("insert")
 	defer methodName7.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_insert")
 	globalPackedFloat32ArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 1379903876)
+	if globalPackedFloat32ArrayMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_insert")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("fill")
 	defer methodName8.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_fill")
 	globalPackedFloat32ArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 833936903)
+	if globalPackedFloat32ArrayMethodBindings.method_fill == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_fill")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("resize")
 	defer methodName9.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_resize")
 	globalPackedFloat32ArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 848867239)
+	if globalPackedFloat32ArrayMethodBindings.method_resize == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_resize")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("clear")
 	defer methodName10.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_clear")
 	globalPackedFloat32ArrayMethodBindings.method_clear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedFloat32ArrayMethodBindings.method_clear == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_clear")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("has")
 	defer methodName11.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_has")
 	globalPackedFloat32ArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 1296369134)
+	if globalPackedFloat32ArrayMethodBindings.method_has == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_has")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("reverse")
 	defer methodName12.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_reverse")
 	globalPackedFloat32ArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedFloat32ArrayMethodBindings.method_reverse == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_reverse")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("slice")
 	defer methodName13.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_slice")
 	globalPackedFloat32ArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 1418229160)
+	if globalPackedFloat32ArrayMethodBindings.method_slice == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_slice")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("to_byte_array")
 	defer methodName14.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_to_byte_array")
 	globalPackedFloat32ArrayMethodBindings.method_to_byte_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 247621236)
+	if globalPackedFloat32ArrayMethodBindings.method_to_byte_array == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_to_byte_array")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("sort")
 	defer methodName15.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_sort")
 	globalPackedFloat32ArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedFloat32ArrayMethodBindings.method_sort == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_sort")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName16.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_bsearch")
 	globalPackedFloat32ArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 1188816338)
+	if globalPackedFloat32ArrayMethodBindings.method_bsearch == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_bsearch")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_duplicate")
 	globalPackedFloat32ArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 831114784)
+	if globalPackedFloat32ArrayMethodBindings.method_duplicate == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_duplicate")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("find")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_find")
 	globalPackedFloat32ArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 1343150241)
+	if globalPackedFloat32ArrayMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_find")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName19.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_rfind")
 	globalPackedFloat32ArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 1343150241)
+	if globalPackedFloat32ArrayMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_rfind")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("count")
 	defer methodName20.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_count")
 	globalPackedFloat32ArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 2859915090)
+	if globalPackedFloat32ArrayMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_count")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalPackedFloat32ArrayMethodBindings.indexed_setter")
 	globalPackedFloat32ArrayMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY)
 	log.Debug("globalPackedFloat32ArrayMethodBindings.indexed_getter")
@@ -31437,90 +33569,159 @@ func packedFloat64ArrayInitConstructorBindings() {
 func packedFloat64ArrayInitMethodBindings() {
 	log.Debug("packedFloat64ArrayInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 21)
+
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_size")
 	globalPackedFloat64ArrayMethodBindings.method_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalPackedFloat64ArrayMethodBindings.method_size == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_size")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName1.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_is_empty")
 	globalPackedFloat64ArrayMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalPackedFloat64ArrayMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_is_empty")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("set")
 	defer methodName2.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_set")
 	globalPackedFloat64ArrayMethodBindings.method_set = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName2.AsGDExtensionStringNamePtr(), 1113000516)
+	if globalPackedFloat64ArrayMethodBindings.method_set == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_set")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("push_back")
 	defer methodName3.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_push_back")
 	globalPackedFloat64ArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName3.AsGDExtensionStringNamePtr(), 4094791666)
+	if globalPackedFloat64ArrayMethodBindings.method_push_back == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_push_back")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("append")
 	defer methodName4.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_append")
 	globalPackedFloat64ArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 4094791666)
+	if globalPackedFloat64ArrayMethodBindings.method_append == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_append")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("append_array")
 	defer methodName5.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_append_array")
 	globalPackedFloat64ArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 792078629)
+	if globalPackedFloat64ArrayMethodBindings.method_append_array == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_append_array")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("remove_at")
 	defer methodName6.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_remove_at")
 	globalPackedFloat64ArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedFloat64ArrayMethodBindings.method_remove_at == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_remove_at")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("insert")
 	defer methodName7.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_insert")
 	globalPackedFloat64ArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 1379903876)
+	if globalPackedFloat64ArrayMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_insert")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("fill")
 	defer methodName8.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_fill")
 	globalPackedFloat64ArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 833936903)
+	if globalPackedFloat64ArrayMethodBindings.method_fill == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_fill")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("resize")
 	defer methodName9.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_resize")
 	globalPackedFloat64ArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 848867239)
+	if globalPackedFloat64ArrayMethodBindings.method_resize == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_resize")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("clear")
 	defer methodName10.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_clear")
 	globalPackedFloat64ArrayMethodBindings.method_clear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedFloat64ArrayMethodBindings.method_clear == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_clear")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("has")
 	defer methodName11.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_has")
 	globalPackedFloat64ArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 1296369134)
+	if globalPackedFloat64ArrayMethodBindings.method_has == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_has")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("reverse")
 	defer methodName12.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_reverse")
 	globalPackedFloat64ArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedFloat64ArrayMethodBindings.method_reverse == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_reverse")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("slice")
 	defer methodName13.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_slice")
 	globalPackedFloat64ArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 2192974324)
+	if globalPackedFloat64ArrayMethodBindings.method_slice == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_slice")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("to_byte_array")
 	defer methodName14.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_to_byte_array")
 	globalPackedFloat64ArrayMethodBindings.method_to_byte_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 247621236)
+	if globalPackedFloat64ArrayMethodBindings.method_to_byte_array == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_to_byte_array")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("sort")
 	defer methodName15.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_sort")
 	globalPackedFloat64ArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedFloat64ArrayMethodBindings.method_sort == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_sort")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName16.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_bsearch")
 	globalPackedFloat64ArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 1188816338)
+	if globalPackedFloat64ArrayMethodBindings.method_bsearch == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_bsearch")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_duplicate")
 	globalPackedFloat64ArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 949266573)
+	if globalPackedFloat64ArrayMethodBindings.method_duplicate == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_duplicate")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("find")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_find")
 	globalPackedFloat64ArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 1343150241)
+	if globalPackedFloat64ArrayMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_find")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName19.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_rfind")
 	globalPackedFloat64ArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 1343150241)
+	if globalPackedFloat64ArrayMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_rfind")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("count")
 	defer methodName20.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_count")
 	globalPackedFloat64ArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 2859915090)
+	if globalPackedFloat64ArrayMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_count")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalPackedFloat64ArrayMethodBindings.indexed_setter")
 	globalPackedFloat64ArrayMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY)
 	log.Debug("globalPackedFloat64ArrayMethodBindings.indexed_getter")
@@ -32299,90 +34500,159 @@ func packedStringArrayInitConstructorBindings() {
 func packedStringArrayInitMethodBindings() {
 	log.Debug("packedStringArrayInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 21)
+
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_size")
 	globalPackedStringArrayMethodBindings.method_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalPackedStringArrayMethodBindings.method_size == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_size")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName1.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_is_empty")
 	globalPackedStringArrayMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalPackedStringArrayMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_is_empty")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("set")
 	defer methodName2.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_set")
 	globalPackedStringArrayMethodBindings.method_set = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName2.AsGDExtensionStringNamePtr(), 725585539)
+	if globalPackedStringArrayMethodBindings.method_set == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_set")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("push_back")
 	defer methodName3.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_push_back")
 	globalPackedStringArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName3.AsGDExtensionStringNamePtr(), 816187996)
+	if globalPackedStringArrayMethodBindings.method_push_back == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_push_back")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("append")
 	defer methodName4.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_append")
 	globalPackedStringArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 816187996)
+	if globalPackedStringArrayMethodBindings.method_append == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_append")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("append_array")
 	defer methodName5.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_append_array")
 	globalPackedStringArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 1120103966)
+	if globalPackedStringArrayMethodBindings.method_append_array == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_append_array")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("remove_at")
 	defer methodName6.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_remove_at")
 	globalPackedStringArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedStringArrayMethodBindings.method_remove_at == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_remove_at")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("insert")
 	defer methodName7.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_insert")
 	globalPackedStringArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 2432393153)
+	if globalPackedStringArrayMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_insert")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("fill")
 	defer methodName8.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_fill")
 	globalPackedStringArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 3174917410)
+	if globalPackedStringArrayMethodBindings.method_fill == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_fill")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("resize")
 	defer methodName9.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_resize")
 	globalPackedStringArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 848867239)
+	if globalPackedStringArrayMethodBindings.method_resize == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_resize")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("clear")
 	defer methodName10.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_clear")
 	globalPackedStringArrayMethodBindings.method_clear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedStringArrayMethodBindings.method_clear == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_clear")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("has")
 	defer methodName11.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_has")
 	globalPackedStringArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 2566493496)
+	if globalPackedStringArrayMethodBindings.method_has == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_has")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("reverse")
 	defer methodName12.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_reverse")
 	globalPackedStringArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedStringArrayMethodBindings.method_reverse == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_reverse")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("slice")
 	defer methodName13.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_slice")
 	globalPackedStringArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 2094601407)
+	if globalPackedStringArrayMethodBindings.method_slice == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_slice")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("to_byte_array")
 	defer methodName14.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_to_byte_array")
 	globalPackedStringArrayMethodBindings.method_to_byte_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 247621236)
+	if globalPackedStringArrayMethodBindings.method_to_byte_array == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_to_byte_array")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("sort")
 	defer methodName15.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_sort")
 	globalPackedStringArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedStringArrayMethodBindings.method_sort == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_sort")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName16.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_bsearch")
 	globalPackedStringArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 328976671)
+	if globalPackedStringArrayMethodBindings.method_bsearch == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_bsearch")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_duplicate")
 	globalPackedStringArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 2991231410)
+	if globalPackedStringArrayMethodBindings.method_duplicate == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_duplicate")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("find")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_find")
 	globalPackedStringArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 1760645412)
+	if globalPackedStringArrayMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_find")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName19.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_rfind")
 	globalPackedStringArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 1760645412)
+	if globalPackedStringArrayMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_rfind")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("count")
 	defer methodName20.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_count")
 	globalPackedStringArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 2920860731)
+	if globalPackedStringArrayMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_count")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalPackedStringArrayMethodBindings.indexed_setter")
 	globalPackedStringArrayMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY)
 	log.Debug("globalPackedStringArrayMethodBindings.indexed_getter")
@@ -33162,90 +35432,159 @@ func packedVector2ArrayInitConstructorBindings() {
 func packedVector2ArrayInitMethodBindings() {
 	log.Debug("packedVector2ArrayInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 21)
+
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_size")
 	globalPackedVector2ArrayMethodBindings.method_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalPackedVector2ArrayMethodBindings.method_size == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_size")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName1.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_is_empty")
 	globalPackedVector2ArrayMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalPackedVector2ArrayMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_is_empty")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("set")
 	defer methodName2.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_set")
 	globalPackedVector2ArrayMethodBindings.method_set = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName2.AsGDExtensionStringNamePtr(), 635767250)
+	if globalPackedVector2ArrayMethodBindings.method_set == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_set")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("push_back")
 	defer methodName3.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_push_back")
 	globalPackedVector2ArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName3.AsGDExtensionStringNamePtr(), 4188891560)
+	if globalPackedVector2ArrayMethodBindings.method_push_back == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_push_back")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("append")
 	defer methodName4.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_append")
 	globalPackedVector2ArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 4188891560)
+	if globalPackedVector2ArrayMethodBindings.method_append == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_append")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("append_array")
 	defer methodName5.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_append_array")
 	globalPackedVector2ArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 3887534835)
+	if globalPackedVector2ArrayMethodBindings.method_append_array == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_append_array")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("remove_at")
 	defer methodName6.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_remove_at")
 	globalPackedVector2ArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedVector2ArrayMethodBindings.method_remove_at == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_remove_at")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("insert")
 	defer methodName7.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_insert")
 	globalPackedVector2ArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 2225629369)
+	if globalPackedVector2ArrayMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_insert")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("fill")
 	defer methodName8.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_fill")
 	globalPackedVector2ArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 3790411178)
+	if globalPackedVector2ArrayMethodBindings.method_fill == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_fill")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("resize")
 	defer methodName9.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_resize")
 	globalPackedVector2ArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 848867239)
+	if globalPackedVector2ArrayMethodBindings.method_resize == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_resize")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("clear")
 	defer methodName10.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_clear")
 	globalPackedVector2ArrayMethodBindings.method_clear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedVector2ArrayMethodBindings.method_clear == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_clear")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("has")
 	defer methodName11.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_has")
 	globalPackedVector2ArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 3190634762)
+	if globalPackedVector2ArrayMethodBindings.method_has == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_has")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("reverse")
 	defer methodName12.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_reverse")
 	globalPackedVector2ArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedVector2ArrayMethodBindings.method_reverse == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_reverse")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("slice")
 	defer methodName13.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_slice")
 	globalPackedVector2ArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 3864005350)
+	if globalPackedVector2ArrayMethodBindings.method_slice == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_slice")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("to_byte_array")
 	defer methodName14.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_to_byte_array")
 	globalPackedVector2ArrayMethodBindings.method_to_byte_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 247621236)
+	if globalPackedVector2ArrayMethodBindings.method_to_byte_array == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_to_byte_array")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("sort")
 	defer methodName15.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_sort")
 	globalPackedVector2ArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedVector2ArrayMethodBindings.method_sort == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_sort")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName16.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_bsearch")
 	globalPackedVector2ArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 3778035805)
+	if globalPackedVector2ArrayMethodBindings.method_bsearch == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_bsearch")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_duplicate")
 	globalPackedVector2ArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 3763646812)
+	if globalPackedVector2ArrayMethodBindings.method_duplicate == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_duplicate")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("find")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_find")
 	globalPackedVector2ArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 1469606149)
+	if globalPackedVector2ArrayMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_find")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName19.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_rfind")
 	globalPackedVector2ArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 1469606149)
+	if globalPackedVector2ArrayMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_rfind")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("count")
 	defer methodName20.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_count")
 	globalPackedVector2ArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 2798848307)
+	if globalPackedVector2ArrayMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_count")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalPackedVector2ArrayMethodBindings.indexed_setter")
 	globalPackedVector2ArrayMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY)
 	log.Debug("globalPackedVector2ArrayMethodBindings.indexed_getter")
@@ -34034,90 +36373,159 @@ func packedVector3ArrayInitConstructorBindings() {
 func packedVector3ArrayInitMethodBindings() {
 	log.Debug("packedVector3ArrayInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 21)
+
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_size")
 	globalPackedVector3ArrayMethodBindings.method_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalPackedVector3ArrayMethodBindings.method_size == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_size")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName1.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_is_empty")
 	globalPackedVector3ArrayMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalPackedVector3ArrayMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_is_empty")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("set")
 	defer methodName2.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_set")
 	globalPackedVector3ArrayMethodBindings.method_set = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName2.AsGDExtensionStringNamePtr(), 3975343409)
+	if globalPackedVector3ArrayMethodBindings.method_set == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_set")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("push_back")
 	defer methodName3.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_push_back")
 	globalPackedVector3ArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName3.AsGDExtensionStringNamePtr(), 3295363524)
+	if globalPackedVector3ArrayMethodBindings.method_push_back == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_push_back")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("append")
 	defer methodName4.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_append")
 	globalPackedVector3ArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 3295363524)
+	if globalPackedVector3ArrayMethodBindings.method_append == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_append")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("append_array")
 	defer methodName5.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_append_array")
 	globalPackedVector3ArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 203538016)
+	if globalPackedVector3ArrayMethodBindings.method_append_array == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_append_array")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("remove_at")
 	defer methodName6.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_remove_at")
 	globalPackedVector3ArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedVector3ArrayMethodBindings.method_remove_at == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_remove_at")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("insert")
 	defer methodName7.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_insert")
 	globalPackedVector3ArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 3892262309)
+	if globalPackedVector3ArrayMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_insert")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("fill")
 	defer methodName8.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_fill")
 	globalPackedVector3ArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 3726392409)
+	if globalPackedVector3ArrayMethodBindings.method_fill == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_fill")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("resize")
 	defer methodName9.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_resize")
 	globalPackedVector3ArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 848867239)
+	if globalPackedVector3ArrayMethodBindings.method_resize == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_resize")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("clear")
 	defer methodName10.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_clear")
 	globalPackedVector3ArrayMethodBindings.method_clear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedVector3ArrayMethodBindings.method_clear == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_clear")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("has")
 	defer methodName11.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_has")
 	globalPackedVector3ArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 1749054343)
+	if globalPackedVector3ArrayMethodBindings.method_has == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_has")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("reverse")
 	defer methodName12.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_reverse")
 	globalPackedVector3ArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedVector3ArrayMethodBindings.method_reverse == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_reverse")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("slice")
 	defer methodName13.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_slice")
 	globalPackedVector3ArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 2086131305)
+	if globalPackedVector3ArrayMethodBindings.method_slice == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_slice")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("to_byte_array")
 	defer methodName14.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_to_byte_array")
 	globalPackedVector3ArrayMethodBindings.method_to_byte_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 247621236)
+	if globalPackedVector3ArrayMethodBindings.method_to_byte_array == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_to_byte_array")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("sort")
 	defer methodName15.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_sort")
 	globalPackedVector3ArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedVector3ArrayMethodBindings.method_sort == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_sort")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName16.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_bsearch")
 	globalPackedVector3ArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 219263630)
+	if globalPackedVector3ArrayMethodBindings.method_bsearch == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_bsearch")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_duplicate")
 	globalPackedVector3ArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 2754175465)
+	if globalPackedVector3ArrayMethodBindings.method_duplicate == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_duplicate")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("find")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_find")
 	globalPackedVector3ArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 3718155780)
+	if globalPackedVector3ArrayMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_find")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName19.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_rfind")
 	globalPackedVector3ArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 3718155780)
+	if globalPackedVector3ArrayMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_rfind")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("count")
 	defer methodName20.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_count")
 	globalPackedVector3ArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 194580386)
+	if globalPackedVector3ArrayMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_count")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalPackedVector3ArrayMethodBindings.indexed_setter")
 	globalPackedVector3ArrayMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY)
 	log.Debug("globalPackedVector3ArrayMethodBindings.indexed_getter")
@@ -34905,90 +37313,159 @@ func packedColorArrayInitConstructorBindings() {
 func packedColorArrayInitMethodBindings() {
 	log.Debug("packedColorArrayInitMethodBindings called")
 
+	missingMethods := make([]string, 0, 21)
+
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_size")
 	globalPackedColorArrayMethodBindings.method_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName0.AsGDExtensionStringNamePtr(), 3173160232)
+	if globalPackedColorArrayMethodBindings.method_size == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_size")
+	}
 	methodName1 := NewStringNameWithLatin1Chars("is_empty")
 	defer methodName1.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_is_empty")
 	globalPackedColorArrayMethodBindings.method_is_empty = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName1.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalPackedColorArrayMethodBindings.method_is_empty == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_is_empty")
+	}
 	methodName2 := NewStringNameWithLatin1Chars("set")
 	defer methodName2.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_set")
 	globalPackedColorArrayMethodBindings.method_set = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName2.AsGDExtensionStringNamePtr(), 1444096570)
+	if globalPackedColorArrayMethodBindings.method_set == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_set")
+	}
 	methodName3 := NewStringNameWithLatin1Chars("push_back")
 	defer methodName3.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_push_back")
 	globalPackedColorArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName3.AsGDExtensionStringNamePtr(), 1007858200)
+	if globalPackedColorArrayMethodBindings.method_push_back == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_push_back")
+	}
 	methodName4 := NewStringNameWithLatin1Chars("append")
 	defer methodName4.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_append")
 	globalPackedColorArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 1007858200)
+	if globalPackedColorArrayMethodBindings.method_append == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_append")
+	}
 	methodName5 := NewStringNameWithLatin1Chars("append_array")
 	defer methodName5.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_append_array")
 	globalPackedColorArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 798822497)
+	if globalPackedColorArrayMethodBindings.method_append_array == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_append_array")
+	}
 	methodName6 := NewStringNameWithLatin1Chars("remove_at")
 	defer methodName6.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_remove_at")
 	globalPackedColorArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 2823966027)
+	if globalPackedColorArrayMethodBindings.method_remove_at == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_remove_at")
+	}
 	methodName7 := NewStringNameWithLatin1Chars("insert")
 	defer methodName7.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_insert")
 	globalPackedColorArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 785289703)
+	if globalPackedColorArrayMethodBindings.method_insert == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_insert")
+	}
 	methodName8 := NewStringNameWithLatin1Chars("fill")
 	defer methodName8.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_fill")
 	globalPackedColorArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 3730314301)
+	if globalPackedColorArrayMethodBindings.method_fill == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_fill")
+	}
 	methodName9 := NewStringNameWithLatin1Chars("resize")
 	defer methodName9.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_resize")
 	globalPackedColorArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 848867239)
+	if globalPackedColorArrayMethodBindings.method_resize == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_resize")
+	}
 	methodName10 := NewStringNameWithLatin1Chars("clear")
 	defer methodName10.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_clear")
 	globalPackedColorArrayMethodBindings.method_clear = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedColorArrayMethodBindings.method_clear == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_clear")
+	}
 	methodName11 := NewStringNameWithLatin1Chars("has")
 	defer methodName11.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_has")
 	globalPackedColorArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 3167426256)
+	if globalPackedColorArrayMethodBindings.method_has == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_has")
+	}
 	methodName12 := NewStringNameWithLatin1Chars("reverse")
 	defer methodName12.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_reverse")
 	globalPackedColorArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedColorArrayMethodBindings.method_reverse == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_reverse")
+	}
 	methodName13 := NewStringNameWithLatin1Chars("slice")
 	defer methodName13.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_slice")
 	globalPackedColorArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 2451797139)
+	if globalPackedColorArrayMethodBindings.method_slice == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_slice")
+	}
 	methodName14 := NewStringNameWithLatin1Chars("to_byte_array")
 	defer methodName14.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_to_byte_array")
 	globalPackedColorArrayMethodBindings.method_to_byte_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 247621236)
+	if globalPackedColorArrayMethodBindings.method_to_byte_array == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_to_byte_array")
+	}
 	methodName15 := NewStringNameWithLatin1Chars("sort")
 	defer methodName15.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_sort")
 	globalPackedColorArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalPackedColorArrayMethodBindings.method_sort == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_sort")
+	}
 	methodName16 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName16.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_bsearch")
 	globalPackedColorArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 314143821)
+	if globalPackedColorArrayMethodBindings.method_bsearch == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_bsearch")
+	}
 	methodName17 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_duplicate")
 	globalPackedColorArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 1011903421)
+	if globalPackedColorArrayMethodBindings.method_duplicate == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_duplicate")
+	}
 	methodName18 := NewStringNameWithLatin1Chars("find")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_find")
 	globalPackedColorArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 3156095363)
+	if globalPackedColorArrayMethodBindings.method_find == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_find")
+	}
 	methodName19 := NewStringNameWithLatin1Chars("rfind")
 	defer methodName19.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_rfind")
 	globalPackedColorArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 3156095363)
+	if globalPackedColorArrayMethodBindings.method_rfind == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_rfind")
+	}
 	methodName20 := NewStringNameWithLatin1Chars("count")
 	defer methodName20.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_count")
 	globalPackedColorArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 1682108616)
+	if globalPackedColorArrayMethodBindings.method_count == nil {
+		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_count")
+	}
+	if len(missingMethods) > 0 {
+		log.Panic("missing method binds", zap.Any("missing", missingMethods))
+	}
+
 	log.Debug("globalPackedColorArrayMethodBindings.indexed_setter")
 	globalPackedColorArrayMethodBindings.indexed_setter = GDExtensionInterface_variant_get_ptr_indexed_setter(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY)
 	log.Debug("globalPackedColorArrayMethodBindings.indexed_getter")

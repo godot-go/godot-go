@@ -62,7 +62,7 @@ func Generate(projectPath string) {
 		panic(err)
 	}
 
-	eapi.Classes = eapi.FilterClasses()
+	eapi.Classes = eapi.FilteredClasses()
 
 	err = GenerateGlobalConstants(projectPath, eapi)
 

@@ -3,6 +3,8 @@ package extensionapiparser
 import (
 	"fmt"
 	"strings"
+
+	"golang.org/x/exp/slices"
 )
 
 type Header struct {
@@ -138,7 +140,7 @@ type BuiltinClass struct {
 	HasDestructor      bool                   `json:"has_destructor"`
 }
 
-func (a BuiltinClass) FilterConstructors() []ClassConstructor {
+func (a BuiltinClass) FilteredConstructors() []ClassConstructor {
 	switch a.Name {
 	case "String":
 		values := make([]ClassConstructor, 0, len(a.Constructors))
@@ -154,6 +156,49 @@ func (a BuiltinClass) FilterConstructors() []ClassConstructor {
 		return values
 	default:
 		return a.Constructors
+	}
+}
+
+func (a BuiltinClass) FilteredMethods() []BuiltInClassMethod {
+	switch a.Name {
+	case "Signal":
+		excludes := []string {
+			"emit",
+		}
+
+		values := make([]BuiltInClassMethod, 0, len(a.Methods))
+
+		for _, m := range a.Methods {
+			if slices.Contains(excludes, m.Name) {
+				continue
+			}
+
+			values = append(values, m)
+		}
+
+		return values
+	case "Callable":
+		excludes := []string {
+			"call",
+			"call_deferred",
+			"rpc",
+			"rpc_id",
+			"bind",
+		}
+
+		values := make([]BuiltInClassMethod, 0, len(a.Methods))
+
+		for _, m := range a.Methods {
+			if slices.Contains(excludes, m.Name) {
+				continue
+			}
+
+			values = append(values, m)
+		}
+
+		return values
+	default:
+		return a.Methods
 	}
 }
 
@@ -199,7 +244,7 @@ type Class struct {
 	Properties     []ClassProperty `json:"properties"`
 }
 
-func (a Class) FilterEnums() []Enum {
+func (a Class) FilteredEnums() []Enum {
 	values := make([]Enum, 0, len(a.Enums))
 
 	for _, e := range a.Enums {
@@ -249,7 +294,6 @@ func (a ExtensionApi) Float64BuiltinClassSize() *BuiltinClassSize {
 
 func (a ExtensionApi) ContainsClassName(name string) bool {
 	for _, c := range a.Classes {
-		// remove editor classes to speed up compilation
 		if c.Name == name {
 			return true
 		}
@@ -258,11 +302,11 @@ func (a ExtensionApi) ContainsClassName(name string) bool {
 	return false
 }
 
-func (a ExtensionApi) FilterClasses() []Class {
+func (a ExtensionApi) FilteredClasses() []Class {
 	values := make([]Class, 0, len(a.Classes))
 
 	for _, c := range a.Classes {
-		// remove editor classes to speed up compilation
+		// TODO: initialize editor clases
 		if !strings.Contains(c.Name, "Editor") {
 			values = append(values, c)
 		}
@@ -271,7 +315,7 @@ func (a ExtensionApi) FilterClasses() []Class {
 	return values
 }
 
-func (a ExtensionApi) FilterBuiltinClasses() []BuiltinClass {
+func (a ExtensionApi) FilteredBuiltinClasses() []BuiltinClass {
 	values := make([]BuiltinClass, 0, len(a.BuiltinClasses))
 
 	for _, c := range a.BuiltinClasses {

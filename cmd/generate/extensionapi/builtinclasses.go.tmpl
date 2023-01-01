@@ -21,6 +21,7 @@ import (
     "unsafe"
 
 	"github.com/godot-go/godot-go/pkg/log"
+	"go.uber.org/zap"
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
@@ -28,7 +29,7 @@ import (
 {{ $sizes := $view.Float64BuiltinClassSize -}}
 
 // built-in classes
-{{ range $i, $c := $view.FilterBuiltinClasses -}}
+{{ range $i, $c := $view.FilteredBuiltinClasses -}}
 
 {{ $enumTypeName := (print "GDEXTENSION_VARIANT_TYPE_" (screamingSnake $c.Name)) -}}
 
@@ -51,7 +52,7 @@ type {{ lowerFirstChar $c.Name }}MethodBindings struct {
     destructor GDExtensionPtrDestructor
     {{ end -}}
 
-    {{ range $j, $mb := $c.Methods -}}
+    {{ range $j, $mb := $c.FilteredMethods -}}
     method_{{ $mb.Name }} GDExtensionPtrBuiltInMethod
     {{ end -}}
 
@@ -100,12 +101,21 @@ func {{ lowerFirstChar $c.Name }}InitConstructorBindings() {
 func {{ lowerFirstChar $c.Name }}InitMethodBindings() {
     log.Debug("{{ lowerFirstChar $c.Name }}InitMethodBindings called")
 
-    {{ range $j, $mb := $c.Methods -}}
+    missingMethods := make([]string, 0, {{ len $c.FilteredMethods }})
+
+    {{ range $j, $mb := $c.FilteredMethods -}}
     methodName{{ $j }} := NewStringNameWithLatin1Chars("{{ $mb.Name }}")
     defer methodName{{ $j }}.Destroy()
     log.Debug("global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }}")
     global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }} = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, {{ $enumTypeName }}, methodName{{ $j }}.AsGDExtensionStringNamePtr(), {{ $mb.Hash }})
+    if global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }} == nil {
+        missingMethods = append(missingMethods, "global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }}")
+    }
     {{ end -}}
+
+    if len(missingMethods) > 0 {
+        log.Panic("missing method binds", zap.Any("missing", missingMethods))
+    }
 
     {{ range $j, $mb := $c.Members -}}
     memberName{{ $j }} := NewStringNameWithLatin1Chars("{{ $mb.Name }}")
@@ -155,7 +165,7 @@ func (c *{{ $c.Name }}) ptr() GDExtensionConstTypePtr {
 }
 
 // constructors
-{{ range $j, $con := $c.FilterConstructors -}}
+{{ range $j, $con := $c.FilteredConstructors -}}
 
 // New{{ $c.Name }}, index: {{ $con.Index }}
 func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arguments -}}{{ upperFirstChar (goArgumentType $arg.Type) }}{{- end -}}{{- end -}}(
@@ -202,7 +212,7 @@ func (cx *{{ $c.Name }}) Destroy() {
 {{ end }}
 
 // methods
-{{ range $j, $m := $c.Methods -}}
+{{ range $j, $m := $c.FilteredMethods -}}
 {{ $fnReturnType := goReturnType $m.ReturnType }}
 {{ $hasSomeArguments := (or $m.Arguments $m.IsVararg) }}
 /* {{ goMethodName $m.Name }} : {{ $m.Name }}
@@ -340,11 +350,11 @@ func (cx *{{ $c.Name }}) {{ upperFirstChar (getOperatorIdName $op.Name) }}{{ wit
 {{ end -}}
 
 func builtinClassesInitBindings() {
-{{ range $i, $c := $view.FilterBuiltinClasses -}}
+{{ range $i, $c := $view.FilteredBuiltinClasses -}}
     {{ lowerFirstChar $c.Name }}InitConstructorBindings()
 {{ end -}}
 
-{{ range $i, $c := $view.FilterBuiltinClasses -}}
+{{ range $i, $c := $view.FilteredBuiltinClasses -}}
     {{ lowerFirstChar $c.Name }}InitMethodBindings()
 {{ end -}}
 }

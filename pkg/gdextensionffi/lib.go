@@ -118,6 +118,11 @@ func NewGDExtensionClassMethodInfo(
 }
 
 func (m *GDExtensionClassMethodInfo) Destroy(gdnInterface *GDExtensionInterface) {
+
+	stringNameDestructor := (GDExtensionPtrDestructor)(GDExtensionInterface_variant_get_ptr_destructor(gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME))
+
+	CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(m.name))
+
 	cm := (*C.GDExtensionClassMethodInfo)(m)
 
 	if cm != nil {

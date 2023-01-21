@@ -8512,6 +8512,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_Resource(void *
 
 
 
+void *cgo_gdextension_class_binding_create_callback_ResourceFormatImporterSaver(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("ResourceFormatImporterSaver", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_ResourceFormatImporterSaver(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("ResourceFormatImporterSaver", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_ResourceFormatImporterSaver(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("ResourceFormatImporterSaver", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_ResourceFormatLoader(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("ResourceFormatLoader", p_token, p_instance);
@@ -9362,125 +9379,6 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModific
 
 
 
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3D(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingCreate("SkeletonModification3D", p_token, p_instance);
-}
-
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3D(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDExtensionBindingFree("SkeletonModification3D", p_token, p_instance, p_binding);
-}
-
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingReference("SkeletonModification3D", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DCCDIK(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DCCDIK", p_token, p_instance);
-}
-
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DCCDIK(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDExtensionBindingFree("SkeletonModification3DCCDIK", p_token, p_instance, p_binding);
-}
-
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DCCDIK(void *p_token, void *p_instance, GDExtensionBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingReference("SkeletonModification3DCCDIK", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DFABRIK(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DFABRIK", p_token, p_instance);
-}
-
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DFABRIK(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDExtensionBindingFree("SkeletonModification3DFABRIK", p_token, p_instance, p_binding);
-}
-
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DFABRIK(void *p_token, void *p_instance, GDExtensionBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingReference("SkeletonModification3DFABRIK", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DJiggle(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DJiggle", p_token, p_instance);
-}
-
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DJiggle(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDExtensionBindingFree("SkeletonModification3DJiggle", p_token, p_instance, p_binding);
-}
-
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DJiggle(void *p_token, void *p_instance, GDExtensionBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingReference("SkeletonModification3DJiggle", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DLookAt(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DLookAt", p_token, p_instance);
-}
-
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DLookAt(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDExtensionBindingFree("SkeletonModification3DLookAt", p_token, p_instance, p_binding);
-}
-
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DLookAt(void *p_token, void *p_instance, GDExtensionBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingReference("SkeletonModification3DLookAt", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DStackHolder(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DStackHolder", p_token, p_instance);
-}
-
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DStackHolder(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDExtensionBindingFree("SkeletonModification3DStackHolder", p_token, p_instance, p_binding);
-}
-
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DStackHolder(void *p_token, void *p_instance, GDExtensionBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingReference("SkeletonModification3DStackHolder", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DTwoBoneIK(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingCreate("SkeletonModification3DTwoBoneIK", p_token, p_instance);
-}
-
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DTwoBoneIK(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDExtensionBindingFree("SkeletonModification3DTwoBoneIK", p_token, p_instance, p_binding);
-}
-
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DTwoBoneIK(void *p_token, void *p_instance, GDExtensionBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingReference("SkeletonModification3DTwoBoneIK", p_token, p_instance, p_reference);
-}
-
-
-
 void *cgo_gdextension_class_binding_create_callback_SkeletonModificationStack2D(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("SkeletonModificationStack2D", p_token, p_instance);
@@ -9494,23 +9392,6 @@ void cgo_gdextension_class_binding_free_callback_SkeletonModificationStack2D(voi
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModificationStack2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("SkeletonModificationStack2D", p_token, p_instance, p_reference);
-}
-
-
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModificationStack3D(void *p_token, void *p_instance) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingCreate("SkeletonModificationStack3D", p_token, p_instance);
-}
-
-void cgo_gdextension_class_binding_free_callback_SkeletonModificationStack3D(void *p_token, void *p_instance, void *p_binding) {
-	printStacktrace();
-	GoCallback_GDExtensionBindingFree("SkeletonModificationStack3D", p_token, p_instance, p_binding);
-}
-
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModificationStack3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
-	printStacktrace();
-	return GoCallback_GDExtensionBindingReference("SkeletonModificationStack3D", p_token, p_instance, p_reference);
 }
 
 
@@ -12690,6 +12571,74 @@ void cgo_gdextension_class_binding_free_callback_VisualShaderNodeTransformVecMul
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_VisualShaderNodeTransformVecMult(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("VisualShaderNodeTransformVecMult", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntConstant(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeUIntConstant", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntConstant(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeUIntConstant", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntConstant(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeUIntConstant", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntFunc(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeUIntFunc", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntFunc(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeUIntFunc", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntFunc(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeUIntFunc", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntOp(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeUIntOp", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntOp(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeUIntOp", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntOp(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeUIntOp", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntParameter(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("VisualShaderNodeUIntParameter", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntParameter(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("VisualShaderNodeUIntParameter", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntParameter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("VisualShaderNodeUIntParameter", p_token, p_instance, p_reference);
 }
 
 

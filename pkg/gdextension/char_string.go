@@ -24,6 +24,7 @@ func NewStringNameWithLatin1Chars(content string) StringName {
 	log.Debug("create string name",
 		zap.Uintptr("gdnInterface", uintptr(unsafe.Pointer(internal.gdnInterface))),
 		zap.Uintptr("ptr", uintptr(unsafe.Pointer(ptr))),
+		zap.Any("text", content),
 	)
 
 	GDExtensionInterface_string_new_with_latin1_chars(internal.gdnInterface, ptr, content)

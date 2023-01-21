@@ -269,9 +269,13 @@ func GenerateBuiltinClasses(projectPath string, extensionApi extensionapiparser.
 			"goArgumentType":           goArgumentType,
 			"goHasArgumentTypeEncoder": goHasArgumentTypeEncoder,
 			"goReturnType":             goReturnType,
+			"goDecodeNumberType":       goDecodeNumberType,
 			"getOperatorIdName":        getOperatorIdName,
 			"isCopyConstructor":        isCopyConstructor,
 			"typeHasPtr":               typeHasPtr,
+			"goEncoder":                goEncoder,
+			"goEncodeArg":              goEncodeArg,
+			"goEncodeIsReference":      goEncodeIsReference,
 		}).
 		Parse(builtinClassesText)
 
@@ -453,6 +457,9 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 			"goClassEnumName":      goClassEnumName,
 			"goClassStructName":    goClassStructName,
 			"goClassInterfaceName": goClassInterfaceName,
+			"goEncoder":            goEncoder,
+			"goEncodeArg":          goEncodeArg,
+			"goEncodeIsReference":  goEncodeIsReference,
 		}).
 		Parse(classesText)
 

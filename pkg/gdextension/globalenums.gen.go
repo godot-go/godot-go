@@ -375,21 +375,26 @@ const (
 type MouseButton int
 
 const (
-	MOUSE_BUTTON_NONE          MouseButton = 0
-	MOUSE_BUTTON_LEFT                      = 1
-	MOUSE_BUTTON_RIGHT                     = 2
-	MOUSE_BUTTON_MIDDLE                    = 3
-	MOUSE_BUTTON_WHEEL_UP                  = 4
-	MOUSE_BUTTON_WHEEL_DOWN                = 5
-	MOUSE_BUTTON_WHEEL_LEFT                = 6
-	MOUSE_BUTTON_WHEEL_RIGHT               = 7
-	MOUSE_BUTTON_XBUTTON1                  = 8
-	MOUSE_BUTTON_XBUTTON2                  = 9
-	MOUSE_BUTTON_MASK_LEFT                 = 1
-	MOUSE_BUTTON_MASK_RIGHT                = 2
-	MOUSE_BUTTON_MASK_MIDDLE               = 4
-	MOUSE_BUTTON_MASK_XBUTTON1             = 128
-	MOUSE_BUTTON_MASK_XBUTTON2             = 256
+	MOUSE_BUTTON_NONE        MouseButton = 0
+	MOUSE_BUTTON_LEFT                    = 1
+	MOUSE_BUTTON_RIGHT                   = 2
+	MOUSE_BUTTON_MIDDLE                  = 3
+	MOUSE_BUTTON_WHEEL_UP                = 4
+	MOUSE_BUTTON_WHEEL_DOWN              = 5
+	MOUSE_BUTTON_WHEEL_LEFT              = 6
+	MOUSE_BUTTON_WHEEL_RIGHT             = 7
+	MOUSE_BUTTON_XBUTTON1                = 8
+	MOUSE_BUTTON_XBUTTON2                = 9
+)
+
+type MouseButtonMask int
+
+const (
+	MOUSE_BUTTON_MASK_LEFT        MouseButtonMask = 1
+	MOUSE_BUTTON_MASK_RIGHT                       = 2
+	MOUSE_BUTTON_MASK_MIDDLE                      = 4
+	MOUSE_BUTTON_MASK_MB_XBUTTON1                 = 128
+	MOUSE_BUTTON_MASK_MB_XBUTTON2                 = 256
 )
 
 type JoyButton int
@@ -541,27 +546,19 @@ const (
 	PROPERTY_HINT_OBJECT_ID                             = 22
 	PROPERTY_HINT_TYPE_STRING                           = 23
 	PROPERTY_HINT_NODE_PATH_TO_EDITED_NODE              = 24
-	PROPERTY_HINT_METHOD_OF_VARIANT_TYPE                = 25
-	PROPERTY_HINT_METHOD_OF_BASE_TYPE                   = 26
-	PROPERTY_HINT_METHOD_OF_INSTANCE                    = 27
-	PROPERTY_HINT_METHOD_OF_SCRIPT                      = 28
-	PROPERTY_HINT_PROPERTY_OF_VARIANT_TYPE              = 29
-	PROPERTY_HINT_PROPERTY_OF_BASE_TYPE                 = 30
-	PROPERTY_HINT_PROPERTY_OF_INSTANCE                  = 31
-	PROPERTY_HINT_PROPERTY_OF_SCRIPT                    = 32
-	PROPERTY_HINT_OBJECT_TOO_BIG                        = 33
-	PROPERTY_HINT_NODE_PATH_VALID_TYPES                 = 34
-	PROPERTY_HINT_SAVE_FILE                             = 35
-	PROPERTY_HINT_GLOBAL_SAVE_FILE                      = 36
-	PROPERTY_HINT_INT_IS_OBJECTID                       = 37
-	PROPERTY_HINT_INT_IS_POINTER                        = 38
-	PROPERTY_HINT_ARRAY_TYPE                            = 39
-	PROPERTY_HINT_LOCALE_ID                             = 40
-	PROPERTY_HINT_LOCALIZABLE_STRING                    = 41
-	PROPERTY_HINT_NODE_TYPE                             = 42
-	PROPERTY_HINT_HIDE_QUATERNION_EDIT                  = 43
-	PROPERTY_HINT_PASSWORD                              = 44
-	PROPERTY_HINT_MAX                                   = 45
+	PROPERTY_HINT_OBJECT_TOO_BIG                        = 25
+	PROPERTY_HINT_NODE_PATH_VALID_TYPES                 = 26
+	PROPERTY_HINT_SAVE_FILE                             = 27
+	PROPERTY_HINT_GLOBAL_SAVE_FILE                      = 28
+	PROPERTY_HINT_INT_IS_OBJECTID                       = 29
+	PROPERTY_HINT_INT_IS_POINTER                        = 30
+	PROPERTY_HINT_ARRAY_TYPE                            = 31
+	PROPERTY_HINT_LOCALE_ID                             = 32
+	PROPERTY_HINT_LOCALIZABLE_STRING                    = 33
+	PROPERTY_HINT_NODE_TYPE                             = 34
+	PROPERTY_HINT_HIDE_QUATERNION_EDIT                  = 35
+	PROPERTY_HINT_PASSWORD                              = 36
+	PROPERTY_HINT_MAX                                   = 37
 )
 
 type PropertyUsageFlags int
@@ -570,9 +567,9 @@ const (
 	PROPERTY_USAGE_NONE                      PropertyUsageFlags = 0
 	PROPERTY_USAGE_STORAGE                                      = 2
 	PROPERTY_USAGE_EDITOR                                       = 4
-	PROPERTY_USAGE_CHECKABLE                                    = 8
-	PROPERTY_USAGE_CHECKED                                      = 16
-	PROPERTY_USAGE_INTERNATIONALIZED                            = 32
+	PROPERTY_USAGE_INTERNAL                                     = 8
+	PROPERTY_USAGE_CHECKABLE                                    = 16
+	PROPERTY_USAGE_CHECKED                                      = 32
 	PROPERTY_USAGE_GROUP                                        = 64
 	PROPERTY_USAGE_CATEGORY                                     = 128
 	PROPERTY_USAGE_SUBGROUP                                     = 256
@@ -585,7 +582,7 @@ const (
 	PROPERTY_USAGE_SCRIPT_DEFAULT_VALUE                         = 32768
 	PROPERTY_USAGE_CLASS_IS_ENUM                                = 65536
 	PROPERTY_USAGE_NIL_IS_VARIANT                               = 131072
-	PROPERTY_USAGE_INTERNAL                                     = 262144
+	PROPERTY_USAGE_ARRAY                                        = 262144
 	PROPERTY_USAGE_DO_NOT_SHARE_ON_DUPLICATE                    = 524288
 	PROPERTY_USAGE_HIGH_END_GFX                                 = 1048576
 	PROPERTY_USAGE_NODE_PATH_FROM_SCENE_ROOT                    = 2097152
@@ -595,9 +592,7 @@ const (
 	PROPERTY_USAGE_EDITOR_INSTANTIATE_OBJECT                    = 33554432
 	PROPERTY_USAGE_EDITOR_BASIC_SETTING                         = 67108864
 	PROPERTY_USAGE_READ_ONLY                                    = 134217728
-	PROPERTY_USAGE_ARRAY                                        = 268435456
 	PROPERTY_USAGE_DEFAULT                                      = 6
-	PROPERTY_USAGE_DEFAULT_INTL                                 = 38
 	PROPERTY_USAGE_NO_EDITOR                                    = 2
 )
 

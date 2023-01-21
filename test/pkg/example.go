@@ -167,6 +167,64 @@ func (e *Example) TestCastTo() {
 func Example_Ready(inst unsafe.Pointer) {
 	log.Info("Example_Ready called")
 
+	// vector math tests
+	v3 := gdextension.NewVector3WithFloat32Float32Float32(1.1, 2.2, 3.3)
+
+	log.Info("Vector3: Created (1.1, 2.2, 3.3)",
+		zap.Float32("x", v3.MemberGetx()),
+		zap.Float32("y", v3.MemberGety()),
+		zap.Float32("z", v3.MemberGetz()),
+	)
+
+	v3 = v3.Multiply_float(2.0)
+
+	log.Info("Vector3: Multiply Vector3 by 2",
+		zap.Float32("x", v3.MemberGetx()),
+		zap.Float32("y", v3.MemberGety()),
+		zap.Float32("z", v3.MemberGetz()),
+	)
+
+	v3 = v3.Add_Vector3(gdextension.NewVector3WithFloat32Float32Float32(10, 20, 30))
+
+	log.Info("Vector3: Add (1,2,3)",
+		zap.Float32("x", v3.MemberGetx()),
+		zap.Float32("y", v3.MemberGety()),
+		zap.Float32("z", v3.MemberGetz()),
+	)
+
+	v3 = v3.Multiply_Vector3(gdextension.NewVector3WithFloat32Float32Float32(5, 10, 15))
+
+	log.Info("Vector3: Multiply (5,10,15)",
+		zap.Float32("x", v3.MemberGetx()),
+		zap.Float32("y", v3.MemberGety()),
+		zap.Float32("z", v3.MemberGetz()),
+	)
+
+	v3 = v3.Subtract_Vector3(gdextension.NewVector3WithFloat32Float32Float32(v3.MemberGetx(), v3.MemberGety(), 0))
+
+	log.Info("Vector3: Substract (x,y,0)",
+		zap.Float32("x", v3.MemberGetx()),
+		zap.Float32("y", v3.MemberGety()),
+		zap.Float32("z", v3.MemberGetz()),
+	)
+
+	v3 = v3.Normalized()
+
+	log.Info("Vector3: Normalized",
+		zap.Float32("x", v3.MemberGetx()),
+		zap.Float32("y", v3.MemberGety()),
+		zap.Float32("z", v3.MemberGetz()),
+	)
+
+	equal := v3.Equal_Vector3(gdextension.NewVector3WithFloat32Float32Float32(0, 0, 1))
+
+	log.Info("Vector3: Equality Check",
+		zap.Float32("x", v3.MemberGetx()),
+		zap.Float32("y", v3.MemberGety()),
+		zap.Float32("z", v3.MemberGetz()),
+		zap.Bool("equal", equal),
+	)
+
 	input := gdextension.GetInputSingleton()
 
 	uiRight := gdextension.NewStringNameWithLatin1Chars("ui_right")

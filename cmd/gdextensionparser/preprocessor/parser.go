@@ -126,11 +126,7 @@ func (d IncludeDirective) Eval(vars PreprocVars) string {
 	return ""
 }
 
-func ParsePreprocessorString(s string) (PreprocessorHeaderFileAST, error) {
-	var (
-		f PreprocessorHeaderFileAST
-	)
-
+func ParsePreprocessorString(s string) (*PreprocessorHeaderFileAST, error) {
 	var preprocessorHeaderFileLexer = MustStateful(Rules{
 		"Root": {
 			{`Ifdef`, `#ifdef[ \t]+[a-zA-Z_][a-zA-Z0-9_]*`, Push("Root")},
@@ -145,23 +141,24 @@ func ParsePreprocessorString(s string) (PreprocessorHeaderFileAST, error) {
 		},
 	})
 
-	parser, err := participle.Build(&f,
+	parser, err := participle.Build[PreprocessorHeaderFileAST](
 		participle.Lexer(preprocessorHeaderFileLexer),
 		participle.Elide("Whitespace", "Comment"),
 		directiveIdent("Ifdef", "Ifndef", "Define"),
-		directiveFilename("Include"))
+		directiveFilename("Include"),
+	)
 
 	if err != nil {
-		return f, err
+		return nil, err
 	}
 
-	err = parser.ParseString("", s, &f)
+	ast, err := parser.ParseString("", s)
 
 	if err != nil {
-		return f, err
+		return nil, err
 	}
 
-	return f, nil
+	return ast, nil
 }
 
 func directiveIdent(types ...string) participle.Option {

@@ -79,6 +79,15 @@ type Argument struct {
 	Meta         string `json:"meta"`
 }
 
+func (a Argument) HasDestroy() bool {
+	switch a.Type {
+	case "String", "StringName":
+		return true
+	}
+
+	return false
+}
+
 type UtilityFunction struct {
 	Name       string     `json:"name"`
 	ReturnType string     `json:"return_type"`

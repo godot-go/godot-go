@@ -21,13 +21,13 @@ TODO
 
 ### Building Godot-Go
 
-**The GDExtension interface isn't currently stable.** In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of Godot 4 beta 10 [snapshot](https://downloads.tuxfamily.org/godotengine/4.0/beta10/).
+**The GDExtension interface isn't currently stable.** In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of Godot 4 beta 13 [snapshot](https://downloads.tuxfamily.org/godotengine/4.0/beta13/).
 
 
-    # generates godot_headers/godot/gdextension_interface.h and godot_headers/extension_api.json:
+    # exports the latest gdextension_interface.h and extension_api.json from the godot binary
     GODOT=/godot_folder_path/bin/godot make update_godot_headers_from_binary
 
-    # code generation from gdextension_interface.h
+    # generates code for wrapping gdextension_interface.h and extension_api.json
     make generate
 
     # build godot-go

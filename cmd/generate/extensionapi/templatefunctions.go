@@ -8,6 +8,7 @@ import (
 
 	"github.com/godot-go/godot-go/cmd/extensionapiparser"
 	"github.com/iancoleman/strcase"
+	"golang.org/x/exp/slices"
 )
 
 var (
@@ -80,6 +81,20 @@ func typeHasPtr(t string) bool {
 	default:
 		return true
 	}
+}
+
+func goDecodeNumberType(t string) string {
+	switch t {
+	case "uint","int","uint8","int8","uint16","int16","uint32","int32","uint64":
+		return "int64"
+	case "float32", "float64":
+		return "float64"
+	default:
+		// log.Panic("unhandled number type", zap.String("type", t))
+		return t
+	}
+
+	panic("unhandled number type")
 }
 
 func goArgumentType(t string) string {
@@ -382,4 +397,60 @@ func needsCopyInsteadOfMove(typeName string) bool {
 
 func isCopyConstructor(typeName string, c extensionapiparser.ClassConstructor) bool {
 	return len(c.Arguments) == 1 && c.Arguments[0].Type == typeName
+}
+
+func goEncoder(goType string) string {
+	if goType == "Object" {
+		return ""
+	}
+
+	return upperFirstChar(goType) + "Encoder"
+}
+
+func goEncodeArg(goType string, argName string) string {
+	switch goType {
+	case "Variant", "Vector3", "Vector3i", "Vector4", "Vector4i",
+		"Plane", "AABB", "Basis", "Transform3", "Projection", "Color",
+		"Transform3D":
+		return fmt.Sprintf("&%s", argName)
+	default:
+		return argName
+	}
+}
+
+var referenceEncoderTypes = []string{
+	"Vector3",
+	"Vector3i",
+	"Transform2D",
+	"Vector4",
+	"Vector4i",
+	"Plane",
+	"Quaternion",
+	"AABB",
+	"Basis",
+	"Transform3D",
+	"Projection",
+	"Color",
+	"StringName",
+	"NodePath",
+	"RID",
+	"Callable",
+	"Signal",
+	"Dictionary",
+	"Array",
+	"PackedByteArray",
+	"PackedInt32Array",
+	"PackedInt64Array",
+	"PackedFloat32Array",
+	"PackedFloat64Array",
+	"PackedStringArray",
+	"PackedVector2Array",
+	"PackedVector3Array",
+	"PackedColorArray",
+	"Variant",
+	"Object",
+}
+
+func goEncodeIsReference(goType string) bool {
+	return slices.Contains(referenceEncoderTypes, goType)
 }

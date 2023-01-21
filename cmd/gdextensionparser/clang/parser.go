@@ -84,14 +84,14 @@ type EnumValue struct {
 }
 
 type TypedefAlias struct {
-	Type Type   `parser:" 'typedef' @@ "`
-	Name string `parser:" @Ident       "`
+	Type PrimativeType `parser:" 'typedef' @@ "`
+	Name string        `parser:" @Ident       "`
 }
 
 type TypedefFunction struct {
-	ReturnType Type       `parser:" 'typedef' @@                "`
-	Name       string     `parser:" '(' '*' @Ident ')'          "`
-	Arguments  []Argument `parser:" '(' ( @@ ( ',' @@ )* )? ')' "`
+	ReturnType PrimativeType `parser:" 'typedef' @@                "`
+	Name       string        `parser:" '(' '*' @Ident ')'          "`
+	Arguments  []Argument    `parser:" '(' ( @@ ( ',' @@ )* )? ')' "`
 }
 
 type TypedefStruct struct {
@@ -117,17 +117,46 @@ type StructField struct {
 }
 
 type StructVariable struct {
-	Type Type   `parser:" @@     "`
-	Name string `parser:" @Ident "`
+	Type PrimativeType `parser:" @@     "`
+	Name string        `parser:" @Ident "`
 }
 
-type Type struct {
+type FunctionType struct {
+	ReturnType PrimativeType `parser:" @@                          "`
+	Name       string        `parser:" '(' '*' @Ident ')'          "`
+	Arguments  []Argument    `parser:" '(' ( @@ ( ',' @@ )* )? ')' "`
+}
+
+func (t FunctionType) String() string {
+	sb := strings.Builder{}
+
+	sb.WriteString(t.ReturnType.String())
+
+	sb.WriteString("(*")
+
+	sb.WriteString(t.Name)
+
+	sb.WriteString(")(")
+
+	for i:=0; i<len(t.Arguments); i++ {
+		if i > 0 {
+			sb.WriteString(",")
+		}
+		sb.WriteString(t.Arguments[i].Type.Primative.String())
+	}
+
+	sb.WriteString(")")
+
+	return sb.String()
+}
+
+type PrimativeType struct {
 	IsConst   bool   `parser:" @'const'? "`
 	Name      string `parser:" @Ident    "`
 	IsPointer bool   `parser:" @'*'?     "`
 }
 
-func (t Type) String() string {
+func (t PrimativeType) String() string {
 	sb := strings.Builder{}
 
 	if t.IsConst {
@@ -143,11 +172,26 @@ func (t Type) String() string {
 	return sb.String()
 }
 
+type Type struct {
+	Function  *FunctionType  `parser:" ( @@   "`
+	Primative *PrimativeType `parser:" | @@ ) "`
+}
+
+func (t Type) String() string {
+	if t.Primative != nil {
+		return t.Primative.String()
+	} else if t.Function != nil {
+		return t.Function.String()
+	}
+
+	panic("unhandled type")
+}
+
 type StructFunction struct {
-	ReturnType Type       `parser:" @@                     "`
-	Name       string     `parser:" '(' '*' @Ident ')'     "`
-	Arguments  []Argument `parser:" '(' @@ ( ',' @@ )* ')' "`
-	Comment    string     `parser:" @Comment?              "`
+	ReturnType PrimativeType `parser:" @@                     "`
+	Name       string        `parser:" '(' '*' @Ident ')'     "`
+	Arguments  []Argument    `parser:" '(' @@ ( ',' @@ )* ')' "`
+	Comment    string        `parser:" @Comment?              "`
 }
 
 type Argument struct {
@@ -156,10 +200,6 @@ type Argument struct {
 }
 
 func ParseCString(s string) (CHeaderFileAST, error) {
-	var (
-		f CHeaderFileAST
-	)
-
 	var headerFileLexer = MustStateful(Rules{
 		"Root": {
 			{`Typedef`, `typedef`, nil},
@@ -181,22 +221,21 @@ func ParseCString(s string) (CHeaderFileAST, error) {
 		},
 	})
 
-	parser, err := participle.Build(
-		&CHeaderFileAST{},
+	parser, err := participle.Build[CHeaderFileAST](
 		participle.Lexer(headerFileLexer),
 		participle.UseLookahead(4),
 		participle.Elide("Whitespace", "Comment"),
 	)
 
 	if err != nil {
-		return f, err
+		return CHeaderFileAST{}, err
 	}
 
-	err = parser.ParseString("", s, &f)
+	ast, err := parser.ParseString("", s)
 
 	if err != nil {
-		return f, err
+		return CHeaderFileAST{}, err
 	}
 
-	return f, nil
+	return *ast, nil
 }

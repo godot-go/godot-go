@@ -39,13 +39,13 @@
 			{{ $f.ReturnType.String }} cgo_callfn_{{ $t.Name }}_{{ $f.Name }}(
 				{{- "const" }} {{ $t.Name }} * p_struct
 				{{- range $k, $arg := $f.Arguments -}}
-					, {{ $arg.Type.String }} {{ $arg.Name -}}
+					, {{ if $arg.Type.Primative }}{{ $arg.Type.String }} {{ $arg.Name -}}{{ else }}{{ $arg.Type.Function.String }}{{ end }}
 				{{- end -}}
 			) {
 				{{ if ne "void" $f.ReturnType.String -}} return {{- end }} p_struct->{{ $f.Name }}(
 					{{- range $k, $arg := $f.Arguments }}
 						{{- if gt $k 0 }}, {{ end }}
-						{{- $arg.Name }}
+						{{ if $arg.Type.Primative }}{{- $arg.Name }}{{ else }}{{ $arg.Type.Function.Name}}{{ end }}
 					{{- end -}}
 				);
 			}

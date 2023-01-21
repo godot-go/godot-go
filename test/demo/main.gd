@@ -48,7 +48,8 @@ func _ready():
 	prints("  CONSTANT_WITHOUT_ENUM", $Example.CONSTANT_WITHOUT_ENUM)
 
 	prints("Others")
-	prints("  CastTo", $Example.test_cast_to())
+	prints("  CastTo")
+	$Example.test_cast_to()
 
 	prints("app is ready CI=", OS.get_environment("CI"))
 

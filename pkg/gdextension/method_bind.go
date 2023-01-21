@@ -227,10 +227,13 @@ func (b *MethodBind) CallStatic(
 		r_return GDExtensionVariantPtr = (GDExtensionVariantPtr)(vReturn.ptr())
 	)
 
+	snName := NewStringNameWithLatin1Chars(b.Name)
+	defer snName.Destroy()
+
 	GDExtensionInterface_variant_call_static(
 		internal.gdnInterface,
 		vt,
-		NewStringNameWithLatin1Chars(b.Name).AsGDExtensionStringNamePtr(),
+		snName.AsGDExtensionStringNamePtr(),
 		p_args,
 		p_argument_count,
 		r_return,

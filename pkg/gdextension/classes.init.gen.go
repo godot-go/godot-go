@@ -3022,6 +3022,12 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_Resource),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_Resource),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceFormatImporterSaver",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceFormatImporterSaver),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceFormatImporterSaver),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceFormatImporterSaver),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceFormatLoader",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceFormatLoader),
@@ -3322,59 +3328,11 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SkeletonModification2DTwoBoneIK),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SkeletonModification2DTwoBoneIK),
 		))
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SkeletonModification3D",
-		NewGDExtensionInstanceBindingCallbacks(
-			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SkeletonModification3D),
-			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SkeletonModification3D),
-			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SkeletonModification3D),
-		))
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SkeletonModification3DCCDIK",
-		NewGDExtensionInstanceBindingCallbacks(
-			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SkeletonModification3DCCDIK),
-			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SkeletonModification3DCCDIK),
-			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SkeletonModification3DCCDIK),
-		))
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SkeletonModification3DFABRIK",
-		NewGDExtensionInstanceBindingCallbacks(
-			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SkeletonModification3DFABRIK),
-			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SkeletonModification3DFABRIK),
-			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SkeletonModification3DFABRIK),
-		))
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SkeletonModification3DJiggle",
-		NewGDExtensionInstanceBindingCallbacks(
-			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SkeletonModification3DJiggle),
-			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SkeletonModification3DJiggle),
-			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SkeletonModification3DJiggle),
-		))
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SkeletonModification3DLookAt",
-		NewGDExtensionInstanceBindingCallbacks(
-			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SkeletonModification3DLookAt),
-			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SkeletonModification3DLookAt),
-			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SkeletonModification3DLookAt),
-		))
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SkeletonModification3DStackHolder",
-		NewGDExtensionInstanceBindingCallbacks(
-			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SkeletonModification3DStackHolder),
-			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SkeletonModification3DStackHolder),
-			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SkeletonModification3DStackHolder),
-		))
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SkeletonModification3DTwoBoneIK",
-		NewGDExtensionInstanceBindingCallbacks(
-			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SkeletonModification3DTwoBoneIK),
-			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SkeletonModification3DTwoBoneIK),
-			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SkeletonModification3DTwoBoneIK),
-		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SkeletonModificationStack2D",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SkeletonModificationStack2D),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SkeletonModificationStack2D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SkeletonModificationStack2D),
-		))
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SkeletonModificationStack3D",
-		NewGDExtensionInstanceBindingCallbacks(
-			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SkeletonModificationStack3D),
-			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SkeletonModificationStack3D),
-			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SkeletonModificationStack3D),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SkeletonProfile",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -4498,6 +4456,30 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VisualShaderNodeTransformVecMult),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VisualShaderNodeTransformVecMult),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VisualShaderNodeUIntConstant",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntConstant),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntConstant),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntConstant),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VisualShaderNodeUIntFunc",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntFunc),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntFunc),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntFunc),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VisualShaderNodeUIntOp",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntOp),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntOp),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntOp),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VisualShaderNodeUIntParameter",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntParameter),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntParameter),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntParameter),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VisualShaderNodeUVFunc",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisualShaderNodeUVFunc),
@@ -5305,6 +5287,7 @@ func init() {
 	gdNativeConstructors.Set("RenderingDevice", NewGDExtensionClassFromRenderingDeviceOwner)
 	gdNativeConstructors.Set("RenderingServer", NewGDExtensionClassFromRenderingServerOwner)
 	gdNativeConstructors.Set("Resource", NewGDExtensionClassFromResourceOwner)
+	gdNativeConstructors.Set("ResourceFormatImporterSaver", NewGDExtensionClassFromResourceFormatImporterSaverOwner)
 	gdNativeConstructors.Set("ResourceFormatLoader", NewGDExtensionClassFromResourceFormatLoaderOwner)
 	gdNativeConstructors.Set("ResourceFormatSaver", NewGDExtensionClassFromResourceFormatSaverOwner)
 	gdNativeConstructors.Set("ResourceImporter", NewGDExtensionClassFromResourceImporterOwner)
@@ -5355,15 +5338,7 @@ func init() {
 	gdNativeConstructors.Set("SkeletonModification2DPhysicalBones", NewGDExtensionClassFromSkeletonModification2DPhysicalBonesOwner)
 	gdNativeConstructors.Set("SkeletonModification2DStackHolder", NewGDExtensionClassFromSkeletonModification2DStackHolderOwner)
 	gdNativeConstructors.Set("SkeletonModification2DTwoBoneIK", NewGDExtensionClassFromSkeletonModification2DTwoBoneIKOwner)
-	gdNativeConstructors.Set("SkeletonModification3D", NewGDExtensionClassFromSkeletonModification3DOwner)
-	gdNativeConstructors.Set("SkeletonModification3DCCDIK", NewGDExtensionClassFromSkeletonModification3DCCDIKOwner)
-	gdNativeConstructors.Set("SkeletonModification3DFABRIK", NewGDExtensionClassFromSkeletonModification3DFABRIKOwner)
-	gdNativeConstructors.Set("SkeletonModification3DJiggle", NewGDExtensionClassFromSkeletonModification3DJiggleOwner)
-	gdNativeConstructors.Set("SkeletonModification3DLookAt", NewGDExtensionClassFromSkeletonModification3DLookAtOwner)
-	gdNativeConstructors.Set("SkeletonModification3DStackHolder", NewGDExtensionClassFromSkeletonModification3DStackHolderOwner)
-	gdNativeConstructors.Set("SkeletonModification3DTwoBoneIK", NewGDExtensionClassFromSkeletonModification3DTwoBoneIKOwner)
 	gdNativeConstructors.Set("SkeletonModificationStack2D", NewGDExtensionClassFromSkeletonModificationStack2DOwner)
-	gdNativeConstructors.Set("SkeletonModificationStack3D", NewGDExtensionClassFromSkeletonModificationStack3DOwner)
 	gdNativeConstructors.Set("SkeletonProfile", NewGDExtensionClassFromSkeletonProfileOwner)
 	gdNativeConstructors.Set("SkeletonProfileHumanoid", NewGDExtensionClassFromSkeletonProfileHumanoidOwner)
 	gdNativeConstructors.Set("Skin", NewGDExtensionClassFromSkinOwner)
@@ -5551,6 +5526,10 @@ func init() {
 	gdNativeConstructors.Set("VisualShaderNodeTransformOp", NewGDExtensionClassFromVisualShaderNodeTransformOpOwner)
 	gdNativeConstructors.Set("VisualShaderNodeTransformParameter", NewGDExtensionClassFromVisualShaderNodeTransformParameterOwner)
 	gdNativeConstructors.Set("VisualShaderNodeTransformVecMult", NewGDExtensionClassFromVisualShaderNodeTransformVecMultOwner)
+	gdNativeConstructors.Set("VisualShaderNodeUIntConstant", NewGDExtensionClassFromVisualShaderNodeUIntConstantOwner)
+	gdNativeConstructors.Set("VisualShaderNodeUIntFunc", NewGDExtensionClassFromVisualShaderNodeUIntFuncOwner)
+	gdNativeConstructors.Set("VisualShaderNodeUIntOp", NewGDExtensionClassFromVisualShaderNodeUIntOpOwner)
+	gdNativeConstructors.Set("VisualShaderNodeUIntParameter", NewGDExtensionClassFromVisualShaderNodeUIntParameterOwner)
 	gdNativeConstructors.Set("VisualShaderNodeUVFunc", NewGDExtensionClassFromVisualShaderNodeUVFuncOwner)
 	gdNativeConstructors.Set("VisualShaderNodeUVPolarCoord", NewGDExtensionClassFromVisualShaderNodeUVPolarCoordOwner)
 	gdNativeConstructors.Set("VisualShaderNodeVarying", NewGDExtensionClassFromVisualShaderNodeVaryingOwner)

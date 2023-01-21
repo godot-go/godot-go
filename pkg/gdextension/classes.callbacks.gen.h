@@ -5017,6 +5017,16 @@ extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_toke
 extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
 extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
 
+void *cgo_gdextension_class_binding_create_callback_ResourceFormatImporterSaver(void *p_token, void *p_instance);
+void cgo_gdextension_class_binding_free_callback_ResourceFormatImporterSaver(void *p_token, void *p_instance, void *p_binding);
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_ResourceFormatImporterSaver(void *p_token, void *p_instance, GDExtensionBool p_reference);
+
+// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_ResourceFormatImporterSaver;
+
+extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
+extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
+extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
+
 void *cgo_gdextension_class_binding_create_callback_ResourceFormatLoader(void *p_token, void *p_instance);
 void cgo_gdextension_class_binding_free_callback_ResourceFormatLoader(void *p_token, void *p_instance, void *p_binding);
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_ResourceFormatLoader(void *p_token, void *p_instance, GDExtensionBool p_reference);
@@ -5517,91 +5527,11 @@ extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_toke
 extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
 extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
 
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3D(void *p_token, void *p_instance);
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3D(void *p_token, void *p_instance, void *p_binding);
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3D(void *p_token, void *p_instance, GDExtensionBool p_reference);
-
-// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_SkeletonModification3D;
-
-extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DCCDIK(void *p_token, void *p_instance);
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DCCDIK(void *p_token, void *p_instance, void *p_binding);
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DCCDIK(void *p_token, void *p_instance, GDExtensionBool p_reference);
-
-// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_SkeletonModification3DCCDIK;
-
-extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DFABRIK(void *p_token, void *p_instance);
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DFABRIK(void *p_token, void *p_instance, void *p_binding);
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DFABRIK(void *p_token, void *p_instance, GDExtensionBool p_reference);
-
-// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_SkeletonModification3DFABRIK;
-
-extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DJiggle(void *p_token, void *p_instance);
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DJiggle(void *p_token, void *p_instance, void *p_binding);
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DJiggle(void *p_token, void *p_instance, GDExtensionBool p_reference);
-
-// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_SkeletonModification3DJiggle;
-
-extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DLookAt(void *p_token, void *p_instance);
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DLookAt(void *p_token, void *p_instance, void *p_binding);
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DLookAt(void *p_token, void *p_instance, GDExtensionBool p_reference);
-
-// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_SkeletonModification3DLookAt;
-
-extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DStackHolder(void *p_token, void *p_instance);
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DStackHolder(void *p_token, void *p_instance, void *p_binding);
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DStackHolder(void *p_token, void *p_instance, GDExtensionBool p_reference);
-
-// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_SkeletonModification3DStackHolder;
-
-extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModification3DTwoBoneIK(void *p_token, void *p_instance);
-void cgo_gdextension_class_binding_free_callback_SkeletonModification3DTwoBoneIK(void *p_token, void *p_instance, void *p_binding);
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModification3DTwoBoneIK(void *p_token, void *p_instance, GDExtensionBool p_reference);
-
-// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_SkeletonModification3DTwoBoneIK;
-
-extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
 void *cgo_gdextension_class_binding_create_callback_SkeletonModificationStack2D(void *p_token, void *p_instance);
 void cgo_gdextension_class_binding_free_callback_SkeletonModificationStack2D(void *p_token, void *p_instance, void *p_binding);
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModificationStack2D(void *p_token, void *p_instance, GDExtensionBool p_reference);
 
 // extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_SkeletonModificationStack2D;
-
-extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
-extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
-
-void *cgo_gdextension_class_binding_create_callback_SkeletonModificationStack3D(void *p_token, void *p_instance);
-void cgo_gdextension_class_binding_free_callback_SkeletonModificationStack3D(void *p_token, void *p_instance, void *p_binding);
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_SkeletonModificationStack3D(void *p_token, void *p_instance, GDExtensionBool p_reference);
-
-// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_SkeletonModificationStack3D;
 
 extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
 extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
@@ -7472,6 +7402,46 @@ void cgo_gdextension_class_binding_free_callback_VisualShaderNodeTransformVecMul
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_VisualShaderNodeTransformVecMult(void *p_token, void *p_instance, GDExtensionBool p_reference);
 
 // extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_VisualShaderNodeTransformVecMult;
+
+extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
+extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
+extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
+
+void *cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntConstant(void *p_token, void *p_instance);
+void cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntConstant(void *p_token, void *p_instance, void *p_binding);
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntConstant(void *p_token, void *p_instance, GDExtensionBool p_reference);
+
+// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_VisualShaderNodeUIntConstant;
+
+extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
+extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
+extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
+
+void *cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntFunc(void *p_token, void *p_instance);
+void cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntFunc(void *p_token, void *p_instance, void *p_binding);
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntFunc(void *p_token, void *p_instance, GDExtensionBool p_reference);
+
+// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_VisualShaderNodeUIntFunc;
+
+extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
+extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
+extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
+
+void *cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntOp(void *p_token, void *p_instance);
+void cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntOp(void *p_token, void *p_instance, void *p_binding);
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntOp(void *p_token, void *p_instance, GDExtensionBool p_reference);
+
+// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_VisualShaderNodeUIntOp;
+
+extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
+extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
+extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
+
+void *cgo_gdextension_class_binding_create_callback_VisualShaderNodeUIntParameter(void *p_token, void *p_instance);
+void cgo_gdextension_class_binding_free_callback_VisualShaderNodeUIntParameter(void *p_token, void *p_instance, void *p_binding);
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_VisualShaderNodeUIntParameter(void *p_token, void *p_instance, GDExtensionBool p_reference);
+
+// extern GDExtensionInstanceBindingCallbacks ___binding_callbacks_VisualShaderNodeUIntParameter;
 
 extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
 extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);

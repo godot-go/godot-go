@@ -8,12 +8,14 @@ import (
 
 type ArgumentEncoder[I any, O any] struct {
 	Decode    func(unsafe.Pointer) I
+	DecodeArg func(O) I
 	Encode    func(I, unsafe.Pointer)
 	EncodeArg func(I) O
 }
 
 type ArgumentReferenceEncoder[I any, O any] struct {
 	Decode    func(unsafe.Pointer) I
+	DecodeArg func(O) I
 	Encode    func(*I, unsafe.Pointer)
 	EncodeArg func(*I) O
 }
@@ -76,12 +78,16 @@ var (
 	PackedVector3ArrayEncoder = createEncoder[PackedVector3Array]()
 	PackedColorArrayEncoder   = createEncoder[PackedColorArray]()
 	VariantEncoder            = createReferenceEncoder[Variant]()
+	ObjectEncoder             = createReferenceEncoder[Object]()
 )
 
 func createBoolEncoder[T ~bool, E ~uint8]() ArgumentEncoder[T, E] {
 	return ArgumentEncoder[T, E]{
 		Decode: func(v unsafe.Pointer) T {
 			return (*(*E)(v)) > 0
+		},
+		DecodeArg: func(v E) T {
+			return v > 0
 		},
 		Encode: func(in T, out unsafe.Pointer) {
 			tOut := (*E)(out)
@@ -111,6 +117,9 @@ func createNumberEncoder[T Number, E Number]() ArgumentEncoder[T, E] {
 		Decode: func(v unsafe.Pointer) T {
 			return (T)(*(*E)(v))
 		},
+		DecodeArg: func(v E) T {
+			return (T)(v)
+		},
 		Encode: func(in T, out unsafe.Pointer) {
 			tOut := (*E)(out)
 			*tOut = (E)(in)
@@ -121,18 +130,22 @@ func createNumberEncoder[T Number, E Number]() ArgumentEncoder[T, E] {
 	}
 }
 
-func createGoStringEncoder() ArgumentEncoder[string, String] {
-	return ArgumentEncoder[string, String]{
+func createGoStringEncoder() ArgumentEncoder[string, *String] {
+	return ArgumentEncoder[string, *String]{
 		Decode: func(v unsafe.Pointer) string {
 			gdnstr := (*String)(v)
 			return gdnstr.ToAscii()
+		},
+		DecodeArg: func(v *String) string {
+			return v.ToAscii()
 		},
 		Encode: func(in string, out unsafe.Pointer) {
 			tOut := (*String)(out)
 			*tOut = NewStringWithLatin1Chars(in)
 		},
-		EncodeArg: func(in string) String {
-			return NewStringWithLatin1Chars(in)
+		EncodeArg: func(in string) *String {
+			ret := NewStringWithLatin1Chars(in)
+			return &ret
 		},
 	}
 }
@@ -149,11 +162,16 @@ func createEncoder[T any]() ArgumentEncoder[T, unsafe.Pointer] {
 		Decode: func(v unsafe.Pointer) T {
 			return *(*T)(v)
 		},
+		DecodeArg: func(v unsafe.Pointer) T {
+			return *(*T)(v)
+		},
 		Encode: func(in T, out unsafe.Pointer) {
 			tOut := (*T)(out)
 			*tOut = in
 		},
-		EncodeArg: nil,
+		EncodeArg: func(in T) unsafe.Pointer {
+			return unsafe.Pointer(&in)
+		},
 	}
 }
 
@@ -162,10 +180,15 @@ func createReferenceEncoder[T any]() ArgumentReferenceEncoder[T, unsafe.Pointer]
 		Decode: func(v unsafe.Pointer) T {
 			return *(*T)(v)
 		},
+		DecodeArg: func(v unsafe.Pointer) T {
+			return *(*T)(v)
+		},
 		Encode: func(in *T, out unsafe.Pointer) {
 			tOut := (**T)(out)
 			*tOut = in
 		},
-		EncodeArg: nil,
+		EncodeArg: func(in *T) unsafe.Pointer {
+			return *(*unsafe.Pointer)(unsafe.Pointer(in))
+		},
 	}
 }

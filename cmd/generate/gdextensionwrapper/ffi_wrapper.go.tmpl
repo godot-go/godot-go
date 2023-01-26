@@ -237,7 +237,7 @@ func CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 			{{ $rt := goReturnType $f.ReturnType }}
 			func {{ $t.Name }}_{{ $f.Name }}(p_struct *{{ $t.Name }}
 				{{- range $j, $arg := $f.Arguments -}}
-					, {{ $arg.Name }} {{ goArgumentType $arg.Type $arg.Name }}
+					, {{ $arg.Name }} {{ if $arg.Type.Primative }}{{ goArgumentType $arg.Type.Primative $arg.Name }}{{ else }}{{ $arg.Type.Function.Name }} unsafe.Pointer{{ end }}
 				{{- end -}}
 			) {{ $rt }} {
 				arg0 := (*C.{{ $t.Name }})(p_struct) // {{ $t.Name }}

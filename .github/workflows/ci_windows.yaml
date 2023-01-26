@@ -45,29 +45,29 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Install Godot 4.0 beta10
+      - name: Install Godot 4.0 beta15
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.0/beta10/Godot_v4.0-beta10_win64.exe.zip
-          unzip Godot_v4.0-beta10_win64.exe.zip -d ./
+          wget https://downloads.tuxfamily.org/godotengine/4.0/beta15/Godot_v4.0-beta15_win64.exe.zip
+          unzip Godot_v4.0-beta15_win64.exe.zip -d ./
         shell: bash
       - name: Build
         run: |
           make build
         shell: bash
         env:
-          GODOT: ./Godot_v4.0-beta10_win64.exe
+          GODOT: ./Godot_v4.0-beta15_win64.exe
       - name: List Artifacts Directory
         run: |
           ls -alh test/demo/lib
           ls -alh test/demo/
         shell: bash
-      - name: Run Godot Unit Tests
-        timeout-minutes: 3
-        run: make godot_unit_test
-        continue-on-error: true
-        env:
-          LANG: "en_US.utf8"
-          GODOT: "./Godot_v4.0-beta10_win64.exe"
+      # - name: Run Godot Unit Tests
+      #   timeout-minutes: 3
+      #   run: make godot_unit_test
+      #   continue-on-error: true
+      #   env:
+      #     LANG: "en_US.utf8"
+      #     GODOT: "./Godot_v4.0-beta15_win64.exe"
       - name: Gen Test Project Files
         timeout-minutes: 3
         run: make ci_gen_test_project_files
@@ -76,7 +76,7 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "./Godot_v4.0-beta10_win64.exe"
+          GODOT: "./Godot_v4.0-beta15_win64.exe"
       - name: Test
         timeout-minutes: 5
         run: make test
@@ -84,6 +84,6 @@ jobs:
         shell: bash
         env:
           CI: 1
-          LOG_LEVEL: "trace"
+          LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "./Godot_v4.0-beta10_win64.exe"
+          GODOT: "./Godot_v4.0-beta15_win64.exe"

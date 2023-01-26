@@ -121,6 +121,14 @@ const (
 	ANIMATION_NODE_BLEND_SPACE_2_D_BLEND_MODE_BLEND_MODE_DISCRETE_CARRY                                    = 2
 )
 
+type AnimationNodeOneShotOneShotRequest int
+
+const (
+	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_NONE  AnimationNodeOneShotOneShotRequest = 0
+	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_FIRE                                     = 1
+	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_ABORT                                    = 2
+)
+
 type AnimationNodeOneShotMixMode int
 
 const (
@@ -1122,14 +1130,15 @@ const (
 type DisplayServerWindowFlags int
 
 const (
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_RESIZE_DISABLED DisplayServerWindowFlags = 0
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_BORDERLESS                               = 1
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_ALWAYS_ON_TOP                            = 2
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_TRANSPARENT                              = 3
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_NO_FOCUS                                 = 4
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_POPUP                                    = 5
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_EXTEND_TO_TITLE                          = 6
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_MAX                                      = 7
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_RESIZE_DISABLED   DisplayServerWindowFlags = 0
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_BORDERLESS                                 = 1
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_ALWAYS_ON_TOP                              = 2
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_TRANSPARENT                                = 3
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_NO_FOCUS                                   = 4
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_POPUP                                      = 5
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_EXTEND_TO_TITLE                            = 6
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_MOUSE_PASSTHROUGH                          = 7
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_MAX                                        = 8
 )
 
 type DisplayServerWindowEvent int
@@ -2036,12 +2045,14 @@ type LightmapGIBakeError int
 
 const (
 	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_OK                LightmapGIBakeError = 0
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_LIGHTMAPPER                        = 1
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SAVE_PATH                          = 2
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_MESHES                             = 3
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_MESHES_INVALID                        = 4
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_CANT_CREATE_IMAGE                     = 5
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_USER_ABORTED                          = 6
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SCENE_ROOT                         = 1
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_FOREIGN_DATA                          = 2
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_LIGHTMAPPER                        = 3
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SAVE_PATH                          = 4
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_MESHES                             = 5
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_MESHES_INVALID                        = 6
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_CANT_CREATE_IMAGE                     = 7
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_USER_ABORTED                          = 8
 )
 
 type LightmapGIEnvironmentMode int
@@ -2178,31 +2189,32 @@ const (
 type MeshArrayFormat int
 
 const (
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_VERTEX           MeshArrayFormat = 1
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_NORMAL                           = 2
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TANGENT                          = 4
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_COLOR                            = 8
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV                           = 16
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV_2                         = 32
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0                         = 64
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1                         = 128
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2                         = 256
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3                         = 512
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_BONES                            = 1024
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_WEIGHTS                          = 2048
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_INDEX                            = 4096
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_BLEND_SHAPE_MASK                 = 7
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BASE                      = 13
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BITS                      = 3
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0_SHIFT                   = 13
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1_SHIFT                   = 16
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2_SHIFT                   = 19
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3_SHIFT                   = 22
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_MASK                      = 7
-	MESH_ARRAY_FORMAT_ARRAY_COMPRESS_FLAGS_BASE                     = 25
-	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_2_D_VERTICES                   = 33554432
-	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_DYNAMIC_UPDATE                 = 67108864
-	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_8_BONE_WEIGHTS                 = 134217728
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_VERTEX                MeshArrayFormat = 1
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_NORMAL                                = 2
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TANGENT                               = 4
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_COLOR                                 = 8
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV                                = 16
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV_2                              = 32
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0                              = 64
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1                              = 128
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2                              = 256
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3                              = 512
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_BONES                                 = 1024
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_WEIGHTS                               = 2048
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_INDEX                                 = 4096
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_BLEND_SHAPE_MASK                      = 7
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BASE                           = 13
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BITS                           = 3
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0_SHIFT                        = 13
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1_SHIFT                        = 16
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2_SHIFT                        = 19
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3_SHIFT                        = 22
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_MASK                           = 7
+	MESH_ARRAY_FORMAT_ARRAY_COMPRESS_FLAGS_BASE                          = 25
+	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_2_D_VERTICES                        = 33554432
+	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_DYNAMIC_UPDATE                      = 67108864
+	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_8_BONE_WEIGHTS                      = 134217728
+	MESH_ARRAY_FORMAT_ARRAY_FLAG_USES_EMPTY_VERTEX_ARRAY                 = 268435456
 )
 
 type MeshBlendShapeMode int
@@ -2338,6 +2350,20 @@ const (
 	NAVIGATION_PATH_QUERY_RESULT_3_D_PATH_SEGMENT_TYPE_PATH_SEGMENT_TYPE_LINK                                              = 1
 )
 
+type NavigationServer3DProcessInfo int
+
+const (
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_ACTIVE_MAPS           NavigationServer3DProcessInfo = 0
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_REGION_COUNT                                        = 1
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_AGENT_COUNT                                         = 2
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_LINK_COUNT                                          = 3
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_POLYGON_COUNT                                       = 4
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_COUNT                                          = 5
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_MERGE_COUNT                                    = 6
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_CONNECTION_COUNT                               = 7
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_FREE_COUNT                                     = 8
+)
+
 type NinePatchRectAxisStretchMode int
 
 const (
@@ -2386,35 +2412,6 @@ type OSRenderingDriver int
 const (
 	OS_RENDERING_DRIVER_RENDERING_DRIVER_VULKAN   OSRenderingDriver = 0
 	OS_RENDERING_DRIVER_RENDERING_DRIVER_OPENGL_3                   = 1
-)
-
-type OSWeekday int
-
-const (
-	OS_WEEKDAY_DAY_SUNDAY    OSWeekday = 0
-	OS_WEEKDAY_DAY_MONDAY              = 1
-	OS_WEEKDAY_DAY_TUESDAY             = 2
-	OS_WEEKDAY_DAY_WEDNESDAY           = 3
-	OS_WEEKDAY_DAY_THURSDAY            = 4
-	OS_WEEKDAY_DAY_FRIDAY              = 5
-	OS_WEEKDAY_DAY_SATURDAY            = 6
-)
-
-type OSMonth int
-
-const (
-	OS_MONTH_MONTH_JANUARY   OSMonth = 1
-	OS_MONTH_MONTH_FEBRUARY          = 2
-	OS_MONTH_MONTH_MARCH             = 3
-	OS_MONTH_MONTH_APRIL             = 4
-	OS_MONTH_MONTH_MAY               = 5
-	OS_MONTH_MONTH_JUNE              = 6
-	OS_MONTH_MONTH_JULY              = 7
-	OS_MONTH_MONTH_AUGUST            = 8
-	OS_MONTH_MONTH_SEPTEMBER         = 9
-	OS_MONTH_MONTH_OCTOBER           = 10
-	OS_MONTH_MONTH_NOVEMBER          = 11
-	OS_MONTH_MONTH_DECEMBER          = 12
 )
 
 type OSSystemDir int
@@ -2576,27 +2573,37 @@ const (
 	PERFORMANCE_MONITOR_TIME_FPS                         PerformanceMonitor = 0
 	PERFORMANCE_MONITOR_TIME_PROCESS                                        = 1
 	PERFORMANCE_MONITOR_TIME_PHYSICS_PROCESS                                = 2
-	PERFORMANCE_MONITOR_MEMORY_STATIC                                       = 3
-	PERFORMANCE_MONITOR_MEMORY_STATIC_MAX                                   = 4
-	PERFORMANCE_MONITOR_MEMORY_MESSAGE_BUFFER_MAX                           = 5
-	PERFORMANCE_MONITOR_OBJECT_COUNT                                        = 6
-	PERFORMANCE_MONITOR_OBJECT_RESOURCE_COUNT                               = 7
-	PERFORMANCE_MONITOR_OBJECT_NODE_COUNT                                   = 8
-	PERFORMANCE_MONITOR_OBJECT_ORPHAN_NODE_COUNT                            = 9
-	PERFORMANCE_MONITOR_RENDER_TOTAL_OBJECTS_IN_FRAME                       = 10
-	PERFORMANCE_MONITOR_RENDER_TOTAL_PRIMITIVES_IN_FRAME                    = 11
-	PERFORMANCE_MONITOR_RENDER_TOTAL_DRAW_CALLS_IN_FRAME                    = 12
-	PERFORMANCE_MONITOR_RENDER_VIDEO_MEM_USED                               = 13
-	PERFORMANCE_MONITOR_RENDER_TEXTURE_MEM_USED                             = 14
-	PERFORMANCE_MONITOR_RENDER_BUFFER_MEM_USED                              = 15
-	PERFORMANCE_MONITOR_PHYSICS_2_D_ACTIVE_OBJECTS                          = 16
-	PERFORMANCE_MONITOR_PHYSICS_2_D_COLLISION_PAIRS                         = 17
-	PERFORMANCE_MONITOR_PHYSICS_2_D_ISLAND_COUNT                            = 18
-	PERFORMANCE_MONITOR_PHYSICS_3_D_ACTIVE_OBJECTS                          = 19
-	PERFORMANCE_MONITOR_PHYSICS_3_D_COLLISION_PAIRS                         = 20
-	PERFORMANCE_MONITOR_PHYSICS_3_D_ISLAND_COUNT                            = 21
-	PERFORMANCE_MONITOR_AUDIO_OUTPUT_LATENCY                                = 22
-	PERFORMANCE_MONITOR_MONITOR_MAX                                         = 23
+	PERFORMANCE_MONITOR_TIME_NAVIGATION_PROCESS                             = 3
+	PERFORMANCE_MONITOR_MEMORY_STATIC                                       = 4
+	PERFORMANCE_MONITOR_MEMORY_STATIC_MAX                                   = 5
+	PERFORMANCE_MONITOR_MEMORY_MESSAGE_BUFFER_MAX                           = 6
+	PERFORMANCE_MONITOR_OBJECT_COUNT                                        = 7
+	PERFORMANCE_MONITOR_OBJECT_RESOURCE_COUNT                               = 8
+	PERFORMANCE_MONITOR_OBJECT_NODE_COUNT                                   = 9
+	PERFORMANCE_MONITOR_OBJECT_ORPHAN_NODE_COUNT                            = 10
+	PERFORMANCE_MONITOR_RENDER_TOTAL_OBJECTS_IN_FRAME                       = 11
+	PERFORMANCE_MONITOR_RENDER_TOTAL_PRIMITIVES_IN_FRAME                    = 12
+	PERFORMANCE_MONITOR_RENDER_TOTAL_DRAW_CALLS_IN_FRAME                    = 13
+	PERFORMANCE_MONITOR_RENDER_VIDEO_MEM_USED                               = 14
+	PERFORMANCE_MONITOR_RENDER_TEXTURE_MEM_USED                             = 15
+	PERFORMANCE_MONITOR_RENDER_BUFFER_MEM_USED                              = 16
+	PERFORMANCE_MONITOR_PHYSICS_2_D_ACTIVE_OBJECTS                          = 17
+	PERFORMANCE_MONITOR_PHYSICS_2_D_COLLISION_PAIRS                         = 18
+	PERFORMANCE_MONITOR_PHYSICS_2_D_ISLAND_COUNT                            = 19
+	PERFORMANCE_MONITOR_PHYSICS_3_D_ACTIVE_OBJECTS                          = 20
+	PERFORMANCE_MONITOR_PHYSICS_3_D_COLLISION_PAIRS                         = 21
+	PERFORMANCE_MONITOR_PHYSICS_3_D_ISLAND_COUNT                            = 22
+	PERFORMANCE_MONITOR_AUDIO_OUTPUT_LATENCY                                = 23
+	PERFORMANCE_MONITOR_NAVIGATION_ACTIVE_MAPS                              = 24
+	PERFORMANCE_MONITOR_NAVIGATION_REGION_COUNT                             = 25
+	PERFORMANCE_MONITOR_NAVIGATION_AGENT_COUNT                              = 26
+	PERFORMANCE_MONITOR_NAVIGATION_LINK_COUNT                               = 27
+	PERFORMANCE_MONITOR_NAVIGATION_POLYGON_COUNT                            = 28
+	PERFORMANCE_MONITOR_NAVIGATION_EDGE_COUNT                               = 29
+	PERFORMANCE_MONITOR_NAVIGATION_EDGE_MERGE_COUNT                         = 30
+	PERFORMANCE_MONITOR_NAVIGATION_EDGE_CONNECTION_COUNT                    = 31
+	PERFORMANCE_MONITOR_NAVIGATION_EDGE_FREE_COUNT                          = 32
+	PERFORMANCE_MONITOR_MONITOR_MAX                                         = 33
 )
 
 type PhysicalBone3DDampMode int
@@ -3741,31 +3748,32 @@ const (
 type RenderingServerArrayFormat int
 
 const (
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_VERTEX           RenderingServerArrayFormat = 1
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_NORMAL                                      = 2
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TANGENT                                     = 4
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_COLOR                                       = 8
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV                                      = 16
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV_2                                    = 32
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0                                    = 64
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1                                    = 128
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2                                    = 256
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3                                    = 512
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_BONES                                       = 1024
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_WEIGHTS                                     = 2048
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_INDEX                                       = 4096
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_BLEND_SHAPE_MASK                            = 7
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BASE                                 = 13
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BITS                                 = 3
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0_SHIFT                              = 13
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1_SHIFT                              = 16
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2_SHIFT                              = 19
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3_SHIFT                              = 22
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_MASK                                 = 7
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_COMPRESS_FLAGS_BASE                                = 25
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_2_D_VERTICES                              = 33554432
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_DYNAMIC_UPDATE                            = 67108864
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_8_BONE_WEIGHTS                            = 134217728
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_VERTEX                RenderingServerArrayFormat = 1
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_NORMAL                                           = 2
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TANGENT                                          = 4
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_COLOR                                            = 8
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV                                           = 16
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV_2                                         = 32
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0                                         = 64
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1                                         = 128
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2                                         = 256
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3                                         = 512
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_BONES                                            = 1024
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_WEIGHTS                                          = 2048
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_INDEX                                            = 4096
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_BLEND_SHAPE_MASK                                 = 7
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BASE                                      = 13
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BITS                                      = 3
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0_SHIFT                                   = 13
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1_SHIFT                                   = 16
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2_SHIFT                                   = 19
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3_SHIFT                                   = 22
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_MASK                                      = 7
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_COMPRESS_FLAGS_BASE                                     = 25
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_2_D_VERTICES                                   = 33554432
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_DYNAMIC_UPDATE                                 = 67108864
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_8_BONE_WEIGHTS                                 = 134217728
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USES_EMPTY_VERTEX_ARRAY                            = 268435456
 )
 
 type RenderingServerPrimitiveType int
@@ -4957,9 +4965,10 @@ const (
 type TextServerDirection int
 
 const (
-	TEXT_SERVER_DIRECTION_DIRECTION_AUTO TextServerDirection = 0
-	TEXT_SERVER_DIRECTION_DIRECTION_LTR                      = 1
-	TEXT_SERVER_DIRECTION_DIRECTION_RTL                      = 2
+	TEXT_SERVER_DIRECTION_DIRECTION_AUTO      TextServerDirection = 0
+	TEXT_SERVER_DIRECTION_DIRECTION_LTR                           = 1
+	TEXT_SERVER_DIRECTION_DIRECTION_RTL                           = 2
+	TEXT_SERVER_DIRECTION_DIRECTION_INHERITED                     = 3
 )
 
 type TextServerOrientation int
@@ -5116,13 +5125,13 @@ const (
 type TextServerStructuredTextParser int
 
 const (
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_DEFAULT TextServerStructuredTextParser = 0
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_URI                                    = 1
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_FILE                                   = 2
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_EMAIL                                  = 3
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_LIST                                   = 4
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_NONE                                   = 5
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_CUSTOM                                 = 6
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_DEFAULT  TextServerStructuredTextParser = 0
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_URI                                     = 1
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_FILE                                    = 2
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_EMAIL                                   = 3
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_LIST                                    = 4
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_GDSCRIPT                                = 5
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_CUSTOM                                  = 6
 )
 
 type TextureButtonStretchMode int
@@ -5157,6 +5166,17 @@ const (
 	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_BILINEAR_LEFT_AND_RIGHT                                    = 6
 	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_BILINEAR_TOP_AND_BOTTOM                                    = 7
 	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_CLOCKWISE_AND_COUNTER_CLOCKWISE                            = 8
+)
+
+type TextureRectExpandMode int
+
+const (
+	TEXTURE_RECT_EXPAND_MODE_EXPAND_KEEP_SIZE               TextureRectExpandMode = 0
+	TEXTURE_RECT_EXPAND_MODE_EXPAND_IGNORE_SIZE                                   = 1
+	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_WIDTH                                     = 2
+	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_WIDTH_PROPORTIONAL                        = 3
+	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_HEIGHT                                    = 4
+	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_HEIGHT_PROPORTIONAL                       = 5
 )
 
 type TextureRectStretchMode int
@@ -5600,26 +5620,28 @@ type VisualShaderVaryingType int
 const (
 	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_FLOAT      VisualShaderVaryingType = 0
 	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_INT                                = 1
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_2_D                         = 2
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_3_D                         = 3
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_4_D                         = 4
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_BOOLEAN                            = 5
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_TRANSFORM                          = 6
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_MAX                                = 7
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_UINT                               = 2
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_2_D                         = 3
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_3_D                         = 4
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_4_D                         = 5
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_BOOLEAN                            = 6
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_TRANSFORM                          = 7
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_MAX                                = 8
 )
 
 type VisualShaderNodePortType int
 
 const (
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SCALAR     VisualShaderNodePortType = 0
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SCALAR_INT                          = 1
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_2_D                          = 2
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_3_D                          = 3
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_4_D                          = 4
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_BOOLEAN                             = 5
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_TRANSFORM                           = 6
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SAMPLER                             = 7
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_MAX                                 = 8
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SCALAR      VisualShaderNodePortType = 0
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SCALAR_INT                           = 1
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SCALAR_UINT                          = 2
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_2_D                           = 3
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_3_D                           = 4
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_4_D                           = 5
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_BOOLEAN                              = 6
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_TRANSFORM                            = 7
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SAMPLER                              = 8
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_MAX                                  = 9
 )
 
 type VisualShaderNodeBillboardBillboardType int
@@ -5637,10 +5659,11 @@ type VisualShaderNodeClampOpType int
 const (
 	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_FLOAT      VisualShaderNodeClampOpType = 0
 	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_INT                                    = 1
-	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_2_D                             = 2
-	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_3_D                             = 3
-	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_4_D                             = 4
-	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_MAX                                    = 5
+	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_UINT                                   = 2
+	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_2_D                             = 3
+	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_3_D                             = 4
+	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_4_D                             = 5
+	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_MAX                                    = 6
 )
 
 type VisualShaderNodeColorFuncFunction int
@@ -5671,14 +5694,15 @@ const (
 type VisualShaderNodeCompareComparisonType int
 
 const (
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_SCALAR     VisualShaderNodeCompareComparisonType = 0
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_SCALAR_INT                                       = 1
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_2_D                                       = 2
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_3_D                                       = 3
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_4_D                                       = 4
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_BOOLEAN                                          = 5
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_TRANSFORM                                        = 6
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_MAX                                              = 7
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_SCALAR      VisualShaderNodeCompareComparisonType = 0
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_SCALAR_INT                                        = 1
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_SCALAR_UINT                                       = 2
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_2_D                                        = 3
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_3_D                                        = 4
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_4_D                                        = 5
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_BOOLEAN                                           = 6
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_TRANSFORM                                         = 7
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_MAX                                               = 8
 )
 
 type VisualShaderNodeCompareFunction int
@@ -5902,7 +5926,8 @@ const (
 	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_SCALAR     VisualShaderNodeParticleRandomnessOpType = 0
 	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_VECTOR_2_D                                          = 1
 	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_VECTOR_3_D                                          = 2
-	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_MAX                                                 = 3
+	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_VECTOR_4_D                                          = 3
+	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_MAX                                                 = 4
 )
 
 type VisualShaderNodeSample3DSource int
@@ -5944,12 +5969,13 @@ type VisualShaderNodeSwitchOpType int
 const (
 	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_FLOAT      VisualShaderNodeSwitchOpType = 0
 	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_INT                                     = 1
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_2_D                              = 2
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_3_D                              = 3
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_4_D                              = 4
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_BOOLEAN                                 = 5
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_TRANSFORM                               = 6
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_MAX                                     = 7
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_UINT                                    = 2
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_2_D                              = 3
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_3_D                              = 4
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_4_D                              = 5
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_BOOLEAN                                 = 6
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_TRANSFORM                               = 7
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_MAX                                     = 8
 )
 
 type VisualShaderNodeTextureSource int
@@ -5961,7 +5987,9 @@ const (
 	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_2_D_NORMAL                                = 3
 	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_DEPTH                                     = 4
 	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_PORT                                      = 5
-	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_MAX                                       = 6
+	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_3_D_NORMAL                                = 6
+	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_ROUGHNESS                                 = 7
+	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_MAX                                       = 8
 )
 
 type VisualShaderNodeTextureTextureType int
@@ -6014,6 +6042,16 @@ const (
 	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_REPEAT_REPEAT_MAX                                                    = 3
 )
 
+type VisualShaderNodeTextureParameterTextureSource int
+
+const (
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_NONE             VisualShaderNodeTextureParameterTextureSource = 0
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_SCREEN                                                         = 1
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_DEPTH                                                          = 2
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_NORMAL_ROUGHNESS                                               = 3
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_MAX                                                            = 4
+)
+
 type VisualShaderNodeTransformFuncFunction int
 
 const (
@@ -6045,6 +6083,32 @@ const (
 	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_3_X_3_AX_B                                          = 2
 	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_3_X_3_BX_A                                          = 3
 	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_MAX                                                 = 4
+)
+
+type VisualShaderNodeUIntFuncFunction int
+
+const (
+	VISUAL_SHADER_NODE_U_INT_FUNC_FUNCTION_FUNC_NEGATE      VisualShaderNodeUIntFuncFunction = 0
+	VISUAL_SHADER_NODE_U_INT_FUNC_FUNCTION_FUNC_BITWISE_NOT                                  = 1
+	VISUAL_SHADER_NODE_U_INT_FUNC_FUNCTION_FUNC_MAX                                          = 2
+)
+
+type VisualShaderNodeUIntOpOperator int
+
+const (
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_ADD                 VisualShaderNodeUIntOpOperator = 0
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_SUB                                                = 1
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MUL                                                = 2
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_DIV                                                = 3
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MOD                                                = 4
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MAX                                                = 5
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MIN                                                = 6
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_AND                                        = 7
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_OR                                         = 8
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_XOR                                        = 9
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_LEFT_SHIFT                                 = 10
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_RIGHT_SHIFT                                = 11
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_ENUM_SIZE                                          = 12
 )
 
 type VisualShaderNodeUVFuncFunction int
@@ -6215,14 +6279,15 @@ const (
 type WindowFlags int
 
 const (
-	WINDOW_FLAGS_FLAG_RESIZE_DISABLED WindowFlags = 0
-	WINDOW_FLAGS_FLAG_BORDERLESS                  = 1
-	WINDOW_FLAGS_FLAG_ALWAYS_ON_TOP               = 2
-	WINDOW_FLAGS_FLAG_TRANSPARENT                 = 3
-	WINDOW_FLAGS_FLAG_NO_FOCUS                    = 4
-	WINDOW_FLAGS_FLAG_POPUP                       = 5
-	WINDOW_FLAGS_FLAG_EXTEND_TO_TITLE             = 6
-	WINDOW_FLAGS_FLAG_MAX                         = 7
+	WINDOW_FLAGS_FLAG_RESIZE_DISABLED   WindowFlags = 0
+	WINDOW_FLAGS_FLAG_BORDERLESS                    = 1
+	WINDOW_FLAGS_FLAG_ALWAYS_ON_TOP                 = 2
+	WINDOW_FLAGS_FLAG_TRANSPARENT                   = 3
+	WINDOW_FLAGS_FLAG_NO_FOCUS                      = 4
+	WINDOW_FLAGS_FLAG_POPUP                         = 5
+	WINDOW_FLAGS_FLAG_EXTEND_TO_TITLE               = 6
+	WINDOW_FLAGS_FLAG_MOUSE_PASSTHROUGH             = 7
+	WINDOW_FLAGS_FLAG_MAX                           = 8
 )
 
 type WindowContentScaleMode int
@@ -6250,6 +6315,15 @@ const (
 	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_LOCALE                          = 1
 	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_LTR                             = 2
 	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_RTL                             = 3
+)
+
+type WindowWindowInitialPosition int
+
+const (
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_ABSOLUTE                  WindowWindowInitialPosition = 0
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN                                 = 1
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_MAIN_WINDOW_SCREEN                             = 2
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_OTHER_SCREEN                                   = 3
 )
 
 type XMLParserNodeType int

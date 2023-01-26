@@ -13,7 +13,7 @@ require (
 )
 
 require (
-	github.com/alecthomas/participle/v2 v2.0.0-alpha7.0.20211016225504-c321d39d8829
+	github.com/alecthomas/participle/v2 v2.0.0-beta.5
 	github.com/davecgh/go-spew v1.1.1
 	github.com/iancoleman/strcase v0.2.0
 	github.com/stretchr/testify v1.7.0

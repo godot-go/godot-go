@@ -167,9 +167,13 @@ type AStarGrid2D interface {
 
 	GetDiagonalMode() AStarGrid2DDiagonalMode
 
-	SetDefaultHeuristic(heuristic AStarGrid2DHeuristic)
+	SetDefaultComputeHeuristic(heuristic AStarGrid2DHeuristic)
 
-	GetDefaultHeuristic() AStarGrid2DHeuristic
+	GetDefaultComputeHeuristic() AStarGrid2DHeuristic
+
+	SetDefaultEstimateHeuristic(heuristic AStarGrid2DHeuristic)
+
+	GetDefaultEstimateHeuristic() AStarGrid2DHeuristic
 
 	SetPointSolid(id Vector2i, solid bool)
 
@@ -500,6 +504,8 @@ type AnimationNode interface {
 
 	// VIRTUAL: Internal_GetParameterDefaultValue(parameter StringName,) Variant
 
+	// VIRTUAL: Internal_IsParameterReadOnly(parameter StringName,) bool
+
 	// VIRTUAL: Internal_Process(time float32,seek bool,is_external_seeking bool,) float32
 
 	// VIRTUAL: Internal_GetCaption() String
@@ -748,9 +754,11 @@ type AnimationNodeStateMachine interface {
 type AnimationNodeStateMachinePlayback interface {
 	Resource
 
-	Travel(to_node StringName)
+	Travel(to_node StringName, reset_on_teleport bool)
 
-	Start(node StringName)
+	Start(node StringName, reset bool)
+
+	Next()
 
 	Stop()
 
@@ -761,6 +769,8 @@ type AnimationNodeStateMachinePlayback interface {
 	GetCurrentPlayPosition() float32
 
 	GetCurrentLength() float32
+
+	GetFadingFromNode() StringName
 
 	GetTravelPath() PackedStringArray
 }
@@ -786,6 +796,10 @@ type AnimationNodeStateMachineTransition interface {
 	SetXfadeCurve(curve Curve)
 
 	GetXfadeCurve() Curve
+
+	SetReset(reset bool)
+
+	IsReset() bool
 
 	SetPriority(priority int32)
 
@@ -823,6 +837,8 @@ type AnimationNodeTransition interface {
 
 	GetInputCaption(input int32) String
 
+	FindInputCaption(caption String) int32
+
 	SetXfadeTime(time float32)
 
 	GetXfadeTime() float32
@@ -831,9 +847,9 @@ type AnimationNodeTransition interface {
 
 	GetXfadeCurve() Curve
 
-	SetFromStart(from_start bool)
+	SetReset(reset bool)
 
-	IsFromStart() bool
+	IsReset() bool
 }
 type AnimationPlayer interface {
 	Node
@@ -872,7 +888,9 @@ type AnimationPlayer interface {
 
 	PlayBackwards(name StringName, custom_blend float32)
 
-	Stop(reset bool)
+	Pause()
+
+	Stop(keep_state bool)
 
 	IsPlaying() bool
 
@@ -1176,7 +1194,7 @@ type ArrayMesh interface {
 
 	GetBlendShapeMode() MeshBlendShapeMode
 
-	AddSurfaceFromArrays(primitive MeshPrimitiveType, arrays Array, blend_shapes []Array, lods Dictionary, compress_flags int32)
+	AddSurfaceFromArrays(primitive MeshPrimitiveType, arrays Array, blend_shapes []Array, lods Dictionary, flags MeshArrayFormat)
 
 	ClearSurfaces()
 
@@ -1190,7 +1208,7 @@ type ArrayMesh interface {
 
 	SurfaceGetArrayIndexLen(surf_idx int32) int32
 
-	SurfaceGetFormat(surf_idx int32) int32
+	SurfaceGetFormat(surf_idx int32) MeshArrayFormat
 
 	SurfaceGetPrimitiveType(surf_idx int32) MeshPrimitiveType
 
@@ -1898,6 +1916,19 @@ type AudioStreamPlayback interface {
 type AudioStreamPlaybackOggVorbis interface {
 	AudioStreamPlaybackResampled
 }
+type AudioStreamPlaybackPolyphonic interface {
+	AudioStreamPlayback
+
+	PlayStream(stream AudioStream, from_offset float32, volume_db float32, pitch_scale float32) int32
+
+	SetStreamVolume(stream int32, volume_db float32)
+
+	SetStreamPitchScale(stream int32, pitch_scale float32)
+
+	IsStreamPlaying(stream int32) bool
+
+	StopStream(stream int32)
+}
 type AudioStreamPlaybackResampled interface {
 	AudioStreamPlayback
 
@@ -2054,7 +2085,7 @@ type AudioStreamPlayer3D interface {
 
 	IsAutoplayEnabled() bool
 
-	SetMaxDistance(metres float32)
+	SetMaxDistance(meters float32)
 
 	GetMaxDistance() float32
 
@@ -2103,6 +2134,13 @@ type AudioStreamPlayer3D interface {
 	GetPanningStrength() float32
 
 	GetStreamPlayback() AudioStreamPlayback
+}
+type AudioStreamPolyphonic interface {
+	AudioStream
+
+	SetPolyphony(voices int32)
+
+	GetPolyphony() int32
 }
 type AudioStreamRandomizer interface {
 	AudioStream
@@ -2212,15 +2250,19 @@ type BaseButton interface {
 
 	GetActionMode() BaseButtonActionMode
 
-	SetButtonMask(mask MouseButton)
+	SetButtonMask(mask MouseButtonMask)
 
-	GetButtonMask() MouseButton
+	GetButtonMask() MouseButtonMask
 
 	GetDrawMode() BaseButtonDrawMode
 
 	SetKeepPressedOutside(enabled bool)
 
 	IsKeepPressedOutside() bool
+
+	SetShortcutFeedback(enabled bool)
+
+	IsShortcutFeedback() bool
 
 	SetShortcut(shortcut Shortcut)
 
@@ -2229,10 +2271,6 @@ type BaseButton interface {
 	SetButtonGroup(button_group ButtonGroup)
 
 	GetButtonGroup() ButtonGroup
-
-	SetShortcutFeedback(enabled bool)
-
-	IsShortcutFeedback() bool
 }
 type BaseMaterial3D interface {
 	Material
@@ -2583,10 +2621,6 @@ type BoneAttachment3D interface {
 	SetOverridePose(override_pose bool)
 
 	GetOverridePose() bool
-
-	SetOverrideMode(override_mode int32)
-
-	GetOverrideMode() int32
 
 	SetUseExternalSkeleton(use_external_skeleton bool)
 
@@ -3639,7 +3673,7 @@ type CanvasItem interface {
 
 	DrawLine(from Vector2, to Vector2, color Color, width float32, antialiased bool)
 
-	DrawDashedLine(from Vector2, to Vector2, color Color, width float32, dash float32)
+	DrawDashedLine(from Vector2, to Vector2, color Color, width float32, dash float32, aligned bool)
 
 	DrawPolyline(points PackedVector2Array, color Color, width float32, antialiased bool)
 
@@ -3667,7 +3701,7 @@ type CanvasItem interface {
 
 	DrawStyleBox(style_box StyleBox, rect Rect2)
 
-	DrawPrimitive(points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture Texture2D, width float32)
+	DrawPrimitive(points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture Texture2D)
 
 	DrawPolygon(points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture Texture2D)
 
@@ -4160,6 +4194,8 @@ type CharacterBody3D interface {
 
 	GetPlatformVelocity() Vector3
 
+	GetPlatformAngularVelocity() Vector3
+
 	GetSlideCollisionCount() int32
 
 	GetSlideCollision(slide_idx int32) KinematicCollision3D
@@ -4254,8 +4290,6 @@ type CodeEdit interface {
 	GetAutoIndentPrefixes() []String
 
 	DoIndent()
-
-	DoUnindent()
 
 	IndentLines()
 
@@ -4415,7 +4449,7 @@ type CodeEdit interface {
 
 	SetCodeCompletionPrefixes(prefixes []String)
 
-	GetCodeComletionPrefixes() []String
+	GetCodeCompletionPrefixes() []String
 
 	SetLineLengthGuidelines(guideline_columns []int32)
 
@@ -4920,7 +4954,7 @@ type Control interface {
 
 	// VIRTUAL: Internal_HasPoint(position Vector2,) bool
 
-	// VIRTUAL: Internal_StructuredTextParser(args Array,text String,) []Vector2i
+	// VIRTUAL: Internal_StructuredTextParser(args Array,text String,) []Vector3i
 
 	// VIRTUAL: Internal_GetMinimumSize() Vector2
 
@@ -5020,17 +5054,17 @@ type Control interface {
 
 	FindNextValidFocus() Control
 
-	SetHSizeFlags(flags int32)
+	SetHSizeFlags(flags ControlSizeFlags)
 
-	GetHSizeFlags() int32
+	GetHSizeFlags() ControlSizeFlags
 
 	SetStretchRatio(ratio float32)
 
 	GetStretchRatio() float32
 
-	SetVSizeFlags(flags int32)
+	SetVSizeFlags(flags ControlSizeFlags)
 
-	GetVSizeFlags() int32
+	GetVSizeFlags() ControlSizeFlags
 
 	SetTheme(theme Theme)
 
@@ -5160,7 +5194,7 @@ type Control interface {
 
 	GrabClickFocus()
 
-	SetDragForwarding(target Object)
+	SetDragForwarding(drag_func Callable, can_drop_func Callable, drop_func Callable)
 
 	SetDragPreview(control Control)
 
@@ -5240,9 +5274,13 @@ type CryptoKey interface {
 }
 type Cubemap interface {
 	ImageTextureLayered
+
+	CreatePlaceholder() Resource
 }
 type CubemapArray interface {
 	ImageTextureLayered
+
+	CreatePlaceholder() Resource
 }
 type Curve interface {
 	Resource
@@ -5778,7 +5816,7 @@ type DisplayServer interface {
 
 	MouseGetPosition() Vector2i
 
-	MouseGetButtonState() MouseButton
+	MouseGetButtonState() MouseButtonMask
 
 	ClipboardSet(clipboard String)
 
@@ -5795,6 +5833,10 @@ type DisplayServer interface {
 	GetDisplaySafeArea() Rect2i
 
 	GetScreenCount() int32
+
+	GetPrimaryScreen() int32
+
+	GetScreenFromRect(rect Rect2) int32
 
 	ScreenGetPosition(screen int32) Vector2i
 
@@ -7148,8 +7190,6 @@ type GDScript interface {
 	Script
 
 	New(varargs ...Variant) Variant
-
-	GetAsByteCode() PackedByteArray
 }
 type GDScriptNativeClass interface {
 	RefCounted
@@ -9021,6 +9061,8 @@ type Input interface {
 
 	IsPhysicalKeyPressed(keycode Key) bool
 
+	IsKeyLabelPressed(keycode Key) bool
+
 	IsMouseButtonPressed(button MouseButton) bool
 
 	IsJoyButtonPressed(device int32, button JoyButton) bool
@@ -9081,7 +9123,7 @@ type Input interface {
 
 	GetLastMouseVelocity() Vector2
 
-	GetMouseButtonMask() MouseButton
+	GetMouseButtonMask() MouseButtonMask
 
 	SetMouseMode(mode InputMouseMode)
 
@@ -9200,6 +9242,10 @@ type InputEventKey interface {
 
 	GetPhysicalKeycode() Key
 
+	SetKeyLabel(key_label Key)
+
+	GetKeyLabel() Key
+
 	SetUnicode(unicode int32)
 
 	GetUnicode() int32
@@ -9209,6 +9255,14 @@ type InputEventKey interface {
 	GetKeycodeWithModifiers() Key
 
 	GetPhysicalKeycodeWithModifiers() Key
+
+	GetKeyLabelWithModifiers() Key
+
+	AsTextKeycode() String
+
+	AsTextPhysicalKeycode() String
+
+	AsTextKeyLabel() String
 }
 type InputEventMIDI interface {
 	InputEvent
@@ -9255,9 +9309,9 @@ type InputEventMagnifyGesture interface {
 type InputEventMouse interface {
 	InputEventWithModifiers
 
-	SetButtonMask(button_mask MouseButton)
+	SetButtonMask(button_mask MouseButtonMask)
 
-	GetButtonMask() MouseButton
+	GetButtonMask() MouseButtonMask
 
 	SetPosition(position Vector2)
 
@@ -9321,6 +9375,18 @@ type InputEventScreenDrag interface {
 
 	GetIndex() int32
 
+	SetTilt(tilt Vector2)
+
+	GetTilt() Vector2
+
+	SetPressure(pressure float32)
+
+	GetPressure() float32
+
+	SetPenInverted(pen_inverted bool)
+
+	GetPenInverted() bool
+
 	SetPosition(position Vector2)
 
 	GetPosition() Vector2
@@ -9381,6 +9447,8 @@ type InputEventWithModifiers interface {
 	SetMetaPressed(pressed bool)
 
 	IsMetaPressed() bool
+
+	GetModifiersMask() KeyModifierMask
 }
 type InputMap interface {
 	Object
@@ -9568,17 +9636,19 @@ type JNISingleton interface {
 	Object
 }
 type JSON interface {
-	RefCounted
+	Resource
 
 	Stringify(data Variant, indent String, sort_keys bool, full_precision bool) String
 
 	ParseString(json_string String) Variant
 
-	Parse(json_string String) Error
+	Parse(json_text String, keep_text bool) Error
 
 	GetData() Variant
 
 	SetData(data Variant)
+
+	GetParsedText() String
 
 	GetErrorLine() int32
 
@@ -9625,6 +9695,8 @@ type JavaScriptBridge interface {
 	PwaNeedsUpdate() bool
 
 	PwaUpdate() Error
+
+	ForceFsSync()
 }
 type JavaScriptObject interface {
 	RefCounted
@@ -10488,6 +10560,8 @@ type Material interface {
 	GetRenderPriority() int32
 
 	InspectNativeShaderCode()
+
+	CreatePlaceholder() Resource
 }
 type MenuBar interface {
 	Control
@@ -10604,6 +10678,8 @@ type Mesh interface {
 
 	SurfaceGetMaterial(surf_idx int32) Material
 
+	CreatePlaceholder() Resource
+
 	CreateTrimeshShape() ConcavePolygonShape3D
 
 	CreateConvexShape(clean bool, simplify bool) ConvexPolygonShape3D
@@ -10703,10 +10779,6 @@ type MeshInstance2D interface {
 	SetTexture(texture Texture2D)
 
 	GetTexture() Texture2D
-
-	SetNormalMap(normal_map Texture2D)
-
-	GetNormalMap() Texture2D
 }
 type MeshInstance3D interface {
 	GeometryInstance3D
@@ -10953,10 +11025,6 @@ type MultiMeshInstance2D interface {
 	SetTexture(texture Texture2D)
 
 	GetTexture() Texture2D
-
-	SetNormalMap(normal_map Texture2D)
-
-	GetNormalMap() Texture2D
 }
 type MultiMeshInstance3D interface {
 	GeometryInstance3D
@@ -11100,8 +11168,6 @@ type MultiplayerPeerExtension interface {
 type MultiplayerSpawner interface {
 	Node
 
-	// VIRTUAL: Internal_SpawnCustom(data Variant,) Node
-
 	AddSpawnableScene(path String)
 
 	GetSpawnableSceneCount() int32
@@ -11119,6 +11185,10 @@ type MultiplayerSpawner interface {
 	GetSpawnLimit() int32
 
 	SetSpawnLimit(limit int32)
+
+	GetSpawnFunction() Callable
+
+	SetSpawnFunction(spawn_function Callable)
 }
 type MultiplayerSynchronizer interface {
 	Node
@@ -12036,6 +12106,8 @@ type NavigationServer3D interface {
 	SetActive(active bool)
 
 	Process(delta_time float32)
+
+	GetProcessInfo(process_info NavigationServer3DProcessInfo) int32
 }
 type NinePatchRect interface {
 	Control
@@ -12098,6 +12170,8 @@ type Node interface {
 	AddChild(node Node, force_readable_name bool, internalMode NodeInternalMode)
 
 	RemoveChild(node Node)
+
+	Reparent(new_parent Node, keep_global_transform bool)
 
 	GetChildCount(include_internal bool) int32
 
@@ -12210,6 +12284,8 @@ type Node interface {
 	SetPhysicsProcessInternal(enable bool)
 
 	IsPhysicsProcessingInternal() bool
+
+	GetWindow() Window
 
 	GetTree() SceneTree
 
@@ -12564,7 +12640,7 @@ type OS interface {
 
 	GetExecutablePath() String
 
-	ReadStringFromStdin(block bool) String
+	ReadStringFromStdin() String
 
 	Execute(path String, arguments PackedStringArray, output Array, read_stderr bool, open_console bool) int32
 
@@ -12580,11 +12656,13 @@ type OS interface {
 
 	GetProcessId() int32
 
+	HasEnvironment(variable String) bool
+
 	GetEnvironment(variable String) String
 
-	SetEnvironment(variable String, value String) bool
+	SetEnvironment(variable String, value String)
 
-	HasEnvironment(variable String) bool
+	UnsetEnvironment(variable String)
 
 	GetName() String
 
@@ -13715,6 +13793,8 @@ type PhysicsDirectBodyState2D interface {
 
 	GetContactColliderVelocityAtPosition(contact_idx int32) Vector2
 
+	GetContactImpulse(contact_idx int32) Vector2
+
 	GetStep() float32
 
 	IntegrateForces()
@@ -13802,6 +13882,8 @@ type PhysicsDirectBodyState2DExtension interface {
 
 	// VIRTUAL: Internal_GetContactColliderVelocityAtPosition(contact_idx int32,) Vector2
 
+	// VIRTUAL: Internal_GetContactImpulse(contact_idx int32,) Vector2
+
 	// VIRTUAL: Internal_GetStep() float32
 
 	// VIRTUAL: Internal_IntegrateForces()
@@ -13879,7 +13961,7 @@ type PhysicsDirectBodyState3D interface {
 
 	GetContactLocalNormal(contact_idx int32) Vector3
 
-	GetContactImpulse(contact_idx int32) float32
+	GetContactImpulse(contact_idx int32) Vector3
 
 	GetContactLocalShape(contact_idx int32) int32
 
@@ -13972,7 +14054,7 @@ type PhysicsDirectBodyState3DExtension interface {
 
 	// VIRTUAL: Internal_GetContactLocalNormal(contact_idx int32,) Vector3
 
-	// VIRTUAL: Internal_GetContactImpulse(contact_idx int32,) float32
+	// VIRTUAL: Internal_GetContactImpulse(contact_idx int32,) Vector3
 
 	// VIRTUAL: Internal_GetContactLocalShape(contact_idx int32,) int32
 
@@ -14023,6 +14105,8 @@ type PhysicsDirectSpaceState2DExtension interface {
 	// VIRTUAL: Internal_CollideShape(shape_rid RID,transform Transform2D,motion Vector2,margin float32,collision_mask int32,collide_with_bodies bool,collide_with_areas bool,results unsafe.Pointer,max_results int32,result_count *Int32T,) bool
 
 	// VIRTUAL: Internal_RestInfo(shape_rid RID,transform Transform2D,motion Vector2,margin float32,collision_mask int32,collide_with_bodies bool,collide_with_areas bool,rest_info *PhysicsServer2DExtensionShapeRestInfo,) bool
+
+	IsBodyExcludedFromQuery(body RID) bool
 }
 type PhysicsDirectSpaceState3D interface {
 	Object
@@ -14055,6 +14139,8 @@ type PhysicsDirectSpaceState3DExtension interface {
 	// VIRTUAL: Internal_RestInfo(shape_rid RID,transform Transform3D,motion Vector3,margin float32,collision_mask int32,collide_with_bodies bool,collide_with_areas bool,rest_info *PhysicsServer3DExtensionShapeRestInfo,) bool
 
 	// VIRTUAL: Internal_GetClosestPointToObjectVolume(object RID,point Vector3,) Vector3
+
+	IsBodyExcludedFromQuery(body RID) bool
 }
 type PhysicsMaterial interface {
 	Resource
@@ -14404,11 +14490,19 @@ type PhysicsServer2D interface {
 
 	JointGetParam(joint RID, param PhysicsServer2DJointParam) float32
 
+	JointDisableCollisionsBetweenBodies(joint RID, disable bool)
+
+	JointIsDisabledCollisionsBetweenBodies(joint RID) bool
+
 	JointMakePin(joint RID, anchor Vector2, body_a RID, body_b RID)
 
 	JointMakeGroove(joint RID, groove1_a Vector2, groove2_a Vector2, anchor_b Vector2, body_a RID, body_b RID)
 
 	JointMakeDampedSpring(joint RID, anchor_a Vector2, anchor_b Vector2, body_a RID, body_b RID)
+
+	PinJointSetParam(joint RID, param PhysicsServer2DPinJointParam, value float32)
+
+	PinJointGetParam(joint RID, param PhysicsServer2DPinJointParam) float32
 
 	DampedSpringJointSetParam(joint RID, param PhysicsServer2DDampedSpringParam, value float32)
 
@@ -14696,6 +14790,10 @@ type PhysicsServer2DExtension interface {
 	// VIRTUAL: Internal_IsFlushingQueries() bool
 
 	// VIRTUAL: Internal_GetProcessInfo(process_info PhysicsServer2DProcessInfo,) int32
+
+	BodyTestMotionIsExcludingBody(body RID) bool
+
+	BodyTestMotionIsExcludingObject(object int32) bool
 }
 type PhysicsServer2DManager interface {
 	Object
@@ -14954,6 +15052,10 @@ type PhysicsServer3D interface {
 	JointSetSolverPriority(joint RID, priority int32)
 
 	JointGetSolverPriority(joint RID) int32
+
+	JointDisableCollisionsBetweenBodies(joint RID, disable bool)
+
+	JointIsDisabledCollisionsBetweenBodies(joint RID) bool
 
 	JointMakeGeneric6Dof(joint RID, body_A RID, local_ref_A Transform3D, body_B RID, local_ref_B Transform3D)
 
@@ -15326,6 +15428,10 @@ type PhysicsServer3DExtension interface {
 
 	// VIRTUAL: Internal_JointGetSolverPriority(joint RID,) int32
 
+	// VIRTUAL: Internal_JointDisableCollisionsBetweenBodies(joint RID,disable bool,)
+
+	// VIRTUAL: Internal_JointIsDisabledCollisionsBetweenBodies(joint RID,) bool
+
 	// VIRTUAL: Internal_FreeRid(rid RID,)
 
 	// VIRTUAL: Internal_SetActive(active bool,)
@@ -15345,6 +15451,10 @@ type PhysicsServer3DExtension interface {
 	// VIRTUAL: Internal_IsFlushingQueries() bool
 
 	// VIRTUAL: Internal_GetProcessInfo(process_info PhysicsServer3DProcessInfo,) int32
+
+	BodyTestMotionIsExcludingBody(body RID) bool
+
+	BodyTestMotionIsExcludingObject(object int32) bool
 }
 type PhysicsServer3DManager interface {
 	Object
@@ -16058,6 +16168,8 @@ type ProjectSettings interface {
 	SetSetting(name String, value Variant)
 
 	GetSetting(name String, default_value Variant) Variant
+
+	GetSettingWithOverride(name StringName) Variant
 
 	SetOrder(name String, position int32)
 
@@ -17224,17 +17336,17 @@ type RenderingServer interface {
 
 	MeshCreate() RID
 
-	MeshSurfaceGetFormatOffset(format int32, vertex_count int32, array_index int32) int32
+	MeshSurfaceGetFormatOffset(format RenderingServerArrayFormat, vertex_count int32, array_index int32) int32
 
-	MeshSurfaceGetFormatVertexStride(format int32, vertex_count int32) int32
+	MeshSurfaceGetFormatVertexStride(format RenderingServerArrayFormat, vertex_count int32) int32
 
-	MeshSurfaceGetFormatAttributeStride(format int32, vertex_count int32) int32
+	MeshSurfaceGetFormatAttributeStride(format RenderingServerArrayFormat, vertex_count int32) int32
 
-	MeshSurfaceGetFormatSkinStride(format int32, vertex_count int32) int32
+	MeshSurfaceGetFormatSkinStride(format RenderingServerArrayFormat, vertex_count int32) int32
 
 	MeshAddSurface(mesh RID, surface Dictionary)
 
-	MeshAddSurfaceFromArrays(mesh RID, primitive RenderingServerPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, compress_format int32)
+	MeshAddSurfaceFromArrays(mesh RID, primitive RenderingServerPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, compress_format RenderingServerArrayFormat)
 
 	MeshGetBlendShapeCount(mesh RID) int32
 
@@ -17906,7 +18018,7 @@ type RenderingServer interface {
 
 	CanvasItemAddNinePatch(item RID, rect Rect2, source Rect2, texture RID, topleft Vector2, bottomright Vector2, x_axis_mode RenderingServerNinePatchAxisMode, y_axis_mode RenderingServerNinePatchAxisMode, draw_center bool, modulate Color)
 
-	CanvasItemAddPrimitive(item RID, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture RID, width float32)
+	CanvasItemAddPrimitive(item RID, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture RID)
 
 	CanvasItemAddPolygon(item RID, points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture RID)
 
@@ -18044,6 +18156,8 @@ type RenderingServer interface {
 
 	SetBootImage(image Image, color Color, scale bool, use_filter bool)
 
+	GetDefaultClearColor() Color
+
 	SetDefaultClearColor(color Color)
 
 	HasFeature(feature RenderingServerFeatures) bool
@@ -18093,6 +18207,9 @@ type Resource interface {
 
 	Duplicate(subresources bool) Resource
 }
+type ResourceFormatImporterSaver interface {
+	ResourceFormatSaver
+}
 type ResourceFormatLoader interface {
 	RefCounted
 
@@ -18103,6 +18220,8 @@ type ResourceFormatLoader interface {
 	// VIRTUAL: Internal_HandlesType(typeName StringName,) bool
 
 	// VIRTUAL: Internal_GetResourceType(path String,) String
+
+	// VIRTUAL: Internal_GetResourceScriptClass(path String,) String
 
 	// VIRTUAL: Internal_GetResourceUid(path String,) int32
 
@@ -18120,6 +18239,8 @@ type ResourceFormatSaver interface {
 	RefCounted
 
 	// VIRTUAL: Internal_Save(resource Resource,path String,flags int32,) int32
+
+	// VIRTUAL: Internal_SetUid(path String,uid int32,) Error
 
 	// VIRTUAL: Internal_Recognize(resource Resource,) bool
 
@@ -18898,6 +19019,8 @@ type SceneTree interface {
 
 	ReloadCurrentScene() Error
 
+	UnloadCurrentScene()
+
 	SetMultiplayer(multiplayer MultiplayerAPI, root_path NodePath)
 
 	GetMultiplayer(for_path NodePath) MultiplayerAPI
@@ -19238,7 +19361,7 @@ type Shader interface {
 
 	GetDefaultTextureParameter(name StringName, index int32) Texture2D
 
-	HasParameter(name StringName) bool
+	GetShaderUniformList(get_groups bool) Array
 }
 type ShaderGlobalsOverride interface {
 	Node
@@ -19494,6 +19617,8 @@ type Skeleton3D interface {
 
 	GetBoneCount() int32
 
+	GetVersion() int32
+
 	UnparentBoneAndRest(bone_idx int32)
 
 	GetBoneChildren(bone_idx int32) PackedInt32Array
@@ -19546,12 +19671,6 @@ type Skeleton3D interface {
 
 	GetBoneGlobalPoseNoOverride(bone_idx int32) Transform3D
 
-	ClearBonesLocalPoseOverride()
-
-	SetBoneLocalPoseOverride(bone_idx int32, pose Transform3D, amount float32, persistent bool)
-
-	GetBoneLocalPoseOverride(bone_idx int32) Transform3D
-
 	ForceUpdateAllBoneTransforms()
 
 	ForceUpdateBoneChildTransform(bone_idx int32)
@@ -19559,16 +19678,6 @@ type Skeleton3D interface {
 	SetMotionScale(motion_scale float32)
 
 	GetMotionScale() float32
-
-	GlobalPoseToWorldTransform(global_pose Transform3D) Transform3D
-
-	WorldTransformToGlobalPose(world_transform Transform3D) Transform3D
-
-	GlobalPoseToLocalPose(bone_idx int32, global_pose Transform3D) Transform3D
-
-	LocalPoseToGlobalPose(bone_idx int32, local_pose Transform3D) Transform3D
-
-	GlobalPoseZForwardToBoneForward(bone_idx int32, basis Basis) Basis
 
 	SetShowRestOnly(enabled bool)
 
@@ -19585,12 +19694,6 @@ type Skeleton3D interface {
 	PhysicalBonesAddCollisionException(exception RID)
 
 	PhysicalBonesRemoveCollisionException(exception RID)
-
-	SetModificationStack(modification_stack SkeletonModificationStack3D)
-
-	GetModificationStack() SkeletonModificationStack3D
-
-	ExecuteModifications(delta float32, execution_mode int32)
 }
 type SkeletonIK3D interface {
 	Node
@@ -19907,297 +20010,6 @@ type SkeletonModification2DTwoBoneIK interface {
 
 	GetJointTwoBoneIdx() int32
 }
-type SkeletonModification3D interface {
-	Resource
-
-	// VIRTUAL: Internal_Execute(delta float32,)
-
-	// VIRTUAL: Internal_SetupModification(modification_stack SkeletonModificationStack3D,)
-
-	SetEnabled(enabled bool)
-
-	GetEnabled() bool
-
-	GetModificationStack() SkeletonModificationStack3D
-
-	SetIsSetup(is_setup bool)
-
-	GetIsSetup() bool
-
-	SetExecutionMode(execution_mode int32)
-
-	GetExecutionMode() int32
-
-	ClampAngle(angle float32, min float32, max float32, invert bool) float32
-}
-type SkeletonModification3DCCDIK interface {
-	SkeletonModification3D
-
-	SetTargetNode(target_nodepath NodePath)
-
-	GetTargetNode() NodePath
-
-	SetTipNode(tip_nodepath NodePath)
-
-	GetTipNode() NodePath
-
-	SetUseHighQualitySolve(high_quality_solve bool)
-
-	GetUseHighQualitySolve() bool
-
-	GetCcdikJointBoneName(joint_idx int32) String
-
-	SetCcdikJointBoneName(joint_idx int32, bone_name String)
-
-	GetCcdikJointBoneIndex(joint_idx int32) int32
-
-	SetCcdikJointBoneIndex(joint_idx int32, bone_index int32)
-
-	GetCcdikJointCcdikAxis(joint_idx int32) int32
-
-	SetCcdikJointCcdikAxis(joint_idx int32, axis int32)
-
-	GetCcdikJointEnableJointConstraint(joint_idx int32) bool
-
-	SetCcdikJointEnableJointConstraint(joint_idx int32, enable bool)
-
-	GetCcdikJointConstraintAngleMin(joint_idx int32) float32
-
-	SetCcdikJointConstraintAngleMin(joint_idx int32, min_angle float32)
-
-	GetCcdikJointConstraintAngleMax(joint_idx int32) float32
-
-	SetCcdikJointConstraintAngleMax(joint_idx int32, max_angle float32)
-
-	GetCcdikJointConstraintInvert(joint_idx int32) bool
-
-	SetCcdikJointConstraintInvert(joint_idx int32, invert bool)
-
-	SetCcdikDataChainLength(length int32)
-
-	GetCcdikDataChainLength() int32
-}
-type SkeletonModification3DFABRIK interface {
-	SkeletonModification3D
-
-	SetTargetNode(target_nodepath NodePath)
-
-	GetTargetNode() NodePath
-
-	SetFabrikDataChainLength(length int32)
-
-	GetFabrikDataChainLength() int32
-
-	SetChainTolerance(tolerance float32)
-
-	GetChainTolerance() float32
-
-	SetChainMaxIterations(max_iterations int32)
-
-	GetChainMaxIterations() int32
-
-	GetFabrikJointBoneName(joint_idx int32) String
-
-	SetFabrikJointBoneName(joint_idx int32, bone_name String)
-
-	GetFabrikJointBoneIndex(joint_idx int32) int32
-
-	SetFabrikJointBoneIndex(joint_idx int32, bone_index int32)
-
-	GetFabrikJointLength(joint_idx int32) float32
-
-	SetFabrikJointLength(joint_idx int32, length float32)
-
-	GetFabrikJointMagnet(joint_idx int32) Vector3
-
-	SetFabrikJointMagnet(joint_idx int32, magnet_position Vector3)
-
-	GetFabrikJointAutoCalculateLength(joint_idx int32) bool
-
-	SetFabrikJointAutoCalculateLength(joint_idx int32, auto_calculate_length bool)
-
-	FabrikJointAutoCalculateLength(joint_idx int32)
-
-	GetFabrikJointUseTipNode(joint_idx int32) bool
-
-	SetFabrikJointUseTipNode(joint_idx int32, use_tip_node bool)
-
-	GetFabrikJointTipNode(joint_idx int32) NodePath
-
-	SetFabrikJointTipNode(joint_idx int32, tip_node NodePath)
-
-	GetFabrikJointUseTargetBasis(joint_idx int32) bool
-
-	SetFabrikJointUseTargetBasis(joint_idx int32, use_target_basis bool)
-}
-type SkeletonModification3DJiggle interface {
-	SkeletonModification3D
-
-	SetTargetNode(target_nodepath NodePath)
-
-	GetTargetNode() NodePath
-
-	SetJiggleDataChainLength(length int32)
-
-	GetJiggleDataChainLength() int32
-
-	SetStiffness(stiffness float32)
-
-	GetStiffness() float32
-
-	SetMass(mass float32)
-
-	GetMass() float32
-
-	SetDamping(damping float32)
-
-	GetDamping() float32
-
-	SetUseGravity(use_gravity bool)
-
-	GetUseGravity() bool
-
-	SetGravity(gravity Vector3)
-
-	GetGravity() Vector3
-
-	SetUseColliders(use_colliders bool)
-
-	GetUseColliders() bool
-
-	SetCollisionMask(mask int32)
-
-	GetCollisionMask() int32
-
-	SetJiggleJointBoneName(joint_idx int32, name String)
-
-	GetJiggleJointBoneName(joint_idx int32) String
-
-	SetJiggleJointBoneIndex(joint_idx int32, bone_idx int32)
-
-	GetJiggleJointBoneIndex(joint_idx int32) int32
-
-	SetJiggleJointOverride(joint_idx int32, override bool)
-
-	GetJiggleJointOverride(joint_idx int32) bool
-
-	SetJiggleJointStiffness(joint_idx int32, stiffness float32)
-
-	GetJiggleJointStiffness(joint_idx int32) float32
-
-	SetJiggleJointMass(joint_idx int32, mass float32)
-
-	GetJiggleJointMass(joint_idx int32) float32
-
-	SetJiggleJointDamping(joint_idx int32, damping float32)
-
-	GetJiggleJointDamping(joint_idx int32) float32
-
-	SetJiggleJointUseGravity(joint_idx int32, use_gravity bool)
-
-	GetJiggleJointUseGravity(joint_idx int32) bool
-
-	SetJiggleJointGravity(joint_idx int32, gravity Vector3)
-
-	GetJiggleJointGravity(joint_idx int32) Vector3
-
-	SetJiggleJointRoll(joint_idx int32, roll float32)
-
-	GetJiggleJointRoll(joint_idx int32) float32
-}
-type SkeletonModification3DLookAt interface {
-	SkeletonModification3D
-
-	SetBoneName(name String)
-
-	GetBoneName() String
-
-	SetBoneIndex(bone_idx int32)
-
-	GetBoneIndex() int32
-
-	SetTargetNode(target_nodepath NodePath)
-
-	GetTargetNode() NodePath
-
-	SetAdditionalRotation(additional_rotation Vector3)
-
-	GetAdditionalRotation() Vector3
-
-	SetLockRotationToPlane(lock_to_plane bool)
-
-	GetLockRotationToPlane() bool
-
-	SetLockRotationPlane(plane int32)
-
-	GetLockRotationPlane() int32
-}
-type SkeletonModification3DStackHolder interface {
-	SkeletonModification3D
-
-	SetHeldModificationStack(held_modification_stack SkeletonModificationStack3D)
-
-	GetHeldModificationStack() SkeletonModificationStack3D
-}
-type SkeletonModification3DTwoBoneIK interface {
-	SkeletonModification3D
-
-	SetTargetNode(target_nodepath NodePath)
-
-	GetTargetNode() NodePath
-
-	SetUsePoleNode(use_pole_node bool)
-
-	GetUsePoleNode() bool
-
-	SetPoleNode(pole_nodepath NodePath)
-
-	GetPoleNode() NodePath
-
-	SetUseTipNode(use_tip_node bool)
-
-	GetUseTipNode() bool
-
-	SetTipNode(tip_nodepath NodePath)
-
-	GetTipNode() NodePath
-
-	SetAutoCalculateJointLength(auto_calculate_joint_length bool)
-
-	GetAutoCalculateJointLength() bool
-
-	SetJointOneBoneName(bone_name String)
-
-	GetJointOneBoneName() String
-
-	SetJointOneBoneIdx(bone_idx int32)
-
-	GetJointOneBoneIdx() int32
-
-	SetJointOneLength(bone_length float32)
-
-	GetJointOneLength() float32
-
-	SetJointTwoBoneName(bone_name String)
-
-	GetJointTwoBoneName() String
-
-	SetJointTwoBoneIdx(bone_idx int32)
-
-	GetJointTwoBoneIdx() int32
-
-	SetJointTwoLength(bone_length float32)
-
-	GetJointTwoLength() float32
-
-	SetJointOneRoll(roll float32)
-
-	GetJointOneRoll() float32
-
-	SetJointTwoRoll(roll float32)
-
-	GetJointTwoRoll() float32
-}
 type SkeletonModificationStack2D interface {
 	Resource
 
@@ -20230,39 +20042,6 @@ type SkeletonModificationStack2D interface {
 	GetStrength() float32
 
 	GetSkeleton() Skeleton2D
-}
-type SkeletonModificationStack3D interface {
-	Resource
-
-	Setup()
-
-	Execute(delta float32, execution_mode int32)
-
-	EnableAllModifications(enabled bool)
-
-	GetModification(mod_idx int32) SkeletonModification3D
-
-	AddModification(modification SkeletonModification3D)
-
-	DeleteModification(mod_idx int32)
-
-	SetModification(mod_idx int32, modification SkeletonModification3D)
-
-	SetModificationCount(count int32)
-
-	GetModificationCount() int32
-
-	GetIsSetup() bool
-
-	SetEnabled(enabled bool)
-
-	GetEnabled() bool
-
-	SetStrength(strength float32)
-
-	GetStrength() float32
-
-	GetSkeleton() Skeleton3D
 }
 type SkeletonProfile interface {
 	Resource
@@ -20743,7 +20522,7 @@ type SpriteFrames interface {
 
 	GetAnimationNames() PackedStringArray
 
-	SetAnimationSpeed(anim StringName, speed float32)
+	SetAnimationSpeed(anim StringName, fps float32)
 
 	GetAnimationSpeed(anim StringName) float32
 
@@ -20751,15 +20530,17 @@ type SpriteFrames interface {
 
 	GetAnimationLoop(anim StringName) bool
 
-	AddFrame(anim StringName, frame Texture2D, at_position int32)
+	AddFrame(anim StringName, texture Texture2D, duration float32, at_position int32)
+
+	SetFrame(anim StringName, idx int32, texture Texture2D, duration float32)
+
+	RemoveFrame(anim StringName, idx int32)
 
 	GetFrameCount(anim StringName) int32
 
-	GetFrame(anim StringName, idx int32) Texture2D
+	GetFrameTexture(anim StringName, idx int32) Texture2D
 
-	SetFrame(anim StringName, idx int32, txt Texture2D)
-
-	RemoveFrame(anim StringName, idx int32)
+	GetFrameDuration(anim StringName, idx int32) float32
 
 	Clear(anim StringName)
 
@@ -20953,35 +20734,31 @@ type StreamPeerTLS interface {
 type StyleBox interface {
 	Resource
 
-	// VIRTUAL: Internal_GetStyleMargin(side Side,) float32
-
-	// VIRTUAL: Internal_TestMask(point Vector2,rect Rect2,) bool
-
-	// VIRTUAL: Internal_GetCenterSize() Vector2
+	// VIRTUAL: Internal_Draw(to_canvas_item RID,rect Rect2,)
 
 	// VIRTUAL: Internal_GetDrawRect(rect Rect2,) Rect2
 
-	// VIRTUAL: Internal_Draw(to_canvas_item RID,rect Rect2,)
+	// VIRTUAL: Internal_GetMinimumSize() Vector2
 
-	TestMask(point Vector2, rect Rect2) bool
-
-	SetDefaultMargin(margin Side, offset float32)
-
-	SetDefaultMarginAll(offset float32)
-
-	GetDefaultMargin(margin Side) float32
-
-	GetMargin(margin Side) float32
+	// VIRTUAL: Internal_TestMask(point Vector2,rect Rect2,) bool
 
 	GetMinimumSize() Vector2
 
-	GetCenterSize() Vector2
+	SetContentMargin(margin Side, offset float32)
+
+	SetContentMarginAll(offset float32)
+
+	GetContentMargin(margin Side) float32
+
+	GetMargin(margin Side) float32
 
 	GetOffset() Vector2
 
+	Draw(canvas_item RID, rect Rect2)
+
 	GetCurrentItemDrawn() CanvasItem
 
-	Draw(canvas_item RID, rect Rect2)
+	TestMask(point Vector2, rect Rect2) bool
 }
 type StyleBoxEmpty interface {
 	StyleBox
@@ -21083,17 +20860,17 @@ type StyleBoxTexture interface {
 
 	GetTexture() Texture2D
 
-	SetMarginSize(margin Side, size float32)
+	SetTextureMargin(margin Side, size float32)
 
-	SetMarginSizeAll(size float32)
+	SetTextureMarginAll(size float32)
 
-	GetMarginSize(margin Side) float32
+	GetTextureMargin(margin Side) float32
 
-	SetExpandMarginSize(margin Side, size float32)
+	SetExpandMargin(margin Side, size float32)
 
 	SetExpandMarginAll(size float32)
 
-	GetExpandMarginSize(margin Side) float32
+	GetExpandMargin(margin Side) float32
 
 	SetRegionRect(region Rect2)
 
@@ -21387,6 +21164,8 @@ type TabBar interface {
 	SetSelectWithRmb(enabled bool)
 
 	GetSelectWithRmb() bool
+
+	ClearTabs()
 }
 type TabContainer interface {
 	Container
@@ -22514,7 +22293,7 @@ type TextServer interface {
 
 	StringToLower(strValue String, language String) String
 
-	ParseStructuredText(parser_type TextServerStructuredTextParser, args Array, text String) []Vector2i
+	ParseStructuredText(parser_type TextServerStructuredTextParser, args Array, text String) []Vector3i
 }
 type TextServerAdvanced interface {
 	TextServerExtension
@@ -22909,7 +22688,7 @@ type TextServerExtension interface {
 
 	// VIRTUAL: Internal_StringToLower(strValue String,language String,) String
 
-	// VIRTUAL: Internal_ParseStructuredText(parser_type TextServerStructuredTextParser,args Array,text String,) []Vector2i
+	// VIRTUAL: Internal_ParseStructuredText(parser_type TextServerStructuredTextParser,args Array,text String,) []Vector3i
 
 	// VIRTUAL: Internal_Cleanup()
 }
@@ -22967,9 +22746,13 @@ type Texture2D interface {
 	DrawRectRegion(canvas_item RID, rect Rect2, src_rect Rect2, modulate Color, transpose bool, clip_uv bool)
 
 	GetImage() Image
+
+	CreatePlaceholder() Resource
 }
 type Texture2DArray interface {
 	ImageTextureLayered
+
+	CreatePlaceholder() Resource
 }
 type Texture3D interface {
 	Texture
@@ -22997,6 +22780,8 @@ type Texture3D interface {
 	HasMipmaps() bool
 
 	GetData() []Image
+
+	CreatePlaceholder() Resource
 }
 type TextureButton interface {
 	BaseButton
@@ -23134,9 +22919,9 @@ type TextureRect interface {
 
 	GetTexture() Texture2D
 
-	SetIgnoreTextureSize(ignore bool)
+	SetExpandMode(expand_mode TextureRectExpandMode)
 
-	GetIgnoreTextureSize() bool
+	GetExpandMode() TextureRectExpandMode
 
 	SetFlipH(enable bool)
 
@@ -23518,6 +23303,8 @@ type TileMap interface {
 	GetSurroundingCells(coords Vector2i) []Vector2i
 
 	GetUsedCells(layer int32) []Vector2i
+
+	GetUsedCellsById(layer int32, source_id int32, atlas_coords Vector2i, alternative_tile int32) []Vector2i
 
 	GetUsedRect() Rect2i
 
@@ -24055,7 +23842,7 @@ type Tree interface {
 
 	Clear()
 
-	CreateItem(parent TreeItem, idx int32) TreeItem
+	CreateItem(parent TreeItem, index int32) TreeItem
 
 	GetRoot() TreeItem
 
@@ -24092,6 +23879,8 @@ type Tree interface {
 	SetSelectMode(mode TreeSelectMode)
 
 	GetSelectMode() TreeSelectMode
+
+	DeselectAll()
 
 	SetColumns(amount int32)
 
@@ -24296,23 +24085,23 @@ type TreeItem interface {
 
 	GetButtonCount(column int32) int32
 
-	GetButtonTooltipText(column int32, button_idx int32) String
+	GetButtonTooltipText(column int32, button_index int32) String
 
-	GetButtonId(column int32, button_idx int32) int32
+	GetButtonId(column int32, button_index int32) int32
 
 	GetButtonById(column int32, id int32) int32
 
-	GetButton(column int32, button_idx int32) Texture2D
+	GetButton(column int32, button_index int32) Texture2D
 
-	SetButton(column int32, button_idx int32, button Texture2D)
+	SetButton(column int32, button_index int32, button Texture2D)
 
-	EraseButton(column int32, button_idx int32)
+	EraseButton(column int32, button_index int32)
 
-	SetButtonDisabled(column int32, button_idx int32, disabled bool)
+	SetButtonDisabled(column int32, button_index int32, disabled bool)
 
-	SetButtonColor(column int32, button_idx int32, color Color)
+	SetButtonColor(column int32, button_index int32, color Color)
 
-	IsButtonDisabled(column int32, button_idx int32) bool
+	IsButtonDisabled(column int32, button_index int32) bool
 
 	SetTooltipText(column int32, tooltip String)
 
@@ -24330,7 +24119,7 @@ type TreeItem interface {
 
 	IsFoldingDisabled() bool
 
-	CreateChild(idx int32) TreeItem
+	CreateChild(index int32) TreeItem
 
 	GetTree() Tree
 
@@ -24346,7 +24135,7 @@ type TreeItem interface {
 
 	GetPrevVisible(wrap bool) TreeItem
 
-	GetChild(idx int32) TreeItem
+	GetChild(index int32) TreeItem
 
 	GetChildCount() int32
 
@@ -25661,7 +25450,7 @@ type VisualShaderNodeTextureParameter interface {
 
 	GetTextureType() VisualShaderNodeTextureParameterTextureType
 
-	SetColorDefault(typeName VisualShaderNodeTextureParameterColorDefault)
+	SetColorDefault(color VisualShaderNodeTextureParameterColorDefault)
 
 	GetColorDefault() VisualShaderNodeTextureParameterColorDefault
 
@@ -25669,9 +25458,13 @@ type VisualShaderNodeTextureParameter interface {
 
 	GetTextureFilter() VisualShaderNodeTextureParameterTextureFilter
 
-	SetTextureRepeat(typeName VisualShaderNodeTextureParameterTextureRepeat)
+	SetTextureRepeat(repeat VisualShaderNodeTextureParameterTextureRepeat)
 
 	GetTextureRepeat() VisualShaderNodeTextureParameterTextureRepeat
+
+	SetTextureSource(source VisualShaderNodeTextureParameterTextureSource)
+
+	GetTextureSource() VisualShaderNodeTextureParameterTextureSource
 }
 type VisualShaderNodeTextureParameterTriplanar interface {
 	VisualShaderNodeTextureParameter
@@ -25726,6 +25519,38 @@ type VisualShaderNodeTransformVecMult interface {
 	SetOperator(op VisualShaderNodeTransformVecMultOperator)
 
 	GetOperator() VisualShaderNodeTransformVecMultOperator
+}
+type VisualShaderNodeUIntConstant interface {
+	VisualShaderNodeConstant
+
+	SetConstant(constant int32)
+
+	GetConstant() int32
+}
+type VisualShaderNodeUIntFunc interface {
+	VisualShaderNode
+
+	SetFunction(callbackFunc VisualShaderNodeUIntFuncFunction)
+
+	GetFunction() VisualShaderNodeUIntFuncFunction
+}
+type VisualShaderNodeUIntOp interface {
+	VisualShaderNode
+
+	SetOperator(op VisualShaderNodeUIntOpOperator)
+
+	GetOperator() VisualShaderNodeUIntOpOperator
+}
+type VisualShaderNodeUIntParameter interface {
+	VisualShaderNodeParameter
+
+	SetDefaultValueEnabled(enabled bool)
+
+	IsDefaultValueEnabled() bool
+
+	SetDefaultValue(value int32)
+
+	GetDefaultValue() int32
 }
 type VisualShaderNodeUVFunc interface {
 	VisualShaderNode
@@ -26188,6 +26013,10 @@ type Window interface {
 
 	GetTitle() String
 
+	SetInitialPosition(initial_position WindowWindowInitialPosition)
+
+	GetInitialPosition() WindowWindowInitialPosition
+
 	SetCurrentScreen(index int32)
 
 	GetCurrentScreen() int32
@@ -26277,6 +26106,10 @@ type Window interface {
 	SetUseFontOversampling(enable bool)
 
 	IsUsingFontOversampling() bool
+
+	SetMousePassthroughPolygon(polygon PackedVector2Array)
+
+	GetMousePassthroughPolygon() PackedVector2Array
 
 	SetWrapControls(enable bool)
 
@@ -26521,9 +26354,11 @@ type XRController3D interface {
 
 	IsButtonPressed(name StringName) bool
 
-	GetValue(name StringName) float32
+	GetInput(name StringName) Variant
 
-	GetAxis(name StringName) Vector2
+	GetFloat(name StringName) float32
+
+	GetVector2(name StringName) Vector2
 
 	GetTrackerHand() XRPositionalTrackerTrackerHand
 }

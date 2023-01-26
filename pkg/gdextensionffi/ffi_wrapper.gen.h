@@ -437,6 +437,40 @@ char32_t *cgo_callfn_GDExtensionInterface_string_operator_index(
 const char32_t *cgo_callfn_GDExtensionInterface_string_operator_index_const(
     const GDExtensionInterface *p_struct, GDExtensionConstStringPtr p_self,
     GDExtensionInt p_index);
+void cgo_callfn_GDExtensionInterface_string_operator_plus_eq_string(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr p_self,
+    GDExtensionConstStringPtr p_b);
+void cgo_callfn_GDExtensionInterface_string_operator_plus_eq_char(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr p_self,
+    char32_t p_b);
+void cgo_callfn_GDExtensionInterface_string_operator_plus_eq_cstr(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr p_self,
+    const char *p_b);
+void cgo_callfn_GDExtensionInterface_string_operator_plus_eq_wcstr(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr p_self,
+    const wchar_t *p_b);
+void cgo_callfn_GDExtensionInterface_string_operator_plus_eq_c32str(
+    const GDExtensionInterface *p_struct, GDExtensionStringPtr p_self,
+    const char32_t *p_b);
+GDExtensionInt cgo_callfn_GDExtensionInterface_xml_parser_open_buffer(
+    const GDExtensionInterface *p_struct, GDExtensionObjectPtr p_instance,
+    const uint8_t *p_buffer, size_t p_size);
+void cgo_callfn_GDExtensionInterface_file_access_store_buffer(
+    const GDExtensionInterface *p_struct, GDExtensionObjectPtr p_instance,
+    const uint8_t *p_src, uint64_t p_length);
+uint64_t cgo_callfn_GDExtensionInterface_file_access_get_buffer(
+    const GDExtensionInterface *p_struct, GDExtensionConstObjectPtr p_instance,
+    uint8_t *p_dst, uint64_t p_length);
+int64_t
+cgo_callfn_GDExtensionInterface_worker_thread_pool_add_native_group_task(
+    const GDExtensionInterface *p_struct, GDExtensionObjectPtr p_instance,
+    void (*p_func)(void *, uint32_t), void *p_userdata, int p_elements,
+    int p_tasks, GDExtensionBool p_high_priority,
+    GDExtensionConstStringPtr p_description);
+int64_t cgo_callfn_GDExtensionInterface_worker_thread_pool_add_native_task(
+    const GDExtensionInterface *p_struct, GDExtensionObjectPtr p_instance,
+    void (*p_func)(void *), void *p_userdata, GDExtensionBool p_high_priority,
+    GDExtensionConstStringPtr p_description);
 uint8_t *cgo_callfn_GDExtensionInterface_packed_byte_array_operator_index(
     const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
     GDExtensionInt p_index);

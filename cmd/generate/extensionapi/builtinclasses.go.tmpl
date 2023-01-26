@@ -21,6 +21,7 @@ import (
     "unsafe"
 
 	"github.com/godot-go/godot-go/pkg/log"
+	"go.uber.org/zap"
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
@@ -28,7 +29,7 @@ import (
 {{ $sizes := $view.Float64BuiltinClassSize -}}
 
 // built-in classes
-{{ range $i, $c := $view.FilterBuiltinClasses -}}
+{{ range $i, $c := $view.FilteredBuiltinClasses -}}
 
 {{ $enumTypeName := (print "GDEXTENSION_VARIANT_TYPE_" (screamingSnake $c.Name)) -}}
 
@@ -51,7 +52,7 @@ type {{ lowerFirstChar $c.Name }}MethodBindings struct {
     destructor GDExtensionPtrDestructor
     {{ end -}}
 
-    {{ range $j, $mb := $c.Methods -}}
+    {{ range $j, $mb := $c.FilteredMethods -}}
     method_{{ $mb.Name }} GDExtensionPtrBuiltInMethod
     {{ end -}}
 
@@ -100,12 +101,21 @@ func {{ lowerFirstChar $c.Name }}InitConstructorBindings() {
 func {{ lowerFirstChar $c.Name }}InitMethodBindings() {
     log.Debug("{{ lowerFirstChar $c.Name }}InitMethodBindings called")
 
-    {{ range $j, $mb := $c.Methods -}}
+    missingMethods := make([]string, 0, {{ len $c.FilteredMethods }})
+
+    {{ range $j, $mb := $c.FilteredMethods -}}
     methodName{{ $j }} := NewStringNameWithLatin1Chars("{{ $mb.Name }}")
     defer methodName{{ $j }}.Destroy()
     log.Debug("global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }}")
     global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }} = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, {{ $enumTypeName }}, methodName{{ $j }}.AsGDExtensionStringNamePtr(), {{ $mb.Hash }})
+    if global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }} == nil {
+        missingMethods = append(missingMethods, "global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }}")
+    }
     {{ end -}}
+
+    if len(missingMethods) > 0 {
+        log.Panic("missing method binds", zap.Any("missing", missingMethods))
+    }
 
     {{ range $j, $mb := $c.Members -}}
     memberName{{ $j }} := NewStringNameWithLatin1Chars("{{ $mb.Name }}")
@@ -155,7 +165,7 @@ func (c *{{ $c.Name }}) ptr() GDExtensionConstTypePtr {
 }
 
 // constructors
-{{ range $j, $con := $c.FilterConstructors -}}
+{{ range $j, $con := $c.FilteredConstructors -}}
 
 // New{{ $c.Name }}, index: {{ $con.Index }}
 func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arguments -}}{{ upperFirstChar (goArgumentType $arg.Type) }}{{- end -}}{{- end -}}(
@@ -171,17 +181,23 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
     var args [{{ len $con.Arguments }}]GDExtensionConstTypePtr
 
     {{ range $k, $arg := $con.Arguments -}}
+        {{ $argName := goArgumentName $arg.Name }}
+        {{ $argType := goArgumentType $arg.Type }}
         // {{ $arg.Type }}
-        {{ if eq (goArgumentType $arg.Type) "string" -}}
-        cv{{ $k }} := NewStringWithLatin1Chars({{ goArgumentName $arg.Name }})
+        {{ if eq $argType "string" -}}
+        cv{{ $k }} := NewStringWithLatin1Chars({{ $argName }})
         defer cv{{ $k }}.Destroy()
         args[{{ $k }}] = cv{{ $k }}.ptr()
 
         {{ else -}}
         {{ if typeHasPtr $arg.Type -}}
-        args[{{ $k }}] = (GDExtensionConstTypePtr)({{ goArgumentName $arg.Name }}.ptr())
+        // {{ goEncoder $arg.Type }}
+        args[{{ $k }}] = (GDExtensionConstTypePtr)({{ $argName }}.ptr())
+        {{ else if eq $argType "Object" -}}
+        args[{{ $k }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ $argName }}))
         {{ else -}}
-        args[{{ $k }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ goArgumentName $arg.Name }}))
+        eArg{{ $k }} := {{ goEncoder $argType }}.EncodeArg({{ $argName }})
+        args[{{ $k }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&eArg{{ $k }}))
         {{ end -}}
         {{ end -}}
 	{{ end -}}
@@ -202,7 +218,7 @@ func (cx *{{ $c.Name }}) Destroy() {
 {{ end }}
 
 // methods
-{{ range $j, $m := $c.Methods -}}
+{{ range $j, $m := $c.FilteredMethods -}}
 {{ $fnReturnType := goReturnType $m.ReturnType }}
 {{ $hasSomeArguments := (or $m.Arguments $m.IsVararg) }}
 /* {{ goMethodName $m.Name }} : {{ $m.Name }}
@@ -239,10 +255,14 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     {{ end -}}
 
     {{ range $j, $arg := $m.Arguments -}}
-    {{ if goHasArgumentTypeEncoder $arg.Type }}
-    // {{ upperFirstChar (goArgumentType $arg.Type) }}Encoder
+    {{ if goHasArgumentTypeEncoder $arg.Type -}}
+    {{ if goEncodeIsReference $arg.Type -}}
     args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&{{ goArgumentName $arg.Name }}))
-    {{ else }}
+    {{ else -}}
+    eArg{{ $j }} := {{ goEncoder (goArgumentType $arg.Type) }}.EncodeArg({{ goArgumentName $arg.Name }})
+    args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&eArg{{ $j }}))
+    {{ end -}}
+    {{ else -}}
     args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&{{ goArgumentName $arg.Name }}))
     {{ end }}
     {{ end }}{{/* range $m.Arguments */}}
@@ -312,10 +332,16 @@ func (cx *{{ $c.Name }}) SetIndexed(i int64, value {{ goReturnType $c.IndexingRe
 
 // members
 {{ range $j, $m := $c.Members -}}
-{{ $fnReturnType := goReturnType $m.Type }}
-func (cx *{{ $c.Name }}) {{ goMethodName (print "MemberGet" $m.Name) }}() {{ $fnReturnType }} {
+{{ $returnType := goReturnType $m.Type }}
+{{ $decodeType := goDecodeNumberType $returnType }}
+func (cx *{{ $c.Name }}) {{ goMethodName (print "MemberGet" $m.Name) }}() {{ $returnType }} {
     bx := cx.ptr()
-    return callBuiltinPtrGetter[{{ $fnReturnType }}](global{{ $c.Name }}MethodBindings.member_{{ $m.Name }}_getter, bx)
+    ret := callBuiltinPtrGetter[{{ $decodeType }}](global{{ $c.Name }}MethodBindings.member_{{ $m.Name }}_getter, bx)
+    {{ if (eq $decodeType $returnType) -}}
+        return ret
+    {{ else -}}
+        return {{ goEncoder $returnType }}.DecodeArg(ret)
+    {{ end }}
 }
 {{ end }}
 
@@ -328,7 +354,15 @@ func (cx *{{ $c.Name }}) {{ upperFirstChar (getOperatorIdName $op.Name) }}{{ wit
 ) {{ goReturnType $op.ReturnType }} {
     lt := cx.ptr()
     {{ if gt (len $op.RightType) 0 -}}
+
+    {{ $argType := goArgumentType $op.RightType }}
+    {{ if goEncodeIsReference $argType -}}
     rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&right))
+    {{ else -}}
+    eRight := {{ goEncoder $argType }}.EncodeArg(right)
+    rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+    {{ end -}}
+
     return callBuiltinOperatorPtr[{{ goReturnType $op.ReturnType }}](global{{ $c.Name }}MethodBindings.operator_{{ getOperatorIdName $op.Name }}_{{ $op.RightType }}, lt, rt)
     {{ else -}}
     rt := (GDExtensionConstTypePtr)(nullptr)
@@ -340,11 +374,11 @@ func (cx *{{ $c.Name }}) {{ upperFirstChar (getOperatorIdName $op.Name) }}{{ wit
 {{ end -}}
 
 func builtinClassesInitBindings() {
-{{ range $i, $c := $view.FilterBuiltinClasses -}}
+{{ range $i, $c := $view.FilteredBuiltinClasses -}}
     {{ lowerFirstChar $c.Name }}InitConstructorBindings()
 {{ end -}}
 
-{{ range $i, $c := $view.FilterBuiltinClasses -}}
+{{ range $i, $c := $view.FilteredBuiltinClasses -}}
     {{ lowerFirstChar $c.Name }}InitMethodBindings()
 {{ end -}}
 }

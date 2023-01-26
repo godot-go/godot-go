@@ -131,6 +131,9 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	{{ if $m.IsVararg -}}
 	{{ range $j, $a := $m.Arguments -}}
 	arg{{ $j }} := {{ goVariantConstructor $a.Type (goArgumentName $a.Name) }}
+	{{ if $a.HasDestroy }}
+	defer arg{{ $j }}.Destroy()
+	{{ end -}}
 	argsPtrSlice[{{ $j }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&arg{{ $j }}))
 	{{ end -}}
 	{{ else -}}

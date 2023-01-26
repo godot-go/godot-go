@@ -597,7 +597,7 @@ func GoCallback_ClassDBGetVirtualFunc(pUserdata unsafe.Pointer, pName C.GDExtens
 	methodName := (&sMethodName).ToAscii()
 
 	log.Info("GoCallback_ClassDBGetVirtualFunc called",
-	    zap.String("type_name", className),
+		zap.String("type_name", className),
 		zap.String("method", methodName),
 	)
 

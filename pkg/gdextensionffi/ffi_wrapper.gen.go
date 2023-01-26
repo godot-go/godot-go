@@ -1605,6 +1605,184 @@ type GDExtensionInitialization C.GDExtensionInitialization
 				return (*Char32T)(ret)
 				}
 		
+			func GDExtensionInterface_string_operator_plus_eq_string(p_struct *GDExtensionInterface, p_self GDExtensionStringPtr, p_b GDExtensionConstStringPtr)  {
+				arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+				arg1 := (C.GDExtensionStringPtr)(p_self) // GDExtensionStringPtr
+				arg2 := (C.GDExtensionConstStringPtr)(p_b) // GDExtensionConstStringPtr
+				
+
+				log.Debug("called C.cgo_callfn_GDExtensionInterface_string_operator_plus_eq_string")
+
+				C.cgo_callfn_GDExtensionInterface_string_operator_plus_eq_string(arg0, arg1, arg2)
+
+				
+				
+				}
+		
+			func GDExtensionInterface_string_operator_plus_eq_char(p_struct *GDExtensionInterface, p_self GDExtensionStringPtr, p_b Char32T)  {
+				arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+				arg1 := (C.GDExtensionStringPtr)(p_self) // GDExtensionStringPtr
+				arg2 := (C.char32_t)(p_b) // char32_t
+				
+
+				log.Debug("called C.cgo_callfn_GDExtensionInterface_string_operator_plus_eq_char")
+
+				C.cgo_callfn_GDExtensionInterface_string_operator_plus_eq_char(arg0, arg1, arg2)
+
+				
+				
+				}
+		
+			func GDExtensionInterface_string_operator_plus_eq_cstr(p_struct *GDExtensionInterface, p_self GDExtensionStringPtr, p_b string)  {
+				arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+				arg1 := (C.GDExtensionStringPtr)(p_self) // GDExtensionStringPtr
+				arg2 := C.CString(p_b) // const char * 
+				
+
+				log.Debug("called C.cgo_callfn_GDExtensionInterface_string_operator_plus_eq_cstr")
+
+				C.cgo_callfn_GDExtensionInterface_string_operator_plus_eq_cstr(arg0, arg1, arg2)
+
+				
+				C.free(unsafe.Pointer(arg2))
+				}
+		
+			func GDExtensionInterface_string_operator_plus_eq_wcstr(p_struct *GDExtensionInterface, p_self GDExtensionStringPtr, p_b *WcharT)  {
+				arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+				arg1 := (C.GDExtensionStringPtr)(p_self) // GDExtensionStringPtr
+				arg2 := (*C.wchar_t)(p_b) // const wchar_t * 
+				
+
+				log.Debug("called C.cgo_callfn_GDExtensionInterface_string_operator_plus_eq_wcstr")
+
+				C.cgo_callfn_GDExtensionInterface_string_operator_plus_eq_wcstr(arg0, arg1, arg2)
+
+				
+				
+				}
+		
+			func GDExtensionInterface_string_operator_plus_eq_c32str(p_struct *GDExtensionInterface, p_self GDExtensionStringPtr, p_b *Char32T)  {
+				arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+				arg1 := (C.GDExtensionStringPtr)(p_self) // GDExtensionStringPtr
+				arg2 := (*C.char32_t)(p_b) // const char32_t * 
+				
+
+				log.Debug("called C.cgo_callfn_GDExtensionInterface_string_operator_plus_eq_c32str")
+
+				C.cgo_callfn_GDExtensionInterface_string_operator_plus_eq_c32str(arg0, arg1, arg2)
+
+				
+				
+				}
+		
+			func GDExtensionInterface_xml_parser_open_buffer(p_struct *GDExtensionInterface, p_instance GDExtensionObjectPtr, p_buffer *Uint8T, p_size uint64) GDExtensionInt {
+				arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+				arg1 := (C.GDExtensionObjectPtr)(p_instance) // GDExtensionObjectPtr
+				arg2 := (*C.uint8_t)(p_buffer) // const uint8_t * 
+				arg3 := (C.size_t)(p_size) // size_t
+				
+
+				log.Debug("called C.cgo_callfn_GDExtensionInterface_xml_parser_open_buffer")
+
+				ret := C.cgo_callfn_GDExtensionInterface_xml_parser_open_buffer(arg0, arg1, arg2, arg3)
+
+				
+				
+				
+				
+
+				// GDExtensionInt
+				return (GDExtensionInt)(ret)
+				}
+		
+			func GDExtensionInterface_file_access_store_buffer(p_struct *GDExtensionInterface, p_instance GDExtensionObjectPtr, p_src *Uint8T, p_length Uint64T)  {
+				arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+				arg1 := (C.GDExtensionObjectPtr)(p_instance) // GDExtensionObjectPtr
+				arg2 := (*C.uint8_t)(p_src) // const uint8_t * 
+				arg3 := (C.uint64_t)(p_length) // uint64_t
+				
+
+				log.Debug("called C.cgo_callfn_GDExtensionInterface_file_access_store_buffer")
+
+				C.cgo_callfn_GDExtensionInterface_file_access_store_buffer(arg0, arg1, arg2, arg3)
+
+				
+				
+				
+				}
+		
+			func GDExtensionInterface_file_access_get_buffer(p_struct *GDExtensionInterface, p_instance GDExtensionConstObjectPtr, p_dst *Uint8T, p_length Uint64T) uint64 {
+				arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+				arg1 := (C.GDExtensionConstObjectPtr)(p_instance) // GDExtensionConstObjectPtr
+				arg2 := (*C.uint8_t)(p_dst) // uint8_t * 
+				arg3 := (C.uint64_t)(p_length) // uint64_t
+				
+
+				log.Debug("called C.cgo_callfn_GDExtensionInterface_file_access_get_buffer")
+
+				ret := C.cgo_callfn_GDExtensionInterface_file_access_get_buffer(arg0, arg1, arg2, arg3)
+
+				
+				
+				
+				
+
+				// uint64_t
+				return uint64(ret)
+				}
+		
+			func GDExtensionInterface_worker_thread_pool_add_native_group_task(p_struct *GDExtensionInterface, p_instance GDExtensionObjectPtr,  p_func unsafe.Pointer, p_userdata unsafe.Pointer, p_elements int, p_tasks int, p_high_priority GDExtensionBool, p_description GDExtensionConstStringPtr) int64 {
+				arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+				arg1 := (C.GDExtensionObjectPtr)(p_instance) // GDExtensionObjectPtr
+				arg2 := (*[0]byte)(p_func) // void(*p_func)(void * ,uint32_t)
+				arg3 := unsafe.Pointer(p_userdata) // void * 
+				arg4 := (C.int)(p_elements) // int
+				arg5 := (C.int)(p_tasks) // int
+				arg6 := (C.GDExtensionBool)(p_high_priority) // GDExtensionBool
+				arg7 := (C.GDExtensionConstStringPtr)(p_description) // GDExtensionConstStringPtr
+				
+
+				log.Debug("called C.cgo_callfn_GDExtensionInterface_worker_thread_pool_add_native_group_task")
+
+				ret := C.cgo_callfn_GDExtensionInterface_worker_thread_pool_add_native_group_task(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+
+				
+				
+				
+				
+				
+				
+				
+				
+
+				// int64_t
+				return int64(ret)
+				}
+		
+			func GDExtensionInterface_worker_thread_pool_add_native_task(p_struct *GDExtensionInterface, p_instance GDExtensionObjectPtr,  p_func unsafe.Pointer, p_userdata unsafe.Pointer, p_high_priority GDExtensionBool, p_description GDExtensionConstStringPtr) int64 {
+				arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
+				arg1 := (C.GDExtensionObjectPtr)(p_instance) // GDExtensionObjectPtr
+				arg2 := (*[0]byte)(p_func) // void(*p_func)(void * )
+				arg3 := unsafe.Pointer(p_userdata) // void * 
+				arg4 := (C.GDExtensionBool)(p_high_priority) // GDExtensionBool
+				arg5 := (C.GDExtensionConstStringPtr)(p_description) // GDExtensionConstStringPtr
+				
+
+				log.Debug("called C.cgo_callfn_GDExtensionInterface_worker_thread_pool_add_native_task")
+
+				ret := C.cgo_callfn_GDExtensionInterface_worker_thread_pool_add_native_task(arg0, arg1, arg2, arg3, arg4, arg5)
+
+				
+				
+				
+				
+				
+				
+
+				// int64_t
+				return int64(ret)
+				}
+		
 			func GDExtensionInterface_packed_byte_array_operator_index(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_index GDExtensionInt) *uint8 {
 				arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
 				arg1 := (C.GDExtensionTypePtr)(p_self) // GDExtensionTypePtr

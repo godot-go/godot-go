@@ -508,6 +508,12 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AudioStreamPlaybackOggVorbis),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AudioStreamPlaybackOggVorbis),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AudioStreamPlaybackPolyphonic",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AudioStreamPlaybackPolyphonic),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AudioStreamPlaybackPolyphonic),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AudioStreamPlaybackPolyphonic),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AudioStreamPlaybackResampled",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AudioStreamPlaybackResampled),
@@ -531,6 +537,12 @@ func init() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AudioStreamPlayer3D),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AudioStreamPlayer3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AudioStreamPlayer3D),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AudioStreamPolyphonic",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AudioStreamPolyphonic),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AudioStreamPolyphonic),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AudioStreamPolyphonic),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AudioStreamRandomizer",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -4868,10 +4880,12 @@ func init() {
 	gdNativeConstructors.Set("AudioStreamOggVorbis", NewGDExtensionClassFromAudioStreamOggVorbisOwner)
 	gdNativeConstructors.Set("AudioStreamPlayback", NewGDExtensionClassFromAudioStreamPlaybackOwner)
 	gdNativeConstructors.Set("AudioStreamPlaybackOggVorbis", NewGDExtensionClassFromAudioStreamPlaybackOggVorbisOwner)
+	gdNativeConstructors.Set("AudioStreamPlaybackPolyphonic", NewGDExtensionClassFromAudioStreamPlaybackPolyphonicOwner)
 	gdNativeConstructors.Set("AudioStreamPlaybackResampled", NewGDExtensionClassFromAudioStreamPlaybackResampledOwner)
 	gdNativeConstructors.Set("AudioStreamPlayer", NewGDExtensionClassFromAudioStreamPlayerOwner)
 	gdNativeConstructors.Set("AudioStreamPlayer2D", NewGDExtensionClassFromAudioStreamPlayer2DOwner)
 	gdNativeConstructors.Set("AudioStreamPlayer3D", NewGDExtensionClassFromAudioStreamPlayer3DOwner)
+	gdNativeConstructors.Set("AudioStreamPolyphonic", NewGDExtensionClassFromAudioStreamPolyphonicOwner)
 	gdNativeConstructors.Set("AudioStreamRandomizer", NewGDExtensionClassFromAudioStreamRandomizerOwner)
 	gdNativeConstructors.Set("AudioStreamWAV", NewGDExtensionClassFromAudioStreamWAVOwner)
 	gdNativeConstructors.Set("BackBufferCopy", NewGDExtensionClassFromBackBufferCopyOwner)

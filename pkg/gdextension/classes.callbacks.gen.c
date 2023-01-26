@@ -1389,6 +1389,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_AudioStreamPlay
 
 
 
+void *cgo_gdextension_class_binding_create_callback_AudioStreamPlaybackPolyphonic(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("AudioStreamPlaybackPolyphonic", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_AudioStreamPlaybackPolyphonic(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("AudioStreamPlaybackPolyphonic", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_AudioStreamPlaybackPolyphonic(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("AudioStreamPlaybackPolyphonic", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_AudioStreamPlaybackResampled(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("AudioStreamPlaybackResampled", p_token, p_instance);
@@ -1453,6 +1470,23 @@ void cgo_gdextension_class_binding_free_callback_AudioStreamPlayer3D(void *p_tok
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_AudioStreamPlayer3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("AudioStreamPlayer3D", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_AudioStreamPolyphonic(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("AudioStreamPolyphonic", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_AudioStreamPolyphonic(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("AudioStreamPolyphonic", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_AudioStreamPolyphonic(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("AudioStreamPolyphonic", p_token, p_instance, p_reference);
 }
 
 

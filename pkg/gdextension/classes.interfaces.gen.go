@@ -770,6 +770,8 @@ type AnimationNodeStateMachinePlayback interface {
 
 	GetCurrentLength() float32
 
+	GetFadingFromNode() StringName
+
 	GetTravelPath() PackedStringArray
 }
 type AnimationNodeStateMachineTransition interface {
@@ -1914,6 +1916,19 @@ type AudioStreamPlayback interface {
 type AudioStreamPlaybackOggVorbis interface {
 	AudioStreamPlaybackResampled
 }
+type AudioStreamPlaybackPolyphonic interface {
+	AudioStreamPlayback
+
+	PlayStream(stream AudioStream, from_offset float32, volume_db float32, pitch_scale float32) int32
+
+	SetStreamVolume(stream int32, volume_db float32)
+
+	SetStreamPitchScale(stream int32, pitch_scale float32)
+
+	IsStreamPlaying(stream int32) bool
+
+	StopStream(stream int32)
+}
 type AudioStreamPlaybackResampled interface {
 	AudioStreamPlayback
 
@@ -2070,7 +2085,7 @@ type AudioStreamPlayer3D interface {
 
 	IsAutoplayEnabled() bool
 
-	SetMaxDistance(metres float32)
+	SetMaxDistance(meters float32)
 
 	GetMaxDistance() float32
 
@@ -2119,6 +2134,13 @@ type AudioStreamPlayer3D interface {
 	GetPanningStrength() float32
 
 	GetStreamPlayback() AudioStreamPlayback
+}
+type AudioStreamPolyphonic interface {
+	AudioStream
+
+	SetPolyphony(voices int32)
+
+	GetPolyphony() int32
 }
 type AudioStreamRandomizer interface {
 	AudioStream
@@ -5252,9 +5274,13 @@ type CryptoKey interface {
 }
 type Cubemap interface {
 	ImageTextureLayered
+
+	CreatePlaceholder() Resource
 }
 type CubemapArray interface {
 	ImageTextureLayered
+
+	CreatePlaceholder() Resource
 }
 type Curve interface {
 	Resource
@@ -7164,8 +7190,6 @@ type GDScript interface {
 	Script
 
 	New(varargs ...Variant) Variant
-
-	GetAsByteCode() PackedByteArray
 }
 type GDScriptNativeClass interface {
 	RefCounted
@@ -9037,6 +9061,8 @@ type Input interface {
 
 	IsPhysicalKeyPressed(keycode Key) bool
 
+	IsKeyLabelPressed(keycode Key) bool
+
 	IsMouseButtonPressed(button MouseButton) bool
 
 	IsJoyButtonPressed(device int32, button JoyButton) bool
@@ -9216,6 +9242,10 @@ type InputEventKey interface {
 
 	GetPhysicalKeycode() Key
 
+	SetKeyLabel(key_label Key)
+
+	GetKeyLabel() Key
+
 	SetUnicode(unicode int32)
 
 	GetUnicode() int32
@@ -9225,6 +9255,14 @@ type InputEventKey interface {
 	GetKeycodeWithModifiers() Key
 
 	GetPhysicalKeycodeWithModifiers() Key
+
+	GetKeyLabelWithModifiers() Key
+
+	AsTextKeycode() String
+
+	AsTextPhysicalKeycode() String
+
+	AsTextKeyLabel() String
 }
 type InputEventMIDI interface {
 	InputEvent
@@ -9409,6 +9447,8 @@ type InputEventWithModifiers interface {
 	SetMetaPressed(pressed bool)
 
 	IsMetaPressed() bool
+
+	GetModifiersMask() KeyModifierMask
 }
 type InputMap interface {
 	Object
@@ -9596,17 +9636,19 @@ type JNISingleton interface {
 	Object
 }
 type JSON interface {
-	RefCounted
+	Resource
 
 	Stringify(data Variant, indent String, sort_keys bool, full_precision bool) String
 
 	ParseString(json_string String) Variant
 
-	Parse(json_string String) Error
+	Parse(json_text String, keep_text bool) Error
 
 	GetData() Variant
 
 	SetData(data Variant)
+
+	GetParsedText() String
 
 	GetErrorLine() int32
 
@@ -10518,6 +10560,8 @@ type Material interface {
 	GetRenderPriority() int32
 
 	InspectNativeShaderCode()
+
+	CreatePlaceholder() Resource
 }
 type MenuBar interface {
 	Control
@@ -10633,6 +10677,8 @@ type Mesh interface {
 	SurfaceSetMaterial(surf_idx int32, material Material)
 
 	SurfaceGetMaterial(surf_idx int32) Material
+
+	CreatePlaceholder() Resource
 
 	CreateTrimeshShape() ConcavePolygonShape3D
 
@@ -18175,6 +18221,8 @@ type ResourceFormatLoader interface {
 
 	// VIRTUAL: Internal_GetResourceType(path String,) String
 
+	// VIRTUAL: Internal_GetResourceScriptClass(path String,) String
+
 	// VIRTUAL: Internal_GetResourceUid(path String,) int32
 
 	// VIRTUAL: Internal_GetDependencies(path String,add_types bool,) PackedStringArray
@@ -19313,7 +19361,7 @@ type Shader interface {
 
 	GetDefaultTextureParameter(name StringName, index int32) Texture2D
 
-	HasParameter(name StringName) bool
+	GetShaderUniformList(get_groups bool) Array
 }
 type ShaderGlobalsOverride interface {
 	Node
@@ -20686,35 +20734,31 @@ type StreamPeerTLS interface {
 type StyleBox interface {
 	Resource
 
-	// VIRTUAL: Internal_GetStyleMargin(side Side,) float32
-
-	// VIRTUAL: Internal_TestMask(point Vector2,rect Rect2,) bool
-
-	// VIRTUAL: Internal_GetCenterSize() Vector2
+	// VIRTUAL: Internal_Draw(to_canvas_item RID,rect Rect2,)
 
 	// VIRTUAL: Internal_GetDrawRect(rect Rect2,) Rect2
 
-	// VIRTUAL: Internal_Draw(to_canvas_item RID,rect Rect2,)
+	// VIRTUAL: Internal_GetMinimumSize() Vector2
 
-	TestMask(point Vector2, rect Rect2) bool
-
-	SetDefaultMargin(margin Side, offset float32)
-
-	SetDefaultMarginAll(offset float32)
-
-	GetDefaultMargin(margin Side) float32
-
-	GetMargin(margin Side) float32
+	// VIRTUAL: Internal_TestMask(point Vector2,rect Rect2,) bool
 
 	GetMinimumSize() Vector2
 
-	GetCenterSize() Vector2
+	SetContentMargin(margin Side, offset float32)
+
+	SetContentMarginAll(offset float32)
+
+	GetContentMargin(margin Side) float32
+
+	GetMargin(margin Side) float32
 
 	GetOffset() Vector2
 
+	Draw(canvas_item RID, rect Rect2)
+
 	GetCurrentItemDrawn() CanvasItem
 
-	Draw(canvas_item RID, rect Rect2)
+	TestMask(point Vector2, rect Rect2) bool
 }
 type StyleBoxEmpty interface {
 	StyleBox
@@ -20816,17 +20860,17 @@ type StyleBoxTexture interface {
 
 	GetTexture() Texture2D
 
-	SetMarginSize(margin Side, size float32)
+	SetTextureMargin(margin Side, size float32)
 
-	SetMarginSizeAll(size float32)
+	SetTextureMarginAll(size float32)
 
-	GetMarginSize(margin Side) float32
+	GetTextureMargin(margin Side) float32
 
-	SetExpandMarginSize(margin Side, size float32)
+	SetExpandMargin(margin Side, size float32)
 
 	SetExpandMarginAll(size float32)
 
-	GetExpandMarginSize(margin Side) float32
+	GetExpandMargin(margin Side) float32
 
 	SetRegionRect(region Rect2)
 
@@ -22702,9 +22746,13 @@ type Texture2D interface {
 	DrawRectRegion(canvas_item RID, rect Rect2, src_rect Rect2, modulate Color, transpose bool, clip_uv bool)
 
 	GetImage() Image
+
+	CreatePlaceholder() Resource
 }
 type Texture2DArray interface {
 	ImageTextureLayered
+
+	CreatePlaceholder() Resource
 }
 type Texture3D interface {
 	Texture
@@ -22732,6 +22780,8 @@ type Texture3D interface {
 	HasMipmaps() bool
 
 	GetData() []Image
+
+	CreatePlaceholder() Resource
 }
 type TextureButton interface {
 	BaseButton
@@ -26304,9 +26354,11 @@ type XRController3D interface {
 
 	IsButtonPressed(name StringName) bool
 
-	GetValue(name StringName) float32
+	GetInput(name StringName) Variant
 
-	GetAxis(name StringName) Vector2
+	GetFloat(name StringName) float32
+
+	GetVector2(name StringName) Vector2
 
 	GetTrackerHand() XRPositionalTrackerTrackerHand
 }

@@ -20,7 +20,7 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
-.PHONY: goenv generate update_godot_headers_from_binary update_godot_headers_from_github build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
+.PHONY: goenv generate update_godot_headers_from_binary build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
 
 goenv:
 	go env

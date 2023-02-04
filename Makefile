@@ -31,6 +31,8 @@ generate: clean
 		$(CLANG_FORMAT) -i pkg/gdextensionffi/ffi_wrapper.gen.h; \
 		$(CLANG_FORMAT) -i pkg/gdextensionffi/ffi_wrapper.gen.c; \
 	fi
+	go fmt pkg/gdextensionffi/*.gen.go
+	go fmt pkg/gdextension/*.gen.go
 
 update_godot_headers_from_binary: ## update godot_headers from the godot binary
 	DISPLAY=:0 $(GODOT) --dump-extension-api; \

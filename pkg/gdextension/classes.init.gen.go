@@ -3580,6 +3580,12 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_TCPServer),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_TCPServer),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("TLSOptions",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_TLSOptions),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_TLSOptions),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_TLSOptions),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("TabBar",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_TabBar),
@@ -3909,6 +3915,12 @@ func init() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VideoStream),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VideoStream),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VideoStream),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VideoStreamPlayback",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VideoStreamPlayback),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VideoStreamPlayback),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VideoStreamPlayback),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VideoStreamPlayer",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -5392,6 +5404,7 @@ func init() {
 	gdNativeConstructors.Set("SyntaxHighlighter", NewGDExtensionClassFromSyntaxHighlighterOwner)
 	gdNativeConstructors.Set("SystemFont", NewGDExtensionClassFromSystemFontOwner)
 	gdNativeConstructors.Set("TCPServer", NewGDExtensionClassFromTCPServerOwner)
+	gdNativeConstructors.Set("TLSOptions", NewGDExtensionClassFromTLSOptionsOwner)
 	gdNativeConstructors.Set("TabBar", NewGDExtensionClassFromTabBarOwner)
 	gdNativeConstructors.Set("TabContainer", NewGDExtensionClassFromTabContainerOwner)
 	gdNativeConstructors.Set("TextEdit", NewGDExtensionClassFromTextEditOwner)
@@ -5447,6 +5460,7 @@ func init() {
 	gdNativeConstructors.Set("VehicleBody3D", NewGDExtensionClassFromVehicleBody3DOwner)
 	gdNativeConstructors.Set("VehicleWheel3D", NewGDExtensionClassFromVehicleWheel3DOwner)
 	gdNativeConstructors.Set("VideoStream", NewGDExtensionClassFromVideoStreamOwner)
+	gdNativeConstructors.Set("VideoStreamPlayback", NewGDExtensionClassFromVideoStreamPlaybackOwner)
 	gdNativeConstructors.Set("VideoStreamPlayer", NewGDExtensionClassFromVideoStreamPlayerOwner)
 	gdNativeConstructors.Set("VideoStreamTheora", NewGDExtensionClassFromVideoStreamTheoraOwner)
 	gdNativeConstructors.Set("Viewport", NewGDExtensionClassFromViewportOwner)

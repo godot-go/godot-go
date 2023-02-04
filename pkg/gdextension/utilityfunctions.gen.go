@@ -3442,3 +3442,36 @@ func RidFromInt64(base int32) RID {
 	Free(argBytes)
 	return ret
 }
+
+// IsSame is under the category "general".
+func IsSame(a Variant, b Variant) bool {
+
+	fName := NewStringNameWithLatin1Chars("is_same")
+	defer fName.Destroy()
+	fn := GDExtensionInterface_variant_get_ptr_utility_function(internal.gdnInterface, fName.AsGDExtensionStringNamePtr(), 1409423524)
+
+	if fn == nil {
+		panic("could not find utility function is_same (1409423524)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
+
+	argBytes := AllocZeros(sz)
+
+	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+
+	argsPtr[0] = unsafe.Pointer(&a)
+	argsPtr[1] = unsafe.Pointer(&b)
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(2)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}

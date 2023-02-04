@@ -926,6 +926,17 @@ cgo_callfn_GDExtensionInterface_array_operator_index_const(
     GDExtensionInt p_index) {
   return p_struct->array_operator_index_const(p_self, p_index);
 }
+void cgo_callfn_GDExtensionInterface_array_ref(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionConstTypePtr p_from) {
+  p_struct->array_ref(p_self, p_from);
+}
+void cgo_callfn_GDExtensionInterface_array_set_typed(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    uint32_t p_type, GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstVariantPtr p_script) {
+  p_struct->array_set_typed(p_self, p_type, p_class_name, p_script);
+}
 GDExtensionVariantPtr cgo_callfn_GDExtensionInterface_dictionary_operator_index(
     const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
     GDExtensionConstVariantPtr p_key) {

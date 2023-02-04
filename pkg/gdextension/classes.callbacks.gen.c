@@ -10093,6 +10093,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_TCPServer(void 
 
 
 
+void *cgo_gdextension_class_binding_create_callback_TLSOptions(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("TLSOptions", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_TLSOptions(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("TLSOptions", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_TLSOptions(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("TLSOptions", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_TabBar(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("TabBar", p_token, p_instance);
@@ -11024,6 +11041,23 @@ void cgo_gdextension_class_binding_free_callback_VideoStream(void *p_token, void
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_VideoStream(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("VideoStream", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_VideoStreamPlayback(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("VideoStreamPlayback", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_VideoStreamPlayback(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("VideoStreamPlayback", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_VideoStreamPlayback(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("VideoStreamPlayback", p_token, p_instance, p_reference);
 }
 
 

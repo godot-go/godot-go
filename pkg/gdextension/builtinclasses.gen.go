@@ -113,6 +113,7 @@ type stringMethodBindings struct {
 	method_c_unescape                  GDExtensionPtrBuiltInMethod
 	method_json_escape                 GDExtensionPtrBuiltInMethod
 	method_validate_node_name          GDExtensionPtrBuiltInMethod
+	method_validate_filename           GDExtensionPtrBuiltInMethod
 	method_is_valid_identifier         GDExtensionPtrBuiltInMethod
 	method_is_valid_int                GDExtensionPtrBuiltInMethod
 	method_is_valid_float              GDExtensionPtrBuiltInMethod
@@ -219,7 +220,7 @@ func stringInitConstructorBindings() {
 func stringInitMethodBindings() {
 	log.Debug("stringInitMethodBindings called")
 
-	missingMethods := make([]string, 0, 98)
+	missingMethods := make([]string, 0, 99)
 
 	methodName0 := NewStringNameWithLatin1Chars("casecmp_to")
 	defer methodName0.Destroy()
@@ -718,192 +719,199 @@ func stringInitMethodBindings() {
 	if globalStringMethodBindings.method_validate_node_name == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_validate_node_name")
 	}
-	methodName71 := NewStringNameWithLatin1Chars("is_valid_identifier")
+	methodName71 := NewStringNameWithLatin1Chars("validate_filename")
 	defer methodName71.Destroy()
+	log.Debug("globalStringMethodBindings.method_validate_filename")
+	globalStringMethodBindings.method_validate_filename = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName71.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringMethodBindings.method_validate_filename == nil {
+		missingMethods = append(missingMethods, "globalStringMethodBindings.method_validate_filename")
+	}
+	methodName72 := NewStringNameWithLatin1Chars("is_valid_identifier")
+	defer methodName72.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_identifier")
-	globalStringMethodBindings.method_is_valid_identifier = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName71.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringMethodBindings.method_is_valid_identifier = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName72.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringMethodBindings.method_is_valid_identifier == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_identifier")
 	}
-	methodName72 := NewStringNameWithLatin1Chars("is_valid_int")
-	defer methodName72.Destroy()
+	methodName73 := NewStringNameWithLatin1Chars("is_valid_int")
+	defer methodName73.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_int")
-	globalStringMethodBindings.method_is_valid_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName72.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringMethodBindings.method_is_valid_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName73.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringMethodBindings.method_is_valid_int == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_int")
 	}
-	methodName73 := NewStringNameWithLatin1Chars("is_valid_float")
-	defer methodName73.Destroy()
+	methodName74 := NewStringNameWithLatin1Chars("is_valid_float")
+	defer methodName74.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_float")
-	globalStringMethodBindings.method_is_valid_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName73.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringMethodBindings.method_is_valid_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName74.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringMethodBindings.method_is_valid_float == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_float")
 	}
-	methodName74 := NewStringNameWithLatin1Chars("is_valid_hex_number")
-	defer methodName74.Destroy()
+	methodName75 := NewStringNameWithLatin1Chars("is_valid_hex_number")
+	defer methodName75.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_hex_number")
-	globalStringMethodBindings.method_is_valid_hex_number = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName74.AsGDExtensionStringNamePtr(), 593672999)
+	globalStringMethodBindings.method_is_valid_hex_number = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName75.AsGDExtensionStringNamePtr(), 593672999)
 	if globalStringMethodBindings.method_is_valid_hex_number == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_hex_number")
 	}
-	methodName75 := NewStringNameWithLatin1Chars("is_valid_html_color")
-	defer methodName75.Destroy()
+	methodName76 := NewStringNameWithLatin1Chars("is_valid_html_color")
+	defer methodName76.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_html_color")
-	globalStringMethodBindings.method_is_valid_html_color = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName75.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringMethodBindings.method_is_valid_html_color = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName76.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringMethodBindings.method_is_valid_html_color == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_html_color")
 	}
-	methodName76 := NewStringNameWithLatin1Chars("is_valid_ip_address")
-	defer methodName76.Destroy()
+	methodName77 := NewStringNameWithLatin1Chars("is_valid_ip_address")
+	defer methodName77.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_ip_address")
-	globalStringMethodBindings.method_is_valid_ip_address = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName76.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringMethodBindings.method_is_valid_ip_address = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName77.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringMethodBindings.method_is_valid_ip_address == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_ip_address")
 	}
-	methodName77 := NewStringNameWithLatin1Chars("is_valid_filename")
-	defer methodName77.Destroy()
+	methodName78 := NewStringNameWithLatin1Chars("is_valid_filename")
+	defer methodName78.Destroy()
 	log.Debug("globalStringMethodBindings.method_is_valid_filename")
-	globalStringMethodBindings.method_is_valid_filename = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName77.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringMethodBindings.method_is_valid_filename = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName78.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringMethodBindings.method_is_valid_filename == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_is_valid_filename")
 	}
-	methodName78 := NewStringNameWithLatin1Chars("to_int")
-	defer methodName78.Destroy()
+	methodName79 := NewStringNameWithLatin1Chars("to_int")
+	defer methodName79.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_int")
-	globalStringMethodBindings.method_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName78.AsGDExtensionStringNamePtr(), 3173160232)
+	globalStringMethodBindings.method_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName79.AsGDExtensionStringNamePtr(), 3173160232)
 	if globalStringMethodBindings.method_to_int == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_int")
 	}
-	methodName79 := NewStringNameWithLatin1Chars("to_float")
-	defer methodName79.Destroy()
+	methodName80 := NewStringNameWithLatin1Chars("to_float")
+	defer methodName80.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_float")
-	globalStringMethodBindings.method_to_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName79.AsGDExtensionStringNamePtr(), 466405837)
+	globalStringMethodBindings.method_to_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName80.AsGDExtensionStringNamePtr(), 466405837)
 	if globalStringMethodBindings.method_to_float == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_float")
 	}
-	methodName80 := NewStringNameWithLatin1Chars("hex_to_int")
-	defer methodName80.Destroy()
+	methodName81 := NewStringNameWithLatin1Chars("hex_to_int")
+	defer methodName81.Destroy()
 	log.Debug("globalStringMethodBindings.method_hex_to_int")
-	globalStringMethodBindings.method_hex_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName80.AsGDExtensionStringNamePtr(), 3173160232)
+	globalStringMethodBindings.method_hex_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName81.AsGDExtensionStringNamePtr(), 3173160232)
 	if globalStringMethodBindings.method_hex_to_int == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_hex_to_int")
 	}
-	methodName81 := NewStringNameWithLatin1Chars("bin_to_int")
-	defer methodName81.Destroy()
+	methodName82 := NewStringNameWithLatin1Chars("bin_to_int")
+	defer methodName82.Destroy()
 	log.Debug("globalStringMethodBindings.method_bin_to_int")
-	globalStringMethodBindings.method_bin_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName81.AsGDExtensionStringNamePtr(), 3173160232)
+	globalStringMethodBindings.method_bin_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName82.AsGDExtensionStringNamePtr(), 3173160232)
 	if globalStringMethodBindings.method_bin_to_int == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_bin_to_int")
 	}
-	methodName82 := NewStringNameWithLatin1Chars("lpad")
-	defer methodName82.Destroy()
+	methodName83 := NewStringNameWithLatin1Chars("lpad")
+	defer methodName83.Destroy()
 	log.Debug("globalStringMethodBindings.method_lpad")
-	globalStringMethodBindings.method_lpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName82.AsGDExtensionStringNamePtr(), 248737229)
+	globalStringMethodBindings.method_lpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName83.AsGDExtensionStringNamePtr(), 248737229)
 	if globalStringMethodBindings.method_lpad == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_lpad")
 	}
-	methodName83 := NewStringNameWithLatin1Chars("rpad")
-	defer methodName83.Destroy()
+	methodName84 := NewStringNameWithLatin1Chars("rpad")
+	defer methodName84.Destroy()
 	log.Debug("globalStringMethodBindings.method_rpad")
-	globalStringMethodBindings.method_rpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName83.AsGDExtensionStringNamePtr(), 248737229)
+	globalStringMethodBindings.method_rpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName84.AsGDExtensionStringNamePtr(), 248737229)
 	if globalStringMethodBindings.method_rpad == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_rpad")
 	}
-	methodName84 := NewStringNameWithLatin1Chars("pad_decimals")
-	defer methodName84.Destroy()
+	methodName85 := NewStringNameWithLatin1Chars("pad_decimals")
+	defer methodName85.Destroy()
 	log.Debug("globalStringMethodBindings.method_pad_decimals")
-	globalStringMethodBindings.method_pad_decimals = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName84.AsGDExtensionStringNamePtr(), 2162347432)
+	globalStringMethodBindings.method_pad_decimals = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName85.AsGDExtensionStringNamePtr(), 2162347432)
 	if globalStringMethodBindings.method_pad_decimals == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_pad_decimals")
 	}
-	methodName85 := NewStringNameWithLatin1Chars("pad_zeros")
-	defer methodName85.Destroy()
+	methodName86 := NewStringNameWithLatin1Chars("pad_zeros")
+	defer methodName86.Destroy()
 	log.Debug("globalStringMethodBindings.method_pad_zeros")
-	globalStringMethodBindings.method_pad_zeros = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName85.AsGDExtensionStringNamePtr(), 2162347432)
+	globalStringMethodBindings.method_pad_zeros = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName86.AsGDExtensionStringNamePtr(), 2162347432)
 	if globalStringMethodBindings.method_pad_zeros == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_pad_zeros")
 	}
-	methodName86 := NewStringNameWithLatin1Chars("trim_prefix")
-	defer methodName86.Destroy()
+	methodName87 := NewStringNameWithLatin1Chars("trim_prefix")
+	defer methodName87.Destroy()
 	log.Debug("globalStringMethodBindings.method_trim_prefix")
-	globalStringMethodBindings.method_trim_prefix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName86.AsGDExtensionStringNamePtr(), 3134094431)
+	globalStringMethodBindings.method_trim_prefix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName87.AsGDExtensionStringNamePtr(), 3134094431)
 	if globalStringMethodBindings.method_trim_prefix == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_trim_prefix")
 	}
-	methodName87 := NewStringNameWithLatin1Chars("trim_suffix")
-	defer methodName87.Destroy()
+	methodName88 := NewStringNameWithLatin1Chars("trim_suffix")
+	defer methodName88.Destroy()
 	log.Debug("globalStringMethodBindings.method_trim_suffix")
-	globalStringMethodBindings.method_trim_suffix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName87.AsGDExtensionStringNamePtr(), 3134094431)
+	globalStringMethodBindings.method_trim_suffix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName88.AsGDExtensionStringNamePtr(), 3134094431)
 	if globalStringMethodBindings.method_trim_suffix == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_trim_suffix")
 	}
-	methodName88 := NewStringNameWithLatin1Chars("to_ascii_buffer")
-	defer methodName88.Destroy()
+	methodName89 := NewStringNameWithLatin1Chars("to_ascii_buffer")
+	defer methodName89.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_ascii_buffer")
-	globalStringMethodBindings.method_to_ascii_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName88.AsGDExtensionStringNamePtr(), 247621236)
+	globalStringMethodBindings.method_to_ascii_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName89.AsGDExtensionStringNamePtr(), 247621236)
 	if globalStringMethodBindings.method_to_ascii_buffer == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_ascii_buffer")
 	}
-	methodName89 := NewStringNameWithLatin1Chars("to_utf8_buffer")
-	defer methodName89.Destroy()
+	methodName90 := NewStringNameWithLatin1Chars("to_utf8_buffer")
+	defer methodName90.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_utf8_buffer")
-	globalStringMethodBindings.method_to_utf8_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName89.AsGDExtensionStringNamePtr(), 247621236)
+	globalStringMethodBindings.method_to_utf8_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName90.AsGDExtensionStringNamePtr(), 247621236)
 	if globalStringMethodBindings.method_to_utf8_buffer == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_utf8_buffer")
 	}
-	methodName90 := NewStringNameWithLatin1Chars("to_utf16_buffer")
-	defer methodName90.Destroy()
+	methodName91 := NewStringNameWithLatin1Chars("to_utf16_buffer")
+	defer methodName91.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_utf16_buffer")
-	globalStringMethodBindings.method_to_utf16_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName90.AsGDExtensionStringNamePtr(), 247621236)
+	globalStringMethodBindings.method_to_utf16_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName91.AsGDExtensionStringNamePtr(), 247621236)
 	if globalStringMethodBindings.method_to_utf16_buffer == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_utf16_buffer")
 	}
-	methodName91 := NewStringNameWithLatin1Chars("to_utf32_buffer")
-	defer methodName91.Destroy()
+	methodName92 := NewStringNameWithLatin1Chars("to_utf32_buffer")
+	defer methodName92.Destroy()
 	log.Debug("globalStringMethodBindings.method_to_utf32_buffer")
-	globalStringMethodBindings.method_to_utf32_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName91.AsGDExtensionStringNamePtr(), 247621236)
+	globalStringMethodBindings.method_to_utf32_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName92.AsGDExtensionStringNamePtr(), 247621236)
 	if globalStringMethodBindings.method_to_utf32_buffer == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_to_utf32_buffer")
 	}
-	methodName92 := NewStringNameWithLatin1Chars("num_scientific")
-	defer methodName92.Destroy()
+	methodName93 := NewStringNameWithLatin1Chars("num_scientific")
+	defer methodName93.Destroy()
 	log.Debug("globalStringMethodBindings.method_num_scientific")
-	globalStringMethodBindings.method_num_scientific = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName92.AsGDExtensionStringNamePtr(), 2710373411)
+	globalStringMethodBindings.method_num_scientific = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName93.AsGDExtensionStringNamePtr(), 2710373411)
 	if globalStringMethodBindings.method_num_scientific == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_num_scientific")
 	}
-	methodName93 := NewStringNameWithLatin1Chars("num")
-	defer methodName93.Destroy()
+	methodName94 := NewStringNameWithLatin1Chars("num")
+	defer methodName94.Destroy()
 	log.Debug("globalStringMethodBindings.method_num")
-	globalStringMethodBindings.method_num = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName93.AsGDExtensionStringNamePtr(), 1555901022)
+	globalStringMethodBindings.method_num = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName94.AsGDExtensionStringNamePtr(), 1555901022)
 	if globalStringMethodBindings.method_num == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_num")
 	}
-	methodName94 := NewStringNameWithLatin1Chars("num_int64")
-	defer methodName94.Destroy()
+	methodName95 := NewStringNameWithLatin1Chars("num_int64")
+	defer methodName95.Destroy()
 	log.Debug("globalStringMethodBindings.method_num_int64")
-	globalStringMethodBindings.method_num_int64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName94.AsGDExtensionStringNamePtr(), 2111271071)
+	globalStringMethodBindings.method_num_int64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName95.AsGDExtensionStringNamePtr(), 2111271071)
 	if globalStringMethodBindings.method_num_int64 == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_num_int64")
 	}
-	methodName95 := NewStringNameWithLatin1Chars("num_uint64")
-	defer methodName95.Destroy()
+	methodName96 := NewStringNameWithLatin1Chars("num_uint64")
+	defer methodName96.Destroy()
 	log.Debug("globalStringMethodBindings.method_num_uint64")
-	globalStringMethodBindings.method_num_uint64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName95.AsGDExtensionStringNamePtr(), 2111271071)
+	globalStringMethodBindings.method_num_uint64 = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName96.AsGDExtensionStringNamePtr(), 2111271071)
 	if globalStringMethodBindings.method_num_uint64 == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_num_uint64")
 	}
-	methodName96 := NewStringNameWithLatin1Chars("chr")
-	defer methodName96.Destroy()
+	methodName97 := NewStringNameWithLatin1Chars("chr")
+	defer methodName97.Destroy()
 	log.Debug("globalStringMethodBindings.method_chr")
-	globalStringMethodBindings.method_chr = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName96.AsGDExtensionStringNamePtr(), 897497541)
+	globalStringMethodBindings.method_chr = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName97.AsGDExtensionStringNamePtr(), 897497541)
 	if globalStringMethodBindings.method_chr == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_chr")
 	}
-	methodName97 := NewStringNameWithLatin1Chars("humanize_size")
-	defer methodName97.Destroy()
+	methodName98 := NewStringNameWithLatin1Chars("humanize_size")
+	defer methodName98.Destroy()
 	log.Debug("globalStringMethodBindings.method_humanize_size")
-	globalStringMethodBindings.method_humanize_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName97.AsGDExtensionStringNamePtr(), 897497541)
+	globalStringMethodBindings.method_humanize_size = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING, methodName98.AsGDExtensionStringNamePtr(), 897497541)
 	if globalStringMethodBindings.method_humanize_size == nil {
 		missingMethods = append(missingMethods, "globalStringMethodBindings.method_humanize_size")
 	}
@@ -2894,6 +2902,27 @@ func (cx *String) JsonEscape() String {
  */
 func (cx *String) ValidateNodeName() String {
 	mb := globalStringMethodBindings.method_validate_node_name
+
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+
+	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	return ret
+
+}
+
+/* ValidateFilename : validate_filename
+ * is_vararg = false, is_static = false
+ * goReturnType(String) -> String
+ */
+func (cx *String) ValidateFilename() String {
+	mb := globalStringMethodBindings.method_validate_filename
 
 	if mb == nil {
 		log.Panic("method bind cannot be nil")
@@ -20798,6 +20827,7 @@ type stringNameMethodBindings struct {
 	method_c_unescape                  GDExtensionPtrBuiltInMethod
 	method_json_escape                 GDExtensionPtrBuiltInMethod
 	method_validate_node_name          GDExtensionPtrBuiltInMethod
+	method_validate_filename           GDExtensionPtrBuiltInMethod
 	method_is_valid_identifier         GDExtensionPtrBuiltInMethod
 	method_is_valid_int                GDExtensionPtrBuiltInMethod
 	method_is_valid_float              GDExtensionPtrBuiltInMethod
@@ -20895,7 +20925,7 @@ func stringNameInitConstructorBindings() {
 func stringNameInitMethodBindings() {
 	log.Debug("stringNameInitMethodBindings called")
 
-	missingMethods := make([]string, 0, 92)
+	missingMethods := make([]string, 0, 93)
 
 	methodName0 := NewStringNameWithLatin1Chars("casecmp_to")
 	defer methodName0.Destroy()
@@ -21387,157 +21417,164 @@ func stringNameInitMethodBindings() {
 	if globalStringNameMethodBindings.method_validate_node_name == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_validate_node_name")
 	}
-	methodName70 := NewStringNameWithLatin1Chars("is_valid_identifier")
+	methodName70 := NewStringNameWithLatin1Chars("validate_filename")
 	defer methodName70.Destroy()
+	log.Debug("globalStringNameMethodBindings.method_validate_filename")
+	globalStringNameMethodBindings.method_validate_filename = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName70.AsGDExtensionStringNamePtr(), 3942272618)
+	if globalStringNameMethodBindings.method_validate_filename == nil {
+		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_validate_filename")
+	}
+	methodName71 := NewStringNameWithLatin1Chars("is_valid_identifier")
+	defer methodName71.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_identifier")
-	globalStringNameMethodBindings.method_is_valid_identifier = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName70.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringNameMethodBindings.method_is_valid_identifier = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName71.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringNameMethodBindings.method_is_valid_identifier == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_identifier")
 	}
-	methodName71 := NewStringNameWithLatin1Chars("is_valid_int")
-	defer methodName71.Destroy()
+	methodName72 := NewStringNameWithLatin1Chars("is_valid_int")
+	defer methodName72.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_int")
-	globalStringNameMethodBindings.method_is_valid_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName71.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringNameMethodBindings.method_is_valid_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName72.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringNameMethodBindings.method_is_valid_int == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_int")
 	}
-	methodName72 := NewStringNameWithLatin1Chars("is_valid_float")
-	defer methodName72.Destroy()
+	methodName73 := NewStringNameWithLatin1Chars("is_valid_float")
+	defer methodName73.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_float")
-	globalStringNameMethodBindings.method_is_valid_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName72.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringNameMethodBindings.method_is_valid_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName73.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringNameMethodBindings.method_is_valid_float == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_float")
 	}
-	methodName73 := NewStringNameWithLatin1Chars("is_valid_hex_number")
-	defer methodName73.Destroy()
+	methodName74 := NewStringNameWithLatin1Chars("is_valid_hex_number")
+	defer methodName74.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_hex_number")
-	globalStringNameMethodBindings.method_is_valid_hex_number = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName73.AsGDExtensionStringNamePtr(), 593672999)
+	globalStringNameMethodBindings.method_is_valid_hex_number = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName74.AsGDExtensionStringNamePtr(), 593672999)
 	if globalStringNameMethodBindings.method_is_valid_hex_number == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_hex_number")
 	}
-	methodName74 := NewStringNameWithLatin1Chars("is_valid_html_color")
-	defer methodName74.Destroy()
+	methodName75 := NewStringNameWithLatin1Chars("is_valid_html_color")
+	defer methodName75.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_html_color")
-	globalStringNameMethodBindings.method_is_valid_html_color = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName74.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringNameMethodBindings.method_is_valid_html_color = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName75.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringNameMethodBindings.method_is_valid_html_color == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_html_color")
 	}
-	methodName75 := NewStringNameWithLatin1Chars("is_valid_ip_address")
-	defer methodName75.Destroy()
+	methodName76 := NewStringNameWithLatin1Chars("is_valid_ip_address")
+	defer methodName76.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_ip_address")
-	globalStringNameMethodBindings.method_is_valid_ip_address = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName75.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringNameMethodBindings.method_is_valid_ip_address = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName76.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringNameMethodBindings.method_is_valid_ip_address == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_ip_address")
 	}
-	methodName76 := NewStringNameWithLatin1Chars("is_valid_filename")
-	defer methodName76.Destroy()
+	methodName77 := NewStringNameWithLatin1Chars("is_valid_filename")
+	defer methodName77.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_is_valid_filename")
-	globalStringNameMethodBindings.method_is_valid_filename = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName76.AsGDExtensionStringNamePtr(), 3918633141)
+	globalStringNameMethodBindings.method_is_valid_filename = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName77.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalStringNameMethodBindings.method_is_valid_filename == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_is_valid_filename")
 	}
-	methodName77 := NewStringNameWithLatin1Chars("to_int")
-	defer methodName77.Destroy()
+	methodName78 := NewStringNameWithLatin1Chars("to_int")
+	defer methodName78.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_int")
-	globalStringNameMethodBindings.method_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName77.AsGDExtensionStringNamePtr(), 3173160232)
+	globalStringNameMethodBindings.method_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName78.AsGDExtensionStringNamePtr(), 3173160232)
 	if globalStringNameMethodBindings.method_to_int == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_int")
 	}
-	methodName78 := NewStringNameWithLatin1Chars("to_float")
-	defer methodName78.Destroy()
+	methodName79 := NewStringNameWithLatin1Chars("to_float")
+	defer methodName79.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_float")
-	globalStringNameMethodBindings.method_to_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName78.AsGDExtensionStringNamePtr(), 466405837)
+	globalStringNameMethodBindings.method_to_float = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName79.AsGDExtensionStringNamePtr(), 466405837)
 	if globalStringNameMethodBindings.method_to_float == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_float")
 	}
-	methodName79 := NewStringNameWithLatin1Chars("hex_to_int")
-	defer methodName79.Destroy()
+	methodName80 := NewStringNameWithLatin1Chars("hex_to_int")
+	defer methodName80.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_hex_to_int")
-	globalStringNameMethodBindings.method_hex_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName79.AsGDExtensionStringNamePtr(), 3173160232)
+	globalStringNameMethodBindings.method_hex_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName80.AsGDExtensionStringNamePtr(), 3173160232)
 	if globalStringNameMethodBindings.method_hex_to_int == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_hex_to_int")
 	}
-	methodName80 := NewStringNameWithLatin1Chars("bin_to_int")
-	defer methodName80.Destroy()
+	methodName81 := NewStringNameWithLatin1Chars("bin_to_int")
+	defer methodName81.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_bin_to_int")
-	globalStringNameMethodBindings.method_bin_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName80.AsGDExtensionStringNamePtr(), 3173160232)
+	globalStringNameMethodBindings.method_bin_to_int = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName81.AsGDExtensionStringNamePtr(), 3173160232)
 	if globalStringNameMethodBindings.method_bin_to_int == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_bin_to_int")
 	}
-	methodName81 := NewStringNameWithLatin1Chars("lpad")
-	defer methodName81.Destroy()
+	methodName82 := NewStringNameWithLatin1Chars("lpad")
+	defer methodName82.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_lpad")
-	globalStringNameMethodBindings.method_lpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName81.AsGDExtensionStringNamePtr(), 248737229)
+	globalStringNameMethodBindings.method_lpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName82.AsGDExtensionStringNamePtr(), 248737229)
 	if globalStringNameMethodBindings.method_lpad == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_lpad")
 	}
-	methodName82 := NewStringNameWithLatin1Chars("rpad")
-	defer methodName82.Destroy()
+	methodName83 := NewStringNameWithLatin1Chars("rpad")
+	defer methodName83.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_rpad")
-	globalStringNameMethodBindings.method_rpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName82.AsGDExtensionStringNamePtr(), 248737229)
+	globalStringNameMethodBindings.method_rpad = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName83.AsGDExtensionStringNamePtr(), 248737229)
 	if globalStringNameMethodBindings.method_rpad == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_rpad")
 	}
-	methodName83 := NewStringNameWithLatin1Chars("pad_decimals")
-	defer methodName83.Destroy()
+	methodName84 := NewStringNameWithLatin1Chars("pad_decimals")
+	defer methodName84.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_pad_decimals")
-	globalStringNameMethodBindings.method_pad_decimals = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName83.AsGDExtensionStringNamePtr(), 2162347432)
+	globalStringNameMethodBindings.method_pad_decimals = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName84.AsGDExtensionStringNamePtr(), 2162347432)
 	if globalStringNameMethodBindings.method_pad_decimals == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_pad_decimals")
 	}
-	methodName84 := NewStringNameWithLatin1Chars("pad_zeros")
-	defer methodName84.Destroy()
+	methodName85 := NewStringNameWithLatin1Chars("pad_zeros")
+	defer methodName85.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_pad_zeros")
-	globalStringNameMethodBindings.method_pad_zeros = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName84.AsGDExtensionStringNamePtr(), 2162347432)
+	globalStringNameMethodBindings.method_pad_zeros = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName85.AsGDExtensionStringNamePtr(), 2162347432)
 	if globalStringNameMethodBindings.method_pad_zeros == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_pad_zeros")
 	}
-	methodName85 := NewStringNameWithLatin1Chars("trim_prefix")
-	defer methodName85.Destroy()
+	methodName86 := NewStringNameWithLatin1Chars("trim_prefix")
+	defer methodName86.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_trim_prefix")
-	globalStringNameMethodBindings.method_trim_prefix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName85.AsGDExtensionStringNamePtr(), 3134094431)
+	globalStringNameMethodBindings.method_trim_prefix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName86.AsGDExtensionStringNamePtr(), 3134094431)
 	if globalStringNameMethodBindings.method_trim_prefix == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_trim_prefix")
 	}
-	methodName86 := NewStringNameWithLatin1Chars("trim_suffix")
-	defer methodName86.Destroy()
+	methodName87 := NewStringNameWithLatin1Chars("trim_suffix")
+	defer methodName87.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_trim_suffix")
-	globalStringNameMethodBindings.method_trim_suffix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName86.AsGDExtensionStringNamePtr(), 3134094431)
+	globalStringNameMethodBindings.method_trim_suffix = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName87.AsGDExtensionStringNamePtr(), 3134094431)
 	if globalStringNameMethodBindings.method_trim_suffix == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_trim_suffix")
 	}
-	methodName87 := NewStringNameWithLatin1Chars("to_ascii_buffer")
-	defer methodName87.Destroy()
+	methodName88 := NewStringNameWithLatin1Chars("to_ascii_buffer")
+	defer methodName88.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_ascii_buffer")
-	globalStringNameMethodBindings.method_to_ascii_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName87.AsGDExtensionStringNamePtr(), 247621236)
+	globalStringNameMethodBindings.method_to_ascii_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName88.AsGDExtensionStringNamePtr(), 247621236)
 	if globalStringNameMethodBindings.method_to_ascii_buffer == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_ascii_buffer")
 	}
-	methodName88 := NewStringNameWithLatin1Chars("to_utf8_buffer")
-	defer methodName88.Destroy()
+	methodName89 := NewStringNameWithLatin1Chars("to_utf8_buffer")
+	defer methodName89.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_utf8_buffer")
-	globalStringNameMethodBindings.method_to_utf8_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName88.AsGDExtensionStringNamePtr(), 247621236)
+	globalStringNameMethodBindings.method_to_utf8_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName89.AsGDExtensionStringNamePtr(), 247621236)
 	if globalStringNameMethodBindings.method_to_utf8_buffer == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_utf8_buffer")
 	}
-	methodName89 := NewStringNameWithLatin1Chars("to_utf16_buffer")
-	defer methodName89.Destroy()
+	methodName90 := NewStringNameWithLatin1Chars("to_utf16_buffer")
+	defer methodName90.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_utf16_buffer")
-	globalStringNameMethodBindings.method_to_utf16_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName89.AsGDExtensionStringNamePtr(), 247621236)
+	globalStringNameMethodBindings.method_to_utf16_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName90.AsGDExtensionStringNamePtr(), 247621236)
 	if globalStringNameMethodBindings.method_to_utf16_buffer == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_utf16_buffer")
 	}
-	methodName90 := NewStringNameWithLatin1Chars("to_utf32_buffer")
-	defer methodName90.Destroy()
+	methodName91 := NewStringNameWithLatin1Chars("to_utf32_buffer")
+	defer methodName91.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_to_utf32_buffer")
-	globalStringNameMethodBindings.method_to_utf32_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName90.AsGDExtensionStringNamePtr(), 247621236)
+	globalStringNameMethodBindings.method_to_utf32_buffer = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName91.AsGDExtensionStringNamePtr(), 247621236)
 	if globalStringNameMethodBindings.method_to_utf32_buffer == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_to_utf32_buffer")
 	}
-	methodName91 := NewStringNameWithLatin1Chars("hash")
-	defer methodName91.Destroy()
+	methodName92 := NewStringNameWithLatin1Chars("hash")
+	defer methodName92.Destroy()
 	log.Debug("globalStringNameMethodBindings.method_hash")
-	globalStringNameMethodBindings.method_hash = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName91.AsGDExtensionStringNamePtr(), 3173160232)
+	globalStringNameMethodBindings.method_hash = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME, methodName92.AsGDExtensionStringNamePtr(), 3173160232)
 	if globalStringNameMethodBindings.method_hash == nil {
 		missingMethods = append(missingMethods, "globalStringNameMethodBindings.method_hash")
 	}
@@ -23503,6 +23540,27 @@ func (cx *StringName) JsonEscape() String {
  */
 func (cx *StringName) ValidateNodeName() String {
 	mb := globalStringNameMethodBindings.method_validate_node_name
+
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+
+	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	return ret
+
+}
+
+/* ValidateFilename : validate_filename
+ * is_vararg = false, is_static = false
+ * goReturnType(String) -> String
+ */
+func (cx *StringName) ValidateFilename() String {
+	mb := globalStringNameMethodBindings.method_validate_filename
 
 	if mb == nil {
 		log.Panic("method bind cannot be nil")
@@ -26198,6 +26256,8 @@ type dictionaryMethodBindings struct {
 	method_values                 GDExtensionPtrBuiltInMethod
 	method_duplicate              GDExtensionPtrBuiltInMethod
 	method_get                    GDExtensionPtrBuiltInMethod
+	method_make_read_only         GDExtensionPtrBuiltInMethod
+	method_is_read_only           GDExtensionPtrBuiltInMethod
 	indexed_setter                GDExtensionPtrIndexedSetter
 	indexed_getter                GDExtensionPtrIndexedGetter
 	keyed_setter                  GDExtensionPtrKeyedSetter
@@ -26227,7 +26287,7 @@ func dictionaryInitConstructorBindings() {
 func dictionaryInitMethodBindings() {
 	log.Debug("dictionaryInitMethodBindings called")
 
-	missingMethods := make([]string, 0, 13)
+	missingMethods := make([]string, 0, 15)
 
 	methodName0 := NewStringNameWithLatin1Chars("size")
 	defer methodName0.Destroy()
@@ -26319,6 +26379,20 @@ func dictionaryInitMethodBindings() {
 	globalDictionaryMethodBindings.method_get = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName12.AsGDExtensionStringNamePtr(), 2205440559)
 	if globalDictionaryMethodBindings.method_get == nil {
 		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_get")
+	}
+	methodName13 := NewStringNameWithLatin1Chars("make_read_only")
+	defer methodName13.Destroy()
+	log.Debug("globalDictionaryMethodBindings.method_make_read_only")
+	globalDictionaryMethodBindings.method_make_read_only = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName13.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalDictionaryMethodBindings.method_make_read_only == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_make_read_only")
+	}
+	methodName14 := NewStringNameWithLatin1Chars("is_read_only")
+	defer methodName14.Destroy()
+	log.Debug("globalDictionaryMethodBindings.method_is_read_only")
+	globalDictionaryMethodBindings.method_is_read_only = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_DICTIONARY, methodName14.AsGDExtensionStringNamePtr(), 3918633141)
+	if globalDictionaryMethodBindings.method_is_read_only == nil {
+		missingMethods = append(missingMethods, "globalDictionaryMethodBindings.method_is_read_only")
 	}
 	if len(missingMethods) > 0 {
 		log.Panic("missing method binds", zap.Any("missing", missingMethods))
@@ -26708,6 +26782,47 @@ func (cx *Dictionary) Get(key Variant, defaultName Variant) Variant {
 
 }
 
+/* MakeReadOnly : make_read_only
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *Dictionary) MakeReadOnly() {
+	mb := globalDictionaryMethodBindings.method_make_read_only
+
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+
+	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	callBuiltinMethodPtrNoRet(mb, bx, nil)
+
+}
+
+/* IsReadOnly : is_read_only
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Dictionary) IsReadOnly() bool {
+	mb := globalDictionaryMethodBindings.method_is_read_only
+
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+
+	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	return ret
+
+}
+
 /* TODO: implement keyed built-in classes
 
 typedef void (*GDExtensionPtrKeyedSetter)(GDExtensionTypePtr p_base, const GDExtensionTypePtr p_key, const GDExtensionTypePtr p_value);
@@ -26798,6 +26913,7 @@ type arrayMethodBindings struct {
 	method_is_empty              GDExtensionPtrBuiltInMethod
 	method_clear                 GDExtensionPtrBuiltInMethod
 	method_hash                  GDExtensionPtrBuiltInMethod
+	method_assign                GDExtensionPtrBuiltInMethod
 	method_push_back             GDExtensionPtrBuiltInMethod
 	method_push_front            GDExtensionPtrBuiltInMethod
 	method_append                GDExtensionPtrBuiltInMethod
@@ -26832,13 +26948,12 @@ type arrayMethodBindings struct {
 	method_all                   GDExtensionPtrBuiltInMethod
 	method_max                   GDExtensionPtrBuiltInMethod
 	method_min                   GDExtensionPtrBuiltInMethod
-	method_typed_assign          GDExtensionPtrBuiltInMethod
-	method_set_typed             GDExtensionPtrBuiltInMethod
 	method_is_typed              GDExtensionPtrBuiltInMethod
+	method_is_same_typed         GDExtensionPtrBuiltInMethod
 	method_get_typed_builtin     GDExtensionPtrBuiltInMethod
 	method_get_typed_class_name  GDExtensionPtrBuiltInMethod
 	method_get_typed_script      GDExtensionPtrBuiltInMethod
-	method_set_read_only         GDExtensionPtrBuiltInMethod
+	method_make_read_only        GDExtensionPtrBuiltInMethod
 	method_is_read_only          GDExtensionPtrBuiltInMethod
 	indexed_setter               GDExtensionPtrIndexedSetter
 	indexed_getter               GDExtensionPtrIndexedGetter
@@ -26921,264 +27036,264 @@ func arrayInitMethodBindings() {
 	if globalArrayMethodBindings.method_hash == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_hash")
 	}
-	methodName4 := NewStringNameWithLatin1Chars("push_back")
+	methodName4 := NewStringNameWithLatin1Chars("assign")
 	defer methodName4.Destroy()
+	log.Debug("globalArrayMethodBindings.method_assign")
+	globalArrayMethodBindings.method_assign = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 2307260970)
+	if globalArrayMethodBindings.method_assign == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_assign")
+	}
+	methodName5 := NewStringNameWithLatin1Chars("push_back")
+	defer methodName5.Destroy()
 	log.Debug("globalArrayMethodBindings.method_push_back")
-	globalArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName4.AsGDExtensionStringNamePtr(), 3316032543)
+	globalArrayMethodBindings.method_push_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 3316032543)
 	if globalArrayMethodBindings.method_push_back == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_push_back")
 	}
-	methodName5 := NewStringNameWithLatin1Chars("push_front")
-	defer methodName5.Destroy()
+	methodName6 := NewStringNameWithLatin1Chars("push_front")
+	defer methodName6.Destroy()
 	log.Debug("globalArrayMethodBindings.method_push_front")
-	globalArrayMethodBindings.method_push_front = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName5.AsGDExtensionStringNamePtr(), 3316032543)
+	globalArrayMethodBindings.method_push_front = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 3316032543)
 	if globalArrayMethodBindings.method_push_front == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_push_front")
 	}
-	methodName6 := NewStringNameWithLatin1Chars("append")
-	defer methodName6.Destroy()
+	methodName7 := NewStringNameWithLatin1Chars("append")
+	defer methodName7.Destroy()
 	log.Debug("globalArrayMethodBindings.method_append")
-	globalArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName6.AsGDExtensionStringNamePtr(), 3316032543)
+	globalArrayMethodBindings.method_append = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 3316032543)
 	if globalArrayMethodBindings.method_append == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_append")
 	}
-	methodName7 := NewStringNameWithLatin1Chars("append_array")
-	defer methodName7.Destroy()
+	methodName8 := NewStringNameWithLatin1Chars("append_array")
+	defer methodName8.Destroy()
 	log.Debug("globalArrayMethodBindings.method_append_array")
-	globalArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName7.AsGDExtensionStringNamePtr(), 2307260970)
+	globalArrayMethodBindings.method_append_array = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 2307260970)
 	if globalArrayMethodBindings.method_append_array == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_append_array")
 	}
-	methodName8 := NewStringNameWithLatin1Chars("resize")
-	defer methodName8.Destroy()
+	methodName9 := NewStringNameWithLatin1Chars("resize")
+	defer methodName9.Destroy()
 	log.Debug("globalArrayMethodBindings.method_resize")
-	globalArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName8.AsGDExtensionStringNamePtr(), 848867239)
+	globalArrayMethodBindings.method_resize = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 848867239)
 	if globalArrayMethodBindings.method_resize == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_resize")
 	}
-	methodName9 := NewStringNameWithLatin1Chars("insert")
-	defer methodName9.Destroy()
+	methodName10 := NewStringNameWithLatin1Chars("insert")
+	defer methodName10.Destroy()
 	log.Debug("globalArrayMethodBindings.method_insert")
-	globalArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName9.AsGDExtensionStringNamePtr(), 3176316662)
+	globalArrayMethodBindings.method_insert = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 3176316662)
 	if globalArrayMethodBindings.method_insert == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_insert")
 	}
-	methodName10 := NewStringNameWithLatin1Chars("remove_at")
-	defer methodName10.Destroy()
+	methodName11 := NewStringNameWithLatin1Chars("remove_at")
+	defer methodName11.Destroy()
 	log.Debug("globalArrayMethodBindings.method_remove_at")
-	globalArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName10.AsGDExtensionStringNamePtr(), 2823966027)
+	globalArrayMethodBindings.method_remove_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 2823966027)
 	if globalArrayMethodBindings.method_remove_at == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_remove_at")
 	}
-	methodName11 := NewStringNameWithLatin1Chars("fill")
-	defer methodName11.Destroy()
+	methodName12 := NewStringNameWithLatin1Chars("fill")
+	defer methodName12.Destroy()
 	log.Debug("globalArrayMethodBindings.method_fill")
-	globalArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName11.AsGDExtensionStringNamePtr(), 3316032543)
+	globalArrayMethodBindings.method_fill = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3316032543)
 	if globalArrayMethodBindings.method_fill == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_fill")
 	}
-	methodName12 := NewStringNameWithLatin1Chars("erase")
-	defer methodName12.Destroy()
+	methodName13 := NewStringNameWithLatin1Chars("erase")
+	defer methodName13.Destroy()
 	log.Debug("globalArrayMethodBindings.method_erase")
-	globalArrayMethodBindings.method_erase = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName12.AsGDExtensionStringNamePtr(), 3316032543)
+	globalArrayMethodBindings.method_erase = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 3316032543)
 	if globalArrayMethodBindings.method_erase == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_erase")
 	}
-	methodName13 := NewStringNameWithLatin1Chars("front")
-	defer methodName13.Destroy()
+	methodName14 := NewStringNameWithLatin1Chars("front")
+	defer methodName14.Destroy()
 	log.Debug("globalArrayMethodBindings.method_front")
-	globalArrayMethodBindings.method_front = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName13.AsGDExtensionStringNamePtr(), 1460142086)
+	globalArrayMethodBindings.method_front = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 1460142086)
 	if globalArrayMethodBindings.method_front == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_front")
 	}
-	methodName14 := NewStringNameWithLatin1Chars("back")
-	defer methodName14.Destroy()
+	methodName15 := NewStringNameWithLatin1Chars("back")
+	defer methodName15.Destroy()
 	log.Debug("globalArrayMethodBindings.method_back")
-	globalArrayMethodBindings.method_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName14.AsGDExtensionStringNamePtr(), 1460142086)
+	globalArrayMethodBindings.method_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 1460142086)
 	if globalArrayMethodBindings.method_back == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_back")
 	}
-	methodName15 := NewStringNameWithLatin1Chars("pick_random")
-	defer methodName15.Destroy()
+	methodName16 := NewStringNameWithLatin1Chars("pick_random")
+	defer methodName16.Destroy()
 	log.Debug("globalArrayMethodBindings.method_pick_random")
-	globalArrayMethodBindings.method_pick_random = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName15.AsGDExtensionStringNamePtr(), 1460142086)
+	globalArrayMethodBindings.method_pick_random = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 1460142086)
 	if globalArrayMethodBindings.method_pick_random == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_pick_random")
 	}
-	methodName16 := NewStringNameWithLatin1Chars("find")
-	defer methodName16.Destroy()
+	methodName17 := NewStringNameWithLatin1Chars("find")
+	defer methodName17.Destroy()
 	log.Debug("globalArrayMethodBindings.method_find")
-	globalArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName16.AsGDExtensionStringNamePtr(), 2336346817)
+	globalArrayMethodBindings.method_find = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 2336346817)
 	if globalArrayMethodBindings.method_find == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_find")
 	}
-	methodName17 := NewStringNameWithLatin1Chars("rfind")
-	defer methodName17.Destroy()
+	methodName18 := NewStringNameWithLatin1Chars("rfind")
+	defer methodName18.Destroy()
 	log.Debug("globalArrayMethodBindings.method_rfind")
-	globalArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName17.AsGDExtensionStringNamePtr(), 2336346817)
+	globalArrayMethodBindings.method_rfind = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 2336346817)
 	if globalArrayMethodBindings.method_rfind == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_rfind")
 	}
-	methodName18 := NewStringNameWithLatin1Chars("count")
-	defer methodName18.Destroy()
+	methodName19 := NewStringNameWithLatin1Chars("count")
+	defer methodName19.Destroy()
 	log.Debug("globalArrayMethodBindings.method_count")
-	globalArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName18.AsGDExtensionStringNamePtr(), 1481661226)
+	globalArrayMethodBindings.method_count = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 1481661226)
 	if globalArrayMethodBindings.method_count == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_count")
 	}
-	methodName19 := NewStringNameWithLatin1Chars("has")
-	defer methodName19.Destroy()
+	methodName20 := NewStringNameWithLatin1Chars("has")
+	defer methodName20.Destroy()
 	log.Debug("globalArrayMethodBindings.method_has")
-	globalArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName19.AsGDExtensionStringNamePtr(), 3680194679)
+	globalArrayMethodBindings.method_has = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 3680194679)
 	if globalArrayMethodBindings.method_has == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_has")
 	}
-	methodName20 := NewStringNameWithLatin1Chars("pop_back")
-	defer methodName20.Destroy()
+	methodName21 := NewStringNameWithLatin1Chars("pop_back")
+	defer methodName21.Destroy()
 	log.Debug("globalArrayMethodBindings.method_pop_back")
-	globalArrayMethodBindings.method_pop_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName20.AsGDExtensionStringNamePtr(), 1321915136)
+	globalArrayMethodBindings.method_pop_back = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName21.AsGDExtensionStringNamePtr(), 1321915136)
 	if globalArrayMethodBindings.method_pop_back == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_pop_back")
 	}
-	methodName21 := NewStringNameWithLatin1Chars("pop_front")
-	defer methodName21.Destroy()
+	methodName22 := NewStringNameWithLatin1Chars("pop_front")
+	defer methodName22.Destroy()
 	log.Debug("globalArrayMethodBindings.method_pop_front")
-	globalArrayMethodBindings.method_pop_front = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName21.AsGDExtensionStringNamePtr(), 1321915136)
+	globalArrayMethodBindings.method_pop_front = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName22.AsGDExtensionStringNamePtr(), 1321915136)
 	if globalArrayMethodBindings.method_pop_front == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_pop_front")
 	}
-	methodName22 := NewStringNameWithLatin1Chars("pop_at")
-	defer methodName22.Destroy()
+	methodName23 := NewStringNameWithLatin1Chars("pop_at")
+	defer methodName23.Destroy()
 	log.Debug("globalArrayMethodBindings.method_pop_at")
-	globalArrayMethodBindings.method_pop_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName22.AsGDExtensionStringNamePtr(), 3518259424)
+	globalArrayMethodBindings.method_pop_at = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName23.AsGDExtensionStringNamePtr(), 3518259424)
 	if globalArrayMethodBindings.method_pop_at == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_pop_at")
 	}
-	methodName23 := NewStringNameWithLatin1Chars("sort")
-	defer methodName23.Destroy()
+	methodName24 := NewStringNameWithLatin1Chars("sort")
+	defer methodName24.Destroy()
 	log.Debug("globalArrayMethodBindings.method_sort")
-	globalArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName23.AsGDExtensionStringNamePtr(), 3218959716)
+	globalArrayMethodBindings.method_sort = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName24.AsGDExtensionStringNamePtr(), 3218959716)
 	if globalArrayMethodBindings.method_sort == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_sort")
 	}
-	methodName24 := NewStringNameWithLatin1Chars("sort_custom")
-	defer methodName24.Destroy()
+	methodName25 := NewStringNameWithLatin1Chars("sort_custom")
+	defer methodName25.Destroy()
 	log.Debug("globalArrayMethodBindings.method_sort_custom")
-	globalArrayMethodBindings.method_sort_custom = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName24.AsGDExtensionStringNamePtr(), 3470848906)
+	globalArrayMethodBindings.method_sort_custom = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName25.AsGDExtensionStringNamePtr(), 3470848906)
 	if globalArrayMethodBindings.method_sort_custom == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_sort_custom")
 	}
-	methodName25 := NewStringNameWithLatin1Chars("shuffle")
-	defer methodName25.Destroy()
+	methodName26 := NewStringNameWithLatin1Chars("shuffle")
+	defer methodName26.Destroy()
 	log.Debug("globalArrayMethodBindings.method_shuffle")
-	globalArrayMethodBindings.method_shuffle = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName25.AsGDExtensionStringNamePtr(), 3218959716)
+	globalArrayMethodBindings.method_shuffle = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName26.AsGDExtensionStringNamePtr(), 3218959716)
 	if globalArrayMethodBindings.method_shuffle == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_shuffle")
 	}
-	methodName26 := NewStringNameWithLatin1Chars("bsearch")
-	defer methodName26.Destroy()
+	methodName27 := NewStringNameWithLatin1Chars("bsearch")
+	defer methodName27.Destroy()
 	log.Debug("globalArrayMethodBindings.method_bsearch")
-	globalArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName26.AsGDExtensionStringNamePtr(), 2634019015)
+	globalArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName27.AsGDExtensionStringNamePtr(), 2634019015)
 	if globalArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_bsearch")
 	}
-	methodName27 := NewStringNameWithLatin1Chars("bsearch_custom")
-	defer methodName27.Destroy()
+	methodName28 := NewStringNameWithLatin1Chars("bsearch_custom")
+	defer methodName28.Destroy()
 	log.Debug("globalArrayMethodBindings.method_bsearch_custom")
-	globalArrayMethodBindings.method_bsearch_custom = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName27.AsGDExtensionStringNamePtr(), 135832563)
+	globalArrayMethodBindings.method_bsearch_custom = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName28.AsGDExtensionStringNamePtr(), 135832563)
 	if globalArrayMethodBindings.method_bsearch_custom == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_bsearch_custom")
 	}
-	methodName28 := NewStringNameWithLatin1Chars("reverse")
-	defer methodName28.Destroy()
+	methodName29 := NewStringNameWithLatin1Chars("reverse")
+	defer methodName29.Destroy()
 	log.Debug("globalArrayMethodBindings.method_reverse")
-	globalArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName28.AsGDExtensionStringNamePtr(), 3218959716)
+	globalArrayMethodBindings.method_reverse = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName29.AsGDExtensionStringNamePtr(), 3218959716)
 	if globalArrayMethodBindings.method_reverse == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_reverse")
 	}
-	methodName29 := NewStringNameWithLatin1Chars("duplicate")
-	defer methodName29.Destroy()
+	methodName30 := NewStringNameWithLatin1Chars("duplicate")
+	defer methodName30.Destroy()
 	log.Debug("globalArrayMethodBindings.method_duplicate")
-	globalArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName29.AsGDExtensionStringNamePtr(), 636440122)
+	globalArrayMethodBindings.method_duplicate = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName30.AsGDExtensionStringNamePtr(), 636440122)
 	if globalArrayMethodBindings.method_duplicate == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_duplicate")
 	}
-	methodName30 := NewStringNameWithLatin1Chars("slice")
-	defer methodName30.Destroy()
+	methodName31 := NewStringNameWithLatin1Chars("slice")
+	defer methodName31.Destroy()
 	log.Debug("globalArrayMethodBindings.method_slice")
-	globalArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName30.AsGDExtensionStringNamePtr(), 1393718243)
+	globalArrayMethodBindings.method_slice = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName31.AsGDExtensionStringNamePtr(), 1393718243)
 	if globalArrayMethodBindings.method_slice == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_slice")
 	}
-	methodName31 := NewStringNameWithLatin1Chars("filter")
-	defer methodName31.Destroy()
+	methodName32 := NewStringNameWithLatin1Chars("filter")
+	defer methodName32.Destroy()
 	log.Debug("globalArrayMethodBindings.method_filter")
-	globalArrayMethodBindings.method_filter = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName31.AsGDExtensionStringNamePtr(), 4075186556)
+	globalArrayMethodBindings.method_filter = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName32.AsGDExtensionStringNamePtr(), 4075186556)
 	if globalArrayMethodBindings.method_filter == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_filter")
 	}
-	methodName32 := NewStringNameWithLatin1Chars("map")
-	defer methodName32.Destroy()
+	methodName33 := NewStringNameWithLatin1Chars("map")
+	defer methodName33.Destroy()
 	log.Debug("globalArrayMethodBindings.method_map")
-	globalArrayMethodBindings.method_map = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName32.AsGDExtensionStringNamePtr(), 4075186556)
+	globalArrayMethodBindings.method_map = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName33.AsGDExtensionStringNamePtr(), 4075186556)
 	if globalArrayMethodBindings.method_map == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_map")
 	}
-	methodName33 := NewStringNameWithLatin1Chars("reduce")
-	defer methodName33.Destroy()
+	methodName34 := NewStringNameWithLatin1Chars("reduce")
+	defer methodName34.Destroy()
 	log.Debug("globalArrayMethodBindings.method_reduce")
-	globalArrayMethodBindings.method_reduce = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName33.AsGDExtensionStringNamePtr(), 4272450342)
+	globalArrayMethodBindings.method_reduce = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName34.AsGDExtensionStringNamePtr(), 4272450342)
 	if globalArrayMethodBindings.method_reduce == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_reduce")
 	}
-	methodName34 := NewStringNameWithLatin1Chars("any")
-	defer methodName34.Destroy()
+	methodName35 := NewStringNameWithLatin1Chars("any")
+	defer methodName35.Destroy()
 	log.Debug("globalArrayMethodBindings.method_any")
-	globalArrayMethodBindings.method_any = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName34.AsGDExtensionStringNamePtr(), 4129521963)
+	globalArrayMethodBindings.method_any = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName35.AsGDExtensionStringNamePtr(), 4129521963)
 	if globalArrayMethodBindings.method_any == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_any")
 	}
-	methodName35 := NewStringNameWithLatin1Chars("all")
-	defer methodName35.Destroy()
+	methodName36 := NewStringNameWithLatin1Chars("all")
+	defer methodName36.Destroy()
 	log.Debug("globalArrayMethodBindings.method_all")
-	globalArrayMethodBindings.method_all = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName35.AsGDExtensionStringNamePtr(), 4129521963)
+	globalArrayMethodBindings.method_all = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName36.AsGDExtensionStringNamePtr(), 4129521963)
 	if globalArrayMethodBindings.method_all == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_all")
 	}
-	methodName36 := NewStringNameWithLatin1Chars("max")
-	defer methodName36.Destroy()
+	methodName37 := NewStringNameWithLatin1Chars("max")
+	defer methodName37.Destroy()
 	log.Debug("globalArrayMethodBindings.method_max")
-	globalArrayMethodBindings.method_max = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName36.AsGDExtensionStringNamePtr(), 1460142086)
+	globalArrayMethodBindings.method_max = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName37.AsGDExtensionStringNamePtr(), 1460142086)
 	if globalArrayMethodBindings.method_max == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_max")
 	}
-	methodName37 := NewStringNameWithLatin1Chars("min")
-	defer methodName37.Destroy()
+	methodName38 := NewStringNameWithLatin1Chars("min")
+	defer methodName38.Destroy()
 	log.Debug("globalArrayMethodBindings.method_min")
-	globalArrayMethodBindings.method_min = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName37.AsGDExtensionStringNamePtr(), 1460142086)
+	globalArrayMethodBindings.method_min = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName38.AsGDExtensionStringNamePtr(), 1460142086)
 	if globalArrayMethodBindings.method_min == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_min")
 	}
-	methodName38 := NewStringNameWithLatin1Chars("typed_assign")
-	defer methodName38.Destroy()
-	log.Debug("globalArrayMethodBindings.method_typed_assign")
-	globalArrayMethodBindings.method_typed_assign = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName38.AsGDExtensionStringNamePtr(), 1485459766)
-	if globalArrayMethodBindings.method_typed_assign == nil {
-		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_typed_assign")
-	}
-	methodName39 := NewStringNameWithLatin1Chars("set_typed")
+	methodName39 := NewStringNameWithLatin1Chars("is_typed")
 	defer methodName39.Destroy()
-	log.Debug("globalArrayMethodBindings.method_set_typed")
-	globalArrayMethodBindings.method_set_typed = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName39.AsGDExtensionStringNamePtr(), 2557487401)
-	if globalArrayMethodBindings.method_set_typed == nil {
-		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_set_typed")
-	}
-	methodName40 := NewStringNameWithLatin1Chars("is_typed")
-	defer methodName40.Destroy()
 	log.Debug("globalArrayMethodBindings.method_is_typed")
-	globalArrayMethodBindings.method_is_typed = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName40.AsGDExtensionStringNamePtr(), 3918633141)
+	globalArrayMethodBindings.method_is_typed = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName39.AsGDExtensionStringNamePtr(), 3918633141)
 	if globalArrayMethodBindings.method_is_typed == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_is_typed")
+	}
+	methodName40 := NewStringNameWithLatin1Chars("is_same_typed")
+	defer methodName40.Destroy()
+	log.Debug("globalArrayMethodBindings.method_is_same_typed")
+	globalArrayMethodBindings.method_is_same_typed = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName40.AsGDExtensionStringNamePtr(), 2988181878)
+	if globalArrayMethodBindings.method_is_same_typed == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_is_same_typed")
 	}
 	methodName41 := NewStringNameWithLatin1Chars("get_typed_builtin")
 	defer methodName41.Destroy()
@@ -27201,12 +27316,12 @@ func arrayInitMethodBindings() {
 	if globalArrayMethodBindings.method_get_typed_script == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_get_typed_script")
 	}
-	methodName44 := NewStringNameWithLatin1Chars("set_read_only")
+	methodName44 := NewStringNameWithLatin1Chars("make_read_only")
 	defer methodName44.Destroy()
-	log.Debug("globalArrayMethodBindings.method_set_read_only")
-	globalArrayMethodBindings.method_set_read_only = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName44.AsGDExtensionStringNamePtr(), 315553568)
-	if globalArrayMethodBindings.method_set_read_only == nil {
-		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_set_read_only")
+	log.Debug("globalArrayMethodBindings.method_make_read_only")
+	globalArrayMethodBindings.method_make_read_only = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName44.AsGDExtensionStringNamePtr(), 3218959716)
+	if globalArrayMethodBindings.method_make_read_only == nil {
+		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_make_read_only")
 	}
 	methodName45 := NewStringNameWithLatin1Chars("is_read_only")
 	defer methodName45.Destroy()
@@ -27540,6 +27655,32 @@ func (cx *Array) Hash() int32 {
 
 	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
+
+}
+
+/* Assign : assign
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *Array) Assign(array Array) {
+	mb := globalArrayMethodBindings.method_assign
+
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+
+	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+	// C.free(argBytes)
 
 }
 
@@ -28423,64 +28564,6 @@ func (cx *Array) Min() Variant {
 
 }
 
-/* TypedAssign : typed_assign
- * is_vararg = false, is_static = false
- * goReturnType(bool) -> bool
- */
-func (cx *Array) TypedAssign(array Array) bool {
-	mb := globalArrayMethodBindings.method_typed_assign
-
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-
-	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-
-	sz := 1
-	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
-
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
-	runtime.KeepAlive(args)
-	// C.free(argBytes)
-	return ret
-
-}
-
-/* SetTyped : set_typed
- * is_vararg = false, is_static = false
- * goReturnType() ->
- */
-func (cx *Array) SetTyped(typeName int32, class_name StringName, script Variant) {
-	mb := globalArrayMethodBindings.method_set_typed
-
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-
-	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-
-	sz := 3
-	args := make([]GDExtensionTypePtr, sz, sz)
-	eArg0 := Int32Encoder.EncodeArg(typeName)
-	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&eArg0))
-
-	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&class_name))
-
-	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&script))
-
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-	// C.free(argBytes)
-
-}
-
 /* IsTyped : is_typed
  * is_vararg = false, is_static = false
  * goReturnType(bool) -> bool
@@ -28498,6 +28581,33 @@ func (cx *Array) IsTyped() bool {
 	}
 
 	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	return ret
+
+}
+
+/* IsSameTyped : is_same_typed
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Array) IsSameTyped(array Array) bool {
+	mb := globalArrayMethodBindings.method_is_same_typed
+
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+
+	bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	runtime.KeepAlive(args)
+	// C.free(argBytes)
 	return ret
 
 }
@@ -28565,12 +28675,12 @@ func (cx *Array) GetTypedScript() Variant {
 
 }
 
-/* SetReadOnly : set_read_only
+/* MakeReadOnly : make_read_only
  * is_vararg = false, is_static = false
  * goReturnType() ->
  */
-func (cx *Array) SetReadOnly(enable bool) {
-	mb := globalArrayMethodBindings.method_set_read_only
+func (cx *Array) MakeReadOnly() {
+	mb := globalArrayMethodBindings.method_make_read_only
 
 	if mb == nil {
 		log.Panic("method bind cannot be nil")
@@ -28581,14 +28691,7 @@ func (cx *Array) SetReadOnly(enable bool) {
 		log.Panic("object cannot be nil")
 	}
 
-	sz := 1
-	args := make([]GDExtensionTypePtr, sz, sz)
-	eArg0 := BoolEncoder.EncodeArg(enable)
-	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&eArg0))
-
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-	// C.free(argBytes)
+	callBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 

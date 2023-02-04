@@ -545,6 +545,13 @@ GDExtensionVariantPtr
 cgo_callfn_GDExtensionInterface_array_operator_index_const(
     const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
     GDExtensionInt p_index);
+void cgo_callfn_GDExtensionInterface_array_ref(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionConstTypePtr p_from);
+void cgo_callfn_GDExtensionInterface_array_set_typed(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    uint32_t p_type, GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstVariantPtr p_script);
 GDExtensionVariantPtr cgo_callfn_GDExtensionInterface_dictionary_operator_index(
     const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
     GDExtensionConstVariantPtr p_key);

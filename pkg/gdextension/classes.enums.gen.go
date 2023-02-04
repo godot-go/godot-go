@@ -113,6 +113,14 @@ const (
 	ANIMATION_NODE_ANIMATION_PLAY_MODE_PLAY_MODE_BACKWARD                                = 1
 )
 
+type AnimationNodeBlendSpace1DBlendMode int
+
+const (
+	ANIMATION_NODE_BLEND_SPACE_1_D_BLEND_MODE_BLEND_MODE_INTERPOLATED   AnimationNodeBlendSpace1DBlendMode = 0
+	ANIMATION_NODE_BLEND_SPACE_1_D_BLEND_MODE_BLEND_MODE_DISCRETE                                          = 1
+	ANIMATION_NODE_BLEND_SPACE_1_D_BLEND_MODE_BLEND_MODE_DISCRETE_CARRY                                    = 2
+)
+
 type AnimationNodeBlendSpace2DBlendMode int
 
 const (
@@ -1969,6 +1977,7 @@ const (
 	LABEL_3_D_ALPHA_CUT_MODE_ALPHA_CUT_DISABLED       Label3DAlphaCutMode = 0
 	LABEL_3_D_ALPHA_CUT_MODE_ALPHA_CUT_DISCARD                            = 1
 	LABEL_3_D_ALPHA_CUT_MODE_ALPHA_CUT_OPAQUE_PREPASS                     = 2
+	LABEL_3_D_ALPHA_CUT_MODE_ALPHA_CUT_HASH                               = 3
 )
 
 type Light2DShadowFilter int
@@ -2091,35 +2100,37 @@ const (
 type LineEditMenuItems int
 
 const (
-	LINE_EDIT_MENU_ITEMS_MENU_CUT           LineEditMenuItems = 0
-	LINE_EDIT_MENU_ITEMS_MENU_COPY                            = 1
-	LINE_EDIT_MENU_ITEMS_MENU_PASTE                           = 2
-	LINE_EDIT_MENU_ITEMS_MENU_CLEAR                           = 3
-	LINE_EDIT_MENU_ITEMS_MENU_SELECT_ALL                      = 4
-	LINE_EDIT_MENU_ITEMS_MENU_UNDO                            = 5
-	LINE_EDIT_MENU_ITEMS_MENU_REDO                            = 6
-	LINE_EDIT_MENU_ITEMS_MENU_DIR_INHERITED                   = 7
-	LINE_EDIT_MENU_ITEMS_MENU_DIR_AUTO                        = 8
-	LINE_EDIT_MENU_ITEMS_MENU_DIR_LTR                         = 9
-	LINE_EDIT_MENU_ITEMS_MENU_DIR_RTL                         = 10
-	LINE_EDIT_MENU_ITEMS_MENU_DISPLAY_UCC                     = 11
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRM                      = 12
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLM                      = 13
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRE                      = 14
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLE                      = 15
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRO                      = 16
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLO                      = 17
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_PDF                      = 18
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ALM                      = 19
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRI                      = 20
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLI                      = 21
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_FSI                      = 22
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_PDI                      = 23
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ZWJ                      = 24
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ZWNJ                     = 25
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_WJ                       = 26
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_SHY                      = 27
-	LINE_EDIT_MENU_ITEMS_MENU_MAX                             = 28
+	LINE_EDIT_MENU_ITEMS_MENU_CUT                LineEditMenuItems = 0
+	LINE_EDIT_MENU_ITEMS_MENU_COPY                                 = 1
+	LINE_EDIT_MENU_ITEMS_MENU_PASTE                                = 2
+	LINE_EDIT_MENU_ITEMS_MENU_CLEAR                                = 3
+	LINE_EDIT_MENU_ITEMS_MENU_SELECT_ALL                           = 4
+	LINE_EDIT_MENU_ITEMS_MENU_UNDO                                 = 5
+	LINE_EDIT_MENU_ITEMS_MENU_REDO                                 = 6
+	LINE_EDIT_MENU_ITEMS_MENU_SUBMENU_TEXT_DIR                     = 7
+	LINE_EDIT_MENU_ITEMS_MENU_DIR_INHERITED                        = 8
+	LINE_EDIT_MENU_ITEMS_MENU_DIR_AUTO                             = 9
+	LINE_EDIT_MENU_ITEMS_MENU_DIR_LTR                              = 10
+	LINE_EDIT_MENU_ITEMS_MENU_DIR_RTL                              = 11
+	LINE_EDIT_MENU_ITEMS_MENU_DISPLAY_UCC                          = 12
+	LINE_EDIT_MENU_ITEMS_MENU_SUBMENU_INSERT_UCC                   = 13
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRM                           = 14
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLM                           = 15
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRE                           = 16
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLE                           = 17
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRO                           = 18
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLO                           = 19
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_PDF                           = 20
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ALM                           = 21
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRI                           = 22
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLI                           = 23
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_FSI                           = 24
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_PDI                           = 25
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ZWJ                           = 26
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ZWNJ                          = 27
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_WJ                            = 28
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_SHY                           = 29
+	LINE_EDIT_MENU_ITEMS_MENU_MAX                                  = 30
 )
 
 type LineEditVirtualKeyboardType int
@@ -2655,17 +2666,16 @@ const (
 type PhysicsServer2DAreaParameter int
 
 const (
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_OVERRIDE_MODE      PhysicsServer2DAreaParameter = 0
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY                                                 = 1
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_VECTOR                                          = 2
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_IS_POINT                                        = 3
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_DISTANCE_SCALE                                  = 4
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_POINT_ATTENUATION                               = 5
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE                               = 6
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP                                             = 7
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE                              = 8
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP                                            = 9
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_PRIORITY                                                = 10
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_OVERRIDE_MODE       PhysicsServer2DAreaParameter = 0
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY                                                  = 1
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_VECTOR                                           = 2
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_IS_POINT                                         = 3
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_POINT_UNIT_DISTANCE                              = 4
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE                                = 5
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP                                              = 6
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE                               = 7
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP                                             = 8
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_PRIORITY                                                 = 9
 )
 
 type PhysicsServer2DAreaSpaceOverrideMode int
@@ -2900,21 +2910,20 @@ const (
 type PhysicsServer3DAreaParameter int
 
 const (
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_OVERRIDE_MODE      PhysicsServer3DAreaParameter = 0
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY                                                 = 1
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_VECTOR                                          = 2
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_IS_POINT                                        = 3
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_DISTANCE_SCALE                                  = 4
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_POINT_ATTENUATION                               = 5
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE                               = 6
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP                                             = 7
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE                              = 8
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP                                            = 9
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_PRIORITY                                                = 10
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_FORCE_MAGNITUDE                                    = 11
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_SOURCE                                             = 12
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_DIRECTION                                          = 13
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_ATTENUATION_FACTOR                                 = 14
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_OVERRIDE_MODE       PhysicsServer3DAreaParameter = 0
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY                                                  = 1
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_VECTOR                                           = 2
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_IS_POINT                                         = 3
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_POINT_UNIT_DISTANCE                              = 4
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE                                = 5
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP                                              = 6
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE                               = 7
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP                                             = 8
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_PRIORITY                                                 = 9
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_FORCE_MAGNITUDE                                     = 10
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_SOURCE                                              = 11
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_DIRECTION                                           = 12
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_ATTENUATION_FACTOR                                  = 13
 )
 
 type PhysicsServer3DAreaSpaceOverrideMode int
@@ -4018,6 +4027,15 @@ const (
 	RENDERING_SERVER_VIEWPORT_CLEAR_MODE_VIEWPORT_CLEAR_ONLY_NEXT_FRAME                                  = 2
 )
 
+type RenderingServerViewportEnvironmentMode int
+
+const (
+	RENDERING_SERVER_VIEWPORT_ENVIRONMENT_MODE_VIEWPORT_ENVIRONMENT_DISABLED RenderingServerViewportEnvironmentMode = 0
+	RENDERING_SERVER_VIEWPORT_ENVIRONMENT_MODE_VIEWPORT_ENVIRONMENT_ENABLED                                         = 1
+	RENDERING_SERVER_VIEWPORT_ENVIRONMENT_MODE_VIEWPORT_ENVIRONMENT_INHERIT                                         = 2
+	RENDERING_SERVER_VIEWPORT_ENVIRONMENT_MODE_VIEWPORT_ENVIRONMENT_MAX                                             = 3
+)
+
 type RenderingServerViewportSDFOversize int
 
 const (
@@ -4774,6 +4792,7 @@ const (
 	SPRITE_BASE_3_D_ALPHA_CUT_MODE_ALPHA_CUT_DISABLED       SpriteBase3DAlphaCutMode = 0
 	SPRITE_BASE_3_D_ALPHA_CUT_MODE_ALPHA_CUT_DISCARD                                 = 1
 	SPRITE_BASE_3_D_ALPHA_CUT_MODE_ALPHA_CUT_OPAQUE_PREPASS                          = 2
+	SPRITE_BASE_3_D_ALPHA_CUT_MODE_ALPHA_CUT_HASH                                    = 3
 )
 
 type StreamPeerTCPStatus int
@@ -4863,35 +4882,37 @@ const (
 type TextEditMenuItems int
 
 const (
-	TEXT_EDIT_MENU_ITEMS_MENU_CUT           TextEditMenuItems = 0
-	TEXT_EDIT_MENU_ITEMS_MENU_COPY                            = 1
-	TEXT_EDIT_MENU_ITEMS_MENU_PASTE                           = 2
-	TEXT_EDIT_MENU_ITEMS_MENU_CLEAR                           = 3
-	TEXT_EDIT_MENU_ITEMS_MENU_SELECT_ALL                      = 4
-	TEXT_EDIT_MENU_ITEMS_MENU_UNDO                            = 5
-	TEXT_EDIT_MENU_ITEMS_MENU_REDO                            = 6
-	TEXT_EDIT_MENU_ITEMS_MENU_DIR_INHERITED                   = 7
-	TEXT_EDIT_MENU_ITEMS_MENU_DIR_AUTO                        = 8
-	TEXT_EDIT_MENU_ITEMS_MENU_DIR_LTR                         = 9
-	TEXT_EDIT_MENU_ITEMS_MENU_DIR_RTL                         = 10
-	TEXT_EDIT_MENU_ITEMS_MENU_DISPLAY_UCC                     = 11
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRM                      = 12
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLM                      = 13
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRE                      = 14
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLE                      = 15
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRO                      = 16
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLO                      = 17
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_PDF                      = 18
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ALM                      = 19
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRI                      = 20
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLI                      = 21
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_FSI                      = 22
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_PDI                      = 23
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ZWJ                      = 24
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ZWNJ                     = 25
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_WJ                       = 26
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_SHY                      = 27
-	TEXT_EDIT_MENU_ITEMS_MENU_MAX                             = 28
+	TEXT_EDIT_MENU_ITEMS_MENU_CUT                TextEditMenuItems = 0
+	TEXT_EDIT_MENU_ITEMS_MENU_COPY                                 = 1
+	TEXT_EDIT_MENU_ITEMS_MENU_PASTE                                = 2
+	TEXT_EDIT_MENU_ITEMS_MENU_CLEAR                                = 3
+	TEXT_EDIT_MENU_ITEMS_MENU_SELECT_ALL                           = 4
+	TEXT_EDIT_MENU_ITEMS_MENU_UNDO                                 = 5
+	TEXT_EDIT_MENU_ITEMS_MENU_REDO                                 = 6
+	TEXT_EDIT_MENU_ITEMS_MENU_SUBMENU_TEXT_DIR                     = 7
+	TEXT_EDIT_MENU_ITEMS_MENU_DIR_INHERITED                        = 8
+	TEXT_EDIT_MENU_ITEMS_MENU_DIR_AUTO                             = 9
+	TEXT_EDIT_MENU_ITEMS_MENU_DIR_LTR                              = 10
+	TEXT_EDIT_MENU_ITEMS_MENU_DIR_RTL                              = 11
+	TEXT_EDIT_MENU_ITEMS_MENU_DISPLAY_UCC                          = 12
+	TEXT_EDIT_MENU_ITEMS_MENU_SUBMENU_INSERT_UCC                   = 13
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRM                           = 14
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLM                           = 15
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRE                           = 16
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLE                           = 17
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRO                           = 18
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLO                           = 19
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_PDF                           = 20
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ALM                           = 21
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRI                           = 22
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLI                           = 23
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_FSI                           = 24
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_PDI                           = 25
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ZWJ                           = 26
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ZWNJ                          = 27
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_WJ                            = 28
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_SHY                           = 29
+	TEXT_EDIT_MENU_ITEMS_MENU_MAX                                  = 30
 )
 
 type TextEditEditAction int
@@ -5759,6 +5780,15 @@ const (
 	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_FUNCTION_FUNC_X                                          = 1
 	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_FUNCTION_FUNC_Y                                          = 2
 	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_FUNCTION_FUNC_MAX                                        = 3
+)
+
+type VisualShaderNodeDerivativeFuncPrecision int
+
+const (
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_PRECISION_PRECISION_NONE   VisualShaderNodeDerivativeFuncPrecision = 0
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_PRECISION_PRECISION_COARSE                                         = 1
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_PRECISION_PRECISION_FINE                                           = 2
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_PRECISION_PRECISION_MAX                                            = 3
 )
 
 type VisualShaderNodeFloatFuncFunction int

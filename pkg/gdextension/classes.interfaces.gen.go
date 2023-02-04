@@ -247,15 +247,21 @@ type AnimatedSprite2D interface {
 
 	GetSpriteFrames() SpriteFrames
 
-	SetAnimation(animation StringName)
+	SetAnimation(name StringName)
 
 	GetAnimation() StringName
 
-	SetPlaying(playing bool)
+	SetAutoplay(name String)
+
+	GetAutoplay() String
 
 	IsPlaying() bool
 
-	Play(anim StringName, backwards bool)
+	Play(name StringName, custom_speed float32, from_end bool)
+
+	PlayBackwards(name StringName)
+
+	Pause()
 
 	Stop()
 
@@ -279,9 +285,17 @@ type AnimatedSprite2D interface {
 
 	GetFrame() int32
 
+	SetFrameProgress(progress float32)
+
+	GetFrameProgress() float32
+
+	SetFrameAndProgress(frame int32, progress float32)
+
 	SetSpeedScale(speed_scale float32)
 
 	GetSpeedScale() float32
+
+	GetPlayingSpeed() float32
 }
 type AnimatedSprite3D interface {
 	SpriteBase3D
@@ -290,15 +304,21 @@ type AnimatedSprite3D interface {
 
 	GetSpriteFrames() SpriteFrames
 
-	SetAnimation(animation StringName)
+	SetAnimation(name StringName)
 
 	GetAnimation() StringName
 
-	SetPlaying(playing bool)
+	SetAutoplay(name String)
+
+	GetAutoplay() String
 
 	IsPlaying() bool
 
-	Play(anim StringName, backwards bool)
+	Play(name StringName, custom_speed float32, from_end bool)
+
+	PlayBackwards(name StringName)
+
+	Pause()
 
 	Stop()
 
@@ -306,9 +326,17 @@ type AnimatedSprite3D interface {
 
 	GetFrame() int32
 
+	SetFrameProgress(progress float32)
+
+	GetFrameProgress() float32
+
+	SetFrameAndProgress(frame int32, progress float32)
+
 	SetSpeedScale(speed_scale float32)
 
 	GetSpeedScale() float32
+
+	GetPlayingSpeed() float32
 }
 type AnimatedTexture interface {
 	Texture2D
@@ -454,6 +482,10 @@ type Animation interface {
 
 	AudioTrackGetKeyEndOffset(track_idx int32, key_idx int32) float32
 
+	AudioTrackSetUseBlend(track_idx int32, enable bool)
+
+	AudioTrackIsUseBlend(track_idx int32) bool
+
 	AnimationTrackInsertKey(track_idx int32, time float32, animation StringName) int32
 
 	AnimationTrackSetKeyAnimation(track_idx int32, key_idx int32, animation StringName)
@@ -512,13 +544,17 @@ type AnimationNode interface {
 
 	// VIRTUAL: Internal_HasFilter() bool
 
-	GetInputCount() int32
+	AddInput(name String) bool
+
+	RemoveInput(index int32)
+
+	SetInputName(input int32, name String) bool
 
 	GetInputName(input int32) String
 
-	AddInput(name String)
+	GetInputCount() int32
 
-	RemoveInput(index int32)
+	FindInput(name String) int32
 
 	SetFilterPath(path NodePath, enable bool)
 
@@ -593,6 +629,10 @@ type AnimationNodeBlendSpace1D interface {
 	SetValueLabel(text String)
 
 	GetValueLabel() String
+
+	SetBlendMode(mode AnimationNodeBlendSpace1DBlendMode)
+
+	GetBlendMode() AnimationNodeBlendSpace1DBlendMode
 
 	SetUseSync(enable bool)
 
@@ -750,6 +790,10 @@ type AnimationNodeStateMachine interface {
 	SetGraphOffset(offset Vector2)
 
 	GetGraphOffset() Vector2
+
+	SetAllowTransitionToSelf(enable bool)
+
+	IsAllowTransitionToSelf() bool
 }
 type AnimationNodeStateMachinePlayback interface {
 	Resource
@@ -825,19 +869,15 @@ type AnimationNodeTimeSeek interface {
 type AnimationNodeTransition interface {
 	AnimationNodeSync
 
-	SetEnabledInputs(amount int32)
-
-	GetEnabledInputs() int32
+	SetInputCount(input_count int32)
 
 	SetInputAsAutoAdvance(input int32, enable bool)
 
 	IsInputSetAsAutoAdvance(input int32) bool
 
-	SetInputCaption(input int32, caption String)
+	SetInputReset(input int32, enable bool)
 
-	GetInputCaption(input int32) String
-
-	FindInputCaption(caption String) int32
+	IsInputReset(input int32) bool
 
 	SetXfadeTime(time float32)
 
@@ -847,12 +887,14 @@ type AnimationNodeTransition interface {
 
 	GetXfadeCurve() Curve
 
-	SetReset(reset bool)
+	SetAllowTransitionToSelf(enable bool)
 
-	IsReset() bool
+	IsAllowTransitionToSelf() bool
 }
 type AnimationPlayer interface {
 	Node
+
+	// VIRTUAL: Internal_PostProcessKeyValue(animation Animation,track int32,value Variant,object Object,object_idx int32,) Variant
 
 	AddAnimationLibrary(name StringName, library AnimationLibrary) Error
 
@@ -944,6 +986,10 @@ type AnimationPlayer interface {
 
 	GetMethodCallMode() AnimationPlayerAnimationMethodCallMode
 
+	SetAudioMaxPolyphony(max_polyphony int32)
+
+	GetAudioMaxPolyphony() int32
+
 	SetMovieQuitOnFinishEnabled(enabled bool)
 
 	IsMovieQuitOnFinishEnabled() bool
@@ -964,6 +1010,8 @@ type AnimationTrackEditPlugin interface {
 }
 type AnimationTree interface {
 	Node
+
+	// VIRTUAL: Internal_PostProcessKeyValue(animation Animation,track int32,value Variant,object Object,object_idx int32,) Variant
 
 	SetActive(active bool)
 
@@ -989,6 +1037,10 @@ type AnimationTree interface {
 
 	GetRootMotionTrack() NodePath
 
+	SetAudioMaxPolyphony(max_polyphony int32)
+
+	GetAudioMaxPolyphony() int32
+
 	GetRootMotionPosition() Vector3
 
 	GetRootMotionRotation() Quaternion
@@ -1010,9 +1062,9 @@ type Area2D interface {
 
 	IsGravityAPoint() bool
 
-	SetGravityPointDistanceScale(distance_scale float32)
+	SetGravityPointUnitDistance(distance_scale float32)
 
-	GetGravityPointDistanceScale() float32
+	GetGravityPointUnitDistance() float32
 
 	SetGravityPointCenter(center Vector2)
 
@@ -1085,9 +1137,9 @@ type Area3D interface {
 
 	IsGravityAPoint() bool
 
-	SetGravityPointDistanceScale(distance_scale float32)
+	SetGravityPointUnitDistance(distance_scale float32)
 
-	GetGravityPointDistanceScale() float32
+	GetGravityPointUnitDistance() float32
 
 	SetGravityPointCenter(center Vector3)
 
@@ -1766,11 +1818,11 @@ type AudioServer interface {
 
 	GetMixRate() float32
 
-	GetDeviceList() PackedStringArray
+	GetOutputDeviceList() PackedStringArray
 
-	GetDevice() String
+	GetOutputDevice() String
 
-	SetDevice(device String)
+	SetOutputDevice(output_device String)
 
 	GetTimeToNextMix() float32
 
@@ -1778,11 +1830,11 @@ type AudioServer interface {
 
 	GetOutputLatency() float32
 
-	CaptureGetDeviceList() PackedStringArray
+	GetInputDeviceList() PackedStringArray
 
-	CaptureGetDevice() String
+	GetInputDevice() String
 
-	CaptureSetDevice(name String)
+	SetInputDevice(name String)
 
 	SetBusLayout(bus_layout AudioBusLayout)
 
@@ -1983,6 +2035,8 @@ type AudioStreamPlayer interface {
 
 	GetMaxPolyphony() int32
 
+	HasStreamPlayback() bool
+
 	GetStreamPlayback() AudioStreamPlayback
 }
 type AudioStreamPlayer2D interface {
@@ -2041,6 +2095,8 @@ type AudioStreamPlayer2D interface {
 	SetPanningStrength(panning_strength float32)
 
 	GetPanningStrength() float32
+
+	HasStreamPlayback() bool
 
 	GetStreamPlayback() AudioStreamPlayback
 }
@@ -2132,6 +2188,8 @@ type AudioStreamPlayer3D interface {
 	SetPanningStrength(panning_strength float32)
 
 	GetPanningStrength() float32
+
+	HasStreamPlayback() bool
 
 	GetStreamPlayback() AudioStreamPlayback
 }
@@ -3284,7 +3342,11 @@ type Camera2D interface {
 
 	GetProcessCallback() Camera2DCamera2DProcessCallback
 
-	SetCurrent(current bool)
+	SetEnabled(enabled bool)
+
+	IsEnabled() bool
+
+	MakeCurrent()
 
 	IsCurrent() bool
 
@@ -5524,7 +5586,7 @@ type CylinderShape3D interface {
 type DTLSServer interface {
 	RefCounted
 
-	Setup(key CryptoKey, certificate X509Certificate, chain X509Certificate) Error
+	Setup(server_options TLSOptions) Error
 
 	TakeConnection(udp_peer PacketPeerUDP) PacketPeerDTLS
 }
@@ -5550,9 +5612,9 @@ type DampedSpringJoint2D interface {
 type Decal interface {
 	VisualInstance3D
 
-	SetExtents(extents Vector3)
+	SetSize(size Vector3)
 
-	GetExtents() Vector3
+	GetSize() Vector3
 
 	SetTexture(typeName DecalDecalTexture, texture Texture2D)
 
@@ -5710,7 +5772,7 @@ type DisplayServer interface {
 
 	GlobalMenuAddIconRadioCheckItem(menu_root String, icon Texture2D, label String, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
 
-	GlobalMenuAddMultistateItem(menu_root String, labe String, max_states int32, default_state int32, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
+	GlobalMenuAddMultistateItem(menu_root String, label String, max_states int32, default_state int32, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
 
 	GlobalMenuAddSeparator(menu_root String, index int32) int32
 
@@ -6025,9 +6087,9 @@ type ENetConnection interface {
 
 	Compress(mode ENetConnectionCompressionMode)
 
-	DtlsServerSetup(key CryptoKey, certificate X509Certificate) Error
+	DtlsServerSetup(server_options TLSOptions) Error
 
-	DtlsClientSetup(certificate X509Certificate, hostname String, verify bool) Error
+	DtlsClientSetup(hostname String, client_options TLSOptions) Error
 
 	RefuseNewConnections(refuse bool)
 
@@ -6858,9 +6920,9 @@ type FogMaterial interface {
 type FogVolume interface {
 	VisualInstance3D
 
-	SetExtents(extents Vector3)
+	SetSize(size Vector3)
 
-	GetExtents() Vector3
+	GetSize() Vector3
 
 	SetShape(shape RenderingServerFogVolumeShape)
 
@@ -7325,7 +7387,7 @@ type GLTFDocument interface {
 
 	AppendFromScene(node Node, state GLTFState, flags int32) Error
 
-	GenerateScene(state GLTFState, bake_fps float32, trimming bool) Node
+	GenerateScene(state GLTFState, bake_fps float32, trimming bool, remove_immutable_tracks bool) Node
 
 	GenerateBuffer(state GLTFState) PackedByteArray
 
@@ -7338,27 +7400,27 @@ type GLTFDocument interface {
 type GLTFDocumentExtension interface {
 	Resource
 
-	// VIRTUAL: Internal_ImportPreflight(state GLTFState,extensions PackedStringArray,) int32
+	// VIRTUAL: Internal_ImportPreflight(state GLTFState,extensions PackedStringArray,) Error
 
 	// VIRTUAL: Internal_GetSupportedExtensions() PackedStringArray
 
-	// VIRTUAL: Internal_ParseNodeExtensions(state GLTFState,gltf_node GLTFNode,extensions Dictionary,) int32
+	// VIRTUAL: Internal_ParseNodeExtensions(state GLTFState,gltf_node GLTFNode,extensions Dictionary,) Error
 
 	// VIRTUAL: Internal_GenerateSceneNode(state GLTFState,gltf_node GLTFNode,scene_parent Node,) Node3D
 
-	// VIRTUAL: Internal_ImportPostParse(state GLTFState,) int32
+	// VIRTUAL: Internal_ImportPostParse(state GLTFState,) Error
 
-	// VIRTUAL: Internal_ImportNode(state GLTFState,gltf_node GLTFNode,json Dictionary,node Node,) int32
+	// VIRTUAL: Internal_ImportNode(state GLTFState,gltf_node GLTFNode,json Dictionary,node Node,) Error
 
-	// VIRTUAL: Internal_ImportPost(state GLTFState,root Node,) int32
+	// VIRTUAL: Internal_ImportPost(state GLTFState,root Node,) Error
 
-	// VIRTUAL: Internal_ExportPreflight(state GLTFState,root Node,) int32
+	// VIRTUAL: Internal_ExportPreflight(state GLTFState,root Node,) Error
 
 	// VIRTUAL: Internal_ConvertSceneNode(state GLTFState,gltf_node GLTFNode,scene_node Node,)
 
-	// VIRTUAL: Internal_ExportNode(state GLTFState,gltf_node GLTFNode,json Dictionary,node Node,) int32
+	// VIRTUAL: Internal_ExportNode(state GLTFState,gltf_node GLTFNode,json Dictionary,node Node,) Error
 
-	// VIRTUAL: Internal_ExportPost(state GLTFState,) int32
+	// VIRTUAL: Internal_ExportPost(state GLTFState,) Error
 }
 type GLTFDocumentExtensionConvertImporterMesh interface {
 	GLTFDocumentExtension
@@ -7681,6 +7743,10 @@ type GLTFState interface {
 	GetAdditionalData(extension_name StringName) Variant
 
 	SetAdditionalData(extension_name StringName, additional_data Variant)
+
+	GetHandleBinaryImage() int32
+
+	SetHandleBinaryImage(method int32)
 }
 type GLTFTexture interface {
 	Resource
@@ -7932,9 +7998,9 @@ type GPUParticlesAttractor3D interface {
 type GPUParticlesAttractorBox3D interface {
 	GPUParticlesAttractor3D
 
-	SetExtents(extents Vector3)
+	SetSize(size Vector3)
 
-	GetExtents() Vector3
+	GetSize() Vector3
 }
 type GPUParticlesAttractorSphere3D interface {
 	GPUParticlesAttractor3D
@@ -7946,9 +8012,9 @@ type GPUParticlesAttractorSphere3D interface {
 type GPUParticlesAttractorVectorField3D interface {
 	GPUParticlesAttractor3D
 
-	SetExtents(extents Vector3)
+	SetSize(size Vector3)
 
-	GetExtents() Vector3
+	GetSize() Vector3
 
 	SetTexture(texture Texture3D)
 
@@ -7964,16 +8030,16 @@ type GPUParticlesCollision3D interface {
 type GPUParticlesCollisionBox3D interface {
 	GPUParticlesCollision3D
 
-	SetExtents(extents Vector3)
+	SetSize(size Vector3)
 
-	GetExtents() Vector3
+	GetSize() Vector3
 }
 type GPUParticlesCollisionHeightField3D interface {
 	GPUParticlesCollision3D
 
-	SetExtents(extents Vector3)
+	SetSize(size Vector3)
 
-	GetExtents() Vector3
+	GetSize() Vector3
 
 	SetResolution(resolution GPUParticlesCollisionHeightField3DResolution)
 
@@ -7990,9 +8056,9 @@ type GPUParticlesCollisionHeightField3D interface {
 type GPUParticlesCollisionSDF3D interface {
 	GPUParticlesCollision3D
 
-	SetExtents(extents Vector3)
+	SetSize(size Vector3)
 
-	GetExtents() Vector3
+	GetSize() Vector3
 
 	SetResolution(resolution GPUParticlesCollisionSDF3DResolution)
 
@@ -8639,7 +8705,7 @@ type HSplitContainer interface {
 type HTTPClient interface {
 	RefCounted
 
-	ConnectToHost(host String, port int32, use_tls bool, verify_host bool) Error
+	ConnectToHost(host String, port int32, tls_options TLSOptions) Error
 
 	SetConnection(connection StreamPeer)
 
@@ -8686,11 +8752,13 @@ type HTTPClient interface {
 type HTTPRequest interface {
 	Node
 
-	Request(url String, custom_headers PackedStringArray, tls_validate_domain bool, method HTTPClientMethod, request_data String) Error
+	Request(url String, custom_headers PackedStringArray, method HTTPClientMethod, request_data String) Error
 
-	RequestRaw(url String, custom_headers PackedStringArray, tls_validate_domain bool, method HTTPClientMethod, request_data_raw PackedByteArray) Error
+	RequestRaw(url String, custom_headers PackedStringArray, method HTTPClientMethod, request_data_raw PackedByteArray) Error
 
 	CancelRequest()
+
+	SetTlsOptions(client_options TLSOptions)
 
 	GetHttpClientStatus() HTTPClientStatus
 
@@ -8860,9 +8928,9 @@ type Image interface {
 
 	DetectUsedChannels(source ImageCompressSource) ImageUsedChannels
 
-	Compress(mode ImageCompressMode, source ImageCompressSource, lossy_quality float32, astc_format ImageASTCFormat) Error
+	Compress(mode ImageCompressMode, source ImageCompressSource, astc_format ImageASTCFormat) Error
 
-	CompressFromChannels(mode ImageCompressMode, channels ImageUsedChannels, lossy_quality float32, astc_format ImageASTCFormat) Error
+	CompressFromChannels(mode ImageCompressMode, channels ImageUsedChannels, astc_format ImageASTCFormat) Error
 
 	Decompress() Error
 
@@ -9977,6 +10045,18 @@ type Label3D interface {
 
 	GetAlphaScissorThreshold() float32
 
+	SetAlphaHashScale(threshold float32)
+
+	GetAlphaHashScale() float32
+
+	SetAlphaAntialiasing(alpha_aa BaseMaterial3DAlphaAntiAliasing)
+
+	GetAlphaAntialiasing() BaseMaterial3DAlphaAntiAliasing
+
+	SetAlphaAntialiasingEdge(edge float32)
+
+	GetAlphaAntialiasingEdge() float32
+
 	SetTextureFilter(mode BaseMaterial3DTextureFilter)
 
 	GetTextureFilter() BaseMaterial3DTextureFilter
@@ -11067,7 +11147,7 @@ type MultiplayerAPI interface {
 type MultiplayerAPIExtension interface {
 	MultiplayerAPI
 
-	// VIRTUAL: Internal_Poll() int32
+	// VIRTUAL: Internal_Poll() Error
 
 	// VIRTUAL: Internal_SetMultiplayerPeer(multiplayer_peer MultiplayerPeer,)
 
@@ -11077,13 +11157,13 @@ type MultiplayerAPIExtension interface {
 
 	// VIRTUAL: Internal_GetPeerIds() PackedInt32Array
 
-	// VIRTUAL: Internal_Rpc(peer int32,object Object,method StringName,args Array,) int32
+	// VIRTUAL: Internal_Rpc(peer int32,object Object,method StringName,args Array,) Error
 
 	// VIRTUAL: Internal_GetRemoteSenderId() int32
 
-	// VIRTUAL: Internal_ObjectConfigurationAdd(object Object,configuration Variant,) int32
+	// VIRTUAL: Internal_ObjectConfigurationAdd(object Object,configuration Variant,) Error
 
-	// VIRTUAL: Internal_ObjectConfigurationRemove(object Object,configuration Variant,) int32
+	// VIRTUAL: Internal_ObjectConfigurationRemove(object Object,configuration Variant,) Error
 }
 type MultiplayerPeer interface {
 	PacketPeer
@@ -11228,7 +11308,7 @@ type Mutex interface {
 
 	Lock()
 
-	TryLock() Error
+	TryLock() bool
 
 	Unlock()
 }
@@ -11289,11 +11369,11 @@ type NavigationAgent2D interface {
 
 	GetNavigationMap() RID
 
-	SetTargetLocation(location Vector2)
+	SetTargetPosition(position Vector2)
 
-	GetTargetLocation() Vector2
+	GetTargetPosition() Vector2
 
-	GetNextLocation() Vector2
+	GetNextPathPosition() Vector2
 
 	DistanceToTarget() float32
 
@@ -11311,7 +11391,27 @@ type NavigationAgent2D interface {
 
 	IsNavigationFinished() bool
 
-	GetFinalLocation() Vector2
+	GetFinalPosition() Vector2
+
+	SetDebugEnabled(enabled bool)
+
+	GetDebugEnabled() bool
+
+	SetDebugUseCustom(enabled bool)
+
+	GetDebugUseCustom() bool
+
+	SetDebugPathCustomColor(color Color)
+
+	GetDebugPathCustomColor() Color
+
+	SetDebugPathCustomPointSize(point_size float32)
+
+	GetDebugPathCustomPointSize() float32
+
+	SetDebugPathCustomLineWidth(line_width float32)
+
+	GetDebugPathCustomLineWidth() float32
 }
 type NavigationAgent3D interface {
 	Node
@@ -11378,11 +11478,11 @@ type NavigationAgent3D interface {
 
 	GetNavigationMap() RID
 
-	SetTargetLocation(location Vector3)
+	SetTargetPosition(position Vector3)
 
-	GetTargetLocation() Vector3
+	GetTargetPosition() Vector3
 
-	GetNextLocation() Vector3
+	GetNextPathPosition() Vector3
 
 	DistanceToTarget() float32
 
@@ -11400,7 +11500,23 @@ type NavigationAgent3D interface {
 
 	IsNavigationFinished() bool
 
-	GetFinalLocation() Vector3
+	GetFinalPosition() Vector3
+
+	SetDebugEnabled(enabled bool)
+
+	GetDebugEnabled() bool
+
+	SetDebugUseCustom(enabled bool)
+
+	GetDebugUseCustom() bool
+
+	SetDebugPathCustomColor(color Color)
+
+	GetDebugPathCustomColor() Color
+
+	SetDebugPathCustomPointSize(point_size float32)
+
+	GetDebugPathCustomPointSize() float32
 }
 type NavigationLink2D interface {
 	Node2D
@@ -11421,13 +11537,13 @@ type NavigationLink2D interface {
 
 	GetNavigationLayerValue(layer_number int32) bool
 
-	SetStartLocation(location Vector2)
+	SetStartPosition(position Vector2)
 
-	GetStartLocation() Vector2
+	GetStartPosition() Vector2
 
-	SetEndLocation(location Vector2)
+	SetEndPosition(position Vector2)
 
-	GetEndLocation() Vector2
+	GetEndPosition() Vector2
 
 	SetEnterCost(enter_cost float32)
 
@@ -11456,13 +11572,13 @@ type NavigationLink3D interface {
 
 	GetNavigationLayerValue(layer_number int32) bool
 
-	SetStartLocation(location Vector3)
+	SetStartPosition(position Vector3)
 
-	GetStartLocation() Vector3
+	GetStartPosition() Vector3
 
-	SetEndLocation(location Vector3)
+	SetEndPosition(position Vector3)
 
-	GetEndLocation() Vector3
+	GetEndPosition() Vector3
 
 	SetEnterCost(enter_cost float32)
 
@@ -11910,13 +12026,13 @@ type NavigationServer2D interface {
 
 	LinkGetNavigationLayers(link RID) int32
 
-	LinkSetStartLocation(link RID, location Vector2)
+	LinkSetStartPosition(link RID, position Vector2)
 
-	LinkGetStartLocation(link RID) Vector2
+	LinkGetStartPosition(link RID) Vector2
 
-	LinkSetEndLocation(link RID, location Vector2)
+	LinkSetEndPosition(link RID, position Vector2)
 
-	LinkGetEndLocation(link RID) Vector2
+	LinkGetEndPosition(link RID) Vector2
 
 	LinkSetEnterCost(link RID, enter_cost float32)
 
@@ -11954,7 +12070,7 @@ type NavigationServer2D interface {
 
 	AgentIsMapChanged(agent RID) bool
 
-	AgentSetCallback(agent RID, object_id int32, method StringName, userdata Variant)
+	AgentSetCallback(agent RID, callback Callable)
 
 	FreeRid(rid RID)
 }
@@ -12055,13 +12171,13 @@ type NavigationServer3D interface {
 
 	LinkGetNavigationLayers(link RID) int32
 
-	LinkSetStartLocation(link RID, location Vector3)
+	LinkSetStartPosition(link RID, position Vector3)
 
-	LinkGetStartLocation(link RID) Vector3
+	LinkGetStartPosition(link RID) Vector3
 
-	LinkSetEndLocation(link RID, location Vector3)
+	LinkSetEndPosition(link RID, position Vector3)
 
-	LinkGetEndLocation(link RID) Vector3
+	LinkGetEndPosition(link RID) Vector3
 
 	LinkSetEnterCost(link RID, enter_cost float32)
 
@@ -12099,7 +12215,7 @@ type NavigationServer3D interface {
 
 	AgentIsMapChanged(agent RID) bool
 
-	AgentSetCallback(agent RID, object_id int32, method StringName, userdata Variant)
+	AgentSetCallback(agent RID, callback Callable)
 
 	FreeRid(rid RID)
 
@@ -12557,9 +12673,9 @@ type Noise interface {
 
 	GetNoise3Dv(v Vector3) float32
 
-	GetImage(width int32, height int32, invert bool, in_3d_space bool) Image
+	GetImage(width int32, height int32, invert bool, in_3d_space bool, normalize bool) Image
 
-	GetSeamlessImage(width int32, height int32, invert bool, in_3d_space bool, skirt float32) Image
+	GetSeamlessImage(width int32, height int32, invert bool, in_3d_space bool, skirt float32, normalize bool) Image
 }
 type NoiseTexture2D interface {
 	Texture2D
@@ -12595,6 +12711,10 @@ type NoiseTexture2D interface {
 	SetBumpStrength(bump_strength float32)
 
 	GetBumpStrength() float32
+
+	SetNormalize(normalize bool)
+
+	IsNormalized() bool
 
 	SetColorRamp(gradient Gradient)
 
@@ -13023,6 +13143,12 @@ type OpenXRInterface interface {
 
 	SetDisplayRefreshRate(refresh_rate float32)
 
+	IsActionSetActive(name String) bool
+
+	SetActionSetActive(name String, active bool)
+
+	GetActionSets() Array
+
 	GetAvailableDisplayRefreshRates() Array
 }
 type OptimizedTranslation interface {
@@ -13151,7 +13277,7 @@ type PacketPeerDTLS interface {
 
 	Poll()
 
-	ConnectToPeer(packet_peer PacketPeerUDP, validate_certs bool, for_hostname String, valid_certificate X509Certificate) Error
+	ConnectToPeer(packet_peer PacketPeerUDP, hostname String, client_options TLSOptions) Error
 
 	GetStatus() PacketPeerDTLSStatus
 
@@ -16960,9 +17086,9 @@ type ReflectionProbe interface {
 
 	GetMeshLodThreshold() float32
 
-	SetExtents(extents Vector3)
+	SetSize(size Vector3)
 
-	GetExtents() Vector3
+	GetSize() Vector3
 
 	SetOriginOffset(origin_offset Vector3)
 
@@ -17488,7 +17614,7 @@ type RenderingServer interface {
 
 	ReflectionProbeSetMaxDistance(probe RID, distance float32)
 
-	ReflectionProbeSetExtents(probe RID, extents Vector3)
+	ReflectionProbeSetSize(probe RID, size Vector3)
 
 	ReflectionProbeSetOriginOffset(probe RID, offset Vector3)
 
@@ -17506,7 +17632,7 @@ type RenderingServer interface {
 
 	DecalCreate() RID
 
-	DecalSetExtents(decal RID, extents Vector3)
+	DecalSetSize(decal RID, size Vector3)
 
 	DecalSetTexture(decal RID, typeName RenderingServerDecalTexture, texture RID)
 
@@ -17672,7 +17798,7 @@ type RenderingServer interface {
 
 	FogVolumeSetShape(fog_volume RID, shape RenderingServerFogVolumeShape)
 
-	FogVolumeSetExtents(fog_volume RID, extents Vector3)
+	FogVolumeSetSize(fog_volume RID, size Vector3)
 
 	FogVolumeSetMaterial(fog_volume RID, material RID)
 
@@ -17738,7 +17864,7 @@ type RenderingServer interface {
 
 	ViewportSetDisable2D(viewport RID, disable bool)
 
-	ViewportSetDisableEnvironment(viewport RID, disabled bool)
+	ViewportSetEnvironmentMode(viewport RID, mode RenderingServerViewportEnvironmentMode)
 
 	ViewportAttachCamera(viewport RID, camera RID)
 
@@ -18227,7 +18353,7 @@ type ResourceFormatLoader interface {
 
 	// VIRTUAL: Internal_GetDependencies(path String,add_types bool,) PackedStringArray
 
-	// VIRTUAL: Internal_RenameDependencies(path String,renames Dictionary,) int32
+	// VIRTUAL: Internal_RenameDependencies(path String,renames Dictionary,) Error
 
 	// VIRTUAL: Internal_Exists(path String,) bool
 
@@ -18238,7 +18364,7 @@ type ResourceFormatLoader interface {
 type ResourceFormatSaver interface {
 	RefCounted
 
-	// VIRTUAL: Internal_Save(resource Resource,path String,flags int32,) int32
+	// VIRTUAL: Internal_Save(resource Resource,path String,flags int32,) Error
 
 	// VIRTUAL: Internal_SetUid(path String,uid int32,) Error
 
@@ -18424,6 +18550,8 @@ type RichTextLabel interface {
 
 	PushBgcolor(bgcolor Color)
 
+	PushCustomfx(effect RichTextEffect, env Dictionary)
+
 	Pop()
 
 	Clear()
@@ -18476,9 +18604,9 @@ type RichTextLabel interface {
 
 	GetTabSize() int32
 
-	SetFitContentHeight(enabled bool)
+	SetFitContent(enabled bool)
 
-	IsFitContentHeightEnabled() bool
+	IsFitContentEnabled() bool
 
 	SetSelectionEnabled(enabled bool)
 
@@ -19319,7 +19447,7 @@ type Semaphore interface {
 
 	Wait()
 
-	TryWait() Error
+	TryWait() bool
 
 	Post()
 }
@@ -20497,6 +20625,22 @@ type SpriteBase3D interface {
 
 	GetAlphaCutMode() SpriteBase3DAlphaCutMode
 
+	SetAlphaScissorThreshold(threshold float32)
+
+	GetAlphaScissorThreshold() float32
+
+	SetAlphaHashScale(threshold float32)
+
+	GetAlphaHashScale() float32
+
+	SetAlphaAntialiasing(alpha_aa BaseMaterial3DAlphaAntiAliasing)
+
+	GetAlphaAntialiasing() BaseMaterial3DAlphaAntiAliasing
+
+	SetAlphaAntialiasingEdge(edge float32)
+
+	GetAlphaAntialiasingEdge() float32
+
 	SetBillboardMode(mode BaseMaterial3DBillboardMode)
 
 	GetBillboardMode() BaseMaterial3DBillboardMode
@@ -20717,19 +20861,15 @@ type StreamPeerTLS interface {
 
 	Poll()
 
-	AcceptStream(stream StreamPeer, private_key CryptoKey, certificate X509Certificate, chain X509Certificate) Error
+	AcceptStream(stream StreamPeer, server_options TLSOptions) Error
 
-	ConnectToStream(stream StreamPeer, validate_certs bool, for_hostname String, valid_certificate X509Certificate) Error
+	ConnectToStream(stream StreamPeer, common_name String, client_options TLSOptions) Error
 
 	GetStatus() StreamPeerTLSStatus
 
 	GetStream() StreamPeer
 
 	DisconnectFromStream()
-
-	SetBlockingHandshakeEnabled(enabled bool)
-
-	IsBlockingHandshakeEnabled() bool
 }
 type StyleBox interface {
 	Resource
@@ -21041,6 +21181,14 @@ type SystemFont interface {
 
 	IsMultichannelSignedDistanceField() bool
 
+	SetMsdfPixelRange(msdf_pixel_range int32)
+
+	GetMsdfPixelRange() int32
+
+	SetMsdfSize(msdf_size int32)
+
+	GetMsdfSize() int32
+
 	SetOversampling(oversampling float32)
 
 	GetOversampling() float32
@@ -21071,6 +21219,15 @@ type TCPServer interface {
 	TakeConnection() StreamPeerTCP
 
 	Stop()
+}
+type TLSOptions interface {
+	RefCounted
+
+	Client(trusted_chain X509Certificate, common_name_override String) TLSOptions
+
+	ClientUnsafe(trusted_chain X509Certificate) TLSOptions
+
+	Server(key CryptoKey, certificate X509Certificate) TLSOptions
 }
 type TabBar interface {
 	Control
@@ -23133,9 +23290,9 @@ type TileData interface {
 
 	GetMaterial() Material
 
-	SetTextureOffset(texture_offset Vector2i)
+	SetTextureOrigin(texture_origin Vector2i)
 
-	GetTextureOffset() Vector2i
+	GetTextureOrigin() Vector2i
 
 	SetModulate(modulate Color)
 
@@ -23451,6 +23608,10 @@ type TileSet interface {
 	SetNavigationLayerLayers(layer_index int32, layers int32)
 
 	GetNavigationLayerLayers(layer_index int32) int32
+
+	SetNavigationLayerLayerValue(layer_index int32, layer_number int32, value bool)
+
+	GetNavigationLayerLayerValue(layer_index int32, layer_number int32) bool
 
 	GetCustomDataLayersCount() int32
 
@@ -24484,6 +24645,43 @@ type VehicleWheel3D interface {
 }
 type VideoStream interface {
 	Resource
+
+	// VIRTUAL: Internal_InstantiatePlayback() VideoStreamPlayback
+
+	SetFile(file String)
+
+	GetFile() String
+}
+type VideoStreamPlayback interface {
+	Resource
+
+	// VIRTUAL: Internal_Stop()
+
+	// VIRTUAL: Internal_Play()
+
+	// VIRTUAL: Internal_IsPlaying() bool
+
+	// VIRTUAL: Internal_SetPaused(paused bool,)
+
+	// VIRTUAL: Internal_IsPaused() bool
+
+	// VIRTUAL: Internal_GetLength() float32
+
+	// VIRTUAL: Internal_GetPlaybackPosition() float32
+
+	// VIRTUAL: Internal_Seek(time float32,)
+
+	// VIRTUAL: Internal_SetAudioTrack(idx int32,)
+
+	// VIRTUAL: Internal_GetTexture() Texture2D
+
+	// VIRTUAL: Internal_Update(delta float32,)
+
+	// VIRTUAL: Internal_GetChannels() int32
+
+	// VIRTUAL: Internal_GetMixRate() int32
+
+	MixAudio(num_frames int32, buffer PackedFloat32Array, offset int32) int32
 }
 type VideoStreamPlayer interface {
 	Control
@@ -24540,10 +24738,6 @@ type VideoStreamPlayer interface {
 }
 type VideoStreamTheora interface {
 	VideoStream
-
-	SetFile(file String)
-
-	GetFile() String
 }
 type Viewport interface {
 	Node
@@ -25026,17 +25220,17 @@ type VisualShaderNodeCustom interface {
 
 	// VIRTUAL: Internal_GetCategory() String
 
-	// VIRTUAL: Internal_GetReturnIconType() int32
+	// VIRTUAL: Internal_GetReturnIconType() VisualShaderNodePortType
 
 	// VIRTUAL: Internal_GetInputPortCount() int32
 
-	// VIRTUAL: Internal_GetInputPortType(port int32,) int32
+	// VIRTUAL: Internal_GetInputPortType(port int32,) VisualShaderNodePortType
 
 	// VIRTUAL: Internal_GetInputPortName(port int32,) String
 
 	// VIRTUAL: Internal_GetOutputPortCount() int32
 
-	// VIRTUAL: Internal_GetOutputPortType(port int32,) int32
+	// VIRTUAL: Internal_GetOutputPortType(port int32,) VisualShaderNodePortType
 
 	// VIRTUAL: Internal_GetOutputPortName(port int32,) String
 
@@ -25060,6 +25254,10 @@ type VisualShaderNodeDerivativeFunc interface {
 	SetFunction(callbackFunc VisualShaderNodeDerivativeFuncFunction)
 
 	GetFunction() VisualShaderNodeDerivativeFuncFunction
+
+	SetPrecision(precision VisualShaderNodeDerivativeFuncPrecision)
+
+	GetPrecision() VisualShaderNodeDerivativeFuncPrecision
 }
 type VisualShaderNodeDeterminant interface {
 	VisualShaderNode
@@ -25680,9 +25878,9 @@ type VoxelGI interface {
 
 	GetSubdiv() VoxelGISubdiv
 
-	SetExtents(extents Vector3)
+	SetSize(size Vector3)
 
-	GetExtents() Vector3
+	GetSize() Vector3
 
 	SetCameraAttributes(camera_attributes CameraAttributes)
 
@@ -25886,9 +26084,9 @@ type WebRTCPeerConnectionExtension interface {
 type WebSocketMultiplayerPeer interface {
 	MultiplayerPeer
 
-	CreateClient(url String, verify_tls bool, tls_certificate X509Certificate) Error
+	CreateClient(url String, tls_client_options TLSOptions) Error
 
-	CreateServer(port int32, bind_address String, tls_key CryptoKey, tls_certificate X509Certificate) Error
+	CreateServer(port int32, bind_address String, tls_server_options TLSOptions) Error
 
 	GetPeer(peer_id int32) WebSocketPeer
 
@@ -25923,7 +26121,7 @@ type WebSocketMultiplayerPeer interface {
 type WebSocketPeer interface {
 	PacketPeer
 
-	ConnectToUrl(url String, verify_tls bool, trusted_tls_certificate X509Certificate) Error
+	ConnectToUrl(url String, tls_client_options TLSOptions) Error
 
 	AcceptStream(stream StreamPeer) Error
 
@@ -26428,9 +26626,9 @@ type XRInterfaceExtension interface {
 
 	// VIRTUAL: Internal_SupportsPlayAreaMode(mode XRInterfacePlayAreaMode,) bool
 
-	// VIRTUAL: Internal_GetPlayAreaMode() int32
+	// VIRTUAL: Internal_GetPlayAreaMode() XRInterfacePlayAreaMode
 
-	// VIRTUAL: Internal_SetPlayAreaMode(mode int32,) bool
+	// VIRTUAL: Internal_SetPlayAreaMode(mode XRInterfacePlayAreaMode,) bool
 
 	// VIRTUAL: Internal_GetPlayArea() PackedVector3Array
 
@@ -26460,7 +26658,7 @@ type XRInterfaceExtension interface {
 
 	// VIRTUAL: Internal_GetSuggestedPoseNames(tracker_name StringName,) PackedStringArray
 
-	// VIRTUAL: Internal_GetTrackingStatus() int32
+	// VIRTUAL: Internal_GetTrackingStatus() XRInterfaceTrackingStatus
 
 	// VIRTUAL: Internal_TriggerHapticPulse(action_name String,tracker_name StringName,frequency float32,amplitude float32,duration_sec float32,delay_sec float32,)
 

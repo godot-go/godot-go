@@ -447,16 +447,17 @@ func GDExtensionInterface_mem_free(p_struct *GDExtensionInterface, p_ptr unsafe.
 
 }
 
-func GDExtensionInterface_print_error(p_struct *GDExtensionInterface, p_description string, p_function string, p_file string, p_line int32) {
-	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
-	arg1 := C.CString(p_description)            // const char *
-	arg2 := C.CString(p_function)               // const char *
-	arg3 := C.CString(p_file)                   // const char *
-	arg4 := (C.int32_t)(p_line)                 // int32_t
+func GDExtensionInterface_print_error(p_struct *GDExtensionInterface, p_description string, p_function string, p_file string, p_line int32, p_editor_notify GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)  // GDExtensionInterface
+	arg1 := C.CString(p_description)             // const char *
+	arg2 := C.CString(p_function)                // const char *
+	arg3 := C.CString(p_file)                    // const char *
+	arg4 := (C.int32_t)(p_line)                  // int32_t
+	arg5 := (C.GDExtensionBool)(p_editor_notify) // GDExtensionBool
 
 	log.Debug("called C.cgo_callfn_GDExtensionInterface_print_error")
 
-	C.cgo_callfn_GDExtensionInterface_print_error(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDExtensionInterface_print_error(arg0, arg1, arg2, arg3, arg4, arg5)
 
 	C.free(unsafe.Pointer(arg1))
 	C.free(unsafe.Pointer(arg2))
@@ -464,16 +465,37 @@ func GDExtensionInterface_print_error(p_struct *GDExtensionInterface, p_descript
 
 }
 
-func GDExtensionInterface_print_warning(p_struct *GDExtensionInterface, p_description string, p_function string, p_file string, p_line int32) {
-	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
-	arg1 := C.CString(p_description)            // const char *
-	arg2 := C.CString(p_function)               // const char *
-	arg3 := C.CString(p_file)                   // const char *
-	arg4 := (C.int32_t)(p_line)                 // int32_t
+func GDExtensionInterface_print_error_with_message(p_struct *GDExtensionInterface, p_description string, p_message string, p_function string, p_file string, p_line int32, p_editor_notify GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)  // GDExtensionInterface
+	arg1 := C.CString(p_description)             // const char *
+	arg2 := C.CString(p_message)                 // const char *
+	arg3 := C.CString(p_function)                // const char *
+	arg4 := C.CString(p_file)                    // const char *
+	arg5 := (C.int32_t)(p_line)                  // int32_t
+	arg6 := (C.GDExtensionBool)(p_editor_notify) // GDExtensionBool
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_print_error_with_message")
+
+	C.cgo_callfn_GDExtensionInterface_print_error_with_message(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+
+	C.free(unsafe.Pointer(arg1))
+	C.free(unsafe.Pointer(arg2))
+	C.free(unsafe.Pointer(arg3))
+	C.free(unsafe.Pointer(arg4))
+
+}
+
+func GDExtensionInterface_print_warning(p_struct *GDExtensionInterface, p_description string, p_function string, p_file string, p_line int32, p_editor_notify GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)  // GDExtensionInterface
+	arg1 := C.CString(p_description)             // const char *
+	arg2 := C.CString(p_function)                // const char *
+	arg3 := C.CString(p_file)                    // const char *
+	arg4 := (C.int32_t)(p_line)                  // int32_t
+	arg5 := (C.GDExtensionBool)(p_editor_notify) // GDExtensionBool
 
 	log.Debug("called C.cgo_callfn_GDExtensionInterface_print_warning")
 
-	C.cgo_callfn_GDExtensionInterface_print_warning(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDExtensionInterface_print_warning(arg0, arg1, arg2, arg3, arg4, arg5)
 
 	C.free(unsafe.Pointer(arg1))
 	C.free(unsafe.Pointer(arg2))
@@ -481,20 +503,61 @@ func GDExtensionInterface_print_warning(p_struct *GDExtensionInterface, p_descri
 
 }
 
-func GDExtensionInterface_print_script_error(p_struct *GDExtensionInterface, p_description string, p_function string, p_file string, p_line int32) {
-	arg0 := (*C.GDExtensionInterface)(p_struct) // GDExtensionInterface
-	arg1 := C.CString(p_description)            // const char *
-	arg2 := C.CString(p_function)               // const char *
-	arg3 := C.CString(p_file)                   // const char *
-	arg4 := (C.int32_t)(p_line)                 // int32_t
+func GDExtensionInterface_print_warning_with_message(p_struct *GDExtensionInterface, p_description string, p_message string, p_function string, p_file string, p_line int32, p_editor_notify GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)  // GDExtensionInterface
+	arg1 := C.CString(p_description)             // const char *
+	arg2 := C.CString(p_message)                 // const char *
+	arg3 := C.CString(p_function)                // const char *
+	arg4 := C.CString(p_file)                    // const char *
+	arg5 := (C.int32_t)(p_line)                  // int32_t
+	arg6 := (C.GDExtensionBool)(p_editor_notify) // GDExtensionBool
 
-	log.Debug("called C.cgo_callfn_GDExtensionInterface_print_script_error")
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_print_warning_with_message")
 
-	C.cgo_callfn_GDExtensionInterface_print_script_error(arg0, arg1, arg2, arg3, arg4)
+	C.cgo_callfn_GDExtensionInterface_print_warning_with_message(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 
 	C.free(unsafe.Pointer(arg1))
 	C.free(unsafe.Pointer(arg2))
 	C.free(unsafe.Pointer(arg3))
+	C.free(unsafe.Pointer(arg4))
+
+}
+
+func GDExtensionInterface_print_script_error(p_struct *GDExtensionInterface, p_description string, p_function string, p_file string, p_line int32, p_editor_notify GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)  // GDExtensionInterface
+	arg1 := C.CString(p_description)             // const char *
+	arg2 := C.CString(p_function)                // const char *
+	arg3 := C.CString(p_file)                    // const char *
+	arg4 := (C.int32_t)(p_line)                  // int32_t
+	arg5 := (C.GDExtensionBool)(p_editor_notify) // GDExtensionBool
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_print_script_error")
+
+	C.cgo_callfn_GDExtensionInterface_print_script_error(arg0, arg1, arg2, arg3, arg4, arg5)
+
+	C.free(unsafe.Pointer(arg1))
+	C.free(unsafe.Pointer(arg2))
+	C.free(unsafe.Pointer(arg3))
+
+}
+
+func GDExtensionInterface_print_script_error_with_message(p_struct *GDExtensionInterface, p_description string, p_message string, p_function string, p_file string, p_line int32, p_editor_notify GDExtensionBool) {
+	arg0 := (*C.GDExtensionInterface)(p_struct)  // GDExtensionInterface
+	arg1 := C.CString(p_description)             // const char *
+	arg2 := C.CString(p_message)                 // const char *
+	arg3 := C.CString(p_function)                // const char *
+	arg4 := C.CString(p_file)                    // const char *
+	arg5 := (C.int32_t)(p_line)                  // int32_t
+	arg6 := (C.GDExtensionBool)(p_editor_notify) // GDExtensionBool
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_print_script_error_with_message")
+
+	C.cgo_callfn_GDExtensionInterface_print_script_error_with_message(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+
+	C.free(unsafe.Pointer(arg1))
+	C.free(unsafe.Pointer(arg2))
+	C.free(unsafe.Pointer(arg3))
+	C.free(unsafe.Pointer(arg4))
 
 }
 
@@ -1714,10 +1777,10 @@ func GDExtensionInterface_array_ref(p_struct *GDExtensionInterface, p_self GDExt
 
 }
 
-func GDExtensionInterface_array_set_typed(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_type Uint32T, p_class_name GDExtensionConstStringNamePtr, p_script GDExtensionConstVariantPtr) {
+func GDExtensionInterface_array_set_typed(p_struct *GDExtensionInterface, p_self GDExtensionTypePtr, p_type GDExtensionVariantType, p_class_name GDExtensionConstStringNamePtr, p_script GDExtensionConstVariantPtr) {
 	arg0 := (*C.GDExtensionInterface)(p_struct)             // GDExtensionInterface
 	arg1 := (C.GDExtensionTypePtr)(p_self)                  // GDExtensionTypePtr
-	arg2 := (C.uint32_t)(p_type)                            // uint32_t
+	arg2 := (C.GDExtensionVariantType)(p_type)              // GDExtensionVariantType
 	arg3 := (C.GDExtensionConstStringNamePtr)(p_class_name) // GDExtensionConstStringNamePtr
 	arg4 := (C.GDExtensionConstVariantPtr)(p_script)        // GDExtensionConstVariantPtr
 

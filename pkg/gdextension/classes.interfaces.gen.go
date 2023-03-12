@@ -1047,7 +1047,11 @@ type AnimationTree interface {
 
 	GetRootMotionScale() Vector3
 
-	RenameParameter(old_name String, new_name String)
+	GetRootMotionPositionAccumulator() Vector3
+
+	GetRootMotionRotationAccumulator() Quaternion
+
+	GetRootMotionScaleAccumulator() Vector3
 
 	Advance(delta float32)
 }
@@ -1822,7 +1826,7 @@ type AudioServer interface {
 
 	GetOutputDevice() String
 
-	SetOutputDevice(output_device String)
+	SetOutputDevice(name String)
 
 	GetTimeToNextMix() float32
 
@@ -2646,10 +2650,6 @@ type Bone2D interface {
 	GetSkeletonRest() Transform2D
 
 	GetIndexInSkeleton() int32
-
-	SetDefaultLength(default_length float32)
-
-	GetDefaultLength() float32
 
 	SetAutocalculateLengthAndAngle(auto_calculate bool)
 
@@ -5014,7 +5014,7 @@ type Container interface {
 type Control interface {
 	CanvasItem
 
-	// VIRTUAL: Internal_HasPoint(position Vector2,) bool
+	// VIRTUAL: Internal_HasPoint(point Vector2,) bool
 
 	// VIRTUAL: Internal_StructuredTextParser(args Array,text String,) []Vector3i
 
@@ -6219,7 +6219,9 @@ type Engine interface {
 
 	GetSingletonList() PackedStringArray
 
-	RegisterScriptLanguage(language ScriptLanguage)
+	RegisterScriptLanguage(language ScriptLanguage) Error
+
+	UnregisterScriptLanguage(language ScriptLanguage) Error
 
 	GetScriptLanguageCount() int32
 
@@ -6816,6 +6818,8 @@ type FileAccess interface {
 	StorePascalString(strValue String)
 
 	GetPascalString() String
+
+	Close()
 
 	FileExists(path String) bool
 
@@ -7506,10 +7510,6 @@ type GLTFNode interface {
 
 	SetSkeleton(skeleton int32)
 
-	GetJoint() bool
-
-	SetJoint(joint bool)
-
 	GetPosition() Vector3
 
 	SetPosition(position Vector3)
@@ -7725,10 +7725,6 @@ type GLTFState interface {
 	GetSkeletons() []GLTFSkeleton
 
 	SetSkeletons(skeletons []GLTFSkeleton)
-
-	GetSkeletonToNode() Dictionary
-
-	SetSkeletonToNode(skeleton_to_node Dictionary)
 
 	GetCreateAnimations() bool
 
@@ -11545,6 +11541,14 @@ type NavigationLink2D interface {
 
 	GetEndPosition() Vector2
 
+	SetGlobalStartPosition(position Vector2)
+
+	GetGlobalStartPosition() Vector2
+
+	SetGlobalEndPosition(position Vector2)
+
+	GetGlobalEndPosition() Vector2
+
 	SetEnterCost(enter_cost float32)
 
 	GetEnterCost() float32
@@ -11579,6 +11583,14 @@ type NavigationLink3D interface {
 	SetEndPosition(position Vector3)
 
 	GetEndPosition() Vector3
+
+	SetGlobalStartPosition(position Vector3)
+
+	GetGlobalStartPosition() Vector3
+
+	SetGlobalEndPosition(position Vector3)
+
+	GetGlobalEndPosition() Vector3
 
 	SetEnterCost(enter_cost float32)
 
@@ -12073,6 +12085,10 @@ type NavigationServer2D interface {
 	AgentSetCallback(agent RID, callback Callable)
 
 	FreeRid(rid RID)
+
+	SetDebugEnabled(enabled bool)
+
+	GetDebugEnabled() bool
 }
 type NavigationServer3D interface {
 	Object
@@ -12221,7 +12237,9 @@ type NavigationServer3D interface {
 
 	SetActive(active bool)
 
-	Process(delta_time float32)
+	SetDebugEnabled(enabled bool)
+
+	GetDebugEnabled() bool
 
 	GetProcessInfo(process_info NavigationServer3DProcessInfo) int32
 }
@@ -14245,7 +14263,7 @@ type PhysicsDirectSpaceState3D interface {
 
 	CastMotion(parameters PhysicsShapeQueryParameters3D) PackedFloat32Array
 
-	CollideShape(parameters PhysicsShapeQueryParameters3D, max_results int32) []PackedVector2Array
+	CollideShape(parameters PhysicsShapeQueryParameters3D, max_results int32) []PackedVector3Array
 
 	GetRestInfo(parameters PhysicsShapeQueryParameters3D) Dictionary
 }
@@ -16297,6 +16315,8 @@ type ProjectSettings interface {
 
 	GetSettingWithOverride(name StringName) Variant
 
+	GetGlobalClassList() []Dictionary
+
 	SetOrder(name String, position int32)
 
 	GetOrder(name String) int32
@@ -17283,7 +17303,7 @@ type RenderingDevice interface {
 
 	BufferClear(buffer RID, offset int32, size_bytes int32, post_barrier RenderingDeviceBarrierMask) Error
 
-	BufferGetData(buffer RID) PackedByteArray
+	BufferGetData(buffer RID, offset_bytes int32, size_bytes int32) PackedByteArray
 
 	RenderPipelineCreate(shader RID, framebuffer_format int32, vertex_format int32, primitive RenderingDeviceRenderPrimitive, rasterization_state RDPipelineRasterizationState, multisample_state RDPipelineMultisampleState, stencil_state RDPipelineDepthStencilState, color_blend_state RDPipelineColorBlendState, dynamic_state_flags RenderingDevicePipelineDynamicStateFlags, for_render_pass int32, specialization_constants []RDPipelineSpecializationConstant) RID
 
@@ -18220,6 +18240,8 @@ type RenderingServer interface {
 
 	CanvasLightSetShadowSmooth(light RID, smooth float32)
 
+	CanvasLightSetBlendMode(light RID, mode RenderingServerCanvasLightBlendMode)
+
 	CanvasLightOccluderCreate() RID
 
 	CanvasLightOccluderAttachToCanvas(occluder RID, canvas RID)
@@ -18699,6 +18721,8 @@ type RichTextLabel interface {
 	GetMenu() PopupMenu
 
 	IsMenuVisible() bool
+
+	MenuOption(option int32)
 }
 type RigidBody2D interface {
 	PhysicsBody2D
@@ -19213,6 +19237,8 @@ type ScriptExtension interface {
 
 	// VIRTUAL: Internal_GetBaseScript() Script
 
+	// VIRTUAL: Internal_GetGlobalName() StringName
+
 	// VIRTUAL: Internal_InheritsScript(script Script,) bool
 
 	// VIRTUAL: Internal_GetInstanceBaseType() StringName
@@ -19280,8 +19306,6 @@ type ScriptLanguageExtension interface {
 	// VIRTUAL: Internal_GetType() String
 
 	// VIRTUAL: Internal_GetExtension() String
-
-	// VIRTUAL: Internal_ExecuteFile(path String,) Error
 
 	// VIRTUAL: Internal_Finish()
 
@@ -19376,14 +19400,6 @@ type ScriptLanguageExtension interface {
 	// VIRTUAL: Internal_ProfilingGetAccumulatedData(info_array *ScriptLanguageExtensionProfilingInfo,info_max int32,) int32
 
 	// VIRTUAL: Internal_ProfilingGetFrameData(info_array *ScriptLanguageExtensionProfilingInfo,info_max int32,) int32
-
-	// VIRTUAL: Internal_AllocInstanceBindingData(object Object,) unsafe.Pointer
-
-	// VIRTUAL: Internal_FreeInstanceBindingData(data unsafe.Pointer,)
-
-	// VIRTUAL: Internal_RefcountIncrementedInstanceBinding(object Object,)
-
-	// VIRTUAL: Internal_RefcountDecrementedInstanceBinding(object Object,) bool
 
 	// VIRTUAL: Internal_Frame()
 
@@ -19664,11 +19680,11 @@ type ShapeCast3D interface {
 
 	AddExceptionRid(rid RID)
 
-	AddException(node Object)
+	AddException(node CollisionObject3D)
 
 	RemoveExceptionRid(rid RID)
 
-	RemoveException(node Object)
+	RemoveException(node CollisionObject3D)
 
 	ClearExceptions()
 
@@ -23425,6 +23441,10 @@ type TileMap interface {
 
 	GetNavigationVisibilityMode() TileMapVisibilityMode
 
+	SetNavigationMap(layer int32, resourceMap RID)
+
+	GetNavigationMap(layer int32) RID
+
 	SetCell(layer int32, coords Vector2i, source_id int32, atlas_coords Vector2i, alternative_tile int32)
 
 	EraseCell(layer int32, coords Vector2i)
@@ -24801,6 +24821,10 @@ type Viewport interface {
 	SetPhysicsObjectPicking(enable bool)
 
 	GetPhysicsObjectPicking() bool
+
+	SetPhysicsObjectPickingSort(enable bool)
+
+	GetPhysicsObjectPickingSort() bool
 
 	GetViewportRid() RID
 
@@ -26610,6 +26634,10 @@ type XRInterface interface {
 	GetTransformForView(view int32, cam_transform Transform3D) Transform3D
 
 	GetProjectionForView(view int32, aspect float32, near float32, far float32) Projection
+
+	GetSupportedEnvironmentBlendModes() Array
+
+	SetEnvironmentBlendMode(mode XRInterfaceEnvironmentBlendMode) bool
 }
 type XRInterfaceExtension interface {
 	XRInterface

@@ -27200,14 +27200,14 @@ func arrayInitMethodBindings() {
 	methodName27 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName27.Destroy()
 	log.Debug("globalArrayMethodBindings.method_bsearch")
-	globalArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName27.AsGDExtensionStringNamePtr(), 2634019015)
+	globalArrayMethodBindings.method_bsearch = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName27.AsGDExtensionStringNamePtr(), 3372222236)
 	if globalArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_bsearch")
 	}
 	methodName28 := NewStringNameWithLatin1Chars("bsearch_custom")
 	defer methodName28.Destroy()
 	log.Debug("globalArrayMethodBindings.method_bsearch_custom")
-	globalArrayMethodBindings.method_bsearch_custom = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName28.AsGDExtensionStringNamePtr(), 135832563)
+	globalArrayMethodBindings.method_bsearch_custom = GDExtensionInterface_variant_get_ptr_builtin_method(internal.gdnInterface, GDEXTENSION_VARIANT_TYPE_ARRAY, methodName28.AsGDExtensionStringNamePtr(), 161317131)
 	if globalArrayMethodBindings.method_bsearch_custom == nil {
 		missingMethods = append(missingMethods, "globalArrayMethodBindings.method_bsearch_custom")
 	}

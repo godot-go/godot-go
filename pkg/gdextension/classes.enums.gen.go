@@ -4543,36 +4543,12 @@ const (
 	RICH_TEXT_LABEL_LIST_TYPE_LIST_DOTS                          = 3
 )
 
-type RichTextLabelItemType int
+type RichTextLabelMenuItems int
 
 const (
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_FRAME         RichTextLabelItemType = 0
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_TEXT                                = 1
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_IMAGE                               = 2
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_NEWLINE                             = 3
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_FONT                                = 4
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_FONT_SIZE                           = 5
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_FONT_FEATURES                       = 6
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_COLOR                               = 7
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_OUTLINE_SIZE                        = 8
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_OUTLINE_COLOR                       = 9
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_UNDERLINE                           = 10
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_STRIKETHROUGH                       = 11
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_PARAGRAPH                           = 12
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_INDENT                              = 13
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_LIST                                = 14
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_TABLE                               = 15
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_FADE                                = 16
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_SHAKE                               = 17
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_WAVE                                = 18
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_TORNADO                             = 19
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_RAINBOW                             = 20
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_BGCOLOR                             = 21
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_FGCOLOR                             = 22
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_META                                = 23
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_HINT                                = 24
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_DROPCAP                             = 25
-	RICH_TEXT_LABEL_ITEM_TYPE_ITEM_CUSTOMFX                            = 26
+	RICH_TEXT_LABEL_MENU_ITEMS_MENU_COPY       RichTextLabelMenuItems = 0
+	RICH_TEXT_LABEL_MENU_ITEMS_MENU_SELECT_ALL                        = 1
+	RICH_TEXT_LABEL_MENU_ITEMS_MENU_MAX                               = 2
 )
 
 type RigidBody2DFreezeMode int
@@ -6398,6 +6374,14 @@ const (
 	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_SITTING                           = 2
 	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_ROOMSCALE                         = 3
 	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_STAGE                             = 4
+)
+
+type XRInterfaceEnvironmentBlendMode int
+
+const (
+	XR_INTERFACE_ENVIRONMENT_BLEND_MODE_XR_ENV_BLEND_MODE_OPAQUE      XRInterfaceEnvironmentBlendMode = 0
+	XR_INTERFACE_ENVIRONMENT_BLEND_MODE_XR_ENV_BLEND_MODE_ADDITIVE                                    = 1
+	XR_INTERFACE_ENVIRONMENT_BLEND_MODE_XR_ENV_BLEND_MODE_ALPHA_BLEND                                 = 2
 )
 
 type XRPoseTrackingConfidence int

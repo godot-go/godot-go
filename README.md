@@ -8,6 +8,9 @@
 
 The project is currently under heavy development. The API should be considered __EXPERIMENTAL__ and is subject to change. The API is expected to become more stable as we get closer to a 1.0 release.
 
+## Current State of the Project
+
+Although the tests confirm positive results, the godot-go bindings are currently not useable until the __blocker__ [reference counting issue](https://github.com/godot-go/godot-go/issues/71) is fixed. Further development won't make much sense until this is addressed.
 
 ## Getting Started
 

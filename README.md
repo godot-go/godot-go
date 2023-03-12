@@ -21,7 +21,7 @@ TODO
 
 ### Building Godot-Go
 
-In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of Godot 4 beta 15 [snapshot](https://downloads.tuxfamily.org/godotengine/4.0/beta15/).
+In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of Godot 4 stable [snapshot](https://downloads.tuxfamily.org/godotengine/4.0).
 
 
     # exports the latest gdextension_interface.h and extension_api.json from the godot binary

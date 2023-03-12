@@ -76,6 +76,12 @@ func goArgumentType(t clang.PrimativeType, name string) string {
 		}
 
 		return "Uint8T"
+	case "uint32_t":
+		if t.IsPointer {
+			return "*Uint32T"
+		}
+
+		return "Uint32T"
 	case "uint64_t":
 		if t.IsPointer {
 			return "*Uint64T"
@@ -130,6 +136,12 @@ func goReturnType(t clang.PrimativeType) string {
 			return "*uint8"
 		} else {
 			return "uint8"
+		}
+	case "uint32_t":
+		if t.IsPointer {
+			return "*uint32"
+		} else {
+			return "uint32"
 		}
 	case "char16_t":
 		if t.IsPointer {

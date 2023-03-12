@@ -225,13 +225,28 @@ void cgo_callfn_GDExtensionInterface_mem_free(
     const GDExtensionInterface *p_struct, void *p_ptr);
 void cgo_callfn_GDExtensionInterface_print_error(
     const GDExtensionInterface *p_struct, const char *p_description,
-    const char *p_function, const char *p_file, int32_t p_line);
+    const char *p_function, const char *p_file, int32_t p_line,
+    GDExtensionBool p_editor_notify);
+void cgo_callfn_GDExtensionInterface_print_error_with_message(
+    const GDExtensionInterface *p_struct, const char *p_description,
+    const char *p_message, const char *p_function, const char *p_file,
+    int32_t p_line, GDExtensionBool p_editor_notify);
 void cgo_callfn_GDExtensionInterface_print_warning(
     const GDExtensionInterface *p_struct, const char *p_description,
-    const char *p_function, const char *p_file, int32_t p_line);
+    const char *p_function, const char *p_file, int32_t p_line,
+    GDExtensionBool p_editor_notify);
+void cgo_callfn_GDExtensionInterface_print_warning_with_message(
+    const GDExtensionInterface *p_struct, const char *p_description,
+    const char *p_message, const char *p_function, const char *p_file,
+    int32_t p_line, GDExtensionBool p_editor_notify);
 void cgo_callfn_GDExtensionInterface_print_script_error(
     const GDExtensionInterface *p_struct, const char *p_description,
-    const char *p_function, const char *p_file, int32_t p_line);
+    const char *p_function, const char *p_file, int32_t p_line,
+    GDExtensionBool p_editor_notify);
+void cgo_callfn_GDExtensionInterface_print_script_error_with_message(
+    const GDExtensionInterface *p_struct, const char *p_description,
+    const char *p_message, const char *p_function, const char *p_file,
+    int32_t p_line, GDExtensionBool p_editor_notify);
 uint64_t cgo_callfn_GDExtensionInterface_get_native_struct_size(
     const GDExtensionInterface *p_struct, GDExtensionConstStringNamePtr p_name);
 void cgo_callfn_GDExtensionInterface_variant_new_copy(
@@ -545,6 +560,13 @@ GDExtensionVariantPtr
 cgo_callfn_GDExtensionInterface_array_operator_index_const(
     const GDExtensionInterface *p_struct, GDExtensionConstTypePtr p_self,
     GDExtensionInt p_index);
+void cgo_callfn_GDExtensionInterface_array_ref(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionConstTypePtr p_from);
+void cgo_callfn_GDExtensionInterface_array_set_typed(
+    const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
+    GDExtensionVariantType p_type, GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstVariantPtr p_script);
 GDExtensionVariantPtr cgo_callfn_GDExtensionInterface_dictionary_operator_index(
     const GDExtensionInterface *p_struct, GDExtensionTypePtr p_self,
     GDExtensionConstVariantPtr p_key);

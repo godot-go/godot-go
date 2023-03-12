@@ -41,11 +41,11 @@ jobs:
         run: |
           echo "${GOROOT_1_19_X64}/bin" >> $GITHUB_PATH
           echo "GITHUB_PATH=${GITHUB_PATH}"
-      - name: Install Godot 4.0 beta15
+      - name: Install Godot 4.0 stable
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.0/beta15/Godot_v4.0-beta15_linux.x86_64.zip
-          sudo unzip Godot_v4.0-beta15_linux.x86_64.zip -d /usr/local/bin
-          sudo ln -s Godot_v4.0-beta15_linux.x86_64 /usr/local/bin/godot
+          wget https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-stable_linux.x86_64.zip
+          sudo unzip Godot_v4.0-stable_linux.x86_64.zip -d /usr/local/bin
+          sudo ln -s Godot_v4.0-stable_linux.x86_64 /usr/local/bin/godot
       - name: Build
         run: make build
         env:

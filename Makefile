@@ -20,7 +20,7 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
-.PHONY: goenv generate update_godot_headers_from_binary update_godot_headers_from_github build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
+.PHONY: goenv generate update_godot_headers_from_binary build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
 
 goenv:
 	go env
@@ -31,6 +31,8 @@ generate: clean
 		$(CLANG_FORMAT) -i pkg/gdextensionffi/ffi_wrapper.gen.h; \
 		$(CLANG_FORMAT) -i pkg/gdextensionffi/ffi_wrapper.gen.c; \
 	fi
+	go fmt pkg/gdextensionffi/*.gen.go
+	go fmt pkg/gdextension/*.gen.go
 
 update_godot_headers_from_binary: ## update godot_headers from the godot binary
 	DISPLAY=:0 $(GODOT) --dump-extension-api; \

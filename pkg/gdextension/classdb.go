@@ -33,8 +33,8 @@ func ClassDBAddPropertyGroup(t GDClass, p_name string, p_prefix string) {
 	prefix := NewStringWithLatin1Chars(p_prefix)
 	defer prefix.Destroy()
 
-	GDExtensionInterface_classdb_register_extension_class_property_group(
-		internal.gdnInterface, internal.library,
+	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup(
+		FFI.Library,
 		className.AsGDExtensionStringNamePtr(),
 		name.AsGDExtensionStringPtr(),
 		prefix.AsGDExtensionStringPtr(),
@@ -57,8 +57,8 @@ func ClassDBAddPropertySubgroup(t GDClass, p_name string, p_prefix string) {
 	prefix := NewStringWithLatin1Chars(p_prefix)
 	defer prefix.Destroy()
 
-	GDExtensionInterface_classdb_register_extension_class_property_subgroup(
-		internal.gdnInterface, internal.library,
+	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup(
+		FFI.Library,
 		className.AsGDExtensionStringNamePtr(),
 		name.AsGDExtensionStringPtr(),
 		prefix.AsGDExtensionStringPtr(),
@@ -177,8 +177,8 @@ func ClassDBAddProperty(
 	snGetterGDName := NewStringNameWithLatin1Chars(getterGDName)
 	defer snGetterGDName.Destroy()
 
-	GDExtensionInterface_classdb_register_extension_class_property(
-		internal.gdnInterface, internal.library,
+	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassProperty(
+		FFI.Library,
 		ci.NameAsStringNamePtr,
 		&prop_info,
 		snSetterGDName.AsGDExtensionStringNamePtr(),
@@ -247,9 +247,8 @@ func classDBBindMethodGodot(pClassName GDExtensionConstStringNamePtr, pMethod *M
 		zap.String("go_name", pMethod.GoName),
 	)
 
-	GDExtensionInterface_classdb_register_extension_class_method(
-		internal.gdnInterface,
-		internal.library,
+	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassMethod(
+		FFI.Library,
 		pClassName,
 		&pMethod.ClassMethodInfo,
 	)
@@ -304,7 +303,7 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 			hint.AsGDExtensionStringPtr(),
 			(uint32)(PROPERTY_USAGE_DEFAULT),
 		)
-		defer paramArr[i].Destroy(internal.gdnInterface)
+		defer paramArr[i].Destroy()
 	}
 
 	var argsPtr *GDExtensionPropertyInfo
@@ -321,9 +320,8 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 	snSignalName := NewStringNameWithLatin1Chars(signalName)
 	defer snSignalName.Destroy()
 
-	GDExtensionInterface_classdb_register_extension_class_signal(
-		internal.gdnInterface,
-		internal.library,
+	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassSignal(
+		FFI.Library,
 		snTypeName.AsGDExtensionStringNamePtr(),
 		snSignalName.AsGDExtensionStringNamePtr(),
 		argsPtr,
@@ -382,9 +380,8 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 	snConstantName := NewStringNameWithLatin1Chars(p_constant_name)
 	defer snConstantName.Destroy()
 
-	GDExtensionInterface_classdb_register_extension_class_integer_constant(
-		internal.gdnInterface,
-		internal.library,
+	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant(
+		FFI.Library,
 		snTypeName.AsGDExtensionStringNamePtr(),
 		snEnumName.AsGDExtensionStringNamePtr(),
 		snConstantName.AsGDExtensionStringNamePtr(),
@@ -436,16 +433,15 @@ func classDBDeinitialize(pLevel GDExtensionInitializationLevel) {
 		name := NewStringNameWithLatin1Chars(ci.Name)
 		defer name.Destroy()
 
-		GDExtensionInterface_classdb_unregister_extension_class(
-			internal.gdnInterface,
-			internal.library,
+		CallFunc_GDExtensionInterfaceClassdbUnregisterExtensionClass(
+			FFI.Library,
 			name.AsGDExtensionStringNamePtr(),
 		)
 
 		// NOTE: godot-cpp iterates through the map to delete all method binds
 		for n, mb := range ci.MethodMap {
 			delete(ci.MethodMap, n)
-			mb.Destroy(internal.gdnInterface)
+			mb.Destroy()
 		}
 	}
 }
@@ -540,9 +536,8 @@ func ClassDBRegisterClass(inst GDClass, bindMethodsFunc func(t GDClass)) {
 	defer snParentName.Destroy()
 
 	// register with Godot
-	GDExtensionInterface_classdb_register_extension_class(
-		(*GDExtensionInterface)(internal.gdnInterface),
-		(GDExtensionClassLibraryPtr)(internal.library),
+	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass(
+		(GDExtensionClassLibraryPtr)(FFI.Library),
 		snName.AsGDExtensionStringNamePtr(),
 		snParentName.AsGDExtensionStringNamePtr(),
 		&info,

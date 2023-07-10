@@ -24,7 +24,7 @@ import (
 	"github.com/godot-go/godot-go/pkg/log"
 )
 
-// aliases
+// C type aliases
 type Uint64T C.uint64_t
 type Uint32T C.uint32_t
 type Uint16T C.uint16_t
@@ -48,179 +48,91 @@ const (
 )
 {{ end }}
 
-// functions
+// C function aliases
 {{ range $i, $f := $view.CollectFunctions -}}
-	type {{ $f.Name }} C.{{ $f.Name }}
-{{ end -}}
+type {{ $f.Name }} C.{{ $f.Name }}
+{{ end }}
 
-// custom functions
-func CallFunc_GDExtensionPtrConstructor(
-	fn GDExtensionPtrConstructor,
-	p_base GDExtensionTypePtr,
-	p_args *GDExtensionConstTypePtr,
-) {
-	log.Debug("called CallFunc_GDExtensionPtrConstructor")
-	C.cgo_callfn_GDExtensionPtrConstructor(
-		(C.GDExtensionPtrConstructor)(fn),
-		(C.GDExtensionTypePtr)(p_base),
-		(*C.GDExtensionConstTypePtr)(p_args),
-	)
-}
+// call non-gdextension interface functions
+{{ range $i, $f := $view.CollectNonGDExtensionInterfaceFunctions -}}
+{{ $rt := goReturnType .ReturnType }}
+func CallFunc_{{ $f.Name }}(
+	fn {{ $f.Name }},
+	{{- range $j, $arg := $f.Arguments }}
+		{{ if $arg.Name -}}
+		{{ $arg.Name -}}
+		{{ else if and $arg.Type.Function $arg.Type.Function.Name -}}
+		{{ $arg.Type.Function.Name -}}
+		{{ else -}}
+		inArg{{ add $j 1 -}}
+		{{ end }} {{ if $arg.Type.Primative }}{{ goArgumentType $arg.Type.Primative $arg.Name }}{{ else }} unsafe.Pointer{{ end }},
+	{{- end -}}
+) {{ $rt }} {
+	arg0 := (C.{{ $f.Name }})(fn)
+	{{ range $j, $arg := $f.Arguments -}}
+		arg{{ add $j 1 }} := {{ cgoCastArgument $arg (print "inArg" (add $j 1)) }}
+	{{ end }}
 
-func CallFunc_GDExtensionPtrDestructor(
-	fn GDExtensionPtrDestructor,
-	ptr GDExtensionTypePtr,
-) {
-	log.Debug("called C.cgo_callfn_GDExtensionPtrDestructor")
-	C.cgo_callfn_GDExtensionPtrDestructor(
-		(C.GDExtensionPtrDestructor)(fn),
-		(C.GDExtensionTypePtr)(ptr),
-	)
-}
+	log.Debug("called C.cgo_callfn_{{ $f.Name }}")
 
-func CallFunc_GDExtensionPtrOperatorEvaluator(
-	fn GDExtensionPtrOperatorEvaluator,
-	p_left GDExtensionConstTypePtr,
-	p_right GDExtensionConstTypePtr,
-	r_result GDExtensionTypePtr,
-) {
-	log.Debug("called C.cgo_callfn_GDExtensionPtrOperatorEvaluator")
-	C.cgo_callfn_GDExtensionPtrOperatorEvaluator(
-		(C.GDExtensionPtrOperatorEvaluator)(fn),
-		(C.GDExtensionConstTypePtr)(p_left),
-		(C.GDExtensionConstTypePtr)(p_right),
-		(C.GDExtensionTypePtr)(r_result),
-	)
-}
-
-func CallFunc_GDExtensionPtrBuiltInMethod(
-	fn GDExtensionPtrBuiltInMethod,
-	p_base GDExtensionTypePtr,
-	p_args *GDExtensionConstTypePtr,
-	r_return GDExtensionTypePtr,
-	p_argument_count int32,
-) {
-	log.Debug("called C.cgo_callfn_GDExtensionPtrBuiltInMethod")
-	C.cgo_callfn_GDExtensionPtrBuiltInMethod(
-		(C.GDExtensionPtrBuiltInMethod)(fn),
-		(C.GDExtensionTypePtr)(p_base),
-		(*C.GDExtensionConstTypePtr)(p_args),
-		(C.GDExtensionTypePtr)(r_return),
-		(C.int)(p_argument_count),
-	);
-}
-
-func CallFunc_GDExtensionPtrUtilityFunction(
-	fn GDExtensionPtrUtilityFunction,
-	r_return GDExtensionTypePtr,
-	p_arguments *GDExtensionConstTypePtr,
-	p_argument_count int32,
-) {
-	log.Debug("called C.cgo_callfn_GDExtensionPtrUtilityFunction")
-	C.cgo_callfn_GDExtensionPtrUtilityFunction(
-		(C.GDExtensionPtrUtilityFunction)(fn),
-		(C.GDExtensionTypePtr)(r_return),
-		(*C.GDExtensionConstTypePtr)(p_arguments),
-		(C.int)(p_argument_count),
-	)
-}
-
-func CallFunc_GDExtensionPtrGetter(
-	fn GDExtensionPtrGetter,
-	p_base GDExtensionConstTypePtr,
-	r_value GDExtensionTypePtr,
-) {
-	log.Debug("called C.cgo_callfn_GDExtensionPtrGetter")
-	C.cgo_callfn_GDExtensionPtrGetter(
-		(C.GDExtensionPtrGetter)(fn),
-		(C.GDExtensionConstTypePtr)(p_base),
-		(C.GDExtensionTypePtr)(r_value),
-	)
-}
-
-func CallFunc_GDExtensionPtrSetter(
-	fn GDExtensionPtrSetter,
-	p_base GDExtensionTypePtr,
-	p_value GDExtensionConstTypePtr,
-) {
-	log.Debug("called C.cgo_callfn_GDExtensionPtrSetter")
-	C.cgo_callfn_GDExtensionPtrSetter(
-		(C.GDExtensionPtrSetter)(fn),
-		(C.GDExtensionTypePtr)(p_base),
-		(C.GDExtensionConstTypePtr)(p_value),
-	)
-}
-
-func CallFunc_GDExtensionPtrIndexedGetter(
-	fn GDExtensionPtrIndexedGetter,
-	p_base GDExtensionConstTypePtr,
-	p_index GDExtensionInt,
-	r_value GDExtensionTypePtr,
-) {
-	log.Debug("called C.cgo_callfn_GDExtensionPtrIndexedGetter")
-	C.cgo_callfn_GDExtensionPtrIndexedGetter(
-		(C.GDExtensionPtrIndexedGetter)(fn),
-		(C.GDExtensionConstTypePtr)(p_base),
-		(C.GDExtensionInt)(p_index),
-		(C.GDExtensionTypePtr)(r_value),
-	)
-}
-
-func CallFunc_GDExtensionPtrIndexedSetter(
-	fn GDExtensionPtrIndexedSetter,
-	p_base GDExtensionTypePtr,
-	p_index GDExtensionInt,
-	p_value GDExtensionConstTypePtr,
-) {
-	log.Debug("called C.cgo_callfn_GDExtensionPtrIndexedSetter")
-	C.cgo_callfn_GDExtensionPtrIndexedSetter(
-		(C.GDExtensionPtrIndexedSetter)(fn),
-		(C.GDExtensionTypePtr)(p_base),
-		(C.GDExtensionInt)(p_index),
-		(C.GDExtensionConstTypePtr)(p_value),
-	)
-}
-
-func CallFunc_GDExtensionVariantFromTypeConstructorFunc(
-	fn GDExtensionVariantFromTypeConstructorFunc,
-	arg_0 GDExtensionVariantPtr,
-    arg_1 GDExtensionTypePtr,
-) {
-	log.Debug("called C.cgo_callfn_GDExtensionVariantFromTypeConstructorFunc")
-	C.cgo_callfn_GDExtensionVariantFromTypeConstructorFunc(
-		(C.GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(C.GDExtensionVariantPtr)(arg_0),
-		(C.GDExtensionTypePtr)(arg_1),
-	)
-}
-
-func CallFunc_GDExtensionTypeFromVariantConstructorFunc(
-	fn GDExtensionTypeFromVariantConstructorFunc,
-	arg_0 GDExtensionTypePtr,
-    arg_1 GDExtensionVariantPtr,
-) {
-	log.Debug("called C.cgo_callfn_GDExtensionTypeFromVariantConstructorFunc")
-	C.cgo_callfn_GDExtensionTypeFromVariantConstructorFunc(
-		(C.GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(C.GDExtensionTypePtr)(arg_0),
-		(C.GDExtensionVariantPtr)(arg_1),
-	)
-}
-
-{{/*
-	func Call{{ $f.Name }}(fn {{ $f.Name }}
+	{{ if $rt }}ret := {{ end -}}
+	C.cgo_callfn_{{ $f.Name }}(arg0,
 		{{- range $j, $arg := $f.Arguments -}}
-			, {{ if $arg.Name }}{{ $arg.Name }}{{ else }}arg_{{ $j }}{{ end }} {{ goArgumentType $arg.Type $arg.Name }}
+			arg{{ add $j 1 }},
 		{{- end -}}
-	) {{ goReturnType $f.ReturnType }} {
-		{{ if (gt (len (goReturnType $f.ReturnType)) 0) }}return {{ end }}  C.cgo_{{ $f.Name -}}
-			((C.{{ $f.Name }})(fn)
-			{{- range $j, $arg := $f.Arguments -}}
-				, (C.{{ goArgumentType $arg.Type $arg.Name }})({{ if $arg.Name }}{{ $arg.Name }}{{ else }}arg_{{ $j }}{{ end }})
-			{{- end -}}
-		)
-	}
-*/}}
+	)
+
+	{{ range $j, $arg := $f.Arguments -}}
+		{{ cgoCleanUpArgument $arg (add $j 1) }}
+	{{ end }}
+
+	{{- if $rt }}
+
+	// {{ $f.ReturnType.CStyleString }}
+	return {{ cgoCastReturnType $f.ReturnType "ret" }}
+	{{ end -}}
+}
+{{ end }}
+
+// call gdextension interface functions
+{{ range $i, $f := $view.CollectGDExtensionInterfaceFunctions -}}
+{{ $rt := goReturnType .ReturnType }}
+func CallFunc_{{ $f.Name }}(
+	{{- range $j, $arg := $f.Arguments }}
+		{{ if $arg.Name -}}
+		{{ $arg.Name -}}
+		{{ else if and $arg.Type.Function $arg.Type.Function.Name -}}
+		{{ $arg.Type.Function.Name -}}
+		{{ else -}}
+		inArg{{ add $j 1 -}}
+		{{ end }} {{ if $arg.Type.Primative }}{{ goArgumentType $arg.Type.Primative $arg.Name }}{{ else }} unsafe.Pointer{{ end }},
+	{{- end -}}
+) {{ $rt }} {
+	arg0 := (C.{{ $f.Name }})(FFI.{{ gdiVariableName $f.Name }})
+	{{ range $j, $arg := $f.Arguments -}}
+		arg{{ add $j 1 }} := {{ cgoCastArgument $arg (print "inArg" (add $j 1)) }}
+	{{ end }}
+
+	log.Debug("called C.cgo_callfn_{{ $f.Name }}")
+
+	{{ if $rt }}ret := {{ end -}}
+	C.cgo_callfn_{{ $f.Name }}(arg0,
+		{{- range $j, $arg := $f.Arguments -}}
+			arg{{ add $j 1 }},
+		{{- end -}}
+	)
+
+	{{ range $j, $arg := $f.Arguments -}}
+		{{ cgoCleanUpArgument $arg (add $j 1) }}
+	{{ end }}
+
+	{{- if $rt }}
+
+	// {{ $f.ReturnType.CStyleString }}
+	return {{ cgoCastReturnType $f.ReturnType "ret" }}
+	{{ end -}}
+}
+{{ end }}
 
 // structs
 {{ range $i, $t := $view.CollectStructs -}}
@@ -229,41 +141,40 @@ func CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 
 // struct functions
 {{ range $i, $t := $view.CollectStructs -}}
-	{{- $fns := $t.CollectFunctions -}}
+	{{ $fns := $t.CollectFunctions -}}
+	{{ if gt (len $fns) 0 -}}
+	/* struct ({{ $i }}) {{ $t.Name }} */
+	{{ range $j, $f := $fns -}}
+		{{ $rt := goReturnType .ReturnType }}
+		func {{ $t.Name }}_{{ $f.Name }}(p_struct *{{ $t.Name }}
+			{{- range $j, $arg := $f.Arguments -}}
+				, {{ $arg.Name }} {{ if $arg.Type.Primative }}{{ goArgumentType $arg.Type.Primative $arg.Name }}{{ else }}{{ $arg.Type.Function.Name }} unsafe.Pointer{{ end }}
+			{{- end -}}
+		) {{ $rt }} {
+			arg0 := (*C.{{ $t.Name }})(p_struct) // {{ $t.Name }}
+			{{ range $j, $arg := $f.Arguments -}}
+				arg{{ add $j 1 }} := {{ cgoCastArgument $arg "" }} // {{ $arg.Type.CStyleString }}
+			{{ end }}
 
-	{{- if gt (len $fns) 0 -}}
-		/* struct ({{ $i }}) {{ $t.Name }} */
-		{{ range $j, $f := $fns -}}
-			{{ $rt := goReturnType $f.ReturnType }}
-			func {{ $t.Name }}_{{ $f.Name }}(p_struct *{{ $t.Name }}
+			log.Debug("called C.cgo_callfn_{{ $t.Name }}_{{ $f.Name }}")
+
+			{{ if $rt }}ret := {{ end -}}
+			C.cgo_callfn_{{ $t.Name }}_{{ $f.Name }}(arg0
 				{{- range $j, $arg := $f.Arguments -}}
-					, {{ $arg.Name }} {{ if $arg.Type.Primative }}{{ goArgumentType $arg.Type.Primative $arg.Name }}{{ else }}{{ $arg.Type.Function.Name }} unsafe.Pointer{{ end }}
+					, arg{{ add $j 1 }}
 				{{- end -}}
-			) {{ $rt }} {
-				arg0 := (*C.{{ $t.Name }})(p_struct) // {{ $t.Name }}
-				{{ range $j, $arg := $f.Arguments -}}
-					arg{{ add $j 1 }} := {{ cgoCastArgument $arg }} // {{ $arg.Type.String }}
-				{{ end }}
+			)
 
-				log.Debug("called C.cgo_callfn_{{ $t.Name }}_{{ $f.Name }}")
+			{{ range $j, $arg := $f.Arguments -}}
+				{{ cgoCleanUpArgument $arg (add $j 1) }}
+			{{ end }}
 
-				{{ if $rt }}ret := {{ end -}}
-				C.cgo_callfn_{{ $t.Name }}_{{ $f.Name }}(arg0
-					{{- range $j, $arg := $f.Arguments -}}
-						, arg{{ add $j 1 }}
-					{{- end -}}
-				)
+			{{- if $rt }}
 
-				{{ range $j, $arg := $f.Arguments -}}
-					{{ cgoCleanUpArgument $arg (add $j 1) }}
-				{{ end }}
-
-				{{- if $rt }}
-
-				// {{ $f.ReturnType.String }}
-				return {{ cgoCastReturnType $f.ReturnType "ret" }}
-				{{ end -}}
-			}
-		{{ end -}}
+			// {{ $f.ReturnType.CStyleString }}
+			return {{ cgoCastReturnType $f.ReturnType "ret" }}
+			{{ end -}}
+		}
+	{{ end -}}
 	{{ end -}}
 {{ end -}}

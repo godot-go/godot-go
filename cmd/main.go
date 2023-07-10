@@ -22,6 +22,7 @@ var (
 	genExtensionApi  bool
 	packagePath      string
 	godotPath        string
+	parsedASTPath    string
 )
 
 func init() {
@@ -32,6 +33,7 @@ func init() {
 	rootCmd.PersistentFlags().BoolVarP(&genExtensionApi, "extensionApi", "", false, "Generate Extension API")
 	rootCmd.PersistentFlags().StringVarP(&packagePath, "package-path", "p", absPath, "Specified package path")
 	rootCmd.PersistentFlags().StringVarP(&godotPath, "godot-path", "", "godot", "Specified path where the Godot executable is located")
+	rootCmd.PersistentFlags().StringVarP(&parsedASTPath, "parsed-ast-path", "", "_debug_parsed_ast.json", "Specified path where the AST structure should be written to")
 }
 
 var rootCmd = &cobra.Command{
@@ -44,7 +46,7 @@ var rootCmd = &cobra.Command{
 			if verbose {
 				println("Generating gdextension C wrapper functions...")
 			}
-			gdextensionwrapper.Generate(packagePath)
+			gdextensionwrapper.Generate(packagePath, parsedASTPath)
 
 			hasGen = true
 		}

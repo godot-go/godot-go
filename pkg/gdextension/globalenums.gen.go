@@ -464,6 +464,7 @@ const (
 	PROPERTY_HINT_LAYERS_3D_RENDER                      = 10
 	PROPERTY_HINT_LAYERS_3D_PHYSICS                     = 11
 	PROPERTY_HINT_LAYERS_3D_NAVIGATION                  = 12
+	PROPERTY_HINT_LAYERS_AVOIDANCE                      = 37
 	PROPERTY_HINT_FILE                                  = 13
 	PROPERTY_HINT_DIR                                   = 14
 	PROPERTY_HINT_GLOBAL_FILE                           = 15
@@ -488,7 +489,7 @@ const (
 	PROPERTY_HINT_NODE_TYPE                             = 34
 	PROPERTY_HINT_HIDE_QUATERNION_EDIT                  = 35
 	PROPERTY_HINT_PASSWORD                              = 36
-	PROPERTY_HINT_MAX                                   = 37
+	PROPERTY_HINT_MAX                                   = 38
 )
 
 type PropertyUsageFlags int
@@ -523,6 +524,7 @@ const (
 	PROPERTY_USAGE_EDITOR_INSTANTIATE_OBJECT                    = 67108864
 	PROPERTY_USAGE_EDITOR_BASIC_SETTING                         = 134217728
 	PROPERTY_USAGE_READ_ONLY                                    = 268435456
+	PROPERTY_USAGE_SECRET                                       = 536870912
 	PROPERTY_USAGE_DEFAULT                                      = 6
 	PROPERTY_USAGE_NO_EDITOR                                    = 2
 )

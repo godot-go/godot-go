@@ -25,5 +25,5 @@ func TestGenerate(t *testing.T) {
 
 	require.NotEmpty(t, projectPath)
 
-	Generate(projectPath)
+	Generate(projectPath, "")
 }

@@ -132,9 +132,10 @@ const (
 type AnimationNodeOneShotOneShotRequest int
 
 const (
-	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_NONE  AnimationNodeOneShotOneShotRequest = 0
-	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_FIRE                                     = 1
-	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_ABORT                                    = 2
+	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_NONE     AnimationNodeOneShotOneShotRequest = 0
+	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_FIRE                                        = 1
+	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_ABORT                                       = 2
+	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_FADE_OUT                                    = 3
 )
 
 type AnimationNodeOneShotMixMode int
@@ -142,6 +143,14 @@ type AnimationNodeOneShotMixMode int
 const (
 	ANIMATION_NODE_ONE_SHOT_MIX_MODE_MIX_MODE_BLEND AnimationNodeOneShotMixMode = 0
 	ANIMATION_NODE_ONE_SHOT_MIX_MODE_MIX_MODE_ADD                               = 1
+)
+
+type AnimationNodeStateMachineStateMachineType int
+
+const (
+	ANIMATION_NODE_STATE_MACHINE_STATE_MACHINE_TYPE_STATE_MACHINE_TYPE_ROOT    AnimationNodeStateMachineStateMachineType = 0
+	ANIMATION_NODE_STATE_MACHINE_STATE_MACHINE_TYPE_STATE_MACHINE_TYPE_NESTED                                            = 1
+	ANIMATION_NODE_STATE_MACHINE_STATE_MACHINE_TYPE_STATE_MACHINE_TYPE_GROUPED                                           = 2
 )
 
 type AnimationNodeStateMachineTransitionSwitchMode int
@@ -836,6 +845,15 @@ const (
 	CODE_EDIT_CODE_COMPLETION_KIND_KIND_PLAIN_TEXT                            = 9
 )
 
+type CodeEditCodeCompletionLocation int
+
+const (
+	CODE_EDIT_CODE_COMPLETION_LOCATION_LOCATION_LOCAL           CodeEditCodeCompletionLocation = 0
+	CODE_EDIT_CODE_COMPLETION_LOCATION_LOCATION_PARENT_MASK                                    = 256
+	CODE_EDIT_CODE_COMPLETION_LOCATION_LOCATION_OTHER_USER_CODE                                = 512
+	CODE_EDIT_CODE_COMPLETION_LOCATION_LOCATION_OTHER                                          = 1024
+)
+
 type CollisionObject2DDisableMode int
 
 const (
@@ -1065,6 +1083,7 @@ const (
 	DISPLAY_SERVER_FEATURE_FEATURE_CLIPBOARD_PRIMARY                        = 18
 	DISPLAY_SERVER_FEATURE_FEATURE_TEXT_TO_SPEECH                           = 19
 	DISPLAY_SERVER_FEATURE_FEATURE_EXTEND_TO_TITLE                          = 20
+	DISPLAY_SERVER_FEATURE_FEATURE_SCREEN_CAPTURE                           = 21
 )
 
 type DisplayServerMouseMode int
@@ -1252,6 +1271,124 @@ const (
 	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_INTERVAL                                  = 13
 )
 
+type EditorFeatureProfileFeature int
+
+const (
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_3_D             EditorFeatureProfileFeature = 0
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_SCRIPT                                      = 1
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_ASSET_LIB                                   = 2
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_SCENE_TREE                                  = 3
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_NODE_DOCK                                   = 4
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_FILESYSTEM_DOCK                             = 5
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_IMPORT_DOCK                                 = 6
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_HISTORY_DOCK                                = 7
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_MAX                                         = 8
+)
+
+type EditorFileDialogFileMode int
+
+const (
+	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_FILE  EditorFileDialogFileMode = 0
+	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_FILES                          = 1
+	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_DIR                            = 2
+	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_ANY                            = 3
+	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_SAVE_FILE                           = 4
+)
+
+type EditorFileDialogAccess int
+
+const (
+	EDITOR_FILE_DIALOG_ACCESS_ACCESS_RESOURCES  EditorFileDialogAccess = 0
+	EDITOR_FILE_DIALOG_ACCESS_ACCESS_USERDATA                          = 1
+	EDITOR_FILE_DIALOG_ACCESS_ACCESS_FILESYSTEM                        = 2
+)
+
+type EditorFileDialogDisplayMode int
+
+const (
+	EDITOR_FILE_DIALOG_DISPLAY_MODE_DISPLAY_THUMBNAILS EditorFileDialogDisplayMode = 0
+	EDITOR_FILE_DIALOG_DISPLAY_MODE_DISPLAY_LIST                                   = 1
+)
+
+type EditorPluginCustomControlContainer int
+
+const (
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_TOOLBAR                   EditorPluginCustomControlContainer = 0
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_MENU                                          = 1
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_SIDE_LEFT                                     = 2
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_SIDE_RIGHT                                    = 3
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_BOTTOM                                        = 4
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_MENU                                           = 5
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_SIDE_LEFT                                      = 6
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_SIDE_RIGHT                                     = 7
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_BOTTOM                                         = 8
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_INSPECTOR_BOTTOM                                             = 9
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_PROJECT_SETTING_TAB_LEFT                                     = 10
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_PROJECT_SETTING_TAB_RIGHT                                    = 11
+)
+
+type EditorPluginDockSlot int
+
+const (
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_LEFT_UL  EditorPluginDockSlot = 0
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_LEFT_BL                       = 1
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_LEFT_UR                       = 2
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_LEFT_BR                       = 3
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_UL                      = 4
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_BL                      = 5
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_UR                      = 6
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_BR                      = 7
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_MAX                           = 8
+)
+
+type EditorPluginAfterGUIInput int
+
+const (
+	EDITOR_PLUGIN_AFTER_GUI_INPUT_AFTER_GUI_INPUT_PASS   EditorPluginAfterGUIInput = 0
+	EDITOR_PLUGIN_AFTER_GUI_INPUT_AFTER_GUI_INPUT_STOP                             = 1
+	EDITOR_PLUGIN_AFTER_GUI_INPUT_AFTER_GUI_INPUT_CUSTOM                           = 2
+)
+
+type EditorScenePostImportPluginInternalImportCategory int
+
+const (
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_NODE              EditorScenePostImportPluginInternalImportCategory = 0
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MESH_3_D_NODE                                                       = 1
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MESH                                                                = 2
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MATERIAL                                                            = 3
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_ANIMATION                                                           = 4
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_ANIMATION_NODE                                                      = 5
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_SKELETON_3_D_NODE                                                   = 6
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MAX                                                                 = 7
+)
+
+type EditorUndoRedoManagerSpecialHistory int
+
+const (
+	EDITOR_UNDO_REDO_MANAGER_SPECIAL_HISTORY_GLOBAL_HISTORY  EditorUndoRedoManagerSpecialHistory = 0
+	EDITOR_UNDO_REDO_MANAGER_SPECIAL_HISTORY_REMOTE_HISTORY                                      = -9
+	EDITOR_UNDO_REDO_MANAGER_SPECIAL_HISTORY_INVALID_HISTORY                                     = -99
+)
+
+type EditorVCSInterfaceChangeType int
+
+const (
+	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_NEW        EditorVCSInterfaceChangeType = 0
+	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_MODIFIED                                = 1
+	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_RENAMED                                 = 2
+	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_DELETED                                 = 3
+	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_TYPECHANGE                              = 4
+	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_UNMERGED                                = 5
+)
+
+type EditorVCSInterfaceTreeArea int
+
+const (
+	EDITOR_VCS_INTERFACE_TREE_AREA_TREE_AREA_COMMIT   EditorVCSInterfaceTreeArea = 0
+	EDITOR_VCS_INTERFACE_TREE_AREA_TREE_AREA_STAGED                              = 1
+	EDITOR_VCS_INTERFACE_TREE_AREA_TREE_AREA_UNSTAGED                            = 2
+)
+
 type EnvironmentBGMode int
 
 const (
@@ -1381,6 +1518,7 @@ const (
 	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_DEFLATE                           = 1
 	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_ZSTD                              = 2
 	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_GZIP                              = 3
+	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_BROTLI                            = 4
 )
 
 type FileDialogFileMode int
@@ -1606,11 +1744,20 @@ const (
 	GRADIENT_INTERPOLATION_MODE_GRADIENT_INTERPOLATE_CUBIC                              = 2
 )
 
+type GradientColorSpace int
+
+const (
+	GRADIENT_COLOR_SPACE_GRADIENT_COLOR_SPACE_SRGB        GradientColorSpace = 0
+	GRADIENT_COLOR_SPACE_GRADIENT_COLOR_SPACE_LINEAR_SRGB                    = 1
+	GRADIENT_COLOR_SPACE_GRADIENT_COLOR_SPACE_OKLAB                          = 2
+)
+
 type GradientTexture2DFill int
 
 const (
 	GRADIENT_TEXTURE_2_D_FILL_FILL_LINEAR GradientTexture2DFill = 0
 	GRADIENT_TEXTURE_2_D_FILL_FILL_RADIAL                       = 1
+	GRADIENT_TEXTURE_2_D_FILL_FILL_SQUARE                       = 2
 )
 
 type GradientTexture2DRepeat int
@@ -1869,6 +2016,8 @@ const (
 	IMAGE_COMPRESS_MODE_COMPRESS_ETC                      = 1
 	IMAGE_COMPRESS_MODE_COMPRESS_ETC_2                    = 2
 	IMAGE_COMPRESS_MODE_COMPRESS_BPTC                     = 3
+	IMAGE_COMPRESS_MODE_COMPRESS_ASTC                     = 4
+	IMAGE_COMPRESS_MODE_COMPRESS_MAX                      = 5
 )
 
 type ImageUsedChannels int
@@ -2235,6 +2384,13 @@ const (
 	MESH_BLEND_SHAPE_MODE_BLEND_SHAPE_MODE_RELATIVE                      = 1
 )
 
+type MeshConvexDecompositionSettingsMode int
+
+const (
+	MESH_CONVEX_DECOMPOSITION_SETTINGS_MODE_CONVEX_DECOMPOSITION_MODE_VOXEL       MeshConvexDecompositionSettingsMode = 0
+	MESH_CONVEX_DECOMPOSITION_SETTINGS_MODE_CONVEX_DECOMPOSITION_MODE_TETRAHEDRON                                     = 1
+)
+
 type MultiMeshTransformFormat int
 
 const (
@@ -2391,6 +2547,22 @@ const (
 	NODE_PROCESS_MODE_PROCESS_MODE_WHEN_PAUSED                 = 2
 	NODE_PROCESS_MODE_PROCESS_MODE_ALWAYS                      = 3
 	NODE_PROCESS_MODE_PROCESS_MODE_DISABLED                    = 4
+)
+
+type NodeProcessThreadGroup int
+
+const (
+	NODE_PROCESS_THREAD_GROUP_PROCESS_THREAD_GROUP_INHERIT     NodeProcessThreadGroup = 0
+	NODE_PROCESS_THREAD_GROUP_PROCESS_THREAD_GROUP_MAIN_THREAD                        = 1
+	NODE_PROCESS_THREAD_GROUP_PROCESS_THREAD_GROUP_SUB_THREAD                         = 2
+)
+
+type NodeProcessThreadMessages int
+
+const (
+	NODE_PROCESS_THREAD_MESSAGES_FLAG_PROCESS_THREAD_MESSAGES         NodeProcessThreadMessages = 1
+	NODE_PROCESS_THREAD_MESSAGES_FLAG_PROCESS_THREAD_MESSAGES_PHYSICS                           = 2
+	NODE_PROCESS_THREAD_MESSAGES_FLAG_PROCESS_THREAD_MESSAGES_ALL                               = 3
 )
 
 type NodeDuplicateFlags int
@@ -3852,6 +4024,7 @@ const (
 	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_OPACITY                                  = 17
 	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_BLUR                                     = 18
 	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_TRANSMITTANCE_BIAS                              = 19
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_INTENSITY                                       = 20
 	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_MAX                                             = 21
 )
 
@@ -4978,12 +5151,15 @@ const (
 type TextServerJustificationFlag int
 
 const (
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_NONE               TextServerJustificationFlag = 0
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_KASHIDA                                        = 1
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_WORD_BOUND                                     = 2
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_TRIM_EDGE_SPACES                               = 4
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_AFTER_LAST_TAB                                 = 8
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_CONSTRAIN_ELLIPSIS                             = 16
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_NONE                              TextServerJustificationFlag = 0
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_KASHIDA                                                       = 1
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_WORD_BOUND                                                    = 2
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_TRIM_EDGE_SPACES                                              = 4
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_AFTER_LAST_TAB                                                = 8
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_CONSTRAIN_ELLIPSIS                                            = 16
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_SKIP_LAST_LINE                                                = 32
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_SKIP_LAST_LINE_WITH_VISIBLE_CHARS                             = 64
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_DO_NOT_SKIP_SINGLE_LINE                                       = 128
 )
 
 type TextServerAutowrapMode int
@@ -5052,6 +5228,7 @@ const (
 	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_UNDERSCORE                                    = 512
 	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_CONNECTED                                     = 1024
 	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_SAFE_TO_INSERT_TATWEEL                        = 2048
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_EMBEDDED_OBJECT                               = 4096
 )
 
 type TextServerHinting int
@@ -5370,6 +5547,7 @@ const (
 	TWEEN_TRANSITION_TYPE_TRANS_CIRC                        = 8
 	TWEEN_TRANSITION_TYPE_TRANS_BOUNCE                      = 9
 	TWEEN_TRANSITION_TYPE_TRANS_BACK                        = 10
+	TWEEN_TRANSITION_TYPE_TRANS_SPRING                      = 11
 )
 
 type TweenEaseType int
@@ -6326,10 +6504,12 @@ const (
 type WindowWindowInitialPosition int
 
 const (
-	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_ABSOLUTE                  WindowWindowInitialPosition = 0
-	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN                                 = 1
-	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_MAIN_WINDOW_SCREEN                             = 2
-	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_OTHER_SCREEN                                   = 3
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_ABSOLUTE                          WindowWindowInitialPosition = 0
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN                                         = 1
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_MAIN_WINDOW_SCREEN                                     = 2
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_OTHER_SCREEN                                           = 3
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_MOUSE_FOCUS                                = 4
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_KEYBOARD_FOCUS                             = 5
 )
 
 type XMLParserNodeType int

@@ -8,9 +8,9 @@ import (
 	"github.com/godot-go/godot-go/pkg/log"
 )
 
-func callBuiltinConstructor(constructor GDExtensionPtrConstructor, base GDExtensionTypePtr, args ...GDExtensionConstTypePtr) {
+func callBuiltinConstructor(constructor GDExtensionPtrConstructor, base GDExtensionUninitializedTypePtr, args ...GDExtensionConstTypePtr) {
 	c := (GDExtensionPtrConstructor)(constructor)
-	b := (GDExtensionTypePtr)(base)
+	b := (GDExtensionUninitializedTypePtr)(base)
 
 	if c == nil {
 		log.Panic("constructor is null")

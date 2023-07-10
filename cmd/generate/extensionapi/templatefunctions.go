@@ -93,8 +93,6 @@ func goDecodeNumberType(t string) string {
 		// log.Panic("unhandled number type", zap.String("type", t))
 		return t
 	}
-
-	panic("unhandled number type")
 }
 
 func goArgumentType(t string) string {

@@ -284,10 +284,10 @@ func UnregisterExampleTypes() {
 }
 
 //export TestDemoInit
-func TestDemoInit(p_interface unsafe.Pointer, p_library unsafe.Pointer, r_initialization unsafe.Pointer) bool {
+func TestDemoInit(p_get_proc_address unsafe.Pointer, p_library unsafe.Pointer, r_initialization unsafe.Pointer) bool {
 	log.Debug("ExampleLibraryInit called")
 	initObj := gdextension.NewInitObject(
-		(*gdextensionffi.GDExtensionInterface)(p_interface),
+		(gdextensionffi.GDExtensionInterfaceGetProcAddress)(p_get_proc_address),
 		(gdextensionffi.GDExtensionClassLibraryPtr)(p_library),
 		(*gdextensionffi.GDExtensionInitialization)(r_initialization),
 	)

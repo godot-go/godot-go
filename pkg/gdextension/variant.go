@@ -20,8 +20,8 @@ var (
 func variantInitBindings() {
 	log.Debug("variantInitBindings called")
 	for i := GDExtensionVariantType(1); i < GDEXTENSION_VARIANT_TYPE_VARIANT_MAX; i++ {
-		variantFromTypeConstructor[i] = GDExtensionInterface_get_variant_from_type_constructor(internal.gdnInterface, i)
-		variantToTypeConstructor[i] = GDExtensionInterface_get_variant_to_type_constructor(internal.gdnInterface, i)
+		variantFromTypeConstructor[i] = CallFunc_GDExtensionInterfaceGetVariantFromTypeConstructor(i)
+		variantToTypeConstructor[i] = CallFunc_GDExtensionInterfaceGetVariantToTypeConstructor(i)
 	}
 
 	builtinClassesInitBindings()
@@ -276,19 +276,19 @@ func NewVariantFromReflectValue(value reflect.Value) Variant {
 
 func NewVariantNil() Variant {
 	v := Variant{}
-	GDExtensionInterface_variant_new_nil(internal.gdnInterface, (GDExtensionVariantPtr)(unsafe.Pointer(v.ptr())))
+	CallFunc_GDExtensionInterfaceVariantNewNil((GDExtensionUninitializedVariantPtr)(unsafe.Pointer(v.ptr())))
 	return v
 }
 
 func NewVariantNativeCopy(native_ptr GDExtensionConstVariantPtr) Variant {
 	ret := Variant{}
-	GDExtensionInterface_variant_new_copy(internal.gdnInterface, (GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())), native_ptr)
+	CallFunc_GDExtensionInterfaceVariantNewCopy((GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())), native_ptr)
 	return ret
 }
 
 func NewVariantCopy(other Variant) Variant {
 	ret := Variant{}
-	GDExtensionInterface_variant_new_copy(internal.gdnInterface, (GDExtensionVariantPtr)(ret.ptr()), (GDExtensionConstVariantPtr)(other.ptr()))
+	CallFunc_GDExtensionInterfaceVariantNewCopy((GDExtensionUninitializedVariantPtr)(ret.ptr()), (GDExtensionConstVariantPtr)(other.ptr()))
 	return ret
 }
 
@@ -303,7 +303,7 @@ func NewVariantBool(v bool) Variant {
 
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())),
+		(GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())),
 		(GDExtensionTypePtr)(&encoded),
 	)
 	return ret
@@ -318,7 +318,7 @@ func (c *Variant) ToBool() bool {
 
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionTypePtr)(unsafe.Pointer(&v)),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(&v)),
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 	)
 
@@ -341,7 +341,7 @@ func NewVariantInt64(v int64) Variant {
 
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())),
+		(GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())),
 		(GDExtensionTypePtr)(&encoded),
 	)
 	return ret
@@ -356,7 +356,7 @@ func (c *Variant) ToInt64() int64 {
 
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionTypePtr)(unsafe.Pointer(&v)),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(&v)),
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 	)
 
@@ -373,7 +373,7 @@ func NewVariantFloat64(v float64) Variant {
 
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())),
+		(GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())),
 		(GDExtensionTypePtr)(&encoded),
 	)
 	return ret
@@ -388,7 +388,7 @@ func (c *Variant) ToFloat64() float64 {
 
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionTypePtr)(unsafe.Pointer(&v)),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(&v)),
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 	)
 
@@ -402,7 +402,7 @@ func NewVariantString(v String) Variant {
 
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())),
+		(GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())),
 		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
 	)
 
@@ -418,7 +418,7 @@ func (c *Variant) ToString() String {
 
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(v.ptr())),
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 	)
 
@@ -432,7 +432,7 @@ func NewVariantStringName(v StringName) Variant {
 
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())),
+		(GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())),
 		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
 	)
 
@@ -448,7 +448,7 @@ func (c *Variant) ToStringName() StringName {
 
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(v.ptr())),
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 	)
 
@@ -462,7 +462,7 @@ func NewVariantWrapped(w Wrapped) Variant {
 
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())),
+		(GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())),
 		(GDExtensionTypePtr)(unsafe.Pointer(&owner)),
 	)
 
@@ -480,7 +480,7 @@ func (c *Variant) ToWrapped() Wrapped {
 
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionTypePtr)(unsafe.Pointer(&owner)),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(&owner)),
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 	)
 
@@ -493,7 +493,7 @@ func NewVariantVector2(v Vector2) Variant {
 
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())),
+		(GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())),
 		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
 	)
 
@@ -509,7 +509,7 @@ func (c *Variant) ToVector2() Vector2 {
 
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(v.ptr())),
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 	)
 
@@ -522,7 +522,7 @@ func NewVariantVector3(v Vector3) Variant {
 
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())),
+		(GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())),
 		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
 	)
 
@@ -538,7 +538,7 @@ func (c *Variant) ToVector3() Vector3 {
 
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(v.ptr())),
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 	)
 
@@ -551,7 +551,7 @@ func NewVariantVector4(v Vector4) Variant {
 
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())),
+		(GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())),
 		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
 	)
 
@@ -567,7 +567,7 @@ func (c *Variant) ToVector4() Vector4 {
 
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(v.ptr())),
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 	)
 
@@ -580,7 +580,7 @@ func NewVariantArray(v Array) Variant {
 
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())),
+		(GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())),
 		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
 	)
 
@@ -596,7 +596,7 @@ func (c *Variant) ToArray() Array {
 
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionTypePtr)(unsafe.Pointer(arr.ptr())),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(arr.ptr())),
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 	)
 
@@ -609,7 +609,7 @@ func NewVariantDictionary(v Dictionary) Variant {
 
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
-		(GDExtensionVariantPtr)(unsafe.Pointer(ret.ptr())),
+		(GDExtensionUninitializedVariantPtr)(unsafe.Pointer(ret.ptr())),
 		(GDExtensionTypePtr)(unsafe.Pointer(v.ptr())),
 	)
 
@@ -625,7 +625,7 @@ func (c *Variant) ToDictionary() Dictionary {
 
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionTypePtr)(unsafe.Pointer(dict.ptr())),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(dict.ptr())),
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 	)
 
@@ -703,13 +703,12 @@ func (c *Variant) Call(
 
 	var err GDExtensionCallError
 
-	GDExtensionInterface_variant_call(
-		internal.gdnInterface,
+	CallFunc_GDExtensionInterfaceVariantCall(
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 		(GDExtensionConstStringNamePtr)(unsafe.Pointer(sn.ptr())),
 		callArgs,
 		(GDExtensionInt)(callArgCount),
-		(GDExtensionVariantPtr)(r_ret.ptr()),
+		(GDExtensionUninitializedVariantPtr)(r_ret.ptr()),
 		&err,
 	)
 
@@ -739,13 +738,12 @@ func (c *Variant) CallStatic(
 
 	var err GDExtensionCallError
 
-	GDExtensionInterface_variant_call_static(
-		internal.gdnInterface,
+	CallFunc_GDExtensionInterfaceVariantCallStatic(
 		vt,
 		(GDExtensionConstStringNamePtr)(sn.ptr()),
 		callArgs,
 		(GDExtensionInt)(callArgCount),
-		(GDExtensionVariantPtr)(r_ret.ptr()),
+		(GDExtensionUninitializedVariantPtr)(r_ret.ptr()),
 		&err,
 	)
 
@@ -757,14 +755,14 @@ func (c *Variant) CallStatic(
 }
 
 func (c *Variant) GetType() GDExtensionVariantType {
-	return GDExtensionInterface_variant_get_type(internal.gdnInterface, (GDExtensionConstVariantPtr)(c.ptr()))
+	return CallFunc_GDExtensionInterfaceVariantGetType((GDExtensionConstVariantPtr)(c.ptr()))
 }
 
 func (c *Variant) Clear() {
 	if needsDeinit[(int)(c.GetType())] {
-		GDExtensionInterface_variant_destroy(internal.gdnInterface, (GDExtensionVariantPtr)(c.ptr()))
+		CallFunc_GDExtensionInterfaceVariantDestroy((GDExtensionVariantPtr)(c.ptr()))
 	}
-	GDExtensionInterface_variant_new_nil(internal.gdnInterface, (GDExtensionVariantPtr)(c.ptr()))
+	CallFunc_GDExtensionInterfaceVariantNewNil((GDExtensionUninitializedVariantPtr)(c.ptr()))
 }
 
 var (
@@ -775,8 +773,8 @@ var (
 func (c *Variant) Set(key Variant, value Variant) error {
 	var valid GDExtensionBool
 
-	GDExtensionInterface_variant_set(
-		internal.gdnInterface, (GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
+	CallFunc_GDExtensionInterfaceVariantSet(
+		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 		key.ptr(), value.ptr(), &valid)
 
 	if !BoolEncoder.Decode(unsafe.Pointer(&valid)) {
@@ -789,8 +787,8 @@ func (c *Variant) Set(key Variant, value Variant) error {
 func (c *Variant) SetNamed(name StringName, value Variant) error {
 	var valid GDExtensionBool
 
-	GDExtensionInterface_variant_set_named(
-		internal.gdnInterface, (GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
+	CallFunc_GDExtensionInterfaceVariantSetNamed(
+		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 		(GDExtensionConstStringNamePtr)(unsafe.Pointer(name.ptr())),
 		(GDExtensionConstVariantPtr)(unsafe.Pointer(value.ptr())), &valid)
 
@@ -804,8 +802,8 @@ func (c *Variant) SetNamed(name StringName, value Variant) error {
 func (c *Variant) SetIndexed(index int, value Variant) error {
 	var valid, oob GDExtensionBool
 
-	GDExtensionInterface_variant_set_indexed(
-		internal.gdnInterface, (GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
+	CallFunc_GDExtensionInterfaceVariantSetIndexed(
+		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 		(GDExtensionInt)(index), value.ptr(), &valid, &oob)
 
 	if !BoolEncoder.Decode(unsafe.Pointer(&valid)) {
@@ -822,7 +820,7 @@ func (c *Variant) SetIndexed(index int, value Variant) error {
 func (c *Variant) SetKeyed(key, value Variant) bool {
 	var valid GDExtensionBool
 
-	GDExtensionInterface_variant_set_keyed(internal.gdnInterface,
+	CallFunc_GDExtensionInterfaceVariantSetKeyed(
 		(GDExtensionVariantPtr)(unsafe.Pointer(c.ptr())),
 		key.ptr(),
 		value.ptr(),
@@ -838,8 +836,8 @@ func (c *Variant) GetIndexed(index int) (Variant, error) {
 		oob    GDExtensionBool
 	)
 
-	GDExtensionInterface_variant_get_indexed(internal.gdnInterface,
-		c.ptr(), (GDExtensionInt)(index), (GDExtensionVariantPtr)(unsafe.Pointer(result.ptr())), &valid, &oob)
+	CallFunc_GDExtensionInterfaceVariantGetIndexed(
+		c.ptr(), (GDExtensionInt)(index), (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(result.ptr())), &valid, &oob)
 
 	if !BoolEncoder.Decode(unsafe.Pointer(&valid)) {
 		return result, InvalidError
@@ -858,8 +856,8 @@ func (c *Variant) GetKeyed(key Variant) (Variant, error) {
 		valid  GDExtensionBool
 	)
 
-	GDExtensionInterface_variant_get_keyed(internal.gdnInterface,
-		c.ptr(), key.ptr(), (GDExtensionVariantPtr)(unsafe.Pointer(result.ptr())), &valid)
+	CallFunc_GDExtensionInterfaceVariantGetKeyed(
+		c.ptr(), key.ptr(), (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(result.ptr())), &valid)
 
 	if !BoolEncoder.Decode(unsafe.Pointer(&valid)) {
 		return result, InvalidError
@@ -869,7 +867,7 @@ func (c *Variant) GetKeyed(key Variant) (Variant, error) {
 }
 
 func (c *Variant) Destroy() {
-	GDExtensionInterface_variant_destroy(internal.gdnInterface, (GDExtensionVariantPtr)(c.ptr()))
+	CallFunc_GDExtensionInterfaceVariantDestroy((GDExtensionVariantPtr)(c.ptr()))
 }
 
 func (c *Variant) ToReflectValue(inType GDExtensionVariantType, outType reflect.Type) reflect.Value {

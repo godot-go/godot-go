@@ -8,6 +8,9 @@
 
 The project is currently under heavy development. The API should be considered __EXPERIMENTAL__ and is subject to change. The API is expected to become more stable as we get closer to a 1.0 release.
 
+## Current State of the Project
+
+Although the tests confirm positive results, the godot-go bindings are currently not useable until the __blocker__ [reference counting issue](https://github.com/godot-go/godot-go/issues/71) is fixed. Further development won't make much sense until this is addressed.
 
 ## Getting Started
 
@@ -21,7 +24,7 @@ TODO
 
 ### Building Godot-Go
 
-**The GDExtension interface isn't currently stable.** In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of [Godot 4.1 stable](https://downloads.tuxfamily.org/godotengine/4.1/).
+In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of [Godot 4.1 stable](https://downloads.tuxfamily.org/godotengine/4.1/). There are breaking changes from the Godot 4.0 GDExtension interface. Please make sure to run godot-go against Godot 4.1+.
 
 
     # exports the latest gdextension_interface.h and extension_api.json from the godot binary

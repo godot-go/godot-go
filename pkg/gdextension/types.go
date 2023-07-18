@@ -45,7 +45,7 @@ func (c *ClassInfo) Destroy() {
 	}
 
 	for _, v := range c.MethodMap {
-		v.Destroy(internal.gdnInterface)
+		v.Destroy()
 	}
 }
 

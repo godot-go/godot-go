@@ -4,8 +4,10 @@
 package gdextensionwrapper
 
 import (
+	"bufio"
 	"bytes"
 	_ "embed"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -27,27 +29,39 @@ var (
 	ffiWrapperGoFileText string
 )
 
-func Generate(projectPath string) {
+func Generate(projectPath, astOutputFilename string) {
 	ast, err := generateGDExtensionInterfaceAST(projectPath)
-
 	if err != nil {
 		panic(err)
 	}
 
-	err = GenerateGDExtensionWrapperHeaderFile(projectPath, ast)
+	// write the AST out to a file as JSON for debugging
+	if astOutputFilename != "" {
+		b, err := json.Marshal(ast)
+		if err != nil {
+			panic(err)
+		}
+		f, err := os.Create(astOutputFilename)
+		if err != nil {
+			panic(err)
+		}
+		defer f.Close()
+		w := bufio.NewWriter(f)
+		w.Write(b)
+		w.Flush()
+	}
 
+	err = GenerateGDExtensionWrapperHeaderFile(projectPath, ast)
 	if err != nil {
 		panic(err)
 	}
 
 	err = GenerateGDExtensionWrapperSrcFile(projectPath, ast)
-
 	if err != nil {
 		panic(err)
 	}
 
 	err = GenerateGDExtensionWrapperGoFile(projectPath, ast)
-
 	if err != nil {
 		panic(err)
 	}
@@ -59,35 +73,27 @@ func GenerateGDExtensionWrapperHeaderFile(projectPath string, ast clang.CHeaderF
 			"snakeCase": strcase.ToSnake,
 		}).
 		Parse(ffiWrapperHeaderFileText)
-
 	if err != nil {
 		return err
 	}
 
 	var b bytes.Buffer
-
 	err = tmpl.Execute(&b, ast)
-
 	if err != nil {
 		return err
 	}
 
 	filename := filepath.Join(projectPath, "pkg", "gdextensionffi", "ffi_wrapper.gen.h")
-
 	f, err := os.Create(filename)
-
 	if err != nil {
 		return err
 	}
-
 	defer f.Close()
 
 	_, err = f.Write(b.Bytes())
-
 	if err != nil {
 		return err
 	}
-
 	return nil
 }
 
@@ -97,82 +103,71 @@ func GenerateGDExtensionWrapperSrcFile(projectPath string, ast clang.CHeaderFile
 			"snakeCase": strcase.ToSnake,
 		}).
 		Parse(ffiWrapperSrcFileText)
-
 	if err != nil {
 		return err
 	}
 
 	var b bytes.Buffer
-
 	err = tmpl.Execute(&b, ast)
-
 	if err != nil {
 		return err
 	}
 
 	headerFileName := filepath.Join(projectPath, "pkg", "gdextensionffi", "ffi_wrapper.gen.c")
-
 	f, err := os.Create(headerFileName)
 	f.Write(b.Bytes())
 	f.Close()
-
 	return nil
 }
 
 func GenerateGDExtensionWrapperGoFile(projectPath string, ast clang.CHeaderFileAST) error {
-	tmpl, err := template.New("ffi_wrapper.gen.go").
-		Funcs(template.FuncMap{
-			"snakeCase":          strcase.ToSnake,
-			"camelCase":          strcase.ToCamel,
-			"goReturnType":       goReturnType,
-			"goArgumentType":     goArgumentType,
-			"goEnumValue":        goEnumValue,
-			"add":                add,
-			"cgoCastArgument":    cgoCastArgument,
-			"cgoCastReturnType":  cgoCastReturnType,
-			"cgoCleanUpArgument": cgoCleanUpArgument,
-		}).
-		Parse(ffiWrapperGoFileText)
+	funcs := template.FuncMap{
+		"gdiVariableName":    gdiVariableName,
+		"snakeCase":          strcase.ToSnake,
+		"camelCase":          strcase.ToCamel,
+		"goReturnType":       goReturnType,
+		"goArgumentType":     goArgumentType,
+		"goEnumValue":        goEnumValue,
+		"add":                add,
+		"cgoCastArgument":    cgoCastArgument,
+		"cgoCastReturnType":  cgoCastReturnType,
+		"cgoCleanUpArgument": cgoCleanUpArgument,
+	}
 
+	tmpl, err := template.New("ffi_wrapper.gen.go").
+		Funcs(funcs).
+		Parse(ffiWrapperGoFileText)
 	if err != nil {
 		return err
 	}
 
 	var b bytes.Buffer
-
 	err = tmpl.Execute(&b, ast)
-
 	if err != nil {
 		return err
 	}
 
 	headerFileName := filepath.Join(projectPath, "pkg", "gdextensionffi", "ffi_wrapper.gen.go")
-
 	f, err := os.Create(headerFileName)
 	f.Write(b.Bytes())
 	f.Close()
-
 	return nil
 }
 
 func generateGDExtensionInterfaceAST(projectPath string) (clang.CHeaderFileAST, error) {
 	n := filepath.Join(projectPath, "/godot_headers/godot/gdextension_interface.h")
 	b, err := os.ReadFile(n)
-
 	if err != nil {
 		return clang.CHeaderFileAST{}, fmt.Errorf("error reading %s: %w", n, err)
 	}
 
 	preprocFile, err := preprocessor.ParsePreprocessorString((string)(b))
-
 	if err != nil {
 		return clang.CHeaderFileAST{}, fmt.Errorf("error preprocessing %s: %w", n, err)
 	}
 
 	preprocText := preprocFile.Eval(false)
-
 	ast, err := clang.ParseCString(preprocText)
-
 	if err != nil {
 		return clang.CHeaderFileAST{}, fmt.Errorf("error parsing %s: %w", n, err)
 	}

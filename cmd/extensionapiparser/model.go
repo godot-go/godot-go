@@ -315,10 +315,7 @@ func (a ExtensionApi) FilteredClasses() []Class {
 	values := make([]Class, 0, len(a.Classes))
 
 	for _, c := range a.Classes {
-		// TODO: initialize editor clases
-		if !strings.Contains(c.Name, "Editor") {
-			values = append(values, c)
-		}
+		values = append(values, c)
 	}
 
 	return values

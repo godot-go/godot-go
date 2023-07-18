@@ -323,6 +323,52 @@ func TestParseTypedefFunction2(t *testing.T) {
 	require.Len(t, f.Expr[0].Function.Arguments, 2)
 }
 
+
+func TestParseTypedefFuncPointer(t *testing.T) {
+	content := `
+	typedef GDExtensionInterfaceFunctionPtr (*GDExtensionInterfaceGetProcAddress)(const char *p_function_name);
+	`
+
+	f, err := ParseCString(content)
+	require.NoError(t, err)
+	require.Equal(t, len(f.Expr), 1)
+	require.NotNil(t, f.Expr[0].Function)
+	require.Equal(t, f.Expr[0].Function.Name, "GDExtensionInterfaceGetProcAddress")
+	require.Equal(t, f.Expr[0].Function.ReturnType.Name, "GDExtensionInterfaceFunctionPtr")
+	require.False(t, f.Expr[0].Function.ReturnType.IsPointer)
+	require.False(t, f.Expr[0].Function.ReturnType.IsConst)
+	require.Len(t, f.Expr[0].Function.Arguments, 1)
+	require.Equal(t, "p_function_name", f.Expr[0].Function.Arguments[0].Name)
+	require.NotNil(t, f.Expr[0].Function.Arguments[0].Type.Primative)
+	require.Equal(t, "char", f.Expr[0].Function.Arguments[0].Type.Primative.Name)
+	require.True(t, f.Expr[0].Function.Arguments[0].Type.Primative.IsPointer)
+	require.True(t, f.Expr[0].Function.Arguments[0].Type.Primative.IsConst)
+
+	funcs := f.CollectFunctions()
+
+	require.Len(t, funcs, 1)
+}
+
+func TestParseTypedefFunctionWithFunctionArgument(t *testing.T) {
+	content := `typedef int64_t (*GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask)(GDExtensionObjectPtr p_instance, void (*p_func)(void *, uint32_t), void *p_userdata, int p_elements, int p_tasks, GDExtensionBool p_high_priority, GDExtensionConstStringPtr p_description);`
+
+	f, err := ParseCString(content)
+
+	require.NoError(t, err)
+	require.Equal(t, len(f.Expr), 1)
+	require.NotNil(t, f.Expr[0].Function)
+	require.Equal(t, "GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask", f.Expr[0].Function.Name)
+	require.Len(t, f.Expr[0].Function.Arguments, 7)
+	require.Equal(t, "p_instance", f.Expr[0].Function.Arguments[0].Name)
+	require.Equal(t, "GDExtensionObjectPtr", f.Expr[0].Function.Arguments[0].Type.Primative.Name)
+	require.Equal(t, "p_func", f.Expr[0].Function.Arguments[1].Type.Function.Name)
+	require.Len(t, f.Expr[0].Function.Arguments[1].Type.Function.Arguments, 2)
+	require.True(t, f.Expr[0].Function.Arguments[1].Type.Function.Arguments[0].Type.Primative.IsPointer)
+	require.Equal(t, "void", f.Expr[0].Function.Arguments[1].Type.Function.Arguments[0].Type.Primative.Name)
+	require.False(t, f.Expr[0].Function.Arguments[1].Type.Function.Arguments[1].Type.Primative.IsPointer)
+	require.Equal(t, "uint32_t", f.Expr[0].Function.Arguments[1].Type.Function.Arguments[1].Type.Primative.Name)
+}
+
 func TestParseTypedefFunctionNoArgumentNames(t *testing.T) {
 	content := `typedef void (*GDExtensionVariantFromTypeConstructorFunc)(GDExtensionVariantPtr, GDExtensionTypePtr);`
 

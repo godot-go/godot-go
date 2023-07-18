@@ -183,14 +183,13 @@ func (b *MethodBind) Call(
 
 	vReturn := NewVariantNil()
 	var (
-		r_return GDExtensionVariantPtr = (GDExtensionVariantPtr)(vReturn.ptr())
-		bindName                       = NewStringNameWithLatin1Chars(b.Name)
+		r_return GDExtensionUninitializedVariantPtr = (GDExtensionUninitializedVariantPtr)(vReturn.ptr())
+		bindName                                    = NewStringNameWithLatin1Chars(b.Name)
 	)
 
 	defer bindName.Destroy()
 
-	GDExtensionInterface_variant_call(
-		internal.gdnInterface,
+	CallFunc_GDExtensionInterfaceVariantCall(
 		(GDExtensionVariantPtr)(&vInstance),
 		bindName.AsGDExtensionStringNamePtr(),
 		p_args,
@@ -224,14 +223,13 @@ func (b *MethodBind) CallStatic(
 
 	vReturn := NewVariantNil()
 	var (
-		r_return GDExtensionVariantPtr = (GDExtensionVariantPtr)(vReturn.ptr())
+		r_return GDExtensionUninitializedVariantPtr = (GDExtensionUninitializedVariantPtr)(vReturn.ptr())
 	)
 
 	snName := NewStringNameWithLatin1Chars(b.Name)
 	defer snName.Destroy()
 
-	GDExtensionInterface_variant_call_static(
-		internal.gdnInterface,
+	CallFunc_GDExtensionInterfaceVariantCallStatic(
 		vt,
 		snName.AsGDExtensionStringNamePtr(),
 		p_args,
@@ -352,8 +350,8 @@ func (b *MethodBind) Ptrcall(
 	}
 }
 
-func (b *MethodBind) Destroy(gdnInterface *GDExtensionInterface) {
-	b.ClassMethodInfo.Destroy(gdnInterface)
+func (b *MethodBind) Destroy() {
+	b.ClassMethodInfo.Destroy()
 }
 
 // //export GoCallback_MethodBindBindGetArgumentType
@@ -500,7 +498,7 @@ func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance 
 
 	// This assumes the return value is an empty Variant, so it doesn't need to call the destructor first.
 	// Since only NativeExtensionMethodBind calls this from the Godot side, it should always be the case.
-	GDExtensionInterface_variant_new_copy(internal.gdnInterface, (GDExtensionVariantPtr)(r_return), (GDExtensionConstVariantPtr)(ret.ptr()))
+	CallFunc_GDExtensionInterfaceVariantNewCopy((GDExtensionUninitializedVariantPtr)(r_return), (GDExtensionConstVariantPtr)(ret.ptr()))
 
 	log.Debug("end GoCallback_MethodBindBindCall")
 }

@@ -139,6 +139,10 @@ type AStarGrid2D interface {
 
 	// VIRTUAL: Internal_ComputeCost(from_id Vector2i,to_id Vector2i,) float32
 
+	SetRegion(region Rect2i)
+
+	GetRegion() Rect2i
+
 	SetSize(size Vector2i)
 
 	GetSize() Vector2i
@@ -410,6 +414,14 @@ type Animation interface {
 
 	BlendShapeTrackInsertKey(track_idx int32, time float32, amount float32) int32
 
+	PositionTrackInterpolate(track_idx int32, time_sec float32) Vector3
+
+	RotationTrackInterpolate(track_idx int32, time_sec float32) Quaternion
+
+	ScaleTrackInterpolate(track_idx int32, time_sec float32) Vector3
+
+	BlendShapeTrackInterpolate(track_idx int32, time_sec float32) float32
+
 	TrackInsertKey(track_idx int32, time float32, key Variant, transition float32) int32
 
 	TrackRemoveKey(track_idx int32, key_idx int32)
@@ -538,7 +550,7 @@ type AnimationNode interface {
 
 	// VIRTUAL: Internal_IsParameterReadOnly(parameter StringName,) bool
 
-	// VIRTUAL: Internal_Process(time float32,seek bool,is_external_seeking bool,) float32
+	// VIRTUAL: Internal_Process(time float32,seek bool,is_external_seeking bool,test_only bool,) float32
 
 	// VIRTUAL: Internal_GetCaption() String
 
@@ -566,9 +578,9 @@ type AnimationNode interface {
 
 	BlendAnimation(animation StringName, time float32, delta float32, seeked bool, is_external_seeking bool, blend float32, looped_flag AnimationLoopedFlag)
 
-	BlendNode(name StringName, node AnimationNode, time float32, seek bool, is_external_seeking bool, blend float32, filter AnimationNodeFilterAction, sync bool) float32
+	BlendNode(name StringName, node AnimationNode, time float32, seek bool, is_external_seeking bool, blend float32, filter AnimationNodeFilterAction, sync bool, test_only bool) float32
 
-	BlendInput(input_index int32, time float32, seek bool, is_external_seeking bool, blend float32, filter AnimationNodeFilterAction, sync bool) float32
+	BlendInput(input_index int32, time float32, seek bool, is_external_seeking bool, blend float32, filter AnimationNodeFilterAction, sync bool, test_only bool) float32
 
 	SetParameter(name StringName, value Variant)
 
@@ -727,19 +739,27 @@ type AnimationNodeOneShot interface {
 
 	GetFadeinTime() float32
 
+	SetFadeinCurve(curve Curve)
+
+	GetFadeinCurve() Curve
+
 	SetFadeoutTime(time float32)
 
 	GetFadeoutTime() float32
 
-	SetAutorestart(enable bool)
+	SetFadeoutCurve(curve Curve)
+
+	GetFadeoutCurve() Curve
+
+	SetAutorestart(active bool)
 
 	HasAutorestart() bool
 
-	SetAutorestartDelay(enable float32)
+	SetAutorestartDelay(time float32)
 
 	GetAutorestartDelay() float32
 
-	SetAutorestartRandomDelay(enable float32)
+	SetAutorestartRandomDelay(time float32)
 
 	GetAutorestartRandomDelay() float32
 
@@ -791,9 +811,17 @@ type AnimationNodeStateMachine interface {
 
 	GetGraphOffset() Vector2
 
+	SetStateMachineType(state_machine_type AnimationNodeStateMachineStateMachineType)
+
+	GetStateMachineType() AnimationNodeStateMachineStateMachineType
+
 	SetAllowTransitionToSelf(enable bool)
 
 	IsAllowTransitionToSelf() bool
+
+	SetResetEnds(enable bool)
+
+	AreEndsReset() bool
 }
 type AnimationNodeStateMachinePlayback interface {
 	Resource
@@ -816,7 +844,7 @@ type AnimationNodeStateMachinePlayback interface {
 
 	GetFadingFromNode() StringName
 
-	GetTravelPath() PackedStringArray
+	GetTravelPath() []StringName
 }
 type AnimationNodeStateMachineTransition interface {
 	Resource
@@ -852,6 +880,9 @@ type AnimationNodeStateMachineTransition interface {
 	SetAdvanceExpression(text String)
 
 	GetAdvanceExpression() String
+}
+type AnimationNodeSub2 interface {
+	AnimationNodeSync
 }
 type AnimationNodeSync interface {
 	AnimationNode
@@ -1005,9 +1036,6 @@ type AnimationPlayer interface {
 type AnimationRootNode interface {
 	AnimationNode
 }
-type AnimationTrackEditPlugin interface {
-	RefCounted
-}
 type AnimationTree interface {
 	Node
 
@@ -1098,9 +1126,9 @@ type Area2D interface {
 
 	GetAngularDamp() float32
 
-	SetPriority(priority float32)
+	SetPriority(priority int32)
 
-	GetPriority() float32
+	GetPriority() int32
 
 	SetMonitoring(enable bool)
 
@@ -1173,9 +1201,9 @@ type Area3D interface {
 
 	GetLinearDamp() float32
 
-	SetPriority(priority float32)
+	SetPriority(priority int32)
 
-	GetPriority() float32
+	GetPriority() int32
 
 	SetWindForceMagnitude(wind_force_magnitude float32)
 
@@ -2786,6 +2814,10 @@ type Button interface {
 
 	GetIconAlignment() HorizontalAlignment
 
+	SetVerticalIconAlignment(vertical_icon_alignment VerticalAlignment)
+
+	GetVerticalIconAlignment() VerticalAlignment
+
 	SetExpandIcon(enabled bool)
 
 	IsExpandIcon() bool
@@ -2796,6 +2828,10 @@ type ButtonGroup interface {
 	GetPressedButton() BaseButton
 
 	GetButtons() []BaseButton
+
+	SetAllowUnpress(enabled bool)
+
+	IsAllowUnpress() bool
 }
 type CPUParticles2D interface {
 	Node2D
@@ -3769,13 +3805,13 @@ type CanvasItem interface {
 
 	DrawColoredPolygon(points PackedVector2Array, color Color, uvs PackedVector2Array, texture Texture2D)
 
-	DrawString(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, modulate Color, jst_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawString(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, modulate Color, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
-	DrawMultilineString(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, modulate Color, brk_flags TextServerLineBreakFlag, jst_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawMultilineString(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, modulate Color, brk_flags TextServerLineBreakFlag, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
-	DrawStringOutline(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, size int32, modulate Color, jst_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawStringOutline(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, size int32, modulate Color, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
-	DrawMultilineStringOutline(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, size int32, modulate Color, brk_flags TextServerLineBreakFlag, jst_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawMultilineStringOutline(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, size int32, modulate Color, brk_flags TextServerLineBreakFlag, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
 	DrawChar(font Font, pos Vector2, char String, font_size int32, modulate Color)
 
@@ -4073,6 +4109,8 @@ type CharacterBody2D interface {
 
 	MoveAndSlide() bool
 
+	ApplyFloorSnap()
+
 	SetVelocity(velocity Vector2)
 
 	GetVelocity() Vector2
@@ -4169,6 +4207,8 @@ type CharacterBody3D interface {
 	PhysicsBody3D
 
 	MoveAndSlide() bool
+
+	ApplyFloorSnap()
 
 	SetVelocity(velocity Vector3)
 
@@ -4357,6 +4397,8 @@ type CodeEdit interface {
 
 	UnindentLines()
 
+	ConvertIndent(from_line int32, to_line int32)
+
 	SetAutoBraceCompletionEnabled(enable bool)
 
 	IsAutoBraceCompletionEnabled() bool
@@ -4489,7 +4531,7 @@ type CodeEdit interface {
 
 	RequestCodeCompletion(force bool)
 
-	AddCodeCompletionOption(typeName CodeEditCodeCompletionKind, display_text String, insert_text String, text_color Color, icon Resource, value Variant)
+	AddCodeCompletionOption(typeName CodeEditCodeCompletionKind, display_text String, insert_text String, text_color Color, icon Resource, value Variant, location int32)
 
 	UpdateCodeCompletionOptions(force bool)
 
@@ -5019,6 +5061,8 @@ type Control interface {
 	// VIRTUAL: Internal_StructuredTextParser(args Array,text String,) []Vector3i
 
 	// VIRTUAL: Internal_GetMinimumSize() Vector2
+
+	// VIRTUAL: Internal_GetTooltip(at_position Vector2,) String
 
 	// VIRTUAL: Internal_GetDragData(at_position Vector2,) Variant
 
@@ -5898,6 +5942,8 @@ type DisplayServer interface {
 
 	GetPrimaryScreen() int32
 
+	GetKeyboardFocusScreen() int32
+
 	GetScreenFromRect(rect Rect2) int32
 
 	ScreenGetPosition(screen int32) Vector2i
@@ -5915,6 +5961,10 @@ type DisplayServer interface {
 	ScreenGetMaxScale() float32
 
 	ScreenGetRefreshRate(screen int32) float32
+
+	ScreenGetPixel(position Vector2i) Color
+
+	ScreenGetImage(screen int32) Image
 
 	ScreenSetOrientation(orientation DisplayServerScreenOrientation, screen int32)
 
@@ -5991,6 +6041,8 @@ type DisplayServer interface {
 	WindowRequestAttention(window_id int32)
 
 	WindowMoveToForeground(window_id int32)
+
+	WindowIsFocused(window_id int32) bool
 
 	WindowCanDraw(window_id int32) bool
 
@@ -6100,6 +6152,8 @@ type ENetConnection interface {
 	GetLocalPort() int32
 
 	GetPeers() []ENetPacketPeer
+
+	SocketSend(destination_address String, destination_port int32, packet PackedByteArray)
 }
 type ENetMultiplayerPeer interface {
 	MultiplayerPeer
@@ -6150,6 +6204,1020 @@ type ENetPacketPeer interface {
 	GetChannels() int32
 
 	IsActive() bool
+}
+type EditorCommandPalette interface {
+	ConfirmationDialog
+
+	AddCommand(command_name String, key_name String, binded_callable Callable, shortcut_text String)
+
+	RemoveCommand(key_name String)
+}
+type EditorDebuggerPlugin interface {
+	RefCounted
+
+	// VIRTUAL: Internal_SetupSession(session_id int32,)
+
+	// VIRTUAL: Internal_HasCapture(capture String,) bool
+
+	// VIRTUAL: Internal_Capture(message String,data Array,session_id int32,) bool
+
+	GetSession(id int32) EditorDebuggerSession
+
+	GetSessions() Array
+}
+type EditorDebuggerSession interface {
+	RefCounted
+
+	SendMessage(message String, data Array)
+
+	ToggleProfiler(profiler String, enable bool, data Array)
+
+	IsBreaked() bool
+
+	IsDebuggable() bool
+
+	IsActive() bool
+
+	AddSessionTab(control Control)
+
+	RemoveSessionTab(control Control)
+}
+type EditorExportPlatform interface {
+	RefCounted
+}
+type EditorExportPlatformAndroid interface {
+	EditorExportPlatform
+}
+type EditorExportPlatformIOS interface {
+	EditorExportPlatform
+}
+type EditorExportPlatformLinuxBSD interface {
+	EditorExportPlatformPC
+}
+type EditorExportPlatformMacOS interface {
+	EditorExportPlatform
+}
+type EditorExportPlatformPC interface {
+	EditorExportPlatform
+}
+type EditorExportPlatformWeb interface {
+	EditorExportPlatform
+}
+type EditorExportPlatformWindows interface {
+	EditorExportPlatformPC
+}
+type EditorExportPlugin interface {
+	RefCounted
+
+	// VIRTUAL: Internal_ExportFile(path String,typeName String,features PackedStringArray,)
+
+	// VIRTUAL: Internal_ExportBegin(features PackedStringArray,is_debug bool,path String,flags int32,)
+
+	// VIRTUAL: Internal_ExportEnd()
+
+	// VIRTUAL: Internal_BeginCustomizeResources(platform EditorExportPlatform,features PackedStringArray,) bool
+
+	// VIRTUAL: Internal_CustomizeResource(resource Resource,path String,) Resource
+
+	// VIRTUAL: Internal_BeginCustomizeScenes(platform EditorExportPlatform,features PackedStringArray,) bool
+
+	// VIRTUAL: Internal_CustomizeScene(scene Node,path String,) Node
+
+	// VIRTUAL: Internal_GetCustomizationConfigurationHash() int32
+
+	// VIRTUAL: Internal_EndCustomizeScenes()
+
+	// VIRTUAL: Internal_EndCustomizeResources()
+
+	// VIRTUAL: Internal_GetExportOptions(platform EditorExportPlatform,) []Dictionary
+
+	// VIRTUAL: Internal_ShouldUpdateExportOptions(platform EditorExportPlatform,) bool
+
+	// VIRTUAL: Internal_GetExportFeatures(platform EditorExportPlatform,debug bool,) PackedStringArray
+
+	// VIRTUAL: Internal_GetName() String
+
+	AddSharedObject(path String, tags PackedStringArray, target String)
+
+	AddIosProjectStaticLib(path String)
+
+	AddFile(path String, file PackedByteArray, remap bool)
+
+	AddIosFramework(path String)
+
+	AddIosEmbeddedFramework(path String)
+
+	AddIosPlistContent(plist_content String)
+
+	AddIosLinkerFlags(flags String)
+
+	AddIosBundleFile(path String)
+
+	AddIosCppCode(code String)
+
+	AddMacosPluginFile(path String)
+
+	Skip()
+
+	GetOption(name StringName) Variant
+}
+type EditorFeatureProfile interface {
+	RefCounted
+
+	SetDisableClass(class_name StringName, disable bool)
+
+	IsClassDisabled(class_name StringName) bool
+
+	SetDisableClassEditor(class_name StringName, disable bool)
+
+	IsClassEditorDisabled(class_name StringName) bool
+
+	SetDisableClassProperty(class_name StringName, property StringName, disable bool)
+
+	IsClassPropertyDisabled(class_name StringName, property StringName) bool
+
+	SetDisableFeature(feature EditorFeatureProfileFeature, disable bool)
+
+	IsFeatureDisabled(feature EditorFeatureProfileFeature) bool
+
+	GetFeatureName(feature EditorFeatureProfileFeature) String
+
+	SaveToFile(path String) Error
+
+	LoadFromFile(path String) Error
+}
+type EditorFileDialog interface {
+	ConfirmationDialog
+
+	ClearFilters()
+
+	AddFilter(filter String, description String)
+
+	SetFilters(filters PackedStringArray)
+
+	GetFilters() PackedStringArray
+
+	GetCurrentDir() String
+
+	GetCurrentFile() String
+
+	GetCurrentPath() String
+
+	SetCurrentDir(dir String)
+
+	SetCurrentFile(file String)
+
+	SetCurrentPath(path String)
+
+	SetFileMode(mode EditorFileDialogFileMode)
+
+	GetFileMode() EditorFileDialogFileMode
+
+	GetVbox() VBoxContainer
+
+	GetLineEdit() LineEdit
+
+	SetAccess(access EditorFileDialogAccess)
+
+	GetAccess() EditorFileDialogAccess
+
+	SetShowHiddenFiles(show bool)
+
+	IsShowingHiddenFiles() bool
+
+	SetDisplayMode(mode EditorFileDialogDisplayMode)
+
+	GetDisplayMode() EditorFileDialogDisplayMode
+
+	SetDisableOverwriteWarning(disable bool)
+
+	IsOverwriteWarningDisabled() bool
+
+	Invalidate()
+}
+type EditorFileSystem interface {
+	Node
+
+	GetFilesystem() EditorFileSystemDirectory
+
+	IsScanning() bool
+
+	GetScanningProgress() float32
+
+	Scan()
+
+	ScanSources()
+
+	UpdateFile(path String)
+
+	GetFilesystemPath(path String) EditorFileSystemDirectory
+
+	GetFileType(path String) String
+
+	ReimportFiles(files PackedStringArray)
+}
+type EditorFileSystemDirectory interface {
+	Object
+
+	GetSubdirCount() int32
+
+	GetSubdir(idx int32) EditorFileSystemDirectory
+
+	GetFileCount() int32
+
+	GetFile(idx int32) String
+
+	GetFilePath(idx int32) String
+
+	GetFileType(idx int32) StringName
+
+	GetFileScriptClassName(idx int32) String
+
+	GetFileScriptClassExtends(idx int32) String
+
+	GetFileImportIsValid(idx int32) bool
+
+	GetName() String
+
+	GetPath() String
+
+	GetParent() EditorFileSystemDirectory
+
+	FindFileIndex(name String) int32
+
+	FindDirIndex(name String) int32
+}
+type EditorFileSystemImportFormatSupportQuery interface {
+	RefCounted
+
+	// VIRTUAL: Internal_IsActive() bool
+
+	// VIRTUAL: Internal_GetFileExtensions() PackedStringArray
+
+	// VIRTUAL: Internal_Query() bool
+}
+type EditorImportPlugin interface {
+	ResourceImporter
+
+	// VIRTUAL: Internal_GetImporterName() String
+
+	// VIRTUAL: Internal_GetVisibleName() String
+
+	// VIRTUAL: Internal_GetPresetCount() int32
+
+	// VIRTUAL: Internal_GetPresetName(preset_index int32,) String
+
+	// VIRTUAL: Internal_GetRecognizedExtensions() PackedStringArray
+
+	// VIRTUAL: Internal_GetImportOptions(path String,preset_index int32,) []Dictionary
+
+	// VIRTUAL: Internal_GetSaveExtension() String
+
+	// VIRTUAL: Internal_GetResourceType() String
+
+	// VIRTUAL: Internal_GetPriority() float32
+
+	// VIRTUAL: Internal_GetImportOrder() int32
+
+	// VIRTUAL: Internal_GetOptionVisibility(path String,option_name StringName,options Dictionary,) bool
+
+	// VIRTUAL: Internal_Import(source_file String,save_path String,options Dictionary,platform_variants []String,gen_files []String,) Error
+
+	AppendImportExternalResource(path String, custom_options Dictionary, custom_importer String, generator_parameters Variant) Error
+}
+type EditorInspector interface {
+	ScrollContainer
+
+	GetSelectedPath() String
+}
+type EditorInspectorPlugin interface {
+	RefCounted
+
+	// VIRTUAL: Internal_CanHandle(object Object,) bool
+
+	// VIRTUAL: Internal_ParseBegin(object Object,)
+
+	// VIRTUAL: Internal_ParseCategory(object Object,category String,)
+
+	// VIRTUAL: Internal_ParseGroup(object Object,group String,)
+
+	// VIRTUAL: Internal_ParseProperty(object Object,typeName VariantType,name String,hint_type PropertyHint,hint_string String,usage_flags PropertyUsageFlags,wide bool,) bool
+
+	// VIRTUAL: Internal_ParseEnd(object Object,)
+
+	AddCustomControl(control Control)
+
+	AddPropertyEditor(property String, editor Control, add_to_end bool)
+
+	AddPropertyEditorForMultipleProperties(label String, properties PackedStringArray, editor Control)
+}
+type EditorInterface interface {
+	Object
+
+	RestartEditor(save bool)
+
+	GetCommandPalette() EditorCommandPalette
+
+	GetResourceFilesystem() EditorFileSystem
+
+	GetEditorPaths() EditorPaths
+
+	GetResourcePreviewer() EditorResourcePreview
+
+	GetSelection() EditorSelection
+
+	GetEditorSettings() EditorSettings
+
+	MakeMeshPreviews(meshes []Mesh, preview_size int32) []Texture2D
+
+	SetPluginEnabled(plugin String, enabled bool)
+
+	IsPluginEnabled(plugin String) bool
+
+	GetBaseControl() Control
+
+	GetEditorMainScreen() VBoxContainer
+
+	GetScriptEditor() ScriptEditor
+
+	SetMainScreenEditor(name String)
+
+	SetDistractionFreeMode(enter bool)
+
+	IsDistractionFreeModeEnabled() bool
+
+	GetEditorScale() float32
+
+	PopupDialog(dialog Window, rect Rect2i)
+
+	PopupDialogCentered(dialog Window, minsize Vector2i)
+
+	PopupDialogCenteredRatio(dialog Window, ratio float32)
+
+	PopupDialogCenteredClamped(dialog Window, minsize Vector2i, fallback_ratio float32)
+
+	GetFileSystemDock() FileSystemDock
+
+	SelectFile(file String)
+
+	GetSelectedPaths() PackedStringArray
+
+	GetCurrentPath() String
+
+	GetCurrentDirectory() String
+
+	GetInspector() EditorInspector
+
+	InspectObject(object Object, for_property String, inspector_only bool)
+
+	EditResource(resource Resource)
+
+	EditNode(node Node)
+
+	EditScript(script Script, line int32, column int32, grab_focus bool)
+
+	OpenSceneFromPath(scene_filepath String)
+
+	ReloadSceneFromPath(scene_filepath String)
+
+	GetOpenScenes() PackedStringArray
+
+	GetEditedSceneRoot() Node
+
+	SaveScene() Error
+
+	SaveSceneAs(path String, with_preview bool)
+
+	MarkSceneAsUnsaved()
+
+	PlayMainScene()
+
+	PlayCurrentScene()
+
+	PlayCustomScene(scene_filepath String)
+
+	StopPlayingScene()
+
+	IsPlayingScene() bool
+
+	GetPlayingScene() String
+
+	SetMovieMakerEnabled(enabled bool)
+
+	IsMovieMakerEnabled() bool
+}
+type EditorNode3DGizmo interface {
+	Node3DGizmo
+
+	// VIRTUAL: Internal_Redraw()
+
+	// VIRTUAL: Internal_GetHandleName(id int32,secondary bool,) String
+
+	// VIRTUAL: Internal_IsHandleHighlighted(id int32,secondary bool,) bool
+
+	// VIRTUAL: Internal_GetHandleValue(id int32,secondary bool,) Variant
+
+	// VIRTUAL: Internal_SetHandle(id int32,secondary bool,camera Camera3D,point Vector2,)
+
+	// VIRTUAL: Internal_CommitHandle(id int32,secondary bool,restore Variant,cancel bool,)
+
+	// VIRTUAL: Internal_SubgizmosIntersectRay(camera Camera3D,point Vector2,) int32
+
+	// VIRTUAL: Internal_SubgizmosIntersectFrustum(camera Camera3D,frustum []Plane,) PackedInt32Array
+
+	// VIRTUAL: Internal_SetSubgizmoTransform(id int32,transform Transform3D,)
+
+	// VIRTUAL: Internal_GetSubgizmoTransform(id int32,) Transform3D
+
+	// VIRTUAL: Internal_CommitSubgizmos(ids PackedInt32Array,restores []Transform3D,cancel bool,)
+
+	AddLines(lines PackedVector3Array, material Material, billboard bool, modulate Color)
+
+	AddMesh(mesh Mesh, material Material, transform Transform3D, skeleton SkinReference)
+
+	AddCollisionSegments(segments PackedVector3Array)
+
+	AddCollisionTriangles(triangles TriangleMesh)
+
+	AddUnscaledBillboard(material Material, default_scale float32, modulate Color)
+
+	AddHandles(handles PackedVector3Array, material Material, ids PackedInt32Array, billboard bool, secondary bool)
+
+	SetNode3D(node Node)
+
+	GetNode3D() Node3D
+
+	GetPlugin() EditorNode3DGizmoPlugin
+
+	Clear()
+
+	SetHidden(hidden bool)
+
+	IsSubgizmoSelected(id int32) bool
+
+	GetSubgizmoSelection() PackedInt32Array
+}
+type EditorNode3DGizmoPlugin interface {
+	Resource
+
+	// VIRTUAL: Internal_HasGizmo(for_node_3d Node3D,) bool
+
+	// VIRTUAL: Internal_CreateGizmo(for_node_3d Node3D,) EditorNode3DGizmo
+
+	// VIRTUAL: Internal_GetGizmoName() String
+
+	// VIRTUAL: Internal_GetPriority() int32
+
+	// VIRTUAL: Internal_CanBeHidden() bool
+
+	// VIRTUAL: Internal_IsSelectableWhenHidden() bool
+
+	// VIRTUAL: Internal_Redraw(gizmo EditorNode3DGizmo,)
+
+	// VIRTUAL: Internal_GetHandleName(gizmo EditorNode3DGizmo,handle_id int32,secondary bool,) String
+
+	// VIRTUAL: Internal_IsHandleHighlighted(gizmo EditorNode3DGizmo,handle_id int32,secondary bool,) bool
+
+	// VIRTUAL: Internal_GetHandleValue(gizmo EditorNode3DGizmo,handle_id int32,secondary bool,) Variant
+
+	// VIRTUAL: Internal_SetHandle(gizmo EditorNode3DGizmo,handle_id int32,secondary bool,camera Camera3D,screen_pos Vector2,)
+
+	// VIRTUAL: Internal_CommitHandle(gizmo EditorNode3DGizmo,handle_id int32,secondary bool,restore Variant,cancel bool,)
+
+	// VIRTUAL: Internal_SubgizmosIntersectRay(gizmo EditorNode3DGizmo,camera Camera3D,screen_pos Vector2,) int32
+
+	// VIRTUAL: Internal_SubgizmosIntersectFrustum(gizmo EditorNode3DGizmo,camera Camera3D,frustum_planes []Plane,) PackedInt32Array
+
+	// VIRTUAL: Internal_GetSubgizmoTransform(gizmo EditorNode3DGizmo,subgizmo_id int32,) Transform3D
+
+	// VIRTUAL: Internal_SetSubgizmoTransform(gizmo EditorNode3DGizmo,subgizmo_id int32,transform Transform3D,)
+
+	// VIRTUAL: Internal_CommitSubgizmos(gizmo EditorNode3DGizmo,ids PackedInt32Array,restores []Transform3D,cancel bool,)
+
+	CreateMaterial(name String, color Color, billboard bool, on_top bool, use_vertex_color bool)
+
+	CreateIconMaterial(name String, texture Texture2D, on_top bool, color Color)
+
+	CreateHandleMaterial(name String, billboard bool, texture Texture2D)
+
+	AddMaterial(name String, material StandardMaterial3D)
+
+	GetMaterial(name String, gizmo EditorNode3DGizmo) StandardMaterial3D
+}
+type EditorPaths interface {
+	Object
+
+	GetDataDir() String
+
+	GetConfigDir() String
+
+	GetCacheDir() String
+
+	IsSelfContained() bool
+
+	GetSelfContainedFile() String
+
+	GetProjectSettingsDir() String
+}
+type EditorPlugin interface {
+	Node
+
+	// VIRTUAL: Internal_ForwardCanvasGuiInput(event InputEvent,) bool
+
+	// VIRTUAL: Internal_ForwardCanvasDrawOverViewport(viewport_control Control,)
+
+	// VIRTUAL: Internal_ForwardCanvasForceDrawOverViewport(viewport_control Control,)
+
+	// VIRTUAL: Internal_Forward3DGuiInput(viewport_camera Camera3D,event InputEvent,) int32
+
+	// VIRTUAL: Internal_Forward3DDrawOverViewport(viewport_control Control,)
+
+	// VIRTUAL: Internal_Forward3DForceDrawOverViewport(viewport_control Control,)
+
+	// VIRTUAL: Internal_GetPluginName() String
+
+	// VIRTUAL: Internal_GetPluginIcon() Texture2D
+
+	// VIRTUAL: Internal_HasMainScreen() bool
+
+	// VIRTUAL: Internal_MakeVisible(visible bool,)
+
+	// VIRTUAL: Internal_Edit(object Object,)
+
+	// VIRTUAL: Internal_Handles(object Object,) bool
+
+	// VIRTUAL: Internal_GetState() Dictionary
+
+	// VIRTUAL: Internal_SetState(state Dictionary,)
+
+	// VIRTUAL: Internal_Clear()
+
+	// VIRTUAL: Internal_SaveExternalData()
+
+	// VIRTUAL: Internal_ApplyChanges()
+
+	// VIRTUAL: Internal_GetBreakpoints() PackedStringArray
+
+	// VIRTUAL: Internal_SetWindowLayout(configuration ConfigFile,)
+
+	// VIRTUAL: Internal_GetWindowLayout(configuration ConfigFile,)
+
+	// VIRTUAL: Internal_Build() bool
+
+	// VIRTUAL: Internal_EnablePlugin()
+
+	// VIRTUAL: Internal_DisablePlugin()
+
+	AddControlToContainer(container EditorPluginCustomControlContainer, control Control)
+
+	AddControlToBottomPanel(control Control, title String) Button
+
+	AddControlToDock(slot EditorPluginDockSlot, control Control)
+
+	RemoveControlFromDocks(control Control)
+
+	RemoveControlFromBottomPanel(control Control)
+
+	RemoveControlFromContainer(container EditorPluginCustomControlContainer, control Control)
+
+	AddToolMenuItem(name String, callable Callable)
+
+	AddToolSubmenuItem(name String, submenu PopupMenu)
+
+	RemoveToolMenuItem(name String)
+
+	GetExportAsMenu() PopupMenu
+
+	AddCustomType(typeName String, base String, script Script, icon Texture2D)
+
+	RemoveCustomType(typeName String)
+
+	AddAutoloadSingleton(name String, path String)
+
+	RemoveAutoloadSingleton(name String)
+
+	UpdateOverlays() int32
+
+	MakeBottomPanelItemVisible(item Control)
+
+	HideBottomPanel()
+
+	GetUndoRedo() EditorUndoRedoManager
+
+	AddUndoRedoInspectorHookCallback(callable Callable)
+
+	RemoveUndoRedoInspectorHookCallback(callable Callable)
+
+	QueueSaveLayout()
+
+	AddTranslationParserPlugin(parser EditorTranslationParserPlugin)
+
+	RemoveTranslationParserPlugin(parser EditorTranslationParserPlugin)
+
+	AddImportPlugin(importer EditorImportPlugin, first_priority bool)
+
+	RemoveImportPlugin(importer EditorImportPlugin)
+
+	AddSceneFormatImporterPlugin(scene_format_importer EditorSceneFormatImporter, first_priority bool)
+
+	RemoveSceneFormatImporterPlugin(scene_format_importer EditorSceneFormatImporter)
+
+	AddScenePostImportPlugin(scene_import_plugin EditorScenePostImportPlugin, first_priority bool)
+
+	RemoveScenePostImportPlugin(scene_import_plugin EditorScenePostImportPlugin)
+
+	AddExportPlugin(plugin EditorExportPlugin)
+
+	RemoveExportPlugin(plugin EditorExportPlugin)
+
+	AddNode3DGizmoPlugin(plugin EditorNode3DGizmoPlugin)
+
+	RemoveNode3DGizmoPlugin(plugin EditorNode3DGizmoPlugin)
+
+	AddInspectorPlugin(plugin EditorInspectorPlugin)
+
+	RemoveInspectorPlugin(plugin EditorInspectorPlugin)
+
+	AddResourceConversionPlugin(plugin EditorResourceConversionPlugin)
+
+	RemoveResourceConversionPlugin(plugin EditorResourceConversionPlugin)
+
+	SetInputEventForwardingAlwaysEnabled()
+
+	SetForceDrawOverForwardingEnabled()
+
+	GetEditorInterface() EditorInterface
+
+	GetScriptCreateDialog() ScriptCreateDialog
+
+	AddDebuggerPlugin(script EditorDebuggerPlugin)
+
+	RemoveDebuggerPlugin(script EditorDebuggerPlugin)
+}
+type EditorProperty interface {
+	Container
+
+	// VIRTUAL: Internal_UpdateProperty()
+
+	// VIRTUAL: Internal_SetReadOnly(read_only bool,)
+
+	SetLabel(text String)
+
+	GetLabel() String
+
+	SetReadOnly(read_only bool)
+
+	IsReadOnly() bool
+
+	SetCheckable(checkable bool)
+
+	IsCheckable() bool
+
+	SetChecked(checked bool)
+
+	IsChecked() bool
+
+	SetDrawWarning(draw_warning bool)
+
+	IsDrawWarning() bool
+
+	SetKeying(keying bool)
+
+	IsKeying() bool
+
+	SetDeletable(deletable bool)
+
+	IsDeletable() bool
+
+	GetEditedProperty() StringName
+
+	GetEditedObject() Object
+
+	UpdateProperty()
+
+	AddFocusable(control Control)
+
+	SetBottomEditor(editor Control)
+
+	EmitChanged(property StringName, value Variant, field StringName, changing bool)
+}
+type EditorResourceConversionPlugin interface {
+	RefCounted
+
+	// VIRTUAL: Internal_ConvertsTo() String
+
+	// VIRTUAL: Internal_Handles(resource Resource,) bool
+
+	// VIRTUAL: Internal_Convert(resource Resource,) Resource
+}
+type EditorResourcePicker interface {
+	HBoxContainer
+
+	// VIRTUAL: Internal_SetCreateOptions(menu_node Object,)
+
+	// VIRTUAL: Internal_HandleMenuSelected(id int32,) bool
+
+	SetBaseType(base_type String)
+
+	GetBaseType() String
+
+	GetAllowedTypes() PackedStringArray
+
+	SetEditedResource(resource Resource)
+
+	GetEditedResource() Resource
+
+	SetToggleMode(enable bool)
+
+	IsToggleMode() bool
+
+	SetTogglePressed(pressed bool)
+
+	SetEditable(enable bool)
+
+	IsEditable() bool
+}
+type EditorResourcePreview interface {
+	Node
+
+	QueueResourcePreview(path String, receiver Object, receiver_func StringName, userdata Variant)
+
+	QueueEditedResourcePreview(resource Resource, receiver Object, receiver_func StringName, userdata Variant)
+
+	AddPreviewGenerator(generator EditorResourcePreviewGenerator)
+
+	RemovePreviewGenerator(generator EditorResourcePreviewGenerator)
+
+	CheckForInvalidation(path String)
+}
+type EditorResourcePreviewGenerator interface {
+	RefCounted
+
+	// VIRTUAL: Internal_Handles(typeName String,) bool
+
+	// VIRTUAL: Internal_Generate(resource Resource,size Vector2i,metadata Dictionary,) Texture2D
+
+	// VIRTUAL: Internal_GenerateFromPath(path String,size Vector2i,metadata Dictionary,) Texture2D
+
+	// VIRTUAL: Internal_GenerateSmallPreviewAutomatically() bool
+
+	// VIRTUAL: Internal_CanGenerateSmallPreview() bool
+}
+type EditorResourceTooltipPlugin interface {
+	RefCounted
+
+	// VIRTUAL: Internal_Handles(typeName String,) bool
+
+	// VIRTUAL: Internal_MakeTooltipForPath(path String,metadata Dictionary,base Control,) Control
+
+	RequestThumbnail(path String, control TextureRect)
+}
+type EditorSceneFormatImporter interface {
+	RefCounted
+
+	// VIRTUAL: Internal_GetImportFlags() int32
+
+	// VIRTUAL: Internal_GetExtensions() PackedStringArray
+
+	// VIRTUAL: Internal_ImportScene(path String,flags int32,options Dictionary,) Object
+
+	// VIRTUAL: Internal_GetImportOptions(path String,)
+
+	// VIRTUAL: Internal_GetOptionVisibility(path String,for_animation bool,option String,) Variant
+}
+type EditorSceneFormatImporterBlend interface {
+	EditorSceneFormatImporter
+}
+type EditorSceneFormatImporterFBX interface {
+	EditorSceneFormatImporter
+}
+type EditorSceneFormatImporterGLTF interface {
+	EditorSceneFormatImporter
+}
+type EditorScenePostImport interface {
+	RefCounted
+
+	// VIRTUAL: Internal_PostImport(scene Node,) Object
+
+	GetSourceFile() String
+}
+type EditorScenePostImportPlugin interface {
+	RefCounted
+
+	// VIRTUAL: Internal_GetInternalImportOptions(category int32,)
+
+	// VIRTUAL: Internal_GetInternalOptionVisibility(category int32,for_animation bool,option String,) Variant
+
+	// VIRTUAL: Internal_GetInternalOptionUpdateViewRequired(category int32,option String,) Variant
+
+	// VIRTUAL: Internal_InternalProcess(category int32,base_node Node,node Node,resource Resource,)
+
+	// VIRTUAL: Internal_GetImportOptions(path String,)
+
+	// VIRTUAL: Internal_GetOptionVisibility(path String,for_animation bool,option String,) Variant
+
+	// VIRTUAL: Internal_PreProcess(scene Node,)
+
+	// VIRTUAL: Internal_PostProcess(scene Node,)
+
+	GetOptionValue(name StringName) Variant
+
+	AddImportOption(name String, value Variant)
+
+	AddImportOptionAdvanced(typeName VariantType, name String, default_value Variant, hint PropertyHint, hint_string String, usage_flags int32)
+}
+type EditorScript interface {
+	RefCounted
+
+	// VIRTUAL: Internal_Run()
+
+	AddRootNode(node Node)
+
+	GetScene() Node
+
+	GetEditorInterface() EditorInterface
+}
+type EditorScriptPicker interface {
+	EditorResourcePicker
+
+	SetScriptOwner(owner_node Node)
+
+	GetScriptOwner() Node
+}
+type EditorSelection interface {
+	Object
+
+	Clear()
+
+	AddNode(node Node)
+
+	RemoveNode(node Node)
+
+	GetSelectedNodes() []Node
+
+	GetTransformableSelectedNodes() []Node
+}
+type EditorSettings interface {
+	Resource
+
+	HasSetting(name String) bool
+
+	SetSetting(name String, value Variant)
+
+	GetSetting(name String) Variant
+
+	Erase(property String)
+
+	SetInitialValue(name StringName, value Variant, update_current bool)
+
+	AddPropertyInfo(info Dictionary)
+
+	SetProjectMetadata(section String, key String, data Variant)
+
+	GetProjectMetadata(section String, key String, defaultName Variant) Variant
+
+	SetFavorites(dirs PackedStringArray)
+
+	GetFavorites() PackedStringArray
+
+	SetRecentDirs(dirs PackedStringArray)
+
+	GetRecentDirs() PackedStringArray
+
+	SetBuiltinActionOverride(name String, actions_list []InputEvent)
+
+	CheckChangedSettingsInGroup(setting_prefix String) bool
+
+	GetChangedSettings() PackedStringArray
+
+	MarkSettingChanged(setting String)
+}
+type EditorSpinSlider interface {
+	Range
+
+	SetLabel(label String)
+
+	GetLabel() String
+
+	SetSuffix(suffix String)
+
+	GetSuffix() String
+
+	SetReadOnly(read_only bool)
+
+	IsReadOnly() bool
+
+	SetFlat(flat bool)
+
+	IsFlat() bool
+
+	SetHideSlider(hide_slider bool)
+
+	IsHidingSlider() bool
+}
+type EditorSyntaxHighlighter interface {
+	SyntaxHighlighter
+
+	// VIRTUAL: Internal_GetName() String
+
+	// VIRTUAL: Internal_GetSupportedLanguages() PackedStringArray
+}
+type EditorTranslationParserPlugin interface {
+	RefCounted
+
+	// VIRTUAL: Internal_ParseFile(path String,msgids []String,msgids_context_plural []Array,)
+
+	// VIRTUAL: Internal_GetRecognizedExtensions() PackedStringArray
+}
+type EditorUndoRedoManager interface {
+	Object
+
+	CreateAction(name String, merge_mode UndoRedoMergeMode, custom_context Object, backward_undo_ops bool)
+
+	CommitAction(execute bool)
+
+	IsCommittingAction() bool
+
+	AddDoMethod(object Object, method StringName, varargs ...Variant)
+
+	AddUndoMethod(object Object, method StringName, varargs ...Variant)
+
+	AddDoProperty(object Object, property StringName, value Variant)
+
+	AddUndoProperty(object Object, property StringName, value Variant)
+
+	AddDoReference(object Object)
+
+	AddUndoReference(object Object)
+
+	GetObjectHistoryId(object Object) int32
+
+	GetHistoryUndoRedo(id int32) UndoRedo
+}
+type EditorVCSInterface interface {
+	Object
+
+	// VIRTUAL: Internal_Initialize(project_path String,) bool
+
+	// VIRTUAL: Internal_SetCredentials(username String,password String,ssh_public_key_path String,ssh_private_key_path String,ssh_passphrase String,)
+
+	// VIRTUAL: Internal_GetModifiedFilesData() []Dictionary
+
+	// VIRTUAL: Internal_StageFile(file_path String,)
+
+	// VIRTUAL: Internal_UnstageFile(file_path String,)
+
+	// VIRTUAL: Internal_DiscardFile(file_path String,)
+
+	// VIRTUAL: Internal_Commit(msg String,)
+
+	// VIRTUAL: Internal_GetDiff(identifier String,area int32,) []Dictionary
+
+	// VIRTUAL: Internal_ShutDown() bool
+
+	// VIRTUAL: Internal_GetVcsName() String
+
+	// VIRTUAL: Internal_GetPreviousCommits(max_commits int32,) []Dictionary
+
+	// VIRTUAL: Internal_GetBranchList() []String
+
+	// VIRTUAL: Internal_GetRemotes() []String
+
+	// VIRTUAL: Internal_CreateBranch(branch_name String,)
+
+	// VIRTUAL: Internal_RemoveBranch(branch_name String,)
+
+	// VIRTUAL: Internal_CreateRemote(remote_name String,remote_url String,)
+
+	// VIRTUAL: Internal_RemoveRemote(remote_name String,)
+
+	// VIRTUAL: Internal_GetCurrentBranchName() String
+
+	// VIRTUAL: Internal_CheckoutBranch(branch_name String,) bool
+
+	// VIRTUAL: Internal_Pull(remote String,)
+
+	// VIRTUAL: Internal_Push(remote String,force bool,)
+
+	// VIRTUAL: Internal_Fetch(remote String,)
+
+	// VIRTUAL: Internal_GetLineDiff(file_path String,text String,) []Dictionary
+
+	CreateDiffLine(new_line_no int32, old_line_no int32, content String, status String) Dictionary
+
+	CreateDiffHunk(old_start int32, new_start int32, old_lines int32, new_lines int32) Dictionary
+
+	CreateDiffFile(new_file String, old_file String) Dictionary
+
+	CreateCommit(msg String, author String, id String, unix_timestamp int32, offset_minutes int32) Dictionary
+
+	CreateStatusFile(file_path String, change_type EditorVCSInterfaceChangeType, area EditorVCSInterfaceTreeArea) Dictionary
+
+	AddDiffHunksIntoDiffFile(diff_file Dictionary, diff_hunks []Dictionary) Dictionary
+
+	AddLineDiffsIntoDiffHunk(diff_hunk Dictionary, line_diffs []Dictionary) Dictionary
+
+	PopupError(msg String)
 }
 type EncodedObjectAsID interface {
 	RefCounted
@@ -6880,6 +7948,10 @@ type FileSystemDock interface {
 	VBoxContainer
 
 	NavigateToPath(path String)
+
+	AddResourceTooltipPlugin(plugin EditorResourceTooltipPlugin)
+
+	RemoveResourceTooltipPlugin(plugin EditorResourceTooltipPlugin)
 }
 type FlowContainer interface {
 	Container
@@ -6961,6 +8033,8 @@ type Font interface {
 
 	GetFontStyleName() String
 
+	GetOtNameStrings() Dictionary
+
 	GetFontStyle() TextServerFontStyle
 
 	GetFontWeight() int32
@@ -6973,17 +8047,17 @@ type Font interface {
 
 	SetCacheCapacity(single_line int32, multi_line int32)
 
-	GetStringSize(text String, alignment HorizontalAlignment, width float32, font_size int32, jst_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation) Vector2
+	GetStringSize(text String, alignment HorizontalAlignment, width float32, font_size int32, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation) Vector2
 
-	GetMultilineStringSize(text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, brk_flags TextServerLineBreakFlag, jst_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation) Vector2
+	GetMultilineStringSize(text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, brk_flags TextServerLineBreakFlag, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation) Vector2
 
-	DrawString(canvas_item RID, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, modulate Color, jst_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawString(canvas_item RID, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, modulate Color, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
-	DrawMultilineString(canvas_item RID, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, modulate Color, brk_flags TextServerLineBreakFlag, jst_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawMultilineString(canvas_item RID, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, modulate Color, brk_flags TextServerLineBreakFlag, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
-	DrawStringOutline(canvas_item RID, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, size int32, modulate Color, jst_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawStringOutline(canvas_item RID, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, size int32, modulate Color, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
-	DrawMultilineStringOutline(canvas_item RID, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, size int32, modulate Color, brk_flags TextServerLineBreakFlag, jst_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawMultilineStringOutline(canvas_item RID, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, size int32, modulate Color, brk_flags TextServerLineBreakFlag, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
 	GetCharSize(char int32, font_size int32) Vector2
 
@@ -7193,6 +8267,8 @@ type FontFile interface {
 	GetOpentypeFeatureOverrides() Dictionary
 
 	GetGlyphIndex(size int32, char int32, variation_selector int32) int32
+
+	GetCharFromGlyphIndex(size int32, glyph_index int32) int32
 }
 type FontVariation interface {
 	Font
@@ -7256,6 +8332,9 @@ type GDScript interface {
 	Script
 
 	New(varargs ...Variant) Variant
+}
+type GDScriptEditorTranslationParserPlugin interface {
+	EditorTranslationParserPlugin
 }
 type GDScriptNativeClass interface {
 	RefCounted
@@ -7410,6 +8489,10 @@ type GLTFDocumentExtension interface {
 
 	// VIRTUAL: Internal_ParseNodeExtensions(state GLTFState,gltf_node GLTFNode,extensions Dictionary,) Error
 
+	// VIRTUAL: Internal_ParseImageData(state GLTFState,image_data PackedByteArray,mime_type String,ret_image Image,) Error
+
+	// VIRTUAL: Internal_ParseTextureJson(state GLTFState,texture_json Dictionary,ret_gltf_texture GLTFTexture,) Error
+
 	// VIRTUAL: Internal_GenerateSceneNode(state GLTFState,gltf_node GLTFNode,scene_parent Node,) Node3D
 
 	// VIRTUAL: Internal_ImportPostParse(state GLTFState,) Error
@@ -7427,6 +8510,12 @@ type GLTFDocumentExtension interface {
 	// VIRTUAL: Internal_ExportPost(state GLTFState,) Error
 }
 type GLTFDocumentExtensionConvertImporterMesh interface {
+	GLTFDocumentExtension
+}
+type GLTFDocumentExtensionPhysics interface {
+	GLTFDocumentExtension
+}
+type GLTFDocumentExtensionTextureWebP interface {
 	GLTFDocumentExtension
 }
 type GLTFLight interface {
@@ -7533,6 +8622,76 @@ type GLTFNode interface {
 	GetAdditionalData(extension_name StringName) Variant
 
 	SetAdditionalData(extension_name StringName, additional_data Variant)
+}
+type GLTFPhysicsBody interface {
+	Resource
+
+	FromNode(body_node CollisionObject3D) GLTFPhysicsBody
+
+	ToNode() CollisionObject3D
+
+	FromDictionary(dictionary Dictionary) GLTFPhysicsBody
+
+	ToDictionary() Dictionary
+
+	GetBodyType() String
+
+	SetBodyType(body_type String)
+
+	GetMass() float32
+
+	SetMass(mass float32)
+
+	GetLinearVelocity() Vector3
+
+	SetLinearVelocity(linear_velocity Vector3)
+
+	GetAngularVelocity() Vector3
+
+	SetAngularVelocity(angular_velocity Vector3)
+
+	GetInertiaTensor() Basis
+
+	SetInertiaTensor(inertia_tensor Basis)
+}
+type GLTFPhysicsShape interface {
+	Resource
+
+	FromNode(shape_node CollisionShape3D) GLTFPhysicsShape
+
+	ToNode(cache_shapes bool) CollisionShape3D
+
+	FromDictionary(dictionary Dictionary) GLTFPhysicsShape
+
+	ToDictionary() Dictionary
+
+	GetShapeType() String
+
+	SetShapeType(shape_type String)
+
+	GetSize() Vector3
+
+	SetSize(size Vector3)
+
+	GetRadius() float32
+
+	SetRadius(radius float32)
+
+	GetHeight() float32
+
+	SetHeight(height float32)
+
+	GetIsTrigger() bool
+
+	SetIsTrigger(is_trigger bool)
+
+	GetMeshIndex() int32
+
+	SetMeshIndex(mesh_index int32)
+
+	GetImporterMesh() ImporterMesh
+
+	SetImporterMesh(importer_mesh ImporterMesh)
 }
 type GLTFSkeleton interface {
 	Resource
@@ -7735,6 +8894,8 @@ type GLTFState interface {
 	SetAnimations(animations []GLTFAnimation)
 
 	GetSceneNode(idx int32) Node
+
+	GetNodeIndex(scene_node Node) int32
 
 	GetAdditionalData(extension_name StringName) Variant
 
@@ -8182,7 +9343,7 @@ type Geometry3D interface {
 
 	SegmentIntersectsCylinder(from Vector3, to Vector3, height float32, radius float32) PackedVector3Array
 
-	SegmentIntersectsConvex(from Vector3, to Vector3, planes Array) PackedVector3Array
+	SegmentIntersectsConvex(from Vector3, to Vector3, planes []Plane) PackedVector3Array
 
 	ClipPolygon(points PackedVector3Array, plane Plane) PackedVector3Array
 }
@@ -8291,6 +9452,10 @@ type Gradient interface {
 	SetInterpolationMode(interpolation_mode GradientInterpolationMode)
 
 	GetInterpolationMode() GradientInterpolationMode
+
+	SetInterpolationColorSpace(interpolation_color_space GradientColorSpace)
+
+	GetInterpolationColorSpace() GradientColorSpace
 }
 type GradientTexture1D interface {
 	Texture2D
@@ -9228,7 +10393,11 @@ type InputEvent interface {
 
 	GetActionStrength(action StringName, exact_match bool) float32
 
+	IsCanceled() bool
+
 	IsPressed() bool
+
+	IsReleased() bool
 
 	IsEcho() bool
 
@@ -9398,6 +10567,8 @@ type InputEventMouseButton interface {
 
 	SetPressed(pressed bool)
 
+	SetCanceled(canceled bool)
+
 	SetDoubleClick(double_click bool)
 
 	IsDoubleClick() bool
@@ -9475,6 +10646,8 @@ type InputEventScreenTouch interface {
 	GetPosition() Vector2
 
 	SetPressed(pressed bool)
+
+	SetCanceled(canceled bool)
 
 	SetDoubleTap(double_tap bool)
 
@@ -9610,6 +10783,8 @@ type ItemList interface {
 
 	GetItemCustomFgColor(idx int32) Color
 
+	GetItemRect(idx int32, expand bool) Rect2
+
 	SetItemTooltipEnabled(idx int32, enable bool)
 
 	IsItemTooltipEnabled(idx int32) bool
@@ -9679,6 +10854,10 @@ type ItemList interface {
 	SetAllowReselect(allow bool)
 
 	GetAllowReselect() bool
+
+	SetAllowSearch(allow bool)
+
+	GetAllowSearch() bool
 
 	SetAutoHeight(enable bool)
 
@@ -9894,9 +11073,17 @@ type Label interface {
 
 	GetAutowrapMode() TextServerAutowrapMode
 
+	SetJustificationFlags(justification_flags TextServerJustificationFlag)
+
+	GetJustificationFlags() TextServerJustificationFlag
+
 	SetClipText(enable bool)
 
 	IsClippingText() bool
+
+	SetTabStops(tab_stops PackedFloat32Array)
+
+	GetTabStops() PackedFloat32Array
 
 	SetTextOverrunBehavior(overrun_behavior TextServerOverrunBehavior)
 
@@ -10012,6 +11199,10 @@ type Label3D interface {
 	SetAutowrapMode(autowrap_mode TextServerAutowrapMode)
 
 	GetAutowrapMode() TextServerAutowrapMode
+
+	SetJustificationFlags(justification_flags TextServerJustificationFlag)
+
+	GetJustificationFlags() TextServerJustificationFlag
 
 	SetWidth(width float32)
 
@@ -10412,6 +11603,8 @@ type LineEdit interface {
 
 	HasSelection() bool
 
+	GetSelectedText() String
+
 	GetSelectionFromColumn() int32
 
 	GetSelectionToColumn() int32
@@ -10744,6 +11937,8 @@ type Mesh interface {
 
 	GetAabb() AABB
 
+	GetFaces() PackedVector3Array
+
 	GetSurfaceCount() int32
 
 	SurfaceGetArrays(surf_idx int32) Array
@@ -10762,9 +11957,62 @@ type Mesh interface {
 
 	CreateOutline(margin float32) Mesh
 
-	GetFaces() PackedVector3Array
-
 	GenerateTriangleMesh() TriangleMesh
+}
+type MeshConvexDecompositionSettings interface {
+	RefCounted
+
+	SetMaxConcavity(max_concavity float32)
+
+	GetMaxConcavity() float32
+
+	SetSymmetryPlanesClippingBias(symmetry_planes_clipping_bias float32)
+
+	GetSymmetryPlanesClippingBias() float32
+
+	SetRevolutionAxesClippingBias(revolution_axes_clipping_bias float32)
+
+	GetRevolutionAxesClippingBias() float32
+
+	SetMinVolumePerConvexHull(min_volume_per_convex_hull float32)
+
+	GetMinVolumePerConvexHull() float32
+
+	SetResolution(min_volume_per_convex_hull int32)
+
+	GetResolution() int32
+
+	SetMaxNumVerticesPerConvexHull(max_num_vertices_per_convex_hull int32)
+
+	GetMaxNumVerticesPerConvexHull() int32
+
+	SetPlaneDownsampling(plane_downsampling int32)
+
+	GetPlaneDownsampling() int32
+
+	SetConvexHullDownsampling(convex_hull_downsampling int32)
+
+	GetConvexHullDownsampling() int32
+
+	SetNormalizeMesh(normalize_mesh bool)
+
+	GetNormalizeMesh() bool
+
+	SetMode(mode MeshConvexDecompositionSettingsMode)
+
+	GetMode() MeshConvexDecompositionSettingsMode
+
+	SetConvexHullApproximation(convex_hull_approximation bool)
+
+	GetConvexHullApproximation() bool
+
+	SetMaxConvexHulls(max_convex_hulls int32)
+
+	GetMaxConvexHulls() int32
+
+	SetProjectHullVertices(project_hull_vertices bool)
+
+	GetProjectHullVertices() bool
 }
 type MeshDataTool interface {
 	RefCounted
@@ -10883,7 +12131,7 @@ type MeshInstance3D interface {
 
 	CreateConvexCollision(clean bool, simplify bool)
 
-	CreateMultipleConvexCollisions()
+	CreateMultipleConvexCollisions(settings MeshConvexDecompositionSettings)
 
 	GetBlendShapeCount() int32
 
@@ -11213,6 +12461,10 @@ type MultiplayerPeerExtension interface {
 
 	// VIRTUAL: Internal_PutPacketScript(p_buffer PackedByteArray,) Error
 
+	// VIRTUAL: Internal_GetPacketChannel() int32
+
+	// VIRTUAL: Internal_GetPacketMode() MultiplayerPeerTransferMode
+
 	// VIRTUAL: Internal_SetTransferChannel(p_channel int32,)
 
 	// VIRTUAL: Internal_GetTransferChannel() int32
@@ -11238,6 +12490,8 @@ type MultiplayerPeerExtension interface {
 	// VIRTUAL: Internal_SetRefuseNewConnections(p_enable bool,)
 
 	// VIRTUAL: Internal_IsRefusingNewConnections() bool
+
+	// VIRTUAL: Internal_IsServerRelaySupported() bool
 
 	// VIRTUAL: Internal_GetConnectionStatus() MultiplayerPeerConnectionStatus
 }
@@ -11276,6 +12530,10 @@ type MultiplayerSynchronizer interface {
 	SetReplicationInterval(milliseconds float32)
 
 	GetReplicationInterval() float32
+
+	SetDeltaInterval(milliseconds float32)
+
+	GetDeltaInterval() float32
 
 	SetReplicationConfig(config SceneReplicationConfig)
 
@@ -11337,9 +12595,13 @@ type NavigationAgent2D interface {
 
 	GetMaxNeighbors() int32
 
-	SetTimeHorizon(time_horizon float32)
+	SetTimeHorizonAgents(time_horizon float32)
 
-	GetTimeHorizon() float32
+	GetTimeHorizonAgents() float32
+
+	SetTimeHorizonObstacles(time_horizon float32)
+
+	GetTimeHorizonObstacles() float32
 
 	SetMaxSpeed(max_speed float32)
 
@@ -11357,6 +12619,14 @@ type NavigationAgent2D interface {
 
 	GetNavigationLayerValue(layer_number int32) bool
 
+	SetPathfindingAlgorithm(pathfinding_algorithm NavigationPathQueryParameters2DPathfindingAlgorithm)
+
+	GetPathfindingAlgorithm() NavigationPathQueryParameters2DPathfindingAlgorithm
+
+	SetPathPostprocessing(path_postprocessing NavigationPathQueryParameters2DPathPostProcessing)
+
+	GetPathPostprocessing() NavigationPathQueryParameters2DPathPostProcessing
+
 	SetPathMetadataFlags(flags NavigationPathQueryParameters2DPathMetadataFlags)
 
 	GetPathMetadataFlags() NavigationPathQueryParameters2DPathMetadataFlags
@@ -11371,9 +12641,13 @@ type NavigationAgent2D interface {
 
 	GetNextPathPosition() Vector2
 
-	DistanceToTarget() float32
+	SetVelocityForced(velocity Vector2)
 
 	SetVelocity(velocity Vector2)
+
+	GetVelocity() Vector2
+
+	DistanceToTarget() float32
 
 	GetCurrentNavigationResult() NavigationPathQueryResult2D
 
@@ -11388,6 +12662,26 @@ type NavigationAgent2D interface {
 	IsNavigationFinished() bool
 
 	GetFinalPosition() Vector2
+
+	SetAvoidanceLayers(layers int32)
+
+	GetAvoidanceLayers() int32
+
+	SetAvoidanceMask(mask int32)
+
+	GetAvoidanceMask() int32
+
+	SetAvoidanceLayerValue(layer_number int32, value bool)
+
+	GetAvoidanceLayerValue(layer_number int32) bool
+
+	SetAvoidanceMaskValue(mask_number int32, value bool)
+
+	GetAvoidanceMaskValue(mask_number int32) bool
+
+	SetAvoidancePriority(priority float32)
+
+	GetAvoidancePriority() float32
 
 	SetDebugEnabled(enabled bool)
 
@@ -11430,13 +12724,17 @@ type NavigationAgent3D interface {
 
 	GetRadius() float32
 
-	SetAgentHeightOffset(agent_height_offset float32)
+	SetHeight(height float32)
 
-	GetAgentHeightOffset() float32
+	GetHeight() float32
 
-	SetIgnoreY(ignore bool)
+	SetPathHeightOffset(path_height_offset float32)
 
-	GetIgnoreY() bool
+	GetPathHeightOffset() float32
+
+	SetUse3DAvoidance(enabled bool)
+
+	GetUse3DAvoidance() bool
 
 	SetNeighborDistance(neighbor_distance float32)
 
@@ -11446,9 +12744,13 @@ type NavigationAgent3D interface {
 
 	GetMaxNeighbors() int32
 
-	SetTimeHorizon(time_horizon float32)
+	SetTimeHorizonAgents(time_horizon float32)
 
-	GetTimeHorizon() float32
+	GetTimeHorizonAgents() float32
+
+	SetTimeHorizonObstacles(time_horizon float32)
+
+	GetTimeHorizonObstacles() float32
 
 	SetMaxSpeed(max_speed float32)
 
@@ -11466,6 +12768,14 @@ type NavigationAgent3D interface {
 
 	GetNavigationLayerValue(layer_number int32) bool
 
+	SetPathfindingAlgorithm(pathfinding_algorithm NavigationPathQueryParameters3DPathfindingAlgorithm)
+
+	GetPathfindingAlgorithm() NavigationPathQueryParameters3DPathfindingAlgorithm
+
+	SetPathPostprocessing(path_postprocessing NavigationPathQueryParameters3DPathPostProcessing)
+
+	GetPathPostprocessing() NavigationPathQueryParameters3DPathPostProcessing
+
 	SetPathMetadataFlags(flags NavigationPathQueryParameters3DPathMetadataFlags)
 
 	GetPathMetadataFlags() NavigationPathQueryParameters3DPathMetadataFlags
@@ -11480,9 +12790,13 @@ type NavigationAgent3D interface {
 
 	GetNextPathPosition() Vector3
 
-	DistanceToTarget() float32
+	SetVelocityForced(velocity Vector3)
 
 	SetVelocity(velocity Vector3)
+
+	GetVelocity() Vector3
+
+	DistanceToTarget() float32
 
 	GetCurrentNavigationResult() NavigationPathQueryResult3D
 
@@ -11497,6 +12811,26 @@ type NavigationAgent3D interface {
 	IsNavigationFinished() bool
 
 	GetFinalPosition() Vector3
+
+	SetAvoidanceLayers(layers int32)
+
+	GetAvoidanceLayers() int32
+
+	SetAvoidanceMask(mask int32)
+
+	GetAvoidanceMask() int32
+
+	SetAvoidanceLayerValue(layer_number int32, value bool)
+
+	GetAvoidanceLayerValue(layer_number int32) bool
+
+	SetAvoidanceMaskValue(mask_number int32, value bool)
+
+	GetAvoidanceMaskValue(mask_number int32) bool
+
+	SetAvoidancePriority(priority float32)
+
+	GetAvoidancePriority() float32
 
 	SetDebugEnabled(enabled bool)
 
@@ -11719,40 +13053,105 @@ type NavigationMeshGenerator interface {
 	Bake(navigation_mesh NavigationMesh, root_node Node)
 
 	Clear(navigation_mesh NavigationMesh)
+
+	ParseSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, root_node Node, callback Callable)
+
+	BakeFromSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, callback Callable)
+}
+type NavigationMeshSourceGeometryData3D interface {
+	Resource
+
+	SetVertices(vertices PackedFloat32Array)
+
+	GetVertices() PackedFloat32Array
+
+	SetIndices(indices PackedInt32Array)
+
+	GetIndices() PackedInt32Array
+
+	Clear()
+
+	HasData() bool
+
+	AddMesh(mesh Mesh, xform Transform3D)
+
+	AddMeshArray(mesh_array Array, xform Transform3D)
+
+	AddFaces(faces PackedVector3Array, xform Transform3D)
 }
 type NavigationObstacle2D interface {
-	Node
+	Node2D
 
 	GetRid() RID
+
+	SetAvoidanceEnabled(enabled bool)
+
+	GetAvoidanceEnabled() bool
 
 	SetNavigationMap(navigation_map RID)
 
 	GetNavigationMap() RID
 
-	SetEstimateRadius(estimate_radius bool)
-
-	IsRadiusEstimated() bool
-
 	SetRadius(radius float32)
 
 	GetRadius() float32
+
+	SetVelocity(velocity Vector2)
+
+	GetVelocity() Vector2
+
+	SetVertices(vertices PackedVector2Array)
+
+	GetVertices() PackedVector2Array
+
+	SetAvoidanceLayers(layers int32)
+
+	GetAvoidanceLayers() int32
+
+	SetAvoidanceLayerValue(layer_number int32, value bool)
+
+	GetAvoidanceLayerValue(layer_number int32) bool
 }
 type NavigationObstacle3D interface {
-	Node
+	Node3D
 
 	GetRid() RID
+
+	SetAvoidanceEnabled(enabled bool)
+
+	GetAvoidanceEnabled() bool
 
 	SetNavigationMap(navigation_map RID)
 
 	GetNavigationMap() RID
 
-	SetEstimateRadius(estimate_radius bool)
-
-	IsRadiusEstimated() bool
-
 	SetRadius(radius float32)
 
 	GetRadius() float32
+
+	SetHeight(height float32)
+
+	GetHeight() float32
+
+	SetVelocity(velocity Vector3)
+
+	GetVelocity() Vector3
+
+	SetVertices(vertices PackedVector3Array)
+
+	GetVertices() PackedVector3Array
+
+	SetAvoidanceLayers(layers int32)
+
+	GetAvoidanceLayers() int32
+
+	SetAvoidanceLayerValue(layer_number int32, value bool)
+
+	GetAvoidanceLayerValue(layer_number int32) bool
+
+	SetUse3DAvoidance(enabled bool)
+
+	GetUse3DAvoidance() bool
 }
 type NavigationPathQueryParameters2D interface {
 	RefCounted
@@ -11890,6 +13289,10 @@ type NavigationPolygon interface {
 	ClearOutlines()
 
 	MakePolygonsFromOutlines()
+
+	SetCellSize(cell_size float32)
+
+	GetCellSize() float32
 }
 type NavigationRegion2D interface {
 	Node2D
@@ -11902,6 +13305,10 @@ type NavigationRegion2D interface {
 
 	IsEnabled() bool
 
+	SetUseEdgeConnections(enabled bool)
+
+	GetUseEdgeConnections() bool
+
 	SetNavigationLayers(navigation_layers int32)
 
 	GetNavigationLayers() int32
@@ -11909,6 +13316,18 @@ type NavigationRegion2D interface {
 	SetNavigationLayerValue(layer_number int32, value bool)
 
 	GetNavigationLayerValue(layer_number int32) bool
+
+	SetConstrainAvoidance(enabled bool)
+
+	GetConstrainAvoidance() bool
+
+	SetAvoidanceLayers(layers int32)
+
+	GetAvoidanceLayers() int32
+
+	SetAvoidanceLayerValue(layer_number int32, value bool)
+
+	GetAvoidanceLayerValue(layer_number int32) bool
 
 	GetRegionRid() RID
 
@@ -11930,6 +13349,10 @@ type NavigationRegion3D interface {
 	SetEnabled(enabled bool)
 
 	IsEnabled() bool
+
+	SetUseEdgeConnections(enabled bool)
+
+	GetUseEdgeConnections() bool
 
 	SetNavigationLayers(navigation_layers int32)
 
@@ -11966,6 +13389,10 @@ type NavigationServer2D interface {
 
 	MapGetCellSize(resourceMap RID) float32
 
+	MapSetUseEdgeConnections(resourceMap RID, enabled bool)
+
+	MapGetUseEdgeConnections(resourceMap RID) bool
+
 	MapSetEdgeConnectionMargin(resourceMap RID, margin float32)
 
 	MapGetEdgeConnectionMargin(resourceMap RID) float32
@@ -11986,11 +13413,17 @@ type NavigationServer2D interface {
 
 	MapGetAgents(resourceMap RID) []RID
 
+	MapGetObstacles(resourceMap RID) []RID
+
 	MapForceUpdate(resourceMap RID)
 
 	QueryPath(parameters NavigationPathQueryParameters2D, result NavigationPathQueryResult2D)
 
 	RegionCreate() RID
+
+	RegionSetUseEdgeConnections(region RID, enabled bool)
+
+	RegionGetUseEdgeConnections(region RID) bool
 
 	RegionSetEnterCost(region RID, enter_cost float32)
 
@@ -12060,29 +13493,69 @@ type NavigationServer2D interface {
 
 	AgentCreate() RID
 
+	AgentSetAvoidanceEnabled(agent RID, enabled bool)
+
+	AgentGetAvoidanceEnabled(agent RID) bool
+
 	AgentSetMap(agent RID, resourceMap RID)
 
 	AgentGetMap(agent RID) RID
+
+	AgentSetPaused(agent RID, paused bool)
+
+	AgentGetPaused(agent RID) bool
 
 	AgentSetNeighborDistance(agent RID, distance float32)
 
 	AgentSetMaxNeighbors(agent RID, count int32)
 
-	AgentSetTimeHorizon(agent RID, time float32)
+	AgentSetTimeHorizonAgents(agent RID, time_horizon float32)
+
+	AgentSetTimeHorizonObstacles(agent RID, time_horizon float32)
 
 	AgentSetRadius(agent RID, radius float32)
 
 	AgentSetMaxSpeed(agent RID, max_speed float32)
 
-	AgentSetVelocity(agent RID, velocity Vector2)
+	AgentSetVelocityForced(agent RID, velocity Vector2)
 
-	AgentSetTargetVelocity(agent RID, target_velocity Vector2)
+	AgentSetVelocity(agent RID, velocity Vector2)
 
 	AgentSetPosition(agent RID, position Vector2)
 
 	AgentIsMapChanged(agent RID) bool
 
-	AgentSetCallback(agent RID, callback Callable)
+	AgentSetAvoidanceCallback(agent RID, callback Callable)
+
+	AgentSetAvoidanceLayers(agent RID, layers int32)
+
+	AgentSetAvoidanceMask(agent RID, mask int32)
+
+	AgentSetAvoidancePriority(agent RID, priority float32)
+
+	ObstacleCreate() RID
+
+	ObstacleSetAvoidanceEnabled(obstacle RID, enabled bool)
+
+	ObstacleGetAvoidanceEnabled(obstacle RID) bool
+
+	ObstacleSetMap(obstacle RID, resourceMap RID)
+
+	ObstacleGetMap(obstacle RID) RID
+
+	ObstacleSetPaused(obstacle RID, paused bool)
+
+	ObstacleGetPaused(obstacle RID) bool
+
+	ObstacleSetRadius(obstacle RID, radius float32)
+
+	ObstacleSetVelocity(obstacle RID, velocity Vector2)
+
+	ObstacleSetPosition(obstacle RID, position Vector2)
+
+	ObstacleSetVertices(obstacle RID, vertices PackedVector2Array)
+
+	ObstacleSetAvoidanceLayers(obstacle RID, layers int32)
 
 	FreeRid(rid RID)
 
@@ -12109,6 +13582,14 @@ type NavigationServer3D interface {
 
 	MapGetCellSize(resourceMap RID) float32
 
+	MapSetCellHeight(resourceMap RID, cell_height float32)
+
+	MapGetCellHeight(resourceMap RID) float32
+
+	MapSetUseEdgeConnections(resourceMap RID, enabled bool)
+
+	MapGetUseEdgeConnections(resourceMap RID) bool
+
 	MapSetEdgeConnectionMargin(resourceMap RID, margin float32)
 
 	MapGetEdgeConnectionMargin(resourceMap RID) float32
@@ -12133,11 +13614,17 @@ type NavigationServer3D interface {
 
 	MapGetAgents(resourceMap RID) []RID
 
+	MapGetObstacles(resourceMap RID) []RID
+
 	MapForceUpdate(resourceMap RID)
 
 	QueryPath(parameters NavigationPathQueryParameters3D, result NavigationPathQueryResult3D)
 
 	RegionCreate() RID
+
+	RegionSetUseEdgeConnections(region RID, enabled bool)
+
+	RegionGetUseEdgeConnections(region RID) bool
 
 	RegionSetEnterCost(region RID, enter_cost float32)
 
@@ -12209,29 +13696,85 @@ type NavigationServer3D interface {
 
 	AgentCreate() RID
 
+	AgentSetAvoidanceEnabled(agent RID, enabled bool)
+
+	AgentGetAvoidanceEnabled(agent RID) bool
+
+	AgentSetUse3DAvoidance(agent RID, enabled bool)
+
+	AgentGetUse3DAvoidance(agent RID) bool
+
 	AgentSetMap(agent RID, resourceMap RID)
 
 	AgentGetMap(agent RID) RID
+
+	AgentSetPaused(agent RID, paused bool)
+
+	AgentGetPaused(agent RID) bool
 
 	AgentSetNeighborDistance(agent RID, distance float32)
 
 	AgentSetMaxNeighbors(agent RID, count int32)
 
-	AgentSetTimeHorizon(agent RID, time float32)
+	AgentSetTimeHorizonAgents(agent RID, time_horizon float32)
+
+	AgentSetTimeHorizonObstacles(agent RID, time_horizon float32)
 
 	AgentSetRadius(agent RID, radius float32)
 
+	AgentSetHeight(agent RID, height float32)
+
 	AgentSetMaxSpeed(agent RID, max_speed float32)
 
-	AgentSetVelocity(agent RID, velocity Vector3)
+	AgentSetVelocityForced(agent RID, velocity Vector3)
 
-	AgentSetTargetVelocity(agent RID, target_velocity Vector3)
+	AgentSetVelocity(agent RID, velocity Vector3)
 
 	AgentSetPosition(agent RID, position Vector3)
 
 	AgentIsMapChanged(agent RID) bool
 
-	AgentSetCallback(agent RID, callback Callable)
+	AgentSetAvoidanceCallback(agent RID, callback Callable)
+
+	AgentSetAvoidanceLayers(agent RID, layers int32)
+
+	AgentSetAvoidanceMask(agent RID, mask int32)
+
+	AgentSetAvoidancePriority(agent RID, priority float32)
+
+	ObstacleCreate() RID
+
+	ObstacleSetAvoidanceEnabled(obstacle RID, enabled bool)
+
+	ObstacleGetAvoidanceEnabled(obstacle RID) bool
+
+	ObstacleSetUse3DAvoidance(obstacle RID, enabled bool)
+
+	ObstacleGetUse3DAvoidance(obstacle RID) bool
+
+	ObstacleSetMap(obstacle RID, resourceMap RID)
+
+	ObstacleGetMap(obstacle RID) RID
+
+	ObstacleSetPaused(obstacle RID, paused bool)
+
+	ObstacleGetPaused(obstacle RID) bool
+
+	ObstacleSetRadius(obstacle RID, radius float32)
+
+	ObstacleSetHeight(obstacle RID, height float32)
+
+	ObstacleSetVelocity(obstacle RID, velocity Vector3)
+
+	ObstacleSetPosition(obstacle RID, position Vector3)
+
+	ObstacleSetVertices(obstacle RID, vertices PackedVector3Array)
+
+	ObstacleSetAvoidanceLayers(obstacle RID, layers int32)
+
+	ParseSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, root_node Node, callback Callable)
+
+	BakeFromSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, callback Callable)
 
 	FreeRid(rid RID)
 
@@ -12383,6 +13926,10 @@ type Node interface {
 
 	GetProcessPriority() int32
 
+	SetPhysicsProcessPriority(priority int32)
+
+	GetPhysicsProcessPriority() int32
+
 	IsProcessing() bool
 
 	SetProcessInput(enable bool)
@@ -12407,6 +13954,18 @@ type Node interface {
 
 	CanProcess() bool
 
+	SetProcessThreadGroup(mode NodeProcessThreadGroup)
+
+	GetProcessThreadGroup() NodeProcessThreadGroup
+
+	SetProcessThreadMessages(flags NodeProcessThreadMessages)
+
+	GetProcessThreadMessages() NodeProcessThreadMessages
+
+	SetProcessThreadGroupOrder(order int32)
+
+	GetProcessThreadGroupOrder() int32
+
 	SetDisplayFolded(fold bool)
 
 	IsDisplayedFolded() bool
@@ -12420,6 +13979,8 @@ type Node interface {
 	IsPhysicsProcessingInternal() bool
 
 	GetWindow() Window
+
+	GetLastExclusiveWindow() Window
 
 	GetTree() SceneTree
 
@@ -12442,6 +14003,8 @@ type Node interface {
 	QueueFree()
 
 	RequestReady()
+
+	IsNodeReady() bool
 
 	SetMultiplayerAuthority(id int32, recursive bool)
 
@@ -12466,6 +14029,18 @@ type Node interface {
 	RpcId(peer_id int32, method StringName, varargs ...Variant) Error
 
 	UpdateConfigurationWarnings()
+
+	CallDeferredThreadGroup(method StringName, varargs ...Variant) Variant
+
+	SetDeferredThreadGroup(property StringName, value Variant)
+
+	NotifyDeferredThreadGroup(what int32)
+
+	CallThreadSafe(method StringName, varargs ...Variant) Variant
+
+	SetThreadSafe(property StringName, value Variant)
+
+	NotifyThreadSafe(what int32)
 }
 type Node2D interface {
 	CanvasItem
@@ -12667,9 +14242,9 @@ type Node3D interface {
 
 	SetIdentity()
 
-	LookAt(target Vector3, up Vector3)
+	LookAt(target Vector3, up Vector3, use_model_front bool)
 
-	LookAtFromPosition(position Vector3, target Vector3, up Vector3)
+	LookAtFromPosition(position Vector3, target Vector3, up Vector3, use_model_front bool)
 
 	ToLocal(global_point Vector3) Vector3
 
@@ -12694,6 +14269,10 @@ type Noise interface {
 	GetImage(width int32, height int32, invert bool, in_3d_space bool, normalize bool) Image
 
 	GetSeamlessImage(width int32, height int32, invert bool, in_3d_space bool, skirt float32, normalize bool) Image
+
+	GetImage3D(width int32, height int32, depth int32, invert bool, normalize bool) []Image
+
+	GetSeamlessImage3D(width int32, height int32, depth int32, invert bool, skirt float32, normalize bool) []Image
 }
 type NoiseTexture2D interface {
 	Texture2D
@@ -12742,6 +14321,39 @@ type NoiseTexture2D interface {
 
 	GetNoise() Noise
 }
+type NoiseTexture3D interface {
+	Texture3D
+
+	SetWidth(width int32)
+
+	SetHeight(height int32)
+
+	SetDepth(depth int32)
+
+	SetInvert(invert bool)
+
+	GetInvert() bool
+
+	SetSeamless(seamless bool)
+
+	GetSeamless() bool
+
+	SetSeamlessBlendSkirt(seamless_blend_skirt float32)
+
+	GetSeamlessBlendSkirt() float32
+
+	SetNormalize(normalize bool)
+
+	IsNormalized() bool
+
+	SetColorRamp(gradient Gradient)
+
+	GetColorRamp() Gradient
+
+	SetNoise(noise Noise)
+
+	GetNoise() Noise
+}
 type ORMMaterial3D interface {
 	BaseMaterial3D
 }
@@ -12766,6 +14378,10 @@ type OS interface {
 
 	GetLowProcessorUsageModeSleepUsec() int32
 
+	SetDeltaSmoothing(delta_smoothing_enabled bool)
+
+	IsDeltaSmoothingEnabled() bool
+
 	GetProcessorCount() int32
 
 	GetProcessorName() String
@@ -12789,6 +14405,8 @@ type OS interface {
 	Kill(pid int32) Error
 
 	ShellOpen(uri String) Error
+
+	ShellShowInFileManager(file_or_dir_path String, open_folder bool) Error
 
 	IsProcessRunning(pid int32) bool
 
@@ -12839,6 +14457,8 @@ type OS interface {
 	GetStaticMemoryUsage() int32
 
 	GetStaticMemoryPeakUsage() int32
+
+	GetMemoryInfo() Dictionary
 
 	MoveToTrash(path String) Error
 
@@ -12917,7 +14537,7 @@ type Object interface {
 
 	HasMeta(name StringName) bool
 
-	GetMetaList() PackedStringArray
+	GetMetaList() []StringName
 
 	AddUserSignal(signal String, arguments Array)
 
@@ -12964,6 +14584,8 @@ type Object interface {
 	TrN(message StringName, plural_message StringName, n int32, context StringName) String
 
 	IsQueuedForDeletion() bool
+
+	CancelFree()
 }
 type Occluder3D interface {
 	Resource
@@ -13161,6 +14783,10 @@ type OpenXRInterface interface {
 
 	SetDisplayRefreshRate(refresh_rate float32)
 
+	GetRenderTargetSizeMultiplier() float32
+
+	SetRenderTargetSizeMultiplier(multiplier float32)
+
 	IsActionSetActive(name String) bool
 
 	SetActionSetActive(name String, active bool)
@@ -13238,6 +14864,10 @@ type OptionButton interface {
 	SetFitToLongestItem(fit bool)
 
 	IsFitToLongestItem() bool
+
+	SetAllowReselect(allow bool)
+
+	GetAllowReselect() bool
 }
 type PCKPacker interface {
 	RefCounted
@@ -13603,21 +15233,17 @@ type PathFollow2D interface {
 
 	GetProgressRatio() float32
 
-	SetRotates(enable bool)
+	SetRotates(enabled bool)
 
 	IsRotating() bool
 
-	SetCubicInterpolation(enable bool)
+	SetCubicInterpolation(enabled bool)
 
 	GetCubicInterpolation() bool
 
 	SetLoop(loop bool)
 
 	HasLoop() bool
-
-	SetLookahead(lookahead float32)
-
-	GetLookahead() float32
 }
 type PathFollow3D interface {
 	Node3D
@@ -13642,9 +15268,13 @@ type PathFollow3D interface {
 
 	GetRotationMode() PathFollow3DRotationMode
 
-	SetCubicInterpolation(enable bool)
+	SetCubicInterpolation(enabled bool)
 
 	GetCubicInterpolation() bool
+
+	SetUseModelFront(enabled bool)
+
+	IsUsingModelFront() bool
 
 	SetLoop(loop bool)
 
@@ -13925,6 +15555,8 @@ type PhysicsDirectBodyState2D interface {
 
 	GetContactLocalShape(contact_idx int32) int32
 
+	GetContactLocalVelocityAtPosition(contact_idx int32) Vector2
+
 	GetContactCollider(contact_idx int32) RID
 
 	GetContactColliderPosition(contact_idx int32) Vector2
@@ -14013,6 +15645,8 @@ type PhysicsDirectBodyState2DExtension interface {
 	// VIRTUAL: Internal_GetContactLocalNormal(contact_idx int32,) Vector2
 
 	// VIRTUAL: Internal_GetContactLocalShape(contact_idx int32,) int32
+
+	// VIRTUAL: Internal_GetContactLocalVelocityAtPosition(contact_idx int32,) Vector2
 
 	// VIRTUAL: Internal_GetContactCollider(contact_idx int32,) RID
 
@@ -14109,6 +15743,8 @@ type PhysicsDirectBodyState3D interface {
 
 	GetContactLocalShape(contact_idx int32) int32
 
+	GetContactLocalVelocityAtPosition(contact_idx int32) Vector3
+
 	GetContactCollider(contact_idx int32) RID
 
 	GetContactColliderPosition(contact_idx int32) Vector3
@@ -14202,6 +15838,8 @@ type PhysicsDirectBodyState3DExtension interface {
 
 	// VIRTUAL: Internal_GetContactLocalShape(contact_idx int32,) int32
 
+	// VIRTUAL: Internal_GetContactLocalVelocityAtPosition(contact_idx int32,) Vector3
+
 	// VIRTUAL: Internal_GetContactCollider(contact_idx int32,) RID
 
 	// VIRTUAL: Internal_GetContactColliderPosition(contact_idx int32,) Vector3
@@ -14231,7 +15869,7 @@ type PhysicsDirectSpaceState2D interface {
 
 	CastMotion(parameters PhysicsShapeQueryParameters2D) PackedFloat32Array
 
-	CollideShape(parameters PhysicsShapeQueryParameters2D, max_results int32) []PackedVector2Array
+	CollideShape(parameters PhysicsShapeQueryParameters2D, max_results int32) []Vector2
 
 	GetRestInfo(parameters PhysicsShapeQueryParameters2D) Dictionary
 }
@@ -14263,14 +15901,14 @@ type PhysicsDirectSpaceState3D interface {
 
 	CastMotion(parameters PhysicsShapeQueryParameters3D) PackedFloat32Array
 
-	CollideShape(parameters PhysicsShapeQueryParameters3D, max_results int32) []PackedVector3Array
+	CollideShape(parameters PhysicsShapeQueryParameters3D, max_results int32) []Vector3
 
 	GetRestInfo(parameters PhysicsShapeQueryParameters3D) Dictionary
 }
 type PhysicsDirectSpaceState3DExtension interface {
 	PhysicsDirectSpaceState3D
 
-	// VIRTUAL: Internal_IntersectRay(from Vector3,to Vector3,collision_mask int32,collide_with_bodies bool,collide_with_areas bool,hit_from_inside bool,hit_back_faces bool,result *PhysicsServer3DExtensionRayResult,) bool
+	// VIRTUAL: Internal_IntersectRay(from Vector3,to Vector3,collision_mask int32,collide_with_bodies bool,collide_with_areas bool,hit_from_inside bool,hit_back_faces bool,pick_ray bool,result *PhysicsServer3DExtensionRayResult,) bool
 
 	// VIRTUAL: Internal_IntersectPoint(position Vector3,collision_mask int32,collide_with_bodies bool,collide_with_areas bool,results *PhysicsServer3DExtensionShapeResult,max_results int32,) int32
 
@@ -15442,7 +17080,7 @@ type PhysicsServer3DExtension interface {
 
 	// VIRTUAL: Internal_BodySetRayPickable(body RID,enable bool,)
 
-	// VIRTUAL: Internal_BodyTestMotion(body RID,from Transform3D,motion Vector3,margin float32,max_collisions int32,collide_separation_ray bool,result *PhysicsServer3DExtensionMotionResult,) bool
+	// VIRTUAL: Internal_BodyTestMotion(body RID,from Transform3D,motion Vector3,margin float32,max_collisions int32,collide_separation_ray bool,recovery_as_collision bool,result *PhysicsServer3DExtensionMotionResult,) bool
 
 	// VIRTUAL: Internal_BodyGetDirectState(body RID,) PhysicsDirectBodyState3D
 
@@ -16060,6 +17698,10 @@ type PopupMenu interface {
 
 	SetItemIcon(index int32, icon Texture2D)
 
+	SetItemIconMaxWidth(index int32, width int32)
+
+	SetItemIconModulate(index int32, modulate Color)
+
 	SetItemChecked(index int32, checked bool)
 
 	SetItemId(index int32, id int32)
@@ -16099,6 +17741,10 @@ type PopupMenu interface {
 	GetItemLanguage(index int32) String
 
 	GetItemIcon(index int32) Texture2D
+
+	GetItemIconMaxWidth(index int32) int32
+
+	GetItemIconModulate(index int32) Color
 
 	IsItemChecked(index int32) bool
 
@@ -16322,6 +17968,10 @@ type ProjectSettings interface {
 	GetOrder(name String) int32
 
 	SetInitialValue(name String, value Variant)
+
+	SetAsBasic(name String, basic bool)
+
+	SetAsInternal(name String, internalMode bool)
 
 	AddPropertyInfo(hint Dictionary)
 
@@ -16712,7 +18362,7 @@ type RDShaderFile interface {
 
 	GetSpirv(version StringName) RDShaderSPIRV
 
-	GetVersionList() PackedStringArray
+	GetVersionList() []StringName
 
 	SetBaseError(error String)
 
@@ -17249,6 +18899,8 @@ type RenderingDevice interface {
 
 	TextureResolveMultisample(from_texture RID, to_texture RID, post_barrier RenderingDeviceBarrierMask) Error
 
+	TextureGetNativeHandle(texture RID) int32
+
 	FramebufferFormatCreate(attachments []RDAttachmentFormat, view_count int32) int32
 
 	FramebufferFormatCreateMultipass(attachments []RDAttachmentFormat, passes []RDFramebufferPass, view_count int32) int32
@@ -17268,6 +18920,8 @@ type RenderingDevice interface {
 	FramebufferIsValid(framebuffer RID) bool
 
 	SamplerCreate(state RDSamplerState) RID
+
+	SamplerIsFormatSupportedForFilter(format RenderingDeviceDataFormat, sampler_filter RenderingDeviceSamplerFilter) bool
 
 	VertexBufferCreate(size_bytes int32, data PackedByteArray, use_as_storage bool) RID
 
@@ -17311,7 +18965,7 @@ type RenderingDevice interface {
 
 	ComputePipelineCreate(shader RID, specialization_constants []RDPipelineSpecializationConstant) RID
 
-	ComputePipelineIsValid(compute_pieline RID) bool
+	ComputePipelineIsValid(compute_pipeline RID) bool
 
 	ScreenGetWidth(screen int32) int32
 
@@ -17321,7 +18975,7 @@ type RenderingDevice interface {
 
 	DrawListBeginForScreen(screen int32, clear_color Color) int32
 
-	DrawListBegin(framebuffer RID, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float32, clear_stencil int32, region Rect2, storage_textures Array) int32
+	DrawListBegin(framebuffer RID, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float32, clear_stencil int32, region Rect2, storage_textures []RID) int32
 
 	DrawListBeginSplit(framebuffer RID, splits int32, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float32, clear_stencil int32, region Rect2, storage_textures []RID) PackedInt64Array
 
@@ -17449,6 +19103,8 @@ type RenderingServer interface {
 	TextureSetForceRedrawIfVisible(texture RID, enable bool)
 
 	TextureGetRdTexture(texture RID, srgb bool) RID
+
+	TextureGetNativeHandle(texture RID, srgb bool) int32
 
 	ShaderCreate() RID
 
@@ -17802,7 +19458,7 @@ type RenderingServer interface {
 
 	ParticlesCollisionSetBoxExtents(particles_collision RID, extents Vector3)
 
-	ParticlesCollisionSetAttractorStrength(particles_collision RID, setrngth float32)
+	ParticlesCollisionSetAttractorStrength(particles_collision RID, strength float32)
 
 	ParticlesCollisionSetAttractorDirectionality(particles_collision RID, amount float32)
 
@@ -17877,6 +19533,8 @@ type RenderingServer interface {
 	ViewportSetUpdateMode(viewport RID, update_mode RenderingServerViewportUpdateMode)
 
 	ViewportSetClearMode(viewport RID, clear_mode RenderingServerViewportClearMode)
+
+	ViewportGetRenderTarget(viewport RID) RID
 
 	ViewportGetTexture(viewport RID) RID
 
@@ -18150,6 +19808,8 @@ type RenderingServer interface {
 
 	CanvasItemAddPolyline(item RID, points PackedVector2Array, colors PackedColorArray, width float32, antialiased bool)
 
+	CanvasItemAddMultiline(item RID, points PackedVector2Array, colors PackedColorArray, width float32)
+
 	CanvasItemAddRect(item RID, rect Rect2, color Color)
 
 	CanvasItemAddCircle(item RID, pos Vector2, radius float32, color Color)
@@ -18268,7 +19928,7 @@ type RenderingServer interface {
 
 	GlobalShaderParameterRemove(name StringName)
 
-	GlobalShaderParameterGetList() PackedStringArray
+	GlobalShaderParameterGetList() []StringName
 
 	GlobalShaderParameterSet(name StringName, value Variant)
 
@@ -18538,11 +20198,11 @@ type RichTextLabel interface {
 
 	PushOutlineColor(color Color)
 
-	PushParagraph(alignment HorizontalAlignment, base_direction ControlTextDirection, language String, st_parser TextServerStructuredTextParser)
+	PushParagraph(alignment HorizontalAlignment, base_direction ControlTextDirection, language String, st_parser TextServerStructuredTextParser, justification_flags TextServerJustificationFlag, tab_stops PackedFloat32Array)
 
 	PushIndent(level int32)
 
-	PushList(level int32, typeName RichTextLabelListType, capitalize bool)
+	PushList(level int32, typeName RichTextLabelListType, capitalize bool, bullet String)
 
 	PushMeta(data Variant)
 
@@ -19029,6 +20689,14 @@ type SceneMultiplayer interface {
 	IsServerRelayEnabled() bool
 
 	SendBytes(bytes PackedByteArray, id int32, mode MultiplayerPeerTransferMode, channel int32) Error
+
+	GetMaxSyncPacketSize() int32
+
+	SetMaxSyncPacketSize(size int32)
+
+	GetMaxDeltaPacketSize() int32
+
+	SetMaxDeltaPacketSize(size int32)
 }
 type SceneReplicationConfig interface {
 	Resource
@@ -19050,6 +20718,10 @@ type SceneReplicationConfig interface {
 	PropertyGetSync(path NodePath) bool
 
 	PropertySetSync(path NodePath, enabled bool)
+
+	PropertyGetWatch(path NodePath) bool
+
+	PropertySetWatch(path NodePath, enabled bool)
 }
 type SceneState interface {
 	RefCounted
@@ -19225,6 +20897,32 @@ type ScriptCreateDialog interface {
 	ConfirmationDialog
 
 	Config(inherits String, path String, built_in_enabled bool, load_enabled bool)
+}
+type ScriptEditor interface {
+	PanelContainer
+
+	GetCurrentEditor() ScriptEditorBase
+
+	GetOpenScriptEditors() []ScriptEditorBase
+
+	RegisterSyntaxHighlighter(syntax_highlighter EditorSyntaxHighlighter)
+
+	UnregisterSyntaxHighlighter(syntax_highlighter EditorSyntaxHighlighter)
+
+	GotoLine(line_number int32)
+
+	GetCurrentScript() Script
+
+	GetOpenScripts() []Script
+
+	OpenScriptCreateDialog(base_name String, base_path String)
+}
+type ScriptEditorBase interface {
+	VBoxContainer
+
+	GetBaseEditor() Control
+
+	AddSyntaxHighlighter(highlighter EditorSyntaxHighlighter)
 }
 type ScriptExtension interface {
 	Script
@@ -19424,6 +21122,14 @@ type ScrollContainer interface {
 	SetVScroll(value int32)
 
 	GetVScroll() int32
+
+	SetHorizontalCustomStep(value float32)
+
+	GetHorizontalCustomStep() float32
+
+	SetVerticalCustomStep(value float32)
+
+	GetVerticalCustomStep() float32
 
 	SetHorizontalScrollMode(enable ScrollContainerScrollMode)
 
@@ -21115,7 +22821,7 @@ type SurfaceTool interface {
 
 	SetSmoothGroup(index int32)
 
-	AddTriangleFan(vertices PackedVector3Array, uvs PackedVector2Array, colors PackedColorArray, uv2s PackedVector2Array, normals PackedVector3Array, tangents Array)
+	AddTriangleFan(vertices PackedVector3Array, uvs PackedVector2Array, colors PackedColorArray, uv2s PackedVector2Array, normals PackedVector3Array, tangents []Plane)
 
 	AddIndex(index int32)
 
@@ -21274,6 +22980,10 @@ type TabBar interface {
 
 	GetTabIcon(tab_idx int32) Texture2D
 
+	SetTabIconMaxWidth(tab_idx int32, width int32)
+
+	GetTabIconMaxWidth(tab_idx int32) int32
+
 	SetTabButtonIcon(tab_idx int32, icon Texture2D)
 
 	GetTabButtonIcon(tab_idx int32) Texture2D
@@ -21285,6 +22995,10 @@ type TabBar interface {
 	SetTabHidden(tab_idx int32, hidden bool)
 
 	IsTabHidden(tab_idx int32) bool
+
+	SetTabMetadata(tab_idx int32, metadata Variant)
+
+	GetTabMetadata(tab_idx int32) Variant
 
 	RemoveTab(tab_idx int32)
 
@@ -21386,6 +23100,10 @@ type TabContainer interface {
 	SetTabHidden(tab_idx int32, hidden bool)
 
 	IsTabHidden(tab_idx int32) bool
+
+	SetTabMetadata(tab_idx int32, metadata Variant)
+
+	GetTabMetadata(tab_idx int32) Variant
 
 	SetTabButtonIcon(tab_idx int32, icon Texture2D)
 
@@ -21580,6 +23298,10 @@ type TextEdit interface {
 
 	GetCaretBlinkInterval() float32
 
+	SetDrawCaretWhenEditableDisabled(enable bool)
+
+	IsDrawingCaretWhenEditableDisabled() bool
+
 	SetMoveCaretOnRightClickEnabled(enable bool)
 
 	IsMoveCaretOnRightClickEnabled() bool
@@ -21671,6 +23393,10 @@ type TextEdit interface {
 	SetLineWrappingMode(mode TextEditLineWrappingMode)
 
 	GetLineWrappingMode() TextEditLineWrappingMode
+
+	SetAutowrapMode(autowrap_mode TextServerAutowrapMode)
+
+	GetAutowrapMode() TextServerAutowrapMode
 
 	IsLineWrapped(line int32) bool
 
@@ -21934,6 +23660,10 @@ type TextMesh interface {
 
 	GetAutowrapMode() TextServerAutowrapMode
 
+	SetJustificationFlags(justification_flags TextServerJustificationFlag)
+
+	GetJustificationFlags() TextServerJustificationFlag
+
 	SetDepth(depth float32)
 
 	GetDepth() float32
@@ -22130,6 +23860,8 @@ type TextServer interface {
 
 	FontGetName(font_rid RID) String
 
+	FontGetOtNameStrings(font_rid RID) Dictionary
+
 	FontSetStyleName(font_rid RID, name String)
 
 	FontGetStyleName(font_rid RID) String
@@ -22282,6 +24014,8 @@ type TextServer interface {
 
 	FontGetGlyphIndex(font_rid RID, size int32, char int32, variation_selector int32) int32
 
+	FontGetCharFromGlyphIndex(font_rid RID, size int32, glyph_index int32) int32
+
 	FontHasChar(font_rid RID, char int32) bool
 
 	FontGetSupportedChars(font_rid RID) String
@@ -22378,13 +24112,15 @@ type TextServer interface {
 
 	ShapedTextGetParent(shaped RID) RID
 
-	ShapedTextFitToWidth(shaped RID, width float32, jst_flags TextServerJustificationFlag) float32
+	ShapedTextFitToWidth(shaped RID, width float32, justification_flags TextServerJustificationFlag) float32
 
 	ShapedTextTabAlign(shaped RID, tab_stops PackedFloat32Array) float32
 
 	ShapedTextShape(shaped RID) bool
 
 	ShapedTextIsReady(shaped RID) bool
+
+	ShapedTextHasVisibleChars(shaped RID) bool
 
 	ShapedTextGetGlyphs(shaped RID) []Dictionary
 
@@ -22520,6 +24256,8 @@ type TextServerExtension interface {
 	// VIRTUAL: Internal_FontSetName(font_rid RID,name String,)
 
 	// VIRTUAL: Internal_FontGetName(font_rid RID,) String
+
+	// VIRTUAL: Internal_FontGetOtNameStrings(font_rid RID,) Dictionary
 
 	// VIRTUAL: Internal_FontSetStyleName(font_rid RID,name_style String,)
 
@@ -22673,6 +24411,8 @@ type TextServerExtension interface {
 
 	// VIRTUAL: Internal_FontGetGlyphIndex(font_rid RID,size int32,char int32,variation_selector int32,) int32
 
+	// VIRTUAL: Internal_FontGetCharFromGlyphIndex(font_rid RID,size int32,glyph_index int32,) int32
+
 	// VIRTUAL: Internal_FontHasChar(font_rid RID,char int32,) bool
 
 	// VIRTUAL: Internal_FontGetSupportedChars(font_rid RID,) String
@@ -22769,7 +24509,7 @@ type TextServerExtension interface {
 
 	// VIRTUAL: Internal_ShapedTextGetParent(shaped RID,) RID
 
-	// VIRTUAL: Internal_ShapedTextFitToWidth(shaped RID,width float32,jst_flags TextServerJustificationFlag,) float32
+	// VIRTUAL: Internal_ShapedTextFitToWidth(shaped RID,width float32,justification_flags TextServerJustificationFlag,) float32
 
 	// VIRTUAL: Internal_ShapedTextTabAlign(shaped RID,tab_stops PackedFloat32Array,) float32
 
@@ -23286,6 +25026,8 @@ type Thread interface {
 	IsAlive() bool
 
 	WaitToFinish() Variant
+
+	SetThreadSafetyChecksEnabled(enabled bool)
 }
 type TileData interface {
 	Object
@@ -23458,6 +25200,8 @@ type TileMap interface {
 	GetCellTileData(layer int32, coords Vector2i, use_proxies bool) TileData
 
 	GetCoordsForBodyRid(body RID) Vector2i
+
+	GetLayerForBodyRid(body RID) int32
 
 	GetPattern(layer int32, coords_array []Vector2i) TileMapPattern
 
@@ -24071,7 +25815,7 @@ type Tree interface {
 
 	GetEditedColumn() int32
 
-	EditSelected() bool
+	EditSelected(force_edit bool) bool
 
 	GetCustomPopupRect() Rect2
 
@@ -24094,6 +25838,10 @@ type Tree interface {
 	SetColumnTitle(column int32, title String)
 
 	GetColumnTitle(column int32) String
+
+	SetColumnTitleAlignment(column int32, title_alignment HorizontalAlignment)
+
+	GetColumnTitleAlignment(column int32) HorizontalAlignment
 
 	SetColumnTitleDirection(column int32, direction ControlTextDirection)
 
@@ -24134,6 +25882,10 @@ type Tree interface {
 	SetAllowReselect(allow bool)
 
 	GetAllowReselect() bool
+
+	SetAllowSearch(allow bool)
+
+	GetAllowSearch() bool
 }
 type TreeItem interface {
 	Object
@@ -24141,6 +25893,10 @@ type TreeItem interface {
 	SetCellMode(column int32, mode TreeItemTreeCellMode)
 
 	GetCellMode(column int32) TreeItemTreeCellMode
+
+	SetEditMultiline(column int32, multiline bool)
+
+	IsEditMultiline(column int32) bool
 
 	SetChecked(column int32, checked bool)
 
@@ -24159,6 +25915,10 @@ type TreeItem interface {
 	SetTextDirection(column int32, direction ControlTextDirection)
 
 	GetTextDirection(column int32) ControlTextDirection
+
+	SetAutowrapMode(column int32, autowrap_mode TextServerAutowrapMode)
+
+	GetAutowrapMode(column int32) TextServerAutowrapMode
 
 	SetStructuredTextBidiOverride(column int32, parser TextServerStructuredTextParser)
 
@@ -24302,6 +26062,10 @@ type TreeItem interface {
 
 	CreateChild(index int32) TreeItem
 
+	AddChild(child TreeItem)
+
+	RemoveChild(child TreeItem)
+
 	GetTree() Tree
 
 	GetNext() TreeItem
@@ -24311,6 +26075,10 @@ type TreeItem interface {
 	GetParent() TreeItem
 
 	GetFirstChild() TreeItem
+
+	GetNextInTree(wrap bool) TreeItem
+
+	GetPrevInTree(wrap bool) TreeItem
 
 	GetNextVisible(wrap bool) TreeItem
 
@@ -24327,8 +26095,6 @@ type TreeItem interface {
 	MoveBefore(item TreeItem)
 
 	MoveAfter(item TreeItem)
-
-	RemoveChild(child TreeItem)
 
 	CallRecursive(method StringName, varargs ...Variant)
 }
@@ -24406,6 +26172,8 @@ type Tween interface {
 	SetParallel(parallel bool) Tween
 
 	SetLoops(loops int32) Tween
+
+	GetLoopsLeft() int32
 
 	SetSpeedScale(speed float32) Tween
 
@@ -24518,7 +26286,7 @@ type UPNPDevice interface {
 type UndoRedo interface {
 	Object
 
-	CreateAction(name String, merge_mode UndoRedoMergeMode)
+	CreateAction(name String, merge_mode UndoRedoMergeMode, backward_undo_ops bool)
 
 	CommitAction(execute bool)
 
@@ -24843,6 +26611,8 @@ type Viewport interface {
 	GetMousePosition() Vector2
 
 	WarpMouse(position Vector2)
+
+	UpdateMouseCursorState()
 
 	GuiGetDragData() Variant
 
@@ -26091,7 +27861,7 @@ type WebRTCPeerConnectionExtension interface {
 
 	// VIRTUAL: Internal_Initialize(p_config Dictionary,) Error
 
-	// VIRTUAL: Internal_CreateDataChannel(p_label String,p_config Dictionary,) Object
+	// VIRTUAL: Internal_CreateDataChannel(p_label String,p_config Dictionary,) WebRTCDataChannel
 
 	// VIRTUAL: Internal_CreateOffer() Error
 
@@ -26227,6 +27997,12 @@ type WebXRInterface interface {
 	GetInputSourceTargetRayMode(input_source_id int32) WebXRInterfaceTargetRayMode
 
 	GetVisibilityState() String
+
+	GetDisplayRefreshRate() float32
+
+	SetDisplayRefreshRate(refresh_rate float32)
+
+	GetAvailableDisplayRefreshRates() Array
 }
 type Window interface {
 	Viewport
@@ -26234,6 +28010,8 @@ type Window interface {
 	SetTitle(title String)
 
 	GetTitle() String
+
+	GetWindowId() int32
 
 	SetInitialPosition(initial_position WindowWindowInitialPosition)
 
@@ -26294,6 +28072,8 @@ type Window interface {
 	SetExclusive(exclusive bool)
 
 	IsExclusive() bool
+
+	SetUnparentWhenInvisible(unparent bool)
 
 	CanDraw() bool
 
@@ -26431,11 +28211,21 @@ type Window interface {
 
 	PopupOnParent(parent_rect Rect2i)
 
-	PopupCenteredRatio(ratio float32)
-
 	PopupCentered(minsize Vector2i)
 
+	PopupCenteredRatio(ratio float32)
+
 	PopupCenteredClamped(minsize Vector2i, fallback_ratio float32)
+
+	PopupExclusive(from_node Node, rect Rect2i)
+
+	PopupExclusiveOnParent(from_node Node, parent_rect Rect2i)
+
+	PopupExclusiveCentered(from_node Node, minsize Vector2i)
+
+	PopupExclusiveCenteredRatio(from_node Node, ratio float32)
+
+	PopupExclusiveCenteredClamped(from_node Node, minsize Vector2i, fallback_ratio float32)
 }
 type WorkerThreadPool interface {
 	Object
@@ -26444,7 +28234,7 @@ type WorkerThreadPool interface {
 
 	IsTaskCompleted(task_id int32) bool
 
-	WaitForTaskCompletion(task_id int32)
+	WaitForTaskCompletion(task_id int32) Error
 
 	AddGroupTask(action Callable, elements int32, tasks_needed int32, high_priority bool, description String) int32
 
@@ -26523,6 +28313,10 @@ type X509Certificate interface {
 	Save(path String) Error
 
 	Load(path String) Error
+
+	SaveToString() String
+
+	LoadFromString(strValue String) Error
 }
 type XMLParser interface {
 	RefCounted
@@ -26601,6 +28395,8 @@ type XRInterface interface {
 
 	Uninitialize()
 
+	GetSystemInfo() Dictionary
+
 	GetTrackingStatus() XRInterfaceTrackingStatus
 
 	GetRenderTargetSize() Vector2
@@ -26651,6 +28447,8 @@ type XRInterfaceExtension interface {
 	// VIRTUAL: Internal_Initialize() bool
 
 	// VIRTUAL: Internal_Uninitialize()
+
+	// VIRTUAL: Internal_GetSystemInfo() Dictionary
 
 	// VIRTUAL: Internal_SupportsPlayAreaMode(mode XRInterfacePlayAreaMode,) bool
 
@@ -26812,6 +28610,10 @@ type XRServer interface {
 	GetWorldScale() float32
 
 	SetWorldScale(scale float32)
+
+	GetWorldOrigin() Transform3D
+
+	SetWorldOrigin(world_origin Transform3D)
 
 	GetReferenceFrame() Transform3D
 

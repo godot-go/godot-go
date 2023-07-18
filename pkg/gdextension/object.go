@@ -57,7 +57,7 @@ func NewObjectID() ObjectID {
 }
 
 func objectDBGetInstance(p_object_id GDObjectInstanceID) *Object {
-	obj := GDExtensionInterface_object_get_instance_from_id(internal.gdnInterface, (GDObjectInstanceID)((C.uint64_t)(p_object_id)))
+	obj := CallFunc_GDExtensionInterfaceObjectGetInstanceFromId((GDObjectInstanceID)((C.uint64_t)(p_object_id)))
 
 	if obj == nil {
 		return nil
@@ -70,10 +70,9 @@ func objectDBGetInstance(p_object_id GDObjectInstanceID) *Object {
 		return nil
 	}
 
-	binding := GDExtensionInterface_object_get_instance_binding(
-		internal.gdnInterface,
+	binding := CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
 		obj,
-		internal.token,
+		FFI.Token,
 		&cbs,
 	)
 

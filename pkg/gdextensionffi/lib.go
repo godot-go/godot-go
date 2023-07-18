@@ -56,11 +56,11 @@ func NewGDExtensionPropertyInfo(
 	})
 }
 
-func (p *GDExtensionPropertyInfo) Destroy(gdnInterface *GDExtensionInterface) {
+func (p *GDExtensionPropertyInfo) Destroy() {
 	cp := (*C.GDExtensionPropertyInfo)(p)
 
-	stringNameDestructor := (GDExtensionPtrDestructor)(GDExtensionInterface_variant_get_ptr_destructor(gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME))
-	stringDestructor := (GDExtensionPtrDestructor)(GDExtensionInterface_variant_get_ptr_destructor(gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING))
+	stringNameDestructor := (GDExtensionPtrDestructor)(CallFunc_GDExtensionInterfaceVariantGetPtrDestructor(GDEXTENSION_VARIANT_TYPE_STRING_NAME))
+	stringDestructor := (GDExtensionPtrDestructor)(CallFunc_GDExtensionInterfaceVariantGetPtrDestructor(GDEXTENSION_VARIANT_TYPE_STRING))
 
 	if cp.name != nil {
 		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(unsafe.Pointer(cp.name)))
@@ -117,26 +117,23 @@ func NewGDExtensionClassMethodInfo(
 	})
 }
 
-func (m *GDExtensionClassMethodInfo) Destroy(gdnInterface *GDExtensionInterface) {
-
-	stringNameDestructor := (GDExtensionPtrDestructor)(GDExtensionInterface_variant_get_ptr_destructor(gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME))
+func (m *GDExtensionClassMethodInfo) Destroy() {
+	stringNameDestructor := (GDExtensionPtrDestructor)(CallFunc_GDExtensionInterfaceVariantGetPtrDestructor(GDEXTENSION_VARIANT_TYPE_STRING_NAME))
 
 	CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(m.name))
 
 	cm := (*C.GDExtensionClassMethodInfo)(m)
 
 	if cm != nil {
-		stringNameDestructor := (GDExtensionPtrDestructor)(GDExtensionInterface_variant_get_ptr_destructor(gdnInterface, GDEXTENSION_VARIANT_TYPE_STRING_NAME))
-
 		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(unsafe.Pointer(cm.name)))
 	}
 
 	if cm.return_value_info != nil {
-		(*GDExtensionPropertyInfo)(cm.return_value_info).Destroy(gdnInterface)
+		(*GDExtensionPropertyInfo)(cm.return_value_info).Destroy()
 	}
 
 	if cm.argument_count > 0 && cm.arguments_info != nil {
-		(*GDExtensionPropertyInfo)(cm.arguments_info).Destroy(gdnInterface)
+		(*GDExtensionPropertyInfo)(cm.arguments_info).Destroy()
 	}
 }
 

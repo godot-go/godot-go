@@ -36,8 +36,7 @@ func (w *WrappedImpl) CastTo(className string) Wrapped {
 	cn := NewStringNameWithLatin1Chars(className)
 	defer cn.Destroy()
 
-	tag := GDExtensionInterface_classdb_get_class_tag(
-		internal.gdnInterface,
+	tag := CallFunc_GDExtensionInterfaceClassdbGetClassTag(
 		cn.AsGDExtensionStringNamePtr(),
 	)
 
@@ -45,8 +44,7 @@ func (w *WrappedImpl) CastTo(className string) Wrapped {
 		log.Panic("classTag unexpectedly came back nil", zap.String("type", className))
 	}
 
-	casted := GDExtensionInterface_object_cast_to(
-		internal.gdnInterface,
+	casted := CallFunc_GDExtensionInterfaceObjectCastTo(
 		(GDExtensionConstObjectPtr)(owner),
 		tag,
 	)
@@ -62,10 +60,9 @@ func (w *WrappedImpl) CastTo(className string) Wrapped {
 		return nil
 	}
 
-	ret := GDExtensionInterface_object_get_instance_binding(
-		internal.gdnInterface,
+	ret := CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
 		casted,
-		internal.token,
+		FFI.Token,
 		&cbs)
 
 	return *(*Wrapped)(ret)

@@ -17,7 +17,7 @@ import (
 
 // AllocCopy returns a duplicated data allocated in C memory.
 func AllocCopy(src unsafe.Pointer, bytes int) unsafe.Pointer {
-	m := GDExtensionInterface_mem_alloc(internal.gdnInterface, uint64(bytes))
+	m := CallFunc_GDExtensionInterfaceMemAlloc(uint64(bytes))
 
 	C.memcpy(m, src, C.size_t(bytes))
 
@@ -26,7 +26,7 @@ func AllocCopy(src unsafe.Pointer, bytes int) unsafe.Pointer {
 
 // AllocZeros returns zeroed out bytes allocated in C memory.
 func AllocZeros(bytes int) unsafe.Pointer {
-	m := GDExtensionInterface_mem_alloc(internal.gdnInterface, uint64(bytes))
+	m := CallFunc_GDExtensionInterfaceMemAlloc(uint64(bytes))
 
 	C.memset(m, 0, C.size_t(bytes))
 
@@ -55,17 +55,17 @@ func SliceHeaderDataPtr[A any, R any](args []*A) *R {
 
 // Alloc returns allocated memory in C memory.
 func Alloc(bytes int) unsafe.Pointer {
-	return GDExtensionInterface_mem_alloc(internal.gdnInterface, uint64(bytes))
+	return CallFunc_GDExtensionInterfaceMemAlloc(uint64(bytes))
 }
 
 // Realloc returns allocated memory in C memory.
 func Realloc(ptr unsafe.Pointer, bytes int) unsafe.Pointer {
-	return GDExtensionInterface_mem_realloc(internal.gdnInterface, ptr, uint64(bytes))
+	return CallFunc_GDExtensionInterfaceMemRealloc(ptr, uint64(bytes))
 }
 
 // Free frees allocated memory.
 func Free(ptr unsafe.Pointer) {
-	GDExtensionInterface_mem_free(internal.gdnInterface, ptr)
+	CallFunc_GDExtensionInterfaceMemFree(ptr)
 }
 
 func allocCopyVariantPtrSliceToUnsafePointerArray(ptrs []*Variant) unsafe.Pointer {

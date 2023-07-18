@@ -19,3 +19,4 @@ test/libs/
 tmp/
 test/demo/lib
 main
+_debug_parsed_ast.json

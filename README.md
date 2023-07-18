@@ -2,7 +2,7 @@
 
 ---
 
-# godot-go: Go bindings for Godot 4
+# godot-go: Go bindings for Godot 4.1
 
 [Go](https://golang.org/) bindings for the [Godot Game Engine](https://github.com/godotengine/godot) cross-platform game engine. godot-go integrates into Godot through the Godot GDExtension API through cgo.
 
@@ -24,7 +24,7 @@ TODO
 
 ### Building Godot-Go
 
-In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of Godot 4 stable [snapshot](https://downloads.tuxfamily.org/godotengine/4.0).
+In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of [Godot 4.1 stable](https://downloads.tuxfamily.org/godotengine/4.1/). There are breaking changes from the Godot 4.0 GDExtension interface. Please make sure to run godot-go against Godot 4.1+.
 
 
     # exports the latest gdextension_interface.h and extension_api.json from the godot binary

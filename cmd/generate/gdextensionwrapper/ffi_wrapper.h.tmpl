@@ -15,10 +15,10 @@
 
 // section: functions
 {{ range $i, $f := $view.CollectFunctions -}}
-	{{ $f.ReturnType.String }} cgo_callfn_{{ $f.Name }}(
+	{{ $f.ReturnType.CStyleString }} cgo_callfn_{{ $f.Name }}(
 		{{- "const" }} {{ $f.Name }} fn
 		{{- range $j, $arg := $f.Arguments -}}
-			, {{ $arg.Type.String }} {{ if $arg.Name }}{{ $arg.Name }}{{ else }}arg_{{ $j }}{{ end }}
+			, {{ $arg.CStyleString $j }}
 		{{- end -}}
 	);
 {{ end -}}
@@ -30,10 +30,10 @@
 	{{- if gt (len $fns) 0 -}}
 		/* struct ({{ $i }}) {{ $t.Name }} */
 		{{ range $j, $f := $fns -}}
-			{{ $f.ReturnType.String }} cgo_callfn_{{ $t.Name }}_{{ $f.Name }}(
+			{{ $f.ReturnType.CStyleString }} cgo_callfn_{{ $t.Name }}_{{ $f.Name }}(
 				{{- "const" }} {{ $t.Name }} * p_struct
 				{{- range $j, $arg := $f.Arguments -}}
-					, {{ $arg.Type.String }} {{ $arg.Name }}
+					, {{ $arg.Type.CStyleString }} {{ $arg.Name }}
 				{{- end -}}
 			);
 		{{ end -}}

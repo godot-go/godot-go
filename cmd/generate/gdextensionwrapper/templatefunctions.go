@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/godot-go/godot-go/cmd/gdextensionparser/clang"
+	"github.com/iancoleman/strcase"
 )
 
 func add(a int, b int) int {
@@ -22,19 +23,16 @@ func goArgumentType(t clang.PrimativeType, name string) string {
 		if t.IsPointer {
 			return "unsafe.Pointer"
 		}
-
 		return ""
 	case "float", "real_t":
 		if t.IsPointer {
-			panic(fmt.Sprintf("unhandled type: %s", t.String()))
+			panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))
 		}
-
 		return "float32"
 	case "size_t":
 		if t.IsPointer {
-			panic(fmt.Sprintf("unhandled type: %s", t.String()))
+			panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))
 		}
-
 		return "uint64"
 	case "char":
 		if t.IsPointer {
@@ -44,56 +42,52 @@ func goArgumentType(t clang.PrimativeType, name string) string {
 				return "string"
 			}
 		}
-
-		panic(fmt.Sprintf("unhandled type: %s", t.String()))
+		panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))
 	case "int32_t":
 		if t.IsPointer {
-			panic(fmt.Sprintf("unhandled type: %s", t.String()))
+			panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))
 		}
-
 		return "int32"
 	case "char16_t":
 		if t.IsPointer {
 			return "*Char16T"
 		}
-
-		panic(fmt.Sprintf("unhandled type: %s", t.String()))
+		panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))
 	case "char32_t":
 		if t.IsPointer {
 			return "*Char32T"
 		}
-
 		return "Char32T"
 	case "wchar_t":
 		if t.IsPointer {
 			return "*WcharT"
-		} else {
-			panic(fmt.Sprintf("unhandled type: %s", t.String()))
 		}
+		panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))
 	case "uint8_t":
 		if t.IsPointer {
 			return "*Uint8T"
 		}
-
 		return "Uint8T"
+	case "int":
+		if t.IsPointer {
+			return "*int32"
+		}
+		return "int32"
 	case "uint32_t":
 		if t.IsPointer {
 			return "*Uint32T"
 		}
-
 		return "Uint32T"
 	case "uint64_t":
 		if t.IsPointer {
 			return "*Uint64T"
 		}
-
 		return "Uint64T"
 	default:
 		if t.IsPointer {
 			return fmt.Sprintf("*%s", n)
-		} else {
-			return n
 		}
+		return n
 	}
 }
 
@@ -182,36 +176,44 @@ func goEnumValue(v clang.EnumValue, index int) string {
 	}
 }
 
-func cgoCastArgument(a clang.Argument) string {
+func cgoCastArgument(a clang.Argument, defaultName string) string {
 	if a.Type.Primative != nil {
 		t := a.Type.Primative
 
 		n := strings.TrimSpace(t.Name)
+
+		var goVarName string
+
+		if a.Name != "" {
+			goVarName = a.Name
+		} else {
+			goVarName = defaultName
+		}
 
 		hasReturnPrefix := strings.HasPrefix(a.Name, "r_")
 
 		switch n {
 		case "void":
 			if t.IsPointer {
-				return fmt.Sprintf("unsafe.Pointer(%s)", a.Name)
+				return fmt.Sprintf("unsafe.Pointer(%s)", goVarName)
 			} else {
-				panic(fmt.Sprintf("unhandled type: %s", t.String()))
+				panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))
 			}
 		case "char":
 			if t.IsPointer {
 				if hasReturnPrefix {
-					return fmt.Sprintf("(*C.char)(%s)", a.Name)
+					return fmt.Sprintf("(*C.char)(%s)", goVarName)
 				} else {
-					return fmt.Sprintf("C.CString(%s)", a.Name)
+					return fmt.Sprintf("C.CString(%s)", goVarName)
 				}
 			} else {
-				panic(fmt.Sprintf("unhandled type: %s", t.String()))
+				panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))
 			}
 		default:
 			if t.IsPointer {
-				return fmt.Sprintf("(*C.%s)(%s)", n, a.Name)
+				return fmt.Sprintf("(*C.%s)(%s)", n, goVarName)
 			} else {
-				return fmt.Sprintf("(C.%s)(%s)", n, a.Name)
+				return fmt.Sprintf("(C.%s)(%s)", n, goVarName)
 			}
 		}
 	} else if a.Type.Function != nil {
@@ -237,7 +239,7 @@ func cgoCleanUpArgument(a clang.Argument, index int) string {
 				return ""
 
 			} else {
-				panic(fmt.Sprintf("unhandled type: %s", t.String()))
+				panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))
 			}
 		default:
 			return ""
@@ -258,6 +260,12 @@ func cgoCastReturnType(t clang.PrimativeType, argName string) string {
 			return fmt.Sprintf("(*int32)(%s)", argName)
 		} else {
 			return fmt.Sprintf("int32(%s)", argName)
+		}
+	case "uint32_t":
+		if t.IsPointer {
+			return fmt.Sprintf("(*uint32)(%s)", argName)
+		} else {
+			return fmt.Sprintf("uint32(%s)", argName)
 		}
 	case "int64_t":
 		if t.IsPointer {
@@ -281,19 +289,19 @@ func cgoCastReturnType(t clang.PrimativeType, argName string) string {
 		if t.IsPointer {
 			return fmt.Sprintf("(*Char16T)(%s)", argName)
 		} else {
-			panic(fmt.Sprintf("unhandled type: %s, %v", t.String(), t))
+			panic(fmt.Sprintf("unhandled type: %s, %v", t.CStyleString(), t))
 		}
 	case "char32_t":
 		if t.IsPointer {
 			return fmt.Sprintf("(*Char32T)(%s)", argName)
 		} else {
-			panic(fmt.Sprintf("unhandled type: %s, %v", t.String(), t))
+			panic(fmt.Sprintf("unhandled type: %s, %v", t.CStyleString(), t))
 		}
 	case "void":
 		if t.IsPointer {
 			return fmt.Sprintf("unsafe.Pointer(%s)", argName)
 		} else {
-			panic(fmt.Sprintf("unhandled type: %s", t.String()))
+			panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))
 		}
 	case "float", "real_t":
 		if t.IsPointer {
@@ -314,4 +322,24 @@ func cgoCastReturnType(t clang.PrimativeType, argName string) string {
 			return fmt.Sprintf("(%s)(%s)", n, argName)
 		}
 	}
+}
+
+func gdiVariableName(typeName string) string {
+	ret := strcase.ToSnake(typeName)
+	ret = strings.Replace(ret, "gd_extension_interface_", "", 1)
+	ret = strings.Replace(ret, "_latin_1_", "_latin1_", 1)
+	ret = strings.Replace(ret, "_utf_8_", "_utf8_", 1)
+	ret = strings.Replace(ret, "_utf_16_", "_utf16_", 1)
+	ret = strings.Replace(ret, "_utf_32_", "_utf32_", 1)
+	ret = strings.Replace(ret, "_c_32_str", "_c32str", 1)
+	ret = strings.Replace(ret, "_float_32_", "_float32_", 1)
+	ret = strings.Replace(ret, "_float_64_", "_float64_", 1)
+	ret = strings.Replace(ret, "_int_16_", "_int16_", 1)
+	ret = strings.Replace(ret, "_int_32_", "_int32_", 1)
+	ret = strings.Replace(ret, "_int_64_", "_int64_", 1)
+	ret = strings.Replace(ret, "_vector_2_", "_vector2_", 1)
+	ret = strings.Replace(ret, "_vector_3_", "_vector3_", 1)
+	ret = strcase.ToCamel(ret)
+	ret = strings.Replace(ret, "C32Str", "C32str", 1)
+	return ret
 }

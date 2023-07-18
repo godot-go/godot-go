@@ -178,6 +178,12 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AnimationNodeStateMachineTransition),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AnimationNodeStateMachineTransition),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AnimationNodeSub2",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AnimationNodeSub2),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AnimationNodeSub2),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AnimationNodeSub2),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AnimationNodeSync",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AnimationNodeSync),
@@ -213,12 +219,6 @@ func init() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AnimationRootNode),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AnimationRootNode),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AnimationRootNode),
-		))
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AnimationTrackEditPlugin",
-		NewGDExtensionInstanceBindingCallbacks(
-			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AnimationTrackEditPlugin),
-			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AnimationTrackEditPlugin),
-			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AnimationTrackEditPlugin),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AnimationTree",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -1138,6 +1138,282 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ENetPacketPeer),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ENetPacketPeer),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorCommandPalette",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorCommandPalette),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorCommandPalette),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorCommandPalette),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorDebuggerPlugin",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorDebuggerPlugin),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorDebuggerPlugin),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorDebuggerPlugin),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorDebuggerSession",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorDebuggerSession),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorDebuggerSession),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorDebuggerSession),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorExportPlatform",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorExportPlatform),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorExportPlatform),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorExportPlatform),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorExportPlatformAndroid",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorExportPlatformAndroid),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorExportPlatformAndroid),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorExportPlatformAndroid),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorExportPlatformIOS",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorExportPlatformIOS),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorExportPlatformIOS),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorExportPlatformIOS),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorExportPlatformLinuxBSD",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorExportPlatformLinuxBSD),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorExportPlatformLinuxBSD),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorExportPlatformLinuxBSD),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorExportPlatformMacOS",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorExportPlatformMacOS),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorExportPlatformMacOS),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorExportPlatformMacOS),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorExportPlatformPC",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorExportPlatformPC),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorExportPlatformPC),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorExportPlatformPC),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorExportPlatformWeb",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorExportPlatformWeb),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorExportPlatformWeb),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorExportPlatformWeb),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorExportPlatformWindows",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorExportPlatformWindows),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorExportPlatformWindows),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorExportPlatformWindows),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorExportPlugin",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorExportPlugin),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorExportPlugin),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorExportPlugin),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorFeatureProfile",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorFeatureProfile),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorFeatureProfile),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorFeatureProfile),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorFileDialog",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorFileDialog),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorFileDialog),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorFileDialog),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorFileSystem",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorFileSystem),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorFileSystem),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorFileSystem),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorFileSystemDirectory",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorFileSystemDirectory),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorFileSystemDirectory),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorFileSystemDirectory),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorFileSystemImportFormatSupportQuery",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorFileSystemImportFormatSupportQuery),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorFileSystemImportFormatSupportQuery),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorFileSystemImportFormatSupportQuery),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorImportPlugin",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorImportPlugin),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorImportPlugin),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorImportPlugin),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorInspector",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorInspector),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorInspector),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorInspector),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorInspectorPlugin",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorInspectorPlugin),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorInspectorPlugin),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorInspectorPlugin),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorInterface",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorInterface),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorInterface),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorInterface),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorNode3DGizmo",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorNode3DGizmo),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorNode3DGizmo),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorNode3DGizmo),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorNode3DGizmoPlugin",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorNode3DGizmoPlugin),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorNode3DGizmoPlugin),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorNode3DGizmoPlugin),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorPaths",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorPaths),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorPaths),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorPaths),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorPlugin",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorPlugin),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorPlugin),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorPlugin),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorProperty",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorProperty),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorProperty),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorProperty),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorResourceConversionPlugin",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorResourceConversionPlugin),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorResourceConversionPlugin),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorResourceConversionPlugin),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorResourcePicker",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorResourcePicker),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorResourcePicker),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorResourcePicker),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorResourcePreview",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorResourcePreview),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorResourcePreview),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorResourcePreview),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorResourcePreviewGenerator",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorResourcePreviewGenerator),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorResourcePreviewGenerator),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorResourcePreviewGenerator),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorResourceTooltipPlugin",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorResourceTooltipPlugin),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorResourceTooltipPlugin),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorResourceTooltipPlugin),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorSceneFormatImporter",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorSceneFormatImporter),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorSceneFormatImporter),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorSceneFormatImporter),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorSceneFormatImporterBlend",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorSceneFormatImporterBlend),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorSceneFormatImporterBlend),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorSceneFormatImporterBlend),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorSceneFormatImporterFBX",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorSceneFormatImporterFBX),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorSceneFormatImporterFBX),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorSceneFormatImporterFBX),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorSceneFormatImporterGLTF",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorSceneFormatImporterGLTF),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorSceneFormatImporterGLTF),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorSceneFormatImporterGLTF),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorScenePostImport",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorScenePostImport),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorScenePostImport),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorScenePostImport),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorScenePostImportPlugin",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorScenePostImportPlugin),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorScenePostImportPlugin),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorScenePostImportPlugin),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorScript",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorScript),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorScript),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorScript),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorScriptPicker",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorScriptPicker),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorScriptPicker),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorScriptPicker),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorSelection",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorSelection),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorSelection),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorSelection),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorSettings",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorSettings),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorSettings),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorSettings),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorSpinSlider",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorSpinSlider),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorSpinSlider),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorSpinSlider),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorSyntaxHighlighter",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorSyntaxHighlighter),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorSyntaxHighlighter),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorSyntaxHighlighter),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorTranslationParserPlugin",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorTranslationParserPlugin),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorTranslationParserPlugin),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorTranslationParserPlugin),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorUndoRedoManager",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorUndoRedoManager),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorUndoRedoManager),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorUndoRedoManager),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorVCSInterface",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorVCSInterface),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorVCSInterface),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorVCSInterface),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EncodedObjectAsID",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EncodedObjectAsID),
@@ -1258,6 +1534,12 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GDScript),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GDScript),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GDScriptEditorTranslationParserPlugin",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GDScriptEditorTranslationParserPlugin),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GDScriptEditorTranslationParserPlugin),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GDScriptEditorTranslationParserPlugin),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GDScriptNativeClass",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GDScriptNativeClass),
@@ -1306,6 +1588,18 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GLTFDocumentExtensionConvertImporterMesh),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GLTFDocumentExtensionConvertImporterMesh),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GLTFDocumentExtensionPhysics",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GLTFDocumentExtensionPhysics),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GLTFDocumentExtensionPhysics),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GLTFDocumentExtensionPhysics),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GLTFDocumentExtensionTextureWebP",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GLTFDocumentExtensionTextureWebP),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GLTFDocumentExtensionTextureWebP),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GLTFDocumentExtensionTextureWebP),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GLTFLight",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GLTFLight),
@@ -1323,6 +1617,18 @@ func init() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GLTFNode),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GLTFNode),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GLTFNode),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GLTFPhysicsBody",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GLTFPhysicsBody),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GLTFPhysicsBody),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GLTFPhysicsBody),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GLTFPhysicsShape",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GLTFPhysicsShape),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GLTFPhysicsShape),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GLTFPhysicsShape),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GLTFSkeleton",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -1984,6 +2290,12 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_Mesh),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_Mesh),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("MeshConvexDecompositionSettings",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_MeshConvexDecompositionSettings),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_MeshConvexDecompositionSettings),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_MeshConvexDecompositionSettings),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("MeshDataTool",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_MeshDataTool),
@@ -2152,6 +2464,12 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_NavigationMeshGenerator),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_NavigationMeshGenerator),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("NavigationMeshSourceGeometryData3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_NavigationMeshSourceGeometryData3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_NavigationMeshSourceGeometryData3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_NavigationMeshSourceGeometryData3D),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("NavigationObstacle2D",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_NavigationObstacle2D),
@@ -2259,6 +2577,12 @@ func init() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_NoiseTexture2D),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_NoiseTexture2D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_NoiseTexture2D),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("NoiseTexture3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_NoiseTexture3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_NoiseTexture3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_NoiseTexture3D),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ORMMaterial3D",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -3159,6 +3483,18 @@ func init() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ScriptCreateDialog),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ScriptCreateDialog),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ScriptCreateDialog),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ScriptEditor",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ScriptEditor),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ScriptEditor),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ScriptEditor),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ScriptEditorBase",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ScriptEditorBase),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ScriptEditorBase),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ScriptEditorBase),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ScriptExtension",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -4837,13 +5173,13 @@ func init() {
 	gdNativeConstructors.Set("AnimationNodeStateMachine", NewGDExtensionClassFromAnimationNodeStateMachineOwner)
 	gdNativeConstructors.Set("AnimationNodeStateMachinePlayback", NewGDExtensionClassFromAnimationNodeStateMachinePlaybackOwner)
 	gdNativeConstructors.Set("AnimationNodeStateMachineTransition", NewGDExtensionClassFromAnimationNodeStateMachineTransitionOwner)
+	gdNativeConstructors.Set("AnimationNodeSub2", NewGDExtensionClassFromAnimationNodeSub2Owner)
 	gdNativeConstructors.Set("AnimationNodeSync", NewGDExtensionClassFromAnimationNodeSyncOwner)
 	gdNativeConstructors.Set("AnimationNodeTimeScale", NewGDExtensionClassFromAnimationNodeTimeScaleOwner)
 	gdNativeConstructors.Set("AnimationNodeTimeSeek", NewGDExtensionClassFromAnimationNodeTimeSeekOwner)
 	gdNativeConstructors.Set("AnimationNodeTransition", NewGDExtensionClassFromAnimationNodeTransitionOwner)
 	gdNativeConstructors.Set("AnimationPlayer", NewGDExtensionClassFromAnimationPlayerOwner)
 	gdNativeConstructors.Set("AnimationRootNode", NewGDExtensionClassFromAnimationRootNodeOwner)
-	gdNativeConstructors.Set("AnimationTrackEditPlugin", NewGDExtensionClassFromAnimationTrackEditPluginOwner)
 	gdNativeConstructors.Set("AnimationTree", NewGDExtensionClassFromAnimationTreeOwner)
 	gdNativeConstructors.Set("Area2D", NewGDExtensionClassFromArea2DOwner)
 	gdNativeConstructors.Set("Area3D", NewGDExtensionClassFromArea3DOwner)
@@ -4997,6 +5333,52 @@ func init() {
 	gdNativeConstructors.Set("ENetConnection", NewGDExtensionClassFromENetConnectionOwner)
 	gdNativeConstructors.Set("ENetMultiplayerPeer", NewGDExtensionClassFromENetMultiplayerPeerOwner)
 	gdNativeConstructors.Set("ENetPacketPeer", NewGDExtensionClassFromENetPacketPeerOwner)
+	gdNativeConstructors.Set("EditorCommandPalette", NewGDExtensionClassFromEditorCommandPaletteOwner)
+	gdNativeConstructors.Set("EditorDebuggerPlugin", NewGDExtensionClassFromEditorDebuggerPluginOwner)
+	gdNativeConstructors.Set("EditorDebuggerSession", NewGDExtensionClassFromEditorDebuggerSessionOwner)
+	gdNativeConstructors.Set("EditorExportPlatform", NewGDExtensionClassFromEditorExportPlatformOwner)
+	gdNativeConstructors.Set("EditorExportPlatformAndroid", NewGDExtensionClassFromEditorExportPlatformAndroidOwner)
+	gdNativeConstructors.Set("EditorExportPlatformIOS", NewGDExtensionClassFromEditorExportPlatformIOSOwner)
+	gdNativeConstructors.Set("EditorExportPlatformLinuxBSD", NewGDExtensionClassFromEditorExportPlatformLinuxBSDOwner)
+	gdNativeConstructors.Set("EditorExportPlatformMacOS", NewGDExtensionClassFromEditorExportPlatformMacOSOwner)
+	gdNativeConstructors.Set("EditorExportPlatformPC", NewGDExtensionClassFromEditorExportPlatformPCOwner)
+	gdNativeConstructors.Set("EditorExportPlatformWeb", NewGDExtensionClassFromEditorExportPlatformWebOwner)
+	gdNativeConstructors.Set("EditorExportPlatformWindows", NewGDExtensionClassFromEditorExportPlatformWindowsOwner)
+	gdNativeConstructors.Set("EditorExportPlugin", NewGDExtensionClassFromEditorExportPluginOwner)
+	gdNativeConstructors.Set("EditorFeatureProfile", NewGDExtensionClassFromEditorFeatureProfileOwner)
+	gdNativeConstructors.Set("EditorFileDialog", NewGDExtensionClassFromEditorFileDialogOwner)
+	gdNativeConstructors.Set("EditorFileSystem", NewGDExtensionClassFromEditorFileSystemOwner)
+	gdNativeConstructors.Set("EditorFileSystemDirectory", NewGDExtensionClassFromEditorFileSystemDirectoryOwner)
+	gdNativeConstructors.Set("EditorFileSystemImportFormatSupportQuery", NewGDExtensionClassFromEditorFileSystemImportFormatSupportQueryOwner)
+	gdNativeConstructors.Set("EditorImportPlugin", NewGDExtensionClassFromEditorImportPluginOwner)
+	gdNativeConstructors.Set("EditorInspector", NewGDExtensionClassFromEditorInspectorOwner)
+	gdNativeConstructors.Set("EditorInspectorPlugin", NewGDExtensionClassFromEditorInspectorPluginOwner)
+	gdNativeConstructors.Set("EditorInterface", NewGDExtensionClassFromEditorInterfaceOwner)
+	gdNativeConstructors.Set("EditorNode3DGizmo", NewGDExtensionClassFromEditorNode3DGizmoOwner)
+	gdNativeConstructors.Set("EditorNode3DGizmoPlugin", NewGDExtensionClassFromEditorNode3DGizmoPluginOwner)
+	gdNativeConstructors.Set("EditorPaths", NewGDExtensionClassFromEditorPathsOwner)
+	gdNativeConstructors.Set("EditorPlugin", NewGDExtensionClassFromEditorPluginOwner)
+	gdNativeConstructors.Set("EditorProperty", NewGDExtensionClassFromEditorPropertyOwner)
+	gdNativeConstructors.Set("EditorResourceConversionPlugin", NewGDExtensionClassFromEditorResourceConversionPluginOwner)
+	gdNativeConstructors.Set("EditorResourcePicker", NewGDExtensionClassFromEditorResourcePickerOwner)
+	gdNativeConstructors.Set("EditorResourcePreview", NewGDExtensionClassFromEditorResourcePreviewOwner)
+	gdNativeConstructors.Set("EditorResourcePreviewGenerator", NewGDExtensionClassFromEditorResourcePreviewGeneratorOwner)
+	gdNativeConstructors.Set("EditorResourceTooltipPlugin", NewGDExtensionClassFromEditorResourceTooltipPluginOwner)
+	gdNativeConstructors.Set("EditorSceneFormatImporter", NewGDExtensionClassFromEditorSceneFormatImporterOwner)
+	gdNativeConstructors.Set("EditorSceneFormatImporterBlend", NewGDExtensionClassFromEditorSceneFormatImporterBlendOwner)
+	gdNativeConstructors.Set("EditorSceneFormatImporterFBX", NewGDExtensionClassFromEditorSceneFormatImporterFBXOwner)
+	gdNativeConstructors.Set("EditorSceneFormatImporterGLTF", NewGDExtensionClassFromEditorSceneFormatImporterGLTFOwner)
+	gdNativeConstructors.Set("EditorScenePostImport", NewGDExtensionClassFromEditorScenePostImportOwner)
+	gdNativeConstructors.Set("EditorScenePostImportPlugin", NewGDExtensionClassFromEditorScenePostImportPluginOwner)
+	gdNativeConstructors.Set("EditorScript", NewGDExtensionClassFromEditorScriptOwner)
+	gdNativeConstructors.Set("EditorScriptPicker", NewGDExtensionClassFromEditorScriptPickerOwner)
+	gdNativeConstructors.Set("EditorSelection", NewGDExtensionClassFromEditorSelectionOwner)
+	gdNativeConstructors.Set("EditorSettings", NewGDExtensionClassFromEditorSettingsOwner)
+	gdNativeConstructors.Set("EditorSpinSlider", NewGDExtensionClassFromEditorSpinSliderOwner)
+	gdNativeConstructors.Set("EditorSyntaxHighlighter", NewGDExtensionClassFromEditorSyntaxHighlighterOwner)
+	gdNativeConstructors.Set("EditorTranslationParserPlugin", NewGDExtensionClassFromEditorTranslationParserPluginOwner)
+	gdNativeConstructors.Set("EditorUndoRedoManager", NewGDExtensionClassFromEditorUndoRedoManagerOwner)
+	gdNativeConstructors.Set("EditorVCSInterface", NewGDExtensionClassFromEditorVCSInterfaceOwner)
 	gdNativeConstructors.Set("EncodedObjectAsID", NewGDExtensionClassFromEncodedObjectAsIDOwner)
 	gdNativeConstructors.Set("Engine", NewGDExtensionClassFromEngineOwner)
 	gdNativeConstructors.Set("EngineDebugger", NewGDExtensionClassFromEngineDebuggerOwner)
@@ -5017,6 +5399,7 @@ func init() {
 	gdNativeConstructors.Set("GDExtension", NewGDExtensionClassFromGDExtensionOwner)
 	gdNativeConstructors.Set("GDExtensionManager", NewGDExtensionClassFromGDExtensionManagerOwner)
 	gdNativeConstructors.Set("GDScript", NewGDExtensionClassFromGDScriptOwner)
+	gdNativeConstructors.Set("GDScriptEditorTranslationParserPlugin", NewGDExtensionClassFromGDScriptEditorTranslationParserPluginOwner)
 	gdNativeConstructors.Set("GDScriptNativeClass", NewGDExtensionClassFromGDScriptNativeClassOwner)
 	gdNativeConstructors.Set("GLTFAccessor", NewGDExtensionClassFromGLTFAccessorOwner)
 	gdNativeConstructors.Set("GLTFAnimation", NewGDExtensionClassFromGLTFAnimationOwner)
@@ -5025,9 +5408,13 @@ func init() {
 	gdNativeConstructors.Set("GLTFDocument", NewGDExtensionClassFromGLTFDocumentOwner)
 	gdNativeConstructors.Set("GLTFDocumentExtension", NewGDExtensionClassFromGLTFDocumentExtensionOwner)
 	gdNativeConstructors.Set("GLTFDocumentExtensionConvertImporterMesh", NewGDExtensionClassFromGLTFDocumentExtensionConvertImporterMeshOwner)
+	gdNativeConstructors.Set("GLTFDocumentExtensionPhysics", NewGDExtensionClassFromGLTFDocumentExtensionPhysicsOwner)
+	gdNativeConstructors.Set("GLTFDocumentExtensionTextureWebP", NewGDExtensionClassFromGLTFDocumentExtensionTextureWebPOwner)
 	gdNativeConstructors.Set("GLTFLight", NewGDExtensionClassFromGLTFLightOwner)
 	gdNativeConstructors.Set("GLTFMesh", NewGDExtensionClassFromGLTFMeshOwner)
 	gdNativeConstructors.Set("GLTFNode", NewGDExtensionClassFromGLTFNodeOwner)
+	gdNativeConstructors.Set("GLTFPhysicsBody", NewGDExtensionClassFromGLTFPhysicsBodyOwner)
+	gdNativeConstructors.Set("GLTFPhysicsShape", NewGDExtensionClassFromGLTFPhysicsShapeOwner)
 	gdNativeConstructors.Set("GLTFSkeleton", NewGDExtensionClassFromGLTFSkeletonOwner)
 	gdNativeConstructors.Set("GLTFSkin", NewGDExtensionClassFromGLTFSkinOwner)
 	gdNativeConstructors.Set("GLTFSpecGloss", NewGDExtensionClassFromGLTFSpecGlossOwner)
@@ -5138,6 +5525,7 @@ func init() {
 	gdNativeConstructors.Set("MenuBar", NewGDExtensionClassFromMenuBarOwner)
 	gdNativeConstructors.Set("MenuButton", NewGDExtensionClassFromMenuButtonOwner)
 	gdNativeConstructors.Set("Mesh", NewGDExtensionClassFromMeshOwner)
+	gdNativeConstructors.Set("MeshConvexDecompositionSettings", NewGDExtensionClassFromMeshConvexDecompositionSettingsOwner)
 	gdNativeConstructors.Set("MeshDataTool", NewGDExtensionClassFromMeshDataToolOwner)
 	gdNativeConstructors.Set("MeshInstance2D", NewGDExtensionClassFromMeshInstance2DOwner)
 	gdNativeConstructors.Set("MeshInstance3D", NewGDExtensionClassFromMeshInstance3DOwner)
@@ -5166,6 +5554,7 @@ func init() {
 	gdNativeConstructors.Set("NavigationLink3D", NewGDExtensionClassFromNavigationLink3DOwner)
 	gdNativeConstructors.Set("NavigationMesh", NewGDExtensionClassFromNavigationMeshOwner)
 	gdNativeConstructors.Set("NavigationMeshGenerator", NewGDExtensionClassFromNavigationMeshGeneratorOwner)
+	gdNativeConstructors.Set("NavigationMeshSourceGeometryData3D", NewGDExtensionClassFromNavigationMeshSourceGeometryData3DOwner)
 	gdNativeConstructors.Set("NavigationObstacle2D", NewGDExtensionClassFromNavigationObstacle2DOwner)
 	gdNativeConstructors.Set("NavigationObstacle3D", NewGDExtensionClassFromNavigationObstacle3DOwner)
 	gdNativeConstructors.Set("NavigationPathQueryParameters2D", NewGDExtensionClassFromNavigationPathQueryParameters2DOwner)
@@ -5184,6 +5573,7 @@ func init() {
 	gdNativeConstructors.Set("Node3DGizmo", NewGDExtensionClassFromNode3DGizmoOwner)
 	gdNativeConstructors.Set("Noise", NewGDExtensionClassFromNoiseOwner)
 	gdNativeConstructors.Set("NoiseTexture2D", NewGDExtensionClassFromNoiseTexture2DOwner)
+	gdNativeConstructors.Set("NoiseTexture3D", NewGDExtensionClassFromNoiseTexture3DOwner)
 	gdNativeConstructors.Set("ORMMaterial3D", NewGDExtensionClassFromORMMaterial3DOwner)
 	gdNativeConstructors.Set("OS", NewGDExtensionClassFromOSOwner)
 	gdNativeConstructors.Set("Object", NewGDExtensionClassFromObjectOwner)
@@ -5334,6 +5724,8 @@ func init() {
 	gdNativeConstructors.Set("SceneTreeTimer", NewGDExtensionClassFromSceneTreeTimerOwner)
 	gdNativeConstructors.Set("Script", NewGDExtensionClassFromScriptOwner)
 	gdNativeConstructors.Set("ScriptCreateDialog", NewGDExtensionClassFromScriptCreateDialogOwner)
+	gdNativeConstructors.Set("ScriptEditor", NewGDExtensionClassFromScriptEditorOwner)
+	gdNativeConstructors.Set("ScriptEditorBase", NewGDExtensionClassFromScriptEditorBaseOwner)
 	gdNativeConstructors.Set("ScriptExtension", NewGDExtensionClassFromScriptExtensionOwner)
 	gdNativeConstructors.Set("ScriptLanguage", NewGDExtensionClassFromScriptLanguageOwner)
 	gdNativeConstructors.Set("ScriptLanguageExtension", NewGDExtensionClassFromScriptLanguageExtensionOwner)

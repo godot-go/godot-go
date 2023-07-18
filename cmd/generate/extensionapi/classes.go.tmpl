@@ -85,8 +85,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	methodName := NewStringNameWithLatin1Chars("{{ $m.Name }}")
 	defer methodName.Destroy()
 
-	fn := GDExtensionInterface_classdb_get_method_bind(
-		internal.gdnInterface,
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionStringNamePtr(),
 		methodName.AsGDExtensionStringNamePtr(),
 		{{ $m.Hash }},
@@ -104,13 +103,13 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	var ret {{ $fnReturnType }}
 	{{ end -}}
 	{{ if $m.IsVararg}}
-	retPtr := (GDExtensionVariantPtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(&ret))
 	{{ else -}}
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 	{{ end -}}
 	{{- else -}}
 	{{ if $m.IsVararg}}
-	retPtr := (GDExtensionVariantPtr)(nullptr)
+	retPtr := (GDExtensionUninitializedVariantPtr)(nullptr)
 	{{ else -}}
 	retPtr := (GDExtensionTypePtr)(nullptr)
 	{{ end -}}
@@ -153,7 +152,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	{{ if $m.IsVararg -}}
 	var err GDExtensionCallError
 
-	GDExtensionInterface_object_method_bind_call(internal.gdnInterface, fn, cOwner, (*GDExtensionConstVariantPtr)(unsafe.Pointer(argsPtr)), (GDExtensionInt)(callArgCount), retPtr, &err)
+	CallFunc_GDExtensionInterfaceObjectMethodBindCall(fn, cOwner, (*GDExtensionConstVariantPtr)(unsafe.Pointer(argsPtr)), (GDExtensionInt)(callArgCount), retPtr, &err)
 
 	if !err.Ok() {
 		log.Panic("method bind call error", zap.Error(&err))
@@ -161,7 +160,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	{{ else -}}
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(argsPtr))
 
-	GDExtensionInterface_object_method_bind_ptrcall(internal.gdnInterface, fn, cOwner, cArgs, retPtr)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	{{ end -}}
 
 	{{ with $fnReturnType -}}

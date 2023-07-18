@@ -68,8 +68,7 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 	snExtensionClassName := NewStringNameWithLatin1Chars(extensionClassName)
 	defer snExtensionClassName.Destroy()
 
-	GDExtensionInterface_object_set_instance(
-		internal.gdnInterface,
+	CallFunc_GDExtensionInterfaceObjectSetInstance(
 		(GDExtensionObjectPtr)(owner),
 		snExtensionClassName.AsGDExtensionStringNamePtr(),
 		inst,
@@ -81,7 +80,7 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 		log.Panic("unable to retrieve binding callbacks", zap.String("type", extensionClassName))
 	}
 
-	GDExtensionInterface_object_set_instance_binding(internal.gdnInterface, (GDExtensionObjectPtr)(owner), internal.token, (unsafe.Pointer)(inst), &callbacks)
+	CallFunc_GDExtensionInterfaceObjectSetInstanceBinding((GDExtensionObjectPtr)(owner), FFI.Token, (unsafe.Pointer)(inst), &callbacks)
 }
 
 // GoCallback_GDExtensionClassCreateInstance is registered as a callback when a new GDScript instance is created.
@@ -114,8 +113,7 @@ func CreateGDClassInstance(tn string) GDClass {
 	defer snParentName.Destroy()
 
 	// create inherited GDExtensionClass first
-	owner := GDExtensionInterface_classdb_construct_object(
-		internal.gdnInterface,
+	owner := CallFunc_GDExtensionInterfaceClassdbConstructObject(
 		snParentName.AsGDExtensionStringNamePtr(),
 	)
 
@@ -134,7 +132,7 @@ func CreateGDClassInstance(tn string) GDClass {
 
 	object := (*GodotObject)(unsafe.Pointer(owner))
 
-	id := GDExtensionInterface_object_get_instance_id(internal.gdnInterface, (GDExtensionConstObjectPtr)(unsafe.Pointer(owner)))
+	id := CallFunc_GDExtensionInterfaceObjectGetInstanceId((GDExtensionConstObjectPtr)(unsafe.Pointer(owner)))
 
 	inst.SetGodotObjectOwner(object)
 
@@ -169,7 +167,7 @@ func GoCallback_GDExtensionClassFreeInstance(data unsafe.Pointer, ptr C.GDExtens
 		zap.String("w.GetGodotObjectOwner()", fmt.Sprintf("%p", w.GetGodotObjectOwner())),
 	)
 
-	id := GDExtensionInterface_object_get_instance_id(internal.gdnInterface, (GDExtensionConstObjectPtr)(unsafe.Pointer(w.GetGodotObjectOwner())))
+	id := CallFunc_GDExtensionInterfaceObjectGetInstanceId((GDExtensionConstObjectPtr)(unsafe.Pointer(w.GetGodotObjectOwner())))
 
 	if _, ok := internal.gdClassInstances.Get(id); !ok {
 		log.Panic("GDClass instance not found to free", zap.Any("id", id))

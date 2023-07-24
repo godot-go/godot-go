@@ -287,13 +287,13 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 
 	for i, p := range params {
 		snTypeName := NewStringNameWithLatin1Chars(typeName)
-		defer snTypeName.Destroy()
+		// defer snTypeName.Destroy()
 
 		snName := NewStringNameWithLatin1Chars(p.Name)
-		defer snName.Destroy()
+		// defer snName.Destroy()
 
 		hint := NewStringWithLatin1Chars("")
-		defer hint.Destroy()
+		// defer hint.Destroy()
 
 		paramArr[i] = NewGDExtensionPropertyInfo(
 			snTypeName.AsGDExtensionStringNamePtr(),

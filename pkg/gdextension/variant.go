@@ -695,7 +695,7 @@ func (c *Variant) Call(
 	)
 
 	sn := NewStringNameWithLatin1Chars(method)
-	sn.Destroy()
+	defer sn.Destroy()
 
 	callArgs = AllocCopyVariantPtrSliceAsGDExtensionVariantPtrPtr(args)
 
@@ -730,7 +730,7 @@ func (c *Variant) CallStatic(
 	)
 
 	sn := NewStringNameWithLatin1Chars(method)
-	sn.Destroy()
+	defer sn.Destroy()
 
 	callArgs = AllocCopyVariantPtrSliceAsGDExtensionVariantPtrPtr(args)
 

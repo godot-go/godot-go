@@ -14,6 +14,10 @@ type GDExtensionClass interface {
 	Wrapped
 }
 
+type HasDestructor interface {
+	Destroy()
+}
+
 //export GoCallback_GDExtensionBindingCreate
 func GoCallback_GDExtensionBindingCreate(typeName string, p_token unsafe.Pointer, p_instance unsafe.Pointer) unsafe.Pointer {
 	fn, ok := gdNativeConstructors.Get(typeName)

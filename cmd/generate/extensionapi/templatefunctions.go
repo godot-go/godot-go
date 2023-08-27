@@ -45,7 +45,7 @@ func goVariantConstructor(t, innerText string) string {
 	case "StringName":
 		return fmt.Sprintf("NewVariantStringName(%s)", innerText)
 	default:
-		return fmt.Sprintf("NewVariantWrapped(%s)", innerText)
+		return fmt.Sprintf("NewVariantObject(%s)", innerText)
 	}
 }
 
@@ -129,7 +129,7 @@ func goArgumentType(t string) string {
 	}
 
 	switch t {
-	case "void":
+	case "void", "":
 		if isTypedArray {
 			log.Panic("unexpected type array")
 		}
@@ -149,9 +149,21 @@ func goArgumentType(t string) string {
 		t = "float32"
 	case "double":
 		t = "float64"
-	case "int":
+	case "int8":
+		t = "int8"
+	case "int16":
+		t = "int16"
+	case "int", "int32":
 		t = "int32"
-	case "uint64_t":
+	case "int64":
+		t = "int64"
+	case "uint8", "uint8_t":
+		t = "uint8"
+	case "uint16", "uint16_t":
+		t = "uint16"
+	case "uint32", "uint32_t":
+		t = "uint32"
+	case "uint64", "uint64_t":
 		t = "uint64"
 	case "bool":
 		t = "bool"
@@ -159,8 +171,6 @@ func goArgumentType(t string) string {
 		t = "String"
 	case "Nil":
 		t = "Variant"
-	case "":
-		t = ""
 	default:
 		t = strcase.ToCamel(t)
 	}
@@ -170,6 +180,16 @@ func goArgumentType(t string) string {
 	} else {
 		return strings.Repeat("*", indirection) + t
 	}
+}
+
+func coalesce(params ...string) string {
+	for _, p := range params {
+		if p != "" {
+			return p
+		}
+	}
+
+	return ""
 }
 
 func goHasArgumentTypeEncoder(t string) bool {
@@ -429,6 +449,7 @@ var referenceEncoderTypes = []string{
 	"Transform3D",
 	"Projection",
 	"Color",
+	"String",
 	"StringName",
 	"NodePath",
 	"RID",
@@ -451,4 +472,12 @@ var referenceEncoderTypes = []string{
 
 func goEncodeIsReference(goType string) bool {
 	return slices.Contains(referenceEncoderTypes, goType)
+}
+
+func isRefcounted(goType string) bool {
+	return slices.Contains(referenceEncoderTypes, goType)
+}
+
+func isSetterMethodName(methodName string) bool {
+	return strings.HasPrefix(methodName, "Set")
 }

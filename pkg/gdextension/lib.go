@@ -3,7 +3,7 @@ package gdextension
 /*
 #cgo CFLAGS: -I${SRCDIR}/../../godot_headers -I${SRCDIR}/../../pkg/log -I${SRCDIR}/../../pkg/gdextension
 #include <godot/gdextension_interface.h>
-#include "classdb_wrapper.h"
+#include "classdb_callback.h"
 #include "method_bind.h"
 */
 import "C"

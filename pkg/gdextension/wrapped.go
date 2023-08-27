@@ -1,6 +1,8 @@
 package gdextension
 
 import (
+	"reflect"
+
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
@@ -14,7 +16,7 @@ type Wrapped interface {
 	SetGodotObjectOwner(owner *GodotObject)
 	GetClassName() string
 	GetParentClassName() string
-	CastTo(className string) Wrapped
+	CastTo(v Object) Object
 }
 
 type WrappedImpl struct {
@@ -30,14 +32,29 @@ func (w *WrappedImpl) SetGodotObjectOwner(owner *GodotObject) {
 	w.Owner = owner
 }
 
-func (w *WrappedImpl) CastTo(className string) Wrapped {
+// func (w *WrappedImpl) GetClassName() string {
+// 	return "Wrapped"
+// }
+
+func (w *WrappedImpl) CastTo(v Object) Object {
 	owner := w.Owner
 
-	cn := NewStringNameWithLatin1Chars(className)
+	t := reflect.TypeOf(v)
+
+	className := t.Name()
+
+	otherClassName := v.GetClassName()
+
+	log.Info("WrappedImpl.CastTo called",
+		zap.String("className", className),
+		zap.String("otherClassName", otherClassName),
+	)
+
+	cn := NewStringNameWithUtf8Chars(className)
 	defer cn.Destroy()
 
 	tag := CallFunc_GDExtensionInterfaceClassdbGetClassTag(
-		cn.AsGDExtensionStringNamePtr(),
+		cn.AsGDExtensionConstStringNamePtr(),
 	)
 
 	if tag == nil {
@@ -65,5 +82,9 @@ func (w *WrappedImpl) CastTo(className string) Wrapped {
 		FFI.Token,
 		&cbs)
 
-	return *(*Wrapped)(ret)
+	return *(*Object)(ret)
+}
+
+type WrappedClassInstance struct {
+	Instance Object
 }

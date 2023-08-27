@@ -13,6 +13,8 @@ package gdextension
 //revive:disable
 
 import (
+	"unsafe"
+
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
 
@@ -21,25 +23,25 @@ type {{ goClassInterfaceName $c.Name }} interface {
 	{{ if $c.Inherits }}
 	{{ goClassInterfaceName $c.Inherits }}
 	{{ else }}
-	Wrapped
-	{{ end }}
+	GDExtensionClass
+	{{ end -}}
 
 	{{ range $j, $m := $c.Methods -}}
-	{{ $fnReturnType := goReturnType $m.ReturnValue.Type }}
+	{{ $fnReturnType := goReturnType (coalesce $m.ReturnValue.Meta $m.ReturnValue.Type) }}
 	{{ $hasSomeArguments := (or $m.Arguments $m.IsVararg) }}
 
 	{{ if $m.IsVirtual -}}
 	{{/* TODO: deal with virtual functions */}}
 	// VIRTUAL: {{ goMethodName $m.Name }}(
 	{{- range $k, $a := $m.Arguments -}}
-	{{ goArgumentName $a.Name }} {{ goArgumentType $a.Type }},
+	{{ goArgumentName $a.Name }} {{ goArgumentType (coalesce $a.Meta $a.Type) }},
 	{{- end -}}
 	{{- if $m.IsVararg }}varargs ...Variant,{{- end -}}
 	) {{ $fnReturnType -}}
 	{{ else -}}
 	{{ goMethodName $m.Name }}(
 	{{- range $k, $a := $m.Arguments -}}
-	{{ goArgumentName $a.Name }} {{ goArgumentType $a.Type }},
+	{{ goArgumentName $a.Name }} {{ goArgumentType (coalesce $a.Meta $a.Type) }},
 	{{- end -}}
 	{{- if $m.IsVararg }}varargs ...Variant,{{- end -}}
 	) {{ $fnReturnType -}}

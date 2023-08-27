@@ -2,6 +2,7 @@ package gdextension
 
 import (
 	"reflect"
+	"strings"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
@@ -25,12 +26,21 @@ type ClassInfo struct {
 	Level                     GDExtensionInitializationLevel
 	MethodMap                 map[string]*MethodBind
 	SignalNameMap             map[string]struct{}
-	VirtualMethodMap          map[string]GDExtensionClassCallVirtual
+	VirtualMethodMap          map[string]*MethodBind
 	PropertyNameMap           map[string]struct{}
 	ConstantNameMap           map[string]struct{}
 	ParentPtr                 *ClassInfo
 	ClassType                 reflect.Type
 	InheritType               reflect.Type
+}
+
+func (c *ClassInfo) String() string {
+	var sb strings.Builder
+	sb.WriteString(c.Name)
+	sb.WriteString("(")
+	sb.WriteString(c.ParentName)
+	sb.WriteString(")")
+	return sb.String()
 }
 
 func (c *ClassInfo) Destroy() {
@@ -52,12 +62,12 @@ func (c *ClassInfo) Destroy() {
 func NewClassInfo(name, parentName string, level GDExtensionInitializationLevel, classType, inheritType reflect.Type, parentPtr *ClassInfo) *ClassInfo {
 	return &ClassInfo{
 		Name:                name,
-		NameAsStringNamePtr: NewStringNameWithLatin1Chars(name).AsGDExtensionStringNamePtr(),
+		NameAsStringNamePtr: NewStringNameWithUtf8Chars(name).AsGDExtensionConstStringNamePtr(),
 		ParentName:          parentName,
 		Level:               level,
 		MethodMap:           map[string]*MethodBind{},
 		SignalNameMap:       map[string]struct{}{},
-		VirtualMethodMap:    map[string]GDExtensionClassCallVirtual{},
+		VirtualMethodMap:    map[string]*MethodBind{},
 		PropertyNameMap:     map[string]struct{}{},
 		ConstantNameMap:     map[string]struct{}{},
 		ParentPtr:           parentPtr,

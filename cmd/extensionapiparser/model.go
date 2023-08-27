@@ -89,12 +89,13 @@ func (a Argument) HasDestroy() bool {
 }
 
 type UtilityFunction struct {
-	Name       string     `json:"name"`
-	ReturnType string     `json:"return_type"`
-	Category   string     `json:"category"`
-	IsVararg   bool       `json:"is_vararg"`
-	Hash       int        `json:"hash"`
-	Arguments  []Argument `json:"arguments"`
+	Name              string     `json:"name"`
+	ReturnType        string     `json:"return_type"`
+	Category          string     `json:"category"`
+	IsVararg          bool       `json:"is_vararg"`
+	Hash              int        `json:"hash"`
+	HashCompatibility []int      `json:"hash_compatibility"`
+	Arguments         []Argument `json:"arguments"`
 }
 
 type ClassOperator struct {
@@ -110,13 +111,14 @@ type ClassConstructor struct {
 }
 
 type BuiltInClassMethod struct {
-	Name       string     `json:"name"`
-	ReturnType string     `json:"return_type"`
-	IsConst    bool       `json:"is_const"`
-	IsVararg   bool       `json:"is_vararg"`
-	IsStatic   bool       `json:"is_static"`
-	Hash       int        `json:"hash"`
-	Arguments  []Argument `json:"arguments"`
+	Name              string     `json:"name"`
+	ReturnType        string     `json:"return_type"`
+	IsConst           bool       `json:"is_const"`
+	IsVararg          bool       `json:"is_vararg"`
+	IsStatic          bool       `json:"is_static"`
+	Hash              int        `json:"hash"`
+	HashCompatibility []int      `json:"hash_compatibility"`
+	Arguments         []Argument `json:"arguments"`
 }
 
 type ClassMember struct {
@@ -171,7 +173,7 @@ func (a BuiltinClass) FilteredConstructors() []ClassConstructor {
 func (a BuiltinClass) FilteredMethods() []BuiltInClassMethod {
 	switch a.Name {
 	case "Signal":
-		excludes := []string {
+		excludes := []string{
 			"emit",
 		}
 
@@ -187,7 +189,7 @@ func (a BuiltinClass) FilteredMethods() []BuiltInClassMethod {
 
 		return values
 	case "Callable":
-		excludes := []string {
+		excludes := []string{
 			"call",
 			"call_deferred",
 			"rpc",
@@ -217,14 +219,15 @@ type ClassMethodReturnValue struct {
 }
 
 type ClassMethod struct {
-	Name        string                 `json:"name"`
-	ReturnValue ClassMethodReturnValue `json:"return_value"`
-	IsConst     bool                   `json:"is_const"`
-	IsVararg    bool                   `json:"is_vararg"`
-	IsVirtual   bool                   `json:"is_virtual"`
-	IsStatic    bool                   `json:"is_static"`
-	Hash        int                    `json:"hash"`
-	Arguments   []Argument             `json:"arguments"`
+	Name              string                 `json:"name"`
+	ReturnValue       ClassMethodReturnValue `json:"return_value"`
+	IsConst           bool                   `json:"is_const"`
+	IsVararg          bool                   `json:"is_vararg"`
+	IsVirtual         bool                   `json:"is_virtual"`
+	IsStatic          bool                   `json:"is_static"`
+	Hash              int                    `json:"hash"`
+	HashCompatibility []int                  `json:"hash_compatibility"`
+	Arguments         []Argument             `json:"arguments"`
 }
 
 type ClassSignal struct {
@@ -311,11 +314,33 @@ func (a ExtensionApi) ContainsClassName(name string) bool {
 	return false
 }
 
+func (a ExtensionApi) IsRefcountedClassName(name string) bool {
+	for _, c := range a.Classes {
+		if c.Name == name {
+			return c.IsRefcounted
+		}
+	}
+
+	return false
+}
+
 func (a ExtensionApi) FilteredClasses() []Class {
 	values := make([]Class, 0, len(a.Classes))
 
 	for _, c := range a.Classes {
 		values = append(values, c)
+	}
+
+	return values
+}
+
+func (a ExtensionApi) FilteredRefcountedClasses() []Class {
+	values := make([]Class, 0, len(a.Classes))
+
+	for _, c := range a.Classes {
+		if c.IsRefcounted {
+			values = append(values, c)
+		}
 	}
 
 	return values

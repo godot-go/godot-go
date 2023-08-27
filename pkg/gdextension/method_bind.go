@@ -6,12 +6,15 @@ package gdextension
 // #include <stdlib.h>
 import "C"
 import (
+	"fmt"
 	"reflect"
+	"strings"
 	"unsafe"
 
 	"github.com/davecgh/go-spew/spew"
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/util"
 	"go.uber.org/zap"
 )
 
@@ -29,6 +32,31 @@ type MethodBind struct {
 	ArgumentTypes    []GDExtensionVariantType
 	DefaultArguments []*Variant
 	Func             reflect.Value
+}
+
+func (b *MethodBind) String() string {
+	var sb strings.Builder
+
+	if b.InstanceClass != "" {
+		sb.WriteString(b.InstanceClass)
+		sb.WriteString(".")
+	}
+	sb.WriteString(b.GoName)
+	sb.WriteString("(")
+	for i := range b.GoArgumentTypes {
+		if i != 0 {
+			sb.WriteString(",")
+		}
+		sb.WriteString(b.GoArgumentTypes[i].Name())
+
+	}
+	sb.WriteString(")")
+	if b.GoReturnType != nil {
+		sb.WriteString(" ")
+		sb.WriteString(b.GoReturnType.Name())
+	}
+
+	return sb.String()
 }
 
 func NewMethodBind(
@@ -133,7 +161,7 @@ func NewMethodBind(
 	}
 
 	classMethodInfo := NewGDExtensionClassMethodInfo(
-		NewStringNameWithLatin1Chars(p_name).AsGDExtensionStringNamePtr(),
+		NewStringNameWithUtf8Chars(p_name).AsGDExtensionConstStringNamePtr(),
 		unsafe.Pointer(methodBind),
 		(GDExtensionClassMethodCall)(C.cgo_method_bind_method_call),
 		(GDExtensionClassMethodPtrCall)(C.cgo_method_bind_method_ptrcall),
@@ -178,20 +206,20 @@ func (b *MethodBind) Call(
 		return Variant{}
 	}
 
-	w := *(*Wrapped)(unsafe.Pointer(&p_instance))
-	vInstance := NewVariantWrapped(w)
+	w := *(*Object)(unsafe.Pointer(&p_instance))
+	vInstance := NewVariantObject(w)
 
 	vReturn := NewVariantNil()
 	var (
 		r_return GDExtensionUninitializedVariantPtr = (GDExtensionUninitializedVariantPtr)(vReturn.ptr())
-		bindName                                    = NewStringNameWithLatin1Chars(b.Name)
+		bindName                                    = NewStringNameWithUtf8Chars(b.Name)
 	)
 
 	defer bindName.Destroy()
 
 	CallFunc_GDExtensionInterfaceVariantCall(
 		(GDExtensionVariantPtr)(&vInstance),
-		bindName.AsGDExtensionStringNamePtr(),
+		bindName.AsGDExtensionConstStringNamePtr(),
 		p_args,
 		p_argument_count,
 		r_return,
@@ -217,8 +245,8 @@ func (b *MethodBind) CallStatic(
 		return Variant{}
 	}
 
-	w := *(*Wrapped)(unsafe.Pointer(&p_instance))
-	vInstance := NewVariantWrapped(w)
+	w := *(*Object)(unsafe.Pointer(&p_instance))
+	vInstance := NewVariantObject(w)
 	vt := vInstance.GetType()
 
 	vReturn := NewVariantNil()
@@ -226,12 +254,12 @@ func (b *MethodBind) CallStatic(
 		r_return GDExtensionUninitializedVariantPtr = (GDExtensionUninitializedVariantPtr)(vReturn.ptr())
 	)
 
-	snName := NewStringNameWithLatin1Chars(b.Name)
+	snName := NewStringNameWithUtf8Chars(b.Name)
 	defer snName.Destroy()
 
 	CallFunc_GDExtensionInterfaceVariantCallStatic(
 		vt,
-		snName.AsGDExtensionStringNamePtr(),
+		snName.AsGDExtensionConstStringNamePtr(),
 		p_args,
 		p_argument_count,
 		r_return,
@@ -244,67 +272,214 @@ func (b *MethodBind) CallStatic(
 func (b *MethodBind) Ptrcall(
 	p_instance GDExtensionClassInstancePtr,
 	p_args *GDExtensionConstTypePtr,
-	r_ret *GDExtensionTypePtr,
+	r_ret GDExtensionTypePtr,
 ) {
-	ci := b.GetClassInfo()
+	inst := ObjectClassFromGDExtensionClassInstancePtr(p_instance)
+	if inst == nil {
+		log.Panic("p_instance GDExtensionClassInstancePtr canoot be null")
+	}
+	if util.IsDeadMemory(unsafe.Pointer(p_args)) {
+		log.Panic("p_args *GDExtensionConstTypePtr is pointing to bad memory")
+	}
+	cn := inst.GetClass()
+	log.Info("MethodBind.Ptrcall called",
+		zap.String("class_name", cn.ToUtf8()),
+		zap.String("bind", b.String()),
+	)
+	args := b.reflectCallArgsFromGDExtensionArgs(inst, p_args)
+	// call the go function
+	reflectedRet := b.Func.Call(args)
+	log.Info("reflect method called",
+		zap.String("ret", valuesToString(reflectedRet)),
+	)
+	b.writeReturnValueFromReflectReturnValues(reflectedRet, r_ret)
+}
 
+func valuesToString(values []reflect.Value) string {
+	var sb strings.Builder
+	sb.WriteString("(")
+	for i := range values {
+		if i != 0 {
+			sb.WriteString(",")
+		}
+		sb.WriteString(values[i].Type().Name())
+	}
+	sb.WriteString(")")
+	return sb.String()
+}
+
+func (b *MethodBind) reflectCallArgsFromGDExtensionArgs(inst Object, p_args *GDExtensionConstTypePtr) []reflect.Value {
 	pArgArraySlice := unsafe.Slice(p_args, len(b.GoArgumentTypes))
-
 	// add an extra parameter for the receiver instance
 	args := make([]reflect.Value, len(b.GoArgumentTypes)+1)
-
-	inst := GDClassFromGDExtensionClassInstancePtr(ci, p_instance)
-
 	args[0] = reflect.ValueOf(inst)
-
 	for i := 0; i < len(b.GoArgumentTypes); i++ {
 		arg := pArgArraySlice[i]
-
 		t := b.GoArgumentTypes[i]
-
 		switch t.Kind() {
 		case reflect.Bool:
-			args[i+1] = reflect.ValueOf(*(*bool)(arg))
+			typedValue := *(*bool)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Bool("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "bool"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Int:
-			args[i+1] = reflect.ValueOf(*(*int)(arg))
+			typedValue := *(*int)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Int("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "int"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Int8:
-			args[i+1] = reflect.ValueOf(*(*int8)(arg))
+			typedValue := *(*int8)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Int8("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "int8"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Int16:
-			args[i+1] = reflect.ValueOf(*(*int16)(arg))
+			typedValue := *(*int16)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Int16("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "int16"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Int32:
-			args[i+1] = reflect.ValueOf(*(*int32)(arg))
+			typedValue := *(*int32)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Int32("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "int32"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Int64:
-			args[i+1] = reflect.ValueOf(*(*int64)(arg))
+			typedValue := *(*int64)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Int64("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "int64"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Uint:
-			args[i+1] = reflect.ValueOf(*(*uint)(arg))
+			typedValue := *(*uint)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Uint("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "uint"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Uint8:
-			args[i+1] = reflect.ValueOf(*(*uint8)(arg))
+			typedValue := *(*uint8)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Uint8("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "uint8"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Uint16:
-			args[i+1] = reflect.ValueOf(*(*uint16)(arg))
+			typedValue := *(*uint16)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Uint16("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "uint16"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Uint32:
-			args[i+1] = reflect.ValueOf(*(*uint32)(arg))
+			typedValue := *(*uint32)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Uint32("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "uint32"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Uint64:
-			args[i+1] = reflect.ValueOf(*(*uint64)(arg))
+			typedValue := *(*uint64)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Uint64("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "uint64"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Float32:
-			args[i+1] = reflect.ValueOf(*(*float32)(arg))
+			rawTypedValue := *(*float64)(arg)
+			typedValue := (float32)(rawTypedValue)
+			log.Debug("ptrcall arg parsed",
+				zap.Float32("value", typedValue),
+				zap.Float64("raw_value", rawTypedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "float32"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.Float64:
-			args[i+1] = reflect.ValueOf(*(*float64)(arg))
-		case reflect.Struct:
-			switch reflect.New(t).Interface().(type) {
-			case String:
-				args[i+1] = reflect.ValueOf(*(*String)(arg))
-			}
+			typedValue := *(*float64)(arg)
+			log.Debug("ptrcall arg parsed",
+				zap.Float64("value", typedValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "float64"),
+			)
+			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.String:
-			log.Panic("MethodBind.Ptrcall does not support native go string type")
+			typedValue := *(*String)(arg)
+			asciiValue := typedValue.ToAscii()
+			log.Debug("ptrcall arg parsed",
+				zap.Any("ascii", asciiValue),
+				zap.Int("arg_index", i),
+				zap.String("type", "string"),
+			)
+			args[i+1] = reflect.ValueOf(asciiValue)
+		case reflect.Slice:
+			slice := *(*[]unsafe.Pointer)(arg)
+			log.Panic("MethodBind.Ptrcall slice not implemented",
+				zap.Any("len", len(slice)),
+			)
+		case reflect.Interface:
+			// TODO: how to correctly unmarshal gdexntesion classes
+			// event := *(*InputEvent)(unsafe.Pointer(arg))
+			// var text string
+			// if event != nil {
+			// 	gdText := event.AsText()
+			// 	text = gdText.ToUtf8()
+			// }
+			cn := t.Name()
+			log.Warn("MethodBind.Ptrcall interface not implemented",
+				zap.String("class_name", cn),
+			)
+			args[i+1] = reflect.ValueOf(nil)
+		case reflect.Struct:
+			// TODO: how to correctly unmarshal gdexntesion classes
+			v := reflect.Zero(t)
+			inst := v.Interface()
+			switch inst.(type) {
+			case Ref:
+				// typedValue := *(*Ref)(arg)
+				// log.Debug("ptrcall arg parsed",
+				// 	zap.Int("arg_index", i),
+				// 	zap.String("type", "Ref"),
+				// )
+				// args[i+1] = reflect.ValueOf(typedValue)
+				log.Warn("MethodBind.Ptrcall Ref unmarshaled to nil")
+				args[i+1] = reflect.ValueOf(nil)
+				// innerRef := typedValue.Ptr()
+				// args[i+1] = reflect.ValueOf((*innerRef).GetGodotObjectOwner())
+			default:
+				log.Panic(fmt.Sprintf("MethodBind.Ptrcall does not support struct type: %s", t.Name()))
+			}
+		default:
+			log.Panic(fmt.Sprintf("MethodBind.Ptrcall does not support type: %s", t.Name()))
 		}
 	}
-
 	log.Debug("argument converted",
 		zap.String("args", spew.Sdump(args)),
 	)
+	return args
+}
 
-	reflectedRet := b.Func.Call(args)
-
+func (b *MethodBind) writeReturnValueFromReflectReturnValues(reflectedRet []reflect.Value, r_ret GDExtensionTypePtr) {
 	switch len(reflectedRet) {
 	case 0:
 		if b.GoReturnType != nil {
@@ -314,17 +489,11 @@ func (b *MethodBind) Ptrcall(
 		if b.GoReturnType == nil {
 			log.Panic("return value expected but none provided")
 		}
-
-		valueInterface := reflectedRet[0].Interface()
-
-		*r_ret = *(*GDExtensionTypePtr)(unsafe.Pointer(&valueInterface))
+		GDExtensionTypePtrFromReflectValue(reflectedRet[0], r_ret)
 	case 2:
 		if b.GoReturnType == nil {
 			log.Panic("return value expected but none provided")
 		}
-
-		valueInterface := reflectedRet[0].Interface()
-
 		// 2nd value can only be of type error
 		if !reflectedRet[1].IsNil() {
 			err, ok := reflectedRet[1].Interface().(error)
@@ -333,18 +502,22 @@ func (b *MethodBind) Ptrcall(
 					zap.String("type", reflectedRet[1].Type().Name()),
 				)
 			}
-
 			if err != nil {
 				log.Panic("error returned", zap.Error(err))
 			}
 		}
-
 		if reflectedRet[0].IsNil() {
 			log.Warn("returning nil value",
 				zap.String("type", reflectedRet[0].Type().Name()),
 			)
-			*r_ret = *(*GDExtensionTypePtr)(unsafe.Pointer(&valueInterface))
+			return
 		}
+		if b.GoReturnType.Name() != reflectedRet[0].Type().Name() {
+			log.Panic("unexpected return type",
+				zap.String("type", reflectedRet[0].Type().Name()),
+			)
+		}
+		GDExtensionTypePtrFromReflectValue(reflectedRet[0], r_ret)
 	default:
 		log.Panic("too many values returned", zap.Any("ret", reflectedRet))
 	}
@@ -377,15 +550,10 @@ func (b *MethodBind) Destroy() {
 //export GoCallback_MethodBindBindCall
 func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance C.GDExtensionClassInstancePtr, p_args *C.GDExtensionVariantPtr, p_argument_count C.GDExtensionInt, r_return C.GDExtensionVariantPtr, r_error *C.GDExtensionCallError) {
 	b := (*MethodBind)(p_method_userdata)
-
-	ci := b.GetClassInfo()
-
 	var vArgs *[MAX_ARG_COUNT]*Variant
-
 	if p_args != nil {
 		vArgs = (*[MAX_ARG_COUNT]*Variant)(unsafe.Pointer(p_args))
 	}
-
 	if int(p_argument_count) > len(b.GoArgumentTypes) {
 		((*GDExtensionCallError)(unsafe.Pointer(r_error))).SetErrorFields(
 			GDEXTENSION_CALL_ERROR_TOO_MANY_ARGUMENTS,
@@ -394,14 +562,11 @@ func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance 
 		)
 		return
 	}
-
 	// add an extra parameter for the receiver instance
 	args := make([]reflect.Value, len(b.GoArgumentTypes)+1)
-
-	inst := GDClassFromGDExtensionClassInstancePtr(ci, (GDExtensionClassInstancePtr)(p_instance))
-
+	// TODO: deal with static method calls as inst will be nil
+	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(p_instance))
 	args[0] = reflect.ValueOf(inst)
-
 	for i := 0; i < len(b.GoArgumentTypes); i++ {
 		var varg *Variant
 		if i < (int)(p_argument_count) {
@@ -409,13 +574,11 @@ func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance 
 		} else {
 			varg = b.DefaultArguments[i]
 		}
-
 		args[i+1] = varg.ToReflectValue(
 			b.ArgumentTypes[i],
 			b.GoArgumentTypes[i],
 		)
 	}
-
 	log.Debug("argument converted",
 		zap.String("method_name", (string)(b.GoName)),
 		zap.Int("args_cap", cap(args)),
@@ -424,27 +587,18 @@ func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance 
 		// zapGDExtensionVariantPtrp("vargs", (*GDExtensionVariantPtr)(p_args), (int)(p_argument_count)),
 		zap.String("args", spew.Sdump(args)),
 	)
-
 	reflectedRet := b.Func.Call(args)
-
 	log.Debug("returned value", zap.Any("reflectedRet", reflectedRet))
-
-	var ret Variant
-
 	if len(reflectedRet) == 0 {
 		if b.GoReturnType != nil {
 			log.Panic("no return value expected")
 		}
-
-		ret = NewVariantNil()
-		defer ret.Destroy()
+		GDExtensionVariantPtrWithNil((GDExtensionVariantPtr)(r_return))
 	} else {
 		if b.GoReturnType == nil {
 			log.Panic("return value expected but none provided")
 		}
-
 		log.Debug("returned", zap.String("value", spew.Sdump(reflectedRet[0])))
-
 		switch len(reflectedRet) {
 		case 0:
 			if b.GoReturnType != nil {
@@ -454,14 +608,11 @@ func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance 
 			if b.GoReturnType == nil {
 				log.Panic("return value expected but none provided")
 			}
-
-			ret = NewVariantFromReflectValue(reflectedRet[0])
-			defer ret.Destroy()
+			GDExtensionVariantPtrFromReflectValue(reflectedRet[0], (GDExtensionVariantPtr)(r_return))
 		case 2:
 			if b.GoReturnType == nil {
 				log.Panic("return value expected but none provided")
 			}
-
 			// 2nd value can only be of type error
 			// panic if an error is returned
 			if !reflectedRet[1].IsNil() {
@@ -471,22 +622,18 @@ func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance 
 						zap.String("type", reflectedRet[1].Type().Name()),
 					)
 				}
-
 				if err != nil {
 					log.Panic("error returned", zap.Error(err))
 				}
 			}
-
 			if reflectedRet[0].IsNil() {
 				log.Warn("returning nil value",
 					zap.String("type", reflectedRet[0].Type().Name()),
 				)
-				ret = NewVariantNil()
-				defer ret.Destroy()
-			}
 
-			ret = NewVariantFromReflectValue(reflectedRet[0])
-			defer ret.Destroy()
+				GDExtensionVariantPtrWithNil((GDExtensionVariantPtr)(r_return))
+			}
+			GDExtensionVariantPtrFromReflectValue(reflectedRet[0], (GDExtensionVariantPtr)(r_return))
 		default:
 			log.Panic("too many values returned",
 				zap.Any("go_name", b.GoName),
@@ -494,21 +641,24 @@ func GoCallback_MethodBindBindCall(p_method_userdata unsafe.Pointer, p_instance 
 			)
 		}
 	}
-	log.Debug("pre-copy")
-
-	// This assumes the return value is an empty Variant, so it doesn't need to call the destructor first.
-	// Since only NativeExtensionMethodBind calls this from the Godot side, it should always be the case.
-	CallFunc_GDExtensionInterfaceVariantNewCopy((GDExtensionUninitializedVariantPtr)(r_return), (GDExtensionConstVariantPtr)(ret.ptr()))
-
+	// log.Debug("pre-copy")
+	// // This assumes the return value is an empty Variant, so it doesn't need to call the destructor first.
+	// // Since only NativeExtensionMethodBind calls this from the Godot side, it should always be the case.
+	// CallFunc_GDExtensionInterfaceVariantNewCopy((GDExtensionUninitializedVariantPtr)(r_return), (GDExtensionConstVariantPtr)(ret.ptr()))
 	log.Debug("end GoCallback_MethodBindBindCall")
 }
 
+// called when godot calls into golang code
+//
 //export GoCallback_MethodBindBindPtrcall
 func GoCallback_MethodBindBindPtrcall(p_method_userdata unsafe.Pointer, p_instance C.GDExtensionClassInstancePtr, p_args *C.GDExtensionConstTypePtr, r_ret C.GDExtensionTypePtr) {
 	bind := (*MethodBind)(p_method_userdata)
+	log.Debug("GoCallback_MethodBindBindPtrcall called",
+		zap.String("bind", bind.String()),
+	)
 	bind.Ptrcall(
 		(GDExtensionClassInstancePtr)(p_instance),
 		(*GDExtensionConstTypePtr)(p_args),
-		(*GDExtensionTypePtr)(&r_ret),
+		(GDExtensionTypePtr)(r_ret),
 	)
 }

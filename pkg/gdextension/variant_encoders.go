@@ -141,10 +141,10 @@ func createGoStringEncoder() ArgumentEncoder[string, *String] {
 		},
 		Encode: func(in string, out unsafe.Pointer) {
 			tOut := (*String)(out)
-			*tOut = NewStringWithLatin1Chars(in)
+			*tOut = NewStringWithUtf8Chars(in)
 		},
 		EncodeArg: func(in string) *String {
-			ret := NewStringWithLatin1Chars(in)
+			ret := NewStringWithUtf8Chars(in)
 			return &ret
 		},
 	}

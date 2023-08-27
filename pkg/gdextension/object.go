@@ -16,11 +16,11 @@ func NewSimpleGDExtensionPropertyInfo(
 ) GDExtensionPropertyInfo {
 	// TODO: move to alloc memory in C?
 	return NewGDExtensionPropertyInfo(
-		NewStringNameWithLatin1Chars(className).AsGDExtensionStringNamePtr(),
+		NewStringNameWithUtf8Chars(className).AsGDExtensionConstStringNamePtr(),
 		variantType,
-		NewStringNameWithLatin1Chars(name).AsGDExtensionStringNamePtr(),
+		NewStringNameWithUtf8Chars(name).AsGDExtensionConstStringNamePtr(),
 		uint32(PROPERTY_HINT_NONE),
-		NewStringWithLatin1Chars("").AsGDExtensionStringPtr(),
+		NewStringWithUtf8Chars("").AsGDExtensionConstStringPtr(),
 		uint32(PROPERTY_USAGE_DEFAULT),
 	)
 }

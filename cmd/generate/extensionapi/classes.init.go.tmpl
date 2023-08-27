@@ -21,7 +21,7 @@ import (
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
 
-func init() {
+func registerEngineClasses() {
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks = NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
 {{ range $i, $c := $view.Classes -}}
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("{{ $c.Name }}",

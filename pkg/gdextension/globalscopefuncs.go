@@ -12,11 +12,11 @@ import (
 )
 
 func getSingleton(name string) GDExtensionObjectPtr {
-	snName := NewStringNameWithLatin1Chars(name)
+	snName := NewStringNameWithUtf8Chars(name)
 	defer snName.Destroy()
 
 	ret := CallFunc_GDExtensionInterfaceGlobalGetSingleton(
-		snName.AsGDExtensionStringNamePtr(),
+		snName.AsGDExtensionConstStringNamePtr(),
 	)
 
 	return (GDExtensionObjectPtr)(ret)

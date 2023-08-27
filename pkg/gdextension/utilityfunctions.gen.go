@@ -25,9 +25,9 @@ import (
 // Sin is under the category "math".
 func Sin(angle_rad float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("sin")
+	fName := NewStringNameWithUtf8Chars("sin")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function sin (2140049587)")
@@ -57,9 +57,9 @@ func Sin(angle_rad float32) float32 {
 // Cos is under the category "math".
 func Cos(angle_rad float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("cos")
+	fName := NewStringNameWithUtf8Chars("cos")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function cos (2140049587)")
@@ -89,9 +89,9 @@ func Cos(angle_rad float32) float32 {
 // Tan is under the category "math".
 func Tan(angle_rad float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("tan")
+	fName := NewStringNameWithUtf8Chars("tan")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function tan (2140049587)")
@@ -121,9 +121,9 @@ func Tan(angle_rad float32) float32 {
 // Sinh is under the category "math".
 func Sinh(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("sinh")
+	fName := NewStringNameWithUtf8Chars("sinh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function sinh (2140049587)")
@@ -153,9 +153,9 @@ func Sinh(x float32) float32 {
 // Cosh is under the category "math".
 func Cosh(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("cosh")
+	fName := NewStringNameWithUtf8Chars("cosh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function cosh (2140049587)")
@@ -185,9 +185,9 @@ func Cosh(x float32) float32 {
 // Tanh is under the category "math".
 func Tanh(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("tanh")
+	fName := NewStringNameWithUtf8Chars("tanh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function tanh (2140049587)")
@@ -217,9 +217,9 @@ func Tanh(x float32) float32 {
 // Asin is under the category "math".
 func Asin(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("asin")
+	fName := NewStringNameWithUtf8Chars("asin")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function asin (2140049587)")
@@ -249,9 +249,9 @@ func Asin(x float32) float32 {
 // Acos is under the category "math".
 func Acos(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("acos")
+	fName := NewStringNameWithUtf8Chars("acos")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function acos (2140049587)")
@@ -281,9 +281,9 @@ func Acos(x float32) float32 {
 // Atan is under the category "math".
 func Atan(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("atan")
+	fName := NewStringNameWithUtf8Chars("atan")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function atan (2140049587)")
@@ -313,9 +313,9 @@ func Atan(x float32) float32 {
 // Atan2 is under the category "math".
 func Atan2(y float32, x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("atan2")
+	fName := NewStringNameWithUtf8Chars("atan2")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function atan2 (92296394)")
@@ -346,9 +346,9 @@ func Atan2(y float32, x float32) float32 {
 // Sqrt is under the category "math".
 func Sqrt(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("sqrt")
+	fName := NewStringNameWithUtf8Chars("sqrt")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function sqrt (2140049587)")
@@ -378,9 +378,9 @@ func Sqrt(x float32) float32 {
 // Fmod is under the category "math".
 func Fmod(x float32, y float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("fmod")
+	fName := NewStringNameWithUtf8Chars("fmod")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function fmod (92296394)")
@@ -411,9 +411,9 @@ func Fmod(x float32, y float32) float32 {
 // Fposmod is under the category "math".
 func Fposmod(x float32, y float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("fposmod")
+	fName := NewStringNameWithUtf8Chars("fposmod")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function fposmod (92296394)")
@@ -444,9 +444,9 @@ func Fposmod(x float32, y float32) float32 {
 // Posmod is under the category "math".
 func Posmod(x int32, y int32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("posmod")
+	fName := NewStringNameWithUtf8Chars("posmod")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function posmod (3133453818)")
@@ -477,9 +477,9 @@ func Posmod(x int32, y int32) int32 {
 // Floor is under the category "math".
 func Floor(x Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("floor")
+	fName := NewStringNameWithUtf8Chars("floor")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function floor (4776452)")
@@ -509,9 +509,9 @@ func Floor(x Variant) Variant {
 // Floorf is under the category "math".
 func Floorf(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("floorf")
+	fName := NewStringNameWithUtf8Chars("floorf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function floorf (2140049587)")
@@ -541,9 +541,9 @@ func Floorf(x float32) float32 {
 // Floori is under the category "math".
 func Floori(x float32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("floori")
+	fName := NewStringNameWithUtf8Chars("floori")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
 
 	if fn == nil {
 		panic("could not find utility function floori (2780425386)")
@@ -573,9 +573,9 @@ func Floori(x float32) int32 {
 // Ceil is under the category "math".
 func Ceil(x Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("ceil")
+	fName := NewStringNameWithUtf8Chars("ceil")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function ceil (4776452)")
@@ -605,9 +605,9 @@ func Ceil(x Variant) Variant {
 // Ceilf is under the category "math".
 func Ceilf(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("ceilf")
+	fName := NewStringNameWithUtf8Chars("ceilf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function ceilf (2140049587)")
@@ -637,9 +637,9 @@ func Ceilf(x float32) float32 {
 // Ceili is under the category "math".
 func Ceili(x float32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("ceili")
+	fName := NewStringNameWithUtf8Chars("ceili")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
 
 	if fn == nil {
 		panic("could not find utility function ceili (2780425386)")
@@ -669,9 +669,9 @@ func Ceili(x float32) int32 {
 // Round is under the category "math".
 func Round(x Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("round")
+	fName := NewStringNameWithUtf8Chars("round")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function round (4776452)")
@@ -701,9 +701,9 @@ func Round(x Variant) Variant {
 // Roundf is under the category "math".
 func Roundf(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("roundf")
+	fName := NewStringNameWithUtf8Chars("roundf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function roundf (2140049587)")
@@ -733,9 +733,9 @@ func Roundf(x float32) float32 {
 // Roundi is under the category "math".
 func Roundi(x float32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("roundi")
+	fName := NewStringNameWithUtf8Chars("roundi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
 
 	if fn == nil {
 		panic("could not find utility function roundi (2780425386)")
@@ -765,9 +765,9 @@ func Roundi(x float32) int32 {
 // Abs is under the category "math".
 func Abs(x Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("abs")
+	fName := NewStringNameWithUtf8Chars("abs")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function abs (4776452)")
@@ -797,9 +797,9 @@ func Abs(x Variant) Variant {
 // Absf is under the category "math".
 func Absf(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("absf")
+	fName := NewStringNameWithUtf8Chars("absf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function absf (2140049587)")
@@ -829,9 +829,9 @@ func Absf(x float32) float32 {
 // Absi is under the category "math".
 func Absi(x int32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("absi")
+	fName := NewStringNameWithUtf8Chars("absi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2157319888)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2157319888)
 
 	if fn == nil {
 		panic("could not find utility function absi (2157319888)")
@@ -861,9 +861,9 @@ func Absi(x int32) int32 {
 // Sign is under the category "math".
 func Sign(x Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("sign")
+	fName := NewStringNameWithUtf8Chars("sign")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function sign (4776452)")
@@ -893,9 +893,9 @@ func Sign(x Variant) Variant {
 // Signf is under the category "math".
 func Signf(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("signf")
+	fName := NewStringNameWithUtf8Chars("signf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function signf (2140049587)")
@@ -925,9 +925,9 @@ func Signf(x float32) float32 {
 // Signi is under the category "math".
 func Signi(x int32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("signi")
+	fName := NewStringNameWithUtf8Chars("signi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2157319888)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2157319888)
 
 	if fn == nil {
 		panic("could not find utility function signi (2157319888)")
@@ -957,9 +957,9 @@ func Signi(x int32) int32 {
 // Snapped is under the category "math".
 func Snapped(x Variant, step Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("snapped")
+	fName := NewStringNameWithUtf8Chars("snapped")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 459914704)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 459914704)
 
 	if fn == nil {
 		panic("could not find utility function snapped (459914704)")
@@ -990,9 +990,9 @@ func Snapped(x Variant, step Variant) Variant {
 // Snappedf is under the category "math".
 func Snappedf(x float32, step float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("snappedf")
+	fName := NewStringNameWithUtf8Chars("snappedf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function snappedf (92296394)")
@@ -1023,9 +1023,9 @@ func Snappedf(x float32, step float32) float32 {
 // Snappedi is under the category "math".
 func Snappedi(x float32, step int32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("snappedi")
+	fName := NewStringNameWithUtf8Chars("snappedi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3570758393)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3570758393)
 
 	if fn == nil {
 		panic("could not find utility function snappedi (3570758393)")
@@ -1056,9 +1056,9 @@ func Snappedi(x float32, step int32) int32 {
 // Pow is under the category "math".
 func Pow(base float32, exp float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("pow")
+	fName := NewStringNameWithUtf8Chars("pow")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function pow (92296394)")
@@ -1089,9 +1089,9 @@ func Pow(base float32, exp float32) float32 {
 // Log is under the category "math".
 func Log(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("log")
+	fName := NewStringNameWithUtf8Chars("log")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function log (2140049587)")
@@ -1121,9 +1121,9 @@ func Log(x float32) float32 {
 // Exp is under the category "math".
 func Exp(x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("exp")
+	fName := NewStringNameWithUtf8Chars("exp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function exp (2140049587)")
@@ -1153,9 +1153,9 @@ func Exp(x float32) float32 {
 // IsNan is under the category "math".
 func IsNan(x float32) bool {
 
-	fName := NewStringNameWithLatin1Chars("is_nan")
+	fName := NewStringNameWithUtf8Chars("is_nan")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
 
 	if fn == nil {
 		panic("could not find utility function is_nan (3569215213)")
@@ -1185,9 +1185,9 @@ func IsNan(x float32) bool {
 // IsInf is under the category "math".
 func IsInf(x float32) bool {
 
-	fName := NewStringNameWithLatin1Chars("is_inf")
+	fName := NewStringNameWithUtf8Chars("is_inf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
 
 	if fn == nil {
 		panic("could not find utility function is_inf (3569215213)")
@@ -1217,9 +1217,9 @@ func IsInf(x float32) bool {
 // IsEqualApprox is under the category "math".
 func IsEqualApprox(a float32, b float32) bool {
 
-	fName := NewStringNameWithLatin1Chars("is_equal_approx")
+	fName := NewStringNameWithUtf8Chars("is_equal_approx")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1400789633)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1400789633)
 
 	if fn == nil {
 		panic("could not find utility function is_equal_approx (1400789633)")
@@ -1250,9 +1250,9 @@ func IsEqualApprox(a float32, b float32) bool {
 // IsZeroApprox is under the category "math".
 func IsZeroApprox(x float32) bool {
 
-	fName := NewStringNameWithLatin1Chars("is_zero_approx")
+	fName := NewStringNameWithUtf8Chars("is_zero_approx")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
 
 	if fn == nil {
 		panic("could not find utility function is_zero_approx (3569215213)")
@@ -1282,9 +1282,9 @@ func IsZeroApprox(x float32) bool {
 // IsFinite is under the category "math".
 func IsFinite(x float32) bool {
 
-	fName := NewStringNameWithLatin1Chars("is_finite")
+	fName := NewStringNameWithUtf8Chars("is_finite")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
 
 	if fn == nil {
 		panic("could not find utility function is_finite (3569215213)")
@@ -1314,9 +1314,9 @@ func IsFinite(x float32) bool {
 // Ease is under the category "math".
 func Ease(x float32, curve float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("ease")
+	fName := NewStringNameWithUtf8Chars("ease")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function ease (92296394)")
@@ -1347,9 +1347,9 @@ func Ease(x float32, curve float32) float32 {
 // StepDecimals is under the category "math".
 func StepDecimals(x float32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("step_decimals")
+	fName := NewStringNameWithUtf8Chars("step_decimals")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
 
 	if fn == nil {
 		panic("could not find utility function step_decimals (2780425386)")
@@ -1379,9 +1379,9 @@ func StepDecimals(x float32) int32 {
 // Lerp is under the category "math".
 func Lerp(from Variant, to Variant, weight Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("lerp")
+	fName := NewStringNameWithUtf8Chars("lerp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3389874542)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3389874542)
 
 	if fn == nil {
 		panic("could not find utility function lerp (3389874542)")
@@ -1413,9 +1413,9 @@ func Lerp(from Variant, to Variant, weight Variant) Variant {
 // Lerpf is under the category "math".
 func Lerpf(from float32, to float32, weight float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("lerpf")
+	fName := NewStringNameWithUtf8Chars("lerpf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function lerpf (998901048)")
@@ -1447,9 +1447,9 @@ func Lerpf(from float32, to float32, weight float32) float32 {
 // CubicInterpolate is under the category "math".
 func CubicInterpolate(from float32, to float32, pre float32, post float32, weight float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("cubic_interpolate")
+	fName := NewStringNameWithUtf8Chars("cubic_interpolate")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate (1090965791)")
@@ -1483,9 +1483,9 @@ func CubicInterpolate(from float32, to float32, pre float32, post float32, weigh
 // CubicInterpolateAngle is under the category "math".
 func CubicInterpolateAngle(from float32, to float32, pre float32, post float32, weight float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("cubic_interpolate_angle")
+	fName := NewStringNameWithUtf8Chars("cubic_interpolate_angle")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_angle (1090965791)")
@@ -1519,9 +1519,9 @@ func CubicInterpolateAngle(from float32, to float32, pre float32, post float32, 
 // CubicInterpolateInTime is under the category "math".
 func CubicInterpolateInTime(from float32, to float32, pre float32, post float32, weight float32, to_t float32, pre_t float32, post_t float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("cubic_interpolate_in_time")
+	fName := NewStringNameWithUtf8Chars("cubic_interpolate_in_time")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 388121036)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 388121036)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_in_time (388121036)")
@@ -1558,9 +1558,9 @@ func CubicInterpolateInTime(from float32, to float32, pre float32, post float32,
 // CubicInterpolateAngleInTime is under the category "math".
 func CubicInterpolateAngleInTime(from float32, to float32, pre float32, post float32, weight float32, to_t float32, pre_t float32, post_t float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("cubic_interpolate_angle_in_time")
+	fName := NewStringNameWithUtf8Chars("cubic_interpolate_angle_in_time")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 388121036)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 388121036)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_angle_in_time (388121036)")
@@ -1597,9 +1597,9 @@ func CubicInterpolateAngleInTime(from float32, to float32, pre float32, post flo
 // BezierInterpolate is under the category "math".
 func BezierInterpolate(start float32, control_1 float32, control_2 float32, end float32, t float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("bezier_interpolate")
+	fName := NewStringNameWithUtf8Chars("bezier_interpolate")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function bezier_interpolate (1090965791)")
@@ -1633,9 +1633,9 @@ func BezierInterpolate(start float32, control_1 float32, control_2 float32, end 
 // BezierDerivative is under the category "math".
 func BezierDerivative(start float32, control_1 float32, control_2 float32, end float32, t float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("bezier_derivative")
+	fName := NewStringNameWithUtf8Chars("bezier_derivative")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function bezier_derivative (1090965791)")
@@ -1669,9 +1669,9 @@ func BezierDerivative(start float32, control_1 float32, control_2 float32, end f
 // LerpAngle is under the category "math".
 func LerpAngle(from float32, to float32, weight float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("lerp_angle")
+	fName := NewStringNameWithUtf8Chars("lerp_angle")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function lerp_angle (998901048)")
@@ -1703,9 +1703,9 @@ func LerpAngle(from float32, to float32, weight float32) float32 {
 // InverseLerp is under the category "math".
 func InverseLerp(from float32, to float32, weight float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("inverse_lerp")
+	fName := NewStringNameWithUtf8Chars("inverse_lerp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function inverse_lerp (998901048)")
@@ -1737,9 +1737,9 @@ func InverseLerp(from float32, to float32, weight float32) float32 {
 // Remap is under the category "math".
 func Remap(value float32, istart float32, istop float32, ostart float32, ostop float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("remap")
+	fName := NewStringNameWithUtf8Chars("remap")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function remap (1090965791)")
@@ -1773,9 +1773,9 @@ func Remap(value float32, istart float32, istop float32, ostart float32, ostop f
 // Smoothstep is under the category "math".
 func Smoothstep(from float32, to float32, x float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("smoothstep")
+	fName := NewStringNameWithUtf8Chars("smoothstep")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function smoothstep (998901048)")
@@ -1807,9 +1807,9 @@ func Smoothstep(from float32, to float32, x float32) float32 {
 // MoveToward is under the category "math".
 func MoveToward(from float32, to float32, delta float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("move_toward")
+	fName := NewStringNameWithUtf8Chars("move_toward")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function move_toward (998901048)")
@@ -1841,9 +1841,9 @@ func MoveToward(from float32, to float32, delta float32) float32 {
 // DegToRad is under the category "math".
 func DegToRad(deg float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("deg_to_rad")
+	fName := NewStringNameWithUtf8Chars("deg_to_rad")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function deg_to_rad (2140049587)")
@@ -1873,9 +1873,9 @@ func DegToRad(deg float32) float32 {
 // RadToDeg is under the category "math".
 func RadToDeg(rad float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("rad_to_deg")
+	fName := NewStringNameWithUtf8Chars("rad_to_deg")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function rad_to_deg (2140049587)")
@@ -1905,9 +1905,9 @@ func RadToDeg(rad float32) float32 {
 // LinearToDb is under the category "math".
 func LinearToDb(lin float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("linear_to_db")
+	fName := NewStringNameWithUtf8Chars("linear_to_db")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function linear_to_db (2140049587)")
@@ -1937,9 +1937,9 @@ func LinearToDb(lin float32) float32 {
 // DbToLinear is under the category "math".
 func DbToLinear(db float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("db_to_linear")
+	fName := NewStringNameWithUtf8Chars("db_to_linear")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function db_to_linear (2140049587)")
@@ -1969,9 +1969,9 @@ func DbToLinear(db float32) float32 {
 // Wrap is under the category "math".
 func Wrap(value Variant, min Variant, max Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("wrap")
+	fName := NewStringNameWithUtf8Chars("wrap")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3389874542)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3389874542)
 
 	if fn == nil {
 		panic("could not find utility function wrap (3389874542)")
@@ -2003,9 +2003,9 @@ func Wrap(value Variant, min Variant, max Variant) Variant {
 // Wrapi is under the category "math".
 func Wrapi(value int32, min int32, max int32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("wrapi")
+	fName := NewStringNameWithUtf8Chars("wrapi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 650295447)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 650295447)
 
 	if fn == nil {
 		panic("could not find utility function wrapi (650295447)")
@@ -2037,9 +2037,9 @@ func Wrapi(value int32, min int32, max int32) int32 {
 // Wrapf is under the category "math".
 func Wrapf(value float32, min float32, max float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("wrapf")
+	fName := NewStringNameWithUtf8Chars("wrapf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function wrapf (998901048)")
@@ -2071,9 +2071,9 @@ func Wrapf(value float32, min float32, max float32) float32 {
 // Max is under the category "math".
 func Max(arg1 Variant, arg2 Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("max")
+	fName := NewStringNameWithUtf8Chars("max")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3896050336)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3896050336)
 
 	if fn == nil {
 		panic("could not find utility function max (3896050336)")
@@ -2104,9 +2104,9 @@ func Max(arg1 Variant, arg2 Variant) Variant {
 // Maxi is under the category "math".
 func Maxi(a int32, b int32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("maxi")
+	fName := NewStringNameWithUtf8Chars("maxi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function maxi (3133453818)")
@@ -2137,9 +2137,9 @@ func Maxi(a int32, b int32) int32 {
 // Maxf is under the category "math".
 func Maxf(a float32, b float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("maxf")
+	fName := NewStringNameWithUtf8Chars("maxf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function maxf (92296394)")
@@ -2170,9 +2170,9 @@ func Maxf(a float32, b float32) float32 {
 // Min is under the category "math".
 func Min(arg1 Variant, arg2 Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("min")
+	fName := NewStringNameWithUtf8Chars("min")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3896050336)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3896050336)
 
 	if fn == nil {
 		panic("could not find utility function min (3896050336)")
@@ -2203,9 +2203,9 @@ func Min(arg1 Variant, arg2 Variant) Variant {
 // Mini is under the category "math".
 func Mini(a int32, b int32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("mini")
+	fName := NewStringNameWithUtf8Chars("mini")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function mini (3133453818)")
@@ -2236,9 +2236,9 @@ func Mini(a int32, b int32) int32 {
 // Minf is under the category "math".
 func Minf(a float32, b float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("minf")
+	fName := NewStringNameWithUtf8Chars("minf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function minf (92296394)")
@@ -2269,9 +2269,9 @@ func Minf(a float32, b float32) float32 {
 // Clamp is under the category "math".
 func Clamp(value Variant, min Variant, max Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("clamp")
+	fName := NewStringNameWithUtf8Chars("clamp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3389874542)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3389874542)
 
 	if fn == nil {
 		panic("could not find utility function clamp (3389874542)")
@@ -2303,9 +2303,9 @@ func Clamp(value Variant, min Variant, max Variant) Variant {
 // Clampi is under the category "math".
 func Clampi(value int32, min int32, max int32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("clampi")
+	fName := NewStringNameWithUtf8Chars("clampi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 650295447)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 650295447)
 
 	if fn == nil {
 		panic("could not find utility function clampi (650295447)")
@@ -2337,9 +2337,9 @@ func Clampi(value int32, min int32, max int32) int32 {
 // Clampf is under the category "math".
 func Clampf(value float32, min float32, max float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("clampf")
+	fName := NewStringNameWithUtf8Chars("clampf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function clampf (998901048)")
@@ -2371,9 +2371,9 @@ func Clampf(value float32, min float32, max float32) float32 {
 // NearestPo2 is under the category "math".
 func NearestPo2(value int32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("nearest_po2")
+	fName := NewStringNameWithUtf8Chars("nearest_po2")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2157319888)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2157319888)
 
 	if fn == nil {
 		panic("could not find utility function nearest_po2 (2157319888)")
@@ -2403,9 +2403,9 @@ func NearestPo2(value int32) int32 {
 // Pingpong is under the category "math".
 func Pingpong(value float32, length float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("pingpong")
+	fName := NewStringNameWithUtf8Chars("pingpong")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function pingpong (92296394)")
@@ -2436,9 +2436,9 @@ func Pingpong(value float32, length float32) float32 {
 // Randomize is under the category "random".
 func Randomize() {
 
-	fName := NewStringNameWithLatin1Chars("randomize")
+	fName := NewStringNameWithUtf8Chars("randomize")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1691721052)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1691721052)
 
 	if fn == nil {
 		panic("could not find utility function randomize (1691721052)")
@@ -2461,9 +2461,9 @@ func Randomize() {
 // Randi is under the category "random".
 func Randi() int32 {
 
-	fName := NewStringNameWithLatin1Chars("randi")
+	fName := NewStringNameWithUtf8Chars("randi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 701202648)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 701202648)
 
 	if fn == nil {
 		panic("could not find utility function randi (701202648)")
@@ -2489,9 +2489,9 @@ func Randi() int32 {
 // Randf is under the category "random".
 func Randf() float32 {
 
-	fName := NewStringNameWithLatin1Chars("randf")
+	fName := NewStringNameWithUtf8Chars("randf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2086227845)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2086227845)
 
 	if fn == nil {
 		panic("could not find utility function randf (2086227845)")
@@ -2517,9 +2517,9 @@ func Randf() float32 {
 // RandiRange is under the category "random".
 func RandiRange(from int32, to int32) int32 {
 
-	fName := NewStringNameWithLatin1Chars("randi_range")
+	fName := NewStringNameWithUtf8Chars("randi_range")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function randi_range (3133453818)")
@@ -2550,9 +2550,9 @@ func RandiRange(from int32, to int32) int32 {
 // RandfRange is under the category "random".
 func RandfRange(from float32, to float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("randf_range")
+	fName := NewStringNameWithUtf8Chars("randf_range")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function randf_range (92296394)")
@@ -2583,9 +2583,9 @@ func RandfRange(from float32, to float32) float32 {
 // Randfn is under the category "random".
 func Randfn(mean float32, deviation float32) float32 {
 
-	fName := NewStringNameWithLatin1Chars("randfn")
+	fName := NewStringNameWithUtf8Chars("randfn")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function randfn (92296394)")
@@ -2616,9 +2616,9 @@ func Randfn(mean float32, deviation float32) float32 {
 // Seed is under the category "random".
 func Seed(base int32) {
 
-	fName := NewStringNameWithLatin1Chars("seed")
+	fName := NewStringNameWithUtf8Chars("seed")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 382931173)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 382931173)
 
 	if fn == nil {
 		panic("could not find utility function seed (382931173)")
@@ -2645,9 +2645,9 @@ func Seed(base int32) {
 // RandFromSeed is under the category "random".
 func RandFromSeed(seed int32) PackedInt64Array {
 
-	fName := NewStringNameWithLatin1Chars("rand_from_seed")
+	fName := NewStringNameWithUtf8Chars("rand_from_seed")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1391063685)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1391063685)
 
 	if fn == nil {
 		panic("could not find utility function rand_from_seed (1391063685)")
@@ -2677,9 +2677,9 @@ func RandFromSeed(seed int32) PackedInt64Array {
 // Weakref is under the category "general".
 func Weakref(obj Variant) Variant {
 
-	fName := NewStringNameWithLatin1Chars("weakref")
+	fName := NewStringNameWithUtf8Chars("weakref")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function weakref (4776452)")
@@ -2709,9 +2709,9 @@ func Weakref(obj Variant) Variant {
 // Typeof is under the category "general".
 func Typeof(variable Variant) int32 {
 
-	fName := NewStringNameWithLatin1Chars("typeof")
+	fName := NewStringNameWithUtf8Chars("typeof")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 326422594)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 326422594)
 
 	if fn == nil {
 		panic("could not find utility function typeof (326422594)")
@@ -2741,9 +2741,9 @@ func Typeof(variable Variant) int32 {
 // Str is under the category "general".
 func Str(arg1 Variant) String {
 
-	fName := NewStringNameWithLatin1Chars("str")
+	fName := NewStringNameWithUtf8Chars("str")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 32569176)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 32569176)
 
 	if fn == nil {
 		panic("could not find utility function str (32569176)")
@@ -2773,9 +2773,9 @@ func Str(arg1 Variant) String {
 // ErrorString is under the category "general".
 func ErrorString(error int32) String {
 
-	fName := NewStringNameWithLatin1Chars("error_string")
+	fName := NewStringNameWithUtf8Chars("error_string")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 942708242)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 942708242)
 
 	if fn == nil {
 		panic("could not find utility function error_string (942708242)")
@@ -2805,9 +2805,9 @@ func ErrorString(error int32) String {
 // Print is under the category "general".
 func Print(arg1 Variant) {
 
-	fName := NewStringNameWithLatin1Chars("print")
+	fName := NewStringNameWithUtf8Chars("print")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function print (2648703342)")
@@ -2834,9 +2834,9 @@ func Print(arg1 Variant) {
 // PrintRich is under the category "general".
 func PrintRich(arg1 Variant) {
 
-	fName := NewStringNameWithLatin1Chars("print_rich")
+	fName := NewStringNameWithUtf8Chars("print_rich")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function print_rich (2648703342)")
@@ -2863,9 +2863,9 @@ func PrintRich(arg1 Variant) {
 // Printerr is under the category "general".
 func Printerr(arg1 Variant) {
 
-	fName := NewStringNameWithLatin1Chars("printerr")
+	fName := NewStringNameWithUtf8Chars("printerr")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function printerr (2648703342)")
@@ -2892,9 +2892,9 @@ func Printerr(arg1 Variant) {
 // Printt is under the category "general".
 func Printt(arg1 Variant) {
 
-	fName := NewStringNameWithLatin1Chars("printt")
+	fName := NewStringNameWithUtf8Chars("printt")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function printt (2648703342)")
@@ -2921,9 +2921,9 @@ func Printt(arg1 Variant) {
 // Prints is under the category "general".
 func Prints(arg1 Variant) {
 
-	fName := NewStringNameWithLatin1Chars("prints")
+	fName := NewStringNameWithUtf8Chars("prints")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function prints (2648703342)")
@@ -2950,9 +2950,9 @@ func Prints(arg1 Variant) {
 // Printraw is under the category "general".
 func Printraw(arg1 Variant) {
 
-	fName := NewStringNameWithLatin1Chars("printraw")
+	fName := NewStringNameWithUtf8Chars("printraw")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function printraw (2648703342)")
@@ -2979,9 +2979,9 @@ func Printraw(arg1 Variant) {
 // PrintVerbose is under the category "general".
 func PrintVerbose(arg1 Variant) {
 
-	fName := NewStringNameWithLatin1Chars("print_verbose")
+	fName := NewStringNameWithUtf8Chars("print_verbose")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function print_verbose (2648703342)")
@@ -3008,9 +3008,9 @@ func PrintVerbose(arg1 Variant) {
 // PushError is under the category "general".
 func PushError(arg1 Variant) {
 
-	fName := NewStringNameWithLatin1Chars("push_error")
+	fName := NewStringNameWithUtf8Chars("push_error")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function push_error (2648703342)")
@@ -3037,9 +3037,9 @@ func PushError(arg1 Variant) {
 // PushWarning is under the category "general".
 func PushWarning(arg1 Variant) {
 
-	fName := NewStringNameWithLatin1Chars("push_warning")
+	fName := NewStringNameWithUtf8Chars("push_warning")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function push_warning (2648703342)")
@@ -3066,9 +3066,9 @@ func PushWarning(arg1 Variant) {
 // VarToStr is under the category "general".
 func VarToStr(variable Variant) String {
 
-	fName := NewStringNameWithLatin1Chars("var_to_str")
+	fName := NewStringNameWithUtf8Chars("var_to_str")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 866625479)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 866625479)
 
 	if fn == nil {
 		panic("could not find utility function var_to_str (866625479)")
@@ -3098,9 +3098,9 @@ func VarToStr(variable Variant) String {
 // StrToVar is under the category "general".
 func StrToVar(string String) Variant {
 
-	fName := NewStringNameWithLatin1Chars("str_to_var")
+	fName := NewStringNameWithUtf8Chars("str_to_var")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1891498491)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1891498491)
 
 	if fn == nil {
 		panic("could not find utility function str_to_var (1891498491)")
@@ -3130,9 +3130,9 @@ func StrToVar(string String) Variant {
 // VarToBytes is under the category "general".
 func VarToBytes(variable Variant) PackedByteArray {
 
-	fName := NewStringNameWithLatin1Chars("var_to_bytes")
+	fName := NewStringNameWithUtf8Chars("var_to_bytes")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2947269930)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2947269930)
 
 	if fn == nil {
 		panic("could not find utility function var_to_bytes (2947269930)")
@@ -3162,9 +3162,9 @@ func VarToBytes(variable Variant) PackedByteArray {
 // BytesToVar is under the category "general".
 func BytesToVar(bytes PackedByteArray) Variant {
 
-	fName := NewStringNameWithLatin1Chars("bytes_to_var")
+	fName := NewStringNameWithUtf8Chars("bytes_to_var")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4249819452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4249819452)
 
 	if fn == nil {
 		panic("could not find utility function bytes_to_var (4249819452)")
@@ -3194,9 +3194,9 @@ func BytesToVar(bytes PackedByteArray) Variant {
 // VarToBytesWithObjects is under the category "general".
 func VarToBytesWithObjects(variable Variant) PackedByteArray {
 
-	fName := NewStringNameWithLatin1Chars("var_to_bytes_with_objects")
+	fName := NewStringNameWithUtf8Chars("var_to_bytes_with_objects")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2947269930)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2947269930)
 
 	if fn == nil {
 		panic("could not find utility function var_to_bytes_with_objects (2947269930)")
@@ -3226,9 +3226,9 @@ func VarToBytesWithObjects(variable Variant) PackedByteArray {
 // BytesToVarWithObjects is under the category "general".
 func BytesToVarWithObjects(bytes PackedByteArray) Variant {
 
-	fName := NewStringNameWithLatin1Chars("bytes_to_var_with_objects")
+	fName := NewStringNameWithUtf8Chars("bytes_to_var_with_objects")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4249819452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4249819452)
 
 	if fn == nil {
 		panic("could not find utility function bytes_to_var_with_objects (4249819452)")
@@ -3258,9 +3258,9 @@ func BytesToVarWithObjects(bytes PackedByteArray) Variant {
 // Hash is under the category "general".
 func Hash(variable Variant) int32 {
 
-	fName := NewStringNameWithLatin1Chars("hash")
+	fName := NewStringNameWithUtf8Chars("hash")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 326422594)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 326422594)
 
 	if fn == nil {
 		panic("could not find utility function hash (326422594)")
@@ -3290,9 +3290,9 @@ func Hash(variable Variant) int32 {
 // InstanceFromId is under the category "general".
 func InstanceFromId(instance_id int32) Object {
 
-	fName := NewStringNameWithLatin1Chars("instance_from_id")
+	fName := NewStringNameWithUtf8Chars("instance_from_id")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1156694636)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1156694636)
 
 	if fn == nil {
 		panic("could not find utility function instance_from_id (1156694636)")
@@ -3322,9 +3322,9 @@ func InstanceFromId(instance_id int32) Object {
 // IsInstanceIdValid is under the category "general".
 func IsInstanceIdValid(id int32) bool {
 
-	fName := NewStringNameWithLatin1Chars("is_instance_id_valid")
+	fName := NewStringNameWithUtf8Chars("is_instance_id_valid")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2232439758)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2232439758)
 
 	if fn == nil {
 		panic("could not find utility function is_instance_id_valid (2232439758)")
@@ -3354,9 +3354,9 @@ func IsInstanceIdValid(id int32) bool {
 // IsInstanceValid is under the category "general".
 func IsInstanceValid(instance Variant) bool {
 
-	fName := NewStringNameWithLatin1Chars("is_instance_valid")
+	fName := NewStringNameWithUtf8Chars("is_instance_valid")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 996128841)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 996128841)
 
 	if fn == nil {
 		panic("could not find utility function is_instance_valid (996128841)")
@@ -3386,9 +3386,9 @@ func IsInstanceValid(instance Variant) bool {
 // RidAllocateId is under the category "general".
 func RidAllocateId() int32 {
 
-	fName := NewStringNameWithLatin1Chars("rid_allocate_id")
+	fName := NewStringNameWithUtf8Chars("rid_allocate_id")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 701202648)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 701202648)
 
 	if fn == nil {
 		panic("could not find utility function rid_allocate_id (701202648)")
@@ -3414,9 +3414,9 @@ func RidAllocateId() int32 {
 // RidFromInt64 is under the category "general".
 func RidFromInt64(base int32) RID {
 
-	fName := NewStringNameWithLatin1Chars("rid_from_int64")
+	fName := NewStringNameWithUtf8Chars("rid_from_int64")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3426892196)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3426892196)
 
 	if fn == nil {
 		panic("could not find utility function rid_from_int64 (3426892196)")
@@ -3446,9 +3446,9 @@ func RidFromInt64(base int32) RID {
 // IsSame is under the category "general".
 func IsSame(a Variant, b Variant) bool {
 
-	fName := NewStringNameWithLatin1Chars("is_same")
+	fName := NewStringNameWithUtf8Chars("is_same")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1409423524)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1409423524)
 
 	if fn == nil {
 		panic("could not find utility function is_same (1409423524)")

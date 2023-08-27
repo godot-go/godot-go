@@ -13,6 +13,7 @@ import (
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
+	_ "github.com/ianlancetaylor/cgosymbolizer"
 	"go.uber.org/zap"
 )
 
@@ -44,7 +45,7 @@ func _GDExtensionBindingInit(
 	pLibrary GDExtensionClassLibraryPtr,
 	rInitialization *GDExtensionInitialization,
 ) bool {
-	C.enablePrintStacktrace = log.GetLevel() == log.DebugLevel
+	// C.enablePrintStacktrace = log.GetLevel() == log.DebugLevel
 
 	internal.gdNativeInstances = NewSyncMap[ObjectID, GDExtensionClass]()
 	internal.gdClassInstances = NewSyncMap[GDObjectInstanceID, GDClass]()
@@ -120,6 +121,7 @@ func _GDExtensionBindingInit(
 	FFI.StringNewWithUtf16CharsAndLen = (GDExtensionInterfaceStringNewWithUtf16CharsAndLen)(LoadProcAddress("string_new_with_utf16_chars_and_len"))
 	FFI.StringNewWithUtf32CharsAndLen = (GDExtensionInterfaceStringNewWithUtf32CharsAndLen)(LoadProcAddress("string_new_with_utf32_chars_and_len"))
 	FFI.StringNewWithWideCharsAndLen = (GDExtensionInterfaceStringNewWithWideCharsAndLen)(LoadProcAddress("string_new_with_wide_chars_and_len"))
+	FFI.StringResize = (GDExtensionInterfaceStringResize)(LoadProcAddress("string_resize"))
 	FFI.StringToLatin1Chars = (GDExtensionInterfaceStringToLatin1Chars)(LoadProcAddress("string_to_latin1_chars"))
 	FFI.StringToUtf8Chars = (GDExtensionInterfaceStringToUtf8Chars)(LoadProcAddress("string_to_utf8_chars"))
 	FFI.StringToUtf16Chars = (GDExtensionInterfaceStringToUtf16Chars)(LoadProcAddress("string_to_utf16_chars"))
@@ -172,6 +174,7 @@ func _GDExtensionBindingInit(
 	FFI.ObjectCastTo = (GDExtensionInterfaceObjectCastTo)(LoadProcAddress("object_cast_to"))
 	FFI.ObjectGetInstanceFromId = (GDExtensionInterfaceObjectGetInstanceFromId)(LoadProcAddress("object_get_instance_from_id"))
 	FFI.ObjectGetInstanceId = (GDExtensionInterfaceObjectGetInstanceId)(LoadProcAddress("object_get_instance_id"))
+	FFI.ObjectGetScriptInstance = (GDExtensionInterfaceObjectGetScriptInstance)(LoadProcAddress("object_get_script_instance"))
 	FFI.RefGetObject = (GDExtensionInterfaceRefGetObject)(LoadProcAddress("ref_get_object"))
 	FFI.RefSetObject = (GDExtensionInterfaceRefSetObject)(LoadProcAddress("ref_set_object"))
 	FFI.ScriptInstanceCreate = (GDExtensionInterfaceScriptInstanceCreate)(LoadProcAddress("script_instance_create"))
@@ -183,6 +186,7 @@ func _GDExtensionBindingInit(
 	FFI.ClassdbRegisterExtensionClassIntegerConstant = (GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant)(LoadProcAddress("classdb_register_extension_class_integer_constant"))
 	FFI.ClassdbRegisterExtensionClassProperty = (GDExtensionInterfaceClassdbRegisterExtensionClassProperty)(LoadProcAddress("classdb_register_extension_class_property"))
 	FFI.ClassdbRegisterExtensionClassPropertyGroup = (GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup)(LoadProcAddress("classdb_register_extension_class_property_group"))
+	FFI.ClassdbRegisterExtensionClassPropertyIndexed = (GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed)(LoadProcAddress("classdb_register_extension_class_property_indexed"))
 	FFI.ClassdbRegisterExtensionClassPropertySubgroup = (GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup)(LoadProcAddress("classdb_register_extension_class_property_subgroup"))
 	FFI.ClassdbRegisterExtensionClassSignal = (GDExtensionInterfaceClassdbRegisterExtensionClassSignal)(LoadProcAddress("classdb_register_extension_class_signal"))
 	FFI.ClassdbUnregisterExtensionClass = (GDExtensionInterfaceClassdbUnregisterExtensionClass)(LoadProcAddress("classdb_unregister_extension_class"))
@@ -218,6 +222,7 @@ func _GDExtensionBindingInit(
 	}
 
 	variantInitBindings()
+	registerEngineClasses()
 
 	return true
 }
@@ -244,36 +249,36 @@ func GDExtensionBindingDeinitializeLevel(userdata unsafe.Pointer, pLevel C.GDExt
 	}
 }
 
-func GDExtensionBindingCreateInstanceCallback(pToken unsafe.Pointer, pInstance unsafe.Pointer) Wrapped {
-	if pToken != unsafe.Pointer(FFI.Library) {
-		panic("Asking for creating instance with invalid token.")
-	}
+// func GDExtensionBindingCreateInstanceCallback(pToken unsafe.Pointer, pInstance unsafe.Pointer) Wrapped {
+// 	if pToken != unsafe.Pointer(FFI.Library) {
+// 		panic("Asking for creating instance with invalid token.")
+// 	}
 
-	owner := (*GodotObject)(pInstance)
+// 	owner := (*GodotObject)(pInstance)
 
-	id := CallFunc_GDExtensionInterfaceObjectGetInstanceId((GDExtensionConstObjectPtr)(owner))
+// 	id := CallFunc_GDExtensionInterfaceObjectGetInstanceId((GDExtensionConstObjectPtr)(owner))
 
-	log.Debug("GDExtensionBindingCreateInstanceCallback called", zap.Any("id", id))
+// 	log.Debug("GDExtensionBindingCreateInstanceCallback called", zap.Any("id", id))
 
-	obj := NewGDExtensionClassFromObjectOwner(owner).(Object)
+// 	obj := NewGDExtensionClassFromObjectOwner(owner).(Object)
 
-	strClass := obj.GetClass()
+// 	strClass := obj.GetClass()
 
-	cn := strClass.ToAscii()
+// 	cn := strClass.ToAscii()
 
-	w := obj.CastTo(cn)
-	return w
-}
+// 	w := obj.CastTo(cn)
+// 	return w
+// }
 
-func GDExtensionBindingFreeInstanceCallback(pToken unsafe.Pointer, pInstance unsafe.Pointer, pBinding unsafe.Pointer) {
-	if pToken != unsafe.Pointer(FFI.Library) {
-		panic("Asking for freeing instance with invalid token.")
-	}
+// func GDExtensionBindingFreeInstanceCallback(pToken unsafe.Pointer, pInstance unsafe.Pointer, pBinding unsafe.Pointer) {
+// 	if pToken != unsafe.Pointer(FFI.Library) {
+// 		panic("Asking for freeing instance with invalid token.")
+// 	}
 
-	w := (*WrappedImpl)(pBinding)
+// 	w := (*WrappedImpl)(pBinding)
 
-	CallFunc_GDExtensionInterfaceObjectDestroy((GDExtensionObjectPtr)(w.Owner))
-}
+// 	CallFunc_GDExtensionInterfaceObjectDestroy((GDExtensionObjectPtr)(w.Owner))
+// }
 
 type InitObject struct {
 	getProcAddress GDExtensionInterfaceGetProcAddress

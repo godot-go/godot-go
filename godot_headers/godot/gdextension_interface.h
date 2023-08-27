@@ -266,6 +266,8 @@ typedef void (*GDExtensionClassCallVirtual)(GDExtensionClassInstancePtr p_instan
 typedef GDExtensionObjectPtr (*GDExtensionClassCreateInstance)(void *p_userdata);
 typedef void (*GDExtensionClassFreeInstance)(void *p_userdata, GDExtensionClassInstancePtr p_instance);
 typedef GDExtensionClassCallVirtual (*GDExtensionClassGetVirtual)(void *p_userdata, GDExtensionConstStringNamePtr p_name);
+typedef void *(*GDExtensionClassGetVirtuaCallData)(void *p_userdata, GDExtensionConstStringNamePtr p_name);
+typedef void (*GDExtensionClassCallVirtualWithData)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, void *p_userdata, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 
 typedef struct {
 	GDExtensionBool is_virtual;
@@ -283,6 +285,12 @@ typedef struct {
 	GDExtensionClassCreateInstance create_instance_func; // (Default) constructor; mandatory. If the class is not instantiable, consider making it virtual or abstract.
 	GDExtensionClassFreeInstance free_instance_func; // Destructor; mandatory.
 	GDExtensionClassGetVirtual get_virtual_func; // Queries a virtual function by name and returns a callback to invoke the requested virtual function.
+	// Can be used instead of `get_virtual_func`. Returns user data that will be passed to `call_virtual_func`.
+	// Returning `NULL` from this function signals to Godot that the virtual function is not overridden.
+	// Data returned from this function should be managed by the extension and must be valid until the extension is deinitialized.
+	GDExtensionClassGetVirtuaCallData get_virtual_call_data_func;
+	// Used to call virtual functions when `get_virtual_call_data_func` is not null.
+	GDExtensionClassCallVirtualWithData call_virtual_func;
 	GDExtensionClassGetRID get_rid_func;
 	void *class_userdata; // Per-class user data, later accessible in instance bindings.
 } GDExtensionClassCreationInfo;
@@ -1526,6 +1534,25 @@ typedef void (*GDExtensionInterfaceStringOperatorPlusEqWcstr)(GDExtensionStringP
  */
 typedef void (*GDExtensionInterfaceStringOperatorPlusEqC32str)(GDExtensionStringPtr p_self, const char32_t *p_b);
 
+/**
+ * @name string_resize
+ * @since 4.2
+ *
+ * Resizes the underlying string data to the given number of characters.
+ *
+ * Space needs to be allocated for the null terminating character ('\0') which
+ * also must be added manually, in order for all string functions to work correctly.
+ *
+ * Warning: This is an error-prone operation - only use it if there's no other
+ * efficient way to accomplish your goal.
+ *
+ * @param p_self A pointer to the String.
+ * @param p_resize The new length for the String.
+ *
+ * @return Error code signifying if the operation successful.
+ */
+typedef GDExtensionInt (*GDExtensionInterfaceStringResize)(GDExtensionStringPtr p_self, GDExtensionInt p_resize);
+
 /* INTERFACE: XMLParser Utilities */
 
 /**
@@ -2107,6 +2134,19 @@ typedef void (*GDExtensionInterfaceRefSetObject)(GDExtensionRefPtr p_ref, GDExte
  */
 typedef GDExtensionScriptInstancePtr (*GDExtensionInterfaceScriptInstanceCreate)(const GDExtensionScriptInstanceInfo *p_info, GDExtensionScriptInstanceDataPtr p_instance_data);
 
+/**
+ * @name object_get_script_instance
+ * @since 4.2
+ *
+ * Get the script instance data attached to this object.
+ *
+ * @param p_object A pointer to the Object.
+ * @param p_language A pointer to the language expected for this script instance.
+ *
+ * @return A GDExtensionScriptInstanceDataPtr that was attached to this object as part of script_instance_create.
+ */
+typedef GDExtensionScriptInstanceDataPtr (*GDExtensionInterfaceObjectGetScriptInstance)(GDExtensionConstObjectPtr p_object, GDExtensionObjectPtr p_language);
+
 /* INTERFACE: ClassDB */
 
 /**
@@ -2210,6 +2250,23 @@ typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant)
  * @param p_getter A pointer to a StringName with the name of the getter method.
  */
 typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClassProperty)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, const GDExtensionPropertyInfo *p_info, GDExtensionConstStringNamePtr p_setter, GDExtensionConstStringNamePtr p_getter);
+
+/**
+ * @name classdb_register_extension_class_property_indexed
+ * @since 4.2
+ *
+ * Registers an indexed property on an extension class in the ClassDB.
+ *
+ * Provided struct can be safely freed once the function returns.
+ *
+ * @param p_library A pointer the library received by the GDExtension's entry point function.
+ * @param p_class_name A pointer to a StringName with the class name.
+ * @param p_info A pointer to a GDExtensionPropertyInfo struct.
+ * @param p_setter A pointer to a StringName with the name of the setter method.
+ * @param p_getter A pointer to a StringName with the name of the getter method.
+ * @param p_index The index to pass as the first argument to the getter and setter methods.
+ */
+typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, const GDExtensionPropertyInfo *p_info, GDExtensionConstStringNamePtr p_setter, GDExtensionConstStringNamePtr p_getter, GDExtensionInt p_index);
 
 /**
  * @name classdb_register_extension_class_property_group

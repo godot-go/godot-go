@@ -1144,6 +1144,16 @@ const (
 	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_MAX                                    = 17
 )
 
+type DisplayServerFileDialogMode int
+
+const (
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_FILE  DisplayServerFileDialogMode = 0
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_FILES                             = 1
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_DIR                               = 2
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_ANY                               = 3
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_SAVE_FILE                              = 4
+)
+
 type DisplayServerWindowMode int
 
 const (
@@ -1519,6 +1529,23 @@ const (
 	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_ZSTD                              = 2
 	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_GZIP                              = 3
 	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_BROTLI                            = 4
+)
+
+type FileAccessUnixPermissionFlags int
+
+const (
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_READ_OWNER        FileAccessUnixPermissionFlags = 256
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_OWNER                                     = 128
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_OWNER                                   = 64
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_READ_GROUP                                      = 32
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_GROUP                                     = 16
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_GROUP                                   = 8
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_READ_OTHER                                      = 4
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_OTHER                                     = 2
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_OTHER                                   = 1
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_SET_USER_ID                                     = 2048
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_SET_GROUP_ID                                    = 1024
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_RESTRICTED_DELETE                               = 512
 )
 
 type FileDialogFileMode int
@@ -3496,11 +3523,13 @@ const (
 type RenderingDeviceBarrierMask int
 
 const (
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_RASTER       RenderingDeviceBarrierMask = 1
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_VERTEX       RenderingDeviceBarrierMask = 1
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_FRAGMENT                                = 8
 	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_COMPUTE                                 = 2
 	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_TRANSFER                                = 4
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_ALL_BARRIERS                            = 7
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_NO_BARRIER                              = 8
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_RASTER                                  = 9
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_ALL_BARRIERS                            = 32767
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_NO_BARRIER                              = 32768
 )
 
 type RenderingDeviceTextureType int
@@ -5449,6 +5478,14 @@ const (
 	TILE_SET_TERRAIN_MODE_TERRAIN_MODE_MATCH_SIDES                                = 2
 )
 
+type TileSetAtlasSourceTileAnimationMode int
+
+const (
+	TILE_SET_ATLAS_SOURCE_TILE_ANIMATION_MODE_TILE_ANIMATION_MODE_DEFAULT            TileSetAtlasSourceTileAnimationMode = 0
+	TILE_SET_ATLAS_SOURCE_TILE_ANIMATION_MODE_TILE_ANIMATION_MODE_RANDOM_START_TIMES                                     = 1
+	TILE_SET_ATLAS_SOURCE_TILE_ANIMATION_MODE_TILE_ANIMATION_MODE_MAX                                                    = 2
+)
+
 type TimeMonth int
 
 const (
@@ -6490,6 +6527,13 @@ const (
 	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_KEEP_WIDTH                           = 2
 	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_KEEP_HEIGHT                          = 3
 	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_EXPAND                               = 4
+)
+
+type WindowContentScaleStretch int
+
+const (
+	WINDOW_CONTENT_SCALE_STRETCH_CONTENT_SCALE_STRETCH_FRACTIONAL WindowContentScaleStretch = 0
+	WINDOW_CONTENT_SCALE_STRETCH_CONTENT_SCALE_STRETCH_INTEGER                              = 1
 )
 
 type WindowLayoutDirection int

@@ -119,6 +119,14 @@ GDExtensionClassCallVirtual
 cgo_callfn_GDExtensionClassGetVirtual(const GDExtensionClassGetVirtual fn,
                                       void *p_userdata,
                                       GDExtensionConstStringNamePtr p_name);
+void *cgo_callfn_GDExtensionClassGetVirtuaCallData(
+    const GDExtensionClassGetVirtuaCallData fn, void *p_userdata,
+    GDExtensionConstStringNamePtr p_name);
+void cgo_callfn_GDExtensionClassCallVirtualWithData(
+    const GDExtensionClassCallVirtualWithData fn,
+    GDExtensionClassInstancePtr p_instance,
+    GDExtensionConstStringNamePtr p_name, void *p_userdata,
+    const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 void cgo_callfn_GDExtensionClassMethodCall(
     const GDExtensionClassMethodCall fn, void *method_userdata,
     GDExtensionClassInstancePtr p_instance,
@@ -510,6 +518,9 @@ void cgo_callfn_GDExtensionInterfaceStringOperatorPlusEqWcstr(
 void cgo_callfn_GDExtensionInterfaceStringOperatorPlusEqC32str(
     const GDExtensionInterfaceStringOperatorPlusEqC32str fn,
     GDExtensionStringPtr p_self, const char32_t *p_b);
+GDExtensionInt cgo_callfn_GDExtensionInterfaceStringResize(
+    const GDExtensionInterfaceStringResize fn, GDExtensionStringPtr p_self,
+    GDExtensionInt p_resize);
 GDExtensionInt cgo_callfn_GDExtensionInterfaceXmlParserOpenBuffer(
     const GDExtensionInterfaceXmlParserOpenBuffer fn,
     GDExtensionObjectPtr p_instance, const uint8_t *p_buffer, size_t p_size);
@@ -662,6 +673,10 @@ cgo_callfn_GDExtensionInterfaceScriptInstanceCreate(
     const GDExtensionInterfaceScriptInstanceCreate fn,
     const GDExtensionScriptInstanceInfo *p_info,
     GDExtensionScriptInstanceDataPtr p_instance_data);
+GDExtensionScriptInstanceDataPtr
+cgo_callfn_GDExtensionInterfaceObjectGetScriptInstance(
+    const GDExtensionInterfaceObjectGetScriptInstance fn,
+    GDExtensionConstObjectPtr p_object, GDExtensionObjectPtr p_language);
 GDExtensionObjectPtr cgo_callfn_GDExtensionInterfaceClassdbConstructObject(
     const GDExtensionInterfaceClassdbConstructObject fn,
     GDExtensionConstStringNamePtr p_classname);
@@ -697,6 +712,13 @@ void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClassProperty(
     const GDExtensionPropertyInfo *p_info,
     GDExtensionConstStringNamePtr p_setter,
     GDExtensionConstStringNamePtr p_getter);
+void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed(
+    const GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed fn,
+    GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    const GDExtensionPropertyInfo *p_info,
+    GDExtensionConstStringNamePtr p_setter,
+    GDExtensionConstStringNamePtr p_getter, GDExtensionInt p_index);
 void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup(
     const GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup fn,
     GDExtensionClassLibraryPtr p_library,

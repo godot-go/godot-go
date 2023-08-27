@@ -82,6 +82,7 @@ type GDExtensionInterface struct {
 	StringNewWithUtf16CharsAndLen                 GDExtensionInterfaceStringNewWithUtf16CharsAndLen
 	StringNewWithUtf32CharsAndLen                 GDExtensionInterfaceStringNewWithUtf32CharsAndLen
 	StringNewWithWideCharsAndLen                  GDExtensionInterfaceStringNewWithWideCharsAndLen
+	StringResize                                  GDExtensionInterfaceStringResize
 	StringToLatin1Chars                           GDExtensionInterfaceStringToLatin1Chars
 	StringToUtf8Chars                             GDExtensionInterfaceStringToUtf8Chars
 	StringToUtf16Chars                            GDExtensionInterfaceStringToUtf16Chars
@@ -134,6 +135,7 @@ type GDExtensionInterface struct {
 	ObjectCastTo                                  GDExtensionInterfaceObjectCastTo
 	ObjectGetInstanceFromId                       GDExtensionInterfaceObjectGetInstanceFromId
 	ObjectGetInstanceId                           GDExtensionInterfaceObjectGetInstanceId
+	ObjectGetScriptInstance                       GDExtensionInterfaceObjectGetScriptInstance
 	RefGetObject                                  GDExtensionInterfaceRefGetObject
 	RefSetObject                                  GDExtensionInterfaceRefSetObject
 	ScriptInstanceCreate                          GDExtensionInterfaceScriptInstanceCreate
@@ -145,6 +147,7 @@ type GDExtensionInterface struct {
 	ClassdbRegisterExtensionClassIntegerConstant  GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
 	ClassdbRegisterExtensionClassProperty         GDExtensionInterfaceClassdbRegisterExtensionClassProperty
 	ClassdbRegisterExtensionClassPropertyGroup    GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup
+	ClassdbRegisterExtensionClassPropertyIndexed  GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed
 	ClassdbRegisterExtensionClassPropertySubgroup GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup
 	ClassdbRegisterExtensionClassSignal           GDExtensionInterfaceClassdbRegisterExtensionClassSignal
 	ClassdbUnregisterExtensionClass               GDExtensionInterfaceClassdbUnregisterExtensionClass

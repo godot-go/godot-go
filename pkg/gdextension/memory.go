@@ -13,11 +13,34 @@ import (
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 
 	"github.com/CannibalVox/cgoalloc"
+	"github.com/godot-go/godot-go/pkg/log"
+	"go.uber.org/zap"
+)
+
+const (
+	MaxAllocBytes = 2 << 28
 )
 
 // AllocCopy returns a duplicated data allocated in C memory.
 func AllocCopy(src unsafe.Pointer, bytes int) unsafe.Pointer {
+	switch {
+	case bytes < 0:
+		log.Panic("invalid memory",
+			zap.Int("bytes", bytes),
+		)
+	case bytes >= MaxAllocBytes:
+		log.Panic("memory too large",
+			zap.Int("bytes", bytes),
+		)
+	}
+
 	m := CallFunc_GDExtensionInterfaceMemAlloc(uint64(bytes))
+
+	if m == nullptr {
+		log.Panic("memory allocation failure",
+			zap.Int("bytes", bytes),
+		)
+	}
 
 	C.memcpy(m, src, C.size_t(bytes))
 
@@ -26,7 +49,24 @@ func AllocCopy(src unsafe.Pointer, bytes int) unsafe.Pointer {
 
 // AllocZeros returns zeroed out bytes allocated in C memory.
 func AllocZeros(bytes int) unsafe.Pointer {
+	switch {
+	case bytes < 0:
+		log.Panic("invalid memory",
+			zap.Int("bytes", bytes),
+		)
+	case bytes >= MaxAllocBytes:
+		log.Panic("memory too large",
+			zap.Int("bytes", bytes),
+		)
+	}
+
 	m := CallFunc_GDExtensionInterfaceMemAlloc(uint64(bytes))
+
+	if m == nullptr {
+		log.Panic("memory allocation failure",
+			zap.Int("bytes", bytes),
+		)
+	}
 
 	C.memset(m, 0, C.size_t(bytes))
 

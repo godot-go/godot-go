@@ -20,7 +20,7 @@ import (
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
 
-func init() {
+func registerEngineClasses() {
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks = NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AESContext",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -1594,6 +1594,12 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GLTFDocumentExtensionPhysics),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GLTFDocumentExtensionPhysics),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GLTFDocumentExtensionTextureKTX",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GLTFDocumentExtensionTextureKTX),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GLTFDocumentExtensionTextureKTX),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GLTFDocumentExtensionTextureKTX),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GLTFDocumentExtensionTextureWebP",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GLTFDocumentExtensionTextureWebP),
@@ -2644,6 +2650,12 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OmniLight3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OmniLight3D),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRAPIExtension",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRAPIExtension),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRAPIExtension),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRAPIExtension),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRAction",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRAction),
@@ -2661,6 +2673,12 @@ func init() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRActionSet),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRActionSet),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRActionSet),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRExtensionWrapperExtension",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRExtensionWrapperExtension),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRExtensionWrapperExtension),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRExtensionWrapperExtension),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRHand",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -3340,6 +3358,30 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_RemoteTransform3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_RemoteTransform3D),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RenderSceneBuffers",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RenderSceneBuffers),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_RenderSceneBuffers),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_RenderSceneBuffers),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RenderSceneBuffersConfiguration",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RenderSceneBuffersConfiguration),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_RenderSceneBuffersConfiguration),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_RenderSceneBuffersConfiguration),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RenderSceneBuffersExtension",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RenderSceneBuffersExtension),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_RenderSceneBuffersExtension),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_RenderSceneBuffersExtension),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RenderSceneBuffersRD",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RenderSceneBuffersRD),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_RenderSceneBuffersRD),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_RenderSceneBuffersRD),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RenderingDevice",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RenderingDevice),
@@ -3381,6 +3423,96 @@ func init() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporter),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporter),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporter),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterBMFont",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterBMFont),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterBMFont),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterBMFont),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterBitMap",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterBitMap),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterBitMap),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterBitMap),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterCSVTranslation",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterCSVTranslation),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterCSVTranslation),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterCSVTranslation),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterDynamicFont",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterDynamicFont),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterDynamicFont),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterDynamicFont),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterImage",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterImage),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterImage),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterImage),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterImageFont",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterImageFont),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterImageFont),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterImageFont),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterLayeredTexture",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterLayeredTexture),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterLayeredTexture),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterLayeredTexture),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterMP3",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterMP3),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterMP3),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterMP3),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterOBJ",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterOBJ),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterOBJ),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterOBJ),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterOggVorbis",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterOggVorbis),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterOggVorbis),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterOggVorbis),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterScene",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterScene),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterScene),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterScene),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterShaderFile",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterShaderFile),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterShaderFile),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterShaderFile),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterTexture",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterTexture),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterTexture),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterTexture),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterTextureAtlas",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterTextureAtlas),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterTextureAtlas),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterTextureAtlas),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceImporterWAV",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ResourceImporterWAV),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ResourceImporterWAV),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ResourceImporterWAV),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ResourceLoader",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -4006,11 +4138,29 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_Texture2DArray),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_Texture2DArray),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("Texture2DArrayRD",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_Texture2DArrayRD),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_Texture2DArrayRD),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_Texture2DArrayRD),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("Texture2DRD",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_Texture2DRD),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_Texture2DRD),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_Texture2DRD),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("Texture3D",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_Texture3D),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_Texture3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_Texture3D),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("Texture3DRD",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_Texture3DRD),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_Texture3DRD),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_Texture3DRD),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("TextureButton",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -4018,11 +4168,29 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_TextureButton),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_TextureButton),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("TextureCubemapArrayRD",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_TextureCubemapArrayRD),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_TextureCubemapArrayRD),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_TextureCubemapArrayRD),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("TextureCubemapRD",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_TextureCubemapRD),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_TextureCubemapRD),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_TextureCubemapRD),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("TextureLayered",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_TextureLayered),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_TextureLayered),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_TextureLayered),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("TextureLayeredRD",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_TextureLayeredRD),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_TextureLayeredRD),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_TextureLayeredRD),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("TextureProgressBar",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -4672,6 +4840,12 @@ func init() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VisualShaderNodeResizableBase),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VisualShaderNodeResizableBase),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VisualShaderNodeRotationByAxis",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisualShaderNodeRotationByAxis),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VisualShaderNodeRotationByAxis),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VisualShaderNodeRotationByAxis),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VisualShaderNodeSDFRaymarch",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisualShaderNodeSDFRaymarch),
@@ -4689,6 +4863,12 @@ func init() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisualShaderNodeSample3D),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VisualShaderNodeSample3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VisualShaderNodeSample3D),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VisualShaderNodeScreenNormalWorldSpace",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisualShaderNodeScreenNormalWorldSpace),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VisualShaderNodeScreenNormalWorldSpace),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VisualShaderNodeScreenNormalWorldSpace),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VisualShaderNodeScreenUVToSDF",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -4953,6 +5133,12 @@ func init() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisualShaderNodeVectorRefract),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VisualShaderNodeVectorRefract),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VisualShaderNodeVectorRefract),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VisualShaderNodeWorldPositionFromDepth",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisualShaderNodeWorldPositionFromDepth),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VisualShaderNodeWorldPositionFromDepth),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VisualShaderNodeWorldPositionFromDepth),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VoxelGI",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -5409,6 +5595,7 @@ func init() {
 	gdNativeConstructors.Set("GLTFDocumentExtension", NewGDExtensionClassFromGLTFDocumentExtensionOwner)
 	gdNativeConstructors.Set("GLTFDocumentExtensionConvertImporterMesh", NewGDExtensionClassFromGLTFDocumentExtensionConvertImporterMeshOwner)
 	gdNativeConstructors.Set("GLTFDocumentExtensionPhysics", NewGDExtensionClassFromGLTFDocumentExtensionPhysicsOwner)
+	gdNativeConstructors.Set("GLTFDocumentExtensionTextureKTX", NewGDExtensionClassFromGLTFDocumentExtensionTextureKTXOwner)
 	gdNativeConstructors.Set("GLTFDocumentExtensionTextureWebP", NewGDExtensionClassFromGLTFDocumentExtensionTextureWebPOwner)
 	gdNativeConstructors.Set("GLTFLight", NewGDExtensionClassFromGLTFLightOwner)
 	gdNativeConstructors.Set("GLTFMesh", NewGDExtensionClassFromGLTFMeshOwner)
@@ -5584,9 +5771,11 @@ func init() {
 	gdNativeConstructors.Set("OggPacketSequence", NewGDExtensionClassFromOggPacketSequenceOwner)
 	gdNativeConstructors.Set("OggPacketSequencePlayback", NewGDExtensionClassFromOggPacketSequencePlaybackOwner)
 	gdNativeConstructors.Set("OmniLight3D", NewGDExtensionClassFromOmniLight3DOwner)
+	gdNativeConstructors.Set("OpenXRAPIExtension", NewGDExtensionClassFromOpenXRAPIExtensionOwner)
 	gdNativeConstructors.Set("OpenXRAction", NewGDExtensionClassFromOpenXRActionOwner)
 	gdNativeConstructors.Set("OpenXRActionMap", NewGDExtensionClassFromOpenXRActionMapOwner)
 	gdNativeConstructors.Set("OpenXRActionSet", NewGDExtensionClassFromOpenXRActionSetOwner)
+	gdNativeConstructors.Set("OpenXRExtensionWrapperExtension", NewGDExtensionClassFromOpenXRExtensionWrapperExtensionOwner)
 	gdNativeConstructors.Set("OpenXRHand", NewGDExtensionClassFromOpenXRHandOwner)
 	gdNativeConstructors.Set("OpenXRIPBinding", NewGDExtensionClassFromOpenXRIPBindingOwner)
 	gdNativeConstructors.Set("OpenXRInteractionProfile", NewGDExtensionClassFromOpenXRInteractionProfileOwner)
@@ -5700,6 +5889,10 @@ func init() {
 	gdNativeConstructors.Set("RegExMatch", NewGDExtensionClassFromRegExMatchOwner)
 	gdNativeConstructors.Set("RemoteTransform2D", NewGDExtensionClassFromRemoteTransform2DOwner)
 	gdNativeConstructors.Set("RemoteTransform3D", NewGDExtensionClassFromRemoteTransform3DOwner)
+	gdNativeConstructors.Set("RenderSceneBuffers", NewGDExtensionClassFromRenderSceneBuffersOwner)
+	gdNativeConstructors.Set("RenderSceneBuffersConfiguration", NewGDExtensionClassFromRenderSceneBuffersConfigurationOwner)
+	gdNativeConstructors.Set("RenderSceneBuffersExtension", NewGDExtensionClassFromRenderSceneBuffersExtensionOwner)
+	gdNativeConstructors.Set("RenderSceneBuffersRD", NewGDExtensionClassFromRenderSceneBuffersRDOwner)
 	gdNativeConstructors.Set("RenderingDevice", NewGDExtensionClassFromRenderingDeviceOwner)
 	gdNativeConstructors.Set("RenderingServer", NewGDExtensionClassFromRenderingServerOwner)
 	gdNativeConstructors.Set("Resource", NewGDExtensionClassFromResourceOwner)
@@ -5707,6 +5900,21 @@ func init() {
 	gdNativeConstructors.Set("ResourceFormatLoader", NewGDExtensionClassFromResourceFormatLoaderOwner)
 	gdNativeConstructors.Set("ResourceFormatSaver", NewGDExtensionClassFromResourceFormatSaverOwner)
 	gdNativeConstructors.Set("ResourceImporter", NewGDExtensionClassFromResourceImporterOwner)
+	gdNativeConstructors.Set("ResourceImporterBMFont", NewGDExtensionClassFromResourceImporterBMFontOwner)
+	gdNativeConstructors.Set("ResourceImporterBitMap", NewGDExtensionClassFromResourceImporterBitMapOwner)
+	gdNativeConstructors.Set("ResourceImporterCSVTranslation", NewGDExtensionClassFromResourceImporterCSVTranslationOwner)
+	gdNativeConstructors.Set("ResourceImporterDynamicFont", NewGDExtensionClassFromResourceImporterDynamicFontOwner)
+	gdNativeConstructors.Set("ResourceImporterImage", NewGDExtensionClassFromResourceImporterImageOwner)
+	gdNativeConstructors.Set("ResourceImporterImageFont", NewGDExtensionClassFromResourceImporterImageFontOwner)
+	gdNativeConstructors.Set("ResourceImporterLayeredTexture", NewGDExtensionClassFromResourceImporterLayeredTextureOwner)
+	gdNativeConstructors.Set("ResourceImporterMP3", NewGDExtensionClassFromResourceImporterMP3Owner)
+	gdNativeConstructors.Set("ResourceImporterOBJ", NewGDExtensionClassFromResourceImporterOBJOwner)
+	gdNativeConstructors.Set("ResourceImporterOggVorbis", NewGDExtensionClassFromResourceImporterOggVorbisOwner)
+	gdNativeConstructors.Set("ResourceImporterScene", NewGDExtensionClassFromResourceImporterSceneOwner)
+	gdNativeConstructors.Set("ResourceImporterShaderFile", NewGDExtensionClassFromResourceImporterShaderFileOwner)
+	gdNativeConstructors.Set("ResourceImporterTexture", NewGDExtensionClassFromResourceImporterTextureOwner)
+	gdNativeConstructors.Set("ResourceImporterTextureAtlas", NewGDExtensionClassFromResourceImporterTextureAtlasOwner)
+	gdNativeConstructors.Set("ResourceImporterWAV", NewGDExtensionClassFromResourceImporterWAVOwner)
 	gdNativeConstructors.Set("ResourceLoader", NewGDExtensionClassFromResourceLoaderOwner)
 	gdNativeConstructors.Set("ResourcePreloader", NewGDExtensionClassFromResourcePreloaderOwner)
 	gdNativeConstructors.Set("ResourceSaver", NewGDExtensionClassFromResourceSaverOwner)
@@ -5811,9 +6019,15 @@ func init() {
 	gdNativeConstructors.Set("Texture", NewGDExtensionClassFromTextureOwner)
 	gdNativeConstructors.Set("Texture2D", NewGDExtensionClassFromTexture2DOwner)
 	gdNativeConstructors.Set("Texture2DArray", NewGDExtensionClassFromTexture2DArrayOwner)
+	gdNativeConstructors.Set("Texture2DArrayRD", NewGDExtensionClassFromTexture2DArrayRDOwner)
+	gdNativeConstructors.Set("Texture2DRD", NewGDExtensionClassFromTexture2DRDOwner)
 	gdNativeConstructors.Set("Texture3D", NewGDExtensionClassFromTexture3DOwner)
+	gdNativeConstructors.Set("Texture3DRD", NewGDExtensionClassFromTexture3DRDOwner)
 	gdNativeConstructors.Set("TextureButton", NewGDExtensionClassFromTextureButtonOwner)
+	gdNativeConstructors.Set("TextureCubemapArrayRD", NewGDExtensionClassFromTextureCubemapArrayRDOwner)
+	gdNativeConstructors.Set("TextureCubemapRD", NewGDExtensionClassFromTextureCubemapRDOwner)
 	gdNativeConstructors.Set("TextureLayered", NewGDExtensionClassFromTextureLayeredOwner)
+	gdNativeConstructors.Set("TextureLayeredRD", NewGDExtensionClassFromTextureLayeredRDOwner)
 	gdNativeConstructors.Set("TextureProgressBar", NewGDExtensionClassFromTextureProgressBarOwner)
 	gdNativeConstructors.Set("TextureRect", NewGDExtensionClassFromTextureRectOwner)
 	gdNativeConstructors.Set("Theme", NewGDExtensionClassFromThemeOwner)
@@ -5922,9 +6136,11 @@ func init() {
 	gdNativeConstructors.Set("VisualShaderNodeRandomRange", NewGDExtensionClassFromVisualShaderNodeRandomRangeOwner)
 	gdNativeConstructors.Set("VisualShaderNodeRemap", NewGDExtensionClassFromVisualShaderNodeRemapOwner)
 	gdNativeConstructors.Set("VisualShaderNodeResizableBase", NewGDExtensionClassFromVisualShaderNodeResizableBaseOwner)
+	gdNativeConstructors.Set("VisualShaderNodeRotationByAxis", NewGDExtensionClassFromVisualShaderNodeRotationByAxisOwner)
 	gdNativeConstructors.Set("VisualShaderNodeSDFRaymarch", NewGDExtensionClassFromVisualShaderNodeSDFRaymarchOwner)
 	gdNativeConstructors.Set("VisualShaderNodeSDFToScreenUV", NewGDExtensionClassFromVisualShaderNodeSDFToScreenUVOwner)
 	gdNativeConstructors.Set("VisualShaderNodeSample3D", NewGDExtensionClassFromVisualShaderNodeSample3DOwner)
+	gdNativeConstructors.Set("VisualShaderNodeScreenNormalWorldSpace", NewGDExtensionClassFromVisualShaderNodeScreenNormalWorldSpaceOwner)
 	gdNativeConstructors.Set("VisualShaderNodeScreenUVToSDF", NewGDExtensionClassFromVisualShaderNodeScreenUVToSDFOwner)
 	gdNativeConstructors.Set("VisualShaderNodeSmoothStep", NewGDExtensionClassFromVisualShaderNodeSmoothStepOwner)
 	gdNativeConstructors.Set("VisualShaderNodeStep", NewGDExtensionClassFromVisualShaderNodeStepOwner)
@@ -5969,6 +6185,7 @@ func init() {
 	gdNativeConstructors.Set("VisualShaderNodeVectorLen", NewGDExtensionClassFromVisualShaderNodeVectorLenOwner)
 	gdNativeConstructors.Set("VisualShaderNodeVectorOp", NewGDExtensionClassFromVisualShaderNodeVectorOpOwner)
 	gdNativeConstructors.Set("VisualShaderNodeVectorRefract", NewGDExtensionClassFromVisualShaderNodeVectorRefractOwner)
+	gdNativeConstructors.Set("VisualShaderNodeWorldPositionFromDepth", NewGDExtensionClassFromVisualShaderNodeWorldPositionFromDepthOwner)
 	gdNativeConstructors.Set("VoxelGI", NewGDExtensionClassFromVoxelGIOwner)
 	gdNativeConstructors.Set("VoxelGIData", NewGDExtensionClassFromVoxelGIDataOwner)
 	gdNativeConstructors.Set("WeakRef", NewGDExtensionClassFromWeakRefOwner)

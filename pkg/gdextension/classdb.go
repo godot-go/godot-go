@@ -1,7 +1,7 @@
 package gdextension
 
 // #include <godot/gdextension_interface.h>
-// #include "classdb_wrapper.h"
+// #include "classdb_callback.h"
 // #include "method_bind.h"
 // #include <stdio.h>
 // #include <stdlib.h>
@@ -9,6 +9,7 @@ import "C"
 import (
 	"fmt"
 	"reflect"
+	"strings"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
@@ -24,20 +25,20 @@ func ClassDBAddPropertyGroup(t GDClass, p_name string, p_prefix string) {
 		panic(fmt.Sprintf(`Trying to add property group "%s" to non-existing class "%s".`, p_name, cn))
 	}
 
-	className := NewStringNameWithLatin1Chars(cn)
+	className := NewStringNameWithUtf8Chars(cn)
 	defer className.Destroy()
 
-	name := NewStringWithLatin1Chars(p_name)
+	name := NewStringWithUtf8Chars(p_name)
 	defer name.Destroy()
 
-	prefix := NewStringWithLatin1Chars(p_prefix)
+	prefix := NewStringWithUtf8Chars(p_prefix)
 	defer prefix.Destroy()
 
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup(
 		FFI.Library,
-		className.AsGDExtensionStringNamePtr(),
-		name.AsGDExtensionStringPtr(),
-		prefix.AsGDExtensionStringPtr(),
+		className.AsGDExtensionConstStringNamePtr(),
+		name.AsGDExtensionConstStringPtr(),
+		prefix.AsGDExtensionConstStringPtr(),
 	)
 }
 
@@ -48,20 +49,20 @@ func ClassDBAddPropertySubgroup(t GDClass, p_name string, p_prefix string) {
 		panic(fmt.Sprintf(`Trying to add property sub-group "%s" to non-existing class "%s".`, p_name, cn))
 	}
 
-	className := NewStringNameWithLatin1Chars(cn)
+	className := NewStringNameWithUtf8Chars(cn)
 	defer className.Destroy()
 
-	name := NewStringWithLatin1Chars(p_name)
+	name := NewStringWithUtf8Chars(p_name)
 	defer name.Destroy()
 
-	prefix := NewStringWithLatin1Chars(p_prefix)
+	prefix := NewStringWithUtf8Chars(p_prefix)
 	defer prefix.Destroy()
 
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup(
 		FFI.Library,
-		className.AsGDExtensionStringNamePtr(),
-		name.AsGDExtensionStringPtr(),
-		prefix.AsGDExtensionStringPtr(),
+		className.AsGDExtensionConstStringNamePtr(),
+		name.AsGDExtensionConstStringPtr(),
+		prefix.AsGDExtensionConstStringPtr(),
 	)
 }
 
@@ -152,37 +153,37 @@ func ClassDBAddProperty(
 	// register property with plugin
 	ci.PropertyNameMap[pn] = struct{}{}
 
-	className := NewStringNameWithLatin1Chars(cn)
+	className := NewStringNameWithUtf8Chars(cn)
 	defer className.Destroy()
 
-	propName := NewStringNameWithLatin1Chars(pn)
+	propName := NewStringNameWithUtf8Chars(pn)
 	defer propName.Destroy()
 
-	hint := NewStringWithLatin1Chars("")
+	hint := NewStringWithUtf8Chars("")
 	defer hint.Destroy()
 
 	// register with Godot
 	prop_info := NewGDExtensionPropertyInfo(
-		className.AsGDExtensionStringNamePtr(),
+		className.AsGDExtensionConstStringNamePtr(),
 		p_property_type,
-		propName.AsGDExtensionStringNamePtr(),
+		propName.AsGDExtensionConstStringNamePtr(),
 		uint32(PROPERTY_HINT_NONE),
-		hint.AsGDExtensionStringPtr(),
+		hint.AsGDExtensionConstStringPtr(),
 		uint32(PROPERTY_USAGE_DEFAULT),
 	)
 
-	snSetterGDName := NewStringNameWithLatin1Chars(setterGDName)
+	snSetterGDName := NewStringNameWithUtf8Chars(setterGDName)
 	defer snSetterGDName.Destroy()
 
-	snGetterGDName := NewStringNameWithLatin1Chars(getterGDName)
+	snGetterGDName := NewStringNameWithUtf8Chars(getterGDName)
 	defer snGetterGDName.Destroy()
 
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassProperty(
 		FFI.Library,
 		ci.NameAsStringNamePtr,
 		&prop_info,
-		snSetterGDName.AsGDExtensionStringNamePtr(),
-		snGetterGDName.AsGDExtensionStringNamePtr(),
+		snSetterGDName.AsGDExtensionConstStringNamePtr(),
+		snGetterGDName.AsGDExtensionConstStringNamePtr(),
 	)
 }
 
@@ -205,53 +206,6 @@ func classDBGetMethod(p_class string, p_method string) *MethodBind {
 	}
 
 	return nil
-}
-
-func classDBBindMethodFi(p_flags uint32, p_bind *MethodBind) *MethodBind {
-	var (
-		ci *ClassInfo
-		ok bool
-	)
-	typeName := p_bind.InstanceClass
-
-	goMethodName := p_bind.GoName
-
-	if ci, ok = gdRegisteredGDClasses.Get(typeName); !ok {
-		log.Panic("Class doesn't exist.", zap.String("class", typeName))
-		return nil
-	}
-
-	if _, ok = ci.MethodMap[goMethodName]; ok {
-		log.Panic("Binding duplicate method.", zap.String("name", goMethodName))
-		return nil
-	}
-
-	if _, ok = ci.VirtualMethodMap[goMethodName]; ok {
-		log.Panic("Method already bound as virtual.", zap.String("name", goMethodName))
-		return nil
-	}
-
-	// register our method bind within our plugin
-	ci.MethodMap[goMethodName] = p_bind
-
-	// and register with godot
-	classDBBindMethodGodot(ci.NameAsStringNamePtr, p_bind)
-
-	return p_bind
-}
-
-func classDBBindMethodGodot(pClassName GDExtensionConstStringNamePtr, pMethod *MethodBind) {
-	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_method",
-		zap.String("method", pMethod.Name),
-		zap.String("instance_class", pMethod.InstanceClass),
-		zap.String("go_name", pMethod.GoName),
-	)
-
-	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassMethod(
-		FFI.Library,
-		pClassName,
-		&pMethod.ClassMethodInfo,
-	)
 }
 
 type SignalParam struct {
@@ -286,21 +240,21 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 	paramArr := make([]GDExtensionPropertyInfo, len(params))
 
 	for i, p := range params {
-		snTypeName := NewStringNameWithLatin1Chars(typeName)
+		snTypeName := NewStringNameWithUtf8Chars(typeName)
 		// defer snTypeName.Destroy()
 
-		snName := NewStringNameWithLatin1Chars(p.Name)
+		snName := NewStringNameWithUtf8Chars(p.Name)
 		// defer snName.Destroy()
 
-		hint := NewStringWithLatin1Chars("")
+		hint := NewStringWithUtf8Chars("")
 		// defer hint.Destroy()
 
 		paramArr[i] = NewGDExtensionPropertyInfo(
-			snTypeName.AsGDExtensionStringNamePtr(),
+			snTypeName.AsGDExtensionConstStringNamePtr(),
 			p.Type,
-			snName.AsGDExtensionStringNamePtr(),
+			snName.AsGDExtensionConstStringNamePtr(),
 			(uint32)(PROPERTY_HINT_NONE),
-			hint.AsGDExtensionStringPtr(),
+			hint.AsGDExtensionConstStringPtr(),
 			(uint32)(PROPERTY_USAGE_DEFAULT),
 		)
 		defer paramArr[i].Destroy()
@@ -314,18 +268,129 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 		argsPtr = (*GDExtensionPropertyInfo)(nullptr)
 	}
 
-	snTypeName := NewStringNameWithLatin1Chars(typeName)
+	snTypeName := NewStringNameWithUtf8Chars(typeName)
 	defer snTypeName.Destroy()
 
-	snSignalName := NewStringNameWithLatin1Chars(signalName)
+	snSignalName := NewStringNameWithUtf8Chars(signalName)
 	defer snSignalName.Destroy()
 
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassSignal(
 		FFI.Library,
-		snTypeName.AsGDExtensionStringNamePtr(),
-		snSignalName.AsGDExtensionStringNamePtr(),
+		snTypeName.AsGDExtensionConstStringNamePtr(),
+		snSignalName.AsGDExtensionConstStringNamePtr(),
 		argsPtr,
 		GDExtensionInt(len(params)))
+}
+
+func classDBInitialize(pLevel GDExtensionInitializationLevel) {
+	for _, ci := range gdRegisteredGDClasses.Values() {
+		if ci.Level != pLevel {
+			continue
+		}
+
+		// Nothing to do here for now...
+	}
+}
+
+func classDBDeinitialize(pLevel GDExtensionInitializationLevel) {
+	for _, ci := range gdRegisteredGDClasses.Values() {
+		if ci.Level != pLevel {
+			continue
+		}
+
+		name := NewStringNameWithUtf8Chars(ci.Name)
+		defer name.Destroy()
+
+		CallFunc_GDExtensionInterfaceClassdbUnregisterExtensionClass(
+			FFI.Library,
+			name.AsGDExtensionConstStringNamePtr(),
+		)
+
+		// NOTE: godot-cpp iterates through the map to delete all method binds
+		for n, mb := range ci.MethodMap {
+			delete(ci.MethodMap, n)
+			mb.Destroy()
+		}
+	}
+}
+
+func ClassDBBindMethod(p_instance GDClass, p_go_method_name string, p_method_name string, p_arg_names []string, p_default_values []*Variant) *MethodBind {
+	return classDBBindMethod(p_instance, p_go_method_name, p_method_name, METHOD_FLAGS_DEFAULT, p_arg_names, p_default_values)
+}
+
+func ClassDBBindMethodStatic(p_instance GDClass, p_go_method_name string, p_method_name string, p_arg_names []string, p_default_values []*Variant) *MethodBind {
+	return classDBBindMethod(p_instance, p_go_method_name, p_method_name, METHOD_FLAGS_DEFAULT|METHOD_FLAG_STATIC, p_arg_names, p_default_values)
+}
+
+func ClassDBBindMethodVirtual(p_instance GDClass, p_go_method_name string, p_method_name string, p_arg_names []string, p_default_values []*Variant) *MethodBind {
+	return classDBBindMethod(p_instance, p_go_method_name, p_method_name, METHOD_FLAGS_DEFAULT|GDEXTENSION_METHOD_FLAG_VIRTUAL, p_arg_names, p_default_values)
+}
+
+func classDBBindMethod(p_instance GDClass, p_go_method_name string, p_method_name string, hintFlags MethodFlags, p_arg_names []string, p_default_values []*Variant) *MethodBind {
+	t := reflect.TypeOf(p_instance)
+	n := p_instance.GetClassName()
+	log.Debug("classDBBindMethod called",
+		zap.Reflect("inst", p_instance),
+		zap.String("go_name", p_go_method_name),
+		zap.String("gd_name", p_method_name),
+		zap.Any("hint", hintFlags),
+		zap.Any("t", t),
+		zap.Any("n", n),
+	)
+	if (hintFlags & GDEXTENSION_METHOD_FLAG_VIRTUAL) == GDEXTENSION_METHOD_FLAG_VIRTUAL {
+		if !strings.HasPrefix(p_go_method_name, "V_") {
+			log.Panic(`virtual method name must have a prefix of "V_".`)
+		}
+	} else {
+		if strings.HasPrefix(p_go_method_name, "V_") {
+			log.Panic(`method name cannot have a prefix of "V_".`)
+		}
+	}
+	m, ok := t.MethodByName(p_go_method_name)
+	if !ok {
+		log.Panic("unable to find function", zap.String("gdclass", n), zap.String("method_name", p_go_method_name))
+	}
+	mb := NewMethodBind(m, p_method_name, p_arg_names, p_default_values, hintFlags)
+	typeName := mb.InstanceClass
+	goMethodName := mb.GoName
+	godotMethodName := mb.Name
+	ci, ok := gdRegisteredGDClasses.Get(typeName)
+	if !ok {
+		log.Panic("Class doesn't exist.", zap.String("class", typeName))
+		return nil
+	}
+	if _, ok = ci.MethodMap[godotMethodName]; ok {
+		log.Panic("Binding duplicate method.",
+			zap.String("go_name", goMethodName),
+			zap.String("godot_name", godotMethodName),
+		)
+		return nil
+	}
+	if _, ok = ci.VirtualMethodMap[godotMethodName]; ok {
+		log.Panic("Method already bound as virtual.",
+			zap.String("go_name", goMethodName),
+			zap.String("godot_name", godotMethodName),
+		)
+		return nil
+	}
+	// register our method bind within our plugin
+	if (hintFlags & GDEXTENSION_METHOD_FLAG_VIRTUAL) == GDEXTENSION_METHOD_FLAG_VIRTUAL {
+		ci.VirtualMethodMap[godotMethodName] = mb
+	} else {
+		ci.MethodMap[godotMethodName] = mb
+	}
+	log.Debug("called C.cgo_callfn_GDExtensionInterface_classdb_register_extension_class_method",
+		zap.String("method", mb.Name),
+		zap.String("instance_class", mb.InstanceClass),
+		zap.String("go_name", mb.GoName),
+	)
+	// and register with godot
+	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassMethod(
+		FFI.Library,
+		ci.NameAsStringNamePtr,
+		&mb.ClassMethodInfo,
+	)
+	return mb
 }
 
 // ClassDBBindConstant binds a constant in godot.
@@ -371,79 +436,23 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 
 	bitfield := (GDExtensionBool)(BoolEncoder.EncodeArg(p_is_bitfield))
 
-	snTypeName := NewStringNameWithLatin1Chars(typeName)
+	snTypeName := NewStringNameWithUtf8Chars(typeName)
 	defer snTypeName.Destroy()
 
-	snEnumName := NewStringNameWithLatin1Chars(p_enum_name)
+	snEnumName := NewStringNameWithUtf8Chars(p_enum_name)
 	defer snEnumName.Destroy()
 
-	snConstantName := NewStringNameWithLatin1Chars(p_constant_name)
+	snConstantName := NewStringNameWithUtf8Chars(p_constant_name)
 	defer snConstantName.Destroy()
 
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant(
 		FFI.Library,
-		snTypeName.AsGDExtensionStringNamePtr(),
-		snEnumName.AsGDExtensionStringNamePtr(),
-		snConstantName.AsGDExtensionStringNamePtr(),
+		snTypeName.AsGDExtensionConstStringNamePtr(),
+		snEnumName.AsGDExtensionConstStringNamePtr(),
+		snConstantName.AsGDExtensionConstStringNamePtr(),
 		p_constant_value,
 		bitfield,
 	)
-}
-
-func ClassDBBindMethodVirtual(t GDClass, p_method_name string, p_call GDExtensionClassCallVirtual) {
-
-	cn := t.GetClassName()
-
-	ci, ok := gdRegisteredGDClasses.Get(cn)
-
-	if !ok {
-		log.Panic("Class doesn't exist.", zap.String("name", cn))
-		return
-	}
-
-	if _, ok = ci.MethodMap[p_method_name]; ok {
-		log.Panic("Method already registered as non-virtual.", zap.String("name", p_method_name))
-		return
-	}
-
-	if _, ok = ci.VirtualMethodMap[p_method_name]; ok {
-		log.Panic("Virtual method already registered as non-virtual.", zap.String("name", (string)(p_method_name)))
-		return
-	}
-
-	ci.VirtualMethodMap[p_method_name] = p_call
-}
-
-func classDBInitialize(pLevel GDExtensionInitializationLevel) {
-	for _, ci := range gdRegisteredGDClasses.Values() {
-		if ci.Level != pLevel {
-			continue
-		}
-
-		// Nothing to do here for now...
-	}
-}
-
-func classDBDeinitialize(pLevel GDExtensionInitializationLevel) {
-	for _, ci := range gdRegisteredGDClasses.Values() {
-		if ci.Level != pLevel {
-			continue
-		}
-
-		name := NewStringNameWithLatin1Chars(ci.Name)
-		defer name.Destroy()
-
-		CallFunc_GDExtensionInterfaceClassdbUnregisterExtensionClass(
-			FFI.Library,
-			name.AsGDExtensionStringNamePtr(),
-		)
-
-		// NOTE: godot-cpp iterates through the map to delete all method binds
-		for n, mb := range ci.MethodMap {
-			delete(ci.MethodMap, n)
-			mb.Destroy()
-		}
-	}
 }
 
 func ClassDBRegisterClass(inst GDClass, bindMethodsFunc func(t GDClass)) {
@@ -523,95 +532,28 @@ func ClassDBRegisterClass(inst GDClass, bindMethodsFunc func(t GDClass)) {
 
 	// Register this class with Godot
 	info := NewGDExtensionClassCreationInfo(
-		(GDExtensionClassCreateInstance)(C.cgo_gdextension_extension_class_create_instance),
-		(GDExtensionClassFreeInstance)(C.cgo_gdextension_extension_class_free_instance),
-		(GDExtensionClassGetVirtual)(C.cgo_classdb_get_virtual_func),
+		(GDExtensionClassCreateInstance)(C.cgo_classcreationinfo_createinstance),
+		(GDExtensionClassFreeInstance)(C.cgo_classcreationinfo_freeinstance),
+		(GDExtensionClassGetVirtuaCallData)(C.cgo_classcreationinfo_getvirtualcallwithdata),
+		(GDExtensionClassCallVirtualWithData)(C.cgo_classcreationinfo_callvirtualwithdata),
+		(GDExtensionClassToString)(C.cgo_classcreationinfo_tostring),
 		unsafe.Pointer(cName),
 	)
 
-	snName := NewStringNameWithLatin1Chars(name)
+	snName := NewStringNameWithUtf8Chars(name)
 	defer snName.Destroy()
 
-	snParentName := NewStringNameWithLatin1Chars(parentName)
+	snParentName := NewStringNameWithUtf8Chars(parentName)
 	defer snParentName.Destroy()
 
 	// register with Godot
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass(
 		(GDExtensionClassLibraryPtr)(FFI.Library),
-		snName.AsGDExtensionStringNamePtr(),
-		snParentName.AsGDExtensionStringNamePtr(),
+		snName.AsGDExtensionConstStringNamePtr(),
+		snParentName.AsGDExtensionConstStringNamePtr(),
 		&info,
 	)
 
-	// call bind_methods etc. to register all members of the class
-	gdClassInitializeClass(inst)
-
+	// call bindMethodsFunc as a callback for users to register their methods on the class
 	bindMethodsFunc(inst)
-}
-
-func ClassDBBindMethod(p_instance GDClass, p_go_method_name string, p_method_name string, p_arg_names []string, p_default_values []*Variant) *MethodBind {
-	return classDBBindMethod(p_instance, p_go_method_name, p_method_name, METHOD_FLAGS_DEFAULT, p_arg_names, p_default_values)
-}
-
-func ClassDBBindMethodStatic(p_instance GDClass, p_go_method_name string, p_method_name string, p_arg_names []string, p_default_values []*Variant) *MethodBind {
-	return classDBBindMethod(p_instance, p_go_method_name, p_method_name, METHOD_FLAGS_DEFAULT|METHOD_FLAG_STATIC, p_arg_names, p_default_values)
-}
-
-func classDBBindMethod(p_instance GDClass, p_go_method_name string, p_method_name string, hintFlags MethodFlags, p_arg_names []string, p_default_values []*Variant) *MethodBind {
-	t := reflect.TypeOf(p_instance)
-
-	n := p_instance.GetClassName()
-
-	log.Debug("classDBBindMethod called",
-		zap.Reflect("inst", p_instance),
-		zap.String("go_name", p_go_method_name),
-		zap.String("gd_name", p_method_name),
-		zap.Any("hint", hintFlags),
-		zap.Any("t", t),
-		zap.Any("n", n),
-	)
-
-	m, ok := t.MethodByName(p_go_method_name)
-
-	if !ok {
-		log.Panic("unable to find function", zap.String("gdclass", n), zap.String("method_name", p_go_method_name))
-	}
-
-	mb := NewMethodBind(m, p_method_name, p_arg_names, p_default_values, hintFlags)
-
-	classDBBindMethodFi(0, mb)
-
-	return mb
-}
-
-//export GoCallback_ClassDBGetVirtualFunc
-func GoCallback_ClassDBGetVirtualFunc(pUserdata unsafe.Pointer, pName C.GDExtensionConstStringNamePtr) C.GDExtensionClassCallVirtual {
-	className := C.GoString((*C.char)(pUserdata))
-	snMethodName := (*StringName)(unsafe.Pointer(pName))
-	sMethodName := snMethodName.AsString()
-	methodName := (&sMethodName).ToAscii()
-
-	log.Info("GoCallback_ClassDBGetVirtualFunc called",
-		zap.String("type_name", className),
-		zap.String("method", methodName),
-	)
-
-	ci, ok := gdRegisteredGDClasses.Get(className)
-
-	if !ok {
-		log.Warn("class not found", zap.String("className", className))
-		return (C.GDExtensionClassCallVirtual)(nullptr)
-	}
-
-	m, ok := ci.VirtualMethodMap[methodName]
-
-	if !ok {
-		log.Debug("no virtual method found",
-			zap.String("className", className),
-			zap.String("method", methodName),
-		)
-		return (C.GDExtensionClassCallVirtual)(nullptr)
-	}
-
-	return (C.GDExtensionClassCallVirtual)(m)
 }

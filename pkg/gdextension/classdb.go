@@ -318,6 +318,10 @@ func ClassDBBindMethod(p_instance GDClass, p_go_method_name string, p_method_nam
 	return classDBBindMethod(p_instance, p_go_method_name, p_method_name, METHOD_FLAGS_DEFAULT, p_arg_names, p_default_values)
 }
 
+func ClassDBBindMethodVarargs(p_instance GDClass, p_go_method_name string, p_method_name string, p_arg_names []string, p_default_values []*Variant) *MethodBind {
+	return classDBBindMethod(p_instance, p_go_method_name, p_method_name, METHOD_FLAGS_DEFAULT, p_arg_names, p_default_values)
+}
+
 func ClassDBBindMethodStatic(p_instance GDClass, p_go_method_name string, p_method_name string, p_arg_names []string, p_default_values []*Variant) *MethodBind {
 	return classDBBindMethod(p_instance, p_go_method_name, p_method_name, METHOD_FLAGS_DEFAULT|METHOD_FLAG_STATIC, p_arg_names, p_default_values)
 }

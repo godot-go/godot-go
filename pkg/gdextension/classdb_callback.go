@@ -13,8 +13,6 @@ import (
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
-	"golang.org/x/exp/maps"
-	"golang.org/x/exp/slices"
 )
 
 //export GoCallback_ClassCreationInfoToString
@@ -71,13 +69,9 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 	}
 	m, ok := ci.VirtualMethodMap[methodName]
 	if !ok {
-		methods := maps.Keys(ci.VirtualMethodMap)
-		slices.Sort(methods)
-
 		log.Info("no virtual method found",
 			zap.String("className", className),
 			zap.String("method", methodName),
-			zap.Any("virtual_methods", methods),
 		)
 		return
 	}

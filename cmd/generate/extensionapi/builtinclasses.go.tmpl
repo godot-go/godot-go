@@ -170,33 +170,39 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
 }
 {{ end }}
 
-{{ if $c.IsKeyed -}}
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDExtensionPtrKeyedSetter)(GDExtensionTypePtr p_base, const GDExtensionTypePtr p_key, const GDExtensionTypePtr p_value);
-typedef void (*GDExtensionPtrKeyedGetter)(const GDExtensionTypePtr p_base, const GDExtensionTypePtr p_key, GDExtensionTypePtr r_value);
-
-
-// keyed
-func (cx *{{ $c.Name }}) SetKey(const Variant &p_key) Variant {
-
+{{/* {{ if $c.IsKeyed -}}
+func (cx *{{ $c.Name }}) GetKey(key string) Variant {
+    gdKey := NewStringWithUtf8Chars(key)
+    var ret Variant
+    CallFunc_GDExtensionPtrKeyedGetter(
+        global{{ $c.Name }}MethodBindings.keyed_getter,
+        (GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+        (GDExtensionConstTypePtr)(gdKey.ptr()),
+        (GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+    )
+	return ret
 }
-*/
 
-{{ end -}}
+func (cx *{{ $c.Name }}) SetKey(key string, p_value GDExtensionTypePtr) {
+    gdKey := NewStringWithUtf8Chars(key)
+    CallFunc_GDExtensionPtrKeyedSetter(
+        global{{ $c.Name }}MethodBindings.keyed_setter,
+        (GDExtensionTypePtr)(unsafe.Pointer(cx)),
+        (GDExtensionInt)(i),
+        (GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+    )
+}
+{{ end -}} */}}
 
-{{ if and (gt (len $c.IndexingReturnType) 0) (contains $c.Name "Array") -}}
+{{ if gt (len $c.IndexingReturnType) 0 -}}
 func (cx *{{ $c.Name }}) GetIndexed(i int64) {{ goReturnType $c.IndexingReturnType }} {
-
     var ret {{ goReturnType $c.IndexingReturnType }}
-
     CallFunc_GDExtensionPtrIndexedGetter(
         global{{ $c.Name }}MethodBindings.indexed_getter,
         (GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
         (GDExtensionInt)(i),
         (GDExtensionTypePtr)(unsafe.Pointer(&ret)),
     )
-
 	return ret
 }
 

@@ -83,20 +83,41 @@ func (e *Example) GetV4() gdextension.Vector4 {
 }
 
 func (e *Example) DefArgs(p_a, p_b int32) int32 {
-	return p_a + p_b
+	ret := p_a + p_b
+	log.Info("DefArgs called", zap.Int32("sum", ret))
+	return ret
 }
 
 func (e *Example) TestArray() gdextension.Array {
 	arr := gdextension.NewArray()
-	arr.Resize(2)
-	arr.SetIndexed(0, gdextension.NewVariantInt64(1))
-	arr.SetIndexed(1, gdextension.NewVariantInt64(2))
+	// arr.Resize(2)
+	arr.Insert(0, gdextension.NewVariantInt64(1))
+	arr.Insert(1, gdextension.NewVariantInt64(2))
+	v := gdextension.NewVariantArray(arr)
+	v0, err := v.GetIndexed(0)
+	if err != nil {
+		log.Panic("error getting index 0: %w",
+			zap.Error(err),
+		)
+	}
+	gdV0 := v0.ToString()
+	v1, err := v.GetIndexed(1)
+	if err != nil {
+		log.Panic("error getting index 0: %w",
+			zap.Error(err),
+		)
+	}
+	gdV1 := v1.ToString()
+	log.Info("arr size",
+		zap.Any("size", arr.Size()),
+		zap.String("v0", gdV0.ToUtf8()),
+		zap.String("v1", gdV1.ToUtf8()),
+	)
 	return arr
 }
 
 func (e *Example) TestDictionary() gdextension.Dictionary {
 	dict := gdextension.NewDictionary()
-	v := gdextension.NewVariantDictionary(dict)
 	hello := gdextension.NewStringNameWithUtf8Chars("hello")
 	defer hello.Destroy()
 	world := gdextension.NewStringWithUtf8Chars("world")
@@ -105,9 +126,6 @@ func (e *Example) TestDictionary() gdextension.Dictionary {
 	defer foo.Destroy()
 	bar := gdextension.NewStringWithUtf8Chars("bar")
 	defer bar.Destroy()
-	v.SetNamed(hello, gdextension.NewVariantString(world))
-	v.SetNamed(foo, gdextension.NewVariantString(bar))
-
 	return dict
 }
 
@@ -144,8 +162,8 @@ func (e *Example) EmitCustomSignal(name string, value int64) {
 }
 
 func (e *Example) TestCastTo() {
-	n, ok := e.CastTo((gdextension.Node)(nil)).(gdextension.Node)
-	if !ok {
+	n := gdextension.ObjectCastTo(e, "Node").(gdextension.Node)
+	if n != nil {
 		log.Panic("failed to cast to cast Example to Node")
 	}
 	log.Debug("TestCastTo called", zap.Any("class", n.GetClassName()))
@@ -176,6 +194,12 @@ func (e *Example) TestStringOps() string {
 	s = s.Add_String(sE)
 	return s.ToUtf32()
 }
+
+func (e *Example) VarargsFunc(args []*gdextension.Variant, arg_count int64, err error) gdextension.Variant {
+	ret := gdextension.NewVariantInt64(arg_count)
+	return ret
+}
+
 
 func (e *Example) V_Ready() {
 	log.Info("Example_Ready called",
@@ -232,17 +256,15 @@ func (e *Example) V_Ready() {
 }
 
 func (e *Example) V_Input(refEvent gdextension.Ref) {
+	defer refEvent.Unref()
 	event := refEvent.Ptr()
 	if event == nil {
 		log.Warn("Example.V_Input: null refEvent parameter")
 		return
 	}
-	keyEvent, ok := (*event).CastTo((gdextension.InputEventKey)(nil)).(gdextension.InputEventKey)
-	if !ok {
-		log.Error("Example.V_Input: unable to cast event to InputEventKey")
-		return
-	}
-	keyLabel := keyEvent.GetKeyLabel()
+	keyEvent := event.(gdextension.InputEventKey)
+	gdStringKeyLabel := keyEvent.AsTextKeyLabel()
+	keyLabel := gdStringKeyLabel.ToUtf8()
 	v := int64(keyEvent.GetUnicode())
-	e.EmitCustomSignal(fmt.Sprintf("_input: %d", keyLabel), v);
+	e.EmitCustomSignal(fmt.Sprintf("_input: %s", keyLabel), v);
 }

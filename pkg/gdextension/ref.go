@@ -2,10 +2,10 @@ package gdextension
 
 // Ref is a helper struct for RefCounted Godot Objects.
 type Ref struct {
-	reference *RefCounted
+	reference RefCounted
 }
 
-func (cx *Ref) Ptr() *RefCounted {
+func (cx *Ref) Ptr() RefCounted {
 	return cx.reference
 }
 
@@ -14,28 +14,25 @@ func (cx *Ref) Ref(pFrom *Ref) {
 	if pFrom.reference == cx.reference {
 		return
 	}
-
 	cx.Unref()
-
 	cx.reference = pFrom.reference
 	if cx.reference != nil {
-		(*cx.reference).Reference()
+		cx.reference.Reference()
 	}
 }
 
-func (cx *Ref) RefPointer(pRef *RefCounted) {
-	if pRef == nil {
-		panic("pRef cannot be nil")
+func (cx *Ref) RefPointer(r RefCounted) {
+	if r == nil {
+		panic("reference cannot be nil")
 	}
-
-	if (*pRef).InitRef() {
-		cx.reference = pRef
+	if r.InitRef() {
+		cx.reference = r
 	}
 }
 
 func (cx *Ref) Unref() {
-	if cx.reference != nil && (*cx.reference).Unreference() {
-		if destroyable, ok := (*cx.reference).(HasDestructor); ok {
+	if cx.reference != nil && cx.reference.Unreference() {
+		if destroyable, ok := cx.reference.(HasDestructor); ok {
 			destroyable.Destroy()
 		}
 		// release memory
@@ -44,10 +41,8 @@ func (cx *Ref) Unref() {
 	cx.reference = nil
 }
 
-func NewRef(reference *RefCounted) *Ref {
+func NewRef(reference RefCounted) *Ref {
 	ref := &Ref{}
-
 	ref.RefPointer(reference)
-
 	return ref
 }

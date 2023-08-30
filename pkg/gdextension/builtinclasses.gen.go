@@ -2701,6 +2701,26 @@ func (cx *String) HumanizeSize(size int32) String {
 
 }
 
+func (cx *String) GetIndexed(i int64) String {
+	var ret String
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalStringMethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *String) SetIndexed(i int64, value String) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalStringMethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
+}
+
 // members
 
 // Equal_Variant operator
@@ -4358,6 +4378,26 @@ func (cx *Vector2) FromAngle(angle float32) Vector2 {
 
 }
 
+func (cx *Vector2) GetIndexed(i int64) float32 {
+	var ret float32
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalVector2MethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Vector2) SetIndexed(i int64, value float32) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalVector2MethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
+}
+
 // members
 
 func (cx *Vector2) MemberGetx() float32 {
@@ -4853,6 +4893,26 @@ func (cx *Vector2i) Snapped(step Vector2i) Vector2i {
 	// C.free(argBytes)
 	return ret
 
+}
+
+func (cx *Vector2i) GetIndexed(i int64) int32 {
+	var ret int32
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalVector2iMethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Vector2i) SetIndexed(i int64, value int32) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalVector2iMethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
 }
 
 // members
@@ -7384,6 +7444,26 @@ func (cx *Vector3) OctahedronDecode(uv Vector2) Vector3 {
 
 }
 
+func (cx *Vector3) GetIndexed(i int64) float32 {
+	var ret float32
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalVector3MethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Vector3) SetIndexed(i int64, value float32) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalVector3MethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
+}
+
 // members
 
 func (cx *Vector3) MemberGetx() float32 {
@@ -7872,6 +7952,26 @@ func (cx *Vector3i) Snapped(step Vector3i) Vector3i {
 	// C.free(argBytes)
 	return ret
 
+}
+
+func (cx *Vector3i) GetIndexed(i int64) int32 {
+	var ret int32
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalVector3iMethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Vector3i) SetIndexed(i int64, value int32) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalVector3iMethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
 }
 
 // members
@@ -8695,6 +8795,26 @@ func (cx *Transform2D) LookingAt(target Vector2) Transform2D {
 	// C.free(argBytes)
 	return ret
 
+}
+
+func (cx *Transform2D) GetIndexed(i int64) Vector2 {
+	var ret Vector2
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalTransform2DMethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Transform2D) SetIndexed(i int64, value Vector2) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalTransform2DMethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
 }
 
 // members
@@ -9562,6 +9682,26 @@ func (cx *Vector4) IsFinite() bool {
 
 }
 
+func (cx *Vector4) GetIndexed(i int64) float32 {
+	var ret float32
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalVector4MethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Vector4) SetIndexed(i int64, value float32) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalVector4MethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
+}
+
 // members
 
 func (cx *Vector4) MemberGetx() float32 {
@@ -10037,6 +10177,26 @@ func (cx *Vector4i) Snapped(step Vector4i) Vector4i {
 	// C.free(argBytes)
 	return ret
 
+}
+
+func (cx *Vector4i) GetIndexed(i int64) int32 {
+	var ret int32
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalVector4iMethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Vector4i) SetIndexed(i int64, value int32) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalVector4iMethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
 }
 
 // members
@@ -11418,6 +11578,26 @@ func (cx *Quaternion) GetAngle() float32 {
 	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
+}
+
+func (cx *Quaternion) GetIndexed(i int64) float32 {
+	var ret float32
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalQuaternionMethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Quaternion) SetIndexed(i int64, value float32) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalQuaternionMethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
 }
 
 // members
@@ -12907,6 +13087,26 @@ func (cx *Basis) FromEuler(euler Vector3, order int32) Basis {
 	// C.free(argBytes)
 	return ret
 
+}
+
+func (cx *Basis) GetIndexed(i int64) Vector3 {
+	var ret Vector3
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalBasisMethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Basis) SetIndexed(i int64, value Vector3) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalBasisMethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
 }
 
 // members
@@ -14451,6 +14651,26 @@ func (cx *Projection) GetLodMultiplier() float32 {
 
 }
 
+func (cx *Projection) GetIndexed(i int64) Vector4 {
+	var ret Vector4
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalProjectionMethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Projection) SetIndexed(i int64, value Vector4) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalProjectionMethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
+}
+
 // members
 
 func (cx *Projection) MemberGetx() Vector4 {
@@ -15350,6 +15570,26 @@ func (cx *Color) FromRgbe9995(rgbe int32) Color {
 	// C.free(argBytes)
 	return ret
 
+}
+
+func (cx *Color) GetIndexed(i int64) float32 {
+	var ret float32
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalColorMethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Color) SetIndexed(i int64, value float32) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalColorMethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
 }
 
 // members
@@ -20173,17 +20413,25 @@ func (cx *Dictionary) IsReadOnly() bool {
 
 }
 
-/* TODO: implement keyed built-in classes
-
-typedef void (*GDExtensionPtrKeyedSetter)(GDExtensionTypePtr p_base, const GDExtensionTypePtr p_key, const GDExtensionTypePtr p_value);
-typedef void (*GDExtensionPtrKeyedGetter)(const GDExtensionTypePtr p_base, const GDExtensionTypePtr p_key, GDExtensionTypePtr r_value);
-
-
-// keyed
-func (cx *Dictionary) SetKey(const Variant &p_key) Variant {
-
+func (cx *Dictionary) GetIndexed(i int64) Variant {
+	var ret Variant
+	CallFunc_GDExtensionPtrIndexedGetter(
+		globalDictionaryMethodBindings.indexed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
 }
-*/
+
+func (cx *Dictionary) SetIndexed(i int64, value Variant) {
+	CallFunc_GDExtensionPtrIndexedSetter(
+		globalDictionaryMethodBindings.indexed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionInt)(i),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+	)
+}
 
 // members
 
@@ -21606,16 +21854,13 @@ func (cx *Array) IsReadOnly() bool {
 }
 
 func (cx *Array) GetIndexed(i int64) Variant {
-
 	var ret Variant
-
 	CallFunc_GDExtensionPtrIndexedGetter(
 		globalArrayMethodBindings.indexed_getter,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
 		(GDExtensionInt)(i),
 		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
 	)
-
 	return ret
 }
 
@@ -23384,16 +23629,13 @@ func (cx *PackedByteArray) EncodeVar(byte_offset int32, value Variant, allow_obj
 }
 
 func (cx *PackedByteArray) GetIndexed(i int64) int32 {
-
 	var ret int32
-
 	CallFunc_GDExtensionPtrIndexedGetter(
 		globalPackedByteArrayMethodBindings.indexed_getter,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
 		(GDExtensionInt)(i),
 		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
 	)
-
 	return ret
 }
 
@@ -24087,16 +24329,13 @@ func (cx *PackedInt32Array) Count(value int32) int32 {
 }
 
 func (cx *PackedInt32Array) GetIndexed(i int64) int32 {
-
 	var ret int32
-
 	CallFunc_GDExtensionPtrIndexedGetter(
 		globalPackedInt32ArrayMethodBindings.indexed_getter,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
 		(GDExtensionInt)(i),
 		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
 	)
-
 	return ret
 }
 
@@ -24790,16 +25029,13 @@ func (cx *PackedInt64Array) Count(value int32) int32 {
 }
 
 func (cx *PackedInt64Array) GetIndexed(i int64) int32 {
-
 	var ret int32
-
 	CallFunc_GDExtensionPtrIndexedGetter(
 		globalPackedInt64ArrayMethodBindings.indexed_getter,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
 		(GDExtensionInt)(i),
 		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
 	)
-
 	return ret
 }
 
@@ -25493,16 +25729,13 @@ func (cx *PackedFloat32Array) Count(value float32) int32 {
 }
 
 func (cx *PackedFloat32Array) GetIndexed(i int64) float32 {
-
 	var ret float32
-
 	CallFunc_GDExtensionPtrIndexedGetter(
 		globalPackedFloat32ArrayMethodBindings.indexed_getter,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
 		(GDExtensionInt)(i),
 		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
 	)
-
 	return ret
 }
 
@@ -26196,16 +26429,13 @@ func (cx *PackedFloat64Array) Count(value float32) int32 {
 }
 
 func (cx *PackedFloat64Array) GetIndexed(i int64) float32 {
-
 	var ret float32
-
 	CallFunc_GDExtensionPtrIndexedGetter(
 		globalPackedFloat64ArrayMethodBindings.indexed_getter,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
 		(GDExtensionInt)(i),
 		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
 	)
-
 	return ret
 }
 
@@ -26889,16 +27119,13 @@ func (cx *PackedStringArray) Count(value String) int32 {
 }
 
 func (cx *PackedStringArray) GetIndexed(i int64) String {
-
 	var ret String
-
 	CallFunc_GDExtensionPtrIndexedGetter(
 		globalPackedStringArrayMethodBindings.indexed_getter,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
 		(GDExtensionInt)(i),
 		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
 	)
-
 	return ret
 }
 
@@ -27592,16 +27819,13 @@ func (cx *PackedVector2Array) Count(value Vector2) int32 {
 }
 
 func (cx *PackedVector2Array) GetIndexed(i int64) Vector2 {
-
 	var ret Vector2
-
 	CallFunc_GDExtensionPtrIndexedGetter(
 		globalPackedVector2ArrayMethodBindings.indexed_getter,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
 		(GDExtensionInt)(i),
 		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
 	)
-
 	return ret
 }
 
@@ -28293,16 +28517,13 @@ func (cx *PackedVector3Array) Count(value Vector3) int32 {
 }
 
 func (cx *PackedVector3Array) GetIndexed(i int64) Vector3 {
-
 	var ret Vector3
-
 	CallFunc_GDExtensionPtrIndexedGetter(
 		globalPackedVector3ArrayMethodBindings.indexed_getter,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
 		(GDExtensionInt)(i),
 		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
 	)
-
 	return ret
 }
 
@@ -28994,16 +29215,13 @@ func (cx *PackedColorArray) Count(value Color) int32 {
 }
 
 func (cx *PackedColorArray) GetIndexed(i int64) Color {
-
 	var ret Color
-
 	CallFunc_GDExtensionPtrIndexedGetter(
 		globalPackedColorArrayMethodBindings.indexed_getter,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
 		(GDExtensionInt)(i),
 		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
 	)
-
 	return ret
 }
 

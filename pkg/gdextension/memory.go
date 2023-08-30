@@ -82,17 +82,6 @@ func AllocArrayPtr[T any](len int) *T {
 	return (*T)(AllocZeros(bytes))
 }
 
-// SliceHeaderDataPtr
-func SliceHeaderDataPtr[A any, R any](args []*A) *R {
-	header := (*reflect.SliceHeader)(unsafe.Pointer(&args))
-
-	if header == nil {
-		return (*R)(nullptr)
-	}
-
-	return (*R)(unsafe.Pointer(header.Data))
-}
-
 // Alloc returns allocated memory in C memory.
 func Alloc(bytes int) unsafe.Pointer {
 	return CallFunc_GDExtensionInterfaceMemAlloc(uint64(bytes))

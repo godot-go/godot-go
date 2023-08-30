@@ -55,27 +55,27 @@ func _ready():
 	# assert_equal(example.get_v4(), Vector4(1.2, 3.4, 5.6, 7.8))
 	# assert_equal(example.test_node_argument(example), example)
 
-	# # # VarArg method calls.
-	# # var var_ref = ExampleRef.new()
-	# # assert_not_equal(example.extended_ref_checks(var_ref).get_instance_id(), var_ref.get_instance_id())
-	# # assert_equal(example.varargs_func("some", "arguments", "to", "test"), 4)
-	# # assert_equal(example.varargs_func_nv("some", "arguments", "to", "test"), 46)
-	# # example.varargs_func_void("some", "arguments", "to", "test")
-	# # assert_equal(custom_signal_emitted, ["varargs_func_void", 5])
+	# VarArg method calls.
+	# var var_ref = ExampleRef.new()
+	# assert_not_equal(example.extended_ref_checks(var_ref).get_instance_id(), var_ref.get_instance_id())
+	# assert_equal(example.varargs_func("some", "arguments", "to", "test"), 4)
+	# assert_equal(example.varargs_func_nv("some", "arguments", "to", "test"), 46)
+	# example.varargs_func_void("some", "arguments", "to", "test")
+	# assert_equal(custom_signal_emitted, ["varargs_func_void", 5])
 
 	# Method calls with default values.
-	# assert_equal(example.def_args(), 300)
-	# assert_equal(example.def_args(50), 250)
+	assert_equal(example.def_args(), 300)
+	assert_equal(example.def_args(50), 250)
 	assert_equal(example.def_args(50, 100), 150)
 
-	# # Array and Dictionary
+	# Array and Dictionary
 	# assert_equal(example.test_array(), [1, 2])
 	# assert_equal(example.test_tarray(), [ Vector2(1, 2), Vector2(2, 3) ])
 	# assert_equal(example.test_dictionary(), {"hello": "world", "foo": "bar"})
 	# var array: Array[int] = [1, 2, 3]
 	# assert_equal(example.test_tarray_arg(array), 6)
 
-	# # String += operator
+	# String += operator
 	assert_equal(example.test_string_ops(), "ABCĎE")
 
 	# # UtilityFunctions::str()
@@ -108,11 +108,11 @@ func _ready():
 	# assert_equal(example.return_last_rpc_arg(), 100)
 
 	# Virtual method.
-	# var event = InputEventKey.new()
-	# event.key_label = KEY_H
-	# event.unicode = 72
-	# get_viewport().push_input(event)
-	# assert_equal(custom_signal_emitted, ["_input: H", 72])
+	var event = InputEventKey.new()
+	event.key_label = KEY_H
+	event.unicode = 72
+	get_viewport().push_input(event)
+	assert_equal(custom_signal_emitted, ["_input: H", 72])
 
 	exit_with_status()
 

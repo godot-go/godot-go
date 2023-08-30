@@ -1,8 +1,6 @@
 package gdextension
 
 import (
-	"reflect"
-
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
@@ -16,7 +14,6 @@ type Wrapped interface {
 	SetGodotObjectOwner(owner *GodotObject)
 	GetClassName() string
 	GetParentClassName() string
-	CastTo(v Object) Object
 }
 
 type WrappedImpl struct {
@@ -36,53 +33,41 @@ func (w *WrappedImpl) SetGodotObjectOwner(owner *GodotObject) {
 // 	return "Wrapped"
 // }
 
-func (w *WrappedImpl) CastTo(v Object) Object {
-	owner := w.Owner
-
-	t := reflect.TypeOf(v)
-
-	className := t.Name()
-
-	otherClassName := v.GetClassName()
-
-	log.Info("WrappedImpl.CastTo called",
-		zap.String("className", className),
-		zap.String("otherClassName", otherClassName),
+func ObjectCastTo(obj Object, className string) Object {
+	if obj == nil {
+		return nil
+	}
+	log.Info("ObjectCastTo called",
+		zap.String("className", obj.GetClassName()),
+		zap.String("otherClassName", className),
 	)
-
+	owner := obj.GetGodotObjectOwner()
 	cn := NewStringNameWithUtf8Chars(className)
 	defer cn.Destroy()
-
 	tag := CallFunc_GDExtensionInterfaceClassdbGetClassTag(
 		cn.AsGDExtensionConstStringNamePtr(),
 	)
-
 	if tag == nil {
 		log.Panic("classTag unexpectedly came back nil", zap.String("type", className))
 	}
-
 	casted := CallFunc_GDExtensionInterfaceObjectCastTo(
 		(GDExtensionConstObjectPtr)(owner),
 		tag,
 	)
-
 	if casted == nil {
 		return nil
 	}
-
 	cbs, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
-
 	if !ok {
 		log.Warn("unable to find callbacks for Object")
 		return nil
 	}
-
-	ret := CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
+	inst := CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
 		casted,
 		FFI.Token,
 		&cbs)
-
-	return *(*Object)(ret)
+	wci := (*WrappedClassInstance)(inst)
+	return wci.Instance
 }
 
 type WrappedClassInstance struct {

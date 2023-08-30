@@ -26,6 +26,7 @@ func RegisterExampleTypes() {
 	gdextension.ClassDBRegisterClass(&Example{}, func(t gdextension.GDClass) {
 		gdextension.ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
 		gdextension.ClassDBBindMethodVirtual(t, "V_Input", "_input", []string{"event"}, nil)
+		// gdextension.ClassDBBindMethodVarargs(t, "VarargsFunc", "varargs_func", nil, nil)
 		// gdextension.ClassDBBindMethodStatic(t, "TestStatic", "test_static", []string{"a", "b"}, nil)
 		// gdextension.ClassDBBindMethodStatic(t, "TestStatic2", "test_static2", nil, nil)
 		gdextension.ClassDBBindMethod(t, "SimpleFunc", "simple_func", nil, nil)

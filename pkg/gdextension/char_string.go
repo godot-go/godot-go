@@ -47,6 +47,11 @@ func (cx *StringName) AsString() String {
 	return cx.Add_String(rt)
 }
 
+func (cx *StringName) ToUtf8() string {
+	gdStr := cx.AsString()
+	return gdStr.ToUtf8()
+}
+
 func (cx StringName) AsGDExtensionConstStringNamePtr() GDExtensionConstStringNamePtr {
 	return (GDExtensionConstStringNamePtr)(unsafe.Pointer(&cx))
 }

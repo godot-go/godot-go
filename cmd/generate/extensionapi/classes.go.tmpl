@@ -77,9 +77,9 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 {{- if $m.IsVararg }}varargs ...Variant,{{ end -}}
 ) {{ $fnReturnType }} {
     {{/* TODO: refactor for static instantiation */}}
-	className := NewStringNameWithUtf8Chars("{{ $c.Name }}")
+	className := NewStringNameWithLatin1Chars("{{ $c.Name }}")
 	defer className.Destroy()
-	methodName := NewStringNameWithUtf8Chars("{{ $m.Name }}")
+	methodName := NewStringNameWithLatin1Chars("{{ $m.Name }}")
 	defer methodName.Destroy()
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),

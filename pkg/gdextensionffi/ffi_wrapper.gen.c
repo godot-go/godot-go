@@ -174,6 +174,13 @@ void cgo_callfn_GDExtensionClassNotification(
   printStacktrace();
   fn(p_instance, p_what);
 }
+void cgo_callfn_GDExtensionClassNotification2(
+    const GDExtensionClassNotification2 fn,
+    GDExtensionClassInstancePtr p_instance, int32_t p_what,
+    GDExtensionBool p_reversed) {
+  printStacktrace();
+  fn(p_instance, p_what, p_reversed);
+}
 void cgo_callfn_GDExtensionClassToString(const GDExtensionClassToString fn,
                                          GDExtensionClassInstancePtr p_instance,
                                          GDExtensionBool *r_is_valid,
@@ -357,6 +364,13 @@ void cgo_callfn_GDExtensionScriptInstanceNotification(
     GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what) {
   printStacktrace();
   fn(p_instance, p_what);
+}
+void cgo_callfn_GDExtensionScriptInstanceNotification2(
+    const GDExtensionScriptInstanceNotification2 fn,
+    GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what,
+    GDExtensionBool p_reversed) {
+  printStacktrace();
+  fn(p_instance, p_what, p_reversed);
 }
 void cgo_callfn_GDExtensionScriptInstanceToString(
     const GDExtensionScriptInstanceToString fn,
@@ -1234,6 +1248,29 @@ cgo_callfn_GDExtensionInterfaceScriptInstanceCreate(
   printStacktrace();
   return fn(p_info, p_instance_data);
 }
+GDExtensionScriptInstancePtr
+cgo_callfn_GDExtensionInterfaceScriptInstanceCreate2(
+    const GDExtensionInterfaceScriptInstanceCreate2 fn,
+    const GDExtensionScriptInstanceInfo2 *p_info,
+    GDExtensionScriptInstanceDataPtr p_instance_data) {
+  printStacktrace();
+  return fn(p_info, p_instance_data);
+}
+GDExtensionScriptInstancePtr
+cgo_callfn_GDExtensionInterfacePlaceHolderScriptInstanceCreate(
+    const GDExtensionInterfacePlaceHolderScriptInstanceCreate fn,
+    GDExtensionObjectPtr p_language, GDExtensionObjectPtr p_script,
+    GDExtensionObjectPtr p_owner) {
+  printStacktrace();
+  return fn(p_language, p_script, p_owner);
+}
+void cgo_callfn_GDExtensionInterfacePlaceHolderScriptInstanceUpdate(
+    const GDExtensionInterfacePlaceHolderScriptInstanceUpdate fn,
+    GDExtensionScriptInstancePtr p_placeholder,
+    GDExtensionConstTypePtr p_properties, GDExtensionConstTypePtr p_values) {
+  printStacktrace();
+  fn(p_placeholder, p_properties, p_values);
+}
 GDExtensionScriptInstanceDataPtr
 cgo_callfn_GDExtensionInterfaceObjectGetScriptInstance(
     const GDExtensionInterfaceObjectGetScriptInstance fn,
@@ -1266,6 +1303,15 @@ void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass(
     GDExtensionConstStringNamePtr p_class_name,
     GDExtensionConstStringNamePtr p_parent_class_name,
     const GDExtensionClassCreationInfo *p_extension_funcs) {
+  printStacktrace();
+  fn(p_library, p_class_name, p_parent_class_name, p_extension_funcs);
+}
+void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass2(
+    const GDExtensionInterfaceClassdbRegisterExtensionClass2 fn,
+    GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstStringNamePtr p_parent_class_name,
+    const GDExtensionClassCreationInfo2 *p_extension_funcs) {
   printStacktrace();
   fn(p_library, p_class_name, p_parent_class_name, p_extension_funcs);
 }
@@ -1362,7 +1408,7 @@ void cgo_callfn_GDExtensionInterfaceEditorRemovePlugin(
   printStacktrace();
   fn(p_class_name);
 }
-/* struct (7) GDExtensionInitialization */
+/* struct (9) GDExtensionInitialization */
 void cgo_callfn_GDExtensionInitialization_initialize(
     const GDExtensionInitialization *p_struct, void *userdata,
     GDExtensionInitializationLevel p_level) {

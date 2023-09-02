@@ -15,9 +15,9 @@ func NewSimpleGDExtensionPropertyInfo(
 ) GDExtensionPropertyInfo {
 	// TODO: move to alloc memory in C?
 	return NewGDExtensionPropertyInfo(
-		NewStringNameWithUtf8Chars(className).AsGDExtensionConstStringNamePtr(),
+		NewStringNameWithLatin1Chars(className).AsGDExtensionConstStringNamePtr(),
 		variantType,
-		NewStringNameWithUtf8Chars(name).AsGDExtensionConstStringNamePtr(),
+		NewStringNameWithLatin1Chars(name).AsGDExtensionConstStringNamePtr(),
 		uint32(PROPERTY_HINT_NONE),
 		NewStringWithUtf8Chars("").AsGDExtensionConstStringPtr(),
 		uint32(PROPERTY_USAGE_DEFAULT),

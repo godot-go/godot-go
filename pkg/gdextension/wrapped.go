@@ -42,7 +42,7 @@ func ObjectCastTo(obj Object, className string) Object {
 		zap.String("otherClassName", className),
 	)
 	owner := obj.GetGodotObjectOwner()
-	cn := NewStringNameWithUtf8Chars(className)
+	cn := NewStringNameWithLatin1Chars(className)
 	defer cn.Destroy()
 	tag := CallFunc_GDExtensionInterfaceClassdbGetClassTag(
 		cn.AsGDExtensionConstStringNamePtr(),

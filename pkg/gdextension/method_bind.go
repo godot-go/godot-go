@@ -160,7 +160,7 @@ func NewMethodBind(
 	}
 
 	classMethodInfo := NewGDExtensionClassMethodInfo(
-		NewStringNameWithUtf8Chars(p_name).AsGDExtensionConstStringNamePtr(),
+		NewStringNameWithLatin1Chars(p_name).AsGDExtensionConstStringNamePtr(),
 		unsafe.Pointer(methodBind),
 		(GDExtensionClassMethodCall)(C.cgo_method_bind_method_call),
 		(GDExtensionClassMethodPtrCall)(C.cgo_method_bind_method_ptrcall),
@@ -211,7 +211,7 @@ func (b *MethodBind) Call(
 	vReturn := NewVariantNil()
 	var (
 		r_return GDExtensionUninitializedVariantPtr = (GDExtensionUninitializedVariantPtr)(vReturn.ptr())
-		bindName                                    = NewStringNameWithUtf8Chars(b.Name)
+		bindName                                    = NewStringNameWithLatin1Chars(b.Name)
 	)
 
 	defer bindName.Destroy()
@@ -253,7 +253,7 @@ func (b *MethodBind) CallStatic(
 		r_return GDExtensionUninitializedVariantPtr = (GDExtensionUninitializedVariantPtr)(vReturn.ptr())
 	)
 
-	snName := NewStringNameWithUtf8Chars(b.Name)
+	snName := NewStringNameWithLatin1Chars(b.Name)
 	defer snName.Destroy()
 
 	CallFunc_GDExtensionInterfaceVariantCallStatic(

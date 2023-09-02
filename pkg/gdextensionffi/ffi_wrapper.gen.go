@@ -216,6 +216,7 @@ type GDExtensionClassFreePropertyList C.GDExtensionClassFreePropertyList
 type GDExtensionClassPropertyCanRevert C.GDExtensionClassPropertyCanRevert
 type GDExtensionClassPropertyGetRevert C.GDExtensionClassPropertyGetRevert
 type GDExtensionClassNotification C.GDExtensionClassNotification
+type GDExtensionClassNotification2 C.GDExtensionClassNotification2
 type GDExtensionClassToString C.GDExtensionClassToString
 type GDExtensionClassReference C.GDExtensionClassReference
 type GDExtensionClassUnreference C.GDExtensionClassUnreference
@@ -243,6 +244,7 @@ type GDExtensionScriptInstanceFreeMethodList C.GDExtensionScriptInstanceFreeMeth
 type GDExtensionScriptInstanceHasMethod C.GDExtensionScriptInstanceHasMethod
 type GDExtensionScriptInstanceCall C.GDExtensionScriptInstanceCall
 type GDExtensionScriptInstanceNotification C.GDExtensionScriptInstanceNotification
+type GDExtensionScriptInstanceNotification2 C.GDExtensionScriptInstanceNotification2
 type GDExtensionScriptInstanceToString C.GDExtensionScriptInstanceToString
 type GDExtensionScriptInstanceRefCountIncremented C.GDExtensionScriptInstanceRefCountIncremented
 type GDExtensionScriptInstanceRefCountDecremented C.GDExtensionScriptInstanceRefCountDecremented
@@ -376,11 +378,15 @@ type GDExtensionInterfaceObjectGetInstanceId C.GDExtensionInterfaceObjectGetInst
 type GDExtensionInterfaceRefGetObject C.GDExtensionInterfaceRefGetObject
 type GDExtensionInterfaceRefSetObject C.GDExtensionInterfaceRefSetObject
 type GDExtensionInterfaceScriptInstanceCreate C.GDExtensionInterfaceScriptInstanceCreate
+type GDExtensionInterfaceScriptInstanceCreate2 C.GDExtensionInterfaceScriptInstanceCreate2
+type GDExtensionInterfacePlaceHolderScriptInstanceCreate C.GDExtensionInterfacePlaceHolderScriptInstanceCreate
+type GDExtensionInterfacePlaceHolderScriptInstanceUpdate C.GDExtensionInterfacePlaceHolderScriptInstanceUpdate
 type GDExtensionInterfaceObjectGetScriptInstance C.GDExtensionInterfaceObjectGetScriptInstance
 type GDExtensionInterfaceClassdbConstructObject C.GDExtensionInterfaceClassdbConstructObject
 type GDExtensionInterfaceClassdbGetMethodBind C.GDExtensionInterfaceClassdbGetMethodBind
 type GDExtensionInterfaceClassdbGetClassTag C.GDExtensionInterfaceClassdbGetClassTag
 type GDExtensionInterfaceClassdbRegisterExtensionClass C.GDExtensionInterfaceClassdbRegisterExtensionClass
+type GDExtensionInterfaceClassdbRegisterExtensionClass2 C.GDExtensionInterfaceClassdbRegisterExtensionClass2
 type GDExtensionInterfaceClassdbRegisterExtensionClassMethod C.GDExtensionInterfaceClassdbRegisterExtensionClassMethod
 type GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant C.GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
 type GDExtensionInterfaceClassdbRegisterExtensionClassProperty C.GDExtensionInterfaceClassdbRegisterExtensionClassProperty
@@ -820,6 +826,23 @@ func CallFunc_GDExtensionClassNotification(
 	log.Debug("called C.cgo_callfn_GDExtensionClassNotification")
 
 	C.cgo_callfn_GDExtensionClassNotification(arg0, arg1, arg2)
+
+}
+
+func CallFunc_GDExtensionClassNotification2(
+	fn GDExtensionClassNotification2,
+	p_instance GDExtensionClassInstancePtr,
+	p_what int32,
+	p_reversed GDExtensionBool,
+) {
+	arg0 := (C.GDExtensionClassNotification2)(fn)
+	arg1 := (C.GDExtensionClassInstancePtr)(p_instance)
+	arg2 := (C.int32_t)(p_what)
+	arg3 := (C.GDExtensionBool)(p_reversed)
+
+	log.Debug("called C.cgo_callfn_GDExtensionClassNotification2")
+
+	C.cgo_callfn_GDExtensionClassNotification2(arg0, arg1, arg2, arg3)
 
 }
 
@@ -1287,6 +1310,23 @@ func CallFunc_GDExtensionScriptInstanceNotification(
 	log.Debug("called C.cgo_callfn_GDExtensionScriptInstanceNotification")
 
 	C.cgo_callfn_GDExtensionScriptInstanceNotification(arg0, arg1, arg2)
+
+}
+
+func CallFunc_GDExtensionScriptInstanceNotification2(
+	fn GDExtensionScriptInstanceNotification2,
+	p_instance GDExtensionScriptInstanceDataPtr,
+	p_what int32,
+	p_reversed GDExtensionBool,
+) {
+	arg0 := (C.GDExtensionScriptInstanceNotification2)(fn)
+	arg1 := (C.GDExtensionScriptInstanceDataPtr)(p_instance)
+	arg2 := (C.int32_t)(p_what)
+	arg3 := (C.GDExtensionBool)(p_reversed)
+
+	log.Debug("called C.cgo_callfn_GDExtensionScriptInstanceNotification2")
+
+	C.cgo_callfn_GDExtensionScriptInstanceNotification2(arg0, arg1, arg2, arg3)
 
 }
 
@@ -3476,6 +3516,56 @@ func CallFunc_GDExtensionInterfaceScriptInstanceCreate(
 	return (GDExtensionScriptInstancePtr)(ret)
 }
 
+func CallFunc_GDExtensionInterfaceScriptInstanceCreate2(
+	p_info *GDExtensionScriptInstanceInfo2,
+	p_instance_data GDExtensionScriptInstanceDataPtr,
+) GDExtensionScriptInstancePtr {
+	arg0 := (C.GDExtensionInterfaceScriptInstanceCreate2)(FFI.ScriptInstanceCreate2)
+	arg1 := (*C.GDExtensionScriptInstanceInfo2)(p_info)
+	arg2 := (C.GDExtensionScriptInstanceDataPtr)(p_instance_data)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceScriptInstanceCreate2")
+
+	ret := C.cgo_callfn_GDExtensionInterfaceScriptInstanceCreate2(arg0, arg1, arg2)
+
+	// GDExtensionScriptInstancePtr
+	return (GDExtensionScriptInstancePtr)(ret)
+}
+
+func CallFunc_GDExtensionInterfacePlaceHolderScriptInstanceCreate(
+	p_language GDExtensionObjectPtr,
+	p_script GDExtensionObjectPtr,
+	p_owner GDExtensionObjectPtr,
+) GDExtensionScriptInstancePtr {
+	arg0 := (C.GDExtensionInterfacePlaceHolderScriptInstanceCreate)(FFI.PlaceHolderScriptInstanceCreate)
+	arg1 := (C.GDExtensionObjectPtr)(p_language)
+	arg2 := (C.GDExtensionObjectPtr)(p_script)
+	arg3 := (C.GDExtensionObjectPtr)(p_owner)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfacePlaceHolderScriptInstanceCreate")
+
+	ret := C.cgo_callfn_GDExtensionInterfacePlaceHolderScriptInstanceCreate(arg0, arg1, arg2, arg3)
+
+	// GDExtensionScriptInstancePtr
+	return (GDExtensionScriptInstancePtr)(ret)
+}
+
+func CallFunc_GDExtensionInterfacePlaceHolderScriptInstanceUpdate(
+	p_placeholder GDExtensionScriptInstancePtr,
+	p_properties GDExtensionConstTypePtr,
+	p_values GDExtensionConstTypePtr,
+) {
+	arg0 := (C.GDExtensionInterfacePlaceHolderScriptInstanceUpdate)(FFI.PlaceHolderScriptInstanceUpdate)
+	arg1 := (C.GDExtensionScriptInstancePtr)(p_placeholder)
+	arg2 := (C.GDExtensionConstTypePtr)(p_properties)
+	arg3 := (C.GDExtensionConstTypePtr)(p_values)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfacePlaceHolderScriptInstanceUpdate")
+
+	C.cgo_callfn_GDExtensionInterfacePlaceHolderScriptInstanceUpdate(arg0, arg1, arg2, arg3)
+
+}
+
 func CallFunc_GDExtensionInterfaceObjectGetScriptInstance(
 	p_object GDExtensionConstObjectPtr,
 	p_language GDExtensionObjectPtr,
@@ -3553,6 +3643,24 @@ func CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass(
 	log.Debug("called C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass")
 
 	C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass(arg0, arg1, arg2, arg3, arg4)
+
+}
+
+func CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass2(
+	p_library GDExtensionClassLibraryPtr,
+	p_class_name GDExtensionConstStringNamePtr,
+	p_parent_class_name GDExtensionConstStringNamePtr,
+	p_extension_funcs *GDExtensionClassCreationInfo2,
+) {
+	arg0 := (C.GDExtensionInterfaceClassdbRegisterExtensionClass2)(FFI.ClassdbRegisterExtensionClass2)
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library)
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_class_name)
+	arg3 := (C.GDExtensionConstStringNamePtr)(p_parent_class_name)
+	arg4 := (*C.GDExtensionClassCreationInfo2)(p_extension_funcs)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass2")
+
+	C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass2(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -3750,13 +3858,15 @@ type GDExtensionInstanceBindingCallbacks C.GDExtensionInstanceBindingCallbacks
 type GDExtensionPropertyInfo C.GDExtensionPropertyInfo
 type GDExtensionMethodInfo C.GDExtensionMethodInfo
 type GDExtensionClassCreationInfo C.GDExtensionClassCreationInfo
+type GDExtensionClassCreationInfo2 C.GDExtensionClassCreationInfo2
 type GDExtensionClassMethodInfo C.GDExtensionClassMethodInfo
 type GDExtensionScriptInstanceInfo C.GDExtensionScriptInstanceInfo
+type GDExtensionScriptInstanceInfo2 C.GDExtensionScriptInstanceInfo2
 type GDExtensionInitialization C.GDExtensionInitialization
 type GDExtensionGodotVersion C.GDExtensionGodotVersion
 
 // struct functions
-/* struct (7) GDExtensionInitialization */
+/* struct (9) GDExtensionInitialization */
 
 func GDExtensionInitialization_initialize(p_struct *GDExtensionInitialization, userdata unsafe.Pointer, p_level GDExtensionInitializationLevel) {
 	arg0 := (*C.GDExtensionInitialization)(p_struct)    // GDExtensionInitialization

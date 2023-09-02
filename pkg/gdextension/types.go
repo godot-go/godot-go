@@ -62,7 +62,7 @@ func (c *ClassInfo) Destroy() {
 func NewClassInfo(name, parentName string, level GDExtensionInitializationLevel, classType, inheritType reflect.Type, parentPtr *ClassInfo) *ClassInfo {
 	return &ClassInfo{
 		Name:                name,
-		NameAsStringNamePtr: NewStringNameWithUtf8Chars(name).AsGDExtensionConstStringNamePtr(),
+		NameAsStringNamePtr: NewStringNameWithLatin1Chars(name).AsGDExtensionConstStringNamePtr(),
 		ParentName:          parentName,
 		Level:               level,
 		MethodMap:           map[string]*MethodBind{},

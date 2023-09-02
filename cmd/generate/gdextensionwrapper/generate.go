@@ -27,6 +27,9 @@ var (
 
 	//go:embed ffi_wrapper.go.tmpl
 	ffiWrapperGoFileText string
+
+	//go:embed ffi.go.tmpl
+	ffiFileText string
 )
 
 func Generate(projectPath, astOutputFilename string) {
@@ -62,6 +65,11 @@ func Generate(projectPath, astOutputFilename string) {
 	}
 
 	err = GenerateGDExtensionWrapperGoFile(projectPath, ast)
+	if err != nil {
+		panic(err)
+	}
+
+	err = GenerateGDExtensionInterfaceGoFile(projectPath, ast)
 	if err != nil {
 		panic(err)
 	}
@@ -148,6 +156,42 @@ func GenerateGDExtensionWrapperGoFile(projectPath string, ast clang.CHeaderFileA
 	}
 
 	headerFileName := filepath.Join(projectPath, "pkg", "gdextensionffi", "ffi_wrapper.gen.go")
+	f, err := os.Create(headerFileName)
+	f.Write(b.Bytes())
+	f.Close()
+	return nil
+}
+
+func GenerateGDExtensionInterfaceGoFile(projectPath string, ast clang.CHeaderFileAST) error {
+	funcs := template.FuncMap{
+		"gdiVariableName":     gdiVariableName,
+		"snakeCase":           strcase.ToSnake,
+		"camelCase":           strcase.ToCamel,
+		"goReturnType":        goReturnType,
+		"goArgumentType":      goArgumentType,
+		"goEnumValue":         goEnumValue,
+		"add":                 add,
+		"cgoCastArgument":     cgoCastArgument,
+		"cgoCastReturnType":   cgoCastReturnType,
+		"cgoCleanUpArgument":  cgoCleanUpArgument,
+		"trimPrefix":          trimPrefix,
+		"loadProcAddressName": loadProcAddressName,
+	}
+
+	tmpl, err := template.New("ffi.gen.go").
+		Funcs(funcs).
+		Parse(ffiFileText)
+	if err != nil {
+		return err
+	}
+
+	var b bytes.Buffer
+	err = tmpl.Execute(&b, ast)
+	if err != nil {
+		return err
+	}
+
+	headerFileName := filepath.Join(projectPath, "pkg", "gdextensionffi", "ffi.gen.go")
 	f, err := os.Create(headerFileName)
 	f.Write(b.Bytes())
 	f.Close()

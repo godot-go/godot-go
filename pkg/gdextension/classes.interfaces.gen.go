@@ -8079,7 +8079,7 @@ type Font interface {
 
 	GetFallbacks() []Font
 
-	FindVariation(variation_coordinates Dictionary, face_index int32, strength float32, transform Transform2D) RID
+	FindVariation(variation_coordinates Dictionary, face_index int32, strength float32, transform Transform2D, spacing_top int32, spacing_bottom int32, spacing_space int32, spacing_glyph int32) RID
 
 	GetRids() []RID
 
@@ -8232,6 +8232,10 @@ type FontFile interface {
 
 	GetTransform(cache_index int32) Transform2D
 
+	SetExtraSpacing(cache_index int32, spacing TextServerSpacingType, value int64)
+
+	GetExtraSpacing(cache_index int32, spacing TextServerSpacingType) int64
+
 	SetFaceIndex(cache_index int32, face_index int64)
 
 	GetFaceIndex(cache_index int32) int64
@@ -8361,9 +8365,6 @@ type FontVariation interface {
 
 	SetSpacing(spacing TextServerSpacingType, value int32)
 }
-type FramebufferCacheRD interface {
-	Object
-}
 type GDExtension interface {
 	Resource
 
@@ -8396,14 +8397,6 @@ type GDScript interface {
 	Script
 
 	New(varargs ...Variant) Variant
-}
-type GDScriptEditorTranslationParserPlugin interface {
-	EditorTranslationParserPlugin
-}
-type GDScriptNativeClass interface {
-	RefCounted
-
-	New() Variant
 }
 type GLTFAccessor interface {
 	Resource
@@ -8578,15 +8571,6 @@ type GLTFDocumentExtension interface {
 	// VIRTUAL: Internal_ExportPost(state GLTFState,) Error
 }
 type GLTFDocumentExtensionConvertImporterMesh interface {
-	GLTFDocumentExtension
-}
-type GLTFDocumentExtensionPhysics interface {
-	GLTFDocumentExtension
-}
-type GLTFDocumentExtensionTextureKTX interface {
-	GLTFDocumentExtension
-}
-type GLTFDocumentExtensionTextureWebP interface {
 	GLTFDocumentExtension
 }
 type GLTFLight interface {
@@ -9505,12 +9489,6 @@ type GeometryInstance3D interface {
 
 	GetCustomAabb() AABB
 }
-type GodotPhysicsServer2D interface {
-	PhysicsServer2D
-}
-type GodotPhysicsServer3D interface {
-	PhysicsServer3D
-}
 type Gradient interface {
 	Resource
 
@@ -10108,9 +10086,6 @@ type IP interface {
 
 	ClearCache(hostname String)
 }
-type IPUnix interface {
-	IP
-}
 type Image interface {
 	Resource
 
@@ -10243,8 +10218,6 @@ type Image interface {
 	LoadTgaFromBuffer(buffer PackedByteArray) Error
 
 	LoadBmpFromBuffer(buffer PackedByteArray) Error
-
-	LoadDdsFromBuffer(buffer PackedByteArray) Error
 
 	LoadKtxFromBuffer(buffer PackedByteArray) Error
 
@@ -12390,12 +12363,6 @@ type MovieWriter interface {
 	// VIRTUAL: Internal_WriteEnd()
 
 	AddWriter(writer MovieWriter)
-}
-type MovieWriterMJPEG interface {
-	MovieWriter
-}
-type MovieWriterPNGWAV interface {
-	MovieWriter
 }
 type MultiMesh interface {
 	Resource
@@ -15002,6 +14969,17 @@ type OpenXRInteractionProfile interface {
 	SetBindings(bindings Array)
 
 	GetBindings() Array
+}
+type OpenXRInteractionProfileMetadata interface {
+	Object
+
+	RegisterProfileRename(old_name String, new_name String)
+
+	RegisterTopLevelPath(display_name String, openxr_path String, openxr_extension_name String)
+
+	RegisterInteractionProfile(display_name String, openxr_path String, openxr_extension_name String)
+
+	RegisterIoPath(interaction_profile String, display_name String, toplevel_path String, openxr_path String, openxr_extension_name String, action_type OpenXRActionActionType)
 }
 type OpenXRInterface interface {
 	XRInterface
@@ -20358,9 +20336,6 @@ type Resource interface {
 
 	Duplicate(subresources bool) Resource
 }
-type ResourceFormatImporterSaver interface {
-	ResourceFormatSaver
-}
 type ResourceFormatLoader interface {
 	RefCounted
 
@@ -21119,6 +21094,10 @@ type SceneReplicationConfig interface {
 
 	PropertySetSpawn(path NodePath, enabled bool)
 
+	PropertyGetReplicationMode(path NodePath) SceneReplicationConfigReplicationMode
+
+	PropertySetReplicationMode(path NodePath, mode SceneReplicationConfigReplicationMode)
+
 	PropertyGetSync(path NodePath) bool
 
 	PropertySetSync(path NodePath, enabled bool)
@@ -21360,6 +21339,8 @@ type ScriptExtension interface {
 	// VIRTUAL: Internal_Reload(keep_state bool,) Error
 
 	// VIRTUAL: Internal_GetDocumentation() []Dictionary
+
+	// VIRTUAL: Internal_GetClassIconPath() String
 
 	// VIRTUAL: Internal_HasMethod(method StringName,) bool
 
@@ -24322,6 +24303,10 @@ type TextServer interface {
 
 	FontGetEmbolden(font_rid RID) float64
 
+	FontSetSpacing(font_rid RID, spacing TextServerSpacingType, value int64)
+
+	FontGetSpacing(font_rid RID, spacing TextServerSpacingType) int64
+
 	FontSetTransform(font_rid RID, transform Transform2D)
 
 	FontGetTransform(font_rid RID) Transform2D
@@ -24728,6 +24713,10 @@ type TextServerExtension interface {
 	// VIRTUAL: Internal_FontSetEmbolden(font_rid RID,strength float64,)
 
 	// VIRTUAL: Internal_FontGetEmbolden(font_rid RID,) float64
+
+	// VIRTUAL: Internal_FontSetSpacing(font_rid RID,spacing TextServerSpacingType,value int64,)
+
+	// VIRTUAL: Internal_FontGetSpacing(font_rid RID,spacing TextServerSpacingType,) int64
 
 	// VIRTUAL: Internal_FontSetTransform(font_rid RID,transform Transform2D,)
 
@@ -25928,6 +25917,10 @@ type TileSetAtlasSource interface {
 
 	GetTileAtCoords(atlas_coords Vector2i) Vector2i
 
+	HasTilesOutsideTexture() bool
+
+	ClearTilesOutsideTexture()
+
 	SetTileAnimationColumns(atlas_coords Vector2i, frame_columns int32)
 
 	GetTileAnimationColumns(atlas_coords Vector2i) int32
@@ -26382,6 +26375,10 @@ type TreeItem interface {
 
 	GetAutowrapMode(column int32) TextServerAutowrapMode
 
+	SetTextOverrunBehavior(column int32, overrun_behavior TextServerOverrunBehavior)
+
+	GetTextOverrunBehavior(column int32) TextServerOverrunBehavior
+
 	SetStructuredTextBidiOverride(column int32, parser TextServerStructuredTextParser)
 
 	GetStructuredTextBidiOverride(column int32) TextServerStructuredTextParser
@@ -26791,9 +26788,6 @@ type UndoRedo interface {
 	Redo() bool
 
 	Undo() bool
-}
-type UniformSetCacheRD interface {
-	Object
 }
 type VBoxContainer interface {
 	BoxContainer
@@ -28515,6 +28509,8 @@ type Window interface {
 	SetPosition(position Vector2i)
 
 	GetPosition() Vector2i
+
+	MoveToCenter()
 
 	SetSize(size Vector2i)
 

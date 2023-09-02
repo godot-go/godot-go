@@ -37,7 +37,7 @@ func {{ camelCase $f.Name }}(
 {{- end -}}
 ) {{ $fnReturnType }} {
 	{{/* TODO: refactor for static instantiation */}}
-	fName := NewStringNameWithUtf8Chars("{{ $f.Name }}")
+	fName := NewStringNameWithLatin1Chars("{{ $f.Name }}")
 	defer fName.Destroy()
 	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), {{ $f.Hash }})
 

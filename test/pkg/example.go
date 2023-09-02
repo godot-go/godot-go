@@ -118,11 +118,11 @@ func (e *Example) TestArray() gdextension.Array {
 
 func (e *Example) TestDictionary() gdextension.Dictionary {
 	dict := gdextension.NewDictionary()
-	hello := gdextension.NewStringNameWithUtf8Chars("hello")
+	hello := gdextension.NewStringNameWithLatin1Chars("hello")
 	defer hello.Destroy()
 	world := gdextension.NewStringWithUtf8Chars("world")
 	defer world.Destroy()
-	foo := gdextension.NewStringNameWithUtf8Chars("foo")
+	foo := gdextension.NewStringNameWithLatin1Chars("foo")
 	defer foo.Destroy()
 	bar := gdextension.NewStringWithUtf8Chars("bar")
 	defer bar.Destroy()
@@ -146,7 +146,7 @@ func (e *Example) GetPropertyFromList() gdextension.Vector3 {
 }
 
 func (e *Example) EmitCustomSignal(name string, value int64) {
-	customSignal := gdextension.NewStringNameWithUtf8Chars("custom_signal")
+	customSignal := gdextension.NewStringNameWithLatin1Chars("custom_signal")
 	defer customSignal.Destroy()
 	snName := gdextension.NewStringWithLatin1Chars(name)
 	defer snName.Destroy()
@@ -250,7 +250,7 @@ func (e *Example) V_Ready() {
 		zap.Bool("equal", equal),
 	)
 	input := gdextension.GetInputSingleton()
-	uiRight := gdextension.NewStringNameWithUtf8Chars("ui_right")
+	uiRight := gdextension.NewStringNameWithLatin1Chars("ui_right")
 	defer uiRight.Destroy()
 	input.IsActionPressed(uiRight, true)
 }

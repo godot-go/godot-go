@@ -88,7 +88,7 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 		)
 	}
 
-	snExtensionClassName := NewStringNameWithUtf8Chars(extensionClassName)
+	snExtensionClassName := NewStringNameWithLatin1Chars(extensionClassName)
 	defer snExtensionClassName.Destroy()
 
 	callbacks, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get(extensionClassName)
@@ -140,7 +140,7 @@ func CreateGDClassInstance(tn string) GDClass {
 		zap.Any("parent_name", ci.ParentName),
 	)
 
-	snParentName := NewStringNameWithUtf8Chars(ci.ParentName)
+	snParentName := NewStringNameWithLatin1Chars(ci.ParentName)
 	defer snParentName.Destroy()
 
 	// create inherited GDExtensionClass first

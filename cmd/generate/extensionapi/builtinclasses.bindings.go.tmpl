@@ -91,7 +91,7 @@ func {{ lowerFirstChar $c.Name }}InitMethodBindings() {
     missingMethods := make([]string, 0, {{ len $c.FilteredMethods }})
 
     {{ range $j, $mb := $c.FilteredMethods -}}
-    methodName{{ $j }} := NewStringNameWithUtf8Chars("{{ $mb.Name }}")
+    methodName{{ $j }} := NewStringNameWithLatin1Chars("{{ $mb.Name }}")
     defer methodName{{ $j }}.Destroy()
     log.Debug("global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }}")
     global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }} = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod({{ $enumTypeName }}, methodName{{ $j }}.AsGDExtensionConstStringNamePtr(), {{ $mb.Hash }})
@@ -105,7 +105,7 @@ func {{ lowerFirstChar $c.Name }}InitMethodBindings() {
     }
 
     {{ range $j, $mb := $c.Members -}}
-    memberName{{ $j }} := NewStringNameWithUtf8Chars("{{ $mb.Name }}")
+    memberName{{ $j }} := NewStringNameWithLatin1Chars("{{ $mb.Name }}")
     defer memberName{{ $j }}.Destroy()
     log.Debug("global{{ $c.Name }}MethodBindings.member_{{ $mb.Name }}_setter")
     global{{ $c.Name }}MethodBindings.member_{{ $mb.Name }}_setter = CallFunc_GDExtensionInterfaceVariantGetPtrSetter({{ $enumTypeName }}, memberName{{ $j }}.AsGDExtensionConstStringNamePtr())

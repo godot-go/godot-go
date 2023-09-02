@@ -210,6 +210,10 @@ const (
 	KEY_LAUNCHD           = 4194413
 	KEY_LAUNCHE           = 4194414
 	KEY_LAUNCHF           = 4194415
+	KEY_GLOBE             = 4194416
+	KEY_KEYBOARD          = 4194417
+	KEY_JIS_EISU          = 4194418
+	KEY_JIS_KANA          = 4194419
 	KEY_UNKNOWN           = 8388607
 	KEY_SPACE             = 32
 	KEY_EXCLAM            = 33
@@ -282,10 +286,6 @@ const (
 	KEY_ASCIITILDE        = 126
 	KEY_YEN               = 165
 	KEY_SECTION           = 167
-	KEY_GLOBE             = 4194416
-	KEY_KEYBOARD          = 4194417
-	KEY_JIS_EISU          = 4194418
-	KEY_JIS_KANA          = 4194419
 )
 
 type KeyModifierMask int

@@ -4803,6 +4803,14 @@ const (
 	RIGID_BODY_3_D_DAMP_MODE_DAMP_MODE_REPLACE                     = 1
 )
 
+type SceneReplicationConfigReplicationMode int
+
+const (
+	SCENE_REPLICATION_CONFIG_REPLICATION_MODE_REPLICATION_MODE_NEVER     SceneReplicationConfigReplicationMode = 0
+	SCENE_REPLICATION_CONFIG_REPLICATION_MODE_REPLICATION_MODE_ALWAYS                                          = 1
+	SCENE_REPLICATION_CONFIG_REPLICATION_MODE_REPLICATION_MODE_ON_CHANGE                                       = 2
+)
+
 type SceneStateGenEditState int
 
 const (

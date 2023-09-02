@@ -325,6 +325,14 @@ func cgoCastReturnType(t clang.PrimativeType, argName string) string {
 }
 
 func gdiVariableName(typeName string) string {
+	ret := loadProcAddressName(typeName)
+	ret = strcase.ToCamel(ret)
+	ret = strings.Replace(ret, "C32Str", "C32str", 1)
+	ret = strings.Replace(ret, "Placeholder", "PlaceHolder", 1)
+	return ret
+}
+
+func loadProcAddressName(typeName string) string {
 	ret := strcase.ToSnake(typeName)
 	ret = strings.Replace(ret, "gd_extension_interface_", "", 1)
 	ret = strings.Replace(ret, "_latin_1_", "_latin1_", 1)
@@ -339,7 +347,17 @@ func gdiVariableName(typeName string) string {
 	ret = strings.Replace(ret, "_int_64_", "_int64_", 1)
 	ret = strings.Replace(ret, "_vector_2_", "_vector2_", 1)
 	ret = strings.Replace(ret, "_vector_3_", "_vector3_", 1)
-	ret = strcase.ToCamel(ret)
-	ret = strings.Replace(ret, "C32Str", "C32str", 1)
+	ret = strings.Replace(ret, "_2", "2", 1)
+	ret = strings.Replace(ret, "_3", "3", 1)
+	ret = strings.Replace(ret, "_4", "4", 1)
+	ret = strings.Replace(ret, "place_holder", "placeholder", 1)
 	return ret
+}
+
+func trimPrefix(typeName, prefix string) string {
+	prefixLen := len(prefix)
+	if strings.HasPrefix(typeName, prefix) {
+		return typeName[prefixLen:]
+	}
+	return typeName
 }

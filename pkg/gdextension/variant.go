@@ -679,7 +679,7 @@ func (c *Variant) Call(
 		callArgs *GDExtensionConstVariantPtr
 		r_ret    Variant
 	)
-	sn := NewStringNameWithUtf8Chars(method)
+	sn := NewStringNameWithLatin1Chars(method)
 	defer sn.Destroy()
 	callArgs = AllocCopyVariantPtrSliceAsGDExtensionVariantPtrPtr(args)
 	callArgCount := len(args)
@@ -707,7 +707,7 @@ func (c *Variant) CallStatic(
 	var (
 		callArgs *GDExtensionConstVariantPtr
 	)
-	sn := NewStringNameWithUtf8Chars(method)
+	sn := NewStringNameWithLatin1Chars(method)
 	defer sn.Destroy()
 	callArgs = AllocCopyVariantPtrSliceAsGDExtensionVariantPtrPtr(args)
 	callArgCount := len(args)

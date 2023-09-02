@@ -137,15 +137,15 @@ func (m *GDExtensionClassMethodInfo) Destroy() {
 	}
 }
 
-func NewGDExtensionClassCreationInfo(
+func NewGDExtensionClassCreationInfo2(
 	createInstanceFunc GDExtensionClassCreateInstance,
 	freeInstanceFunc GDExtensionClassFreeInstance,
 	getVirtualCallDataFunc GDExtensionClassGetVirtuaCallData,
 	callVirtualFunc GDExtensionClassCallVirtualWithData,
 	toStringFunc GDExtensionClassToString,
 	classUserdata unsafe.Pointer,
-) GDExtensionClassCreationInfo {
-	return (GDExtensionClassCreationInfo)(C.GDExtensionClassCreationInfo{
+) GDExtensionClassCreationInfo2 {
+	return (GDExtensionClassCreationInfo2)(C.GDExtensionClassCreationInfo2{
 		create_instance_func:       (C.GDExtensionClassCreateInstance)(createInstanceFunc),
 		free_instance_func:         (C.GDExtensionClassFreeInstance)(freeInstanceFunc),
 		get_virtual_call_data_func: (C.GDExtensionClassGetVirtuaCallData)(getVirtualCallDataFunc),
@@ -155,8 +155,8 @@ func NewGDExtensionClassCreationInfo(
 	})
 }
 
-func (m *GDExtensionClassCreationInfo) Destroy() {
-	cm := (*C.GDExtensionClassCreationInfo)(m)
+func (m *GDExtensionClassCreationInfo2) Destroy() {
+	cm := (*C.GDExtensionClassCreationInfo2)(m)
 
 	if cm.class_userdata != nil {
 		C.free(cm.class_userdata)

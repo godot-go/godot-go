@@ -15,9 +15,18 @@ import (
 	"golang.org/x/text/encoding/unicode/utf32"
 )
 
+func NewStringNameWithGDExtensionConstStringNamePtr(ptr GDExtensionConstStringNamePtr) StringName {
+	cx := StringName{}
+	typedSrc := (*[8]uint8)(ptr)
+	for i := 0; i < 8; i++ {
+		cx.opaque[i] = typedSrc[i]
+	}
+	return cx
+}
+
 func NewStringNameWithLatin1Chars(content string) StringName {
 	cx := String{}
-	defer cx.Destroy()
+	// defer cx.Destroy()
 	ptr := (GDExtensionUninitializedStringPtr)(unsafe.Pointer(cx.ptr()))
 	log.Debug("create string name",
 		zap.String("ptr", fmt.Sprintf("%p", ptr)),

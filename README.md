@@ -10,14 +10,14 @@ The project is currently under heavy development. The API should be considered _
 
 ## Current State of the Project
 
-Although the tests confirm positive results, the godot-go bindings are currently not useable until the __blocker__ [reference counting issue](https://github.com/godot-go/godot-go/issues/71) is fixed. Further development won't make much sense until this is addressed.
+Although the tests confirm positive results, the godot-go bindings are currently not useable until [Add functions for non-ptr style virtual calls in GDExtension](https://github.com/godotengine/godot/pull/80671) is merged. Further development won't make much sense until this is addressed.
 
 ## Getting Started
 
 Requirements:
 * clang-format
 * gcc
-* go 1.19.x
+* go 1.21.x
 
 TODO
 

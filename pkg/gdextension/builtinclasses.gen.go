@@ -89,6 +89,16 @@ func (cx *String) Destroy() {
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
+// copy funuction
+func copyStringWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[8]uint8)(dst)
+	typedSrc := (*[8]uint8)(src)
+
+	for i := 0; i < 8; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* CasecmpTo : casecmp_to
@@ -3255,6 +3265,16 @@ func NewVector2WithFloat32Float32(x float32, y float32) Vector2 {
 	return cx
 }
 
+// copy funuction
+func copyVector2WithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[8]uint8)(dst)
+	typedSrc := (*[8]uint8)(src)
+
+	for i := 0; i < 8; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* Angle : angle
@@ -4687,6 +4707,16 @@ func NewVector2iWithInt32Int32(x int32, y int32) Vector2i {
 	return cx
 }
 
+// copy funuction
+func copyVector2iWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[8]uint8)(dst)
+	typedSrc := (*[8]uint8)(src)
+
+	for i := 0; i < 8; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* Aspect : aspect
@@ -5232,6 +5262,16 @@ func NewRect2WithFloat32Float32Float32Float32(x float32, y float32, width float3
 	callBuiltinConstructor(globalRect2MethodBindings.constructor_4, ptr, args[0], args[1], args[2], args[3])
 
 	return cx
+}
+
+// copy funuction
+func copyRect2WithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -5830,6 +5870,16 @@ func NewRect2iWithInt32Int32Int32Int32(x int32, y int32, width int32, height int
 	return cx
 }
 
+// copy funuction
+func copyRect2iWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* GetCenter : get_center
@@ -6340,6 +6390,16 @@ func NewVector3WithFloat32Float32Float32(x float32, y float32, z float32) Vector
 	callBuiltinConstructor(globalVector3MethodBindings.constructor_3, ptr, args[0], args[1], args[2])
 
 	return cx
+}
+
+// copy funuction
+func copyVector3WithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[12]uint8)(dst)
+	typedSrc := (*[12]uint8)(src)
+
+	for i := 0; i < 12; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -7770,6 +7830,16 @@ func NewVector3iWithInt32Int32Int32(x int32, y int32, z int32) Vector3i {
 	return cx
 }
 
+// copy funuction
+func copyVector3iWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[12]uint8)(dst)
+	typedSrc := (*[12]uint8)(src)
+
+	for i := 0; i < 12; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* MinAxisIndex : min_axis_index
@@ -8295,6 +8365,16 @@ func NewTransform2DWithVector2Vector2Vector2(x_axis Vector2, y_axis Vector2, ori
 	callBuiltinConstructor(globalTransform2DMethodBindings.constructor_4, ptr, args[0], args[1], args[2])
 
 	return cx
+}
+
+// copy funuction
+func copyTransform2DWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[24]uint8)(dst)
+	typedSrc := (*[24]uint8)(src)
+
+	for i := 0; i < 24; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -9031,6 +9111,16 @@ func NewVector4WithFloat32Float32Float32Float32(x float32, y float32, z float32,
 	callBuiltinConstructor(globalVector4MethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 
 	return cx
+}
+
+// copy funuction
+func copyVector4WithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -9995,6 +10085,16 @@ func NewVector4iWithInt32Int32Int32Int32(x int32, y int32, z int32, w int32) Vec
 	return cx
 }
 
+// copy funuction
+func copyVector4iWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* MinAxisIndex : min_axis_index
@@ -10565,6 +10665,16 @@ func NewPlaneWithFloat32Float32Float32Float32(a float32, b float32, c float32, d
 	return cx
 }
 
+// copy funuction
+func copyPlaneWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* Normalized : normalized
@@ -11093,6 +11203,16 @@ func NewQuaternionWithFloat32Float32Float32Float32(x float32, y float32, z float
 	callBuiltinConstructor(globalQuaternionMethodBindings.constructor_5, ptr, args[0], args[1], args[2], args[3])
 
 	return cx
+}
+
+// copy funuction
+func copyQuaternionWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -11827,6 +11947,16 @@ func NewAABBWithVector3Vector3(position Vector3, size Vector3) AABB {
 	callBuiltinConstructor(globalAABBMethodBindings.constructor_2, ptr, args[0], args[1])
 
 	return cx
+}
+
+// copy funuction
+func copyAABBWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[24]uint8)(dst)
+	typedSrc := (*[24]uint8)(src)
+
+	for i := 0; i < 24; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -12628,6 +12758,16 @@ func NewBasisWithVector3Vector3Vector3(x_axis Vector3, y_axis Vector3, z_axis Ve
 	return cx
 }
 
+// copy funuction
+func copyBasisWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[36]uint8)(dst)
+	typedSrc := (*[36]uint8)(src)
+
+	for i := 0; i < 36; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* Inverse : inverse
@@ -13327,6 +13467,16 @@ func NewTransform3DWithProjection(from Projection) Transform3D {
 	return cx
 }
 
+// copy funuction
+func copyTransform3DWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[48]uint8)(dst)
+	typedSrc := (*[48]uint8)(src)
+
+	for i := 0; i < 48; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* Inverse : inverse
@@ -13883,6 +14033,16 @@ func NewProjectionWithVector4Vector4Vector4Vector4(x_axis Vector4, y_axis Vector
 	callBuiltinConstructor(globalProjectionMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 
 	return cx
+}
+
+// copy funuction
+func copyProjectionWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[64]uint8)(dst)
+	typedSrc := (*[64]uint8)(src)
+
+	for i := 0; i < 64; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -14922,6 +15082,16 @@ func NewColorWithStringFloat32(code String, alpha float32) Color {
 	return cx
 }
 
+// copy funuction
+func copyColorWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* ToArgb32 : to_argb32
@@ -15878,6 +16048,16 @@ func (cx *StringName) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalStringNameMethodBindings.destructor)
 	bx := (GDExtensionTypePtr)(cx.ptr())
 	CallFunc_GDExtensionPtrDestructor(md, bx)
+}
+
+// copy funuction
+func copyStringNameWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[8]uint8)(dst)
+	typedSrc := (*[8]uint8)(src)
+
+	for i := 0; i < 8; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -18829,6 +19009,16 @@ func (cx *NodePath) Destroy() {
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
+// copy funuction
+func copyNodePathWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[8]uint8)(dst)
+	typedSrc := (*[8]uint8)(src)
+
+	for i := 0; i < 8; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* IsAbsolute : is_absolute
@@ -19154,6 +19344,16 @@ func NewRIDWithRID(from RID) RID {
 	return cx
 }
 
+// copy funuction
+func copyRIDWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[8]uint8)(dst)
+	typedSrc := (*[8]uint8)(src)
+
+	for i := 0; i < 8; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* IsValid : is_valid
@@ -19336,6 +19536,16 @@ func (cx *Callable) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalCallableMethodBindings.destructor)
 	bx := (GDExtensionTypePtr)(cx.ptr())
 	CallFunc_GDExtensionPtrDestructor(md, bx)
+}
+
+// copy funuction
+func copyCallableWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -19756,6 +19966,16 @@ func (cx *Signal) Destroy() {
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
+// copy funuction
+func copySignalWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* IsNull : is_null
@@ -20049,6 +20269,16 @@ func (cx *Dictionary) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalDictionaryMethodBindings.destructor)
 	bx := (GDExtensionTypePtr)(cx.ptr())
 	CallFunc_GDExtensionPtrDestructor(md, bx)
+}
+
+// copy funuction
+func copyDictionaryWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[8]uint8)(dst)
+	typedSrc := (*[8]uint8)(src)
+
+	for i := 0; i < 8; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -20413,6 +20643,29 @@ func (cx *Dictionary) IsReadOnly() bool {
 
 }
 
+func (cx *Dictionary) GetKeyed(key string) Variant {
+	gdStrKey := NewStringWithUtf8Chars(key)
+	vKey := NewVariantString(gdStrKey)
+	var ret Variant
+	CallFunc_GDExtensionPtrKeyedGetter(
+		globalDictionaryMethodBindings.keyed_getter,
+		(GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionConstTypePtr)(vKey.ptr()),
+		(GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+	)
+	return ret
+}
+
+func (cx *Dictionary) SetKeyed(key string, value Variant) {
+	gdStrKey := NewStringWithUtf8Chars(key)
+	vKey := NewVariantString(gdStrKey)
+	CallFunc_GDExtensionPtrKeyedSetter(
+		globalDictionaryMethodBindings.keyed_setter,
+		(GDExtensionTypePtr)(unsafe.Pointer(cx)),
+		(GDExtensionConstTypePtr)(vKey.ptr()),
+		(GDExtensionConstTypePtr)(value.ptr()),
+	)
+}
 func (cx *Dictionary) GetIndexed(i int64) Variant {
 	var ret Variant
 	CallFunc_GDExtensionPtrIndexedGetter(
@@ -20708,6 +20961,16 @@ func (cx *Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalArrayMethodBindings.destructor)
 	bx := (GDExtensionTypePtr)(cx.ptr())
 	CallFunc_GDExtensionPtrDestructor(md, bx)
+}
+
+// copy funuction
+func copyArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[8]uint8)(dst)
+	typedSrc := (*[8]uint8)(src)
+
+	for i := 0; i < 8; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -22032,6 +22295,16 @@ func (cx *PackedByteArray) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedByteArrayMethodBindings.destructor)
 	bx := (GDExtensionTypePtr)(cx.ptr())
 	CallFunc_GDExtensionPtrDestructor(md, bx)
+}
+
+// copy funuction
+func copyPackedByteArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -23777,6 +24050,16 @@ func (cx *PackedInt32Array) Destroy() {
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
+// copy funuction
+func copyPackedInt32ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* Size : size
@@ -24475,6 +24758,16 @@ func (cx *PackedInt64Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedInt64ArrayMethodBindings.destructor)
 	bx := (GDExtensionTypePtr)(cx.ptr())
 	CallFunc_GDExtensionPtrDestructor(md, bx)
+}
+
+// copy funuction
+func copyPackedInt64ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -25177,6 +25470,16 @@ func (cx *PackedFloat32Array) Destroy() {
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
+// copy funuction
+func copyPackedFloat32ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* Size : size
@@ -25875,6 +26178,16 @@ func (cx *PackedFloat64Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedFloat64ArrayMethodBindings.destructor)
 	bx := (GDExtensionTypePtr)(cx.ptr())
 	CallFunc_GDExtensionPtrDestructor(md, bx)
+}
+
+// copy funuction
+func copyPackedFloat64ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -26577,6 +26890,16 @@ func (cx *PackedStringArray) Destroy() {
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
+// copy funuction
+func copyPackedStringArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* Size : size
@@ -27265,6 +27588,16 @@ func (cx *PackedVector2Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedVector2ArrayMethodBindings.destructor)
 	bx := (GDExtensionTypePtr)(cx.ptr())
 	CallFunc_GDExtensionPtrDestructor(md, bx)
+}
+
+// copy funuction
+func copyPackedVector2ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods
@@ -27975,6 +28308,16 @@ func (cx *PackedVector3Array) Destroy() {
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
+// copy funuction
+func copyPackedVector3ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
+}
+
 // methods
 
 /* Size : size
@@ -28671,6 +29014,16 @@ func (cx *PackedColorArray) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedColorArrayMethodBindings.destructor)
 	bx := (GDExtensionTypePtr)(cx.ptr())
 	CallFunc_GDExtensionPtrDestructor(md, bx)
+}
+
+// copy funuction
+func copyPackedColorArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+	typedDst := (*[16]uint8)(dst)
+	typedSrc := (*[16]uint8)(src)
+
+	for i := 0; i < 16; i++ {
+		typedDst[i] = typedSrc[i]
+	}
 }
 
 // methods

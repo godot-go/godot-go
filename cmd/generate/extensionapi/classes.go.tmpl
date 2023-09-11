@@ -117,10 +117,10 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	callArgCount := {{ len $m.Arguments }}
 	{{ end -}}
 
-	argsPtr := AllocArrayPtr[GDExtensionConstVariantPtr](int(callArgCount))
+	argPtrs := AllocArrayPtr[GDExtensionConstVariantPtr](int(callArgCount))
 
 	{{ if or $m.IsVararg (gt (len $m.Arguments) 0) -}}
-	argsPtrSlice := unsafe.Slice(argsPtr, int(callArgCount))
+	argPtrSlice := unsafe.Slice(argPtrs, int(callArgCount))
 	{{ end -}}
 
 	{{ if $m.IsVararg -}}
@@ -129,20 +129,20 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	{{ if $a.HasDestroy }}
 	defer arg{{ $j }}.Destroy()
 	{{ end -}}
-	argsPtrSlice[{{ $j }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&arg{{ $j }}))
+	argPtrSlice[{{ $j }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&arg{{ $j }}))
 	{{ end -}}
 	{{ else -}}
 	{{ range $j, $a := $m.Arguments -}}
 		{{ if and (eq $j 0) (and (isSetterMethodName (goMethodName $m.Name)) ($view.IsRefcountedClassName (goArgumentType (coalesce $a.Meta $a.Type)))) -}}
 		{{ goArgumentName $a.Name }}.Reference()
 		{{ end -}}
-		argsPtrSlice[{{ $j }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))
+		argPtrSlice[{{ $j }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))
 	{{ end -}}
 	{{ end -}}
 
     {{ if $m.IsVararg -}}
     for i := range varargs {
-		argsPtrSlice[i + {{ len $m.Arguments }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&varargs[i])) // variant
+		argPtrSlice[i + {{ len $m.Arguments }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&varargs[i])) // variant
     }
     {{ end -}}
 
@@ -151,20 +151,20 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	{{ if $m.IsVararg -}}
 	var err GDExtensionCallError
 
-	CallFunc_GDExtensionInterfaceObjectMethodBindCall(fn, cOwner, (*GDExtensionConstVariantPtr)(unsafe.Pointer(argsPtr)), (GDExtensionInt)(callArgCount), retPtr, &err)
+	CallFunc_GDExtensionInterfaceObjectMethodBindCall(fn, cOwner, (*GDExtensionConstVariantPtr)(unsafe.Pointer(argPtrs)), (GDExtensionInt)(callArgCount), retPtr, &err)
 
 	if !err.Ok() {
 		log.Panic("method bind call error", zap.Error(&err))
 	}
 	{{ else -}}
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(argsPtr))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(argPtrs))
 
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	{{ end -}}
 
 	{{ with $fnReturnType -}}
 
-	Free(unsafe.Pointer(argsPtr))
+	Free(unsafe.Pointer(argPtrs))
 
 	{{ if $view.IsRefcountedClassName $fnReturnType -}}
 	ret.Reference()

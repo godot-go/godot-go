@@ -13,7 +13,6 @@ func NewSimpleGDExtensionPropertyInfo(
 	variantType GDExtensionVariantType,
 	name string,
 ) GDExtensionPropertyInfo {
-	// TODO: move to alloc memory in C?
 	return NewGDExtensionPropertyInfo(
 		NewStringNameWithLatin1Chars(className).AsGDExtensionConstStringNamePtr(),
 		variantType,
@@ -54,26 +53,3 @@ func NewObjectID() ObjectID {
 
 	return ObjectID{Id: v}
 }
-
-// func objectDBGetInstance(p_object_id GDObjectInstanceID) *Object {
-// 	obj := CallFunc_GDExtensionInterfaceObjectGetInstanceFromId((GDObjectInstanceID)((C.uint64_t)(p_object_id)))
-
-// 	if obj == nil {
-// 		return nil
-// 	}
-
-// 	cbs, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get("Object")
-
-// 	if !ok {
-// 		log.Warn("unable to find callbacks for Object")
-// 		return nil
-// 	}
-
-// 	binding := CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
-// 		obj,
-// 		FFI.Token,
-// 		&cbs,
-// 	)
-
-// 	return (*Object)(binding)
-// }

@@ -57,10 +57,10 @@ func {{ camelCase $f.Name }}(
 	argBytes := AllocZeros(sz)
 
 	{{ if $f.Arguments }}
-	argsPtr := (*[{{ len $f.Arguments }}]unsafe.Pointer)(argBytes)
+	argPtrs := (*[{{ len $f.Arguments }}]unsafe.Pointer)(argBytes)
 
 	{{ range $j, $arg := $f.Arguments -}}
-		argsPtr[{{ $j }}] = unsafe.Pointer(&{{ $arg.Name }})
+		argPtrs[{{ $j }}] = unsafe.Pointer(&{{ $arg.Name }})
 	{{ end }}
 	{{ end }}
 

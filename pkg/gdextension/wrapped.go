@@ -29,6 +29,10 @@ func (w *WrappedImpl) SetGodotObjectOwner(owner *GodotObject) {
 	w.Owner = owner
 }
 
+// func CopyObject(dst GDExtensionObjectPtr, src GDExtensionConstObjectPtr) {
+// 	*dst = (GDExtensionObjectPtr)(src)
+// }
+
 // func (w *WrappedImpl) GetClassName() string {
 // 	return "Wrapped"
 // }

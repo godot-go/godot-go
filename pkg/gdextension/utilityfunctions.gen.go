@@ -40,9 +40,9 @@ func Sin(angle_rad float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&angle_rad)
+	argPtrs[0] = unsafe.Pointer(&angle_rad)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -72,9 +72,9 @@ func Cos(angle_rad float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&angle_rad)
+	argPtrs[0] = unsafe.Pointer(&angle_rad)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -104,9 +104,9 @@ func Tan(angle_rad float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&angle_rad)
+	argPtrs[0] = unsafe.Pointer(&angle_rad)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -136,9 +136,9 @@ func Sinh(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -168,9 +168,9 @@ func Cosh(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -200,9 +200,9 @@ func Tanh(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -232,9 +232,9 @@ func Asin(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -264,9 +264,9 @@ func Acos(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -296,9 +296,9 @@ func Atan(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -328,10 +328,10 @@ func Atan2(y float32, x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&y)
-	argsPtr[1] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&y)
+	argPtrs[1] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -361,9 +361,9 @@ func Asinh(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -393,9 +393,9 @@ func Acosh(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -425,9 +425,9 @@ func Atanh(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -457,9 +457,9 @@ func Sqrt(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -489,10 +489,10 @@ func Fmod(x float32, y float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&y)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&y)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -522,10 +522,10 @@ func Fposmod(x float32, y float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&y)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&y)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -555,10 +555,10 @@ func Posmod(x int32, y int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&y)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&y)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -588,9 +588,9 @@ func Floor(x Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -620,9 +620,9 @@ func Floorf(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -652,9 +652,9 @@ func Floori(x float32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -684,9 +684,9 @@ func Ceil(x Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -716,9 +716,9 @@ func Ceilf(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -748,9 +748,9 @@ func Ceili(x float32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -780,9 +780,9 @@ func Round(x Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -812,9 +812,9 @@ func Roundf(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -844,9 +844,9 @@ func Roundi(x float32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -876,9 +876,9 @@ func Abs(x Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -908,9 +908,9 @@ func Absf(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -940,9 +940,9 @@ func Absi(x int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -972,9 +972,9 @@ func Sign(x Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1004,9 +1004,9 @@ func Signf(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1036,9 +1036,9 @@ func Signi(x int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1068,10 +1068,10 @@ func Snapped(x Variant, step Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&step)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&step)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1101,10 +1101,10 @@ func Snappedf(x float32, step float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&step)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&step)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1134,10 +1134,10 @@ func Snappedi(x float32, step int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&step)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&step)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1167,10 +1167,10 @@ func Pow(base float32, exp float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&base)
-	argsPtr[1] = unsafe.Pointer(&exp)
+	argPtrs[0] = unsafe.Pointer(&base)
+	argPtrs[1] = unsafe.Pointer(&exp)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1200,9 +1200,9 @@ func Log(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1232,9 +1232,9 @@ func Exp(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1264,9 +1264,9 @@ func IsNan(x float32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1296,9 +1296,9 @@ func IsInf(x float32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1328,10 +1328,10 @@ func IsEqualApprox(a float32, b float32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1361,9 +1361,9 @@ func IsZeroApprox(x float32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1393,9 +1393,9 @@ func IsFinite(x float32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1425,10 +1425,10 @@ func Ease(x float32, curve float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&curve)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&curve)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1458,9 +1458,9 @@ func StepDecimals(x float32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1490,11 +1490,11 @@ func Lerp(from Variant, to Variant, weight Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1524,11 +1524,11 @@ func Lerpf(from float32, to float32, weight float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1558,13 +1558,13 @@ func CubicInterpolate(from float32, to float32, pre float32, post float32, weigh
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[5]unsafe.Pointer)(argBytes)
+	argPtrs := (*[5]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&pre)
-	argsPtr[3] = unsafe.Pointer(&post)
-	argsPtr[4] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&pre)
+	argPtrs[3] = unsafe.Pointer(&post)
+	argPtrs[4] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1594,13 +1594,13 @@ func CubicInterpolateAngle(from float32, to float32, pre float32, post float32, 
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[5]unsafe.Pointer)(argBytes)
+	argPtrs := (*[5]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&pre)
-	argsPtr[3] = unsafe.Pointer(&post)
-	argsPtr[4] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&pre)
+	argPtrs[3] = unsafe.Pointer(&post)
+	argPtrs[4] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1630,16 +1630,16 @@ func CubicInterpolateInTime(from float32, to float32, pre float32, post float32,
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[8]unsafe.Pointer)(argBytes)
+	argPtrs := (*[8]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&pre)
-	argsPtr[3] = unsafe.Pointer(&post)
-	argsPtr[4] = unsafe.Pointer(&weight)
-	argsPtr[5] = unsafe.Pointer(&to_t)
-	argsPtr[6] = unsafe.Pointer(&pre_t)
-	argsPtr[7] = unsafe.Pointer(&post_t)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&pre)
+	argPtrs[3] = unsafe.Pointer(&post)
+	argPtrs[4] = unsafe.Pointer(&weight)
+	argPtrs[5] = unsafe.Pointer(&to_t)
+	argPtrs[6] = unsafe.Pointer(&pre_t)
+	argPtrs[7] = unsafe.Pointer(&post_t)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1669,16 +1669,16 @@ func CubicInterpolateAngleInTime(from float32, to float32, pre float32, post flo
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[8]unsafe.Pointer)(argBytes)
+	argPtrs := (*[8]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&pre)
-	argsPtr[3] = unsafe.Pointer(&post)
-	argsPtr[4] = unsafe.Pointer(&weight)
-	argsPtr[5] = unsafe.Pointer(&to_t)
-	argsPtr[6] = unsafe.Pointer(&pre_t)
-	argsPtr[7] = unsafe.Pointer(&post_t)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&pre)
+	argPtrs[3] = unsafe.Pointer(&post)
+	argPtrs[4] = unsafe.Pointer(&weight)
+	argPtrs[5] = unsafe.Pointer(&to_t)
+	argPtrs[6] = unsafe.Pointer(&pre_t)
+	argPtrs[7] = unsafe.Pointer(&post_t)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1708,13 +1708,13 @@ func BezierInterpolate(start float32, control_1 float32, control_2 float32, end 
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[5]unsafe.Pointer)(argBytes)
+	argPtrs := (*[5]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&start)
-	argsPtr[1] = unsafe.Pointer(&control_1)
-	argsPtr[2] = unsafe.Pointer(&control_2)
-	argsPtr[3] = unsafe.Pointer(&end)
-	argsPtr[4] = unsafe.Pointer(&t)
+	argPtrs[0] = unsafe.Pointer(&start)
+	argPtrs[1] = unsafe.Pointer(&control_1)
+	argPtrs[2] = unsafe.Pointer(&control_2)
+	argPtrs[3] = unsafe.Pointer(&end)
+	argPtrs[4] = unsafe.Pointer(&t)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1744,13 +1744,13 @@ func BezierDerivative(start float32, control_1 float32, control_2 float32, end f
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[5]unsafe.Pointer)(argBytes)
+	argPtrs := (*[5]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&start)
-	argsPtr[1] = unsafe.Pointer(&control_1)
-	argsPtr[2] = unsafe.Pointer(&control_2)
-	argsPtr[3] = unsafe.Pointer(&end)
-	argsPtr[4] = unsafe.Pointer(&t)
+	argPtrs[0] = unsafe.Pointer(&start)
+	argPtrs[1] = unsafe.Pointer(&control_1)
+	argPtrs[2] = unsafe.Pointer(&control_2)
+	argPtrs[3] = unsafe.Pointer(&end)
+	argPtrs[4] = unsafe.Pointer(&t)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1780,11 +1780,11 @@ func LerpAngle(from float32, to float32, weight float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1814,11 +1814,11 @@ func InverseLerp(from float32, to float32, weight float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1848,13 +1848,13 @@ func Remap(value float32, istart float32, istop float32, ostart float32, ostop f
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[5]unsafe.Pointer)(argBytes)
+	argPtrs := (*[5]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&istart)
-	argsPtr[2] = unsafe.Pointer(&istop)
-	argsPtr[3] = unsafe.Pointer(&ostart)
-	argsPtr[4] = unsafe.Pointer(&ostop)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&istart)
+	argPtrs[2] = unsafe.Pointer(&istop)
+	argPtrs[3] = unsafe.Pointer(&ostart)
+	argPtrs[4] = unsafe.Pointer(&ostop)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1884,11 +1884,11 @@ func Smoothstep(from float32, to float32, x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1918,11 +1918,11 @@ func MoveToward(from float32, to float32, delta float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&delta)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&delta)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1952,9 +1952,9 @@ func DegToRad(deg float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&deg)
+	argPtrs[0] = unsafe.Pointer(&deg)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1984,9 +1984,9 @@ func RadToDeg(rad float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&rad)
+	argPtrs[0] = unsafe.Pointer(&rad)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2016,9 +2016,9 @@ func LinearToDb(lin float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&lin)
+	argPtrs[0] = unsafe.Pointer(&lin)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2048,9 +2048,9 @@ func DbToLinear(db float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&db)
+	argPtrs[0] = unsafe.Pointer(&db)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2080,11 +2080,11 @@ func Wrap(value Variant, min Variant, max Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2114,11 +2114,11 @@ func Wrapi(value int32, min int32, max int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2148,11 +2148,11 @@ func Wrapf(value float32, min float32, max float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2182,10 +2182,10 @@ func Max(arg1 Variant, arg2 Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
-	argsPtr[1] = unsafe.Pointer(&arg2)
+	argPtrs[0] = unsafe.Pointer(&arg1)
+	argPtrs[1] = unsafe.Pointer(&arg2)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2215,10 +2215,10 @@ func Maxi(a int32, b int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2248,10 +2248,10 @@ func Maxf(a float32, b float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2281,10 +2281,10 @@ func Min(arg1 Variant, arg2 Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
-	argsPtr[1] = unsafe.Pointer(&arg2)
+	argPtrs[0] = unsafe.Pointer(&arg1)
+	argPtrs[1] = unsafe.Pointer(&arg2)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2314,10 +2314,10 @@ func Mini(a int32, b int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2347,10 +2347,10 @@ func Minf(a float32, b float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2380,11 +2380,11 @@ func Clamp(value Variant, min Variant, max Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2414,11 +2414,11 @@ func Clampi(value int32, min int32, max int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2448,11 +2448,11 @@ func Clampf(value float32, min float32, max float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2482,9 +2482,9 @@ func NearestPo2(value int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
+	argPtrs[0] = unsafe.Pointer(&value)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2514,10 +2514,10 @@ func Pingpong(value float32, length float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&length)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&length)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2628,10 +2628,10 @@ func RandiRange(from int32, to int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2661,10 +2661,10 @@ func RandfRange(from float32, to float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2694,10 +2694,10 @@ func Randfn(mean float32, deviation float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&mean)
-	argsPtr[1] = unsafe.Pointer(&deviation)
+	argPtrs[0] = unsafe.Pointer(&mean)
+	argPtrs[1] = unsafe.Pointer(&deviation)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2726,9 +2726,9 @@ func Seed(base int32) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&base)
+	argPtrs[0] = unsafe.Pointer(&base)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2756,9 +2756,9 @@ func RandFromSeed(seed int32) PackedInt64Array {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&seed)
+	argPtrs[0] = unsafe.Pointer(&seed)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2788,9 +2788,9 @@ func Weakref(obj Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&obj)
+	argPtrs[0] = unsafe.Pointer(&obj)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2820,9 +2820,9 @@ func Typeof(variable Variant) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&variable)
+	argPtrs[0] = unsafe.Pointer(&variable)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2852,9 +2852,9 @@ func Str(arg1 Variant) String {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2884,9 +2884,9 @@ func ErrorString(error int32) String {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&error)
+	argPtrs[0] = unsafe.Pointer(&error)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2915,9 +2915,9 @@ func Print(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2944,9 +2944,9 @@ func PrintRich(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2973,9 +2973,9 @@ func Printerr(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3002,9 +3002,9 @@ func Printt(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3031,9 +3031,9 @@ func Prints(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3060,9 +3060,9 @@ func Printraw(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3089,9 +3089,9 @@ func PrintVerbose(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3118,9 +3118,9 @@ func PushError(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3147,9 +3147,9 @@ func PushWarning(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3177,9 +3177,9 @@ func VarToStr(variable Variant) String {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&variable)
+	argPtrs[0] = unsafe.Pointer(&variable)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3209,9 +3209,9 @@ func StrToVar(string String) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&string)
+	argPtrs[0] = unsafe.Pointer(&string)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3241,9 +3241,9 @@ func VarToBytes(variable Variant) PackedByteArray {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&variable)
+	argPtrs[0] = unsafe.Pointer(&variable)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3273,9 +3273,9 @@ func BytesToVar(bytes PackedByteArray) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&bytes)
+	argPtrs[0] = unsafe.Pointer(&bytes)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3305,9 +3305,9 @@ func VarToBytesWithObjects(variable Variant) PackedByteArray {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&variable)
+	argPtrs[0] = unsafe.Pointer(&variable)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3337,9 +3337,9 @@ func BytesToVarWithObjects(bytes PackedByteArray) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&bytes)
+	argPtrs[0] = unsafe.Pointer(&bytes)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3369,9 +3369,9 @@ func Hash(variable Variant) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&variable)
+	argPtrs[0] = unsafe.Pointer(&variable)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3401,9 +3401,9 @@ func InstanceFromId(instance_id int32) Object {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&instance_id)
+	argPtrs[0] = unsafe.Pointer(&instance_id)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3433,9 +3433,9 @@ func IsInstanceIdValid(id int32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&id)
+	argPtrs[0] = unsafe.Pointer(&id)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3465,9 +3465,9 @@ func IsInstanceValid(instance Variant) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&instance)
+	argPtrs[0] = unsafe.Pointer(&instance)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3525,9 +3525,9 @@ func RidFromInt64(base int32) RID {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&base)
+	argPtrs[0] = unsafe.Pointer(&base)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3557,10 +3557,10 @@ func IsSame(a Variant, b Variant) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 

@@ -46,7 +46,6 @@ func (c *{{ $c.Name }}) ptr() GDExtensionConstTypePtr {
 
 // constructors
 {{ range $j, $con := $c.FilteredConstructors -}}
-
 // New{{ $c.Name }}, index: {{ $con.Index }}
 func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arguments -}}{{ upperFirstChar (goArgumentType $arg.Type) }}{{- end -}}{{- end -}}(
     {{- range $k, $arg := $con.Arguments -}}
@@ -96,6 +95,16 @@ func (cx *{{ $c.Name }}) Destroy() {
     CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 {{ end }}
+
+// copy funuction
+func copy{{ $c.Name }}WithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
+    typedDst := (*[{{ $sizes.FindSize $c.Name }}]uint8)(dst)
+    typedSrc := (*[{{ $sizes.FindSize $c.Name }}]uint8)(src)
+
+    for i:=0; i<{{ $sizes.FindSize $c.Name }}; i++ {
+        typedDst[i] = typedSrc[i]
+    }
+}
 
 // methods
 {{ range $j, $m := $c.FilteredMethods -}}
@@ -170,29 +179,31 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
 }
 {{ end }}
 
-{{/* {{ if $c.IsKeyed -}}
-func (cx *{{ $c.Name }}) GetKey(key string) Variant {
-    gdKey := NewStringWithUtf8Chars(key)
+{{ if $c.IsKeyed -}}
+func (cx *{{ $c.Name }}) GetKeyed(key string) Variant {
+    gdStrKey := NewStringWithUtf8Chars(key)
+    vKey := NewVariantString(gdStrKey)
     var ret Variant
     CallFunc_GDExtensionPtrKeyedGetter(
         global{{ $c.Name }}MethodBindings.keyed_getter,
         (GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
-        (GDExtensionConstTypePtr)(gdKey.ptr()),
+        (GDExtensionConstTypePtr)(vKey.ptr()),
         (GDExtensionTypePtr)(unsafe.Pointer(&ret)),
     )
 	return ret
 }
 
-func (cx *{{ $c.Name }}) SetKey(key string, p_value GDExtensionTypePtr) {
-    gdKey := NewStringWithUtf8Chars(key)
+func (cx *{{ $c.Name }}) SetKeyed(key string, value Variant) {
+    gdStrKey := NewStringWithUtf8Chars(key)
+    vKey := NewVariantString(gdStrKey)
     CallFunc_GDExtensionPtrKeyedSetter(
         global{{ $c.Name }}MethodBindings.keyed_setter,
         (GDExtensionTypePtr)(unsafe.Pointer(cx)),
-        (GDExtensionInt)(i),
-        (GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
+        (GDExtensionConstTypePtr)(vKey.ptr()),
+        (GDExtensionConstTypePtr)(value.ptr()),
     )
 }
-{{ end -}} */}}
+{{ end -}}
 
 {{ if gt (len $c.IndexingReturnType) 0 -}}
 func (cx *{{ $c.Name }}) GetIndexed(i int64) {{ goReturnType $c.IndexingReturnType }} {

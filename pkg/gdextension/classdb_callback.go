@@ -3,15 +3,18 @@ package gdextension
 // #include <godot/gdextension_interface.h>
 // #include "classdb_callback.h"
 // #include "method_bind.h"
+// #include <stdint.h>
 // #include <stdio.h>
 // #include <stdlib.h>
 import "C"
 import (
 	"fmt"
+	"reflect"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/util"
 	"go.uber.org/zap"
 )
 
@@ -75,9 +78,14 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 		)
 		return
 	}
-	m.Ptrcall(
-		(GDExtensionClassInstancePtr)(pInstance),
-		(*GDExtensionConstTypePtr)(p_args),
+	mb := m.MethodBind
+	args := unsafe.Slice(
+		(*GDExtensionConstTypePtr)(unsafe.Pointer(p_args)),
+		len(mb.MethodMetadata.GoArgumentTypes),
+	)
+	mb.Ptrcall(
+		inst,
+		args,
 		(GDExtensionTypePtr)(rRet),
 	)
 }
@@ -111,28 +119,121 @@ func GoCallback_ClassCreationInfoFreeInstance(data unsafe.Pointer, ptr C.GDExten
 	log.Info("GDClass instance freed", zap.Any("id", id))
 }
 
-//export GoCallback_ClassDBGetFunc
-func GoCallback_ClassDBGetFunc(pInstance C.GDExtensionClassInstancePtr, pName C.GDExtensionConstStringNamePtr, rRet C.GDExtensionVariantPtr) C.GDExtensionBool {
-	// wci := (*WrappedClassInstance)(unsafe.Pointer(pInstance))
-	// if wci == nil {
-	// 	return (C.GDExtensionBool)(0)
-	// }
-	// v := reflect.ValueOf(wci)
-	// // TODO: get method and call
-	// v.MethodByName("")
-	log.Warn("TODO: GoCallback_ClassDBGetFunc not implemented")
-	return (C.GDExtensionBool)(0)
+//export GoCallback_ClassCreationInfoGetPropertyList
+func GoCallback_ClassCreationInfoGetPropertyList(p_instance C.GDExtensionClassInstancePtr, r_count *C.uint32_t) {
+
 }
 
-//export GoCallback_ClassDBSetFunc
-func GoCallback_ClassDBSetFunc(p_instance C.GDExtensionClassInstancePtr, p_name C.GDExtensionConstStringNamePtr, p_value C.GDExtensionConstVariantPtr) C.GDExtensionBool {
-	// wci := (*WrappedClassInstance)(unsafe.Pointer(pInstance))
-	// if wci == nil {
-	// 	return (C.GDExtensionBool)(0)
-	// }
-	// v := reflect.ValueOf(wci)
-	// // TODO: get method and call
-	// v.MethodByName("")
-	log.Warn("TODO: GoCallback_ClassDBSetFunc not implemented")
-	return (C.GDExtensionBool)(0)
+//export GoCallback_ClassCreationInfoFreePropertyList
+func GoCallback_ClassCreationInfoFreePropertyList(p_instance C.GDExtensionClassInstancePtr, r_count *C.uint32_t) {
+
+}
+
+//export GoCallback_ClassCreationInfoPropertyCanRevert
+func GoCallback_ClassCreationInfoPropertyCanRevert(p_instance C.GDExtensionClassInstancePtr, p_name C.GDExtensionConstStringNamePtr) C.GDExtensionBool {
+	return 0
+}
+
+//export GoCallback_ClassCreationInfoPropertyGetRevert
+func GoCallback_ClassCreationInfoPropertyGetRevert(p_instance C.GDExtensionClassInstancePtr, p_name C.GDExtensionConstStringNamePtr, r_ret C.GDExtensionVariantPtr) C.GDExtensionBool {
+	return 0
+}
+
+//export GoCallback_ClassCreationInfoGet
+func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pName C.GDExtensionConstStringNamePtr, rRet C.GDExtensionVariantPtr) C.GDExtensionBool {
+	wci := (*WrappedClassInstance)(unsafe.Pointer(pInstance))
+	if wci == nil {
+		return 0
+	}
+	gdStrClass := wci.Instance.GetClass()
+	className := gdStrClass.ToUtf8()
+	gdName := NewStringNameWithGDExtensionConstStringNamePtr((GDExtensionConstStringNamePtr)(pName))
+	name := gdName.ToUtf8()
+	log.Info("GoCallback_ClassCreationInfoGet called",
+		zap.String("class", className),
+		zap.String("method_name", name),
+	)
+	ci, ok := gdRegisteredGDClasses.Get(className)
+	if !ok {
+		log.Panic("invalid registered GDClass",
+			zap.String("class", className),
+			zap.String("method_name", name),
+		)
+	}
+	mcmi, ok := ci.VirtualMethodMap["_get"]
+	if !ok {
+		log.Info("no V_Get method registered",
+			zap.String("class", className),
+			zap.String("method_name", name),
+		)
+		return 0
+	}
+	args := []reflect.Value{
+		reflect.ValueOf(wci.Instance),
+		reflect.ValueOf(name),
+	}
+	reflectedRet := mcmi.MethodBind.PtrcallFunc.Call(args)
+	v, ok := reflectedRet[0].Interface().(Variant)
+	if !ok {
+		log.Panic("invalid return value: expected Variant",
+			zap.String("class", name),
+		)
+	}
+	if !reflectedRet[1].Bool() {
+		log.Debug("_get call returned false")
+		return 0
+	}
+	gdStrV := v.ToString()
+	defer gdStrV.Destroy()
+	log.Info("reflect method called",
+		zap.String("ret", util.ReflectValueSliceToString(reflectedRet)),
+		zap.String("v", gdStrV.ToUtf8()),
+	)
+
+	copyVariantWithGDExtensionTypePtr((GDExtensionVariantPtr)(rRet), (GDExtensionConstVariantPtr)(v.ptr()))
+	return 1
+}
+
+//export GoCallback_ClassCreationInfoSet
+func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pName C.GDExtensionConstStringNamePtr, pValue C.GDExtensionConstVariantPtr) C.GDExtensionBool {
+	wci := (*WrappedClassInstance)(unsafe.Pointer(pInstance))
+	if wci == nil {
+		return 0
+	}
+	gdStrClass := wci.Instance.GetClass()
+	className := gdStrClass.ToUtf8()
+	gdName := NewStringNameWithGDExtensionConstStringNamePtr((GDExtensionConstStringNamePtr)(pName))
+	name := gdName.ToUtf8()
+	v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(pValue))
+	log.Info("GoCallback_ClassCreationInfoSet called",
+		zap.String("class", className),
+		zap.String("name", name),
+		zap.String("value", v.ToGoString()),
+	)
+	ci, ok := gdRegisteredGDClasses.Get(className)
+	if !ok {
+		log.Panic("invalid registered GDClass",
+			zap.String("class", name),
+		)
+	}
+	mcmi, ok := ci.VirtualMethodMap["_set"]
+	if !ok {
+		log.Info("no V_Set method registered",
+			zap.String("class", name),
+		)
+		return 0
+	}
+	args := []reflect.Value{
+		reflect.ValueOf(wci.Instance),
+		reflect.ValueOf(name),
+		reflect.ValueOf(v),
+	}
+	reflectedRet := mcmi.MethodBind.PtrcallFunc.Call(args)
+	log.Info("reflect method called",
+		zap.String("ret", util.ReflectValueSliceToString(reflectedRet)),
+	)
+	if !reflectedRet[0].Bool() {
+		return 0
+	}
+	return 1
 }

@@ -145,7 +145,7 @@ func (b *MethodBindImpl) Call(
 	defArgsCount := len(md.DefaultArguments)
 	callArgs := make([]Variant, len(md.ArgumentTypes))
 	for i := range callArgs {
-		if i < gdArgsCount{
+		if i < gdArgsCount {
 			callArgs[i] = gdArgs[i]
 		} else if i < defArgsCount {
 			callArgs[i] = md.DefaultArguments[i]

@@ -499,7 +499,8 @@ const (
 	BASE_MATERIAL_3_D_FLAGS_FLAG_SUBSURFACE_MODE_SKIN                          = 18
 	BASE_MATERIAL_3_D_FLAGS_FLAG_PARTICLE_TRAILS_MODE                          = 19
 	BASE_MATERIAL_3_D_FLAGS_FLAG_ALBEDO_TEXTURE_MSDF                           = 20
-	BASE_MATERIAL_3_D_FLAGS_FLAG_MAX                                           = 21
+	BASE_MATERIAL_3_D_FLAGS_FLAG_DISABLE_FOG                                   = 21
+	BASE_MATERIAL_3_D_FLAGS_FLAG_MAX                                           = 22
 )
 
 type BaseMaterial3DDiffuseMode int
@@ -1802,14 +1803,6 @@ const (
 	GRAPH_EDIT_PANNING_SCHEME_SCROLL_PANS                         = 1
 )
 
-type GraphNodeOverlay int
-
-const (
-	GRAPH_NODE_OVERLAY_OVERLAY_DISABLED   GraphNodeOverlay = 0
-	GRAPH_NODE_OVERLAY_OVERLAY_BREAKPOINT                  = 1
-	GRAPH_NODE_OVERLAY_OVERLAY_POSITION                    = 2
-)
-
 type HTTPClientMethod int
 
 const (
@@ -2684,6 +2677,54 @@ const (
 	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_UNOBSTRUCTED          OpenXRHandMotionRange = 0
 	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_CONFORM_TO_CONTROLLER                       = 1
 	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_MAX                                         = 2
+)
+
+type OpenXRInterfaceHand int
+
+const (
+	OPEN_XR_INTERFACE_HAND_HAND_LEFT  OpenXRInterfaceHand = 0
+	OPEN_XR_INTERFACE_HAND_HAND_RIGHT                     = 1
+	OPEN_XR_INTERFACE_HAND_HAND_MAX                       = 2
+)
+
+type OpenXRInterfaceHandMotionRange int
+
+const (
+	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_UNOBSTRUCTED          OpenXRInterfaceHandMotionRange = 0
+	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_CONFORM_TO_CONTROLLER                                = 1
+	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_MAX                                                  = 2
+)
+
+type OpenXRInterfaceHandJoints int
+
+const (
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_PALM                OpenXRInterfaceHandJoints = 0
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_WRIST                                         = 1
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_METACARPAL                              = 2
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_PROXIMAL                                = 3
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_DISTAL                                  = 4
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_TIP                                     = 5
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_METACARPAL                              = 6
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_PROXIMAL                                = 7
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_INTERMEDIATE                            = 8
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_DISTAL                                  = 9
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_TIP                                     = 10
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_METACARPAL                             = 11
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_PROXIMAL                               = 12
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_INTERMEDIATE                           = 13
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_DISTAL                                 = 14
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_TIP                                    = 15
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_METACARPAL                               = 16
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_PROXIMAL                                 = 17
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_INTERMEDIATE                             = 18
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_DISTAL                                   = 19
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_TIP                                      = 20
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_METACARPAL                             = 21
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_PROXIMAL                               = 22
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_INTERMEDIATE                           = 23
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_DISTAL                                 = 24
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_TIP                                    = 25
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MAX                                           = 26
 )
 
 type PackedSceneGenEditState int

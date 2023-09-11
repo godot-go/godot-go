@@ -234,6 +234,7 @@ type GDExtensionScriptInstanceGet C.GDExtensionScriptInstanceGet
 type GDExtensionScriptInstanceGetPropertyList C.GDExtensionScriptInstanceGetPropertyList
 type GDExtensionScriptInstanceFreePropertyList C.GDExtensionScriptInstanceFreePropertyList
 type GDExtensionScriptInstanceGetPropertyType C.GDExtensionScriptInstanceGetPropertyType
+type GDExtensionScriptInstanceValidateProperty C.GDExtensionScriptInstanceValidateProperty
 type GDExtensionScriptInstancePropertyCanRevert C.GDExtensionScriptInstancePropertyCanRevert
 type GDExtensionScriptInstancePropertyGetRevert C.GDExtensionScriptInstancePropertyGetRevert
 type GDExtensionScriptInstanceGetOwner C.GDExtensionScriptInstanceGetOwner
@@ -908,10 +909,10 @@ func CallFunc_GDExtensionClassCallVirtual(
 
 func CallFunc_GDExtensionClassCreateInstance(
 	fn GDExtensionClassCreateInstance,
-	p_userdata unsafe.Pointer,
+	p_class_userdata unsafe.Pointer,
 ) GDExtensionObjectPtr {
 	arg0 := (C.GDExtensionClassCreateInstance)(fn)
-	arg1 := unsafe.Pointer(p_userdata)
+	arg1 := unsafe.Pointer(p_class_userdata)
 
 	log.Debug("called C.cgo_callfn_GDExtensionClassCreateInstance")
 
@@ -923,11 +924,11 @@ func CallFunc_GDExtensionClassCreateInstance(
 
 func CallFunc_GDExtensionClassFreeInstance(
 	fn GDExtensionClassFreeInstance,
-	p_userdata unsafe.Pointer,
+	p_class_userdata unsafe.Pointer,
 	p_instance GDExtensionClassInstancePtr,
 ) {
 	arg0 := (C.GDExtensionClassFreeInstance)(fn)
-	arg1 := unsafe.Pointer(p_userdata)
+	arg1 := unsafe.Pointer(p_class_userdata)
 	arg2 := (C.GDExtensionClassInstancePtr)(p_instance)
 
 	log.Debug("called C.cgo_callfn_GDExtensionClassFreeInstance")
@@ -938,11 +939,11 @@ func CallFunc_GDExtensionClassFreeInstance(
 
 func CallFunc_GDExtensionClassGetVirtual(
 	fn GDExtensionClassGetVirtual,
-	p_userdata unsafe.Pointer,
+	p_class_userdata unsafe.Pointer,
 	p_name GDExtensionConstStringNamePtr,
 ) GDExtensionClassCallVirtual {
 	arg0 := (C.GDExtensionClassGetVirtual)(fn)
-	arg1 := unsafe.Pointer(p_userdata)
+	arg1 := unsafe.Pointer(p_class_userdata)
 	arg2 := (C.GDExtensionConstStringNamePtr)(p_name)
 
 	log.Debug("called C.cgo_callfn_GDExtensionClassGetVirtual")
@@ -955,11 +956,11 @@ func CallFunc_GDExtensionClassGetVirtual(
 
 func CallFunc_GDExtensionClassGetVirtuaCallData(
 	fn GDExtensionClassGetVirtuaCallData,
-	p_userdata unsafe.Pointer,
+	p_class_userdata unsafe.Pointer,
 	p_name GDExtensionConstStringNamePtr,
 ) unsafe.Pointer {
 	arg0 := (C.GDExtensionClassGetVirtuaCallData)(fn)
-	arg1 := unsafe.Pointer(p_userdata)
+	arg1 := unsafe.Pointer(p_class_userdata)
 	arg2 := (C.GDExtensionConstStringNamePtr)(p_name)
 
 	log.Debug("called C.cgo_callfn_GDExtensionClassGetVirtuaCallData")
@@ -974,14 +975,14 @@ func CallFunc_GDExtensionClassCallVirtualWithData(
 	fn GDExtensionClassCallVirtualWithData,
 	p_instance GDExtensionClassInstancePtr,
 	p_name GDExtensionConstStringNamePtr,
-	p_userdata unsafe.Pointer,
+	p_virtual_call_userdata unsafe.Pointer,
 	p_args *GDExtensionConstTypePtr,
 	r_ret GDExtensionTypePtr,
 ) {
 	arg0 := (C.GDExtensionClassCallVirtualWithData)(fn)
 	arg1 := (C.GDExtensionClassInstancePtr)(p_instance)
 	arg2 := (C.GDExtensionConstStringNamePtr)(p_name)
-	arg3 := unsafe.Pointer(p_userdata)
+	arg3 := unsafe.Pointer(p_virtual_call_userdata)
 	arg4 := (*C.GDExtensionConstTypePtr)(p_args)
 	arg5 := (C.GDExtensionTypePtr)(r_ret)
 
@@ -1139,6 +1140,23 @@ func CallFunc_GDExtensionScriptInstanceGetPropertyType(
 
 	// GDExtensionVariantType
 	return (GDExtensionVariantType)(ret)
+}
+
+func CallFunc_GDExtensionScriptInstanceValidateProperty(
+	fn GDExtensionScriptInstanceValidateProperty,
+	p_instance GDExtensionScriptInstanceDataPtr,
+	p_property *GDExtensionPropertyInfo,
+) GDExtensionBool {
+	arg0 := (C.GDExtensionScriptInstanceValidateProperty)(fn)
+	arg1 := (C.GDExtensionScriptInstanceDataPtr)(p_instance)
+	arg2 := (*C.GDExtensionPropertyInfo)(p_property)
+
+	log.Debug("called C.cgo_callfn_GDExtensionScriptInstanceValidateProperty")
+
+	ret := C.cgo_callfn_GDExtensionScriptInstanceValidateProperty(arg0, arg1, arg2)
+
+	// GDExtensionBool
+	return (GDExtensionBool)(ret)
 }
 
 func CallFunc_GDExtensionScriptInstancePropertyCanRevert(

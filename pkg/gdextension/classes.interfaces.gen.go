@@ -6266,6 +6266,8 @@ type EditorDebuggerSession interface {
 }
 type EditorExportPlatform interface {
 	RefCounted
+
+	GetOsName() String
 }
 type EditorExportPlatformAndroid interface {
 	EditorExportPlatform
@@ -9689,58 +9691,8 @@ type GraphEdit interface {
 
 	SetSelected(node Node)
 }
-type GraphNode interface {
+type GraphElement interface {
 	Container
-
-	SetTitle(title String)
-
-	GetTitle() String
-
-	SetTextDirection(direction ControlTextDirection)
-
-	GetTextDirection() ControlTextDirection
-
-	SetLanguage(language String)
-
-	GetLanguage() String
-
-	SetSlot(slot_index int32, enable_left_port bool, type_left int32, color_left Color, enable_right_port bool, type_right int32, color_right Color, custom_icon_left Texture2D, custom_icon_right Texture2D, draw_stylebox bool)
-
-	ClearSlot(slot_index int32)
-
-	ClearAllSlots()
-
-	SetSlotEnabledLeft(slot_index int32, enable bool)
-
-	IsSlotEnabledLeft(slot_index int32) bool
-
-	SetSlotTypeLeft(slot_index int32, typeName int32)
-
-	GetSlotTypeLeft(slot_index int32) int32
-
-	SetSlotColorLeft(slot_index int32, color Color)
-
-	GetSlotColorLeft(slot_index int32) Color
-
-	SetSlotEnabledRight(slot_index int32, enable bool)
-
-	IsSlotEnabledRight(slot_index int32) bool
-
-	SetSlotTypeRight(slot_index int32, typeName int32)
-
-	GetSlotTypeRight(slot_index int32) int32
-
-	SetSlotColorRight(slot_index int32, color Color)
-
-	GetSlotColorRight(slot_index int32) Color
-
-	IsSlotDrawStylebox(slot_index int32) bool
-
-	SetSlotDrawStylebox(slot_index int32, enable bool)
-
-	SetPositionOffset(offset Vector2)
-
-	GetPositionOffset() Vector2
 
 	SetResizable(resizable bool)
 
@@ -9758,37 +9710,74 @@ type GraphNode interface {
 
 	IsSelected() bool
 
-	GetConnectionInputCount() int32
+	SetPositionOffset(offset Vector2)
 
-	GetConnectionInputHeight(port int32) int32
+	GetPositionOffset() Vector2
+}
+type GraphNode interface {
+	GraphElement
 
-	GetConnectionInputPosition(port int32) Vector2
+	// VIRTUAL: Internal_DrawPort(slot_index int32,position Vector2i,left bool,color Color,)
 
-	GetConnectionInputType(port int32) int32
+	SetTitle(title String)
 
-	GetConnectionInputColor(port int32) Color
+	GetTitle() String
 
-	GetConnectionInputSlot(port int32) int32
+	GetTitlebarHbox() HBoxContainer
 
-	GetConnectionOutputCount() int32
+	SetSlot(slot_index int32, enable_left_port bool, type_left int32, color_left Color, enable_right_port bool, type_right int32, color_right Color, custom_icon_left Texture2D, custom_icon_right Texture2D, draw_stylebox bool)
 
-	GetConnectionOutputHeight(port int32) int32
+	ClearSlot(slot_index int32)
 
-	GetConnectionOutputPosition(port int32) Vector2
+	ClearAllSlots()
 
-	GetConnectionOutputType(port int32) int32
+	IsSlotEnabledLeft(slot_index int32) bool
 
-	GetConnectionOutputColor(port int32) Color
+	SetSlotEnabledLeft(slot_index int32, enable bool)
 
-	GetConnectionOutputSlot(port int32) int32
+	SetSlotTypeLeft(slot_index int32, typeName int32)
 
-	SetShowCloseButton(show bool)
+	GetSlotTypeLeft(slot_index int32) int32
 
-	IsCloseButtonVisible() bool
+	SetSlotColorLeft(slot_index int32, color Color)
 
-	SetOverlay(overlay GraphNodeOverlay)
+	GetSlotColorLeft(slot_index int32) Color
 
-	GetOverlay() GraphNodeOverlay
+	IsSlotEnabledRight(slot_index int32) bool
+
+	SetSlotEnabledRight(slot_index int32, enable bool)
+
+	SetSlotTypeRight(slot_index int32, typeName int32)
+
+	GetSlotTypeRight(slot_index int32) int32
+
+	SetSlotColorRight(slot_index int32, color Color)
+
+	GetSlotColorRight(slot_index int32) Color
+
+	IsSlotDrawStylebox(slot_index int32) bool
+
+	SetSlotDrawStylebox(slot_index int32, enable bool)
+
+	GetInputPortCount() int32
+
+	GetInputPortPosition(port_idx int32) Vector2
+
+	GetInputPortType(port_idx int32) int32
+
+	GetInputPortColor(port_idx int32) Color
+
+	GetInputPortSlot(port_idx int32) int32
+
+	GetOutputPortCount() int32
+
+	GetOutputPortPosition(port_idx int32) Vector2
+
+	GetOutputPortType(port_idx int32) int32
+
+	GetOutputPortColor(port_idx int32) Color
+
+	GetOutputPortSlot(port_idx int32) int32
 }
 type GridContainer interface {
 	Container
@@ -14999,6 +14988,20 @@ type OpenXRInterface interface {
 	GetActionSets() Array
 
 	GetAvailableDisplayRefreshRates() Array
+
+	SetMotionRange(hand OpenXRInterfaceHand, motion_range OpenXRInterfaceHandMotionRange)
+
+	GetMotionRange(hand OpenXRInterfaceHand) OpenXRInterfaceHandMotionRange
+
+	GetHandJointRotation(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints) Quaternion
+
+	GetHandJointPosition(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints) Vector3
+
+	GetHandJointRadius(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints) float32
+
+	GetHandJointLinearVelocity(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints) Vector3
+
+	GetHandJointAngularVelocity(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints) Vector3
 }
 type OptimizedTranslation interface {
 	Translation
@@ -25574,13 +25577,19 @@ type TileMap interface {
 
 	// VIRTUAL: Internal_TileDataRuntimeUpdate(layer int32,coords Vector2i,tile_data TileData,)
 
+	SetNavigationMap(layer int32, resourceMap RID)
+
+	GetNavigationMap(layer int32) RID
+
+	ForceUpdate(layer int32)
+
 	SetTileset(tileset TileSet)
 
 	GetTileset() TileSet
 
-	SetQuadrantSize(size int32)
+	SetRenderingQuadrantSize(size int32)
 
-	GetQuadrantSize() int32
+	GetRenderingQuadrantSize() int32
 
 	GetLayersCount() int32
 
@@ -25617,10 +25626,6 @@ type TileMap interface {
 	SetLayerNavigationMap(layer int32, resourceMap RID)
 
 	GetLayerNavigationMap(layer int32) RID
-
-	SetNavigationMap(layer int32, resourceMap RID)
-
-	GetNavigationMap(layer int32) RID
 
 	SetCollisionAnimatable(enabled bool)
 
@@ -25666,7 +25671,9 @@ type TileMap interface {
 
 	Clear()
 
-	ForceUpdate(layer int32)
+	UpdateInternals()
+
+	NotifyRuntimeTileDataUpdate(layer int32)
 
 	GetSurroundingCells(coords Vector2i) []Vector2i
 

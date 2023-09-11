@@ -264,11 +264,11 @@ typedef void (*GDExtensionClassToString)(GDExtensionClassInstancePtr p_instance,
 typedef void (*GDExtensionClassReference)(GDExtensionClassInstancePtr p_instance);
 typedef void (*GDExtensionClassUnreference)(GDExtensionClassInstancePtr p_instance);
 typedef void (*GDExtensionClassCallVirtual)(GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
-typedef GDExtensionObjectPtr (*GDExtensionClassCreateInstance)(void *p_userdata);
-typedef void (*GDExtensionClassFreeInstance)(void *p_userdata, GDExtensionClassInstancePtr p_instance);
-typedef GDExtensionClassCallVirtual (*GDExtensionClassGetVirtual)(void *p_userdata, GDExtensionConstStringNamePtr p_name);
-typedef void *(*GDExtensionClassGetVirtuaCallData)(void *p_userdata, GDExtensionConstStringNamePtr p_name);
-typedef void (*GDExtensionClassCallVirtualWithData)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, void *p_userdata, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
+typedef GDExtensionObjectPtr (*GDExtensionClassCreateInstance)(void *p_class_userdata);
+typedef void (*GDExtensionClassFreeInstance)(void *p_class_userdata, GDExtensionClassInstancePtr p_instance);
+typedef GDExtensionClassCallVirtual (*GDExtensionClassGetVirtual)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name);
+typedef void *(*GDExtensionClassGetVirtuaCallData)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name);
+typedef void (*GDExtensionClassCallVirtualWithData)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, void *p_virtual_call_userdata, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 
 typedef struct {
 	GDExtensionBool is_virtual;
@@ -381,6 +381,7 @@ typedef GDExtensionBool (*GDExtensionScriptInstanceGet)(GDExtensionScriptInstanc
 typedef const GDExtensionPropertyInfo *(*GDExtensionScriptInstanceGetPropertyList)(GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count);
 typedef void (*GDExtensionScriptInstanceFreePropertyList)(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionPropertyInfo *p_list);
 typedef GDExtensionVariantType (*GDExtensionScriptInstanceGetPropertyType)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid);
+typedef GDExtensionBool (*GDExtensionScriptInstanceValidateProperty)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionPropertyInfo *p_property);
 
 typedef GDExtensionBool (*GDExtensionScriptInstancePropertyCanRevert)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name);
 typedef GDExtensionBool (*GDExtensionScriptInstancePropertyGetRevert)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
@@ -467,6 +468,7 @@ typedef struct {
 	GDExtensionScriptInstanceGetMethodList get_method_list_func;
 	GDExtensionScriptInstanceFreeMethodList free_method_list_func;
 	GDExtensionScriptInstanceGetPropertyType get_property_type_func;
+	GDExtensionScriptInstanceValidateProperty validate_property_func;
 
 	GDExtensionScriptInstanceHasMethod has_method_func;
 

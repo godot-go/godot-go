@@ -1750,6 +1750,12 @@ func registerEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GraphEdit),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GraphEdit),
 		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GraphElement",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GraphElement),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GraphElement),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GraphElement),
+		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GraphNode",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GraphNode),
@@ -5549,6 +5555,7 @@ func registerEngineClasses() {
 	gdNativeConstructors.Set("GradientTexture1D", NewGDExtensionClassFromGradientTexture1DOwner)
 	gdNativeConstructors.Set("GradientTexture2D", NewGDExtensionClassFromGradientTexture2DOwner)
 	gdNativeConstructors.Set("GraphEdit", NewGDExtensionClassFromGraphEditOwner)
+	gdNativeConstructors.Set("GraphElement", NewGDExtensionClassFromGraphElementOwner)
 	gdNativeConstructors.Set("GraphNode", NewGDExtensionClassFromGraphNodeOwner)
 	gdNativeConstructors.Set("GridContainer", NewGDExtensionClassFromGridContainerOwner)
 	gdNativeConstructors.Set("GridMap", NewGDExtensionClassFromGridMapOwner)

@@ -19,7 +19,7 @@ type PropertySetGet struct {
 }
 
 type MethodBindAndClassMethodInfo struct {
-	MethodBind *MethodBindImpl
+	MethodBind      *MethodBindImpl
 	ClassMethodInfo *GDExtensionClassMethodInfo
 }
 

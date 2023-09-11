@@ -78,8 +78,8 @@ func ClassDBAddProperty(
 		panic(fmt.Sprintf(`Property "%s" already exists in class "%s".`, pn, cn))
 	}
 	var (
-		setter       *MethodBindImpl
-		getter       *MethodBindImpl
+		setter *MethodBindImpl
+		getter *MethodBindImpl
 	)
 	if len(p_getter) == 0 {
 		log.Panic(`Getter method must be specified.`)
@@ -261,11 +261,10 @@ func classDBBindMethod(
 		ptrcallFunc,
 	)
 	cmi := NewGDExtensionClassMethodInfoFromMethodBind(mb)
-	bi :=  &MethodBindAndClassMethodInfo{
-		MethodBind: mb,
+	bi := &MethodBindAndClassMethodInfo{
+		MethodBind:      mb,
 		ClassMethodInfo: cmi,
 	}
-
 
 	ci, ok := gdRegisteredGDClasses.Get(className)
 	if !ok {

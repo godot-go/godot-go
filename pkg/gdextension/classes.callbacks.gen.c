@@ -4908,6 +4908,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_GraphEdit(void 
 
 
 
+void *cgo_gdextension_class_binding_create_callback_GraphElement(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("GraphElement", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_GraphElement(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("GraphElement", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_GraphElement(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("GraphElement", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_GraphNode(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("GraphNode", p_token, p_instance);

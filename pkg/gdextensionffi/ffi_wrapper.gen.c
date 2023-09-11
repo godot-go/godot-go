@@ -208,36 +208,36 @@ void cgo_callfn_GDExtensionClassCallVirtual(
   fn(p_instance, p_args, r_ret);
 }
 GDExtensionObjectPtr cgo_callfn_GDExtensionClassCreateInstance(
-    const GDExtensionClassCreateInstance fn, void *p_userdata) {
+    const GDExtensionClassCreateInstance fn, void *p_class_userdata) {
   printStacktrace();
-  return fn(p_userdata);
+  return fn(p_class_userdata);
 }
 void cgo_callfn_GDExtensionClassFreeInstance(
-    const GDExtensionClassFreeInstance fn, void *p_userdata,
+    const GDExtensionClassFreeInstance fn, void *p_class_userdata,
     GDExtensionClassInstancePtr p_instance) {
   printStacktrace();
-  fn(p_userdata, p_instance);
+  fn(p_class_userdata, p_instance);
 }
 GDExtensionClassCallVirtual
 cgo_callfn_GDExtensionClassGetVirtual(const GDExtensionClassGetVirtual fn,
-                                      void *p_userdata,
+                                      void *p_class_userdata,
                                       GDExtensionConstStringNamePtr p_name) {
   printStacktrace();
-  return fn(p_userdata, p_name);
+  return fn(p_class_userdata, p_name);
 }
 void *cgo_callfn_GDExtensionClassGetVirtuaCallData(
-    const GDExtensionClassGetVirtuaCallData fn, void *p_userdata,
+    const GDExtensionClassGetVirtuaCallData fn, void *p_class_userdata,
     GDExtensionConstStringNamePtr p_name) {
   printStacktrace();
-  return fn(p_userdata, p_name);
+  return fn(p_class_userdata, p_name);
 }
 void cgo_callfn_GDExtensionClassCallVirtualWithData(
     const GDExtensionClassCallVirtualWithData fn,
     GDExtensionClassInstancePtr p_instance,
-    GDExtensionConstStringNamePtr p_name, void *p_userdata,
+    GDExtensionConstStringNamePtr p_name, void *p_virtual_call_userdata,
     const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
   printStacktrace();
-  fn(p_instance, p_name, p_userdata, p_args, r_ret);
+  fn(p_instance, p_name, p_virtual_call_userdata, p_args, r_ret);
 }
 void cgo_callfn_GDExtensionClassMethodCall(
     const GDExtensionClassMethodCall fn, void *method_userdata,
@@ -295,6 +295,13 @@ GDExtensionVariantType cgo_callfn_GDExtensionScriptInstanceGetPropertyType(
     GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid) {
   printStacktrace();
   return fn(p_instance, p_name, r_is_valid);
+}
+GDExtensionBool cgo_callfn_GDExtensionScriptInstanceValidateProperty(
+    const GDExtensionScriptInstanceValidateProperty fn,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    GDExtensionPropertyInfo *p_property) {
+  printStacktrace();
+  return fn(p_instance, p_property);
 }
 GDExtensionBool cgo_callfn_GDExtensionScriptInstancePropertyCanRevert(
     const GDExtensionScriptInstancePropertyCanRevert fn,

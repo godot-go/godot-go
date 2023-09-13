@@ -35,7 +35,7 @@ func ReflectTypeToGDExtensionVariantType(t reflect.Type) GDExtensionVariantType 
 	)
 
 	if t == nil {
-		log.Warn("returning GDEXTENSION_VARIANT_TYPE_NIL given nil value")
+		log.Debug("returning GDEXTENSION_VARIANT_TYPE_NIL given nil value")
 		return GDEXTENSION_VARIANT_TYPE_NIL
 	}
 

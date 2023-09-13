@@ -1096,3 +1096,16 @@ func VariantSliceToString(values []Variant) string {
 	sb.WriteString(")")
 	return sb.String()
 }
+
+func VariantPtrSliceToString(values []*Variant) string {
+	sb := strings.Builder{}
+	sb.WriteString("[]Variant(")
+	for i := range values {
+		if i != 0 {
+			sb.WriteString(", ")
+		}
+		sb.WriteString(values[i].Stringify())
+	}
+	sb.WriteString(")")
+	return sb.String()
+}

@@ -228,6 +228,10 @@ func (e *Example) VarargsFunc(args ...gdextension.Variant) gdextension.Variant {
 	return ret
 }
 
+func (e *Example) VarargsFuncVoid(args ...gdextension.Variant) {
+	e.EmitCustomSignal("varargs_func_void", int64(len(args) + 1))
+}
+
 // func (e *Example) V_GetPropertyList(props []gdextension.PropertyInfo) {
 // 	props = append(props, gdextension.NewPropertyInfo(gdextentionffi.GDEXTENSION_VARIANT_TYPE_VECTOR3, "property_from_list"))
 // 	for i := 0; i < 3; i++ {

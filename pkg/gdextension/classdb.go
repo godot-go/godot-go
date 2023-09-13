@@ -220,7 +220,7 @@ func classDBBindMethod(
 	inst GDClass,
 	goMethodName string,
 	methodName string,
-	hintFlags MethodFlags,
+	methodFlags MethodFlags,
 	argNames []string,
 	defaultValues []Variant,
 ) *MethodBindImpl {
@@ -230,19 +230,10 @@ func classDBBindMethod(
 		zap.Reflect("inst", inst),
 		zap.String("go_name", goMethodName),
 		zap.String("gd_name", methodName),
-		zap.Any("hint", hintFlags),
+		zap.Any("flags", methodFlags),
 		zap.Any("t", t),
 		zap.Any("class", className),
 	)
-	if (hintFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL {
-		if !strings.HasPrefix(goMethodName, "V_") {
-			log.Panic(`virtual method name must have a prefix of "V_".`)
-		}
-	} else {
-		if strings.HasPrefix(goMethodName, "V_") {
-			log.Panic(`method name cannot have a prefix of "V_".`)
-		}
-	}
 	m, ok := t.MethodByName(goMethodName)
 	if !ok {
 		log.Panic("unable to find function",
@@ -251,13 +242,21 @@ func classDBBindMethod(
 		)
 	}
 	ptrcallFunc := m.Func
-	methodMetadata := NewMethodMetadata(m, className, methodName, argNames, defaultValues)
+	methodMetadata := NewMethodMetadata(m, className, methodName, argNames, defaultValues, methodFlags)
+	if methodMetadata.IsVirtual {
+		if !strings.HasPrefix(goMethodName, "V_") {
+			log.Panic(`virtual method name must have a prefix of "V_".`)
+		}
+	} else {
+		if strings.HasPrefix(goMethodName, "V_") {
+			log.Panic(`method name cannot have a prefix of "V_".`)
+		}
+	}
 	mb := NewMethodBind(
 		className,
 		methodName,
 		goMethodName,
 		*methodMetadata,
-		ptrcallFunc,
 		ptrcallFunc,
 	)
 	cmi := NewGDExtensionClassMethodInfoFromMethodBind(mb)
@@ -286,7 +285,7 @@ func classDBBindMethod(
 		return nil
 	}
 	// register our method bind within our plugin
-	if (hintFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL {
+	if (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL {
 		ci.VirtualMethodMap[methodName] = bi
 	} else {
 		ci.MethodMap[methodName] = bi

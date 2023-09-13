@@ -197,6 +197,24 @@ func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(inst GDClass, su
 			case Variant:
 				v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(arg.ptr()))
 				args[i+1] = reflect.ValueOf(v)
+			case Vector2:
+				v := arg.ToVector2()
+				args[i+1] = reflect.ValueOf(v)
+			case Vector2i:
+				v := arg.ToVector2i()
+				args[i+1] = reflect.ValueOf(v)
+			case Vector3:
+				v := arg.ToVector3()
+				args[i+1] = reflect.ValueOf(v)
+			case Vector3i:
+				v := arg.ToVector3i()
+				args[i+1] = reflect.ValueOf(v)
+			case Vector4:
+				v := arg.ToVector4()
+				args[i+1] = reflect.ValueOf(v)
+			case Vector4i:
+				v := arg.ToVector4i()
+				args[i+1] = reflect.ValueOf(v)
 			default:
 				log.Panic(fmt.Sprintf("MethodBind.Ptrcall does not support struct type: %s", t.Name()))
 			}

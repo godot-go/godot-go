@@ -27,17 +27,20 @@ const (
 )
 
 type MethodMetadata struct {
-	Func               reflect.Value
-	GoReturnType       reflect.Type
-	GoReturnStyle      ReturnStyle
-	GoArgumentTypes    []reflect.Type
-	ReturnType         GDExtensionVariantType
-	ReturnPropertyInfo GDExtensionPropertyInfo
-	ArgumentsInfo      []GDExtensionPropertyInfo
-	ArgumentsMetadata  []GDExtensionClassMethodArgumentMetadata
-	ArgumentTypes      []GDExtensionVariantType
-	DefaultArguments   []Variant // TODO: switch this to []*Variant to align with Godot
-	IsVariadic         bool
+	Func                reflect.Value
+	GoReturnType        reflect.Type
+	GoReturnStyle       ReturnStyle
+	GoArgumentTypes     []reflect.Type
+	ReturnType          GDExtensionVariantType
+	ReturnPropertyInfo  GDExtensionPropertyInfo
+	ArgumentsInfo       []GDExtensionPropertyInfo
+	ArgumentsMetadata   []GDExtensionClassMethodArgumentMetadata
+	ArgumentTypes       []GDExtensionVariantType
+	DefaultArguments    []Variant
+	DefaultArgumentPtrs []GDExtensionVariantPtr
+	IsVariadic          bool
+	IsVirtual           bool
+	MethodFlags         MethodFlags
 }
 
 func NewMethodMetadata(
@@ -46,6 +49,7 @@ func NewMethodMetadata(
 	methodName string,
 	argumentNames []string,
 	defaultArguments []Variant,
+	methodFlags MethodFlags,
 ) *MethodMetadata {
 	mt := method.Type
 	fn := method.Func
@@ -58,6 +62,15 @@ func NewMethodMetadata(
 			zap.String("class", className),
 			zap.String("method", methodName),
 			zap.String("reciover", recv.Name()),
+		)
+	}
+	isVariadicTyped := mt.IsVariadic()
+	isVariadicFlaged := (methodFlags & METHOD_FLAG_VARARG) == METHOD_FLAG_VARARG
+	isVirtual := (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL
+	if isVariadicTyped != isVariadicFlaged {
+		log.Panic("go method and method flags are not variadic aligned",
+			zap.Bool("is_variadic_type", isVariadicTyped),
+			zap.Bool("is_variadic_flag", isVariadicFlaged),
 		)
 	}
 	returnCount := mt.NumOut()
@@ -97,6 +110,10 @@ func NewMethodMetadata(
 			zap.String("method", methodName),
 		)
 	}
+	defaultArgumentPtrs := make([]GDExtensionVariantPtr, len(defaultArguments))
+	for i := range defaultArgumentPtrs {
+		defaultArgumentPtrs[i] = (GDExtensionVariantPtr)(defaultArguments[i].ptr())
+	}
 	goArgumentTypes := make([]reflect.Type, argumentCount)
 	variantTypes := make([]GDExtensionVariantType, argumentCount)
 	argumentsInfo := make([]GDExtensionPropertyInfo, argumentCount)
@@ -109,17 +126,20 @@ func NewMethodMetadata(
 		argumentsMetadata[i] = GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE
 	}
 	return &MethodMetadata{
-		Func:               fn,
-		GoReturnType:       goReturnType,
-		GoReturnStyle:      returnStyle,
-		GoArgumentTypes:    goArgumentTypes,
-		ReturnType:         returnType,
-		ReturnPropertyInfo: returnPropertyInfo,
-		ArgumentsInfo:      argumentsInfo,
-		ArgumentsMetadata:  argumentsMetadata,
-		ArgumentTypes:      variantTypes,
-		DefaultArguments:   defaultArguments,
-		IsVariadic:         mt.IsVariadic(),
+		Func:                fn,
+		GoReturnType:        goReturnType,
+		GoReturnStyle:       returnStyle,
+		GoArgumentTypes:     goArgumentTypes,
+		ReturnType:          returnType,
+		ReturnPropertyInfo:  returnPropertyInfo,
+		ArgumentsInfo:       argumentsInfo,
+		ArgumentsMetadata:   argumentsMetadata,
+		ArgumentTypes:       variantTypes,
+		DefaultArguments:    defaultArguments,
+		DefaultArgumentPtrs: defaultArgumentPtrs,
+		IsVariadic:          isVariadicFlaged,
+		IsVirtual:           isVirtual,
+		MethodFlags:         methodFlags,
 	}
 }
 
@@ -131,7 +151,6 @@ type MethodBindImpl struct {
 	MethodName     string
 	GoMethodName   string
 	MethodMetadata MethodMetadata
-	CallFunc       reflect.Value
 	PtrcallFunc    reflect.Value
 }
 
@@ -142,7 +161,7 @@ func (b *MethodBindImpl) Call(
 ) Variant {
 	md := b.MethodMetadata
 	gdArgsCount := len(gdArgs)
-	defArgsCount := len(md.DefaultArguments)
+	defArgsCount := len(md.DefaultArgumentPtrs)
 	callArgs := make([]Variant, len(md.ArgumentTypes))
 	for i := range callArgs {
 		if i < gdArgsCount {
@@ -158,30 +177,57 @@ func (b *MethodBindImpl) Call(
 		}
 	}
 	exepctedTypes := b.MethodMetadata.GoArgumentTypes
-	args := reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(inst, callArgs, exepctedTypes)
-	ret := b.PtrcallFunc.Call(args)
-	log.Info("Call",
-		zap.String("bind", b.String()),
-		zap.String("gd_args", VariantSliceToString(gdArgs)),
-		zap.String("resolved_args", VariantSliceToString(callArgs)),
-		zap.String("ret", util.ReflectValueSliceToString(ret)),
-	)
-	v := NewVariantNil()
-	ptr := (GDExtensionVariantPtr)(unsafe.Pointer(v.ptr()))
-	switch b.MethodMetadata.GoReturnStyle {
-	case NoneReturnStyle:
-	case ValueReturnStyle:
-		GDExtensionVariantPtrFromReflectValue(ret[0], ptr)
-		return v
-	case ValueAndBoolReturnStyle:
-		log.Warn("second return value ignored")
-		GDExtensionVariantPtrFromReflectValue(ret[0], ptr)
-	default:
-		log.Panic("unexpected MethodBindReturnStyle",
-			zap.Any("value", ret),
+	if md.IsVariadic {
+		args := []reflect.Value {
+			reflect.ValueOf(inst),
+			reflect.ValueOf(gdArgs),
+		}
+		ret := b.PtrcallFunc.CallSlice(args)
+		log.Info("Call Variadic",
+			zap.String("bind", b.String()),
+			zap.String("gd_args", VariantSliceToString(gdArgs)),
+			zap.String("resolved_args", VariantSliceToString(callArgs)),
+			zap.String("ret", util.ReflectValueSliceToString(ret)),
 		)
+		switch b.MethodMetadata.GoReturnStyle {
+		case NoneReturnStyle:
+		case ValueReturnStyle:
+			return ret[0].Interface().(Variant)
+		case ValueAndBoolReturnStyle:
+			log.Warn("second return value ignored")
+			return ret[0].Interface().(Variant)
+		default:
+			log.Panic("unexpected MethodBindReturnStyle",
+				zap.Any("value", ret),
+			)
+		}
+		return NewVariantNil()
+	} else {
+		args := reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(inst, callArgs, exepctedTypes)
+		ret := b.PtrcallFunc.Call(args)
+		log.Info("Call",
+			zap.String("bind", b.String()),
+			zap.String("gd_args", VariantSliceToString(gdArgs)),
+			zap.String("resolved_args", VariantSliceToString(callArgs)),
+			zap.String("ret", util.ReflectValueSliceToString(ret)),
+		)
+		v := NewVariantNil()
+		ptr := (GDExtensionVariantPtr)(unsafe.Pointer(v.ptr()))
+		switch b.MethodMetadata.GoReturnStyle {
+		case NoneReturnStyle:
+		case ValueReturnStyle:
+			GDExtensionVariantPtrFromReflectValue(ret[0], ptr)
+			return v
+		case ValueAndBoolReturnStyle:
+			log.Warn("second return value ignored")
+			GDExtensionVariantPtrFromReflectValue(ret[0], ptr)
+		default:
+			log.Panic("unexpected MethodBindReturnStyle",
+				zap.Any("value", ret),
+			)
+		}
+		return v
 	}
-	return v
 }
 
 func (b *MethodBindImpl) Ptrcall(
@@ -245,7 +291,6 @@ func NewMethodBind(
 	methodName string,
 	goMethodName string,
 	methodMetadata MethodMetadata,
-	callFunc reflect.Value,
 	ptrcallFunc reflect.Value,
 ) *MethodBindImpl {
 	return &MethodBindImpl{
@@ -253,35 +298,54 @@ func NewMethodBind(
 		MethodName:     methodName,
 		GoMethodName:   goMethodName,
 		MethodMetadata: methodMetadata,
-		CallFunc:       callFunc,
 		PtrcallFunc:    ptrcallFunc,
 	}
 }
 
 func NewGDExtensionClassMethodInfoFromMethodBind(mb *MethodBindImpl) *GDExtensionClassMethodInfo {
 	md := mb.MethodMetadata
-	argumentCount := len(md.ArgumentTypes)
-	// argumentsInfo := AllocArrayPtr[GDExtensionPropertyInfo](argumentCount)
-	// argumentsMetadata := AllocArrayPtr[GDExtensionClassMethodArgumentMetadata](argumentCount)
-	// argumentsInfo := make([]GDExtensionPropertyInfo, argumentCount)
-	defArgPtrs := make([]GDExtensionVariantPtr, len(md.DefaultArguments))
-	for i := range defArgPtrs {
-		defArgPtrs[i] = (GDExtensionVariantPtr)(md.DefaultArguments[i].ptr())
+	if md.IsVariadic {
+		argumentsInfo := []GDExtensionPropertyInfo{
+			NewSimpleGDExtensionPropertyInfo(mb.ClassName, GDEXTENSION_VARIANT_TYPE_NIL, "varargs"),
+		}
+		argumentsMetadata := []GDExtensionClassMethodArgumentMetadata{
+			GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE,
+		}
+		log.Info("Create Variadic ClassMethodInfoFromMethodBind",
+			zap.String("bind", mb.String()),
+		)
+		return NewGDExtensionClassMethodInfo(
+			NewStringNameWithLatin1Chars(mb.MethodName).AsGDExtensionConstStringNamePtr(),
+			unsafe.Pointer(mb),
+			(GDExtensionClassMethodCall)(C.cgo_method_bind_method_call),
+			(GDExtensionClassMethodPtrCall)(C.cgo_method_bind_method_ptrcall),
+			(uint32)(md.MethodFlags),
+			md.GoReturnStyle != NoneReturnStyle,
+			&md.ReturnPropertyInfo,
+			GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE,
+			(uint32)(1),
+			(*GDExtensionPropertyInfo)(unsafe.SliceData(argumentsInfo)),
+			(*GDExtensionClassMethodArgumentMetadata)(unsafe.SliceData(argumentsMetadata)),
+			(uint32)(len(md.DefaultArgumentPtrs)),
+			(*GDExtensionVariantPtr)(unsafe.Pointer((unsafe.SliceData(md.DefaultArgumentPtrs)))),
+		)
 	}
-	classMethodInfo := NewGDExtensionClassMethodInfo(
+	log.Info("Create Normal ClassMethodInfoFromMethodBind",
+		zap.String("bind", mb.String()),
+	)
+	return NewGDExtensionClassMethodInfo(
 		NewStringNameWithLatin1Chars(mb.MethodName).AsGDExtensionConstStringNamePtr(),
 		unsafe.Pointer(mb),
 		(GDExtensionClassMethodCall)(C.cgo_method_bind_method_call),
 		(GDExtensionClassMethodPtrCall)(C.cgo_method_bind_method_ptrcall),
-		(uint32)(METHOD_FLAGS_DEFAULT),
+		(uint32)(md.MethodFlags),
 		md.GoReturnStyle != NoneReturnStyle,
 		&md.ReturnPropertyInfo,
 		GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE,
-		(uint32)(argumentCount),
+		(uint32)(len(md.ArgumentTypes)),
 		(*GDExtensionPropertyInfo)(unsafe.SliceData(md.ArgumentsInfo)),
 		(*GDExtensionClassMethodArgumentMetadata)(unsafe.SliceData(md.ArgumentsMetadata)),
-		(uint32)(len(defArgPtrs)),
-		(*GDExtensionVariantPtr)(unsafe.Pointer((unsafe.SliceData(defArgPtrs)))),
+		(uint32)(len(md.DefaultArgumentPtrs)),
+		(*GDExtensionVariantPtr)(unsafe.Pointer((unsafe.SliceData(md.DefaultArgumentPtrs)))),
 	)
-	return &classMethodInfo
 }

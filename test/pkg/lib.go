@@ -33,7 +33,8 @@ func RegisterExampleTypes() {
 		// 	return (obj.(*Example)).VarargsFunc(args...)
 		// }
 		// fn := (*Example).VarargsFunc
-		// ClassDBBindMethodVarargs(t, fn, "varargs_func", nil, nil)
+		ClassDBBindMethodVarargs(t, "VarargsFunc", "varargs_func", nil, nil)
+		ClassDBBindMethodVarargs(t, "VarargsFuncVoid", "varargs_func_void", nil, nil)
 		// ClassDBBindMethodStatic(t, "TestStatic", "test_static", []string{"a", "b"}, nil)
 		// ClassDBBindMethodStatic(t, "TestStatic2", "test_static2", nil, nil)
 		ClassDBBindMethod(t, "SimpleFunc", "simple_func", nil, nil)

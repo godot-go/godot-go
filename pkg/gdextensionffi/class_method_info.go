@@ -28,8 +28,8 @@ func NewGDExtensionClassMethodInfo(
 	argumentsMetadata *GDExtensionClassMethodArgumentMetadata,
 	defaultArgumentCount uint32,
 	defaultArguments *GDExtensionVariantPtr,
-) GDExtensionClassMethodInfo {
-	return (GDExtensionClassMethodInfo)(C.GDExtensionClassMethodInfo{
+) *GDExtensionClassMethodInfo {
+	return (*GDExtensionClassMethodInfo)(&C.GDExtensionClassMethodInfo{
 		name:            (C.GDExtensionStringNamePtr)(unsafe.Pointer(name)),
 		method_userdata: methodUserdata,
 		call_func:       (C.GDExtensionClassMethodCall)(callFunc),

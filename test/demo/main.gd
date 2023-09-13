@@ -58,11 +58,11 @@ func _ready():
 	# VarArg method calls.
 	# var var_ref = ExampleRef.new()
 	# assert_not_equal(example.extended_ref_checks(var_ref).get_instance_id(), var_ref.get_instance_id())
-	# assert_equal(example.varargs_func("some", "arguments", "to", "test"), 4)
-	# assert_equal(example.varargs_func("some"), 1)
+	assert_equal(example.varargs_func("some", "arguments", "to", "test"), 4)
+	assert_equal(example.varargs_func("some"), 1)
 	# assert_equal(example.varargs_func_nv("some", "arguments", "to", "test"), 46)
-	# example.varargs_func_void("some", "arguments", "to", "test")
-	# assert_equal(custom_signal_emitted, ["varargs_func_void", 5])
+	example.varargs_func_void("some", "arguments", "to", "test")
+	assert_equal(custom_signal_emitted, ["varargs_func_void", 5])
 
 	# Method calls with default values.
 	assert_equal(example.def_args(), 300)
@@ -86,9 +86,9 @@ func _ready():
 	# assert_equal(example.test_vector_ops(), 105)
 
 	# Properties.
-	# assert_equal(example.group_subgroup_custom_position, Vector2(0, 0))
-	# example.group_subgroup_custom_position = Vector2(50, 50)
-	# assert_equal(example.group_subgroup_custom_position, Vector2(50, 50))
+	assert_equal(example.group_subgroup_custom_position, Vector2(0, 0))
+	example.group_subgroup_custom_position = Vector2(50, 50)
+	assert_equal(example.group_subgroup_custom_position, Vector2(50, 50))
 
 	# Constants.
 	assert_equal(Example.FIRST, 0)

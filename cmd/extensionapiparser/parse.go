@@ -3,7 +3,7 @@ package extensionapiparser
 import (
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 )
 
 func strictUnmarshal(data []byte, v interface{}) error {
@@ -16,7 +16,7 @@ func strictUnmarshal(data []byte, v interface{}) error {
 func ParseExtensionApiJson(projectPath string) (ExtensionApi, error) {
 	filename := projectPath + "/godot_headers/extension_api.json"
 	// Open the gdextension_api.json file that defines the GDExtension APIVersion.
-	body, err := ioutil.ReadFile(filename)
+	body, err := os.ReadFile(filename)
 	if err != nil {
 		return ExtensionApi{}, err
 	}

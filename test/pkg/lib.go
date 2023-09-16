@@ -29,10 +29,6 @@ func RegisterExampleTypes() {
 		ClassDBBindMethodVirtual(t, "V_Set", "_set", []string{"name", "value"}, nil)
 		ClassDBBindMethodVirtual(t, "V_Get", "_get", []string{"name"}, nil)
 		// ClassDBBindMethodVirtual(t, "V_GetPropertyList", "_get_property_list", []string{"name", "value"}, nil)
-		// fn := func(obj Object, args ...Variant) Variant {
-		// 	return (obj.(*Example)).VarargsFunc(args...)
-		// }
-		// fn := (*Example).VarargsFunc
 		ClassDBBindMethodVarargs(t, "VarargsFunc", "varargs_func", nil, nil)
 		ClassDBBindMethodVarargs(t, "VarargsFuncVoid", "varargs_func_void", nil, nil)
 		// ClassDBBindMethodStatic(t, "TestStatic", "test_static", []string{"a", "b"}, nil)
@@ -46,6 +42,10 @@ func RegisterExampleTypes() {
 		ClassDBBindMethod(t, "TestArray", "test_array", nil, nil)
 		ClassDBBindMethod(t, "TestDictionary", "test_dictionary", nil, nil)
 		ClassDBBindMethod(t, "TestStringOps", "test_string_ops", nil, nil)
+		ClassDBBindMethod(t, "TestSetPositionAndSize", "test_set_position_and_size", nil, nil)
+		ClassDBBindMethod(t, "TestGetChildNode", "test_get_child_node", nil, nil)
+		ClassDBBindMethod(t, "TestCharacterBody2D", "test_character_body_2d", []string{"body"}, nil)
+
 
 		// Properties
 		ClassDBAddPropertyGroup(t, "Test group", "group_")
@@ -74,7 +74,7 @@ func RegisterExampleTypes() {
 		ClassDBBindConstant(t, "CONSTANT_WITHOUT_ENUM", int(EXAMPLE_ENUM_CONSTANT_WITHOUT_ENUM))
 
 		// others
-		ClassDBBindMethod(t, "TestCastTo", "test_cast_to", nil, nil)
+		// ClassDBBindMethod(t, "TestCastTo", "test_cast_to", nil, nil)
 		log.Debug("Example registered")
 	})
 }

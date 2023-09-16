@@ -168,6 +168,13 @@ GDExtensionBool cgo_callfn_GDExtensionClassPropertyGetRevert(
   printStacktrace();
   return fn(p_instance, p_name, r_ret);
 }
+GDExtensionBool cgo_callfn_GDExtensionClassValidateProperty(
+    const GDExtensionClassValidateProperty fn,
+    GDExtensionClassInstancePtr p_instance,
+    GDExtensionPropertyInfo *p_property) {
+  printStacktrace();
+  return fn(p_instance, p_property);
+}
 void cgo_callfn_GDExtensionClassNotification(
     const GDExtensionClassNotification fn,
     GDExtensionClassInstancePtr p_instance, int32_t p_what) {
@@ -225,8 +232,8 @@ cgo_callfn_GDExtensionClassGetVirtual(const GDExtensionClassGetVirtual fn,
   printStacktrace();
   return fn(p_class_userdata, p_name);
 }
-void *cgo_callfn_GDExtensionClassGetVirtuaCallData(
-    const GDExtensionClassGetVirtuaCallData fn, void *p_class_userdata,
+void *cgo_callfn_GDExtensionClassGetVirtualCallData(
+    const GDExtensionClassGetVirtualCallData fn, void *p_class_userdata,
     GDExtensionConstStringNamePtr p_name) {
   printStacktrace();
   return fn(p_class_userdata, p_name);

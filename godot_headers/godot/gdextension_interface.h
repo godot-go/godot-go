@@ -258,6 +258,7 @@ typedef const GDExtensionPropertyInfo *(*GDExtensionClassGetPropertyList)(GDExte
 typedef void (*GDExtensionClassFreePropertyList)(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list);
 typedef GDExtensionBool (*GDExtensionClassPropertyCanRevert)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name);
 typedef GDExtensionBool (*GDExtensionClassPropertyGetRevert)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
+typedef GDExtensionBool (*GDExtensionClassValidateProperty)(GDExtensionClassInstancePtr p_instance, GDExtensionPropertyInfo *p_property);
 typedef void (*GDExtensionClassNotification)(GDExtensionClassInstancePtr p_instance, int32_t p_what); // Deprecated. Use GDExtensionClassNotification2 instead.
 typedef void (*GDExtensionClassNotification2)(GDExtensionClassInstancePtr p_instance, int32_t p_what, GDExtensionBool p_reversed);
 typedef void (*GDExtensionClassToString)(GDExtensionClassInstancePtr p_instance, GDExtensionBool *r_is_valid, GDExtensionStringPtr p_out);
@@ -267,7 +268,7 @@ typedef void (*GDExtensionClassCallVirtual)(GDExtensionClassInstancePtr p_instan
 typedef GDExtensionObjectPtr (*GDExtensionClassCreateInstance)(void *p_class_userdata);
 typedef void (*GDExtensionClassFreeInstance)(void *p_class_userdata, GDExtensionClassInstancePtr p_instance);
 typedef GDExtensionClassCallVirtual (*GDExtensionClassGetVirtual)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name);
-typedef void *(*GDExtensionClassGetVirtuaCallData)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name);
+typedef void *(*GDExtensionClassGetVirtualCallData)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name);
 typedef void (*GDExtensionClassCallVirtualWithData)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, void *p_virtual_call_userdata, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 
 typedef struct {
@@ -293,12 +294,14 @@ typedef struct {
 typedef struct {
 	GDExtensionBool is_virtual;
 	GDExtensionBool is_abstract;
+	GDExtensionBool is_exposed;
 	GDExtensionClassSet set_func;
 	GDExtensionClassGet get_func;
 	GDExtensionClassGetPropertyList get_property_list_func;
 	GDExtensionClassFreePropertyList free_property_list_func;
 	GDExtensionClassPropertyCanRevert property_can_revert_func;
 	GDExtensionClassPropertyGetRevert property_get_revert_func;
+	GDExtensionClassValidateProperty validate_property_func;
 	GDExtensionClassNotification2 notification_func;
 	GDExtensionClassToString to_string_func;
 	GDExtensionClassReference reference_func;
@@ -309,7 +312,7 @@ typedef struct {
 	// Can be used instead of `get_virtual_func`. Returns user data that will be passed to `call_virtual_func`.
 	// Returning `NULL` from this function signals to Godot that the virtual function is not overridden.
 	// Data returned from this function should be managed by the extension and must be valid until the extension is deinitialized.
-	GDExtensionClassGetVirtuaCallData get_virtual_call_data_func;
+	GDExtensionClassGetVirtualCallData get_virtual_call_data_func;
 	// Used to call virtual functions when `get_virtual_call_data_func` is not null.
 	GDExtensionClassCallVirtualWithData call_virtual_func;
 	GDExtensionClassGetRID get_rid_func;

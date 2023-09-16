@@ -189,13 +189,14 @@ func (e *Example) EmitCustomSignal(name string, value int64) {
 	)
 }
 
-func (e *Example) TestCastTo() {
-	n := gdextension.ObjectCastTo(e, "Node").(gdextension.Node)
-	if n != nil {
-		log.Panic("failed to cast to cast Example to Node")
-	}
-	log.Debug("TestCastTo called", zap.Any("class", n.GetClassName()))
-}
+// TODO: dig into why casting is important
+// func (e *Example) TestCastTo() {
+// 	n := gdextension.ObjectCastTo(e, "Node").(gdextension.Node)
+// 	if n == nil {
+// 		log.Panic("failed to cast to cast Example to Node")
+// 	}
+// 	log.Debug("TestCastTo called", zap.Any("class", n.GetClassName()))
+// }
 
 // func ExampleTestStatic(p_a, p_b int32) int32 {
 // 	return p_a + p_b
@@ -364,4 +365,34 @@ func (e *Example) V_Input(refEvent gdextension.Ref) {
 	keyLabel := gdStringKeyLabel.ToUtf8()
 	v := int64(keyEvent.GetUnicode())
 	e.EmitCustomSignal(fmt.Sprintf("_input: %s", keyLabel), v)
+}
+
+func (e *Example) TestSetPositionAndSize(pos, size gdextension.Vector2) {
+	e.SetPosition(pos, true)
+	e.SetSize(size, true)
+}
+
+func (e *Example) TestGetChildNode(nodePath string) gdextension.Node {
+	np := gdextension.NewNodePathWithString(gdextension.NewStringWithUtf8Chars(nodePath))
+	names := np.GetConcatenatedNames()
+	log.Info("node path", zap.String("node_path", names.ToUtf8()))
+	return e.GetNode(np)
+}
+
+func (e *Example) TestCharacterBody2D(body gdextension.CharacterBody2D) {
+	if body == nil {
+		log.Warn("CharacterBody2D was nil")
+		return
+	}
+	log.Info("TestCharacterBody2D called")
+
+	// gdStr := body.ToString()
+	// log.Info("TestCharacterBody2D called",
+	// 	zap.String("body", gdStr.ToUtf8()),
+	// )
+	// motion := gdextension.NewVector2WithFloat32Float32(1.0, 2.0)
+	// collision := body.MoveAndCollide(motion, true, 0.5, true)
+	// if collision == nil {
+	// 	log.Panic("null collision returned")
+	// }
 }

@@ -18,7 +18,7 @@ GDExtensionBool cgo_classcreationinfo_propertygetrevert(GDExtensionClassInstance
 // cgo_classcreationinfo_tostring should match GDExtensionClassToString
 void cgo_classcreationinfo_tostring(GDExtensionClassInstancePtr p_instance, GDExtensionBool *r_is_valid, GDExtensionStringPtr p_out);
 
-// cgo_classcreationinfo_getvirtualcallwithdata should match GDExtensionClassGetVirtuaCallData
+// cgo_classcreationinfo_getvirtualcallwithdata should match GDExtensionClassGetVirtualCallData
 // callback when godot wants to get the virtual function call
 void* cgo_classcreationinfo_getvirtualcallwithdata(void *p_userdata, GDExtensionConstStringNamePtr p_name);
 

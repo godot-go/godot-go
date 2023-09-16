@@ -7,7 +7,7 @@ package main
 import "C"
 import (
 	"fmt"
-	"reflect"
+	"runtime"
 	"strconv"
 	"unsafe"
 
@@ -99,6 +99,14 @@ func TestAllocCopy(mem cgoalloc.Allocator) {
 		{700,800,900},
 	}
 
+	// this is required to prevent go panic because of AllocCopy through cgo:
+	// panic: runtime error: cgo argument has Go pointer to unpinned Go pointer
+	pinner := runtime.Pinner{}
+	pinner.Pin(slice[0])
+	pinner.Pin(slice[1])
+	pinner.Pin(slice[2])
+	defer pinner.Unpin()
+
 	fmt.Printf("slice: %v\n", slice)
 	fmt.Printf("slice.len: %v\n", len(slice))
 	fmt.Printf("slice.cap: %v\n", cap(slice))
@@ -106,14 +114,12 @@ func TestAllocCopy(mem cgoalloc.Allocator) {
 	fmt.Printf("slice[1]: %p %+v\n", &slice[1], slice[1])
 	fmt.Printf("slice[2]: %p %+v\n", &slice[2], slice[2])
 
-	header := (*reflect.SliceHeader)(unsafe.Pointer(&slice))
+	fmt.Printf("header: %p\n", &slice)
+	fmt.Printf("header.Data: %p\n", unsafe.SliceData(slice))
+	fmt.Printf("header.Len: %d\n", len(slice))
+	fmt.Printf("header.Cap: %d\n", cap(slice))
 
-	fmt.Printf("header: %p\n", header)
-	fmt.Printf("header.Data: %p\n", unsafe.Pointer(header.Data))
-	fmt.Printf("header.Len: %d\n", header.Len)
-	fmt.Printf("header.Cap: %d\n", header.Cap)
-
-	copiedData := AllocCopy(mem, unsafe.Pointer(header.Data), int(unsafe.Sizeof(uintptr(0))) * header.Len)
+	copiedData := AllocCopy(mem, unsafe.Pointer(unsafe.SliceData(slice)), int(unsafe.Sizeof(uintptr(0))) * len(slice))
 
 	fmt.Printf("copiedData: %+v\n", unsafe.Pointer(copiedData))
 	fmt.Printf("copiedData[0]: %+v\n", *(**TestOpaque)(unsafe.Add(copiedData, int(unsafe.Sizeof(uintptr(0))) * 0)))

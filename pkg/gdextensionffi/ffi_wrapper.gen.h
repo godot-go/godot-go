@@ -94,6 +94,10 @@ GDExtensionBool cgo_callfn_GDExtensionClassPropertyGetRevert(
     const GDExtensionClassPropertyGetRevert fn,
     GDExtensionClassInstancePtr p_instance,
     GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
+GDExtensionBool cgo_callfn_GDExtensionClassValidateProperty(
+    const GDExtensionClassValidateProperty fn,
+    GDExtensionClassInstancePtr p_instance,
+    GDExtensionPropertyInfo *p_property);
 void cgo_callfn_GDExtensionClassNotification(
     const GDExtensionClassNotification fn,
     GDExtensionClassInstancePtr p_instance, int32_t p_what);
@@ -123,8 +127,8 @@ GDExtensionClassCallVirtual
 cgo_callfn_GDExtensionClassGetVirtual(const GDExtensionClassGetVirtual fn,
                                       void *p_class_userdata,
                                       GDExtensionConstStringNamePtr p_name);
-void *cgo_callfn_GDExtensionClassGetVirtuaCallData(
-    const GDExtensionClassGetVirtuaCallData fn, void *p_class_userdata,
+void *cgo_callfn_GDExtensionClassGetVirtualCallData(
+    const GDExtensionClassGetVirtualCallData fn, void *p_class_userdata,
     GDExtensionConstStringNamePtr p_name);
 void cgo_callfn_GDExtensionClassCallVirtualWithData(
     const GDExtensionClassCallVirtualWithData fn,

@@ -17,6 +17,8 @@ import (
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
 
+var _ = unsafe.Pointer(nil)
+
 type AESContext interface {
 	RefCounted
 
@@ -4498,6 +4500,18 @@ type CodeEdit interface {
 	IsLineFolded(line int32) bool
 
 	GetFoldedLines() []int32
+
+	CreateCodeRegion()
+
+	GetCodeRegionStartTag() String
+
+	GetCodeRegionEndTag() String
+
+	SetCodeRegionTags(start String, end String)
+
+	IsLineCodeRegionStart(line int32) bool
+
+	IsLineCodeRegionEnd(line int32) bool
 
 	AddStringDelimiter(start_key String, end_key String, line_only bool)
 

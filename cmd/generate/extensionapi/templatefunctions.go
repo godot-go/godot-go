@@ -437,6 +437,8 @@ func goEncodeArg(goType string, argName string) string {
 }
 
 var referenceEncoderTypes = []string{
+	"Vector2",
+	"Vector2i",
 	"Vector3",
 	"Vector3i",
 	"Transform2D",

@@ -8,3 +8,5 @@ Need to find a place to place this logic:
 		className = pClassName
 	}
 ```
+
+* Look into switching over Object to have an opaque array to resolve the segfault issue with ToObject()

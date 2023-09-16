@@ -17,6 +17,7 @@ import (
 )
 
 var (
+	gdObjectType  = reflect.TypeOf((*Object)(nil)).Elem()
 	gdArrayType   = reflect.TypeOf((*Array)(nil)).Elem()
 	gdVariantType = reflect.TypeOf((*Variant)(nil)).Elem()
 	errorType     = reflect.TypeOf((*error)(nil)).Elem()
@@ -149,11 +150,16 @@ func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(inst GDClass, su
 				zap.Any("stringify", arg.Stringify()),
 			)
 		case reflect.Interface:
-			v := reflect.Zero(t)
-			inst := v.Interface()
-			switch inst.(type) {
-			case Object:
+			switch {
+			case t.Implements(gdObjectType):
+				if arg.IsNil() {
+					args[i+1] = reflect.Zero(t)
+					break
+				}
 				obj := arg.ToObject()
+				log.Info("found object arg",
+					zap.String("class", obj.GetClassName()),
+				)
 				gdObjPtr := (GDExtensionConstObjectPtr)(unsafe.Pointer(obj.GetGodotObjectOwner()))
 				gdsn := NewStringName()
 				defer gdsn.Destroy()
@@ -161,6 +167,7 @@ func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(inst GDClass, su
 				cok := CallFunc_GDExtensionInterfaceObjectGetClassName(gdObjPtr, FFI.Library, ptr)
 				if cok == 0 {
 					log.Panic("failed to get class name",
+						zap.String("class", gdsn.ToUtf8()),
 						zap.Any("gdObjPtr", gdObjPtr),
 					)
 				}
@@ -172,10 +179,9 @@ func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(inst GDClass, su
 				if !ok {
 					log.Panic(fmt.Sprintf("MethodBind.Ptrcall does not support gdextension class type: %s", className))
 				}
-				inst := constructor(owner).(RefCounted)
-				log.Debug("ptrcall arg parsed",
+				inst := constructor(owner).(Object)
+				log.Info("ptrcall arg parsed",
 					zap.Int("arg_index", i),
-					zap.String("type", "Ref"),
 					zap.String("class_name", className),
 				)
 				args[i+1] = reflect.ValueOf(inst)
@@ -345,13 +351,13 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 			args[i+1] = reflect.ValueOf(typedValue)
 		case reflect.String:
 			typedValue := *(*String)(arg)
-			asciiValue := typedValue.ToUtf8()
+			str := typedValue.ToUtf8()
 			log.Debug("ptrcall arg parsed",
-				zap.Any("ascii", asciiValue),
+				zap.Any("str", str),
 				zap.Int("arg_index", i),
 				zap.String("type", "string"),
 			)
-			args[i+1] = reflect.ValueOf(asciiValue)
+			args[i+1] = reflect.ValueOf(str)
 		case reflect.Slice:
 			slice := *(*[]unsafe.Pointer)(arg)
 			log.Panic("MethodBind.Ptrcall slice not implemented",
@@ -382,10 +388,9 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				if !ok {
 					log.Panic(fmt.Sprintf("MethodBind.Ptrcall does not support gdextension class type: %s", className))
 				}
-				inst := constructor(owner).(RefCounted)
+				inst := constructor(owner)
 				log.Debug("ptrcall arg parsed",
 					zap.Int("arg_index", i),
-					zap.String("type", "Ref"),
 					zap.String("class_name", className),
 				)
 				args[i+1] = reflect.ValueOf(inst)
@@ -426,6 +431,9 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				)
 				ref := NewRef(inst)
 				args[i+1] = reflect.ValueOf(*ref)
+			case Vector2:
+				v := newVector2WithGDExtensionConstTypePtr((GDExtensionConstTypePtr)(arg))
+				args[i+1] = reflect.ValueOf(v)
 			case Variant:
 				v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(arg))
 				args[i+1] = reflect.ValueOf(v)

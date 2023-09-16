@@ -292,15 +292,24 @@ type ExtensionApi struct {
 	Classes                   []Class                    `json:"classes"`
 	Singletons                []Singleton                `json:"singletons"`
 	NativeStructures          []NativeStructure          `json:"native_structures"`
+	BuildConfig               string                     `json:"-"`
+}
+
+func (a ExtensionApi) HasBuildConfiguration(buildConfig string) bool {
+	for _, sz := range a.BuiltinClassSizes {
+		if sz.BuildConfiguration == buildConfig {
+			return true
+		}
+	}
+	return false
 }
 
 func (a ExtensionApi) Float64BuiltinClassSize() *BuiltinClassSize {
 	for _, sz := range a.BuiltinClassSizes {
-		if sz.BuildConfiguration == "float_64" {
+		if sz.BuildConfiguration == a.BuildConfig {
 			return &sz
 		}
 	}
-
 	return nil
 }
 
@@ -353,16 +362,10 @@ func (a ExtensionApi) FilteredBuiltinClasses() []BuiltinClass {
 		switch c.Name {
 		case
 			"Nil",
-			"void",
 			"int",
 			"float",
-			"bool",
-			"double",
-			"int32_t",
-			"int64_t",
-			"uint32_t",
-			"uint64_t":
-			// "String":
+			"bool":
+			continue
 		default:
 			values = append(values, c)
 		}

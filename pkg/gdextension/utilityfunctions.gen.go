@@ -2834,6 +2834,39 @@ func Typeof(variable Variant) int32 {
 	return ret
 }
 
+// TypeConvert is under the category "general".
+func TypeConvert(variant Variant, typeName int32) Variant {
+
+	fName := NewStringNameWithLatin1Chars("type_convert")
+	defer fName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2453062746)
+
+	if fn == nil {
+		panic("could not find utility function type_convert (2453062746)")
+	}
+
+	var ret Variant
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
+
+	argBytes := AllocZeros(sz)
+
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
+
+	argPtrs[0] = unsafe.Pointer(&variant)
+	argPtrs[1] = unsafe.Pointer(&typeName)
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(2)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
 // Str is under the category "general".
 func Str(arg1 Variant) String {
 
@@ -3192,7 +3225,7 @@ func VarToStr(variable Variant) String {
 }
 
 // StrToVar is under the category "general".
-func StrToVar(string String) Variant {
+func StrToVar(strValue String) Variant {
 
 	fName := NewStringNameWithLatin1Chars("str_to_var")
 	defer fName.Destroy()
@@ -3211,7 +3244,7 @@ func StrToVar(string String) Variant {
 
 	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argPtrs[0] = unsafe.Pointer(&string)
+	argPtrs[0] = unsafe.Pointer(&strValue)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 

@@ -178,7 +178,7 @@ func (b *MethodBindImpl) Call(
 	}
 	exepctedTypes := b.MethodMetadata.GoArgumentTypes
 	if md.IsVariadic {
-		args := []reflect.Value {
+		args := []reflect.Value{
 			reflect.ValueOf(inst),
 			reflect.ValueOf(gdArgs),
 		}
@@ -211,23 +211,29 @@ func (b *MethodBindImpl) Call(
 			zap.String("resolved_args", VariantSliceToString(callArgs)),
 			zap.String("ret", util.ReflectValueSliceToString(ret)),
 		)
-		v := NewVariantNil()
-		ptr := (GDExtensionVariantPtr)(unsafe.Pointer(v.ptr()))
 		switch b.MethodMetadata.GoReturnStyle {
 		case NoneReturnStyle:
-		case ValueReturnStyle:
-			GDExtensionVariantPtrFromReflectValue(ret[0], ptr)
-			return v
 		case ValueAndBoolReturnStyle:
 			log.Warn("second return value ignored")
+			fallthrough
+		case ValueReturnStyle:
+			if debugv, ok := ret[0].Interface().(Object); ok {
+				strV := debugv.ToString()
+				log.Info("inspect ret[0]",
+					zap.String("v", strV.ToUtf8()),
+				)
+			}
+			v := Variant{}
+			ptr := (GDExtensionVariantPtr)(unsafe.Pointer(v.ptr()))
 			GDExtensionVariantPtrFromReflectValue(ret[0], ptr)
+			return v
 		default:
 			log.Panic("unexpected MethodBindReturnStyle",
 				zap.Any("value", ret),
 			)
 		}
-		return v
 	}
+	return NewVariantNil()
 }
 
 func (b *MethodBindImpl) Ptrcall(

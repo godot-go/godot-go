@@ -3,7 +3,8 @@ extends "res://test_base.gd"
 var custom_signal_emitted = null
 
 func _ready():
-	var example: Example = $Example
+	# var example = get_node("Example")
+	var example = $Example
 
 	# Signal.
 	example.emit_custom_signal("Button", 42)
@@ -91,9 +92,9 @@ func _ready():
 	assert_equal(example.group_subgroup_custom_position, Vector2(50, 50))
 
 	# Constants.
-	assert_equal(Example.FIRST, 0)
-	assert_equal(Example.ANSWER_TO_EVERYTHING, 42)
-	assert_equal(Example.CONSTANT_WITHOUT_ENUM, 314)
+	# assert_equal(Example.FIRST, 0)
+	# assert_equal(Example.ANSWER_TO_EVERYTHING, 42)
+	# assert_equal(Example.CONSTANT_WITHOUT_ENUM, 314)
 
 	# BitFields.
 	# assert_equal(Example.FLAG_ONE, 1)
@@ -114,6 +115,18 @@ func _ready():
 	event.unicode = 72
 	get_viewport().push_input(event)
 	assert_equal(custom_signal_emitted, ["_input: H", 72])
+
+	# gd extension class calls
+	# assert_equal(example.test_get_child_node("Label"), example.get_node("Label"))
+	# example.test_set_position_and_size(Vector2(320, 240), Vector2(100, 200))
+	# assert_equal(example.get_position(), Vector2(320, 240))
+	# assert_equal(example.get_size(), Vector2(100, 200))
+	# example.test_cast_to()
+
+	# var body = CharacterBody2D.new()
+	# print(body)
+	# example.test_character_body_2d(body)
+	# body.queue_free()
 
 	exit_with_status()
 

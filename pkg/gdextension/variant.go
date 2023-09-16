@@ -205,7 +205,6 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionTyp
 		log.Debug("returing interface",
 			zap.String("name", value.Type().Name()),
 		)
-		// TODO: add all variant supportede
 		switch inst := value.Interface().(type) {
 		case Object:
 			*(*C.GDExtensionObjectPtr)(rOut) = (C.GDExtensionObjectPtr)(unsafe.Pointer(inst.GetGodotObjectOwner()))
@@ -215,17 +214,20 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionTyp
 				zap.Any("kind", k))
 		}
 	case reflect.Struct:
-		log.Debug("returing struct",
-			zap.String("name", value.Type().Name()),
-		)
 		// TODO: add all types supported by variant
 		switch inst := value.Interface().(type) {
 		case Vector2:
 			copyVector2WithGDExtensionTypePtr(rOut, (GDExtensionConstTypePtr)(inst.ptr()))
+		case Vector2i:
+			copyVector2iWithGDExtensionTypePtr(rOut, (GDExtensionConstTypePtr)(inst.ptr()))
 		case Vector3:
 			copyVector3WithGDExtensionTypePtr(rOut, (GDExtensionConstTypePtr)(inst.ptr()))
+		case Vector3i:
+			copyVector3iWithGDExtensionTypePtr(rOut, (GDExtensionConstTypePtr)(inst.ptr()))
 		case Vector4:
 			copyVector4WithGDExtensionTypePtr(rOut, (GDExtensionConstTypePtr)(inst.ptr()))
+		case Vector4i:
+			copyVector4iWithGDExtensionTypePtr(rOut, (GDExtensionConstTypePtr)(inst.ptr()))
 		case Array:
 			copyArrayWithGDExtensionTypePtr(rOut, (GDExtensionConstTypePtr)(inst.ptr()))
 		case Dictionary:
@@ -246,38 +248,48 @@ func GDExtensionVariantPtrFromReflectValue(value reflect.Value, rOut GDExtension
 	log.Debug("GDExtensionVariantPtrFromReflectValue called",
 		zap.String("type", value.Type().Name()),
 	)
-	// TODO: is this big enough memory?
-	var data uintptr
-	valuePtr := (GDExtensionTypePtr)(unsafe.Pointer(&data))
-	GDExtensionTypePtrFromReflectValue(value, valuePtr)
 	k := value.Kind()
 	switch k {
 	case reflect.Bool:
-		GDExtensionVariantPtrFromBool(*(*uint8)(unsafe.Pointer(valuePtr)) != 0, rOut)
+		GDExtensionVariantPtrFromBool(value.Bool(), rOut)
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64,
 		reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-		GDExtensionVariantPtrFromInt64(*(*int64)(unsafe.Pointer(valuePtr)), rOut)
+		GDExtensionVariantPtrFromInt64(value.Int(), rOut)
 	case reflect.Float32, reflect.Float64:
-		GDExtensionVariantPtrFromFloat64(*(*float64)(unsafe.Pointer(valuePtr)), rOut)
+		GDExtensionVariantPtrFromFloat64(value.Float(), rOut)
 	case reflect.String:
-		GDExtensionVariantPtrFromString(*(*String)(unsafe.Pointer(valuePtr)), rOut)
+		gdStr := NewStringWithUtf8Chars(value.String())
+		GDExtensionVariantPtrFromString(gdStr, rOut)
 	case reflect.Interface:
 		switch inst := value.Interface().(type) {
+		// case RefCounted:
+		// 	v := NewVariantNil()
+		// 	GDExtensionVariantPtrFromObject(inst, (GDExtensionVariantPtr)(v.ptr()))
+		// 	v = NewVariantNativeCopy((GDExtensionConstVariantPtr)(v.ptr()))
+		// 	copyVariantWithGDExtensionTypePtr(rOut, v.ptr())
 		case Object:
-			GDExtensionVariantPtrFromObject(inst, rOut)
+			v := NewVariantObject(inst)
+			copyVariantWithGDExtensionTypePtr(rOut, v.ptr())
 		default:
 			log.Panic("unhandled go interface to GDExtensionTypePtr",
 				zap.Any("value", value),
-				zap.Any("kind", k))
+				zap.Any("kind", k),
+			)
 		}
 	case reflect.Struct:
 		switch inst := value.Interface().(type) {
 		case Vector2:
 			GDExtensionVariantPtrFromVector2(inst, rOut)
+		case Vector2i:
+			GDExtensionVariantPtrFromVector2i(inst, rOut)
 		case Vector3:
 			GDExtensionVariantPtrFromVector3(inst, rOut)
+		case Vector3i:
+			GDExtensionVariantPtrFromVector3i(inst, rOut)
 		case Vector4:
 			GDExtensionVariantPtrFromVector4(inst, rOut)
+		case Vector4i:
+			GDExtensionVariantPtrFromVector4i(inst, rOut)
 		case Array:
 			GDExtensionVariantPtrFromArray(inst, rOut)
 		case Dictionary:
@@ -512,19 +524,26 @@ func GDExtensionVariantPtrFromObject(v Object, rOut GDExtensionVariantPtr) {
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
 		(GDExtensionUninitializedVariantPtr)(rOut),
-		(GDExtensionTypePtr)(v.GetGodotObjectOwner()),
+		(GDExtensionTypePtr)(v.AsGDExtensionTypePtr()),
 	)
 }
 
 func (c *Variant) ToObject() Object {
+	if c.IsNil() {
+		return nil
+	}
 	fn := variantToTypeConstructor[GDEXTENSION_VARIANT_TYPE_OBJECT]
-	var v Object
+	ret := &Variant{}
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionUninitializedTypePtr)(v.GetGodotObjectOwner()),
+		(GDExtensionUninitializedTypePtr)(ret.ptr()),
 		(GDExtensionVariantPtr)(c.ptr()),
 	)
-	return v
+	return &ObjectImpl{
+		WrappedImpl: WrappedImpl{
+			Owner: (*GodotObject)(unsafe.Pointer(ret.ptr())),
+		},
+	}
 }
 
 func NewVariantVector2(v Vector2) Variant {
@@ -1023,6 +1042,18 @@ func (c *Variant) Stringify() string {
 	defer ret.Destroy()
 	CallFunc_GDExtensionInterfaceVariantStringify((GDExtensionConstVariantPtr)(c.ptr()), (GDExtensionStringPtr)(ret.ptr()))
 	return ret.ToUtf8()
+}
+
+func (c *Variant) IsNil() bool {
+	if c == nil {
+		return true
+	}
+	for i := range c.opaque {
+		if c.opaque[i] != 0 {
+			return false
+		}
+	}
+	return true
 }
 
 func (c *Variant) ToReflectValue(inType GDExtensionVariantType, outType reflect.Type) reflect.Value {

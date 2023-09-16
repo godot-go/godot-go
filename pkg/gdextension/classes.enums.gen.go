@@ -2222,15 +2222,16 @@ const (
 type LightmapGIBakeError int
 
 const (
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_OK                LightmapGIBakeError = 0
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SCENE_ROOT                         = 1
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_FOREIGN_DATA                          = 2
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_LIGHTMAPPER                        = 3
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SAVE_PATH                          = 4
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_MESHES                             = 5
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_MESHES_INVALID                        = 6
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_CANT_CREATE_IMAGE                     = 7
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_USER_ABORTED                          = 8
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_OK                     LightmapGIBakeError = 0
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SCENE_ROOT                              = 1
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_FOREIGN_DATA                               = 2
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_LIGHTMAPPER                             = 3
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SAVE_PATH                               = 4
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_MESHES                                  = 5
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_MESHES_INVALID                             = 6
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_CANT_CREATE_IMAGE                          = 7
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_USER_ABORTED                               = 8
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_TEXTURE_SIZE_TOO_SMALL                     = 9
 )
 
 type LightmapGIEnvironmentMode int

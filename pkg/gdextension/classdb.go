@@ -428,7 +428,7 @@ func ClassDBRegisterClass(inst GDClass, bindMethodsFunc func(t GDClass)) {
 	info := NewGDExtensionClassCreationInfo2(
 		(GDExtensionClassCreateInstance)(C.cgo_classcreationinfo_createinstance),
 		(GDExtensionClassFreeInstance)(C.cgo_classcreationinfo_freeinstance),
-		(GDExtensionClassGetVirtuaCallData)(C.cgo_classcreationinfo_getvirtualcallwithdata),
+		(GDExtensionClassGetVirtualCallData)(C.cgo_classcreationinfo_getvirtualcallwithdata),
 		(GDExtensionClassCallVirtualWithData)(C.cgo_classcreationinfo_callvirtualwithdata),
 		(GDExtensionClassToString)(C.cgo_classcreationinfo_tostring),
 		(GDExtensionClassSet)(C.cgo_classcreationinfo_set),

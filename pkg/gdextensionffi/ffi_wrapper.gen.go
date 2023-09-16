@@ -215,6 +215,7 @@ type GDExtensionClassGetPropertyList C.GDExtensionClassGetPropertyList
 type GDExtensionClassFreePropertyList C.GDExtensionClassFreePropertyList
 type GDExtensionClassPropertyCanRevert C.GDExtensionClassPropertyCanRevert
 type GDExtensionClassPropertyGetRevert C.GDExtensionClassPropertyGetRevert
+type GDExtensionClassValidateProperty C.GDExtensionClassValidateProperty
 type GDExtensionClassNotification C.GDExtensionClassNotification
 type GDExtensionClassNotification2 C.GDExtensionClassNotification2
 type GDExtensionClassToString C.GDExtensionClassToString
@@ -224,7 +225,7 @@ type GDExtensionClassCallVirtual C.GDExtensionClassCallVirtual
 type GDExtensionClassCreateInstance C.GDExtensionClassCreateInstance
 type GDExtensionClassFreeInstance C.GDExtensionClassFreeInstance
 type GDExtensionClassGetVirtual C.GDExtensionClassGetVirtual
-type GDExtensionClassGetVirtuaCallData C.GDExtensionClassGetVirtuaCallData
+type GDExtensionClassGetVirtualCallData C.GDExtensionClassGetVirtualCallData
 type GDExtensionClassCallVirtualWithData C.GDExtensionClassCallVirtualWithData
 type GDExtensionClassMethodCall C.GDExtensionClassMethodCall
 type GDExtensionClassMethodValidatedCall C.GDExtensionClassMethodValidatedCall
@@ -815,6 +816,23 @@ func CallFunc_GDExtensionClassPropertyGetRevert(
 	return (GDExtensionBool)(ret)
 }
 
+func CallFunc_GDExtensionClassValidateProperty(
+	fn GDExtensionClassValidateProperty,
+	p_instance GDExtensionClassInstancePtr,
+	p_property *GDExtensionPropertyInfo,
+) GDExtensionBool {
+	arg0 := (C.GDExtensionClassValidateProperty)(fn)
+	arg1 := (C.GDExtensionClassInstancePtr)(p_instance)
+	arg2 := (*C.GDExtensionPropertyInfo)(p_property)
+
+	log.Debug("called C.cgo_callfn_GDExtensionClassValidateProperty")
+
+	ret := C.cgo_callfn_GDExtensionClassValidateProperty(arg0, arg1, arg2)
+
+	// GDExtensionBool
+	return (GDExtensionBool)(ret)
+}
+
 func CallFunc_GDExtensionClassNotification(
 	fn GDExtensionClassNotification,
 	p_instance GDExtensionClassInstancePtr,
@@ -954,18 +972,18 @@ func CallFunc_GDExtensionClassGetVirtual(
 	return (GDExtensionClassCallVirtual)(ret)
 }
 
-func CallFunc_GDExtensionClassGetVirtuaCallData(
-	fn GDExtensionClassGetVirtuaCallData,
+func CallFunc_GDExtensionClassGetVirtualCallData(
+	fn GDExtensionClassGetVirtualCallData,
 	p_class_userdata unsafe.Pointer,
 	p_name GDExtensionConstStringNamePtr,
 ) unsafe.Pointer {
-	arg0 := (C.GDExtensionClassGetVirtuaCallData)(fn)
+	arg0 := (C.GDExtensionClassGetVirtualCallData)(fn)
 	arg1 := unsafe.Pointer(p_class_userdata)
 	arg2 := (C.GDExtensionConstStringNamePtr)(p_name)
 
-	log.Debug("called C.cgo_callfn_GDExtensionClassGetVirtuaCallData")
+	log.Debug("called C.cgo_callfn_GDExtensionClassGetVirtualCallData")
 
-	ret := C.cgo_callfn_GDExtensionClassGetVirtuaCallData(arg0, arg1, arg2)
+	ret := C.cgo_callfn_GDExtensionClassGetVirtualCallData(arg0, arg1, arg2)
 
 	// void *
 	return unsafe.Pointer(ret)

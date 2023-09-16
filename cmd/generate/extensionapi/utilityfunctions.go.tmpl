@@ -28,11 +28,11 @@ import (
 func {{ camelCase $f.Name }}(
 {{- if $f.IsVararg -}}
 	{{- range $j, $arg := $f.Arguments -}}
-		{{ $arg.Name }} {{ goArgumentType $arg.Type }},
+		{{ goArgumentName $arg.Name }} {{ goArgumentType $arg.Type }},
 	{{- end -}}
 {{- else -}}
 	{{- range $j, $arg := $f.Arguments -}}
-		{{ $arg.Name }} {{ goArgumentType $arg.Type }},
+		{{ goArgumentName $arg.Name }} {{ goArgumentType $arg.Type }},
 	{{- end -}}
 {{- end -}}
 ) {{ $fnReturnType }} {
@@ -60,7 +60,7 @@ func {{ camelCase $f.Name }}(
 	argPtrs := (*[{{ len $f.Arguments }}]unsafe.Pointer)(argBytes)
 
 	{{ range $j, $arg := $f.Arguments -}}
-		argPtrs[{{ $j }}] = unsafe.Pointer(&{{ $arg.Name }})
+		argPtrs[{{ $j }}] = unsafe.Pointer(&{{ goArgumentName $arg.Name }})
 	{{ end }}
 	{{ end }}
 

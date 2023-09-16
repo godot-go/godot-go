@@ -1,6 +1,8 @@
 package gdextension
 
 import (
+	"unsafe"
+
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
@@ -14,6 +16,7 @@ type Wrapped interface {
 	SetGodotObjectOwner(owner *GodotObject)
 	GetClassName() string
 	GetParentClassName() string
+	AsGDExtensionTypePtr() GDExtensionTypePtr
 }
 
 type WrappedImpl struct {
@@ -25,8 +28,16 @@ func (w *WrappedImpl) GetGodotObjectOwner() *GodotObject {
 	return w.Owner
 }
 
+func (w *WrappedImpl) AsGDExtensionTypePtr() GDExtensionTypePtr {
+	return (GDExtensionTypePtr)(unsafe.Pointer(&w.Owner))
+}
+
 func (w *WrappedImpl) SetGodotObjectOwner(owner *GodotObject) {
 	w.Owner = owner
+}
+
+func (w *WrappedImpl) IsNil() bool {
+	return w == nil || w.Owner == nil
 }
 
 // func CopyObject(dst GDExtensionObjectPtr, src GDExtensionConstObjectPtr) {
@@ -37,11 +48,23 @@ func (w *WrappedImpl) SetGodotObjectOwner(owner *GodotObject) {
 // 	return "Wrapped"
 // }
 
+func (cx *ObjectImpl) ToGoString() string {
+	if cx == nil {
+		return ""
+	}
+	gdstr := cx.ToString()
+	defer gdstr.Destroy()
+	return gdstr.ToUtf8()
+}
+
 func ObjectCastTo(obj Object, className string) Object {
 	if obj == nil {
 		return nil
 	}
+	gdStrCn := obj.GetClass()
+	defer gdStrCn.Destroy()
 	log.Info("ObjectCastTo called",
+		zap.String("class", gdStrCn.ToUtf8()),
 		zap.String("className", obj.GetClassName()),
 		zap.String("otherClassName", className),
 	)
@@ -71,6 +94,12 @@ func ObjectCastTo(obj Object, className string) Object {
 		FFI.Token,
 		&cbs)
 	wci := (*WrappedClassInstance)(inst)
+	wrapperClassName := wci.Instance.GetClassName()
+	gdStrClassName := wci.Instance.GetClass()
+	log.Info("ObjectCastTo casted",
+		zap.String("class", gdStrClassName.ToUtf8()),
+		zap.String("className", wrapperClassName),
+	)
 	return wci.Instance
 }
 

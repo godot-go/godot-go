@@ -58,90 +58,56 @@ var (
 )
 
 // Generate will generate Go wrappers for all Godot base types
-func Generate(projectPath string) {
-	eapi, err := extensionapiparser.ParseExtensionApiJson(projectPath)
-
-	if err != nil {
+func Generate(projectPath, buildConfig string) {
+	var (
+		eapi extensionapiparser.ExtensionApi
+		err error
+	)
+	if eapi, err = extensionapiparser.ParseExtensionApiJson(projectPath); err != nil {
 		panic(err)
 	}
-
+	if !eapi.HasBuildConfiguration(buildConfig) {
+		panic(fmt.Sprintf(`unable to find build configuration "%s"`, buildConfig))
+	}
+	eapi.BuildConfig = buildConfig
 	eapi.Classes = eapi.FilteredClasses()
-
-	err = GenerateGlobalConstants(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateGlobalConstants(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateGlobalEnums(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateGlobalEnums(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateNativeStrucutres(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateNativeStrucutres(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateBuiltinClasses(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateBuiltinClasses(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateBuiltinClassBindings(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateBuiltinClassBindings(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateCHeaderClassCallbacks(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateCHeaderClassCallbacks(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateCClassCallbacks(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateCClassCallbacks(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateClassInterfaces(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateClassInterfaces(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateClassEnums(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateClassEnums(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateClassConstants(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateClassConstants(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateClasses(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateClasses(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateClassInit(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateClassInit(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateUtilityFunctions(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateUtilityFunctions(projectPath, eapi); err != nil {
 		panic(err)
 	}
 }
@@ -702,6 +668,7 @@ func GenerateUtilityFunctions(projectPath string, extensionApi extensionapiparse
 	tmpl, err := template.New("utilityfunctions.gen.go").
 		Funcs(template.FuncMap{
 			"camelCase":      strcase.ToCamel,
+			"goArgumentName": goArgumentName,
 			"goArgumentType": goArgumentType,
 			"goReturnType":   goReturnType,
 			"coalesce":       coalesce,

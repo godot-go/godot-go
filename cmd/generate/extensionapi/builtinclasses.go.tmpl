@@ -96,7 +96,17 @@ func (cx *{{ $c.Name }}) Destroy() {
 }
 {{ end }}
 
-// copy funuction
+// copy funuctions
+func new{{ $c.Name }}WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) {{ $c.Name }} {
+    ret := {{ $c.Name }}{}
+    typedSrc := (*[{{ $sizes.FindSize $c.Name }}]uint8)(src)
+
+    for i:=0; i<{{ $sizes.FindSize $c.Name }}; i++ {
+        ret.opaque[i] = typedSrc[i]
+    }
+
+    return ret
+}
 func copy{{ $c.Name }}WithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
     typedDst := (*[{{ $sizes.FindSize $c.Name }}]uint8)(dst)
     typedSrc := (*[{{ $sizes.FindSize $c.Name }}]uint8)(src)
@@ -150,6 +160,7 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     {{ else -}}
     eArg{{ $j }} := {{ goEncoder (goArgumentType $arg.Type) }}.EncodeArg({{ goArgumentName $arg.Name }})
     args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&eArg{{ $j }}))
+    {{/* args[{{ $j }}] = (GDExtensionTypePtr)(eArg{{ $j }}) */}}
     {{ end -}}
     {{ else -}}
     args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&{{ goArgumentName $arg.Name }}))

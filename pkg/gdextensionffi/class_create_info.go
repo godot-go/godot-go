@@ -15,7 +15,7 @@ import (
 func NewGDExtensionClassCreationInfo2(
 	createInstanceFunc GDExtensionClassCreateInstance,
 	freeInstanceFunc GDExtensionClassFreeInstance,
-	getVirtualCallDataFunc GDExtensionClassGetVirtuaCallData,
+	getVirtualCallDataFunc GDExtensionClassGetVirtualCallData,
 	callVirtualFunc GDExtensionClassCallVirtualWithData,
 	toStringFunc GDExtensionClassToString,
 	setFunc GDExtensionClassSet,
@@ -27,7 +27,7 @@ func NewGDExtensionClassCreationInfo2(
 	return (GDExtensionClassCreationInfo2)(C.GDExtensionClassCreationInfo2{
 		create_instance_func:       (C.GDExtensionClassCreateInstance)(createInstanceFunc),
 		free_instance_func:         (C.GDExtensionClassFreeInstance)(freeInstanceFunc),
-		get_virtual_call_data_func: (C.GDExtensionClassGetVirtuaCallData)(getVirtualCallDataFunc),
+		get_virtual_call_data_func: (C.GDExtensionClassGetVirtualCallData)(getVirtualCallDataFunc),
 		call_virtual_func:          (C.GDExtensionClassCallVirtualWithData)(callVirtualFunc),
 		to_string_func:             (C.GDExtensionClassToString)(toStringFunc),
 		set_func:                   (C.GDExtensionClassSet)(setFunc),

@@ -18,6 +18,9 @@ import (
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
 
+{{/* gen hack to quiet unused imports */}}
+var _ = unsafe.Pointer(nil)
+
 {{ range $i, $c := $view.Classes -}}
 type {{ goClassInterfaceName $c.Name }} interface {
 	{{ if $c.Inherits }}

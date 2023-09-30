@@ -46,6 +46,9 @@ jobs:
       #     wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_linux.x86_64.zip
       #     sudo unzip Godot_v4.2-dev5_linux.x86_64.zip -d /usr/local/bin
       #     sudo ln -s Godot_v4.2-dev5_linux.x86_64 /usr/local/bin/godot
+      - name: Install scons
+        run: |
+          apt-get install scons
       - name: Checkout Godot
         uses: actions/checkout@v3
         with:

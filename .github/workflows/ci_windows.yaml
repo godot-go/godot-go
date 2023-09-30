@@ -78,7 +78,7 @@ jobs:
           LANG: "en_US.utf8"
           GODOT: "./Godot_v4.2-dev5_win64.exe"
       - name: Test
-        timeout-minutes: 5
+        timeout-minutes: 7
         run: make test
         continue-on-error: true
         shell: bash

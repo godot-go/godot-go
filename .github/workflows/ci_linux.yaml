@@ -69,7 +69,7 @@ jobs:
           ref: '0ca8542329888e8dccba89d59d3b728090c29991'
           repository: 'godotengine/godot'
           path: 'godot'
-            - name: Setup GCC problem matcher
+      - name: Setup GCC problem matcher
         uses: ammaraskar/gcc-problem-matcher@master
       - name: Compilation
         uses: ./.github/actions/godot-build

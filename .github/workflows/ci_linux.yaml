@@ -50,8 +50,10 @@ jobs:
         run: |
           sudo apt-get install scons
       - name: Checkout Godot
+        id: checkout-godot
         uses: actions/checkout@v3
         with:
+          ref: '0ca8542329888e8dccba89d59d3b728090c29991'
           repository: 'godotengine/godot'
           path: 'godot'
       - name: Build and Install Godot
@@ -62,10 +64,12 @@ jobs:
           cd ..
       - name: Cache Godot
         uses: actions/cache@v3
+        env:
+          cache-name: cache-godot
         with:
           path: |
             godot/
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-godot-4.2-dev5
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ steps.checkout-godot.ref }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-

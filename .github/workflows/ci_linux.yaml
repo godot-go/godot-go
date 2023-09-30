@@ -46,6 +46,21 @@ jobs:
           wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_linux.x86_64.zip
           sudo unzip Godot_v4.2-dev5_linux.x86_64.zip -d /usr/local/bin
           sudo ln -s Godot_v4.2-dev5_linux.x86_64 /usr/local/bin/godot
+      - name: Cache Godot packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            /usr/local/bin/
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-godot-4.2-dev5
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Update Godot Headers
+        run: make update_godot_headers_from_binary
+        env:
+          GOOS: ${{ matrix.os }}
+          GOARCH: ${{ matrix.arch }}
       - name: Build
         run: make build
         env:

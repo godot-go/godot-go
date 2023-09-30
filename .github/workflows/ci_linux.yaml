@@ -19,9 +19,19 @@ on:
       - "**/*.gdextension"
       - ".github/workflows/ci_linux.yaml"
 
+# Global Settings
+env:
+  # Used for the cache key. Add version suffix to force clean build.
+  GODOT_BASE_BRANCH: master
+  SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  TSAN_OPTIONS: suppressions=misc/error_suppressions/tsan.txt
+
 jobs:
   run_test:
     name: "run tests"
+    cache-name: linux-editor
     strategy:
       fail-fast: true
       matrix:
@@ -31,7 +41,7 @@ jobs:
           - amd64
 
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 80
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -46,9 +56,13 @@ jobs:
       #     wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_linux.x86_64.zip
       #     sudo unzip Godot_v4.2-dev5_linux.x86_64.zip -d /usr/local/bin
       #     sudo ln -s Godot_v4.2-dev5_linux.x86_64 /usr/local/bin/godot
-      - name: Install scons
-        run: |
-          sudo apt-get install scons
+      - name: Setup Godot build cache
+        uses: ./.github/actions/godot-cache
+        with:
+          cache-name: ${{ matrix.cache-name }}
+        continue-on-error: true
+      - name: Setup python and scons
+        uses: ./.github/actions/godot-deps
       - name: Checkout Godot
         id: checkout-godot
         uses: actions/checkout@v3
@@ -56,24 +70,21 @@ jobs:
           ref: '0ca8542329888e8dccba89d59d3b728090c29991'
           repository: 'godotengine/godot'
           path: 'godot'
-      - name: Build and Install Godot
-        run: |
-          cd godot
-          scons optimize=debug use_llvm=yes dev_build=yes dev_mode=yes debug_symbols=yes verbose=yes
-          sudo ln -s $(pwd)/bin/godot.linuxbsd.editor.dev.x86_64.llvm /usr/local/bin/godot
-          cd ..
-      - name: Cache Godot
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-godot
+            - name: Setup GCC problem matcher
+        uses: ammaraskar/gcc-problem-matcher@master
+      - name: Compilation
+        uses: ./.github/actions/godot-build
         with:
-          path: |
-            godot/
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ steps.checkout-godot.ref }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          sconsflags: ${{ env.SCONSFLAGS }}
+          platform: linuxbsd
+          target: editor
+          tests: false
+      # - name: Build and Install Godot
+      #   run: |
+      #     cd godot
+      #     scons optimize=debug use_llvm=yes dev_build=yes dev_mode=yes debug_symbols=yes verbose=yes
+      #     sudo ln -s $(pwd)/bin/godot.linuxbsd.editor.dev.x86_64.llvm /usr/local/bin/godot
+      #     cd ..
       - name: Update Godot Headers
         run: make update_godot_headers_from_binary
         env:

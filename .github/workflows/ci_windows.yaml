@@ -1,12 +1,12 @@
 name: godot-go CI on Windows
 
 on:
-  pull_request:
-    paths:
-      - "**/*.go"
-      - "**/*.c"
-      - "**/*.h"
-      - ".github/workflows/ci_windows.yaml"
+  # pull_request:
+  #   paths:
+  #     - "**/*.go"
+  #     - "**/*.c"
+  #     - "**/*.h"
+  #     - ".github/workflows/ci_windows.yaml"
 
   # push:
   #   branches:

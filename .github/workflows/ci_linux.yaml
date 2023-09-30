@@ -64,7 +64,6 @@ jobs:
       - name: Setup python and scons
         uses: ./.github/actions/godot-deps
       - name: Checkout Godot
-        id: checkout-godot
         uses: actions/checkout@v3
         with:
           ref: '0ca8542329888e8dccba89d59d3b728090c29991'

@@ -47,7 +47,7 @@ jobs:
           submodules: true
       - name: Install Godot 4.2 dev5
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.2/Godot_v4.2-dev5_win64.exe.zip
+          wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_win64.exe.zip
           unzip Godot_v4.2-dev5_win64.exe.zip -d ./
         shell: bash
       - name: Build

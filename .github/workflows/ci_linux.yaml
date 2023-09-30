@@ -31,7 +31,7 @@ jobs:
           - amd64
 
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -41,16 +41,27 @@ jobs:
         run: |
           echo "${GOROOT_1_21_X64}/bin" >> $GITHUB_PATH
           echo "GITHUB_PATH=${GITHUB_PATH}"
-      - name: Install Godot 4.2 dev5
+      # - name: Install Godot 4.2 dev5
+      #   run: |
+      #     wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_linux.x86_64.zip
+      #     sudo unzip Godot_v4.2-dev5_linux.x86_64.zip -d /usr/local/bin
+      #     sudo ln -s Godot_v4.2-dev5_linux.x86_64 /usr/local/bin/godot
+      - name: Checkout Godot
+        uses: actions/checkout@v3
+        with:
+          repository: 'godotengine/godot'
+          path: 'godot'
+      - name: Build and Install Godot
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_linux.x86_64.zip
-          sudo unzip Godot_v4.2-dev5_linux.x86_64.zip -d /usr/local/bin
-          sudo ln -s Godot_v4.2-dev5_linux.x86_64 /usr/local/bin/godot
-      - name: Cache Godot packages
+          cd godot
+          scons optimize=debug use_llvm=yes dev_build=yes dev_mode=yes debug_symbols=yes verbose=yes
+          sudo ln -s $(pwd)/bin/godot.linuxbsd.editor.dev.x86_64.llvm /usr/local/bin/godot
+          cd ..
+      - name: Cache Godot
         uses: actions/cache@v3
         with:
           path: |
-            /usr/local/bin/
+            godot/
           key: ${{ runner.os }}-build-${{ env.cache-name }}-godot-4.2-dev5
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-

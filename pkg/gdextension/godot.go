@@ -18,24 +18,22 @@ import (
 )
 
 type internalImpl struct {
-	gdNativeInstances *SyncMap[ObjectID, GDExtensionClass]
-	gdClassInstances  *SyncMap[GDObjectInstanceID, GDClass]
+	// gdNativeInstances *SyncMap[ObjectID, GDExtensionClass]
+	gdClassInstances *SyncMap[GDObjectInstanceID, GDClass]
 }
-
 type GDExtensionBindingCallback func()
-
 type GDExtensionClassGoConstructorFromOwner func(*GodotObject) GDExtensionClass
-
+type RefCountedConstructor func(reference RefCounted) Ref
 type GDClassGoConstructor func(data unsafe.Pointer) GDExtensionObjectPtr
 
 var (
-	internal internalImpl
-
-	nullptr = unsafe.Pointer(nil)
-
+	internal                                              internalImpl
+	nullptr                                               = unsafe.Pointer(nil)
 	gdNativeConstructors                                  = NewSyncMap[string, GDExtensionClassGoConstructorFromOwner]()
+	gdClassRefConstructors                                = NewSyncMap[string, RefCountedConstructor]()
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks = NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
 	gdRegisteredGDClasses                                 = NewSyncMap[string, *ClassInfo]()
+	gdRegisteredGDClassEncoders                           = NewSyncMap[string, ArgumentEncoder]()
 	gdExtensionBindingInitCallbacks                       [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
 	gdExtensionBindingTerminateCallbacks                  [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
 )
@@ -48,7 +46,7 @@ func _GDExtensionBindingInit(
 	// uncomment to print out C stacktraces when logging at debug log level
 	// C.enablePrintStacktrace = log.GetLevel() == log.DebugLevel
 
-	internal.gdNativeInstances = NewSyncMap[ObjectID, GDExtensionClass]()
+	// internal.gdNativeInstances = NewSyncMap[ObjectID, GDExtensionClass]()
 	internal.gdClassInstances = NewSyncMap[GDObjectInstanceID, GDClass]()
 
 	FFI.LoadProcAddresses(pGetProcAddress, pLibrary)
@@ -82,6 +80,7 @@ func _GDExtensionBindingInit(
 
 	variantInitBindings()
 	registerEngineClasses()
+	registerEngineClassRefs()
 
 	return true
 }

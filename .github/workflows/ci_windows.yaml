@@ -28,10 +28,10 @@ jobs:
     runs-on: windows-latest
     timeout-minutes: 40
     steps:
-      - name: Add Go 1.19.x To System Path
+      - name: Add Go 1.21.x To System Path
         shell: bash
         run: |
-          echo "${GOROOT_1_19_X64}/bin" >> $GITHUB_PATH
+          echo "${GOROOT_1_21_X64}/bin" >> $GITHUB_PATH
           echo "GITHUB_PATH=${GITHUB_PATH}"
       - name: Set up scoop
         uses: MinoruSekine/setup-scoop@main
@@ -45,17 +45,17 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Install Godot 4.1 stable
+      - name: Install Godot 4.2 dev5
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.1/Godot_v4.1-stable_win64.exe.zip
-          unzip Godot_v4.1-stable_win64.exe.zip -d ./
+          wget https://downloads.tuxfamily.org/godotengine/4.2/Godot_v4.2-dev5_win64.exe.zip
+          unzip Godot_v4.2-dev5_win64.exe.zip -d ./
         shell: bash
       - name: Build
         run: |
           make build
         shell: bash
         env:
-          GODOT: ./Godot_v4.1-stable_win64.exe
+          GODOT: ./Godot_v4.2-dev5_win64.exe
       - name: List Artifacts Directory
         run: |
           ls -alh test/demo/lib
@@ -67,7 +67,7 @@ jobs:
       #   continue-on-error: true
       #   env:
       #     LANG: "en_US.utf8"
-      #     GODOT: "./Godot_v4.1-stable_win64.exe"
+      #     GODOT: "./Godot_v4.2-dev5_win64.exe"
       - name: Gen Test Project Files
         timeout-minutes: 3
         run: make ci_gen_test_project_files
@@ -76,7 +76,7 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "./Godot_v4.1-stable_win64.exe"
+          GODOT: "./Godot_v4.2-dev5_win64.exe"
       - name: Test
         timeout-minutes: 5
         run: make test
@@ -86,4 +86,4 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "./Godot_v4.1-stable_win64.exe"
+          GODOT: "./Godot_v4.2-dev5_win64.exe"

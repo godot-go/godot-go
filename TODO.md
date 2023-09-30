@@ -9,4 +9,6 @@ Need to find a place to place this logic:
 	}
 ```
 
-* Look into switching over Object to have an opaque array to resolve the segfault issue with ToObject()
+## cgo references
+* GopherCon 2018 - Adventures in Cgo Performance: https://about.sourcegraph.com/blog/go/gophercon-2018-adventures-in-cgo-performance
+* FFI Overhead: https://github.com/dyu/ffi-overhead

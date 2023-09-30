@@ -37,15 +37,15 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Add Go 1.19.x To System Path
+      - name: Add Go 1.21.x To System Path
         run: |
-          echo "${GOROOT_1_19_X64}/bin" >> $GITHUB_PATH
+          echo "${GOROOT_1_21_X64}/bin" >> $GITHUB_PATH
           echo "GITHUB_PATH=${GITHUB_PATH}"
-      - name: Install Godot 4.1 stable
+      - name: Install Godot 4.2 dev5
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.1/Godot_v4.1-stable_linux.x86_64.zip
-          sudo unzip Godot_v4.1-stable_linux.x86_64.zip -d /usr/local/bin
-          sudo ln -s Godot_v4.1-stable_linux.x86_64 /usr/local/bin/godot
+          wget https://downloads.tuxfamily.org/godotengine/4.2/Godot_v4.2-dev5_linux.x86_64.zip
+          sudo unzip Godot_v4.2-dev5_linux.x86_64.zip -d /usr/local/bin
+          sudo ln -s Godot_v4.2-dev5_linux.x86_64 /usr/local/bin/godot
       - name: Build
         run: make build
         env:

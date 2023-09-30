@@ -16,14 +16,14 @@ import (
 
 func RegisterExampleTypes() {
 	log.Debug("RegisterExampleTypes called")
-	ClassDBRegisterClass(&ExampleRef{}, func(t GDClass) {
+	ClassDBRegisterClass[*ExampleRef](&ExampleRef{}, func(t GDClass) {
 		ClassDBBindMethod(t, "GetId", "get_id", nil, nil)
 		ClassDBBindMethod(t, "SetId", "set_id", []string{"id"}, nil)
 		ClassDBAddProperty(t, gdextensionffi.GDEXTENSION_VARIANT_TYPE_INT, "group_subgroup_id", "set_id", "get_id")
 		log.Debug("ExampleRef registered")
 	})
 
-	ClassDBRegisterClass(&Example{}, func(t GDClass) {
+	ClassDBRegisterClass[*Example](&Example{}, func(t GDClass) {
 		ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
 		ClassDBBindMethodVirtual(t, "V_Input", "_input", []string{"event"}, nil)
 		ClassDBBindMethodVirtual(t, "V_Set", "_set", []string{"name", "value"}, nil)
@@ -31,13 +31,16 @@ func RegisterExampleTypes() {
 		// ClassDBBindMethodVirtual(t, "V_GetPropertyList", "_get_property_list", []string{"name", "value"}, nil)
 		ClassDBBindMethodVarargs(t, "VarargsFunc", "varargs_func", nil, nil)
 		ClassDBBindMethodVarargs(t, "VarargsFuncVoid", "varargs_func_void", nil, nil)
+		ClassDBBindMethodVarargs(t, "VarargsFuncNv", "varargs_func_nv", nil, nil)
 		// ClassDBBindMethodStatic(t, "TestStatic", "test_static", []string{"a", "b"}, nil)
 		// ClassDBBindMethodStatic(t, "TestStatic2", "test_static2", nil, nil)
+		ClassDBBindMethod(t, "ImageRefFunc", "image_ref_func", []string{"image"}, nil)
 		ClassDBBindMethod(t, "SimpleFunc", "simple_func", nil, nil)
 		ClassDBBindMethod(t, "SimpleConstFunc", "simple_const_func", []string{"a"}, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
 		ClassDBBindMethod(t, "GetV4", "get_v4", nil, nil)
+		ClassDBBindMethod(t, "TestNodeArgument", "test_node_argument", []string{"example"}, nil)
 		ClassDBBindMethod(t, "DefArgs", "def_args", []string{"a", "b"}, []Variant{NewVariantInt64(100), NewVariantInt64(200)})
 		ClassDBBindMethod(t, "TestArray", "test_array", nil, nil)
 		ClassDBBindMethod(t, "TestDictionary", "test_dictionary", nil, nil)
@@ -45,7 +48,7 @@ func RegisterExampleTypes() {
 		ClassDBBindMethod(t, "TestSetPositionAndSize", "test_set_position_and_size", nil, nil)
 		ClassDBBindMethod(t, "TestGetChildNode", "test_get_child_node", nil, nil)
 		ClassDBBindMethod(t, "TestCharacterBody2D", "test_character_body_2d", []string{"body"}, nil)
-
+		ClassDBBindMethod(t, "TestParentIsNil", "test_parent_is_nil", nil, nil)
 
 		// Properties
 		ClassDBAddPropertyGroup(t, "Test group", "group_")
@@ -85,7 +88,7 @@ func UnregisterExampleTypes() {
 
 //export TestDemoInit
 func TestDemoInit(p_get_proc_address unsafe.Pointer, p_library unsafe.Pointer, r_initialization unsafe.Pointer) bool {
-	log.Debug("ExampleLibraryInit called")
+	log.Debug("TestDemoInit called")
 	initObj := NewInitObject(
 		(gdextensionffi.GDExtensionInterfaceGetProcAddress)(p_get_proc_address),
 		(gdextensionffi.GDExtensionClassLibraryPtr)(p_library),

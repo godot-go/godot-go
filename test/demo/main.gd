@@ -3,7 +3,6 @@ extends "res://test_base.gd"
 var custom_signal_emitted = null
 
 func _ready():
-	# var example = get_node("Example")
 	var example = $Example
 
 	# Signal.
@@ -30,19 +29,19 @@ func _ready():
 	example.simple_const_func(123)
 	assert_equal(custom_signal_emitted, ['simple_const_func', 4])
 
-	# # Pass custom reference.
+	# Pass custom reference.
 	# assert_equal(example.custom_ref_func(null), -1)
-	# # var ref1 = ExampleRef.new()
-	# # ref1.id = 27
-	# # assert_equal(example.custom_ref_func(ref1), 27)
-	# # ref1.id += 1;
-	# # assert_equal(example.custom_const_ref_func(ref1), 28)
+	# var ref1 = ExampleRef.new()
+	# ref1.id = 27
+	# assert_equal(example.custom_ref_func(ref1), 27)
+	# ref1.id += 1;
+	# assert_equal(example.custom_const_ref_func(ref1), 28)
 
-	# # Pass core reference.
-	# assert_equal(example.image_ref_func(null), "invalid")
+	# Pass core reference.
+	assert_equal(example.image_ref_func(null), "invalid")
 	# assert_equal(example.image_const_ref_func(null), "invalid")
-	# var image = Image.new()
-	# assert_equal(example.image_ref_func(image), "valid")
+	var image = Image.new()
+	assert_equal(example.image_ref_func(image), "valid")
 	# assert_equal(example.image_const_ref_func(image), "valid")
 
 	# Return values.
@@ -53,15 +52,15 @@ func _ready():
 	# var ret_ref = example.return_extended_ref()
 	# assert_not_equal(ret_ref.get_instance_id(), 0)
 	# assert_equal(ret_ref.get_id(), 0)
-	# assert_equal(example.get_v4(), Vector4(1.2, 3.4, 5.6, 7.8))
-	# assert_equal(example.test_node_argument(example), example)
+	assert_equal(example.get_v4(), Vector4(1.2, 3.4, 5.6, 7.8))
+	assert_equal(example.test_node_argument(example), example)
 
 	# VarArg method calls.
 	# var var_ref = ExampleRef.new()
 	# assert_not_equal(example.extended_ref_checks(var_ref).get_instance_id(), var_ref.get_instance_id())
 	assert_equal(example.varargs_func("some", "arguments", "to", "test"), 4)
 	assert_equal(example.varargs_func("some"), 1)
-	# assert_equal(example.varargs_func_nv("some", "arguments", "to", "test"), 46)
+	assert_equal(example.varargs_func_nv("some", "arguments", "to", "test"), 46)
 	example.varargs_func_void("some", "arguments", "to", "test")
 	assert_equal(custom_signal_emitted, ["varargs_func_void", 5])
 
@@ -117,16 +116,19 @@ func _ready():
 	assert_equal(custom_signal_emitted, ["_input: H", 72])
 
 	# gd extension class calls
-	# assert_equal(example.test_get_child_node("Label"), example.get_node("Label"))
-	# example.test_set_position_and_size(Vector2(320, 240), Vector2(100, 200))
-	# assert_equal(example.get_position(), Vector2(320, 240))
-	# assert_equal(example.get_size(), Vector2(100, 200))
+	assert_equal(example.test_get_child_node("Label"), example.get_node("Label"))
+	example.test_set_position_and_size(Vector2(320, 240), Vector2(100, 200))
+	assert_equal(example.get_position(), Vector2(320, 240))
+	assert_equal(example.get_size(), Vector2(100, 200))
 	# example.test_cast_to()
 
 	# var body = CharacterBody2D.new()
-	# print(body)
+	# var motion = Vector2(1.0, 2.0)
+	# body.move_and_collide(motion, true, 0.5, true)
 	# example.test_character_body_2d(body)
 	# body.queue_free()
+
+	assert_equal(example.test_parent_is_nil(), null)
 
 	exit_with_status()
 

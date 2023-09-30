@@ -95,6 +95,70 @@ func goDecodeNumberType(t string) string {
 	}
 }
 
+func goVariantFunc(t string, arg string, classes []extensionapiparser.Class) string {
+	if strings.HasPrefix(t, "enum::") {
+		return fmt.Sprintf("NewVariantInt64(int64(%s))", arg)
+	}
+
+	if strings.HasPrefix(t, "const ") {
+		t = t[6:]
+	}
+
+	if strings.HasPrefix(t, "bitfield") {
+		return fmt.Sprintf("NewVariantInt64(int64(%s))", arg)
+	}
+
+	if strings.HasPrefix(t, "typedarray::") {
+		t = t[12:]
+	}
+
+	if strings.HasSuffix(t, "**") {
+		t = strings.TrimSpace(t[:len(t)-2])
+	}
+
+	if strings.HasSuffix(t, "*") {
+		t = strings.TrimSpace(t[:len(t)-1])
+	}
+
+	switch t {
+	case "Vector2i", "Vector3i", "Vector4i", "Rect2i":
+	case "float", "real_t":
+		t = "Float64"
+		arg = fmt.Sprintf("float64(%s)", arg)
+	case "double":
+		t = "Float64"
+	case "int8", "int16", "int", "int32":
+		t = "Int64"
+		arg = fmt.Sprintf("int64(%s)", arg)
+	case "int64":
+		t = "Int64"
+	case "uint8", "uint8_t", "uint16", "uint16_t", "uint32", "uint32_t", "uint64", "uint64_t":
+		t = "Int64"
+		arg = fmt.Sprintf("int64(%s)", arg)
+	case "bool":
+		t = "Bool"
+	case "String":
+		t = "String"
+	case "Nil":
+		t = "Variant"
+	case "Variant":
+		return arg
+	default:
+		found := false
+		for _, c := range classes {
+			if c.Name == t {
+				t = "Object"
+				found = true
+				break
+			}
+		}
+		if !found {
+			t = strcase.ToCamel(t)
+		}
+	}
+	return fmt.Sprintf("NewVariant%s(%s)", t, arg)
+}
+
 func goArgumentType(t string) string {
 	if strings.HasPrefix(t, "enum::") {
 		t = t[6:]
@@ -175,11 +239,12 @@ func goArgumentType(t string) string {
 		t = strcase.ToCamel(t)
 	}
 
-	if isTypedArray {
-		return "[]" + strings.Repeat("*", indirection) + t
-	} else {
-		return strings.Repeat("*", indirection) + t
-	}
+	// if isTypedArray {
+	// 	return "[]" + strings.Repeat("*", indirection) + t
+	// } else {
+	// 	return strings.Repeat("*", indirection) + t
+	// }
+	return strings.Repeat("*", indirection) + t
 }
 
 func coalesce(params ...string) string {
@@ -277,9 +342,16 @@ func snakeCase(v string) string {
 	ret = strings.Replace(ret, "_32_", "32_", 1)
 	ret = strings.Replace(ret, "_16_", "16_", 1)
 	ret = strings.Replace(ret, "_8_", "8_", 1)
-	ret = strings.Replace(ret, "_4_", "4_", 1)
-	ret = strings.Replace(ret, "_3_", "3_", 1)
-	ret = strings.Replace(ret, "_2_", "2_", 1)
+	ret = strings.Replace(ret, "_4_i", "4i", 1)
+	ret = strings.Replace(ret, "_3_i", "3i", 1)
+	ret = strings.Replace(ret, "_2_i", "2i", 1)
+	ret = strings.Replace(ret, "_4_d", "4d", 1)
+	ret = strings.Replace(ret, "_3_d", "3d", 1)
+	ret = strings.Replace(ret, "_2_d", "2d", 1)
+	ret = strings.Replace(ret, "_4", "4", 1)
+	ret = strings.Replace(ret, "_3", "3", 1)
+	ret = strings.Replace(ret, "_2", "2", 1)
+
 
 	return ret
 }

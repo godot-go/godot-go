@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/godot-go/godot-go/pkg/gdextension"
+	. "github.com/godot-go/godot-go/pkg/gdextension"
 	"github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
@@ -23,13 +23,13 @@ const (
 )
 
 // Example implements GDClass evidence
-var _ gdextension.GDClass = new(Example)
+var _ GDClass = new(Example)
 
 type Example struct {
-	gdextension.ControlImpl
-	customPosition   gdextension.Vector2
-	propertyFromList gdextension.Vector3
-	dprop [3]gdextension.Vector2
+	ControlImpl
+	customPosition   Vector2
+	propertyFromList Vector3
+	dprop [3]Vector2
 }
 
 func (c *Example) GetClassName() string {
@@ -56,7 +56,7 @@ func (e *Example) ReturnSomething(base string, f32 float32, f64 float64,
 	return fmt.Sprintf("1. %s, 2. %f, 3. %f, 4. %d, 5. %d, 6. %d, 7. %d, 8. %d", base+"42", f32, f64, i, i8, i16, i32, i64)
 }
 
-func (e *Example) ReturnSomethingConst() gdextension.Viewport {
+func (e *Example) ReturnSomethingConst() Viewport {
 	println("  Return something const called.")
 	if !e.IsInsideTree() {
 		return nil
@@ -70,13 +70,13 @@ func (e *Example) ReturnSomethingConst() gdextension.Viewport {
 	return result
 }
 
-func (e *Example) ReturnEmptyRef() ExampleRef {
+func (e *Example) ReturnEmptyRef() *ExampleRef {
 	var ref ExampleRef
-	return ref
+	return &ref
 }
 
-func (e *Example) GetV4() gdextension.Vector4 {
-	v4 := gdextension.NewVector4WithFloat32Float32Float32Float32(1.2, 3.4, 5.6, 7.8)
+func (e *Example) GetV4() Vector4 {
+	v4 := NewVector4WithFloat32Float32Float32Float32(1.2, 3.4, 5.6, 7.8)
 	log.Debug("vector4 members",
 		zap.Any("x", v4.MemberGetx()),
 		zap.Any("y", v4.MemberGety()),
@@ -86,17 +86,21 @@ func (e *Example) GetV4() gdextension.Vector4 {
 	return v4
 }
 
+func (e *Example) TestNodeArgument(node *Example) *Example {
+	return node
+}
+
 func (e *Example) DefArgs(p_a, p_b int32) int32 {
 	ret := p_a + p_b
 	log.Info("DefArgs called", zap.Int32("sum", ret))
 	return ret
 }
 
-func (e *Example) TestArray() gdextension.Array {
-	arr := gdextension.NewArray()
-	arr.Insert(0, gdextension.NewVariantInt64(1))
-	arr.Insert(1, gdextension.NewVariantInt64(2))
-	v := gdextension.NewVariantArray(arr)
+func (e *Example) TestArray() Array {
+	arr := NewArray()
+	arr.Insert(0, NewVariantInt64(1))
+	arr.Insert(1, NewVariantInt64(2))
+	v := NewVariantArray(arr)
 	v0, err := v.GetIndexed(0)
 	if err != nil {
 		log.Panic("error getting index 0: %w",
@@ -146,37 +150,37 @@ func (e *Example) TestArray() gdextension.Array {
 	return ret
 }
 
-func (e *Example) TestDictionary() gdextension.Dictionary {
-	dict := gdextension.NewDictionary()
-	world := gdextension.NewVariantGoString("world")
+func (e *Example) TestDictionary() Dictionary {
+	dict := NewDictionary()
+	world := NewVariantGoString("world")
 	defer world.Destroy()
-	bar := gdextension.NewVariantGoString("bar")
+	bar := NewVariantGoString("bar")
 	defer bar.Destroy()
 	dict.SetKeyed("hello", world)
 	dict.SetKeyed("foo", bar)
 	return dict
 }
 
-func (e *Example) SetCustomPosition(pos gdextension.Vector2) {
+func (e *Example) SetCustomPosition(pos Vector2) {
 	e.customPosition = pos
 }
 
-func (e *Example) GetCustomPosition() gdextension.Vector2 {
+func (e *Example) GetCustomPosition() Vector2 {
 	return e.customPosition
 }
 
-func (e *Example) SetPropertyFromList(v gdextension.Vector3) {
+func (e *Example) SetPropertyFromList(v Vector3) {
 	e.propertyFromList = v
 }
 
-func (e *Example) GetPropertyFromList() gdextension.Vector3 {
+func (e *Example) GetPropertyFromList() Vector3 {
 	return e.propertyFromList
 }
 
 func (e *Example) EmitCustomSignal(name string, value int64) {
-	customSignal := gdextension.NewStringNameWithLatin1Chars("custom_signal")
+	customSignal := NewStringNameWithLatin1Chars("custom_signal")
 	defer customSignal.Destroy()
-	snName := gdextension.NewStringWithLatin1Chars(name)
+	snName := NewStringWithLatin1Chars(name)
 	defer snName.Destroy()
 	log.Info("EmitCustomSignal called",
 		zap.String("name", name),
@@ -184,14 +188,14 @@ func (e *Example) EmitCustomSignal(name string, value int64) {
 	)
 	e.EmitSignal(
 		customSignal,
-		gdextension.NewVariantString(snName),
-		gdextension.NewVariantInt64(value),
+		NewVariantString(snName),
+		NewVariantInt64(value),
 	)
 }
 
 // TODO: dig into why casting is important
 // func (e *Example) TestCastTo() {
-// 	n := gdextension.ObjectCastTo(e, "Node").(gdextension.Node)
+// 	n := ObjectCastTo(e, "Node").(Node)
 // 	if n == nil {
 // 		log.Panic("failed to cast to cast Example to Node")
 // 	}
@@ -207,15 +211,15 @@ func (e *Example) EmitCustomSignal(name string, value int64) {
 // }
 
 func (e *Example) TestStringOps() string {
-	s := gdextension.NewStringWithUtf8Chars("A")
+	s := NewStringWithUtf8Chars("A")
 	defer s.Destroy()
-	sB := gdextension.NewStringWithUtf8Chars("B")
+	sB := NewStringWithUtf8Chars("B")
 	defer sB.Destroy()
-	sC := gdextension.NewStringWithUtf8Chars("C")
+	sC := NewStringWithUtf8Chars("C")
 	defer sC.Destroy()
-	sD := gdextension.NewStringWithUtf32Char(0x010E)
+	sD := NewStringWithUtf32Char(0x010E)
 	defer sD.Destroy()
-	sE := gdextension.NewStringWithUtf8Chars("E")
+	sE := NewStringWithUtf8Chars("E")
 	defer sE.Destroy()
 	s = s.Add_String(sB)
 	s = s.Add_String(sC)
@@ -224,29 +228,33 @@ func (e *Example) TestStringOps() string {
 	return s.ToUtf32()
 }
 
-func (e *Example) VarargsFunc(args ...gdextension.Variant) gdextension.Variant {
-	ret := gdextension.NewVariantInt64(int64(len(args)))
+func (e *Example) VarargsFunc(args ...Variant) Variant {
+	ret := NewVariantInt64(int64(len(args)))
 	return ret
 }
 
-func (e *Example) VarargsFuncVoid(args ...gdextension.Variant) {
+func (e *Example) VarargsFuncVoid(args ...Variant) {
 	e.EmitCustomSignal("varargs_func_void", int64(len(args) + 1))
 }
 
-// func (e *Example) V_GetPropertyList(props []gdextension.PropertyInfo) {
-// 	props = append(props, gdextension.NewPropertyInfo(gdextentionffi.GDEXTENSION_VARIANT_TYPE_VECTOR3, "property_from_list"))
+func (e *Example) VarargsFuncNv(args ...Variant) int {
+	return 42 + len(args)
+}
+
+// func (e *Example) V_GetPropertyList(props []PropertyInfo) {
+// 	props = append(props, NewPropertyInfo(gdextentionffi.GDEXTENSION_VARIANT_TYPE_VECTOR3, "property_from_list"))
 // 	for i := 0; i < 3; i++ {
-// 		props = append(props, gdextension.NewPropertyInfo(gdextentionffi.GDEXTENSION_VARIANT_TYPE_VECTOR2, fmt.Sprintf("dproperty_%d", i)))
+// 		props = append(props, NewPropertyInfo(gdextentionffi.GDEXTENSION_VARIANT_TYPE_VECTOR2, fmt.Sprintf("dproperty_%d", i)))
 // 	}
 // }
 
-func (e *Example) V_PropertyCanRevert(p_name *gdextension.StringName) bool {
-	gdSn := gdextension.NewStringNameWithLatin1Chars("property_from_list")
-	vec3 := gdextension.NewVector3WithFloat32Float32Float32(42, 42, 42)
+func (e *Example) V_PropertyCanRevert(p_name *StringName) bool {
+	gdSn := NewStringNameWithLatin1Chars("property_from_list")
+	vec3 := NewVector3WithFloat32Float32Float32(42, 42, 42)
 	return p_name.Equal_StringName(gdSn) && !e.propertyFromList.Equal_Vector3(vec3)
 }
 
-func (e *Example) V_Set(name string, value gdextension.Variant) bool {
+func (e *Example) V_Set(name string, value Variant) bool {
 	if strings.HasPrefix(name, "dproperty") {
 		tokens := strings.SplitN(name, "_", 2)
 		if len(tokens) != 2 {
@@ -270,7 +278,7 @@ func (e *Example) V_Set(name string, value gdextension.Variant) bool {
 	return false;
 }
 
-func (e *Example) V_Get(name string) (gdextension.Variant, bool) {
+func (e *Example) V_Get(name string) (Variant, bool) {
 	switch {
 	case strings.HasPrefix(name, "dproperty"):
 		tokens := strings.SplitN(name, "_", 2)
@@ -290,13 +298,13 @@ func (e *Example) V_Get(name string) (gdextension.Variant, bool) {
 			zap.Float32("x", vec2.MemberGetx()),
 			zap.Float32("y", vec2.MemberGety()),
 		)
-		v := gdextension.NewVariantVector2(vec2)
+		v := NewVariantVector2(vec2)
 		return v, true
 	case name == "property_from_list":
-		v := gdextension.NewVariantVector3(e.propertyFromList)
+		v := NewVariantVector3(e.propertyFromList)
 		return v, true
 	}
-	return gdextension.Variant{}, false
+	return Variant{}, false
 }
 
 func (e *Example) V_Ready() {
@@ -304,7 +312,7 @@ func (e *Example) V_Ready() {
 		zap.String("inst", fmt.Sprintf("%p", e)),
 	)
 	// vector math tests
-	v3 := gdextension.NewVector3WithFloat32Float32Float32(1.1, 2.2, 3.3)
+	v3 := NewVector3WithFloat32Float32Float32(1.1, 2.2, 3.3)
 	log.Info("Vector3: Created (1.1, 2.2, 3.3)",
 		zap.Float32("x", v3.MemberGetx()),
 		zap.Float32("y", v3.MemberGety()),
@@ -316,19 +324,19 @@ func (e *Example) V_Ready() {
 		zap.Float32("y", v3.MemberGety()),
 		zap.Float32("z", v3.MemberGetz()),
 	)
-	v3 = v3.Add_Vector3(gdextension.NewVector3WithFloat32Float32Float32(10, 20, 30))
+	v3 = v3.Add_Vector3(NewVector3WithFloat32Float32Float32(10, 20, 30))
 	log.Info("Vector3: Add (1,2,3)",
 		zap.Float32("x", v3.MemberGetx()),
 		zap.Float32("y", v3.MemberGety()),
 		zap.Float32("z", v3.MemberGetz()),
 	)
-	v3 = v3.Multiply_Vector3(gdextension.NewVector3WithFloat32Float32Float32(5, 10, 15))
+	v3 = v3.Multiply_Vector3(NewVector3WithFloat32Float32Float32(5, 10, 15))
 	log.Info("Vector3: Multiply (5,10,15)",
 		zap.Float32("x", v3.MemberGetx()),
 		zap.Float32("y", v3.MemberGety()),
 		zap.Float32("z", v3.MemberGetz()),
 	)
-	v3 = v3.Subtract_Vector3(gdextension.NewVector3WithFloat32Float32Float32(v3.MemberGetx(), v3.MemberGety(), 0))
+	v3 = v3.Subtract_Vector3(NewVector3WithFloat32Float32Float32(v3.MemberGetx(), v3.MemberGety(), 0))
 	log.Info("Vector3: Substract (x,y,0)",
 		zap.Float32("x", v3.MemberGetx()),
 		zap.Float32("y", v3.MemberGety()),
@@ -340,59 +348,73 @@ func (e *Example) V_Ready() {
 		zap.Float32("y", v3.MemberGety()),
 		zap.Float32("z", v3.MemberGetz()),
 	)
-	equal := v3.Equal_Vector3(gdextension.NewVector3WithFloat32Float32Float32(0, 0, 1))
+	equal := v3.Equal_Vector3(NewVector3WithFloat32Float32Float32(0, 0, 1))
 	log.Info("Vector3: Equality Check",
 		zap.Float32("x", v3.MemberGetx()),
 		zap.Float32("y", v3.MemberGety()),
 		zap.Float32("z", v3.MemberGetz()),
 		zap.Bool("equal", equal),
 	)
-	input := gdextension.GetInputSingleton()
-	uiRight := gdextension.NewStringNameWithLatin1Chars("ui_right")
+	input := GetInputSingleton()
+	uiRight := NewStringNameWithUtf8Chars("ui_right")
 	defer uiRight.Destroy()
 	input.IsActionPressed(uiRight, true)
 }
 
-func (e *Example) V_Input(refEvent gdextension.Ref) {
-	defer refEvent.Unref()
-	event := refEvent.Ptr()
+func (e *Example) V_Input(refEvent RefInputEvent) {
+	event := refEvent.TypedPtr()
 	if event == nil {
 		log.Warn("Example.V_Input: null refEvent parameter")
 		return
 	}
-	keyEvent := event.(gdextension.InputEventKey)
+	keyEvent := ObjectCastTo(event, "InputEventKey").(InputEventKey)
 	gdStringKeyLabel := keyEvent.AsTextKeyLabel()
 	keyLabel := gdStringKeyLabel.ToUtf8()
 	v := int64(keyEvent.GetUnicode())
 	e.EmitCustomSignal(fmt.Sprintf("_input: %s", keyLabel), v)
 }
 
-func (e *Example) TestSetPositionAndSize(pos, size gdextension.Vector2) {
+func (e *Example) TestSetPositionAndSize(pos, size Vector2) {
 	e.SetPosition(pos, true)
 	e.SetSize(size, true)
 }
 
-func (e *Example) TestGetChildNode(nodePath string) gdextension.Node {
-	np := gdextension.NewNodePathWithString(gdextension.NewStringWithUtf8Chars(nodePath))
+func (e *Example) TestGetChildNode(nodePath string) Node {
+	np := NewNodePathWithString(NewStringWithUtf8Chars(nodePath))
 	names := np.GetConcatenatedNames()
 	log.Info("node path", zap.String("node_path", names.ToUtf8()))
 	return e.GetNode(np)
 }
 
-func (e *Example) TestCharacterBody2D(body gdextension.CharacterBody2D) {
+func (e *Example) ImageRefFunc(refImage RefImage) string {
+	if refImage != nil && refImage.IsValid() {
+		return "valid"
+	} else {
+		return "invalid"
+	}
+}
+
+func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 	if body == nil {
 		log.Warn("CharacterBody2D was nil")
 		return
 	}
-	log.Info("TestCharacterBody2D called")
+	gdStrBody := body.ToString()
+	defer gdStrBody.Destroy()
+	log.Info("TestCharacterBody2D called",
+		zap.String("body", gdStrBody.ToUtf8()),
+	)
+	motion := NewVector2WithFloat32Float32(1.0, 2.0)
+	refCollision := body.MoveAndCollide(motion, true, 0.5, true)
+	collision := refCollision.TypedPtr()
+	collisionV := NewVariantObject(collision.(Object))
+	log.Info("collision returned",
+		zap.String("collision", collisionV.Stringify()),
+	)
+}
 
-	// gdStr := body.ToString()
-	// log.Info("TestCharacterBody2D called",
-	// 	zap.String("body", gdStr.ToUtf8()),
-	// )
-	// motion := gdextension.NewVector2WithFloat32Float32(1.0, 2.0)
-	// collision := body.MoveAndCollide(motion, true, 0.5, true)
-	// if collision == nil {
-	// 	log.Panic("null collision returned")
-	// }
+func (e *Example) TestParentIsNil() Control {
+	log.Info("TestParentIsNil called")
+	parent := e.GetParentControl()
+	return parent
 }

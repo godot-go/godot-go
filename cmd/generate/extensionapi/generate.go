@@ -44,6 +44,9 @@ var (
 	//go:embed classes.go.tmpl
 	classesText string
 
+	//go:embed classes.refs.go.tmpl
+	classesRefsText string
+
 	//go:embed classes.init.go.tmpl
 	classesInitText string
 
@@ -102,6 +105,9 @@ func Generate(projectPath, buildConfig string) {
 		panic(err)
 	}
 	if err = GenerateClasses(projectPath, eapi); err != nil {
+		panic(err)
+	}
+	if err = GenerateClassRefs(projectPath, eapi); err != nil {
 		panic(err)
 	}
 	if err = GenerateClassInit(projectPath, eapi); err != nil {
@@ -490,6 +496,7 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 			"goMethodName":         goMethodName,
 			"goArgumentName":       goArgumentName,
 			"goArgumentType":       goArgumentType,
+			"goVariantFunc":        goVariantFunc,
 			"goReturnType":         goReturnType,
 			"goClassEnumName":      goClassEnumName,
 			"goClassStructName":    goClassStructName,
@@ -514,6 +521,57 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 	}
 
 	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("classes.gen.go"))
+
+	f, err := os.Create(filename)
+
+	if err != nil {
+		return err
+	}
+
+	defer f.Close()
+
+	_, err = f.Write(b.Bytes())
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func GenerateClassRefs(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	tmpl, err := template.New("classes.refs.gen.go").
+	Funcs(template.FuncMap{
+		"isSetterMethodName":   isSetterMethodName,
+		"goVariantConstructor": goVariantConstructor,
+		"goMethodName":         goMethodName,
+		"goArgumentName":       goArgumentName,
+		"goArgumentType":       goArgumentType,
+		"goVariantFunc":        goVariantFunc,
+		"goReturnType":         goReturnType,
+		"goClassEnumName":      goClassEnumName,
+		"goClassStructName":    goClassStructName,
+		"goClassInterfaceName": goClassInterfaceName,
+		"goEncoder":            goEncoder,
+		"goEncodeArg":          goEncodeArg,
+		"goEncodeIsReference":  goEncodeIsReference,
+		"coalesce":             coalesce,
+	}).
+		Parse(classesRefsText)
+
+	if err != nil {
+		return err
+	}
+
+	var b bytes.Buffer
+
+	err = tmpl.Execute(&b, extensionApi)
+
+	if err != nil {
+		return err
+	}
+
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("classes.refs.gen.go"))
 
 	f, err := os.Create(filename)
 

@@ -1,194 +1,154 @@
 package gdextension
 
+// #include <stdio.h>
+// #include <stdlib.h>
+import "C"
 import (
+	"reflect"
 	"unsafe"
 
-	"golang.org/x/exp/constraints"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
 
-type ArgumentEncoder[I any, O any] struct {
-	Decode    func(unsafe.Pointer) I
-	DecodeArg func(O) I
-	Encode    func(I, unsafe.Pointer)
-	EncodeArg func(I) O
+type ArgumentEncoder interface {
+	DecodeReflectTypePtr(GDExtensionConstTypePtr) reflect.Value
+	EncodeReflectTypePtrArg(reflect.Value, GDExtensionUninitializedTypePtr)
+	EncodeReflectTypePtr(reflect.Value) GDExtensionTypePtr
+	DecodeReflectVariantPtr(GDExtensionConstVariantPtr) reflect.Value
+	EncodeReflectVariantPtrArg(reflect.Value, GDExtensionUninitializedVariantPtr)
+	EncodeReflectVariantPtr(reflect.Value) GDExtensionVariantPtr
 }
 
-type ArgumentReferenceEncoder[I any, O any] struct {
-	Decode    func(unsafe.Pointer) I
-	DecodeArg func(O) I
-	Encode    func(*I, unsafe.Pointer)
-	EncodeArg func(*I) O
+type argumentEncoder[T any, E any] struct {
+	decodeTypePtrArg           func(GDExtensionConstTypePtr, *T)
+	decodeTypePtr              func(GDExtensionConstTypePtr) T
+	encodeTypePtrArg           func(T, GDExtensionUninitializedTypePtr)
+	encodeTypePtr              func(T) GDExtensionTypePtr
+	decodeVariantPtrArg        func(GDExtensionConstVariantPtr, *T)
+	decodeVariantPtr           func(GDExtensionConstVariantPtr) T
+	encodeVariantPtrArg        func(T, GDExtensionUninitializedVariantPtr)
+	encodeVariantPtr           func(T) GDExtensionVariantPtr
+	decodeReflectTypePtr       func(GDExtensionConstTypePtr) reflect.Value
+	encodeReflectTypePtrArg    func(reflect.Value, GDExtensionUninitializedTypePtr)
+	encodeReflectTypePtr       func(reflect.Value) GDExtensionTypePtr
+	decodeReflectVariantPtr    func(GDExtensionConstVariantPtr) reflect.Value
+	encodeReflectVariantPtrArg func(reflect.Value, GDExtensionUninitializedVariantPtr)
+	encodeReflectVariantPtr    func(reflect.Value) GDExtensionVariantPtr
 }
+
+func (e argumentEncoder[T, E]) DecodeReflectTypePtr(ptr GDExtensionConstTypePtr) reflect.Value {
+	return e.decodeReflectTypePtr(ptr)
+}
+
+func (e argumentEncoder[T, E]) EncodeReflectTypePtrArg(rv reflect.Value, pOut GDExtensionUninitializedTypePtr) {
+	e.encodeReflectTypePtrArg(rv, pOut)
+}
+
+func (e argumentEncoder[T, E]) EncodeReflectTypePtr(rv reflect.Value) GDExtensionTypePtr {
+	return e.encodeReflectTypePtr(rv)
+}
+
+func (e argumentEncoder[T, E]) DecodeReflectVariantPtr(ptr GDExtensionConstVariantPtr) reflect.Value {
+	return e.decodeReflectVariantPtr(ptr)
+}
+
+func (e argumentEncoder[T, E]) EncodeReflectVariantPtrArg(rv reflect.Value, pOut GDExtensionUninitializedVariantPtr) {
+	e.encodeReflectVariantPtrArg(rv, pOut)
+}
+
+func (e argumentEncoder[T, E]) EncodeReflectVariantPtr(rv reflect.Value) GDExtensionVariantPtr {
+	return e.encodeReflectVariantPtr(rv)
+}
+
+type objectArgumentEncoder[T Object] struct {
+	decodeTypePtrArg           func(GDExtensionConstTypePtr, T)
+	decodeTypePtr              func(GDExtensionConstTypePtr) T
+	encodeTypePtrArg           func(T, GDExtensionUninitializedTypePtr)
+	encodeTypePtr              func(T) GDExtensionTypePtr
+	decodeVariantPtrArg        func(GDExtensionConstVariantPtr, T)
+	decodeVariantPtr           func(GDExtensionConstVariantPtr) T
+	encodeVariantPtrArg        func(T, GDExtensionUninitializedVariantPtr)
+	encodeVariantPtr           func(T) GDExtensionVariantPtr
+	decodeReflectTypePtr       func(GDExtensionConstTypePtr) reflect.Value
+	encodeReflectTypePtrArg    func(reflect.Value, GDExtensionUninitializedTypePtr)
+	encodeReflectTypePtr       func(reflect.Value) GDExtensionTypePtr
+	decodeReflectVariantPtr    func(GDExtensionConstVariantPtr) reflect.Value
+	encodeReflectVariantPtrArg func(reflect.Value, GDExtensionUninitializedVariantPtr)
+	encodeReflectVariantPtr    func(reflect.Value) GDExtensionVariantPtr
+}
+
+func (e objectArgumentEncoder[T]) DecodeReflectTypePtr(ptr GDExtensionConstTypePtr) reflect.Value {
+	return e.decodeReflectTypePtr(ptr)
+}
+
+func (e objectArgumentEncoder[T]) EncodeReflectTypePtrArg(rv reflect.Value, pOut GDExtensionUninitializedTypePtr) {
+	e.encodeReflectTypePtrArg(rv, pOut)
+}
+
+func (e objectArgumentEncoder[T]) EncodeReflectTypePtr(rv reflect.Value) GDExtensionTypePtr {
+	return e.encodeReflectTypePtr(rv)
+}
+
+func (e objectArgumentEncoder[T]) DecodeReflectVariantPtr(ptr GDExtensionConstVariantPtr) reflect.Value {
+	return e.decodeReflectVariantPtr(ptr)
+}
+
+func (e objectArgumentEncoder[T]) EncodeReflectVariantPtrArg(rv reflect.Value, pOut GDExtensionUninitializedVariantPtr) {
+	e.encodeReflectVariantPtrArg(rv, pOut)
+}
+
+func (e objectArgumentEncoder[T]) EncodeReflectVariantPtr(rv reflect.Value) GDExtensionVariantPtr {
+	return e.encodeReflectVariantPtr(rv)
+}
+
+const (
+	ObjectSize = (int)(unsafe.Sizeof((*int)(nil)))
+)
 
 var (
+	BoolEncoder           argumentEncoder[bool, uint8]
+	UintEncoder           argumentEncoder[uint, int64]
+	IntEncoder            argumentEncoder[int, int64]
+	Uint8Encoder          argumentEncoder[uint8, int64]
+	Int8Encoder           argumentEncoder[int8, int64]
+	Uint16Encoder         argumentEncoder[uint16, int64]
+	Int16Encoder          argumentEncoder[int16, int64]
+	Uint32Encoder         argumentEncoder[uint32, int64]
+	Int32Encoder          argumentEncoder[int32, int64]
+	Uint64Encoder         argumentEncoder[uint64, int64]
+	Int64Encoder          argumentEncoder[int64, int64]
+	Float32Encoder        argumentEncoder[float32, float64]
+	Float64Encoder        argumentEncoder[float64, float64]
+	GoStringUtf8Encoder   argumentEncoder[string, String]
+	GoStringLatin1Encoder argumentEncoder[string, String]
+	ObjectEncoder         objectArgumentEncoder[Object]
+	VariantEncoder        argumentEncoder[Variant, Variant]
+)
+
+func initPrimativeTypeEncoders() {
 	// bool type
 	BoolEncoder = createBoolEncoder[bool, uint8]()
 
 	// integer type
-	UintEncoder   = createNumberEncoder[uint, int64]()
-	IntEncoder    = createNumberEncoder[int, int64]()
-	Uint8Encoder  = createNumberEncoder[uint8, int64]()
-	Int8Encoder   = createNumberEncoder[int8, int64]()
-	Uint16Encoder = createNumberEncoder[uint16, int64]()
-	Int16Encoder  = createNumberEncoder[int16, int64]()
-	Uint32Encoder = createNumberEncoder[uint32, int64]()
-	Int32Encoder  = createNumberEncoder[int32, int64]()
-	Uint64Encoder = createNumberEncoder[uint64, int64]()
-	Int64Encoder  = createEncoder[int64]()
+	UintEncoder = createNumberEncoder[uint, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	IntEncoder = createNumberEncoder[int, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Uint8Encoder = createNumberEncoder[uint8, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Int8Encoder = createNumberEncoder[int8, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Uint16Encoder = createNumberEncoder[uint16, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Int16Encoder = createNumberEncoder[int16, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Uint32Encoder = createNumberEncoder[uint32, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Int32Encoder = createNumberEncoder[int32, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Uint64Encoder = createNumberEncoder[uint64, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Int64Encoder = createNumberEncoder[int64, int64](GDEXTENSION_VARIANT_TYPE_INT)
 
 	// float types
-	Float32Encoder = createNumberEncoder[float32, float64]()
-	Float64Encoder = createEncoder[float64]()
+	Float32Encoder = createNumberEncoder[float32, float64](GDEXTENSION_VARIANT_TYPE_FLOAT)
+	Float64Encoder = createNumberEncoder[float64, float64](GDEXTENSION_VARIANT_TYPE_FLOAT)
 
 	// native go string to String
-	GoStringEncoder = createGoStringEncoder()
+	GoStringUtf8Encoder = createGoStringEncoder(Utf8GoStringFormat)
+	GoStringLatin1Encoder = createGoStringEncoder(Latin1GoStringFormat)
 
-	// built-in types
-	StringEncoder             = createEncoder[String]()
-	Vector2Encoder            = createEncoder[Vector2]()
-	Vector2iEncoder           = createEncoder[Vector2i]()
-	Rect2Encoder              = createEncoder[Rect2]()
-	Rect2iEncoder             = createEncoder[Rect2i]()
-	Vector3Encoder            = createReferenceEncoder[Vector3]()
-	Vector3iEncoder           = createReferenceEncoder[Vector3i]()
-	Transform2DEncoder        = createEncoder[Transform2D]()
-	Vector4Encoder            = createReferenceEncoder[Vector4]()
-	Vector4iEncoder           = createReferenceEncoder[Vector4i]()
-	PlaneEncoder              = createReferenceEncoder[Plane]()
-	QuaternionEncoder         = createEncoder[Quaternion]()
-	AABBEncoder               = createReferenceEncoder[AABB]()
-	BasisEncoder              = createReferenceEncoder[Basis]()
-	Transform3DEncoder        = createReferenceEncoder[Transform3D]()
-	ProjectionEncoder         = createReferenceEncoder[Projection]()
-	ColorEncoder              = createReferenceEncoder[Color]()
-	StringNameEncoder         = createEncoder[StringName]()
-	NodePathEncoder           = createEncoder[NodePath]()
-	RIDEncoder                = createEncoder[RID]()
-	CallableEncoder           = createEncoder[Callable]()
-	SignalEncoder             = createEncoder[Signal]()
-	DictionaryEncoder         = createEncoder[Dictionary]()
-	ArrayEncoder              = createEncoder[Array]()
-	PackedByteArrayEncoder    = createEncoder[PackedByteArray]()
-	PackedInt32ArrayEncoder   = createEncoder[PackedInt32Array]()
-	PackedInt64ArrayEncoder   = createEncoder[PackedInt64Array]()
-	PackedFloat32ArrayEncoder = createEncoder[PackedFloat32Array]()
-	PackedFloat64ArrayEncoder = createEncoder[PackedFloat64Array]()
-	PackedStringArrayEncoder  = createEncoder[PackedStringArray]()
-	PackedVector2ArrayEncoder = createEncoder[PackedVector2Array]()
-	PackedVector3ArrayEncoder = createEncoder[PackedVector3Array]()
-	PackedColorArrayEncoder   = createEncoder[PackedColorArray]()
-	VariantEncoder            = createReferenceEncoder[Variant]()
-	ObjectEncoder             = createReferenceEncoder[Object]()
-)
-
-func createBoolEncoder[T ~bool, E ~uint8]() ArgumentEncoder[T, E] {
-	return ArgumentEncoder[T, E]{
-		Decode: func(v unsafe.Pointer) T {
-			return (*(*E)(v)) > 0
-		},
-		DecodeArg: func(v E) T {
-			return v > 0
-		},
-		Encode: func(in T, out unsafe.Pointer) {
-			tOut := (*E)(out)
-			if in {
-				*tOut = 1
-			} else {
-				*tOut = 0
-			}
-
-		},
-		EncodeArg: func(in T) E {
-			if in {
-				return 1
-			} else {
-				return 0
-			}
-		},
-	}
-}
-
-type Number interface {
-	constraints.Integer | constraints.Float
-}
-
-func createNumberEncoder[T Number, E Number]() ArgumentEncoder[T, E] {
-	return ArgumentEncoder[T, E]{
-		Decode: func(v unsafe.Pointer) T {
-			return (T)(*(*E)(v))
-		},
-		DecodeArg: func(v E) T {
-			return (T)(v)
-		},
-		Encode: func(in T, out unsafe.Pointer) {
-			tOut := (*E)(out)
-			*tOut = (E)(in)
-		},
-		EncodeArg: func(in T) E {
-			return (E)(in)
-		},
-	}
-}
-
-func createGoStringEncoder() ArgumentEncoder[string, *String] {
-	return ArgumentEncoder[string, *String]{
-		Decode: func(v unsafe.Pointer) string {
-			gdnstr := (*String)(v)
-			return gdnstr.ToAscii()
-		},
-		DecodeArg: func(v *String) string {
-			return v.ToAscii()
-		},
-		Encode: func(in string, out unsafe.Pointer) {
-			tOut := (*String)(out)
-			*tOut = NewStringWithUtf8Chars(in)
-		},
-		EncodeArg: func(in string) *String {
-			ret := NewStringWithUtf8Chars(in)
-			return &ret
-		},
-	}
-}
-
-// createPointerEncoder reiles on the fact that the opaque data is the first field in the struct:
-// a := &Example{}
-// iface := (interface{})(a)
-// fmt.Printf("%p\n", a)
-// fmt.Printf("%p\n", a.ptr())
-// fmt.Printf("%p\n", iface)
-// all 3 addresses should be the same
-func createEncoder[T any]() ArgumentEncoder[T, unsafe.Pointer] {
-	return ArgumentEncoder[T, unsafe.Pointer]{
-		Decode: func(v unsafe.Pointer) T {
-			return *(*T)(v)
-		},
-		DecodeArg: func(v unsafe.Pointer) T {
-			return *(*T)(v)
-		},
-		Encode: func(in T, out unsafe.Pointer) {
-			tOut := (*T)(out)
-			*tOut = in
-		},
-		EncodeArg: func(in T) unsafe.Pointer {
-			return unsafe.Pointer(&in)
-		},
-	}
-}
-
-func createReferenceEncoder[T any]() ArgumentReferenceEncoder[T, unsafe.Pointer] {
-	return ArgumentReferenceEncoder[T, unsafe.Pointer]{
-		Decode: func(v unsafe.Pointer) T {
-			return *(*T)(v)
-		},
-		DecodeArg: func(v unsafe.Pointer) T {
-			return *(*T)(v)
-		},
-		Encode: func(in *T, out unsafe.Pointer) {
-			tOut := (**T)(out)
-			*tOut = in
-		},
-		EncodeArg: func(in *T) unsafe.Pointer {
-			return *(*unsafe.Pointer)(unsafe.Pointer(in))
-		},
-	}
+	ObjectEncoder = createObjectEncoder[Object]()
+	VariantEncoder = createVariantEncoder()
 }

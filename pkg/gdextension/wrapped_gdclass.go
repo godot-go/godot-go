@@ -8,7 +8,6 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/davecgh/go-spew/spew"
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
@@ -42,25 +41,6 @@ func gdClassRegisterInstanceBindingCallbacks(tn string) {
 
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set(tn, (GDExtensionInstanceBindingCallbacks)(cbs))
 }
-
-// func GDClassFromGDExtensionClassInstancePtr(p_instance GDExtensionClassInstancePtr) GDClass {
-// 	// if (C.GDExtensionClassInstancePtr)(p_instance) == (C.GDExtensionClassInstancePtr)(nullptr) {
-// 	// 	log.Info("GDClass To GDExtensionClassInstancePtr: new instance",
-// 	// 		zap.String("class_info", p_classinfo.String()),
-// 	// 	)
-// 	// 	v := reflect.New(p_classinfo.ClassType)
-// 	// 	return v.Interface().(GDClass)
-// 	// }
-
-// 	// log.Info("GDClass To GDExtensionClassInstancePtr: casted",
-// 	// 	zap.String("class_info", p_classinfo.String()),
-// 	// )
-// 	// return *(*GDClass)(p_instance)
-
-// 	wci := (*WrappedClassInstance)(unsafe.Pointer(p_instance))
-
-// 	return wci.Instance
-// }
 
 func ObjectClassFromGDExtensionClassInstancePtr(p_instance GDExtensionClassInstancePtr) Object {
 	if p_instance == nil {
@@ -131,7 +111,6 @@ func CreateGDClassInstance(tn string) GDClass {
 	if !ok {
 		log.Panic("type not found",
 			zap.String("name", tn),
-			zap.String("dump", spew.Sdump(gdRegisteredGDClasses)),
 		)
 	}
 

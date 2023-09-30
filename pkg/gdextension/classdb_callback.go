@@ -38,14 +38,14 @@ func GoCallback_ClassCreationInfoToString(
 
 //export GoCallback_ClassCreationInfoGetVirtualCallWithData
 func GoCallback_ClassCreationInfoGetVirtualCallWithData(pUserdata unsafe.Pointer, pName C.GDExtensionConstStringNamePtr) unsafe.Pointer {
-	name := C.GoString((*C.char)(pUserdata))
-	snMethodName := (*StringName)(unsafe.Pointer(pName))
-	sMethodName := snMethodName.AsString()
-	methodName := (&sMethodName).ToAscii()
-	log.Info("GoCallback_ClassCreationInfoGetVirtualCallWithData called",
-		zap.String("class_name_from_user_data", name),
-		zap.String("method_name", methodName),
-	)
+	// name := C.GoString((*C.char)(pUserdata))
+	// snMethodName := (*StringName)(unsafe.Pointer(pName))
+	// sMethodName := snMethodName.AsString()
+	// methodName := (&sMethodName).ToUft8()
+	// log.Debug("GoCallback_ClassCreationInfoGetVirtualCallWithData called",
+	// 	zap.String("class_name_from_user_data", name),
+	// 	zap.String("method_name", methodName),
+	// )
 	return pUserdata
 }
 
@@ -59,12 +59,12 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 	snMethodName := (*StringName)(unsafe.Pointer(pName))
 	sMethodName := snMethodName.AsString()
 	methodName := (&sMethodName).ToAscii()
-	userData := C.GoString((*C.char)(pUserdata))
-	log.Info("GoCallback_ClassCreationInfoCallVirtualWithData called",
-		zap.String("type", className),
-		zap.String("userData", userData),
-		zap.String("method", methodName),
-	)
+	// userData := C.GoString((*C.char)(pUserdata))
+	// log.Debug("GoCallback_ClassCreationInfoCallVirtualWithData called",
+	// 	zap.String("type", className),
+	// 	zap.String("userData", userData),
+	// 	zap.String("method", methodName),
+	// )
 	ci, ok := gdRegisteredGDClasses.Get(className)
 	if !ok {
 		log.Warn("class not found", zap.String("className", className))
@@ -72,10 +72,10 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 	}
 	m, ok := ci.VirtualMethodMap[methodName]
 	if !ok {
-		log.Info("no virtual method found",
-			zap.String("className", className),
-			zap.String("method", methodName),
-		)
+		// log.Debug("no virtual method found",
+		// 	zap.String("className", className),
+		// 	zap.String("method", methodName),
+		// )
 		return
 	}
 	mb := m.MethodBind
@@ -86,7 +86,7 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 	mb.Ptrcall(
 		inst,
 		args,
-		(GDExtensionTypePtr)(rRet),
+		(GDExtensionUninitializedTypePtr)(rRet),
 	)
 }
 
@@ -149,7 +149,7 @@ func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pN
 	className := gdStrClass.ToUtf8()
 	gdName := NewStringNameWithGDExtensionConstStringNamePtr((GDExtensionConstStringNamePtr)(pName))
 	name := gdName.ToUtf8()
-	log.Info("GoCallback_ClassCreationInfoGet called",
+	log.Debug("GoCallback_ClassCreationInfoGet called",
 		zap.String("class", className),
 		zap.String("method_name", name),
 	)
@@ -189,8 +189,7 @@ func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pN
 		zap.String("ret", util.ReflectValueSliceToString(reflectedRet)),
 		zap.String("v", gdStrV.ToUtf8()),
 	)
-
-	copyVariantWithGDExtensionTypePtr((GDExtensionVariantPtr)(rRet), (GDExtensionConstVariantPtr)(v.ptr()))
+	copyVariantWithGDExtensionTypePtr((GDExtensionUninitializedVariantPtr)(rRet), v.nativeConstPtr())
 	return 1
 }
 

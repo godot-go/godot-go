@@ -47,6 +47,27 @@ func AllocCopy(src unsafe.Pointer, bytes int) unsafe.Pointer {
 	return m
 }
 
+func AllocCopyDest(dest unsafe.Pointer, src unsafe.Pointer, bytes int) {
+	switch {
+	case bytes < 0:
+		log.Panic("invalid memory",
+			zap.Int("bytes", bytes),
+		)
+	case bytes >= MaxAllocBytes:
+		log.Panic("memory too large",
+			zap.Int("bytes", bytes),
+		)
+	}
+
+	if dest == nullptr {
+		log.Panic("destination cannot be nil",
+			zap.Int("bytes", bytes),
+		)
+	}
+
+	C.memcpy(dest, src, C.size_t(bytes))
+}
+
 // AllocZeros returns zeroed out bytes allocated in C memory.
 func AllocZeros(bytes int) unsafe.Pointer {
 	switch {

@@ -25,16 +25,16 @@ func NewGDExtensionClassCreationInfo2(
 	classUserdata unsafe.Pointer,
 ) GDExtensionClassCreationInfo2 {
 	return (GDExtensionClassCreationInfo2)(C.GDExtensionClassCreationInfo2{
-		create_instance_func:       (C.GDExtensionClassCreateInstance)(createInstanceFunc),
-		free_instance_func:         (C.GDExtensionClassFreeInstance)(freeInstanceFunc),
-		get_virtual_call_data_func: (C.GDExtensionClassGetVirtualCallData)(getVirtualCallDataFunc),
-		call_virtual_func:          (C.GDExtensionClassCallVirtualWithData)(callVirtualFunc),
-		to_string_func:             (C.GDExtensionClassToString)(toStringFunc),
-		set_func:                   (C.GDExtensionClassSet)(setFunc),
-		get_func:                   (C.GDExtensionClassGet)(getFunc),
-		get_property_list_func:     (C.GDExtensionClassGetPropertyList)(getPropertyListFunc),
-		free_property_list_func:    (C.GDExtensionClassFreePropertyList)(freePropertyListFunc),
-		class_userdata:             classUserdata,
+		create_instance_func:        (C.GDExtensionClassCreateInstance)(createInstanceFunc),
+		free_instance_func:          (C.GDExtensionClassFreeInstance)(freeInstanceFunc),
+		get_virtual_call_data_func:  (C.GDExtensionClassGetVirtualCallData)(getVirtualCallDataFunc),
+		call_virtual_with_data_func: (C.GDExtensionClassCallVirtualWithData)(callVirtualFunc),
+		to_string_func:              (C.GDExtensionClassToString)(toStringFunc),
+		set_func:                    (C.GDExtensionClassSet)(setFunc),
+		get_func:                    (C.GDExtensionClassGet)(getFunc),
+		get_property_list_func:      (C.GDExtensionClassGetPropertyList)(getPropertyListFunc),
+		free_property_list_func:     (C.GDExtensionClassFreePropertyList)(freePropertyListFunc),
+		class_userdata:              classUserdata,
 	})
 }
 

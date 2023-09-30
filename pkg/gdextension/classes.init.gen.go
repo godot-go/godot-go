@@ -21,7 +21,7 @@ import (
 )
 
 func registerEngineClasses() {
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks = NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Clear()
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AESContext",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AESContext),
@@ -93,6 +93,12 @@ func registerEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AnimationLibrary),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AnimationLibrary),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AnimationLibrary),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AnimationMixer",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AnimationMixer),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AnimationMixer),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AnimationMixer),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AnimationNode",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -2409,6 +2415,12 @@ func registerEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_NavigationMeshGenerator),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_NavigationMeshGenerator),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_NavigationMeshGenerator),
+		))
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("NavigationMeshSourceGeometryData2D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_NavigationMeshSourceGeometryData2D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_NavigationMeshSourceGeometryData2D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_NavigationMeshSourceGeometryData2D),
 		))
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("NavigationMeshSourceGeometryData3D",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -5266,7 +5278,7 @@ func registerEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ZIPReader),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ZIPReader),
 		))
-	gdNativeConstructors = NewSyncMap[string, GDExtensionClassGoConstructorFromOwner]()
+	gdNativeConstructors.Clear()
 	gdNativeConstructors.Set("AESContext", NewGDExtensionClassFromAESContextOwner)
 	gdNativeConstructors.Set("AStar2D", NewGDExtensionClassFromAStar2DOwner)
 	gdNativeConstructors.Set("AStar3D", NewGDExtensionClassFromAStar3DOwner)
@@ -5279,6 +5291,7 @@ func registerEngineClasses() {
 	gdNativeConstructors.Set("AnimatedTexture", NewGDExtensionClassFromAnimatedTextureOwner)
 	gdNativeConstructors.Set("Animation", NewGDExtensionClassFromAnimationOwner)
 	gdNativeConstructors.Set("AnimationLibrary", NewGDExtensionClassFromAnimationLibraryOwner)
+	gdNativeConstructors.Set("AnimationMixer", NewGDExtensionClassFromAnimationMixerOwner)
 	gdNativeConstructors.Set("AnimationNode", NewGDExtensionClassFromAnimationNodeOwner)
 	gdNativeConstructors.Set("AnimationNodeAdd2", NewGDExtensionClassFromAnimationNodeAdd2Owner)
 	gdNativeConstructors.Set("AnimationNodeAdd3", NewGDExtensionClassFromAnimationNodeAdd3Owner)
@@ -5665,6 +5678,7 @@ func registerEngineClasses() {
 	gdNativeConstructors.Set("NavigationLink3D", NewGDExtensionClassFromNavigationLink3DOwner)
 	gdNativeConstructors.Set("NavigationMesh", NewGDExtensionClassFromNavigationMeshOwner)
 	gdNativeConstructors.Set("NavigationMeshGenerator", NewGDExtensionClassFromNavigationMeshGeneratorOwner)
+	gdNativeConstructors.Set("NavigationMeshSourceGeometryData2D", NewGDExtensionClassFromNavigationMeshSourceGeometryData2DOwner)
 	gdNativeConstructors.Set("NavigationMeshSourceGeometryData3D", NewGDExtensionClassFromNavigationMeshSourceGeometryData3DOwner)
 	gdNativeConstructors.Set("NavigationObstacle2D", NewGDExtensionClassFromNavigationObstacle2DOwner)
 	gdNativeConstructors.Set("NavigationObstacle3D", NewGDExtensionClassFromNavigationObstacle3DOwner)

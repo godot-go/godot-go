@@ -340,7 +340,12 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 
 	ci.ConstantNameMap[p_constant_name] = struct{}{}
 
-	bitfield := (GDExtensionBool)(BoolEncoder.EncodeArg(p_is_bitfield))
+	var bitfield GDExtensionBool
+	if p_is_bitfield {
+		bitfield = (GDExtensionBool)(1)
+	} else {
+		bitfield = (GDExtensionBool)(0)
+	}
 
 	snTypeName := NewStringNameWithLatin1Chars(typeName)
 	defer snTypeName.Destroy()
@@ -361,7 +366,9 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 	)
 }
 
-func ClassDBRegisterClass(inst GDClass, bindMethodsFunc func(t GDClass)) {
+func ClassDBRegisterClass[T Object](in T, bindMethodsFunc func(t GDClass)) {
+	inst := (GDClass)(in)
+
 	// Register this class within our plugin
 	className := inst.GetClassName()
 	parentName := inst.GetParentClassName()
@@ -418,6 +425,7 @@ func ClassDBRegisterClass(inst GDClass, bindMethodsFunc func(t GDClass)) {
 	if _, ok := gdNativeConstructors.Get(parentName); !ok {
 		log.Panic("Missing GDExtensionClass interface: unhandled inherits type", zap.Any("class_type", classType), zap.Any("parent_type", parentName))
 	}
+	gdRegisteredGDClassEncoders.Set(className, createObjectEncoder[T]())
 	gdClassRegisterInstanceBindingCallbacks(className)
 	log.Info("gdclass registered",
 		zap.String("class", className),

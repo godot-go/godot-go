@@ -216,6 +216,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_AnimationLibrar
 
 
 
+void *cgo_gdextension_class_binding_create_callback_AnimationMixer(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("AnimationMixer", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_AnimationMixer(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("AnimationMixer", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_AnimationMixer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("AnimationMixer", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_AnimationNode(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("AnimationNode", p_token, p_instance);
@@ -6774,6 +6791,23 @@ void cgo_gdextension_class_binding_free_callback_NavigationMeshGenerator(void *p
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_NavigationMeshGenerator(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("NavigationMeshGenerator", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_NavigationMeshSourceGeometryData2D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("NavigationMeshSourceGeometryData2D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_NavigationMeshSourceGeometryData2D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("NavigationMeshSourceGeometryData2D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_NavigationMeshSourceGeometryData2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("NavigationMeshSourceGeometryData2D", p_token, p_instance, p_reference);
 }
 
 

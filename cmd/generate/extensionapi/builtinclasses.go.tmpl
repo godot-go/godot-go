@@ -27,8 +27,42 @@ import (
 
 {{ $sizes := $view.Float64BuiltinClassSize -}}
 
+type GDBuiltInClass interface {
+	nativeConstPtr() GDExtensionConstTypePtr
+	nativePtr() GDExtensionTypePtr
+}
+
+type GDBuiltInDestroyableClass interface {
+	GDBuiltInClass
+	Destroy()
+}
+
+const (
+{{ range $i, $c := $view.FilteredBuiltinClasses -}}
+    {{ $c.Name }}Size = {{ $sizes.FindSize $c.Name }}
+{{ end -}}
+)
+
+var (
+{{ range $i, $c := $view.FilteredBuiltinClasses -}}
+    {{ $c.Name }}Encoder      argumentEncoder[{{ $c.Name }}, {{ $c.Name }}]
+{{ end -}}
+)
+
+func initBuiltinClassEncoders() {
+{{ range $i, $c := $view.FilteredBuiltinClasses -}}
+    {{ $c.Name }}Encoder      = createBuiltinClassEncoder[{{ $c.Name }}](GDEXTENSION_VARIANT_TYPE_{{ upper (snakeCase $c.Name) }}, {{ $c.Name }}Size)
+{{ end -}}
+}
+
 // built-in classes
 {{ range $i, $c := $view.FilteredBuiltinClasses -}}
+{{ $classSize := $sizes.FindSize $c.Name }}
+{{ if $c.HasDestructor -}}
+var _ GDBuiltInDestroyableClass = &{{ $c.Name }}{}
+{{ else -}}
+var _ GDBuiltInClass = &{{ $c.Name }}{}
+{{ end -}}
 
 /*
  * {{ $c.Name }}
@@ -36,12 +70,14 @@ import (
  * isKeyed: {{ $c.IsKeyed }}
  * hasDestructor: {{ $c.HasDestructor }}
  */
-type {{ $c.Name }} struct {
-    opaque [{{ $sizes.FindSize $c.Name }}]uint8
+type {{ $c.Name }} [{{ $classSize }}]uint8
+
+func (c *{{ $c.Name }}) nativeConstPtr() GDExtensionConstTypePtr {
+    return (GDExtensionConstTypePtr)(unsafe.Pointer(c))
 }
 
-func (c *{{ $c.Name }}) ptr() GDExtensionConstTypePtr {
-    return (GDExtensionConstTypePtr)(unsafe.Pointer(&c.opaque))
+func (c *{{ $c.Name }}) nativePtr() GDExtensionTypePtr {
+    return (GDExtensionTypePtr)(unsafe.Pointer(c))
 }
 
 // constructors
@@ -53,37 +89,32 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
 	{{- end -}}
 ) {{ $c.Name }} {
     cx := {{ $c.Name }}{}
-
-    ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.ptr()))
-
+    ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
     {{ if $con.Arguments -}}
     var args [{{ len $con.Arguments }}]GDExtensionConstTypePtr
-
     {{ range $k, $arg := $con.Arguments -}}
-        {{ $argName := goArgumentName $arg.Name }}
-        {{ $argType := goArgumentType $arg.Type }}
+        {{ $argName := goArgumentName $arg.Name -}}
+        {{ $argType := goArgumentType $arg.Type -}}
         // {{ $arg.Type }}
         {{ if eq $argType "string" -}}
         cv{{ $k }} := NewStringWithUtf8Chars({{ $argName }})
         defer cv{{ $k }}.Destroy()
-        args[{{ $k }}] = cv{{ $k }}.ptr()
-
+        args[{{ $k }}] = cv{{ $k }}.nativeConstPtr()ff
         {{ else -}}
-        {{ if typeHasPtr $arg.Type -}}
+        {{ if eq $argType "Variant" -}}
+        args[{{ $k }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ $argName }}))
+        {{ else if typeHasPtr $arg.Type -}}
         // {{ goEncoder $arg.Type }}
-        args[{{ $k }}] = (GDExtensionConstTypePtr)({{ $argName }}.ptr())
+        args[{{ $k }}] = {{ $argName }}.nativeConstPtr()
         {{ else if eq $argType "Object" -}}
         args[{{ $k }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ $argName }}))
         {{ else -}}
-        eArg{{ $k }} := {{ goEncoder $argType }}.EncodeArg({{ $argName }})
-        args[{{ $k }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&eArg{{ $k }}))
+        args[{{ $k }}] = (GDExtensionConstTypePtr)({{ goEncoder $argType }}.encodeTypePtr({{ $argName }}))
         {{ end -}}
         {{ end -}}
 	{{ end -}}
     {{ end -}}
-
     callBuiltinConstructor(global{{ $c.Name }}MethodBindings.constructor_{{ $j }}, ptr, {{range $k, $arg := $con.Arguments -}}args[{{ $k }}],{{- end -}})
-
     return cx
 }
 {{ end }}
@@ -91,7 +122,7 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
 {{ if $c.HasDestructor -}}
 func (cx *{{ $c.Name }}) Destroy() {
     md := (GDExtensionPtrDestructor)(global{{ $c.Name }}MethodBindings.destructor)
-    bx := (GDExtensionTypePtr)(cx.ptr())
+    bx := cx.nativePtr()
     CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 {{ end }}
@@ -99,19 +130,19 @@ func (cx *{{ $c.Name }}) Destroy() {
 // copy funuctions
 func new{{ $c.Name }}WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) {{ $c.Name }} {
     ret := {{ $c.Name }}{}
-    typedSrc := (*[{{ $sizes.FindSize $c.Name }}]uint8)(src)
+    typedSrc := (*{{ $c.Name }})(src)
 
-    for i:=0; i<{{ $sizes.FindSize $c.Name }}; i++ {
-        ret.opaque[i] = typedSrc[i]
+    for i:=0; i<{{ $classSize }}; i++ {
+        ret[i] = typedSrc[i]
     }
 
-    return ret
+    return ({{ $c.Name }})(ret)
 }
 func copy{{ $c.Name }}WithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExtensionConstTypePtr) {
-    typedDst := (*[{{ $sizes.FindSize $c.Name }}]uint8)(dst)
-    typedSrc := (*[{{ $sizes.FindSize $c.Name }}]uint8)(src)
+    typedDst := (*{{ $c.Name }})(dst)
+    typedSrc := (*{{ $c.Name }})(src)
 
-    for i:=0; i<{{ $sizes.FindSize $c.Name }}; i++ {
+    for i:=0; i<{{ $classSize }}; i++ {
         typedDst[i] = typedSrc[i]
     }
 }
@@ -141,7 +172,7 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     {{ if $m.IsStatic -}}
     bx := (GDExtensionTypePtr)(nullptr)
     {{ else -}}
-    bx := (GDExtensionTypePtr)(unsafe.Pointer(cx.ptr()))
+    bx := cx.nativePtr()
     {{ end -}}
 
     if bx == nil {
@@ -158,8 +189,7 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     {{ if goEncodeIsReference $arg.Type -}}
     args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&{{ goArgumentName $arg.Name }}))
     {{ else -}}
-    eArg{{ $j }} := {{ goEncoder (goArgumentType $arg.Type) }}.EncodeArg({{ goArgumentName $arg.Name }})
-    args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&eArg{{ $j }}))
+    args[{{ $j }}] = {{ goEncoder (goArgumentType $arg.Type) }}.encodeTypePtr({{ goArgumentName $arg.Name }})
     {{/* args[{{ $j }}] = (GDExtensionTypePtr)(eArg{{ $j }}) */}}
     {{ end -}}
     {{ else -}}
@@ -197,9 +227,9 @@ func (cx *{{ $c.Name }}) GetKeyed(key string) Variant {
     var ret Variant
     CallFunc_GDExtensionPtrKeyedGetter(
         global{{ $c.Name }}MethodBindings.keyed_getter,
-        (GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
-        (GDExtensionConstTypePtr)(vKey.ptr()),
-        (GDExtensionTypePtr)(unsafe.Pointer(&ret)),
+        cx.nativeConstPtr(),
+        vKey.AsGDExtensionConstTypePtr(),
+        ret.AsGDExtensionTypePtr(),
     )
 	return ret
 }
@@ -209,9 +239,9 @@ func (cx *{{ $c.Name }}) SetKeyed(key string, value Variant) {
     vKey := NewVariantString(gdStrKey)
     CallFunc_GDExtensionPtrKeyedSetter(
         global{{ $c.Name }}MethodBindings.keyed_setter,
-        (GDExtensionTypePtr)(unsafe.Pointer(cx)),
-        (GDExtensionConstTypePtr)(vKey.ptr()),
-        (GDExtensionConstTypePtr)(value.ptr()),
+        cx.nativePtr(),
+        vKey.AsGDExtensionConstTypePtr(),
+        value.AsGDExtensionConstTypePtr(),
     )
 }
 {{ end -}}
@@ -221,7 +251,7 @@ func (cx *{{ $c.Name }}) GetIndexed(i int64) {{ goReturnType $c.IndexingReturnTy
     var ret {{ goReturnType $c.IndexingReturnType }}
     CallFunc_GDExtensionPtrIndexedGetter(
         global{{ $c.Name }}MethodBindings.indexed_getter,
-        (GDExtensionConstTypePtr)(unsafe.Pointer(cx)),
+        cx.nativeConstPtr(),
         (GDExtensionInt)(i),
         (GDExtensionTypePtr)(unsafe.Pointer(&ret)),
     )
@@ -231,7 +261,7 @@ func (cx *{{ $c.Name }}) GetIndexed(i int64) {{ goReturnType $c.IndexingReturnTy
 func (cx *{{ $c.Name }}) SetIndexed(i int64, value {{ goReturnType $c.IndexingReturnType }}) {
     CallFunc_GDExtensionPtrIndexedSetter(
         global{{ $c.Name }}MethodBindings.indexed_setter,
-        (GDExtensionTypePtr)(unsafe.Pointer(cx)),
+        cx.nativePtr(),
         (GDExtensionInt)(i),
         (GDExtensionConstTypePtr)(unsafe.Pointer(&value)),
     )
@@ -243,15 +273,16 @@ func (cx *{{ $c.Name }}) SetIndexed(i int64, value {{ goReturnType $c.IndexingRe
 {{ $returnType := goReturnType $m.Type }}
 {{ $decodeType := goDecodeNumberType $returnType }}
 func (cx *{{ $c.Name }}) {{ goMethodName (print "MemberGet" $m.Name) }}() {{ $returnType }} {
-    bx := cx.ptr()
+    bx := cx.nativeConstPtr()
     ret := callBuiltinPtrGetter[{{ $decodeType }}](global{{ $c.Name }}MethodBindings.member_{{ $m.Name }}_getter, bx)
     {{ if (eq $decodeType $returnType) -}}
         return ret
     {{ else -}}
-        return {{ goEncoder $returnType }}.DecodeArg(ret)
+        return {{ goEncoder $returnType }}.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
     {{ end }}
 }
-{{ end }}
+
+{{ end -}}
 
 {{ range $j, $op := $c.Operators -}}
 // {{ upperFirstChar (getOperatorIdName $op.Name) }}{{ with $op.RightType }}_{{ $op.RightType }}{{ end }} operator
@@ -260,14 +291,19 @@ func (cx *{{ $c.Name }}) {{ upperFirstChar (getOperatorIdName $op.Name) }}{{ wit
 		right {{ goArgumentType $op.RightType }}
 	{{- end -}}
 ) {{ goReturnType $op.ReturnType }} {
-    lt := cx.ptr()
+    lt := cx.nativeConstPtr()
     {{ if gt (len $op.RightType) 0 -}}
-
-    {{ $argType := goArgumentType $op.RightType }}
+    {{ $argType := goArgumentType $op.RightType -}}
     {{ if goEncodeIsReference $argType -}}
-    rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&right))
+    {{ if eq (goArgumentType $op.RightType) "Variant" -}}
+    rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
+    {{ else if eq (goArgumentType $op.RightType) "Object" -}}
+    rt := right.AsGDExtensionConstTypePtr()
     {{ else -}}
-    eRight := {{ goEncoder $argType }}.EncodeArg(right)
+    rt := right.nativeConstPtr()
+    {{ end -}}
+    {{ else -}}
+    eRight := {{ goEncoder $argType }}.encodeTypePtr(right)
     rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
     {{ end -}}
 
@@ -278,5 +314,4 @@ func (cx *{{ $c.Name }}) {{ upperFirstChar (getOperatorIdName $op.Name) }}{{ wit
     {{ end -}}
 }
 {{ end -}}
-
 {{ end -}}

@@ -13,14 +13,15 @@ package gdextensionffi
 //revive:disable
 
 import (
-	"fmt"
 	"unsafe"
+
+	"github.com/godot-go/godot-go/pkg/log"
+	"go.uber.org/zap"
 )
 
 type GDExtensionInterface struct {
 	Library        GDExtensionClassLibraryPtr
 	Token          unsafe.Pointer
-
 	GodotVersion GDExtensionGodotVersion
 
 	// All of the GDExtension interface functions.
@@ -50,9 +51,10 @@ var (
 func LoadProcAddress(funcName string) unsafe.Pointer {
 	ret := CallFunc_GDExtensionInterfaceGetProcAddress(funcName)
 	if ret == nil {
-		panic(fmt.Sprintf("Unable to load GDExtension interface function %s()", funcName))
+		log.Warn("GDExtensionInterfaceGetProcAddress Error",
+			zap.String("name", funcName),
+		)
 	}
-
 	return unsafe.Pointer(ret)
 }
 

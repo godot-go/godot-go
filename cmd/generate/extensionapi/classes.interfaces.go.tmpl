@@ -37,17 +37,19 @@ type {{ goClassInterfaceName $c.Name }} interface {
 	{{/* TODO: deal with virtual functions */}}
 	// VIRTUAL: {{ goMethodName $m.Name }}(
 	{{- range $k, $a := $m.Arguments -}}
-	{{ goArgumentName $a.Name }} {{ goArgumentType (coalesce $a.Meta $a.Type) }},
+	{{ $fnArgType := goArgumentType (coalesce $a.Meta $a.Type) -}}
+	{{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $fnArgType }}Ref{{ $fnArgType }}{{ else }}{{ $fnArgType }}{{ end -}},
 	{{- end -}}
 	{{- if $m.IsVararg }}varargs ...Variant,{{- end -}}
-	) {{ $fnReturnType -}}
+	) {{ if $view.IsRefcountedClassName $fnReturnType }}Ref{{ $fnReturnType }}{{ else }}{{ $fnReturnType }}{{ end -}}
 	{{ else -}}
 	{{ goMethodName $m.Name }}(
 	{{- range $k, $a := $m.Arguments -}}
-	{{ goArgumentName $a.Name }} {{ goArgumentType (coalesce $a.Meta $a.Type) }},
+	{{ $fnArgType := goArgumentType (coalesce $a.Meta $a.Type) -}}
+	{{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $fnArgType }}Ref{{ $fnArgType }}{{ else }}{{ $fnArgType }}{{ end -}},
 	{{- end -}}
 	{{- if $m.IsVararg }}varargs ...Variant,{{- end -}}
-	) {{ $fnReturnType -}}
+	) {{ if $view.IsRefcountedClassName $fnReturnType }}Ref{{ $fnReturnType }}{{ else }}{{ $fnReturnType }}{{ end -}}
 	{{- end }}
 	{{- end }}
 }

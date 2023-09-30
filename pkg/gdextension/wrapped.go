@@ -12,11 +12,15 @@ type GodotObject [0]byte
 
 // Base for all engine classes, to contain the pointer to the engine instance.
 type Wrapped interface {
+	HasDestructor
 	GetGodotObjectOwner() *GodotObject
 	SetGodotObjectOwner(owner *GodotObject)
 	GetClassName() string
 	GetParentClassName() string
+	AsGDExtensionObjectPtr() GDExtensionObjectPtr
+	AsGDExtensionConstObjectPtr() GDExtensionConstObjectPtr
 	AsGDExtensionTypePtr() GDExtensionTypePtr
+	AsGDExtensionConstTypePtr() GDExtensionConstTypePtr
 }
 
 type WrappedImpl struct {
@@ -28,8 +32,20 @@ func (w *WrappedImpl) GetGodotObjectOwner() *GodotObject {
 	return w.Owner
 }
 
+func (w *WrappedImpl) AsGDExtensionObjectPtr() GDExtensionObjectPtr {
+	return (GDExtensionObjectPtr)(unsafe.Pointer(w.Owner))
+}
+
+func (w *WrappedImpl) AsGDExtensionConstObjectPtr() GDExtensionConstObjectPtr {
+	return (GDExtensionConstObjectPtr)(unsafe.Pointer(w.Owner))
+}
+
 func (w *WrappedImpl) AsGDExtensionTypePtr() GDExtensionTypePtr {
 	return (GDExtensionTypePtr)(unsafe.Pointer(&w.Owner))
+}
+
+func (w *WrappedImpl) AsGDExtensionConstTypePtr() GDExtensionConstTypePtr {
+	return (GDExtensionConstTypePtr)(unsafe.Pointer(&w.Owner))
 }
 
 func (w *WrappedImpl) SetGodotObjectOwner(owner *GodotObject) {
@@ -38,6 +54,9 @@ func (w *WrappedImpl) SetGodotObjectOwner(owner *GodotObject) {
 
 func (w *WrappedImpl) IsNil() bool {
 	return w == nil || w.Owner == nil
+}
+
+func (w *WrappedImpl) Destroy() {
 }
 
 // func CopyObject(dst GDExtensionObjectPtr, src GDExtensionConstObjectPtr) {
@@ -89,6 +108,7 @@ func ObjectCastTo(obj Object, className string) Object {
 		log.Warn("unable to find callbacks for Object")
 		return nil
 	}
+	// TODO: this is probably broken
 	inst := CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
 		casted,
 		FFI.Token,
@@ -96,6 +116,7 @@ func ObjectCastTo(obj Object, className string) Object {
 	wci := (*WrappedClassInstance)(inst)
 	wrapperClassName := wci.Instance.GetClassName()
 	gdStrClassName := wci.Instance.GetClass()
+	defer gdStrClassName.Destroy()
 	log.Info("ObjectCastTo casted",
 		zap.String("class", gdStrClassName.ToUtf8()),
 		zap.String("className", wrapperClassName),

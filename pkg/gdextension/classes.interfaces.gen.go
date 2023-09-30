@@ -201,7 +201,7 @@ type AStarGrid2D interface {
 
 	GetPointPath(from_id Vector2i, to_id Vector2i) PackedVector2Array
 
-	GetIdPath(from_id Vector2i, to_id Vector2i) []Vector2i
+	GetIdPath(from_id Vector2i, to_id Vector2i) Vector2i
 }
 type AcceptDialog interface {
 	Window
@@ -255,9 +255,9 @@ type AnimatableBody3D interface {
 type AnimatedSprite2D interface {
 	Node2D
 
-	SetSpriteFrames(sprite_frames SpriteFrames)
+	SetSpriteFrames(sprite_frames RefSpriteFrames)
 
-	GetSpriteFrames() SpriteFrames
+	GetSpriteFrames() RefSpriteFrames
 
 	SetAnimation(name StringName)
 
@@ -312,9 +312,9 @@ type AnimatedSprite2D interface {
 type AnimatedSprite3D interface {
 	SpriteBase3D
 
-	SetSpriteFrames(sprite_frames SpriteFrames)
+	SetSpriteFrames(sprite_frames RefSpriteFrames)
 
-	GetSpriteFrames() SpriteFrames
+	GetSpriteFrames() RefSpriteFrames
 
 	SetAnimation(name StringName)
 
@@ -373,9 +373,9 @@ type AnimatedTexture interface {
 
 	GetSpeedScale() float32
 
-	SetFrameTexture(frame int32, texture Texture2D)
+	SetFrameTexture(frame int32, texture RefTexture2D)
 
-	GetFrameTexture(frame int32) Texture2D
+	GetFrameTexture(frame int32) RefTexture2D
 
 	SetFrameDuration(frame int32, duration float32)
 
@@ -488,15 +488,15 @@ type Animation interface {
 
 	BezierTrackInterpolate(track_idx int32, time float64) float32
 
-	AudioTrackInsertKey(track_idx int32, time float64, stream Resource, start_offset float32, end_offset float32) int32
+	AudioTrackInsertKey(track_idx int32, time float64, stream RefResource, start_offset float32, end_offset float32) int32
 
-	AudioTrackSetKeyStream(track_idx int32, key_idx int32, stream Resource)
+	AudioTrackSetKeyStream(track_idx int32, key_idx int32, stream RefResource)
 
 	AudioTrackSetKeyStartOffset(track_idx int32, key_idx int32, offset float32)
 
 	AudioTrackSetKeyEndOffset(track_idx int32, key_idx int32, offset float32)
 
-	AudioTrackGetKeyStream(track_idx int32, key_idx int32) Resource
+	AudioTrackGetKeyStream(track_idx int32, key_idx int32) RefResource
 
 	AudioTrackGetKeyStartOffset(track_idx int32, key_idx int32) float32
 
@@ -526,14 +526,14 @@ type Animation interface {
 
 	Clear()
 
-	CopyTrack(track_idx int32, to_animation Animation)
+	CopyTrack(track_idx int32, to_animation RefAnimation)
 
 	Compress(page_size uint32, fps uint32, split_tolerance float32)
 }
 type AnimationLibrary interface {
 	Resource
 
-	AddAnimation(name StringName, animation Animation) Error
+	AddAnimation(name StringName, animation RefAnimation) Error
 
 	RemoveAnimation(name StringName)
 
@@ -541,9 +541,84 @@ type AnimationLibrary interface {
 
 	HasAnimation(name StringName) bool
 
-	GetAnimation(name StringName) Animation
+	GetAnimation(name StringName) RefAnimation
 
-	GetAnimationList() []StringName
+	GetAnimationList() StringName
+}
+type AnimationMixer interface {
+	Node
+
+	// VIRTUAL: Internal_PostProcessKeyValue(animation RefAnimation,track int32,value Variant,object Object,object_idx int32,) Variant
+
+	AddAnimationLibrary(name StringName, library RefAnimationLibrary) Error
+
+	RemoveAnimationLibrary(name StringName)
+
+	RenameAnimationLibrary(name StringName, newname StringName)
+
+	HasAnimationLibrary(name StringName) bool
+
+	GetAnimationLibrary(name StringName) RefAnimationLibrary
+
+	GetAnimationLibraryList() StringName
+
+	HasAnimation(name StringName) bool
+
+	GetAnimation(name StringName) RefAnimation
+
+	GetAnimationList() PackedStringArray
+
+	SetActive(active bool)
+
+	IsActive() bool
+
+	SetDeterministic(deterministic bool)
+
+	IsDeterministic() bool
+
+	SetRootNode(path NodePath)
+
+	GetRootNode() NodePath
+
+	SetCallbackModeProcess(mode AnimationMixerAnimationCallbackModeProcess)
+
+	GetCallbackModeProcess() AnimationMixerAnimationCallbackModeProcess
+
+	SetCallbackModeMethod(mode AnimationMixerAnimationCallbackModeMethod)
+
+	GetCallbackModeMethod() AnimationMixerAnimationCallbackModeMethod
+
+	SetAudioMaxPolyphony(max_polyphony int32)
+
+	GetAudioMaxPolyphony() int32
+
+	SetRootMotionTrack(path NodePath)
+
+	GetRootMotionTrack() NodePath
+
+	GetRootMotionPosition() Vector3
+
+	GetRootMotionRotation() Quaternion
+
+	GetRootMotionScale() Vector3
+
+	GetRootMotionPositionAccumulator() Vector3
+
+	GetRootMotionRotationAccumulator() Quaternion
+
+	GetRootMotionScaleAccumulator() Vector3
+
+	ClearCaches()
+
+	Advance(delta float64)
+
+	SetResetOnSaveEnabled(enabled bool)
+
+	IsResetOnSaveEnabled() bool
+
+	FindAnimation(animation RefAnimation) StringName
+
+	FindAnimationLibrary(animation RefAnimation) StringName
 }
 type AnimationNode interface {
 	Resource
@@ -552,7 +627,7 @@ type AnimationNode interface {
 
 	// VIRTUAL: Internal_GetParameterList() Array
 
-	// VIRTUAL: Internal_GetChildByName(name StringName,) AnimationNode
+	// VIRTUAL: Internal_GetChildByName(name StringName,) RefAnimationNode
 
 	// VIRTUAL: Internal_GetParameterDefaultValue(parameter StringName,) Variant
 
@@ -586,7 +661,7 @@ type AnimationNode interface {
 
 	BlendAnimation(animation StringName, time float64, delta float64, seeked bool, is_external_seeking bool, blend float32, looped_flag AnimationLoopedFlag)
 
-	BlendNode(name StringName, node AnimationNode, time float64, seek bool, is_external_seeking bool, blend float32, filter AnimationNodeFilterAction, sync bool, test_only bool) float64
+	BlendNode(name StringName, node RefAnimationNode, time float64, seek bool, is_external_seeking bool, blend float32, filter AnimationNodeFilterAction, sync bool, test_only bool) float64
 
 	BlendInput(input_index int32, time float64, seek bool, is_external_seeking bool, blend float32, filter AnimationNodeFilterAction, sync bool, test_only bool) float64
 
@@ -620,15 +695,15 @@ type AnimationNodeBlend3 interface {
 type AnimationNodeBlendSpace1D interface {
 	AnimationRootNode
 
-	AddBlendPoint(node AnimationRootNode, pos float32, at_index int32)
+	AddBlendPoint(node RefAnimationRootNode, pos float32, at_index int32)
 
 	SetBlendPointPosition(point int32, pos float32)
 
 	GetBlendPointPosition(point int32) float32
 
-	SetBlendPointNode(point int32, node AnimationRootNode)
+	SetBlendPointNode(point int32, node RefAnimationRootNode)
 
-	GetBlendPointNode(point int32) AnimationRootNode
+	GetBlendPointNode(point int32) RefAnimationRootNode
 
 	RemoveBlendPoint(point int32)
 
@@ -661,15 +736,15 @@ type AnimationNodeBlendSpace1D interface {
 type AnimationNodeBlendSpace2D interface {
 	AnimationRootNode
 
-	AddBlendPoint(node AnimationRootNode, pos Vector2, at_index int32)
+	AddBlendPoint(node RefAnimationRootNode, pos Vector2, at_index int32)
 
 	SetBlendPointPosition(point int32, pos Vector2)
 
 	GetBlendPointPosition(point int32) Vector2
 
-	SetBlendPointNode(point int32, node AnimationRootNode)
+	SetBlendPointNode(point int32, node RefAnimationRootNode)
 
-	GetBlendPointNode(point int32) AnimationRootNode
+	GetBlendPointNode(point int32) RefAnimationRootNode
 
 	RemoveBlendPoint(point int32)
 
@@ -718,9 +793,9 @@ type AnimationNodeBlendSpace2D interface {
 type AnimationNodeBlendTree interface {
 	AnimationRootNode
 
-	AddNode(name StringName, node AnimationNode, position Vector2)
+	AddNode(name StringName, node RefAnimationNode, position Vector2)
 
-	GetNode(name StringName) AnimationNode
+	GetNode(name StringName) RefAnimationNode
 
 	RemoveNode(name StringName)
 
@@ -747,17 +822,17 @@ type AnimationNodeOneShot interface {
 
 	GetFadeinTime() float64
 
-	SetFadeinCurve(curve Curve)
+	SetFadeinCurve(curve RefCurve)
 
-	GetFadeinCurve() Curve
+	GetFadeinCurve() RefCurve
 
 	SetFadeoutTime(time float64)
 
 	GetFadeoutTime() float64
 
-	SetFadeoutCurve(curve Curve)
+	SetFadeoutCurve(curve RefCurve)
 
-	GetFadeoutCurve() Curve
+	GetFadeoutCurve() RefCurve
 
 	SetAutorestart(active bool)
 
@@ -781,11 +856,11 @@ type AnimationNodeOutput interface {
 type AnimationNodeStateMachine interface {
 	AnimationRootNode
 
-	AddNode(name StringName, node AnimationNode, position Vector2)
+	AddNode(name StringName, node RefAnimationNode, position Vector2)
 
-	ReplaceNode(name StringName, node AnimationNode)
+	ReplaceNode(name StringName, node RefAnimationNode)
 
-	GetNode(name StringName) AnimationNode
+	GetNode(name StringName) RefAnimationNode
 
 	RemoveNode(name StringName)
 
@@ -793,7 +868,7 @@ type AnimationNodeStateMachine interface {
 
 	HasNode(name StringName) bool
 
-	GetNodeName(node AnimationNode) StringName
+	GetNodeName(node RefAnimationNode) StringName
 
 	SetNodePosition(name StringName, position Vector2)
 
@@ -801,9 +876,9 @@ type AnimationNodeStateMachine interface {
 
 	HasTransition(from StringName, to StringName) bool
 
-	AddTransition(from StringName, to StringName, transition AnimationNodeStateMachineTransition)
+	AddTransition(from StringName, to StringName, transition RefAnimationNodeStateMachineTransition)
 
-	GetTransition(idx int32) AnimationNodeStateMachineTransition
+	GetTransition(idx int32) RefAnimationNodeStateMachineTransition
 
 	GetTransitionFrom(idx int32) StringName
 
@@ -852,7 +927,7 @@ type AnimationNodeStateMachinePlayback interface {
 
 	GetFadingFromNode() StringName
 
-	GetTravelPath() []StringName
+	GetTravelPath() StringName
 }
 type AnimationNodeStateMachineTransition interface {
 	Resource
@@ -873,9 +948,9 @@ type AnimationNodeStateMachineTransition interface {
 
 	GetXfadeTime() float32
 
-	SetXfadeCurve(curve Curve)
+	SetXfadeCurve(curve RefCurve)
 
-	GetXfadeCurve() Curve
+	GetXfadeCurve() RefCurve
 
 	SetReset(reset bool)
 
@@ -922,44 +997,24 @@ type AnimationNodeTransition interface {
 
 	GetXfadeTime() float64
 
-	SetXfadeCurve(curve Curve)
+	SetXfadeCurve(curve RefCurve)
 
-	GetXfadeCurve() Curve
+	GetXfadeCurve() RefCurve
 
 	SetAllowTransitionToSelf(enable bool)
 
 	IsAllowTransitionToSelf() bool
 }
 type AnimationPlayer interface {
-	Node
+	AnimationMixer
 
-	// VIRTUAL: Internal_PostProcessKeyValue(animation Animation,track int32,value Variant,object Object,object_idx int32,) Variant
+	AnimationSetNext(animation_from StringName, animation_to StringName)
 
-	AddAnimationLibrary(name StringName, library AnimationLibrary) Error
+	AnimationGetNext(animation_from StringName) StringName
 
-	RemoveAnimationLibrary(name StringName)
+	SetBlendTime(animation_from StringName, animation_to StringName, sec float64)
 
-	RenameAnimationLibrary(name StringName, newname StringName)
-
-	HasAnimationLibrary(name StringName) bool
-
-	GetAnimationLibrary(name StringName) AnimationLibrary
-
-	GetAnimationLibraryList() []StringName
-
-	HasAnimation(name StringName) bool
-
-	GetAnimation(name StringName) Animation
-
-	GetAnimationList() PackedStringArray
-
-	AnimationSetNext(anim_from StringName, anim_to StringName)
-
-	AnimationGetNext(anim_from StringName) StringName
-
-	SetBlendTime(anim_from StringName, anim_to StringName, sec float64)
-
-	GetBlendTime(anim_from StringName, anim_to StringName) float64
+	GetBlendTime(animation_from StringName, animation_to StringName) float64
 
 	SetDefaultBlendTime(sec float64)
 
@@ -975,11 +1030,11 @@ type AnimationPlayer interface {
 
 	IsPlaying() bool
 
-	SetCurrentAnimation(anim String)
+	SetCurrentAnimation(animation String)
 
 	GetCurrentAnimation() String
 
-	SetAssignedAnimation(anim String)
+	SetAssignedAnimation(animation String)
 
 	GetAssignedAnimation() String
 
@@ -988,10 +1043,6 @@ type AnimationPlayer interface {
 	GetQueue() PackedStringArray
 
 	ClearQueue()
-
-	SetActive(active bool)
-
-	IsActive() bool
 
 	SetSpeedScale(speed float32)
 
@@ -1003,19 +1054,15 @@ type AnimationPlayer interface {
 
 	GetAutoplay() String
 
-	SetResetOnSaveEnabled(enabled bool)
+	SetMovieQuitOnFinishEnabled(enabled bool)
 
-	IsResetOnSaveEnabled() bool
+	IsMovieQuitOnFinishEnabled() bool
 
-	SetRoot(path NodePath)
+	GetCurrentAnimationPosition() float64
 
-	GetRoot() NodePath
+	GetCurrentAnimationLength() float64
 
-	FindAnimation(animation Animation) StringName
-
-	FindAnimationLibrary(animation Animation) StringName
-
-	ClearCaches()
+	Seek(seconds float64, update bool, update_only bool)
 
 	SetProcessCallback(mode AnimationPlayerAnimationProcessCallback)
 
@@ -1025,71 +1072,31 @@ type AnimationPlayer interface {
 
 	GetMethodCallMode() AnimationPlayerAnimationMethodCallMode
 
-	SetAudioMaxPolyphony(max_polyphony int32)
+	SetRoot(path NodePath)
 
-	GetAudioMaxPolyphony() int32
-
-	SetMovieQuitOnFinishEnabled(enabled bool)
-
-	IsMovieQuitOnFinishEnabled() bool
-
-	GetCurrentAnimationPosition() float64
-
-	GetCurrentAnimationLength() float64
-
-	Seek(seconds float64, update bool)
-
-	Advance(delta float64)
+	GetRoot() NodePath
 }
 type AnimationRootNode interface {
 	AnimationNode
 }
 type AnimationTree interface {
-	Node
+	AnimationMixer
 
-	// VIRTUAL: Internal_PostProcessKeyValue(animation Animation,track int32,value Variant,object Object,object_idx int32,) Variant
+	SetTreeRoot(animation_node RefAnimationRootNode)
 
-	SetActive(active bool)
+	GetTreeRoot() RefAnimationRootNode
 
-	IsActive() bool
+	SetAdvanceExpressionBaseNode(path NodePath)
 
-	SetTreeRoot(root AnimationNode)
+	GetAdvanceExpressionBaseNode() NodePath
 
-	GetTreeRoot() AnimationNode
+	SetAnimationPlayer(path NodePath)
+
+	GetAnimationPlayer() NodePath
 
 	SetProcessCallback(mode AnimationTreeAnimationProcessCallback)
 
 	GetProcessCallback() AnimationTreeAnimationProcessCallback
-
-	SetAnimationPlayer(root NodePath)
-
-	GetAnimationPlayer() NodePath
-
-	SetAdvanceExpressionBaseNode(node NodePath)
-
-	GetAdvanceExpressionBaseNode() NodePath
-
-	SetRootMotionTrack(path NodePath)
-
-	GetRootMotionTrack() NodePath
-
-	SetAudioMaxPolyphony(max_polyphony int32)
-
-	GetAudioMaxPolyphony() int32
-
-	GetRootMotionPosition() Vector3
-
-	GetRootMotionRotation() Quaternion
-
-	GetRootMotionScale() Vector3
-
-	GetRootMotionPositionAccumulator() Vector3
-
-	GetRootMotionRotationAccumulator() Quaternion
-
-	GetRootMotionScaleAccumulator() Vector3
-
-	Advance(delta float64)
 }
 type Area2D interface {
 	CollisionObject2D
@@ -1146,9 +1153,9 @@ type Area2D interface {
 
 	IsMonitorable() bool
 
-	GetOverlappingBodies() []Node2D
+	GetOverlappingBodies() Node2D
 
-	GetOverlappingAreas() []Area2D
+	GetOverlappingAreas() Area2D
 
 	HasOverlappingBodies() bool
 
@@ -1233,9 +1240,9 @@ type Area3D interface {
 
 	IsMonitoring() bool
 
-	GetOverlappingBodies() []Node3D
+	GetOverlappingBodies() Node3D
 
-	GetOverlappingAreas() []Area3D
+	GetOverlappingAreas() Area3D
 
 	HasOverlappingBodies() bool
 
@@ -1286,7 +1293,7 @@ type ArrayMesh interface {
 
 	GetBlendShapeMode() MeshBlendShapeMode
 
-	AddSurfaceFromArrays(primitive MeshPrimitiveType, arrays Array, blend_shapes []Array, lods Dictionary, flags MeshArrayFormat)
+	AddSurfaceFromArrays(primitive MeshPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, flags MeshArrayFormat)
 
 	ClearSurfaces()
 
@@ -1318,9 +1325,9 @@ type ArrayMesh interface {
 
 	GetCustomAabb() AABB
 
-	SetShadowMesh(mesh ArrayMesh)
+	SetShadowMesh(mesh RefArrayMesh)
 
-	GetShadowMesh() ArrayMesh
+	GetShadowMesh() RefArrayMesh
 }
 type ArrayOccluder3D interface {
 	Occluder3D
@@ -1353,9 +1360,9 @@ type AspectRatioContainer interface {
 type AtlasTexture interface {
 	Texture2D
 
-	SetAtlas(atlas Texture2D)
+	SetAtlas(atlas RefTexture2D)
 
-	GetAtlas() Texture2D
+	GetAtlas() RefTexture2D
 
 	SetRegion(region Rect2)
 
@@ -1375,7 +1382,7 @@ type AudioBusLayout interface {
 type AudioEffect interface {
 	Resource
 
-	// VIRTUAL: Internal_Instantiate() AudioEffectInstance
+	// VIRTUAL: Internal_Instantiate() RefAudioEffectInstance
 }
 type AudioEffectAmplify interface {
 	AudioEffect
@@ -1693,7 +1700,7 @@ type AudioEffectRecord interface {
 
 	GetFormat() AudioStreamWAVFormat
 
-	GetRecording() AudioStreamWAV
+	GetRecording() RefAudioStreamWAV
 }
 type AudioEffectReverb interface {
 	AudioEffect
@@ -1826,15 +1833,15 @@ type AudioServer interface {
 
 	IsBusBypassingEffects(bus_idx int32) bool
 
-	AddBusEffect(bus_idx int32, effect AudioEffect, at_position int32)
+	AddBusEffect(bus_idx int32, effect RefAudioEffect, at_position int32)
 
 	RemoveBusEffect(bus_idx int32, effect_idx int32)
 
 	GetBusEffectCount(bus_idx int32) int32
 
-	GetBusEffect(bus_idx int32, effect_idx int32) AudioEffect
+	GetBusEffect(bus_idx int32, effect_idx int32) RefAudioEffect
 
-	GetBusEffectInstance(bus_idx int32, effect_idx int32, channel int32) AudioEffectInstance
+	GetBusEffectInstance(bus_idx int32, effect_idx int32, channel int32) RefAudioEffectInstance
 
 	SwapBusEffects(bus_idx int32, effect_idx int32, by_effect_idx int32)
 
@@ -1876,16 +1883,16 @@ type AudioServer interface {
 
 	SetInputDevice(name String)
 
-	SetBusLayout(bus_layout AudioBusLayout)
+	SetBusLayout(bus_layout RefAudioBusLayout)
 
-	GenerateBusLayout() AudioBusLayout
+	GenerateBusLayout() RefAudioBusLayout
 
 	SetEnableTaggingUsedAudioStreams(enable bool)
 }
 type AudioStream interface {
 	Resource
 
-	// VIRTUAL: Internal_InstantiatePlayback() AudioStreamPlayback
+	// VIRTUAL: Internal_InstantiatePlayback() RefAudioStreamPlayback
 
 	// VIRTUAL: Internal_GetStreamName() String
 
@@ -1901,7 +1908,7 @@ type AudioStream interface {
 
 	IsMonophonic() bool
 
-	InstantiatePlayback() AudioStreamPlayback
+	InstantiatePlayback() RefAudioStreamPlayback
 }
 type AudioStreamGenerator interface {
 	AudioStream
@@ -1962,13 +1969,13 @@ type AudioStreamMicrophone interface {
 type AudioStreamOggVorbis interface {
 	AudioStream
 
-	LoadFromBuffer(buffer PackedByteArray) AudioStreamOggVorbis
+	LoadFromBuffer(buffer PackedByteArray) RefAudioStreamOggVorbis
 
-	LoadFromFile(path String) AudioStreamOggVorbis
+	LoadFromFile(path String) RefAudioStreamOggVorbis
 
-	SetPacketSequence(packet_sequence OggPacketSequence)
+	SetPacketSequence(packet_sequence RefOggPacketSequence)
 
-	GetPacketSequence() OggPacketSequence
+	GetPacketSequence() RefOggPacketSequence
 
 	SetLoop(enable bool)
 
@@ -2015,7 +2022,7 @@ type AudioStreamPlaybackOggVorbis interface {
 type AudioStreamPlaybackPolyphonic interface {
 	AudioStreamPlayback
 
-	PlayStream(stream AudioStream, from_offset float32, volume_db float32, pitch_scale float32) int64
+	PlayStream(stream RefAudioStream, from_offset float32, volume_db float32, pitch_scale float32) int64
 
 	SetStreamVolume(stream int64, volume_db float32)
 
@@ -2037,9 +2044,9 @@ type AudioStreamPlaybackResampled interface {
 type AudioStreamPlayer interface {
 	Node
 
-	SetStream(stream AudioStream)
+	SetStream(stream RefAudioStream)
 
-	GetStream() AudioStream
+	GetStream() RefAudioStream
 
 	SetVolumeDb(volume_db float32)
 
@@ -2081,14 +2088,14 @@ type AudioStreamPlayer interface {
 
 	HasStreamPlayback() bool
 
-	GetStreamPlayback() AudioStreamPlayback
+	GetStreamPlayback() RefAudioStreamPlayback
 }
 type AudioStreamPlayer2D interface {
 	Node2D
 
-	SetStream(stream AudioStream)
+	SetStream(stream RefAudioStream)
 
-	GetStream() AudioStream
+	GetStream() RefAudioStream
 
 	SetVolumeDb(volume_db float32)
 
@@ -2142,14 +2149,14 @@ type AudioStreamPlayer2D interface {
 
 	HasStreamPlayback() bool
 
-	GetStreamPlayback() AudioStreamPlayback
+	GetStreamPlayback() RefAudioStreamPlayback
 }
 type AudioStreamPlayer3D interface {
 	Node3D
 
-	SetStream(stream AudioStream)
+	SetStream(stream RefAudioStream)
 
-	GetStream() AudioStream
+	GetStream() RefAudioStream
 
 	SetVolumeDb(volume_db float32)
 
@@ -2235,7 +2242,7 @@ type AudioStreamPlayer3D interface {
 
 	HasStreamPlayback() bool
 
-	GetStreamPlayback() AudioStreamPlayback
+	GetStreamPlayback() RefAudioStreamPlayback
 }
 type AudioStreamPolyphonic interface {
 	AudioStream
@@ -2247,15 +2254,15 @@ type AudioStreamPolyphonic interface {
 type AudioStreamRandomizer interface {
 	AudioStream
 
-	AddStream(index int32, stream AudioStream, weight float32)
+	AddStream(index int32, stream RefAudioStream, weight float32)
 
 	MoveStream(index_from int32, index_to int32)
 
 	RemoveStream(index int32)
 
-	SetStream(index int32, stream AudioStream)
+	SetStream(index int32, stream RefAudioStream)
 
-	GetStream(index int32) AudioStream
+	GetStream(index int32) RefAudioStream
 
 	SetStreamProbabilityWeight(index int32, weight float32)
 
@@ -2366,13 +2373,13 @@ type BaseButton interface {
 
 	IsShortcutFeedback() bool
 
-	SetShortcut(shortcut Shortcut)
+	SetShortcut(shortcut RefShortcut)
 
-	GetShortcut() Shortcut
+	GetShortcut() RefShortcut
 
-	SetButtonGroup(button_group ButtonGroup)
+	SetButtonGroup(button_group RefButtonGroup)
 
-	GetButtonGroup() ButtonGroup
+	GetButtonGroup() RefButtonGroup
 }
 type BaseMaterial3D interface {
 	Material
@@ -2513,9 +2520,9 @@ type BaseMaterial3D interface {
 
 	GetFeature(feature BaseMaterial3DFeature) bool
 
-	SetTexture(param BaseMaterial3DTextureParam, texture Texture2D)
+	SetTexture(param BaseMaterial3DTextureParam, texture RefTexture2D)
 
-	GetTexture(param BaseMaterial3DTextureParam) Texture2D
+	GetTexture(param BaseMaterial3DTextureParam) RefTexture2D
 
 	SetDetailBlendMode(detail_blend_mode BaseMaterial3DBlendMode)
 
@@ -2654,7 +2661,7 @@ type BitMap interface {
 
 	Create(size Vector2i)
 
-	CreateFromImageAlpha(image Image, threshold float32)
+	CreateFromImageAlpha(image RefImage, threshold float32)
 
 	SetBitv(position Vector2i, bit bool)
 
@@ -2674,9 +2681,9 @@ type BitMap interface {
 
 	GrowMask(pixels int32, rect Rect2i)
 
-	ConvertToImage() Image
+	ConvertToImage() RefImage
 
-	OpaqueToPolygons(rect Rect2i, epsilon float32) []PackedVector2Array
+	OpaqueToPolygons(rect Rect2i, epsilon float32) PackedVector2Array
 }
 type Bone2D interface {
 	Node2D
@@ -2731,9 +2738,9 @@ type BoneAttachment3D interface {
 type BoneMap interface {
 	Resource
 
-	GetProfile() SkeletonProfile
+	GetProfile() RefSkeletonProfile
 
-	SetProfile(profile SkeletonProfile)
+	SetProfile(profile RefSkeletonProfile)
 
 	GetSkeletonBoneName(profile_bone_name StringName) StringName
 
@@ -2806,9 +2813,9 @@ type Button interface {
 
 	GetLanguage() String
 
-	SetButtonIcon(texture Texture2D)
+	SetButtonIcon(texture RefTexture2D)
 
-	GetButtonIcon() Texture2D
+	GetButtonIcon() RefTexture2D
 
 	SetFlat(enabled bool)
 
@@ -2839,7 +2846,7 @@ type ButtonGroup interface {
 
 	GetPressedButton() BaseButton
 
-	GetButtons() []BaseButton
+	GetButtons() BaseButton
 
 	SetAllowUnpress(enabled bool)
 
@@ -2900,9 +2907,9 @@ type CPUParticles2D interface {
 
 	GetDrawOrder() CPUParticles2DDrawOrder
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	Restart()
 
@@ -2922,21 +2929,21 @@ type CPUParticles2D interface {
 
 	GetParamMax(param CPUParticles2DParameter) float32
 
-	SetParamCurve(param CPUParticles2DParameter, curve Curve)
+	SetParamCurve(param CPUParticles2DParameter, curve RefCurve)
 
-	GetParamCurve(param CPUParticles2DParameter) Curve
+	GetParamCurve(param CPUParticles2DParameter) RefCurve
 
 	SetColor(color Color)
 
 	GetColor() Color
 
-	SetColorRamp(ramp Gradient)
+	SetColorRamp(ramp RefGradient)
 
-	GetColorRamp() Gradient
+	GetColorRamp() RefGradient
 
-	SetColorInitialRamp(ramp Gradient)
+	SetColorInitialRamp(ramp RefGradient)
 
-	GetColorInitialRamp() Gradient
+	GetColorInitialRamp() RefGradient
 
 	SetParticleFlag(particle_flag CPUParticles2DParticleFlags, enable bool)
 
@@ -2974,13 +2981,13 @@ type CPUParticles2D interface {
 
 	SetSplitScale(split_scale bool)
 
-	GetScaleCurveX() Curve
+	GetScaleCurveX() RefCurve
 
-	SetScaleCurveX(scale_curve Curve)
+	SetScaleCurveX(scale_curve RefCurve)
 
-	GetScaleCurveY() Curve
+	GetScaleCurveY() RefCurve
 
-	SetScaleCurveY(scale_curve Curve)
+	SetScaleCurveY(scale_curve RefCurve)
 
 	ConvertFromParticles(particles Node)
 }
@@ -3039,9 +3046,9 @@ type CPUParticles3D interface {
 
 	GetDrawOrder() CPUParticles3DDrawOrder
 
-	SetMesh(mesh Mesh)
+	SetMesh(mesh RefMesh)
 
-	GetMesh() Mesh
+	GetMesh() RefMesh
 
 	Restart()
 
@@ -3065,21 +3072,21 @@ type CPUParticles3D interface {
 
 	GetParamMax(param CPUParticles3DParameter) float32
 
-	SetParamCurve(param CPUParticles3DParameter, curve Curve)
+	SetParamCurve(param CPUParticles3DParameter, curve RefCurve)
 
-	GetParamCurve(param CPUParticles3DParameter) Curve
+	GetParamCurve(param CPUParticles3DParameter) RefCurve
 
 	SetColor(color Color)
 
 	GetColor() Color
 
-	SetColorRamp(ramp Gradient)
+	SetColorRamp(ramp RefGradient)
 
-	GetColorRamp() Gradient
+	GetColorRamp() RefGradient
 
-	SetColorInitialRamp(ramp Gradient)
+	SetColorInitialRamp(ramp RefGradient)
 
-	GetColorInitialRamp() Gradient
+	GetColorInitialRamp() RefGradient
 
 	SetParticleFlag(particle_flag CPUParticles3DParticleFlags, enable bool)
 
@@ -3133,17 +3140,17 @@ type CPUParticles3D interface {
 
 	SetSplitScale(split_scale bool)
 
-	GetScaleCurveX() Curve
+	GetScaleCurveX() RefCurve
 
-	SetScaleCurveX(scale_curve Curve)
+	SetScaleCurveX(scale_curve RefCurve)
 
-	GetScaleCurveY() Curve
+	GetScaleCurveY() RefCurve
 
-	SetScaleCurveY(scale_curve Curve)
+	SetScaleCurveY(scale_curve RefCurve)
 
-	GetScaleCurveZ() Curve
+	GetScaleCurveZ() RefCurve
 
-	SetScaleCurveZ(scale_curve Curve)
+	SetScaleCurveZ(scale_curve RefCurve)
 
 	ConvertFromParticles(particles Node)
 }
@@ -3154,9 +3161,9 @@ type CSGBox3D interface {
 
 	GetSize() Vector3
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 }
 type CSGCombiner3D interface {
 	CSGShape3D
@@ -3180,9 +3187,9 @@ type CSGCylinder3D interface {
 
 	IsCone() bool
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 
 	SetSmoothFaces(smooth_faces bool)
 
@@ -3191,13 +3198,13 @@ type CSGCylinder3D interface {
 type CSGMesh3D interface {
 	CSGPrimitive3D
 
-	SetMesh(mesh Mesh)
+	SetMesh(mesh RefMesh)
 
-	GetMesh() Mesh
+	GetMesh() RefMesh
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 }
 type CSGPolygon3D interface {
 	CSGPrimitive3D
@@ -3258,9 +3265,9 @@ type CSGPolygon3D interface {
 
 	IsPathJoined() bool
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 
 	SetSmoothFaces(smooth_faces bool)
 
@@ -3335,9 +3342,9 @@ type CSGSphere3D interface {
 
 	GetSmoothFaces() bool
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 }
 type CSGTorus3D interface {
 	CSGPrimitive3D
@@ -3358,9 +3365,9 @@ type CSGTorus3D interface {
 
 	GetRingSides() int32
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 
 	SetSmoothFaces(smooth_faces bool)
 
@@ -3369,7 +3376,7 @@ type CSGTorus3D interface {
 type CallbackTweener interface {
 	Tweener
 
-	SetDelay(delay float64) CallbackTweener
+	SetDelay(delay float64) RefCallbackTweener
 }
 type Camera2D interface {
 	Node2D
@@ -3541,13 +3548,13 @@ type Camera3D interface {
 
 	GetCullMask() uint32
 
-	SetEnvironment(env Environment)
+	SetEnvironment(env RefEnvironment)
 
-	GetEnvironment() Environment
+	GetEnvironment() RefEnvironment
 
-	SetAttributes(env CameraAttributes)
+	SetAttributes(env RefCameraAttributes)
 
-	GetAttributes() CameraAttributes
+	GetAttributes() RefCameraAttributes
 
 	SetKeepAspectMode(mode Camera3DKeepAspect)
 
@@ -3557,7 +3564,7 @@ type Camera3D interface {
 
 	GetDopplerTracking() Camera3DDopplerTracking
 
-	GetFrustum() []Plane
+	GetFrustum() Plane
 
 	IsPositionInFrustum(world_point Vector3) bool
 
@@ -3690,15 +3697,15 @@ type CameraFeed interface {
 type CameraServer interface {
 	Object
 
-	GetFeed(index int32) CameraFeed
+	GetFeed(index int32) RefCameraFeed
 
 	GetFeedCount() int32
 
-	Feeds() []CameraFeed
+	Feeds() RefCameraFeed
 
-	AddFeed(feed CameraFeed)
+	AddFeed(feed RefCameraFeed)
 
-	RemoveFeed(feed CameraFeed)
+	RemoveFeed(feed RefCameraFeed)
 }
 type CameraTexture interface {
 	Texture2D
@@ -3801,39 +3808,39 @@ type CanvasItem interface {
 
 	DrawCircle(position Vector2, radius float32, color Color)
 
-	DrawTexture(texture Texture2D, position Vector2, modulate Color)
+	DrawTexture(texture RefTexture2D, position Vector2, modulate Color)
 
-	DrawTextureRect(texture Texture2D, rect Rect2, tile bool, modulate Color, transpose bool)
+	DrawTextureRect(texture RefTexture2D, rect Rect2, tile bool, modulate Color, transpose bool)
 
-	DrawTextureRectRegion(texture Texture2D, rect Rect2, src_rect Rect2, modulate Color, transpose bool, clip_uv bool)
+	DrawTextureRectRegion(texture RefTexture2D, rect Rect2, src_rect Rect2, modulate Color, transpose bool, clip_uv bool)
 
-	DrawMsdfTextureRectRegion(texture Texture2D, rect Rect2, src_rect Rect2, modulate Color, outline float64, pixel_range float64, scale float64)
+	DrawMsdfTextureRectRegion(texture RefTexture2D, rect Rect2, src_rect Rect2, modulate Color, outline float64, pixel_range float64, scale float64)
 
-	DrawLcdTextureRectRegion(texture Texture2D, rect Rect2, src_rect Rect2, modulate Color)
+	DrawLcdTextureRectRegion(texture RefTexture2D, rect Rect2, src_rect Rect2, modulate Color)
 
-	DrawStyleBox(style_box StyleBox, rect Rect2)
+	DrawStyleBox(style_box RefStyleBox, rect Rect2)
 
-	DrawPrimitive(points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture Texture2D)
+	DrawPrimitive(points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture RefTexture2D)
 
-	DrawPolygon(points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture Texture2D)
+	DrawPolygon(points PackedVector2Array, colors PackedColorArray, uvs PackedVector2Array, texture RefTexture2D)
 
-	DrawColoredPolygon(points PackedVector2Array, color Color, uvs PackedVector2Array, texture Texture2D)
+	DrawColoredPolygon(points PackedVector2Array, color Color, uvs PackedVector2Array, texture RefTexture2D)
 
-	DrawString(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, modulate Color, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawString(font RefFont, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, modulate Color, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
-	DrawMultilineString(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, modulate Color, brk_flags TextServerLineBreakFlag, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawMultilineString(font RefFont, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, modulate Color, brk_flags TextServerLineBreakFlag, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
-	DrawStringOutline(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, size int32, modulate Color, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawStringOutline(font RefFont, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, size int32, modulate Color, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
-	DrawMultilineStringOutline(font Font, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, size int32, modulate Color, brk_flags TextServerLineBreakFlag, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
+	DrawMultilineStringOutline(font RefFont, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, size int32, modulate Color, brk_flags TextServerLineBreakFlag, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
-	DrawChar(font Font, pos Vector2, char String, font_size int32, modulate Color)
+	DrawChar(font RefFont, pos Vector2, char String, font_size int32, modulate Color)
 
-	DrawCharOutline(font Font, pos Vector2, char String, font_size int32, size int32, modulate Color)
+	DrawCharOutline(font RefFont, pos Vector2, char String, font_size int32, size int32, modulate Color)
 
-	DrawMesh(mesh Mesh, texture Texture2D, transform Transform2D, modulate Color)
+	DrawMesh(mesh RefMesh, texture RefTexture2D, transform Transform2D, modulate Color)
 
-	DrawMultimesh(multimesh MultiMesh, texture Texture2D)
+	DrawMultimesh(multimesh RefMultiMesh, texture RefTexture2D)
 
 	DrawSetTransform(position Vector2, rotation float32, scale Vector2)
 
@@ -3863,11 +3870,11 @@ type CanvasItem interface {
 
 	GetCanvas() RID
 
-	GetWorld2D() World2D
+	GetWorld2D() RefWorld2D
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 
 	SetUseParentMaterial(enable bool)
 
@@ -3885,7 +3892,7 @@ type CanvasItem interface {
 
 	MakeCanvasPositionLocal(screen_point Vector2) Vector2
 
-	MakeInputLocal(event InputEvent) InputEvent
+	MakeInputLocal(event RefInputEvent) RefInputEvent
 
 	SetVisibilityLayer(layer uint32)
 
@@ -3991,17 +3998,17 @@ type CanvasModulate interface {
 type CanvasTexture interface {
 	Texture2D
 
-	SetDiffuseTexture(texture Texture2D)
+	SetDiffuseTexture(texture RefTexture2D)
 
-	GetDiffuseTexture() Texture2D
+	GetDiffuseTexture() RefTexture2D
 
-	SetNormalTexture(texture Texture2D)
+	SetNormalTexture(texture RefTexture2D)
 
-	GetNormalTexture() Texture2D
+	GetNormalTexture() RefTexture2D
 
-	SetSpecularTexture(texture Texture2D)
+	SetSpecularTexture(texture RefTexture2D)
 
-	GetSpecularTexture() Texture2D
+	GetSpecularTexture() RefTexture2D
 
 	SetSpecularColor(color Color)
 
@@ -4069,6 +4076,10 @@ type CenterContainer interface {
 }
 type CharFXTransform interface {
 	RefCounted
+
+	GetTransform() Transform2D
+
+	SetTransform(transform Transform2D)
 
 	GetRange() Vector2i
 
@@ -4213,9 +4224,9 @@ type CharacterBody2D interface {
 
 	GetSlideCollisionCount() int32
 
-	GetSlideCollision(slide_idx int32) KinematicCollision2D
+	GetSlideCollision(slide_idx int32) RefKinematicCollision2D
 
-	GetLastSlideCollision() KinematicCollision2D
+	GetLastSlideCollision() RefKinematicCollision2D
 }
 type CharacterBody3D interface {
 	PhysicsBody3D
@@ -4314,9 +4325,9 @@ type CharacterBody3D interface {
 
 	GetSlideCollisionCount() int32
 
-	GetSlideCollision(slide_idx int32) KinematicCollision3D
+	GetSlideCollision(slide_idx int32) RefKinematicCollision3D
 
-	GetLastSlideCollision() KinematicCollision3D
+	GetLastSlideCollision() RefKinematicCollision3D
 }
 type CheckBox interface {
 	Button
@@ -4352,9 +4363,9 @@ type ClassDB interface {
 
 	ClassGetSignal(class StringName, signal StringName) Dictionary
 
-	ClassGetSignalList(class StringName, no_inheritance bool) []Dictionary
+	ClassGetSignalList(class StringName, no_inheritance bool) Dictionary
 
-	ClassGetPropertyList(class StringName, no_inheritance bool) []Dictionary
+	ClassGetPropertyList(class StringName, no_inheritance bool) Dictionary
 
 	ClassGetProperty(object Object, property StringName) Variant
 
@@ -4362,7 +4373,7 @@ type ClassDB interface {
 
 	ClassHasMethod(class StringName, method StringName, no_inheritance bool) bool
 
-	ClassGetMethodList(class StringName, no_inheritance bool) []Dictionary
+	ClassGetMethodList(class StringName, no_inheritance bool) Dictionary
 
 	ClassGetIntegerConstantList(class StringName, no_inheritance bool) PackedStringArray
 
@@ -4387,7 +4398,7 @@ type CodeEdit interface {
 
 	// VIRTUAL: Internal_RequestCodeCompletion(force bool,)
 
-	// VIRTUAL: Internal_FilterCodeCompletionCandidates(candidates []Dictionary,) []Dictionary
+	// VIRTUAL: Internal_FilterCodeCompletionCandidates(candidates Dictionary,) Dictionary
 
 	SetIndentSize(size int32)
 
@@ -4401,9 +4412,9 @@ type CodeEdit interface {
 
 	IsAutoIndentEnabled() bool
 
-	SetAutoIndentPrefixes(prefixes []String)
+	SetAutoIndentPrefixes(prefixes String)
 
-	GetAutoIndentPrefixes() []String
+	GetAutoIndentPrefixes() String
 
 	DoIndent()
 
@@ -4499,7 +4510,7 @@ type CodeEdit interface {
 
 	IsLineFolded(line int32) bool
 
-	GetFoldedLines() []int32
+	GetFoldedLines() int32
 
 	CreateCodeRegion()
 
@@ -4519,11 +4530,11 @@ type CodeEdit interface {
 
 	HasStringDelimiter(start_key String) bool
 
-	SetStringDelimiters(string_delimiters []String)
+	SetStringDelimiters(string_delimiters String)
 
 	ClearStringDelimiters()
 
-	GetStringDelimiters() []String
+	GetStringDelimiters() String
 
 	IsInString(line int32, column int32) int32
 
@@ -4533,11 +4544,11 @@ type CodeEdit interface {
 
 	HasCommentDelimiter(start_key String) bool
 
-	SetCommentDelimiters(comment_delimiters []String)
+	SetCommentDelimiters(comment_delimiters String)
 
 	ClearCommentDelimiters()
 
-	GetCommentDelimiters() []String
+	GetCommentDelimiters() String
 
 	IsInComment(line int32, column int32) int32
 
@@ -4557,11 +4568,11 @@ type CodeEdit interface {
 
 	RequestCodeCompletion(force bool)
 
-	AddCodeCompletionOption(typeName CodeEditCodeCompletionKind, display_text String, insert_text String, text_color Color, icon Resource, value Variant, location int32)
+	AddCodeCompletionOption(typeName CodeEditCodeCompletionKind, display_text String, insert_text String, text_color Color, icon RefResource, value Variant, location int32)
 
 	UpdateCodeCompletionOptions(force bool)
 
-	GetCodeCompletionOptions() []Dictionary
+	GetCodeCompletionOptions() Dictionary
 
 	GetCodeCompletionOption(index int32) Dictionary
 
@@ -4577,13 +4588,13 @@ type CodeEdit interface {
 
 	IsCodeCompletionEnabled() bool
 
-	SetCodeCompletionPrefixes(prefixes []String)
+	SetCodeCompletionPrefixes(prefixes String)
 
-	GetCodeCompletionPrefixes() []String
+	GetCodeCompletionPrefixes() String
 
-	SetLineLengthGuidelines(guideline_columns []int32)
+	SetLineLengthGuidelines(guideline_columns int32)
 
-	GetLineLengthGuidelines() []int32
+	GetLineLengthGuidelines() int32
 
 	SetSymbolLookupOnClickEnabled(enable bool)
 
@@ -4594,6 +4605,8 @@ type CodeEdit interface {
 	GetTextWithCursorChar(line int32, column int32) String
 
 	SetSymbolLookupWordAsValid(valid bool)
+
+	DuplicateLines()
 }
 type CodeHighlighter interface {
 	SyntaxHighlighter
@@ -4657,7 +4670,7 @@ type CodeHighlighter interface {
 type CollisionObject2D interface {
 	Node2D
 
-	// VIRTUAL: Internal_InputEvent(viewport Viewport,event InputEvent,shape_idx int32,)
+	// VIRTUAL: Internal_InputEvent(viewport Viewport,event RefInputEvent,shape_idx int32,)
 
 	// VIRTUAL: Internal_MouseEnter()
 
@@ -4721,11 +4734,11 @@ type CollisionObject2D interface {
 
 	GetShapeOwnerOneWayCollisionMargin(owner_id uint32) float32
 
-	ShapeOwnerAddShape(owner_id uint32, shape Shape2D)
+	ShapeOwnerAddShape(owner_id uint32, shape RefShape2D)
 
 	ShapeOwnerGetShapeCount(owner_id uint32) int32
 
-	ShapeOwnerGetShape(owner_id uint32, shape_id int32) Shape2D
+	ShapeOwnerGetShape(owner_id uint32, shape_id int32) RefShape2D
 
 	ShapeOwnerGetShapeIndex(owner_id uint32, shape_id int32) int32
 
@@ -4738,7 +4751,7 @@ type CollisionObject2D interface {
 type CollisionObject3D interface {
 	Node3D
 
-	// VIRTUAL: Internal_InputEvent(camera Camera3D,event InputEvent,position Vector3,normal Vector3,shape_idx int32,)
+	// VIRTUAL: Internal_InputEvent(camera Camera3D,event RefInputEvent,position Vector3,normal Vector3,shape_idx int32,)
 
 	// VIRTUAL: Internal_MouseEnter()
 
@@ -4794,11 +4807,11 @@ type CollisionObject3D interface {
 
 	IsShapeOwnerDisabled(owner_id uint32) bool
 
-	ShapeOwnerAddShape(owner_id uint32, shape Shape3D)
+	ShapeOwnerAddShape(owner_id uint32, shape RefShape3D)
 
 	ShapeOwnerGetShapeCount(owner_id uint32) int32
 
-	ShapeOwnerGetShape(owner_id uint32, shape_id int32) Shape3D
+	ShapeOwnerGetShape(owner_id uint32, shape_id int32) RefShape3D
 
 	ShapeOwnerGetShapeIndex(owner_id uint32, shape_id int32) int32
 
@@ -4853,9 +4866,9 @@ type CollisionPolygon3D interface {
 type CollisionShape2D interface {
 	Node2D
 
-	SetShape(shape Shape2D)
+	SetShape(shape RefShape2D)
 
-	GetShape() Shape2D
+	GetShape() RefShape2D
 
 	SetDisabled(disabled bool)
 
@@ -4876,11 +4889,11 @@ type CollisionShape2D interface {
 type CollisionShape3D interface {
 	Node3D
 
-	ResourceChanged(resource Resource)
+	ResourceChanged(resource RefResource)
 
-	SetShape(shape Shape3D)
+	SetShape(shape RefShape3D)
 
-	GetShape() Shape3D
+	GetShape() RefShape3D
 
 	SetDisabled(enable bool)
 
@@ -5086,7 +5099,7 @@ type Control interface {
 
 	// VIRTUAL: Internal_HasPoint(point Vector2,) bool
 
-	// VIRTUAL: Internal_StructuredTextParser(args Array,text String,) []Vector3i
+	// VIRTUAL: Internal_StructuredTextParser(args Array,text String,) Vector3i
 
 	// VIRTUAL: Internal_GetMinimumSize() Vector2
 
@@ -5100,7 +5113,7 @@ type Control interface {
 
 	// VIRTUAL: Internal_MakeCustomTooltip(for_text String,) Object
 
-	// VIRTUAL: Internal_GuiInput(event InputEvent,)
+	// VIRTUAL: Internal_GuiInput(event RefInputEvent,)
 
 	AcceptEvent()
 
@@ -5188,6 +5201,8 @@ type Control interface {
 
 	FindNextValidFocus() Control
 
+	FindValidFocusNeighbor(side Side) Control
+
 	SetHSizeFlags(flags ControlSizeFlags)
 
 	GetHSizeFlags() ControlSizeFlags
@@ -5200,9 +5215,9 @@ type Control interface {
 
 	GetVSizeFlags() ControlSizeFlags
 
-	SetTheme(theme Theme)
+	SetTheme(theme RefTheme)
 
-	GetTheme() Theme
+	GetTheme() RefTheme
 
 	SetThemeTypeVariation(theme_type StringName)
 
@@ -5212,11 +5227,11 @@ type Control interface {
 
 	EndBulkThemeOverride()
 
-	AddThemeIconOverride(name StringName, texture Texture2D)
+	AddThemeIconOverride(name StringName, texture RefTexture2D)
 
-	AddThemeStyleboxOverride(name StringName, stylebox StyleBox)
+	AddThemeStyleboxOverride(name StringName, stylebox RefStyleBox)
 
-	AddThemeFontOverride(name StringName, font Font)
+	AddThemeFontOverride(name StringName, font RefFont)
 
 	AddThemeFontSizeOverride(name StringName, font_size int32)
 
@@ -5236,11 +5251,11 @@ type Control interface {
 
 	RemoveThemeConstantOverride(name StringName)
 
-	GetThemeIcon(name StringName, theme_type StringName) Texture2D
+	GetThemeIcon(name StringName, theme_type StringName) RefTexture2D
 
-	GetThemeStylebox(name StringName, theme_type StringName) StyleBox
+	GetThemeStylebox(name StringName, theme_type StringName) RefStyleBox
 
-	GetThemeFont(name StringName, theme_type StringName) Font
+	GetThemeFont(name StringName, theme_type StringName) RefFont
 
 	GetThemeFontSize(name StringName, theme_type StringName) int32
 
@@ -5274,7 +5289,7 @@ type Control interface {
 
 	GetThemeDefaultBaseScale() float32
 
-	GetThemeDefaultFont() Font
+	GetThemeDefaultFont() RefFont
 
 	GetThemeDefaultFontSize() int32
 
@@ -5377,17 +5392,17 @@ type Crypto interface {
 
 	GenerateRandomBytes(size int32) PackedByteArray
 
-	GenerateRsa(size int32) CryptoKey
+	GenerateRsa(size int32) RefCryptoKey
 
-	GenerateSelfSignedCertificate(key CryptoKey, issuer_name String, not_before String, not_after String) X509Certificate
+	GenerateSelfSignedCertificate(key RefCryptoKey, issuer_name String, not_before String, not_after String) RefX509Certificate
 
-	Sign(hash_type HashingContextHashType, hash PackedByteArray, key CryptoKey) PackedByteArray
+	Sign(hash_type HashingContextHashType, hash PackedByteArray, key RefCryptoKey) PackedByteArray
 
-	Verify(hash_type HashingContextHashType, hash PackedByteArray, signature PackedByteArray, key CryptoKey) bool
+	Verify(hash_type HashingContextHashType, hash PackedByteArray, signature PackedByteArray, key RefCryptoKey) bool
 
-	Encrypt(key CryptoKey, plaintext PackedByteArray) PackedByteArray
+	Encrypt(key RefCryptoKey, plaintext PackedByteArray) PackedByteArray
 
-	Decrypt(key CryptoKey, ciphertext PackedByteArray) PackedByteArray
+	Decrypt(key RefCryptoKey, ciphertext PackedByteArray) PackedByteArray
 
 	HmacDigest(hash_type HashingContextHashType, key PackedByteArray, msg PackedByteArray) PackedByteArray
 
@@ -5409,12 +5424,12 @@ type CryptoKey interface {
 type Cubemap interface {
 	ImageTextureLayered
 
-	CreatePlaceholder() Resource
+	CreatePlaceholder() RefResource
 }
 type CubemapArray interface {
 	ImageTextureLayered
 
-	CreatePlaceholder() Resource
+	CreatePlaceholder() RefResource
 }
 type Curve interface {
 	Resource
@@ -5588,9 +5603,9 @@ type CurveTexture interface {
 
 	SetWidth(width int32)
 
-	SetCurve(curve Curve)
+	SetCurve(curve RefCurve)
 
-	GetCurve() Curve
+	GetCurve() RefCurve
 
 	SetTextureMode(texture_mode CurveTextureTextureMode)
 
@@ -5601,17 +5616,17 @@ type CurveXYZTexture interface {
 
 	SetWidth(width int32)
 
-	SetCurveX(curve Curve)
+	SetCurveX(curve RefCurve)
 
-	GetCurveX() Curve
+	GetCurveX() RefCurve
 
-	SetCurveY(curve Curve)
+	SetCurveY(curve RefCurve)
 
-	GetCurveY() Curve
+	GetCurveY() RefCurve
 
-	SetCurveZ(curve Curve)
+	SetCurveZ(curve RefCurve)
 
-	GetCurveZ() Curve
+	GetCurveZ() RefCurve
 }
 type CylinderMesh interface {
 	PrimitiveMesh
@@ -5658,9 +5673,9 @@ type CylinderShape3D interface {
 type DTLSServer interface {
 	RefCounted
 
-	Setup(server_options TLSOptions) Error
+	Setup(server_options RefTLSOptions) Error
 
-	TakeConnection(udp_peer PacketPeerUDP) PacketPeerDTLS
+	TakeConnection(udp_peer RefPacketPeerUDP) RefPacketPeerDTLS
 }
 type DampedSpringJoint2D interface {
 	Joint2D
@@ -5688,9 +5703,9 @@ type Decal interface {
 
 	GetSize() Vector3
 
-	SetTexture(typeName DecalDecalTexture, texture Texture2D)
+	SetTexture(typeName DecalDecalTexture, texture RefTexture2D)
 
-	GetTexture(typeName DecalDecalTexture) Texture2D
+	GetTexture(typeName DecalDecalTexture) RefTexture2D
 
 	SetEmissionEnergy(energy float32)
 
@@ -5735,7 +5750,7 @@ type Decal interface {
 type DirAccess interface {
 	RefCounted
 
-	Open(path String) DirAccess
+	Open(path String) RefDirAccess
 
 	GetOpenError() Error
 
@@ -5836,13 +5851,13 @@ type DisplayServer interface {
 
 	GlobalMenuAddCheckItem(menu_root String, label String, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
 
-	GlobalMenuAddIconItem(menu_root String, icon Texture2D, label String, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
+	GlobalMenuAddIconItem(menu_root String, icon RefTexture2D, label String, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
 
-	GlobalMenuAddIconCheckItem(menu_root String, icon Texture2D, label String, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
+	GlobalMenuAddIconCheckItem(menu_root String, icon RefTexture2D, label String, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
 
 	GlobalMenuAddRadioCheckItem(menu_root String, label String, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
 
-	GlobalMenuAddIconRadioCheckItem(menu_root String, icon Texture2D, label String, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
+	GlobalMenuAddIconRadioCheckItem(menu_root String, icon RefTexture2D, label String, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
 
 	GlobalMenuAddMultistateItem(menu_root String, label String, max_states int32, default_state int32, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
 
@@ -5878,7 +5893,7 @@ type DisplayServer interface {
 
 	GlobalMenuGetItemMaxStates(menu_root String, idx int32) int32
 
-	GlobalMenuGetItemIcon(menu_root String, idx int32) Texture2D
+	GlobalMenuGetItemIcon(menu_root String, idx int32) RefTexture2D
 
 	GlobalMenuGetItemIndentationLevel(menu_root String, idx int32) int32
 
@@ -5908,7 +5923,7 @@ type DisplayServer interface {
 
 	GlobalMenuSetItemMaxStates(menu_root String, idx int32, max_states int32)
 
-	GlobalMenuSetItemIcon(menu_root String, idx int32, icon Texture2D)
+	GlobalMenuSetItemIcon(menu_root String, idx int32, icon RefTexture2D)
 
 	GlobalMenuSetItemIndentationLevel(menu_root String, idx int32, level int32)
 
@@ -5922,7 +5937,7 @@ type DisplayServer interface {
 
 	TtsIsPaused() bool
 
-	TtsGetVoices() []Dictionary
+	TtsGetVoices() Dictionary
 
 	TtsGetVoicesForLanguage(language String) PackedStringArray
 
@@ -5956,7 +5971,7 @@ type DisplayServer interface {
 
 	ClipboardGet() String
 
-	ClipboardGetImage() Image
+	ClipboardGetImage() RefImage
 
 	ClipboardHas() bool
 
@@ -5966,7 +5981,7 @@ type DisplayServer interface {
 
 	ClipboardGetPrimary() String
 
-	GetDisplayCutouts() []Rect2
+	GetDisplayCutouts() Rect2
 
 	GetDisplaySafeArea() Rect2i
 
@@ -5996,7 +6011,7 @@ type DisplayServer interface {
 
 	ScreenGetPixel(position Vector2i) Color
 
-	ScreenGetImage(screen int32) Image
+	ScreenGetImage(screen int32) RefImage
 
 	ScreenSetOrientation(orientation DisplayServerScreenOrientation, screen int32)
 
@@ -6110,7 +6125,7 @@ type DisplayServer interface {
 
 	CursorGetShape() DisplayServerCursorShape
 
-	CursorSetCustomImage(cursor Resource, shape DisplayServerCursorShape, hotspot Vector2)
+	CursorSetCustomImage(cursor RefResource, shape DisplayServerCursorShape, hotspot Vector2)
 
 	GetSwapCancelOk() bool
 
@@ -6142,7 +6157,7 @@ type DisplayServer interface {
 
 	SetNativeIcon(filename String)
 
-	SetIcon(image Image)
+	SetIcon(image RefImage)
 
 	TabletGetDriverCount() int32
 
@@ -6161,7 +6176,7 @@ type ENetConnection interface {
 
 	Destroy()
 
-	ConnectToHost(address String, port int32, channels int32, data int32) ENetPacketPeer
+	ConnectToHost(address String, port int32, channels int32, data int32) RefENetPacketPeer
 
 	Service(timeout int32) Array
 
@@ -6175,9 +6190,9 @@ type ENetConnection interface {
 
 	Compress(mode ENetConnectionCompressionMode)
 
-	DtlsServerSetup(server_options TLSOptions) Error
+	DtlsServerSetup(server_options RefTLSOptions) Error
 
-	DtlsClientSetup(hostname String, client_options TLSOptions) Error
+	DtlsClientSetup(hostname String, client_options RefTLSOptions) Error
 
 	RefuseNewConnections(refuse bool)
 
@@ -6187,7 +6202,7 @@ type ENetConnection interface {
 
 	GetLocalPort() int32
 
-	GetPeers() []ENetPacketPeer
+	GetPeers() RefENetPacketPeer
 
 	SocketSend(destination_address String, destination_port int32, packet PackedByteArray)
 }
@@ -6200,13 +6215,13 @@ type ENetMultiplayerPeer interface {
 
 	CreateMesh(unique_id int32) Error
 
-	AddMeshPeer(peer_id int32, host ENetConnection) Error
+	AddMeshPeer(peer_id int32, host RefENetConnection) Error
 
 	SetBindIp(ip String)
 
-	GetHost() ENetConnection
+	GetHost() RefENetConnection
 
-	GetPeer(id int32) ENetPacketPeer
+	GetPeer(id int32) RefENetPacketPeer
 }
 type ENetPacketPeer interface {
 	PacketPeer
@@ -6257,7 +6272,7 @@ type EditorDebuggerPlugin interface {
 
 	// VIRTUAL: Internal_Capture(message String,data Array,session_id int32,) bool
 
-	GetSession(id int32) EditorDebuggerSession
+	GetSession(id int32) RefEditorDebuggerSession
 
 	GetSessions() Array
 }
@@ -6313,11 +6328,11 @@ type EditorExportPlugin interface {
 
 	// VIRTUAL: Internal_ExportEnd()
 
-	// VIRTUAL: Internal_BeginCustomizeResources(platform EditorExportPlatform,features PackedStringArray,) bool
+	// VIRTUAL: Internal_BeginCustomizeResources(platform RefEditorExportPlatform,features PackedStringArray,) bool
 
-	// VIRTUAL: Internal_CustomizeResource(resource Resource,path String,) Resource
+	// VIRTUAL: Internal_CustomizeResource(resource RefResource,path String,) RefResource
 
-	// VIRTUAL: Internal_BeginCustomizeScenes(platform EditorExportPlatform,features PackedStringArray,) bool
+	// VIRTUAL: Internal_BeginCustomizeScenes(platform RefEditorExportPlatform,features PackedStringArray,) bool
 
 	// VIRTUAL: Internal_CustomizeScene(scene Node,path String,) Node
 
@@ -6327,29 +6342,29 @@ type EditorExportPlugin interface {
 
 	// VIRTUAL: Internal_EndCustomizeResources()
 
-	// VIRTUAL: Internal_GetExportOptions(platform EditorExportPlatform,) []Dictionary
+	// VIRTUAL: Internal_GetExportOptions(platform RefEditorExportPlatform,) Dictionary
 
-	// VIRTUAL: Internal_ShouldUpdateExportOptions(platform EditorExportPlatform,) bool
+	// VIRTUAL: Internal_ShouldUpdateExportOptions(platform RefEditorExportPlatform,) bool
 
-	// VIRTUAL: Internal_GetExportOptionWarning(platform EditorExportPlatform,option String,) String
+	// VIRTUAL: Internal_GetExportOptionWarning(platform RefEditorExportPlatform,option String,) String
 
-	// VIRTUAL: Internal_GetExportFeatures(platform EditorExportPlatform,debug bool,) PackedStringArray
+	// VIRTUAL: Internal_GetExportFeatures(platform RefEditorExportPlatform,debug bool,) PackedStringArray
 
 	// VIRTUAL: Internal_GetName() String
 
-	// VIRTUAL: Internal_SupportsPlatform(platform EditorExportPlatform,) bool
+	// VIRTUAL: Internal_SupportsPlatform(platform RefEditorExportPlatform,) bool
 
-	// VIRTUAL: Internal_GetAndroidDependencies(platform EditorExportPlatform,debug bool,) PackedStringArray
+	// VIRTUAL: Internal_GetAndroidDependencies(platform RefEditorExportPlatform,debug bool,) PackedStringArray
 
-	// VIRTUAL: Internal_GetAndroidDependenciesMavenRepos(platform EditorExportPlatform,debug bool,) PackedStringArray
+	// VIRTUAL: Internal_GetAndroidDependenciesMavenRepos(platform RefEditorExportPlatform,debug bool,) PackedStringArray
 
-	// VIRTUAL: Internal_GetAndroidLibraries(platform EditorExportPlatform,debug bool,) PackedStringArray
+	// VIRTUAL: Internal_GetAndroidLibraries(platform RefEditorExportPlatform,debug bool,) PackedStringArray
 
-	// VIRTUAL: Internal_GetAndroidManifestActivityElementContents(platform EditorExportPlatform,debug bool,) String
+	// VIRTUAL: Internal_GetAndroidManifestActivityElementContents(platform RefEditorExportPlatform,debug bool,) String
 
-	// VIRTUAL: Internal_GetAndroidManifestApplicationElementContents(platform EditorExportPlatform,debug bool,) String
+	// VIRTUAL: Internal_GetAndroidManifestApplicationElementContents(platform RefEditorExportPlatform,debug bool,) String
 
-	// VIRTUAL: Internal_GetAndroidManifestElementContents(platform EditorExportPlatform,debug bool,) String
+	// VIRTUAL: Internal_GetAndroidManifestElementContents(platform RefEditorExportPlatform,debug bool,) String
 
 	AddSharedObject(path String, tags PackedStringArray, target String)
 
@@ -6447,6 +6462,8 @@ type EditorFileDialog interface {
 
 	IsOverwriteWarningDisabled() bool
 
+	AddSideMenu(menu Control, title String)
+
 	Invalidate()
 }
 type EditorFileSystem interface {
@@ -6523,7 +6540,7 @@ type EditorImportPlugin interface {
 
 	// VIRTUAL: Internal_GetRecognizedExtensions() PackedStringArray
 
-	// VIRTUAL: Internal_GetImportOptions(path String,preset_index int32,) []Dictionary
+	// VIRTUAL: Internal_GetImportOptions(path String,preset_index int32,) Dictionary
 
 	// VIRTUAL: Internal_GetSaveExtension() String
 
@@ -6535,7 +6552,7 @@ type EditorImportPlugin interface {
 
 	// VIRTUAL: Internal_GetOptionVisibility(path String,option_name StringName,options Dictionary,) bool
 
-	// VIRTUAL: Internal_Import(source_file String,save_path String,options Dictionary,platform_variants []String,gen_files []String,) Error
+	// VIRTUAL: Internal_Import(source_file String,save_path String,options Dictionary,platform_variants String,gen_files String,) Error
 
 	AppendImportExternalResource(path String, custom_options Dictionary, custom_importer String, generator_parameters Variant) Error
 }
@@ -6543,6 +6560,8 @@ type EditorInspector interface {
 	ScrollContainer
 
 	GetSelectedPath() String
+
+	GetEditedObject() Object
 }
 type EditorInspectorPlugin interface {
 	RefCounted
@@ -6580,13 +6599,15 @@ type EditorInterface interface {
 
 	GetSelection() EditorSelection
 
-	GetEditorSettings() EditorSettings
+	GetEditorSettings() RefEditorSettings
 
-	MakeMeshPreviews(meshes []Mesh, preview_size int32) []Texture2D
+	MakeMeshPreviews(meshes RefMesh, preview_size int32) RefTexture2D
 
 	SetPluginEnabled(plugin String, enabled bool)
 
 	IsPluginEnabled(plugin String) bool
+
+	GetEditorTheme() RefTheme
 
 	GetBaseControl() Control
 
@@ -6628,11 +6649,11 @@ type EditorInterface interface {
 
 	InspectObject(object Object, for_property String, inspector_only bool)
 
-	EditResource(resource Resource)
+	EditResource(resource RefResource)
 
 	EditNode(node Node)
 
-	EditScript(script Script, line int32, column int32, grab_focus bool)
+	EditScript(script RefScript, line int32, column int32, grab_focus bool)
 
 	OpenSceneFromPath(scene_filepath String)
 
@@ -6683,31 +6704,31 @@ type EditorNode3DGizmo interface {
 
 	// VIRTUAL: Internal_SubgizmosIntersectRay(camera Camera3D,point Vector2,) int32
 
-	// VIRTUAL: Internal_SubgizmosIntersectFrustum(camera Camera3D,frustum []Plane,) PackedInt32Array
+	// VIRTUAL: Internal_SubgizmosIntersectFrustum(camera Camera3D,frustum Plane,) PackedInt32Array
 
 	// VIRTUAL: Internal_SetSubgizmoTransform(id int32,transform Transform3D,)
 
 	// VIRTUAL: Internal_GetSubgizmoTransform(id int32,) Transform3D
 
-	// VIRTUAL: Internal_CommitSubgizmos(ids PackedInt32Array,restores []Transform3D,cancel bool,)
+	// VIRTUAL: Internal_CommitSubgizmos(ids PackedInt32Array,restores Transform3D,cancel bool,)
 
-	AddLines(lines PackedVector3Array, material Material, billboard bool, modulate Color)
+	AddLines(lines PackedVector3Array, material RefMaterial, billboard bool, modulate Color)
 
-	AddMesh(mesh Mesh, material Material, transform Transform3D, skeleton SkinReference)
+	AddMesh(mesh RefMesh, material RefMaterial, transform Transform3D, skeleton RefSkinReference)
 
 	AddCollisionSegments(segments PackedVector3Array)
 
-	AddCollisionTriangles(triangles TriangleMesh)
+	AddCollisionTriangles(triangles RefTriangleMesh)
 
-	AddUnscaledBillboard(material Material, default_scale float32, modulate Color)
+	AddUnscaledBillboard(material RefMaterial, default_scale float32, modulate Color)
 
-	AddHandles(handles PackedVector3Array, material Material, ids PackedInt32Array, billboard bool, secondary bool)
+	AddHandles(handles PackedVector3Array, material RefMaterial, ids PackedInt32Array, billboard bool, secondary bool)
 
 	SetNode3D(node Node)
 
 	GetNode3D() Node3D
 
-	GetPlugin() EditorNode3DGizmoPlugin
+	GetPlugin() RefEditorNode3DGizmoPlugin
 
 	Clear()
 
@@ -6722,7 +6743,7 @@ type EditorNode3DGizmoPlugin interface {
 
 	// VIRTUAL: Internal_HasGizmo(for_node_3d Node3D,) bool
 
-	// VIRTUAL: Internal_CreateGizmo(for_node_3d Node3D,) EditorNode3DGizmo
+	// VIRTUAL: Internal_CreateGizmo(for_node_3d Node3D,) RefEditorNode3DGizmo
 
 	// VIRTUAL: Internal_GetGizmoName() String
 
@@ -6732,37 +6753,37 @@ type EditorNode3DGizmoPlugin interface {
 
 	// VIRTUAL: Internal_IsSelectableWhenHidden() bool
 
-	// VIRTUAL: Internal_Redraw(gizmo EditorNode3DGizmo,)
+	// VIRTUAL: Internal_Redraw(gizmo RefEditorNode3DGizmo,)
 
-	// VIRTUAL: Internal_GetHandleName(gizmo EditorNode3DGizmo,handle_id int32,secondary bool,) String
+	// VIRTUAL: Internal_GetHandleName(gizmo RefEditorNode3DGizmo,handle_id int32,secondary bool,) String
 
-	// VIRTUAL: Internal_IsHandleHighlighted(gizmo EditorNode3DGizmo,handle_id int32,secondary bool,) bool
+	// VIRTUAL: Internal_IsHandleHighlighted(gizmo RefEditorNode3DGizmo,handle_id int32,secondary bool,) bool
 
-	// VIRTUAL: Internal_GetHandleValue(gizmo EditorNode3DGizmo,handle_id int32,secondary bool,) Variant
+	// VIRTUAL: Internal_GetHandleValue(gizmo RefEditorNode3DGizmo,handle_id int32,secondary bool,) Variant
 
-	// VIRTUAL: Internal_SetHandle(gizmo EditorNode3DGizmo,handle_id int32,secondary bool,camera Camera3D,screen_pos Vector2,)
+	// VIRTUAL: Internal_SetHandle(gizmo RefEditorNode3DGizmo,handle_id int32,secondary bool,camera Camera3D,screen_pos Vector2,)
 
-	// VIRTUAL: Internal_CommitHandle(gizmo EditorNode3DGizmo,handle_id int32,secondary bool,restore Variant,cancel bool,)
+	// VIRTUAL: Internal_CommitHandle(gizmo RefEditorNode3DGizmo,handle_id int32,secondary bool,restore Variant,cancel bool,)
 
-	// VIRTUAL: Internal_SubgizmosIntersectRay(gizmo EditorNode3DGizmo,camera Camera3D,screen_pos Vector2,) int32
+	// VIRTUAL: Internal_SubgizmosIntersectRay(gizmo RefEditorNode3DGizmo,camera Camera3D,screen_pos Vector2,) int32
 
-	// VIRTUAL: Internal_SubgizmosIntersectFrustum(gizmo EditorNode3DGizmo,camera Camera3D,frustum_planes []Plane,) PackedInt32Array
+	// VIRTUAL: Internal_SubgizmosIntersectFrustum(gizmo RefEditorNode3DGizmo,camera Camera3D,frustum_planes Plane,) PackedInt32Array
 
-	// VIRTUAL: Internal_GetSubgizmoTransform(gizmo EditorNode3DGizmo,subgizmo_id int32,) Transform3D
+	// VIRTUAL: Internal_GetSubgizmoTransform(gizmo RefEditorNode3DGizmo,subgizmo_id int32,) Transform3D
 
-	// VIRTUAL: Internal_SetSubgizmoTransform(gizmo EditorNode3DGizmo,subgizmo_id int32,transform Transform3D,)
+	// VIRTUAL: Internal_SetSubgizmoTransform(gizmo RefEditorNode3DGizmo,subgizmo_id int32,transform Transform3D,)
 
-	// VIRTUAL: Internal_CommitSubgizmos(gizmo EditorNode3DGizmo,ids PackedInt32Array,restores []Transform3D,cancel bool,)
+	// VIRTUAL: Internal_CommitSubgizmos(gizmo RefEditorNode3DGizmo,ids PackedInt32Array,restores Transform3D,cancel bool,)
 
 	CreateMaterial(name String, color Color, billboard bool, on_top bool, use_vertex_color bool)
 
-	CreateIconMaterial(name String, texture Texture2D, on_top bool, color Color)
+	CreateIconMaterial(name String, texture RefTexture2D, on_top bool, color Color)
 
-	CreateHandleMaterial(name String, billboard bool, texture Texture2D)
+	CreateHandleMaterial(name String, billboard bool, texture RefTexture2D)
 
-	AddMaterial(name String, material StandardMaterial3D)
+	AddMaterial(name String, material RefStandardMaterial3D)
 
-	GetMaterial(name String, gizmo EditorNode3DGizmo) StandardMaterial3D
+	GetMaterial(name String, gizmo RefEditorNode3DGizmo) RefStandardMaterial3D
 }
 type EditorPaths interface {
 	Object
@@ -6782,13 +6803,13 @@ type EditorPaths interface {
 type EditorPlugin interface {
 	Node
 
-	// VIRTUAL: Internal_ForwardCanvasGuiInput(event InputEvent,) bool
+	// VIRTUAL: Internal_ForwardCanvasGuiInput(event RefInputEvent,) bool
 
 	// VIRTUAL: Internal_ForwardCanvasDrawOverViewport(viewport_control Control,)
 
 	// VIRTUAL: Internal_ForwardCanvasForceDrawOverViewport(viewport_control Control,)
 
-	// VIRTUAL: Internal_Forward3DGuiInput(viewport_camera Camera3D,event InputEvent,) int32
+	// VIRTUAL: Internal_Forward3DGuiInput(viewport_camera Camera3D,event RefInputEvent,) int32
 
 	// VIRTUAL: Internal_Forward3DDrawOverViewport(viewport_control Control,)
 
@@ -6796,7 +6817,7 @@ type EditorPlugin interface {
 
 	// VIRTUAL: Internal_GetPluginName() String
 
-	// VIRTUAL: Internal_GetPluginIcon() Texture2D
+	// VIRTUAL: Internal_GetPluginIcon() RefTexture2D
 
 	// VIRTUAL: Internal_HasMainScreen() bool
 
@@ -6820,9 +6841,9 @@ type EditorPlugin interface {
 
 	// VIRTUAL: Internal_GetBreakpoints() PackedStringArray
 
-	// VIRTUAL: Internal_SetWindowLayout(configuration ConfigFile,)
+	// VIRTUAL: Internal_SetWindowLayout(configuration RefConfigFile,)
 
-	// VIRTUAL: Internal_GetWindowLayout(configuration ConfigFile,)
+	// VIRTUAL: Internal_GetWindowLayout(configuration RefConfigFile,)
 
 	// VIRTUAL: Internal_Build() bool
 
@@ -6850,7 +6871,7 @@ type EditorPlugin interface {
 
 	GetExportAsMenu() PopupMenu
 
-	AddCustomType(typeName String, base String, script Script, icon Texture2D)
+	AddCustomType(typeName String, base String, script RefScript, icon RefTexture2D)
 
 	RemoveCustomType(typeName String)
 
@@ -6872,37 +6893,37 @@ type EditorPlugin interface {
 
 	QueueSaveLayout()
 
-	AddTranslationParserPlugin(parser EditorTranslationParserPlugin)
+	AddTranslationParserPlugin(parser RefEditorTranslationParserPlugin)
 
-	RemoveTranslationParserPlugin(parser EditorTranslationParserPlugin)
+	RemoveTranslationParserPlugin(parser RefEditorTranslationParserPlugin)
 
-	AddImportPlugin(importer EditorImportPlugin, first_priority bool)
+	AddImportPlugin(importer RefEditorImportPlugin, first_priority bool)
 
-	RemoveImportPlugin(importer EditorImportPlugin)
+	RemoveImportPlugin(importer RefEditorImportPlugin)
 
-	AddSceneFormatImporterPlugin(scene_format_importer EditorSceneFormatImporter, first_priority bool)
+	AddSceneFormatImporterPlugin(scene_format_importer RefEditorSceneFormatImporter, first_priority bool)
 
-	RemoveSceneFormatImporterPlugin(scene_format_importer EditorSceneFormatImporter)
+	RemoveSceneFormatImporterPlugin(scene_format_importer RefEditorSceneFormatImporter)
 
-	AddScenePostImportPlugin(scene_import_plugin EditorScenePostImportPlugin, first_priority bool)
+	AddScenePostImportPlugin(scene_import_plugin RefEditorScenePostImportPlugin, first_priority bool)
 
-	RemoveScenePostImportPlugin(scene_import_plugin EditorScenePostImportPlugin)
+	RemoveScenePostImportPlugin(scene_import_plugin RefEditorScenePostImportPlugin)
 
-	AddExportPlugin(plugin EditorExportPlugin)
+	AddExportPlugin(plugin RefEditorExportPlugin)
 
-	RemoveExportPlugin(plugin EditorExportPlugin)
+	RemoveExportPlugin(plugin RefEditorExportPlugin)
 
-	AddNode3DGizmoPlugin(plugin EditorNode3DGizmoPlugin)
+	AddNode3DGizmoPlugin(plugin RefEditorNode3DGizmoPlugin)
 
-	RemoveNode3DGizmoPlugin(plugin EditorNode3DGizmoPlugin)
+	RemoveNode3DGizmoPlugin(plugin RefEditorNode3DGizmoPlugin)
 
-	AddInspectorPlugin(plugin EditorInspectorPlugin)
+	AddInspectorPlugin(plugin RefEditorInspectorPlugin)
 
-	RemoveInspectorPlugin(plugin EditorInspectorPlugin)
+	RemoveInspectorPlugin(plugin RefEditorInspectorPlugin)
 
-	AddResourceConversionPlugin(plugin EditorResourceConversionPlugin)
+	AddResourceConversionPlugin(plugin RefEditorResourceConversionPlugin)
 
-	RemoveResourceConversionPlugin(plugin EditorResourceConversionPlugin)
+	RemoveResourceConversionPlugin(plugin RefEditorResourceConversionPlugin)
 
 	SetInputEventForwardingAlwaysEnabled()
 
@@ -6912,9 +6933,9 @@ type EditorPlugin interface {
 
 	GetScriptCreateDialog() ScriptCreateDialog
 
-	AddDebuggerPlugin(script EditorDebuggerPlugin)
+	AddDebuggerPlugin(script RefEditorDebuggerPlugin)
 
-	RemoveDebuggerPlugin(script EditorDebuggerPlugin)
+	RemoveDebuggerPlugin(script RefEditorDebuggerPlugin)
 
 	GetPluginVersion() String
 }
@@ -6970,9 +6991,9 @@ type EditorResourceConversionPlugin interface {
 
 	// VIRTUAL: Internal_ConvertsTo() String
 
-	// VIRTUAL: Internal_Handles(resource Resource,) bool
+	// VIRTUAL: Internal_Handles(resource RefResource,) bool
 
-	// VIRTUAL: Internal_Convert(resource Resource,) Resource
+	// VIRTUAL: Internal_Convert(resource RefResource,) RefResource
 }
 type EditorResourcePicker interface {
 	HBoxContainer
@@ -6987,9 +7008,9 @@ type EditorResourcePicker interface {
 
 	GetAllowedTypes() PackedStringArray
 
-	SetEditedResource(resource Resource)
+	SetEditedResource(resource RefResource)
 
-	GetEditedResource() Resource
+	GetEditedResource() RefResource
 
 	SetToggleMode(enable bool)
 
@@ -7006,11 +7027,11 @@ type EditorResourcePreview interface {
 
 	QueueResourcePreview(path String, receiver Object, receiver_func StringName, userdata Variant)
 
-	QueueEditedResourcePreview(resource Resource, receiver Object, receiver_func StringName, userdata Variant)
+	QueueEditedResourcePreview(resource RefResource, receiver Object, receiver_func StringName, userdata Variant)
 
-	AddPreviewGenerator(generator EditorResourcePreviewGenerator)
+	AddPreviewGenerator(generator RefEditorResourcePreviewGenerator)
 
-	RemovePreviewGenerator(generator EditorResourcePreviewGenerator)
+	RemovePreviewGenerator(generator RefEditorResourcePreviewGenerator)
 
 	CheckForInvalidation(path String)
 }
@@ -7019,9 +7040,9 @@ type EditorResourcePreviewGenerator interface {
 
 	// VIRTUAL: Internal_Handles(typeName String,) bool
 
-	// VIRTUAL: Internal_Generate(resource Resource,size Vector2i,metadata Dictionary,) Texture2D
+	// VIRTUAL: Internal_Generate(resource RefResource,size Vector2i,metadata Dictionary,) RefTexture2D
 
-	// VIRTUAL: Internal_GenerateFromPath(path String,size Vector2i,metadata Dictionary,) Texture2D
+	// VIRTUAL: Internal_GenerateFromPath(path String,size Vector2i,metadata Dictionary,) RefTexture2D
 
 	// VIRTUAL: Internal_GenerateSmallPreviewAutomatically() bool
 
@@ -7074,7 +7095,7 @@ type EditorScenePostImportPlugin interface {
 
 	// VIRTUAL: Internal_GetInternalOptionUpdateViewRequired(category int32,option String,) Variant
 
-	// VIRTUAL: Internal_InternalProcess(category int32,base_node Node,node Node,resource Resource,)
+	// VIRTUAL: Internal_InternalProcess(category int32,base_node Node,node Node,resource RefResource,)
 
 	// VIRTUAL: Internal_GetImportOptions(path String,)
 
@@ -7117,9 +7138,9 @@ type EditorSelection interface {
 
 	RemoveNode(node Node)
 
-	GetSelectedNodes() []Node
+	GetSelectedNodes() Node
 
-	GetTransformableSelectedNodes() []Node
+	GetTransformableSelectedNodes() Node
 }
 type EditorSettings interface {
 	Resource
@@ -7148,7 +7169,7 @@ type EditorSettings interface {
 
 	GetRecentDirs() PackedStringArray
 
-	SetBuiltinActionOverride(name String, actions_list []InputEvent)
+	SetBuiltinActionOverride(name String, actions_list RefInputEvent)
 
 	CheckChangedSettingsInGroup(setting_prefix String) bool
 
@@ -7189,7 +7210,7 @@ type EditorSyntaxHighlighter interface {
 type EditorTranslationParserPlugin interface {
 	RefCounted
 
-	// VIRTUAL: Internal_ParseFile(path String,msgids []String,msgids_context_plural []Array,)
+	// VIRTUAL: Internal_ParseFile(path String,msgids String,msgids_context_plural Array,)
 
 	// VIRTUAL: Internal_GetRecognizedExtensions() PackedStringArray
 }
@@ -7225,7 +7246,7 @@ type EditorVCSInterface interface {
 
 	// VIRTUAL: Internal_SetCredentials(username String,password String,ssh_public_key_path String,ssh_private_key_path String,ssh_passphrase String,)
 
-	// VIRTUAL: Internal_GetModifiedFilesData() []Dictionary
+	// VIRTUAL: Internal_GetModifiedFilesData() Dictionary
 
 	// VIRTUAL: Internal_StageFile(file_path String,)
 
@@ -7235,17 +7256,17 @@ type EditorVCSInterface interface {
 
 	// VIRTUAL: Internal_Commit(msg String,)
 
-	// VIRTUAL: Internal_GetDiff(identifier String,area int32,) []Dictionary
+	// VIRTUAL: Internal_GetDiff(identifier String,area int32,) Dictionary
 
 	// VIRTUAL: Internal_ShutDown() bool
 
 	// VIRTUAL: Internal_GetVcsName() String
 
-	// VIRTUAL: Internal_GetPreviousCommits(max_commits int32,) []Dictionary
+	// VIRTUAL: Internal_GetPreviousCommits(max_commits int32,) Dictionary
 
-	// VIRTUAL: Internal_GetBranchList() []String
+	// VIRTUAL: Internal_GetBranchList() String
 
-	// VIRTUAL: Internal_GetRemotes() []String
+	// VIRTUAL: Internal_GetRemotes() String
 
 	// VIRTUAL: Internal_CreateBranch(branch_name String,)
 
@@ -7265,7 +7286,7 @@ type EditorVCSInterface interface {
 
 	// VIRTUAL: Internal_Fetch(remote String,)
 
-	// VIRTUAL: Internal_GetLineDiff(file_path String,text String,) []Dictionary
+	// VIRTUAL: Internal_GetLineDiff(file_path String,text String,) Dictionary
 
 	CreateDiffLine(new_line_no int32, old_line_no int32, content String, status String) Dictionary
 
@@ -7277,9 +7298,9 @@ type EditorVCSInterface interface {
 
 	CreateStatusFile(file_path String, change_type EditorVCSInterfaceChangeType, area EditorVCSInterfaceTreeArea) Dictionary
 
-	AddDiffHunksIntoDiffFile(diff_file Dictionary, diff_hunks []Dictionary) Dictionary
+	AddDiffHunksIntoDiffFile(diff_file Dictionary, diff_hunks Dictionary) Dictionary
 
-	AddLineDiffsIntoDiffHunk(diff_hunk Dictionary, line_diffs []Dictionary) Dictionary
+	AddLineDiffsIntoDiffHunk(diff_hunk Dictionary, line_diffs Dictionary) Dictionary
 
 	PopupError(msg String)
 }
@@ -7329,7 +7350,7 @@ type Engine interface {
 
 	GetAuthorInfo() Dictionary
 
-	GetCopyrightInfo() []Dictionary
+	GetCopyrightInfo() Dictionary
 
 	GetDonorInfo() Dictionary
 
@@ -7372,7 +7393,7 @@ type EngineDebugger interface {
 
 	IsActive() bool
 
-	RegisterProfiler(name StringName, profiler EngineProfiler)
+	RegisterProfiler(name StringName, profiler RefEngineProfiler)
 
 	UnregisterProfiler(name StringName)
 
@@ -7408,9 +7429,9 @@ type Environment interface {
 
 	GetBackground() EnvironmentBGMode
 
-	SetSky(sky Sky)
+	SetSky(sky RefSky)
 
-	GetSky() Sky
+	GetSky() RefSky
 
 	SetSkyCustomFov(scale float32)
 
@@ -7644,9 +7665,9 @@ type Environment interface {
 
 	GetGlowMapStrength() float32
 
-	SetGlowMap(mode Texture)
+	SetGlowMap(mode RefTexture)
 
-	GetGlowMap() Texture
+	GetGlowMap() RefTexture
 
 	SetFogEnabled(enabled bool)
 
@@ -7752,9 +7773,9 @@ type Environment interface {
 
 	GetAdjustmentSaturation() float32
 
-	SetAdjustmentColorCorrection(color_correction Texture)
+	SetAdjustmentColorCorrection(color_correction RefTexture)
 
-	GetAdjustmentColorCorrection() Texture
+	GetAdjustmentColorCorrection() RefTexture
 }
 type Expression interface {
 	RefCounted
@@ -7857,13 +7878,13 @@ type FastNoiseLite interface {
 type FileAccess interface {
 	RefCounted
 
-	Open(path String, flags FileAccessModeFlags) FileAccess
+	Open(path String, flags FileAccessModeFlags) RefFileAccess
 
-	OpenEncrypted(path String, mode_flags FileAccessModeFlags, key PackedByteArray) FileAccess
+	OpenEncrypted(path String, mode_flags FileAccessModeFlags, key PackedByteArray) RefFileAccess
 
-	OpenEncryptedWithPass(path String, mode_flags FileAccessModeFlags, pass String) FileAccess
+	OpenEncryptedWithPass(path String, mode_flags FileAccessModeFlags, pass String) RefFileAccess
 
-	OpenCompressed(path String, mode_flags FileAccessModeFlags, compression_mode FileAccessCompressionMode) FileAccess
+	OpenCompressed(path String, mode_flags FileAccessModeFlags, compression_mode FileAccessCompressionMode) RefFileAccess
 
 	GetOpenError() Error
 
@@ -8029,9 +8050,9 @@ type FileSystemDock interface {
 
 	NavigateToPath(path String)
 
-	AddResourceTooltipPlugin(plugin EditorResourceTooltipPlugin)
+	AddResourceTooltipPlugin(plugin RefEditorResourceTooltipPlugin)
 
-	RemoveResourceTooltipPlugin(plugin EditorResourceTooltipPlugin)
+	RemoveResourceTooltipPlugin(plugin RefEditorResourceTooltipPlugin)
 }
 type FlowContainer interface {
 	Container
@@ -8069,9 +8090,9 @@ type FogMaterial interface {
 
 	GetEdgeFade() float32
 
-	SetDensityTexture(density_texture Texture3D)
+	SetDensityTexture(density_texture RefTexture3D)
 
-	GetDensityTexture() Texture3D
+	GetDensityTexture() RefTexture3D
 }
 type FogVolume interface {
 	VisualInstance3D
@@ -8084,20 +8105,20 @@ type FogVolume interface {
 
 	GetShape() RenderingServerFogVolumeShape
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 }
 type Font interface {
 	Resource
 
-	SetFallbacks(fallbacks []Font)
+	SetFallbacks(fallbacks RefFont)
 
-	GetFallbacks() []Font
+	GetFallbacks() RefFont
 
 	FindVariation(variation_coordinates Dictionary, face_index int32, strength float32, transform Transform2D, spacing_top int32, spacing_bottom int32, spacing_space int32, spacing_glyph int32) RID
 
-	GetRids() []RID
+	GetRids() RID
 
 	GetHeight(font_size int32) float32
 
@@ -8230,7 +8251,7 @@ type FontFile interface {
 
 	RemoveCache(cache_index int32)
 
-	GetSizeCacheList(cache_index int32) []Vector2i
+	GetSizeCacheList(cache_index int32) Vector2i
 
 	ClearSizeCache(cache_index int32)
 
@@ -8282,9 +8303,9 @@ type FontFile interface {
 
 	RemoveTexture(cache_index int32, size Vector2i, texture_index int32)
 
-	SetTextureImage(cache_index int32, size Vector2i, texture_index int32, image Image)
+	SetTextureImage(cache_index int32, size Vector2i, texture_index int32, image RefImage)
 
-	GetTextureImage(cache_index int32, size Vector2i, texture_index int32) Image
+	GetTextureImage(cache_index int32, size Vector2i, texture_index int32) RefImage
 
 	SetTextureOffsets(cache_index int32, size Vector2i, texture_index int32, offset PackedInt32Array)
 
@@ -8316,7 +8337,7 @@ type FontFile interface {
 
 	GetGlyphTextureIdx(cache_index int32, size Vector2i, glyph int32) int32
 
-	GetKerningList(cache_index int32, size int32) []Vector2i
+	GetKerningList(cache_index int32, size int32) Vector2i
 
 	ClearKerningMap(cache_index int32, size int32)
 
@@ -8357,9 +8378,9 @@ type FontFile interface {
 type FontVariation interface {
 	Font
 
-	SetBaseFont(font Font)
+	SetBaseFont(font RefFont)
 
-	GetBaseFont() Font
+	GetBaseFont() RefFont
 
 	SetVariationOpentype(coords Dictionary)
 
@@ -8407,7 +8428,7 @@ type GDExtensionManager interface {
 
 	GetLoadedExtensions() PackedStringArray
 
-	GetExtension(path String) GDExtension
+	GetExtension(path String) RefGDExtension
 }
 type GDScript interface {
 	Script
@@ -8506,11 +8527,11 @@ type GLTFBufferView interface {
 type GLTFCamera interface {
 	Resource
 
-	FromNode(camera_node Camera3D) GLTFCamera
+	FromNode(camera_node Camera3D) RefGLTFCamera
 
 	ToNode() Camera3D
 
-	FromDictionary(dictionary Dictionary) GLTFCamera
+	FromDictionary(dictionary Dictionary) RefGLTFCamera
 
 	ToDictionary() Dictionary
 
@@ -8537,54 +8558,74 @@ type GLTFCamera interface {
 type GLTFDocument interface {
 	Resource
 
-	AppendFromFile(path String, state GLTFState, flags uint32, base_path String) Error
+	AppendFromFile(path String, state RefGLTFState, flags uint32, base_path String) Error
 
-	AppendFromBuffer(bytes PackedByteArray, base_path String, state GLTFState, flags uint32) Error
+	AppendFromBuffer(bytes PackedByteArray, base_path String, state RefGLTFState, flags uint32) Error
 
-	AppendFromScene(node Node, state GLTFState, flags uint32) Error
+	AppendFromScene(node Node, state RefGLTFState, flags uint32) Error
 
-	GenerateScene(state GLTFState, bake_fps float32, trimming bool, remove_immutable_tracks bool) Node
+	GenerateScene(state RefGLTFState, bake_fps float32, trimming bool, remove_immutable_tracks bool) Node
 
-	GenerateBuffer(state GLTFState) PackedByteArray
+	GenerateBuffer(state RefGLTFState) PackedByteArray
 
-	WriteToFilesystem(state GLTFState, path String) Error
+	WriteToFilesystem(state RefGLTFState, path String) Error
 
-	RegisterGltfDocumentExtension(extension GLTFDocumentExtension, first_priority bool)
+	SetImageFormat(image_format String)
 
-	UnregisterGltfDocumentExtension(extension GLTFDocumentExtension)
+	GetImageFormat() String
+
+	SetLossyQuality(lossy_quality float32)
+
+	GetLossyQuality() float32
+
+	SetRootNodeMode(root_node_mode GLTFDocumentRootNodeMode)
+
+	GetRootNodeMode() GLTFDocumentRootNodeMode
+
+	RegisterGltfDocumentExtension(extension RefGLTFDocumentExtension, first_priority bool)
+
+	UnregisterGltfDocumentExtension(extension RefGLTFDocumentExtension)
 }
 type GLTFDocumentExtension interface {
 	Resource
 
-	// VIRTUAL: Internal_ImportPreflight(state GLTFState,extensions PackedStringArray,) Error
+	// VIRTUAL: Internal_ImportPreflight(state RefGLTFState,extensions PackedStringArray,) Error
 
 	// VIRTUAL: Internal_GetSupportedExtensions() PackedStringArray
 
-	// VIRTUAL: Internal_ParseNodeExtensions(state GLTFState,gltf_node GLTFNode,extensions Dictionary,) Error
+	// VIRTUAL: Internal_ParseNodeExtensions(state RefGLTFState,gltf_node RefGLTFNode,extensions Dictionary,) Error
 
-	// VIRTUAL: Internal_ParseImageData(state GLTFState,image_data PackedByteArray,mime_type String,ret_image Image,) Error
+	// VIRTUAL: Internal_ParseImageData(state RefGLTFState,image_data PackedByteArray,mime_type String,ret_image RefImage,) Error
 
 	// VIRTUAL: Internal_GetImageFileExtension() String
 
-	// VIRTUAL: Internal_ParseTextureJson(state GLTFState,texture_json Dictionary,ret_gltf_texture GLTFTexture,) Error
+	// VIRTUAL: Internal_ParseTextureJson(state RefGLTFState,texture_json Dictionary,ret_gltf_texture RefGLTFTexture,) Error
 
-	// VIRTUAL: Internal_GenerateSceneNode(state GLTFState,gltf_node GLTFNode,scene_parent Node,) Node3D
+	// VIRTUAL: Internal_GenerateSceneNode(state RefGLTFState,gltf_node RefGLTFNode,scene_parent Node,) Node3D
 
-	// VIRTUAL: Internal_ImportPostParse(state GLTFState,) Error
+	// VIRTUAL: Internal_ImportPostParse(state RefGLTFState,) Error
 
-	// VIRTUAL: Internal_ImportNode(state GLTFState,gltf_node GLTFNode,json Dictionary,node Node,) Error
+	// VIRTUAL: Internal_ImportNode(state RefGLTFState,gltf_node RefGLTFNode,json Dictionary,node Node,) Error
 
-	// VIRTUAL: Internal_ImportPost(state GLTFState,root Node,) Error
+	// VIRTUAL: Internal_ImportPost(state RefGLTFState,root Node,) Error
 
-	// VIRTUAL: Internal_ExportPreflight(state GLTFState,root Node,) Error
+	// VIRTUAL: Internal_ExportPreflight(state RefGLTFState,root Node,) Error
 
-	// VIRTUAL: Internal_ConvertSceneNode(state GLTFState,gltf_node GLTFNode,scene_node Node,)
+	// VIRTUAL: Internal_ConvertSceneNode(state RefGLTFState,gltf_node RefGLTFNode,scene_node Node,)
 
-	// VIRTUAL: Internal_ExportPreserialize(state GLTFState,) Error
+	// VIRTUAL: Internal_ExportPreserialize(state RefGLTFState,) Error
 
-	// VIRTUAL: Internal_ExportNode(state GLTFState,gltf_node GLTFNode,json Dictionary,node Node,) Error
+	// VIRTUAL: Internal_GetSaveableImageFormats() PackedStringArray
 
-	// VIRTUAL: Internal_ExportPost(state GLTFState,) Error
+	// VIRTUAL: Internal_SerializeImageToBytes(state RefGLTFState,image RefImage,image_dict Dictionary,image_format String,lossy_quality float32,) PackedByteArray
+
+	// VIRTUAL: Internal_SaveImageAtPath(state RefGLTFState,image RefImage,file_path String,image_format String,lossy_quality float32,) Error
+
+	// VIRTUAL: Internal_SerializeTextureJson(state RefGLTFState,texture_json Dictionary,gltf_texture RefGLTFTexture,image_format String,) Error
+
+	// VIRTUAL: Internal_ExportNode(state RefGLTFState,gltf_node RefGLTFNode,json Dictionary,node Node,) Error
+
+	// VIRTUAL: Internal_ExportPost(state RefGLTFState,) Error
 }
 type GLTFDocumentExtensionConvertImporterMesh interface {
 	GLTFDocumentExtension
@@ -8592,11 +8633,11 @@ type GLTFDocumentExtensionConvertImporterMesh interface {
 type GLTFLight interface {
 	Resource
 
-	FromNode(light_node Light3D) GLTFLight
+	FromNode(light_node Light3D) RefGLTFLight
 
 	ToNode() Light3D
 
-	FromDictionary(dictionary Dictionary) GLTFLight
+	FromDictionary(dictionary Dictionary) RefGLTFLight
 
 	ToDictionary() Dictionary
 
@@ -8627,17 +8668,17 @@ type GLTFLight interface {
 type GLTFMesh interface {
 	Resource
 
-	GetMesh() ImporterMesh
+	GetMesh() RefImporterMesh
 
-	SetMesh(mesh ImporterMesh)
+	SetMesh(mesh RefImporterMesh)
 
 	GetBlendWeights() PackedFloat32Array
 
 	SetBlendWeights(blend_weights PackedFloat32Array)
 
-	GetInstanceMaterials() []Material
+	GetInstanceMaterials() RefMaterial
 
-	SetInstanceMaterials(instance_materials []Material)
+	SetInstanceMaterials(instance_materials RefMaterial)
 }
 type GLTFNode interface {
 	Resource
@@ -8697,11 +8738,11 @@ type GLTFNode interface {
 type GLTFPhysicsBody interface {
 	Resource
 
-	FromNode(body_node CollisionObject3D) GLTFPhysicsBody
+	FromNode(body_node CollisionObject3D) RefGLTFPhysicsBody
 
 	ToNode() CollisionObject3D
 
-	FromDictionary(dictionary Dictionary) GLTFPhysicsBody
+	FromDictionary(dictionary Dictionary) RefGLTFPhysicsBody
 
 	ToDictionary() Dictionary
 
@@ -8732,11 +8773,11 @@ type GLTFPhysicsBody interface {
 type GLTFPhysicsShape interface {
 	Resource
 
-	FromNode(shape_node CollisionShape3D) GLTFPhysicsShape
+	FromNode(shape_node CollisionShape3D) RefGLTFPhysicsShape
 
 	ToNode(cache_shapes bool) CollisionShape3D
 
-	FromDictionary(dictionary Dictionary) GLTFPhysicsShape
+	FromDictionary(dictionary Dictionary) RefGLTFPhysicsShape
 
 	ToDictionary() Dictionary
 
@@ -8764,9 +8805,9 @@ type GLTFPhysicsShape interface {
 
 	SetMeshIndex(mesh_index int32)
 
-	GetImporterMesh() ImporterMesh
+	GetImporterMesh() RefImporterMesh
 
-	SetImporterMesh(importer_mesh ImporterMesh)
+	SetImporterMesh(importer_mesh RefImporterMesh)
 }
 type GLTFSkeleton interface {
 	Resource
@@ -8781,9 +8822,9 @@ type GLTFSkeleton interface {
 
 	GetGodotSkeleton() Skeleton3D
 
-	GetUniqueNames() []String
+	GetUniqueNames() String
 
-	SetUniqueNames(unique_names []String)
+	SetUniqueNames(unique_names String)
 
 	GetGodotBoneNode() Dictionary
 
@@ -8804,9 +8845,9 @@ type GLTFSkin interface {
 
 	SetJointsOriginal(joints_original PackedInt32Array)
 
-	GetInverseBinds() []Transform3D
+	GetInverseBinds() Transform3D
 
-	SetInverseBinds(inverse_binds []Transform3D)
+	SetInverseBinds(inverse_binds Transform3D)
 
 	GetJoints() PackedInt32Array
 
@@ -8832,16 +8873,16 @@ type GLTFSkin interface {
 
 	SetJointIToName(joint_i_to_name Dictionary)
 
-	GetGodotSkin() Skin
+	GetGodotSkin() RefSkin
 
-	SetGodotSkin(godot_skin Skin)
+	SetGodotSkin(godot_skin RefSkin)
 }
 type GLTFSpecGloss interface {
 	Resource
 
-	GetDiffuseImg() Image
+	GetDiffuseImg() RefImage
 
-	SetDiffuseImg(diffuse_img Image)
+	SetDiffuseImg(diffuse_img RefImage)
 
 	GetDiffuseFactor() Color
 
@@ -8855,9 +8896,9 @@ type GLTFSpecGloss interface {
 
 	SetSpecularFactor(specular_factor Color)
 
-	GetSpecGlossImg() Image
+	GetSpecGlossImg() RefImage
 
-	SetSpecGlossImg(spec_gloss_img Image)
+	SetSpecGlossImg(spec_gloss_img RefImage)
 }
 type GLTFState interface {
 	Resource
@@ -8888,33 +8929,33 @@ type GLTFState interface {
 
 	SetUseNamedSkinBinds(use_named_skin_binds bool)
 
-	GetNodes() []GLTFNode
+	GetNodes() RefGLTFNode
 
-	SetNodes(nodes []GLTFNode)
+	SetNodes(nodes RefGLTFNode)
 
-	GetBuffers() []PackedByteArray
+	GetBuffers() PackedByteArray
 
-	SetBuffers(buffers []PackedByteArray)
+	SetBuffers(buffers PackedByteArray)
 
-	GetBufferViews() []GLTFBufferView
+	GetBufferViews() RefGLTFBufferView
 
-	SetBufferViews(buffer_views []GLTFBufferView)
+	SetBufferViews(buffer_views RefGLTFBufferView)
 
-	GetAccessors() []GLTFAccessor
+	GetAccessors() RefGLTFAccessor
 
-	SetAccessors(accessors []GLTFAccessor)
+	SetAccessors(accessors RefGLTFAccessor)
 
-	GetMeshes() []GLTFMesh
+	GetMeshes() RefGLTFMesh
 
-	SetMeshes(meshes []GLTFMesh)
+	SetMeshes(meshes RefGLTFMesh)
 
 	GetAnimationPlayersCount(idx int32) int32
 
 	GetAnimationPlayer(idx int32) AnimationPlayer
 
-	GetMaterials() []Material
+	GetMaterials() RefMaterial
 
-	SetMaterials(materials []Material)
+	SetMaterials(materials RefMaterial)
 
 	GetSceneName() String
 
@@ -8932,49 +8973,49 @@ type GLTFState interface {
 
 	SetRootNodes(root_nodes PackedInt32Array)
 
-	GetTextures() []GLTFTexture
+	GetTextures() RefGLTFTexture
 
-	SetTextures(textures []GLTFTexture)
+	SetTextures(textures RefGLTFTexture)
 
-	GetTextureSamplers() []GLTFTextureSampler
+	GetTextureSamplers() RefGLTFTextureSampler
 
-	SetTextureSamplers(texture_samplers []GLTFTextureSampler)
+	SetTextureSamplers(texture_samplers RefGLTFTextureSampler)
 
-	GetImages() []Texture2D
+	GetImages() RefTexture2D
 
-	SetImages(images []Texture2D)
+	SetImages(images RefTexture2D)
 
-	GetSkins() []GLTFSkin
+	GetSkins() RefGLTFSkin
 
-	SetSkins(skins []GLTFSkin)
+	SetSkins(skins RefGLTFSkin)
 
-	GetCameras() []GLTFCamera
+	GetCameras() RefGLTFCamera
 
-	SetCameras(cameras []GLTFCamera)
+	SetCameras(cameras RefGLTFCamera)
 
-	GetLights() []GLTFLight
+	GetLights() RefGLTFLight
 
-	SetLights(lights []GLTFLight)
+	SetLights(lights RefGLTFLight)
 
-	GetUniqueNames() []String
+	GetUniqueNames() String
 
-	SetUniqueNames(unique_names []String)
+	SetUniqueNames(unique_names String)
 
-	GetUniqueAnimationNames() []String
+	GetUniqueAnimationNames() String
 
-	SetUniqueAnimationNames(unique_animation_names []String)
+	SetUniqueAnimationNames(unique_animation_names String)
 
-	GetSkeletons() []GLTFSkeleton
+	GetSkeletons() RefGLTFSkeleton
 
-	SetSkeletons(skeletons []GLTFSkeleton)
+	SetSkeletons(skeletons RefGLTFSkeleton)
 
 	GetCreateAnimations() bool
 
 	SetCreateAnimations(create_animations bool)
 
-	GetAnimations() []GLTFAnimation
+	GetAnimations() RefGLTFAnimation
 
-	SetAnimations(animations []GLTFAnimation)
+	SetAnimations(animations RefGLTFAnimation)
 
 	GetSceneNode(idx int32) Node
 
@@ -9045,7 +9086,7 @@ type GPUParticles2D interface {
 
 	SetInterpolate(enable bool)
 
-	SetProcessMaterial(material Material)
+	SetProcessMaterial(material RefMaterial)
 
 	SetSpeedScale(scale float64)
 
@@ -9075,7 +9116,7 @@ type GPUParticles2D interface {
 
 	GetInterpolate() bool
 
-	GetProcessMaterial() Material
+	GetProcessMaterial() RefMaterial
 
 	GetSpeedScale() float64
 
@@ -9085,9 +9126,9 @@ type GPUParticles2D interface {
 
 	GetDrawOrder() GPUParticles2DDrawOrder
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	CaptureRect() Rect2
 
@@ -9144,7 +9185,7 @@ type GPUParticles3D interface {
 
 	SetInterpolate(enable bool)
 
-	SetProcessMaterial(material Material)
+	SetProcessMaterial(material RefMaterial)
 
 	SetSpeedScale(scale float64)
 
@@ -9174,7 +9215,7 @@ type GPUParticles3D interface {
 
 	GetInterpolate() bool
 
-	GetProcessMaterial() Material
+	GetProcessMaterial() RefMaterial
 
 	GetSpeedScale() float64
 
@@ -9186,15 +9227,15 @@ type GPUParticles3D interface {
 
 	SetDrawPasses(passes int32)
 
-	SetDrawPassMesh(pass int32, mesh Mesh)
+	SetDrawPassMesh(pass int32, mesh RefMesh)
 
 	GetDrawPasses() int32
 
-	GetDrawPassMesh(pass int32) Mesh
+	GetDrawPassMesh(pass int32) RefMesh
 
-	SetSkin(skin Skin)
+	SetSkin(skin RefSkin)
 
-	GetSkin() Skin
+	GetSkin() RefSkin
 
 	Restart()
 
@@ -9260,9 +9301,9 @@ type GPUParticlesAttractorVectorField3D interface {
 
 	GetSize() Vector3
 
-	SetTexture(texture Texture3D)
+	SetTexture(texture RefTexture3D)
 
-	GetTexture() Texture3D
+	GetTexture() RefTexture3D
 }
 type GPUParticlesCollision3D interface {
 	VisualInstance3D
@@ -9308,9 +9349,9 @@ type GPUParticlesCollisionSDF3D interface {
 
 	GetResolution() GPUParticlesCollisionSDF3DResolution
 
-	SetTexture(texture Texture3D)
+	SetTexture(texture RefTexture3D)
 
-	GetTexture() Texture3D
+	GetTexture() RefTexture3D
 
 	SetThickness(thickness float32)
 
@@ -9387,36 +9428,36 @@ type Geometry2D interface {
 
 	ConvexHull(points PackedVector2Array) PackedVector2Array
 
-	DecomposePolygonInConvex(polygon PackedVector2Array) []PackedVector2Array
+	DecomposePolygonInConvex(polygon PackedVector2Array) PackedVector2Array
 
-	MergePolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array) []PackedVector2Array
+	MergePolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array) PackedVector2Array
 
-	ClipPolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array) []PackedVector2Array
+	ClipPolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array) PackedVector2Array
 
-	IntersectPolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array) []PackedVector2Array
+	IntersectPolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array) PackedVector2Array
 
-	ExcludePolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array) []PackedVector2Array
+	ExcludePolygons(polygon_a PackedVector2Array, polygon_b PackedVector2Array) PackedVector2Array
 
-	ClipPolylineWithPolygon(polyline PackedVector2Array, polygon PackedVector2Array) []PackedVector2Array
+	ClipPolylineWithPolygon(polyline PackedVector2Array, polygon PackedVector2Array) PackedVector2Array
 
-	IntersectPolylineWithPolygon(polyline PackedVector2Array, polygon PackedVector2Array) []PackedVector2Array
+	IntersectPolylineWithPolygon(polyline PackedVector2Array, polygon PackedVector2Array) PackedVector2Array
 
-	OffsetPolygon(polygon PackedVector2Array, delta float32, join_type Geometry2DPolyJoinType) []PackedVector2Array
+	OffsetPolygon(polygon PackedVector2Array, delta float32, join_type Geometry2DPolyJoinType) PackedVector2Array
 
-	OffsetPolyline(polyline PackedVector2Array, delta float32, join_type Geometry2DPolyJoinType, end_type Geometry2DPolyEndType) []PackedVector2Array
+	OffsetPolyline(polyline PackedVector2Array, delta float32, join_type Geometry2DPolyJoinType, end_type Geometry2DPolyEndType) PackedVector2Array
 
 	MakeAtlas(sizes PackedVector2Array) Dictionary
 }
 type Geometry3D interface {
 	Object
 
-	ComputeConvexMeshPoints(planes []Plane) PackedVector3Array
+	ComputeConvexMeshPoints(planes Plane) PackedVector3Array
 
-	BuildBoxPlanes(extents Vector3) []Plane
+	BuildBoxPlanes(extents Vector3) Plane
 
-	BuildCylinderPlanes(radius float32, height float32, sides int32, axis Vector3Axis) []Plane
+	BuildCylinderPlanes(radius float32, height float32, sides int32, axis Vector3Axis) Plane
 
-	BuildCapsulePlanes(radius float32, height float32, sides int32, lats int32, axis Vector3Axis) []Plane
+	BuildCapsulePlanes(radius float32, height float32, sides int32, lats int32, axis Vector3Axis) Plane
 
 	GetClosestPointsBetweenSegments(p1 Vector3, p2 Vector3, q1 Vector3, q2 Vector3) PackedVector3Array
 
@@ -9434,20 +9475,20 @@ type Geometry3D interface {
 
 	SegmentIntersectsCylinder(from Vector3, to Vector3, height float32, radius float32) PackedVector3Array
 
-	SegmentIntersectsConvex(from Vector3, to Vector3, planes []Plane) PackedVector3Array
+	SegmentIntersectsConvex(from Vector3, to Vector3, planes Plane) PackedVector3Array
 
 	ClipPolygon(points PackedVector3Array, plane Plane) PackedVector3Array
 }
 type GeometryInstance3D interface {
 	VisualInstance3D
 
-	SetMaterialOverride(material Material)
+	SetMaterialOverride(material RefMaterial)
 
-	GetMaterialOverride() Material
+	GetMaterialOverride() RefMaterial
 
-	SetMaterialOverlay(material Material)
+	SetMaterialOverlay(material RefMaterial)
 
-	GetMaterialOverlay() Material
+	GetMaterialOverlay() RefMaterial
 
 	SetCastShadowsSetting(shadow_casting_setting GeometryInstance3DShadowCastingSetting)
 
@@ -9545,9 +9586,9 @@ type Gradient interface {
 type GradientTexture1D interface {
 	Texture2D
 
-	SetGradient(gradient Gradient)
+	SetGradient(gradient RefGradient)
 
-	GetGradient() Gradient
+	GetGradient() RefGradient
 
 	SetWidth(width int32)
 
@@ -9558,9 +9599,9 @@ type GradientTexture1D interface {
 type GradientTexture2D interface {
 	Texture2D
 
-	SetGradient(gradient Gradient)
+	SetGradient(gradient RefGradient)
 
-	GetGradient() Gradient
+	GetGradient() RefGradient
 
 	SetWidth(width int32)
 
@@ -9605,7 +9646,7 @@ type GraphEdit interface {
 
 	SetConnectionActivity(from_node StringName, from_port int32, to_node StringName, to_port int32, amount float32)
 
-	GetConnectionList() []Dictionary
+	GetConnectionList() Dictionary
 
 	ClearConnections()
 
@@ -9739,7 +9780,7 @@ type GraphNode interface {
 
 	GetTitlebarHbox() HBoxContainer
 
-	SetSlot(slot_index int32, enable_left_port bool, type_left int32, color_left Color, enable_right_port bool, type_right int32, color_right Color, custom_icon_left Texture2D, custom_icon_right Texture2D, draw_stylebox bool)
+	SetSlot(slot_index int32, enable_left_port bool, type_left int32, color_left Color, enable_right_port bool, type_right int32, color_right Color, custom_icon_left RefTexture2D, custom_icon_right RefTexture2D, draw_stylebox bool)
 
 	ClearSlot(slot_index int32)
 
@@ -9823,9 +9864,9 @@ type GridMap interface {
 
 	GetCollisionPriority() float32
 
-	SetPhysicsMaterial(material PhysicsMaterial)
+	SetPhysicsMaterial(material RefPhysicsMaterial)
 
-	GetPhysicsMaterial() PhysicsMaterial
+	GetPhysicsMaterial() RefPhysicsMaterial
 
 	SetBakeNavigation(bake_navigation bool)
 
@@ -9835,9 +9876,9 @@ type GridMap interface {
 
 	GetNavigationMap() RID
 
-	SetMeshLibrary(mesh_library MeshLibrary)
+	SetMeshLibrary(mesh_library RefMeshLibrary)
 
-	GetMeshLibrary() MeshLibrary
+	GetMeshLibrary() RefMeshLibrary
 
 	SetCellSize(size Vector3)
 
@@ -9867,7 +9908,7 @@ type GridMap interface {
 
 	MapToLocal(map_position Vector3i) Vector3
 
-	ResourceChanged(resource Resource)
+	ResourceChanged(resource RefResource)
 
 	SetCenterX(enable bool)
 
@@ -9883,9 +9924,9 @@ type GridMap interface {
 
 	Clear()
 
-	GetUsedCells() []Vector3i
+	GetUsedCells() Vector3i
 
-	GetUsedCellsByItem(item int32) []Vector3i
+	GetUsedCellsByItem(item int32) Vector3i
 
 	GetMeshes() Array
 
@@ -9938,11 +9979,11 @@ type HSplitContainer interface {
 type HTTPClient interface {
 	RefCounted
 
-	ConnectToHost(host String, port int32, tls_options TLSOptions) Error
+	ConnectToHost(host String, port int32, tls_options RefTLSOptions) Error
 
-	SetConnection(connection StreamPeer)
+	SetConnection(connection RefStreamPeer)
 
-	GetConnection() StreamPeer
+	GetConnection() RefStreamPeer
 
 	RequestRaw(method HTTPClientMethod, url String, headers PackedStringArray, body PackedByteArray) Error
 
@@ -9991,7 +10032,7 @@ type HTTPRequest interface {
 
 	CancelRequest()
 
-	SetTlsOptions(client_options TLSOptions)
+	SetTlsOptions(client_options RefTLSOptions)
 
 	GetHttpClientStatus() HTTPClientStatus
 
@@ -10085,7 +10126,7 @@ type IP interface {
 
 	GetLocalAddresses() PackedStringArray
 
-	GetLocalInterfaces() []Dictionary
+	GetLocalInterfaces() Dictionary
 
 	ClearCache(hostname String)
 }
@@ -10106,6 +10147,8 @@ type Image interface {
 
 	Convert(format ImageFormat)
 
+	GetMipmapCount() int32
+
 	GetMipmapOffset(mipmap int32) int32
 
 	ResizeToPo2(square bool, interpolation ImageInterpolation)
@@ -10124,9 +10167,9 @@ type Image interface {
 
 	ClearMipmaps()
 
-	Create(width int32, height int32, use_mipmaps bool, format ImageFormat) Image
+	Create(width int32, height int32, use_mipmaps bool, format ImageFormat) RefImage
 
-	CreateFromData(width int32, height int32, use_mipmaps bool, format ImageFormat, data PackedByteArray) Image
+	CreateFromData(width int32, height int32, use_mipmaps bool, format ImageFormat, data PackedByteArray) RefImage
 
 	SetData(width int32, height int32, use_mipmaps bool, format ImageFormat, data PackedByteArray)
 
@@ -10134,7 +10177,7 @@ type Image interface {
 
 	Load(path String) Error
 
-	LoadFromFile(path String) Image
+	LoadFromFile(path String) RefImage
 
 	SavePng(path String) Error
 
@@ -10178,19 +10221,19 @@ type Image interface {
 
 	NormalMapToXy()
 
-	RgbeToSrgb() Image
+	RgbeToSrgb() RefImage
 
 	BumpMapToNormalMap(bump_scale float32)
 
-	ComputeImageMetrics(compared_image Image, use_luma bool) Dictionary
+	ComputeImageMetrics(compared_image RefImage, use_luma bool) Dictionary
 
-	BlitRect(src Image, src_rect Rect2i, dst Vector2i)
+	BlitRect(src RefImage, src_rect Rect2i, dst Vector2i)
 
-	BlitRectMask(src Image, mask Image, src_rect Rect2i, dst Vector2i)
+	BlitRectMask(src RefImage, mask RefImage, src_rect Rect2i, dst Vector2i)
 
-	BlendRect(src Image, src_rect Rect2i, dst Vector2i)
+	BlendRect(src RefImage, src_rect Rect2i, dst Vector2i)
 
-	BlendRectMask(src Image, mask Image, src_rect Rect2i, dst Vector2i)
+	BlendRectMask(src RefImage, mask RefImage, src_rect Rect2i, dst Vector2i)
 
 	Fill(color Color)
 
@@ -10198,9 +10241,9 @@ type Image interface {
 
 	GetUsedRect() Rect2i
 
-	GetRegion(region Rect2i) Image
+	GetRegion(region Rect2i) RefImage
 
-	CopyFrom(src Image)
+	CopyFrom(src RefImage)
 
 	GetPixelv(point Vector2i) Color
 
@@ -10236,7 +10279,7 @@ type ImageFormatLoaderExtension interface {
 
 	// VIRTUAL: Internal_GetRecognizedExtensions() PackedStringArray
 
-	// VIRTUAL: Internal_LoadImage(image Image,fileaccess FileAccess,flags ImageFormatLoaderLoaderFlags,scale float32,) Error
+	// VIRTUAL: Internal_LoadImage(image RefImage,fileaccess RefFileAccess,flags ImageFormatLoaderLoaderFlags,scale float32,) Error
 
 	AddFormatLoader()
 
@@ -10245,34 +10288,34 @@ type ImageFormatLoaderExtension interface {
 type ImageTexture interface {
 	Texture2D
 
-	CreateFromImage(image Image) ImageTexture
+	CreateFromImage(image RefImage) RefImageTexture
 
 	GetFormat() ImageFormat
 
-	SetImage(image Image)
+	SetImage(image RefImage)
 
-	Update(image Image)
+	Update(image RefImage)
 
 	SetSizeOverride(size Vector2i)
 }
 type ImageTexture3D interface {
 	Texture3D
 
-	Create(format ImageFormat, width int32, height int32, depth int32, use_mipmaps bool, data []Image) Error
+	Create(format ImageFormat, width int32, height int32, depth int32, use_mipmaps bool, data RefImage) Error
 
-	Update(data []Image)
+	Update(data RefImage)
 }
 type ImageTextureLayered interface {
 	TextureLayered
 
-	CreateFromImages(images []Image) Error
+	CreateFromImages(images RefImage) Error
 
-	UpdateLayer(image Image, layer int32)
+	UpdateLayer(image RefImage, layer int32)
 }
 type ImmediateMesh interface {
 	Mesh
 
-	SurfaceBegin(primitive MeshPrimitiveType, material Material)
+	SurfaceBegin(primitive MeshPrimitiveType, material RefMaterial)
 
 	SurfaceSetColor(color Color)
 
@@ -10305,7 +10348,7 @@ type ImporterMesh interface {
 
 	GetBlendShapeMode() MeshBlendShapeMode
 
-	AddSurface(primitive MeshPrimitiveType, arrays Array, blend_shapes []Array, lods Dictionary, material Material, name String, flags uint32)
+	AddSurface(primitive MeshPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, material RefMaterial, name String, flags uint32)
 
 	GetSurfaceCount() int32
 
@@ -10323,17 +10366,17 @@ type ImporterMesh interface {
 
 	GetSurfaceLodIndices(surface_idx int32, lod_idx int32) PackedInt32Array
 
-	GetSurfaceMaterial(surface_idx int32) Material
+	GetSurfaceMaterial(surface_idx int32) RefMaterial
 
 	GetSurfaceFormat(surface_idx int32) uint32
 
 	SetSurfaceName(surface_idx int32, name String)
 
-	SetSurfaceMaterial(surface_idx int32, material Material)
+	SetSurfaceMaterial(surface_idx int32, material RefMaterial)
 
 	GenerateLods(normal_merge_angle float32, normal_split_angle float32, bone_transform_array Array)
 
-	GetMesh(base_mesh ArrayMesh) ArrayMesh
+	GetMesh(base_mesh RefArrayMesh) RefArrayMesh
 
 	Clear()
 
@@ -10344,17 +10387,45 @@ type ImporterMesh interface {
 type ImporterMeshInstance3D interface {
 	Node3D
 
-	SetMesh(mesh ImporterMesh)
+	SetMesh(mesh RefImporterMesh)
 
-	GetMesh() ImporterMesh
+	GetMesh() RefImporterMesh
 
-	SetSkin(skin Skin)
+	SetSkin(skin RefSkin)
 
-	GetSkin() Skin
+	GetSkin() RefSkin
 
 	SetSkeletonPath(skeleton_path NodePath)
 
 	GetSkeletonPath() NodePath
+
+	SetLayerMask(layer_mask uint32)
+
+	GetLayerMask() uint32
+
+	SetCastShadowsSetting(shadow_casting_setting GeometryInstance3DShadowCastingSetting)
+
+	GetCastShadowsSetting() GeometryInstance3DShadowCastingSetting
+
+	SetVisibilityRangeEndMargin(distance float32)
+
+	GetVisibilityRangeEndMargin() float32
+
+	SetVisibilityRangeEnd(distance float32)
+
+	GetVisibilityRangeEnd() float32
+
+	SetVisibilityRangeBeginMargin(distance float32)
+
+	GetVisibilityRangeBeginMargin() float32
+
+	SetVisibilityRangeBegin(distance float32)
+
+	GetVisibilityRangeBegin() float32
+
+	SetVisibilityRangeFadeMode(mode GeometryInstance3DVisibilityRangeFadeMode)
+
+	GetVisibilityRangeFadeMode() GeometryInstance3DVisibilityRangeFadeMode
 }
 type Input interface {
 	Object
@@ -10401,7 +10472,7 @@ type Input interface {
 
 	ShouldIgnoreDevice(vendor_id int32, product_id int32) bool
 
-	GetConnectedJoypads() []int32
+	GetConnectedJoypads() int32
 
 	GetJoyVibrationStrength(device int32) Vector2
 
@@ -10447,9 +10518,9 @@ type Input interface {
 
 	GetCurrentCursorShape() InputCursorShape
 
-	SetCustomMouseCursor(image Resource, shape InputCursorShape, hotspot Vector2)
+	SetCustomMouseCursor(image RefResource, shape InputCursorShape, hotspot Vector2)
 
-	ParseInputEvent(event InputEvent)
+	ParseInputEvent(event RefInputEvent)
 
 	SetUseAccumulatedInput(enable bool)
 
@@ -10482,13 +10553,13 @@ type InputEvent interface {
 
 	AsText() String
 
-	IsMatch(event InputEvent, exact_match bool) bool
+	IsMatch(event RefInputEvent, exact_match bool) bool
 
 	IsActionType() bool
 
-	Accumulate(with_event InputEvent) bool
+	Accumulate(with_event RefInputEvent) bool
 
-	XformedBy(xform Transform2D, local_ofs Vector2) InputEvent
+	XformedBy(xform Transform2D, local_ofs Vector2) RefInputEvent
 }
 type InputEventAction interface {
 	InputEvent
@@ -10735,9 +10806,9 @@ type InputEventScreenTouch interface {
 type InputEventShortcut interface {
 	InputEvent
 
-	SetShortcut(shortcut Shortcut)
+	SetShortcut(shortcut RefShortcut)
 
-	GetShortcut() Shortcut
+	GetShortcut() RefShortcut
 }
 type InputEventWithModifiers interface {
 	InputEventFromWindow
@@ -10771,7 +10842,7 @@ type InputMap interface {
 
 	HasAction(action StringName) bool
 
-	GetActions() []StringName
+	GetActions() StringName
 
 	AddAction(action StringName, deadzone float32)
 
@@ -10781,17 +10852,17 @@ type InputMap interface {
 
 	ActionGetDeadzone(action StringName) float32
 
-	ActionAddEvent(action StringName, event InputEvent)
+	ActionAddEvent(action StringName, event RefInputEvent)
 
-	ActionHasEvent(action StringName, event InputEvent) bool
+	ActionHasEvent(action StringName, event RefInputEvent) bool
 
-	ActionEraseEvent(action StringName, event InputEvent)
+	ActionEraseEvent(action StringName, event RefInputEvent)
 
 	ActionEraseEvents(action StringName)
 
-	ActionGetEvents(action StringName) []InputEvent
+	ActionGetEvents(action StringName) RefInputEvent
 
-	EventIsAction(event InputEvent, action StringName, exact_match bool) bool
+	EventIsAction(event RefInputEvent, action StringName, exact_match bool) bool
 
 	LoadFromProjectSettings()
 }
@@ -10800,7 +10871,7 @@ type InstancePlaceholder interface {
 
 	GetStoredValues(with_order bool) Dictionary
 
-	CreateInstance(replace bool, custom_scene PackedScene) Node
+	CreateInstance(replace bool, custom_scene RefPackedScene) Node
 
 	GetInstancePath() String
 }
@@ -10810,17 +10881,17 @@ type IntervalTweener interface {
 type ItemList interface {
 	Control
 
-	AddItem(text String, icon Texture2D, selectable bool) int32
+	AddItem(text String, icon RefTexture2D, selectable bool) int32
 
-	AddIconItem(icon Texture2D, selectable bool) int32
+	AddIconItem(icon RefTexture2D, selectable bool) int32
 
 	SetItemText(idx int32, text String)
 
 	GetItemText(idx int32) String
 
-	SetItemIcon(idx int32, icon Texture2D)
+	SetItemIcon(idx int32, icon RefTexture2D)
 
-	GetItemIcon(idx int32) Texture2D
+	GetItemIcon(idx int32) RefTexture2D
 
 	SetItemTextDirection(idx int32, direction ControlTextDirection)
 
@@ -10953,6 +11024,8 @@ type ItemList interface {
 	SetTextOverrunBehavior(overrun_behavior TextServerOverrunBehavior)
 
 	GetTextOverrunBehavior() TextServerOverrunBehavior
+
+	ForceUpdateListSize()
 }
 type JNISingleton interface {
 	Object
@@ -10999,16 +11072,16 @@ type JavaClass interface {
 type JavaClassWrapper interface {
 	Object
 
-	Wrap(name String) JavaClass
+	Wrap(name String) RefJavaClass
 }
 type JavaScriptBridge interface {
 	Object
 
 	Eval(code String, use_global_execution_context bool) Variant
 
-	GetInterface(interfaceName String) JavaScriptObject
+	GetInterface(interfaceName String) RefJavaScriptObject
 
-	CreateCallback(callable Callable) JavaScriptObject
+	CreateCallback(callable Callable) RefJavaScriptObject
 
 	CreateObject(object String, varargs ...Variant) Variant
 
@@ -11041,6 +11114,8 @@ type Joint2D interface {
 	SetExcludeNodesFromCollision(enable bool)
 
 	GetExcludeNodesFromCollision() bool
+
+	GetRid() RID
 }
 type Joint3D interface {
 	Node3D
@@ -11060,6 +11135,8 @@ type Joint3D interface {
 	SetExcludeNodesFromCollision(enable bool)
 
 	GetExcludeNodesFromCollision() bool
+
+	GetRid() RID
 }
 type KinematicCollision2D interface {
 	RefCounted
@@ -11136,9 +11213,9 @@ type Label interface {
 
 	GetText() String
 
-	SetLabelSettings(settings LabelSettings)
+	SetLabelSettings(settings RefLabelSettings)
 
-	GetLabelSettings() LabelSettings
+	GetLabelSettings() RefLabelSettings
 
 	SetTextDirection(direction ControlTextDirection)
 
@@ -11259,9 +11336,9 @@ type Label3D interface {
 
 	GetOutlineRenderPriority() int32
 
-	SetFont(font Font)
+	SetFont(font RefFont)
 
-	GetFont() Font
+	GetFont() RefFont
 
 	SetFontSize(size int32)
 
@@ -11327,7 +11404,7 @@ type Label3D interface {
 
 	GetTextureFilter() BaseMaterial3DTextureFilter
 
-	GenerateTriangleMesh() TriangleMesh
+	GenerateTriangleMesh() RefTriangleMesh
 }
 type LabelSettings interface {
 	Resource
@@ -11336,9 +11413,9 @@ type LabelSettings interface {
 
 	GetLineSpacing() float32
 
-	SetFont(font Font)
+	SetFont(font RefFont)
 
-	GetFont() Font
+	GetFont() RefFont
 
 	SetFontSize(size int32)
 
@@ -11486,9 +11563,9 @@ type Light3D interface {
 
 	GetBakeMode() Light3DBakeMode
 
-	SetProjector(projector Texture2D)
+	SetProjector(projector RefTexture2D)
 
-	GetProjector() Texture2D
+	GetProjector() RefTexture2D
 
 	SetTemperature(temperature float32)
 
@@ -11499,9 +11576,9 @@ type Light3D interface {
 type LightOccluder2D interface {
 	Node2D
 
-	SetOccluderPolygon(polygon OccluderPolygon2D)
+	SetOccluderPolygon(polygon RefOccluderPolygon2D)
 
-	GetOccluderPolygon() OccluderPolygon2D
+	GetOccluderPolygon() RefOccluderPolygon2D
 
 	SetOccluderLightMask(mask int32)
 
@@ -11514,9 +11591,9 @@ type LightOccluder2D interface {
 type LightmapGI interface {
 	VisualInstance3D
 
-	SetLightData(data LightmapGIData)
+	SetLightData(data RefLightmapGIData)
 
-	GetLightData() LightmapGIData
+	GetLightData() RefLightmapGIData
 
 	SetBakeQuality(bake_quality LightmapGIBakeQuality)
 
@@ -11538,9 +11615,9 @@ type LightmapGI interface {
 
 	GetEnvironmentMode() LightmapGIEnvironmentMode
 
-	SetEnvironmentCustomSky(sky Sky)
+	SetEnvironmentCustomSky(sky RefSky)
 
-	GetEnvironmentCustomSky() Sky
+	GetEnvironmentCustomSky() RefSky
 
 	SetEnvironmentCustomColor(color Color)
 
@@ -11558,6 +11635,10 @@ type LightmapGI interface {
 
 	IsUsingDenoiser() bool
 
+	SetDenoiserStrength(denoiser_strength float32)
+
+	GetDenoiserStrength() float32
+
 	SetInterior(enable bool)
 
 	IsInterior() bool
@@ -11566,16 +11647,16 @@ type LightmapGI interface {
 
 	IsDirectional() bool
 
-	SetCameraAttributes(camera_attributes CameraAttributes)
+	SetCameraAttributes(camera_attributes RefCameraAttributes)
 
-	GetCameraAttributes() CameraAttributes
+	GetCameraAttributes() RefCameraAttributes
 }
 type LightmapGIData interface {
 	Resource
 
-	SetLightTexture(light_texture TextureLayered)
+	SetLightTexture(light_texture RefTextureLayered)
 
-	GetLightTexture() TextureLayered
+	GetLightTexture() RefTextureLayered
 
 	SetUsesSphericalHarmonics(uses_spherical_harmonics bool)
 
@@ -11617,25 +11698,29 @@ type Line2D interface {
 
 	ClearPoints()
 
+	SetClosed(closed bool)
+
+	IsClosed() bool
+
 	SetWidth(width float32)
 
 	GetWidth() float32
 
-	SetCurve(curve Curve)
+	SetCurve(curve RefCurve)
 
-	GetCurve() Curve
+	GetCurve() RefCurve
 
 	SetDefaultColor(color Color)
 
 	GetDefaultColor() Color
 
-	SetGradient(color Gradient)
+	SetGradient(color RefGradient)
 
-	GetGradient() Gradient
+	GetGradient() RefGradient
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	SetTextureMode(mode Line2DLineTextureMode)
 
@@ -11806,9 +11891,9 @@ type LineEdit interface {
 
 	IsDragAndDropSelectionEnabled() bool
 
-	SetRightIcon(icon Texture2D)
+	SetRightIcon(icon RefTexture2D)
 
-	GetRightIcon() Texture2D
+	GetRightIcon() RefTexture2D
 
 	SetFlat(enabled bool)
 
@@ -11903,9 +11988,9 @@ type Material interface {
 
 	// VIRTUAL: Internal_CanUseRenderPriority() bool
 
-	SetNextPass(next_pass Material)
+	SetNextPass(next_pass RefMaterial)
 
-	GetNextPass() Material
+	GetNextPass() RefMaterial
 
 	SetRenderPriority(priority int32)
 
@@ -11913,7 +11998,7 @@ type Material interface {
 
 	InspectNativeShaderCode()
 
-	CreatePlaceholder() Resource
+	CreatePlaceholder() RefResource
 }
 type MenuBar interface {
 	Control
@@ -11994,7 +12079,7 @@ type Mesh interface {
 
 	// VIRTUAL: Internal_SurfaceGetArrays(index int32,) Array
 
-	// VIRTUAL: Internal_SurfaceGetBlendShapeArrays(index int32,) []Array
+	// VIRTUAL: Internal_SurfaceGetBlendShapeArrays(index int32,) Array
 
 	// VIRTUAL: Internal_SurfaceGetLods(index int32,) Dictionary
 
@@ -12002,9 +12087,9 @@ type Mesh interface {
 
 	// VIRTUAL: Internal_SurfaceGetPrimitiveType(index int32,) uint32
 
-	// VIRTUAL: Internal_SurfaceSetMaterial(index int32,material Material,)
+	// VIRTUAL: Internal_SurfaceSetMaterial(index int32,material RefMaterial,)
 
-	// VIRTUAL: Internal_SurfaceGetMaterial(index int32,) Material
+	// VIRTUAL: Internal_SurfaceGetMaterial(index int32,) RefMaterial
 
 	// VIRTUAL: Internal_GetBlendShapeCount() int32
 
@@ -12026,21 +12111,21 @@ type Mesh interface {
 
 	SurfaceGetArrays(surf_idx int32) Array
 
-	SurfaceGetBlendShapeArrays(surf_idx int32) []Array
+	SurfaceGetBlendShapeArrays(surf_idx int32) Array
 
-	SurfaceSetMaterial(surf_idx int32, material Material)
+	SurfaceSetMaterial(surf_idx int32, material RefMaterial)
 
-	SurfaceGetMaterial(surf_idx int32) Material
+	SurfaceGetMaterial(surf_idx int32) RefMaterial
 
-	CreatePlaceholder() Resource
+	CreatePlaceholder() RefResource
 
-	CreateTrimeshShape() ConcavePolygonShape3D
+	CreateTrimeshShape() RefConcavePolygonShape3D
 
-	CreateConvexShape(clean bool, simplify bool) ConvexPolygonShape3D
+	CreateConvexShape(clean bool, simplify bool) RefConvexPolygonShape3D
 
-	CreateOutline(margin float32) Mesh
+	CreateOutline(margin float32) RefMesh
 
-	GenerateTriangleMesh() TriangleMesh
+	GenerateTriangleMesh() RefTriangleMesh
 }
 type MeshConvexDecompositionSettings interface {
 	RefCounted
@@ -12102,9 +12187,9 @@ type MeshDataTool interface {
 
 	Clear()
 
-	CreateFromSurface(mesh ArrayMesh, surface int32) Error
+	CreateFromSurface(mesh RefArrayMesh, surface int32) Error
 
-	CommitToSurface(mesh ArrayMesh) Error
+	CommitToSurface(mesh RefArrayMesh) Error
 
 	GetFormat() int32
 
@@ -12172,49 +12257,49 @@ type MeshDataTool interface {
 
 	GetFaceNormal(idx int32) Vector3
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 }
 type MeshInstance2D interface {
 	Node2D
 
-	SetMesh(mesh Mesh)
+	SetMesh(mesh RefMesh)
 
-	GetMesh() Mesh
+	GetMesh() RefMesh
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 }
 type MeshInstance3D interface {
 	GeometryInstance3D
 
-	SetMesh(mesh Mesh)
+	SetMesh(mesh RefMesh)
 
-	GetMesh() Mesh
+	GetMesh() RefMesh
 
 	SetSkeletonPath(skeleton_path NodePath)
 
 	GetSkeletonPath() NodePath
 
-	SetSkin(skin Skin)
+	SetSkin(skin RefSkin)
 
-	GetSkin() Skin
+	GetSkin() RefSkin
 
 	GetSurfaceOverrideMaterialCount() int32
 
-	SetSurfaceOverrideMaterial(surface int32, material Material)
+	SetSurfaceOverrideMaterial(surface int32, material RefMaterial)
 
-	GetSurfaceOverrideMaterial(surface int32) Material
+	GetSurfaceOverrideMaterial(surface int32) RefMaterial
 
-	GetActiveMaterial(surface int32) Material
+	GetActiveMaterial(surface int32) RefMaterial
 
 	CreateTrimeshCollision()
 
 	CreateConvexCollision(clean bool, simplify bool)
 
-	CreateMultipleConvexCollisions(settings MeshConvexDecompositionSettings)
+	CreateMultipleConvexCollisions(settings RefMeshConvexDecompositionSettings)
 
 	GetBlendShapeCount() int32
 
@@ -12233,11 +12318,11 @@ type MeshLibrary interface {
 
 	SetItemName(id int32, name String)
 
-	SetItemMesh(id int32, mesh Mesh)
+	SetItemMesh(id int32, mesh RefMesh)
 
 	SetItemMeshTransform(id int32, mesh_transform Transform3D)
 
-	SetItemNavigationMesh(id int32, navigation_mesh NavigationMesh)
+	SetItemNavigationMesh(id int32, navigation_mesh RefNavigationMesh)
 
 	SetItemNavigationMeshTransform(id int32, navigation_mesh Transform3D)
 
@@ -12245,15 +12330,15 @@ type MeshLibrary interface {
 
 	SetItemShapes(id int32, shapes Array)
 
-	SetItemPreview(id int32, texture Texture2D)
+	SetItemPreview(id int32, texture RefTexture2D)
 
 	GetItemName(id int32) String
 
-	GetItemMesh(id int32) Mesh
+	GetItemMesh(id int32) RefMesh
 
 	GetItemMeshTransform(id int32) Transform3D
 
-	GetItemNavigationMesh(id int32) NavigationMesh
+	GetItemNavigationMesh(id int32) RefNavigationMesh
 
 	GetItemNavigationMeshTransform(id int32) Transform3D
 
@@ -12261,7 +12346,7 @@ type MeshLibrary interface {
 
 	GetItemShapes(id int32) Array
 
-	GetItemPreview(id int32) Texture2D
+	GetItemPreview(id int32) RefTexture2D
 
 	RemoveItem(id int32)
 
@@ -12276,26 +12361,26 @@ type MeshLibrary interface {
 type MeshTexture interface {
 	Texture2D
 
-	SetMesh(mesh Mesh)
+	SetMesh(mesh RefMesh)
 
-	GetMesh() Mesh
+	GetMesh() RefMesh
 
 	SetImageSize(size Vector2)
 
 	GetImageSize() Vector2
 
-	SetBaseTexture(texture Texture2D)
+	SetBaseTexture(texture RefTexture2D)
 
-	GetBaseTexture() Texture2D
+	GetBaseTexture() RefTexture2D
 }
 type MethodTweener interface {
 	Tweener
 
-	SetDelay(delay float64) MethodTweener
+	SetDelay(delay float64) RefMethodTweener
 
-	SetTrans(trans TweenTransitionType) MethodTweener
+	SetTrans(trans TweenTransitionType) RefMethodTweener
 
-	SetEase(ease TweenEaseType) MethodTweener
+	SetEase(ease TweenEaseType) RefMethodTweener
 }
 type MissingNode interface {
 	Node
@@ -12361,7 +12446,7 @@ type MovieWriter interface {
 
 	// VIRTUAL: Internal_WriteBegin(movie_size Vector2i,fps uint32,base_path String,) Error
 
-	// VIRTUAL: Internal_WriteFrame(frame_image Image,audio_frame_block unsafe.Pointer,) Error
+	// VIRTUAL: Internal_WriteFrame(frame_image RefImage,audio_frame_block unsafe.Pointer,) Error
 
 	// VIRTUAL: Internal_WriteEnd()
 
@@ -12370,9 +12455,9 @@ type MovieWriter interface {
 type MultiMesh interface {
 	Resource
 
-	SetMesh(mesh Mesh)
+	SetMesh(mesh RefMesh)
 
-	GetMesh() Mesh
+	GetMesh() RefMesh
 
 	SetUseColors(enable bool)
 
@@ -12419,29 +12504,29 @@ type MultiMesh interface {
 type MultiMeshInstance2D interface {
 	Node2D
 
-	SetMultimesh(multimesh MultiMesh)
+	SetMultimesh(multimesh RefMultiMesh)
 
-	GetMultimesh() MultiMesh
+	GetMultimesh() RefMultiMesh
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 }
 type MultiMeshInstance3D interface {
 	GeometryInstance3D
 
-	SetMultimesh(multimesh MultiMesh)
+	SetMultimesh(multimesh RefMultiMesh)
 
-	GetMultimesh() MultiMesh
+	GetMultimesh() RefMultiMesh
 }
 type MultiplayerAPI interface {
 	RefCounted
 
 	HasMultiplayerPeer() bool
 
-	GetMultiplayerPeer() MultiplayerPeer
+	GetMultiplayerPeer() RefMultiplayerPeer
 
-	SetMultiplayerPeer(peer MultiplayerPeer)
+	SetMultiplayerPeer(peer RefMultiplayerPeer)
 
 	GetUniqueId() int32
 
@@ -12463,16 +12548,16 @@ type MultiplayerAPI interface {
 
 	GetDefaultInterface() StringName
 
-	CreateDefaultInterface() MultiplayerAPI
+	CreateDefaultInterface() RefMultiplayerAPI
 }
 type MultiplayerAPIExtension interface {
 	MultiplayerAPI
 
 	// VIRTUAL: Internal_Poll() Error
 
-	// VIRTUAL: Internal_SetMultiplayerPeer(multiplayer_peer MultiplayerPeer,)
+	// VIRTUAL: Internal_SetMultiplayerPeer(multiplayer_peer RefMultiplayerPeer,)
 
-	// VIRTUAL: Internal_GetMultiplayerPeer() MultiplayerPeer
+	// VIRTUAL: Internal_GetMultiplayerPeer() RefMultiplayerPeer
 
 	// VIRTUAL: Internal_GetUniqueId() int32
 
@@ -12612,9 +12697,9 @@ type MultiplayerSynchronizer interface {
 
 	GetDeltaInterval() float64
 
-	SetReplicationConfig(config SceneReplicationConfig)
+	SetReplicationConfig(config RefSceneReplicationConfig)
 
-	GetReplicationConfig() SceneReplicationConfig
+	GetReplicationConfig() RefSceneReplicationConfig
 
 	SetVisibilityUpdateMode(mode MultiplayerSynchronizerVisibilityUpdateMode)
 
@@ -12726,7 +12811,7 @@ type NavigationAgent2D interface {
 
 	DistanceToTarget() float32
 
-	GetCurrentNavigationResult() NavigationPathQueryResult2D
+	GetCurrentNavigationResult() RefNavigationPathQueryResult2D
 
 	GetCurrentNavigationPath() PackedVector2Array
 
@@ -12875,7 +12960,7 @@ type NavigationAgent3D interface {
 
 	DistanceToTarget() float32
 
-	GetCurrentNavigationResult() NavigationPathQueryResult3D
+	GetCurrentNavigationResult() RefNavigationPathQueryResult3D
 
 	GetCurrentNavigationPath() PackedVector3Array
 
@@ -13122,20 +13207,39 @@ type NavigationMesh interface {
 
 	ClearPolygons()
 
-	CreateFromMesh(mesh Mesh)
+	CreateFromMesh(mesh RefMesh)
 
 	Clear()
 }
 type NavigationMeshGenerator interface {
 	Object
 
-	Bake(navigation_mesh NavigationMesh, root_node Node)
+	Bake(navigation_mesh RefNavigationMesh, root_node Node)
 
-	Clear(navigation_mesh NavigationMesh)
+	Clear(navigation_mesh RefNavigationMesh)
 
-	ParseSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, root_node Node, callback Callable)
+	ParseSourceGeometryData(navigation_mesh RefNavigationMesh, source_geometry_data RefNavigationMeshSourceGeometryData3D, root_node Node, callback Callable)
 
-	BakeFromSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, callback Callable)
+	BakeFromSourceGeometryData(navigation_mesh RefNavigationMesh, source_geometry_data RefNavigationMeshSourceGeometryData3D, callback Callable)
+}
+type NavigationMeshSourceGeometryData2D interface {
+	Resource
+
+	Clear()
+
+	HasData() bool
+
+	SetTraversableOutlines(traversable_outlines PackedVector2Array)
+
+	GetTraversableOutlines() PackedVector2Array
+
+	SetObstructionOutlines(obstruction_outlines PackedVector2Array)
+
+	GetObstructionOutlines() PackedVector2Array
+
+	AddTraversableOutline(shape_outline PackedVector2Array)
+
+	AddObstructionOutline(shape_outline PackedVector2Array)
 }
 type NavigationMeshSourceGeometryData3D interface {
 	Resource
@@ -13152,7 +13256,7 @@ type NavigationMeshSourceGeometryData3D interface {
 
 	HasData() bool
 
-	AddMesh(mesh Mesh, xform Transform3D)
+	AddMesh(mesh RefMesh, xform Transform3D)
 
 	AddMeshArray(mesh_array Array, xform Transform3D)
 
@@ -13305,9 +13409,9 @@ type NavigationPathQueryResult2D interface {
 
 	GetPathTypes() PackedInt32Array
 
-	SetPathRids(path_rids []RID)
+	SetPathRids(path_rids RID)
 
-	GetPathRids() []RID
+	GetPathRids() RID
 
 	SetPathOwnerIds(path_owner_ids PackedInt64Array)
 
@@ -13326,9 +13430,9 @@ type NavigationPathQueryResult3D interface {
 
 	GetPathTypes() PackedInt32Array
 
-	SetPathRids(path_rids []RID)
+	SetPathRids(path_rids RID)
 
-	GetPathRids() []RID
+	GetPathRids() RID
 
 	SetPathOwnerIds(path_owner_ids PackedInt64Array)
 
@@ -13351,7 +13455,7 @@ type NavigationPolygon interface {
 
 	ClearPolygons()
 
-	GetNavigationMesh() NavigationMesh
+	GetNavigationMesh() RefNavigationMesh
 
 	AddOutline(outline PackedVector2Array)
 
@@ -13373,14 +13477,38 @@ type NavigationPolygon interface {
 
 	GetCellSize() float32
 
+	SetParsedGeometryType(geometry_type NavigationPolygonParsedGeometryType)
+
+	GetParsedGeometryType() NavigationPolygonParsedGeometryType
+
+	SetParsedCollisionMask(mask uint32)
+
+	GetParsedCollisionMask() uint32
+
+	SetParsedCollisionMaskValue(layer_number int32, value bool)
+
+	GetParsedCollisionMaskValue(layer_number int32) bool
+
+	SetSourceGeometryMode(geometry_mode NavigationPolygonSourceGeometryMode)
+
+	GetSourceGeometryMode() NavigationPolygonSourceGeometryMode
+
+	SetSourceGeometryGroupName(group_name StringName)
+
+	GetSourceGeometryGroupName() StringName
+
+	SetAgentRadius(agent_radius float32)
+
+	GetAgentRadius() float32
+
 	Clear()
 }
 type NavigationRegion2D interface {
 	Node2D
 
-	SetNavigationPolygon(navigation_polygon NavigationPolygon)
+	SetNavigationPolygon(navigation_polygon RefNavigationPolygon)
 
-	GetNavigationPolygon() NavigationPolygon
+	GetNavigationPolygon() RefNavigationPolygon
 
 	SetEnabled(enabled bool)
 
@@ -13423,13 +13551,15 @@ type NavigationRegion2D interface {
 	SetTravelCost(travel_cost float32)
 
 	GetTravelCost() float32
+
+	BakeNavigationPolygon(on_thread bool)
 }
 type NavigationRegion3D interface {
 	Node3D
 
-	SetNavigationMesh(navigation_mesh NavigationMesh)
+	SetNavigationMesh(navigation_mesh RefNavigationMesh)
 
-	GetNavigationMesh() NavigationMesh
+	GetNavigationMesh() RefNavigationMesh
 
 	SetEnabled(enabled bool)
 
@@ -13466,7 +13596,7 @@ type NavigationRegion3D interface {
 type NavigationServer2D interface {
 	Object
 
-	GetMaps() []RID
+	GetMaps() RID
 
 	MapCreate() RID
 
@@ -13496,17 +13626,17 @@ type NavigationServer2D interface {
 
 	MapGetClosestPointOwner(resourceMap RID, to_point Vector2) RID
 
-	MapGetLinks(resourceMap RID) []RID
+	MapGetLinks(resourceMap RID) RID
 
-	MapGetRegions(resourceMap RID) []RID
+	MapGetRegions(resourceMap RID) RID
 
-	MapGetAgents(resourceMap RID) []RID
+	MapGetAgents(resourceMap RID) RID
 
-	MapGetObstacles(resourceMap RID) []RID
+	MapGetObstacles(resourceMap RID) RID
 
 	MapForceUpdate(resourceMap RID)
 
-	QueryPath(parameters NavigationPathQueryParameters2D, result NavigationPathQueryResult2D)
+	QueryPath(parameters RefNavigationPathQueryParameters2D, result RefNavigationPathQueryResult2D)
 
 	RegionCreate() RID
 
@@ -13542,7 +13672,7 @@ type NavigationServer2D interface {
 
 	RegionSetTransform(region RID, transform Transform2D)
 
-	RegionSetNavigationPolygon(region RID, navigation_polygon NavigationPolygon)
+	RegionSetNavigationPolygon(region RID, navigation_polygon RefNavigationPolygon)
 
 	RegionGetConnectionsCount(region RID) int32
 
@@ -13654,6 +13784,12 @@ type NavigationServer2D interface {
 
 	ObstacleSetAvoidanceLayers(obstacle RID, layers uint32)
 
+	ParseSourceGeometryData(navigation_polygon RefNavigationPolygon, source_geometry_data RefNavigationMeshSourceGeometryData2D, root_node Node, callback Callable)
+
+	BakeFromSourceGeometryData(navigation_polygon RefNavigationPolygon, source_geometry_data RefNavigationMeshSourceGeometryData2D, callback Callable)
+
+	BakeFromSourceGeometryDataAsync(navigation_polygon RefNavigationPolygon, source_geometry_data RefNavigationMeshSourceGeometryData2D, callback Callable)
+
 	FreeRid(rid RID)
 
 	SetDebugEnabled(enabled bool)
@@ -13663,7 +13799,7 @@ type NavigationServer2D interface {
 type NavigationServer3D interface {
 	Object
 
-	GetMaps() []RID
+	GetMaps() RID
 
 	MapCreate() RID
 
@@ -13705,17 +13841,17 @@ type NavigationServer3D interface {
 
 	MapGetClosestPointOwner(resourceMap RID, to_point Vector3) RID
 
-	MapGetLinks(resourceMap RID) []RID
+	MapGetLinks(resourceMap RID) RID
 
-	MapGetRegions(resourceMap RID) []RID
+	MapGetRegions(resourceMap RID) RID
 
-	MapGetAgents(resourceMap RID) []RID
+	MapGetAgents(resourceMap RID) RID
 
-	MapGetObstacles(resourceMap RID) []RID
+	MapGetObstacles(resourceMap RID) RID
 
 	MapForceUpdate(resourceMap RID)
 
-	QueryPath(parameters NavigationPathQueryParameters3D, result NavigationPathQueryResult3D)
+	QueryPath(parameters RefNavigationPathQueryParameters3D, result RefNavigationPathQueryResult3D)
 
 	RegionCreate() RID
 
@@ -13751,9 +13887,9 @@ type NavigationServer3D interface {
 
 	RegionSetTransform(region RID, transform Transform3D)
 
-	RegionSetNavigationMesh(region RID, navigation_mesh NavigationMesh)
+	RegionSetNavigationMesh(region RID, navigation_mesh RefNavigationMesh)
 
-	RegionBakeNavigationMesh(navigation_mesh NavigationMesh, root_node Node)
+	RegionBakeNavigationMesh(navigation_mesh RefNavigationMesh, root_node Node)
 
 	RegionGetConnectionsCount(region RID) int32
 
@@ -13877,11 +14013,11 @@ type NavigationServer3D interface {
 
 	ObstacleSetAvoidanceLayers(obstacle RID, layers uint32)
 
-	ParseSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, root_node Node, callback Callable)
+	ParseSourceGeometryData(navigation_mesh RefNavigationMesh, source_geometry_data RefNavigationMeshSourceGeometryData3D, root_node Node, callback Callable)
 
-	BakeFromSourceGeometryData(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, callback Callable)
+	BakeFromSourceGeometryData(navigation_mesh RefNavigationMesh, source_geometry_data RefNavigationMeshSourceGeometryData3D, callback Callable)
 
-	BakeFromSourceGeometryDataAsync(navigation_mesh NavigationMesh, source_geometry_data NavigationMeshSourceGeometryData3D, callback Callable)
+	BakeFromSourceGeometryDataAsync(navigation_mesh RefNavigationMesh, source_geometry_data RefNavigationMeshSourceGeometryData3D, callback Callable)
 
 	FreeRid(rid RID)
 
@@ -13896,9 +14032,9 @@ type NavigationServer3D interface {
 type NinePatchRect interface {
 	Control
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	SetPatchMargin(margin Side, value int32)
 
@@ -13935,13 +14071,13 @@ type Node interface {
 
 	// VIRTUAL: Internal_GetConfigurationWarnings() PackedStringArray
 
-	// VIRTUAL: Internal_Input(event InputEvent,)
+	// VIRTUAL: Internal_Input(event RefInputEvent,)
 
-	// VIRTUAL: Internal_ShortcutInput(event InputEvent,)
+	// VIRTUAL: Internal_ShortcutInput(event RefInputEvent,)
 
-	// VIRTUAL: Internal_UnhandledInput(event InputEvent,)
+	// VIRTUAL: Internal_UnhandledInput(event RefInputEvent,)
 
-	// VIRTUAL: Internal_UnhandledKeyInput(event InputEvent,)
+	// VIRTUAL: Internal_UnhandledKeyInput(event RefInputEvent,)
 
 	PrintOrphanNodes()
 
@@ -13959,7 +14095,7 @@ type Node interface {
 
 	GetChildCount(include_internal bool) int32
 
-	GetChildren(include_internal bool) []Node
+	GetChildren(include_internal bool) Node
 
 	GetChild(idx int32, include_internal bool) Node
 
@@ -13973,7 +14109,7 @@ type Node interface {
 
 	FindChild(pattern String, recursive bool, owned bool) Node
 
-	FindChildren(pattern String, typeName String, recursive bool, owned bool) []Node
+	FindChildren(pattern String, typeName String, recursive bool, owned bool) Node
 
 	FindParent(pattern String) Node
 
@@ -13999,7 +14135,7 @@ type Node interface {
 
 	MoveChild(child_node Node, to_index int32)
 
-	GetGroups() []StringName
+	GetGroups() StringName
 
 	SetOwner(owner Node)
 
@@ -14091,7 +14227,7 @@ type Node interface {
 
 	GetTree() SceneTree
 
-	CreateTween() Tween
+	CreateTween() RefTween
 
 	Duplicate(flags int32) Node
 
@@ -14119,7 +14255,7 @@ type Node interface {
 
 	IsMultiplayerAuthority() bool
 
-	GetMultiplayer() MultiplayerAPI
+	GetMultiplayer() RefMultiplayerAPI
 
 	RpcConfig(method StringName, config Variant)
 
@@ -14289,7 +14425,7 @@ type Node3D interface {
 
 	IsScaleDisabled() bool
 
-	GetWorld3D() World3D
+	GetWorld3D() RefWorld3D
 
 	ForceUpdateTransform()
 
@@ -14299,13 +14435,13 @@ type Node3D interface {
 
 	UpdateGizmos()
 
-	AddGizmo(gizmo Node3DGizmo)
+	AddGizmo(gizmo RefNode3DGizmo)
 
-	GetGizmos() []Node3DGizmo
+	GetGizmos() RefNode3DGizmo
 
 	ClearGizmos()
 
-	SetSubgizmoSelection(gizmo Node3DGizmo, id int32, transform Transform3D)
+	SetSubgizmoSelection(gizmo RefNode3DGizmo, id int32, transform Transform3D)
 
 	ClearSubgizmoSelection()
 
@@ -14377,13 +14513,13 @@ type Noise interface {
 
 	GetNoise3Dv(v Vector3) float32
 
-	GetImage(width int32, height int32, invert bool, in_3d_space bool, normalize bool) Image
+	GetImage(width int32, height int32, invert bool, in_3d_space bool, normalize bool) RefImage
 
-	GetSeamlessImage(width int32, height int32, invert bool, in_3d_space bool, skirt float32, normalize bool) Image
+	GetSeamlessImage(width int32, height int32, invert bool, in_3d_space bool, skirt float32, normalize bool) RefImage
 
-	GetImage3D(width int32, height int32, depth int32, invert bool, normalize bool) []Image
+	GetImage3D(width int32, height int32, depth int32, invert bool, normalize bool) RefImage
 
-	GetSeamlessImage3D(width int32, height int32, depth int32, invert bool, skirt float32, normalize bool) []Image
+	GetSeamlessImage3D(width int32, height int32, depth int32, invert bool, skirt float32, normalize bool) RefImage
 }
 type NoiseTexture2D interface {
 	Texture2D
@@ -14424,13 +14560,13 @@ type NoiseTexture2D interface {
 
 	IsNormalized() bool
 
-	SetColorRamp(gradient Gradient)
+	SetColorRamp(gradient RefGradient)
 
-	GetColorRamp() Gradient
+	GetColorRamp() RefGradient
 
-	SetNoise(noise Noise)
+	SetNoise(noise RefNoise)
 
-	GetNoise() Noise
+	GetNoise() RefNoise
 }
 type NoiseTexture3D interface {
 	Texture3D
@@ -14457,13 +14593,13 @@ type NoiseTexture3D interface {
 
 	IsNormalized() bool
 
-	SetColorRamp(gradient Gradient)
+	SetColorRamp(gradient RefGradient)
 
-	GetColorRamp() Gradient
+	GetColorRamp() RefGradient
 
-	SetNoise(noise Noise)
+	SetNoise(noise RefNoise)
 
-	GetNoise() Noise
+	GetNoise() RefNoise
 }
 type ORMMaterial3D interface {
 	BaseMaterial3D
@@ -14626,9 +14762,9 @@ type Object interface {
 
 	GetIndexed(property_path NodePath) Variant
 
-	GetPropertyList() []Dictionary
+	GetPropertyList() Dictionary
 
-	GetMethodList() []Dictionary
+	GetMethodList() Dictionary
 
 	PropertyCanRevert(property StringName) bool
 
@@ -14652,7 +14788,7 @@ type Object interface {
 
 	HasMeta(name StringName) bool
 
-	GetMetaList() []StringName
+	GetMetaList() StringName
 
 	AddUserSignal(signal String, arguments Array)
 
@@ -14672,11 +14808,11 @@ type Object interface {
 
 	HasSignal(signal StringName) bool
 
-	GetSignalList() []Dictionary
+	GetSignalList() Dictionary
 
-	GetSignalConnectionList(signal StringName) []Dictionary
+	GetSignalConnectionList(signal StringName) Dictionary
 
-	GetIncomingConnections() []Dictionary
+	GetIncomingConnections() Dictionary
 
 	Connect(signal StringName, callable Callable, flags uint32) Error
 
@@ -14724,9 +14860,9 @@ type OccluderInstance3D interface {
 
 	GetBakeSimplificationDistance() float32
 
-	SetOccluder(occluder Occluder3D)
+	SetOccluder(occluder RefOccluder3D)
 
-	GetOccluder() Occluder3D
+	GetOccluder() RefOccluder3D
 }
 type OccluderPolygon2D interface {
 	Resource
@@ -14749,9 +14885,9 @@ type OfflineMultiplayerPeer interface {
 type OggPacketSequence interface {
 	Resource
 
-	SetPacketData(packet_data []Array)
+	SetPacketData(packet_data Array)
 
-	GetPacketData() []Array
+	GetPacketData() Array
 
 	SetPacketGranulePositions(granule_positions PackedInt64Array)
 
@@ -14828,13 +14964,13 @@ type OpenXRActionMap interface {
 
 	GetActionSetCount() int32
 
-	FindActionSet(name String) OpenXRActionSet
+	FindActionSet(name String) RefOpenXRActionSet
 
-	GetActionSet(idx int32) OpenXRActionSet
+	GetActionSet(idx int32) RefOpenXRActionSet
 
-	AddActionSet(action_set OpenXRActionSet)
+	AddActionSet(action_set RefOpenXRActionSet)
 
-	RemoveActionSet(action_set OpenXRActionSet)
+	RemoveActionSet(action_set RefOpenXRActionSet)
 
 	SetInteractionProfiles(interaction_profiles Array)
 
@@ -14842,13 +14978,13 @@ type OpenXRActionMap interface {
 
 	GetInteractionProfileCount() int32
 
-	FindInteractionProfile(name String) OpenXRInteractionProfile
+	FindInteractionProfile(name String) RefOpenXRInteractionProfile
 
-	GetInteractionProfile(idx int32) OpenXRInteractionProfile
+	GetInteractionProfile(idx int32) RefOpenXRInteractionProfile
 
-	AddInteractionProfile(interaction_profile OpenXRInteractionProfile)
+	AddInteractionProfile(interaction_profile RefOpenXRInteractionProfile)
 
-	RemoveInteractionProfile(interaction_profile OpenXRInteractionProfile)
+	RemoveInteractionProfile(interaction_profile RefOpenXRInteractionProfile)
 
 	CreateDefaultActionSets()
 }
@@ -14869,9 +15005,9 @@ type OpenXRActionSet interface {
 
 	GetActions() Array
 
-	AddAction(action OpenXRAction)
+	AddAction(action RefOpenXRAction)
 
-	RemoveAction(action OpenXRAction)
+	RemoveAction(action RefOpenXRAction)
 }
 type OpenXRExtensionWrapperExtension interface {
 	Object
@@ -14920,7 +15056,7 @@ type OpenXRExtensionWrapperExtension interface {
 
 	// VIRTUAL: Internal_OnEventPolled(event unsafe.Pointer,) bool
 
-	GetOpenxrApi() OpenXRAPIExtension
+	GetOpenxrApi() RefOpenXRAPIExtension
 
 	RegisterExtensionWrapper()
 }
@@ -14942,9 +15078,9 @@ type OpenXRHand interface {
 type OpenXRIPBinding interface {
 	Resource
 
-	SetAction(action OpenXRAction)
+	SetAction(action RefOpenXRAction)
 
-	GetAction() OpenXRAction
+	GetAction() RefOpenXRAction
 
 	GetPathCount() int32
 
@@ -14967,7 +15103,7 @@ type OpenXRInteractionProfile interface {
 
 	GetBindingCount() int32
 
-	GetBinding(index int32) OpenXRIPBinding
+	GetBinding(index int32) RefOpenXRIPBinding
 
 	SetBindings(bindings Array)
 
@@ -14995,6 +15131,16 @@ type OpenXRInterface interface {
 
 	SetRenderTargetSizeMultiplier(multiplier float64)
 
+	IsFoveationSupported() bool
+
+	GetFoveationLevel() int32
+
+	SetFoveationLevel(foveation_level int32)
+
+	GetFoveationDynamic() bool
+
+	SetFoveationDynamic(foveation_dynamic bool)
+
 	IsActionSetActive(name String) bool
 
 	SetActionSetActive(name String, active bool)
@@ -15020,18 +15166,18 @@ type OpenXRInterface interface {
 type OptimizedTranslation interface {
 	Translation
 
-	Generate(from Translation)
+	Generate(from RefTranslation)
 }
 type OptionButton interface {
 	Button
 
 	AddItem(label String, id int32)
 
-	AddIconItem(texture Texture2D, label String, id int32)
+	AddIconItem(texture RefTexture2D, label String, id int32)
 
 	SetItemText(idx int32, text String)
 
-	SetItemIcon(idx int32, texture Texture2D)
+	SetItemIcon(idx int32, texture RefTexture2D)
 
 	SetItemDisabled(idx int32, disabled bool)
 
@@ -15043,7 +15189,7 @@ type OptionButton interface {
 
 	GetItemText(idx int32) String
 
-	GetItemIcon(idx int32) Texture2D
+	GetItemIcon(idx int32) RefTexture2D
 
 	GetItemId(idx int32) int32
 
@@ -15123,7 +15269,7 @@ type PackedScene interface {
 
 	CanInstantiate() bool
 
-	GetState() SceneState
+	GetState() RefSceneState
 }
 type PacketPeer interface {
 	RefCounted
@@ -15149,7 +15295,7 @@ type PacketPeerDTLS interface {
 
 	Poll()
 
-	ConnectToPeer(packet_peer PacketPeerUDP, hostname String, client_options TLSOptions) Error
+	ConnectToPeer(packet_peer RefPacketPeerUDP, hostname String, client_options RefTLSOptions) Error
 
 	GetStatus() PacketPeerDTLSStatus
 
@@ -15169,9 +15315,9 @@ type PacketPeerExtension interface {
 type PacketPeerStream interface {
 	PacketPeer
 
-	SetStreamPeer(peer StreamPeer)
+	SetStreamPeer(peer RefStreamPeer)
 
-	GetStreamPeer() StreamPeer
+	GetStreamPeer() RefStreamPeer
 
 	SetInputBufferMaxSize(max_size_bytes int32)
 
@@ -15219,9 +15365,9 @@ type PanelContainer interface {
 type PanoramaSkyMaterial interface {
 	Material
 
-	SetPanorama(texture Texture2D)
+	SetPanorama(texture RefTexture2D)
 
-	GetPanorama() Texture2D
+	GetPanorama() RefTexture2D
 
 	SetFilteringEnabled(enabled bool)
 
@@ -15292,21 +15438,21 @@ type ParticleProcessMaterial interface {
 
 	GetParamMax(param ParticleProcessMaterialParameter) float32
 
-	SetParamTexture(param ParticleProcessMaterialParameter, texture Texture2D)
+	SetParamTexture(param ParticleProcessMaterialParameter, texture RefTexture2D)
 
-	GetParamTexture(param ParticleProcessMaterialParameter) Texture2D
+	GetParamTexture(param ParticleProcessMaterialParameter) RefTexture2D
 
 	SetColor(color Color)
 
 	GetColor() Color
 
-	SetColorRamp(ramp Texture2D)
+	SetColorRamp(ramp RefTexture2D)
 
-	GetColorRamp() Texture2D
+	GetColorRamp() RefTexture2D
 
-	SetColorInitialRamp(ramp Texture2D)
+	SetColorInitialRamp(ramp RefTexture2D)
 
-	GetColorInitialRamp() Texture2D
+	GetColorInitialRamp() RefTexture2D
 
 	SetParticleFlag(particle_flag ParticleProcessMaterialParticleFlags, enable bool)
 
@@ -15324,17 +15470,17 @@ type ParticleProcessMaterial interface {
 
 	GetEmissionBoxExtents() Vector3
 
-	SetEmissionPointTexture(texture Texture2D)
+	SetEmissionPointTexture(texture RefTexture2D)
 
-	GetEmissionPointTexture() Texture2D
+	GetEmissionPointTexture() RefTexture2D
 
-	SetEmissionNormalTexture(texture Texture2D)
+	SetEmissionNormalTexture(texture RefTexture2D)
 
-	GetEmissionNormalTexture() Texture2D
+	GetEmissionNormalTexture() RefTexture2D
 
-	SetEmissionColorTexture(texture Texture2D)
+	SetEmissionColorTexture(texture RefTexture2D)
 
-	GetEmissionColorTexture() Texture2D
+	GetEmissionColorTexture() RefTexture2D
 
 	SetEmissionPointCount(point_count int32)
 
@@ -15427,16 +15573,16 @@ type ParticleProcessMaterial interface {
 type Path2D interface {
 	Node2D
 
-	SetCurve(curve Curve2D)
+	SetCurve(curve RefCurve2D)
 
-	GetCurve() Curve2D
+	GetCurve() RefCurve2D
 }
 type Path3D interface {
 	Node3D
 
-	SetCurve(curve Curve3D)
+	SetCurve(curve RefCurve3D)
 
-	GetCurve() Curve3D
+	GetCurve() RefCurve3D
 }
 type PathFollow2D interface {
 	Node2D
@@ -15525,7 +15671,7 @@ type Performance interface {
 
 	GetMonitorModificationTime() uint64
 
-	GetCustomMonitorNames() []StringName
+	GetCustomMonitorNames() StringName
 }
 type PhysicalBone2D interface {
 	RigidBody2D
@@ -15676,18 +15822,18 @@ type PhysicalSkyMaterial interface {
 
 	GetUseDebanding() bool
 
-	SetNightSky(night_sky Texture2D)
+	SetNightSky(night_sky RefTexture2D)
 
-	GetNightSky() Texture2D
+	GetNightSky() RefTexture2D
 }
 type PhysicsBody2D interface {
 	CollisionObject2D
 
-	MoveAndCollide(motion Vector2, test_only bool, safe_margin float32, recovery_as_collision bool) KinematicCollision2D
+	MoveAndCollide(motion Vector2, test_only bool, safe_margin float32, recovery_as_collision bool) RefKinematicCollision2D
 
-	TestMove(from Transform2D, motion Vector2, collision KinematicCollision2D, safe_margin float32, recovery_as_collision bool) bool
+	TestMove(from Transform2D, motion Vector2, collision RefKinematicCollision2D, safe_margin float32, recovery_as_collision bool) bool
 
-	GetCollisionExceptions() []PhysicsBody2D
+	GetCollisionExceptions() PhysicsBody2D
 
 	AddCollisionExceptionWith(body Node)
 
@@ -15696,15 +15842,15 @@ type PhysicsBody2D interface {
 type PhysicsBody3D interface {
 	CollisionObject3D
 
-	MoveAndCollide(motion Vector3, test_only bool, safe_margin float32, recovery_as_collision bool, max_collisions int32) KinematicCollision3D
+	MoveAndCollide(motion Vector3, test_only bool, safe_margin float32, recovery_as_collision bool, max_collisions int32) RefKinematicCollision3D
 
-	TestMove(from Transform3D, motion Vector3, collision KinematicCollision3D, safe_margin float32, recovery_as_collision bool, max_collisions int32) bool
+	TestMove(from Transform3D, motion Vector3, collision RefKinematicCollision3D, safe_margin float32, recovery_as_collision bool, max_collisions int32) bool
 
 	SetAxisLock(axis PhysicsServer3DBodyAxis, lock bool)
 
 	GetAxisLock(axis PhysicsServer3DBodyAxis) bool
 
-	GetCollisionExceptions() []PhysicsBody3D
+	GetCollisionExceptions() PhysicsBody3D
 
 	AddCollisionExceptionWith(body Node)
 
@@ -16085,17 +16231,17 @@ type PhysicsDirectBodyState3DExtension interface {
 type PhysicsDirectSpaceState2D interface {
 	Object
 
-	IntersectPoint(parameters PhysicsPointQueryParameters2D, max_results int32) []Dictionary
+	IntersectPoint(parameters RefPhysicsPointQueryParameters2D, max_results int32) Dictionary
 
-	IntersectRay(parameters PhysicsRayQueryParameters2D) Dictionary
+	IntersectRay(parameters RefPhysicsRayQueryParameters2D) Dictionary
 
-	IntersectShape(parameters PhysicsShapeQueryParameters2D, max_results int32) []Dictionary
+	IntersectShape(parameters RefPhysicsShapeQueryParameters2D, max_results int32) Dictionary
 
-	CastMotion(parameters PhysicsShapeQueryParameters2D) PackedFloat32Array
+	CastMotion(parameters RefPhysicsShapeQueryParameters2D) PackedFloat32Array
 
-	CollideShape(parameters PhysicsShapeQueryParameters2D, max_results int32) []Vector2
+	CollideShape(parameters RefPhysicsShapeQueryParameters2D, max_results int32) Vector2
 
-	GetRestInfo(parameters PhysicsShapeQueryParameters2D) Dictionary
+	GetRestInfo(parameters RefPhysicsShapeQueryParameters2D) Dictionary
 }
 type PhysicsDirectSpaceState2DExtension interface {
 	PhysicsDirectSpaceState2D
@@ -16117,17 +16263,17 @@ type PhysicsDirectSpaceState2DExtension interface {
 type PhysicsDirectSpaceState3D interface {
 	Object
 
-	IntersectPoint(parameters PhysicsPointQueryParameters3D, max_results int32) []Dictionary
+	IntersectPoint(parameters RefPhysicsPointQueryParameters3D, max_results int32) Dictionary
 
-	IntersectRay(parameters PhysicsRayQueryParameters3D) Dictionary
+	IntersectRay(parameters RefPhysicsRayQueryParameters3D) Dictionary
 
-	IntersectShape(parameters PhysicsShapeQueryParameters3D, max_results int32) []Dictionary
+	IntersectShape(parameters RefPhysicsShapeQueryParameters3D, max_results int32) Dictionary
 
-	CastMotion(parameters PhysicsShapeQueryParameters3D) PackedFloat32Array
+	CastMotion(parameters RefPhysicsShapeQueryParameters3D) PackedFloat32Array
 
-	CollideShape(parameters PhysicsShapeQueryParameters3D, max_results int32) []Vector3
+	CollideShape(parameters RefPhysicsShapeQueryParameters3D, max_results int32) Vector3
 
-	GetRestInfo(parameters PhysicsShapeQueryParameters3D) Dictionary
+	GetRestInfo(parameters RefPhysicsShapeQueryParameters3D) Dictionary
 }
 type PhysicsDirectSpaceState3DExtension interface {
 	PhysicsDirectSpaceState3D
@@ -16182,9 +16328,9 @@ type PhysicsPointQueryParameters2D interface {
 
 	GetCollisionMask() uint32
 
-	SetExclude(exclude []RID)
+	SetExclude(exclude RID)
 
-	GetExclude() []RID
+	GetExclude() RID
 
 	SetCollideWithBodies(enable bool)
 
@@ -16205,9 +16351,9 @@ type PhysicsPointQueryParameters3D interface {
 
 	GetCollisionMask() uint32
 
-	SetExclude(exclude []RID)
+	SetExclude(exclude RID)
 
-	GetExclude() []RID
+	GetExclude() RID
 
 	SetCollideWithBodies(enable bool)
 
@@ -16220,7 +16366,7 @@ type PhysicsPointQueryParameters3D interface {
 type PhysicsRayQueryParameters2D interface {
 	RefCounted
 
-	Create(from Vector2, to Vector2, collision_mask uint32, exclude []RID) PhysicsRayQueryParameters2D
+	Create(from Vector2, to Vector2, collision_mask uint32, exclude RID) RefPhysicsRayQueryParameters2D
 
 	SetFrom(from Vector2)
 
@@ -16234,9 +16380,9 @@ type PhysicsRayQueryParameters2D interface {
 
 	GetCollisionMask() uint32
 
-	SetExclude(exclude []RID)
+	SetExclude(exclude RID)
 
-	GetExclude() []RID
+	GetExclude() RID
 
 	SetCollideWithBodies(enable bool)
 
@@ -16253,7 +16399,7 @@ type PhysicsRayQueryParameters2D interface {
 type PhysicsRayQueryParameters3D interface {
 	RefCounted
 
-	Create(from Vector3, to Vector3, collision_mask uint32, exclude []RID) PhysicsRayQueryParameters3D
+	Create(from Vector3, to Vector3, collision_mask uint32, exclude RID) RefPhysicsRayQueryParameters3D
 
 	SetFrom(from Vector3)
 
@@ -16267,9 +16413,9 @@ type PhysicsRayQueryParameters3D interface {
 
 	GetCollisionMask() uint32
 
-	SetExclude(exclude []RID)
+	SetExclude(exclude RID)
 
-	GetExclude() []RID
+	GetExclude() RID
 
 	SetCollideWithBodies(enable bool)
 
@@ -16484,7 +16630,7 @@ type PhysicsServer2D interface {
 
 	BodySetForceIntegrationCallback(body RID, callable Callable, userdata Variant)
 
-	BodyTestMotion(body RID, parameters PhysicsTestMotionParameters2D, result PhysicsTestMotionResult2D) bool
+	BodyTestMotion(body RID, parameters RefPhysicsTestMotionParameters2D, result RefPhysicsTestMotionResult2D) bool
 
 	BodyGetDirectState(body RID) PhysicsDirectBodyState2D
 
@@ -16505,6 +16651,10 @@ type PhysicsServer2D interface {
 	JointMakeGroove(joint RID, groove1_a Vector2, groove2_a Vector2, anchor_b Vector2, body_a RID, body_b RID)
 
 	JointMakeDampedSpring(joint RID, anchor_a Vector2, anchor_b Vector2, body_a RID, body_b RID)
+
+	PinJointSetFlag(joint RID, flag PhysicsServer2DPinJointFlag, enabled bool)
+
+	PinJointGetFlag(joint RID, flag PhysicsServer2DPinJointFlag) bool
 
 	PinJointSetParam(joint RID, param PhysicsServer2DPinJointParam, value float32)
 
@@ -16723,7 +16873,7 @@ type PhysicsServer2DExtension interface {
 
 	// VIRTUAL: Internal_BodyRemoveCollisionException(body RID,excepted_body RID,)
 
-	// VIRTUAL: Internal_BodyGetCollisionExceptions(body RID,) []RID
+	// VIRTUAL: Internal_BodyGetCollisionExceptions(body RID,) RID
 
 	// VIRTUAL: Internal_BodySetMaxContactsReported(body RID,amount int32,)
 
@@ -16766,6 +16916,10 @@ type PhysicsServer2DExtension interface {
 	// VIRTUAL: Internal_JointMakeGroove(joint RID,a_groove1 Vector2,a_groove2 Vector2,b_anchor Vector2,body_a RID,body_b RID,)
 
 	// VIRTUAL: Internal_JointMakeDampedSpring(joint RID,anchor_a Vector2,anchor_b Vector2,body_a RID,body_b RID,)
+
+	// VIRTUAL: Internal_PinJointSetFlag(joint RID,flag PhysicsServer2DPinJointFlag,enabled bool,)
+
+	// VIRTUAL: Internal_PinJointGetFlag(joint RID,flag PhysicsServer2DPinJointFlag,) bool
 
 	// VIRTUAL: Internal_PinJointSetParam(joint RID,param PhysicsServer2DPinJointParam,value float32,)
 
@@ -17007,7 +17161,7 @@ type PhysicsServer3D interface {
 
 	BodySetRayPickable(body RID, enable bool)
 
-	BodyTestMotion(body RID, parameters PhysicsTestMotionParameters3D, result PhysicsTestMotionResult3D) bool
+	BodyTestMotion(body RID, parameters RefPhysicsTestMotionParameters3D, result RefPhysicsTestMotionResult3D) bool
 
 	BodyGetDirectState(body RID) PhysicsDirectBodyState3D
 
@@ -17284,7 +17438,7 @@ type PhysicsServer3DExtension interface {
 
 	// VIRTUAL: Internal_BodyRemoveCollisionException(body RID,excepted_body RID,)
 
-	// VIRTUAL: Internal_BodyGetCollisionExceptions(body RID,) []RID
+	// VIRTUAL: Internal_BodyGetCollisionExceptions(body RID,) RID
 
 	// VIRTUAL: Internal_BodySetMaxContactsReported(body RID,amount int32,)
 
@@ -17330,7 +17484,7 @@ type PhysicsServer3DExtension interface {
 
 	// VIRTUAL: Internal_SoftBodyRemoveCollisionException(body RID,body_b RID,)
 
-	// VIRTUAL: Internal_SoftBodyGetCollisionExceptions(body RID,) []RID
+	// VIRTUAL: Internal_SoftBodyGetCollisionExceptions(body RID,) RID
 
 	// VIRTUAL: Internal_SoftBodySetState(body RID,state PhysicsServer3DBodyState,variant Variant,)
 
@@ -17472,18 +17626,24 @@ type PhysicsServer3DManager interface {
 type PhysicsServer3DRenderingServerHandler interface {
 	Object
 
-	// VIRTUAL: Internal_SetVertex(vertex_id int32,vertices unsafe.Pointer,)
+	// VIRTUAL: Internal_SetVertex(vertex_id int32,vertex Vector3,)
 
-	// VIRTUAL: Internal_SetNormal(vertex_id int32,normals unsafe.Pointer,)
+	// VIRTUAL: Internal_SetNormal(vertex_id int32,normal Vector3,)
 
 	// VIRTUAL: Internal_SetAabb(aabb AABB,)
+
+	SetVertex(vertex_id int32, vertex Vector3)
+
+	SetNormal(vertex_id int32, normal Vector3)
+
+	SetAabb(aabb AABB)
 }
 type PhysicsShapeQueryParameters2D interface {
 	RefCounted
 
-	SetShape(shape Resource)
+	SetShape(shape RefResource)
 
-	GetShape() Resource
+	GetShape() RefResource
 
 	SetShapeRid(shape RID)
 
@@ -17505,9 +17665,9 @@ type PhysicsShapeQueryParameters2D interface {
 
 	GetCollisionMask() uint32
 
-	SetExclude(exclude []RID)
+	SetExclude(exclude RID)
 
-	GetExclude() []RID
+	GetExclude() RID
 
 	SetCollideWithBodies(enable bool)
 
@@ -17520,9 +17680,9 @@ type PhysicsShapeQueryParameters2D interface {
 type PhysicsShapeQueryParameters3D interface {
 	RefCounted
 
-	SetShape(shape Resource)
+	SetShape(shape RefResource)
 
-	GetShape() Resource
+	GetShape() RefResource
 
 	SetShapeRid(shape RID)
 
@@ -17544,9 +17704,9 @@ type PhysicsShapeQueryParameters3D interface {
 
 	GetCollisionMask() uint32
 
-	SetExclude(exclude []RID)
+	SetExclude(exclude RID)
 
-	GetExclude() []RID
+	GetExclude() RID
 
 	SetCollideWithBodies(enable bool)
 
@@ -17575,13 +17735,13 @@ type PhysicsTestMotionParameters2D interface {
 
 	SetCollideSeparationRayEnabled(enabled bool)
 
-	GetExcludeBodies() []RID
+	GetExcludeBodies() RID
 
-	SetExcludeBodies(exclude_list []RID)
+	SetExcludeBodies(exclude_list RID)
 
-	GetExcludeObjects() []int32
+	GetExcludeObjects() int32
 
-	SetExcludeObjects(exclude_list []int32)
+	SetExcludeObjects(exclude_list int32)
 
 	IsRecoveryAsCollisionEnabled() bool
 
@@ -17610,13 +17770,13 @@ type PhysicsTestMotionParameters3D interface {
 
 	SetCollideSeparationRayEnabled(enabled bool)
 
-	GetExcludeBodies() []RID
+	GetExcludeBodies() RID
 
-	SetExcludeBodies(exclude_list []RID)
+	SetExcludeBodies(exclude_list RID)
 
-	GetExcludeObjects() []int32
+	GetExcludeObjects() int32
 
-	SetExcludeObjects(exclude_list []int32)
+	SetExcludeObjects(exclude_list int32)
 
 	IsRecoveryAsCollisionEnabled() bool
 
@@ -17688,6 +17848,26 @@ type PinJoint2D interface {
 	SetSoftness(softness float32)
 
 	GetSoftness() float32
+
+	SetAngularLimitLower(angular_limit_lower float32)
+
+	GetAngularLimitLower() float32
+
+	SetAngularLimitUpper(angular_limit_upper float32)
+
+	GetAngularLimitUpper() float32
+
+	SetMotorTargetVelocity(motor_target_velocity float32)
+
+	GetMotorTargetVelocity() float32
+
+	SetMotorEnabled(enabled bool)
+
+	IsMotorEnabled() bool
+
+	SetAngularLimitEnabled(enabled bool)
+
+	IsAngularLimitEnabled() bool
 }
 type PinJoint3D interface {
 	Joint3D
@@ -17760,9 +17940,9 @@ type PlaneMesh interface {
 type PointLight2D interface {
 	Light2D
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	SetTextureOffset(texture_offset Vector2)
 
@@ -17798,9 +17978,9 @@ type Polygon2D interface {
 
 	GetVertexColors() PackedColorArray
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	SetTextureOffset(texture_offset Vector2)
 
@@ -17886,31 +18066,33 @@ type Popup interface {
 type PopupMenu interface {
 	Popup
 
+	ActivateItemByEvent(event RefInputEvent, for_global_only bool) bool
+
 	AddItem(label String, id int32, accel Key)
 
-	AddIconItem(texture Texture2D, label String, id int32, accel Key)
+	AddIconItem(texture RefTexture2D, label String, id int32, accel Key)
 
 	AddCheckItem(label String, id int32, accel Key)
 
-	AddIconCheckItem(texture Texture2D, label String, id int32, accel Key)
+	AddIconCheckItem(texture RefTexture2D, label String, id int32, accel Key)
 
 	AddRadioCheckItem(label String, id int32, accel Key)
 
-	AddIconRadioCheckItem(texture Texture2D, label String, id int32, accel Key)
+	AddIconRadioCheckItem(texture RefTexture2D, label String, id int32, accel Key)
 
 	AddMultistateItem(label String, max_states int32, default_state int32, id int32, accel Key)
 
-	AddShortcut(shortcut Shortcut, id int32, global bool, allow_echo bool)
+	AddShortcut(shortcut RefShortcut, id int32, global bool, allow_echo bool)
 
-	AddIconShortcut(texture Texture2D, shortcut Shortcut, id int32, global bool, allow_echo bool)
+	AddIconShortcut(texture RefTexture2D, shortcut RefShortcut, id int32, global bool, allow_echo bool)
 
-	AddCheckShortcut(shortcut Shortcut, id int32, global bool)
+	AddCheckShortcut(shortcut RefShortcut, id int32, global bool)
 
-	AddIconCheckShortcut(texture Texture2D, shortcut Shortcut, id int32, global bool)
+	AddIconCheckShortcut(texture RefTexture2D, shortcut RefShortcut, id int32, global bool)
 
-	AddRadioCheckShortcut(shortcut Shortcut, id int32, global bool)
+	AddRadioCheckShortcut(shortcut RefShortcut, id int32, global bool)
 
-	AddIconRadioCheckShortcut(texture Texture2D, shortcut Shortcut, id int32, global bool)
+	AddIconRadioCheckShortcut(texture RefTexture2D, shortcut RefShortcut, id int32, global bool)
 
 	AddSubmenuItem(label String, submenu String, id int32)
 
@@ -17920,7 +18102,7 @@ type PopupMenu interface {
 
 	SetItemLanguage(index int32, language String)
 
-	SetItemIcon(index int32, icon Texture2D)
+	SetItemIcon(index int32, icon RefTexture2D)
 
 	SetItemIconMaxWidth(index int32, width int32)
 
@@ -17946,7 +18128,7 @@ type PopupMenu interface {
 
 	SetItemTooltip(index int32, tooltip String)
 
-	SetItemShortcut(index int32, shortcut Shortcut, global bool)
+	SetItemShortcut(index int32, shortcut RefShortcut, global bool)
 
 	SetItemIndent(index int32, indent int32)
 
@@ -17964,7 +18146,7 @@ type PopupMenu interface {
 
 	GetItemLanguage(index int32) String
 
-	GetItemIcon(index int32) Texture2D
+	GetItemIcon(index int32) RefTexture2D
 
 	GetItemIconMaxWidth(index int32) int32
 
@@ -17994,7 +18176,7 @@ type PopupMenu interface {
 
 	GetItemTooltip(index int32) String
 
-	GetItemShortcut(index int32) Shortcut
+	GetItemShortcut(index int32) RefShortcut
 
 	GetItemIndent(index int32) int32
 
@@ -18012,7 +18194,7 @@ type PopupMenu interface {
 
 	AddSeparator(label String, id int32)
 
-	Clear()
+	Clear(free_submenus bool)
 
 	SetHideOnItemSelection(enable bool)
 
@@ -18040,7 +18222,7 @@ type PopupPanel interface {
 type PortableCompressedTexture2D interface {
 	Texture2D
 
-	CreateFromImage(image Image, compression_mode PortableCompressedTexture2DCompressionMode, normal_map bool, lossy_quality float32)
+	CreateFromImage(image RefImage, compression_mode PortableCompressedTexture2DCompressionMode, normal_map bool, lossy_quality float32)
 
 	GetFormat() ImageFormat
 
@@ -18063,9 +18245,9 @@ type PrimitiveMesh interface {
 
 	// VIRTUAL: Internal_CreateMeshArray() Array
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 
 	GetMeshArrays() Array
 
@@ -18127,9 +18309,9 @@ type ProceduralSkyMaterial interface {
 
 	GetSkyEnergyMultiplier() float32
 
-	SetSkyCover(sky_cover Texture2D)
+	SetSkyCover(sky_cover RefTexture2D)
 
-	GetSkyCover() Texture2D
+	GetSkyCover() RefTexture2D
 
 	SetSkyCoverModulate(color Color)
 
@@ -18185,7 +18367,7 @@ type ProjectSettings interface {
 
 	GetSettingWithOverride(name StringName) Variant
 
-	GetGlobalClassList() []Dictionary
+	GetGlobalClassList() Dictionary
 
 	SetOrder(name String, position int32)
 
@@ -18216,17 +18398,17 @@ type ProjectSettings interface {
 type PropertyTweener interface {
 	Tweener
 
-	From(value Variant) PropertyTweener
+	From(value Variant) RefPropertyTweener
 
-	FromCurrent() PropertyTweener
+	FromCurrent() RefPropertyTweener
 
-	AsRelative() PropertyTweener
+	AsRelative() RefPropertyTweener
 
-	SetTrans(trans TweenTransitionType) PropertyTweener
+	SetTrans(trans TweenTransitionType) RefPropertyTweener
 
-	SetEase(ease TweenEaseType) PropertyTweener
+	SetEase(ease TweenEaseType) RefPropertyTweener
 
-	SetDelay(delay float64) PropertyTweener
+	SetDelay(delay float64) RefPropertyTweener
 }
 type QuadMesh interface {
 	PlaneMesh
@@ -18291,9 +18473,9 @@ type RDPipelineColorBlendState interface {
 
 	GetBlendConstant() Color
 
-	SetAttachments(attachments []RDPipelineColorBlendStateAttachment)
+	SetAttachments(attachments RefRDPipelineColorBlendStateAttachment)
 
-	GetAttachments() []RDPipelineColorBlendStateAttachment
+	GetAttachments() RefRDPipelineColorBlendStateAttachment
 }
 type RDPipelineColorBlendStateAttachment interface {
 	RefCounted
@@ -18454,9 +18636,9 @@ type RDPipelineMultisampleState interface {
 
 	GetEnableAlphaToOne() bool
 
-	SetSampleMasks(masks []int32)
+	SetSampleMasks(masks int32)
 
-	GetSampleMasks() []int32
+	GetSampleMasks() int32
 }
 type RDPipelineRasterizationState interface {
 	RefCounted
@@ -18582,11 +18764,11 @@ type RDSamplerState interface {
 type RDShaderFile interface {
 	Resource
 
-	SetBytecode(bytecode RDShaderSPIRV, version StringName)
+	SetBytecode(bytecode RefRDShaderSPIRV, version StringName)
 
-	GetSpirv(version StringName) RDShaderSPIRV
+	GetSpirv(version StringName) RefRDShaderSPIRV
 
-	GetVersionList() []StringName
+	GetVersionList() StringName
 
 	SetBaseError(error String)
 
@@ -18695,7 +18877,7 @@ type RDUniform interface {
 
 	ClearIds()
 
-	GetIds() []RID
+	GetIds() RID
 }
 type RDVertexAttribute interface {
 	RefCounted
@@ -19017,15 +19199,15 @@ type ReflectionProbe interface {
 type RegEx interface {
 	RefCounted
 
-	CreateFromString(pattern String) RegEx
+	CreateFromString(pattern String) RefRegEx
 
 	Clear()
 
 	Compile(pattern String) Error
 
-	Search(subject String, offset int32, end int32) RegExMatch
+	Search(subject String, offset int32, end int32) RefRegExMatch
 
-	SearchAll(subject String, offset int32, end int32) []RegExMatch
+	SearchAll(subject String, offset int32, end int32) RefRegExMatch
 
 	Sub(subject String, replacement String, all bool, offset int32, end int32) String
 
@@ -19107,7 +19289,7 @@ type RemoteTransform3D interface {
 type RenderSceneBuffers interface {
 	RefCounted
 
-	Configure(config RenderSceneBuffersConfiguration)
+	Configure(config RefRenderSceneBuffersConfiguration)
 }
 type RenderSceneBuffersConfiguration interface {
 	RefCounted
@@ -19151,7 +19333,7 @@ type RenderSceneBuffersConfiguration interface {
 type RenderSceneBuffersExtension interface {
 	RenderSceneBuffers
 
-	// VIRTUAL: Internal_Configure(config RenderSceneBuffersConfiguration,)
+	// VIRTUAL: Internal_Configure(config RefRenderSceneBuffersConfiguration,)
 
 	// VIRTUAL: Internal_SetFsrSharpness(fsr_sharpness float32,)
 
@@ -19166,15 +19348,17 @@ type RenderSceneBuffersRD interface {
 
 	CreateTexture(context StringName, name StringName, data_format RenderingDeviceDataFormat, usage_bits uint32, texture_samples RenderingDeviceTextureSamples, size Vector2i, layers uint32, mipmaps uint32, unique bool) RID
 
-	CreateTextureFromFormat(context StringName, name StringName, format RDTextureFormat, view RDTextureView, unique bool) RID
+	CreateTextureFromFormat(context StringName, name StringName, format RefRDTextureFormat, view RefRDTextureView, unique bool) RID
 
-	CreateTextureView(context StringName, name StringName, view_name StringName, view RDTextureView) RID
+	CreateTextureView(context StringName, name StringName, view_name StringName, view RefRDTextureView) RID
 
 	GetTexture(context StringName, name StringName) RID
 
-	GetTextureFormat(context StringName, name StringName) RDTextureFormat
+	GetTextureFormat(context StringName, name StringName) RefRDTextureFormat
 
 	GetTextureSlice(context StringName, name StringName, layer uint32, mipmap uint32, layers uint32, mipmaps uint32) RID
+
+	GetTextureSliceView(context StringName, name StringName, layer uint32, mipmap uint32, layers uint32, mipmaps uint32, view RefRDTextureView) RID
 
 	GetTextureSliceSize(context StringName, name StringName, mipmap uint32) Vector2i
 
@@ -19203,11 +19387,13 @@ type RenderSceneBuffersRD interface {
 type RenderingDevice interface {
 	Object
 
-	TextureCreate(format RDTextureFormat, view RDTextureView, data []PackedByteArray) RID
+	TextureCreate(format RefRDTextureFormat, view RefRDTextureView, data PackedByteArray) RID
 
-	TextureCreateShared(view RDTextureView, with_texture RID) RID
+	TextureCreateShared(view RefRDTextureView, with_texture RID) RID
 
-	TextureCreateSharedFromSlice(view RDTextureView, with_texture RID, layer uint32, mipmap uint32, mipmaps uint32, slice_type RenderingDeviceTextureSliceType) RID
+	TextureCreateSharedFromSlice(view RefRDTextureView, with_texture RID, layer uint32, mipmap uint32, mipmaps uint32, slice_type RenderingDeviceTextureSliceType) RID
+
+	TextureCreateFromExtension(typeName RenderingDeviceTextureType, format RenderingDeviceDataFormat, samples RenderingDeviceTextureSamples, usage_flags RenderingDeviceTextureUsageBits, image uint64, width uint64, height uint64, depth uint64, layers uint64) RID
 
 	TextureUpdate(texture RID, layer uint32, data PackedByteArray, post_barrier RenderingDeviceBarrierMask) Error
 
@@ -19225,21 +19411,21 @@ type RenderingDevice interface {
 
 	TextureResolveMultisample(from_texture RID, to_texture RID, post_barrier RenderingDeviceBarrierMask) Error
 
-	TextureGetFormat(texture RID) RDTextureFormat
+	TextureGetFormat(texture RID) RefRDTextureFormat
 
 	TextureGetNativeHandle(texture RID) uint64
 
-	FramebufferFormatCreate(attachments []RDAttachmentFormat, view_count uint32) int64
+	FramebufferFormatCreate(attachments RefRDAttachmentFormat, view_count uint32) int64
 
-	FramebufferFormatCreateMultipass(attachments []RDAttachmentFormat, passes []RDFramebufferPass, view_count uint32) int64
+	FramebufferFormatCreateMultipass(attachments RefRDAttachmentFormat, passes RefRDFramebufferPass, view_count uint32) int64
 
 	FramebufferFormatCreateEmpty(samples RenderingDeviceTextureSamples) int64
 
 	FramebufferFormatGetTextureSamples(format int64, render_pass uint32) RenderingDeviceTextureSamples
 
-	FramebufferCreate(textures []RID, validate_with_format int64, view_count uint32) RID
+	FramebufferCreate(textures RID, validate_with_format int64, view_count uint32) RID
 
-	FramebufferCreateMultipass(textures []RID, passes []RDFramebufferPass, validate_with_format int64, view_count uint32) RID
+	FramebufferCreateMultipass(textures RID, passes RefRDFramebufferPass, validate_with_format int64, view_count uint32) RID
 
 	FramebufferCreateEmpty(size Vector2i, samples RenderingDeviceTextureSamples, validate_with_format int64) RID
 
@@ -19247,25 +19433,25 @@ type RenderingDevice interface {
 
 	FramebufferIsValid(framebuffer RID) bool
 
-	SamplerCreate(state RDSamplerState) RID
+	SamplerCreate(state RefRDSamplerState) RID
 
 	SamplerIsFormatSupportedForFilter(format RenderingDeviceDataFormat, sampler_filter RenderingDeviceSamplerFilter) bool
 
 	VertexBufferCreate(size_bytes uint32, data PackedByteArray, use_as_storage bool) RID
 
-	VertexFormatCreate(vertex_descriptions []RDVertexAttribute) int64
+	VertexFormatCreate(vertex_descriptions RefRDVertexAttribute) int64
 
-	VertexArrayCreate(vertex_count uint32, vertex_format int64, src_buffers []RID, offsets PackedInt64Array) RID
+	VertexArrayCreate(vertex_count uint32, vertex_format int64, src_buffers RID, offsets PackedInt64Array) RID
 
 	IndexBufferCreate(size_indices uint32, format RenderingDeviceIndexBufferFormat, data PackedByteArray, use_restart_indices bool) RID
 
 	IndexArrayCreate(index_buffer RID, index_offset uint32, index_count uint32) RID
 
-	ShaderCompileSpirvFromSource(shader_source RDShaderSource, allow_cache bool) RDShaderSPIRV
+	ShaderCompileSpirvFromSource(shader_source RefRDShaderSource, allow_cache bool) RefRDShaderSPIRV
 
-	ShaderCompileBinaryFromSpirv(spirv_data RDShaderSPIRV, name String) PackedByteArray
+	ShaderCompileBinaryFromSpirv(spirv_data RefRDShaderSPIRV, name String) PackedByteArray
 
-	ShaderCreateFromSpirv(spirv_data RDShaderSPIRV, name String) RID
+	ShaderCreateFromSpirv(spirv_data RefRDShaderSPIRV, name String) RID
 
 	ShaderCreateFromBytecode(binary_data PackedByteArray, placeholder_rid RID) RID
 
@@ -19279,7 +19465,7 @@ type RenderingDevice interface {
 
 	TextureBufferCreate(size_bytes uint32, format RenderingDeviceDataFormat, data PackedByteArray) RID
 
-	UniformSetCreate(uniforms []RDUniform, shader RID, shader_set uint32) RID
+	UniformSetCreate(uniforms RefRDUniform, shader RID, shader_set uint32) RID
 
 	UniformSetIsValid(uniform_set RID) bool
 
@@ -19289,11 +19475,11 @@ type RenderingDevice interface {
 
 	BufferGetData(buffer RID, offset_bytes uint32, size_bytes uint32) PackedByteArray
 
-	RenderPipelineCreate(shader RID, framebuffer_format int64, vertex_format int64, primitive RenderingDeviceRenderPrimitive, rasterization_state RDPipelineRasterizationState, multisample_state RDPipelineMultisampleState, stencil_state RDPipelineDepthStencilState, color_blend_state RDPipelineColorBlendState, dynamic_state_flags RenderingDevicePipelineDynamicStateFlags, for_render_pass uint32, specialization_constants []RDPipelineSpecializationConstant) RID
+	RenderPipelineCreate(shader RID, framebuffer_format int64, vertex_format int64, primitive RenderingDeviceRenderPrimitive, rasterization_state RefRDPipelineRasterizationState, multisample_state RefRDPipelineMultisampleState, stencil_state RefRDPipelineDepthStencilState, color_blend_state RefRDPipelineColorBlendState, dynamic_state_flags RenderingDevicePipelineDynamicStateFlags, for_render_pass uint32, specialization_constants RefRDPipelineSpecializationConstant) RID
 
 	RenderPipelineIsValid(render_pipeline RID) bool
 
-	ComputePipelineCreate(shader RID, specialization_constants []RDPipelineSpecializationConstant) RID
+	ComputePipelineCreate(shader RID, specialization_constants RefRDPipelineSpecializationConstant) RID
 
 	ComputePipelineIsValid(compute_pipeline RID) bool
 
@@ -19305,9 +19491,9 @@ type RenderingDevice interface {
 
 	DrawListBeginForScreen(screen int32, clear_color Color) int64
 
-	DrawListBegin(framebuffer RID, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float32, clear_stencil uint32, region Rect2, storage_textures []RID) int64
+	DrawListBegin(framebuffer RID, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float32, clear_stencil uint32, region Rect2, storage_textures RID) int64
 
-	DrawListBeginSplit(framebuffer RID, splits uint32, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float32, clear_stencil uint32, region Rect2, storage_textures []RID) PackedInt64Array
+	DrawListBeginSplit(framebuffer RID, splits uint32, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float32, clear_stencil uint32, region Rect2, storage_textures RID) PackedInt64Array
 
 	DrawListSetBlendConstants(draw_list int64, color Color)
 
@@ -19396,17 +19582,17 @@ type RenderingDevice interface {
 type RenderingServer interface {
 	Object
 
-	Texture2DCreate(image Image) RID
+	Texture2DCreate(image RefImage) RID
 
-	Texture2DLayeredCreate(layers []Image, layered_type RenderingServerTextureLayeredType) RID
+	Texture2DLayeredCreate(layers RefImage, layered_type RenderingServerTextureLayeredType) RID
 
-	Texture3DCreate(format ImageFormat, width int32, height int32, depth int32, mipmaps bool, data []Image) RID
+	Texture3DCreate(format ImageFormat, width int32, height int32, depth int32, mipmaps bool, data RefImage) RID
 
 	TextureProxyCreate(base RID) RID
 
-	Texture2DUpdate(texture RID, image Image, layer int32)
+	Texture2DUpdate(texture RID, image RefImage, layer int32)
 
-	Texture3DUpdate(texture RID, data []Image)
+	Texture3DUpdate(texture RID, data RefImage)
 
 	TextureProxyUpdate(texture RID, proxy_to RID)
 
@@ -19416,11 +19602,11 @@ type RenderingServer interface {
 
 	Texture3DPlaceholderCreate() RID
 
-	Texture2DGet(texture RID) Image
+	Texture2DGet(texture RID) RefImage
 
-	Texture2DLayerGet(texture RID, layer int32) Image
+	Texture2DLayerGet(texture RID, layer int32) RefImage
 
-	Texture3DGet(texture RID) []Image
+	Texture3DGet(texture RID) RefImage
 
 	TextureReplace(texture RID, by_texture RID)
 
@@ -19448,7 +19634,7 @@ type RenderingServer interface {
 
 	ShaderGetCode(shader RID) String
 
-	GetShaderParameterList(shader RID) []Dictionary
+	GetShaderParameterList(shader RID) Dictionary
 
 	ShaderGetParameterDefault(shader RID, name StringName) Variant
 
@@ -19468,7 +19654,7 @@ type RenderingServer interface {
 
 	MaterialSetNextPass(material RID, next_material RID)
 
-	MeshCreateFromSurfaces(surfaces []Dictionary, blend_shape_count int32) RID
+	MeshCreateFromSurfaces(surfaces Dictionary, blend_shape_count int32) RID
 
 	MeshCreate() RID
 
@@ -19498,7 +19684,7 @@ type RenderingServer interface {
 
 	MeshSurfaceGetArrays(mesh RID, surface int32) Array
 
-	MeshSurfaceGetBlendShapeArrays(mesh RID, surface int32) []Array
+	MeshSurfaceGetBlendShapeArrays(mesh RID, surface int32) Array
 
 	MeshGetSurfaceCount(mesh RID) int32
 
@@ -19760,7 +19946,7 @@ type RenderingServer interface {
 
 	ParticlesSetTrails(particles RID, enable bool, length_sec float32)
 
-	ParticlesSetTrailBindPoses(particles RID, bind_poses []Transform3D)
+	ParticlesSetTrailBindPoses(particles RID, bind_poses Transform3D)
 
 	ParticlesIsInactive(particles RID) bool
 
@@ -19948,7 +20134,7 @@ type RenderingServer interface {
 
 	SkySetMaterial(sky RID, material RID)
 
-	SkyBakePanorama(sky RID, energy float32, bake_irradiance bool, size Vector2i) Image
+	SkyBakePanorama(sky RID, energy float32, bake_irradiance bool, size Vector2i) RefImage
 
 	EnvironmentCreate() RID
 
@@ -20002,7 +20188,7 @@ type RenderingServer interface {
 
 	EnvironmentSetVolumetricFogFilterActive(active bool)
 
-	EnvironmentBakePanorama(environment RID, bake_irradiance bool, size Vector2i) Image
+	EnvironmentBakePanorama(environment RID, bake_irradiance bool, size Vector2i) RefImage
 
 	ScreenSpaceRoughnessLimiterSetActive(enable bool, amount float32, limit float32)
 
@@ -20084,15 +20270,15 @@ type RenderingServer interface {
 
 	InstanceGeometryGetShaderParameterDefaultValue(instance RID, parameter StringName) Variant
 
-	InstanceGeometryGetShaderParameterList(instance RID) []Dictionary
+	InstanceGeometryGetShaderParameterList(instance RID) Dictionary
 
 	InstancesCullAabb(aabb AABB, scenario RID) PackedInt64Array
 
 	InstancesCullRay(from Vector3, to Vector3, scenario RID) PackedInt64Array
 
-	InstancesCullConvex(convex []Plane, scenario RID) PackedInt64Array
+	InstancesCullConvex(convex Plane, scenario RID) PackedInt64Array
 
-	BakeRenderUv2(base RID, material_overrides []RID, image_size Vector2i) []Image
+	BakeRenderUv2(base RID, material_overrides RID, image_size Vector2i) RefImage
 
 	CanvasCreate() RID
 
@@ -20264,7 +20450,7 @@ type RenderingServer interface {
 
 	GlobalShaderParameterRemove(name StringName)
 
-	GlobalShaderParameterGetList() []StringName
+	GlobalShaderParameterGetList() StringName
 
 	GlobalShaderParameterSet(name StringName, value Variant)
 
@@ -20298,7 +20484,7 @@ type RenderingServer interface {
 
 	GetWhiteTexture() RID
 
-	SetBootImage(image Image, color Color, scale bool, use_filter bool)
+	SetBootImage(image RefImage, color Color, scale bool, use_filter bool)
 
 	GetDefaultClearColor() Color
 
@@ -20329,6 +20515,8 @@ type RenderingServer interface {
 type Resource interface {
 	RefCounted
 
+	// VIRTUAL: Internal_SetupLocalToScene()
+
 	SetPath(path String)
 
 	TakeOverPath(path String)
@@ -20351,7 +20539,7 @@ type Resource interface {
 
 	EmitChanged()
 
-	Duplicate(subresources bool) Resource
+	Duplicate(subresources bool) RefResource
 }
 type ResourceFormatLoader interface {
 	RefCounted
@@ -20381,15 +20569,15 @@ type ResourceFormatLoader interface {
 type ResourceFormatSaver interface {
 	RefCounted
 
-	// VIRTUAL: Internal_Save(resource Resource,path String,flags uint32,) Error
+	// VIRTUAL: Internal_Save(resource RefResource,path String,flags uint32,) Error
 
 	// VIRTUAL: Internal_SetUid(path String,uid int64,) Error
 
-	// VIRTUAL: Internal_Recognize(resource Resource,) bool
+	// VIRTUAL: Internal_Recognize(resource RefResource,) bool
 
-	// VIRTUAL: Internal_GetRecognizedExtensions(resource Resource,) PackedStringArray
+	// VIRTUAL: Internal_GetRecognizedExtensions(resource RefResource,) PackedStringArray
 
-	// VIRTUAL: Internal_RecognizePath(resource Resource,path String,) bool
+	// VIRTUAL: Internal_RecognizePath(resource RefResource,path String,) bool
 }
 type ResourceImporter interface {
 	RefCounted
@@ -20424,9 +20612,9 @@ type ResourceImporterOBJ interface {
 type ResourceImporterOggVorbis interface {
 	ResourceImporter
 
-	LoadFromBuffer(buffer PackedByteArray) AudioStreamOggVorbis
+	LoadFromBuffer(buffer PackedByteArray) RefAudioStreamOggVorbis
 
-	LoadFromFile(path String) AudioStreamOggVorbis
+	LoadFromFile(path String) RefAudioStreamOggVorbis
 }
 type ResourceImporterScene interface {
 	ResourceImporter
@@ -20450,15 +20638,15 @@ type ResourceLoader interface {
 
 	LoadThreadedGetStatus(path String, progress Array) ResourceLoaderThreadLoadStatus
 
-	LoadThreadedGet(path String) Resource
+	LoadThreadedGet(path String) RefResource
 
-	Load(path String, type_hint String, cache_mode ResourceLoaderCacheMode) Resource
+	Load(path String, type_hint String, cache_mode ResourceLoaderCacheMode) RefResource
 
 	GetRecognizedExtensionsForType(typeName String) PackedStringArray
 
-	AddResourceFormatLoader(format_loader ResourceFormatLoader, at_front bool)
+	AddResourceFormatLoader(format_loader RefResourceFormatLoader, at_front bool)
 
-	RemoveResourceFormatLoader(format_loader ResourceFormatLoader)
+	RemoveResourceFormatLoader(format_loader RefResourceFormatLoader)
 
 	SetAbortOnMissingResources(abort bool)
 
@@ -20473,7 +20661,7 @@ type ResourceLoader interface {
 type ResourcePreloader interface {
 	Node
 
-	AddResource(name StringName, resource Resource)
+	AddResource(name StringName, resource RefResource)
 
 	RemoveResource(name StringName)
 
@@ -20481,20 +20669,20 @@ type ResourcePreloader interface {
 
 	HasResource(name StringName) bool
 
-	GetResource(name StringName) Resource
+	GetResource(name StringName) RefResource
 
 	GetResourceList() PackedStringArray
 }
 type ResourceSaver interface {
 	Object
 
-	Save(resource Resource, path String, flags ResourceSaverSaverFlags) Error
+	Save(resource RefResource, path String, flags ResourceSaverSaverFlags) Error
 
-	GetRecognizedExtensions(typeName Resource) PackedStringArray
+	GetRecognizedExtensions(typeName RefResource) PackedStringArray
 
-	AddResourceFormatSaver(format_saver ResourceFormatSaver, at_front bool)
+	AddResourceFormatSaver(format_saver RefResourceFormatSaver, at_front bool)
 
-	RemoveResourceFormatSaver(format_saver ResourceFormatSaver)
+	RemoveResourceFormatSaver(format_saver RefResourceFormatSaver)
 }
 type ResourceUID interface {
 	Object
@@ -20534,9 +20722,9 @@ type RibbonTrailMesh interface {
 
 	GetSectionSegments() int32
 
-	SetCurve(curve Curve)
+	SetCurve(curve RefCurve)
 
-	GetCurve() Curve
+	GetCurve() RefCurve
 
 	SetShape(shape RibbonTrailMeshShape)
 
@@ -20545,7 +20733,7 @@ type RibbonTrailMesh interface {
 type RichTextEffect interface {
 	Resource
 
-	// VIRTUAL: Internal_ProcessCustomFx(char_fx CharFXTransform,) bool
+	// VIRTUAL: Internal_ProcessCustomFx(char_fx RefCharFXTransform,) bool
 }
 type RichTextLabel interface {
 	Control
@@ -20556,13 +20744,15 @@ type RichTextLabel interface {
 
 	SetText(text String)
 
-	AddImage(image Texture2D, width int32, height int32, color Color, inline_align InlineAlignment, region Rect2)
+	AddImage(image RefTexture2D, width int32, height int32, color Color, inline_align InlineAlignment, region Rect2, key Variant, pad bool, tooltip String, size_in_percent bool)
+
+	UpdateImage(key Variant, mask RichTextLabelImageUpdateMask, image RefTexture2D, width int32, height int32, color Color, inline_align InlineAlignment, region Rect2, pad bool, tooltip String, size_in_percent bool)
 
 	Newline()
 
 	RemoveParagraph(paragraph int32) bool
 
-	PushFont(font Font, font_size int32)
+	PushFont(font RefFont, font_size int32)
 
 	PushFontSize(font_size int32)
 
@@ -20600,7 +20790,7 @@ type RichTextLabel interface {
 
 	PushTable(columns int32, inline_align InlineAlignment, align_to_row int32)
 
-	PushDropcap(strValue String, font Font, size int32, dropcap_margins Rect2, color Color, outline_size int32, outline_color Color)
+	PushDropcap(strValue String, font RefFont, size int32, dropcap_margins Rect2, color Color, outline_size int32, outline_color Color)
 
 	SetTableColumnExpand(column int32, expand bool, ratio int32)
 
@@ -20618,7 +20808,7 @@ type RichTextLabel interface {
 
 	PushBgcolor(bgcolor Color)
 
-	PushCustomfx(effect RichTextEffect, env Dictionary)
+	PushCustomfx(effect RefRichTextEffect, env Dictionary)
 
 	PushContext()
 
@@ -20801,9 +20991,9 @@ type RigidBody2D interface {
 
 	GetCenterOfMass() Vector2
 
-	SetPhysicsMaterialOverride(physics_material_override PhysicsMaterial)
+	SetPhysicsMaterialOverride(physics_material_override RefPhysicsMaterial)
 
-	GetPhysicsMaterialOverride() PhysicsMaterial
+	GetPhysicsMaterialOverride() RefPhysicsMaterial
 
 	SetGravityScale(gravity_scale float32)
 
@@ -20899,7 +21089,7 @@ type RigidBody2D interface {
 
 	GetFreezeMode() RigidBody2DFreezeMode
 
-	GetCollidingBodies() []Node2D
+	GetCollidingBodies() Node2D
 }
 type RigidBody3D interface {
 	PhysicsBody3D
@@ -20922,9 +21112,9 @@ type RigidBody3D interface {
 
 	GetCenterOfMass() Vector3
 
-	SetPhysicsMaterialOverride(physics_material_override PhysicsMaterial)
+	SetPhysicsMaterialOverride(physics_material_override RefPhysicsMaterial)
 
-	GetPhysicsMaterialOverride() PhysicsMaterial
+	GetPhysicsMaterialOverride() RefPhysicsMaterial
 
 	SetLinearVelocity(linear_velocity Vector3)
 
@@ -21022,7 +21212,7 @@ type RigidBody3D interface {
 
 	GetFreezeMode() RigidBody3DFreezeMode
 
-	GetCollidingBodies() []Node3D
+	GetCollidingBodies() Node3D
 }
 type RootMotionView interface {
 	VisualInstance3D
@@ -21097,7 +21287,7 @@ type SceneMultiplayer interface {
 type SceneReplicationConfig interface {
 	Resource
 
-	GetProperties() []NodePath
+	GetProperties() NodePath
 
 	AddProperty(path NodePath, index int32)
 
@@ -21140,7 +21330,7 @@ type SceneState interface {
 
 	GetNodeInstancePlaceholder(idx int32) String
 
-	GetNodeInstance(idx int32) PackedScene
+	GetNodeInstance(idx int32) RefPackedScene
 
 	GetNodeGroups(idx int32) PackedStringArray
 
@@ -21203,11 +21393,11 @@ type SceneTree interface {
 
 	IsPaused() bool
 
-	CreateTimer(time_sec float64, process_always bool, process_in_physics bool, ignore_time_scale bool) SceneTreeTimer
+	CreateTimer(time_sec float64, process_always bool, process_in_physics bool, ignore_time_scale bool) RefSceneTreeTimer
 
-	CreateTween() Tween
+	CreateTween() RefTween
 
-	GetProcessedTweens() []Tween
+	GetProcessedTweens() RefTween
 
 	GetNodeCount() int32
 
@@ -21229,7 +21419,7 @@ type SceneTree interface {
 
 	SetGroup(group StringName, property String, value Variant)
 
-	GetNodesInGroup(group StringName) []Node
+	GetNodesInGroup(group StringName) Node
 
 	GetFirstNodeInGroup(group StringName) Node
 
@@ -21239,15 +21429,15 @@ type SceneTree interface {
 
 	ChangeSceneToFile(path String) Error
 
-	ChangeSceneToPacked(packed_scene PackedScene) Error
+	ChangeSceneToPacked(packed_scene RefPackedScene) Error
 
 	ReloadCurrentScene() Error
 
 	UnloadCurrentScene()
 
-	SetMultiplayer(multiplayer MultiplayerAPI, root_path NodePath)
+	SetMultiplayer(multiplayer RefMultiplayerAPI, root_path NodePath)
 
-	GetMultiplayer(for_path NodePath) MultiplayerAPI
+	GetMultiplayer(for_path NodePath) RefMultiplayerAPI
 
 	SetMultiplayerPollEnabled(enabled bool)
 
@@ -21275,23 +21465,25 @@ type Script interface {
 
 	Reload(keep_state bool) Error
 
-	GetBaseScript() Script
+	GetBaseScript() RefScript
 
 	GetInstanceBaseType() StringName
 
 	HasScriptSignal(signal_name StringName) bool
 
-	GetScriptPropertyList() []Dictionary
+	GetScriptPropertyList() Dictionary
 
-	GetScriptMethodList() []Dictionary
+	GetScriptMethodList() Dictionary
 
-	GetScriptSignalList() []Dictionary
+	GetScriptSignalList() Dictionary
 
 	GetScriptConstantMap() Dictionary
 
 	GetPropertyDefaultValue(property StringName) Variant
 
 	IsTool() bool
+
+	IsAbstract() bool
 }
 type ScriptCreateDialog interface {
 	ConfirmationDialog
@@ -21303,17 +21495,17 @@ type ScriptEditor interface {
 
 	GetCurrentEditor() ScriptEditorBase
 
-	GetOpenScriptEditors() []ScriptEditorBase
+	GetOpenScriptEditors() ScriptEditorBase
 
-	RegisterSyntaxHighlighter(syntax_highlighter EditorSyntaxHighlighter)
+	RegisterSyntaxHighlighter(syntax_highlighter RefEditorSyntaxHighlighter)
 
-	UnregisterSyntaxHighlighter(syntax_highlighter EditorSyntaxHighlighter)
+	UnregisterSyntaxHighlighter(syntax_highlighter RefEditorSyntaxHighlighter)
 
 	GotoLine(line_number int32)
 
-	GetCurrentScript() Script
+	GetCurrentScript() RefScript
 
-	GetOpenScripts() []Script
+	GetOpenScripts() RefScript
 
 	OpenScriptCreateDialog(base_name String, base_path String)
 }
@@ -21322,7 +21514,7 @@ type ScriptEditorBase interface {
 
 	GetBaseEditor() Control
 
-	AddSyntaxHighlighter(highlighter EditorSyntaxHighlighter)
+	AddSyntaxHighlighter(highlighter RefEditorSyntaxHighlighter)
 }
 type ScriptExtension interface {
 	Script
@@ -21333,11 +21525,11 @@ type ScriptExtension interface {
 
 	// VIRTUAL: Internal_CanInstantiate() bool
 
-	// VIRTUAL: Internal_GetBaseScript() Script
+	// VIRTUAL: Internal_GetBaseScript() RefScript
 
 	// VIRTUAL: Internal_GetGlobalName() StringName
 
-	// VIRTUAL: Internal_InheritsScript(script Script,) bool
+	// VIRTUAL: Internal_InheritsScript(script RefScript,) bool
 
 	// VIRTUAL: Internal_GetInstanceBaseType() StringName
 
@@ -21355,7 +21547,7 @@ type ScriptExtension interface {
 
 	// VIRTUAL: Internal_Reload(keep_state bool,) Error
 
-	// VIRTUAL: Internal_GetDocumentation() []Dictionary
+	// VIRTUAL: Internal_GetDocumentation() Dictionary
 
 	// VIRTUAL: Internal_GetClassIconPath() String
 
@@ -21367,11 +21559,13 @@ type ScriptExtension interface {
 
 	// VIRTUAL: Internal_IsValid() bool
 
+	// VIRTUAL: Internal_IsAbstract() bool
+
 	// VIRTUAL: Internal_GetLanguage() ScriptLanguage
 
 	// VIRTUAL: Internal_HasScriptSignal(signal StringName,) bool
 
-	// VIRTUAL: Internal_GetScriptSignalList() []Dictionary
+	// VIRTUAL: Internal_GetScriptSignalList() Dictionary
 
 	// VIRTUAL: Internal_HasPropertyDefaultValue(property StringName,) bool
 
@@ -21379,15 +21573,15 @@ type ScriptExtension interface {
 
 	// VIRTUAL: Internal_UpdateExports()
 
-	// VIRTUAL: Internal_GetScriptMethodList() []Dictionary
+	// VIRTUAL: Internal_GetScriptMethodList() Dictionary
 
-	// VIRTUAL: Internal_GetScriptPropertyList() []Dictionary
+	// VIRTUAL: Internal_GetScriptPropertyList() Dictionary
 
 	// VIRTUAL: Internal_GetMemberLine(member StringName,) int32
 
 	// VIRTUAL: Internal_GetConstants() Dictionary
 
-	// VIRTUAL: Internal_GetMembers() []StringName
+	// VIRTUAL: Internal_GetMembers() StringName
 
 	// VIRTUAL: Internal_IsPlaceholderFallbackEnabled() bool
 
@@ -21417,9 +21611,9 @@ type ScriptLanguageExtension interface {
 
 	// VIRTUAL: Internal_GetStringDelimiters() PackedStringArray
 
-	// VIRTUAL: Internal_MakeTemplate(template String,class_name String,base_class_name String,) Script
+	// VIRTUAL: Internal_MakeTemplate(template String,class_name String,base_class_name String,) RefScript
 
-	// VIRTUAL: Internal_GetBuiltInTemplates(object StringName,) []Dictionary
+	// VIRTUAL: Internal_GetBuiltInTemplates(object StringName,) Dictionary
 
 	// VIRTUAL: Internal_IsUsingTemplates() bool
 
@@ -21441,7 +21635,7 @@ type ScriptLanguageExtension interface {
 
 	// VIRTUAL: Internal_MakeFunction(class_name String,function_name String,function_args PackedStringArray,) String
 
-	// VIRTUAL: Internal_OpenInExternalEditor(script Script,line int32,column int32,) Error
+	// VIRTUAL: Internal_OpenInExternalEditor(script RefScript,line int32,column int32,) Error
 
 	// VIRTUAL: Internal_OverridesExternalEditor() bool
 
@@ -21479,19 +21673,19 @@ type ScriptLanguageExtension interface {
 
 	// VIRTUAL: Internal_DebugParseStackLevelExpression(level int32,expression String,max_subitems int32,max_depth int32,) String
 
-	// VIRTUAL: Internal_DebugGetCurrentStackInfo() []Dictionary
+	// VIRTUAL: Internal_DebugGetCurrentStackInfo() Dictionary
 
 	// VIRTUAL: Internal_ReloadAllScripts()
 
-	// VIRTUAL: Internal_ReloadToolScript(script Script,soft_reload bool,)
+	// VIRTUAL: Internal_ReloadToolScript(script RefScript,soft_reload bool,)
 
 	// VIRTUAL: Internal_GetRecognizedExtensions() PackedStringArray
 
-	// VIRTUAL: Internal_GetPublicFunctions() []Dictionary
+	// VIRTUAL: Internal_GetPublicFunctions() Dictionary
 
 	// VIRTUAL: Internal_GetPublicConstants() Dictionary
 
-	// VIRTUAL: Internal_GetPublicAnnotations() []Dictionary
+	// VIRTUAL: Internal_GetPublicAnnotations() Dictionary
 
 	// VIRTUAL: Internal_ProfilingStart()
 
@@ -21609,9 +21803,9 @@ type Shader interface {
 
 	GetCode() String
 
-	SetDefaultTextureParameter(name StringName, texture Texture2D, index int32)
+	SetDefaultTextureParameter(name StringName, texture RefTexture2D, index int32)
 
-	GetDefaultTextureParameter(name StringName, index int32) Texture2D
+	GetDefaultTextureParameter(name StringName, index int32) RefTexture2D
 
 	GetShaderUniformList(get_groups bool) Array
 }
@@ -21628,9 +21822,9 @@ type ShaderInclude interface {
 type ShaderMaterial interface {
 	Material
 
-	SetShader(shader Shader)
+	SetShader(shader RefShader)
 
-	GetShader() Shader
+	GetShader() RefShader
 
 	SetShaderParameter(param StringName, value Variant)
 
@@ -21643,13 +21837,13 @@ type Shape2D interface {
 
 	GetCustomSolverBias() float32
 
-	Collide(local_xform Transform2D, with_shape Shape2D, shape_xform Transform2D) bool
+	Collide(local_xform Transform2D, with_shape RefShape2D, shape_xform Transform2D) bool
 
-	CollideWithMotion(local_xform Transform2D, local_motion Vector2, with_shape Shape2D, shape_xform Transform2D, shape_motion Vector2) bool
+	CollideWithMotion(local_xform Transform2D, local_motion Vector2, with_shape RefShape2D, shape_xform Transform2D, shape_motion Vector2) bool
 
-	CollideAndGetContacts(local_xform Transform2D, with_shape Shape2D, shape_xform Transform2D) PackedVector2Array
+	CollideAndGetContacts(local_xform Transform2D, with_shape RefShape2D, shape_xform Transform2D) PackedVector2Array
 
-	CollideWithMotionAndGetContacts(local_xform Transform2D, local_motion Vector2, with_shape Shape2D, shape_xform Transform2D, shape_motion Vector2) PackedVector2Array
+	CollideWithMotionAndGetContacts(local_xform Transform2D, local_motion Vector2, with_shape RefShape2D, shape_xform Transform2D, shape_motion Vector2) PackedVector2Array
 
 	Draw(canvas_item RID, color Color)
 
@@ -21666,7 +21860,7 @@ type Shape3D interface {
 
 	GetMargin() float32
 
-	GetDebugMesh() ArrayMesh
+	GetDebugMesh() RefArrayMesh
 }
 type ShapeCast2D interface {
 	Node2D
@@ -21675,9 +21869,9 @@ type ShapeCast2D interface {
 
 	IsEnabled() bool
 
-	SetShape(shape Shape2D)
+	SetShape(shape RefShape2D)
 
-	GetShape() Shape2D
+	GetShape() RefShape2D
 
 	SetTargetPosition(local_point Vector2)
 
@@ -21744,15 +21938,15 @@ type ShapeCast2D interface {
 type ShapeCast3D interface {
 	Node3D
 
-	ResourceChanged(resource Resource)
+	ResourceChanged(resource RefResource)
 
 	SetEnabled(enabled bool)
 
 	IsEnabled() bool
 
-	SetShape(shape Shape3D)
+	SetShape(shape RefShape3D)
 
-	GetShape() Shape3D
+	GetShape() RefShape3D
 
 	SetTargetPosition(local_point Vector3)
 
@@ -21829,7 +22023,7 @@ type Shortcut interface {
 
 	HasValidEvent() bool
 
-	MatchesEvent(event InputEvent) bool
+	MatchesEvent(event RefInputEvent) bool
 
 	GetAsText() String
 }
@@ -21842,9 +22036,9 @@ type Skeleton2D interface {
 
 	GetSkeleton() RID
 
-	SetModificationStack(modification_stack SkeletonModificationStack2D)
+	SetModificationStack(modification_stack RefSkeletonModificationStack2D)
 
-	GetModificationStack() SkeletonModificationStack2D
+	GetModificationStack() RefSkeletonModificationStack2D
 
 	ExecuteModifications(delta float32, execution_mode int32)
 
@@ -21883,9 +22077,9 @@ type Skeleton3D interface {
 
 	GetBoneGlobalRest(bone_idx int32) Transform3D
 
-	CreateSkinFromRestTransforms() Skin
+	CreateSkinFromRestTransforms() RefSkin
 
-	RegisterSkin(skin Skin) SkinReference
+	RegisterSkin(skin RefSkin) RefSkinReference
 
 	LocalizeRests()
 
@@ -21941,7 +22135,7 @@ type Skeleton3D interface {
 
 	PhysicalBonesStopSimulation()
 
-	PhysicalBonesStartSimulation(bones []StringName)
+	PhysicalBonesStartSimulation(bones StringName)
 
 	PhysicalBonesAddCollisionException(exception RID)
 
@@ -22003,7 +22197,7 @@ type SkeletonModification2D interface {
 
 	// VIRTUAL: Internal_Execute(delta float64,)
 
-	// VIRTUAL: Internal_SetupModification(modification_stack SkeletonModificationStack2D,)
+	// VIRTUAL: Internal_SetupModification(modification_stack RefSkeletonModificationStack2D,)
 
 	// VIRTUAL: Internal_DrawEditorGizmo()
 
@@ -22011,7 +22205,7 @@ type SkeletonModification2D interface {
 
 	GetEnabled() bool
 
-	GetModificationStack() SkeletonModificationStack2D
+	GetModificationStack() RefSkeletonModificationStack2D
 
 	SetIsSetup(is_setup bool)
 
@@ -22216,16 +22410,16 @@ type SkeletonModification2DPhysicalBones interface {
 
 	FetchPhysicalBones()
 
-	StartSimulation(bones []StringName)
+	StartSimulation(bones StringName)
 
-	StopSimulation(bones []StringName)
+	StopSimulation(bones StringName)
 }
 type SkeletonModification2DStackHolder interface {
 	SkeletonModification2D
 
-	SetHeldModificationStack(held_modification_stack SkeletonModificationStack2D)
+	SetHeldModificationStack(held_modification_stack RefSkeletonModificationStack2D)
 
-	GetHeldModificationStack() SkeletonModificationStack2D
+	GetHeldModificationStack() RefSkeletonModificationStack2D
 }
 type SkeletonModification2DTwoBoneIK interface {
 	SkeletonModification2D
@@ -22271,13 +22465,13 @@ type SkeletonModificationStack2D interface {
 
 	EnableAllModifications(enabled bool)
 
-	GetModification(mod_idx int32) SkeletonModification2D
+	GetModification(mod_idx int32) RefSkeletonModification2D
 
-	AddModification(modification SkeletonModification2D)
+	AddModification(modification RefSkeletonModification2D)
 
 	DeleteModification(mod_idx int32)
 
-	SetModification(mod_idx int32, modification SkeletonModification2D)
+	SetModification(mod_idx int32, modification RefSkeletonModification2D)
 
 	SetModificationCount(count int32)
 
@@ -22314,9 +22508,9 @@ type SkeletonProfile interface {
 
 	SetGroupName(group_idx int32, group_name StringName)
 
-	GetTexture(group_idx int32) Texture2D
+	GetTexture(group_idx int32) RefTexture2D
 
-	SetTexture(group_idx int32, texture Texture2D)
+	SetTexture(group_idx int32, texture RefTexture2D)
 
 	SetBoneSize(size int32)
 
@@ -22385,7 +22579,7 @@ type SkinReference interface {
 
 	GetSkeleton() RID
 
-	GetSkin() Skin
+	GetSkin() RefSkin
 }
 type Sky interface {
 	Resource
@@ -22398,9 +22592,9 @@ type Sky interface {
 
 	GetProcessMode() SkyProcessMode
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 }
 type Slider interface {
 	Range
@@ -22457,7 +22651,7 @@ type SoftBody3D interface {
 
 	GetDisableMode() SoftBody3DDisableMode
 
-	GetCollisionExceptions() []PhysicsBody3D
+	GetCollisionExceptions() PhysicsBody3D
 
 	AddCollisionExceptionWith(body Node)
 
@@ -22602,9 +22796,9 @@ type SpringArm3D interface {
 
 	GetLength() float32
 
-	SetShape(shape Shape3D)
+	SetShape(shape RefShape3D)
 
-	GetShape() Shape3D
+	GetShape() RefShape3D
 
 	AddExcludedObject(RID RID)
 
@@ -22623,9 +22817,9 @@ type SpringArm3D interface {
 type Sprite2D interface {
 	Node2D
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	SetCentered(centered bool)
 
@@ -22678,9 +22872,9 @@ type Sprite2D interface {
 type Sprite3D interface {
 	SpriteBase3D
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	SetRegionEnabled(enabled bool)
 
@@ -22775,7 +22969,7 @@ type SpriteBase3D interface {
 
 	GetItemRect() Rect2
 
-	GenerateTriangleMesh() TriangleMesh
+	GenerateTriangleMesh() RefTriangleMesh
 }
 type SpriteFrames interface {
 	Resource
@@ -22798,15 +22992,15 @@ type SpriteFrames interface {
 
 	GetAnimationLoop(anim StringName) bool
 
-	AddFrame(anim StringName, texture Texture2D, duration float32, at_position int32)
+	AddFrame(anim StringName, texture RefTexture2D, duration float32, at_position int32)
 
-	SetFrame(anim StringName, idx int32, texture Texture2D, duration float32)
+	SetFrame(anim StringName, idx int32, texture RefTexture2D, duration float32)
 
 	RemoveFrame(anim StringName, idx int32)
 
 	GetFrameCount(anim StringName) int32
 
-	GetFrameTexture(anim StringName, idx int32) Texture2D
+	GetFrameTexture(anim StringName, idx int32) RefTexture2D
 
 	GetFrameDuration(anim StringName, idx int32) float32
 
@@ -22828,9 +23022,9 @@ type StaticBody2D interface {
 
 	GetConstantAngularVelocity() float32
 
-	SetPhysicsMaterialOverride(physics_material_override PhysicsMaterial)
+	SetPhysicsMaterialOverride(physics_material_override RefPhysicsMaterial)
 
-	GetPhysicsMaterialOverride() PhysicsMaterial
+	GetPhysicsMaterialOverride() RefPhysicsMaterial
 }
 type StaticBody3D interface {
 	PhysicsBody3D
@@ -22843,9 +23037,9 @@ type StaticBody3D interface {
 
 	GetConstantAngularVelocity() Vector3
 
-	SetPhysicsMaterialOverride(physics_material_override PhysicsMaterial)
+	SetPhysicsMaterialOverride(physics_material_override RefPhysicsMaterial)
 
-	GetPhysicsMaterialOverride() PhysicsMaterial
+	GetPhysicsMaterialOverride() RefPhysicsMaterial
 }
 type StreamPeer interface {
 	RefCounted
@@ -22933,7 +23127,7 @@ type StreamPeerBuffer interface {
 
 	Clear()
 
-	Duplicate() StreamPeerBuffer
+	Duplicate() RefStreamPeerBuffer
 }
 type StreamPeerExtension interface {
 	StreamPeer
@@ -22985,13 +23179,13 @@ type StreamPeerTLS interface {
 
 	Poll()
 
-	AcceptStream(stream StreamPeer, server_options TLSOptions) Error
+	AcceptStream(stream RefStreamPeer, server_options RefTLSOptions) Error
 
-	ConnectToStream(stream StreamPeer, common_name String, client_options TLSOptions) Error
+	ConnectToStream(stream RefStreamPeer, common_name String, client_options RefTLSOptions) Error
 
 	GetStatus() StreamPeerTLSStatus
 
-	GetStream() StreamPeer
+	GetStream() RefStreamPeer
 
 	DisconnectFromStream()
 }
@@ -23120,9 +23314,9 @@ type StyleBoxLine interface {
 type StyleBoxTexture interface {
 	StyleBox
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	SetTextureMargin(margin Side, size float32)
 
@@ -23223,7 +23417,7 @@ type SurfaceTool interface {
 
 	SetSmoothGroup(index uint32)
 
-	AddTriangleFan(vertices PackedVector3Array, uvs PackedVector2Array, colors PackedColorArray, uv2s PackedVector2Array, normals PackedVector3Array, tangents []Plane)
+	AddTriangleFan(vertices PackedVector3Array, uvs PackedVector2Array, colors PackedColorArray, uv2s PackedVector2Array, normals PackedVector3Array, tangents Plane)
 
 	AddIndex(index int32)
 
@@ -23241,19 +23435,19 @@ type SurfaceTool interface {
 
 	GenerateLod(nd_threshold float32, target_index_count int32) PackedInt32Array
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
 	GetPrimitiveType() MeshPrimitiveType
 
 	Clear()
 
-	CreateFrom(existing Mesh, surface int32)
+	CreateFrom(existing RefMesh, surface int32)
 
-	CreateFromBlendShape(existing Mesh, surface int32, blend_shape String)
+	CreateFromBlendShape(existing RefMesh, surface int32, blend_shape String)
 
-	AppendFrom(existing Mesh, surface int32, transform Transform3D)
+	AppendFrom(existing RefMesh, surface int32, transform Transform3D)
 
-	Commit(existing ArrayMesh, flags uint32) ArrayMesh
+	Commit(existing RefArrayMesh, flags uint32) RefArrayMesh
 
 	CommitToArrays() Array
 }
@@ -23340,18 +23534,18 @@ type TCPServer interface {
 
 	GetLocalPort() int32
 
-	TakeConnection() StreamPeerTCP
+	TakeConnection() RefStreamPeerTCP
 
 	Stop()
 }
 type TLSOptions interface {
 	RefCounted
 
-	Client(trusted_chain X509Certificate, common_name_override String) TLSOptions
+	Client(trusted_chain RefX509Certificate, common_name_override String) RefTLSOptions
 
-	ClientUnsafe(trusted_chain X509Certificate) TLSOptions
+	ClientUnsafe(trusted_chain RefX509Certificate) RefTLSOptions
 
-	Server(key CryptoKey, certificate X509Certificate) TLSOptions
+	Server(key RefCryptoKey, certificate RefX509Certificate) RefTLSOptions
 }
 type TabBar interface {
 	Control
@@ -23366,6 +23560,10 @@ type TabBar interface {
 
 	GetPreviousTab() int32
 
+	SelectPreviousAvailable() bool
+
+	SelectNextAvailable() bool
+
 	SetTabTitle(tab_idx int32, title String)
 
 	GetTabTitle(tab_idx int32) String
@@ -23378,17 +23576,17 @@ type TabBar interface {
 
 	GetTabLanguage(tab_idx int32) String
 
-	SetTabIcon(tab_idx int32, icon Texture2D)
+	SetTabIcon(tab_idx int32, icon RefTexture2D)
 
-	GetTabIcon(tab_idx int32) Texture2D
+	GetTabIcon(tab_idx int32) RefTexture2D
 
 	SetTabIconMaxWidth(tab_idx int32, width int32)
 
 	GetTabIconMaxWidth(tab_idx int32) int32
 
-	SetTabButtonIcon(tab_idx int32, icon Texture2D)
+	SetTabButtonIcon(tab_idx int32, icon RefTexture2D)
 
-	GetTabButtonIcon(tab_idx int32) Texture2D
+	GetTabButtonIcon(tab_idx int32) RefTexture2D
 
 	SetTabDisabled(tab_idx int32, disabled bool)
 
@@ -23404,7 +23602,7 @@ type TabBar interface {
 
 	RemoveTab(tab_idx int32)
 
-	AddTab(title String, icon Texture2D)
+	AddTab(title String, icon RefTexture2D)
 
 	GetTabIdxAtPoint(point Vector2) int32
 
@@ -23467,7 +23665,13 @@ type TabContainer interface {
 
 	GetPreviousTab() int32
 
+	SelectPreviousAvailable() bool
+
+	SelectNextAvailable() bool
+
 	GetCurrentTabControl() Control
+
+	GetTabBar() TabBar
 
 	GetTabControl(tab_idx int32) Control
 
@@ -23491,9 +23695,9 @@ type TabContainer interface {
 
 	GetTabTitle(tab_idx int32) String
 
-	SetTabIcon(tab_idx int32, icon Texture2D)
+	SetTabIcon(tab_idx int32, icon RefTexture2D)
 
-	GetTabIcon(tab_idx int32) Texture2D
+	GetTabIcon(tab_idx int32) RefTexture2D
 
 	SetTabDisabled(tab_idx int32, disabled bool)
 
@@ -23507,9 +23711,9 @@ type TabContainer interface {
 
 	GetTabMetadata(tab_idx int32) Variant
 
-	SetTabButtonIcon(tab_idx int32, icon Texture2D)
+	SetTabButtonIcon(tab_idx int32, icon RefTexture2D)
 
-	GetTabButtonIcon(tab_idx int32) Texture2D
+	GetTabButtonIcon(tab_idx int32) RefTexture2D
 
 	GetTabIdxAtPoint(point Vector2) int32
 
@@ -23530,6 +23734,10 @@ type TabContainer interface {
 	SetUseHiddenTabsForMinSize(enabled bool)
 
 	GetUseHiddenTabsForMinSize() bool
+
+	SetTabFocusMode(focus_mode ControlFocusMode)
+
+	GetTabFocusMode() ControlFocusMode
 }
 type TextEdit interface {
 	Control
@@ -23914,9 +24122,9 @@ type TextEdit interface {
 
 	GetLineGutterText(line int32, gutter int32) String
 
-	SetLineGutterIcon(line int32, gutter int32, icon Texture2D)
+	SetLineGutterIcon(line int32, gutter int32, icon RefTexture2D)
 
-	GetLineGutterIcon(line int32, gutter int32) Texture2D
+	GetLineGutterIcon(line int32, gutter int32) RefTexture2D
 
 	SetLineGutterItemColor(line int32, gutter int32, color Color)
 
@@ -23930,9 +24138,9 @@ type TextEdit interface {
 
 	GetLineBackgroundColor(line int32) Color
 
-	SetSyntaxHighlighter(syntax_highlighter SyntaxHighlighter)
+	SetSyntaxHighlighter(syntax_highlighter RefSyntaxHighlighter)
 
-	GetSyntaxHighlighter() SyntaxHighlighter
+	GetSyntaxHighlighter() RefSyntaxHighlighter
 
 	SetHighlightCurrentLine(enabled bool)
 
@@ -23983,7 +24191,7 @@ type TextLine interface {
 
 	SetBidiOverride(override Array)
 
-	AddString(text String, font Font, font_size int32, language String, meta Variant) bool
+	AddString(text String, font RefFont, font_size int32, language String, meta Variant) bool
 
 	AddObject(key Variant, size Vector2, inline_align InlineAlignment, length int32, baseline float32) bool
 
@@ -24046,9 +24254,9 @@ type TextMesh interface {
 
 	GetText() String
 
-	SetFont(font Font)
+	SetFont(font RefFont)
 
-	GetFont() Font
+	GetFont() RefFont
 
 	SetFontSize(font_size int32)
 
@@ -24133,11 +24341,11 @@ type TextParagraph interface {
 
 	SetBidiOverride(override Array)
 
-	SetDropcap(text String, font Font, font_size int32, dropcap_margins Rect2, language String) bool
+	SetDropcap(text String, font RefFont, font_size int32, dropcap_margins Rect2, language String) bool
 
 	ClearDropcap()
 
-	AddString(text String, font Font, font_size int32, language String, meta Variant) bool
+	AddString(text String, font RefFont, font_size int32, language String, meta Variant) bool
 
 	AddObject(key Variant, size Vector2, inline_align InlineAlignment, length int32, baseline float32) bool
 
@@ -24336,7 +24544,7 @@ type TextServer interface {
 
 	FontGetOversampling(font_rid RID) float64
 
-	FontGetSizeCacheList(font_rid RID) []Vector2i
+	FontGetSizeCacheList(font_rid RID) Vector2i
 
 	FontClearSizeCache(font_rid RID)
 
@@ -24368,9 +24576,9 @@ type TextServer interface {
 
 	FontRemoveTexture(font_rid RID, size Vector2i, texture_index int64)
 
-	FontSetTextureImage(font_rid RID, size Vector2i, texture_index int64, image Image)
+	FontSetTextureImage(font_rid RID, size Vector2i, texture_index int64, image RefImage)
 
-	FontGetTextureImage(font_rid RID, size Vector2i, texture_index int64) Image
+	FontGetTextureImage(font_rid RID, size Vector2i, texture_index int64) RefImage
 
 	FontSetTextureOffsets(font_rid RID, size Vector2i, texture_index int64, offset PackedInt32Array)
 
@@ -24408,7 +24616,7 @@ type TextServer interface {
 
 	FontGetGlyphContours(font RID, size int64, index int64) Dictionary
 
-	FontGetKerningList(font_rid RID, size int64) []Vector2i
+	FontGetKerningList(font_rid RID, size int64) Vector2i
 
 	FontClearKerningMap(font_rid RID, size int64)
 
@@ -24502,7 +24710,7 @@ type TextServer interface {
 
 	ShapedTextGetSpacing(shaped RID, spacing TextServerSpacingType) int64
 
-	ShapedTextAddString(shaped RID, text String, fonts []RID, size int64, opentype_features Dictionary, language String, meta Variant) bool
+	ShapedTextAddString(shaped RID, text String, fonts RID, size int64, opentype_features Dictionary, language String, meta Variant) bool
 
 	ShapedTextAddObject(shaped RID, key Variant, size Vector2, inline_align InlineAlignment, length int64, baseline float64) bool
 
@@ -24512,7 +24720,7 @@ type TextServer interface {
 
 	ShapedGetSpanMeta(shaped RID, index int64) Variant
 
-	ShapedSetSpanUpdateFont(shaped RID, index int64, fonts []RID, size int64, opentype_features Dictionary)
+	ShapedSetSpanUpdateFont(shaped RID, index int64, fonts RID, size int64, opentype_features Dictionary)
 
 	ShapedTextSubstr(shaped RID, start int64, length int64) RID
 
@@ -24528,9 +24736,9 @@ type TextServer interface {
 
 	ShapedTextHasVisibleChars(shaped RID) bool
 
-	ShapedTextGetGlyphs(shaped RID) []Dictionary
+	ShapedTextGetGlyphs(shaped RID) Dictionary
 
-	ShapedTextSortLogical(shaped RID) []Dictionary
+	ShapedTextSortLogical(shaped RID) Dictionary
 
 	ShapedTextGetGlyphCount(shaped RID) int64
 
@@ -24546,7 +24754,7 @@ type TextServer interface {
 
 	ShapedTextGetEllipsisPos(shaped RID) int64
 
-	ShapedTextGetEllipsisGlyphs(shaped RID) []Dictionary
+	ShapedTextGetEllipsisGlyphs(shaped RID) Dictionary
 
 	ShapedTextGetEllipsisGlyphCount(shaped RID) int64
 
@@ -24618,7 +24826,7 @@ type TextServer interface {
 
 	StringToLower(strValue String, language String) String
 
-	ParseStructuredText(parser_type TextServerStructuredTextParser, args Array, text String) []Vector3i
+	ParseStructuredText(parser_type TextServerStructuredTextParser, args Array, text String) Vector3i
 }
 type TextServerAdvanced interface {
 	TextServerExtension
@@ -24747,7 +24955,7 @@ type TextServerExtension interface {
 
 	// VIRTUAL: Internal_FontGetOversampling(font_rid RID,) float64
 
-	// VIRTUAL: Internal_FontGetSizeCacheList(font_rid RID,) []Vector2i
+	// VIRTUAL: Internal_FontGetSizeCacheList(font_rid RID,) Vector2i
 
 	// VIRTUAL: Internal_FontClearSizeCache(font_rid RID,)
 
@@ -24779,9 +24987,9 @@ type TextServerExtension interface {
 
 	// VIRTUAL: Internal_FontRemoveTexture(font_rid RID,size Vector2i,texture_index int64,)
 
-	// VIRTUAL: Internal_FontSetTextureImage(font_rid RID,size Vector2i,texture_index int64,image Image,)
+	// VIRTUAL: Internal_FontSetTextureImage(font_rid RID,size Vector2i,texture_index int64,image RefImage,)
 
-	// VIRTUAL: Internal_FontGetTextureImage(font_rid RID,size Vector2i,texture_index int64,) Image
+	// VIRTUAL: Internal_FontGetTextureImage(font_rid RID,size Vector2i,texture_index int64,) RefImage
 
 	// VIRTUAL: Internal_FontSetTextureOffsets(font_rid RID,size Vector2i,texture_index int64,offset PackedInt32Array,)
 
@@ -24819,7 +25027,7 @@ type TextServerExtension interface {
 
 	// VIRTUAL: Internal_FontGetGlyphContours(font_rid RID,size int64,index int64,) Dictionary
 
-	// VIRTUAL: Internal_FontGetKerningList(font_rid RID,size int64,) []Vector2i
+	// VIRTUAL: Internal_FontGetKerningList(font_rid RID,size int64,) Vector2i
 
 	// VIRTUAL: Internal_FontClearKerningMap(font_rid RID,size int64,)
 
@@ -24913,7 +25121,7 @@ type TextServerExtension interface {
 
 	// VIRTUAL: Internal_ShapedTextGetSpacing(shaped RID,spacing TextServerSpacingType,) int64
 
-	// VIRTUAL: Internal_ShapedTextAddString(shaped RID,text String,fonts []RID,size int64,opentype_features Dictionary,language String,meta Variant,) bool
+	// VIRTUAL: Internal_ShapedTextAddString(shaped RID,text String,fonts RID,size int64,opentype_features Dictionary,language String,meta Variant,) bool
 
 	// VIRTUAL: Internal_ShapedTextAddObject(shaped RID,key Variant,size Vector2,inline_align InlineAlignment,length int64,baseline float64,) bool
 
@@ -24923,7 +25131,7 @@ type TextServerExtension interface {
 
 	// VIRTUAL: Internal_ShapedGetSpanMeta(shaped RID,index int64,) Variant
 
-	// VIRTUAL: Internal_ShapedSetSpanUpdateFont(shaped RID,index int64,fonts []RID,size int64,opentype_features Dictionary,)
+	// VIRTUAL: Internal_ShapedSetSpanUpdateFont(shaped RID,index int64,fonts RID,size int64,opentype_features Dictionary,)
 
 	// VIRTUAL: Internal_ShapedTextSubstr(shaped RID,start int64,length int64,) RID
 
@@ -25031,28 +25239,28 @@ type TextServerExtension interface {
 
 	// VIRTUAL: Internal_StringToLower(strValue String,language String,) String
 
-	// VIRTUAL: Internal_ParseStructuredText(parser_type TextServerStructuredTextParser,args Array,text String,) []Vector3i
+	// VIRTUAL: Internal_ParseStructuredText(parser_type TextServerStructuredTextParser,args Array,text String,) Vector3i
 
 	// VIRTUAL: Internal_Cleanup()
 }
 type TextServerManager interface {
 	Object
 
-	AddInterface(interfaceName TextServer)
+	AddInterface(interfaceName RefTextServer)
 
 	GetInterfaceCount() int32
 
-	RemoveInterface(interfaceName TextServer)
+	RemoveInterface(interfaceName RefTextServer)
 
-	GetInterface(idx int32) TextServer
+	GetInterface(idx int32) RefTextServer
 
-	GetInterfaces() []Dictionary
+	GetInterfaces() Dictionary
 
-	FindInterface(name String) TextServer
+	FindInterface(name String) RefTextServer
 
-	SetPrimaryInterface(index TextServer)
+	SetPrimaryInterface(index RefTextServer)
 
-	GetPrimaryInterface() TextServer
+	GetPrimaryInterface() RefTextServer
 }
 type Texture interface {
 	Resource
@@ -25088,14 +25296,14 @@ type Texture2D interface {
 
 	DrawRectRegion(canvas_item RID, rect Rect2, src_rect Rect2, modulate Color, transpose bool, clip_uv bool)
 
-	GetImage() Image
+	GetImage() RefImage
 
-	CreatePlaceholder() Resource
+	CreatePlaceholder() RefResource
 }
 type Texture2DArray interface {
 	ImageTextureLayered
 
-	CreatePlaceholder() Resource
+	CreatePlaceholder() RefResource
 }
 type Texture2DArrayRD interface {
 	TextureLayeredRD
@@ -25120,7 +25328,7 @@ type Texture3D interface {
 
 	// VIRTUAL: Internal_HasMipmaps() bool
 
-	// VIRTUAL: Internal_GetData() []Image
+	// VIRTUAL: Internal_GetData() RefImage
 
 	GetFormat() ImageFormat
 
@@ -25132,9 +25340,9 @@ type Texture3D interface {
 
 	HasMipmaps() bool
 
-	GetData() []Image
+	GetData() RefImage
 
-	CreatePlaceholder() Resource
+	CreatePlaceholder() RefResource
 }
 type Texture3DRD interface {
 	Texture3D
@@ -25146,17 +25354,17 @@ type Texture3DRD interface {
 type TextureButton interface {
 	BaseButton
 
-	SetTextureNormal(texture Texture2D)
+	SetTextureNormal(texture RefTexture2D)
 
-	SetTexturePressed(texture Texture2D)
+	SetTexturePressed(texture RefTexture2D)
 
-	SetTextureHover(texture Texture2D)
+	SetTextureHover(texture RefTexture2D)
 
-	SetTextureDisabled(texture Texture2D)
+	SetTextureDisabled(texture RefTexture2D)
 
-	SetTextureFocused(texture Texture2D)
+	SetTextureFocused(texture RefTexture2D)
 
-	SetClickMask(mask BitMap)
+	SetClickMask(mask RefBitMap)
 
 	SetIgnoreTextureSize(ignore bool)
 
@@ -25170,17 +25378,17 @@ type TextureButton interface {
 
 	IsFlippedV() bool
 
-	GetTextureNormal() Texture2D
+	GetTextureNormal() RefTexture2D
 
-	GetTexturePressed() Texture2D
+	GetTexturePressed() RefTexture2D
 
-	GetTextureHover() Texture2D
+	GetTextureHover() RefTexture2D
 
-	GetTextureDisabled() Texture2D
+	GetTextureDisabled() RefTexture2D
 
-	GetTextureFocused() Texture2D
+	GetTextureFocused() RefTexture2D
 
-	GetClickMask() BitMap
+	GetClickMask() RefBitMap
 
 	GetIgnoreTextureSize() bool
 
@@ -25207,7 +25415,7 @@ type TextureLayered interface {
 
 	// VIRTUAL: Internal_HasMipmaps() bool
 
-	// VIRTUAL: Internal_GetLayerData(layer_index int32,) Image
+	// VIRTUAL: Internal_GetLayerData(layer_index int32,) RefImage
 
 	GetFormat() ImageFormat
 
@@ -25221,7 +25429,7 @@ type TextureLayered interface {
 
 	HasMipmaps() bool
 
-	GetLayerData(layer int32) Image
+	GetLayerData(layer int32) RefImage
 }
 type TextureLayeredRD interface {
 	TextureLayered
@@ -25233,17 +25441,17 @@ type TextureLayeredRD interface {
 type TextureProgressBar interface {
 	Range
 
-	SetUnderTexture(tex Texture2D)
+	SetUnderTexture(tex RefTexture2D)
 
-	GetUnderTexture() Texture2D
+	GetUnderTexture() RefTexture2D
 
-	SetProgressTexture(tex Texture2D)
+	SetProgressTexture(tex RefTexture2D)
 
-	GetProgressTexture() Texture2D
+	GetProgressTexture() RefTexture2D
 
-	SetOverTexture(tex Texture2D)
+	SetOverTexture(tex RefTexture2D)
 
-	GetOverTexture() Texture2D
+	GetOverTexture() RefTexture2D
 
 	SetFillMode(mode int32)
 
@@ -25288,9 +25496,9 @@ type TextureProgressBar interface {
 type TextureRect interface {
 	Control
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	SetExpandMode(expand_mode TextureRectExpandMode)
 
@@ -25311,9 +25519,9 @@ type TextureRect interface {
 type Theme interface {
 	Resource
 
-	SetIcon(name StringName, theme_type StringName, texture Texture2D)
+	SetIcon(name StringName, theme_type StringName, texture RefTexture2D)
 
-	GetIcon(name StringName, theme_type StringName) Texture2D
+	GetIcon(name StringName, theme_type StringName) RefTexture2D
 
 	HasIcon(name StringName, theme_type StringName) bool
 
@@ -25325,9 +25533,9 @@ type Theme interface {
 
 	GetIconTypeList() PackedStringArray
 
-	SetStylebox(name StringName, theme_type StringName, texture StyleBox)
+	SetStylebox(name StringName, theme_type StringName, texture RefStyleBox)
 
-	GetStylebox(name StringName, theme_type StringName) StyleBox
+	GetStylebox(name StringName, theme_type StringName) RefStyleBox
 
 	HasStylebox(name StringName, theme_type StringName) bool
 
@@ -25339,9 +25547,9 @@ type Theme interface {
 
 	GetStyleboxTypeList() PackedStringArray
 
-	SetFont(name StringName, theme_type StringName, font Font)
+	SetFont(name StringName, theme_type StringName, font RefFont)
 
-	GetFont(name StringName, theme_type StringName) Font
+	GetFont(name StringName, theme_type StringName) RefFont
 
 	HasFont(name StringName, theme_type StringName) bool
 
@@ -25401,9 +25609,9 @@ type Theme interface {
 
 	HasDefaultBaseScale() bool
 
-	SetDefaultFont(font Font)
+	SetDefaultFont(font RefFont)
 
-	GetDefaultFont() Font
+	GetDefaultFont() RefFont
 
 	HasDefaultFont() bool
 
@@ -25443,36 +25651,36 @@ type Theme interface {
 
 	GetTypeList() PackedStringArray
 
-	MergeWith(other Theme)
+	MergeWith(other RefTheme)
 
 	Clear()
 }
 type ThemeDB interface {
 	Object
 
-	GetDefaultTheme() Theme
+	GetDefaultTheme() RefTheme
 
-	GetProjectTheme() Theme
+	GetProjectTheme() RefTheme
 
 	SetFallbackBaseScale(base_scale float32)
 
 	GetFallbackBaseScale() float32
 
-	SetFallbackFont(font Font)
+	SetFallbackFont(font RefFont)
 
-	GetFallbackFont() Font
+	GetFallbackFont() RefFont
 
 	SetFallbackFontSize(font_size int32)
 
 	GetFallbackFontSize() int32
 
-	SetFallbackIcon(icon Texture2D)
+	SetFallbackIcon(icon RefTexture2D)
 
-	GetFallbackIcon() Texture2D
+	GetFallbackIcon() RefTexture2D
 
-	SetFallbackStylebox(stylebox StyleBox)
+	SetFallbackStylebox(stylebox RefStyleBox)
 
-	GetFallbackStylebox() StyleBox
+	GetFallbackStylebox() RefStyleBox
 }
 type Thread interface {
 	RefCounted
@@ -25504,9 +25712,9 @@ type TileData interface {
 
 	GetTranspose() bool
 
-	SetMaterial(material Material)
+	SetMaterial(material RefMaterial)
 
-	GetMaterial() Material
+	GetMaterial() RefMaterial
 
 	SetTextureOrigin(texture_origin Vector2i)
 
@@ -25524,9 +25732,9 @@ type TileData interface {
 
 	GetYSortOrigin() int32
 
-	SetOccluder(layer_id int32, occluder_polygon OccluderPolygon2D)
+	SetOccluder(layer_id int32, occluder_polygon RefOccluderPolygon2D)
 
-	GetOccluder(layer_id int32) OccluderPolygon2D
+	GetOccluder(layer_id int32) RefOccluderPolygon2D
 
 	SetConstantLinearVelocity(layer_id int32, velocity Vector2)
 
@@ -25568,9 +25776,9 @@ type TileData interface {
 
 	GetTerrainPeeringBit(peering_bit TileSetCellNeighbor) int32
 
-	SetNavigationPolygon(layer_id int32, navigation_polygon NavigationPolygon)
+	SetNavigationPolygon(layer_id int32, navigation_polygon RefNavigationPolygon)
 
-	GetNavigationPolygon(layer_id int32) NavigationPolygon
+	GetNavigationPolygon(layer_id int32) RefNavigationPolygon
 
 	SetProbability(probability float32)
 
@@ -25597,9 +25805,9 @@ type TileMap interface {
 
 	ForceUpdate(layer int32)
 
-	SetTileset(tileset TileSet)
+	SetTileset(tileset RefTileSet)
 
-	GetTileset() TileSet
+	GetTileset() RefTileSet
 
 	SetRenderingQuadrantSize(size int32)
 
@@ -25669,15 +25877,15 @@ type TileMap interface {
 
 	GetLayerForBodyRid(body RID) int32
 
-	GetPattern(layer int32, coords_array []Vector2i) TileMapPattern
+	GetPattern(layer int32, coords_array Vector2i) RefTileMapPattern
 
-	MapPattern(position_in_tilemap Vector2i, coords_in_pattern Vector2i, pattern TileMapPattern) Vector2i
+	MapPattern(position_in_tilemap Vector2i, coords_in_pattern Vector2i, pattern RefTileMapPattern) Vector2i
 
-	SetPattern(layer int32, position Vector2i, pattern TileMapPattern)
+	SetPattern(layer int32, position Vector2i, pattern RefTileMapPattern)
 
-	SetCellsTerrainConnect(layer int32, cells []Vector2i, terrain_set int32, terrain int32, ignore_empty_terrains bool)
+	SetCellsTerrainConnect(layer int32, cells Vector2i, terrain_set int32, terrain int32, ignore_empty_terrains bool)
 
-	SetCellsTerrainPath(layer int32, path []Vector2i, terrain_set int32, terrain int32, ignore_empty_terrains bool)
+	SetCellsTerrainPath(layer int32, path Vector2i, terrain_set int32, terrain int32, ignore_empty_terrains bool)
 
 	FixInvalidTiles()
 
@@ -25689,11 +25897,11 @@ type TileMap interface {
 
 	NotifyRuntimeTileDataUpdate(layer int32)
 
-	GetSurroundingCells(coords Vector2i) []Vector2i
+	GetSurroundingCells(coords Vector2i) Vector2i
 
-	GetUsedCells(layer int32) []Vector2i
+	GetUsedCells(layer int32) Vector2i
 
-	GetUsedCellsById(layer int32, source_id int32, atlas_coords Vector2i, alternative_tile int32) []Vector2i
+	GetUsedCellsById(layer int32, source_id int32, atlas_coords Vector2i, alternative_tile int32) Vector2i
 
 	GetUsedRect() Rect2i
 
@@ -25718,7 +25926,7 @@ type TileMapPattern interface {
 
 	GetCellAlternativeTile(coords Vector2i) int32
 
-	GetUsedCells() []Vector2i
+	GetUsedCells() Vector2i
 
 	GetSize() Vector2i
 
@@ -25731,7 +25939,7 @@ type TileSet interface {
 
 	GetNextSourceId() int32
 
-	AddSource(source TileSetSource, atlas_source_id_override int32) int32
+	AddSource(source RefTileSetSource, atlas_source_id_override int32) int32
 
 	RemoveSource(source_id int32)
 
@@ -25743,7 +25951,7 @@ type TileSet interface {
 
 	HasSource(source_id int32) bool
 
-	GetSource(source_id int32) TileSetSource
+	GetSource(source_id int32) RefTileSetSource
 
 	SetTileShape(shape TileSetTileShape)
 
@@ -25797,9 +26005,9 @@ type TileSet interface {
 
 	GetPhysicsLayerCollisionMask(layer_index int32) uint32
 
-	SetPhysicsLayerPhysicsMaterial(layer_index int32, physics_material PhysicsMaterial)
+	SetPhysicsLayerPhysicsMaterial(layer_index int32, physics_material RefPhysicsMaterial)
 
-	GetPhysicsLayerPhysicsMaterial(layer_index int32) PhysicsMaterial
+	GetPhysicsLayerPhysicsMaterial(layer_index int32) RefPhysicsMaterial
 
 	GetTerrainSetsCount() int32
 
@@ -25893,9 +26101,9 @@ type TileSet interface {
 
 	ClearTileProxies()
 
-	AddPattern(pattern TileMapPattern, index int32) int32
+	AddPattern(pattern RefTileMapPattern, index int32) int32
 
-	GetPattern(index int32) TileMapPattern
+	GetPattern(index int32) RefTileMapPattern
 
 	RemovePattern(index int32)
 
@@ -25904,9 +26112,9 @@ type TileSet interface {
 type TileSetAtlasSource interface {
 	TileSetSource
 
-	SetTexture(texture Texture2D)
+	SetTexture(texture RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	SetMargins(margins Vector2i)
 
@@ -25934,7 +26142,7 @@ type TileSetAtlasSource interface {
 
 	HasRoomForTile(atlas_coords Vector2i, size Vector2i, animation_columns int32, animation_separation Vector2i, frames_count int32, ignored_tile Vector2i) bool
 
-	GetTilesToBeRemovedOnChange(texture Texture2D, margins Vector2i, separation Vector2i, texture_region_size Vector2i) PackedVector2Array
+	GetTilesToBeRemovedOnChange(texture RefTexture2D, margins Vector2i, separation Vector2i, texture_region_size Vector2i) PackedVector2Array
 
 	GetTileAtCoords(atlas_coords Vector2i) Vector2i
 
@@ -25982,7 +26190,7 @@ type TileSetAtlasSource interface {
 
 	GetTileTextureRegion(atlas_coords Vector2i, frame int32) Rect2i
 
-	GetRuntimeTexture() Texture2D
+	GetRuntimeTexture() RefTexture2D
 
 	GetRuntimeTileTextureRegion(atlas_coords Vector2i, frame int32) Rect2i
 }
@@ -25995,13 +26203,13 @@ type TileSetScenesCollectionSource interface {
 
 	HasSceneTileId(id int32) bool
 
-	CreateSceneTile(packed_scene PackedScene, id_override int32) int32
+	CreateSceneTile(packed_scene RefPackedScene, id_override int32) int32
 
 	SetSceneTileId(id int32, new_id int32)
 
-	SetSceneTileScene(id int32, packed_scene PackedScene)
+	SetSceneTileScene(id int32, packed_scene RefPackedScene)
 
-	GetSceneTileScene(id int32) PackedScene
+	GetSceneTileScene(id int32) RefPackedScene
 
 	SetSceneTileDisplayPlaceholder(id int32, display_placeholder bool)
 
@@ -26124,21 +26332,21 @@ type TorusMesh interface {
 type TouchScreenButton interface {
 	Node2D
 
-	SetTextureNormal(texture Texture2D)
+	SetTextureNormal(texture RefTexture2D)
 
-	GetTextureNormal() Texture2D
+	GetTextureNormal() RefTexture2D
 
-	SetTexturePressed(texture Texture2D)
+	SetTexturePressed(texture RefTexture2D)
 
-	GetTexturePressed() Texture2D
+	GetTexturePressed() RefTexture2D
 
-	SetBitmask(bitmask BitMap)
+	SetBitmask(bitmask RefBitMap)
 
-	GetBitmask() BitMap
+	GetBitmask() RefBitMap
 
-	SetShape(shape Shape2D)
+	SetShape(shape RefShape2D)
 
-	GetShape() Shape2D
+	GetShape() RefShape2D
 
 	SetShapeCentered(bool bool)
 
@@ -26220,11 +26428,11 @@ type TranslationServer interface {
 
 	TranslatePlural(message StringName, plural_message StringName, n int32, context StringName) StringName
 
-	AddTranslation(translation Translation)
+	AddTranslation(translation RefTranslation)
 
-	RemoveTranslation(translation Translation)
+	RemoveTranslation(translation RefTranslation)
 
-	GetTranslationObject(locale String) Translation
+	GetTranslationObject(locale String) RefTranslation
 
 	Clear()
 
@@ -26416,9 +26624,9 @@ type TreeItem interface {
 
 	GetSuffix(column int32) String
 
-	SetIcon(column int32, texture Texture2D)
+	SetIcon(column int32, texture RefTexture2D)
 
-	GetIcon(column int32) Texture2D
+	GetIcon(column int32) RefTexture2D
 
 	SetIconRegion(column int32, region Rect2)
 
@@ -26484,9 +26692,9 @@ type TreeItem interface {
 
 	ClearCustomColor(column int32)
 
-	SetCustomFont(column int32, font Font)
+	SetCustomFont(column int32, font RefFont)
 
-	GetCustomFont(column int32) Font
+	GetCustomFont(column int32) RefFont
 
 	SetCustomFontSize(column int32, font_size int32)
 
@@ -26502,7 +26710,7 @@ type TreeItem interface {
 
 	IsCustomSetAsButton(column int32) bool
 
-	AddButton(column int32, button Texture2D, id int32, disabled bool, tooltip_text String)
+	AddButton(column int32, button RefTexture2D, id int32, disabled bool, tooltip_text String)
 
 	GetButtonCount(column int32) int32
 
@@ -26512,11 +26720,11 @@ type TreeItem interface {
 
 	GetButtonById(column int32, id int32) int32
 
-	GetButton(column int32, button_index int32) Texture2D
+	GetButton(column int32, button_index int32) RefTexture2D
 
 	SetButtonTooltipText(column int32, button_index int32, tooltip String)
 
-	SetButton(column int32, button_index int32, button Texture2D)
+	SetButton(column int32, button_index int32, button RefTexture2D)
 
 	EraseButton(column int32, button_index int32)
 
@@ -26570,7 +26778,7 @@ type TreeItem interface {
 
 	GetChildCount() int32
 
-	GetChildren() []TreeItem
+	GetChildren() TreeItem
 
 	GetIndex() int32
 
@@ -26614,20 +26822,20 @@ type TubeTrailMesh interface {
 
 	IsCapBottom() bool
 
-	SetCurve(curve Curve)
+	SetCurve(curve RefCurve)
 
-	GetCurve() Curve
+	GetCurve() RefCurve
 }
 type Tween interface {
 	RefCounted
 
-	TweenProperty(object Object, property NodePath, final_val Variant, duration float64) PropertyTweener
+	TweenProperty(object Object, property NodePath, final_val Variant, duration float64) RefPropertyTweener
 
-	TweenInterval(time float64) IntervalTweener
+	TweenInterval(time float64) RefIntervalTweener
 
-	TweenCallback(callback Callable) CallbackTweener
+	TweenCallback(callback Callable) RefCallbackTweener
 
-	TweenMethod(method Callable, from Variant, to Variant, duration float64) MethodTweener
+	TweenMethod(method Callable, from Variant, to Variant, duration float64) RefMethodTweener
 
 	CustomStep(delta float64) bool
 
@@ -26645,27 +26853,27 @@ type Tween interface {
 
 	IsValid() bool
 
-	BindNode(node Node) Tween
+	BindNode(node Node) RefTween
 
-	SetProcessMode(mode TweenTweenProcessMode) Tween
+	SetProcessMode(mode TweenTweenProcessMode) RefTween
 
-	SetPauseMode(mode TweenTweenPauseMode) Tween
+	SetPauseMode(mode TweenTweenPauseMode) RefTween
 
-	SetParallel(parallel bool) Tween
+	SetParallel(parallel bool) RefTween
 
-	SetLoops(loops int32) Tween
+	SetLoops(loops int32) RefTween
 
 	GetLoopsLeft() int32
 
-	SetSpeedScale(speed float32) Tween
+	SetSpeedScale(speed float32) RefTween
 
-	SetTrans(trans TweenTransitionType) Tween
+	SetTrans(trans TweenTransitionType) RefTween
 
-	SetEase(ease TweenEaseType) Tween
+	SetEase(ease TweenEaseType) RefTween
 
-	Parallel() Tween
+	Parallel() RefTween
 
-	Chain() Tween
+	Chain() RefTween
 
 	InterpolateValue(initial_value Variant, delta_value Variant, elapsed_time float64, duration float64, trans_type TweenTransitionType, ease_type TweenEaseType) Variant
 }
@@ -26685,7 +26893,7 @@ type UDPServer interface {
 
 	IsListening() bool
 
-	TakeConnection() PacketPeerUDP
+	TakeConnection() RefPacketPeerUDP
 
 	Stop()
 
@@ -26698,17 +26906,17 @@ type UPNP interface {
 
 	GetDeviceCount() int32
 
-	GetDevice(index int32) UPNPDevice
+	GetDevice(index int32) RefUPNPDevice
 
-	AddDevice(device UPNPDevice)
+	AddDevice(device RefUPNPDevice)
 
-	SetDevice(index int32, device UPNPDevice)
+	SetDevice(index int32, device RefUPNPDevice)
 
 	RemoveDevice(index int32)
 
 	ClearDevices()
 
-	GetGateway() UPNPDevice
+	GetGateway() RefUPNPDevice
 
 	Discover(timeout int32, ttl int32, device_filter String) int32
 
@@ -26913,7 +27121,7 @@ type VehicleWheel3D interface {
 type VideoStream interface {
 	Resource
 
-	// VIRTUAL: Internal_InstantiatePlayback() VideoStreamPlayback
+	// VIRTUAL: Internal_InstantiatePlayback() RefVideoStreamPlayback
 
 	SetFile(file String)
 
@@ -26940,7 +27148,7 @@ type VideoStreamPlayback interface {
 
 	// VIRTUAL: Internal_SetAudioTrack(idx int32,)
 
-	// VIRTUAL: Internal_GetTexture() Texture2D
+	// VIRTUAL: Internal_GetTexture() RefTexture2D
 
 	// VIRTUAL: Internal_Update(delta float64,)
 
@@ -26953,9 +27161,9 @@ type VideoStreamPlayback interface {
 type VideoStreamPlayer interface {
 	Control
 
-	SetStream(stream VideoStream)
+	SetStream(stream RefVideoStream)
 
-	GetStream() VideoStream
+	GetStream() RefVideoStream
 
 	Play()
 
@@ -27007,7 +27215,7 @@ type VideoStreamPlayer interface {
 
 	GetBus() StringName
 
-	GetVideoTexture() Texture2D
+	GetVideoTexture() RefTexture2D
 }
 type VideoStreamTheora interface {
 	VideoStream
@@ -27015,11 +27223,11 @@ type VideoStreamTheora interface {
 type Viewport interface {
 	Node
 
-	SetWorld2D(world_2d World2D)
+	SetWorld2D(world_2d RefWorld2D)
 
-	GetWorld2D() World2D
+	GetWorld2D() RefWorld2D
 
-	FindWorld2D() World2D
+	FindWorld2D() RefWorld2D
 
 	SetCanvasTransform(xform Transform2D)
 
@@ -27073,7 +27281,7 @@ type Viewport interface {
 
 	GetRenderInfo(typeName ViewportRenderInfoType, info ViewportRenderInfo) int32
 
-	GetTexture() ViewportTexture
+	GetTexture() RefViewportTexture
 
 	SetPhysicsObjectPicking(enable bool)
 
@@ -27087,9 +27295,9 @@ type Viewport interface {
 
 	PushTextInput(text String)
 
-	PushInput(event InputEvent, in_local_coords bool)
+	PushInput(event RefInputEvent, in_local_coords bool)
 
-	PushUnhandledInput(event InputEvent, in_local_coords bool)
+	PushUnhandledInput(event RefInputEvent, in_local_coords bool)
 
 	GetCamera2D() Camera2D
 
@@ -27157,7 +27365,7 @@ type Viewport interface {
 
 	IsEmbeddingSubwindows() bool
 
-	GetEmbeddedSubwindows() []Window
+	GetEmbeddedSubwindows() Window
 
 	SetCanvasCullMask(mask uint32)
 
@@ -27183,11 +27391,11 @@ type Viewport interface {
 
 	GetMeshLodThreshold() float32
 
-	SetWorld3D(world_3d World3D)
+	SetWorld3D(world_3d RefWorld3D)
 
-	GetWorld3D() World3D
+	GetWorld3D() RefWorld3D
 
-	FindWorld3D() World3D
+	FindWorld3D() RefWorld3D
 
 	SetUseOwnWorld3D(enable bool)
 
@@ -27227,9 +27435,9 @@ type Viewport interface {
 
 	GetVrsMode() ViewportVRSMode
 
-	SetVrsTexture(texture Texture2D)
+	SetVrsTexture(texture RefTexture2D)
 
-	GetVrsTexture() Texture2D
+	GetVrsTexture() RefTexture2D
 }
 type ViewportTexture interface {
 	Texture2D
@@ -27310,9 +27518,9 @@ type VisualShader interface {
 
 	SetMode(mode ShaderMode)
 
-	AddNode(typeName VisualShaderType, node VisualShaderNode, position Vector2, id int32)
+	AddNode(typeName VisualShaderType, node RefVisualShaderNode, position Vector2, id int32)
 
-	GetNode(typeName VisualShaderType, id int32) VisualShaderNode
+	GetNode(typeName VisualShaderType, id int32) RefVisualShaderNode
 
 	SetNodePosition(typeName VisualShaderType, id int32, position Vector2)
 
@@ -27336,7 +27544,7 @@ type VisualShader interface {
 
 	ConnectNodesForced(typeName VisualShaderType, from_node int32, from_port int32, to_node int32, to_port int32)
 
-	GetNodeConnections(typeName VisualShaderType) []Dictionary
+	GetNodeConnections(typeName VisualShaderType) Dictionary
 
 	SetGraphOffset(offset Vector2)
 
@@ -27473,9 +27681,9 @@ type VisualShaderNodeCubemap interface {
 
 	GetSource() VisualShaderNodeCubemapSource
 
-	SetCubeMap(value Cubemap)
+	SetCubeMap(value RefCubemap)
 
-	GetCubeMap() Cubemap
+	GetCubeMap() RefCubemap
 
 	SetTextureType(value VisualShaderNodeCubemapTextureType)
 
@@ -27487,16 +27695,16 @@ type VisualShaderNodeCubemapParameter interface {
 type VisualShaderNodeCurveTexture interface {
 	VisualShaderNodeResizableBase
 
-	SetTexture(texture CurveTexture)
+	SetTexture(texture RefCurveTexture)
 
-	GetTexture() CurveTexture
+	GetTexture() RefCurveTexture
 }
 type VisualShaderNodeCurveXYZTexture interface {
 	VisualShaderNodeResizableBase
 
-	SetTexture(texture CurveXYZTexture)
+	SetTexture(texture RefCurveXYZTexture)
 
-	GetTexture() CurveXYZTexture
+	GetTexture() RefCurveXYZTexture
 }
 type VisualShaderNodeCustom interface {
 	VisualShaderNode
@@ -27515,6 +27723,8 @@ type VisualShaderNodeCustom interface {
 
 	// VIRTUAL: Internal_GetInputPortName(port int32,) String
 
+	// VIRTUAL: Internal_GetInputPortDefaultValue(port int32,) Variant
+
 	// VIRTUAL: Internal_GetDefaultInputPort(typeName VisualShaderNodePortType,) int32
 
 	// VIRTUAL: Internal_GetOutputPortCount() int32
@@ -27523,7 +27733,15 @@ type VisualShaderNodeCustom interface {
 
 	// VIRTUAL: Internal_GetOutputPortName(port int32,) String
 
-	// VIRTUAL: Internal_GetCode(input_vars []String,output_vars []String,mode ShaderMode,typeName VisualShaderType,) String
+	// VIRTUAL: Internal_GetPropertyCount() int32
+
+	// VIRTUAL: Internal_GetPropertyName(index int32,) String
+
+	// VIRTUAL: Internal_GetPropertyDefaultIndex(index int32,) int32
+
+	// VIRTUAL: Internal_GetPropertyOptions(index int32,) PackedStringArray
+
+	// VIRTUAL: Internal_GetCode(input_vars String,output_vars String,mode ShaderMode,typeName VisualShaderType,) String
 
 	// VIRTUAL: Internal_GetFuncCode(mode ShaderMode,typeName VisualShaderType,) String
 
@@ -27532,6 +27750,8 @@ type VisualShaderNodeCustom interface {
 	// VIRTUAL: Internal_IsHighend() bool
 
 	// VIRTUAL: Internal_IsAvailable(mode ShaderMode,typeName VisualShaderType,) bool
+
+	GetOptionIndex(option int32) int32
 }
 type VisualShaderNodeDerivativeFunc interface {
 	VisualShaderNode
@@ -27804,9 +28024,9 @@ type VisualShaderNodeParticleEmitter interface {
 type VisualShaderNodeParticleMeshEmitter interface {
 	VisualShaderNodeParticleEmitter
 
-	SetMesh(mesh Mesh)
+	SetMesh(mesh RefMesh)
 
-	GetMesh() Mesh
+	GetMesh() RefMesh
 
 	SetUseAllSurfaces(enabled bool)
 
@@ -27905,9 +28125,9 @@ type VisualShaderNodeTexture interface {
 
 	GetSource() VisualShaderNodeTextureSource
 
-	SetTexture(value Texture2D)
+	SetTexture(value RefTexture2D)
 
-	GetTexture() Texture2D
+	GetTexture() RefTexture2D
 
 	SetTextureType(value VisualShaderNodeTextureTextureType)
 
@@ -27916,9 +28136,9 @@ type VisualShaderNodeTexture interface {
 type VisualShaderNodeTexture2DArray interface {
 	VisualShaderNodeSample3D
 
-	SetTextureArray(value Texture2DArray)
+	SetTextureArray(value RefTexture2DArray)
 
-	GetTextureArray() Texture2DArray
+	GetTextureArray() RefTexture2DArray
 }
 type VisualShaderNodeTexture2DArrayParameter interface {
 	VisualShaderNodeTextureParameter
@@ -27929,9 +28149,9 @@ type VisualShaderNodeTexture2DParameter interface {
 type VisualShaderNodeTexture3D interface {
 	VisualShaderNodeSample3D
 
-	SetTexture(value Texture3D)
+	SetTexture(value RefTexture3D)
 
-	GetTexture() Texture3D
+	GetTexture() RefTexture3D
 }
 type VisualShaderNodeTexture3DParameter interface {
 	VisualShaderNodeTextureParameter
@@ -28168,9 +28388,9 @@ type VisualShaderNodeWorldPositionFromDepth interface {
 type VoxelGI interface {
 	VisualInstance3D
 
-	SetProbeData(data VoxelGIData)
+	SetProbeData(data RefVoxelGIData)
 
-	GetProbeData() VoxelGIData
+	GetProbeData() RefVoxelGIData
 
 	SetSubdiv(subdiv VoxelGISubdiv)
 
@@ -28180,9 +28400,9 @@ type VoxelGI interface {
 
 	GetSize() Vector3
 
-	SetCameraAttributes(camera_attributes CameraAttributes)
+	SetCameraAttributes(camera_attributes RefCameraAttributes)
 
-	GetCameraAttributes() CameraAttributes
+	GetCameraAttributes() RefCameraAttributes
 
 	Bake(from_node Node, create_visual_debug bool)
 
@@ -28317,7 +28537,7 @@ type WebRTCMultiplayerPeer interface {
 
 	CreateMesh(peer_id int32, channels_config Array) Error
 
-	AddPeer(peer WebRTCPeerConnection, peer_id int32, unreliable_lifetime int32) Error
+	AddPeer(peer RefWebRTCPeerConnection, peer_id int32, unreliable_lifetime int32) Error
 
 	RemovePeer(peer_id int32)
 
@@ -28334,7 +28554,7 @@ type WebRTCPeerConnection interface {
 
 	Initialize(configuration Dictionary) Error
 
-	CreateDataChannel(label String, options Dictionary) WebRTCDataChannel
+	CreateDataChannel(label String, options Dictionary) RefWebRTCDataChannel
 
 	CreateOffer() Error
 
@@ -28365,7 +28585,7 @@ type WebRTCPeerConnectionExtension interface {
 
 	// VIRTUAL: Internal_Initialize(p_config Dictionary,) Error
 
-	// VIRTUAL: Internal_CreateDataChannel(p_label String,p_config Dictionary,) WebRTCDataChannel
+	// VIRTUAL: Internal_CreateDataChannel(p_label String,p_config Dictionary,) RefWebRTCDataChannel
 
 	// VIRTUAL: Internal_CreateOffer() Error
 
@@ -28382,11 +28602,11 @@ type WebRTCPeerConnectionExtension interface {
 type WebSocketMultiplayerPeer interface {
 	MultiplayerPeer
 
-	CreateClient(url String, tls_client_options TLSOptions) Error
+	CreateClient(url String, tls_client_options RefTLSOptions) Error
 
-	CreateServer(port int32, bind_address String, tls_server_options TLSOptions) Error
+	CreateServer(port int32, bind_address String, tls_server_options RefTLSOptions) Error
 
-	GetPeer(peer_id int32) WebSocketPeer
+	GetPeer(peer_id int32) RefWebSocketPeer
 
 	GetPeerAddress(id int32) String
 
@@ -28419,9 +28639,9 @@ type WebSocketMultiplayerPeer interface {
 type WebSocketPeer interface {
 	PacketPeer
 
-	ConnectToUrl(url String, tls_client_options TLSOptions) Error
+	ConnectToUrl(url String, tls_client_options RefTLSOptions) Error
 
-	AcceptStream(stream StreamPeer) Error
+	AcceptStream(stream RefStreamPeer) Error
 
 	Send(message PackedByteArray, write_mode WebSocketPeerWriteMode) Error
 
@@ -28496,7 +28716,7 @@ type WebXRInterface interface {
 
 	IsInputSourceActive(input_source_id int32) bool
 
-	GetInputSourceTracker(input_source_id int32) XRPositionalTracker
+	GetInputSourceTracker(input_source_id int32) RefXRPositionalTracker
 
 	GetInputSourceTargetRayMode(input_source_id int32) WebXRInterfaceTargetRayMode
 
@@ -28631,9 +28851,9 @@ type Window interface {
 
 	ChildControlsChanged()
 
-	SetTheme(theme Theme)
+	SetTheme(theme RefTheme)
 
-	GetTheme() Theme
+	GetTheme() RefTheme
 
 	SetThemeTypeVariation(theme_type StringName)
 
@@ -28643,11 +28863,11 @@ type Window interface {
 
 	EndBulkThemeOverride()
 
-	AddThemeIconOverride(name StringName, texture Texture2D)
+	AddThemeIconOverride(name StringName, texture RefTexture2D)
 
-	AddThemeStyleboxOverride(name StringName, stylebox StyleBox)
+	AddThemeStyleboxOverride(name StringName, stylebox RefStyleBox)
 
-	AddThemeFontOverride(name StringName, font Font)
+	AddThemeFontOverride(name StringName, font RefFont)
 
 	AddThemeFontSizeOverride(name StringName, font_size int32)
 
@@ -28667,11 +28887,11 @@ type Window interface {
 
 	RemoveThemeConstantOverride(name StringName)
 
-	GetThemeIcon(name StringName, theme_type StringName) Texture2D
+	GetThemeIcon(name StringName, theme_type StringName) RefTexture2D
 
-	GetThemeStylebox(name StringName, theme_type StringName) StyleBox
+	GetThemeStylebox(name StringName, theme_type StringName) RefStyleBox
 
-	GetThemeFont(name StringName, theme_type StringName) Font
+	GetThemeFont(name StringName, theme_type StringName) RefFont
 
 	GetThemeFontSize(name StringName, theme_type StringName) int32
 
@@ -28705,7 +28925,7 @@ type Window interface {
 
 	GetThemeDefaultBaseScale() float32
 
-	GetThemeDefaultFont() Font
+	GetThemeDefaultFont() RefFont
 
 	GetThemeDefaultFontSize() int32
 
@@ -28776,17 +28996,17 @@ type World3D interface {
 
 	GetScenario() RID
 
-	SetEnvironment(env Environment)
+	SetEnvironment(env RefEnvironment)
 
-	GetEnvironment() Environment
+	GetEnvironment() RefEnvironment
 
-	SetFallbackEnvironment(env Environment)
+	SetFallbackEnvironment(env RefEnvironment)
 
-	GetFallbackEnvironment() Environment
+	GetFallbackEnvironment() RefEnvironment
 
-	SetCameraAttributes(attributes CameraAttributes)
+	SetCameraAttributes(attributes RefCameraAttributes)
 
-	GetCameraAttributes() CameraAttributes
+	GetCameraAttributes() RefCameraAttributes
 
 	GetDirectSpaceState() PhysicsDirectSpaceState3D
 }
@@ -28811,13 +29031,13 @@ type WorldBoundaryShape3D interface {
 type WorldEnvironment interface {
 	Node
 
-	SetEnvironment(env Environment)
+	SetEnvironment(env RefEnvironment)
 
-	GetEnvironment() Environment
+	GetEnvironment() RefEnvironment
 
-	SetCameraAttributes(camera_attributes CameraAttributes)
+	SetCameraAttributes(camera_attributes RefCameraAttributes)
 
-	GetCameraAttributes() CameraAttributes
+	GetCameraAttributes() RefCameraAttributes
 }
 type X509Certificate interface {
 	Resource
@@ -28946,6 +29166,8 @@ type XRInterface interface {
 	GetSupportedEnvironmentBlendModes() Array
 
 	SetEnvironmentBlendMode(mode XRInterfaceEnvironmentBlendMode) bool
+
+	GetEnvironmentBlendMode() XRInterfaceEnvironmentBlendMode
 }
 type XRInterfaceExtension interface {
 	XRInterface
@@ -29037,7 +29259,7 @@ type XRNode3D interface {
 
 	GetHasTrackingData() bool
 
-	GetPose() XRPose
+	GetPose() RefXRPose
 
 	TriggerHapticPulse(action_name String, frequency float64, amplitude float64, duration_sec float64, delay_sec float64)
 }
@@ -29106,7 +29328,7 @@ type XRPositionalTracker interface {
 
 	HasPose(name StringName) bool
 
-	GetPose(name StringName) XRPose
+	GetPose(name StringName) RefXRPose
 
 	InvalidatePose(name StringName)
 
@@ -29133,29 +29355,29 @@ type XRServer interface {
 
 	GetHmdTransform() Transform3D
 
-	AddInterface(interfaceName XRInterface)
+	AddInterface(interfaceName RefXRInterface)
 
 	GetInterfaceCount() int32
 
-	RemoveInterface(interfaceName XRInterface)
+	RemoveInterface(interfaceName RefXRInterface)
 
-	GetInterface(idx int32) XRInterface
+	GetInterface(idx int32) RefXRInterface
 
-	GetInterfaces() []Dictionary
+	GetInterfaces() Dictionary
 
-	FindInterface(name String) XRInterface
+	FindInterface(name String) RefXRInterface
 
-	AddTracker(tracker XRPositionalTracker)
+	AddTracker(tracker RefXRPositionalTracker)
 
-	RemoveTracker(tracker XRPositionalTracker)
+	RemoveTracker(tracker RefXRPositionalTracker)
 
 	GetTrackers(tracker_types int32) Dictionary
 
-	GetTracker(tracker_name StringName) XRPositionalTracker
+	GetTracker(tracker_name StringName) RefXRPositionalTracker
 
-	GetPrimaryInterface() XRInterface
+	GetPrimaryInterface() RefXRInterface
 
-	SetPrimaryInterface(interfaceName XRInterface)
+	SetPrimaryInterface(interfaceName RefXRInterface)
 }
 type ZIPPacker interface {
 	RefCounted

@@ -97,6 +97,21 @@ const (
 	ANIMATION_FIND_MODE_FIND_MODE_EXACT                     = 2
 )
 
+type AnimationMixerAnimationCallbackModeProcess int
+
+const (
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_PROCESS_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS AnimationMixerAnimationCallbackModeProcess = 0
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_PROCESS_ANIMATION_CALLBACK_MODE_PROCESS_IDLE                                               = 1
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_PROCESS_ANIMATION_CALLBACK_MODE_PROCESS_MANUAL                                             = 2
+)
+
+type AnimationMixerAnimationCallbackModeMethod int
+
+const (
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_METHOD_ANIMATION_CALLBACK_MODE_METHOD_DEFERRED  AnimationMixerAnimationCallbackModeMethod = 0
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_METHOD_ANIMATION_CALLBACK_MODE_METHOD_IMMEDIATE                                           = 1
+)
+
 type AnimationNodeFilterAction int
 
 const (
@@ -1585,6 +1600,14 @@ const (
 	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_NEEDS_RESTART                               = 4
 )
 
+type GLTFDocumentRootNodeMode int
+
+const (
+	GLTF_DOCUMENT_ROOT_NODE_MODE_ROOT_NODE_MODE_SINGLE_ROOT GLTFDocumentRootNodeMode = 0
+	GLTF_DOCUMENT_ROOT_NODE_MODE_ROOT_NODE_MODE_KEEP_ROOT                            = 1
+	GLTF_DOCUMENT_ROOT_NODE_MODE_ROOT_NODE_MODE_MULTI_ROOT                           = 2
+)
+
 type GPUParticles2DDrawOrder int
 
 const (
@@ -2538,6 +2561,24 @@ const (
 	NAVIGATION_PATH_QUERY_RESULT_3_D_PATH_SEGMENT_TYPE_PATH_SEGMENT_TYPE_LINK                                              = 1
 )
 
+type NavigationPolygonParsedGeometryType int
+
+const (
+	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_MESH_INSTANCES   NavigationPolygonParsedGeometryType = 0
+	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_STATIC_COLLIDERS                                     = 1
+	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_BOTH                                                 = 2
+	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_MAX                                                  = 3
+)
+
+type NavigationPolygonSourceGeometryMode int
+
+const (
+	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_ROOT_NODE_CHILDREN   NavigationPolygonSourceGeometryMode = 0
+	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN                                     = 1
+	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_EXPLICIT                                          = 2
+	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_MAX                                                      = 3
+)
+
 type NavigationServer3DProcessInfo int
 
 const (
@@ -2991,7 +3032,17 @@ const (
 type PhysicsServer2DPinJointParam int
 
 const (
-	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_SOFTNESS PhysicsServer2DPinJointParam = 0
+	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_SOFTNESS              PhysicsServer2DPinJointParam = 0
+	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_LIMIT_UPPER                                        = 1
+	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_LIMIT_LOWER                                        = 2
+	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_MOTOR_TARGET_VELOCITY                              = 3
+)
+
+type PhysicsServer2DPinJointFlag int
+
+const (
+	PHYSICS_SERVER_2_D_PIN_JOINT_FLAG_PIN_JOINT_FLAG_ANGULAR_LIMIT_ENABLED PhysicsServer2DPinJointFlag = 0
+	PHYSICS_SERVER_2_D_PIN_JOINT_FLAG_PIN_JOINT_FLAG_MOTOR_ENABLED                                     = 1
 )
 
 type PhysicsServer2DDampedSpringParam int
@@ -4250,7 +4301,8 @@ type RenderingServerViewportScaling3DMode int
 const (
 	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_BILINEAR RenderingServerViewportScaling3DMode = 0
 	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_FSR                                           = 1
-	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_MAX                                           = 2
+	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_FSR_2                                         = 2
+	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_MAX                                           = 3
 )
 
 type RenderingServerViewportUpdateMode int
@@ -4371,6 +4423,7 @@ const (
 	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_CLUSTER_REFLECTION_PROBES                                  = 23
 	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_OCCLUDERS                                                  = 24
 	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_MOTION_VECTORS                                             = 25
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_INTERNAL_BUFFER                                            = 26
 )
 
 type RenderingServerViewportVRSMode int
@@ -4793,6 +4846,19 @@ const (
 	RICH_TEXT_LABEL_MENU_ITEMS_MENU_COPY       RichTextLabelMenuItems = 0
 	RICH_TEXT_LABEL_MENU_ITEMS_MENU_SELECT_ALL                        = 1
 	RICH_TEXT_LABEL_MENU_ITEMS_MENU_MAX                               = 2
+)
+
+type RichTextLabelImageUpdateMask int
+
+const (
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_TEXTURE          RichTextLabelImageUpdateMask = 1
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_SIZE                                          = 2
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_COLOR                                         = 4
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_ALIGNMENT                                     = 8
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_REGION                                        = 16
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_PAD                                           = 32
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_TOOLTIP                                       = 64
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_WIDTH_IN_PERCENT                              = 128
 )
 
 type RigidBody2DFreezeMode int
@@ -5721,7 +5787,8 @@ type ViewportScaling3DMode int
 const (
 	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_BILINEAR ViewportScaling3DMode = 0
 	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_FSR                            = 1
-	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_MAX                            = 2
+	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_FSR_2                          = 2
+	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_MAX                            = 3
 )
 
 type ViewportMSAA int
@@ -5788,6 +5855,7 @@ const (
 	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_CLUSTER_REFLECTION_PROBES                   = 23
 	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_OCCLUDERS                                   = 24
 	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_MOTION_VECTORS                              = 25
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_INTERNAL_BUFFER                             = 26
 )
 
 type ViewportDefaultCanvasItemTextureFilter int

@@ -13,14 +13,15 @@ package gdextensionffi
 //revive:disable
 
 import (
-	"fmt"
 	"unsafe"
+
+	"github.com/godot-go/godot-go/pkg/log"
+	"go.uber.org/zap"
 )
 
 type GDExtensionInterface struct {
-	Library GDExtensionClassLibraryPtr
-	Token   unsafe.Pointer
-
+	Library      GDExtensionClassLibraryPtr
+	Token        unsafe.Pointer
 	GodotVersion GDExtensionGodotVersion
 
 	// All of the GDExtension interface functions.
@@ -105,6 +106,9 @@ type GDExtensionInterface struct {
 	StringOperatorPlusEqWcstr                     GDExtensionInterfaceStringOperatorPlusEqWcstr
 	StringOperatorPlusEqC32str                    GDExtensionInterfaceStringOperatorPlusEqC32str
 	StringResize                                  GDExtensionInterfaceStringResize
+	StringNameNewWithLatin1Chars                  GDExtensionInterfaceStringNameNewWithLatin1Chars
+	StringNameNewWithUtf8Chars                    GDExtensionInterfaceStringNameNewWithUtf8Chars
+	StringNameNewWithUtf8CharsAndLen              GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen
 	XmlParserOpenBuffer                           GDExtensionInterfaceXmlParserOpenBuffer
 	FileAccessStoreBuffer                         GDExtensionInterfaceFileAccessStoreBuffer
 	FileAccessGetBuffer                           GDExtensionInterfaceFileAccessGetBuffer
@@ -152,6 +156,8 @@ type GDExtensionInterface struct {
 	PlaceHolderScriptInstanceCreate               GDExtensionInterfacePlaceHolderScriptInstanceCreate
 	PlaceHolderScriptInstanceUpdate               GDExtensionInterfacePlaceHolderScriptInstanceUpdate
 	ObjectGetScriptInstance                       GDExtensionInterfaceObjectGetScriptInstance
+	CallableCustomCreate                          GDExtensionInterfaceCallableCustomCreate
+	CallableCustomGetUserData                     GDExtensionInterfaceCallableCustomGetUserData
 	ClassdbConstructObject                        GDExtensionInterfaceClassdbConstructObject
 	ClassdbGetMethodBind                          GDExtensionInterfaceClassdbGetMethodBind
 	ClassdbGetClassTag                            GDExtensionInterfaceClassdbGetClassTag
@@ -258,6 +264,9 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.StringOperatorPlusEqWcstr = (GDExtensionInterfaceStringOperatorPlusEqWcstr)(LoadProcAddress("string_operator_plus_eq_wcstr"))
 	x.StringOperatorPlusEqC32str = (GDExtensionInterfaceStringOperatorPlusEqC32str)(LoadProcAddress("string_operator_plus_eq_c32str"))
 	x.StringResize = (GDExtensionInterfaceStringResize)(LoadProcAddress("string_resize"))
+	x.StringNameNewWithLatin1Chars = (GDExtensionInterfaceStringNameNewWithLatin1Chars)(LoadProcAddress("string_name_new_with_latin1_chars"))
+	x.StringNameNewWithUtf8Chars = (GDExtensionInterfaceStringNameNewWithUtf8Chars)(LoadProcAddress("string_name_new_with_utf8_chars"))
+	x.StringNameNewWithUtf8CharsAndLen = (GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen)(LoadProcAddress("string_name_new_with_utf8_chars_and_len"))
 	x.XmlParserOpenBuffer = (GDExtensionInterfaceXmlParserOpenBuffer)(LoadProcAddress("xml_parser_open_buffer"))
 	x.FileAccessStoreBuffer = (GDExtensionInterfaceFileAccessStoreBuffer)(LoadProcAddress("file_access_store_buffer"))
 	x.FileAccessGetBuffer = (GDExtensionInterfaceFileAccessGetBuffer)(LoadProcAddress("file_access_get_buffer"))
@@ -305,6 +314,8 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.PlaceHolderScriptInstanceCreate = (GDExtensionInterfacePlaceHolderScriptInstanceCreate)(LoadProcAddress("placeholder_script_instance_create"))
 	x.PlaceHolderScriptInstanceUpdate = (GDExtensionInterfacePlaceHolderScriptInstanceUpdate)(LoadProcAddress("placeholder_script_instance_update"))
 	x.ObjectGetScriptInstance = (GDExtensionInterfaceObjectGetScriptInstance)(LoadProcAddress("object_get_script_instance"))
+	x.CallableCustomCreate = (GDExtensionInterfaceCallableCustomCreate)(LoadProcAddress("callable_custom_create"))
+	x.CallableCustomGetUserData = (GDExtensionInterfaceCallableCustomGetUserData)(LoadProcAddress("callable_custom_get_user_data"))
 	x.ClassdbConstructObject = (GDExtensionInterfaceClassdbConstructObject)(LoadProcAddress("classdb_construct_object"))
 	x.ClassdbGetMethodBind = (GDExtensionInterfaceClassdbGetMethodBind)(LoadProcAddress("classdb_get_method_bind"))
 	x.ClassdbGetClassTag = (GDExtensionInterfaceClassdbGetClassTag)(LoadProcAddress("classdb_get_class_tag"))
@@ -330,9 +341,10 @@ var (
 func LoadProcAddress(funcName string) unsafe.Pointer {
 	ret := CallFunc_GDExtensionInterfaceGetProcAddress(funcName)
 	if ret == nil {
-		panic(fmt.Sprintf("Unable to load GDExtension interface function %s()", funcName))
+		log.Warn("GDExtensionInterfaceGetProcAddress Error",
+			zap.String("name", funcName),
+		)
 	}
-
 	return unsafe.Pointer(ret)
 }
 

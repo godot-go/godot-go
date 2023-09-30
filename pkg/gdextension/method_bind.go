@@ -112,7 +112,7 @@ func NewMethodMetadata(
 	}
 	defaultArgumentPtrs := make([]GDExtensionVariantPtr, len(defaultArguments))
 	for i := range defaultArgumentPtrs {
-		defaultArgumentPtrs[i] = (GDExtensionVariantPtr)(defaultArguments[i].ptr())
+		defaultArgumentPtrs[i] = (GDExtensionVariantPtr)(defaultArguments[i].nativePtr())
 	}
 	goArgumentTypes := make([]reflect.Type, argumentCount)
 	variantTypes := make([]GDExtensionVariantType, argumentCount)
@@ -191,11 +191,15 @@ func (b *MethodBindImpl) Call(
 		)
 		switch b.MethodMetadata.GoReturnStyle {
 		case NoneReturnStyle:
-		case ValueReturnStyle:
-			return ret[0].Interface().(Variant)
 		case ValueAndBoolReturnStyle:
 			log.Warn("second return value ignored")
-			return ret[0].Interface().(Variant)
+			fallthrough
+		case ValueReturnStyle:
+			// return ret[0].Interface().(Variant)
+			v := Variant{}
+			ptr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(v.nativePtr()))
+			GDExtensionVariantPtrFromReflectValue(ret[0], ptr)
+			return v
 		default:
 			log.Panic("unexpected MethodBindReturnStyle",
 				zap.Any("value", ret),
@@ -204,6 +208,11 @@ func (b *MethodBindImpl) Call(
 		return NewVariantNil()
 	} else {
 		args := reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(inst, callArgs, exepctedTypes)
+		log.Debug("Calling",
+			zap.String("bind", b.String()),
+			zap.String("gd_args", VariantSliceToString(gdArgs)),
+			zap.String("resolved_args", VariantSliceToString(callArgs)),
+		)
 		ret := b.PtrcallFunc.Call(args)
 		log.Info("Call",
 			zap.String("bind", b.String()),
@@ -217,14 +226,8 @@ func (b *MethodBindImpl) Call(
 			log.Warn("second return value ignored")
 			fallthrough
 		case ValueReturnStyle:
-			if debugv, ok := ret[0].Interface().(Object); ok {
-				strV := debugv.ToString()
-				log.Info("inspect ret[0]",
-					zap.String("v", strV.ToUtf8()),
-				)
-			}
 			v := Variant{}
-			ptr := (GDExtensionVariantPtr)(unsafe.Pointer(v.ptr()))
+			ptr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(v.nativePtr()))
 			GDExtensionVariantPtrFromReflectValue(ret[0], ptr)
 			return v
 		default:
@@ -239,15 +242,15 @@ func (b *MethodBindImpl) Call(
 func (b *MethodBindImpl) Ptrcall(
 	inst GDClass,
 	gdArgs []GDExtensionConstTypePtr,
-	rReturn GDExtensionTypePtr,
+	rReturn GDExtensionUninitializedTypePtr,
 ) {
 	exepctedTypes := b.MethodMetadata.GoArgumentTypes
 	args := reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst, gdArgs, exepctedTypes)
 	ret := b.PtrcallFunc.Call(args)
-	log.Info("Ptrcall",
-		zap.String("bind", b.String()),
-		zap.String("ret", util.ReflectValueSliceToString(ret)),
-	)
+	// log.Info("Ptrcall",
+	// 	zap.String("bind", b.String()),
+	// 	zap.String("ret", util.ReflectValueSliceToString(ret)),
+	// )
 	if err := validateReturnValues(ret, b.MethodMetadata.GoReturnStyle, b.MethodMetadata.GoReturnType); err != nil {
 		log.Panic("return error",
 			zap.Error(err),
@@ -255,10 +258,10 @@ func (b *MethodBindImpl) Ptrcall(
 	}
 	switch b.MethodMetadata.GoReturnStyle {
 	case NoneReturnStyle:
-	case ValueReturnStyle:
-		GDExtensionTypePtrFromReflectValue(ret[0], rReturn)
 	case ValueAndBoolReturnStyle:
 		log.Warn("second return value ignored")
+		fallthrough
+	case ValueReturnStyle:
 		GDExtensionTypePtrFromReflectValue(ret[0], rReturn)
 	default:
 		log.Panic("unexpected MethodBindReturnStyle",

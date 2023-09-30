@@ -72,14 +72,21 @@ func init() {
 	encoderCfg.EncodeLevel = zapcore.CapitalColorLevelEncoder
 	encoderCfg.TimeKey = ""
 
+	options := []zap.Option{
+		zap.AddCaller(),
+		zap.AddCallerSkip(1),
+	}
+
+	// show stacktrace
+	options = append(options, zap.AddStacktrace(zap.WarnLevel))
+
 	logger = zap.New(
 		zapcore.NewCore(
 			zapcore.NewConsoleEncoder(encoderCfg),
 			zapcore.Lock(zapcore.AddSync(output)),
 			atomicLevel,
 		),
-		zap.AddCaller(),
-		zap.AddCallerSkip(1),
+		options...
 	)
 }
 

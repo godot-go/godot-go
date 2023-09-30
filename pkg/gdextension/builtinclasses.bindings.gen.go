@@ -2810,6 +2810,7 @@ type transform2DMethodBindings struct {
 	method_basis_xform                   GDExtensionPtrBuiltInMethod
 	method_basis_xform_inv               GDExtensionPtrBuiltInMethod
 	method_interpolate_with              GDExtensionPtrBuiltInMethod
+	method_is_conformal                  GDExtensionPtrBuiltInMethod
 	method_is_equal_approx               GDExtensionPtrBuiltInMethod
 	method_is_finite                     GDExtensionPtrBuiltInMethod
 	method_looking_at                    GDExtensionPtrBuiltInMethod
@@ -2856,7 +2857,7 @@ func transform2DInitConstructorBindings() {
 func transform2DInitMethodBindings() {
 	log.Debug("transform2DInitMethodBindings called")
 
-	missingMethods := make([]string, 0, 20)
+	missingMethods := make([]string, 0, 21)
 
 	methodName0 := NewStringNameWithLatin1Chars("inverse")
 	defer methodName0.Destroy()
@@ -2977,24 +2978,31 @@ func transform2DInitMethodBindings() {
 	if globalTransform2DMethodBindings.method_interpolate_with == nil {
 		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_interpolate_with")
 	}
-	methodName17 := NewStringNameWithLatin1Chars("is_equal_approx")
+	methodName17 := NewStringNameWithLatin1Chars("is_conformal")
 	defer methodName17.Destroy()
+	log.Debug("globalTransform2DMethodBindings.method_is_conformal")
+	globalTransform2DMethodBindings.method_is_conformal = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName17.AsGDExtensionConstStringNamePtr(), 3918633141)
+	if globalTransform2DMethodBindings.method_is_conformal == nil {
+		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_is_conformal")
+	}
+	methodName18 := NewStringNameWithLatin1Chars("is_equal_approx")
+	defer methodName18.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_is_equal_approx")
-	globalTransform2DMethodBindings.method_is_equal_approx = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName17.AsGDExtensionConstStringNamePtr(), 3837431929)
+	globalTransform2DMethodBindings.method_is_equal_approx = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName18.AsGDExtensionConstStringNamePtr(), 3837431929)
 	if globalTransform2DMethodBindings.method_is_equal_approx == nil {
 		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_is_equal_approx")
 	}
-	methodName18 := NewStringNameWithLatin1Chars("is_finite")
-	defer methodName18.Destroy()
+	methodName19 := NewStringNameWithLatin1Chars("is_finite")
+	defer methodName19.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_is_finite")
-	globalTransform2DMethodBindings.method_is_finite = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName18.AsGDExtensionConstStringNamePtr(), 3918633141)
+	globalTransform2DMethodBindings.method_is_finite = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName19.AsGDExtensionConstStringNamePtr(), 3918633141)
 	if globalTransform2DMethodBindings.method_is_finite == nil {
 		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_is_finite")
 	}
-	methodName19 := NewStringNameWithLatin1Chars("looking_at")
-	defer methodName19.Destroy()
+	methodName20 := NewStringNameWithLatin1Chars("looking_at")
+	defer methodName20.Destroy()
 	log.Debug("globalTransform2DMethodBindings.method_looking_at")
-	globalTransform2DMethodBindings.method_looking_at = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName19.AsGDExtensionConstStringNamePtr(), 1446323263)
+	globalTransform2DMethodBindings.method_looking_at = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_TRANSFORM2D, methodName20.AsGDExtensionConstStringNamePtr(), 1446323263)
 	if globalTransform2DMethodBindings.method_looking_at == nil {
 		missingMethods = append(missingMethods, "globalTransform2DMethodBindings.method_looking_at")
 	}
@@ -4383,6 +4391,7 @@ type basisMethodBindings struct {
 	method_tdoty                   GDExtensionPtrBuiltInMethod
 	method_tdotz                   GDExtensionPtrBuiltInMethod
 	method_slerp                   GDExtensionPtrBuiltInMethod
+	method_is_conformal            GDExtensionPtrBuiltInMethod
 	method_is_equal_approx         GDExtensionPtrBuiltInMethod
 	method_is_finite               GDExtensionPtrBuiltInMethod
 	method_get_rotation_quaternion GDExtensionPtrBuiltInMethod
@@ -4430,7 +4439,7 @@ func basisInitConstructorBindings() {
 func basisInitMethodBindings() {
 	log.Debug("basisInitMethodBindings called")
 
-	missingMethods := make([]string, 0, 18)
+	missingMethods := make([]string, 0, 19)
 
 	methodName0 := NewStringNameWithLatin1Chars("inverse")
 	defer methodName0.Destroy()
@@ -4516,45 +4525,52 @@ func basisInitMethodBindings() {
 	if globalBasisMethodBindings.method_slerp == nil {
 		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_slerp")
 	}
-	methodName12 := NewStringNameWithLatin1Chars("is_equal_approx")
+	methodName12 := NewStringNameWithLatin1Chars("is_conformal")
 	defer methodName12.Destroy()
+	log.Debug("globalBasisMethodBindings.method_is_conformal")
+	globalBasisMethodBindings.method_is_conformal = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName12.AsGDExtensionConstStringNamePtr(), 3918633141)
+	if globalBasisMethodBindings.method_is_conformal == nil {
+		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_is_conformal")
+	}
+	methodName13 := NewStringNameWithLatin1Chars("is_equal_approx")
+	defer methodName13.Destroy()
 	log.Debug("globalBasisMethodBindings.method_is_equal_approx")
-	globalBasisMethodBindings.method_is_equal_approx = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName12.AsGDExtensionConstStringNamePtr(), 3165333982)
+	globalBasisMethodBindings.method_is_equal_approx = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName13.AsGDExtensionConstStringNamePtr(), 3165333982)
 	if globalBasisMethodBindings.method_is_equal_approx == nil {
 		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_is_equal_approx")
 	}
-	methodName13 := NewStringNameWithLatin1Chars("is_finite")
-	defer methodName13.Destroy()
+	methodName14 := NewStringNameWithLatin1Chars("is_finite")
+	defer methodName14.Destroy()
 	log.Debug("globalBasisMethodBindings.method_is_finite")
-	globalBasisMethodBindings.method_is_finite = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName13.AsGDExtensionConstStringNamePtr(), 3918633141)
+	globalBasisMethodBindings.method_is_finite = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName14.AsGDExtensionConstStringNamePtr(), 3918633141)
 	if globalBasisMethodBindings.method_is_finite == nil {
 		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_is_finite")
 	}
-	methodName14 := NewStringNameWithLatin1Chars("get_rotation_quaternion")
-	defer methodName14.Destroy()
+	methodName15 := NewStringNameWithLatin1Chars("get_rotation_quaternion")
+	defer methodName15.Destroy()
 	log.Debug("globalBasisMethodBindings.method_get_rotation_quaternion")
-	globalBasisMethodBindings.method_get_rotation_quaternion = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName14.AsGDExtensionConstStringNamePtr(), 4274879941)
+	globalBasisMethodBindings.method_get_rotation_quaternion = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName15.AsGDExtensionConstStringNamePtr(), 4274879941)
 	if globalBasisMethodBindings.method_get_rotation_quaternion == nil {
 		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_get_rotation_quaternion")
 	}
-	methodName15 := NewStringNameWithLatin1Chars("looking_at")
-	defer methodName15.Destroy()
+	methodName16 := NewStringNameWithLatin1Chars("looking_at")
+	defer methodName16.Destroy()
 	log.Debug("globalBasisMethodBindings.method_looking_at")
-	globalBasisMethodBindings.method_looking_at = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName15.AsGDExtensionConstStringNamePtr(), 3728732505)
+	globalBasisMethodBindings.method_looking_at = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName16.AsGDExtensionConstStringNamePtr(), 3728732505)
 	if globalBasisMethodBindings.method_looking_at == nil {
 		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_looking_at")
 	}
-	methodName16 := NewStringNameWithLatin1Chars("from_scale")
-	defer methodName16.Destroy()
+	methodName17 := NewStringNameWithLatin1Chars("from_scale")
+	defer methodName17.Destroy()
 	log.Debug("globalBasisMethodBindings.method_from_scale")
-	globalBasisMethodBindings.method_from_scale = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName16.AsGDExtensionConstStringNamePtr(), 3703240166)
+	globalBasisMethodBindings.method_from_scale = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName17.AsGDExtensionConstStringNamePtr(), 3703240166)
 	if globalBasisMethodBindings.method_from_scale == nil {
 		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_from_scale")
 	}
-	methodName17 := NewStringNameWithLatin1Chars("from_euler")
-	defer methodName17.Destroy()
+	methodName18 := NewStringNameWithLatin1Chars("from_euler")
+	defer methodName18.Destroy()
 	log.Debug("globalBasisMethodBindings.method_from_euler")
-	globalBasisMethodBindings.method_from_euler = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName17.AsGDExtensionConstStringNamePtr(), 2802321791)
+	globalBasisMethodBindings.method_from_euler = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_BASIS, methodName18.AsGDExtensionConstStringNamePtr(), 2802321791)
 	if globalBasisMethodBindings.method_from_euler == nil {
 		missingMethods = append(missingMethods, "globalBasisMethodBindings.method_from_euler")
 	}

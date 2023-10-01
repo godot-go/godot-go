@@ -29,9 +29,9 @@ env:
   TSAN_OPTIONS: suppressions=misc/error_suppressions/tsan.txt
 
 jobs:
-  build_godot:
-    uses: ./.github/workflows/ci_build_godot.yaml
-    secrets: inherit
+  # build_godot:
+  #   uses: ./.github/workflows/ci_build_godot.yaml
+  #   secrets: inherit
 
   run_test:
     name: "run tests"
@@ -44,7 +44,7 @@ jobs:
           - amd64
 
     runs-on: ubuntu-latest
-    needs: [build_godot]
+    # needs: [build_godot]
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
@@ -57,8 +57,11 @@ jobs:
       - run: mkdir -p bin/
 
       - name: Download Godot binary
-        uses: actions/download-artifact@v3
+        # uses: actions/download-artifact@v3
+        uses: dawidd6/action-download-artifact@v2
         with:
+          workflow: ci_build_godot.yaml
+          workflow_conclusion: success
           name: godot-linuxbsd-editor-amd64
           path: bin/
 

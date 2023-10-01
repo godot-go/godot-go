@@ -87,7 +87,10 @@ jobs:
       #     sudo ln -s $(pwd)/bin/godot.linuxbsd.editor.dev.x86_64.llvm /usr/local/bin/godot
       #     cd ..
       - name: Update Godot Headers
-        run: make update_godot_headers_from_binary
+        run: |
+          cd godot-go
+          make update_godot_headers_from_binary
+          cd ..
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
@@ -103,7 +106,10 @@ jobs:
       - name: Gen Test Project Files
         if: ${{ matrix.os == 'linux' }}
         timeout-minutes: 3
-        run: make ci_gen_test_project_files
+        run: |
+          cd godot-go
+          make ci_gen_test_project_files
+          cd ..
         continue-on-error: true
         env:
           CI: 1
@@ -113,7 +119,10 @@ jobs:
       - name: Test
         if: ${{ matrix.os == 'linux' }}
         timeout-minutes: 2
-        run: make test
+        run: |
+          cd godot-go
+          make test
+          cd ..
         env:
           CI: 1
           LOG_LEVEL: "debug"

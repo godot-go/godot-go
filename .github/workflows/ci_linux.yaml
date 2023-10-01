@@ -65,8 +65,10 @@ jobs:
           name: godot-linuxbsd-editor-amd64
           path: bin/
 
-      - name: Display structure of downloaded files
-        run: ls -R
+      - name: Setup Godot binary
+        run: |
+          chmod +x godot.linuxbsd.editor.x86_64
+          ls -R
         working-directory: bin/
 
       # - name: Install Godot 4.2 dev5

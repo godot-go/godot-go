@@ -49,15 +49,17 @@ jobs:
           echo "${GOROOT_1_21_X64}/bin" >> $GITHUB_PATH
           echo "GITHUB_PATH=${GITHUB_PATH}"
 
+      - run: mkdir -p bin/
+
       - name: Download Godot binary
         uses: actions/download-artifact@v3
         with:
           name: godot-linuxbsd-editor-amd64
-          path: /usr/local/bin/
+          path: bin/
 
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: /usr/local/bin/
+        working-directory: bin/
       # - name: Install Godot 4.2 dev5
       #   run: |
       #     wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_linux.x86_64.zip
@@ -92,7 +94,7 @@ jobs:
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
-          GODOT: ${{ github.workspace }}/godot/bin/godot.linuxbsd.editor.x86_64
+          GODOT: ./bin/godot.linuxbsd.editor.x86_64
 
       - name: Build
         run: make build
@@ -114,7 +116,7 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: ${{ github.workspace }}/godot/bin/godot.linuxbsd.editor.x86_64
+          GODOT: ./bin/godot.linuxbsd.editor.x86_64
 
       - name: Test
         if: ${{ matrix.os == 'linux' }}
@@ -125,4 +127,4 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: ${{ github.workspace }}/godot/bin/godot.linuxbsd.editor.x86_64
+          GODOT: ./bin/godot.linuxbsd.editor.x86_64

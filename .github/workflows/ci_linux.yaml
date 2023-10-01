@@ -19,20 +19,7 @@ on:
       - "**/*.gdextension"
       - ".github/workflows/ci_linux.yaml"
 
-# Global Settings
-env:
-  # Used for the cache key. Add version suffix to force clean build.
-  GODOT_BASE_BRANCH: master
-  SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes
-  DOTNET_NOLOGO: true
-  DOTNET_CLI_TELEMETRY_OPTOUT: true
-  TSAN_OPTIONS: suppressions=misc/error_suppressions/tsan.txt
-
 jobs:
-  # build_godot:
-  #   uses: ./.github/workflows/ci_build_godot.yaml
-  #   secrets: inherit
-
   run_test:
     name: "run tests"
     strategy:
@@ -44,8 +31,7 @@ jobs:
           - amd64
 
     runs-on: ubuntu-latest
-    # needs: [build_godot]
-    timeout-minutes: 120
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
@@ -57,7 +43,6 @@ jobs:
       - run: mkdir -p bin/
 
       - name: Download Godot binary
-        # uses: actions/download-artifact@v3
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: ci_build_godot.yaml
@@ -70,34 +55,6 @@ jobs:
           chmod +x godot.linuxbsd.editor.x86_64
           ls -R
         working-directory: bin/
-
-      # - name: Install Godot 4.2 dev5
-      #   run: |
-      #     wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_linux.x86_64.zip
-      #     sudo unzip Godot_v4.2-dev5_linux.x86_64.zip -d /usr/local/bin
-      #     sudo ln -s Godot_v4.2-dev5_linux.x86_64 /usr/local/bin/godot
-
-      # - name: Setup Godot build cache
-      #   uses: ./.github/actions/godot-cache
-      #   with:
-      #     cache-name: linux-editor
-      #   continue-on-error: true
-
-      # - name: Setup python and scons
-      #   uses: ./.github/actions/godot-deps
-
-      # - name: Setup GCC problem matcher
-      #   uses: ammaraskar/gcc-problem-matcher@master
-
-      # - name: Godot Compilation
-      #   uses: ./.github/actions/godot-build
-      #   with:
-      #     sconsflags: ${{ env.SCONSFLAGS }}
-      #     platform: linuxbsd
-      #     target: editor
-      #     tests: false
-      #     scons-cache: "${{ github.workspace }}/godot/.scons-cache/"
-      #     path: "${{ github.workspace }}/godot"
 
       - name: Update Godot Headers
         run: |

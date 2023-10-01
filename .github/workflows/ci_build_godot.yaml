@@ -1,5 +1,7 @@
 name: build godot for ci
 
+on: workflow_run
+
 env:
   SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes
   DOTNET_NOLOGO: true

@@ -29,6 +29,10 @@ env:
   TSAN_OPTIONS: suppressions=misc/error_suppressions/tsan.txt
 
 jobs:
+  build_godot:
+    uses: ./.github/workflows/ci_build_godot.yaml
+    secrets: inherit
+
   run_test:
     name: "run tests"
     strategy:
@@ -40,7 +44,8 @@ jobs:
           - amd64
 
     runs-on: ubuntu-latest
-    timeout-minutes: 80
+    needs: [build_godot]
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
 
@@ -60,6 +65,7 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: bin/
+
       # - name: Install Godot 4.2 dev5
       #   run: |
       #     wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_linux.x86_64.zip

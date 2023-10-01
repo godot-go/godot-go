@@ -1,4 +1,4 @@
-name: build godot artifact for ci
+name: build godot for ci
 
 env:
   SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes
@@ -7,7 +7,7 @@ env:
   TSAN_OPTIONS: suppressions=misc/error_suppressions/tsan.txt
 
 jobs:
-  run_test:
+  run_build_godot:
     name: "build godot for ci"
     strategy:
       fail-fast: true

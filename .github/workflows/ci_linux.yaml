@@ -55,39 +55,43 @@ jobs:
         run: |
           echo "${GOROOT_1_21_X64}/bin" >> $GITHUB_PATH
           echo "GITHUB_PATH=${GITHUB_PATH}"
+
+      - name: Download Godot binary
+        uses: actions/download-artifact@v3
+        with:
+          name: godot-linuxbsd-editor-amd64
+          path: /usr/local/bin/
+
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: /usr/local/bin/
       # - name: Install Godot 4.2 dev5
       #   run: |
       #     wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_linux.x86_64.zip
       #     sudo unzip Godot_v4.2-dev5_linux.x86_64.zip -d /usr/local/bin
       #     sudo ln -s Godot_v4.2-dev5_linux.x86_64 /usr/local/bin/godot
 
-      - name: Setup Godot build cache
-        uses: ./.github/actions/godot-cache
-        with:
-          cache-name: linux-editor
-        continue-on-error: true
+      # - name: Setup Godot build cache
+      #   uses: ./.github/actions/godot-cache
+      #   with:
+      #     cache-name: linux-editor
+      #   continue-on-error: true
 
-      - name: Setup python and scons
-        uses: ./.github/actions/godot-deps
+      # - name: Setup python and scons
+      #   uses: ./.github/actions/godot-deps
 
-      - name: Setup GCC problem matcher
-        uses: ammaraskar/gcc-problem-matcher@master
+      # - name: Setup GCC problem matcher
+      #   uses: ammaraskar/gcc-problem-matcher@master
 
-      - name: Godot Compilation
-        uses: ./.github/actions/godot-build
-        with:
-          sconsflags: ${{ env.SCONSFLAGS }}
-          platform: linuxbsd
-          target: editor
-          tests: false
-          scons-cache: "${{ github.workspace }}/godot/.scons-cache/"
-          path: "${{ github.workspace }}/godot"
-      # - name: Build and Install Godot
-      #   run: |
-      #     cd godot
-      #     scons optimize=debug use_llvm=yes dev_build=yes dev_mode=yes debug_symbols=yes verbose=yes
-      #     sudo ln -s $(pwd)/bin/godot.linuxbsd.editor.dev.x86_64.llvm /usr/local/bin/godot
-      #     cd ..
+      # - name: Godot Compilation
+      #   uses: ./.github/actions/godot-build
+      #   with:
+      #     sconsflags: ${{ env.SCONSFLAGS }}
+      #     platform: linuxbsd
+      #     target: editor
+      #     tests: false
+      #     scons-cache: "${{ github.workspace }}/godot/.scons-cache/"
+      #     path: "${{ github.workspace }}/godot"
 
       - name: Update Godot Headers
         run: |

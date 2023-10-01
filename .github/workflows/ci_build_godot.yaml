@@ -1,13 +1,11 @@
 name: build godot for ci
 
-on:
-  push:
-
 env:
   SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   TSAN_OPTIONS: suppressions=misc/error_suppressions/tsan.txt
+  CHECKOUT_REF: '44e399ed5fa895f760b2995e59788bdb49782666'
 
 jobs:
   run_build_godot:
@@ -26,7 +24,7 @@ jobs:
       - name: Checkout Godot
         uses: actions/checkout@v4
         with:
-          ref: '44e399ed5fa895f760b2995e59788bdb49782666'
+          ref: ${{ env.CHECKOUT_REF }}
           repository: 'godotengine/godot'
 
       - name: Setup python and scons
@@ -43,7 +41,6 @@ jobs:
           target: editor
           tests: false
           scons-cache: "${{ github.workspace }}/.scons-cache/"
-          path: "${{ github.workspace }}"
 
       - uses: actions/upload-artifact@v3
         with:

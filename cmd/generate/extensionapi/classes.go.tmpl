@@ -39,15 +39,18 @@ type {{ goClassStructName $c.Name }} struct {
 func NewGDExtensionClassFrom{{ $c.Name }}Owner(owner *GodotObject) GDExtensionClass {
 	inst := &{{ goClassStructName $c.Name }}{}
 	inst.Owner = owner
-
 	return (GDExtensionClass)(inst)
 }
 
-func New{{ $c.Name }}WithGodotOwnerObject(owner *GodotObject) {{ $c.Name }} {
+func New{{ $c.Name }}WithGodotOwnerObject(owner *GodotObject) {{ if $view.IsRefcountedClassName $c.Name }}Ref{{ $c.Name }}{{ else }}{{ $c.Name }}{{ end }} {
 	inst := &{{ goClassStructName $c.Name }}{}
 	inst.Owner = owner
 
+	{{ if $view.IsRefcountedClassName $c.Name -}}
+	return newRef{{ $c.Name }}GDExtensionIternalConstructor(inst)
+	{{ else -}}
 	return inst
+	{{ end -}}
 }
 
 {{ if $c.Methods -}}
@@ -62,7 +65,7 @@ func (cx *{{ goClassStructName $c.Name }}) GetParentClassName() string {
 }
 
 {{ range $j, $m := $c.Methods -}}
-{{ $fnReturnType := goReturnType $m.ReturnValue.Type }}
+{{ $fnReturnType := goReturnType (coalesce $m.ReturnValue.Meta $m.ReturnValue.Type) }}
 {{ $hasSomeArguments := (or $m.Arguments $m.IsVararg) }}
 
 {{ if $m.IsVirtual -}}
@@ -74,27 +77,24 @@ func (cx *{{ goClassStructName $c.Name }}) GetParentClassName() string {
  */
 func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 {{range $k, $a := $m.Arguments -}}
-{{ goArgumentName $a.Name }} {{ goArgumentType $a.Type }},
+{{ $fnArgType := goArgumentType (coalesce $a.Meta $a.Type) -}}
+{{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $fnArgType }}Ref{{ $fnArgType }}{{ else }}{{ $fnArgType }}{{ end -}},
 {{end -}}
 {{- if $m.IsVararg }}varargs ...Variant,{{ end -}}
-) {{ $fnReturnType }} {
+) {{ if $view.IsRefcountedClassName $fnReturnType }}Ref{{ $fnReturnType }}{{ else }}{{ $fnReturnType }}{{ end }} {
     {{/* TODO: refactor for static instantiation */}}
 	className := NewStringNameWithLatin1Chars("{{ $c.Name }}")
 	defer className.Destroy()
-
 	methodName := NewStringNameWithLatin1Chars("{{ $m.Name }}")
 	defer methodName.Destroy()
-
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionStringNamePtr(),
-		methodName.AsGDExtensionStringNamePtr(),
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
 		{{ $m.Hash }},
 	)
-
 	if fn == nil {
 		panic("could not find method function {{ $c.Name }}.{{ $m.Name }} ({{ $m.Hash }})")
 	}
-
 	{{/* init return type */}}
 	{{ if $fnReturnType -}}
 	{{ if $view.ContainsClassName $fnReturnType -}}
@@ -113,66 +113,49 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	{{ else -}}
 	retPtr := (GDExtensionTypePtr)(nullptr)
 	{{ end -}}
-	{{- end }}
-
+	{{- end -}}
+	cOwner := cx.AsGDExtensionObjectPtr()
 	{{ if $m.IsVararg -}}
 	callArgCount := {{ len $m.Arguments }} + len(varargs)
-	{{ else -}}
-	callArgCount := {{ len $m.Arguments }}
-	{{ end -}}
-
-	argsPtr := AllocArrayPtr[GDExtensionConstVariantPtr](int(callArgCount))
-
-	{{ if or $m.IsVararg (gt (len $m.Arguments) 0) -}}
-	argsPtrSlice := unsafe.Slice(argsPtr, int(callArgCount))
-	{{ end -}}
-
-	{{ if $m.IsVararg -}}
+	argPtrSlice := make([]GDExtensionConstVariantPtr, int(callArgCount))
+	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	{{ range $j, $a := $m.Arguments -}}
-	arg{{ $j }} := {{ goVariantConstructor $a.Type (goArgumentName $a.Name) }}
-	{{ if $a.HasDestroy }}
-	defer arg{{ $j }}.Destroy()
+	v{{ $j }} := {{ (goVariantFunc $a.Type (goArgumentName $a.Name) $view.Classes) }}
+	argPtrSlice[{{ $j }}] = v{{ $j }}.nativeConstPtr()
 	{{ end -}}
-	argsPtrSlice[{{ $j }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&arg{{ $j }}))
-	{{ end -}}
-	{{ else -}}
-	{{ range $j, $a := $m.Arguments -}}
-		argsPtrSlice[{{ $j }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))
-	{{ end -}}
-	{{ end -}}
-
-    {{ if $m.IsVararg -}}
-    for i := range varargs {
-		argsPtrSlice[i + {{ len $m.Arguments }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&varargs[i])) // variant
+	for i := range varargs {
+		argPtrSlice[i + {{ len $m.Arguments }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&varargs[i])) // variant
     }
-    {{ end -}}
-
-	cOwner := (GDExtensionObjectPtr)(unsafe.Pointer(cx.GetGodotObjectOwner()))
-
-	{{ if $m.IsVararg -}}
 	var err GDExtensionCallError
-
-	CallFunc_GDExtensionInterfaceObjectMethodBindCall(fn, cOwner, (*GDExtensionConstVariantPtr)(unsafe.Pointer(argsPtr)), (GDExtensionInt)(callArgCount), retPtr, &err)
-
+	CallFunc_GDExtensionInterfaceObjectMethodBindCall(fn, cOwner, cArgs, (GDExtensionInt)(callArgCount), retPtr, &err)
 	if !err.Ok() {
 		log.Panic("method bind call error", zap.Error(&err))
 	}
 	{{ else -}}
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(argsPtr))
-
+	callArgCount := {{ len $m.Arguments }}
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	{{ range $j, $a := $m.Arguments -}}
+		{{ if $view.ContainsClassName (goArgumentType (coalesce $a.Meta $a.Type)) -}}
+		{{ if and (eq $j 0) (and (isSetterMethodName (goMethodName $m.Name)) ($view.IsRefcountedClassName (goArgumentType (coalesce $a.Meta $a.Type)))) -}}
+		{{/* {{ goArgumentName $a.Name }}.Reference() */}}
+		{{ end -}}
+		argPtrSlice[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))
+		{{ else -}}
+		argPtrSlice[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))
+		{{ end -}}
+	{{- end -}}
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	{{ end -}}
-
 	{{ with $fnReturnType -}}
-
-	Free(unsafe.Pointer(argsPtr))
-
-	{{ if $view.ContainsClassName $fnReturnType -}}
+	{{ if $view.IsRefcountedClassName $fnReturnType -}}
+	return newRef{{ $fnReturnType }}GDExtensionIternalConstructor(&ret)
+	{{ else if $view.ContainsClassName $fnReturnType -}}
 	return &ret
 	{{ else -}}
 	return ret
 	{{ end -}}
-	{{- end }}
+	{{- end -}}
 }
 {{ end -}}
 {{ end -}} {{/* if $m.IsVirtual */}}

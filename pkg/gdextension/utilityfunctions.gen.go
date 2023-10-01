@@ -27,7 +27,7 @@ func Sin(angle_rad float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("sin")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function sin (2140049587)")
@@ -40,9 +40,9 @@ func Sin(angle_rad float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&angle_rad)
+	argPtrs[0] = unsafe.Pointer(&angle_rad)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -59,7 +59,7 @@ func Cos(angle_rad float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("cos")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function cos (2140049587)")
@@ -72,9 +72,9 @@ func Cos(angle_rad float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&angle_rad)
+	argPtrs[0] = unsafe.Pointer(&angle_rad)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -91,7 +91,7 @@ func Tan(angle_rad float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("tan")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function tan (2140049587)")
@@ -104,9 +104,9 @@ func Tan(angle_rad float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&angle_rad)
+	argPtrs[0] = unsafe.Pointer(&angle_rad)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -123,7 +123,7 @@ func Sinh(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("sinh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function sinh (2140049587)")
@@ -136,9 +136,9 @@ func Sinh(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -155,7 +155,7 @@ func Cosh(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("cosh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function cosh (2140049587)")
@@ -168,9 +168,9 @@ func Cosh(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -187,7 +187,7 @@ func Tanh(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("tanh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function tanh (2140049587)")
@@ -200,9 +200,9 @@ func Tanh(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -219,7 +219,7 @@ func Asin(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("asin")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function asin (2140049587)")
@@ -232,9 +232,9 @@ func Asin(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -251,7 +251,7 @@ func Acos(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("acos")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function acos (2140049587)")
@@ -264,9 +264,9 @@ func Acos(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -283,7 +283,7 @@ func Atan(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("atan")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function atan (2140049587)")
@@ -296,9 +296,9 @@ func Atan(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -315,7 +315,7 @@ func Atan2(y float32, x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("atan2")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function atan2 (92296394)")
@@ -328,14 +328,110 @@ func Atan2(y float32, x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&y)
-	argsPtr[1] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&y)
+	argPtrs[1] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(2)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// Asinh is under the category "math".
+func Asinh(x float32) float32 {
+
+	fName := NewStringNameWithLatin1Chars("asinh")
+	defer fName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+
+	if fn == nil {
+		panic("could not find utility function asinh (2140049587)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
+
+	argBytes := AllocZeros(sz)
+
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
+
+	argPtrs[0] = unsafe.Pointer(&x)
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(1)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// Acosh is under the category "math".
+func Acosh(x float32) float32 {
+
+	fName := NewStringNameWithLatin1Chars("acosh")
+	defer fName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+
+	if fn == nil {
+		panic("could not find utility function acosh (2140049587)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
+
+	argBytes := AllocZeros(sz)
+
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
+
+	argPtrs[0] = unsafe.Pointer(&x)
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(1)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// Atanh is under the category "math".
+func Atanh(x float32) float32 {
+
+	fName := NewStringNameWithLatin1Chars("atanh")
+	defer fName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+
+	if fn == nil {
+		panic("could not find utility function atanh (2140049587)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(1))
+
+	argBytes := AllocZeros(sz)
+
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
+
+	argPtrs[0] = unsafe.Pointer(&x)
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(1)
 
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
@@ -348,7 +444,7 @@ func Sqrt(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("sqrt")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function sqrt (2140049587)")
@@ -361,9 +457,9 @@ func Sqrt(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -380,7 +476,7 @@ func Fmod(x float32, y float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("fmod")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function fmod (92296394)")
@@ -393,10 +489,10 @@ func Fmod(x float32, y float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&y)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&y)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -413,7 +509,7 @@ func Fposmod(x float32, y float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("fposmod")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function fposmod (92296394)")
@@ -426,10 +522,10 @@ func Fposmod(x float32, y float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&y)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&y)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -446,7 +542,7 @@ func Posmod(x int32, y int32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("posmod")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function posmod (3133453818)")
@@ -459,10 +555,10 @@ func Posmod(x int32, y int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&y)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&y)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -479,7 +575,7 @@ func Floor(x Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("floor")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function floor (4776452)")
@@ -492,9 +588,9 @@ func Floor(x Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -511,7 +607,7 @@ func Floorf(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("floorf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function floorf (2140049587)")
@@ -524,9 +620,9 @@ func Floorf(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -543,7 +639,7 @@ func Floori(x float32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("floori")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
 
 	if fn == nil {
 		panic("could not find utility function floori (2780425386)")
@@ -556,9 +652,9 @@ func Floori(x float32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -575,7 +671,7 @@ func Ceil(x Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("ceil")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function ceil (4776452)")
@@ -588,9 +684,9 @@ func Ceil(x Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -607,7 +703,7 @@ func Ceilf(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("ceilf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function ceilf (2140049587)")
@@ -620,9 +716,9 @@ func Ceilf(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -639,7 +735,7 @@ func Ceili(x float32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("ceili")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
 
 	if fn == nil {
 		panic("could not find utility function ceili (2780425386)")
@@ -652,9 +748,9 @@ func Ceili(x float32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -671,7 +767,7 @@ func Round(x Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("round")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function round (4776452)")
@@ -684,9 +780,9 @@ func Round(x Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -703,7 +799,7 @@ func Roundf(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("roundf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function roundf (2140049587)")
@@ -716,9 +812,9 @@ func Roundf(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -735,7 +831,7 @@ func Roundi(x float32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("roundi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
 
 	if fn == nil {
 		panic("could not find utility function roundi (2780425386)")
@@ -748,9 +844,9 @@ func Roundi(x float32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -767,7 +863,7 @@ func Abs(x Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("abs")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function abs (4776452)")
@@ -780,9 +876,9 @@ func Abs(x Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -799,7 +895,7 @@ func Absf(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("absf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function absf (2140049587)")
@@ -812,9 +908,9 @@ func Absf(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -831,7 +927,7 @@ func Absi(x int32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("absi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2157319888)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2157319888)
 
 	if fn == nil {
 		panic("could not find utility function absi (2157319888)")
@@ -844,9 +940,9 @@ func Absi(x int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -863,7 +959,7 @@ func Sign(x Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("sign")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function sign (4776452)")
@@ -876,9 +972,9 @@ func Sign(x Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -895,7 +991,7 @@ func Signf(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("signf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function signf (2140049587)")
@@ -908,9 +1004,9 @@ func Signf(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -927,7 +1023,7 @@ func Signi(x int32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("signi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2157319888)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2157319888)
 
 	if fn == nil {
 		panic("could not find utility function signi (2157319888)")
@@ -940,9 +1036,9 @@ func Signi(x int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -959,7 +1055,7 @@ func Snapped(x Variant, step Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("snapped")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 459914704)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 459914704)
 
 	if fn == nil {
 		panic("could not find utility function snapped (459914704)")
@@ -972,10 +1068,10 @@ func Snapped(x Variant, step Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&step)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&step)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -992,7 +1088,7 @@ func Snappedf(x float32, step float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("snappedf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function snappedf (92296394)")
@@ -1005,10 +1101,10 @@ func Snappedf(x float32, step float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&step)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&step)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1025,7 +1121,7 @@ func Snappedi(x float32, step int32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("snappedi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3570758393)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3570758393)
 
 	if fn == nil {
 		panic("could not find utility function snappedi (3570758393)")
@@ -1038,10 +1134,10 @@ func Snappedi(x float32, step int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&step)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&step)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1058,7 +1154,7 @@ func Pow(base float32, exp float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("pow")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function pow (92296394)")
@@ -1071,10 +1167,10 @@ func Pow(base float32, exp float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&base)
-	argsPtr[1] = unsafe.Pointer(&exp)
+	argPtrs[0] = unsafe.Pointer(&base)
+	argPtrs[1] = unsafe.Pointer(&exp)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1091,7 +1187,7 @@ func Log(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("log")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function log (2140049587)")
@@ -1104,9 +1200,9 @@ func Log(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1123,7 +1219,7 @@ func Exp(x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("exp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function exp (2140049587)")
@@ -1136,9 +1232,9 @@ func Exp(x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1155,7 +1251,7 @@ func IsNan(x float32) bool {
 
 	fName := NewStringNameWithLatin1Chars("is_nan")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
 
 	if fn == nil {
 		panic("could not find utility function is_nan (3569215213)")
@@ -1168,9 +1264,9 @@ func IsNan(x float32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1187,7 +1283,7 @@ func IsInf(x float32) bool {
 
 	fName := NewStringNameWithLatin1Chars("is_inf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
 
 	if fn == nil {
 		panic("could not find utility function is_inf (3569215213)")
@@ -1200,9 +1296,9 @@ func IsInf(x float32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1219,7 +1315,7 @@ func IsEqualApprox(a float32, b float32) bool {
 
 	fName := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1400789633)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1400789633)
 
 	if fn == nil {
 		panic("could not find utility function is_equal_approx (1400789633)")
@@ -1232,10 +1328,10 @@ func IsEqualApprox(a float32, b float32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1252,7 +1348,7 @@ func IsZeroApprox(x float32) bool {
 
 	fName := NewStringNameWithLatin1Chars("is_zero_approx")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
 
 	if fn == nil {
 		panic("could not find utility function is_zero_approx (3569215213)")
@@ -1265,9 +1361,9 @@ func IsZeroApprox(x float32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1284,7 +1380,7 @@ func IsFinite(x float32) bool {
 
 	fName := NewStringNameWithLatin1Chars("is_finite")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
 
 	if fn == nil {
 		panic("could not find utility function is_finite (3569215213)")
@@ -1297,9 +1393,9 @@ func IsFinite(x float32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1316,7 +1412,7 @@ func Ease(x float32, curve float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("ease")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function ease (92296394)")
@@ -1329,10 +1425,10 @@ func Ease(x float32, curve float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
-	argsPtr[1] = unsafe.Pointer(&curve)
+	argPtrs[0] = unsafe.Pointer(&x)
+	argPtrs[1] = unsafe.Pointer(&curve)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1349,7 +1445,7 @@ func StepDecimals(x float32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("step_decimals")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
 
 	if fn == nil {
 		panic("could not find utility function step_decimals (2780425386)")
@@ -1362,9 +1458,9 @@ func StepDecimals(x float32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1381,7 +1477,7 @@ func Lerp(from Variant, to Variant, weight Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("lerp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3389874542)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3389874542)
 
 	if fn == nil {
 		panic("could not find utility function lerp (3389874542)")
@@ -1394,11 +1490,11 @@ func Lerp(from Variant, to Variant, weight Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1415,7 +1511,7 @@ func Lerpf(from float32, to float32, weight float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("lerpf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function lerpf (998901048)")
@@ -1428,11 +1524,11 @@ func Lerpf(from float32, to float32, weight float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1449,7 +1545,7 @@ func CubicInterpolate(from float32, to float32, pre float32, post float32, weigh
 
 	fName := NewStringNameWithLatin1Chars("cubic_interpolate")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate (1090965791)")
@@ -1462,13 +1558,13 @@ func CubicInterpolate(from float32, to float32, pre float32, post float32, weigh
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[5]unsafe.Pointer)(argBytes)
+	argPtrs := (*[5]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&pre)
-	argsPtr[3] = unsafe.Pointer(&post)
-	argsPtr[4] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&pre)
+	argPtrs[3] = unsafe.Pointer(&post)
+	argPtrs[4] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1485,7 +1581,7 @@ func CubicInterpolateAngle(from float32, to float32, pre float32, post float32, 
 
 	fName := NewStringNameWithLatin1Chars("cubic_interpolate_angle")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_angle (1090965791)")
@@ -1498,13 +1594,13 @@ func CubicInterpolateAngle(from float32, to float32, pre float32, post float32, 
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[5]unsafe.Pointer)(argBytes)
+	argPtrs := (*[5]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&pre)
-	argsPtr[3] = unsafe.Pointer(&post)
-	argsPtr[4] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&pre)
+	argPtrs[3] = unsafe.Pointer(&post)
+	argPtrs[4] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1521,7 +1617,7 @@ func CubicInterpolateInTime(from float32, to float32, pre float32, post float32,
 
 	fName := NewStringNameWithLatin1Chars("cubic_interpolate_in_time")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 388121036)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 388121036)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_in_time (388121036)")
@@ -1534,16 +1630,16 @@ func CubicInterpolateInTime(from float32, to float32, pre float32, post float32,
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[8]unsafe.Pointer)(argBytes)
+	argPtrs := (*[8]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&pre)
-	argsPtr[3] = unsafe.Pointer(&post)
-	argsPtr[4] = unsafe.Pointer(&weight)
-	argsPtr[5] = unsafe.Pointer(&to_t)
-	argsPtr[6] = unsafe.Pointer(&pre_t)
-	argsPtr[7] = unsafe.Pointer(&post_t)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&pre)
+	argPtrs[3] = unsafe.Pointer(&post)
+	argPtrs[4] = unsafe.Pointer(&weight)
+	argPtrs[5] = unsafe.Pointer(&to_t)
+	argPtrs[6] = unsafe.Pointer(&pre_t)
+	argPtrs[7] = unsafe.Pointer(&post_t)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1560,7 +1656,7 @@ func CubicInterpolateAngleInTime(from float32, to float32, pre float32, post flo
 
 	fName := NewStringNameWithLatin1Chars("cubic_interpolate_angle_in_time")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 388121036)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 388121036)
 
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_angle_in_time (388121036)")
@@ -1573,16 +1669,16 @@ func CubicInterpolateAngleInTime(from float32, to float32, pre float32, post flo
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[8]unsafe.Pointer)(argBytes)
+	argPtrs := (*[8]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&pre)
-	argsPtr[3] = unsafe.Pointer(&post)
-	argsPtr[4] = unsafe.Pointer(&weight)
-	argsPtr[5] = unsafe.Pointer(&to_t)
-	argsPtr[6] = unsafe.Pointer(&pre_t)
-	argsPtr[7] = unsafe.Pointer(&post_t)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&pre)
+	argPtrs[3] = unsafe.Pointer(&post)
+	argPtrs[4] = unsafe.Pointer(&weight)
+	argPtrs[5] = unsafe.Pointer(&to_t)
+	argPtrs[6] = unsafe.Pointer(&pre_t)
+	argPtrs[7] = unsafe.Pointer(&post_t)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1599,7 +1695,7 @@ func BezierInterpolate(start float32, control_1 float32, control_2 float32, end 
 
 	fName := NewStringNameWithLatin1Chars("bezier_interpolate")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function bezier_interpolate (1090965791)")
@@ -1612,13 +1708,13 @@ func BezierInterpolate(start float32, control_1 float32, control_2 float32, end 
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[5]unsafe.Pointer)(argBytes)
+	argPtrs := (*[5]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&start)
-	argsPtr[1] = unsafe.Pointer(&control_1)
-	argsPtr[2] = unsafe.Pointer(&control_2)
-	argsPtr[3] = unsafe.Pointer(&end)
-	argsPtr[4] = unsafe.Pointer(&t)
+	argPtrs[0] = unsafe.Pointer(&start)
+	argPtrs[1] = unsafe.Pointer(&control_1)
+	argPtrs[2] = unsafe.Pointer(&control_2)
+	argPtrs[3] = unsafe.Pointer(&end)
+	argPtrs[4] = unsafe.Pointer(&t)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1635,7 +1731,7 @@ func BezierDerivative(start float32, control_1 float32, control_2 float32, end f
 
 	fName := NewStringNameWithLatin1Chars("bezier_derivative")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function bezier_derivative (1090965791)")
@@ -1648,13 +1744,13 @@ func BezierDerivative(start float32, control_1 float32, control_2 float32, end f
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[5]unsafe.Pointer)(argBytes)
+	argPtrs := (*[5]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&start)
-	argsPtr[1] = unsafe.Pointer(&control_1)
-	argsPtr[2] = unsafe.Pointer(&control_2)
-	argsPtr[3] = unsafe.Pointer(&end)
-	argsPtr[4] = unsafe.Pointer(&t)
+	argPtrs[0] = unsafe.Pointer(&start)
+	argPtrs[1] = unsafe.Pointer(&control_1)
+	argPtrs[2] = unsafe.Pointer(&control_2)
+	argPtrs[3] = unsafe.Pointer(&end)
+	argPtrs[4] = unsafe.Pointer(&t)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1671,7 +1767,7 @@ func LerpAngle(from float32, to float32, weight float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("lerp_angle")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function lerp_angle (998901048)")
@@ -1684,11 +1780,11 @@ func LerpAngle(from float32, to float32, weight float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1705,7 +1801,7 @@ func InverseLerp(from float32, to float32, weight float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("inverse_lerp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function inverse_lerp (998901048)")
@@ -1718,11 +1814,11 @@ func InverseLerp(from float32, to float32, weight float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&weight)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&weight)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1739,7 +1835,7 @@ func Remap(value float32, istart float32, istop float32, ostart float32, ostop f
 
 	fName := NewStringNameWithLatin1Chars("remap")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
 
 	if fn == nil {
 		panic("could not find utility function remap (1090965791)")
@@ -1752,13 +1848,13 @@ func Remap(value float32, istart float32, istop float32, ostart float32, ostop f
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[5]unsafe.Pointer)(argBytes)
+	argPtrs := (*[5]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&istart)
-	argsPtr[2] = unsafe.Pointer(&istop)
-	argsPtr[3] = unsafe.Pointer(&ostart)
-	argsPtr[4] = unsafe.Pointer(&ostop)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&istart)
+	argPtrs[2] = unsafe.Pointer(&istop)
+	argPtrs[3] = unsafe.Pointer(&ostart)
+	argPtrs[4] = unsafe.Pointer(&ostop)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1775,7 +1871,7 @@ func Smoothstep(from float32, to float32, x float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("smoothstep")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function smoothstep (998901048)")
@@ -1788,11 +1884,11 @@ func Smoothstep(from float32, to float32, x float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&x)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&x)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1809,7 +1905,7 @@ func MoveToward(from float32, to float32, delta float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("move_toward")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function move_toward (998901048)")
@@ -1822,11 +1918,11 @@ func MoveToward(from float32, to float32, delta float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
-	argsPtr[2] = unsafe.Pointer(&delta)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
+	argPtrs[2] = unsafe.Pointer(&delta)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1843,7 +1939,7 @@ func DegToRad(deg float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("deg_to_rad")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function deg_to_rad (2140049587)")
@@ -1856,9 +1952,9 @@ func DegToRad(deg float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&deg)
+	argPtrs[0] = unsafe.Pointer(&deg)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1875,7 +1971,7 @@ func RadToDeg(rad float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("rad_to_deg")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function rad_to_deg (2140049587)")
@@ -1888,9 +1984,9 @@ func RadToDeg(rad float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&rad)
+	argPtrs[0] = unsafe.Pointer(&rad)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1907,7 +2003,7 @@ func LinearToDb(lin float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("linear_to_db")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function linear_to_db (2140049587)")
@@ -1920,9 +2016,9 @@ func LinearToDb(lin float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&lin)
+	argPtrs[0] = unsafe.Pointer(&lin)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1939,7 +2035,7 @@ func DbToLinear(db float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("db_to_linear")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
 
 	if fn == nil {
 		panic("could not find utility function db_to_linear (2140049587)")
@@ -1952,9 +2048,9 @@ func DbToLinear(db float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&db)
+	argPtrs[0] = unsafe.Pointer(&db)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -1971,7 +2067,7 @@ func Wrap(value Variant, min Variant, max Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("wrap")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3389874542)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3389874542)
 
 	if fn == nil {
 		panic("could not find utility function wrap (3389874542)")
@@ -1984,11 +2080,11 @@ func Wrap(value Variant, min Variant, max Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2005,7 +2101,7 @@ func Wrapi(value int32, min int32, max int32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("wrapi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 650295447)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 650295447)
 
 	if fn == nil {
 		panic("could not find utility function wrapi (650295447)")
@@ -2018,11 +2114,11 @@ func Wrapi(value int32, min int32, max int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2039,7 +2135,7 @@ func Wrapf(value float32, min float32, max float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("wrapf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function wrapf (998901048)")
@@ -2052,11 +2148,11 @@ func Wrapf(value float32, min float32, max float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2073,7 +2169,7 @@ func Max(arg1 Variant, arg2 Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("max")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3896050336)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3896050336)
 
 	if fn == nil {
 		panic("could not find utility function max (3896050336)")
@@ -2086,10 +2182,10 @@ func Max(arg1 Variant, arg2 Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
-	argsPtr[1] = unsafe.Pointer(&arg2)
+	argPtrs[0] = unsafe.Pointer(&arg1)
+	argPtrs[1] = unsafe.Pointer(&arg2)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2106,7 +2202,7 @@ func Maxi(a int32, b int32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("maxi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function maxi (3133453818)")
@@ -2119,10 +2215,10 @@ func Maxi(a int32, b int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2139,7 +2235,7 @@ func Maxf(a float32, b float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("maxf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function maxf (92296394)")
@@ -2152,10 +2248,10 @@ func Maxf(a float32, b float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2172,7 +2268,7 @@ func Min(arg1 Variant, arg2 Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("min")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3896050336)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3896050336)
 
 	if fn == nil {
 		panic("could not find utility function min (3896050336)")
@@ -2185,10 +2281,10 @@ func Min(arg1 Variant, arg2 Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
-	argsPtr[1] = unsafe.Pointer(&arg2)
+	argPtrs[0] = unsafe.Pointer(&arg1)
+	argPtrs[1] = unsafe.Pointer(&arg2)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2205,7 +2301,7 @@ func Mini(a int32, b int32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("mini")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function mini (3133453818)")
@@ -2218,10 +2314,10 @@ func Mini(a int32, b int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2238,7 +2334,7 @@ func Minf(a float32, b float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("minf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function minf (92296394)")
@@ -2251,10 +2347,10 @@ func Minf(a float32, b float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2271,7 +2367,7 @@ func Clamp(value Variant, min Variant, max Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("clamp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3389874542)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3389874542)
 
 	if fn == nil {
 		panic("could not find utility function clamp (3389874542)")
@@ -2284,11 +2380,11 @@ func Clamp(value Variant, min Variant, max Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2305,7 +2401,7 @@ func Clampi(value int32, min int32, max int32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("clampi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 650295447)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 650295447)
 
 	if fn == nil {
 		panic("could not find utility function clampi (650295447)")
@@ -2318,11 +2414,11 @@ func Clampi(value int32, min int32, max int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2339,7 +2435,7 @@ func Clampf(value float32, min float32, max float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("clampf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 
 	if fn == nil {
 		panic("could not find utility function clampf (998901048)")
@@ -2352,11 +2448,11 @@ func Clampf(value float32, min float32, max float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[3]unsafe.Pointer)(argBytes)
+	argPtrs := (*[3]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&min)
-	argsPtr[2] = unsafe.Pointer(&max)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&min)
+	argPtrs[2] = unsafe.Pointer(&max)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2373,7 +2469,7 @@ func NearestPo2(value int32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("nearest_po2")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2157319888)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2157319888)
 
 	if fn == nil {
 		panic("could not find utility function nearest_po2 (2157319888)")
@@ -2386,9 +2482,9 @@ func NearestPo2(value int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
+	argPtrs[0] = unsafe.Pointer(&value)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2405,7 +2501,7 @@ func Pingpong(value float32, length float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("pingpong")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function pingpong (92296394)")
@@ -2418,10 +2514,10 @@ func Pingpong(value float32, length float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&value)
-	argsPtr[1] = unsafe.Pointer(&length)
+	argPtrs[0] = unsafe.Pointer(&value)
+	argPtrs[1] = unsafe.Pointer(&length)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2438,7 +2534,7 @@ func Randomize() {
 
 	fName := NewStringNameWithLatin1Chars("randomize")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1691721052)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1691721052)
 
 	if fn == nil {
 		panic("could not find utility function randomize (1691721052)")
@@ -2463,7 +2559,7 @@ func Randi() int32 {
 
 	fName := NewStringNameWithLatin1Chars("randi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 701202648)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 701202648)
 
 	if fn == nil {
 		panic("could not find utility function randi (701202648)")
@@ -2491,7 +2587,7 @@ func Randf() float32 {
 
 	fName := NewStringNameWithLatin1Chars("randf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2086227845)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2086227845)
 
 	if fn == nil {
 		panic("could not find utility function randf (2086227845)")
@@ -2519,7 +2615,7 @@ func RandiRange(from int32, to int32) int32 {
 
 	fName := NewStringNameWithLatin1Chars("randi_range")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
 
 	if fn == nil {
 		panic("could not find utility function randi_range (3133453818)")
@@ -2532,10 +2628,10 @@ func RandiRange(from int32, to int32) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2552,7 +2648,7 @@ func RandfRange(from float32, to float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("randf_range")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function randf_range (92296394)")
@@ -2565,10 +2661,10 @@ func RandfRange(from float32, to float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&from)
-	argsPtr[1] = unsafe.Pointer(&to)
+	argPtrs[0] = unsafe.Pointer(&from)
+	argPtrs[1] = unsafe.Pointer(&to)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2585,7 +2681,7 @@ func Randfn(mean float32, deviation float32) float32 {
 
 	fName := NewStringNameWithLatin1Chars("randfn")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
 
 	if fn == nil {
 		panic("could not find utility function randfn (92296394)")
@@ -2598,10 +2694,10 @@ func Randfn(mean float32, deviation float32) float32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&mean)
-	argsPtr[1] = unsafe.Pointer(&deviation)
+	argPtrs[0] = unsafe.Pointer(&mean)
+	argPtrs[1] = unsafe.Pointer(&deviation)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2618,7 +2714,7 @@ func Seed(base int32) {
 
 	fName := NewStringNameWithLatin1Chars("seed")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 382931173)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 382931173)
 
 	if fn == nil {
 		panic("could not find utility function seed (382931173)")
@@ -2630,9 +2726,9 @@ func Seed(base int32) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&base)
+	argPtrs[0] = unsafe.Pointer(&base)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2647,7 +2743,7 @@ func RandFromSeed(seed int32) PackedInt64Array {
 
 	fName := NewStringNameWithLatin1Chars("rand_from_seed")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1391063685)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1391063685)
 
 	if fn == nil {
 		panic("could not find utility function rand_from_seed (1391063685)")
@@ -2660,9 +2756,9 @@ func RandFromSeed(seed int32) PackedInt64Array {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&seed)
+	argPtrs[0] = unsafe.Pointer(&seed)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2679,7 +2775,7 @@ func Weakref(obj Variant) Variant {
 
 	fName := NewStringNameWithLatin1Chars("weakref")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
 
 	if fn == nil {
 		panic("could not find utility function weakref (4776452)")
@@ -2692,9 +2788,9 @@ func Weakref(obj Variant) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&obj)
+	argPtrs[0] = unsafe.Pointer(&obj)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2711,7 +2807,7 @@ func Typeof(variable Variant) int32 {
 
 	fName := NewStringNameWithLatin1Chars("typeof")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 326422594)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 326422594)
 
 	if fn == nil {
 		panic("could not find utility function typeof (326422594)")
@@ -2724,13 +2820,46 @@ func Typeof(variable Variant) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&variable)
+	argPtrs[0] = unsafe.Pointer(&variable)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
 	argCount := (int32)(1)
+
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
+
+	Free(argBytes)
+	return ret
+}
+
+// TypeConvert is under the category "general".
+func TypeConvert(variant Variant, typeName int32) Variant {
+
+	fName := NewStringNameWithLatin1Chars("type_convert")
+	defer fName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2453062746)
+
+	if fn == nil {
+		panic("could not find utility function type_convert (2453062746)")
+	}
+
+	var ret Variant
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	sz := int(unsafe.Sizeof(nullptr) * uintptr(2))
+
+	argBytes := AllocZeros(sz)
+
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
+
+	argPtrs[0] = unsafe.Pointer(&variant)
+	argPtrs[1] = unsafe.Pointer(&typeName)
+
+	args := (*GDExtensionConstTypePtr)(argBytes)
+
+	argCount := (int32)(2)
 
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, args, argCount)
 
@@ -2743,7 +2872,7 @@ func Str(arg1 Variant) String {
 
 	fName := NewStringNameWithLatin1Chars("str")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 32569176)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 32569176)
 
 	if fn == nil {
 		panic("could not find utility function str (32569176)")
@@ -2756,9 +2885,9 @@ func Str(arg1 Variant) String {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2775,7 +2904,7 @@ func ErrorString(error int32) String {
 
 	fName := NewStringNameWithLatin1Chars("error_string")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 942708242)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 942708242)
 
 	if fn == nil {
 		panic("could not find utility function error_string (942708242)")
@@ -2788,9 +2917,9 @@ func ErrorString(error int32) String {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&error)
+	argPtrs[0] = unsafe.Pointer(&error)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2807,7 +2936,7 @@ func Print(arg1 Variant) {
 
 	fName := NewStringNameWithLatin1Chars("print")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function print (2648703342)")
@@ -2819,9 +2948,9 @@ func Print(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2836,7 +2965,7 @@ func PrintRich(arg1 Variant) {
 
 	fName := NewStringNameWithLatin1Chars("print_rich")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function print_rich (2648703342)")
@@ -2848,9 +2977,9 @@ func PrintRich(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2865,7 +2994,7 @@ func Printerr(arg1 Variant) {
 
 	fName := NewStringNameWithLatin1Chars("printerr")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function printerr (2648703342)")
@@ -2877,9 +3006,9 @@ func Printerr(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2894,7 +3023,7 @@ func Printt(arg1 Variant) {
 
 	fName := NewStringNameWithLatin1Chars("printt")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function printt (2648703342)")
@@ -2906,9 +3035,9 @@ func Printt(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2923,7 +3052,7 @@ func Prints(arg1 Variant) {
 
 	fName := NewStringNameWithLatin1Chars("prints")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function prints (2648703342)")
@@ -2935,9 +3064,9 @@ func Prints(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2952,7 +3081,7 @@ func Printraw(arg1 Variant) {
 
 	fName := NewStringNameWithLatin1Chars("printraw")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function printraw (2648703342)")
@@ -2964,9 +3093,9 @@ func Printraw(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -2981,7 +3110,7 @@ func PrintVerbose(arg1 Variant) {
 
 	fName := NewStringNameWithLatin1Chars("print_verbose")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function print_verbose (2648703342)")
@@ -2993,9 +3122,9 @@ func PrintVerbose(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3010,7 +3139,7 @@ func PushError(arg1 Variant) {
 
 	fName := NewStringNameWithLatin1Chars("push_error")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function push_error (2648703342)")
@@ -3022,9 +3151,9 @@ func PushError(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3039,7 +3168,7 @@ func PushWarning(arg1 Variant) {
 
 	fName := NewStringNameWithLatin1Chars("push_warning")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
 
 	if fn == nil {
 		panic("could not find utility function push_warning (2648703342)")
@@ -3051,9 +3180,9 @@ func PushWarning(arg1 Variant) {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&arg1)
+	argPtrs[0] = unsafe.Pointer(&arg1)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3068,7 +3197,7 @@ func VarToStr(variable Variant) String {
 
 	fName := NewStringNameWithLatin1Chars("var_to_str")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 866625479)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 866625479)
 
 	if fn == nil {
 		panic("could not find utility function var_to_str (866625479)")
@@ -3081,9 +3210,9 @@ func VarToStr(variable Variant) String {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&variable)
+	argPtrs[0] = unsafe.Pointer(&variable)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3096,11 +3225,11 @@ func VarToStr(variable Variant) String {
 }
 
 // StrToVar is under the category "general".
-func StrToVar(string String) Variant {
+func StrToVar(strValue String) Variant {
 
 	fName := NewStringNameWithLatin1Chars("str_to_var")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1891498491)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1891498491)
 
 	if fn == nil {
 		panic("could not find utility function str_to_var (1891498491)")
@@ -3113,9 +3242,9 @@ func StrToVar(string String) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&string)
+	argPtrs[0] = unsafe.Pointer(&strValue)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3132,7 +3261,7 @@ func VarToBytes(variable Variant) PackedByteArray {
 
 	fName := NewStringNameWithLatin1Chars("var_to_bytes")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2947269930)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2947269930)
 
 	if fn == nil {
 		panic("could not find utility function var_to_bytes (2947269930)")
@@ -3145,9 +3274,9 @@ func VarToBytes(variable Variant) PackedByteArray {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&variable)
+	argPtrs[0] = unsafe.Pointer(&variable)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3164,7 +3293,7 @@ func BytesToVar(bytes PackedByteArray) Variant {
 
 	fName := NewStringNameWithLatin1Chars("bytes_to_var")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4249819452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4249819452)
 
 	if fn == nil {
 		panic("could not find utility function bytes_to_var (4249819452)")
@@ -3177,9 +3306,9 @@ func BytesToVar(bytes PackedByteArray) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&bytes)
+	argPtrs[0] = unsafe.Pointer(&bytes)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3196,7 +3325,7 @@ func VarToBytesWithObjects(variable Variant) PackedByteArray {
 
 	fName := NewStringNameWithLatin1Chars("var_to_bytes_with_objects")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2947269930)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2947269930)
 
 	if fn == nil {
 		panic("could not find utility function var_to_bytes_with_objects (2947269930)")
@@ -3209,9 +3338,9 @@ func VarToBytesWithObjects(variable Variant) PackedByteArray {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&variable)
+	argPtrs[0] = unsafe.Pointer(&variable)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3228,7 +3357,7 @@ func BytesToVarWithObjects(bytes PackedByteArray) Variant {
 
 	fName := NewStringNameWithLatin1Chars("bytes_to_var_with_objects")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 4249819452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4249819452)
 
 	if fn == nil {
 		panic("could not find utility function bytes_to_var_with_objects (4249819452)")
@@ -3241,9 +3370,9 @@ func BytesToVarWithObjects(bytes PackedByteArray) Variant {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&bytes)
+	argPtrs[0] = unsafe.Pointer(&bytes)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3260,7 +3389,7 @@ func Hash(variable Variant) int32 {
 
 	fName := NewStringNameWithLatin1Chars("hash")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 326422594)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 326422594)
 
 	if fn == nil {
 		panic("could not find utility function hash (326422594)")
@@ -3273,9 +3402,9 @@ func Hash(variable Variant) int32 {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&variable)
+	argPtrs[0] = unsafe.Pointer(&variable)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3292,7 +3421,7 @@ func InstanceFromId(instance_id int32) Object {
 
 	fName := NewStringNameWithLatin1Chars("instance_from_id")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1156694636)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1156694636)
 
 	if fn == nil {
 		panic("could not find utility function instance_from_id (1156694636)")
@@ -3305,9 +3434,9 @@ func InstanceFromId(instance_id int32) Object {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&instance_id)
+	argPtrs[0] = unsafe.Pointer(&instance_id)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3324,7 +3453,7 @@ func IsInstanceIdValid(id int32) bool {
 
 	fName := NewStringNameWithLatin1Chars("is_instance_id_valid")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 2232439758)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2232439758)
 
 	if fn == nil {
 		panic("could not find utility function is_instance_id_valid (2232439758)")
@@ -3337,9 +3466,9 @@ func IsInstanceIdValid(id int32) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&id)
+	argPtrs[0] = unsafe.Pointer(&id)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3356,7 +3485,7 @@ func IsInstanceValid(instance Variant) bool {
 
 	fName := NewStringNameWithLatin1Chars("is_instance_valid")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 996128841)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 996128841)
 
 	if fn == nil {
 		panic("could not find utility function is_instance_valid (996128841)")
@@ -3369,9 +3498,9 @@ func IsInstanceValid(instance Variant) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&instance)
+	argPtrs[0] = unsafe.Pointer(&instance)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3388,7 +3517,7 @@ func RidAllocateId() int32 {
 
 	fName := NewStringNameWithLatin1Chars("rid_allocate_id")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 701202648)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 701202648)
 
 	if fn == nil {
 		panic("could not find utility function rid_allocate_id (701202648)")
@@ -3416,7 +3545,7 @@ func RidFromInt64(base int32) RID {
 
 	fName := NewStringNameWithLatin1Chars("rid_from_int64")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 3426892196)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3426892196)
 
 	if fn == nil {
 		panic("could not find utility function rid_from_int64 (3426892196)")
@@ -3429,9 +3558,9 @@ func RidFromInt64(base int32) RID {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[1]unsafe.Pointer)(argBytes)
+	argPtrs := (*[1]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&base)
+	argPtrs[0] = unsafe.Pointer(&base)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 
@@ -3448,7 +3577,7 @@ func IsSame(a Variant, b Variant) bool {
 
 	fName := NewStringNameWithLatin1Chars("is_same")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), 1409423524)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1409423524)
 
 	if fn == nil {
 		panic("could not find utility function is_same (1409423524)")
@@ -3461,10 +3590,10 @@ func IsSame(a Variant, b Variant) bool {
 
 	argBytes := AllocZeros(sz)
 
-	argsPtr := (*[2]unsafe.Pointer)(argBytes)
+	argPtrs := (*[2]unsafe.Pointer)(argBytes)
 
-	argsPtr[0] = unsafe.Pointer(&a)
-	argsPtr[1] = unsafe.Pointer(&b)
+	argPtrs[0] = unsafe.Pointer(&a)
+	argPtrs[1] = unsafe.Pointer(&b)
 
 	args := (*GDExtensionConstTypePtr)(argBytes)
 

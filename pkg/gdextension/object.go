@@ -6,7 +6,6 @@ import (
 	"sync/atomic"
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
-	"github.com/godot-go/godot-go/pkg/log"
 )
 
 func NewSimpleGDExtensionPropertyInfo(
@@ -14,13 +13,12 @@ func NewSimpleGDExtensionPropertyInfo(
 	variantType GDExtensionVariantType,
 	name string,
 ) GDExtensionPropertyInfo {
-	// TODO: move to alloc memory in C?
 	return NewGDExtensionPropertyInfo(
-		NewStringNameWithLatin1Chars(className).AsGDExtensionStringNamePtr(),
+		NewStringNameWithLatin1Chars(className).AsGDExtensionConstStringNamePtr(),
 		variantType,
-		NewStringNameWithLatin1Chars(name).AsGDExtensionStringNamePtr(),
+		NewStringNameWithLatin1Chars(name).AsGDExtensionConstStringNamePtr(),
 		uint32(PROPERTY_HINT_NONE),
-		NewStringWithLatin1Chars("").AsGDExtensionStringPtr(),
+		NewStringWithUtf8Chars("").AsGDExtensionConstStringPtr(),
 		uint32(PROPERTY_USAGE_DEFAULT),
 	)
 }
@@ -54,27 +52,4 @@ func NewObjectID() ObjectID {
 	v := atomic.AddUint64(&lastObjectIDValue, 1)
 
 	return ObjectID{Id: v}
-}
-
-func objectDBGetInstance(p_object_id GDObjectInstanceID) *Object {
-	obj := CallFunc_GDExtensionInterfaceObjectGetInstanceFromId((GDObjectInstanceID)((C.uint64_t)(p_object_id)))
-
-	if obj == nil {
-		return nil
-	}
-
-	cbs, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get("Object")
-
-	if !ok {
-		log.Warn("unable to find callbacks for Object")
-		return nil
-	}
-
-	binding := CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
-		obj,
-		FFI.Token,
-		&cbs,
-	)
-
-	return (*Object)(binding)
 }

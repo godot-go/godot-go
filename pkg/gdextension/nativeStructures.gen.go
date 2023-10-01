@@ -33,9 +33,9 @@ type CaretInfo struct {
 type Glyph struct {
 	Start     int32
 	End       int32
-	Count     Uint8T
-	Repeat    Uint8T
-	Flags     Uint16T
+	Count     uint8
+	Repeat    uint8
+	Flags     uint16
 	X_off     float32
 	Y_off     float32
 	Advance   float32

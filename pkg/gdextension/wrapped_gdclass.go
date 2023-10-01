@@ -8,18 +8,16 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/davecgh/go-spew/spew"
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )
 
+type GetPropertyFunc func(string, *Variant)
+type SetPropertyFunc func(string, *Variant)
+
 type GDClass interface {
 	Wrapped
-}
-
-func gdClassInitializeClass(c GDClass) {
-	gdClassRegisterVirtuals(c)
 }
 
 func gdClassRegisterInstanceBindingCallbacks(tn string) {
@@ -44,35 +42,34 @@ func gdClassRegisterInstanceBindingCallbacks(tn string) {
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set(tn, (GDExtensionInstanceBindingCallbacks)(cbs))
 }
 
-func GDClassFromGDExtensionClassInstancePtr(p_classinfo *ClassInfo, p_instance GDExtensionClassInstancePtr) GDClass {
-	if (C.GDExtensionClassInstancePtr)(p_instance) == (C.GDExtensionClassInstancePtr)(nullptr) {
-		v := reflect.New(p_classinfo.ClassType)
-		return v.Interface().(GDClass)
+func ObjectClassFromGDExtensionClassInstancePtr(p_instance GDExtensionClassInstancePtr) Object {
+	if p_instance == nil {
+		return nil
 	}
 
-	return *(*GDClass)(p_instance)
+	wci := (*WrappedClassInstance)(unsafe.Pointer(p_instance))
+
+	if wci.Instance == nil {
+		log.Panic("unexpected nil instance")
+		return nil
+	}
+
+	return wci.Instance
 }
 
 // WrappedPostInitialize is equivalent to Wrapped::_postinitialize in godot-cpp
 // this should only be called for GDClasses and not GDExtensionClasses
 func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 	owner := w.GetGodotObjectOwner()
-	inst := (GDExtensionClassInstancePtr)(unsafe.Pointer(&w))
 	if len(extensionClassName) == 0 {
 		log.Panic("extension class name cannot be empty",
 			zap.String("w", fmt.Sprintf("%p", w)),
-			zap.String("w.GetGodotObjectOwner()", fmt.Sprintf("%p", w.GetGodotObjectOwner())),
+			zap.String("w.GetGodotObjectOwner()", fmt.Sprintf("%p", owner)),
 		)
 	}
 
 	snExtensionClassName := NewStringNameWithLatin1Chars(extensionClassName)
 	defer snExtensionClassName.Destroy()
-
-	CallFunc_GDExtensionInterfaceObjectSetInstance(
-		(GDExtensionObjectPtr)(owner),
-		snExtensionClassName.AsGDExtensionStringNamePtr(),
-		inst,
-	)
 
 	callbacks, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get(extensionClassName)
 
@@ -80,18 +77,32 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 		log.Panic("unable to retrieve binding callbacks", zap.String("type", extensionClassName))
 	}
 
-	CallFunc_GDExtensionInterfaceObjectSetInstanceBinding((GDExtensionObjectPtr)(owner), FFI.Token, (unsafe.Pointer)(inst), &callbacks)
-}
+	cnPtr := snExtensionClassName.AsGDExtensionConstStringNamePtr()
 
-// GoCallback_GDExtensionClassCreateInstance is registered as a callback when a new GDScript instance is created.
-//
-//export GoCallback_GDExtensionClassCreateInstance
-func GoCallback_GDExtensionClassCreateInstance(data unsafe.Pointer) C.GDExtensionObjectPtr {
-	tn := C.GoString((*C.char)(data))
+	obj, ok := w.(Object)
 
-	inst := CreateGDClassInstance(tn)
+	if !ok {
+		log.Panic("unable to cast to Object")
+	}
 
-	return (C.GDExtensionObjectPtr)(unsafe.Pointer(inst.GetGodotObjectOwner()))
+	inst := &WrappedClassInstance{
+		Instance: obj,
+	}
+
+	if cnPtr != nil {
+		CallFunc_GDExtensionInterfaceObjectSetInstance(
+			(GDExtensionObjectPtr)(owner),
+			cnPtr,
+			(GDExtensionClassInstancePtr)(unsafe.Pointer(inst)),
+		)
+	}
+
+	CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(
+		(GDExtensionObjectPtr)(owner),
+		unsafe.Pointer(FFI.Token),
+		unsafe.Pointer(inst),
+		&callbacks,
+	)
 }
 
 func CreateGDClassInstance(tn string) GDClass {
@@ -100,11 +111,10 @@ func CreateGDClassInstance(tn string) GDClass {
 	if !ok {
 		log.Panic("type not found",
 			zap.String("name", tn),
-			zap.String("dump", spew.Sdump(gdRegisteredGDClasses)),
 		)
 	}
 
-	log.Debug("GoCallback_GDExtensionClassCreateInstance called",
+	log.Debug("CreateGDClassInstance called",
 		zap.String("class_name", tn),
 		zap.Any("parent_name", ci.ParentName),
 	)
@@ -114,7 +124,7 @@ func CreateGDClassInstance(tn string) GDClass {
 
 	// create inherited GDExtensionClass first
 	owner := CallFunc_GDExtensionInterfaceClassdbConstructObject(
-		snParentName.AsGDExtensionStringNamePtr(),
+		snParentName.AsGDExtensionConstStringNamePtr(),
 	)
 
 	if owner == nil {
@@ -153,31 +163,6 @@ func CreateGDClassInstance(tn string) GDClass {
 	return inst
 }
 
-//export GoCallback_GDExtensionClassFreeInstance
-func GoCallback_GDExtensionClassFreeInstance(data unsafe.Pointer, ptr C.GDExtensionClassInstancePtr) {
-	tn := C.GoString((*C.char)(data))
-
-	// ptr is assigned in function WrappedPostInitialize as a (*Wrapped)
-	w := *(*Wrapped)(unsafe.Pointer(ptr))
-
-	log.Info("GoCallback_GDExtensionClassFreeInstance called",
-		zap.String("type_name", tn),
-		zap.String("ptr", fmt.Sprintf("%p", ptr)),
-		zap.String("w", fmt.Sprintf("%p", w)),
-		zap.String("w.GetGodotObjectOwner()", fmt.Sprintf("%p", w.GetGodotObjectOwner())),
-	)
-
-	id := CallFunc_GDExtensionInterfaceObjectGetInstanceId((GDExtensionConstObjectPtr)(unsafe.Pointer(w.GetGodotObjectOwner())))
-
-	if _, ok := internal.gdClassInstances.Get(id); !ok {
-		log.Panic("GDClass instance not found to free", zap.Any("id", id))
-	}
-
-	internal.gdClassInstances.Delete(id)
-
-	log.Info("GDClass instance freed", zap.Any("id", id))
-}
-
 //export GoCallback_GDClassBindingCreate
 func GoCallback_GDClassBindingCreate(p_token unsafe.Pointer, p_instance unsafe.Pointer) unsafe.Pointer {
 	return nullptr
@@ -190,9 +175,4 @@ func GoCallback_GDClassBindingFree(p_token unsafe.Pointer, p_instance unsafe.Poi
 //export GoCallback_GDClassBindingReference
 func GoCallback_GDClassBindingReference(p_token unsafe.Pointer, p_instance unsafe.Pointer, p_reference C.GDExtensionBool) C.GDExtensionBool {
 	return 1
-}
-
-func gdClassRegisterVirtuals(c GDClass) {
-	// TODO: figure out how to approach this
-	// P.RegisterVirtuals()
 }

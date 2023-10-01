@@ -16,7 +16,7 @@ func getSingleton(name string) GDExtensionObjectPtr {
 	defer snName.Destroy()
 
 	ret := CallFunc_GDExtensionInterfaceGlobalGetSingleton(
-		snName.AsGDExtensionStringNamePtr(),
+		snName.AsGDExtensionConstStringNamePtr(),
 	)
 
 	return (GDExtensionObjectPtr)(ret)

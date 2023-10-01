@@ -26,6 +26,9 @@ var (
 	//go:embed utilityfunctions.go.tmpl
 	utilityFunctionsText string
 
+	//go:embed builtinclasses.bindings.go.tmpl
+	builtinClassesBindingsText string
+
 	//go:embed builtinclasses.go.tmpl
 	builtinClassesText string
 
@@ -41,6 +44,9 @@ var (
 	//go:embed classes.go.tmpl
 	classesText string
 
+	//go:embed classes.refs.go.tmpl
+	classesRefsText string
+
 	//go:embed classes.init.go.tmpl
 	classesInitText string
 
@@ -55,84 +61,59 @@ var (
 )
 
 // Generate will generate Go wrappers for all Godot base types
-func Generate(projectPath string) {
-	eapi, err := extensionapiparser.ParseExtensionApiJson(projectPath)
-
-	if err != nil {
+func Generate(projectPath, buildConfig string) {
+	var (
+		eapi extensionapiparser.ExtensionApi
+		err error
+	)
+	if eapi, err = extensionapiparser.ParseExtensionApiJson(projectPath); err != nil {
 		panic(err)
 	}
-
+	if !eapi.HasBuildConfiguration(buildConfig) {
+		panic(fmt.Sprintf(`unable to find build configuration "%s"`, buildConfig))
+	}
+	eapi.BuildConfig = buildConfig
 	eapi.Classes = eapi.FilteredClasses()
-
-	err = GenerateGlobalConstants(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateGlobalConstants(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateGlobalEnums(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateGlobalEnums(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateNativeStrucutres(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateNativeStrucutres(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateBuiltinClasses(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateBuiltinClasses(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateCHeaderClassCallbacks(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateBuiltinClassBindings(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateCClassCallbacks(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateCHeaderClassCallbacks(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateClassInterfaces(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateCClassCallbacks(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateClassEnums(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateClassInterfaces(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateClassConstants(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateClassEnums(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateClasses(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateClassConstants(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateClassInit(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateClasses(projectPath, eapi); err != nil {
 		panic(err)
 	}
-
-	err = GenerateUtilityFunctions(projectPath, eapi)
-
-	if err != nil {
+	if err = GenerateClassRefs(projectPath, eapi); err != nil {
+		panic(err)
+	}
+	if err = GenerateClassInit(projectPath, eapi); err != nil {
+		panic(err)
+	}
+	if err = GenerateUtilityFunctions(projectPath, eapi); err != nil {
 		panic(err)
 	}
 }
@@ -276,6 +257,7 @@ func GenerateBuiltinClasses(projectPath string, extensionApi extensionapiparser.
 			"goEncoder":                goEncoder,
 			"goEncodeArg":              goEncodeArg,
 			"goEncodeIsReference":      goEncodeIsReference,
+			"coalesce":                 coalesce,
 		}).
 		Parse(builtinClassesText)
 
@@ -310,6 +292,63 @@ func GenerateBuiltinClasses(projectPath string, extensionApi extensionapiparser.
 	return nil
 }
 
+func GenerateBuiltinClassBindings(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	tmpl, err := template.New("builtinclasses.bindings.gen.go").
+		Funcs(template.FuncMap{
+			"contains":                 strings.Contains,
+			"upper":                    strings.ToUpper,
+			"lowerFirstChar":           lowerFirstChar,
+			"upperFirstChar":           upperFirstChar,
+			"lowerCamel":               strcase.ToLowerCamel,
+			"screamingSnake":           screamingSnake,
+			"snakeCase":                snakeCase,
+			"goMethodName":             goMethodName,
+			"goArgumentName":           goArgumentName,
+			"goArgumentType":           goArgumentType,
+			"goHasArgumentTypeEncoder": goHasArgumentTypeEncoder,
+			"goReturnType":             goReturnType,
+			"goDecodeNumberType":       goDecodeNumberType,
+			"getOperatorIdName":        getOperatorIdName,
+			"isCopyConstructor":        isCopyConstructor,
+			"typeHasPtr":               typeHasPtr,
+			"goEncoder":                goEncoder,
+			"goEncodeArg":              goEncodeArg,
+			"goEncodeIsReference":      goEncodeIsReference,
+			"coalesce":                 coalesce,
+		}).
+		Parse(builtinClassesBindingsText)
+
+	if err != nil {
+		return err
+	}
+
+	var b bytes.Buffer
+
+	err = tmpl.Execute(&b, extensionApi)
+
+	if err != nil {
+		return err
+	}
+
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("builtinclasses.bindings.gen.go"))
+
+	f, err := os.Create(filename)
+
+	if err != nil {
+		return err
+	}
+
+	defer f.Close()
+
+	_, err = f.Write(b.Bytes())
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func GenerateClassInterfaces(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
 	tmpl, err := template.New("classes.interfaces.gen.go").
 		Funcs(template.FuncMap{
@@ -321,6 +360,7 @@ func GenerateClassInterfaces(projectPath string, extensionApi extensionapiparser
 			"goClassEnumName":      goClassEnumName,
 			"goClassStructName":    goClassStructName,
 			"goClassInterfaceName": goClassInterfaceName,
+			"coalesce":             coalesce,
 		}).
 		Parse(classesInterfacesText)
 
@@ -366,6 +406,7 @@ func GenerateClassEnums(projectPath string, extensionApi extensionapiparser.Exte
 			"goClassEnumName":      goClassEnumName,
 			"goClassStructName":    goClassStructName,
 			"goClassInterfaceName": goClassInterfaceName,
+			"coalesce":             coalesce,
 		}).
 		Parse(classesEnumsText)
 
@@ -412,6 +453,7 @@ func GenerateClassConstants(projectPath string, extensionApi extensionapiparser.
 			"goClassConstantName":  goClassConstantName,
 			"goClassStructName":    goClassStructName,
 			"goClassInterfaceName": goClassInterfaceName,
+			"coalesce":             coalesce,
 		}).
 		Parse(classesConstantsText)
 
@@ -449,10 +491,12 @@ func GenerateClassConstants(projectPath string, extensionApi extensionapiparser.
 func GenerateClasses(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
 	tmpl, err := template.New("classes.gen.go").
 		Funcs(template.FuncMap{
+			"isSetterMethodName":   isSetterMethodName,
 			"goVariantConstructor": goVariantConstructor,
 			"goMethodName":         goMethodName,
 			"goArgumentName":       goArgumentName,
 			"goArgumentType":       goArgumentType,
+			"goVariantFunc":        goVariantFunc,
 			"goReturnType":         goReturnType,
 			"goClassEnumName":      goClassEnumName,
 			"goClassStructName":    goClassStructName,
@@ -460,6 +504,7 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 			"goEncoder":            goEncoder,
 			"goEncodeArg":          goEncodeArg,
 			"goEncodeIsReference":  goEncodeIsReference,
+			"coalesce":             coalesce,
 		}).
 		Parse(classesText)
 
@@ -494,6 +539,57 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 	return nil
 }
 
+func GenerateClassRefs(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	tmpl, err := template.New("classes.refs.gen.go").
+	Funcs(template.FuncMap{
+		"isSetterMethodName":   isSetterMethodName,
+		"goVariantConstructor": goVariantConstructor,
+		"goMethodName":         goMethodName,
+		"goArgumentName":       goArgumentName,
+		"goArgumentType":       goArgumentType,
+		"goVariantFunc":        goVariantFunc,
+		"goReturnType":         goReturnType,
+		"goClassEnumName":      goClassEnumName,
+		"goClassStructName":    goClassStructName,
+		"goClassInterfaceName": goClassInterfaceName,
+		"goEncoder":            goEncoder,
+		"goEncodeArg":          goEncodeArg,
+		"goEncodeIsReference":  goEncodeIsReference,
+		"coalesce":             coalesce,
+	}).
+		Parse(classesRefsText)
+
+	if err != nil {
+		return err
+	}
+
+	var b bytes.Buffer
+
+	err = tmpl.Execute(&b, extensionApi)
+
+	if err != nil {
+		return err
+	}
+
+	filename := filepath.Join(projectPath, "pkg", "gdextension", fmt.Sprintf("classes.refs.gen.go"))
+
+	f, err := os.Create(filename)
+
+	if err != nil {
+		return err
+	}
+
+	defer f.Close()
+
+	_, err = f.Write(b.Bytes())
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func GenerateClassInit(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
 	tmpl, err := template.New("classes.init.gen.go").
 		Funcs(template.FuncMap{
@@ -505,6 +601,7 @@ func GenerateClassInit(projectPath string, extensionApi extensionapiparser.Exten
 			"goClassEnumName":      goClassEnumName,
 			"goClassStructName":    goClassStructName,
 			"goClassInterfaceName": goClassInterfaceName,
+			"coalesce":             coalesce,
 		}).
 		Parse(classesInitText)
 
@@ -547,6 +644,7 @@ func GenerateCHeaderClassCallbacks(projectPath string, extensionApi extensionapi
 			"goArgumentType":  goArgumentType,
 			"goReturnType":    goReturnType,
 			"goClassEnumName": goClassEnumName,
+			"coalesce":        coalesce,
 		}).
 		Parse(cHeaderClassesText)
 
@@ -589,6 +687,7 @@ func GenerateCClassCallbacks(projectPath string, extensionApi extensionapiparser
 			"goArgumentType":  goArgumentType,
 			"goReturnType":    goReturnType,
 			"goClassEnumName": goClassEnumName,
+			"coalesce":        coalesce,
 		}).
 		Parse(cClassesText)
 
@@ -627,8 +726,10 @@ func GenerateUtilityFunctions(projectPath string, extensionApi extensionapiparse
 	tmpl, err := template.New("utilityfunctions.gen.go").
 		Funcs(template.FuncMap{
 			"camelCase":      strcase.ToCamel,
+			"goArgumentName": goArgumentName,
 			"goArgumentType": goArgumentType,
 			"goReturnType":   goReturnType,
+			"coalesce":       coalesce,
 		}).
 		Parse(utilityFunctionsText)
 

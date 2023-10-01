@@ -2,6 +2,7 @@ package gdextension
 
 import (
 	"reflect"
+	"strings"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
@@ -12,9 +13,14 @@ type PropertySetGet struct {
 	Index   int
 	Setter  string
 	Getter  string
-	_setptr *MethodBind
-	_getptr *MethodBind
+	_setptr *MethodBindImpl
+	_getptr *MethodBindImpl
 	Type    GDExtensionVariantType
+}
+
+type MethodBindAndClassMethodInfo struct {
+	MethodBind      *MethodBindImpl
+	ClassMethodInfo *GDExtensionClassMethodInfo
 }
 
 type ClassInfo struct {
@@ -23,14 +29,23 @@ type ClassInfo struct {
 	ParentName                string
 	ParentNameAsStringNamePtr GDExtensionConstStringNamePtr
 	Level                     GDExtensionInitializationLevel
-	MethodMap                 map[string]*MethodBind
+	MethodMap                 map[string]*MethodBindAndClassMethodInfo
 	SignalNameMap             map[string]struct{}
-	VirtualMethodMap          map[string]GDExtensionClassCallVirtual
+	VirtualMethodMap          map[string]*MethodBindAndClassMethodInfo
 	PropertyNameMap           map[string]struct{}
 	ConstantNameMap           map[string]struct{}
 	ParentPtr                 *ClassInfo
 	ClassType                 reflect.Type
 	InheritType               reflect.Type
+}
+
+func (c *ClassInfo) String() string {
+	var sb strings.Builder
+	sb.WriteString(c.Name)
+	sb.WriteString("(")
+	sb.WriteString(c.ParentName)
+	sb.WriteString(")")
+	return sb.String()
 }
 
 func (c *ClassInfo) Destroy() {
@@ -44,20 +59,24 @@ func (c *ClassInfo) Destroy() {
 		parentName.Destroy()
 	}
 
+	for _, v := range c.VirtualMethodMap {
+		v.ClassMethodInfo.Destroy()
+	}
+
 	for _, v := range c.MethodMap {
-		v.Destroy()
+		v.ClassMethodInfo.Destroy()
 	}
 }
 
 func NewClassInfo(name, parentName string, level GDExtensionInitializationLevel, classType, inheritType reflect.Type, parentPtr *ClassInfo) *ClassInfo {
 	return &ClassInfo{
 		Name:                name,
-		NameAsStringNamePtr: NewStringNameWithLatin1Chars(name).AsGDExtensionStringNamePtr(),
+		NameAsStringNamePtr: NewStringNameWithLatin1Chars(name).AsGDExtensionConstStringNamePtr(),
 		ParentName:          parentName,
 		Level:               level,
-		MethodMap:           map[string]*MethodBind{},
+		MethodMap:           map[string]*MethodBindAndClassMethodInfo{},
 		SignalNameMap:       map[string]struct{}{},
-		VirtualMethodMap:    map[string]GDExtensionClassCallVirtual{},
+		VirtualMethodMap:    map[string]*MethodBindAndClassMethodInfo{},
 		PropertyNameMap:     map[string]struct{}{},
 		ConstantNameMap:     map[string]struct{}{},
 		ParentPtr:           parentPtr,

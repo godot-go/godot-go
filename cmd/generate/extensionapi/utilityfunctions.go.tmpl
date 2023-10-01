@@ -28,18 +28,18 @@ import (
 func {{ camelCase $f.Name }}(
 {{- if $f.IsVararg -}}
 	{{- range $j, $arg := $f.Arguments -}}
-		{{ $arg.Name }} {{ goArgumentType $arg.Type }},
+		{{ goArgumentName $arg.Name }} {{ goArgumentType $arg.Type }},
 	{{- end -}}
 {{- else -}}
 	{{- range $j, $arg := $f.Arguments -}}
-		{{ $arg.Name }} {{ goArgumentType $arg.Type }},
+		{{ goArgumentName $arg.Name }} {{ goArgumentType $arg.Type }},
 	{{- end -}}
 {{- end -}}
 ) {{ $fnReturnType }} {
 	{{/* TODO: refactor for static instantiation */}}
 	fName := NewStringNameWithLatin1Chars("{{ $f.Name }}")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionStringNamePtr(), {{ $f.Hash }})
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), {{ $f.Hash }})
 
 	if fn == nil {
 		panic("could not find utility function {{ $f.Name }} ({{ $f.Hash }})")
@@ -57,10 +57,10 @@ func {{ camelCase $f.Name }}(
 	argBytes := AllocZeros(sz)
 
 	{{ if $f.Arguments }}
-	argsPtr := (*[{{ len $f.Arguments }}]unsafe.Pointer)(argBytes)
+	argPtrs := (*[{{ len $f.Arguments }}]unsafe.Pointer)(argBytes)
 
 	{{ range $j, $arg := $f.Arguments -}}
-		argsPtr[{{ $j }}] = unsafe.Pointer(&{{ $arg.Name }})
+		argPtrs[{{ $j }}] = unsafe.Pointer(&{{ goArgumentName $arg.Name }})
 	{{ end }}
 	{{ end }}
 

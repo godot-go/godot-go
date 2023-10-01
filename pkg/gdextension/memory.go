@@ -13,20 +13,81 @@ import (
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 
 	"github.com/CannibalVox/cgoalloc"
+	"github.com/godot-go/godot-go/pkg/log"
+	"go.uber.org/zap"
+)
+
+const (
+	MaxAllocBytes = 2 << 28
 )
 
 // AllocCopy returns a duplicated data allocated in C memory.
 func AllocCopy(src unsafe.Pointer, bytes int) unsafe.Pointer {
+	switch {
+	case bytes < 0:
+		log.Panic("invalid memory",
+			zap.Int("bytes", bytes),
+		)
+	case bytes >= MaxAllocBytes:
+		log.Panic("memory too large",
+			zap.Int("bytes", bytes),
+		)
+	}
+
 	m := CallFunc_GDExtensionInterfaceMemAlloc(uint64(bytes))
+
+	if m == nullptr {
+		log.Panic("memory allocation failure",
+			zap.Int("bytes", bytes),
+		)
+	}
 
 	C.memcpy(m, src, C.size_t(bytes))
 
 	return m
 }
 
+func AllocCopyDest(dest unsafe.Pointer, src unsafe.Pointer, bytes int) {
+	switch {
+	case bytes < 0:
+		log.Panic("invalid memory",
+			zap.Int("bytes", bytes),
+		)
+	case bytes >= MaxAllocBytes:
+		log.Panic("memory too large",
+			zap.Int("bytes", bytes),
+		)
+	}
+
+	if dest == nullptr {
+		log.Panic("destination cannot be nil",
+			zap.Int("bytes", bytes),
+		)
+	}
+
+	C.memcpy(dest, src, C.size_t(bytes))
+}
+
 // AllocZeros returns zeroed out bytes allocated in C memory.
 func AllocZeros(bytes int) unsafe.Pointer {
+	switch {
+	case bytes < 0:
+		log.Panic("invalid memory",
+			zap.Int("bytes", bytes),
+		)
+	case bytes >= MaxAllocBytes:
+		log.Panic("memory too large",
+			zap.Int("bytes", bytes),
+		)
+	}
+
 	m := CallFunc_GDExtensionInterfaceMemAlloc(uint64(bytes))
+
+	if m == nullptr {
+		log.Panic("memory allocation failure",
+			zap.Int("bytes", bytes),
+		)
+	}
 
 	C.memset(m, 0, C.size_t(bytes))
 
@@ -40,17 +101,6 @@ func AllocArrayPtr[T any](len int) *T {
 	bytes := int(unsafe.Sizeof(t)) * len
 
 	return (*T)(AllocZeros(bytes))
-}
-
-// SliceHeaderDataPtr
-func SliceHeaderDataPtr[A any, R any](args []*A) *R {
-	header := (*reflect.SliceHeader)(unsafe.Pointer(&args))
-
-	if header == nil {
-		return (*R)(nullptr)
-	}
-
-	return (*R)(unsafe.Pointer(header.Data))
 }
 
 // Alloc returns allocated memory in C memory.

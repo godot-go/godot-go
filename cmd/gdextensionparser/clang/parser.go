@@ -221,6 +221,22 @@ type Argument struct {
 	Name      string     `parser:" ( @Ident | '(' '*' @Ident ')' )? " json:",omitempty"`
 }
 
+func (a Argument) IsPinnable() bool {
+	switch {
+	case a.Type.Function != nil:
+		return false
+	case a.Type.Primative != nil:
+		switch a.Type.Primative.Name {
+		case "char":
+			return false
+		default:
+			return a.Type.Primative.IsPointer
+		}
+	}
+
+	return false
+}
+
 func (a Argument) CStyleString(i int) string {
 	if a.Type.Function != nil {
 		return a.Type.CStyleString()

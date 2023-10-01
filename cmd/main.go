@@ -5,6 +5,8 @@ import (
 	"log"
 	"os/exec"
 	"path/filepath"
+	"runtime"
+	"strings"
 
 	"github.com/godot-go/godot-go/cmd/generate/extensionapi"
 	"github.com/godot-go/godot-go/cmd/generate/gdextensionwrapper"
@@ -23,17 +25,26 @@ var (
 	packagePath      string
 	godotPath        string
 	parsedASTPath    string
+	buildConfig      string
 )
 
 func init() {
 	absPath, _ := filepath.Abs(".")
-
+	var (
+		defaultBuildConfig string
+	)
+	if strings.Contains(runtime.GOARCH, "32") {
+		defaultBuildConfig = "float_32"
+	} else {
+		defaultBuildConfig = "float_64"
+	}
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "Toggle extra debug output")
-	rootCmd.PersistentFlags().BoolVarP(&genClangAPI, "clangApi", "", false, "Generate GDExtension C wrapper")
-	rootCmd.PersistentFlags().BoolVarP(&genExtensionApi, "extensionApi", "", false, "Generate Extension API")
+	rootCmd.PersistentFlags().BoolVarP(&genClangAPI, "clang-api", "", false, "Generate GDExtension C wrapper")
+	rootCmd.PersistentFlags().BoolVarP(&genExtensionApi, "extension-api", "", false, "Generate Extension API")
 	rootCmd.PersistentFlags().StringVarP(&packagePath, "package-path", "p", absPath, "Specified package path")
 	rootCmd.PersistentFlags().StringVarP(&godotPath, "godot-path", "", "godot", "Specified path where the Godot executable is located")
 	rootCmd.PersistentFlags().StringVarP(&parsedASTPath, "parsed-ast-path", "", "_debug_parsed_ast.json", "Specified path where the AST structure should be written to")
+	rootCmd.PersistentFlags().StringVarP(&buildConfig, "build-config", "", defaultBuildConfig, "Specified build configuration for built-in class sizes")
 }
 
 var rootCmd = &cobra.Command{
@@ -41,6 +52,10 @@ var rootCmd = &cobra.Command{
 	Short: "Godot Go",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		hasGen := false
+
+		if verbose {
+			println(fmt.Sprintf(`build configuration "%s" selected`, buildConfig))
+		}
 
 		if genClangAPI {
 			if verbose {
@@ -55,7 +70,7 @@ var rootCmd = &cobra.Command{
 			if verbose {
 				println("Generating extension api...")
 			}
-			extensionapi.Generate(packagePath)
+			extensionapi.Generate(packagePath, buildConfig)
 
 			hasGen = true
 		}

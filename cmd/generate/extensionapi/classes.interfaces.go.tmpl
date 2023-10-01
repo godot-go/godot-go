@@ -13,36 +13,43 @@ package gdextension
 //revive:disable
 
 import (
+	"unsafe"
+
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
+
+{{/* gen hack to quiet unused imports */}}
+var _ = unsafe.Pointer(nil)
 
 {{ range $i, $c := $view.Classes -}}
 type {{ goClassInterfaceName $c.Name }} interface {
 	{{ if $c.Inherits }}
 	{{ goClassInterfaceName $c.Inherits }}
 	{{ else }}
-	Wrapped
-	{{ end }}
+	GDExtensionClass
+	{{ end -}}
 
 	{{ range $j, $m := $c.Methods -}}
-	{{ $fnReturnType := goReturnType $m.ReturnValue.Type }}
+	{{ $fnReturnType := goReturnType (coalesce $m.ReturnValue.Meta $m.ReturnValue.Type) }}
 	{{ $hasSomeArguments := (or $m.Arguments $m.IsVararg) }}
 
 	{{ if $m.IsVirtual -}}
 	{{/* TODO: deal with virtual functions */}}
 	// VIRTUAL: {{ goMethodName $m.Name }}(
 	{{- range $k, $a := $m.Arguments -}}
-	{{ goArgumentName $a.Name }} {{ goArgumentType $a.Type }},
+	{{ $fnArgType := goArgumentType (coalesce $a.Meta $a.Type) -}}
+	{{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $fnArgType }}Ref{{ $fnArgType }}{{ else }}{{ $fnArgType }}{{ end -}},
 	{{- end -}}
 	{{- if $m.IsVararg }}varargs ...Variant,{{- end -}}
-	) {{ $fnReturnType -}}
+	) {{ if $view.IsRefcountedClassName $fnReturnType }}Ref{{ $fnReturnType }}{{ else }}{{ $fnReturnType }}{{ end -}}
 	{{ else -}}
 	{{ goMethodName $m.Name }}(
 	{{- range $k, $a := $m.Arguments -}}
-	{{ goArgumentName $a.Name }} {{ goArgumentType $a.Type }},
+	{{ $fnArgType := goArgumentType (coalesce $a.Meta $a.Type) -}}
+	{{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $fnArgType }}Ref{{ $fnArgType }}{{ else }}{{ $fnArgType }}{{ end -}},
 	{{- end -}}
 	{{- if $m.IsVararg }}varargs ...Variant,{{- end -}}
-	) {{ $fnReturnType -}}
+	) {{ if $view.IsRefcountedClassName $fnReturnType }}Ref{{ $fnReturnType }}{{ else }}{{ $fnReturnType }}{{ end -}}
 	{{- end }}
 	{{- end }}
 }

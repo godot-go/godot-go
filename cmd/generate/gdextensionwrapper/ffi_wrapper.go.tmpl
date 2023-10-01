@@ -58,7 +58,7 @@ type {{ $f.Name }} C.{{ $f.Name }}
 {{ $rt := goReturnType .ReturnType }}
 func CallFunc_{{ $f.Name }}(
 	fn {{ $f.Name }},
-	{{- range $j, $arg := $f.Arguments }}
+	{{ range $j, $arg := $f.Arguments -}}
 		{{ if $arg.Name -}}
 		{{ $arg.Name -}}
 		{{ else if and $arg.Type.Function $arg.Type.Function.Name -}}
@@ -66,12 +66,21 @@ func CallFunc_{{ $f.Name }}(
 		{{ else -}}
 		inArg{{ add $j 1 -}}
 		{{ end }} {{ if $arg.Type.Primative }}{{ goArgumentType $arg.Type.Primative $arg.Name }}{{ else }} unsafe.Pointer{{ end }},
-	{{- end -}}
+	{{ end -}}
 ) {{ $rt }} {
 	arg0 := (C.{{ $f.Name }})(fn)
 	{{ range $j, $arg := $f.Arguments -}}
 		arg{{ add $j 1 }} := {{ cgoCastArgument $arg (print "inArg" (add $j 1)) }}
 	{{ end }}
+
+	{{/* pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	{{ range $j, $arg := $f.Arguments -}}
+		{{ if $arg.IsPinnable -}}
+		pinner.Pin(arg{{ add $j 1 }})
+		{{ end -}}
+	{{ end }} */}}
 
 	log.Debug("called C.cgo_callfn_{{ $f.Name }}")
 
@@ -98,7 +107,7 @@ func CallFunc_{{ $f.Name }}(
 {{ range $i, $f := $view.CollectGDExtensionInterfaceFunctions -}}
 {{ $rt := goReturnType .ReturnType }}
 func CallFunc_{{ $f.Name }}(
-	{{- range $j, $arg := $f.Arguments }}
+	{{ range $j, $arg := $f.Arguments -}}
 		{{ if $arg.Name -}}
 		{{ $arg.Name -}}
 		{{ else if and $arg.Type.Function $arg.Type.Function.Name -}}
@@ -106,12 +115,21 @@ func CallFunc_{{ $f.Name }}(
 		{{ else -}}
 		inArg{{ add $j 1 -}}
 		{{ end }} {{ if $arg.Type.Primative }}{{ goArgumentType $arg.Type.Primative $arg.Name }}{{ else }} unsafe.Pointer{{ end }},
-	{{- end -}}
+	{{ end -}}
 ) {{ $rt }} {
 	arg0 := (C.{{ $f.Name }})(FFI.{{ gdiVariableName $f.Name }})
 	{{ range $j, $arg := $f.Arguments -}}
 		arg{{ add $j 1 }} := {{ cgoCastArgument $arg (print "inArg" (add $j 1)) }}
 	{{ end }}
+
+	{{/* pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	{{ range $j, $arg := $f.Arguments -}}
+		{{ if $arg.IsPinnable -}}
+		pinner.Pin(arg{{ add $j 1 }})
+		{{ end -}}
+	{{ end }} */}}
 
 	log.Debug("called C.cgo_callfn_{{ $f.Name }}")
 
@@ -155,6 +173,15 @@ func CallFunc_{{ $f.Name }}(
 			{{ range $j, $arg := $f.Arguments -}}
 				arg{{ add $j 1 }} := {{ cgoCastArgument $arg "" }} // {{ $arg.Type.CStyleString }}
 			{{ end }}
+
+			{{/* pinner := runtime.Pinner{}
+			defer pinner.Unpin()
+
+			{{ range $j, $arg := $f.Arguments -}}
+				{{ if $arg.IsPinnable -}}
+				pinner.Pin(arg{{ add $j 1 }})
+				{{ end -}}
+			{{ end }} */}}
 
 			log.Debug("called C.cgo_callfn_{{ $t.Name }}_{{ $f.Name }}")
 

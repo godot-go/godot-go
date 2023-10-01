@@ -97,6 +97,21 @@ const (
 	ANIMATION_FIND_MODE_FIND_MODE_EXACT                     = 2
 )
 
+type AnimationMixerAnimationCallbackModeProcess int
+
+const (
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_PROCESS_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS AnimationMixerAnimationCallbackModeProcess = 0
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_PROCESS_ANIMATION_CALLBACK_MODE_PROCESS_IDLE                                               = 1
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_PROCESS_ANIMATION_CALLBACK_MODE_PROCESS_MANUAL                                             = 2
+)
+
+type AnimationMixerAnimationCallbackModeMethod int
+
+const (
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_METHOD_ANIMATION_CALLBACK_MODE_METHOD_DEFERRED  AnimationMixerAnimationCallbackModeMethod = 0
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_METHOD_ANIMATION_CALLBACK_MODE_METHOD_IMMEDIATE                                           = 1
+)
+
 type AnimationNodeFilterAction int
 
 const (
@@ -499,7 +514,8 @@ const (
 	BASE_MATERIAL_3_D_FLAGS_FLAG_SUBSURFACE_MODE_SKIN                          = 18
 	BASE_MATERIAL_3_D_FLAGS_FLAG_PARTICLE_TRAILS_MODE                          = 19
 	BASE_MATERIAL_3_D_FLAGS_FLAG_ALBEDO_TEXTURE_MSDF                           = 20
-	BASE_MATERIAL_3_D_FLAGS_FLAG_MAX                                           = 21
+	BASE_MATERIAL_3_D_FLAGS_FLAG_DISABLE_FOG                                   = 21
+	BASE_MATERIAL_3_D_FLAGS_FLAG_MAX                                           = 22
 )
 
 type BaseMaterial3DDiffuseMode int
@@ -1144,6 +1160,16 @@ const (
 	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_MAX                                    = 17
 )
 
+type DisplayServerFileDialogMode int
+
+const (
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_FILE  DisplayServerFileDialogMode = 0
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_FILES                             = 1
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_DIR                               = 2
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_ANY                               = 3
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_SAVE_FILE                              = 4
+)
+
 type DisplayServerWindowMode int
 
 const (
@@ -1521,6 +1547,23 @@ const (
 	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_BROTLI                            = 4
 )
 
+type FileAccessUnixPermissionFlags int
+
+const (
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_READ_OWNER        FileAccessUnixPermissionFlags = 256
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_OWNER                                     = 128
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_OWNER                                   = 64
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_READ_GROUP                                      = 32
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_GROUP                                     = 16
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_GROUP                                   = 8
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_READ_OTHER                                      = 4
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_OTHER                                     = 2
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_OTHER                                   = 1
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_SET_USER_ID                                     = 2048
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_SET_GROUP_ID                                    = 1024
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_RESTRICTED_DELETE                               = 512
+)
+
 type FileDialogFileMode int
 
 const (
@@ -1555,6 +1598,14 @@ const (
 	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_ALREADY_LOADED                              = 2
 	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_NOT_LOADED                                  = 3
 	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_NEEDS_RESTART                               = 4
+)
+
+type GLTFDocumentRootNodeMode int
+
+const (
+	GLTF_DOCUMENT_ROOT_NODE_MODE_ROOT_NODE_MODE_SINGLE_ROOT GLTFDocumentRootNodeMode = 0
+	GLTF_DOCUMENT_ROOT_NODE_MODE_ROOT_NODE_MODE_KEEP_ROOT                            = 1
+	GLTF_DOCUMENT_ROOT_NODE_MODE_ROOT_NODE_MODE_MULTI_ROOT                           = 2
 )
 
 type GPUParticles2DDrawOrder int
@@ -1773,14 +1824,6 @@ type GraphEditPanningScheme int
 const (
 	GRAPH_EDIT_PANNING_SCHEME_SCROLL_ZOOMS GraphEditPanningScheme = 0
 	GRAPH_EDIT_PANNING_SCHEME_SCROLL_PANS                         = 1
-)
-
-type GraphNodeOverlay int
-
-const (
-	GRAPH_NODE_OVERLAY_OVERLAY_DISABLED   GraphNodeOverlay = 0
-	GRAPH_NODE_OVERLAY_OVERLAY_BREAKPOINT                  = 1
-	GRAPH_NODE_OVERLAY_OVERLAY_POSITION                    = 2
 )
 
 type HTTPClientMethod int
@@ -2202,15 +2245,16 @@ const (
 type LightmapGIBakeError int
 
 const (
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_OK                LightmapGIBakeError = 0
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SCENE_ROOT                         = 1
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_FOREIGN_DATA                          = 2
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_LIGHTMAPPER                        = 3
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SAVE_PATH                          = 4
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_MESHES                             = 5
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_MESHES_INVALID                        = 6
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_CANT_CREATE_IMAGE                     = 7
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_USER_ABORTED                          = 8
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_OK                     LightmapGIBakeError = 0
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SCENE_ROOT                              = 1
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_FOREIGN_DATA                               = 2
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_LIGHTMAPPER                             = 3
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SAVE_PATH                               = 4
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_MESHES                                  = 5
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_MESHES_INVALID                             = 6
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_CANT_CREATE_IMAGE                          = 7
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_USER_ABORTED                               = 8
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_TEXTURE_SIZE_TOO_SMALL                     = 9
 )
 
 type LightmapGIEnvironmentMode int
@@ -2517,6 +2561,24 @@ const (
 	NAVIGATION_PATH_QUERY_RESULT_3_D_PATH_SEGMENT_TYPE_PATH_SEGMENT_TYPE_LINK                                              = 1
 )
 
+type NavigationPolygonParsedGeometryType int
+
+const (
+	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_MESH_INSTANCES   NavigationPolygonParsedGeometryType = 0
+	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_STATIC_COLLIDERS                                     = 1
+	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_BOTH                                                 = 2
+	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_MAX                                                  = 3
+)
+
+type NavigationPolygonSourceGeometryMode int
+
+const (
+	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_ROOT_NODE_CHILDREN   NavigationPolygonSourceGeometryMode = 0
+	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN                                     = 1
+	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_EXPLICIT                                          = 2
+	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_MAX                                                      = 3
+)
+
 type NavigationServer3DProcessInfo int
 
 const (
@@ -2657,6 +2719,54 @@ const (
 	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_UNOBSTRUCTED          OpenXRHandMotionRange = 0
 	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_CONFORM_TO_CONTROLLER                       = 1
 	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_MAX                                         = 2
+)
+
+type OpenXRInterfaceHand int
+
+const (
+	OPEN_XR_INTERFACE_HAND_HAND_LEFT  OpenXRInterfaceHand = 0
+	OPEN_XR_INTERFACE_HAND_HAND_RIGHT                     = 1
+	OPEN_XR_INTERFACE_HAND_HAND_MAX                       = 2
+)
+
+type OpenXRInterfaceHandMotionRange int
+
+const (
+	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_UNOBSTRUCTED          OpenXRInterfaceHandMotionRange = 0
+	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_CONFORM_TO_CONTROLLER                                = 1
+	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_MAX                                                  = 2
+)
+
+type OpenXRInterfaceHandJoints int
+
+const (
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_PALM                OpenXRInterfaceHandJoints = 0
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_WRIST                                         = 1
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_METACARPAL                              = 2
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_PROXIMAL                                = 3
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_DISTAL                                  = 4
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_TIP                                     = 5
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_METACARPAL                              = 6
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_PROXIMAL                                = 7
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_INTERMEDIATE                            = 8
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_DISTAL                                  = 9
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_TIP                                     = 10
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_METACARPAL                             = 11
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_PROXIMAL                               = 12
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_INTERMEDIATE                           = 13
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_DISTAL                                 = 14
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_TIP                                    = 15
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_METACARPAL                               = 16
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_PROXIMAL                                 = 17
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_INTERMEDIATE                             = 18
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_DISTAL                                   = 19
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_TIP                                      = 20
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_METACARPAL                             = 21
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_PROXIMAL                               = 22
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_INTERMEDIATE                           = 23
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_DISTAL                                 = 24
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_TIP                                    = 25
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MAX                                           = 26
 )
 
 type PackedSceneGenEditState int
@@ -2922,7 +3032,17 @@ const (
 type PhysicsServer2DPinJointParam int
 
 const (
-	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_SOFTNESS PhysicsServer2DPinJointParam = 0
+	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_SOFTNESS              PhysicsServer2DPinJointParam = 0
+	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_LIMIT_UPPER                                        = 1
+	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_LIMIT_LOWER                                        = 2
+	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_MOTOR_TARGET_VELOCITY                              = 3
+)
+
+type PhysicsServer2DPinJointFlag int
+
+const (
+	PHYSICS_SERVER_2_D_PIN_JOINT_FLAG_PIN_JOINT_FLAG_ANGULAR_LIMIT_ENABLED PhysicsServer2DPinJointFlag = 0
+	PHYSICS_SERVER_2_D_PIN_JOINT_FLAG_PIN_JOINT_FLAG_MOTOR_ENABLED                                     = 1
 )
 
 type PhysicsServer2DDampedSpringParam int
@@ -3496,11 +3616,13 @@ const (
 type RenderingDeviceBarrierMask int
 
 const (
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_RASTER       RenderingDeviceBarrierMask = 1
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_VERTEX       RenderingDeviceBarrierMask = 1
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_FRAGMENT                                = 8
 	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_COMPUTE                                 = 2
 	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_TRANSFER                                = 4
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_ALL_BARRIERS                            = 7
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_NO_BARRIER                              = 8
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_RASTER                                  = 9
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_ALL_BARRIERS                            = 32767
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_NO_BARRIER                              = 32768
 )
 
 type RenderingDeviceTextureType int
@@ -4179,7 +4301,8 @@ type RenderingServerViewportScaling3DMode int
 const (
 	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_BILINEAR RenderingServerViewportScaling3DMode = 0
 	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_FSR                                           = 1
-	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_MAX                                           = 2
+	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_FSR_2                                         = 2
+	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_MAX                                           = 3
 )
 
 type RenderingServerViewportUpdateMode int
@@ -4300,6 +4423,7 @@ const (
 	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_CLUSTER_REFLECTION_PROBES                                  = 23
 	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_OCCLUDERS                                                  = 24
 	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_MOTION_VECTORS                                             = 25
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_INTERNAL_BUFFER                                            = 26
 )
 
 type RenderingServerViewportVRSMode int
@@ -4724,6 +4848,19 @@ const (
 	RICH_TEXT_LABEL_MENU_ITEMS_MENU_MAX                               = 2
 )
 
+type RichTextLabelImageUpdateMask int
+
+const (
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_TEXTURE          RichTextLabelImageUpdateMask = 1
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_SIZE                                          = 2
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_COLOR                                         = 4
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_ALIGNMENT                                     = 8
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_REGION                                        = 16
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_PAD                                           = 32
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_TOOLTIP                                       = 64
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_WIDTH_IN_PERCENT                              = 128
+)
+
 type RigidBody2DFreezeMode int
 
 const (
@@ -4772,6 +4909,14 @@ type RigidBody3DDampMode int
 const (
 	RIGID_BODY_3_D_DAMP_MODE_DAMP_MODE_COMBINE RigidBody3DDampMode = 0
 	RIGID_BODY_3_D_DAMP_MODE_DAMP_MODE_REPLACE                     = 1
+)
+
+type SceneReplicationConfigReplicationMode int
+
+const (
+	SCENE_REPLICATION_CONFIG_REPLICATION_MODE_REPLICATION_MODE_NEVER     SceneReplicationConfigReplicationMode = 0
+	SCENE_REPLICATION_CONFIG_REPLICATION_MODE_REPLICATION_MODE_ALWAYS                                          = 1
+	SCENE_REPLICATION_CONFIG_REPLICATION_MODE_REPLICATION_MODE_ON_CHANGE                                       = 2
 )
 
 type SceneStateGenEditState int
@@ -5449,6 +5594,14 @@ const (
 	TILE_SET_TERRAIN_MODE_TERRAIN_MODE_MATCH_SIDES                                = 2
 )
 
+type TileSetAtlasSourceTileAnimationMode int
+
+const (
+	TILE_SET_ATLAS_SOURCE_TILE_ANIMATION_MODE_TILE_ANIMATION_MODE_DEFAULT            TileSetAtlasSourceTileAnimationMode = 0
+	TILE_SET_ATLAS_SOURCE_TILE_ANIMATION_MODE_TILE_ANIMATION_MODE_RANDOM_START_TIMES                                     = 1
+	TILE_SET_ATLAS_SOURCE_TILE_ANIMATION_MODE_TILE_ANIMATION_MODE_MAX                                                    = 2
+)
+
 type TimeMonth int
 
 const (
@@ -5634,7 +5787,8 @@ type ViewportScaling3DMode int
 const (
 	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_BILINEAR ViewportScaling3DMode = 0
 	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_FSR                            = 1
-	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_MAX                            = 2
+	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_FSR_2                          = 2
+	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_MAX                            = 3
 )
 
 type ViewportMSAA int
@@ -5701,6 +5855,7 @@ const (
 	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_CLUSTER_REFLECTION_PROBES                   = 23
 	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_OCCLUDERS                                   = 24
 	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_MOTION_VECTORS                              = 25
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_INTERNAL_BUFFER                             = 26
 )
 
 type ViewportDefaultCanvasItemTextureFilter int
@@ -6490,6 +6645,13 @@ const (
 	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_KEEP_WIDTH                           = 2
 	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_KEEP_HEIGHT                          = 3
 	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_EXPAND                               = 4
+)
+
+type WindowContentScaleStretch int
+
+const (
+	WINDOW_CONTENT_SCALE_STRETCH_CONTENT_SCALE_STRETCH_FRACTIONAL WindowContentScaleStretch = 0
+	WINDOW_CONTENT_SCALE_STRETCH_CONTENT_SCALE_STRETCH_INTEGER                              = 1
 )
 
 type WindowLayoutDirection int

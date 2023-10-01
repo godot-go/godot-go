@@ -21,8 +21,8 @@ import (
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 )
 
-func init() {
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks = NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
+func registerEngineClasses() {
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Clear()
 {{ range $i, $c := $view.Classes -}}
 	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set("{{ $c.Name }}",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -32,7 +32,7 @@ func init() {
 		))
 {{ end -}}
 
-	gdNativeConstructors = NewSyncMap[string, GDExtensionClassGoConstructorFromOwner]()
+	gdNativeConstructors.Clear()
 {{ range $i, $c := $view.Classes -}}
 	gdNativeConstructors.Set("{{ $c.Name }}", NewGDExtensionClassFrom{{ $c.Name }}Owner)
 {{ end -}}

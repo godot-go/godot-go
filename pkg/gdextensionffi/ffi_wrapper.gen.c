@@ -168,11 +168,25 @@ GDExtensionBool cgo_callfn_GDExtensionClassPropertyGetRevert(
   printStacktrace();
   return fn(p_instance, p_name, r_ret);
 }
+GDExtensionBool cgo_callfn_GDExtensionClassValidateProperty(
+    const GDExtensionClassValidateProperty fn,
+    GDExtensionClassInstancePtr p_instance,
+    GDExtensionPropertyInfo *p_property) {
+  printStacktrace();
+  return fn(p_instance, p_property);
+}
 void cgo_callfn_GDExtensionClassNotification(
     const GDExtensionClassNotification fn,
     GDExtensionClassInstancePtr p_instance, int32_t p_what) {
   printStacktrace();
   fn(p_instance, p_what);
+}
+void cgo_callfn_GDExtensionClassNotification2(
+    const GDExtensionClassNotification2 fn,
+    GDExtensionClassInstancePtr p_instance, int32_t p_what,
+    GDExtensionBool p_reversed) {
+  printStacktrace();
+  fn(p_instance, p_what, p_reversed);
 }
 void cgo_callfn_GDExtensionClassToString(const GDExtensionClassToString fn,
                                          GDExtensionClassInstancePtr p_instance,
@@ -201,22 +215,42 @@ void cgo_callfn_GDExtensionClassCallVirtual(
   fn(p_instance, p_args, r_ret);
 }
 GDExtensionObjectPtr cgo_callfn_GDExtensionClassCreateInstance(
-    const GDExtensionClassCreateInstance fn, void *p_userdata) {
+    const GDExtensionClassCreateInstance fn, void *p_class_userdata) {
   printStacktrace();
-  return fn(p_userdata);
+  return fn(p_class_userdata);
 }
 void cgo_callfn_GDExtensionClassFreeInstance(
-    const GDExtensionClassFreeInstance fn, void *p_userdata,
+    const GDExtensionClassFreeInstance fn, void *p_class_userdata,
     GDExtensionClassInstancePtr p_instance) {
   printStacktrace();
-  fn(p_userdata, p_instance);
+  fn(p_class_userdata, p_instance);
+}
+GDExtensionClassInstancePtr cgo_callfn_GDExtensionClassRecreateInstance(
+    const GDExtensionClassRecreateInstance fn, void *p_class_userdata,
+    GDExtensionObjectPtr p_object) {
+  printStacktrace();
+  return fn(p_class_userdata, p_object);
 }
 GDExtensionClassCallVirtual
 cgo_callfn_GDExtensionClassGetVirtual(const GDExtensionClassGetVirtual fn,
-                                      void *p_userdata,
+                                      void *p_class_userdata,
                                       GDExtensionConstStringNamePtr p_name) {
   printStacktrace();
-  return fn(p_userdata, p_name);
+  return fn(p_class_userdata, p_name);
+}
+void *cgo_callfn_GDExtensionClassGetVirtualCallData(
+    const GDExtensionClassGetVirtualCallData fn, void *p_class_userdata,
+    GDExtensionConstStringNamePtr p_name) {
+  printStacktrace();
+  return fn(p_class_userdata, p_name);
+}
+void cgo_callfn_GDExtensionClassCallVirtualWithData(
+    const GDExtensionClassCallVirtualWithData fn,
+    GDExtensionClassInstancePtr p_instance,
+    GDExtensionConstStringNamePtr p_name, void *p_virtual_call_userdata,
+    const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
+  printStacktrace();
+  fn(p_instance, p_name, p_virtual_call_userdata, p_args, r_ret);
 }
 void cgo_callfn_GDExtensionClassMethodCall(
     const GDExtensionClassMethodCall fn, void *method_userdata,
@@ -239,6 +273,47 @@ void cgo_callfn_GDExtensionClassMethodPtrCall(
     const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret) {
   printStacktrace();
   fn(method_userdata, p_instance, p_args, r_ret);
+}
+void cgo_callfn_GDExtensionCallableCustomCall(
+    const GDExtensionCallableCustomCall fn, void *callable_userdata,
+    const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count,
+    GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
+  printStacktrace();
+  fn(callable_userdata, p_args, p_argument_count, r_return, r_error);
+}
+GDExtensionBool cgo_callfn_GDExtensionCallableCustomIsValid(
+    const GDExtensionCallableCustomIsValid fn, void *callable_userdata) {
+  printStacktrace();
+  return fn(callable_userdata);
+}
+void cgo_callfn_GDExtensionCallableCustomFree(
+    const GDExtensionCallableCustomFree fn, void *callable_userdata) {
+  printStacktrace();
+  fn(callable_userdata);
+}
+uint32_t
+cgo_callfn_GDExtensionCallableCustomHash(const GDExtensionCallableCustomHash fn,
+                                         void *callable_userdata) {
+  printStacktrace();
+  return fn(callable_userdata);
+}
+GDExtensionBool cgo_callfn_GDExtensionCallableCustomEqual(
+    const GDExtensionCallableCustomEqual fn, void *callable_userdata_a,
+    void *callable_userdata_b) {
+  printStacktrace();
+  return fn(callable_userdata_a, callable_userdata_b);
+}
+GDExtensionBool cgo_callfn_GDExtensionCallableCustomLessThan(
+    const GDExtensionCallableCustomLessThan fn, void *callable_userdata_a,
+    void *callable_userdata_b) {
+  printStacktrace();
+  return fn(callable_userdata_a, callable_userdata_b);
+}
+void cgo_callfn_GDExtensionCallableCustomToString(
+    const GDExtensionCallableCustomToString fn, void *callable_userdata,
+    GDExtensionBool *r_is_valid, GDExtensionStringPtr r_out) {
+  printStacktrace();
+  fn(callable_userdata, r_is_valid, r_out);
 }
 GDExtensionBool cgo_callfn_GDExtensionScriptInstanceSet(
     const GDExtensionScriptInstanceSet fn,
@@ -268,12 +343,26 @@ void cgo_callfn_GDExtensionScriptInstanceFreePropertyList(
   printStacktrace();
   fn(p_instance, p_list);
 }
+GDExtensionBool cgo_callfn_GDExtensionScriptInstanceGetClassCategory(
+    const GDExtensionScriptInstanceGetClassCategory fn,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    GDExtensionPropertyInfo *p_class_category) {
+  printStacktrace();
+  return fn(p_instance, p_class_category);
+}
 GDExtensionVariantType cgo_callfn_GDExtensionScriptInstanceGetPropertyType(
     const GDExtensionScriptInstanceGetPropertyType fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid) {
   printStacktrace();
   return fn(p_instance, p_name, r_is_valid);
+}
+GDExtensionBool cgo_callfn_GDExtensionScriptInstanceValidateProperty(
+    const GDExtensionScriptInstanceValidateProperty fn,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    GDExtensionPropertyInfo *p_property) {
+  printStacktrace();
+  return fn(p_instance, p_property);
 }
 GDExtensionBool cgo_callfn_GDExtensionScriptInstancePropertyCanRevert(
     const GDExtensionScriptInstancePropertyCanRevert fn,
@@ -343,6 +432,13 @@ void cgo_callfn_GDExtensionScriptInstanceNotification(
     GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what) {
   printStacktrace();
   fn(p_instance, p_what);
+}
+void cgo_callfn_GDExtensionScriptInstanceNotification2(
+    const GDExtensionScriptInstanceNotification2 fn,
+    GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what,
+    GDExtensionBool p_reversed) {
+  printStacktrace();
+  fn(p_instance, p_what, p_reversed);
 }
 void cgo_callfn_GDExtensionScriptInstanceToString(
     const GDExtensionScriptInstanceToString fn,
@@ -837,23 +933,23 @@ void cgo_callfn_GDExtensionInterfaceStringNewWithUtf8CharsAndLen(
 void cgo_callfn_GDExtensionInterfaceStringNewWithUtf16CharsAndLen(
     const GDExtensionInterfaceStringNewWithUtf16CharsAndLen fn,
     GDExtensionUninitializedStringPtr r_dest, const char16_t *p_contents,
-    GDExtensionInt p_size) {
+    GDExtensionInt p_char_count) {
   printStacktrace();
-  fn(r_dest, p_contents, p_size);
+  fn(r_dest, p_contents, p_char_count);
 }
 void cgo_callfn_GDExtensionInterfaceStringNewWithUtf32CharsAndLen(
     const GDExtensionInterfaceStringNewWithUtf32CharsAndLen fn,
     GDExtensionUninitializedStringPtr r_dest, const char32_t *p_contents,
-    GDExtensionInt p_size) {
+    GDExtensionInt p_char_count) {
   printStacktrace();
-  fn(r_dest, p_contents, p_size);
+  fn(r_dest, p_contents, p_char_count);
 }
 void cgo_callfn_GDExtensionInterfaceStringNewWithWideCharsAndLen(
     const GDExtensionInterfaceStringNewWithWideCharsAndLen fn,
     GDExtensionUninitializedStringPtr r_dest, const wchar_t *p_contents,
-    GDExtensionInt p_size) {
+    GDExtensionInt p_char_count) {
   printStacktrace();
-  fn(r_dest, p_contents, p_size);
+  fn(r_dest, p_contents, p_char_count);
 }
 GDExtensionInt cgo_callfn_GDExtensionInterfaceStringToLatin1Chars(
     const GDExtensionInterfaceStringToLatin1Chars fn,
@@ -931,6 +1027,32 @@ void cgo_callfn_GDExtensionInterfaceStringOperatorPlusEqC32str(
     GDExtensionStringPtr p_self, const char32_t *p_b) {
   printStacktrace();
   fn(p_self, p_b);
+}
+GDExtensionInt cgo_callfn_GDExtensionInterfaceStringResize(
+    const GDExtensionInterfaceStringResize fn, GDExtensionStringPtr p_self,
+    GDExtensionInt p_resize) {
+  printStacktrace();
+  return fn(p_self, p_resize);
+}
+void cgo_callfn_GDExtensionInterfaceStringNameNewWithLatin1Chars(
+    const GDExtensionInterfaceStringNameNewWithLatin1Chars fn,
+    GDExtensionUninitializedStringNamePtr r_dest, const char *p_contents,
+    GDExtensionBool p_is_static) {
+  printStacktrace();
+  fn(r_dest, p_contents, p_is_static);
+}
+void cgo_callfn_GDExtensionInterfaceStringNameNewWithUtf8Chars(
+    const GDExtensionInterfaceStringNameNewWithUtf8Chars fn,
+    GDExtensionUninitializedStringNamePtr r_dest, const char *p_contents) {
+  printStacktrace();
+  fn(r_dest, p_contents);
+}
+void cgo_callfn_GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen(
+    const GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen fn,
+    GDExtensionUninitializedStringNamePtr r_dest, const char *p_contents,
+    GDExtensionInt p_size) {
+  printStacktrace();
+  fn(r_dest, p_contents, p_size);
 }
 GDExtensionInt cgo_callfn_GDExtensionInterfaceXmlParserOpenBuffer(
     const GDExtensionInterfaceXmlParserOpenBuffer fn,
@@ -1214,6 +1336,49 @@ cgo_callfn_GDExtensionInterfaceScriptInstanceCreate(
   printStacktrace();
   return fn(p_info, p_instance_data);
 }
+GDExtensionScriptInstancePtr
+cgo_callfn_GDExtensionInterfaceScriptInstanceCreate2(
+    const GDExtensionInterfaceScriptInstanceCreate2 fn,
+    const GDExtensionScriptInstanceInfo2 *p_info,
+    GDExtensionScriptInstanceDataPtr p_instance_data) {
+  printStacktrace();
+  return fn(p_info, p_instance_data);
+}
+GDExtensionScriptInstancePtr
+cgo_callfn_GDExtensionInterfacePlaceHolderScriptInstanceCreate(
+    const GDExtensionInterfacePlaceHolderScriptInstanceCreate fn,
+    GDExtensionObjectPtr p_language, GDExtensionObjectPtr p_script,
+    GDExtensionObjectPtr p_owner) {
+  printStacktrace();
+  return fn(p_language, p_script, p_owner);
+}
+void cgo_callfn_GDExtensionInterfacePlaceHolderScriptInstanceUpdate(
+    const GDExtensionInterfacePlaceHolderScriptInstanceUpdate fn,
+    GDExtensionScriptInstancePtr p_placeholder,
+    GDExtensionConstTypePtr p_properties, GDExtensionConstTypePtr p_values) {
+  printStacktrace();
+  fn(p_placeholder, p_properties, p_values);
+}
+GDExtensionScriptInstanceDataPtr
+cgo_callfn_GDExtensionInterfaceObjectGetScriptInstance(
+    const GDExtensionInterfaceObjectGetScriptInstance fn,
+    GDExtensionConstObjectPtr p_object, GDExtensionObjectPtr p_language) {
+  printStacktrace();
+  return fn(p_object, p_language);
+}
+void cgo_callfn_GDExtensionInterfaceCallableCustomCreate(
+    const GDExtensionInterfaceCallableCustomCreate fn,
+    GDExtensionUninitializedTypePtr r_callable,
+    GDExtensionCallableCustomInfo *p_callable_custom_info) {
+  printStacktrace();
+  fn(r_callable, p_callable_custom_info);
+}
+void *cgo_callfn_GDExtensionInterfaceCallableCustomGetUserData(
+    const GDExtensionInterfaceCallableCustomGetUserData fn,
+    GDExtensionConstTypePtr p_callable, void *p_token) {
+  printStacktrace();
+  return fn(p_callable, p_token);
+}
 GDExtensionObjectPtr cgo_callfn_GDExtensionInterfaceClassdbConstructObject(
     const GDExtensionInterfaceClassdbConstructObject fn,
     GDExtensionConstStringNamePtr p_classname) {
@@ -1239,6 +1404,15 @@ void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass(
     GDExtensionConstStringNamePtr p_class_name,
     GDExtensionConstStringNamePtr p_parent_class_name,
     const GDExtensionClassCreationInfo *p_extension_funcs) {
+  printStacktrace();
+  fn(p_library, p_class_name, p_parent_class_name, p_extension_funcs);
+}
+void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass2(
+    const GDExtensionInterfaceClassdbRegisterExtensionClass2 fn,
+    GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstStringNamePtr p_parent_class_name,
+    const GDExtensionClassCreationInfo2 *p_extension_funcs) {
   printStacktrace();
   fn(p_library, p_class_name, p_parent_class_name, p_extension_funcs);
 }
@@ -1270,6 +1444,16 @@ void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClassProperty(
     GDExtensionConstStringNamePtr p_getter) {
   printStacktrace();
   fn(p_library, p_class_name, p_info, p_setter, p_getter);
+}
+void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed(
+    const GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed fn,
+    GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    const GDExtensionPropertyInfo *p_info,
+    GDExtensionConstStringNamePtr p_setter,
+    GDExtensionConstStringNamePtr p_getter, GDExtensionInt p_index) {
+  printStacktrace();
+  fn(p_library, p_class_name, p_info, p_setter, p_getter, p_index);
 }
 void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup(
     const GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup fn,
@@ -1325,7 +1509,7 @@ void cgo_callfn_GDExtensionInterfaceEditorRemovePlugin(
   printStacktrace();
   fn(p_class_name);
 }
-/* struct (7) GDExtensionInitialization */
+/* struct (10) GDExtensionInitialization */
 void cgo_callfn_GDExtensionInitialization_initialize(
     const GDExtensionInitialization *p_struct, void *userdata,
     GDExtensionInitializationLevel p_level) {

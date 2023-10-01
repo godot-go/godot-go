@@ -68,3 +68,10 @@ func (m *SyncMap[K, V]) Values() []V {
 	m.Unlock()
 	return vs
 }
+
+// Clear removes all keys from the map
+func (m *SyncMap[K, V]) Clear() {
+	m.Lock()
+	clear(m.internal)
+	m.Unlock()
+}

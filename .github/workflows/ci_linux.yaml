@@ -19,6 +19,15 @@ on:
       - "**/*.gdextension"
       - ".github/workflows/ci_linux.yaml"
 
+# Global Settings
+env:
+  # Used for the cache key. Add version suffix to force clean build.
+  GODOT_BASE_BRANCH: master
+  SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  TSAN_OPTIONS: suppressions=misc/error_suppressions/tsan.txt
+
 jobs:
   run_test:
     name: "run tests"
@@ -31,45 +40,92 @@ jobs:
           - amd64
 
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 80
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - name: Checkout Godot
+        uses: actions/checkout@v4
         with:
-          submodules: true
-      - name: Add Go 1.19.x To System Path
+          ref: '0ca8542329888e8dccba89d59d3b728090c29991'
+          repository: 'godotengine/godot'
+          path: 'godot'
+
+      - name: Add Go 1.21.x To System Path
         run: |
-          echo "${GOROOT_1_19_X64}/bin" >> $GITHUB_PATH
+          echo "${GOROOT_1_21_X64}/bin" >> $GITHUB_PATH
           echo "GITHUB_PATH=${GITHUB_PATH}"
-      - name: Install Godot 4.1 stable
+      # - name: Install Godot 4.2 dev5
+      #   run: |
+      #     wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_linux.x86_64.zip
+      #     sudo unzip Godot_v4.2-dev5_linux.x86_64.zip -d /usr/local/bin
+      #     sudo ln -s Godot_v4.2-dev5_linux.x86_64 /usr/local/bin/godot
+
+      - name: Setup Godot build cache
+        uses: ./.github/actions/godot-cache
+        with:
+          cache-name: linux-editor
+        continue-on-error: true
+
+      - name: Setup python and scons
+        uses: ./.github/actions/godot-deps
+
+      - name: Setup GCC problem matcher
+        uses: ammaraskar/gcc-problem-matcher@master
+
+      - name: Godot Compilation
+        uses: ./.github/actions/godot-build
+        with:
+          sconsflags: ${{ env.SCONSFLAGS }}
+          platform: linuxbsd
+          target: editor
+          tests: false
+          scons-cache: "${{ github.workspace }}/godot/.scons-cache/"
+          path: "${{ github.workspace }}/godot"
+      # - name: Build and Install Godot
+      #   run: |
+      #     cd godot
+      #     scons optimize=debug use_llvm=yes dev_build=yes dev_mode=yes debug_symbols=yes verbose=yes
+      #     sudo ln -s $(pwd)/bin/godot.linuxbsd.editor.dev.x86_64.llvm /usr/local/bin/godot
+      #     cd ..
+
+      - name: Update Godot Headers
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.1/Godot_v4.1-stable_linux.x86_64.zip
-          sudo unzip Godot_v4.1-stable_linux.x86_64.zip -d /usr/local/bin
-          sudo ln -s Godot_v4.1-stable_linux.x86_64 /usr/local/bin/godot
+          make update_godot_headers_from_binary
+        env:
+          GOOS: ${{ matrix.os }}
+          GOARCH: ${{ matrix.arch }}
+          GODOT: ${{ github.workspace }}/godot/bin/godot.linuxbsd.editor.x86_64
+
       - name: Build
         run: make build
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
+
       - name: List Artifacts Directory
         run: |
           ls -alh test/demo/lib
+
       - name: Gen Test Project Files
         if: ${{ matrix.os == 'linux' }}
         timeout-minutes: 3
-        run: make ci_gen_test_project_files
+        run: |
+          make ci_gen_test_project_files
         continue-on-error: true
         env:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "/usr/local/bin/godot"
+          GODOT: ${{ github.workspace }}/godot/bin/godot.linuxbsd.editor.x86_64
+
       - name: Test
         if: ${{ matrix.os == 'linux' }}
         timeout-minutes: 2
-        run: make test
+        run: |
+          make test
         env:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "/usr/local/bin/godot"
+          GODOT: ${{ github.workspace }}/godot/bin/godot.linuxbsd.editor.x86_64

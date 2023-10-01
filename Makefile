@@ -35,18 +35,18 @@ generate: clean
 	go fmt pkg/gdextension/*.gen.go
 
 update_godot_headers_from_binary: ## update godot_headers from the godot binary
-	DISPLAY=:0 $(GODOT) --dump-extension-api; \
+	DISPLAY=:0 $(GODOT) --dump-extension-api --headless; \
 	mv extension_api.json godot_headers/extension_api.json; \
-	DISPLAY=:0 $(GODOT) --dump-gdextension-interface; \
+	DISPLAY=:0 $(GODOT) --dump-gdextension-interface --headless; \
 	mv gdextension_interface.h godot_headers/godot/
 
 build: goenv
 	CGO_ENABLED=1 \
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \
-	CGO_CFLAGS='-Og -ggdb -DX86=1 -fPIC' \
-	CGO_LDFLAGS='-Og -ggdb' \
-	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
+	CGO_CFLAGS='-g3 -g -gdwarf -DX86=1 -fPIC -O0' \
+	CGO_LDFLAGS='-g3 -g' \
+	go build -gcflags=all="-v -N -l -L -clobberdead -clobberdeadreg -dwarf -dwarflocationlists=false" -tags tools -buildmode=c-shared -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
 clean_src:
 	rm -f pkg/gdextensionffi/*.gen.c
@@ -78,7 +78,7 @@ test:
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
-	$(GODOT) --headless --verbose --path test/demo/
+	$(GODOT) --debug --headless --path test/demo/ --quit
 
 interactive_test:
 	LOG_LEVEL=info \
@@ -87,6 +87,7 @@ interactive_test:
 	$(GODOT) --verbose --debug --path test/demo/
 
 open_demo_in_editor:
+	DISPLAY=:0 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \

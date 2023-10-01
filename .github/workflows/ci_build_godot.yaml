@@ -28,7 +28,6 @@ jobs:
         with:
           ref: '44e399ed5fa895f760b2995e59788bdb49782666'
           repository: 'godotengine/godot'
-          path: 'godot'
 
       - name: Setup python and scons
         uses: ./.github/actions/godot-deps
@@ -43,8 +42,8 @@ jobs:
           platform: linuxbsd
           target: editor
           tests: false
-          scons-cache: "${{ github.workspace }}/godot/.scons-cache/"
-          path: "${{ github.workspace }}/godot"
+          scons-cache: "${{ github.workspace }}/.scons-cache/"
+          path: "${{ github.workspace }}"
 
       - uses: actions/upload-artifact@v3
         with:

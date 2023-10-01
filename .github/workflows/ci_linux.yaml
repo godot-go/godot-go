@@ -44,13 +44,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Checkout Godot
-        uses: actions/checkout@v4
-        with:
-          ref: '0ca8542329888e8dccba89d59d3b728090c29991'
-          repository: 'godotengine/godot'
-          path: 'godot'
-
       - name: Add Go 1.21.x To System Path
         run: |
           echo "${GOROOT_1_21_X64}/bin" >> $GITHUB_PATH

@@ -42,11 +42,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 80
     steps:
-      - name: Checkout
+      - uses: actions/checkout@v4
+
+      - name: Checkout Godot
         uses: actions/checkout@v4
         with:
-          path: 'godot-go'
-          submodules: true
+          ref: '0ca8542329888e8dccba89d59d3b728090c29991'
+          repository: 'godotengine/godot'
+          path: 'godot'
+
       - name: Add Go 1.21.x To System Path
         run: |
           echo "${GOROOT_1_21_X64}/bin" >> $GITHUB_PATH
@@ -56,21 +60,19 @@ jobs:
       #     wget https://downloads.tuxfamily.org/godotengine/4.2/dev5/Godot_v4.2-dev5_linux.x86_64.zip
       #     sudo unzip Godot_v4.2-dev5_linux.x86_64.zip -d /usr/local/bin
       #     sudo ln -s Godot_v4.2-dev5_linux.x86_64 /usr/local/bin/godot
+
       - name: Setup Godot build cache
         uses: ./.github/actions/godot-cache
         with:
           cache-name: linux-editor
         continue-on-error: true
+
       - name: Setup python and scons
         uses: ./.github/actions/godot-deps
-      - name: Checkout Godot
-        uses: actions/checkout@v4
-        with:
-          ref: '0ca8542329888e8dccba89d59d3b728090c29991'
-          repository: 'godotengine/godot'
-          path: 'godot'
+
       - name: Setup GCC problem matcher
         uses: ammaraskar/gcc-problem-matcher@master
+
       - name: Godot Compilation
         uses: ./.github/actions/godot-build
         with:
@@ -86,43 +88,42 @@ jobs:
       #     scons optimize=debug use_llvm=yes dev_build=yes dev_mode=yes debug_symbols=yes verbose=yes
       #     sudo ln -s $(pwd)/bin/godot.linuxbsd.editor.dev.x86_64.llvm /usr/local/bin/godot
       #     cd ..
+
       - name: Update Godot Headers
         run: |
-          cd godot-go
           make update_godot_headers_from_binary
-          cd ..
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
           GODOT: ${{ github.workspace }}/godot/bin/godot.linuxbsd.editor.x86_64
+
       - name: Build
         run: make build
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
+
       - name: List Artifacts Directory
         run: |
           ls -alh test/demo/lib
+
       - name: Gen Test Project Files
         if: ${{ matrix.os == 'linux' }}
         timeout-minutes: 3
         run: |
-          cd godot-go
           make ci_gen_test_project_files
-          cd ..
         continue-on-error: true
         env:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
           GODOT: ${{ github.workspace }}/godot/bin/godot.linuxbsd.editor.x86_64
+
       - name: Test
         if: ${{ matrix.os == 'linux' }}
         timeout-minutes: 2
         run: |
-          cd godot-go
           make test
-          cd ..
         env:
           CI: 1
           LOG_LEVEL: "debug"

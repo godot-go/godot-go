@@ -1,5 +1,8 @@
 name: godot-go CI on Windows
 
+on:
+  workflow_call:
+
 # on:
 #   pull_request:
 #     paths:

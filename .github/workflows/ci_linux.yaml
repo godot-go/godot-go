@@ -45,6 +45,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          path: 'godot-go'
           submodules: true
       - name: Add Go 1.21.x To System Path
         run: |
@@ -70,13 +71,15 @@ jobs:
           path: 'godot'
       - name: Setup GCC problem matcher
         uses: ammaraskar/gcc-problem-matcher@master
-      - name: Compilation
+      - name: Godot Compilation
         uses: ./.github/actions/godot-build
         with:
           sconsflags: ${{ env.SCONSFLAGS }}
           platform: linuxbsd
           target: editor
           tests: false
+          scons-cache: "${{ github.workspace }}/godot/.scons-cache/"
+          path: "${{ github.workspace }}/godot"
       # - name: Build and Install Godot
       #   run: |
       #     cd godot
@@ -88,6 +91,7 @@ jobs:
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
+          GODOT: ${{ github.workspace }}/godot/bin/godot.linuxbsd.editor.x86_64
       - name: Build
         run: make build
         env:
@@ -105,7 +109,7 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "/usr/local/bin/godot"
+          GODOT: ${{ github.workspace }}/godot/bin/godot.linuxbsd.editor.x86_64
       - name: Test
         if: ${{ matrix.os == 'linux' }}
         timeout-minutes: 2
@@ -114,4 +118,4 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "/usr/local/bin/godot"
+          GODOT: ${{ github.workspace }}/godot/bin/godot.linuxbsd.editor.x86_64

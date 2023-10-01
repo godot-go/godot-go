@@ -14,25 +14,28 @@ inputs:
     default: ""
   scons-cache:
     description: The scons cache path.
-    default: "${{ github.workspace }}/godot/.scons-cache/"
+    default: "${{ github.workspace }}/.scons-cache/"
   scons-cache-limit:
     description: The scons cache size limit.
     # actions/cache has 10 GiB limit, and GitHub runners have a 14 GiB disk.
     # Limit to 7 GiB to avoid having the extracted cache fill the disk.
     default: 7168
+  path:
+    description: The path of the godot source code
+    default: '.'
 runs:
   using: "composite"
   steps:
     - name: Scons Build
-      shell: sh
+      shell: bash
       env:
           SCONSFLAGS: ${{ inputs.sconsflags }}
           SCONS_CACHE: ${{ inputs.scons-cache }}
           SCONS_CACHE_LIMIT: ${{ inputs.scons-cache-limit }}
       run: |
-        cd godot
+        pushd ${{ inputs.path }}
         echo "Building with flags:" platform=${{ inputs.platform }} target=${{ inputs.target }} tests=${{ inputs.tests }} ${{ env.SCONSFLAGS }}
         if [ "${{ inputs.target }}" != "editor" ]; then rm -rf editor; fi  # Ensure we don't include editor code.
         scons platform=${{ inputs.platform }} target=${{ inputs.target }} tests=${{ inputs.tests }} ${{ env.SCONSFLAGS }}
         ls -l bin/
-        cd ..
+        popd

@@ -2842,7 +2842,7 @@ func (cx *String) Not() bool {
 func (cx *String) Module_bool(right bool) String {
 	lt := cx.nativeConstPtr()
 	eRight := BoolEncoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_bool, lt, rt)
 }
 
@@ -2850,7 +2850,7 @@ func (cx *String) Module_bool(right bool) String {
 func (cx *String) Module_int(right int32) String {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_int, lt, rt)
 }
 
@@ -2858,7 +2858,7 @@ func (cx *String) Module_int(right int32) String {
 func (cx *String) Module_float(right float32) String {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_float, lt, rt)
 }
 
@@ -2943,7 +2943,7 @@ func (cx *String) Module_Vector2i(right Vector2i) String {
 func (cx *String) Module_Rect2(right Rect2) String {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Rect2, lt, rt)
 }
 
@@ -2951,7 +2951,7 @@ func (cx *String) Module_Rect2(right Rect2) String {
 func (cx *String) Module_Rect2i(right Rect2i) String {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2iEncoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Rect2i, lt, rt)
 }
 
@@ -4444,7 +4444,7 @@ func (cx *Vector2) Not() bool {
 func (cx *Vector2) Multiply_int(right int32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_multiply_int, lt, rt)
 }
 
@@ -4452,7 +4452,7 @@ func (cx *Vector2) Multiply_int(right int32) Vector2 {
 func (cx *Vector2) Divide_int(right int32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_divide_int, lt, rt)
 }
 
@@ -4460,7 +4460,7 @@ func (cx *Vector2) Divide_int(right int32) Vector2 {
 func (cx *Vector2) Multiply_float(right float32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_multiply_float, lt, rt)
 }
 
@@ -4468,7 +4468,7 @@ func (cx *Vector2) Multiply_float(right float32) Vector2 {
 func (cx *Vector2) Divide_float(right float32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_divide_float, lt, rt)
 }
 
@@ -4934,7 +4934,7 @@ func (cx *Vector2i) Not() bool {
 func (cx *Vector2i) Multiply_int(right int32) Vector2i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_multiply_int, lt, rt)
 }
 
@@ -4942,7 +4942,7 @@ func (cx *Vector2i) Multiply_int(right int32) Vector2i {
 func (cx *Vector2i) Divide_int(right int32) Vector2i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_divide_int, lt, rt)
 }
 
@@ -4950,7 +4950,7 @@ func (cx *Vector2i) Divide_int(right int32) Vector2i {
 func (cx *Vector2i) Module_int(right int32) Vector2i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_module_int, lt, rt)
 }
 
@@ -4958,7 +4958,7 @@ func (cx *Vector2i) Module_int(right int32) Vector2i {
 func (cx *Vector2i) Multiply_float(right float32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector2](globalVector2iMethodBindings.operator_multiply_float, lt, rt)
 }
 
@@ -4966,7 +4966,7 @@ func (cx *Vector2i) Multiply_float(right float32) Vector2 {
 func (cx *Vector2i) Divide_float(right float32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector2](globalVector2iMethodBindings.operator_divide_float, lt, rt)
 }
 
@@ -5599,7 +5599,7 @@ func (cx *Rect2) Not() bool {
 func (cx *Rect2) Equal_Rect2(right Rect2) bool {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_equal_Rect2, lt, rt)
 }
 
@@ -5607,7 +5607,7 @@ func (cx *Rect2) Equal_Rect2(right Rect2) bool {
 func (cx *Rect2) Not_equal_Rect2(right Rect2) bool {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_not_equal_Rect2, lt, rt)
 }
 
@@ -6120,7 +6120,7 @@ func (cx *Rect2i) Not() bool {
 func (cx *Rect2i) Equal_Rect2i(right Rect2i) bool {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2iEncoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_equal_Rect2i, lt, rt)
 }
 
@@ -6128,7 +6128,7 @@ func (cx *Rect2i) Equal_Rect2i(right Rect2i) bool {
 func (cx *Rect2i) Not_equal_Rect2i(right Rect2i) bool {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2iEncoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_not_equal_Rect2i, lt, rt)
 }
 
@@ -7402,7 +7402,7 @@ func (cx *Vector3) Not() bool {
 func (cx *Vector3) Multiply_int(right int32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_int, lt, rt)
 }
 
@@ -7410,7 +7410,7 @@ func (cx *Vector3) Multiply_int(right int32) Vector3 {
 func (cx *Vector3) Divide_int(right int32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_divide_int, lt, rt)
 }
 
@@ -7418,7 +7418,7 @@ func (cx *Vector3) Divide_int(right int32) Vector3 {
 func (cx *Vector3) Multiply_float(right float32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_float, lt, rt)
 }
 
@@ -7426,7 +7426,7 @@ func (cx *Vector3) Multiply_float(right float32) Vector3 {
 func (cx *Vector3) Divide_float(right float32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_divide_float, lt, rt)
 }
 
@@ -7894,7 +7894,7 @@ func (cx *Vector3i) Not() bool {
 func (cx *Vector3i) Multiply_int(right int32) Vector3i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_multiply_int, lt, rt)
 }
 
@@ -7902,7 +7902,7 @@ func (cx *Vector3i) Multiply_int(right int32) Vector3i {
 func (cx *Vector3i) Divide_int(right int32) Vector3i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_divide_int, lt, rt)
 }
 
@@ -7910,7 +7910,7 @@ func (cx *Vector3i) Divide_int(right int32) Vector3i {
 func (cx *Vector3i) Module_int(right int32) Vector3i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_module_int, lt, rt)
 }
 
@@ -7918,7 +7918,7 @@ func (cx *Vector3i) Module_int(right int32) Vector3i {
 func (cx *Vector3i) Multiply_float(right float32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector3](globalVector3iMethodBindings.operator_multiply_float, lt, rt)
 }
 
@@ -7926,7 +7926,7 @@ func (cx *Vector3i) Multiply_float(right float32) Vector3 {
 func (cx *Vector3i) Divide_float(right float32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector3](globalVector3iMethodBindings.operator_divide_float, lt, rt)
 }
 
@@ -8710,7 +8710,7 @@ func (cx *Transform2D) Not() bool {
 func (cx *Transform2D) Multiply_int(right int32) Transform2D {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Transform2D](globalTransform2DMethodBindings.operator_multiply_int, lt, rt)
 }
 
@@ -8718,7 +8718,7 @@ func (cx *Transform2D) Multiply_int(right int32) Transform2D {
 func (cx *Transform2D) Multiply_float(right float32) Transform2D {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Transform2D](globalTransform2DMethodBindings.operator_multiply_float, lt, rt)
 }
 
@@ -8733,7 +8733,7 @@ func (cx *Transform2D) Multiply_Vector2(right Vector2) Vector2 {
 func (cx *Transform2D) Multiply_Rect2(right Rect2) Rect2 {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Rect2](globalTransform2DMethodBindings.operator_multiply_Rect2, lt, rt)
 }
 
@@ -9598,7 +9598,7 @@ func (cx *Vector4) Not() bool {
 func (cx *Vector4) Multiply_int(right int32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_multiply_int, lt, rt)
 }
 
@@ -9606,7 +9606,7 @@ func (cx *Vector4) Multiply_int(right int32) Vector4 {
 func (cx *Vector4) Divide_int(right int32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_divide_int, lt, rt)
 }
 
@@ -9614,7 +9614,7 @@ func (cx *Vector4) Divide_int(right int32) Vector4 {
 func (cx *Vector4) Multiply_float(right float32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_multiply_float, lt, rt)
 }
 
@@ -9622,7 +9622,7 @@ func (cx *Vector4) Multiply_float(right float32) Vector4 {
 func (cx *Vector4) Divide_float(right float32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_divide_float, lt, rt)
 }
 
@@ -10078,7 +10078,7 @@ func (cx *Vector4i) Not() bool {
 func (cx *Vector4i) Multiply_int(right int32) Vector4i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_multiply_int, lt, rt)
 }
 
@@ -10086,7 +10086,7 @@ func (cx *Vector4i) Multiply_int(right int32) Vector4i {
 func (cx *Vector4i) Divide_int(right int32) Vector4i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_divide_int, lt, rt)
 }
 
@@ -10094,7 +10094,7 @@ func (cx *Vector4i) Divide_int(right int32) Vector4i {
 func (cx *Vector4i) Module_int(right int32) Vector4i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_module_int, lt, rt)
 }
 
@@ -10102,7 +10102,7 @@ func (cx *Vector4i) Module_int(right int32) Vector4i {
 func (cx *Vector4i) Multiply_float(right float32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector4](globalVector4iMethodBindings.operator_multiply_float, lt, rt)
 }
 
@@ -10110,7 +10110,7 @@ func (cx *Vector4i) Multiply_float(right float32) Vector4 {
 func (cx *Vector4i) Divide_float(right float32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Vector4](globalVector4iMethodBindings.operator_divide_float, lt, rt)
 }
 
@@ -11419,7 +11419,7 @@ func (cx *Quaternion) Not() bool {
 func (cx *Quaternion) Multiply_int(right int32) Quaternion {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_multiply_int, lt, rt)
 }
 
@@ -11427,7 +11427,7 @@ func (cx *Quaternion) Multiply_int(right int32) Quaternion {
 func (cx *Quaternion) Divide_int(right int32) Quaternion {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_divide_int, lt, rt)
 }
 
@@ -11435,7 +11435,7 @@ func (cx *Quaternion) Divide_int(right int32) Quaternion {
 func (cx *Quaternion) Multiply_float(right float32) Quaternion {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_multiply_float, lt, rt)
 }
 
@@ -11443,7 +11443,7 @@ func (cx *Quaternion) Multiply_float(right float32) Quaternion {
 func (cx *Quaternion) Divide_float(right float32) Quaternion {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_divide_float, lt, rt)
 }
 
@@ -12913,7 +12913,7 @@ func (cx *Basis) Not() bool {
 func (cx *Basis) Multiply_int(right int32) Basis {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Basis](globalBasisMethodBindings.operator_multiply_int, lt, rt)
 }
 
@@ -12921,7 +12921,7 @@ func (cx *Basis) Multiply_int(right int32) Basis {
 func (cx *Basis) Multiply_float(right float32) Basis {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Basis](globalBasisMethodBindings.operator_multiply_float, lt, rt)
 }
 
@@ -13454,7 +13454,7 @@ func (cx *Transform3D) Not() bool {
 func (cx *Transform3D) Multiply_int(right int32) Transform3D {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Transform3D](globalTransform3DMethodBindings.operator_multiply_int, lt, rt)
 }
 
@@ -13462,7 +13462,7 @@ func (cx *Transform3D) Multiply_int(right int32) Transform3D {
 func (cx *Transform3D) Multiply_float(right float32) Transform3D {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Transform3D](globalTransform3DMethodBindings.operator_multiply_float, lt, rt)
 }
 
@@ -15352,7 +15352,7 @@ func (cx *Color) Not() bool {
 func (cx *Color) Multiply_int(right int32) Color {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_multiply_int, lt, rt)
 }
 
@@ -15360,7 +15360,7 @@ func (cx *Color) Multiply_int(right int32) Color {
 func (cx *Color) Divide_int(right int32) Color {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_divide_int, lt, rt)
 }
 
@@ -15368,7 +15368,7 @@ func (cx *Color) Divide_int(right int32) Color {
 func (cx *Color) Multiply_float(right float32) Color {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_multiply_float, lt, rt)
 }
 
@@ -15376,7 +15376,7 @@ func (cx *Color) Multiply_float(right float32) Color {
 func (cx *Color) Divide_float(right float32) Color {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_divide_float, lt, rt)
 }
 
@@ -17949,7 +17949,7 @@ func (cx *StringName) Not() bool {
 func (cx *StringName) Module_bool(right bool) String {
 	lt := cx.nativeConstPtr()
 	eRight := BoolEncoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_bool, lt, rt)
 }
 
@@ -17957,7 +17957,7 @@ func (cx *StringName) Module_bool(right bool) String {
 func (cx *StringName) Module_int(right int32) String {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_int, lt, rt)
 }
 
@@ -17965,7 +17965,7 @@ func (cx *StringName) Module_int(right int32) String {
 func (cx *StringName) Module_float(right float32) String {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_float, lt, rt)
 }
 
@@ -18022,7 +18022,7 @@ func (cx *StringName) Module_Vector2i(right Vector2i) String {
 func (cx *StringName) Module_Rect2(right Rect2) String {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2Encoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Rect2, lt, rt)
 }
 
@@ -18030,7 +18030,7 @@ func (cx *StringName) Module_Rect2(right Rect2) String {
 func (cx *StringName) Module_Rect2i(right Rect2i) String {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2iEncoder.encodeTypePtr(right)
-	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
 	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Rect2i, lt, rt)
 }
 

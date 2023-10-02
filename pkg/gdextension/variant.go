@@ -9,6 +9,7 @@ import (
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
+	"go.uber.org/zap"
 )
 
 var (
@@ -1281,4 +1282,30 @@ func VariantPtrSliceToString(values []*Variant) string {
 	}
 	sb.WriteString(")")
 	return sb.String()
+}
+
+func ZapVariant(key string, v Variant) zap.Field {
+	value := v.Stringify()
+	return zap.String(key, value)
+}
+
+func ZapVector2(key string, v Vector2) zap.Field {
+	variant := NewVariantVector2(v)
+	defer variant.Destroy()
+	value := variant.Stringify()
+	return zap.String(key, value)
+}
+
+func ZapVector3(key string, v Vector3) zap.Field {
+	variant := NewVariantVector3(v)
+	defer variant.Destroy()
+	value := variant.Stringify()
+	return zap.String(key, value)
+}
+
+func ZapVector4(key string, v Vector4) zap.Field {
+	variant := NewVariantVector4(v)
+	defer variant.Destroy()
+	value := variant.Stringify()
+	return zap.String(key, value)
 }

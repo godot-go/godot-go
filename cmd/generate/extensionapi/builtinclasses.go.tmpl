@@ -304,7 +304,7 @@ func (cx *{{ $c.Name }}) {{ upperFirstChar (getOperatorIdName $op.Name) }}{{ wit
     {{ end -}}
     {{ else -}}
     eRight := {{ goEncoder $argType }}.encodeTypePtr(right)
-    rt := (GDExtensionConstTypePtr)(unsafe.Pointer(&eRight))
+    rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
     {{ end -}}
 
     return callBuiltinOperatorPtr[{{ goReturnType $op.ReturnType }}](global{{ $c.Name }}MethodBindings.operator_{{ getOperatorIdName $op.Name }}_{{ $op.RightType }}, lt, rt)

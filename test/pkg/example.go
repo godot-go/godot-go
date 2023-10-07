@@ -30,7 +30,6 @@ type Example struct {
 	customPosition   Vector2
 	propertyFromList Vector3
 	dprop [3]Vector2
-	propertyList []GDExtensionPropertyInfo
 }
 
 func (c *Example) GetClassName() string {
@@ -242,17 +241,6 @@ func (e *Example) VarargsFuncNv(args ...Variant) int {
 	return 42 + len(args)
 }
 
-func (e *Example) V_GetPropertyList() []GDExtensionPropertyInfo {
-	if e.propertyList == nil {
-		e.propertyList = make([]GDExtensionPropertyInfo, 4)
-		e.propertyList[0] = NewSimpleGDExtensionPropertyInfo("Example", GDEXTENSION_VARIANT_TYPE_VECTOR3, "property_from_list")
-		for i := 0; i < 3; i++ {
-			e.propertyList[i+1] = NewSimpleGDExtensionPropertyInfo("Example", GDEXTENSION_VARIANT_TYPE_VECTOR2, fmt.Sprintf("dproperty_%d", i))
-		}
-	}
-	return e.propertyList
-}
-
 func (e *Example) V_PropertyCanRevert(p_name StringName) bool {
 	gdSn := NewStringNameWithLatin1Chars("property_from_list")
 	vec3 := NewVector3WithFloat32Float32Float32(42, 42, 42)
@@ -310,14 +298,6 @@ func (e *Example) V_Get(name string) (Variant, bool) {
 		return v, true
 	}
 	return Variant{}, false
-}
-
-func (e *Example) V_ValidateProperty(property *GDExtensionPropertyInfo) {
-	gdsnName := (*StringName)(property.Name())
-	// Test hiding the "mouse_filter" property from the editor.
-	if (gdsnName.ToUtf8() == "mouse_filter") {
-		property.SetUsage(PROPERTY_USAGE_NO_EDITOR)
-	}
 }
 
 func (e *Example) V_Ready() {
@@ -432,16 +412,31 @@ func (e *Example) TestParentIsNil() Control {
 	return parent
 }
 
+func ValidateExampleProperty(property *GDExtensionPropertyInfo) {
+	gdsnName := (*StringName)(property.Name())
+	// Test hiding the "mouse_filter" property from the editor.
+	if (gdsnName.ToUtf8() == "mouse_filter") {
+		property.SetUsage(PROPERTY_USAGE_NO_EDITOR)
+	}
+}
+
+func GetExamplePropertyList() []GDExtensionPropertyInfo {
+	props := make([]GDExtensionPropertyInfo, 4)
+	props[0] = NewSimpleGDExtensionPropertyInfo("Example", GDEXTENSION_VARIANT_TYPE_VECTOR3, "property_from_list")
+	for i := 0; i < 3; i++ {
+		props[i+1] = NewSimpleGDExtensionPropertyInfo("Example", GDEXTENSION_VARIANT_TYPE_VECTOR2, fmt.Sprintf("dproperty_%d", i))
+	}
+	return props
+}
+
 func RegisterClassExample() {
-	ClassDBRegisterClass[*Example](&Example{}, func(t GDClass) {
+	ClassDBRegisterClass[*Example](&Example{}, GetExamplePropertyList(), ValidateExampleProperty, func(t GDClass) {
 		// virtuals
 		ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
 		ClassDBBindMethodVirtual(t, "V_Input", "_input", []string{"event"}, nil)
 		ClassDBBindMethodVirtual(t, "V_Set", "_set", []string{"name", "value"}, nil)
 		ClassDBBindMethodVirtual(t, "V_Get", "_get", []string{"name"}, nil)
-		ClassDBBindMethodVirtual(t, "V_GetPropertyList", "_get_property_list", nil, nil)
 		ClassDBBindMethodVirtual(t, "V_PropertyCanRevert", "_property_can_revert", []string{"name"}, nil)
-		ClassDBBindMethodVirtual(t, "V_ValidateProperty", "_validate_property", []string{"property"}, nil)
 
 		ClassDBBindMethod(t, "SimpleFunc", "simple_func", nil, nil)
 		ClassDBBindMethod(t, "SimpleConstFunc", "simple_const_func", []string{"a"}, nil)

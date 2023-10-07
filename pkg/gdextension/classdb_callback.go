@@ -123,6 +123,7 @@ func GoCallback_ClassCreationInfoFreeInstance(data unsafe.Pointer, ptr C.GDExten
 func GoCallback_ClassCreationInfoGetPropertyList(pInstance C.GDExtensionClassInstancePtr, rCount *C.uint32_t) *C.GDExtensionPropertyInfo {
 	wci := (*WrappedClassInstance)(unsafe.Pointer(pInstance))
 	if wci == nil {
+		*rCount = (C.uint32_t)(0)
 		return (*C.GDExtensionPropertyInfo)(nil)
 	}
 
@@ -137,27 +138,12 @@ func GoCallback_ClassCreationInfoGetPropertyList(pInstance C.GDExtensionClassIns
 			zap.String("class", className),
 		)
 	}
-	mcmi, ok := ci.VirtualMethodMap["_get_property_list"]
-	if !ok {
-		log.Info("no _get_property_list method registered",
-			zap.String("class", className),
-		)
+	if ci.PropertyList == nil {
+		*rCount = (C.uint32_t)(0)
 		return (*C.GDExtensionPropertyInfo)(nil)
 	}
-	args := []reflect.Value{
-		reflect.ValueOf(wci.Instance),
-	}
-	reflectedRet := mcmi.MethodBind.PtrcallFunc.Call(args)
-	props, ok := reflectedRet[0].Interface().([]GDExtensionPropertyInfo)
-	if !ok {
-		log.Panic("invalid return value: expected []GDExtensionPropertyInfo",
-			zap.String("name", reflectedRet[0].Type().Name()),
-		)
-	}
-	log.Info("reflect method called",
-		zap.Int("props_count", len(props)),
-	)
-	return (*C.GDExtensionPropertyInfo)(unsafe.Pointer(unsafe.SliceData(props)))
+	*rCount = (C.uint32_t)(len(ci.PropertyList))
+	return (*C.GDExtensionPropertyInfo)(unsafe.Pointer(unsafe.SliceData(ci.PropertyList)))
 }
 
 //export GoCallback_ClassCreationInfoFreePropertyList
@@ -193,19 +179,12 @@ func GoCallback_ClassCreationInfoValidateProperty(pInstance C.GDExtensionClassIn
 			zap.String("class", className),
 		)
 	}
-	mcmi, ok := ci.VirtualMethodMap["_validate_property"]
-	if !ok {
-		log.Info("no _validate_property method registered",
-			zap.String("class", className),
-		)
+	prop := (*GDExtensionPropertyInfo)(unsafe.Pointer(pProperty))
+	if ci.ValidateProperty == nil {
 		return 0
 	}
-	args := []reflect.Value{
-		reflect.ValueOf(wci.Instance),
-		reflect.ValueOf((*GDExtensionPropertyInfo)(unsafe.Pointer(pProperty))),
-	}
-	mcmi.MethodBind.PtrcallFunc.Call(args)
 
+	ci.ValidateProperty(prop)
 	return 1
 }
 

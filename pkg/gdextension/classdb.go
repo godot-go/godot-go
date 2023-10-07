@@ -366,7 +366,12 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 	)
 }
 
-func ClassDBRegisterClass[T Object](in T, bindMethodsFunc func(t GDClass)) {
+func ClassDBRegisterClass[T Object](
+	in T,
+	propertyList []GDExtensionPropertyInfo,
+	validateProperty func(*GDExtensionPropertyInfo),
+	bindMethodsFunc func(t GDClass),
+) {
 	inst := (GDClass)(in)
 
 	// Register this class within our plugin
@@ -417,7 +422,7 @@ func ClassDBRegisterClass[T Object](in T, bindMethodsFunc func(t GDClass)) {
 	if fmt.Sprintf("%sImpl", parentName) != inheritType.Name() {
 		log.Panic("GetParentClassName must match struct name", zap.String("parent_name", parentName), zap.String("struct_inherit_type", inheritType.Name()))
 	}
-	cl := NewClassInfo(className, parentName, level, classType, inheritType, parentPtr)
+	cl := NewClassInfo(className, parentName, level, classType, inheritType, parentPtr, propertyList, validateProperty)
 	if cl == nil {
 		log.Panic("ClassInfo cannot be nil")
 	}

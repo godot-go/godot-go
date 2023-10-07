@@ -104,10 +104,6 @@ func ReflectTypeToGDExtensionVariantType(t reflect.Type) GDExtensionVariantType 
 		zero := reflect.Zero(t)
 		inst := zero.Interface()
 		switch inst.(type) {
-		case *GDExtensionPropertyInfo:
-			log.Debug("detected *GDExtensionPropertyInfo (type assertion) as GDEXTENSION_VARIANT_TYPE_VARIANT_MAX")
-			return GDEXTENSION_VARIANT_TYPE_VARIANT_MAX
-		}
 		if _, ok := inst.(Ref); ok {
 			log.Debug("detected Ref (type assertion) as GDEXTENSION_VARIANT_TYPE_OBJECT")
 			return GDEXTENSION_VARIANT_TYPE_OBJECT

@@ -108,6 +108,7 @@ func NewMethodMetadata(
 	if len(argumentNames) > argumentCount {
 		log.Panic(`Method definition has more arguments than the actual method.`,
 			zap.String("method", methodName),
+			zap.Int("argument_count", argumentCount),
 		)
 	}
 	defaultArgumentPtrs := make([]GDExtensionVariantPtr, len(defaultArguments))

@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	. "github.com/godot-go/godot-go/pkg/gdextension"
-	"github.com/godot-go/godot-go/pkg/gdextensionffi"
+	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )
@@ -30,6 +30,7 @@ type Example struct {
 	customPosition   Vector2
 	propertyFromList Vector3
 	dprop [3]Vector2
+	propertyList []GDExtensionPropertyInfo
 }
 
 func (c *Example) GetClassName() string {
@@ -120,10 +121,10 @@ func (e *Example) TestArray() Array {
 		zap.String("v[0]", gdV0.ToUtf8()),
 		zap.String("v[1]", gdV1.ToUtf8()),
 	)
-	if v0.GetType() != gdextensionffi.GDEXTENSION_VARIANT_TYPE_INT {
+	if v0.GetType() != GDEXTENSION_VARIANT_TYPE_INT {
 		log.Panic("array value at index 0 is not a INT variant type",
 			zap.Any("actual", v0.GetType()),
-			zap.Any("expected", gdextensionffi.GDEXTENSION_VARIANT_TYPE_INT),
+			zap.Any("expected", GDEXTENSION_VARIANT_TYPE_INT),
 		)
 	}
 	if v0.ToInt64() != 1 {
@@ -132,10 +133,10 @@ func (e *Example) TestArray() Array {
 			zap.Int64("expected", 1),
 		)
 	}
-	if v1.GetType() != gdextensionffi.GDEXTENSION_VARIANT_TYPE_INT {
+	if v1.GetType() != GDEXTENSION_VARIANT_TYPE_INT {
 		log.Panic("array value at index 1 is not a INT variant type",
 			zap.Any("actual", v1.GetType()),
-			zap.Any("expected", gdextensionffi.GDEXTENSION_VARIANT_TYPE_INT),
+			zap.Any("expected", GDEXTENSION_VARIANT_TYPE_INT),
 		)
 	}
 	if v1.ToInt64() != 2 {
@@ -241,14 +242,18 @@ func (e *Example) VarargsFuncNv(args ...Variant) int {
 	return 42 + len(args)
 }
 
-// func (e *Example) V_GetPropertyList(props []PropertyInfo) {
-// 	props = append(props, NewPropertyInfo(gdextentionffi.GDEXTENSION_VARIANT_TYPE_VECTOR3, "property_from_list"))
-// 	for i := 0; i < 3; i++ {
-// 		props = append(props, NewPropertyInfo(gdextentionffi.GDEXTENSION_VARIANT_TYPE_VECTOR2, fmt.Sprintf("dproperty_%d", i)))
-// 	}
-// }
+func (e *Example) V_GetPropertyList() []GDExtensionPropertyInfo {
+	if e.propertyList == nil {
+		e.propertyList = make([]GDExtensionPropertyInfo, 4)
+		e.propertyList[0] = NewSimpleGDExtensionPropertyInfo("Example", GDEXTENSION_VARIANT_TYPE_VECTOR3, "property_from_list")
+		for i := 0; i < 3; i++ {
+			e.propertyList[i+1] = NewSimpleGDExtensionPropertyInfo("Example", GDEXTENSION_VARIANT_TYPE_VECTOR2, fmt.Sprintf("dproperty_%d", i))
+		}
+	}
+	return e.propertyList
+}
 
-func (e *Example) V_PropertyCanRevert(p_name *StringName) bool {
+func (e *Example) V_PropertyCanRevert(p_name StringName) bool {
 	gdSn := NewStringNameWithLatin1Chars("property_from_list")
 	vec3 := NewVector3WithFloat32Float32Float32(42, 42, 42)
 	return p_name.Equal_StringName(gdSn) && !e.propertyFromList.Equal_Vector3(vec3)
@@ -305,6 +310,14 @@ func (e *Example) V_Get(name string) (Variant, bool) {
 		return v, true
 	}
 	return Variant{}, false
+}
+
+func (e *Example) V_ValidateProperty(property *GDExtensionPropertyInfo) {
+	gdsnName := (*StringName)(property.Name())
+	// Test hiding the "mouse_filter" property from the editor.
+	if (gdsnName.ToUtf8() == "mouse_filter") {
+		property.SetUsage(PROPERTY_USAGE_NO_EDITOR)
+	}
 }
 
 func (e *Example) V_Ready() {
@@ -417,4 +430,71 @@ func (e *Example) TestParentIsNil() Control {
 	log.Info("TestParentIsNil called")
 	parent := e.GetParentControl()
 	return parent
+}
+
+func RegisterClassExample() {
+	ClassDBRegisterClass[*Example](&Example{}, func(t GDClass) {
+		// virtuals
+		ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
+		ClassDBBindMethodVirtual(t, "V_Input", "_input", []string{"event"}, nil)
+		ClassDBBindMethodVirtual(t, "V_Set", "_set", []string{"name", "value"}, nil)
+		ClassDBBindMethodVirtual(t, "V_Get", "_get", []string{"name"}, nil)
+		ClassDBBindMethodVirtual(t, "V_GetPropertyList", "_get_property_list", nil, nil)
+		ClassDBBindMethodVirtual(t, "V_PropertyCanRevert", "_property_can_revert", []string{"name"}, nil)
+		ClassDBBindMethodVirtual(t, "V_ValidateProperty", "_validate_property", []string{"property"}, nil)
+
+		ClassDBBindMethod(t, "SimpleFunc", "simple_func", nil, nil)
+		ClassDBBindMethod(t, "SimpleConstFunc", "simple_const_func", []string{"a"}, nil)
+		ClassDBBindMethod(t, "ImageRefFunc", "image_ref_func", []string{"image"}, nil)
+		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
+		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
+
+		ClassDBBindMethod(t, "TestArray", "test_array", nil, nil)
+		ClassDBBindMethod(t, "TestDictionary", "test_dictionary", nil, nil)
+		ClassDBBindMethod(t, "TestNodeArgument", "test_node_argument", []string{"example"}, nil)
+		ClassDBBindMethod(t, "TestStringOps", "test_string_ops", nil, nil)
+
+		// varargs
+		ClassDBBindMethodVarargs(t, "VarargsFunc", "varargs_func", nil, nil)
+		ClassDBBindMethodVarargs(t, "VarargsFuncNv", "varargs_func_nv", nil, nil)
+		ClassDBBindMethodVarargs(t, "VarargsFuncVoid", "varargs_func_void", nil, nil)
+
+		ClassDBBindMethod(t, "DefArgs", "def_args", []string{"a", "b"}, []Variant{NewVariantInt64(100), NewVariantInt64(200)})
+		// ClassDBBindMethodStatic(t, "TestStatic", "test_static", []string{"a", "b"}, nil)
+		// ClassDBBindMethodStatic(t, "TestStatic2", "test_static2", nil, nil)
+
+		ClassDBBindMethod(t, "TestSetPositionAndSize", "test_set_position_and_size", nil, nil)
+		ClassDBBindMethod(t, "TestGetChildNode", "test_get_child_node", nil, nil)
+		ClassDBBindMethod(t, "TestCharacterBody2D", "test_character_body_2d", []string{"body"}, nil)
+		ClassDBBindMethod(t, "TestParentIsNil", "test_parent_is_nil", nil, nil)
+
+		// Properties
+		ClassDBAddPropertyGroup(t, "Test group", "group_")
+		ClassDBAddPropertySubgroup(t, "Test subgroup", "group_subgroup_")
+
+		ClassDBBindMethod(t, "GetV4", "get_v4", nil, nil)
+		ClassDBBindMethod(t, "GetCustomPosition", "get_custom_position", nil, nil)
+		ClassDBBindMethod(t, "SetCustomPosition", "set_custom_position", []string{"position"}, nil)
+		ClassDBAddProperty(t, GDEXTENSION_VARIANT_TYPE_VECTOR2, "group_subgroup_custom_position", "set_custom_position", "get_custom_position")
+
+		// Signals.
+		ClassDBAddSignal(t, "custom_signal",
+			SignalParam{
+				Type: GDEXTENSION_VARIANT_TYPE_STRING,
+				Name: "name"},
+			SignalParam{
+				Type: GDEXTENSION_VARIANT_TYPE_INT,
+				Name: "value",
+			})
+		ClassDBBindMethod(t, "EmitCustomSignal", "emit_custom_signal", []string{"name", "value"}, nil)
+
+		// constants
+		ClassDBBindEnumConstant(t, "ExampleEnum", "FIRST", int(ExampleFirst))
+		ClassDBBindEnumConstant(t, "ExampleEnum", "ANSWER_TO_EVERYTHING", int(AnswerToEverything))
+		ClassDBBindConstant(t, "CONSTANT_WITHOUT_ENUM", int(EXAMPLE_ENUM_CONSTANT_WITHOUT_ENUM))
+
+		// others
+		// ClassDBBindMethod(t, "TestCastTo", "test_cast_to", nil, nil)
+		log.Debug("Example registered")
+	})
 }

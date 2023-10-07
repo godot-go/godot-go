@@ -167,7 +167,7 @@ func (c *String) nativePtr() GDExtensionTypePtr {
 func NewString() String {
 	cx := String{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalStringMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalStringMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -179,7 +179,7 @@ func NewStringWithStringName(from StringName) String {
 	// StringName
 	// StringNameEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalStringMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalStringMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -191,7 +191,7 @@ func NewStringWithNodePath(from NodePath) String {
 	// NodePath
 	// NodePathEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalStringMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalStringMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -243,7 +243,7 @@ func (cx *String) CasecmpTo(to String) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -270,7 +270,7 @@ func (cx *String) NocasecmpTo(to String) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -297,7 +297,7 @@ func (cx *String) NaturalcasecmpTo(to String) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -324,7 +324,7 @@ func (cx *String) NaturalnocasecmpTo(to String) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -347,7 +347,7 @@ func (cx *String) Length() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -374,7 +374,7 @@ func (cx *String) Substr(from int32, len int32) String {
 
 	args[1] = Int32Encoder.encodeTypePtr(len)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -403,7 +403,7 @@ func (cx *String) GetSlice(delimiter String, slice int32) String {
 
 	args[1] = Int32Encoder.encodeTypePtr(slice)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -432,7 +432,7 @@ func (cx *String) GetSlicec(delimiter int32, slice int32) String {
 
 	args[1] = Int32Encoder.encodeTypePtr(slice)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -459,7 +459,7 @@ func (cx *String) GetSliceCount(delimiter String) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -488,7 +488,7 @@ func (cx *String) Find(what String, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -519,7 +519,7 @@ func (cx *String) Count(what String, from int32, to int32) int32 {
 
 	args[2] = Int32Encoder.encodeTypePtr(to)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -550,7 +550,7 @@ func (cx *String) Countn(what String, from int32, to int32) int32 {
 
 	args[2] = Int32Encoder.encodeTypePtr(to)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -579,7 +579,7 @@ func (cx *String) Findn(what String, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -608,7 +608,7 @@ func (cx *String) Rfind(what String, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -637,7 +637,7 @@ func (cx *String) Rfindn(what String, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -664,7 +664,7 @@ func (cx *String) Match(expr String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&expr))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -691,7 +691,7 @@ func (cx *String) Matchn(expr String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&expr))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -718,7 +718,7 @@ func (cx *String) BeginsWith(text String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -745,7 +745,7 @@ func (cx *String) EndsWith(text String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -772,7 +772,7 @@ func (cx *String) IsSubsequenceOf(text String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -799,7 +799,7 @@ func (cx *String) IsSubsequenceOfn(text String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -822,7 +822,7 @@ func (cx *String) Bigrams() PackedStringArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedStringArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, nil)
 	return ret
 
 }
@@ -847,7 +847,7 @@ func (cx *String) Similarity(text String) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -876,7 +876,7 @@ func (cx *String) Format(values Variant, placeholder String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&placeholder))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -905,7 +905,7 @@ func (cx *String) Replace(what String, forwhat String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&forwhat))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -934,7 +934,7 @@ func (cx *String) Replacen(what String, forwhat String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&forwhat))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -961,7 +961,7 @@ func (cx *String) Repeat(count int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(count)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -984,7 +984,7 @@ func (cx *String) Reverse() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1011,7 +1011,7 @@ func (cx *String) Insert(position int32, what String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1040,7 +1040,7 @@ func (cx *String) Erase(position int32, chars int32) String {
 
 	args[1] = Int32Encoder.encodeTypePtr(chars)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1063,7 +1063,7 @@ func (cx *String) Capitalize() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1084,7 +1084,7 @@ func (cx *String) ToCamelCase() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1105,7 +1105,7 @@ func (cx *String) ToPascalCase() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1126,7 +1126,7 @@ func (cx *String) ToSnakeCase() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1155,7 +1155,7 @@ func (cx *String) Split(delimiter String, allow_empty bool, maxsplit int32) Pack
 
 	args[2] = Int32Encoder.encodeTypePtr(maxsplit)
 
-	ret := callBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1186,7 +1186,7 @@ func (cx *String) Rsplit(delimiter String, allow_empty bool, maxsplit int32) Pac
 
 	args[2] = Int32Encoder.encodeTypePtr(maxsplit)
 
-	ret := callBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1215,7 +1215,7 @@ func (cx *String) SplitFloats(delimiter String, allow_empty bool) PackedFloat64A
 
 	args[1] = BoolEncoder.encodeTypePtr(allow_empty)
 
-	ret := callBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1242,7 +1242,7 @@ func (cx *String) Join(parts PackedStringArray) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&parts))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1265,7 +1265,7 @@ func (cx *String) ToUpper() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1286,7 +1286,7 @@ func (cx *String) ToLower() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1311,7 +1311,7 @@ func (cx *String) Left(length int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(length)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1338,7 +1338,7 @@ func (cx *String) Right(length int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(length)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1367,7 +1367,7 @@ func (cx *String) StripEdges(left bool, right bool) String {
 
 	args[1] = BoolEncoder.encodeTypePtr(right)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1390,7 +1390,7 @@ func (cx *String) StripEscapes() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1415,7 +1415,7 @@ func (cx *String) Lstrip(chars String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&chars))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1442,7 +1442,7 @@ func (cx *String) Rstrip(chars String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&chars))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1465,7 +1465,7 @@ func (cx *String) GetExtension() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1486,7 +1486,7 @@ func (cx *String) GetBasename() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1511,7 +1511,7 @@ func (cx *String) PathJoin(file String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&file))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1538,7 +1538,7 @@ func (cx *String) UnicodeAt(at int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(at)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1565,7 +1565,7 @@ func (cx *String) Indent(prefix String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&prefix))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1588,7 +1588,7 @@ func (cx *String) Dedent() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1609,7 +1609,7 @@ func (cx *String) Hash() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -1630,7 +1630,7 @@ func (cx *String) Md5Text() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1651,7 +1651,7 @@ func (cx *String) Sha1Text() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1672,7 +1672,7 @@ func (cx *String) Sha256Text() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1693,7 +1693,7 @@ func (cx *String) Md5Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -1714,7 +1714,7 @@ func (cx *String) Sha1Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -1735,7 +1735,7 @@ func (cx *String) Sha256Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -1756,7 +1756,7 @@ func (cx *String) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -1781,7 +1781,7 @@ func (cx *String) Contains(what String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1804,7 +1804,7 @@ func (cx *String) IsAbsolutePath() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -1825,7 +1825,7 @@ func (cx *String) IsRelativePath() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -1846,7 +1846,7 @@ func (cx *String) SimplifyPath() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1867,7 +1867,7 @@ func (cx *String) GetBaseDir() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1888,7 +1888,7 @@ func (cx *String) GetFile() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1913,7 +1913,7 @@ func (cx *String) XmlEscape(escape_quotes bool) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.encodeTypePtr(escape_quotes)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -1936,7 +1936,7 @@ func (cx *String) XmlUnescape() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1957,7 +1957,7 @@ func (cx *String) UriEncode() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1978,7 +1978,7 @@ func (cx *String) UriDecode() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -1999,7 +1999,7 @@ func (cx *String) CEscape() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -2020,7 +2020,7 @@ func (cx *String) CUnescape() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -2041,7 +2041,7 @@ func (cx *String) JsonEscape() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -2062,7 +2062,7 @@ func (cx *String) ValidateNodeName() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -2083,7 +2083,7 @@ func (cx *String) ValidateFilename() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -2104,7 +2104,7 @@ func (cx *String) IsValidIdentifier() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -2125,7 +2125,7 @@ func (cx *String) IsValidInt() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -2146,7 +2146,7 @@ func (cx *String) IsValidFloat() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -2171,7 +2171,7 @@ func (cx *String) IsValidHexNumber(with_prefix bool) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.encodeTypePtr(with_prefix)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2194,7 +2194,7 @@ func (cx *String) IsValidHtmlColor() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -2215,7 +2215,7 @@ func (cx *String) IsValidIpAddress() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -2236,7 +2236,7 @@ func (cx *String) IsValidFilename() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -2257,7 +2257,7 @@ func (cx *String) ToInt() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -2278,7 +2278,7 @@ func (cx *String) ToFloat() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -2299,7 +2299,7 @@ func (cx *String) HexToInt() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -2320,7 +2320,7 @@ func (cx *String) BinToInt() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -2347,7 +2347,7 @@ func (cx *String) Lpad(min_length int32, character String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&character))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2376,7 +2376,7 @@ func (cx *String) Rpad(min_length int32, character String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&character))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2403,7 +2403,7 @@ func (cx *String) PadDecimals(digits int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(digits)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2430,7 +2430,7 @@ func (cx *String) PadZeros(digits int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(digits)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2457,7 +2457,7 @@ func (cx *String) TrimPrefix(prefix String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&prefix))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2484,7 +2484,7 @@ func (cx *String) TrimSuffix(suffix String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&suffix))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2507,7 +2507,7 @@ func (cx *String) ToAsciiBuffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -2528,7 +2528,7 @@ func (cx *String) ToUtf8Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -2549,7 +2549,7 @@ func (cx *String) ToUtf16Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -2570,7 +2570,7 @@ func (cx *String) ToUtf32Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -2591,7 +2591,7 @@ func (cx *String) HexDecode() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -2612,7 +2612,7 @@ func (cx *String) ToWcharBuffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -2637,7 +2637,7 @@ func (cx *String) NumScientific(number float32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(number)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2666,7 +2666,7 @@ func (cx *String) Num(number float32, decimals int32) String {
 
 	args[1] = Int32Encoder.encodeTypePtr(decimals)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2697,7 +2697,7 @@ func (cx *String) NumInt64(number int32, base int32, capitalize_hex bool) String
 
 	args[2] = BoolEncoder.encodeTypePtr(capitalize_hex)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2728,7 +2728,7 @@ func (cx *String) NumUint64(number int32, base int32, capitalize_hex bool) Strin
 
 	args[2] = BoolEncoder.encodeTypePtr(capitalize_hex)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2755,7 +2755,7 @@ func (cx *String) Chr(char int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(char)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2782,7 +2782,7 @@ func (cx *String) HumanizeSize(size int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(size)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -2814,28 +2814,28 @@ func (cx *String) SetIndexed(i int64, value String) {
 func (cx *String) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *String) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Module_Variant operator
 func (cx *String) Module_Variant(right Variant) String {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *String) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_not, lt, rt)
 }
 
 // Module_bool operator
@@ -2843,7 +2843,7 @@ func (cx *String) Module_bool(right bool) String {
 	lt := cx.nativeConstPtr()
 	eRight := BoolEncoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_bool, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_bool, lt, rt)
 }
 
 // Module_int operator
@@ -2851,7 +2851,7 @@ func (cx *String) Module_int(right int32) String {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_int, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_int, lt, rt)
 }
 
 // Module_float operator
@@ -2859,84 +2859,84 @@ func (cx *String) Module_float(right float32) String {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_float, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_float, lt, rt)
 }
 
 // Equal_String operator
 func (cx *String) Equal_String(right String) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_equal_String, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_equal_String, lt, rt)
 }
 
 // Not_equal_String operator
 func (cx *String) Not_equal_String(right String) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_not_equal_String, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_not_equal_String, lt, rt)
 }
 
 // Less_String operator
 func (cx *String) Less_String(right String) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_less_String, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_less_String, lt, rt)
 }
 
 // Less_equal_String operator
 func (cx *String) Less_equal_String(right String) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_less_equal_String, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_less_equal_String, lt, rt)
 }
 
 // Greater_String operator
 func (cx *String) Greater_String(right String) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_greater_String, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_greater_String, lt, rt)
 }
 
 // Greater_equal_String operator
 func (cx *String) Greater_equal_String(right String) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_greater_equal_String, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_greater_equal_String, lt, rt)
 }
 
 // Add_String operator
 func (cx *String) Add_String(right String) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_add_String, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_add_String, lt, rt)
 }
 
 // Module_String operator
 func (cx *String) Module_String(right String) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_String, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_String, lt, rt)
 }
 
 // In_String operator
 func (cx *String) In_String(right String) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_String, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_String, lt, rt)
 }
 
 // Module_Vector2 operator
 func (cx *String) Module_Vector2(right Vector2) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector2, lt, rt)
 }
 
 // Module_Vector2i operator
 func (cx *String) Module_Vector2i(right Vector2i) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector2i, lt, rt)
 }
 
 // Module_Rect2 operator
@@ -2944,7 +2944,7 @@ func (cx *String) Module_Rect2(right Rect2) String {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Rect2, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Rect2, lt, rt)
 }
 
 // Module_Rect2i operator
@@ -2952,259 +2952,259 @@ func (cx *String) Module_Rect2i(right Rect2i) String {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2iEncoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Rect2i, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Rect2i, lt, rt)
 }
 
 // Module_Vector3 operator
 func (cx *String) Module_Vector3(right Vector3) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector3, lt, rt)
 }
 
 // Module_Vector3i operator
 func (cx *String) Module_Vector3i(right Vector3i) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector3i, lt, rt)
 }
 
 // Module_Transform2D operator
 func (cx *String) Module_Transform2D(right Transform2D) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Transform2D, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Transform2D, lt, rt)
 }
 
 // Module_Vector4 operator
 func (cx *String) Module_Vector4(right Vector4) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector4, lt, rt)
 }
 
 // Module_Vector4i operator
 func (cx *String) Module_Vector4i(right Vector4i) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Vector4i, lt, rt)
 }
 
 // Module_Plane operator
 func (cx *String) Module_Plane(right Plane) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Plane, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Plane, lt, rt)
 }
 
 // Module_Quaternion operator
 func (cx *String) Module_Quaternion(right Quaternion) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Quaternion, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Quaternion, lt, rt)
 }
 
 // Module_AABB operator
 func (cx *String) Module_AABB(right AABB) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_AABB, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_AABB, lt, rt)
 }
 
 // Module_Basis operator
 func (cx *String) Module_Basis(right Basis) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Basis, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Basis, lt, rt)
 }
 
 // Module_Transform3D operator
 func (cx *String) Module_Transform3D(right Transform3D) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Transform3D, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Transform3D, lt, rt)
 }
 
 // Module_Projection operator
 func (cx *String) Module_Projection(right Projection) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Projection, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Projection, lt, rt)
 }
 
 // Module_Color operator
 func (cx *String) Module_Color(right Color) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Color, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Color, lt, rt)
 }
 
 // Equal_StringName operator
 func (cx *String) Equal_StringName(right StringName) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_equal_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_equal_StringName, lt, rt)
 }
 
 // Not_equal_StringName operator
 func (cx *String) Not_equal_StringName(right StringName) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_not_equal_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_not_equal_StringName, lt, rt)
 }
 
 // Add_StringName operator
 func (cx *String) Add_StringName(right StringName) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_add_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_add_StringName, lt, rt)
 }
 
 // Module_StringName operator
 func (cx *String) Module_StringName(right StringName) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_StringName, lt, rt)
 }
 
 // In_StringName operator
 func (cx *String) In_StringName(right StringName) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_StringName, lt, rt)
 }
 
 // Module_NodePath operator
 func (cx *String) Module_NodePath(right NodePath) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_NodePath, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_NodePath, lt, rt)
 }
 
 // Module_Object operator
 func (cx *String) Module_Object(right Object) String {
 	lt := cx.nativeConstPtr()
 	rt := right.AsGDExtensionConstTypePtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Object, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Object, lt, rt)
 }
 
 // In_Object operator
 func (cx *String) In_Object(right Object) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.AsGDExtensionConstTypePtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_Object, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_Object, lt, rt)
 }
 
 // Module_Callable operator
 func (cx *String) Module_Callable(right Callable) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Callable, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Callable, lt, rt)
 }
 
 // Module_Signal operator
 func (cx *String) Module_Signal(right Signal) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Signal, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Signal, lt, rt)
 }
 
 // Module_Dictionary operator
 func (cx *String) Module_Dictionary(right Dictionary) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Dictionary, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *String) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // Module_Array operator
 func (cx *String) Module_Array(right Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_Array, lt, rt)
 }
 
 // In_Array operator
 func (cx *String) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Module_PackedByteArray operator
 func (cx *String) Module_PackedByteArray(right PackedByteArray) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedByteArray, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedByteArray, lt, rt)
 }
 
 // Module_PackedInt32Array operator
 func (cx *String) Module_PackedInt32Array(right PackedInt32Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedInt32Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedInt32Array, lt, rt)
 }
 
 // Module_PackedInt64Array operator
 func (cx *String) Module_PackedInt64Array(right PackedInt64Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedInt64Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedInt64Array, lt, rt)
 }
 
 // Module_PackedFloat32Array operator
 func (cx *String) Module_PackedFloat32Array(right PackedFloat32Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedFloat32Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedFloat32Array, lt, rt)
 }
 
 // Module_PackedFloat64Array operator
 func (cx *String) Module_PackedFloat64Array(right PackedFloat64Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedFloat64Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedFloat64Array, lt, rt)
 }
 
 // Module_PackedStringArray operator
 func (cx *String) Module_PackedStringArray(right PackedStringArray) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedStringArray, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedStringArray, lt, rt)
 }
 
 // In_PackedStringArray operator
 func (cx *String) In_PackedStringArray(right PackedStringArray) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_PackedStringArray, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringMethodBindings.operator_in_PackedStringArray, lt, rt)
 }
 
 // Module_PackedVector2Array operator
 func (cx *String) Module_PackedVector2Array(right PackedVector2Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedVector2Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedVector2Array, lt, rt)
 }
 
 // Module_PackedVector3Array operator
 func (cx *String) Module_PackedVector3Array(right PackedVector3Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedVector3Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedVector3Array, lt, rt)
 }
 
 // Module_PackedColorArray operator
 func (cx *String) Module_PackedColorArray(right PackedColorArray) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedColorArray, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringMethodBindings.operator_module_PackedColorArray, lt, rt)
 }
 
 var _ GDBuiltInClass = &Vector2{}
@@ -3230,7 +3230,7 @@ func (c *Vector2) nativePtr() GDExtensionTypePtr {
 func NewVector2() Vector2 {
 	cx := Vector2{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalVector2MethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalVector2MethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -3242,7 +3242,7 @@ func NewVector2WithVector2(from Vector2) Vector2 {
 	// Vector2
 	// Vector2Encoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector2MethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalVector2MethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -3254,7 +3254,7 @@ func NewVector2WithVector2i(from Vector2i) Vector2 {
 	// Vector2i
 	// Vector2iEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector2MethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalVector2MethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -3267,7 +3267,7 @@ func NewVector2WithFloat32Float32(x float32, y float32) Vector2 {
 	args[0] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(x))
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(y))
-	callBuiltinConstructor(globalVector2MethodBindings.constructor_3, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalVector2MethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
 
@@ -3309,7 +3309,7 @@ func (cx *Vector2) Angle() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -3334,7 +3334,7 @@ func (cx *Vector2) AngleTo(to Vector2) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3361,7 +3361,7 @@ func (cx *Vector2) AngleToPoint(to Vector2) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3388,7 +3388,7 @@ func (cx *Vector2) DirectionTo(to Vector2) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3415,7 +3415,7 @@ func (cx *Vector2) DistanceTo(to Vector2) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3442,7 +3442,7 @@ func (cx *Vector2) DistanceSquaredTo(to Vector2) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3465,7 +3465,7 @@ func (cx *Vector2) Length() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -3486,7 +3486,7 @@ func (cx *Vector2) LengthSquared() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -3511,7 +3511,7 @@ func (cx *Vector2) LimitLength(length float32) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(length)
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3534,7 +3534,7 @@ func (cx *Vector2) Normalized() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -3555,7 +3555,7 @@ func (cx *Vector2) IsNormalized() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -3580,7 +3580,7 @@ func (cx *Vector2) IsEqualApprox(to Vector2) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3603,7 +3603,7 @@ func (cx *Vector2) IsZeroApprox() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -3624,7 +3624,7 @@ func (cx *Vector2) IsFinite() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -3649,7 +3649,7 @@ func (cx *Vector2) Posmod(mod float32) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(mod)
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3676,7 +3676,7 @@ func (cx *Vector2) Posmodv(modv Vector2) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&modv))
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3703,7 +3703,7 @@ func (cx *Vector2) Project(b Vector2) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3732,7 +3732,7 @@ func (cx *Vector2) Lerp(to Vector2, weight float32) Vector2 {
 
 	args[1] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3761,7 +3761,7 @@ func (cx *Vector2) Slerp(to Vector2, weight float32) Vector2 {
 
 	args[1] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3794,7 +3794,7 @@ func (cx *Vector2) CubicInterpolate(b Vector2, pre_a Vector2, post_b Vector2, we
 
 	args[3] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3833,7 +3833,7 @@ func (cx *Vector2) CubicInterpolateInTime(b Vector2, pre_a Vector2, post_b Vecto
 
 	args[6] = Float32Encoder.encodeTypePtr(post_b_t)
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3866,7 +3866,7 @@ func (cx *Vector2) BezierInterpolate(control_1 Vector2, control_2 Vector2, end V
 
 	args[3] = Float32Encoder.encodeTypePtr(t)
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3899,7 +3899,7 @@ func (cx *Vector2) BezierDerivative(control_1 Vector2, control_2 Vector2, end Ve
 
 	args[3] = Float32Encoder.encodeTypePtr(t)
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3922,7 +3922,7 @@ func (cx *Vector2) MaxAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -3943,7 +3943,7 @@ func (cx *Vector2) MinAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -3970,7 +3970,7 @@ func (cx *Vector2) MoveToward(to Vector2, delta float32) Vector2 {
 
 	args[1] = Float32Encoder.encodeTypePtr(delta)
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -3997,7 +3997,7 @@ func (cx *Vector2) Rotated(angle float32) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(angle)
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -4020,7 +4020,7 @@ func (cx *Vector2) Orthogonal() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -4041,7 +4041,7 @@ func (cx *Vector2) Floor() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -4062,7 +4062,7 @@ func (cx *Vector2) Ceil() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -4083,7 +4083,7 @@ func (cx *Vector2) Round() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -4104,7 +4104,7 @@ func (cx *Vector2) Aspect() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -4129,7 +4129,7 @@ func (cx *Vector2) Dot(with Vector2) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -4156,7 +4156,7 @@ func (cx *Vector2) Slide(n Vector2) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&n))
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -4183,7 +4183,7 @@ func (cx *Vector2) Bounce(n Vector2) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&n))
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -4210,7 +4210,7 @@ func (cx *Vector2) Reflect(n Vector2) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&n))
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -4237,7 +4237,7 @@ func (cx *Vector2) Cross(with Vector2) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -4260,7 +4260,7 @@ func (cx *Vector2) Abs() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -4281,7 +4281,7 @@ func (cx *Vector2) Sign() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -4308,7 +4308,7 @@ func (cx *Vector2) Clamp(min Vector2, max Vector2) Vector2 {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -4335,7 +4335,7 @@ func (cx *Vector2) Snapped(step Vector2) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -4362,7 +4362,7 @@ func (cx *Vector2) FromAngle(angle float32) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(angle)
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -4393,14 +4393,14 @@ func (cx *Vector2) SetIndexed(i int64, value float32) {
 
 func (cx *Vector2) MemberGetx() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalVector2MethodBindings.member_x_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalVector2MethodBindings.member_x_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector2) MemberGety() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalVector2MethodBindings.member_y_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalVector2MethodBindings.member_y_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
@@ -4409,35 +4409,35 @@ func (cx *Vector2) MemberGety() float32 {
 func (cx *Vector2) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Vector2) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Negate operator
 func (cx *Vector2) Negate() Vector2 {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_negate, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_negate, lt, rt)
 }
 
 // Positive operator
 func (cx *Vector2) Positive() Vector2 {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_positive, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_positive, lt, rt)
 }
 
 // Not operator
 func (cx *Vector2) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_int operator
@@ -4445,7 +4445,7 @@ func (cx *Vector2) Multiply_int(right int32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_multiply_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_multiply_int, lt, rt)
 }
 
 // Divide_int operator
@@ -4453,7 +4453,7 @@ func (cx *Vector2) Divide_int(right int32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_divide_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_divide_int, lt, rt)
 }
 
 // Multiply_float operator
@@ -4461,7 +4461,7 @@ func (cx *Vector2) Multiply_float(right float32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_multiply_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_multiply_float, lt, rt)
 }
 
 // Divide_float operator
@@ -4469,105 +4469,105 @@ func (cx *Vector2) Divide_float(right float32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_divide_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_divide_float, lt, rt)
 }
 
 // Equal_Vector2 operator
 func (cx *Vector2) Equal_Vector2(right Vector2) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_equal_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_equal_Vector2, lt, rt)
 }
 
 // Not_equal_Vector2 operator
 func (cx *Vector2) Not_equal_Vector2(right Vector2) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_not_equal_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_not_equal_Vector2, lt, rt)
 }
 
 // Less_Vector2 operator
 func (cx *Vector2) Less_Vector2(right Vector2) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_less_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_less_Vector2, lt, rt)
 }
 
 // Less_equal_Vector2 operator
 func (cx *Vector2) Less_equal_Vector2(right Vector2) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_less_equal_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_less_equal_Vector2, lt, rt)
 }
 
 // Greater_Vector2 operator
 func (cx *Vector2) Greater_Vector2(right Vector2) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_greater_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_greater_Vector2, lt, rt)
 }
 
 // Greater_equal_Vector2 operator
 func (cx *Vector2) Greater_equal_Vector2(right Vector2) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_greater_equal_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_greater_equal_Vector2, lt, rt)
 }
 
 // Add_Vector2 operator
 func (cx *Vector2) Add_Vector2(right Vector2) Vector2 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_add_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_add_Vector2, lt, rt)
 }
 
 // Subtract_Vector2 operator
 func (cx *Vector2) Subtract_Vector2(right Vector2) Vector2 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_subtract_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_subtract_Vector2, lt, rt)
 }
 
 // Multiply_Vector2 operator
 func (cx *Vector2) Multiply_Vector2(right Vector2) Vector2 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_multiply_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_multiply_Vector2, lt, rt)
 }
 
 // Divide_Vector2 operator
 func (cx *Vector2) Divide_Vector2(right Vector2) Vector2 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_divide_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_divide_Vector2, lt, rt)
 }
 
 // Multiply_Transform2D operator
 func (cx *Vector2) Multiply_Transform2D(right Transform2D) Vector2 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_multiply_Transform2D, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2MethodBindings.operator_multiply_Transform2D, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Vector2) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Vector2) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_in_Array, lt, rt)
 }
 
 // In_PackedVector2Array operator
 func (cx *Vector2) In_PackedVector2Array(right PackedVector2Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_in_PackedVector2Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2MethodBindings.operator_in_PackedVector2Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Vector2i{}
@@ -4593,7 +4593,7 @@ func (c *Vector2i) nativePtr() GDExtensionTypePtr {
 func NewVector2i() Vector2i {
 	cx := Vector2i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalVector2iMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalVector2iMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -4605,7 +4605,7 @@ func NewVector2iWithVector2i(from Vector2i) Vector2i {
 	// Vector2i
 	// Vector2iEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector2iMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalVector2iMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -4617,7 +4617,7 @@ func NewVector2iWithVector2(from Vector2) Vector2i {
 	// Vector2
 	// Vector2Encoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector2iMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalVector2iMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -4630,7 +4630,7 @@ func NewVector2iWithInt32Int32(x int32, y int32) Vector2i {
 	args[0] = (GDExtensionConstTypePtr)(Int32Encoder.encodeTypePtr(x))
 	// int
 	args[1] = (GDExtensionConstTypePtr)(Int32Encoder.encodeTypePtr(y))
-	callBuiltinConstructor(globalVector2iMethodBindings.constructor_3, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalVector2iMethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
 
@@ -4672,7 +4672,7 @@ func (cx *Vector2i) Aspect() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -4693,7 +4693,7 @@ func (cx *Vector2i) MaxAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -4714,7 +4714,7 @@ func (cx *Vector2i) MinAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -4735,7 +4735,7 @@ func (cx *Vector2i) Length() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -4756,7 +4756,7 @@ func (cx *Vector2i) LengthSquared() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -4777,7 +4777,7 @@ func (cx *Vector2i) Sign() Vector2i {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2i](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, nil)
 	return ret
 
 }
@@ -4798,7 +4798,7 @@ func (cx *Vector2i) Abs() Vector2i {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2i](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, nil)
 	return ret
 
 }
@@ -4825,7 +4825,7 @@ func (cx *Vector2i) Clamp(min Vector2i, max Vector2i) Vector2i {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
 
-	ret := callBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -4852,7 +4852,7 @@ func (cx *Vector2i) Snapped(step Vector2i) Vector2i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
 
-	ret := callBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -4883,14 +4883,14 @@ func (cx *Vector2i) SetIndexed(i int64, value int32) {
 
 func (cx *Vector2i) MemberGetx() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalVector2iMethodBindings.member_x_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalVector2iMethodBindings.member_x_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector2i) MemberGety() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalVector2iMethodBindings.member_y_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalVector2iMethodBindings.member_y_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
@@ -4899,35 +4899,35 @@ func (cx *Vector2i) MemberGety() int32 {
 func (cx *Vector2i) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Vector2i) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Negate operator
 func (cx *Vector2i) Negate() Vector2i {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_negate, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_negate, lt, rt)
 }
 
 // Positive operator
 func (cx *Vector2i) Positive() Vector2i {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_positive, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_positive, lt, rt)
 }
 
 // Not operator
 func (cx *Vector2i) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_int operator
@@ -4935,7 +4935,7 @@ func (cx *Vector2i) Multiply_int(right int32) Vector2i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_multiply_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_multiply_int, lt, rt)
 }
 
 // Divide_int operator
@@ -4943,7 +4943,7 @@ func (cx *Vector2i) Divide_int(right int32) Vector2i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_divide_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_divide_int, lt, rt)
 }
 
 // Module_int operator
@@ -4951,7 +4951,7 @@ func (cx *Vector2i) Module_int(right int32) Vector2i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_module_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_module_int, lt, rt)
 }
 
 // Multiply_float operator
@@ -4959,7 +4959,7 @@ func (cx *Vector2i) Multiply_float(right float32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector2](globalVector2iMethodBindings.operator_multiply_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2iMethodBindings.operator_multiply_float, lt, rt)
 }
 
 // Divide_float operator
@@ -4967,98 +4967,98 @@ func (cx *Vector2i) Divide_float(right float32) Vector2 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector2](globalVector2iMethodBindings.operator_divide_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalVector2iMethodBindings.operator_divide_float, lt, rt)
 }
 
 // Equal_Vector2i operator
 func (cx *Vector2i) Equal_Vector2i(right Vector2i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_equal_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_equal_Vector2i, lt, rt)
 }
 
 // Not_equal_Vector2i operator
 func (cx *Vector2i) Not_equal_Vector2i(right Vector2i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_not_equal_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_not_equal_Vector2i, lt, rt)
 }
 
 // Less_Vector2i operator
 func (cx *Vector2i) Less_Vector2i(right Vector2i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_less_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_less_Vector2i, lt, rt)
 }
 
 // Less_equal_Vector2i operator
 func (cx *Vector2i) Less_equal_Vector2i(right Vector2i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_less_equal_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_less_equal_Vector2i, lt, rt)
 }
 
 // Greater_Vector2i operator
 func (cx *Vector2i) Greater_Vector2i(right Vector2i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_greater_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_greater_Vector2i, lt, rt)
 }
 
 // Greater_equal_Vector2i operator
 func (cx *Vector2i) Greater_equal_Vector2i(right Vector2i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_greater_equal_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_greater_equal_Vector2i, lt, rt)
 }
 
 // Add_Vector2i operator
 func (cx *Vector2i) Add_Vector2i(right Vector2i) Vector2i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_add_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_add_Vector2i, lt, rt)
 }
 
 // Subtract_Vector2i operator
 func (cx *Vector2i) Subtract_Vector2i(right Vector2i) Vector2i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_subtract_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_subtract_Vector2i, lt, rt)
 }
 
 // Multiply_Vector2i operator
 func (cx *Vector2i) Multiply_Vector2i(right Vector2i) Vector2i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_multiply_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_multiply_Vector2i, lt, rt)
 }
 
 // Divide_Vector2i operator
 func (cx *Vector2i) Divide_Vector2i(right Vector2i) Vector2i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_divide_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_divide_Vector2i, lt, rt)
 }
 
 // Module_Vector2i operator
 func (cx *Vector2i) Module_Vector2i(right Vector2i) Vector2i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_module_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2i](globalVector2iMethodBindings.operator_module_Vector2i, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Vector2i) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Vector2i) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector2iMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Rect2{}
@@ -5084,7 +5084,7 @@ func (c *Rect2) nativePtr() GDExtensionTypePtr {
 func NewRect2() Rect2 {
 	cx := Rect2{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalRect2MethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalRect2MethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -5096,7 +5096,7 @@ func NewRect2WithRect2(from Rect2) Rect2 {
 	// Rect2
 	// Rect2Encoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalRect2MethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalRect2MethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -5108,7 +5108,7 @@ func NewRect2WithRect2i(from Rect2i) Rect2 {
 	// Rect2i
 	// Rect2iEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalRect2MethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalRect2MethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -5123,7 +5123,7 @@ func NewRect2WithVector2Vector2(position Vector2, size Vector2) Rect2 {
 	// Vector2
 	// Vector2Encoder
 	args[1] = size.nativeConstPtr()
-	callBuiltinConstructor(globalRect2MethodBindings.constructor_3, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalRect2MethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
 
@@ -5140,7 +5140,7 @@ func NewRect2WithFloat32Float32Float32Float32(x float32, y float32, width float3
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(width))
 	// float
 	args[3] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(height))
-	callBuiltinConstructor(globalRect2MethodBindings.constructor_4, ptr, args[0], args[1], args[2], args[3])
+	CallBuiltinConstructor(globalRect2MethodBindings.constructor_4, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
 
@@ -5182,7 +5182,7 @@ func (cx *Rect2) GetCenter() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -5203,7 +5203,7 @@ func (cx *Rect2) GetArea() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -5224,7 +5224,7 @@ func (cx *Rect2) HasArea() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -5249,7 +5249,7 @@ func (cx *Rect2) HasPoint(point Vector2) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5276,7 +5276,7 @@ func (cx *Rect2) IsEqualApprox(rect Rect2) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2Encoder.encodeTypePtr(rect)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5299,7 +5299,7 @@ func (cx *Rect2) IsFinite() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -5326,7 +5326,7 @@ func (cx *Rect2) Intersects(b Rect2, include_borders bool) bool {
 
 	args[1] = BoolEncoder.encodeTypePtr(include_borders)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5353,7 +5353,7 @@ func (cx *Rect2) Encloses(b Rect2) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2Encoder.encodeTypePtr(b)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5380,7 +5380,7 @@ func (cx *Rect2) Intersection(b Rect2) Rect2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2Encoder.encodeTypePtr(b)
 
-	ret := callBuiltinMethodPtrRet[Rect2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5407,7 +5407,7 @@ func (cx *Rect2) Merge(b Rect2) Rect2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2Encoder.encodeTypePtr(b)
 
-	ret := callBuiltinMethodPtrRet[Rect2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5434,7 +5434,7 @@ func (cx *Rect2) Expand(to Vector2) Rect2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[Rect2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5461,7 +5461,7 @@ func (cx *Rect2) Grow(amount float32) Rect2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(amount)
 
-	ret := callBuiltinMethodPtrRet[Rect2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5490,7 +5490,7 @@ func (cx *Rect2) GrowSide(side int32, amount float32) Rect2 {
 
 	args[1] = Float32Encoder.encodeTypePtr(amount)
 
-	ret := callBuiltinMethodPtrRet[Rect2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5523,7 +5523,7 @@ func (cx *Rect2) GrowIndividual(left float32, top float32, right float32, bottom
 
 	args[3] = Float32Encoder.encodeTypePtr(bottom)
 
-	ret := callBuiltinMethodPtrRet[Rect2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5546,7 +5546,7 @@ func (cx *Rect2) Abs() Rect2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Rect2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, nil)
 	return ret
 
 }
@@ -5555,21 +5555,21 @@ func (cx *Rect2) Abs() Rect2 {
 
 func (cx *Rect2) MemberGetposition() Vector2 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector2](globalRect2MethodBindings.member_position_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector2](globalRect2MethodBindings.member_position_getter, bx)
 	return ret
 
 }
 
 func (cx *Rect2) MemberGetsize() Vector2 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector2](globalRect2MethodBindings.member_size_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector2](globalRect2MethodBindings.member_size_getter, bx)
 	return ret
 
 }
 
 func (cx *Rect2) MemberGetend() Vector2 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector2](globalRect2MethodBindings.member_end_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector2](globalRect2MethodBindings.member_end_getter, bx)
 	return ret
 
 }
@@ -5578,21 +5578,21 @@ func (cx *Rect2) MemberGetend() Vector2 {
 func (cx *Rect2) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Rect2) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *Rect2) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_not, lt, rt)
 }
 
 // Equal_Rect2 operator
@@ -5600,7 +5600,7 @@ func (cx *Rect2) Equal_Rect2(right Rect2) bool {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_equal_Rect2, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_equal_Rect2, lt, rt)
 }
 
 // Not_equal_Rect2 operator
@@ -5608,28 +5608,28 @@ func (cx *Rect2) Not_equal_Rect2(right Rect2) bool {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_not_equal_Rect2, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_not_equal_Rect2, lt, rt)
 }
 
 // Multiply_Transform2D operator
 func (cx *Rect2) Multiply_Transform2D(right Transform2D) Rect2 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Rect2](globalRect2MethodBindings.operator_multiply_Transform2D, lt, rt)
+	return CallBuiltinOperatorPtr[Rect2](globalRect2MethodBindings.operator_multiply_Transform2D, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Rect2) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Rect2) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2MethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Rect2i{}
@@ -5655,7 +5655,7 @@ func (c *Rect2i) nativePtr() GDExtensionTypePtr {
 func NewRect2i() Rect2i {
 	cx := Rect2i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalRect2iMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalRect2iMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -5667,7 +5667,7 @@ func NewRect2iWithRect2i(from Rect2i) Rect2i {
 	// Rect2i
 	// Rect2iEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalRect2iMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalRect2iMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -5679,7 +5679,7 @@ func NewRect2iWithRect2(from Rect2) Rect2i {
 	// Rect2
 	// Rect2Encoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalRect2iMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalRect2iMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -5694,7 +5694,7 @@ func NewRect2iWithVector2iVector2i(position Vector2i, size Vector2i) Rect2i {
 	// Vector2i
 	// Vector2iEncoder
 	args[1] = size.nativeConstPtr()
-	callBuiltinConstructor(globalRect2iMethodBindings.constructor_3, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalRect2iMethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
 
@@ -5711,7 +5711,7 @@ func NewRect2iWithInt32Int32Int32Int32(x int32, y int32, width int32, height int
 	args[2] = (GDExtensionConstTypePtr)(Int32Encoder.encodeTypePtr(width))
 	// int
 	args[3] = (GDExtensionConstTypePtr)(Int32Encoder.encodeTypePtr(height))
-	callBuiltinConstructor(globalRect2iMethodBindings.constructor_4, ptr, args[0], args[1], args[2], args[3])
+	CallBuiltinConstructor(globalRect2iMethodBindings.constructor_4, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
 
@@ -5753,7 +5753,7 @@ func (cx *Rect2i) GetCenter() Vector2i {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2i](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, nil)
 	return ret
 
 }
@@ -5774,7 +5774,7 @@ func (cx *Rect2i) GetArea() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -5795,7 +5795,7 @@ func (cx *Rect2i) HasArea() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -5820,7 +5820,7 @@ func (cx *Rect2i) HasPoint(point Vector2i) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5847,7 +5847,7 @@ func (cx *Rect2i) Intersects(b Rect2i) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2iEncoder.encodeTypePtr(b)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5874,7 +5874,7 @@ func (cx *Rect2i) Encloses(b Rect2i) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2iEncoder.encodeTypePtr(b)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5901,7 +5901,7 @@ func (cx *Rect2i) Intersection(b Rect2i) Rect2i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2iEncoder.encodeTypePtr(b)
 
-	ret := callBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5928,7 +5928,7 @@ func (cx *Rect2i) Merge(b Rect2i) Rect2i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2iEncoder.encodeTypePtr(b)
 
-	ret := callBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5955,7 +5955,7 @@ func (cx *Rect2i) Expand(to Vector2i) Rect2i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -5982,7 +5982,7 @@ func (cx *Rect2i) Grow(amount int32) Rect2i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(amount)
 
-	ret := callBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6011,7 +6011,7 @@ func (cx *Rect2i) GrowSide(side int32, amount int32) Rect2i {
 
 	args[1] = Int32Encoder.encodeTypePtr(amount)
 
-	ret := callBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6044,7 +6044,7 @@ func (cx *Rect2i) GrowIndividual(left int32, top int32, right int32, bottom int3
 
 	args[3] = Int32Encoder.encodeTypePtr(bottom)
 
-	ret := callBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6067,7 +6067,7 @@ func (cx *Rect2i) Abs() Rect2i {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Rect2i](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, nil)
 	return ret
 
 }
@@ -6076,21 +6076,21 @@ func (cx *Rect2i) Abs() Rect2i {
 
 func (cx *Rect2i) MemberGetposition() Vector2i {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector2i](globalRect2iMethodBindings.member_position_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector2i](globalRect2iMethodBindings.member_position_getter, bx)
 	return ret
 
 }
 
 func (cx *Rect2i) MemberGetsize() Vector2i {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector2i](globalRect2iMethodBindings.member_size_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector2i](globalRect2iMethodBindings.member_size_getter, bx)
 	return ret
 
 }
 
 func (cx *Rect2i) MemberGetend() Vector2i {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector2i](globalRect2iMethodBindings.member_end_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector2i](globalRect2iMethodBindings.member_end_getter, bx)
 	return ret
 
 }
@@ -6099,21 +6099,21 @@ func (cx *Rect2i) MemberGetend() Vector2i {
 func (cx *Rect2i) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Rect2i) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *Rect2i) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_not, lt, rt)
 }
 
 // Equal_Rect2i operator
@@ -6121,7 +6121,7 @@ func (cx *Rect2i) Equal_Rect2i(right Rect2i) bool {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2iEncoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_equal_Rect2i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_equal_Rect2i, lt, rt)
 }
 
 // Not_equal_Rect2i operator
@@ -6129,21 +6129,21 @@ func (cx *Rect2i) Not_equal_Rect2i(right Rect2i) bool {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2iEncoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_not_equal_Rect2i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_not_equal_Rect2i, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Rect2i) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Rect2i) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRect2iMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Vector3{}
@@ -6169,7 +6169,7 @@ func (c *Vector3) nativePtr() GDExtensionTypePtr {
 func NewVector3() Vector3 {
 	cx := Vector3{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalVector3MethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalVector3MethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -6181,7 +6181,7 @@ func NewVector3WithVector3(from Vector3) Vector3 {
 	// Vector3
 	// Vector3Encoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector3MethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalVector3MethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -6193,7 +6193,7 @@ func NewVector3WithVector3i(from Vector3i) Vector3 {
 	// Vector3i
 	// Vector3iEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector3MethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalVector3MethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -6208,7 +6208,7 @@ func NewVector3WithFloat32Float32Float32(x float32, y float32, z float32) Vector
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(y))
 	// float
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(z))
-	callBuiltinConstructor(globalVector3MethodBindings.constructor_3, ptr, args[0], args[1], args[2])
+	CallBuiltinConstructor(globalVector3MethodBindings.constructor_3, ptr, args[0], args[1], args[2])
 	return cx
 }
 
@@ -6250,7 +6250,7 @@ func (cx *Vector3) MinAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -6271,7 +6271,7 @@ func (cx *Vector3) MaxAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -6296,7 +6296,7 @@ func (cx *Vector3) AngleTo(to Vector3) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6325,7 +6325,7 @@ func (cx *Vector3) SignedAngleTo(to Vector3, axis Vector3) float32 {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&axis))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6352,7 +6352,7 @@ func (cx *Vector3) DirectionTo(to Vector3) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6379,7 +6379,7 @@ func (cx *Vector3) DistanceTo(to Vector3) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6406,7 +6406,7 @@ func (cx *Vector3) DistanceSquaredTo(to Vector3) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6429,7 +6429,7 @@ func (cx *Vector3) Length() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -6450,7 +6450,7 @@ func (cx *Vector3) LengthSquared() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -6475,7 +6475,7 @@ func (cx *Vector3) LimitLength(length float32) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(length)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6498,7 +6498,7 @@ func (cx *Vector3) Normalized() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -6519,7 +6519,7 @@ func (cx *Vector3) IsNormalized() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -6544,7 +6544,7 @@ func (cx *Vector3) IsEqualApprox(to Vector3) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6567,7 +6567,7 @@ func (cx *Vector3) IsZeroApprox() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -6588,7 +6588,7 @@ func (cx *Vector3) IsFinite() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -6609,7 +6609,7 @@ func (cx *Vector3) Inverse() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -6636,7 +6636,7 @@ func (cx *Vector3) Clamp(min Vector3, max Vector3) Vector3 {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6663,7 +6663,7 @@ func (cx *Vector3) Snapped(step Vector3) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6692,7 +6692,7 @@ func (cx *Vector3) Rotated(axis Vector3, angle float32) Vector3 {
 
 	args[1] = Float32Encoder.encodeTypePtr(angle)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6721,7 +6721,7 @@ func (cx *Vector3) Lerp(to Vector3, weight float32) Vector3 {
 
 	args[1] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6750,7 +6750,7 @@ func (cx *Vector3) Slerp(to Vector3, weight float32) Vector3 {
 
 	args[1] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6783,7 +6783,7 @@ func (cx *Vector3) CubicInterpolate(b Vector3, pre_a Vector3, post_b Vector3, we
 
 	args[3] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6822,7 +6822,7 @@ func (cx *Vector3) CubicInterpolateInTime(b Vector3, pre_a Vector3, post_b Vecto
 
 	args[6] = Float32Encoder.encodeTypePtr(post_b_t)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6855,7 +6855,7 @@ func (cx *Vector3) BezierInterpolate(control_1 Vector3, control_2 Vector3, end V
 
 	args[3] = Float32Encoder.encodeTypePtr(t)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6888,7 +6888,7 @@ func (cx *Vector3) BezierDerivative(control_1 Vector3, control_2 Vector3, end Ve
 
 	args[3] = Float32Encoder.encodeTypePtr(t)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6917,7 +6917,7 @@ func (cx *Vector3) MoveToward(to Vector3, delta float32) Vector3 {
 
 	args[1] = Float32Encoder.encodeTypePtr(delta)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6944,7 +6944,7 @@ func (cx *Vector3) Dot(with Vector3) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6971,7 +6971,7 @@ func (cx *Vector3) Cross(with Vector3) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -6998,7 +6998,7 @@ func (cx *Vector3) Outer(with Vector3) Basis {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[Basis](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -7021,7 +7021,7 @@ func (cx *Vector3) Abs() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -7042,7 +7042,7 @@ func (cx *Vector3) Floor() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -7063,7 +7063,7 @@ func (cx *Vector3) Ceil() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -7084,7 +7084,7 @@ func (cx *Vector3) Round() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -7109,7 +7109,7 @@ func (cx *Vector3) Posmod(mod float32) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(mod)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -7136,7 +7136,7 @@ func (cx *Vector3) Posmodv(modv Vector3) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&modv))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -7163,7 +7163,7 @@ func (cx *Vector3) Project(b Vector3) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -7190,7 +7190,7 @@ func (cx *Vector3) Slide(n Vector3) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&n))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -7217,7 +7217,7 @@ func (cx *Vector3) Bounce(n Vector3) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&n))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -7244,7 +7244,7 @@ func (cx *Vector3) Reflect(n Vector3) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&n))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -7267,7 +7267,7 @@ func (cx *Vector3) Sign() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -7288,7 +7288,7 @@ func (cx *Vector3) OctahedronEncode() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -7313,7 +7313,7 @@ func (cx *Vector3) OctahedronDecode(uv Vector2) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&uv))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -7344,21 +7344,21 @@ func (cx *Vector3) SetIndexed(i int64, value float32) {
 
 func (cx *Vector3) MemberGetx() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalVector3MethodBindings.member_x_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalVector3MethodBindings.member_x_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector3) MemberGety() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalVector3MethodBindings.member_y_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalVector3MethodBindings.member_y_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector3) MemberGetz() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalVector3MethodBindings.member_z_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalVector3MethodBindings.member_z_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
@@ -7367,35 +7367,35 @@ func (cx *Vector3) MemberGetz() float32 {
 func (cx *Vector3) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Vector3) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Negate operator
 func (cx *Vector3) Negate() Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_negate, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_negate, lt, rt)
 }
 
 // Positive operator
 func (cx *Vector3) Positive() Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_positive, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_positive, lt, rt)
 }
 
 // Not operator
 func (cx *Vector3) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_int operator
@@ -7403,7 +7403,7 @@ func (cx *Vector3) Multiply_int(right int32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_int, lt, rt)
 }
 
 // Divide_int operator
@@ -7411,7 +7411,7 @@ func (cx *Vector3) Divide_int(right int32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_divide_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_divide_int, lt, rt)
 }
 
 // Multiply_float operator
@@ -7419,7 +7419,7 @@ func (cx *Vector3) Multiply_float(right float32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_float, lt, rt)
 }
 
 // Divide_float operator
@@ -7427,119 +7427,119 @@ func (cx *Vector3) Divide_float(right float32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_divide_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_divide_float, lt, rt)
 }
 
 // Equal_Vector3 operator
 func (cx *Vector3) Equal_Vector3(right Vector3) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_equal_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_equal_Vector3, lt, rt)
 }
 
 // Not_equal_Vector3 operator
 func (cx *Vector3) Not_equal_Vector3(right Vector3) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_not_equal_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_not_equal_Vector3, lt, rt)
 }
 
 // Less_Vector3 operator
 func (cx *Vector3) Less_Vector3(right Vector3) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_less_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_less_Vector3, lt, rt)
 }
 
 // Less_equal_Vector3 operator
 func (cx *Vector3) Less_equal_Vector3(right Vector3) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_less_equal_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_less_equal_Vector3, lt, rt)
 }
 
 // Greater_Vector3 operator
 func (cx *Vector3) Greater_Vector3(right Vector3) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_greater_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_greater_Vector3, lt, rt)
 }
 
 // Greater_equal_Vector3 operator
 func (cx *Vector3) Greater_equal_Vector3(right Vector3) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_greater_equal_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_greater_equal_Vector3, lt, rt)
 }
 
 // Add_Vector3 operator
 func (cx *Vector3) Add_Vector3(right Vector3) Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_add_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_add_Vector3, lt, rt)
 }
 
 // Subtract_Vector3 operator
 func (cx *Vector3) Subtract_Vector3(right Vector3) Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_subtract_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_subtract_Vector3, lt, rt)
 }
 
 // Multiply_Vector3 operator
 func (cx *Vector3) Multiply_Vector3(right Vector3) Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_Vector3, lt, rt)
 }
 
 // Divide_Vector3 operator
 func (cx *Vector3) Divide_Vector3(right Vector3) Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_divide_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_divide_Vector3, lt, rt)
 }
 
 // Multiply_Quaternion operator
 func (cx *Vector3) Multiply_Quaternion(right Quaternion) Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_Quaternion, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_Quaternion, lt, rt)
 }
 
 // Multiply_Basis operator
 func (cx *Vector3) Multiply_Basis(right Basis) Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_Basis, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_Basis, lt, rt)
 }
 
 // Multiply_Transform3D operator
 func (cx *Vector3) Multiply_Transform3D(right Transform3D) Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_Transform3D, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3MethodBindings.operator_multiply_Transform3D, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Vector3) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Vector3) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_in_Array, lt, rt)
 }
 
 // In_PackedVector3Array operator
 func (cx *Vector3) In_PackedVector3Array(right PackedVector3Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_in_PackedVector3Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3MethodBindings.operator_in_PackedVector3Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Vector3i{}
@@ -7565,7 +7565,7 @@ func (c *Vector3i) nativePtr() GDExtensionTypePtr {
 func NewVector3i() Vector3i {
 	cx := Vector3i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalVector3iMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalVector3iMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -7577,7 +7577,7 @@ func NewVector3iWithVector3i(from Vector3i) Vector3i {
 	// Vector3i
 	// Vector3iEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector3iMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalVector3iMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -7589,7 +7589,7 @@ func NewVector3iWithVector3(from Vector3) Vector3i {
 	// Vector3
 	// Vector3Encoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector3iMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalVector3iMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -7604,7 +7604,7 @@ func NewVector3iWithInt32Int32Int32(x int32, y int32, z int32) Vector3i {
 	args[1] = (GDExtensionConstTypePtr)(Int32Encoder.encodeTypePtr(y))
 	// int
 	args[2] = (GDExtensionConstTypePtr)(Int32Encoder.encodeTypePtr(z))
-	callBuiltinConstructor(globalVector3iMethodBindings.constructor_3, ptr, args[0], args[1], args[2])
+	CallBuiltinConstructor(globalVector3iMethodBindings.constructor_3, ptr, args[0], args[1], args[2])
 	return cx
 }
 
@@ -7646,7 +7646,7 @@ func (cx *Vector3i) MinAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -7667,7 +7667,7 @@ func (cx *Vector3i) MaxAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -7688,7 +7688,7 @@ func (cx *Vector3i) Length() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -7709,7 +7709,7 @@ func (cx *Vector3i) LengthSquared() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -7730,7 +7730,7 @@ func (cx *Vector3i) Sign() Vector3i {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3i](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, nil)
 	return ret
 
 }
@@ -7751,7 +7751,7 @@ func (cx *Vector3i) Abs() Vector3i {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3i](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, nil)
 	return ret
 
 }
@@ -7778,7 +7778,7 @@ func (cx *Vector3i) Clamp(min Vector3i, max Vector3i) Vector3i {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
 
-	ret := callBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -7805,7 +7805,7 @@ func (cx *Vector3i) Snapped(step Vector3i) Vector3i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
 
-	ret := callBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -7836,21 +7836,21 @@ func (cx *Vector3i) SetIndexed(i int64, value int32) {
 
 func (cx *Vector3i) MemberGetx() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalVector3iMethodBindings.member_x_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalVector3iMethodBindings.member_x_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector3i) MemberGety() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalVector3iMethodBindings.member_y_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalVector3iMethodBindings.member_y_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector3i) MemberGetz() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalVector3iMethodBindings.member_z_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalVector3iMethodBindings.member_z_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
@@ -7859,35 +7859,35 @@ func (cx *Vector3i) MemberGetz() int32 {
 func (cx *Vector3i) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Vector3i) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Negate operator
 func (cx *Vector3i) Negate() Vector3i {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_negate, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_negate, lt, rt)
 }
 
 // Positive operator
 func (cx *Vector3i) Positive() Vector3i {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_positive, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_positive, lt, rt)
 }
 
 // Not operator
 func (cx *Vector3i) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_int operator
@@ -7895,7 +7895,7 @@ func (cx *Vector3i) Multiply_int(right int32) Vector3i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_multiply_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_multiply_int, lt, rt)
 }
 
 // Divide_int operator
@@ -7903,7 +7903,7 @@ func (cx *Vector3i) Divide_int(right int32) Vector3i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_divide_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_divide_int, lt, rt)
 }
 
 // Module_int operator
@@ -7911,7 +7911,7 @@ func (cx *Vector3i) Module_int(right int32) Vector3i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_module_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_module_int, lt, rt)
 }
 
 // Multiply_float operator
@@ -7919,7 +7919,7 @@ func (cx *Vector3i) Multiply_float(right float32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector3](globalVector3iMethodBindings.operator_multiply_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3iMethodBindings.operator_multiply_float, lt, rt)
 }
 
 // Divide_float operator
@@ -7927,98 +7927,98 @@ func (cx *Vector3i) Divide_float(right float32) Vector3 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector3](globalVector3iMethodBindings.operator_divide_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalVector3iMethodBindings.operator_divide_float, lt, rt)
 }
 
 // Equal_Vector3i operator
 func (cx *Vector3i) Equal_Vector3i(right Vector3i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_equal_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_equal_Vector3i, lt, rt)
 }
 
 // Not_equal_Vector3i operator
 func (cx *Vector3i) Not_equal_Vector3i(right Vector3i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_not_equal_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_not_equal_Vector3i, lt, rt)
 }
 
 // Less_Vector3i operator
 func (cx *Vector3i) Less_Vector3i(right Vector3i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_less_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_less_Vector3i, lt, rt)
 }
 
 // Less_equal_Vector3i operator
 func (cx *Vector3i) Less_equal_Vector3i(right Vector3i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_less_equal_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_less_equal_Vector3i, lt, rt)
 }
 
 // Greater_Vector3i operator
 func (cx *Vector3i) Greater_Vector3i(right Vector3i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_greater_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_greater_Vector3i, lt, rt)
 }
 
 // Greater_equal_Vector3i operator
 func (cx *Vector3i) Greater_equal_Vector3i(right Vector3i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_greater_equal_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_greater_equal_Vector3i, lt, rt)
 }
 
 // Add_Vector3i operator
 func (cx *Vector3i) Add_Vector3i(right Vector3i) Vector3i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_add_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_add_Vector3i, lt, rt)
 }
 
 // Subtract_Vector3i operator
 func (cx *Vector3i) Subtract_Vector3i(right Vector3i) Vector3i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_subtract_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_subtract_Vector3i, lt, rt)
 }
 
 // Multiply_Vector3i operator
 func (cx *Vector3i) Multiply_Vector3i(right Vector3i) Vector3i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_multiply_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_multiply_Vector3i, lt, rt)
 }
 
 // Divide_Vector3i operator
 func (cx *Vector3i) Divide_Vector3i(right Vector3i) Vector3i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_divide_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_divide_Vector3i, lt, rt)
 }
 
 // Module_Vector3i operator
 func (cx *Vector3i) Module_Vector3i(right Vector3i) Vector3i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_module_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3i](globalVector3iMethodBindings.operator_module_Vector3i, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Vector3i) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Vector3i) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector3iMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Transform2D{}
@@ -8044,7 +8044,7 @@ func (c *Transform2D) nativePtr() GDExtensionTypePtr {
 func NewTransform2D() Transform2D {
 	cx := Transform2D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalTransform2DMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalTransform2DMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -8056,7 +8056,7 @@ func NewTransform2DWithTransform2D(from Transform2D) Transform2D {
 	// Transform2D
 	// Transform2DEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalTransform2DMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalTransform2DMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -8070,7 +8070,7 @@ func NewTransform2DWithFloat32Vector2(rotation float32, position Vector2) Transf
 	// Vector2
 	// Vector2Encoder
 	args[1] = position.nativeConstPtr()
-	callBuiltinConstructor(globalTransform2DMethodBindings.constructor_2, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalTransform2DMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
 
@@ -8089,7 +8089,7 @@ func NewTransform2DWithFloat32Vector2Float32Vector2(rotation float32, scale Vect
 	// Vector2
 	// Vector2Encoder
 	args[3] = position.nativeConstPtr()
-	callBuiltinConstructor(globalTransform2DMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
+	CallBuiltinConstructor(globalTransform2DMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
 
@@ -8107,7 +8107,7 @@ func NewTransform2DWithVector2Vector2Vector2(x_axis Vector2, y_axis Vector2, ori
 	// Vector2
 	// Vector2Encoder
 	args[2] = origin.nativeConstPtr()
-	callBuiltinConstructor(globalTransform2DMethodBindings.constructor_4, ptr, args[0], args[1], args[2])
+	CallBuiltinConstructor(globalTransform2DMethodBindings.constructor_4, ptr, args[0], args[1], args[2])
 	return cx
 }
 
@@ -8149,7 +8149,7 @@ func (cx *Transform2D) Inverse() Transform2D {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Transform2D](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, nil)
 	return ret
 
 }
@@ -8170,7 +8170,7 @@ func (cx *Transform2D) AffineInverse() Transform2D {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Transform2D](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, nil)
 	return ret
 
 }
@@ -8191,7 +8191,7 @@ func (cx *Transform2D) GetRotation() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -8212,7 +8212,7 @@ func (cx *Transform2D) GetOrigin() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -8233,7 +8233,7 @@ func (cx *Transform2D) GetScale() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -8254,7 +8254,7 @@ func (cx *Transform2D) GetSkew() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -8275,7 +8275,7 @@ func (cx *Transform2D) Orthonormalized() Transform2D {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Transform2D](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, nil)
 	return ret
 
 }
@@ -8300,7 +8300,7 @@ func (cx *Transform2D) Rotated(angle float32) Transform2D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(angle)
 
-	ret := callBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -8327,7 +8327,7 @@ func (cx *Transform2D) RotatedLocal(angle float32) Transform2D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(angle)
 
-	ret := callBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -8354,7 +8354,7 @@ func (cx *Transform2D) Scaled(scale Vector2) Transform2D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
 
-	ret := callBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -8381,7 +8381,7 @@ func (cx *Transform2D) ScaledLocal(scale Vector2) Transform2D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
 
-	ret := callBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -8408,7 +8408,7 @@ func (cx *Transform2D) Translated(offset Vector2) Transform2D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&offset))
 
-	ret := callBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -8435,7 +8435,7 @@ func (cx *Transform2D) TranslatedLocal(offset Vector2) Transform2D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&offset))
 
-	ret := callBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -8458,7 +8458,7 @@ func (cx *Transform2D) Determinant() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -8483,7 +8483,7 @@ func (cx *Transform2D) BasisXform(v Vector2) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&v))
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -8510,7 +8510,7 @@ func (cx *Transform2D) BasisXformInv(v Vector2) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&v))
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -8539,7 +8539,7 @@ func (cx *Transform2D) InterpolateWith(xform Transform2D, weight float32) Transf
 
 	args[1] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -8562,7 +8562,7 @@ func (cx *Transform2D) IsConformal() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -8587,7 +8587,7 @@ func (cx *Transform2D) IsEqualApprox(xform Transform2D) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&xform))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -8610,7 +8610,7 @@ func (cx *Transform2D) IsFinite() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -8635,7 +8635,7 @@ func (cx *Transform2D) LookingAt(target Vector2) Transform2D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&target))
 
-	ret := callBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -8666,21 +8666,21 @@ func (cx *Transform2D) SetIndexed(i int64, value Vector2) {
 
 func (cx *Transform2D) MemberGetx() Vector2 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector2](globalTransform2DMethodBindings.member_x_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector2](globalTransform2DMethodBindings.member_x_getter, bx)
 	return ret
 
 }
 
 func (cx *Transform2D) MemberGety() Vector2 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector2](globalTransform2DMethodBindings.member_y_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector2](globalTransform2DMethodBindings.member_y_getter, bx)
 	return ret
 
 }
 
 func (cx *Transform2D) MemberGetorigin() Vector2 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector2](globalTransform2DMethodBindings.member_origin_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector2](globalTransform2DMethodBindings.member_origin_getter, bx)
 	return ret
 
 }
@@ -8689,21 +8689,21 @@ func (cx *Transform2D) MemberGetorigin() Vector2 {
 func (cx *Transform2D) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Transform2D) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *Transform2D) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_int operator
@@ -8711,7 +8711,7 @@ func (cx *Transform2D) Multiply_int(right int32) Transform2D {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Transform2D](globalTransform2DMethodBindings.operator_multiply_int, lt, rt)
+	return CallBuiltinOperatorPtr[Transform2D](globalTransform2DMethodBindings.operator_multiply_int, lt, rt)
 }
 
 // Multiply_float operator
@@ -8719,14 +8719,14 @@ func (cx *Transform2D) Multiply_float(right float32) Transform2D {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Transform2D](globalTransform2DMethodBindings.operator_multiply_float, lt, rt)
+	return CallBuiltinOperatorPtr[Transform2D](globalTransform2DMethodBindings.operator_multiply_float, lt, rt)
 }
 
 // Multiply_Vector2 operator
 func (cx *Transform2D) Multiply_Vector2(right Vector2) Vector2 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector2](globalTransform2DMethodBindings.operator_multiply_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[Vector2](globalTransform2DMethodBindings.operator_multiply_Vector2, lt, rt)
 }
 
 // Multiply_Rect2 operator
@@ -8734,49 +8734,49 @@ func (cx *Transform2D) Multiply_Rect2(right Rect2) Rect2 {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Rect2](globalTransform2DMethodBindings.operator_multiply_Rect2, lt, rt)
+	return CallBuiltinOperatorPtr[Rect2](globalTransform2DMethodBindings.operator_multiply_Rect2, lt, rt)
 }
 
 // Equal_Transform2D operator
 func (cx *Transform2D) Equal_Transform2D(right Transform2D) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_equal_Transform2D, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_equal_Transform2D, lt, rt)
 }
 
 // Not_equal_Transform2D operator
 func (cx *Transform2D) Not_equal_Transform2D(right Transform2D) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_not_equal_Transform2D, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_not_equal_Transform2D, lt, rt)
 }
 
 // Multiply_Transform2D operator
 func (cx *Transform2D) Multiply_Transform2D(right Transform2D) Transform2D {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Transform2D](globalTransform2DMethodBindings.operator_multiply_Transform2D, lt, rt)
+	return CallBuiltinOperatorPtr[Transform2D](globalTransform2DMethodBindings.operator_multiply_Transform2D, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Transform2D) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Transform2D) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform2DMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Multiply_PackedVector2Array operator
 func (cx *Transform2D) Multiply_PackedVector2Array(right PackedVector2Array) PackedVector2Array {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedVector2Array](globalTransform2DMethodBindings.operator_multiply_PackedVector2Array, lt, rt)
+	return CallBuiltinOperatorPtr[PackedVector2Array](globalTransform2DMethodBindings.operator_multiply_PackedVector2Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Vector4{}
@@ -8802,7 +8802,7 @@ func (c *Vector4) nativePtr() GDExtensionTypePtr {
 func NewVector4() Vector4 {
 	cx := Vector4{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalVector4MethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalVector4MethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -8814,7 +8814,7 @@ func NewVector4WithVector4(from Vector4) Vector4 {
 	// Vector4
 	// Vector4Encoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector4MethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalVector4MethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -8826,7 +8826,7 @@ func NewVector4WithVector4i(from Vector4i) Vector4 {
 	// Vector4i
 	// Vector4iEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector4MethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalVector4MethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -8843,7 +8843,7 @@ func NewVector4WithFloat32Float32Float32Float32(x float32, y float32, z float32,
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(z))
 	// float
 	args[3] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(w))
-	callBuiltinConstructor(globalVector4MethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
+	CallBuiltinConstructor(globalVector4MethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
 
@@ -8885,7 +8885,7 @@ func (cx *Vector4) MinAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -8906,7 +8906,7 @@ func (cx *Vector4) MaxAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -8927,7 +8927,7 @@ func (cx *Vector4) Length() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -8948,7 +8948,7 @@ func (cx *Vector4) LengthSquared() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -8969,7 +8969,7 @@ func (cx *Vector4) Abs() Vector4 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, nil)
 	return ret
 
 }
@@ -8990,7 +8990,7 @@ func (cx *Vector4) Sign() Vector4 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, nil)
 	return ret
 
 }
@@ -9011,7 +9011,7 @@ func (cx *Vector4) Floor() Vector4 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, nil)
 	return ret
 
 }
@@ -9032,7 +9032,7 @@ func (cx *Vector4) Ceil() Vector4 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, nil)
 	return ret
 
 }
@@ -9053,7 +9053,7 @@ func (cx *Vector4) Round() Vector4 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, nil)
 	return ret
 
 }
@@ -9080,7 +9080,7 @@ func (cx *Vector4) Lerp(to Vector4, weight float32) Vector4 {
 
 	args[1] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9113,7 +9113,7 @@ func (cx *Vector4) CubicInterpolate(b Vector4, pre_a Vector4, post_b Vector4, we
 
 	args[3] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9152,7 +9152,7 @@ func (cx *Vector4) CubicInterpolateInTime(b Vector4, pre_a Vector4, post_b Vecto
 
 	args[6] = Float32Encoder.encodeTypePtr(post_b_t)
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9179,7 +9179,7 @@ func (cx *Vector4) Posmod(mod float32) Vector4 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(mod)
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9206,7 +9206,7 @@ func (cx *Vector4) Posmodv(modv Vector4) Vector4 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&modv))
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9233,7 +9233,7 @@ func (cx *Vector4) Snapped(step Vector4) Vector4 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9262,7 +9262,7 @@ func (cx *Vector4) Clamp(min Vector4, max Vector4) Vector4 {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9285,7 +9285,7 @@ func (cx *Vector4) Normalized() Vector4 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, nil)
 	return ret
 
 }
@@ -9306,7 +9306,7 @@ func (cx *Vector4) IsNormalized() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -9331,7 +9331,7 @@ func (cx *Vector4) DirectionTo(to Vector4) Vector4 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9358,7 +9358,7 @@ func (cx *Vector4) DistanceTo(to Vector4) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9385,7 +9385,7 @@ func (cx *Vector4) DistanceSquaredTo(to Vector4) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9412,7 +9412,7 @@ func (cx *Vector4) Dot(with Vector4) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9435,7 +9435,7 @@ func (cx *Vector4) Inverse() Vector4 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector4](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, nil)
 	return ret
 
 }
@@ -9460,7 +9460,7 @@ func (cx *Vector4) IsEqualApprox(to Vector4) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9483,7 +9483,7 @@ func (cx *Vector4) IsZeroApprox() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -9504,7 +9504,7 @@ func (cx *Vector4) IsFinite() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -9533,28 +9533,28 @@ func (cx *Vector4) SetIndexed(i int64, value float32) {
 
 func (cx *Vector4) MemberGetx() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalVector4MethodBindings.member_x_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalVector4MethodBindings.member_x_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector4) MemberGety() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalVector4MethodBindings.member_y_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalVector4MethodBindings.member_y_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector4) MemberGetz() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalVector4MethodBindings.member_z_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalVector4MethodBindings.member_z_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector4) MemberGetw() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalVector4MethodBindings.member_w_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalVector4MethodBindings.member_w_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
@@ -9563,35 +9563,35 @@ func (cx *Vector4) MemberGetw() float32 {
 func (cx *Vector4) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Vector4) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Negate operator
 func (cx *Vector4) Negate() Vector4 {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_negate, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_negate, lt, rt)
 }
 
 // Positive operator
 func (cx *Vector4) Positive() Vector4 {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_positive, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_positive, lt, rt)
 }
 
 // Not operator
 func (cx *Vector4) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_int operator
@@ -9599,7 +9599,7 @@ func (cx *Vector4) Multiply_int(right int32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_multiply_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_multiply_int, lt, rt)
 }
 
 // Divide_int operator
@@ -9607,7 +9607,7 @@ func (cx *Vector4) Divide_int(right int32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_divide_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_divide_int, lt, rt)
 }
 
 // Multiply_float operator
@@ -9615,7 +9615,7 @@ func (cx *Vector4) Multiply_float(right float32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_multiply_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_multiply_float, lt, rt)
 }
 
 // Divide_float operator
@@ -9623,98 +9623,98 @@ func (cx *Vector4) Divide_float(right float32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_divide_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_divide_float, lt, rt)
 }
 
 // Equal_Vector4 operator
 func (cx *Vector4) Equal_Vector4(right Vector4) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_equal_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_equal_Vector4, lt, rt)
 }
 
 // Not_equal_Vector4 operator
 func (cx *Vector4) Not_equal_Vector4(right Vector4) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_not_equal_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_not_equal_Vector4, lt, rt)
 }
 
 // Less_Vector4 operator
 func (cx *Vector4) Less_Vector4(right Vector4) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_less_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_less_Vector4, lt, rt)
 }
 
 // Less_equal_Vector4 operator
 func (cx *Vector4) Less_equal_Vector4(right Vector4) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_less_equal_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_less_equal_Vector4, lt, rt)
 }
 
 // Greater_Vector4 operator
 func (cx *Vector4) Greater_Vector4(right Vector4) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_greater_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_greater_Vector4, lt, rt)
 }
 
 // Greater_equal_Vector4 operator
 func (cx *Vector4) Greater_equal_Vector4(right Vector4) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_greater_equal_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_greater_equal_Vector4, lt, rt)
 }
 
 // Add_Vector4 operator
 func (cx *Vector4) Add_Vector4(right Vector4) Vector4 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_add_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_add_Vector4, lt, rt)
 }
 
 // Subtract_Vector4 operator
 func (cx *Vector4) Subtract_Vector4(right Vector4) Vector4 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_subtract_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_subtract_Vector4, lt, rt)
 }
 
 // Multiply_Vector4 operator
 func (cx *Vector4) Multiply_Vector4(right Vector4) Vector4 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_multiply_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_multiply_Vector4, lt, rt)
 }
 
 // Divide_Vector4 operator
 func (cx *Vector4) Divide_Vector4(right Vector4) Vector4 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_divide_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_divide_Vector4, lt, rt)
 }
 
 // Multiply_Projection operator
 func (cx *Vector4) Multiply_Projection(right Projection) Vector4 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_multiply_Projection, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4MethodBindings.operator_multiply_Projection, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Vector4) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Vector4) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4MethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Vector4i{}
@@ -9740,7 +9740,7 @@ func (c *Vector4i) nativePtr() GDExtensionTypePtr {
 func NewVector4i() Vector4i {
 	cx := Vector4i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalVector4iMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalVector4iMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -9752,7 +9752,7 @@ func NewVector4iWithVector4i(from Vector4i) Vector4i {
 	// Vector4i
 	// Vector4iEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector4iMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalVector4iMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -9764,7 +9764,7 @@ func NewVector4iWithVector4(from Vector4) Vector4i {
 	// Vector4
 	// Vector4Encoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalVector4iMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalVector4iMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -9781,7 +9781,7 @@ func NewVector4iWithInt32Int32Int32Int32(x int32, y int32, z int32, w int32) Vec
 	args[2] = (GDExtensionConstTypePtr)(Int32Encoder.encodeTypePtr(z))
 	// int
 	args[3] = (GDExtensionConstTypePtr)(Int32Encoder.encodeTypePtr(w))
-	callBuiltinConstructor(globalVector4iMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
+	CallBuiltinConstructor(globalVector4iMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
 
@@ -9823,7 +9823,7 @@ func (cx *Vector4i) MinAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -9844,7 +9844,7 @@ func (cx *Vector4i) MaxAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -9865,7 +9865,7 @@ func (cx *Vector4i) Length() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -9886,7 +9886,7 @@ func (cx *Vector4i) LengthSquared() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -9907,7 +9907,7 @@ func (cx *Vector4i) Sign() Vector4i {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector4i](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, nil)
 	return ret
 
 }
@@ -9928,7 +9928,7 @@ func (cx *Vector4i) Abs() Vector4i {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector4i](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, nil)
 	return ret
 
 }
@@ -9955,7 +9955,7 @@ func (cx *Vector4i) Clamp(min Vector4i, max Vector4i) Vector4i {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
 
-	ret := callBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -9982,7 +9982,7 @@ func (cx *Vector4i) Snapped(step Vector4i) Vector4i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
 
-	ret := callBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -10013,28 +10013,28 @@ func (cx *Vector4i) SetIndexed(i int64, value int32) {
 
 func (cx *Vector4i) MemberGetx() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_x_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_x_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector4i) MemberGety() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_y_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_y_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector4i) MemberGetz() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_z_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_z_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Vector4i) MemberGetw() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_w_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalVector4iMethodBindings.member_w_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
@@ -10043,35 +10043,35 @@ func (cx *Vector4i) MemberGetw() int32 {
 func (cx *Vector4i) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Vector4i) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Negate operator
 func (cx *Vector4i) Negate() Vector4i {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_negate, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_negate, lt, rt)
 }
 
 // Positive operator
 func (cx *Vector4i) Positive() Vector4i {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_positive, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_positive, lt, rt)
 }
 
 // Not operator
 func (cx *Vector4i) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_int operator
@@ -10079,7 +10079,7 @@ func (cx *Vector4i) Multiply_int(right int32) Vector4i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_multiply_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_multiply_int, lt, rt)
 }
 
 // Divide_int operator
@@ -10087,7 +10087,7 @@ func (cx *Vector4i) Divide_int(right int32) Vector4i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_divide_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_divide_int, lt, rt)
 }
 
 // Module_int operator
@@ -10095,7 +10095,7 @@ func (cx *Vector4i) Module_int(right int32) Vector4i {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_module_int, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_module_int, lt, rt)
 }
 
 // Multiply_float operator
@@ -10103,7 +10103,7 @@ func (cx *Vector4i) Multiply_float(right float32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector4](globalVector4iMethodBindings.operator_multiply_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4iMethodBindings.operator_multiply_float, lt, rt)
 }
 
 // Divide_float operator
@@ -10111,98 +10111,98 @@ func (cx *Vector4i) Divide_float(right float32) Vector4 {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Vector4](globalVector4iMethodBindings.operator_divide_float, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalVector4iMethodBindings.operator_divide_float, lt, rt)
 }
 
 // Equal_Vector4i operator
 func (cx *Vector4i) Equal_Vector4i(right Vector4i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_equal_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_equal_Vector4i, lt, rt)
 }
 
 // Not_equal_Vector4i operator
 func (cx *Vector4i) Not_equal_Vector4i(right Vector4i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_not_equal_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_not_equal_Vector4i, lt, rt)
 }
 
 // Less_Vector4i operator
 func (cx *Vector4i) Less_Vector4i(right Vector4i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_less_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_less_Vector4i, lt, rt)
 }
 
 // Less_equal_Vector4i operator
 func (cx *Vector4i) Less_equal_Vector4i(right Vector4i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_less_equal_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_less_equal_Vector4i, lt, rt)
 }
 
 // Greater_Vector4i operator
 func (cx *Vector4i) Greater_Vector4i(right Vector4i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_greater_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_greater_Vector4i, lt, rt)
 }
 
 // Greater_equal_Vector4i operator
 func (cx *Vector4i) Greater_equal_Vector4i(right Vector4i) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_greater_equal_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_greater_equal_Vector4i, lt, rt)
 }
 
 // Add_Vector4i operator
 func (cx *Vector4i) Add_Vector4i(right Vector4i) Vector4i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_add_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_add_Vector4i, lt, rt)
 }
 
 // Subtract_Vector4i operator
 func (cx *Vector4i) Subtract_Vector4i(right Vector4i) Vector4i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_subtract_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_subtract_Vector4i, lt, rt)
 }
 
 // Multiply_Vector4i operator
 func (cx *Vector4i) Multiply_Vector4i(right Vector4i) Vector4i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_multiply_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_multiply_Vector4i, lt, rt)
 }
 
 // Divide_Vector4i operator
 func (cx *Vector4i) Divide_Vector4i(right Vector4i) Vector4i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_divide_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_divide_Vector4i, lt, rt)
 }
 
 // Module_Vector4i operator
 func (cx *Vector4i) Module_Vector4i(right Vector4i) Vector4i {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_module_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4i](globalVector4iMethodBindings.operator_module_Vector4i, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Vector4i) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Vector4i) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalVector4iMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Plane{}
@@ -10228,7 +10228,7 @@ func (c *Plane) nativePtr() GDExtensionTypePtr {
 func NewPlane() Plane {
 	cx := Plane{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalPlaneMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -10240,7 +10240,7 @@ func NewPlaneWithPlane(from Plane) Plane {
 	// Plane
 	// PlaneEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPlaneMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -10252,7 +10252,7 @@ func NewPlaneWithVector3(normal Vector3) Plane {
 	// Vector3
 	// Vector3Encoder
 	args[0] = normal.nativeConstPtr()
-	callBuiltinConstructor(globalPlaneMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -10266,7 +10266,7 @@ func NewPlaneWithVector3Float32(normal Vector3, d float32) Plane {
 	args[0] = normal.nativeConstPtr()
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(d))
-	callBuiltinConstructor(globalPlaneMethodBindings.constructor_3, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
 
@@ -10281,7 +10281,7 @@ func NewPlaneWithVector3Vector3(normal Vector3, point Vector3) Plane {
 	// Vector3
 	// Vector3Encoder
 	args[1] = point.nativeConstPtr()
-	callBuiltinConstructor(globalPlaneMethodBindings.constructor_4, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_4, ptr, args[0], args[1])
 	return cx
 }
 
@@ -10299,7 +10299,7 @@ func NewPlaneWithVector3Vector3Vector3(point1 Vector3, point2 Vector3, point3 Ve
 	// Vector3
 	// Vector3Encoder
 	args[2] = point3.nativeConstPtr()
-	callBuiltinConstructor(globalPlaneMethodBindings.constructor_5, ptr, args[0], args[1], args[2])
+	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_5, ptr, args[0], args[1], args[2])
 	return cx
 }
 
@@ -10316,7 +10316,7 @@ func NewPlaneWithFloat32Float32Float32Float32(a float32, b float32, c float32, d
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(c))
 	// float
 	args[3] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(d))
-	callBuiltinConstructor(globalPlaneMethodBindings.constructor_6, ptr, args[0], args[1], args[2], args[3])
+	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_6, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
 
@@ -10358,7 +10358,7 @@ func (cx *Plane) Normalized() Plane {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Plane](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Plane](mb, bx, nil)
 	return ret
 
 }
@@ -10379,7 +10379,7 @@ func (cx *Plane) GetCenter() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -10404,7 +10404,7 @@ func (cx *Plane) IsEqualApprox(to_plane Plane) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to_plane))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -10427,7 +10427,7 @@ func (cx *Plane) IsFinite() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -10452,7 +10452,7 @@ func (cx *Plane) IsPointOver(point Vector3) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -10479,7 +10479,7 @@ func (cx *Plane) DistanceTo(point Vector3) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -10508,7 +10508,7 @@ func (cx *Plane) HasPoint(point Vector3, tolerance float32) bool {
 
 	args[1] = Float32Encoder.encodeTypePtr(tolerance)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -10535,7 +10535,7 @@ func (cx *Plane) Project(point Vector3) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -10564,7 +10564,7 @@ func (cx *Plane) Intersect3(b Plane, c Plane) Variant {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&c))
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -10593,7 +10593,7 @@ func (cx *Plane) IntersectsRay(from Vector3, dir Vector3) Variant {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&dir))
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -10622,7 +10622,7 @@ func (cx *Plane) IntersectsSegment(from Vector3, to Vector3) Variant {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -10633,35 +10633,35 @@ func (cx *Plane) IntersectsSegment(from Vector3, to Vector3) Variant {
 
 func (cx *Plane) MemberGetx() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalPlaneMethodBindings.member_x_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalPlaneMethodBindings.member_x_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Plane) MemberGety() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalPlaneMethodBindings.member_y_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalPlaneMethodBindings.member_y_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Plane) MemberGetz() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalPlaneMethodBindings.member_z_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalPlaneMethodBindings.member_z_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Plane) MemberGetd() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalPlaneMethodBindings.member_d_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalPlaneMethodBindings.member_d_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Plane) MemberGetnormal() Vector3 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector3](globalPlaneMethodBindings.member_normal_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector3](globalPlaneMethodBindings.member_normal_getter, bx)
 	return ret
 
 }
@@ -10670,70 +10670,70 @@ func (cx *Plane) MemberGetnormal() Vector3 {
 func (cx *Plane) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Plane) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Negate operator
 func (cx *Plane) Negate() Plane {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Plane](globalPlaneMethodBindings.operator_negate, lt, rt)
+	return CallBuiltinOperatorPtr[Plane](globalPlaneMethodBindings.operator_negate, lt, rt)
 }
 
 // Positive operator
 func (cx *Plane) Positive() Plane {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Plane](globalPlaneMethodBindings.operator_positive, lt, rt)
+	return CallBuiltinOperatorPtr[Plane](globalPlaneMethodBindings.operator_positive, lt, rt)
 }
 
 // Not operator
 func (cx *Plane) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_not, lt, rt)
 }
 
 // Equal_Plane operator
 func (cx *Plane) Equal_Plane(right Plane) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_equal_Plane, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_equal_Plane, lt, rt)
 }
 
 // Not_equal_Plane operator
 func (cx *Plane) Not_equal_Plane(right Plane) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_not_equal_Plane, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_not_equal_Plane, lt, rt)
 }
 
 // Multiply_Transform3D operator
 func (cx *Plane) Multiply_Transform3D(right Transform3D) Plane {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Plane](globalPlaneMethodBindings.operator_multiply_Transform3D, lt, rt)
+	return CallBuiltinOperatorPtr[Plane](globalPlaneMethodBindings.operator_multiply_Transform3D, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Plane) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Plane) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPlaneMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Quaternion{}
@@ -10759,7 +10759,7 @@ func (c *Quaternion) nativePtr() GDExtensionTypePtr {
 func NewQuaternion() Quaternion {
 	cx := Quaternion{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalQuaternionMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -10771,7 +10771,7 @@ func NewQuaternionWithQuaternion(from Quaternion) Quaternion {
 	// Quaternion
 	// QuaternionEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalQuaternionMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -10783,7 +10783,7 @@ func NewQuaternionWithBasis(from Basis) Quaternion {
 	// Basis
 	// BasisEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalQuaternionMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -10797,7 +10797,7 @@ func NewQuaternionWithVector3Float32(axis Vector3, angle float32) Quaternion {
 	args[0] = axis.nativeConstPtr()
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(angle))
-	callBuiltinConstructor(globalQuaternionMethodBindings.constructor_3, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
 
@@ -10812,7 +10812,7 @@ func NewQuaternionWithVector3Vector3(arc_from Vector3, arc_to Vector3) Quaternio
 	// Vector3
 	// Vector3Encoder
 	args[1] = arc_to.nativeConstPtr()
-	callBuiltinConstructor(globalQuaternionMethodBindings.constructor_4, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_4, ptr, args[0], args[1])
 	return cx
 }
 
@@ -10829,7 +10829,7 @@ func NewQuaternionWithFloat32Float32Float32Float32(x float32, y float32, z float
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(z))
 	// float
 	args[3] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(w))
-	callBuiltinConstructor(globalQuaternionMethodBindings.constructor_5, ptr, args[0], args[1], args[2], args[3])
+	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_5, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
 
@@ -10871,7 +10871,7 @@ func (cx *Quaternion) Length() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -10892,7 +10892,7 @@ func (cx *Quaternion) LengthSquared() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -10913,7 +10913,7 @@ func (cx *Quaternion) Normalized() Quaternion {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Quaternion](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, nil)
 	return ret
 
 }
@@ -10934,7 +10934,7 @@ func (cx *Quaternion) IsNormalized() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -10959,7 +10959,7 @@ func (cx *Quaternion) IsEqualApprox(to Quaternion) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -10982,7 +10982,7 @@ func (cx *Quaternion) IsFinite() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -11003,7 +11003,7 @@ func (cx *Quaternion) Inverse() Quaternion {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Quaternion](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, nil)
 	return ret
 
 }
@@ -11024,7 +11024,7 @@ func (cx *Quaternion) Log() Quaternion {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Quaternion](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, nil)
 	return ret
 
 }
@@ -11045,7 +11045,7 @@ func (cx *Quaternion) Exp() Quaternion {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Quaternion](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, nil)
 	return ret
 
 }
@@ -11070,7 +11070,7 @@ func (cx *Quaternion) AngleTo(to Quaternion) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11097,7 +11097,7 @@ func (cx *Quaternion) Dot(with Quaternion) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11126,7 +11126,7 @@ func (cx *Quaternion) Slerp(to Quaternion, weight float32) Quaternion {
 
 	args[1] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11155,7 +11155,7 @@ func (cx *Quaternion) Slerpni(to Quaternion, weight float32) Quaternion {
 
 	args[1] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11188,7 +11188,7 @@ func (cx *Quaternion) SphericalCubicInterpolate(b Quaternion, pre_a Quaternion, 
 
 	args[3] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11227,7 +11227,7 @@ func (cx *Quaternion) SphericalCubicInterpolateInTime(b Quaternion, pre_a Quater
 
 	args[6] = Float32Encoder.encodeTypePtr(post_b_t)
 
-	ret := callBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11254,7 +11254,7 @@ func (cx *Quaternion) GetEuler(order int32) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(order)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11281,7 +11281,7 @@ func (cx *Quaternion) FromEuler(euler Vector3) Quaternion {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&euler))
 
-	ret := callBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11304,7 +11304,7 @@ func (cx *Quaternion) GetAxis() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -11325,7 +11325,7 @@ func (cx *Quaternion) GetAngle() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -11354,28 +11354,28 @@ func (cx *Quaternion) SetIndexed(i int64, value float32) {
 
 func (cx *Quaternion) MemberGetx() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalQuaternionMethodBindings.member_x_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalQuaternionMethodBindings.member_x_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Quaternion) MemberGety() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalQuaternionMethodBindings.member_y_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalQuaternionMethodBindings.member_y_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Quaternion) MemberGetz() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalQuaternionMethodBindings.member_z_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalQuaternionMethodBindings.member_z_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Quaternion) MemberGetw() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalQuaternionMethodBindings.member_w_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalQuaternionMethodBindings.member_w_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
@@ -11384,35 +11384,35 @@ func (cx *Quaternion) MemberGetw() float32 {
 func (cx *Quaternion) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Quaternion) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Negate operator
 func (cx *Quaternion) Negate() Quaternion {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_negate, lt, rt)
+	return CallBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_negate, lt, rt)
 }
 
 // Positive operator
 func (cx *Quaternion) Positive() Quaternion {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_positive, lt, rt)
+	return CallBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_positive, lt, rt)
 }
 
 // Not operator
 func (cx *Quaternion) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_int operator
@@ -11420,7 +11420,7 @@ func (cx *Quaternion) Multiply_int(right int32) Quaternion {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_multiply_int, lt, rt)
+	return CallBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_multiply_int, lt, rt)
 }
 
 // Divide_int operator
@@ -11428,7 +11428,7 @@ func (cx *Quaternion) Divide_int(right int32) Quaternion {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_divide_int, lt, rt)
+	return CallBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_divide_int, lt, rt)
 }
 
 // Multiply_float operator
@@ -11436,7 +11436,7 @@ func (cx *Quaternion) Multiply_float(right float32) Quaternion {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_multiply_float, lt, rt)
+	return CallBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_multiply_float, lt, rt)
 }
 
 // Divide_float operator
@@ -11444,63 +11444,63 @@ func (cx *Quaternion) Divide_float(right float32) Quaternion {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_divide_float, lt, rt)
+	return CallBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_divide_float, lt, rt)
 }
 
 // Multiply_Vector3 operator
 func (cx *Quaternion) Multiply_Vector3(right Vector3) Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3](globalQuaternionMethodBindings.operator_multiply_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalQuaternionMethodBindings.operator_multiply_Vector3, lt, rt)
 }
 
 // Equal_Quaternion operator
 func (cx *Quaternion) Equal_Quaternion(right Quaternion) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_equal_Quaternion, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_equal_Quaternion, lt, rt)
 }
 
 // Not_equal_Quaternion operator
 func (cx *Quaternion) Not_equal_Quaternion(right Quaternion) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_not_equal_Quaternion, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_not_equal_Quaternion, lt, rt)
 }
 
 // Add_Quaternion operator
 func (cx *Quaternion) Add_Quaternion(right Quaternion) Quaternion {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_add_Quaternion, lt, rt)
+	return CallBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_add_Quaternion, lt, rt)
 }
 
 // Subtract_Quaternion operator
 func (cx *Quaternion) Subtract_Quaternion(right Quaternion) Quaternion {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_subtract_Quaternion, lt, rt)
+	return CallBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_subtract_Quaternion, lt, rt)
 }
 
 // Multiply_Quaternion operator
 func (cx *Quaternion) Multiply_Quaternion(right Quaternion) Quaternion {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_multiply_Quaternion, lt, rt)
+	return CallBuiltinOperatorPtr[Quaternion](globalQuaternionMethodBindings.operator_multiply_Quaternion, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Quaternion) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Quaternion) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalQuaternionMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &AABB{}
@@ -11526,7 +11526,7 @@ func (c *AABB) nativePtr() GDExtensionTypePtr {
 func NewAABB() AABB {
 	cx := AABB{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalAABBMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalAABBMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -11538,7 +11538,7 @@ func NewAABBWithAABB(from AABB) AABB {
 	// AABB
 	// AABBEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalAABBMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalAABBMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -11553,7 +11553,7 @@ func NewAABBWithVector3Vector3(position Vector3, size Vector3) AABB {
 	// Vector3
 	// Vector3Encoder
 	args[1] = size.nativeConstPtr()
-	callBuiltinConstructor(globalAABBMethodBindings.constructor_2, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalAABBMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
 
@@ -11595,7 +11595,7 @@ func (cx *AABB) Abs() AABB {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[AABB](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[AABB](mb, bx, nil)
 	return ret
 
 }
@@ -11616,7 +11616,7 @@ func (cx *AABB) GetCenter() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -11637,7 +11637,7 @@ func (cx *AABB) GetVolume() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -11658,7 +11658,7 @@ func (cx *AABB) HasVolume() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -11679,7 +11679,7 @@ func (cx *AABB) HasSurface() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -11704,7 +11704,7 @@ func (cx *AABB) HasPoint(point Vector3) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11731,7 +11731,7 @@ func (cx *AABB) IsEqualApprox(aabb AABB) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&aabb))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11754,7 +11754,7 @@ func (cx *AABB) IsFinite() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -11779,7 +11779,7 @@ func (cx *AABB) Intersects(with AABB) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11806,7 +11806,7 @@ func (cx *AABB) Encloses(with AABB) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11833,7 +11833,7 @@ func (cx *AABB) IntersectsPlane(plane Plane) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&plane))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11860,7 +11860,7 @@ func (cx *AABB) Intersection(with AABB) AABB {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[AABB](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[AABB](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11887,7 +11887,7 @@ func (cx *AABB) Merge(with AABB) AABB {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[AABB](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[AABB](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11914,7 +11914,7 @@ func (cx *AABB) Expand(to_point Vector3) AABB {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to_point))
 
-	ret := callBuiltinMethodPtrRet[AABB](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[AABB](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11941,7 +11941,7 @@ func (cx *AABB) Grow(by float32) AABB {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(by)
 
-	ret := callBuiltinMethodPtrRet[AABB](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[AABB](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11968,7 +11968,7 @@ func (cx *AABB) GetSupport(dir Vector3) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&dir))
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -11991,7 +11991,7 @@ func (cx *AABB) GetLongestAxis() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -12012,7 +12012,7 @@ func (cx *AABB) GetLongestAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -12033,7 +12033,7 @@ func (cx *AABB) GetLongestAxisSize() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -12054,7 +12054,7 @@ func (cx *AABB) GetShortestAxis() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -12075,7 +12075,7 @@ func (cx *AABB) GetShortestAxisIndex() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -12096,7 +12096,7 @@ func (cx *AABB) GetShortestAxisSize() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -12121,7 +12121,7 @@ func (cx *AABB) GetEndpoint(idx int32) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(idx)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12150,7 +12150,7 @@ func (cx *AABB) IntersectsSegment(from Vector3, to Vector3) Variant {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12179,7 +12179,7 @@ func (cx *AABB) IntersectsRay(from Vector3, dir Vector3) Variant {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&dir))
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12190,21 +12190,21 @@ func (cx *AABB) IntersectsRay(from Vector3, dir Vector3) Variant {
 
 func (cx *AABB) MemberGetposition() Vector3 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector3](globalAABBMethodBindings.member_position_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector3](globalAABBMethodBindings.member_position_getter, bx)
 	return ret
 
 }
 
 func (cx *AABB) MemberGetsize() Vector3 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector3](globalAABBMethodBindings.member_size_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector3](globalAABBMethodBindings.member_size_getter, bx)
 	return ret
 
 }
 
 func (cx *AABB) MemberGetend() Vector3 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector3](globalAABBMethodBindings.member_end_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector3](globalAABBMethodBindings.member_end_getter, bx)
 	return ret
 
 }
@@ -12213,56 +12213,56 @@ func (cx *AABB) MemberGetend() Vector3 {
 func (cx *AABB) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *AABB) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *AABB) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_not, lt, rt)
 }
 
 // Equal_AABB operator
 func (cx *AABB) Equal_AABB(right AABB) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_equal_AABB, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_equal_AABB, lt, rt)
 }
 
 // Not_equal_AABB operator
 func (cx *AABB) Not_equal_AABB(right AABB) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_not_equal_AABB, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_not_equal_AABB, lt, rt)
 }
 
 // Multiply_Transform3D operator
 func (cx *AABB) Multiply_Transform3D(right Transform3D) AABB {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[AABB](globalAABBMethodBindings.operator_multiply_Transform3D, lt, rt)
+	return CallBuiltinOperatorPtr[AABB](globalAABBMethodBindings.operator_multiply_Transform3D, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *AABB) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *AABB) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalAABBMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Basis{}
@@ -12288,7 +12288,7 @@ func (c *Basis) nativePtr() GDExtensionTypePtr {
 func NewBasis() Basis {
 	cx := Basis{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalBasisMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalBasisMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -12300,7 +12300,7 @@ func NewBasisWithBasis(from Basis) Basis {
 	// Basis
 	// BasisEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalBasisMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalBasisMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -12312,7 +12312,7 @@ func NewBasisWithQuaternion(from Quaternion) Basis {
 	// Quaternion
 	// QuaternionEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalBasisMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalBasisMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -12326,7 +12326,7 @@ func NewBasisWithVector3Float32(axis Vector3, angle float32) Basis {
 	args[0] = axis.nativeConstPtr()
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(angle))
-	callBuiltinConstructor(globalBasisMethodBindings.constructor_3, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalBasisMethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
 
@@ -12344,7 +12344,7 @@ func NewBasisWithVector3Vector3Vector3(x_axis Vector3, y_axis Vector3, z_axis Ve
 	// Vector3
 	// Vector3Encoder
 	args[2] = z_axis.nativeConstPtr()
-	callBuiltinConstructor(globalBasisMethodBindings.constructor_4, ptr, args[0], args[1], args[2])
+	CallBuiltinConstructor(globalBasisMethodBindings.constructor_4, ptr, args[0], args[1], args[2])
 	return cx
 }
 
@@ -12386,7 +12386,7 @@ func (cx *Basis) Inverse() Basis {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Basis](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, nil)
 	return ret
 
 }
@@ -12407,7 +12407,7 @@ func (cx *Basis) Transposed() Basis {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Basis](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, nil)
 	return ret
 
 }
@@ -12428,7 +12428,7 @@ func (cx *Basis) Orthonormalized() Basis {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Basis](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, nil)
 	return ret
 
 }
@@ -12449,7 +12449,7 @@ func (cx *Basis) Determinant() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -12476,7 +12476,7 @@ func (cx *Basis) Rotated(axis Vector3, angle float32) Basis {
 
 	args[1] = Float32Encoder.encodeTypePtr(angle)
 
-	ret := callBuiltinMethodPtrRet[Basis](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12503,7 +12503,7 @@ func (cx *Basis) Scaled(scale Vector3) Basis {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
 
-	ret := callBuiltinMethodPtrRet[Basis](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12526,7 +12526,7 @@ func (cx *Basis) GetScale() Vector3 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, nil)
 	return ret
 
 }
@@ -12551,7 +12551,7 @@ func (cx *Basis) GetEuler(order int32) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(order)
 
-	ret := callBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12578,7 +12578,7 @@ func (cx *Basis) Tdotx(with Vector3) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12605,7 +12605,7 @@ func (cx *Basis) Tdoty(with Vector3) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12632,7 +12632,7 @@ func (cx *Basis) Tdotz(with Vector3) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12661,7 +12661,7 @@ func (cx *Basis) Slerp(to Basis, weight float32) Basis {
 
 	args[1] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Basis](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12684,7 +12684,7 @@ func (cx *Basis) IsConformal() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -12709,7 +12709,7 @@ func (cx *Basis) IsEqualApprox(b Basis) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12732,7 +12732,7 @@ func (cx *Basis) IsFinite() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -12753,7 +12753,7 @@ func (cx *Basis) GetRotationQuaternion() Quaternion {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Quaternion](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, nil)
 	return ret
 
 }
@@ -12782,7 +12782,7 @@ func (cx *Basis) LookingAt(target Vector3, up Vector3, use_model_front bool) Bas
 
 	args[2] = BoolEncoder.encodeTypePtr(use_model_front)
 
-	ret := callBuiltinMethodPtrRet[Basis](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12809,7 +12809,7 @@ func (cx *Basis) FromScale(scale Vector3) Basis {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
 
-	ret := callBuiltinMethodPtrRet[Basis](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12838,7 +12838,7 @@ func (cx *Basis) FromEuler(euler Vector3, order int32) Basis {
 
 	args[1] = Int32Encoder.encodeTypePtr(order)
 
-	ret := callBuiltinMethodPtrRet[Basis](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -12869,21 +12869,21 @@ func (cx *Basis) SetIndexed(i int64, value Vector3) {
 
 func (cx *Basis) MemberGetx() Vector3 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector3](globalBasisMethodBindings.member_x_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector3](globalBasisMethodBindings.member_x_getter, bx)
 	return ret
 
 }
 
 func (cx *Basis) MemberGety() Vector3 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector3](globalBasisMethodBindings.member_y_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector3](globalBasisMethodBindings.member_y_getter, bx)
 	return ret
 
 }
 
 func (cx *Basis) MemberGetz() Vector3 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector3](globalBasisMethodBindings.member_z_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector3](globalBasisMethodBindings.member_z_getter, bx)
 	return ret
 
 }
@@ -12892,21 +12892,21 @@ func (cx *Basis) MemberGetz() Vector3 {
 func (cx *Basis) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Basis) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *Basis) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_int operator
@@ -12914,7 +12914,7 @@ func (cx *Basis) Multiply_int(right int32) Basis {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Basis](globalBasisMethodBindings.operator_multiply_int, lt, rt)
+	return CallBuiltinOperatorPtr[Basis](globalBasisMethodBindings.operator_multiply_int, lt, rt)
 }
 
 // Multiply_float operator
@@ -12922,49 +12922,49 @@ func (cx *Basis) Multiply_float(right float32) Basis {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Basis](globalBasisMethodBindings.operator_multiply_float, lt, rt)
+	return CallBuiltinOperatorPtr[Basis](globalBasisMethodBindings.operator_multiply_float, lt, rt)
 }
 
 // Multiply_Vector3 operator
 func (cx *Basis) Multiply_Vector3(right Vector3) Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3](globalBasisMethodBindings.operator_multiply_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalBasisMethodBindings.operator_multiply_Vector3, lt, rt)
 }
 
 // Equal_Basis operator
 func (cx *Basis) Equal_Basis(right Basis) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_equal_Basis, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_equal_Basis, lt, rt)
 }
 
 // Not_equal_Basis operator
 func (cx *Basis) Not_equal_Basis(right Basis) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_not_equal_Basis, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_not_equal_Basis, lt, rt)
 }
 
 // Multiply_Basis operator
 func (cx *Basis) Multiply_Basis(right Basis) Basis {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Basis](globalBasisMethodBindings.operator_multiply_Basis, lt, rt)
+	return CallBuiltinOperatorPtr[Basis](globalBasisMethodBindings.operator_multiply_Basis, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Basis) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Basis) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalBasisMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Transform3D{}
@@ -12990,7 +12990,7 @@ func (c *Transform3D) nativePtr() GDExtensionTypePtr {
 func NewTransform3D() Transform3D {
 	cx := Transform3D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalTransform3DMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalTransform3DMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -13002,7 +13002,7 @@ func NewTransform3DWithTransform3D(from Transform3D) Transform3D {
 	// Transform3D
 	// Transform3DEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalTransform3DMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalTransform3DMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -13017,7 +13017,7 @@ func NewTransform3DWithBasisVector3(basis Basis, origin Vector3) Transform3D {
 	// Vector3
 	// Vector3Encoder
 	args[1] = origin.nativeConstPtr()
-	callBuiltinConstructor(globalTransform3DMethodBindings.constructor_2, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalTransform3DMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
 
@@ -13038,7 +13038,7 @@ func NewTransform3DWithVector3Vector3Vector3Vector3(x_axis Vector3, y_axis Vecto
 	// Vector3
 	// Vector3Encoder
 	args[3] = origin.nativeConstPtr()
-	callBuiltinConstructor(globalTransform3DMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
+	CallBuiltinConstructor(globalTransform3DMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
 
@@ -13050,7 +13050,7 @@ func NewTransform3DWithProjection(from Projection) Transform3D {
 	// Projection
 	// ProjectionEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalTransform3DMethodBindings.constructor_4, ptr, args[0])
+	CallBuiltinConstructor(globalTransform3DMethodBindings.constructor_4, ptr, args[0])
 	return cx
 }
 
@@ -13092,7 +13092,7 @@ func (cx *Transform3D) Inverse() Transform3D {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Transform3D](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, nil)
 	return ret
 
 }
@@ -13113,7 +13113,7 @@ func (cx *Transform3D) AffineInverse() Transform3D {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Transform3D](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, nil)
 	return ret
 
 }
@@ -13134,7 +13134,7 @@ func (cx *Transform3D) Orthonormalized() Transform3D {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Transform3D](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, nil)
 	return ret
 
 }
@@ -13161,7 +13161,7 @@ func (cx *Transform3D) Rotated(axis Vector3, angle float32) Transform3D {
 
 	args[1] = Float32Encoder.encodeTypePtr(angle)
 
-	ret := callBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13190,7 +13190,7 @@ func (cx *Transform3D) RotatedLocal(axis Vector3, angle float32) Transform3D {
 
 	args[1] = Float32Encoder.encodeTypePtr(angle)
 
-	ret := callBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13217,7 +13217,7 @@ func (cx *Transform3D) Scaled(scale Vector3) Transform3D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
 
-	ret := callBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13244,7 +13244,7 @@ func (cx *Transform3D) ScaledLocal(scale Vector3) Transform3D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
 
-	ret := callBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13271,7 +13271,7 @@ func (cx *Transform3D) Translated(offset Vector3) Transform3D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&offset))
 
-	ret := callBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13298,7 +13298,7 @@ func (cx *Transform3D) TranslatedLocal(offset Vector3) Transform3D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&offset))
 
-	ret := callBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13329,7 +13329,7 @@ func (cx *Transform3D) LookingAt(target Vector3, up Vector3, use_model_front boo
 
 	args[2] = BoolEncoder.encodeTypePtr(use_model_front)
 
-	ret := callBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13358,7 +13358,7 @@ func (cx *Transform3D) InterpolateWith(xform Transform3D, weight float32) Transf
 
 	args[1] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13385,7 +13385,7 @@ func (cx *Transform3D) IsEqualApprox(xform Transform3D) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&xform))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13408,7 +13408,7 @@ func (cx *Transform3D) IsFinite() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -13417,14 +13417,14 @@ func (cx *Transform3D) IsFinite() bool {
 
 func (cx *Transform3D) MemberGetbasis() Basis {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Basis](globalTransform3DMethodBindings.member_basis_getter, bx)
+	ret := CallBuiltinPtrGetter[Basis](globalTransform3DMethodBindings.member_basis_getter, bx)
 	return ret
 
 }
 
 func (cx *Transform3D) MemberGetorigin() Vector3 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector3](globalTransform3DMethodBindings.member_origin_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector3](globalTransform3DMethodBindings.member_origin_getter, bx)
 	return ret
 
 }
@@ -13433,21 +13433,21 @@ func (cx *Transform3D) MemberGetorigin() Vector3 {
 func (cx *Transform3D) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Transform3D) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *Transform3D) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_int operator
@@ -13455,7 +13455,7 @@ func (cx *Transform3D) Multiply_int(right int32) Transform3D {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Transform3D](globalTransform3DMethodBindings.operator_multiply_int, lt, rt)
+	return CallBuiltinOperatorPtr[Transform3D](globalTransform3DMethodBindings.operator_multiply_int, lt, rt)
 }
 
 // Multiply_float operator
@@ -13463,70 +13463,70 @@ func (cx *Transform3D) Multiply_float(right float32) Transform3D {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Transform3D](globalTransform3DMethodBindings.operator_multiply_float, lt, rt)
+	return CallBuiltinOperatorPtr[Transform3D](globalTransform3DMethodBindings.operator_multiply_float, lt, rt)
 }
 
 // Multiply_Vector3 operator
 func (cx *Transform3D) Multiply_Vector3(right Vector3) Vector3 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector3](globalTransform3DMethodBindings.operator_multiply_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[Vector3](globalTransform3DMethodBindings.operator_multiply_Vector3, lt, rt)
 }
 
 // Multiply_Plane operator
 func (cx *Transform3D) Multiply_Plane(right Plane) Plane {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Plane](globalTransform3DMethodBindings.operator_multiply_Plane, lt, rt)
+	return CallBuiltinOperatorPtr[Plane](globalTransform3DMethodBindings.operator_multiply_Plane, lt, rt)
 }
 
 // Multiply_AABB operator
 func (cx *Transform3D) Multiply_AABB(right AABB) AABB {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[AABB](globalTransform3DMethodBindings.operator_multiply_AABB, lt, rt)
+	return CallBuiltinOperatorPtr[AABB](globalTransform3DMethodBindings.operator_multiply_AABB, lt, rt)
 }
 
 // Equal_Transform3D operator
 func (cx *Transform3D) Equal_Transform3D(right Transform3D) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_equal_Transform3D, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_equal_Transform3D, lt, rt)
 }
 
 // Not_equal_Transform3D operator
 func (cx *Transform3D) Not_equal_Transform3D(right Transform3D) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_not_equal_Transform3D, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_not_equal_Transform3D, lt, rt)
 }
 
 // Multiply_Transform3D operator
 func (cx *Transform3D) Multiply_Transform3D(right Transform3D) Transform3D {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Transform3D](globalTransform3DMethodBindings.operator_multiply_Transform3D, lt, rt)
+	return CallBuiltinOperatorPtr[Transform3D](globalTransform3DMethodBindings.operator_multiply_Transform3D, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Transform3D) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Transform3D) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalTransform3DMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Multiply_PackedVector3Array operator
 func (cx *Transform3D) Multiply_PackedVector3Array(right PackedVector3Array) PackedVector3Array {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedVector3Array](globalTransform3DMethodBindings.operator_multiply_PackedVector3Array, lt, rt)
+	return CallBuiltinOperatorPtr[PackedVector3Array](globalTransform3DMethodBindings.operator_multiply_PackedVector3Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Projection{}
@@ -13552,7 +13552,7 @@ func (c *Projection) nativePtr() GDExtensionTypePtr {
 func NewProjection() Projection {
 	cx := Projection{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalProjectionMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalProjectionMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -13564,7 +13564,7 @@ func NewProjectionWithProjection(from Projection) Projection {
 	// Projection
 	// ProjectionEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalProjectionMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalProjectionMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -13576,7 +13576,7 @@ func NewProjectionWithTransform3D(from Transform3D) Projection {
 	// Transform3D
 	// Transform3DEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalProjectionMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalProjectionMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -13597,7 +13597,7 @@ func NewProjectionWithVector4Vector4Vector4Vector4(x_axis Vector4, y_axis Vector
 	// Vector4
 	// Vector4Encoder
 	args[3] = w_axis.nativeConstPtr()
-	callBuiltinConstructor(globalProjectionMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
+	CallBuiltinConstructor(globalProjectionMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
 
@@ -13643,7 +13643,7 @@ func (cx *Projection) CreateDepthCorrection(flip_y bool) Projection {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.encodeTypePtr(flip_y)
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13670,7 +13670,7 @@ func (cx *Projection) CreateLightAtlasRect(rect Rect2) Projection {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2Encoder.encodeTypePtr(rect)
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13705,7 +13705,7 @@ func (cx *Projection) CreatePerspective(fovy float32, aspect float32, z_near flo
 
 	args[4] = BoolEncoder.encodeTypePtr(flip_fov)
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13746,7 +13746,7 @@ func (cx *Projection) CreatePerspectiveHmd(fovy float32, aspect float32, z_near 
 
 	args[7] = Float32Encoder.encodeTypePtr(convergence_dist)
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13787,7 +13787,7 @@ func (cx *Projection) CreateForHmd(eye int32, aspect float32, intraocular_dist f
 
 	args[7] = Float32Encoder.encodeTypePtr(z_far)
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13824,7 +13824,7 @@ func (cx *Projection) CreateOrthogonal(left float32, right float32, bottom float
 
 	args[5] = Float32Encoder.encodeTypePtr(z_far)
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13859,7 +13859,7 @@ func (cx *Projection) CreateOrthogonalAspect(size float32, aspect float32, z_nea
 
 	args[4] = BoolEncoder.encodeTypePtr(flip_fov)
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13896,7 +13896,7 @@ func (cx *Projection) CreateFrustum(left float32, right float32, bottom float32,
 
 	args[5] = Float32Encoder.encodeTypePtr(z_far)
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13933,7 +13933,7 @@ func (cx *Projection) CreateFrustumAspect(size float32, aspect float32, offset V
 
 	args[5] = BoolEncoder.encodeTypePtr(flip_fov)
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13960,7 +13960,7 @@ func (cx *Projection) CreateFitAabb(aabb AABB) Projection {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&aabb))
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -13983,7 +13983,7 @@ func (cx *Projection) Determinant() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -14008,7 +14008,7 @@ func (cx *Projection) PerspectiveZnearAdjusted(new_znear float32) Projection {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(new_znear)
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -14035,7 +14035,7 @@ func (cx *Projection) GetProjectionPlane(plane int32) Plane {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(plane)
 
-	ret := callBuiltinMethodPtrRet[Plane](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Plane](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -14058,7 +14058,7 @@ func (cx *Projection) FlippedY() Projection {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, nil)
 	return ret
 
 }
@@ -14083,7 +14083,7 @@ func (cx *Projection) JitterOffseted(offset Vector2) Projection {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&offset))
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -14112,7 +14112,7 @@ func (cx *Projection) GetFovy(fovx float32, aspect float32) float32 {
 
 	args[1] = Float32Encoder.encodeTypePtr(aspect)
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -14135,7 +14135,7 @@ func (cx *Projection) GetZFar() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -14156,7 +14156,7 @@ func (cx *Projection) GetZNear() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -14177,7 +14177,7 @@ func (cx *Projection) GetAspect() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -14198,7 +14198,7 @@ func (cx *Projection) GetFov() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -14219,7 +14219,7 @@ func (cx *Projection) IsOrthogonal() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -14240,7 +14240,7 @@ func (cx *Projection) GetViewportHalfExtents() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -14261,7 +14261,7 @@ func (cx *Projection) GetFarPlaneHalfExtents() Vector2 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Vector2](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, nil)
 	return ret
 
 }
@@ -14282,7 +14282,7 @@ func (cx *Projection) Inverse() Projection {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Projection](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, nil)
 	return ret
 
 }
@@ -14307,7 +14307,7 @@ func (cx *Projection) GetPixelsPerMeter(for_pixel_width int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(for_pixel_width)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -14330,7 +14330,7 @@ func (cx *Projection) GetLodMultiplier() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -14359,28 +14359,28 @@ func (cx *Projection) SetIndexed(i int64, value Vector4) {
 
 func (cx *Projection) MemberGetx() Vector4 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector4](globalProjectionMethodBindings.member_x_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector4](globalProjectionMethodBindings.member_x_getter, bx)
 	return ret
 
 }
 
 func (cx *Projection) MemberGety() Vector4 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector4](globalProjectionMethodBindings.member_y_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector4](globalProjectionMethodBindings.member_y_getter, bx)
 	return ret
 
 }
 
 func (cx *Projection) MemberGetz() Vector4 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector4](globalProjectionMethodBindings.member_z_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector4](globalProjectionMethodBindings.member_z_getter, bx)
 	return ret
 
 }
 
 func (cx *Projection) MemberGetw() Vector4 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[Vector4](globalProjectionMethodBindings.member_w_getter, bx)
+	ret := CallBuiltinPtrGetter[Vector4](globalProjectionMethodBindings.member_w_getter, bx)
 	return ret
 
 }
@@ -14389,63 +14389,63 @@ func (cx *Projection) MemberGetw() Vector4 {
 func (cx *Projection) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Projection) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *Projection) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_Vector4 operator
 func (cx *Projection) Multiply_Vector4(right Vector4) Vector4 {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Vector4](globalProjectionMethodBindings.operator_multiply_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[Vector4](globalProjectionMethodBindings.operator_multiply_Vector4, lt, rt)
 }
 
 // Equal_Projection operator
 func (cx *Projection) Equal_Projection(right Projection) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_equal_Projection, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_equal_Projection, lt, rt)
 }
 
 // Not_equal_Projection operator
 func (cx *Projection) Not_equal_Projection(right Projection) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_not_equal_Projection, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_not_equal_Projection, lt, rt)
 }
 
 // Multiply_Projection operator
 func (cx *Projection) Multiply_Projection(right Projection) Projection {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Projection](globalProjectionMethodBindings.operator_multiply_Projection, lt, rt)
+	return CallBuiltinOperatorPtr[Projection](globalProjectionMethodBindings.operator_multiply_Projection, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Projection) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Projection) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalProjectionMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &Color{}
@@ -14471,7 +14471,7 @@ func (c *Color) nativePtr() GDExtensionTypePtr {
 func NewColor() Color {
 	cx := Color{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalColorMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalColorMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -14483,7 +14483,7 @@ func NewColorWithColor(from Color) Color {
 	// Color
 	// ColorEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalColorMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalColorMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -14497,7 +14497,7 @@ func NewColorWithColorFloat32(from Color, alpha float32) Color {
 	args[0] = from.nativeConstPtr()
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(alpha))
-	callBuiltinConstructor(globalColorMethodBindings.constructor_2, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalColorMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
 
@@ -14512,7 +14512,7 @@ func NewColorWithFloat32Float32Float32(r float32, g float32, b float32) Color {
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(g))
 	// float
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(b))
-	callBuiltinConstructor(globalColorMethodBindings.constructor_3, ptr, args[0], args[1], args[2])
+	CallBuiltinConstructor(globalColorMethodBindings.constructor_3, ptr, args[0], args[1], args[2])
 	return cx
 }
 
@@ -14529,7 +14529,7 @@ func NewColorWithFloat32Float32Float32Float32(r float32, g float32, b float32, a
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(b))
 	// float
 	args[3] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(a))
-	callBuiltinConstructor(globalColorMethodBindings.constructor_4, ptr, args[0], args[1], args[2], args[3])
+	CallBuiltinConstructor(globalColorMethodBindings.constructor_4, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
 
@@ -14541,7 +14541,7 @@ func NewColorWithString(code String) Color {
 	// String
 	// StringEncoder
 	args[0] = code.nativeConstPtr()
-	callBuiltinConstructor(globalColorMethodBindings.constructor_5, ptr, args[0])
+	CallBuiltinConstructor(globalColorMethodBindings.constructor_5, ptr, args[0])
 	return cx
 }
 
@@ -14555,7 +14555,7 @@ func NewColorWithStringFloat32(code String, alpha float32) Color {
 	args[0] = code.nativeConstPtr()
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.encodeTypePtr(alpha))
-	callBuiltinConstructor(globalColorMethodBindings.constructor_6, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalColorMethodBindings.constructor_6, ptr, args[0], args[1])
 	return cx
 }
 
@@ -14597,7 +14597,7 @@ func (cx *Color) ToArgb32() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -14618,7 +14618,7 @@ func (cx *Color) ToAbgr32() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -14639,7 +14639,7 @@ func (cx *Color) ToRgba32() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -14660,7 +14660,7 @@ func (cx *Color) ToArgb64() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -14681,7 +14681,7 @@ func (cx *Color) ToAbgr64() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -14702,7 +14702,7 @@ func (cx *Color) ToRgba64() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -14727,7 +14727,7 @@ func (cx *Color) ToHtml(with_alpha bool) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.encodeTypePtr(with_alpha)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -14756,7 +14756,7 @@ func (cx *Color) Clamp(min Color, max Color) Color {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -14779,7 +14779,7 @@ func (cx *Color) Inverted() Color {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, nil)
 	return ret
 
 }
@@ -14806,7 +14806,7 @@ func (cx *Color) Lerp(to Color, weight float32) Color {
 
 	args[1] = Float32Encoder.encodeTypePtr(weight)
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -14833,7 +14833,7 @@ func (cx *Color) Lightened(amount float32) Color {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(amount)
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -14860,7 +14860,7 @@ func (cx *Color) Darkened(amount float32) Color {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(amount)
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -14887,7 +14887,7 @@ func (cx *Color) Blend(over Color) Color {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&over))
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -14910,7 +14910,7 @@ func (cx *Color) GetLuminance() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -14931,7 +14931,7 @@ func (cx *Color) SrgbToLinear() Color {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, nil)
 	return ret
 
 }
@@ -14952,7 +14952,7 @@ func (cx *Color) LinearToSrgb() Color {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, nil)
 	return ret
 
 }
@@ -14977,7 +14977,7 @@ func (cx *Color) IsEqualApprox(to Color) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15004,7 +15004,7 @@ func (cx *Color) Hex(hex int32) Color {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(hex)
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15031,7 +15031,7 @@ func (cx *Color) Hex64(hex int32) Color {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(hex)
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15058,7 +15058,7 @@ func (cx *Color) Html(rgba String) Color {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&rgba))
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15085,7 +15085,7 @@ func (cx *Color) HtmlIsValid(color String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&color))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15114,7 +15114,7 @@ func (cx *Color) FromString(str String, defaultName Color) Color {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&defaultName))
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15147,7 +15147,7 @@ func (cx *Color) FromHsv(h float32, s float32, v float32, alpha float32) Color {
 
 	args[3] = Float32Encoder.encodeTypePtr(alpha)
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15180,7 +15180,7 @@ func (cx *Color) FromOkHsl(h float32, s float32, l float32, alpha float32) Color
 
 	args[3] = Float32Encoder.encodeTypePtr(alpha)
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15207,7 +15207,7 @@ func (cx *Color) FromRgbe9995(rgbe int32) Color {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(rgbe)
 
-	ret := callBuiltinMethodPtrRet[Color](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15238,77 +15238,77 @@ func (cx *Color) SetIndexed(i int64, value float32) {
 
 func (cx *Color) MemberGetr() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalColorMethodBindings.member_r_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalColorMethodBindings.member_r_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Color) MemberGetg() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalColorMethodBindings.member_g_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalColorMethodBindings.member_g_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Color) MemberGetb() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalColorMethodBindings.member_b_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalColorMethodBindings.member_b_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Color) MemberGeta() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalColorMethodBindings.member_a_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalColorMethodBindings.member_a_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Color) MemberGetr8() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalColorMethodBindings.member_r8_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalColorMethodBindings.member_r8_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Color) MemberGetg8() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalColorMethodBindings.member_g8_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalColorMethodBindings.member_g8_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Color) MemberGetb8() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalColorMethodBindings.member_b8_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalColorMethodBindings.member_b8_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Color) MemberGeta8() int32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[int64](globalColorMethodBindings.member_a8_getter, bx)
+	ret := CallBuiltinPtrGetter[int64](globalColorMethodBindings.member_a8_getter, bx)
 	return Int32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Color) MemberGeth() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalColorMethodBindings.member_h_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalColorMethodBindings.member_h_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Color) MemberGets() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalColorMethodBindings.member_s_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalColorMethodBindings.member_s_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
 
 func (cx *Color) MemberGetv() float32 {
 	bx := cx.nativeConstPtr()
-	ret := callBuiltinPtrGetter[float64](globalColorMethodBindings.member_v_getter, bx)
+	ret := CallBuiltinPtrGetter[float64](globalColorMethodBindings.member_v_getter, bx)
 	return Float32Encoder.decodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
@@ -15317,35 +15317,35 @@ func (cx *Color) MemberGetv() float32 {
 func (cx *Color) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Color) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Negate operator
 func (cx *Color) Negate() Color {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_negate, lt, rt)
+	return CallBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_negate, lt, rt)
 }
 
 // Positive operator
 func (cx *Color) Positive() Color {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_positive, lt, rt)
+	return CallBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_positive, lt, rt)
 }
 
 // Not operator
 func (cx *Color) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_int operator
@@ -15353,7 +15353,7 @@ func (cx *Color) Multiply_int(right int32) Color {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_multiply_int, lt, rt)
+	return CallBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_multiply_int, lt, rt)
 }
 
 // Divide_int operator
@@ -15361,7 +15361,7 @@ func (cx *Color) Divide_int(right int32) Color {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_divide_int, lt, rt)
+	return CallBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_divide_int, lt, rt)
 }
 
 // Multiply_float operator
@@ -15369,7 +15369,7 @@ func (cx *Color) Multiply_float(right float32) Color {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_multiply_float, lt, rt)
+	return CallBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_multiply_float, lt, rt)
 }
 
 // Divide_float operator
@@ -15377,70 +15377,70 @@ func (cx *Color) Divide_float(right float32) Color {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_divide_float, lt, rt)
+	return CallBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_divide_float, lt, rt)
 }
 
 // Equal_Color operator
 func (cx *Color) Equal_Color(right Color) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_equal_Color, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_equal_Color, lt, rt)
 }
 
 // Not_equal_Color operator
 func (cx *Color) Not_equal_Color(right Color) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_not_equal_Color, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_not_equal_Color, lt, rt)
 }
 
 // Add_Color operator
 func (cx *Color) Add_Color(right Color) Color {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_add_Color, lt, rt)
+	return CallBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_add_Color, lt, rt)
 }
 
 // Subtract_Color operator
 func (cx *Color) Subtract_Color(right Color) Color {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_subtract_Color, lt, rt)
+	return CallBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_subtract_Color, lt, rt)
 }
 
 // Multiply_Color operator
 func (cx *Color) Multiply_Color(right Color) Color {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_multiply_Color, lt, rt)
+	return CallBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_multiply_Color, lt, rt)
 }
 
 // Divide_Color operator
 func (cx *Color) Divide_Color(right Color) Color {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_divide_Color, lt, rt)
+	return CallBuiltinOperatorPtr[Color](globalColorMethodBindings.operator_divide_Color, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Color) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Color) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_in_Array, lt, rt)
 }
 
 // In_PackedColorArray operator
 func (cx *Color) In_PackedColorArray(right PackedColorArray) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_in_PackedColorArray, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalColorMethodBindings.operator_in_PackedColorArray, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &StringName{}
@@ -15466,7 +15466,7 @@ func (c *StringName) nativePtr() GDExtensionTypePtr {
 func NewStringName() StringName {
 	cx := StringName{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalStringNameMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalStringNameMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -15478,7 +15478,7 @@ func NewStringNameWithStringName(from StringName) StringName {
 	// StringName
 	// StringNameEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalStringNameMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalStringNameMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -15490,7 +15490,7 @@ func NewStringNameWithString(from String) StringName {
 	// String
 	// StringEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalStringNameMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalStringNameMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -15542,7 +15542,7 @@ func (cx *StringName) CasecmpTo(to String) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15569,7 +15569,7 @@ func (cx *StringName) NocasecmpTo(to String) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15596,7 +15596,7 @@ func (cx *StringName) NaturalcasecmpTo(to String) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15623,7 +15623,7 @@ func (cx *StringName) NaturalnocasecmpTo(to String) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15646,7 +15646,7 @@ func (cx *StringName) Length() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -15673,7 +15673,7 @@ func (cx *StringName) Substr(from int32, len int32) String {
 
 	args[1] = Int32Encoder.encodeTypePtr(len)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15702,7 +15702,7 @@ func (cx *StringName) GetSlice(delimiter String, slice int32) String {
 
 	args[1] = Int32Encoder.encodeTypePtr(slice)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15731,7 +15731,7 @@ func (cx *StringName) GetSlicec(delimiter int32, slice int32) String {
 
 	args[1] = Int32Encoder.encodeTypePtr(slice)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15758,7 +15758,7 @@ func (cx *StringName) GetSliceCount(delimiter String) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15787,7 +15787,7 @@ func (cx *StringName) Find(what String, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15818,7 +15818,7 @@ func (cx *StringName) Count(what String, from int32, to int32) int32 {
 
 	args[2] = Int32Encoder.encodeTypePtr(to)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15849,7 +15849,7 @@ func (cx *StringName) Countn(what String, from int32, to int32) int32 {
 
 	args[2] = Int32Encoder.encodeTypePtr(to)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15878,7 +15878,7 @@ func (cx *StringName) Findn(what String, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15907,7 +15907,7 @@ func (cx *StringName) Rfind(what String, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15936,7 +15936,7 @@ func (cx *StringName) Rfindn(what String, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15963,7 +15963,7 @@ func (cx *StringName) Match(expr String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&expr))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -15990,7 +15990,7 @@ func (cx *StringName) Matchn(expr String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&expr))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16017,7 +16017,7 @@ func (cx *StringName) BeginsWith(text String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16044,7 +16044,7 @@ func (cx *StringName) EndsWith(text String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16071,7 +16071,7 @@ func (cx *StringName) IsSubsequenceOf(text String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16098,7 +16098,7 @@ func (cx *StringName) IsSubsequenceOfn(text String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16121,7 +16121,7 @@ func (cx *StringName) Bigrams() PackedStringArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedStringArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, nil)
 	return ret
 
 }
@@ -16146,7 +16146,7 @@ func (cx *StringName) Similarity(text String) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16175,7 +16175,7 @@ func (cx *StringName) Format(values Variant, placeholder String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&placeholder))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16204,7 +16204,7 @@ func (cx *StringName) Replace(what String, forwhat String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&forwhat))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16233,7 +16233,7 @@ func (cx *StringName) Replacen(what String, forwhat String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&forwhat))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16260,7 +16260,7 @@ func (cx *StringName) Repeat(count int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(count)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16283,7 +16283,7 @@ func (cx *StringName) Reverse() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16310,7 +16310,7 @@ func (cx *StringName) Insert(position int32, what String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16339,7 +16339,7 @@ func (cx *StringName) Erase(position int32, chars int32) String {
 
 	args[1] = Int32Encoder.encodeTypePtr(chars)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16362,7 +16362,7 @@ func (cx *StringName) Capitalize() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16383,7 +16383,7 @@ func (cx *StringName) ToCamelCase() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16404,7 +16404,7 @@ func (cx *StringName) ToPascalCase() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16425,7 +16425,7 @@ func (cx *StringName) ToSnakeCase() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16454,7 +16454,7 @@ func (cx *StringName) Split(delimiter String, allow_empty bool, maxsplit int32) 
 
 	args[2] = Int32Encoder.encodeTypePtr(maxsplit)
 
-	ret := callBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16485,7 +16485,7 @@ func (cx *StringName) Rsplit(delimiter String, allow_empty bool, maxsplit int32)
 
 	args[2] = Int32Encoder.encodeTypePtr(maxsplit)
 
-	ret := callBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16514,7 +16514,7 @@ func (cx *StringName) SplitFloats(delimiter String, allow_empty bool) PackedFloa
 
 	args[1] = BoolEncoder.encodeTypePtr(allow_empty)
 
-	ret := callBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16541,7 +16541,7 @@ func (cx *StringName) Join(parts PackedStringArray) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&parts))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16564,7 +16564,7 @@ func (cx *StringName) ToUpper() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16585,7 +16585,7 @@ func (cx *StringName) ToLower() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16610,7 +16610,7 @@ func (cx *StringName) Left(length int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(length)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16637,7 +16637,7 @@ func (cx *StringName) Right(length int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(length)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16666,7 +16666,7 @@ func (cx *StringName) StripEdges(left bool, right bool) String {
 
 	args[1] = BoolEncoder.encodeTypePtr(right)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16689,7 +16689,7 @@ func (cx *StringName) StripEscapes() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16714,7 +16714,7 @@ func (cx *StringName) Lstrip(chars String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&chars))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16741,7 +16741,7 @@ func (cx *StringName) Rstrip(chars String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&chars))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16764,7 +16764,7 @@ func (cx *StringName) GetExtension() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16785,7 +16785,7 @@ func (cx *StringName) GetBasename() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16810,7 +16810,7 @@ func (cx *StringName) PathJoin(file String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&file))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16837,7 +16837,7 @@ func (cx *StringName) UnicodeAt(at int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(at)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16864,7 +16864,7 @@ func (cx *StringName) Indent(prefix String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&prefix))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -16887,7 +16887,7 @@ func (cx *StringName) Dedent() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16908,7 +16908,7 @@ func (cx *StringName) Md5Text() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16929,7 +16929,7 @@ func (cx *StringName) Sha1Text() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16950,7 +16950,7 @@ func (cx *StringName) Sha256Text() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -16971,7 +16971,7 @@ func (cx *StringName) Md5Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -16992,7 +16992,7 @@ func (cx *StringName) Sha1Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -17013,7 +17013,7 @@ func (cx *StringName) Sha256Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -17034,7 +17034,7 @@ func (cx *StringName) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -17059,7 +17059,7 @@ func (cx *StringName) Contains(what String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -17082,7 +17082,7 @@ func (cx *StringName) IsAbsolutePath() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -17103,7 +17103,7 @@ func (cx *StringName) IsRelativePath() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -17124,7 +17124,7 @@ func (cx *StringName) SimplifyPath() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -17145,7 +17145,7 @@ func (cx *StringName) GetBaseDir() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -17166,7 +17166,7 @@ func (cx *StringName) GetFile() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -17191,7 +17191,7 @@ func (cx *StringName) XmlEscape(escape_quotes bool) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.encodeTypePtr(escape_quotes)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -17214,7 +17214,7 @@ func (cx *StringName) XmlUnescape() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -17235,7 +17235,7 @@ func (cx *StringName) UriEncode() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -17256,7 +17256,7 @@ func (cx *StringName) UriDecode() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -17277,7 +17277,7 @@ func (cx *StringName) CEscape() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -17298,7 +17298,7 @@ func (cx *StringName) CUnescape() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -17319,7 +17319,7 @@ func (cx *StringName) JsonEscape() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -17340,7 +17340,7 @@ func (cx *StringName) ValidateNodeName() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -17361,7 +17361,7 @@ func (cx *StringName) ValidateFilename() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -17382,7 +17382,7 @@ func (cx *StringName) IsValidIdentifier() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -17403,7 +17403,7 @@ func (cx *StringName) IsValidInt() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -17424,7 +17424,7 @@ func (cx *StringName) IsValidFloat() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -17449,7 +17449,7 @@ func (cx *StringName) IsValidHexNumber(with_prefix bool) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.encodeTypePtr(with_prefix)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -17472,7 +17472,7 @@ func (cx *StringName) IsValidHtmlColor() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -17493,7 +17493,7 @@ func (cx *StringName) IsValidIpAddress() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -17514,7 +17514,7 @@ func (cx *StringName) IsValidFilename() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -17535,7 +17535,7 @@ func (cx *StringName) ToInt() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -17556,7 +17556,7 @@ func (cx *StringName) ToFloat() float32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, nil)
 	return ret
 
 }
@@ -17577,7 +17577,7 @@ func (cx *StringName) HexToInt() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -17598,7 +17598,7 @@ func (cx *StringName) BinToInt() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -17625,7 +17625,7 @@ func (cx *StringName) Lpad(min_length int32, character String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&character))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -17654,7 +17654,7 @@ func (cx *StringName) Rpad(min_length int32, character String) String {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&character))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -17681,7 +17681,7 @@ func (cx *StringName) PadDecimals(digits int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(digits)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -17708,7 +17708,7 @@ func (cx *StringName) PadZeros(digits int32) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(digits)
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -17735,7 +17735,7 @@ func (cx *StringName) TrimPrefix(prefix String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&prefix))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -17762,7 +17762,7 @@ func (cx *StringName) TrimSuffix(suffix String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&suffix))
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -17785,7 +17785,7 @@ func (cx *StringName) ToAsciiBuffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -17806,7 +17806,7 @@ func (cx *StringName) ToUtf8Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -17827,7 +17827,7 @@ func (cx *StringName) ToUtf16Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -17848,7 +17848,7 @@ func (cx *StringName) ToUtf32Buffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -17869,7 +17869,7 @@ func (cx *StringName) HexDecode() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -17890,7 +17890,7 @@ func (cx *StringName) ToWcharBuffer() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -17911,7 +17911,7 @@ func (cx *StringName) Hash() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -17921,28 +17921,28 @@ func (cx *StringName) Hash() int32 {
 func (cx *StringName) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *StringName) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Module_Variant operator
 func (cx *StringName) Module_Variant(right Variant) String {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *StringName) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_not, lt, rt)
 }
 
 // Module_bool operator
@@ -17950,7 +17950,7 @@ func (cx *StringName) Module_bool(right bool) String {
 	lt := cx.nativeConstPtr()
 	eRight := BoolEncoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_bool, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_bool, lt, rt)
 }
 
 // Module_int operator
@@ -17958,7 +17958,7 @@ func (cx *StringName) Module_int(right int32) String {
 	lt := cx.nativeConstPtr()
 	eRight := Int32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_int, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_int, lt, rt)
 }
 
 // Module_float operator
@@ -17966,56 +17966,56 @@ func (cx *StringName) Module_float(right float32) String {
 	lt := cx.nativeConstPtr()
 	eRight := Float32Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_float, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_float, lt, rt)
 }
 
 // Equal_String operator
 func (cx *StringName) Equal_String(right String) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_equal_String, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_equal_String, lt, rt)
 }
 
 // Not_equal_String operator
 func (cx *StringName) Not_equal_String(right String) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_not_equal_String, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_not_equal_String, lt, rt)
 }
 
 // Add_String operator
 func (cx *StringName) Add_String(right String) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_add_String, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_add_String, lt, rt)
 }
 
 // Module_String operator
 func (cx *StringName) Module_String(right String) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_String, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_String, lt, rt)
 }
 
 // In_String operator
 func (cx *StringName) In_String(right String) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_String, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_String, lt, rt)
 }
 
 // Module_Vector2 operator
 func (cx *StringName) Module_Vector2(right Vector2) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector2, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector2, lt, rt)
 }
 
 // Module_Vector2i operator
 func (cx *StringName) Module_Vector2i(right Vector2i) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector2i, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector2i, lt, rt)
 }
 
 // Module_Rect2 operator
@@ -18023,7 +18023,7 @@ func (cx *StringName) Module_Rect2(right Rect2) String {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2Encoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Rect2, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Rect2, lt, rt)
 }
 
 // Module_Rect2i operator
@@ -18031,287 +18031,287 @@ func (cx *StringName) Module_Rect2i(right Rect2i) String {
 	lt := cx.nativeConstPtr()
 	eRight := Rect2iEncoder.encodeTypePtr(right)
 	rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Rect2i, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Rect2i, lt, rt)
 }
 
 // Module_Vector3 operator
 func (cx *StringName) Module_Vector3(right Vector3) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector3, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector3, lt, rt)
 }
 
 // Module_Vector3i operator
 func (cx *StringName) Module_Vector3i(right Vector3i) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector3i, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector3i, lt, rt)
 }
 
 // Module_Transform2D operator
 func (cx *StringName) Module_Transform2D(right Transform2D) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Transform2D, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Transform2D, lt, rt)
 }
 
 // Module_Vector4 operator
 func (cx *StringName) Module_Vector4(right Vector4) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector4, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector4, lt, rt)
 }
 
 // Module_Vector4i operator
 func (cx *StringName) Module_Vector4i(right Vector4i) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector4i, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Vector4i, lt, rt)
 }
 
 // Module_Plane operator
 func (cx *StringName) Module_Plane(right Plane) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Plane, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Plane, lt, rt)
 }
 
 // Module_Quaternion operator
 func (cx *StringName) Module_Quaternion(right Quaternion) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Quaternion, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Quaternion, lt, rt)
 }
 
 // Module_AABB operator
 func (cx *StringName) Module_AABB(right AABB) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_AABB, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_AABB, lt, rt)
 }
 
 // Module_Basis operator
 func (cx *StringName) Module_Basis(right Basis) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Basis, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Basis, lt, rt)
 }
 
 // Module_Transform3D operator
 func (cx *StringName) Module_Transform3D(right Transform3D) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Transform3D, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Transform3D, lt, rt)
 }
 
 // Module_Projection operator
 func (cx *StringName) Module_Projection(right Projection) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Projection, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Projection, lt, rt)
 }
 
 // Module_Color operator
 func (cx *StringName) Module_Color(right Color) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Color, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Color, lt, rt)
 }
 
 // Equal_StringName operator
 func (cx *StringName) Equal_StringName(right StringName) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_equal_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_equal_StringName, lt, rt)
 }
 
 // Not_equal_StringName operator
 func (cx *StringName) Not_equal_StringName(right StringName) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_not_equal_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_not_equal_StringName, lt, rt)
 }
 
 // Less_StringName operator
 func (cx *StringName) Less_StringName(right StringName) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_less_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_less_StringName, lt, rt)
 }
 
 // Less_equal_StringName operator
 func (cx *StringName) Less_equal_StringName(right StringName) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_less_equal_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_less_equal_StringName, lt, rt)
 }
 
 // Greater_StringName operator
 func (cx *StringName) Greater_StringName(right StringName) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_greater_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_greater_StringName, lt, rt)
 }
 
 // Greater_equal_StringName operator
 func (cx *StringName) Greater_equal_StringName(right StringName) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_greater_equal_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_greater_equal_StringName, lt, rt)
 }
 
 // Add_StringName operator
 func (cx *StringName) Add_StringName(right StringName) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_add_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_add_StringName, lt, rt)
 }
 
 // Module_StringName operator
 func (cx *StringName) Module_StringName(right StringName) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_StringName, lt, rt)
 }
 
 // In_StringName operator
 func (cx *StringName) In_StringName(right StringName) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_StringName, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_StringName, lt, rt)
 }
 
 // Module_NodePath operator
 func (cx *StringName) Module_NodePath(right NodePath) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_NodePath, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_NodePath, lt, rt)
 }
 
 // Module_Object operator
 func (cx *StringName) Module_Object(right Object) String {
 	lt := cx.nativeConstPtr()
 	rt := right.AsGDExtensionConstTypePtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Object, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Object, lt, rt)
 }
 
 // In_Object operator
 func (cx *StringName) In_Object(right Object) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.AsGDExtensionConstTypePtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_Object, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_Object, lt, rt)
 }
 
 // Module_Callable operator
 func (cx *StringName) Module_Callable(right Callable) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Callable, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Callable, lt, rt)
 }
 
 // Module_Signal operator
 func (cx *StringName) Module_Signal(right Signal) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Signal, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Signal, lt, rt)
 }
 
 // Module_Dictionary operator
 func (cx *StringName) Module_Dictionary(right Dictionary) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Dictionary, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *StringName) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // Module_Array operator
 func (cx *StringName) Module_Array(right Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_Array, lt, rt)
 }
 
 // In_Array operator
 func (cx *StringName) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Module_PackedByteArray operator
 func (cx *StringName) Module_PackedByteArray(right PackedByteArray) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedByteArray, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedByteArray, lt, rt)
 }
 
 // Module_PackedInt32Array operator
 func (cx *StringName) Module_PackedInt32Array(right PackedInt32Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedInt32Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedInt32Array, lt, rt)
 }
 
 // Module_PackedInt64Array operator
 func (cx *StringName) Module_PackedInt64Array(right PackedInt64Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedInt64Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedInt64Array, lt, rt)
 }
 
 // Module_PackedFloat32Array operator
 func (cx *StringName) Module_PackedFloat32Array(right PackedFloat32Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedFloat32Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedFloat32Array, lt, rt)
 }
 
 // Module_PackedFloat64Array operator
 func (cx *StringName) Module_PackedFloat64Array(right PackedFloat64Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedFloat64Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedFloat64Array, lt, rt)
 }
 
 // Module_PackedStringArray operator
 func (cx *StringName) Module_PackedStringArray(right PackedStringArray) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedStringArray, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedStringArray, lt, rt)
 }
 
 // In_PackedStringArray operator
 func (cx *StringName) In_PackedStringArray(right PackedStringArray) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_PackedStringArray, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalStringNameMethodBindings.operator_in_PackedStringArray, lt, rt)
 }
 
 // Module_PackedVector2Array operator
 func (cx *StringName) Module_PackedVector2Array(right PackedVector2Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedVector2Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedVector2Array, lt, rt)
 }
 
 // Module_PackedVector3Array operator
 func (cx *StringName) Module_PackedVector3Array(right PackedVector3Array) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedVector3Array, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedVector3Array, lt, rt)
 }
 
 // Module_PackedColorArray operator
 func (cx *StringName) Module_PackedColorArray(right PackedColorArray) String {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedColorArray, lt, rt)
+	return CallBuiltinOperatorPtr[String](globalStringNameMethodBindings.operator_module_PackedColorArray, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &NodePath{}
@@ -18337,7 +18337,7 @@ func (c *NodePath) nativePtr() GDExtensionTypePtr {
 func NewNodePath() NodePath {
 	cx := NodePath{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalNodePathMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalNodePathMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -18349,7 +18349,7 @@ func NewNodePathWithNodePath(from NodePath) NodePath {
 	// NodePath
 	// NodePathEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalNodePathMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalNodePathMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -18361,7 +18361,7 @@ func NewNodePathWithString(from String) NodePath {
 	// String
 	// StringEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalNodePathMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalNodePathMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -18409,7 +18409,7 @@ func (cx *NodePath) IsAbsolute() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -18430,7 +18430,7 @@ func (cx *NodePath) GetNameCount() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -18455,7 +18455,7 @@ func (cx *NodePath) GetName(idx int32) StringName {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(idx)
 
-	ret := callBuiltinMethodPtrRet[StringName](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[StringName](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -18478,7 +18478,7 @@ func (cx *NodePath) GetSubnameCount() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -18499,7 +18499,7 @@ func (cx *NodePath) Hash() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -18524,7 +18524,7 @@ func (cx *NodePath) GetSubname(idx int32) StringName {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(idx)
 
-	ret := callBuiltinMethodPtrRet[StringName](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[StringName](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -18547,7 +18547,7 @@ func (cx *NodePath) GetConcatenatedNames() StringName {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[StringName](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[StringName](mb, bx, nil)
 	return ret
 
 }
@@ -18568,7 +18568,7 @@ func (cx *NodePath) GetConcatenatedSubnames() StringName {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[StringName](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[StringName](mb, bx, nil)
 	return ret
 
 }
@@ -18589,7 +18589,7 @@ func (cx *NodePath) GetAsPropertyPath() NodePath {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[NodePath](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[NodePath](mb, bx, nil)
 	return ret
 
 }
@@ -18610,7 +18610,7 @@ func (cx *NodePath) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -18620,49 +18620,49 @@ func (cx *NodePath) IsEmpty() bool {
 func (cx *NodePath) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *NodePath) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *NodePath) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_not, lt, rt)
 }
 
 // Equal_NodePath operator
 func (cx *NodePath) Equal_NodePath(right NodePath) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_equal_NodePath, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_equal_NodePath, lt, rt)
 }
 
 // Not_equal_NodePath operator
 func (cx *NodePath) Not_equal_NodePath(right NodePath) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_not_equal_NodePath, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_not_equal_NodePath, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *NodePath) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *NodePath) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalNodePathMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInClass = &RID{}
@@ -18688,7 +18688,7 @@ func (c *RID) nativePtr() GDExtensionTypePtr {
 func NewRID() RID {
 	cx := RID{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalRIDMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalRIDMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -18700,7 +18700,7 @@ func NewRIDWithRID(from RID) RID {
 	// RID
 	// RIDEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalRIDMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalRIDMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -18742,7 +18742,7 @@ func (cx *RID) IsValid() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -18763,7 +18763,7 @@ func (cx *RID) GetId() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -18773,63 +18773,63 @@ func (cx *RID) GetId() int32 {
 func (cx *RID) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *RID) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *RID) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_not, lt, rt)
 }
 
 // Equal_RID operator
 func (cx *RID) Equal_RID(right RID) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_equal_RID, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_equal_RID, lt, rt)
 }
 
 // Not_equal_RID operator
 func (cx *RID) Not_equal_RID(right RID) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_not_equal_RID, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_not_equal_RID, lt, rt)
 }
 
 // Less_RID operator
 func (cx *RID) Less_RID(right RID) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_less_RID, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_less_RID, lt, rt)
 }
 
 // Less_equal_RID operator
 func (cx *RID) Less_equal_RID(right RID) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_less_equal_RID, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_less_equal_RID, lt, rt)
 }
 
 // Greater_RID operator
 func (cx *RID) Greater_RID(right RID) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_greater_RID, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_greater_RID, lt, rt)
 }
 
 // Greater_equal_RID operator
 func (cx *RID) Greater_equal_RID(right RID) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_greater_equal_RID, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_greater_equal_RID, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &Callable{}
@@ -18855,7 +18855,7 @@ func (c *Callable) nativePtr() GDExtensionTypePtr {
 func NewCallable() Callable {
 	cx := Callable{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalCallableMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalCallableMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -18867,7 +18867,7 @@ func NewCallableWithCallable(from Callable) Callable {
 	// Callable
 	// CallableEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalCallableMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalCallableMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -18881,7 +18881,7 @@ func NewCallableWithObjectStringName(object Object, method StringName) Callable 
 	// StringName
 	// StringNameEncoder
 	args[1] = method.nativeConstPtr()
-	callBuiltinConstructor(globalCallableMethodBindings.constructor_2, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalCallableMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
 
@@ -18933,7 +18933,7 @@ func (cx *Callable) Callv(arguments Array) Variant {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&arguments))
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -18956,7 +18956,7 @@ func (cx *Callable) IsNull() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -18977,7 +18977,7 @@ func (cx *Callable) IsCustom() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -18998,7 +18998,7 @@ func (cx *Callable) IsStandard() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -19019,7 +19019,7 @@ func (cx *Callable) IsValid() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -19040,7 +19040,7 @@ func (cx *Callable) GetObject() Object {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Object](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Object](mb, bx, nil)
 	return ret
 
 }
@@ -19061,7 +19061,7 @@ func (cx *Callable) GetObjectId() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -19082,7 +19082,7 @@ func (cx *Callable) GetMethod() StringName {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[StringName](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[StringName](mb, bx, nil)
 	return ret
 
 }
@@ -19103,7 +19103,7 @@ func (cx *Callable) GetBoundArgumentsCount() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -19124,7 +19124,7 @@ func (cx *Callable) GetBoundArguments() Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Array](mb, bx, nil)
 	return ret
 
 }
@@ -19145,7 +19145,7 @@ func (cx *Callable) Hash() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -19170,7 +19170,7 @@ func (cx *Callable) Bindv(arguments Array) Callable {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&arguments))
 
-	ret := callBuiltinMethodPtrRet[Callable](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Callable](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -19197,7 +19197,7 @@ func (cx *Callable) Unbind(argcount int32) Callable {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(argcount)
 
-	ret := callBuiltinMethodPtrRet[Callable](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Callable](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -19209,49 +19209,49 @@ func (cx *Callable) Unbind(argcount int32) Callable {
 func (cx *Callable) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Callable) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *Callable) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_not, lt, rt)
 }
 
 // Equal_Callable operator
 func (cx *Callable) Equal_Callable(right Callable) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_equal_Callable, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_equal_Callable, lt, rt)
 }
 
 // Not_equal_Callable operator
 func (cx *Callable) Not_equal_Callable(right Callable) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_not_equal_Callable, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_not_equal_Callable, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Callable) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Callable) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalCallableMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &Signal{}
@@ -19277,7 +19277,7 @@ func (c *Signal) nativePtr() GDExtensionTypePtr {
 func NewSignal() Signal {
 	cx := Signal{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalSignalMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalSignalMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -19289,7 +19289,7 @@ func NewSignalWithSignal(from Signal) Signal {
 	// Signal
 	// SignalEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalSignalMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalSignalMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -19303,7 +19303,7 @@ func NewSignalWithObjectStringName(object Object, signal StringName) Signal {
 	// StringName
 	// StringNameEncoder
 	args[1] = signal.nativeConstPtr()
-	callBuiltinConstructor(globalSignalMethodBindings.constructor_2, ptr, args[0], args[1])
+	CallBuiltinConstructor(globalSignalMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
 
@@ -19351,7 +19351,7 @@ func (cx *Signal) IsNull() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -19372,7 +19372,7 @@ func (cx *Signal) GetObject() Object {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Object](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Object](mb, bx, nil)
 	return ret
 
 }
@@ -19393,7 +19393,7 @@ func (cx *Signal) GetObjectId() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -19414,7 +19414,7 @@ func (cx *Signal) GetName() StringName {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[StringName](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[StringName](mb, bx, nil)
 	return ret
 
 }
@@ -19441,7 +19441,7 @@ func (cx *Signal) Connect(callable Callable, flags int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(flags)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -19468,7 +19468,7 @@ func (cx *Signal) Disconnect(callable Callable) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&callable))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -19494,7 +19494,7 @@ func (cx *Signal) IsConnected(callable Callable) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&callable))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -19517,7 +19517,7 @@ func (cx *Signal) GetConnections() Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Array](mb, bx, nil)
 	return ret
 
 }
@@ -19527,49 +19527,49 @@ func (cx *Signal) GetConnections() Array {
 func (cx *Signal) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Signal) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *Signal) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_not, lt, rt)
 }
 
 // Equal_Signal operator
 func (cx *Signal) Equal_Signal(right Signal) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_equal_Signal, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_equal_Signal, lt, rt)
 }
 
 // Not_equal_Signal operator
 func (cx *Signal) Not_equal_Signal(right Signal) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_not_equal_Signal, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_not_equal_Signal, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Signal) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Signal) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalSignalMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &Dictionary{}
@@ -19595,7 +19595,7 @@ func (c *Dictionary) nativePtr() GDExtensionTypePtr {
 func NewDictionary() Dictionary {
 	cx := Dictionary{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalDictionaryMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalDictionaryMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -19607,7 +19607,7 @@ func NewDictionaryWithDictionary(from Dictionary) Dictionary {
 	// Dictionary
 	// DictionaryEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalDictionaryMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalDictionaryMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -19655,7 +19655,7 @@ func (cx *Dictionary) Size() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -19676,7 +19676,7 @@ func (cx *Dictionary) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -19697,7 +19697,7 @@ func (cx *Dictionary) Clear() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -19723,7 +19723,7 @@ func (cx *Dictionary) Merge(dictionary Dictionary, overwrite bool) {
 
 	args[1] = BoolEncoder.encodeTypePtr(overwrite)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -19749,7 +19749,7 @@ func (cx *Dictionary) Has(key Variant) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&key))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -19776,7 +19776,7 @@ func (cx *Dictionary) HasAll(keys Array) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&keys))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -19803,7 +19803,7 @@ func (cx *Dictionary) FindKey(value Variant) Variant {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -19830,7 +19830,7 @@ func (cx *Dictionary) Erase(key Variant) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&key))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -19853,7 +19853,7 @@ func (cx *Dictionary) Hash() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -19874,7 +19874,7 @@ func (cx *Dictionary) Keys() Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Array](mb, bx, nil)
 	return ret
 
 }
@@ -19895,7 +19895,7 @@ func (cx *Dictionary) Values() Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Array](mb, bx, nil)
 	return ret
 
 }
@@ -19920,7 +19920,7 @@ func (cx *Dictionary) Duplicate(deep bool) Dictionary {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.encodeTypePtr(deep)
 
-	ret := callBuiltinMethodPtrRet[Dictionary](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Dictionary](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -19949,7 +19949,7 @@ func (cx *Dictionary) Get(key Variant, defaultName Variant) Variant {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&defaultName))
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -19972,7 +19972,7 @@ func (cx *Dictionary) MakeReadOnly() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -19992,7 +19992,7 @@ func (cx *Dictionary) IsReadOnly() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -20045,49 +20045,49 @@ func (cx *Dictionary) SetIndexed(i int64, value Variant) {
 func (cx *Dictionary) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Dictionary) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *Dictionary) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_not, lt, rt)
 }
 
 // Equal_Dictionary operator
 func (cx *Dictionary) Equal_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_equal_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_equal_Dictionary, lt, rt)
 }
 
 // Not_equal_Dictionary operator
 func (cx *Dictionary) Not_equal_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_not_equal_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_not_equal_Dictionary, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Dictionary) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *Dictionary) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalDictionaryMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &Array{}
@@ -20113,7 +20113,7 @@ func (c *Array) nativePtr() GDExtensionTypePtr {
 func NewArray() Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -20125,7 +20125,7 @@ func NewArrayWithArray(from Array) Array {
 	// Array
 	// ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -20144,7 +20144,7 @@ func NewArrayWithArrayInt32StringNameVariant(base Array, typeName int32, class_n
 	args[2] = class_name.nativeConstPtr()
 	// Variant
 	args[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&script))
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_2, ptr, args[0], args[1], args[2], args[3])
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_2, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
 
@@ -20156,7 +20156,7 @@ func NewArrayWithPackedByteArray(from PackedByteArray) Array {
 	// PackedByteArray
 	// PackedByteArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_3, ptr, args[0])
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_3, ptr, args[0])
 	return cx
 }
 
@@ -20168,7 +20168,7 @@ func NewArrayWithPackedInt32Array(from PackedInt32Array) Array {
 	// PackedInt32Array
 	// PackedInt32ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_4, ptr, args[0])
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_4, ptr, args[0])
 	return cx
 }
 
@@ -20180,7 +20180,7 @@ func NewArrayWithPackedInt64Array(from PackedInt64Array) Array {
 	// PackedInt64Array
 	// PackedInt64ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_5, ptr, args[0])
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_5, ptr, args[0])
 	return cx
 }
 
@@ -20192,7 +20192,7 @@ func NewArrayWithPackedFloat32Array(from PackedFloat32Array) Array {
 	// PackedFloat32Array
 	// PackedFloat32ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_6, ptr, args[0])
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_6, ptr, args[0])
 	return cx
 }
 
@@ -20204,7 +20204,7 @@ func NewArrayWithPackedFloat64Array(from PackedFloat64Array) Array {
 	// PackedFloat64Array
 	// PackedFloat64ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_7, ptr, args[0])
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_7, ptr, args[0])
 	return cx
 }
 
@@ -20216,7 +20216,7 @@ func NewArrayWithPackedStringArray(from PackedStringArray) Array {
 	// PackedStringArray
 	// PackedStringArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_8, ptr, args[0])
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_8, ptr, args[0])
 	return cx
 }
 
@@ -20228,7 +20228,7 @@ func NewArrayWithPackedVector2Array(from PackedVector2Array) Array {
 	// PackedVector2Array
 	// PackedVector2ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_9, ptr, args[0])
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_9, ptr, args[0])
 	return cx
 }
 
@@ -20240,7 +20240,7 @@ func NewArrayWithPackedVector3Array(from PackedVector3Array) Array {
 	// PackedVector3Array
 	// PackedVector3ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_10, ptr, args[0])
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_10, ptr, args[0])
 	return cx
 }
 
@@ -20252,7 +20252,7 @@ func NewArrayWithPackedColorArray(from PackedColorArray) Array {
 	// PackedColorArray
 	// PackedColorArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalArrayMethodBindings.constructor_11, ptr, args[0])
+	CallBuiltinConstructor(globalArrayMethodBindings.constructor_11, ptr, args[0])
 	return cx
 }
 
@@ -20300,7 +20300,7 @@ func (cx *Array) Size() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -20321,7 +20321,7 @@ func (cx *Array) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -20342,7 +20342,7 @@ func (cx *Array) Clear() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -20362,7 +20362,7 @@ func (cx *Array) Hash() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -20387,7 +20387,7 @@ func (cx *Array) Assign(array Array) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -20413,7 +20413,7 @@ func (cx *Array) PushBack(value Variant) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -20439,7 +20439,7 @@ func (cx *Array) PushFront(value Variant) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -20465,7 +20465,7 @@ func (cx *Array) Append(value Variant) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -20491,7 +20491,7 @@ func (cx *Array) AppendArray(array Array) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -20517,7 +20517,7 @@ func (cx *Array) Resize(size int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(size)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -20546,7 +20546,7 @@ func (cx *Array) Insert(position int32, value Variant) int32 {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -20573,7 +20573,7 @@ func (cx *Array) RemoveAt(position int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(position)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -20599,7 +20599,7 @@ func (cx *Array) Fill(value Variant) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -20625,7 +20625,7 @@ func (cx *Array) Erase(value Variant) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -20647,7 +20647,7 @@ func (cx *Array) Front() Variant {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, nil)
 	return ret
 
 }
@@ -20668,7 +20668,7 @@ func (cx *Array) Back() Variant {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, nil)
 	return ret
 
 }
@@ -20689,7 +20689,7 @@ func (cx *Array) PickRandom() Variant {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, nil)
 	return ret
 
 }
@@ -20716,7 +20716,7 @@ func (cx *Array) Find(what Variant, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -20745,7 +20745,7 @@ func (cx *Array) Rfind(what Variant, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -20772,7 +20772,7 @@ func (cx *Array) Count(value Variant) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -20799,7 +20799,7 @@ func (cx *Array) Has(value Variant) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -20822,7 +20822,7 @@ func (cx *Array) PopBack() Variant {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, nil)
 	return ret
 
 }
@@ -20843,7 +20843,7 @@ func (cx *Array) PopFront() Variant {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, nil)
 	return ret
 
 }
@@ -20868,7 +20868,7 @@ func (cx *Array) PopAt(position int32) Variant {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(position)
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -20891,7 +20891,7 @@ func (cx *Array) Sort() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -20915,7 +20915,7 @@ func (cx *Array) SortCustom(callbackFunc Callable) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&callbackFunc))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -20937,7 +20937,7 @@ func (cx *Array) Shuffle() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -20963,7 +20963,7 @@ func (cx *Array) Bsearch(value Variant, before bool) int32 {
 
 	args[1] = BoolEncoder.encodeTypePtr(before)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -20994,7 +20994,7 @@ func (cx *Array) BsearchCustom(value Variant, callbackFunc Callable, before bool
 
 	args[2] = BoolEncoder.encodeTypePtr(before)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21017,7 +21017,7 @@ func (cx *Array) Reverse() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -21041,7 +21041,7 @@ func (cx *Array) Duplicate(deep bool) Array {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.encodeTypePtr(deep)
 
-	ret := callBuiltinMethodPtrRet[Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21074,7 +21074,7 @@ func (cx *Array) Slice(begin int32, end int32, step int32, deep bool) Array {
 
 	args[3] = BoolEncoder.encodeTypePtr(deep)
 
-	ret := callBuiltinMethodPtrRet[Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21101,7 +21101,7 @@ func (cx *Array) Filter(method Callable) Array {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
 
-	ret := callBuiltinMethodPtrRet[Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21128,7 +21128,7 @@ func (cx *Array) Map(method Callable) Array {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
 
-	ret := callBuiltinMethodPtrRet[Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21157,7 +21157,7 @@ func (cx *Array) Reduce(method Callable, accum Variant) Variant {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&accum))
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21184,7 +21184,7 @@ func (cx *Array) Any(method Callable) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21211,7 +21211,7 @@ func (cx *Array) All(method Callable) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21234,7 +21234,7 @@ func (cx *Array) Max() Variant {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, nil)
 	return ret
 
 }
@@ -21255,7 +21255,7 @@ func (cx *Array) Min() Variant {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, nil)
 	return ret
 
 }
@@ -21276,7 +21276,7 @@ func (cx *Array) IsTyped() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -21301,7 +21301,7 @@ func (cx *Array) IsSameTyped(array Array) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21324,7 +21324,7 @@ func (cx *Array) GetTypedBuiltin() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -21345,7 +21345,7 @@ func (cx *Array) GetTypedClassName() StringName {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[StringName](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[StringName](mb, bx, nil)
 	return ret
 
 }
@@ -21366,7 +21366,7 @@ func (cx *Array) GetTypedScript() Variant {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, nil)
 	return ret
 
 }
@@ -21387,7 +21387,7 @@ func (cx *Array) MakeReadOnly() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -21407,7 +21407,7 @@ func (cx *Array) IsReadOnly() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -21437,84 +21437,84 @@ func (cx *Array) SetIndexed(i int64, value Variant) {
 func (cx *Array) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *Array) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *Array) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_not, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *Array) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // Equal_Array operator
 func (cx *Array) Equal_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_equal_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_equal_Array, lt, rt)
 }
 
 // Not_equal_Array operator
 func (cx *Array) Not_equal_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_not_equal_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_not_equal_Array, lt, rt)
 }
 
 // Less_Array operator
 func (cx *Array) Less_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_less_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_less_Array, lt, rt)
 }
 
 // Less_equal_Array operator
 func (cx *Array) Less_equal_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_less_equal_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_less_equal_Array, lt, rt)
 }
 
 // Greater_Array operator
 func (cx *Array) Greater_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_greater_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_greater_Array, lt, rt)
 }
 
 // Greater_equal_Array operator
 func (cx *Array) Greater_equal_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_greater_equal_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_greater_equal_Array, lt, rt)
 }
 
 // Add_Array operator
 func (cx *Array) Add_Array(right Array) Array {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[Array](globalArrayMethodBindings.operator_add_Array, lt, rt)
+	return CallBuiltinOperatorPtr[Array](globalArrayMethodBindings.operator_add_Array, lt, rt)
 }
 
 // In_Array operator
 func (cx *Array) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalArrayMethodBindings.operator_in_Array, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &PackedByteArray{}
@@ -21540,7 +21540,7 @@ func (c *PackedByteArray) nativePtr() GDExtensionTypePtr {
 func NewPackedByteArray() PackedByteArray {
 	cx := PackedByteArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalPackedByteArrayMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalPackedByteArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -21552,7 +21552,7 @@ func NewPackedByteArrayWithPackedByteArray(from PackedByteArray) PackedByteArray
 	// PackedByteArray
 	// PackedByteArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedByteArrayMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalPackedByteArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -21564,7 +21564,7 @@ func NewPackedByteArrayWithArray(from Array) PackedByteArray {
 	// Array
 	// ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedByteArrayMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalPackedByteArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -21612,7 +21612,7 @@ func (cx *PackedByteArray) Size() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -21633,7 +21633,7 @@ func (cx *PackedByteArray) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -21660,7 +21660,7 @@ func (cx *PackedByteArray) Set(index int32, value int32) {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -21686,7 +21686,7 @@ func (cx *PackedByteArray) PushBack(value int32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21713,7 +21713,7 @@ func (cx *PackedByteArray) Append(value int32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21740,7 +21740,7 @@ func (cx *PackedByteArray) AppendArray(array PackedByteArray) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -21766,7 +21766,7 @@ func (cx *PackedByteArray) RemoveAt(index int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(index)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -21794,7 +21794,7 @@ func (cx *PackedByteArray) Insert(at_index int32, value int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21821,7 +21821,7 @@ func (cx *PackedByteArray) Fill(value int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -21847,7 +21847,7 @@ func (cx *PackedByteArray) Resize(new_size int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(new_size)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21870,7 +21870,7 @@ func (cx *PackedByteArray) Clear() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -21894,7 +21894,7 @@ func (cx *PackedByteArray) Has(value int32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21917,7 +21917,7 @@ func (cx *PackedByteArray) Reverse() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -21943,7 +21943,7 @@ func (cx *PackedByteArray) Slice(begin int32, end int32) PackedByteArray {
 
 	args[1] = Int32Encoder.encodeTypePtr(end)
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -21966,7 +21966,7 @@ func (cx *PackedByteArray) Sort() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -21992,7 +21992,7 @@ func (cx *PackedByteArray) Bsearch(value int32, before bool) int32 {
 
 	args[1] = BoolEncoder.encodeTypePtr(before)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22015,7 +22015,7 @@ func (cx *PackedByteArray) Duplicate() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -22042,7 +22042,7 @@ func (cx *PackedByteArray) Find(value int32, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22071,7 +22071,7 @@ func (cx *PackedByteArray) Rfind(value int32, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22098,7 +22098,7 @@ func (cx *PackedByteArray) Count(value int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22121,7 +22121,7 @@ func (cx *PackedByteArray) GetStringFromAscii() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -22142,7 +22142,7 @@ func (cx *PackedByteArray) GetStringFromUtf8() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -22163,7 +22163,7 @@ func (cx *PackedByteArray) GetStringFromUtf16() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -22184,7 +22184,7 @@ func (cx *PackedByteArray) GetStringFromUtf32() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -22205,7 +22205,7 @@ func (cx *PackedByteArray) GetStringFromWchar() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -22226,7 +22226,7 @@ func (cx *PackedByteArray) HexEncode() String {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[String](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
 	return ret
 
 }
@@ -22251,7 +22251,7 @@ func (cx *PackedByteArray) Compress(compression_mode int32) PackedByteArray {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(compression_mode)
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22280,7 +22280,7 @@ func (cx *PackedByteArray) Decompress(buffer_size int32, compression_mode int32)
 
 	args[1] = Int32Encoder.encodeTypePtr(compression_mode)
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22309,7 +22309,7 @@ func (cx *PackedByteArray) DecompressDynamic(max_output_size int32, compression_
 
 	args[1] = Int32Encoder.encodeTypePtr(compression_mode)
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22336,7 +22336,7 @@ func (cx *PackedByteArray) DecodeU8(byte_offset int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(byte_offset)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22363,7 +22363,7 @@ func (cx *PackedByteArray) DecodeS8(byte_offset int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(byte_offset)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22390,7 +22390,7 @@ func (cx *PackedByteArray) DecodeU16(byte_offset int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(byte_offset)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22417,7 +22417,7 @@ func (cx *PackedByteArray) DecodeS16(byte_offset int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(byte_offset)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22444,7 +22444,7 @@ func (cx *PackedByteArray) DecodeU32(byte_offset int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(byte_offset)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22471,7 +22471,7 @@ func (cx *PackedByteArray) DecodeS32(byte_offset int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(byte_offset)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22498,7 +22498,7 @@ func (cx *PackedByteArray) DecodeU64(byte_offset int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(byte_offset)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22525,7 +22525,7 @@ func (cx *PackedByteArray) DecodeS64(byte_offset int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(byte_offset)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22552,7 +22552,7 @@ func (cx *PackedByteArray) DecodeHalf(byte_offset int32) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(byte_offset)
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22579,7 +22579,7 @@ func (cx *PackedByteArray) DecodeFloat(byte_offset int32) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(byte_offset)
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22606,7 +22606,7 @@ func (cx *PackedByteArray) DecodeDouble(byte_offset int32) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(byte_offset)
 
-	ret := callBuiltinMethodPtrRet[float32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22635,7 +22635,7 @@ func (cx *PackedByteArray) HasEncodedVar(byte_offset int32, allow_objects bool) 
 
 	args[1] = BoolEncoder.encodeTypePtr(allow_objects)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22664,7 +22664,7 @@ func (cx *PackedByteArray) DecodeVar(byte_offset int32, allow_objects bool) Vari
 
 	args[1] = BoolEncoder.encodeTypePtr(allow_objects)
 
-	ret := callBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22693,7 +22693,7 @@ func (cx *PackedByteArray) DecodeVarSize(byte_offset int32, allow_objects bool) 
 
 	args[1] = BoolEncoder.encodeTypePtr(allow_objects)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -22716,7 +22716,7 @@ func (cx *PackedByteArray) ToInt32Array() PackedInt32Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedInt32Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedInt32Array](mb, bx, nil)
 	return ret
 
 }
@@ -22737,7 +22737,7 @@ func (cx *PackedByteArray) ToInt64Array() PackedInt64Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedInt64Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedInt64Array](mb, bx, nil)
 	return ret
 
 }
@@ -22758,7 +22758,7 @@ func (cx *PackedByteArray) ToFloat32Array() PackedFloat32Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedFloat32Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedFloat32Array](mb, bx, nil)
 	return ret
 
 }
@@ -22779,7 +22779,7 @@ func (cx *PackedByteArray) ToFloat64Array() PackedFloat64Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, nil)
 	return ret
 
 }
@@ -22806,7 +22806,7 @@ func (cx *PackedByteArray) EncodeU8(byte_offset int32, value int32) {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -22834,7 +22834,7 @@ func (cx *PackedByteArray) EncodeS8(byte_offset int32, value int32) {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -22862,7 +22862,7 @@ func (cx *PackedByteArray) EncodeU16(byte_offset int32, value int32) {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -22890,7 +22890,7 @@ func (cx *PackedByteArray) EncodeS16(byte_offset int32, value int32) {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -22918,7 +22918,7 @@ func (cx *PackedByteArray) EncodeU32(byte_offset int32, value int32) {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -22946,7 +22946,7 @@ func (cx *PackedByteArray) EncodeS32(byte_offset int32, value int32) {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -22974,7 +22974,7 @@ func (cx *PackedByteArray) EncodeU64(byte_offset int32, value int32) {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -23002,7 +23002,7 @@ func (cx *PackedByteArray) EncodeS64(byte_offset int32, value int32) {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -23030,7 +23030,7 @@ func (cx *PackedByteArray) EncodeHalf(byte_offset int32, value float32) {
 
 	args[1] = Float32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -23058,7 +23058,7 @@ func (cx *PackedByteArray) EncodeFloat(byte_offset int32, value float32) {
 
 	args[1] = Float32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -23086,7 +23086,7 @@ func (cx *PackedByteArray) EncodeDouble(byte_offset int32, value float32) {
 
 	args[1] = Float32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -23116,7 +23116,7 @@ func (cx *PackedByteArray) EncodeVar(byte_offset int32, value Variant, allow_obj
 
 	args[2] = BoolEncoder.encodeTypePtr(allow_objects)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -23148,56 +23148,56 @@ func (cx *PackedByteArray) SetIndexed(i int64, value int32) {
 func (cx *PackedByteArray) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *PackedByteArray) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *PackedByteArray) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_not, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *PackedByteArray) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *PackedByteArray) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Equal_PackedByteArray operator
 func (cx *PackedByteArray) Equal_PackedByteArray(right PackedByteArray) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_equal_PackedByteArray, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_equal_PackedByteArray, lt, rt)
 }
 
 // Not_equal_PackedByteArray operator
 func (cx *PackedByteArray) Not_equal_PackedByteArray(right PackedByteArray) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_not_equal_PackedByteArray, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedByteArrayMethodBindings.operator_not_equal_PackedByteArray, lt, rt)
 }
 
 // Add_PackedByteArray operator
 func (cx *PackedByteArray) Add_PackedByteArray(right PackedByteArray) PackedByteArray {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedByteArray](globalPackedByteArrayMethodBindings.operator_add_PackedByteArray, lt, rt)
+	return CallBuiltinOperatorPtr[PackedByteArray](globalPackedByteArrayMethodBindings.operator_add_PackedByteArray, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &PackedInt32Array{}
@@ -23223,7 +23223,7 @@ func (c *PackedInt32Array) nativePtr() GDExtensionTypePtr {
 func NewPackedInt32Array() PackedInt32Array {
 	cx := PackedInt32Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalPackedInt32ArrayMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalPackedInt32ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -23235,7 +23235,7 @@ func NewPackedInt32ArrayWithPackedInt32Array(from PackedInt32Array) PackedInt32A
 	// PackedInt32Array
 	// PackedInt32ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedInt32ArrayMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalPackedInt32ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -23247,7 +23247,7 @@ func NewPackedInt32ArrayWithArray(from Array) PackedInt32Array {
 	// Array
 	// ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedInt32ArrayMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalPackedInt32ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -23295,7 +23295,7 @@ func (cx *PackedInt32Array) Size() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -23316,7 +23316,7 @@ func (cx *PackedInt32Array) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -23343,7 +23343,7 @@ func (cx *PackedInt32Array) Set(index int32, value int32) {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -23369,7 +23369,7 @@ func (cx *PackedInt32Array) PushBack(value int32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -23396,7 +23396,7 @@ func (cx *PackedInt32Array) Append(value int32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -23423,7 +23423,7 @@ func (cx *PackedInt32Array) AppendArray(array PackedInt32Array) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -23449,7 +23449,7 @@ func (cx *PackedInt32Array) RemoveAt(index int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(index)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -23477,7 +23477,7 @@ func (cx *PackedInt32Array) Insert(at_index int32, value int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -23504,7 +23504,7 @@ func (cx *PackedInt32Array) Fill(value int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -23530,7 +23530,7 @@ func (cx *PackedInt32Array) Resize(new_size int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(new_size)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -23553,7 +23553,7 @@ func (cx *PackedInt32Array) Clear() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -23577,7 +23577,7 @@ func (cx *PackedInt32Array) Has(value int32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -23600,7 +23600,7 @@ func (cx *PackedInt32Array) Reverse() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -23626,7 +23626,7 @@ func (cx *PackedInt32Array) Slice(begin int32, end int32) PackedInt32Array {
 
 	args[1] = Int32Encoder.encodeTypePtr(end)
 
-	ret := callBuiltinMethodPtrRet[PackedInt32Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedInt32Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -23649,7 +23649,7 @@ func (cx *PackedInt32Array) ToByteArray() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -23670,7 +23670,7 @@ func (cx *PackedInt32Array) Sort() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -23696,7 +23696,7 @@ func (cx *PackedInt32Array) Bsearch(value int32, before bool) int32 {
 
 	args[1] = BoolEncoder.encodeTypePtr(before)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -23719,7 +23719,7 @@ func (cx *PackedInt32Array) Duplicate() PackedInt32Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedInt32Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedInt32Array](mb, bx, nil)
 	return ret
 
 }
@@ -23746,7 +23746,7 @@ func (cx *PackedInt32Array) Find(value int32, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -23775,7 +23775,7 @@ func (cx *PackedInt32Array) Rfind(value int32, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -23802,7 +23802,7 @@ func (cx *PackedInt32Array) Count(value int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -23834,56 +23834,56 @@ func (cx *PackedInt32Array) SetIndexed(i int64, value int32) {
 func (cx *PackedInt32Array) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *PackedInt32Array) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *PackedInt32Array) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_not, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *PackedInt32Array) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *PackedInt32Array) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Equal_PackedInt32Array operator
 func (cx *PackedInt32Array) Equal_PackedInt32Array(right PackedInt32Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_equal_PackedInt32Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_equal_PackedInt32Array, lt, rt)
 }
 
 // Not_equal_PackedInt32Array operator
 func (cx *PackedInt32Array) Not_equal_PackedInt32Array(right PackedInt32Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_not_equal_PackedInt32Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt32ArrayMethodBindings.operator_not_equal_PackedInt32Array, lt, rt)
 }
 
 // Add_PackedInt32Array operator
 func (cx *PackedInt32Array) Add_PackedInt32Array(right PackedInt32Array) PackedInt32Array {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedInt32Array](globalPackedInt32ArrayMethodBindings.operator_add_PackedInt32Array, lt, rt)
+	return CallBuiltinOperatorPtr[PackedInt32Array](globalPackedInt32ArrayMethodBindings.operator_add_PackedInt32Array, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &PackedInt64Array{}
@@ -23909,7 +23909,7 @@ func (c *PackedInt64Array) nativePtr() GDExtensionTypePtr {
 func NewPackedInt64Array() PackedInt64Array {
 	cx := PackedInt64Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalPackedInt64ArrayMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalPackedInt64ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -23921,7 +23921,7 @@ func NewPackedInt64ArrayWithPackedInt64Array(from PackedInt64Array) PackedInt64A
 	// PackedInt64Array
 	// PackedInt64ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedInt64ArrayMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalPackedInt64ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -23933,7 +23933,7 @@ func NewPackedInt64ArrayWithArray(from Array) PackedInt64Array {
 	// Array
 	// ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedInt64ArrayMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalPackedInt64ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -23981,7 +23981,7 @@ func (cx *PackedInt64Array) Size() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -24002,7 +24002,7 @@ func (cx *PackedInt64Array) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -24029,7 +24029,7 @@ func (cx *PackedInt64Array) Set(index int32, value int32) {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -24055,7 +24055,7 @@ func (cx *PackedInt64Array) PushBack(value int32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24082,7 +24082,7 @@ func (cx *PackedInt64Array) Append(value int32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24109,7 +24109,7 @@ func (cx *PackedInt64Array) AppendArray(array PackedInt64Array) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -24135,7 +24135,7 @@ func (cx *PackedInt64Array) RemoveAt(index int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(index)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -24163,7 +24163,7 @@ func (cx *PackedInt64Array) Insert(at_index int32, value int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24190,7 +24190,7 @@ func (cx *PackedInt64Array) Fill(value int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -24216,7 +24216,7 @@ func (cx *PackedInt64Array) Resize(new_size int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(new_size)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24239,7 +24239,7 @@ func (cx *PackedInt64Array) Clear() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -24263,7 +24263,7 @@ func (cx *PackedInt64Array) Has(value int32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24286,7 +24286,7 @@ func (cx *PackedInt64Array) Reverse() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -24312,7 +24312,7 @@ func (cx *PackedInt64Array) Slice(begin int32, end int32) PackedInt64Array {
 
 	args[1] = Int32Encoder.encodeTypePtr(end)
 
-	ret := callBuiltinMethodPtrRet[PackedInt64Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedInt64Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24335,7 +24335,7 @@ func (cx *PackedInt64Array) ToByteArray() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -24356,7 +24356,7 @@ func (cx *PackedInt64Array) Sort() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -24382,7 +24382,7 @@ func (cx *PackedInt64Array) Bsearch(value int32, before bool) int32 {
 
 	args[1] = BoolEncoder.encodeTypePtr(before)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24405,7 +24405,7 @@ func (cx *PackedInt64Array) Duplicate() PackedInt64Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedInt64Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedInt64Array](mb, bx, nil)
 	return ret
 
 }
@@ -24432,7 +24432,7 @@ func (cx *PackedInt64Array) Find(value int32, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24461,7 +24461,7 @@ func (cx *PackedInt64Array) Rfind(value int32, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24488,7 +24488,7 @@ func (cx *PackedInt64Array) Count(value int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24520,56 +24520,56 @@ func (cx *PackedInt64Array) SetIndexed(i int64, value int32) {
 func (cx *PackedInt64Array) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *PackedInt64Array) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *PackedInt64Array) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_not, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *PackedInt64Array) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *PackedInt64Array) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Equal_PackedInt64Array operator
 func (cx *PackedInt64Array) Equal_PackedInt64Array(right PackedInt64Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_equal_PackedInt64Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_equal_PackedInt64Array, lt, rt)
 }
 
 // Not_equal_PackedInt64Array operator
 func (cx *PackedInt64Array) Not_equal_PackedInt64Array(right PackedInt64Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_not_equal_PackedInt64Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedInt64ArrayMethodBindings.operator_not_equal_PackedInt64Array, lt, rt)
 }
 
 // Add_PackedInt64Array operator
 func (cx *PackedInt64Array) Add_PackedInt64Array(right PackedInt64Array) PackedInt64Array {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedInt64Array](globalPackedInt64ArrayMethodBindings.operator_add_PackedInt64Array, lt, rt)
+	return CallBuiltinOperatorPtr[PackedInt64Array](globalPackedInt64ArrayMethodBindings.operator_add_PackedInt64Array, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &PackedFloat32Array{}
@@ -24595,7 +24595,7 @@ func (c *PackedFloat32Array) nativePtr() GDExtensionTypePtr {
 func NewPackedFloat32Array() PackedFloat32Array {
 	cx := PackedFloat32Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalPackedFloat32ArrayMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalPackedFloat32ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -24607,7 +24607,7 @@ func NewPackedFloat32ArrayWithPackedFloat32Array(from PackedFloat32Array) Packed
 	// PackedFloat32Array
 	// PackedFloat32ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedFloat32ArrayMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalPackedFloat32ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -24619,7 +24619,7 @@ func NewPackedFloat32ArrayWithArray(from Array) PackedFloat32Array {
 	// Array
 	// ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedFloat32ArrayMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalPackedFloat32ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -24667,7 +24667,7 @@ func (cx *PackedFloat32Array) Size() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -24688,7 +24688,7 @@ func (cx *PackedFloat32Array) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -24715,7 +24715,7 @@ func (cx *PackedFloat32Array) Set(index int32, value float32) {
 
 	args[1] = Float32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -24741,7 +24741,7 @@ func (cx *PackedFloat32Array) PushBack(value float32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24768,7 +24768,7 @@ func (cx *PackedFloat32Array) Append(value float32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24795,7 +24795,7 @@ func (cx *PackedFloat32Array) AppendArray(array PackedFloat32Array) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -24821,7 +24821,7 @@ func (cx *PackedFloat32Array) RemoveAt(index int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(index)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -24849,7 +24849,7 @@ func (cx *PackedFloat32Array) Insert(at_index int32, value float32) int32 {
 
 	args[1] = Float32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24876,7 +24876,7 @@ func (cx *PackedFloat32Array) Fill(value float32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -24902,7 +24902,7 @@ func (cx *PackedFloat32Array) Resize(new_size int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(new_size)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24925,7 +24925,7 @@ func (cx *PackedFloat32Array) Clear() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -24949,7 +24949,7 @@ func (cx *PackedFloat32Array) Has(value float32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -24972,7 +24972,7 @@ func (cx *PackedFloat32Array) Reverse() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -24998,7 +24998,7 @@ func (cx *PackedFloat32Array) Slice(begin int32, end int32) PackedFloat32Array {
 
 	args[1] = Int32Encoder.encodeTypePtr(end)
 
-	ret := callBuiltinMethodPtrRet[PackedFloat32Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedFloat32Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25021,7 +25021,7 @@ func (cx *PackedFloat32Array) ToByteArray() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -25042,7 +25042,7 @@ func (cx *PackedFloat32Array) Sort() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -25068,7 +25068,7 @@ func (cx *PackedFloat32Array) Bsearch(value float32, before bool) int32 {
 
 	args[1] = BoolEncoder.encodeTypePtr(before)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25091,7 +25091,7 @@ func (cx *PackedFloat32Array) Duplicate() PackedFloat32Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedFloat32Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedFloat32Array](mb, bx, nil)
 	return ret
 
 }
@@ -25118,7 +25118,7 @@ func (cx *PackedFloat32Array) Find(value float32, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25147,7 +25147,7 @@ func (cx *PackedFloat32Array) Rfind(value float32, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25174,7 +25174,7 @@ func (cx *PackedFloat32Array) Count(value float32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25206,56 +25206,56 @@ func (cx *PackedFloat32Array) SetIndexed(i int64, value float32) {
 func (cx *PackedFloat32Array) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *PackedFloat32Array) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *PackedFloat32Array) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_not, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *PackedFloat32Array) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *PackedFloat32Array) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Equal_PackedFloat32Array operator
 func (cx *PackedFloat32Array) Equal_PackedFloat32Array(right PackedFloat32Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_equal_PackedFloat32Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_equal_PackedFloat32Array, lt, rt)
 }
 
 // Not_equal_PackedFloat32Array operator
 func (cx *PackedFloat32Array) Not_equal_PackedFloat32Array(right PackedFloat32Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_not_equal_PackedFloat32Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat32ArrayMethodBindings.operator_not_equal_PackedFloat32Array, lt, rt)
 }
 
 // Add_PackedFloat32Array operator
 func (cx *PackedFloat32Array) Add_PackedFloat32Array(right PackedFloat32Array) PackedFloat32Array {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedFloat32Array](globalPackedFloat32ArrayMethodBindings.operator_add_PackedFloat32Array, lt, rt)
+	return CallBuiltinOperatorPtr[PackedFloat32Array](globalPackedFloat32ArrayMethodBindings.operator_add_PackedFloat32Array, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &PackedFloat64Array{}
@@ -25281,7 +25281,7 @@ func (c *PackedFloat64Array) nativePtr() GDExtensionTypePtr {
 func NewPackedFloat64Array() PackedFloat64Array {
 	cx := PackedFloat64Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalPackedFloat64ArrayMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalPackedFloat64ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -25293,7 +25293,7 @@ func NewPackedFloat64ArrayWithPackedFloat64Array(from PackedFloat64Array) Packed
 	// PackedFloat64Array
 	// PackedFloat64ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedFloat64ArrayMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalPackedFloat64ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -25305,7 +25305,7 @@ func NewPackedFloat64ArrayWithArray(from Array) PackedFloat64Array {
 	// Array
 	// ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedFloat64ArrayMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalPackedFloat64ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -25353,7 +25353,7 @@ func (cx *PackedFloat64Array) Size() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -25374,7 +25374,7 @@ func (cx *PackedFloat64Array) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -25401,7 +25401,7 @@ func (cx *PackedFloat64Array) Set(index int32, value float32) {
 
 	args[1] = Float32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -25427,7 +25427,7 @@ func (cx *PackedFloat64Array) PushBack(value float32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25454,7 +25454,7 @@ func (cx *PackedFloat64Array) Append(value float32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25481,7 +25481,7 @@ func (cx *PackedFloat64Array) AppendArray(array PackedFloat64Array) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -25507,7 +25507,7 @@ func (cx *PackedFloat64Array) RemoveAt(index int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(index)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -25535,7 +25535,7 @@ func (cx *PackedFloat64Array) Insert(at_index int32, value float32) int32 {
 
 	args[1] = Float32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25562,7 +25562,7 @@ func (cx *PackedFloat64Array) Fill(value float32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(value)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -25588,7 +25588,7 @@ func (cx *PackedFloat64Array) Resize(new_size int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(new_size)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25611,7 +25611,7 @@ func (cx *PackedFloat64Array) Clear() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -25635,7 +25635,7 @@ func (cx *PackedFloat64Array) Has(value float32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25658,7 +25658,7 @@ func (cx *PackedFloat64Array) Reverse() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -25684,7 +25684,7 @@ func (cx *PackedFloat64Array) Slice(begin int32, end int32) PackedFloat64Array {
 
 	args[1] = Int32Encoder.encodeTypePtr(end)
 
-	ret := callBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25707,7 +25707,7 @@ func (cx *PackedFloat64Array) ToByteArray() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -25728,7 +25728,7 @@ func (cx *PackedFloat64Array) Sort() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -25754,7 +25754,7 @@ func (cx *PackedFloat64Array) Bsearch(value float32, before bool) int32 {
 
 	args[1] = BoolEncoder.encodeTypePtr(before)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25777,7 +25777,7 @@ func (cx *PackedFloat64Array) Duplicate() PackedFloat64Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, nil)
 	return ret
 
 }
@@ -25804,7 +25804,7 @@ func (cx *PackedFloat64Array) Find(value float32, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25833,7 +25833,7 @@ func (cx *PackedFloat64Array) Rfind(value float32, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25860,7 +25860,7 @@ func (cx *PackedFloat64Array) Count(value float32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.encodeTypePtr(value)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -25892,56 +25892,56 @@ func (cx *PackedFloat64Array) SetIndexed(i int64, value float32) {
 func (cx *PackedFloat64Array) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *PackedFloat64Array) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *PackedFloat64Array) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_not, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *PackedFloat64Array) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *PackedFloat64Array) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Equal_PackedFloat64Array operator
 func (cx *PackedFloat64Array) Equal_PackedFloat64Array(right PackedFloat64Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_equal_PackedFloat64Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_equal_PackedFloat64Array, lt, rt)
 }
 
 // Not_equal_PackedFloat64Array operator
 func (cx *PackedFloat64Array) Not_equal_PackedFloat64Array(right PackedFloat64Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_not_equal_PackedFloat64Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedFloat64ArrayMethodBindings.operator_not_equal_PackedFloat64Array, lt, rt)
 }
 
 // Add_PackedFloat64Array operator
 func (cx *PackedFloat64Array) Add_PackedFloat64Array(right PackedFloat64Array) PackedFloat64Array {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedFloat64Array](globalPackedFloat64ArrayMethodBindings.operator_add_PackedFloat64Array, lt, rt)
+	return CallBuiltinOperatorPtr[PackedFloat64Array](globalPackedFloat64ArrayMethodBindings.operator_add_PackedFloat64Array, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &PackedStringArray{}
@@ -25967,7 +25967,7 @@ func (c *PackedStringArray) nativePtr() GDExtensionTypePtr {
 func NewPackedStringArray() PackedStringArray {
 	cx := PackedStringArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalPackedStringArrayMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalPackedStringArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -25979,7 +25979,7 @@ func NewPackedStringArrayWithPackedStringArray(from PackedStringArray) PackedStr
 	// PackedStringArray
 	// PackedStringArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedStringArrayMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalPackedStringArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -25991,7 +25991,7 @@ func NewPackedStringArrayWithArray(from Array) PackedStringArray {
 	// Array
 	// ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedStringArrayMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalPackedStringArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -26039,7 +26039,7 @@ func (cx *PackedStringArray) Size() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -26060,7 +26060,7 @@ func (cx *PackedStringArray) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -26087,7 +26087,7 @@ func (cx *PackedStringArray) Set(index int32, value String) {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -26113,7 +26113,7 @@ func (cx *PackedStringArray) PushBack(value String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26140,7 +26140,7 @@ func (cx *PackedStringArray) Append(value String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26167,7 +26167,7 @@ func (cx *PackedStringArray) AppendArray(array PackedStringArray) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -26193,7 +26193,7 @@ func (cx *PackedStringArray) RemoveAt(index int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(index)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -26221,7 +26221,7 @@ func (cx *PackedStringArray) Insert(at_index int32, value String) int32 {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26248,7 +26248,7 @@ func (cx *PackedStringArray) Fill(value String) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -26274,7 +26274,7 @@ func (cx *PackedStringArray) Resize(new_size int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(new_size)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26297,7 +26297,7 @@ func (cx *PackedStringArray) Clear() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -26321,7 +26321,7 @@ func (cx *PackedStringArray) Has(value String) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26344,7 +26344,7 @@ func (cx *PackedStringArray) Reverse() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -26370,7 +26370,7 @@ func (cx *PackedStringArray) Slice(begin int32, end int32) PackedStringArray {
 
 	args[1] = Int32Encoder.encodeTypePtr(end)
 
-	ret := callBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26393,7 +26393,7 @@ func (cx *PackedStringArray) ToByteArray() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -26414,7 +26414,7 @@ func (cx *PackedStringArray) Sort() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -26440,7 +26440,7 @@ func (cx *PackedStringArray) Bsearch(value String, before bool) int32 {
 
 	args[1] = BoolEncoder.encodeTypePtr(before)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26463,7 +26463,7 @@ func (cx *PackedStringArray) Duplicate() PackedStringArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedStringArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, nil)
 	return ret
 
 }
@@ -26490,7 +26490,7 @@ func (cx *PackedStringArray) Find(value String, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26519,7 +26519,7 @@ func (cx *PackedStringArray) Rfind(value String, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26546,7 +26546,7 @@ func (cx *PackedStringArray) Count(value String) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26578,56 +26578,56 @@ func (cx *PackedStringArray) SetIndexed(i int64, value String) {
 func (cx *PackedStringArray) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *PackedStringArray) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *PackedStringArray) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_not, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *PackedStringArray) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *PackedStringArray) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Equal_PackedStringArray operator
 func (cx *PackedStringArray) Equal_PackedStringArray(right PackedStringArray) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_equal_PackedStringArray, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_equal_PackedStringArray, lt, rt)
 }
 
 // Not_equal_PackedStringArray operator
 func (cx *PackedStringArray) Not_equal_PackedStringArray(right PackedStringArray) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_not_equal_PackedStringArray, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedStringArrayMethodBindings.operator_not_equal_PackedStringArray, lt, rt)
 }
 
 // Add_PackedStringArray operator
 func (cx *PackedStringArray) Add_PackedStringArray(right PackedStringArray) PackedStringArray {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedStringArray](globalPackedStringArrayMethodBindings.operator_add_PackedStringArray, lt, rt)
+	return CallBuiltinOperatorPtr[PackedStringArray](globalPackedStringArrayMethodBindings.operator_add_PackedStringArray, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &PackedVector2Array{}
@@ -26653,7 +26653,7 @@ func (c *PackedVector2Array) nativePtr() GDExtensionTypePtr {
 func NewPackedVector2Array() PackedVector2Array {
 	cx := PackedVector2Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalPackedVector2ArrayMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalPackedVector2ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -26665,7 +26665,7 @@ func NewPackedVector2ArrayWithPackedVector2Array(from PackedVector2Array) Packed
 	// PackedVector2Array
 	// PackedVector2ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedVector2ArrayMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalPackedVector2ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -26677,7 +26677,7 @@ func NewPackedVector2ArrayWithArray(from Array) PackedVector2Array {
 	// Array
 	// ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedVector2ArrayMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalPackedVector2ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -26725,7 +26725,7 @@ func (cx *PackedVector2Array) Size() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -26746,7 +26746,7 @@ func (cx *PackedVector2Array) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -26773,7 +26773,7 @@ func (cx *PackedVector2Array) Set(index int32, value Vector2) {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -26799,7 +26799,7 @@ func (cx *PackedVector2Array) PushBack(value Vector2) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26826,7 +26826,7 @@ func (cx *PackedVector2Array) Append(value Vector2) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26853,7 +26853,7 @@ func (cx *PackedVector2Array) AppendArray(array PackedVector2Array) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -26879,7 +26879,7 @@ func (cx *PackedVector2Array) RemoveAt(index int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(index)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -26907,7 +26907,7 @@ func (cx *PackedVector2Array) Insert(at_index int32, value Vector2) int32 {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26934,7 +26934,7 @@ func (cx *PackedVector2Array) Fill(value Vector2) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -26960,7 +26960,7 @@ func (cx *PackedVector2Array) Resize(new_size int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(new_size)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -26983,7 +26983,7 @@ func (cx *PackedVector2Array) Clear() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -27007,7 +27007,7 @@ func (cx *PackedVector2Array) Has(value Vector2) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27030,7 +27030,7 @@ func (cx *PackedVector2Array) Reverse() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -27056,7 +27056,7 @@ func (cx *PackedVector2Array) Slice(begin int32, end int32) PackedVector2Array {
 
 	args[1] = Int32Encoder.encodeTypePtr(end)
 
-	ret := callBuiltinMethodPtrRet[PackedVector2Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedVector2Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27079,7 +27079,7 @@ func (cx *PackedVector2Array) ToByteArray() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -27100,7 +27100,7 @@ func (cx *PackedVector2Array) Sort() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -27126,7 +27126,7 @@ func (cx *PackedVector2Array) Bsearch(value Vector2, before bool) int32 {
 
 	args[1] = BoolEncoder.encodeTypePtr(before)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27149,7 +27149,7 @@ func (cx *PackedVector2Array) Duplicate() PackedVector2Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedVector2Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedVector2Array](mb, bx, nil)
 	return ret
 
 }
@@ -27176,7 +27176,7 @@ func (cx *PackedVector2Array) Find(value Vector2, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27205,7 +27205,7 @@ func (cx *PackedVector2Array) Rfind(value Vector2, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27232,7 +27232,7 @@ func (cx *PackedVector2Array) Count(value Vector2) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27264,63 +27264,63 @@ func (cx *PackedVector2Array) SetIndexed(i int64, value Vector2) {
 func (cx *PackedVector2Array) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *PackedVector2Array) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *PackedVector2Array) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_Transform2D operator
 func (cx *PackedVector2Array) Multiply_Transform2D(right Transform2D) PackedVector2Array {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedVector2Array](globalPackedVector2ArrayMethodBindings.operator_multiply_Transform2D, lt, rt)
+	return CallBuiltinOperatorPtr[PackedVector2Array](globalPackedVector2ArrayMethodBindings.operator_multiply_Transform2D, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *PackedVector2Array) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *PackedVector2Array) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Equal_PackedVector2Array operator
 func (cx *PackedVector2Array) Equal_PackedVector2Array(right PackedVector2Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_equal_PackedVector2Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_equal_PackedVector2Array, lt, rt)
 }
 
 // Not_equal_PackedVector2Array operator
 func (cx *PackedVector2Array) Not_equal_PackedVector2Array(right PackedVector2Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_not_equal_PackedVector2Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector2ArrayMethodBindings.operator_not_equal_PackedVector2Array, lt, rt)
 }
 
 // Add_PackedVector2Array operator
 func (cx *PackedVector2Array) Add_PackedVector2Array(right PackedVector2Array) PackedVector2Array {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedVector2Array](globalPackedVector2ArrayMethodBindings.operator_add_PackedVector2Array, lt, rt)
+	return CallBuiltinOperatorPtr[PackedVector2Array](globalPackedVector2ArrayMethodBindings.operator_add_PackedVector2Array, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &PackedVector3Array{}
@@ -27346,7 +27346,7 @@ func (c *PackedVector3Array) nativePtr() GDExtensionTypePtr {
 func NewPackedVector3Array() PackedVector3Array {
 	cx := PackedVector3Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalPackedVector3ArrayMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalPackedVector3ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -27358,7 +27358,7 @@ func NewPackedVector3ArrayWithPackedVector3Array(from PackedVector3Array) Packed
 	// PackedVector3Array
 	// PackedVector3ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedVector3ArrayMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalPackedVector3ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -27370,7 +27370,7 @@ func NewPackedVector3ArrayWithArray(from Array) PackedVector3Array {
 	// Array
 	// ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedVector3ArrayMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalPackedVector3ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -27418,7 +27418,7 @@ func (cx *PackedVector3Array) Size() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -27439,7 +27439,7 @@ func (cx *PackedVector3Array) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -27466,7 +27466,7 @@ func (cx *PackedVector3Array) Set(index int32, value Vector3) {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -27492,7 +27492,7 @@ func (cx *PackedVector3Array) PushBack(value Vector3) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27519,7 +27519,7 @@ func (cx *PackedVector3Array) Append(value Vector3) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27546,7 +27546,7 @@ func (cx *PackedVector3Array) AppendArray(array PackedVector3Array) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -27572,7 +27572,7 @@ func (cx *PackedVector3Array) RemoveAt(index int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(index)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -27600,7 +27600,7 @@ func (cx *PackedVector3Array) Insert(at_index int32, value Vector3) int32 {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27627,7 +27627,7 @@ func (cx *PackedVector3Array) Fill(value Vector3) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -27653,7 +27653,7 @@ func (cx *PackedVector3Array) Resize(new_size int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(new_size)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27676,7 +27676,7 @@ func (cx *PackedVector3Array) Clear() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -27700,7 +27700,7 @@ func (cx *PackedVector3Array) Has(value Vector3) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27723,7 +27723,7 @@ func (cx *PackedVector3Array) Reverse() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -27749,7 +27749,7 @@ func (cx *PackedVector3Array) Slice(begin int32, end int32) PackedVector3Array {
 
 	args[1] = Int32Encoder.encodeTypePtr(end)
 
-	ret := callBuiltinMethodPtrRet[PackedVector3Array](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedVector3Array](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27772,7 +27772,7 @@ func (cx *PackedVector3Array) ToByteArray() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -27793,7 +27793,7 @@ func (cx *PackedVector3Array) Sort() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -27819,7 +27819,7 @@ func (cx *PackedVector3Array) Bsearch(value Vector3, before bool) int32 {
 
 	args[1] = BoolEncoder.encodeTypePtr(before)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27842,7 +27842,7 @@ func (cx *PackedVector3Array) Duplicate() PackedVector3Array {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedVector3Array](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedVector3Array](mb, bx, nil)
 	return ret
 
 }
@@ -27869,7 +27869,7 @@ func (cx *PackedVector3Array) Find(value Vector3, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27898,7 +27898,7 @@ func (cx *PackedVector3Array) Rfind(value Vector3, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27925,7 +27925,7 @@ func (cx *PackedVector3Array) Count(value Vector3) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -27957,63 +27957,63 @@ func (cx *PackedVector3Array) SetIndexed(i int64, value Vector3) {
 func (cx *PackedVector3Array) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *PackedVector3Array) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *PackedVector3Array) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_not, lt, rt)
 }
 
 // Multiply_Transform3D operator
 func (cx *PackedVector3Array) Multiply_Transform3D(right Transform3D) PackedVector3Array {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedVector3Array](globalPackedVector3ArrayMethodBindings.operator_multiply_Transform3D, lt, rt)
+	return CallBuiltinOperatorPtr[PackedVector3Array](globalPackedVector3ArrayMethodBindings.operator_multiply_Transform3D, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *PackedVector3Array) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *PackedVector3Array) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Equal_PackedVector3Array operator
 func (cx *PackedVector3Array) Equal_PackedVector3Array(right PackedVector3Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_equal_PackedVector3Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_equal_PackedVector3Array, lt, rt)
 }
 
 // Not_equal_PackedVector3Array operator
 func (cx *PackedVector3Array) Not_equal_PackedVector3Array(right PackedVector3Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_not_equal_PackedVector3Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedVector3ArrayMethodBindings.operator_not_equal_PackedVector3Array, lt, rt)
 }
 
 // Add_PackedVector3Array operator
 func (cx *PackedVector3Array) Add_PackedVector3Array(right PackedVector3Array) PackedVector3Array {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedVector3Array](globalPackedVector3ArrayMethodBindings.operator_add_PackedVector3Array, lt, rt)
+	return CallBuiltinOperatorPtr[PackedVector3Array](globalPackedVector3ArrayMethodBindings.operator_add_PackedVector3Array, lt, rt)
 }
 
 var _ GDBuiltInDestroyableClass = &PackedColorArray{}
@@ -28039,7 +28039,7 @@ func (c *PackedColorArray) nativePtr() GDExtensionTypePtr {
 func NewPackedColorArray() PackedColorArray {
 	cx := PackedColorArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
-	callBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_0, ptr)
+	CallBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
 
@@ -28051,7 +28051,7 @@ func NewPackedColorArrayWithPackedColorArray(from PackedColorArray) PackedColorA
 	// PackedColorArray
 	// PackedColorArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_1, ptr, args[0])
+	CallBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
 
@@ -28063,7 +28063,7 @@ func NewPackedColorArrayWithArray(from Array) PackedColorArray {
 	// Array
 	// ArrayEncoder
 	args[0] = from.nativeConstPtr()
-	callBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_2, ptr, args[0])
+	CallBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
 
@@ -28111,7 +28111,7 @@ func (cx *PackedColorArray) Size() int32 {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, nil)
 	return ret
 
 }
@@ -28132,7 +28132,7 @@ func (cx *PackedColorArray) IsEmpty() bool {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 
 }
@@ -28159,7 +28159,7 @@ func (cx *PackedColorArray) Set(index int32, value Color) {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -28185,7 +28185,7 @@ func (cx *PackedColorArray) PushBack(value Color) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -28212,7 +28212,7 @@ func (cx *PackedColorArray) Append(value Color) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -28239,7 +28239,7 @@ func (cx *PackedColorArray) AppendArray(array PackedColorArray) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -28265,7 +28265,7 @@ func (cx *PackedColorArray) RemoveAt(index int32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(index)
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -28293,7 +28293,7 @@ func (cx *PackedColorArray) Insert(at_index int32, value Color) int32 {
 
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -28320,7 +28320,7 @@ func (cx *PackedColorArray) Fill(value Color) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	callBuiltinMethodPtrNoRet(mb, bx, args...)
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 
@@ -28346,7 +28346,7 @@ func (cx *PackedColorArray) Resize(new_size int32) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int32Encoder.encodeTypePtr(new_size)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -28369,7 +28369,7 @@ func (cx *PackedColorArray) Clear() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -28393,7 +28393,7 @@ func (cx *PackedColorArray) Has(value Color) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[bool](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -28416,7 +28416,7 @@ func (cx *PackedColorArray) Reverse() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -28442,7 +28442,7 @@ func (cx *PackedColorArray) Slice(begin int32, end int32) PackedColorArray {
 
 	args[1] = Int32Encoder.encodeTypePtr(end)
 
-	ret := callBuiltinMethodPtrRet[PackedColorArray](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[PackedColorArray](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -28465,7 +28465,7 @@ func (cx *PackedColorArray) ToByteArray() PackedByteArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, nil)
 	return ret
 
 }
@@ -28486,7 +28486,7 @@ func (cx *PackedColorArray) Sort() {
 		log.Panic("object cannot be nil")
 	}
 
-	callBuiltinMethodPtrNoRet(mb, bx, nil)
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
 
 }
 
@@ -28512,7 +28512,7 @@ func (cx *PackedColorArray) Bsearch(value Color, before bool) int32 {
 
 	args[1] = BoolEncoder.encodeTypePtr(before)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -28535,7 +28535,7 @@ func (cx *PackedColorArray) Duplicate() PackedColorArray {
 		log.Panic("object cannot be nil")
 	}
 
-	ret := callBuiltinMethodPtrRet[PackedColorArray](mb, bx, nil)
+	ret := CallBuiltinMethodPtrRet[PackedColorArray](mb, bx, nil)
 	return ret
 
 }
@@ -28562,7 +28562,7 @@ func (cx *PackedColorArray) Find(value Color, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -28591,7 +28591,7 @@ func (cx *PackedColorArray) Rfind(value Color, from int32) int32 {
 
 	args[1] = Int32Encoder.encodeTypePtr(from)
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -28618,7 +28618,7 @@ func (cx *PackedColorArray) Count(value Color) int32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
-	ret := callBuiltinMethodPtrRet[int32](mb, bx, args...)
+	ret := CallBuiltinMethodPtrRet[int32](mb, bx, args...)
 	runtime.KeepAlive(args)
 	// C.free(argBytes)
 	return ret
@@ -28650,54 +28650,54 @@ func (cx *PackedColorArray) SetIndexed(i int64, value Color) {
 func (cx *PackedColorArray) Equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_equal_Variant, lt, rt)
 }
 
 // Not_equal_Variant operator
 func (cx *PackedColorArray) Not_equal_Variant(right Variant) bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(right.nativeConstPtr())
-	return callBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_not_equal_Variant, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_not_equal_Variant, lt, rt)
 }
 
 // Not operator
 func (cx *PackedColorArray) Not() bool {
 	lt := cx.nativeConstPtr()
 	rt := (GDExtensionConstTypePtr)(nullptr)
-	return callBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_not, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_not, lt, rt)
 }
 
 // In_Dictionary operator
 func (cx *PackedColorArray) In_Dictionary(right Dictionary) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_in_Dictionary, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_in_Dictionary, lt, rt)
 }
 
 // In_Array operator
 func (cx *PackedColorArray) In_Array(right Array) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_in_Array, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_in_Array, lt, rt)
 }
 
 // Equal_PackedColorArray operator
 func (cx *PackedColorArray) Equal_PackedColorArray(right PackedColorArray) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_equal_PackedColorArray, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_equal_PackedColorArray, lt, rt)
 }
 
 // Not_equal_PackedColorArray operator
 func (cx *PackedColorArray) Not_equal_PackedColorArray(right PackedColorArray) bool {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_not_equal_PackedColorArray, lt, rt)
+	return CallBuiltinOperatorPtr[bool](globalPackedColorArrayMethodBindings.operator_not_equal_PackedColorArray, lt, rt)
 }
 
 // Add_PackedColorArray operator
 func (cx *PackedColorArray) Add_PackedColorArray(right PackedColorArray) PackedColorArray {
 	lt := cx.nativeConstPtr()
 	rt := right.nativeConstPtr()
-	return callBuiltinOperatorPtr[PackedColorArray](globalPackedColorArrayMethodBindings.operator_add_PackedColorArray, lt, rt)
+	return CallBuiltinOperatorPtr[PackedColorArray](globalPackedColorArrayMethodBindings.operator_add_PackedColorArray, lt, rt)
 }

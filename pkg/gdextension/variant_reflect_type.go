@@ -103,8 +103,13 @@ func ReflectTypeToGDExtensionVariantType(t reflect.Type) GDExtensionVariantType 
 	case reflect.Pointer:
 		zero := reflect.Zero(t)
 		inst := zero.Interface()
+		switch inst.(type) {
+		case *GDExtensionPropertyInfo:
+			log.Debug("detected *GDExtensionPropertyInfo (type assertion) as GDEXTENSION_VARIANT_TYPE_VARIANT_MAX")
+			return GDEXTENSION_VARIANT_TYPE_VARIANT_MAX
+		}
 		if _, ok := inst.(Ref); ok {
-			log.Info("detected Ref (type assertion) as GDEXTENSION_VARIANT_TYPE_OBJECT")
+			log.Debug("detected Ref (type assertion) as GDEXTENSION_VARIANT_TYPE_OBJECT")
 			return GDEXTENSION_VARIANT_TYPE_OBJECT
 		}
 		if _, ok := inst.(GDClass); ok {
@@ -116,7 +121,7 @@ func ReflectTypeToGDExtensionVariantType(t reflect.Type) GDExtensionVariantType 
 			return GDEXTENSION_VARIANT_TYPE_OBJECT
 		}
 		if _, ok := inst.(Variant); ok {
-			log.Debug("detected Variant")
+			log.Debug("detected Variant as GDEXTENSION_VARIANT_TYPE_VARIANT_MAX")
 			return GDEXTENSION_VARIANT_TYPE_VARIANT_MAX
 		}
 		log.Panic("unhandled go pointer", zap.Any("type", t))

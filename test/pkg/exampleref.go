@@ -1,7 +1,9 @@
 package pkg
 
 import (
-	"github.com/godot-go/godot-go/pkg/gdextension"
+	. "github.com/godot-go/godot-go/pkg/gdextension"
+	"github.com/godot-go/godot-go/pkg/gdextensionffi"
+	"github.com/godot-go/godot-go/pkg/log"
 )
 
 var (
@@ -9,11 +11,11 @@ var (
 	ExampleRef_LastId int32
 )
 
-// Example implements GDClass evidence
-var _ gdextension.GDClass = new(ExampleRef)
+// ExampleRef implements GDClass evidence
+var _ RefCounted = new(ExampleRef)
 
 type ExampleRef struct {
-	gdextension.RefCountedImpl
+	RefCountedImpl
 	Id int32
 }
 
@@ -31,4 +33,13 @@ func (e *ExampleRef) SetId(id int32) {
 
 func (e *ExampleRef) GetId() int32 {
 	return e.Id
+}
+
+func RegisterClassExampleRef() {
+	ClassDBRegisterClass[*ExampleRef](&ExampleRef{}, func(t GDClass) {
+		ClassDBBindMethod(t, "GetId", "get_id", nil, nil)
+		ClassDBBindMethod(t, "SetId", "set_id", []string{"id"}, nil)
+		ClassDBAddProperty(t, gdextensionffi.GDEXTENSION_VARIANT_TYPE_INT, "group_subgroup_id", "set_id", "get_id")
+		log.Debug("ExampleRef registered")
+	})
 }

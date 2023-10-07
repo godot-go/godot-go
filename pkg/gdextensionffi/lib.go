@@ -8,6 +8,13 @@ package gdextensionffi
 #include <string.h>
 */
 import "C"
+import (
+	"unsafe"
+)
+
+var (
+	nullptr = unsafe.Pointer(nil)
+)
 
 func NewGDExtensionInstanceBindingCallbacks(
 	createCallback GDExtensionInstanceBindingCreateCallback,

@@ -443,6 +443,10 @@ func ClassDBRegisterClass[T Object](in T, bindMethodsFunc func(t GDClass)) {
 		(GDExtensionClassGet)(C.cgo_classcreationinfo_get),
 		(GDExtensionClassGetPropertyList)(C.cgo_classcreationinfo_getpropertylist),
 		(GDExtensionClassFreePropertyList)(C.cgo_classcreationinfo_freepropertylist),
+		(GDExtensionClassPropertyCanRevert)(C.cgo_classcreationinfo_propertycanrevert),
+		(GDExtensionClassPropertyGetRevert)(C.cgo_classcreationinfo_propertygetrevert),
+		(GDExtensionClassValidateProperty)(C.cgo_classcreationinfo_validateproperty),
+		(GDExtensionClassNotification2)(C.cgo_classcreationinfo_notification),
 		unsafe.Pointer(cName),
 	)
 	snName := NewStringNameWithLatin1Chars(className)

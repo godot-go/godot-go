@@ -25,7 +25,7 @@ func GoCallback_ClassCreationInfoToString(
 	p_out C.GDExtensionStringPtr) {
 	log.Debug("GoCallback_ClassCreationInfoToString",
 		zap.String("&p_instance", fmt.Sprintf("%p", p_instance)),
-		zap.Reflect("p_instance", p_instance),
+		// zap.Reflect("p_instance", p_instance),
 	)
 	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(p_instance))
 	className := inst.GetClassName()
@@ -59,12 +59,12 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 	snMethodName := (*StringName)(unsafe.Pointer(pName))
 	sMethodName := snMethodName.AsString()
 	methodName := (&sMethodName).ToAscii()
-	// userData := C.GoString((*C.char)(pUserdata))
-	// log.Debug("GoCallback_ClassCreationInfoCallVirtualWithData called",
-	// 	zap.String("type", className),
-	// 	zap.String("userData", userData),
-	// 	zap.String("method", methodName),
-	// )
+	userData := C.GoString((*C.char)(pUserdata))
+	log.Debug("GoCallback_ClassCreationInfoCallVirtualWithData called",
+		zap.String("type", className),
+		zap.String("userData", userData),
+		zap.String("method", methodName),
+	)
 	ci, ok := gdRegisteredGDClasses.Get(className)
 	if !ok {
 		log.Warn("class not found", zap.String("className", className))
@@ -72,10 +72,10 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 	}
 	m, ok := ci.VirtualMethodMap[methodName]
 	if !ok {
-		// log.Debug("no virtual method found",
-		// 	zap.String("className", className),
-		// 	zap.String("method", methodName),
-		// )
+		log.Debug("no virtual method found",
+			zap.String("className", className),
+			zap.String("method", methodName),
+		)
 		return
 	}
 	mb := m.MethodBind
@@ -120,12 +120,48 @@ func GoCallback_ClassCreationInfoFreeInstance(data unsafe.Pointer, ptr C.GDExten
 }
 
 //export GoCallback_ClassCreationInfoGetPropertyList
-func GoCallback_ClassCreationInfoGetPropertyList(p_instance C.GDExtensionClassInstancePtr, r_count *C.uint32_t) {
+func GoCallback_ClassCreationInfoGetPropertyList(pInstance C.GDExtensionClassInstancePtr, rCount *C.uint32_t) *C.GDExtensionPropertyInfo {
+	wci := (*WrappedClassInstance)(unsafe.Pointer(pInstance))
+	if wci == nil {
+		return (*C.GDExtensionPropertyInfo)(nil)
+	}
 
+	gdStrClass := wci.Instance.GetClass()
+	className := gdStrClass.ToUtf8()
+	log.Debug("GoCallback_ClassCreationInfoGetPropertyList called",
+		zap.String("class", className),
+	)
+	ci, ok := gdRegisteredGDClasses.Get(className)
+	if !ok {
+		log.Panic("invalid registered GDClass",
+			zap.String("class", className),
+		)
+	}
+	mcmi, ok := ci.VirtualMethodMap["_get_property_list"]
+	if !ok {
+		log.Info("no _get_property_list method registered",
+			zap.String("class", className),
+		)
+		return (*C.GDExtensionPropertyInfo)(nil)
+	}
+	args := []reflect.Value{
+		reflect.ValueOf(wci.Instance),
+	}
+	reflectedRet := mcmi.MethodBind.PtrcallFunc.Call(args)
+	props, ok := reflectedRet[0].Interface().([]GDExtensionPropertyInfo)
+	if !ok {
+		log.Panic("invalid return value: expected []GDExtensionPropertyInfo",
+			zap.String("name", reflectedRet[0].Type().Name()),
+		)
+	}
+	log.Info("reflect method called",
+		zap.Int("props_count", len(props)),
+	)
+	return (*C.GDExtensionPropertyInfo)(unsafe.Pointer(unsafe.SliceData(props)))
 }
 
 //export GoCallback_ClassCreationInfoFreePropertyList
-func GoCallback_ClassCreationInfoFreePropertyList(p_instance C.GDExtensionClassInstancePtr, r_count *C.uint32_t) {
+func GoCallback_ClassCreationInfoFreePropertyList(pInstance C.GDExtensionClassInstancePtr, pList *C.GDExtensionPropertyInfo) {
 
 }
 
@@ -137,6 +173,45 @@ func GoCallback_ClassCreationInfoPropertyCanRevert(p_instance C.GDExtensionClass
 //export GoCallback_ClassCreationInfoPropertyGetRevert
 func GoCallback_ClassCreationInfoPropertyGetRevert(p_instance C.GDExtensionClassInstancePtr, p_name C.GDExtensionConstStringNamePtr, r_ret C.GDExtensionVariantPtr) C.GDExtensionBool {
 	return 0
+}
+
+//export GoCallback_ClassCreationInfoValidateProperty
+func GoCallback_ClassCreationInfoValidateProperty(pInstance C.GDExtensionClassInstancePtr, pProperty *C.GDExtensionPropertyInfo) C.GDExtensionBool {
+	wci := (*WrappedClassInstance)(unsafe.Pointer(pInstance))
+	if wci == nil {
+		return 0
+	}
+
+	gdStrClass := wci.Instance.GetClass()
+	className := gdStrClass.ToUtf8()
+	log.Debug("GoCallback_ClassCreationInfoValidateProperty called",
+		zap.String("class", className),
+	)
+	ci, ok := gdRegisteredGDClasses.Get(className)
+	if !ok {
+		log.Panic("invalid registered GDClass",
+			zap.String("class", className),
+		)
+	}
+	mcmi, ok := ci.VirtualMethodMap["_validate_property"]
+	if !ok {
+		log.Info("no _validate_property method registered",
+			zap.String("class", className),
+		)
+		return 0
+	}
+	args := []reflect.Value{
+		reflect.ValueOf(wci.Instance),
+		reflect.ValueOf((*GDExtensionPropertyInfo)(unsafe.Pointer(pProperty))),
+	}
+	mcmi.MethodBind.PtrcallFunc.Call(args)
+
+	return 1
+}
+
+//export GoCallback_ClassCreationInfoNotification
+func GoCallback_ClassCreationInfoNotification(p_instance C.GDExtensionClassInstancePtr, p_what C.int32_t, p_reversed C.GDExtensionBool) {
+
 }
 
 //export GoCallback_ClassCreationInfoGet

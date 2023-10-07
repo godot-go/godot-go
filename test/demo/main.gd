@@ -2,6 +2,10 @@ extends "res://test_base.gd"
 
 var custom_signal_emitted = null
 
+class TestClass:
+	func test(p_msg: String) -> String:
+		return p_msg + " world"
+
 func _ready():
 	var example = $Example
 
@@ -22,6 +26,10 @@ func _ready():
 	# Property list.
 	example.property_from_list = Vector3(100, 200, 300)
 	assert_equal(example.property_from_list, Vector3(100, 200, 300))
+	var prop_list = example.get_property_list()
+	for prop_info in prop_list:
+		if prop_info['name'] == 'mouse_filter':
+			assert_equal(prop_info['usage'], PROPERTY_USAGE_NO_EDITOR)
 
 	# Call simple methods.
 	example.simple_func()

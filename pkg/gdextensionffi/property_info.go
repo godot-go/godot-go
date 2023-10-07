@@ -31,6 +31,16 @@ func NewGDExtensionPropertyInfo(
 	})
 }
 
+func (p *GDExtensionPropertyInfo) SetUsage(usage uint32) {
+	typed := (*C.GDExtensionPropertyInfo)(p)
+	typed.usage = (C.uint32_t)(usage)
+}
+
+func (p *GDExtensionPropertyInfo) Name() GDExtensionStringNamePtr {
+	typed := (*C.GDExtensionPropertyInfo)(p)
+	return (GDExtensionStringNamePtr)(typed.name)
+}
+
 func (p *GDExtensionPropertyInfo) Destroy() {
 	cp := (*C.GDExtensionPropertyInfo)(p)
 	stringNameDestructor := (GDExtensionPtrDestructor)(CallFunc_GDExtensionInterfaceVariantGetPtrDestructor(GDEXTENSION_VARIANT_TYPE_STRING_NAME))

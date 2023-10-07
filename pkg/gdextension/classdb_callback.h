@@ -7,13 +7,19 @@
 void cgo_classcreationinfo_getpropertylist(GDExtensionClassInstancePtr p_instance, uint32_t *r_count);
 
 // typedef void (*GDExtensionClassFreePropertyList)(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list);
-void cgo_classcreationinfo_freepropertylist(GDExtensionClassInstancePtr p_instance, uint32_t *r_count);
+void cgo_classcreationinfo_freepropertylist(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list);
 
 // typedef GDExtensionBool (*GDExtensionClassPropertyCanRevert)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name);
 GDExtensionBool cgo_classcreationinfo_propertycanrevert(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name);
 
 // typedef GDExtensionBool (*GDExtensionClassPropertyGetRevert)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
 GDExtensionBool cgo_classcreationinfo_propertygetrevert(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
+
+// typedef GDExtensionBool (*GDExtensionClassValidateProperty)(GDExtensionClassInstancePtr p_instance, GDExtensionPropertyInfo *p_property);
+GDExtensionBool cgo_classcreationinfo_validateproperty(GDExtensionClassInstancePtr p_instance, GDExtensionPropertyInfo *p_property);
+
+// typedef void (*GDExtensionClassNotification2)(GDExtensionClassInstancePtr p_instance, int32_t p_what, GDExtensionBool p_reversed);
+void cgo_classcreationinfo_notification(GDExtensionClassInstancePtr p_instance, int32_t p_what, GDExtensionBool p_reversed);
 
 // cgo_classcreationinfo_tostring should match GDExtensionClassToString
 void cgo_classcreationinfo_tostring(GDExtensionClassInstancePtr p_instance, GDExtensionBool *r_is_valid, GDExtensionStringPtr p_out);

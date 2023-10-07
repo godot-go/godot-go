@@ -1,14 +1,12 @@
-package gdextension
+package gdextensionffi
 
 import (
 	"unsafe"
 
-	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
-
 	"github.com/godot-go/godot-go/pkg/log"
 )
 
-func callBuiltinConstructor(constructor GDExtensionPtrConstructor, base GDExtensionUninitializedTypePtr, args ...GDExtensionConstTypePtr) {
+func CallBuiltinConstructor(constructor GDExtensionPtrConstructor, base GDExtensionUninitializedTypePtr, args ...GDExtensionConstTypePtr) {
 	c := (GDExtensionPtrConstructor)(constructor)
 	b := (GDExtensionUninitializedTypePtr)(base)
 
@@ -26,7 +24,7 @@ func callBuiltinConstructor(constructor GDExtensionPtrConstructor, base GDExtens
 	CallFunc_GDExtensionPtrConstructor(c, b, a)
 }
 
-func callBuiltinMethodPtrRet[T any](method GDExtensionPtrBuiltInMethod, base GDExtensionTypePtr, args ...GDExtensionTypePtr) T {
+func CallBuiltinMethodPtrRet[T any](method GDExtensionPtrBuiltInMethod, base GDExtensionTypePtr, args ...GDExtensionTypePtr) T {
 	m := (GDExtensionPtrBuiltInMethod)(method)
 	b := (GDExtensionTypePtr)(base)
 	var a *GDExtensionConstTypePtr
@@ -46,7 +44,7 @@ func callBuiltinMethodPtrRet[T any](method GDExtensionPtrBuiltInMethod, base GDE
 	return ret
 }
 
-func callBuiltinMethodPtrNoRet(method GDExtensionPtrBuiltInMethod, base GDExtensionTypePtr, args ...GDExtensionTypePtr) {
+func CallBuiltinMethodPtrNoRet(method GDExtensionPtrBuiltInMethod, base GDExtensionTypePtr, args ...GDExtensionTypePtr) {
 	m := (GDExtensionPtrBuiltInMethod)(method)
 	b := (GDExtensionTypePtr)(base)
 	var a *GDExtensionConstTypePtr
@@ -60,7 +58,7 @@ func callBuiltinMethodPtrNoRet(method GDExtensionPtrBuiltInMethod, base GDExtens
 	CallFunc_GDExtensionPtrBuiltInMethod(m, b, a, nil, ca)
 }
 
-func callBuiltinOperatorPtr[T any](operator GDExtensionPtrOperatorEvaluator, left GDExtensionConstTypePtr, right GDExtensionConstTypePtr) T {
+func CallBuiltinOperatorPtr[T any](operator GDExtensionPtrOperatorEvaluator, left GDExtensionConstTypePtr, right GDExtensionConstTypePtr) T {
 	op := (GDExtensionPtrOperatorEvaluator)(operator)
 	l := (GDExtensionConstTypePtr)(left)
 	r := (GDExtensionConstTypePtr)(right)
@@ -74,7 +72,7 @@ func callBuiltinOperatorPtr[T any](operator GDExtensionPtrOperatorEvaluator, lef
 	return ret
 }
 
-func callBuiltinPtrGetter[T any](getter GDExtensionPtrGetter, base GDExtensionConstTypePtr) T {
+func CallBuiltinPtrGetter[T any](getter GDExtensionPtrGetter, base GDExtensionConstTypePtr) T {
 	g := (GDExtensionPtrGetter)(getter)
 	b := (GDExtensionConstTypePtr)(base)
 
@@ -87,7 +85,7 @@ func callBuiltinPtrGetter[T any](getter GDExtensionPtrGetter, base GDExtensionCo
 	return ret
 }
 
-func callBuiltinPtrSetter[T any](setter GDExtensionPtrSetter, base GDExtensionTypePtr) T {
+func CallBuiltinPtrSetter[T any](setter GDExtensionPtrSetter, base GDExtensionTypePtr) T {
 	g := (GDExtensionPtrSetter)(setter)
 	b := (GDExtensionTypePtr)(base)
 

@@ -51,9 +51,10 @@ func NewStringNameWithUtf8Chars(content string) StringName {
 }
 
 func (cx *StringName) AsString() String {
-	rt := NewStringWithUtf8Chars("")
-	defer rt.Destroy()
-	return cx.Add_String(rt)
+	buf := cx.ToUtf8Buffer()
+	var str String
+	defer str.Destroy()
+	return buf.GetStringFromUtf8()
 }
 
 func (cx *StringName) ToUtf8() string {

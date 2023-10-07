@@ -114,7 +114,7 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
         {{ end -}}
 	{{ end -}}
     {{ end -}}
-    callBuiltinConstructor(global{{ $c.Name }}MethodBindings.constructor_{{ $j }}, ptr, {{range $k, $arg := $con.Arguments -}}args[{{ $k }}],{{- end -}})
+    CallBuiltinConstructor(global{{ $c.Name }}MethodBindings.constructor_{{ $j }}, ptr, {{range $k, $arg := $con.Arguments -}}args[{{ $k }}],{{- end -}})
     return cx
 }
 {{ end }}
@@ -204,14 +204,14 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     {{ end -}}
 
     {{ if $fnReturnType -}}
-    ret := callBuiltinMethodPtrRet[{{ $fnReturnType }}](mb, bx, {{ if $hasSomeArguments -}}args...{{ else }}nil{{ end }})
+    ret := CallBuiltinMethodPtrRet[{{ $fnReturnType }}](mb, bx, {{ if $hasSomeArguments -}}args...{{ else }}nil{{ end }})
     {{ if $hasSomeArguments -}}
     runtime.KeepAlive(args)
     // C.free(argBytes)
     {{ end -}}
     return ret
     {{ else -}}
-    callBuiltinMethodPtrNoRet(mb, bx, {{ if $hasSomeArguments -}}args...{{ else }}nil{{ end }})
+    CallBuiltinMethodPtrNoRet(mb, bx, {{ if $hasSomeArguments -}}args...{{ else }}nil{{ end }})
     {{ if $hasSomeArguments -}}
     runtime.KeepAlive(args)
     // C.free(argBytes)
@@ -274,7 +274,7 @@ func (cx *{{ $c.Name }}) SetIndexed(i int64, value {{ goReturnType $c.IndexingRe
 {{ $decodeType := goDecodeNumberType $returnType }}
 func (cx *{{ $c.Name }}) {{ goMethodName (print "MemberGet" $m.Name) }}() {{ $returnType }} {
     bx := cx.nativeConstPtr()
-    ret := callBuiltinPtrGetter[{{ $decodeType }}](global{{ $c.Name }}MethodBindings.member_{{ $m.Name }}_getter, bx)
+    ret := CallBuiltinPtrGetter[{{ $decodeType }}](global{{ $c.Name }}MethodBindings.member_{{ $m.Name }}_getter, bx)
     {{ if (eq $decodeType $returnType) -}}
         return ret
     {{ else -}}
@@ -307,10 +307,10 @@ func (cx *{{ $c.Name }}) {{ upperFirstChar (getOperatorIdName $op.Name) }}{{ wit
     rt := (GDExtensionConstTypePtr)(unsafe.Pointer(eRight))
     {{ end -}}
 
-    return callBuiltinOperatorPtr[{{ goReturnType $op.ReturnType }}](global{{ $c.Name }}MethodBindings.operator_{{ getOperatorIdName $op.Name }}_{{ $op.RightType }}, lt, rt)
+    return CallBuiltinOperatorPtr[{{ goReturnType $op.ReturnType }}](global{{ $c.Name }}MethodBindings.operator_{{ getOperatorIdName $op.Name }}_{{ $op.RightType }}, lt, rt)
     {{ else -}}
     rt := (GDExtensionConstTypePtr)(nullptr)
-    return callBuiltinOperatorPtr[{{ goReturnType $op.ReturnType }}](global{{ $c.Name }}MethodBindings.operator_{{ getOperatorIdName $op.Name }}, lt, rt)
+    return CallBuiltinOperatorPtr[{{ goReturnType $op.ReturnType }}](global{{ $c.Name }}MethodBindings.operator_{{ getOperatorIdName $op.Name }}, lt, rt)
     {{ end -}}
 }
 {{ end -}}

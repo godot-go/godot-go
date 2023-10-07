@@ -37,6 +37,8 @@ type ClassInfo struct {
 	ParentPtr                 *ClassInfo
 	ClassType                 reflect.Type
 	InheritType               reflect.Type
+	PropertyList              []GDExtensionPropertyInfo
+	ValidateProperty          func(*GDExtensionPropertyInfo)
 }
 
 func (c *ClassInfo) String() string {
@@ -68,7 +70,14 @@ func (c *ClassInfo) Destroy() {
 	}
 }
 
-func NewClassInfo(name, parentName string, level GDExtensionInitializationLevel, classType, inheritType reflect.Type, parentPtr *ClassInfo) *ClassInfo {
+func NewClassInfo(
+	name, parentName string,
+	level GDExtensionInitializationLevel,
+	classType, inheritType reflect.Type,
+	parentPtr *ClassInfo,
+	propertyList []GDExtensionPropertyInfo,
+	validateProperty func(*GDExtensionPropertyInfo),
+) *ClassInfo {
 	return &ClassInfo{
 		Name:                name,
 		NameAsStringNamePtr: NewStringNameWithLatin1Chars(name).AsGDExtensionConstStringNamePtr(),
@@ -82,6 +91,8 @@ func NewClassInfo(name, parentName string, level GDExtensionInitializationLevel,
 		ParentPtr:           parentPtr,
 		ClassType:           classType,
 		InheritType:         inheritType,
+		PropertyList:        propertyList,
+		ValidateProperty:    validateProperty,
 	}
 }
 

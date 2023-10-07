@@ -4,10 +4,12 @@
 #include "classdb_callback.h"
 #include "stacktrace.h"
 
-void GoCallback_ClassCreationInfoGetPropertyList(GDExtensionClassInstancePtr p_instance, uint32_t *r_count);
-void GoCallback_ClassCreationInfoFreePropertyList(GDExtensionClassInstancePtr p_instance, uint32_t *r_count);
-GDExtensionBool GoCallback_ClassCreationInfoPropertyCanRevert(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name);
-GDExtensionBool GoCallback_ClassCreationInfoPropertyGetRevert(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
+extern GDExtensionPropertyInfo* GoCallback_ClassCreationInfoGetPropertyList(GDExtensionClassInstancePtr p_instance, uint32_t *r_count);
+extern void GoCallback_ClassCreationInfoFreePropertyList(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list);
+extern GDExtensionBool GoCallback_ClassCreationInfoPropertyCanRevert(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name);
+extern GDExtensionBool GoCallback_ClassCreationInfoPropertyGetRevert(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
+extern GDExtensionBool GoCallback_ClassCreationInfoValidateProperty(GDExtensionClassInstancePtr p_instance, GDExtensionPropertyInfo *p_property);
+extern void GoCallback_ClassCreationInfoNotification(GDExtensionClassInstancePtr p_instance, int32_t p_what, GDExtensionBool p_reversed);
 extern void* GoCallback_ClassCreationInfoGetVirtualCallWithData(void *p_userdata, GDExtensionConstStringNamePtr p_name);
 extern void GoCallback_ClassCreationInfoCallVirtualWithData(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, void *p_userdata, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 extern GDExtensionBool GoCallback_ClassCreationInfoGet(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
@@ -22,9 +24,9 @@ void cgo_classcreationinfo_getpropertylist(GDExtensionClassInstancePtr p_instanc
     GoCallback_ClassCreationInfoGetPropertyList(p_instance, r_count);
 }
 
-void cgo_classcreationinfo_freepropertylist(GDExtensionClassInstancePtr p_instance, uint32_t *r_count) {
+void cgo_classcreationinfo_freepropertylist(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list) {
     printStacktrace();
-    GoCallback_ClassCreationInfoFreePropertyList(p_instance, r_count);
+    GoCallback_ClassCreationInfoFreePropertyList(p_instance, p_list);
 }
 
 GDExtensionBool cgo_classcreationinfo_propertycanrevert(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name) {
@@ -35,6 +37,16 @@ GDExtensionBool cgo_classcreationinfo_propertycanrevert(GDExtensionClassInstance
 GDExtensionBool cgo_classcreationinfo_propertygetrevert(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
     printStacktrace();
     return GoCallback_ClassCreationInfoPropertyGetRevert(p_instance, p_name, r_ret);
+}
+
+GDExtensionBool cgo_classcreationinfo_validateproperty(GDExtensionClassInstancePtr p_instance, GDExtensionPropertyInfo *p_property) {
+    printStacktrace();
+    return GoCallback_ClassCreationInfoValidateProperty(p_instance, p_property);
+}
+
+void cgo_classcreationinfo_notification(GDExtensionClassInstancePtr p_instance, int32_t p_what, GDExtensionBool p_reversed) {
+    printStacktrace();
+    GoCallback_ClassCreationInfoNotification(p_instance, p_what, p_reversed);
 }
 
 void* cgo_classcreationinfo_getvirtualcallwithdata(void *p_userdata, GDExtensionConstStringNamePtr p_name) {

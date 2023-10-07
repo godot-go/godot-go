@@ -22,6 +22,10 @@ func NewGDExtensionClassCreationInfo2(
 	getFunc GDExtensionClassGet,
 	getPropertyListFunc GDExtensionClassGetPropertyList,
 	freePropertyListFunc GDExtensionClassFreePropertyList,
+	propertyCanRevertFunc GDExtensionClassPropertyCanRevert,
+	propertyGetRevertFunc GDExtensionClassPropertyGetRevert,
+	validatePropertyFunc GDExtensionClassValidateProperty,
+	notificationFunc GDExtensionClassNotification2,
 	classUserdata unsafe.Pointer,
 ) GDExtensionClassCreationInfo2 {
 	return (GDExtensionClassCreationInfo2)(C.GDExtensionClassCreationInfo2{
@@ -34,6 +38,10 @@ func NewGDExtensionClassCreationInfo2(
 		get_func:                    (C.GDExtensionClassGet)(getFunc),
 		get_property_list_func:      (C.GDExtensionClassGetPropertyList)(getPropertyListFunc),
 		free_property_list_func:     (C.GDExtensionClassFreePropertyList)(freePropertyListFunc),
+		property_can_revert_func:    (C.GDExtensionClassPropertyCanRevert)(propertyCanRevertFunc),
+		property_get_revert_func:    (C.GDExtensionClassPropertyGetRevert)(propertyGetRevertFunc),
+		validate_property_func:      (C.GDExtensionClassValidateProperty)(validatePropertyFunc),
+		notification_func:           (C.GDExtensionClassNotification2)(notificationFunc),
 		class_userdata:              classUserdata,
 	})
 }

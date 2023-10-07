@@ -103,7 +103,6 @@ func ReflectTypeToGDExtensionVariantType(t reflect.Type) GDExtensionVariantType 
 	case reflect.Pointer:
 		zero := reflect.Zero(t)
 		inst := zero.Interface()
-		switch inst.(type) {
 		if _, ok := inst.(Ref); ok {
 			log.Debug("detected Ref (type assertion) as GDEXTENSION_VARIANT_TYPE_OBJECT")
 			return GDEXTENSION_VARIANT_TYPE_OBJECT

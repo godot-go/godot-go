@@ -1,6 +1,7 @@
 name: godot-go CI on Linux
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - "**/*.go"

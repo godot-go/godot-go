@@ -1,6 +1,7 @@
 name: build godot for ci
 
 on:
+  workflow_dispatch:
   workflow_call:
 
 env:

@@ -2,7 +2,7 @@
 
 ---
 
-# godot-go: Go bindings for Godot 4.2-dev
+# godot-go: Go bindings for Godot 4.2-dev6
 
 [Go](https://golang.org/) bindings for the [Godot Game Engine](https://github.com/godotengine/godot) cross-platform game engine. godot-go integrates into Godot through the Godot GDExtension API through cgo.
 
@@ -11,7 +11,7 @@ The project is currently under heavy development. The API should be considered _
 ## Current State of the Project
 
 Here are some high level bullet points:
-* A bleeding edge version of godot 4.2 will be required.
+* You must have a minimum of Godot 4.2-dev6.
 * The tests confirm basic functionality.
 * The bindings are more than likely leaking memory.
 * Not all variant types have been tested.
@@ -29,7 +29,7 @@ TODO
 
 ### Building Godot-Go
 
-In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of [Godot@44e399e](https://github.com/godotengine/godot/tree/44e399ed5fa895f760b2995e59788bdb49782666). The bindings will not work unless running with a bleeding edge version of Godot as of 2023-10-01 as the bindings are dependent on changes to the GDExtensions interface that bring better virtual call support.
+In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of Godot 4.2-dev6 or [Godot@57a6813](https://github.com/godotengine/godot/tree/57a6813bb8bc2417ddef1058d422a91f0c9f753c).
 
 
     # exports the latest gdextension_interface.h and extension_api.json from the godot binary

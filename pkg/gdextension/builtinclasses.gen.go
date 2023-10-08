@@ -18877,7 +18877,8 @@ func NewCallableWithObjectStringName(object Object, method StringName) Callable 
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
 	var args [2]GDExtensionConstTypePtr
 	// Object
-	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+	arg0 := object.GetGodotObjectOwner()
+	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&arg0))
 	// StringName
 	// StringNameEncoder
 	args[1] = method.nativeConstPtr()
@@ -19299,7 +19300,8 @@ func NewSignalWithObjectStringName(object Object, signal StringName) Signal {
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.nativePtr()))
 	var args [2]GDExtensionConstTypePtr
 	// Object
-	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+	arg0 := object.GetGodotObjectOwner()
+	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&arg0))
 	// StringName
 	// StringNameEncoder
 	args[1] = signal.nativeConstPtr()

@@ -107,7 +107,8 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
         // {{ goEncoder $arg.Type }}
         args[{{ $k }}] = {{ $argName }}.nativeConstPtr()
         {{ else if eq $argType "Object" -}}
-        args[{{ $k }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ $argName }}))
+        arg{{ $k }} := {{ $argName }}.GetGodotObjectOwner()
+        args[{{ $k }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&arg{{ $k }}))
         {{ else -}}
         args[{{ $k }}] = (GDExtensionConstTypePtr)({{ goEncoder $argType }}.encodeTypePtr({{ $argName }}))
         {{ end -}}
@@ -186,7 +187,10 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
 
     {{ range $j, $arg := $m.Arguments -}}
     {{ if goHasArgumentTypeEncoder $arg.Type -}}
-    {{ if goEncodeIsReference $arg.Type -}}
+    {{ if eq $arg.Type "Object" -}}
+    arg{{ $j }} := {{ goArgumentName $arg.Name }}.GetGodotObjectOwner()
+    args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&arg{{ $j }}))
+    {{ else if goEncodeIsReference $arg.Type -}}
     args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&{{ goArgumentName $arg.Name }}))
     {{ else -}}
     args[{{ $j }}] = {{ goEncoder (goArgumentType $arg.Type) }}.encodeTypePtr({{ goArgumentName $arg.Name }})

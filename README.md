@@ -15,7 +15,7 @@ Here are some high level bullet points:
 * The tests confirm basic functionality.
 * The bindings are more than likely leaking memory.
 * Not all variant types have been tested.
-* A working demo project should be possible. We'll have one avaialble and linked out in the next coming week.
+* Go to [godot-go-demo-projects](https://github.com/godot-go/godot-go-demo-projects) to look at demo projects running a mix of godot-go and GDScript classes.
 
 ## Getting Started
 
@@ -23,9 +23,6 @@ Requirements:
 * clang-format
 * gcc
 * go 1.21.x
-
-TODO
-
 
 ### Building Godot-Go
 

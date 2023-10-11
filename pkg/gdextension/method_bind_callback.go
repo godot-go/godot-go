@@ -46,7 +46,7 @@ func GoCallback_MethodBindMethodCall(
 		args[i] = NewVariantCopyWithGDExtensionConstVariantPtr(argPtrSlice[i])
 	}
 	retCall := bind.Call(inst, args)
-	copyVariantWithGDExtensionTypePtr((GDExtensionUninitializedVariantPtr)(rReturn), retCall.nativeConstPtr())
+	*(*Variant)(unsafe.Pointer(rReturn)) = retCall
 }
 
 // called when godot calls into golang code

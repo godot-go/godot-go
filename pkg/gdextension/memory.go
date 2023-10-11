@@ -33,40 +33,40 @@ func AllocCopy(src unsafe.Pointer, bytes int) unsafe.Pointer {
 			zap.Int("bytes", bytes),
 		)
 	}
-
 	m := CallFunc_GDExtensionInterfaceMemAlloc(uint64(bytes))
-
 	if m == nullptr {
 		log.Panic("memory allocation failure",
 			zap.Int("bytes", bytes),
 		)
 	}
-
 	C.memcpy(m, src, C.size_t(bytes))
-
 	return m
 }
 
-func AllocCopyDest(dest unsafe.Pointer, src unsafe.Pointer, bytes int) {
-	switch {
-	case bytes < 0:
-		log.Panic("invalid memory",
-			zap.Int("bytes", bytes),
-		)
-	case bytes >= MaxAllocBytes:
-		log.Panic("memory too large",
-			zap.Int("bytes", bytes),
-		)
-	}
+// func AllocTypedCopyDest[T any](dest *T, src *T) {
+// 	var t T
+// 	bytes := int(unsafe.Sizeof(t))
+// 	AllocCopyDest(unsafe.Pointer(dest), unsafe.Pointer(src), bytes)
+// }
 
-	if dest == nullptr {
-		log.Panic("destination cannot be nil",
-			zap.Int("bytes", bytes),
-		)
-	}
-
-	C.memcpy(dest, src, C.size_t(bytes))
-}
+// func AllocCopyDest(dest unsafe.Pointer, src unsafe.Pointer, bytes int) {
+// 	switch {
+// 	case bytes < 0:
+// 		log.Panic("invalid memory",
+// 			zap.Int("bytes", bytes),
+// 		)
+// 	case bytes >= MaxAllocBytes:
+// 		log.Panic("memory too large",
+// 			zap.Int("bytes", bytes),
+// 		)
+// 	}
+// 	if dest == nullptr {
+// 		log.Panic("destination cannot be nil",
+// 			zap.Int("bytes", bytes),
+// 		)
+// 	}
+// 	C.memcpy(dest, src, C.size_t(bytes))
+// }
 
 // AllocZeros returns zeroed out bytes allocated in C memory.
 func AllocZeros(bytes int) unsafe.Pointer {
@@ -80,17 +80,13 @@ func AllocZeros(bytes int) unsafe.Pointer {
 			zap.Int("bytes", bytes),
 		)
 	}
-
 	m := CallFunc_GDExtensionInterfaceMemAlloc(uint64(bytes))
-
 	if m == nullptr {
 		log.Panic("memory allocation failure",
 			zap.Int("bytes", bytes),
 		)
 	}
-
 	C.memset(m, 0, C.size_t(bytes))
-
 	return m
 }
 

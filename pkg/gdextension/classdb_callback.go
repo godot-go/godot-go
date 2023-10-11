@@ -243,7 +243,7 @@ func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pN
 		zap.String("ret", util.ReflectValueSliceToString(reflectedRet)),
 		zap.String("v", gdStrV.ToUtf8()),
 	)
-	copyVariantWithGDExtensionTypePtr((GDExtensionUninitializedVariantPtr)(rRet), v.nativeConstPtr())
+	*(*Variant)(unsafe.Pointer(rRet)) = v
 	return 1
 }
 

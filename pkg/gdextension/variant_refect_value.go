@@ -187,12 +187,6 @@ func GDExtensionVariantPtrFromReflectValue(value reflect.Value, rOut GDExtension
 		switch inst := value.Interface().(type) {
 		case Object:
 			ObjectEncoder.encodeVariantPtrArg(inst, rOut)
-			// if inst == nil {
-			// 		GDExtensionVariantPtrWithNil(rOut)
-			// 		return
-			// }
-			// v := NewVariantObject(inst)
-			// copyVariantWithGDExtensionTypePtr(rOut, v.nativeConstPtr())
 		default:
 			log.Panic("unhandled go interface to GDExtensionTypePtr",
 				zap.Any("value", value),

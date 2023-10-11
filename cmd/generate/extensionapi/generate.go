@@ -252,10 +252,8 @@ func GenerateBuiltinClasses(projectPath string, extensionApi extensionapiparser.
 			"goReturnType":             goReturnType,
 			"goDecodeNumberType":       goDecodeNumberType,
 			"getOperatorIdName":        getOperatorIdName,
-			"isCopyConstructor":        isCopyConstructor,
 			"typeHasPtr":               typeHasPtr,
 			"goEncoder":                goEncoder,
-			"goEncodeArg":              goEncodeArg,
 			"goEncodeIsReference":      goEncodeIsReference,
 			"coalesce":                 coalesce,
 		}).
@@ -309,10 +307,8 @@ func GenerateBuiltinClassBindings(projectPath string, extensionApi extensionapip
 			"goReturnType":             goReturnType,
 			"goDecodeNumberType":       goDecodeNumberType,
 			"getOperatorIdName":        getOperatorIdName,
-			"isCopyConstructor":        isCopyConstructor,
 			"typeHasPtr":               typeHasPtr,
 			"goEncoder":                goEncoder,
-			"goEncodeArg":              goEncodeArg,
 			"goEncodeIsReference":      goEncodeIsReference,
 			"coalesce":                 coalesce,
 		}).
@@ -502,7 +498,6 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 			"goClassStructName":    goClassStructName,
 			"goClassInterfaceName": goClassInterfaceName,
 			"goEncoder":            goEncoder,
-			"goEncodeArg":          goEncodeArg,
 			"goEncodeIsReference":  goEncodeIsReference,
 			"coalesce":             coalesce,
 		}).
@@ -553,7 +548,6 @@ func GenerateClassRefs(projectPath string, extensionApi extensionapiparser.Exten
 		"goClassStructName":    goClassStructName,
 		"goClassInterfaceName": goClassInterfaceName,
 		"goEncoder":            goEncoder,
-		"goEncodeArg":          goEncodeArg,
 		"goEncodeIsReference":  goEncodeIsReference,
 		"coalesce":             coalesce,
 	}).
@@ -728,8 +722,10 @@ func GenerateUtilityFunctions(projectPath string, extensionApi extensionapiparse
 			"camelCase":      strcase.ToCamel,
 			"goArgumentName": goArgumentName,
 			"goArgumentType": goArgumentType,
+			"goEncoder":      goEncoder,
 			"goReturnType":   goReturnType,
 			"coalesce":       coalesce,
+			"goEncodeIsReference": goEncodeIsReference,
 		}).
 		Parse(utilityFunctionsText)
 

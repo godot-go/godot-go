@@ -88,7 +88,10 @@ func _ready():
 	assert_equal(example.test_string_ops(), "ABCĎE")
 
 	# UtilityFunctions::str()
-	# assert_equal(example.test_str_utility(), "Hello, World! The answer is 42")
+	assert_equal(example.test_str_utility(), "Hello, World! The answer is 42")
+
+	# UtilityFunctions::instance_from_id()
+	assert_equal(example.test_instance_from_id_utility(), example)
 
 	# PackedArray iterators
 	# assert_equal(example.test_vector_ops(), 105)

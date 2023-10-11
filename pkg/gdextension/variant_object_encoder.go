@@ -21,13 +21,13 @@ func createObjectEncoder[T Object]() objectArgumentEncoder[T] {
 		log.Panic("could not find variant from type constructor GDEXTENSION_VARIANT_TYPE_OBJECT")
 	}
 	decodeTypePtrArg := func(ptr GDExtensionConstTypePtr, pOut T) {
-		dst := unsafe.Pointer(pOut.AsGDExtensionTypePtr())
-		src := unsafe.Pointer(ptr)
+		dst := (**GodotObject)(unsafe.Pointer(pOut.AsGDExtensionTypePtr()))
+		src := (**GodotObject)(unsafe.Pointer(ptr))
 		if dst == src {
 			// noop
 			return
 		}
-		AllocCopyDest(dst, src, ObjectSize)
+		*dst = *src
 	}
 	decodeTypePtr := func(ptr GDExtensionConstTypePtr) T {
 		var out T
@@ -36,7 +36,7 @@ func createObjectEncoder[T Object]() objectArgumentEncoder[T] {
 	}
 	encodeTypePtrArg := func(in T, pOut GDExtensionUninitializedTypePtr) {
 		pEnc := in.AsGDExtensionTypePtr()
-		AllocCopyDest(unsafe.Pointer(pOut), unsafe.Pointer(pEnc), ObjectSize)
+		*(**GodotObject)(unsafe.Pointer(pOut)) = *(**GodotObject)(unsafe.Pointer(pEnc))
 	}
 	encodeTypePtr := func(in T) GDExtensionTypePtr {
 		var out T

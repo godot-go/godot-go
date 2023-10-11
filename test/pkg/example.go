@@ -352,6 +352,13 @@ func (e *Example) V_Ready() {
 	uiRight := NewStringNameWithUtf8Chars("ui_right")
 	defer uiRight.Destroy()
 	input.IsActionPressed(uiRight, true)
+	log.Info("NearestPo2(1025)",
+		zap.Int64("result", NearestPo2(1025)),
+	)
+	Randomize()
+	log.Info("RandiRange(0, 50)",
+		zap.Int64("result", RandiRange(0, 50)),
+	)
 }
 
 func (e *Example) V_Input(refEvent RefInputEvent) {
@@ -412,6 +419,27 @@ func (e *Example) TestParentIsNil() Control {
 	return parent
 }
 
+func (e *Example) TestStrUtility() string {
+	gds := Str(
+		NewVariantGoString("Hello, "),
+		NewVariantGoString("World"),
+		NewVariantGoString("! The answer is "),
+		NewVariantInt64(42),
+	)
+	defer gds.Destroy()
+	return gds.ToUtf8()
+}
+
+func (e *Example) TestInstanceFromIdUtility() Object {
+	id := e.GetInstanceId()
+	obj := InstanceFromId(int64(id))
+	log.Info("InstanceFromId(e.GetInstanceId())",
+		zap.Uint64("expected", id),
+		zap.String("actual", obj.(*ObjectImpl).ToGoString()),
+	)
+	return obj
+}
+
 func ValidateExampleProperty(property *GDExtensionPropertyInfo) {
 	gdsnName := (*StringName)(property.Name())
 	// Test hiding the "mouse_filter" property from the editor.
@@ -448,6 +476,8 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestDictionary", "test_dictionary", nil, nil)
 		ClassDBBindMethod(t, "TestNodeArgument", "test_node_argument", []string{"example"}, nil)
 		ClassDBBindMethod(t, "TestStringOps", "test_string_ops", nil, nil)
+		ClassDBBindMethod(t, "TestStrUtility", "test_str_utility", nil, nil)
+		ClassDBBindMethod(t, "TestInstanceFromIdUtility", "test_instance_from_id_utility", nil, nil)
 
 		// varargs
 		ClassDBBindMethodVarargs(t, "VarargsFunc", "varargs_func", nil, nil)

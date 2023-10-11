@@ -99,7 +99,7 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
         {{ if eq $argType "string" -}}
         cv{{ $k }} := NewStringWithUtf8Chars({{ $argName }})
         defer cv{{ $k }}.Destroy()
-        args[{{ $k }}] = cv{{ $k }}.nativeConstPtr()ff
+        args[{{ $k }}] = cv{{ $k }}.nativeConstPtr()
         {{ else -}}
         {{ if eq $argType "Variant" -}}
         args[{{ $k }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ $argName }}))

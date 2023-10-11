@@ -8,7 +8,7 @@ import (
 	"go.uber.org/zap"
 )
 
-type GodotObject [0]byte
+type GodotObject unsafe.Pointer
 
 // Base for all engine classes, to contain the pointer to the engine instance.
 type Wrapped interface {
@@ -59,16 +59,8 @@ func (w *WrappedImpl) IsNil() bool {
 func (w *WrappedImpl) Destroy() {
 }
 
-// func CopyObject(dst GDExtensionObjectPtr, src GDExtensionConstObjectPtr) {
-// 	*dst = (GDExtensionObjectPtr)(src)
-// }
-
-// func (w *WrappedImpl) GetClassName() string {
-// 	return "Wrapped"
-// }
-
 func (cx *ObjectImpl) ToGoString() string {
-	if cx == nil {
+	if cx == nil || cx.Owner == nil {
 		return ""
 	}
 	gdstr := cx.ToString()

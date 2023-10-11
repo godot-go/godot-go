@@ -4510,7 +4510,7 @@ type CodeEdit interface {
 
 	IsLineFolded(line int32) bool
 
-	GetFoldedLines() int32
+	GetFoldedLines() int64
 
 	CreateCodeRegion()
 
@@ -4592,9 +4592,9 @@ type CodeEdit interface {
 
 	GetCodeCompletionPrefixes() String
 
-	SetLineLengthGuidelines(guideline_columns int32)
+	SetLineLengthGuidelines(guideline_columns int64)
 
-	GetLineLengthGuidelines() int32
+	GetLineLengthGuidelines() int64
 
 	SetSymbolLookupOnClickEnabled(enable bool)
 
@@ -8160,13 +8160,13 @@ type Font interface {
 
 	DrawMultilineStringOutline(canvas_item RID, pos Vector2, text String, alignment HorizontalAlignment, width float32, font_size int32, max_lines int32, size int32, modulate Color, brk_flags TextServerLineBreakFlag, justification_flags TextServerJustificationFlag, direction TextServerDirection, orientation TextServerOrientation)
 
-	GetCharSize(char int32, font_size int32) Vector2
+	GetCharSize(char int64, font_size int32) Vector2
 
-	DrawChar(canvas_item RID, pos Vector2, char int32, font_size int32, modulate Color) float32
+	DrawChar(canvas_item RID, pos Vector2, char int64, font_size int32, modulate Color) float32
 
-	DrawCharOutline(canvas_item RID, pos Vector2, char int32, font_size int32, size int32, modulate Color) float32
+	DrawCharOutline(canvas_item RID, pos Vector2, char int64, font_size int32, size int32, modulate Color) float32
 
-	HasChar(char int32) bool
+	HasChar(char int64) bool
 
 	GetSupportedChars() String
 
@@ -8347,7 +8347,7 @@ type FontFile interface {
 
 	GetKerning(cache_index int32, size int32, glyph_pair Vector2i) Vector2
 
-	RenderRange(cache_index int32, size Vector2i, start int32, end int32)
+	RenderRange(cache_index int32, size Vector2i, start int64, end int64)
 
 	RenderGlyph(cache_index int32, size Vector2i, index int32)
 
@@ -8371,9 +8371,9 @@ type FontFile interface {
 
 	GetOpentypeFeatureOverrides() Dictionary
 
-	GetGlyphIndex(size int32, char int32, variation_selector int32) int32
+	GetGlyphIndex(size int32, char int64, variation_selector int64) int32
 
-	GetCharFromGlyphIndex(size int32, glyph_index int32) int32
+	GetCharFromGlyphIndex(size int32, glyph_index int32) int64
 }
 type FontVariation interface {
 	Font
@@ -10472,7 +10472,7 @@ type Input interface {
 
 	ShouldIgnoreDevice(vendor_id int32, product_id int32) bool
 
-	GetConnectedJoypads() int32
+	GetConnectedJoypads() int64
 
 	GetJoyVibrationStrength(device int32) Vector2
 
@@ -10629,9 +10629,9 @@ type InputEventKey interface {
 
 	GetKeyLabel() Key
 
-	SetUnicode(unicode int32)
+	SetUnicode(unicode int64)
 
-	GetUnicode() int32
+	GetUnicode() int64
 
 	SetEcho(echo bool)
 
@@ -14269,7 +14269,7 @@ type Node interface {
 
 	Rpc(method StringName, varargs ...Variant) Error
 
-	RpcId(peer_id int32, method StringName, varargs ...Variant) Error
+	RpcId(peer_id int64, method StringName, varargs ...Variant) Error
 
 	UpdateConfigurationWarnings()
 
@@ -14723,7 +14723,7 @@ type OS interface {
 
 	GetKeycodeString(code Key) String
 
-	IsKeycodeUnicode(code int32) bool
+	IsKeycodeUnicode(code int64) bool
 
 	FindKeycodeFromString(strValue String) Key
 
@@ -17739,9 +17739,9 @@ type PhysicsTestMotionParameters2D interface {
 
 	SetExcludeBodies(exclude_list RID)
 
-	GetExcludeObjects() int32
+	GetExcludeObjects() int64
 
-	SetExcludeObjects(exclude_list int32)
+	SetExcludeObjects(exclude_list int64)
 
 	IsRecoveryAsCollisionEnabled() bool
 
@@ -17774,9 +17774,9 @@ type PhysicsTestMotionParameters3D interface {
 
 	SetExcludeBodies(exclude_list RID)
 
-	GetExcludeObjects() int32
+	GetExcludeObjects() int64
 
-	SetExcludeObjects(exclude_list int32)
+	SetExcludeObjects(exclude_list int64)
 
 	IsRecoveryAsCollisionEnabled() bool
 
@@ -18636,9 +18636,9 @@ type RDPipelineMultisampleState interface {
 
 	GetEnableAlphaToOne() bool
 
-	SetSampleMasks(masks int32)
+	SetSampleMasks(masks int64)
 
-	GetSampleMasks() int32
+	GetSampleMasks() int64
 }
 type RDPipelineRasterizationState interface {
 	RefCounted
@@ -21407,7 +21407,7 @@ type SceneTree interface {
 
 	QueueDelete(obj Object)
 
-	CallGroupFlags(flags int32, group StringName, method StringName, varargs ...Variant)
+	CallGroupFlags(flags int64, group StringName, method StringName, varargs ...Variant)
 
 	NotifyGroupFlags(call_flags uint32, group StringName, notification int32)
 

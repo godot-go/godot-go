@@ -50,7 +50,7 @@ func createBuiltinClassEncoder[T any](t GDExtensionVariantType, opaqueSize int) 
 			// noop
 			return
 		}
-		AllocCopyDest(unsafe.Pointer(pOut), unsafe.Pointer(ptr), opaqueSize)
+		*(*T)(unsafe.Pointer(pOut)) = *(*T)(unsafe.Pointer(ptr))
 	}
 	decodeTypePtr := func(ptr GDExtensionConstTypePtr) T {
 		var out T
@@ -58,7 +58,7 @@ func createBuiltinClassEncoder[T any](t GDExtensionVariantType, opaqueSize int) 
 		return out
 	}
 	encodeTypePtrArg := func(in T, pOut GDExtensionUninitializedTypePtr) {
-		AllocCopyDest(unsafe.Pointer(pOut), unsafe.Pointer(&in), opaqueSize)
+		*(*T)(unsafe.Pointer(pOut)) = in
 	}
 	encodeTypePtr := func(in T) GDExtensionTypePtr {
 		var out T

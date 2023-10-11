@@ -217,9 +217,9 @@ func goArgumentType(t string) string {
 		t = "int8"
 	case "int16":
 		t = "int16"
-	case "int", "int32":
+	case "int32":
 		t = "int32"
-	case "int64":
+	case "int", "int64":
 		t = "int64"
 	case "uint8", "uint8_t":
 		t = "uint8"
@@ -479,33 +479,8 @@ var (
 	}
 )
 
-func needsCopyInsteadOfMove(typeName string) bool {
-	_, ok := needsCopySet[typeName]
-
-	return ok
-}
-
-func isCopyConstructor(typeName string, c extensionapiparser.ClassConstructor) bool {
-	return len(c.Arguments) == 1 && c.Arguments[0].Type == typeName
-}
-
 func goEncoder(goType string) string {
-	if goType == "Object" {
-		return ""
-	}
-
 	return upperFirstChar(goType) + "Encoder"
-}
-
-func goEncodeArg(goType string, argName string) string {
-	switch goType {
-	case "Variant", "Vector3", "Vector3i", "Vector4", "Vector4i",
-		"Plane", "AABB", "Basis", "Transform3", "Projection", "Color",
-		"Transform3D":
-		return fmt.Sprintf("&%s", argName)
-	default:
-		return argName
-	}
 }
 
 var referenceEncoderTypes = []string{

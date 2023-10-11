@@ -46,7 +46,7 @@ build: goenv
 	GOARCH=$(GOARCH) \
 	CGO_CFLAGS='-g3 -g -gdwarf -DX86=1 -fPIC -O0' \
 	CGO_LDFLAGS='-g3 -g' \
-	go build -gcflags=all="-v -N -l -L -clobberdead -clobberdeadreg -dwarf -dwarflocationlists=false" -tags tools -buildmode=c-shared -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
+	go build -gcflags=all="-v -N -l -L -clobberdead -clobberdeadreg -dwarf -dwarflocationlists=false" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
 clean_src:
 	rm -f pkg/gdextensionffi/*.gen.c

@@ -64,6 +64,13 @@ jobs:
         shell: bash
         env:
           GODOT: ./Godot_v4.2-dev6_win64.exe
+      - name: Build Again
+        if: always()
+        run: |
+          make build
+        shell: bash
+        env:
+          GODOT: ./Godot_v4.2-dev6_win64.exe
       - name: List Artifacts Directory
         run: |
           ls -alh test/demo/lib

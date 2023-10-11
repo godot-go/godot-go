@@ -53,6 +53,11 @@ jobs:
           wget https://downloads.tuxfamily.org/godotengine/4.2/dev6/Godot_v4.2-dev6_win64.exe.zip
           unzip Godot_v4.2-dev6_win64.exe.zip -d ./
         shell: bash
+      - name: Update Godot Headers
+        run: |
+          make update_godot_headers_from_binary
+        env:
+          GODOT: ./Godot_v4.2-dev6_win64.exe
       - name: Build
         run: |
           make build

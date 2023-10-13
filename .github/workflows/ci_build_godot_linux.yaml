@@ -1,4 +1,4 @@
-name: build godot for ci
+name: build godot for ci on Linux
 
 on:
   workflow_dispatch:

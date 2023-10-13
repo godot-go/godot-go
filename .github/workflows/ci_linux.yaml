@@ -65,6 +65,12 @@ jobs:
           GOARCH: ${{ matrix.arch }}
           GODOT: ./bin/godot.linuxbsd.editor.x86_64
 
+      - name: Code Generation
+        run: make generate
+        env:
+          GOOS: ${{ matrix.os }}
+          GOARCH: ${{ matrix.arch }}
+
       - name: Build
         run: make build
         env:

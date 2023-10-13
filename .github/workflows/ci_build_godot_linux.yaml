@@ -9,7 +9,7 @@ env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   TSAN_OPTIONS: suppressions=misc/error_suppressions/tsan.txt
-  CHECKOUT_REF: '57a6813bb8bc2417ddef1058d422a91f0c9f753c'
+  CHECKOUT_REF: 'b1371806ad3907c009458ea939bd4b810f9deb21'
 
 jobs:
   run_build_godot:

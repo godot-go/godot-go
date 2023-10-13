@@ -31,6 +31,10 @@ jobs:
     runs-on: windows-latest
     timeout-minutes: 20
     steps:
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@master
+        with:
+          swap-size-gb: 10
       - name: Add Go 1.21.x To System Path
         shell: bash
         run: |

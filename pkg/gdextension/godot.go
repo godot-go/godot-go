@@ -13,7 +13,6 @@ import (
 
 	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
 	"github.com/godot-go/godot-go/pkg/log"
-	_ "github.com/ianlancetaylor/cgosymbolizer"
 	"go.uber.org/zap"
 )
 

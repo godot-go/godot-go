@@ -2769,6 +2769,18 @@ const (
 	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MAX                                           = 26
 )
 
+type OpenXRInterfaceHandJointFlags int
+
+const (
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_NONE                   OpenXRInterfaceHandJointFlags = 0
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_ORIENTATION_VALID                                    = 1
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_ORIENTATION_TRACKED                                  = 2
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_POSITION_VALID                                       = 4
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_POSITION_TRACKED                                     = 8
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_LINEAR_VELOCITY_VALID                                = 16
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_ANGULAR_VELOCITY_VALID                               = 32
+)
+
 type PackedSceneGenEditState int
 
 const (
@@ -2803,7 +2815,10 @@ const (
 	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_HUE_VARIATION                                             = 9
 	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ANIM_SPEED                                                = 10
 	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ANIM_OFFSET                                               = 11
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_MAX                                                       = 15
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_RADIAL_VELOCITY                                           = 15
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_DIRECTIONAL_VELOCITY                                      = 16
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_SCALE_OVER_VELOCITY                                       = 17
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_MAX                                                       = 18
 	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_TURB_VEL_INFLUENCE                                        = 13
 	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_TURB_INIT_DISPLACEMENT                                    = 14
 	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_TURB_INFLUENCE_OVER_LIFE                                  = 12
@@ -2815,7 +2830,8 @@ const (
 	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_ALIGN_Y_TO_VELOCITY ParticleProcessMaterialParticleFlags = 0
 	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_ROTATE_Y                                                 = 1
 	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_DISABLE_Z                                                = 2
-	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_MAX                                                      = 3
+	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_DAMPING_AS_FRICTION                                      = 3
+	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_MAX                                                      = 4
 )
 
 type ParticleProcessMaterialEmissionShape int
@@ -4077,6 +4093,13 @@ const (
 	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_DYNAMIC_UPDATE                                 = 67108864
 	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_8_BONE_WEIGHTS                                 = 134217728
 	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USES_EMPTY_VERTEX_ARRAY                            = 268435456
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_COMPRESS_ATTRIBUTES                                = 536870912
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_BASE                                = 35
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_SHIFT                               = 35
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_1                                   = 0
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_2                                   = 34359738368
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_CURRENT_VERSION                             = 34359738368
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_MASK                                = 255
 )
 
 type RenderingServerPrimitiveType int

@@ -7,31 +7,31 @@ type Ref interface {
 	IsValid() bool
 }
 
-type typedRefT interface {
+type TypedRefT interface {
 	comparable
 	RefCounted
 }
 
 // Ref is a helper struct for RefCounted Godot Objects.
-type typedRef[T typedRefT] struct {
+type TypedRef[T TypedRefT] struct {
 	// HasReference
 	reference RefCounted
 }
 
-func (cx *typedRef[T]) Ptr() RefCounted {
+func (cx *TypedRef[T]) Ptr() RefCounted {
 	return (RefCounted)(cx.reference)
 }
 
-func (cx *typedRef[T]) TypedPtr() T {
+func (cx *TypedRef[T]) TypedPtr() T {
 	return cx.reference.(T)
 }
 
-func (cx *typedRef[T]) Ref(pFrom Ref) {
-	cx.TypedRef(pFrom.(*typedRef[T]))
+func (cx *TypedRef[T]) Ref(pFrom Ref) {
+	cx.TypedRef(pFrom.(*TypedRef[T]))
 }
 
 // Ref increments a reference counter
-func (cx *typedRef[T]) TypedRef(from *typedRef[T]) {
+func (cx *TypedRef[T]) TypedRef(from *TypedRef[T]) {
 	var zero T
 	if from.reference == cx.reference {
 		return
@@ -43,7 +43,7 @@ func (cx *typedRef[T]) TypedRef(from *typedRef[T]) {
 	}
 }
 
-func (cx *typedRef[T]) RefPointer(r T) {
+func (cx *TypedRef[T]) RefPointer(r T) {
 	var zero T
 	if r == zero {
 		panic("reference cannot be nil")
@@ -54,7 +54,7 @@ func (cx *typedRef[T]) RefPointer(r T) {
 	cx.reference = r
 }
 
-func (cx *typedRef[T]) Unref() {
+func (cx *TypedRef[T]) Unref() {
 	var zero T
 	if cx.reference != zero && cx.reference.Unreference() {
 		cx.reference.Destroy()
@@ -64,18 +64,18 @@ func (cx *typedRef[T]) Unref() {
 	cx.reference = zero
 }
 
-func (cx *typedRef[T]) IsValid() bool {
+func (cx *TypedRef[T]) IsValid() bool {
 	return cx != nil && cx.reference != nil
 }
 
-func NewTypedRef[T typedRefT](reference T) *typedRef[T] {
-	ref := typedRef[T]{}
+func NewTypedRef[T TypedRefT](reference T) *TypedRef[T] {
+	ref := TypedRef[T]{}
 	ref.RefPointer(reference)
 	return &ref
 }
 
-func newTypedRefGDExtensionIternalConstructor[T typedRefT](reference T) *typedRef[T] {
-	ref := typedRef[T]{}
+func newTypedRefGDExtensionIternalConstructor[T TypedRefT](reference T) *TypedRef[T] {
+	ref := TypedRef[T]{}
 	ref.reference = reference
 	return &ref
 }

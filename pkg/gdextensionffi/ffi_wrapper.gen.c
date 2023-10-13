@@ -1285,6 +1285,12 @@ void cgo_callfn_GDExtensionInterfaceObjectSetInstanceBinding(
   printStacktrace();
   fn(p_o, p_token, p_binding, p_callbacks);
 }
+void cgo_callfn_GDExtensionInterfaceObjectFreeInstanceBinding(
+    const GDExtensionInterfaceObjectFreeInstanceBinding fn,
+    GDExtensionObjectPtr p_o, void *p_token) {
+  printStacktrace();
+  fn(p_o, p_token);
+}
 void cgo_callfn_GDExtensionInterfaceObjectSetInstance(
     const GDExtensionInterfaceObjectSetInstance fn, GDExtensionObjectPtr p_o,
     GDExtensionConstStringNamePtr p_classname,

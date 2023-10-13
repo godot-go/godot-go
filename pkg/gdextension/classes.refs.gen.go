@@ -20,31 +20,31 @@ type RefAESContext interface {
 	TypedPtr() AESContext
 }
 
-type RefAESContextImpl typedRef[AESContext]
+type RefAESContextImpl TypedRef[AESContext]
 
 func (r *RefAESContextImpl) Ptr() RefCounted {
-	rg := (*typedRef[AESContext])(r)
+	rg := (*TypedRef[AESContext])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAESContextImpl) TypedPtr() AESContext {
-	rg := (*typedRef[AESContext])(r)
+	rg := (*TypedRef[AESContext])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAESContextImpl) Ref(from Ref) {
-	rg := (*typedRef[AESContext])(r)
+	rg := (*TypedRef[AESContext])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAESContextImpl) TypedRef(from *RefAESContextImpl) {
-	rg := (*typedRef[AESContext])(r)
-	t := (*typedRef[AESContext])(from)
-	rg.TypedRef((*typedRef[AESContext])(t))
+	rg := (*TypedRef[AESContext])(r)
+	t := (*TypedRef[AESContext])(from)
+	rg.TypedRef((*TypedRef[AESContext])(t))
 }
 
 func (r *RefAESContextImpl) Unref() {
-	rg := (*typedRef[AESContext])(r)
+	rg := (*TypedRef[AESContext])(r)
 	rg.Unref()
 }
 
@@ -72,31 +72,31 @@ type RefAStar2D interface {
 	TypedPtr() AStar2D
 }
 
-type RefAStar2DImpl typedRef[AStar2D]
+type RefAStar2DImpl TypedRef[AStar2D]
 
 func (r *RefAStar2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[AStar2D])(r)
+	rg := (*TypedRef[AStar2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAStar2DImpl) TypedPtr() AStar2D {
-	rg := (*typedRef[AStar2D])(r)
+	rg := (*TypedRef[AStar2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAStar2DImpl) Ref(from Ref) {
-	rg := (*typedRef[AStar2D])(r)
+	rg := (*TypedRef[AStar2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAStar2DImpl) TypedRef(from *RefAStar2DImpl) {
-	rg := (*typedRef[AStar2D])(r)
-	t := (*typedRef[AStar2D])(from)
-	rg.TypedRef((*typedRef[AStar2D])(t))
+	rg := (*TypedRef[AStar2D])(r)
+	t := (*TypedRef[AStar2D])(from)
+	rg.TypedRef((*TypedRef[AStar2D])(t))
 }
 
 func (r *RefAStar2DImpl) Unref() {
-	rg := (*typedRef[AStar2D])(r)
+	rg := (*TypedRef[AStar2D])(r)
 	rg.Unref()
 }
 
@@ -124,31 +124,31 @@ type RefAStar3D interface {
 	TypedPtr() AStar3D
 }
 
-type RefAStar3DImpl typedRef[AStar3D]
+type RefAStar3DImpl TypedRef[AStar3D]
 
 func (r *RefAStar3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[AStar3D])(r)
+	rg := (*TypedRef[AStar3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAStar3DImpl) TypedPtr() AStar3D {
-	rg := (*typedRef[AStar3D])(r)
+	rg := (*TypedRef[AStar3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAStar3DImpl) Ref(from Ref) {
-	rg := (*typedRef[AStar3D])(r)
+	rg := (*TypedRef[AStar3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAStar3DImpl) TypedRef(from *RefAStar3DImpl) {
-	rg := (*typedRef[AStar3D])(r)
-	t := (*typedRef[AStar3D])(from)
-	rg.TypedRef((*typedRef[AStar3D])(t))
+	rg := (*TypedRef[AStar3D])(r)
+	t := (*TypedRef[AStar3D])(from)
+	rg.TypedRef((*TypedRef[AStar3D])(t))
 }
 
 func (r *RefAStar3DImpl) Unref() {
-	rg := (*typedRef[AStar3D])(r)
+	rg := (*TypedRef[AStar3D])(r)
 	rg.Unref()
 }
 
@@ -176,31 +176,31 @@ type RefAStarGrid2D interface {
 	TypedPtr() AStarGrid2D
 }
 
-type RefAStarGrid2DImpl typedRef[AStarGrid2D]
+type RefAStarGrid2DImpl TypedRef[AStarGrid2D]
 
 func (r *RefAStarGrid2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[AStarGrid2D])(r)
+	rg := (*TypedRef[AStarGrid2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAStarGrid2DImpl) TypedPtr() AStarGrid2D {
-	rg := (*typedRef[AStarGrid2D])(r)
+	rg := (*TypedRef[AStarGrid2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAStarGrid2DImpl) Ref(from Ref) {
-	rg := (*typedRef[AStarGrid2D])(r)
+	rg := (*TypedRef[AStarGrid2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAStarGrid2DImpl) TypedRef(from *RefAStarGrid2DImpl) {
-	rg := (*typedRef[AStarGrid2D])(r)
-	t := (*typedRef[AStarGrid2D])(from)
-	rg.TypedRef((*typedRef[AStarGrid2D])(t))
+	rg := (*TypedRef[AStarGrid2D])(r)
+	t := (*TypedRef[AStarGrid2D])(from)
+	rg.TypedRef((*TypedRef[AStarGrid2D])(t))
 }
 
 func (r *RefAStarGrid2DImpl) Unref() {
-	rg := (*typedRef[AStarGrid2D])(r)
+	rg := (*TypedRef[AStarGrid2D])(r)
 	rg.Unref()
 }
 
@@ -228,31 +228,31 @@ type RefAnimatedTexture interface {
 	TypedPtr() AnimatedTexture
 }
 
-type RefAnimatedTextureImpl typedRef[AnimatedTexture]
+type RefAnimatedTextureImpl TypedRef[AnimatedTexture]
 
 func (r *RefAnimatedTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimatedTexture])(r)
+	rg := (*TypedRef[AnimatedTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimatedTextureImpl) TypedPtr() AnimatedTexture {
-	rg := (*typedRef[AnimatedTexture])(r)
+	rg := (*TypedRef[AnimatedTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimatedTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimatedTexture])(r)
+	rg := (*TypedRef[AnimatedTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimatedTextureImpl) TypedRef(from *RefAnimatedTextureImpl) {
-	rg := (*typedRef[AnimatedTexture])(r)
-	t := (*typedRef[AnimatedTexture])(from)
-	rg.TypedRef((*typedRef[AnimatedTexture])(t))
+	rg := (*TypedRef[AnimatedTexture])(r)
+	t := (*TypedRef[AnimatedTexture])(from)
+	rg.TypedRef((*TypedRef[AnimatedTexture])(t))
 }
 
 func (r *RefAnimatedTextureImpl) Unref() {
-	rg := (*typedRef[AnimatedTexture])(r)
+	rg := (*TypedRef[AnimatedTexture])(r)
 	rg.Unref()
 }
 
@@ -280,31 +280,31 @@ type RefAnimation interface {
 	TypedPtr() Animation
 }
 
-type RefAnimationImpl typedRef[Animation]
+type RefAnimationImpl TypedRef[Animation]
 
 func (r *RefAnimationImpl) Ptr() RefCounted {
-	rg := (*typedRef[Animation])(r)
+	rg := (*TypedRef[Animation])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationImpl) TypedPtr() Animation {
-	rg := (*typedRef[Animation])(r)
+	rg := (*TypedRef[Animation])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationImpl) Ref(from Ref) {
-	rg := (*typedRef[Animation])(r)
+	rg := (*TypedRef[Animation])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationImpl) TypedRef(from *RefAnimationImpl) {
-	rg := (*typedRef[Animation])(r)
-	t := (*typedRef[Animation])(from)
-	rg.TypedRef((*typedRef[Animation])(t))
+	rg := (*TypedRef[Animation])(r)
+	t := (*TypedRef[Animation])(from)
+	rg.TypedRef((*TypedRef[Animation])(t))
 }
 
 func (r *RefAnimationImpl) Unref() {
-	rg := (*typedRef[Animation])(r)
+	rg := (*TypedRef[Animation])(r)
 	rg.Unref()
 }
 
@@ -332,31 +332,31 @@ type RefAnimationLibrary interface {
 	TypedPtr() AnimationLibrary
 }
 
-type RefAnimationLibraryImpl typedRef[AnimationLibrary]
+type RefAnimationLibraryImpl TypedRef[AnimationLibrary]
 
 func (r *RefAnimationLibraryImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationLibrary])(r)
+	rg := (*TypedRef[AnimationLibrary])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationLibraryImpl) TypedPtr() AnimationLibrary {
-	rg := (*typedRef[AnimationLibrary])(r)
+	rg := (*TypedRef[AnimationLibrary])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationLibraryImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationLibrary])(r)
+	rg := (*TypedRef[AnimationLibrary])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationLibraryImpl) TypedRef(from *RefAnimationLibraryImpl) {
-	rg := (*typedRef[AnimationLibrary])(r)
-	t := (*typedRef[AnimationLibrary])(from)
-	rg.TypedRef((*typedRef[AnimationLibrary])(t))
+	rg := (*TypedRef[AnimationLibrary])(r)
+	t := (*TypedRef[AnimationLibrary])(from)
+	rg.TypedRef((*TypedRef[AnimationLibrary])(t))
 }
 
 func (r *RefAnimationLibraryImpl) Unref() {
-	rg := (*typedRef[AnimationLibrary])(r)
+	rg := (*TypedRef[AnimationLibrary])(r)
 	rg.Unref()
 }
 
@@ -384,31 +384,31 @@ type RefAnimationNode interface {
 	TypedPtr() AnimationNode
 }
 
-type RefAnimationNodeImpl typedRef[AnimationNode]
+type RefAnimationNodeImpl TypedRef[AnimationNode]
 
 func (r *RefAnimationNodeImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNode])(r)
+	rg := (*TypedRef[AnimationNode])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeImpl) TypedPtr() AnimationNode {
-	rg := (*typedRef[AnimationNode])(r)
+	rg := (*TypedRef[AnimationNode])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNode])(r)
+	rg := (*TypedRef[AnimationNode])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeImpl) TypedRef(from *RefAnimationNodeImpl) {
-	rg := (*typedRef[AnimationNode])(r)
-	t := (*typedRef[AnimationNode])(from)
-	rg.TypedRef((*typedRef[AnimationNode])(t))
+	rg := (*TypedRef[AnimationNode])(r)
+	t := (*TypedRef[AnimationNode])(from)
+	rg.TypedRef((*TypedRef[AnimationNode])(t))
 }
 
 func (r *RefAnimationNodeImpl) Unref() {
-	rg := (*typedRef[AnimationNode])(r)
+	rg := (*TypedRef[AnimationNode])(r)
 	rg.Unref()
 }
 
@@ -436,31 +436,31 @@ type RefAnimationNodeAdd2 interface {
 	TypedPtr() AnimationNodeAdd2
 }
 
-type RefAnimationNodeAdd2Impl typedRef[AnimationNodeAdd2]
+type RefAnimationNodeAdd2Impl TypedRef[AnimationNodeAdd2]
 
 func (r *RefAnimationNodeAdd2Impl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeAdd2])(r)
+	rg := (*TypedRef[AnimationNodeAdd2])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeAdd2Impl) TypedPtr() AnimationNodeAdd2 {
-	rg := (*typedRef[AnimationNodeAdd2])(r)
+	rg := (*TypedRef[AnimationNodeAdd2])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeAdd2Impl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeAdd2])(r)
+	rg := (*TypedRef[AnimationNodeAdd2])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeAdd2Impl) TypedRef(from *RefAnimationNodeAdd2Impl) {
-	rg := (*typedRef[AnimationNodeAdd2])(r)
-	t := (*typedRef[AnimationNodeAdd2])(from)
-	rg.TypedRef((*typedRef[AnimationNodeAdd2])(t))
+	rg := (*TypedRef[AnimationNodeAdd2])(r)
+	t := (*TypedRef[AnimationNodeAdd2])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeAdd2])(t))
 }
 
 func (r *RefAnimationNodeAdd2Impl) Unref() {
-	rg := (*typedRef[AnimationNodeAdd2])(r)
+	rg := (*TypedRef[AnimationNodeAdd2])(r)
 	rg.Unref()
 }
 
@@ -488,31 +488,31 @@ type RefAnimationNodeAdd3 interface {
 	TypedPtr() AnimationNodeAdd3
 }
 
-type RefAnimationNodeAdd3Impl typedRef[AnimationNodeAdd3]
+type RefAnimationNodeAdd3Impl TypedRef[AnimationNodeAdd3]
 
 func (r *RefAnimationNodeAdd3Impl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeAdd3])(r)
+	rg := (*TypedRef[AnimationNodeAdd3])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeAdd3Impl) TypedPtr() AnimationNodeAdd3 {
-	rg := (*typedRef[AnimationNodeAdd3])(r)
+	rg := (*TypedRef[AnimationNodeAdd3])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeAdd3Impl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeAdd3])(r)
+	rg := (*TypedRef[AnimationNodeAdd3])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeAdd3Impl) TypedRef(from *RefAnimationNodeAdd3Impl) {
-	rg := (*typedRef[AnimationNodeAdd3])(r)
-	t := (*typedRef[AnimationNodeAdd3])(from)
-	rg.TypedRef((*typedRef[AnimationNodeAdd3])(t))
+	rg := (*TypedRef[AnimationNodeAdd3])(r)
+	t := (*TypedRef[AnimationNodeAdd3])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeAdd3])(t))
 }
 
 func (r *RefAnimationNodeAdd3Impl) Unref() {
-	rg := (*typedRef[AnimationNodeAdd3])(r)
+	rg := (*TypedRef[AnimationNodeAdd3])(r)
 	rg.Unref()
 }
 
@@ -540,31 +540,31 @@ type RefAnimationNodeAnimation interface {
 	TypedPtr() AnimationNodeAnimation
 }
 
-type RefAnimationNodeAnimationImpl typedRef[AnimationNodeAnimation]
+type RefAnimationNodeAnimationImpl TypedRef[AnimationNodeAnimation]
 
 func (r *RefAnimationNodeAnimationImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeAnimation])(r)
+	rg := (*TypedRef[AnimationNodeAnimation])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeAnimationImpl) TypedPtr() AnimationNodeAnimation {
-	rg := (*typedRef[AnimationNodeAnimation])(r)
+	rg := (*TypedRef[AnimationNodeAnimation])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeAnimationImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeAnimation])(r)
+	rg := (*TypedRef[AnimationNodeAnimation])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeAnimationImpl) TypedRef(from *RefAnimationNodeAnimationImpl) {
-	rg := (*typedRef[AnimationNodeAnimation])(r)
-	t := (*typedRef[AnimationNodeAnimation])(from)
-	rg.TypedRef((*typedRef[AnimationNodeAnimation])(t))
+	rg := (*TypedRef[AnimationNodeAnimation])(r)
+	t := (*TypedRef[AnimationNodeAnimation])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeAnimation])(t))
 }
 
 func (r *RefAnimationNodeAnimationImpl) Unref() {
-	rg := (*typedRef[AnimationNodeAnimation])(r)
+	rg := (*TypedRef[AnimationNodeAnimation])(r)
 	rg.Unref()
 }
 
@@ -592,31 +592,31 @@ type RefAnimationNodeBlend2 interface {
 	TypedPtr() AnimationNodeBlend2
 }
 
-type RefAnimationNodeBlend2Impl typedRef[AnimationNodeBlend2]
+type RefAnimationNodeBlend2Impl TypedRef[AnimationNodeBlend2]
 
 func (r *RefAnimationNodeBlend2Impl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeBlend2])(r)
+	rg := (*TypedRef[AnimationNodeBlend2])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeBlend2Impl) TypedPtr() AnimationNodeBlend2 {
-	rg := (*typedRef[AnimationNodeBlend2])(r)
+	rg := (*TypedRef[AnimationNodeBlend2])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeBlend2Impl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeBlend2])(r)
+	rg := (*TypedRef[AnimationNodeBlend2])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeBlend2Impl) TypedRef(from *RefAnimationNodeBlend2Impl) {
-	rg := (*typedRef[AnimationNodeBlend2])(r)
-	t := (*typedRef[AnimationNodeBlend2])(from)
-	rg.TypedRef((*typedRef[AnimationNodeBlend2])(t))
+	rg := (*TypedRef[AnimationNodeBlend2])(r)
+	t := (*TypedRef[AnimationNodeBlend2])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeBlend2])(t))
 }
 
 func (r *RefAnimationNodeBlend2Impl) Unref() {
-	rg := (*typedRef[AnimationNodeBlend2])(r)
+	rg := (*TypedRef[AnimationNodeBlend2])(r)
 	rg.Unref()
 }
 
@@ -644,31 +644,31 @@ type RefAnimationNodeBlend3 interface {
 	TypedPtr() AnimationNodeBlend3
 }
 
-type RefAnimationNodeBlend3Impl typedRef[AnimationNodeBlend3]
+type RefAnimationNodeBlend3Impl TypedRef[AnimationNodeBlend3]
 
 func (r *RefAnimationNodeBlend3Impl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeBlend3])(r)
+	rg := (*TypedRef[AnimationNodeBlend3])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeBlend3Impl) TypedPtr() AnimationNodeBlend3 {
-	rg := (*typedRef[AnimationNodeBlend3])(r)
+	rg := (*TypedRef[AnimationNodeBlend3])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeBlend3Impl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeBlend3])(r)
+	rg := (*TypedRef[AnimationNodeBlend3])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeBlend3Impl) TypedRef(from *RefAnimationNodeBlend3Impl) {
-	rg := (*typedRef[AnimationNodeBlend3])(r)
-	t := (*typedRef[AnimationNodeBlend3])(from)
-	rg.TypedRef((*typedRef[AnimationNodeBlend3])(t))
+	rg := (*TypedRef[AnimationNodeBlend3])(r)
+	t := (*TypedRef[AnimationNodeBlend3])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeBlend3])(t))
 }
 
 func (r *RefAnimationNodeBlend3Impl) Unref() {
-	rg := (*typedRef[AnimationNodeBlend3])(r)
+	rg := (*TypedRef[AnimationNodeBlend3])(r)
 	rg.Unref()
 }
 
@@ -696,31 +696,31 @@ type RefAnimationNodeBlendSpace1D interface {
 	TypedPtr() AnimationNodeBlendSpace1D
 }
 
-type RefAnimationNodeBlendSpace1DImpl typedRef[AnimationNodeBlendSpace1D]
+type RefAnimationNodeBlendSpace1DImpl TypedRef[AnimationNodeBlendSpace1D]
 
 func (r *RefAnimationNodeBlendSpace1DImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeBlendSpace1D])(r)
+	rg := (*TypedRef[AnimationNodeBlendSpace1D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeBlendSpace1DImpl) TypedPtr() AnimationNodeBlendSpace1D {
-	rg := (*typedRef[AnimationNodeBlendSpace1D])(r)
+	rg := (*TypedRef[AnimationNodeBlendSpace1D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeBlendSpace1DImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeBlendSpace1D])(r)
+	rg := (*TypedRef[AnimationNodeBlendSpace1D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeBlendSpace1DImpl) TypedRef(from *RefAnimationNodeBlendSpace1DImpl) {
-	rg := (*typedRef[AnimationNodeBlendSpace1D])(r)
-	t := (*typedRef[AnimationNodeBlendSpace1D])(from)
-	rg.TypedRef((*typedRef[AnimationNodeBlendSpace1D])(t))
+	rg := (*TypedRef[AnimationNodeBlendSpace1D])(r)
+	t := (*TypedRef[AnimationNodeBlendSpace1D])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeBlendSpace1D])(t))
 }
 
 func (r *RefAnimationNodeBlendSpace1DImpl) Unref() {
-	rg := (*typedRef[AnimationNodeBlendSpace1D])(r)
+	rg := (*TypedRef[AnimationNodeBlendSpace1D])(r)
 	rg.Unref()
 }
 
@@ -748,31 +748,31 @@ type RefAnimationNodeBlendSpace2D interface {
 	TypedPtr() AnimationNodeBlendSpace2D
 }
 
-type RefAnimationNodeBlendSpace2DImpl typedRef[AnimationNodeBlendSpace2D]
+type RefAnimationNodeBlendSpace2DImpl TypedRef[AnimationNodeBlendSpace2D]
 
 func (r *RefAnimationNodeBlendSpace2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeBlendSpace2D])(r)
+	rg := (*TypedRef[AnimationNodeBlendSpace2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeBlendSpace2DImpl) TypedPtr() AnimationNodeBlendSpace2D {
-	rg := (*typedRef[AnimationNodeBlendSpace2D])(r)
+	rg := (*TypedRef[AnimationNodeBlendSpace2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeBlendSpace2DImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeBlendSpace2D])(r)
+	rg := (*TypedRef[AnimationNodeBlendSpace2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeBlendSpace2DImpl) TypedRef(from *RefAnimationNodeBlendSpace2DImpl) {
-	rg := (*typedRef[AnimationNodeBlendSpace2D])(r)
-	t := (*typedRef[AnimationNodeBlendSpace2D])(from)
-	rg.TypedRef((*typedRef[AnimationNodeBlendSpace2D])(t))
+	rg := (*TypedRef[AnimationNodeBlendSpace2D])(r)
+	t := (*TypedRef[AnimationNodeBlendSpace2D])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeBlendSpace2D])(t))
 }
 
 func (r *RefAnimationNodeBlendSpace2DImpl) Unref() {
-	rg := (*typedRef[AnimationNodeBlendSpace2D])(r)
+	rg := (*TypedRef[AnimationNodeBlendSpace2D])(r)
 	rg.Unref()
 }
 
@@ -800,31 +800,31 @@ type RefAnimationNodeBlendTree interface {
 	TypedPtr() AnimationNodeBlendTree
 }
 
-type RefAnimationNodeBlendTreeImpl typedRef[AnimationNodeBlendTree]
+type RefAnimationNodeBlendTreeImpl TypedRef[AnimationNodeBlendTree]
 
 func (r *RefAnimationNodeBlendTreeImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeBlendTree])(r)
+	rg := (*TypedRef[AnimationNodeBlendTree])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeBlendTreeImpl) TypedPtr() AnimationNodeBlendTree {
-	rg := (*typedRef[AnimationNodeBlendTree])(r)
+	rg := (*TypedRef[AnimationNodeBlendTree])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeBlendTreeImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeBlendTree])(r)
+	rg := (*TypedRef[AnimationNodeBlendTree])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeBlendTreeImpl) TypedRef(from *RefAnimationNodeBlendTreeImpl) {
-	rg := (*typedRef[AnimationNodeBlendTree])(r)
-	t := (*typedRef[AnimationNodeBlendTree])(from)
-	rg.TypedRef((*typedRef[AnimationNodeBlendTree])(t))
+	rg := (*TypedRef[AnimationNodeBlendTree])(r)
+	t := (*TypedRef[AnimationNodeBlendTree])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeBlendTree])(t))
 }
 
 func (r *RefAnimationNodeBlendTreeImpl) Unref() {
-	rg := (*typedRef[AnimationNodeBlendTree])(r)
+	rg := (*TypedRef[AnimationNodeBlendTree])(r)
 	rg.Unref()
 }
 
@@ -852,31 +852,31 @@ type RefAnimationNodeOneShot interface {
 	TypedPtr() AnimationNodeOneShot
 }
 
-type RefAnimationNodeOneShotImpl typedRef[AnimationNodeOneShot]
+type RefAnimationNodeOneShotImpl TypedRef[AnimationNodeOneShot]
 
 func (r *RefAnimationNodeOneShotImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeOneShot])(r)
+	rg := (*TypedRef[AnimationNodeOneShot])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeOneShotImpl) TypedPtr() AnimationNodeOneShot {
-	rg := (*typedRef[AnimationNodeOneShot])(r)
+	rg := (*TypedRef[AnimationNodeOneShot])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeOneShotImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeOneShot])(r)
+	rg := (*TypedRef[AnimationNodeOneShot])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeOneShotImpl) TypedRef(from *RefAnimationNodeOneShotImpl) {
-	rg := (*typedRef[AnimationNodeOneShot])(r)
-	t := (*typedRef[AnimationNodeOneShot])(from)
-	rg.TypedRef((*typedRef[AnimationNodeOneShot])(t))
+	rg := (*TypedRef[AnimationNodeOneShot])(r)
+	t := (*TypedRef[AnimationNodeOneShot])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeOneShot])(t))
 }
 
 func (r *RefAnimationNodeOneShotImpl) Unref() {
-	rg := (*typedRef[AnimationNodeOneShot])(r)
+	rg := (*TypedRef[AnimationNodeOneShot])(r)
 	rg.Unref()
 }
 
@@ -904,31 +904,31 @@ type RefAnimationNodeOutput interface {
 	TypedPtr() AnimationNodeOutput
 }
 
-type RefAnimationNodeOutputImpl typedRef[AnimationNodeOutput]
+type RefAnimationNodeOutputImpl TypedRef[AnimationNodeOutput]
 
 func (r *RefAnimationNodeOutputImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeOutput])(r)
+	rg := (*TypedRef[AnimationNodeOutput])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeOutputImpl) TypedPtr() AnimationNodeOutput {
-	rg := (*typedRef[AnimationNodeOutput])(r)
+	rg := (*TypedRef[AnimationNodeOutput])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeOutputImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeOutput])(r)
+	rg := (*TypedRef[AnimationNodeOutput])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeOutputImpl) TypedRef(from *RefAnimationNodeOutputImpl) {
-	rg := (*typedRef[AnimationNodeOutput])(r)
-	t := (*typedRef[AnimationNodeOutput])(from)
-	rg.TypedRef((*typedRef[AnimationNodeOutput])(t))
+	rg := (*TypedRef[AnimationNodeOutput])(r)
+	t := (*TypedRef[AnimationNodeOutput])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeOutput])(t))
 }
 
 func (r *RefAnimationNodeOutputImpl) Unref() {
-	rg := (*typedRef[AnimationNodeOutput])(r)
+	rg := (*TypedRef[AnimationNodeOutput])(r)
 	rg.Unref()
 }
 
@@ -956,31 +956,31 @@ type RefAnimationNodeStateMachine interface {
 	TypedPtr() AnimationNodeStateMachine
 }
 
-type RefAnimationNodeStateMachineImpl typedRef[AnimationNodeStateMachine]
+type RefAnimationNodeStateMachineImpl TypedRef[AnimationNodeStateMachine]
 
 func (r *RefAnimationNodeStateMachineImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeStateMachine])(r)
+	rg := (*TypedRef[AnimationNodeStateMachine])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeStateMachineImpl) TypedPtr() AnimationNodeStateMachine {
-	rg := (*typedRef[AnimationNodeStateMachine])(r)
+	rg := (*TypedRef[AnimationNodeStateMachine])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeStateMachineImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeStateMachine])(r)
+	rg := (*TypedRef[AnimationNodeStateMachine])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeStateMachineImpl) TypedRef(from *RefAnimationNodeStateMachineImpl) {
-	rg := (*typedRef[AnimationNodeStateMachine])(r)
-	t := (*typedRef[AnimationNodeStateMachine])(from)
-	rg.TypedRef((*typedRef[AnimationNodeStateMachine])(t))
+	rg := (*TypedRef[AnimationNodeStateMachine])(r)
+	t := (*TypedRef[AnimationNodeStateMachine])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeStateMachine])(t))
 }
 
 func (r *RefAnimationNodeStateMachineImpl) Unref() {
-	rg := (*typedRef[AnimationNodeStateMachine])(r)
+	rg := (*TypedRef[AnimationNodeStateMachine])(r)
 	rg.Unref()
 }
 
@@ -1008,31 +1008,31 @@ type RefAnimationNodeStateMachinePlayback interface {
 	TypedPtr() AnimationNodeStateMachinePlayback
 }
 
-type RefAnimationNodeStateMachinePlaybackImpl typedRef[AnimationNodeStateMachinePlayback]
+type RefAnimationNodeStateMachinePlaybackImpl TypedRef[AnimationNodeStateMachinePlayback]
 
 func (r *RefAnimationNodeStateMachinePlaybackImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeStateMachinePlayback])(r)
+	rg := (*TypedRef[AnimationNodeStateMachinePlayback])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeStateMachinePlaybackImpl) TypedPtr() AnimationNodeStateMachinePlayback {
-	rg := (*typedRef[AnimationNodeStateMachinePlayback])(r)
+	rg := (*TypedRef[AnimationNodeStateMachinePlayback])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeStateMachinePlaybackImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeStateMachinePlayback])(r)
+	rg := (*TypedRef[AnimationNodeStateMachinePlayback])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeStateMachinePlaybackImpl) TypedRef(from *RefAnimationNodeStateMachinePlaybackImpl) {
-	rg := (*typedRef[AnimationNodeStateMachinePlayback])(r)
-	t := (*typedRef[AnimationNodeStateMachinePlayback])(from)
-	rg.TypedRef((*typedRef[AnimationNodeStateMachinePlayback])(t))
+	rg := (*TypedRef[AnimationNodeStateMachinePlayback])(r)
+	t := (*TypedRef[AnimationNodeStateMachinePlayback])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeStateMachinePlayback])(t))
 }
 
 func (r *RefAnimationNodeStateMachinePlaybackImpl) Unref() {
-	rg := (*typedRef[AnimationNodeStateMachinePlayback])(r)
+	rg := (*TypedRef[AnimationNodeStateMachinePlayback])(r)
 	rg.Unref()
 }
 
@@ -1060,31 +1060,31 @@ type RefAnimationNodeStateMachineTransition interface {
 	TypedPtr() AnimationNodeStateMachineTransition
 }
 
-type RefAnimationNodeStateMachineTransitionImpl typedRef[AnimationNodeStateMachineTransition]
+type RefAnimationNodeStateMachineTransitionImpl TypedRef[AnimationNodeStateMachineTransition]
 
 func (r *RefAnimationNodeStateMachineTransitionImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeStateMachineTransition])(r)
+	rg := (*TypedRef[AnimationNodeStateMachineTransition])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeStateMachineTransitionImpl) TypedPtr() AnimationNodeStateMachineTransition {
-	rg := (*typedRef[AnimationNodeStateMachineTransition])(r)
+	rg := (*TypedRef[AnimationNodeStateMachineTransition])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeStateMachineTransitionImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeStateMachineTransition])(r)
+	rg := (*TypedRef[AnimationNodeStateMachineTransition])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeStateMachineTransitionImpl) TypedRef(from *RefAnimationNodeStateMachineTransitionImpl) {
-	rg := (*typedRef[AnimationNodeStateMachineTransition])(r)
-	t := (*typedRef[AnimationNodeStateMachineTransition])(from)
-	rg.TypedRef((*typedRef[AnimationNodeStateMachineTransition])(t))
+	rg := (*TypedRef[AnimationNodeStateMachineTransition])(r)
+	t := (*TypedRef[AnimationNodeStateMachineTransition])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeStateMachineTransition])(t))
 }
 
 func (r *RefAnimationNodeStateMachineTransitionImpl) Unref() {
-	rg := (*typedRef[AnimationNodeStateMachineTransition])(r)
+	rg := (*TypedRef[AnimationNodeStateMachineTransition])(r)
 	rg.Unref()
 }
 
@@ -1112,31 +1112,31 @@ type RefAnimationNodeSub2 interface {
 	TypedPtr() AnimationNodeSub2
 }
 
-type RefAnimationNodeSub2Impl typedRef[AnimationNodeSub2]
+type RefAnimationNodeSub2Impl TypedRef[AnimationNodeSub2]
 
 func (r *RefAnimationNodeSub2Impl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeSub2])(r)
+	rg := (*TypedRef[AnimationNodeSub2])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeSub2Impl) TypedPtr() AnimationNodeSub2 {
-	rg := (*typedRef[AnimationNodeSub2])(r)
+	rg := (*TypedRef[AnimationNodeSub2])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeSub2Impl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeSub2])(r)
+	rg := (*TypedRef[AnimationNodeSub2])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeSub2Impl) TypedRef(from *RefAnimationNodeSub2Impl) {
-	rg := (*typedRef[AnimationNodeSub2])(r)
-	t := (*typedRef[AnimationNodeSub2])(from)
-	rg.TypedRef((*typedRef[AnimationNodeSub2])(t))
+	rg := (*TypedRef[AnimationNodeSub2])(r)
+	t := (*TypedRef[AnimationNodeSub2])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeSub2])(t))
 }
 
 func (r *RefAnimationNodeSub2Impl) Unref() {
-	rg := (*typedRef[AnimationNodeSub2])(r)
+	rg := (*TypedRef[AnimationNodeSub2])(r)
 	rg.Unref()
 }
 
@@ -1164,31 +1164,31 @@ type RefAnimationNodeSync interface {
 	TypedPtr() AnimationNodeSync
 }
 
-type RefAnimationNodeSyncImpl typedRef[AnimationNodeSync]
+type RefAnimationNodeSyncImpl TypedRef[AnimationNodeSync]
 
 func (r *RefAnimationNodeSyncImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeSync])(r)
+	rg := (*TypedRef[AnimationNodeSync])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeSyncImpl) TypedPtr() AnimationNodeSync {
-	rg := (*typedRef[AnimationNodeSync])(r)
+	rg := (*TypedRef[AnimationNodeSync])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeSyncImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeSync])(r)
+	rg := (*TypedRef[AnimationNodeSync])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeSyncImpl) TypedRef(from *RefAnimationNodeSyncImpl) {
-	rg := (*typedRef[AnimationNodeSync])(r)
-	t := (*typedRef[AnimationNodeSync])(from)
-	rg.TypedRef((*typedRef[AnimationNodeSync])(t))
+	rg := (*TypedRef[AnimationNodeSync])(r)
+	t := (*TypedRef[AnimationNodeSync])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeSync])(t))
 }
 
 func (r *RefAnimationNodeSyncImpl) Unref() {
-	rg := (*typedRef[AnimationNodeSync])(r)
+	rg := (*TypedRef[AnimationNodeSync])(r)
 	rg.Unref()
 }
 
@@ -1216,31 +1216,31 @@ type RefAnimationNodeTimeScale interface {
 	TypedPtr() AnimationNodeTimeScale
 }
 
-type RefAnimationNodeTimeScaleImpl typedRef[AnimationNodeTimeScale]
+type RefAnimationNodeTimeScaleImpl TypedRef[AnimationNodeTimeScale]
 
 func (r *RefAnimationNodeTimeScaleImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeTimeScale])(r)
+	rg := (*TypedRef[AnimationNodeTimeScale])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeTimeScaleImpl) TypedPtr() AnimationNodeTimeScale {
-	rg := (*typedRef[AnimationNodeTimeScale])(r)
+	rg := (*TypedRef[AnimationNodeTimeScale])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeTimeScaleImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeTimeScale])(r)
+	rg := (*TypedRef[AnimationNodeTimeScale])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeTimeScaleImpl) TypedRef(from *RefAnimationNodeTimeScaleImpl) {
-	rg := (*typedRef[AnimationNodeTimeScale])(r)
-	t := (*typedRef[AnimationNodeTimeScale])(from)
-	rg.TypedRef((*typedRef[AnimationNodeTimeScale])(t))
+	rg := (*TypedRef[AnimationNodeTimeScale])(r)
+	t := (*TypedRef[AnimationNodeTimeScale])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeTimeScale])(t))
 }
 
 func (r *RefAnimationNodeTimeScaleImpl) Unref() {
-	rg := (*typedRef[AnimationNodeTimeScale])(r)
+	rg := (*TypedRef[AnimationNodeTimeScale])(r)
 	rg.Unref()
 }
 
@@ -1268,31 +1268,31 @@ type RefAnimationNodeTimeSeek interface {
 	TypedPtr() AnimationNodeTimeSeek
 }
 
-type RefAnimationNodeTimeSeekImpl typedRef[AnimationNodeTimeSeek]
+type RefAnimationNodeTimeSeekImpl TypedRef[AnimationNodeTimeSeek]
 
 func (r *RefAnimationNodeTimeSeekImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeTimeSeek])(r)
+	rg := (*TypedRef[AnimationNodeTimeSeek])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeTimeSeekImpl) TypedPtr() AnimationNodeTimeSeek {
-	rg := (*typedRef[AnimationNodeTimeSeek])(r)
+	rg := (*TypedRef[AnimationNodeTimeSeek])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeTimeSeekImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeTimeSeek])(r)
+	rg := (*TypedRef[AnimationNodeTimeSeek])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeTimeSeekImpl) TypedRef(from *RefAnimationNodeTimeSeekImpl) {
-	rg := (*typedRef[AnimationNodeTimeSeek])(r)
-	t := (*typedRef[AnimationNodeTimeSeek])(from)
-	rg.TypedRef((*typedRef[AnimationNodeTimeSeek])(t))
+	rg := (*TypedRef[AnimationNodeTimeSeek])(r)
+	t := (*TypedRef[AnimationNodeTimeSeek])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeTimeSeek])(t))
 }
 
 func (r *RefAnimationNodeTimeSeekImpl) Unref() {
-	rg := (*typedRef[AnimationNodeTimeSeek])(r)
+	rg := (*TypedRef[AnimationNodeTimeSeek])(r)
 	rg.Unref()
 }
 
@@ -1320,31 +1320,31 @@ type RefAnimationNodeTransition interface {
 	TypedPtr() AnimationNodeTransition
 }
 
-type RefAnimationNodeTransitionImpl typedRef[AnimationNodeTransition]
+type RefAnimationNodeTransitionImpl TypedRef[AnimationNodeTransition]
 
 func (r *RefAnimationNodeTransitionImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationNodeTransition])(r)
+	rg := (*TypedRef[AnimationNodeTransition])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationNodeTransitionImpl) TypedPtr() AnimationNodeTransition {
-	rg := (*typedRef[AnimationNodeTransition])(r)
+	rg := (*TypedRef[AnimationNodeTransition])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationNodeTransitionImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationNodeTransition])(r)
+	rg := (*TypedRef[AnimationNodeTransition])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationNodeTransitionImpl) TypedRef(from *RefAnimationNodeTransitionImpl) {
-	rg := (*typedRef[AnimationNodeTransition])(r)
-	t := (*typedRef[AnimationNodeTransition])(from)
-	rg.TypedRef((*typedRef[AnimationNodeTransition])(t))
+	rg := (*TypedRef[AnimationNodeTransition])(r)
+	t := (*TypedRef[AnimationNodeTransition])(from)
+	rg.TypedRef((*TypedRef[AnimationNodeTransition])(t))
 }
 
 func (r *RefAnimationNodeTransitionImpl) Unref() {
-	rg := (*typedRef[AnimationNodeTransition])(r)
+	rg := (*TypedRef[AnimationNodeTransition])(r)
 	rg.Unref()
 }
 
@@ -1372,31 +1372,31 @@ type RefAnimationRootNode interface {
 	TypedPtr() AnimationRootNode
 }
 
-type RefAnimationRootNodeImpl typedRef[AnimationRootNode]
+type RefAnimationRootNodeImpl TypedRef[AnimationRootNode]
 
 func (r *RefAnimationRootNodeImpl) Ptr() RefCounted {
-	rg := (*typedRef[AnimationRootNode])(r)
+	rg := (*TypedRef[AnimationRootNode])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAnimationRootNodeImpl) TypedPtr() AnimationRootNode {
-	rg := (*typedRef[AnimationRootNode])(r)
+	rg := (*TypedRef[AnimationRootNode])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAnimationRootNodeImpl) Ref(from Ref) {
-	rg := (*typedRef[AnimationRootNode])(r)
+	rg := (*TypedRef[AnimationRootNode])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAnimationRootNodeImpl) TypedRef(from *RefAnimationRootNodeImpl) {
-	rg := (*typedRef[AnimationRootNode])(r)
-	t := (*typedRef[AnimationRootNode])(from)
-	rg.TypedRef((*typedRef[AnimationRootNode])(t))
+	rg := (*TypedRef[AnimationRootNode])(r)
+	t := (*TypedRef[AnimationRootNode])(from)
+	rg.TypedRef((*TypedRef[AnimationRootNode])(t))
 }
 
 func (r *RefAnimationRootNodeImpl) Unref() {
-	rg := (*typedRef[AnimationRootNode])(r)
+	rg := (*TypedRef[AnimationRootNode])(r)
 	rg.Unref()
 }
 
@@ -1424,31 +1424,31 @@ type RefArrayMesh interface {
 	TypedPtr() ArrayMesh
 }
 
-type RefArrayMeshImpl typedRef[ArrayMesh]
+type RefArrayMeshImpl TypedRef[ArrayMesh]
 
 func (r *RefArrayMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[ArrayMesh])(r)
+	rg := (*TypedRef[ArrayMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefArrayMeshImpl) TypedPtr() ArrayMesh {
-	rg := (*typedRef[ArrayMesh])(r)
+	rg := (*TypedRef[ArrayMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefArrayMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[ArrayMesh])(r)
+	rg := (*TypedRef[ArrayMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefArrayMeshImpl) TypedRef(from *RefArrayMeshImpl) {
-	rg := (*typedRef[ArrayMesh])(r)
-	t := (*typedRef[ArrayMesh])(from)
-	rg.TypedRef((*typedRef[ArrayMesh])(t))
+	rg := (*TypedRef[ArrayMesh])(r)
+	t := (*TypedRef[ArrayMesh])(from)
+	rg.TypedRef((*TypedRef[ArrayMesh])(t))
 }
 
 func (r *RefArrayMeshImpl) Unref() {
-	rg := (*typedRef[ArrayMesh])(r)
+	rg := (*TypedRef[ArrayMesh])(r)
 	rg.Unref()
 }
 
@@ -1476,31 +1476,31 @@ type RefArrayOccluder3D interface {
 	TypedPtr() ArrayOccluder3D
 }
 
-type RefArrayOccluder3DImpl typedRef[ArrayOccluder3D]
+type RefArrayOccluder3DImpl TypedRef[ArrayOccluder3D]
 
 func (r *RefArrayOccluder3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[ArrayOccluder3D])(r)
+	rg := (*TypedRef[ArrayOccluder3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefArrayOccluder3DImpl) TypedPtr() ArrayOccluder3D {
-	rg := (*typedRef[ArrayOccluder3D])(r)
+	rg := (*TypedRef[ArrayOccluder3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefArrayOccluder3DImpl) Ref(from Ref) {
-	rg := (*typedRef[ArrayOccluder3D])(r)
+	rg := (*TypedRef[ArrayOccluder3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefArrayOccluder3DImpl) TypedRef(from *RefArrayOccluder3DImpl) {
-	rg := (*typedRef[ArrayOccluder3D])(r)
-	t := (*typedRef[ArrayOccluder3D])(from)
-	rg.TypedRef((*typedRef[ArrayOccluder3D])(t))
+	rg := (*TypedRef[ArrayOccluder3D])(r)
+	t := (*TypedRef[ArrayOccluder3D])(from)
+	rg.TypedRef((*TypedRef[ArrayOccluder3D])(t))
 }
 
 func (r *RefArrayOccluder3DImpl) Unref() {
-	rg := (*typedRef[ArrayOccluder3D])(r)
+	rg := (*TypedRef[ArrayOccluder3D])(r)
 	rg.Unref()
 }
 
@@ -1528,31 +1528,31 @@ type RefAtlasTexture interface {
 	TypedPtr() AtlasTexture
 }
 
-type RefAtlasTextureImpl typedRef[AtlasTexture]
+type RefAtlasTextureImpl TypedRef[AtlasTexture]
 
 func (r *RefAtlasTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[AtlasTexture])(r)
+	rg := (*TypedRef[AtlasTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAtlasTextureImpl) TypedPtr() AtlasTexture {
-	rg := (*typedRef[AtlasTexture])(r)
+	rg := (*TypedRef[AtlasTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAtlasTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[AtlasTexture])(r)
+	rg := (*TypedRef[AtlasTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAtlasTextureImpl) TypedRef(from *RefAtlasTextureImpl) {
-	rg := (*typedRef[AtlasTexture])(r)
-	t := (*typedRef[AtlasTexture])(from)
-	rg.TypedRef((*typedRef[AtlasTexture])(t))
+	rg := (*TypedRef[AtlasTexture])(r)
+	t := (*TypedRef[AtlasTexture])(from)
+	rg.TypedRef((*TypedRef[AtlasTexture])(t))
 }
 
 func (r *RefAtlasTextureImpl) Unref() {
-	rg := (*typedRef[AtlasTexture])(r)
+	rg := (*TypedRef[AtlasTexture])(r)
 	rg.Unref()
 }
 
@@ -1580,31 +1580,31 @@ type RefAudioBusLayout interface {
 	TypedPtr() AudioBusLayout
 }
 
-type RefAudioBusLayoutImpl typedRef[AudioBusLayout]
+type RefAudioBusLayoutImpl TypedRef[AudioBusLayout]
 
 func (r *RefAudioBusLayoutImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioBusLayout])(r)
+	rg := (*TypedRef[AudioBusLayout])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioBusLayoutImpl) TypedPtr() AudioBusLayout {
-	rg := (*typedRef[AudioBusLayout])(r)
+	rg := (*TypedRef[AudioBusLayout])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioBusLayoutImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioBusLayout])(r)
+	rg := (*TypedRef[AudioBusLayout])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioBusLayoutImpl) TypedRef(from *RefAudioBusLayoutImpl) {
-	rg := (*typedRef[AudioBusLayout])(r)
-	t := (*typedRef[AudioBusLayout])(from)
-	rg.TypedRef((*typedRef[AudioBusLayout])(t))
+	rg := (*TypedRef[AudioBusLayout])(r)
+	t := (*TypedRef[AudioBusLayout])(from)
+	rg.TypedRef((*TypedRef[AudioBusLayout])(t))
 }
 
 func (r *RefAudioBusLayoutImpl) Unref() {
-	rg := (*typedRef[AudioBusLayout])(r)
+	rg := (*TypedRef[AudioBusLayout])(r)
 	rg.Unref()
 }
 
@@ -1632,31 +1632,31 @@ type RefAudioEffect interface {
 	TypedPtr() AudioEffect
 }
 
-type RefAudioEffectImpl typedRef[AudioEffect]
+type RefAudioEffectImpl TypedRef[AudioEffect]
 
 func (r *RefAudioEffectImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffect])(r)
+	rg := (*TypedRef[AudioEffect])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectImpl) TypedPtr() AudioEffect {
-	rg := (*typedRef[AudioEffect])(r)
+	rg := (*TypedRef[AudioEffect])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffect])(r)
+	rg := (*TypedRef[AudioEffect])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectImpl) TypedRef(from *RefAudioEffectImpl) {
-	rg := (*typedRef[AudioEffect])(r)
-	t := (*typedRef[AudioEffect])(from)
-	rg.TypedRef((*typedRef[AudioEffect])(t))
+	rg := (*TypedRef[AudioEffect])(r)
+	t := (*TypedRef[AudioEffect])(from)
+	rg.TypedRef((*TypedRef[AudioEffect])(t))
 }
 
 func (r *RefAudioEffectImpl) Unref() {
-	rg := (*typedRef[AudioEffect])(r)
+	rg := (*TypedRef[AudioEffect])(r)
 	rg.Unref()
 }
 
@@ -1684,31 +1684,31 @@ type RefAudioEffectAmplify interface {
 	TypedPtr() AudioEffectAmplify
 }
 
-type RefAudioEffectAmplifyImpl typedRef[AudioEffectAmplify]
+type RefAudioEffectAmplifyImpl TypedRef[AudioEffectAmplify]
 
 func (r *RefAudioEffectAmplifyImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectAmplify])(r)
+	rg := (*TypedRef[AudioEffectAmplify])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectAmplifyImpl) TypedPtr() AudioEffectAmplify {
-	rg := (*typedRef[AudioEffectAmplify])(r)
+	rg := (*TypedRef[AudioEffectAmplify])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectAmplifyImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectAmplify])(r)
+	rg := (*TypedRef[AudioEffectAmplify])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectAmplifyImpl) TypedRef(from *RefAudioEffectAmplifyImpl) {
-	rg := (*typedRef[AudioEffectAmplify])(r)
-	t := (*typedRef[AudioEffectAmplify])(from)
-	rg.TypedRef((*typedRef[AudioEffectAmplify])(t))
+	rg := (*TypedRef[AudioEffectAmplify])(r)
+	t := (*TypedRef[AudioEffectAmplify])(from)
+	rg.TypedRef((*TypedRef[AudioEffectAmplify])(t))
 }
 
 func (r *RefAudioEffectAmplifyImpl) Unref() {
-	rg := (*typedRef[AudioEffectAmplify])(r)
+	rg := (*TypedRef[AudioEffectAmplify])(r)
 	rg.Unref()
 }
 
@@ -1736,31 +1736,31 @@ type RefAudioEffectBandLimitFilter interface {
 	TypedPtr() AudioEffectBandLimitFilter
 }
 
-type RefAudioEffectBandLimitFilterImpl typedRef[AudioEffectBandLimitFilter]
+type RefAudioEffectBandLimitFilterImpl TypedRef[AudioEffectBandLimitFilter]
 
 func (r *RefAudioEffectBandLimitFilterImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectBandLimitFilter])(r)
+	rg := (*TypedRef[AudioEffectBandLimitFilter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectBandLimitFilterImpl) TypedPtr() AudioEffectBandLimitFilter {
-	rg := (*typedRef[AudioEffectBandLimitFilter])(r)
+	rg := (*TypedRef[AudioEffectBandLimitFilter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectBandLimitFilterImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectBandLimitFilter])(r)
+	rg := (*TypedRef[AudioEffectBandLimitFilter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectBandLimitFilterImpl) TypedRef(from *RefAudioEffectBandLimitFilterImpl) {
-	rg := (*typedRef[AudioEffectBandLimitFilter])(r)
-	t := (*typedRef[AudioEffectBandLimitFilter])(from)
-	rg.TypedRef((*typedRef[AudioEffectBandLimitFilter])(t))
+	rg := (*TypedRef[AudioEffectBandLimitFilter])(r)
+	t := (*TypedRef[AudioEffectBandLimitFilter])(from)
+	rg.TypedRef((*TypedRef[AudioEffectBandLimitFilter])(t))
 }
 
 func (r *RefAudioEffectBandLimitFilterImpl) Unref() {
-	rg := (*typedRef[AudioEffectBandLimitFilter])(r)
+	rg := (*TypedRef[AudioEffectBandLimitFilter])(r)
 	rg.Unref()
 }
 
@@ -1788,31 +1788,31 @@ type RefAudioEffectBandPassFilter interface {
 	TypedPtr() AudioEffectBandPassFilter
 }
 
-type RefAudioEffectBandPassFilterImpl typedRef[AudioEffectBandPassFilter]
+type RefAudioEffectBandPassFilterImpl TypedRef[AudioEffectBandPassFilter]
 
 func (r *RefAudioEffectBandPassFilterImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectBandPassFilter])(r)
+	rg := (*TypedRef[AudioEffectBandPassFilter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectBandPassFilterImpl) TypedPtr() AudioEffectBandPassFilter {
-	rg := (*typedRef[AudioEffectBandPassFilter])(r)
+	rg := (*TypedRef[AudioEffectBandPassFilter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectBandPassFilterImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectBandPassFilter])(r)
+	rg := (*TypedRef[AudioEffectBandPassFilter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectBandPassFilterImpl) TypedRef(from *RefAudioEffectBandPassFilterImpl) {
-	rg := (*typedRef[AudioEffectBandPassFilter])(r)
-	t := (*typedRef[AudioEffectBandPassFilter])(from)
-	rg.TypedRef((*typedRef[AudioEffectBandPassFilter])(t))
+	rg := (*TypedRef[AudioEffectBandPassFilter])(r)
+	t := (*TypedRef[AudioEffectBandPassFilter])(from)
+	rg.TypedRef((*TypedRef[AudioEffectBandPassFilter])(t))
 }
 
 func (r *RefAudioEffectBandPassFilterImpl) Unref() {
-	rg := (*typedRef[AudioEffectBandPassFilter])(r)
+	rg := (*TypedRef[AudioEffectBandPassFilter])(r)
 	rg.Unref()
 }
 
@@ -1840,31 +1840,31 @@ type RefAudioEffectCapture interface {
 	TypedPtr() AudioEffectCapture
 }
 
-type RefAudioEffectCaptureImpl typedRef[AudioEffectCapture]
+type RefAudioEffectCaptureImpl TypedRef[AudioEffectCapture]
 
 func (r *RefAudioEffectCaptureImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectCapture])(r)
+	rg := (*TypedRef[AudioEffectCapture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectCaptureImpl) TypedPtr() AudioEffectCapture {
-	rg := (*typedRef[AudioEffectCapture])(r)
+	rg := (*TypedRef[AudioEffectCapture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectCaptureImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectCapture])(r)
+	rg := (*TypedRef[AudioEffectCapture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectCaptureImpl) TypedRef(from *RefAudioEffectCaptureImpl) {
-	rg := (*typedRef[AudioEffectCapture])(r)
-	t := (*typedRef[AudioEffectCapture])(from)
-	rg.TypedRef((*typedRef[AudioEffectCapture])(t))
+	rg := (*TypedRef[AudioEffectCapture])(r)
+	t := (*TypedRef[AudioEffectCapture])(from)
+	rg.TypedRef((*TypedRef[AudioEffectCapture])(t))
 }
 
 func (r *RefAudioEffectCaptureImpl) Unref() {
-	rg := (*typedRef[AudioEffectCapture])(r)
+	rg := (*TypedRef[AudioEffectCapture])(r)
 	rg.Unref()
 }
 
@@ -1892,31 +1892,31 @@ type RefAudioEffectChorus interface {
 	TypedPtr() AudioEffectChorus
 }
 
-type RefAudioEffectChorusImpl typedRef[AudioEffectChorus]
+type RefAudioEffectChorusImpl TypedRef[AudioEffectChorus]
 
 func (r *RefAudioEffectChorusImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectChorus])(r)
+	rg := (*TypedRef[AudioEffectChorus])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectChorusImpl) TypedPtr() AudioEffectChorus {
-	rg := (*typedRef[AudioEffectChorus])(r)
+	rg := (*TypedRef[AudioEffectChorus])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectChorusImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectChorus])(r)
+	rg := (*TypedRef[AudioEffectChorus])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectChorusImpl) TypedRef(from *RefAudioEffectChorusImpl) {
-	rg := (*typedRef[AudioEffectChorus])(r)
-	t := (*typedRef[AudioEffectChorus])(from)
-	rg.TypedRef((*typedRef[AudioEffectChorus])(t))
+	rg := (*TypedRef[AudioEffectChorus])(r)
+	t := (*TypedRef[AudioEffectChorus])(from)
+	rg.TypedRef((*TypedRef[AudioEffectChorus])(t))
 }
 
 func (r *RefAudioEffectChorusImpl) Unref() {
-	rg := (*typedRef[AudioEffectChorus])(r)
+	rg := (*TypedRef[AudioEffectChorus])(r)
 	rg.Unref()
 }
 
@@ -1944,31 +1944,31 @@ type RefAudioEffectCompressor interface {
 	TypedPtr() AudioEffectCompressor
 }
 
-type RefAudioEffectCompressorImpl typedRef[AudioEffectCompressor]
+type RefAudioEffectCompressorImpl TypedRef[AudioEffectCompressor]
 
 func (r *RefAudioEffectCompressorImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectCompressor])(r)
+	rg := (*TypedRef[AudioEffectCompressor])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectCompressorImpl) TypedPtr() AudioEffectCompressor {
-	rg := (*typedRef[AudioEffectCompressor])(r)
+	rg := (*TypedRef[AudioEffectCompressor])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectCompressorImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectCompressor])(r)
+	rg := (*TypedRef[AudioEffectCompressor])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectCompressorImpl) TypedRef(from *RefAudioEffectCompressorImpl) {
-	rg := (*typedRef[AudioEffectCompressor])(r)
-	t := (*typedRef[AudioEffectCompressor])(from)
-	rg.TypedRef((*typedRef[AudioEffectCompressor])(t))
+	rg := (*TypedRef[AudioEffectCompressor])(r)
+	t := (*TypedRef[AudioEffectCompressor])(from)
+	rg.TypedRef((*TypedRef[AudioEffectCompressor])(t))
 }
 
 func (r *RefAudioEffectCompressorImpl) Unref() {
-	rg := (*typedRef[AudioEffectCompressor])(r)
+	rg := (*TypedRef[AudioEffectCompressor])(r)
 	rg.Unref()
 }
 
@@ -1996,31 +1996,31 @@ type RefAudioEffectDelay interface {
 	TypedPtr() AudioEffectDelay
 }
 
-type RefAudioEffectDelayImpl typedRef[AudioEffectDelay]
+type RefAudioEffectDelayImpl TypedRef[AudioEffectDelay]
 
 func (r *RefAudioEffectDelayImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectDelay])(r)
+	rg := (*TypedRef[AudioEffectDelay])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectDelayImpl) TypedPtr() AudioEffectDelay {
-	rg := (*typedRef[AudioEffectDelay])(r)
+	rg := (*TypedRef[AudioEffectDelay])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectDelayImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectDelay])(r)
+	rg := (*TypedRef[AudioEffectDelay])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectDelayImpl) TypedRef(from *RefAudioEffectDelayImpl) {
-	rg := (*typedRef[AudioEffectDelay])(r)
-	t := (*typedRef[AudioEffectDelay])(from)
-	rg.TypedRef((*typedRef[AudioEffectDelay])(t))
+	rg := (*TypedRef[AudioEffectDelay])(r)
+	t := (*TypedRef[AudioEffectDelay])(from)
+	rg.TypedRef((*TypedRef[AudioEffectDelay])(t))
 }
 
 func (r *RefAudioEffectDelayImpl) Unref() {
-	rg := (*typedRef[AudioEffectDelay])(r)
+	rg := (*TypedRef[AudioEffectDelay])(r)
 	rg.Unref()
 }
 
@@ -2048,31 +2048,31 @@ type RefAudioEffectDistortion interface {
 	TypedPtr() AudioEffectDistortion
 }
 
-type RefAudioEffectDistortionImpl typedRef[AudioEffectDistortion]
+type RefAudioEffectDistortionImpl TypedRef[AudioEffectDistortion]
 
 func (r *RefAudioEffectDistortionImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectDistortion])(r)
+	rg := (*TypedRef[AudioEffectDistortion])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectDistortionImpl) TypedPtr() AudioEffectDistortion {
-	rg := (*typedRef[AudioEffectDistortion])(r)
+	rg := (*TypedRef[AudioEffectDistortion])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectDistortionImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectDistortion])(r)
+	rg := (*TypedRef[AudioEffectDistortion])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectDistortionImpl) TypedRef(from *RefAudioEffectDistortionImpl) {
-	rg := (*typedRef[AudioEffectDistortion])(r)
-	t := (*typedRef[AudioEffectDistortion])(from)
-	rg.TypedRef((*typedRef[AudioEffectDistortion])(t))
+	rg := (*TypedRef[AudioEffectDistortion])(r)
+	t := (*TypedRef[AudioEffectDistortion])(from)
+	rg.TypedRef((*TypedRef[AudioEffectDistortion])(t))
 }
 
 func (r *RefAudioEffectDistortionImpl) Unref() {
-	rg := (*typedRef[AudioEffectDistortion])(r)
+	rg := (*TypedRef[AudioEffectDistortion])(r)
 	rg.Unref()
 }
 
@@ -2100,31 +2100,31 @@ type RefAudioEffectEQ interface {
 	TypedPtr() AudioEffectEQ
 }
 
-type RefAudioEffectEQImpl typedRef[AudioEffectEQ]
+type RefAudioEffectEQImpl TypedRef[AudioEffectEQ]
 
 func (r *RefAudioEffectEQImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectEQ])(r)
+	rg := (*TypedRef[AudioEffectEQ])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectEQImpl) TypedPtr() AudioEffectEQ {
-	rg := (*typedRef[AudioEffectEQ])(r)
+	rg := (*TypedRef[AudioEffectEQ])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectEQImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectEQ])(r)
+	rg := (*TypedRef[AudioEffectEQ])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectEQImpl) TypedRef(from *RefAudioEffectEQImpl) {
-	rg := (*typedRef[AudioEffectEQ])(r)
-	t := (*typedRef[AudioEffectEQ])(from)
-	rg.TypedRef((*typedRef[AudioEffectEQ])(t))
+	rg := (*TypedRef[AudioEffectEQ])(r)
+	t := (*TypedRef[AudioEffectEQ])(from)
+	rg.TypedRef((*TypedRef[AudioEffectEQ])(t))
 }
 
 func (r *RefAudioEffectEQImpl) Unref() {
-	rg := (*typedRef[AudioEffectEQ])(r)
+	rg := (*TypedRef[AudioEffectEQ])(r)
 	rg.Unref()
 }
 
@@ -2152,31 +2152,31 @@ type RefAudioEffectEQ10 interface {
 	TypedPtr() AudioEffectEQ10
 }
 
-type RefAudioEffectEQ10Impl typedRef[AudioEffectEQ10]
+type RefAudioEffectEQ10Impl TypedRef[AudioEffectEQ10]
 
 func (r *RefAudioEffectEQ10Impl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectEQ10])(r)
+	rg := (*TypedRef[AudioEffectEQ10])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectEQ10Impl) TypedPtr() AudioEffectEQ10 {
-	rg := (*typedRef[AudioEffectEQ10])(r)
+	rg := (*TypedRef[AudioEffectEQ10])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectEQ10Impl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectEQ10])(r)
+	rg := (*TypedRef[AudioEffectEQ10])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectEQ10Impl) TypedRef(from *RefAudioEffectEQ10Impl) {
-	rg := (*typedRef[AudioEffectEQ10])(r)
-	t := (*typedRef[AudioEffectEQ10])(from)
-	rg.TypedRef((*typedRef[AudioEffectEQ10])(t))
+	rg := (*TypedRef[AudioEffectEQ10])(r)
+	t := (*TypedRef[AudioEffectEQ10])(from)
+	rg.TypedRef((*TypedRef[AudioEffectEQ10])(t))
 }
 
 func (r *RefAudioEffectEQ10Impl) Unref() {
-	rg := (*typedRef[AudioEffectEQ10])(r)
+	rg := (*TypedRef[AudioEffectEQ10])(r)
 	rg.Unref()
 }
 
@@ -2204,31 +2204,31 @@ type RefAudioEffectEQ21 interface {
 	TypedPtr() AudioEffectEQ21
 }
 
-type RefAudioEffectEQ21Impl typedRef[AudioEffectEQ21]
+type RefAudioEffectEQ21Impl TypedRef[AudioEffectEQ21]
 
 func (r *RefAudioEffectEQ21Impl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectEQ21])(r)
+	rg := (*TypedRef[AudioEffectEQ21])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectEQ21Impl) TypedPtr() AudioEffectEQ21 {
-	rg := (*typedRef[AudioEffectEQ21])(r)
+	rg := (*TypedRef[AudioEffectEQ21])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectEQ21Impl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectEQ21])(r)
+	rg := (*TypedRef[AudioEffectEQ21])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectEQ21Impl) TypedRef(from *RefAudioEffectEQ21Impl) {
-	rg := (*typedRef[AudioEffectEQ21])(r)
-	t := (*typedRef[AudioEffectEQ21])(from)
-	rg.TypedRef((*typedRef[AudioEffectEQ21])(t))
+	rg := (*TypedRef[AudioEffectEQ21])(r)
+	t := (*TypedRef[AudioEffectEQ21])(from)
+	rg.TypedRef((*TypedRef[AudioEffectEQ21])(t))
 }
 
 func (r *RefAudioEffectEQ21Impl) Unref() {
-	rg := (*typedRef[AudioEffectEQ21])(r)
+	rg := (*TypedRef[AudioEffectEQ21])(r)
 	rg.Unref()
 }
 
@@ -2256,31 +2256,31 @@ type RefAudioEffectEQ6 interface {
 	TypedPtr() AudioEffectEQ6
 }
 
-type RefAudioEffectEQ6Impl typedRef[AudioEffectEQ6]
+type RefAudioEffectEQ6Impl TypedRef[AudioEffectEQ6]
 
 func (r *RefAudioEffectEQ6Impl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectEQ6])(r)
+	rg := (*TypedRef[AudioEffectEQ6])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectEQ6Impl) TypedPtr() AudioEffectEQ6 {
-	rg := (*typedRef[AudioEffectEQ6])(r)
+	rg := (*TypedRef[AudioEffectEQ6])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectEQ6Impl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectEQ6])(r)
+	rg := (*TypedRef[AudioEffectEQ6])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectEQ6Impl) TypedRef(from *RefAudioEffectEQ6Impl) {
-	rg := (*typedRef[AudioEffectEQ6])(r)
-	t := (*typedRef[AudioEffectEQ6])(from)
-	rg.TypedRef((*typedRef[AudioEffectEQ6])(t))
+	rg := (*TypedRef[AudioEffectEQ6])(r)
+	t := (*TypedRef[AudioEffectEQ6])(from)
+	rg.TypedRef((*TypedRef[AudioEffectEQ6])(t))
 }
 
 func (r *RefAudioEffectEQ6Impl) Unref() {
-	rg := (*typedRef[AudioEffectEQ6])(r)
+	rg := (*TypedRef[AudioEffectEQ6])(r)
 	rg.Unref()
 }
 
@@ -2308,31 +2308,31 @@ type RefAudioEffectFilter interface {
 	TypedPtr() AudioEffectFilter
 }
 
-type RefAudioEffectFilterImpl typedRef[AudioEffectFilter]
+type RefAudioEffectFilterImpl TypedRef[AudioEffectFilter]
 
 func (r *RefAudioEffectFilterImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectFilter])(r)
+	rg := (*TypedRef[AudioEffectFilter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectFilterImpl) TypedPtr() AudioEffectFilter {
-	rg := (*typedRef[AudioEffectFilter])(r)
+	rg := (*TypedRef[AudioEffectFilter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectFilterImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectFilter])(r)
+	rg := (*TypedRef[AudioEffectFilter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectFilterImpl) TypedRef(from *RefAudioEffectFilterImpl) {
-	rg := (*typedRef[AudioEffectFilter])(r)
-	t := (*typedRef[AudioEffectFilter])(from)
-	rg.TypedRef((*typedRef[AudioEffectFilter])(t))
+	rg := (*TypedRef[AudioEffectFilter])(r)
+	t := (*TypedRef[AudioEffectFilter])(from)
+	rg.TypedRef((*TypedRef[AudioEffectFilter])(t))
 }
 
 func (r *RefAudioEffectFilterImpl) Unref() {
-	rg := (*typedRef[AudioEffectFilter])(r)
+	rg := (*TypedRef[AudioEffectFilter])(r)
 	rg.Unref()
 }
 
@@ -2360,31 +2360,31 @@ type RefAudioEffectHighPassFilter interface {
 	TypedPtr() AudioEffectHighPassFilter
 }
 
-type RefAudioEffectHighPassFilterImpl typedRef[AudioEffectHighPassFilter]
+type RefAudioEffectHighPassFilterImpl TypedRef[AudioEffectHighPassFilter]
 
 func (r *RefAudioEffectHighPassFilterImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectHighPassFilter])(r)
+	rg := (*TypedRef[AudioEffectHighPassFilter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectHighPassFilterImpl) TypedPtr() AudioEffectHighPassFilter {
-	rg := (*typedRef[AudioEffectHighPassFilter])(r)
+	rg := (*TypedRef[AudioEffectHighPassFilter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectHighPassFilterImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectHighPassFilter])(r)
+	rg := (*TypedRef[AudioEffectHighPassFilter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectHighPassFilterImpl) TypedRef(from *RefAudioEffectHighPassFilterImpl) {
-	rg := (*typedRef[AudioEffectHighPassFilter])(r)
-	t := (*typedRef[AudioEffectHighPassFilter])(from)
-	rg.TypedRef((*typedRef[AudioEffectHighPassFilter])(t))
+	rg := (*TypedRef[AudioEffectHighPassFilter])(r)
+	t := (*TypedRef[AudioEffectHighPassFilter])(from)
+	rg.TypedRef((*TypedRef[AudioEffectHighPassFilter])(t))
 }
 
 func (r *RefAudioEffectHighPassFilterImpl) Unref() {
-	rg := (*typedRef[AudioEffectHighPassFilter])(r)
+	rg := (*TypedRef[AudioEffectHighPassFilter])(r)
 	rg.Unref()
 }
 
@@ -2412,31 +2412,31 @@ type RefAudioEffectHighShelfFilter interface {
 	TypedPtr() AudioEffectHighShelfFilter
 }
 
-type RefAudioEffectHighShelfFilterImpl typedRef[AudioEffectHighShelfFilter]
+type RefAudioEffectHighShelfFilterImpl TypedRef[AudioEffectHighShelfFilter]
 
 func (r *RefAudioEffectHighShelfFilterImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectHighShelfFilter])(r)
+	rg := (*TypedRef[AudioEffectHighShelfFilter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectHighShelfFilterImpl) TypedPtr() AudioEffectHighShelfFilter {
-	rg := (*typedRef[AudioEffectHighShelfFilter])(r)
+	rg := (*TypedRef[AudioEffectHighShelfFilter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectHighShelfFilterImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectHighShelfFilter])(r)
+	rg := (*TypedRef[AudioEffectHighShelfFilter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectHighShelfFilterImpl) TypedRef(from *RefAudioEffectHighShelfFilterImpl) {
-	rg := (*typedRef[AudioEffectHighShelfFilter])(r)
-	t := (*typedRef[AudioEffectHighShelfFilter])(from)
-	rg.TypedRef((*typedRef[AudioEffectHighShelfFilter])(t))
+	rg := (*TypedRef[AudioEffectHighShelfFilter])(r)
+	t := (*TypedRef[AudioEffectHighShelfFilter])(from)
+	rg.TypedRef((*TypedRef[AudioEffectHighShelfFilter])(t))
 }
 
 func (r *RefAudioEffectHighShelfFilterImpl) Unref() {
-	rg := (*typedRef[AudioEffectHighShelfFilter])(r)
+	rg := (*TypedRef[AudioEffectHighShelfFilter])(r)
 	rg.Unref()
 }
 
@@ -2464,31 +2464,31 @@ type RefAudioEffectInstance interface {
 	TypedPtr() AudioEffectInstance
 }
 
-type RefAudioEffectInstanceImpl typedRef[AudioEffectInstance]
+type RefAudioEffectInstanceImpl TypedRef[AudioEffectInstance]
 
 func (r *RefAudioEffectInstanceImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectInstance])(r)
+	rg := (*TypedRef[AudioEffectInstance])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectInstanceImpl) TypedPtr() AudioEffectInstance {
-	rg := (*typedRef[AudioEffectInstance])(r)
+	rg := (*TypedRef[AudioEffectInstance])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectInstanceImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectInstance])(r)
+	rg := (*TypedRef[AudioEffectInstance])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectInstanceImpl) TypedRef(from *RefAudioEffectInstanceImpl) {
-	rg := (*typedRef[AudioEffectInstance])(r)
-	t := (*typedRef[AudioEffectInstance])(from)
-	rg.TypedRef((*typedRef[AudioEffectInstance])(t))
+	rg := (*TypedRef[AudioEffectInstance])(r)
+	t := (*TypedRef[AudioEffectInstance])(from)
+	rg.TypedRef((*TypedRef[AudioEffectInstance])(t))
 }
 
 func (r *RefAudioEffectInstanceImpl) Unref() {
-	rg := (*typedRef[AudioEffectInstance])(r)
+	rg := (*TypedRef[AudioEffectInstance])(r)
 	rg.Unref()
 }
 
@@ -2516,31 +2516,31 @@ type RefAudioEffectLimiter interface {
 	TypedPtr() AudioEffectLimiter
 }
 
-type RefAudioEffectLimiterImpl typedRef[AudioEffectLimiter]
+type RefAudioEffectLimiterImpl TypedRef[AudioEffectLimiter]
 
 func (r *RefAudioEffectLimiterImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectLimiter])(r)
+	rg := (*TypedRef[AudioEffectLimiter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectLimiterImpl) TypedPtr() AudioEffectLimiter {
-	rg := (*typedRef[AudioEffectLimiter])(r)
+	rg := (*TypedRef[AudioEffectLimiter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectLimiterImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectLimiter])(r)
+	rg := (*TypedRef[AudioEffectLimiter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectLimiterImpl) TypedRef(from *RefAudioEffectLimiterImpl) {
-	rg := (*typedRef[AudioEffectLimiter])(r)
-	t := (*typedRef[AudioEffectLimiter])(from)
-	rg.TypedRef((*typedRef[AudioEffectLimiter])(t))
+	rg := (*TypedRef[AudioEffectLimiter])(r)
+	t := (*TypedRef[AudioEffectLimiter])(from)
+	rg.TypedRef((*TypedRef[AudioEffectLimiter])(t))
 }
 
 func (r *RefAudioEffectLimiterImpl) Unref() {
-	rg := (*typedRef[AudioEffectLimiter])(r)
+	rg := (*TypedRef[AudioEffectLimiter])(r)
 	rg.Unref()
 }
 
@@ -2568,31 +2568,31 @@ type RefAudioEffectLowPassFilter interface {
 	TypedPtr() AudioEffectLowPassFilter
 }
 
-type RefAudioEffectLowPassFilterImpl typedRef[AudioEffectLowPassFilter]
+type RefAudioEffectLowPassFilterImpl TypedRef[AudioEffectLowPassFilter]
 
 func (r *RefAudioEffectLowPassFilterImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectLowPassFilter])(r)
+	rg := (*TypedRef[AudioEffectLowPassFilter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectLowPassFilterImpl) TypedPtr() AudioEffectLowPassFilter {
-	rg := (*typedRef[AudioEffectLowPassFilter])(r)
+	rg := (*TypedRef[AudioEffectLowPassFilter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectLowPassFilterImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectLowPassFilter])(r)
+	rg := (*TypedRef[AudioEffectLowPassFilter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectLowPassFilterImpl) TypedRef(from *RefAudioEffectLowPassFilterImpl) {
-	rg := (*typedRef[AudioEffectLowPassFilter])(r)
-	t := (*typedRef[AudioEffectLowPassFilter])(from)
-	rg.TypedRef((*typedRef[AudioEffectLowPassFilter])(t))
+	rg := (*TypedRef[AudioEffectLowPassFilter])(r)
+	t := (*TypedRef[AudioEffectLowPassFilter])(from)
+	rg.TypedRef((*TypedRef[AudioEffectLowPassFilter])(t))
 }
 
 func (r *RefAudioEffectLowPassFilterImpl) Unref() {
-	rg := (*typedRef[AudioEffectLowPassFilter])(r)
+	rg := (*TypedRef[AudioEffectLowPassFilter])(r)
 	rg.Unref()
 }
 
@@ -2620,31 +2620,31 @@ type RefAudioEffectLowShelfFilter interface {
 	TypedPtr() AudioEffectLowShelfFilter
 }
 
-type RefAudioEffectLowShelfFilterImpl typedRef[AudioEffectLowShelfFilter]
+type RefAudioEffectLowShelfFilterImpl TypedRef[AudioEffectLowShelfFilter]
 
 func (r *RefAudioEffectLowShelfFilterImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectLowShelfFilter])(r)
+	rg := (*TypedRef[AudioEffectLowShelfFilter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectLowShelfFilterImpl) TypedPtr() AudioEffectLowShelfFilter {
-	rg := (*typedRef[AudioEffectLowShelfFilter])(r)
+	rg := (*TypedRef[AudioEffectLowShelfFilter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectLowShelfFilterImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectLowShelfFilter])(r)
+	rg := (*TypedRef[AudioEffectLowShelfFilter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectLowShelfFilterImpl) TypedRef(from *RefAudioEffectLowShelfFilterImpl) {
-	rg := (*typedRef[AudioEffectLowShelfFilter])(r)
-	t := (*typedRef[AudioEffectLowShelfFilter])(from)
-	rg.TypedRef((*typedRef[AudioEffectLowShelfFilter])(t))
+	rg := (*TypedRef[AudioEffectLowShelfFilter])(r)
+	t := (*TypedRef[AudioEffectLowShelfFilter])(from)
+	rg.TypedRef((*TypedRef[AudioEffectLowShelfFilter])(t))
 }
 
 func (r *RefAudioEffectLowShelfFilterImpl) Unref() {
-	rg := (*typedRef[AudioEffectLowShelfFilter])(r)
+	rg := (*TypedRef[AudioEffectLowShelfFilter])(r)
 	rg.Unref()
 }
 
@@ -2672,31 +2672,31 @@ type RefAudioEffectNotchFilter interface {
 	TypedPtr() AudioEffectNotchFilter
 }
 
-type RefAudioEffectNotchFilterImpl typedRef[AudioEffectNotchFilter]
+type RefAudioEffectNotchFilterImpl TypedRef[AudioEffectNotchFilter]
 
 func (r *RefAudioEffectNotchFilterImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectNotchFilter])(r)
+	rg := (*TypedRef[AudioEffectNotchFilter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectNotchFilterImpl) TypedPtr() AudioEffectNotchFilter {
-	rg := (*typedRef[AudioEffectNotchFilter])(r)
+	rg := (*TypedRef[AudioEffectNotchFilter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectNotchFilterImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectNotchFilter])(r)
+	rg := (*TypedRef[AudioEffectNotchFilter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectNotchFilterImpl) TypedRef(from *RefAudioEffectNotchFilterImpl) {
-	rg := (*typedRef[AudioEffectNotchFilter])(r)
-	t := (*typedRef[AudioEffectNotchFilter])(from)
-	rg.TypedRef((*typedRef[AudioEffectNotchFilter])(t))
+	rg := (*TypedRef[AudioEffectNotchFilter])(r)
+	t := (*TypedRef[AudioEffectNotchFilter])(from)
+	rg.TypedRef((*TypedRef[AudioEffectNotchFilter])(t))
 }
 
 func (r *RefAudioEffectNotchFilterImpl) Unref() {
-	rg := (*typedRef[AudioEffectNotchFilter])(r)
+	rg := (*TypedRef[AudioEffectNotchFilter])(r)
 	rg.Unref()
 }
 
@@ -2724,31 +2724,31 @@ type RefAudioEffectPanner interface {
 	TypedPtr() AudioEffectPanner
 }
 
-type RefAudioEffectPannerImpl typedRef[AudioEffectPanner]
+type RefAudioEffectPannerImpl TypedRef[AudioEffectPanner]
 
 func (r *RefAudioEffectPannerImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectPanner])(r)
+	rg := (*TypedRef[AudioEffectPanner])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectPannerImpl) TypedPtr() AudioEffectPanner {
-	rg := (*typedRef[AudioEffectPanner])(r)
+	rg := (*TypedRef[AudioEffectPanner])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectPannerImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectPanner])(r)
+	rg := (*TypedRef[AudioEffectPanner])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectPannerImpl) TypedRef(from *RefAudioEffectPannerImpl) {
-	rg := (*typedRef[AudioEffectPanner])(r)
-	t := (*typedRef[AudioEffectPanner])(from)
-	rg.TypedRef((*typedRef[AudioEffectPanner])(t))
+	rg := (*TypedRef[AudioEffectPanner])(r)
+	t := (*TypedRef[AudioEffectPanner])(from)
+	rg.TypedRef((*TypedRef[AudioEffectPanner])(t))
 }
 
 func (r *RefAudioEffectPannerImpl) Unref() {
-	rg := (*typedRef[AudioEffectPanner])(r)
+	rg := (*TypedRef[AudioEffectPanner])(r)
 	rg.Unref()
 }
 
@@ -2776,31 +2776,31 @@ type RefAudioEffectPhaser interface {
 	TypedPtr() AudioEffectPhaser
 }
 
-type RefAudioEffectPhaserImpl typedRef[AudioEffectPhaser]
+type RefAudioEffectPhaserImpl TypedRef[AudioEffectPhaser]
 
 func (r *RefAudioEffectPhaserImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectPhaser])(r)
+	rg := (*TypedRef[AudioEffectPhaser])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectPhaserImpl) TypedPtr() AudioEffectPhaser {
-	rg := (*typedRef[AudioEffectPhaser])(r)
+	rg := (*TypedRef[AudioEffectPhaser])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectPhaserImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectPhaser])(r)
+	rg := (*TypedRef[AudioEffectPhaser])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectPhaserImpl) TypedRef(from *RefAudioEffectPhaserImpl) {
-	rg := (*typedRef[AudioEffectPhaser])(r)
-	t := (*typedRef[AudioEffectPhaser])(from)
-	rg.TypedRef((*typedRef[AudioEffectPhaser])(t))
+	rg := (*TypedRef[AudioEffectPhaser])(r)
+	t := (*TypedRef[AudioEffectPhaser])(from)
+	rg.TypedRef((*TypedRef[AudioEffectPhaser])(t))
 }
 
 func (r *RefAudioEffectPhaserImpl) Unref() {
-	rg := (*typedRef[AudioEffectPhaser])(r)
+	rg := (*TypedRef[AudioEffectPhaser])(r)
 	rg.Unref()
 }
 
@@ -2828,31 +2828,31 @@ type RefAudioEffectPitchShift interface {
 	TypedPtr() AudioEffectPitchShift
 }
 
-type RefAudioEffectPitchShiftImpl typedRef[AudioEffectPitchShift]
+type RefAudioEffectPitchShiftImpl TypedRef[AudioEffectPitchShift]
 
 func (r *RefAudioEffectPitchShiftImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectPitchShift])(r)
+	rg := (*TypedRef[AudioEffectPitchShift])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectPitchShiftImpl) TypedPtr() AudioEffectPitchShift {
-	rg := (*typedRef[AudioEffectPitchShift])(r)
+	rg := (*TypedRef[AudioEffectPitchShift])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectPitchShiftImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectPitchShift])(r)
+	rg := (*TypedRef[AudioEffectPitchShift])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectPitchShiftImpl) TypedRef(from *RefAudioEffectPitchShiftImpl) {
-	rg := (*typedRef[AudioEffectPitchShift])(r)
-	t := (*typedRef[AudioEffectPitchShift])(from)
-	rg.TypedRef((*typedRef[AudioEffectPitchShift])(t))
+	rg := (*TypedRef[AudioEffectPitchShift])(r)
+	t := (*TypedRef[AudioEffectPitchShift])(from)
+	rg.TypedRef((*TypedRef[AudioEffectPitchShift])(t))
 }
 
 func (r *RefAudioEffectPitchShiftImpl) Unref() {
-	rg := (*typedRef[AudioEffectPitchShift])(r)
+	rg := (*TypedRef[AudioEffectPitchShift])(r)
 	rg.Unref()
 }
 
@@ -2880,31 +2880,31 @@ type RefAudioEffectRecord interface {
 	TypedPtr() AudioEffectRecord
 }
 
-type RefAudioEffectRecordImpl typedRef[AudioEffectRecord]
+type RefAudioEffectRecordImpl TypedRef[AudioEffectRecord]
 
 func (r *RefAudioEffectRecordImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectRecord])(r)
+	rg := (*TypedRef[AudioEffectRecord])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectRecordImpl) TypedPtr() AudioEffectRecord {
-	rg := (*typedRef[AudioEffectRecord])(r)
+	rg := (*TypedRef[AudioEffectRecord])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectRecordImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectRecord])(r)
+	rg := (*TypedRef[AudioEffectRecord])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectRecordImpl) TypedRef(from *RefAudioEffectRecordImpl) {
-	rg := (*typedRef[AudioEffectRecord])(r)
-	t := (*typedRef[AudioEffectRecord])(from)
-	rg.TypedRef((*typedRef[AudioEffectRecord])(t))
+	rg := (*TypedRef[AudioEffectRecord])(r)
+	t := (*TypedRef[AudioEffectRecord])(from)
+	rg.TypedRef((*TypedRef[AudioEffectRecord])(t))
 }
 
 func (r *RefAudioEffectRecordImpl) Unref() {
-	rg := (*typedRef[AudioEffectRecord])(r)
+	rg := (*TypedRef[AudioEffectRecord])(r)
 	rg.Unref()
 }
 
@@ -2932,31 +2932,31 @@ type RefAudioEffectReverb interface {
 	TypedPtr() AudioEffectReverb
 }
 
-type RefAudioEffectReverbImpl typedRef[AudioEffectReverb]
+type RefAudioEffectReverbImpl TypedRef[AudioEffectReverb]
 
 func (r *RefAudioEffectReverbImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectReverb])(r)
+	rg := (*TypedRef[AudioEffectReverb])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectReverbImpl) TypedPtr() AudioEffectReverb {
-	rg := (*typedRef[AudioEffectReverb])(r)
+	rg := (*TypedRef[AudioEffectReverb])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectReverbImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectReverb])(r)
+	rg := (*TypedRef[AudioEffectReverb])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectReverbImpl) TypedRef(from *RefAudioEffectReverbImpl) {
-	rg := (*typedRef[AudioEffectReverb])(r)
-	t := (*typedRef[AudioEffectReverb])(from)
-	rg.TypedRef((*typedRef[AudioEffectReverb])(t))
+	rg := (*TypedRef[AudioEffectReverb])(r)
+	t := (*TypedRef[AudioEffectReverb])(from)
+	rg.TypedRef((*TypedRef[AudioEffectReverb])(t))
 }
 
 func (r *RefAudioEffectReverbImpl) Unref() {
-	rg := (*typedRef[AudioEffectReverb])(r)
+	rg := (*TypedRef[AudioEffectReverb])(r)
 	rg.Unref()
 }
 
@@ -2984,31 +2984,31 @@ type RefAudioEffectSpectrumAnalyzer interface {
 	TypedPtr() AudioEffectSpectrumAnalyzer
 }
 
-type RefAudioEffectSpectrumAnalyzerImpl typedRef[AudioEffectSpectrumAnalyzer]
+type RefAudioEffectSpectrumAnalyzerImpl TypedRef[AudioEffectSpectrumAnalyzer]
 
 func (r *RefAudioEffectSpectrumAnalyzerImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectSpectrumAnalyzer])(r)
+	rg := (*TypedRef[AudioEffectSpectrumAnalyzer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectSpectrumAnalyzerImpl) TypedPtr() AudioEffectSpectrumAnalyzer {
-	rg := (*typedRef[AudioEffectSpectrumAnalyzer])(r)
+	rg := (*TypedRef[AudioEffectSpectrumAnalyzer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectSpectrumAnalyzerImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectSpectrumAnalyzer])(r)
+	rg := (*TypedRef[AudioEffectSpectrumAnalyzer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectSpectrumAnalyzerImpl) TypedRef(from *RefAudioEffectSpectrumAnalyzerImpl) {
-	rg := (*typedRef[AudioEffectSpectrumAnalyzer])(r)
-	t := (*typedRef[AudioEffectSpectrumAnalyzer])(from)
-	rg.TypedRef((*typedRef[AudioEffectSpectrumAnalyzer])(t))
+	rg := (*TypedRef[AudioEffectSpectrumAnalyzer])(r)
+	t := (*TypedRef[AudioEffectSpectrumAnalyzer])(from)
+	rg.TypedRef((*TypedRef[AudioEffectSpectrumAnalyzer])(t))
 }
 
 func (r *RefAudioEffectSpectrumAnalyzerImpl) Unref() {
-	rg := (*typedRef[AudioEffectSpectrumAnalyzer])(r)
+	rg := (*TypedRef[AudioEffectSpectrumAnalyzer])(r)
 	rg.Unref()
 }
 
@@ -3036,31 +3036,31 @@ type RefAudioEffectSpectrumAnalyzerInstance interface {
 	TypedPtr() AudioEffectSpectrumAnalyzerInstance
 }
 
-type RefAudioEffectSpectrumAnalyzerInstanceImpl typedRef[AudioEffectSpectrumAnalyzerInstance]
+type RefAudioEffectSpectrumAnalyzerInstanceImpl TypedRef[AudioEffectSpectrumAnalyzerInstance]
 
 func (r *RefAudioEffectSpectrumAnalyzerInstanceImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectSpectrumAnalyzerInstance])(r)
+	rg := (*TypedRef[AudioEffectSpectrumAnalyzerInstance])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectSpectrumAnalyzerInstanceImpl) TypedPtr() AudioEffectSpectrumAnalyzerInstance {
-	rg := (*typedRef[AudioEffectSpectrumAnalyzerInstance])(r)
+	rg := (*TypedRef[AudioEffectSpectrumAnalyzerInstance])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectSpectrumAnalyzerInstanceImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectSpectrumAnalyzerInstance])(r)
+	rg := (*TypedRef[AudioEffectSpectrumAnalyzerInstance])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectSpectrumAnalyzerInstanceImpl) TypedRef(from *RefAudioEffectSpectrumAnalyzerInstanceImpl) {
-	rg := (*typedRef[AudioEffectSpectrumAnalyzerInstance])(r)
-	t := (*typedRef[AudioEffectSpectrumAnalyzerInstance])(from)
-	rg.TypedRef((*typedRef[AudioEffectSpectrumAnalyzerInstance])(t))
+	rg := (*TypedRef[AudioEffectSpectrumAnalyzerInstance])(r)
+	t := (*TypedRef[AudioEffectSpectrumAnalyzerInstance])(from)
+	rg.TypedRef((*TypedRef[AudioEffectSpectrumAnalyzerInstance])(t))
 }
 
 func (r *RefAudioEffectSpectrumAnalyzerInstanceImpl) Unref() {
-	rg := (*typedRef[AudioEffectSpectrumAnalyzerInstance])(r)
+	rg := (*TypedRef[AudioEffectSpectrumAnalyzerInstance])(r)
 	rg.Unref()
 }
 
@@ -3088,31 +3088,31 @@ type RefAudioEffectStereoEnhance interface {
 	TypedPtr() AudioEffectStereoEnhance
 }
 
-type RefAudioEffectStereoEnhanceImpl typedRef[AudioEffectStereoEnhance]
+type RefAudioEffectStereoEnhanceImpl TypedRef[AudioEffectStereoEnhance]
 
 func (r *RefAudioEffectStereoEnhanceImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioEffectStereoEnhance])(r)
+	rg := (*TypedRef[AudioEffectStereoEnhance])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioEffectStereoEnhanceImpl) TypedPtr() AudioEffectStereoEnhance {
-	rg := (*typedRef[AudioEffectStereoEnhance])(r)
+	rg := (*TypedRef[AudioEffectStereoEnhance])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioEffectStereoEnhanceImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioEffectStereoEnhance])(r)
+	rg := (*TypedRef[AudioEffectStereoEnhance])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioEffectStereoEnhanceImpl) TypedRef(from *RefAudioEffectStereoEnhanceImpl) {
-	rg := (*typedRef[AudioEffectStereoEnhance])(r)
-	t := (*typedRef[AudioEffectStereoEnhance])(from)
-	rg.TypedRef((*typedRef[AudioEffectStereoEnhance])(t))
+	rg := (*TypedRef[AudioEffectStereoEnhance])(r)
+	t := (*TypedRef[AudioEffectStereoEnhance])(from)
+	rg.TypedRef((*TypedRef[AudioEffectStereoEnhance])(t))
 }
 
 func (r *RefAudioEffectStereoEnhanceImpl) Unref() {
-	rg := (*typedRef[AudioEffectStereoEnhance])(r)
+	rg := (*TypedRef[AudioEffectStereoEnhance])(r)
 	rg.Unref()
 }
 
@@ -3140,31 +3140,31 @@ type RefAudioStream interface {
 	TypedPtr() AudioStream
 }
 
-type RefAudioStreamImpl typedRef[AudioStream]
+type RefAudioStreamImpl TypedRef[AudioStream]
 
 func (r *RefAudioStreamImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStream])(r)
+	rg := (*TypedRef[AudioStream])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamImpl) TypedPtr() AudioStream {
-	rg := (*typedRef[AudioStream])(r)
+	rg := (*TypedRef[AudioStream])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStream])(r)
+	rg := (*TypedRef[AudioStream])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamImpl) TypedRef(from *RefAudioStreamImpl) {
-	rg := (*typedRef[AudioStream])(r)
-	t := (*typedRef[AudioStream])(from)
-	rg.TypedRef((*typedRef[AudioStream])(t))
+	rg := (*TypedRef[AudioStream])(r)
+	t := (*TypedRef[AudioStream])(from)
+	rg.TypedRef((*TypedRef[AudioStream])(t))
 }
 
 func (r *RefAudioStreamImpl) Unref() {
-	rg := (*typedRef[AudioStream])(r)
+	rg := (*TypedRef[AudioStream])(r)
 	rg.Unref()
 }
 
@@ -3192,31 +3192,31 @@ type RefAudioStreamGenerator interface {
 	TypedPtr() AudioStreamGenerator
 }
 
-type RefAudioStreamGeneratorImpl typedRef[AudioStreamGenerator]
+type RefAudioStreamGeneratorImpl TypedRef[AudioStreamGenerator]
 
 func (r *RefAudioStreamGeneratorImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamGenerator])(r)
+	rg := (*TypedRef[AudioStreamGenerator])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamGeneratorImpl) TypedPtr() AudioStreamGenerator {
-	rg := (*typedRef[AudioStreamGenerator])(r)
+	rg := (*TypedRef[AudioStreamGenerator])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamGeneratorImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamGenerator])(r)
+	rg := (*TypedRef[AudioStreamGenerator])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamGeneratorImpl) TypedRef(from *RefAudioStreamGeneratorImpl) {
-	rg := (*typedRef[AudioStreamGenerator])(r)
-	t := (*typedRef[AudioStreamGenerator])(from)
-	rg.TypedRef((*typedRef[AudioStreamGenerator])(t))
+	rg := (*TypedRef[AudioStreamGenerator])(r)
+	t := (*TypedRef[AudioStreamGenerator])(from)
+	rg.TypedRef((*TypedRef[AudioStreamGenerator])(t))
 }
 
 func (r *RefAudioStreamGeneratorImpl) Unref() {
-	rg := (*typedRef[AudioStreamGenerator])(r)
+	rg := (*TypedRef[AudioStreamGenerator])(r)
 	rg.Unref()
 }
 
@@ -3244,31 +3244,31 @@ type RefAudioStreamGeneratorPlayback interface {
 	TypedPtr() AudioStreamGeneratorPlayback
 }
 
-type RefAudioStreamGeneratorPlaybackImpl typedRef[AudioStreamGeneratorPlayback]
+type RefAudioStreamGeneratorPlaybackImpl TypedRef[AudioStreamGeneratorPlayback]
 
 func (r *RefAudioStreamGeneratorPlaybackImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamGeneratorPlayback])(r)
+	rg := (*TypedRef[AudioStreamGeneratorPlayback])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamGeneratorPlaybackImpl) TypedPtr() AudioStreamGeneratorPlayback {
-	rg := (*typedRef[AudioStreamGeneratorPlayback])(r)
+	rg := (*TypedRef[AudioStreamGeneratorPlayback])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamGeneratorPlaybackImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamGeneratorPlayback])(r)
+	rg := (*TypedRef[AudioStreamGeneratorPlayback])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamGeneratorPlaybackImpl) TypedRef(from *RefAudioStreamGeneratorPlaybackImpl) {
-	rg := (*typedRef[AudioStreamGeneratorPlayback])(r)
-	t := (*typedRef[AudioStreamGeneratorPlayback])(from)
-	rg.TypedRef((*typedRef[AudioStreamGeneratorPlayback])(t))
+	rg := (*TypedRef[AudioStreamGeneratorPlayback])(r)
+	t := (*TypedRef[AudioStreamGeneratorPlayback])(from)
+	rg.TypedRef((*TypedRef[AudioStreamGeneratorPlayback])(t))
 }
 
 func (r *RefAudioStreamGeneratorPlaybackImpl) Unref() {
-	rg := (*typedRef[AudioStreamGeneratorPlayback])(r)
+	rg := (*TypedRef[AudioStreamGeneratorPlayback])(r)
 	rg.Unref()
 }
 
@@ -3296,31 +3296,31 @@ type RefAudioStreamMP3 interface {
 	TypedPtr() AudioStreamMP3
 }
 
-type RefAudioStreamMP3Impl typedRef[AudioStreamMP3]
+type RefAudioStreamMP3Impl TypedRef[AudioStreamMP3]
 
 func (r *RefAudioStreamMP3Impl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamMP3])(r)
+	rg := (*TypedRef[AudioStreamMP3])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamMP3Impl) TypedPtr() AudioStreamMP3 {
-	rg := (*typedRef[AudioStreamMP3])(r)
+	rg := (*TypedRef[AudioStreamMP3])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamMP3Impl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamMP3])(r)
+	rg := (*TypedRef[AudioStreamMP3])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamMP3Impl) TypedRef(from *RefAudioStreamMP3Impl) {
-	rg := (*typedRef[AudioStreamMP3])(r)
-	t := (*typedRef[AudioStreamMP3])(from)
-	rg.TypedRef((*typedRef[AudioStreamMP3])(t))
+	rg := (*TypedRef[AudioStreamMP3])(r)
+	t := (*TypedRef[AudioStreamMP3])(from)
+	rg.TypedRef((*TypedRef[AudioStreamMP3])(t))
 }
 
 func (r *RefAudioStreamMP3Impl) Unref() {
-	rg := (*typedRef[AudioStreamMP3])(r)
+	rg := (*TypedRef[AudioStreamMP3])(r)
 	rg.Unref()
 }
 
@@ -3348,31 +3348,31 @@ type RefAudioStreamMicrophone interface {
 	TypedPtr() AudioStreamMicrophone
 }
 
-type RefAudioStreamMicrophoneImpl typedRef[AudioStreamMicrophone]
+type RefAudioStreamMicrophoneImpl TypedRef[AudioStreamMicrophone]
 
 func (r *RefAudioStreamMicrophoneImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamMicrophone])(r)
+	rg := (*TypedRef[AudioStreamMicrophone])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamMicrophoneImpl) TypedPtr() AudioStreamMicrophone {
-	rg := (*typedRef[AudioStreamMicrophone])(r)
+	rg := (*TypedRef[AudioStreamMicrophone])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamMicrophoneImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamMicrophone])(r)
+	rg := (*TypedRef[AudioStreamMicrophone])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamMicrophoneImpl) TypedRef(from *RefAudioStreamMicrophoneImpl) {
-	rg := (*typedRef[AudioStreamMicrophone])(r)
-	t := (*typedRef[AudioStreamMicrophone])(from)
-	rg.TypedRef((*typedRef[AudioStreamMicrophone])(t))
+	rg := (*TypedRef[AudioStreamMicrophone])(r)
+	t := (*TypedRef[AudioStreamMicrophone])(from)
+	rg.TypedRef((*TypedRef[AudioStreamMicrophone])(t))
 }
 
 func (r *RefAudioStreamMicrophoneImpl) Unref() {
-	rg := (*typedRef[AudioStreamMicrophone])(r)
+	rg := (*TypedRef[AudioStreamMicrophone])(r)
 	rg.Unref()
 }
 
@@ -3400,31 +3400,31 @@ type RefAudioStreamOggVorbis interface {
 	TypedPtr() AudioStreamOggVorbis
 }
 
-type RefAudioStreamOggVorbisImpl typedRef[AudioStreamOggVorbis]
+type RefAudioStreamOggVorbisImpl TypedRef[AudioStreamOggVorbis]
 
 func (r *RefAudioStreamOggVorbisImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamOggVorbis])(r)
+	rg := (*TypedRef[AudioStreamOggVorbis])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamOggVorbisImpl) TypedPtr() AudioStreamOggVorbis {
-	rg := (*typedRef[AudioStreamOggVorbis])(r)
+	rg := (*TypedRef[AudioStreamOggVorbis])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamOggVorbisImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamOggVorbis])(r)
+	rg := (*TypedRef[AudioStreamOggVorbis])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamOggVorbisImpl) TypedRef(from *RefAudioStreamOggVorbisImpl) {
-	rg := (*typedRef[AudioStreamOggVorbis])(r)
-	t := (*typedRef[AudioStreamOggVorbis])(from)
-	rg.TypedRef((*typedRef[AudioStreamOggVorbis])(t))
+	rg := (*TypedRef[AudioStreamOggVorbis])(r)
+	t := (*TypedRef[AudioStreamOggVorbis])(from)
+	rg.TypedRef((*TypedRef[AudioStreamOggVorbis])(t))
 }
 
 func (r *RefAudioStreamOggVorbisImpl) Unref() {
-	rg := (*typedRef[AudioStreamOggVorbis])(r)
+	rg := (*TypedRef[AudioStreamOggVorbis])(r)
 	rg.Unref()
 }
 
@@ -3452,31 +3452,31 @@ type RefAudioStreamPlayback interface {
 	TypedPtr() AudioStreamPlayback
 }
 
-type RefAudioStreamPlaybackImpl typedRef[AudioStreamPlayback]
+type RefAudioStreamPlaybackImpl TypedRef[AudioStreamPlayback]
 
 func (r *RefAudioStreamPlaybackImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamPlayback])(r)
+	rg := (*TypedRef[AudioStreamPlayback])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamPlaybackImpl) TypedPtr() AudioStreamPlayback {
-	rg := (*typedRef[AudioStreamPlayback])(r)
+	rg := (*TypedRef[AudioStreamPlayback])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamPlaybackImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamPlayback])(r)
+	rg := (*TypedRef[AudioStreamPlayback])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamPlaybackImpl) TypedRef(from *RefAudioStreamPlaybackImpl) {
-	rg := (*typedRef[AudioStreamPlayback])(r)
-	t := (*typedRef[AudioStreamPlayback])(from)
-	rg.TypedRef((*typedRef[AudioStreamPlayback])(t))
+	rg := (*TypedRef[AudioStreamPlayback])(r)
+	t := (*TypedRef[AudioStreamPlayback])(from)
+	rg.TypedRef((*TypedRef[AudioStreamPlayback])(t))
 }
 
 func (r *RefAudioStreamPlaybackImpl) Unref() {
-	rg := (*typedRef[AudioStreamPlayback])(r)
+	rg := (*TypedRef[AudioStreamPlayback])(r)
 	rg.Unref()
 }
 
@@ -3504,31 +3504,31 @@ type RefAudioStreamPlaybackOggVorbis interface {
 	TypedPtr() AudioStreamPlaybackOggVorbis
 }
 
-type RefAudioStreamPlaybackOggVorbisImpl typedRef[AudioStreamPlaybackOggVorbis]
+type RefAudioStreamPlaybackOggVorbisImpl TypedRef[AudioStreamPlaybackOggVorbis]
 
 func (r *RefAudioStreamPlaybackOggVorbisImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamPlaybackOggVorbis])(r)
+	rg := (*TypedRef[AudioStreamPlaybackOggVorbis])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamPlaybackOggVorbisImpl) TypedPtr() AudioStreamPlaybackOggVorbis {
-	rg := (*typedRef[AudioStreamPlaybackOggVorbis])(r)
+	rg := (*TypedRef[AudioStreamPlaybackOggVorbis])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamPlaybackOggVorbisImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamPlaybackOggVorbis])(r)
+	rg := (*TypedRef[AudioStreamPlaybackOggVorbis])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamPlaybackOggVorbisImpl) TypedRef(from *RefAudioStreamPlaybackOggVorbisImpl) {
-	rg := (*typedRef[AudioStreamPlaybackOggVorbis])(r)
-	t := (*typedRef[AudioStreamPlaybackOggVorbis])(from)
-	rg.TypedRef((*typedRef[AudioStreamPlaybackOggVorbis])(t))
+	rg := (*TypedRef[AudioStreamPlaybackOggVorbis])(r)
+	t := (*TypedRef[AudioStreamPlaybackOggVorbis])(from)
+	rg.TypedRef((*TypedRef[AudioStreamPlaybackOggVorbis])(t))
 }
 
 func (r *RefAudioStreamPlaybackOggVorbisImpl) Unref() {
-	rg := (*typedRef[AudioStreamPlaybackOggVorbis])(r)
+	rg := (*TypedRef[AudioStreamPlaybackOggVorbis])(r)
 	rg.Unref()
 }
 
@@ -3556,31 +3556,31 @@ type RefAudioStreamPlaybackPolyphonic interface {
 	TypedPtr() AudioStreamPlaybackPolyphonic
 }
 
-type RefAudioStreamPlaybackPolyphonicImpl typedRef[AudioStreamPlaybackPolyphonic]
+type RefAudioStreamPlaybackPolyphonicImpl TypedRef[AudioStreamPlaybackPolyphonic]
 
 func (r *RefAudioStreamPlaybackPolyphonicImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamPlaybackPolyphonic])(r)
+	rg := (*TypedRef[AudioStreamPlaybackPolyphonic])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamPlaybackPolyphonicImpl) TypedPtr() AudioStreamPlaybackPolyphonic {
-	rg := (*typedRef[AudioStreamPlaybackPolyphonic])(r)
+	rg := (*TypedRef[AudioStreamPlaybackPolyphonic])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamPlaybackPolyphonicImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamPlaybackPolyphonic])(r)
+	rg := (*TypedRef[AudioStreamPlaybackPolyphonic])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamPlaybackPolyphonicImpl) TypedRef(from *RefAudioStreamPlaybackPolyphonicImpl) {
-	rg := (*typedRef[AudioStreamPlaybackPolyphonic])(r)
-	t := (*typedRef[AudioStreamPlaybackPolyphonic])(from)
-	rg.TypedRef((*typedRef[AudioStreamPlaybackPolyphonic])(t))
+	rg := (*TypedRef[AudioStreamPlaybackPolyphonic])(r)
+	t := (*TypedRef[AudioStreamPlaybackPolyphonic])(from)
+	rg.TypedRef((*TypedRef[AudioStreamPlaybackPolyphonic])(t))
 }
 
 func (r *RefAudioStreamPlaybackPolyphonicImpl) Unref() {
-	rg := (*typedRef[AudioStreamPlaybackPolyphonic])(r)
+	rg := (*TypedRef[AudioStreamPlaybackPolyphonic])(r)
 	rg.Unref()
 }
 
@@ -3608,31 +3608,31 @@ type RefAudioStreamPlaybackResampled interface {
 	TypedPtr() AudioStreamPlaybackResampled
 }
 
-type RefAudioStreamPlaybackResampledImpl typedRef[AudioStreamPlaybackResampled]
+type RefAudioStreamPlaybackResampledImpl TypedRef[AudioStreamPlaybackResampled]
 
 func (r *RefAudioStreamPlaybackResampledImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamPlaybackResampled])(r)
+	rg := (*TypedRef[AudioStreamPlaybackResampled])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamPlaybackResampledImpl) TypedPtr() AudioStreamPlaybackResampled {
-	rg := (*typedRef[AudioStreamPlaybackResampled])(r)
+	rg := (*TypedRef[AudioStreamPlaybackResampled])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamPlaybackResampledImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamPlaybackResampled])(r)
+	rg := (*TypedRef[AudioStreamPlaybackResampled])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamPlaybackResampledImpl) TypedRef(from *RefAudioStreamPlaybackResampledImpl) {
-	rg := (*typedRef[AudioStreamPlaybackResampled])(r)
-	t := (*typedRef[AudioStreamPlaybackResampled])(from)
-	rg.TypedRef((*typedRef[AudioStreamPlaybackResampled])(t))
+	rg := (*TypedRef[AudioStreamPlaybackResampled])(r)
+	t := (*TypedRef[AudioStreamPlaybackResampled])(from)
+	rg.TypedRef((*TypedRef[AudioStreamPlaybackResampled])(t))
 }
 
 func (r *RefAudioStreamPlaybackResampledImpl) Unref() {
-	rg := (*typedRef[AudioStreamPlaybackResampled])(r)
+	rg := (*TypedRef[AudioStreamPlaybackResampled])(r)
 	rg.Unref()
 }
 
@@ -3660,31 +3660,31 @@ type RefAudioStreamPolyphonic interface {
 	TypedPtr() AudioStreamPolyphonic
 }
 
-type RefAudioStreamPolyphonicImpl typedRef[AudioStreamPolyphonic]
+type RefAudioStreamPolyphonicImpl TypedRef[AudioStreamPolyphonic]
 
 func (r *RefAudioStreamPolyphonicImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamPolyphonic])(r)
+	rg := (*TypedRef[AudioStreamPolyphonic])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamPolyphonicImpl) TypedPtr() AudioStreamPolyphonic {
-	rg := (*typedRef[AudioStreamPolyphonic])(r)
+	rg := (*TypedRef[AudioStreamPolyphonic])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamPolyphonicImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamPolyphonic])(r)
+	rg := (*TypedRef[AudioStreamPolyphonic])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamPolyphonicImpl) TypedRef(from *RefAudioStreamPolyphonicImpl) {
-	rg := (*typedRef[AudioStreamPolyphonic])(r)
-	t := (*typedRef[AudioStreamPolyphonic])(from)
-	rg.TypedRef((*typedRef[AudioStreamPolyphonic])(t))
+	rg := (*TypedRef[AudioStreamPolyphonic])(r)
+	t := (*TypedRef[AudioStreamPolyphonic])(from)
+	rg.TypedRef((*TypedRef[AudioStreamPolyphonic])(t))
 }
 
 func (r *RefAudioStreamPolyphonicImpl) Unref() {
-	rg := (*typedRef[AudioStreamPolyphonic])(r)
+	rg := (*TypedRef[AudioStreamPolyphonic])(r)
 	rg.Unref()
 }
 
@@ -3712,31 +3712,31 @@ type RefAudioStreamRandomizer interface {
 	TypedPtr() AudioStreamRandomizer
 }
 
-type RefAudioStreamRandomizerImpl typedRef[AudioStreamRandomizer]
+type RefAudioStreamRandomizerImpl TypedRef[AudioStreamRandomizer]
 
 func (r *RefAudioStreamRandomizerImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamRandomizer])(r)
+	rg := (*TypedRef[AudioStreamRandomizer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamRandomizerImpl) TypedPtr() AudioStreamRandomizer {
-	rg := (*typedRef[AudioStreamRandomizer])(r)
+	rg := (*TypedRef[AudioStreamRandomizer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamRandomizerImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamRandomizer])(r)
+	rg := (*TypedRef[AudioStreamRandomizer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamRandomizerImpl) TypedRef(from *RefAudioStreamRandomizerImpl) {
-	rg := (*typedRef[AudioStreamRandomizer])(r)
-	t := (*typedRef[AudioStreamRandomizer])(from)
-	rg.TypedRef((*typedRef[AudioStreamRandomizer])(t))
+	rg := (*TypedRef[AudioStreamRandomizer])(r)
+	t := (*TypedRef[AudioStreamRandomizer])(from)
+	rg.TypedRef((*TypedRef[AudioStreamRandomizer])(t))
 }
 
 func (r *RefAudioStreamRandomizerImpl) Unref() {
-	rg := (*typedRef[AudioStreamRandomizer])(r)
+	rg := (*TypedRef[AudioStreamRandomizer])(r)
 	rg.Unref()
 }
 
@@ -3764,31 +3764,31 @@ type RefAudioStreamWAV interface {
 	TypedPtr() AudioStreamWAV
 }
 
-type RefAudioStreamWAVImpl typedRef[AudioStreamWAV]
+type RefAudioStreamWAVImpl TypedRef[AudioStreamWAV]
 
 func (r *RefAudioStreamWAVImpl) Ptr() RefCounted {
-	rg := (*typedRef[AudioStreamWAV])(r)
+	rg := (*TypedRef[AudioStreamWAV])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefAudioStreamWAVImpl) TypedPtr() AudioStreamWAV {
-	rg := (*typedRef[AudioStreamWAV])(r)
+	rg := (*TypedRef[AudioStreamWAV])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefAudioStreamWAVImpl) Ref(from Ref) {
-	rg := (*typedRef[AudioStreamWAV])(r)
+	rg := (*TypedRef[AudioStreamWAV])(r)
 	rg.Ref(from)
 }
 
 func (r *RefAudioStreamWAVImpl) TypedRef(from *RefAudioStreamWAVImpl) {
-	rg := (*typedRef[AudioStreamWAV])(r)
-	t := (*typedRef[AudioStreamWAV])(from)
-	rg.TypedRef((*typedRef[AudioStreamWAV])(t))
+	rg := (*TypedRef[AudioStreamWAV])(r)
+	t := (*TypedRef[AudioStreamWAV])(from)
+	rg.TypedRef((*TypedRef[AudioStreamWAV])(t))
 }
 
 func (r *RefAudioStreamWAVImpl) Unref() {
-	rg := (*typedRef[AudioStreamWAV])(r)
+	rg := (*TypedRef[AudioStreamWAV])(r)
 	rg.Unref()
 }
 
@@ -3816,31 +3816,31 @@ type RefBaseMaterial3D interface {
 	TypedPtr() BaseMaterial3D
 }
 
-type RefBaseMaterial3DImpl typedRef[BaseMaterial3D]
+type RefBaseMaterial3DImpl TypedRef[BaseMaterial3D]
 
 func (r *RefBaseMaterial3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[BaseMaterial3D])(r)
+	rg := (*TypedRef[BaseMaterial3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefBaseMaterial3DImpl) TypedPtr() BaseMaterial3D {
-	rg := (*typedRef[BaseMaterial3D])(r)
+	rg := (*TypedRef[BaseMaterial3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefBaseMaterial3DImpl) Ref(from Ref) {
-	rg := (*typedRef[BaseMaterial3D])(r)
+	rg := (*TypedRef[BaseMaterial3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefBaseMaterial3DImpl) TypedRef(from *RefBaseMaterial3DImpl) {
-	rg := (*typedRef[BaseMaterial3D])(r)
-	t := (*typedRef[BaseMaterial3D])(from)
-	rg.TypedRef((*typedRef[BaseMaterial3D])(t))
+	rg := (*TypedRef[BaseMaterial3D])(r)
+	t := (*TypedRef[BaseMaterial3D])(from)
+	rg.TypedRef((*TypedRef[BaseMaterial3D])(t))
 }
 
 func (r *RefBaseMaterial3DImpl) Unref() {
-	rg := (*typedRef[BaseMaterial3D])(r)
+	rg := (*TypedRef[BaseMaterial3D])(r)
 	rg.Unref()
 }
 
@@ -3868,31 +3868,31 @@ type RefBitMap interface {
 	TypedPtr() BitMap
 }
 
-type RefBitMapImpl typedRef[BitMap]
+type RefBitMapImpl TypedRef[BitMap]
 
 func (r *RefBitMapImpl) Ptr() RefCounted {
-	rg := (*typedRef[BitMap])(r)
+	rg := (*TypedRef[BitMap])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefBitMapImpl) TypedPtr() BitMap {
-	rg := (*typedRef[BitMap])(r)
+	rg := (*TypedRef[BitMap])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefBitMapImpl) Ref(from Ref) {
-	rg := (*typedRef[BitMap])(r)
+	rg := (*TypedRef[BitMap])(r)
 	rg.Ref(from)
 }
 
 func (r *RefBitMapImpl) TypedRef(from *RefBitMapImpl) {
-	rg := (*typedRef[BitMap])(r)
-	t := (*typedRef[BitMap])(from)
-	rg.TypedRef((*typedRef[BitMap])(t))
+	rg := (*TypedRef[BitMap])(r)
+	t := (*TypedRef[BitMap])(from)
+	rg.TypedRef((*TypedRef[BitMap])(t))
 }
 
 func (r *RefBitMapImpl) Unref() {
-	rg := (*typedRef[BitMap])(r)
+	rg := (*TypedRef[BitMap])(r)
 	rg.Unref()
 }
 
@@ -3920,31 +3920,31 @@ type RefBoneMap interface {
 	TypedPtr() BoneMap
 }
 
-type RefBoneMapImpl typedRef[BoneMap]
+type RefBoneMapImpl TypedRef[BoneMap]
 
 func (r *RefBoneMapImpl) Ptr() RefCounted {
-	rg := (*typedRef[BoneMap])(r)
+	rg := (*TypedRef[BoneMap])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefBoneMapImpl) TypedPtr() BoneMap {
-	rg := (*typedRef[BoneMap])(r)
+	rg := (*TypedRef[BoneMap])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefBoneMapImpl) Ref(from Ref) {
-	rg := (*typedRef[BoneMap])(r)
+	rg := (*TypedRef[BoneMap])(r)
 	rg.Ref(from)
 }
 
 func (r *RefBoneMapImpl) TypedRef(from *RefBoneMapImpl) {
-	rg := (*typedRef[BoneMap])(r)
-	t := (*typedRef[BoneMap])(from)
-	rg.TypedRef((*typedRef[BoneMap])(t))
+	rg := (*TypedRef[BoneMap])(r)
+	t := (*TypedRef[BoneMap])(from)
+	rg.TypedRef((*TypedRef[BoneMap])(t))
 }
 
 func (r *RefBoneMapImpl) Unref() {
-	rg := (*typedRef[BoneMap])(r)
+	rg := (*TypedRef[BoneMap])(r)
 	rg.Unref()
 }
 
@@ -3972,31 +3972,31 @@ type RefBoxMesh interface {
 	TypedPtr() BoxMesh
 }
 
-type RefBoxMeshImpl typedRef[BoxMesh]
+type RefBoxMeshImpl TypedRef[BoxMesh]
 
 func (r *RefBoxMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[BoxMesh])(r)
+	rg := (*TypedRef[BoxMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefBoxMeshImpl) TypedPtr() BoxMesh {
-	rg := (*typedRef[BoxMesh])(r)
+	rg := (*TypedRef[BoxMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefBoxMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[BoxMesh])(r)
+	rg := (*TypedRef[BoxMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefBoxMeshImpl) TypedRef(from *RefBoxMeshImpl) {
-	rg := (*typedRef[BoxMesh])(r)
-	t := (*typedRef[BoxMesh])(from)
-	rg.TypedRef((*typedRef[BoxMesh])(t))
+	rg := (*TypedRef[BoxMesh])(r)
+	t := (*TypedRef[BoxMesh])(from)
+	rg.TypedRef((*TypedRef[BoxMesh])(t))
 }
 
 func (r *RefBoxMeshImpl) Unref() {
-	rg := (*typedRef[BoxMesh])(r)
+	rg := (*TypedRef[BoxMesh])(r)
 	rg.Unref()
 }
 
@@ -4024,31 +4024,31 @@ type RefBoxOccluder3D interface {
 	TypedPtr() BoxOccluder3D
 }
 
-type RefBoxOccluder3DImpl typedRef[BoxOccluder3D]
+type RefBoxOccluder3DImpl TypedRef[BoxOccluder3D]
 
 func (r *RefBoxOccluder3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[BoxOccluder3D])(r)
+	rg := (*TypedRef[BoxOccluder3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefBoxOccluder3DImpl) TypedPtr() BoxOccluder3D {
-	rg := (*typedRef[BoxOccluder3D])(r)
+	rg := (*TypedRef[BoxOccluder3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefBoxOccluder3DImpl) Ref(from Ref) {
-	rg := (*typedRef[BoxOccluder3D])(r)
+	rg := (*TypedRef[BoxOccluder3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefBoxOccluder3DImpl) TypedRef(from *RefBoxOccluder3DImpl) {
-	rg := (*typedRef[BoxOccluder3D])(r)
-	t := (*typedRef[BoxOccluder3D])(from)
-	rg.TypedRef((*typedRef[BoxOccluder3D])(t))
+	rg := (*TypedRef[BoxOccluder3D])(r)
+	t := (*TypedRef[BoxOccluder3D])(from)
+	rg.TypedRef((*TypedRef[BoxOccluder3D])(t))
 }
 
 func (r *RefBoxOccluder3DImpl) Unref() {
-	rg := (*typedRef[BoxOccluder3D])(r)
+	rg := (*TypedRef[BoxOccluder3D])(r)
 	rg.Unref()
 }
 
@@ -4076,31 +4076,31 @@ type RefBoxShape3D interface {
 	TypedPtr() BoxShape3D
 }
 
-type RefBoxShape3DImpl typedRef[BoxShape3D]
+type RefBoxShape3DImpl TypedRef[BoxShape3D]
 
 func (r *RefBoxShape3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[BoxShape3D])(r)
+	rg := (*TypedRef[BoxShape3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefBoxShape3DImpl) TypedPtr() BoxShape3D {
-	rg := (*typedRef[BoxShape3D])(r)
+	rg := (*TypedRef[BoxShape3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefBoxShape3DImpl) Ref(from Ref) {
-	rg := (*typedRef[BoxShape3D])(r)
+	rg := (*TypedRef[BoxShape3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefBoxShape3DImpl) TypedRef(from *RefBoxShape3DImpl) {
-	rg := (*typedRef[BoxShape3D])(r)
-	t := (*typedRef[BoxShape3D])(from)
-	rg.TypedRef((*typedRef[BoxShape3D])(t))
+	rg := (*TypedRef[BoxShape3D])(r)
+	t := (*TypedRef[BoxShape3D])(from)
+	rg.TypedRef((*TypedRef[BoxShape3D])(t))
 }
 
 func (r *RefBoxShape3DImpl) Unref() {
-	rg := (*typedRef[BoxShape3D])(r)
+	rg := (*TypedRef[BoxShape3D])(r)
 	rg.Unref()
 }
 
@@ -4128,31 +4128,31 @@ type RefButtonGroup interface {
 	TypedPtr() ButtonGroup
 }
 
-type RefButtonGroupImpl typedRef[ButtonGroup]
+type RefButtonGroupImpl TypedRef[ButtonGroup]
 
 func (r *RefButtonGroupImpl) Ptr() RefCounted {
-	rg := (*typedRef[ButtonGroup])(r)
+	rg := (*TypedRef[ButtonGroup])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefButtonGroupImpl) TypedPtr() ButtonGroup {
-	rg := (*typedRef[ButtonGroup])(r)
+	rg := (*TypedRef[ButtonGroup])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefButtonGroupImpl) Ref(from Ref) {
-	rg := (*typedRef[ButtonGroup])(r)
+	rg := (*TypedRef[ButtonGroup])(r)
 	rg.Ref(from)
 }
 
 func (r *RefButtonGroupImpl) TypedRef(from *RefButtonGroupImpl) {
-	rg := (*typedRef[ButtonGroup])(r)
-	t := (*typedRef[ButtonGroup])(from)
-	rg.TypedRef((*typedRef[ButtonGroup])(t))
+	rg := (*TypedRef[ButtonGroup])(r)
+	t := (*TypedRef[ButtonGroup])(from)
+	rg.TypedRef((*TypedRef[ButtonGroup])(t))
 }
 
 func (r *RefButtonGroupImpl) Unref() {
-	rg := (*typedRef[ButtonGroup])(r)
+	rg := (*TypedRef[ButtonGroup])(r)
 	rg.Unref()
 }
 
@@ -4180,31 +4180,31 @@ type RefCallbackTweener interface {
 	TypedPtr() CallbackTweener
 }
 
-type RefCallbackTweenerImpl typedRef[CallbackTweener]
+type RefCallbackTweenerImpl TypedRef[CallbackTweener]
 
 func (r *RefCallbackTweenerImpl) Ptr() RefCounted {
-	rg := (*typedRef[CallbackTweener])(r)
+	rg := (*TypedRef[CallbackTweener])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCallbackTweenerImpl) TypedPtr() CallbackTweener {
-	rg := (*typedRef[CallbackTweener])(r)
+	rg := (*TypedRef[CallbackTweener])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCallbackTweenerImpl) Ref(from Ref) {
-	rg := (*typedRef[CallbackTweener])(r)
+	rg := (*TypedRef[CallbackTweener])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCallbackTweenerImpl) TypedRef(from *RefCallbackTweenerImpl) {
-	rg := (*typedRef[CallbackTweener])(r)
-	t := (*typedRef[CallbackTweener])(from)
-	rg.TypedRef((*typedRef[CallbackTweener])(t))
+	rg := (*TypedRef[CallbackTweener])(r)
+	t := (*TypedRef[CallbackTweener])(from)
+	rg.TypedRef((*TypedRef[CallbackTweener])(t))
 }
 
 func (r *RefCallbackTweenerImpl) Unref() {
-	rg := (*typedRef[CallbackTweener])(r)
+	rg := (*TypedRef[CallbackTweener])(r)
 	rg.Unref()
 }
 
@@ -4232,31 +4232,31 @@ type RefCameraAttributes interface {
 	TypedPtr() CameraAttributes
 }
 
-type RefCameraAttributesImpl typedRef[CameraAttributes]
+type RefCameraAttributesImpl TypedRef[CameraAttributes]
 
 func (r *RefCameraAttributesImpl) Ptr() RefCounted {
-	rg := (*typedRef[CameraAttributes])(r)
+	rg := (*TypedRef[CameraAttributes])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCameraAttributesImpl) TypedPtr() CameraAttributes {
-	rg := (*typedRef[CameraAttributes])(r)
+	rg := (*TypedRef[CameraAttributes])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCameraAttributesImpl) Ref(from Ref) {
-	rg := (*typedRef[CameraAttributes])(r)
+	rg := (*TypedRef[CameraAttributes])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCameraAttributesImpl) TypedRef(from *RefCameraAttributesImpl) {
-	rg := (*typedRef[CameraAttributes])(r)
-	t := (*typedRef[CameraAttributes])(from)
-	rg.TypedRef((*typedRef[CameraAttributes])(t))
+	rg := (*TypedRef[CameraAttributes])(r)
+	t := (*TypedRef[CameraAttributes])(from)
+	rg.TypedRef((*TypedRef[CameraAttributes])(t))
 }
 
 func (r *RefCameraAttributesImpl) Unref() {
-	rg := (*typedRef[CameraAttributes])(r)
+	rg := (*TypedRef[CameraAttributes])(r)
 	rg.Unref()
 }
 
@@ -4284,31 +4284,31 @@ type RefCameraAttributesPhysical interface {
 	TypedPtr() CameraAttributesPhysical
 }
 
-type RefCameraAttributesPhysicalImpl typedRef[CameraAttributesPhysical]
+type RefCameraAttributesPhysicalImpl TypedRef[CameraAttributesPhysical]
 
 func (r *RefCameraAttributesPhysicalImpl) Ptr() RefCounted {
-	rg := (*typedRef[CameraAttributesPhysical])(r)
+	rg := (*TypedRef[CameraAttributesPhysical])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCameraAttributesPhysicalImpl) TypedPtr() CameraAttributesPhysical {
-	rg := (*typedRef[CameraAttributesPhysical])(r)
+	rg := (*TypedRef[CameraAttributesPhysical])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCameraAttributesPhysicalImpl) Ref(from Ref) {
-	rg := (*typedRef[CameraAttributesPhysical])(r)
+	rg := (*TypedRef[CameraAttributesPhysical])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCameraAttributesPhysicalImpl) TypedRef(from *RefCameraAttributesPhysicalImpl) {
-	rg := (*typedRef[CameraAttributesPhysical])(r)
-	t := (*typedRef[CameraAttributesPhysical])(from)
-	rg.TypedRef((*typedRef[CameraAttributesPhysical])(t))
+	rg := (*TypedRef[CameraAttributesPhysical])(r)
+	t := (*TypedRef[CameraAttributesPhysical])(from)
+	rg.TypedRef((*TypedRef[CameraAttributesPhysical])(t))
 }
 
 func (r *RefCameraAttributesPhysicalImpl) Unref() {
-	rg := (*typedRef[CameraAttributesPhysical])(r)
+	rg := (*TypedRef[CameraAttributesPhysical])(r)
 	rg.Unref()
 }
 
@@ -4336,31 +4336,31 @@ type RefCameraAttributesPractical interface {
 	TypedPtr() CameraAttributesPractical
 }
 
-type RefCameraAttributesPracticalImpl typedRef[CameraAttributesPractical]
+type RefCameraAttributesPracticalImpl TypedRef[CameraAttributesPractical]
 
 func (r *RefCameraAttributesPracticalImpl) Ptr() RefCounted {
-	rg := (*typedRef[CameraAttributesPractical])(r)
+	rg := (*TypedRef[CameraAttributesPractical])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCameraAttributesPracticalImpl) TypedPtr() CameraAttributesPractical {
-	rg := (*typedRef[CameraAttributesPractical])(r)
+	rg := (*TypedRef[CameraAttributesPractical])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCameraAttributesPracticalImpl) Ref(from Ref) {
-	rg := (*typedRef[CameraAttributesPractical])(r)
+	rg := (*TypedRef[CameraAttributesPractical])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCameraAttributesPracticalImpl) TypedRef(from *RefCameraAttributesPracticalImpl) {
-	rg := (*typedRef[CameraAttributesPractical])(r)
-	t := (*typedRef[CameraAttributesPractical])(from)
-	rg.TypedRef((*typedRef[CameraAttributesPractical])(t))
+	rg := (*TypedRef[CameraAttributesPractical])(r)
+	t := (*TypedRef[CameraAttributesPractical])(from)
+	rg.TypedRef((*TypedRef[CameraAttributesPractical])(t))
 }
 
 func (r *RefCameraAttributesPracticalImpl) Unref() {
-	rg := (*typedRef[CameraAttributesPractical])(r)
+	rg := (*TypedRef[CameraAttributesPractical])(r)
 	rg.Unref()
 }
 
@@ -4388,31 +4388,31 @@ type RefCameraFeed interface {
 	TypedPtr() CameraFeed
 }
 
-type RefCameraFeedImpl typedRef[CameraFeed]
+type RefCameraFeedImpl TypedRef[CameraFeed]
 
 func (r *RefCameraFeedImpl) Ptr() RefCounted {
-	rg := (*typedRef[CameraFeed])(r)
+	rg := (*TypedRef[CameraFeed])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCameraFeedImpl) TypedPtr() CameraFeed {
-	rg := (*typedRef[CameraFeed])(r)
+	rg := (*TypedRef[CameraFeed])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCameraFeedImpl) Ref(from Ref) {
-	rg := (*typedRef[CameraFeed])(r)
+	rg := (*TypedRef[CameraFeed])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCameraFeedImpl) TypedRef(from *RefCameraFeedImpl) {
-	rg := (*typedRef[CameraFeed])(r)
-	t := (*typedRef[CameraFeed])(from)
-	rg.TypedRef((*typedRef[CameraFeed])(t))
+	rg := (*TypedRef[CameraFeed])(r)
+	t := (*TypedRef[CameraFeed])(from)
+	rg.TypedRef((*TypedRef[CameraFeed])(t))
 }
 
 func (r *RefCameraFeedImpl) Unref() {
-	rg := (*typedRef[CameraFeed])(r)
+	rg := (*TypedRef[CameraFeed])(r)
 	rg.Unref()
 }
 
@@ -4440,31 +4440,31 @@ type RefCameraTexture interface {
 	TypedPtr() CameraTexture
 }
 
-type RefCameraTextureImpl typedRef[CameraTexture]
+type RefCameraTextureImpl TypedRef[CameraTexture]
 
 func (r *RefCameraTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[CameraTexture])(r)
+	rg := (*TypedRef[CameraTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCameraTextureImpl) TypedPtr() CameraTexture {
-	rg := (*typedRef[CameraTexture])(r)
+	rg := (*TypedRef[CameraTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCameraTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[CameraTexture])(r)
+	rg := (*TypedRef[CameraTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCameraTextureImpl) TypedRef(from *RefCameraTextureImpl) {
-	rg := (*typedRef[CameraTexture])(r)
-	t := (*typedRef[CameraTexture])(from)
-	rg.TypedRef((*typedRef[CameraTexture])(t))
+	rg := (*TypedRef[CameraTexture])(r)
+	t := (*TypedRef[CameraTexture])(from)
+	rg.TypedRef((*TypedRef[CameraTexture])(t))
 }
 
 func (r *RefCameraTextureImpl) Unref() {
-	rg := (*typedRef[CameraTexture])(r)
+	rg := (*TypedRef[CameraTexture])(r)
 	rg.Unref()
 }
 
@@ -4492,31 +4492,31 @@ type RefCanvasItemMaterial interface {
 	TypedPtr() CanvasItemMaterial
 }
 
-type RefCanvasItemMaterialImpl typedRef[CanvasItemMaterial]
+type RefCanvasItemMaterialImpl TypedRef[CanvasItemMaterial]
 
 func (r *RefCanvasItemMaterialImpl) Ptr() RefCounted {
-	rg := (*typedRef[CanvasItemMaterial])(r)
+	rg := (*TypedRef[CanvasItemMaterial])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCanvasItemMaterialImpl) TypedPtr() CanvasItemMaterial {
-	rg := (*typedRef[CanvasItemMaterial])(r)
+	rg := (*TypedRef[CanvasItemMaterial])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCanvasItemMaterialImpl) Ref(from Ref) {
-	rg := (*typedRef[CanvasItemMaterial])(r)
+	rg := (*TypedRef[CanvasItemMaterial])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCanvasItemMaterialImpl) TypedRef(from *RefCanvasItemMaterialImpl) {
-	rg := (*typedRef[CanvasItemMaterial])(r)
-	t := (*typedRef[CanvasItemMaterial])(from)
-	rg.TypedRef((*typedRef[CanvasItemMaterial])(t))
+	rg := (*TypedRef[CanvasItemMaterial])(r)
+	t := (*TypedRef[CanvasItemMaterial])(from)
+	rg.TypedRef((*TypedRef[CanvasItemMaterial])(t))
 }
 
 func (r *RefCanvasItemMaterialImpl) Unref() {
-	rg := (*typedRef[CanvasItemMaterial])(r)
+	rg := (*TypedRef[CanvasItemMaterial])(r)
 	rg.Unref()
 }
 
@@ -4544,31 +4544,31 @@ type RefCanvasTexture interface {
 	TypedPtr() CanvasTexture
 }
 
-type RefCanvasTextureImpl typedRef[CanvasTexture]
+type RefCanvasTextureImpl TypedRef[CanvasTexture]
 
 func (r *RefCanvasTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[CanvasTexture])(r)
+	rg := (*TypedRef[CanvasTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCanvasTextureImpl) TypedPtr() CanvasTexture {
-	rg := (*typedRef[CanvasTexture])(r)
+	rg := (*TypedRef[CanvasTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCanvasTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[CanvasTexture])(r)
+	rg := (*TypedRef[CanvasTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCanvasTextureImpl) TypedRef(from *RefCanvasTextureImpl) {
-	rg := (*typedRef[CanvasTexture])(r)
-	t := (*typedRef[CanvasTexture])(from)
-	rg.TypedRef((*typedRef[CanvasTexture])(t))
+	rg := (*TypedRef[CanvasTexture])(r)
+	t := (*TypedRef[CanvasTexture])(from)
+	rg.TypedRef((*TypedRef[CanvasTexture])(t))
 }
 
 func (r *RefCanvasTextureImpl) Unref() {
-	rg := (*typedRef[CanvasTexture])(r)
+	rg := (*TypedRef[CanvasTexture])(r)
 	rg.Unref()
 }
 
@@ -4596,31 +4596,31 @@ type RefCapsuleMesh interface {
 	TypedPtr() CapsuleMesh
 }
 
-type RefCapsuleMeshImpl typedRef[CapsuleMesh]
+type RefCapsuleMeshImpl TypedRef[CapsuleMesh]
 
 func (r *RefCapsuleMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[CapsuleMesh])(r)
+	rg := (*TypedRef[CapsuleMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCapsuleMeshImpl) TypedPtr() CapsuleMesh {
-	rg := (*typedRef[CapsuleMesh])(r)
+	rg := (*TypedRef[CapsuleMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCapsuleMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[CapsuleMesh])(r)
+	rg := (*TypedRef[CapsuleMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCapsuleMeshImpl) TypedRef(from *RefCapsuleMeshImpl) {
-	rg := (*typedRef[CapsuleMesh])(r)
-	t := (*typedRef[CapsuleMesh])(from)
-	rg.TypedRef((*typedRef[CapsuleMesh])(t))
+	rg := (*TypedRef[CapsuleMesh])(r)
+	t := (*TypedRef[CapsuleMesh])(from)
+	rg.TypedRef((*TypedRef[CapsuleMesh])(t))
 }
 
 func (r *RefCapsuleMeshImpl) Unref() {
-	rg := (*typedRef[CapsuleMesh])(r)
+	rg := (*TypedRef[CapsuleMesh])(r)
 	rg.Unref()
 }
 
@@ -4648,31 +4648,31 @@ type RefCapsuleShape2D interface {
 	TypedPtr() CapsuleShape2D
 }
 
-type RefCapsuleShape2DImpl typedRef[CapsuleShape2D]
+type RefCapsuleShape2DImpl TypedRef[CapsuleShape2D]
 
 func (r *RefCapsuleShape2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[CapsuleShape2D])(r)
+	rg := (*TypedRef[CapsuleShape2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCapsuleShape2DImpl) TypedPtr() CapsuleShape2D {
-	rg := (*typedRef[CapsuleShape2D])(r)
+	rg := (*TypedRef[CapsuleShape2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCapsuleShape2DImpl) Ref(from Ref) {
-	rg := (*typedRef[CapsuleShape2D])(r)
+	rg := (*TypedRef[CapsuleShape2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCapsuleShape2DImpl) TypedRef(from *RefCapsuleShape2DImpl) {
-	rg := (*typedRef[CapsuleShape2D])(r)
-	t := (*typedRef[CapsuleShape2D])(from)
-	rg.TypedRef((*typedRef[CapsuleShape2D])(t))
+	rg := (*TypedRef[CapsuleShape2D])(r)
+	t := (*TypedRef[CapsuleShape2D])(from)
+	rg.TypedRef((*TypedRef[CapsuleShape2D])(t))
 }
 
 func (r *RefCapsuleShape2DImpl) Unref() {
-	rg := (*typedRef[CapsuleShape2D])(r)
+	rg := (*TypedRef[CapsuleShape2D])(r)
 	rg.Unref()
 }
 
@@ -4700,31 +4700,31 @@ type RefCapsuleShape3D interface {
 	TypedPtr() CapsuleShape3D
 }
 
-type RefCapsuleShape3DImpl typedRef[CapsuleShape3D]
+type RefCapsuleShape3DImpl TypedRef[CapsuleShape3D]
 
 func (r *RefCapsuleShape3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[CapsuleShape3D])(r)
+	rg := (*TypedRef[CapsuleShape3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCapsuleShape3DImpl) TypedPtr() CapsuleShape3D {
-	rg := (*typedRef[CapsuleShape3D])(r)
+	rg := (*TypedRef[CapsuleShape3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCapsuleShape3DImpl) Ref(from Ref) {
-	rg := (*typedRef[CapsuleShape3D])(r)
+	rg := (*TypedRef[CapsuleShape3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCapsuleShape3DImpl) TypedRef(from *RefCapsuleShape3DImpl) {
-	rg := (*typedRef[CapsuleShape3D])(r)
-	t := (*typedRef[CapsuleShape3D])(from)
-	rg.TypedRef((*typedRef[CapsuleShape3D])(t))
+	rg := (*TypedRef[CapsuleShape3D])(r)
+	t := (*TypedRef[CapsuleShape3D])(from)
+	rg.TypedRef((*TypedRef[CapsuleShape3D])(t))
 }
 
 func (r *RefCapsuleShape3DImpl) Unref() {
-	rg := (*typedRef[CapsuleShape3D])(r)
+	rg := (*TypedRef[CapsuleShape3D])(r)
 	rg.Unref()
 }
 
@@ -4752,31 +4752,31 @@ type RefCharFXTransform interface {
 	TypedPtr() CharFXTransform
 }
 
-type RefCharFXTransformImpl typedRef[CharFXTransform]
+type RefCharFXTransformImpl TypedRef[CharFXTransform]
 
 func (r *RefCharFXTransformImpl) Ptr() RefCounted {
-	rg := (*typedRef[CharFXTransform])(r)
+	rg := (*TypedRef[CharFXTransform])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCharFXTransformImpl) TypedPtr() CharFXTransform {
-	rg := (*typedRef[CharFXTransform])(r)
+	rg := (*TypedRef[CharFXTransform])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCharFXTransformImpl) Ref(from Ref) {
-	rg := (*typedRef[CharFXTransform])(r)
+	rg := (*TypedRef[CharFXTransform])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCharFXTransformImpl) TypedRef(from *RefCharFXTransformImpl) {
-	rg := (*typedRef[CharFXTransform])(r)
-	t := (*typedRef[CharFXTransform])(from)
-	rg.TypedRef((*typedRef[CharFXTransform])(t))
+	rg := (*TypedRef[CharFXTransform])(r)
+	t := (*TypedRef[CharFXTransform])(from)
+	rg.TypedRef((*TypedRef[CharFXTransform])(t))
 }
 
 func (r *RefCharFXTransformImpl) Unref() {
-	rg := (*typedRef[CharFXTransform])(r)
+	rg := (*TypedRef[CharFXTransform])(r)
 	rg.Unref()
 }
 
@@ -4804,31 +4804,31 @@ type RefCircleShape2D interface {
 	TypedPtr() CircleShape2D
 }
 
-type RefCircleShape2DImpl typedRef[CircleShape2D]
+type RefCircleShape2DImpl TypedRef[CircleShape2D]
 
 func (r *RefCircleShape2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[CircleShape2D])(r)
+	rg := (*TypedRef[CircleShape2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCircleShape2DImpl) TypedPtr() CircleShape2D {
-	rg := (*typedRef[CircleShape2D])(r)
+	rg := (*TypedRef[CircleShape2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCircleShape2DImpl) Ref(from Ref) {
-	rg := (*typedRef[CircleShape2D])(r)
+	rg := (*TypedRef[CircleShape2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCircleShape2DImpl) TypedRef(from *RefCircleShape2DImpl) {
-	rg := (*typedRef[CircleShape2D])(r)
-	t := (*typedRef[CircleShape2D])(from)
-	rg.TypedRef((*typedRef[CircleShape2D])(t))
+	rg := (*TypedRef[CircleShape2D])(r)
+	t := (*TypedRef[CircleShape2D])(from)
+	rg.TypedRef((*TypedRef[CircleShape2D])(t))
 }
 
 func (r *RefCircleShape2DImpl) Unref() {
-	rg := (*typedRef[CircleShape2D])(r)
+	rg := (*TypedRef[CircleShape2D])(r)
 	rg.Unref()
 }
 
@@ -4856,31 +4856,31 @@ type RefCodeHighlighter interface {
 	TypedPtr() CodeHighlighter
 }
 
-type RefCodeHighlighterImpl typedRef[CodeHighlighter]
+type RefCodeHighlighterImpl TypedRef[CodeHighlighter]
 
 func (r *RefCodeHighlighterImpl) Ptr() RefCounted {
-	rg := (*typedRef[CodeHighlighter])(r)
+	rg := (*TypedRef[CodeHighlighter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCodeHighlighterImpl) TypedPtr() CodeHighlighter {
-	rg := (*typedRef[CodeHighlighter])(r)
+	rg := (*TypedRef[CodeHighlighter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCodeHighlighterImpl) Ref(from Ref) {
-	rg := (*typedRef[CodeHighlighter])(r)
+	rg := (*TypedRef[CodeHighlighter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCodeHighlighterImpl) TypedRef(from *RefCodeHighlighterImpl) {
-	rg := (*typedRef[CodeHighlighter])(r)
-	t := (*typedRef[CodeHighlighter])(from)
-	rg.TypedRef((*typedRef[CodeHighlighter])(t))
+	rg := (*TypedRef[CodeHighlighter])(r)
+	t := (*TypedRef[CodeHighlighter])(from)
+	rg.TypedRef((*TypedRef[CodeHighlighter])(t))
 }
 
 func (r *RefCodeHighlighterImpl) Unref() {
-	rg := (*typedRef[CodeHighlighter])(r)
+	rg := (*TypedRef[CodeHighlighter])(r)
 	rg.Unref()
 }
 
@@ -4908,31 +4908,31 @@ type RefCompressedCubemap interface {
 	TypedPtr() CompressedCubemap
 }
 
-type RefCompressedCubemapImpl typedRef[CompressedCubemap]
+type RefCompressedCubemapImpl TypedRef[CompressedCubemap]
 
 func (r *RefCompressedCubemapImpl) Ptr() RefCounted {
-	rg := (*typedRef[CompressedCubemap])(r)
+	rg := (*TypedRef[CompressedCubemap])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCompressedCubemapImpl) TypedPtr() CompressedCubemap {
-	rg := (*typedRef[CompressedCubemap])(r)
+	rg := (*TypedRef[CompressedCubemap])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCompressedCubemapImpl) Ref(from Ref) {
-	rg := (*typedRef[CompressedCubemap])(r)
+	rg := (*TypedRef[CompressedCubemap])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCompressedCubemapImpl) TypedRef(from *RefCompressedCubemapImpl) {
-	rg := (*typedRef[CompressedCubemap])(r)
-	t := (*typedRef[CompressedCubemap])(from)
-	rg.TypedRef((*typedRef[CompressedCubemap])(t))
+	rg := (*TypedRef[CompressedCubemap])(r)
+	t := (*TypedRef[CompressedCubemap])(from)
+	rg.TypedRef((*TypedRef[CompressedCubemap])(t))
 }
 
 func (r *RefCompressedCubemapImpl) Unref() {
-	rg := (*typedRef[CompressedCubemap])(r)
+	rg := (*TypedRef[CompressedCubemap])(r)
 	rg.Unref()
 }
 
@@ -4960,31 +4960,31 @@ type RefCompressedCubemapArray interface {
 	TypedPtr() CompressedCubemapArray
 }
 
-type RefCompressedCubemapArrayImpl typedRef[CompressedCubemapArray]
+type RefCompressedCubemapArrayImpl TypedRef[CompressedCubemapArray]
 
 func (r *RefCompressedCubemapArrayImpl) Ptr() RefCounted {
-	rg := (*typedRef[CompressedCubemapArray])(r)
+	rg := (*TypedRef[CompressedCubemapArray])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCompressedCubemapArrayImpl) TypedPtr() CompressedCubemapArray {
-	rg := (*typedRef[CompressedCubemapArray])(r)
+	rg := (*TypedRef[CompressedCubemapArray])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCompressedCubemapArrayImpl) Ref(from Ref) {
-	rg := (*typedRef[CompressedCubemapArray])(r)
+	rg := (*TypedRef[CompressedCubemapArray])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCompressedCubemapArrayImpl) TypedRef(from *RefCompressedCubemapArrayImpl) {
-	rg := (*typedRef[CompressedCubemapArray])(r)
-	t := (*typedRef[CompressedCubemapArray])(from)
-	rg.TypedRef((*typedRef[CompressedCubemapArray])(t))
+	rg := (*TypedRef[CompressedCubemapArray])(r)
+	t := (*TypedRef[CompressedCubemapArray])(from)
+	rg.TypedRef((*TypedRef[CompressedCubemapArray])(t))
 }
 
 func (r *RefCompressedCubemapArrayImpl) Unref() {
-	rg := (*typedRef[CompressedCubemapArray])(r)
+	rg := (*TypedRef[CompressedCubemapArray])(r)
 	rg.Unref()
 }
 
@@ -5012,31 +5012,31 @@ type RefCompressedTexture2D interface {
 	TypedPtr() CompressedTexture2D
 }
 
-type RefCompressedTexture2DImpl typedRef[CompressedTexture2D]
+type RefCompressedTexture2DImpl TypedRef[CompressedTexture2D]
 
 func (r *RefCompressedTexture2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[CompressedTexture2D])(r)
+	rg := (*TypedRef[CompressedTexture2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCompressedTexture2DImpl) TypedPtr() CompressedTexture2D {
-	rg := (*typedRef[CompressedTexture2D])(r)
+	rg := (*TypedRef[CompressedTexture2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCompressedTexture2DImpl) Ref(from Ref) {
-	rg := (*typedRef[CompressedTexture2D])(r)
+	rg := (*TypedRef[CompressedTexture2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCompressedTexture2DImpl) TypedRef(from *RefCompressedTexture2DImpl) {
-	rg := (*typedRef[CompressedTexture2D])(r)
-	t := (*typedRef[CompressedTexture2D])(from)
-	rg.TypedRef((*typedRef[CompressedTexture2D])(t))
+	rg := (*TypedRef[CompressedTexture2D])(r)
+	t := (*TypedRef[CompressedTexture2D])(from)
+	rg.TypedRef((*TypedRef[CompressedTexture2D])(t))
 }
 
 func (r *RefCompressedTexture2DImpl) Unref() {
-	rg := (*typedRef[CompressedTexture2D])(r)
+	rg := (*TypedRef[CompressedTexture2D])(r)
 	rg.Unref()
 }
 
@@ -5064,31 +5064,31 @@ type RefCompressedTexture2DArray interface {
 	TypedPtr() CompressedTexture2DArray
 }
 
-type RefCompressedTexture2DArrayImpl typedRef[CompressedTexture2DArray]
+type RefCompressedTexture2DArrayImpl TypedRef[CompressedTexture2DArray]
 
 func (r *RefCompressedTexture2DArrayImpl) Ptr() RefCounted {
-	rg := (*typedRef[CompressedTexture2DArray])(r)
+	rg := (*TypedRef[CompressedTexture2DArray])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCompressedTexture2DArrayImpl) TypedPtr() CompressedTexture2DArray {
-	rg := (*typedRef[CompressedTexture2DArray])(r)
+	rg := (*TypedRef[CompressedTexture2DArray])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCompressedTexture2DArrayImpl) Ref(from Ref) {
-	rg := (*typedRef[CompressedTexture2DArray])(r)
+	rg := (*TypedRef[CompressedTexture2DArray])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCompressedTexture2DArrayImpl) TypedRef(from *RefCompressedTexture2DArrayImpl) {
-	rg := (*typedRef[CompressedTexture2DArray])(r)
-	t := (*typedRef[CompressedTexture2DArray])(from)
-	rg.TypedRef((*typedRef[CompressedTexture2DArray])(t))
+	rg := (*TypedRef[CompressedTexture2DArray])(r)
+	t := (*TypedRef[CompressedTexture2DArray])(from)
+	rg.TypedRef((*TypedRef[CompressedTexture2DArray])(t))
 }
 
 func (r *RefCompressedTexture2DArrayImpl) Unref() {
-	rg := (*typedRef[CompressedTexture2DArray])(r)
+	rg := (*TypedRef[CompressedTexture2DArray])(r)
 	rg.Unref()
 }
 
@@ -5116,31 +5116,31 @@ type RefCompressedTexture3D interface {
 	TypedPtr() CompressedTexture3D
 }
 
-type RefCompressedTexture3DImpl typedRef[CompressedTexture3D]
+type RefCompressedTexture3DImpl TypedRef[CompressedTexture3D]
 
 func (r *RefCompressedTexture3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[CompressedTexture3D])(r)
+	rg := (*TypedRef[CompressedTexture3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCompressedTexture3DImpl) TypedPtr() CompressedTexture3D {
-	rg := (*typedRef[CompressedTexture3D])(r)
+	rg := (*TypedRef[CompressedTexture3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCompressedTexture3DImpl) Ref(from Ref) {
-	rg := (*typedRef[CompressedTexture3D])(r)
+	rg := (*TypedRef[CompressedTexture3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCompressedTexture3DImpl) TypedRef(from *RefCompressedTexture3DImpl) {
-	rg := (*typedRef[CompressedTexture3D])(r)
-	t := (*typedRef[CompressedTexture3D])(from)
-	rg.TypedRef((*typedRef[CompressedTexture3D])(t))
+	rg := (*TypedRef[CompressedTexture3D])(r)
+	t := (*TypedRef[CompressedTexture3D])(from)
+	rg.TypedRef((*TypedRef[CompressedTexture3D])(t))
 }
 
 func (r *RefCompressedTexture3DImpl) Unref() {
-	rg := (*typedRef[CompressedTexture3D])(r)
+	rg := (*TypedRef[CompressedTexture3D])(r)
 	rg.Unref()
 }
 
@@ -5168,31 +5168,31 @@ type RefCompressedTextureLayered interface {
 	TypedPtr() CompressedTextureLayered
 }
 
-type RefCompressedTextureLayeredImpl typedRef[CompressedTextureLayered]
+type RefCompressedTextureLayeredImpl TypedRef[CompressedTextureLayered]
 
 func (r *RefCompressedTextureLayeredImpl) Ptr() RefCounted {
-	rg := (*typedRef[CompressedTextureLayered])(r)
+	rg := (*TypedRef[CompressedTextureLayered])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCompressedTextureLayeredImpl) TypedPtr() CompressedTextureLayered {
-	rg := (*typedRef[CompressedTextureLayered])(r)
+	rg := (*TypedRef[CompressedTextureLayered])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCompressedTextureLayeredImpl) Ref(from Ref) {
-	rg := (*typedRef[CompressedTextureLayered])(r)
+	rg := (*TypedRef[CompressedTextureLayered])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCompressedTextureLayeredImpl) TypedRef(from *RefCompressedTextureLayeredImpl) {
-	rg := (*typedRef[CompressedTextureLayered])(r)
-	t := (*typedRef[CompressedTextureLayered])(from)
-	rg.TypedRef((*typedRef[CompressedTextureLayered])(t))
+	rg := (*TypedRef[CompressedTextureLayered])(r)
+	t := (*TypedRef[CompressedTextureLayered])(from)
+	rg.TypedRef((*TypedRef[CompressedTextureLayered])(t))
 }
 
 func (r *RefCompressedTextureLayeredImpl) Unref() {
-	rg := (*typedRef[CompressedTextureLayered])(r)
+	rg := (*TypedRef[CompressedTextureLayered])(r)
 	rg.Unref()
 }
 
@@ -5220,31 +5220,31 @@ type RefConcavePolygonShape2D interface {
 	TypedPtr() ConcavePolygonShape2D
 }
 
-type RefConcavePolygonShape2DImpl typedRef[ConcavePolygonShape2D]
+type RefConcavePolygonShape2DImpl TypedRef[ConcavePolygonShape2D]
 
 func (r *RefConcavePolygonShape2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[ConcavePolygonShape2D])(r)
+	rg := (*TypedRef[ConcavePolygonShape2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefConcavePolygonShape2DImpl) TypedPtr() ConcavePolygonShape2D {
-	rg := (*typedRef[ConcavePolygonShape2D])(r)
+	rg := (*TypedRef[ConcavePolygonShape2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefConcavePolygonShape2DImpl) Ref(from Ref) {
-	rg := (*typedRef[ConcavePolygonShape2D])(r)
+	rg := (*TypedRef[ConcavePolygonShape2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefConcavePolygonShape2DImpl) TypedRef(from *RefConcavePolygonShape2DImpl) {
-	rg := (*typedRef[ConcavePolygonShape2D])(r)
-	t := (*typedRef[ConcavePolygonShape2D])(from)
-	rg.TypedRef((*typedRef[ConcavePolygonShape2D])(t))
+	rg := (*TypedRef[ConcavePolygonShape2D])(r)
+	t := (*TypedRef[ConcavePolygonShape2D])(from)
+	rg.TypedRef((*TypedRef[ConcavePolygonShape2D])(t))
 }
 
 func (r *RefConcavePolygonShape2DImpl) Unref() {
-	rg := (*typedRef[ConcavePolygonShape2D])(r)
+	rg := (*TypedRef[ConcavePolygonShape2D])(r)
 	rg.Unref()
 }
 
@@ -5272,31 +5272,31 @@ type RefConcavePolygonShape3D interface {
 	TypedPtr() ConcavePolygonShape3D
 }
 
-type RefConcavePolygonShape3DImpl typedRef[ConcavePolygonShape3D]
+type RefConcavePolygonShape3DImpl TypedRef[ConcavePolygonShape3D]
 
 func (r *RefConcavePolygonShape3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[ConcavePolygonShape3D])(r)
+	rg := (*TypedRef[ConcavePolygonShape3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefConcavePolygonShape3DImpl) TypedPtr() ConcavePolygonShape3D {
-	rg := (*typedRef[ConcavePolygonShape3D])(r)
+	rg := (*TypedRef[ConcavePolygonShape3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefConcavePolygonShape3DImpl) Ref(from Ref) {
-	rg := (*typedRef[ConcavePolygonShape3D])(r)
+	rg := (*TypedRef[ConcavePolygonShape3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefConcavePolygonShape3DImpl) TypedRef(from *RefConcavePolygonShape3DImpl) {
-	rg := (*typedRef[ConcavePolygonShape3D])(r)
-	t := (*typedRef[ConcavePolygonShape3D])(from)
-	rg.TypedRef((*typedRef[ConcavePolygonShape3D])(t))
+	rg := (*TypedRef[ConcavePolygonShape3D])(r)
+	t := (*TypedRef[ConcavePolygonShape3D])(from)
+	rg.TypedRef((*TypedRef[ConcavePolygonShape3D])(t))
 }
 
 func (r *RefConcavePolygonShape3DImpl) Unref() {
-	rg := (*typedRef[ConcavePolygonShape3D])(r)
+	rg := (*TypedRef[ConcavePolygonShape3D])(r)
 	rg.Unref()
 }
 
@@ -5324,31 +5324,31 @@ type RefConfigFile interface {
 	TypedPtr() ConfigFile
 }
 
-type RefConfigFileImpl typedRef[ConfigFile]
+type RefConfigFileImpl TypedRef[ConfigFile]
 
 func (r *RefConfigFileImpl) Ptr() RefCounted {
-	rg := (*typedRef[ConfigFile])(r)
+	rg := (*TypedRef[ConfigFile])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefConfigFileImpl) TypedPtr() ConfigFile {
-	rg := (*typedRef[ConfigFile])(r)
+	rg := (*TypedRef[ConfigFile])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefConfigFileImpl) Ref(from Ref) {
-	rg := (*typedRef[ConfigFile])(r)
+	rg := (*TypedRef[ConfigFile])(r)
 	rg.Ref(from)
 }
 
 func (r *RefConfigFileImpl) TypedRef(from *RefConfigFileImpl) {
-	rg := (*typedRef[ConfigFile])(r)
-	t := (*typedRef[ConfigFile])(from)
-	rg.TypedRef((*typedRef[ConfigFile])(t))
+	rg := (*TypedRef[ConfigFile])(r)
+	t := (*TypedRef[ConfigFile])(from)
+	rg.TypedRef((*TypedRef[ConfigFile])(t))
 }
 
 func (r *RefConfigFileImpl) Unref() {
-	rg := (*typedRef[ConfigFile])(r)
+	rg := (*TypedRef[ConfigFile])(r)
 	rg.Unref()
 }
 
@@ -5376,31 +5376,31 @@ type RefConvexPolygonShape2D interface {
 	TypedPtr() ConvexPolygonShape2D
 }
 
-type RefConvexPolygonShape2DImpl typedRef[ConvexPolygonShape2D]
+type RefConvexPolygonShape2DImpl TypedRef[ConvexPolygonShape2D]
 
 func (r *RefConvexPolygonShape2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[ConvexPolygonShape2D])(r)
+	rg := (*TypedRef[ConvexPolygonShape2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefConvexPolygonShape2DImpl) TypedPtr() ConvexPolygonShape2D {
-	rg := (*typedRef[ConvexPolygonShape2D])(r)
+	rg := (*TypedRef[ConvexPolygonShape2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefConvexPolygonShape2DImpl) Ref(from Ref) {
-	rg := (*typedRef[ConvexPolygonShape2D])(r)
+	rg := (*TypedRef[ConvexPolygonShape2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefConvexPolygonShape2DImpl) TypedRef(from *RefConvexPolygonShape2DImpl) {
-	rg := (*typedRef[ConvexPolygonShape2D])(r)
-	t := (*typedRef[ConvexPolygonShape2D])(from)
-	rg.TypedRef((*typedRef[ConvexPolygonShape2D])(t))
+	rg := (*TypedRef[ConvexPolygonShape2D])(r)
+	t := (*TypedRef[ConvexPolygonShape2D])(from)
+	rg.TypedRef((*TypedRef[ConvexPolygonShape2D])(t))
 }
 
 func (r *RefConvexPolygonShape2DImpl) Unref() {
-	rg := (*typedRef[ConvexPolygonShape2D])(r)
+	rg := (*TypedRef[ConvexPolygonShape2D])(r)
 	rg.Unref()
 }
 
@@ -5428,31 +5428,31 @@ type RefConvexPolygonShape3D interface {
 	TypedPtr() ConvexPolygonShape3D
 }
 
-type RefConvexPolygonShape3DImpl typedRef[ConvexPolygonShape3D]
+type RefConvexPolygonShape3DImpl TypedRef[ConvexPolygonShape3D]
 
 func (r *RefConvexPolygonShape3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[ConvexPolygonShape3D])(r)
+	rg := (*TypedRef[ConvexPolygonShape3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefConvexPolygonShape3DImpl) TypedPtr() ConvexPolygonShape3D {
-	rg := (*typedRef[ConvexPolygonShape3D])(r)
+	rg := (*TypedRef[ConvexPolygonShape3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefConvexPolygonShape3DImpl) Ref(from Ref) {
-	rg := (*typedRef[ConvexPolygonShape3D])(r)
+	rg := (*TypedRef[ConvexPolygonShape3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefConvexPolygonShape3DImpl) TypedRef(from *RefConvexPolygonShape3DImpl) {
-	rg := (*typedRef[ConvexPolygonShape3D])(r)
-	t := (*typedRef[ConvexPolygonShape3D])(from)
-	rg.TypedRef((*typedRef[ConvexPolygonShape3D])(t))
+	rg := (*TypedRef[ConvexPolygonShape3D])(r)
+	t := (*TypedRef[ConvexPolygonShape3D])(from)
+	rg.TypedRef((*TypedRef[ConvexPolygonShape3D])(t))
 }
 
 func (r *RefConvexPolygonShape3DImpl) Unref() {
-	rg := (*typedRef[ConvexPolygonShape3D])(r)
+	rg := (*TypedRef[ConvexPolygonShape3D])(r)
 	rg.Unref()
 }
 
@@ -5480,31 +5480,31 @@ type RefCrypto interface {
 	TypedPtr() Crypto
 }
 
-type RefCryptoImpl typedRef[Crypto]
+type RefCryptoImpl TypedRef[Crypto]
 
 func (r *RefCryptoImpl) Ptr() RefCounted {
-	rg := (*typedRef[Crypto])(r)
+	rg := (*TypedRef[Crypto])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCryptoImpl) TypedPtr() Crypto {
-	rg := (*typedRef[Crypto])(r)
+	rg := (*TypedRef[Crypto])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCryptoImpl) Ref(from Ref) {
-	rg := (*typedRef[Crypto])(r)
+	rg := (*TypedRef[Crypto])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCryptoImpl) TypedRef(from *RefCryptoImpl) {
-	rg := (*typedRef[Crypto])(r)
-	t := (*typedRef[Crypto])(from)
-	rg.TypedRef((*typedRef[Crypto])(t))
+	rg := (*TypedRef[Crypto])(r)
+	t := (*TypedRef[Crypto])(from)
+	rg.TypedRef((*TypedRef[Crypto])(t))
 }
 
 func (r *RefCryptoImpl) Unref() {
-	rg := (*typedRef[Crypto])(r)
+	rg := (*TypedRef[Crypto])(r)
 	rg.Unref()
 }
 
@@ -5532,31 +5532,31 @@ type RefCryptoKey interface {
 	TypedPtr() CryptoKey
 }
 
-type RefCryptoKeyImpl typedRef[CryptoKey]
+type RefCryptoKeyImpl TypedRef[CryptoKey]
 
 func (r *RefCryptoKeyImpl) Ptr() RefCounted {
-	rg := (*typedRef[CryptoKey])(r)
+	rg := (*TypedRef[CryptoKey])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCryptoKeyImpl) TypedPtr() CryptoKey {
-	rg := (*typedRef[CryptoKey])(r)
+	rg := (*TypedRef[CryptoKey])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCryptoKeyImpl) Ref(from Ref) {
-	rg := (*typedRef[CryptoKey])(r)
+	rg := (*TypedRef[CryptoKey])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCryptoKeyImpl) TypedRef(from *RefCryptoKeyImpl) {
-	rg := (*typedRef[CryptoKey])(r)
-	t := (*typedRef[CryptoKey])(from)
-	rg.TypedRef((*typedRef[CryptoKey])(t))
+	rg := (*TypedRef[CryptoKey])(r)
+	t := (*TypedRef[CryptoKey])(from)
+	rg.TypedRef((*TypedRef[CryptoKey])(t))
 }
 
 func (r *RefCryptoKeyImpl) Unref() {
-	rg := (*typedRef[CryptoKey])(r)
+	rg := (*TypedRef[CryptoKey])(r)
 	rg.Unref()
 }
 
@@ -5584,31 +5584,31 @@ type RefCubemap interface {
 	TypedPtr() Cubemap
 }
 
-type RefCubemapImpl typedRef[Cubemap]
+type RefCubemapImpl TypedRef[Cubemap]
 
 func (r *RefCubemapImpl) Ptr() RefCounted {
-	rg := (*typedRef[Cubemap])(r)
+	rg := (*TypedRef[Cubemap])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCubemapImpl) TypedPtr() Cubemap {
-	rg := (*typedRef[Cubemap])(r)
+	rg := (*TypedRef[Cubemap])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCubemapImpl) Ref(from Ref) {
-	rg := (*typedRef[Cubemap])(r)
+	rg := (*TypedRef[Cubemap])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCubemapImpl) TypedRef(from *RefCubemapImpl) {
-	rg := (*typedRef[Cubemap])(r)
-	t := (*typedRef[Cubemap])(from)
-	rg.TypedRef((*typedRef[Cubemap])(t))
+	rg := (*TypedRef[Cubemap])(r)
+	t := (*TypedRef[Cubemap])(from)
+	rg.TypedRef((*TypedRef[Cubemap])(t))
 }
 
 func (r *RefCubemapImpl) Unref() {
-	rg := (*typedRef[Cubemap])(r)
+	rg := (*TypedRef[Cubemap])(r)
 	rg.Unref()
 }
 
@@ -5636,31 +5636,31 @@ type RefCubemapArray interface {
 	TypedPtr() CubemapArray
 }
 
-type RefCubemapArrayImpl typedRef[CubemapArray]
+type RefCubemapArrayImpl TypedRef[CubemapArray]
 
 func (r *RefCubemapArrayImpl) Ptr() RefCounted {
-	rg := (*typedRef[CubemapArray])(r)
+	rg := (*TypedRef[CubemapArray])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCubemapArrayImpl) TypedPtr() CubemapArray {
-	rg := (*typedRef[CubemapArray])(r)
+	rg := (*TypedRef[CubemapArray])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCubemapArrayImpl) Ref(from Ref) {
-	rg := (*typedRef[CubemapArray])(r)
+	rg := (*TypedRef[CubemapArray])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCubemapArrayImpl) TypedRef(from *RefCubemapArrayImpl) {
-	rg := (*typedRef[CubemapArray])(r)
-	t := (*typedRef[CubemapArray])(from)
-	rg.TypedRef((*typedRef[CubemapArray])(t))
+	rg := (*TypedRef[CubemapArray])(r)
+	t := (*TypedRef[CubemapArray])(from)
+	rg.TypedRef((*TypedRef[CubemapArray])(t))
 }
 
 func (r *RefCubemapArrayImpl) Unref() {
-	rg := (*typedRef[CubemapArray])(r)
+	rg := (*TypedRef[CubemapArray])(r)
 	rg.Unref()
 }
 
@@ -5688,31 +5688,31 @@ type RefCurve interface {
 	TypedPtr() Curve
 }
 
-type RefCurveImpl typedRef[Curve]
+type RefCurveImpl TypedRef[Curve]
 
 func (r *RefCurveImpl) Ptr() RefCounted {
-	rg := (*typedRef[Curve])(r)
+	rg := (*TypedRef[Curve])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCurveImpl) TypedPtr() Curve {
-	rg := (*typedRef[Curve])(r)
+	rg := (*TypedRef[Curve])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCurveImpl) Ref(from Ref) {
-	rg := (*typedRef[Curve])(r)
+	rg := (*TypedRef[Curve])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCurveImpl) TypedRef(from *RefCurveImpl) {
-	rg := (*typedRef[Curve])(r)
-	t := (*typedRef[Curve])(from)
-	rg.TypedRef((*typedRef[Curve])(t))
+	rg := (*TypedRef[Curve])(r)
+	t := (*TypedRef[Curve])(from)
+	rg.TypedRef((*TypedRef[Curve])(t))
 }
 
 func (r *RefCurveImpl) Unref() {
-	rg := (*typedRef[Curve])(r)
+	rg := (*TypedRef[Curve])(r)
 	rg.Unref()
 }
 
@@ -5740,31 +5740,31 @@ type RefCurve2D interface {
 	TypedPtr() Curve2D
 }
 
-type RefCurve2DImpl typedRef[Curve2D]
+type RefCurve2DImpl TypedRef[Curve2D]
 
 func (r *RefCurve2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[Curve2D])(r)
+	rg := (*TypedRef[Curve2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCurve2DImpl) TypedPtr() Curve2D {
-	rg := (*typedRef[Curve2D])(r)
+	rg := (*TypedRef[Curve2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCurve2DImpl) Ref(from Ref) {
-	rg := (*typedRef[Curve2D])(r)
+	rg := (*TypedRef[Curve2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCurve2DImpl) TypedRef(from *RefCurve2DImpl) {
-	rg := (*typedRef[Curve2D])(r)
-	t := (*typedRef[Curve2D])(from)
-	rg.TypedRef((*typedRef[Curve2D])(t))
+	rg := (*TypedRef[Curve2D])(r)
+	t := (*TypedRef[Curve2D])(from)
+	rg.TypedRef((*TypedRef[Curve2D])(t))
 }
 
 func (r *RefCurve2DImpl) Unref() {
-	rg := (*typedRef[Curve2D])(r)
+	rg := (*TypedRef[Curve2D])(r)
 	rg.Unref()
 }
 
@@ -5792,31 +5792,31 @@ type RefCurve3D interface {
 	TypedPtr() Curve3D
 }
 
-type RefCurve3DImpl typedRef[Curve3D]
+type RefCurve3DImpl TypedRef[Curve3D]
 
 func (r *RefCurve3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[Curve3D])(r)
+	rg := (*TypedRef[Curve3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCurve3DImpl) TypedPtr() Curve3D {
-	rg := (*typedRef[Curve3D])(r)
+	rg := (*TypedRef[Curve3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCurve3DImpl) Ref(from Ref) {
-	rg := (*typedRef[Curve3D])(r)
+	rg := (*TypedRef[Curve3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCurve3DImpl) TypedRef(from *RefCurve3DImpl) {
-	rg := (*typedRef[Curve3D])(r)
-	t := (*typedRef[Curve3D])(from)
-	rg.TypedRef((*typedRef[Curve3D])(t))
+	rg := (*TypedRef[Curve3D])(r)
+	t := (*TypedRef[Curve3D])(from)
+	rg.TypedRef((*TypedRef[Curve3D])(t))
 }
 
 func (r *RefCurve3DImpl) Unref() {
-	rg := (*typedRef[Curve3D])(r)
+	rg := (*TypedRef[Curve3D])(r)
 	rg.Unref()
 }
 
@@ -5844,31 +5844,31 @@ type RefCurveTexture interface {
 	TypedPtr() CurveTexture
 }
 
-type RefCurveTextureImpl typedRef[CurveTexture]
+type RefCurveTextureImpl TypedRef[CurveTexture]
 
 func (r *RefCurveTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[CurveTexture])(r)
+	rg := (*TypedRef[CurveTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCurveTextureImpl) TypedPtr() CurveTexture {
-	rg := (*typedRef[CurveTexture])(r)
+	rg := (*TypedRef[CurveTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCurveTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[CurveTexture])(r)
+	rg := (*TypedRef[CurveTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCurveTextureImpl) TypedRef(from *RefCurveTextureImpl) {
-	rg := (*typedRef[CurveTexture])(r)
-	t := (*typedRef[CurveTexture])(from)
-	rg.TypedRef((*typedRef[CurveTexture])(t))
+	rg := (*TypedRef[CurveTexture])(r)
+	t := (*TypedRef[CurveTexture])(from)
+	rg.TypedRef((*TypedRef[CurveTexture])(t))
 }
 
 func (r *RefCurveTextureImpl) Unref() {
-	rg := (*typedRef[CurveTexture])(r)
+	rg := (*TypedRef[CurveTexture])(r)
 	rg.Unref()
 }
 
@@ -5896,31 +5896,31 @@ type RefCurveXYZTexture interface {
 	TypedPtr() CurveXYZTexture
 }
 
-type RefCurveXYZTextureImpl typedRef[CurveXYZTexture]
+type RefCurveXYZTextureImpl TypedRef[CurveXYZTexture]
 
 func (r *RefCurveXYZTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[CurveXYZTexture])(r)
+	rg := (*TypedRef[CurveXYZTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCurveXYZTextureImpl) TypedPtr() CurveXYZTexture {
-	rg := (*typedRef[CurveXYZTexture])(r)
+	rg := (*TypedRef[CurveXYZTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCurveXYZTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[CurveXYZTexture])(r)
+	rg := (*TypedRef[CurveXYZTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCurveXYZTextureImpl) TypedRef(from *RefCurveXYZTextureImpl) {
-	rg := (*typedRef[CurveXYZTexture])(r)
-	t := (*typedRef[CurveXYZTexture])(from)
-	rg.TypedRef((*typedRef[CurveXYZTexture])(t))
+	rg := (*TypedRef[CurveXYZTexture])(r)
+	t := (*TypedRef[CurveXYZTexture])(from)
+	rg.TypedRef((*TypedRef[CurveXYZTexture])(t))
 }
 
 func (r *RefCurveXYZTextureImpl) Unref() {
-	rg := (*typedRef[CurveXYZTexture])(r)
+	rg := (*TypedRef[CurveXYZTexture])(r)
 	rg.Unref()
 }
 
@@ -5948,31 +5948,31 @@ type RefCylinderMesh interface {
 	TypedPtr() CylinderMesh
 }
 
-type RefCylinderMeshImpl typedRef[CylinderMesh]
+type RefCylinderMeshImpl TypedRef[CylinderMesh]
 
 func (r *RefCylinderMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[CylinderMesh])(r)
+	rg := (*TypedRef[CylinderMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCylinderMeshImpl) TypedPtr() CylinderMesh {
-	rg := (*typedRef[CylinderMesh])(r)
+	rg := (*TypedRef[CylinderMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCylinderMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[CylinderMesh])(r)
+	rg := (*TypedRef[CylinderMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCylinderMeshImpl) TypedRef(from *RefCylinderMeshImpl) {
-	rg := (*typedRef[CylinderMesh])(r)
-	t := (*typedRef[CylinderMesh])(from)
-	rg.TypedRef((*typedRef[CylinderMesh])(t))
+	rg := (*TypedRef[CylinderMesh])(r)
+	t := (*TypedRef[CylinderMesh])(from)
+	rg.TypedRef((*TypedRef[CylinderMesh])(t))
 }
 
 func (r *RefCylinderMeshImpl) Unref() {
-	rg := (*typedRef[CylinderMesh])(r)
+	rg := (*TypedRef[CylinderMesh])(r)
 	rg.Unref()
 }
 
@@ -6000,31 +6000,31 @@ type RefCylinderShape3D interface {
 	TypedPtr() CylinderShape3D
 }
 
-type RefCylinderShape3DImpl typedRef[CylinderShape3D]
+type RefCylinderShape3DImpl TypedRef[CylinderShape3D]
 
 func (r *RefCylinderShape3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[CylinderShape3D])(r)
+	rg := (*TypedRef[CylinderShape3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefCylinderShape3DImpl) TypedPtr() CylinderShape3D {
-	rg := (*typedRef[CylinderShape3D])(r)
+	rg := (*TypedRef[CylinderShape3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefCylinderShape3DImpl) Ref(from Ref) {
-	rg := (*typedRef[CylinderShape3D])(r)
+	rg := (*TypedRef[CylinderShape3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefCylinderShape3DImpl) TypedRef(from *RefCylinderShape3DImpl) {
-	rg := (*typedRef[CylinderShape3D])(r)
-	t := (*typedRef[CylinderShape3D])(from)
-	rg.TypedRef((*typedRef[CylinderShape3D])(t))
+	rg := (*TypedRef[CylinderShape3D])(r)
+	t := (*TypedRef[CylinderShape3D])(from)
+	rg.TypedRef((*TypedRef[CylinderShape3D])(t))
 }
 
 func (r *RefCylinderShape3DImpl) Unref() {
-	rg := (*typedRef[CylinderShape3D])(r)
+	rg := (*TypedRef[CylinderShape3D])(r)
 	rg.Unref()
 }
 
@@ -6052,31 +6052,31 @@ type RefDTLSServer interface {
 	TypedPtr() DTLSServer
 }
 
-type RefDTLSServerImpl typedRef[DTLSServer]
+type RefDTLSServerImpl TypedRef[DTLSServer]
 
 func (r *RefDTLSServerImpl) Ptr() RefCounted {
-	rg := (*typedRef[DTLSServer])(r)
+	rg := (*TypedRef[DTLSServer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefDTLSServerImpl) TypedPtr() DTLSServer {
-	rg := (*typedRef[DTLSServer])(r)
+	rg := (*TypedRef[DTLSServer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefDTLSServerImpl) Ref(from Ref) {
-	rg := (*typedRef[DTLSServer])(r)
+	rg := (*TypedRef[DTLSServer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefDTLSServerImpl) TypedRef(from *RefDTLSServerImpl) {
-	rg := (*typedRef[DTLSServer])(r)
-	t := (*typedRef[DTLSServer])(from)
-	rg.TypedRef((*typedRef[DTLSServer])(t))
+	rg := (*TypedRef[DTLSServer])(r)
+	t := (*TypedRef[DTLSServer])(from)
+	rg.TypedRef((*TypedRef[DTLSServer])(t))
 }
 
 func (r *RefDTLSServerImpl) Unref() {
-	rg := (*typedRef[DTLSServer])(r)
+	rg := (*TypedRef[DTLSServer])(r)
 	rg.Unref()
 }
 
@@ -6104,31 +6104,31 @@ type RefDirAccess interface {
 	TypedPtr() DirAccess
 }
 
-type RefDirAccessImpl typedRef[DirAccess]
+type RefDirAccessImpl TypedRef[DirAccess]
 
 func (r *RefDirAccessImpl) Ptr() RefCounted {
-	rg := (*typedRef[DirAccess])(r)
+	rg := (*TypedRef[DirAccess])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefDirAccessImpl) TypedPtr() DirAccess {
-	rg := (*typedRef[DirAccess])(r)
+	rg := (*TypedRef[DirAccess])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefDirAccessImpl) Ref(from Ref) {
-	rg := (*typedRef[DirAccess])(r)
+	rg := (*TypedRef[DirAccess])(r)
 	rg.Ref(from)
 }
 
 func (r *RefDirAccessImpl) TypedRef(from *RefDirAccessImpl) {
-	rg := (*typedRef[DirAccess])(r)
-	t := (*typedRef[DirAccess])(from)
-	rg.TypedRef((*typedRef[DirAccess])(t))
+	rg := (*TypedRef[DirAccess])(r)
+	t := (*TypedRef[DirAccess])(from)
+	rg.TypedRef((*TypedRef[DirAccess])(t))
 }
 
 func (r *RefDirAccessImpl) Unref() {
-	rg := (*typedRef[DirAccess])(r)
+	rg := (*TypedRef[DirAccess])(r)
 	rg.Unref()
 }
 
@@ -6156,31 +6156,31 @@ type RefENetConnection interface {
 	TypedPtr() ENetConnection
 }
 
-type RefENetConnectionImpl typedRef[ENetConnection]
+type RefENetConnectionImpl TypedRef[ENetConnection]
 
 func (r *RefENetConnectionImpl) Ptr() RefCounted {
-	rg := (*typedRef[ENetConnection])(r)
+	rg := (*TypedRef[ENetConnection])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefENetConnectionImpl) TypedPtr() ENetConnection {
-	rg := (*typedRef[ENetConnection])(r)
+	rg := (*TypedRef[ENetConnection])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefENetConnectionImpl) Ref(from Ref) {
-	rg := (*typedRef[ENetConnection])(r)
+	rg := (*TypedRef[ENetConnection])(r)
 	rg.Ref(from)
 }
 
 func (r *RefENetConnectionImpl) TypedRef(from *RefENetConnectionImpl) {
-	rg := (*typedRef[ENetConnection])(r)
-	t := (*typedRef[ENetConnection])(from)
-	rg.TypedRef((*typedRef[ENetConnection])(t))
+	rg := (*TypedRef[ENetConnection])(r)
+	t := (*TypedRef[ENetConnection])(from)
+	rg.TypedRef((*TypedRef[ENetConnection])(t))
 }
 
 func (r *RefENetConnectionImpl) Unref() {
-	rg := (*typedRef[ENetConnection])(r)
+	rg := (*TypedRef[ENetConnection])(r)
 	rg.Unref()
 }
 
@@ -6208,31 +6208,31 @@ type RefENetMultiplayerPeer interface {
 	TypedPtr() ENetMultiplayerPeer
 }
 
-type RefENetMultiplayerPeerImpl typedRef[ENetMultiplayerPeer]
+type RefENetMultiplayerPeerImpl TypedRef[ENetMultiplayerPeer]
 
 func (r *RefENetMultiplayerPeerImpl) Ptr() RefCounted {
-	rg := (*typedRef[ENetMultiplayerPeer])(r)
+	rg := (*TypedRef[ENetMultiplayerPeer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefENetMultiplayerPeerImpl) TypedPtr() ENetMultiplayerPeer {
-	rg := (*typedRef[ENetMultiplayerPeer])(r)
+	rg := (*TypedRef[ENetMultiplayerPeer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefENetMultiplayerPeerImpl) Ref(from Ref) {
-	rg := (*typedRef[ENetMultiplayerPeer])(r)
+	rg := (*TypedRef[ENetMultiplayerPeer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefENetMultiplayerPeerImpl) TypedRef(from *RefENetMultiplayerPeerImpl) {
-	rg := (*typedRef[ENetMultiplayerPeer])(r)
-	t := (*typedRef[ENetMultiplayerPeer])(from)
-	rg.TypedRef((*typedRef[ENetMultiplayerPeer])(t))
+	rg := (*TypedRef[ENetMultiplayerPeer])(r)
+	t := (*TypedRef[ENetMultiplayerPeer])(from)
+	rg.TypedRef((*TypedRef[ENetMultiplayerPeer])(t))
 }
 
 func (r *RefENetMultiplayerPeerImpl) Unref() {
-	rg := (*typedRef[ENetMultiplayerPeer])(r)
+	rg := (*TypedRef[ENetMultiplayerPeer])(r)
 	rg.Unref()
 }
 
@@ -6260,31 +6260,31 @@ type RefENetPacketPeer interface {
 	TypedPtr() ENetPacketPeer
 }
 
-type RefENetPacketPeerImpl typedRef[ENetPacketPeer]
+type RefENetPacketPeerImpl TypedRef[ENetPacketPeer]
 
 func (r *RefENetPacketPeerImpl) Ptr() RefCounted {
-	rg := (*typedRef[ENetPacketPeer])(r)
+	rg := (*TypedRef[ENetPacketPeer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefENetPacketPeerImpl) TypedPtr() ENetPacketPeer {
-	rg := (*typedRef[ENetPacketPeer])(r)
+	rg := (*TypedRef[ENetPacketPeer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefENetPacketPeerImpl) Ref(from Ref) {
-	rg := (*typedRef[ENetPacketPeer])(r)
+	rg := (*TypedRef[ENetPacketPeer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefENetPacketPeerImpl) TypedRef(from *RefENetPacketPeerImpl) {
-	rg := (*typedRef[ENetPacketPeer])(r)
-	t := (*typedRef[ENetPacketPeer])(from)
-	rg.TypedRef((*typedRef[ENetPacketPeer])(t))
+	rg := (*TypedRef[ENetPacketPeer])(r)
+	t := (*TypedRef[ENetPacketPeer])(from)
+	rg.TypedRef((*TypedRef[ENetPacketPeer])(t))
 }
 
 func (r *RefENetPacketPeerImpl) Unref() {
-	rg := (*typedRef[ENetPacketPeer])(r)
+	rg := (*TypedRef[ENetPacketPeer])(r)
 	rg.Unref()
 }
 
@@ -6312,31 +6312,31 @@ type RefEditorDebuggerPlugin interface {
 	TypedPtr() EditorDebuggerPlugin
 }
 
-type RefEditorDebuggerPluginImpl typedRef[EditorDebuggerPlugin]
+type RefEditorDebuggerPluginImpl TypedRef[EditorDebuggerPlugin]
 
 func (r *RefEditorDebuggerPluginImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorDebuggerPlugin])(r)
+	rg := (*TypedRef[EditorDebuggerPlugin])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorDebuggerPluginImpl) TypedPtr() EditorDebuggerPlugin {
-	rg := (*typedRef[EditorDebuggerPlugin])(r)
+	rg := (*TypedRef[EditorDebuggerPlugin])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorDebuggerPluginImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorDebuggerPlugin])(r)
+	rg := (*TypedRef[EditorDebuggerPlugin])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorDebuggerPluginImpl) TypedRef(from *RefEditorDebuggerPluginImpl) {
-	rg := (*typedRef[EditorDebuggerPlugin])(r)
-	t := (*typedRef[EditorDebuggerPlugin])(from)
-	rg.TypedRef((*typedRef[EditorDebuggerPlugin])(t))
+	rg := (*TypedRef[EditorDebuggerPlugin])(r)
+	t := (*TypedRef[EditorDebuggerPlugin])(from)
+	rg.TypedRef((*TypedRef[EditorDebuggerPlugin])(t))
 }
 
 func (r *RefEditorDebuggerPluginImpl) Unref() {
-	rg := (*typedRef[EditorDebuggerPlugin])(r)
+	rg := (*TypedRef[EditorDebuggerPlugin])(r)
 	rg.Unref()
 }
 
@@ -6364,31 +6364,31 @@ type RefEditorDebuggerSession interface {
 	TypedPtr() EditorDebuggerSession
 }
 
-type RefEditorDebuggerSessionImpl typedRef[EditorDebuggerSession]
+type RefEditorDebuggerSessionImpl TypedRef[EditorDebuggerSession]
 
 func (r *RefEditorDebuggerSessionImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorDebuggerSession])(r)
+	rg := (*TypedRef[EditorDebuggerSession])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorDebuggerSessionImpl) TypedPtr() EditorDebuggerSession {
-	rg := (*typedRef[EditorDebuggerSession])(r)
+	rg := (*TypedRef[EditorDebuggerSession])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorDebuggerSessionImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorDebuggerSession])(r)
+	rg := (*TypedRef[EditorDebuggerSession])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorDebuggerSessionImpl) TypedRef(from *RefEditorDebuggerSessionImpl) {
-	rg := (*typedRef[EditorDebuggerSession])(r)
-	t := (*typedRef[EditorDebuggerSession])(from)
-	rg.TypedRef((*typedRef[EditorDebuggerSession])(t))
+	rg := (*TypedRef[EditorDebuggerSession])(r)
+	t := (*TypedRef[EditorDebuggerSession])(from)
+	rg.TypedRef((*TypedRef[EditorDebuggerSession])(t))
 }
 
 func (r *RefEditorDebuggerSessionImpl) Unref() {
-	rg := (*typedRef[EditorDebuggerSession])(r)
+	rg := (*TypedRef[EditorDebuggerSession])(r)
 	rg.Unref()
 }
 
@@ -6416,31 +6416,31 @@ type RefEditorExportPlatform interface {
 	TypedPtr() EditorExportPlatform
 }
 
-type RefEditorExportPlatformImpl typedRef[EditorExportPlatform]
+type RefEditorExportPlatformImpl TypedRef[EditorExportPlatform]
 
 func (r *RefEditorExportPlatformImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorExportPlatform])(r)
+	rg := (*TypedRef[EditorExportPlatform])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorExportPlatformImpl) TypedPtr() EditorExportPlatform {
-	rg := (*typedRef[EditorExportPlatform])(r)
+	rg := (*TypedRef[EditorExportPlatform])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorExportPlatformImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorExportPlatform])(r)
+	rg := (*TypedRef[EditorExportPlatform])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorExportPlatformImpl) TypedRef(from *RefEditorExportPlatformImpl) {
-	rg := (*typedRef[EditorExportPlatform])(r)
-	t := (*typedRef[EditorExportPlatform])(from)
-	rg.TypedRef((*typedRef[EditorExportPlatform])(t))
+	rg := (*TypedRef[EditorExportPlatform])(r)
+	t := (*TypedRef[EditorExportPlatform])(from)
+	rg.TypedRef((*TypedRef[EditorExportPlatform])(t))
 }
 
 func (r *RefEditorExportPlatformImpl) Unref() {
-	rg := (*typedRef[EditorExportPlatform])(r)
+	rg := (*TypedRef[EditorExportPlatform])(r)
 	rg.Unref()
 }
 
@@ -6468,31 +6468,31 @@ type RefEditorExportPlatformAndroid interface {
 	TypedPtr() EditorExportPlatformAndroid
 }
 
-type RefEditorExportPlatformAndroidImpl typedRef[EditorExportPlatformAndroid]
+type RefEditorExportPlatformAndroidImpl TypedRef[EditorExportPlatformAndroid]
 
 func (r *RefEditorExportPlatformAndroidImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorExportPlatformAndroid])(r)
+	rg := (*TypedRef[EditorExportPlatformAndroid])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorExportPlatformAndroidImpl) TypedPtr() EditorExportPlatformAndroid {
-	rg := (*typedRef[EditorExportPlatformAndroid])(r)
+	rg := (*TypedRef[EditorExportPlatformAndroid])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorExportPlatformAndroidImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorExportPlatformAndroid])(r)
+	rg := (*TypedRef[EditorExportPlatformAndroid])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorExportPlatformAndroidImpl) TypedRef(from *RefEditorExportPlatformAndroidImpl) {
-	rg := (*typedRef[EditorExportPlatformAndroid])(r)
-	t := (*typedRef[EditorExportPlatformAndroid])(from)
-	rg.TypedRef((*typedRef[EditorExportPlatformAndroid])(t))
+	rg := (*TypedRef[EditorExportPlatformAndroid])(r)
+	t := (*TypedRef[EditorExportPlatformAndroid])(from)
+	rg.TypedRef((*TypedRef[EditorExportPlatformAndroid])(t))
 }
 
 func (r *RefEditorExportPlatformAndroidImpl) Unref() {
-	rg := (*typedRef[EditorExportPlatformAndroid])(r)
+	rg := (*TypedRef[EditorExportPlatformAndroid])(r)
 	rg.Unref()
 }
 
@@ -6520,31 +6520,31 @@ type RefEditorExportPlatformIOS interface {
 	TypedPtr() EditorExportPlatformIOS
 }
 
-type RefEditorExportPlatformIOSImpl typedRef[EditorExportPlatformIOS]
+type RefEditorExportPlatformIOSImpl TypedRef[EditorExportPlatformIOS]
 
 func (r *RefEditorExportPlatformIOSImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorExportPlatformIOS])(r)
+	rg := (*TypedRef[EditorExportPlatformIOS])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorExportPlatformIOSImpl) TypedPtr() EditorExportPlatformIOS {
-	rg := (*typedRef[EditorExportPlatformIOS])(r)
+	rg := (*TypedRef[EditorExportPlatformIOS])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorExportPlatformIOSImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorExportPlatformIOS])(r)
+	rg := (*TypedRef[EditorExportPlatformIOS])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorExportPlatformIOSImpl) TypedRef(from *RefEditorExportPlatformIOSImpl) {
-	rg := (*typedRef[EditorExportPlatformIOS])(r)
-	t := (*typedRef[EditorExportPlatformIOS])(from)
-	rg.TypedRef((*typedRef[EditorExportPlatformIOS])(t))
+	rg := (*TypedRef[EditorExportPlatformIOS])(r)
+	t := (*TypedRef[EditorExportPlatformIOS])(from)
+	rg.TypedRef((*TypedRef[EditorExportPlatformIOS])(t))
 }
 
 func (r *RefEditorExportPlatformIOSImpl) Unref() {
-	rg := (*typedRef[EditorExportPlatformIOS])(r)
+	rg := (*TypedRef[EditorExportPlatformIOS])(r)
 	rg.Unref()
 }
 
@@ -6572,31 +6572,31 @@ type RefEditorExportPlatformLinuxBSD interface {
 	TypedPtr() EditorExportPlatformLinuxBSD
 }
 
-type RefEditorExportPlatformLinuxBSDImpl typedRef[EditorExportPlatformLinuxBSD]
+type RefEditorExportPlatformLinuxBSDImpl TypedRef[EditorExportPlatformLinuxBSD]
 
 func (r *RefEditorExportPlatformLinuxBSDImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorExportPlatformLinuxBSD])(r)
+	rg := (*TypedRef[EditorExportPlatformLinuxBSD])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorExportPlatformLinuxBSDImpl) TypedPtr() EditorExportPlatformLinuxBSD {
-	rg := (*typedRef[EditorExportPlatformLinuxBSD])(r)
+	rg := (*TypedRef[EditorExportPlatformLinuxBSD])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorExportPlatformLinuxBSDImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorExportPlatformLinuxBSD])(r)
+	rg := (*TypedRef[EditorExportPlatformLinuxBSD])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorExportPlatformLinuxBSDImpl) TypedRef(from *RefEditorExportPlatformLinuxBSDImpl) {
-	rg := (*typedRef[EditorExportPlatformLinuxBSD])(r)
-	t := (*typedRef[EditorExportPlatformLinuxBSD])(from)
-	rg.TypedRef((*typedRef[EditorExportPlatformLinuxBSD])(t))
+	rg := (*TypedRef[EditorExportPlatformLinuxBSD])(r)
+	t := (*TypedRef[EditorExportPlatformLinuxBSD])(from)
+	rg.TypedRef((*TypedRef[EditorExportPlatformLinuxBSD])(t))
 }
 
 func (r *RefEditorExportPlatformLinuxBSDImpl) Unref() {
-	rg := (*typedRef[EditorExportPlatformLinuxBSD])(r)
+	rg := (*TypedRef[EditorExportPlatformLinuxBSD])(r)
 	rg.Unref()
 }
 
@@ -6624,31 +6624,31 @@ type RefEditorExportPlatformMacOS interface {
 	TypedPtr() EditorExportPlatformMacOS
 }
 
-type RefEditorExportPlatformMacOSImpl typedRef[EditorExportPlatformMacOS]
+type RefEditorExportPlatformMacOSImpl TypedRef[EditorExportPlatformMacOS]
 
 func (r *RefEditorExportPlatformMacOSImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorExportPlatformMacOS])(r)
+	rg := (*TypedRef[EditorExportPlatformMacOS])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorExportPlatformMacOSImpl) TypedPtr() EditorExportPlatformMacOS {
-	rg := (*typedRef[EditorExportPlatformMacOS])(r)
+	rg := (*TypedRef[EditorExportPlatformMacOS])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorExportPlatformMacOSImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorExportPlatformMacOS])(r)
+	rg := (*TypedRef[EditorExportPlatformMacOS])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorExportPlatformMacOSImpl) TypedRef(from *RefEditorExportPlatformMacOSImpl) {
-	rg := (*typedRef[EditorExportPlatformMacOS])(r)
-	t := (*typedRef[EditorExportPlatformMacOS])(from)
-	rg.TypedRef((*typedRef[EditorExportPlatformMacOS])(t))
+	rg := (*TypedRef[EditorExportPlatformMacOS])(r)
+	t := (*TypedRef[EditorExportPlatformMacOS])(from)
+	rg.TypedRef((*TypedRef[EditorExportPlatformMacOS])(t))
 }
 
 func (r *RefEditorExportPlatformMacOSImpl) Unref() {
-	rg := (*typedRef[EditorExportPlatformMacOS])(r)
+	rg := (*TypedRef[EditorExportPlatformMacOS])(r)
 	rg.Unref()
 }
 
@@ -6676,31 +6676,31 @@ type RefEditorExportPlatformPC interface {
 	TypedPtr() EditorExportPlatformPC
 }
 
-type RefEditorExportPlatformPCImpl typedRef[EditorExportPlatformPC]
+type RefEditorExportPlatformPCImpl TypedRef[EditorExportPlatformPC]
 
 func (r *RefEditorExportPlatformPCImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorExportPlatformPC])(r)
+	rg := (*TypedRef[EditorExportPlatformPC])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorExportPlatformPCImpl) TypedPtr() EditorExportPlatformPC {
-	rg := (*typedRef[EditorExportPlatformPC])(r)
+	rg := (*TypedRef[EditorExportPlatformPC])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorExportPlatformPCImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorExportPlatformPC])(r)
+	rg := (*TypedRef[EditorExportPlatformPC])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorExportPlatformPCImpl) TypedRef(from *RefEditorExportPlatformPCImpl) {
-	rg := (*typedRef[EditorExportPlatformPC])(r)
-	t := (*typedRef[EditorExportPlatformPC])(from)
-	rg.TypedRef((*typedRef[EditorExportPlatformPC])(t))
+	rg := (*TypedRef[EditorExportPlatformPC])(r)
+	t := (*TypedRef[EditorExportPlatformPC])(from)
+	rg.TypedRef((*TypedRef[EditorExportPlatformPC])(t))
 }
 
 func (r *RefEditorExportPlatformPCImpl) Unref() {
-	rg := (*typedRef[EditorExportPlatformPC])(r)
+	rg := (*TypedRef[EditorExportPlatformPC])(r)
 	rg.Unref()
 }
 
@@ -6728,31 +6728,31 @@ type RefEditorExportPlatformWeb interface {
 	TypedPtr() EditorExportPlatformWeb
 }
 
-type RefEditorExportPlatformWebImpl typedRef[EditorExportPlatformWeb]
+type RefEditorExportPlatformWebImpl TypedRef[EditorExportPlatformWeb]
 
 func (r *RefEditorExportPlatformWebImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorExportPlatformWeb])(r)
+	rg := (*TypedRef[EditorExportPlatformWeb])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorExportPlatformWebImpl) TypedPtr() EditorExportPlatformWeb {
-	rg := (*typedRef[EditorExportPlatformWeb])(r)
+	rg := (*TypedRef[EditorExportPlatformWeb])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorExportPlatformWebImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorExportPlatformWeb])(r)
+	rg := (*TypedRef[EditorExportPlatformWeb])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorExportPlatformWebImpl) TypedRef(from *RefEditorExportPlatformWebImpl) {
-	rg := (*typedRef[EditorExportPlatformWeb])(r)
-	t := (*typedRef[EditorExportPlatformWeb])(from)
-	rg.TypedRef((*typedRef[EditorExportPlatformWeb])(t))
+	rg := (*TypedRef[EditorExportPlatformWeb])(r)
+	t := (*TypedRef[EditorExportPlatformWeb])(from)
+	rg.TypedRef((*TypedRef[EditorExportPlatformWeb])(t))
 }
 
 func (r *RefEditorExportPlatformWebImpl) Unref() {
-	rg := (*typedRef[EditorExportPlatformWeb])(r)
+	rg := (*TypedRef[EditorExportPlatformWeb])(r)
 	rg.Unref()
 }
 
@@ -6780,31 +6780,31 @@ type RefEditorExportPlatformWindows interface {
 	TypedPtr() EditorExportPlatformWindows
 }
 
-type RefEditorExportPlatformWindowsImpl typedRef[EditorExportPlatformWindows]
+type RefEditorExportPlatformWindowsImpl TypedRef[EditorExportPlatformWindows]
 
 func (r *RefEditorExportPlatformWindowsImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorExportPlatformWindows])(r)
+	rg := (*TypedRef[EditorExportPlatformWindows])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorExportPlatformWindowsImpl) TypedPtr() EditorExportPlatformWindows {
-	rg := (*typedRef[EditorExportPlatformWindows])(r)
+	rg := (*TypedRef[EditorExportPlatformWindows])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorExportPlatformWindowsImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorExportPlatformWindows])(r)
+	rg := (*TypedRef[EditorExportPlatformWindows])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorExportPlatformWindowsImpl) TypedRef(from *RefEditorExportPlatformWindowsImpl) {
-	rg := (*typedRef[EditorExportPlatformWindows])(r)
-	t := (*typedRef[EditorExportPlatformWindows])(from)
-	rg.TypedRef((*typedRef[EditorExportPlatformWindows])(t))
+	rg := (*TypedRef[EditorExportPlatformWindows])(r)
+	t := (*TypedRef[EditorExportPlatformWindows])(from)
+	rg.TypedRef((*TypedRef[EditorExportPlatformWindows])(t))
 }
 
 func (r *RefEditorExportPlatformWindowsImpl) Unref() {
-	rg := (*typedRef[EditorExportPlatformWindows])(r)
+	rg := (*TypedRef[EditorExportPlatformWindows])(r)
 	rg.Unref()
 }
 
@@ -6832,31 +6832,31 @@ type RefEditorExportPlugin interface {
 	TypedPtr() EditorExportPlugin
 }
 
-type RefEditorExportPluginImpl typedRef[EditorExportPlugin]
+type RefEditorExportPluginImpl TypedRef[EditorExportPlugin]
 
 func (r *RefEditorExportPluginImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorExportPlugin])(r)
+	rg := (*TypedRef[EditorExportPlugin])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorExportPluginImpl) TypedPtr() EditorExportPlugin {
-	rg := (*typedRef[EditorExportPlugin])(r)
+	rg := (*TypedRef[EditorExportPlugin])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorExportPluginImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorExportPlugin])(r)
+	rg := (*TypedRef[EditorExportPlugin])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorExportPluginImpl) TypedRef(from *RefEditorExportPluginImpl) {
-	rg := (*typedRef[EditorExportPlugin])(r)
-	t := (*typedRef[EditorExportPlugin])(from)
-	rg.TypedRef((*typedRef[EditorExportPlugin])(t))
+	rg := (*TypedRef[EditorExportPlugin])(r)
+	t := (*TypedRef[EditorExportPlugin])(from)
+	rg.TypedRef((*TypedRef[EditorExportPlugin])(t))
 }
 
 func (r *RefEditorExportPluginImpl) Unref() {
-	rg := (*typedRef[EditorExportPlugin])(r)
+	rg := (*TypedRef[EditorExportPlugin])(r)
 	rg.Unref()
 }
 
@@ -6884,31 +6884,31 @@ type RefEditorFeatureProfile interface {
 	TypedPtr() EditorFeatureProfile
 }
 
-type RefEditorFeatureProfileImpl typedRef[EditorFeatureProfile]
+type RefEditorFeatureProfileImpl TypedRef[EditorFeatureProfile]
 
 func (r *RefEditorFeatureProfileImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorFeatureProfile])(r)
+	rg := (*TypedRef[EditorFeatureProfile])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorFeatureProfileImpl) TypedPtr() EditorFeatureProfile {
-	rg := (*typedRef[EditorFeatureProfile])(r)
+	rg := (*TypedRef[EditorFeatureProfile])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorFeatureProfileImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorFeatureProfile])(r)
+	rg := (*TypedRef[EditorFeatureProfile])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorFeatureProfileImpl) TypedRef(from *RefEditorFeatureProfileImpl) {
-	rg := (*typedRef[EditorFeatureProfile])(r)
-	t := (*typedRef[EditorFeatureProfile])(from)
-	rg.TypedRef((*typedRef[EditorFeatureProfile])(t))
+	rg := (*TypedRef[EditorFeatureProfile])(r)
+	t := (*TypedRef[EditorFeatureProfile])(from)
+	rg.TypedRef((*TypedRef[EditorFeatureProfile])(t))
 }
 
 func (r *RefEditorFeatureProfileImpl) Unref() {
-	rg := (*typedRef[EditorFeatureProfile])(r)
+	rg := (*TypedRef[EditorFeatureProfile])(r)
 	rg.Unref()
 }
 
@@ -6936,31 +6936,31 @@ type RefEditorFileSystemImportFormatSupportQuery interface {
 	TypedPtr() EditorFileSystemImportFormatSupportQuery
 }
 
-type RefEditorFileSystemImportFormatSupportQueryImpl typedRef[EditorFileSystemImportFormatSupportQuery]
+type RefEditorFileSystemImportFormatSupportQueryImpl TypedRef[EditorFileSystemImportFormatSupportQuery]
 
 func (r *RefEditorFileSystemImportFormatSupportQueryImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorFileSystemImportFormatSupportQuery])(r)
+	rg := (*TypedRef[EditorFileSystemImportFormatSupportQuery])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorFileSystemImportFormatSupportQueryImpl) TypedPtr() EditorFileSystemImportFormatSupportQuery {
-	rg := (*typedRef[EditorFileSystemImportFormatSupportQuery])(r)
+	rg := (*TypedRef[EditorFileSystemImportFormatSupportQuery])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorFileSystemImportFormatSupportQueryImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorFileSystemImportFormatSupportQuery])(r)
+	rg := (*TypedRef[EditorFileSystemImportFormatSupportQuery])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorFileSystemImportFormatSupportQueryImpl) TypedRef(from *RefEditorFileSystemImportFormatSupportQueryImpl) {
-	rg := (*typedRef[EditorFileSystemImportFormatSupportQuery])(r)
-	t := (*typedRef[EditorFileSystemImportFormatSupportQuery])(from)
-	rg.TypedRef((*typedRef[EditorFileSystemImportFormatSupportQuery])(t))
+	rg := (*TypedRef[EditorFileSystemImportFormatSupportQuery])(r)
+	t := (*TypedRef[EditorFileSystemImportFormatSupportQuery])(from)
+	rg.TypedRef((*TypedRef[EditorFileSystemImportFormatSupportQuery])(t))
 }
 
 func (r *RefEditorFileSystemImportFormatSupportQueryImpl) Unref() {
-	rg := (*typedRef[EditorFileSystemImportFormatSupportQuery])(r)
+	rg := (*TypedRef[EditorFileSystemImportFormatSupportQuery])(r)
 	rg.Unref()
 }
 
@@ -6988,31 +6988,31 @@ type RefEditorImportPlugin interface {
 	TypedPtr() EditorImportPlugin
 }
 
-type RefEditorImportPluginImpl typedRef[EditorImportPlugin]
+type RefEditorImportPluginImpl TypedRef[EditorImportPlugin]
 
 func (r *RefEditorImportPluginImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorImportPlugin])(r)
+	rg := (*TypedRef[EditorImportPlugin])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorImportPluginImpl) TypedPtr() EditorImportPlugin {
-	rg := (*typedRef[EditorImportPlugin])(r)
+	rg := (*TypedRef[EditorImportPlugin])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorImportPluginImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorImportPlugin])(r)
+	rg := (*TypedRef[EditorImportPlugin])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorImportPluginImpl) TypedRef(from *RefEditorImportPluginImpl) {
-	rg := (*typedRef[EditorImportPlugin])(r)
-	t := (*typedRef[EditorImportPlugin])(from)
-	rg.TypedRef((*typedRef[EditorImportPlugin])(t))
+	rg := (*TypedRef[EditorImportPlugin])(r)
+	t := (*TypedRef[EditorImportPlugin])(from)
+	rg.TypedRef((*TypedRef[EditorImportPlugin])(t))
 }
 
 func (r *RefEditorImportPluginImpl) Unref() {
-	rg := (*typedRef[EditorImportPlugin])(r)
+	rg := (*TypedRef[EditorImportPlugin])(r)
 	rg.Unref()
 }
 
@@ -7040,31 +7040,31 @@ type RefEditorInspectorPlugin interface {
 	TypedPtr() EditorInspectorPlugin
 }
 
-type RefEditorInspectorPluginImpl typedRef[EditorInspectorPlugin]
+type RefEditorInspectorPluginImpl TypedRef[EditorInspectorPlugin]
 
 func (r *RefEditorInspectorPluginImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorInspectorPlugin])(r)
+	rg := (*TypedRef[EditorInspectorPlugin])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorInspectorPluginImpl) TypedPtr() EditorInspectorPlugin {
-	rg := (*typedRef[EditorInspectorPlugin])(r)
+	rg := (*TypedRef[EditorInspectorPlugin])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorInspectorPluginImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorInspectorPlugin])(r)
+	rg := (*TypedRef[EditorInspectorPlugin])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorInspectorPluginImpl) TypedRef(from *RefEditorInspectorPluginImpl) {
-	rg := (*typedRef[EditorInspectorPlugin])(r)
-	t := (*typedRef[EditorInspectorPlugin])(from)
-	rg.TypedRef((*typedRef[EditorInspectorPlugin])(t))
+	rg := (*TypedRef[EditorInspectorPlugin])(r)
+	t := (*TypedRef[EditorInspectorPlugin])(from)
+	rg.TypedRef((*TypedRef[EditorInspectorPlugin])(t))
 }
 
 func (r *RefEditorInspectorPluginImpl) Unref() {
-	rg := (*typedRef[EditorInspectorPlugin])(r)
+	rg := (*TypedRef[EditorInspectorPlugin])(r)
 	rg.Unref()
 }
 
@@ -7092,31 +7092,31 @@ type RefEditorNode3DGizmo interface {
 	TypedPtr() EditorNode3DGizmo
 }
 
-type RefEditorNode3DGizmoImpl typedRef[EditorNode3DGizmo]
+type RefEditorNode3DGizmoImpl TypedRef[EditorNode3DGizmo]
 
 func (r *RefEditorNode3DGizmoImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorNode3DGizmo])(r)
+	rg := (*TypedRef[EditorNode3DGizmo])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorNode3DGizmoImpl) TypedPtr() EditorNode3DGizmo {
-	rg := (*typedRef[EditorNode3DGizmo])(r)
+	rg := (*TypedRef[EditorNode3DGizmo])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorNode3DGizmoImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorNode3DGizmo])(r)
+	rg := (*TypedRef[EditorNode3DGizmo])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorNode3DGizmoImpl) TypedRef(from *RefEditorNode3DGizmoImpl) {
-	rg := (*typedRef[EditorNode3DGizmo])(r)
-	t := (*typedRef[EditorNode3DGizmo])(from)
-	rg.TypedRef((*typedRef[EditorNode3DGizmo])(t))
+	rg := (*TypedRef[EditorNode3DGizmo])(r)
+	t := (*TypedRef[EditorNode3DGizmo])(from)
+	rg.TypedRef((*TypedRef[EditorNode3DGizmo])(t))
 }
 
 func (r *RefEditorNode3DGizmoImpl) Unref() {
-	rg := (*typedRef[EditorNode3DGizmo])(r)
+	rg := (*TypedRef[EditorNode3DGizmo])(r)
 	rg.Unref()
 }
 
@@ -7144,31 +7144,31 @@ type RefEditorNode3DGizmoPlugin interface {
 	TypedPtr() EditorNode3DGizmoPlugin
 }
 
-type RefEditorNode3DGizmoPluginImpl typedRef[EditorNode3DGizmoPlugin]
+type RefEditorNode3DGizmoPluginImpl TypedRef[EditorNode3DGizmoPlugin]
 
 func (r *RefEditorNode3DGizmoPluginImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorNode3DGizmoPlugin])(r)
+	rg := (*TypedRef[EditorNode3DGizmoPlugin])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorNode3DGizmoPluginImpl) TypedPtr() EditorNode3DGizmoPlugin {
-	rg := (*typedRef[EditorNode3DGizmoPlugin])(r)
+	rg := (*TypedRef[EditorNode3DGizmoPlugin])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorNode3DGizmoPluginImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorNode3DGizmoPlugin])(r)
+	rg := (*TypedRef[EditorNode3DGizmoPlugin])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorNode3DGizmoPluginImpl) TypedRef(from *RefEditorNode3DGizmoPluginImpl) {
-	rg := (*typedRef[EditorNode3DGizmoPlugin])(r)
-	t := (*typedRef[EditorNode3DGizmoPlugin])(from)
-	rg.TypedRef((*typedRef[EditorNode3DGizmoPlugin])(t))
+	rg := (*TypedRef[EditorNode3DGizmoPlugin])(r)
+	t := (*TypedRef[EditorNode3DGizmoPlugin])(from)
+	rg.TypedRef((*TypedRef[EditorNode3DGizmoPlugin])(t))
 }
 
 func (r *RefEditorNode3DGizmoPluginImpl) Unref() {
-	rg := (*typedRef[EditorNode3DGizmoPlugin])(r)
+	rg := (*TypedRef[EditorNode3DGizmoPlugin])(r)
 	rg.Unref()
 }
 
@@ -7196,31 +7196,31 @@ type RefEditorResourceConversionPlugin interface {
 	TypedPtr() EditorResourceConversionPlugin
 }
 
-type RefEditorResourceConversionPluginImpl typedRef[EditorResourceConversionPlugin]
+type RefEditorResourceConversionPluginImpl TypedRef[EditorResourceConversionPlugin]
 
 func (r *RefEditorResourceConversionPluginImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorResourceConversionPlugin])(r)
+	rg := (*TypedRef[EditorResourceConversionPlugin])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorResourceConversionPluginImpl) TypedPtr() EditorResourceConversionPlugin {
-	rg := (*typedRef[EditorResourceConversionPlugin])(r)
+	rg := (*TypedRef[EditorResourceConversionPlugin])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorResourceConversionPluginImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorResourceConversionPlugin])(r)
+	rg := (*TypedRef[EditorResourceConversionPlugin])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorResourceConversionPluginImpl) TypedRef(from *RefEditorResourceConversionPluginImpl) {
-	rg := (*typedRef[EditorResourceConversionPlugin])(r)
-	t := (*typedRef[EditorResourceConversionPlugin])(from)
-	rg.TypedRef((*typedRef[EditorResourceConversionPlugin])(t))
+	rg := (*TypedRef[EditorResourceConversionPlugin])(r)
+	t := (*TypedRef[EditorResourceConversionPlugin])(from)
+	rg.TypedRef((*TypedRef[EditorResourceConversionPlugin])(t))
 }
 
 func (r *RefEditorResourceConversionPluginImpl) Unref() {
-	rg := (*typedRef[EditorResourceConversionPlugin])(r)
+	rg := (*TypedRef[EditorResourceConversionPlugin])(r)
 	rg.Unref()
 }
 
@@ -7248,31 +7248,31 @@ type RefEditorResourcePreviewGenerator interface {
 	TypedPtr() EditorResourcePreviewGenerator
 }
 
-type RefEditorResourcePreviewGeneratorImpl typedRef[EditorResourcePreviewGenerator]
+type RefEditorResourcePreviewGeneratorImpl TypedRef[EditorResourcePreviewGenerator]
 
 func (r *RefEditorResourcePreviewGeneratorImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorResourcePreviewGenerator])(r)
+	rg := (*TypedRef[EditorResourcePreviewGenerator])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorResourcePreviewGeneratorImpl) TypedPtr() EditorResourcePreviewGenerator {
-	rg := (*typedRef[EditorResourcePreviewGenerator])(r)
+	rg := (*TypedRef[EditorResourcePreviewGenerator])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorResourcePreviewGeneratorImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorResourcePreviewGenerator])(r)
+	rg := (*TypedRef[EditorResourcePreviewGenerator])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorResourcePreviewGeneratorImpl) TypedRef(from *RefEditorResourcePreviewGeneratorImpl) {
-	rg := (*typedRef[EditorResourcePreviewGenerator])(r)
-	t := (*typedRef[EditorResourcePreviewGenerator])(from)
-	rg.TypedRef((*typedRef[EditorResourcePreviewGenerator])(t))
+	rg := (*TypedRef[EditorResourcePreviewGenerator])(r)
+	t := (*TypedRef[EditorResourcePreviewGenerator])(from)
+	rg.TypedRef((*TypedRef[EditorResourcePreviewGenerator])(t))
 }
 
 func (r *RefEditorResourcePreviewGeneratorImpl) Unref() {
-	rg := (*typedRef[EditorResourcePreviewGenerator])(r)
+	rg := (*TypedRef[EditorResourcePreviewGenerator])(r)
 	rg.Unref()
 }
 
@@ -7300,31 +7300,31 @@ type RefEditorResourceTooltipPlugin interface {
 	TypedPtr() EditorResourceTooltipPlugin
 }
 
-type RefEditorResourceTooltipPluginImpl typedRef[EditorResourceTooltipPlugin]
+type RefEditorResourceTooltipPluginImpl TypedRef[EditorResourceTooltipPlugin]
 
 func (r *RefEditorResourceTooltipPluginImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorResourceTooltipPlugin])(r)
+	rg := (*TypedRef[EditorResourceTooltipPlugin])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorResourceTooltipPluginImpl) TypedPtr() EditorResourceTooltipPlugin {
-	rg := (*typedRef[EditorResourceTooltipPlugin])(r)
+	rg := (*TypedRef[EditorResourceTooltipPlugin])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorResourceTooltipPluginImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorResourceTooltipPlugin])(r)
+	rg := (*TypedRef[EditorResourceTooltipPlugin])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorResourceTooltipPluginImpl) TypedRef(from *RefEditorResourceTooltipPluginImpl) {
-	rg := (*typedRef[EditorResourceTooltipPlugin])(r)
-	t := (*typedRef[EditorResourceTooltipPlugin])(from)
-	rg.TypedRef((*typedRef[EditorResourceTooltipPlugin])(t))
+	rg := (*TypedRef[EditorResourceTooltipPlugin])(r)
+	t := (*TypedRef[EditorResourceTooltipPlugin])(from)
+	rg.TypedRef((*TypedRef[EditorResourceTooltipPlugin])(t))
 }
 
 func (r *RefEditorResourceTooltipPluginImpl) Unref() {
-	rg := (*typedRef[EditorResourceTooltipPlugin])(r)
+	rg := (*TypedRef[EditorResourceTooltipPlugin])(r)
 	rg.Unref()
 }
 
@@ -7352,31 +7352,31 @@ type RefEditorSceneFormatImporter interface {
 	TypedPtr() EditorSceneFormatImporter
 }
 
-type RefEditorSceneFormatImporterImpl typedRef[EditorSceneFormatImporter]
+type RefEditorSceneFormatImporterImpl TypedRef[EditorSceneFormatImporter]
 
 func (r *RefEditorSceneFormatImporterImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorSceneFormatImporter])(r)
+	rg := (*TypedRef[EditorSceneFormatImporter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorSceneFormatImporterImpl) TypedPtr() EditorSceneFormatImporter {
-	rg := (*typedRef[EditorSceneFormatImporter])(r)
+	rg := (*TypedRef[EditorSceneFormatImporter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorSceneFormatImporterImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorSceneFormatImporter])(r)
+	rg := (*TypedRef[EditorSceneFormatImporter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorSceneFormatImporterImpl) TypedRef(from *RefEditorSceneFormatImporterImpl) {
-	rg := (*typedRef[EditorSceneFormatImporter])(r)
-	t := (*typedRef[EditorSceneFormatImporter])(from)
-	rg.TypedRef((*typedRef[EditorSceneFormatImporter])(t))
+	rg := (*TypedRef[EditorSceneFormatImporter])(r)
+	t := (*TypedRef[EditorSceneFormatImporter])(from)
+	rg.TypedRef((*TypedRef[EditorSceneFormatImporter])(t))
 }
 
 func (r *RefEditorSceneFormatImporterImpl) Unref() {
-	rg := (*typedRef[EditorSceneFormatImporter])(r)
+	rg := (*TypedRef[EditorSceneFormatImporter])(r)
 	rg.Unref()
 }
 
@@ -7404,31 +7404,31 @@ type RefEditorSceneFormatImporterBlend interface {
 	TypedPtr() EditorSceneFormatImporterBlend
 }
 
-type RefEditorSceneFormatImporterBlendImpl typedRef[EditorSceneFormatImporterBlend]
+type RefEditorSceneFormatImporterBlendImpl TypedRef[EditorSceneFormatImporterBlend]
 
 func (r *RefEditorSceneFormatImporterBlendImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorSceneFormatImporterBlend])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterBlend])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorSceneFormatImporterBlendImpl) TypedPtr() EditorSceneFormatImporterBlend {
-	rg := (*typedRef[EditorSceneFormatImporterBlend])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterBlend])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorSceneFormatImporterBlendImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorSceneFormatImporterBlend])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterBlend])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorSceneFormatImporterBlendImpl) TypedRef(from *RefEditorSceneFormatImporterBlendImpl) {
-	rg := (*typedRef[EditorSceneFormatImporterBlend])(r)
-	t := (*typedRef[EditorSceneFormatImporterBlend])(from)
-	rg.TypedRef((*typedRef[EditorSceneFormatImporterBlend])(t))
+	rg := (*TypedRef[EditorSceneFormatImporterBlend])(r)
+	t := (*TypedRef[EditorSceneFormatImporterBlend])(from)
+	rg.TypedRef((*TypedRef[EditorSceneFormatImporterBlend])(t))
 }
 
 func (r *RefEditorSceneFormatImporterBlendImpl) Unref() {
-	rg := (*typedRef[EditorSceneFormatImporterBlend])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterBlend])(r)
 	rg.Unref()
 }
 
@@ -7456,31 +7456,31 @@ type RefEditorSceneFormatImporterFBX interface {
 	TypedPtr() EditorSceneFormatImporterFBX
 }
 
-type RefEditorSceneFormatImporterFBXImpl typedRef[EditorSceneFormatImporterFBX]
+type RefEditorSceneFormatImporterFBXImpl TypedRef[EditorSceneFormatImporterFBX]
 
 func (r *RefEditorSceneFormatImporterFBXImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorSceneFormatImporterFBX])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterFBX])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorSceneFormatImporterFBXImpl) TypedPtr() EditorSceneFormatImporterFBX {
-	rg := (*typedRef[EditorSceneFormatImporterFBX])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterFBX])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorSceneFormatImporterFBXImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorSceneFormatImporterFBX])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterFBX])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorSceneFormatImporterFBXImpl) TypedRef(from *RefEditorSceneFormatImporterFBXImpl) {
-	rg := (*typedRef[EditorSceneFormatImporterFBX])(r)
-	t := (*typedRef[EditorSceneFormatImporterFBX])(from)
-	rg.TypedRef((*typedRef[EditorSceneFormatImporterFBX])(t))
+	rg := (*TypedRef[EditorSceneFormatImporterFBX])(r)
+	t := (*TypedRef[EditorSceneFormatImporterFBX])(from)
+	rg.TypedRef((*TypedRef[EditorSceneFormatImporterFBX])(t))
 }
 
 func (r *RefEditorSceneFormatImporterFBXImpl) Unref() {
-	rg := (*typedRef[EditorSceneFormatImporterFBX])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterFBX])(r)
 	rg.Unref()
 }
 
@@ -7508,31 +7508,31 @@ type RefEditorSceneFormatImporterGLTF interface {
 	TypedPtr() EditorSceneFormatImporterGLTF
 }
 
-type RefEditorSceneFormatImporterGLTFImpl typedRef[EditorSceneFormatImporterGLTF]
+type RefEditorSceneFormatImporterGLTFImpl TypedRef[EditorSceneFormatImporterGLTF]
 
 func (r *RefEditorSceneFormatImporterGLTFImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorSceneFormatImporterGLTF])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterGLTF])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorSceneFormatImporterGLTFImpl) TypedPtr() EditorSceneFormatImporterGLTF {
-	rg := (*typedRef[EditorSceneFormatImporterGLTF])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterGLTF])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorSceneFormatImporterGLTFImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorSceneFormatImporterGLTF])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterGLTF])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorSceneFormatImporterGLTFImpl) TypedRef(from *RefEditorSceneFormatImporterGLTFImpl) {
-	rg := (*typedRef[EditorSceneFormatImporterGLTF])(r)
-	t := (*typedRef[EditorSceneFormatImporterGLTF])(from)
-	rg.TypedRef((*typedRef[EditorSceneFormatImporterGLTF])(t))
+	rg := (*TypedRef[EditorSceneFormatImporterGLTF])(r)
+	t := (*TypedRef[EditorSceneFormatImporterGLTF])(from)
+	rg.TypedRef((*TypedRef[EditorSceneFormatImporterGLTF])(t))
 }
 
 func (r *RefEditorSceneFormatImporterGLTFImpl) Unref() {
-	rg := (*typedRef[EditorSceneFormatImporterGLTF])(r)
+	rg := (*TypedRef[EditorSceneFormatImporterGLTF])(r)
 	rg.Unref()
 }
 
@@ -7560,31 +7560,31 @@ type RefEditorScenePostImport interface {
 	TypedPtr() EditorScenePostImport
 }
 
-type RefEditorScenePostImportImpl typedRef[EditorScenePostImport]
+type RefEditorScenePostImportImpl TypedRef[EditorScenePostImport]
 
 func (r *RefEditorScenePostImportImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorScenePostImport])(r)
+	rg := (*TypedRef[EditorScenePostImport])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorScenePostImportImpl) TypedPtr() EditorScenePostImport {
-	rg := (*typedRef[EditorScenePostImport])(r)
+	rg := (*TypedRef[EditorScenePostImport])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorScenePostImportImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorScenePostImport])(r)
+	rg := (*TypedRef[EditorScenePostImport])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorScenePostImportImpl) TypedRef(from *RefEditorScenePostImportImpl) {
-	rg := (*typedRef[EditorScenePostImport])(r)
-	t := (*typedRef[EditorScenePostImport])(from)
-	rg.TypedRef((*typedRef[EditorScenePostImport])(t))
+	rg := (*TypedRef[EditorScenePostImport])(r)
+	t := (*TypedRef[EditorScenePostImport])(from)
+	rg.TypedRef((*TypedRef[EditorScenePostImport])(t))
 }
 
 func (r *RefEditorScenePostImportImpl) Unref() {
-	rg := (*typedRef[EditorScenePostImport])(r)
+	rg := (*TypedRef[EditorScenePostImport])(r)
 	rg.Unref()
 }
 
@@ -7612,31 +7612,31 @@ type RefEditorScenePostImportPlugin interface {
 	TypedPtr() EditorScenePostImportPlugin
 }
 
-type RefEditorScenePostImportPluginImpl typedRef[EditorScenePostImportPlugin]
+type RefEditorScenePostImportPluginImpl TypedRef[EditorScenePostImportPlugin]
 
 func (r *RefEditorScenePostImportPluginImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorScenePostImportPlugin])(r)
+	rg := (*TypedRef[EditorScenePostImportPlugin])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorScenePostImportPluginImpl) TypedPtr() EditorScenePostImportPlugin {
-	rg := (*typedRef[EditorScenePostImportPlugin])(r)
+	rg := (*TypedRef[EditorScenePostImportPlugin])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorScenePostImportPluginImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorScenePostImportPlugin])(r)
+	rg := (*TypedRef[EditorScenePostImportPlugin])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorScenePostImportPluginImpl) TypedRef(from *RefEditorScenePostImportPluginImpl) {
-	rg := (*typedRef[EditorScenePostImportPlugin])(r)
-	t := (*typedRef[EditorScenePostImportPlugin])(from)
-	rg.TypedRef((*typedRef[EditorScenePostImportPlugin])(t))
+	rg := (*TypedRef[EditorScenePostImportPlugin])(r)
+	t := (*TypedRef[EditorScenePostImportPlugin])(from)
+	rg.TypedRef((*TypedRef[EditorScenePostImportPlugin])(t))
 }
 
 func (r *RefEditorScenePostImportPluginImpl) Unref() {
-	rg := (*typedRef[EditorScenePostImportPlugin])(r)
+	rg := (*TypedRef[EditorScenePostImportPlugin])(r)
 	rg.Unref()
 }
 
@@ -7664,31 +7664,31 @@ type RefEditorScript interface {
 	TypedPtr() EditorScript
 }
 
-type RefEditorScriptImpl typedRef[EditorScript]
+type RefEditorScriptImpl TypedRef[EditorScript]
 
 func (r *RefEditorScriptImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorScript])(r)
+	rg := (*TypedRef[EditorScript])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorScriptImpl) TypedPtr() EditorScript {
-	rg := (*typedRef[EditorScript])(r)
+	rg := (*TypedRef[EditorScript])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorScriptImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorScript])(r)
+	rg := (*TypedRef[EditorScript])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorScriptImpl) TypedRef(from *RefEditorScriptImpl) {
-	rg := (*typedRef[EditorScript])(r)
-	t := (*typedRef[EditorScript])(from)
-	rg.TypedRef((*typedRef[EditorScript])(t))
+	rg := (*TypedRef[EditorScript])(r)
+	t := (*TypedRef[EditorScript])(from)
+	rg.TypedRef((*TypedRef[EditorScript])(t))
 }
 
 func (r *RefEditorScriptImpl) Unref() {
-	rg := (*typedRef[EditorScript])(r)
+	rg := (*TypedRef[EditorScript])(r)
 	rg.Unref()
 }
 
@@ -7716,31 +7716,31 @@ type RefEditorSettings interface {
 	TypedPtr() EditorSettings
 }
 
-type RefEditorSettingsImpl typedRef[EditorSettings]
+type RefEditorSettingsImpl TypedRef[EditorSettings]
 
 func (r *RefEditorSettingsImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorSettings])(r)
+	rg := (*TypedRef[EditorSettings])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorSettingsImpl) TypedPtr() EditorSettings {
-	rg := (*typedRef[EditorSettings])(r)
+	rg := (*TypedRef[EditorSettings])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorSettingsImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorSettings])(r)
+	rg := (*TypedRef[EditorSettings])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorSettingsImpl) TypedRef(from *RefEditorSettingsImpl) {
-	rg := (*typedRef[EditorSettings])(r)
-	t := (*typedRef[EditorSettings])(from)
-	rg.TypedRef((*typedRef[EditorSettings])(t))
+	rg := (*TypedRef[EditorSettings])(r)
+	t := (*TypedRef[EditorSettings])(from)
+	rg.TypedRef((*TypedRef[EditorSettings])(t))
 }
 
 func (r *RefEditorSettingsImpl) Unref() {
-	rg := (*typedRef[EditorSettings])(r)
+	rg := (*TypedRef[EditorSettings])(r)
 	rg.Unref()
 }
 
@@ -7768,31 +7768,31 @@ type RefEditorSyntaxHighlighter interface {
 	TypedPtr() EditorSyntaxHighlighter
 }
 
-type RefEditorSyntaxHighlighterImpl typedRef[EditorSyntaxHighlighter]
+type RefEditorSyntaxHighlighterImpl TypedRef[EditorSyntaxHighlighter]
 
 func (r *RefEditorSyntaxHighlighterImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorSyntaxHighlighter])(r)
+	rg := (*TypedRef[EditorSyntaxHighlighter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorSyntaxHighlighterImpl) TypedPtr() EditorSyntaxHighlighter {
-	rg := (*typedRef[EditorSyntaxHighlighter])(r)
+	rg := (*TypedRef[EditorSyntaxHighlighter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorSyntaxHighlighterImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorSyntaxHighlighter])(r)
+	rg := (*TypedRef[EditorSyntaxHighlighter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorSyntaxHighlighterImpl) TypedRef(from *RefEditorSyntaxHighlighterImpl) {
-	rg := (*typedRef[EditorSyntaxHighlighter])(r)
-	t := (*typedRef[EditorSyntaxHighlighter])(from)
-	rg.TypedRef((*typedRef[EditorSyntaxHighlighter])(t))
+	rg := (*TypedRef[EditorSyntaxHighlighter])(r)
+	t := (*TypedRef[EditorSyntaxHighlighter])(from)
+	rg.TypedRef((*TypedRef[EditorSyntaxHighlighter])(t))
 }
 
 func (r *RefEditorSyntaxHighlighterImpl) Unref() {
-	rg := (*typedRef[EditorSyntaxHighlighter])(r)
+	rg := (*TypedRef[EditorSyntaxHighlighter])(r)
 	rg.Unref()
 }
 
@@ -7820,31 +7820,31 @@ type RefEditorTranslationParserPlugin interface {
 	TypedPtr() EditorTranslationParserPlugin
 }
 
-type RefEditorTranslationParserPluginImpl typedRef[EditorTranslationParserPlugin]
+type RefEditorTranslationParserPluginImpl TypedRef[EditorTranslationParserPlugin]
 
 func (r *RefEditorTranslationParserPluginImpl) Ptr() RefCounted {
-	rg := (*typedRef[EditorTranslationParserPlugin])(r)
+	rg := (*TypedRef[EditorTranslationParserPlugin])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEditorTranslationParserPluginImpl) TypedPtr() EditorTranslationParserPlugin {
-	rg := (*typedRef[EditorTranslationParserPlugin])(r)
+	rg := (*TypedRef[EditorTranslationParserPlugin])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEditorTranslationParserPluginImpl) Ref(from Ref) {
-	rg := (*typedRef[EditorTranslationParserPlugin])(r)
+	rg := (*TypedRef[EditorTranslationParserPlugin])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEditorTranslationParserPluginImpl) TypedRef(from *RefEditorTranslationParserPluginImpl) {
-	rg := (*typedRef[EditorTranslationParserPlugin])(r)
-	t := (*typedRef[EditorTranslationParserPlugin])(from)
-	rg.TypedRef((*typedRef[EditorTranslationParserPlugin])(t))
+	rg := (*TypedRef[EditorTranslationParserPlugin])(r)
+	t := (*TypedRef[EditorTranslationParserPlugin])(from)
+	rg.TypedRef((*TypedRef[EditorTranslationParserPlugin])(t))
 }
 
 func (r *RefEditorTranslationParserPluginImpl) Unref() {
-	rg := (*typedRef[EditorTranslationParserPlugin])(r)
+	rg := (*TypedRef[EditorTranslationParserPlugin])(r)
 	rg.Unref()
 }
 
@@ -7872,31 +7872,31 @@ type RefEncodedObjectAsID interface {
 	TypedPtr() EncodedObjectAsID
 }
 
-type RefEncodedObjectAsIDImpl typedRef[EncodedObjectAsID]
+type RefEncodedObjectAsIDImpl TypedRef[EncodedObjectAsID]
 
 func (r *RefEncodedObjectAsIDImpl) Ptr() RefCounted {
-	rg := (*typedRef[EncodedObjectAsID])(r)
+	rg := (*TypedRef[EncodedObjectAsID])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEncodedObjectAsIDImpl) TypedPtr() EncodedObjectAsID {
-	rg := (*typedRef[EncodedObjectAsID])(r)
+	rg := (*TypedRef[EncodedObjectAsID])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEncodedObjectAsIDImpl) Ref(from Ref) {
-	rg := (*typedRef[EncodedObjectAsID])(r)
+	rg := (*TypedRef[EncodedObjectAsID])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEncodedObjectAsIDImpl) TypedRef(from *RefEncodedObjectAsIDImpl) {
-	rg := (*typedRef[EncodedObjectAsID])(r)
-	t := (*typedRef[EncodedObjectAsID])(from)
-	rg.TypedRef((*typedRef[EncodedObjectAsID])(t))
+	rg := (*TypedRef[EncodedObjectAsID])(r)
+	t := (*TypedRef[EncodedObjectAsID])(from)
+	rg.TypedRef((*TypedRef[EncodedObjectAsID])(t))
 }
 
 func (r *RefEncodedObjectAsIDImpl) Unref() {
-	rg := (*typedRef[EncodedObjectAsID])(r)
+	rg := (*TypedRef[EncodedObjectAsID])(r)
 	rg.Unref()
 }
 
@@ -7924,31 +7924,31 @@ type RefEngineProfiler interface {
 	TypedPtr() EngineProfiler
 }
 
-type RefEngineProfilerImpl typedRef[EngineProfiler]
+type RefEngineProfilerImpl TypedRef[EngineProfiler]
 
 func (r *RefEngineProfilerImpl) Ptr() RefCounted {
-	rg := (*typedRef[EngineProfiler])(r)
+	rg := (*TypedRef[EngineProfiler])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEngineProfilerImpl) TypedPtr() EngineProfiler {
-	rg := (*typedRef[EngineProfiler])(r)
+	rg := (*TypedRef[EngineProfiler])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEngineProfilerImpl) Ref(from Ref) {
-	rg := (*typedRef[EngineProfiler])(r)
+	rg := (*TypedRef[EngineProfiler])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEngineProfilerImpl) TypedRef(from *RefEngineProfilerImpl) {
-	rg := (*typedRef[EngineProfiler])(r)
-	t := (*typedRef[EngineProfiler])(from)
-	rg.TypedRef((*typedRef[EngineProfiler])(t))
+	rg := (*TypedRef[EngineProfiler])(r)
+	t := (*TypedRef[EngineProfiler])(from)
+	rg.TypedRef((*TypedRef[EngineProfiler])(t))
 }
 
 func (r *RefEngineProfilerImpl) Unref() {
-	rg := (*typedRef[EngineProfiler])(r)
+	rg := (*TypedRef[EngineProfiler])(r)
 	rg.Unref()
 }
 
@@ -7976,31 +7976,31 @@ type RefEnvironment interface {
 	TypedPtr() Environment
 }
 
-type RefEnvironmentImpl typedRef[Environment]
+type RefEnvironmentImpl TypedRef[Environment]
 
 func (r *RefEnvironmentImpl) Ptr() RefCounted {
-	rg := (*typedRef[Environment])(r)
+	rg := (*TypedRef[Environment])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefEnvironmentImpl) TypedPtr() Environment {
-	rg := (*typedRef[Environment])(r)
+	rg := (*TypedRef[Environment])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefEnvironmentImpl) Ref(from Ref) {
-	rg := (*typedRef[Environment])(r)
+	rg := (*TypedRef[Environment])(r)
 	rg.Ref(from)
 }
 
 func (r *RefEnvironmentImpl) TypedRef(from *RefEnvironmentImpl) {
-	rg := (*typedRef[Environment])(r)
-	t := (*typedRef[Environment])(from)
-	rg.TypedRef((*typedRef[Environment])(t))
+	rg := (*TypedRef[Environment])(r)
+	t := (*TypedRef[Environment])(from)
+	rg.TypedRef((*TypedRef[Environment])(t))
 }
 
 func (r *RefEnvironmentImpl) Unref() {
-	rg := (*typedRef[Environment])(r)
+	rg := (*TypedRef[Environment])(r)
 	rg.Unref()
 }
 
@@ -8028,31 +8028,31 @@ type RefExpression interface {
 	TypedPtr() Expression
 }
 
-type RefExpressionImpl typedRef[Expression]
+type RefExpressionImpl TypedRef[Expression]
 
 func (r *RefExpressionImpl) Ptr() RefCounted {
-	rg := (*typedRef[Expression])(r)
+	rg := (*TypedRef[Expression])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefExpressionImpl) TypedPtr() Expression {
-	rg := (*typedRef[Expression])(r)
+	rg := (*TypedRef[Expression])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefExpressionImpl) Ref(from Ref) {
-	rg := (*typedRef[Expression])(r)
+	rg := (*TypedRef[Expression])(r)
 	rg.Ref(from)
 }
 
 func (r *RefExpressionImpl) TypedRef(from *RefExpressionImpl) {
-	rg := (*typedRef[Expression])(r)
-	t := (*typedRef[Expression])(from)
-	rg.TypedRef((*typedRef[Expression])(t))
+	rg := (*TypedRef[Expression])(r)
+	t := (*TypedRef[Expression])(from)
+	rg.TypedRef((*TypedRef[Expression])(t))
 }
 
 func (r *RefExpressionImpl) Unref() {
-	rg := (*typedRef[Expression])(r)
+	rg := (*TypedRef[Expression])(r)
 	rg.Unref()
 }
 
@@ -8080,31 +8080,31 @@ type RefFastNoiseLite interface {
 	TypedPtr() FastNoiseLite
 }
 
-type RefFastNoiseLiteImpl typedRef[FastNoiseLite]
+type RefFastNoiseLiteImpl TypedRef[FastNoiseLite]
 
 func (r *RefFastNoiseLiteImpl) Ptr() RefCounted {
-	rg := (*typedRef[FastNoiseLite])(r)
+	rg := (*TypedRef[FastNoiseLite])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefFastNoiseLiteImpl) TypedPtr() FastNoiseLite {
-	rg := (*typedRef[FastNoiseLite])(r)
+	rg := (*TypedRef[FastNoiseLite])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefFastNoiseLiteImpl) Ref(from Ref) {
-	rg := (*typedRef[FastNoiseLite])(r)
+	rg := (*TypedRef[FastNoiseLite])(r)
 	rg.Ref(from)
 }
 
 func (r *RefFastNoiseLiteImpl) TypedRef(from *RefFastNoiseLiteImpl) {
-	rg := (*typedRef[FastNoiseLite])(r)
-	t := (*typedRef[FastNoiseLite])(from)
-	rg.TypedRef((*typedRef[FastNoiseLite])(t))
+	rg := (*TypedRef[FastNoiseLite])(r)
+	t := (*TypedRef[FastNoiseLite])(from)
+	rg.TypedRef((*TypedRef[FastNoiseLite])(t))
 }
 
 func (r *RefFastNoiseLiteImpl) Unref() {
-	rg := (*typedRef[FastNoiseLite])(r)
+	rg := (*TypedRef[FastNoiseLite])(r)
 	rg.Unref()
 }
 
@@ -8132,31 +8132,31 @@ type RefFileAccess interface {
 	TypedPtr() FileAccess
 }
 
-type RefFileAccessImpl typedRef[FileAccess]
+type RefFileAccessImpl TypedRef[FileAccess]
 
 func (r *RefFileAccessImpl) Ptr() RefCounted {
-	rg := (*typedRef[FileAccess])(r)
+	rg := (*TypedRef[FileAccess])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefFileAccessImpl) TypedPtr() FileAccess {
-	rg := (*typedRef[FileAccess])(r)
+	rg := (*TypedRef[FileAccess])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefFileAccessImpl) Ref(from Ref) {
-	rg := (*typedRef[FileAccess])(r)
+	rg := (*TypedRef[FileAccess])(r)
 	rg.Ref(from)
 }
 
 func (r *RefFileAccessImpl) TypedRef(from *RefFileAccessImpl) {
-	rg := (*typedRef[FileAccess])(r)
-	t := (*typedRef[FileAccess])(from)
-	rg.TypedRef((*typedRef[FileAccess])(t))
+	rg := (*TypedRef[FileAccess])(r)
+	t := (*TypedRef[FileAccess])(from)
+	rg.TypedRef((*TypedRef[FileAccess])(t))
 }
 
 func (r *RefFileAccessImpl) Unref() {
-	rg := (*typedRef[FileAccess])(r)
+	rg := (*TypedRef[FileAccess])(r)
 	rg.Unref()
 }
 
@@ -8184,31 +8184,31 @@ type RefFogMaterial interface {
 	TypedPtr() FogMaterial
 }
 
-type RefFogMaterialImpl typedRef[FogMaterial]
+type RefFogMaterialImpl TypedRef[FogMaterial]
 
 func (r *RefFogMaterialImpl) Ptr() RefCounted {
-	rg := (*typedRef[FogMaterial])(r)
+	rg := (*TypedRef[FogMaterial])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefFogMaterialImpl) TypedPtr() FogMaterial {
-	rg := (*typedRef[FogMaterial])(r)
+	rg := (*TypedRef[FogMaterial])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefFogMaterialImpl) Ref(from Ref) {
-	rg := (*typedRef[FogMaterial])(r)
+	rg := (*TypedRef[FogMaterial])(r)
 	rg.Ref(from)
 }
 
 func (r *RefFogMaterialImpl) TypedRef(from *RefFogMaterialImpl) {
-	rg := (*typedRef[FogMaterial])(r)
-	t := (*typedRef[FogMaterial])(from)
-	rg.TypedRef((*typedRef[FogMaterial])(t))
+	rg := (*TypedRef[FogMaterial])(r)
+	t := (*TypedRef[FogMaterial])(from)
+	rg.TypedRef((*TypedRef[FogMaterial])(t))
 }
 
 func (r *RefFogMaterialImpl) Unref() {
-	rg := (*typedRef[FogMaterial])(r)
+	rg := (*TypedRef[FogMaterial])(r)
 	rg.Unref()
 }
 
@@ -8236,31 +8236,31 @@ type RefFont interface {
 	TypedPtr() Font
 }
 
-type RefFontImpl typedRef[Font]
+type RefFontImpl TypedRef[Font]
 
 func (r *RefFontImpl) Ptr() RefCounted {
-	rg := (*typedRef[Font])(r)
+	rg := (*TypedRef[Font])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefFontImpl) TypedPtr() Font {
-	rg := (*typedRef[Font])(r)
+	rg := (*TypedRef[Font])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefFontImpl) Ref(from Ref) {
-	rg := (*typedRef[Font])(r)
+	rg := (*TypedRef[Font])(r)
 	rg.Ref(from)
 }
 
 func (r *RefFontImpl) TypedRef(from *RefFontImpl) {
-	rg := (*typedRef[Font])(r)
-	t := (*typedRef[Font])(from)
-	rg.TypedRef((*typedRef[Font])(t))
+	rg := (*TypedRef[Font])(r)
+	t := (*TypedRef[Font])(from)
+	rg.TypedRef((*TypedRef[Font])(t))
 }
 
 func (r *RefFontImpl) Unref() {
-	rg := (*typedRef[Font])(r)
+	rg := (*TypedRef[Font])(r)
 	rg.Unref()
 }
 
@@ -8288,31 +8288,31 @@ type RefFontFile interface {
 	TypedPtr() FontFile
 }
 
-type RefFontFileImpl typedRef[FontFile]
+type RefFontFileImpl TypedRef[FontFile]
 
 func (r *RefFontFileImpl) Ptr() RefCounted {
-	rg := (*typedRef[FontFile])(r)
+	rg := (*TypedRef[FontFile])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefFontFileImpl) TypedPtr() FontFile {
-	rg := (*typedRef[FontFile])(r)
+	rg := (*TypedRef[FontFile])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefFontFileImpl) Ref(from Ref) {
-	rg := (*typedRef[FontFile])(r)
+	rg := (*TypedRef[FontFile])(r)
 	rg.Ref(from)
 }
 
 func (r *RefFontFileImpl) TypedRef(from *RefFontFileImpl) {
-	rg := (*typedRef[FontFile])(r)
-	t := (*typedRef[FontFile])(from)
-	rg.TypedRef((*typedRef[FontFile])(t))
+	rg := (*TypedRef[FontFile])(r)
+	t := (*TypedRef[FontFile])(from)
+	rg.TypedRef((*TypedRef[FontFile])(t))
 }
 
 func (r *RefFontFileImpl) Unref() {
-	rg := (*typedRef[FontFile])(r)
+	rg := (*TypedRef[FontFile])(r)
 	rg.Unref()
 }
 
@@ -8340,31 +8340,31 @@ type RefFontVariation interface {
 	TypedPtr() FontVariation
 }
 
-type RefFontVariationImpl typedRef[FontVariation]
+type RefFontVariationImpl TypedRef[FontVariation]
 
 func (r *RefFontVariationImpl) Ptr() RefCounted {
-	rg := (*typedRef[FontVariation])(r)
+	rg := (*TypedRef[FontVariation])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefFontVariationImpl) TypedPtr() FontVariation {
-	rg := (*typedRef[FontVariation])(r)
+	rg := (*TypedRef[FontVariation])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefFontVariationImpl) Ref(from Ref) {
-	rg := (*typedRef[FontVariation])(r)
+	rg := (*TypedRef[FontVariation])(r)
 	rg.Ref(from)
 }
 
 func (r *RefFontVariationImpl) TypedRef(from *RefFontVariationImpl) {
-	rg := (*typedRef[FontVariation])(r)
-	t := (*typedRef[FontVariation])(from)
-	rg.TypedRef((*typedRef[FontVariation])(t))
+	rg := (*TypedRef[FontVariation])(r)
+	t := (*TypedRef[FontVariation])(from)
+	rg.TypedRef((*TypedRef[FontVariation])(t))
 }
 
 func (r *RefFontVariationImpl) Unref() {
-	rg := (*typedRef[FontVariation])(r)
+	rg := (*TypedRef[FontVariation])(r)
 	rg.Unref()
 }
 
@@ -8392,31 +8392,31 @@ type RefGDExtension interface {
 	TypedPtr() GDExtension
 }
 
-type RefGDExtensionImpl typedRef[GDExtension]
+type RefGDExtensionImpl TypedRef[GDExtension]
 
 func (r *RefGDExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[GDExtension])(r)
+	rg := (*TypedRef[GDExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGDExtensionImpl) TypedPtr() GDExtension {
-	rg := (*typedRef[GDExtension])(r)
+	rg := (*TypedRef[GDExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGDExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[GDExtension])(r)
+	rg := (*TypedRef[GDExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGDExtensionImpl) TypedRef(from *RefGDExtensionImpl) {
-	rg := (*typedRef[GDExtension])(r)
-	t := (*typedRef[GDExtension])(from)
-	rg.TypedRef((*typedRef[GDExtension])(t))
+	rg := (*TypedRef[GDExtension])(r)
+	t := (*TypedRef[GDExtension])(from)
+	rg.TypedRef((*TypedRef[GDExtension])(t))
 }
 
 func (r *RefGDExtensionImpl) Unref() {
-	rg := (*typedRef[GDExtension])(r)
+	rg := (*TypedRef[GDExtension])(r)
 	rg.Unref()
 }
 
@@ -8444,31 +8444,31 @@ type RefGDScript interface {
 	TypedPtr() GDScript
 }
 
-type RefGDScriptImpl typedRef[GDScript]
+type RefGDScriptImpl TypedRef[GDScript]
 
 func (r *RefGDScriptImpl) Ptr() RefCounted {
-	rg := (*typedRef[GDScript])(r)
+	rg := (*TypedRef[GDScript])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGDScriptImpl) TypedPtr() GDScript {
-	rg := (*typedRef[GDScript])(r)
+	rg := (*TypedRef[GDScript])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGDScriptImpl) Ref(from Ref) {
-	rg := (*typedRef[GDScript])(r)
+	rg := (*TypedRef[GDScript])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGDScriptImpl) TypedRef(from *RefGDScriptImpl) {
-	rg := (*typedRef[GDScript])(r)
-	t := (*typedRef[GDScript])(from)
-	rg.TypedRef((*typedRef[GDScript])(t))
+	rg := (*TypedRef[GDScript])(r)
+	t := (*TypedRef[GDScript])(from)
+	rg.TypedRef((*TypedRef[GDScript])(t))
 }
 
 func (r *RefGDScriptImpl) Unref() {
-	rg := (*typedRef[GDScript])(r)
+	rg := (*TypedRef[GDScript])(r)
 	rg.Unref()
 }
 
@@ -8496,31 +8496,31 @@ type RefGLTFAccessor interface {
 	TypedPtr() GLTFAccessor
 }
 
-type RefGLTFAccessorImpl typedRef[GLTFAccessor]
+type RefGLTFAccessorImpl TypedRef[GLTFAccessor]
 
 func (r *RefGLTFAccessorImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFAccessor])(r)
+	rg := (*TypedRef[GLTFAccessor])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFAccessorImpl) TypedPtr() GLTFAccessor {
-	rg := (*typedRef[GLTFAccessor])(r)
+	rg := (*TypedRef[GLTFAccessor])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFAccessorImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFAccessor])(r)
+	rg := (*TypedRef[GLTFAccessor])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFAccessorImpl) TypedRef(from *RefGLTFAccessorImpl) {
-	rg := (*typedRef[GLTFAccessor])(r)
-	t := (*typedRef[GLTFAccessor])(from)
-	rg.TypedRef((*typedRef[GLTFAccessor])(t))
+	rg := (*TypedRef[GLTFAccessor])(r)
+	t := (*TypedRef[GLTFAccessor])(from)
+	rg.TypedRef((*TypedRef[GLTFAccessor])(t))
 }
 
 func (r *RefGLTFAccessorImpl) Unref() {
-	rg := (*typedRef[GLTFAccessor])(r)
+	rg := (*TypedRef[GLTFAccessor])(r)
 	rg.Unref()
 }
 
@@ -8548,31 +8548,31 @@ type RefGLTFAnimation interface {
 	TypedPtr() GLTFAnimation
 }
 
-type RefGLTFAnimationImpl typedRef[GLTFAnimation]
+type RefGLTFAnimationImpl TypedRef[GLTFAnimation]
 
 func (r *RefGLTFAnimationImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFAnimation])(r)
+	rg := (*TypedRef[GLTFAnimation])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFAnimationImpl) TypedPtr() GLTFAnimation {
-	rg := (*typedRef[GLTFAnimation])(r)
+	rg := (*TypedRef[GLTFAnimation])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFAnimationImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFAnimation])(r)
+	rg := (*TypedRef[GLTFAnimation])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFAnimationImpl) TypedRef(from *RefGLTFAnimationImpl) {
-	rg := (*typedRef[GLTFAnimation])(r)
-	t := (*typedRef[GLTFAnimation])(from)
-	rg.TypedRef((*typedRef[GLTFAnimation])(t))
+	rg := (*TypedRef[GLTFAnimation])(r)
+	t := (*TypedRef[GLTFAnimation])(from)
+	rg.TypedRef((*TypedRef[GLTFAnimation])(t))
 }
 
 func (r *RefGLTFAnimationImpl) Unref() {
-	rg := (*typedRef[GLTFAnimation])(r)
+	rg := (*TypedRef[GLTFAnimation])(r)
 	rg.Unref()
 }
 
@@ -8600,31 +8600,31 @@ type RefGLTFBufferView interface {
 	TypedPtr() GLTFBufferView
 }
 
-type RefGLTFBufferViewImpl typedRef[GLTFBufferView]
+type RefGLTFBufferViewImpl TypedRef[GLTFBufferView]
 
 func (r *RefGLTFBufferViewImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFBufferView])(r)
+	rg := (*TypedRef[GLTFBufferView])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFBufferViewImpl) TypedPtr() GLTFBufferView {
-	rg := (*typedRef[GLTFBufferView])(r)
+	rg := (*TypedRef[GLTFBufferView])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFBufferViewImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFBufferView])(r)
+	rg := (*TypedRef[GLTFBufferView])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFBufferViewImpl) TypedRef(from *RefGLTFBufferViewImpl) {
-	rg := (*typedRef[GLTFBufferView])(r)
-	t := (*typedRef[GLTFBufferView])(from)
-	rg.TypedRef((*typedRef[GLTFBufferView])(t))
+	rg := (*TypedRef[GLTFBufferView])(r)
+	t := (*TypedRef[GLTFBufferView])(from)
+	rg.TypedRef((*TypedRef[GLTFBufferView])(t))
 }
 
 func (r *RefGLTFBufferViewImpl) Unref() {
-	rg := (*typedRef[GLTFBufferView])(r)
+	rg := (*TypedRef[GLTFBufferView])(r)
 	rg.Unref()
 }
 
@@ -8652,31 +8652,31 @@ type RefGLTFCamera interface {
 	TypedPtr() GLTFCamera
 }
 
-type RefGLTFCameraImpl typedRef[GLTFCamera]
+type RefGLTFCameraImpl TypedRef[GLTFCamera]
 
 func (r *RefGLTFCameraImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFCamera])(r)
+	rg := (*TypedRef[GLTFCamera])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFCameraImpl) TypedPtr() GLTFCamera {
-	rg := (*typedRef[GLTFCamera])(r)
+	rg := (*TypedRef[GLTFCamera])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFCameraImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFCamera])(r)
+	rg := (*TypedRef[GLTFCamera])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFCameraImpl) TypedRef(from *RefGLTFCameraImpl) {
-	rg := (*typedRef[GLTFCamera])(r)
-	t := (*typedRef[GLTFCamera])(from)
-	rg.TypedRef((*typedRef[GLTFCamera])(t))
+	rg := (*TypedRef[GLTFCamera])(r)
+	t := (*TypedRef[GLTFCamera])(from)
+	rg.TypedRef((*TypedRef[GLTFCamera])(t))
 }
 
 func (r *RefGLTFCameraImpl) Unref() {
-	rg := (*typedRef[GLTFCamera])(r)
+	rg := (*TypedRef[GLTFCamera])(r)
 	rg.Unref()
 }
 
@@ -8704,31 +8704,31 @@ type RefGLTFDocument interface {
 	TypedPtr() GLTFDocument
 }
 
-type RefGLTFDocumentImpl typedRef[GLTFDocument]
+type RefGLTFDocumentImpl TypedRef[GLTFDocument]
 
 func (r *RefGLTFDocumentImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFDocument])(r)
+	rg := (*TypedRef[GLTFDocument])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFDocumentImpl) TypedPtr() GLTFDocument {
-	rg := (*typedRef[GLTFDocument])(r)
+	rg := (*TypedRef[GLTFDocument])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFDocumentImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFDocument])(r)
+	rg := (*TypedRef[GLTFDocument])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFDocumentImpl) TypedRef(from *RefGLTFDocumentImpl) {
-	rg := (*typedRef[GLTFDocument])(r)
-	t := (*typedRef[GLTFDocument])(from)
-	rg.TypedRef((*typedRef[GLTFDocument])(t))
+	rg := (*TypedRef[GLTFDocument])(r)
+	t := (*TypedRef[GLTFDocument])(from)
+	rg.TypedRef((*TypedRef[GLTFDocument])(t))
 }
 
 func (r *RefGLTFDocumentImpl) Unref() {
-	rg := (*typedRef[GLTFDocument])(r)
+	rg := (*TypedRef[GLTFDocument])(r)
 	rg.Unref()
 }
 
@@ -8756,31 +8756,31 @@ type RefGLTFDocumentExtension interface {
 	TypedPtr() GLTFDocumentExtension
 }
 
-type RefGLTFDocumentExtensionImpl typedRef[GLTFDocumentExtension]
+type RefGLTFDocumentExtensionImpl TypedRef[GLTFDocumentExtension]
 
 func (r *RefGLTFDocumentExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFDocumentExtension])(r)
+	rg := (*TypedRef[GLTFDocumentExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFDocumentExtensionImpl) TypedPtr() GLTFDocumentExtension {
-	rg := (*typedRef[GLTFDocumentExtension])(r)
+	rg := (*TypedRef[GLTFDocumentExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFDocumentExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFDocumentExtension])(r)
+	rg := (*TypedRef[GLTFDocumentExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFDocumentExtensionImpl) TypedRef(from *RefGLTFDocumentExtensionImpl) {
-	rg := (*typedRef[GLTFDocumentExtension])(r)
-	t := (*typedRef[GLTFDocumentExtension])(from)
-	rg.TypedRef((*typedRef[GLTFDocumentExtension])(t))
+	rg := (*TypedRef[GLTFDocumentExtension])(r)
+	t := (*TypedRef[GLTFDocumentExtension])(from)
+	rg.TypedRef((*TypedRef[GLTFDocumentExtension])(t))
 }
 
 func (r *RefGLTFDocumentExtensionImpl) Unref() {
-	rg := (*typedRef[GLTFDocumentExtension])(r)
+	rg := (*TypedRef[GLTFDocumentExtension])(r)
 	rg.Unref()
 }
 
@@ -8808,31 +8808,31 @@ type RefGLTFDocumentExtensionConvertImporterMesh interface {
 	TypedPtr() GLTFDocumentExtensionConvertImporterMesh
 }
 
-type RefGLTFDocumentExtensionConvertImporterMeshImpl typedRef[GLTFDocumentExtensionConvertImporterMesh]
+type RefGLTFDocumentExtensionConvertImporterMeshImpl TypedRef[GLTFDocumentExtensionConvertImporterMesh]
 
 func (r *RefGLTFDocumentExtensionConvertImporterMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFDocumentExtensionConvertImporterMesh])(r)
+	rg := (*TypedRef[GLTFDocumentExtensionConvertImporterMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFDocumentExtensionConvertImporterMeshImpl) TypedPtr() GLTFDocumentExtensionConvertImporterMesh {
-	rg := (*typedRef[GLTFDocumentExtensionConvertImporterMesh])(r)
+	rg := (*TypedRef[GLTFDocumentExtensionConvertImporterMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFDocumentExtensionConvertImporterMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFDocumentExtensionConvertImporterMesh])(r)
+	rg := (*TypedRef[GLTFDocumentExtensionConvertImporterMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFDocumentExtensionConvertImporterMeshImpl) TypedRef(from *RefGLTFDocumentExtensionConvertImporterMeshImpl) {
-	rg := (*typedRef[GLTFDocumentExtensionConvertImporterMesh])(r)
-	t := (*typedRef[GLTFDocumentExtensionConvertImporterMesh])(from)
-	rg.TypedRef((*typedRef[GLTFDocumentExtensionConvertImporterMesh])(t))
+	rg := (*TypedRef[GLTFDocumentExtensionConvertImporterMesh])(r)
+	t := (*TypedRef[GLTFDocumentExtensionConvertImporterMesh])(from)
+	rg.TypedRef((*TypedRef[GLTFDocumentExtensionConvertImporterMesh])(t))
 }
 
 func (r *RefGLTFDocumentExtensionConvertImporterMeshImpl) Unref() {
-	rg := (*typedRef[GLTFDocumentExtensionConvertImporterMesh])(r)
+	rg := (*TypedRef[GLTFDocumentExtensionConvertImporterMesh])(r)
 	rg.Unref()
 }
 
@@ -8860,31 +8860,31 @@ type RefGLTFLight interface {
 	TypedPtr() GLTFLight
 }
 
-type RefGLTFLightImpl typedRef[GLTFLight]
+type RefGLTFLightImpl TypedRef[GLTFLight]
 
 func (r *RefGLTFLightImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFLight])(r)
+	rg := (*TypedRef[GLTFLight])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFLightImpl) TypedPtr() GLTFLight {
-	rg := (*typedRef[GLTFLight])(r)
+	rg := (*TypedRef[GLTFLight])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFLightImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFLight])(r)
+	rg := (*TypedRef[GLTFLight])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFLightImpl) TypedRef(from *RefGLTFLightImpl) {
-	rg := (*typedRef[GLTFLight])(r)
-	t := (*typedRef[GLTFLight])(from)
-	rg.TypedRef((*typedRef[GLTFLight])(t))
+	rg := (*TypedRef[GLTFLight])(r)
+	t := (*TypedRef[GLTFLight])(from)
+	rg.TypedRef((*TypedRef[GLTFLight])(t))
 }
 
 func (r *RefGLTFLightImpl) Unref() {
-	rg := (*typedRef[GLTFLight])(r)
+	rg := (*TypedRef[GLTFLight])(r)
 	rg.Unref()
 }
 
@@ -8912,31 +8912,31 @@ type RefGLTFMesh interface {
 	TypedPtr() GLTFMesh
 }
 
-type RefGLTFMeshImpl typedRef[GLTFMesh]
+type RefGLTFMeshImpl TypedRef[GLTFMesh]
 
 func (r *RefGLTFMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFMesh])(r)
+	rg := (*TypedRef[GLTFMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFMeshImpl) TypedPtr() GLTFMesh {
-	rg := (*typedRef[GLTFMesh])(r)
+	rg := (*TypedRef[GLTFMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFMesh])(r)
+	rg := (*TypedRef[GLTFMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFMeshImpl) TypedRef(from *RefGLTFMeshImpl) {
-	rg := (*typedRef[GLTFMesh])(r)
-	t := (*typedRef[GLTFMesh])(from)
-	rg.TypedRef((*typedRef[GLTFMesh])(t))
+	rg := (*TypedRef[GLTFMesh])(r)
+	t := (*TypedRef[GLTFMesh])(from)
+	rg.TypedRef((*TypedRef[GLTFMesh])(t))
 }
 
 func (r *RefGLTFMeshImpl) Unref() {
-	rg := (*typedRef[GLTFMesh])(r)
+	rg := (*TypedRef[GLTFMesh])(r)
 	rg.Unref()
 }
 
@@ -8964,31 +8964,31 @@ type RefGLTFNode interface {
 	TypedPtr() GLTFNode
 }
 
-type RefGLTFNodeImpl typedRef[GLTFNode]
+type RefGLTFNodeImpl TypedRef[GLTFNode]
 
 func (r *RefGLTFNodeImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFNode])(r)
+	rg := (*TypedRef[GLTFNode])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFNodeImpl) TypedPtr() GLTFNode {
-	rg := (*typedRef[GLTFNode])(r)
+	rg := (*TypedRef[GLTFNode])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFNodeImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFNode])(r)
+	rg := (*TypedRef[GLTFNode])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFNodeImpl) TypedRef(from *RefGLTFNodeImpl) {
-	rg := (*typedRef[GLTFNode])(r)
-	t := (*typedRef[GLTFNode])(from)
-	rg.TypedRef((*typedRef[GLTFNode])(t))
+	rg := (*TypedRef[GLTFNode])(r)
+	t := (*TypedRef[GLTFNode])(from)
+	rg.TypedRef((*TypedRef[GLTFNode])(t))
 }
 
 func (r *RefGLTFNodeImpl) Unref() {
-	rg := (*typedRef[GLTFNode])(r)
+	rg := (*TypedRef[GLTFNode])(r)
 	rg.Unref()
 }
 
@@ -9016,31 +9016,31 @@ type RefGLTFPhysicsBody interface {
 	TypedPtr() GLTFPhysicsBody
 }
 
-type RefGLTFPhysicsBodyImpl typedRef[GLTFPhysicsBody]
+type RefGLTFPhysicsBodyImpl TypedRef[GLTFPhysicsBody]
 
 func (r *RefGLTFPhysicsBodyImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFPhysicsBody])(r)
+	rg := (*TypedRef[GLTFPhysicsBody])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFPhysicsBodyImpl) TypedPtr() GLTFPhysicsBody {
-	rg := (*typedRef[GLTFPhysicsBody])(r)
+	rg := (*TypedRef[GLTFPhysicsBody])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFPhysicsBodyImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFPhysicsBody])(r)
+	rg := (*TypedRef[GLTFPhysicsBody])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFPhysicsBodyImpl) TypedRef(from *RefGLTFPhysicsBodyImpl) {
-	rg := (*typedRef[GLTFPhysicsBody])(r)
-	t := (*typedRef[GLTFPhysicsBody])(from)
-	rg.TypedRef((*typedRef[GLTFPhysicsBody])(t))
+	rg := (*TypedRef[GLTFPhysicsBody])(r)
+	t := (*TypedRef[GLTFPhysicsBody])(from)
+	rg.TypedRef((*TypedRef[GLTFPhysicsBody])(t))
 }
 
 func (r *RefGLTFPhysicsBodyImpl) Unref() {
-	rg := (*typedRef[GLTFPhysicsBody])(r)
+	rg := (*TypedRef[GLTFPhysicsBody])(r)
 	rg.Unref()
 }
 
@@ -9068,31 +9068,31 @@ type RefGLTFPhysicsShape interface {
 	TypedPtr() GLTFPhysicsShape
 }
 
-type RefGLTFPhysicsShapeImpl typedRef[GLTFPhysicsShape]
+type RefGLTFPhysicsShapeImpl TypedRef[GLTFPhysicsShape]
 
 func (r *RefGLTFPhysicsShapeImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFPhysicsShape])(r)
+	rg := (*TypedRef[GLTFPhysicsShape])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFPhysicsShapeImpl) TypedPtr() GLTFPhysicsShape {
-	rg := (*typedRef[GLTFPhysicsShape])(r)
+	rg := (*TypedRef[GLTFPhysicsShape])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFPhysicsShapeImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFPhysicsShape])(r)
+	rg := (*TypedRef[GLTFPhysicsShape])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFPhysicsShapeImpl) TypedRef(from *RefGLTFPhysicsShapeImpl) {
-	rg := (*typedRef[GLTFPhysicsShape])(r)
-	t := (*typedRef[GLTFPhysicsShape])(from)
-	rg.TypedRef((*typedRef[GLTFPhysicsShape])(t))
+	rg := (*TypedRef[GLTFPhysicsShape])(r)
+	t := (*TypedRef[GLTFPhysicsShape])(from)
+	rg.TypedRef((*TypedRef[GLTFPhysicsShape])(t))
 }
 
 func (r *RefGLTFPhysicsShapeImpl) Unref() {
-	rg := (*typedRef[GLTFPhysicsShape])(r)
+	rg := (*TypedRef[GLTFPhysicsShape])(r)
 	rg.Unref()
 }
 
@@ -9120,31 +9120,31 @@ type RefGLTFSkeleton interface {
 	TypedPtr() GLTFSkeleton
 }
 
-type RefGLTFSkeletonImpl typedRef[GLTFSkeleton]
+type RefGLTFSkeletonImpl TypedRef[GLTFSkeleton]
 
 func (r *RefGLTFSkeletonImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFSkeleton])(r)
+	rg := (*TypedRef[GLTFSkeleton])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFSkeletonImpl) TypedPtr() GLTFSkeleton {
-	rg := (*typedRef[GLTFSkeleton])(r)
+	rg := (*TypedRef[GLTFSkeleton])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFSkeletonImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFSkeleton])(r)
+	rg := (*TypedRef[GLTFSkeleton])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFSkeletonImpl) TypedRef(from *RefGLTFSkeletonImpl) {
-	rg := (*typedRef[GLTFSkeleton])(r)
-	t := (*typedRef[GLTFSkeleton])(from)
-	rg.TypedRef((*typedRef[GLTFSkeleton])(t))
+	rg := (*TypedRef[GLTFSkeleton])(r)
+	t := (*TypedRef[GLTFSkeleton])(from)
+	rg.TypedRef((*TypedRef[GLTFSkeleton])(t))
 }
 
 func (r *RefGLTFSkeletonImpl) Unref() {
-	rg := (*typedRef[GLTFSkeleton])(r)
+	rg := (*TypedRef[GLTFSkeleton])(r)
 	rg.Unref()
 }
 
@@ -9172,31 +9172,31 @@ type RefGLTFSkin interface {
 	TypedPtr() GLTFSkin
 }
 
-type RefGLTFSkinImpl typedRef[GLTFSkin]
+type RefGLTFSkinImpl TypedRef[GLTFSkin]
 
 func (r *RefGLTFSkinImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFSkin])(r)
+	rg := (*TypedRef[GLTFSkin])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFSkinImpl) TypedPtr() GLTFSkin {
-	rg := (*typedRef[GLTFSkin])(r)
+	rg := (*TypedRef[GLTFSkin])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFSkinImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFSkin])(r)
+	rg := (*TypedRef[GLTFSkin])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFSkinImpl) TypedRef(from *RefGLTFSkinImpl) {
-	rg := (*typedRef[GLTFSkin])(r)
-	t := (*typedRef[GLTFSkin])(from)
-	rg.TypedRef((*typedRef[GLTFSkin])(t))
+	rg := (*TypedRef[GLTFSkin])(r)
+	t := (*TypedRef[GLTFSkin])(from)
+	rg.TypedRef((*TypedRef[GLTFSkin])(t))
 }
 
 func (r *RefGLTFSkinImpl) Unref() {
-	rg := (*typedRef[GLTFSkin])(r)
+	rg := (*TypedRef[GLTFSkin])(r)
 	rg.Unref()
 }
 
@@ -9224,31 +9224,31 @@ type RefGLTFSpecGloss interface {
 	TypedPtr() GLTFSpecGloss
 }
 
-type RefGLTFSpecGlossImpl typedRef[GLTFSpecGloss]
+type RefGLTFSpecGlossImpl TypedRef[GLTFSpecGloss]
 
 func (r *RefGLTFSpecGlossImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFSpecGloss])(r)
+	rg := (*TypedRef[GLTFSpecGloss])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFSpecGlossImpl) TypedPtr() GLTFSpecGloss {
-	rg := (*typedRef[GLTFSpecGloss])(r)
+	rg := (*TypedRef[GLTFSpecGloss])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFSpecGlossImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFSpecGloss])(r)
+	rg := (*TypedRef[GLTFSpecGloss])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFSpecGlossImpl) TypedRef(from *RefGLTFSpecGlossImpl) {
-	rg := (*typedRef[GLTFSpecGloss])(r)
-	t := (*typedRef[GLTFSpecGloss])(from)
-	rg.TypedRef((*typedRef[GLTFSpecGloss])(t))
+	rg := (*TypedRef[GLTFSpecGloss])(r)
+	t := (*TypedRef[GLTFSpecGloss])(from)
+	rg.TypedRef((*TypedRef[GLTFSpecGloss])(t))
 }
 
 func (r *RefGLTFSpecGlossImpl) Unref() {
-	rg := (*typedRef[GLTFSpecGloss])(r)
+	rg := (*TypedRef[GLTFSpecGloss])(r)
 	rg.Unref()
 }
 
@@ -9276,31 +9276,31 @@ type RefGLTFState interface {
 	TypedPtr() GLTFState
 }
 
-type RefGLTFStateImpl typedRef[GLTFState]
+type RefGLTFStateImpl TypedRef[GLTFState]
 
 func (r *RefGLTFStateImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFState])(r)
+	rg := (*TypedRef[GLTFState])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFStateImpl) TypedPtr() GLTFState {
-	rg := (*typedRef[GLTFState])(r)
+	rg := (*TypedRef[GLTFState])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFStateImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFState])(r)
+	rg := (*TypedRef[GLTFState])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFStateImpl) TypedRef(from *RefGLTFStateImpl) {
-	rg := (*typedRef[GLTFState])(r)
-	t := (*typedRef[GLTFState])(from)
-	rg.TypedRef((*typedRef[GLTFState])(t))
+	rg := (*TypedRef[GLTFState])(r)
+	t := (*TypedRef[GLTFState])(from)
+	rg.TypedRef((*TypedRef[GLTFState])(t))
 }
 
 func (r *RefGLTFStateImpl) Unref() {
-	rg := (*typedRef[GLTFState])(r)
+	rg := (*TypedRef[GLTFState])(r)
 	rg.Unref()
 }
 
@@ -9328,31 +9328,31 @@ type RefGLTFTexture interface {
 	TypedPtr() GLTFTexture
 }
 
-type RefGLTFTextureImpl typedRef[GLTFTexture]
+type RefGLTFTextureImpl TypedRef[GLTFTexture]
 
 func (r *RefGLTFTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFTexture])(r)
+	rg := (*TypedRef[GLTFTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFTextureImpl) TypedPtr() GLTFTexture {
-	rg := (*typedRef[GLTFTexture])(r)
+	rg := (*TypedRef[GLTFTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFTexture])(r)
+	rg := (*TypedRef[GLTFTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFTextureImpl) TypedRef(from *RefGLTFTextureImpl) {
-	rg := (*typedRef[GLTFTexture])(r)
-	t := (*typedRef[GLTFTexture])(from)
-	rg.TypedRef((*typedRef[GLTFTexture])(t))
+	rg := (*TypedRef[GLTFTexture])(r)
+	t := (*TypedRef[GLTFTexture])(from)
+	rg.TypedRef((*TypedRef[GLTFTexture])(t))
 }
 
 func (r *RefGLTFTextureImpl) Unref() {
-	rg := (*typedRef[GLTFTexture])(r)
+	rg := (*TypedRef[GLTFTexture])(r)
 	rg.Unref()
 }
 
@@ -9380,31 +9380,31 @@ type RefGLTFTextureSampler interface {
 	TypedPtr() GLTFTextureSampler
 }
 
-type RefGLTFTextureSamplerImpl typedRef[GLTFTextureSampler]
+type RefGLTFTextureSamplerImpl TypedRef[GLTFTextureSampler]
 
 func (r *RefGLTFTextureSamplerImpl) Ptr() RefCounted {
-	rg := (*typedRef[GLTFTextureSampler])(r)
+	rg := (*TypedRef[GLTFTextureSampler])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGLTFTextureSamplerImpl) TypedPtr() GLTFTextureSampler {
-	rg := (*typedRef[GLTFTextureSampler])(r)
+	rg := (*TypedRef[GLTFTextureSampler])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGLTFTextureSamplerImpl) Ref(from Ref) {
-	rg := (*typedRef[GLTFTextureSampler])(r)
+	rg := (*TypedRef[GLTFTextureSampler])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGLTFTextureSamplerImpl) TypedRef(from *RefGLTFTextureSamplerImpl) {
-	rg := (*typedRef[GLTFTextureSampler])(r)
-	t := (*typedRef[GLTFTextureSampler])(from)
-	rg.TypedRef((*typedRef[GLTFTextureSampler])(t))
+	rg := (*TypedRef[GLTFTextureSampler])(r)
+	t := (*TypedRef[GLTFTextureSampler])(from)
+	rg.TypedRef((*TypedRef[GLTFTextureSampler])(t))
 }
 
 func (r *RefGLTFTextureSamplerImpl) Unref() {
-	rg := (*typedRef[GLTFTextureSampler])(r)
+	rg := (*TypedRef[GLTFTextureSampler])(r)
 	rg.Unref()
 }
 
@@ -9432,31 +9432,31 @@ type RefGradient interface {
 	TypedPtr() Gradient
 }
 
-type RefGradientImpl typedRef[Gradient]
+type RefGradientImpl TypedRef[Gradient]
 
 func (r *RefGradientImpl) Ptr() RefCounted {
-	rg := (*typedRef[Gradient])(r)
+	rg := (*TypedRef[Gradient])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGradientImpl) TypedPtr() Gradient {
-	rg := (*typedRef[Gradient])(r)
+	rg := (*TypedRef[Gradient])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGradientImpl) Ref(from Ref) {
-	rg := (*typedRef[Gradient])(r)
+	rg := (*TypedRef[Gradient])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGradientImpl) TypedRef(from *RefGradientImpl) {
-	rg := (*typedRef[Gradient])(r)
-	t := (*typedRef[Gradient])(from)
-	rg.TypedRef((*typedRef[Gradient])(t))
+	rg := (*TypedRef[Gradient])(r)
+	t := (*TypedRef[Gradient])(from)
+	rg.TypedRef((*TypedRef[Gradient])(t))
 }
 
 func (r *RefGradientImpl) Unref() {
-	rg := (*typedRef[Gradient])(r)
+	rg := (*TypedRef[Gradient])(r)
 	rg.Unref()
 }
 
@@ -9484,31 +9484,31 @@ type RefGradientTexture1D interface {
 	TypedPtr() GradientTexture1D
 }
 
-type RefGradientTexture1DImpl typedRef[GradientTexture1D]
+type RefGradientTexture1DImpl TypedRef[GradientTexture1D]
 
 func (r *RefGradientTexture1DImpl) Ptr() RefCounted {
-	rg := (*typedRef[GradientTexture1D])(r)
+	rg := (*TypedRef[GradientTexture1D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGradientTexture1DImpl) TypedPtr() GradientTexture1D {
-	rg := (*typedRef[GradientTexture1D])(r)
+	rg := (*TypedRef[GradientTexture1D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGradientTexture1DImpl) Ref(from Ref) {
-	rg := (*typedRef[GradientTexture1D])(r)
+	rg := (*TypedRef[GradientTexture1D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGradientTexture1DImpl) TypedRef(from *RefGradientTexture1DImpl) {
-	rg := (*typedRef[GradientTexture1D])(r)
-	t := (*typedRef[GradientTexture1D])(from)
-	rg.TypedRef((*typedRef[GradientTexture1D])(t))
+	rg := (*TypedRef[GradientTexture1D])(r)
+	t := (*TypedRef[GradientTexture1D])(from)
+	rg.TypedRef((*TypedRef[GradientTexture1D])(t))
 }
 
 func (r *RefGradientTexture1DImpl) Unref() {
-	rg := (*typedRef[GradientTexture1D])(r)
+	rg := (*TypedRef[GradientTexture1D])(r)
 	rg.Unref()
 }
 
@@ -9536,31 +9536,31 @@ type RefGradientTexture2D interface {
 	TypedPtr() GradientTexture2D
 }
 
-type RefGradientTexture2DImpl typedRef[GradientTexture2D]
+type RefGradientTexture2DImpl TypedRef[GradientTexture2D]
 
 func (r *RefGradientTexture2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[GradientTexture2D])(r)
+	rg := (*TypedRef[GradientTexture2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefGradientTexture2DImpl) TypedPtr() GradientTexture2D {
-	rg := (*typedRef[GradientTexture2D])(r)
+	rg := (*TypedRef[GradientTexture2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefGradientTexture2DImpl) Ref(from Ref) {
-	rg := (*typedRef[GradientTexture2D])(r)
+	rg := (*TypedRef[GradientTexture2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefGradientTexture2DImpl) TypedRef(from *RefGradientTexture2DImpl) {
-	rg := (*typedRef[GradientTexture2D])(r)
-	t := (*typedRef[GradientTexture2D])(from)
-	rg.TypedRef((*typedRef[GradientTexture2D])(t))
+	rg := (*TypedRef[GradientTexture2D])(r)
+	t := (*TypedRef[GradientTexture2D])(from)
+	rg.TypedRef((*TypedRef[GradientTexture2D])(t))
 }
 
 func (r *RefGradientTexture2DImpl) Unref() {
-	rg := (*typedRef[GradientTexture2D])(r)
+	rg := (*TypedRef[GradientTexture2D])(r)
 	rg.Unref()
 }
 
@@ -9588,31 +9588,31 @@ type RefHMACContext interface {
 	TypedPtr() HMACContext
 }
 
-type RefHMACContextImpl typedRef[HMACContext]
+type RefHMACContextImpl TypedRef[HMACContext]
 
 func (r *RefHMACContextImpl) Ptr() RefCounted {
-	rg := (*typedRef[HMACContext])(r)
+	rg := (*TypedRef[HMACContext])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefHMACContextImpl) TypedPtr() HMACContext {
-	rg := (*typedRef[HMACContext])(r)
+	rg := (*TypedRef[HMACContext])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefHMACContextImpl) Ref(from Ref) {
-	rg := (*typedRef[HMACContext])(r)
+	rg := (*TypedRef[HMACContext])(r)
 	rg.Ref(from)
 }
 
 func (r *RefHMACContextImpl) TypedRef(from *RefHMACContextImpl) {
-	rg := (*typedRef[HMACContext])(r)
-	t := (*typedRef[HMACContext])(from)
-	rg.TypedRef((*typedRef[HMACContext])(t))
+	rg := (*TypedRef[HMACContext])(r)
+	t := (*TypedRef[HMACContext])(from)
+	rg.TypedRef((*TypedRef[HMACContext])(t))
 }
 
 func (r *RefHMACContextImpl) Unref() {
-	rg := (*typedRef[HMACContext])(r)
+	rg := (*TypedRef[HMACContext])(r)
 	rg.Unref()
 }
 
@@ -9640,31 +9640,31 @@ type RefHTTPClient interface {
 	TypedPtr() HTTPClient
 }
 
-type RefHTTPClientImpl typedRef[HTTPClient]
+type RefHTTPClientImpl TypedRef[HTTPClient]
 
 func (r *RefHTTPClientImpl) Ptr() RefCounted {
-	rg := (*typedRef[HTTPClient])(r)
+	rg := (*TypedRef[HTTPClient])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefHTTPClientImpl) TypedPtr() HTTPClient {
-	rg := (*typedRef[HTTPClient])(r)
+	rg := (*TypedRef[HTTPClient])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefHTTPClientImpl) Ref(from Ref) {
-	rg := (*typedRef[HTTPClient])(r)
+	rg := (*TypedRef[HTTPClient])(r)
 	rg.Ref(from)
 }
 
 func (r *RefHTTPClientImpl) TypedRef(from *RefHTTPClientImpl) {
-	rg := (*typedRef[HTTPClient])(r)
-	t := (*typedRef[HTTPClient])(from)
-	rg.TypedRef((*typedRef[HTTPClient])(t))
+	rg := (*TypedRef[HTTPClient])(r)
+	t := (*TypedRef[HTTPClient])(from)
+	rg.TypedRef((*TypedRef[HTTPClient])(t))
 }
 
 func (r *RefHTTPClientImpl) Unref() {
-	rg := (*typedRef[HTTPClient])(r)
+	rg := (*TypedRef[HTTPClient])(r)
 	rg.Unref()
 }
 
@@ -9692,31 +9692,31 @@ type RefHashingContext interface {
 	TypedPtr() HashingContext
 }
 
-type RefHashingContextImpl typedRef[HashingContext]
+type RefHashingContextImpl TypedRef[HashingContext]
 
 func (r *RefHashingContextImpl) Ptr() RefCounted {
-	rg := (*typedRef[HashingContext])(r)
+	rg := (*TypedRef[HashingContext])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefHashingContextImpl) TypedPtr() HashingContext {
-	rg := (*typedRef[HashingContext])(r)
+	rg := (*TypedRef[HashingContext])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefHashingContextImpl) Ref(from Ref) {
-	rg := (*typedRef[HashingContext])(r)
+	rg := (*TypedRef[HashingContext])(r)
 	rg.Ref(from)
 }
 
 func (r *RefHashingContextImpl) TypedRef(from *RefHashingContextImpl) {
-	rg := (*typedRef[HashingContext])(r)
-	t := (*typedRef[HashingContext])(from)
-	rg.TypedRef((*typedRef[HashingContext])(t))
+	rg := (*TypedRef[HashingContext])(r)
+	t := (*TypedRef[HashingContext])(from)
+	rg.TypedRef((*TypedRef[HashingContext])(t))
 }
 
 func (r *RefHashingContextImpl) Unref() {
-	rg := (*typedRef[HashingContext])(r)
+	rg := (*TypedRef[HashingContext])(r)
 	rg.Unref()
 }
 
@@ -9744,31 +9744,31 @@ type RefHeightMapShape3D interface {
 	TypedPtr() HeightMapShape3D
 }
 
-type RefHeightMapShape3DImpl typedRef[HeightMapShape3D]
+type RefHeightMapShape3DImpl TypedRef[HeightMapShape3D]
 
 func (r *RefHeightMapShape3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[HeightMapShape3D])(r)
+	rg := (*TypedRef[HeightMapShape3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefHeightMapShape3DImpl) TypedPtr() HeightMapShape3D {
-	rg := (*typedRef[HeightMapShape3D])(r)
+	rg := (*TypedRef[HeightMapShape3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefHeightMapShape3DImpl) Ref(from Ref) {
-	rg := (*typedRef[HeightMapShape3D])(r)
+	rg := (*TypedRef[HeightMapShape3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefHeightMapShape3DImpl) TypedRef(from *RefHeightMapShape3DImpl) {
-	rg := (*typedRef[HeightMapShape3D])(r)
-	t := (*typedRef[HeightMapShape3D])(from)
-	rg.TypedRef((*typedRef[HeightMapShape3D])(t))
+	rg := (*TypedRef[HeightMapShape3D])(r)
+	t := (*TypedRef[HeightMapShape3D])(from)
+	rg.TypedRef((*TypedRef[HeightMapShape3D])(t))
 }
 
 func (r *RefHeightMapShape3DImpl) Unref() {
-	rg := (*typedRef[HeightMapShape3D])(r)
+	rg := (*TypedRef[HeightMapShape3D])(r)
 	rg.Unref()
 }
 
@@ -9796,31 +9796,31 @@ type RefImage interface {
 	TypedPtr() Image
 }
 
-type RefImageImpl typedRef[Image]
+type RefImageImpl TypedRef[Image]
 
 func (r *RefImageImpl) Ptr() RefCounted {
-	rg := (*typedRef[Image])(r)
+	rg := (*TypedRef[Image])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefImageImpl) TypedPtr() Image {
-	rg := (*typedRef[Image])(r)
+	rg := (*TypedRef[Image])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefImageImpl) Ref(from Ref) {
-	rg := (*typedRef[Image])(r)
+	rg := (*TypedRef[Image])(r)
 	rg.Ref(from)
 }
 
 func (r *RefImageImpl) TypedRef(from *RefImageImpl) {
-	rg := (*typedRef[Image])(r)
-	t := (*typedRef[Image])(from)
-	rg.TypedRef((*typedRef[Image])(t))
+	rg := (*TypedRef[Image])(r)
+	t := (*TypedRef[Image])(from)
+	rg.TypedRef((*TypedRef[Image])(t))
 }
 
 func (r *RefImageImpl) Unref() {
-	rg := (*typedRef[Image])(r)
+	rg := (*TypedRef[Image])(r)
 	rg.Unref()
 }
 
@@ -9848,31 +9848,31 @@ type RefImageFormatLoader interface {
 	TypedPtr() ImageFormatLoader
 }
 
-type RefImageFormatLoaderImpl typedRef[ImageFormatLoader]
+type RefImageFormatLoaderImpl TypedRef[ImageFormatLoader]
 
 func (r *RefImageFormatLoaderImpl) Ptr() RefCounted {
-	rg := (*typedRef[ImageFormatLoader])(r)
+	rg := (*TypedRef[ImageFormatLoader])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefImageFormatLoaderImpl) TypedPtr() ImageFormatLoader {
-	rg := (*typedRef[ImageFormatLoader])(r)
+	rg := (*TypedRef[ImageFormatLoader])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefImageFormatLoaderImpl) Ref(from Ref) {
-	rg := (*typedRef[ImageFormatLoader])(r)
+	rg := (*TypedRef[ImageFormatLoader])(r)
 	rg.Ref(from)
 }
 
 func (r *RefImageFormatLoaderImpl) TypedRef(from *RefImageFormatLoaderImpl) {
-	rg := (*typedRef[ImageFormatLoader])(r)
-	t := (*typedRef[ImageFormatLoader])(from)
-	rg.TypedRef((*typedRef[ImageFormatLoader])(t))
+	rg := (*TypedRef[ImageFormatLoader])(r)
+	t := (*TypedRef[ImageFormatLoader])(from)
+	rg.TypedRef((*TypedRef[ImageFormatLoader])(t))
 }
 
 func (r *RefImageFormatLoaderImpl) Unref() {
-	rg := (*typedRef[ImageFormatLoader])(r)
+	rg := (*TypedRef[ImageFormatLoader])(r)
 	rg.Unref()
 }
 
@@ -9900,31 +9900,31 @@ type RefImageFormatLoaderExtension interface {
 	TypedPtr() ImageFormatLoaderExtension
 }
 
-type RefImageFormatLoaderExtensionImpl typedRef[ImageFormatLoaderExtension]
+type RefImageFormatLoaderExtensionImpl TypedRef[ImageFormatLoaderExtension]
 
 func (r *RefImageFormatLoaderExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[ImageFormatLoaderExtension])(r)
+	rg := (*TypedRef[ImageFormatLoaderExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefImageFormatLoaderExtensionImpl) TypedPtr() ImageFormatLoaderExtension {
-	rg := (*typedRef[ImageFormatLoaderExtension])(r)
+	rg := (*TypedRef[ImageFormatLoaderExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefImageFormatLoaderExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[ImageFormatLoaderExtension])(r)
+	rg := (*TypedRef[ImageFormatLoaderExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefImageFormatLoaderExtensionImpl) TypedRef(from *RefImageFormatLoaderExtensionImpl) {
-	rg := (*typedRef[ImageFormatLoaderExtension])(r)
-	t := (*typedRef[ImageFormatLoaderExtension])(from)
-	rg.TypedRef((*typedRef[ImageFormatLoaderExtension])(t))
+	rg := (*TypedRef[ImageFormatLoaderExtension])(r)
+	t := (*TypedRef[ImageFormatLoaderExtension])(from)
+	rg.TypedRef((*TypedRef[ImageFormatLoaderExtension])(t))
 }
 
 func (r *RefImageFormatLoaderExtensionImpl) Unref() {
-	rg := (*typedRef[ImageFormatLoaderExtension])(r)
+	rg := (*TypedRef[ImageFormatLoaderExtension])(r)
 	rg.Unref()
 }
 
@@ -9952,31 +9952,31 @@ type RefImageTexture interface {
 	TypedPtr() ImageTexture
 }
 
-type RefImageTextureImpl typedRef[ImageTexture]
+type RefImageTextureImpl TypedRef[ImageTexture]
 
 func (r *RefImageTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[ImageTexture])(r)
+	rg := (*TypedRef[ImageTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefImageTextureImpl) TypedPtr() ImageTexture {
-	rg := (*typedRef[ImageTexture])(r)
+	rg := (*TypedRef[ImageTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefImageTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[ImageTexture])(r)
+	rg := (*TypedRef[ImageTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefImageTextureImpl) TypedRef(from *RefImageTextureImpl) {
-	rg := (*typedRef[ImageTexture])(r)
-	t := (*typedRef[ImageTexture])(from)
-	rg.TypedRef((*typedRef[ImageTexture])(t))
+	rg := (*TypedRef[ImageTexture])(r)
+	t := (*TypedRef[ImageTexture])(from)
+	rg.TypedRef((*TypedRef[ImageTexture])(t))
 }
 
 func (r *RefImageTextureImpl) Unref() {
-	rg := (*typedRef[ImageTexture])(r)
+	rg := (*TypedRef[ImageTexture])(r)
 	rg.Unref()
 }
 
@@ -10004,31 +10004,31 @@ type RefImageTexture3D interface {
 	TypedPtr() ImageTexture3D
 }
 
-type RefImageTexture3DImpl typedRef[ImageTexture3D]
+type RefImageTexture3DImpl TypedRef[ImageTexture3D]
 
 func (r *RefImageTexture3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[ImageTexture3D])(r)
+	rg := (*TypedRef[ImageTexture3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefImageTexture3DImpl) TypedPtr() ImageTexture3D {
-	rg := (*typedRef[ImageTexture3D])(r)
+	rg := (*TypedRef[ImageTexture3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefImageTexture3DImpl) Ref(from Ref) {
-	rg := (*typedRef[ImageTexture3D])(r)
+	rg := (*TypedRef[ImageTexture3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefImageTexture3DImpl) TypedRef(from *RefImageTexture3DImpl) {
-	rg := (*typedRef[ImageTexture3D])(r)
-	t := (*typedRef[ImageTexture3D])(from)
-	rg.TypedRef((*typedRef[ImageTexture3D])(t))
+	rg := (*TypedRef[ImageTexture3D])(r)
+	t := (*TypedRef[ImageTexture3D])(from)
+	rg.TypedRef((*TypedRef[ImageTexture3D])(t))
 }
 
 func (r *RefImageTexture3DImpl) Unref() {
-	rg := (*typedRef[ImageTexture3D])(r)
+	rg := (*TypedRef[ImageTexture3D])(r)
 	rg.Unref()
 }
 
@@ -10056,31 +10056,31 @@ type RefImageTextureLayered interface {
 	TypedPtr() ImageTextureLayered
 }
 
-type RefImageTextureLayeredImpl typedRef[ImageTextureLayered]
+type RefImageTextureLayeredImpl TypedRef[ImageTextureLayered]
 
 func (r *RefImageTextureLayeredImpl) Ptr() RefCounted {
-	rg := (*typedRef[ImageTextureLayered])(r)
+	rg := (*TypedRef[ImageTextureLayered])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefImageTextureLayeredImpl) TypedPtr() ImageTextureLayered {
-	rg := (*typedRef[ImageTextureLayered])(r)
+	rg := (*TypedRef[ImageTextureLayered])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefImageTextureLayeredImpl) Ref(from Ref) {
-	rg := (*typedRef[ImageTextureLayered])(r)
+	rg := (*TypedRef[ImageTextureLayered])(r)
 	rg.Ref(from)
 }
 
 func (r *RefImageTextureLayeredImpl) TypedRef(from *RefImageTextureLayeredImpl) {
-	rg := (*typedRef[ImageTextureLayered])(r)
-	t := (*typedRef[ImageTextureLayered])(from)
-	rg.TypedRef((*typedRef[ImageTextureLayered])(t))
+	rg := (*TypedRef[ImageTextureLayered])(r)
+	t := (*TypedRef[ImageTextureLayered])(from)
+	rg.TypedRef((*TypedRef[ImageTextureLayered])(t))
 }
 
 func (r *RefImageTextureLayeredImpl) Unref() {
-	rg := (*typedRef[ImageTextureLayered])(r)
+	rg := (*TypedRef[ImageTextureLayered])(r)
 	rg.Unref()
 }
 
@@ -10108,31 +10108,31 @@ type RefImmediateMesh interface {
 	TypedPtr() ImmediateMesh
 }
 
-type RefImmediateMeshImpl typedRef[ImmediateMesh]
+type RefImmediateMeshImpl TypedRef[ImmediateMesh]
 
 func (r *RefImmediateMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[ImmediateMesh])(r)
+	rg := (*TypedRef[ImmediateMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefImmediateMeshImpl) TypedPtr() ImmediateMesh {
-	rg := (*typedRef[ImmediateMesh])(r)
+	rg := (*TypedRef[ImmediateMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefImmediateMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[ImmediateMesh])(r)
+	rg := (*TypedRef[ImmediateMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefImmediateMeshImpl) TypedRef(from *RefImmediateMeshImpl) {
-	rg := (*typedRef[ImmediateMesh])(r)
-	t := (*typedRef[ImmediateMesh])(from)
-	rg.TypedRef((*typedRef[ImmediateMesh])(t))
+	rg := (*TypedRef[ImmediateMesh])(r)
+	t := (*TypedRef[ImmediateMesh])(from)
+	rg.TypedRef((*TypedRef[ImmediateMesh])(t))
 }
 
 func (r *RefImmediateMeshImpl) Unref() {
-	rg := (*typedRef[ImmediateMesh])(r)
+	rg := (*TypedRef[ImmediateMesh])(r)
 	rg.Unref()
 }
 
@@ -10160,31 +10160,31 @@ type RefImporterMesh interface {
 	TypedPtr() ImporterMesh
 }
 
-type RefImporterMeshImpl typedRef[ImporterMesh]
+type RefImporterMeshImpl TypedRef[ImporterMesh]
 
 func (r *RefImporterMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[ImporterMesh])(r)
+	rg := (*TypedRef[ImporterMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefImporterMeshImpl) TypedPtr() ImporterMesh {
-	rg := (*typedRef[ImporterMesh])(r)
+	rg := (*TypedRef[ImporterMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefImporterMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[ImporterMesh])(r)
+	rg := (*TypedRef[ImporterMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefImporterMeshImpl) TypedRef(from *RefImporterMeshImpl) {
-	rg := (*typedRef[ImporterMesh])(r)
-	t := (*typedRef[ImporterMesh])(from)
-	rg.TypedRef((*typedRef[ImporterMesh])(t))
+	rg := (*TypedRef[ImporterMesh])(r)
+	t := (*TypedRef[ImporterMesh])(from)
+	rg.TypedRef((*TypedRef[ImporterMesh])(t))
 }
 
 func (r *RefImporterMeshImpl) Unref() {
-	rg := (*typedRef[ImporterMesh])(r)
+	rg := (*TypedRef[ImporterMesh])(r)
 	rg.Unref()
 }
 
@@ -10212,31 +10212,31 @@ type RefInputEvent interface {
 	TypedPtr() InputEvent
 }
 
-type RefInputEventImpl typedRef[InputEvent]
+type RefInputEventImpl TypedRef[InputEvent]
 
 func (r *RefInputEventImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEvent])(r)
+	rg := (*TypedRef[InputEvent])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventImpl) TypedPtr() InputEvent {
-	rg := (*typedRef[InputEvent])(r)
+	rg := (*TypedRef[InputEvent])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEvent])(r)
+	rg := (*TypedRef[InputEvent])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventImpl) TypedRef(from *RefInputEventImpl) {
-	rg := (*typedRef[InputEvent])(r)
-	t := (*typedRef[InputEvent])(from)
-	rg.TypedRef((*typedRef[InputEvent])(t))
+	rg := (*TypedRef[InputEvent])(r)
+	t := (*TypedRef[InputEvent])(from)
+	rg.TypedRef((*TypedRef[InputEvent])(t))
 }
 
 func (r *RefInputEventImpl) Unref() {
-	rg := (*typedRef[InputEvent])(r)
+	rg := (*TypedRef[InputEvent])(r)
 	rg.Unref()
 }
 
@@ -10264,31 +10264,31 @@ type RefInputEventAction interface {
 	TypedPtr() InputEventAction
 }
 
-type RefInputEventActionImpl typedRef[InputEventAction]
+type RefInputEventActionImpl TypedRef[InputEventAction]
 
 func (r *RefInputEventActionImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventAction])(r)
+	rg := (*TypedRef[InputEventAction])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventActionImpl) TypedPtr() InputEventAction {
-	rg := (*typedRef[InputEventAction])(r)
+	rg := (*TypedRef[InputEventAction])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventActionImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventAction])(r)
+	rg := (*TypedRef[InputEventAction])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventActionImpl) TypedRef(from *RefInputEventActionImpl) {
-	rg := (*typedRef[InputEventAction])(r)
-	t := (*typedRef[InputEventAction])(from)
-	rg.TypedRef((*typedRef[InputEventAction])(t))
+	rg := (*TypedRef[InputEventAction])(r)
+	t := (*TypedRef[InputEventAction])(from)
+	rg.TypedRef((*TypedRef[InputEventAction])(t))
 }
 
 func (r *RefInputEventActionImpl) Unref() {
-	rg := (*typedRef[InputEventAction])(r)
+	rg := (*TypedRef[InputEventAction])(r)
 	rg.Unref()
 }
 
@@ -10316,31 +10316,31 @@ type RefInputEventFromWindow interface {
 	TypedPtr() InputEventFromWindow
 }
 
-type RefInputEventFromWindowImpl typedRef[InputEventFromWindow]
+type RefInputEventFromWindowImpl TypedRef[InputEventFromWindow]
 
 func (r *RefInputEventFromWindowImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventFromWindow])(r)
+	rg := (*TypedRef[InputEventFromWindow])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventFromWindowImpl) TypedPtr() InputEventFromWindow {
-	rg := (*typedRef[InputEventFromWindow])(r)
+	rg := (*TypedRef[InputEventFromWindow])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventFromWindowImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventFromWindow])(r)
+	rg := (*TypedRef[InputEventFromWindow])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventFromWindowImpl) TypedRef(from *RefInputEventFromWindowImpl) {
-	rg := (*typedRef[InputEventFromWindow])(r)
-	t := (*typedRef[InputEventFromWindow])(from)
-	rg.TypedRef((*typedRef[InputEventFromWindow])(t))
+	rg := (*TypedRef[InputEventFromWindow])(r)
+	t := (*TypedRef[InputEventFromWindow])(from)
+	rg.TypedRef((*TypedRef[InputEventFromWindow])(t))
 }
 
 func (r *RefInputEventFromWindowImpl) Unref() {
-	rg := (*typedRef[InputEventFromWindow])(r)
+	rg := (*TypedRef[InputEventFromWindow])(r)
 	rg.Unref()
 }
 
@@ -10368,31 +10368,31 @@ type RefInputEventGesture interface {
 	TypedPtr() InputEventGesture
 }
 
-type RefInputEventGestureImpl typedRef[InputEventGesture]
+type RefInputEventGestureImpl TypedRef[InputEventGesture]
 
 func (r *RefInputEventGestureImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventGesture])(r)
+	rg := (*TypedRef[InputEventGesture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventGestureImpl) TypedPtr() InputEventGesture {
-	rg := (*typedRef[InputEventGesture])(r)
+	rg := (*TypedRef[InputEventGesture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventGestureImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventGesture])(r)
+	rg := (*TypedRef[InputEventGesture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventGestureImpl) TypedRef(from *RefInputEventGestureImpl) {
-	rg := (*typedRef[InputEventGesture])(r)
-	t := (*typedRef[InputEventGesture])(from)
-	rg.TypedRef((*typedRef[InputEventGesture])(t))
+	rg := (*TypedRef[InputEventGesture])(r)
+	t := (*TypedRef[InputEventGesture])(from)
+	rg.TypedRef((*TypedRef[InputEventGesture])(t))
 }
 
 func (r *RefInputEventGestureImpl) Unref() {
-	rg := (*typedRef[InputEventGesture])(r)
+	rg := (*TypedRef[InputEventGesture])(r)
 	rg.Unref()
 }
 
@@ -10420,31 +10420,31 @@ type RefInputEventJoypadButton interface {
 	TypedPtr() InputEventJoypadButton
 }
 
-type RefInputEventJoypadButtonImpl typedRef[InputEventJoypadButton]
+type RefInputEventJoypadButtonImpl TypedRef[InputEventJoypadButton]
 
 func (r *RefInputEventJoypadButtonImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventJoypadButton])(r)
+	rg := (*TypedRef[InputEventJoypadButton])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventJoypadButtonImpl) TypedPtr() InputEventJoypadButton {
-	rg := (*typedRef[InputEventJoypadButton])(r)
+	rg := (*TypedRef[InputEventJoypadButton])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventJoypadButtonImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventJoypadButton])(r)
+	rg := (*TypedRef[InputEventJoypadButton])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventJoypadButtonImpl) TypedRef(from *RefInputEventJoypadButtonImpl) {
-	rg := (*typedRef[InputEventJoypadButton])(r)
-	t := (*typedRef[InputEventJoypadButton])(from)
-	rg.TypedRef((*typedRef[InputEventJoypadButton])(t))
+	rg := (*TypedRef[InputEventJoypadButton])(r)
+	t := (*TypedRef[InputEventJoypadButton])(from)
+	rg.TypedRef((*TypedRef[InputEventJoypadButton])(t))
 }
 
 func (r *RefInputEventJoypadButtonImpl) Unref() {
-	rg := (*typedRef[InputEventJoypadButton])(r)
+	rg := (*TypedRef[InputEventJoypadButton])(r)
 	rg.Unref()
 }
 
@@ -10472,31 +10472,31 @@ type RefInputEventJoypadMotion interface {
 	TypedPtr() InputEventJoypadMotion
 }
 
-type RefInputEventJoypadMotionImpl typedRef[InputEventJoypadMotion]
+type RefInputEventJoypadMotionImpl TypedRef[InputEventJoypadMotion]
 
 func (r *RefInputEventJoypadMotionImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventJoypadMotion])(r)
+	rg := (*TypedRef[InputEventJoypadMotion])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventJoypadMotionImpl) TypedPtr() InputEventJoypadMotion {
-	rg := (*typedRef[InputEventJoypadMotion])(r)
+	rg := (*TypedRef[InputEventJoypadMotion])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventJoypadMotionImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventJoypadMotion])(r)
+	rg := (*TypedRef[InputEventJoypadMotion])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventJoypadMotionImpl) TypedRef(from *RefInputEventJoypadMotionImpl) {
-	rg := (*typedRef[InputEventJoypadMotion])(r)
-	t := (*typedRef[InputEventJoypadMotion])(from)
-	rg.TypedRef((*typedRef[InputEventJoypadMotion])(t))
+	rg := (*TypedRef[InputEventJoypadMotion])(r)
+	t := (*TypedRef[InputEventJoypadMotion])(from)
+	rg.TypedRef((*TypedRef[InputEventJoypadMotion])(t))
 }
 
 func (r *RefInputEventJoypadMotionImpl) Unref() {
-	rg := (*typedRef[InputEventJoypadMotion])(r)
+	rg := (*TypedRef[InputEventJoypadMotion])(r)
 	rg.Unref()
 }
 
@@ -10524,31 +10524,31 @@ type RefInputEventKey interface {
 	TypedPtr() InputEventKey
 }
 
-type RefInputEventKeyImpl typedRef[InputEventKey]
+type RefInputEventKeyImpl TypedRef[InputEventKey]
 
 func (r *RefInputEventKeyImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventKey])(r)
+	rg := (*TypedRef[InputEventKey])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventKeyImpl) TypedPtr() InputEventKey {
-	rg := (*typedRef[InputEventKey])(r)
+	rg := (*TypedRef[InputEventKey])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventKeyImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventKey])(r)
+	rg := (*TypedRef[InputEventKey])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventKeyImpl) TypedRef(from *RefInputEventKeyImpl) {
-	rg := (*typedRef[InputEventKey])(r)
-	t := (*typedRef[InputEventKey])(from)
-	rg.TypedRef((*typedRef[InputEventKey])(t))
+	rg := (*TypedRef[InputEventKey])(r)
+	t := (*TypedRef[InputEventKey])(from)
+	rg.TypedRef((*TypedRef[InputEventKey])(t))
 }
 
 func (r *RefInputEventKeyImpl) Unref() {
-	rg := (*typedRef[InputEventKey])(r)
+	rg := (*TypedRef[InputEventKey])(r)
 	rg.Unref()
 }
 
@@ -10576,31 +10576,31 @@ type RefInputEventMIDI interface {
 	TypedPtr() InputEventMIDI
 }
 
-type RefInputEventMIDIImpl typedRef[InputEventMIDI]
+type RefInputEventMIDIImpl TypedRef[InputEventMIDI]
 
 func (r *RefInputEventMIDIImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventMIDI])(r)
+	rg := (*TypedRef[InputEventMIDI])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventMIDIImpl) TypedPtr() InputEventMIDI {
-	rg := (*typedRef[InputEventMIDI])(r)
+	rg := (*TypedRef[InputEventMIDI])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventMIDIImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventMIDI])(r)
+	rg := (*TypedRef[InputEventMIDI])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventMIDIImpl) TypedRef(from *RefInputEventMIDIImpl) {
-	rg := (*typedRef[InputEventMIDI])(r)
-	t := (*typedRef[InputEventMIDI])(from)
-	rg.TypedRef((*typedRef[InputEventMIDI])(t))
+	rg := (*TypedRef[InputEventMIDI])(r)
+	t := (*TypedRef[InputEventMIDI])(from)
+	rg.TypedRef((*TypedRef[InputEventMIDI])(t))
 }
 
 func (r *RefInputEventMIDIImpl) Unref() {
-	rg := (*typedRef[InputEventMIDI])(r)
+	rg := (*TypedRef[InputEventMIDI])(r)
 	rg.Unref()
 }
 
@@ -10628,31 +10628,31 @@ type RefInputEventMagnifyGesture interface {
 	TypedPtr() InputEventMagnifyGesture
 }
 
-type RefInputEventMagnifyGestureImpl typedRef[InputEventMagnifyGesture]
+type RefInputEventMagnifyGestureImpl TypedRef[InputEventMagnifyGesture]
 
 func (r *RefInputEventMagnifyGestureImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventMagnifyGesture])(r)
+	rg := (*TypedRef[InputEventMagnifyGesture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventMagnifyGestureImpl) TypedPtr() InputEventMagnifyGesture {
-	rg := (*typedRef[InputEventMagnifyGesture])(r)
+	rg := (*TypedRef[InputEventMagnifyGesture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventMagnifyGestureImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventMagnifyGesture])(r)
+	rg := (*TypedRef[InputEventMagnifyGesture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventMagnifyGestureImpl) TypedRef(from *RefInputEventMagnifyGestureImpl) {
-	rg := (*typedRef[InputEventMagnifyGesture])(r)
-	t := (*typedRef[InputEventMagnifyGesture])(from)
-	rg.TypedRef((*typedRef[InputEventMagnifyGesture])(t))
+	rg := (*TypedRef[InputEventMagnifyGesture])(r)
+	t := (*TypedRef[InputEventMagnifyGesture])(from)
+	rg.TypedRef((*TypedRef[InputEventMagnifyGesture])(t))
 }
 
 func (r *RefInputEventMagnifyGestureImpl) Unref() {
-	rg := (*typedRef[InputEventMagnifyGesture])(r)
+	rg := (*TypedRef[InputEventMagnifyGesture])(r)
 	rg.Unref()
 }
 
@@ -10680,31 +10680,31 @@ type RefInputEventMouse interface {
 	TypedPtr() InputEventMouse
 }
 
-type RefInputEventMouseImpl typedRef[InputEventMouse]
+type RefInputEventMouseImpl TypedRef[InputEventMouse]
 
 func (r *RefInputEventMouseImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventMouse])(r)
+	rg := (*TypedRef[InputEventMouse])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventMouseImpl) TypedPtr() InputEventMouse {
-	rg := (*typedRef[InputEventMouse])(r)
+	rg := (*TypedRef[InputEventMouse])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventMouseImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventMouse])(r)
+	rg := (*TypedRef[InputEventMouse])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventMouseImpl) TypedRef(from *RefInputEventMouseImpl) {
-	rg := (*typedRef[InputEventMouse])(r)
-	t := (*typedRef[InputEventMouse])(from)
-	rg.TypedRef((*typedRef[InputEventMouse])(t))
+	rg := (*TypedRef[InputEventMouse])(r)
+	t := (*TypedRef[InputEventMouse])(from)
+	rg.TypedRef((*TypedRef[InputEventMouse])(t))
 }
 
 func (r *RefInputEventMouseImpl) Unref() {
-	rg := (*typedRef[InputEventMouse])(r)
+	rg := (*TypedRef[InputEventMouse])(r)
 	rg.Unref()
 }
 
@@ -10732,31 +10732,31 @@ type RefInputEventMouseButton interface {
 	TypedPtr() InputEventMouseButton
 }
 
-type RefInputEventMouseButtonImpl typedRef[InputEventMouseButton]
+type RefInputEventMouseButtonImpl TypedRef[InputEventMouseButton]
 
 func (r *RefInputEventMouseButtonImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventMouseButton])(r)
+	rg := (*TypedRef[InputEventMouseButton])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventMouseButtonImpl) TypedPtr() InputEventMouseButton {
-	rg := (*typedRef[InputEventMouseButton])(r)
+	rg := (*TypedRef[InputEventMouseButton])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventMouseButtonImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventMouseButton])(r)
+	rg := (*TypedRef[InputEventMouseButton])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventMouseButtonImpl) TypedRef(from *RefInputEventMouseButtonImpl) {
-	rg := (*typedRef[InputEventMouseButton])(r)
-	t := (*typedRef[InputEventMouseButton])(from)
-	rg.TypedRef((*typedRef[InputEventMouseButton])(t))
+	rg := (*TypedRef[InputEventMouseButton])(r)
+	t := (*TypedRef[InputEventMouseButton])(from)
+	rg.TypedRef((*TypedRef[InputEventMouseButton])(t))
 }
 
 func (r *RefInputEventMouseButtonImpl) Unref() {
-	rg := (*typedRef[InputEventMouseButton])(r)
+	rg := (*TypedRef[InputEventMouseButton])(r)
 	rg.Unref()
 }
 
@@ -10784,31 +10784,31 @@ type RefInputEventMouseMotion interface {
 	TypedPtr() InputEventMouseMotion
 }
 
-type RefInputEventMouseMotionImpl typedRef[InputEventMouseMotion]
+type RefInputEventMouseMotionImpl TypedRef[InputEventMouseMotion]
 
 func (r *RefInputEventMouseMotionImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventMouseMotion])(r)
+	rg := (*TypedRef[InputEventMouseMotion])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventMouseMotionImpl) TypedPtr() InputEventMouseMotion {
-	rg := (*typedRef[InputEventMouseMotion])(r)
+	rg := (*TypedRef[InputEventMouseMotion])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventMouseMotionImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventMouseMotion])(r)
+	rg := (*TypedRef[InputEventMouseMotion])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventMouseMotionImpl) TypedRef(from *RefInputEventMouseMotionImpl) {
-	rg := (*typedRef[InputEventMouseMotion])(r)
-	t := (*typedRef[InputEventMouseMotion])(from)
-	rg.TypedRef((*typedRef[InputEventMouseMotion])(t))
+	rg := (*TypedRef[InputEventMouseMotion])(r)
+	t := (*TypedRef[InputEventMouseMotion])(from)
+	rg.TypedRef((*TypedRef[InputEventMouseMotion])(t))
 }
 
 func (r *RefInputEventMouseMotionImpl) Unref() {
-	rg := (*typedRef[InputEventMouseMotion])(r)
+	rg := (*TypedRef[InputEventMouseMotion])(r)
 	rg.Unref()
 }
 
@@ -10836,31 +10836,31 @@ type RefInputEventPanGesture interface {
 	TypedPtr() InputEventPanGesture
 }
 
-type RefInputEventPanGestureImpl typedRef[InputEventPanGesture]
+type RefInputEventPanGestureImpl TypedRef[InputEventPanGesture]
 
 func (r *RefInputEventPanGestureImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventPanGesture])(r)
+	rg := (*TypedRef[InputEventPanGesture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventPanGestureImpl) TypedPtr() InputEventPanGesture {
-	rg := (*typedRef[InputEventPanGesture])(r)
+	rg := (*TypedRef[InputEventPanGesture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventPanGestureImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventPanGesture])(r)
+	rg := (*TypedRef[InputEventPanGesture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventPanGestureImpl) TypedRef(from *RefInputEventPanGestureImpl) {
-	rg := (*typedRef[InputEventPanGesture])(r)
-	t := (*typedRef[InputEventPanGesture])(from)
-	rg.TypedRef((*typedRef[InputEventPanGesture])(t))
+	rg := (*TypedRef[InputEventPanGesture])(r)
+	t := (*TypedRef[InputEventPanGesture])(from)
+	rg.TypedRef((*TypedRef[InputEventPanGesture])(t))
 }
 
 func (r *RefInputEventPanGestureImpl) Unref() {
-	rg := (*typedRef[InputEventPanGesture])(r)
+	rg := (*TypedRef[InputEventPanGesture])(r)
 	rg.Unref()
 }
 
@@ -10888,31 +10888,31 @@ type RefInputEventScreenDrag interface {
 	TypedPtr() InputEventScreenDrag
 }
 
-type RefInputEventScreenDragImpl typedRef[InputEventScreenDrag]
+type RefInputEventScreenDragImpl TypedRef[InputEventScreenDrag]
 
 func (r *RefInputEventScreenDragImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventScreenDrag])(r)
+	rg := (*TypedRef[InputEventScreenDrag])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventScreenDragImpl) TypedPtr() InputEventScreenDrag {
-	rg := (*typedRef[InputEventScreenDrag])(r)
+	rg := (*TypedRef[InputEventScreenDrag])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventScreenDragImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventScreenDrag])(r)
+	rg := (*TypedRef[InputEventScreenDrag])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventScreenDragImpl) TypedRef(from *RefInputEventScreenDragImpl) {
-	rg := (*typedRef[InputEventScreenDrag])(r)
-	t := (*typedRef[InputEventScreenDrag])(from)
-	rg.TypedRef((*typedRef[InputEventScreenDrag])(t))
+	rg := (*TypedRef[InputEventScreenDrag])(r)
+	t := (*TypedRef[InputEventScreenDrag])(from)
+	rg.TypedRef((*TypedRef[InputEventScreenDrag])(t))
 }
 
 func (r *RefInputEventScreenDragImpl) Unref() {
-	rg := (*typedRef[InputEventScreenDrag])(r)
+	rg := (*TypedRef[InputEventScreenDrag])(r)
 	rg.Unref()
 }
 
@@ -10940,31 +10940,31 @@ type RefInputEventScreenTouch interface {
 	TypedPtr() InputEventScreenTouch
 }
 
-type RefInputEventScreenTouchImpl typedRef[InputEventScreenTouch]
+type RefInputEventScreenTouchImpl TypedRef[InputEventScreenTouch]
 
 func (r *RefInputEventScreenTouchImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventScreenTouch])(r)
+	rg := (*TypedRef[InputEventScreenTouch])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventScreenTouchImpl) TypedPtr() InputEventScreenTouch {
-	rg := (*typedRef[InputEventScreenTouch])(r)
+	rg := (*TypedRef[InputEventScreenTouch])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventScreenTouchImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventScreenTouch])(r)
+	rg := (*TypedRef[InputEventScreenTouch])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventScreenTouchImpl) TypedRef(from *RefInputEventScreenTouchImpl) {
-	rg := (*typedRef[InputEventScreenTouch])(r)
-	t := (*typedRef[InputEventScreenTouch])(from)
-	rg.TypedRef((*typedRef[InputEventScreenTouch])(t))
+	rg := (*TypedRef[InputEventScreenTouch])(r)
+	t := (*TypedRef[InputEventScreenTouch])(from)
+	rg.TypedRef((*TypedRef[InputEventScreenTouch])(t))
 }
 
 func (r *RefInputEventScreenTouchImpl) Unref() {
-	rg := (*typedRef[InputEventScreenTouch])(r)
+	rg := (*TypedRef[InputEventScreenTouch])(r)
 	rg.Unref()
 }
 
@@ -10992,31 +10992,31 @@ type RefInputEventShortcut interface {
 	TypedPtr() InputEventShortcut
 }
 
-type RefInputEventShortcutImpl typedRef[InputEventShortcut]
+type RefInputEventShortcutImpl TypedRef[InputEventShortcut]
 
 func (r *RefInputEventShortcutImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventShortcut])(r)
+	rg := (*TypedRef[InputEventShortcut])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventShortcutImpl) TypedPtr() InputEventShortcut {
-	rg := (*typedRef[InputEventShortcut])(r)
+	rg := (*TypedRef[InputEventShortcut])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventShortcutImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventShortcut])(r)
+	rg := (*TypedRef[InputEventShortcut])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventShortcutImpl) TypedRef(from *RefInputEventShortcutImpl) {
-	rg := (*typedRef[InputEventShortcut])(r)
-	t := (*typedRef[InputEventShortcut])(from)
-	rg.TypedRef((*typedRef[InputEventShortcut])(t))
+	rg := (*TypedRef[InputEventShortcut])(r)
+	t := (*TypedRef[InputEventShortcut])(from)
+	rg.TypedRef((*TypedRef[InputEventShortcut])(t))
 }
 
 func (r *RefInputEventShortcutImpl) Unref() {
-	rg := (*typedRef[InputEventShortcut])(r)
+	rg := (*TypedRef[InputEventShortcut])(r)
 	rg.Unref()
 }
 
@@ -11044,31 +11044,31 @@ type RefInputEventWithModifiers interface {
 	TypedPtr() InputEventWithModifiers
 }
 
-type RefInputEventWithModifiersImpl typedRef[InputEventWithModifiers]
+type RefInputEventWithModifiersImpl TypedRef[InputEventWithModifiers]
 
 func (r *RefInputEventWithModifiersImpl) Ptr() RefCounted {
-	rg := (*typedRef[InputEventWithModifiers])(r)
+	rg := (*TypedRef[InputEventWithModifiers])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefInputEventWithModifiersImpl) TypedPtr() InputEventWithModifiers {
-	rg := (*typedRef[InputEventWithModifiers])(r)
+	rg := (*TypedRef[InputEventWithModifiers])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefInputEventWithModifiersImpl) Ref(from Ref) {
-	rg := (*typedRef[InputEventWithModifiers])(r)
+	rg := (*TypedRef[InputEventWithModifiers])(r)
 	rg.Ref(from)
 }
 
 func (r *RefInputEventWithModifiersImpl) TypedRef(from *RefInputEventWithModifiersImpl) {
-	rg := (*typedRef[InputEventWithModifiers])(r)
-	t := (*typedRef[InputEventWithModifiers])(from)
-	rg.TypedRef((*typedRef[InputEventWithModifiers])(t))
+	rg := (*TypedRef[InputEventWithModifiers])(r)
+	t := (*TypedRef[InputEventWithModifiers])(from)
+	rg.TypedRef((*TypedRef[InputEventWithModifiers])(t))
 }
 
 func (r *RefInputEventWithModifiersImpl) Unref() {
-	rg := (*typedRef[InputEventWithModifiers])(r)
+	rg := (*TypedRef[InputEventWithModifiers])(r)
 	rg.Unref()
 }
 
@@ -11096,31 +11096,31 @@ type RefIntervalTweener interface {
 	TypedPtr() IntervalTweener
 }
 
-type RefIntervalTweenerImpl typedRef[IntervalTweener]
+type RefIntervalTweenerImpl TypedRef[IntervalTweener]
 
 func (r *RefIntervalTweenerImpl) Ptr() RefCounted {
-	rg := (*typedRef[IntervalTweener])(r)
+	rg := (*TypedRef[IntervalTweener])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefIntervalTweenerImpl) TypedPtr() IntervalTweener {
-	rg := (*typedRef[IntervalTweener])(r)
+	rg := (*TypedRef[IntervalTweener])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefIntervalTweenerImpl) Ref(from Ref) {
-	rg := (*typedRef[IntervalTweener])(r)
+	rg := (*TypedRef[IntervalTweener])(r)
 	rg.Ref(from)
 }
 
 func (r *RefIntervalTweenerImpl) TypedRef(from *RefIntervalTweenerImpl) {
-	rg := (*typedRef[IntervalTweener])(r)
-	t := (*typedRef[IntervalTweener])(from)
-	rg.TypedRef((*typedRef[IntervalTweener])(t))
+	rg := (*TypedRef[IntervalTweener])(r)
+	t := (*TypedRef[IntervalTweener])(from)
+	rg.TypedRef((*TypedRef[IntervalTweener])(t))
 }
 
 func (r *RefIntervalTweenerImpl) Unref() {
-	rg := (*typedRef[IntervalTweener])(r)
+	rg := (*TypedRef[IntervalTweener])(r)
 	rg.Unref()
 }
 
@@ -11148,31 +11148,31 @@ type RefJSON interface {
 	TypedPtr() JSON
 }
 
-type RefJSONImpl typedRef[JSON]
+type RefJSONImpl TypedRef[JSON]
 
 func (r *RefJSONImpl) Ptr() RefCounted {
-	rg := (*typedRef[JSON])(r)
+	rg := (*TypedRef[JSON])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefJSONImpl) TypedPtr() JSON {
-	rg := (*typedRef[JSON])(r)
+	rg := (*TypedRef[JSON])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefJSONImpl) Ref(from Ref) {
-	rg := (*typedRef[JSON])(r)
+	rg := (*TypedRef[JSON])(r)
 	rg.Ref(from)
 }
 
 func (r *RefJSONImpl) TypedRef(from *RefJSONImpl) {
-	rg := (*typedRef[JSON])(r)
-	t := (*typedRef[JSON])(from)
-	rg.TypedRef((*typedRef[JSON])(t))
+	rg := (*TypedRef[JSON])(r)
+	t := (*TypedRef[JSON])(from)
+	rg.TypedRef((*TypedRef[JSON])(t))
 }
 
 func (r *RefJSONImpl) Unref() {
-	rg := (*typedRef[JSON])(r)
+	rg := (*TypedRef[JSON])(r)
 	rg.Unref()
 }
 
@@ -11200,31 +11200,31 @@ type RefJavaClass interface {
 	TypedPtr() JavaClass
 }
 
-type RefJavaClassImpl typedRef[JavaClass]
+type RefJavaClassImpl TypedRef[JavaClass]
 
 func (r *RefJavaClassImpl) Ptr() RefCounted {
-	rg := (*typedRef[JavaClass])(r)
+	rg := (*TypedRef[JavaClass])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefJavaClassImpl) TypedPtr() JavaClass {
-	rg := (*typedRef[JavaClass])(r)
+	rg := (*TypedRef[JavaClass])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefJavaClassImpl) Ref(from Ref) {
-	rg := (*typedRef[JavaClass])(r)
+	rg := (*TypedRef[JavaClass])(r)
 	rg.Ref(from)
 }
 
 func (r *RefJavaClassImpl) TypedRef(from *RefJavaClassImpl) {
-	rg := (*typedRef[JavaClass])(r)
-	t := (*typedRef[JavaClass])(from)
-	rg.TypedRef((*typedRef[JavaClass])(t))
+	rg := (*TypedRef[JavaClass])(r)
+	t := (*TypedRef[JavaClass])(from)
+	rg.TypedRef((*TypedRef[JavaClass])(t))
 }
 
 func (r *RefJavaClassImpl) Unref() {
-	rg := (*typedRef[JavaClass])(r)
+	rg := (*TypedRef[JavaClass])(r)
 	rg.Unref()
 }
 
@@ -11252,31 +11252,31 @@ type RefJavaScriptObject interface {
 	TypedPtr() JavaScriptObject
 }
 
-type RefJavaScriptObjectImpl typedRef[JavaScriptObject]
+type RefJavaScriptObjectImpl TypedRef[JavaScriptObject]
 
 func (r *RefJavaScriptObjectImpl) Ptr() RefCounted {
-	rg := (*typedRef[JavaScriptObject])(r)
+	rg := (*TypedRef[JavaScriptObject])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefJavaScriptObjectImpl) TypedPtr() JavaScriptObject {
-	rg := (*typedRef[JavaScriptObject])(r)
+	rg := (*TypedRef[JavaScriptObject])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefJavaScriptObjectImpl) Ref(from Ref) {
-	rg := (*typedRef[JavaScriptObject])(r)
+	rg := (*TypedRef[JavaScriptObject])(r)
 	rg.Ref(from)
 }
 
 func (r *RefJavaScriptObjectImpl) TypedRef(from *RefJavaScriptObjectImpl) {
-	rg := (*typedRef[JavaScriptObject])(r)
-	t := (*typedRef[JavaScriptObject])(from)
-	rg.TypedRef((*typedRef[JavaScriptObject])(t))
+	rg := (*TypedRef[JavaScriptObject])(r)
+	t := (*TypedRef[JavaScriptObject])(from)
+	rg.TypedRef((*TypedRef[JavaScriptObject])(t))
 }
 
 func (r *RefJavaScriptObjectImpl) Unref() {
-	rg := (*typedRef[JavaScriptObject])(r)
+	rg := (*TypedRef[JavaScriptObject])(r)
 	rg.Unref()
 }
 
@@ -11304,31 +11304,31 @@ type RefKinematicCollision2D interface {
 	TypedPtr() KinematicCollision2D
 }
 
-type RefKinematicCollision2DImpl typedRef[KinematicCollision2D]
+type RefKinematicCollision2DImpl TypedRef[KinematicCollision2D]
 
 func (r *RefKinematicCollision2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[KinematicCollision2D])(r)
+	rg := (*TypedRef[KinematicCollision2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefKinematicCollision2DImpl) TypedPtr() KinematicCollision2D {
-	rg := (*typedRef[KinematicCollision2D])(r)
+	rg := (*TypedRef[KinematicCollision2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefKinematicCollision2DImpl) Ref(from Ref) {
-	rg := (*typedRef[KinematicCollision2D])(r)
+	rg := (*TypedRef[KinematicCollision2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefKinematicCollision2DImpl) TypedRef(from *RefKinematicCollision2DImpl) {
-	rg := (*typedRef[KinematicCollision2D])(r)
-	t := (*typedRef[KinematicCollision2D])(from)
-	rg.TypedRef((*typedRef[KinematicCollision2D])(t))
+	rg := (*TypedRef[KinematicCollision2D])(r)
+	t := (*TypedRef[KinematicCollision2D])(from)
+	rg.TypedRef((*TypedRef[KinematicCollision2D])(t))
 }
 
 func (r *RefKinematicCollision2DImpl) Unref() {
-	rg := (*typedRef[KinematicCollision2D])(r)
+	rg := (*TypedRef[KinematicCollision2D])(r)
 	rg.Unref()
 }
 
@@ -11356,31 +11356,31 @@ type RefKinematicCollision3D interface {
 	TypedPtr() KinematicCollision3D
 }
 
-type RefKinematicCollision3DImpl typedRef[KinematicCollision3D]
+type RefKinematicCollision3DImpl TypedRef[KinematicCollision3D]
 
 func (r *RefKinematicCollision3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[KinematicCollision3D])(r)
+	rg := (*TypedRef[KinematicCollision3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefKinematicCollision3DImpl) TypedPtr() KinematicCollision3D {
-	rg := (*typedRef[KinematicCollision3D])(r)
+	rg := (*TypedRef[KinematicCollision3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefKinematicCollision3DImpl) Ref(from Ref) {
-	rg := (*typedRef[KinematicCollision3D])(r)
+	rg := (*TypedRef[KinematicCollision3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefKinematicCollision3DImpl) TypedRef(from *RefKinematicCollision3DImpl) {
-	rg := (*typedRef[KinematicCollision3D])(r)
-	t := (*typedRef[KinematicCollision3D])(from)
-	rg.TypedRef((*typedRef[KinematicCollision3D])(t))
+	rg := (*TypedRef[KinematicCollision3D])(r)
+	t := (*TypedRef[KinematicCollision3D])(from)
+	rg.TypedRef((*TypedRef[KinematicCollision3D])(t))
 }
 
 func (r *RefKinematicCollision3DImpl) Unref() {
-	rg := (*typedRef[KinematicCollision3D])(r)
+	rg := (*TypedRef[KinematicCollision3D])(r)
 	rg.Unref()
 }
 
@@ -11408,31 +11408,31 @@ type RefLabelSettings interface {
 	TypedPtr() LabelSettings
 }
 
-type RefLabelSettingsImpl typedRef[LabelSettings]
+type RefLabelSettingsImpl TypedRef[LabelSettings]
 
 func (r *RefLabelSettingsImpl) Ptr() RefCounted {
-	rg := (*typedRef[LabelSettings])(r)
+	rg := (*TypedRef[LabelSettings])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefLabelSettingsImpl) TypedPtr() LabelSettings {
-	rg := (*typedRef[LabelSettings])(r)
+	rg := (*TypedRef[LabelSettings])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefLabelSettingsImpl) Ref(from Ref) {
-	rg := (*typedRef[LabelSettings])(r)
+	rg := (*TypedRef[LabelSettings])(r)
 	rg.Ref(from)
 }
 
 func (r *RefLabelSettingsImpl) TypedRef(from *RefLabelSettingsImpl) {
-	rg := (*typedRef[LabelSettings])(r)
-	t := (*typedRef[LabelSettings])(from)
-	rg.TypedRef((*typedRef[LabelSettings])(t))
+	rg := (*TypedRef[LabelSettings])(r)
+	t := (*TypedRef[LabelSettings])(from)
+	rg.TypedRef((*TypedRef[LabelSettings])(t))
 }
 
 func (r *RefLabelSettingsImpl) Unref() {
-	rg := (*typedRef[LabelSettings])(r)
+	rg := (*TypedRef[LabelSettings])(r)
 	rg.Unref()
 }
 
@@ -11460,31 +11460,31 @@ type RefLightmapGIData interface {
 	TypedPtr() LightmapGIData
 }
 
-type RefLightmapGIDataImpl typedRef[LightmapGIData]
+type RefLightmapGIDataImpl TypedRef[LightmapGIData]
 
 func (r *RefLightmapGIDataImpl) Ptr() RefCounted {
-	rg := (*typedRef[LightmapGIData])(r)
+	rg := (*TypedRef[LightmapGIData])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefLightmapGIDataImpl) TypedPtr() LightmapGIData {
-	rg := (*typedRef[LightmapGIData])(r)
+	rg := (*TypedRef[LightmapGIData])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefLightmapGIDataImpl) Ref(from Ref) {
-	rg := (*typedRef[LightmapGIData])(r)
+	rg := (*TypedRef[LightmapGIData])(r)
 	rg.Ref(from)
 }
 
 func (r *RefLightmapGIDataImpl) TypedRef(from *RefLightmapGIDataImpl) {
-	rg := (*typedRef[LightmapGIData])(r)
-	t := (*typedRef[LightmapGIData])(from)
-	rg.TypedRef((*typedRef[LightmapGIData])(t))
+	rg := (*TypedRef[LightmapGIData])(r)
+	t := (*TypedRef[LightmapGIData])(from)
+	rg.TypedRef((*TypedRef[LightmapGIData])(t))
 }
 
 func (r *RefLightmapGIDataImpl) Unref() {
-	rg := (*typedRef[LightmapGIData])(r)
+	rg := (*TypedRef[LightmapGIData])(r)
 	rg.Unref()
 }
 
@@ -11512,31 +11512,31 @@ type RefLightmapper interface {
 	TypedPtr() Lightmapper
 }
 
-type RefLightmapperImpl typedRef[Lightmapper]
+type RefLightmapperImpl TypedRef[Lightmapper]
 
 func (r *RefLightmapperImpl) Ptr() RefCounted {
-	rg := (*typedRef[Lightmapper])(r)
+	rg := (*TypedRef[Lightmapper])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefLightmapperImpl) TypedPtr() Lightmapper {
-	rg := (*typedRef[Lightmapper])(r)
+	rg := (*TypedRef[Lightmapper])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefLightmapperImpl) Ref(from Ref) {
-	rg := (*typedRef[Lightmapper])(r)
+	rg := (*TypedRef[Lightmapper])(r)
 	rg.Ref(from)
 }
 
 func (r *RefLightmapperImpl) TypedRef(from *RefLightmapperImpl) {
-	rg := (*typedRef[Lightmapper])(r)
-	t := (*typedRef[Lightmapper])(from)
-	rg.TypedRef((*typedRef[Lightmapper])(t))
+	rg := (*TypedRef[Lightmapper])(r)
+	t := (*TypedRef[Lightmapper])(from)
+	rg.TypedRef((*TypedRef[Lightmapper])(t))
 }
 
 func (r *RefLightmapperImpl) Unref() {
-	rg := (*typedRef[Lightmapper])(r)
+	rg := (*TypedRef[Lightmapper])(r)
 	rg.Unref()
 }
 
@@ -11564,31 +11564,31 @@ type RefLightmapperRD interface {
 	TypedPtr() LightmapperRD
 }
 
-type RefLightmapperRDImpl typedRef[LightmapperRD]
+type RefLightmapperRDImpl TypedRef[LightmapperRD]
 
 func (r *RefLightmapperRDImpl) Ptr() RefCounted {
-	rg := (*typedRef[LightmapperRD])(r)
+	rg := (*TypedRef[LightmapperRD])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefLightmapperRDImpl) TypedPtr() LightmapperRD {
-	rg := (*typedRef[LightmapperRD])(r)
+	rg := (*TypedRef[LightmapperRD])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefLightmapperRDImpl) Ref(from Ref) {
-	rg := (*typedRef[LightmapperRD])(r)
+	rg := (*TypedRef[LightmapperRD])(r)
 	rg.Ref(from)
 }
 
 func (r *RefLightmapperRDImpl) TypedRef(from *RefLightmapperRDImpl) {
-	rg := (*typedRef[LightmapperRD])(r)
-	t := (*typedRef[LightmapperRD])(from)
-	rg.TypedRef((*typedRef[LightmapperRD])(t))
+	rg := (*TypedRef[LightmapperRD])(r)
+	t := (*TypedRef[LightmapperRD])(from)
+	rg.TypedRef((*TypedRef[LightmapperRD])(t))
 }
 
 func (r *RefLightmapperRDImpl) Unref() {
-	rg := (*typedRef[LightmapperRD])(r)
+	rg := (*TypedRef[LightmapperRD])(r)
 	rg.Unref()
 }
 
@@ -11616,31 +11616,31 @@ type RefMaterial interface {
 	TypedPtr() Material
 }
 
-type RefMaterialImpl typedRef[Material]
+type RefMaterialImpl TypedRef[Material]
 
 func (r *RefMaterialImpl) Ptr() RefCounted {
-	rg := (*typedRef[Material])(r)
+	rg := (*TypedRef[Material])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMaterialImpl) TypedPtr() Material {
-	rg := (*typedRef[Material])(r)
+	rg := (*TypedRef[Material])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMaterialImpl) Ref(from Ref) {
-	rg := (*typedRef[Material])(r)
+	rg := (*TypedRef[Material])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMaterialImpl) TypedRef(from *RefMaterialImpl) {
-	rg := (*typedRef[Material])(r)
-	t := (*typedRef[Material])(from)
-	rg.TypedRef((*typedRef[Material])(t))
+	rg := (*TypedRef[Material])(r)
+	t := (*TypedRef[Material])(from)
+	rg.TypedRef((*TypedRef[Material])(t))
 }
 
 func (r *RefMaterialImpl) Unref() {
-	rg := (*typedRef[Material])(r)
+	rg := (*TypedRef[Material])(r)
 	rg.Unref()
 }
 
@@ -11668,31 +11668,31 @@ type RefMesh interface {
 	TypedPtr() Mesh
 }
 
-type RefMeshImpl typedRef[Mesh]
+type RefMeshImpl TypedRef[Mesh]
 
 func (r *RefMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[Mesh])(r)
+	rg := (*TypedRef[Mesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMeshImpl) TypedPtr() Mesh {
-	rg := (*typedRef[Mesh])(r)
+	rg := (*TypedRef[Mesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[Mesh])(r)
+	rg := (*TypedRef[Mesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMeshImpl) TypedRef(from *RefMeshImpl) {
-	rg := (*typedRef[Mesh])(r)
-	t := (*typedRef[Mesh])(from)
-	rg.TypedRef((*typedRef[Mesh])(t))
+	rg := (*TypedRef[Mesh])(r)
+	t := (*TypedRef[Mesh])(from)
+	rg.TypedRef((*TypedRef[Mesh])(t))
 }
 
 func (r *RefMeshImpl) Unref() {
-	rg := (*typedRef[Mesh])(r)
+	rg := (*TypedRef[Mesh])(r)
 	rg.Unref()
 }
 
@@ -11720,31 +11720,31 @@ type RefMeshConvexDecompositionSettings interface {
 	TypedPtr() MeshConvexDecompositionSettings
 }
 
-type RefMeshConvexDecompositionSettingsImpl typedRef[MeshConvexDecompositionSettings]
+type RefMeshConvexDecompositionSettingsImpl TypedRef[MeshConvexDecompositionSettings]
 
 func (r *RefMeshConvexDecompositionSettingsImpl) Ptr() RefCounted {
-	rg := (*typedRef[MeshConvexDecompositionSettings])(r)
+	rg := (*TypedRef[MeshConvexDecompositionSettings])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMeshConvexDecompositionSettingsImpl) TypedPtr() MeshConvexDecompositionSettings {
-	rg := (*typedRef[MeshConvexDecompositionSettings])(r)
+	rg := (*TypedRef[MeshConvexDecompositionSettings])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMeshConvexDecompositionSettingsImpl) Ref(from Ref) {
-	rg := (*typedRef[MeshConvexDecompositionSettings])(r)
+	rg := (*TypedRef[MeshConvexDecompositionSettings])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMeshConvexDecompositionSettingsImpl) TypedRef(from *RefMeshConvexDecompositionSettingsImpl) {
-	rg := (*typedRef[MeshConvexDecompositionSettings])(r)
-	t := (*typedRef[MeshConvexDecompositionSettings])(from)
-	rg.TypedRef((*typedRef[MeshConvexDecompositionSettings])(t))
+	rg := (*TypedRef[MeshConvexDecompositionSettings])(r)
+	t := (*TypedRef[MeshConvexDecompositionSettings])(from)
+	rg.TypedRef((*TypedRef[MeshConvexDecompositionSettings])(t))
 }
 
 func (r *RefMeshConvexDecompositionSettingsImpl) Unref() {
-	rg := (*typedRef[MeshConvexDecompositionSettings])(r)
+	rg := (*TypedRef[MeshConvexDecompositionSettings])(r)
 	rg.Unref()
 }
 
@@ -11772,31 +11772,31 @@ type RefMeshDataTool interface {
 	TypedPtr() MeshDataTool
 }
 
-type RefMeshDataToolImpl typedRef[MeshDataTool]
+type RefMeshDataToolImpl TypedRef[MeshDataTool]
 
 func (r *RefMeshDataToolImpl) Ptr() RefCounted {
-	rg := (*typedRef[MeshDataTool])(r)
+	rg := (*TypedRef[MeshDataTool])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMeshDataToolImpl) TypedPtr() MeshDataTool {
-	rg := (*typedRef[MeshDataTool])(r)
+	rg := (*TypedRef[MeshDataTool])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMeshDataToolImpl) Ref(from Ref) {
-	rg := (*typedRef[MeshDataTool])(r)
+	rg := (*TypedRef[MeshDataTool])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMeshDataToolImpl) TypedRef(from *RefMeshDataToolImpl) {
-	rg := (*typedRef[MeshDataTool])(r)
-	t := (*typedRef[MeshDataTool])(from)
-	rg.TypedRef((*typedRef[MeshDataTool])(t))
+	rg := (*TypedRef[MeshDataTool])(r)
+	t := (*TypedRef[MeshDataTool])(from)
+	rg.TypedRef((*TypedRef[MeshDataTool])(t))
 }
 
 func (r *RefMeshDataToolImpl) Unref() {
-	rg := (*typedRef[MeshDataTool])(r)
+	rg := (*TypedRef[MeshDataTool])(r)
 	rg.Unref()
 }
 
@@ -11824,31 +11824,31 @@ type RefMeshLibrary interface {
 	TypedPtr() MeshLibrary
 }
 
-type RefMeshLibraryImpl typedRef[MeshLibrary]
+type RefMeshLibraryImpl TypedRef[MeshLibrary]
 
 func (r *RefMeshLibraryImpl) Ptr() RefCounted {
-	rg := (*typedRef[MeshLibrary])(r)
+	rg := (*TypedRef[MeshLibrary])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMeshLibraryImpl) TypedPtr() MeshLibrary {
-	rg := (*typedRef[MeshLibrary])(r)
+	rg := (*TypedRef[MeshLibrary])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMeshLibraryImpl) Ref(from Ref) {
-	rg := (*typedRef[MeshLibrary])(r)
+	rg := (*TypedRef[MeshLibrary])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMeshLibraryImpl) TypedRef(from *RefMeshLibraryImpl) {
-	rg := (*typedRef[MeshLibrary])(r)
-	t := (*typedRef[MeshLibrary])(from)
-	rg.TypedRef((*typedRef[MeshLibrary])(t))
+	rg := (*TypedRef[MeshLibrary])(r)
+	t := (*TypedRef[MeshLibrary])(from)
+	rg.TypedRef((*TypedRef[MeshLibrary])(t))
 }
 
 func (r *RefMeshLibraryImpl) Unref() {
-	rg := (*typedRef[MeshLibrary])(r)
+	rg := (*TypedRef[MeshLibrary])(r)
 	rg.Unref()
 }
 
@@ -11876,31 +11876,31 @@ type RefMeshTexture interface {
 	TypedPtr() MeshTexture
 }
 
-type RefMeshTextureImpl typedRef[MeshTexture]
+type RefMeshTextureImpl TypedRef[MeshTexture]
 
 func (r *RefMeshTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[MeshTexture])(r)
+	rg := (*TypedRef[MeshTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMeshTextureImpl) TypedPtr() MeshTexture {
-	rg := (*typedRef[MeshTexture])(r)
+	rg := (*TypedRef[MeshTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMeshTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[MeshTexture])(r)
+	rg := (*TypedRef[MeshTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMeshTextureImpl) TypedRef(from *RefMeshTextureImpl) {
-	rg := (*typedRef[MeshTexture])(r)
-	t := (*typedRef[MeshTexture])(from)
-	rg.TypedRef((*typedRef[MeshTexture])(t))
+	rg := (*TypedRef[MeshTexture])(r)
+	t := (*TypedRef[MeshTexture])(from)
+	rg.TypedRef((*TypedRef[MeshTexture])(t))
 }
 
 func (r *RefMeshTextureImpl) Unref() {
-	rg := (*typedRef[MeshTexture])(r)
+	rg := (*TypedRef[MeshTexture])(r)
 	rg.Unref()
 }
 
@@ -11928,31 +11928,31 @@ type RefMethodTweener interface {
 	TypedPtr() MethodTweener
 }
 
-type RefMethodTweenerImpl typedRef[MethodTweener]
+type RefMethodTweenerImpl TypedRef[MethodTweener]
 
 func (r *RefMethodTweenerImpl) Ptr() RefCounted {
-	rg := (*typedRef[MethodTweener])(r)
+	rg := (*TypedRef[MethodTweener])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMethodTweenerImpl) TypedPtr() MethodTweener {
-	rg := (*typedRef[MethodTweener])(r)
+	rg := (*TypedRef[MethodTweener])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMethodTweenerImpl) Ref(from Ref) {
-	rg := (*typedRef[MethodTweener])(r)
+	rg := (*TypedRef[MethodTweener])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMethodTweenerImpl) TypedRef(from *RefMethodTweenerImpl) {
-	rg := (*typedRef[MethodTweener])(r)
-	t := (*typedRef[MethodTweener])(from)
-	rg.TypedRef((*typedRef[MethodTweener])(t))
+	rg := (*TypedRef[MethodTweener])(r)
+	t := (*TypedRef[MethodTweener])(from)
+	rg.TypedRef((*TypedRef[MethodTweener])(t))
 }
 
 func (r *RefMethodTweenerImpl) Unref() {
-	rg := (*typedRef[MethodTweener])(r)
+	rg := (*TypedRef[MethodTweener])(r)
 	rg.Unref()
 }
 
@@ -11980,31 +11980,31 @@ type RefMissingResource interface {
 	TypedPtr() MissingResource
 }
 
-type RefMissingResourceImpl typedRef[MissingResource]
+type RefMissingResourceImpl TypedRef[MissingResource]
 
 func (r *RefMissingResourceImpl) Ptr() RefCounted {
-	rg := (*typedRef[MissingResource])(r)
+	rg := (*TypedRef[MissingResource])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMissingResourceImpl) TypedPtr() MissingResource {
-	rg := (*typedRef[MissingResource])(r)
+	rg := (*TypedRef[MissingResource])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMissingResourceImpl) Ref(from Ref) {
-	rg := (*typedRef[MissingResource])(r)
+	rg := (*TypedRef[MissingResource])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMissingResourceImpl) TypedRef(from *RefMissingResourceImpl) {
-	rg := (*typedRef[MissingResource])(r)
-	t := (*typedRef[MissingResource])(from)
-	rg.TypedRef((*typedRef[MissingResource])(t))
+	rg := (*TypedRef[MissingResource])(r)
+	t := (*TypedRef[MissingResource])(from)
+	rg.TypedRef((*TypedRef[MissingResource])(t))
 }
 
 func (r *RefMissingResourceImpl) Unref() {
-	rg := (*typedRef[MissingResource])(r)
+	rg := (*TypedRef[MissingResource])(r)
 	rg.Unref()
 }
 
@@ -12032,31 +12032,31 @@ type RefMobileVRInterface interface {
 	TypedPtr() MobileVRInterface
 }
 
-type RefMobileVRInterfaceImpl typedRef[MobileVRInterface]
+type RefMobileVRInterfaceImpl TypedRef[MobileVRInterface]
 
 func (r *RefMobileVRInterfaceImpl) Ptr() RefCounted {
-	rg := (*typedRef[MobileVRInterface])(r)
+	rg := (*TypedRef[MobileVRInterface])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMobileVRInterfaceImpl) TypedPtr() MobileVRInterface {
-	rg := (*typedRef[MobileVRInterface])(r)
+	rg := (*TypedRef[MobileVRInterface])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMobileVRInterfaceImpl) Ref(from Ref) {
-	rg := (*typedRef[MobileVRInterface])(r)
+	rg := (*TypedRef[MobileVRInterface])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMobileVRInterfaceImpl) TypedRef(from *RefMobileVRInterfaceImpl) {
-	rg := (*typedRef[MobileVRInterface])(r)
-	t := (*typedRef[MobileVRInterface])(from)
-	rg.TypedRef((*typedRef[MobileVRInterface])(t))
+	rg := (*TypedRef[MobileVRInterface])(r)
+	t := (*TypedRef[MobileVRInterface])(from)
+	rg.TypedRef((*TypedRef[MobileVRInterface])(t))
 }
 
 func (r *RefMobileVRInterfaceImpl) Unref() {
-	rg := (*typedRef[MobileVRInterface])(r)
+	rg := (*TypedRef[MobileVRInterface])(r)
 	rg.Unref()
 }
 
@@ -12084,31 +12084,31 @@ type RefMultiMesh interface {
 	TypedPtr() MultiMesh
 }
 
-type RefMultiMeshImpl typedRef[MultiMesh]
+type RefMultiMeshImpl TypedRef[MultiMesh]
 
 func (r *RefMultiMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[MultiMesh])(r)
+	rg := (*TypedRef[MultiMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMultiMeshImpl) TypedPtr() MultiMesh {
-	rg := (*typedRef[MultiMesh])(r)
+	rg := (*TypedRef[MultiMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMultiMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[MultiMesh])(r)
+	rg := (*TypedRef[MultiMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMultiMeshImpl) TypedRef(from *RefMultiMeshImpl) {
-	rg := (*typedRef[MultiMesh])(r)
-	t := (*typedRef[MultiMesh])(from)
-	rg.TypedRef((*typedRef[MultiMesh])(t))
+	rg := (*TypedRef[MultiMesh])(r)
+	t := (*TypedRef[MultiMesh])(from)
+	rg.TypedRef((*TypedRef[MultiMesh])(t))
 }
 
 func (r *RefMultiMeshImpl) Unref() {
-	rg := (*typedRef[MultiMesh])(r)
+	rg := (*TypedRef[MultiMesh])(r)
 	rg.Unref()
 }
 
@@ -12136,31 +12136,31 @@ type RefMultiplayerAPI interface {
 	TypedPtr() MultiplayerAPI
 }
 
-type RefMultiplayerAPIImpl typedRef[MultiplayerAPI]
+type RefMultiplayerAPIImpl TypedRef[MultiplayerAPI]
 
 func (r *RefMultiplayerAPIImpl) Ptr() RefCounted {
-	rg := (*typedRef[MultiplayerAPI])(r)
+	rg := (*TypedRef[MultiplayerAPI])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMultiplayerAPIImpl) TypedPtr() MultiplayerAPI {
-	rg := (*typedRef[MultiplayerAPI])(r)
+	rg := (*TypedRef[MultiplayerAPI])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMultiplayerAPIImpl) Ref(from Ref) {
-	rg := (*typedRef[MultiplayerAPI])(r)
+	rg := (*TypedRef[MultiplayerAPI])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMultiplayerAPIImpl) TypedRef(from *RefMultiplayerAPIImpl) {
-	rg := (*typedRef[MultiplayerAPI])(r)
-	t := (*typedRef[MultiplayerAPI])(from)
-	rg.TypedRef((*typedRef[MultiplayerAPI])(t))
+	rg := (*TypedRef[MultiplayerAPI])(r)
+	t := (*TypedRef[MultiplayerAPI])(from)
+	rg.TypedRef((*TypedRef[MultiplayerAPI])(t))
 }
 
 func (r *RefMultiplayerAPIImpl) Unref() {
-	rg := (*typedRef[MultiplayerAPI])(r)
+	rg := (*TypedRef[MultiplayerAPI])(r)
 	rg.Unref()
 }
 
@@ -12188,31 +12188,31 @@ type RefMultiplayerAPIExtension interface {
 	TypedPtr() MultiplayerAPIExtension
 }
 
-type RefMultiplayerAPIExtensionImpl typedRef[MultiplayerAPIExtension]
+type RefMultiplayerAPIExtensionImpl TypedRef[MultiplayerAPIExtension]
 
 func (r *RefMultiplayerAPIExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[MultiplayerAPIExtension])(r)
+	rg := (*TypedRef[MultiplayerAPIExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMultiplayerAPIExtensionImpl) TypedPtr() MultiplayerAPIExtension {
-	rg := (*typedRef[MultiplayerAPIExtension])(r)
+	rg := (*TypedRef[MultiplayerAPIExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMultiplayerAPIExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[MultiplayerAPIExtension])(r)
+	rg := (*TypedRef[MultiplayerAPIExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMultiplayerAPIExtensionImpl) TypedRef(from *RefMultiplayerAPIExtensionImpl) {
-	rg := (*typedRef[MultiplayerAPIExtension])(r)
-	t := (*typedRef[MultiplayerAPIExtension])(from)
-	rg.TypedRef((*typedRef[MultiplayerAPIExtension])(t))
+	rg := (*TypedRef[MultiplayerAPIExtension])(r)
+	t := (*TypedRef[MultiplayerAPIExtension])(from)
+	rg.TypedRef((*TypedRef[MultiplayerAPIExtension])(t))
 }
 
 func (r *RefMultiplayerAPIExtensionImpl) Unref() {
-	rg := (*typedRef[MultiplayerAPIExtension])(r)
+	rg := (*TypedRef[MultiplayerAPIExtension])(r)
 	rg.Unref()
 }
 
@@ -12240,31 +12240,31 @@ type RefMultiplayerPeer interface {
 	TypedPtr() MultiplayerPeer
 }
 
-type RefMultiplayerPeerImpl typedRef[MultiplayerPeer]
+type RefMultiplayerPeerImpl TypedRef[MultiplayerPeer]
 
 func (r *RefMultiplayerPeerImpl) Ptr() RefCounted {
-	rg := (*typedRef[MultiplayerPeer])(r)
+	rg := (*TypedRef[MultiplayerPeer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMultiplayerPeerImpl) TypedPtr() MultiplayerPeer {
-	rg := (*typedRef[MultiplayerPeer])(r)
+	rg := (*TypedRef[MultiplayerPeer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMultiplayerPeerImpl) Ref(from Ref) {
-	rg := (*typedRef[MultiplayerPeer])(r)
+	rg := (*TypedRef[MultiplayerPeer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMultiplayerPeerImpl) TypedRef(from *RefMultiplayerPeerImpl) {
-	rg := (*typedRef[MultiplayerPeer])(r)
-	t := (*typedRef[MultiplayerPeer])(from)
-	rg.TypedRef((*typedRef[MultiplayerPeer])(t))
+	rg := (*TypedRef[MultiplayerPeer])(r)
+	t := (*TypedRef[MultiplayerPeer])(from)
+	rg.TypedRef((*TypedRef[MultiplayerPeer])(t))
 }
 
 func (r *RefMultiplayerPeerImpl) Unref() {
-	rg := (*typedRef[MultiplayerPeer])(r)
+	rg := (*TypedRef[MultiplayerPeer])(r)
 	rg.Unref()
 }
 
@@ -12292,31 +12292,31 @@ type RefMultiplayerPeerExtension interface {
 	TypedPtr() MultiplayerPeerExtension
 }
 
-type RefMultiplayerPeerExtensionImpl typedRef[MultiplayerPeerExtension]
+type RefMultiplayerPeerExtensionImpl TypedRef[MultiplayerPeerExtension]
 
 func (r *RefMultiplayerPeerExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[MultiplayerPeerExtension])(r)
+	rg := (*TypedRef[MultiplayerPeerExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMultiplayerPeerExtensionImpl) TypedPtr() MultiplayerPeerExtension {
-	rg := (*typedRef[MultiplayerPeerExtension])(r)
+	rg := (*TypedRef[MultiplayerPeerExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMultiplayerPeerExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[MultiplayerPeerExtension])(r)
+	rg := (*TypedRef[MultiplayerPeerExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMultiplayerPeerExtensionImpl) TypedRef(from *RefMultiplayerPeerExtensionImpl) {
-	rg := (*typedRef[MultiplayerPeerExtension])(r)
-	t := (*typedRef[MultiplayerPeerExtension])(from)
-	rg.TypedRef((*typedRef[MultiplayerPeerExtension])(t))
+	rg := (*TypedRef[MultiplayerPeerExtension])(r)
+	t := (*TypedRef[MultiplayerPeerExtension])(from)
+	rg.TypedRef((*TypedRef[MultiplayerPeerExtension])(t))
 }
 
 func (r *RefMultiplayerPeerExtensionImpl) Unref() {
-	rg := (*typedRef[MultiplayerPeerExtension])(r)
+	rg := (*TypedRef[MultiplayerPeerExtension])(r)
 	rg.Unref()
 }
 
@@ -12344,31 +12344,31 @@ type RefMutex interface {
 	TypedPtr() Mutex
 }
 
-type RefMutexImpl typedRef[Mutex]
+type RefMutexImpl TypedRef[Mutex]
 
 func (r *RefMutexImpl) Ptr() RefCounted {
-	rg := (*typedRef[Mutex])(r)
+	rg := (*TypedRef[Mutex])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefMutexImpl) TypedPtr() Mutex {
-	rg := (*typedRef[Mutex])(r)
+	rg := (*TypedRef[Mutex])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefMutexImpl) Ref(from Ref) {
-	rg := (*typedRef[Mutex])(r)
+	rg := (*TypedRef[Mutex])(r)
 	rg.Ref(from)
 }
 
 func (r *RefMutexImpl) TypedRef(from *RefMutexImpl) {
-	rg := (*typedRef[Mutex])(r)
-	t := (*typedRef[Mutex])(from)
-	rg.TypedRef((*typedRef[Mutex])(t))
+	rg := (*TypedRef[Mutex])(r)
+	t := (*TypedRef[Mutex])(from)
+	rg.TypedRef((*TypedRef[Mutex])(t))
 }
 
 func (r *RefMutexImpl) Unref() {
-	rg := (*typedRef[Mutex])(r)
+	rg := (*TypedRef[Mutex])(r)
 	rg.Unref()
 }
 
@@ -12396,31 +12396,31 @@ type RefNavigationMesh interface {
 	TypedPtr() NavigationMesh
 }
 
-type RefNavigationMeshImpl typedRef[NavigationMesh]
+type RefNavigationMeshImpl TypedRef[NavigationMesh]
 
 func (r *RefNavigationMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[NavigationMesh])(r)
+	rg := (*TypedRef[NavigationMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNavigationMeshImpl) TypedPtr() NavigationMesh {
-	rg := (*typedRef[NavigationMesh])(r)
+	rg := (*TypedRef[NavigationMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNavigationMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[NavigationMesh])(r)
+	rg := (*TypedRef[NavigationMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNavigationMeshImpl) TypedRef(from *RefNavigationMeshImpl) {
-	rg := (*typedRef[NavigationMesh])(r)
-	t := (*typedRef[NavigationMesh])(from)
-	rg.TypedRef((*typedRef[NavigationMesh])(t))
+	rg := (*TypedRef[NavigationMesh])(r)
+	t := (*TypedRef[NavigationMesh])(from)
+	rg.TypedRef((*TypedRef[NavigationMesh])(t))
 }
 
 func (r *RefNavigationMeshImpl) Unref() {
-	rg := (*typedRef[NavigationMesh])(r)
+	rg := (*TypedRef[NavigationMesh])(r)
 	rg.Unref()
 }
 
@@ -12448,31 +12448,31 @@ type RefNavigationMeshSourceGeometryData2D interface {
 	TypedPtr() NavigationMeshSourceGeometryData2D
 }
 
-type RefNavigationMeshSourceGeometryData2DImpl typedRef[NavigationMeshSourceGeometryData2D]
+type RefNavigationMeshSourceGeometryData2DImpl TypedRef[NavigationMeshSourceGeometryData2D]
 
 func (r *RefNavigationMeshSourceGeometryData2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[NavigationMeshSourceGeometryData2D])(r)
+	rg := (*TypedRef[NavigationMeshSourceGeometryData2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNavigationMeshSourceGeometryData2DImpl) TypedPtr() NavigationMeshSourceGeometryData2D {
-	rg := (*typedRef[NavigationMeshSourceGeometryData2D])(r)
+	rg := (*TypedRef[NavigationMeshSourceGeometryData2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNavigationMeshSourceGeometryData2DImpl) Ref(from Ref) {
-	rg := (*typedRef[NavigationMeshSourceGeometryData2D])(r)
+	rg := (*TypedRef[NavigationMeshSourceGeometryData2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNavigationMeshSourceGeometryData2DImpl) TypedRef(from *RefNavigationMeshSourceGeometryData2DImpl) {
-	rg := (*typedRef[NavigationMeshSourceGeometryData2D])(r)
-	t := (*typedRef[NavigationMeshSourceGeometryData2D])(from)
-	rg.TypedRef((*typedRef[NavigationMeshSourceGeometryData2D])(t))
+	rg := (*TypedRef[NavigationMeshSourceGeometryData2D])(r)
+	t := (*TypedRef[NavigationMeshSourceGeometryData2D])(from)
+	rg.TypedRef((*TypedRef[NavigationMeshSourceGeometryData2D])(t))
 }
 
 func (r *RefNavigationMeshSourceGeometryData2DImpl) Unref() {
-	rg := (*typedRef[NavigationMeshSourceGeometryData2D])(r)
+	rg := (*TypedRef[NavigationMeshSourceGeometryData2D])(r)
 	rg.Unref()
 }
 
@@ -12500,31 +12500,31 @@ type RefNavigationMeshSourceGeometryData3D interface {
 	TypedPtr() NavigationMeshSourceGeometryData3D
 }
 
-type RefNavigationMeshSourceGeometryData3DImpl typedRef[NavigationMeshSourceGeometryData3D]
+type RefNavigationMeshSourceGeometryData3DImpl TypedRef[NavigationMeshSourceGeometryData3D]
 
 func (r *RefNavigationMeshSourceGeometryData3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[NavigationMeshSourceGeometryData3D])(r)
+	rg := (*TypedRef[NavigationMeshSourceGeometryData3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNavigationMeshSourceGeometryData3DImpl) TypedPtr() NavigationMeshSourceGeometryData3D {
-	rg := (*typedRef[NavigationMeshSourceGeometryData3D])(r)
+	rg := (*TypedRef[NavigationMeshSourceGeometryData3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNavigationMeshSourceGeometryData3DImpl) Ref(from Ref) {
-	rg := (*typedRef[NavigationMeshSourceGeometryData3D])(r)
+	rg := (*TypedRef[NavigationMeshSourceGeometryData3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNavigationMeshSourceGeometryData3DImpl) TypedRef(from *RefNavigationMeshSourceGeometryData3DImpl) {
-	rg := (*typedRef[NavigationMeshSourceGeometryData3D])(r)
-	t := (*typedRef[NavigationMeshSourceGeometryData3D])(from)
-	rg.TypedRef((*typedRef[NavigationMeshSourceGeometryData3D])(t))
+	rg := (*TypedRef[NavigationMeshSourceGeometryData3D])(r)
+	t := (*TypedRef[NavigationMeshSourceGeometryData3D])(from)
+	rg.TypedRef((*TypedRef[NavigationMeshSourceGeometryData3D])(t))
 }
 
 func (r *RefNavigationMeshSourceGeometryData3DImpl) Unref() {
-	rg := (*typedRef[NavigationMeshSourceGeometryData3D])(r)
+	rg := (*TypedRef[NavigationMeshSourceGeometryData3D])(r)
 	rg.Unref()
 }
 
@@ -12552,31 +12552,31 @@ type RefNavigationPathQueryParameters2D interface {
 	TypedPtr() NavigationPathQueryParameters2D
 }
 
-type RefNavigationPathQueryParameters2DImpl typedRef[NavigationPathQueryParameters2D]
+type RefNavigationPathQueryParameters2DImpl TypedRef[NavigationPathQueryParameters2D]
 
 func (r *RefNavigationPathQueryParameters2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[NavigationPathQueryParameters2D])(r)
+	rg := (*TypedRef[NavigationPathQueryParameters2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNavigationPathQueryParameters2DImpl) TypedPtr() NavigationPathQueryParameters2D {
-	rg := (*typedRef[NavigationPathQueryParameters2D])(r)
+	rg := (*TypedRef[NavigationPathQueryParameters2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNavigationPathQueryParameters2DImpl) Ref(from Ref) {
-	rg := (*typedRef[NavigationPathQueryParameters2D])(r)
+	rg := (*TypedRef[NavigationPathQueryParameters2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNavigationPathQueryParameters2DImpl) TypedRef(from *RefNavigationPathQueryParameters2DImpl) {
-	rg := (*typedRef[NavigationPathQueryParameters2D])(r)
-	t := (*typedRef[NavigationPathQueryParameters2D])(from)
-	rg.TypedRef((*typedRef[NavigationPathQueryParameters2D])(t))
+	rg := (*TypedRef[NavigationPathQueryParameters2D])(r)
+	t := (*TypedRef[NavigationPathQueryParameters2D])(from)
+	rg.TypedRef((*TypedRef[NavigationPathQueryParameters2D])(t))
 }
 
 func (r *RefNavigationPathQueryParameters2DImpl) Unref() {
-	rg := (*typedRef[NavigationPathQueryParameters2D])(r)
+	rg := (*TypedRef[NavigationPathQueryParameters2D])(r)
 	rg.Unref()
 }
 
@@ -12604,31 +12604,31 @@ type RefNavigationPathQueryParameters3D interface {
 	TypedPtr() NavigationPathQueryParameters3D
 }
 
-type RefNavigationPathQueryParameters3DImpl typedRef[NavigationPathQueryParameters3D]
+type RefNavigationPathQueryParameters3DImpl TypedRef[NavigationPathQueryParameters3D]
 
 func (r *RefNavigationPathQueryParameters3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[NavigationPathQueryParameters3D])(r)
+	rg := (*TypedRef[NavigationPathQueryParameters3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNavigationPathQueryParameters3DImpl) TypedPtr() NavigationPathQueryParameters3D {
-	rg := (*typedRef[NavigationPathQueryParameters3D])(r)
+	rg := (*TypedRef[NavigationPathQueryParameters3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNavigationPathQueryParameters3DImpl) Ref(from Ref) {
-	rg := (*typedRef[NavigationPathQueryParameters3D])(r)
+	rg := (*TypedRef[NavigationPathQueryParameters3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNavigationPathQueryParameters3DImpl) TypedRef(from *RefNavigationPathQueryParameters3DImpl) {
-	rg := (*typedRef[NavigationPathQueryParameters3D])(r)
-	t := (*typedRef[NavigationPathQueryParameters3D])(from)
-	rg.TypedRef((*typedRef[NavigationPathQueryParameters3D])(t))
+	rg := (*TypedRef[NavigationPathQueryParameters3D])(r)
+	t := (*TypedRef[NavigationPathQueryParameters3D])(from)
+	rg.TypedRef((*TypedRef[NavigationPathQueryParameters3D])(t))
 }
 
 func (r *RefNavigationPathQueryParameters3DImpl) Unref() {
-	rg := (*typedRef[NavigationPathQueryParameters3D])(r)
+	rg := (*TypedRef[NavigationPathQueryParameters3D])(r)
 	rg.Unref()
 }
 
@@ -12656,31 +12656,31 @@ type RefNavigationPathQueryResult2D interface {
 	TypedPtr() NavigationPathQueryResult2D
 }
 
-type RefNavigationPathQueryResult2DImpl typedRef[NavigationPathQueryResult2D]
+type RefNavigationPathQueryResult2DImpl TypedRef[NavigationPathQueryResult2D]
 
 func (r *RefNavigationPathQueryResult2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[NavigationPathQueryResult2D])(r)
+	rg := (*TypedRef[NavigationPathQueryResult2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNavigationPathQueryResult2DImpl) TypedPtr() NavigationPathQueryResult2D {
-	rg := (*typedRef[NavigationPathQueryResult2D])(r)
+	rg := (*TypedRef[NavigationPathQueryResult2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNavigationPathQueryResult2DImpl) Ref(from Ref) {
-	rg := (*typedRef[NavigationPathQueryResult2D])(r)
+	rg := (*TypedRef[NavigationPathQueryResult2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNavigationPathQueryResult2DImpl) TypedRef(from *RefNavigationPathQueryResult2DImpl) {
-	rg := (*typedRef[NavigationPathQueryResult2D])(r)
-	t := (*typedRef[NavigationPathQueryResult2D])(from)
-	rg.TypedRef((*typedRef[NavigationPathQueryResult2D])(t))
+	rg := (*TypedRef[NavigationPathQueryResult2D])(r)
+	t := (*TypedRef[NavigationPathQueryResult2D])(from)
+	rg.TypedRef((*TypedRef[NavigationPathQueryResult2D])(t))
 }
 
 func (r *RefNavigationPathQueryResult2DImpl) Unref() {
-	rg := (*typedRef[NavigationPathQueryResult2D])(r)
+	rg := (*TypedRef[NavigationPathQueryResult2D])(r)
 	rg.Unref()
 }
 
@@ -12708,31 +12708,31 @@ type RefNavigationPathQueryResult3D interface {
 	TypedPtr() NavigationPathQueryResult3D
 }
 
-type RefNavigationPathQueryResult3DImpl typedRef[NavigationPathQueryResult3D]
+type RefNavigationPathQueryResult3DImpl TypedRef[NavigationPathQueryResult3D]
 
 func (r *RefNavigationPathQueryResult3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[NavigationPathQueryResult3D])(r)
+	rg := (*TypedRef[NavigationPathQueryResult3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNavigationPathQueryResult3DImpl) TypedPtr() NavigationPathQueryResult3D {
-	rg := (*typedRef[NavigationPathQueryResult3D])(r)
+	rg := (*TypedRef[NavigationPathQueryResult3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNavigationPathQueryResult3DImpl) Ref(from Ref) {
-	rg := (*typedRef[NavigationPathQueryResult3D])(r)
+	rg := (*TypedRef[NavigationPathQueryResult3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNavigationPathQueryResult3DImpl) TypedRef(from *RefNavigationPathQueryResult3DImpl) {
-	rg := (*typedRef[NavigationPathQueryResult3D])(r)
-	t := (*typedRef[NavigationPathQueryResult3D])(from)
-	rg.TypedRef((*typedRef[NavigationPathQueryResult3D])(t))
+	rg := (*TypedRef[NavigationPathQueryResult3D])(r)
+	t := (*TypedRef[NavigationPathQueryResult3D])(from)
+	rg.TypedRef((*TypedRef[NavigationPathQueryResult3D])(t))
 }
 
 func (r *RefNavigationPathQueryResult3DImpl) Unref() {
-	rg := (*typedRef[NavigationPathQueryResult3D])(r)
+	rg := (*TypedRef[NavigationPathQueryResult3D])(r)
 	rg.Unref()
 }
 
@@ -12760,31 +12760,31 @@ type RefNavigationPolygon interface {
 	TypedPtr() NavigationPolygon
 }
 
-type RefNavigationPolygonImpl typedRef[NavigationPolygon]
+type RefNavigationPolygonImpl TypedRef[NavigationPolygon]
 
 func (r *RefNavigationPolygonImpl) Ptr() RefCounted {
-	rg := (*typedRef[NavigationPolygon])(r)
+	rg := (*TypedRef[NavigationPolygon])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNavigationPolygonImpl) TypedPtr() NavigationPolygon {
-	rg := (*typedRef[NavigationPolygon])(r)
+	rg := (*TypedRef[NavigationPolygon])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNavigationPolygonImpl) Ref(from Ref) {
-	rg := (*typedRef[NavigationPolygon])(r)
+	rg := (*TypedRef[NavigationPolygon])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNavigationPolygonImpl) TypedRef(from *RefNavigationPolygonImpl) {
-	rg := (*typedRef[NavigationPolygon])(r)
-	t := (*typedRef[NavigationPolygon])(from)
-	rg.TypedRef((*typedRef[NavigationPolygon])(t))
+	rg := (*TypedRef[NavigationPolygon])(r)
+	t := (*TypedRef[NavigationPolygon])(from)
+	rg.TypedRef((*TypedRef[NavigationPolygon])(t))
 }
 
 func (r *RefNavigationPolygonImpl) Unref() {
-	rg := (*typedRef[NavigationPolygon])(r)
+	rg := (*TypedRef[NavigationPolygon])(r)
 	rg.Unref()
 }
 
@@ -12812,31 +12812,31 @@ type RefNode3DGizmo interface {
 	TypedPtr() Node3DGizmo
 }
 
-type RefNode3DGizmoImpl typedRef[Node3DGizmo]
+type RefNode3DGizmoImpl TypedRef[Node3DGizmo]
 
 func (r *RefNode3DGizmoImpl) Ptr() RefCounted {
-	rg := (*typedRef[Node3DGizmo])(r)
+	rg := (*TypedRef[Node3DGizmo])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNode3DGizmoImpl) TypedPtr() Node3DGizmo {
-	rg := (*typedRef[Node3DGizmo])(r)
+	rg := (*TypedRef[Node3DGizmo])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNode3DGizmoImpl) Ref(from Ref) {
-	rg := (*typedRef[Node3DGizmo])(r)
+	rg := (*TypedRef[Node3DGizmo])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNode3DGizmoImpl) TypedRef(from *RefNode3DGizmoImpl) {
-	rg := (*typedRef[Node3DGizmo])(r)
-	t := (*typedRef[Node3DGizmo])(from)
-	rg.TypedRef((*typedRef[Node3DGizmo])(t))
+	rg := (*TypedRef[Node3DGizmo])(r)
+	t := (*TypedRef[Node3DGizmo])(from)
+	rg.TypedRef((*TypedRef[Node3DGizmo])(t))
 }
 
 func (r *RefNode3DGizmoImpl) Unref() {
-	rg := (*typedRef[Node3DGizmo])(r)
+	rg := (*TypedRef[Node3DGizmo])(r)
 	rg.Unref()
 }
 
@@ -12864,31 +12864,31 @@ type RefNoise interface {
 	TypedPtr() Noise
 }
 
-type RefNoiseImpl typedRef[Noise]
+type RefNoiseImpl TypedRef[Noise]
 
 func (r *RefNoiseImpl) Ptr() RefCounted {
-	rg := (*typedRef[Noise])(r)
+	rg := (*TypedRef[Noise])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNoiseImpl) TypedPtr() Noise {
-	rg := (*typedRef[Noise])(r)
+	rg := (*TypedRef[Noise])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNoiseImpl) Ref(from Ref) {
-	rg := (*typedRef[Noise])(r)
+	rg := (*TypedRef[Noise])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNoiseImpl) TypedRef(from *RefNoiseImpl) {
-	rg := (*typedRef[Noise])(r)
-	t := (*typedRef[Noise])(from)
-	rg.TypedRef((*typedRef[Noise])(t))
+	rg := (*TypedRef[Noise])(r)
+	t := (*TypedRef[Noise])(from)
+	rg.TypedRef((*TypedRef[Noise])(t))
 }
 
 func (r *RefNoiseImpl) Unref() {
-	rg := (*typedRef[Noise])(r)
+	rg := (*TypedRef[Noise])(r)
 	rg.Unref()
 }
 
@@ -12916,31 +12916,31 @@ type RefNoiseTexture2D interface {
 	TypedPtr() NoiseTexture2D
 }
 
-type RefNoiseTexture2DImpl typedRef[NoiseTexture2D]
+type RefNoiseTexture2DImpl TypedRef[NoiseTexture2D]
 
 func (r *RefNoiseTexture2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[NoiseTexture2D])(r)
+	rg := (*TypedRef[NoiseTexture2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNoiseTexture2DImpl) TypedPtr() NoiseTexture2D {
-	rg := (*typedRef[NoiseTexture2D])(r)
+	rg := (*TypedRef[NoiseTexture2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNoiseTexture2DImpl) Ref(from Ref) {
-	rg := (*typedRef[NoiseTexture2D])(r)
+	rg := (*TypedRef[NoiseTexture2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNoiseTexture2DImpl) TypedRef(from *RefNoiseTexture2DImpl) {
-	rg := (*typedRef[NoiseTexture2D])(r)
-	t := (*typedRef[NoiseTexture2D])(from)
-	rg.TypedRef((*typedRef[NoiseTexture2D])(t))
+	rg := (*TypedRef[NoiseTexture2D])(r)
+	t := (*TypedRef[NoiseTexture2D])(from)
+	rg.TypedRef((*TypedRef[NoiseTexture2D])(t))
 }
 
 func (r *RefNoiseTexture2DImpl) Unref() {
-	rg := (*typedRef[NoiseTexture2D])(r)
+	rg := (*TypedRef[NoiseTexture2D])(r)
 	rg.Unref()
 }
 
@@ -12968,31 +12968,31 @@ type RefNoiseTexture3D interface {
 	TypedPtr() NoiseTexture3D
 }
 
-type RefNoiseTexture3DImpl typedRef[NoiseTexture3D]
+type RefNoiseTexture3DImpl TypedRef[NoiseTexture3D]
 
 func (r *RefNoiseTexture3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[NoiseTexture3D])(r)
+	rg := (*TypedRef[NoiseTexture3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefNoiseTexture3DImpl) TypedPtr() NoiseTexture3D {
-	rg := (*typedRef[NoiseTexture3D])(r)
+	rg := (*TypedRef[NoiseTexture3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefNoiseTexture3DImpl) Ref(from Ref) {
-	rg := (*typedRef[NoiseTexture3D])(r)
+	rg := (*TypedRef[NoiseTexture3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefNoiseTexture3DImpl) TypedRef(from *RefNoiseTexture3DImpl) {
-	rg := (*typedRef[NoiseTexture3D])(r)
-	t := (*typedRef[NoiseTexture3D])(from)
-	rg.TypedRef((*typedRef[NoiseTexture3D])(t))
+	rg := (*TypedRef[NoiseTexture3D])(r)
+	t := (*TypedRef[NoiseTexture3D])(from)
+	rg.TypedRef((*TypedRef[NoiseTexture3D])(t))
 }
 
 func (r *RefNoiseTexture3DImpl) Unref() {
-	rg := (*typedRef[NoiseTexture3D])(r)
+	rg := (*TypedRef[NoiseTexture3D])(r)
 	rg.Unref()
 }
 
@@ -13020,31 +13020,31 @@ type RefORMMaterial3D interface {
 	TypedPtr() ORMMaterial3D
 }
 
-type RefORMMaterial3DImpl typedRef[ORMMaterial3D]
+type RefORMMaterial3DImpl TypedRef[ORMMaterial3D]
 
 func (r *RefORMMaterial3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[ORMMaterial3D])(r)
+	rg := (*TypedRef[ORMMaterial3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefORMMaterial3DImpl) TypedPtr() ORMMaterial3D {
-	rg := (*typedRef[ORMMaterial3D])(r)
+	rg := (*TypedRef[ORMMaterial3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefORMMaterial3DImpl) Ref(from Ref) {
-	rg := (*typedRef[ORMMaterial3D])(r)
+	rg := (*TypedRef[ORMMaterial3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefORMMaterial3DImpl) TypedRef(from *RefORMMaterial3DImpl) {
-	rg := (*typedRef[ORMMaterial3D])(r)
-	t := (*typedRef[ORMMaterial3D])(from)
-	rg.TypedRef((*typedRef[ORMMaterial3D])(t))
+	rg := (*TypedRef[ORMMaterial3D])(r)
+	t := (*TypedRef[ORMMaterial3D])(from)
+	rg.TypedRef((*TypedRef[ORMMaterial3D])(t))
 }
 
 func (r *RefORMMaterial3DImpl) Unref() {
-	rg := (*typedRef[ORMMaterial3D])(r)
+	rg := (*TypedRef[ORMMaterial3D])(r)
 	rg.Unref()
 }
 
@@ -13072,31 +13072,31 @@ type RefOccluder3D interface {
 	TypedPtr() Occluder3D
 }
 
-type RefOccluder3DImpl typedRef[Occluder3D]
+type RefOccluder3DImpl TypedRef[Occluder3D]
 
 func (r *RefOccluder3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[Occluder3D])(r)
+	rg := (*TypedRef[Occluder3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOccluder3DImpl) TypedPtr() Occluder3D {
-	rg := (*typedRef[Occluder3D])(r)
+	rg := (*TypedRef[Occluder3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOccluder3DImpl) Ref(from Ref) {
-	rg := (*typedRef[Occluder3D])(r)
+	rg := (*TypedRef[Occluder3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOccluder3DImpl) TypedRef(from *RefOccluder3DImpl) {
-	rg := (*typedRef[Occluder3D])(r)
-	t := (*typedRef[Occluder3D])(from)
-	rg.TypedRef((*typedRef[Occluder3D])(t))
+	rg := (*TypedRef[Occluder3D])(r)
+	t := (*TypedRef[Occluder3D])(from)
+	rg.TypedRef((*TypedRef[Occluder3D])(t))
 }
 
 func (r *RefOccluder3DImpl) Unref() {
-	rg := (*typedRef[Occluder3D])(r)
+	rg := (*TypedRef[Occluder3D])(r)
 	rg.Unref()
 }
 
@@ -13124,31 +13124,31 @@ type RefOccluderPolygon2D interface {
 	TypedPtr() OccluderPolygon2D
 }
 
-type RefOccluderPolygon2DImpl typedRef[OccluderPolygon2D]
+type RefOccluderPolygon2DImpl TypedRef[OccluderPolygon2D]
 
 func (r *RefOccluderPolygon2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[OccluderPolygon2D])(r)
+	rg := (*TypedRef[OccluderPolygon2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOccluderPolygon2DImpl) TypedPtr() OccluderPolygon2D {
-	rg := (*typedRef[OccluderPolygon2D])(r)
+	rg := (*TypedRef[OccluderPolygon2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOccluderPolygon2DImpl) Ref(from Ref) {
-	rg := (*typedRef[OccluderPolygon2D])(r)
+	rg := (*TypedRef[OccluderPolygon2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOccluderPolygon2DImpl) TypedRef(from *RefOccluderPolygon2DImpl) {
-	rg := (*typedRef[OccluderPolygon2D])(r)
-	t := (*typedRef[OccluderPolygon2D])(from)
-	rg.TypedRef((*typedRef[OccluderPolygon2D])(t))
+	rg := (*TypedRef[OccluderPolygon2D])(r)
+	t := (*TypedRef[OccluderPolygon2D])(from)
+	rg.TypedRef((*TypedRef[OccluderPolygon2D])(t))
 }
 
 func (r *RefOccluderPolygon2DImpl) Unref() {
-	rg := (*typedRef[OccluderPolygon2D])(r)
+	rg := (*TypedRef[OccluderPolygon2D])(r)
 	rg.Unref()
 }
 
@@ -13176,31 +13176,31 @@ type RefOfflineMultiplayerPeer interface {
 	TypedPtr() OfflineMultiplayerPeer
 }
 
-type RefOfflineMultiplayerPeerImpl typedRef[OfflineMultiplayerPeer]
+type RefOfflineMultiplayerPeerImpl TypedRef[OfflineMultiplayerPeer]
 
 func (r *RefOfflineMultiplayerPeerImpl) Ptr() RefCounted {
-	rg := (*typedRef[OfflineMultiplayerPeer])(r)
+	rg := (*TypedRef[OfflineMultiplayerPeer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOfflineMultiplayerPeerImpl) TypedPtr() OfflineMultiplayerPeer {
-	rg := (*typedRef[OfflineMultiplayerPeer])(r)
+	rg := (*TypedRef[OfflineMultiplayerPeer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOfflineMultiplayerPeerImpl) Ref(from Ref) {
-	rg := (*typedRef[OfflineMultiplayerPeer])(r)
+	rg := (*TypedRef[OfflineMultiplayerPeer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOfflineMultiplayerPeerImpl) TypedRef(from *RefOfflineMultiplayerPeerImpl) {
-	rg := (*typedRef[OfflineMultiplayerPeer])(r)
-	t := (*typedRef[OfflineMultiplayerPeer])(from)
-	rg.TypedRef((*typedRef[OfflineMultiplayerPeer])(t))
+	rg := (*TypedRef[OfflineMultiplayerPeer])(r)
+	t := (*TypedRef[OfflineMultiplayerPeer])(from)
+	rg.TypedRef((*TypedRef[OfflineMultiplayerPeer])(t))
 }
 
 func (r *RefOfflineMultiplayerPeerImpl) Unref() {
-	rg := (*typedRef[OfflineMultiplayerPeer])(r)
+	rg := (*TypedRef[OfflineMultiplayerPeer])(r)
 	rg.Unref()
 }
 
@@ -13228,31 +13228,31 @@ type RefOggPacketSequence interface {
 	TypedPtr() OggPacketSequence
 }
 
-type RefOggPacketSequenceImpl typedRef[OggPacketSequence]
+type RefOggPacketSequenceImpl TypedRef[OggPacketSequence]
 
 func (r *RefOggPacketSequenceImpl) Ptr() RefCounted {
-	rg := (*typedRef[OggPacketSequence])(r)
+	rg := (*TypedRef[OggPacketSequence])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOggPacketSequenceImpl) TypedPtr() OggPacketSequence {
-	rg := (*typedRef[OggPacketSequence])(r)
+	rg := (*TypedRef[OggPacketSequence])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOggPacketSequenceImpl) Ref(from Ref) {
-	rg := (*typedRef[OggPacketSequence])(r)
+	rg := (*TypedRef[OggPacketSequence])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOggPacketSequenceImpl) TypedRef(from *RefOggPacketSequenceImpl) {
-	rg := (*typedRef[OggPacketSequence])(r)
-	t := (*typedRef[OggPacketSequence])(from)
-	rg.TypedRef((*typedRef[OggPacketSequence])(t))
+	rg := (*TypedRef[OggPacketSequence])(r)
+	t := (*TypedRef[OggPacketSequence])(from)
+	rg.TypedRef((*TypedRef[OggPacketSequence])(t))
 }
 
 func (r *RefOggPacketSequenceImpl) Unref() {
-	rg := (*typedRef[OggPacketSequence])(r)
+	rg := (*TypedRef[OggPacketSequence])(r)
 	rg.Unref()
 }
 
@@ -13280,31 +13280,31 @@ type RefOggPacketSequencePlayback interface {
 	TypedPtr() OggPacketSequencePlayback
 }
 
-type RefOggPacketSequencePlaybackImpl typedRef[OggPacketSequencePlayback]
+type RefOggPacketSequencePlaybackImpl TypedRef[OggPacketSequencePlayback]
 
 func (r *RefOggPacketSequencePlaybackImpl) Ptr() RefCounted {
-	rg := (*typedRef[OggPacketSequencePlayback])(r)
+	rg := (*TypedRef[OggPacketSequencePlayback])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOggPacketSequencePlaybackImpl) TypedPtr() OggPacketSequencePlayback {
-	rg := (*typedRef[OggPacketSequencePlayback])(r)
+	rg := (*TypedRef[OggPacketSequencePlayback])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOggPacketSequencePlaybackImpl) Ref(from Ref) {
-	rg := (*typedRef[OggPacketSequencePlayback])(r)
+	rg := (*TypedRef[OggPacketSequencePlayback])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOggPacketSequencePlaybackImpl) TypedRef(from *RefOggPacketSequencePlaybackImpl) {
-	rg := (*typedRef[OggPacketSequencePlayback])(r)
-	t := (*typedRef[OggPacketSequencePlayback])(from)
-	rg.TypedRef((*typedRef[OggPacketSequencePlayback])(t))
+	rg := (*TypedRef[OggPacketSequencePlayback])(r)
+	t := (*TypedRef[OggPacketSequencePlayback])(from)
+	rg.TypedRef((*TypedRef[OggPacketSequencePlayback])(t))
 }
 
 func (r *RefOggPacketSequencePlaybackImpl) Unref() {
-	rg := (*typedRef[OggPacketSequencePlayback])(r)
+	rg := (*TypedRef[OggPacketSequencePlayback])(r)
 	rg.Unref()
 }
 
@@ -13332,31 +13332,31 @@ type RefOpenXRAPIExtension interface {
 	TypedPtr() OpenXRAPIExtension
 }
 
-type RefOpenXRAPIExtensionImpl typedRef[OpenXRAPIExtension]
+type RefOpenXRAPIExtensionImpl TypedRef[OpenXRAPIExtension]
 
 func (r *RefOpenXRAPIExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[OpenXRAPIExtension])(r)
+	rg := (*TypedRef[OpenXRAPIExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOpenXRAPIExtensionImpl) TypedPtr() OpenXRAPIExtension {
-	rg := (*typedRef[OpenXRAPIExtension])(r)
+	rg := (*TypedRef[OpenXRAPIExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOpenXRAPIExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[OpenXRAPIExtension])(r)
+	rg := (*TypedRef[OpenXRAPIExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOpenXRAPIExtensionImpl) TypedRef(from *RefOpenXRAPIExtensionImpl) {
-	rg := (*typedRef[OpenXRAPIExtension])(r)
-	t := (*typedRef[OpenXRAPIExtension])(from)
-	rg.TypedRef((*typedRef[OpenXRAPIExtension])(t))
+	rg := (*TypedRef[OpenXRAPIExtension])(r)
+	t := (*TypedRef[OpenXRAPIExtension])(from)
+	rg.TypedRef((*TypedRef[OpenXRAPIExtension])(t))
 }
 
 func (r *RefOpenXRAPIExtensionImpl) Unref() {
-	rg := (*typedRef[OpenXRAPIExtension])(r)
+	rg := (*TypedRef[OpenXRAPIExtension])(r)
 	rg.Unref()
 }
 
@@ -13384,31 +13384,31 @@ type RefOpenXRAction interface {
 	TypedPtr() OpenXRAction
 }
 
-type RefOpenXRActionImpl typedRef[OpenXRAction]
+type RefOpenXRActionImpl TypedRef[OpenXRAction]
 
 func (r *RefOpenXRActionImpl) Ptr() RefCounted {
-	rg := (*typedRef[OpenXRAction])(r)
+	rg := (*TypedRef[OpenXRAction])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOpenXRActionImpl) TypedPtr() OpenXRAction {
-	rg := (*typedRef[OpenXRAction])(r)
+	rg := (*TypedRef[OpenXRAction])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOpenXRActionImpl) Ref(from Ref) {
-	rg := (*typedRef[OpenXRAction])(r)
+	rg := (*TypedRef[OpenXRAction])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOpenXRActionImpl) TypedRef(from *RefOpenXRActionImpl) {
-	rg := (*typedRef[OpenXRAction])(r)
-	t := (*typedRef[OpenXRAction])(from)
-	rg.TypedRef((*typedRef[OpenXRAction])(t))
+	rg := (*TypedRef[OpenXRAction])(r)
+	t := (*TypedRef[OpenXRAction])(from)
+	rg.TypedRef((*TypedRef[OpenXRAction])(t))
 }
 
 func (r *RefOpenXRActionImpl) Unref() {
-	rg := (*typedRef[OpenXRAction])(r)
+	rg := (*TypedRef[OpenXRAction])(r)
 	rg.Unref()
 }
 
@@ -13436,31 +13436,31 @@ type RefOpenXRActionMap interface {
 	TypedPtr() OpenXRActionMap
 }
 
-type RefOpenXRActionMapImpl typedRef[OpenXRActionMap]
+type RefOpenXRActionMapImpl TypedRef[OpenXRActionMap]
 
 func (r *RefOpenXRActionMapImpl) Ptr() RefCounted {
-	rg := (*typedRef[OpenXRActionMap])(r)
+	rg := (*TypedRef[OpenXRActionMap])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOpenXRActionMapImpl) TypedPtr() OpenXRActionMap {
-	rg := (*typedRef[OpenXRActionMap])(r)
+	rg := (*TypedRef[OpenXRActionMap])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOpenXRActionMapImpl) Ref(from Ref) {
-	rg := (*typedRef[OpenXRActionMap])(r)
+	rg := (*TypedRef[OpenXRActionMap])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOpenXRActionMapImpl) TypedRef(from *RefOpenXRActionMapImpl) {
-	rg := (*typedRef[OpenXRActionMap])(r)
-	t := (*typedRef[OpenXRActionMap])(from)
-	rg.TypedRef((*typedRef[OpenXRActionMap])(t))
+	rg := (*TypedRef[OpenXRActionMap])(r)
+	t := (*TypedRef[OpenXRActionMap])(from)
+	rg.TypedRef((*TypedRef[OpenXRActionMap])(t))
 }
 
 func (r *RefOpenXRActionMapImpl) Unref() {
-	rg := (*typedRef[OpenXRActionMap])(r)
+	rg := (*TypedRef[OpenXRActionMap])(r)
 	rg.Unref()
 }
 
@@ -13488,31 +13488,31 @@ type RefOpenXRActionSet interface {
 	TypedPtr() OpenXRActionSet
 }
 
-type RefOpenXRActionSetImpl typedRef[OpenXRActionSet]
+type RefOpenXRActionSetImpl TypedRef[OpenXRActionSet]
 
 func (r *RefOpenXRActionSetImpl) Ptr() RefCounted {
-	rg := (*typedRef[OpenXRActionSet])(r)
+	rg := (*TypedRef[OpenXRActionSet])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOpenXRActionSetImpl) TypedPtr() OpenXRActionSet {
-	rg := (*typedRef[OpenXRActionSet])(r)
+	rg := (*TypedRef[OpenXRActionSet])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOpenXRActionSetImpl) Ref(from Ref) {
-	rg := (*typedRef[OpenXRActionSet])(r)
+	rg := (*TypedRef[OpenXRActionSet])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOpenXRActionSetImpl) TypedRef(from *RefOpenXRActionSetImpl) {
-	rg := (*typedRef[OpenXRActionSet])(r)
-	t := (*typedRef[OpenXRActionSet])(from)
-	rg.TypedRef((*typedRef[OpenXRActionSet])(t))
+	rg := (*TypedRef[OpenXRActionSet])(r)
+	t := (*TypedRef[OpenXRActionSet])(from)
+	rg.TypedRef((*TypedRef[OpenXRActionSet])(t))
 }
 
 func (r *RefOpenXRActionSetImpl) Unref() {
-	rg := (*typedRef[OpenXRActionSet])(r)
+	rg := (*TypedRef[OpenXRActionSet])(r)
 	rg.Unref()
 }
 
@@ -13540,31 +13540,31 @@ type RefOpenXRIPBinding interface {
 	TypedPtr() OpenXRIPBinding
 }
 
-type RefOpenXRIPBindingImpl typedRef[OpenXRIPBinding]
+type RefOpenXRIPBindingImpl TypedRef[OpenXRIPBinding]
 
 func (r *RefOpenXRIPBindingImpl) Ptr() RefCounted {
-	rg := (*typedRef[OpenXRIPBinding])(r)
+	rg := (*TypedRef[OpenXRIPBinding])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOpenXRIPBindingImpl) TypedPtr() OpenXRIPBinding {
-	rg := (*typedRef[OpenXRIPBinding])(r)
+	rg := (*TypedRef[OpenXRIPBinding])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOpenXRIPBindingImpl) Ref(from Ref) {
-	rg := (*typedRef[OpenXRIPBinding])(r)
+	rg := (*TypedRef[OpenXRIPBinding])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOpenXRIPBindingImpl) TypedRef(from *RefOpenXRIPBindingImpl) {
-	rg := (*typedRef[OpenXRIPBinding])(r)
-	t := (*typedRef[OpenXRIPBinding])(from)
-	rg.TypedRef((*typedRef[OpenXRIPBinding])(t))
+	rg := (*TypedRef[OpenXRIPBinding])(r)
+	t := (*TypedRef[OpenXRIPBinding])(from)
+	rg.TypedRef((*TypedRef[OpenXRIPBinding])(t))
 }
 
 func (r *RefOpenXRIPBindingImpl) Unref() {
-	rg := (*typedRef[OpenXRIPBinding])(r)
+	rg := (*TypedRef[OpenXRIPBinding])(r)
 	rg.Unref()
 }
 
@@ -13592,31 +13592,31 @@ type RefOpenXRInteractionProfile interface {
 	TypedPtr() OpenXRInteractionProfile
 }
 
-type RefOpenXRInteractionProfileImpl typedRef[OpenXRInteractionProfile]
+type RefOpenXRInteractionProfileImpl TypedRef[OpenXRInteractionProfile]
 
 func (r *RefOpenXRInteractionProfileImpl) Ptr() RefCounted {
-	rg := (*typedRef[OpenXRInteractionProfile])(r)
+	rg := (*TypedRef[OpenXRInteractionProfile])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOpenXRInteractionProfileImpl) TypedPtr() OpenXRInteractionProfile {
-	rg := (*typedRef[OpenXRInteractionProfile])(r)
+	rg := (*TypedRef[OpenXRInteractionProfile])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOpenXRInteractionProfileImpl) Ref(from Ref) {
-	rg := (*typedRef[OpenXRInteractionProfile])(r)
+	rg := (*TypedRef[OpenXRInteractionProfile])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOpenXRInteractionProfileImpl) TypedRef(from *RefOpenXRInteractionProfileImpl) {
-	rg := (*typedRef[OpenXRInteractionProfile])(r)
-	t := (*typedRef[OpenXRInteractionProfile])(from)
-	rg.TypedRef((*typedRef[OpenXRInteractionProfile])(t))
+	rg := (*TypedRef[OpenXRInteractionProfile])(r)
+	t := (*TypedRef[OpenXRInteractionProfile])(from)
+	rg.TypedRef((*TypedRef[OpenXRInteractionProfile])(t))
 }
 
 func (r *RefOpenXRInteractionProfileImpl) Unref() {
-	rg := (*typedRef[OpenXRInteractionProfile])(r)
+	rg := (*TypedRef[OpenXRInteractionProfile])(r)
 	rg.Unref()
 }
 
@@ -13644,31 +13644,31 @@ type RefOpenXRInterface interface {
 	TypedPtr() OpenXRInterface
 }
 
-type RefOpenXRInterfaceImpl typedRef[OpenXRInterface]
+type RefOpenXRInterfaceImpl TypedRef[OpenXRInterface]
 
 func (r *RefOpenXRInterfaceImpl) Ptr() RefCounted {
-	rg := (*typedRef[OpenXRInterface])(r)
+	rg := (*TypedRef[OpenXRInterface])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOpenXRInterfaceImpl) TypedPtr() OpenXRInterface {
-	rg := (*typedRef[OpenXRInterface])(r)
+	rg := (*TypedRef[OpenXRInterface])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOpenXRInterfaceImpl) Ref(from Ref) {
-	rg := (*typedRef[OpenXRInterface])(r)
+	rg := (*TypedRef[OpenXRInterface])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOpenXRInterfaceImpl) TypedRef(from *RefOpenXRInterfaceImpl) {
-	rg := (*typedRef[OpenXRInterface])(r)
-	t := (*typedRef[OpenXRInterface])(from)
-	rg.TypedRef((*typedRef[OpenXRInterface])(t))
+	rg := (*TypedRef[OpenXRInterface])(r)
+	t := (*TypedRef[OpenXRInterface])(from)
+	rg.TypedRef((*TypedRef[OpenXRInterface])(t))
 }
 
 func (r *RefOpenXRInterfaceImpl) Unref() {
-	rg := (*typedRef[OpenXRInterface])(r)
+	rg := (*TypedRef[OpenXRInterface])(r)
 	rg.Unref()
 }
 
@@ -13696,31 +13696,31 @@ type RefOptimizedTranslation interface {
 	TypedPtr() OptimizedTranslation
 }
 
-type RefOptimizedTranslationImpl typedRef[OptimizedTranslation]
+type RefOptimizedTranslationImpl TypedRef[OptimizedTranslation]
 
 func (r *RefOptimizedTranslationImpl) Ptr() RefCounted {
-	rg := (*typedRef[OptimizedTranslation])(r)
+	rg := (*TypedRef[OptimizedTranslation])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefOptimizedTranslationImpl) TypedPtr() OptimizedTranslation {
-	rg := (*typedRef[OptimizedTranslation])(r)
+	rg := (*TypedRef[OptimizedTranslation])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefOptimizedTranslationImpl) Ref(from Ref) {
-	rg := (*typedRef[OptimizedTranslation])(r)
+	rg := (*TypedRef[OptimizedTranslation])(r)
 	rg.Ref(from)
 }
 
 func (r *RefOptimizedTranslationImpl) TypedRef(from *RefOptimizedTranslationImpl) {
-	rg := (*typedRef[OptimizedTranslation])(r)
-	t := (*typedRef[OptimizedTranslation])(from)
-	rg.TypedRef((*typedRef[OptimizedTranslation])(t))
+	rg := (*TypedRef[OptimizedTranslation])(r)
+	t := (*TypedRef[OptimizedTranslation])(from)
+	rg.TypedRef((*TypedRef[OptimizedTranslation])(t))
 }
 
 func (r *RefOptimizedTranslationImpl) Unref() {
-	rg := (*typedRef[OptimizedTranslation])(r)
+	rg := (*TypedRef[OptimizedTranslation])(r)
 	rg.Unref()
 }
 
@@ -13748,31 +13748,31 @@ type RefPCKPacker interface {
 	TypedPtr() PCKPacker
 }
 
-type RefPCKPackerImpl typedRef[PCKPacker]
+type RefPCKPackerImpl TypedRef[PCKPacker]
 
 func (r *RefPCKPackerImpl) Ptr() RefCounted {
-	rg := (*typedRef[PCKPacker])(r)
+	rg := (*TypedRef[PCKPacker])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPCKPackerImpl) TypedPtr() PCKPacker {
-	rg := (*typedRef[PCKPacker])(r)
+	rg := (*TypedRef[PCKPacker])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPCKPackerImpl) Ref(from Ref) {
-	rg := (*typedRef[PCKPacker])(r)
+	rg := (*TypedRef[PCKPacker])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPCKPackerImpl) TypedRef(from *RefPCKPackerImpl) {
-	rg := (*typedRef[PCKPacker])(r)
-	t := (*typedRef[PCKPacker])(from)
-	rg.TypedRef((*typedRef[PCKPacker])(t))
+	rg := (*TypedRef[PCKPacker])(r)
+	t := (*TypedRef[PCKPacker])(from)
+	rg.TypedRef((*TypedRef[PCKPacker])(t))
 }
 
 func (r *RefPCKPackerImpl) Unref() {
-	rg := (*typedRef[PCKPacker])(r)
+	rg := (*TypedRef[PCKPacker])(r)
 	rg.Unref()
 }
 
@@ -13800,31 +13800,31 @@ type RefPackedDataContainer interface {
 	TypedPtr() PackedDataContainer
 }
 
-type RefPackedDataContainerImpl typedRef[PackedDataContainer]
+type RefPackedDataContainerImpl TypedRef[PackedDataContainer]
 
 func (r *RefPackedDataContainerImpl) Ptr() RefCounted {
-	rg := (*typedRef[PackedDataContainer])(r)
+	rg := (*TypedRef[PackedDataContainer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPackedDataContainerImpl) TypedPtr() PackedDataContainer {
-	rg := (*typedRef[PackedDataContainer])(r)
+	rg := (*TypedRef[PackedDataContainer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPackedDataContainerImpl) Ref(from Ref) {
-	rg := (*typedRef[PackedDataContainer])(r)
+	rg := (*TypedRef[PackedDataContainer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPackedDataContainerImpl) TypedRef(from *RefPackedDataContainerImpl) {
-	rg := (*typedRef[PackedDataContainer])(r)
-	t := (*typedRef[PackedDataContainer])(from)
-	rg.TypedRef((*typedRef[PackedDataContainer])(t))
+	rg := (*TypedRef[PackedDataContainer])(r)
+	t := (*TypedRef[PackedDataContainer])(from)
+	rg.TypedRef((*TypedRef[PackedDataContainer])(t))
 }
 
 func (r *RefPackedDataContainerImpl) Unref() {
-	rg := (*typedRef[PackedDataContainer])(r)
+	rg := (*TypedRef[PackedDataContainer])(r)
 	rg.Unref()
 }
 
@@ -13852,31 +13852,31 @@ type RefPackedDataContainerRef interface {
 	TypedPtr() PackedDataContainerRef
 }
 
-type RefPackedDataContainerRefImpl typedRef[PackedDataContainerRef]
+type RefPackedDataContainerRefImpl TypedRef[PackedDataContainerRef]
 
 func (r *RefPackedDataContainerRefImpl) Ptr() RefCounted {
-	rg := (*typedRef[PackedDataContainerRef])(r)
+	rg := (*TypedRef[PackedDataContainerRef])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPackedDataContainerRefImpl) TypedPtr() PackedDataContainerRef {
-	rg := (*typedRef[PackedDataContainerRef])(r)
+	rg := (*TypedRef[PackedDataContainerRef])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPackedDataContainerRefImpl) Ref(from Ref) {
-	rg := (*typedRef[PackedDataContainerRef])(r)
+	rg := (*TypedRef[PackedDataContainerRef])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPackedDataContainerRefImpl) TypedRef(from *RefPackedDataContainerRefImpl) {
-	rg := (*typedRef[PackedDataContainerRef])(r)
-	t := (*typedRef[PackedDataContainerRef])(from)
-	rg.TypedRef((*typedRef[PackedDataContainerRef])(t))
+	rg := (*TypedRef[PackedDataContainerRef])(r)
+	t := (*TypedRef[PackedDataContainerRef])(from)
+	rg.TypedRef((*TypedRef[PackedDataContainerRef])(t))
 }
 
 func (r *RefPackedDataContainerRefImpl) Unref() {
-	rg := (*typedRef[PackedDataContainerRef])(r)
+	rg := (*TypedRef[PackedDataContainerRef])(r)
 	rg.Unref()
 }
 
@@ -13904,31 +13904,31 @@ type RefPackedScene interface {
 	TypedPtr() PackedScene
 }
 
-type RefPackedSceneImpl typedRef[PackedScene]
+type RefPackedSceneImpl TypedRef[PackedScene]
 
 func (r *RefPackedSceneImpl) Ptr() RefCounted {
-	rg := (*typedRef[PackedScene])(r)
+	rg := (*TypedRef[PackedScene])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPackedSceneImpl) TypedPtr() PackedScene {
-	rg := (*typedRef[PackedScene])(r)
+	rg := (*TypedRef[PackedScene])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPackedSceneImpl) Ref(from Ref) {
-	rg := (*typedRef[PackedScene])(r)
+	rg := (*TypedRef[PackedScene])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPackedSceneImpl) TypedRef(from *RefPackedSceneImpl) {
-	rg := (*typedRef[PackedScene])(r)
-	t := (*typedRef[PackedScene])(from)
-	rg.TypedRef((*typedRef[PackedScene])(t))
+	rg := (*TypedRef[PackedScene])(r)
+	t := (*TypedRef[PackedScene])(from)
+	rg.TypedRef((*TypedRef[PackedScene])(t))
 }
 
 func (r *RefPackedSceneImpl) Unref() {
-	rg := (*typedRef[PackedScene])(r)
+	rg := (*TypedRef[PackedScene])(r)
 	rg.Unref()
 }
 
@@ -13956,31 +13956,31 @@ type RefPacketPeer interface {
 	TypedPtr() PacketPeer
 }
 
-type RefPacketPeerImpl typedRef[PacketPeer]
+type RefPacketPeerImpl TypedRef[PacketPeer]
 
 func (r *RefPacketPeerImpl) Ptr() RefCounted {
-	rg := (*typedRef[PacketPeer])(r)
+	rg := (*TypedRef[PacketPeer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPacketPeerImpl) TypedPtr() PacketPeer {
-	rg := (*typedRef[PacketPeer])(r)
+	rg := (*TypedRef[PacketPeer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPacketPeerImpl) Ref(from Ref) {
-	rg := (*typedRef[PacketPeer])(r)
+	rg := (*TypedRef[PacketPeer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPacketPeerImpl) TypedRef(from *RefPacketPeerImpl) {
-	rg := (*typedRef[PacketPeer])(r)
-	t := (*typedRef[PacketPeer])(from)
-	rg.TypedRef((*typedRef[PacketPeer])(t))
+	rg := (*TypedRef[PacketPeer])(r)
+	t := (*TypedRef[PacketPeer])(from)
+	rg.TypedRef((*TypedRef[PacketPeer])(t))
 }
 
 func (r *RefPacketPeerImpl) Unref() {
-	rg := (*typedRef[PacketPeer])(r)
+	rg := (*TypedRef[PacketPeer])(r)
 	rg.Unref()
 }
 
@@ -14008,31 +14008,31 @@ type RefPacketPeerDTLS interface {
 	TypedPtr() PacketPeerDTLS
 }
 
-type RefPacketPeerDTLSImpl typedRef[PacketPeerDTLS]
+type RefPacketPeerDTLSImpl TypedRef[PacketPeerDTLS]
 
 func (r *RefPacketPeerDTLSImpl) Ptr() RefCounted {
-	rg := (*typedRef[PacketPeerDTLS])(r)
+	rg := (*TypedRef[PacketPeerDTLS])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPacketPeerDTLSImpl) TypedPtr() PacketPeerDTLS {
-	rg := (*typedRef[PacketPeerDTLS])(r)
+	rg := (*TypedRef[PacketPeerDTLS])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPacketPeerDTLSImpl) Ref(from Ref) {
-	rg := (*typedRef[PacketPeerDTLS])(r)
+	rg := (*TypedRef[PacketPeerDTLS])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPacketPeerDTLSImpl) TypedRef(from *RefPacketPeerDTLSImpl) {
-	rg := (*typedRef[PacketPeerDTLS])(r)
-	t := (*typedRef[PacketPeerDTLS])(from)
-	rg.TypedRef((*typedRef[PacketPeerDTLS])(t))
+	rg := (*TypedRef[PacketPeerDTLS])(r)
+	t := (*TypedRef[PacketPeerDTLS])(from)
+	rg.TypedRef((*TypedRef[PacketPeerDTLS])(t))
 }
 
 func (r *RefPacketPeerDTLSImpl) Unref() {
-	rg := (*typedRef[PacketPeerDTLS])(r)
+	rg := (*TypedRef[PacketPeerDTLS])(r)
 	rg.Unref()
 }
 
@@ -14060,31 +14060,31 @@ type RefPacketPeerExtension interface {
 	TypedPtr() PacketPeerExtension
 }
 
-type RefPacketPeerExtensionImpl typedRef[PacketPeerExtension]
+type RefPacketPeerExtensionImpl TypedRef[PacketPeerExtension]
 
 func (r *RefPacketPeerExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[PacketPeerExtension])(r)
+	rg := (*TypedRef[PacketPeerExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPacketPeerExtensionImpl) TypedPtr() PacketPeerExtension {
-	rg := (*typedRef[PacketPeerExtension])(r)
+	rg := (*TypedRef[PacketPeerExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPacketPeerExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[PacketPeerExtension])(r)
+	rg := (*TypedRef[PacketPeerExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPacketPeerExtensionImpl) TypedRef(from *RefPacketPeerExtensionImpl) {
-	rg := (*typedRef[PacketPeerExtension])(r)
-	t := (*typedRef[PacketPeerExtension])(from)
-	rg.TypedRef((*typedRef[PacketPeerExtension])(t))
+	rg := (*TypedRef[PacketPeerExtension])(r)
+	t := (*TypedRef[PacketPeerExtension])(from)
+	rg.TypedRef((*TypedRef[PacketPeerExtension])(t))
 }
 
 func (r *RefPacketPeerExtensionImpl) Unref() {
-	rg := (*typedRef[PacketPeerExtension])(r)
+	rg := (*TypedRef[PacketPeerExtension])(r)
 	rg.Unref()
 }
 
@@ -14112,31 +14112,31 @@ type RefPacketPeerStream interface {
 	TypedPtr() PacketPeerStream
 }
 
-type RefPacketPeerStreamImpl typedRef[PacketPeerStream]
+type RefPacketPeerStreamImpl TypedRef[PacketPeerStream]
 
 func (r *RefPacketPeerStreamImpl) Ptr() RefCounted {
-	rg := (*typedRef[PacketPeerStream])(r)
+	rg := (*TypedRef[PacketPeerStream])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPacketPeerStreamImpl) TypedPtr() PacketPeerStream {
-	rg := (*typedRef[PacketPeerStream])(r)
+	rg := (*TypedRef[PacketPeerStream])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPacketPeerStreamImpl) Ref(from Ref) {
-	rg := (*typedRef[PacketPeerStream])(r)
+	rg := (*TypedRef[PacketPeerStream])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPacketPeerStreamImpl) TypedRef(from *RefPacketPeerStreamImpl) {
-	rg := (*typedRef[PacketPeerStream])(r)
-	t := (*typedRef[PacketPeerStream])(from)
-	rg.TypedRef((*typedRef[PacketPeerStream])(t))
+	rg := (*TypedRef[PacketPeerStream])(r)
+	t := (*TypedRef[PacketPeerStream])(from)
+	rg.TypedRef((*TypedRef[PacketPeerStream])(t))
 }
 
 func (r *RefPacketPeerStreamImpl) Unref() {
-	rg := (*typedRef[PacketPeerStream])(r)
+	rg := (*TypedRef[PacketPeerStream])(r)
 	rg.Unref()
 }
 
@@ -14164,31 +14164,31 @@ type RefPacketPeerUDP interface {
 	TypedPtr() PacketPeerUDP
 }
 
-type RefPacketPeerUDPImpl typedRef[PacketPeerUDP]
+type RefPacketPeerUDPImpl TypedRef[PacketPeerUDP]
 
 func (r *RefPacketPeerUDPImpl) Ptr() RefCounted {
-	rg := (*typedRef[PacketPeerUDP])(r)
+	rg := (*TypedRef[PacketPeerUDP])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPacketPeerUDPImpl) TypedPtr() PacketPeerUDP {
-	rg := (*typedRef[PacketPeerUDP])(r)
+	rg := (*TypedRef[PacketPeerUDP])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPacketPeerUDPImpl) Ref(from Ref) {
-	rg := (*typedRef[PacketPeerUDP])(r)
+	rg := (*TypedRef[PacketPeerUDP])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPacketPeerUDPImpl) TypedRef(from *RefPacketPeerUDPImpl) {
-	rg := (*typedRef[PacketPeerUDP])(r)
-	t := (*typedRef[PacketPeerUDP])(from)
-	rg.TypedRef((*typedRef[PacketPeerUDP])(t))
+	rg := (*TypedRef[PacketPeerUDP])(r)
+	t := (*TypedRef[PacketPeerUDP])(from)
+	rg.TypedRef((*TypedRef[PacketPeerUDP])(t))
 }
 
 func (r *RefPacketPeerUDPImpl) Unref() {
-	rg := (*typedRef[PacketPeerUDP])(r)
+	rg := (*TypedRef[PacketPeerUDP])(r)
 	rg.Unref()
 }
 
@@ -14216,31 +14216,31 @@ type RefPanoramaSkyMaterial interface {
 	TypedPtr() PanoramaSkyMaterial
 }
 
-type RefPanoramaSkyMaterialImpl typedRef[PanoramaSkyMaterial]
+type RefPanoramaSkyMaterialImpl TypedRef[PanoramaSkyMaterial]
 
 func (r *RefPanoramaSkyMaterialImpl) Ptr() RefCounted {
-	rg := (*typedRef[PanoramaSkyMaterial])(r)
+	rg := (*TypedRef[PanoramaSkyMaterial])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPanoramaSkyMaterialImpl) TypedPtr() PanoramaSkyMaterial {
-	rg := (*typedRef[PanoramaSkyMaterial])(r)
+	rg := (*TypedRef[PanoramaSkyMaterial])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPanoramaSkyMaterialImpl) Ref(from Ref) {
-	rg := (*typedRef[PanoramaSkyMaterial])(r)
+	rg := (*TypedRef[PanoramaSkyMaterial])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPanoramaSkyMaterialImpl) TypedRef(from *RefPanoramaSkyMaterialImpl) {
-	rg := (*typedRef[PanoramaSkyMaterial])(r)
-	t := (*typedRef[PanoramaSkyMaterial])(from)
-	rg.TypedRef((*typedRef[PanoramaSkyMaterial])(t))
+	rg := (*TypedRef[PanoramaSkyMaterial])(r)
+	t := (*TypedRef[PanoramaSkyMaterial])(from)
+	rg.TypedRef((*TypedRef[PanoramaSkyMaterial])(t))
 }
 
 func (r *RefPanoramaSkyMaterialImpl) Unref() {
-	rg := (*typedRef[PanoramaSkyMaterial])(r)
+	rg := (*TypedRef[PanoramaSkyMaterial])(r)
 	rg.Unref()
 }
 
@@ -14268,31 +14268,31 @@ type RefParticleProcessMaterial interface {
 	TypedPtr() ParticleProcessMaterial
 }
 
-type RefParticleProcessMaterialImpl typedRef[ParticleProcessMaterial]
+type RefParticleProcessMaterialImpl TypedRef[ParticleProcessMaterial]
 
 func (r *RefParticleProcessMaterialImpl) Ptr() RefCounted {
-	rg := (*typedRef[ParticleProcessMaterial])(r)
+	rg := (*TypedRef[ParticleProcessMaterial])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefParticleProcessMaterialImpl) TypedPtr() ParticleProcessMaterial {
-	rg := (*typedRef[ParticleProcessMaterial])(r)
+	rg := (*TypedRef[ParticleProcessMaterial])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefParticleProcessMaterialImpl) Ref(from Ref) {
-	rg := (*typedRef[ParticleProcessMaterial])(r)
+	rg := (*TypedRef[ParticleProcessMaterial])(r)
 	rg.Ref(from)
 }
 
 func (r *RefParticleProcessMaterialImpl) TypedRef(from *RefParticleProcessMaterialImpl) {
-	rg := (*typedRef[ParticleProcessMaterial])(r)
-	t := (*typedRef[ParticleProcessMaterial])(from)
-	rg.TypedRef((*typedRef[ParticleProcessMaterial])(t))
+	rg := (*TypedRef[ParticleProcessMaterial])(r)
+	t := (*TypedRef[ParticleProcessMaterial])(from)
+	rg.TypedRef((*TypedRef[ParticleProcessMaterial])(t))
 }
 
 func (r *RefParticleProcessMaterialImpl) Unref() {
-	rg := (*typedRef[ParticleProcessMaterial])(r)
+	rg := (*TypedRef[ParticleProcessMaterial])(r)
 	rg.Unref()
 }
 
@@ -14320,31 +14320,31 @@ type RefPhysicalSkyMaterial interface {
 	TypedPtr() PhysicalSkyMaterial
 }
 
-type RefPhysicalSkyMaterialImpl typedRef[PhysicalSkyMaterial]
+type RefPhysicalSkyMaterialImpl TypedRef[PhysicalSkyMaterial]
 
 func (r *RefPhysicalSkyMaterialImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicalSkyMaterial])(r)
+	rg := (*TypedRef[PhysicalSkyMaterial])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicalSkyMaterialImpl) TypedPtr() PhysicalSkyMaterial {
-	rg := (*typedRef[PhysicalSkyMaterial])(r)
+	rg := (*TypedRef[PhysicalSkyMaterial])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicalSkyMaterialImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicalSkyMaterial])(r)
+	rg := (*TypedRef[PhysicalSkyMaterial])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicalSkyMaterialImpl) TypedRef(from *RefPhysicalSkyMaterialImpl) {
-	rg := (*typedRef[PhysicalSkyMaterial])(r)
-	t := (*typedRef[PhysicalSkyMaterial])(from)
-	rg.TypedRef((*typedRef[PhysicalSkyMaterial])(t))
+	rg := (*TypedRef[PhysicalSkyMaterial])(r)
+	t := (*TypedRef[PhysicalSkyMaterial])(from)
+	rg.TypedRef((*TypedRef[PhysicalSkyMaterial])(t))
 }
 
 func (r *RefPhysicalSkyMaterialImpl) Unref() {
-	rg := (*typedRef[PhysicalSkyMaterial])(r)
+	rg := (*TypedRef[PhysicalSkyMaterial])(r)
 	rg.Unref()
 }
 
@@ -14372,31 +14372,31 @@ type RefPhysicsMaterial interface {
 	TypedPtr() PhysicsMaterial
 }
 
-type RefPhysicsMaterialImpl typedRef[PhysicsMaterial]
+type RefPhysicsMaterialImpl TypedRef[PhysicsMaterial]
 
 func (r *RefPhysicsMaterialImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicsMaterial])(r)
+	rg := (*TypedRef[PhysicsMaterial])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicsMaterialImpl) TypedPtr() PhysicsMaterial {
-	rg := (*typedRef[PhysicsMaterial])(r)
+	rg := (*TypedRef[PhysicsMaterial])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicsMaterialImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicsMaterial])(r)
+	rg := (*TypedRef[PhysicsMaterial])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicsMaterialImpl) TypedRef(from *RefPhysicsMaterialImpl) {
-	rg := (*typedRef[PhysicsMaterial])(r)
-	t := (*typedRef[PhysicsMaterial])(from)
-	rg.TypedRef((*typedRef[PhysicsMaterial])(t))
+	rg := (*TypedRef[PhysicsMaterial])(r)
+	t := (*TypedRef[PhysicsMaterial])(from)
+	rg.TypedRef((*TypedRef[PhysicsMaterial])(t))
 }
 
 func (r *RefPhysicsMaterialImpl) Unref() {
-	rg := (*typedRef[PhysicsMaterial])(r)
+	rg := (*TypedRef[PhysicsMaterial])(r)
 	rg.Unref()
 }
 
@@ -14424,31 +14424,31 @@ type RefPhysicsPointQueryParameters2D interface {
 	TypedPtr() PhysicsPointQueryParameters2D
 }
 
-type RefPhysicsPointQueryParameters2DImpl typedRef[PhysicsPointQueryParameters2D]
+type RefPhysicsPointQueryParameters2DImpl TypedRef[PhysicsPointQueryParameters2D]
 
 func (r *RefPhysicsPointQueryParameters2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicsPointQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsPointQueryParameters2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicsPointQueryParameters2DImpl) TypedPtr() PhysicsPointQueryParameters2D {
-	rg := (*typedRef[PhysicsPointQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsPointQueryParameters2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicsPointQueryParameters2DImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicsPointQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsPointQueryParameters2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicsPointQueryParameters2DImpl) TypedRef(from *RefPhysicsPointQueryParameters2DImpl) {
-	rg := (*typedRef[PhysicsPointQueryParameters2D])(r)
-	t := (*typedRef[PhysicsPointQueryParameters2D])(from)
-	rg.TypedRef((*typedRef[PhysicsPointQueryParameters2D])(t))
+	rg := (*TypedRef[PhysicsPointQueryParameters2D])(r)
+	t := (*TypedRef[PhysicsPointQueryParameters2D])(from)
+	rg.TypedRef((*TypedRef[PhysicsPointQueryParameters2D])(t))
 }
 
 func (r *RefPhysicsPointQueryParameters2DImpl) Unref() {
-	rg := (*typedRef[PhysicsPointQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsPointQueryParameters2D])(r)
 	rg.Unref()
 }
 
@@ -14476,31 +14476,31 @@ type RefPhysicsPointQueryParameters3D interface {
 	TypedPtr() PhysicsPointQueryParameters3D
 }
 
-type RefPhysicsPointQueryParameters3DImpl typedRef[PhysicsPointQueryParameters3D]
+type RefPhysicsPointQueryParameters3DImpl TypedRef[PhysicsPointQueryParameters3D]
 
 func (r *RefPhysicsPointQueryParameters3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicsPointQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsPointQueryParameters3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicsPointQueryParameters3DImpl) TypedPtr() PhysicsPointQueryParameters3D {
-	rg := (*typedRef[PhysicsPointQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsPointQueryParameters3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicsPointQueryParameters3DImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicsPointQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsPointQueryParameters3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicsPointQueryParameters3DImpl) TypedRef(from *RefPhysicsPointQueryParameters3DImpl) {
-	rg := (*typedRef[PhysicsPointQueryParameters3D])(r)
-	t := (*typedRef[PhysicsPointQueryParameters3D])(from)
-	rg.TypedRef((*typedRef[PhysicsPointQueryParameters3D])(t))
+	rg := (*TypedRef[PhysicsPointQueryParameters3D])(r)
+	t := (*TypedRef[PhysicsPointQueryParameters3D])(from)
+	rg.TypedRef((*TypedRef[PhysicsPointQueryParameters3D])(t))
 }
 
 func (r *RefPhysicsPointQueryParameters3DImpl) Unref() {
-	rg := (*typedRef[PhysicsPointQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsPointQueryParameters3D])(r)
 	rg.Unref()
 }
 
@@ -14528,31 +14528,31 @@ type RefPhysicsRayQueryParameters2D interface {
 	TypedPtr() PhysicsRayQueryParameters2D
 }
 
-type RefPhysicsRayQueryParameters2DImpl typedRef[PhysicsRayQueryParameters2D]
+type RefPhysicsRayQueryParameters2DImpl TypedRef[PhysicsRayQueryParameters2D]
 
 func (r *RefPhysicsRayQueryParameters2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicsRayQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsRayQueryParameters2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicsRayQueryParameters2DImpl) TypedPtr() PhysicsRayQueryParameters2D {
-	rg := (*typedRef[PhysicsRayQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsRayQueryParameters2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicsRayQueryParameters2DImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicsRayQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsRayQueryParameters2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicsRayQueryParameters2DImpl) TypedRef(from *RefPhysicsRayQueryParameters2DImpl) {
-	rg := (*typedRef[PhysicsRayQueryParameters2D])(r)
-	t := (*typedRef[PhysicsRayQueryParameters2D])(from)
-	rg.TypedRef((*typedRef[PhysicsRayQueryParameters2D])(t))
+	rg := (*TypedRef[PhysicsRayQueryParameters2D])(r)
+	t := (*TypedRef[PhysicsRayQueryParameters2D])(from)
+	rg.TypedRef((*TypedRef[PhysicsRayQueryParameters2D])(t))
 }
 
 func (r *RefPhysicsRayQueryParameters2DImpl) Unref() {
-	rg := (*typedRef[PhysicsRayQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsRayQueryParameters2D])(r)
 	rg.Unref()
 }
 
@@ -14580,31 +14580,31 @@ type RefPhysicsRayQueryParameters3D interface {
 	TypedPtr() PhysicsRayQueryParameters3D
 }
 
-type RefPhysicsRayQueryParameters3DImpl typedRef[PhysicsRayQueryParameters3D]
+type RefPhysicsRayQueryParameters3DImpl TypedRef[PhysicsRayQueryParameters3D]
 
 func (r *RefPhysicsRayQueryParameters3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicsRayQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsRayQueryParameters3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicsRayQueryParameters3DImpl) TypedPtr() PhysicsRayQueryParameters3D {
-	rg := (*typedRef[PhysicsRayQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsRayQueryParameters3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicsRayQueryParameters3DImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicsRayQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsRayQueryParameters3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicsRayQueryParameters3DImpl) TypedRef(from *RefPhysicsRayQueryParameters3DImpl) {
-	rg := (*typedRef[PhysicsRayQueryParameters3D])(r)
-	t := (*typedRef[PhysicsRayQueryParameters3D])(from)
-	rg.TypedRef((*typedRef[PhysicsRayQueryParameters3D])(t))
+	rg := (*TypedRef[PhysicsRayQueryParameters3D])(r)
+	t := (*TypedRef[PhysicsRayQueryParameters3D])(from)
+	rg.TypedRef((*TypedRef[PhysicsRayQueryParameters3D])(t))
 }
 
 func (r *RefPhysicsRayQueryParameters3DImpl) Unref() {
-	rg := (*typedRef[PhysicsRayQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsRayQueryParameters3D])(r)
 	rg.Unref()
 }
 
@@ -14632,31 +14632,31 @@ type RefPhysicsShapeQueryParameters2D interface {
 	TypedPtr() PhysicsShapeQueryParameters2D
 }
 
-type RefPhysicsShapeQueryParameters2DImpl typedRef[PhysicsShapeQueryParameters2D]
+type RefPhysicsShapeQueryParameters2DImpl TypedRef[PhysicsShapeQueryParameters2D]
 
 func (r *RefPhysicsShapeQueryParameters2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicsShapeQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsShapeQueryParameters2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicsShapeQueryParameters2DImpl) TypedPtr() PhysicsShapeQueryParameters2D {
-	rg := (*typedRef[PhysicsShapeQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsShapeQueryParameters2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicsShapeQueryParameters2DImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicsShapeQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsShapeQueryParameters2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicsShapeQueryParameters2DImpl) TypedRef(from *RefPhysicsShapeQueryParameters2DImpl) {
-	rg := (*typedRef[PhysicsShapeQueryParameters2D])(r)
-	t := (*typedRef[PhysicsShapeQueryParameters2D])(from)
-	rg.TypedRef((*typedRef[PhysicsShapeQueryParameters2D])(t))
+	rg := (*TypedRef[PhysicsShapeQueryParameters2D])(r)
+	t := (*TypedRef[PhysicsShapeQueryParameters2D])(from)
+	rg.TypedRef((*TypedRef[PhysicsShapeQueryParameters2D])(t))
 }
 
 func (r *RefPhysicsShapeQueryParameters2DImpl) Unref() {
-	rg := (*typedRef[PhysicsShapeQueryParameters2D])(r)
+	rg := (*TypedRef[PhysicsShapeQueryParameters2D])(r)
 	rg.Unref()
 }
 
@@ -14684,31 +14684,31 @@ type RefPhysicsShapeQueryParameters3D interface {
 	TypedPtr() PhysicsShapeQueryParameters3D
 }
 
-type RefPhysicsShapeQueryParameters3DImpl typedRef[PhysicsShapeQueryParameters3D]
+type RefPhysicsShapeQueryParameters3DImpl TypedRef[PhysicsShapeQueryParameters3D]
 
 func (r *RefPhysicsShapeQueryParameters3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicsShapeQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsShapeQueryParameters3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicsShapeQueryParameters3DImpl) TypedPtr() PhysicsShapeQueryParameters3D {
-	rg := (*typedRef[PhysicsShapeQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsShapeQueryParameters3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicsShapeQueryParameters3DImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicsShapeQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsShapeQueryParameters3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicsShapeQueryParameters3DImpl) TypedRef(from *RefPhysicsShapeQueryParameters3DImpl) {
-	rg := (*typedRef[PhysicsShapeQueryParameters3D])(r)
-	t := (*typedRef[PhysicsShapeQueryParameters3D])(from)
-	rg.TypedRef((*typedRef[PhysicsShapeQueryParameters3D])(t))
+	rg := (*TypedRef[PhysicsShapeQueryParameters3D])(r)
+	t := (*TypedRef[PhysicsShapeQueryParameters3D])(from)
+	rg.TypedRef((*TypedRef[PhysicsShapeQueryParameters3D])(t))
 }
 
 func (r *RefPhysicsShapeQueryParameters3DImpl) Unref() {
-	rg := (*typedRef[PhysicsShapeQueryParameters3D])(r)
+	rg := (*TypedRef[PhysicsShapeQueryParameters3D])(r)
 	rg.Unref()
 }
 
@@ -14736,31 +14736,31 @@ type RefPhysicsTestMotionParameters2D interface {
 	TypedPtr() PhysicsTestMotionParameters2D
 }
 
-type RefPhysicsTestMotionParameters2DImpl typedRef[PhysicsTestMotionParameters2D]
+type RefPhysicsTestMotionParameters2DImpl TypedRef[PhysicsTestMotionParameters2D]
 
 func (r *RefPhysicsTestMotionParameters2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicsTestMotionParameters2D])(r)
+	rg := (*TypedRef[PhysicsTestMotionParameters2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicsTestMotionParameters2DImpl) TypedPtr() PhysicsTestMotionParameters2D {
-	rg := (*typedRef[PhysicsTestMotionParameters2D])(r)
+	rg := (*TypedRef[PhysicsTestMotionParameters2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicsTestMotionParameters2DImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicsTestMotionParameters2D])(r)
+	rg := (*TypedRef[PhysicsTestMotionParameters2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicsTestMotionParameters2DImpl) TypedRef(from *RefPhysicsTestMotionParameters2DImpl) {
-	rg := (*typedRef[PhysicsTestMotionParameters2D])(r)
-	t := (*typedRef[PhysicsTestMotionParameters2D])(from)
-	rg.TypedRef((*typedRef[PhysicsTestMotionParameters2D])(t))
+	rg := (*TypedRef[PhysicsTestMotionParameters2D])(r)
+	t := (*TypedRef[PhysicsTestMotionParameters2D])(from)
+	rg.TypedRef((*TypedRef[PhysicsTestMotionParameters2D])(t))
 }
 
 func (r *RefPhysicsTestMotionParameters2DImpl) Unref() {
-	rg := (*typedRef[PhysicsTestMotionParameters2D])(r)
+	rg := (*TypedRef[PhysicsTestMotionParameters2D])(r)
 	rg.Unref()
 }
 
@@ -14788,31 +14788,31 @@ type RefPhysicsTestMotionParameters3D interface {
 	TypedPtr() PhysicsTestMotionParameters3D
 }
 
-type RefPhysicsTestMotionParameters3DImpl typedRef[PhysicsTestMotionParameters3D]
+type RefPhysicsTestMotionParameters3DImpl TypedRef[PhysicsTestMotionParameters3D]
 
 func (r *RefPhysicsTestMotionParameters3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicsTestMotionParameters3D])(r)
+	rg := (*TypedRef[PhysicsTestMotionParameters3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicsTestMotionParameters3DImpl) TypedPtr() PhysicsTestMotionParameters3D {
-	rg := (*typedRef[PhysicsTestMotionParameters3D])(r)
+	rg := (*TypedRef[PhysicsTestMotionParameters3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicsTestMotionParameters3DImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicsTestMotionParameters3D])(r)
+	rg := (*TypedRef[PhysicsTestMotionParameters3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicsTestMotionParameters3DImpl) TypedRef(from *RefPhysicsTestMotionParameters3DImpl) {
-	rg := (*typedRef[PhysicsTestMotionParameters3D])(r)
-	t := (*typedRef[PhysicsTestMotionParameters3D])(from)
-	rg.TypedRef((*typedRef[PhysicsTestMotionParameters3D])(t))
+	rg := (*TypedRef[PhysicsTestMotionParameters3D])(r)
+	t := (*TypedRef[PhysicsTestMotionParameters3D])(from)
+	rg.TypedRef((*TypedRef[PhysicsTestMotionParameters3D])(t))
 }
 
 func (r *RefPhysicsTestMotionParameters3DImpl) Unref() {
-	rg := (*typedRef[PhysicsTestMotionParameters3D])(r)
+	rg := (*TypedRef[PhysicsTestMotionParameters3D])(r)
 	rg.Unref()
 }
 
@@ -14840,31 +14840,31 @@ type RefPhysicsTestMotionResult2D interface {
 	TypedPtr() PhysicsTestMotionResult2D
 }
 
-type RefPhysicsTestMotionResult2DImpl typedRef[PhysicsTestMotionResult2D]
+type RefPhysicsTestMotionResult2DImpl TypedRef[PhysicsTestMotionResult2D]
 
 func (r *RefPhysicsTestMotionResult2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicsTestMotionResult2D])(r)
+	rg := (*TypedRef[PhysicsTestMotionResult2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicsTestMotionResult2DImpl) TypedPtr() PhysicsTestMotionResult2D {
-	rg := (*typedRef[PhysicsTestMotionResult2D])(r)
+	rg := (*TypedRef[PhysicsTestMotionResult2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicsTestMotionResult2DImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicsTestMotionResult2D])(r)
+	rg := (*TypedRef[PhysicsTestMotionResult2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicsTestMotionResult2DImpl) TypedRef(from *RefPhysicsTestMotionResult2DImpl) {
-	rg := (*typedRef[PhysicsTestMotionResult2D])(r)
-	t := (*typedRef[PhysicsTestMotionResult2D])(from)
-	rg.TypedRef((*typedRef[PhysicsTestMotionResult2D])(t))
+	rg := (*TypedRef[PhysicsTestMotionResult2D])(r)
+	t := (*TypedRef[PhysicsTestMotionResult2D])(from)
+	rg.TypedRef((*TypedRef[PhysicsTestMotionResult2D])(t))
 }
 
 func (r *RefPhysicsTestMotionResult2DImpl) Unref() {
-	rg := (*typedRef[PhysicsTestMotionResult2D])(r)
+	rg := (*TypedRef[PhysicsTestMotionResult2D])(r)
 	rg.Unref()
 }
 
@@ -14892,31 +14892,31 @@ type RefPhysicsTestMotionResult3D interface {
 	TypedPtr() PhysicsTestMotionResult3D
 }
 
-type RefPhysicsTestMotionResult3DImpl typedRef[PhysicsTestMotionResult3D]
+type RefPhysicsTestMotionResult3DImpl TypedRef[PhysicsTestMotionResult3D]
 
 func (r *RefPhysicsTestMotionResult3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PhysicsTestMotionResult3D])(r)
+	rg := (*TypedRef[PhysicsTestMotionResult3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPhysicsTestMotionResult3DImpl) TypedPtr() PhysicsTestMotionResult3D {
-	rg := (*typedRef[PhysicsTestMotionResult3D])(r)
+	rg := (*TypedRef[PhysicsTestMotionResult3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPhysicsTestMotionResult3DImpl) Ref(from Ref) {
-	rg := (*typedRef[PhysicsTestMotionResult3D])(r)
+	rg := (*TypedRef[PhysicsTestMotionResult3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPhysicsTestMotionResult3DImpl) TypedRef(from *RefPhysicsTestMotionResult3DImpl) {
-	rg := (*typedRef[PhysicsTestMotionResult3D])(r)
-	t := (*typedRef[PhysicsTestMotionResult3D])(from)
-	rg.TypedRef((*typedRef[PhysicsTestMotionResult3D])(t))
+	rg := (*TypedRef[PhysicsTestMotionResult3D])(r)
+	t := (*TypedRef[PhysicsTestMotionResult3D])(from)
+	rg.TypedRef((*TypedRef[PhysicsTestMotionResult3D])(t))
 }
 
 func (r *RefPhysicsTestMotionResult3DImpl) Unref() {
-	rg := (*typedRef[PhysicsTestMotionResult3D])(r)
+	rg := (*TypedRef[PhysicsTestMotionResult3D])(r)
 	rg.Unref()
 }
 
@@ -14944,31 +14944,31 @@ type RefPlaceholderCubemap interface {
 	TypedPtr() PlaceholderCubemap
 }
 
-type RefPlaceholderCubemapImpl typedRef[PlaceholderCubemap]
+type RefPlaceholderCubemapImpl TypedRef[PlaceholderCubemap]
 
 func (r *RefPlaceholderCubemapImpl) Ptr() RefCounted {
-	rg := (*typedRef[PlaceholderCubemap])(r)
+	rg := (*TypedRef[PlaceholderCubemap])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPlaceholderCubemapImpl) TypedPtr() PlaceholderCubemap {
-	rg := (*typedRef[PlaceholderCubemap])(r)
+	rg := (*TypedRef[PlaceholderCubemap])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPlaceholderCubemapImpl) Ref(from Ref) {
-	rg := (*typedRef[PlaceholderCubemap])(r)
+	rg := (*TypedRef[PlaceholderCubemap])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPlaceholderCubemapImpl) TypedRef(from *RefPlaceholderCubemapImpl) {
-	rg := (*typedRef[PlaceholderCubemap])(r)
-	t := (*typedRef[PlaceholderCubemap])(from)
-	rg.TypedRef((*typedRef[PlaceholderCubemap])(t))
+	rg := (*TypedRef[PlaceholderCubemap])(r)
+	t := (*TypedRef[PlaceholderCubemap])(from)
+	rg.TypedRef((*TypedRef[PlaceholderCubemap])(t))
 }
 
 func (r *RefPlaceholderCubemapImpl) Unref() {
-	rg := (*typedRef[PlaceholderCubemap])(r)
+	rg := (*TypedRef[PlaceholderCubemap])(r)
 	rg.Unref()
 }
 
@@ -14996,31 +14996,31 @@ type RefPlaceholderCubemapArray interface {
 	TypedPtr() PlaceholderCubemapArray
 }
 
-type RefPlaceholderCubemapArrayImpl typedRef[PlaceholderCubemapArray]
+type RefPlaceholderCubemapArrayImpl TypedRef[PlaceholderCubemapArray]
 
 func (r *RefPlaceholderCubemapArrayImpl) Ptr() RefCounted {
-	rg := (*typedRef[PlaceholderCubemapArray])(r)
+	rg := (*TypedRef[PlaceholderCubemapArray])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPlaceholderCubemapArrayImpl) TypedPtr() PlaceholderCubemapArray {
-	rg := (*typedRef[PlaceholderCubemapArray])(r)
+	rg := (*TypedRef[PlaceholderCubemapArray])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPlaceholderCubemapArrayImpl) Ref(from Ref) {
-	rg := (*typedRef[PlaceholderCubemapArray])(r)
+	rg := (*TypedRef[PlaceholderCubemapArray])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPlaceholderCubemapArrayImpl) TypedRef(from *RefPlaceholderCubemapArrayImpl) {
-	rg := (*typedRef[PlaceholderCubemapArray])(r)
-	t := (*typedRef[PlaceholderCubemapArray])(from)
-	rg.TypedRef((*typedRef[PlaceholderCubemapArray])(t))
+	rg := (*TypedRef[PlaceholderCubemapArray])(r)
+	t := (*TypedRef[PlaceholderCubemapArray])(from)
+	rg.TypedRef((*TypedRef[PlaceholderCubemapArray])(t))
 }
 
 func (r *RefPlaceholderCubemapArrayImpl) Unref() {
-	rg := (*typedRef[PlaceholderCubemapArray])(r)
+	rg := (*TypedRef[PlaceholderCubemapArray])(r)
 	rg.Unref()
 }
 
@@ -15048,31 +15048,31 @@ type RefPlaceholderMaterial interface {
 	TypedPtr() PlaceholderMaterial
 }
 
-type RefPlaceholderMaterialImpl typedRef[PlaceholderMaterial]
+type RefPlaceholderMaterialImpl TypedRef[PlaceholderMaterial]
 
 func (r *RefPlaceholderMaterialImpl) Ptr() RefCounted {
-	rg := (*typedRef[PlaceholderMaterial])(r)
+	rg := (*TypedRef[PlaceholderMaterial])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPlaceholderMaterialImpl) TypedPtr() PlaceholderMaterial {
-	rg := (*typedRef[PlaceholderMaterial])(r)
+	rg := (*TypedRef[PlaceholderMaterial])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPlaceholderMaterialImpl) Ref(from Ref) {
-	rg := (*typedRef[PlaceholderMaterial])(r)
+	rg := (*TypedRef[PlaceholderMaterial])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPlaceholderMaterialImpl) TypedRef(from *RefPlaceholderMaterialImpl) {
-	rg := (*typedRef[PlaceholderMaterial])(r)
-	t := (*typedRef[PlaceholderMaterial])(from)
-	rg.TypedRef((*typedRef[PlaceholderMaterial])(t))
+	rg := (*TypedRef[PlaceholderMaterial])(r)
+	t := (*TypedRef[PlaceholderMaterial])(from)
+	rg.TypedRef((*TypedRef[PlaceholderMaterial])(t))
 }
 
 func (r *RefPlaceholderMaterialImpl) Unref() {
-	rg := (*typedRef[PlaceholderMaterial])(r)
+	rg := (*TypedRef[PlaceholderMaterial])(r)
 	rg.Unref()
 }
 
@@ -15100,31 +15100,31 @@ type RefPlaceholderMesh interface {
 	TypedPtr() PlaceholderMesh
 }
 
-type RefPlaceholderMeshImpl typedRef[PlaceholderMesh]
+type RefPlaceholderMeshImpl TypedRef[PlaceholderMesh]
 
 func (r *RefPlaceholderMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[PlaceholderMesh])(r)
+	rg := (*TypedRef[PlaceholderMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPlaceholderMeshImpl) TypedPtr() PlaceholderMesh {
-	rg := (*typedRef[PlaceholderMesh])(r)
+	rg := (*TypedRef[PlaceholderMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPlaceholderMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[PlaceholderMesh])(r)
+	rg := (*TypedRef[PlaceholderMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPlaceholderMeshImpl) TypedRef(from *RefPlaceholderMeshImpl) {
-	rg := (*typedRef[PlaceholderMesh])(r)
-	t := (*typedRef[PlaceholderMesh])(from)
-	rg.TypedRef((*typedRef[PlaceholderMesh])(t))
+	rg := (*TypedRef[PlaceholderMesh])(r)
+	t := (*TypedRef[PlaceholderMesh])(from)
+	rg.TypedRef((*TypedRef[PlaceholderMesh])(t))
 }
 
 func (r *RefPlaceholderMeshImpl) Unref() {
-	rg := (*typedRef[PlaceholderMesh])(r)
+	rg := (*TypedRef[PlaceholderMesh])(r)
 	rg.Unref()
 }
 
@@ -15152,31 +15152,31 @@ type RefPlaceholderTexture2D interface {
 	TypedPtr() PlaceholderTexture2D
 }
 
-type RefPlaceholderTexture2DImpl typedRef[PlaceholderTexture2D]
+type RefPlaceholderTexture2DImpl TypedRef[PlaceholderTexture2D]
 
 func (r *RefPlaceholderTexture2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PlaceholderTexture2D])(r)
+	rg := (*TypedRef[PlaceholderTexture2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPlaceholderTexture2DImpl) TypedPtr() PlaceholderTexture2D {
-	rg := (*typedRef[PlaceholderTexture2D])(r)
+	rg := (*TypedRef[PlaceholderTexture2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPlaceholderTexture2DImpl) Ref(from Ref) {
-	rg := (*typedRef[PlaceholderTexture2D])(r)
+	rg := (*TypedRef[PlaceholderTexture2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPlaceholderTexture2DImpl) TypedRef(from *RefPlaceholderTexture2DImpl) {
-	rg := (*typedRef[PlaceholderTexture2D])(r)
-	t := (*typedRef[PlaceholderTexture2D])(from)
-	rg.TypedRef((*typedRef[PlaceholderTexture2D])(t))
+	rg := (*TypedRef[PlaceholderTexture2D])(r)
+	t := (*TypedRef[PlaceholderTexture2D])(from)
+	rg.TypedRef((*TypedRef[PlaceholderTexture2D])(t))
 }
 
 func (r *RefPlaceholderTexture2DImpl) Unref() {
-	rg := (*typedRef[PlaceholderTexture2D])(r)
+	rg := (*TypedRef[PlaceholderTexture2D])(r)
 	rg.Unref()
 }
 
@@ -15204,31 +15204,31 @@ type RefPlaceholderTexture2DArray interface {
 	TypedPtr() PlaceholderTexture2DArray
 }
 
-type RefPlaceholderTexture2DArrayImpl typedRef[PlaceholderTexture2DArray]
+type RefPlaceholderTexture2DArrayImpl TypedRef[PlaceholderTexture2DArray]
 
 func (r *RefPlaceholderTexture2DArrayImpl) Ptr() RefCounted {
-	rg := (*typedRef[PlaceholderTexture2DArray])(r)
+	rg := (*TypedRef[PlaceholderTexture2DArray])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPlaceholderTexture2DArrayImpl) TypedPtr() PlaceholderTexture2DArray {
-	rg := (*typedRef[PlaceholderTexture2DArray])(r)
+	rg := (*TypedRef[PlaceholderTexture2DArray])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPlaceholderTexture2DArrayImpl) Ref(from Ref) {
-	rg := (*typedRef[PlaceholderTexture2DArray])(r)
+	rg := (*TypedRef[PlaceholderTexture2DArray])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPlaceholderTexture2DArrayImpl) TypedRef(from *RefPlaceholderTexture2DArrayImpl) {
-	rg := (*typedRef[PlaceholderTexture2DArray])(r)
-	t := (*typedRef[PlaceholderTexture2DArray])(from)
-	rg.TypedRef((*typedRef[PlaceholderTexture2DArray])(t))
+	rg := (*TypedRef[PlaceholderTexture2DArray])(r)
+	t := (*TypedRef[PlaceholderTexture2DArray])(from)
+	rg.TypedRef((*TypedRef[PlaceholderTexture2DArray])(t))
 }
 
 func (r *RefPlaceholderTexture2DArrayImpl) Unref() {
-	rg := (*typedRef[PlaceholderTexture2DArray])(r)
+	rg := (*TypedRef[PlaceholderTexture2DArray])(r)
 	rg.Unref()
 }
 
@@ -15256,31 +15256,31 @@ type RefPlaceholderTexture3D interface {
 	TypedPtr() PlaceholderTexture3D
 }
 
-type RefPlaceholderTexture3DImpl typedRef[PlaceholderTexture3D]
+type RefPlaceholderTexture3DImpl TypedRef[PlaceholderTexture3D]
 
 func (r *RefPlaceholderTexture3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PlaceholderTexture3D])(r)
+	rg := (*TypedRef[PlaceholderTexture3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPlaceholderTexture3DImpl) TypedPtr() PlaceholderTexture3D {
-	rg := (*typedRef[PlaceholderTexture3D])(r)
+	rg := (*TypedRef[PlaceholderTexture3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPlaceholderTexture3DImpl) Ref(from Ref) {
-	rg := (*typedRef[PlaceholderTexture3D])(r)
+	rg := (*TypedRef[PlaceholderTexture3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPlaceholderTexture3DImpl) TypedRef(from *RefPlaceholderTexture3DImpl) {
-	rg := (*typedRef[PlaceholderTexture3D])(r)
-	t := (*typedRef[PlaceholderTexture3D])(from)
-	rg.TypedRef((*typedRef[PlaceholderTexture3D])(t))
+	rg := (*TypedRef[PlaceholderTexture3D])(r)
+	t := (*TypedRef[PlaceholderTexture3D])(from)
+	rg.TypedRef((*TypedRef[PlaceholderTexture3D])(t))
 }
 
 func (r *RefPlaceholderTexture3DImpl) Unref() {
-	rg := (*typedRef[PlaceholderTexture3D])(r)
+	rg := (*TypedRef[PlaceholderTexture3D])(r)
 	rg.Unref()
 }
 
@@ -15308,31 +15308,31 @@ type RefPlaceholderTextureLayered interface {
 	TypedPtr() PlaceholderTextureLayered
 }
 
-type RefPlaceholderTextureLayeredImpl typedRef[PlaceholderTextureLayered]
+type RefPlaceholderTextureLayeredImpl TypedRef[PlaceholderTextureLayered]
 
 func (r *RefPlaceholderTextureLayeredImpl) Ptr() RefCounted {
-	rg := (*typedRef[PlaceholderTextureLayered])(r)
+	rg := (*TypedRef[PlaceholderTextureLayered])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPlaceholderTextureLayeredImpl) TypedPtr() PlaceholderTextureLayered {
-	rg := (*typedRef[PlaceholderTextureLayered])(r)
+	rg := (*TypedRef[PlaceholderTextureLayered])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPlaceholderTextureLayeredImpl) Ref(from Ref) {
-	rg := (*typedRef[PlaceholderTextureLayered])(r)
+	rg := (*TypedRef[PlaceholderTextureLayered])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPlaceholderTextureLayeredImpl) TypedRef(from *RefPlaceholderTextureLayeredImpl) {
-	rg := (*typedRef[PlaceholderTextureLayered])(r)
-	t := (*typedRef[PlaceholderTextureLayered])(from)
-	rg.TypedRef((*typedRef[PlaceholderTextureLayered])(t))
+	rg := (*TypedRef[PlaceholderTextureLayered])(r)
+	t := (*TypedRef[PlaceholderTextureLayered])(from)
+	rg.TypedRef((*TypedRef[PlaceholderTextureLayered])(t))
 }
 
 func (r *RefPlaceholderTextureLayeredImpl) Unref() {
-	rg := (*typedRef[PlaceholderTextureLayered])(r)
+	rg := (*TypedRef[PlaceholderTextureLayered])(r)
 	rg.Unref()
 }
 
@@ -15360,31 +15360,31 @@ type RefPlaneMesh interface {
 	TypedPtr() PlaneMesh
 }
 
-type RefPlaneMeshImpl typedRef[PlaneMesh]
+type RefPlaneMeshImpl TypedRef[PlaneMesh]
 
 func (r *RefPlaneMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[PlaneMesh])(r)
+	rg := (*TypedRef[PlaneMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPlaneMeshImpl) TypedPtr() PlaneMesh {
-	rg := (*typedRef[PlaneMesh])(r)
+	rg := (*TypedRef[PlaneMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPlaneMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[PlaneMesh])(r)
+	rg := (*TypedRef[PlaneMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPlaneMeshImpl) TypedRef(from *RefPlaneMeshImpl) {
-	rg := (*typedRef[PlaneMesh])(r)
-	t := (*typedRef[PlaneMesh])(from)
-	rg.TypedRef((*typedRef[PlaneMesh])(t))
+	rg := (*TypedRef[PlaneMesh])(r)
+	t := (*TypedRef[PlaneMesh])(from)
+	rg.TypedRef((*TypedRef[PlaneMesh])(t))
 }
 
 func (r *RefPlaneMeshImpl) Unref() {
-	rg := (*typedRef[PlaneMesh])(r)
+	rg := (*TypedRef[PlaneMesh])(r)
 	rg.Unref()
 }
 
@@ -15412,31 +15412,31 @@ type RefPointMesh interface {
 	TypedPtr() PointMesh
 }
 
-type RefPointMeshImpl typedRef[PointMesh]
+type RefPointMeshImpl TypedRef[PointMesh]
 
 func (r *RefPointMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[PointMesh])(r)
+	rg := (*TypedRef[PointMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPointMeshImpl) TypedPtr() PointMesh {
-	rg := (*typedRef[PointMesh])(r)
+	rg := (*TypedRef[PointMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPointMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[PointMesh])(r)
+	rg := (*TypedRef[PointMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPointMeshImpl) TypedRef(from *RefPointMeshImpl) {
-	rg := (*typedRef[PointMesh])(r)
-	t := (*typedRef[PointMesh])(from)
-	rg.TypedRef((*typedRef[PointMesh])(t))
+	rg := (*TypedRef[PointMesh])(r)
+	t := (*TypedRef[PointMesh])(from)
+	rg.TypedRef((*TypedRef[PointMesh])(t))
 }
 
 func (r *RefPointMeshImpl) Unref() {
-	rg := (*typedRef[PointMesh])(r)
+	rg := (*TypedRef[PointMesh])(r)
 	rg.Unref()
 }
 
@@ -15464,31 +15464,31 @@ type RefPolygonOccluder3D interface {
 	TypedPtr() PolygonOccluder3D
 }
 
-type RefPolygonOccluder3DImpl typedRef[PolygonOccluder3D]
+type RefPolygonOccluder3DImpl TypedRef[PolygonOccluder3D]
 
 func (r *RefPolygonOccluder3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PolygonOccluder3D])(r)
+	rg := (*TypedRef[PolygonOccluder3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPolygonOccluder3DImpl) TypedPtr() PolygonOccluder3D {
-	rg := (*typedRef[PolygonOccluder3D])(r)
+	rg := (*TypedRef[PolygonOccluder3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPolygonOccluder3DImpl) Ref(from Ref) {
-	rg := (*typedRef[PolygonOccluder3D])(r)
+	rg := (*TypedRef[PolygonOccluder3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPolygonOccluder3DImpl) TypedRef(from *RefPolygonOccluder3DImpl) {
-	rg := (*typedRef[PolygonOccluder3D])(r)
-	t := (*typedRef[PolygonOccluder3D])(from)
-	rg.TypedRef((*typedRef[PolygonOccluder3D])(t))
+	rg := (*TypedRef[PolygonOccluder3D])(r)
+	t := (*TypedRef[PolygonOccluder3D])(from)
+	rg.TypedRef((*TypedRef[PolygonOccluder3D])(t))
 }
 
 func (r *RefPolygonOccluder3DImpl) Unref() {
-	rg := (*typedRef[PolygonOccluder3D])(r)
+	rg := (*TypedRef[PolygonOccluder3D])(r)
 	rg.Unref()
 }
 
@@ -15516,31 +15516,31 @@ type RefPolygonPathFinder interface {
 	TypedPtr() PolygonPathFinder
 }
 
-type RefPolygonPathFinderImpl typedRef[PolygonPathFinder]
+type RefPolygonPathFinderImpl TypedRef[PolygonPathFinder]
 
 func (r *RefPolygonPathFinderImpl) Ptr() RefCounted {
-	rg := (*typedRef[PolygonPathFinder])(r)
+	rg := (*TypedRef[PolygonPathFinder])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPolygonPathFinderImpl) TypedPtr() PolygonPathFinder {
-	rg := (*typedRef[PolygonPathFinder])(r)
+	rg := (*TypedRef[PolygonPathFinder])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPolygonPathFinderImpl) Ref(from Ref) {
-	rg := (*typedRef[PolygonPathFinder])(r)
+	rg := (*TypedRef[PolygonPathFinder])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPolygonPathFinderImpl) TypedRef(from *RefPolygonPathFinderImpl) {
-	rg := (*typedRef[PolygonPathFinder])(r)
-	t := (*typedRef[PolygonPathFinder])(from)
-	rg.TypedRef((*typedRef[PolygonPathFinder])(t))
+	rg := (*TypedRef[PolygonPathFinder])(r)
+	t := (*TypedRef[PolygonPathFinder])(from)
+	rg.TypedRef((*TypedRef[PolygonPathFinder])(t))
 }
 
 func (r *RefPolygonPathFinderImpl) Unref() {
-	rg := (*typedRef[PolygonPathFinder])(r)
+	rg := (*TypedRef[PolygonPathFinder])(r)
 	rg.Unref()
 }
 
@@ -15568,31 +15568,31 @@ type RefPortableCompressedTexture2D interface {
 	TypedPtr() PortableCompressedTexture2D
 }
 
-type RefPortableCompressedTexture2DImpl typedRef[PortableCompressedTexture2D]
+type RefPortableCompressedTexture2DImpl TypedRef[PortableCompressedTexture2D]
 
 func (r *RefPortableCompressedTexture2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[PortableCompressedTexture2D])(r)
+	rg := (*TypedRef[PortableCompressedTexture2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPortableCompressedTexture2DImpl) TypedPtr() PortableCompressedTexture2D {
-	rg := (*typedRef[PortableCompressedTexture2D])(r)
+	rg := (*TypedRef[PortableCompressedTexture2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPortableCompressedTexture2DImpl) Ref(from Ref) {
-	rg := (*typedRef[PortableCompressedTexture2D])(r)
+	rg := (*TypedRef[PortableCompressedTexture2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPortableCompressedTexture2DImpl) TypedRef(from *RefPortableCompressedTexture2DImpl) {
-	rg := (*typedRef[PortableCompressedTexture2D])(r)
-	t := (*typedRef[PortableCompressedTexture2D])(from)
-	rg.TypedRef((*typedRef[PortableCompressedTexture2D])(t))
+	rg := (*TypedRef[PortableCompressedTexture2D])(r)
+	t := (*TypedRef[PortableCompressedTexture2D])(from)
+	rg.TypedRef((*TypedRef[PortableCompressedTexture2D])(t))
 }
 
 func (r *RefPortableCompressedTexture2DImpl) Unref() {
-	rg := (*typedRef[PortableCompressedTexture2D])(r)
+	rg := (*TypedRef[PortableCompressedTexture2D])(r)
 	rg.Unref()
 }
 
@@ -15620,31 +15620,31 @@ type RefPrimitiveMesh interface {
 	TypedPtr() PrimitiveMesh
 }
 
-type RefPrimitiveMeshImpl typedRef[PrimitiveMesh]
+type RefPrimitiveMeshImpl TypedRef[PrimitiveMesh]
 
 func (r *RefPrimitiveMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[PrimitiveMesh])(r)
+	rg := (*TypedRef[PrimitiveMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPrimitiveMeshImpl) TypedPtr() PrimitiveMesh {
-	rg := (*typedRef[PrimitiveMesh])(r)
+	rg := (*TypedRef[PrimitiveMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPrimitiveMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[PrimitiveMesh])(r)
+	rg := (*TypedRef[PrimitiveMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPrimitiveMeshImpl) TypedRef(from *RefPrimitiveMeshImpl) {
-	rg := (*typedRef[PrimitiveMesh])(r)
-	t := (*typedRef[PrimitiveMesh])(from)
-	rg.TypedRef((*typedRef[PrimitiveMesh])(t))
+	rg := (*TypedRef[PrimitiveMesh])(r)
+	t := (*TypedRef[PrimitiveMesh])(from)
+	rg.TypedRef((*TypedRef[PrimitiveMesh])(t))
 }
 
 func (r *RefPrimitiveMeshImpl) Unref() {
-	rg := (*typedRef[PrimitiveMesh])(r)
+	rg := (*TypedRef[PrimitiveMesh])(r)
 	rg.Unref()
 }
 
@@ -15672,31 +15672,31 @@ type RefPrismMesh interface {
 	TypedPtr() PrismMesh
 }
 
-type RefPrismMeshImpl typedRef[PrismMesh]
+type RefPrismMeshImpl TypedRef[PrismMesh]
 
 func (r *RefPrismMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[PrismMesh])(r)
+	rg := (*TypedRef[PrismMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPrismMeshImpl) TypedPtr() PrismMesh {
-	rg := (*typedRef[PrismMesh])(r)
+	rg := (*TypedRef[PrismMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPrismMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[PrismMesh])(r)
+	rg := (*TypedRef[PrismMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPrismMeshImpl) TypedRef(from *RefPrismMeshImpl) {
-	rg := (*typedRef[PrismMesh])(r)
-	t := (*typedRef[PrismMesh])(from)
-	rg.TypedRef((*typedRef[PrismMesh])(t))
+	rg := (*TypedRef[PrismMesh])(r)
+	t := (*TypedRef[PrismMesh])(from)
+	rg.TypedRef((*TypedRef[PrismMesh])(t))
 }
 
 func (r *RefPrismMeshImpl) Unref() {
-	rg := (*typedRef[PrismMesh])(r)
+	rg := (*TypedRef[PrismMesh])(r)
 	rg.Unref()
 }
 
@@ -15724,31 +15724,31 @@ type RefProceduralSkyMaterial interface {
 	TypedPtr() ProceduralSkyMaterial
 }
 
-type RefProceduralSkyMaterialImpl typedRef[ProceduralSkyMaterial]
+type RefProceduralSkyMaterialImpl TypedRef[ProceduralSkyMaterial]
 
 func (r *RefProceduralSkyMaterialImpl) Ptr() RefCounted {
-	rg := (*typedRef[ProceduralSkyMaterial])(r)
+	rg := (*TypedRef[ProceduralSkyMaterial])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefProceduralSkyMaterialImpl) TypedPtr() ProceduralSkyMaterial {
-	rg := (*typedRef[ProceduralSkyMaterial])(r)
+	rg := (*TypedRef[ProceduralSkyMaterial])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefProceduralSkyMaterialImpl) Ref(from Ref) {
-	rg := (*typedRef[ProceduralSkyMaterial])(r)
+	rg := (*TypedRef[ProceduralSkyMaterial])(r)
 	rg.Ref(from)
 }
 
 func (r *RefProceduralSkyMaterialImpl) TypedRef(from *RefProceduralSkyMaterialImpl) {
-	rg := (*typedRef[ProceduralSkyMaterial])(r)
-	t := (*typedRef[ProceduralSkyMaterial])(from)
-	rg.TypedRef((*typedRef[ProceduralSkyMaterial])(t))
+	rg := (*TypedRef[ProceduralSkyMaterial])(r)
+	t := (*TypedRef[ProceduralSkyMaterial])(from)
+	rg.TypedRef((*TypedRef[ProceduralSkyMaterial])(t))
 }
 
 func (r *RefProceduralSkyMaterialImpl) Unref() {
-	rg := (*typedRef[ProceduralSkyMaterial])(r)
+	rg := (*TypedRef[ProceduralSkyMaterial])(r)
 	rg.Unref()
 }
 
@@ -15776,31 +15776,31 @@ type RefPropertyTweener interface {
 	TypedPtr() PropertyTweener
 }
 
-type RefPropertyTweenerImpl typedRef[PropertyTweener]
+type RefPropertyTweenerImpl TypedRef[PropertyTweener]
 
 func (r *RefPropertyTweenerImpl) Ptr() RefCounted {
-	rg := (*typedRef[PropertyTweener])(r)
+	rg := (*TypedRef[PropertyTweener])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefPropertyTweenerImpl) TypedPtr() PropertyTweener {
-	rg := (*typedRef[PropertyTweener])(r)
+	rg := (*TypedRef[PropertyTweener])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefPropertyTweenerImpl) Ref(from Ref) {
-	rg := (*typedRef[PropertyTweener])(r)
+	rg := (*TypedRef[PropertyTweener])(r)
 	rg.Ref(from)
 }
 
 func (r *RefPropertyTweenerImpl) TypedRef(from *RefPropertyTweenerImpl) {
-	rg := (*typedRef[PropertyTweener])(r)
-	t := (*typedRef[PropertyTweener])(from)
-	rg.TypedRef((*typedRef[PropertyTweener])(t))
+	rg := (*TypedRef[PropertyTweener])(r)
+	t := (*TypedRef[PropertyTweener])(from)
+	rg.TypedRef((*TypedRef[PropertyTweener])(t))
 }
 
 func (r *RefPropertyTweenerImpl) Unref() {
-	rg := (*typedRef[PropertyTweener])(r)
+	rg := (*TypedRef[PropertyTweener])(r)
 	rg.Unref()
 }
 
@@ -15828,31 +15828,31 @@ type RefQuadMesh interface {
 	TypedPtr() QuadMesh
 }
 
-type RefQuadMeshImpl typedRef[QuadMesh]
+type RefQuadMeshImpl TypedRef[QuadMesh]
 
 func (r *RefQuadMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[QuadMesh])(r)
+	rg := (*TypedRef[QuadMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefQuadMeshImpl) TypedPtr() QuadMesh {
-	rg := (*typedRef[QuadMesh])(r)
+	rg := (*TypedRef[QuadMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefQuadMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[QuadMesh])(r)
+	rg := (*TypedRef[QuadMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefQuadMeshImpl) TypedRef(from *RefQuadMeshImpl) {
-	rg := (*typedRef[QuadMesh])(r)
-	t := (*typedRef[QuadMesh])(from)
-	rg.TypedRef((*typedRef[QuadMesh])(t))
+	rg := (*TypedRef[QuadMesh])(r)
+	t := (*TypedRef[QuadMesh])(from)
+	rg.TypedRef((*TypedRef[QuadMesh])(t))
 }
 
 func (r *RefQuadMeshImpl) Unref() {
-	rg := (*typedRef[QuadMesh])(r)
+	rg := (*TypedRef[QuadMesh])(r)
 	rg.Unref()
 }
 
@@ -15880,31 +15880,31 @@ type RefQuadOccluder3D interface {
 	TypedPtr() QuadOccluder3D
 }
 
-type RefQuadOccluder3DImpl typedRef[QuadOccluder3D]
+type RefQuadOccluder3DImpl TypedRef[QuadOccluder3D]
 
 func (r *RefQuadOccluder3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[QuadOccluder3D])(r)
+	rg := (*TypedRef[QuadOccluder3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefQuadOccluder3DImpl) TypedPtr() QuadOccluder3D {
-	rg := (*typedRef[QuadOccluder3D])(r)
+	rg := (*TypedRef[QuadOccluder3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefQuadOccluder3DImpl) Ref(from Ref) {
-	rg := (*typedRef[QuadOccluder3D])(r)
+	rg := (*TypedRef[QuadOccluder3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefQuadOccluder3DImpl) TypedRef(from *RefQuadOccluder3DImpl) {
-	rg := (*typedRef[QuadOccluder3D])(r)
-	t := (*typedRef[QuadOccluder3D])(from)
-	rg.TypedRef((*typedRef[QuadOccluder3D])(t))
+	rg := (*TypedRef[QuadOccluder3D])(r)
+	t := (*TypedRef[QuadOccluder3D])(from)
+	rg.TypedRef((*TypedRef[QuadOccluder3D])(t))
 }
 
 func (r *RefQuadOccluder3DImpl) Unref() {
-	rg := (*typedRef[QuadOccluder3D])(r)
+	rg := (*TypedRef[QuadOccluder3D])(r)
 	rg.Unref()
 }
 
@@ -15932,31 +15932,31 @@ type RefRDAttachmentFormat interface {
 	TypedPtr() RDAttachmentFormat
 }
 
-type RefRDAttachmentFormatImpl typedRef[RDAttachmentFormat]
+type RefRDAttachmentFormatImpl TypedRef[RDAttachmentFormat]
 
 func (r *RefRDAttachmentFormatImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDAttachmentFormat])(r)
+	rg := (*TypedRef[RDAttachmentFormat])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDAttachmentFormatImpl) TypedPtr() RDAttachmentFormat {
-	rg := (*typedRef[RDAttachmentFormat])(r)
+	rg := (*TypedRef[RDAttachmentFormat])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDAttachmentFormatImpl) Ref(from Ref) {
-	rg := (*typedRef[RDAttachmentFormat])(r)
+	rg := (*TypedRef[RDAttachmentFormat])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDAttachmentFormatImpl) TypedRef(from *RefRDAttachmentFormatImpl) {
-	rg := (*typedRef[RDAttachmentFormat])(r)
-	t := (*typedRef[RDAttachmentFormat])(from)
-	rg.TypedRef((*typedRef[RDAttachmentFormat])(t))
+	rg := (*TypedRef[RDAttachmentFormat])(r)
+	t := (*TypedRef[RDAttachmentFormat])(from)
+	rg.TypedRef((*TypedRef[RDAttachmentFormat])(t))
 }
 
 func (r *RefRDAttachmentFormatImpl) Unref() {
-	rg := (*typedRef[RDAttachmentFormat])(r)
+	rg := (*TypedRef[RDAttachmentFormat])(r)
 	rg.Unref()
 }
 
@@ -15984,31 +15984,31 @@ type RefRDFramebufferPass interface {
 	TypedPtr() RDFramebufferPass
 }
 
-type RefRDFramebufferPassImpl typedRef[RDFramebufferPass]
+type RefRDFramebufferPassImpl TypedRef[RDFramebufferPass]
 
 func (r *RefRDFramebufferPassImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDFramebufferPass])(r)
+	rg := (*TypedRef[RDFramebufferPass])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDFramebufferPassImpl) TypedPtr() RDFramebufferPass {
-	rg := (*typedRef[RDFramebufferPass])(r)
+	rg := (*TypedRef[RDFramebufferPass])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDFramebufferPassImpl) Ref(from Ref) {
-	rg := (*typedRef[RDFramebufferPass])(r)
+	rg := (*TypedRef[RDFramebufferPass])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDFramebufferPassImpl) TypedRef(from *RefRDFramebufferPassImpl) {
-	rg := (*typedRef[RDFramebufferPass])(r)
-	t := (*typedRef[RDFramebufferPass])(from)
-	rg.TypedRef((*typedRef[RDFramebufferPass])(t))
+	rg := (*TypedRef[RDFramebufferPass])(r)
+	t := (*TypedRef[RDFramebufferPass])(from)
+	rg.TypedRef((*TypedRef[RDFramebufferPass])(t))
 }
 
 func (r *RefRDFramebufferPassImpl) Unref() {
-	rg := (*typedRef[RDFramebufferPass])(r)
+	rg := (*TypedRef[RDFramebufferPass])(r)
 	rg.Unref()
 }
 
@@ -16036,31 +16036,31 @@ type RefRDPipelineColorBlendState interface {
 	TypedPtr() RDPipelineColorBlendState
 }
 
-type RefRDPipelineColorBlendStateImpl typedRef[RDPipelineColorBlendState]
+type RefRDPipelineColorBlendStateImpl TypedRef[RDPipelineColorBlendState]
 
 func (r *RefRDPipelineColorBlendStateImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDPipelineColorBlendState])(r)
+	rg := (*TypedRef[RDPipelineColorBlendState])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDPipelineColorBlendStateImpl) TypedPtr() RDPipelineColorBlendState {
-	rg := (*typedRef[RDPipelineColorBlendState])(r)
+	rg := (*TypedRef[RDPipelineColorBlendState])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDPipelineColorBlendStateImpl) Ref(from Ref) {
-	rg := (*typedRef[RDPipelineColorBlendState])(r)
+	rg := (*TypedRef[RDPipelineColorBlendState])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDPipelineColorBlendStateImpl) TypedRef(from *RefRDPipelineColorBlendStateImpl) {
-	rg := (*typedRef[RDPipelineColorBlendState])(r)
-	t := (*typedRef[RDPipelineColorBlendState])(from)
-	rg.TypedRef((*typedRef[RDPipelineColorBlendState])(t))
+	rg := (*TypedRef[RDPipelineColorBlendState])(r)
+	t := (*TypedRef[RDPipelineColorBlendState])(from)
+	rg.TypedRef((*TypedRef[RDPipelineColorBlendState])(t))
 }
 
 func (r *RefRDPipelineColorBlendStateImpl) Unref() {
-	rg := (*typedRef[RDPipelineColorBlendState])(r)
+	rg := (*TypedRef[RDPipelineColorBlendState])(r)
 	rg.Unref()
 }
 
@@ -16088,31 +16088,31 @@ type RefRDPipelineColorBlendStateAttachment interface {
 	TypedPtr() RDPipelineColorBlendStateAttachment
 }
 
-type RefRDPipelineColorBlendStateAttachmentImpl typedRef[RDPipelineColorBlendStateAttachment]
+type RefRDPipelineColorBlendStateAttachmentImpl TypedRef[RDPipelineColorBlendStateAttachment]
 
 func (r *RefRDPipelineColorBlendStateAttachmentImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDPipelineColorBlendStateAttachment])(r)
+	rg := (*TypedRef[RDPipelineColorBlendStateAttachment])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDPipelineColorBlendStateAttachmentImpl) TypedPtr() RDPipelineColorBlendStateAttachment {
-	rg := (*typedRef[RDPipelineColorBlendStateAttachment])(r)
+	rg := (*TypedRef[RDPipelineColorBlendStateAttachment])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDPipelineColorBlendStateAttachmentImpl) Ref(from Ref) {
-	rg := (*typedRef[RDPipelineColorBlendStateAttachment])(r)
+	rg := (*TypedRef[RDPipelineColorBlendStateAttachment])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDPipelineColorBlendStateAttachmentImpl) TypedRef(from *RefRDPipelineColorBlendStateAttachmentImpl) {
-	rg := (*typedRef[RDPipelineColorBlendStateAttachment])(r)
-	t := (*typedRef[RDPipelineColorBlendStateAttachment])(from)
-	rg.TypedRef((*typedRef[RDPipelineColorBlendStateAttachment])(t))
+	rg := (*TypedRef[RDPipelineColorBlendStateAttachment])(r)
+	t := (*TypedRef[RDPipelineColorBlendStateAttachment])(from)
+	rg.TypedRef((*TypedRef[RDPipelineColorBlendStateAttachment])(t))
 }
 
 func (r *RefRDPipelineColorBlendStateAttachmentImpl) Unref() {
-	rg := (*typedRef[RDPipelineColorBlendStateAttachment])(r)
+	rg := (*TypedRef[RDPipelineColorBlendStateAttachment])(r)
 	rg.Unref()
 }
 
@@ -16140,31 +16140,31 @@ type RefRDPipelineDepthStencilState interface {
 	TypedPtr() RDPipelineDepthStencilState
 }
 
-type RefRDPipelineDepthStencilStateImpl typedRef[RDPipelineDepthStencilState]
+type RefRDPipelineDepthStencilStateImpl TypedRef[RDPipelineDepthStencilState]
 
 func (r *RefRDPipelineDepthStencilStateImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDPipelineDepthStencilState])(r)
+	rg := (*TypedRef[RDPipelineDepthStencilState])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDPipelineDepthStencilStateImpl) TypedPtr() RDPipelineDepthStencilState {
-	rg := (*typedRef[RDPipelineDepthStencilState])(r)
+	rg := (*TypedRef[RDPipelineDepthStencilState])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDPipelineDepthStencilStateImpl) Ref(from Ref) {
-	rg := (*typedRef[RDPipelineDepthStencilState])(r)
+	rg := (*TypedRef[RDPipelineDepthStencilState])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDPipelineDepthStencilStateImpl) TypedRef(from *RefRDPipelineDepthStencilStateImpl) {
-	rg := (*typedRef[RDPipelineDepthStencilState])(r)
-	t := (*typedRef[RDPipelineDepthStencilState])(from)
-	rg.TypedRef((*typedRef[RDPipelineDepthStencilState])(t))
+	rg := (*TypedRef[RDPipelineDepthStencilState])(r)
+	t := (*TypedRef[RDPipelineDepthStencilState])(from)
+	rg.TypedRef((*TypedRef[RDPipelineDepthStencilState])(t))
 }
 
 func (r *RefRDPipelineDepthStencilStateImpl) Unref() {
-	rg := (*typedRef[RDPipelineDepthStencilState])(r)
+	rg := (*TypedRef[RDPipelineDepthStencilState])(r)
 	rg.Unref()
 }
 
@@ -16192,31 +16192,31 @@ type RefRDPipelineMultisampleState interface {
 	TypedPtr() RDPipelineMultisampleState
 }
 
-type RefRDPipelineMultisampleStateImpl typedRef[RDPipelineMultisampleState]
+type RefRDPipelineMultisampleStateImpl TypedRef[RDPipelineMultisampleState]
 
 func (r *RefRDPipelineMultisampleStateImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDPipelineMultisampleState])(r)
+	rg := (*TypedRef[RDPipelineMultisampleState])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDPipelineMultisampleStateImpl) TypedPtr() RDPipelineMultisampleState {
-	rg := (*typedRef[RDPipelineMultisampleState])(r)
+	rg := (*TypedRef[RDPipelineMultisampleState])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDPipelineMultisampleStateImpl) Ref(from Ref) {
-	rg := (*typedRef[RDPipelineMultisampleState])(r)
+	rg := (*TypedRef[RDPipelineMultisampleState])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDPipelineMultisampleStateImpl) TypedRef(from *RefRDPipelineMultisampleStateImpl) {
-	rg := (*typedRef[RDPipelineMultisampleState])(r)
-	t := (*typedRef[RDPipelineMultisampleState])(from)
-	rg.TypedRef((*typedRef[RDPipelineMultisampleState])(t))
+	rg := (*TypedRef[RDPipelineMultisampleState])(r)
+	t := (*TypedRef[RDPipelineMultisampleState])(from)
+	rg.TypedRef((*TypedRef[RDPipelineMultisampleState])(t))
 }
 
 func (r *RefRDPipelineMultisampleStateImpl) Unref() {
-	rg := (*typedRef[RDPipelineMultisampleState])(r)
+	rg := (*TypedRef[RDPipelineMultisampleState])(r)
 	rg.Unref()
 }
 
@@ -16244,31 +16244,31 @@ type RefRDPipelineRasterizationState interface {
 	TypedPtr() RDPipelineRasterizationState
 }
 
-type RefRDPipelineRasterizationStateImpl typedRef[RDPipelineRasterizationState]
+type RefRDPipelineRasterizationStateImpl TypedRef[RDPipelineRasterizationState]
 
 func (r *RefRDPipelineRasterizationStateImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDPipelineRasterizationState])(r)
+	rg := (*TypedRef[RDPipelineRasterizationState])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDPipelineRasterizationStateImpl) TypedPtr() RDPipelineRasterizationState {
-	rg := (*typedRef[RDPipelineRasterizationState])(r)
+	rg := (*TypedRef[RDPipelineRasterizationState])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDPipelineRasterizationStateImpl) Ref(from Ref) {
-	rg := (*typedRef[RDPipelineRasterizationState])(r)
+	rg := (*TypedRef[RDPipelineRasterizationState])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDPipelineRasterizationStateImpl) TypedRef(from *RefRDPipelineRasterizationStateImpl) {
-	rg := (*typedRef[RDPipelineRasterizationState])(r)
-	t := (*typedRef[RDPipelineRasterizationState])(from)
-	rg.TypedRef((*typedRef[RDPipelineRasterizationState])(t))
+	rg := (*TypedRef[RDPipelineRasterizationState])(r)
+	t := (*TypedRef[RDPipelineRasterizationState])(from)
+	rg.TypedRef((*TypedRef[RDPipelineRasterizationState])(t))
 }
 
 func (r *RefRDPipelineRasterizationStateImpl) Unref() {
-	rg := (*typedRef[RDPipelineRasterizationState])(r)
+	rg := (*TypedRef[RDPipelineRasterizationState])(r)
 	rg.Unref()
 }
 
@@ -16296,31 +16296,31 @@ type RefRDPipelineSpecializationConstant interface {
 	TypedPtr() RDPipelineSpecializationConstant
 }
 
-type RefRDPipelineSpecializationConstantImpl typedRef[RDPipelineSpecializationConstant]
+type RefRDPipelineSpecializationConstantImpl TypedRef[RDPipelineSpecializationConstant]
 
 func (r *RefRDPipelineSpecializationConstantImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDPipelineSpecializationConstant])(r)
+	rg := (*TypedRef[RDPipelineSpecializationConstant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDPipelineSpecializationConstantImpl) TypedPtr() RDPipelineSpecializationConstant {
-	rg := (*typedRef[RDPipelineSpecializationConstant])(r)
+	rg := (*TypedRef[RDPipelineSpecializationConstant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDPipelineSpecializationConstantImpl) Ref(from Ref) {
-	rg := (*typedRef[RDPipelineSpecializationConstant])(r)
+	rg := (*TypedRef[RDPipelineSpecializationConstant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDPipelineSpecializationConstantImpl) TypedRef(from *RefRDPipelineSpecializationConstantImpl) {
-	rg := (*typedRef[RDPipelineSpecializationConstant])(r)
-	t := (*typedRef[RDPipelineSpecializationConstant])(from)
-	rg.TypedRef((*typedRef[RDPipelineSpecializationConstant])(t))
+	rg := (*TypedRef[RDPipelineSpecializationConstant])(r)
+	t := (*TypedRef[RDPipelineSpecializationConstant])(from)
+	rg.TypedRef((*TypedRef[RDPipelineSpecializationConstant])(t))
 }
 
 func (r *RefRDPipelineSpecializationConstantImpl) Unref() {
-	rg := (*typedRef[RDPipelineSpecializationConstant])(r)
+	rg := (*TypedRef[RDPipelineSpecializationConstant])(r)
 	rg.Unref()
 }
 
@@ -16348,31 +16348,31 @@ type RefRDSamplerState interface {
 	TypedPtr() RDSamplerState
 }
 
-type RefRDSamplerStateImpl typedRef[RDSamplerState]
+type RefRDSamplerStateImpl TypedRef[RDSamplerState]
 
 func (r *RefRDSamplerStateImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDSamplerState])(r)
+	rg := (*TypedRef[RDSamplerState])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDSamplerStateImpl) TypedPtr() RDSamplerState {
-	rg := (*typedRef[RDSamplerState])(r)
+	rg := (*TypedRef[RDSamplerState])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDSamplerStateImpl) Ref(from Ref) {
-	rg := (*typedRef[RDSamplerState])(r)
+	rg := (*TypedRef[RDSamplerState])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDSamplerStateImpl) TypedRef(from *RefRDSamplerStateImpl) {
-	rg := (*typedRef[RDSamplerState])(r)
-	t := (*typedRef[RDSamplerState])(from)
-	rg.TypedRef((*typedRef[RDSamplerState])(t))
+	rg := (*TypedRef[RDSamplerState])(r)
+	t := (*TypedRef[RDSamplerState])(from)
+	rg.TypedRef((*TypedRef[RDSamplerState])(t))
 }
 
 func (r *RefRDSamplerStateImpl) Unref() {
-	rg := (*typedRef[RDSamplerState])(r)
+	rg := (*TypedRef[RDSamplerState])(r)
 	rg.Unref()
 }
 
@@ -16400,31 +16400,31 @@ type RefRDShaderFile interface {
 	TypedPtr() RDShaderFile
 }
 
-type RefRDShaderFileImpl typedRef[RDShaderFile]
+type RefRDShaderFileImpl TypedRef[RDShaderFile]
 
 func (r *RefRDShaderFileImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDShaderFile])(r)
+	rg := (*TypedRef[RDShaderFile])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDShaderFileImpl) TypedPtr() RDShaderFile {
-	rg := (*typedRef[RDShaderFile])(r)
+	rg := (*TypedRef[RDShaderFile])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDShaderFileImpl) Ref(from Ref) {
-	rg := (*typedRef[RDShaderFile])(r)
+	rg := (*TypedRef[RDShaderFile])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDShaderFileImpl) TypedRef(from *RefRDShaderFileImpl) {
-	rg := (*typedRef[RDShaderFile])(r)
-	t := (*typedRef[RDShaderFile])(from)
-	rg.TypedRef((*typedRef[RDShaderFile])(t))
+	rg := (*TypedRef[RDShaderFile])(r)
+	t := (*TypedRef[RDShaderFile])(from)
+	rg.TypedRef((*TypedRef[RDShaderFile])(t))
 }
 
 func (r *RefRDShaderFileImpl) Unref() {
-	rg := (*typedRef[RDShaderFile])(r)
+	rg := (*TypedRef[RDShaderFile])(r)
 	rg.Unref()
 }
 
@@ -16452,31 +16452,31 @@ type RefRDShaderSPIRV interface {
 	TypedPtr() RDShaderSPIRV
 }
 
-type RefRDShaderSPIRVImpl typedRef[RDShaderSPIRV]
+type RefRDShaderSPIRVImpl TypedRef[RDShaderSPIRV]
 
 func (r *RefRDShaderSPIRVImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDShaderSPIRV])(r)
+	rg := (*TypedRef[RDShaderSPIRV])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDShaderSPIRVImpl) TypedPtr() RDShaderSPIRV {
-	rg := (*typedRef[RDShaderSPIRV])(r)
+	rg := (*TypedRef[RDShaderSPIRV])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDShaderSPIRVImpl) Ref(from Ref) {
-	rg := (*typedRef[RDShaderSPIRV])(r)
+	rg := (*TypedRef[RDShaderSPIRV])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDShaderSPIRVImpl) TypedRef(from *RefRDShaderSPIRVImpl) {
-	rg := (*typedRef[RDShaderSPIRV])(r)
-	t := (*typedRef[RDShaderSPIRV])(from)
-	rg.TypedRef((*typedRef[RDShaderSPIRV])(t))
+	rg := (*TypedRef[RDShaderSPIRV])(r)
+	t := (*TypedRef[RDShaderSPIRV])(from)
+	rg.TypedRef((*TypedRef[RDShaderSPIRV])(t))
 }
 
 func (r *RefRDShaderSPIRVImpl) Unref() {
-	rg := (*typedRef[RDShaderSPIRV])(r)
+	rg := (*TypedRef[RDShaderSPIRV])(r)
 	rg.Unref()
 }
 
@@ -16504,31 +16504,31 @@ type RefRDShaderSource interface {
 	TypedPtr() RDShaderSource
 }
 
-type RefRDShaderSourceImpl typedRef[RDShaderSource]
+type RefRDShaderSourceImpl TypedRef[RDShaderSource]
 
 func (r *RefRDShaderSourceImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDShaderSource])(r)
+	rg := (*TypedRef[RDShaderSource])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDShaderSourceImpl) TypedPtr() RDShaderSource {
-	rg := (*typedRef[RDShaderSource])(r)
+	rg := (*TypedRef[RDShaderSource])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDShaderSourceImpl) Ref(from Ref) {
-	rg := (*typedRef[RDShaderSource])(r)
+	rg := (*TypedRef[RDShaderSource])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDShaderSourceImpl) TypedRef(from *RefRDShaderSourceImpl) {
-	rg := (*typedRef[RDShaderSource])(r)
-	t := (*typedRef[RDShaderSource])(from)
-	rg.TypedRef((*typedRef[RDShaderSource])(t))
+	rg := (*TypedRef[RDShaderSource])(r)
+	t := (*TypedRef[RDShaderSource])(from)
+	rg.TypedRef((*TypedRef[RDShaderSource])(t))
 }
 
 func (r *RefRDShaderSourceImpl) Unref() {
-	rg := (*typedRef[RDShaderSource])(r)
+	rg := (*TypedRef[RDShaderSource])(r)
 	rg.Unref()
 }
 
@@ -16556,31 +16556,31 @@ type RefRDTextureFormat interface {
 	TypedPtr() RDTextureFormat
 }
 
-type RefRDTextureFormatImpl typedRef[RDTextureFormat]
+type RefRDTextureFormatImpl TypedRef[RDTextureFormat]
 
 func (r *RefRDTextureFormatImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDTextureFormat])(r)
+	rg := (*TypedRef[RDTextureFormat])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDTextureFormatImpl) TypedPtr() RDTextureFormat {
-	rg := (*typedRef[RDTextureFormat])(r)
+	rg := (*TypedRef[RDTextureFormat])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDTextureFormatImpl) Ref(from Ref) {
-	rg := (*typedRef[RDTextureFormat])(r)
+	rg := (*TypedRef[RDTextureFormat])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDTextureFormatImpl) TypedRef(from *RefRDTextureFormatImpl) {
-	rg := (*typedRef[RDTextureFormat])(r)
-	t := (*typedRef[RDTextureFormat])(from)
-	rg.TypedRef((*typedRef[RDTextureFormat])(t))
+	rg := (*TypedRef[RDTextureFormat])(r)
+	t := (*TypedRef[RDTextureFormat])(from)
+	rg.TypedRef((*TypedRef[RDTextureFormat])(t))
 }
 
 func (r *RefRDTextureFormatImpl) Unref() {
-	rg := (*typedRef[RDTextureFormat])(r)
+	rg := (*TypedRef[RDTextureFormat])(r)
 	rg.Unref()
 }
 
@@ -16608,31 +16608,31 @@ type RefRDTextureView interface {
 	TypedPtr() RDTextureView
 }
 
-type RefRDTextureViewImpl typedRef[RDTextureView]
+type RefRDTextureViewImpl TypedRef[RDTextureView]
 
 func (r *RefRDTextureViewImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDTextureView])(r)
+	rg := (*TypedRef[RDTextureView])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDTextureViewImpl) TypedPtr() RDTextureView {
-	rg := (*typedRef[RDTextureView])(r)
+	rg := (*TypedRef[RDTextureView])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDTextureViewImpl) Ref(from Ref) {
-	rg := (*typedRef[RDTextureView])(r)
+	rg := (*TypedRef[RDTextureView])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDTextureViewImpl) TypedRef(from *RefRDTextureViewImpl) {
-	rg := (*typedRef[RDTextureView])(r)
-	t := (*typedRef[RDTextureView])(from)
-	rg.TypedRef((*typedRef[RDTextureView])(t))
+	rg := (*TypedRef[RDTextureView])(r)
+	t := (*TypedRef[RDTextureView])(from)
+	rg.TypedRef((*TypedRef[RDTextureView])(t))
 }
 
 func (r *RefRDTextureViewImpl) Unref() {
-	rg := (*typedRef[RDTextureView])(r)
+	rg := (*TypedRef[RDTextureView])(r)
 	rg.Unref()
 }
 
@@ -16660,31 +16660,31 @@ type RefRDUniform interface {
 	TypedPtr() RDUniform
 }
 
-type RefRDUniformImpl typedRef[RDUniform]
+type RefRDUniformImpl TypedRef[RDUniform]
 
 func (r *RefRDUniformImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDUniform])(r)
+	rg := (*TypedRef[RDUniform])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDUniformImpl) TypedPtr() RDUniform {
-	rg := (*typedRef[RDUniform])(r)
+	rg := (*TypedRef[RDUniform])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDUniformImpl) Ref(from Ref) {
-	rg := (*typedRef[RDUniform])(r)
+	rg := (*TypedRef[RDUniform])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDUniformImpl) TypedRef(from *RefRDUniformImpl) {
-	rg := (*typedRef[RDUniform])(r)
-	t := (*typedRef[RDUniform])(from)
-	rg.TypedRef((*typedRef[RDUniform])(t))
+	rg := (*TypedRef[RDUniform])(r)
+	t := (*TypedRef[RDUniform])(from)
+	rg.TypedRef((*TypedRef[RDUniform])(t))
 }
 
 func (r *RefRDUniformImpl) Unref() {
-	rg := (*typedRef[RDUniform])(r)
+	rg := (*TypedRef[RDUniform])(r)
 	rg.Unref()
 }
 
@@ -16712,31 +16712,31 @@ type RefRDVertexAttribute interface {
 	TypedPtr() RDVertexAttribute
 }
 
-type RefRDVertexAttributeImpl typedRef[RDVertexAttribute]
+type RefRDVertexAttributeImpl TypedRef[RDVertexAttribute]
 
 func (r *RefRDVertexAttributeImpl) Ptr() RefCounted {
-	rg := (*typedRef[RDVertexAttribute])(r)
+	rg := (*TypedRef[RDVertexAttribute])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRDVertexAttributeImpl) TypedPtr() RDVertexAttribute {
-	rg := (*typedRef[RDVertexAttribute])(r)
+	rg := (*TypedRef[RDVertexAttribute])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRDVertexAttributeImpl) Ref(from Ref) {
-	rg := (*typedRef[RDVertexAttribute])(r)
+	rg := (*TypedRef[RDVertexAttribute])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRDVertexAttributeImpl) TypedRef(from *RefRDVertexAttributeImpl) {
-	rg := (*typedRef[RDVertexAttribute])(r)
-	t := (*typedRef[RDVertexAttribute])(from)
-	rg.TypedRef((*typedRef[RDVertexAttribute])(t))
+	rg := (*TypedRef[RDVertexAttribute])(r)
+	t := (*TypedRef[RDVertexAttribute])(from)
+	rg.TypedRef((*TypedRef[RDVertexAttribute])(t))
 }
 
 func (r *RefRDVertexAttributeImpl) Unref() {
-	rg := (*typedRef[RDVertexAttribute])(r)
+	rg := (*TypedRef[RDVertexAttribute])(r)
 	rg.Unref()
 }
 
@@ -16764,31 +16764,31 @@ type RefRandomNumberGenerator interface {
 	TypedPtr() RandomNumberGenerator
 }
 
-type RefRandomNumberGeneratorImpl typedRef[RandomNumberGenerator]
+type RefRandomNumberGeneratorImpl TypedRef[RandomNumberGenerator]
 
 func (r *RefRandomNumberGeneratorImpl) Ptr() RefCounted {
-	rg := (*typedRef[RandomNumberGenerator])(r)
+	rg := (*TypedRef[RandomNumberGenerator])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRandomNumberGeneratorImpl) TypedPtr() RandomNumberGenerator {
-	rg := (*typedRef[RandomNumberGenerator])(r)
+	rg := (*TypedRef[RandomNumberGenerator])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRandomNumberGeneratorImpl) Ref(from Ref) {
-	rg := (*typedRef[RandomNumberGenerator])(r)
+	rg := (*TypedRef[RandomNumberGenerator])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRandomNumberGeneratorImpl) TypedRef(from *RefRandomNumberGeneratorImpl) {
-	rg := (*typedRef[RandomNumberGenerator])(r)
-	t := (*typedRef[RandomNumberGenerator])(from)
-	rg.TypedRef((*typedRef[RandomNumberGenerator])(t))
+	rg := (*TypedRef[RandomNumberGenerator])(r)
+	t := (*TypedRef[RandomNumberGenerator])(from)
+	rg.TypedRef((*TypedRef[RandomNumberGenerator])(t))
 }
 
 func (r *RefRandomNumberGeneratorImpl) Unref() {
-	rg := (*typedRef[RandomNumberGenerator])(r)
+	rg := (*TypedRef[RandomNumberGenerator])(r)
 	rg.Unref()
 }
 
@@ -16816,31 +16816,31 @@ type RefRectangleShape2D interface {
 	TypedPtr() RectangleShape2D
 }
 
-type RefRectangleShape2DImpl typedRef[RectangleShape2D]
+type RefRectangleShape2DImpl TypedRef[RectangleShape2D]
 
 func (r *RefRectangleShape2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[RectangleShape2D])(r)
+	rg := (*TypedRef[RectangleShape2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRectangleShape2DImpl) TypedPtr() RectangleShape2D {
-	rg := (*typedRef[RectangleShape2D])(r)
+	rg := (*TypedRef[RectangleShape2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRectangleShape2DImpl) Ref(from Ref) {
-	rg := (*typedRef[RectangleShape2D])(r)
+	rg := (*TypedRef[RectangleShape2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRectangleShape2DImpl) TypedRef(from *RefRectangleShape2DImpl) {
-	rg := (*typedRef[RectangleShape2D])(r)
-	t := (*typedRef[RectangleShape2D])(from)
-	rg.TypedRef((*typedRef[RectangleShape2D])(t))
+	rg := (*TypedRef[RectangleShape2D])(r)
+	t := (*TypedRef[RectangleShape2D])(from)
+	rg.TypedRef((*TypedRef[RectangleShape2D])(t))
 }
 
 func (r *RefRectangleShape2DImpl) Unref() {
-	rg := (*typedRef[RectangleShape2D])(r)
+	rg := (*TypedRef[RectangleShape2D])(r)
 	rg.Unref()
 }
 
@@ -16868,31 +16868,31 @@ type RefRefCounted interface {
 	TypedPtr() RefCounted
 }
 
-type RefRefCountedImpl typedRef[RefCounted]
+type RefRefCountedImpl TypedRef[RefCounted]
 
 func (r *RefRefCountedImpl) Ptr() RefCounted {
-	rg := (*typedRef[RefCounted])(r)
+	rg := (*TypedRef[RefCounted])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRefCountedImpl) TypedPtr() RefCounted {
-	rg := (*typedRef[RefCounted])(r)
+	rg := (*TypedRef[RefCounted])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRefCountedImpl) Ref(from Ref) {
-	rg := (*typedRef[RefCounted])(r)
+	rg := (*TypedRef[RefCounted])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRefCountedImpl) TypedRef(from *RefRefCountedImpl) {
-	rg := (*typedRef[RefCounted])(r)
-	t := (*typedRef[RefCounted])(from)
-	rg.TypedRef((*typedRef[RefCounted])(t))
+	rg := (*TypedRef[RefCounted])(r)
+	t := (*TypedRef[RefCounted])(from)
+	rg.TypedRef((*TypedRef[RefCounted])(t))
 }
 
 func (r *RefRefCountedImpl) Unref() {
-	rg := (*typedRef[RefCounted])(r)
+	rg := (*TypedRef[RefCounted])(r)
 	rg.Unref()
 }
 
@@ -16920,31 +16920,31 @@ type RefRegEx interface {
 	TypedPtr() RegEx
 }
 
-type RefRegExImpl typedRef[RegEx]
+type RefRegExImpl TypedRef[RegEx]
 
 func (r *RefRegExImpl) Ptr() RefCounted {
-	rg := (*typedRef[RegEx])(r)
+	rg := (*TypedRef[RegEx])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRegExImpl) TypedPtr() RegEx {
-	rg := (*typedRef[RegEx])(r)
+	rg := (*TypedRef[RegEx])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRegExImpl) Ref(from Ref) {
-	rg := (*typedRef[RegEx])(r)
+	rg := (*TypedRef[RegEx])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRegExImpl) TypedRef(from *RefRegExImpl) {
-	rg := (*typedRef[RegEx])(r)
-	t := (*typedRef[RegEx])(from)
-	rg.TypedRef((*typedRef[RegEx])(t))
+	rg := (*TypedRef[RegEx])(r)
+	t := (*TypedRef[RegEx])(from)
+	rg.TypedRef((*TypedRef[RegEx])(t))
 }
 
 func (r *RefRegExImpl) Unref() {
-	rg := (*typedRef[RegEx])(r)
+	rg := (*TypedRef[RegEx])(r)
 	rg.Unref()
 }
 
@@ -16972,31 +16972,31 @@ type RefRegExMatch interface {
 	TypedPtr() RegExMatch
 }
 
-type RefRegExMatchImpl typedRef[RegExMatch]
+type RefRegExMatchImpl TypedRef[RegExMatch]
 
 func (r *RefRegExMatchImpl) Ptr() RefCounted {
-	rg := (*typedRef[RegExMatch])(r)
+	rg := (*TypedRef[RegExMatch])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRegExMatchImpl) TypedPtr() RegExMatch {
-	rg := (*typedRef[RegExMatch])(r)
+	rg := (*TypedRef[RegExMatch])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRegExMatchImpl) Ref(from Ref) {
-	rg := (*typedRef[RegExMatch])(r)
+	rg := (*TypedRef[RegExMatch])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRegExMatchImpl) TypedRef(from *RefRegExMatchImpl) {
-	rg := (*typedRef[RegExMatch])(r)
-	t := (*typedRef[RegExMatch])(from)
-	rg.TypedRef((*typedRef[RegExMatch])(t))
+	rg := (*TypedRef[RegExMatch])(r)
+	t := (*TypedRef[RegExMatch])(from)
+	rg.TypedRef((*TypedRef[RegExMatch])(t))
 }
 
 func (r *RefRegExMatchImpl) Unref() {
-	rg := (*typedRef[RegExMatch])(r)
+	rg := (*TypedRef[RegExMatch])(r)
 	rg.Unref()
 }
 
@@ -17024,31 +17024,31 @@ type RefRenderSceneBuffers interface {
 	TypedPtr() RenderSceneBuffers
 }
 
-type RefRenderSceneBuffersImpl typedRef[RenderSceneBuffers]
+type RefRenderSceneBuffersImpl TypedRef[RenderSceneBuffers]
 
 func (r *RefRenderSceneBuffersImpl) Ptr() RefCounted {
-	rg := (*typedRef[RenderSceneBuffers])(r)
+	rg := (*TypedRef[RenderSceneBuffers])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRenderSceneBuffersImpl) TypedPtr() RenderSceneBuffers {
-	rg := (*typedRef[RenderSceneBuffers])(r)
+	rg := (*TypedRef[RenderSceneBuffers])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRenderSceneBuffersImpl) Ref(from Ref) {
-	rg := (*typedRef[RenderSceneBuffers])(r)
+	rg := (*TypedRef[RenderSceneBuffers])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRenderSceneBuffersImpl) TypedRef(from *RefRenderSceneBuffersImpl) {
-	rg := (*typedRef[RenderSceneBuffers])(r)
-	t := (*typedRef[RenderSceneBuffers])(from)
-	rg.TypedRef((*typedRef[RenderSceneBuffers])(t))
+	rg := (*TypedRef[RenderSceneBuffers])(r)
+	t := (*TypedRef[RenderSceneBuffers])(from)
+	rg.TypedRef((*TypedRef[RenderSceneBuffers])(t))
 }
 
 func (r *RefRenderSceneBuffersImpl) Unref() {
-	rg := (*typedRef[RenderSceneBuffers])(r)
+	rg := (*TypedRef[RenderSceneBuffers])(r)
 	rg.Unref()
 }
 
@@ -17076,31 +17076,31 @@ type RefRenderSceneBuffersConfiguration interface {
 	TypedPtr() RenderSceneBuffersConfiguration
 }
 
-type RefRenderSceneBuffersConfigurationImpl typedRef[RenderSceneBuffersConfiguration]
+type RefRenderSceneBuffersConfigurationImpl TypedRef[RenderSceneBuffersConfiguration]
 
 func (r *RefRenderSceneBuffersConfigurationImpl) Ptr() RefCounted {
-	rg := (*typedRef[RenderSceneBuffersConfiguration])(r)
+	rg := (*TypedRef[RenderSceneBuffersConfiguration])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRenderSceneBuffersConfigurationImpl) TypedPtr() RenderSceneBuffersConfiguration {
-	rg := (*typedRef[RenderSceneBuffersConfiguration])(r)
+	rg := (*TypedRef[RenderSceneBuffersConfiguration])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRenderSceneBuffersConfigurationImpl) Ref(from Ref) {
-	rg := (*typedRef[RenderSceneBuffersConfiguration])(r)
+	rg := (*TypedRef[RenderSceneBuffersConfiguration])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRenderSceneBuffersConfigurationImpl) TypedRef(from *RefRenderSceneBuffersConfigurationImpl) {
-	rg := (*typedRef[RenderSceneBuffersConfiguration])(r)
-	t := (*typedRef[RenderSceneBuffersConfiguration])(from)
-	rg.TypedRef((*typedRef[RenderSceneBuffersConfiguration])(t))
+	rg := (*TypedRef[RenderSceneBuffersConfiguration])(r)
+	t := (*TypedRef[RenderSceneBuffersConfiguration])(from)
+	rg.TypedRef((*TypedRef[RenderSceneBuffersConfiguration])(t))
 }
 
 func (r *RefRenderSceneBuffersConfigurationImpl) Unref() {
-	rg := (*typedRef[RenderSceneBuffersConfiguration])(r)
+	rg := (*TypedRef[RenderSceneBuffersConfiguration])(r)
 	rg.Unref()
 }
 
@@ -17128,31 +17128,31 @@ type RefRenderSceneBuffersExtension interface {
 	TypedPtr() RenderSceneBuffersExtension
 }
 
-type RefRenderSceneBuffersExtensionImpl typedRef[RenderSceneBuffersExtension]
+type RefRenderSceneBuffersExtensionImpl TypedRef[RenderSceneBuffersExtension]
 
 func (r *RefRenderSceneBuffersExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[RenderSceneBuffersExtension])(r)
+	rg := (*TypedRef[RenderSceneBuffersExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRenderSceneBuffersExtensionImpl) TypedPtr() RenderSceneBuffersExtension {
-	rg := (*typedRef[RenderSceneBuffersExtension])(r)
+	rg := (*TypedRef[RenderSceneBuffersExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRenderSceneBuffersExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[RenderSceneBuffersExtension])(r)
+	rg := (*TypedRef[RenderSceneBuffersExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRenderSceneBuffersExtensionImpl) TypedRef(from *RefRenderSceneBuffersExtensionImpl) {
-	rg := (*typedRef[RenderSceneBuffersExtension])(r)
-	t := (*typedRef[RenderSceneBuffersExtension])(from)
-	rg.TypedRef((*typedRef[RenderSceneBuffersExtension])(t))
+	rg := (*TypedRef[RenderSceneBuffersExtension])(r)
+	t := (*TypedRef[RenderSceneBuffersExtension])(from)
+	rg.TypedRef((*TypedRef[RenderSceneBuffersExtension])(t))
 }
 
 func (r *RefRenderSceneBuffersExtensionImpl) Unref() {
-	rg := (*typedRef[RenderSceneBuffersExtension])(r)
+	rg := (*TypedRef[RenderSceneBuffersExtension])(r)
 	rg.Unref()
 }
 
@@ -17180,31 +17180,31 @@ type RefRenderSceneBuffersRD interface {
 	TypedPtr() RenderSceneBuffersRD
 }
 
-type RefRenderSceneBuffersRDImpl typedRef[RenderSceneBuffersRD]
+type RefRenderSceneBuffersRDImpl TypedRef[RenderSceneBuffersRD]
 
 func (r *RefRenderSceneBuffersRDImpl) Ptr() RefCounted {
-	rg := (*typedRef[RenderSceneBuffersRD])(r)
+	rg := (*TypedRef[RenderSceneBuffersRD])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRenderSceneBuffersRDImpl) TypedPtr() RenderSceneBuffersRD {
-	rg := (*typedRef[RenderSceneBuffersRD])(r)
+	rg := (*TypedRef[RenderSceneBuffersRD])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRenderSceneBuffersRDImpl) Ref(from Ref) {
-	rg := (*typedRef[RenderSceneBuffersRD])(r)
+	rg := (*TypedRef[RenderSceneBuffersRD])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRenderSceneBuffersRDImpl) TypedRef(from *RefRenderSceneBuffersRDImpl) {
-	rg := (*typedRef[RenderSceneBuffersRD])(r)
-	t := (*typedRef[RenderSceneBuffersRD])(from)
-	rg.TypedRef((*typedRef[RenderSceneBuffersRD])(t))
+	rg := (*TypedRef[RenderSceneBuffersRD])(r)
+	t := (*TypedRef[RenderSceneBuffersRD])(from)
+	rg.TypedRef((*TypedRef[RenderSceneBuffersRD])(t))
 }
 
 func (r *RefRenderSceneBuffersRDImpl) Unref() {
-	rg := (*typedRef[RenderSceneBuffersRD])(r)
+	rg := (*TypedRef[RenderSceneBuffersRD])(r)
 	rg.Unref()
 }
 
@@ -17232,31 +17232,31 @@ type RefResource interface {
 	TypedPtr() Resource
 }
 
-type RefResourceImpl typedRef[Resource]
+type RefResourceImpl TypedRef[Resource]
 
 func (r *RefResourceImpl) Ptr() RefCounted {
-	rg := (*typedRef[Resource])(r)
+	rg := (*TypedRef[Resource])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImpl) TypedPtr() Resource {
-	rg := (*typedRef[Resource])(r)
+	rg := (*TypedRef[Resource])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImpl) Ref(from Ref) {
-	rg := (*typedRef[Resource])(r)
+	rg := (*TypedRef[Resource])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImpl) TypedRef(from *RefResourceImpl) {
-	rg := (*typedRef[Resource])(r)
-	t := (*typedRef[Resource])(from)
-	rg.TypedRef((*typedRef[Resource])(t))
+	rg := (*TypedRef[Resource])(r)
+	t := (*TypedRef[Resource])(from)
+	rg.TypedRef((*TypedRef[Resource])(t))
 }
 
 func (r *RefResourceImpl) Unref() {
-	rg := (*typedRef[Resource])(r)
+	rg := (*TypedRef[Resource])(r)
 	rg.Unref()
 }
 
@@ -17284,31 +17284,31 @@ type RefResourceFormatLoader interface {
 	TypedPtr() ResourceFormatLoader
 }
 
-type RefResourceFormatLoaderImpl typedRef[ResourceFormatLoader]
+type RefResourceFormatLoaderImpl TypedRef[ResourceFormatLoader]
 
 func (r *RefResourceFormatLoaderImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceFormatLoader])(r)
+	rg := (*TypedRef[ResourceFormatLoader])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceFormatLoaderImpl) TypedPtr() ResourceFormatLoader {
-	rg := (*typedRef[ResourceFormatLoader])(r)
+	rg := (*TypedRef[ResourceFormatLoader])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceFormatLoaderImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceFormatLoader])(r)
+	rg := (*TypedRef[ResourceFormatLoader])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceFormatLoaderImpl) TypedRef(from *RefResourceFormatLoaderImpl) {
-	rg := (*typedRef[ResourceFormatLoader])(r)
-	t := (*typedRef[ResourceFormatLoader])(from)
-	rg.TypedRef((*typedRef[ResourceFormatLoader])(t))
+	rg := (*TypedRef[ResourceFormatLoader])(r)
+	t := (*TypedRef[ResourceFormatLoader])(from)
+	rg.TypedRef((*TypedRef[ResourceFormatLoader])(t))
 }
 
 func (r *RefResourceFormatLoaderImpl) Unref() {
-	rg := (*typedRef[ResourceFormatLoader])(r)
+	rg := (*TypedRef[ResourceFormatLoader])(r)
 	rg.Unref()
 }
 
@@ -17336,31 +17336,31 @@ type RefResourceFormatSaver interface {
 	TypedPtr() ResourceFormatSaver
 }
 
-type RefResourceFormatSaverImpl typedRef[ResourceFormatSaver]
+type RefResourceFormatSaverImpl TypedRef[ResourceFormatSaver]
 
 func (r *RefResourceFormatSaverImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceFormatSaver])(r)
+	rg := (*TypedRef[ResourceFormatSaver])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceFormatSaverImpl) TypedPtr() ResourceFormatSaver {
-	rg := (*typedRef[ResourceFormatSaver])(r)
+	rg := (*TypedRef[ResourceFormatSaver])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceFormatSaverImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceFormatSaver])(r)
+	rg := (*TypedRef[ResourceFormatSaver])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceFormatSaverImpl) TypedRef(from *RefResourceFormatSaverImpl) {
-	rg := (*typedRef[ResourceFormatSaver])(r)
-	t := (*typedRef[ResourceFormatSaver])(from)
-	rg.TypedRef((*typedRef[ResourceFormatSaver])(t))
+	rg := (*TypedRef[ResourceFormatSaver])(r)
+	t := (*TypedRef[ResourceFormatSaver])(from)
+	rg.TypedRef((*TypedRef[ResourceFormatSaver])(t))
 }
 
 func (r *RefResourceFormatSaverImpl) Unref() {
-	rg := (*typedRef[ResourceFormatSaver])(r)
+	rg := (*TypedRef[ResourceFormatSaver])(r)
 	rg.Unref()
 }
 
@@ -17388,31 +17388,31 @@ type RefResourceImporter interface {
 	TypedPtr() ResourceImporter
 }
 
-type RefResourceImporterImpl typedRef[ResourceImporter]
+type RefResourceImporterImpl TypedRef[ResourceImporter]
 
 func (r *RefResourceImporterImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporter])(r)
+	rg := (*TypedRef[ResourceImporter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterImpl) TypedPtr() ResourceImporter {
-	rg := (*typedRef[ResourceImporter])(r)
+	rg := (*TypedRef[ResourceImporter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporter])(r)
+	rg := (*TypedRef[ResourceImporter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterImpl) TypedRef(from *RefResourceImporterImpl) {
-	rg := (*typedRef[ResourceImporter])(r)
-	t := (*typedRef[ResourceImporter])(from)
-	rg.TypedRef((*typedRef[ResourceImporter])(t))
+	rg := (*TypedRef[ResourceImporter])(r)
+	t := (*TypedRef[ResourceImporter])(from)
+	rg.TypedRef((*TypedRef[ResourceImporter])(t))
 }
 
 func (r *RefResourceImporterImpl) Unref() {
-	rg := (*typedRef[ResourceImporter])(r)
+	rg := (*TypedRef[ResourceImporter])(r)
 	rg.Unref()
 }
 
@@ -17440,31 +17440,31 @@ type RefResourceImporterBMFont interface {
 	TypedPtr() ResourceImporterBMFont
 }
 
-type RefResourceImporterBMFontImpl typedRef[ResourceImporterBMFont]
+type RefResourceImporterBMFontImpl TypedRef[ResourceImporterBMFont]
 
 func (r *RefResourceImporterBMFontImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterBMFont])(r)
+	rg := (*TypedRef[ResourceImporterBMFont])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterBMFontImpl) TypedPtr() ResourceImporterBMFont {
-	rg := (*typedRef[ResourceImporterBMFont])(r)
+	rg := (*TypedRef[ResourceImporterBMFont])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterBMFontImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterBMFont])(r)
+	rg := (*TypedRef[ResourceImporterBMFont])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterBMFontImpl) TypedRef(from *RefResourceImporterBMFontImpl) {
-	rg := (*typedRef[ResourceImporterBMFont])(r)
-	t := (*typedRef[ResourceImporterBMFont])(from)
-	rg.TypedRef((*typedRef[ResourceImporterBMFont])(t))
+	rg := (*TypedRef[ResourceImporterBMFont])(r)
+	t := (*TypedRef[ResourceImporterBMFont])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterBMFont])(t))
 }
 
 func (r *RefResourceImporterBMFontImpl) Unref() {
-	rg := (*typedRef[ResourceImporterBMFont])(r)
+	rg := (*TypedRef[ResourceImporterBMFont])(r)
 	rg.Unref()
 }
 
@@ -17492,31 +17492,31 @@ type RefResourceImporterBitMap interface {
 	TypedPtr() ResourceImporterBitMap
 }
 
-type RefResourceImporterBitMapImpl typedRef[ResourceImporterBitMap]
+type RefResourceImporterBitMapImpl TypedRef[ResourceImporterBitMap]
 
 func (r *RefResourceImporterBitMapImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterBitMap])(r)
+	rg := (*TypedRef[ResourceImporterBitMap])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterBitMapImpl) TypedPtr() ResourceImporterBitMap {
-	rg := (*typedRef[ResourceImporterBitMap])(r)
+	rg := (*TypedRef[ResourceImporterBitMap])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterBitMapImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterBitMap])(r)
+	rg := (*TypedRef[ResourceImporterBitMap])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterBitMapImpl) TypedRef(from *RefResourceImporterBitMapImpl) {
-	rg := (*typedRef[ResourceImporterBitMap])(r)
-	t := (*typedRef[ResourceImporterBitMap])(from)
-	rg.TypedRef((*typedRef[ResourceImporterBitMap])(t))
+	rg := (*TypedRef[ResourceImporterBitMap])(r)
+	t := (*TypedRef[ResourceImporterBitMap])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterBitMap])(t))
 }
 
 func (r *RefResourceImporterBitMapImpl) Unref() {
-	rg := (*typedRef[ResourceImporterBitMap])(r)
+	rg := (*TypedRef[ResourceImporterBitMap])(r)
 	rg.Unref()
 }
 
@@ -17544,31 +17544,31 @@ type RefResourceImporterCSVTranslation interface {
 	TypedPtr() ResourceImporterCSVTranslation
 }
 
-type RefResourceImporterCSVTranslationImpl typedRef[ResourceImporterCSVTranslation]
+type RefResourceImporterCSVTranslationImpl TypedRef[ResourceImporterCSVTranslation]
 
 func (r *RefResourceImporterCSVTranslationImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterCSVTranslation])(r)
+	rg := (*TypedRef[ResourceImporterCSVTranslation])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterCSVTranslationImpl) TypedPtr() ResourceImporterCSVTranslation {
-	rg := (*typedRef[ResourceImporterCSVTranslation])(r)
+	rg := (*TypedRef[ResourceImporterCSVTranslation])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterCSVTranslationImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterCSVTranslation])(r)
+	rg := (*TypedRef[ResourceImporterCSVTranslation])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterCSVTranslationImpl) TypedRef(from *RefResourceImporterCSVTranslationImpl) {
-	rg := (*typedRef[ResourceImporterCSVTranslation])(r)
-	t := (*typedRef[ResourceImporterCSVTranslation])(from)
-	rg.TypedRef((*typedRef[ResourceImporterCSVTranslation])(t))
+	rg := (*TypedRef[ResourceImporterCSVTranslation])(r)
+	t := (*TypedRef[ResourceImporterCSVTranslation])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterCSVTranslation])(t))
 }
 
 func (r *RefResourceImporterCSVTranslationImpl) Unref() {
-	rg := (*typedRef[ResourceImporterCSVTranslation])(r)
+	rg := (*TypedRef[ResourceImporterCSVTranslation])(r)
 	rg.Unref()
 }
 
@@ -17596,31 +17596,31 @@ type RefResourceImporterDynamicFont interface {
 	TypedPtr() ResourceImporterDynamicFont
 }
 
-type RefResourceImporterDynamicFontImpl typedRef[ResourceImporterDynamicFont]
+type RefResourceImporterDynamicFontImpl TypedRef[ResourceImporterDynamicFont]
 
 func (r *RefResourceImporterDynamicFontImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterDynamicFont])(r)
+	rg := (*TypedRef[ResourceImporterDynamicFont])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterDynamicFontImpl) TypedPtr() ResourceImporterDynamicFont {
-	rg := (*typedRef[ResourceImporterDynamicFont])(r)
+	rg := (*TypedRef[ResourceImporterDynamicFont])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterDynamicFontImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterDynamicFont])(r)
+	rg := (*TypedRef[ResourceImporterDynamicFont])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterDynamicFontImpl) TypedRef(from *RefResourceImporterDynamicFontImpl) {
-	rg := (*typedRef[ResourceImporterDynamicFont])(r)
-	t := (*typedRef[ResourceImporterDynamicFont])(from)
-	rg.TypedRef((*typedRef[ResourceImporterDynamicFont])(t))
+	rg := (*TypedRef[ResourceImporterDynamicFont])(r)
+	t := (*TypedRef[ResourceImporterDynamicFont])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterDynamicFont])(t))
 }
 
 func (r *RefResourceImporterDynamicFontImpl) Unref() {
-	rg := (*typedRef[ResourceImporterDynamicFont])(r)
+	rg := (*TypedRef[ResourceImporterDynamicFont])(r)
 	rg.Unref()
 }
 
@@ -17648,31 +17648,31 @@ type RefResourceImporterImage interface {
 	TypedPtr() ResourceImporterImage
 }
 
-type RefResourceImporterImageImpl typedRef[ResourceImporterImage]
+type RefResourceImporterImageImpl TypedRef[ResourceImporterImage]
 
 func (r *RefResourceImporterImageImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterImage])(r)
+	rg := (*TypedRef[ResourceImporterImage])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterImageImpl) TypedPtr() ResourceImporterImage {
-	rg := (*typedRef[ResourceImporterImage])(r)
+	rg := (*TypedRef[ResourceImporterImage])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterImageImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterImage])(r)
+	rg := (*TypedRef[ResourceImporterImage])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterImageImpl) TypedRef(from *RefResourceImporterImageImpl) {
-	rg := (*typedRef[ResourceImporterImage])(r)
-	t := (*typedRef[ResourceImporterImage])(from)
-	rg.TypedRef((*typedRef[ResourceImporterImage])(t))
+	rg := (*TypedRef[ResourceImporterImage])(r)
+	t := (*TypedRef[ResourceImporterImage])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterImage])(t))
 }
 
 func (r *RefResourceImporterImageImpl) Unref() {
-	rg := (*typedRef[ResourceImporterImage])(r)
+	rg := (*TypedRef[ResourceImporterImage])(r)
 	rg.Unref()
 }
 
@@ -17700,31 +17700,31 @@ type RefResourceImporterImageFont interface {
 	TypedPtr() ResourceImporterImageFont
 }
 
-type RefResourceImporterImageFontImpl typedRef[ResourceImporterImageFont]
+type RefResourceImporterImageFontImpl TypedRef[ResourceImporterImageFont]
 
 func (r *RefResourceImporterImageFontImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterImageFont])(r)
+	rg := (*TypedRef[ResourceImporterImageFont])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterImageFontImpl) TypedPtr() ResourceImporterImageFont {
-	rg := (*typedRef[ResourceImporterImageFont])(r)
+	rg := (*TypedRef[ResourceImporterImageFont])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterImageFontImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterImageFont])(r)
+	rg := (*TypedRef[ResourceImporterImageFont])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterImageFontImpl) TypedRef(from *RefResourceImporterImageFontImpl) {
-	rg := (*typedRef[ResourceImporterImageFont])(r)
-	t := (*typedRef[ResourceImporterImageFont])(from)
-	rg.TypedRef((*typedRef[ResourceImporterImageFont])(t))
+	rg := (*TypedRef[ResourceImporterImageFont])(r)
+	t := (*TypedRef[ResourceImporterImageFont])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterImageFont])(t))
 }
 
 func (r *RefResourceImporterImageFontImpl) Unref() {
-	rg := (*typedRef[ResourceImporterImageFont])(r)
+	rg := (*TypedRef[ResourceImporterImageFont])(r)
 	rg.Unref()
 }
 
@@ -17752,31 +17752,31 @@ type RefResourceImporterLayeredTexture interface {
 	TypedPtr() ResourceImporterLayeredTexture
 }
 
-type RefResourceImporterLayeredTextureImpl typedRef[ResourceImporterLayeredTexture]
+type RefResourceImporterLayeredTextureImpl TypedRef[ResourceImporterLayeredTexture]
 
 func (r *RefResourceImporterLayeredTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterLayeredTexture])(r)
+	rg := (*TypedRef[ResourceImporterLayeredTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterLayeredTextureImpl) TypedPtr() ResourceImporterLayeredTexture {
-	rg := (*typedRef[ResourceImporterLayeredTexture])(r)
+	rg := (*TypedRef[ResourceImporterLayeredTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterLayeredTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterLayeredTexture])(r)
+	rg := (*TypedRef[ResourceImporterLayeredTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterLayeredTextureImpl) TypedRef(from *RefResourceImporterLayeredTextureImpl) {
-	rg := (*typedRef[ResourceImporterLayeredTexture])(r)
-	t := (*typedRef[ResourceImporterLayeredTexture])(from)
-	rg.TypedRef((*typedRef[ResourceImporterLayeredTexture])(t))
+	rg := (*TypedRef[ResourceImporterLayeredTexture])(r)
+	t := (*TypedRef[ResourceImporterLayeredTexture])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterLayeredTexture])(t))
 }
 
 func (r *RefResourceImporterLayeredTextureImpl) Unref() {
-	rg := (*typedRef[ResourceImporterLayeredTexture])(r)
+	rg := (*TypedRef[ResourceImporterLayeredTexture])(r)
 	rg.Unref()
 }
 
@@ -17804,31 +17804,31 @@ type RefResourceImporterMP3 interface {
 	TypedPtr() ResourceImporterMP3
 }
 
-type RefResourceImporterMP3Impl typedRef[ResourceImporterMP3]
+type RefResourceImporterMP3Impl TypedRef[ResourceImporterMP3]
 
 func (r *RefResourceImporterMP3Impl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterMP3])(r)
+	rg := (*TypedRef[ResourceImporterMP3])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterMP3Impl) TypedPtr() ResourceImporterMP3 {
-	rg := (*typedRef[ResourceImporterMP3])(r)
+	rg := (*TypedRef[ResourceImporterMP3])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterMP3Impl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterMP3])(r)
+	rg := (*TypedRef[ResourceImporterMP3])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterMP3Impl) TypedRef(from *RefResourceImporterMP3Impl) {
-	rg := (*typedRef[ResourceImporterMP3])(r)
-	t := (*typedRef[ResourceImporterMP3])(from)
-	rg.TypedRef((*typedRef[ResourceImporterMP3])(t))
+	rg := (*TypedRef[ResourceImporterMP3])(r)
+	t := (*TypedRef[ResourceImporterMP3])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterMP3])(t))
 }
 
 func (r *RefResourceImporterMP3Impl) Unref() {
-	rg := (*typedRef[ResourceImporterMP3])(r)
+	rg := (*TypedRef[ResourceImporterMP3])(r)
 	rg.Unref()
 }
 
@@ -17856,31 +17856,31 @@ type RefResourceImporterOBJ interface {
 	TypedPtr() ResourceImporterOBJ
 }
 
-type RefResourceImporterOBJImpl typedRef[ResourceImporterOBJ]
+type RefResourceImporterOBJImpl TypedRef[ResourceImporterOBJ]
 
 func (r *RefResourceImporterOBJImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterOBJ])(r)
+	rg := (*TypedRef[ResourceImporterOBJ])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterOBJImpl) TypedPtr() ResourceImporterOBJ {
-	rg := (*typedRef[ResourceImporterOBJ])(r)
+	rg := (*TypedRef[ResourceImporterOBJ])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterOBJImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterOBJ])(r)
+	rg := (*TypedRef[ResourceImporterOBJ])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterOBJImpl) TypedRef(from *RefResourceImporterOBJImpl) {
-	rg := (*typedRef[ResourceImporterOBJ])(r)
-	t := (*typedRef[ResourceImporterOBJ])(from)
-	rg.TypedRef((*typedRef[ResourceImporterOBJ])(t))
+	rg := (*TypedRef[ResourceImporterOBJ])(r)
+	t := (*TypedRef[ResourceImporterOBJ])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterOBJ])(t))
 }
 
 func (r *RefResourceImporterOBJImpl) Unref() {
-	rg := (*typedRef[ResourceImporterOBJ])(r)
+	rg := (*TypedRef[ResourceImporterOBJ])(r)
 	rg.Unref()
 }
 
@@ -17908,31 +17908,31 @@ type RefResourceImporterOggVorbis interface {
 	TypedPtr() ResourceImporterOggVorbis
 }
 
-type RefResourceImporterOggVorbisImpl typedRef[ResourceImporterOggVorbis]
+type RefResourceImporterOggVorbisImpl TypedRef[ResourceImporterOggVorbis]
 
 func (r *RefResourceImporterOggVorbisImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterOggVorbis])(r)
+	rg := (*TypedRef[ResourceImporterOggVorbis])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterOggVorbisImpl) TypedPtr() ResourceImporterOggVorbis {
-	rg := (*typedRef[ResourceImporterOggVorbis])(r)
+	rg := (*TypedRef[ResourceImporterOggVorbis])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterOggVorbisImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterOggVorbis])(r)
+	rg := (*TypedRef[ResourceImporterOggVorbis])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterOggVorbisImpl) TypedRef(from *RefResourceImporterOggVorbisImpl) {
-	rg := (*typedRef[ResourceImporterOggVorbis])(r)
-	t := (*typedRef[ResourceImporterOggVorbis])(from)
-	rg.TypedRef((*typedRef[ResourceImporterOggVorbis])(t))
+	rg := (*TypedRef[ResourceImporterOggVorbis])(r)
+	t := (*TypedRef[ResourceImporterOggVorbis])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterOggVorbis])(t))
 }
 
 func (r *RefResourceImporterOggVorbisImpl) Unref() {
-	rg := (*typedRef[ResourceImporterOggVorbis])(r)
+	rg := (*TypedRef[ResourceImporterOggVorbis])(r)
 	rg.Unref()
 }
 
@@ -17960,31 +17960,31 @@ type RefResourceImporterScene interface {
 	TypedPtr() ResourceImporterScene
 }
 
-type RefResourceImporterSceneImpl typedRef[ResourceImporterScene]
+type RefResourceImporterSceneImpl TypedRef[ResourceImporterScene]
 
 func (r *RefResourceImporterSceneImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterScene])(r)
+	rg := (*TypedRef[ResourceImporterScene])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterSceneImpl) TypedPtr() ResourceImporterScene {
-	rg := (*typedRef[ResourceImporterScene])(r)
+	rg := (*TypedRef[ResourceImporterScene])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterSceneImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterScene])(r)
+	rg := (*TypedRef[ResourceImporterScene])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterSceneImpl) TypedRef(from *RefResourceImporterSceneImpl) {
-	rg := (*typedRef[ResourceImporterScene])(r)
-	t := (*typedRef[ResourceImporterScene])(from)
-	rg.TypedRef((*typedRef[ResourceImporterScene])(t))
+	rg := (*TypedRef[ResourceImporterScene])(r)
+	t := (*TypedRef[ResourceImporterScene])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterScene])(t))
 }
 
 func (r *RefResourceImporterSceneImpl) Unref() {
-	rg := (*typedRef[ResourceImporterScene])(r)
+	rg := (*TypedRef[ResourceImporterScene])(r)
 	rg.Unref()
 }
 
@@ -18012,31 +18012,31 @@ type RefResourceImporterShaderFile interface {
 	TypedPtr() ResourceImporterShaderFile
 }
 
-type RefResourceImporterShaderFileImpl typedRef[ResourceImporterShaderFile]
+type RefResourceImporterShaderFileImpl TypedRef[ResourceImporterShaderFile]
 
 func (r *RefResourceImporterShaderFileImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterShaderFile])(r)
+	rg := (*TypedRef[ResourceImporterShaderFile])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterShaderFileImpl) TypedPtr() ResourceImporterShaderFile {
-	rg := (*typedRef[ResourceImporterShaderFile])(r)
+	rg := (*TypedRef[ResourceImporterShaderFile])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterShaderFileImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterShaderFile])(r)
+	rg := (*TypedRef[ResourceImporterShaderFile])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterShaderFileImpl) TypedRef(from *RefResourceImporterShaderFileImpl) {
-	rg := (*typedRef[ResourceImporterShaderFile])(r)
-	t := (*typedRef[ResourceImporterShaderFile])(from)
-	rg.TypedRef((*typedRef[ResourceImporterShaderFile])(t))
+	rg := (*TypedRef[ResourceImporterShaderFile])(r)
+	t := (*TypedRef[ResourceImporterShaderFile])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterShaderFile])(t))
 }
 
 func (r *RefResourceImporterShaderFileImpl) Unref() {
-	rg := (*typedRef[ResourceImporterShaderFile])(r)
+	rg := (*TypedRef[ResourceImporterShaderFile])(r)
 	rg.Unref()
 }
 
@@ -18064,31 +18064,31 @@ type RefResourceImporterTexture interface {
 	TypedPtr() ResourceImporterTexture
 }
 
-type RefResourceImporterTextureImpl typedRef[ResourceImporterTexture]
+type RefResourceImporterTextureImpl TypedRef[ResourceImporterTexture]
 
 func (r *RefResourceImporterTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterTexture])(r)
+	rg := (*TypedRef[ResourceImporterTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterTextureImpl) TypedPtr() ResourceImporterTexture {
-	rg := (*typedRef[ResourceImporterTexture])(r)
+	rg := (*TypedRef[ResourceImporterTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterTexture])(r)
+	rg := (*TypedRef[ResourceImporterTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterTextureImpl) TypedRef(from *RefResourceImporterTextureImpl) {
-	rg := (*typedRef[ResourceImporterTexture])(r)
-	t := (*typedRef[ResourceImporterTexture])(from)
-	rg.TypedRef((*typedRef[ResourceImporterTexture])(t))
+	rg := (*TypedRef[ResourceImporterTexture])(r)
+	t := (*TypedRef[ResourceImporterTexture])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterTexture])(t))
 }
 
 func (r *RefResourceImporterTextureImpl) Unref() {
-	rg := (*typedRef[ResourceImporterTexture])(r)
+	rg := (*TypedRef[ResourceImporterTexture])(r)
 	rg.Unref()
 }
 
@@ -18116,31 +18116,31 @@ type RefResourceImporterTextureAtlas interface {
 	TypedPtr() ResourceImporterTextureAtlas
 }
 
-type RefResourceImporterTextureAtlasImpl typedRef[ResourceImporterTextureAtlas]
+type RefResourceImporterTextureAtlasImpl TypedRef[ResourceImporterTextureAtlas]
 
 func (r *RefResourceImporterTextureAtlasImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterTextureAtlas])(r)
+	rg := (*TypedRef[ResourceImporterTextureAtlas])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterTextureAtlasImpl) TypedPtr() ResourceImporterTextureAtlas {
-	rg := (*typedRef[ResourceImporterTextureAtlas])(r)
+	rg := (*TypedRef[ResourceImporterTextureAtlas])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterTextureAtlasImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterTextureAtlas])(r)
+	rg := (*TypedRef[ResourceImporterTextureAtlas])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterTextureAtlasImpl) TypedRef(from *RefResourceImporterTextureAtlasImpl) {
-	rg := (*typedRef[ResourceImporterTextureAtlas])(r)
-	t := (*typedRef[ResourceImporterTextureAtlas])(from)
-	rg.TypedRef((*typedRef[ResourceImporterTextureAtlas])(t))
+	rg := (*TypedRef[ResourceImporterTextureAtlas])(r)
+	t := (*TypedRef[ResourceImporterTextureAtlas])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterTextureAtlas])(t))
 }
 
 func (r *RefResourceImporterTextureAtlasImpl) Unref() {
-	rg := (*typedRef[ResourceImporterTextureAtlas])(r)
+	rg := (*TypedRef[ResourceImporterTextureAtlas])(r)
 	rg.Unref()
 }
 
@@ -18168,31 +18168,31 @@ type RefResourceImporterWAV interface {
 	TypedPtr() ResourceImporterWAV
 }
 
-type RefResourceImporterWAVImpl typedRef[ResourceImporterWAV]
+type RefResourceImporterWAVImpl TypedRef[ResourceImporterWAV]
 
 func (r *RefResourceImporterWAVImpl) Ptr() RefCounted {
-	rg := (*typedRef[ResourceImporterWAV])(r)
+	rg := (*TypedRef[ResourceImporterWAV])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefResourceImporterWAVImpl) TypedPtr() ResourceImporterWAV {
-	rg := (*typedRef[ResourceImporterWAV])(r)
+	rg := (*TypedRef[ResourceImporterWAV])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefResourceImporterWAVImpl) Ref(from Ref) {
-	rg := (*typedRef[ResourceImporterWAV])(r)
+	rg := (*TypedRef[ResourceImporterWAV])(r)
 	rg.Ref(from)
 }
 
 func (r *RefResourceImporterWAVImpl) TypedRef(from *RefResourceImporterWAVImpl) {
-	rg := (*typedRef[ResourceImporterWAV])(r)
-	t := (*typedRef[ResourceImporterWAV])(from)
-	rg.TypedRef((*typedRef[ResourceImporterWAV])(t))
+	rg := (*TypedRef[ResourceImporterWAV])(r)
+	t := (*TypedRef[ResourceImporterWAV])(from)
+	rg.TypedRef((*TypedRef[ResourceImporterWAV])(t))
 }
 
 func (r *RefResourceImporterWAVImpl) Unref() {
-	rg := (*typedRef[ResourceImporterWAV])(r)
+	rg := (*TypedRef[ResourceImporterWAV])(r)
 	rg.Unref()
 }
 
@@ -18220,31 +18220,31 @@ type RefRibbonTrailMesh interface {
 	TypedPtr() RibbonTrailMesh
 }
 
-type RefRibbonTrailMeshImpl typedRef[RibbonTrailMesh]
+type RefRibbonTrailMeshImpl TypedRef[RibbonTrailMesh]
 
 func (r *RefRibbonTrailMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[RibbonTrailMesh])(r)
+	rg := (*TypedRef[RibbonTrailMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRibbonTrailMeshImpl) TypedPtr() RibbonTrailMesh {
-	rg := (*typedRef[RibbonTrailMesh])(r)
+	rg := (*TypedRef[RibbonTrailMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRibbonTrailMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[RibbonTrailMesh])(r)
+	rg := (*TypedRef[RibbonTrailMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRibbonTrailMeshImpl) TypedRef(from *RefRibbonTrailMeshImpl) {
-	rg := (*typedRef[RibbonTrailMesh])(r)
-	t := (*typedRef[RibbonTrailMesh])(from)
-	rg.TypedRef((*typedRef[RibbonTrailMesh])(t))
+	rg := (*TypedRef[RibbonTrailMesh])(r)
+	t := (*TypedRef[RibbonTrailMesh])(from)
+	rg.TypedRef((*TypedRef[RibbonTrailMesh])(t))
 }
 
 func (r *RefRibbonTrailMeshImpl) Unref() {
-	rg := (*typedRef[RibbonTrailMesh])(r)
+	rg := (*TypedRef[RibbonTrailMesh])(r)
 	rg.Unref()
 }
 
@@ -18272,31 +18272,31 @@ type RefRichTextEffect interface {
 	TypedPtr() RichTextEffect
 }
 
-type RefRichTextEffectImpl typedRef[RichTextEffect]
+type RefRichTextEffectImpl TypedRef[RichTextEffect]
 
 func (r *RefRichTextEffectImpl) Ptr() RefCounted {
-	rg := (*typedRef[RichTextEffect])(r)
+	rg := (*TypedRef[RichTextEffect])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefRichTextEffectImpl) TypedPtr() RichTextEffect {
-	rg := (*typedRef[RichTextEffect])(r)
+	rg := (*TypedRef[RichTextEffect])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefRichTextEffectImpl) Ref(from Ref) {
-	rg := (*typedRef[RichTextEffect])(r)
+	rg := (*TypedRef[RichTextEffect])(r)
 	rg.Ref(from)
 }
 
 func (r *RefRichTextEffectImpl) TypedRef(from *RefRichTextEffectImpl) {
-	rg := (*typedRef[RichTextEffect])(r)
-	t := (*typedRef[RichTextEffect])(from)
-	rg.TypedRef((*typedRef[RichTextEffect])(t))
+	rg := (*TypedRef[RichTextEffect])(r)
+	t := (*TypedRef[RichTextEffect])(from)
+	rg.TypedRef((*TypedRef[RichTextEffect])(t))
 }
 
 func (r *RefRichTextEffectImpl) Unref() {
-	rg := (*typedRef[RichTextEffect])(r)
+	rg := (*TypedRef[RichTextEffect])(r)
 	rg.Unref()
 }
 
@@ -18324,31 +18324,31 @@ type RefSceneMultiplayer interface {
 	TypedPtr() SceneMultiplayer
 }
 
-type RefSceneMultiplayerImpl typedRef[SceneMultiplayer]
+type RefSceneMultiplayerImpl TypedRef[SceneMultiplayer]
 
 func (r *RefSceneMultiplayerImpl) Ptr() RefCounted {
-	rg := (*typedRef[SceneMultiplayer])(r)
+	rg := (*TypedRef[SceneMultiplayer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSceneMultiplayerImpl) TypedPtr() SceneMultiplayer {
-	rg := (*typedRef[SceneMultiplayer])(r)
+	rg := (*TypedRef[SceneMultiplayer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSceneMultiplayerImpl) Ref(from Ref) {
-	rg := (*typedRef[SceneMultiplayer])(r)
+	rg := (*TypedRef[SceneMultiplayer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSceneMultiplayerImpl) TypedRef(from *RefSceneMultiplayerImpl) {
-	rg := (*typedRef[SceneMultiplayer])(r)
-	t := (*typedRef[SceneMultiplayer])(from)
-	rg.TypedRef((*typedRef[SceneMultiplayer])(t))
+	rg := (*TypedRef[SceneMultiplayer])(r)
+	t := (*TypedRef[SceneMultiplayer])(from)
+	rg.TypedRef((*TypedRef[SceneMultiplayer])(t))
 }
 
 func (r *RefSceneMultiplayerImpl) Unref() {
-	rg := (*typedRef[SceneMultiplayer])(r)
+	rg := (*TypedRef[SceneMultiplayer])(r)
 	rg.Unref()
 }
 
@@ -18376,31 +18376,31 @@ type RefSceneReplicationConfig interface {
 	TypedPtr() SceneReplicationConfig
 }
 
-type RefSceneReplicationConfigImpl typedRef[SceneReplicationConfig]
+type RefSceneReplicationConfigImpl TypedRef[SceneReplicationConfig]
 
 func (r *RefSceneReplicationConfigImpl) Ptr() RefCounted {
-	rg := (*typedRef[SceneReplicationConfig])(r)
+	rg := (*TypedRef[SceneReplicationConfig])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSceneReplicationConfigImpl) TypedPtr() SceneReplicationConfig {
-	rg := (*typedRef[SceneReplicationConfig])(r)
+	rg := (*TypedRef[SceneReplicationConfig])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSceneReplicationConfigImpl) Ref(from Ref) {
-	rg := (*typedRef[SceneReplicationConfig])(r)
+	rg := (*TypedRef[SceneReplicationConfig])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSceneReplicationConfigImpl) TypedRef(from *RefSceneReplicationConfigImpl) {
-	rg := (*typedRef[SceneReplicationConfig])(r)
-	t := (*typedRef[SceneReplicationConfig])(from)
-	rg.TypedRef((*typedRef[SceneReplicationConfig])(t))
+	rg := (*TypedRef[SceneReplicationConfig])(r)
+	t := (*TypedRef[SceneReplicationConfig])(from)
+	rg.TypedRef((*TypedRef[SceneReplicationConfig])(t))
 }
 
 func (r *RefSceneReplicationConfigImpl) Unref() {
-	rg := (*typedRef[SceneReplicationConfig])(r)
+	rg := (*TypedRef[SceneReplicationConfig])(r)
 	rg.Unref()
 }
 
@@ -18428,31 +18428,31 @@ type RefSceneState interface {
 	TypedPtr() SceneState
 }
 
-type RefSceneStateImpl typedRef[SceneState]
+type RefSceneStateImpl TypedRef[SceneState]
 
 func (r *RefSceneStateImpl) Ptr() RefCounted {
-	rg := (*typedRef[SceneState])(r)
+	rg := (*TypedRef[SceneState])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSceneStateImpl) TypedPtr() SceneState {
-	rg := (*typedRef[SceneState])(r)
+	rg := (*TypedRef[SceneState])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSceneStateImpl) Ref(from Ref) {
-	rg := (*typedRef[SceneState])(r)
+	rg := (*TypedRef[SceneState])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSceneStateImpl) TypedRef(from *RefSceneStateImpl) {
-	rg := (*typedRef[SceneState])(r)
-	t := (*typedRef[SceneState])(from)
-	rg.TypedRef((*typedRef[SceneState])(t))
+	rg := (*TypedRef[SceneState])(r)
+	t := (*TypedRef[SceneState])(from)
+	rg.TypedRef((*TypedRef[SceneState])(t))
 }
 
 func (r *RefSceneStateImpl) Unref() {
-	rg := (*typedRef[SceneState])(r)
+	rg := (*TypedRef[SceneState])(r)
 	rg.Unref()
 }
 
@@ -18480,31 +18480,31 @@ type RefSceneTreeTimer interface {
 	TypedPtr() SceneTreeTimer
 }
 
-type RefSceneTreeTimerImpl typedRef[SceneTreeTimer]
+type RefSceneTreeTimerImpl TypedRef[SceneTreeTimer]
 
 func (r *RefSceneTreeTimerImpl) Ptr() RefCounted {
-	rg := (*typedRef[SceneTreeTimer])(r)
+	rg := (*TypedRef[SceneTreeTimer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSceneTreeTimerImpl) TypedPtr() SceneTreeTimer {
-	rg := (*typedRef[SceneTreeTimer])(r)
+	rg := (*TypedRef[SceneTreeTimer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSceneTreeTimerImpl) Ref(from Ref) {
-	rg := (*typedRef[SceneTreeTimer])(r)
+	rg := (*TypedRef[SceneTreeTimer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSceneTreeTimerImpl) TypedRef(from *RefSceneTreeTimerImpl) {
-	rg := (*typedRef[SceneTreeTimer])(r)
-	t := (*typedRef[SceneTreeTimer])(from)
-	rg.TypedRef((*typedRef[SceneTreeTimer])(t))
+	rg := (*TypedRef[SceneTreeTimer])(r)
+	t := (*TypedRef[SceneTreeTimer])(from)
+	rg.TypedRef((*TypedRef[SceneTreeTimer])(t))
 }
 
 func (r *RefSceneTreeTimerImpl) Unref() {
-	rg := (*typedRef[SceneTreeTimer])(r)
+	rg := (*TypedRef[SceneTreeTimer])(r)
 	rg.Unref()
 }
 
@@ -18532,31 +18532,31 @@ type RefScript interface {
 	TypedPtr() Script
 }
 
-type RefScriptImpl typedRef[Script]
+type RefScriptImpl TypedRef[Script]
 
 func (r *RefScriptImpl) Ptr() RefCounted {
-	rg := (*typedRef[Script])(r)
+	rg := (*TypedRef[Script])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefScriptImpl) TypedPtr() Script {
-	rg := (*typedRef[Script])(r)
+	rg := (*TypedRef[Script])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefScriptImpl) Ref(from Ref) {
-	rg := (*typedRef[Script])(r)
+	rg := (*TypedRef[Script])(r)
 	rg.Ref(from)
 }
 
 func (r *RefScriptImpl) TypedRef(from *RefScriptImpl) {
-	rg := (*typedRef[Script])(r)
-	t := (*typedRef[Script])(from)
-	rg.TypedRef((*typedRef[Script])(t))
+	rg := (*TypedRef[Script])(r)
+	t := (*TypedRef[Script])(from)
+	rg.TypedRef((*TypedRef[Script])(t))
 }
 
 func (r *RefScriptImpl) Unref() {
-	rg := (*typedRef[Script])(r)
+	rg := (*TypedRef[Script])(r)
 	rg.Unref()
 }
 
@@ -18584,31 +18584,31 @@ type RefScriptExtension interface {
 	TypedPtr() ScriptExtension
 }
 
-type RefScriptExtensionImpl typedRef[ScriptExtension]
+type RefScriptExtensionImpl TypedRef[ScriptExtension]
 
 func (r *RefScriptExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[ScriptExtension])(r)
+	rg := (*TypedRef[ScriptExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefScriptExtensionImpl) TypedPtr() ScriptExtension {
-	rg := (*typedRef[ScriptExtension])(r)
+	rg := (*TypedRef[ScriptExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefScriptExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[ScriptExtension])(r)
+	rg := (*TypedRef[ScriptExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefScriptExtensionImpl) TypedRef(from *RefScriptExtensionImpl) {
-	rg := (*typedRef[ScriptExtension])(r)
-	t := (*typedRef[ScriptExtension])(from)
-	rg.TypedRef((*typedRef[ScriptExtension])(t))
+	rg := (*TypedRef[ScriptExtension])(r)
+	t := (*TypedRef[ScriptExtension])(from)
+	rg.TypedRef((*TypedRef[ScriptExtension])(t))
 }
 
 func (r *RefScriptExtensionImpl) Unref() {
-	rg := (*typedRef[ScriptExtension])(r)
+	rg := (*TypedRef[ScriptExtension])(r)
 	rg.Unref()
 }
 
@@ -18636,31 +18636,31 @@ type RefSegmentShape2D interface {
 	TypedPtr() SegmentShape2D
 }
 
-type RefSegmentShape2DImpl typedRef[SegmentShape2D]
+type RefSegmentShape2DImpl TypedRef[SegmentShape2D]
 
 func (r *RefSegmentShape2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[SegmentShape2D])(r)
+	rg := (*TypedRef[SegmentShape2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSegmentShape2DImpl) TypedPtr() SegmentShape2D {
-	rg := (*typedRef[SegmentShape2D])(r)
+	rg := (*TypedRef[SegmentShape2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSegmentShape2DImpl) Ref(from Ref) {
-	rg := (*typedRef[SegmentShape2D])(r)
+	rg := (*TypedRef[SegmentShape2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSegmentShape2DImpl) TypedRef(from *RefSegmentShape2DImpl) {
-	rg := (*typedRef[SegmentShape2D])(r)
-	t := (*typedRef[SegmentShape2D])(from)
-	rg.TypedRef((*typedRef[SegmentShape2D])(t))
+	rg := (*TypedRef[SegmentShape2D])(r)
+	t := (*TypedRef[SegmentShape2D])(from)
+	rg.TypedRef((*TypedRef[SegmentShape2D])(t))
 }
 
 func (r *RefSegmentShape2DImpl) Unref() {
-	rg := (*typedRef[SegmentShape2D])(r)
+	rg := (*TypedRef[SegmentShape2D])(r)
 	rg.Unref()
 }
 
@@ -18688,31 +18688,31 @@ type RefSemaphore interface {
 	TypedPtr() Semaphore
 }
 
-type RefSemaphoreImpl typedRef[Semaphore]
+type RefSemaphoreImpl TypedRef[Semaphore]
 
 func (r *RefSemaphoreImpl) Ptr() RefCounted {
-	rg := (*typedRef[Semaphore])(r)
+	rg := (*TypedRef[Semaphore])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSemaphoreImpl) TypedPtr() Semaphore {
-	rg := (*typedRef[Semaphore])(r)
+	rg := (*TypedRef[Semaphore])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSemaphoreImpl) Ref(from Ref) {
-	rg := (*typedRef[Semaphore])(r)
+	rg := (*TypedRef[Semaphore])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSemaphoreImpl) TypedRef(from *RefSemaphoreImpl) {
-	rg := (*typedRef[Semaphore])(r)
-	t := (*typedRef[Semaphore])(from)
-	rg.TypedRef((*typedRef[Semaphore])(t))
+	rg := (*TypedRef[Semaphore])(r)
+	t := (*TypedRef[Semaphore])(from)
+	rg.TypedRef((*TypedRef[Semaphore])(t))
 }
 
 func (r *RefSemaphoreImpl) Unref() {
-	rg := (*typedRef[Semaphore])(r)
+	rg := (*TypedRef[Semaphore])(r)
 	rg.Unref()
 }
 
@@ -18740,31 +18740,31 @@ type RefSeparationRayShape2D interface {
 	TypedPtr() SeparationRayShape2D
 }
 
-type RefSeparationRayShape2DImpl typedRef[SeparationRayShape2D]
+type RefSeparationRayShape2DImpl TypedRef[SeparationRayShape2D]
 
 func (r *RefSeparationRayShape2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[SeparationRayShape2D])(r)
+	rg := (*TypedRef[SeparationRayShape2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSeparationRayShape2DImpl) TypedPtr() SeparationRayShape2D {
-	rg := (*typedRef[SeparationRayShape2D])(r)
+	rg := (*TypedRef[SeparationRayShape2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSeparationRayShape2DImpl) Ref(from Ref) {
-	rg := (*typedRef[SeparationRayShape2D])(r)
+	rg := (*TypedRef[SeparationRayShape2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSeparationRayShape2DImpl) TypedRef(from *RefSeparationRayShape2DImpl) {
-	rg := (*typedRef[SeparationRayShape2D])(r)
-	t := (*typedRef[SeparationRayShape2D])(from)
-	rg.TypedRef((*typedRef[SeparationRayShape2D])(t))
+	rg := (*TypedRef[SeparationRayShape2D])(r)
+	t := (*TypedRef[SeparationRayShape2D])(from)
+	rg.TypedRef((*TypedRef[SeparationRayShape2D])(t))
 }
 
 func (r *RefSeparationRayShape2DImpl) Unref() {
-	rg := (*typedRef[SeparationRayShape2D])(r)
+	rg := (*TypedRef[SeparationRayShape2D])(r)
 	rg.Unref()
 }
 
@@ -18792,31 +18792,31 @@ type RefSeparationRayShape3D interface {
 	TypedPtr() SeparationRayShape3D
 }
 
-type RefSeparationRayShape3DImpl typedRef[SeparationRayShape3D]
+type RefSeparationRayShape3DImpl TypedRef[SeparationRayShape3D]
 
 func (r *RefSeparationRayShape3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[SeparationRayShape3D])(r)
+	rg := (*TypedRef[SeparationRayShape3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSeparationRayShape3DImpl) TypedPtr() SeparationRayShape3D {
-	rg := (*typedRef[SeparationRayShape3D])(r)
+	rg := (*TypedRef[SeparationRayShape3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSeparationRayShape3DImpl) Ref(from Ref) {
-	rg := (*typedRef[SeparationRayShape3D])(r)
+	rg := (*TypedRef[SeparationRayShape3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSeparationRayShape3DImpl) TypedRef(from *RefSeparationRayShape3DImpl) {
-	rg := (*typedRef[SeparationRayShape3D])(r)
-	t := (*typedRef[SeparationRayShape3D])(from)
-	rg.TypedRef((*typedRef[SeparationRayShape3D])(t))
+	rg := (*TypedRef[SeparationRayShape3D])(r)
+	t := (*TypedRef[SeparationRayShape3D])(from)
+	rg.TypedRef((*TypedRef[SeparationRayShape3D])(t))
 }
 
 func (r *RefSeparationRayShape3DImpl) Unref() {
-	rg := (*typedRef[SeparationRayShape3D])(r)
+	rg := (*TypedRef[SeparationRayShape3D])(r)
 	rg.Unref()
 }
 
@@ -18844,31 +18844,31 @@ type RefShader interface {
 	TypedPtr() Shader
 }
 
-type RefShaderImpl typedRef[Shader]
+type RefShaderImpl TypedRef[Shader]
 
 func (r *RefShaderImpl) Ptr() RefCounted {
-	rg := (*typedRef[Shader])(r)
+	rg := (*TypedRef[Shader])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefShaderImpl) TypedPtr() Shader {
-	rg := (*typedRef[Shader])(r)
+	rg := (*TypedRef[Shader])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefShaderImpl) Ref(from Ref) {
-	rg := (*typedRef[Shader])(r)
+	rg := (*TypedRef[Shader])(r)
 	rg.Ref(from)
 }
 
 func (r *RefShaderImpl) TypedRef(from *RefShaderImpl) {
-	rg := (*typedRef[Shader])(r)
-	t := (*typedRef[Shader])(from)
-	rg.TypedRef((*typedRef[Shader])(t))
+	rg := (*TypedRef[Shader])(r)
+	t := (*TypedRef[Shader])(from)
+	rg.TypedRef((*TypedRef[Shader])(t))
 }
 
 func (r *RefShaderImpl) Unref() {
-	rg := (*typedRef[Shader])(r)
+	rg := (*TypedRef[Shader])(r)
 	rg.Unref()
 }
 
@@ -18896,31 +18896,31 @@ type RefShaderInclude interface {
 	TypedPtr() ShaderInclude
 }
 
-type RefShaderIncludeImpl typedRef[ShaderInclude]
+type RefShaderIncludeImpl TypedRef[ShaderInclude]
 
 func (r *RefShaderIncludeImpl) Ptr() RefCounted {
-	rg := (*typedRef[ShaderInclude])(r)
+	rg := (*TypedRef[ShaderInclude])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefShaderIncludeImpl) TypedPtr() ShaderInclude {
-	rg := (*typedRef[ShaderInclude])(r)
+	rg := (*TypedRef[ShaderInclude])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefShaderIncludeImpl) Ref(from Ref) {
-	rg := (*typedRef[ShaderInclude])(r)
+	rg := (*TypedRef[ShaderInclude])(r)
 	rg.Ref(from)
 }
 
 func (r *RefShaderIncludeImpl) TypedRef(from *RefShaderIncludeImpl) {
-	rg := (*typedRef[ShaderInclude])(r)
-	t := (*typedRef[ShaderInclude])(from)
-	rg.TypedRef((*typedRef[ShaderInclude])(t))
+	rg := (*TypedRef[ShaderInclude])(r)
+	t := (*TypedRef[ShaderInclude])(from)
+	rg.TypedRef((*TypedRef[ShaderInclude])(t))
 }
 
 func (r *RefShaderIncludeImpl) Unref() {
-	rg := (*typedRef[ShaderInclude])(r)
+	rg := (*TypedRef[ShaderInclude])(r)
 	rg.Unref()
 }
 
@@ -18948,31 +18948,31 @@ type RefShaderMaterial interface {
 	TypedPtr() ShaderMaterial
 }
 
-type RefShaderMaterialImpl typedRef[ShaderMaterial]
+type RefShaderMaterialImpl TypedRef[ShaderMaterial]
 
 func (r *RefShaderMaterialImpl) Ptr() RefCounted {
-	rg := (*typedRef[ShaderMaterial])(r)
+	rg := (*TypedRef[ShaderMaterial])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefShaderMaterialImpl) TypedPtr() ShaderMaterial {
-	rg := (*typedRef[ShaderMaterial])(r)
+	rg := (*TypedRef[ShaderMaterial])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefShaderMaterialImpl) Ref(from Ref) {
-	rg := (*typedRef[ShaderMaterial])(r)
+	rg := (*TypedRef[ShaderMaterial])(r)
 	rg.Ref(from)
 }
 
 func (r *RefShaderMaterialImpl) TypedRef(from *RefShaderMaterialImpl) {
-	rg := (*typedRef[ShaderMaterial])(r)
-	t := (*typedRef[ShaderMaterial])(from)
-	rg.TypedRef((*typedRef[ShaderMaterial])(t))
+	rg := (*TypedRef[ShaderMaterial])(r)
+	t := (*TypedRef[ShaderMaterial])(from)
+	rg.TypedRef((*TypedRef[ShaderMaterial])(t))
 }
 
 func (r *RefShaderMaterialImpl) Unref() {
-	rg := (*typedRef[ShaderMaterial])(r)
+	rg := (*TypedRef[ShaderMaterial])(r)
 	rg.Unref()
 }
 
@@ -19000,31 +19000,31 @@ type RefShape2D interface {
 	TypedPtr() Shape2D
 }
 
-type RefShape2DImpl typedRef[Shape2D]
+type RefShape2DImpl TypedRef[Shape2D]
 
 func (r *RefShape2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[Shape2D])(r)
+	rg := (*TypedRef[Shape2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefShape2DImpl) TypedPtr() Shape2D {
-	rg := (*typedRef[Shape2D])(r)
+	rg := (*TypedRef[Shape2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefShape2DImpl) Ref(from Ref) {
-	rg := (*typedRef[Shape2D])(r)
+	rg := (*TypedRef[Shape2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefShape2DImpl) TypedRef(from *RefShape2DImpl) {
-	rg := (*typedRef[Shape2D])(r)
-	t := (*typedRef[Shape2D])(from)
-	rg.TypedRef((*typedRef[Shape2D])(t))
+	rg := (*TypedRef[Shape2D])(r)
+	t := (*TypedRef[Shape2D])(from)
+	rg.TypedRef((*TypedRef[Shape2D])(t))
 }
 
 func (r *RefShape2DImpl) Unref() {
-	rg := (*typedRef[Shape2D])(r)
+	rg := (*TypedRef[Shape2D])(r)
 	rg.Unref()
 }
 
@@ -19052,31 +19052,31 @@ type RefShape3D interface {
 	TypedPtr() Shape3D
 }
 
-type RefShape3DImpl typedRef[Shape3D]
+type RefShape3DImpl TypedRef[Shape3D]
 
 func (r *RefShape3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[Shape3D])(r)
+	rg := (*TypedRef[Shape3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefShape3DImpl) TypedPtr() Shape3D {
-	rg := (*typedRef[Shape3D])(r)
+	rg := (*TypedRef[Shape3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefShape3DImpl) Ref(from Ref) {
-	rg := (*typedRef[Shape3D])(r)
+	rg := (*TypedRef[Shape3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefShape3DImpl) TypedRef(from *RefShape3DImpl) {
-	rg := (*typedRef[Shape3D])(r)
-	t := (*typedRef[Shape3D])(from)
-	rg.TypedRef((*typedRef[Shape3D])(t))
+	rg := (*TypedRef[Shape3D])(r)
+	t := (*TypedRef[Shape3D])(from)
+	rg.TypedRef((*TypedRef[Shape3D])(t))
 }
 
 func (r *RefShape3DImpl) Unref() {
-	rg := (*typedRef[Shape3D])(r)
+	rg := (*TypedRef[Shape3D])(r)
 	rg.Unref()
 }
 
@@ -19104,31 +19104,31 @@ type RefShortcut interface {
 	TypedPtr() Shortcut
 }
 
-type RefShortcutImpl typedRef[Shortcut]
+type RefShortcutImpl TypedRef[Shortcut]
 
 func (r *RefShortcutImpl) Ptr() RefCounted {
-	rg := (*typedRef[Shortcut])(r)
+	rg := (*TypedRef[Shortcut])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefShortcutImpl) TypedPtr() Shortcut {
-	rg := (*typedRef[Shortcut])(r)
+	rg := (*TypedRef[Shortcut])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefShortcutImpl) Ref(from Ref) {
-	rg := (*typedRef[Shortcut])(r)
+	rg := (*TypedRef[Shortcut])(r)
 	rg.Ref(from)
 }
 
 func (r *RefShortcutImpl) TypedRef(from *RefShortcutImpl) {
-	rg := (*typedRef[Shortcut])(r)
-	t := (*typedRef[Shortcut])(from)
-	rg.TypedRef((*typedRef[Shortcut])(t))
+	rg := (*TypedRef[Shortcut])(r)
+	t := (*TypedRef[Shortcut])(from)
+	rg.TypedRef((*TypedRef[Shortcut])(t))
 }
 
 func (r *RefShortcutImpl) Unref() {
-	rg := (*typedRef[Shortcut])(r)
+	rg := (*TypedRef[Shortcut])(r)
 	rg.Unref()
 }
 
@@ -19156,31 +19156,31 @@ type RefSkeletonModification2D interface {
 	TypedPtr() SkeletonModification2D
 }
 
-type RefSkeletonModification2DImpl typedRef[SkeletonModification2D]
+type RefSkeletonModification2DImpl TypedRef[SkeletonModification2D]
 
 func (r *RefSkeletonModification2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkeletonModification2D])(r)
+	rg := (*TypedRef[SkeletonModification2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkeletonModification2DImpl) TypedPtr() SkeletonModification2D {
-	rg := (*typedRef[SkeletonModification2D])(r)
+	rg := (*TypedRef[SkeletonModification2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkeletonModification2DImpl) Ref(from Ref) {
-	rg := (*typedRef[SkeletonModification2D])(r)
+	rg := (*TypedRef[SkeletonModification2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkeletonModification2DImpl) TypedRef(from *RefSkeletonModification2DImpl) {
-	rg := (*typedRef[SkeletonModification2D])(r)
-	t := (*typedRef[SkeletonModification2D])(from)
-	rg.TypedRef((*typedRef[SkeletonModification2D])(t))
+	rg := (*TypedRef[SkeletonModification2D])(r)
+	t := (*TypedRef[SkeletonModification2D])(from)
+	rg.TypedRef((*TypedRef[SkeletonModification2D])(t))
 }
 
 func (r *RefSkeletonModification2DImpl) Unref() {
-	rg := (*typedRef[SkeletonModification2D])(r)
+	rg := (*TypedRef[SkeletonModification2D])(r)
 	rg.Unref()
 }
 
@@ -19208,31 +19208,31 @@ type RefSkeletonModification2DCCDIK interface {
 	TypedPtr() SkeletonModification2DCCDIK
 }
 
-type RefSkeletonModification2DCCDIKImpl typedRef[SkeletonModification2DCCDIK]
+type RefSkeletonModification2DCCDIKImpl TypedRef[SkeletonModification2DCCDIK]
 
 func (r *RefSkeletonModification2DCCDIKImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkeletonModification2DCCDIK])(r)
+	rg := (*TypedRef[SkeletonModification2DCCDIK])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkeletonModification2DCCDIKImpl) TypedPtr() SkeletonModification2DCCDIK {
-	rg := (*typedRef[SkeletonModification2DCCDIK])(r)
+	rg := (*TypedRef[SkeletonModification2DCCDIK])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkeletonModification2DCCDIKImpl) Ref(from Ref) {
-	rg := (*typedRef[SkeletonModification2DCCDIK])(r)
+	rg := (*TypedRef[SkeletonModification2DCCDIK])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkeletonModification2DCCDIKImpl) TypedRef(from *RefSkeletonModification2DCCDIKImpl) {
-	rg := (*typedRef[SkeletonModification2DCCDIK])(r)
-	t := (*typedRef[SkeletonModification2DCCDIK])(from)
-	rg.TypedRef((*typedRef[SkeletonModification2DCCDIK])(t))
+	rg := (*TypedRef[SkeletonModification2DCCDIK])(r)
+	t := (*TypedRef[SkeletonModification2DCCDIK])(from)
+	rg.TypedRef((*TypedRef[SkeletonModification2DCCDIK])(t))
 }
 
 func (r *RefSkeletonModification2DCCDIKImpl) Unref() {
-	rg := (*typedRef[SkeletonModification2DCCDIK])(r)
+	rg := (*TypedRef[SkeletonModification2DCCDIK])(r)
 	rg.Unref()
 }
 
@@ -19260,31 +19260,31 @@ type RefSkeletonModification2DFABRIK interface {
 	TypedPtr() SkeletonModification2DFABRIK
 }
 
-type RefSkeletonModification2DFABRIKImpl typedRef[SkeletonModification2DFABRIK]
+type RefSkeletonModification2DFABRIKImpl TypedRef[SkeletonModification2DFABRIK]
 
 func (r *RefSkeletonModification2DFABRIKImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkeletonModification2DFABRIK])(r)
+	rg := (*TypedRef[SkeletonModification2DFABRIK])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkeletonModification2DFABRIKImpl) TypedPtr() SkeletonModification2DFABRIK {
-	rg := (*typedRef[SkeletonModification2DFABRIK])(r)
+	rg := (*TypedRef[SkeletonModification2DFABRIK])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkeletonModification2DFABRIKImpl) Ref(from Ref) {
-	rg := (*typedRef[SkeletonModification2DFABRIK])(r)
+	rg := (*TypedRef[SkeletonModification2DFABRIK])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkeletonModification2DFABRIKImpl) TypedRef(from *RefSkeletonModification2DFABRIKImpl) {
-	rg := (*typedRef[SkeletonModification2DFABRIK])(r)
-	t := (*typedRef[SkeletonModification2DFABRIK])(from)
-	rg.TypedRef((*typedRef[SkeletonModification2DFABRIK])(t))
+	rg := (*TypedRef[SkeletonModification2DFABRIK])(r)
+	t := (*TypedRef[SkeletonModification2DFABRIK])(from)
+	rg.TypedRef((*TypedRef[SkeletonModification2DFABRIK])(t))
 }
 
 func (r *RefSkeletonModification2DFABRIKImpl) Unref() {
-	rg := (*typedRef[SkeletonModification2DFABRIK])(r)
+	rg := (*TypedRef[SkeletonModification2DFABRIK])(r)
 	rg.Unref()
 }
 
@@ -19312,31 +19312,31 @@ type RefSkeletonModification2DJiggle interface {
 	TypedPtr() SkeletonModification2DJiggle
 }
 
-type RefSkeletonModification2DJiggleImpl typedRef[SkeletonModification2DJiggle]
+type RefSkeletonModification2DJiggleImpl TypedRef[SkeletonModification2DJiggle]
 
 func (r *RefSkeletonModification2DJiggleImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkeletonModification2DJiggle])(r)
+	rg := (*TypedRef[SkeletonModification2DJiggle])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkeletonModification2DJiggleImpl) TypedPtr() SkeletonModification2DJiggle {
-	rg := (*typedRef[SkeletonModification2DJiggle])(r)
+	rg := (*TypedRef[SkeletonModification2DJiggle])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkeletonModification2DJiggleImpl) Ref(from Ref) {
-	rg := (*typedRef[SkeletonModification2DJiggle])(r)
+	rg := (*TypedRef[SkeletonModification2DJiggle])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkeletonModification2DJiggleImpl) TypedRef(from *RefSkeletonModification2DJiggleImpl) {
-	rg := (*typedRef[SkeletonModification2DJiggle])(r)
-	t := (*typedRef[SkeletonModification2DJiggle])(from)
-	rg.TypedRef((*typedRef[SkeletonModification2DJiggle])(t))
+	rg := (*TypedRef[SkeletonModification2DJiggle])(r)
+	t := (*TypedRef[SkeletonModification2DJiggle])(from)
+	rg.TypedRef((*TypedRef[SkeletonModification2DJiggle])(t))
 }
 
 func (r *RefSkeletonModification2DJiggleImpl) Unref() {
-	rg := (*typedRef[SkeletonModification2DJiggle])(r)
+	rg := (*TypedRef[SkeletonModification2DJiggle])(r)
 	rg.Unref()
 }
 
@@ -19364,31 +19364,31 @@ type RefSkeletonModification2DLookAt interface {
 	TypedPtr() SkeletonModification2DLookAt
 }
 
-type RefSkeletonModification2DLookAtImpl typedRef[SkeletonModification2DLookAt]
+type RefSkeletonModification2DLookAtImpl TypedRef[SkeletonModification2DLookAt]
 
 func (r *RefSkeletonModification2DLookAtImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkeletonModification2DLookAt])(r)
+	rg := (*TypedRef[SkeletonModification2DLookAt])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkeletonModification2DLookAtImpl) TypedPtr() SkeletonModification2DLookAt {
-	rg := (*typedRef[SkeletonModification2DLookAt])(r)
+	rg := (*TypedRef[SkeletonModification2DLookAt])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkeletonModification2DLookAtImpl) Ref(from Ref) {
-	rg := (*typedRef[SkeletonModification2DLookAt])(r)
+	rg := (*TypedRef[SkeletonModification2DLookAt])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkeletonModification2DLookAtImpl) TypedRef(from *RefSkeletonModification2DLookAtImpl) {
-	rg := (*typedRef[SkeletonModification2DLookAt])(r)
-	t := (*typedRef[SkeletonModification2DLookAt])(from)
-	rg.TypedRef((*typedRef[SkeletonModification2DLookAt])(t))
+	rg := (*TypedRef[SkeletonModification2DLookAt])(r)
+	t := (*TypedRef[SkeletonModification2DLookAt])(from)
+	rg.TypedRef((*TypedRef[SkeletonModification2DLookAt])(t))
 }
 
 func (r *RefSkeletonModification2DLookAtImpl) Unref() {
-	rg := (*typedRef[SkeletonModification2DLookAt])(r)
+	rg := (*TypedRef[SkeletonModification2DLookAt])(r)
 	rg.Unref()
 }
 
@@ -19416,31 +19416,31 @@ type RefSkeletonModification2DPhysicalBones interface {
 	TypedPtr() SkeletonModification2DPhysicalBones
 }
 
-type RefSkeletonModification2DPhysicalBonesImpl typedRef[SkeletonModification2DPhysicalBones]
+type RefSkeletonModification2DPhysicalBonesImpl TypedRef[SkeletonModification2DPhysicalBones]
 
 func (r *RefSkeletonModification2DPhysicalBonesImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkeletonModification2DPhysicalBones])(r)
+	rg := (*TypedRef[SkeletonModification2DPhysicalBones])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkeletonModification2DPhysicalBonesImpl) TypedPtr() SkeletonModification2DPhysicalBones {
-	rg := (*typedRef[SkeletonModification2DPhysicalBones])(r)
+	rg := (*TypedRef[SkeletonModification2DPhysicalBones])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkeletonModification2DPhysicalBonesImpl) Ref(from Ref) {
-	rg := (*typedRef[SkeletonModification2DPhysicalBones])(r)
+	rg := (*TypedRef[SkeletonModification2DPhysicalBones])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkeletonModification2DPhysicalBonesImpl) TypedRef(from *RefSkeletonModification2DPhysicalBonesImpl) {
-	rg := (*typedRef[SkeletonModification2DPhysicalBones])(r)
-	t := (*typedRef[SkeletonModification2DPhysicalBones])(from)
-	rg.TypedRef((*typedRef[SkeletonModification2DPhysicalBones])(t))
+	rg := (*TypedRef[SkeletonModification2DPhysicalBones])(r)
+	t := (*TypedRef[SkeletonModification2DPhysicalBones])(from)
+	rg.TypedRef((*TypedRef[SkeletonModification2DPhysicalBones])(t))
 }
 
 func (r *RefSkeletonModification2DPhysicalBonesImpl) Unref() {
-	rg := (*typedRef[SkeletonModification2DPhysicalBones])(r)
+	rg := (*TypedRef[SkeletonModification2DPhysicalBones])(r)
 	rg.Unref()
 }
 
@@ -19468,31 +19468,31 @@ type RefSkeletonModification2DStackHolder interface {
 	TypedPtr() SkeletonModification2DStackHolder
 }
 
-type RefSkeletonModification2DStackHolderImpl typedRef[SkeletonModification2DStackHolder]
+type RefSkeletonModification2DStackHolderImpl TypedRef[SkeletonModification2DStackHolder]
 
 func (r *RefSkeletonModification2DStackHolderImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkeletonModification2DStackHolder])(r)
+	rg := (*TypedRef[SkeletonModification2DStackHolder])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkeletonModification2DStackHolderImpl) TypedPtr() SkeletonModification2DStackHolder {
-	rg := (*typedRef[SkeletonModification2DStackHolder])(r)
+	rg := (*TypedRef[SkeletonModification2DStackHolder])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkeletonModification2DStackHolderImpl) Ref(from Ref) {
-	rg := (*typedRef[SkeletonModification2DStackHolder])(r)
+	rg := (*TypedRef[SkeletonModification2DStackHolder])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkeletonModification2DStackHolderImpl) TypedRef(from *RefSkeletonModification2DStackHolderImpl) {
-	rg := (*typedRef[SkeletonModification2DStackHolder])(r)
-	t := (*typedRef[SkeletonModification2DStackHolder])(from)
-	rg.TypedRef((*typedRef[SkeletonModification2DStackHolder])(t))
+	rg := (*TypedRef[SkeletonModification2DStackHolder])(r)
+	t := (*TypedRef[SkeletonModification2DStackHolder])(from)
+	rg.TypedRef((*TypedRef[SkeletonModification2DStackHolder])(t))
 }
 
 func (r *RefSkeletonModification2DStackHolderImpl) Unref() {
-	rg := (*typedRef[SkeletonModification2DStackHolder])(r)
+	rg := (*TypedRef[SkeletonModification2DStackHolder])(r)
 	rg.Unref()
 }
 
@@ -19520,31 +19520,31 @@ type RefSkeletonModification2DTwoBoneIK interface {
 	TypedPtr() SkeletonModification2DTwoBoneIK
 }
 
-type RefSkeletonModification2DTwoBoneIKImpl typedRef[SkeletonModification2DTwoBoneIK]
+type RefSkeletonModification2DTwoBoneIKImpl TypedRef[SkeletonModification2DTwoBoneIK]
 
 func (r *RefSkeletonModification2DTwoBoneIKImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkeletonModification2DTwoBoneIK])(r)
+	rg := (*TypedRef[SkeletonModification2DTwoBoneIK])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkeletonModification2DTwoBoneIKImpl) TypedPtr() SkeletonModification2DTwoBoneIK {
-	rg := (*typedRef[SkeletonModification2DTwoBoneIK])(r)
+	rg := (*TypedRef[SkeletonModification2DTwoBoneIK])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkeletonModification2DTwoBoneIKImpl) Ref(from Ref) {
-	rg := (*typedRef[SkeletonModification2DTwoBoneIK])(r)
+	rg := (*TypedRef[SkeletonModification2DTwoBoneIK])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkeletonModification2DTwoBoneIKImpl) TypedRef(from *RefSkeletonModification2DTwoBoneIKImpl) {
-	rg := (*typedRef[SkeletonModification2DTwoBoneIK])(r)
-	t := (*typedRef[SkeletonModification2DTwoBoneIK])(from)
-	rg.TypedRef((*typedRef[SkeletonModification2DTwoBoneIK])(t))
+	rg := (*TypedRef[SkeletonModification2DTwoBoneIK])(r)
+	t := (*TypedRef[SkeletonModification2DTwoBoneIK])(from)
+	rg.TypedRef((*TypedRef[SkeletonModification2DTwoBoneIK])(t))
 }
 
 func (r *RefSkeletonModification2DTwoBoneIKImpl) Unref() {
-	rg := (*typedRef[SkeletonModification2DTwoBoneIK])(r)
+	rg := (*TypedRef[SkeletonModification2DTwoBoneIK])(r)
 	rg.Unref()
 }
 
@@ -19572,31 +19572,31 @@ type RefSkeletonModificationStack2D interface {
 	TypedPtr() SkeletonModificationStack2D
 }
 
-type RefSkeletonModificationStack2DImpl typedRef[SkeletonModificationStack2D]
+type RefSkeletonModificationStack2DImpl TypedRef[SkeletonModificationStack2D]
 
 func (r *RefSkeletonModificationStack2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkeletonModificationStack2D])(r)
+	rg := (*TypedRef[SkeletonModificationStack2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkeletonModificationStack2DImpl) TypedPtr() SkeletonModificationStack2D {
-	rg := (*typedRef[SkeletonModificationStack2D])(r)
+	rg := (*TypedRef[SkeletonModificationStack2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkeletonModificationStack2DImpl) Ref(from Ref) {
-	rg := (*typedRef[SkeletonModificationStack2D])(r)
+	rg := (*TypedRef[SkeletonModificationStack2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkeletonModificationStack2DImpl) TypedRef(from *RefSkeletonModificationStack2DImpl) {
-	rg := (*typedRef[SkeletonModificationStack2D])(r)
-	t := (*typedRef[SkeletonModificationStack2D])(from)
-	rg.TypedRef((*typedRef[SkeletonModificationStack2D])(t))
+	rg := (*TypedRef[SkeletonModificationStack2D])(r)
+	t := (*TypedRef[SkeletonModificationStack2D])(from)
+	rg.TypedRef((*TypedRef[SkeletonModificationStack2D])(t))
 }
 
 func (r *RefSkeletonModificationStack2DImpl) Unref() {
-	rg := (*typedRef[SkeletonModificationStack2D])(r)
+	rg := (*TypedRef[SkeletonModificationStack2D])(r)
 	rg.Unref()
 }
 
@@ -19624,31 +19624,31 @@ type RefSkeletonProfile interface {
 	TypedPtr() SkeletonProfile
 }
 
-type RefSkeletonProfileImpl typedRef[SkeletonProfile]
+type RefSkeletonProfileImpl TypedRef[SkeletonProfile]
 
 func (r *RefSkeletonProfileImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkeletonProfile])(r)
+	rg := (*TypedRef[SkeletonProfile])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkeletonProfileImpl) TypedPtr() SkeletonProfile {
-	rg := (*typedRef[SkeletonProfile])(r)
+	rg := (*TypedRef[SkeletonProfile])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkeletonProfileImpl) Ref(from Ref) {
-	rg := (*typedRef[SkeletonProfile])(r)
+	rg := (*TypedRef[SkeletonProfile])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkeletonProfileImpl) TypedRef(from *RefSkeletonProfileImpl) {
-	rg := (*typedRef[SkeletonProfile])(r)
-	t := (*typedRef[SkeletonProfile])(from)
-	rg.TypedRef((*typedRef[SkeletonProfile])(t))
+	rg := (*TypedRef[SkeletonProfile])(r)
+	t := (*TypedRef[SkeletonProfile])(from)
+	rg.TypedRef((*TypedRef[SkeletonProfile])(t))
 }
 
 func (r *RefSkeletonProfileImpl) Unref() {
-	rg := (*typedRef[SkeletonProfile])(r)
+	rg := (*TypedRef[SkeletonProfile])(r)
 	rg.Unref()
 }
 
@@ -19676,31 +19676,31 @@ type RefSkeletonProfileHumanoid interface {
 	TypedPtr() SkeletonProfileHumanoid
 }
 
-type RefSkeletonProfileHumanoidImpl typedRef[SkeletonProfileHumanoid]
+type RefSkeletonProfileHumanoidImpl TypedRef[SkeletonProfileHumanoid]
 
 func (r *RefSkeletonProfileHumanoidImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkeletonProfileHumanoid])(r)
+	rg := (*TypedRef[SkeletonProfileHumanoid])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkeletonProfileHumanoidImpl) TypedPtr() SkeletonProfileHumanoid {
-	rg := (*typedRef[SkeletonProfileHumanoid])(r)
+	rg := (*TypedRef[SkeletonProfileHumanoid])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkeletonProfileHumanoidImpl) Ref(from Ref) {
-	rg := (*typedRef[SkeletonProfileHumanoid])(r)
+	rg := (*TypedRef[SkeletonProfileHumanoid])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkeletonProfileHumanoidImpl) TypedRef(from *RefSkeletonProfileHumanoidImpl) {
-	rg := (*typedRef[SkeletonProfileHumanoid])(r)
-	t := (*typedRef[SkeletonProfileHumanoid])(from)
-	rg.TypedRef((*typedRef[SkeletonProfileHumanoid])(t))
+	rg := (*TypedRef[SkeletonProfileHumanoid])(r)
+	t := (*TypedRef[SkeletonProfileHumanoid])(from)
+	rg.TypedRef((*TypedRef[SkeletonProfileHumanoid])(t))
 }
 
 func (r *RefSkeletonProfileHumanoidImpl) Unref() {
-	rg := (*typedRef[SkeletonProfileHumanoid])(r)
+	rg := (*TypedRef[SkeletonProfileHumanoid])(r)
 	rg.Unref()
 }
 
@@ -19728,31 +19728,31 @@ type RefSkin interface {
 	TypedPtr() Skin
 }
 
-type RefSkinImpl typedRef[Skin]
+type RefSkinImpl TypedRef[Skin]
 
 func (r *RefSkinImpl) Ptr() RefCounted {
-	rg := (*typedRef[Skin])(r)
+	rg := (*TypedRef[Skin])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkinImpl) TypedPtr() Skin {
-	rg := (*typedRef[Skin])(r)
+	rg := (*TypedRef[Skin])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkinImpl) Ref(from Ref) {
-	rg := (*typedRef[Skin])(r)
+	rg := (*TypedRef[Skin])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkinImpl) TypedRef(from *RefSkinImpl) {
-	rg := (*typedRef[Skin])(r)
-	t := (*typedRef[Skin])(from)
-	rg.TypedRef((*typedRef[Skin])(t))
+	rg := (*TypedRef[Skin])(r)
+	t := (*TypedRef[Skin])(from)
+	rg.TypedRef((*TypedRef[Skin])(t))
 }
 
 func (r *RefSkinImpl) Unref() {
-	rg := (*typedRef[Skin])(r)
+	rg := (*TypedRef[Skin])(r)
 	rg.Unref()
 }
 
@@ -19780,31 +19780,31 @@ type RefSkinReference interface {
 	TypedPtr() SkinReference
 }
 
-type RefSkinReferenceImpl typedRef[SkinReference]
+type RefSkinReferenceImpl TypedRef[SkinReference]
 
 func (r *RefSkinReferenceImpl) Ptr() RefCounted {
-	rg := (*typedRef[SkinReference])(r)
+	rg := (*TypedRef[SkinReference])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkinReferenceImpl) TypedPtr() SkinReference {
-	rg := (*typedRef[SkinReference])(r)
+	rg := (*TypedRef[SkinReference])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkinReferenceImpl) Ref(from Ref) {
-	rg := (*typedRef[SkinReference])(r)
+	rg := (*TypedRef[SkinReference])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkinReferenceImpl) TypedRef(from *RefSkinReferenceImpl) {
-	rg := (*typedRef[SkinReference])(r)
-	t := (*typedRef[SkinReference])(from)
-	rg.TypedRef((*typedRef[SkinReference])(t))
+	rg := (*TypedRef[SkinReference])(r)
+	t := (*TypedRef[SkinReference])(from)
+	rg.TypedRef((*TypedRef[SkinReference])(t))
 }
 
 func (r *RefSkinReferenceImpl) Unref() {
-	rg := (*typedRef[SkinReference])(r)
+	rg := (*TypedRef[SkinReference])(r)
 	rg.Unref()
 }
 
@@ -19832,31 +19832,31 @@ type RefSky interface {
 	TypedPtr() Sky
 }
 
-type RefSkyImpl typedRef[Sky]
+type RefSkyImpl TypedRef[Sky]
 
 func (r *RefSkyImpl) Ptr() RefCounted {
-	rg := (*typedRef[Sky])(r)
+	rg := (*TypedRef[Sky])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSkyImpl) TypedPtr() Sky {
-	rg := (*typedRef[Sky])(r)
+	rg := (*TypedRef[Sky])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSkyImpl) Ref(from Ref) {
-	rg := (*typedRef[Sky])(r)
+	rg := (*TypedRef[Sky])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSkyImpl) TypedRef(from *RefSkyImpl) {
-	rg := (*typedRef[Sky])(r)
-	t := (*typedRef[Sky])(from)
-	rg.TypedRef((*typedRef[Sky])(t))
+	rg := (*TypedRef[Sky])(r)
+	t := (*TypedRef[Sky])(from)
+	rg.TypedRef((*TypedRef[Sky])(t))
 }
 
 func (r *RefSkyImpl) Unref() {
-	rg := (*typedRef[Sky])(r)
+	rg := (*TypedRef[Sky])(r)
 	rg.Unref()
 }
 
@@ -19884,31 +19884,31 @@ type RefSphereMesh interface {
 	TypedPtr() SphereMesh
 }
 
-type RefSphereMeshImpl typedRef[SphereMesh]
+type RefSphereMeshImpl TypedRef[SphereMesh]
 
 func (r *RefSphereMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[SphereMesh])(r)
+	rg := (*TypedRef[SphereMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSphereMeshImpl) TypedPtr() SphereMesh {
-	rg := (*typedRef[SphereMesh])(r)
+	rg := (*TypedRef[SphereMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSphereMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[SphereMesh])(r)
+	rg := (*TypedRef[SphereMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSphereMeshImpl) TypedRef(from *RefSphereMeshImpl) {
-	rg := (*typedRef[SphereMesh])(r)
-	t := (*typedRef[SphereMesh])(from)
-	rg.TypedRef((*typedRef[SphereMesh])(t))
+	rg := (*TypedRef[SphereMesh])(r)
+	t := (*TypedRef[SphereMesh])(from)
+	rg.TypedRef((*TypedRef[SphereMesh])(t))
 }
 
 func (r *RefSphereMeshImpl) Unref() {
-	rg := (*typedRef[SphereMesh])(r)
+	rg := (*TypedRef[SphereMesh])(r)
 	rg.Unref()
 }
 
@@ -19936,31 +19936,31 @@ type RefSphereOccluder3D interface {
 	TypedPtr() SphereOccluder3D
 }
 
-type RefSphereOccluder3DImpl typedRef[SphereOccluder3D]
+type RefSphereOccluder3DImpl TypedRef[SphereOccluder3D]
 
 func (r *RefSphereOccluder3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[SphereOccluder3D])(r)
+	rg := (*TypedRef[SphereOccluder3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSphereOccluder3DImpl) TypedPtr() SphereOccluder3D {
-	rg := (*typedRef[SphereOccluder3D])(r)
+	rg := (*TypedRef[SphereOccluder3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSphereOccluder3DImpl) Ref(from Ref) {
-	rg := (*typedRef[SphereOccluder3D])(r)
+	rg := (*TypedRef[SphereOccluder3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSphereOccluder3DImpl) TypedRef(from *RefSphereOccluder3DImpl) {
-	rg := (*typedRef[SphereOccluder3D])(r)
-	t := (*typedRef[SphereOccluder3D])(from)
-	rg.TypedRef((*typedRef[SphereOccluder3D])(t))
+	rg := (*TypedRef[SphereOccluder3D])(r)
+	t := (*TypedRef[SphereOccluder3D])(from)
+	rg.TypedRef((*TypedRef[SphereOccluder3D])(t))
 }
 
 func (r *RefSphereOccluder3DImpl) Unref() {
-	rg := (*typedRef[SphereOccluder3D])(r)
+	rg := (*TypedRef[SphereOccluder3D])(r)
 	rg.Unref()
 }
 
@@ -19988,31 +19988,31 @@ type RefSphereShape3D interface {
 	TypedPtr() SphereShape3D
 }
 
-type RefSphereShape3DImpl typedRef[SphereShape3D]
+type RefSphereShape3DImpl TypedRef[SphereShape3D]
 
 func (r *RefSphereShape3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[SphereShape3D])(r)
+	rg := (*TypedRef[SphereShape3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSphereShape3DImpl) TypedPtr() SphereShape3D {
-	rg := (*typedRef[SphereShape3D])(r)
+	rg := (*TypedRef[SphereShape3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSphereShape3DImpl) Ref(from Ref) {
-	rg := (*typedRef[SphereShape3D])(r)
+	rg := (*TypedRef[SphereShape3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSphereShape3DImpl) TypedRef(from *RefSphereShape3DImpl) {
-	rg := (*typedRef[SphereShape3D])(r)
-	t := (*typedRef[SphereShape3D])(from)
-	rg.TypedRef((*typedRef[SphereShape3D])(t))
+	rg := (*TypedRef[SphereShape3D])(r)
+	t := (*TypedRef[SphereShape3D])(from)
+	rg.TypedRef((*TypedRef[SphereShape3D])(t))
 }
 
 func (r *RefSphereShape3DImpl) Unref() {
-	rg := (*typedRef[SphereShape3D])(r)
+	rg := (*TypedRef[SphereShape3D])(r)
 	rg.Unref()
 }
 
@@ -20040,31 +20040,31 @@ type RefSpriteFrames interface {
 	TypedPtr() SpriteFrames
 }
 
-type RefSpriteFramesImpl typedRef[SpriteFrames]
+type RefSpriteFramesImpl TypedRef[SpriteFrames]
 
 func (r *RefSpriteFramesImpl) Ptr() RefCounted {
-	rg := (*typedRef[SpriteFrames])(r)
+	rg := (*TypedRef[SpriteFrames])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSpriteFramesImpl) TypedPtr() SpriteFrames {
-	rg := (*typedRef[SpriteFrames])(r)
+	rg := (*TypedRef[SpriteFrames])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSpriteFramesImpl) Ref(from Ref) {
-	rg := (*typedRef[SpriteFrames])(r)
+	rg := (*TypedRef[SpriteFrames])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSpriteFramesImpl) TypedRef(from *RefSpriteFramesImpl) {
-	rg := (*typedRef[SpriteFrames])(r)
-	t := (*typedRef[SpriteFrames])(from)
-	rg.TypedRef((*typedRef[SpriteFrames])(t))
+	rg := (*TypedRef[SpriteFrames])(r)
+	t := (*TypedRef[SpriteFrames])(from)
+	rg.TypedRef((*TypedRef[SpriteFrames])(t))
 }
 
 func (r *RefSpriteFramesImpl) Unref() {
-	rg := (*typedRef[SpriteFrames])(r)
+	rg := (*TypedRef[SpriteFrames])(r)
 	rg.Unref()
 }
 
@@ -20092,31 +20092,31 @@ type RefStandardMaterial3D interface {
 	TypedPtr() StandardMaterial3D
 }
 
-type RefStandardMaterial3DImpl typedRef[StandardMaterial3D]
+type RefStandardMaterial3DImpl TypedRef[StandardMaterial3D]
 
 func (r *RefStandardMaterial3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[StandardMaterial3D])(r)
+	rg := (*TypedRef[StandardMaterial3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStandardMaterial3DImpl) TypedPtr() StandardMaterial3D {
-	rg := (*typedRef[StandardMaterial3D])(r)
+	rg := (*TypedRef[StandardMaterial3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStandardMaterial3DImpl) Ref(from Ref) {
-	rg := (*typedRef[StandardMaterial3D])(r)
+	rg := (*TypedRef[StandardMaterial3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStandardMaterial3DImpl) TypedRef(from *RefStandardMaterial3DImpl) {
-	rg := (*typedRef[StandardMaterial3D])(r)
-	t := (*typedRef[StandardMaterial3D])(from)
-	rg.TypedRef((*typedRef[StandardMaterial3D])(t))
+	rg := (*TypedRef[StandardMaterial3D])(r)
+	t := (*TypedRef[StandardMaterial3D])(from)
+	rg.TypedRef((*TypedRef[StandardMaterial3D])(t))
 }
 
 func (r *RefStandardMaterial3DImpl) Unref() {
-	rg := (*typedRef[StandardMaterial3D])(r)
+	rg := (*TypedRef[StandardMaterial3D])(r)
 	rg.Unref()
 }
 
@@ -20144,31 +20144,31 @@ type RefStreamPeer interface {
 	TypedPtr() StreamPeer
 }
 
-type RefStreamPeerImpl typedRef[StreamPeer]
+type RefStreamPeerImpl TypedRef[StreamPeer]
 
 func (r *RefStreamPeerImpl) Ptr() RefCounted {
-	rg := (*typedRef[StreamPeer])(r)
+	rg := (*TypedRef[StreamPeer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStreamPeerImpl) TypedPtr() StreamPeer {
-	rg := (*typedRef[StreamPeer])(r)
+	rg := (*TypedRef[StreamPeer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStreamPeerImpl) Ref(from Ref) {
-	rg := (*typedRef[StreamPeer])(r)
+	rg := (*TypedRef[StreamPeer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStreamPeerImpl) TypedRef(from *RefStreamPeerImpl) {
-	rg := (*typedRef[StreamPeer])(r)
-	t := (*typedRef[StreamPeer])(from)
-	rg.TypedRef((*typedRef[StreamPeer])(t))
+	rg := (*TypedRef[StreamPeer])(r)
+	t := (*TypedRef[StreamPeer])(from)
+	rg.TypedRef((*TypedRef[StreamPeer])(t))
 }
 
 func (r *RefStreamPeerImpl) Unref() {
-	rg := (*typedRef[StreamPeer])(r)
+	rg := (*TypedRef[StreamPeer])(r)
 	rg.Unref()
 }
 
@@ -20196,31 +20196,31 @@ type RefStreamPeerBuffer interface {
 	TypedPtr() StreamPeerBuffer
 }
 
-type RefStreamPeerBufferImpl typedRef[StreamPeerBuffer]
+type RefStreamPeerBufferImpl TypedRef[StreamPeerBuffer]
 
 func (r *RefStreamPeerBufferImpl) Ptr() RefCounted {
-	rg := (*typedRef[StreamPeerBuffer])(r)
+	rg := (*TypedRef[StreamPeerBuffer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStreamPeerBufferImpl) TypedPtr() StreamPeerBuffer {
-	rg := (*typedRef[StreamPeerBuffer])(r)
+	rg := (*TypedRef[StreamPeerBuffer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStreamPeerBufferImpl) Ref(from Ref) {
-	rg := (*typedRef[StreamPeerBuffer])(r)
+	rg := (*TypedRef[StreamPeerBuffer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStreamPeerBufferImpl) TypedRef(from *RefStreamPeerBufferImpl) {
-	rg := (*typedRef[StreamPeerBuffer])(r)
-	t := (*typedRef[StreamPeerBuffer])(from)
-	rg.TypedRef((*typedRef[StreamPeerBuffer])(t))
+	rg := (*TypedRef[StreamPeerBuffer])(r)
+	t := (*TypedRef[StreamPeerBuffer])(from)
+	rg.TypedRef((*TypedRef[StreamPeerBuffer])(t))
 }
 
 func (r *RefStreamPeerBufferImpl) Unref() {
-	rg := (*typedRef[StreamPeerBuffer])(r)
+	rg := (*TypedRef[StreamPeerBuffer])(r)
 	rg.Unref()
 }
 
@@ -20248,31 +20248,31 @@ type RefStreamPeerExtension interface {
 	TypedPtr() StreamPeerExtension
 }
 
-type RefStreamPeerExtensionImpl typedRef[StreamPeerExtension]
+type RefStreamPeerExtensionImpl TypedRef[StreamPeerExtension]
 
 func (r *RefStreamPeerExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[StreamPeerExtension])(r)
+	rg := (*TypedRef[StreamPeerExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStreamPeerExtensionImpl) TypedPtr() StreamPeerExtension {
-	rg := (*typedRef[StreamPeerExtension])(r)
+	rg := (*TypedRef[StreamPeerExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStreamPeerExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[StreamPeerExtension])(r)
+	rg := (*TypedRef[StreamPeerExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStreamPeerExtensionImpl) TypedRef(from *RefStreamPeerExtensionImpl) {
-	rg := (*typedRef[StreamPeerExtension])(r)
-	t := (*typedRef[StreamPeerExtension])(from)
-	rg.TypedRef((*typedRef[StreamPeerExtension])(t))
+	rg := (*TypedRef[StreamPeerExtension])(r)
+	t := (*TypedRef[StreamPeerExtension])(from)
+	rg.TypedRef((*TypedRef[StreamPeerExtension])(t))
 }
 
 func (r *RefStreamPeerExtensionImpl) Unref() {
-	rg := (*typedRef[StreamPeerExtension])(r)
+	rg := (*TypedRef[StreamPeerExtension])(r)
 	rg.Unref()
 }
 
@@ -20300,31 +20300,31 @@ type RefStreamPeerGZIP interface {
 	TypedPtr() StreamPeerGZIP
 }
 
-type RefStreamPeerGZIPImpl typedRef[StreamPeerGZIP]
+type RefStreamPeerGZIPImpl TypedRef[StreamPeerGZIP]
 
 func (r *RefStreamPeerGZIPImpl) Ptr() RefCounted {
-	rg := (*typedRef[StreamPeerGZIP])(r)
+	rg := (*TypedRef[StreamPeerGZIP])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStreamPeerGZIPImpl) TypedPtr() StreamPeerGZIP {
-	rg := (*typedRef[StreamPeerGZIP])(r)
+	rg := (*TypedRef[StreamPeerGZIP])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStreamPeerGZIPImpl) Ref(from Ref) {
-	rg := (*typedRef[StreamPeerGZIP])(r)
+	rg := (*TypedRef[StreamPeerGZIP])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStreamPeerGZIPImpl) TypedRef(from *RefStreamPeerGZIPImpl) {
-	rg := (*typedRef[StreamPeerGZIP])(r)
-	t := (*typedRef[StreamPeerGZIP])(from)
-	rg.TypedRef((*typedRef[StreamPeerGZIP])(t))
+	rg := (*TypedRef[StreamPeerGZIP])(r)
+	t := (*TypedRef[StreamPeerGZIP])(from)
+	rg.TypedRef((*TypedRef[StreamPeerGZIP])(t))
 }
 
 func (r *RefStreamPeerGZIPImpl) Unref() {
-	rg := (*typedRef[StreamPeerGZIP])(r)
+	rg := (*TypedRef[StreamPeerGZIP])(r)
 	rg.Unref()
 }
 
@@ -20352,31 +20352,31 @@ type RefStreamPeerTCP interface {
 	TypedPtr() StreamPeerTCP
 }
 
-type RefStreamPeerTCPImpl typedRef[StreamPeerTCP]
+type RefStreamPeerTCPImpl TypedRef[StreamPeerTCP]
 
 func (r *RefStreamPeerTCPImpl) Ptr() RefCounted {
-	rg := (*typedRef[StreamPeerTCP])(r)
+	rg := (*TypedRef[StreamPeerTCP])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStreamPeerTCPImpl) TypedPtr() StreamPeerTCP {
-	rg := (*typedRef[StreamPeerTCP])(r)
+	rg := (*TypedRef[StreamPeerTCP])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStreamPeerTCPImpl) Ref(from Ref) {
-	rg := (*typedRef[StreamPeerTCP])(r)
+	rg := (*TypedRef[StreamPeerTCP])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStreamPeerTCPImpl) TypedRef(from *RefStreamPeerTCPImpl) {
-	rg := (*typedRef[StreamPeerTCP])(r)
-	t := (*typedRef[StreamPeerTCP])(from)
-	rg.TypedRef((*typedRef[StreamPeerTCP])(t))
+	rg := (*TypedRef[StreamPeerTCP])(r)
+	t := (*TypedRef[StreamPeerTCP])(from)
+	rg.TypedRef((*TypedRef[StreamPeerTCP])(t))
 }
 
 func (r *RefStreamPeerTCPImpl) Unref() {
-	rg := (*typedRef[StreamPeerTCP])(r)
+	rg := (*TypedRef[StreamPeerTCP])(r)
 	rg.Unref()
 }
 
@@ -20404,31 +20404,31 @@ type RefStreamPeerTLS interface {
 	TypedPtr() StreamPeerTLS
 }
 
-type RefStreamPeerTLSImpl typedRef[StreamPeerTLS]
+type RefStreamPeerTLSImpl TypedRef[StreamPeerTLS]
 
 func (r *RefStreamPeerTLSImpl) Ptr() RefCounted {
-	rg := (*typedRef[StreamPeerTLS])(r)
+	rg := (*TypedRef[StreamPeerTLS])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStreamPeerTLSImpl) TypedPtr() StreamPeerTLS {
-	rg := (*typedRef[StreamPeerTLS])(r)
+	rg := (*TypedRef[StreamPeerTLS])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStreamPeerTLSImpl) Ref(from Ref) {
-	rg := (*typedRef[StreamPeerTLS])(r)
+	rg := (*TypedRef[StreamPeerTLS])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStreamPeerTLSImpl) TypedRef(from *RefStreamPeerTLSImpl) {
-	rg := (*typedRef[StreamPeerTLS])(r)
-	t := (*typedRef[StreamPeerTLS])(from)
-	rg.TypedRef((*typedRef[StreamPeerTLS])(t))
+	rg := (*TypedRef[StreamPeerTLS])(r)
+	t := (*TypedRef[StreamPeerTLS])(from)
+	rg.TypedRef((*TypedRef[StreamPeerTLS])(t))
 }
 
 func (r *RefStreamPeerTLSImpl) Unref() {
-	rg := (*typedRef[StreamPeerTLS])(r)
+	rg := (*TypedRef[StreamPeerTLS])(r)
 	rg.Unref()
 }
 
@@ -20456,31 +20456,31 @@ type RefStyleBox interface {
 	TypedPtr() StyleBox
 }
 
-type RefStyleBoxImpl typedRef[StyleBox]
+type RefStyleBoxImpl TypedRef[StyleBox]
 
 func (r *RefStyleBoxImpl) Ptr() RefCounted {
-	rg := (*typedRef[StyleBox])(r)
+	rg := (*TypedRef[StyleBox])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStyleBoxImpl) TypedPtr() StyleBox {
-	rg := (*typedRef[StyleBox])(r)
+	rg := (*TypedRef[StyleBox])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStyleBoxImpl) Ref(from Ref) {
-	rg := (*typedRef[StyleBox])(r)
+	rg := (*TypedRef[StyleBox])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStyleBoxImpl) TypedRef(from *RefStyleBoxImpl) {
-	rg := (*typedRef[StyleBox])(r)
-	t := (*typedRef[StyleBox])(from)
-	rg.TypedRef((*typedRef[StyleBox])(t))
+	rg := (*TypedRef[StyleBox])(r)
+	t := (*TypedRef[StyleBox])(from)
+	rg.TypedRef((*TypedRef[StyleBox])(t))
 }
 
 func (r *RefStyleBoxImpl) Unref() {
-	rg := (*typedRef[StyleBox])(r)
+	rg := (*TypedRef[StyleBox])(r)
 	rg.Unref()
 }
 
@@ -20508,31 +20508,31 @@ type RefStyleBoxEmpty interface {
 	TypedPtr() StyleBoxEmpty
 }
 
-type RefStyleBoxEmptyImpl typedRef[StyleBoxEmpty]
+type RefStyleBoxEmptyImpl TypedRef[StyleBoxEmpty]
 
 func (r *RefStyleBoxEmptyImpl) Ptr() RefCounted {
-	rg := (*typedRef[StyleBoxEmpty])(r)
+	rg := (*TypedRef[StyleBoxEmpty])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStyleBoxEmptyImpl) TypedPtr() StyleBoxEmpty {
-	rg := (*typedRef[StyleBoxEmpty])(r)
+	rg := (*TypedRef[StyleBoxEmpty])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStyleBoxEmptyImpl) Ref(from Ref) {
-	rg := (*typedRef[StyleBoxEmpty])(r)
+	rg := (*TypedRef[StyleBoxEmpty])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStyleBoxEmptyImpl) TypedRef(from *RefStyleBoxEmptyImpl) {
-	rg := (*typedRef[StyleBoxEmpty])(r)
-	t := (*typedRef[StyleBoxEmpty])(from)
-	rg.TypedRef((*typedRef[StyleBoxEmpty])(t))
+	rg := (*TypedRef[StyleBoxEmpty])(r)
+	t := (*TypedRef[StyleBoxEmpty])(from)
+	rg.TypedRef((*TypedRef[StyleBoxEmpty])(t))
 }
 
 func (r *RefStyleBoxEmptyImpl) Unref() {
-	rg := (*typedRef[StyleBoxEmpty])(r)
+	rg := (*TypedRef[StyleBoxEmpty])(r)
 	rg.Unref()
 }
 
@@ -20560,31 +20560,31 @@ type RefStyleBoxFlat interface {
 	TypedPtr() StyleBoxFlat
 }
 
-type RefStyleBoxFlatImpl typedRef[StyleBoxFlat]
+type RefStyleBoxFlatImpl TypedRef[StyleBoxFlat]
 
 func (r *RefStyleBoxFlatImpl) Ptr() RefCounted {
-	rg := (*typedRef[StyleBoxFlat])(r)
+	rg := (*TypedRef[StyleBoxFlat])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStyleBoxFlatImpl) TypedPtr() StyleBoxFlat {
-	rg := (*typedRef[StyleBoxFlat])(r)
+	rg := (*TypedRef[StyleBoxFlat])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStyleBoxFlatImpl) Ref(from Ref) {
-	rg := (*typedRef[StyleBoxFlat])(r)
+	rg := (*TypedRef[StyleBoxFlat])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStyleBoxFlatImpl) TypedRef(from *RefStyleBoxFlatImpl) {
-	rg := (*typedRef[StyleBoxFlat])(r)
-	t := (*typedRef[StyleBoxFlat])(from)
-	rg.TypedRef((*typedRef[StyleBoxFlat])(t))
+	rg := (*TypedRef[StyleBoxFlat])(r)
+	t := (*TypedRef[StyleBoxFlat])(from)
+	rg.TypedRef((*TypedRef[StyleBoxFlat])(t))
 }
 
 func (r *RefStyleBoxFlatImpl) Unref() {
-	rg := (*typedRef[StyleBoxFlat])(r)
+	rg := (*TypedRef[StyleBoxFlat])(r)
 	rg.Unref()
 }
 
@@ -20612,31 +20612,31 @@ type RefStyleBoxLine interface {
 	TypedPtr() StyleBoxLine
 }
 
-type RefStyleBoxLineImpl typedRef[StyleBoxLine]
+type RefStyleBoxLineImpl TypedRef[StyleBoxLine]
 
 func (r *RefStyleBoxLineImpl) Ptr() RefCounted {
-	rg := (*typedRef[StyleBoxLine])(r)
+	rg := (*TypedRef[StyleBoxLine])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStyleBoxLineImpl) TypedPtr() StyleBoxLine {
-	rg := (*typedRef[StyleBoxLine])(r)
+	rg := (*TypedRef[StyleBoxLine])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStyleBoxLineImpl) Ref(from Ref) {
-	rg := (*typedRef[StyleBoxLine])(r)
+	rg := (*TypedRef[StyleBoxLine])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStyleBoxLineImpl) TypedRef(from *RefStyleBoxLineImpl) {
-	rg := (*typedRef[StyleBoxLine])(r)
-	t := (*typedRef[StyleBoxLine])(from)
-	rg.TypedRef((*typedRef[StyleBoxLine])(t))
+	rg := (*TypedRef[StyleBoxLine])(r)
+	t := (*TypedRef[StyleBoxLine])(from)
+	rg.TypedRef((*TypedRef[StyleBoxLine])(t))
 }
 
 func (r *RefStyleBoxLineImpl) Unref() {
-	rg := (*typedRef[StyleBoxLine])(r)
+	rg := (*TypedRef[StyleBoxLine])(r)
 	rg.Unref()
 }
 
@@ -20664,31 +20664,31 @@ type RefStyleBoxTexture interface {
 	TypedPtr() StyleBoxTexture
 }
 
-type RefStyleBoxTextureImpl typedRef[StyleBoxTexture]
+type RefStyleBoxTextureImpl TypedRef[StyleBoxTexture]
 
 func (r *RefStyleBoxTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[StyleBoxTexture])(r)
+	rg := (*TypedRef[StyleBoxTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefStyleBoxTextureImpl) TypedPtr() StyleBoxTexture {
-	rg := (*typedRef[StyleBoxTexture])(r)
+	rg := (*TypedRef[StyleBoxTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefStyleBoxTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[StyleBoxTexture])(r)
+	rg := (*TypedRef[StyleBoxTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefStyleBoxTextureImpl) TypedRef(from *RefStyleBoxTextureImpl) {
-	rg := (*typedRef[StyleBoxTexture])(r)
-	t := (*typedRef[StyleBoxTexture])(from)
-	rg.TypedRef((*typedRef[StyleBoxTexture])(t))
+	rg := (*TypedRef[StyleBoxTexture])(r)
+	t := (*TypedRef[StyleBoxTexture])(from)
+	rg.TypedRef((*TypedRef[StyleBoxTexture])(t))
 }
 
 func (r *RefStyleBoxTextureImpl) Unref() {
-	rg := (*typedRef[StyleBoxTexture])(r)
+	rg := (*TypedRef[StyleBoxTexture])(r)
 	rg.Unref()
 }
 
@@ -20716,31 +20716,31 @@ type RefSurfaceTool interface {
 	TypedPtr() SurfaceTool
 }
 
-type RefSurfaceToolImpl typedRef[SurfaceTool]
+type RefSurfaceToolImpl TypedRef[SurfaceTool]
 
 func (r *RefSurfaceToolImpl) Ptr() RefCounted {
-	rg := (*typedRef[SurfaceTool])(r)
+	rg := (*TypedRef[SurfaceTool])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSurfaceToolImpl) TypedPtr() SurfaceTool {
-	rg := (*typedRef[SurfaceTool])(r)
+	rg := (*TypedRef[SurfaceTool])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSurfaceToolImpl) Ref(from Ref) {
-	rg := (*typedRef[SurfaceTool])(r)
+	rg := (*TypedRef[SurfaceTool])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSurfaceToolImpl) TypedRef(from *RefSurfaceToolImpl) {
-	rg := (*typedRef[SurfaceTool])(r)
-	t := (*typedRef[SurfaceTool])(from)
-	rg.TypedRef((*typedRef[SurfaceTool])(t))
+	rg := (*TypedRef[SurfaceTool])(r)
+	t := (*TypedRef[SurfaceTool])(from)
+	rg.TypedRef((*TypedRef[SurfaceTool])(t))
 }
 
 func (r *RefSurfaceToolImpl) Unref() {
-	rg := (*typedRef[SurfaceTool])(r)
+	rg := (*TypedRef[SurfaceTool])(r)
 	rg.Unref()
 }
 
@@ -20768,31 +20768,31 @@ type RefSyntaxHighlighter interface {
 	TypedPtr() SyntaxHighlighter
 }
 
-type RefSyntaxHighlighterImpl typedRef[SyntaxHighlighter]
+type RefSyntaxHighlighterImpl TypedRef[SyntaxHighlighter]
 
 func (r *RefSyntaxHighlighterImpl) Ptr() RefCounted {
-	rg := (*typedRef[SyntaxHighlighter])(r)
+	rg := (*TypedRef[SyntaxHighlighter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSyntaxHighlighterImpl) TypedPtr() SyntaxHighlighter {
-	rg := (*typedRef[SyntaxHighlighter])(r)
+	rg := (*TypedRef[SyntaxHighlighter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSyntaxHighlighterImpl) Ref(from Ref) {
-	rg := (*typedRef[SyntaxHighlighter])(r)
+	rg := (*TypedRef[SyntaxHighlighter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSyntaxHighlighterImpl) TypedRef(from *RefSyntaxHighlighterImpl) {
-	rg := (*typedRef[SyntaxHighlighter])(r)
-	t := (*typedRef[SyntaxHighlighter])(from)
-	rg.TypedRef((*typedRef[SyntaxHighlighter])(t))
+	rg := (*TypedRef[SyntaxHighlighter])(r)
+	t := (*TypedRef[SyntaxHighlighter])(from)
+	rg.TypedRef((*TypedRef[SyntaxHighlighter])(t))
 }
 
 func (r *RefSyntaxHighlighterImpl) Unref() {
-	rg := (*typedRef[SyntaxHighlighter])(r)
+	rg := (*TypedRef[SyntaxHighlighter])(r)
 	rg.Unref()
 }
 
@@ -20820,31 +20820,31 @@ type RefSystemFont interface {
 	TypedPtr() SystemFont
 }
 
-type RefSystemFontImpl typedRef[SystemFont]
+type RefSystemFontImpl TypedRef[SystemFont]
 
 func (r *RefSystemFontImpl) Ptr() RefCounted {
-	rg := (*typedRef[SystemFont])(r)
+	rg := (*TypedRef[SystemFont])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefSystemFontImpl) TypedPtr() SystemFont {
-	rg := (*typedRef[SystemFont])(r)
+	rg := (*TypedRef[SystemFont])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefSystemFontImpl) Ref(from Ref) {
-	rg := (*typedRef[SystemFont])(r)
+	rg := (*TypedRef[SystemFont])(r)
 	rg.Ref(from)
 }
 
 func (r *RefSystemFontImpl) TypedRef(from *RefSystemFontImpl) {
-	rg := (*typedRef[SystemFont])(r)
-	t := (*typedRef[SystemFont])(from)
-	rg.TypedRef((*typedRef[SystemFont])(t))
+	rg := (*TypedRef[SystemFont])(r)
+	t := (*TypedRef[SystemFont])(from)
+	rg.TypedRef((*TypedRef[SystemFont])(t))
 }
 
 func (r *RefSystemFontImpl) Unref() {
-	rg := (*typedRef[SystemFont])(r)
+	rg := (*TypedRef[SystemFont])(r)
 	rg.Unref()
 }
 
@@ -20872,31 +20872,31 @@ type RefTCPServer interface {
 	TypedPtr() TCPServer
 }
 
-type RefTCPServerImpl typedRef[TCPServer]
+type RefTCPServerImpl TypedRef[TCPServer]
 
 func (r *RefTCPServerImpl) Ptr() RefCounted {
-	rg := (*typedRef[TCPServer])(r)
+	rg := (*TypedRef[TCPServer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTCPServerImpl) TypedPtr() TCPServer {
-	rg := (*typedRef[TCPServer])(r)
+	rg := (*TypedRef[TCPServer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTCPServerImpl) Ref(from Ref) {
-	rg := (*typedRef[TCPServer])(r)
+	rg := (*TypedRef[TCPServer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTCPServerImpl) TypedRef(from *RefTCPServerImpl) {
-	rg := (*typedRef[TCPServer])(r)
-	t := (*typedRef[TCPServer])(from)
-	rg.TypedRef((*typedRef[TCPServer])(t))
+	rg := (*TypedRef[TCPServer])(r)
+	t := (*TypedRef[TCPServer])(from)
+	rg.TypedRef((*TypedRef[TCPServer])(t))
 }
 
 func (r *RefTCPServerImpl) Unref() {
-	rg := (*typedRef[TCPServer])(r)
+	rg := (*TypedRef[TCPServer])(r)
 	rg.Unref()
 }
 
@@ -20924,31 +20924,31 @@ type RefTLSOptions interface {
 	TypedPtr() TLSOptions
 }
 
-type RefTLSOptionsImpl typedRef[TLSOptions]
+type RefTLSOptionsImpl TypedRef[TLSOptions]
 
 func (r *RefTLSOptionsImpl) Ptr() RefCounted {
-	rg := (*typedRef[TLSOptions])(r)
+	rg := (*TypedRef[TLSOptions])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTLSOptionsImpl) TypedPtr() TLSOptions {
-	rg := (*typedRef[TLSOptions])(r)
+	rg := (*TypedRef[TLSOptions])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTLSOptionsImpl) Ref(from Ref) {
-	rg := (*typedRef[TLSOptions])(r)
+	rg := (*TypedRef[TLSOptions])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTLSOptionsImpl) TypedRef(from *RefTLSOptionsImpl) {
-	rg := (*typedRef[TLSOptions])(r)
-	t := (*typedRef[TLSOptions])(from)
-	rg.TypedRef((*typedRef[TLSOptions])(t))
+	rg := (*TypedRef[TLSOptions])(r)
+	t := (*TypedRef[TLSOptions])(from)
+	rg.TypedRef((*TypedRef[TLSOptions])(t))
 }
 
 func (r *RefTLSOptionsImpl) Unref() {
-	rg := (*typedRef[TLSOptions])(r)
+	rg := (*TypedRef[TLSOptions])(r)
 	rg.Unref()
 }
 
@@ -20976,31 +20976,31 @@ type RefTextLine interface {
 	TypedPtr() TextLine
 }
 
-type RefTextLineImpl typedRef[TextLine]
+type RefTextLineImpl TypedRef[TextLine]
 
 func (r *RefTextLineImpl) Ptr() RefCounted {
-	rg := (*typedRef[TextLine])(r)
+	rg := (*TypedRef[TextLine])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextLineImpl) TypedPtr() TextLine {
-	rg := (*typedRef[TextLine])(r)
+	rg := (*TypedRef[TextLine])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextLineImpl) Ref(from Ref) {
-	rg := (*typedRef[TextLine])(r)
+	rg := (*TypedRef[TextLine])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextLineImpl) TypedRef(from *RefTextLineImpl) {
-	rg := (*typedRef[TextLine])(r)
-	t := (*typedRef[TextLine])(from)
-	rg.TypedRef((*typedRef[TextLine])(t))
+	rg := (*TypedRef[TextLine])(r)
+	t := (*TypedRef[TextLine])(from)
+	rg.TypedRef((*TypedRef[TextLine])(t))
 }
 
 func (r *RefTextLineImpl) Unref() {
-	rg := (*typedRef[TextLine])(r)
+	rg := (*TypedRef[TextLine])(r)
 	rg.Unref()
 }
 
@@ -21028,31 +21028,31 @@ type RefTextMesh interface {
 	TypedPtr() TextMesh
 }
 
-type RefTextMeshImpl typedRef[TextMesh]
+type RefTextMeshImpl TypedRef[TextMesh]
 
 func (r *RefTextMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[TextMesh])(r)
+	rg := (*TypedRef[TextMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextMeshImpl) TypedPtr() TextMesh {
-	rg := (*typedRef[TextMesh])(r)
+	rg := (*TypedRef[TextMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[TextMesh])(r)
+	rg := (*TypedRef[TextMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextMeshImpl) TypedRef(from *RefTextMeshImpl) {
-	rg := (*typedRef[TextMesh])(r)
-	t := (*typedRef[TextMesh])(from)
-	rg.TypedRef((*typedRef[TextMesh])(t))
+	rg := (*TypedRef[TextMesh])(r)
+	t := (*TypedRef[TextMesh])(from)
+	rg.TypedRef((*TypedRef[TextMesh])(t))
 }
 
 func (r *RefTextMeshImpl) Unref() {
-	rg := (*typedRef[TextMesh])(r)
+	rg := (*TypedRef[TextMesh])(r)
 	rg.Unref()
 }
 
@@ -21080,31 +21080,31 @@ type RefTextParagraph interface {
 	TypedPtr() TextParagraph
 }
 
-type RefTextParagraphImpl typedRef[TextParagraph]
+type RefTextParagraphImpl TypedRef[TextParagraph]
 
 func (r *RefTextParagraphImpl) Ptr() RefCounted {
-	rg := (*typedRef[TextParagraph])(r)
+	rg := (*TypedRef[TextParagraph])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextParagraphImpl) TypedPtr() TextParagraph {
-	rg := (*typedRef[TextParagraph])(r)
+	rg := (*TypedRef[TextParagraph])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextParagraphImpl) Ref(from Ref) {
-	rg := (*typedRef[TextParagraph])(r)
+	rg := (*TypedRef[TextParagraph])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextParagraphImpl) TypedRef(from *RefTextParagraphImpl) {
-	rg := (*typedRef[TextParagraph])(r)
-	t := (*typedRef[TextParagraph])(from)
-	rg.TypedRef((*typedRef[TextParagraph])(t))
+	rg := (*TypedRef[TextParagraph])(r)
+	t := (*TypedRef[TextParagraph])(from)
+	rg.TypedRef((*TypedRef[TextParagraph])(t))
 }
 
 func (r *RefTextParagraphImpl) Unref() {
-	rg := (*typedRef[TextParagraph])(r)
+	rg := (*TypedRef[TextParagraph])(r)
 	rg.Unref()
 }
 
@@ -21132,31 +21132,31 @@ type RefTextServer interface {
 	TypedPtr() TextServer
 }
 
-type RefTextServerImpl typedRef[TextServer]
+type RefTextServerImpl TypedRef[TextServer]
 
 func (r *RefTextServerImpl) Ptr() RefCounted {
-	rg := (*typedRef[TextServer])(r)
+	rg := (*TypedRef[TextServer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextServerImpl) TypedPtr() TextServer {
-	rg := (*typedRef[TextServer])(r)
+	rg := (*TypedRef[TextServer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextServerImpl) Ref(from Ref) {
-	rg := (*typedRef[TextServer])(r)
+	rg := (*TypedRef[TextServer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextServerImpl) TypedRef(from *RefTextServerImpl) {
-	rg := (*typedRef[TextServer])(r)
-	t := (*typedRef[TextServer])(from)
-	rg.TypedRef((*typedRef[TextServer])(t))
+	rg := (*TypedRef[TextServer])(r)
+	t := (*TypedRef[TextServer])(from)
+	rg.TypedRef((*TypedRef[TextServer])(t))
 }
 
 func (r *RefTextServerImpl) Unref() {
-	rg := (*typedRef[TextServer])(r)
+	rg := (*TypedRef[TextServer])(r)
 	rg.Unref()
 }
 
@@ -21184,31 +21184,31 @@ type RefTextServerAdvanced interface {
 	TypedPtr() TextServerAdvanced
 }
 
-type RefTextServerAdvancedImpl typedRef[TextServerAdvanced]
+type RefTextServerAdvancedImpl TypedRef[TextServerAdvanced]
 
 func (r *RefTextServerAdvancedImpl) Ptr() RefCounted {
-	rg := (*typedRef[TextServerAdvanced])(r)
+	rg := (*TypedRef[TextServerAdvanced])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextServerAdvancedImpl) TypedPtr() TextServerAdvanced {
-	rg := (*typedRef[TextServerAdvanced])(r)
+	rg := (*TypedRef[TextServerAdvanced])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextServerAdvancedImpl) Ref(from Ref) {
-	rg := (*typedRef[TextServerAdvanced])(r)
+	rg := (*TypedRef[TextServerAdvanced])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextServerAdvancedImpl) TypedRef(from *RefTextServerAdvancedImpl) {
-	rg := (*typedRef[TextServerAdvanced])(r)
-	t := (*typedRef[TextServerAdvanced])(from)
-	rg.TypedRef((*typedRef[TextServerAdvanced])(t))
+	rg := (*TypedRef[TextServerAdvanced])(r)
+	t := (*TypedRef[TextServerAdvanced])(from)
+	rg.TypedRef((*TypedRef[TextServerAdvanced])(t))
 }
 
 func (r *RefTextServerAdvancedImpl) Unref() {
-	rg := (*typedRef[TextServerAdvanced])(r)
+	rg := (*TypedRef[TextServerAdvanced])(r)
 	rg.Unref()
 }
 
@@ -21236,31 +21236,31 @@ type RefTextServerDummy interface {
 	TypedPtr() TextServerDummy
 }
 
-type RefTextServerDummyImpl typedRef[TextServerDummy]
+type RefTextServerDummyImpl TypedRef[TextServerDummy]
 
 func (r *RefTextServerDummyImpl) Ptr() RefCounted {
-	rg := (*typedRef[TextServerDummy])(r)
+	rg := (*TypedRef[TextServerDummy])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextServerDummyImpl) TypedPtr() TextServerDummy {
-	rg := (*typedRef[TextServerDummy])(r)
+	rg := (*TypedRef[TextServerDummy])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextServerDummyImpl) Ref(from Ref) {
-	rg := (*typedRef[TextServerDummy])(r)
+	rg := (*TypedRef[TextServerDummy])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextServerDummyImpl) TypedRef(from *RefTextServerDummyImpl) {
-	rg := (*typedRef[TextServerDummy])(r)
-	t := (*typedRef[TextServerDummy])(from)
-	rg.TypedRef((*typedRef[TextServerDummy])(t))
+	rg := (*TypedRef[TextServerDummy])(r)
+	t := (*TypedRef[TextServerDummy])(from)
+	rg.TypedRef((*TypedRef[TextServerDummy])(t))
 }
 
 func (r *RefTextServerDummyImpl) Unref() {
-	rg := (*typedRef[TextServerDummy])(r)
+	rg := (*TypedRef[TextServerDummy])(r)
 	rg.Unref()
 }
 
@@ -21288,31 +21288,31 @@ type RefTextServerExtension interface {
 	TypedPtr() TextServerExtension
 }
 
-type RefTextServerExtensionImpl typedRef[TextServerExtension]
+type RefTextServerExtensionImpl TypedRef[TextServerExtension]
 
 func (r *RefTextServerExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[TextServerExtension])(r)
+	rg := (*TypedRef[TextServerExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextServerExtensionImpl) TypedPtr() TextServerExtension {
-	rg := (*typedRef[TextServerExtension])(r)
+	rg := (*TypedRef[TextServerExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextServerExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[TextServerExtension])(r)
+	rg := (*TypedRef[TextServerExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextServerExtensionImpl) TypedRef(from *RefTextServerExtensionImpl) {
-	rg := (*typedRef[TextServerExtension])(r)
-	t := (*typedRef[TextServerExtension])(from)
-	rg.TypedRef((*typedRef[TextServerExtension])(t))
+	rg := (*TypedRef[TextServerExtension])(r)
+	t := (*TypedRef[TextServerExtension])(from)
+	rg.TypedRef((*TypedRef[TextServerExtension])(t))
 }
 
 func (r *RefTextServerExtensionImpl) Unref() {
-	rg := (*typedRef[TextServerExtension])(r)
+	rg := (*TypedRef[TextServerExtension])(r)
 	rg.Unref()
 }
 
@@ -21340,31 +21340,31 @@ type RefTexture interface {
 	TypedPtr() Texture
 }
 
-type RefTextureImpl typedRef[Texture]
+type RefTextureImpl TypedRef[Texture]
 
 func (r *RefTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[Texture])(r)
+	rg := (*TypedRef[Texture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextureImpl) TypedPtr() Texture {
-	rg := (*typedRef[Texture])(r)
+	rg := (*TypedRef[Texture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[Texture])(r)
+	rg := (*TypedRef[Texture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextureImpl) TypedRef(from *RefTextureImpl) {
-	rg := (*typedRef[Texture])(r)
-	t := (*typedRef[Texture])(from)
-	rg.TypedRef((*typedRef[Texture])(t))
+	rg := (*TypedRef[Texture])(r)
+	t := (*TypedRef[Texture])(from)
+	rg.TypedRef((*TypedRef[Texture])(t))
 }
 
 func (r *RefTextureImpl) Unref() {
-	rg := (*typedRef[Texture])(r)
+	rg := (*TypedRef[Texture])(r)
 	rg.Unref()
 }
 
@@ -21392,31 +21392,31 @@ type RefTexture2D interface {
 	TypedPtr() Texture2D
 }
 
-type RefTexture2DImpl typedRef[Texture2D]
+type RefTexture2DImpl TypedRef[Texture2D]
 
 func (r *RefTexture2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[Texture2D])(r)
+	rg := (*TypedRef[Texture2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTexture2DImpl) TypedPtr() Texture2D {
-	rg := (*typedRef[Texture2D])(r)
+	rg := (*TypedRef[Texture2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTexture2DImpl) Ref(from Ref) {
-	rg := (*typedRef[Texture2D])(r)
+	rg := (*TypedRef[Texture2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTexture2DImpl) TypedRef(from *RefTexture2DImpl) {
-	rg := (*typedRef[Texture2D])(r)
-	t := (*typedRef[Texture2D])(from)
-	rg.TypedRef((*typedRef[Texture2D])(t))
+	rg := (*TypedRef[Texture2D])(r)
+	t := (*TypedRef[Texture2D])(from)
+	rg.TypedRef((*TypedRef[Texture2D])(t))
 }
 
 func (r *RefTexture2DImpl) Unref() {
-	rg := (*typedRef[Texture2D])(r)
+	rg := (*TypedRef[Texture2D])(r)
 	rg.Unref()
 }
 
@@ -21444,31 +21444,31 @@ type RefTexture2DArray interface {
 	TypedPtr() Texture2DArray
 }
 
-type RefTexture2DArrayImpl typedRef[Texture2DArray]
+type RefTexture2DArrayImpl TypedRef[Texture2DArray]
 
 func (r *RefTexture2DArrayImpl) Ptr() RefCounted {
-	rg := (*typedRef[Texture2DArray])(r)
+	rg := (*TypedRef[Texture2DArray])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTexture2DArrayImpl) TypedPtr() Texture2DArray {
-	rg := (*typedRef[Texture2DArray])(r)
+	rg := (*TypedRef[Texture2DArray])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTexture2DArrayImpl) Ref(from Ref) {
-	rg := (*typedRef[Texture2DArray])(r)
+	rg := (*TypedRef[Texture2DArray])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTexture2DArrayImpl) TypedRef(from *RefTexture2DArrayImpl) {
-	rg := (*typedRef[Texture2DArray])(r)
-	t := (*typedRef[Texture2DArray])(from)
-	rg.TypedRef((*typedRef[Texture2DArray])(t))
+	rg := (*TypedRef[Texture2DArray])(r)
+	t := (*TypedRef[Texture2DArray])(from)
+	rg.TypedRef((*TypedRef[Texture2DArray])(t))
 }
 
 func (r *RefTexture2DArrayImpl) Unref() {
-	rg := (*typedRef[Texture2DArray])(r)
+	rg := (*TypedRef[Texture2DArray])(r)
 	rg.Unref()
 }
 
@@ -21496,31 +21496,31 @@ type RefTexture2DArrayRD interface {
 	TypedPtr() Texture2DArrayRD
 }
 
-type RefTexture2DArrayRDImpl typedRef[Texture2DArrayRD]
+type RefTexture2DArrayRDImpl TypedRef[Texture2DArrayRD]
 
 func (r *RefTexture2DArrayRDImpl) Ptr() RefCounted {
-	rg := (*typedRef[Texture2DArrayRD])(r)
+	rg := (*TypedRef[Texture2DArrayRD])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTexture2DArrayRDImpl) TypedPtr() Texture2DArrayRD {
-	rg := (*typedRef[Texture2DArrayRD])(r)
+	rg := (*TypedRef[Texture2DArrayRD])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTexture2DArrayRDImpl) Ref(from Ref) {
-	rg := (*typedRef[Texture2DArrayRD])(r)
+	rg := (*TypedRef[Texture2DArrayRD])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTexture2DArrayRDImpl) TypedRef(from *RefTexture2DArrayRDImpl) {
-	rg := (*typedRef[Texture2DArrayRD])(r)
-	t := (*typedRef[Texture2DArrayRD])(from)
-	rg.TypedRef((*typedRef[Texture2DArrayRD])(t))
+	rg := (*TypedRef[Texture2DArrayRD])(r)
+	t := (*TypedRef[Texture2DArrayRD])(from)
+	rg.TypedRef((*TypedRef[Texture2DArrayRD])(t))
 }
 
 func (r *RefTexture2DArrayRDImpl) Unref() {
-	rg := (*typedRef[Texture2DArrayRD])(r)
+	rg := (*TypedRef[Texture2DArrayRD])(r)
 	rg.Unref()
 }
 
@@ -21548,31 +21548,31 @@ type RefTexture2DRD interface {
 	TypedPtr() Texture2DRD
 }
 
-type RefTexture2DRDImpl typedRef[Texture2DRD]
+type RefTexture2DRDImpl TypedRef[Texture2DRD]
 
 func (r *RefTexture2DRDImpl) Ptr() RefCounted {
-	rg := (*typedRef[Texture2DRD])(r)
+	rg := (*TypedRef[Texture2DRD])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTexture2DRDImpl) TypedPtr() Texture2DRD {
-	rg := (*typedRef[Texture2DRD])(r)
+	rg := (*TypedRef[Texture2DRD])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTexture2DRDImpl) Ref(from Ref) {
-	rg := (*typedRef[Texture2DRD])(r)
+	rg := (*TypedRef[Texture2DRD])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTexture2DRDImpl) TypedRef(from *RefTexture2DRDImpl) {
-	rg := (*typedRef[Texture2DRD])(r)
-	t := (*typedRef[Texture2DRD])(from)
-	rg.TypedRef((*typedRef[Texture2DRD])(t))
+	rg := (*TypedRef[Texture2DRD])(r)
+	t := (*TypedRef[Texture2DRD])(from)
+	rg.TypedRef((*TypedRef[Texture2DRD])(t))
 }
 
 func (r *RefTexture2DRDImpl) Unref() {
-	rg := (*typedRef[Texture2DRD])(r)
+	rg := (*TypedRef[Texture2DRD])(r)
 	rg.Unref()
 }
 
@@ -21600,31 +21600,31 @@ type RefTexture3D interface {
 	TypedPtr() Texture3D
 }
 
-type RefTexture3DImpl typedRef[Texture3D]
+type RefTexture3DImpl TypedRef[Texture3D]
 
 func (r *RefTexture3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[Texture3D])(r)
+	rg := (*TypedRef[Texture3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTexture3DImpl) TypedPtr() Texture3D {
-	rg := (*typedRef[Texture3D])(r)
+	rg := (*TypedRef[Texture3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTexture3DImpl) Ref(from Ref) {
-	rg := (*typedRef[Texture3D])(r)
+	rg := (*TypedRef[Texture3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTexture3DImpl) TypedRef(from *RefTexture3DImpl) {
-	rg := (*typedRef[Texture3D])(r)
-	t := (*typedRef[Texture3D])(from)
-	rg.TypedRef((*typedRef[Texture3D])(t))
+	rg := (*TypedRef[Texture3D])(r)
+	t := (*TypedRef[Texture3D])(from)
+	rg.TypedRef((*TypedRef[Texture3D])(t))
 }
 
 func (r *RefTexture3DImpl) Unref() {
-	rg := (*typedRef[Texture3D])(r)
+	rg := (*TypedRef[Texture3D])(r)
 	rg.Unref()
 }
 
@@ -21652,31 +21652,31 @@ type RefTexture3DRD interface {
 	TypedPtr() Texture3DRD
 }
 
-type RefTexture3DRDImpl typedRef[Texture3DRD]
+type RefTexture3DRDImpl TypedRef[Texture3DRD]
 
 func (r *RefTexture3DRDImpl) Ptr() RefCounted {
-	rg := (*typedRef[Texture3DRD])(r)
+	rg := (*TypedRef[Texture3DRD])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTexture3DRDImpl) TypedPtr() Texture3DRD {
-	rg := (*typedRef[Texture3DRD])(r)
+	rg := (*TypedRef[Texture3DRD])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTexture3DRDImpl) Ref(from Ref) {
-	rg := (*typedRef[Texture3DRD])(r)
+	rg := (*TypedRef[Texture3DRD])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTexture3DRDImpl) TypedRef(from *RefTexture3DRDImpl) {
-	rg := (*typedRef[Texture3DRD])(r)
-	t := (*typedRef[Texture3DRD])(from)
-	rg.TypedRef((*typedRef[Texture3DRD])(t))
+	rg := (*TypedRef[Texture3DRD])(r)
+	t := (*TypedRef[Texture3DRD])(from)
+	rg.TypedRef((*TypedRef[Texture3DRD])(t))
 }
 
 func (r *RefTexture3DRDImpl) Unref() {
-	rg := (*typedRef[Texture3DRD])(r)
+	rg := (*TypedRef[Texture3DRD])(r)
 	rg.Unref()
 }
 
@@ -21704,31 +21704,31 @@ type RefTextureCubemapArrayRD interface {
 	TypedPtr() TextureCubemapArrayRD
 }
 
-type RefTextureCubemapArrayRDImpl typedRef[TextureCubemapArrayRD]
+type RefTextureCubemapArrayRDImpl TypedRef[TextureCubemapArrayRD]
 
 func (r *RefTextureCubemapArrayRDImpl) Ptr() RefCounted {
-	rg := (*typedRef[TextureCubemapArrayRD])(r)
+	rg := (*TypedRef[TextureCubemapArrayRD])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextureCubemapArrayRDImpl) TypedPtr() TextureCubemapArrayRD {
-	rg := (*typedRef[TextureCubemapArrayRD])(r)
+	rg := (*TypedRef[TextureCubemapArrayRD])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextureCubemapArrayRDImpl) Ref(from Ref) {
-	rg := (*typedRef[TextureCubemapArrayRD])(r)
+	rg := (*TypedRef[TextureCubemapArrayRD])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextureCubemapArrayRDImpl) TypedRef(from *RefTextureCubemapArrayRDImpl) {
-	rg := (*typedRef[TextureCubemapArrayRD])(r)
-	t := (*typedRef[TextureCubemapArrayRD])(from)
-	rg.TypedRef((*typedRef[TextureCubemapArrayRD])(t))
+	rg := (*TypedRef[TextureCubemapArrayRD])(r)
+	t := (*TypedRef[TextureCubemapArrayRD])(from)
+	rg.TypedRef((*TypedRef[TextureCubemapArrayRD])(t))
 }
 
 func (r *RefTextureCubemapArrayRDImpl) Unref() {
-	rg := (*typedRef[TextureCubemapArrayRD])(r)
+	rg := (*TypedRef[TextureCubemapArrayRD])(r)
 	rg.Unref()
 }
 
@@ -21756,31 +21756,31 @@ type RefTextureCubemapRD interface {
 	TypedPtr() TextureCubemapRD
 }
 
-type RefTextureCubemapRDImpl typedRef[TextureCubemapRD]
+type RefTextureCubemapRDImpl TypedRef[TextureCubemapRD]
 
 func (r *RefTextureCubemapRDImpl) Ptr() RefCounted {
-	rg := (*typedRef[TextureCubemapRD])(r)
+	rg := (*TypedRef[TextureCubemapRD])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextureCubemapRDImpl) TypedPtr() TextureCubemapRD {
-	rg := (*typedRef[TextureCubemapRD])(r)
+	rg := (*TypedRef[TextureCubemapRD])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextureCubemapRDImpl) Ref(from Ref) {
-	rg := (*typedRef[TextureCubemapRD])(r)
+	rg := (*TypedRef[TextureCubemapRD])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextureCubemapRDImpl) TypedRef(from *RefTextureCubemapRDImpl) {
-	rg := (*typedRef[TextureCubemapRD])(r)
-	t := (*typedRef[TextureCubemapRD])(from)
-	rg.TypedRef((*typedRef[TextureCubemapRD])(t))
+	rg := (*TypedRef[TextureCubemapRD])(r)
+	t := (*TypedRef[TextureCubemapRD])(from)
+	rg.TypedRef((*TypedRef[TextureCubemapRD])(t))
 }
 
 func (r *RefTextureCubemapRDImpl) Unref() {
-	rg := (*typedRef[TextureCubemapRD])(r)
+	rg := (*TypedRef[TextureCubemapRD])(r)
 	rg.Unref()
 }
 
@@ -21808,31 +21808,31 @@ type RefTextureLayered interface {
 	TypedPtr() TextureLayered
 }
 
-type RefTextureLayeredImpl typedRef[TextureLayered]
+type RefTextureLayeredImpl TypedRef[TextureLayered]
 
 func (r *RefTextureLayeredImpl) Ptr() RefCounted {
-	rg := (*typedRef[TextureLayered])(r)
+	rg := (*TypedRef[TextureLayered])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextureLayeredImpl) TypedPtr() TextureLayered {
-	rg := (*typedRef[TextureLayered])(r)
+	rg := (*TypedRef[TextureLayered])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextureLayeredImpl) Ref(from Ref) {
-	rg := (*typedRef[TextureLayered])(r)
+	rg := (*TypedRef[TextureLayered])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextureLayeredImpl) TypedRef(from *RefTextureLayeredImpl) {
-	rg := (*typedRef[TextureLayered])(r)
-	t := (*typedRef[TextureLayered])(from)
-	rg.TypedRef((*typedRef[TextureLayered])(t))
+	rg := (*TypedRef[TextureLayered])(r)
+	t := (*TypedRef[TextureLayered])(from)
+	rg.TypedRef((*TypedRef[TextureLayered])(t))
 }
 
 func (r *RefTextureLayeredImpl) Unref() {
-	rg := (*typedRef[TextureLayered])(r)
+	rg := (*TypedRef[TextureLayered])(r)
 	rg.Unref()
 }
 
@@ -21860,31 +21860,31 @@ type RefTextureLayeredRD interface {
 	TypedPtr() TextureLayeredRD
 }
 
-type RefTextureLayeredRDImpl typedRef[TextureLayeredRD]
+type RefTextureLayeredRDImpl TypedRef[TextureLayeredRD]
 
 func (r *RefTextureLayeredRDImpl) Ptr() RefCounted {
-	rg := (*typedRef[TextureLayeredRD])(r)
+	rg := (*TypedRef[TextureLayeredRD])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTextureLayeredRDImpl) TypedPtr() TextureLayeredRD {
-	rg := (*typedRef[TextureLayeredRD])(r)
+	rg := (*TypedRef[TextureLayeredRD])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTextureLayeredRDImpl) Ref(from Ref) {
-	rg := (*typedRef[TextureLayeredRD])(r)
+	rg := (*TypedRef[TextureLayeredRD])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTextureLayeredRDImpl) TypedRef(from *RefTextureLayeredRDImpl) {
-	rg := (*typedRef[TextureLayeredRD])(r)
-	t := (*typedRef[TextureLayeredRD])(from)
-	rg.TypedRef((*typedRef[TextureLayeredRD])(t))
+	rg := (*TypedRef[TextureLayeredRD])(r)
+	t := (*TypedRef[TextureLayeredRD])(from)
+	rg.TypedRef((*TypedRef[TextureLayeredRD])(t))
 }
 
 func (r *RefTextureLayeredRDImpl) Unref() {
-	rg := (*typedRef[TextureLayeredRD])(r)
+	rg := (*TypedRef[TextureLayeredRD])(r)
 	rg.Unref()
 }
 
@@ -21912,31 +21912,31 @@ type RefTheme interface {
 	TypedPtr() Theme
 }
 
-type RefThemeImpl typedRef[Theme]
+type RefThemeImpl TypedRef[Theme]
 
 func (r *RefThemeImpl) Ptr() RefCounted {
-	rg := (*typedRef[Theme])(r)
+	rg := (*TypedRef[Theme])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefThemeImpl) TypedPtr() Theme {
-	rg := (*typedRef[Theme])(r)
+	rg := (*TypedRef[Theme])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefThemeImpl) Ref(from Ref) {
-	rg := (*typedRef[Theme])(r)
+	rg := (*TypedRef[Theme])(r)
 	rg.Ref(from)
 }
 
 func (r *RefThemeImpl) TypedRef(from *RefThemeImpl) {
-	rg := (*typedRef[Theme])(r)
-	t := (*typedRef[Theme])(from)
-	rg.TypedRef((*typedRef[Theme])(t))
+	rg := (*TypedRef[Theme])(r)
+	t := (*TypedRef[Theme])(from)
+	rg.TypedRef((*TypedRef[Theme])(t))
 }
 
 func (r *RefThemeImpl) Unref() {
-	rg := (*typedRef[Theme])(r)
+	rg := (*TypedRef[Theme])(r)
 	rg.Unref()
 }
 
@@ -21964,31 +21964,31 @@ type RefThread interface {
 	TypedPtr() Thread
 }
 
-type RefThreadImpl typedRef[Thread]
+type RefThreadImpl TypedRef[Thread]
 
 func (r *RefThreadImpl) Ptr() RefCounted {
-	rg := (*typedRef[Thread])(r)
+	rg := (*TypedRef[Thread])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefThreadImpl) TypedPtr() Thread {
-	rg := (*typedRef[Thread])(r)
+	rg := (*TypedRef[Thread])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefThreadImpl) Ref(from Ref) {
-	rg := (*typedRef[Thread])(r)
+	rg := (*TypedRef[Thread])(r)
 	rg.Ref(from)
 }
 
 func (r *RefThreadImpl) TypedRef(from *RefThreadImpl) {
-	rg := (*typedRef[Thread])(r)
-	t := (*typedRef[Thread])(from)
-	rg.TypedRef((*typedRef[Thread])(t))
+	rg := (*TypedRef[Thread])(r)
+	t := (*TypedRef[Thread])(from)
+	rg.TypedRef((*TypedRef[Thread])(t))
 }
 
 func (r *RefThreadImpl) Unref() {
-	rg := (*typedRef[Thread])(r)
+	rg := (*TypedRef[Thread])(r)
 	rg.Unref()
 }
 
@@ -22016,31 +22016,31 @@ type RefTileMapPattern interface {
 	TypedPtr() TileMapPattern
 }
 
-type RefTileMapPatternImpl typedRef[TileMapPattern]
+type RefTileMapPatternImpl TypedRef[TileMapPattern]
 
 func (r *RefTileMapPatternImpl) Ptr() RefCounted {
-	rg := (*typedRef[TileMapPattern])(r)
+	rg := (*TypedRef[TileMapPattern])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTileMapPatternImpl) TypedPtr() TileMapPattern {
-	rg := (*typedRef[TileMapPattern])(r)
+	rg := (*TypedRef[TileMapPattern])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTileMapPatternImpl) Ref(from Ref) {
-	rg := (*typedRef[TileMapPattern])(r)
+	rg := (*TypedRef[TileMapPattern])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTileMapPatternImpl) TypedRef(from *RefTileMapPatternImpl) {
-	rg := (*typedRef[TileMapPattern])(r)
-	t := (*typedRef[TileMapPattern])(from)
-	rg.TypedRef((*typedRef[TileMapPattern])(t))
+	rg := (*TypedRef[TileMapPattern])(r)
+	t := (*TypedRef[TileMapPattern])(from)
+	rg.TypedRef((*TypedRef[TileMapPattern])(t))
 }
 
 func (r *RefTileMapPatternImpl) Unref() {
-	rg := (*typedRef[TileMapPattern])(r)
+	rg := (*TypedRef[TileMapPattern])(r)
 	rg.Unref()
 }
 
@@ -22068,31 +22068,31 @@ type RefTileSet interface {
 	TypedPtr() TileSet
 }
 
-type RefTileSetImpl typedRef[TileSet]
+type RefTileSetImpl TypedRef[TileSet]
 
 func (r *RefTileSetImpl) Ptr() RefCounted {
-	rg := (*typedRef[TileSet])(r)
+	rg := (*TypedRef[TileSet])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTileSetImpl) TypedPtr() TileSet {
-	rg := (*typedRef[TileSet])(r)
+	rg := (*TypedRef[TileSet])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTileSetImpl) Ref(from Ref) {
-	rg := (*typedRef[TileSet])(r)
+	rg := (*TypedRef[TileSet])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTileSetImpl) TypedRef(from *RefTileSetImpl) {
-	rg := (*typedRef[TileSet])(r)
-	t := (*typedRef[TileSet])(from)
-	rg.TypedRef((*typedRef[TileSet])(t))
+	rg := (*TypedRef[TileSet])(r)
+	t := (*TypedRef[TileSet])(from)
+	rg.TypedRef((*TypedRef[TileSet])(t))
 }
 
 func (r *RefTileSetImpl) Unref() {
-	rg := (*typedRef[TileSet])(r)
+	rg := (*TypedRef[TileSet])(r)
 	rg.Unref()
 }
 
@@ -22120,31 +22120,31 @@ type RefTileSetAtlasSource interface {
 	TypedPtr() TileSetAtlasSource
 }
 
-type RefTileSetAtlasSourceImpl typedRef[TileSetAtlasSource]
+type RefTileSetAtlasSourceImpl TypedRef[TileSetAtlasSource]
 
 func (r *RefTileSetAtlasSourceImpl) Ptr() RefCounted {
-	rg := (*typedRef[TileSetAtlasSource])(r)
+	rg := (*TypedRef[TileSetAtlasSource])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTileSetAtlasSourceImpl) TypedPtr() TileSetAtlasSource {
-	rg := (*typedRef[TileSetAtlasSource])(r)
+	rg := (*TypedRef[TileSetAtlasSource])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTileSetAtlasSourceImpl) Ref(from Ref) {
-	rg := (*typedRef[TileSetAtlasSource])(r)
+	rg := (*TypedRef[TileSetAtlasSource])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTileSetAtlasSourceImpl) TypedRef(from *RefTileSetAtlasSourceImpl) {
-	rg := (*typedRef[TileSetAtlasSource])(r)
-	t := (*typedRef[TileSetAtlasSource])(from)
-	rg.TypedRef((*typedRef[TileSetAtlasSource])(t))
+	rg := (*TypedRef[TileSetAtlasSource])(r)
+	t := (*TypedRef[TileSetAtlasSource])(from)
+	rg.TypedRef((*TypedRef[TileSetAtlasSource])(t))
 }
 
 func (r *RefTileSetAtlasSourceImpl) Unref() {
-	rg := (*typedRef[TileSetAtlasSource])(r)
+	rg := (*TypedRef[TileSetAtlasSource])(r)
 	rg.Unref()
 }
 
@@ -22172,31 +22172,31 @@ type RefTileSetScenesCollectionSource interface {
 	TypedPtr() TileSetScenesCollectionSource
 }
 
-type RefTileSetScenesCollectionSourceImpl typedRef[TileSetScenesCollectionSource]
+type RefTileSetScenesCollectionSourceImpl TypedRef[TileSetScenesCollectionSource]
 
 func (r *RefTileSetScenesCollectionSourceImpl) Ptr() RefCounted {
-	rg := (*typedRef[TileSetScenesCollectionSource])(r)
+	rg := (*TypedRef[TileSetScenesCollectionSource])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTileSetScenesCollectionSourceImpl) TypedPtr() TileSetScenesCollectionSource {
-	rg := (*typedRef[TileSetScenesCollectionSource])(r)
+	rg := (*TypedRef[TileSetScenesCollectionSource])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTileSetScenesCollectionSourceImpl) Ref(from Ref) {
-	rg := (*typedRef[TileSetScenesCollectionSource])(r)
+	rg := (*TypedRef[TileSetScenesCollectionSource])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTileSetScenesCollectionSourceImpl) TypedRef(from *RefTileSetScenesCollectionSourceImpl) {
-	rg := (*typedRef[TileSetScenesCollectionSource])(r)
-	t := (*typedRef[TileSetScenesCollectionSource])(from)
-	rg.TypedRef((*typedRef[TileSetScenesCollectionSource])(t))
+	rg := (*TypedRef[TileSetScenesCollectionSource])(r)
+	t := (*TypedRef[TileSetScenesCollectionSource])(from)
+	rg.TypedRef((*TypedRef[TileSetScenesCollectionSource])(t))
 }
 
 func (r *RefTileSetScenesCollectionSourceImpl) Unref() {
-	rg := (*typedRef[TileSetScenesCollectionSource])(r)
+	rg := (*TypedRef[TileSetScenesCollectionSource])(r)
 	rg.Unref()
 }
 
@@ -22224,31 +22224,31 @@ type RefTileSetSource interface {
 	TypedPtr() TileSetSource
 }
 
-type RefTileSetSourceImpl typedRef[TileSetSource]
+type RefTileSetSourceImpl TypedRef[TileSetSource]
 
 func (r *RefTileSetSourceImpl) Ptr() RefCounted {
-	rg := (*typedRef[TileSetSource])(r)
+	rg := (*TypedRef[TileSetSource])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTileSetSourceImpl) TypedPtr() TileSetSource {
-	rg := (*typedRef[TileSetSource])(r)
+	rg := (*TypedRef[TileSetSource])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTileSetSourceImpl) Ref(from Ref) {
-	rg := (*typedRef[TileSetSource])(r)
+	rg := (*TypedRef[TileSetSource])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTileSetSourceImpl) TypedRef(from *RefTileSetSourceImpl) {
-	rg := (*typedRef[TileSetSource])(r)
-	t := (*typedRef[TileSetSource])(from)
-	rg.TypedRef((*typedRef[TileSetSource])(t))
+	rg := (*TypedRef[TileSetSource])(r)
+	t := (*TypedRef[TileSetSource])(from)
+	rg.TypedRef((*TypedRef[TileSetSource])(t))
 }
 
 func (r *RefTileSetSourceImpl) Unref() {
-	rg := (*typedRef[TileSetSource])(r)
+	rg := (*TypedRef[TileSetSource])(r)
 	rg.Unref()
 }
 
@@ -22276,31 +22276,31 @@ type RefTorusMesh interface {
 	TypedPtr() TorusMesh
 }
 
-type RefTorusMeshImpl typedRef[TorusMesh]
+type RefTorusMeshImpl TypedRef[TorusMesh]
 
 func (r *RefTorusMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[TorusMesh])(r)
+	rg := (*TypedRef[TorusMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTorusMeshImpl) TypedPtr() TorusMesh {
-	rg := (*typedRef[TorusMesh])(r)
+	rg := (*TypedRef[TorusMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTorusMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[TorusMesh])(r)
+	rg := (*TypedRef[TorusMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTorusMeshImpl) TypedRef(from *RefTorusMeshImpl) {
-	rg := (*typedRef[TorusMesh])(r)
-	t := (*typedRef[TorusMesh])(from)
-	rg.TypedRef((*typedRef[TorusMesh])(t))
+	rg := (*TypedRef[TorusMesh])(r)
+	t := (*TypedRef[TorusMesh])(from)
+	rg.TypedRef((*TypedRef[TorusMesh])(t))
 }
 
 func (r *RefTorusMeshImpl) Unref() {
-	rg := (*typedRef[TorusMesh])(r)
+	rg := (*TypedRef[TorusMesh])(r)
 	rg.Unref()
 }
 
@@ -22328,31 +22328,31 @@ type RefTranslation interface {
 	TypedPtr() Translation
 }
 
-type RefTranslationImpl typedRef[Translation]
+type RefTranslationImpl TypedRef[Translation]
 
 func (r *RefTranslationImpl) Ptr() RefCounted {
-	rg := (*typedRef[Translation])(r)
+	rg := (*TypedRef[Translation])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTranslationImpl) TypedPtr() Translation {
-	rg := (*typedRef[Translation])(r)
+	rg := (*TypedRef[Translation])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTranslationImpl) Ref(from Ref) {
-	rg := (*typedRef[Translation])(r)
+	rg := (*TypedRef[Translation])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTranslationImpl) TypedRef(from *RefTranslationImpl) {
-	rg := (*typedRef[Translation])(r)
-	t := (*typedRef[Translation])(from)
-	rg.TypedRef((*typedRef[Translation])(t))
+	rg := (*TypedRef[Translation])(r)
+	t := (*TypedRef[Translation])(from)
+	rg.TypedRef((*TypedRef[Translation])(t))
 }
 
 func (r *RefTranslationImpl) Unref() {
-	rg := (*typedRef[Translation])(r)
+	rg := (*TypedRef[Translation])(r)
 	rg.Unref()
 }
 
@@ -22380,31 +22380,31 @@ type RefTriangleMesh interface {
 	TypedPtr() TriangleMesh
 }
 
-type RefTriangleMeshImpl typedRef[TriangleMesh]
+type RefTriangleMeshImpl TypedRef[TriangleMesh]
 
 func (r *RefTriangleMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[TriangleMesh])(r)
+	rg := (*TypedRef[TriangleMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTriangleMeshImpl) TypedPtr() TriangleMesh {
-	rg := (*typedRef[TriangleMesh])(r)
+	rg := (*TypedRef[TriangleMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTriangleMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[TriangleMesh])(r)
+	rg := (*TypedRef[TriangleMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTriangleMeshImpl) TypedRef(from *RefTriangleMeshImpl) {
-	rg := (*typedRef[TriangleMesh])(r)
-	t := (*typedRef[TriangleMesh])(from)
-	rg.TypedRef((*typedRef[TriangleMesh])(t))
+	rg := (*TypedRef[TriangleMesh])(r)
+	t := (*TypedRef[TriangleMesh])(from)
+	rg.TypedRef((*TypedRef[TriangleMesh])(t))
 }
 
 func (r *RefTriangleMeshImpl) Unref() {
-	rg := (*typedRef[TriangleMesh])(r)
+	rg := (*TypedRef[TriangleMesh])(r)
 	rg.Unref()
 }
 
@@ -22432,31 +22432,31 @@ type RefTubeTrailMesh interface {
 	TypedPtr() TubeTrailMesh
 }
 
-type RefTubeTrailMeshImpl typedRef[TubeTrailMesh]
+type RefTubeTrailMeshImpl TypedRef[TubeTrailMesh]
 
 func (r *RefTubeTrailMeshImpl) Ptr() RefCounted {
-	rg := (*typedRef[TubeTrailMesh])(r)
+	rg := (*TypedRef[TubeTrailMesh])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTubeTrailMeshImpl) TypedPtr() TubeTrailMesh {
-	rg := (*typedRef[TubeTrailMesh])(r)
+	rg := (*TypedRef[TubeTrailMesh])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTubeTrailMeshImpl) Ref(from Ref) {
-	rg := (*typedRef[TubeTrailMesh])(r)
+	rg := (*TypedRef[TubeTrailMesh])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTubeTrailMeshImpl) TypedRef(from *RefTubeTrailMeshImpl) {
-	rg := (*typedRef[TubeTrailMesh])(r)
-	t := (*typedRef[TubeTrailMesh])(from)
-	rg.TypedRef((*typedRef[TubeTrailMesh])(t))
+	rg := (*TypedRef[TubeTrailMesh])(r)
+	t := (*TypedRef[TubeTrailMesh])(from)
+	rg.TypedRef((*TypedRef[TubeTrailMesh])(t))
 }
 
 func (r *RefTubeTrailMeshImpl) Unref() {
-	rg := (*typedRef[TubeTrailMesh])(r)
+	rg := (*TypedRef[TubeTrailMesh])(r)
 	rg.Unref()
 }
 
@@ -22484,31 +22484,31 @@ type RefTween interface {
 	TypedPtr() Tween
 }
 
-type RefTweenImpl typedRef[Tween]
+type RefTweenImpl TypedRef[Tween]
 
 func (r *RefTweenImpl) Ptr() RefCounted {
-	rg := (*typedRef[Tween])(r)
+	rg := (*TypedRef[Tween])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTweenImpl) TypedPtr() Tween {
-	rg := (*typedRef[Tween])(r)
+	rg := (*TypedRef[Tween])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTweenImpl) Ref(from Ref) {
-	rg := (*typedRef[Tween])(r)
+	rg := (*TypedRef[Tween])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTweenImpl) TypedRef(from *RefTweenImpl) {
-	rg := (*typedRef[Tween])(r)
-	t := (*typedRef[Tween])(from)
-	rg.TypedRef((*typedRef[Tween])(t))
+	rg := (*TypedRef[Tween])(r)
+	t := (*TypedRef[Tween])(from)
+	rg.TypedRef((*TypedRef[Tween])(t))
 }
 
 func (r *RefTweenImpl) Unref() {
-	rg := (*typedRef[Tween])(r)
+	rg := (*TypedRef[Tween])(r)
 	rg.Unref()
 }
 
@@ -22536,31 +22536,31 @@ type RefTweener interface {
 	TypedPtr() Tweener
 }
 
-type RefTweenerImpl typedRef[Tweener]
+type RefTweenerImpl TypedRef[Tweener]
 
 func (r *RefTweenerImpl) Ptr() RefCounted {
-	rg := (*typedRef[Tweener])(r)
+	rg := (*TypedRef[Tweener])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefTweenerImpl) TypedPtr() Tweener {
-	rg := (*typedRef[Tweener])(r)
+	rg := (*TypedRef[Tweener])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefTweenerImpl) Ref(from Ref) {
-	rg := (*typedRef[Tweener])(r)
+	rg := (*TypedRef[Tweener])(r)
 	rg.Ref(from)
 }
 
 func (r *RefTweenerImpl) TypedRef(from *RefTweenerImpl) {
-	rg := (*typedRef[Tweener])(r)
-	t := (*typedRef[Tweener])(from)
-	rg.TypedRef((*typedRef[Tweener])(t))
+	rg := (*TypedRef[Tweener])(r)
+	t := (*TypedRef[Tweener])(from)
+	rg.TypedRef((*TypedRef[Tweener])(t))
 }
 
 func (r *RefTweenerImpl) Unref() {
-	rg := (*typedRef[Tweener])(r)
+	rg := (*TypedRef[Tweener])(r)
 	rg.Unref()
 }
 
@@ -22588,31 +22588,31 @@ type RefUDPServer interface {
 	TypedPtr() UDPServer
 }
 
-type RefUDPServerImpl typedRef[UDPServer]
+type RefUDPServerImpl TypedRef[UDPServer]
 
 func (r *RefUDPServerImpl) Ptr() RefCounted {
-	rg := (*typedRef[UDPServer])(r)
+	rg := (*TypedRef[UDPServer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefUDPServerImpl) TypedPtr() UDPServer {
-	rg := (*typedRef[UDPServer])(r)
+	rg := (*TypedRef[UDPServer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefUDPServerImpl) Ref(from Ref) {
-	rg := (*typedRef[UDPServer])(r)
+	rg := (*TypedRef[UDPServer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefUDPServerImpl) TypedRef(from *RefUDPServerImpl) {
-	rg := (*typedRef[UDPServer])(r)
-	t := (*typedRef[UDPServer])(from)
-	rg.TypedRef((*typedRef[UDPServer])(t))
+	rg := (*TypedRef[UDPServer])(r)
+	t := (*TypedRef[UDPServer])(from)
+	rg.TypedRef((*TypedRef[UDPServer])(t))
 }
 
 func (r *RefUDPServerImpl) Unref() {
-	rg := (*typedRef[UDPServer])(r)
+	rg := (*TypedRef[UDPServer])(r)
 	rg.Unref()
 }
 
@@ -22640,31 +22640,31 @@ type RefUPNP interface {
 	TypedPtr() UPNP
 }
 
-type RefUPNPImpl typedRef[UPNP]
+type RefUPNPImpl TypedRef[UPNP]
 
 func (r *RefUPNPImpl) Ptr() RefCounted {
-	rg := (*typedRef[UPNP])(r)
+	rg := (*TypedRef[UPNP])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefUPNPImpl) TypedPtr() UPNP {
-	rg := (*typedRef[UPNP])(r)
+	rg := (*TypedRef[UPNP])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefUPNPImpl) Ref(from Ref) {
-	rg := (*typedRef[UPNP])(r)
+	rg := (*TypedRef[UPNP])(r)
 	rg.Ref(from)
 }
 
 func (r *RefUPNPImpl) TypedRef(from *RefUPNPImpl) {
-	rg := (*typedRef[UPNP])(r)
-	t := (*typedRef[UPNP])(from)
-	rg.TypedRef((*typedRef[UPNP])(t))
+	rg := (*TypedRef[UPNP])(r)
+	t := (*TypedRef[UPNP])(from)
+	rg.TypedRef((*TypedRef[UPNP])(t))
 }
 
 func (r *RefUPNPImpl) Unref() {
-	rg := (*typedRef[UPNP])(r)
+	rg := (*TypedRef[UPNP])(r)
 	rg.Unref()
 }
 
@@ -22692,31 +22692,31 @@ type RefUPNPDevice interface {
 	TypedPtr() UPNPDevice
 }
 
-type RefUPNPDeviceImpl typedRef[UPNPDevice]
+type RefUPNPDeviceImpl TypedRef[UPNPDevice]
 
 func (r *RefUPNPDeviceImpl) Ptr() RefCounted {
-	rg := (*typedRef[UPNPDevice])(r)
+	rg := (*TypedRef[UPNPDevice])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefUPNPDeviceImpl) TypedPtr() UPNPDevice {
-	rg := (*typedRef[UPNPDevice])(r)
+	rg := (*TypedRef[UPNPDevice])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefUPNPDeviceImpl) Ref(from Ref) {
-	rg := (*typedRef[UPNPDevice])(r)
+	rg := (*TypedRef[UPNPDevice])(r)
 	rg.Ref(from)
 }
 
 func (r *RefUPNPDeviceImpl) TypedRef(from *RefUPNPDeviceImpl) {
-	rg := (*typedRef[UPNPDevice])(r)
-	t := (*typedRef[UPNPDevice])(from)
-	rg.TypedRef((*typedRef[UPNPDevice])(t))
+	rg := (*TypedRef[UPNPDevice])(r)
+	t := (*TypedRef[UPNPDevice])(from)
+	rg.TypedRef((*TypedRef[UPNPDevice])(t))
 }
 
 func (r *RefUPNPDeviceImpl) Unref() {
-	rg := (*typedRef[UPNPDevice])(r)
+	rg := (*TypedRef[UPNPDevice])(r)
 	rg.Unref()
 }
 
@@ -22744,31 +22744,31 @@ type RefVideoStream interface {
 	TypedPtr() VideoStream
 }
 
-type RefVideoStreamImpl typedRef[VideoStream]
+type RefVideoStreamImpl TypedRef[VideoStream]
 
 func (r *RefVideoStreamImpl) Ptr() RefCounted {
-	rg := (*typedRef[VideoStream])(r)
+	rg := (*TypedRef[VideoStream])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVideoStreamImpl) TypedPtr() VideoStream {
-	rg := (*typedRef[VideoStream])(r)
+	rg := (*TypedRef[VideoStream])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVideoStreamImpl) Ref(from Ref) {
-	rg := (*typedRef[VideoStream])(r)
+	rg := (*TypedRef[VideoStream])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVideoStreamImpl) TypedRef(from *RefVideoStreamImpl) {
-	rg := (*typedRef[VideoStream])(r)
-	t := (*typedRef[VideoStream])(from)
-	rg.TypedRef((*typedRef[VideoStream])(t))
+	rg := (*TypedRef[VideoStream])(r)
+	t := (*TypedRef[VideoStream])(from)
+	rg.TypedRef((*TypedRef[VideoStream])(t))
 }
 
 func (r *RefVideoStreamImpl) Unref() {
-	rg := (*typedRef[VideoStream])(r)
+	rg := (*TypedRef[VideoStream])(r)
 	rg.Unref()
 }
 
@@ -22796,31 +22796,31 @@ type RefVideoStreamPlayback interface {
 	TypedPtr() VideoStreamPlayback
 }
 
-type RefVideoStreamPlaybackImpl typedRef[VideoStreamPlayback]
+type RefVideoStreamPlaybackImpl TypedRef[VideoStreamPlayback]
 
 func (r *RefVideoStreamPlaybackImpl) Ptr() RefCounted {
-	rg := (*typedRef[VideoStreamPlayback])(r)
+	rg := (*TypedRef[VideoStreamPlayback])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVideoStreamPlaybackImpl) TypedPtr() VideoStreamPlayback {
-	rg := (*typedRef[VideoStreamPlayback])(r)
+	rg := (*TypedRef[VideoStreamPlayback])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVideoStreamPlaybackImpl) Ref(from Ref) {
-	rg := (*typedRef[VideoStreamPlayback])(r)
+	rg := (*TypedRef[VideoStreamPlayback])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVideoStreamPlaybackImpl) TypedRef(from *RefVideoStreamPlaybackImpl) {
-	rg := (*typedRef[VideoStreamPlayback])(r)
-	t := (*typedRef[VideoStreamPlayback])(from)
-	rg.TypedRef((*typedRef[VideoStreamPlayback])(t))
+	rg := (*TypedRef[VideoStreamPlayback])(r)
+	t := (*TypedRef[VideoStreamPlayback])(from)
+	rg.TypedRef((*TypedRef[VideoStreamPlayback])(t))
 }
 
 func (r *RefVideoStreamPlaybackImpl) Unref() {
-	rg := (*typedRef[VideoStreamPlayback])(r)
+	rg := (*TypedRef[VideoStreamPlayback])(r)
 	rg.Unref()
 }
 
@@ -22848,31 +22848,31 @@ type RefVideoStreamTheora interface {
 	TypedPtr() VideoStreamTheora
 }
 
-type RefVideoStreamTheoraImpl typedRef[VideoStreamTheora]
+type RefVideoStreamTheoraImpl TypedRef[VideoStreamTheora]
 
 func (r *RefVideoStreamTheoraImpl) Ptr() RefCounted {
-	rg := (*typedRef[VideoStreamTheora])(r)
+	rg := (*TypedRef[VideoStreamTheora])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVideoStreamTheoraImpl) TypedPtr() VideoStreamTheora {
-	rg := (*typedRef[VideoStreamTheora])(r)
+	rg := (*TypedRef[VideoStreamTheora])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVideoStreamTheoraImpl) Ref(from Ref) {
-	rg := (*typedRef[VideoStreamTheora])(r)
+	rg := (*TypedRef[VideoStreamTheora])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVideoStreamTheoraImpl) TypedRef(from *RefVideoStreamTheoraImpl) {
-	rg := (*typedRef[VideoStreamTheora])(r)
-	t := (*typedRef[VideoStreamTheora])(from)
-	rg.TypedRef((*typedRef[VideoStreamTheora])(t))
+	rg := (*TypedRef[VideoStreamTheora])(r)
+	t := (*TypedRef[VideoStreamTheora])(from)
+	rg.TypedRef((*TypedRef[VideoStreamTheora])(t))
 }
 
 func (r *RefVideoStreamTheoraImpl) Unref() {
-	rg := (*typedRef[VideoStreamTheora])(r)
+	rg := (*TypedRef[VideoStreamTheora])(r)
 	rg.Unref()
 }
 
@@ -22900,31 +22900,31 @@ type RefViewportTexture interface {
 	TypedPtr() ViewportTexture
 }
 
-type RefViewportTextureImpl typedRef[ViewportTexture]
+type RefViewportTextureImpl TypedRef[ViewportTexture]
 
 func (r *RefViewportTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[ViewportTexture])(r)
+	rg := (*TypedRef[ViewportTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefViewportTextureImpl) TypedPtr() ViewportTexture {
-	rg := (*typedRef[ViewportTexture])(r)
+	rg := (*TypedRef[ViewportTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefViewportTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[ViewportTexture])(r)
+	rg := (*TypedRef[ViewportTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefViewportTextureImpl) TypedRef(from *RefViewportTextureImpl) {
-	rg := (*typedRef[ViewportTexture])(r)
-	t := (*typedRef[ViewportTexture])(from)
-	rg.TypedRef((*typedRef[ViewportTexture])(t))
+	rg := (*TypedRef[ViewportTexture])(r)
+	t := (*TypedRef[ViewportTexture])(from)
+	rg.TypedRef((*TypedRef[ViewportTexture])(t))
 }
 
 func (r *RefViewportTextureImpl) Unref() {
-	rg := (*typedRef[ViewportTexture])(r)
+	rg := (*TypedRef[ViewportTexture])(r)
 	rg.Unref()
 }
 
@@ -22952,31 +22952,31 @@ type RefVisualShader interface {
 	TypedPtr() VisualShader
 }
 
-type RefVisualShaderImpl typedRef[VisualShader]
+type RefVisualShaderImpl TypedRef[VisualShader]
 
 func (r *RefVisualShaderImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShader])(r)
+	rg := (*TypedRef[VisualShader])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderImpl) TypedPtr() VisualShader {
-	rg := (*typedRef[VisualShader])(r)
+	rg := (*TypedRef[VisualShader])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShader])(r)
+	rg := (*TypedRef[VisualShader])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderImpl) TypedRef(from *RefVisualShaderImpl) {
-	rg := (*typedRef[VisualShader])(r)
-	t := (*typedRef[VisualShader])(from)
-	rg.TypedRef((*typedRef[VisualShader])(t))
+	rg := (*TypedRef[VisualShader])(r)
+	t := (*TypedRef[VisualShader])(from)
+	rg.TypedRef((*TypedRef[VisualShader])(t))
 }
 
 func (r *RefVisualShaderImpl) Unref() {
-	rg := (*typedRef[VisualShader])(r)
+	rg := (*TypedRef[VisualShader])(r)
 	rg.Unref()
 }
 
@@ -23004,31 +23004,31 @@ type RefVisualShaderNode interface {
 	TypedPtr() VisualShaderNode
 }
 
-type RefVisualShaderNodeImpl typedRef[VisualShaderNode]
+type RefVisualShaderNodeImpl TypedRef[VisualShaderNode]
 
 func (r *RefVisualShaderNodeImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNode])(r)
+	rg := (*TypedRef[VisualShaderNode])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeImpl) TypedPtr() VisualShaderNode {
-	rg := (*typedRef[VisualShaderNode])(r)
+	rg := (*TypedRef[VisualShaderNode])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNode])(r)
+	rg := (*TypedRef[VisualShaderNode])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeImpl) TypedRef(from *RefVisualShaderNodeImpl) {
-	rg := (*typedRef[VisualShaderNode])(r)
-	t := (*typedRef[VisualShaderNode])(from)
-	rg.TypedRef((*typedRef[VisualShaderNode])(t))
+	rg := (*TypedRef[VisualShaderNode])(r)
+	t := (*TypedRef[VisualShaderNode])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNode])(t))
 }
 
 func (r *RefVisualShaderNodeImpl) Unref() {
-	rg := (*typedRef[VisualShaderNode])(r)
+	rg := (*TypedRef[VisualShaderNode])(r)
 	rg.Unref()
 }
 
@@ -23056,31 +23056,31 @@ type RefVisualShaderNodeBillboard interface {
 	TypedPtr() VisualShaderNodeBillboard
 }
 
-type RefVisualShaderNodeBillboardImpl typedRef[VisualShaderNodeBillboard]
+type RefVisualShaderNodeBillboardImpl TypedRef[VisualShaderNodeBillboard]
 
 func (r *RefVisualShaderNodeBillboardImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeBillboard])(r)
+	rg := (*TypedRef[VisualShaderNodeBillboard])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeBillboardImpl) TypedPtr() VisualShaderNodeBillboard {
-	rg := (*typedRef[VisualShaderNodeBillboard])(r)
+	rg := (*TypedRef[VisualShaderNodeBillboard])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeBillboardImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeBillboard])(r)
+	rg := (*TypedRef[VisualShaderNodeBillboard])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeBillboardImpl) TypedRef(from *RefVisualShaderNodeBillboardImpl) {
-	rg := (*typedRef[VisualShaderNodeBillboard])(r)
-	t := (*typedRef[VisualShaderNodeBillboard])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeBillboard])(t))
+	rg := (*TypedRef[VisualShaderNodeBillboard])(r)
+	t := (*TypedRef[VisualShaderNodeBillboard])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeBillboard])(t))
 }
 
 func (r *RefVisualShaderNodeBillboardImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeBillboard])(r)
+	rg := (*TypedRef[VisualShaderNodeBillboard])(r)
 	rg.Unref()
 }
 
@@ -23108,31 +23108,31 @@ type RefVisualShaderNodeBooleanConstant interface {
 	TypedPtr() VisualShaderNodeBooleanConstant
 }
 
-type RefVisualShaderNodeBooleanConstantImpl typedRef[VisualShaderNodeBooleanConstant]
+type RefVisualShaderNodeBooleanConstantImpl TypedRef[VisualShaderNodeBooleanConstant]
 
 func (r *RefVisualShaderNodeBooleanConstantImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeBooleanConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeBooleanConstant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeBooleanConstantImpl) TypedPtr() VisualShaderNodeBooleanConstant {
-	rg := (*typedRef[VisualShaderNodeBooleanConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeBooleanConstant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeBooleanConstantImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeBooleanConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeBooleanConstant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeBooleanConstantImpl) TypedRef(from *RefVisualShaderNodeBooleanConstantImpl) {
-	rg := (*typedRef[VisualShaderNodeBooleanConstant])(r)
-	t := (*typedRef[VisualShaderNodeBooleanConstant])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeBooleanConstant])(t))
+	rg := (*TypedRef[VisualShaderNodeBooleanConstant])(r)
+	t := (*TypedRef[VisualShaderNodeBooleanConstant])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeBooleanConstant])(t))
 }
 
 func (r *RefVisualShaderNodeBooleanConstantImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeBooleanConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeBooleanConstant])(r)
 	rg.Unref()
 }
 
@@ -23160,31 +23160,31 @@ type RefVisualShaderNodeBooleanParameter interface {
 	TypedPtr() VisualShaderNodeBooleanParameter
 }
 
-type RefVisualShaderNodeBooleanParameterImpl typedRef[VisualShaderNodeBooleanParameter]
+type RefVisualShaderNodeBooleanParameterImpl TypedRef[VisualShaderNodeBooleanParameter]
 
 func (r *RefVisualShaderNodeBooleanParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeBooleanParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeBooleanParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeBooleanParameterImpl) TypedPtr() VisualShaderNodeBooleanParameter {
-	rg := (*typedRef[VisualShaderNodeBooleanParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeBooleanParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeBooleanParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeBooleanParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeBooleanParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeBooleanParameterImpl) TypedRef(from *RefVisualShaderNodeBooleanParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeBooleanParameter])(r)
-	t := (*typedRef[VisualShaderNodeBooleanParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeBooleanParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeBooleanParameter])(r)
+	t := (*TypedRef[VisualShaderNodeBooleanParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeBooleanParameter])(t))
 }
 
 func (r *RefVisualShaderNodeBooleanParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeBooleanParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeBooleanParameter])(r)
 	rg.Unref()
 }
 
@@ -23212,31 +23212,31 @@ type RefVisualShaderNodeClamp interface {
 	TypedPtr() VisualShaderNodeClamp
 }
 
-type RefVisualShaderNodeClampImpl typedRef[VisualShaderNodeClamp]
+type RefVisualShaderNodeClampImpl TypedRef[VisualShaderNodeClamp]
 
 func (r *RefVisualShaderNodeClampImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeClamp])(r)
+	rg := (*TypedRef[VisualShaderNodeClamp])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeClampImpl) TypedPtr() VisualShaderNodeClamp {
-	rg := (*typedRef[VisualShaderNodeClamp])(r)
+	rg := (*TypedRef[VisualShaderNodeClamp])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeClampImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeClamp])(r)
+	rg := (*TypedRef[VisualShaderNodeClamp])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeClampImpl) TypedRef(from *RefVisualShaderNodeClampImpl) {
-	rg := (*typedRef[VisualShaderNodeClamp])(r)
-	t := (*typedRef[VisualShaderNodeClamp])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeClamp])(t))
+	rg := (*TypedRef[VisualShaderNodeClamp])(r)
+	t := (*TypedRef[VisualShaderNodeClamp])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeClamp])(t))
 }
 
 func (r *RefVisualShaderNodeClampImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeClamp])(r)
+	rg := (*TypedRef[VisualShaderNodeClamp])(r)
 	rg.Unref()
 }
 
@@ -23264,31 +23264,31 @@ type RefVisualShaderNodeColorConstant interface {
 	TypedPtr() VisualShaderNodeColorConstant
 }
 
-type RefVisualShaderNodeColorConstantImpl typedRef[VisualShaderNodeColorConstant]
+type RefVisualShaderNodeColorConstantImpl TypedRef[VisualShaderNodeColorConstant]
 
 func (r *RefVisualShaderNodeColorConstantImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeColorConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeColorConstant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeColorConstantImpl) TypedPtr() VisualShaderNodeColorConstant {
-	rg := (*typedRef[VisualShaderNodeColorConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeColorConstant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeColorConstantImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeColorConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeColorConstant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeColorConstantImpl) TypedRef(from *RefVisualShaderNodeColorConstantImpl) {
-	rg := (*typedRef[VisualShaderNodeColorConstant])(r)
-	t := (*typedRef[VisualShaderNodeColorConstant])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeColorConstant])(t))
+	rg := (*TypedRef[VisualShaderNodeColorConstant])(r)
+	t := (*TypedRef[VisualShaderNodeColorConstant])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeColorConstant])(t))
 }
 
 func (r *RefVisualShaderNodeColorConstantImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeColorConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeColorConstant])(r)
 	rg.Unref()
 }
 
@@ -23316,31 +23316,31 @@ type RefVisualShaderNodeColorFunc interface {
 	TypedPtr() VisualShaderNodeColorFunc
 }
 
-type RefVisualShaderNodeColorFuncImpl typedRef[VisualShaderNodeColorFunc]
+type RefVisualShaderNodeColorFuncImpl TypedRef[VisualShaderNodeColorFunc]
 
 func (r *RefVisualShaderNodeColorFuncImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeColorFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeColorFunc])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeColorFuncImpl) TypedPtr() VisualShaderNodeColorFunc {
-	rg := (*typedRef[VisualShaderNodeColorFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeColorFunc])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeColorFuncImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeColorFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeColorFunc])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeColorFuncImpl) TypedRef(from *RefVisualShaderNodeColorFuncImpl) {
-	rg := (*typedRef[VisualShaderNodeColorFunc])(r)
-	t := (*typedRef[VisualShaderNodeColorFunc])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeColorFunc])(t))
+	rg := (*TypedRef[VisualShaderNodeColorFunc])(r)
+	t := (*TypedRef[VisualShaderNodeColorFunc])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeColorFunc])(t))
 }
 
 func (r *RefVisualShaderNodeColorFuncImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeColorFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeColorFunc])(r)
 	rg.Unref()
 }
 
@@ -23368,31 +23368,31 @@ type RefVisualShaderNodeColorOp interface {
 	TypedPtr() VisualShaderNodeColorOp
 }
 
-type RefVisualShaderNodeColorOpImpl typedRef[VisualShaderNodeColorOp]
+type RefVisualShaderNodeColorOpImpl TypedRef[VisualShaderNodeColorOp]
 
 func (r *RefVisualShaderNodeColorOpImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeColorOp])(r)
+	rg := (*TypedRef[VisualShaderNodeColorOp])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeColorOpImpl) TypedPtr() VisualShaderNodeColorOp {
-	rg := (*typedRef[VisualShaderNodeColorOp])(r)
+	rg := (*TypedRef[VisualShaderNodeColorOp])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeColorOpImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeColorOp])(r)
+	rg := (*TypedRef[VisualShaderNodeColorOp])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeColorOpImpl) TypedRef(from *RefVisualShaderNodeColorOpImpl) {
-	rg := (*typedRef[VisualShaderNodeColorOp])(r)
-	t := (*typedRef[VisualShaderNodeColorOp])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeColorOp])(t))
+	rg := (*TypedRef[VisualShaderNodeColorOp])(r)
+	t := (*TypedRef[VisualShaderNodeColorOp])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeColorOp])(t))
 }
 
 func (r *RefVisualShaderNodeColorOpImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeColorOp])(r)
+	rg := (*TypedRef[VisualShaderNodeColorOp])(r)
 	rg.Unref()
 }
 
@@ -23420,31 +23420,31 @@ type RefVisualShaderNodeColorParameter interface {
 	TypedPtr() VisualShaderNodeColorParameter
 }
 
-type RefVisualShaderNodeColorParameterImpl typedRef[VisualShaderNodeColorParameter]
+type RefVisualShaderNodeColorParameterImpl TypedRef[VisualShaderNodeColorParameter]
 
 func (r *RefVisualShaderNodeColorParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeColorParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeColorParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeColorParameterImpl) TypedPtr() VisualShaderNodeColorParameter {
-	rg := (*typedRef[VisualShaderNodeColorParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeColorParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeColorParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeColorParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeColorParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeColorParameterImpl) TypedRef(from *RefVisualShaderNodeColorParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeColorParameter])(r)
-	t := (*typedRef[VisualShaderNodeColorParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeColorParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeColorParameter])(r)
+	t := (*TypedRef[VisualShaderNodeColorParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeColorParameter])(t))
 }
 
 func (r *RefVisualShaderNodeColorParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeColorParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeColorParameter])(r)
 	rg.Unref()
 }
 
@@ -23472,31 +23472,31 @@ type RefVisualShaderNodeComment interface {
 	TypedPtr() VisualShaderNodeComment
 }
 
-type RefVisualShaderNodeCommentImpl typedRef[VisualShaderNodeComment]
+type RefVisualShaderNodeCommentImpl TypedRef[VisualShaderNodeComment]
 
 func (r *RefVisualShaderNodeCommentImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeComment])(r)
+	rg := (*TypedRef[VisualShaderNodeComment])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeCommentImpl) TypedPtr() VisualShaderNodeComment {
-	rg := (*typedRef[VisualShaderNodeComment])(r)
+	rg := (*TypedRef[VisualShaderNodeComment])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeCommentImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeComment])(r)
+	rg := (*TypedRef[VisualShaderNodeComment])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeCommentImpl) TypedRef(from *RefVisualShaderNodeCommentImpl) {
-	rg := (*typedRef[VisualShaderNodeComment])(r)
-	t := (*typedRef[VisualShaderNodeComment])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeComment])(t))
+	rg := (*TypedRef[VisualShaderNodeComment])(r)
+	t := (*TypedRef[VisualShaderNodeComment])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeComment])(t))
 }
 
 func (r *RefVisualShaderNodeCommentImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeComment])(r)
+	rg := (*TypedRef[VisualShaderNodeComment])(r)
 	rg.Unref()
 }
 
@@ -23524,31 +23524,31 @@ type RefVisualShaderNodeCompare interface {
 	TypedPtr() VisualShaderNodeCompare
 }
 
-type RefVisualShaderNodeCompareImpl typedRef[VisualShaderNodeCompare]
+type RefVisualShaderNodeCompareImpl TypedRef[VisualShaderNodeCompare]
 
 func (r *RefVisualShaderNodeCompareImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeCompare])(r)
+	rg := (*TypedRef[VisualShaderNodeCompare])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeCompareImpl) TypedPtr() VisualShaderNodeCompare {
-	rg := (*typedRef[VisualShaderNodeCompare])(r)
+	rg := (*TypedRef[VisualShaderNodeCompare])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeCompareImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeCompare])(r)
+	rg := (*TypedRef[VisualShaderNodeCompare])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeCompareImpl) TypedRef(from *RefVisualShaderNodeCompareImpl) {
-	rg := (*typedRef[VisualShaderNodeCompare])(r)
-	t := (*typedRef[VisualShaderNodeCompare])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeCompare])(t))
+	rg := (*TypedRef[VisualShaderNodeCompare])(r)
+	t := (*TypedRef[VisualShaderNodeCompare])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeCompare])(t))
 }
 
 func (r *RefVisualShaderNodeCompareImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeCompare])(r)
+	rg := (*TypedRef[VisualShaderNodeCompare])(r)
 	rg.Unref()
 }
 
@@ -23576,31 +23576,31 @@ type RefVisualShaderNodeConstant interface {
 	TypedPtr() VisualShaderNodeConstant
 }
 
-type RefVisualShaderNodeConstantImpl typedRef[VisualShaderNodeConstant]
+type RefVisualShaderNodeConstantImpl TypedRef[VisualShaderNodeConstant]
 
 func (r *RefVisualShaderNodeConstantImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeConstant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeConstantImpl) TypedPtr() VisualShaderNodeConstant {
-	rg := (*typedRef[VisualShaderNodeConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeConstant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeConstantImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeConstant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeConstantImpl) TypedRef(from *RefVisualShaderNodeConstantImpl) {
-	rg := (*typedRef[VisualShaderNodeConstant])(r)
-	t := (*typedRef[VisualShaderNodeConstant])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeConstant])(t))
+	rg := (*TypedRef[VisualShaderNodeConstant])(r)
+	t := (*TypedRef[VisualShaderNodeConstant])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeConstant])(t))
 }
 
 func (r *RefVisualShaderNodeConstantImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeConstant])(r)
 	rg.Unref()
 }
 
@@ -23628,31 +23628,31 @@ type RefVisualShaderNodeCubemap interface {
 	TypedPtr() VisualShaderNodeCubemap
 }
 
-type RefVisualShaderNodeCubemapImpl typedRef[VisualShaderNodeCubemap]
+type RefVisualShaderNodeCubemapImpl TypedRef[VisualShaderNodeCubemap]
 
 func (r *RefVisualShaderNodeCubemapImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeCubemap])(r)
+	rg := (*TypedRef[VisualShaderNodeCubemap])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeCubemapImpl) TypedPtr() VisualShaderNodeCubemap {
-	rg := (*typedRef[VisualShaderNodeCubemap])(r)
+	rg := (*TypedRef[VisualShaderNodeCubemap])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeCubemapImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeCubemap])(r)
+	rg := (*TypedRef[VisualShaderNodeCubemap])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeCubemapImpl) TypedRef(from *RefVisualShaderNodeCubemapImpl) {
-	rg := (*typedRef[VisualShaderNodeCubemap])(r)
-	t := (*typedRef[VisualShaderNodeCubemap])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeCubemap])(t))
+	rg := (*TypedRef[VisualShaderNodeCubemap])(r)
+	t := (*TypedRef[VisualShaderNodeCubemap])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeCubemap])(t))
 }
 
 func (r *RefVisualShaderNodeCubemapImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeCubemap])(r)
+	rg := (*TypedRef[VisualShaderNodeCubemap])(r)
 	rg.Unref()
 }
 
@@ -23680,31 +23680,31 @@ type RefVisualShaderNodeCubemapParameter interface {
 	TypedPtr() VisualShaderNodeCubemapParameter
 }
 
-type RefVisualShaderNodeCubemapParameterImpl typedRef[VisualShaderNodeCubemapParameter]
+type RefVisualShaderNodeCubemapParameterImpl TypedRef[VisualShaderNodeCubemapParameter]
 
 func (r *RefVisualShaderNodeCubemapParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeCubemapParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeCubemapParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeCubemapParameterImpl) TypedPtr() VisualShaderNodeCubemapParameter {
-	rg := (*typedRef[VisualShaderNodeCubemapParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeCubemapParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeCubemapParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeCubemapParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeCubemapParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeCubemapParameterImpl) TypedRef(from *RefVisualShaderNodeCubemapParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeCubemapParameter])(r)
-	t := (*typedRef[VisualShaderNodeCubemapParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeCubemapParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeCubemapParameter])(r)
+	t := (*TypedRef[VisualShaderNodeCubemapParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeCubemapParameter])(t))
 }
 
 func (r *RefVisualShaderNodeCubemapParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeCubemapParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeCubemapParameter])(r)
 	rg.Unref()
 }
 
@@ -23732,31 +23732,31 @@ type RefVisualShaderNodeCurveTexture interface {
 	TypedPtr() VisualShaderNodeCurveTexture
 }
 
-type RefVisualShaderNodeCurveTextureImpl typedRef[VisualShaderNodeCurveTexture]
+type RefVisualShaderNodeCurveTextureImpl TypedRef[VisualShaderNodeCurveTexture]
 
 func (r *RefVisualShaderNodeCurveTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeCurveTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeCurveTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeCurveTextureImpl) TypedPtr() VisualShaderNodeCurveTexture {
-	rg := (*typedRef[VisualShaderNodeCurveTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeCurveTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeCurveTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeCurveTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeCurveTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeCurveTextureImpl) TypedRef(from *RefVisualShaderNodeCurveTextureImpl) {
-	rg := (*typedRef[VisualShaderNodeCurveTexture])(r)
-	t := (*typedRef[VisualShaderNodeCurveTexture])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeCurveTexture])(t))
+	rg := (*TypedRef[VisualShaderNodeCurveTexture])(r)
+	t := (*TypedRef[VisualShaderNodeCurveTexture])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeCurveTexture])(t))
 }
 
 func (r *RefVisualShaderNodeCurveTextureImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeCurveTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeCurveTexture])(r)
 	rg.Unref()
 }
 
@@ -23784,31 +23784,31 @@ type RefVisualShaderNodeCurveXYZTexture interface {
 	TypedPtr() VisualShaderNodeCurveXYZTexture
 }
 
-type RefVisualShaderNodeCurveXYZTextureImpl typedRef[VisualShaderNodeCurveXYZTexture]
+type RefVisualShaderNodeCurveXYZTextureImpl TypedRef[VisualShaderNodeCurveXYZTexture]
 
 func (r *RefVisualShaderNodeCurveXYZTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeCurveXYZTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeCurveXYZTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeCurveXYZTextureImpl) TypedPtr() VisualShaderNodeCurveXYZTexture {
-	rg := (*typedRef[VisualShaderNodeCurveXYZTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeCurveXYZTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeCurveXYZTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeCurveXYZTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeCurveXYZTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeCurveXYZTextureImpl) TypedRef(from *RefVisualShaderNodeCurveXYZTextureImpl) {
-	rg := (*typedRef[VisualShaderNodeCurveXYZTexture])(r)
-	t := (*typedRef[VisualShaderNodeCurveXYZTexture])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeCurveXYZTexture])(t))
+	rg := (*TypedRef[VisualShaderNodeCurveXYZTexture])(r)
+	t := (*TypedRef[VisualShaderNodeCurveXYZTexture])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeCurveXYZTexture])(t))
 }
 
 func (r *RefVisualShaderNodeCurveXYZTextureImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeCurveXYZTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeCurveXYZTexture])(r)
 	rg.Unref()
 }
 
@@ -23836,31 +23836,31 @@ type RefVisualShaderNodeCustom interface {
 	TypedPtr() VisualShaderNodeCustom
 }
 
-type RefVisualShaderNodeCustomImpl typedRef[VisualShaderNodeCustom]
+type RefVisualShaderNodeCustomImpl TypedRef[VisualShaderNodeCustom]
 
 func (r *RefVisualShaderNodeCustomImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeCustom])(r)
+	rg := (*TypedRef[VisualShaderNodeCustom])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeCustomImpl) TypedPtr() VisualShaderNodeCustom {
-	rg := (*typedRef[VisualShaderNodeCustom])(r)
+	rg := (*TypedRef[VisualShaderNodeCustom])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeCustomImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeCustom])(r)
+	rg := (*TypedRef[VisualShaderNodeCustom])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeCustomImpl) TypedRef(from *RefVisualShaderNodeCustomImpl) {
-	rg := (*typedRef[VisualShaderNodeCustom])(r)
-	t := (*typedRef[VisualShaderNodeCustom])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeCustom])(t))
+	rg := (*TypedRef[VisualShaderNodeCustom])(r)
+	t := (*TypedRef[VisualShaderNodeCustom])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeCustom])(t))
 }
 
 func (r *RefVisualShaderNodeCustomImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeCustom])(r)
+	rg := (*TypedRef[VisualShaderNodeCustom])(r)
 	rg.Unref()
 }
 
@@ -23888,31 +23888,31 @@ type RefVisualShaderNodeDerivativeFunc interface {
 	TypedPtr() VisualShaderNodeDerivativeFunc
 }
 
-type RefVisualShaderNodeDerivativeFuncImpl typedRef[VisualShaderNodeDerivativeFunc]
+type RefVisualShaderNodeDerivativeFuncImpl TypedRef[VisualShaderNodeDerivativeFunc]
 
 func (r *RefVisualShaderNodeDerivativeFuncImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeDerivativeFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeDerivativeFunc])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeDerivativeFuncImpl) TypedPtr() VisualShaderNodeDerivativeFunc {
-	rg := (*typedRef[VisualShaderNodeDerivativeFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeDerivativeFunc])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeDerivativeFuncImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeDerivativeFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeDerivativeFunc])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeDerivativeFuncImpl) TypedRef(from *RefVisualShaderNodeDerivativeFuncImpl) {
-	rg := (*typedRef[VisualShaderNodeDerivativeFunc])(r)
-	t := (*typedRef[VisualShaderNodeDerivativeFunc])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeDerivativeFunc])(t))
+	rg := (*TypedRef[VisualShaderNodeDerivativeFunc])(r)
+	t := (*TypedRef[VisualShaderNodeDerivativeFunc])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeDerivativeFunc])(t))
 }
 
 func (r *RefVisualShaderNodeDerivativeFuncImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeDerivativeFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeDerivativeFunc])(r)
 	rg.Unref()
 }
 
@@ -23940,31 +23940,31 @@ type RefVisualShaderNodeDeterminant interface {
 	TypedPtr() VisualShaderNodeDeterminant
 }
 
-type RefVisualShaderNodeDeterminantImpl typedRef[VisualShaderNodeDeterminant]
+type RefVisualShaderNodeDeterminantImpl TypedRef[VisualShaderNodeDeterminant]
 
 func (r *RefVisualShaderNodeDeterminantImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeDeterminant])(r)
+	rg := (*TypedRef[VisualShaderNodeDeterminant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeDeterminantImpl) TypedPtr() VisualShaderNodeDeterminant {
-	rg := (*typedRef[VisualShaderNodeDeterminant])(r)
+	rg := (*TypedRef[VisualShaderNodeDeterminant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeDeterminantImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeDeterminant])(r)
+	rg := (*TypedRef[VisualShaderNodeDeterminant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeDeterminantImpl) TypedRef(from *RefVisualShaderNodeDeterminantImpl) {
-	rg := (*typedRef[VisualShaderNodeDeterminant])(r)
-	t := (*typedRef[VisualShaderNodeDeterminant])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeDeterminant])(t))
+	rg := (*TypedRef[VisualShaderNodeDeterminant])(r)
+	t := (*TypedRef[VisualShaderNodeDeterminant])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeDeterminant])(t))
 }
 
 func (r *RefVisualShaderNodeDeterminantImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeDeterminant])(r)
+	rg := (*TypedRef[VisualShaderNodeDeterminant])(r)
 	rg.Unref()
 }
 
@@ -23992,31 +23992,31 @@ type RefVisualShaderNodeDistanceFade interface {
 	TypedPtr() VisualShaderNodeDistanceFade
 }
 
-type RefVisualShaderNodeDistanceFadeImpl typedRef[VisualShaderNodeDistanceFade]
+type RefVisualShaderNodeDistanceFadeImpl TypedRef[VisualShaderNodeDistanceFade]
 
 func (r *RefVisualShaderNodeDistanceFadeImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeDistanceFade])(r)
+	rg := (*TypedRef[VisualShaderNodeDistanceFade])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeDistanceFadeImpl) TypedPtr() VisualShaderNodeDistanceFade {
-	rg := (*typedRef[VisualShaderNodeDistanceFade])(r)
+	rg := (*TypedRef[VisualShaderNodeDistanceFade])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeDistanceFadeImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeDistanceFade])(r)
+	rg := (*TypedRef[VisualShaderNodeDistanceFade])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeDistanceFadeImpl) TypedRef(from *RefVisualShaderNodeDistanceFadeImpl) {
-	rg := (*typedRef[VisualShaderNodeDistanceFade])(r)
-	t := (*typedRef[VisualShaderNodeDistanceFade])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeDistanceFade])(t))
+	rg := (*TypedRef[VisualShaderNodeDistanceFade])(r)
+	t := (*TypedRef[VisualShaderNodeDistanceFade])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeDistanceFade])(t))
 }
 
 func (r *RefVisualShaderNodeDistanceFadeImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeDistanceFade])(r)
+	rg := (*TypedRef[VisualShaderNodeDistanceFade])(r)
 	rg.Unref()
 }
 
@@ -24044,31 +24044,31 @@ type RefVisualShaderNodeDotProduct interface {
 	TypedPtr() VisualShaderNodeDotProduct
 }
 
-type RefVisualShaderNodeDotProductImpl typedRef[VisualShaderNodeDotProduct]
+type RefVisualShaderNodeDotProductImpl TypedRef[VisualShaderNodeDotProduct]
 
 func (r *RefVisualShaderNodeDotProductImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeDotProduct])(r)
+	rg := (*TypedRef[VisualShaderNodeDotProduct])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeDotProductImpl) TypedPtr() VisualShaderNodeDotProduct {
-	rg := (*typedRef[VisualShaderNodeDotProduct])(r)
+	rg := (*TypedRef[VisualShaderNodeDotProduct])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeDotProductImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeDotProduct])(r)
+	rg := (*TypedRef[VisualShaderNodeDotProduct])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeDotProductImpl) TypedRef(from *RefVisualShaderNodeDotProductImpl) {
-	rg := (*typedRef[VisualShaderNodeDotProduct])(r)
-	t := (*typedRef[VisualShaderNodeDotProduct])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeDotProduct])(t))
+	rg := (*TypedRef[VisualShaderNodeDotProduct])(r)
+	t := (*TypedRef[VisualShaderNodeDotProduct])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeDotProduct])(t))
 }
 
 func (r *RefVisualShaderNodeDotProductImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeDotProduct])(r)
+	rg := (*TypedRef[VisualShaderNodeDotProduct])(r)
 	rg.Unref()
 }
 
@@ -24096,31 +24096,31 @@ type RefVisualShaderNodeExpression interface {
 	TypedPtr() VisualShaderNodeExpression
 }
 
-type RefVisualShaderNodeExpressionImpl typedRef[VisualShaderNodeExpression]
+type RefVisualShaderNodeExpressionImpl TypedRef[VisualShaderNodeExpression]
 
 func (r *RefVisualShaderNodeExpressionImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeExpression])(r)
+	rg := (*TypedRef[VisualShaderNodeExpression])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeExpressionImpl) TypedPtr() VisualShaderNodeExpression {
-	rg := (*typedRef[VisualShaderNodeExpression])(r)
+	rg := (*TypedRef[VisualShaderNodeExpression])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeExpressionImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeExpression])(r)
+	rg := (*TypedRef[VisualShaderNodeExpression])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeExpressionImpl) TypedRef(from *RefVisualShaderNodeExpressionImpl) {
-	rg := (*typedRef[VisualShaderNodeExpression])(r)
-	t := (*typedRef[VisualShaderNodeExpression])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeExpression])(t))
+	rg := (*TypedRef[VisualShaderNodeExpression])(r)
+	t := (*TypedRef[VisualShaderNodeExpression])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeExpression])(t))
 }
 
 func (r *RefVisualShaderNodeExpressionImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeExpression])(r)
+	rg := (*TypedRef[VisualShaderNodeExpression])(r)
 	rg.Unref()
 }
 
@@ -24148,31 +24148,31 @@ type RefVisualShaderNodeFaceForward interface {
 	TypedPtr() VisualShaderNodeFaceForward
 }
 
-type RefVisualShaderNodeFaceForwardImpl typedRef[VisualShaderNodeFaceForward]
+type RefVisualShaderNodeFaceForwardImpl TypedRef[VisualShaderNodeFaceForward]
 
 func (r *RefVisualShaderNodeFaceForwardImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeFaceForward])(r)
+	rg := (*TypedRef[VisualShaderNodeFaceForward])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeFaceForwardImpl) TypedPtr() VisualShaderNodeFaceForward {
-	rg := (*typedRef[VisualShaderNodeFaceForward])(r)
+	rg := (*TypedRef[VisualShaderNodeFaceForward])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeFaceForwardImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeFaceForward])(r)
+	rg := (*TypedRef[VisualShaderNodeFaceForward])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeFaceForwardImpl) TypedRef(from *RefVisualShaderNodeFaceForwardImpl) {
-	rg := (*typedRef[VisualShaderNodeFaceForward])(r)
-	t := (*typedRef[VisualShaderNodeFaceForward])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeFaceForward])(t))
+	rg := (*TypedRef[VisualShaderNodeFaceForward])(r)
+	t := (*TypedRef[VisualShaderNodeFaceForward])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeFaceForward])(t))
 }
 
 func (r *RefVisualShaderNodeFaceForwardImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeFaceForward])(r)
+	rg := (*TypedRef[VisualShaderNodeFaceForward])(r)
 	rg.Unref()
 }
 
@@ -24200,31 +24200,31 @@ type RefVisualShaderNodeFloatConstant interface {
 	TypedPtr() VisualShaderNodeFloatConstant
 }
 
-type RefVisualShaderNodeFloatConstantImpl typedRef[VisualShaderNodeFloatConstant]
+type RefVisualShaderNodeFloatConstantImpl TypedRef[VisualShaderNodeFloatConstant]
 
 func (r *RefVisualShaderNodeFloatConstantImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeFloatConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatConstant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeFloatConstantImpl) TypedPtr() VisualShaderNodeFloatConstant {
-	rg := (*typedRef[VisualShaderNodeFloatConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatConstant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeFloatConstantImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeFloatConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatConstant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeFloatConstantImpl) TypedRef(from *RefVisualShaderNodeFloatConstantImpl) {
-	rg := (*typedRef[VisualShaderNodeFloatConstant])(r)
-	t := (*typedRef[VisualShaderNodeFloatConstant])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeFloatConstant])(t))
+	rg := (*TypedRef[VisualShaderNodeFloatConstant])(r)
+	t := (*TypedRef[VisualShaderNodeFloatConstant])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeFloatConstant])(t))
 }
 
 func (r *RefVisualShaderNodeFloatConstantImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeFloatConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatConstant])(r)
 	rg.Unref()
 }
 
@@ -24252,31 +24252,31 @@ type RefVisualShaderNodeFloatFunc interface {
 	TypedPtr() VisualShaderNodeFloatFunc
 }
 
-type RefVisualShaderNodeFloatFuncImpl typedRef[VisualShaderNodeFloatFunc]
+type RefVisualShaderNodeFloatFuncImpl TypedRef[VisualShaderNodeFloatFunc]
 
 func (r *RefVisualShaderNodeFloatFuncImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeFloatFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatFunc])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeFloatFuncImpl) TypedPtr() VisualShaderNodeFloatFunc {
-	rg := (*typedRef[VisualShaderNodeFloatFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatFunc])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeFloatFuncImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeFloatFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatFunc])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeFloatFuncImpl) TypedRef(from *RefVisualShaderNodeFloatFuncImpl) {
-	rg := (*typedRef[VisualShaderNodeFloatFunc])(r)
-	t := (*typedRef[VisualShaderNodeFloatFunc])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeFloatFunc])(t))
+	rg := (*TypedRef[VisualShaderNodeFloatFunc])(r)
+	t := (*TypedRef[VisualShaderNodeFloatFunc])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeFloatFunc])(t))
 }
 
 func (r *RefVisualShaderNodeFloatFuncImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeFloatFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatFunc])(r)
 	rg.Unref()
 }
 
@@ -24304,31 +24304,31 @@ type RefVisualShaderNodeFloatOp interface {
 	TypedPtr() VisualShaderNodeFloatOp
 }
 
-type RefVisualShaderNodeFloatOpImpl typedRef[VisualShaderNodeFloatOp]
+type RefVisualShaderNodeFloatOpImpl TypedRef[VisualShaderNodeFloatOp]
 
 func (r *RefVisualShaderNodeFloatOpImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeFloatOp])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatOp])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeFloatOpImpl) TypedPtr() VisualShaderNodeFloatOp {
-	rg := (*typedRef[VisualShaderNodeFloatOp])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatOp])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeFloatOpImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeFloatOp])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatOp])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeFloatOpImpl) TypedRef(from *RefVisualShaderNodeFloatOpImpl) {
-	rg := (*typedRef[VisualShaderNodeFloatOp])(r)
-	t := (*typedRef[VisualShaderNodeFloatOp])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeFloatOp])(t))
+	rg := (*TypedRef[VisualShaderNodeFloatOp])(r)
+	t := (*TypedRef[VisualShaderNodeFloatOp])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeFloatOp])(t))
 }
 
 func (r *RefVisualShaderNodeFloatOpImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeFloatOp])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatOp])(r)
 	rg.Unref()
 }
 
@@ -24356,31 +24356,31 @@ type RefVisualShaderNodeFloatParameter interface {
 	TypedPtr() VisualShaderNodeFloatParameter
 }
 
-type RefVisualShaderNodeFloatParameterImpl typedRef[VisualShaderNodeFloatParameter]
+type RefVisualShaderNodeFloatParameterImpl TypedRef[VisualShaderNodeFloatParameter]
 
 func (r *RefVisualShaderNodeFloatParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeFloatParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeFloatParameterImpl) TypedPtr() VisualShaderNodeFloatParameter {
-	rg := (*typedRef[VisualShaderNodeFloatParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeFloatParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeFloatParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeFloatParameterImpl) TypedRef(from *RefVisualShaderNodeFloatParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeFloatParameter])(r)
-	t := (*typedRef[VisualShaderNodeFloatParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeFloatParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeFloatParameter])(r)
+	t := (*TypedRef[VisualShaderNodeFloatParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeFloatParameter])(t))
 }
 
 func (r *RefVisualShaderNodeFloatParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeFloatParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeFloatParameter])(r)
 	rg.Unref()
 }
 
@@ -24408,31 +24408,31 @@ type RefVisualShaderNodeFresnel interface {
 	TypedPtr() VisualShaderNodeFresnel
 }
 
-type RefVisualShaderNodeFresnelImpl typedRef[VisualShaderNodeFresnel]
+type RefVisualShaderNodeFresnelImpl TypedRef[VisualShaderNodeFresnel]
 
 func (r *RefVisualShaderNodeFresnelImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeFresnel])(r)
+	rg := (*TypedRef[VisualShaderNodeFresnel])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeFresnelImpl) TypedPtr() VisualShaderNodeFresnel {
-	rg := (*typedRef[VisualShaderNodeFresnel])(r)
+	rg := (*TypedRef[VisualShaderNodeFresnel])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeFresnelImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeFresnel])(r)
+	rg := (*TypedRef[VisualShaderNodeFresnel])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeFresnelImpl) TypedRef(from *RefVisualShaderNodeFresnelImpl) {
-	rg := (*typedRef[VisualShaderNodeFresnel])(r)
-	t := (*typedRef[VisualShaderNodeFresnel])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeFresnel])(t))
+	rg := (*TypedRef[VisualShaderNodeFresnel])(r)
+	t := (*TypedRef[VisualShaderNodeFresnel])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeFresnel])(t))
 }
 
 func (r *RefVisualShaderNodeFresnelImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeFresnel])(r)
+	rg := (*TypedRef[VisualShaderNodeFresnel])(r)
 	rg.Unref()
 }
 
@@ -24460,31 +24460,31 @@ type RefVisualShaderNodeGlobalExpression interface {
 	TypedPtr() VisualShaderNodeGlobalExpression
 }
 
-type RefVisualShaderNodeGlobalExpressionImpl typedRef[VisualShaderNodeGlobalExpression]
+type RefVisualShaderNodeGlobalExpressionImpl TypedRef[VisualShaderNodeGlobalExpression]
 
 func (r *RefVisualShaderNodeGlobalExpressionImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeGlobalExpression])(r)
+	rg := (*TypedRef[VisualShaderNodeGlobalExpression])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeGlobalExpressionImpl) TypedPtr() VisualShaderNodeGlobalExpression {
-	rg := (*typedRef[VisualShaderNodeGlobalExpression])(r)
+	rg := (*TypedRef[VisualShaderNodeGlobalExpression])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeGlobalExpressionImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeGlobalExpression])(r)
+	rg := (*TypedRef[VisualShaderNodeGlobalExpression])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeGlobalExpressionImpl) TypedRef(from *RefVisualShaderNodeGlobalExpressionImpl) {
-	rg := (*typedRef[VisualShaderNodeGlobalExpression])(r)
-	t := (*typedRef[VisualShaderNodeGlobalExpression])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeGlobalExpression])(t))
+	rg := (*TypedRef[VisualShaderNodeGlobalExpression])(r)
+	t := (*TypedRef[VisualShaderNodeGlobalExpression])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeGlobalExpression])(t))
 }
 
 func (r *RefVisualShaderNodeGlobalExpressionImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeGlobalExpression])(r)
+	rg := (*TypedRef[VisualShaderNodeGlobalExpression])(r)
 	rg.Unref()
 }
 
@@ -24512,31 +24512,31 @@ type RefVisualShaderNodeGroupBase interface {
 	TypedPtr() VisualShaderNodeGroupBase
 }
 
-type RefVisualShaderNodeGroupBaseImpl typedRef[VisualShaderNodeGroupBase]
+type RefVisualShaderNodeGroupBaseImpl TypedRef[VisualShaderNodeGroupBase]
 
 func (r *RefVisualShaderNodeGroupBaseImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeGroupBase])(r)
+	rg := (*TypedRef[VisualShaderNodeGroupBase])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeGroupBaseImpl) TypedPtr() VisualShaderNodeGroupBase {
-	rg := (*typedRef[VisualShaderNodeGroupBase])(r)
+	rg := (*TypedRef[VisualShaderNodeGroupBase])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeGroupBaseImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeGroupBase])(r)
+	rg := (*TypedRef[VisualShaderNodeGroupBase])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeGroupBaseImpl) TypedRef(from *RefVisualShaderNodeGroupBaseImpl) {
-	rg := (*typedRef[VisualShaderNodeGroupBase])(r)
-	t := (*typedRef[VisualShaderNodeGroupBase])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeGroupBase])(t))
+	rg := (*TypedRef[VisualShaderNodeGroupBase])(r)
+	t := (*TypedRef[VisualShaderNodeGroupBase])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeGroupBase])(t))
 }
 
 func (r *RefVisualShaderNodeGroupBaseImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeGroupBase])(r)
+	rg := (*TypedRef[VisualShaderNodeGroupBase])(r)
 	rg.Unref()
 }
 
@@ -24564,31 +24564,31 @@ type RefVisualShaderNodeIf interface {
 	TypedPtr() VisualShaderNodeIf
 }
 
-type RefVisualShaderNodeIfImpl typedRef[VisualShaderNodeIf]
+type RefVisualShaderNodeIfImpl TypedRef[VisualShaderNodeIf]
 
 func (r *RefVisualShaderNodeIfImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeIf])(r)
+	rg := (*TypedRef[VisualShaderNodeIf])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeIfImpl) TypedPtr() VisualShaderNodeIf {
-	rg := (*typedRef[VisualShaderNodeIf])(r)
+	rg := (*TypedRef[VisualShaderNodeIf])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeIfImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeIf])(r)
+	rg := (*TypedRef[VisualShaderNodeIf])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeIfImpl) TypedRef(from *RefVisualShaderNodeIfImpl) {
-	rg := (*typedRef[VisualShaderNodeIf])(r)
-	t := (*typedRef[VisualShaderNodeIf])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeIf])(t))
+	rg := (*TypedRef[VisualShaderNodeIf])(r)
+	t := (*TypedRef[VisualShaderNodeIf])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeIf])(t))
 }
 
 func (r *RefVisualShaderNodeIfImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeIf])(r)
+	rg := (*TypedRef[VisualShaderNodeIf])(r)
 	rg.Unref()
 }
 
@@ -24616,31 +24616,31 @@ type RefVisualShaderNodeInput interface {
 	TypedPtr() VisualShaderNodeInput
 }
 
-type RefVisualShaderNodeInputImpl typedRef[VisualShaderNodeInput]
+type RefVisualShaderNodeInputImpl TypedRef[VisualShaderNodeInput]
 
 func (r *RefVisualShaderNodeInputImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeInput])(r)
+	rg := (*TypedRef[VisualShaderNodeInput])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeInputImpl) TypedPtr() VisualShaderNodeInput {
-	rg := (*typedRef[VisualShaderNodeInput])(r)
+	rg := (*TypedRef[VisualShaderNodeInput])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeInputImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeInput])(r)
+	rg := (*TypedRef[VisualShaderNodeInput])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeInputImpl) TypedRef(from *RefVisualShaderNodeInputImpl) {
-	rg := (*typedRef[VisualShaderNodeInput])(r)
-	t := (*typedRef[VisualShaderNodeInput])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeInput])(t))
+	rg := (*TypedRef[VisualShaderNodeInput])(r)
+	t := (*TypedRef[VisualShaderNodeInput])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeInput])(t))
 }
 
 func (r *RefVisualShaderNodeInputImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeInput])(r)
+	rg := (*TypedRef[VisualShaderNodeInput])(r)
 	rg.Unref()
 }
 
@@ -24668,31 +24668,31 @@ type RefVisualShaderNodeIntConstant interface {
 	TypedPtr() VisualShaderNodeIntConstant
 }
 
-type RefVisualShaderNodeIntConstantImpl typedRef[VisualShaderNodeIntConstant]
+type RefVisualShaderNodeIntConstantImpl TypedRef[VisualShaderNodeIntConstant]
 
 func (r *RefVisualShaderNodeIntConstantImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeIntConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeIntConstant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeIntConstantImpl) TypedPtr() VisualShaderNodeIntConstant {
-	rg := (*typedRef[VisualShaderNodeIntConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeIntConstant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeIntConstantImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeIntConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeIntConstant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeIntConstantImpl) TypedRef(from *RefVisualShaderNodeIntConstantImpl) {
-	rg := (*typedRef[VisualShaderNodeIntConstant])(r)
-	t := (*typedRef[VisualShaderNodeIntConstant])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeIntConstant])(t))
+	rg := (*TypedRef[VisualShaderNodeIntConstant])(r)
+	t := (*TypedRef[VisualShaderNodeIntConstant])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeIntConstant])(t))
 }
 
 func (r *RefVisualShaderNodeIntConstantImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeIntConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeIntConstant])(r)
 	rg.Unref()
 }
 
@@ -24720,31 +24720,31 @@ type RefVisualShaderNodeIntFunc interface {
 	TypedPtr() VisualShaderNodeIntFunc
 }
 
-type RefVisualShaderNodeIntFuncImpl typedRef[VisualShaderNodeIntFunc]
+type RefVisualShaderNodeIntFuncImpl TypedRef[VisualShaderNodeIntFunc]
 
 func (r *RefVisualShaderNodeIntFuncImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeIntFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeIntFunc])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeIntFuncImpl) TypedPtr() VisualShaderNodeIntFunc {
-	rg := (*typedRef[VisualShaderNodeIntFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeIntFunc])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeIntFuncImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeIntFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeIntFunc])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeIntFuncImpl) TypedRef(from *RefVisualShaderNodeIntFuncImpl) {
-	rg := (*typedRef[VisualShaderNodeIntFunc])(r)
-	t := (*typedRef[VisualShaderNodeIntFunc])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeIntFunc])(t))
+	rg := (*TypedRef[VisualShaderNodeIntFunc])(r)
+	t := (*TypedRef[VisualShaderNodeIntFunc])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeIntFunc])(t))
 }
 
 func (r *RefVisualShaderNodeIntFuncImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeIntFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeIntFunc])(r)
 	rg.Unref()
 }
 
@@ -24772,31 +24772,31 @@ type RefVisualShaderNodeIntOp interface {
 	TypedPtr() VisualShaderNodeIntOp
 }
 
-type RefVisualShaderNodeIntOpImpl typedRef[VisualShaderNodeIntOp]
+type RefVisualShaderNodeIntOpImpl TypedRef[VisualShaderNodeIntOp]
 
 func (r *RefVisualShaderNodeIntOpImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeIntOp])(r)
+	rg := (*TypedRef[VisualShaderNodeIntOp])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeIntOpImpl) TypedPtr() VisualShaderNodeIntOp {
-	rg := (*typedRef[VisualShaderNodeIntOp])(r)
+	rg := (*TypedRef[VisualShaderNodeIntOp])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeIntOpImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeIntOp])(r)
+	rg := (*TypedRef[VisualShaderNodeIntOp])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeIntOpImpl) TypedRef(from *RefVisualShaderNodeIntOpImpl) {
-	rg := (*typedRef[VisualShaderNodeIntOp])(r)
-	t := (*typedRef[VisualShaderNodeIntOp])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeIntOp])(t))
+	rg := (*TypedRef[VisualShaderNodeIntOp])(r)
+	t := (*TypedRef[VisualShaderNodeIntOp])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeIntOp])(t))
 }
 
 func (r *RefVisualShaderNodeIntOpImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeIntOp])(r)
+	rg := (*TypedRef[VisualShaderNodeIntOp])(r)
 	rg.Unref()
 }
 
@@ -24824,31 +24824,31 @@ type RefVisualShaderNodeIntParameter interface {
 	TypedPtr() VisualShaderNodeIntParameter
 }
 
-type RefVisualShaderNodeIntParameterImpl typedRef[VisualShaderNodeIntParameter]
+type RefVisualShaderNodeIntParameterImpl TypedRef[VisualShaderNodeIntParameter]
 
 func (r *RefVisualShaderNodeIntParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeIntParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeIntParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeIntParameterImpl) TypedPtr() VisualShaderNodeIntParameter {
-	rg := (*typedRef[VisualShaderNodeIntParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeIntParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeIntParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeIntParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeIntParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeIntParameterImpl) TypedRef(from *RefVisualShaderNodeIntParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeIntParameter])(r)
-	t := (*typedRef[VisualShaderNodeIntParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeIntParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeIntParameter])(r)
+	t := (*TypedRef[VisualShaderNodeIntParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeIntParameter])(t))
 }
 
 func (r *RefVisualShaderNodeIntParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeIntParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeIntParameter])(r)
 	rg.Unref()
 }
 
@@ -24876,31 +24876,31 @@ type RefVisualShaderNodeIs interface {
 	TypedPtr() VisualShaderNodeIs
 }
 
-type RefVisualShaderNodeIsImpl typedRef[VisualShaderNodeIs]
+type RefVisualShaderNodeIsImpl TypedRef[VisualShaderNodeIs]
 
 func (r *RefVisualShaderNodeIsImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeIs])(r)
+	rg := (*TypedRef[VisualShaderNodeIs])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeIsImpl) TypedPtr() VisualShaderNodeIs {
-	rg := (*typedRef[VisualShaderNodeIs])(r)
+	rg := (*TypedRef[VisualShaderNodeIs])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeIsImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeIs])(r)
+	rg := (*TypedRef[VisualShaderNodeIs])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeIsImpl) TypedRef(from *RefVisualShaderNodeIsImpl) {
-	rg := (*typedRef[VisualShaderNodeIs])(r)
-	t := (*typedRef[VisualShaderNodeIs])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeIs])(t))
+	rg := (*TypedRef[VisualShaderNodeIs])(r)
+	t := (*TypedRef[VisualShaderNodeIs])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeIs])(t))
 }
 
 func (r *RefVisualShaderNodeIsImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeIs])(r)
+	rg := (*TypedRef[VisualShaderNodeIs])(r)
 	rg.Unref()
 }
 
@@ -24928,31 +24928,31 @@ type RefVisualShaderNodeLinearSceneDepth interface {
 	TypedPtr() VisualShaderNodeLinearSceneDepth
 }
 
-type RefVisualShaderNodeLinearSceneDepthImpl typedRef[VisualShaderNodeLinearSceneDepth]
+type RefVisualShaderNodeLinearSceneDepthImpl TypedRef[VisualShaderNodeLinearSceneDepth]
 
 func (r *RefVisualShaderNodeLinearSceneDepthImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeLinearSceneDepth])(r)
+	rg := (*TypedRef[VisualShaderNodeLinearSceneDepth])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeLinearSceneDepthImpl) TypedPtr() VisualShaderNodeLinearSceneDepth {
-	rg := (*typedRef[VisualShaderNodeLinearSceneDepth])(r)
+	rg := (*TypedRef[VisualShaderNodeLinearSceneDepth])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeLinearSceneDepthImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeLinearSceneDepth])(r)
+	rg := (*TypedRef[VisualShaderNodeLinearSceneDepth])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeLinearSceneDepthImpl) TypedRef(from *RefVisualShaderNodeLinearSceneDepthImpl) {
-	rg := (*typedRef[VisualShaderNodeLinearSceneDepth])(r)
-	t := (*typedRef[VisualShaderNodeLinearSceneDepth])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeLinearSceneDepth])(t))
+	rg := (*TypedRef[VisualShaderNodeLinearSceneDepth])(r)
+	t := (*TypedRef[VisualShaderNodeLinearSceneDepth])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeLinearSceneDepth])(t))
 }
 
 func (r *RefVisualShaderNodeLinearSceneDepthImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeLinearSceneDepth])(r)
+	rg := (*TypedRef[VisualShaderNodeLinearSceneDepth])(r)
 	rg.Unref()
 }
 
@@ -24980,31 +24980,31 @@ type RefVisualShaderNodeMix interface {
 	TypedPtr() VisualShaderNodeMix
 }
 
-type RefVisualShaderNodeMixImpl typedRef[VisualShaderNodeMix]
+type RefVisualShaderNodeMixImpl TypedRef[VisualShaderNodeMix]
 
 func (r *RefVisualShaderNodeMixImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeMix])(r)
+	rg := (*TypedRef[VisualShaderNodeMix])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeMixImpl) TypedPtr() VisualShaderNodeMix {
-	rg := (*typedRef[VisualShaderNodeMix])(r)
+	rg := (*TypedRef[VisualShaderNodeMix])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeMixImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeMix])(r)
+	rg := (*TypedRef[VisualShaderNodeMix])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeMixImpl) TypedRef(from *RefVisualShaderNodeMixImpl) {
-	rg := (*typedRef[VisualShaderNodeMix])(r)
-	t := (*typedRef[VisualShaderNodeMix])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeMix])(t))
+	rg := (*TypedRef[VisualShaderNodeMix])(r)
+	t := (*TypedRef[VisualShaderNodeMix])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeMix])(t))
 }
 
 func (r *RefVisualShaderNodeMixImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeMix])(r)
+	rg := (*TypedRef[VisualShaderNodeMix])(r)
 	rg.Unref()
 }
 
@@ -25032,31 +25032,31 @@ type RefVisualShaderNodeMultiplyAdd interface {
 	TypedPtr() VisualShaderNodeMultiplyAdd
 }
 
-type RefVisualShaderNodeMultiplyAddImpl typedRef[VisualShaderNodeMultiplyAdd]
+type RefVisualShaderNodeMultiplyAddImpl TypedRef[VisualShaderNodeMultiplyAdd]
 
 func (r *RefVisualShaderNodeMultiplyAddImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeMultiplyAdd])(r)
+	rg := (*TypedRef[VisualShaderNodeMultiplyAdd])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeMultiplyAddImpl) TypedPtr() VisualShaderNodeMultiplyAdd {
-	rg := (*typedRef[VisualShaderNodeMultiplyAdd])(r)
+	rg := (*TypedRef[VisualShaderNodeMultiplyAdd])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeMultiplyAddImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeMultiplyAdd])(r)
+	rg := (*TypedRef[VisualShaderNodeMultiplyAdd])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeMultiplyAddImpl) TypedRef(from *RefVisualShaderNodeMultiplyAddImpl) {
-	rg := (*typedRef[VisualShaderNodeMultiplyAdd])(r)
-	t := (*typedRef[VisualShaderNodeMultiplyAdd])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeMultiplyAdd])(t))
+	rg := (*TypedRef[VisualShaderNodeMultiplyAdd])(r)
+	t := (*TypedRef[VisualShaderNodeMultiplyAdd])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeMultiplyAdd])(t))
 }
 
 func (r *RefVisualShaderNodeMultiplyAddImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeMultiplyAdd])(r)
+	rg := (*TypedRef[VisualShaderNodeMultiplyAdd])(r)
 	rg.Unref()
 }
 
@@ -25084,31 +25084,31 @@ type RefVisualShaderNodeOuterProduct interface {
 	TypedPtr() VisualShaderNodeOuterProduct
 }
 
-type RefVisualShaderNodeOuterProductImpl typedRef[VisualShaderNodeOuterProduct]
+type RefVisualShaderNodeOuterProductImpl TypedRef[VisualShaderNodeOuterProduct]
 
 func (r *RefVisualShaderNodeOuterProductImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeOuterProduct])(r)
+	rg := (*TypedRef[VisualShaderNodeOuterProduct])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeOuterProductImpl) TypedPtr() VisualShaderNodeOuterProduct {
-	rg := (*typedRef[VisualShaderNodeOuterProduct])(r)
+	rg := (*TypedRef[VisualShaderNodeOuterProduct])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeOuterProductImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeOuterProduct])(r)
+	rg := (*TypedRef[VisualShaderNodeOuterProduct])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeOuterProductImpl) TypedRef(from *RefVisualShaderNodeOuterProductImpl) {
-	rg := (*typedRef[VisualShaderNodeOuterProduct])(r)
-	t := (*typedRef[VisualShaderNodeOuterProduct])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeOuterProduct])(t))
+	rg := (*TypedRef[VisualShaderNodeOuterProduct])(r)
+	t := (*TypedRef[VisualShaderNodeOuterProduct])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeOuterProduct])(t))
 }
 
 func (r *RefVisualShaderNodeOuterProductImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeOuterProduct])(r)
+	rg := (*TypedRef[VisualShaderNodeOuterProduct])(r)
 	rg.Unref()
 }
 
@@ -25136,31 +25136,31 @@ type RefVisualShaderNodeOutput interface {
 	TypedPtr() VisualShaderNodeOutput
 }
 
-type RefVisualShaderNodeOutputImpl typedRef[VisualShaderNodeOutput]
+type RefVisualShaderNodeOutputImpl TypedRef[VisualShaderNodeOutput]
 
 func (r *RefVisualShaderNodeOutputImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeOutput])(r)
+	rg := (*TypedRef[VisualShaderNodeOutput])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeOutputImpl) TypedPtr() VisualShaderNodeOutput {
-	rg := (*typedRef[VisualShaderNodeOutput])(r)
+	rg := (*TypedRef[VisualShaderNodeOutput])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeOutputImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeOutput])(r)
+	rg := (*TypedRef[VisualShaderNodeOutput])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeOutputImpl) TypedRef(from *RefVisualShaderNodeOutputImpl) {
-	rg := (*typedRef[VisualShaderNodeOutput])(r)
-	t := (*typedRef[VisualShaderNodeOutput])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeOutput])(t))
+	rg := (*TypedRef[VisualShaderNodeOutput])(r)
+	t := (*TypedRef[VisualShaderNodeOutput])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeOutput])(t))
 }
 
 func (r *RefVisualShaderNodeOutputImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeOutput])(r)
+	rg := (*TypedRef[VisualShaderNodeOutput])(r)
 	rg.Unref()
 }
 
@@ -25188,31 +25188,31 @@ type RefVisualShaderNodeParameter interface {
 	TypedPtr() VisualShaderNodeParameter
 }
 
-type RefVisualShaderNodeParameterImpl typedRef[VisualShaderNodeParameter]
+type RefVisualShaderNodeParameterImpl TypedRef[VisualShaderNodeParameter]
 
 func (r *RefVisualShaderNodeParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParameterImpl) TypedPtr() VisualShaderNodeParameter {
-	rg := (*typedRef[VisualShaderNodeParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParameterImpl) TypedRef(from *RefVisualShaderNodeParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeParameter])(r)
-	t := (*typedRef[VisualShaderNodeParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeParameter])(r)
+	t := (*TypedRef[VisualShaderNodeParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParameter])(t))
 }
 
 func (r *RefVisualShaderNodeParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeParameter])(r)
 	rg.Unref()
 }
 
@@ -25240,31 +25240,31 @@ type RefVisualShaderNodeParameterRef interface {
 	TypedPtr() VisualShaderNodeParameterRef
 }
 
-type RefVisualShaderNodeParameterRefImpl typedRef[VisualShaderNodeParameterRef]
+type RefVisualShaderNodeParameterRefImpl TypedRef[VisualShaderNodeParameterRef]
 
 func (r *RefVisualShaderNodeParameterRefImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParameterRef])(r)
+	rg := (*TypedRef[VisualShaderNodeParameterRef])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParameterRefImpl) TypedPtr() VisualShaderNodeParameterRef {
-	rg := (*typedRef[VisualShaderNodeParameterRef])(r)
+	rg := (*TypedRef[VisualShaderNodeParameterRef])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParameterRefImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParameterRef])(r)
+	rg := (*TypedRef[VisualShaderNodeParameterRef])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParameterRefImpl) TypedRef(from *RefVisualShaderNodeParameterRefImpl) {
-	rg := (*typedRef[VisualShaderNodeParameterRef])(r)
-	t := (*typedRef[VisualShaderNodeParameterRef])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParameterRef])(t))
+	rg := (*TypedRef[VisualShaderNodeParameterRef])(r)
+	t := (*TypedRef[VisualShaderNodeParameterRef])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParameterRef])(t))
 }
 
 func (r *RefVisualShaderNodeParameterRefImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParameterRef])(r)
+	rg := (*TypedRef[VisualShaderNodeParameterRef])(r)
 	rg.Unref()
 }
 
@@ -25292,31 +25292,31 @@ type RefVisualShaderNodeParticleAccelerator interface {
 	TypedPtr() VisualShaderNodeParticleAccelerator
 }
 
-type RefVisualShaderNodeParticleAcceleratorImpl typedRef[VisualShaderNodeParticleAccelerator]
+type RefVisualShaderNodeParticleAcceleratorImpl TypedRef[VisualShaderNodeParticleAccelerator]
 
 func (r *RefVisualShaderNodeParticleAcceleratorImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParticleAccelerator])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleAccelerator])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParticleAcceleratorImpl) TypedPtr() VisualShaderNodeParticleAccelerator {
-	rg := (*typedRef[VisualShaderNodeParticleAccelerator])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleAccelerator])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParticleAcceleratorImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParticleAccelerator])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleAccelerator])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParticleAcceleratorImpl) TypedRef(from *RefVisualShaderNodeParticleAcceleratorImpl) {
-	rg := (*typedRef[VisualShaderNodeParticleAccelerator])(r)
-	t := (*typedRef[VisualShaderNodeParticleAccelerator])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParticleAccelerator])(t))
+	rg := (*TypedRef[VisualShaderNodeParticleAccelerator])(r)
+	t := (*TypedRef[VisualShaderNodeParticleAccelerator])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParticleAccelerator])(t))
 }
 
 func (r *RefVisualShaderNodeParticleAcceleratorImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParticleAccelerator])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleAccelerator])(r)
 	rg.Unref()
 }
 
@@ -25344,31 +25344,31 @@ type RefVisualShaderNodeParticleBoxEmitter interface {
 	TypedPtr() VisualShaderNodeParticleBoxEmitter
 }
 
-type RefVisualShaderNodeParticleBoxEmitterImpl typedRef[VisualShaderNodeParticleBoxEmitter]
+type RefVisualShaderNodeParticleBoxEmitterImpl TypedRef[VisualShaderNodeParticleBoxEmitter]
 
 func (r *RefVisualShaderNodeParticleBoxEmitterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParticleBoxEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleBoxEmitter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParticleBoxEmitterImpl) TypedPtr() VisualShaderNodeParticleBoxEmitter {
-	rg := (*typedRef[VisualShaderNodeParticleBoxEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleBoxEmitter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParticleBoxEmitterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParticleBoxEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleBoxEmitter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParticleBoxEmitterImpl) TypedRef(from *RefVisualShaderNodeParticleBoxEmitterImpl) {
-	rg := (*typedRef[VisualShaderNodeParticleBoxEmitter])(r)
-	t := (*typedRef[VisualShaderNodeParticleBoxEmitter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParticleBoxEmitter])(t))
+	rg := (*TypedRef[VisualShaderNodeParticleBoxEmitter])(r)
+	t := (*TypedRef[VisualShaderNodeParticleBoxEmitter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParticleBoxEmitter])(t))
 }
 
 func (r *RefVisualShaderNodeParticleBoxEmitterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParticleBoxEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleBoxEmitter])(r)
 	rg.Unref()
 }
 
@@ -25396,31 +25396,31 @@ type RefVisualShaderNodeParticleConeVelocity interface {
 	TypedPtr() VisualShaderNodeParticleConeVelocity
 }
 
-type RefVisualShaderNodeParticleConeVelocityImpl typedRef[VisualShaderNodeParticleConeVelocity]
+type RefVisualShaderNodeParticleConeVelocityImpl TypedRef[VisualShaderNodeParticleConeVelocity]
 
 func (r *RefVisualShaderNodeParticleConeVelocityImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParticleConeVelocity])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleConeVelocity])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParticleConeVelocityImpl) TypedPtr() VisualShaderNodeParticleConeVelocity {
-	rg := (*typedRef[VisualShaderNodeParticleConeVelocity])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleConeVelocity])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParticleConeVelocityImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParticleConeVelocity])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleConeVelocity])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParticleConeVelocityImpl) TypedRef(from *RefVisualShaderNodeParticleConeVelocityImpl) {
-	rg := (*typedRef[VisualShaderNodeParticleConeVelocity])(r)
-	t := (*typedRef[VisualShaderNodeParticleConeVelocity])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParticleConeVelocity])(t))
+	rg := (*TypedRef[VisualShaderNodeParticleConeVelocity])(r)
+	t := (*TypedRef[VisualShaderNodeParticleConeVelocity])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParticleConeVelocity])(t))
 }
 
 func (r *RefVisualShaderNodeParticleConeVelocityImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParticleConeVelocity])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleConeVelocity])(r)
 	rg.Unref()
 }
 
@@ -25448,31 +25448,31 @@ type RefVisualShaderNodeParticleEmit interface {
 	TypedPtr() VisualShaderNodeParticleEmit
 }
 
-type RefVisualShaderNodeParticleEmitImpl typedRef[VisualShaderNodeParticleEmit]
+type RefVisualShaderNodeParticleEmitImpl TypedRef[VisualShaderNodeParticleEmit]
 
 func (r *RefVisualShaderNodeParticleEmitImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParticleEmit])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleEmit])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParticleEmitImpl) TypedPtr() VisualShaderNodeParticleEmit {
-	rg := (*typedRef[VisualShaderNodeParticleEmit])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleEmit])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParticleEmitImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParticleEmit])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleEmit])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParticleEmitImpl) TypedRef(from *RefVisualShaderNodeParticleEmitImpl) {
-	rg := (*typedRef[VisualShaderNodeParticleEmit])(r)
-	t := (*typedRef[VisualShaderNodeParticleEmit])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParticleEmit])(t))
+	rg := (*TypedRef[VisualShaderNodeParticleEmit])(r)
+	t := (*TypedRef[VisualShaderNodeParticleEmit])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParticleEmit])(t))
 }
 
 func (r *RefVisualShaderNodeParticleEmitImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParticleEmit])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleEmit])(r)
 	rg.Unref()
 }
 
@@ -25500,31 +25500,31 @@ type RefVisualShaderNodeParticleEmitter interface {
 	TypedPtr() VisualShaderNodeParticleEmitter
 }
 
-type RefVisualShaderNodeParticleEmitterImpl typedRef[VisualShaderNodeParticleEmitter]
+type RefVisualShaderNodeParticleEmitterImpl TypedRef[VisualShaderNodeParticleEmitter]
 
 func (r *RefVisualShaderNodeParticleEmitterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParticleEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleEmitter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParticleEmitterImpl) TypedPtr() VisualShaderNodeParticleEmitter {
-	rg := (*typedRef[VisualShaderNodeParticleEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleEmitter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParticleEmitterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParticleEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleEmitter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParticleEmitterImpl) TypedRef(from *RefVisualShaderNodeParticleEmitterImpl) {
-	rg := (*typedRef[VisualShaderNodeParticleEmitter])(r)
-	t := (*typedRef[VisualShaderNodeParticleEmitter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParticleEmitter])(t))
+	rg := (*TypedRef[VisualShaderNodeParticleEmitter])(r)
+	t := (*TypedRef[VisualShaderNodeParticleEmitter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParticleEmitter])(t))
 }
 
 func (r *RefVisualShaderNodeParticleEmitterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParticleEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleEmitter])(r)
 	rg.Unref()
 }
 
@@ -25552,31 +25552,31 @@ type RefVisualShaderNodeParticleMeshEmitter interface {
 	TypedPtr() VisualShaderNodeParticleMeshEmitter
 }
 
-type RefVisualShaderNodeParticleMeshEmitterImpl typedRef[VisualShaderNodeParticleMeshEmitter]
+type RefVisualShaderNodeParticleMeshEmitterImpl TypedRef[VisualShaderNodeParticleMeshEmitter]
 
 func (r *RefVisualShaderNodeParticleMeshEmitterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParticleMeshEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleMeshEmitter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParticleMeshEmitterImpl) TypedPtr() VisualShaderNodeParticleMeshEmitter {
-	rg := (*typedRef[VisualShaderNodeParticleMeshEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleMeshEmitter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParticleMeshEmitterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParticleMeshEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleMeshEmitter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParticleMeshEmitterImpl) TypedRef(from *RefVisualShaderNodeParticleMeshEmitterImpl) {
-	rg := (*typedRef[VisualShaderNodeParticleMeshEmitter])(r)
-	t := (*typedRef[VisualShaderNodeParticleMeshEmitter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParticleMeshEmitter])(t))
+	rg := (*TypedRef[VisualShaderNodeParticleMeshEmitter])(r)
+	t := (*TypedRef[VisualShaderNodeParticleMeshEmitter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParticleMeshEmitter])(t))
 }
 
 func (r *RefVisualShaderNodeParticleMeshEmitterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParticleMeshEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleMeshEmitter])(r)
 	rg.Unref()
 }
 
@@ -25604,31 +25604,31 @@ type RefVisualShaderNodeParticleMultiplyByAxisAngle interface {
 	TypedPtr() VisualShaderNodeParticleMultiplyByAxisAngle
 }
 
-type RefVisualShaderNodeParticleMultiplyByAxisAngleImpl typedRef[VisualShaderNodeParticleMultiplyByAxisAngle]
+type RefVisualShaderNodeParticleMultiplyByAxisAngleImpl TypedRef[VisualShaderNodeParticleMultiplyByAxisAngle]
 
 func (r *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) TypedPtr() VisualShaderNodeParticleMultiplyByAxisAngle {
-	rg := (*typedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) TypedRef(from *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) {
-	rg := (*typedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r)
-	t := (*typedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(t))
+	rg := (*TypedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r)
+	t := (*TypedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(t))
 }
 
 func (r *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r)
 	rg.Unref()
 }
 
@@ -25656,31 +25656,31 @@ type RefVisualShaderNodeParticleOutput interface {
 	TypedPtr() VisualShaderNodeParticleOutput
 }
 
-type RefVisualShaderNodeParticleOutputImpl typedRef[VisualShaderNodeParticleOutput]
+type RefVisualShaderNodeParticleOutputImpl TypedRef[VisualShaderNodeParticleOutput]
 
 func (r *RefVisualShaderNodeParticleOutputImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParticleOutput])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleOutput])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParticleOutputImpl) TypedPtr() VisualShaderNodeParticleOutput {
-	rg := (*typedRef[VisualShaderNodeParticleOutput])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleOutput])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParticleOutputImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParticleOutput])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleOutput])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParticleOutputImpl) TypedRef(from *RefVisualShaderNodeParticleOutputImpl) {
-	rg := (*typedRef[VisualShaderNodeParticleOutput])(r)
-	t := (*typedRef[VisualShaderNodeParticleOutput])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParticleOutput])(t))
+	rg := (*TypedRef[VisualShaderNodeParticleOutput])(r)
+	t := (*TypedRef[VisualShaderNodeParticleOutput])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParticleOutput])(t))
 }
 
 func (r *RefVisualShaderNodeParticleOutputImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParticleOutput])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleOutput])(r)
 	rg.Unref()
 }
 
@@ -25708,31 +25708,31 @@ type RefVisualShaderNodeParticleRandomness interface {
 	TypedPtr() VisualShaderNodeParticleRandomness
 }
 
-type RefVisualShaderNodeParticleRandomnessImpl typedRef[VisualShaderNodeParticleRandomness]
+type RefVisualShaderNodeParticleRandomnessImpl TypedRef[VisualShaderNodeParticleRandomness]
 
 func (r *RefVisualShaderNodeParticleRandomnessImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParticleRandomness])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleRandomness])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParticleRandomnessImpl) TypedPtr() VisualShaderNodeParticleRandomness {
-	rg := (*typedRef[VisualShaderNodeParticleRandomness])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleRandomness])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParticleRandomnessImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParticleRandomness])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleRandomness])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParticleRandomnessImpl) TypedRef(from *RefVisualShaderNodeParticleRandomnessImpl) {
-	rg := (*typedRef[VisualShaderNodeParticleRandomness])(r)
-	t := (*typedRef[VisualShaderNodeParticleRandomness])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParticleRandomness])(t))
+	rg := (*TypedRef[VisualShaderNodeParticleRandomness])(r)
+	t := (*TypedRef[VisualShaderNodeParticleRandomness])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParticleRandomness])(t))
 }
 
 func (r *RefVisualShaderNodeParticleRandomnessImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParticleRandomness])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleRandomness])(r)
 	rg.Unref()
 }
 
@@ -25760,31 +25760,31 @@ type RefVisualShaderNodeParticleRingEmitter interface {
 	TypedPtr() VisualShaderNodeParticleRingEmitter
 }
 
-type RefVisualShaderNodeParticleRingEmitterImpl typedRef[VisualShaderNodeParticleRingEmitter]
+type RefVisualShaderNodeParticleRingEmitterImpl TypedRef[VisualShaderNodeParticleRingEmitter]
 
 func (r *RefVisualShaderNodeParticleRingEmitterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParticleRingEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleRingEmitter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParticleRingEmitterImpl) TypedPtr() VisualShaderNodeParticleRingEmitter {
-	rg := (*typedRef[VisualShaderNodeParticleRingEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleRingEmitter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParticleRingEmitterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParticleRingEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleRingEmitter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParticleRingEmitterImpl) TypedRef(from *RefVisualShaderNodeParticleRingEmitterImpl) {
-	rg := (*typedRef[VisualShaderNodeParticleRingEmitter])(r)
-	t := (*typedRef[VisualShaderNodeParticleRingEmitter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParticleRingEmitter])(t))
+	rg := (*TypedRef[VisualShaderNodeParticleRingEmitter])(r)
+	t := (*TypedRef[VisualShaderNodeParticleRingEmitter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParticleRingEmitter])(t))
 }
 
 func (r *RefVisualShaderNodeParticleRingEmitterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParticleRingEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleRingEmitter])(r)
 	rg.Unref()
 }
 
@@ -25812,31 +25812,31 @@ type RefVisualShaderNodeParticleSphereEmitter interface {
 	TypedPtr() VisualShaderNodeParticleSphereEmitter
 }
 
-type RefVisualShaderNodeParticleSphereEmitterImpl typedRef[VisualShaderNodeParticleSphereEmitter]
+type RefVisualShaderNodeParticleSphereEmitterImpl TypedRef[VisualShaderNodeParticleSphereEmitter]
 
 func (r *RefVisualShaderNodeParticleSphereEmitterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeParticleSphereEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleSphereEmitter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeParticleSphereEmitterImpl) TypedPtr() VisualShaderNodeParticleSphereEmitter {
-	rg := (*typedRef[VisualShaderNodeParticleSphereEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleSphereEmitter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeParticleSphereEmitterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeParticleSphereEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleSphereEmitter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeParticleSphereEmitterImpl) TypedRef(from *RefVisualShaderNodeParticleSphereEmitterImpl) {
-	rg := (*typedRef[VisualShaderNodeParticleSphereEmitter])(r)
-	t := (*typedRef[VisualShaderNodeParticleSphereEmitter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeParticleSphereEmitter])(t))
+	rg := (*TypedRef[VisualShaderNodeParticleSphereEmitter])(r)
+	t := (*TypedRef[VisualShaderNodeParticleSphereEmitter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeParticleSphereEmitter])(t))
 }
 
 func (r *RefVisualShaderNodeParticleSphereEmitterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeParticleSphereEmitter])(r)
+	rg := (*TypedRef[VisualShaderNodeParticleSphereEmitter])(r)
 	rg.Unref()
 }
 
@@ -25864,31 +25864,31 @@ type RefVisualShaderNodeProximityFade interface {
 	TypedPtr() VisualShaderNodeProximityFade
 }
 
-type RefVisualShaderNodeProximityFadeImpl typedRef[VisualShaderNodeProximityFade]
+type RefVisualShaderNodeProximityFadeImpl TypedRef[VisualShaderNodeProximityFade]
 
 func (r *RefVisualShaderNodeProximityFadeImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeProximityFade])(r)
+	rg := (*TypedRef[VisualShaderNodeProximityFade])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeProximityFadeImpl) TypedPtr() VisualShaderNodeProximityFade {
-	rg := (*typedRef[VisualShaderNodeProximityFade])(r)
+	rg := (*TypedRef[VisualShaderNodeProximityFade])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeProximityFadeImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeProximityFade])(r)
+	rg := (*TypedRef[VisualShaderNodeProximityFade])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeProximityFadeImpl) TypedRef(from *RefVisualShaderNodeProximityFadeImpl) {
-	rg := (*typedRef[VisualShaderNodeProximityFade])(r)
-	t := (*typedRef[VisualShaderNodeProximityFade])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeProximityFade])(t))
+	rg := (*TypedRef[VisualShaderNodeProximityFade])(r)
+	t := (*TypedRef[VisualShaderNodeProximityFade])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeProximityFade])(t))
 }
 
 func (r *RefVisualShaderNodeProximityFadeImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeProximityFade])(r)
+	rg := (*TypedRef[VisualShaderNodeProximityFade])(r)
 	rg.Unref()
 }
 
@@ -25916,31 +25916,31 @@ type RefVisualShaderNodeRandomRange interface {
 	TypedPtr() VisualShaderNodeRandomRange
 }
 
-type RefVisualShaderNodeRandomRangeImpl typedRef[VisualShaderNodeRandomRange]
+type RefVisualShaderNodeRandomRangeImpl TypedRef[VisualShaderNodeRandomRange]
 
 func (r *RefVisualShaderNodeRandomRangeImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeRandomRange])(r)
+	rg := (*TypedRef[VisualShaderNodeRandomRange])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeRandomRangeImpl) TypedPtr() VisualShaderNodeRandomRange {
-	rg := (*typedRef[VisualShaderNodeRandomRange])(r)
+	rg := (*TypedRef[VisualShaderNodeRandomRange])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeRandomRangeImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeRandomRange])(r)
+	rg := (*TypedRef[VisualShaderNodeRandomRange])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeRandomRangeImpl) TypedRef(from *RefVisualShaderNodeRandomRangeImpl) {
-	rg := (*typedRef[VisualShaderNodeRandomRange])(r)
-	t := (*typedRef[VisualShaderNodeRandomRange])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeRandomRange])(t))
+	rg := (*TypedRef[VisualShaderNodeRandomRange])(r)
+	t := (*TypedRef[VisualShaderNodeRandomRange])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeRandomRange])(t))
 }
 
 func (r *RefVisualShaderNodeRandomRangeImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeRandomRange])(r)
+	rg := (*TypedRef[VisualShaderNodeRandomRange])(r)
 	rg.Unref()
 }
 
@@ -25968,31 +25968,31 @@ type RefVisualShaderNodeRemap interface {
 	TypedPtr() VisualShaderNodeRemap
 }
 
-type RefVisualShaderNodeRemapImpl typedRef[VisualShaderNodeRemap]
+type RefVisualShaderNodeRemapImpl TypedRef[VisualShaderNodeRemap]
 
 func (r *RefVisualShaderNodeRemapImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeRemap])(r)
+	rg := (*TypedRef[VisualShaderNodeRemap])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeRemapImpl) TypedPtr() VisualShaderNodeRemap {
-	rg := (*typedRef[VisualShaderNodeRemap])(r)
+	rg := (*TypedRef[VisualShaderNodeRemap])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeRemapImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeRemap])(r)
+	rg := (*TypedRef[VisualShaderNodeRemap])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeRemapImpl) TypedRef(from *RefVisualShaderNodeRemapImpl) {
-	rg := (*typedRef[VisualShaderNodeRemap])(r)
-	t := (*typedRef[VisualShaderNodeRemap])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeRemap])(t))
+	rg := (*TypedRef[VisualShaderNodeRemap])(r)
+	t := (*TypedRef[VisualShaderNodeRemap])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeRemap])(t))
 }
 
 func (r *RefVisualShaderNodeRemapImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeRemap])(r)
+	rg := (*TypedRef[VisualShaderNodeRemap])(r)
 	rg.Unref()
 }
 
@@ -26020,31 +26020,31 @@ type RefVisualShaderNodeResizableBase interface {
 	TypedPtr() VisualShaderNodeResizableBase
 }
 
-type RefVisualShaderNodeResizableBaseImpl typedRef[VisualShaderNodeResizableBase]
+type RefVisualShaderNodeResizableBaseImpl TypedRef[VisualShaderNodeResizableBase]
 
 func (r *RefVisualShaderNodeResizableBaseImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeResizableBase])(r)
+	rg := (*TypedRef[VisualShaderNodeResizableBase])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeResizableBaseImpl) TypedPtr() VisualShaderNodeResizableBase {
-	rg := (*typedRef[VisualShaderNodeResizableBase])(r)
+	rg := (*TypedRef[VisualShaderNodeResizableBase])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeResizableBaseImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeResizableBase])(r)
+	rg := (*TypedRef[VisualShaderNodeResizableBase])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeResizableBaseImpl) TypedRef(from *RefVisualShaderNodeResizableBaseImpl) {
-	rg := (*typedRef[VisualShaderNodeResizableBase])(r)
-	t := (*typedRef[VisualShaderNodeResizableBase])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeResizableBase])(t))
+	rg := (*TypedRef[VisualShaderNodeResizableBase])(r)
+	t := (*TypedRef[VisualShaderNodeResizableBase])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeResizableBase])(t))
 }
 
 func (r *RefVisualShaderNodeResizableBaseImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeResizableBase])(r)
+	rg := (*TypedRef[VisualShaderNodeResizableBase])(r)
 	rg.Unref()
 }
 
@@ -26072,31 +26072,31 @@ type RefVisualShaderNodeRotationByAxis interface {
 	TypedPtr() VisualShaderNodeRotationByAxis
 }
 
-type RefVisualShaderNodeRotationByAxisImpl typedRef[VisualShaderNodeRotationByAxis]
+type RefVisualShaderNodeRotationByAxisImpl TypedRef[VisualShaderNodeRotationByAxis]
 
 func (r *RefVisualShaderNodeRotationByAxisImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeRotationByAxis])(r)
+	rg := (*TypedRef[VisualShaderNodeRotationByAxis])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeRotationByAxisImpl) TypedPtr() VisualShaderNodeRotationByAxis {
-	rg := (*typedRef[VisualShaderNodeRotationByAxis])(r)
+	rg := (*TypedRef[VisualShaderNodeRotationByAxis])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeRotationByAxisImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeRotationByAxis])(r)
+	rg := (*TypedRef[VisualShaderNodeRotationByAxis])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeRotationByAxisImpl) TypedRef(from *RefVisualShaderNodeRotationByAxisImpl) {
-	rg := (*typedRef[VisualShaderNodeRotationByAxis])(r)
-	t := (*typedRef[VisualShaderNodeRotationByAxis])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeRotationByAxis])(t))
+	rg := (*TypedRef[VisualShaderNodeRotationByAxis])(r)
+	t := (*TypedRef[VisualShaderNodeRotationByAxis])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeRotationByAxis])(t))
 }
 
 func (r *RefVisualShaderNodeRotationByAxisImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeRotationByAxis])(r)
+	rg := (*TypedRef[VisualShaderNodeRotationByAxis])(r)
 	rg.Unref()
 }
 
@@ -26124,31 +26124,31 @@ type RefVisualShaderNodeSDFRaymarch interface {
 	TypedPtr() VisualShaderNodeSDFRaymarch
 }
 
-type RefVisualShaderNodeSDFRaymarchImpl typedRef[VisualShaderNodeSDFRaymarch]
+type RefVisualShaderNodeSDFRaymarchImpl TypedRef[VisualShaderNodeSDFRaymarch]
 
 func (r *RefVisualShaderNodeSDFRaymarchImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeSDFRaymarch])(r)
+	rg := (*TypedRef[VisualShaderNodeSDFRaymarch])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeSDFRaymarchImpl) TypedPtr() VisualShaderNodeSDFRaymarch {
-	rg := (*typedRef[VisualShaderNodeSDFRaymarch])(r)
+	rg := (*TypedRef[VisualShaderNodeSDFRaymarch])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeSDFRaymarchImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeSDFRaymarch])(r)
+	rg := (*TypedRef[VisualShaderNodeSDFRaymarch])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeSDFRaymarchImpl) TypedRef(from *RefVisualShaderNodeSDFRaymarchImpl) {
-	rg := (*typedRef[VisualShaderNodeSDFRaymarch])(r)
-	t := (*typedRef[VisualShaderNodeSDFRaymarch])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeSDFRaymarch])(t))
+	rg := (*TypedRef[VisualShaderNodeSDFRaymarch])(r)
+	t := (*TypedRef[VisualShaderNodeSDFRaymarch])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeSDFRaymarch])(t))
 }
 
 func (r *RefVisualShaderNodeSDFRaymarchImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeSDFRaymarch])(r)
+	rg := (*TypedRef[VisualShaderNodeSDFRaymarch])(r)
 	rg.Unref()
 }
 
@@ -26176,31 +26176,31 @@ type RefVisualShaderNodeSDFToScreenUV interface {
 	TypedPtr() VisualShaderNodeSDFToScreenUV
 }
 
-type RefVisualShaderNodeSDFToScreenUVImpl typedRef[VisualShaderNodeSDFToScreenUV]
+type RefVisualShaderNodeSDFToScreenUVImpl TypedRef[VisualShaderNodeSDFToScreenUV]
 
 func (r *RefVisualShaderNodeSDFToScreenUVImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeSDFToScreenUV])(r)
+	rg := (*TypedRef[VisualShaderNodeSDFToScreenUV])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeSDFToScreenUVImpl) TypedPtr() VisualShaderNodeSDFToScreenUV {
-	rg := (*typedRef[VisualShaderNodeSDFToScreenUV])(r)
+	rg := (*TypedRef[VisualShaderNodeSDFToScreenUV])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeSDFToScreenUVImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeSDFToScreenUV])(r)
+	rg := (*TypedRef[VisualShaderNodeSDFToScreenUV])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeSDFToScreenUVImpl) TypedRef(from *RefVisualShaderNodeSDFToScreenUVImpl) {
-	rg := (*typedRef[VisualShaderNodeSDFToScreenUV])(r)
-	t := (*typedRef[VisualShaderNodeSDFToScreenUV])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeSDFToScreenUV])(t))
+	rg := (*TypedRef[VisualShaderNodeSDFToScreenUV])(r)
+	t := (*TypedRef[VisualShaderNodeSDFToScreenUV])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeSDFToScreenUV])(t))
 }
 
 func (r *RefVisualShaderNodeSDFToScreenUVImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeSDFToScreenUV])(r)
+	rg := (*TypedRef[VisualShaderNodeSDFToScreenUV])(r)
 	rg.Unref()
 }
 
@@ -26228,31 +26228,31 @@ type RefVisualShaderNodeSample3D interface {
 	TypedPtr() VisualShaderNodeSample3D
 }
 
-type RefVisualShaderNodeSample3DImpl typedRef[VisualShaderNodeSample3D]
+type RefVisualShaderNodeSample3DImpl TypedRef[VisualShaderNodeSample3D]
 
 func (r *RefVisualShaderNodeSample3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeSample3D])(r)
+	rg := (*TypedRef[VisualShaderNodeSample3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeSample3DImpl) TypedPtr() VisualShaderNodeSample3D {
-	rg := (*typedRef[VisualShaderNodeSample3D])(r)
+	rg := (*TypedRef[VisualShaderNodeSample3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeSample3DImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeSample3D])(r)
+	rg := (*TypedRef[VisualShaderNodeSample3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeSample3DImpl) TypedRef(from *RefVisualShaderNodeSample3DImpl) {
-	rg := (*typedRef[VisualShaderNodeSample3D])(r)
-	t := (*typedRef[VisualShaderNodeSample3D])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeSample3D])(t))
+	rg := (*TypedRef[VisualShaderNodeSample3D])(r)
+	t := (*TypedRef[VisualShaderNodeSample3D])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeSample3D])(t))
 }
 
 func (r *RefVisualShaderNodeSample3DImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeSample3D])(r)
+	rg := (*TypedRef[VisualShaderNodeSample3D])(r)
 	rg.Unref()
 }
 
@@ -26280,31 +26280,31 @@ type RefVisualShaderNodeScreenNormalWorldSpace interface {
 	TypedPtr() VisualShaderNodeScreenNormalWorldSpace
 }
 
-type RefVisualShaderNodeScreenNormalWorldSpaceImpl typedRef[VisualShaderNodeScreenNormalWorldSpace]
+type RefVisualShaderNodeScreenNormalWorldSpaceImpl TypedRef[VisualShaderNodeScreenNormalWorldSpace]
 
 func (r *RefVisualShaderNodeScreenNormalWorldSpaceImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeScreenNormalWorldSpace])(r)
+	rg := (*TypedRef[VisualShaderNodeScreenNormalWorldSpace])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeScreenNormalWorldSpaceImpl) TypedPtr() VisualShaderNodeScreenNormalWorldSpace {
-	rg := (*typedRef[VisualShaderNodeScreenNormalWorldSpace])(r)
+	rg := (*TypedRef[VisualShaderNodeScreenNormalWorldSpace])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeScreenNormalWorldSpaceImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeScreenNormalWorldSpace])(r)
+	rg := (*TypedRef[VisualShaderNodeScreenNormalWorldSpace])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeScreenNormalWorldSpaceImpl) TypedRef(from *RefVisualShaderNodeScreenNormalWorldSpaceImpl) {
-	rg := (*typedRef[VisualShaderNodeScreenNormalWorldSpace])(r)
-	t := (*typedRef[VisualShaderNodeScreenNormalWorldSpace])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeScreenNormalWorldSpace])(t))
+	rg := (*TypedRef[VisualShaderNodeScreenNormalWorldSpace])(r)
+	t := (*TypedRef[VisualShaderNodeScreenNormalWorldSpace])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeScreenNormalWorldSpace])(t))
 }
 
 func (r *RefVisualShaderNodeScreenNormalWorldSpaceImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeScreenNormalWorldSpace])(r)
+	rg := (*TypedRef[VisualShaderNodeScreenNormalWorldSpace])(r)
 	rg.Unref()
 }
 
@@ -26332,31 +26332,31 @@ type RefVisualShaderNodeScreenUVToSDF interface {
 	TypedPtr() VisualShaderNodeScreenUVToSDF
 }
 
-type RefVisualShaderNodeScreenUVToSDFImpl typedRef[VisualShaderNodeScreenUVToSDF]
+type RefVisualShaderNodeScreenUVToSDFImpl TypedRef[VisualShaderNodeScreenUVToSDF]
 
 func (r *RefVisualShaderNodeScreenUVToSDFImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeScreenUVToSDF])(r)
+	rg := (*TypedRef[VisualShaderNodeScreenUVToSDF])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeScreenUVToSDFImpl) TypedPtr() VisualShaderNodeScreenUVToSDF {
-	rg := (*typedRef[VisualShaderNodeScreenUVToSDF])(r)
+	rg := (*TypedRef[VisualShaderNodeScreenUVToSDF])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeScreenUVToSDFImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeScreenUVToSDF])(r)
+	rg := (*TypedRef[VisualShaderNodeScreenUVToSDF])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeScreenUVToSDFImpl) TypedRef(from *RefVisualShaderNodeScreenUVToSDFImpl) {
-	rg := (*typedRef[VisualShaderNodeScreenUVToSDF])(r)
-	t := (*typedRef[VisualShaderNodeScreenUVToSDF])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeScreenUVToSDF])(t))
+	rg := (*TypedRef[VisualShaderNodeScreenUVToSDF])(r)
+	t := (*TypedRef[VisualShaderNodeScreenUVToSDF])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeScreenUVToSDF])(t))
 }
 
 func (r *RefVisualShaderNodeScreenUVToSDFImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeScreenUVToSDF])(r)
+	rg := (*TypedRef[VisualShaderNodeScreenUVToSDF])(r)
 	rg.Unref()
 }
 
@@ -26384,31 +26384,31 @@ type RefVisualShaderNodeSmoothStep interface {
 	TypedPtr() VisualShaderNodeSmoothStep
 }
 
-type RefVisualShaderNodeSmoothStepImpl typedRef[VisualShaderNodeSmoothStep]
+type RefVisualShaderNodeSmoothStepImpl TypedRef[VisualShaderNodeSmoothStep]
 
 func (r *RefVisualShaderNodeSmoothStepImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeSmoothStep])(r)
+	rg := (*TypedRef[VisualShaderNodeSmoothStep])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeSmoothStepImpl) TypedPtr() VisualShaderNodeSmoothStep {
-	rg := (*typedRef[VisualShaderNodeSmoothStep])(r)
+	rg := (*TypedRef[VisualShaderNodeSmoothStep])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeSmoothStepImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeSmoothStep])(r)
+	rg := (*TypedRef[VisualShaderNodeSmoothStep])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeSmoothStepImpl) TypedRef(from *RefVisualShaderNodeSmoothStepImpl) {
-	rg := (*typedRef[VisualShaderNodeSmoothStep])(r)
-	t := (*typedRef[VisualShaderNodeSmoothStep])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeSmoothStep])(t))
+	rg := (*TypedRef[VisualShaderNodeSmoothStep])(r)
+	t := (*TypedRef[VisualShaderNodeSmoothStep])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeSmoothStep])(t))
 }
 
 func (r *RefVisualShaderNodeSmoothStepImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeSmoothStep])(r)
+	rg := (*TypedRef[VisualShaderNodeSmoothStep])(r)
 	rg.Unref()
 }
 
@@ -26436,31 +26436,31 @@ type RefVisualShaderNodeStep interface {
 	TypedPtr() VisualShaderNodeStep
 }
 
-type RefVisualShaderNodeStepImpl typedRef[VisualShaderNodeStep]
+type RefVisualShaderNodeStepImpl TypedRef[VisualShaderNodeStep]
 
 func (r *RefVisualShaderNodeStepImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeStep])(r)
+	rg := (*TypedRef[VisualShaderNodeStep])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeStepImpl) TypedPtr() VisualShaderNodeStep {
-	rg := (*typedRef[VisualShaderNodeStep])(r)
+	rg := (*TypedRef[VisualShaderNodeStep])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeStepImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeStep])(r)
+	rg := (*TypedRef[VisualShaderNodeStep])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeStepImpl) TypedRef(from *RefVisualShaderNodeStepImpl) {
-	rg := (*typedRef[VisualShaderNodeStep])(r)
-	t := (*typedRef[VisualShaderNodeStep])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeStep])(t))
+	rg := (*TypedRef[VisualShaderNodeStep])(r)
+	t := (*TypedRef[VisualShaderNodeStep])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeStep])(t))
 }
 
 func (r *RefVisualShaderNodeStepImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeStep])(r)
+	rg := (*TypedRef[VisualShaderNodeStep])(r)
 	rg.Unref()
 }
 
@@ -26488,31 +26488,31 @@ type RefVisualShaderNodeSwitch interface {
 	TypedPtr() VisualShaderNodeSwitch
 }
 
-type RefVisualShaderNodeSwitchImpl typedRef[VisualShaderNodeSwitch]
+type RefVisualShaderNodeSwitchImpl TypedRef[VisualShaderNodeSwitch]
 
 func (r *RefVisualShaderNodeSwitchImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeSwitch])(r)
+	rg := (*TypedRef[VisualShaderNodeSwitch])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeSwitchImpl) TypedPtr() VisualShaderNodeSwitch {
-	rg := (*typedRef[VisualShaderNodeSwitch])(r)
+	rg := (*TypedRef[VisualShaderNodeSwitch])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeSwitchImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeSwitch])(r)
+	rg := (*TypedRef[VisualShaderNodeSwitch])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeSwitchImpl) TypedRef(from *RefVisualShaderNodeSwitchImpl) {
-	rg := (*typedRef[VisualShaderNodeSwitch])(r)
-	t := (*typedRef[VisualShaderNodeSwitch])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeSwitch])(t))
+	rg := (*TypedRef[VisualShaderNodeSwitch])(r)
+	t := (*TypedRef[VisualShaderNodeSwitch])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeSwitch])(t))
 }
 
 func (r *RefVisualShaderNodeSwitchImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeSwitch])(r)
+	rg := (*TypedRef[VisualShaderNodeSwitch])(r)
 	rg.Unref()
 }
 
@@ -26540,31 +26540,31 @@ type RefVisualShaderNodeTexture interface {
 	TypedPtr() VisualShaderNodeTexture
 }
 
-type RefVisualShaderNodeTextureImpl typedRef[VisualShaderNodeTexture]
+type RefVisualShaderNodeTextureImpl TypedRef[VisualShaderNodeTexture]
 
 func (r *RefVisualShaderNodeTextureImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTextureImpl) TypedPtr() VisualShaderNodeTexture {
-	rg := (*typedRef[VisualShaderNodeTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTextureImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTextureImpl) TypedRef(from *RefVisualShaderNodeTextureImpl) {
-	rg := (*typedRef[VisualShaderNodeTexture])(r)
-	t := (*typedRef[VisualShaderNodeTexture])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTexture])(t))
+	rg := (*TypedRef[VisualShaderNodeTexture])(r)
+	t := (*TypedRef[VisualShaderNodeTexture])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTexture])(t))
 }
 
 func (r *RefVisualShaderNodeTextureImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTexture])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture])(r)
 	rg.Unref()
 }
 
@@ -26592,31 +26592,31 @@ type RefVisualShaderNodeTexture2DArray interface {
 	TypedPtr() VisualShaderNodeTexture2DArray
 }
 
-type RefVisualShaderNodeTexture2DArrayImpl typedRef[VisualShaderNodeTexture2DArray]
+type RefVisualShaderNodeTexture2DArrayImpl TypedRef[VisualShaderNodeTexture2DArray]
 
 func (r *RefVisualShaderNodeTexture2DArrayImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTexture2DArray])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DArray])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTexture2DArrayImpl) TypedPtr() VisualShaderNodeTexture2DArray {
-	rg := (*typedRef[VisualShaderNodeTexture2DArray])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DArray])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTexture2DArrayImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTexture2DArray])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DArray])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTexture2DArrayImpl) TypedRef(from *RefVisualShaderNodeTexture2DArrayImpl) {
-	rg := (*typedRef[VisualShaderNodeTexture2DArray])(r)
-	t := (*typedRef[VisualShaderNodeTexture2DArray])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTexture2DArray])(t))
+	rg := (*TypedRef[VisualShaderNodeTexture2DArray])(r)
+	t := (*TypedRef[VisualShaderNodeTexture2DArray])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTexture2DArray])(t))
 }
 
 func (r *RefVisualShaderNodeTexture2DArrayImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTexture2DArray])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DArray])(r)
 	rg.Unref()
 }
 
@@ -26644,31 +26644,31 @@ type RefVisualShaderNodeTexture2DArrayParameter interface {
 	TypedPtr() VisualShaderNodeTexture2DArrayParameter
 }
 
-type RefVisualShaderNodeTexture2DArrayParameterImpl typedRef[VisualShaderNodeTexture2DArrayParameter]
+type RefVisualShaderNodeTexture2DArrayParameterImpl TypedRef[VisualShaderNodeTexture2DArrayParameter]
 
 func (r *RefVisualShaderNodeTexture2DArrayParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTexture2DArrayParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DArrayParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTexture2DArrayParameterImpl) TypedPtr() VisualShaderNodeTexture2DArrayParameter {
-	rg := (*typedRef[VisualShaderNodeTexture2DArrayParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DArrayParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTexture2DArrayParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTexture2DArrayParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DArrayParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTexture2DArrayParameterImpl) TypedRef(from *RefVisualShaderNodeTexture2DArrayParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeTexture2DArrayParameter])(r)
-	t := (*typedRef[VisualShaderNodeTexture2DArrayParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTexture2DArrayParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeTexture2DArrayParameter])(r)
+	t := (*TypedRef[VisualShaderNodeTexture2DArrayParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTexture2DArrayParameter])(t))
 }
 
 func (r *RefVisualShaderNodeTexture2DArrayParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTexture2DArrayParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DArrayParameter])(r)
 	rg.Unref()
 }
 
@@ -26696,31 +26696,31 @@ type RefVisualShaderNodeTexture2DParameter interface {
 	TypedPtr() VisualShaderNodeTexture2DParameter
 }
 
-type RefVisualShaderNodeTexture2DParameterImpl typedRef[VisualShaderNodeTexture2DParameter]
+type RefVisualShaderNodeTexture2DParameterImpl TypedRef[VisualShaderNodeTexture2DParameter]
 
 func (r *RefVisualShaderNodeTexture2DParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTexture2DParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTexture2DParameterImpl) TypedPtr() VisualShaderNodeTexture2DParameter {
-	rg := (*typedRef[VisualShaderNodeTexture2DParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTexture2DParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTexture2DParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTexture2DParameterImpl) TypedRef(from *RefVisualShaderNodeTexture2DParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeTexture2DParameter])(r)
-	t := (*typedRef[VisualShaderNodeTexture2DParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTexture2DParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeTexture2DParameter])(r)
+	t := (*TypedRef[VisualShaderNodeTexture2DParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTexture2DParameter])(t))
 }
 
 func (r *RefVisualShaderNodeTexture2DParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTexture2DParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture2DParameter])(r)
 	rg.Unref()
 }
 
@@ -26748,31 +26748,31 @@ type RefVisualShaderNodeTexture3D interface {
 	TypedPtr() VisualShaderNodeTexture3D
 }
 
-type RefVisualShaderNodeTexture3DImpl typedRef[VisualShaderNodeTexture3D]
+type RefVisualShaderNodeTexture3DImpl TypedRef[VisualShaderNodeTexture3D]
 
 func (r *RefVisualShaderNodeTexture3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTexture3D])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTexture3DImpl) TypedPtr() VisualShaderNodeTexture3D {
-	rg := (*typedRef[VisualShaderNodeTexture3D])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTexture3DImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTexture3D])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTexture3DImpl) TypedRef(from *RefVisualShaderNodeTexture3DImpl) {
-	rg := (*typedRef[VisualShaderNodeTexture3D])(r)
-	t := (*typedRef[VisualShaderNodeTexture3D])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTexture3D])(t))
+	rg := (*TypedRef[VisualShaderNodeTexture3D])(r)
+	t := (*TypedRef[VisualShaderNodeTexture3D])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTexture3D])(t))
 }
 
 func (r *RefVisualShaderNodeTexture3DImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTexture3D])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture3D])(r)
 	rg.Unref()
 }
 
@@ -26800,31 +26800,31 @@ type RefVisualShaderNodeTexture3DParameter interface {
 	TypedPtr() VisualShaderNodeTexture3DParameter
 }
 
-type RefVisualShaderNodeTexture3DParameterImpl typedRef[VisualShaderNodeTexture3DParameter]
+type RefVisualShaderNodeTexture3DParameterImpl TypedRef[VisualShaderNodeTexture3DParameter]
 
 func (r *RefVisualShaderNodeTexture3DParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTexture3DParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture3DParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTexture3DParameterImpl) TypedPtr() VisualShaderNodeTexture3DParameter {
-	rg := (*typedRef[VisualShaderNodeTexture3DParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture3DParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTexture3DParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTexture3DParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture3DParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTexture3DParameterImpl) TypedRef(from *RefVisualShaderNodeTexture3DParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeTexture3DParameter])(r)
-	t := (*typedRef[VisualShaderNodeTexture3DParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTexture3DParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeTexture3DParameter])(r)
+	t := (*TypedRef[VisualShaderNodeTexture3DParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTexture3DParameter])(t))
 }
 
 func (r *RefVisualShaderNodeTexture3DParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTexture3DParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTexture3DParameter])(r)
 	rg.Unref()
 }
 
@@ -26852,31 +26852,31 @@ type RefVisualShaderNodeTextureParameter interface {
 	TypedPtr() VisualShaderNodeTextureParameter
 }
 
-type RefVisualShaderNodeTextureParameterImpl typedRef[VisualShaderNodeTextureParameter]
+type RefVisualShaderNodeTextureParameterImpl TypedRef[VisualShaderNodeTextureParameter]
 
 func (r *RefVisualShaderNodeTextureParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTextureParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTextureParameterImpl) TypedPtr() VisualShaderNodeTextureParameter {
-	rg := (*typedRef[VisualShaderNodeTextureParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTextureParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTextureParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTextureParameterImpl) TypedRef(from *RefVisualShaderNodeTextureParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeTextureParameter])(r)
-	t := (*typedRef[VisualShaderNodeTextureParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTextureParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeTextureParameter])(r)
+	t := (*TypedRef[VisualShaderNodeTextureParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTextureParameter])(t))
 }
 
 func (r *RefVisualShaderNodeTextureParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTextureParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureParameter])(r)
 	rg.Unref()
 }
 
@@ -26904,31 +26904,31 @@ type RefVisualShaderNodeTextureParameterTriplanar interface {
 	TypedPtr() VisualShaderNodeTextureParameterTriplanar
 }
 
-type RefVisualShaderNodeTextureParameterTriplanarImpl typedRef[VisualShaderNodeTextureParameterTriplanar]
+type RefVisualShaderNodeTextureParameterTriplanarImpl TypedRef[VisualShaderNodeTextureParameterTriplanar]
 
 func (r *RefVisualShaderNodeTextureParameterTriplanarImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTextureParameterTriplanar])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureParameterTriplanar])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTextureParameterTriplanarImpl) TypedPtr() VisualShaderNodeTextureParameterTriplanar {
-	rg := (*typedRef[VisualShaderNodeTextureParameterTriplanar])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureParameterTriplanar])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTextureParameterTriplanarImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTextureParameterTriplanar])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureParameterTriplanar])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTextureParameterTriplanarImpl) TypedRef(from *RefVisualShaderNodeTextureParameterTriplanarImpl) {
-	rg := (*typedRef[VisualShaderNodeTextureParameterTriplanar])(r)
-	t := (*typedRef[VisualShaderNodeTextureParameterTriplanar])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTextureParameterTriplanar])(t))
+	rg := (*TypedRef[VisualShaderNodeTextureParameterTriplanar])(r)
+	t := (*TypedRef[VisualShaderNodeTextureParameterTriplanar])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTextureParameterTriplanar])(t))
 }
 
 func (r *RefVisualShaderNodeTextureParameterTriplanarImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTextureParameterTriplanar])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureParameterTriplanar])(r)
 	rg.Unref()
 }
 
@@ -26956,31 +26956,31 @@ type RefVisualShaderNodeTextureSDF interface {
 	TypedPtr() VisualShaderNodeTextureSDF
 }
 
-type RefVisualShaderNodeTextureSDFImpl typedRef[VisualShaderNodeTextureSDF]
+type RefVisualShaderNodeTextureSDFImpl TypedRef[VisualShaderNodeTextureSDF]
 
 func (r *RefVisualShaderNodeTextureSDFImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTextureSDF])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureSDF])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTextureSDFImpl) TypedPtr() VisualShaderNodeTextureSDF {
-	rg := (*typedRef[VisualShaderNodeTextureSDF])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureSDF])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTextureSDFImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTextureSDF])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureSDF])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTextureSDFImpl) TypedRef(from *RefVisualShaderNodeTextureSDFImpl) {
-	rg := (*typedRef[VisualShaderNodeTextureSDF])(r)
-	t := (*typedRef[VisualShaderNodeTextureSDF])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTextureSDF])(t))
+	rg := (*TypedRef[VisualShaderNodeTextureSDF])(r)
+	t := (*TypedRef[VisualShaderNodeTextureSDF])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTextureSDF])(t))
 }
 
 func (r *RefVisualShaderNodeTextureSDFImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTextureSDF])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureSDF])(r)
 	rg.Unref()
 }
 
@@ -27008,31 +27008,31 @@ type RefVisualShaderNodeTextureSDFNormal interface {
 	TypedPtr() VisualShaderNodeTextureSDFNormal
 }
 
-type RefVisualShaderNodeTextureSDFNormalImpl typedRef[VisualShaderNodeTextureSDFNormal]
+type RefVisualShaderNodeTextureSDFNormalImpl TypedRef[VisualShaderNodeTextureSDFNormal]
 
 func (r *RefVisualShaderNodeTextureSDFNormalImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTextureSDFNormal])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureSDFNormal])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTextureSDFNormalImpl) TypedPtr() VisualShaderNodeTextureSDFNormal {
-	rg := (*typedRef[VisualShaderNodeTextureSDFNormal])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureSDFNormal])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTextureSDFNormalImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTextureSDFNormal])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureSDFNormal])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTextureSDFNormalImpl) TypedRef(from *RefVisualShaderNodeTextureSDFNormalImpl) {
-	rg := (*typedRef[VisualShaderNodeTextureSDFNormal])(r)
-	t := (*typedRef[VisualShaderNodeTextureSDFNormal])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTextureSDFNormal])(t))
+	rg := (*TypedRef[VisualShaderNodeTextureSDFNormal])(r)
+	t := (*TypedRef[VisualShaderNodeTextureSDFNormal])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTextureSDFNormal])(t))
 }
 
 func (r *RefVisualShaderNodeTextureSDFNormalImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTextureSDFNormal])(r)
+	rg := (*TypedRef[VisualShaderNodeTextureSDFNormal])(r)
 	rg.Unref()
 }
 
@@ -27060,31 +27060,31 @@ type RefVisualShaderNodeTransformCompose interface {
 	TypedPtr() VisualShaderNodeTransformCompose
 }
 
-type RefVisualShaderNodeTransformComposeImpl typedRef[VisualShaderNodeTransformCompose]
+type RefVisualShaderNodeTransformComposeImpl TypedRef[VisualShaderNodeTransformCompose]
 
 func (r *RefVisualShaderNodeTransformComposeImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTransformCompose])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformCompose])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTransformComposeImpl) TypedPtr() VisualShaderNodeTransformCompose {
-	rg := (*typedRef[VisualShaderNodeTransformCompose])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformCompose])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTransformComposeImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTransformCompose])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformCompose])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTransformComposeImpl) TypedRef(from *RefVisualShaderNodeTransformComposeImpl) {
-	rg := (*typedRef[VisualShaderNodeTransformCompose])(r)
-	t := (*typedRef[VisualShaderNodeTransformCompose])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTransformCompose])(t))
+	rg := (*TypedRef[VisualShaderNodeTransformCompose])(r)
+	t := (*TypedRef[VisualShaderNodeTransformCompose])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTransformCompose])(t))
 }
 
 func (r *RefVisualShaderNodeTransformComposeImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTransformCompose])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformCompose])(r)
 	rg.Unref()
 }
 
@@ -27112,31 +27112,31 @@ type RefVisualShaderNodeTransformConstant interface {
 	TypedPtr() VisualShaderNodeTransformConstant
 }
 
-type RefVisualShaderNodeTransformConstantImpl typedRef[VisualShaderNodeTransformConstant]
+type RefVisualShaderNodeTransformConstantImpl TypedRef[VisualShaderNodeTransformConstant]
 
 func (r *RefVisualShaderNodeTransformConstantImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTransformConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformConstant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTransformConstantImpl) TypedPtr() VisualShaderNodeTransformConstant {
-	rg := (*typedRef[VisualShaderNodeTransformConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformConstant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTransformConstantImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTransformConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformConstant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTransformConstantImpl) TypedRef(from *RefVisualShaderNodeTransformConstantImpl) {
-	rg := (*typedRef[VisualShaderNodeTransformConstant])(r)
-	t := (*typedRef[VisualShaderNodeTransformConstant])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTransformConstant])(t))
+	rg := (*TypedRef[VisualShaderNodeTransformConstant])(r)
+	t := (*TypedRef[VisualShaderNodeTransformConstant])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTransformConstant])(t))
 }
 
 func (r *RefVisualShaderNodeTransformConstantImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTransformConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformConstant])(r)
 	rg.Unref()
 }
 
@@ -27164,31 +27164,31 @@ type RefVisualShaderNodeTransformDecompose interface {
 	TypedPtr() VisualShaderNodeTransformDecompose
 }
 
-type RefVisualShaderNodeTransformDecomposeImpl typedRef[VisualShaderNodeTransformDecompose]
+type RefVisualShaderNodeTransformDecomposeImpl TypedRef[VisualShaderNodeTransformDecompose]
 
 func (r *RefVisualShaderNodeTransformDecomposeImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTransformDecompose])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformDecompose])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTransformDecomposeImpl) TypedPtr() VisualShaderNodeTransformDecompose {
-	rg := (*typedRef[VisualShaderNodeTransformDecompose])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformDecompose])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTransformDecomposeImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTransformDecompose])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformDecompose])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTransformDecomposeImpl) TypedRef(from *RefVisualShaderNodeTransformDecomposeImpl) {
-	rg := (*typedRef[VisualShaderNodeTransformDecompose])(r)
-	t := (*typedRef[VisualShaderNodeTransformDecompose])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTransformDecompose])(t))
+	rg := (*TypedRef[VisualShaderNodeTransformDecompose])(r)
+	t := (*TypedRef[VisualShaderNodeTransformDecompose])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTransformDecompose])(t))
 }
 
 func (r *RefVisualShaderNodeTransformDecomposeImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTransformDecompose])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformDecompose])(r)
 	rg.Unref()
 }
 
@@ -27216,31 +27216,31 @@ type RefVisualShaderNodeTransformFunc interface {
 	TypedPtr() VisualShaderNodeTransformFunc
 }
 
-type RefVisualShaderNodeTransformFuncImpl typedRef[VisualShaderNodeTransformFunc]
+type RefVisualShaderNodeTransformFuncImpl TypedRef[VisualShaderNodeTransformFunc]
 
 func (r *RefVisualShaderNodeTransformFuncImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTransformFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformFunc])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTransformFuncImpl) TypedPtr() VisualShaderNodeTransformFunc {
-	rg := (*typedRef[VisualShaderNodeTransformFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformFunc])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTransformFuncImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTransformFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformFunc])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTransformFuncImpl) TypedRef(from *RefVisualShaderNodeTransformFuncImpl) {
-	rg := (*typedRef[VisualShaderNodeTransformFunc])(r)
-	t := (*typedRef[VisualShaderNodeTransformFunc])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTransformFunc])(t))
+	rg := (*TypedRef[VisualShaderNodeTransformFunc])(r)
+	t := (*TypedRef[VisualShaderNodeTransformFunc])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTransformFunc])(t))
 }
 
 func (r *RefVisualShaderNodeTransformFuncImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTransformFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformFunc])(r)
 	rg.Unref()
 }
 
@@ -27268,31 +27268,31 @@ type RefVisualShaderNodeTransformOp interface {
 	TypedPtr() VisualShaderNodeTransformOp
 }
 
-type RefVisualShaderNodeTransformOpImpl typedRef[VisualShaderNodeTransformOp]
+type RefVisualShaderNodeTransformOpImpl TypedRef[VisualShaderNodeTransformOp]
 
 func (r *RefVisualShaderNodeTransformOpImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTransformOp])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformOp])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTransformOpImpl) TypedPtr() VisualShaderNodeTransformOp {
-	rg := (*typedRef[VisualShaderNodeTransformOp])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformOp])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTransformOpImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTransformOp])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformOp])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTransformOpImpl) TypedRef(from *RefVisualShaderNodeTransformOpImpl) {
-	rg := (*typedRef[VisualShaderNodeTransformOp])(r)
-	t := (*typedRef[VisualShaderNodeTransformOp])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTransformOp])(t))
+	rg := (*TypedRef[VisualShaderNodeTransformOp])(r)
+	t := (*TypedRef[VisualShaderNodeTransformOp])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTransformOp])(t))
 }
 
 func (r *RefVisualShaderNodeTransformOpImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTransformOp])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformOp])(r)
 	rg.Unref()
 }
 
@@ -27320,31 +27320,31 @@ type RefVisualShaderNodeTransformParameter interface {
 	TypedPtr() VisualShaderNodeTransformParameter
 }
 
-type RefVisualShaderNodeTransformParameterImpl typedRef[VisualShaderNodeTransformParameter]
+type RefVisualShaderNodeTransformParameterImpl TypedRef[VisualShaderNodeTransformParameter]
 
 func (r *RefVisualShaderNodeTransformParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTransformParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTransformParameterImpl) TypedPtr() VisualShaderNodeTransformParameter {
-	rg := (*typedRef[VisualShaderNodeTransformParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTransformParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTransformParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTransformParameterImpl) TypedRef(from *RefVisualShaderNodeTransformParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeTransformParameter])(r)
-	t := (*typedRef[VisualShaderNodeTransformParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTransformParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeTransformParameter])(r)
+	t := (*TypedRef[VisualShaderNodeTransformParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTransformParameter])(t))
 }
 
 func (r *RefVisualShaderNodeTransformParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTransformParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformParameter])(r)
 	rg.Unref()
 }
 
@@ -27372,31 +27372,31 @@ type RefVisualShaderNodeTransformVecMult interface {
 	TypedPtr() VisualShaderNodeTransformVecMult
 }
 
-type RefVisualShaderNodeTransformVecMultImpl typedRef[VisualShaderNodeTransformVecMult]
+type RefVisualShaderNodeTransformVecMultImpl TypedRef[VisualShaderNodeTransformVecMult]
 
 func (r *RefVisualShaderNodeTransformVecMultImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeTransformVecMult])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformVecMult])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeTransformVecMultImpl) TypedPtr() VisualShaderNodeTransformVecMult {
-	rg := (*typedRef[VisualShaderNodeTransformVecMult])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformVecMult])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeTransformVecMultImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeTransformVecMult])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformVecMult])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeTransformVecMultImpl) TypedRef(from *RefVisualShaderNodeTransformVecMultImpl) {
-	rg := (*typedRef[VisualShaderNodeTransformVecMult])(r)
-	t := (*typedRef[VisualShaderNodeTransformVecMult])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeTransformVecMult])(t))
+	rg := (*TypedRef[VisualShaderNodeTransformVecMult])(r)
+	t := (*TypedRef[VisualShaderNodeTransformVecMult])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeTransformVecMult])(t))
 }
 
 func (r *RefVisualShaderNodeTransformVecMultImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeTransformVecMult])(r)
+	rg := (*TypedRef[VisualShaderNodeTransformVecMult])(r)
 	rg.Unref()
 }
 
@@ -27424,31 +27424,31 @@ type RefVisualShaderNodeUIntConstant interface {
 	TypedPtr() VisualShaderNodeUIntConstant
 }
 
-type RefVisualShaderNodeUIntConstantImpl typedRef[VisualShaderNodeUIntConstant]
+type RefVisualShaderNodeUIntConstantImpl TypedRef[VisualShaderNodeUIntConstant]
 
 func (r *RefVisualShaderNodeUIntConstantImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeUIntConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntConstant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeUIntConstantImpl) TypedPtr() VisualShaderNodeUIntConstant {
-	rg := (*typedRef[VisualShaderNodeUIntConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntConstant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeUIntConstantImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeUIntConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntConstant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeUIntConstantImpl) TypedRef(from *RefVisualShaderNodeUIntConstantImpl) {
-	rg := (*typedRef[VisualShaderNodeUIntConstant])(r)
-	t := (*typedRef[VisualShaderNodeUIntConstant])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeUIntConstant])(t))
+	rg := (*TypedRef[VisualShaderNodeUIntConstant])(r)
+	t := (*TypedRef[VisualShaderNodeUIntConstant])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeUIntConstant])(t))
 }
 
 func (r *RefVisualShaderNodeUIntConstantImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeUIntConstant])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntConstant])(r)
 	rg.Unref()
 }
 
@@ -27476,31 +27476,31 @@ type RefVisualShaderNodeUIntFunc interface {
 	TypedPtr() VisualShaderNodeUIntFunc
 }
 
-type RefVisualShaderNodeUIntFuncImpl typedRef[VisualShaderNodeUIntFunc]
+type RefVisualShaderNodeUIntFuncImpl TypedRef[VisualShaderNodeUIntFunc]
 
 func (r *RefVisualShaderNodeUIntFuncImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeUIntFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntFunc])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeUIntFuncImpl) TypedPtr() VisualShaderNodeUIntFunc {
-	rg := (*typedRef[VisualShaderNodeUIntFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntFunc])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeUIntFuncImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeUIntFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntFunc])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeUIntFuncImpl) TypedRef(from *RefVisualShaderNodeUIntFuncImpl) {
-	rg := (*typedRef[VisualShaderNodeUIntFunc])(r)
-	t := (*typedRef[VisualShaderNodeUIntFunc])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeUIntFunc])(t))
+	rg := (*TypedRef[VisualShaderNodeUIntFunc])(r)
+	t := (*TypedRef[VisualShaderNodeUIntFunc])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeUIntFunc])(t))
 }
 
 func (r *RefVisualShaderNodeUIntFuncImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeUIntFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntFunc])(r)
 	rg.Unref()
 }
 
@@ -27528,31 +27528,31 @@ type RefVisualShaderNodeUIntOp interface {
 	TypedPtr() VisualShaderNodeUIntOp
 }
 
-type RefVisualShaderNodeUIntOpImpl typedRef[VisualShaderNodeUIntOp]
+type RefVisualShaderNodeUIntOpImpl TypedRef[VisualShaderNodeUIntOp]
 
 func (r *RefVisualShaderNodeUIntOpImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeUIntOp])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntOp])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeUIntOpImpl) TypedPtr() VisualShaderNodeUIntOp {
-	rg := (*typedRef[VisualShaderNodeUIntOp])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntOp])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeUIntOpImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeUIntOp])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntOp])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeUIntOpImpl) TypedRef(from *RefVisualShaderNodeUIntOpImpl) {
-	rg := (*typedRef[VisualShaderNodeUIntOp])(r)
-	t := (*typedRef[VisualShaderNodeUIntOp])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeUIntOp])(t))
+	rg := (*TypedRef[VisualShaderNodeUIntOp])(r)
+	t := (*TypedRef[VisualShaderNodeUIntOp])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeUIntOp])(t))
 }
 
 func (r *RefVisualShaderNodeUIntOpImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeUIntOp])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntOp])(r)
 	rg.Unref()
 }
 
@@ -27580,31 +27580,31 @@ type RefVisualShaderNodeUIntParameter interface {
 	TypedPtr() VisualShaderNodeUIntParameter
 }
 
-type RefVisualShaderNodeUIntParameterImpl typedRef[VisualShaderNodeUIntParameter]
+type RefVisualShaderNodeUIntParameterImpl TypedRef[VisualShaderNodeUIntParameter]
 
 func (r *RefVisualShaderNodeUIntParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeUIntParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntParameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeUIntParameterImpl) TypedPtr() VisualShaderNodeUIntParameter {
-	rg := (*typedRef[VisualShaderNodeUIntParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntParameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeUIntParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeUIntParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntParameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeUIntParameterImpl) TypedRef(from *RefVisualShaderNodeUIntParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeUIntParameter])(r)
-	t := (*typedRef[VisualShaderNodeUIntParameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeUIntParameter])(t))
+	rg := (*TypedRef[VisualShaderNodeUIntParameter])(r)
+	t := (*TypedRef[VisualShaderNodeUIntParameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeUIntParameter])(t))
 }
 
 func (r *RefVisualShaderNodeUIntParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeUIntParameter])(r)
+	rg := (*TypedRef[VisualShaderNodeUIntParameter])(r)
 	rg.Unref()
 }
 
@@ -27632,31 +27632,31 @@ type RefVisualShaderNodeUVFunc interface {
 	TypedPtr() VisualShaderNodeUVFunc
 }
 
-type RefVisualShaderNodeUVFuncImpl typedRef[VisualShaderNodeUVFunc]
+type RefVisualShaderNodeUVFuncImpl TypedRef[VisualShaderNodeUVFunc]
 
 func (r *RefVisualShaderNodeUVFuncImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeUVFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeUVFunc])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeUVFuncImpl) TypedPtr() VisualShaderNodeUVFunc {
-	rg := (*typedRef[VisualShaderNodeUVFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeUVFunc])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeUVFuncImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeUVFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeUVFunc])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeUVFuncImpl) TypedRef(from *RefVisualShaderNodeUVFuncImpl) {
-	rg := (*typedRef[VisualShaderNodeUVFunc])(r)
-	t := (*typedRef[VisualShaderNodeUVFunc])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeUVFunc])(t))
+	rg := (*TypedRef[VisualShaderNodeUVFunc])(r)
+	t := (*TypedRef[VisualShaderNodeUVFunc])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeUVFunc])(t))
 }
 
 func (r *RefVisualShaderNodeUVFuncImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeUVFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeUVFunc])(r)
 	rg.Unref()
 }
 
@@ -27684,31 +27684,31 @@ type RefVisualShaderNodeUVPolarCoord interface {
 	TypedPtr() VisualShaderNodeUVPolarCoord
 }
 
-type RefVisualShaderNodeUVPolarCoordImpl typedRef[VisualShaderNodeUVPolarCoord]
+type RefVisualShaderNodeUVPolarCoordImpl TypedRef[VisualShaderNodeUVPolarCoord]
 
 func (r *RefVisualShaderNodeUVPolarCoordImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeUVPolarCoord])(r)
+	rg := (*TypedRef[VisualShaderNodeUVPolarCoord])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeUVPolarCoordImpl) TypedPtr() VisualShaderNodeUVPolarCoord {
-	rg := (*typedRef[VisualShaderNodeUVPolarCoord])(r)
+	rg := (*TypedRef[VisualShaderNodeUVPolarCoord])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeUVPolarCoordImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeUVPolarCoord])(r)
+	rg := (*TypedRef[VisualShaderNodeUVPolarCoord])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeUVPolarCoordImpl) TypedRef(from *RefVisualShaderNodeUVPolarCoordImpl) {
-	rg := (*typedRef[VisualShaderNodeUVPolarCoord])(r)
-	t := (*typedRef[VisualShaderNodeUVPolarCoord])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeUVPolarCoord])(t))
+	rg := (*TypedRef[VisualShaderNodeUVPolarCoord])(r)
+	t := (*TypedRef[VisualShaderNodeUVPolarCoord])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeUVPolarCoord])(t))
 }
 
 func (r *RefVisualShaderNodeUVPolarCoordImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeUVPolarCoord])(r)
+	rg := (*TypedRef[VisualShaderNodeUVPolarCoord])(r)
 	rg.Unref()
 }
 
@@ -27736,31 +27736,31 @@ type RefVisualShaderNodeVarying interface {
 	TypedPtr() VisualShaderNodeVarying
 }
 
-type RefVisualShaderNodeVaryingImpl typedRef[VisualShaderNodeVarying]
+type RefVisualShaderNodeVaryingImpl TypedRef[VisualShaderNodeVarying]
 
 func (r *RefVisualShaderNodeVaryingImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVarying])(r)
+	rg := (*TypedRef[VisualShaderNodeVarying])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVaryingImpl) TypedPtr() VisualShaderNodeVarying {
-	rg := (*typedRef[VisualShaderNodeVarying])(r)
+	rg := (*TypedRef[VisualShaderNodeVarying])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVaryingImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVarying])(r)
+	rg := (*TypedRef[VisualShaderNodeVarying])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVaryingImpl) TypedRef(from *RefVisualShaderNodeVaryingImpl) {
-	rg := (*typedRef[VisualShaderNodeVarying])(r)
-	t := (*typedRef[VisualShaderNodeVarying])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVarying])(t))
+	rg := (*TypedRef[VisualShaderNodeVarying])(r)
+	t := (*TypedRef[VisualShaderNodeVarying])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVarying])(t))
 }
 
 func (r *RefVisualShaderNodeVaryingImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVarying])(r)
+	rg := (*TypedRef[VisualShaderNodeVarying])(r)
 	rg.Unref()
 }
 
@@ -27788,31 +27788,31 @@ type RefVisualShaderNodeVaryingGetter interface {
 	TypedPtr() VisualShaderNodeVaryingGetter
 }
 
-type RefVisualShaderNodeVaryingGetterImpl typedRef[VisualShaderNodeVaryingGetter]
+type RefVisualShaderNodeVaryingGetterImpl TypedRef[VisualShaderNodeVaryingGetter]
 
 func (r *RefVisualShaderNodeVaryingGetterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVaryingGetter])(r)
+	rg := (*TypedRef[VisualShaderNodeVaryingGetter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVaryingGetterImpl) TypedPtr() VisualShaderNodeVaryingGetter {
-	rg := (*typedRef[VisualShaderNodeVaryingGetter])(r)
+	rg := (*TypedRef[VisualShaderNodeVaryingGetter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVaryingGetterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVaryingGetter])(r)
+	rg := (*TypedRef[VisualShaderNodeVaryingGetter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVaryingGetterImpl) TypedRef(from *RefVisualShaderNodeVaryingGetterImpl) {
-	rg := (*typedRef[VisualShaderNodeVaryingGetter])(r)
-	t := (*typedRef[VisualShaderNodeVaryingGetter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVaryingGetter])(t))
+	rg := (*TypedRef[VisualShaderNodeVaryingGetter])(r)
+	t := (*TypedRef[VisualShaderNodeVaryingGetter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVaryingGetter])(t))
 }
 
 func (r *RefVisualShaderNodeVaryingGetterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVaryingGetter])(r)
+	rg := (*TypedRef[VisualShaderNodeVaryingGetter])(r)
 	rg.Unref()
 }
 
@@ -27840,31 +27840,31 @@ type RefVisualShaderNodeVaryingSetter interface {
 	TypedPtr() VisualShaderNodeVaryingSetter
 }
 
-type RefVisualShaderNodeVaryingSetterImpl typedRef[VisualShaderNodeVaryingSetter]
+type RefVisualShaderNodeVaryingSetterImpl TypedRef[VisualShaderNodeVaryingSetter]
 
 func (r *RefVisualShaderNodeVaryingSetterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVaryingSetter])(r)
+	rg := (*TypedRef[VisualShaderNodeVaryingSetter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVaryingSetterImpl) TypedPtr() VisualShaderNodeVaryingSetter {
-	rg := (*typedRef[VisualShaderNodeVaryingSetter])(r)
+	rg := (*TypedRef[VisualShaderNodeVaryingSetter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVaryingSetterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVaryingSetter])(r)
+	rg := (*TypedRef[VisualShaderNodeVaryingSetter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVaryingSetterImpl) TypedRef(from *RefVisualShaderNodeVaryingSetterImpl) {
-	rg := (*typedRef[VisualShaderNodeVaryingSetter])(r)
-	t := (*typedRef[VisualShaderNodeVaryingSetter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVaryingSetter])(t))
+	rg := (*TypedRef[VisualShaderNodeVaryingSetter])(r)
+	t := (*TypedRef[VisualShaderNodeVaryingSetter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVaryingSetter])(t))
 }
 
 func (r *RefVisualShaderNodeVaryingSetterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVaryingSetter])(r)
+	rg := (*TypedRef[VisualShaderNodeVaryingSetter])(r)
 	rg.Unref()
 }
 
@@ -27892,31 +27892,31 @@ type RefVisualShaderNodeVec2Constant interface {
 	TypedPtr() VisualShaderNodeVec2Constant
 }
 
-type RefVisualShaderNodeVec2ConstantImpl typedRef[VisualShaderNodeVec2Constant]
+type RefVisualShaderNodeVec2ConstantImpl TypedRef[VisualShaderNodeVec2Constant]
 
 func (r *RefVisualShaderNodeVec2ConstantImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVec2Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec2Constant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVec2ConstantImpl) TypedPtr() VisualShaderNodeVec2Constant {
-	rg := (*typedRef[VisualShaderNodeVec2Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec2Constant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVec2ConstantImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVec2Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec2Constant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVec2ConstantImpl) TypedRef(from *RefVisualShaderNodeVec2ConstantImpl) {
-	rg := (*typedRef[VisualShaderNodeVec2Constant])(r)
-	t := (*typedRef[VisualShaderNodeVec2Constant])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVec2Constant])(t))
+	rg := (*TypedRef[VisualShaderNodeVec2Constant])(r)
+	t := (*TypedRef[VisualShaderNodeVec2Constant])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVec2Constant])(t))
 }
 
 func (r *RefVisualShaderNodeVec2ConstantImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVec2Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec2Constant])(r)
 	rg.Unref()
 }
 
@@ -27944,31 +27944,31 @@ type RefVisualShaderNodeVec2Parameter interface {
 	TypedPtr() VisualShaderNodeVec2Parameter
 }
 
-type RefVisualShaderNodeVec2ParameterImpl typedRef[VisualShaderNodeVec2Parameter]
+type RefVisualShaderNodeVec2ParameterImpl TypedRef[VisualShaderNodeVec2Parameter]
 
 func (r *RefVisualShaderNodeVec2ParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVec2Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec2Parameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVec2ParameterImpl) TypedPtr() VisualShaderNodeVec2Parameter {
-	rg := (*typedRef[VisualShaderNodeVec2Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec2Parameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVec2ParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVec2Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec2Parameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVec2ParameterImpl) TypedRef(from *RefVisualShaderNodeVec2ParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeVec2Parameter])(r)
-	t := (*typedRef[VisualShaderNodeVec2Parameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVec2Parameter])(t))
+	rg := (*TypedRef[VisualShaderNodeVec2Parameter])(r)
+	t := (*TypedRef[VisualShaderNodeVec2Parameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVec2Parameter])(t))
 }
 
 func (r *RefVisualShaderNodeVec2ParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVec2Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec2Parameter])(r)
 	rg.Unref()
 }
 
@@ -27996,31 +27996,31 @@ type RefVisualShaderNodeVec3Constant interface {
 	TypedPtr() VisualShaderNodeVec3Constant
 }
 
-type RefVisualShaderNodeVec3ConstantImpl typedRef[VisualShaderNodeVec3Constant]
+type RefVisualShaderNodeVec3ConstantImpl TypedRef[VisualShaderNodeVec3Constant]
 
 func (r *RefVisualShaderNodeVec3ConstantImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVec3Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec3Constant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVec3ConstantImpl) TypedPtr() VisualShaderNodeVec3Constant {
-	rg := (*typedRef[VisualShaderNodeVec3Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec3Constant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVec3ConstantImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVec3Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec3Constant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVec3ConstantImpl) TypedRef(from *RefVisualShaderNodeVec3ConstantImpl) {
-	rg := (*typedRef[VisualShaderNodeVec3Constant])(r)
-	t := (*typedRef[VisualShaderNodeVec3Constant])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVec3Constant])(t))
+	rg := (*TypedRef[VisualShaderNodeVec3Constant])(r)
+	t := (*TypedRef[VisualShaderNodeVec3Constant])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVec3Constant])(t))
 }
 
 func (r *RefVisualShaderNodeVec3ConstantImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVec3Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec3Constant])(r)
 	rg.Unref()
 }
 
@@ -28048,31 +28048,31 @@ type RefVisualShaderNodeVec3Parameter interface {
 	TypedPtr() VisualShaderNodeVec3Parameter
 }
 
-type RefVisualShaderNodeVec3ParameterImpl typedRef[VisualShaderNodeVec3Parameter]
+type RefVisualShaderNodeVec3ParameterImpl TypedRef[VisualShaderNodeVec3Parameter]
 
 func (r *RefVisualShaderNodeVec3ParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVec3Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec3Parameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVec3ParameterImpl) TypedPtr() VisualShaderNodeVec3Parameter {
-	rg := (*typedRef[VisualShaderNodeVec3Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec3Parameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVec3ParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVec3Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec3Parameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVec3ParameterImpl) TypedRef(from *RefVisualShaderNodeVec3ParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeVec3Parameter])(r)
-	t := (*typedRef[VisualShaderNodeVec3Parameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVec3Parameter])(t))
+	rg := (*TypedRef[VisualShaderNodeVec3Parameter])(r)
+	t := (*TypedRef[VisualShaderNodeVec3Parameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVec3Parameter])(t))
 }
 
 func (r *RefVisualShaderNodeVec3ParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVec3Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec3Parameter])(r)
 	rg.Unref()
 }
 
@@ -28100,31 +28100,31 @@ type RefVisualShaderNodeVec4Constant interface {
 	TypedPtr() VisualShaderNodeVec4Constant
 }
 
-type RefVisualShaderNodeVec4ConstantImpl typedRef[VisualShaderNodeVec4Constant]
+type RefVisualShaderNodeVec4ConstantImpl TypedRef[VisualShaderNodeVec4Constant]
 
 func (r *RefVisualShaderNodeVec4ConstantImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVec4Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec4Constant])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVec4ConstantImpl) TypedPtr() VisualShaderNodeVec4Constant {
-	rg := (*typedRef[VisualShaderNodeVec4Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec4Constant])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVec4ConstantImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVec4Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec4Constant])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVec4ConstantImpl) TypedRef(from *RefVisualShaderNodeVec4ConstantImpl) {
-	rg := (*typedRef[VisualShaderNodeVec4Constant])(r)
-	t := (*typedRef[VisualShaderNodeVec4Constant])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVec4Constant])(t))
+	rg := (*TypedRef[VisualShaderNodeVec4Constant])(r)
+	t := (*TypedRef[VisualShaderNodeVec4Constant])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVec4Constant])(t))
 }
 
 func (r *RefVisualShaderNodeVec4ConstantImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVec4Constant])(r)
+	rg := (*TypedRef[VisualShaderNodeVec4Constant])(r)
 	rg.Unref()
 }
 
@@ -28152,31 +28152,31 @@ type RefVisualShaderNodeVec4Parameter interface {
 	TypedPtr() VisualShaderNodeVec4Parameter
 }
 
-type RefVisualShaderNodeVec4ParameterImpl typedRef[VisualShaderNodeVec4Parameter]
+type RefVisualShaderNodeVec4ParameterImpl TypedRef[VisualShaderNodeVec4Parameter]
 
 func (r *RefVisualShaderNodeVec4ParameterImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVec4Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec4Parameter])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVec4ParameterImpl) TypedPtr() VisualShaderNodeVec4Parameter {
-	rg := (*typedRef[VisualShaderNodeVec4Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec4Parameter])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVec4ParameterImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVec4Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec4Parameter])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVec4ParameterImpl) TypedRef(from *RefVisualShaderNodeVec4ParameterImpl) {
-	rg := (*typedRef[VisualShaderNodeVec4Parameter])(r)
-	t := (*typedRef[VisualShaderNodeVec4Parameter])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVec4Parameter])(t))
+	rg := (*TypedRef[VisualShaderNodeVec4Parameter])(r)
+	t := (*TypedRef[VisualShaderNodeVec4Parameter])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVec4Parameter])(t))
 }
 
 func (r *RefVisualShaderNodeVec4ParameterImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVec4Parameter])(r)
+	rg := (*TypedRef[VisualShaderNodeVec4Parameter])(r)
 	rg.Unref()
 }
 
@@ -28204,31 +28204,31 @@ type RefVisualShaderNodeVectorBase interface {
 	TypedPtr() VisualShaderNodeVectorBase
 }
 
-type RefVisualShaderNodeVectorBaseImpl typedRef[VisualShaderNodeVectorBase]
+type RefVisualShaderNodeVectorBaseImpl TypedRef[VisualShaderNodeVectorBase]
 
 func (r *RefVisualShaderNodeVectorBaseImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVectorBase])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorBase])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVectorBaseImpl) TypedPtr() VisualShaderNodeVectorBase {
-	rg := (*typedRef[VisualShaderNodeVectorBase])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorBase])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVectorBaseImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVectorBase])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorBase])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVectorBaseImpl) TypedRef(from *RefVisualShaderNodeVectorBaseImpl) {
-	rg := (*typedRef[VisualShaderNodeVectorBase])(r)
-	t := (*typedRef[VisualShaderNodeVectorBase])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVectorBase])(t))
+	rg := (*TypedRef[VisualShaderNodeVectorBase])(r)
+	t := (*TypedRef[VisualShaderNodeVectorBase])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVectorBase])(t))
 }
 
 func (r *RefVisualShaderNodeVectorBaseImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVectorBase])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorBase])(r)
 	rg.Unref()
 }
 
@@ -28256,31 +28256,31 @@ type RefVisualShaderNodeVectorCompose interface {
 	TypedPtr() VisualShaderNodeVectorCompose
 }
 
-type RefVisualShaderNodeVectorComposeImpl typedRef[VisualShaderNodeVectorCompose]
+type RefVisualShaderNodeVectorComposeImpl TypedRef[VisualShaderNodeVectorCompose]
 
 func (r *RefVisualShaderNodeVectorComposeImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVectorCompose])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorCompose])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVectorComposeImpl) TypedPtr() VisualShaderNodeVectorCompose {
-	rg := (*typedRef[VisualShaderNodeVectorCompose])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorCompose])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVectorComposeImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVectorCompose])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorCompose])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVectorComposeImpl) TypedRef(from *RefVisualShaderNodeVectorComposeImpl) {
-	rg := (*typedRef[VisualShaderNodeVectorCompose])(r)
-	t := (*typedRef[VisualShaderNodeVectorCompose])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVectorCompose])(t))
+	rg := (*TypedRef[VisualShaderNodeVectorCompose])(r)
+	t := (*TypedRef[VisualShaderNodeVectorCompose])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVectorCompose])(t))
 }
 
 func (r *RefVisualShaderNodeVectorComposeImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVectorCompose])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorCompose])(r)
 	rg.Unref()
 }
 
@@ -28308,31 +28308,31 @@ type RefVisualShaderNodeVectorDecompose interface {
 	TypedPtr() VisualShaderNodeVectorDecompose
 }
 
-type RefVisualShaderNodeVectorDecomposeImpl typedRef[VisualShaderNodeVectorDecompose]
+type RefVisualShaderNodeVectorDecomposeImpl TypedRef[VisualShaderNodeVectorDecompose]
 
 func (r *RefVisualShaderNodeVectorDecomposeImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVectorDecompose])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorDecompose])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVectorDecomposeImpl) TypedPtr() VisualShaderNodeVectorDecompose {
-	rg := (*typedRef[VisualShaderNodeVectorDecompose])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorDecompose])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVectorDecomposeImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVectorDecompose])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorDecompose])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVectorDecomposeImpl) TypedRef(from *RefVisualShaderNodeVectorDecomposeImpl) {
-	rg := (*typedRef[VisualShaderNodeVectorDecompose])(r)
-	t := (*typedRef[VisualShaderNodeVectorDecompose])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVectorDecompose])(t))
+	rg := (*TypedRef[VisualShaderNodeVectorDecompose])(r)
+	t := (*TypedRef[VisualShaderNodeVectorDecompose])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVectorDecompose])(t))
 }
 
 func (r *RefVisualShaderNodeVectorDecomposeImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVectorDecompose])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorDecompose])(r)
 	rg.Unref()
 }
 
@@ -28360,31 +28360,31 @@ type RefVisualShaderNodeVectorDistance interface {
 	TypedPtr() VisualShaderNodeVectorDistance
 }
 
-type RefVisualShaderNodeVectorDistanceImpl typedRef[VisualShaderNodeVectorDistance]
+type RefVisualShaderNodeVectorDistanceImpl TypedRef[VisualShaderNodeVectorDistance]
 
 func (r *RefVisualShaderNodeVectorDistanceImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVectorDistance])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorDistance])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVectorDistanceImpl) TypedPtr() VisualShaderNodeVectorDistance {
-	rg := (*typedRef[VisualShaderNodeVectorDistance])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorDistance])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVectorDistanceImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVectorDistance])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorDistance])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVectorDistanceImpl) TypedRef(from *RefVisualShaderNodeVectorDistanceImpl) {
-	rg := (*typedRef[VisualShaderNodeVectorDistance])(r)
-	t := (*typedRef[VisualShaderNodeVectorDistance])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVectorDistance])(t))
+	rg := (*TypedRef[VisualShaderNodeVectorDistance])(r)
+	t := (*TypedRef[VisualShaderNodeVectorDistance])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVectorDistance])(t))
 }
 
 func (r *RefVisualShaderNodeVectorDistanceImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVectorDistance])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorDistance])(r)
 	rg.Unref()
 }
 
@@ -28412,31 +28412,31 @@ type RefVisualShaderNodeVectorFunc interface {
 	TypedPtr() VisualShaderNodeVectorFunc
 }
 
-type RefVisualShaderNodeVectorFuncImpl typedRef[VisualShaderNodeVectorFunc]
+type RefVisualShaderNodeVectorFuncImpl TypedRef[VisualShaderNodeVectorFunc]
 
 func (r *RefVisualShaderNodeVectorFuncImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVectorFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorFunc])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVectorFuncImpl) TypedPtr() VisualShaderNodeVectorFunc {
-	rg := (*typedRef[VisualShaderNodeVectorFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorFunc])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVectorFuncImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVectorFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorFunc])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVectorFuncImpl) TypedRef(from *RefVisualShaderNodeVectorFuncImpl) {
-	rg := (*typedRef[VisualShaderNodeVectorFunc])(r)
-	t := (*typedRef[VisualShaderNodeVectorFunc])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVectorFunc])(t))
+	rg := (*TypedRef[VisualShaderNodeVectorFunc])(r)
+	t := (*TypedRef[VisualShaderNodeVectorFunc])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVectorFunc])(t))
 }
 
 func (r *RefVisualShaderNodeVectorFuncImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVectorFunc])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorFunc])(r)
 	rg.Unref()
 }
 
@@ -28464,31 +28464,31 @@ type RefVisualShaderNodeVectorLen interface {
 	TypedPtr() VisualShaderNodeVectorLen
 }
 
-type RefVisualShaderNodeVectorLenImpl typedRef[VisualShaderNodeVectorLen]
+type RefVisualShaderNodeVectorLenImpl TypedRef[VisualShaderNodeVectorLen]
 
 func (r *RefVisualShaderNodeVectorLenImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVectorLen])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorLen])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVectorLenImpl) TypedPtr() VisualShaderNodeVectorLen {
-	rg := (*typedRef[VisualShaderNodeVectorLen])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorLen])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVectorLenImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVectorLen])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorLen])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVectorLenImpl) TypedRef(from *RefVisualShaderNodeVectorLenImpl) {
-	rg := (*typedRef[VisualShaderNodeVectorLen])(r)
-	t := (*typedRef[VisualShaderNodeVectorLen])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVectorLen])(t))
+	rg := (*TypedRef[VisualShaderNodeVectorLen])(r)
+	t := (*TypedRef[VisualShaderNodeVectorLen])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVectorLen])(t))
 }
 
 func (r *RefVisualShaderNodeVectorLenImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVectorLen])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorLen])(r)
 	rg.Unref()
 }
 
@@ -28516,31 +28516,31 @@ type RefVisualShaderNodeVectorOp interface {
 	TypedPtr() VisualShaderNodeVectorOp
 }
 
-type RefVisualShaderNodeVectorOpImpl typedRef[VisualShaderNodeVectorOp]
+type RefVisualShaderNodeVectorOpImpl TypedRef[VisualShaderNodeVectorOp]
 
 func (r *RefVisualShaderNodeVectorOpImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVectorOp])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorOp])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVectorOpImpl) TypedPtr() VisualShaderNodeVectorOp {
-	rg := (*typedRef[VisualShaderNodeVectorOp])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorOp])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVectorOpImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVectorOp])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorOp])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVectorOpImpl) TypedRef(from *RefVisualShaderNodeVectorOpImpl) {
-	rg := (*typedRef[VisualShaderNodeVectorOp])(r)
-	t := (*typedRef[VisualShaderNodeVectorOp])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVectorOp])(t))
+	rg := (*TypedRef[VisualShaderNodeVectorOp])(r)
+	t := (*TypedRef[VisualShaderNodeVectorOp])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVectorOp])(t))
 }
 
 func (r *RefVisualShaderNodeVectorOpImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVectorOp])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorOp])(r)
 	rg.Unref()
 }
 
@@ -28568,31 +28568,31 @@ type RefVisualShaderNodeVectorRefract interface {
 	TypedPtr() VisualShaderNodeVectorRefract
 }
 
-type RefVisualShaderNodeVectorRefractImpl typedRef[VisualShaderNodeVectorRefract]
+type RefVisualShaderNodeVectorRefractImpl TypedRef[VisualShaderNodeVectorRefract]
 
 func (r *RefVisualShaderNodeVectorRefractImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeVectorRefract])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorRefract])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeVectorRefractImpl) TypedPtr() VisualShaderNodeVectorRefract {
-	rg := (*typedRef[VisualShaderNodeVectorRefract])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorRefract])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeVectorRefractImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeVectorRefract])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorRefract])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeVectorRefractImpl) TypedRef(from *RefVisualShaderNodeVectorRefractImpl) {
-	rg := (*typedRef[VisualShaderNodeVectorRefract])(r)
-	t := (*typedRef[VisualShaderNodeVectorRefract])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeVectorRefract])(t))
+	rg := (*TypedRef[VisualShaderNodeVectorRefract])(r)
+	t := (*TypedRef[VisualShaderNodeVectorRefract])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeVectorRefract])(t))
 }
 
 func (r *RefVisualShaderNodeVectorRefractImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeVectorRefract])(r)
+	rg := (*TypedRef[VisualShaderNodeVectorRefract])(r)
 	rg.Unref()
 }
 
@@ -28620,31 +28620,31 @@ type RefVisualShaderNodeWorldPositionFromDepth interface {
 	TypedPtr() VisualShaderNodeWorldPositionFromDepth
 }
 
-type RefVisualShaderNodeWorldPositionFromDepthImpl typedRef[VisualShaderNodeWorldPositionFromDepth]
+type RefVisualShaderNodeWorldPositionFromDepthImpl TypedRef[VisualShaderNodeWorldPositionFromDepth]
 
 func (r *RefVisualShaderNodeWorldPositionFromDepthImpl) Ptr() RefCounted {
-	rg := (*typedRef[VisualShaderNodeWorldPositionFromDepth])(r)
+	rg := (*TypedRef[VisualShaderNodeWorldPositionFromDepth])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVisualShaderNodeWorldPositionFromDepthImpl) TypedPtr() VisualShaderNodeWorldPositionFromDepth {
-	rg := (*typedRef[VisualShaderNodeWorldPositionFromDepth])(r)
+	rg := (*TypedRef[VisualShaderNodeWorldPositionFromDepth])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVisualShaderNodeWorldPositionFromDepthImpl) Ref(from Ref) {
-	rg := (*typedRef[VisualShaderNodeWorldPositionFromDepth])(r)
+	rg := (*TypedRef[VisualShaderNodeWorldPositionFromDepth])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVisualShaderNodeWorldPositionFromDepthImpl) TypedRef(from *RefVisualShaderNodeWorldPositionFromDepthImpl) {
-	rg := (*typedRef[VisualShaderNodeWorldPositionFromDepth])(r)
-	t := (*typedRef[VisualShaderNodeWorldPositionFromDepth])(from)
-	rg.TypedRef((*typedRef[VisualShaderNodeWorldPositionFromDepth])(t))
+	rg := (*TypedRef[VisualShaderNodeWorldPositionFromDepth])(r)
+	t := (*TypedRef[VisualShaderNodeWorldPositionFromDepth])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeWorldPositionFromDepth])(t))
 }
 
 func (r *RefVisualShaderNodeWorldPositionFromDepthImpl) Unref() {
-	rg := (*typedRef[VisualShaderNodeWorldPositionFromDepth])(r)
+	rg := (*TypedRef[VisualShaderNodeWorldPositionFromDepth])(r)
 	rg.Unref()
 }
 
@@ -28672,31 +28672,31 @@ type RefVoxelGIData interface {
 	TypedPtr() VoxelGIData
 }
 
-type RefVoxelGIDataImpl typedRef[VoxelGIData]
+type RefVoxelGIDataImpl TypedRef[VoxelGIData]
 
 func (r *RefVoxelGIDataImpl) Ptr() RefCounted {
-	rg := (*typedRef[VoxelGIData])(r)
+	rg := (*TypedRef[VoxelGIData])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefVoxelGIDataImpl) TypedPtr() VoxelGIData {
-	rg := (*typedRef[VoxelGIData])(r)
+	rg := (*TypedRef[VoxelGIData])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefVoxelGIDataImpl) Ref(from Ref) {
-	rg := (*typedRef[VoxelGIData])(r)
+	rg := (*TypedRef[VoxelGIData])(r)
 	rg.Ref(from)
 }
 
 func (r *RefVoxelGIDataImpl) TypedRef(from *RefVoxelGIDataImpl) {
-	rg := (*typedRef[VoxelGIData])(r)
-	t := (*typedRef[VoxelGIData])(from)
-	rg.TypedRef((*typedRef[VoxelGIData])(t))
+	rg := (*TypedRef[VoxelGIData])(r)
+	t := (*TypedRef[VoxelGIData])(from)
+	rg.TypedRef((*TypedRef[VoxelGIData])(t))
 }
 
 func (r *RefVoxelGIDataImpl) Unref() {
-	rg := (*typedRef[VoxelGIData])(r)
+	rg := (*TypedRef[VoxelGIData])(r)
 	rg.Unref()
 }
 
@@ -28724,31 +28724,31 @@ type RefWeakRef interface {
 	TypedPtr() WeakRef
 }
 
-type RefWeakRefImpl typedRef[WeakRef]
+type RefWeakRefImpl TypedRef[WeakRef]
 
 func (r *RefWeakRefImpl) Ptr() RefCounted {
-	rg := (*typedRef[WeakRef])(r)
+	rg := (*TypedRef[WeakRef])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWeakRefImpl) TypedPtr() WeakRef {
-	rg := (*typedRef[WeakRef])(r)
+	rg := (*TypedRef[WeakRef])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWeakRefImpl) Ref(from Ref) {
-	rg := (*typedRef[WeakRef])(r)
+	rg := (*TypedRef[WeakRef])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWeakRefImpl) TypedRef(from *RefWeakRefImpl) {
-	rg := (*typedRef[WeakRef])(r)
-	t := (*typedRef[WeakRef])(from)
-	rg.TypedRef((*typedRef[WeakRef])(t))
+	rg := (*TypedRef[WeakRef])(r)
+	t := (*TypedRef[WeakRef])(from)
+	rg.TypedRef((*TypedRef[WeakRef])(t))
 }
 
 func (r *RefWeakRefImpl) Unref() {
-	rg := (*typedRef[WeakRef])(r)
+	rg := (*TypedRef[WeakRef])(r)
 	rg.Unref()
 }
 
@@ -28776,31 +28776,31 @@ type RefWebRTCDataChannel interface {
 	TypedPtr() WebRTCDataChannel
 }
 
-type RefWebRTCDataChannelImpl typedRef[WebRTCDataChannel]
+type RefWebRTCDataChannelImpl TypedRef[WebRTCDataChannel]
 
 func (r *RefWebRTCDataChannelImpl) Ptr() RefCounted {
-	rg := (*typedRef[WebRTCDataChannel])(r)
+	rg := (*TypedRef[WebRTCDataChannel])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWebRTCDataChannelImpl) TypedPtr() WebRTCDataChannel {
-	rg := (*typedRef[WebRTCDataChannel])(r)
+	rg := (*TypedRef[WebRTCDataChannel])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWebRTCDataChannelImpl) Ref(from Ref) {
-	rg := (*typedRef[WebRTCDataChannel])(r)
+	rg := (*TypedRef[WebRTCDataChannel])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWebRTCDataChannelImpl) TypedRef(from *RefWebRTCDataChannelImpl) {
-	rg := (*typedRef[WebRTCDataChannel])(r)
-	t := (*typedRef[WebRTCDataChannel])(from)
-	rg.TypedRef((*typedRef[WebRTCDataChannel])(t))
+	rg := (*TypedRef[WebRTCDataChannel])(r)
+	t := (*TypedRef[WebRTCDataChannel])(from)
+	rg.TypedRef((*TypedRef[WebRTCDataChannel])(t))
 }
 
 func (r *RefWebRTCDataChannelImpl) Unref() {
-	rg := (*typedRef[WebRTCDataChannel])(r)
+	rg := (*TypedRef[WebRTCDataChannel])(r)
 	rg.Unref()
 }
 
@@ -28828,31 +28828,31 @@ type RefWebRTCDataChannelExtension interface {
 	TypedPtr() WebRTCDataChannelExtension
 }
 
-type RefWebRTCDataChannelExtensionImpl typedRef[WebRTCDataChannelExtension]
+type RefWebRTCDataChannelExtensionImpl TypedRef[WebRTCDataChannelExtension]
 
 func (r *RefWebRTCDataChannelExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[WebRTCDataChannelExtension])(r)
+	rg := (*TypedRef[WebRTCDataChannelExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWebRTCDataChannelExtensionImpl) TypedPtr() WebRTCDataChannelExtension {
-	rg := (*typedRef[WebRTCDataChannelExtension])(r)
+	rg := (*TypedRef[WebRTCDataChannelExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWebRTCDataChannelExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[WebRTCDataChannelExtension])(r)
+	rg := (*TypedRef[WebRTCDataChannelExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWebRTCDataChannelExtensionImpl) TypedRef(from *RefWebRTCDataChannelExtensionImpl) {
-	rg := (*typedRef[WebRTCDataChannelExtension])(r)
-	t := (*typedRef[WebRTCDataChannelExtension])(from)
-	rg.TypedRef((*typedRef[WebRTCDataChannelExtension])(t))
+	rg := (*TypedRef[WebRTCDataChannelExtension])(r)
+	t := (*TypedRef[WebRTCDataChannelExtension])(from)
+	rg.TypedRef((*TypedRef[WebRTCDataChannelExtension])(t))
 }
 
 func (r *RefWebRTCDataChannelExtensionImpl) Unref() {
-	rg := (*typedRef[WebRTCDataChannelExtension])(r)
+	rg := (*TypedRef[WebRTCDataChannelExtension])(r)
 	rg.Unref()
 }
 
@@ -28880,31 +28880,31 @@ type RefWebRTCMultiplayerPeer interface {
 	TypedPtr() WebRTCMultiplayerPeer
 }
 
-type RefWebRTCMultiplayerPeerImpl typedRef[WebRTCMultiplayerPeer]
+type RefWebRTCMultiplayerPeerImpl TypedRef[WebRTCMultiplayerPeer]
 
 func (r *RefWebRTCMultiplayerPeerImpl) Ptr() RefCounted {
-	rg := (*typedRef[WebRTCMultiplayerPeer])(r)
+	rg := (*TypedRef[WebRTCMultiplayerPeer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWebRTCMultiplayerPeerImpl) TypedPtr() WebRTCMultiplayerPeer {
-	rg := (*typedRef[WebRTCMultiplayerPeer])(r)
+	rg := (*TypedRef[WebRTCMultiplayerPeer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWebRTCMultiplayerPeerImpl) Ref(from Ref) {
-	rg := (*typedRef[WebRTCMultiplayerPeer])(r)
+	rg := (*TypedRef[WebRTCMultiplayerPeer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWebRTCMultiplayerPeerImpl) TypedRef(from *RefWebRTCMultiplayerPeerImpl) {
-	rg := (*typedRef[WebRTCMultiplayerPeer])(r)
-	t := (*typedRef[WebRTCMultiplayerPeer])(from)
-	rg.TypedRef((*typedRef[WebRTCMultiplayerPeer])(t))
+	rg := (*TypedRef[WebRTCMultiplayerPeer])(r)
+	t := (*TypedRef[WebRTCMultiplayerPeer])(from)
+	rg.TypedRef((*TypedRef[WebRTCMultiplayerPeer])(t))
 }
 
 func (r *RefWebRTCMultiplayerPeerImpl) Unref() {
-	rg := (*typedRef[WebRTCMultiplayerPeer])(r)
+	rg := (*TypedRef[WebRTCMultiplayerPeer])(r)
 	rg.Unref()
 }
 
@@ -28932,31 +28932,31 @@ type RefWebRTCPeerConnection interface {
 	TypedPtr() WebRTCPeerConnection
 }
 
-type RefWebRTCPeerConnectionImpl typedRef[WebRTCPeerConnection]
+type RefWebRTCPeerConnectionImpl TypedRef[WebRTCPeerConnection]
 
 func (r *RefWebRTCPeerConnectionImpl) Ptr() RefCounted {
-	rg := (*typedRef[WebRTCPeerConnection])(r)
+	rg := (*TypedRef[WebRTCPeerConnection])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWebRTCPeerConnectionImpl) TypedPtr() WebRTCPeerConnection {
-	rg := (*typedRef[WebRTCPeerConnection])(r)
+	rg := (*TypedRef[WebRTCPeerConnection])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWebRTCPeerConnectionImpl) Ref(from Ref) {
-	rg := (*typedRef[WebRTCPeerConnection])(r)
+	rg := (*TypedRef[WebRTCPeerConnection])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWebRTCPeerConnectionImpl) TypedRef(from *RefWebRTCPeerConnectionImpl) {
-	rg := (*typedRef[WebRTCPeerConnection])(r)
-	t := (*typedRef[WebRTCPeerConnection])(from)
-	rg.TypedRef((*typedRef[WebRTCPeerConnection])(t))
+	rg := (*TypedRef[WebRTCPeerConnection])(r)
+	t := (*TypedRef[WebRTCPeerConnection])(from)
+	rg.TypedRef((*TypedRef[WebRTCPeerConnection])(t))
 }
 
 func (r *RefWebRTCPeerConnectionImpl) Unref() {
-	rg := (*typedRef[WebRTCPeerConnection])(r)
+	rg := (*TypedRef[WebRTCPeerConnection])(r)
 	rg.Unref()
 }
 
@@ -28984,31 +28984,31 @@ type RefWebRTCPeerConnectionExtension interface {
 	TypedPtr() WebRTCPeerConnectionExtension
 }
 
-type RefWebRTCPeerConnectionExtensionImpl typedRef[WebRTCPeerConnectionExtension]
+type RefWebRTCPeerConnectionExtensionImpl TypedRef[WebRTCPeerConnectionExtension]
 
 func (r *RefWebRTCPeerConnectionExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[WebRTCPeerConnectionExtension])(r)
+	rg := (*TypedRef[WebRTCPeerConnectionExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWebRTCPeerConnectionExtensionImpl) TypedPtr() WebRTCPeerConnectionExtension {
-	rg := (*typedRef[WebRTCPeerConnectionExtension])(r)
+	rg := (*TypedRef[WebRTCPeerConnectionExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWebRTCPeerConnectionExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[WebRTCPeerConnectionExtension])(r)
+	rg := (*TypedRef[WebRTCPeerConnectionExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWebRTCPeerConnectionExtensionImpl) TypedRef(from *RefWebRTCPeerConnectionExtensionImpl) {
-	rg := (*typedRef[WebRTCPeerConnectionExtension])(r)
-	t := (*typedRef[WebRTCPeerConnectionExtension])(from)
-	rg.TypedRef((*typedRef[WebRTCPeerConnectionExtension])(t))
+	rg := (*TypedRef[WebRTCPeerConnectionExtension])(r)
+	t := (*TypedRef[WebRTCPeerConnectionExtension])(from)
+	rg.TypedRef((*TypedRef[WebRTCPeerConnectionExtension])(t))
 }
 
 func (r *RefWebRTCPeerConnectionExtensionImpl) Unref() {
-	rg := (*typedRef[WebRTCPeerConnectionExtension])(r)
+	rg := (*TypedRef[WebRTCPeerConnectionExtension])(r)
 	rg.Unref()
 }
 
@@ -29036,31 +29036,31 @@ type RefWebSocketMultiplayerPeer interface {
 	TypedPtr() WebSocketMultiplayerPeer
 }
 
-type RefWebSocketMultiplayerPeerImpl typedRef[WebSocketMultiplayerPeer]
+type RefWebSocketMultiplayerPeerImpl TypedRef[WebSocketMultiplayerPeer]
 
 func (r *RefWebSocketMultiplayerPeerImpl) Ptr() RefCounted {
-	rg := (*typedRef[WebSocketMultiplayerPeer])(r)
+	rg := (*TypedRef[WebSocketMultiplayerPeer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWebSocketMultiplayerPeerImpl) TypedPtr() WebSocketMultiplayerPeer {
-	rg := (*typedRef[WebSocketMultiplayerPeer])(r)
+	rg := (*TypedRef[WebSocketMultiplayerPeer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWebSocketMultiplayerPeerImpl) Ref(from Ref) {
-	rg := (*typedRef[WebSocketMultiplayerPeer])(r)
+	rg := (*TypedRef[WebSocketMultiplayerPeer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWebSocketMultiplayerPeerImpl) TypedRef(from *RefWebSocketMultiplayerPeerImpl) {
-	rg := (*typedRef[WebSocketMultiplayerPeer])(r)
-	t := (*typedRef[WebSocketMultiplayerPeer])(from)
-	rg.TypedRef((*typedRef[WebSocketMultiplayerPeer])(t))
+	rg := (*TypedRef[WebSocketMultiplayerPeer])(r)
+	t := (*TypedRef[WebSocketMultiplayerPeer])(from)
+	rg.TypedRef((*TypedRef[WebSocketMultiplayerPeer])(t))
 }
 
 func (r *RefWebSocketMultiplayerPeerImpl) Unref() {
-	rg := (*typedRef[WebSocketMultiplayerPeer])(r)
+	rg := (*TypedRef[WebSocketMultiplayerPeer])(r)
 	rg.Unref()
 }
 
@@ -29088,31 +29088,31 @@ type RefWebSocketPeer interface {
 	TypedPtr() WebSocketPeer
 }
 
-type RefWebSocketPeerImpl typedRef[WebSocketPeer]
+type RefWebSocketPeerImpl TypedRef[WebSocketPeer]
 
 func (r *RefWebSocketPeerImpl) Ptr() RefCounted {
-	rg := (*typedRef[WebSocketPeer])(r)
+	rg := (*TypedRef[WebSocketPeer])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWebSocketPeerImpl) TypedPtr() WebSocketPeer {
-	rg := (*typedRef[WebSocketPeer])(r)
+	rg := (*TypedRef[WebSocketPeer])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWebSocketPeerImpl) Ref(from Ref) {
-	rg := (*typedRef[WebSocketPeer])(r)
+	rg := (*TypedRef[WebSocketPeer])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWebSocketPeerImpl) TypedRef(from *RefWebSocketPeerImpl) {
-	rg := (*typedRef[WebSocketPeer])(r)
-	t := (*typedRef[WebSocketPeer])(from)
-	rg.TypedRef((*typedRef[WebSocketPeer])(t))
+	rg := (*TypedRef[WebSocketPeer])(r)
+	t := (*TypedRef[WebSocketPeer])(from)
+	rg.TypedRef((*TypedRef[WebSocketPeer])(t))
 }
 
 func (r *RefWebSocketPeerImpl) Unref() {
-	rg := (*typedRef[WebSocketPeer])(r)
+	rg := (*TypedRef[WebSocketPeer])(r)
 	rg.Unref()
 }
 
@@ -29140,31 +29140,31 @@ type RefWebXRInterface interface {
 	TypedPtr() WebXRInterface
 }
 
-type RefWebXRInterfaceImpl typedRef[WebXRInterface]
+type RefWebXRInterfaceImpl TypedRef[WebXRInterface]
 
 func (r *RefWebXRInterfaceImpl) Ptr() RefCounted {
-	rg := (*typedRef[WebXRInterface])(r)
+	rg := (*TypedRef[WebXRInterface])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWebXRInterfaceImpl) TypedPtr() WebXRInterface {
-	rg := (*typedRef[WebXRInterface])(r)
+	rg := (*TypedRef[WebXRInterface])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWebXRInterfaceImpl) Ref(from Ref) {
-	rg := (*typedRef[WebXRInterface])(r)
+	rg := (*TypedRef[WebXRInterface])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWebXRInterfaceImpl) TypedRef(from *RefWebXRInterfaceImpl) {
-	rg := (*typedRef[WebXRInterface])(r)
-	t := (*typedRef[WebXRInterface])(from)
-	rg.TypedRef((*typedRef[WebXRInterface])(t))
+	rg := (*TypedRef[WebXRInterface])(r)
+	t := (*TypedRef[WebXRInterface])(from)
+	rg.TypedRef((*TypedRef[WebXRInterface])(t))
 }
 
 func (r *RefWebXRInterfaceImpl) Unref() {
-	rg := (*typedRef[WebXRInterface])(r)
+	rg := (*TypedRef[WebXRInterface])(r)
 	rg.Unref()
 }
 
@@ -29192,31 +29192,31 @@ type RefWorld2D interface {
 	TypedPtr() World2D
 }
 
-type RefWorld2DImpl typedRef[World2D]
+type RefWorld2DImpl TypedRef[World2D]
 
 func (r *RefWorld2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[World2D])(r)
+	rg := (*TypedRef[World2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWorld2DImpl) TypedPtr() World2D {
-	rg := (*typedRef[World2D])(r)
+	rg := (*TypedRef[World2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWorld2DImpl) Ref(from Ref) {
-	rg := (*typedRef[World2D])(r)
+	rg := (*TypedRef[World2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWorld2DImpl) TypedRef(from *RefWorld2DImpl) {
-	rg := (*typedRef[World2D])(r)
-	t := (*typedRef[World2D])(from)
-	rg.TypedRef((*typedRef[World2D])(t))
+	rg := (*TypedRef[World2D])(r)
+	t := (*TypedRef[World2D])(from)
+	rg.TypedRef((*TypedRef[World2D])(t))
 }
 
 func (r *RefWorld2DImpl) Unref() {
-	rg := (*typedRef[World2D])(r)
+	rg := (*TypedRef[World2D])(r)
 	rg.Unref()
 }
 
@@ -29244,31 +29244,31 @@ type RefWorld3D interface {
 	TypedPtr() World3D
 }
 
-type RefWorld3DImpl typedRef[World3D]
+type RefWorld3DImpl TypedRef[World3D]
 
 func (r *RefWorld3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[World3D])(r)
+	rg := (*TypedRef[World3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWorld3DImpl) TypedPtr() World3D {
-	rg := (*typedRef[World3D])(r)
+	rg := (*TypedRef[World3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWorld3DImpl) Ref(from Ref) {
-	rg := (*typedRef[World3D])(r)
+	rg := (*TypedRef[World3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWorld3DImpl) TypedRef(from *RefWorld3DImpl) {
-	rg := (*typedRef[World3D])(r)
-	t := (*typedRef[World3D])(from)
-	rg.TypedRef((*typedRef[World3D])(t))
+	rg := (*TypedRef[World3D])(r)
+	t := (*TypedRef[World3D])(from)
+	rg.TypedRef((*TypedRef[World3D])(t))
 }
 
 func (r *RefWorld3DImpl) Unref() {
-	rg := (*typedRef[World3D])(r)
+	rg := (*TypedRef[World3D])(r)
 	rg.Unref()
 }
 
@@ -29296,31 +29296,31 @@ type RefWorldBoundaryShape2D interface {
 	TypedPtr() WorldBoundaryShape2D
 }
 
-type RefWorldBoundaryShape2DImpl typedRef[WorldBoundaryShape2D]
+type RefWorldBoundaryShape2DImpl TypedRef[WorldBoundaryShape2D]
 
 func (r *RefWorldBoundaryShape2DImpl) Ptr() RefCounted {
-	rg := (*typedRef[WorldBoundaryShape2D])(r)
+	rg := (*TypedRef[WorldBoundaryShape2D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWorldBoundaryShape2DImpl) TypedPtr() WorldBoundaryShape2D {
-	rg := (*typedRef[WorldBoundaryShape2D])(r)
+	rg := (*TypedRef[WorldBoundaryShape2D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWorldBoundaryShape2DImpl) Ref(from Ref) {
-	rg := (*typedRef[WorldBoundaryShape2D])(r)
+	rg := (*TypedRef[WorldBoundaryShape2D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWorldBoundaryShape2DImpl) TypedRef(from *RefWorldBoundaryShape2DImpl) {
-	rg := (*typedRef[WorldBoundaryShape2D])(r)
-	t := (*typedRef[WorldBoundaryShape2D])(from)
-	rg.TypedRef((*typedRef[WorldBoundaryShape2D])(t))
+	rg := (*TypedRef[WorldBoundaryShape2D])(r)
+	t := (*TypedRef[WorldBoundaryShape2D])(from)
+	rg.TypedRef((*TypedRef[WorldBoundaryShape2D])(t))
 }
 
 func (r *RefWorldBoundaryShape2DImpl) Unref() {
-	rg := (*typedRef[WorldBoundaryShape2D])(r)
+	rg := (*TypedRef[WorldBoundaryShape2D])(r)
 	rg.Unref()
 }
 
@@ -29348,31 +29348,31 @@ type RefWorldBoundaryShape3D interface {
 	TypedPtr() WorldBoundaryShape3D
 }
 
-type RefWorldBoundaryShape3DImpl typedRef[WorldBoundaryShape3D]
+type RefWorldBoundaryShape3DImpl TypedRef[WorldBoundaryShape3D]
 
 func (r *RefWorldBoundaryShape3DImpl) Ptr() RefCounted {
-	rg := (*typedRef[WorldBoundaryShape3D])(r)
+	rg := (*TypedRef[WorldBoundaryShape3D])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefWorldBoundaryShape3DImpl) TypedPtr() WorldBoundaryShape3D {
-	rg := (*typedRef[WorldBoundaryShape3D])(r)
+	rg := (*TypedRef[WorldBoundaryShape3D])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefWorldBoundaryShape3DImpl) Ref(from Ref) {
-	rg := (*typedRef[WorldBoundaryShape3D])(r)
+	rg := (*TypedRef[WorldBoundaryShape3D])(r)
 	rg.Ref(from)
 }
 
 func (r *RefWorldBoundaryShape3DImpl) TypedRef(from *RefWorldBoundaryShape3DImpl) {
-	rg := (*typedRef[WorldBoundaryShape3D])(r)
-	t := (*typedRef[WorldBoundaryShape3D])(from)
-	rg.TypedRef((*typedRef[WorldBoundaryShape3D])(t))
+	rg := (*TypedRef[WorldBoundaryShape3D])(r)
+	t := (*TypedRef[WorldBoundaryShape3D])(from)
+	rg.TypedRef((*TypedRef[WorldBoundaryShape3D])(t))
 }
 
 func (r *RefWorldBoundaryShape3DImpl) Unref() {
-	rg := (*typedRef[WorldBoundaryShape3D])(r)
+	rg := (*TypedRef[WorldBoundaryShape3D])(r)
 	rg.Unref()
 }
 
@@ -29400,31 +29400,31 @@ type RefX509Certificate interface {
 	TypedPtr() X509Certificate
 }
 
-type RefX509CertificateImpl typedRef[X509Certificate]
+type RefX509CertificateImpl TypedRef[X509Certificate]
 
 func (r *RefX509CertificateImpl) Ptr() RefCounted {
-	rg := (*typedRef[X509Certificate])(r)
+	rg := (*TypedRef[X509Certificate])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefX509CertificateImpl) TypedPtr() X509Certificate {
-	rg := (*typedRef[X509Certificate])(r)
+	rg := (*TypedRef[X509Certificate])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefX509CertificateImpl) Ref(from Ref) {
-	rg := (*typedRef[X509Certificate])(r)
+	rg := (*TypedRef[X509Certificate])(r)
 	rg.Ref(from)
 }
 
 func (r *RefX509CertificateImpl) TypedRef(from *RefX509CertificateImpl) {
-	rg := (*typedRef[X509Certificate])(r)
-	t := (*typedRef[X509Certificate])(from)
-	rg.TypedRef((*typedRef[X509Certificate])(t))
+	rg := (*TypedRef[X509Certificate])(r)
+	t := (*TypedRef[X509Certificate])(from)
+	rg.TypedRef((*TypedRef[X509Certificate])(t))
 }
 
 func (r *RefX509CertificateImpl) Unref() {
-	rg := (*typedRef[X509Certificate])(r)
+	rg := (*TypedRef[X509Certificate])(r)
 	rg.Unref()
 }
 
@@ -29452,31 +29452,31 @@ type RefXMLParser interface {
 	TypedPtr() XMLParser
 }
 
-type RefXMLParserImpl typedRef[XMLParser]
+type RefXMLParserImpl TypedRef[XMLParser]
 
 func (r *RefXMLParserImpl) Ptr() RefCounted {
-	rg := (*typedRef[XMLParser])(r)
+	rg := (*TypedRef[XMLParser])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefXMLParserImpl) TypedPtr() XMLParser {
-	rg := (*typedRef[XMLParser])(r)
+	rg := (*TypedRef[XMLParser])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefXMLParserImpl) Ref(from Ref) {
-	rg := (*typedRef[XMLParser])(r)
+	rg := (*TypedRef[XMLParser])(r)
 	rg.Ref(from)
 }
 
 func (r *RefXMLParserImpl) TypedRef(from *RefXMLParserImpl) {
-	rg := (*typedRef[XMLParser])(r)
-	t := (*typedRef[XMLParser])(from)
-	rg.TypedRef((*typedRef[XMLParser])(t))
+	rg := (*TypedRef[XMLParser])(r)
+	t := (*TypedRef[XMLParser])(from)
+	rg.TypedRef((*TypedRef[XMLParser])(t))
 }
 
 func (r *RefXMLParserImpl) Unref() {
-	rg := (*typedRef[XMLParser])(r)
+	rg := (*TypedRef[XMLParser])(r)
 	rg.Unref()
 }
 
@@ -29504,31 +29504,31 @@ type RefXRInterface interface {
 	TypedPtr() XRInterface
 }
 
-type RefXRInterfaceImpl typedRef[XRInterface]
+type RefXRInterfaceImpl TypedRef[XRInterface]
 
 func (r *RefXRInterfaceImpl) Ptr() RefCounted {
-	rg := (*typedRef[XRInterface])(r)
+	rg := (*TypedRef[XRInterface])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefXRInterfaceImpl) TypedPtr() XRInterface {
-	rg := (*typedRef[XRInterface])(r)
+	rg := (*TypedRef[XRInterface])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefXRInterfaceImpl) Ref(from Ref) {
-	rg := (*typedRef[XRInterface])(r)
+	rg := (*TypedRef[XRInterface])(r)
 	rg.Ref(from)
 }
 
 func (r *RefXRInterfaceImpl) TypedRef(from *RefXRInterfaceImpl) {
-	rg := (*typedRef[XRInterface])(r)
-	t := (*typedRef[XRInterface])(from)
-	rg.TypedRef((*typedRef[XRInterface])(t))
+	rg := (*TypedRef[XRInterface])(r)
+	t := (*TypedRef[XRInterface])(from)
+	rg.TypedRef((*TypedRef[XRInterface])(t))
 }
 
 func (r *RefXRInterfaceImpl) Unref() {
-	rg := (*typedRef[XRInterface])(r)
+	rg := (*TypedRef[XRInterface])(r)
 	rg.Unref()
 }
 
@@ -29556,31 +29556,31 @@ type RefXRInterfaceExtension interface {
 	TypedPtr() XRInterfaceExtension
 }
 
-type RefXRInterfaceExtensionImpl typedRef[XRInterfaceExtension]
+type RefXRInterfaceExtensionImpl TypedRef[XRInterfaceExtension]
 
 func (r *RefXRInterfaceExtensionImpl) Ptr() RefCounted {
-	rg := (*typedRef[XRInterfaceExtension])(r)
+	rg := (*TypedRef[XRInterfaceExtension])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefXRInterfaceExtensionImpl) TypedPtr() XRInterfaceExtension {
-	rg := (*typedRef[XRInterfaceExtension])(r)
+	rg := (*TypedRef[XRInterfaceExtension])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefXRInterfaceExtensionImpl) Ref(from Ref) {
-	rg := (*typedRef[XRInterfaceExtension])(r)
+	rg := (*TypedRef[XRInterfaceExtension])(r)
 	rg.Ref(from)
 }
 
 func (r *RefXRInterfaceExtensionImpl) TypedRef(from *RefXRInterfaceExtensionImpl) {
-	rg := (*typedRef[XRInterfaceExtension])(r)
-	t := (*typedRef[XRInterfaceExtension])(from)
-	rg.TypedRef((*typedRef[XRInterfaceExtension])(t))
+	rg := (*TypedRef[XRInterfaceExtension])(r)
+	t := (*TypedRef[XRInterfaceExtension])(from)
+	rg.TypedRef((*TypedRef[XRInterfaceExtension])(t))
 }
 
 func (r *RefXRInterfaceExtensionImpl) Unref() {
-	rg := (*typedRef[XRInterfaceExtension])(r)
+	rg := (*TypedRef[XRInterfaceExtension])(r)
 	rg.Unref()
 }
 
@@ -29608,31 +29608,31 @@ type RefXRPose interface {
 	TypedPtr() XRPose
 }
 
-type RefXRPoseImpl typedRef[XRPose]
+type RefXRPoseImpl TypedRef[XRPose]
 
 func (r *RefXRPoseImpl) Ptr() RefCounted {
-	rg := (*typedRef[XRPose])(r)
+	rg := (*TypedRef[XRPose])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefXRPoseImpl) TypedPtr() XRPose {
-	rg := (*typedRef[XRPose])(r)
+	rg := (*TypedRef[XRPose])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefXRPoseImpl) Ref(from Ref) {
-	rg := (*typedRef[XRPose])(r)
+	rg := (*TypedRef[XRPose])(r)
 	rg.Ref(from)
 }
 
 func (r *RefXRPoseImpl) TypedRef(from *RefXRPoseImpl) {
-	rg := (*typedRef[XRPose])(r)
-	t := (*typedRef[XRPose])(from)
-	rg.TypedRef((*typedRef[XRPose])(t))
+	rg := (*TypedRef[XRPose])(r)
+	t := (*TypedRef[XRPose])(from)
+	rg.TypedRef((*TypedRef[XRPose])(t))
 }
 
 func (r *RefXRPoseImpl) Unref() {
-	rg := (*typedRef[XRPose])(r)
+	rg := (*TypedRef[XRPose])(r)
 	rg.Unref()
 }
 
@@ -29660,31 +29660,31 @@ type RefXRPositionalTracker interface {
 	TypedPtr() XRPositionalTracker
 }
 
-type RefXRPositionalTrackerImpl typedRef[XRPositionalTracker]
+type RefXRPositionalTrackerImpl TypedRef[XRPositionalTracker]
 
 func (r *RefXRPositionalTrackerImpl) Ptr() RefCounted {
-	rg := (*typedRef[XRPositionalTracker])(r)
+	rg := (*TypedRef[XRPositionalTracker])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefXRPositionalTrackerImpl) TypedPtr() XRPositionalTracker {
-	rg := (*typedRef[XRPositionalTracker])(r)
+	rg := (*TypedRef[XRPositionalTracker])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefXRPositionalTrackerImpl) Ref(from Ref) {
-	rg := (*typedRef[XRPositionalTracker])(r)
+	rg := (*TypedRef[XRPositionalTracker])(r)
 	rg.Ref(from)
 }
 
 func (r *RefXRPositionalTrackerImpl) TypedRef(from *RefXRPositionalTrackerImpl) {
-	rg := (*typedRef[XRPositionalTracker])(r)
-	t := (*typedRef[XRPositionalTracker])(from)
-	rg.TypedRef((*typedRef[XRPositionalTracker])(t))
+	rg := (*TypedRef[XRPositionalTracker])(r)
+	t := (*TypedRef[XRPositionalTracker])(from)
+	rg.TypedRef((*TypedRef[XRPositionalTracker])(t))
 }
 
 func (r *RefXRPositionalTrackerImpl) Unref() {
-	rg := (*typedRef[XRPositionalTracker])(r)
+	rg := (*TypedRef[XRPositionalTracker])(r)
 	rg.Unref()
 }
 
@@ -29712,31 +29712,31 @@ type RefZIPPacker interface {
 	TypedPtr() ZIPPacker
 }
 
-type RefZIPPackerImpl typedRef[ZIPPacker]
+type RefZIPPackerImpl TypedRef[ZIPPacker]
 
 func (r *RefZIPPackerImpl) Ptr() RefCounted {
-	rg := (*typedRef[ZIPPacker])(r)
+	rg := (*TypedRef[ZIPPacker])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefZIPPackerImpl) TypedPtr() ZIPPacker {
-	rg := (*typedRef[ZIPPacker])(r)
+	rg := (*TypedRef[ZIPPacker])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefZIPPackerImpl) Ref(from Ref) {
-	rg := (*typedRef[ZIPPacker])(r)
+	rg := (*TypedRef[ZIPPacker])(r)
 	rg.Ref(from)
 }
 
 func (r *RefZIPPackerImpl) TypedRef(from *RefZIPPackerImpl) {
-	rg := (*typedRef[ZIPPacker])(r)
-	t := (*typedRef[ZIPPacker])(from)
-	rg.TypedRef((*typedRef[ZIPPacker])(t))
+	rg := (*TypedRef[ZIPPacker])(r)
+	t := (*TypedRef[ZIPPacker])(from)
+	rg.TypedRef((*TypedRef[ZIPPacker])(t))
 }
 
 func (r *RefZIPPackerImpl) Unref() {
-	rg := (*typedRef[ZIPPacker])(r)
+	rg := (*TypedRef[ZIPPacker])(r)
 	rg.Unref()
 }
 
@@ -29764,31 +29764,31 @@ type RefZIPReader interface {
 	TypedPtr() ZIPReader
 }
 
-type RefZIPReaderImpl typedRef[ZIPReader]
+type RefZIPReaderImpl TypedRef[ZIPReader]
 
 func (r *RefZIPReaderImpl) Ptr() RefCounted {
-	rg := (*typedRef[ZIPReader])(r)
+	rg := (*TypedRef[ZIPReader])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *RefZIPReaderImpl) TypedPtr() ZIPReader {
-	rg := (*typedRef[ZIPReader])(r)
+	rg := (*TypedRef[ZIPReader])(r)
 	return rg.TypedPtr()
 }
 
 func (r *RefZIPReaderImpl) Ref(from Ref) {
-	rg := (*typedRef[ZIPReader])(r)
+	rg := (*TypedRef[ZIPReader])(r)
 	rg.Ref(from)
 }
 
 func (r *RefZIPReaderImpl) TypedRef(from *RefZIPReaderImpl) {
-	rg := (*typedRef[ZIPReader])(r)
-	t := (*typedRef[ZIPReader])(from)
-	rg.TypedRef((*typedRef[ZIPReader])(t))
+	rg := (*TypedRef[ZIPReader])(r)
+	t := (*TypedRef[ZIPReader])(from)
+	rg.TypedRef((*TypedRef[ZIPReader])(t))
 }
 
 func (r *RefZIPReaderImpl) Unref() {
-	rg := (*typedRef[ZIPReader])(r)
+	rg := (*TypedRef[ZIPReader])(r)
 	rg.Unref()
 }
 

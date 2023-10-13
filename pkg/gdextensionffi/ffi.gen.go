@@ -144,6 +144,7 @@ type GDExtensionInterface struct {
 	GlobalGetSingleton                            GDExtensionInterfaceGlobalGetSingleton
 	ObjectGetInstanceBinding                      GDExtensionInterfaceObjectGetInstanceBinding
 	ObjectSetInstanceBinding                      GDExtensionInterfaceObjectSetInstanceBinding
+	ObjectFreeInstanceBinding                     GDExtensionInterfaceObjectFreeInstanceBinding
 	ObjectSetInstance                             GDExtensionInterfaceObjectSetInstance
 	ObjectGetClassName                            GDExtensionInterfaceObjectGetClassName
 	ObjectCastTo                                  GDExtensionInterfaceObjectCastTo
@@ -302,6 +303,7 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.GlobalGetSingleton = (GDExtensionInterfaceGlobalGetSingleton)(LoadProcAddress("global_get_singleton"))
 	x.ObjectGetInstanceBinding = (GDExtensionInterfaceObjectGetInstanceBinding)(LoadProcAddress("object_get_instance_binding"))
 	x.ObjectSetInstanceBinding = (GDExtensionInterfaceObjectSetInstanceBinding)(LoadProcAddress("object_set_instance_binding"))
+	x.ObjectFreeInstanceBinding = (GDExtensionInterfaceObjectFreeInstanceBinding)(LoadProcAddress("object_free_instance_binding"))
 	x.ObjectSetInstance = (GDExtensionInterfaceObjectSetInstance)(LoadProcAddress("object_set_instance"))
 	x.ObjectGetClassName = (GDExtensionInterfaceObjectGetClassName)(LoadProcAddress("object_get_class_name"))
 	x.ObjectCastTo = (GDExtensionInterfaceObjectCastTo)(LoadProcAddress("object_cast_to"))

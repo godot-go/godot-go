@@ -78,7 +78,7 @@ test:
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
-	$(GODOT) --debug --headless --path test/demo/ --quit
+	$(GODOT) --headless --path test/demo/ --quit
 
 interactive_test:
 	LOG_LEVEL=info \

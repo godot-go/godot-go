@@ -18,6 +18,7 @@ func _ready():
 	# It appears there's a bug with instance ids :-(
 	#assert_equal($Example/ExampleMin.to_string(), 'ExampleMin:[Wrapped:%s]' % $Example/ExampleMin.get_instance_id())
 
+	# godot-go will probably not support static methods since they don't exist in go
 	# # Call static methods.
 	# assert_equal(Example.test_static(9, 100), 109);
 	# # It's void and static, so all we know is that it didn't crash.

@@ -1179,6 +1179,28 @@ func BezierDerivative(start float32, control_1 float32, control_2 float32, end f
 	return ret
 }
 
+// AngleDifference is under the category "math".
+func AngleDifference(from float32, to float32) float32 {
+	fName := NewStringNameWithLatin1Chars("angle_difference")
+	defer fName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	if fn == nil {
+		panic("could not find utility function angle_difference (92296394)")
+	}
+	var ret float32
+
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	args := [2]GDExtensionConstTypePtr{
+		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.encodeTypePtr(from))),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.encodeTypePtr(to))),
+	}
+	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	argCount := (int32)(2)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
+	return ret
+}
+
 // LerpAngle is under the category "math".
 func LerpAngle(from float32, to float32, weight float32) float32 {
 	fName := NewStringNameWithLatin1Chars("lerp_angle")
@@ -1280,6 +1302,29 @@ func MoveToward(from float32, to float32, delta float32) float32 {
 	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
 	if fn == nil {
 		panic("could not find utility function move_toward (998901048)")
+	}
+	var ret float32
+
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	args := [3]GDExtensionConstTypePtr{
+		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.encodeTypePtr(from))),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.encodeTypePtr(to))),
+		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.encodeTypePtr(delta))),
+	}
+	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	argCount := (int32)(3)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
+	return ret
+}
+
+// RotateToward is under the category "math".
+func RotateToward(from float32, to float32, delta float32) float32 {
+	fName := NewStringNameWithLatin1Chars("rotate_toward")
+	defer fName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
+	if fn == nil {
+		panic("could not find utility function rotate_toward (998901048)")
 	}
 	var ret float32
 
@@ -1955,6 +2000,27 @@ func ErrorString(error int64) String {
 
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.encodeTypePtr(error))),
+	}
+	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	argCount := (int32)(1)
+	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
+	return ret
+}
+
+// TypeString is under the category "general".
+func TypeString(typeName int64) String {
+	fName := NewStringNameWithLatin1Chars("type_string")
+	defer fName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 942708242)
+	if fn == nil {
+		panic("could not find utility function type_string (942708242)")
+	}
+	var ret String
+
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.nativePtr()))
+
+	args := [1]GDExtensionConstTypePtr{
+		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.encodeTypePtr(typeName))),
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
 	argCount := (int32)(1)

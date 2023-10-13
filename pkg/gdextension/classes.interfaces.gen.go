@@ -5845,6 +5845,8 @@ type DisplayServer interface {
 
 	GetName() String
 
+	GlobalMenuSetPopupCallbacks(menu_root String, open_callback Callable, close_callback Callable)
+
 	GlobalMenuAddSubmenuItem(menu_root String, label String, submenu String, index int32) int32
 
 	GlobalMenuAddItem(menu_root String, label String, callback Callable, key_callback Callable, tag Variant, accelerator Key, index int32) int32
@@ -5887,6 +5889,8 @@ type DisplayServer interface {
 
 	GlobalMenuIsItemDisabled(menu_root String, idx int32) bool
 
+	GlobalMenuIsItemHidden(menu_root String, idx int32) bool
+
 	GlobalMenuGetItemTooltip(menu_root String, idx int32) String
 
 	GlobalMenuGetItemState(menu_root String, idx int32) int32
@@ -5905,6 +5909,8 @@ type DisplayServer interface {
 
 	GlobalMenuSetItemCallback(menu_root String, idx int32, callback Callable)
 
+	GlobalMenuSetItemHoverCallbacks(menu_root String, idx int32, callback Callable)
+
 	GlobalMenuSetItemKeyCallback(menu_root String, idx int32, key_callback Callable)
 
 	GlobalMenuSetItemTag(menu_root String, idx int32, tag Variant)
@@ -5916,6 +5922,8 @@ type DisplayServer interface {
 	GlobalMenuSetItemAccelerator(menu_root String, idx int32, keycode Key)
 
 	GlobalMenuSetItemDisabled(menu_root String, idx int32, disabled bool)
+
+	GlobalMenuSetItemHidden(menu_root String, idx int32, hidden bool)
 
 	GlobalMenuSetItemTooltip(menu_root String, idx int32, tooltip String)
 
@@ -6034,6 +6042,8 @@ type DisplayServer interface {
 	WindowGetPopupSafeRect(window int32) Rect2i
 
 	WindowSetTitle(title String, window_id int32)
+
+	WindowGetTitleSize(title String, window_id int32) Vector2i
 
 	WindowSetMousePassthrough(region PackedVector2Array, window_id int32)
 
@@ -6614,6 +6624,10 @@ type EditorInterface interface {
 	GetEditorMainScreen() VBoxContainer
 
 	GetScriptEditor() ScriptEditor
+
+	GetEditorViewport2D() SubViewport
+
+	GetEditorViewport3D(idx int32) SubViewport
 
 	SetMainScreenEditor(name String)
 
@@ -9092,6 +9106,8 @@ type GPUParticles2D interface {
 
 	SetCollisionBaseSize(size float32)
 
+	SetInterpToEnd(interp float32)
+
 	IsEmitting() bool
 
 	GetAmount() int32
@@ -9121,6 +9137,8 @@ type GPUParticles2D interface {
 	GetSpeedScale() float64
 
 	GetCollisionBaseSize() float32
+
+	GetInterpToEnd() float32
 
 	SetDrawOrder(order GPUParticles2DDrawOrder)
 
@@ -9157,6 +9175,10 @@ type GPUParticles2D interface {
 	GetTrailSectionSubdivisions() int32
 
 	ConvertFromParticles(particles Node)
+
+	SetAmountRatio(ratio float32)
+
+	GetAmountRatio() float32
 }
 type GPUParticles3D interface {
 	GeometryInstance3D
@@ -9191,6 +9213,8 @@ type GPUParticles3D interface {
 
 	SetCollisionBaseSize(size float32)
 
+	SetInterpToEnd(interp float32)
+
 	IsEmitting() bool
 
 	GetAmount() int32
@@ -9220,6 +9244,8 @@ type GPUParticles3D interface {
 	GetSpeedScale() float64
 
 	GetCollisionBaseSize() float32
+
+	GetInterpToEnd() float32
 
 	SetDrawOrder(order GPUParticles3DDrawOrder)
 
@@ -9260,6 +9286,10 @@ type GPUParticles3D interface {
 	GetTransformAlign() GPUParticles3DTransformAlign
 
 	ConvertFromParticles(particles Node)
+
+	SetAmountRatio(ratio float32)
+
+	GetAmountRatio() float32
 }
 type GPUParticlesAttractor3D interface {
 	VisualInstance3D
@@ -9692,10 +9722,6 @@ type GraphEdit interface {
 
 	GetZoomStep() float32
 
-	SetShowZoomLabel(enable bool)
-
-	IsShowingZoomLabel() bool
-
 	SetShowGrid(enable bool)
 
 	IsShowingGrid() bool
@@ -9732,9 +9758,29 @@ type GraphEdit interface {
 
 	IsMinimapEnabled() bool
 
-	SetArrangeNodesButtonHidden(enable bool)
+	SetShowMenu(hidden bool)
 
-	IsArrangeNodesButtonHidden() bool
+	IsShowingMenu() bool
+
+	SetShowZoomLabel(enable bool)
+
+	IsShowingZoomLabel() bool
+
+	SetShowGridButtons(hidden bool)
+
+	IsShowingGridButtons() bool
+
+	SetShowZoomButtons(hidden bool)
+
+	IsShowingZoomButtons() bool
+
+	SetShowMinimapButton(hidden bool)
+
+	IsShowingMinimapButton() bool
+
+	SetShowArrangeButton(hidden bool)
+
+	IsShowingArrangeButton() bool
 
 	SetRightDisconnects(enable bool)
 
@@ -10348,7 +10394,7 @@ type ImporterMesh interface {
 
 	GetBlendShapeMode() MeshBlendShapeMode
 
-	AddSurface(primitive MeshPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, material RefMaterial, name String, flags uint32)
+	AddSurface(primitive MeshPrimitiveType, arrays Array, blend_shapes Array, lods Dictionary, material RefMaterial, name String, flags uint64)
 
 	GetSurfaceCount() int32
 
@@ -10368,7 +10414,7 @@ type ImporterMesh interface {
 
 	GetSurfaceMaterial(surface_idx int32) RefMaterial
 
-	GetSurfaceFormat(surface_idx int32) uint32
+	GetSurfaceFormat(surface_idx int32) uint64
 
 	SetSurfaceName(surface_idx int32, name String)
 
@@ -12189,9 +12235,9 @@ type MeshDataTool interface {
 
 	CreateFromSurface(mesh RefArrayMesh, surface int32) Error
 
-	CommitToSurface(mesh RefArrayMesh) Error
+	CommitToSurface(mesh RefArrayMesh, compression_flags uint64) Error
 
-	GetFormat() int32
+	GetFormat() uint64
 
 	GetVertexCount() int32
 
@@ -14147,6 +14193,10 @@ type Node interface {
 
 	PrintTreePretty()
 
+	GetTreeString() String
+
+	GetTreeStringPretty() String
+
 	SetSceneFilePath(scene_file_path String)
 
 	GetSceneFilePath() String
@@ -15153,6 +15203,8 @@ type OpenXRInterface interface {
 
 	GetMotionRange(hand OpenXRInterfaceHand) OpenXRInterfaceHandMotionRange
 
+	GetHandJointFlags(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints) OpenXRInterfaceHandJointFlags
+
 	GetHandJointRotation(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints) Quaternion
 
 	GetHandJointPosition(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints) Vector3
@@ -15162,6 +15214,10 @@ type OpenXRInterface interface {
 	GetHandJointLinearVelocity(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints) Vector3
 
 	GetHandJointAngularVelocity(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints) Vector3
+
+	IsHandTrackingSupported() bool
+
+	IsEyeGazeInteractionSupported() bool
 }
 type OptimizedTranslation interface {
 	Translation
@@ -15422,6 +15478,10 @@ type ParticleProcessMaterial interface {
 
 	GetDirection() Vector3
 
+	SetInheritVelocityRatio(ratio float64)
+
+	GetInheritVelocityRatio() float64
+
 	SetSpread(degrees float32)
 
 	GetSpread() float32
@@ -15450,13 +15510,29 @@ type ParticleProcessMaterial interface {
 
 	GetColorRamp() RefTexture2D
 
+	SetAlphaCurve(curve RefTexture2D)
+
+	GetAlphaCurve() RefTexture2D
+
+	SetEmissionCurve(curve RefTexture2D)
+
+	GetEmissionCurve() RefTexture2D
+
 	SetColorInitialRamp(ramp RefTexture2D)
 
 	GetColorInitialRamp() RefTexture2D
 
+	SetVelocityLimitCurve(curve RefTexture2D)
+
+	GetVelocityLimitCurve() RefTexture2D
+
 	SetParticleFlag(particle_flag ParticleProcessMaterialParticleFlags, enable bool)
 
 	GetParticleFlag(particle_flag ParticleProcessMaterialParticleFlags) bool
+
+	SetVelocityPivot(pivot Vector3)
+
+	GetVelocityPivot() Vector3
 
 	SetEmissionShape(shape ParticleProcessMaterialEmissionShape)
 
@@ -15501,6 +15577,14 @@ type ParticleProcessMaterial interface {
 	SetEmissionRingInnerRadius(inner_radius float32)
 
 	GetEmissionRingInnerRadius() float32
+
+	SetEmissionShapeOffset(emission_shape_offset Vector3)
+
+	GetEmissionShapeOffset() Vector3
+
+	SetEmissionShapeScale(emission_shape_scale Vector3)
+
+	GetEmissionShapeScale() Vector3
 
 	GetTurbulenceEnabled() bool
 
@@ -19457,7 +19541,7 @@ type RenderingDevice interface {
 
 	ShaderCreatePlaceholder() RID
 
-	ShaderGetVertexInputAttributeMask(shader RID) uint32
+	ShaderGetVertexInputAttributeMask(shader RID) uint64
 
 	UniformBufferCreate(size_bytes uint32, data PackedByteArray) RID
 
@@ -19661,6 +19745,8 @@ type RenderingServer interface {
 	MeshSurfaceGetFormatOffset(format RenderingServerArrayFormat, vertex_count int32, array_index int32) uint32
 
 	MeshSurfaceGetFormatVertexStride(format RenderingServerArrayFormat, vertex_count int32) uint32
+
+	MeshSurfaceGetFormatNormalTangentStride(format RenderingServerArrayFormat, vertex_count int32) uint32
 
 	MeshSurfaceGetFormatAttributeStride(format RenderingServerArrayFormat, vertex_count int32) uint32
 
@@ -19916,6 +20002,8 @@ type RenderingServer interface {
 
 	ParticlesSetAmount(particles RID, amount int32)
 
+	ParticlesSetAmountRatio(particles RID, ratio float32)
+
 	ParticlesSetLifetime(particles RID, lifetime float64)
 
 	ParticlesSetOneShot(particles RID, one_shot bool)
@@ -19925,6 +20013,10 @@ type RenderingServer interface {
 	ParticlesSetExplosivenessRatio(particles RID, ratio float32)
 
 	ParticlesSetRandomnessRatio(particles RID, ratio float32)
+
+	ParticlesSetInterpToEnd(particles RID, factor float32)
+
+	ParticlesSetEmitterVelocity(particles RID, velocity Vector3)
 
 	ParticlesSetCustomAabb(particles RID, aabb AABB)
 
@@ -21553,6 +21645,8 @@ type ScriptExtension interface {
 
 	// VIRTUAL: Internal_HasMethod(method StringName,) bool
 
+	// VIRTUAL: Internal_HasStaticMethod(method StringName,) bool
+
 	// VIRTUAL: Internal_GetMethodInfo(method StringName,) Dictionary
 
 	// VIRTUAL: Internal_IsTool() bool
@@ -21608,6 +21702,8 @@ type ScriptLanguageExtension interface {
 	// VIRTUAL: Internal_IsControlFlowKeyword(keyword String,) bool
 
 	// VIRTUAL: Internal_GetCommentDelimiters() PackedStringArray
+
+	// VIRTUAL: Internal_GetDocCommentDelimiters() PackedStringArray
 
 	// VIRTUAL: Internal_GetStringDelimiters() PackedStringArray
 
@@ -23376,6 +23472,8 @@ type SubViewport interface {
 type SubViewportContainer interface {
 	Container
 
+	// VIRTUAL: Internal_PropagateInputEvent(event RefInputEvent,) bool
+
 	SetStretch(enable bool)
 
 	IsStretchEnabled() bool
@@ -23447,7 +23545,7 @@ type SurfaceTool interface {
 
 	AppendFrom(existing RefMesh, surface int32, transform Transform3D)
 
-	Commit(existing RefArrayMesh, flags uint32) RefArrayMesh
+	Commit(existing RefArrayMesh, flags uint64) RefArrayMesh
 
 	CommitToArrays() Array
 }
@@ -24454,6 +24552,8 @@ type TextServer interface {
 
 	CreateFont() RID
 
+	CreateFontLinkedVariation(font_rid RID) RID
+
 	FontSetData(font_rid RID, data PackedByteArray)
 
 	FontSetFaceIndex(font_rid RID, face_index int64)
@@ -24862,6 +24962,8 @@ type TextServerExtension interface {
 	// VIRTUAL: Internal_TagToName(tag int64,) String
 
 	// VIRTUAL: Internal_CreateFont() RID
+
+	// VIRTUAL: Internal_CreateFontLinkedVariation(font_rid RID,) RID
 
 	// VIRTUAL: Internal_FontSetData(font_rid RID,data PackedByteArray,)
 
@@ -27407,6 +27509,10 @@ type Viewport interface {
 
 	IsAudioListener3D() bool
 
+	SetDisable2D(disable bool)
+
+	Is2DDisabled() bool
+
 	SetDisable3D(disable bool)
 
 	Is3DDisabled() bool
@@ -28832,6 +28938,10 @@ type Window interface {
 	SetContentScaleStretch(stretch WindowContentScaleStretch)
 
 	GetContentScaleStretch() WindowContentScaleStretch
+
+	SetKeepTitleVisible(title_visible bool)
+
+	GetKeepTitleVisible() bool
 
 	SetContentScaleFactor(factor float32)
 

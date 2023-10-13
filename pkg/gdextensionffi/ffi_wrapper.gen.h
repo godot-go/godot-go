@@ -700,6 +700,9 @@ void cgo_callfn_GDExtensionInterfaceObjectSetInstanceBinding(
     const GDExtensionInterfaceObjectSetInstanceBinding fn,
     GDExtensionObjectPtr p_o, void *p_token, void *p_binding,
     const GDExtensionInstanceBindingCallbacks *p_callbacks);
+void cgo_callfn_GDExtensionInterfaceObjectFreeInstanceBinding(
+    const GDExtensionInterfaceObjectFreeInstanceBinding fn,
+    GDExtensionObjectPtr p_o, void *p_token);
 void cgo_callfn_GDExtensionInterfaceObjectSetInstance(
     const GDExtensionInterfaceObjectSetInstance fn, GDExtensionObjectPtr p_o,
     GDExtensionConstStringNamePtr p_classname,

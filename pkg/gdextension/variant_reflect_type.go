@@ -128,6 +128,9 @@ func ReflectTypeToGDExtensionVariantType(t reflect.Type) GDExtensionVariantType 
 		case GDExtensionClass:
 			return GDEXTENSION_VARIANT_TYPE_OBJECT
 		default:
+			if t.Implements(refType) {
+				return GDEXTENSION_VARIANT_TYPE_OBJECT
+			}
 			tn := t.Name()
 			if _, ok := gdRegisteredGDClasses.Get(tn); ok {
 				return GDEXTENSION_VARIANT_TYPE_OBJECT

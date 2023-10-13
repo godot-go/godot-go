@@ -1,0 +1,57 @@
+name: build godot for ci on Linux
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+env:
+  SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  TSAN_OPTIONS: suppressions=misc/error_suppressions/tsan.txt
+  CHECKOUT_REF: 'b1371806ad3907c009458ea939bd4b810f9deb21'
+
+jobs:
+  run_build_godot:
+    name: "build godot for ci"
+    strategy:
+      fail-fast: true
+      matrix:
+        os:
+          - linux
+        arch:
+          - amd64
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - name: Checkout Godot
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CHECKOUT_REF }}
+          repository: 'godotengine/godot'
+
+      - name: Setup python and scons
+        uses: ./.github/actions/godot-deps
+
+      - name: Setup GCC problem matcher
+        uses: ammaraskar/gcc-problem-matcher@master
+
+      - name: Godot Compilation
+        uses: ./.github/actions/godot-build
+        with:
+          sconsflags: ${{ env.SCONSFLAGS }}
+          platform: linuxbsd
+          target: editor
+          tests: false
+          scons-cache: "${{ github.workspace }}/.scons-cache/"
+
+      - name: List Artifacts Directory
+        run: |
+          ls -alh ${{ github.workspace }}/bin/
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: godot-linuxbsd-editor-amd64
+          path: ${{ github.workspace }}/bin/godot.linuxbsd.editor.x86_64
+          if-no-files-found: error

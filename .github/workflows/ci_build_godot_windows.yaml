@@ -1,0 +1,57 @@
+name: build godot for ci on Windows
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+env:
+  SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes module_astcenc_enabled=no module_bmp_enabled=no module_camera_enabled=no module_csg_enabled=no module_cvtt_enabled=no module_dds_enabled=no module_denoise_enabled=no module_etcpak_enabled=no module_glslang_enabled=no module_gltf_enabled=no module_gridmap_enabled=no module_hdr_enabled=no module_jpg_enabled=no module_lightmapper_rd_enabled=no module_mbedtls_enabled=no module_meshoptimizer_enabled=no module_minimp3_enabled=no module_mobile_vr_enabled=no module_mono_enabled=no module_msdfgen_enabled=no module_multiplayer_enabled=no module_navigation_enabled=no module_noise_enabled=no module_ogg_enabled=no module_openxr_enabled=no module_raycast_enabled=no module_squish_enabled=no module_text_server_adv_enabled=no module_text_server_fb_enabled=no module_tga_enabled=no module_theora_enabled=no module_tinyexr_enabled=no module_upnp_enabled=no module_vhacd_enabled=no module_vorbis_enabled=no module_webp_enabled=no module_webxr_enabled=no module_xatlas_unwrap_enabled=no module_zip_enabled=no
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  TSAN_OPTIONS: suppressions=misc/error_suppressions/tsan.txt
+  CHECKOUT_REF: 'b1371806ad3907c009458ea939bd4b810f9deb21'
+
+jobs:
+  run_build_godot:
+    name: "build godot for ci"
+    strategy:
+      fail-fast: true
+      matrix:
+        os:
+          - windows
+        arch:
+          - amd64
+
+    runs-on: windows-latest
+    timeout-minutes: 70
+    steps:
+      - name: Checkout Godot
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CHECKOUT_REF }}
+          repository: 'godotengine/godot'
+
+      - name: Setup python and scons
+        uses: ./.github/actions/godot-deps
+
+      - name: Setup MSVC problem matcher
+        uses: ammaraskar/msvc-problem-matcher@master
+
+      - name: Godot Compilation
+        uses: ./.github/actions/godot-build
+        with:
+          sconsflags: ${{ env.SCONSFLAGS }}
+          platform: windows
+          target: editor
+          tests: false
+          scons-cache: "${{ github.workspace }}/.scons-cache/"
+
+      - name: List Artifacts Directory
+        run: |
+          ls -alh ${{ github.workspace }}/bin/
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: godot-windows-editor-amd64
+          path: ${{ github.workspace }}/bin/godot.win64.editor.x86_64
+          if-no-files-found: error

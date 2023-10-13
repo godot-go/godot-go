@@ -4,6 +4,7 @@ package gdextensionffi
 #cgo CFLAGS: -I${SRCDIR}/../../godot_headers -I${SRCDIR}/../../pkg/log -I${SRCDIR}/../../pkg/gdextensionffi
 #include <godot/gdextension_interface.h>
 #include "ffi_wrapper.gen.h"
+#include "stacktrace.h"
 #include <stdlib.h>
 #include <string.h>
 */

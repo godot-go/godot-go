@@ -384,6 +384,7 @@ type GDExtensionInterfaceObjectDestroy C.GDExtensionInterfaceObjectDestroy
 type GDExtensionInterfaceGlobalGetSingleton C.GDExtensionInterfaceGlobalGetSingleton
 type GDExtensionInterfaceObjectGetInstanceBinding C.GDExtensionInterfaceObjectGetInstanceBinding
 type GDExtensionInterfaceObjectSetInstanceBinding C.GDExtensionInterfaceObjectSetInstanceBinding
+type GDExtensionInterfaceObjectFreeInstanceBinding C.GDExtensionInterfaceObjectFreeInstanceBinding
 type GDExtensionInterfaceObjectSetInstance C.GDExtensionInterfaceObjectSetInstance
 type GDExtensionInterfaceObjectGetClassName C.GDExtensionInterfaceObjectGetClassName
 type GDExtensionInterfaceObjectCastTo C.GDExtensionInterfaceObjectCastTo
@@ -3641,6 +3642,20 @@ func CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(
 	log.Debug("called C.cgo_callfn_GDExtensionInterfaceObjectSetInstanceBinding")
 
 	C.cgo_callfn_GDExtensionInterfaceObjectSetInstanceBinding(arg0, arg1, arg2, arg3, arg4)
+
+}
+
+func CallFunc_GDExtensionInterfaceObjectFreeInstanceBinding(
+	p_o GDExtensionObjectPtr,
+	p_token unsafe.Pointer,
+) {
+	arg0 := (C.GDExtensionInterfaceObjectFreeInstanceBinding)(FFI.ObjectFreeInstanceBinding)
+	arg1 := (C.GDExtensionObjectPtr)(p_o)
+	arg2 := unsafe.Pointer(p_token)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceObjectFreeInstanceBinding")
+
+	C.cgo_callfn_GDExtensionInterfaceObjectFreeInstanceBinding(arg0, arg1, arg2)
 
 }
 

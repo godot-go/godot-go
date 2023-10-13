@@ -198,9 +198,10 @@ func ClassDBBindMethod(inst GDClass, goMethodName string, gdMethodName string, a
 	return classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues)
 }
 
-func ClassDBBindMethodStatic(inst GDClass, goMethodName string, gdMethodName string, argNames []string, defaultValues []Variant) *MethodBindImpl {
-	return classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues)
-}
+// TODO: golang does not have static methods
+// func ClassDBBindMethodStatic(inst GDClass, goMethodName string, gdMethodName string, argNames []string, defaultValues []Variant) *MethodBindImpl {
+// 	return classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues)
+// }
 
 func ClassDBBindMethodVirtual(inst GDClass, goMethodName string, gdMethodName string, argNames []string, defaultValues []Variant) *MethodBindImpl {
 	return classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues)

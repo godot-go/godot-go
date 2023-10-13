@@ -22,34 +22,33 @@ var _ Ref = &{{ $refStructName }}{}
 type {{ $refInterfaceName }} interface {
 	Ref
 	TypedPtr() {{ $c.Name }}
-	{{/* TypedRef({{ $refInterfaceName }}) */}}
 }
 
-type {{ $refStructName }} typedRef[{{ $c.Name }}]
+type {{ $refStructName }} TypedRef[{{ $c.Name }}]
 
 func (r *{{ $refStructName }}) Ptr() RefCounted {
-	rg := (*typedRef[{{ $c.Name }}])(r)
+	rg := (*TypedRef[{{ $c.Name }}])(r)
 	return rg.Ptr().(RefCounted)
 }
 
 func (r *{{ $refStructName }}) TypedPtr() {{ $c.Name }} {
-	rg := (*typedRef[{{ $c.Name }}])(r)
+	rg := (*TypedRef[{{ $c.Name }}])(r)
 	return rg.TypedPtr()
 }
 
 func (r *{{ $refStructName }}) Ref(from Ref) {
-	rg := (*typedRef[{{ $c.Name }}])(r)
+	rg := (*TypedRef[{{ $c.Name }}])(r)
 	rg.Ref(from)
 }
 
 func (r *{{ $refStructName }}) TypedRef(from *{{ $refStructName }}) {
-	rg := (*typedRef[{{ $c.Name }}])(r)
-	t := (*typedRef[{{ $c.Name }}])(from)
-	rg.TypedRef((*typedRef[{{ $c.Name }}])(t))
+	rg := (*TypedRef[{{ $c.Name }}])(r)
+	t := (*TypedRef[{{ $c.Name }}])(from)
+	rg.TypedRef((*TypedRef[{{ $c.Name }}])(t))
 }
 
 func (r *{{ $refStructName }}) Unref() {
-	rg := (*typedRef[{{ $c.Name }}])(r)
+	rg := (*TypedRef[{{ $c.Name }}])(r)
 	rg.Unref()
 }
 

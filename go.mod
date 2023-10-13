@@ -1,6 +1,6 @@
 module github.com/godot-go/godot-go
 
-go 1.21
+go 1.21.3
 
 require (
 	github.com/pkg/errors v0.9.1 // indirect
@@ -14,7 +14,6 @@ require (
 	github.com/alecthomas/participle/v2 v2.0.0
 	github.com/davecgh/go-spew v1.1.1
 	github.com/iancoleman/strcase v0.2.0
-	github.com/ianlancetaylor/cgosymbolizer v0.0.0-20230328201059-365e72989107
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/exp v0.0.0-20220722155223-a9213eeb770e
 	golang.org/x/text v0.12.0

@@ -46,12 +46,8 @@ jobs:
           tests: false
           scons-cache: "${{ github.workspace }}/.scons-cache/"
 
-      - name: List Artifacts Directory
-        run: |
-          ls -alh ${{ github.workspace }}/bin/
-
       - uses: actions/upload-artifact@v3
         with:
           name: godot-windows-editor-amd64
-          path: ${{ github.workspace }}/bin/godot.win64.editor.x86_64
+          path: ${{ github.workspace }}/bin/godot.windows.editor.x86_64.exe
           if-no-files-found: error

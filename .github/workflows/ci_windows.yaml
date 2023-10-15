@@ -102,4 +102,3 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: "./Godot_v4.2-dev6_win64.exe"

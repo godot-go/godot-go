@@ -27,8 +27,9 @@ jobs:
       matrix:
         targets:
           - windows/amd64
-
     runs-on: windows-latest
+    env:
+      GODOT: ./Godot_v4.2-beta1_win64.exe
     timeout-minutes: 20
     steps:
       - name: Add Go 1.21.x To System Path

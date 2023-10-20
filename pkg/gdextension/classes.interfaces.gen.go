@@ -5815,6 +5815,8 @@ type DirAccess interface {
 	SetIncludeHidden(enable bool)
 
 	GetIncludeHidden() bool
+
+	IsCaseSensitive(path String) bool
 }
 type DirectionalLight2D interface {
 	Light2D
@@ -8238,6 +8240,10 @@ type FontFile interface {
 	SetFixedSize(fixed_size int32)
 
 	GetFixedSize() int32
+
+	SetFixedSizeScaleMode(fixed_size_scale_mode TextServerFixedSizeScaleMode)
+
+	GetFixedSizeScaleMode() TextServerFixedSizeScaleMode
 
 	SetAllowSystemFallback(allow_system_fallback bool)
 
@@ -11649,6 +11655,10 @@ type LightmapGI interface {
 
 	GetBounces() int32
 
+	SetBounceIndirectEnergy(bounce_indirect_energy float32)
+
+	GetBounceIndirectEnergy() float32
+
 	SetGenerateProbes(subdivision LightmapGIGenerateProbes)
 
 	GetGenerateProbes() LightmapGIGenerateProbes
@@ -11692,6 +11702,10 @@ type LightmapGI interface {
 	SetDirectional(directional bool)
 
 	IsDirectional() bool
+
+	SetUseTextureForBounces(use_texture_for_bounces bool)
+
+	IsUsingTextureForBounces() bool
 
 	SetCameraAttributes(camera_attributes RefCameraAttributes)
 
@@ -24608,6 +24622,10 @@ type TextServer interface {
 
 	FontGetFixedSize(font_rid RID) int64
 
+	FontSetFixedSizeScaleMode(font_rid RID, fixed_size_scale_mode TextServerFixedSizeScaleMode)
+
+	FontGetFixedSizeScaleMode(font_rid RID) TextServerFixedSizeScaleMode
+
 	FontSetAllowSystemFallback(font_rid RID, allow_system_fallback bool)
 
 	FontIsAllowSystemFallback(font_rid RID) bool
@@ -25020,6 +25038,10 @@ type TextServerExtension interface {
 	// VIRTUAL: Internal_FontSetFixedSize(font_rid RID,fixed_size int64,)
 
 	// VIRTUAL: Internal_FontGetFixedSize(font_rid RID,) int64
+
+	// VIRTUAL: Internal_FontSetFixedSizeScaleMode(font_rid RID,fixed_size_scale_mode TextServerFixedSizeScaleMode,)
+
+	// VIRTUAL: Internal_FontGetFixedSizeScaleMode(font_rid RID,) TextServerFixedSizeScaleMode
 
 	// VIRTUAL: Internal_FontSetAllowSystemFallback(font_rid RID,allow_system_fallback bool,)
 
@@ -25946,6 +25968,10 @@ type TileMap interface {
 	SetLayerZIndex(layer int32, z_index int32)
 
 	GetLayerZIndex(layer int32) int32
+
+	SetLayerNavigationEnabled(layer int32, enabled bool)
+
+	IsLayerNavigationEnabled(layer int32) bool
 
 	SetLayerNavigationMap(layer int32, resourceMap RID)
 

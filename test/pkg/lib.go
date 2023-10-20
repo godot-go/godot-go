@@ -2,7 +2,6 @@ package pkg
 
 /*
 #cgo CFLAGS: -I${SRCDIR} -I${SRCDIR}/../../godot_headers -I${SRCDIR}/../../pkg/log -I${SRCDIR}/../../pkg/gdextension
-#include "example.h"
 */
 import "C"
 
@@ -23,6 +22,8 @@ func RegisterExampleTypes() {
 
 func UnregisterExampleTypes() {
 	log.Debug("UnregisterExampleTypes called")
+
+	UnregisterClassExample()
 }
 
 //export TestDemoInit

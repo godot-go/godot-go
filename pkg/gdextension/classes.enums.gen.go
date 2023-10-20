@@ -5476,6 +5476,14 @@ const (
 	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_CUSTOM                                  = 6
 )
 
+type TextServerFixedSizeScaleMode int
+
+const (
+	TEXT_SERVER_FIXED_SIZE_SCALE_MODE_FIXED_SIZE_SCALE_DISABLE      TextServerFixedSizeScaleMode = 0
+	TEXT_SERVER_FIXED_SIZE_SCALE_MODE_FIXED_SIZE_SCALE_INTEGER_ONLY                              = 1
+	TEXT_SERVER_FIXED_SIZE_SCALE_MODE_FIXED_SIZE_SCALE_ENABLED                                   = 2
+)
+
 type TextureButtonStretchMode int
 
 const (

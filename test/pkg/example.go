@@ -531,3 +531,6 @@ func RegisterClassExample() {
 		log.Debug("Example registered")
 	})
 }
+
+func UnregisterClassExample() {
+}

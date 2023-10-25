@@ -43,19 +43,31 @@ jobs:
 
       - run: mkdir -p bin/
 
-      - name: Download Godot binary
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: ci_build_godot_linux.yaml
-          workflow_conclusion: success
-          name: godot-linuxbsd-editor-amd64
-          path: bin/
-
-      - name: Setup Godot binary
+      - name: Install Godot 4.2 beta2
         run: |
-          chmod +x godot.linuxbsd.editor.x86_64
-          ls -R
-        working-directory: bin/
+          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta2/Godot_v4.2-beta2_linux.x86_64.zip
+          sudo unzip Godot_v4.2-beta2_linux.x86_64.zip -d /usr/local/bin
+          sudo ln -s Godot_v4.2-beta2_linux.x86_64 /usr/local/bin/godot
+
+      # - name: Download Godot binary
+      #   uses: dawidd6/action-download-artifact@v2
+      #   with:
+      #     workflow: ci_build_godot_linux.yaml
+      #     workflow_conclusion: success
+      #     name: godot-linuxbsd-editor-amd64
+      #     path: bin/
+
+      # - name: Setup Godot binary
+      #   run: |
+      #     chmod +x godot.linuxbsd.editor.x86_64
+      #     ls -R
+      #   working-directory: bin/
+
+      - name: Install Godot 4.2 beta2
+        run: |
+          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta2/Godot_v4.2-beta2_win64.exe.zip
+          unzip Godot_v4.2-beta2_win64.exe.zip -d ./
+        shell: bash
 
       - name: Update Godot Headers
         run: |

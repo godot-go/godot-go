@@ -5,8 +5,12 @@ import (
 	"strconv"
 	"strings"
 
-	. "github.com/godot-go/godot-go/pkg/gdextension"
-	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
+	. "github.com/godot-go/godot-go/pkg/builtin"
+	. "github.com/godot-go/godot-go/pkg/core"
+	. "github.com/godot-go/godot-go/pkg/ffi"
+	. "github.com/godot-go/godot-go/pkg/gdclass"
+	. "github.com/godot-go/godot-go/pkg/global"
+	. "github.com/godot-go/godot-go/pkg/utility"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )

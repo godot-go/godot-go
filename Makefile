@@ -28,11 +28,16 @@ goenv:
 generate: clean
 	go generate
 	if [ ! -z "$(CLANG_FORMAT)" ]; then \
-		$(CLANG_FORMAT) -i pkg/gdextensionffi/ffi_wrapper.gen.h; \
-		$(CLANG_FORMAT) -i pkg/gdextensionffi/ffi_wrapper.gen.c; \
+		$(CLANG_FORMAT) -i pkg/ffi/ffi_wrapper.gen.h; \
+		$(CLANG_FORMAT) -i pkg/ffi/ffi_wrapper.gen.c; \
 	fi
-	go fmt pkg/gdextensionffi/*.gen.go
-	go fmt pkg/gdextension/*.gen.go
+	go fmt pkg/builtin/*.gen.go
+	go fmt pkg/core/*.gen.go
+	go fmt pkg/ffi/*.gen.go
+	go fmt pkg/gdclass/*.gen.go
+	go fmt pkg/global/*.gen.go
+	go fmt pkg/nativestructure/*.gen.go
+	go fmt pkg/utility/*.gen.go
 
 update_godot_headers_from_binary: ## update godot_headers from the godot binary
 	DISPLAY=:0 $(GODOT) --dump-extension-api --headless; \
@@ -49,12 +54,15 @@ build: goenv
 	go build -gcflags=all="-v -N -l -L -clobberdead -clobberdeadreg -dwarf -dwarflocationlists=false" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
 clean_src:
-	rm -f pkg/gdextensionffi/*.gen.c
-	rm -f pkg/gdextensionffi/*.gen.h
-	rm -f pkg/gdextensionffi/*.gen.go
-	rm -f pkg/gdextension/*.gen.c
-	rm -f pkg/gdextension/*.gen.h
-	rm -f pkg/gdextension/*.gen.go
+	rm -f pkg/ffi/*.gen.c
+	rm -f pkg/ffi/*.gen.h
+	rm -f pkg/ffi/*.gen.go
+	rm -f pkg/builtin/*.gen.c
+	rm -f pkg/builtin/*.gen.h
+	rm -f pkg/builtin/*.gen.go
+	rm -f pkg/core/*.gen.c
+	rm -f pkg/core/*.gen.h
+	rm -f pkg/core/*.gen.go
 
 clean: clean_src
 	rm -f test/demo/lib/libgodotgo-*

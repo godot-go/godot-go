@@ -1,8 +1,8 @@
 package pkg
 
 import (
-	. "github.com/godot-go/godot-go/pkg/gdextension"
-	. "github.com/godot-go/godot-go/pkg/gdextensionffi"
+	. "github.com/godot-go/godot-go/pkg/core"
+	. "github.com/godot-go/godot-go/pkg/ffi"
 	"github.com/godot-go/godot-go/pkg/log"
 )
 

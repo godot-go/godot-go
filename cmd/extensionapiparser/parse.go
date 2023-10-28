@@ -3,6 +3,7 @@ package extensionapiparser
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"os"
 )
 
@@ -28,4 +29,21 @@ func ParseExtensionApiJson(projectPath string) (ExtensionApi, error) {
 	}
 
 	return extensionApiJson, nil
+}
+
+func GenerateExtensionAPI(projectPath, buildConfig string) (ExtensionApi, error) {
+	var (
+		eapi ExtensionApi
+		err error
+	)
+	if eapi, err = ParseExtensionApiJson(projectPath); err != nil {
+		return ExtensionApi{}, err
+	}
+	if !eapi.HasBuildConfiguration(buildConfig) {
+		return ExtensionApi{}, fmt.Errorf(`unable to find build configuration "%s"`, buildConfig)
+	}
+	eapi.BuildConfig = buildConfig
+	eapi.Classes = eapi.FilteredClasses()
+
+	return eapi, nil
 }

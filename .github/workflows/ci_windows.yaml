@@ -21,7 +21,7 @@ on:
       - "**/*.c"
       - "**/*.h"
       - "**/*.gdextension"
-      - ".github/workflows/ci_linux.yaml"
+      - ".github/workflows/ci_windows.yaml"
 
 jobs:
   run_test:

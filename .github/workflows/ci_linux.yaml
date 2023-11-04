@@ -61,7 +61,7 @@ jobs:
 
       - name: Setup Godot binary
         run: |
-          chmod +x /usr/local/bin/godot
+          sudo chmod +x /usr/local/bin/godot
           ls -alh /usr/local/bin/
 
       - name: Update Godot Headers

@@ -11,7 +11,7 @@ import (
 
 	. "github.com/godot-go/godot-go/pkg/ffi"
 	"github.com/godot-go/godot-go/pkg/log"
-	"github.com/godot-go/godot-go/pkg/util"
+	. "github.com/godot-go/godot-go/pkg/util"
 	"go.uber.org/zap"
 )
 
@@ -22,13 +22,10 @@ type RefCountedConstructor func(reference RefCounted) Ref
 type GDClassGoConstructor func(data unsafe.Pointer) GDExtensionObjectPtr
 
 var (
-	variantFromTypeConstructor [GDEXTENSION_VARIANT_TYPE_VARIANT_MAX]GDExtensionVariantFromTypeConstructorFunc
-	typeFromVariantConstructor [GDEXTENSION_VARIANT_TYPE_VARIANT_MAX]GDExtensionTypeFromVariantConstructorFunc
-	nullptr                    = unsafe.Pointer(nil)
-)
-
-var (
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks = util.NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
+	variantFromTypeConstructor                            [GDEXTENSION_VARIANT_TYPE_VARIANT_MAX]GDExtensionVariantFromTypeConstructorFunc
+	typeFromVariantConstructor                            [GDEXTENSION_VARIANT_TYPE_VARIANT_MAX]GDExtensionTypeFromVariantConstructorFunc
+	nullptr                                               = unsafe.Pointer(nil)
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks = NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
 )
 
 func GetObjectInstanceBinding(engineObject *GodotObject) Object {
@@ -58,7 +55,7 @@ func GetObjectInstanceBinding(engineObject *GodotObject) Object {
 	className := snClassName.ToUtf8()
 	// const GDExtensionInstanceBindingCallbacks *binding_callbacks = nullptr;
 	// Otherwise, try to look up the correct binding callbacks.
-	cbs, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
+	cbs, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
 	if !ok {
 		log.Warn("unable to find callbacks for Object")
 		return nil
@@ -94,11 +91,11 @@ func GDClassRegisterInstanceBindingCallbacks(tn string) {
 		(*[0]byte)(C.cgo_gdclass_binding_reference_callback),
 	)
 
-	_, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get(tn)
+	_, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(tn)
 
 	if ok {
 		log.Panic("Class with the same name already initialized", zap.String("class", tn))
 	}
 
-	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set(tn, (GDExtensionInstanceBindingCallbacks)(cbs))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set(tn, (GDExtensionInstanceBindingCallbacks)(cbs))
 }

@@ -11715,9 +11715,9 @@ type LightmapGI interface {
 type LightmapGIData interface {
 	Resource
 
-	SetLightTexture(light_texture RefTextureLayered)
+	SetLightmapTextures(light_textures RefTextureLayered)
 
-	GetLightTexture() RefTextureLayered
+	GetLightmapTextures() RefTextureLayered
 
 	SetUsesSphericalHarmonics(uses_spherical_harmonics bool)
 
@@ -11730,6 +11730,10 @@ type LightmapGIData interface {
 	GetUserPath(user_idx int32) NodePath
 
 	ClearUsers()
+
+	SetLightTexture(light_texture RefTextureLayered)
+
+	GetLightTexture() RefTextureLayered
 }
 type LightmapProbe interface {
 	Node3D
@@ -12958,6 +12962,10 @@ type NavigationAgent3D interface {
 	SetUse3DAvoidance(enabled bool)
 
 	GetUse3DAvoidance() bool
+
+	SetKeepYVelocity(enabled bool)
+
+	GetKeepYVelocity() bool
 
 	SetNeighborDistance(neighbor_distance float32)
 
@@ -27535,10 +27543,6 @@ type Viewport interface {
 	SetAsAudioListener3D(enable bool)
 
 	IsAudioListener3D() bool
-
-	SetDisable2D(disable bool)
-
-	Is2DDisabled() bool
 
 	SetDisable3D(disable bool)
 

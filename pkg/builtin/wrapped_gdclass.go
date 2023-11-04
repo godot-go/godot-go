@@ -48,7 +48,7 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 	snExtensionClassName := NewStringNameWithLatin1Chars(extensionClassName)
 	defer snExtensionClassName.Destroy()
 
-	callbacks, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get(extensionClassName)
+	callbacks, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(extensionClassName)
 
 	if !ok {
 		log.Panic("unable to retrieve binding callbacks", zap.String("type", extensionClassName))

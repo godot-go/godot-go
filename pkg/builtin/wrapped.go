@@ -71,7 +71,7 @@ func ObjectCastTo(obj Object, className string) Object {
 	if casted == nil {
 		return nil
 	}
-	cbs, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
+	cbs, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
 	if !ok {
 		log.Warn("unable to find callbacks for Object",
 			zap.String("name", className),

@@ -14,11 +14,10 @@ import (
 )
 
 var (
-	nullptr                                               = unsafe.Pointer(nil)
-	GDNativeConstructors                                  = NewSyncMap[string, GDExtensionClassGoConstructorFromOwner]()
-	GDClassRefConstructors                                = NewSyncMap[string, RefCountedConstructor]()
-	GDExtensionBindingGDExtensionInstanceBindingCallbacks = NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
-	GDRegisteredGDClassEncoders                           = NewSyncMap[string, ArgumentEncoder]()
-	GDExtensionBindingInitCallbacks                       [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
-	GDExtensionBindingTerminateCallbacks                  [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
+	nullptr                              = unsafe.Pointer(nil)
+	GDNativeConstructors                 = NewSyncMap[string, GDExtensionClassGoConstructorFromOwner]()
+	GDClassRefConstructors               = NewSyncMap[string, RefCountedConstructor]()
+	GDRegisteredGDClassEncoders          = NewSyncMap[string, ArgumentEncoder]()
+	GDExtensionBindingInitCallbacks      [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
+	GDExtensionBindingTerminateCallbacks [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
 )

@@ -43,11 +43,11 @@ jobs:
 
       - run: mkdir -p bin/
 
-      - name: Install Godot 4.2 beta2
+      - name: Install Godot 4.2 beta4
         run: |
-          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta2/Godot_v4.2-beta2_linux.x86_64.zip
-          sudo unzip Godot_v4.2-beta2_linux.x86_64.zip -d /usr/local/bin
-          sudo ln -s Godot_v4.2-beta2_linux.x86_64 /usr/local/bin/godot
+          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta4/Godot_v4.2-beta4_linux.x86_64.zip
+          sudo unzip Godot_v4.2-beta4_linux.x86_64.zip -d /usr/local/bin
+          sudo ln -s Godot_v4.2-beta4_linux.x86_64 /usr/local/bin/godot
 
       # - name: Download Godot binary
       #   uses: dawidd6/action-download-artifact@v2
@@ -63,10 +63,10 @@ jobs:
       #     ls -R
       #   working-directory: bin/
 
-      - name: Install Godot 4.2 beta2
+      - name: Install Godot 4.2 beta4
         run: |
-          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta2/Godot_v4.2-beta2_win64.exe.zip
-          unzip Godot_v4.2-beta2_win64.exe.zip -d ./
+          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta4/Godot_v4.2-beta4_win64.exe.zip
+          unzip Godot_v4.2-beta4_win64.exe.zip -d ./
         shell: bash
 
       - name: Update Godot Headers

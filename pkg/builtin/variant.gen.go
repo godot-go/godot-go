@@ -12,8 +12,8 @@ import (
 	"go.uber.org/zap"
 )
 
-func variantInitBindings() {
-	log.Debug("variantInitBindings called")
+func VariantInitBindings() {
+	log.Debug("VariantInitBindings called")
 	for i := GDExtensionVariantType(1); i < GDEXTENSION_VARIANT_TYPE_VARIANT_MAX; i++ {
 		variantFromTypeConstructor[i] = CallFunc_GDExtensionInterfaceGetVariantFromTypeConstructor(i)
 		typeFromVariantConstructor[i] = CallFunc_GDExtensionInterfaceGetVariantToTypeConstructor(i)

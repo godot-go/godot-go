@@ -3,6 +3,7 @@ package builtin
 /*
 #cgo CFLAGS: -I${SRCDIR}/../../godot_headers -I${SRCDIR}/../../pkg/log -I${SRCDIR}/../../pkg/gdextension
 #include <godot/gdextension_interface.h>
+#include "wrapped.h"
 */
 import "C"
 import (
@@ -15,6 +16,10 @@ import (
 )
 
 type GodotObject unsafe.Pointer
+type GDExtensionBindingCallback func()
+type GDExtensionClassGoConstructorFromOwner func(*GodotObject) GDExtensionClass
+type RefCountedConstructor func(reference RefCounted) Ref
+type GDClassGoConstructor func(data unsafe.Pointer) GDExtensionObjectPtr
 
 var (
 	variantFromTypeConstructor [GDEXTENSION_VARIANT_TYPE_VARIANT_MAX]GDExtensionVariantFromTypeConstructorFunc
@@ -74,4 +79,26 @@ func GetObjectInstanceBinding(engineObject *GodotObject) Object {
 		zap.String("className", wrapperClassName),
 	)
 	return *instPtr
+}
+
+func GDClassRegisterInstanceBindingCallbacks(tn string) {
+	// substitute for:
+	// static constexpr GDExtensionInstanceBindingCallbacks ___binding_callbacks = {
+	// 	___binding_create_callback,
+	// 	___binding_free_callback,
+	// 	___binding_reference_callback,
+	// };
+	cbs := NewGDExtensionInstanceBindingCallbacks(
+		(*[0]byte)(C.cgo_gdclass_binding_create_callback),
+		(*[0]byte)(C.cgo_gdclass_binding_free_callback),
+		(*[0]byte)(C.cgo_gdclass_binding_reference_callback),
+	)
+
+	_, ok := gdExtensionBindingGDExtensionInstanceBindingCallbacks.Get(tn)
+
+	if ok {
+		log.Panic("Class with the same name already initialized", zap.String("class", tn))
+	}
+
+	gdExtensionBindingGDExtensionInstanceBindingCallbacks.Set(tn, (GDExtensionInstanceBindingCallbacks)(cbs))
 }

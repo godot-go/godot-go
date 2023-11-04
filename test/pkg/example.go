@@ -9,7 +9,7 @@ import (
 	. "github.com/godot-go/godot-go/pkg/core"
 	. "github.com/godot-go/godot-go/pkg/ffi"
 	. "github.com/godot-go/godot-go/pkg/gdclass"
-	. "github.com/godot-go/godot-go/pkg/global"
+	. "github.com/godot-go/godot-go/pkg/constant"
 	. "github.com/godot-go/godot-go/pkg/utility"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
@@ -378,7 +378,11 @@ func (e *Example) V_Input(refEvent RefInputEvent) {
 		log.Warn("Example.V_Input: null refEvent parameter")
 		return
 	}
-	keyEvent := ObjectCastTo(event, "InputEventKey").(InputEventKey)
+	keyEvent, ok := ObjectCastTo(event, "InputEventKey").(InputEventKey)
+	if !ok {
+		log.Warn("event not InputEventKey")
+		return
+	}
 	gdStringKeyLabel := keyEvent.AsTextKeyLabel()
 	keyLabel := gdStringKeyLabel.ToUtf8()
 	v := int64(keyEvent.GetUnicode())
@@ -418,7 +422,7 @@ func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 	motion := NewVector2WithFloat32Float32(1.0, 2.0)
 	refCollision := body.MoveAndCollide(motion, true, 0.5, true)
 	collision := refCollision.TypedPtr()
-	collisionV := NewVariantObject(collision.(Object))
+	collisionV := NewVariantGodotObject(collision.GetGodotObjectOwner())
 	log.Info("collision returned",
 		zap.String("collision", collisionV.Stringify()),
 	)

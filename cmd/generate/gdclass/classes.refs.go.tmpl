@@ -52,27 +52,18 @@ func (r *{{ $refStructName }}) Unref() {
 }
 
 func (r *{{ $refStructName }}) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func New{{ $refInterfaceName }}(reference {{ $c.Name }}) {{ $refInterfaceName }} {
 	return ({{ $refInterfaceName }})(NewTypedRef[{{ $c.Name }}](reference))
 }
 
-func new{{ $refInterfaceName }}AsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[{{ $c.Name }}](reference.({{ $c.Name }})))
+func New{{ $refInterfaceName }}AsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[{{ $c.Name }}](reference.({{ $c.Name }})))
 }
 
-func new{{ $refInterfaceName }}GDExtensionIternalConstructor(reference {{ $c.Name }}) {{ $refInterfaceName }} {
-	return newTypedRefGDExtensionIternalConstructor[{{ $c.Name }}](reference)
+func New{{ $refInterfaceName }}GDExtensionIternalConstructor(reference {{ $c.Name }}) {{ $refInterfaceName }} {
+	return NewTypedRefGDExtensionIternalConstructor[{{ $c.Name }}](reference)
 }
 {{ end -}}
-
-func RegisterEngineClassRefs() {
-	gdClassRefConstructors.Clear()
-	{{ range $i, $c := $view.FilteredRefcountedClasses -}}
-	{{ $refInterfaceName := (printf "Ref%s" $c.Name) -}}
-	{{ $refStructName := (printf "Ref%sImpl" $c.Name) -}}
-	gdClassRefConstructors.Set("{{ $c.Name }}", new{{ $refInterfaceName }}AsRef)
-	{{ end -}}
-}

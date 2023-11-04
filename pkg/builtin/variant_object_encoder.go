@@ -11,7 +11,7 @@ import (
 	"github.com/godot-go/godot-go/pkg/log"
 )
 
-func createObjectEncoder[T Object]() objectArgumentEncoder[T] {
+func CreateObjectEncoder[T Object]() objectArgumentEncoder[T] {
 	tfn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_OBJECT]
 	if tfn == nil {
 		log.Panic("could not find type from variant constructor GDEXTENSION_VARIANT_TYPE_OBJECT")

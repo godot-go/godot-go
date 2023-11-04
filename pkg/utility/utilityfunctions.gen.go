@@ -18,6 +18,7 @@ import "C"
 import (
 	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/ffi"
+	. "github.com/godot-go/godot-go/pkg/gdclass"
 	"unsafe"
 )
 

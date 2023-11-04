@@ -32,10 +32,10 @@ generate: clean
 		$(CLANG_FORMAT) -i pkg/ffi/ffi_wrapper.gen.c; \
 	fi
 	go fmt pkg/builtin/*.gen.go
-	go fmt pkg/core/*.gen.go
+	go fmt pkg/constant/*.gen.go
 	go fmt pkg/ffi/*.gen.go
 	go fmt pkg/gdclass/*.gen.go
-	go fmt pkg/global/*.gen.go
+	go fmt pkg/globalstate/*.gen.go
 	go fmt pkg/nativestructure/*.gen.go
 	go fmt pkg/utility/*.gen.go
 
@@ -60,9 +60,21 @@ clean_src:
 	rm -f pkg/builtin/*.gen.c
 	rm -f pkg/builtin/*.gen.h
 	rm -f pkg/builtin/*.gen.go
-	rm -f pkg/core/*.gen.c
-	rm -f pkg/core/*.gen.h
-	rm -f pkg/core/*.gen.go
+	rm -f pkg/constant/*.gen.c
+	rm -f pkg/constant/*.gen.h
+	rm -f pkg/constant/*.gen.go
+	rm -f pkg/gdclass/*.gen.c
+	rm -f pkg/gdclass/*.gen.h
+	rm -f pkg/gdclass/*.gen.go
+	rm -f pkg/globalstate/*.gen.c
+	rm -f pkg/globalstate/*.gen.h
+	rm -f pkg/globalstate/*.gen.go
+	rm -f pkg/nativestructure/*.gen.c
+	rm -f pkg/nativestructure/*.gen.h
+	rm -f pkg/nativestructure/*.gen.go
+	rm -f pkg/utility/*.gen.c
+	rm -f pkg/utility/*.gen.h
+	rm -f pkg/utility/*.gen.go
 
 clean: clean_src
 	rm -f test/demo/lib/libgodotgo-*

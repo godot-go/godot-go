@@ -14,8 +14,8 @@ package builtin
 import (
 	"unsafe"
 
+	. "github.com/godot-go/godot-go/pkg/constant"
 	. "github.com/godot-go/godot-go/pkg/ffi"
-	. "github.com/godot-go/godot-go/pkg/global"
 )
 
 var _ = unsafe.Pointer(nil)

@@ -15,15 +15,15 @@ type TypedRefT interface {
 // Ref is a helper struct for RefCounted Godot Objects.
 type TypedRef[T TypedRefT] struct {
 	// HasReference
-	reference RefCounted
+	Reference RefCounted
 }
 
 func (cx *TypedRef[T]) Ptr() RefCounted {
-	return (RefCounted)(cx.reference)
+	return (RefCounted)(cx.Reference)
 }
 
 func (cx *TypedRef[T]) TypedPtr() T {
-	return cx.reference.(T)
+	return cx.Reference.(T)
 }
 
 func (cx *TypedRef[T]) Ref(pFrom Ref) {
@@ -33,13 +33,13 @@ func (cx *TypedRef[T]) Ref(pFrom Ref) {
 // Ref increments a reference counter
 func (cx *TypedRef[T]) TypedRef(from *TypedRef[T]) {
 	var zero T
-	if from.reference == cx.reference {
+	if from.Reference == cx.Reference {
 		return
 	}
 	cx.Unref()
-	cx.reference = from.reference
-	if cx.reference != zero {
-		(RefCounted)(cx.reference).Reference()
+	cx.Reference = from.Reference
+	if cx.Reference != zero {
+		(RefCounted)(cx.Reference).Reference()
 	}
 }
 
@@ -51,21 +51,21 @@ func (cx *TypedRef[T]) RefPointer(r T) {
 	if !r.InitRef() {
 		panic("init ref failure")
 	}
-	cx.reference = r
+	cx.Reference = r
 }
 
 func (cx *TypedRef[T]) Unref() {
 	var zero T
-	if cx.reference != zero && cx.reference.Unreference() {
-		cx.reference.Destroy()
+	if cx.Reference != zero && cx.Reference.Unreference() {
+		cx.Reference.Destroy()
 		// release memory
 		// runtime.Unpin(cx.reference)
 	}
-	cx.reference = zero
+	cx.Reference = zero
 }
 
 func (cx *TypedRef[T]) IsValid() bool {
-	return cx != nil && cx.reference != nil
+	return cx != nil && cx.Reference != nil
 }
 
 func NewTypedRef[T TypedRefT](reference T) *TypedRef[T] {
@@ -74,8 +74,8 @@ func NewTypedRef[T TypedRefT](reference T) *TypedRef[T] {
 	return &ref
 }
 
-func newTypedRefGDExtensionIternalConstructor[T TypedRefT](reference T) *TypedRef[T] {
+func NewTypedRefGDExtensionIternalConstructor[T TypedRefT](reference T) *TypedRef[T] {
 	ref := TypedRef[T]{}
-	ref.reference = reference
+	ref.Reference = reference
 	return &ref
 }

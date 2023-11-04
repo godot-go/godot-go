@@ -129,7 +129,7 @@ func (cx *{{ $c.Name }}) Destroy() {
 {{ end }}
 
 // copy funuctions
-func new{{ $c.Name }}WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) {{ $c.Name }} {
+func New{{ $c.Name }}WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) {{ $c.Name }} {
     ret := {{ $c.Name }}{}
     typedSrc := (*{{ $c.Name }})(src)
 

@@ -1,7 +1,25 @@
 package gdclass
 
-/*
-#cgo CFLAGS: -I${SRCDIR}/../../godot_headers -I${SRCDIR}/../../pkg/log -I${SRCDIR}/../../pkg/gdextension
-#include <godot/gdextension_interface.h>
-*/
-import "C"
+import (
+	"unsafe"
+
+	. "github.com/godot-go/godot-go/pkg/builtin"
+)
+
+var (
+	nullptr = unsafe.Pointer(nil)
+)
+
+func (cx *ObjectImpl) ToGoString() string {
+	if cx == nil || cx.Owner == nil {
+		return ""
+	}
+	gdstr := cx.ToString()
+	defer gdstr.Destroy()
+	return gdstr.ToUtf8()
+}
+
+func GetInputSingleton() Input {
+	owner := (*GodotObject)(unsafe.Pointer(GetSingleton("Input")))
+	return NewInputWithGodotOwnerObject(owner)
+}

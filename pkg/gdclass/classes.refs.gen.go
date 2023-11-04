@@ -48,19 +48,19 @@ func (r *RefAESContextImpl) Unref() {
 }
 
 func (r *RefAESContextImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAESContext(reference AESContext) RefAESContext {
 	return (RefAESContext)(NewTypedRef[AESContext](reference))
 }
 
-func newRefAESContextAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AESContext](reference.(AESContext)))
+func NewRefAESContextAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AESContext](reference.(AESContext)))
 }
 
-func newRefAESContextGDExtensionIternalConstructor(reference AESContext) RefAESContext {
-	return newTypedRefGDExtensionIternalConstructor[AESContext](reference)
+func NewRefAESContextGDExtensionIternalConstructor(reference AESContext) RefAESContext {
+	return NewTypedRefGDExtensionIternalConstructor[AESContext](reference)
 }
 
 var _ RefAStar2D = &RefAStar2DImpl{}
@@ -95,19 +95,19 @@ func (r *RefAStar2DImpl) Unref() {
 }
 
 func (r *RefAStar2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAStar2D(reference AStar2D) RefAStar2D {
 	return (RefAStar2D)(NewTypedRef[AStar2D](reference))
 }
 
-func newRefAStar2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AStar2D](reference.(AStar2D)))
+func NewRefAStar2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AStar2D](reference.(AStar2D)))
 }
 
-func newRefAStar2DGDExtensionIternalConstructor(reference AStar2D) RefAStar2D {
-	return newTypedRefGDExtensionIternalConstructor[AStar2D](reference)
+func NewRefAStar2DGDExtensionIternalConstructor(reference AStar2D) RefAStar2D {
+	return NewTypedRefGDExtensionIternalConstructor[AStar2D](reference)
 }
 
 var _ RefAStar3D = &RefAStar3DImpl{}
@@ -142,19 +142,19 @@ func (r *RefAStar3DImpl) Unref() {
 }
 
 func (r *RefAStar3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAStar3D(reference AStar3D) RefAStar3D {
 	return (RefAStar3D)(NewTypedRef[AStar3D](reference))
 }
 
-func newRefAStar3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AStar3D](reference.(AStar3D)))
+func NewRefAStar3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AStar3D](reference.(AStar3D)))
 }
 
-func newRefAStar3DGDExtensionIternalConstructor(reference AStar3D) RefAStar3D {
-	return newTypedRefGDExtensionIternalConstructor[AStar3D](reference)
+func NewRefAStar3DGDExtensionIternalConstructor(reference AStar3D) RefAStar3D {
+	return NewTypedRefGDExtensionIternalConstructor[AStar3D](reference)
 }
 
 var _ RefAStarGrid2D = &RefAStarGrid2DImpl{}
@@ -189,19 +189,19 @@ func (r *RefAStarGrid2DImpl) Unref() {
 }
 
 func (r *RefAStarGrid2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAStarGrid2D(reference AStarGrid2D) RefAStarGrid2D {
 	return (RefAStarGrid2D)(NewTypedRef[AStarGrid2D](reference))
 }
 
-func newRefAStarGrid2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AStarGrid2D](reference.(AStarGrid2D)))
+func NewRefAStarGrid2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AStarGrid2D](reference.(AStarGrid2D)))
 }
 
-func newRefAStarGrid2DGDExtensionIternalConstructor(reference AStarGrid2D) RefAStarGrid2D {
-	return newTypedRefGDExtensionIternalConstructor[AStarGrid2D](reference)
+func NewRefAStarGrid2DGDExtensionIternalConstructor(reference AStarGrid2D) RefAStarGrid2D {
+	return NewTypedRefGDExtensionIternalConstructor[AStarGrid2D](reference)
 }
 
 var _ RefAnimatedTexture = &RefAnimatedTextureImpl{}
@@ -236,19 +236,19 @@ func (r *RefAnimatedTextureImpl) Unref() {
 }
 
 func (r *RefAnimatedTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimatedTexture(reference AnimatedTexture) RefAnimatedTexture {
 	return (RefAnimatedTexture)(NewTypedRef[AnimatedTexture](reference))
 }
 
-func newRefAnimatedTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimatedTexture](reference.(AnimatedTexture)))
+func NewRefAnimatedTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimatedTexture](reference.(AnimatedTexture)))
 }
 
-func newRefAnimatedTextureGDExtensionIternalConstructor(reference AnimatedTexture) RefAnimatedTexture {
-	return newTypedRefGDExtensionIternalConstructor[AnimatedTexture](reference)
+func NewRefAnimatedTextureGDExtensionIternalConstructor(reference AnimatedTexture) RefAnimatedTexture {
+	return NewTypedRefGDExtensionIternalConstructor[AnimatedTexture](reference)
 }
 
 var _ RefAnimation = &RefAnimationImpl{}
@@ -283,19 +283,19 @@ func (r *RefAnimationImpl) Unref() {
 }
 
 func (r *RefAnimationImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimation(reference Animation) RefAnimation {
 	return (RefAnimation)(NewTypedRef[Animation](reference))
 }
 
-func newRefAnimationAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Animation](reference.(Animation)))
+func NewRefAnimationAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Animation](reference.(Animation)))
 }
 
-func newRefAnimationGDExtensionIternalConstructor(reference Animation) RefAnimation {
-	return newTypedRefGDExtensionIternalConstructor[Animation](reference)
+func NewRefAnimationGDExtensionIternalConstructor(reference Animation) RefAnimation {
+	return NewTypedRefGDExtensionIternalConstructor[Animation](reference)
 }
 
 var _ RefAnimationLibrary = &RefAnimationLibraryImpl{}
@@ -330,19 +330,19 @@ func (r *RefAnimationLibraryImpl) Unref() {
 }
 
 func (r *RefAnimationLibraryImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationLibrary(reference AnimationLibrary) RefAnimationLibrary {
 	return (RefAnimationLibrary)(NewTypedRef[AnimationLibrary](reference))
 }
 
-func newRefAnimationLibraryAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationLibrary](reference.(AnimationLibrary)))
+func NewRefAnimationLibraryAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationLibrary](reference.(AnimationLibrary)))
 }
 
-func newRefAnimationLibraryGDExtensionIternalConstructor(reference AnimationLibrary) RefAnimationLibrary {
-	return newTypedRefGDExtensionIternalConstructor[AnimationLibrary](reference)
+func NewRefAnimationLibraryGDExtensionIternalConstructor(reference AnimationLibrary) RefAnimationLibrary {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationLibrary](reference)
 }
 
 var _ RefAnimationNode = &RefAnimationNodeImpl{}
@@ -377,19 +377,19 @@ func (r *RefAnimationNodeImpl) Unref() {
 }
 
 func (r *RefAnimationNodeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNode(reference AnimationNode) RefAnimationNode {
 	return (RefAnimationNode)(NewTypedRef[AnimationNode](reference))
 }
 
-func newRefAnimationNodeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNode](reference.(AnimationNode)))
+func NewRefAnimationNodeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNode](reference.(AnimationNode)))
 }
 
-func newRefAnimationNodeGDExtensionIternalConstructor(reference AnimationNode) RefAnimationNode {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNode](reference)
+func NewRefAnimationNodeGDExtensionIternalConstructor(reference AnimationNode) RefAnimationNode {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNode](reference)
 }
 
 var _ RefAnimationNodeAdd2 = &RefAnimationNodeAdd2Impl{}
@@ -424,19 +424,19 @@ func (r *RefAnimationNodeAdd2Impl) Unref() {
 }
 
 func (r *RefAnimationNodeAdd2Impl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeAdd2(reference AnimationNodeAdd2) RefAnimationNodeAdd2 {
 	return (RefAnimationNodeAdd2)(NewTypedRef[AnimationNodeAdd2](reference))
 }
 
-func newRefAnimationNodeAdd2AsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeAdd2](reference.(AnimationNodeAdd2)))
+func NewRefAnimationNodeAdd2AsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeAdd2](reference.(AnimationNodeAdd2)))
 }
 
-func newRefAnimationNodeAdd2GDExtensionIternalConstructor(reference AnimationNodeAdd2) RefAnimationNodeAdd2 {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeAdd2](reference)
+func NewRefAnimationNodeAdd2GDExtensionIternalConstructor(reference AnimationNodeAdd2) RefAnimationNodeAdd2 {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeAdd2](reference)
 }
 
 var _ RefAnimationNodeAdd3 = &RefAnimationNodeAdd3Impl{}
@@ -471,19 +471,19 @@ func (r *RefAnimationNodeAdd3Impl) Unref() {
 }
 
 func (r *RefAnimationNodeAdd3Impl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeAdd3(reference AnimationNodeAdd3) RefAnimationNodeAdd3 {
 	return (RefAnimationNodeAdd3)(NewTypedRef[AnimationNodeAdd3](reference))
 }
 
-func newRefAnimationNodeAdd3AsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeAdd3](reference.(AnimationNodeAdd3)))
+func NewRefAnimationNodeAdd3AsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeAdd3](reference.(AnimationNodeAdd3)))
 }
 
-func newRefAnimationNodeAdd3GDExtensionIternalConstructor(reference AnimationNodeAdd3) RefAnimationNodeAdd3 {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeAdd3](reference)
+func NewRefAnimationNodeAdd3GDExtensionIternalConstructor(reference AnimationNodeAdd3) RefAnimationNodeAdd3 {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeAdd3](reference)
 }
 
 var _ RefAnimationNodeAnimation = &RefAnimationNodeAnimationImpl{}
@@ -518,19 +518,19 @@ func (r *RefAnimationNodeAnimationImpl) Unref() {
 }
 
 func (r *RefAnimationNodeAnimationImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeAnimation(reference AnimationNodeAnimation) RefAnimationNodeAnimation {
 	return (RefAnimationNodeAnimation)(NewTypedRef[AnimationNodeAnimation](reference))
 }
 
-func newRefAnimationNodeAnimationAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeAnimation](reference.(AnimationNodeAnimation)))
+func NewRefAnimationNodeAnimationAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeAnimation](reference.(AnimationNodeAnimation)))
 }
 
-func newRefAnimationNodeAnimationGDExtensionIternalConstructor(reference AnimationNodeAnimation) RefAnimationNodeAnimation {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeAnimation](reference)
+func NewRefAnimationNodeAnimationGDExtensionIternalConstructor(reference AnimationNodeAnimation) RefAnimationNodeAnimation {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeAnimation](reference)
 }
 
 var _ RefAnimationNodeBlend2 = &RefAnimationNodeBlend2Impl{}
@@ -565,19 +565,19 @@ func (r *RefAnimationNodeBlend2Impl) Unref() {
 }
 
 func (r *RefAnimationNodeBlend2Impl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeBlend2(reference AnimationNodeBlend2) RefAnimationNodeBlend2 {
 	return (RefAnimationNodeBlend2)(NewTypedRef[AnimationNodeBlend2](reference))
 }
 
-func newRefAnimationNodeBlend2AsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeBlend2](reference.(AnimationNodeBlend2)))
+func NewRefAnimationNodeBlend2AsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeBlend2](reference.(AnimationNodeBlend2)))
 }
 
-func newRefAnimationNodeBlend2GDExtensionIternalConstructor(reference AnimationNodeBlend2) RefAnimationNodeBlend2 {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeBlend2](reference)
+func NewRefAnimationNodeBlend2GDExtensionIternalConstructor(reference AnimationNodeBlend2) RefAnimationNodeBlend2 {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeBlend2](reference)
 }
 
 var _ RefAnimationNodeBlend3 = &RefAnimationNodeBlend3Impl{}
@@ -612,19 +612,19 @@ func (r *RefAnimationNodeBlend3Impl) Unref() {
 }
 
 func (r *RefAnimationNodeBlend3Impl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeBlend3(reference AnimationNodeBlend3) RefAnimationNodeBlend3 {
 	return (RefAnimationNodeBlend3)(NewTypedRef[AnimationNodeBlend3](reference))
 }
 
-func newRefAnimationNodeBlend3AsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeBlend3](reference.(AnimationNodeBlend3)))
+func NewRefAnimationNodeBlend3AsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeBlend3](reference.(AnimationNodeBlend3)))
 }
 
-func newRefAnimationNodeBlend3GDExtensionIternalConstructor(reference AnimationNodeBlend3) RefAnimationNodeBlend3 {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeBlend3](reference)
+func NewRefAnimationNodeBlend3GDExtensionIternalConstructor(reference AnimationNodeBlend3) RefAnimationNodeBlend3 {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeBlend3](reference)
 }
 
 var _ RefAnimationNodeBlendSpace1D = &RefAnimationNodeBlendSpace1DImpl{}
@@ -659,19 +659,19 @@ func (r *RefAnimationNodeBlendSpace1DImpl) Unref() {
 }
 
 func (r *RefAnimationNodeBlendSpace1DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeBlendSpace1D(reference AnimationNodeBlendSpace1D) RefAnimationNodeBlendSpace1D {
 	return (RefAnimationNodeBlendSpace1D)(NewTypedRef[AnimationNodeBlendSpace1D](reference))
 }
 
-func newRefAnimationNodeBlendSpace1DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeBlendSpace1D](reference.(AnimationNodeBlendSpace1D)))
+func NewRefAnimationNodeBlendSpace1DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeBlendSpace1D](reference.(AnimationNodeBlendSpace1D)))
 }
 
-func newRefAnimationNodeBlendSpace1DGDExtensionIternalConstructor(reference AnimationNodeBlendSpace1D) RefAnimationNodeBlendSpace1D {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeBlendSpace1D](reference)
+func NewRefAnimationNodeBlendSpace1DGDExtensionIternalConstructor(reference AnimationNodeBlendSpace1D) RefAnimationNodeBlendSpace1D {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeBlendSpace1D](reference)
 }
 
 var _ RefAnimationNodeBlendSpace2D = &RefAnimationNodeBlendSpace2DImpl{}
@@ -706,19 +706,19 @@ func (r *RefAnimationNodeBlendSpace2DImpl) Unref() {
 }
 
 func (r *RefAnimationNodeBlendSpace2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeBlendSpace2D(reference AnimationNodeBlendSpace2D) RefAnimationNodeBlendSpace2D {
 	return (RefAnimationNodeBlendSpace2D)(NewTypedRef[AnimationNodeBlendSpace2D](reference))
 }
 
-func newRefAnimationNodeBlendSpace2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeBlendSpace2D](reference.(AnimationNodeBlendSpace2D)))
+func NewRefAnimationNodeBlendSpace2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeBlendSpace2D](reference.(AnimationNodeBlendSpace2D)))
 }
 
-func newRefAnimationNodeBlendSpace2DGDExtensionIternalConstructor(reference AnimationNodeBlendSpace2D) RefAnimationNodeBlendSpace2D {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeBlendSpace2D](reference)
+func NewRefAnimationNodeBlendSpace2DGDExtensionIternalConstructor(reference AnimationNodeBlendSpace2D) RefAnimationNodeBlendSpace2D {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeBlendSpace2D](reference)
 }
 
 var _ RefAnimationNodeBlendTree = &RefAnimationNodeBlendTreeImpl{}
@@ -753,19 +753,19 @@ func (r *RefAnimationNodeBlendTreeImpl) Unref() {
 }
 
 func (r *RefAnimationNodeBlendTreeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeBlendTree(reference AnimationNodeBlendTree) RefAnimationNodeBlendTree {
 	return (RefAnimationNodeBlendTree)(NewTypedRef[AnimationNodeBlendTree](reference))
 }
 
-func newRefAnimationNodeBlendTreeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeBlendTree](reference.(AnimationNodeBlendTree)))
+func NewRefAnimationNodeBlendTreeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeBlendTree](reference.(AnimationNodeBlendTree)))
 }
 
-func newRefAnimationNodeBlendTreeGDExtensionIternalConstructor(reference AnimationNodeBlendTree) RefAnimationNodeBlendTree {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeBlendTree](reference)
+func NewRefAnimationNodeBlendTreeGDExtensionIternalConstructor(reference AnimationNodeBlendTree) RefAnimationNodeBlendTree {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeBlendTree](reference)
 }
 
 var _ RefAnimationNodeOneShot = &RefAnimationNodeOneShotImpl{}
@@ -800,19 +800,19 @@ func (r *RefAnimationNodeOneShotImpl) Unref() {
 }
 
 func (r *RefAnimationNodeOneShotImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeOneShot(reference AnimationNodeOneShot) RefAnimationNodeOneShot {
 	return (RefAnimationNodeOneShot)(NewTypedRef[AnimationNodeOneShot](reference))
 }
 
-func newRefAnimationNodeOneShotAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeOneShot](reference.(AnimationNodeOneShot)))
+func NewRefAnimationNodeOneShotAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeOneShot](reference.(AnimationNodeOneShot)))
 }
 
-func newRefAnimationNodeOneShotGDExtensionIternalConstructor(reference AnimationNodeOneShot) RefAnimationNodeOneShot {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeOneShot](reference)
+func NewRefAnimationNodeOneShotGDExtensionIternalConstructor(reference AnimationNodeOneShot) RefAnimationNodeOneShot {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeOneShot](reference)
 }
 
 var _ RefAnimationNodeOutput = &RefAnimationNodeOutputImpl{}
@@ -847,19 +847,19 @@ func (r *RefAnimationNodeOutputImpl) Unref() {
 }
 
 func (r *RefAnimationNodeOutputImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeOutput(reference AnimationNodeOutput) RefAnimationNodeOutput {
 	return (RefAnimationNodeOutput)(NewTypedRef[AnimationNodeOutput](reference))
 }
 
-func newRefAnimationNodeOutputAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeOutput](reference.(AnimationNodeOutput)))
+func NewRefAnimationNodeOutputAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeOutput](reference.(AnimationNodeOutput)))
 }
 
-func newRefAnimationNodeOutputGDExtensionIternalConstructor(reference AnimationNodeOutput) RefAnimationNodeOutput {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeOutput](reference)
+func NewRefAnimationNodeOutputGDExtensionIternalConstructor(reference AnimationNodeOutput) RefAnimationNodeOutput {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeOutput](reference)
 }
 
 var _ RefAnimationNodeStateMachine = &RefAnimationNodeStateMachineImpl{}
@@ -894,19 +894,19 @@ func (r *RefAnimationNodeStateMachineImpl) Unref() {
 }
 
 func (r *RefAnimationNodeStateMachineImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeStateMachine(reference AnimationNodeStateMachine) RefAnimationNodeStateMachine {
 	return (RefAnimationNodeStateMachine)(NewTypedRef[AnimationNodeStateMachine](reference))
 }
 
-func newRefAnimationNodeStateMachineAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachine](reference.(AnimationNodeStateMachine)))
+func NewRefAnimationNodeStateMachineAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachine](reference.(AnimationNodeStateMachine)))
 }
 
-func newRefAnimationNodeStateMachineGDExtensionIternalConstructor(reference AnimationNodeStateMachine) RefAnimationNodeStateMachine {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachine](reference)
+func NewRefAnimationNodeStateMachineGDExtensionIternalConstructor(reference AnimationNodeStateMachine) RefAnimationNodeStateMachine {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachine](reference)
 }
 
 var _ RefAnimationNodeStateMachinePlayback = &RefAnimationNodeStateMachinePlaybackImpl{}
@@ -941,19 +941,19 @@ func (r *RefAnimationNodeStateMachinePlaybackImpl) Unref() {
 }
 
 func (r *RefAnimationNodeStateMachinePlaybackImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeStateMachinePlayback(reference AnimationNodeStateMachinePlayback) RefAnimationNodeStateMachinePlayback {
 	return (RefAnimationNodeStateMachinePlayback)(NewTypedRef[AnimationNodeStateMachinePlayback](reference))
 }
 
-func newRefAnimationNodeStateMachinePlaybackAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachinePlayback](reference.(AnimationNodeStateMachinePlayback)))
+func NewRefAnimationNodeStateMachinePlaybackAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachinePlayback](reference.(AnimationNodeStateMachinePlayback)))
 }
 
-func newRefAnimationNodeStateMachinePlaybackGDExtensionIternalConstructor(reference AnimationNodeStateMachinePlayback) RefAnimationNodeStateMachinePlayback {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachinePlayback](reference)
+func NewRefAnimationNodeStateMachinePlaybackGDExtensionIternalConstructor(reference AnimationNodeStateMachinePlayback) RefAnimationNodeStateMachinePlayback {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachinePlayback](reference)
 }
 
 var _ RefAnimationNodeStateMachineTransition = &RefAnimationNodeStateMachineTransitionImpl{}
@@ -988,19 +988,19 @@ func (r *RefAnimationNodeStateMachineTransitionImpl) Unref() {
 }
 
 func (r *RefAnimationNodeStateMachineTransitionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeStateMachineTransition(reference AnimationNodeStateMachineTransition) RefAnimationNodeStateMachineTransition {
 	return (RefAnimationNodeStateMachineTransition)(NewTypedRef[AnimationNodeStateMachineTransition](reference))
 }
 
-func newRefAnimationNodeStateMachineTransitionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachineTransition](reference.(AnimationNodeStateMachineTransition)))
+func NewRefAnimationNodeStateMachineTransitionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachineTransition](reference.(AnimationNodeStateMachineTransition)))
 }
 
-func newRefAnimationNodeStateMachineTransitionGDExtensionIternalConstructor(reference AnimationNodeStateMachineTransition) RefAnimationNodeStateMachineTransition {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachineTransition](reference)
+func NewRefAnimationNodeStateMachineTransitionGDExtensionIternalConstructor(reference AnimationNodeStateMachineTransition) RefAnimationNodeStateMachineTransition {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeStateMachineTransition](reference)
 }
 
 var _ RefAnimationNodeSub2 = &RefAnimationNodeSub2Impl{}
@@ -1035,19 +1035,19 @@ func (r *RefAnimationNodeSub2Impl) Unref() {
 }
 
 func (r *RefAnimationNodeSub2Impl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeSub2(reference AnimationNodeSub2) RefAnimationNodeSub2 {
 	return (RefAnimationNodeSub2)(NewTypedRef[AnimationNodeSub2](reference))
 }
 
-func newRefAnimationNodeSub2AsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeSub2](reference.(AnimationNodeSub2)))
+func NewRefAnimationNodeSub2AsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeSub2](reference.(AnimationNodeSub2)))
 }
 
-func newRefAnimationNodeSub2GDExtensionIternalConstructor(reference AnimationNodeSub2) RefAnimationNodeSub2 {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeSub2](reference)
+func NewRefAnimationNodeSub2GDExtensionIternalConstructor(reference AnimationNodeSub2) RefAnimationNodeSub2 {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeSub2](reference)
 }
 
 var _ RefAnimationNodeSync = &RefAnimationNodeSyncImpl{}
@@ -1082,19 +1082,19 @@ func (r *RefAnimationNodeSyncImpl) Unref() {
 }
 
 func (r *RefAnimationNodeSyncImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeSync(reference AnimationNodeSync) RefAnimationNodeSync {
 	return (RefAnimationNodeSync)(NewTypedRef[AnimationNodeSync](reference))
 }
 
-func newRefAnimationNodeSyncAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeSync](reference.(AnimationNodeSync)))
+func NewRefAnimationNodeSyncAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeSync](reference.(AnimationNodeSync)))
 }
 
-func newRefAnimationNodeSyncGDExtensionIternalConstructor(reference AnimationNodeSync) RefAnimationNodeSync {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeSync](reference)
+func NewRefAnimationNodeSyncGDExtensionIternalConstructor(reference AnimationNodeSync) RefAnimationNodeSync {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeSync](reference)
 }
 
 var _ RefAnimationNodeTimeScale = &RefAnimationNodeTimeScaleImpl{}
@@ -1129,19 +1129,19 @@ func (r *RefAnimationNodeTimeScaleImpl) Unref() {
 }
 
 func (r *RefAnimationNodeTimeScaleImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeTimeScale(reference AnimationNodeTimeScale) RefAnimationNodeTimeScale {
 	return (RefAnimationNodeTimeScale)(NewTypedRef[AnimationNodeTimeScale](reference))
 }
 
-func newRefAnimationNodeTimeScaleAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeTimeScale](reference.(AnimationNodeTimeScale)))
+func NewRefAnimationNodeTimeScaleAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeTimeScale](reference.(AnimationNodeTimeScale)))
 }
 
-func newRefAnimationNodeTimeScaleGDExtensionIternalConstructor(reference AnimationNodeTimeScale) RefAnimationNodeTimeScale {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeTimeScale](reference)
+func NewRefAnimationNodeTimeScaleGDExtensionIternalConstructor(reference AnimationNodeTimeScale) RefAnimationNodeTimeScale {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeTimeScale](reference)
 }
 
 var _ RefAnimationNodeTimeSeek = &RefAnimationNodeTimeSeekImpl{}
@@ -1176,19 +1176,19 @@ func (r *RefAnimationNodeTimeSeekImpl) Unref() {
 }
 
 func (r *RefAnimationNodeTimeSeekImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeTimeSeek(reference AnimationNodeTimeSeek) RefAnimationNodeTimeSeek {
 	return (RefAnimationNodeTimeSeek)(NewTypedRef[AnimationNodeTimeSeek](reference))
 }
 
-func newRefAnimationNodeTimeSeekAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeTimeSeek](reference.(AnimationNodeTimeSeek)))
+func NewRefAnimationNodeTimeSeekAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeTimeSeek](reference.(AnimationNodeTimeSeek)))
 }
 
-func newRefAnimationNodeTimeSeekGDExtensionIternalConstructor(reference AnimationNodeTimeSeek) RefAnimationNodeTimeSeek {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeTimeSeek](reference)
+func NewRefAnimationNodeTimeSeekGDExtensionIternalConstructor(reference AnimationNodeTimeSeek) RefAnimationNodeTimeSeek {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeTimeSeek](reference)
 }
 
 var _ RefAnimationNodeTransition = &RefAnimationNodeTransitionImpl{}
@@ -1223,19 +1223,19 @@ func (r *RefAnimationNodeTransitionImpl) Unref() {
 }
 
 func (r *RefAnimationNodeTransitionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationNodeTransition(reference AnimationNodeTransition) RefAnimationNodeTransition {
 	return (RefAnimationNodeTransition)(NewTypedRef[AnimationNodeTransition](reference))
 }
 
-func newRefAnimationNodeTransitionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationNodeTransition](reference.(AnimationNodeTransition)))
+func NewRefAnimationNodeTransitionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationNodeTransition](reference.(AnimationNodeTransition)))
 }
 
-func newRefAnimationNodeTransitionGDExtensionIternalConstructor(reference AnimationNodeTransition) RefAnimationNodeTransition {
-	return newTypedRefGDExtensionIternalConstructor[AnimationNodeTransition](reference)
+func NewRefAnimationNodeTransitionGDExtensionIternalConstructor(reference AnimationNodeTransition) RefAnimationNodeTransition {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationNodeTransition](reference)
 }
 
 var _ RefAnimationRootNode = &RefAnimationRootNodeImpl{}
@@ -1270,19 +1270,19 @@ func (r *RefAnimationRootNodeImpl) Unref() {
 }
 
 func (r *RefAnimationRootNodeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAnimationRootNode(reference AnimationRootNode) RefAnimationRootNode {
 	return (RefAnimationRootNode)(NewTypedRef[AnimationRootNode](reference))
 }
 
-func newRefAnimationRootNodeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AnimationRootNode](reference.(AnimationRootNode)))
+func NewRefAnimationRootNodeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AnimationRootNode](reference.(AnimationRootNode)))
 }
 
-func newRefAnimationRootNodeGDExtensionIternalConstructor(reference AnimationRootNode) RefAnimationRootNode {
-	return newTypedRefGDExtensionIternalConstructor[AnimationRootNode](reference)
+func NewRefAnimationRootNodeGDExtensionIternalConstructor(reference AnimationRootNode) RefAnimationRootNode {
+	return NewTypedRefGDExtensionIternalConstructor[AnimationRootNode](reference)
 }
 
 var _ RefArrayMesh = &RefArrayMeshImpl{}
@@ -1317,19 +1317,19 @@ func (r *RefArrayMeshImpl) Unref() {
 }
 
 func (r *RefArrayMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefArrayMesh(reference ArrayMesh) RefArrayMesh {
 	return (RefArrayMesh)(NewTypedRef[ArrayMesh](reference))
 }
 
-func newRefArrayMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ArrayMesh](reference.(ArrayMesh)))
+func NewRefArrayMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ArrayMesh](reference.(ArrayMesh)))
 }
 
-func newRefArrayMeshGDExtensionIternalConstructor(reference ArrayMesh) RefArrayMesh {
-	return newTypedRefGDExtensionIternalConstructor[ArrayMesh](reference)
+func NewRefArrayMeshGDExtensionIternalConstructor(reference ArrayMesh) RefArrayMesh {
+	return NewTypedRefGDExtensionIternalConstructor[ArrayMesh](reference)
 }
 
 var _ RefArrayOccluder3D = &RefArrayOccluder3DImpl{}
@@ -1364,19 +1364,19 @@ func (r *RefArrayOccluder3DImpl) Unref() {
 }
 
 func (r *RefArrayOccluder3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefArrayOccluder3D(reference ArrayOccluder3D) RefArrayOccluder3D {
 	return (RefArrayOccluder3D)(NewTypedRef[ArrayOccluder3D](reference))
 }
 
-func newRefArrayOccluder3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ArrayOccluder3D](reference.(ArrayOccluder3D)))
+func NewRefArrayOccluder3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ArrayOccluder3D](reference.(ArrayOccluder3D)))
 }
 
-func newRefArrayOccluder3DGDExtensionIternalConstructor(reference ArrayOccluder3D) RefArrayOccluder3D {
-	return newTypedRefGDExtensionIternalConstructor[ArrayOccluder3D](reference)
+func NewRefArrayOccluder3DGDExtensionIternalConstructor(reference ArrayOccluder3D) RefArrayOccluder3D {
+	return NewTypedRefGDExtensionIternalConstructor[ArrayOccluder3D](reference)
 }
 
 var _ RefAtlasTexture = &RefAtlasTextureImpl{}
@@ -1411,19 +1411,19 @@ func (r *RefAtlasTextureImpl) Unref() {
 }
 
 func (r *RefAtlasTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAtlasTexture(reference AtlasTexture) RefAtlasTexture {
 	return (RefAtlasTexture)(NewTypedRef[AtlasTexture](reference))
 }
 
-func newRefAtlasTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AtlasTexture](reference.(AtlasTexture)))
+func NewRefAtlasTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AtlasTexture](reference.(AtlasTexture)))
 }
 
-func newRefAtlasTextureGDExtensionIternalConstructor(reference AtlasTexture) RefAtlasTexture {
-	return newTypedRefGDExtensionIternalConstructor[AtlasTexture](reference)
+func NewRefAtlasTextureGDExtensionIternalConstructor(reference AtlasTexture) RefAtlasTexture {
+	return NewTypedRefGDExtensionIternalConstructor[AtlasTexture](reference)
 }
 
 var _ RefAudioBusLayout = &RefAudioBusLayoutImpl{}
@@ -1458,19 +1458,19 @@ func (r *RefAudioBusLayoutImpl) Unref() {
 }
 
 func (r *RefAudioBusLayoutImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioBusLayout(reference AudioBusLayout) RefAudioBusLayout {
 	return (RefAudioBusLayout)(NewTypedRef[AudioBusLayout](reference))
 }
 
-func newRefAudioBusLayoutAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioBusLayout](reference.(AudioBusLayout)))
+func NewRefAudioBusLayoutAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioBusLayout](reference.(AudioBusLayout)))
 }
 
-func newRefAudioBusLayoutGDExtensionIternalConstructor(reference AudioBusLayout) RefAudioBusLayout {
-	return newTypedRefGDExtensionIternalConstructor[AudioBusLayout](reference)
+func NewRefAudioBusLayoutGDExtensionIternalConstructor(reference AudioBusLayout) RefAudioBusLayout {
+	return NewTypedRefGDExtensionIternalConstructor[AudioBusLayout](reference)
 }
 
 var _ RefAudioEffect = &RefAudioEffectImpl{}
@@ -1505,19 +1505,19 @@ func (r *RefAudioEffectImpl) Unref() {
 }
 
 func (r *RefAudioEffectImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffect(reference AudioEffect) RefAudioEffect {
 	return (RefAudioEffect)(NewTypedRef[AudioEffect](reference))
 }
 
-func newRefAudioEffectAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffect](reference.(AudioEffect)))
+func NewRefAudioEffectAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffect](reference.(AudioEffect)))
 }
 
-func newRefAudioEffectGDExtensionIternalConstructor(reference AudioEffect) RefAudioEffect {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffect](reference)
+func NewRefAudioEffectGDExtensionIternalConstructor(reference AudioEffect) RefAudioEffect {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffect](reference)
 }
 
 var _ RefAudioEffectAmplify = &RefAudioEffectAmplifyImpl{}
@@ -1552,19 +1552,19 @@ func (r *RefAudioEffectAmplifyImpl) Unref() {
 }
 
 func (r *RefAudioEffectAmplifyImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectAmplify(reference AudioEffectAmplify) RefAudioEffectAmplify {
 	return (RefAudioEffectAmplify)(NewTypedRef[AudioEffectAmplify](reference))
 }
 
-func newRefAudioEffectAmplifyAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectAmplify](reference.(AudioEffectAmplify)))
+func NewRefAudioEffectAmplifyAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectAmplify](reference.(AudioEffectAmplify)))
 }
 
-func newRefAudioEffectAmplifyGDExtensionIternalConstructor(reference AudioEffectAmplify) RefAudioEffectAmplify {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectAmplify](reference)
+func NewRefAudioEffectAmplifyGDExtensionIternalConstructor(reference AudioEffectAmplify) RefAudioEffectAmplify {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectAmplify](reference)
 }
 
 var _ RefAudioEffectBandLimitFilter = &RefAudioEffectBandLimitFilterImpl{}
@@ -1599,19 +1599,19 @@ func (r *RefAudioEffectBandLimitFilterImpl) Unref() {
 }
 
 func (r *RefAudioEffectBandLimitFilterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectBandLimitFilter(reference AudioEffectBandLimitFilter) RefAudioEffectBandLimitFilter {
 	return (RefAudioEffectBandLimitFilter)(NewTypedRef[AudioEffectBandLimitFilter](reference))
 }
 
-func newRefAudioEffectBandLimitFilterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectBandLimitFilter](reference.(AudioEffectBandLimitFilter)))
+func NewRefAudioEffectBandLimitFilterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectBandLimitFilter](reference.(AudioEffectBandLimitFilter)))
 }
 
-func newRefAudioEffectBandLimitFilterGDExtensionIternalConstructor(reference AudioEffectBandLimitFilter) RefAudioEffectBandLimitFilter {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectBandLimitFilter](reference)
+func NewRefAudioEffectBandLimitFilterGDExtensionIternalConstructor(reference AudioEffectBandLimitFilter) RefAudioEffectBandLimitFilter {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectBandLimitFilter](reference)
 }
 
 var _ RefAudioEffectBandPassFilter = &RefAudioEffectBandPassFilterImpl{}
@@ -1646,19 +1646,19 @@ func (r *RefAudioEffectBandPassFilterImpl) Unref() {
 }
 
 func (r *RefAudioEffectBandPassFilterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectBandPassFilter(reference AudioEffectBandPassFilter) RefAudioEffectBandPassFilter {
 	return (RefAudioEffectBandPassFilter)(NewTypedRef[AudioEffectBandPassFilter](reference))
 }
 
-func newRefAudioEffectBandPassFilterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectBandPassFilter](reference.(AudioEffectBandPassFilter)))
+func NewRefAudioEffectBandPassFilterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectBandPassFilter](reference.(AudioEffectBandPassFilter)))
 }
 
-func newRefAudioEffectBandPassFilterGDExtensionIternalConstructor(reference AudioEffectBandPassFilter) RefAudioEffectBandPassFilter {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectBandPassFilter](reference)
+func NewRefAudioEffectBandPassFilterGDExtensionIternalConstructor(reference AudioEffectBandPassFilter) RefAudioEffectBandPassFilter {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectBandPassFilter](reference)
 }
 
 var _ RefAudioEffectCapture = &RefAudioEffectCaptureImpl{}
@@ -1693,19 +1693,19 @@ func (r *RefAudioEffectCaptureImpl) Unref() {
 }
 
 func (r *RefAudioEffectCaptureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectCapture(reference AudioEffectCapture) RefAudioEffectCapture {
 	return (RefAudioEffectCapture)(NewTypedRef[AudioEffectCapture](reference))
 }
 
-func newRefAudioEffectCaptureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectCapture](reference.(AudioEffectCapture)))
+func NewRefAudioEffectCaptureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectCapture](reference.(AudioEffectCapture)))
 }
 
-func newRefAudioEffectCaptureGDExtensionIternalConstructor(reference AudioEffectCapture) RefAudioEffectCapture {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectCapture](reference)
+func NewRefAudioEffectCaptureGDExtensionIternalConstructor(reference AudioEffectCapture) RefAudioEffectCapture {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectCapture](reference)
 }
 
 var _ RefAudioEffectChorus = &RefAudioEffectChorusImpl{}
@@ -1740,19 +1740,19 @@ func (r *RefAudioEffectChorusImpl) Unref() {
 }
 
 func (r *RefAudioEffectChorusImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectChorus(reference AudioEffectChorus) RefAudioEffectChorus {
 	return (RefAudioEffectChorus)(NewTypedRef[AudioEffectChorus](reference))
 }
 
-func newRefAudioEffectChorusAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectChorus](reference.(AudioEffectChorus)))
+func NewRefAudioEffectChorusAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectChorus](reference.(AudioEffectChorus)))
 }
 
-func newRefAudioEffectChorusGDExtensionIternalConstructor(reference AudioEffectChorus) RefAudioEffectChorus {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectChorus](reference)
+func NewRefAudioEffectChorusGDExtensionIternalConstructor(reference AudioEffectChorus) RefAudioEffectChorus {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectChorus](reference)
 }
 
 var _ RefAudioEffectCompressor = &RefAudioEffectCompressorImpl{}
@@ -1787,19 +1787,19 @@ func (r *RefAudioEffectCompressorImpl) Unref() {
 }
 
 func (r *RefAudioEffectCompressorImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectCompressor(reference AudioEffectCompressor) RefAudioEffectCompressor {
 	return (RefAudioEffectCompressor)(NewTypedRef[AudioEffectCompressor](reference))
 }
 
-func newRefAudioEffectCompressorAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectCompressor](reference.(AudioEffectCompressor)))
+func NewRefAudioEffectCompressorAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectCompressor](reference.(AudioEffectCompressor)))
 }
 
-func newRefAudioEffectCompressorGDExtensionIternalConstructor(reference AudioEffectCompressor) RefAudioEffectCompressor {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectCompressor](reference)
+func NewRefAudioEffectCompressorGDExtensionIternalConstructor(reference AudioEffectCompressor) RefAudioEffectCompressor {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectCompressor](reference)
 }
 
 var _ RefAudioEffectDelay = &RefAudioEffectDelayImpl{}
@@ -1834,19 +1834,19 @@ func (r *RefAudioEffectDelayImpl) Unref() {
 }
 
 func (r *RefAudioEffectDelayImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectDelay(reference AudioEffectDelay) RefAudioEffectDelay {
 	return (RefAudioEffectDelay)(NewTypedRef[AudioEffectDelay](reference))
 }
 
-func newRefAudioEffectDelayAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectDelay](reference.(AudioEffectDelay)))
+func NewRefAudioEffectDelayAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectDelay](reference.(AudioEffectDelay)))
 }
 
-func newRefAudioEffectDelayGDExtensionIternalConstructor(reference AudioEffectDelay) RefAudioEffectDelay {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectDelay](reference)
+func NewRefAudioEffectDelayGDExtensionIternalConstructor(reference AudioEffectDelay) RefAudioEffectDelay {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectDelay](reference)
 }
 
 var _ RefAudioEffectDistortion = &RefAudioEffectDistortionImpl{}
@@ -1881,19 +1881,19 @@ func (r *RefAudioEffectDistortionImpl) Unref() {
 }
 
 func (r *RefAudioEffectDistortionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectDistortion(reference AudioEffectDistortion) RefAudioEffectDistortion {
 	return (RefAudioEffectDistortion)(NewTypedRef[AudioEffectDistortion](reference))
 }
 
-func newRefAudioEffectDistortionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectDistortion](reference.(AudioEffectDistortion)))
+func NewRefAudioEffectDistortionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectDistortion](reference.(AudioEffectDistortion)))
 }
 
-func newRefAudioEffectDistortionGDExtensionIternalConstructor(reference AudioEffectDistortion) RefAudioEffectDistortion {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectDistortion](reference)
+func NewRefAudioEffectDistortionGDExtensionIternalConstructor(reference AudioEffectDistortion) RefAudioEffectDistortion {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectDistortion](reference)
 }
 
 var _ RefAudioEffectEQ = &RefAudioEffectEQImpl{}
@@ -1928,19 +1928,19 @@ func (r *RefAudioEffectEQImpl) Unref() {
 }
 
 func (r *RefAudioEffectEQImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectEQ(reference AudioEffectEQ) RefAudioEffectEQ {
 	return (RefAudioEffectEQ)(NewTypedRef[AudioEffectEQ](reference))
 }
 
-func newRefAudioEffectEQAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectEQ](reference.(AudioEffectEQ)))
+func NewRefAudioEffectEQAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectEQ](reference.(AudioEffectEQ)))
 }
 
-func newRefAudioEffectEQGDExtensionIternalConstructor(reference AudioEffectEQ) RefAudioEffectEQ {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectEQ](reference)
+func NewRefAudioEffectEQGDExtensionIternalConstructor(reference AudioEffectEQ) RefAudioEffectEQ {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectEQ](reference)
 }
 
 var _ RefAudioEffectEQ10 = &RefAudioEffectEQ10Impl{}
@@ -1975,19 +1975,19 @@ func (r *RefAudioEffectEQ10Impl) Unref() {
 }
 
 func (r *RefAudioEffectEQ10Impl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectEQ10(reference AudioEffectEQ10) RefAudioEffectEQ10 {
 	return (RefAudioEffectEQ10)(NewTypedRef[AudioEffectEQ10](reference))
 }
 
-func newRefAudioEffectEQ10AsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectEQ10](reference.(AudioEffectEQ10)))
+func NewRefAudioEffectEQ10AsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectEQ10](reference.(AudioEffectEQ10)))
 }
 
-func newRefAudioEffectEQ10GDExtensionIternalConstructor(reference AudioEffectEQ10) RefAudioEffectEQ10 {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectEQ10](reference)
+func NewRefAudioEffectEQ10GDExtensionIternalConstructor(reference AudioEffectEQ10) RefAudioEffectEQ10 {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectEQ10](reference)
 }
 
 var _ RefAudioEffectEQ21 = &RefAudioEffectEQ21Impl{}
@@ -2022,19 +2022,19 @@ func (r *RefAudioEffectEQ21Impl) Unref() {
 }
 
 func (r *RefAudioEffectEQ21Impl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectEQ21(reference AudioEffectEQ21) RefAudioEffectEQ21 {
 	return (RefAudioEffectEQ21)(NewTypedRef[AudioEffectEQ21](reference))
 }
 
-func newRefAudioEffectEQ21AsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectEQ21](reference.(AudioEffectEQ21)))
+func NewRefAudioEffectEQ21AsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectEQ21](reference.(AudioEffectEQ21)))
 }
 
-func newRefAudioEffectEQ21GDExtensionIternalConstructor(reference AudioEffectEQ21) RefAudioEffectEQ21 {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectEQ21](reference)
+func NewRefAudioEffectEQ21GDExtensionIternalConstructor(reference AudioEffectEQ21) RefAudioEffectEQ21 {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectEQ21](reference)
 }
 
 var _ RefAudioEffectEQ6 = &RefAudioEffectEQ6Impl{}
@@ -2069,19 +2069,19 @@ func (r *RefAudioEffectEQ6Impl) Unref() {
 }
 
 func (r *RefAudioEffectEQ6Impl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectEQ6(reference AudioEffectEQ6) RefAudioEffectEQ6 {
 	return (RefAudioEffectEQ6)(NewTypedRef[AudioEffectEQ6](reference))
 }
 
-func newRefAudioEffectEQ6AsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectEQ6](reference.(AudioEffectEQ6)))
+func NewRefAudioEffectEQ6AsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectEQ6](reference.(AudioEffectEQ6)))
 }
 
-func newRefAudioEffectEQ6GDExtensionIternalConstructor(reference AudioEffectEQ6) RefAudioEffectEQ6 {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectEQ6](reference)
+func NewRefAudioEffectEQ6GDExtensionIternalConstructor(reference AudioEffectEQ6) RefAudioEffectEQ6 {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectEQ6](reference)
 }
 
 var _ RefAudioEffectFilter = &RefAudioEffectFilterImpl{}
@@ -2116,19 +2116,19 @@ func (r *RefAudioEffectFilterImpl) Unref() {
 }
 
 func (r *RefAudioEffectFilterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectFilter(reference AudioEffectFilter) RefAudioEffectFilter {
 	return (RefAudioEffectFilter)(NewTypedRef[AudioEffectFilter](reference))
 }
 
-func newRefAudioEffectFilterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectFilter](reference.(AudioEffectFilter)))
+func NewRefAudioEffectFilterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectFilter](reference.(AudioEffectFilter)))
 }
 
-func newRefAudioEffectFilterGDExtensionIternalConstructor(reference AudioEffectFilter) RefAudioEffectFilter {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectFilter](reference)
+func NewRefAudioEffectFilterGDExtensionIternalConstructor(reference AudioEffectFilter) RefAudioEffectFilter {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectFilter](reference)
 }
 
 var _ RefAudioEffectHighPassFilter = &RefAudioEffectHighPassFilterImpl{}
@@ -2163,19 +2163,19 @@ func (r *RefAudioEffectHighPassFilterImpl) Unref() {
 }
 
 func (r *RefAudioEffectHighPassFilterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectHighPassFilter(reference AudioEffectHighPassFilter) RefAudioEffectHighPassFilter {
 	return (RefAudioEffectHighPassFilter)(NewTypedRef[AudioEffectHighPassFilter](reference))
 }
 
-func newRefAudioEffectHighPassFilterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectHighPassFilter](reference.(AudioEffectHighPassFilter)))
+func NewRefAudioEffectHighPassFilterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectHighPassFilter](reference.(AudioEffectHighPassFilter)))
 }
 
-func newRefAudioEffectHighPassFilterGDExtensionIternalConstructor(reference AudioEffectHighPassFilter) RefAudioEffectHighPassFilter {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectHighPassFilter](reference)
+func NewRefAudioEffectHighPassFilterGDExtensionIternalConstructor(reference AudioEffectHighPassFilter) RefAudioEffectHighPassFilter {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectHighPassFilter](reference)
 }
 
 var _ RefAudioEffectHighShelfFilter = &RefAudioEffectHighShelfFilterImpl{}
@@ -2210,19 +2210,19 @@ func (r *RefAudioEffectHighShelfFilterImpl) Unref() {
 }
 
 func (r *RefAudioEffectHighShelfFilterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectHighShelfFilter(reference AudioEffectHighShelfFilter) RefAudioEffectHighShelfFilter {
 	return (RefAudioEffectHighShelfFilter)(NewTypedRef[AudioEffectHighShelfFilter](reference))
 }
 
-func newRefAudioEffectHighShelfFilterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectHighShelfFilter](reference.(AudioEffectHighShelfFilter)))
+func NewRefAudioEffectHighShelfFilterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectHighShelfFilter](reference.(AudioEffectHighShelfFilter)))
 }
 
-func newRefAudioEffectHighShelfFilterGDExtensionIternalConstructor(reference AudioEffectHighShelfFilter) RefAudioEffectHighShelfFilter {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectHighShelfFilter](reference)
+func NewRefAudioEffectHighShelfFilterGDExtensionIternalConstructor(reference AudioEffectHighShelfFilter) RefAudioEffectHighShelfFilter {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectHighShelfFilter](reference)
 }
 
 var _ RefAudioEffectInstance = &RefAudioEffectInstanceImpl{}
@@ -2257,19 +2257,19 @@ func (r *RefAudioEffectInstanceImpl) Unref() {
 }
 
 func (r *RefAudioEffectInstanceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectInstance(reference AudioEffectInstance) RefAudioEffectInstance {
 	return (RefAudioEffectInstance)(NewTypedRef[AudioEffectInstance](reference))
 }
 
-func newRefAudioEffectInstanceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectInstance](reference.(AudioEffectInstance)))
+func NewRefAudioEffectInstanceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectInstance](reference.(AudioEffectInstance)))
 }
 
-func newRefAudioEffectInstanceGDExtensionIternalConstructor(reference AudioEffectInstance) RefAudioEffectInstance {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectInstance](reference)
+func NewRefAudioEffectInstanceGDExtensionIternalConstructor(reference AudioEffectInstance) RefAudioEffectInstance {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectInstance](reference)
 }
 
 var _ RefAudioEffectLimiter = &RefAudioEffectLimiterImpl{}
@@ -2304,19 +2304,19 @@ func (r *RefAudioEffectLimiterImpl) Unref() {
 }
 
 func (r *RefAudioEffectLimiterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectLimiter(reference AudioEffectLimiter) RefAudioEffectLimiter {
 	return (RefAudioEffectLimiter)(NewTypedRef[AudioEffectLimiter](reference))
 }
 
-func newRefAudioEffectLimiterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectLimiter](reference.(AudioEffectLimiter)))
+func NewRefAudioEffectLimiterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectLimiter](reference.(AudioEffectLimiter)))
 }
 
-func newRefAudioEffectLimiterGDExtensionIternalConstructor(reference AudioEffectLimiter) RefAudioEffectLimiter {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectLimiter](reference)
+func NewRefAudioEffectLimiterGDExtensionIternalConstructor(reference AudioEffectLimiter) RefAudioEffectLimiter {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectLimiter](reference)
 }
 
 var _ RefAudioEffectLowPassFilter = &RefAudioEffectLowPassFilterImpl{}
@@ -2351,19 +2351,19 @@ func (r *RefAudioEffectLowPassFilterImpl) Unref() {
 }
 
 func (r *RefAudioEffectLowPassFilterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectLowPassFilter(reference AudioEffectLowPassFilter) RefAudioEffectLowPassFilter {
 	return (RefAudioEffectLowPassFilter)(NewTypedRef[AudioEffectLowPassFilter](reference))
 }
 
-func newRefAudioEffectLowPassFilterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectLowPassFilter](reference.(AudioEffectLowPassFilter)))
+func NewRefAudioEffectLowPassFilterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectLowPassFilter](reference.(AudioEffectLowPassFilter)))
 }
 
-func newRefAudioEffectLowPassFilterGDExtensionIternalConstructor(reference AudioEffectLowPassFilter) RefAudioEffectLowPassFilter {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectLowPassFilter](reference)
+func NewRefAudioEffectLowPassFilterGDExtensionIternalConstructor(reference AudioEffectLowPassFilter) RefAudioEffectLowPassFilter {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectLowPassFilter](reference)
 }
 
 var _ RefAudioEffectLowShelfFilter = &RefAudioEffectLowShelfFilterImpl{}
@@ -2398,19 +2398,19 @@ func (r *RefAudioEffectLowShelfFilterImpl) Unref() {
 }
 
 func (r *RefAudioEffectLowShelfFilterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectLowShelfFilter(reference AudioEffectLowShelfFilter) RefAudioEffectLowShelfFilter {
 	return (RefAudioEffectLowShelfFilter)(NewTypedRef[AudioEffectLowShelfFilter](reference))
 }
 
-func newRefAudioEffectLowShelfFilterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectLowShelfFilter](reference.(AudioEffectLowShelfFilter)))
+func NewRefAudioEffectLowShelfFilterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectLowShelfFilter](reference.(AudioEffectLowShelfFilter)))
 }
 
-func newRefAudioEffectLowShelfFilterGDExtensionIternalConstructor(reference AudioEffectLowShelfFilter) RefAudioEffectLowShelfFilter {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectLowShelfFilter](reference)
+func NewRefAudioEffectLowShelfFilterGDExtensionIternalConstructor(reference AudioEffectLowShelfFilter) RefAudioEffectLowShelfFilter {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectLowShelfFilter](reference)
 }
 
 var _ RefAudioEffectNotchFilter = &RefAudioEffectNotchFilterImpl{}
@@ -2445,19 +2445,19 @@ func (r *RefAudioEffectNotchFilterImpl) Unref() {
 }
 
 func (r *RefAudioEffectNotchFilterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectNotchFilter(reference AudioEffectNotchFilter) RefAudioEffectNotchFilter {
 	return (RefAudioEffectNotchFilter)(NewTypedRef[AudioEffectNotchFilter](reference))
 }
 
-func newRefAudioEffectNotchFilterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectNotchFilter](reference.(AudioEffectNotchFilter)))
+func NewRefAudioEffectNotchFilterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectNotchFilter](reference.(AudioEffectNotchFilter)))
 }
 
-func newRefAudioEffectNotchFilterGDExtensionIternalConstructor(reference AudioEffectNotchFilter) RefAudioEffectNotchFilter {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectNotchFilter](reference)
+func NewRefAudioEffectNotchFilterGDExtensionIternalConstructor(reference AudioEffectNotchFilter) RefAudioEffectNotchFilter {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectNotchFilter](reference)
 }
 
 var _ RefAudioEffectPanner = &RefAudioEffectPannerImpl{}
@@ -2492,19 +2492,19 @@ func (r *RefAudioEffectPannerImpl) Unref() {
 }
 
 func (r *RefAudioEffectPannerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectPanner(reference AudioEffectPanner) RefAudioEffectPanner {
 	return (RefAudioEffectPanner)(NewTypedRef[AudioEffectPanner](reference))
 }
 
-func newRefAudioEffectPannerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectPanner](reference.(AudioEffectPanner)))
+func NewRefAudioEffectPannerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectPanner](reference.(AudioEffectPanner)))
 }
 
-func newRefAudioEffectPannerGDExtensionIternalConstructor(reference AudioEffectPanner) RefAudioEffectPanner {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectPanner](reference)
+func NewRefAudioEffectPannerGDExtensionIternalConstructor(reference AudioEffectPanner) RefAudioEffectPanner {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectPanner](reference)
 }
 
 var _ RefAudioEffectPhaser = &RefAudioEffectPhaserImpl{}
@@ -2539,19 +2539,19 @@ func (r *RefAudioEffectPhaserImpl) Unref() {
 }
 
 func (r *RefAudioEffectPhaserImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectPhaser(reference AudioEffectPhaser) RefAudioEffectPhaser {
 	return (RefAudioEffectPhaser)(NewTypedRef[AudioEffectPhaser](reference))
 }
 
-func newRefAudioEffectPhaserAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectPhaser](reference.(AudioEffectPhaser)))
+func NewRefAudioEffectPhaserAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectPhaser](reference.(AudioEffectPhaser)))
 }
 
-func newRefAudioEffectPhaserGDExtensionIternalConstructor(reference AudioEffectPhaser) RefAudioEffectPhaser {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectPhaser](reference)
+func NewRefAudioEffectPhaserGDExtensionIternalConstructor(reference AudioEffectPhaser) RefAudioEffectPhaser {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectPhaser](reference)
 }
 
 var _ RefAudioEffectPitchShift = &RefAudioEffectPitchShiftImpl{}
@@ -2586,19 +2586,19 @@ func (r *RefAudioEffectPitchShiftImpl) Unref() {
 }
 
 func (r *RefAudioEffectPitchShiftImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectPitchShift(reference AudioEffectPitchShift) RefAudioEffectPitchShift {
 	return (RefAudioEffectPitchShift)(NewTypedRef[AudioEffectPitchShift](reference))
 }
 
-func newRefAudioEffectPitchShiftAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectPitchShift](reference.(AudioEffectPitchShift)))
+func NewRefAudioEffectPitchShiftAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectPitchShift](reference.(AudioEffectPitchShift)))
 }
 
-func newRefAudioEffectPitchShiftGDExtensionIternalConstructor(reference AudioEffectPitchShift) RefAudioEffectPitchShift {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectPitchShift](reference)
+func NewRefAudioEffectPitchShiftGDExtensionIternalConstructor(reference AudioEffectPitchShift) RefAudioEffectPitchShift {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectPitchShift](reference)
 }
 
 var _ RefAudioEffectRecord = &RefAudioEffectRecordImpl{}
@@ -2633,19 +2633,19 @@ func (r *RefAudioEffectRecordImpl) Unref() {
 }
 
 func (r *RefAudioEffectRecordImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectRecord(reference AudioEffectRecord) RefAudioEffectRecord {
 	return (RefAudioEffectRecord)(NewTypedRef[AudioEffectRecord](reference))
 }
 
-func newRefAudioEffectRecordAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectRecord](reference.(AudioEffectRecord)))
+func NewRefAudioEffectRecordAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectRecord](reference.(AudioEffectRecord)))
 }
 
-func newRefAudioEffectRecordGDExtensionIternalConstructor(reference AudioEffectRecord) RefAudioEffectRecord {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectRecord](reference)
+func NewRefAudioEffectRecordGDExtensionIternalConstructor(reference AudioEffectRecord) RefAudioEffectRecord {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectRecord](reference)
 }
 
 var _ RefAudioEffectReverb = &RefAudioEffectReverbImpl{}
@@ -2680,19 +2680,19 @@ func (r *RefAudioEffectReverbImpl) Unref() {
 }
 
 func (r *RefAudioEffectReverbImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectReverb(reference AudioEffectReverb) RefAudioEffectReverb {
 	return (RefAudioEffectReverb)(NewTypedRef[AudioEffectReverb](reference))
 }
 
-func newRefAudioEffectReverbAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectReverb](reference.(AudioEffectReverb)))
+func NewRefAudioEffectReverbAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectReverb](reference.(AudioEffectReverb)))
 }
 
-func newRefAudioEffectReverbGDExtensionIternalConstructor(reference AudioEffectReverb) RefAudioEffectReverb {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectReverb](reference)
+func NewRefAudioEffectReverbGDExtensionIternalConstructor(reference AudioEffectReverb) RefAudioEffectReverb {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectReverb](reference)
 }
 
 var _ RefAudioEffectSpectrumAnalyzer = &RefAudioEffectSpectrumAnalyzerImpl{}
@@ -2727,19 +2727,19 @@ func (r *RefAudioEffectSpectrumAnalyzerImpl) Unref() {
 }
 
 func (r *RefAudioEffectSpectrumAnalyzerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectSpectrumAnalyzer(reference AudioEffectSpectrumAnalyzer) RefAudioEffectSpectrumAnalyzer {
 	return (RefAudioEffectSpectrumAnalyzer)(NewTypedRef[AudioEffectSpectrumAnalyzer](reference))
 }
 
-func newRefAudioEffectSpectrumAnalyzerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectSpectrumAnalyzer](reference.(AudioEffectSpectrumAnalyzer)))
+func NewRefAudioEffectSpectrumAnalyzerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectSpectrumAnalyzer](reference.(AudioEffectSpectrumAnalyzer)))
 }
 
-func newRefAudioEffectSpectrumAnalyzerGDExtensionIternalConstructor(reference AudioEffectSpectrumAnalyzer) RefAudioEffectSpectrumAnalyzer {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectSpectrumAnalyzer](reference)
+func NewRefAudioEffectSpectrumAnalyzerGDExtensionIternalConstructor(reference AudioEffectSpectrumAnalyzer) RefAudioEffectSpectrumAnalyzer {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectSpectrumAnalyzer](reference)
 }
 
 var _ RefAudioEffectSpectrumAnalyzerInstance = &RefAudioEffectSpectrumAnalyzerInstanceImpl{}
@@ -2774,19 +2774,19 @@ func (r *RefAudioEffectSpectrumAnalyzerInstanceImpl) Unref() {
 }
 
 func (r *RefAudioEffectSpectrumAnalyzerInstanceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectSpectrumAnalyzerInstance(reference AudioEffectSpectrumAnalyzerInstance) RefAudioEffectSpectrumAnalyzerInstance {
 	return (RefAudioEffectSpectrumAnalyzerInstance)(NewTypedRef[AudioEffectSpectrumAnalyzerInstance](reference))
 }
 
-func newRefAudioEffectSpectrumAnalyzerInstanceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectSpectrumAnalyzerInstance](reference.(AudioEffectSpectrumAnalyzerInstance)))
+func NewRefAudioEffectSpectrumAnalyzerInstanceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectSpectrumAnalyzerInstance](reference.(AudioEffectSpectrumAnalyzerInstance)))
 }
 
-func newRefAudioEffectSpectrumAnalyzerInstanceGDExtensionIternalConstructor(reference AudioEffectSpectrumAnalyzerInstance) RefAudioEffectSpectrumAnalyzerInstance {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectSpectrumAnalyzerInstance](reference)
+func NewRefAudioEffectSpectrumAnalyzerInstanceGDExtensionIternalConstructor(reference AudioEffectSpectrumAnalyzerInstance) RefAudioEffectSpectrumAnalyzerInstance {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectSpectrumAnalyzerInstance](reference)
 }
 
 var _ RefAudioEffectStereoEnhance = &RefAudioEffectStereoEnhanceImpl{}
@@ -2821,19 +2821,19 @@ func (r *RefAudioEffectStereoEnhanceImpl) Unref() {
 }
 
 func (r *RefAudioEffectStereoEnhanceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioEffectStereoEnhance(reference AudioEffectStereoEnhance) RefAudioEffectStereoEnhance {
 	return (RefAudioEffectStereoEnhance)(NewTypedRef[AudioEffectStereoEnhance](reference))
 }
 
-func newRefAudioEffectStereoEnhanceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioEffectStereoEnhance](reference.(AudioEffectStereoEnhance)))
+func NewRefAudioEffectStereoEnhanceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectStereoEnhance](reference.(AudioEffectStereoEnhance)))
 }
 
-func newRefAudioEffectStereoEnhanceGDExtensionIternalConstructor(reference AudioEffectStereoEnhance) RefAudioEffectStereoEnhance {
-	return newTypedRefGDExtensionIternalConstructor[AudioEffectStereoEnhance](reference)
+func NewRefAudioEffectStereoEnhanceGDExtensionIternalConstructor(reference AudioEffectStereoEnhance) RefAudioEffectStereoEnhance {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectStereoEnhance](reference)
 }
 
 var _ RefAudioStream = &RefAudioStreamImpl{}
@@ -2868,19 +2868,19 @@ func (r *RefAudioStreamImpl) Unref() {
 }
 
 func (r *RefAudioStreamImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStream(reference AudioStream) RefAudioStream {
 	return (RefAudioStream)(NewTypedRef[AudioStream](reference))
 }
 
-func newRefAudioStreamAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStream](reference.(AudioStream)))
+func NewRefAudioStreamAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStream](reference.(AudioStream)))
 }
 
-func newRefAudioStreamGDExtensionIternalConstructor(reference AudioStream) RefAudioStream {
-	return newTypedRefGDExtensionIternalConstructor[AudioStream](reference)
+func NewRefAudioStreamGDExtensionIternalConstructor(reference AudioStream) RefAudioStream {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStream](reference)
 }
 
 var _ RefAudioStreamGenerator = &RefAudioStreamGeneratorImpl{}
@@ -2915,19 +2915,19 @@ func (r *RefAudioStreamGeneratorImpl) Unref() {
 }
 
 func (r *RefAudioStreamGeneratorImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamGenerator(reference AudioStreamGenerator) RefAudioStreamGenerator {
 	return (RefAudioStreamGenerator)(NewTypedRef[AudioStreamGenerator](reference))
 }
 
-func newRefAudioStreamGeneratorAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamGenerator](reference.(AudioStreamGenerator)))
+func NewRefAudioStreamGeneratorAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamGenerator](reference.(AudioStreamGenerator)))
 }
 
-func newRefAudioStreamGeneratorGDExtensionIternalConstructor(reference AudioStreamGenerator) RefAudioStreamGenerator {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamGenerator](reference)
+func NewRefAudioStreamGeneratorGDExtensionIternalConstructor(reference AudioStreamGenerator) RefAudioStreamGenerator {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamGenerator](reference)
 }
 
 var _ RefAudioStreamGeneratorPlayback = &RefAudioStreamGeneratorPlaybackImpl{}
@@ -2962,19 +2962,19 @@ func (r *RefAudioStreamGeneratorPlaybackImpl) Unref() {
 }
 
 func (r *RefAudioStreamGeneratorPlaybackImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamGeneratorPlayback(reference AudioStreamGeneratorPlayback) RefAudioStreamGeneratorPlayback {
 	return (RefAudioStreamGeneratorPlayback)(NewTypedRef[AudioStreamGeneratorPlayback](reference))
 }
 
-func newRefAudioStreamGeneratorPlaybackAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamGeneratorPlayback](reference.(AudioStreamGeneratorPlayback)))
+func NewRefAudioStreamGeneratorPlaybackAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamGeneratorPlayback](reference.(AudioStreamGeneratorPlayback)))
 }
 
-func newRefAudioStreamGeneratorPlaybackGDExtensionIternalConstructor(reference AudioStreamGeneratorPlayback) RefAudioStreamGeneratorPlayback {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamGeneratorPlayback](reference)
+func NewRefAudioStreamGeneratorPlaybackGDExtensionIternalConstructor(reference AudioStreamGeneratorPlayback) RefAudioStreamGeneratorPlayback {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamGeneratorPlayback](reference)
 }
 
 var _ RefAudioStreamMP3 = &RefAudioStreamMP3Impl{}
@@ -3009,19 +3009,19 @@ func (r *RefAudioStreamMP3Impl) Unref() {
 }
 
 func (r *RefAudioStreamMP3Impl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamMP3(reference AudioStreamMP3) RefAudioStreamMP3 {
 	return (RefAudioStreamMP3)(NewTypedRef[AudioStreamMP3](reference))
 }
 
-func newRefAudioStreamMP3AsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamMP3](reference.(AudioStreamMP3)))
+func NewRefAudioStreamMP3AsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamMP3](reference.(AudioStreamMP3)))
 }
 
-func newRefAudioStreamMP3GDExtensionIternalConstructor(reference AudioStreamMP3) RefAudioStreamMP3 {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamMP3](reference)
+func NewRefAudioStreamMP3GDExtensionIternalConstructor(reference AudioStreamMP3) RefAudioStreamMP3 {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamMP3](reference)
 }
 
 var _ RefAudioStreamMicrophone = &RefAudioStreamMicrophoneImpl{}
@@ -3056,19 +3056,19 @@ func (r *RefAudioStreamMicrophoneImpl) Unref() {
 }
 
 func (r *RefAudioStreamMicrophoneImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamMicrophone(reference AudioStreamMicrophone) RefAudioStreamMicrophone {
 	return (RefAudioStreamMicrophone)(NewTypedRef[AudioStreamMicrophone](reference))
 }
 
-func newRefAudioStreamMicrophoneAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamMicrophone](reference.(AudioStreamMicrophone)))
+func NewRefAudioStreamMicrophoneAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamMicrophone](reference.(AudioStreamMicrophone)))
 }
 
-func newRefAudioStreamMicrophoneGDExtensionIternalConstructor(reference AudioStreamMicrophone) RefAudioStreamMicrophone {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamMicrophone](reference)
+func NewRefAudioStreamMicrophoneGDExtensionIternalConstructor(reference AudioStreamMicrophone) RefAudioStreamMicrophone {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamMicrophone](reference)
 }
 
 var _ RefAudioStreamOggVorbis = &RefAudioStreamOggVorbisImpl{}
@@ -3103,19 +3103,19 @@ func (r *RefAudioStreamOggVorbisImpl) Unref() {
 }
 
 func (r *RefAudioStreamOggVorbisImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamOggVorbis(reference AudioStreamOggVorbis) RefAudioStreamOggVorbis {
 	return (RefAudioStreamOggVorbis)(NewTypedRef[AudioStreamOggVorbis](reference))
 }
 
-func newRefAudioStreamOggVorbisAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamOggVorbis](reference.(AudioStreamOggVorbis)))
+func NewRefAudioStreamOggVorbisAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamOggVorbis](reference.(AudioStreamOggVorbis)))
 }
 
-func newRefAudioStreamOggVorbisGDExtensionIternalConstructor(reference AudioStreamOggVorbis) RefAudioStreamOggVorbis {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamOggVorbis](reference)
+func NewRefAudioStreamOggVorbisGDExtensionIternalConstructor(reference AudioStreamOggVorbis) RefAudioStreamOggVorbis {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamOggVorbis](reference)
 }
 
 var _ RefAudioStreamPlayback = &RefAudioStreamPlaybackImpl{}
@@ -3150,19 +3150,19 @@ func (r *RefAudioStreamPlaybackImpl) Unref() {
 }
 
 func (r *RefAudioStreamPlaybackImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamPlayback(reference AudioStreamPlayback) RefAudioStreamPlayback {
 	return (RefAudioStreamPlayback)(NewTypedRef[AudioStreamPlayback](reference))
 }
 
-func newRefAudioStreamPlaybackAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamPlayback](reference.(AudioStreamPlayback)))
+func NewRefAudioStreamPlaybackAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamPlayback](reference.(AudioStreamPlayback)))
 }
 
-func newRefAudioStreamPlaybackGDExtensionIternalConstructor(reference AudioStreamPlayback) RefAudioStreamPlayback {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamPlayback](reference)
+func NewRefAudioStreamPlaybackGDExtensionIternalConstructor(reference AudioStreamPlayback) RefAudioStreamPlayback {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamPlayback](reference)
 }
 
 var _ RefAudioStreamPlaybackOggVorbis = &RefAudioStreamPlaybackOggVorbisImpl{}
@@ -3197,19 +3197,19 @@ func (r *RefAudioStreamPlaybackOggVorbisImpl) Unref() {
 }
 
 func (r *RefAudioStreamPlaybackOggVorbisImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamPlaybackOggVorbis(reference AudioStreamPlaybackOggVorbis) RefAudioStreamPlaybackOggVorbis {
 	return (RefAudioStreamPlaybackOggVorbis)(NewTypedRef[AudioStreamPlaybackOggVorbis](reference))
 }
 
-func newRefAudioStreamPlaybackOggVorbisAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackOggVorbis](reference.(AudioStreamPlaybackOggVorbis)))
+func NewRefAudioStreamPlaybackOggVorbisAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackOggVorbis](reference.(AudioStreamPlaybackOggVorbis)))
 }
 
-func newRefAudioStreamPlaybackOggVorbisGDExtensionIternalConstructor(reference AudioStreamPlaybackOggVorbis) RefAudioStreamPlaybackOggVorbis {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackOggVorbis](reference)
+func NewRefAudioStreamPlaybackOggVorbisGDExtensionIternalConstructor(reference AudioStreamPlaybackOggVorbis) RefAudioStreamPlaybackOggVorbis {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackOggVorbis](reference)
 }
 
 var _ RefAudioStreamPlaybackPolyphonic = &RefAudioStreamPlaybackPolyphonicImpl{}
@@ -3244,19 +3244,19 @@ func (r *RefAudioStreamPlaybackPolyphonicImpl) Unref() {
 }
 
 func (r *RefAudioStreamPlaybackPolyphonicImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamPlaybackPolyphonic(reference AudioStreamPlaybackPolyphonic) RefAudioStreamPlaybackPolyphonic {
 	return (RefAudioStreamPlaybackPolyphonic)(NewTypedRef[AudioStreamPlaybackPolyphonic](reference))
 }
 
-func newRefAudioStreamPlaybackPolyphonicAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackPolyphonic](reference.(AudioStreamPlaybackPolyphonic)))
+func NewRefAudioStreamPlaybackPolyphonicAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackPolyphonic](reference.(AudioStreamPlaybackPolyphonic)))
 }
 
-func newRefAudioStreamPlaybackPolyphonicGDExtensionIternalConstructor(reference AudioStreamPlaybackPolyphonic) RefAudioStreamPlaybackPolyphonic {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackPolyphonic](reference)
+func NewRefAudioStreamPlaybackPolyphonicGDExtensionIternalConstructor(reference AudioStreamPlaybackPolyphonic) RefAudioStreamPlaybackPolyphonic {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackPolyphonic](reference)
 }
 
 var _ RefAudioStreamPlaybackResampled = &RefAudioStreamPlaybackResampledImpl{}
@@ -3291,19 +3291,19 @@ func (r *RefAudioStreamPlaybackResampledImpl) Unref() {
 }
 
 func (r *RefAudioStreamPlaybackResampledImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamPlaybackResampled(reference AudioStreamPlaybackResampled) RefAudioStreamPlaybackResampled {
 	return (RefAudioStreamPlaybackResampled)(NewTypedRef[AudioStreamPlaybackResampled](reference))
 }
 
-func newRefAudioStreamPlaybackResampledAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackResampled](reference.(AudioStreamPlaybackResampled)))
+func NewRefAudioStreamPlaybackResampledAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackResampled](reference.(AudioStreamPlaybackResampled)))
 }
 
-func newRefAudioStreamPlaybackResampledGDExtensionIternalConstructor(reference AudioStreamPlaybackResampled) RefAudioStreamPlaybackResampled {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackResampled](reference)
+func NewRefAudioStreamPlaybackResampledGDExtensionIternalConstructor(reference AudioStreamPlaybackResampled) RefAudioStreamPlaybackResampled {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamPlaybackResampled](reference)
 }
 
 var _ RefAudioStreamPolyphonic = &RefAudioStreamPolyphonicImpl{}
@@ -3338,19 +3338,19 @@ func (r *RefAudioStreamPolyphonicImpl) Unref() {
 }
 
 func (r *RefAudioStreamPolyphonicImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamPolyphonic(reference AudioStreamPolyphonic) RefAudioStreamPolyphonic {
 	return (RefAudioStreamPolyphonic)(NewTypedRef[AudioStreamPolyphonic](reference))
 }
 
-func newRefAudioStreamPolyphonicAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamPolyphonic](reference.(AudioStreamPolyphonic)))
+func NewRefAudioStreamPolyphonicAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamPolyphonic](reference.(AudioStreamPolyphonic)))
 }
 
-func newRefAudioStreamPolyphonicGDExtensionIternalConstructor(reference AudioStreamPolyphonic) RefAudioStreamPolyphonic {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamPolyphonic](reference)
+func NewRefAudioStreamPolyphonicGDExtensionIternalConstructor(reference AudioStreamPolyphonic) RefAudioStreamPolyphonic {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamPolyphonic](reference)
 }
 
 var _ RefAudioStreamRandomizer = &RefAudioStreamRandomizerImpl{}
@@ -3385,19 +3385,19 @@ func (r *RefAudioStreamRandomizerImpl) Unref() {
 }
 
 func (r *RefAudioStreamRandomizerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamRandomizer(reference AudioStreamRandomizer) RefAudioStreamRandomizer {
 	return (RefAudioStreamRandomizer)(NewTypedRef[AudioStreamRandomizer](reference))
 }
 
-func newRefAudioStreamRandomizerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamRandomizer](reference.(AudioStreamRandomizer)))
+func NewRefAudioStreamRandomizerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamRandomizer](reference.(AudioStreamRandomizer)))
 }
 
-func newRefAudioStreamRandomizerGDExtensionIternalConstructor(reference AudioStreamRandomizer) RefAudioStreamRandomizer {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamRandomizer](reference)
+func NewRefAudioStreamRandomizerGDExtensionIternalConstructor(reference AudioStreamRandomizer) RefAudioStreamRandomizer {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamRandomizer](reference)
 }
 
 var _ RefAudioStreamWAV = &RefAudioStreamWAVImpl{}
@@ -3432,19 +3432,19 @@ func (r *RefAudioStreamWAVImpl) Unref() {
 }
 
 func (r *RefAudioStreamWAVImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefAudioStreamWAV(reference AudioStreamWAV) RefAudioStreamWAV {
 	return (RefAudioStreamWAV)(NewTypedRef[AudioStreamWAV](reference))
 }
 
-func newRefAudioStreamWAVAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[AudioStreamWAV](reference.(AudioStreamWAV)))
+func NewRefAudioStreamWAVAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioStreamWAV](reference.(AudioStreamWAV)))
 }
 
-func newRefAudioStreamWAVGDExtensionIternalConstructor(reference AudioStreamWAV) RefAudioStreamWAV {
-	return newTypedRefGDExtensionIternalConstructor[AudioStreamWAV](reference)
+func NewRefAudioStreamWAVGDExtensionIternalConstructor(reference AudioStreamWAV) RefAudioStreamWAV {
+	return NewTypedRefGDExtensionIternalConstructor[AudioStreamWAV](reference)
 }
 
 var _ RefBaseMaterial3D = &RefBaseMaterial3DImpl{}
@@ -3479,19 +3479,19 @@ func (r *RefBaseMaterial3DImpl) Unref() {
 }
 
 func (r *RefBaseMaterial3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefBaseMaterial3D(reference BaseMaterial3D) RefBaseMaterial3D {
 	return (RefBaseMaterial3D)(NewTypedRef[BaseMaterial3D](reference))
 }
 
-func newRefBaseMaterial3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[BaseMaterial3D](reference.(BaseMaterial3D)))
+func NewRefBaseMaterial3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[BaseMaterial3D](reference.(BaseMaterial3D)))
 }
 
-func newRefBaseMaterial3DGDExtensionIternalConstructor(reference BaseMaterial3D) RefBaseMaterial3D {
-	return newTypedRefGDExtensionIternalConstructor[BaseMaterial3D](reference)
+func NewRefBaseMaterial3DGDExtensionIternalConstructor(reference BaseMaterial3D) RefBaseMaterial3D {
+	return NewTypedRefGDExtensionIternalConstructor[BaseMaterial3D](reference)
 }
 
 var _ RefBitMap = &RefBitMapImpl{}
@@ -3526,19 +3526,19 @@ func (r *RefBitMapImpl) Unref() {
 }
 
 func (r *RefBitMapImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefBitMap(reference BitMap) RefBitMap {
 	return (RefBitMap)(NewTypedRef[BitMap](reference))
 }
 
-func newRefBitMapAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[BitMap](reference.(BitMap)))
+func NewRefBitMapAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[BitMap](reference.(BitMap)))
 }
 
-func newRefBitMapGDExtensionIternalConstructor(reference BitMap) RefBitMap {
-	return newTypedRefGDExtensionIternalConstructor[BitMap](reference)
+func NewRefBitMapGDExtensionIternalConstructor(reference BitMap) RefBitMap {
+	return NewTypedRefGDExtensionIternalConstructor[BitMap](reference)
 }
 
 var _ RefBoneMap = &RefBoneMapImpl{}
@@ -3573,19 +3573,19 @@ func (r *RefBoneMapImpl) Unref() {
 }
 
 func (r *RefBoneMapImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefBoneMap(reference BoneMap) RefBoneMap {
 	return (RefBoneMap)(NewTypedRef[BoneMap](reference))
 }
 
-func newRefBoneMapAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[BoneMap](reference.(BoneMap)))
+func NewRefBoneMapAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[BoneMap](reference.(BoneMap)))
 }
 
-func newRefBoneMapGDExtensionIternalConstructor(reference BoneMap) RefBoneMap {
-	return newTypedRefGDExtensionIternalConstructor[BoneMap](reference)
+func NewRefBoneMapGDExtensionIternalConstructor(reference BoneMap) RefBoneMap {
+	return NewTypedRefGDExtensionIternalConstructor[BoneMap](reference)
 }
 
 var _ RefBoxMesh = &RefBoxMeshImpl{}
@@ -3620,19 +3620,19 @@ func (r *RefBoxMeshImpl) Unref() {
 }
 
 func (r *RefBoxMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefBoxMesh(reference BoxMesh) RefBoxMesh {
 	return (RefBoxMesh)(NewTypedRef[BoxMesh](reference))
 }
 
-func newRefBoxMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[BoxMesh](reference.(BoxMesh)))
+func NewRefBoxMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[BoxMesh](reference.(BoxMesh)))
 }
 
-func newRefBoxMeshGDExtensionIternalConstructor(reference BoxMesh) RefBoxMesh {
-	return newTypedRefGDExtensionIternalConstructor[BoxMesh](reference)
+func NewRefBoxMeshGDExtensionIternalConstructor(reference BoxMesh) RefBoxMesh {
+	return NewTypedRefGDExtensionIternalConstructor[BoxMesh](reference)
 }
 
 var _ RefBoxOccluder3D = &RefBoxOccluder3DImpl{}
@@ -3667,19 +3667,19 @@ func (r *RefBoxOccluder3DImpl) Unref() {
 }
 
 func (r *RefBoxOccluder3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefBoxOccluder3D(reference BoxOccluder3D) RefBoxOccluder3D {
 	return (RefBoxOccluder3D)(NewTypedRef[BoxOccluder3D](reference))
 }
 
-func newRefBoxOccluder3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[BoxOccluder3D](reference.(BoxOccluder3D)))
+func NewRefBoxOccluder3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[BoxOccluder3D](reference.(BoxOccluder3D)))
 }
 
-func newRefBoxOccluder3DGDExtensionIternalConstructor(reference BoxOccluder3D) RefBoxOccluder3D {
-	return newTypedRefGDExtensionIternalConstructor[BoxOccluder3D](reference)
+func NewRefBoxOccluder3DGDExtensionIternalConstructor(reference BoxOccluder3D) RefBoxOccluder3D {
+	return NewTypedRefGDExtensionIternalConstructor[BoxOccluder3D](reference)
 }
 
 var _ RefBoxShape3D = &RefBoxShape3DImpl{}
@@ -3714,19 +3714,19 @@ func (r *RefBoxShape3DImpl) Unref() {
 }
 
 func (r *RefBoxShape3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefBoxShape3D(reference BoxShape3D) RefBoxShape3D {
 	return (RefBoxShape3D)(NewTypedRef[BoxShape3D](reference))
 }
 
-func newRefBoxShape3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[BoxShape3D](reference.(BoxShape3D)))
+func NewRefBoxShape3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[BoxShape3D](reference.(BoxShape3D)))
 }
 
-func newRefBoxShape3DGDExtensionIternalConstructor(reference BoxShape3D) RefBoxShape3D {
-	return newTypedRefGDExtensionIternalConstructor[BoxShape3D](reference)
+func NewRefBoxShape3DGDExtensionIternalConstructor(reference BoxShape3D) RefBoxShape3D {
+	return NewTypedRefGDExtensionIternalConstructor[BoxShape3D](reference)
 }
 
 var _ RefButtonGroup = &RefButtonGroupImpl{}
@@ -3761,19 +3761,19 @@ func (r *RefButtonGroupImpl) Unref() {
 }
 
 func (r *RefButtonGroupImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefButtonGroup(reference ButtonGroup) RefButtonGroup {
 	return (RefButtonGroup)(NewTypedRef[ButtonGroup](reference))
 }
 
-func newRefButtonGroupAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ButtonGroup](reference.(ButtonGroup)))
+func NewRefButtonGroupAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ButtonGroup](reference.(ButtonGroup)))
 }
 
-func newRefButtonGroupGDExtensionIternalConstructor(reference ButtonGroup) RefButtonGroup {
-	return newTypedRefGDExtensionIternalConstructor[ButtonGroup](reference)
+func NewRefButtonGroupGDExtensionIternalConstructor(reference ButtonGroup) RefButtonGroup {
+	return NewTypedRefGDExtensionIternalConstructor[ButtonGroup](reference)
 }
 
 var _ RefCallbackTweener = &RefCallbackTweenerImpl{}
@@ -3808,19 +3808,19 @@ func (r *RefCallbackTweenerImpl) Unref() {
 }
 
 func (r *RefCallbackTweenerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCallbackTweener(reference CallbackTweener) RefCallbackTweener {
 	return (RefCallbackTweener)(NewTypedRef[CallbackTweener](reference))
 }
 
-func newRefCallbackTweenerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CallbackTweener](reference.(CallbackTweener)))
+func NewRefCallbackTweenerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CallbackTweener](reference.(CallbackTweener)))
 }
 
-func newRefCallbackTweenerGDExtensionIternalConstructor(reference CallbackTweener) RefCallbackTweener {
-	return newTypedRefGDExtensionIternalConstructor[CallbackTweener](reference)
+func NewRefCallbackTweenerGDExtensionIternalConstructor(reference CallbackTweener) RefCallbackTweener {
+	return NewTypedRefGDExtensionIternalConstructor[CallbackTweener](reference)
 }
 
 var _ RefCameraAttributes = &RefCameraAttributesImpl{}
@@ -3855,19 +3855,19 @@ func (r *RefCameraAttributesImpl) Unref() {
 }
 
 func (r *RefCameraAttributesImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCameraAttributes(reference CameraAttributes) RefCameraAttributes {
 	return (RefCameraAttributes)(NewTypedRef[CameraAttributes](reference))
 }
 
-func newRefCameraAttributesAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CameraAttributes](reference.(CameraAttributes)))
+func NewRefCameraAttributesAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CameraAttributes](reference.(CameraAttributes)))
 }
 
-func newRefCameraAttributesGDExtensionIternalConstructor(reference CameraAttributes) RefCameraAttributes {
-	return newTypedRefGDExtensionIternalConstructor[CameraAttributes](reference)
+func NewRefCameraAttributesGDExtensionIternalConstructor(reference CameraAttributes) RefCameraAttributes {
+	return NewTypedRefGDExtensionIternalConstructor[CameraAttributes](reference)
 }
 
 var _ RefCameraAttributesPhysical = &RefCameraAttributesPhysicalImpl{}
@@ -3902,19 +3902,19 @@ func (r *RefCameraAttributesPhysicalImpl) Unref() {
 }
 
 func (r *RefCameraAttributesPhysicalImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCameraAttributesPhysical(reference CameraAttributesPhysical) RefCameraAttributesPhysical {
 	return (RefCameraAttributesPhysical)(NewTypedRef[CameraAttributesPhysical](reference))
 }
 
-func newRefCameraAttributesPhysicalAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CameraAttributesPhysical](reference.(CameraAttributesPhysical)))
+func NewRefCameraAttributesPhysicalAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CameraAttributesPhysical](reference.(CameraAttributesPhysical)))
 }
 
-func newRefCameraAttributesPhysicalGDExtensionIternalConstructor(reference CameraAttributesPhysical) RefCameraAttributesPhysical {
-	return newTypedRefGDExtensionIternalConstructor[CameraAttributesPhysical](reference)
+func NewRefCameraAttributesPhysicalGDExtensionIternalConstructor(reference CameraAttributesPhysical) RefCameraAttributesPhysical {
+	return NewTypedRefGDExtensionIternalConstructor[CameraAttributesPhysical](reference)
 }
 
 var _ RefCameraAttributesPractical = &RefCameraAttributesPracticalImpl{}
@@ -3949,19 +3949,19 @@ func (r *RefCameraAttributesPracticalImpl) Unref() {
 }
 
 func (r *RefCameraAttributesPracticalImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCameraAttributesPractical(reference CameraAttributesPractical) RefCameraAttributesPractical {
 	return (RefCameraAttributesPractical)(NewTypedRef[CameraAttributesPractical](reference))
 }
 
-func newRefCameraAttributesPracticalAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CameraAttributesPractical](reference.(CameraAttributesPractical)))
+func NewRefCameraAttributesPracticalAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CameraAttributesPractical](reference.(CameraAttributesPractical)))
 }
 
-func newRefCameraAttributesPracticalGDExtensionIternalConstructor(reference CameraAttributesPractical) RefCameraAttributesPractical {
-	return newTypedRefGDExtensionIternalConstructor[CameraAttributesPractical](reference)
+func NewRefCameraAttributesPracticalGDExtensionIternalConstructor(reference CameraAttributesPractical) RefCameraAttributesPractical {
+	return NewTypedRefGDExtensionIternalConstructor[CameraAttributesPractical](reference)
 }
 
 var _ RefCameraFeed = &RefCameraFeedImpl{}
@@ -3996,19 +3996,19 @@ func (r *RefCameraFeedImpl) Unref() {
 }
 
 func (r *RefCameraFeedImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCameraFeed(reference CameraFeed) RefCameraFeed {
 	return (RefCameraFeed)(NewTypedRef[CameraFeed](reference))
 }
 
-func newRefCameraFeedAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CameraFeed](reference.(CameraFeed)))
+func NewRefCameraFeedAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CameraFeed](reference.(CameraFeed)))
 }
 
-func newRefCameraFeedGDExtensionIternalConstructor(reference CameraFeed) RefCameraFeed {
-	return newTypedRefGDExtensionIternalConstructor[CameraFeed](reference)
+func NewRefCameraFeedGDExtensionIternalConstructor(reference CameraFeed) RefCameraFeed {
+	return NewTypedRefGDExtensionIternalConstructor[CameraFeed](reference)
 }
 
 var _ RefCameraTexture = &RefCameraTextureImpl{}
@@ -4043,19 +4043,19 @@ func (r *RefCameraTextureImpl) Unref() {
 }
 
 func (r *RefCameraTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCameraTexture(reference CameraTexture) RefCameraTexture {
 	return (RefCameraTexture)(NewTypedRef[CameraTexture](reference))
 }
 
-func newRefCameraTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CameraTexture](reference.(CameraTexture)))
+func NewRefCameraTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CameraTexture](reference.(CameraTexture)))
 }
 
-func newRefCameraTextureGDExtensionIternalConstructor(reference CameraTexture) RefCameraTexture {
-	return newTypedRefGDExtensionIternalConstructor[CameraTexture](reference)
+func NewRefCameraTextureGDExtensionIternalConstructor(reference CameraTexture) RefCameraTexture {
+	return NewTypedRefGDExtensionIternalConstructor[CameraTexture](reference)
 }
 
 var _ RefCanvasItemMaterial = &RefCanvasItemMaterialImpl{}
@@ -4090,19 +4090,19 @@ func (r *RefCanvasItemMaterialImpl) Unref() {
 }
 
 func (r *RefCanvasItemMaterialImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCanvasItemMaterial(reference CanvasItemMaterial) RefCanvasItemMaterial {
 	return (RefCanvasItemMaterial)(NewTypedRef[CanvasItemMaterial](reference))
 }
 
-func newRefCanvasItemMaterialAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CanvasItemMaterial](reference.(CanvasItemMaterial)))
+func NewRefCanvasItemMaterialAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CanvasItemMaterial](reference.(CanvasItemMaterial)))
 }
 
-func newRefCanvasItemMaterialGDExtensionIternalConstructor(reference CanvasItemMaterial) RefCanvasItemMaterial {
-	return newTypedRefGDExtensionIternalConstructor[CanvasItemMaterial](reference)
+func NewRefCanvasItemMaterialGDExtensionIternalConstructor(reference CanvasItemMaterial) RefCanvasItemMaterial {
+	return NewTypedRefGDExtensionIternalConstructor[CanvasItemMaterial](reference)
 }
 
 var _ RefCanvasTexture = &RefCanvasTextureImpl{}
@@ -4137,19 +4137,19 @@ func (r *RefCanvasTextureImpl) Unref() {
 }
 
 func (r *RefCanvasTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCanvasTexture(reference CanvasTexture) RefCanvasTexture {
 	return (RefCanvasTexture)(NewTypedRef[CanvasTexture](reference))
 }
 
-func newRefCanvasTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CanvasTexture](reference.(CanvasTexture)))
+func NewRefCanvasTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CanvasTexture](reference.(CanvasTexture)))
 }
 
-func newRefCanvasTextureGDExtensionIternalConstructor(reference CanvasTexture) RefCanvasTexture {
-	return newTypedRefGDExtensionIternalConstructor[CanvasTexture](reference)
+func NewRefCanvasTextureGDExtensionIternalConstructor(reference CanvasTexture) RefCanvasTexture {
+	return NewTypedRefGDExtensionIternalConstructor[CanvasTexture](reference)
 }
 
 var _ RefCapsuleMesh = &RefCapsuleMeshImpl{}
@@ -4184,19 +4184,19 @@ func (r *RefCapsuleMeshImpl) Unref() {
 }
 
 func (r *RefCapsuleMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCapsuleMesh(reference CapsuleMesh) RefCapsuleMesh {
 	return (RefCapsuleMesh)(NewTypedRef[CapsuleMesh](reference))
 }
 
-func newRefCapsuleMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CapsuleMesh](reference.(CapsuleMesh)))
+func NewRefCapsuleMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CapsuleMesh](reference.(CapsuleMesh)))
 }
 
-func newRefCapsuleMeshGDExtensionIternalConstructor(reference CapsuleMesh) RefCapsuleMesh {
-	return newTypedRefGDExtensionIternalConstructor[CapsuleMesh](reference)
+func NewRefCapsuleMeshGDExtensionIternalConstructor(reference CapsuleMesh) RefCapsuleMesh {
+	return NewTypedRefGDExtensionIternalConstructor[CapsuleMesh](reference)
 }
 
 var _ RefCapsuleShape2D = &RefCapsuleShape2DImpl{}
@@ -4231,19 +4231,19 @@ func (r *RefCapsuleShape2DImpl) Unref() {
 }
 
 func (r *RefCapsuleShape2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCapsuleShape2D(reference CapsuleShape2D) RefCapsuleShape2D {
 	return (RefCapsuleShape2D)(NewTypedRef[CapsuleShape2D](reference))
 }
 
-func newRefCapsuleShape2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CapsuleShape2D](reference.(CapsuleShape2D)))
+func NewRefCapsuleShape2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CapsuleShape2D](reference.(CapsuleShape2D)))
 }
 
-func newRefCapsuleShape2DGDExtensionIternalConstructor(reference CapsuleShape2D) RefCapsuleShape2D {
-	return newTypedRefGDExtensionIternalConstructor[CapsuleShape2D](reference)
+func NewRefCapsuleShape2DGDExtensionIternalConstructor(reference CapsuleShape2D) RefCapsuleShape2D {
+	return NewTypedRefGDExtensionIternalConstructor[CapsuleShape2D](reference)
 }
 
 var _ RefCapsuleShape3D = &RefCapsuleShape3DImpl{}
@@ -4278,19 +4278,19 @@ func (r *RefCapsuleShape3DImpl) Unref() {
 }
 
 func (r *RefCapsuleShape3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCapsuleShape3D(reference CapsuleShape3D) RefCapsuleShape3D {
 	return (RefCapsuleShape3D)(NewTypedRef[CapsuleShape3D](reference))
 }
 
-func newRefCapsuleShape3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CapsuleShape3D](reference.(CapsuleShape3D)))
+func NewRefCapsuleShape3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CapsuleShape3D](reference.(CapsuleShape3D)))
 }
 
-func newRefCapsuleShape3DGDExtensionIternalConstructor(reference CapsuleShape3D) RefCapsuleShape3D {
-	return newTypedRefGDExtensionIternalConstructor[CapsuleShape3D](reference)
+func NewRefCapsuleShape3DGDExtensionIternalConstructor(reference CapsuleShape3D) RefCapsuleShape3D {
+	return NewTypedRefGDExtensionIternalConstructor[CapsuleShape3D](reference)
 }
 
 var _ RefCharFXTransform = &RefCharFXTransformImpl{}
@@ -4325,19 +4325,19 @@ func (r *RefCharFXTransformImpl) Unref() {
 }
 
 func (r *RefCharFXTransformImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCharFXTransform(reference CharFXTransform) RefCharFXTransform {
 	return (RefCharFXTransform)(NewTypedRef[CharFXTransform](reference))
 }
 
-func newRefCharFXTransformAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CharFXTransform](reference.(CharFXTransform)))
+func NewRefCharFXTransformAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CharFXTransform](reference.(CharFXTransform)))
 }
 
-func newRefCharFXTransformGDExtensionIternalConstructor(reference CharFXTransform) RefCharFXTransform {
-	return newTypedRefGDExtensionIternalConstructor[CharFXTransform](reference)
+func NewRefCharFXTransformGDExtensionIternalConstructor(reference CharFXTransform) RefCharFXTransform {
+	return NewTypedRefGDExtensionIternalConstructor[CharFXTransform](reference)
 }
 
 var _ RefCircleShape2D = &RefCircleShape2DImpl{}
@@ -4372,19 +4372,19 @@ func (r *RefCircleShape2DImpl) Unref() {
 }
 
 func (r *RefCircleShape2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCircleShape2D(reference CircleShape2D) RefCircleShape2D {
 	return (RefCircleShape2D)(NewTypedRef[CircleShape2D](reference))
 }
 
-func newRefCircleShape2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CircleShape2D](reference.(CircleShape2D)))
+func NewRefCircleShape2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CircleShape2D](reference.(CircleShape2D)))
 }
 
-func newRefCircleShape2DGDExtensionIternalConstructor(reference CircleShape2D) RefCircleShape2D {
-	return newTypedRefGDExtensionIternalConstructor[CircleShape2D](reference)
+func NewRefCircleShape2DGDExtensionIternalConstructor(reference CircleShape2D) RefCircleShape2D {
+	return NewTypedRefGDExtensionIternalConstructor[CircleShape2D](reference)
 }
 
 var _ RefCodeHighlighter = &RefCodeHighlighterImpl{}
@@ -4419,19 +4419,19 @@ func (r *RefCodeHighlighterImpl) Unref() {
 }
 
 func (r *RefCodeHighlighterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCodeHighlighter(reference CodeHighlighter) RefCodeHighlighter {
 	return (RefCodeHighlighter)(NewTypedRef[CodeHighlighter](reference))
 }
 
-func newRefCodeHighlighterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CodeHighlighter](reference.(CodeHighlighter)))
+func NewRefCodeHighlighterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CodeHighlighter](reference.(CodeHighlighter)))
 }
 
-func newRefCodeHighlighterGDExtensionIternalConstructor(reference CodeHighlighter) RefCodeHighlighter {
-	return newTypedRefGDExtensionIternalConstructor[CodeHighlighter](reference)
+func NewRefCodeHighlighterGDExtensionIternalConstructor(reference CodeHighlighter) RefCodeHighlighter {
+	return NewTypedRefGDExtensionIternalConstructor[CodeHighlighter](reference)
 }
 
 var _ RefCompressedCubemap = &RefCompressedCubemapImpl{}
@@ -4466,19 +4466,19 @@ func (r *RefCompressedCubemapImpl) Unref() {
 }
 
 func (r *RefCompressedCubemapImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCompressedCubemap(reference CompressedCubemap) RefCompressedCubemap {
 	return (RefCompressedCubemap)(NewTypedRef[CompressedCubemap](reference))
 }
 
-func newRefCompressedCubemapAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CompressedCubemap](reference.(CompressedCubemap)))
+func NewRefCompressedCubemapAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CompressedCubemap](reference.(CompressedCubemap)))
 }
 
-func newRefCompressedCubemapGDExtensionIternalConstructor(reference CompressedCubemap) RefCompressedCubemap {
-	return newTypedRefGDExtensionIternalConstructor[CompressedCubemap](reference)
+func NewRefCompressedCubemapGDExtensionIternalConstructor(reference CompressedCubemap) RefCompressedCubemap {
+	return NewTypedRefGDExtensionIternalConstructor[CompressedCubemap](reference)
 }
 
 var _ RefCompressedCubemapArray = &RefCompressedCubemapArrayImpl{}
@@ -4513,19 +4513,19 @@ func (r *RefCompressedCubemapArrayImpl) Unref() {
 }
 
 func (r *RefCompressedCubemapArrayImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCompressedCubemapArray(reference CompressedCubemapArray) RefCompressedCubemapArray {
 	return (RefCompressedCubemapArray)(NewTypedRef[CompressedCubemapArray](reference))
 }
 
-func newRefCompressedCubemapArrayAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CompressedCubemapArray](reference.(CompressedCubemapArray)))
+func NewRefCompressedCubemapArrayAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CompressedCubemapArray](reference.(CompressedCubemapArray)))
 }
 
-func newRefCompressedCubemapArrayGDExtensionIternalConstructor(reference CompressedCubemapArray) RefCompressedCubemapArray {
-	return newTypedRefGDExtensionIternalConstructor[CompressedCubemapArray](reference)
+func NewRefCompressedCubemapArrayGDExtensionIternalConstructor(reference CompressedCubemapArray) RefCompressedCubemapArray {
+	return NewTypedRefGDExtensionIternalConstructor[CompressedCubemapArray](reference)
 }
 
 var _ RefCompressedTexture2D = &RefCompressedTexture2DImpl{}
@@ -4560,19 +4560,19 @@ func (r *RefCompressedTexture2DImpl) Unref() {
 }
 
 func (r *RefCompressedTexture2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCompressedTexture2D(reference CompressedTexture2D) RefCompressedTexture2D {
 	return (RefCompressedTexture2D)(NewTypedRef[CompressedTexture2D](reference))
 }
 
-func newRefCompressedTexture2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CompressedTexture2D](reference.(CompressedTexture2D)))
+func NewRefCompressedTexture2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CompressedTexture2D](reference.(CompressedTexture2D)))
 }
 
-func newRefCompressedTexture2DGDExtensionIternalConstructor(reference CompressedTexture2D) RefCompressedTexture2D {
-	return newTypedRefGDExtensionIternalConstructor[CompressedTexture2D](reference)
+func NewRefCompressedTexture2DGDExtensionIternalConstructor(reference CompressedTexture2D) RefCompressedTexture2D {
+	return NewTypedRefGDExtensionIternalConstructor[CompressedTexture2D](reference)
 }
 
 var _ RefCompressedTexture2DArray = &RefCompressedTexture2DArrayImpl{}
@@ -4607,19 +4607,19 @@ func (r *RefCompressedTexture2DArrayImpl) Unref() {
 }
 
 func (r *RefCompressedTexture2DArrayImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCompressedTexture2DArray(reference CompressedTexture2DArray) RefCompressedTexture2DArray {
 	return (RefCompressedTexture2DArray)(NewTypedRef[CompressedTexture2DArray](reference))
 }
 
-func newRefCompressedTexture2DArrayAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CompressedTexture2DArray](reference.(CompressedTexture2DArray)))
+func NewRefCompressedTexture2DArrayAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CompressedTexture2DArray](reference.(CompressedTexture2DArray)))
 }
 
-func newRefCompressedTexture2DArrayGDExtensionIternalConstructor(reference CompressedTexture2DArray) RefCompressedTexture2DArray {
-	return newTypedRefGDExtensionIternalConstructor[CompressedTexture2DArray](reference)
+func NewRefCompressedTexture2DArrayGDExtensionIternalConstructor(reference CompressedTexture2DArray) RefCompressedTexture2DArray {
+	return NewTypedRefGDExtensionIternalConstructor[CompressedTexture2DArray](reference)
 }
 
 var _ RefCompressedTexture3D = &RefCompressedTexture3DImpl{}
@@ -4654,19 +4654,19 @@ func (r *RefCompressedTexture3DImpl) Unref() {
 }
 
 func (r *RefCompressedTexture3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCompressedTexture3D(reference CompressedTexture3D) RefCompressedTexture3D {
 	return (RefCompressedTexture3D)(NewTypedRef[CompressedTexture3D](reference))
 }
 
-func newRefCompressedTexture3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CompressedTexture3D](reference.(CompressedTexture3D)))
+func NewRefCompressedTexture3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CompressedTexture3D](reference.(CompressedTexture3D)))
 }
 
-func newRefCompressedTexture3DGDExtensionIternalConstructor(reference CompressedTexture3D) RefCompressedTexture3D {
-	return newTypedRefGDExtensionIternalConstructor[CompressedTexture3D](reference)
+func NewRefCompressedTexture3DGDExtensionIternalConstructor(reference CompressedTexture3D) RefCompressedTexture3D {
+	return NewTypedRefGDExtensionIternalConstructor[CompressedTexture3D](reference)
 }
 
 var _ RefCompressedTextureLayered = &RefCompressedTextureLayeredImpl{}
@@ -4701,19 +4701,19 @@ func (r *RefCompressedTextureLayeredImpl) Unref() {
 }
 
 func (r *RefCompressedTextureLayeredImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCompressedTextureLayered(reference CompressedTextureLayered) RefCompressedTextureLayered {
 	return (RefCompressedTextureLayered)(NewTypedRef[CompressedTextureLayered](reference))
 }
 
-func newRefCompressedTextureLayeredAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CompressedTextureLayered](reference.(CompressedTextureLayered)))
+func NewRefCompressedTextureLayeredAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CompressedTextureLayered](reference.(CompressedTextureLayered)))
 }
 
-func newRefCompressedTextureLayeredGDExtensionIternalConstructor(reference CompressedTextureLayered) RefCompressedTextureLayered {
-	return newTypedRefGDExtensionIternalConstructor[CompressedTextureLayered](reference)
+func NewRefCompressedTextureLayeredGDExtensionIternalConstructor(reference CompressedTextureLayered) RefCompressedTextureLayered {
+	return NewTypedRefGDExtensionIternalConstructor[CompressedTextureLayered](reference)
 }
 
 var _ RefConcavePolygonShape2D = &RefConcavePolygonShape2DImpl{}
@@ -4748,19 +4748,19 @@ func (r *RefConcavePolygonShape2DImpl) Unref() {
 }
 
 func (r *RefConcavePolygonShape2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefConcavePolygonShape2D(reference ConcavePolygonShape2D) RefConcavePolygonShape2D {
 	return (RefConcavePolygonShape2D)(NewTypedRef[ConcavePolygonShape2D](reference))
 }
 
-func newRefConcavePolygonShape2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ConcavePolygonShape2D](reference.(ConcavePolygonShape2D)))
+func NewRefConcavePolygonShape2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ConcavePolygonShape2D](reference.(ConcavePolygonShape2D)))
 }
 
-func newRefConcavePolygonShape2DGDExtensionIternalConstructor(reference ConcavePolygonShape2D) RefConcavePolygonShape2D {
-	return newTypedRefGDExtensionIternalConstructor[ConcavePolygonShape2D](reference)
+func NewRefConcavePolygonShape2DGDExtensionIternalConstructor(reference ConcavePolygonShape2D) RefConcavePolygonShape2D {
+	return NewTypedRefGDExtensionIternalConstructor[ConcavePolygonShape2D](reference)
 }
 
 var _ RefConcavePolygonShape3D = &RefConcavePolygonShape3DImpl{}
@@ -4795,19 +4795,19 @@ func (r *RefConcavePolygonShape3DImpl) Unref() {
 }
 
 func (r *RefConcavePolygonShape3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefConcavePolygonShape3D(reference ConcavePolygonShape3D) RefConcavePolygonShape3D {
 	return (RefConcavePolygonShape3D)(NewTypedRef[ConcavePolygonShape3D](reference))
 }
 
-func newRefConcavePolygonShape3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ConcavePolygonShape3D](reference.(ConcavePolygonShape3D)))
+func NewRefConcavePolygonShape3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ConcavePolygonShape3D](reference.(ConcavePolygonShape3D)))
 }
 
-func newRefConcavePolygonShape3DGDExtensionIternalConstructor(reference ConcavePolygonShape3D) RefConcavePolygonShape3D {
-	return newTypedRefGDExtensionIternalConstructor[ConcavePolygonShape3D](reference)
+func NewRefConcavePolygonShape3DGDExtensionIternalConstructor(reference ConcavePolygonShape3D) RefConcavePolygonShape3D {
+	return NewTypedRefGDExtensionIternalConstructor[ConcavePolygonShape3D](reference)
 }
 
 var _ RefConfigFile = &RefConfigFileImpl{}
@@ -4842,19 +4842,19 @@ func (r *RefConfigFileImpl) Unref() {
 }
 
 func (r *RefConfigFileImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefConfigFile(reference ConfigFile) RefConfigFile {
 	return (RefConfigFile)(NewTypedRef[ConfigFile](reference))
 }
 
-func newRefConfigFileAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ConfigFile](reference.(ConfigFile)))
+func NewRefConfigFileAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ConfigFile](reference.(ConfigFile)))
 }
 
-func newRefConfigFileGDExtensionIternalConstructor(reference ConfigFile) RefConfigFile {
-	return newTypedRefGDExtensionIternalConstructor[ConfigFile](reference)
+func NewRefConfigFileGDExtensionIternalConstructor(reference ConfigFile) RefConfigFile {
+	return NewTypedRefGDExtensionIternalConstructor[ConfigFile](reference)
 }
 
 var _ RefConvexPolygonShape2D = &RefConvexPolygonShape2DImpl{}
@@ -4889,19 +4889,19 @@ func (r *RefConvexPolygonShape2DImpl) Unref() {
 }
 
 func (r *RefConvexPolygonShape2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefConvexPolygonShape2D(reference ConvexPolygonShape2D) RefConvexPolygonShape2D {
 	return (RefConvexPolygonShape2D)(NewTypedRef[ConvexPolygonShape2D](reference))
 }
 
-func newRefConvexPolygonShape2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ConvexPolygonShape2D](reference.(ConvexPolygonShape2D)))
+func NewRefConvexPolygonShape2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ConvexPolygonShape2D](reference.(ConvexPolygonShape2D)))
 }
 
-func newRefConvexPolygonShape2DGDExtensionIternalConstructor(reference ConvexPolygonShape2D) RefConvexPolygonShape2D {
-	return newTypedRefGDExtensionIternalConstructor[ConvexPolygonShape2D](reference)
+func NewRefConvexPolygonShape2DGDExtensionIternalConstructor(reference ConvexPolygonShape2D) RefConvexPolygonShape2D {
+	return NewTypedRefGDExtensionIternalConstructor[ConvexPolygonShape2D](reference)
 }
 
 var _ RefConvexPolygonShape3D = &RefConvexPolygonShape3DImpl{}
@@ -4936,19 +4936,19 @@ func (r *RefConvexPolygonShape3DImpl) Unref() {
 }
 
 func (r *RefConvexPolygonShape3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefConvexPolygonShape3D(reference ConvexPolygonShape3D) RefConvexPolygonShape3D {
 	return (RefConvexPolygonShape3D)(NewTypedRef[ConvexPolygonShape3D](reference))
 }
 
-func newRefConvexPolygonShape3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ConvexPolygonShape3D](reference.(ConvexPolygonShape3D)))
+func NewRefConvexPolygonShape3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ConvexPolygonShape3D](reference.(ConvexPolygonShape3D)))
 }
 
-func newRefConvexPolygonShape3DGDExtensionIternalConstructor(reference ConvexPolygonShape3D) RefConvexPolygonShape3D {
-	return newTypedRefGDExtensionIternalConstructor[ConvexPolygonShape3D](reference)
+func NewRefConvexPolygonShape3DGDExtensionIternalConstructor(reference ConvexPolygonShape3D) RefConvexPolygonShape3D {
+	return NewTypedRefGDExtensionIternalConstructor[ConvexPolygonShape3D](reference)
 }
 
 var _ RefCrypto = &RefCryptoImpl{}
@@ -4983,19 +4983,19 @@ func (r *RefCryptoImpl) Unref() {
 }
 
 func (r *RefCryptoImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCrypto(reference Crypto) RefCrypto {
 	return (RefCrypto)(NewTypedRef[Crypto](reference))
 }
 
-func newRefCryptoAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Crypto](reference.(Crypto)))
+func NewRefCryptoAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Crypto](reference.(Crypto)))
 }
 
-func newRefCryptoGDExtensionIternalConstructor(reference Crypto) RefCrypto {
-	return newTypedRefGDExtensionIternalConstructor[Crypto](reference)
+func NewRefCryptoGDExtensionIternalConstructor(reference Crypto) RefCrypto {
+	return NewTypedRefGDExtensionIternalConstructor[Crypto](reference)
 }
 
 var _ RefCryptoKey = &RefCryptoKeyImpl{}
@@ -5030,19 +5030,19 @@ func (r *RefCryptoKeyImpl) Unref() {
 }
 
 func (r *RefCryptoKeyImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCryptoKey(reference CryptoKey) RefCryptoKey {
 	return (RefCryptoKey)(NewTypedRef[CryptoKey](reference))
 }
 
-func newRefCryptoKeyAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CryptoKey](reference.(CryptoKey)))
+func NewRefCryptoKeyAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CryptoKey](reference.(CryptoKey)))
 }
 
-func newRefCryptoKeyGDExtensionIternalConstructor(reference CryptoKey) RefCryptoKey {
-	return newTypedRefGDExtensionIternalConstructor[CryptoKey](reference)
+func NewRefCryptoKeyGDExtensionIternalConstructor(reference CryptoKey) RefCryptoKey {
+	return NewTypedRefGDExtensionIternalConstructor[CryptoKey](reference)
 }
 
 var _ RefCubemap = &RefCubemapImpl{}
@@ -5077,19 +5077,19 @@ func (r *RefCubemapImpl) Unref() {
 }
 
 func (r *RefCubemapImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCubemap(reference Cubemap) RefCubemap {
 	return (RefCubemap)(NewTypedRef[Cubemap](reference))
 }
 
-func newRefCubemapAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Cubemap](reference.(Cubemap)))
+func NewRefCubemapAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Cubemap](reference.(Cubemap)))
 }
 
-func newRefCubemapGDExtensionIternalConstructor(reference Cubemap) RefCubemap {
-	return newTypedRefGDExtensionIternalConstructor[Cubemap](reference)
+func NewRefCubemapGDExtensionIternalConstructor(reference Cubemap) RefCubemap {
+	return NewTypedRefGDExtensionIternalConstructor[Cubemap](reference)
 }
 
 var _ RefCubemapArray = &RefCubemapArrayImpl{}
@@ -5124,19 +5124,19 @@ func (r *RefCubemapArrayImpl) Unref() {
 }
 
 func (r *RefCubemapArrayImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCubemapArray(reference CubemapArray) RefCubemapArray {
 	return (RefCubemapArray)(NewTypedRef[CubemapArray](reference))
 }
 
-func newRefCubemapArrayAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CubemapArray](reference.(CubemapArray)))
+func NewRefCubemapArrayAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CubemapArray](reference.(CubemapArray)))
 }
 
-func newRefCubemapArrayGDExtensionIternalConstructor(reference CubemapArray) RefCubemapArray {
-	return newTypedRefGDExtensionIternalConstructor[CubemapArray](reference)
+func NewRefCubemapArrayGDExtensionIternalConstructor(reference CubemapArray) RefCubemapArray {
+	return NewTypedRefGDExtensionIternalConstructor[CubemapArray](reference)
 }
 
 var _ RefCurve = &RefCurveImpl{}
@@ -5171,19 +5171,19 @@ func (r *RefCurveImpl) Unref() {
 }
 
 func (r *RefCurveImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCurve(reference Curve) RefCurve {
 	return (RefCurve)(NewTypedRef[Curve](reference))
 }
 
-func newRefCurveAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Curve](reference.(Curve)))
+func NewRefCurveAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Curve](reference.(Curve)))
 }
 
-func newRefCurveGDExtensionIternalConstructor(reference Curve) RefCurve {
-	return newTypedRefGDExtensionIternalConstructor[Curve](reference)
+func NewRefCurveGDExtensionIternalConstructor(reference Curve) RefCurve {
+	return NewTypedRefGDExtensionIternalConstructor[Curve](reference)
 }
 
 var _ RefCurve2D = &RefCurve2DImpl{}
@@ -5218,19 +5218,19 @@ func (r *RefCurve2DImpl) Unref() {
 }
 
 func (r *RefCurve2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCurve2D(reference Curve2D) RefCurve2D {
 	return (RefCurve2D)(NewTypedRef[Curve2D](reference))
 }
 
-func newRefCurve2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Curve2D](reference.(Curve2D)))
+func NewRefCurve2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Curve2D](reference.(Curve2D)))
 }
 
-func newRefCurve2DGDExtensionIternalConstructor(reference Curve2D) RefCurve2D {
-	return newTypedRefGDExtensionIternalConstructor[Curve2D](reference)
+func NewRefCurve2DGDExtensionIternalConstructor(reference Curve2D) RefCurve2D {
+	return NewTypedRefGDExtensionIternalConstructor[Curve2D](reference)
 }
 
 var _ RefCurve3D = &RefCurve3DImpl{}
@@ -5265,19 +5265,19 @@ func (r *RefCurve3DImpl) Unref() {
 }
 
 func (r *RefCurve3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCurve3D(reference Curve3D) RefCurve3D {
 	return (RefCurve3D)(NewTypedRef[Curve3D](reference))
 }
 
-func newRefCurve3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Curve3D](reference.(Curve3D)))
+func NewRefCurve3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Curve3D](reference.(Curve3D)))
 }
 
-func newRefCurve3DGDExtensionIternalConstructor(reference Curve3D) RefCurve3D {
-	return newTypedRefGDExtensionIternalConstructor[Curve3D](reference)
+func NewRefCurve3DGDExtensionIternalConstructor(reference Curve3D) RefCurve3D {
+	return NewTypedRefGDExtensionIternalConstructor[Curve3D](reference)
 }
 
 var _ RefCurveTexture = &RefCurveTextureImpl{}
@@ -5312,19 +5312,19 @@ func (r *RefCurveTextureImpl) Unref() {
 }
 
 func (r *RefCurveTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCurveTexture(reference CurveTexture) RefCurveTexture {
 	return (RefCurveTexture)(NewTypedRef[CurveTexture](reference))
 }
 
-func newRefCurveTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CurveTexture](reference.(CurveTexture)))
+func NewRefCurveTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CurveTexture](reference.(CurveTexture)))
 }
 
-func newRefCurveTextureGDExtensionIternalConstructor(reference CurveTexture) RefCurveTexture {
-	return newTypedRefGDExtensionIternalConstructor[CurveTexture](reference)
+func NewRefCurveTextureGDExtensionIternalConstructor(reference CurveTexture) RefCurveTexture {
+	return NewTypedRefGDExtensionIternalConstructor[CurveTexture](reference)
 }
 
 var _ RefCurveXYZTexture = &RefCurveXYZTextureImpl{}
@@ -5359,19 +5359,19 @@ func (r *RefCurveXYZTextureImpl) Unref() {
 }
 
 func (r *RefCurveXYZTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCurveXYZTexture(reference CurveXYZTexture) RefCurveXYZTexture {
 	return (RefCurveXYZTexture)(NewTypedRef[CurveXYZTexture](reference))
 }
 
-func newRefCurveXYZTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CurveXYZTexture](reference.(CurveXYZTexture)))
+func NewRefCurveXYZTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CurveXYZTexture](reference.(CurveXYZTexture)))
 }
 
-func newRefCurveXYZTextureGDExtensionIternalConstructor(reference CurveXYZTexture) RefCurveXYZTexture {
-	return newTypedRefGDExtensionIternalConstructor[CurveXYZTexture](reference)
+func NewRefCurveXYZTextureGDExtensionIternalConstructor(reference CurveXYZTexture) RefCurveXYZTexture {
+	return NewTypedRefGDExtensionIternalConstructor[CurveXYZTexture](reference)
 }
 
 var _ RefCylinderMesh = &RefCylinderMeshImpl{}
@@ -5406,19 +5406,19 @@ func (r *RefCylinderMeshImpl) Unref() {
 }
 
 func (r *RefCylinderMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCylinderMesh(reference CylinderMesh) RefCylinderMesh {
 	return (RefCylinderMesh)(NewTypedRef[CylinderMesh](reference))
 }
 
-func newRefCylinderMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CylinderMesh](reference.(CylinderMesh)))
+func NewRefCylinderMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CylinderMesh](reference.(CylinderMesh)))
 }
 
-func newRefCylinderMeshGDExtensionIternalConstructor(reference CylinderMesh) RefCylinderMesh {
-	return newTypedRefGDExtensionIternalConstructor[CylinderMesh](reference)
+func NewRefCylinderMeshGDExtensionIternalConstructor(reference CylinderMesh) RefCylinderMesh {
+	return NewTypedRefGDExtensionIternalConstructor[CylinderMesh](reference)
 }
 
 var _ RefCylinderShape3D = &RefCylinderShape3DImpl{}
@@ -5453,19 +5453,19 @@ func (r *RefCylinderShape3DImpl) Unref() {
 }
 
 func (r *RefCylinderShape3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefCylinderShape3D(reference CylinderShape3D) RefCylinderShape3D {
 	return (RefCylinderShape3D)(NewTypedRef[CylinderShape3D](reference))
 }
 
-func newRefCylinderShape3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[CylinderShape3D](reference.(CylinderShape3D)))
+func NewRefCylinderShape3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CylinderShape3D](reference.(CylinderShape3D)))
 }
 
-func newRefCylinderShape3DGDExtensionIternalConstructor(reference CylinderShape3D) RefCylinderShape3D {
-	return newTypedRefGDExtensionIternalConstructor[CylinderShape3D](reference)
+func NewRefCylinderShape3DGDExtensionIternalConstructor(reference CylinderShape3D) RefCylinderShape3D {
+	return NewTypedRefGDExtensionIternalConstructor[CylinderShape3D](reference)
 }
 
 var _ RefDTLSServer = &RefDTLSServerImpl{}
@@ -5500,19 +5500,19 @@ func (r *RefDTLSServerImpl) Unref() {
 }
 
 func (r *RefDTLSServerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefDTLSServer(reference DTLSServer) RefDTLSServer {
 	return (RefDTLSServer)(NewTypedRef[DTLSServer](reference))
 }
 
-func newRefDTLSServerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[DTLSServer](reference.(DTLSServer)))
+func NewRefDTLSServerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[DTLSServer](reference.(DTLSServer)))
 }
 
-func newRefDTLSServerGDExtensionIternalConstructor(reference DTLSServer) RefDTLSServer {
-	return newTypedRefGDExtensionIternalConstructor[DTLSServer](reference)
+func NewRefDTLSServerGDExtensionIternalConstructor(reference DTLSServer) RefDTLSServer {
+	return NewTypedRefGDExtensionIternalConstructor[DTLSServer](reference)
 }
 
 var _ RefDirAccess = &RefDirAccessImpl{}
@@ -5547,19 +5547,19 @@ func (r *RefDirAccessImpl) Unref() {
 }
 
 func (r *RefDirAccessImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefDirAccess(reference DirAccess) RefDirAccess {
 	return (RefDirAccess)(NewTypedRef[DirAccess](reference))
 }
 
-func newRefDirAccessAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[DirAccess](reference.(DirAccess)))
+func NewRefDirAccessAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[DirAccess](reference.(DirAccess)))
 }
 
-func newRefDirAccessGDExtensionIternalConstructor(reference DirAccess) RefDirAccess {
-	return newTypedRefGDExtensionIternalConstructor[DirAccess](reference)
+func NewRefDirAccessGDExtensionIternalConstructor(reference DirAccess) RefDirAccess {
+	return NewTypedRefGDExtensionIternalConstructor[DirAccess](reference)
 }
 
 var _ RefENetConnection = &RefENetConnectionImpl{}
@@ -5594,19 +5594,19 @@ func (r *RefENetConnectionImpl) Unref() {
 }
 
 func (r *RefENetConnectionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefENetConnection(reference ENetConnection) RefENetConnection {
 	return (RefENetConnection)(NewTypedRef[ENetConnection](reference))
 }
 
-func newRefENetConnectionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ENetConnection](reference.(ENetConnection)))
+func NewRefENetConnectionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ENetConnection](reference.(ENetConnection)))
 }
 
-func newRefENetConnectionGDExtensionIternalConstructor(reference ENetConnection) RefENetConnection {
-	return newTypedRefGDExtensionIternalConstructor[ENetConnection](reference)
+func NewRefENetConnectionGDExtensionIternalConstructor(reference ENetConnection) RefENetConnection {
+	return NewTypedRefGDExtensionIternalConstructor[ENetConnection](reference)
 }
 
 var _ RefENetMultiplayerPeer = &RefENetMultiplayerPeerImpl{}
@@ -5641,19 +5641,19 @@ func (r *RefENetMultiplayerPeerImpl) Unref() {
 }
 
 func (r *RefENetMultiplayerPeerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefENetMultiplayerPeer(reference ENetMultiplayerPeer) RefENetMultiplayerPeer {
 	return (RefENetMultiplayerPeer)(NewTypedRef[ENetMultiplayerPeer](reference))
 }
 
-func newRefENetMultiplayerPeerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ENetMultiplayerPeer](reference.(ENetMultiplayerPeer)))
+func NewRefENetMultiplayerPeerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ENetMultiplayerPeer](reference.(ENetMultiplayerPeer)))
 }
 
-func newRefENetMultiplayerPeerGDExtensionIternalConstructor(reference ENetMultiplayerPeer) RefENetMultiplayerPeer {
-	return newTypedRefGDExtensionIternalConstructor[ENetMultiplayerPeer](reference)
+func NewRefENetMultiplayerPeerGDExtensionIternalConstructor(reference ENetMultiplayerPeer) RefENetMultiplayerPeer {
+	return NewTypedRefGDExtensionIternalConstructor[ENetMultiplayerPeer](reference)
 }
 
 var _ RefENetPacketPeer = &RefENetPacketPeerImpl{}
@@ -5688,19 +5688,19 @@ func (r *RefENetPacketPeerImpl) Unref() {
 }
 
 func (r *RefENetPacketPeerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefENetPacketPeer(reference ENetPacketPeer) RefENetPacketPeer {
 	return (RefENetPacketPeer)(NewTypedRef[ENetPacketPeer](reference))
 }
 
-func newRefENetPacketPeerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ENetPacketPeer](reference.(ENetPacketPeer)))
+func NewRefENetPacketPeerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ENetPacketPeer](reference.(ENetPacketPeer)))
 }
 
-func newRefENetPacketPeerGDExtensionIternalConstructor(reference ENetPacketPeer) RefENetPacketPeer {
-	return newTypedRefGDExtensionIternalConstructor[ENetPacketPeer](reference)
+func NewRefENetPacketPeerGDExtensionIternalConstructor(reference ENetPacketPeer) RefENetPacketPeer {
+	return NewTypedRefGDExtensionIternalConstructor[ENetPacketPeer](reference)
 }
 
 var _ RefEditorDebuggerPlugin = &RefEditorDebuggerPluginImpl{}
@@ -5735,19 +5735,19 @@ func (r *RefEditorDebuggerPluginImpl) Unref() {
 }
 
 func (r *RefEditorDebuggerPluginImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorDebuggerPlugin(reference EditorDebuggerPlugin) RefEditorDebuggerPlugin {
 	return (RefEditorDebuggerPlugin)(NewTypedRef[EditorDebuggerPlugin](reference))
 }
 
-func newRefEditorDebuggerPluginAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorDebuggerPlugin](reference.(EditorDebuggerPlugin)))
+func NewRefEditorDebuggerPluginAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorDebuggerPlugin](reference.(EditorDebuggerPlugin)))
 }
 
-func newRefEditorDebuggerPluginGDExtensionIternalConstructor(reference EditorDebuggerPlugin) RefEditorDebuggerPlugin {
-	return newTypedRefGDExtensionIternalConstructor[EditorDebuggerPlugin](reference)
+func NewRefEditorDebuggerPluginGDExtensionIternalConstructor(reference EditorDebuggerPlugin) RefEditorDebuggerPlugin {
+	return NewTypedRefGDExtensionIternalConstructor[EditorDebuggerPlugin](reference)
 }
 
 var _ RefEditorDebuggerSession = &RefEditorDebuggerSessionImpl{}
@@ -5782,19 +5782,19 @@ func (r *RefEditorDebuggerSessionImpl) Unref() {
 }
 
 func (r *RefEditorDebuggerSessionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorDebuggerSession(reference EditorDebuggerSession) RefEditorDebuggerSession {
 	return (RefEditorDebuggerSession)(NewTypedRef[EditorDebuggerSession](reference))
 }
 
-func newRefEditorDebuggerSessionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorDebuggerSession](reference.(EditorDebuggerSession)))
+func NewRefEditorDebuggerSessionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorDebuggerSession](reference.(EditorDebuggerSession)))
 }
 
-func newRefEditorDebuggerSessionGDExtensionIternalConstructor(reference EditorDebuggerSession) RefEditorDebuggerSession {
-	return newTypedRefGDExtensionIternalConstructor[EditorDebuggerSession](reference)
+func NewRefEditorDebuggerSessionGDExtensionIternalConstructor(reference EditorDebuggerSession) RefEditorDebuggerSession {
+	return NewTypedRefGDExtensionIternalConstructor[EditorDebuggerSession](reference)
 }
 
 var _ RefEditorExportPlatform = &RefEditorExportPlatformImpl{}
@@ -5829,19 +5829,19 @@ func (r *RefEditorExportPlatformImpl) Unref() {
 }
 
 func (r *RefEditorExportPlatformImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorExportPlatform(reference EditorExportPlatform) RefEditorExportPlatform {
 	return (RefEditorExportPlatform)(NewTypedRef[EditorExportPlatform](reference))
 }
 
-func newRefEditorExportPlatformAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorExportPlatform](reference.(EditorExportPlatform)))
+func NewRefEditorExportPlatformAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorExportPlatform](reference.(EditorExportPlatform)))
 }
 
-func newRefEditorExportPlatformGDExtensionIternalConstructor(reference EditorExportPlatform) RefEditorExportPlatform {
-	return newTypedRefGDExtensionIternalConstructor[EditorExportPlatform](reference)
+func NewRefEditorExportPlatformGDExtensionIternalConstructor(reference EditorExportPlatform) RefEditorExportPlatform {
+	return NewTypedRefGDExtensionIternalConstructor[EditorExportPlatform](reference)
 }
 
 var _ RefEditorExportPlatformAndroid = &RefEditorExportPlatformAndroidImpl{}
@@ -5876,19 +5876,19 @@ func (r *RefEditorExportPlatformAndroidImpl) Unref() {
 }
 
 func (r *RefEditorExportPlatformAndroidImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorExportPlatformAndroid(reference EditorExportPlatformAndroid) RefEditorExportPlatformAndroid {
 	return (RefEditorExportPlatformAndroid)(NewTypedRef[EditorExportPlatformAndroid](reference))
 }
 
-func newRefEditorExportPlatformAndroidAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorExportPlatformAndroid](reference.(EditorExportPlatformAndroid)))
+func NewRefEditorExportPlatformAndroidAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformAndroid](reference.(EditorExportPlatformAndroid)))
 }
 
-func newRefEditorExportPlatformAndroidGDExtensionIternalConstructor(reference EditorExportPlatformAndroid) RefEditorExportPlatformAndroid {
-	return newTypedRefGDExtensionIternalConstructor[EditorExportPlatformAndroid](reference)
+func NewRefEditorExportPlatformAndroidGDExtensionIternalConstructor(reference EditorExportPlatformAndroid) RefEditorExportPlatformAndroid {
+	return NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformAndroid](reference)
 }
 
 var _ RefEditorExportPlatformIOS = &RefEditorExportPlatformIOSImpl{}
@@ -5923,19 +5923,19 @@ func (r *RefEditorExportPlatformIOSImpl) Unref() {
 }
 
 func (r *RefEditorExportPlatformIOSImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorExportPlatformIOS(reference EditorExportPlatformIOS) RefEditorExportPlatformIOS {
 	return (RefEditorExportPlatformIOS)(NewTypedRef[EditorExportPlatformIOS](reference))
 }
 
-func newRefEditorExportPlatformIOSAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorExportPlatformIOS](reference.(EditorExportPlatformIOS)))
+func NewRefEditorExportPlatformIOSAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformIOS](reference.(EditorExportPlatformIOS)))
 }
 
-func newRefEditorExportPlatformIOSGDExtensionIternalConstructor(reference EditorExportPlatformIOS) RefEditorExportPlatformIOS {
-	return newTypedRefGDExtensionIternalConstructor[EditorExportPlatformIOS](reference)
+func NewRefEditorExportPlatformIOSGDExtensionIternalConstructor(reference EditorExportPlatformIOS) RefEditorExportPlatformIOS {
+	return NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformIOS](reference)
 }
 
 var _ RefEditorExportPlatformLinuxBSD = &RefEditorExportPlatformLinuxBSDImpl{}
@@ -5970,19 +5970,19 @@ func (r *RefEditorExportPlatformLinuxBSDImpl) Unref() {
 }
 
 func (r *RefEditorExportPlatformLinuxBSDImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorExportPlatformLinuxBSD(reference EditorExportPlatformLinuxBSD) RefEditorExportPlatformLinuxBSD {
 	return (RefEditorExportPlatformLinuxBSD)(NewTypedRef[EditorExportPlatformLinuxBSD](reference))
 }
 
-func newRefEditorExportPlatformLinuxBSDAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorExportPlatformLinuxBSD](reference.(EditorExportPlatformLinuxBSD)))
+func NewRefEditorExportPlatformLinuxBSDAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformLinuxBSD](reference.(EditorExportPlatformLinuxBSD)))
 }
 
-func newRefEditorExportPlatformLinuxBSDGDExtensionIternalConstructor(reference EditorExportPlatformLinuxBSD) RefEditorExportPlatformLinuxBSD {
-	return newTypedRefGDExtensionIternalConstructor[EditorExportPlatformLinuxBSD](reference)
+func NewRefEditorExportPlatformLinuxBSDGDExtensionIternalConstructor(reference EditorExportPlatformLinuxBSD) RefEditorExportPlatformLinuxBSD {
+	return NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformLinuxBSD](reference)
 }
 
 var _ RefEditorExportPlatformMacOS = &RefEditorExportPlatformMacOSImpl{}
@@ -6017,19 +6017,19 @@ func (r *RefEditorExportPlatformMacOSImpl) Unref() {
 }
 
 func (r *RefEditorExportPlatformMacOSImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorExportPlatformMacOS(reference EditorExportPlatformMacOS) RefEditorExportPlatformMacOS {
 	return (RefEditorExportPlatformMacOS)(NewTypedRef[EditorExportPlatformMacOS](reference))
 }
 
-func newRefEditorExportPlatformMacOSAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorExportPlatformMacOS](reference.(EditorExportPlatformMacOS)))
+func NewRefEditorExportPlatformMacOSAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformMacOS](reference.(EditorExportPlatformMacOS)))
 }
 
-func newRefEditorExportPlatformMacOSGDExtensionIternalConstructor(reference EditorExportPlatformMacOS) RefEditorExportPlatformMacOS {
-	return newTypedRefGDExtensionIternalConstructor[EditorExportPlatformMacOS](reference)
+func NewRefEditorExportPlatformMacOSGDExtensionIternalConstructor(reference EditorExportPlatformMacOS) RefEditorExportPlatformMacOS {
+	return NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformMacOS](reference)
 }
 
 var _ RefEditorExportPlatformPC = &RefEditorExportPlatformPCImpl{}
@@ -6064,19 +6064,19 @@ func (r *RefEditorExportPlatformPCImpl) Unref() {
 }
 
 func (r *RefEditorExportPlatformPCImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorExportPlatformPC(reference EditorExportPlatformPC) RefEditorExportPlatformPC {
 	return (RefEditorExportPlatformPC)(NewTypedRef[EditorExportPlatformPC](reference))
 }
 
-func newRefEditorExportPlatformPCAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorExportPlatformPC](reference.(EditorExportPlatformPC)))
+func NewRefEditorExportPlatformPCAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformPC](reference.(EditorExportPlatformPC)))
 }
 
-func newRefEditorExportPlatformPCGDExtensionIternalConstructor(reference EditorExportPlatformPC) RefEditorExportPlatformPC {
-	return newTypedRefGDExtensionIternalConstructor[EditorExportPlatformPC](reference)
+func NewRefEditorExportPlatformPCGDExtensionIternalConstructor(reference EditorExportPlatformPC) RefEditorExportPlatformPC {
+	return NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformPC](reference)
 }
 
 var _ RefEditorExportPlatformWeb = &RefEditorExportPlatformWebImpl{}
@@ -6111,19 +6111,19 @@ func (r *RefEditorExportPlatformWebImpl) Unref() {
 }
 
 func (r *RefEditorExportPlatformWebImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorExportPlatformWeb(reference EditorExportPlatformWeb) RefEditorExportPlatformWeb {
 	return (RefEditorExportPlatformWeb)(NewTypedRef[EditorExportPlatformWeb](reference))
 }
 
-func newRefEditorExportPlatformWebAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorExportPlatformWeb](reference.(EditorExportPlatformWeb)))
+func NewRefEditorExportPlatformWebAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformWeb](reference.(EditorExportPlatformWeb)))
 }
 
-func newRefEditorExportPlatformWebGDExtensionIternalConstructor(reference EditorExportPlatformWeb) RefEditorExportPlatformWeb {
-	return newTypedRefGDExtensionIternalConstructor[EditorExportPlatformWeb](reference)
+func NewRefEditorExportPlatformWebGDExtensionIternalConstructor(reference EditorExportPlatformWeb) RefEditorExportPlatformWeb {
+	return NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformWeb](reference)
 }
 
 var _ RefEditorExportPlatformWindows = &RefEditorExportPlatformWindowsImpl{}
@@ -6158,19 +6158,19 @@ func (r *RefEditorExportPlatformWindowsImpl) Unref() {
 }
 
 func (r *RefEditorExportPlatformWindowsImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorExportPlatformWindows(reference EditorExportPlatformWindows) RefEditorExportPlatformWindows {
 	return (RefEditorExportPlatformWindows)(NewTypedRef[EditorExportPlatformWindows](reference))
 }
 
-func newRefEditorExportPlatformWindowsAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorExportPlatformWindows](reference.(EditorExportPlatformWindows)))
+func NewRefEditorExportPlatformWindowsAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformWindows](reference.(EditorExportPlatformWindows)))
 }
 
-func newRefEditorExportPlatformWindowsGDExtensionIternalConstructor(reference EditorExportPlatformWindows) RefEditorExportPlatformWindows {
-	return newTypedRefGDExtensionIternalConstructor[EditorExportPlatformWindows](reference)
+func NewRefEditorExportPlatformWindowsGDExtensionIternalConstructor(reference EditorExportPlatformWindows) RefEditorExportPlatformWindows {
+	return NewTypedRefGDExtensionIternalConstructor[EditorExportPlatformWindows](reference)
 }
 
 var _ RefEditorExportPlugin = &RefEditorExportPluginImpl{}
@@ -6205,19 +6205,19 @@ func (r *RefEditorExportPluginImpl) Unref() {
 }
 
 func (r *RefEditorExportPluginImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorExportPlugin(reference EditorExportPlugin) RefEditorExportPlugin {
 	return (RefEditorExportPlugin)(NewTypedRef[EditorExportPlugin](reference))
 }
 
-func newRefEditorExportPluginAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorExportPlugin](reference.(EditorExportPlugin)))
+func NewRefEditorExportPluginAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorExportPlugin](reference.(EditorExportPlugin)))
 }
 
-func newRefEditorExportPluginGDExtensionIternalConstructor(reference EditorExportPlugin) RefEditorExportPlugin {
-	return newTypedRefGDExtensionIternalConstructor[EditorExportPlugin](reference)
+func NewRefEditorExportPluginGDExtensionIternalConstructor(reference EditorExportPlugin) RefEditorExportPlugin {
+	return NewTypedRefGDExtensionIternalConstructor[EditorExportPlugin](reference)
 }
 
 var _ RefEditorFeatureProfile = &RefEditorFeatureProfileImpl{}
@@ -6252,19 +6252,19 @@ func (r *RefEditorFeatureProfileImpl) Unref() {
 }
 
 func (r *RefEditorFeatureProfileImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorFeatureProfile(reference EditorFeatureProfile) RefEditorFeatureProfile {
 	return (RefEditorFeatureProfile)(NewTypedRef[EditorFeatureProfile](reference))
 }
 
-func newRefEditorFeatureProfileAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorFeatureProfile](reference.(EditorFeatureProfile)))
+func NewRefEditorFeatureProfileAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorFeatureProfile](reference.(EditorFeatureProfile)))
 }
 
-func newRefEditorFeatureProfileGDExtensionIternalConstructor(reference EditorFeatureProfile) RefEditorFeatureProfile {
-	return newTypedRefGDExtensionIternalConstructor[EditorFeatureProfile](reference)
+func NewRefEditorFeatureProfileGDExtensionIternalConstructor(reference EditorFeatureProfile) RefEditorFeatureProfile {
+	return NewTypedRefGDExtensionIternalConstructor[EditorFeatureProfile](reference)
 }
 
 var _ RefEditorFileSystemImportFormatSupportQuery = &RefEditorFileSystemImportFormatSupportQueryImpl{}
@@ -6299,19 +6299,19 @@ func (r *RefEditorFileSystemImportFormatSupportQueryImpl) Unref() {
 }
 
 func (r *RefEditorFileSystemImportFormatSupportQueryImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorFileSystemImportFormatSupportQuery(reference EditorFileSystemImportFormatSupportQuery) RefEditorFileSystemImportFormatSupportQuery {
 	return (RefEditorFileSystemImportFormatSupportQuery)(NewTypedRef[EditorFileSystemImportFormatSupportQuery](reference))
 }
 
-func newRefEditorFileSystemImportFormatSupportQueryAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorFileSystemImportFormatSupportQuery](reference.(EditorFileSystemImportFormatSupportQuery)))
+func NewRefEditorFileSystemImportFormatSupportQueryAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorFileSystemImportFormatSupportQuery](reference.(EditorFileSystemImportFormatSupportQuery)))
 }
 
-func newRefEditorFileSystemImportFormatSupportQueryGDExtensionIternalConstructor(reference EditorFileSystemImportFormatSupportQuery) RefEditorFileSystemImportFormatSupportQuery {
-	return newTypedRefGDExtensionIternalConstructor[EditorFileSystemImportFormatSupportQuery](reference)
+func NewRefEditorFileSystemImportFormatSupportQueryGDExtensionIternalConstructor(reference EditorFileSystemImportFormatSupportQuery) RefEditorFileSystemImportFormatSupportQuery {
+	return NewTypedRefGDExtensionIternalConstructor[EditorFileSystemImportFormatSupportQuery](reference)
 }
 
 var _ RefEditorImportPlugin = &RefEditorImportPluginImpl{}
@@ -6346,19 +6346,19 @@ func (r *RefEditorImportPluginImpl) Unref() {
 }
 
 func (r *RefEditorImportPluginImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorImportPlugin(reference EditorImportPlugin) RefEditorImportPlugin {
 	return (RefEditorImportPlugin)(NewTypedRef[EditorImportPlugin](reference))
 }
 
-func newRefEditorImportPluginAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorImportPlugin](reference.(EditorImportPlugin)))
+func NewRefEditorImportPluginAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorImportPlugin](reference.(EditorImportPlugin)))
 }
 
-func newRefEditorImportPluginGDExtensionIternalConstructor(reference EditorImportPlugin) RefEditorImportPlugin {
-	return newTypedRefGDExtensionIternalConstructor[EditorImportPlugin](reference)
+func NewRefEditorImportPluginGDExtensionIternalConstructor(reference EditorImportPlugin) RefEditorImportPlugin {
+	return NewTypedRefGDExtensionIternalConstructor[EditorImportPlugin](reference)
 }
 
 var _ RefEditorInspectorPlugin = &RefEditorInspectorPluginImpl{}
@@ -6393,19 +6393,19 @@ func (r *RefEditorInspectorPluginImpl) Unref() {
 }
 
 func (r *RefEditorInspectorPluginImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorInspectorPlugin(reference EditorInspectorPlugin) RefEditorInspectorPlugin {
 	return (RefEditorInspectorPlugin)(NewTypedRef[EditorInspectorPlugin](reference))
 }
 
-func newRefEditorInspectorPluginAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorInspectorPlugin](reference.(EditorInspectorPlugin)))
+func NewRefEditorInspectorPluginAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorInspectorPlugin](reference.(EditorInspectorPlugin)))
 }
 
-func newRefEditorInspectorPluginGDExtensionIternalConstructor(reference EditorInspectorPlugin) RefEditorInspectorPlugin {
-	return newTypedRefGDExtensionIternalConstructor[EditorInspectorPlugin](reference)
+func NewRefEditorInspectorPluginGDExtensionIternalConstructor(reference EditorInspectorPlugin) RefEditorInspectorPlugin {
+	return NewTypedRefGDExtensionIternalConstructor[EditorInspectorPlugin](reference)
 }
 
 var _ RefEditorNode3DGizmo = &RefEditorNode3DGizmoImpl{}
@@ -6440,19 +6440,19 @@ func (r *RefEditorNode3DGizmoImpl) Unref() {
 }
 
 func (r *RefEditorNode3DGizmoImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorNode3DGizmo(reference EditorNode3DGizmo) RefEditorNode3DGizmo {
 	return (RefEditorNode3DGizmo)(NewTypedRef[EditorNode3DGizmo](reference))
 }
 
-func newRefEditorNode3DGizmoAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorNode3DGizmo](reference.(EditorNode3DGizmo)))
+func NewRefEditorNode3DGizmoAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorNode3DGizmo](reference.(EditorNode3DGizmo)))
 }
 
-func newRefEditorNode3DGizmoGDExtensionIternalConstructor(reference EditorNode3DGizmo) RefEditorNode3DGizmo {
-	return newTypedRefGDExtensionIternalConstructor[EditorNode3DGizmo](reference)
+func NewRefEditorNode3DGizmoGDExtensionIternalConstructor(reference EditorNode3DGizmo) RefEditorNode3DGizmo {
+	return NewTypedRefGDExtensionIternalConstructor[EditorNode3DGizmo](reference)
 }
 
 var _ RefEditorNode3DGizmoPlugin = &RefEditorNode3DGizmoPluginImpl{}
@@ -6487,19 +6487,19 @@ func (r *RefEditorNode3DGizmoPluginImpl) Unref() {
 }
 
 func (r *RefEditorNode3DGizmoPluginImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorNode3DGizmoPlugin(reference EditorNode3DGizmoPlugin) RefEditorNode3DGizmoPlugin {
 	return (RefEditorNode3DGizmoPlugin)(NewTypedRef[EditorNode3DGizmoPlugin](reference))
 }
 
-func newRefEditorNode3DGizmoPluginAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorNode3DGizmoPlugin](reference.(EditorNode3DGizmoPlugin)))
+func NewRefEditorNode3DGizmoPluginAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorNode3DGizmoPlugin](reference.(EditorNode3DGizmoPlugin)))
 }
 
-func newRefEditorNode3DGizmoPluginGDExtensionIternalConstructor(reference EditorNode3DGizmoPlugin) RefEditorNode3DGizmoPlugin {
-	return newTypedRefGDExtensionIternalConstructor[EditorNode3DGizmoPlugin](reference)
+func NewRefEditorNode3DGizmoPluginGDExtensionIternalConstructor(reference EditorNode3DGizmoPlugin) RefEditorNode3DGizmoPlugin {
+	return NewTypedRefGDExtensionIternalConstructor[EditorNode3DGizmoPlugin](reference)
 }
 
 var _ RefEditorResourceConversionPlugin = &RefEditorResourceConversionPluginImpl{}
@@ -6534,19 +6534,19 @@ func (r *RefEditorResourceConversionPluginImpl) Unref() {
 }
 
 func (r *RefEditorResourceConversionPluginImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorResourceConversionPlugin(reference EditorResourceConversionPlugin) RefEditorResourceConversionPlugin {
 	return (RefEditorResourceConversionPlugin)(NewTypedRef[EditorResourceConversionPlugin](reference))
 }
 
-func newRefEditorResourceConversionPluginAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorResourceConversionPlugin](reference.(EditorResourceConversionPlugin)))
+func NewRefEditorResourceConversionPluginAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorResourceConversionPlugin](reference.(EditorResourceConversionPlugin)))
 }
 
-func newRefEditorResourceConversionPluginGDExtensionIternalConstructor(reference EditorResourceConversionPlugin) RefEditorResourceConversionPlugin {
-	return newTypedRefGDExtensionIternalConstructor[EditorResourceConversionPlugin](reference)
+func NewRefEditorResourceConversionPluginGDExtensionIternalConstructor(reference EditorResourceConversionPlugin) RefEditorResourceConversionPlugin {
+	return NewTypedRefGDExtensionIternalConstructor[EditorResourceConversionPlugin](reference)
 }
 
 var _ RefEditorResourcePreviewGenerator = &RefEditorResourcePreviewGeneratorImpl{}
@@ -6581,19 +6581,19 @@ func (r *RefEditorResourcePreviewGeneratorImpl) Unref() {
 }
 
 func (r *RefEditorResourcePreviewGeneratorImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorResourcePreviewGenerator(reference EditorResourcePreviewGenerator) RefEditorResourcePreviewGenerator {
 	return (RefEditorResourcePreviewGenerator)(NewTypedRef[EditorResourcePreviewGenerator](reference))
 }
 
-func newRefEditorResourcePreviewGeneratorAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorResourcePreviewGenerator](reference.(EditorResourcePreviewGenerator)))
+func NewRefEditorResourcePreviewGeneratorAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorResourcePreviewGenerator](reference.(EditorResourcePreviewGenerator)))
 }
 
-func newRefEditorResourcePreviewGeneratorGDExtensionIternalConstructor(reference EditorResourcePreviewGenerator) RefEditorResourcePreviewGenerator {
-	return newTypedRefGDExtensionIternalConstructor[EditorResourcePreviewGenerator](reference)
+func NewRefEditorResourcePreviewGeneratorGDExtensionIternalConstructor(reference EditorResourcePreviewGenerator) RefEditorResourcePreviewGenerator {
+	return NewTypedRefGDExtensionIternalConstructor[EditorResourcePreviewGenerator](reference)
 }
 
 var _ RefEditorResourceTooltipPlugin = &RefEditorResourceTooltipPluginImpl{}
@@ -6628,19 +6628,19 @@ func (r *RefEditorResourceTooltipPluginImpl) Unref() {
 }
 
 func (r *RefEditorResourceTooltipPluginImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorResourceTooltipPlugin(reference EditorResourceTooltipPlugin) RefEditorResourceTooltipPlugin {
 	return (RefEditorResourceTooltipPlugin)(NewTypedRef[EditorResourceTooltipPlugin](reference))
 }
 
-func newRefEditorResourceTooltipPluginAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorResourceTooltipPlugin](reference.(EditorResourceTooltipPlugin)))
+func NewRefEditorResourceTooltipPluginAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorResourceTooltipPlugin](reference.(EditorResourceTooltipPlugin)))
 }
 
-func newRefEditorResourceTooltipPluginGDExtensionIternalConstructor(reference EditorResourceTooltipPlugin) RefEditorResourceTooltipPlugin {
-	return newTypedRefGDExtensionIternalConstructor[EditorResourceTooltipPlugin](reference)
+func NewRefEditorResourceTooltipPluginGDExtensionIternalConstructor(reference EditorResourceTooltipPlugin) RefEditorResourceTooltipPlugin {
+	return NewTypedRefGDExtensionIternalConstructor[EditorResourceTooltipPlugin](reference)
 }
 
 var _ RefEditorSceneFormatImporter = &RefEditorSceneFormatImporterImpl{}
@@ -6675,19 +6675,19 @@ func (r *RefEditorSceneFormatImporterImpl) Unref() {
 }
 
 func (r *RefEditorSceneFormatImporterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorSceneFormatImporter(reference EditorSceneFormatImporter) RefEditorSceneFormatImporter {
 	return (RefEditorSceneFormatImporter)(NewTypedRef[EditorSceneFormatImporter](reference))
 }
 
-func newRefEditorSceneFormatImporterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporter](reference.(EditorSceneFormatImporter)))
+func NewRefEditorSceneFormatImporterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporter](reference.(EditorSceneFormatImporter)))
 }
 
-func newRefEditorSceneFormatImporterGDExtensionIternalConstructor(reference EditorSceneFormatImporter) RefEditorSceneFormatImporter {
-	return newTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporter](reference)
+func NewRefEditorSceneFormatImporterGDExtensionIternalConstructor(reference EditorSceneFormatImporter) RefEditorSceneFormatImporter {
+	return NewTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporter](reference)
 }
 
 var _ RefEditorSceneFormatImporterBlend = &RefEditorSceneFormatImporterBlendImpl{}
@@ -6722,19 +6722,19 @@ func (r *RefEditorSceneFormatImporterBlendImpl) Unref() {
 }
 
 func (r *RefEditorSceneFormatImporterBlendImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorSceneFormatImporterBlend(reference EditorSceneFormatImporterBlend) RefEditorSceneFormatImporterBlend {
 	return (RefEditorSceneFormatImporterBlend)(NewTypedRef[EditorSceneFormatImporterBlend](reference))
 }
 
-func newRefEditorSceneFormatImporterBlendAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterBlend](reference.(EditorSceneFormatImporterBlend)))
+func NewRefEditorSceneFormatImporterBlendAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterBlend](reference.(EditorSceneFormatImporterBlend)))
 }
 
-func newRefEditorSceneFormatImporterBlendGDExtensionIternalConstructor(reference EditorSceneFormatImporterBlend) RefEditorSceneFormatImporterBlend {
-	return newTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterBlend](reference)
+func NewRefEditorSceneFormatImporterBlendGDExtensionIternalConstructor(reference EditorSceneFormatImporterBlend) RefEditorSceneFormatImporterBlend {
+	return NewTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterBlend](reference)
 }
 
 var _ RefEditorSceneFormatImporterFBX = &RefEditorSceneFormatImporterFBXImpl{}
@@ -6769,19 +6769,19 @@ func (r *RefEditorSceneFormatImporterFBXImpl) Unref() {
 }
 
 func (r *RefEditorSceneFormatImporterFBXImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorSceneFormatImporterFBX(reference EditorSceneFormatImporterFBX) RefEditorSceneFormatImporterFBX {
 	return (RefEditorSceneFormatImporterFBX)(NewTypedRef[EditorSceneFormatImporterFBX](reference))
 }
 
-func newRefEditorSceneFormatImporterFBXAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterFBX](reference.(EditorSceneFormatImporterFBX)))
+func NewRefEditorSceneFormatImporterFBXAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterFBX](reference.(EditorSceneFormatImporterFBX)))
 }
 
-func newRefEditorSceneFormatImporterFBXGDExtensionIternalConstructor(reference EditorSceneFormatImporterFBX) RefEditorSceneFormatImporterFBX {
-	return newTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterFBX](reference)
+func NewRefEditorSceneFormatImporterFBXGDExtensionIternalConstructor(reference EditorSceneFormatImporterFBX) RefEditorSceneFormatImporterFBX {
+	return NewTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterFBX](reference)
 }
 
 var _ RefEditorSceneFormatImporterGLTF = &RefEditorSceneFormatImporterGLTFImpl{}
@@ -6816,19 +6816,19 @@ func (r *RefEditorSceneFormatImporterGLTFImpl) Unref() {
 }
 
 func (r *RefEditorSceneFormatImporterGLTFImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorSceneFormatImporterGLTF(reference EditorSceneFormatImporterGLTF) RefEditorSceneFormatImporterGLTF {
 	return (RefEditorSceneFormatImporterGLTF)(NewTypedRef[EditorSceneFormatImporterGLTF](reference))
 }
 
-func newRefEditorSceneFormatImporterGLTFAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterGLTF](reference.(EditorSceneFormatImporterGLTF)))
+func NewRefEditorSceneFormatImporterGLTFAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterGLTF](reference.(EditorSceneFormatImporterGLTF)))
 }
 
-func newRefEditorSceneFormatImporterGLTFGDExtensionIternalConstructor(reference EditorSceneFormatImporterGLTF) RefEditorSceneFormatImporterGLTF {
-	return newTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterGLTF](reference)
+func NewRefEditorSceneFormatImporterGLTFGDExtensionIternalConstructor(reference EditorSceneFormatImporterGLTF) RefEditorSceneFormatImporterGLTF {
+	return NewTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterGLTF](reference)
 }
 
 var _ RefEditorScenePostImport = &RefEditorScenePostImportImpl{}
@@ -6863,19 +6863,19 @@ func (r *RefEditorScenePostImportImpl) Unref() {
 }
 
 func (r *RefEditorScenePostImportImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorScenePostImport(reference EditorScenePostImport) RefEditorScenePostImport {
 	return (RefEditorScenePostImport)(NewTypedRef[EditorScenePostImport](reference))
 }
 
-func newRefEditorScenePostImportAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorScenePostImport](reference.(EditorScenePostImport)))
+func NewRefEditorScenePostImportAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorScenePostImport](reference.(EditorScenePostImport)))
 }
 
-func newRefEditorScenePostImportGDExtensionIternalConstructor(reference EditorScenePostImport) RefEditorScenePostImport {
-	return newTypedRefGDExtensionIternalConstructor[EditorScenePostImport](reference)
+func NewRefEditorScenePostImportGDExtensionIternalConstructor(reference EditorScenePostImport) RefEditorScenePostImport {
+	return NewTypedRefGDExtensionIternalConstructor[EditorScenePostImport](reference)
 }
 
 var _ RefEditorScenePostImportPlugin = &RefEditorScenePostImportPluginImpl{}
@@ -6910,19 +6910,19 @@ func (r *RefEditorScenePostImportPluginImpl) Unref() {
 }
 
 func (r *RefEditorScenePostImportPluginImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorScenePostImportPlugin(reference EditorScenePostImportPlugin) RefEditorScenePostImportPlugin {
 	return (RefEditorScenePostImportPlugin)(NewTypedRef[EditorScenePostImportPlugin](reference))
 }
 
-func newRefEditorScenePostImportPluginAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorScenePostImportPlugin](reference.(EditorScenePostImportPlugin)))
+func NewRefEditorScenePostImportPluginAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorScenePostImportPlugin](reference.(EditorScenePostImportPlugin)))
 }
 
-func newRefEditorScenePostImportPluginGDExtensionIternalConstructor(reference EditorScenePostImportPlugin) RefEditorScenePostImportPlugin {
-	return newTypedRefGDExtensionIternalConstructor[EditorScenePostImportPlugin](reference)
+func NewRefEditorScenePostImportPluginGDExtensionIternalConstructor(reference EditorScenePostImportPlugin) RefEditorScenePostImportPlugin {
+	return NewTypedRefGDExtensionIternalConstructor[EditorScenePostImportPlugin](reference)
 }
 
 var _ RefEditorScript = &RefEditorScriptImpl{}
@@ -6957,19 +6957,19 @@ func (r *RefEditorScriptImpl) Unref() {
 }
 
 func (r *RefEditorScriptImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorScript(reference EditorScript) RefEditorScript {
 	return (RefEditorScript)(NewTypedRef[EditorScript](reference))
 }
 
-func newRefEditorScriptAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorScript](reference.(EditorScript)))
+func NewRefEditorScriptAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorScript](reference.(EditorScript)))
 }
 
-func newRefEditorScriptGDExtensionIternalConstructor(reference EditorScript) RefEditorScript {
-	return newTypedRefGDExtensionIternalConstructor[EditorScript](reference)
+func NewRefEditorScriptGDExtensionIternalConstructor(reference EditorScript) RefEditorScript {
+	return NewTypedRefGDExtensionIternalConstructor[EditorScript](reference)
 }
 
 var _ RefEditorSettings = &RefEditorSettingsImpl{}
@@ -7004,19 +7004,19 @@ func (r *RefEditorSettingsImpl) Unref() {
 }
 
 func (r *RefEditorSettingsImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorSettings(reference EditorSettings) RefEditorSettings {
 	return (RefEditorSettings)(NewTypedRef[EditorSettings](reference))
 }
 
-func newRefEditorSettingsAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorSettings](reference.(EditorSettings)))
+func NewRefEditorSettingsAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorSettings](reference.(EditorSettings)))
 }
 
-func newRefEditorSettingsGDExtensionIternalConstructor(reference EditorSettings) RefEditorSettings {
-	return newTypedRefGDExtensionIternalConstructor[EditorSettings](reference)
+func NewRefEditorSettingsGDExtensionIternalConstructor(reference EditorSettings) RefEditorSettings {
+	return NewTypedRefGDExtensionIternalConstructor[EditorSettings](reference)
 }
 
 var _ RefEditorSyntaxHighlighter = &RefEditorSyntaxHighlighterImpl{}
@@ -7051,19 +7051,19 @@ func (r *RefEditorSyntaxHighlighterImpl) Unref() {
 }
 
 func (r *RefEditorSyntaxHighlighterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorSyntaxHighlighter(reference EditorSyntaxHighlighter) RefEditorSyntaxHighlighter {
 	return (RefEditorSyntaxHighlighter)(NewTypedRef[EditorSyntaxHighlighter](reference))
 }
 
-func newRefEditorSyntaxHighlighterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorSyntaxHighlighter](reference.(EditorSyntaxHighlighter)))
+func NewRefEditorSyntaxHighlighterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorSyntaxHighlighter](reference.(EditorSyntaxHighlighter)))
 }
 
-func newRefEditorSyntaxHighlighterGDExtensionIternalConstructor(reference EditorSyntaxHighlighter) RefEditorSyntaxHighlighter {
-	return newTypedRefGDExtensionIternalConstructor[EditorSyntaxHighlighter](reference)
+func NewRefEditorSyntaxHighlighterGDExtensionIternalConstructor(reference EditorSyntaxHighlighter) RefEditorSyntaxHighlighter {
+	return NewTypedRefGDExtensionIternalConstructor[EditorSyntaxHighlighter](reference)
 }
 
 var _ RefEditorTranslationParserPlugin = &RefEditorTranslationParserPluginImpl{}
@@ -7098,19 +7098,19 @@ func (r *RefEditorTranslationParserPluginImpl) Unref() {
 }
 
 func (r *RefEditorTranslationParserPluginImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEditorTranslationParserPlugin(reference EditorTranslationParserPlugin) RefEditorTranslationParserPlugin {
 	return (RefEditorTranslationParserPlugin)(NewTypedRef[EditorTranslationParserPlugin](reference))
 }
 
-func newRefEditorTranslationParserPluginAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EditorTranslationParserPlugin](reference.(EditorTranslationParserPlugin)))
+func NewRefEditorTranslationParserPluginAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorTranslationParserPlugin](reference.(EditorTranslationParserPlugin)))
 }
 
-func newRefEditorTranslationParserPluginGDExtensionIternalConstructor(reference EditorTranslationParserPlugin) RefEditorTranslationParserPlugin {
-	return newTypedRefGDExtensionIternalConstructor[EditorTranslationParserPlugin](reference)
+func NewRefEditorTranslationParserPluginGDExtensionIternalConstructor(reference EditorTranslationParserPlugin) RefEditorTranslationParserPlugin {
+	return NewTypedRefGDExtensionIternalConstructor[EditorTranslationParserPlugin](reference)
 }
 
 var _ RefEncodedObjectAsID = &RefEncodedObjectAsIDImpl{}
@@ -7145,19 +7145,19 @@ func (r *RefEncodedObjectAsIDImpl) Unref() {
 }
 
 func (r *RefEncodedObjectAsIDImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEncodedObjectAsID(reference EncodedObjectAsID) RefEncodedObjectAsID {
 	return (RefEncodedObjectAsID)(NewTypedRef[EncodedObjectAsID](reference))
 }
 
-func newRefEncodedObjectAsIDAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EncodedObjectAsID](reference.(EncodedObjectAsID)))
+func NewRefEncodedObjectAsIDAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EncodedObjectAsID](reference.(EncodedObjectAsID)))
 }
 
-func newRefEncodedObjectAsIDGDExtensionIternalConstructor(reference EncodedObjectAsID) RefEncodedObjectAsID {
-	return newTypedRefGDExtensionIternalConstructor[EncodedObjectAsID](reference)
+func NewRefEncodedObjectAsIDGDExtensionIternalConstructor(reference EncodedObjectAsID) RefEncodedObjectAsID {
+	return NewTypedRefGDExtensionIternalConstructor[EncodedObjectAsID](reference)
 }
 
 var _ RefEngineProfiler = &RefEngineProfilerImpl{}
@@ -7192,19 +7192,19 @@ func (r *RefEngineProfilerImpl) Unref() {
 }
 
 func (r *RefEngineProfilerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEngineProfiler(reference EngineProfiler) RefEngineProfiler {
 	return (RefEngineProfiler)(NewTypedRef[EngineProfiler](reference))
 }
 
-func newRefEngineProfilerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[EngineProfiler](reference.(EngineProfiler)))
+func NewRefEngineProfilerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EngineProfiler](reference.(EngineProfiler)))
 }
 
-func newRefEngineProfilerGDExtensionIternalConstructor(reference EngineProfiler) RefEngineProfiler {
-	return newTypedRefGDExtensionIternalConstructor[EngineProfiler](reference)
+func NewRefEngineProfilerGDExtensionIternalConstructor(reference EngineProfiler) RefEngineProfiler {
+	return NewTypedRefGDExtensionIternalConstructor[EngineProfiler](reference)
 }
 
 var _ RefEnvironment = &RefEnvironmentImpl{}
@@ -7239,19 +7239,19 @@ func (r *RefEnvironmentImpl) Unref() {
 }
 
 func (r *RefEnvironmentImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefEnvironment(reference Environment) RefEnvironment {
 	return (RefEnvironment)(NewTypedRef[Environment](reference))
 }
 
-func newRefEnvironmentAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Environment](reference.(Environment)))
+func NewRefEnvironmentAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Environment](reference.(Environment)))
 }
 
-func newRefEnvironmentGDExtensionIternalConstructor(reference Environment) RefEnvironment {
-	return newTypedRefGDExtensionIternalConstructor[Environment](reference)
+func NewRefEnvironmentGDExtensionIternalConstructor(reference Environment) RefEnvironment {
+	return NewTypedRefGDExtensionIternalConstructor[Environment](reference)
 }
 
 var _ RefExpression = &RefExpressionImpl{}
@@ -7286,19 +7286,19 @@ func (r *RefExpressionImpl) Unref() {
 }
 
 func (r *RefExpressionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefExpression(reference Expression) RefExpression {
 	return (RefExpression)(NewTypedRef[Expression](reference))
 }
 
-func newRefExpressionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Expression](reference.(Expression)))
+func NewRefExpressionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Expression](reference.(Expression)))
 }
 
-func newRefExpressionGDExtensionIternalConstructor(reference Expression) RefExpression {
-	return newTypedRefGDExtensionIternalConstructor[Expression](reference)
+func NewRefExpressionGDExtensionIternalConstructor(reference Expression) RefExpression {
+	return NewTypedRefGDExtensionIternalConstructor[Expression](reference)
 }
 
 var _ RefFastNoiseLite = &RefFastNoiseLiteImpl{}
@@ -7333,19 +7333,19 @@ func (r *RefFastNoiseLiteImpl) Unref() {
 }
 
 func (r *RefFastNoiseLiteImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefFastNoiseLite(reference FastNoiseLite) RefFastNoiseLite {
 	return (RefFastNoiseLite)(NewTypedRef[FastNoiseLite](reference))
 }
 
-func newRefFastNoiseLiteAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[FastNoiseLite](reference.(FastNoiseLite)))
+func NewRefFastNoiseLiteAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[FastNoiseLite](reference.(FastNoiseLite)))
 }
 
-func newRefFastNoiseLiteGDExtensionIternalConstructor(reference FastNoiseLite) RefFastNoiseLite {
-	return newTypedRefGDExtensionIternalConstructor[FastNoiseLite](reference)
+func NewRefFastNoiseLiteGDExtensionIternalConstructor(reference FastNoiseLite) RefFastNoiseLite {
+	return NewTypedRefGDExtensionIternalConstructor[FastNoiseLite](reference)
 }
 
 var _ RefFileAccess = &RefFileAccessImpl{}
@@ -7380,19 +7380,19 @@ func (r *RefFileAccessImpl) Unref() {
 }
 
 func (r *RefFileAccessImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefFileAccess(reference FileAccess) RefFileAccess {
 	return (RefFileAccess)(NewTypedRef[FileAccess](reference))
 }
 
-func newRefFileAccessAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[FileAccess](reference.(FileAccess)))
+func NewRefFileAccessAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[FileAccess](reference.(FileAccess)))
 }
 
-func newRefFileAccessGDExtensionIternalConstructor(reference FileAccess) RefFileAccess {
-	return newTypedRefGDExtensionIternalConstructor[FileAccess](reference)
+func NewRefFileAccessGDExtensionIternalConstructor(reference FileAccess) RefFileAccess {
+	return NewTypedRefGDExtensionIternalConstructor[FileAccess](reference)
 }
 
 var _ RefFogMaterial = &RefFogMaterialImpl{}
@@ -7427,19 +7427,19 @@ func (r *RefFogMaterialImpl) Unref() {
 }
 
 func (r *RefFogMaterialImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefFogMaterial(reference FogMaterial) RefFogMaterial {
 	return (RefFogMaterial)(NewTypedRef[FogMaterial](reference))
 }
 
-func newRefFogMaterialAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[FogMaterial](reference.(FogMaterial)))
+func NewRefFogMaterialAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[FogMaterial](reference.(FogMaterial)))
 }
 
-func newRefFogMaterialGDExtensionIternalConstructor(reference FogMaterial) RefFogMaterial {
-	return newTypedRefGDExtensionIternalConstructor[FogMaterial](reference)
+func NewRefFogMaterialGDExtensionIternalConstructor(reference FogMaterial) RefFogMaterial {
+	return NewTypedRefGDExtensionIternalConstructor[FogMaterial](reference)
 }
 
 var _ RefFont = &RefFontImpl{}
@@ -7474,19 +7474,19 @@ func (r *RefFontImpl) Unref() {
 }
 
 func (r *RefFontImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefFont(reference Font) RefFont {
 	return (RefFont)(NewTypedRef[Font](reference))
 }
 
-func newRefFontAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Font](reference.(Font)))
+func NewRefFontAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Font](reference.(Font)))
 }
 
-func newRefFontGDExtensionIternalConstructor(reference Font) RefFont {
-	return newTypedRefGDExtensionIternalConstructor[Font](reference)
+func NewRefFontGDExtensionIternalConstructor(reference Font) RefFont {
+	return NewTypedRefGDExtensionIternalConstructor[Font](reference)
 }
 
 var _ RefFontFile = &RefFontFileImpl{}
@@ -7521,19 +7521,19 @@ func (r *RefFontFileImpl) Unref() {
 }
 
 func (r *RefFontFileImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefFontFile(reference FontFile) RefFontFile {
 	return (RefFontFile)(NewTypedRef[FontFile](reference))
 }
 
-func newRefFontFileAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[FontFile](reference.(FontFile)))
+func NewRefFontFileAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[FontFile](reference.(FontFile)))
 }
 
-func newRefFontFileGDExtensionIternalConstructor(reference FontFile) RefFontFile {
-	return newTypedRefGDExtensionIternalConstructor[FontFile](reference)
+func NewRefFontFileGDExtensionIternalConstructor(reference FontFile) RefFontFile {
+	return NewTypedRefGDExtensionIternalConstructor[FontFile](reference)
 }
 
 var _ RefFontVariation = &RefFontVariationImpl{}
@@ -7568,19 +7568,19 @@ func (r *RefFontVariationImpl) Unref() {
 }
 
 func (r *RefFontVariationImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefFontVariation(reference FontVariation) RefFontVariation {
 	return (RefFontVariation)(NewTypedRef[FontVariation](reference))
 }
 
-func newRefFontVariationAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[FontVariation](reference.(FontVariation)))
+func NewRefFontVariationAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[FontVariation](reference.(FontVariation)))
 }
 
-func newRefFontVariationGDExtensionIternalConstructor(reference FontVariation) RefFontVariation {
-	return newTypedRefGDExtensionIternalConstructor[FontVariation](reference)
+func NewRefFontVariationGDExtensionIternalConstructor(reference FontVariation) RefFontVariation {
+	return NewTypedRefGDExtensionIternalConstructor[FontVariation](reference)
 }
 
 var _ RefGDExtension = &RefGDExtensionImpl{}
@@ -7615,19 +7615,19 @@ func (r *RefGDExtensionImpl) Unref() {
 }
 
 func (r *RefGDExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGDExtension(reference GDExtension) RefGDExtension {
 	return (RefGDExtension)(NewTypedRef[GDExtension](reference))
 }
 
-func newRefGDExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GDExtension](reference.(GDExtension)))
+func NewRefGDExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GDExtension](reference.(GDExtension)))
 }
 
-func newRefGDExtensionGDExtensionIternalConstructor(reference GDExtension) RefGDExtension {
-	return newTypedRefGDExtensionIternalConstructor[GDExtension](reference)
+func NewRefGDExtensionGDExtensionIternalConstructor(reference GDExtension) RefGDExtension {
+	return NewTypedRefGDExtensionIternalConstructor[GDExtension](reference)
 }
 
 var _ RefGDScript = &RefGDScriptImpl{}
@@ -7662,19 +7662,19 @@ func (r *RefGDScriptImpl) Unref() {
 }
 
 func (r *RefGDScriptImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGDScript(reference GDScript) RefGDScript {
 	return (RefGDScript)(NewTypedRef[GDScript](reference))
 }
 
-func newRefGDScriptAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GDScript](reference.(GDScript)))
+func NewRefGDScriptAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GDScript](reference.(GDScript)))
 }
 
-func newRefGDScriptGDExtensionIternalConstructor(reference GDScript) RefGDScript {
-	return newTypedRefGDExtensionIternalConstructor[GDScript](reference)
+func NewRefGDScriptGDExtensionIternalConstructor(reference GDScript) RefGDScript {
+	return NewTypedRefGDExtensionIternalConstructor[GDScript](reference)
 }
 
 var _ RefGLTFAccessor = &RefGLTFAccessorImpl{}
@@ -7709,19 +7709,19 @@ func (r *RefGLTFAccessorImpl) Unref() {
 }
 
 func (r *RefGLTFAccessorImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFAccessor(reference GLTFAccessor) RefGLTFAccessor {
 	return (RefGLTFAccessor)(NewTypedRef[GLTFAccessor](reference))
 }
 
-func newRefGLTFAccessorAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFAccessor](reference.(GLTFAccessor)))
+func NewRefGLTFAccessorAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFAccessor](reference.(GLTFAccessor)))
 }
 
-func newRefGLTFAccessorGDExtensionIternalConstructor(reference GLTFAccessor) RefGLTFAccessor {
-	return newTypedRefGDExtensionIternalConstructor[GLTFAccessor](reference)
+func NewRefGLTFAccessorGDExtensionIternalConstructor(reference GLTFAccessor) RefGLTFAccessor {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFAccessor](reference)
 }
 
 var _ RefGLTFAnimation = &RefGLTFAnimationImpl{}
@@ -7756,19 +7756,19 @@ func (r *RefGLTFAnimationImpl) Unref() {
 }
 
 func (r *RefGLTFAnimationImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFAnimation(reference GLTFAnimation) RefGLTFAnimation {
 	return (RefGLTFAnimation)(NewTypedRef[GLTFAnimation](reference))
 }
 
-func newRefGLTFAnimationAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFAnimation](reference.(GLTFAnimation)))
+func NewRefGLTFAnimationAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFAnimation](reference.(GLTFAnimation)))
 }
 
-func newRefGLTFAnimationGDExtensionIternalConstructor(reference GLTFAnimation) RefGLTFAnimation {
-	return newTypedRefGDExtensionIternalConstructor[GLTFAnimation](reference)
+func NewRefGLTFAnimationGDExtensionIternalConstructor(reference GLTFAnimation) RefGLTFAnimation {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFAnimation](reference)
 }
 
 var _ RefGLTFBufferView = &RefGLTFBufferViewImpl{}
@@ -7803,19 +7803,19 @@ func (r *RefGLTFBufferViewImpl) Unref() {
 }
 
 func (r *RefGLTFBufferViewImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFBufferView(reference GLTFBufferView) RefGLTFBufferView {
 	return (RefGLTFBufferView)(NewTypedRef[GLTFBufferView](reference))
 }
 
-func newRefGLTFBufferViewAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFBufferView](reference.(GLTFBufferView)))
+func NewRefGLTFBufferViewAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFBufferView](reference.(GLTFBufferView)))
 }
 
-func newRefGLTFBufferViewGDExtensionIternalConstructor(reference GLTFBufferView) RefGLTFBufferView {
-	return newTypedRefGDExtensionIternalConstructor[GLTFBufferView](reference)
+func NewRefGLTFBufferViewGDExtensionIternalConstructor(reference GLTFBufferView) RefGLTFBufferView {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFBufferView](reference)
 }
 
 var _ RefGLTFCamera = &RefGLTFCameraImpl{}
@@ -7850,19 +7850,19 @@ func (r *RefGLTFCameraImpl) Unref() {
 }
 
 func (r *RefGLTFCameraImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFCamera(reference GLTFCamera) RefGLTFCamera {
 	return (RefGLTFCamera)(NewTypedRef[GLTFCamera](reference))
 }
 
-func newRefGLTFCameraAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFCamera](reference.(GLTFCamera)))
+func NewRefGLTFCameraAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFCamera](reference.(GLTFCamera)))
 }
 
-func newRefGLTFCameraGDExtensionIternalConstructor(reference GLTFCamera) RefGLTFCamera {
-	return newTypedRefGDExtensionIternalConstructor[GLTFCamera](reference)
+func NewRefGLTFCameraGDExtensionIternalConstructor(reference GLTFCamera) RefGLTFCamera {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFCamera](reference)
 }
 
 var _ RefGLTFDocument = &RefGLTFDocumentImpl{}
@@ -7897,19 +7897,19 @@ func (r *RefGLTFDocumentImpl) Unref() {
 }
 
 func (r *RefGLTFDocumentImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFDocument(reference GLTFDocument) RefGLTFDocument {
 	return (RefGLTFDocument)(NewTypedRef[GLTFDocument](reference))
 }
 
-func newRefGLTFDocumentAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFDocument](reference.(GLTFDocument)))
+func NewRefGLTFDocumentAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFDocument](reference.(GLTFDocument)))
 }
 
-func newRefGLTFDocumentGDExtensionIternalConstructor(reference GLTFDocument) RefGLTFDocument {
-	return newTypedRefGDExtensionIternalConstructor[GLTFDocument](reference)
+func NewRefGLTFDocumentGDExtensionIternalConstructor(reference GLTFDocument) RefGLTFDocument {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFDocument](reference)
 }
 
 var _ RefGLTFDocumentExtension = &RefGLTFDocumentExtensionImpl{}
@@ -7944,19 +7944,19 @@ func (r *RefGLTFDocumentExtensionImpl) Unref() {
 }
 
 func (r *RefGLTFDocumentExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFDocumentExtension(reference GLTFDocumentExtension) RefGLTFDocumentExtension {
 	return (RefGLTFDocumentExtension)(NewTypedRef[GLTFDocumentExtension](reference))
 }
 
-func newRefGLTFDocumentExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFDocumentExtension](reference.(GLTFDocumentExtension)))
+func NewRefGLTFDocumentExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFDocumentExtension](reference.(GLTFDocumentExtension)))
 }
 
-func newRefGLTFDocumentExtensionGDExtensionIternalConstructor(reference GLTFDocumentExtension) RefGLTFDocumentExtension {
-	return newTypedRefGDExtensionIternalConstructor[GLTFDocumentExtension](reference)
+func NewRefGLTFDocumentExtensionGDExtensionIternalConstructor(reference GLTFDocumentExtension) RefGLTFDocumentExtension {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFDocumentExtension](reference)
 }
 
 var _ RefGLTFDocumentExtensionConvertImporterMesh = &RefGLTFDocumentExtensionConvertImporterMeshImpl{}
@@ -7991,19 +7991,19 @@ func (r *RefGLTFDocumentExtensionConvertImporterMeshImpl) Unref() {
 }
 
 func (r *RefGLTFDocumentExtensionConvertImporterMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFDocumentExtensionConvertImporterMesh(reference GLTFDocumentExtensionConvertImporterMesh) RefGLTFDocumentExtensionConvertImporterMesh {
 	return (RefGLTFDocumentExtensionConvertImporterMesh)(NewTypedRef[GLTFDocumentExtensionConvertImporterMesh](reference))
 }
 
-func newRefGLTFDocumentExtensionConvertImporterMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFDocumentExtensionConvertImporterMesh](reference.(GLTFDocumentExtensionConvertImporterMesh)))
+func NewRefGLTFDocumentExtensionConvertImporterMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFDocumentExtensionConvertImporterMesh](reference.(GLTFDocumentExtensionConvertImporterMesh)))
 }
 
-func newRefGLTFDocumentExtensionConvertImporterMeshGDExtensionIternalConstructor(reference GLTFDocumentExtensionConvertImporterMesh) RefGLTFDocumentExtensionConvertImporterMesh {
-	return newTypedRefGDExtensionIternalConstructor[GLTFDocumentExtensionConvertImporterMesh](reference)
+func NewRefGLTFDocumentExtensionConvertImporterMeshGDExtensionIternalConstructor(reference GLTFDocumentExtensionConvertImporterMesh) RefGLTFDocumentExtensionConvertImporterMesh {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFDocumentExtensionConvertImporterMesh](reference)
 }
 
 var _ RefGLTFLight = &RefGLTFLightImpl{}
@@ -8038,19 +8038,19 @@ func (r *RefGLTFLightImpl) Unref() {
 }
 
 func (r *RefGLTFLightImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFLight(reference GLTFLight) RefGLTFLight {
 	return (RefGLTFLight)(NewTypedRef[GLTFLight](reference))
 }
 
-func newRefGLTFLightAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFLight](reference.(GLTFLight)))
+func NewRefGLTFLightAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFLight](reference.(GLTFLight)))
 }
 
-func newRefGLTFLightGDExtensionIternalConstructor(reference GLTFLight) RefGLTFLight {
-	return newTypedRefGDExtensionIternalConstructor[GLTFLight](reference)
+func NewRefGLTFLightGDExtensionIternalConstructor(reference GLTFLight) RefGLTFLight {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFLight](reference)
 }
 
 var _ RefGLTFMesh = &RefGLTFMeshImpl{}
@@ -8085,19 +8085,19 @@ func (r *RefGLTFMeshImpl) Unref() {
 }
 
 func (r *RefGLTFMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFMesh(reference GLTFMesh) RefGLTFMesh {
 	return (RefGLTFMesh)(NewTypedRef[GLTFMesh](reference))
 }
 
-func newRefGLTFMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFMesh](reference.(GLTFMesh)))
+func NewRefGLTFMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFMesh](reference.(GLTFMesh)))
 }
 
-func newRefGLTFMeshGDExtensionIternalConstructor(reference GLTFMesh) RefGLTFMesh {
-	return newTypedRefGDExtensionIternalConstructor[GLTFMesh](reference)
+func NewRefGLTFMeshGDExtensionIternalConstructor(reference GLTFMesh) RefGLTFMesh {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFMesh](reference)
 }
 
 var _ RefGLTFNode = &RefGLTFNodeImpl{}
@@ -8132,19 +8132,19 @@ func (r *RefGLTFNodeImpl) Unref() {
 }
 
 func (r *RefGLTFNodeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFNode(reference GLTFNode) RefGLTFNode {
 	return (RefGLTFNode)(NewTypedRef[GLTFNode](reference))
 }
 
-func newRefGLTFNodeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFNode](reference.(GLTFNode)))
+func NewRefGLTFNodeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFNode](reference.(GLTFNode)))
 }
 
-func newRefGLTFNodeGDExtensionIternalConstructor(reference GLTFNode) RefGLTFNode {
-	return newTypedRefGDExtensionIternalConstructor[GLTFNode](reference)
+func NewRefGLTFNodeGDExtensionIternalConstructor(reference GLTFNode) RefGLTFNode {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFNode](reference)
 }
 
 var _ RefGLTFPhysicsBody = &RefGLTFPhysicsBodyImpl{}
@@ -8179,19 +8179,19 @@ func (r *RefGLTFPhysicsBodyImpl) Unref() {
 }
 
 func (r *RefGLTFPhysicsBodyImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFPhysicsBody(reference GLTFPhysicsBody) RefGLTFPhysicsBody {
 	return (RefGLTFPhysicsBody)(NewTypedRef[GLTFPhysicsBody](reference))
 }
 
-func newRefGLTFPhysicsBodyAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFPhysicsBody](reference.(GLTFPhysicsBody)))
+func NewRefGLTFPhysicsBodyAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFPhysicsBody](reference.(GLTFPhysicsBody)))
 }
 
-func newRefGLTFPhysicsBodyGDExtensionIternalConstructor(reference GLTFPhysicsBody) RefGLTFPhysicsBody {
-	return newTypedRefGDExtensionIternalConstructor[GLTFPhysicsBody](reference)
+func NewRefGLTFPhysicsBodyGDExtensionIternalConstructor(reference GLTFPhysicsBody) RefGLTFPhysicsBody {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFPhysicsBody](reference)
 }
 
 var _ RefGLTFPhysicsShape = &RefGLTFPhysicsShapeImpl{}
@@ -8226,19 +8226,19 @@ func (r *RefGLTFPhysicsShapeImpl) Unref() {
 }
 
 func (r *RefGLTFPhysicsShapeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFPhysicsShape(reference GLTFPhysicsShape) RefGLTFPhysicsShape {
 	return (RefGLTFPhysicsShape)(NewTypedRef[GLTFPhysicsShape](reference))
 }
 
-func newRefGLTFPhysicsShapeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFPhysicsShape](reference.(GLTFPhysicsShape)))
+func NewRefGLTFPhysicsShapeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFPhysicsShape](reference.(GLTFPhysicsShape)))
 }
 
-func newRefGLTFPhysicsShapeGDExtensionIternalConstructor(reference GLTFPhysicsShape) RefGLTFPhysicsShape {
-	return newTypedRefGDExtensionIternalConstructor[GLTFPhysicsShape](reference)
+func NewRefGLTFPhysicsShapeGDExtensionIternalConstructor(reference GLTFPhysicsShape) RefGLTFPhysicsShape {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFPhysicsShape](reference)
 }
 
 var _ RefGLTFSkeleton = &RefGLTFSkeletonImpl{}
@@ -8273,19 +8273,19 @@ func (r *RefGLTFSkeletonImpl) Unref() {
 }
 
 func (r *RefGLTFSkeletonImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFSkeleton(reference GLTFSkeleton) RefGLTFSkeleton {
 	return (RefGLTFSkeleton)(NewTypedRef[GLTFSkeleton](reference))
 }
 
-func newRefGLTFSkeletonAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFSkeleton](reference.(GLTFSkeleton)))
+func NewRefGLTFSkeletonAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFSkeleton](reference.(GLTFSkeleton)))
 }
 
-func newRefGLTFSkeletonGDExtensionIternalConstructor(reference GLTFSkeleton) RefGLTFSkeleton {
-	return newTypedRefGDExtensionIternalConstructor[GLTFSkeleton](reference)
+func NewRefGLTFSkeletonGDExtensionIternalConstructor(reference GLTFSkeleton) RefGLTFSkeleton {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFSkeleton](reference)
 }
 
 var _ RefGLTFSkin = &RefGLTFSkinImpl{}
@@ -8320,19 +8320,19 @@ func (r *RefGLTFSkinImpl) Unref() {
 }
 
 func (r *RefGLTFSkinImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFSkin(reference GLTFSkin) RefGLTFSkin {
 	return (RefGLTFSkin)(NewTypedRef[GLTFSkin](reference))
 }
 
-func newRefGLTFSkinAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFSkin](reference.(GLTFSkin)))
+func NewRefGLTFSkinAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFSkin](reference.(GLTFSkin)))
 }
 
-func newRefGLTFSkinGDExtensionIternalConstructor(reference GLTFSkin) RefGLTFSkin {
-	return newTypedRefGDExtensionIternalConstructor[GLTFSkin](reference)
+func NewRefGLTFSkinGDExtensionIternalConstructor(reference GLTFSkin) RefGLTFSkin {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFSkin](reference)
 }
 
 var _ RefGLTFSpecGloss = &RefGLTFSpecGlossImpl{}
@@ -8367,19 +8367,19 @@ func (r *RefGLTFSpecGlossImpl) Unref() {
 }
 
 func (r *RefGLTFSpecGlossImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFSpecGloss(reference GLTFSpecGloss) RefGLTFSpecGloss {
 	return (RefGLTFSpecGloss)(NewTypedRef[GLTFSpecGloss](reference))
 }
 
-func newRefGLTFSpecGlossAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFSpecGloss](reference.(GLTFSpecGloss)))
+func NewRefGLTFSpecGlossAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFSpecGloss](reference.(GLTFSpecGloss)))
 }
 
-func newRefGLTFSpecGlossGDExtensionIternalConstructor(reference GLTFSpecGloss) RefGLTFSpecGloss {
-	return newTypedRefGDExtensionIternalConstructor[GLTFSpecGloss](reference)
+func NewRefGLTFSpecGlossGDExtensionIternalConstructor(reference GLTFSpecGloss) RefGLTFSpecGloss {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFSpecGloss](reference)
 }
 
 var _ RefGLTFState = &RefGLTFStateImpl{}
@@ -8414,19 +8414,19 @@ func (r *RefGLTFStateImpl) Unref() {
 }
 
 func (r *RefGLTFStateImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFState(reference GLTFState) RefGLTFState {
 	return (RefGLTFState)(NewTypedRef[GLTFState](reference))
 }
 
-func newRefGLTFStateAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFState](reference.(GLTFState)))
+func NewRefGLTFStateAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFState](reference.(GLTFState)))
 }
 
-func newRefGLTFStateGDExtensionIternalConstructor(reference GLTFState) RefGLTFState {
-	return newTypedRefGDExtensionIternalConstructor[GLTFState](reference)
+func NewRefGLTFStateGDExtensionIternalConstructor(reference GLTFState) RefGLTFState {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFState](reference)
 }
 
 var _ RefGLTFTexture = &RefGLTFTextureImpl{}
@@ -8461,19 +8461,19 @@ func (r *RefGLTFTextureImpl) Unref() {
 }
 
 func (r *RefGLTFTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFTexture(reference GLTFTexture) RefGLTFTexture {
 	return (RefGLTFTexture)(NewTypedRef[GLTFTexture](reference))
 }
 
-func newRefGLTFTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFTexture](reference.(GLTFTexture)))
+func NewRefGLTFTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFTexture](reference.(GLTFTexture)))
 }
 
-func newRefGLTFTextureGDExtensionIternalConstructor(reference GLTFTexture) RefGLTFTexture {
-	return newTypedRefGDExtensionIternalConstructor[GLTFTexture](reference)
+func NewRefGLTFTextureGDExtensionIternalConstructor(reference GLTFTexture) RefGLTFTexture {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFTexture](reference)
 }
 
 var _ RefGLTFTextureSampler = &RefGLTFTextureSamplerImpl{}
@@ -8508,19 +8508,19 @@ func (r *RefGLTFTextureSamplerImpl) Unref() {
 }
 
 func (r *RefGLTFTextureSamplerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGLTFTextureSampler(reference GLTFTextureSampler) RefGLTFTextureSampler {
 	return (RefGLTFTextureSampler)(NewTypedRef[GLTFTextureSampler](reference))
 }
 
-func newRefGLTFTextureSamplerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GLTFTextureSampler](reference.(GLTFTextureSampler)))
+func NewRefGLTFTextureSamplerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GLTFTextureSampler](reference.(GLTFTextureSampler)))
 }
 
-func newRefGLTFTextureSamplerGDExtensionIternalConstructor(reference GLTFTextureSampler) RefGLTFTextureSampler {
-	return newTypedRefGDExtensionIternalConstructor[GLTFTextureSampler](reference)
+func NewRefGLTFTextureSamplerGDExtensionIternalConstructor(reference GLTFTextureSampler) RefGLTFTextureSampler {
+	return NewTypedRefGDExtensionIternalConstructor[GLTFTextureSampler](reference)
 }
 
 var _ RefGradient = &RefGradientImpl{}
@@ -8555,19 +8555,19 @@ func (r *RefGradientImpl) Unref() {
 }
 
 func (r *RefGradientImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGradient(reference Gradient) RefGradient {
 	return (RefGradient)(NewTypedRef[Gradient](reference))
 }
 
-func newRefGradientAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Gradient](reference.(Gradient)))
+func NewRefGradientAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Gradient](reference.(Gradient)))
 }
 
-func newRefGradientGDExtensionIternalConstructor(reference Gradient) RefGradient {
-	return newTypedRefGDExtensionIternalConstructor[Gradient](reference)
+func NewRefGradientGDExtensionIternalConstructor(reference Gradient) RefGradient {
+	return NewTypedRefGDExtensionIternalConstructor[Gradient](reference)
 }
 
 var _ RefGradientTexture1D = &RefGradientTexture1DImpl{}
@@ -8602,19 +8602,19 @@ func (r *RefGradientTexture1DImpl) Unref() {
 }
 
 func (r *RefGradientTexture1DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGradientTexture1D(reference GradientTexture1D) RefGradientTexture1D {
 	return (RefGradientTexture1D)(NewTypedRef[GradientTexture1D](reference))
 }
 
-func newRefGradientTexture1DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GradientTexture1D](reference.(GradientTexture1D)))
+func NewRefGradientTexture1DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GradientTexture1D](reference.(GradientTexture1D)))
 }
 
-func newRefGradientTexture1DGDExtensionIternalConstructor(reference GradientTexture1D) RefGradientTexture1D {
-	return newTypedRefGDExtensionIternalConstructor[GradientTexture1D](reference)
+func NewRefGradientTexture1DGDExtensionIternalConstructor(reference GradientTexture1D) RefGradientTexture1D {
+	return NewTypedRefGDExtensionIternalConstructor[GradientTexture1D](reference)
 }
 
 var _ RefGradientTexture2D = &RefGradientTexture2DImpl{}
@@ -8649,19 +8649,19 @@ func (r *RefGradientTexture2DImpl) Unref() {
 }
 
 func (r *RefGradientTexture2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefGradientTexture2D(reference GradientTexture2D) RefGradientTexture2D {
 	return (RefGradientTexture2D)(NewTypedRef[GradientTexture2D](reference))
 }
 
-func newRefGradientTexture2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[GradientTexture2D](reference.(GradientTexture2D)))
+func NewRefGradientTexture2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GradientTexture2D](reference.(GradientTexture2D)))
 }
 
-func newRefGradientTexture2DGDExtensionIternalConstructor(reference GradientTexture2D) RefGradientTexture2D {
-	return newTypedRefGDExtensionIternalConstructor[GradientTexture2D](reference)
+func NewRefGradientTexture2DGDExtensionIternalConstructor(reference GradientTexture2D) RefGradientTexture2D {
+	return NewTypedRefGDExtensionIternalConstructor[GradientTexture2D](reference)
 }
 
 var _ RefHMACContext = &RefHMACContextImpl{}
@@ -8696,19 +8696,19 @@ func (r *RefHMACContextImpl) Unref() {
 }
 
 func (r *RefHMACContextImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefHMACContext(reference HMACContext) RefHMACContext {
 	return (RefHMACContext)(NewTypedRef[HMACContext](reference))
 }
 
-func newRefHMACContextAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[HMACContext](reference.(HMACContext)))
+func NewRefHMACContextAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[HMACContext](reference.(HMACContext)))
 }
 
-func newRefHMACContextGDExtensionIternalConstructor(reference HMACContext) RefHMACContext {
-	return newTypedRefGDExtensionIternalConstructor[HMACContext](reference)
+func NewRefHMACContextGDExtensionIternalConstructor(reference HMACContext) RefHMACContext {
+	return NewTypedRefGDExtensionIternalConstructor[HMACContext](reference)
 }
 
 var _ RefHTTPClient = &RefHTTPClientImpl{}
@@ -8743,19 +8743,19 @@ func (r *RefHTTPClientImpl) Unref() {
 }
 
 func (r *RefHTTPClientImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefHTTPClient(reference HTTPClient) RefHTTPClient {
 	return (RefHTTPClient)(NewTypedRef[HTTPClient](reference))
 }
 
-func newRefHTTPClientAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[HTTPClient](reference.(HTTPClient)))
+func NewRefHTTPClientAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[HTTPClient](reference.(HTTPClient)))
 }
 
-func newRefHTTPClientGDExtensionIternalConstructor(reference HTTPClient) RefHTTPClient {
-	return newTypedRefGDExtensionIternalConstructor[HTTPClient](reference)
+func NewRefHTTPClientGDExtensionIternalConstructor(reference HTTPClient) RefHTTPClient {
+	return NewTypedRefGDExtensionIternalConstructor[HTTPClient](reference)
 }
 
 var _ RefHashingContext = &RefHashingContextImpl{}
@@ -8790,19 +8790,19 @@ func (r *RefHashingContextImpl) Unref() {
 }
 
 func (r *RefHashingContextImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefHashingContext(reference HashingContext) RefHashingContext {
 	return (RefHashingContext)(NewTypedRef[HashingContext](reference))
 }
 
-func newRefHashingContextAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[HashingContext](reference.(HashingContext)))
+func NewRefHashingContextAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[HashingContext](reference.(HashingContext)))
 }
 
-func newRefHashingContextGDExtensionIternalConstructor(reference HashingContext) RefHashingContext {
-	return newTypedRefGDExtensionIternalConstructor[HashingContext](reference)
+func NewRefHashingContextGDExtensionIternalConstructor(reference HashingContext) RefHashingContext {
+	return NewTypedRefGDExtensionIternalConstructor[HashingContext](reference)
 }
 
 var _ RefHeightMapShape3D = &RefHeightMapShape3DImpl{}
@@ -8837,19 +8837,19 @@ func (r *RefHeightMapShape3DImpl) Unref() {
 }
 
 func (r *RefHeightMapShape3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefHeightMapShape3D(reference HeightMapShape3D) RefHeightMapShape3D {
 	return (RefHeightMapShape3D)(NewTypedRef[HeightMapShape3D](reference))
 }
 
-func newRefHeightMapShape3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[HeightMapShape3D](reference.(HeightMapShape3D)))
+func NewRefHeightMapShape3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[HeightMapShape3D](reference.(HeightMapShape3D)))
 }
 
-func newRefHeightMapShape3DGDExtensionIternalConstructor(reference HeightMapShape3D) RefHeightMapShape3D {
-	return newTypedRefGDExtensionIternalConstructor[HeightMapShape3D](reference)
+func NewRefHeightMapShape3DGDExtensionIternalConstructor(reference HeightMapShape3D) RefHeightMapShape3D {
+	return NewTypedRefGDExtensionIternalConstructor[HeightMapShape3D](reference)
 }
 
 var _ RefImage = &RefImageImpl{}
@@ -8884,19 +8884,19 @@ func (r *RefImageImpl) Unref() {
 }
 
 func (r *RefImageImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefImage(reference Image) RefImage {
 	return (RefImage)(NewTypedRef[Image](reference))
 }
 
-func newRefImageAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Image](reference.(Image)))
+func NewRefImageAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Image](reference.(Image)))
 }
 
-func newRefImageGDExtensionIternalConstructor(reference Image) RefImage {
-	return newTypedRefGDExtensionIternalConstructor[Image](reference)
+func NewRefImageGDExtensionIternalConstructor(reference Image) RefImage {
+	return NewTypedRefGDExtensionIternalConstructor[Image](reference)
 }
 
 var _ RefImageFormatLoader = &RefImageFormatLoaderImpl{}
@@ -8931,19 +8931,19 @@ func (r *RefImageFormatLoaderImpl) Unref() {
 }
 
 func (r *RefImageFormatLoaderImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefImageFormatLoader(reference ImageFormatLoader) RefImageFormatLoader {
 	return (RefImageFormatLoader)(NewTypedRef[ImageFormatLoader](reference))
 }
 
-func newRefImageFormatLoaderAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ImageFormatLoader](reference.(ImageFormatLoader)))
+func NewRefImageFormatLoaderAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ImageFormatLoader](reference.(ImageFormatLoader)))
 }
 
-func newRefImageFormatLoaderGDExtensionIternalConstructor(reference ImageFormatLoader) RefImageFormatLoader {
-	return newTypedRefGDExtensionIternalConstructor[ImageFormatLoader](reference)
+func NewRefImageFormatLoaderGDExtensionIternalConstructor(reference ImageFormatLoader) RefImageFormatLoader {
+	return NewTypedRefGDExtensionIternalConstructor[ImageFormatLoader](reference)
 }
 
 var _ RefImageFormatLoaderExtension = &RefImageFormatLoaderExtensionImpl{}
@@ -8978,19 +8978,19 @@ func (r *RefImageFormatLoaderExtensionImpl) Unref() {
 }
 
 func (r *RefImageFormatLoaderExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefImageFormatLoaderExtension(reference ImageFormatLoaderExtension) RefImageFormatLoaderExtension {
 	return (RefImageFormatLoaderExtension)(NewTypedRef[ImageFormatLoaderExtension](reference))
 }
 
-func newRefImageFormatLoaderExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ImageFormatLoaderExtension](reference.(ImageFormatLoaderExtension)))
+func NewRefImageFormatLoaderExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ImageFormatLoaderExtension](reference.(ImageFormatLoaderExtension)))
 }
 
-func newRefImageFormatLoaderExtensionGDExtensionIternalConstructor(reference ImageFormatLoaderExtension) RefImageFormatLoaderExtension {
-	return newTypedRefGDExtensionIternalConstructor[ImageFormatLoaderExtension](reference)
+func NewRefImageFormatLoaderExtensionGDExtensionIternalConstructor(reference ImageFormatLoaderExtension) RefImageFormatLoaderExtension {
+	return NewTypedRefGDExtensionIternalConstructor[ImageFormatLoaderExtension](reference)
 }
 
 var _ RefImageTexture = &RefImageTextureImpl{}
@@ -9025,19 +9025,19 @@ func (r *RefImageTextureImpl) Unref() {
 }
 
 func (r *RefImageTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefImageTexture(reference ImageTexture) RefImageTexture {
 	return (RefImageTexture)(NewTypedRef[ImageTexture](reference))
 }
 
-func newRefImageTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ImageTexture](reference.(ImageTexture)))
+func NewRefImageTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ImageTexture](reference.(ImageTexture)))
 }
 
-func newRefImageTextureGDExtensionIternalConstructor(reference ImageTexture) RefImageTexture {
-	return newTypedRefGDExtensionIternalConstructor[ImageTexture](reference)
+func NewRefImageTextureGDExtensionIternalConstructor(reference ImageTexture) RefImageTexture {
+	return NewTypedRefGDExtensionIternalConstructor[ImageTexture](reference)
 }
 
 var _ RefImageTexture3D = &RefImageTexture3DImpl{}
@@ -9072,19 +9072,19 @@ func (r *RefImageTexture3DImpl) Unref() {
 }
 
 func (r *RefImageTexture3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefImageTexture3D(reference ImageTexture3D) RefImageTexture3D {
 	return (RefImageTexture3D)(NewTypedRef[ImageTexture3D](reference))
 }
 
-func newRefImageTexture3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ImageTexture3D](reference.(ImageTexture3D)))
+func NewRefImageTexture3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ImageTexture3D](reference.(ImageTexture3D)))
 }
 
-func newRefImageTexture3DGDExtensionIternalConstructor(reference ImageTexture3D) RefImageTexture3D {
-	return newTypedRefGDExtensionIternalConstructor[ImageTexture3D](reference)
+func NewRefImageTexture3DGDExtensionIternalConstructor(reference ImageTexture3D) RefImageTexture3D {
+	return NewTypedRefGDExtensionIternalConstructor[ImageTexture3D](reference)
 }
 
 var _ RefImageTextureLayered = &RefImageTextureLayeredImpl{}
@@ -9119,19 +9119,19 @@ func (r *RefImageTextureLayeredImpl) Unref() {
 }
 
 func (r *RefImageTextureLayeredImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefImageTextureLayered(reference ImageTextureLayered) RefImageTextureLayered {
 	return (RefImageTextureLayered)(NewTypedRef[ImageTextureLayered](reference))
 }
 
-func newRefImageTextureLayeredAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ImageTextureLayered](reference.(ImageTextureLayered)))
+func NewRefImageTextureLayeredAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ImageTextureLayered](reference.(ImageTextureLayered)))
 }
 
-func newRefImageTextureLayeredGDExtensionIternalConstructor(reference ImageTextureLayered) RefImageTextureLayered {
-	return newTypedRefGDExtensionIternalConstructor[ImageTextureLayered](reference)
+func NewRefImageTextureLayeredGDExtensionIternalConstructor(reference ImageTextureLayered) RefImageTextureLayered {
+	return NewTypedRefGDExtensionIternalConstructor[ImageTextureLayered](reference)
 }
 
 var _ RefImmediateMesh = &RefImmediateMeshImpl{}
@@ -9166,19 +9166,19 @@ func (r *RefImmediateMeshImpl) Unref() {
 }
 
 func (r *RefImmediateMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefImmediateMesh(reference ImmediateMesh) RefImmediateMesh {
 	return (RefImmediateMesh)(NewTypedRef[ImmediateMesh](reference))
 }
 
-func newRefImmediateMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ImmediateMesh](reference.(ImmediateMesh)))
+func NewRefImmediateMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ImmediateMesh](reference.(ImmediateMesh)))
 }
 
-func newRefImmediateMeshGDExtensionIternalConstructor(reference ImmediateMesh) RefImmediateMesh {
-	return newTypedRefGDExtensionIternalConstructor[ImmediateMesh](reference)
+func NewRefImmediateMeshGDExtensionIternalConstructor(reference ImmediateMesh) RefImmediateMesh {
+	return NewTypedRefGDExtensionIternalConstructor[ImmediateMesh](reference)
 }
 
 var _ RefImporterMesh = &RefImporterMeshImpl{}
@@ -9213,19 +9213,19 @@ func (r *RefImporterMeshImpl) Unref() {
 }
 
 func (r *RefImporterMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefImporterMesh(reference ImporterMesh) RefImporterMesh {
 	return (RefImporterMesh)(NewTypedRef[ImporterMesh](reference))
 }
 
-func newRefImporterMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ImporterMesh](reference.(ImporterMesh)))
+func NewRefImporterMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ImporterMesh](reference.(ImporterMesh)))
 }
 
-func newRefImporterMeshGDExtensionIternalConstructor(reference ImporterMesh) RefImporterMesh {
-	return newTypedRefGDExtensionIternalConstructor[ImporterMesh](reference)
+func NewRefImporterMeshGDExtensionIternalConstructor(reference ImporterMesh) RefImporterMesh {
+	return NewTypedRefGDExtensionIternalConstructor[ImporterMesh](reference)
 }
 
 var _ RefInputEvent = &RefInputEventImpl{}
@@ -9260,19 +9260,19 @@ func (r *RefInputEventImpl) Unref() {
 }
 
 func (r *RefInputEventImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEvent(reference InputEvent) RefInputEvent {
 	return (RefInputEvent)(NewTypedRef[InputEvent](reference))
 }
 
-func newRefInputEventAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEvent](reference.(InputEvent)))
+func NewRefInputEventAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEvent](reference.(InputEvent)))
 }
 
-func newRefInputEventGDExtensionIternalConstructor(reference InputEvent) RefInputEvent {
-	return newTypedRefGDExtensionIternalConstructor[InputEvent](reference)
+func NewRefInputEventGDExtensionIternalConstructor(reference InputEvent) RefInputEvent {
+	return NewTypedRefGDExtensionIternalConstructor[InputEvent](reference)
 }
 
 var _ RefInputEventAction = &RefInputEventActionImpl{}
@@ -9307,19 +9307,19 @@ func (r *RefInputEventActionImpl) Unref() {
 }
 
 func (r *RefInputEventActionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventAction(reference InputEventAction) RefInputEventAction {
 	return (RefInputEventAction)(NewTypedRef[InputEventAction](reference))
 }
 
-func newRefInputEventActionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventAction](reference.(InputEventAction)))
+func NewRefInputEventActionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventAction](reference.(InputEventAction)))
 }
 
-func newRefInputEventActionGDExtensionIternalConstructor(reference InputEventAction) RefInputEventAction {
-	return newTypedRefGDExtensionIternalConstructor[InputEventAction](reference)
+func NewRefInputEventActionGDExtensionIternalConstructor(reference InputEventAction) RefInputEventAction {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventAction](reference)
 }
 
 var _ RefInputEventFromWindow = &RefInputEventFromWindowImpl{}
@@ -9354,19 +9354,19 @@ func (r *RefInputEventFromWindowImpl) Unref() {
 }
 
 func (r *RefInputEventFromWindowImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventFromWindow(reference InputEventFromWindow) RefInputEventFromWindow {
 	return (RefInputEventFromWindow)(NewTypedRef[InputEventFromWindow](reference))
 }
 
-func newRefInputEventFromWindowAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventFromWindow](reference.(InputEventFromWindow)))
+func NewRefInputEventFromWindowAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventFromWindow](reference.(InputEventFromWindow)))
 }
 
-func newRefInputEventFromWindowGDExtensionIternalConstructor(reference InputEventFromWindow) RefInputEventFromWindow {
-	return newTypedRefGDExtensionIternalConstructor[InputEventFromWindow](reference)
+func NewRefInputEventFromWindowGDExtensionIternalConstructor(reference InputEventFromWindow) RefInputEventFromWindow {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventFromWindow](reference)
 }
 
 var _ RefInputEventGesture = &RefInputEventGestureImpl{}
@@ -9401,19 +9401,19 @@ func (r *RefInputEventGestureImpl) Unref() {
 }
 
 func (r *RefInputEventGestureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventGesture(reference InputEventGesture) RefInputEventGesture {
 	return (RefInputEventGesture)(NewTypedRef[InputEventGesture](reference))
 }
 
-func newRefInputEventGestureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventGesture](reference.(InputEventGesture)))
+func NewRefInputEventGestureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventGesture](reference.(InputEventGesture)))
 }
 
-func newRefInputEventGestureGDExtensionIternalConstructor(reference InputEventGesture) RefInputEventGesture {
-	return newTypedRefGDExtensionIternalConstructor[InputEventGesture](reference)
+func NewRefInputEventGestureGDExtensionIternalConstructor(reference InputEventGesture) RefInputEventGesture {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventGesture](reference)
 }
 
 var _ RefInputEventJoypadButton = &RefInputEventJoypadButtonImpl{}
@@ -9448,19 +9448,19 @@ func (r *RefInputEventJoypadButtonImpl) Unref() {
 }
 
 func (r *RefInputEventJoypadButtonImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventJoypadButton(reference InputEventJoypadButton) RefInputEventJoypadButton {
 	return (RefInputEventJoypadButton)(NewTypedRef[InputEventJoypadButton](reference))
 }
 
-func newRefInputEventJoypadButtonAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventJoypadButton](reference.(InputEventJoypadButton)))
+func NewRefInputEventJoypadButtonAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventJoypadButton](reference.(InputEventJoypadButton)))
 }
 
-func newRefInputEventJoypadButtonGDExtensionIternalConstructor(reference InputEventJoypadButton) RefInputEventJoypadButton {
-	return newTypedRefGDExtensionIternalConstructor[InputEventJoypadButton](reference)
+func NewRefInputEventJoypadButtonGDExtensionIternalConstructor(reference InputEventJoypadButton) RefInputEventJoypadButton {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventJoypadButton](reference)
 }
 
 var _ RefInputEventJoypadMotion = &RefInputEventJoypadMotionImpl{}
@@ -9495,19 +9495,19 @@ func (r *RefInputEventJoypadMotionImpl) Unref() {
 }
 
 func (r *RefInputEventJoypadMotionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventJoypadMotion(reference InputEventJoypadMotion) RefInputEventJoypadMotion {
 	return (RefInputEventJoypadMotion)(NewTypedRef[InputEventJoypadMotion](reference))
 }
 
-func newRefInputEventJoypadMotionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventJoypadMotion](reference.(InputEventJoypadMotion)))
+func NewRefInputEventJoypadMotionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventJoypadMotion](reference.(InputEventJoypadMotion)))
 }
 
-func newRefInputEventJoypadMotionGDExtensionIternalConstructor(reference InputEventJoypadMotion) RefInputEventJoypadMotion {
-	return newTypedRefGDExtensionIternalConstructor[InputEventJoypadMotion](reference)
+func NewRefInputEventJoypadMotionGDExtensionIternalConstructor(reference InputEventJoypadMotion) RefInputEventJoypadMotion {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventJoypadMotion](reference)
 }
 
 var _ RefInputEventKey = &RefInputEventKeyImpl{}
@@ -9542,19 +9542,19 @@ func (r *RefInputEventKeyImpl) Unref() {
 }
 
 func (r *RefInputEventKeyImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventKey(reference InputEventKey) RefInputEventKey {
 	return (RefInputEventKey)(NewTypedRef[InputEventKey](reference))
 }
 
-func newRefInputEventKeyAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventKey](reference.(InputEventKey)))
+func NewRefInputEventKeyAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventKey](reference.(InputEventKey)))
 }
 
-func newRefInputEventKeyGDExtensionIternalConstructor(reference InputEventKey) RefInputEventKey {
-	return newTypedRefGDExtensionIternalConstructor[InputEventKey](reference)
+func NewRefInputEventKeyGDExtensionIternalConstructor(reference InputEventKey) RefInputEventKey {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventKey](reference)
 }
 
 var _ RefInputEventMIDI = &RefInputEventMIDIImpl{}
@@ -9589,19 +9589,19 @@ func (r *RefInputEventMIDIImpl) Unref() {
 }
 
 func (r *RefInputEventMIDIImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventMIDI(reference InputEventMIDI) RefInputEventMIDI {
 	return (RefInputEventMIDI)(NewTypedRef[InputEventMIDI](reference))
 }
 
-func newRefInputEventMIDIAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventMIDI](reference.(InputEventMIDI)))
+func NewRefInputEventMIDIAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventMIDI](reference.(InputEventMIDI)))
 }
 
-func newRefInputEventMIDIGDExtensionIternalConstructor(reference InputEventMIDI) RefInputEventMIDI {
-	return newTypedRefGDExtensionIternalConstructor[InputEventMIDI](reference)
+func NewRefInputEventMIDIGDExtensionIternalConstructor(reference InputEventMIDI) RefInputEventMIDI {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventMIDI](reference)
 }
 
 var _ RefInputEventMagnifyGesture = &RefInputEventMagnifyGestureImpl{}
@@ -9636,19 +9636,19 @@ func (r *RefInputEventMagnifyGestureImpl) Unref() {
 }
 
 func (r *RefInputEventMagnifyGestureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventMagnifyGesture(reference InputEventMagnifyGesture) RefInputEventMagnifyGesture {
 	return (RefInputEventMagnifyGesture)(NewTypedRef[InputEventMagnifyGesture](reference))
 }
 
-func newRefInputEventMagnifyGestureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventMagnifyGesture](reference.(InputEventMagnifyGesture)))
+func NewRefInputEventMagnifyGestureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventMagnifyGesture](reference.(InputEventMagnifyGesture)))
 }
 
-func newRefInputEventMagnifyGestureGDExtensionIternalConstructor(reference InputEventMagnifyGesture) RefInputEventMagnifyGesture {
-	return newTypedRefGDExtensionIternalConstructor[InputEventMagnifyGesture](reference)
+func NewRefInputEventMagnifyGestureGDExtensionIternalConstructor(reference InputEventMagnifyGesture) RefInputEventMagnifyGesture {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventMagnifyGesture](reference)
 }
 
 var _ RefInputEventMouse = &RefInputEventMouseImpl{}
@@ -9683,19 +9683,19 @@ func (r *RefInputEventMouseImpl) Unref() {
 }
 
 func (r *RefInputEventMouseImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventMouse(reference InputEventMouse) RefInputEventMouse {
 	return (RefInputEventMouse)(NewTypedRef[InputEventMouse](reference))
 }
 
-func newRefInputEventMouseAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventMouse](reference.(InputEventMouse)))
+func NewRefInputEventMouseAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventMouse](reference.(InputEventMouse)))
 }
 
-func newRefInputEventMouseGDExtensionIternalConstructor(reference InputEventMouse) RefInputEventMouse {
-	return newTypedRefGDExtensionIternalConstructor[InputEventMouse](reference)
+func NewRefInputEventMouseGDExtensionIternalConstructor(reference InputEventMouse) RefInputEventMouse {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventMouse](reference)
 }
 
 var _ RefInputEventMouseButton = &RefInputEventMouseButtonImpl{}
@@ -9730,19 +9730,19 @@ func (r *RefInputEventMouseButtonImpl) Unref() {
 }
 
 func (r *RefInputEventMouseButtonImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventMouseButton(reference InputEventMouseButton) RefInputEventMouseButton {
 	return (RefInputEventMouseButton)(NewTypedRef[InputEventMouseButton](reference))
 }
 
-func newRefInputEventMouseButtonAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventMouseButton](reference.(InputEventMouseButton)))
+func NewRefInputEventMouseButtonAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventMouseButton](reference.(InputEventMouseButton)))
 }
 
-func newRefInputEventMouseButtonGDExtensionIternalConstructor(reference InputEventMouseButton) RefInputEventMouseButton {
-	return newTypedRefGDExtensionIternalConstructor[InputEventMouseButton](reference)
+func NewRefInputEventMouseButtonGDExtensionIternalConstructor(reference InputEventMouseButton) RefInputEventMouseButton {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventMouseButton](reference)
 }
 
 var _ RefInputEventMouseMotion = &RefInputEventMouseMotionImpl{}
@@ -9777,19 +9777,19 @@ func (r *RefInputEventMouseMotionImpl) Unref() {
 }
 
 func (r *RefInputEventMouseMotionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventMouseMotion(reference InputEventMouseMotion) RefInputEventMouseMotion {
 	return (RefInputEventMouseMotion)(NewTypedRef[InputEventMouseMotion](reference))
 }
 
-func newRefInputEventMouseMotionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventMouseMotion](reference.(InputEventMouseMotion)))
+func NewRefInputEventMouseMotionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventMouseMotion](reference.(InputEventMouseMotion)))
 }
 
-func newRefInputEventMouseMotionGDExtensionIternalConstructor(reference InputEventMouseMotion) RefInputEventMouseMotion {
-	return newTypedRefGDExtensionIternalConstructor[InputEventMouseMotion](reference)
+func NewRefInputEventMouseMotionGDExtensionIternalConstructor(reference InputEventMouseMotion) RefInputEventMouseMotion {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventMouseMotion](reference)
 }
 
 var _ RefInputEventPanGesture = &RefInputEventPanGestureImpl{}
@@ -9824,19 +9824,19 @@ func (r *RefInputEventPanGestureImpl) Unref() {
 }
 
 func (r *RefInputEventPanGestureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventPanGesture(reference InputEventPanGesture) RefInputEventPanGesture {
 	return (RefInputEventPanGesture)(NewTypedRef[InputEventPanGesture](reference))
 }
 
-func newRefInputEventPanGestureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventPanGesture](reference.(InputEventPanGesture)))
+func NewRefInputEventPanGestureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventPanGesture](reference.(InputEventPanGesture)))
 }
 
-func newRefInputEventPanGestureGDExtensionIternalConstructor(reference InputEventPanGesture) RefInputEventPanGesture {
-	return newTypedRefGDExtensionIternalConstructor[InputEventPanGesture](reference)
+func NewRefInputEventPanGestureGDExtensionIternalConstructor(reference InputEventPanGesture) RefInputEventPanGesture {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventPanGesture](reference)
 }
 
 var _ RefInputEventScreenDrag = &RefInputEventScreenDragImpl{}
@@ -9871,19 +9871,19 @@ func (r *RefInputEventScreenDragImpl) Unref() {
 }
 
 func (r *RefInputEventScreenDragImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventScreenDrag(reference InputEventScreenDrag) RefInputEventScreenDrag {
 	return (RefInputEventScreenDrag)(NewTypedRef[InputEventScreenDrag](reference))
 }
 
-func newRefInputEventScreenDragAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventScreenDrag](reference.(InputEventScreenDrag)))
+func NewRefInputEventScreenDragAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventScreenDrag](reference.(InputEventScreenDrag)))
 }
 
-func newRefInputEventScreenDragGDExtensionIternalConstructor(reference InputEventScreenDrag) RefInputEventScreenDrag {
-	return newTypedRefGDExtensionIternalConstructor[InputEventScreenDrag](reference)
+func NewRefInputEventScreenDragGDExtensionIternalConstructor(reference InputEventScreenDrag) RefInputEventScreenDrag {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventScreenDrag](reference)
 }
 
 var _ RefInputEventScreenTouch = &RefInputEventScreenTouchImpl{}
@@ -9918,19 +9918,19 @@ func (r *RefInputEventScreenTouchImpl) Unref() {
 }
 
 func (r *RefInputEventScreenTouchImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventScreenTouch(reference InputEventScreenTouch) RefInputEventScreenTouch {
 	return (RefInputEventScreenTouch)(NewTypedRef[InputEventScreenTouch](reference))
 }
 
-func newRefInputEventScreenTouchAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventScreenTouch](reference.(InputEventScreenTouch)))
+func NewRefInputEventScreenTouchAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventScreenTouch](reference.(InputEventScreenTouch)))
 }
 
-func newRefInputEventScreenTouchGDExtensionIternalConstructor(reference InputEventScreenTouch) RefInputEventScreenTouch {
-	return newTypedRefGDExtensionIternalConstructor[InputEventScreenTouch](reference)
+func NewRefInputEventScreenTouchGDExtensionIternalConstructor(reference InputEventScreenTouch) RefInputEventScreenTouch {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventScreenTouch](reference)
 }
 
 var _ RefInputEventShortcut = &RefInputEventShortcutImpl{}
@@ -9965,19 +9965,19 @@ func (r *RefInputEventShortcutImpl) Unref() {
 }
 
 func (r *RefInputEventShortcutImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventShortcut(reference InputEventShortcut) RefInputEventShortcut {
 	return (RefInputEventShortcut)(NewTypedRef[InputEventShortcut](reference))
 }
 
-func newRefInputEventShortcutAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventShortcut](reference.(InputEventShortcut)))
+func NewRefInputEventShortcutAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventShortcut](reference.(InputEventShortcut)))
 }
 
-func newRefInputEventShortcutGDExtensionIternalConstructor(reference InputEventShortcut) RefInputEventShortcut {
-	return newTypedRefGDExtensionIternalConstructor[InputEventShortcut](reference)
+func NewRefInputEventShortcutGDExtensionIternalConstructor(reference InputEventShortcut) RefInputEventShortcut {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventShortcut](reference)
 }
 
 var _ RefInputEventWithModifiers = &RefInputEventWithModifiersImpl{}
@@ -10012,19 +10012,19 @@ func (r *RefInputEventWithModifiersImpl) Unref() {
 }
 
 func (r *RefInputEventWithModifiersImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefInputEventWithModifiers(reference InputEventWithModifiers) RefInputEventWithModifiers {
 	return (RefInputEventWithModifiers)(NewTypedRef[InputEventWithModifiers](reference))
 }
 
-func newRefInputEventWithModifiersAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[InputEventWithModifiers](reference.(InputEventWithModifiers)))
+func NewRefInputEventWithModifiersAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[InputEventWithModifiers](reference.(InputEventWithModifiers)))
 }
 
-func newRefInputEventWithModifiersGDExtensionIternalConstructor(reference InputEventWithModifiers) RefInputEventWithModifiers {
-	return newTypedRefGDExtensionIternalConstructor[InputEventWithModifiers](reference)
+func NewRefInputEventWithModifiersGDExtensionIternalConstructor(reference InputEventWithModifiers) RefInputEventWithModifiers {
+	return NewTypedRefGDExtensionIternalConstructor[InputEventWithModifiers](reference)
 }
 
 var _ RefIntervalTweener = &RefIntervalTweenerImpl{}
@@ -10059,19 +10059,19 @@ func (r *RefIntervalTweenerImpl) Unref() {
 }
 
 func (r *RefIntervalTweenerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefIntervalTweener(reference IntervalTweener) RefIntervalTweener {
 	return (RefIntervalTweener)(NewTypedRef[IntervalTweener](reference))
 }
 
-func newRefIntervalTweenerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[IntervalTweener](reference.(IntervalTweener)))
+func NewRefIntervalTweenerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[IntervalTweener](reference.(IntervalTweener)))
 }
 
-func newRefIntervalTweenerGDExtensionIternalConstructor(reference IntervalTweener) RefIntervalTweener {
-	return newTypedRefGDExtensionIternalConstructor[IntervalTweener](reference)
+func NewRefIntervalTweenerGDExtensionIternalConstructor(reference IntervalTweener) RefIntervalTweener {
+	return NewTypedRefGDExtensionIternalConstructor[IntervalTweener](reference)
 }
 
 var _ RefJSON = &RefJSONImpl{}
@@ -10106,19 +10106,19 @@ func (r *RefJSONImpl) Unref() {
 }
 
 func (r *RefJSONImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefJSON(reference JSON) RefJSON {
 	return (RefJSON)(NewTypedRef[JSON](reference))
 }
 
-func newRefJSONAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[JSON](reference.(JSON)))
+func NewRefJSONAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[JSON](reference.(JSON)))
 }
 
-func newRefJSONGDExtensionIternalConstructor(reference JSON) RefJSON {
-	return newTypedRefGDExtensionIternalConstructor[JSON](reference)
+func NewRefJSONGDExtensionIternalConstructor(reference JSON) RefJSON {
+	return NewTypedRefGDExtensionIternalConstructor[JSON](reference)
 }
 
 var _ RefJavaClass = &RefJavaClassImpl{}
@@ -10153,19 +10153,19 @@ func (r *RefJavaClassImpl) Unref() {
 }
 
 func (r *RefJavaClassImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefJavaClass(reference JavaClass) RefJavaClass {
 	return (RefJavaClass)(NewTypedRef[JavaClass](reference))
 }
 
-func newRefJavaClassAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[JavaClass](reference.(JavaClass)))
+func NewRefJavaClassAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[JavaClass](reference.(JavaClass)))
 }
 
-func newRefJavaClassGDExtensionIternalConstructor(reference JavaClass) RefJavaClass {
-	return newTypedRefGDExtensionIternalConstructor[JavaClass](reference)
+func NewRefJavaClassGDExtensionIternalConstructor(reference JavaClass) RefJavaClass {
+	return NewTypedRefGDExtensionIternalConstructor[JavaClass](reference)
 }
 
 var _ RefJavaScriptObject = &RefJavaScriptObjectImpl{}
@@ -10200,19 +10200,19 @@ func (r *RefJavaScriptObjectImpl) Unref() {
 }
 
 func (r *RefJavaScriptObjectImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefJavaScriptObject(reference JavaScriptObject) RefJavaScriptObject {
 	return (RefJavaScriptObject)(NewTypedRef[JavaScriptObject](reference))
 }
 
-func newRefJavaScriptObjectAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[JavaScriptObject](reference.(JavaScriptObject)))
+func NewRefJavaScriptObjectAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[JavaScriptObject](reference.(JavaScriptObject)))
 }
 
-func newRefJavaScriptObjectGDExtensionIternalConstructor(reference JavaScriptObject) RefJavaScriptObject {
-	return newTypedRefGDExtensionIternalConstructor[JavaScriptObject](reference)
+func NewRefJavaScriptObjectGDExtensionIternalConstructor(reference JavaScriptObject) RefJavaScriptObject {
+	return NewTypedRefGDExtensionIternalConstructor[JavaScriptObject](reference)
 }
 
 var _ RefKinematicCollision2D = &RefKinematicCollision2DImpl{}
@@ -10247,19 +10247,19 @@ func (r *RefKinematicCollision2DImpl) Unref() {
 }
 
 func (r *RefKinematicCollision2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefKinematicCollision2D(reference KinematicCollision2D) RefKinematicCollision2D {
 	return (RefKinematicCollision2D)(NewTypedRef[KinematicCollision2D](reference))
 }
 
-func newRefKinematicCollision2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[KinematicCollision2D](reference.(KinematicCollision2D)))
+func NewRefKinematicCollision2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[KinematicCollision2D](reference.(KinematicCollision2D)))
 }
 
-func newRefKinematicCollision2DGDExtensionIternalConstructor(reference KinematicCollision2D) RefKinematicCollision2D {
-	return newTypedRefGDExtensionIternalConstructor[KinematicCollision2D](reference)
+func NewRefKinematicCollision2DGDExtensionIternalConstructor(reference KinematicCollision2D) RefKinematicCollision2D {
+	return NewTypedRefGDExtensionIternalConstructor[KinematicCollision2D](reference)
 }
 
 var _ RefKinematicCollision3D = &RefKinematicCollision3DImpl{}
@@ -10294,19 +10294,19 @@ func (r *RefKinematicCollision3DImpl) Unref() {
 }
 
 func (r *RefKinematicCollision3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefKinematicCollision3D(reference KinematicCollision3D) RefKinematicCollision3D {
 	return (RefKinematicCollision3D)(NewTypedRef[KinematicCollision3D](reference))
 }
 
-func newRefKinematicCollision3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[KinematicCollision3D](reference.(KinematicCollision3D)))
+func NewRefKinematicCollision3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[KinematicCollision3D](reference.(KinematicCollision3D)))
 }
 
-func newRefKinematicCollision3DGDExtensionIternalConstructor(reference KinematicCollision3D) RefKinematicCollision3D {
-	return newTypedRefGDExtensionIternalConstructor[KinematicCollision3D](reference)
+func NewRefKinematicCollision3DGDExtensionIternalConstructor(reference KinematicCollision3D) RefKinematicCollision3D {
+	return NewTypedRefGDExtensionIternalConstructor[KinematicCollision3D](reference)
 }
 
 var _ RefLabelSettings = &RefLabelSettingsImpl{}
@@ -10341,19 +10341,19 @@ func (r *RefLabelSettingsImpl) Unref() {
 }
 
 func (r *RefLabelSettingsImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefLabelSettings(reference LabelSettings) RefLabelSettings {
 	return (RefLabelSettings)(NewTypedRef[LabelSettings](reference))
 }
 
-func newRefLabelSettingsAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[LabelSettings](reference.(LabelSettings)))
+func NewRefLabelSettingsAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[LabelSettings](reference.(LabelSettings)))
 }
 
-func newRefLabelSettingsGDExtensionIternalConstructor(reference LabelSettings) RefLabelSettings {
-	return newTypedRefGDExtensionIternalConstructor[LabelSettings](reference)
+func NewRefLabelSettingsGDExtensionIternalConstructor(reference LabelSettings) RefLabelSettings {
+	return NewTypedRefGDExtensionIternalConstructor[LabelSettings](reference)
 }
 
 var _ RefLightmapGIData = &RefLightmapGIDataImpl{}
@@ -10388,19 +10388,19 @@ func (r *RefLightmapGIDataImpl) Unref() {
 }
 
 func (r *RefLightmapGIDataImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefLightmapGIData(reference LightmapGIData) RefLightmapGIData {
 	return (RefLightmapGIData)(NewTypedRef[LightmapGIData](reference))
 }
 
-func newRefLightmapGIDataAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[LightmapGIData](reference.(LightmapGIData)))
+func NewRefLightmapGIDataAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[LightmapGIData](reference.(LightmapGIData)))
 }
 
-func newRefLightmapGIDataGDExtensionIternalConstructor(reference LightmapGIData) RefLightmapGIData {
-	return newTypedRefGDExtensionIternalConstructor[LightmapGIData](reference)
+func NewRefLightmapGIDataGDExtensionIternalConstructor(reference LightmapGIData) RefLightmapGIData {
+	return NewTypedRefGDExtensionIternalConstructor[LightmapGIData](reference)
 }
 
 var _ RefLightmapper = &RefLightmapperImpl{}
@@ -10435,19 +10435,19 @@ func (r *RefLightmapperImpl) Unref() {
 }
 
 func (r *RefLightmapperImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefLightmapper(reference Lightmapper) RefLightmapper {
 	return (RefLightmapper)(NewTypedRef[Lightmapper](reference))
 }
 
-func newRefLightmapperAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Lightmapper](reference.(Lightmapper)))
+func NewRefLightmapperAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Lightmapper](reference.(Lightmapper)))
 }
 
-func newRefLightmapperGDExtensionIternalConstructor(reference Lightmapper) RefLightmapper {
-	return newTypedRefGDExtensionIternalConstructor[Lightmapper](reference)
+func NewRefLightmapperGDExtensionIternalConstructor(reference Lightmapper) RefLightmapper {
+	return NewTypedRefGDExtensionIternalConstructor[Lightmapper](reference)
 }
 
 var _ RefLightmapperRD = &RefLightmapperRDImpl{}
@@ -10482,19 +10482,19 @@ func (r *RefLightmapperRDImpl) Unref() {
 }
 
 func (r *RefLightmapperRDImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefLightmapperRD(reference LightmapperRD) RefLightmapperRD {
 	return (RefLightmapperRD)(NewTypedRef[LightmapperRD](reference))
 }
 
-func newRefLightmapperRDAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[LightmapperRD](reference.(LightmapperRD)))
+func NewRefLightmapperRDAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[LightmapperRD](reference.(LightmapperRD)))
 }
 
-func newRefLightmapperRDGDExtensionIternalConstructor(reference LightmapperRD) RefLightmapperRD {
-	return newTypedRefGDExtensionIternalConstructor[LightmapperRD](reference)
+func NewRefLightmapperRDGDExtensionIternalConstructor(reference LightmapperRD) RefLightmapperRD {
+	return NewTypedRefGDExtensionIternalConstructor[LightmapperRD](reference)
 }
 
 var _ RefMaterial = &RefMaterialImpl{}
@@ -10529,19 +10529,19 @@ func (r *RefMaterialImpl) Unref() {
 }
 
 func (r *RefMaterialImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMaterial(reference Material) RefMaterial {
 	return (RefMaterial)(NewTypedRef[Material](reference))
 }
 
-func newRefMaterialAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Material](reference.(Material)))
+func NewRefMaterialAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Material](reference.(Material)))
 }
 
-func newRefMaterialGDExtensionIternalConstructor(reference Material) RefMaterial {
-	return newTypedRefGDExtensionIternalConstructor[Material](reference)
+func NewRefMaterialGDExtensionIternalConstructor(reference Material) RefMaterial {
+	return NewTypedRefGDExtensionIternalConstructor[Material](reference)
 }
 
 var _ RefMesh = &RefMeshImpl{}
@@ -10576,19 +10576,19 @@ func (r *RefMeshImpl) Unref() {
 }
 
 func (r *RefMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMesh(reference Mesh) RefMesh {
 	return (RefMesh)(NewTypedRef[Mesh](reference))
 }
 
-func newRefMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Mesh](reference.(Mesh)))
+func NewRefMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Mesh](reference.(Mesh)))
 }
 
-func newRefMeshGDExtensionIternalConstructor(reference Mesh) RefMesh {
-	return newTypedRefGDExtensionIternalConstructor[Mesh](reference)
+func NewRefMeshGDExtensionIternalConstructor(reference Mesh) RefMesh {
+	return NewTypedRefGDExtensionIternalConstructor[Mesh](reference)
 }
 
 var _ RefMeshConvexDecompositionSettings = &RefMeshConvexDecompositionSettingsImpl{}
@@ -10623,19 +10623,19 @@ func (r *RefMeshConvexDecompositionSettingsImpl) Unref() {
 }
 
 func (r *RefMeshConvexDecompositionSettingsImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMeshConvexDecompositionSettings(reference MeshConvexDecompositionSettings) RefMeshConvexDecompositionSettings {
 	return (RefMeshConvexDecompositionSettings)(NewTypedRef[MeshConvexDecompositionSettings](reference))
 }
 
-func newRefMeshConvexDecompositionSettingsAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MeshConvexDecompositionSettings](reference.(MeshConvexDecompositionSettings)))
+func NewRefMeshConvexDecompositionSettingsAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MeshConvexDecompositionSettings](reference.(MeshConvexDecompositionSettings)))
 }
 
-func newRefMeshConvexDecompositionSettingsGDExtensionIternalConstructor(reference MeshConvexDecompositionSettings) RefMeshConvexDecompositionSettings {
-	return newTypedRefGDExtensionIternalConstructor[MeshConvexDecompositionSettings](reference)
+func NewRefMeshConvexDecompositionSettingsGDExtensionIternalConstructor(reference MeshConvexDecompositionSettings) RefMeshConvexDecompositionSettings {
+	return NewTypedRefGDExtensionIternalConstructor[MeshConvexDecompositionSettings](reference)
 }
 
 var _ RefMeshDataTool = &RefMeshDataToolImpl{}
@@ -10670,19 +10670,19 @@ func (r *RefMeshDataToolImpl) Unref() {
 }
 
 func (r *RefMeshDataToolImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMeshDataTool(reference MeshDataTool) RefMeshDataTool {
 	return (RefMeshDataTool)(NewTypedRef[MeshDataTool](reference))
 }
 
-func newRefMeshDataToolAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MeshDataTool](reference.(MeshDataTool)))
+func NewRefMeshDataToolAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MeshDataTool](reference.(MeshDataTool)))
 }
 
-func newRefMeshDataToolGDExtensionIternalConstructor(reference MeshDataTool) RefMeshDataTool {
-	return newTypedRefGDExtensionIternalConstructor[MeshDataTool](reference)
+func NewRefMeshDataToolGDExtensionIternalConstructor(reference MeshDataTool) RefMeshDataTool {
+	return NewTypedRefGDExtensionIternalConstructor[MeshDataTool](reference)
 }
 
 var _ RefMeshLibrary = &RefMeshLibraryImpl{}
@@ -10717,19 +10717,19 @@ func (r *RefMeshLibraryImpl) Unref() {
 }
 
 func (r *RefMeshLibraryImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMeshLibrary(reference MeshLibrary) RefMeshLibrary {
 	return (RefMeshLibrary)(NewTypedRef[MeshLibrary](reference))
 }
 
-func newRefMeshLibraryAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MeshLibrary](reference.(MeshLibrary)))
+func NewRefMeshLibraryAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MeshLibrary](reference.(MeshLibrary)))
 }
 
-func newRefMeshLibraryGDExtensionIternalConstructor(reference MeshLibrary) RefMeshLibrary {
-	return newTypedRefGDExtensionIternalConstructor[MeshLibrary](reference)
+func NewRefMeshLibraryGDExtensionIternalConstructor(reference MeshLibrary) RefMeshLibrary {
+	return NewTypedRefGDExtensionIternalConstructor[MeshLibrary](reference)
 }
 
 var _ RefMeshTexture = &RefMeshTextureImpl{}
@@ -10764,19 +10764,19 @@ func (r *RefMeshTextureImpl) Unref() {
 }
 
 func (r *RefMeshTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMeshTexture(reference MeshTexture) RefMeshTexture {
 	return (RefMeshTexture)(NewTypedRef[MeshTexture](reference))
 }
 
-func newRefMeshTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MeshTexture](reference.(MeshTexture)))
+func NewRefMeshTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MeshTexture](reference.(MeshTexture)))
 }
 
-func newRefMeshTextureGDExtensionIternalConstructor(reference MeshTexture) RefMeshTexture {
-	return newTypedRefGDExtensionIternalConstructor[MeshTexture](reference)
+func NewRefMeshTextureGDExtensionIternalConstructor(reference MeshTexture) RefMeshTexture {
+	return NewTypedRefGDExtensionIternalConstructor[MeshTexture](reference)
 }
 
 var _ RefMethodTweener = &RefMethodTweenerImpl{}
@@ -10811,19 +10811,19 @@ func (r *RefMethodTweenerImpl) Unref() {
 }
 
 func (r *RefMethodTweenerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMethodTweener(reference MethodTweener) RefMethodTweener {
 	return (RefMethodTweener)(NewTypedRef[MethodTweener](reference))
 }
 
-func newRefMethodTweenerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MethodTweener](reference.(MethodTweener)))
+func NewRefMethodTweenerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MethodTweener](reference.(MethodTweener)))
 }
 
-func newRefMethodTweenerGDExtensionIternalConstructor(reference MethodTweener) RefMethodTweener {
-	return newTypedRefGDExtensionIternalConstructor[MethodTweener](reference)
+func NewRefMethodTweenerGDExtensionIternalConstructor(reference MethodTweener) RefMethodTweener {
+	return NewTypedRefGDExtensionIternalConstructor[MethodTweener](reference)
 }
 
 var _ RefMissingResource = &RefMissingResourceImpl{}
@@ -10858,19 +10858,19 @@ func (r *RefMissingResourceImpl) Unref() {
 }
 
 func (r *RefMissingResourceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMissingResource(reference MissingResource) RefMissingResource {
 	return (RefMissingResource)(NewTypedRef[MissingResource](reference))
 }
 
-func newRefMissingResourceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MissingResource](reference.(MissingResource)))
+func NewRefMissingResourceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MissingResource](reference.(MissingResource)))
 }
 
-func newRefMissingResourceGDExtensionIternalConstructor(reference MissingResource) RefMissingResource {
-	return newTypedRefGDExtensionIternalConstructor[MissingResource](reference)
+func NewRefMissingResourceGDExtensionIternalConstructor(reference MissingResource) RefMissingResource {
+	return NewTypedRefGDExtensionIternalConstructor[MissingResource](reference)
 }
 
 var _ RefMobileVRInterface = &RefMobileVRInterfaceImpl{}
@@ -10905,19 +10905,19 @@ func (r *RefMobileVRInterfaceImpl) Unref() {
 }
 
 func (r *RefMobileVRInterfaceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMobileVRInterface(reference MobileVRInterface) RefMobileVRInterface {
 	return (RefMobileVRInterface)(NewTypedRef[MobileVRInterface](reference))
 }
 
-func newRefMobileVRInterfaceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MobileVRInterface](reference.(MobileVRInterface)))
+func NewRefMobileVRInterfaceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MobileVRInterface](reference.(MobileVRInterface)))
 }
 
-func newRefMobileVRInterfaceGDExtensionIternalConstructor(reference MobileVRInterface) RefMobileVRInterface {
-	return newTypedRefGDExtensionIternalConstructor[MobileVRInterface](reference)
+func NewRefMobileVRInterfaceGDExtensionIternalConstructor(reference MobileVRInterface) RefMobileVRInterface {
+	return NewTypedRefGDExtensionIternalConstructor[MobileVRInterface](reference)
 }
 
 var _ RefMultiMesh = &RefMultiMeshImpl{}
@@ -10952,19 +10952,19 @@ func (r *RefMultiMeshImpl) Unref() {
 }
 
 func (r *RefMultiMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMultiMesh(reference MultiMesh) RefMultiMesh {
 	return (RefMultiMesh)(NewTypedRef[MultiMesh](reference))
 }
 
-func newRefMultiMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MultiMesh](reference.(MultiMesh)))
+func NewRefMultiMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MultiMesh](reference.(MultiMesh)))
 }
 
-func newRefMultiMeshGDExtensionIternalConstructor(reference MultiMesh) RefMultiMesh {
-	return newTypedRefGDExtensionIternalConstructor[MultiMesh](reference)
+func NewRefMultiMeshGDExtensionIternalConstructor(reference MultiMesh) RefMultiMesh {
+	return NewTypedRefGDExtensionIternalConstructor[MultiMesh](reference)
 }
 
 var _ RefMultiplayerAPI = &RefMultiplayerAPIImpl{}
@@ -10999,19 +10999,19 @@ func (r *RefMultiplayerAPIImpl) Unref() {
 }
 
 func (r *RefMultiplayerAPIImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMultiplayerAPI(reference MultiplayerAPI) RefMultiplayerAPI {
 	return (RefMultiplayerAPI)(NewTypedRef[MultiplayerAPI](reference))
 }
 
-func newRefMultiplayerAPIAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MultiplayerAPI](reference.(MultiplayerAPI)))
+func NewRefMultiplayerAPIAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MultiplayerAPI](reference.(MultiplayerAPI)))
 }
 
-func newRefMultiplayerAPIGDExtensionIternalConstructor(reference MultiplayerAPI) RefMultiplayerAPI {
-	return newTypedRefGDExtensionIternalConstructor[MultiplayerAPI](reference)
+func NewRefMultiplayerAPIGDExtensionIternalConstructor(reference MultiplayerAPI) RefMultiplayerAPI {
+	return NewTypedRefGDExtensionIternalConstructor[MultiplayerAPI](reference)
 }
 
 var _ RefMultiplayerAPIExtension = &RefMultiplayerAPIExtensionImpl{}
@@ -11046,19 +11046,19 @@ func (r *RefMultiplayerAPIExtensionImpl) Unref() {
 }
 
 func (r *RefMultiplayerAPIExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMultiplayerAPIExtension(reference MultiplayerAPIExtension) RefMultiplayerAPIExtension {
 	return (RefMultiplayerAPIExtension)(NewTypedRef[MultiplayerAPIExtension](reference))
 }
 
-func newRefMultiplayerAPIExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MultiplayerAPIExtension](reference.(MultiplayerAPIExtension)))
+func NewRefMultiplayerAPIExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MultiplayerAPIExtension](reference.(MultiplayerAPIExtension)))
 }
 
-func newRefMultiplayerAPIExtensionGDExtensionIternalConstructor(reference MultiplayerAPIExtension) RefMultiplayerAPIExtension {
-	return newTypedRefGDExtensionIternalConstructor[MultiplayerAPIExtension](reference)
+func NewRefMultiplayerAPIExtensionGDExtensionIternalConstructor(reference MultiplayerAPIExtension) RefMultiplayerAPIExtension {
+	return NewTypedRefGDExtensionIternalConstructor[MultiplayerAPIExtension](reference)
 }
 
 var _ RefMultiplayerPeer = &RefMultiplayerPeerImpl{}
@@ -11093,19 +11093,19 @@ func (r *RefMultiplayerPeerImpl) Unref() {
 }
 
 func (r *RefMultiplayerPeerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMultiplayerPeer(reference MultiplayerPeer) RefMultiplayerPeer {
 	return (RefMultiplayerPeer)(NewTypedRef[MultiplayerPeer](reference))
 }
 
-func newRefMultiplayerPeerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MultiplayerPeer](reference.(MultiplayerPeer)))
+func NewRefMultiplayerPeerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MultiplayerPeer](reference.(MultiplayerPeer)))
 }
 
-func newRefMultiplayerPeerGDExtensionIternalConstructor(reference MultiplayerPeer) RefMultiplayerPeer {
-	return newTypedRefGDExtensionIternalConstructor[MultiplayerPeer](reference)
+func NewRefMultiplayerPeerGDExtensionIternalConstructor(reference MultiplayerPeer) RefMultiplayerPeer {
+	return NewTypedRefGDExtensionIternalConstructor[MultiplayerPeer](reference)
 }
 
 var _ RefMultiplayerPeerExtension = &RefMultiplayerPeerExtensionImpl{}
@@ -11140,19 +11140,19 @@ func (r *RefMultiplayerPeerExtensionImpl) Unref() {
 }
 
 func (r *RefMultiplayerPeerExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMultiplayerPeerExtension(reference MultiplayerPeerExtension) RefMultiplayerPeerExtension {
 	return (RefMultiplayerPeerExtension)(NewTypedRef[MultiplayerPeerExtension](reference))
 }
 
-func newRefMultiplayerPeerExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[MultiplayerPeerExtension](reference.(MultiplayerPeerExtension)))
+func NewRefMultiplayerPeerExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[MultiplayerPeerExtension](reference.(MultiplayerPeerExtension)))
 }
 
-func newRefMultiplayerPeerExtensionGDExtensionIternalConstructor(reference MultiplayerPeerExtension) RefMultiplayerPeerExtension {
-	return newTypedRefGDExtensionIternalConstructor[MultiplayerPeerExtension](reference)
+func NewRefMultiplayerPeerExtensionGDExtensionIternalConstructor(reference MultiplayerPeerExtension) RefMultiplayerPeerExtension {
+	return NewTypedRefGDExtensionIternalConstructor[MultiplayerPeerExtension](reference)
 }
 
 var _ RefMutex = &RefMutexImpl{}
@@ -11187,19 +11187,19 @@ func (r *RefMutexImpl) Unref() {
 }
 
 func (r *RefMutexImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefMutex(reference Mutex) RefMutex {
 	return (RefMutex)(NewTypedRef[Mutex](reference))
 }
 
-func newRefMutexAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Mutex](reference.(Mutex)))
+func NewRefMutexAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Mutex](reference.(Mutex)))
 }
 
-func newRefMutexGDExtensionIternalConstructor(reference Mutex) RefMutex {
-	return newTypedRefGDExtensionIternalConstructor[Mutex](reference)
+func NewRefMutexGDExtensionIternalConstructor(reference Mutex) RefMutex {
+	return NewTypedRefGDExtensionIternalConstructor[Mutex](reference)
 }
 
 var _ RefNavigationMesh = &RefNavigationMeshImpl{}
@@ -11234,19 +11234,19 @@ func (r *RefNavigationMeshImpl) Unref() {
 }
 
 func (r *RefNavigationMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNavigationMesh(reference NavigationMesh) RefNavigationMesh {
 	return (RefNavigationMesh)(NewTypedRef[NavigationMesh](reference))
 }
 
-func newRefNavigationMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[NavigationMesh](reference.(NavigationMesh)))
+func NewRefNavigationMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[NavigationMesh](reference.(NavigationMesh)))
 }
 
-func newRefNavigationMeshGDExtensionIternalConstructor(reference NavigationMesh) RefNavigationMesh {
-	return newTypedRefGDExtensionIternalConstructor[NavigationMesh](reference)
+func NewRefNavigationMeshGDExtensionIternalConstructor(reference NavigationMesh) RefNavigationMesh {
+	return NewTypedRefGDExtensionIternalConstructor[NavigationMesh](reference)
 }
 
 var _ RefNavigationMeshSourceGeometryData2D = &RefNavigationMeshSourceGeometryData2DImpl{}
@@ -11281,19 +11281,19 @@ func (r *RefNavigationMeshSourceGeometryData2DImpl) Unref() {
 }
 
 func (r *RefNavigationMeshSourceGeometryData2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNavigationMeshSourceGeometryData2D(reference NavigationMeshSourceGeometryData2D) RefNavigationMeshSourceGeometryData2D {
 	return (RefNavigationMeshSourceGeometryData2D)(NewTypedRef[NavigationMeshSourceGeometryData2D](reference))
 }
 
-func newRefNavigationMeshSourceGeometryData2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[NavigationMeshSourceGeometryData2D](reference.(NavigationMeshSourceGeometryData2D)))
+func NewRefNavigationMeshSourceGeometryData2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[NavigationMeshSourceGeometryData2D](reference.(NavigationMeshSourceGeometryData2D)))
 }
 
-func newRefNavigationMeshSourceGeometryData2DGDExtensionIternalConstructor(reference NavigationMeshSourceGeometryData2D) RefNavigationMeshSourceGeometryData2D {
-	return newTypedRefGDExtensionIternalConstructor[NavigationMeshSourceGeometryData2D](reference)
+func NewRefNavigationMeshSourceGeometryData2DGDExtensionIternalConstructor(reference NavigationMeshSourceGeometryData2D) RefNavigationMeshSourceGeometryData2D {
+	return NewTypedRefGDExtensionIternalConstructor[NavigationMeshSourceGeometryData2D](reference)
 }
 
 var _ RefNavigationMeshSourceGeometryData3D = &RefNavigationMeshSourceGeometryData3DImpl{}
@@ -11328,19 +11328,19 @@ func (r *RefNavigationMeshSourceGeometryData3DImpl) Unref() {
 }
 
 func (r *RefNavigationMeshSourceGeometryData3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNavigationMeshSourceGeometryData3D(reference NavigationMeshSourceGeometryData3D) RefNavigationMeshSourceGeometryData3D {
 	return (RefNavigationMeshSourceGeometryData3D)(NewTypedRef[NavigationMeshSourceGeometryData3D](reference))
 }
 
-func newRefNavigationMeshSourceGeometryData3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[NavigationMeshSourceGeometryData3D](reference.(NavigationMeshSourceGeometryData3D)))
+func NewRefNavigationMeshSourceGeometryData3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[NavigationMeshSourceGeometryData3D](reference.(NavigationMeshSourceGeometryData3D)))
 }
 
-func newRefNavigationMeshSourceGeometryData3DGDExtensionIternalConstructor(reference NavigationMeshSourceGeometryData3D) RefNavigationMeshSourceGeometryData3D {
-	return newTypedRefGDExtensionIternalConstructor[NavigationMeshSourceGeometryData3D](reference)
+func NewRefNavigationMeshSourceGeometryData3DGDExtensionIternalConstructor(reference NavigationMeshSourceGeometryData3D) RefNavigationMeshSourceGeometryData3D {
+	return NewTypedRefGDExtensionIternalConstructor[NavigationMeshSourceGeometryData3D](reference)
 }
 
 var _ RefNavigationPathQueryParameters2D = &RefNavigationPathQueryParameters2DImpl{}
@@ -11375,19 +11375,19 @@ func (r *RefNavigationPathQueryParameters2DImpl) Unref() {
 }
 
 func (r *RefNavigationPathQueryParameters2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNavigationPathQueryParameters2D(reference NavigationPathQueryParameters2D) RefNavigationPathQueryParameters2D {
 	return (RefNavigationPathQueryParameters2D)(NewTypedRef[NavigationPathQueryParameters2D](reference))
 }
 
-func newRefNavigationPathQueryParameters2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[NavigationPathQueryParameters2D](reference.(NavigationPathQueryParameters2D)))
+func NewRefNavigationPathQueryParameters2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[NavigationPathQueryParameters2D](reference.(NavigationPathQueryParameters2D)))
 }
 
-func newRefNavigationPathQueryParameters2DGDExtensionIternalConstructor(reference NavigationPathQueryParameters2D) RefNavigationPathQueryParameters2D {
-	return newTypedRefGDExtensionIternalConstructor[NavigationPathQueryParameters2D](reference)
+func NewRefNavigationPathQueryParameters2DGDExtensionIternalConstructor(reference NavigationPathQueryParameters2D) RefNavigationPathQueryParameters2D {
+	return NewTypedRefGDExtensionIternalConstructor[NavigationPathQueryParameters2D](reference)
 }
 
 var _ RefNavigationPathQueryParameters3D = &RefNavigationPathQueryParameters3DImpl{}
@@ -11422,19 +11422,19 @@ func (r *RefNavigationPathQueryParameters3DImpl) Unref() {
 }
 
 func (r *RefNavigationPathQueryParameters3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNavigationPathQueryParameters3D(reference NavigationPathQueryParameters3D) RefNavigationPathQueryParameters3D {
 	return (RefNavigationPathQueryParameters3D)(NewTypedRef[NavigationPathQueryParameters3D](reference))
 }
 
-func newRefNavigationPathQueryParameters3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[NavigationPathQueryParameters3D](reference.(NavigationPathQueryParameters3D)))
+func NewRefNavigationPathQueryParameters3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[NavigationPathQueryParameters3D](reference.(NavigationPathQueryParameters3D)))
 }
 
-func newRefNavigationPathQueryParameters3DGDExtensionIternalConstructor(reference NavigationPathQueryParameters3D) RefNavigationPathQueryParameters3D {
-	return newTypedRefGDExtensionIternalConstructor[NavigationPathQueryParameters3D](reference)
+func NewRefNavigationPathQueryParameters3DGDExtensionIternalConstructor(reference NavigationPathQueryParameters3D) RefNavigationPathQueryParameters3D {
+	return NewTypedRefGDExtensionIternalConstructor[NavigationPathQueryParameters3D](reference)
 }
 
 var _ RefNavigationPathQueryResult2D = &RefNavigationPathQueryResult2DImpl{}
@@ -11469,19 +11469,19 @@ func (r *RefNavigationPathQueryResult2DImpl) Unref() {
 }
 
 func (r *RefNavigationPathQueryResult2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNavigationPathQueryResult2D(reference NavigationPathQueryResult2D) RefNavigationPathQueryResult2D {
 	return (RefNavigationPathQueryResult2D)(NewTypedRef[NavigationPathQueryResult2D](reference))
 }
 
-func newRefNavigationPathQueryResult2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[NavigationPathQueryResult2D](reference.(NavigationPathQueryResult2D)))
+func NewRefNavigationPathQueryResult2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[NavigationPathQueryResult2D](reference.(NavigationPathQueryResult2D)))
 }
 
-func newRefNavigationPathQueryResult2DGDExtensionIternalConstructor(reference NavigationPathQueryResult2D) RefNavigationPathQueryResult2D {
-	return newTypedRefGDExtensionIternalConstructor[NavigationPathQueryResult2D](reference)
+func NewRefNavigationPathQueryResult2DGDExtensionIternalConstructor(reference NavigationPathQueryResult2D) RefNavigationPathQueryResult2D {
+	return NewTypedRefGDExtensionIternalConstructor[NavigationPathQueryResult2D](reference)
 }
 
 var _ RefNavigationPathQueryResult3D = &RefNavigationPathQueryResult3DImpl{}
@@ -11516,19 +11516,19 @@ func (r *RefNavigationPathQueryResult3DImpl) Unref() {
 }
 
 func (r *RefNavigationPathQueryResult3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNavigationPathQueryResult3D(reference NavigationPathQueryResult3D) RefNavigationPathQueryResult3D {
 	return (RefNavigationPathQueryResult3D)(NewTypedRef[NavigationPathQueryResult3D](reference))
 }
 
-func newRefNavigationPathQueryResult3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[NavigationPathQueryResult3D](reference.(NavigationPathQueryResult3D)))
+func NewRefNavigationPathQueryResult3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[NavigationPathQueryResult3D](reference.(NavigationPathQueryResult3D)))
 }
 
-func newRefNavigationPathQueryResult3DGDExtensionIternalConstructor(reference NavigationPathQueryResult3D) RefNavigationPathQueryResult3D {
-	return newTypedRefGDExtensionIternalConstructor[NavigationPathQueryResult3D](reference)
+func NewRefNavigationPathQueryResult3DGDExtensionIternalConstructor(reference NavigationPathQueryResult3D) RefNavigationPathQueryResult3D {
+	return NewTypedRefGDExtensionIternalConstructor[NavigationPathQueryResult3D](reference)
 }
 
 var _ RefNavigationPolygon = &RefNavigationPolygonImpl{}
@@ -11563,19 +11563,19 @@ func (r *RefNavigationPolygonImpl) Unref() {
 }
 
 func (r *RefNavigationPolygonImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNavigationPolygon(reference NavigationPolygon) RefNavigationPolygon {
 	return (RefNavigationPolygon)(NewTypedRef[NavigationPolygon](reference))
 }
 
-func newRefNavigationPolygonAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[NavigationPolygon](reference.(NavigationPolygon)))
+func NewRefNavigationPolygonAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[NavigationPolygon](reference.(NavigationPolygon)))
 }
 
-func newRefNavigationPolygonGDExtensionIternalConstructor(reference NavigationPolygon) RefNavigationPolygon {
-	return newTypedRefGDExtensionIternalConstructor[NavigationPolygon](reference)
+func NewRefNavigationPolygonGDExtensionIternalConstructor(reference NavigationPolygon) RefNavigationPolygon {
+	return NewTypedRefGDExtensionIternalConstructor[NavigationPolygon](reference)
 }
 
 var _ RefNode3DGizmo = &RefNode3DGizmoImpl{}
@@ -11610,19 +11610,19 @@ func (r *RefNode3DGizmoImpl) Unref() {
 }
 
 func (r *RefNode3DGizmoImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNode3DGizmo(reference Node3DGizmo) RefNode3DGizmo {
 	return (RefNode3DGizmo)(NewTypedRef[Node3DGizmo](reference))
 }
 
-func newRefNode3DGizmoAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Node3DGizmo](reference.(Node3DGizmo)))
+func NewRefNode3DGizmoAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Node3DGizmo](reference.(Node3DGizmo)))
 }
 
-func newRefNode3DGizmoGDExtensionIternalConstructor(reference Node3DGizmo) RefNode3DGizmo {
-	return newTypedRefGDExtensionIternalConstructor[Node3DGizmo](reference)
+func NewRefNode3DGizmoGDExtensionIternalConstructor(reference Node3DGizmo) RefNode3DGizmo {
+	return NewTypedRefGDExtensionIternalConstructor[Node3DGizmo](reference)
 }
 
 var _ RefNoise = &RefNoiseImpl{}
@@ -11657,19 +11657,19 @@ func (r *RefNoiseImpl) Unref() {
 }
 
 func (r *RefNoiseImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNoise(reference Noise) RefNoise {
 	return (RefNoise)(NewTypedRef[Noise](reference))
 }
 
-func newRefNoiseAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Noise](reference.(Noise)))
+func NewRefNoiseAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Noise](reference.(Noise)))
 }
 
-func newRefNoiseGDExtensionIternalConstructor(reference Noise) RefNoise {
-	return newTypedRefGDExtensionIternalConstructor[Noise](reference)
+func NewRefNoiseGDExtensionIternalConstructor(reference Noise) RefNoise {
+	return NewTypedRefGDExtensionIternalConstructor[Noise](reference)
 }
 
 var _ RefNoiseTexture2D = &RefNoiseTexture2DImpl{}
@@ -11704,19 +11704,19 @@ func (r *RefNoiseTexture2DImpl) Unref() {
 }
 
 func (r *RefNoiseTexture2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNoiseTexture2D(reference NoiseTexture2D) RefNoiseTexture2D {
 	return (RefNoiseTexture2D)(NewTypedRef[NoiseTexture2D](reference))
 }
 
-func newRefNoiseTexture2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[NoiseTexture2D](reference.(NoiseTexture2D)))
+func NewRefNoiseTexture2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[NoiseTexture2D](reference.(NoiseTexture2D)))
 }
 
-func newRefNoiseTexture2DGDExtensionIternalConstructor(reference NoiseTexture2D) RefNoiseTexture2D {
-	return newTypedRefGDExtensionIternalConstructor[NoiseTexture2D](reference)
+func NewRefNoiseTexture2DGDExtensionIternalConstructor(reference NoiseTexture2D) RefNoiseTexture2D {
+	return NewTypedRefGDExtensionIternalConstructor[NoiseTexture2D](reference)
 }
 
 var _ RefNoiseTexture3D = &RefNoiseTexture3DImpl{}
@@ -11751,19 +11751,19 @@ func (r *RefNoiseTexture3DImpl) Unref() {
 }
 
 func (r *RefNoiseTexture3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefNoiseTexture3D(reference NoiseTexture3D) RefNoiseTexture3D {
 	return (RefNoiseTexture3D)(NewTypedRef[NoiseTexture3D](reference))
 }
 
-func newRefNoiseTexture3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[NoiseTexture3D](reference.(NoiseTexture3D)))
+func NewRefNoiseTexture3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[NoiseTexture3D](reference.(NoiseTexture3D)))
 }
 
-func newRefNoiseTexture3DGDExtensionIternalConstructor(reference NoiseTexture3D) RefNoiseTexture3D {
-	return newTypedRefGDExtensionIternalConstructor[NoiseTexture3D](reference)
+func NewRefNoiseTexture3DGDExtensionIternalConstructor(reference NoiseTexture3D) RefNoiseTexture3D {
+	return NewTypedRefGDExtensionIternalConstructor[NoiseTexture3D](reference)
 }
 
 var _ RefORMMaterial3D = &RefORMMaterial3DImpl{}
@@ -11798,19 +11798,19 @@ func (r *RefORMMaterial3DImpl) Unref() {
 }
 
 func (r *RefORMMaterial3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefORMMaterial3D(reference ORMMaterial3D) RefORMMaterial3D {
 	return (RefORMMaterial3D)(NewTypedRef[ORMMaterial3D](reference))
 }
 
-func newRefORMMaterial3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ORMMaterial3D](reference.(ORMMaterial3D)))
+func NewRefORMMaterial3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ORMMaterial3D](reference.(ORMMaterial3D)))
 }
 
-func newRefORMMaterial3DGDExtensionIternalConstructor(reference ORMMaterial3D) RefORMMaterial3D {
-	return newTypedRefGDExtensionIternalConstructor[ORMMaterial3D](reference)
+func NewRefORMMaterial3DGDExtensionIternalConstructor(reference ORMMaterial3D) RefORMMaterial3D {
+	return NewTypedRefGDExtensionIternalConstructor[ORMMaterial3D](reference)
 }
 
 var _ RefOccluder3D = &RefOccluder3DImpl{}
@@ -11845,19 +11845,19 @@ func (r *RefOccluder3DImpl) Unref() {
 }
 
 func (r *RefOccluder3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOccluder3D(reference Occluder3D) RefOccluder3D {
 	return (RefOccluder3D)(NewTypedRef[Occluder3D](reference))
 }
 
-func newRefOccluder3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Occluder3D](reference.(Occluder3D)))
+func NewRefOccluder3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Occluder3D](reference.(Occluder3D)))
 }
 
-func newRefOccluder3DGDExtensionIternalConstructor(reference Occluder3D) RefOccluder3D {
-	return newTypedRefGDExtensionIternalConstructor[Occluder3D](reference)
+func NewRefOccluder3DGDExtensionIternalConstructor(reference Occluder3D) RefOccluder3D {
+	return NewTypedRefGDExtensionIternalConstructor[Occluder3D](reference)
 }
 
 var _ RefOccluderPolygon2D = &RefOccluderPolygon2DImpl{}
@@ -11892,19 +11892,19 @@ func (r *RefOccluderPolygon2DImpl) Unref() {
 }
 
 func (r *RefOccluderPolygon2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOccluderPolygon2D(reference OccluderPolygon2D) RefOccluderPolygon2D {
 	return (RefOccluderPolygon2D)(NewTypedRef[OccluderPolygon2D](reference))
 }
 
-func newRefOccluderPolygon2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OccluderPolygon2D](reference.(OccluderPolygon2D)))
+func NewRefOccluderPolygon2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OccluderPolygon2D](reference.(OccluderPolygon2D)))
 }
 
-func newRefOccluderPolygon2DGDExtensionIternalConstructor(reference OccluderPolygon2D) RefOccluderPolygon2D {
-	return newTypedRefGDExtensionIternalConstructor[OccluderPolygon2D](reference)
+func NewRefOccluderPolygon2DGDExtensionIternalConstructor(reference OccluderPolygon2D) RefOccluderPolygon2D {
+	return NewTypedRefGDExtensionIternalConstructor[OccluderPolygon2D](reference)
 }
 
 var _ RefOfflineMultiplayerPeer = &RefOfflineMultiplayerPeerImpl{}
@@ -11939,19 +11939,19 @@ func (r *RefOfflineMultiplayerPeerImpl) Unref() {
 }
 
 func (r *RefOfflineMultiplayerPeerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOfflineMultiplayerPeer(reference OfflineMultiplayerPeer) RefOfflineMultiplayerPeer {
 	return (RefOfflineMultiplayerPeer)(NewTypedRef[OfflineMultiplayerPeer](reference))
 }
 
-func newRefOfflineMultiplayerPeerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OfflineMultiplayerPeer](reference.(OfflineMultiplayerPeer)))
+func NewRefOfflineMultiplayerPeerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OfflineMultiplayerPeer](reference.(OfflineMultiplayerPeer)))
 }
 
-func newRefOfflineMultiplayerPeerGDExtensionIternalConstructor(reference OfflineMultiplayerPeer) RefOfflineMultiplayerPeer {
-	return newTypedRefGDExtensionIternalConstructor[OfflineMultiplayerPeer](reference)
+func NewRefOfflineMultiplayerPeerGDExtensionIternalConstructor(reference OfflineMultiplayerPeer) RefOfflineMultiplayerPeer {
+	return NewTypedRefGDExtensionIternalConstructor[OfflineMultiplayerPeer](reference)
 }
 
 var _ RefOggPacketSequence = &RefOggPacketSequenceImpl{}
@@ -11986,19 +11986,19 @@ func (r *RefOggPacketSequenceImpl) Unref() {
 }
 
 func (r *RefOggPacketSequenceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOggPacketSequence(reference OggPacketSequence) RefOggPacketSequence {
 	return (RefOggPacketSequence)(NewTypedRef[OggPacketSequence](reference))
 }
 
-func newRefOggPacketSequenceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OggPacketSequence](reference.(OggPacketSequence)))
+func NewRefOggPacketSequenceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OggPacketSequence](reference.(OggPacketSequence)))
 }
 
-func newRefOggPacketSequenceGDExtensionIternalConstructor(reference OggPacketSequence) RefOggPacketSequence {
-	return newTypedRefGDExtensionIternalConstructor[OggPacketSequence](reference)
+func NewRefOggPacketSequenceGDExtensionIternalConstructor(reference OggPacketSequence) RefOggPacketSequence {
+	return NewTypedRefGDExtensionIternalConstructor[OggPacketSequence](reference)
 }
 
 var _ RefOggPacketSequencePlayback = &RefOggPacketSequencePlaybackImpl{}
@@ -12033,19 +12033,19 @@ func (r *RefOggPacketSequencePlaybackImpl) Unref() {
 }
 
 func (r *RefOggPacketSequencePlaybackImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOggPacketSequencePlayback(reference OggPacketSequencePlayback) RefOggPacketSequencePlayback {
 	return (RefOggPacketSequencePlayback)(NewTypedRef[OggPacketSequencePlayback](reference))
 }
 
-func newRefOggPacketSequencePlaybackAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OggPacketSequencePlayback](reference.(OggPacketSequencePlayback)))
+func NewRefOggPacketSequencePlaybackAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OggPacketSequencePlayback](reference.(OggPacketSequencePlayback)))
 }
 
-func newRefOggPacketSequencePlaybackGDExtensionIternalConstructor(reference OggPacketSequencePlayback) RefOggPacketSequencePlayback {
-	return newTypedRefGDExtensionIternalConstructor[OggPacketSequencePlayback](reference)
+func NewRefOggPacketSequencePlaybackGDExtensionIternalConstructor(reference OggPacketSequencePlayback) RefOggPacketSequencePlayback {
+	return NewTypedRefGDExtensionIternalConstructor[OggPacketSequencePlayback](reference)
 }
 
 var _ RefOpenXRAPIExtension = &RefOpenXRAPIExtensionImpl{}
@@ -12080,19 +12080,19 @@ func (r *RefOpenXRAPIExtensionImpl) Unref() {
 }
 
 func (r *RefOpenXRAPIExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOpenXRAPIExtension(reference OpenXRAPIExtension) RefOpenXRAPIExtension {
 	return (RefOpenXRAPIExtension)(NewTypedRef[OpenXRAPIExtension](reference))
 }
 
-func newRefOpenXRAPIExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OpenXRAPIExtension](reference.(OpenXRAPIExtension)))
+func NewRefOpenXRAPIExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRAPIExtension](reference.(OpenXRAPIExtension)))
 }
 
-func newRefOpenXRAPIExtensionGDExtensionIternalConstructor(reference OpenXRAPIExtension) RefOpenXRAPIExtension {
-	return newTypedRefGDExtensionIternalConstructor[OpenXRAPIExtension](reference)
+func NewRefOpenXRAPIExtensionGDExtensionIternalConstructor(reference OpenXRAPIExtension) RefOpenXRAPIExtension {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRAPIExtension](reference)
 }
 
 var _ RefOpenXRAction = &RefOpenXRActionImpl{}
@@ -12127,19 +12127,19 @@ func (r *RefOpenXRActionImpl) Unref() {
 }
 
 func (r *RefOpenXRActionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOpenXRAction(reference OpenXRAction) RefOpenXRAction {
 	return (RefOpenXRAction)(NewTypedRef[OpenXRAction](reference))
 }
 
-func newRefOpenXRActionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OpenXRAction](reference.(OpenXRAction)))
+func NewRefOpenXRActionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRAction](reference.(OpenXRAction)))
 }
 
-func newRefOpenXRActionGDExtensionIternalConstructor(reference OpenXRAction) RefOpenXRAction {
-	return newTypedRefGDExtensionIternalConstructor[OpenXRAction](reference)
+func NewRefOpenXRActionGDExtensionIternalConstructor(reference OpenXRAction) RefOpenXRAction {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRAction](reference)
 }
 
 var _ RefOpenXRActionMap = &RefOpenXRActionMapImpl{}
@@ -12174,19 +12174,19 @@ func (r *RefOpenXRActionMapImpl) Unref() {
 }
 
 func (r *RefOpenXRActionMapImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOpenXRActionMap(reference OpenXRActionMap) RefOpenXRActionMap {
 	return (RefOpenXRActionMap)(NewTypedRef[OpenXRActionMap](reference))
 }
 
-func newRefOpenXRActionMapAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OpenXRActionMap](reference.(OpenXRActionMap)))
+func NewRefOpenXRActionMapAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRActionMap](reference.(OpenXRActionMap)))
 }
 
-func newRefOpenXRActionMapGDExtensionIternalConstructor(reference OpenXRActionMap) RefOpenXRActionMap {
-	return newTypedRefGDExtensionIternalConstructor[OpenXRActionMap](reference)
+func NewRefOpenXRActionMapGDExtensionIternalConstructor(reference OpenXRActionMap) RefOpenXRActionMap {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRActionMap](reference)
 }
 
 var _ RefOpenXRActionSet = &RefOpenXRActionSetImpl{}
@@ -12221,19 +12221,19 @@ func (r *RefOpenXRActionSetImpl) Unref() {
 }
 
 func (r *RefOpenXRActionSetImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOpenXRActionSet(reference OpenXRActionSet) RefOpenXRActionSet {
 	return (RefOpenXRActionSet)(NewTypedRef[OpenXRActionSet](reference))
 }
 
-func newRefOpenXRActionSetAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OpenXRActionSet](reference.(OpenXRActionSet)))
+func NewRefOpenXRActionSetAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRActionSet](reference.(OpenXRActionSet)))
 }
 
-func newRefOpenXRActionSetGDExtensionIternalConstructor(reference OpenXRActionSet) RefOpenXRActionSet {
-	return newTypedRefGDExtensionIternalConstructor[OpenXRActionSet](reference)
+func NewRefOpenXRActionSetGDExtensionIternalConstructor(reference OpenXRActionSet) RefOpenXRActionSet {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRActionSet](reference)
 }
 
 var _ RefOpenXRIPBinding = &RefOpenXRIPBindingImpl{}
@@ -12268,19 +12268,19 @@ func (r *RefOpenXRIPBindingImpl) Unref() {
 }
 
 func (r *RefOpenXRIPBindingImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOpenXRIPBinding(reference OpenXRIPBinding) RefOpenXRIPBinding {
 	return (RefOpenXRIPBinding)(NewTypedRef[OpenXRIPBinding](reference))
 }
 
-func newRefOpenXRIPBindingAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OpenXRIPBinding](reference.(OpenXRIPBinding)))
+func NewRefOpenXRIPBindingAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRIPBinding](reference.(OpenXRIPBinding)))
 }
 
-func newRefOpenXRIPBindingGDExtensionIternalConstructor(reference OpenXRIPBinding) RefOpenXRIPBinding {
-	return newTypedRefGDExtensionIternalConstructor[OpenXRIPBinding](reference)
+func NewRefOpenXRIPBindingGDExtensionIternalConstructor(reference OpenXRIPBinding) RefOpenXRIPBinding {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRIPBinding](reference)
 }
 
 var _ RefOpenXRInteractionProfile = &RefOpenXRInteractionProfileImpl{}
@@ -12315,19 +12315,19 @@ func (r *RefOpenXRInteractionProfileImpl) Unref() {
 }
 
 func (r *RefOpenXRInteractionProfileImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOpenXRInteractionProfile(reference OpenXRInteractionProfile) RefOpenXRInteractionProfile {
 	return (RefOpenXRInteractionProfile)(NewTypedRef[OpenXRInteractionProfile](reference))
 }
 
-func newRefOpenXRInteractionProfileAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OpenXRInteractionProfile](reference.(OpenXRInteractionProfile)))
+func NewRefOpenXRInteractionProfileAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRInteractionProfile](reference.(OpenXRInteractionProfile)))
 }
 
-func newRefOpenXRInteractionProfileGDExtensionIternalConstructor(reference OpenXRInteractionProfile) RefOpenXRInteractionProfile {
-	return newTypedRefGDExtensionIternalConstructor[OpenXRInteractionProfile](reference)
+func NewRefOpenXRInteractionProfileGDExtensionIternalConstructor(reference OpenXRInteractionProfile) RefOpenXRInteractionProfile {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRInteractionProfile](reference)
 }
 
 var _ RefOpenXRInterface = &RefOpenXRInterfaceImpl{}
@@ -12362,19 +12362,19 @@ func (r *RefOpenXRInterfaceImpl) Unref() {
 }
 
 func (r *RefOpenXRInterfaceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOpenXRInterface(reference OpenXRInterface) RefOpenXRInterface {
 	return (RefOpenXRInterface)(NewTypedRef[OpenXRInterface](reference))
 }
 
-func newRefOpenXRInterfaceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OpenXRInterface](reference.(OpenXRInterface)))
+func NewRefOpenXRInterfaceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRInterface](reference.(OpenXRInterface)))
 }
 
-func newRefOpenXRInterfaceGDExtensionIternalConstructor(reference OpenXRInterface) RefOpenXRInterface {
-	return newTypedRefGDExtensionIternalConstructor[OpenXRInterface](reference)
+func NewRefOpenXRInterfaceGDExtensionIternalConstructor(reference OpenXRInterface) RefOpenXRInterface {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRInterface](reference)
 }
 
 var _ RefOptimizedTranslation = &RefOptimizedTranslationImpl{}
@@ -12409,19 +12409,19 @@ func (r *RefOptimizedTranslationImpl) Unref() {
 }
 
 func (r *RefOptimizedTranslationImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefOptimizedTranslation(reference OptimizedTranslation) RefOptimizedTranslation {
 	return (RefOptimizedTranslation)(NewTypedRef[OptimizedTranslation](reference))
 }
 
-func newRefOptimizedTranslationAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[OptimizedTranslation](reference.(OptimizedTranslation)))
+func NewRefOptimizedTranslationAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OptimizedTranslation](reference.(OptimizedTranslation)))
 }
 
-func newRefOptimizedTranslationGDExtensionIternalConstructor(reference OptimizedTranslation) RefOptimizedTranslation {
-	return newTypedRefGDExtensionIternalConstructor[OptimizedTranslation](reference)
+func NewRefOptimizedTranslationGDExtensionIternalConstructor(reference OptimizedTranslation) RefOptimizedTranslation {
+	return NewTypedRefGDExtensionIternalConstructor[OptimizedTranslation](reference)
 }
 
 var _ RefPCKPacker = &RefPCKPackerImpl{}
@@ -12456,19 +12456,19 @@ func (r *RefPCKPackerImpl) Unref() {
 }
 
 func (r *RefPCKPackerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPCKPacker(reference PCKPacker) RefPCKPacker {
 	return (RefPCKPacker)(NewTypedRef[PCKPacker](reference))
 }
 
-func newRefPCKPackerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PCKPacker](reference.(PCKPacker)))
+func NewRefPCKPackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PCKPacker](reference.(PCKPacker)))
 }
 
-func newRefPCKPackerGDExtensionIternalConstructor(reference PCKPacker) RefPCKPacker {
-	return newTypedRefGDExtensionIternalConstructor[PCKPacker](reference)
+func NewRefPCKPackerGDExtensionIternalConstructor(reference PCKPacker) RefPCKPacker {
+	return NewTypedRefGDExtensionIternalConstructor[PCKPacker](reference)
 }
 
 var _ RefPackedDataContainer = &RefPackedDataContainerImpl{}
@@ -12503,19 +12503,19 @@ func (r *RefPackedDataContainerImpl) Unref() {
 }
 
 func (r *RefPackedDataContainerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPackedDataContainer(reference PackedDataContainer) RefPackedDataContainer {
 	return (RefPackedDataContainer)(NewTypedRef[PackedDataContainer](reference))
 }
 
-func newRefPackedDataContainerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PackedDataContainer](reference.(PackedDataContainer)))
+func NewRefPackedDataContainerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PackedDataContainer](reference.(PackedDataContainer)))
 }
 
-func newRefPackedDataContainerGDExtensionIternalConstructor(reference PackedDataContainer) RefPackedDataContainer {
-	return newTypedRefGDExtensionIternalConstructor[PackedDataContainer](reference)
+func NewRefPackedDataContainerGDExtensionIternalConstructor(reference PackedDataContainer) RefPackedDataContainer {
+	return NewTypedRefGDExtensionIternalConstructor[PackedDataContainer](reference)
 }
 
 var _ RefPackedDataContainerRef = &RefPackedDataContainerRefImpl{}
@@ -12550,19 +12550,19 @@ func (r *RefPackedDataContainerRefImpl) Unref() {
 }
 
 func (r *RefPackedDataContainerRefImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPackedDataContainerRef(reference PackedDataContainerRef) RefPackedDataContainerRef {
 	return (RefPackedDataContainerRef)(NewTypedRef[PackedDataContainerRef](reference))
 }
 
-func newRefPackedDataContainerRefAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PackedDataContainerRef](reference.(PackedDataContainerRef)))
+func NewRefPackedDataContainerRefAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PackedDataContainerRef](reference.(PackedDataContainerRef)))
 }
 
-func newRefPackedDataContainerRefGDExtensionIternalConstructor(reference PackedDataContainerRef) RefPackedDataContainerRef {
-	return newTypedRefGDExtensionIternalConstructor[PackedDataContainerRef](reference)
+func NewRefPackedDataContainerRefGDExtensionIternalConstructor(reference PackedDataContainerRef) RefPackedDataContainerRef {
+	return NewTypedRefGDExtensionIternalConstructor[PackedDataContainerRef](reference)
 }
 
 var _ RefPackedScene = &RefPackedSceneImpl{}
@@ -12597,19 +12597,19 @@ func (r *RefPackedSceneImpl) Unref() {
 }
 
 func (r *RefPackedSceneImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPackedScene(reference PackedScene) RefPackedScene {
 	return (RefPackedScene)(NewTypedRef[PackedScene](reference))
 }
 
-func newRefPackedSceneAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PackedScene](reference.(PackedScene)))
+func NewRefPackedSceneAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PackedScene](reference.(PackedScene)))
 }
 
-func newRefPackedSceneGDExtensionIternalConstructor(reference PackedScene) RefPackedScene {
-	return newTypedRefGDExtensionIternalConstructor[PackedScene](reference)
+func NewRefPackedSceneGDExtensionIternalConstructor(reference PackedScene) RefPackedScene {
+	return NewTypedRefGDExtensionIternalConstructor[PackedScene](reference)
 }
 
 var _ RefPacketPeer = &RefPacketPeerImpl{}
@@ -12644,19 +12644,19 @@ func (r *RefPacketPeerImpl) Unref() {
 }
 
 func (r *RefPacketPeerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPacketPeer(reference PacketPeer) RefPacketPeer {
 	return (RefPacketPeer)(NewTypedRef[PacketPeer](reference))
 }
 
-func newRefPacketPeerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PacketPeer](reference.(PacketPeer)))
+func NewRefPacketPeerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PacketPeer](reference.(PacketPeer)))
 }
 
-func newRefPacketPeerGDExtensionIternalConstructor(reference PacketPeer) RefPacketPeer {
-	return newTypedRefGDExtensionIternalConstructor[PacketPeer](reference)
+func NewRefPacketPeerGDExtensionIternalConstructor(reference PacketPeer) RefPacketPeer {
+	return NewTypedRefGDExtensionIternalConstructor[PacketPeer](reference)
 }
 
 var _ RefPacketPeerDTLS = &RefPacketPeerDTLSImpl{}
@@ -12691,19 +12691,19 @@ func (r *RefPacketPeerDTLSImpl) Unref() {
 }
 
 func (r *RefPacketPeerDTLSImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPacketPeerDTLS(reference PacketPeerDTLS) RefPacketPeerDTLS {
 	return (RefPacketPeerDTLS)(NewTypedRef[PacketPeerDTLS](reference))
 }
 
-func newRefPacketPeerDTLSAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PacketPeerDTLS](reference.(PacketPeerDTLS)))
+func NewRefPacketPeerDTLSAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PacketPeerDTLS](reference.(PacketPeerDTLS)))
 }
 
-func newRefPacketPeerDTLSGDExtensionIternalConstructor(reference PacketPeerDTLS) RefPacketPeerDTLS {
-	return newTypedRefGDExtensionIternalConstructor[PacketPeerDTLS](reference)
+func NewRefPacketPeerDTLSGDExtensionIternalConstructor(reference PacketPeerDTLS) RefPacketPeerDTLS {
+	return NewTypedRefGDExtensionIternalConstructor[PacketPeerDTLS](reference)
 }
 
 var _ RefPacketPeerExtension = &RefPacketPeerExtensionImpl{}
@@ -12738,19 +12738,19 @@ func (r *RefPacketPeerExtensionImpl) Unref() {
 }
 
 func (r *RefPacketPeerExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPacketPeerExtension(reference PacketPeerExtension) RefPacketPeerExtension {
 	return (RefPacketPeerExtension)(NewTypedRef[PacketPeerExtension](reference))
 }
 
-func newRefPacketPeerExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PacketPeerExtension](reference.(PacketPeerExtension)))
+func NewRefPacketPeerExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PacketPeerExtension](reference.(PacketPeerExtension)))
 }
 
-func newRefPacketPeerExtensionGDExtensionIternalConstructor(reference PacketPeerExtension) RefPacketPeerExtension {
-	return newTypedRefGDExtensionIternalConstructor[PacketPeerExtension](reference)
+func NewRefPacketPeerExtensionGDExtensionIternalConstructor(reference PacketPeerExtension) RefPacketPeerExtension {
+	return NewTypedRefGDExtensionIternalConstructor[PacketPeerExtension](reference)
 }
 
 var _ RefPacketPeerStream = &RefPacketPeerStreamImpl{}
@@ -12785,19 +12785,19 @@ func (r *RefPacketPeerStreamImpl) Unref() {
 }
 
 func (r *RefPacketPeerStreamImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPacketPeerStream(reference PacketPeerStream) RefPacketPeerStream {
 	return (RefPacketPeerStream)(NewTypedRef[PacketPeerStream](reference))
 }
 
-func newRefPacketPeerStreamAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PacketPeerStream](reference.(PacketPeerStream)))
+func NewRefPacketPeerStreamAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PacketPeerStream](reference.(PacketPeerStream)))
 }
 
-func newRefPacketPeerStreamGDExtensionIternalConstructor(reference PacketPeerStream) RefPacketPeerStream {
-	return newTypedRefGDExtensionIternalConstructor[PacketPeerStream](reference)
+func NewRefPacketPeerStreamGDExtensionIternalConstructor(reference PacketPeerStream) RefPacketPeerStream {
+	return NewTypedRefGDExtensionIternalConstructor[PacketPeerStream](reference)
 }
 
 var _ RefPacketPeerUDP = &RefPacketPeerUDPImpl{}
@@ -12832,19 +12832,19 @@ func (r *RefPacketPeerUDPImpl) Unref() {
 }
 
 func (r *RefPacketPeerUDPImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPacketPeerUDP(reference PacketPeerUDP) RefPacketPeerUDP {
 	return (RefPacketPeerUDP)(NewTypedRef[PacketPeerUDP](reference))
 }
 
-func newRefPacketPeerUDPAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PacketPeerUDP](reference.(PacketPeerUDP)))
+func NewRefPacketPeerUDPAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PacketPeerUDP](reference.(PacketPeerUDP)))
 }
 
-func newRefPacketPeerUDPGDExtensionIternalConstructor(reference PacketPeerUDP) RefPacketPeerUDP {
-	return newTypedRefGDExtensionIternalConstructor[PacketPeerUDP](reference)
+func NewRefPacketPeerUDPGDExtensionIternalConstructor(reference PacketPeerUDP) RefPacketPeerUDP {
+	return NewTypedRefGDExtensionIternalConstructor[PacketPeerUDP](reference)
 }
 
 var _ RefPanoramaSkyMaterial = &RefPanoramaSkyMaterialImpl{}
@@ -12879,19 +12879,19 @@ func (r *RefPanoramaSkyMaterialImpl) Unref() {
 }
 
 func (r *RefPanoramaSkyMaterialImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPanoramaSkyMaterial(reference PanoramaSkyMaterial) RefPanoramaSkyMaterial {
 	return (RefPanoramaSkyMaterial)(NewTypedRef[PanoramaSkyMaterial](reference))
 }
 
-func newRefPanoramaSkyMaterialAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PanoramaSkyMaterial](reference.(PanoramaSkyMaterial)))
+func NewRefPanoramaSkyMaterialAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PanoramaSkyMaterial](reference.(PanoramaSkyMaterial)))
 }
 
-func newRefPanoramaSkyMaterialGDExtensionIternalConstructor(reference PanoramaSkyMaterial) RefPanoramaSkyMaterial {
-	return newTypedRefGDExtensionIternalConstructor[PanoramaSkyMaterial](reference)
+func NewRefPanoramaSkyMaterialGDExtensionIternalConstructor(reference PanoramaSkyMaterial) RefPanoramaSkyMaterial {
+	return NewTypedRefGDExtensionIternalConstructor[PanoramaSkyMaterial](reference)
 }
 
 var _ RefParticleProcessMaterial = &RefParticleProcessMaterialImpl{}
@@ -12926,19 +12926,19 @@ func (r *RefParticleProcessMaterialImpl) Unref() {
 }
 
 func (r *RefParticleProcessMaterialImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefParticleProcessMaterial(reference ParticleProcessMaterial) RefParticleProcessMaterial {
 	return (RefParticleProcessMaterial)(NewTypedRef[ParticleProcessMaterial](reference))
 }
 
-func newRefParticleProcessMaterialAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ParticleProcessMaterial](reference.(ParticleProcessMaterial)))
+func NewRefParticleProcessMaterialAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ParticleProcessMaterial](reference.(ParticleProcessMaterial)))
 }
 
-func newRefParticleProcessMaterialGDExtensionIternalConstructor(reference ParticleProcessMaterial) RefParticleProcessMaterial {
-	return newTypedRefGDExtensionIternalConstructor[ParticleProcessMaterial](reference)
+func NewRefParticleProcessMaterialGDExtensionIternalConstructor(reference ParticleProcessMaterial) RefParticleProcessMaterial {
+	return NewTypedRefGDExtensionIternalConstructor[ParticleProcessMaterial](reference)
 }
 
 var _ RefPhysicalSkyMaterial = &RefPhysicalSkyMaterialImpl{}
@@ -12973,19 +12973,19 @@ func (r *RefPhysicalSkyMaterialImpl) Unref() {
 }
 
 func (r *RefPhysicalSkyMaterialImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicalSkyMaterial(reference PhysicalSkyMaterial) RefPhysicalSkyMaterial {
 	return (RefPhysicalSkyMaterial)(NewTypedRef[PhysicalSkyMaterial](reference))
 }
 
-func newRefPhysicalSkyMaterialAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicalSkyMaterial](reference.(PhysicalSkyMaterial)))
+func NewRefPhysicalSkyMaterialAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicalSkyMaterial](reference.(PhysicalSkyMaterial)))
 }
 
-func newRefPhysicalSkyMaterialGDExtensionIternalConstructor(reference PhysicalSkyMaterial) RefPhysicalSkyMaterial {
-	return newTypedRefGDExtensionIternalConstructor[PhysicalSkyMaterial](reference)
+func NewRefPhysicalSkyMaterialGDExtensionIternalConstructor(reference PhysicalSkyMaterial) RefPhysicalSkyMaterial {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicalSkyMaterial](reference)
 }
 
 var _ RefPhysicsMaterial = &RefPhysicsMaterialImpl{}
@@ -13020,19 +13020,19 @@ func (r *RefPhysicsMaterialImpl) Unref() {
 }
 
 func (r *RefPhysicsMaterialImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicsMaterial(reference PhysicsMaterial) RefPhysicsMaterial {
 	return (RefPhysicsMaterial)(NewTypedRef[PhysicsMaterial](reference))
 }
 
-func newRefPhysicsMaterialAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicsMaterial](reference.(PhysicsMaterial)))
+func NewRefPhysicsMaterialAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicsMaterial](reference.(PhysicsMaterial)))
 }
 
-func newRefPhysicsMaterialGDExtensionIternalConstructor(reference PhysicsMaterial) RefPhysicsMaterial {
-	return newTypedRefGDExtensionIternalConstructor[PhysicsMaterial](reference)
+func NewRefPhysicsMaterialGDExtensionIternalConstructor(reference PhysicsMaterial) RefPhysicsMaterial {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicsMaterial](reference)
 }
 
 var _ RefPhysicsPointQueryParameters2D = &RefPhysicsPointQueryParameters2DImpl{}
@@ -13067,19 +13067,19 @@ func (r *RefPhysicsPointQueryParameters2DImpl) Unref() {
 }
 
 func (r *RefPhysicsPointQueryParameters2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicsPointQueryParameters2D(reference PhysicsPointQueryParameters2D) RefPhysicsPointQueryParameters2D {
 	return (RefPhysicsPointQueryParameters2D)(NewTypedRef[PhysicsPointQueryParameters2D](reference))
 }
 
-func newRefPhysicsPointQueryParameters2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicsPointQueryParameters2D](reference.(PhysicsPointQueryParameters2D)))
+func NewRefPhysicsPointQueryParameters2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicsPointQueryParameters2D](reference.(PhysicsPointQueryParameters2D)))
 }
 
-func newRefPhysicsPointQueryParameters2DGDExtensionIternalConstructor(reference PhysicsPointQueryParameters2D) RefPhysicsPointQueryParameters2D {
-	return newTypedRefGDExtensionIternalConstructor[PhysicsPointQueryParameters2D](reference)
+func NewRefPhysicsPointQueryParameters2DGDExtensionIternalConstructor(reference PhysicsPointQueryParameters2D) RefPhysicsPointQueryParameters2D {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicsPointQueryParameters2D](reference)
 }
 
 var _ RefPhysicsPointQueryParameters3D = &RefPhysicsPointQueryParameters3DImpl{}
@@ -13114,19 +13114,19 @@ func (r *RefPhysicsPointQueryParameters3DImpl) Unref() {
 }
 
 func (r *RefPhysicsPointQueryParameters3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicsPointQueryParameters3D(reference PhysicsPointQueryParameters3D) RefPhysicsPointQueryParameters3D {
 	return (RefPhysicsPointQueryParameters3D)(NewTypedRef[PhysicsPointQueryParameters3D](reference))
 }
 
-func newRefPhysicsPointQueryParameters3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicsPointQueryParameters3D](reference.(PhysicsPointQueryParameters3D)))
+func NewRefPhysicsPointQueryParameters3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicsPointQueryParameters3D](reference.(PhysicsPointQueryParameters3D)))
 }
 
-func newRefPhysicsPointQueryParameters3DGDExtensionIternalConstructor(reference PhysicsPointQueryParameters3D) RefPhysicsPointQueryParameters3D {
-	return newTypedRefGDExtensionIternalConstructor[PhysicsPointQueryParameters3D](reference)
+func NewRefPhysicsPointQueryParameters3DGDExtensionIternalConstructor(reference PhysicsPointQueryParameters3D) RefPhysicsPointQueryParameters3D {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicsPointQueryParameters3D](reference)
 }
 
 var _ RefPhysicsRayQueryParameters2D = &RefPhysicsRayQueryParameters2DImpl{}
@@ -13161,19 +13161,19 @@ func (r *RefPhysicsRayQueryParameters2DImpl) Unref() {
 }
 
 func (r *RefPhysicsRayQueryParameters2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicsRayQueryParameters2D(reference PhysicsRayQueryParameters2D) RefPhysicsRayQueryParameters2D {
 	return (RefPhysicsRayQueryParameters2D)(NewTypedRef[PhysicsRayQueryParameters2D](reference))
 }
 
-func newRefPhysicsRayQueryParameters2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicsRayQueryParameters2D](reference.(PhysicsRayQueryParameters2D)))
+func NewRefPhysicsRayQueryParameters2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicsRayQueryParameters2D](reference.(PhysicsRayQueryParameters2D)))
 }
 
-func newRefPhysicsRayQueryParameters2DGDExtensionIternalConstructor(reference PhysicsRayQueryParameters2D) RefPhysicsRayQueryParameters2D {
-	return newTypedRefGDExtensionIternalConstructor[PhysicsRayQueryParameters2D](reference)
+func NewRefPhysicsRayQueryParameters2DGDExtensionIternalConstructor(reference PhysicsRayQueryParameters2D) RefPhysicsRayQueryParameters2D {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicsRayQueryParameters2D](reference)
 }
 
 var _ RefPhysicsRayQueryParameters3D = &RefPhysicsRayQueryParameters3DImpl{}
@@ -13208,19 +13208,19 @@ func (r *RefPhysicsRayQueryParameters3DImpl) Unref() {
 }
 
 func (r *RefPhysicsRayQueryParameters3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicsRayQueryParameters3D(reference PhysicsRayQueryParameters3D) RefPhysicsRayQueryParameters3D {
 	return (RefPhysicsRayQueryParameters3D)(NewTypedRef[PhysicsRayQueryParameters3D](reference))
 }
 
-func newRefPhysicsRayQueryParameters3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicsRayQueryParameters3D](reference.(PhysicsRayQueryParameters3D)))
+func NewRefPhysicsRayQueryParameters3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicsRayQueryParameters3D](reference.(PhysicsRayQueryParameters3D)))
 }
 
-func newRefPhysicsRayQueryParameters3DGDExtensionIternalConstructor(reference PhysicsRayQueryParameters3D) RefPhysicsRayQueryParameters3D {
-	return newTypedRefGDExtensionIternalConstructor[PhysicsRayQueryParameters3D](reference)
+func NewRefPhysicsRayQueryParameters3DGDExtensionIternalConstructor(reference PhysicsRayQueryParameters3D) RefPhysicsRayQueryParameters3D {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicsRayQueryParameters3D](reference)
 }
 
 var _ RefPhysicsShapeQueryParameters2D = &RefPhysicsShapeQueryParameters2DImpl{}
@@ -13255,19 +13255,19 @@ func (r *RefPhysicsShapeQueryParameters2DImpl) Unref() {
 }
 
 func (r *RefPhysicsShapeQueryParameters2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicsShapeQueryParameters2D(reference PhysicsShapeQueryParameters2D) RefPhysicsShapeQueryParameters2D {
 	return (RefPhysicsShapeQueryParameters2D)(NewTypedRef[PhysicsShapeQueryParameters2D](reference))
 }
 
-func newRefPhysicsShapeQueryParameters2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicsShapeQueryParameters2D](reference.(PhysicsShapeQueryParameters2D)))
+func NewRefPhysicsShapeQueryParameters2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicsShapeQueryParameters2D](reference.(PhysicsShapeQueryParameters2D)))
 }
 
-func newRefPhysicsShapeQueryParameters2DGDExtensionIternalConstructor(reference PhysicsShapeQueryParameters2D) RefPhysicsShapeQueryParameters2D {
-	return newTypedRefGDExtensionIternalConstructor[PhysicsShapeQueryParameters2D](reference)
+func NewRefPhysicsShapeQueryParameters2DGDExtensionIternalConstructor(reference PhysicsShapeQueryParameters2D) RefPhysicsShapeQueryParameters2D {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicsShapeQueryParameters2D](reference)
 }
 
 var _ RefPhysicsShapeQueryParameters3D = &RefPhysicsShapeQueryParameters3DImpl{}
@@ -13302,19 +13302,19 @@ func (r *RefPhysicsShapeQueryParameters3DImpl) Unref() {
 }
 
 func (r *RefPhysicsShapeQueryParameters3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicsShapeQueryParameters3D(reference PhysicsShapeQueryParameters3D) RefPhysicsShapeQueryParameters3D {
 	return (RefPhysicsShapeQueryParameters3D)(NewTypedRef[PhysicsShapeQueryParameters3D](reference))
 }
 
-func newRefPhysicsShapeQueryParameters3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicsShapeQueryParameters3D](reference.(PhysicsShapeQueryParameters3D)))
+func NewRefPhysicsShapeQueryParameters3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicsShapeQueryParameters3D](reference.(PhysicsShapeQueryParameters3D)))
 }
 
-func newRefPhysicsShapeQueryParameters3DGDExtensionIternalConstructor(reference PhysicsShapeQueryParameters3D) RefPhysicsShapeQueryParameters3D {
-	return newTypedRefGDExtensionIternalConstructor[PhysicsShapeQueryParameters3D](reference)
+func NewRefPhysicsShapeQueryParameters3DGDExtensionIternalConstructor(reference PhysicsShapeQueryParameters3D) RefPhysicsShapeQueryParameters3D {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicsShapeQueryParameters3D](reference)
 }
 
 var _ RefPhysicsTestMotionParameters2D = &RefPhysicsTestMotionParameters2DImpl{}
@@ -13349,19 +13349,19 @@ func (r *RefPhysicsTestMotionParameters2DImpl) Unref() {
 }
 
 func (r *RefPhysicsTestMotionParameters2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicsTestMotionParameters2D(reference PhysicsTestMotionParameters2D) RefPhysicsTestMotionParameters2D {
 	return (RefPhysicsTestMotionParameters2D)(NewTypedRef[PhysicsTestMotionParameters2D](reference))
 }
 
-func newRefPhysicsTestMotionParameters2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicsTestMotionParameters2D](reference.(PhysicsTestMotionParameters2D)))
+func NewRefPhysicsTestMotionParameters2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicsTestMotionParameters2D](reference.(PhysicsTestMotionParameters2D)))
 }
 
-func newRefPhysicsTestMotionParameters2DGDExtensionIternalConstructor(reference PhysicsTestMotionParameters2D) RefPhysicsTestMotionParameters2D {
-	return newTypedRefGDExtensionIternalConstructor[PhysicsTestMotionParameters2D](reference)
+func NewRefPhysicsTestMotionParameters2DGDExtensionIternalConstructor(reference PhysicsTestMotionParameters2D) RefPhysicsTestMotionParameters2D {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicsTestMotionParameters2D](reference)
 }
 
 var _ RefPhysicsTestMotionParameters3D = &RefPhysicsTestMotionParameters3DImpl{}
@@ -13396,19 +13396,19 @@ func (r *RefPhysicsTestMotionParameters3DImpl) Unref() {
 }
 
 func (r *RefPhysicsTestMotionParameters3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicsTestMotionParameters3D(reference PhysicsTestMotionParameters3D) RefPhysicsTestMotionParameters3D {
 	return (RefPhysicsTestMotionParameters3D)(NewTypedRef[PhysicsTestMotionParameters3D](reference))
 }
 
-func newRefPhysicsTestMotionParameters3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicsTestMotionParameters3D](reference.(PhysicsTestMotionParameters3D)))
+func NewRefPhysicsTestMotionParameters3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicsTestMotionParameters3D](reference.(PhysicsTestMotionParameters3D)))
 }
 
-func newRefPhysicsTestMotionParameters3DGDExtensionIternalConstructor(reference PhysicsTestMotionParameters3D) RefPhysicsTestMotionParameters3D {
-	return newTypedRefGDExtensionIternalConstructor[PhysicsTestMotionParameters3D](reference)
+func NewRefPhysicsTestMotionParameters3DGDExtensionIternalConstructor(reference PhysicsTestMotionParameters3D) RefPhysicsTestMotionParameters3D {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicsTestMotionParameters3D](reference)
 }
 
 var _ RefPhysicsTestMotionResult2D = &RefPhysicsTestMotionResult2DImpl{}
@@ -13443,19 +13443,19 @@ func (r *RefPhysicsTestMotionResult2DImpl) Unref() {
 }
 
 func (r *RefPhysicsTestMotionResult2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicsTestMotionResult2D(reference PhysicsTestMotionResult2D) RefPhysicsTestMotionResult2D {
 	return (RefPhysicsTestMotionResult2D)(NewTypedRef[PhysicsTestMotionResult2D](reference))
 }
 
-func newRefPhysicsTestMotionResult2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicsTestMotionResult2D](reference.(PhysicsTestMotionResult2D)))
+func NewRefPhysicsTestMotionResult2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicsTestMotionResult2D](reference.(PhysicsTestMotionResult2D)))
 }
 
-func newRefPhysicsTestMotionResult2DGDExtensionIternalConstructor(reference PhysicsTestMotionResult2D) RefPhysicsTestMotionResult2D {
-	return newTypedRefGDExtensionIternalConstructor[PhysicsTestMotionResult2D](reference)
+func NewRefPhysicsTestMotionResult2DGDExtensionIternalConstructor(reference PhysicsTestMotionResult2D) RefPhysicsTestMotionResult2D {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicsTestMotionResult2D](reference)
 }
 
 var _ RefPhysicsTestMotionResult3D = &RefPhysicsTestMotionResult3DImpl{}
@@ -13490,19 +13490,19 @@ func (r *RefPhysicsTestMotionResult3DImpl) Unref() {
 }
 
 func (r *RefPhysicsTestMotionResult3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPhysicsTestMotionResult3D(reference PhysicsTestMotionResult3D) RefPhysicsTestMotionResult3D {
 	return (RefPhysicsTestMotionResult3D)(NewTypedRef[PhysicsTestMotionResult3D](reference))
 }
 
-func newRefPhysicsTestMotionResult3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PhysicsTestMotionResult3D](reference.(PhysicsTestMotionResult3D)))
+func NewRefPhysicsTestMotionResult3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PhysicsTestMotionResult3D](reference.(PhysicsTestMotionResult3D)))
 }
 
-func newRefPhysicsTestMotionResult3DGDExtensionIternalConstructor(reference PhysicsTestMotionResult3D) RefPhysicsTestMotionResult3D {
-	return newTypedRefGDExtensionIternalConstructor[PhysicsTestMotionResult3D](reference)
+func NewRefPhysicsTestMotionResult3DGDExtensionIternalConstructor(reference PhysicsTestMotionResult3D) RefPhysicsTestMotionResult3D {
+	return NewTypedRefGDExtensionIternalConstructor[PhysicsTestMotionResult3D](reference)
 }
 
 var _ RefPlaceholderCubemap = &RefPlaceholderCubemapImpl{}
@@ -13537,19 +13537,19 @@ func (r *RefPlaceholderCubemapImpl) Unref() {
 }
 
 func (r *RefPlaceholderCubemapImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPlaceholderCubemap(reference PlaceholderCubemap) RefPlaceholderCubemap {
 	return (RefPlaceholderCubemap)(NewTypedRef[PlaceholderCubemap](reference))
 }
 
-func newRefPlaceholderCubemapAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PlaceholderCubemap](reference.(PlaceholderCubemap)))
+func NewRefPlaceholderCubemapAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PlaceholderCubemap](reference.(PlaceholderCubemap)))
 }
 
-func newRefPlaceholderCubemapGDExtensionIternalConstructor(reference PlaceholderCubemap) RefPlaceholderCubemap {
-	return newTypedRefGDExtensionIternalConstructor[PlaceholderCubemap](reference)
+func NewRefPlaceholderCubemapGDExtensionIternalConstructor(reference PlaceholderCubemap) RefPlaceholderCubemap {
+	return NewTypedRefGDExtensionIternalConstructor[PlaceholderCubemap](reference)
 }
 
 var _ RefPlaceholderCubemapArray = &RefPlaceholderCubemapArrayImpl{}
@@ -13584,19 +13584,19 @@ func (r *RefPlaceholderCubemapArrayImpl) Unref() {
 }
 
 func (r *RefPlaceholderCubemapArrayImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPlaceholderCubemapArray(reference PlaceholderCubemapArray) RefPlaceholderCubemapArray {
 	return (RefPlaceholderCubemapArray)(NewTypedRef[PlaceholderCubemapArray](reference))
 }
 
-func newRefPlaceholderCubemapArrayAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PlaceholderCubemapArray](reference.(PlaceholderCubemapArray)))
+func NewRefPlaceholderCubemapArrayAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PlaceholderCubemapArray](reference.(PlaceholderCubemapArray)))
 }
 
-func newRefPlaceholderCubemapArrayGDExtensionIternalConstructor(reference PlaceholderCubemapArray) RefPlaceholderCubemapArray {
-	return newTypedRefGDExtensionIternalConstructor[PlaceholderCubemapArray](reference)
+func NewRefPlaceholderCubemapArrayGDExtensionIternalConstructor(reference PlaceholderCubemapArray) RefPlaceholderCubemapArray {
+	return NewTypedRefGDExtensionIternalConstructor[PlaceholderCubemapArray](reference)
 }
 
 var _ RefPlaceholderMaterial = &RefPlaceholderMaterialImpl{}
@@ -13631,19 +13631,19 @@ func (r *RefPlaceholderMaterialImpl) Unref() {
 }
 
 func (r *RefPlaceholderMaterialImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPlaceholderMaterial(reference PlaceholderMaterial) RefPlaceholderMaterial {
 	return (RefPlaceholderMaterial)(NewTypedRef[PlaceholderMaterial](reference))
 }
 
-func newRefPlaceholderMaterialAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PlaceholderMaterial](reference.(PlaceholderMaterial)))
+func NewRefPlaceholderMaterialAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PlaceholderMaterial](reference.(PlaceholderMaterial)))
 }
 
-func newRefPlaceholderMaterialGDExtensionIternalConstructor(reference PlaceholderMaterial) RefPlaceholderMaterial {
-	return newTypedRefGDExtensionIternalConstructor[PlaceholderMaterial](reference)
+func NewRefPlaceholderMaterialGDExtensionIternalConstructor(reference PlaceholderMaterial) RefPlaceholderMaterial {
+	return NewTypedRefGDExtensionIternalConstructor[PlaceholderMaterial](reference)
 }
 
 var _ RefPlaceholderMesh = &RefPlaceholderMeshImpl{}
@@ -13678,19 +13678,19 @@ func (r *RefPlaceholderMeshImpl) Unref() {
 }
 
 func (r *RefPlaceholderMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPlaceholderMesh(reference PlaceholderMesh) RefPlaceholderMesh {
 	return (RefPlaceholderMesh)(NewTypedRef[PlaceholderMesh](reference))
 }
 
-func newRefPlaceholderMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PlaceholderMesh](reference.(PlaceholderMesh)))
+func NewRefPlaceholderMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PlaceholderMesh](reference.(PlaceholderMesh)))
 }
 
-func newRefPlaceholderMeshGDExtensionIternalConstructor(reference PlaceholderMesh) RefPlaceholderMesh {
-	return newTypedRefGDExtensionIternalConstructor[PlaceholderMesh](reference)
+func NewRefPlaceholderMeshGDExtensionIternalConstructor(reference PlaceholderMesh) RefPlaceholderMesh {
+	return NewTypedRefGDExtensionIternalConstructor[PlaceholderMesh](reference)
 }
 
 var _ RefPlaceholderTexture2D = &RefPlaceholderTexture2DImpl{}
@@ -13725,19 +13725,19 @@ func (r *RefPlaceholderTexture2DImpl) Unref() {
 }
 
 func (r *RefPlaceholderTexture2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPlaceholderTexture2D(reference PlaceholderTexture2D) RefPlaceholderTexture2D {
 	return (RefPlaceholderTexture2D)(NewTypedRef[PlaceholderTexture2D](reference))
 }
 
-func newRefPlaceholderTexture2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PlaceholderTexture2D](reference.(PlaceholderTexture2D)))
+func NewRefPlaceholderTexture2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PlaceholderTexture2D](reference.(PlaceholderTexture2D)))
 }
 
-func newRefPlaceholderTexture2DGDExtensionIternalConstructor(reference PlaceholderTexture2D) RefPlaceholderTexture2D {
-	return newTypedRefGDExtensionIternalConstructor[PlaceholderTexture2D](reference)
+func NewRefPlaceholderTexture2DGDExtensionIternalConstructor(reference PlaceholderTexture2D) RefPlaceholderTexture2D {
+	return NewTypedRefGDExtensionIternalConstructor[PlaceholderTexture2D](reference)
 }
 
 var _ RefPlaceholderTexture2DArray = &RefPlaceholderTexture2DArrayImpl{}
@@ -13772,19 +13772,19 @@ func (r *RefPlaceholderTexture2DArrayImpl) Unref() {
 }
 
 func (r *RefPlaceholderTexture2DArrayImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPlaceholderTexture2DArray(reference PlaceholderTexture2DArray) RefPlaceholderTexture2DArray {
 	return (RefPlaceholderTexture2DArray)(NewTypedRef[PlaceholderTexture2DArray](reference))
 }
 
-func newRefPlaceholderTexture2DArrayAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PlaceholderTexture2DArray](reference.(PlaceholderTexture2DArray)))
+func NewRefPlaceholderTexture2DArrayAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PlaceholderTexture2DArray](reference.(PlaceholderTexture2DArray)))
 }
 
-func newRefPlaceholderTexture2DArrayGDExtensionIternalConstructor(reference PlaceholderTexture2DArray) RefPlaceholderTexture2DArray {
-	return newTypedRefGDExtensionIternalConstructor[PlaceholderTexture2DArray](reference)
+func NewRefPlaceholderTexture2DArrayGDExtensionIternalConstructor(reference PlaceholderTexture2DArray) RefPlaceholderTexture2DArray {
+	return NewTypedRefGDExtensionIternalConstructor[PlaceholderTexture2DArray](reference)
 }
 
 var _ RefPlaceholderTexture3D = &RefPlaceholderTexture3DImpl{}
@@ -13819,19 +13819,19 @@ func (r *RefPlaceholderTexture3DImpl) Unref() {
 }
 
 func (r *RefPlaceholderTexture3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPlaceholderTexture3D(reference PlaceholderTexture3D) RefPlaceholderTexture3D {
 	return (RefPlaceholderTexture3D)(NewTypedRef[PlaceholderTexture3D](reference))
 }
 
-func newRefPlaceholderTexture3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PlaceholderTexture3D](reference.(PlaceholderTexture3D)))
+func NewRefPlaceholderTexture3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PlaceholderTexture3D](reference.(PlaceholderTexture3D)))
 }
 
-func newRefPlaceholderTexture3DGDExtensionIternalConstructor(reference PlaceholderTexture3D) RefPlaceholderTexture3D {
-	return newTypedRefGDExtensionIternalConstructor[PlaceholderTexture3D](reference)
+func NewRefPlaceholderTexture3DGDExtensionIternalConstructor(reference PlaceholderTexture3D) RefPlaceholderTexture3D {
+	return NewTypedRefGDExtensionIternalConstructor[PlaceholderTexture3D](reference)
 }
 
 var _ RefPlaceholderTextureLayered = &RefPlaceholderTextureLayeredImpl{}
@@ -13866,19 +13866,19 @@ func (r *RefPlaceholderTextureLayeredImpl) Unref() {
 }
 
 func (r *RefPlaceholderTextureLayeredImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPlaceholderTextureLayered(reference PlaceholderTextureLayered) RefPlaceholderTextureLayered {
 	return (RefPlaceholderTextureLayered)(NewTypedRef[PlaceholderTextureLayered](reference))
 }
 
-func newRefPlaceholderTextureLayeredAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PlaceholderTextureLayered](reference.(PlaceholderTextureLayered)))
+func NewRefPlaceholderTextureLayeredAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PlaceholderTextureLayered](reference.(PlaceholderTextureLayered)))
 }
 
-func newRefPlaceholderTextureLayeredGDExtensionIternalConstructor(reference PlaceholderTextureLayered) RefPlaceholderTextureLayered {
-	return newTypedRefGDExtensionIternalConstructor[PlaceholderTextureLayered](reference)
+func NewRefPlaceholderTextureLayeredGDExtensionIternalConstructor(reference PlaceholderTextureLayered) RefPlaceholderTextureLayered {
+	return NewTypedRefGDExtensionIternalConstructor[PlaceholderTextureLayered](reference)
 }
 
 var _ RefPlaneMesh = &RefPlaneMeshImpl{}
@@ -13913,19 +13913,19 @@ func (r *RefPlaneMeshImpl) Unref() {
 }
 
 func (r *RefPlaneMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPlaneMesh(reference PlaneMesh) RefPlaneMesh {
 	return (RefPlaneMesh)(NewTypedRef[PlaneMesh](reference))
 }
 
-func newRefPlaneMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PlaneMesh](reference.(PlaneMesh)))
+func NewRefPlaneMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PlaneMesh](reference.(PlaneMesh)))
 }
 
-func newRefPlaneMeshGDExtensionIternalConstructor(reference PlaneMesh) RefPlaneMesh {
-	return newTypedRefGDExtensionIternalConstructor[PlaneMesh](reference)
+func NewRefPlaneMeshGDExtensionIternalConstructor(reference PlaneMesh) RefPlaneMesh {
+	return NewTypedRefGDExtensionIternalConstructor[PlaneMesh](reference)
 }
 
 var _ RefPointMesh = &RefPointMeshImpl{}
@@ -13960,19 +13960,19 @@ func (r *RefPointMeshImpl) Unref() {
 }
 
 func (r *RefPointMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPointMesh(reference PointMesh) RefPointMesh {
 	return (RefPointMesh)(NewTypedRef[PointMesh](reference))
 }
 
-func newRefPointMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PointMesh](reference.(PointMesh)))
+func NewRefPointMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PointMesh](reference.(PointMesh)))
 }
 
-func newRefPointMeshGDExtensionIternalConstructor(reference PointMesh) RefPointMesh {
-	return newTypedRefGDExtensionIternalConstructor[PointMesh](reference)
+func NewRefPointMeshGDExtensionIternalConstructor(reference PointMesh) RefPointMesh {
+	return NewTypedRefGDExtensionIternalConstructor[PointMesh](reference)
 }
 
 var _ RefPolygonOccluder3D = &RefPolygonOccluder3DImpl{}
@@ -14007,19 +14007,19 @@ func (r *RefPolygonOccluder3DImpl) Unref() {
 }
 
 func (r *RefPolygonOccluder3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPolygonOccluder3D(reference PolygonOccluder3D) RefPolygonOccluder3D {
 	return (RefPolygonOccluder3D)(NewTypedRef[PolygonOccluder3D](reference))
 }
 
-func newRefPolygonOccluder3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PolygonOccluder3D](reference.(PolygonOccluder3D)))
+func NewRefPolygonOccluder3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PolygonOccluder3D](reference.(PolygonOccluder3D)))
 }
 
-func newRefPolygonOccluder3DGDExtensionIternalConstructor(reference PolygonOccluder3D) RefPolygonOccluder3D {
-	return newTypedRefGDExtensionIternalConstructor[PolygonOccluder3D](reference)
+func NewRefPolygonOccluder3DGDExtensionIternalConstructor(reference PolygonOccluder3D) RefPolygonOccluder3D {
+	return NewTypedRefGDExtensionIternalConstructor[PolygonOccluder3D](reference)
 }
 
 var _ RefPolygonPathFinder = &RefPolygonPathFinderImpl{}
@@ -14054,19 +14054,19 @@ func (r *RefPolygonPathFinderImpl) Unref() {
 }
 
 func (r *RefPolygonPathFinderImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPolygonPathFinder(reference PolygonPathFinder) RefPolygonPathFinder {
 	return (RefPolygonPathFinder)(NewTypedRef[PolygonPathFinder](reference))
 }
 
-func newRefPolygonPathFinderAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PolygonPathFinder](reference.(PolygonPathFinder)))
+func NewRefPolygonPathFinderAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PolygonPathFinder](reference.(PolygonPathFinder)))
 }
 
-func newRefPolygonPathFinderGDExtensionIternalConstructor(reference PolygonPathFinder) RefPolygonPathFinder {
-	return newTypedRefGDExtensionIternalConstructor[PolygonPathFinder](reference)
+func NewRefPolygonPathFinderGDExtensionIternalConstructor(reference PolygonPathFinder) RefPolygonPathFinder {
+	return NewTypedRefGDExtensionIternalConstructor[PolygonPathFinder](reference)
 }
 
 var _ RefPortableCompressedTexture2D = &RefPortableCompressedTexture2DImpl{}
@@ -14101,19 +14101,19 @@ func (r *RefPortableCompressedTexture2DImpl) Unref() {
 }
 
 func (r *RefPortableCompressedTexture2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPortableCompressedTexture2D(reference PortableCompressedTexture2D) RefPortableCompressedTexture2D {
 	return (RefPortableCompressedTexture2D)(NewTypedRef[PortableCompressedTexture2D](reference))
 }
 
-func newRefPortableCompressedTexture2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PortableCompressedTexture2D](reference.(PortableCompressedTexture2D)))
+func NewRefPortableCompressedTexture2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PortableCompressedTexture2D](reference.(PortableCompressedTexture2D)))
 }
 
-func newRefPortableCompressedTexture2DGDExtensionIternalConstructor(reference PortableCompressedTexture2D) RefPortableCompressedTexture2D {
-	return newTypedRefGDExtensionIternalConstructor[PortableCompressedTexture2D](reference)
+func NewRefPortableCompressedTexture2DGDExtensionIternalConstructor(reference PortableCompressedTexture2D) RefPortableCompressedTexture2D {
+	return NewTypedRefGDExtensionIternalConstructor[PortableCompressedTexture2D](reference)
 }
 
 var _ RefPrimitiveMesh = &RefPrimitiveMeshImpl{}
@@ -14148,19 +14148,19 @@ func (r *RefPrimitiveMeshImpl) Unref() {
 }
 
 func (r *RefPrimitiveMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPrimitiveMesh(reference PrimitiveMesh) RefPrimitiveMesh {
 	return (RefPrimitiveMesh)(NewTypedRef[PrimitiveMesh](reference))
 }
 
-func newRefPrimitiveMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PrimitiveMesh](reference.(PrimitiveMesh)))
+func NewRefPrimitiveMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PrimitiveMesh](reference.(PrimitiveMesh)))
 }
 
-func newRefPrimitiveMeshGDExtensionIternalConstructor(reference PrimitiveMesh) RefPrimitiveMesh {
-	return newTypedRefGDExtensionIternalConstructor[PrimitiveMesh](reference)
+func NewRefPrimitiveMeshGDExtensionIternalConstructor(reference PrimitiveMesh) RefPrimitiveMesh {
+	return NewTypedRefGDExtensionIternalConstructor[PrimitiveMesh](reference)
 }
 
 var _ RefPrismMesh = &RefPrismMeshImpl{}
@@ -14195,19 +14195,19 @@ func (r *RefPrismMeshImpl) Unref() {
 }
 
 func (r *RefPrismMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPrismMesh(reference PrismMesh) RefPrismMesh {
 	return (RefPrismMesh)(NewTypedRef[PrismMesh](reference))
 }
 
-func newRefPrismMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PrismMesh](reference.(PrismMesh)))
+func NewRefPrismMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PrismMesh](reference.(PrismMesh)))
 }
 
-func newRefPrismMeshGDExtensionIternalConstructor(reference PrismMesh) RefPrismMesh {
-	return newTypedRefGDExtensionIternalConstructor[PrismMesh](reference)
+func NewRefPrismMeshGDExtensionIternalConstructor(reference PrismMesh) RefPrismMesh {
+	return NewTypedRefGDExtensionIternalConstructor[PrismMesh](reference)
 }
 
 var _ RefProceduralSkyMaterial = &RefProceduralSkyMaterialImpl{}
@@ -14242,19 +14242,19 @@ func (r *RefProceduralSkyMaterialImpl) Unref() {
 }
 
 func (r *RefProceduralSkyMaterialImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefProceduralSkyMaterial(reference ProceduralSkyMaterial) RefProceduralSkyMaterial {
 	return (RefProceduralSkyMaterial)(NewTypedRef[ProceduralSkyMaterial](reference))
 }
 
-func newRefProceduralSkyMaterialAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ProceduralSkyMaterial](reference.(ProceduralSkyMaterial)))
+func NewRefProceduralSkyMaterialAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ProceduralSkyMaterial](reference.(ProceduralSkyMaterial)))
 }
 
-func newRefProceduralSkyMaterialGDExtensionIternalConstructor(reference ProceduralSkyMaterial) RefProceduralSkyMaterial {
-	return newTypedRefGDExtensionIternalConstructor[ProceduralSkyMaterial](reference)
+func NewRefProceduralSkyMaterialGDExtensionIternalConstructor(reference ProceduralSkyMaterial) RefProceduralSkyMaterial {
+	return NewTypedRefGDExtensionIternalConstructor[ProceduralSkyMaterial](reference)
 }
 
 var _ RefPropertyTweener = &RefPropertyTweenerImpl{}
@@ -14289,19 +14289,19 @@ func (r *RefPropertyTweenerImpl) Unref() {
 }
 
 func (r *RefPropertyTweenerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefPropertyTweener(reference PropertyTweener) RefPropertyTweener {
 	return (RefPropertyTweener)(NewTypedRef[PropertyTweener](reference))
 }
 
-func newRefPropertyTweenerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[PropertyTweener](reference.(PropertyTweener)))
+func NewRefPropertyTweenerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[PropertyTweener](reference.(PropertyTweener)))
 }
 
-func newRefPropertyTweenerGDExtensionIternalConstructor(reference PropertyTweener) RefPropertyTweener {
-	return newTypedRefGDExtensionIternalConstructor[PropertyTweener](reference)
+func NewRefPropertyTweenerGDExtensionIternalConstructor(reference PropertyTweener) RefPropertyTweener {
+	return NewTypedRefGDExtensionIternalConstructor[PropertyTweener](reference)
 }
 
 var _ RefQuadMesh = &RefQuadMeshImpl{}
@@ -14336,19 +14336,19 @@ func (r *RefQuadMeshImpl) Unref() {
 }
 
 func (r *RefQuadMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefQuadMesh(reference QuadMesh) RefQuadMesh {
 	return (RefQuadMesh)(NewTypedRef[QuadMesh](reference))
 }
 
-func newRefQuadMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[QuadMesh](reference.(QuadMesh)))
+func NewRefQuadMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[QuadMesh](reference.(QuadMesh)))
 }
 
-func newRefQuadMeshGDExtensionIternalConstructor(reference QuadMesh) RefQuadMesh {
-	return newTypedRefGDExtensionIternalConstructor[QuadMesh](reference)
+func NewRefQuadMeshGDExtensionIternalConstructor(reference QuadMesh) RefQuadMesh {
+	return NewTypedRefGDExtensionIternalConstructor[QuadMesh](reference)
 }
 
 var _ RefQuadOccluder3D = &RefQuadOccluder3DImpl{}
@@ -14383,19 +14383,19 @@ func (r *RefQuadOccluder3DImpl) Unref() {
 }
 
 func (r *RefQuadOccluder3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefQuadOccluder3D(reference QuadOccluder3D) RefQuadOccluder3D {
 	return (RefQuadOccluder3D)(NewTypedRef[QuadOccluder3D](reference))
 }
 
-func newRefQuadOccluder3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[QuadOccluder3D](reference.(QuadOccluder3D)))
+func NewRefQuadOccluder3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[QuadOccluder3D](reference.(QuadOccluder3D)))
 }
 
-func newRefQuadOccluder3DGDExtensionIternalConstructor(reference QuadOccluder3D) RefQuadOccluder3D {
-	return newTypedRefGDExtensionIternalConstructor[QuadOccluder3D](reference)
+func NewRefQuadOccluder3DGDExtensionIternalConstructor(reference QuadOccluder3D) RefQuadOccluder3D {
+	return NewTypedRefGDExtensionIternalConstructor[QuadOccluder3D](reference)
 }
 
 var _ RefRDAttachmentFormat = &RefRDAttachmentFormatImpl{}
@@ -14430,19 +14430,19 @@ func (r *RefRDAttachmentFormatImpl) Unref() {
 }
 
 func (r *RefRDAttachmentFormatImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDAttachmentFormat(reference RDAttachmentFormat) RefRDAttachmentFormat {
 	return (RefRDAttachmentFormat)(NewTypedRef[RDAttachmentFormat](reference))
 }
 
-func newRefRDAttachmentFormatAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDAttachmentFormat](reference.(RDAttachmentFormat)))
+func NewRefRDAttachmentFormatAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDAttachmentFormat](reference.(RDAttachmentFormat)))
 }
 
-func newRefRDAttachmentFormatGDExtensionIternalConstructor(reference RDAttachmentFormat) RefRDAttachmentFormat {
-	return newTypedRefGDExtensionIternalConstructor[RDAttachmentFormat](reference)
+func NewRefRDAttachmentFormatGDExtensionIternalConstructor(reference RDAttachmentFormat) RefRDAttachmentFormat {
+	return NewTypedRefGDExtensionIternalConstructor[RDAttachmentFormat](reference)
 }
 
 var _ RefRDFramebufferPass = &RefRDFramebufferPassImpl{}
@@ -14477,19 +14477,19 @@ func (r *RefRDFramebufferPassImpl) Unref() {
 }
 
 func (r *RefRDFramebufferPassImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDFramebufferPass(reference RDFramebufferPass) RefRDFramebufferPass {
 	return (RefRDFramebufferPass)(NewTypedRef[RDFramebufferPass](reference))
 }
 
-func newRefRDFramebufferPassAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDFramebufferPass](reference.(RDFramebufferPass)))
+func NewRefRDFramebufferPassAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDFramebufferPass](reference.(RDFramebufferPass)))
 }
 
-func newRefRDFramebufferPassGDExtensionIternalConstructor(reference RDFramebufferPass) RefRDFramebufferPass {
-	return newTypedRefGDExtensionIternalConstructor[RDFramebufferPass](reference)
+func NewRefRDFramebufferPassGDExtensionIternalConstructor(reference RDFramebufferPass) RefRDFramebufferPass {
+	return NewTypedRefGDExtensionIternalConstructor[RDFramebufferPass](reference)
 }
 
 var _ RefRDPipelineColorBlendState = &RefRDPipelineColorBlendStateImpl{}
@@ -14524,19 +14524,19 @@ func (r *RefRDPipelineColorBlendStateImpl) Unref() {
 }
 
 func (r *RefRDPipelineColorBlendStateImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDPipelineColorBlendState(reference RDPipelineColorBlendState) RefRDPipelineColorBlendState {
 	return (RefRDPipelineColorBlendState)(NewTypedRef[RDPipelineColorBlendState](reference))
 }
 
-func newRefRDPipelineColorBlendStateAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDPipelineColorBlendState](reference.(RDPipelineColorBlendState)))
+func NewRefRDPipelineColorBlendStateAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDPipelineColorBlendState](reference.(RDPipelineColorBlendState)))
 }
 
-func newRefRDPipelineColorBlendStateGDExtensionIternalConstructor(reference RDPipelineColorBlendState) RefRDPipelineColorBlendState {
-	return newTypedRefGDExtensionIternalConstructor[RDPipelineColorBlendState](reference)
+func NewRefRDPipelineColorBlendStateGDExtensionIternalConstructor(reference RDPipelineColorBlendState) RefRDPipelineColorBlendState {
+	return NewTypedRefGDExtensionIternalConstructor[RDPipelineColorBlendState](reference)
 }
 
 var _ RefRDPipelineColorBlendStateAttachment = &RefRDPipelineColorBlendStateAttachmentImpl{}
@@ -14571,19 +14571,19 @@ func (r *RefRDPipelineColorBlendStateAttachmentImpl) Unref() {
 }
 
 func (r *RefRDPipelineColorBlendStateAttachmentImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDPipelineColorBlendStateAttachment(reference RDPipelineColorBlendStateAttachment) RefRDPipelineColorBlendStateAttachment {
 	return (RefRDPipelineColorBlendStateAttachment)(NewTypedRef[RDPipelineColorBlendStateAttachment](reference))
 }
 
-func newRefRDPipelineColorBlendStateAttachmentAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDPipelineColorBlendStateAttachment](reference.(RDPipelineColorBlendStateAttachment)))
+func NewRefRDPipelineColorBlendStateAttachmentAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDPipelineColorBlendStateAttachment](reference.(RDPipelineColorBlendStateAttachment)))
 }
 
-func newRefRDPipelineColorBlendStateAttachmentGDExtensionIternalConstructor(reference RDPipelineColorBlendStateAttachment) RefRDPipelineColorBlendStateAttachment {
-	return newTypedRefGDExtensionIternalConstructor[RDPipelineColorBlendStateAttachment](reference)
+func NewRefRDPipelineColorBlendStateAttachmentGDExtensionIternalConstructor(reference RDPipelineColorBlendStateAttachment) RefRDPipelineColorBlendStateAttachment {
+	return NewTypedRefGDExtensionIternalConstructor[RDPipelineColorBlendStateAttachment](reference)
 }
 
 var _ RefRDPipelineDepthStencilState = &RefRDPipelineDepthStencilStateImpl{}
@@ -14618,19 +14618,19 @@ func (r *RefRDPipelineDepthStencilStateImpl) Unref() {
 }
 
 func (r *RefRDPipelineDepthStencilStateImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDPipelineDepthStencilState(reference RDPipelineDepthStencilState) RefRDPipelineDepthStencilState {
 	return (RefRDPipelineDepthStencilState)(NewTypedRef[RDPipelineDepthStencilState](reference))
 }
 
-func newRefRDPipelineDepthStencilStateAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDPipelineDepthStencilState](reference.(RDPipelineDepthStencilState)))
+func NewRefRDPipelineDepthStencilStateAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDPipelineDepthStencilState](reference.(RDPipelineDepthStencilState)))
 }
 
-func newRefRDPipelineDepthStencilStateGDExtensionIternalConstructor(reference RDPipelineDepthStencilState) RefRDPipelineDepthStencilState {
-	return newTypedRefGDExtensionIternalConstructor[RDPipelineDepthStencilState](reference)
+func NewRefRDPipelineDepthStencilStateGDExtensionIternalConstructor(reference RDPipelineDepthStencilState) RefRDPipelineDepthStencilState {
+	return NewTypedRefGDExtensionIternalConstructor[RDPipelineDepthStencilState](reference)
 }
 
 var _ RefRDPipelineMultisampleState = &RefRDPipelineMultisampleStateImpl{}
@@ -14665,19 +14665,19 @@ func (r *RefRDPipelineMultisampleStateImpl) Unref() {
 }
 
 func (r *RefRDPipelineMultisampleStateImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDPipelineMultisampleState(reference RDPipelineMultisampleState) RefRDPipelineMultisampleState {
 	return (RefRDPipelineMultisampleState)(NewTypedRef[RDPipelineMultisampleState](reference))
 }
 
-func newRefRDPipelineMultisampleStateAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDPipelineMultisampleState](reference.(RDPipelineMultisampleState)))
+func NewRefRDPipelineMultisampleStateAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDPipelineMultisampleState](reference.(RDPipelineMultisampleState)))
 }
 
-func newRefRDPipelineMultisampleStateGDExtensionIternalConstructor(reference RDPipelineMultisampleState) RefRDPipelineMultisampleState {
-	return newTypedRefGDExtensionIternalConstructor[RDPipelineMultisampleState](reference)
+func NewRefRDPipelineMultisampleStateGDExtensionIternalConstructor(reference RDPipelineMultisampleState) RefRDPipelineMultisampleState {
+	return NewTypedRefGDExtensionIternalConstructor[RDPipelineMultisampleState](reference)
 }
 
 var _ RefRDPipelineRasterizationState = &RefRDPipelineRasterizationStateImpl{}
@@ -14712,19 +14712,19 @@ func (r *RefRDPipelineRasterizationStateImpl) Unref() {
 }
 
 func (r *RefRDPipelineRasterizationStateImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDPipelineRasterizationState(reference RDPipelineRasterizationState) RefRDPipelineRasterizationState {
 	return (RefRDPipelineRasterizationState)(NewTypedRef[RDPipelineRasterizationState](reference))
 }
 
-func newRefRDPipelineRasterizationStateAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDPipelineRasterizationState](reference.(RDPipelineRasterizationState)))
+func NewRefRDPipelineRasterizationStateAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDPipelineRasterizationState](reference.(RDPipelineRasterizationState)))
 }
 
-func newRefRDPipelineRasterizationStateGDExtensionIternalConstructor(reference RDPipelineRasterizationState) RefRDPipelineRasterizationState {
-	return newTypedRefGDExtensionIternalConstructor[RDPipelineRasterizationState](reference)
+func NewRefRDPipelineRasterizationStateGDExtensionIternalConstructor(reference RDPipelineRasterizationState) RefRDPipelineRasterizationState {
+	return NewTypedRefGDExtensionIternalConstructor[RDPipelineRasterizationState](reference)
 }
 
 var _ RefRDPipelineSpecializationConstant = &RefRDPipelineSpecializationConstantImpl{}
@@ -14759,19 +14759,19 @@ func (r *RefRDPipelineSpecializationConstantImpl) Unref() {
 }
 
 func (r *RefRDPipelineSpecializationConstantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDPipelineSpecializationConstant(reference RDPipelineSpecializationConstant) RefRDPipelineSpecializationConstant {
 	return (RefRDPipelineSpecializationConstant)(NewTypedRef[RDPipelineSpecializationConstant](reference))
 }
 
-func newRefRDPipelineSpecializationConstantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDPipelineSpecializationConstant](reference.(RDPipelineSpecializationConstant)))
+func NewRefRDPipelineSpecializationConstantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDPipelineSpecializationConstant](reference.(RDPipelineSpecializationConstant)))
 }
 
-func newRefRDPipelineSpecializationConstantGDExtensionIternalConstructor(reference RDPipelineSpecializationConstant) RefRDPipelineSpecializationConstant {
-	return newTypedRefGDExtensionIternalConstructor[RDPipelineSpecializationConstant](reference)
+func NewRefRDPipelineSpecializationConstantGDExtensionIternalConstructor(reference RDPipelineSpecializationConstant) RefRDPipelineSpecializationConstant {
+	return NewTypedRefGDExtensionIternalConstructor[RDPipelineSpecializationConstant](reference)
 }
 
 var _ RefRDSamplerState = &RefRDSamplerStateImpl{}
@@ -14806,19 +14806,19 @@ func (r *RefRDSamplerStateImpl) Unref() {
 }
 
 func (r *RefRDSamplerStateImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDSamplerState(reference RDSamplerState) RefRDSamplerState {
 	return (RefRDSamplerState)(NewTypedRef[RDSamplerState](reference))
 }
 
-func newRefRDSamplerStateAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDSamplerState](reference.(RDSamplerState)))
+func NewRefRDSamplerStateAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDSamplerState](reference.(RDSamplerState)))
 }
 
-func newRefRDSamplerStateGDExtensionIternalConstructor(reference RDSamplerState) RefRDSamplerState {
-	return newTypedRefGDExtensionIternalConstructor[RDSamplerState](reference)
+func NewRefRDSamplerStateGDExtensionIternalConstructor(reference RDSamplerState) RefRDSamplerState {
+	return NewTypedRefGDExtensionIternalConstructor[RDSamplerState](reference)
 }
 
 var _ RefRDShaderFile = &RefRDShaderFileImpl{}
@@ -14853,19 +14853,19 @@ func (r *RefRDShaderFileImpl) Unref() {
 }
 
 func (r *RefRDShaderFileImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDShaderFile(reference RDShaderFile) RefRDShaderFile {
 	return (RefRDShaderFile)(NewTypedRef[RDShaderFile](reference))
 }
 
-func newRefRDShaderFileAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDShaderFile](reference.(RDShaderFile)))
+func NewRefRDShaderFileAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDShaderFile](reference.(RDShaderFile)))
 }
 
-func newRefRDShaderFileGDExtensionIternalConstructor(reference RDShaderFile) RefRDShaderFile {
-	return newTypedRefGDExtensionIternalConstructor[RDShaderFile](reference)
+func NewRefRDShaderFileGDExtensionIternalConstructor(reference RDShaderFile) RefRDShaderFile {
+	return NewTypedRefGDExtensionIternalConstructor[RDShaderFile](reference)
 }
 
 var _ RefRDShaderSPIRV = &RefRDShaderSPIRVImpl{}
@@ -14900,19 +14900,19 @@ func (r *RefRDShaderSPIRVImpl) Unref() {
 }
 
 func (r *RefRDShaderSPIRVImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDShaderSPIRV(reference RDShaderSPIRV) RefRDShaderSPIRV {
 	return (RefRDShaderSPIRV)(NewTypedRef[RDShaderSPIRV](reference))
 }
 
-func newRefRDShaderSPIRVAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDShaderSPIRV](reference.(RDShaderSPIRV)))
+func NewRefRDShaderSPIRVAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDShaderSPIRV](reference.(RDShaderSPIRV)))
 }
 
-func newRefRDShaderSPIRVGDExtensionIternalConstructor(reference RDShaderSPIRV) RefRDShaderSPIRV {
-	return newTypedRefGDExtensionIternalConstructor[RDShaderSPIRV](reference)
+func NewRefRDShaderSPIRVGDExtensionIternalConstructor(reference RDShaderSPIRV) RefRDShaderSPIRV {
+	return NewTypedRefGDExtensionIternalConstructor[RDShaderSPIRV](reference)
 }
 
 var _ RefRDShaderSource = &RefRDShaderSourceImpl{}
@@ -14947,19 +14947,19 @@ func (r *RefRDShaderSourceImpl) Unref() {
 }
 
 func (r *RefRDShaderSourceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDShaderSource(reference RDShaderSource) RefRDShaderSource {
 	return (RefRDShaderSource)(NewTypedRef[RDShaderSource](reference))
 }
 
-func newRefRDShaderSourceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDShaderSource](reference.(RDShaderSource)))
+func NewRefRDShaderSourceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDShaderSource](reference.(RDShaderSource)))
 }
 
-func newRefRDShaderSourceGDExtensionIternalConstructor(reference RDShaderSource) RefRDShaderSource {
-	return newTypedRefGDExtensionIternalConstructor[RDShaderSource](reference)
+func NewRefRDShaderSourceGDExtensionIternalConstructor(reference RDShaderSource) RefRDShaderSource {
+	return NewTypedRefGDExtensionIternalConstructor[RDShaderSource](reference)
 }
 
 var _ RefRDTextureFormat = &RefRDTextureFormatImpl{}
@@ -14994,19 +14994,19 @@ func (r *RefRDTextureFormatImpl) Unref() {
 }
 
 func (r *RefRDTextureFormatImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDTextureFormat(reference RDTextureFormat) RefRDTextureFormat {
 	return (RefRDTextureFormat)(NewTypedRef[RDTextureFormat](reference))
 }
 
-func newRefRDTextureFormatAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDTextureFormat](reference.(RDTextureFormat)))
+func NewRefRDTextureFormatAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDTextureFormat](reference.(RDTextureFormat)))
 }
 
-func newRefRDTextureFormatGDExtensionIternalConstructor(reference RDTextureFormat) RefRDTextureFormat {
-	return newTypedRefGDExtensionIternalConstructor[RDTextureFormat](reference)
+func NewRefRDTextureFormatGDExtensionIternalConstructor(reference RDTextureFormat) RefRDTextureFormat {
+	return NewTypedRefGDExtensionIternalConstructor[RDTextureFormat](reference)
 }
 
 var _ RefRDTextureView = &RefRDTextureViewImpl{}
@@ -15041,19 +15041,19 @@ func (r *RefRDTextureViewImpl) Unref() {
 }
 
 func (r *RefRDTextureViewImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDTextureView(reference RDTextureView) RefRDTextureView {
 	return (RefRDTextureView)(NewTypedRef[RDTextureView](reference))
 }
 
-func newRefRDTextureViewAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDTextureView](reference.(RDTextureView)))
+func NewRefRDTextureViewAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDTextureView](reference.(RDTextureView)))
 }
 
-func newRefRDTextureViewGDExtensionIternalConstructor(reference RDTextureView) RefRDTextureView {
-	return newTypedRefGDExtensionIternalConstructor[RDTextureView](reference)
+func NewRefRDTextureViewGDExtensionIternalConstructor(reference RDTextureView) RefRDTextureView {
+	return NewTypedRefGDExtensionIternalConstructor[RDTextureView](reference)
 }
 
 var _ RefRDUniform = &RefRDUniformImpl{}
@@ -15088,19 +15088,19 @@ func (r *RefRDUniformImpl) Unref() {
 }
 
 func (r *RefRDUniformImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDUniform(reference RDUniform) RefRDUniform {
 	return (RefRDUniform)(NewTypedRef[RDUniform](reference))
 }
 
-func newRefRDUniformAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDUniform](reference.(RDUniform)))
+func NewRefRDUniformAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDUniform](reference.(RDUniform)))
 }
 
-func newRefRDUniformGDExtensionIternalConstructor(reference RDUniform) RefRDUniform {
-	return newTypedRefGDExtensionIternalConstructor[RDUniform](reference)
+func NewRefRDUniformGDExtensionIternalConstructor(reference RDUniform) RefRDUniform {
+	return NewTypedRefGDExtensionIternalConstructor[RDUniform](reference)
 }
 
 var _ RefRDVertexAttribute = &RefRDVertexAttributeImpl{}
@@ -15135,19 +15135,19 @@ func (r *RefRDVertexAttributeImpl) Unref() {
 }
 
 func (r *RefRDVertexAttributeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRDVertexAttribute(reference RDVertexAttribute) RefRDVertexAttribute {
 	return (RefRDVertexAttribute)(NewTypedRef[RDVertexAttribute](reference))
 }
 
-func newRefRDVertexAttributeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RDVertexAttribute](reference.(RDVertexAttribute)))
+func NewRefRDVertexAttributeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDVertexAttribute](reference.(RDVertexAttribute)))
 }
 
-func newRefRDVertexAttributeGDExtensionIternalConstructor(reference RDVertexAttribute) RefRDVertexAttribute {
-	return newTypedRefGDExtensionIternalConstructor[RDVertexAttribute](reference)
+func NewRefRDVertexAttributeGDExtensionIternalConstructor(reference RDVertexAttribute) RefRDVertexAttribute {
+	return NewTypedRefGDExtensionIternalConstructor[RDVertexAttribute](reference)
 }
 
 var _ RefRandomNumberGenerator = &RefRandomNumberGeneratorImpl{}
@@ -15182,19 +15182,19 @@ func (r *RefRandomNumberGeneratorImpl) Unref() {
 }
 
 func (r *RefRandomNumberGeneratorImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRandomNumberGenerator(reference RandomNumberGenerator) RefRandomNumberGenerator {
 	return (RefRandomNumberGenerator)(NewTypedRef[RandomNumberGenerator](reference))
 }
 
-func newRefRandomNumberGeneratorAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RandomNumberGenerator](reference.(RandomNumberGenerator)))
+func NewRefRandomNumberGeneratorAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RandomNumberGenerator](reference.(RandomNumberGenerator)))
 }
 
-func newRefRandomNumberGeneratorGDExtensionIternalConstructor(reference RandomNumberGenerator) RefRandomNumberGenerator {
-	return newTypedRefGDExtensionIternalConstructor[RandomNumberGenerator](reference)
+func NewRefRandomNumberGeneratorGDExtensionIternalConstructor(reference RandomNumberGenerator) RefRandomNumberGenerator {
+	return NewTypedRefGDExtensionIternalConstructor[RandomNumberGenerator](reference)
 }
 
 var _ RefRectangleShape2D = &RefRectangleShape2DImpl{}
@@ -15229,19 +15229,19 @@ func (r *RefRectangleShape2DImpl) Unref() {
 }
 
 func (r *RefRectangleShape2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRectangleShape2D(reference RectangleShape2D) RefRectangleShape2D {
 	return (RefRectangleShape2D)(NewTypedRef[RectangleShape2D](reference))
 }
 
-func newRefRectangleShape2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RectangleShape2D](reference.(RectangleShape2D)))
+func NewRefRectangleShape2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RectangleShape2D](reference.(RectangleShape2D)))
 }
 
-func newRefRectangleShape2DGDExtensionIternalConstructor(reference RectangleShape2D) RefRectangleShape2D {
-	return newTypedRefGDExtensionIternalConstructor[RectangleShape2D](reference)
+func NewRefRectangleShape2DGDExtensionIternalConstructor(reference RectangleShape2D) RefRectangleShape2D {
+	return NewTypedRefGDExtensionIternalConstructor[RectangleShape2D](reference)
 }
 
 var _ RefRefCounted = &RefRefCountedImpl{}
@@ -15276,19 +15276,19 @@ func (r *RefRefCountedImpl) Unref() {
 }
 
 func (r *RefRefCountedImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRefCounted(reference RefCounted) RefRefCounted {
 	return (RefRefCounted)(NewTypedRef[RefCounted](reference))
 }
 
-func newRefRefCountedAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RefCounted](reference.(RefCounted)))
+func NewRefRefCountedAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RefCounted](reference.(RefCounted)))
 }
 
-func newRefRefCountedGDExtensionIternalConstructor(reference RefCounted) RefRefCounted {
-	return newTypedRefGDExtensionIternalConstructor[RefCounted](reference)
+func NewRefRefCountedGDExtensionIternalConstructor(reference RefCounted) RefRefCounted {
+	return NewTypedRefGDExtensionIternalConstructor[RefCounted](reference)
 }
 
 var _ RefRegEx = &RefRegExImpl{}
@@ -15323,19 +15323,19 @@ func (r *RefRegExImpl) Unref() {
 }
 
 func (r *RefRegExImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRegEx(reference RegEx) RefRegEx {
 	return (RefRegEx)(NewTypedRef[RegEx](reference))
 }
 
-func newRefRegExAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RegEx](reference.(RegEx)))
+func NewRefRegExAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RegEx](reference.(RegEx)))
 }
 
-func newRefRegExGDExtensionIternalConstructor(reference RegEx) RefRegEx {
-	return newTypedRefGDExtensionIternalConstructor[RegEx](reference)
+func NewRefRegExGDExtensionIternalConstructor(reference RegEx) RefRegEx {
+	return NewTypedRefGDExtensionIternalConstructor[RegEx](reference)
 }
 
 var _ RefRegExMatch = &RefRegExMatchImpl{}
@@ -15370,19 +15370,19 @@ func (r *RefRegExMatchImpl) Unref() {
 }
 
 func (r *RefRegExMatchImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRegExMatch(reference RegExMatch) RefRegExMatch {
 	return (RefRegExMatch)(NewTypedRef[RegExMatch](reference))
 }
 
-func newRefRegExMatchAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RegExMatch](reference.(RegExMatch)))
+func NewRefRegExMatchAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RegExMatch](reference.(RegExMatch)))
 }
 
-func newRefRegExMatchGDExtensionIternalConstructor(reference RegExMatch) RefRegExMatch {
-	return newTypedRefGDExtensionIternalConstructor[RegExMatch](reference)
+func NewRefRegExMatchGDExtensionIternalConstructor(reference RegExMatch) RefRegExMatch {
+	return NewTypedRefGDExtensionIternalConstructor[RegExMatch](reference)
 }
 
 var _ RefRenderSceneBuffers = &RefRenderSceneBuffersImpl{}
@@ -15417,19 +15417,19 @@ func (r *RefRenderSceneBuffersImpl) Unref() {
 }
 
 func (r *RefRenderSceneBuffersImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRenderSceneBuffers(reference RenderSceneBuffers) RefRenderSceneBuffers {
 	return (RefRenderSceneBuffers)(NewTypedRef[RenderSceneBuffers](reference))
 }
 
-func newRefRenderSceneBuffersAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RenderSceneBuffers](reference.(RenderSceneBuffers)))
+func NewRefRenderSceneBuffersAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RenderSceneBuffers](reference.(RenderSceneBuffers)))
 }
 
-func newRefRenderSceneBuffersGDExtensionIternalConstructor(reference RenderSceneBuffers) RefRenderSceneBuffers {
-	return newTypedRefGDExtensionIternalConstructor[RenderSceneBuffers](reference)
+func NewRefRenderSceneBuffersGDExtensionIternalConstructor(reference RenderSceneBuffers) RefRenderSceneBuffers {
+	return NewTypedRefGDExtensionIternalConstructor[RenderSceneBuffers](reference)
 }
 
 var _ RefRenderSceneBuffersConfiguration = &RefRenderSceneBuffersConfigurationImpl{}
@@ -15464,19 +15464,19 @@ func (r *RefRenderSceneBuffersConfigurationImpl) Unref() {
 }
 
 func (r *RefRenderSceneBuffersConfigurationImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRenderSceneBuffersConfiguration(reference RenderSceneBuffersConfiguration) RefRenderSceneBuffersConfiguration {
 	return (RefRenderSceneBuffersConfiguration)(NewTypedRef[RenderSceneBuffersConfiguration](reference))
 }
 
-func newRefRenderSceneBuffersConfigurationAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RenderSceneBuffersConfiguration](reference.(RenderSceneBuffersConfiguration)))
+func NewRefRenderSceneBuffersConfigurationAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RenderSceneBuffersConfiguration](reference.(RenderSceneBuffersConfiguration)))
 }
 
-func newRefRenderSceneBuffersConfigurationGDExtensionIternalConstructor(reference RenderSceneBuffersConfiguration) RefRenderSceneBuffersConfiguration {
-	return newTypedRefGDExtensionIternalConstructor[RenderSceneBuffersConfiguration](reference)
+func NewRefRenderSceneBuffersConfigurationGDExtensionIternalConstructor(reference RenderSceneBuffersConfiguration) RefRenderSceneBuffersConfiguration {
+	return NewTypedRefGDExtensionIternalConstructor[RenderSceneBuffersConfiguration](reference)
 }
 
 var _ RefRenderSceneBuffersExtension = &RefRenderSceneBuffersExtensionImpl{}
@@ -15511,19 +15511,19 @@ func (r *RefRenderSceneBuffersExtensionImpl) Unref() {
 }
 
 func (r *RefRenderSceneBuffersExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRenderSceneBuffersExtension(reference RenderSceneBuffersExtension) RefRenderSceneBuffersExtension {
 	return (RefRenderSceneBuffersExtension)(NewTypedRef[RenderSceneBuffersExtension](reference))
 }
 
-func newRefRenderSceneBuffersExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RenderSceneBuffersExtension](reference.(RenderSceneBuffersExtension)))
+func NewRefRenderSceneBuffersExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RenderSceneBuffersExtension](reference.(RenderSceneBuffersExtension)))
 }
 
-func newRefRenderSceneBuffersExtensionGDExtensionIternalConstructor(reference RenderSceneBuffersExtension) RefRenderSceneBuffersExtension {
-	return newTypedRefGDExtensionIternalConstructor[RenderSceneBuffersExtension](reference)
+func NewRefRenderSceneBuffersExtensionGDExtensionIternalConstructor(reference RenderSceneBuffersExtension) RefRenderSceneBuffersExtension {
+	return NewTypedRefGDExtensionIternalConstructor[RenderSceneBuffersExtension](reference)
 }
 
 var _ RefRenderSceneBuffersRD = &RefRenderSceneBuffersRDImpl{}
@@ -15558,19 +15558,19 @@ func (r *RefRenderSceneBuffersRDImpl) Unref() {
 }
 
 func (r *RefRenderSceneBuffersRDImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRenderSceneBuffersRD(reference RenderSceneBuffersRD) RefRenderSceneBuffersRD {
 	return (RefRenderSceneBuffersRD)(NewTypedRef[RenderSceneBuffersRD](reference))
 }
 
-func newRefRenderSceneBuffersRDAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RenderSceneBuffersRD](reference.(RenderSceneBuffersRD)))
+func NewRefRenderSceneBuffersRDAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RenderSceneBuffersRD](reference.(RenderSceneBuffersRD)))
 }
 
-func newRefRenderSceneBuffersRDGDExtensionIternalConstructor(reference RenderSceneBuffersRD) RefRenderSceneBuffersRD {
-	return newTypedRefGDExtensionIternalConstructor[RenderSceneBuffersRD](reference)
+func NewRefRenderSceneBuffersRDGDExtensionIternalConstructor(reference RenderSceneBuffersRD) RefRenderSceneBuffersRD {
+	return NewTypedRefGDExtensionIternalConstructor[RenderSceneBuffersRD](reference)
 }
 
 var _ RefResource = &RefResourceImpl{}
@@ -15605,19 +15605,19 @@ func (r *RefResourceImpl) Unref() {
 }
 
 func (r *RefResourceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResource(reference Resource) RefResource {
 	return (RefResource)(NewTypedRef[Resource](reference))
 }
 
-func newRefResourceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Resource](reference.(Resource)))
+func NewRefResourceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Resource](reference.(Resource)))
 }
 
-func newRefResourceGDExtensionIternalConstructor(reference Resource) RefResource {
-	return newTypedRefGDExtensionIternalConstructor[Resource](reference)
+func NewRefResourceGDExtensionIternalConstructor(reference Resource) RefResource {
+	return NewTypedRefGDExtensionIternalConstructor[Resource](reference)
 }
 
 var _ RefResourceFormatLoader = &RefResourceFormatLoaderImpl{}
@@ -15652,19 +15652,19 @@ func (r *RefResourceFormatLoaderImpl) Unref() {
 }
 
 func (r *RefResourceFormatLoaderImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceFormatLoader(reference ResourceFormatLoader) RefResourceFormatLoader {
 	return (RefResourceFormatLoader)(NewTypedRef[ResourceFormatLoader](reference))
 }
 
-func newRefResourceFormatLoaderAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceFormatLoader](reference.(ResourceFormatLoader)))
+func NewRefResourceFormatLoaderAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceFormatLoader](reference.(ResourceFormatLoader)))
 }
 
-func newRefResourceFormatLoaderGDExtensionIternalConstructor(reference ResourceFormatLoader) RefResourceFormatLoader {
-	return newTypedRefGDExtensionIternalConstructor[ResourceFormatLoader](reference)
+func NewRefResourceFormatLoaderGDExtensionIternalConstructor(reference ResourceFormatLoader) RefResourceFormatLoader {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceFormatLoader](reference)
 }
 
 var _ RefResourceFormatSaver = &RefResourceFormatSaverImpl{}
@@ -15699,19 +15699,19 @@ func (r *RefResourceFormatSaverImpl) Unref() {
 }
 
 func (r *RefResourceFormatSaverImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceFormatSaver(reference ResourceFormatSaver) RefResourceFormatSaver {
 	return (RefResourceFormatSaver)(NewTypedRef[ResourceFormatSaver](reference))
 }
 
-func newRefResourceFormatSaverAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceFormatSaver](reference.(ResourceFormatSaver)))
+func NewRefResourceFormatSaverAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceFormatSaver](reference.(ResourceFormatSaver)))
 }
 
-func newRefResourceFormatSaverGDExtensionIternalConstructor(reference ResourceFormatSaver) RefResourceFormatSaver {
-	return newTypedRefGDExtensionIternalConstructor[ResourceFormatSaver](reference)
+func NewRefResourceFormatSaverGDExtensionIternalConstructor(reference ResourceFormatSaver) RefResourceFormatSaver {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceFormatSaver](reference)
 }
 
 var _ RefResourceImporter = &RefResourceImporterImpl{}
@@ -15746,19 +15746,19 @@ func (r *RefResourceImporterImpl) Unref() {
 }
 
 func (r *RefResourceImporterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporter(reference ResourceImporter) RefResourceImporter {
 	return (RefResourceImporter)(NewTypedRef[ResourceImporter](reference))
 }
 
-func newRefResourceImporterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporter](reference.(ResourceImporter)))
+func NewRefResourceImporterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporter](reference.(ResourceImporter)))
 }
 
-func newRefResourceImporterGDExtensionIternalConstructor(reference ResourceImporter) RefResourceImporter {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporter](reference)
+func NewRefResourceImporterGDExtensionIternalConstructor(reference ResourceImporter) RefResourceImporter {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporter](reference)
 }
 
 var _ RefResourceImporterBMFont = &RefResourceImporterBMFontImpl{}
@@ -15793,19 +15793,19 @@ func (r *RefResourceImporterBMFontImpl) Unref() {
 }
 
 func (r *RefResourceImporterBMFontImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterBMFont(reference ResourceImporterBMFont) RefResourceImporterBMFont {
 	return (RefResourceImporterBMFont)(NewTypedRef[ResourceImporterBMFont](reference))
 }
 
-func newRefResourceImporterBMFontAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterBMFont](reference.(ResourceImporterBMFont)))
+func NewRefResourceImporterBMFontAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterBMFont](reference.(ResourceImporterBMFont)))
 }
 
-func newRefResourceImporterBMFontGDExtensionIternalConstructor(reference ResourceImporterBMFont) RefResourceImporterBMFont {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterBMFont](reference)
+func NewRefResourceImporterBMFontGDExtensionIternalConstructor(reference ResourceImporterBMFont) RefResourceImporterBMFont {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterBMFont](reference)
 }
 
 var _ RefResourceImporterBitMap = &RefResourceImporterBitMapImpl{}
@@ -15840,19 +15840,19 @@ func (r *RefResourceImporterBitMapImpl) Unref() {
 }
 
 func (r *RefResourceImporterBitMapImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterBitMap(reference ResourceImporterBitMap) RefResourceImporterBitMap {
 	return (RefResourceImporterBitMap)(NewTypedRef[ResourceImporterBitMap](reference))
 }
 
-func newRefResourceImporterBitMapAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterBitMap](reference.(ResourceImporterBitMap)))
+func NewRefResourceImporterBitMapAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterBitMap](reference.(ResourceImporterBitMap)))
 }
 
-func newRefResourceImporterBitMapGDExtensionIternalConstructor(reference ResourceImporterBitMap) RefResourceImporterBitMap {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterBitMap](reference)
+func NewRefResourceImporterBitMapGDExtensionIternalConstructor(reference ResourceImporterBitMap) RefResourceImporterBitMap {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterBitMap](reference)
 }
 
 var _ RefResourceImporterCSVTranslation = &RefResourceImporterCSVTranslationImpl{}
@@ -15887,19 +15887,19 @@ func (r *RefResourceImporterCSVTranslationImpl) Unref() {
 }
 
 func (r *RefResourceImporterCSVTranslationImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterCSVTranslation(reference ResourceImporterCSVTranslation) RefResourceImporterCSVTranslation {
 	return (RefResourceImporterCSVTranslation)(NewTypedRef[ResourceImporterCSVTranslation](reference))
 }
 
-func newRefResourceImporterCSVTranslationAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterCSVTranslation](reference.(ResourceImporterCSVTranslation)))
+func NewRefResourceImporterCSVTranslationAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterCSVTranslation](reference.(ResourceImporterCSVTranslation)))
 }
 
-func newRefResourceImporterCSVTranslationGDExtensionIternalConstructor(reference ResourceImporterCSVTranslation) RefResourceImporterCSVTranslation {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterCSVTranslation](reference)
+func NewRefResourceImporterCSVTranslationGDExtensionIternalConstructor(reference ResourceImporterCSVTranslation) RefResourceImporterCSVTranslation {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterCSVTranslation](reference)
 }
 
 var _ RefResourceImporterDynamicFont = &RefResourceImporterDynamicFontImpl{}
@@ -15934,19 +15934,19 @@ func (r *RefResourceImporterDynamicFontImpl) Unref() {
 }
 
 func (r *RefResourceImporterDynamicFontImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterDynamicFont(reference ResourceImporterDynamicFont) RefResourceImporterDynamicFont {
 	return (RefResourceImporterDynamicFont)(NewTypedRef[ResourceImporterDynamicFont](reference))
 }
 
-func newRefResourceImporterDynamicFontAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterDynamicFont](reference.(ResourceImporterDynamicFont)))
+func NewRefResourceImporterDynamicFontAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterDynamicFont](reference.(ResourceImporterDynamicFont)))
 }
 
-func newRefResourceImporterDynamicFontGDExtensionIternalConstructor(reference ResourceImporterDynamicFont) RefResourceImporterDynamicFont {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterDynamicFont](reference)
+func NewRefResourceImporterDynamicFontGDExtensionIternalConstructor(reference ResourceImporterDynamicFont) RefResourceImporterDynamicFont {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterDynamicFont](reference)
 }
 
 var _ RefResourceImporterImage = &RefResourceImporterImageImpl{}
@@ -15981,19 +15981,19 @@ func (r *RefResourceImporterImageImpl) Unref() {
 }
 
 func (r *RefResourceImporterImageImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterImage(reference ResourceImporterImage) RefResourceImporterImage {
 	return (RefResourceImporterImage)(NewTypedRef[ResourceImporterImage](reference))
 }
 
-func newRefResourceImporterImageAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterImage](reference.(ResourceImporterImage)))
+func NewRefResourceImporterImageAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterImage](reference.(ResourceImporterImage)))
 }
 
-func newRefResourceImporterImageGDExtensionIternalConstructor(reference ResourceImporterImage) RefResourceImporterImage {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterImage](reference)
+func NewRefResourceImporterImageGDExtensionIternalConstructor(reference ResourceImporterImage) RefResourceImporterImage {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterImage](reference)
 }
 
 var _ RefResourceImporterImageFont = &RefResourceImporterImageFontImpl{}
@@ -16028,19 +16028,19 @@ func (r *RefResourceImporterImageFontImpl) Unref() {
 }
 
 func (r *RefResourceImporterImageFontImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterImageFont(reference ResourceImporterImageFont) RefResourceImporterImageFont {
 	return (RefResourceImporterImageFont)(NewTypedRef[ResourceImporterImageFont](reference))
 }
 
-func newRefResourceImporterImageFontAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterImageFont](reference.(ResourceImporterImageFont)))
+func NewRefResourceImporterImageFontAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterImageFont](reference.(ResourceImporterImageFont)))
 }
 
-func newRefResourceImporterImageFontGDExtensionIternalConstructor(reference ResourceImporterImageFont) RefResourceImporterImageFont {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterImageFont](reference)
+func NewRefResourceImporterImageFontGDExtensionIternalConstructor(reference ResourceImporterImageFont) RefResourceImporterImageFont {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterImageFont](reference)
 }
 
 var _ RefResourceImporterLayeredTexture = &RefResourceImporterLayeredTextureImpl{}
@@ -16075,19 +16075,19 @@ func (r *RefResourceImporterLayeredTextureImpl) Unref() {
 }
 
 func (r *RefResourceImporterLayeredTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterLayeredTexture(reference ResourceImporterLayeredTexture) RefResourceImporterLayeredTexture {
 	return (RefResourceImporterLayeredTexture)(NewTypedRef[ResourceImporterLayeredTexture](reference))
 }
 
-func newRefResourceImporterLayeredTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterLayeredTexture](reference.(ResourceImporterLayeredTexture)))
+func NewRefResourceImporterLayeredTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterLayeredTexture](reference.(ResourceImporterLayeredTexture)))
 }
 
-func newRefResourceImporterLayeredTextureGDExtensionIternalConstructor(reference ResourceImporterLayeredTexture) RefResourceImporterLayeredTexture {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterLayeredTexture](reference)
+func NewRefResourceImporterLayeredTextureGDExtensionIternalConstructor(reference ResourceImporterLayeredTexture) RefResourceImporterLayeredTexture {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterLayeredTexture](reference)
 }
 
 var _ RefResourceImporterMP3 = &RefResourceImporterMP3Impl{}
@@ -16122,19 +16122,19 @@ func (r *RefResourceImporterMP3Impl) Unref() {
 }
 
 func (r *RefResourceImporterMP3Impl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterMP3(reference ResourceImporterMP3) RefResourceImporterMP3 {
 	return (RefResourceImporterMP3)(NewTypedRef[ResourceImporterMP3](reference))
 }
 
-func newRefResourceImporterMP3AsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterMP3](reference.(ResourceImporterMP3)))
+func NewRefResourceImporterMP3AsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterMP3](reference.(ResourceImporterMP3)))
 }
 
-func newRefResourceImporterMP3GDExtensionIternalConstructor(reference ResourceImporterMP3) RefResourceImporterMP3 {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterMP3](reference)
+func NewRefResourceImporterMP3GDExtensionIternalConstructor(reference ResourceImporterMP3) RefResourceImporterMP3 {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterMP3](reference)
 }
 
 var _ RefResourceImporterOBJ = &RefResourceImporterOBJImpl{}
@@ -16169,19 +16169,19 @@ func (r *RefResourceImporterOBJImpl) Unref() {
 }
 
 func (r *RefResourceImporterOBJImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterOBJ(reference ResourceImporterOBJ) RefResourceImporterOBJ {
 	return (RefResourceImporterOBJ)(NewTypedRef[ResourceImporterOBJ](reference))
 }
 
-func newRefResourceImporterOBJAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterOBJ](reference.(ResourceImporterOBJ)))
+func NewRefResourceImporterOBJAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterOBJ](reference.(ResourceImporterOBJ)))
 }
 
-func newRefResourceImporterOBJGDExtensionIternalConstructor(reference ResourceImporterOBJ) RefResourceImporterOBJ {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterOBJ](reference)
+func NewRefResourceImporterOBJGDExtensionIternalConstructor(reference ResourceImporterOBJ) RefResourceImporterOBJ {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterOBJ](reference)
 }
 
 var _ RefResourceImporterOggVorbis = &RefResourceImporterOggVorbisImpl{}
@@ -16216,19 +16216,19 @@ func (r *RefResourceImporterOggVorbisImpl) Unref() {
 }
 
 func (r *RefResourceImporterOggVorbisImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterOggVorbis(reference ResourceImporterOggVorbis) RefResourceImporterOggVorbis {
 	return (RefResourceImporterOggVorbis)(NewTypedRef[ResourceImporterOggVorbis](reference))
 }
 
-func newRefResourceImporterOggVorbisAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterOggVorbis](reference.(ResourceImporterOggVorbis)))
+func NewRefResourceImporterOggVorbisAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterOggVorbis](reference.(ResourceImporterOggVorbis)))
 }
 
-func newRefResourceImporterOggVorbisGDExtensionIternalConstructor(reference ResourceImporterOggVorbis) RefResourceImporterOggVorbis {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterOggVorbis](reference)
+func NewRefResourceImporterOggVorbisGDExtensionIternalConstructor(reference ResourceImporterOggVorbis) RefResourceImporterOggVorbis {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterOggVorbis](reference)
 }
 
 var _ RefResourceImporterScene = &RefResourceImporterSceneImpl{}
@@ -16263,19 +16263,19 @@ func (r *RefResourceImporterSceneImpl) Unref() {
 }
 
 func (r *RefResourceImporterSceneImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterScene(reference ResourceImporterScene) RefResourceImporterScene {
 	return (RefResourceImporterScene)(NewTypedRef[ResourceImporterScene](reference))
 }
 
-func newRefResourceImporterSceneAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterScene](reference.(ResourceImporterScene)))
+func NewRefResourceImporterSceneAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterScene](reference.(ResourceImporterScene)))
 }
 
-func newRefResourceImporterSceneGDExtensionIternalConstructor(reference ResourceImporterScene) RefResourceImporterScene {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterScene](reference)
+func NewRefResourceImporterSceneGDExtensionIternalConstructor(reference ResourceImporterScene) RefResourceImporterScene {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterScene](reference)
 }
 
 var _ RefResourceImporterShaderFile = &RefResourceImporterShaderFileImpl{}
@@ -16310,19 +16310,19 @@ func (r *RefResourceImporterShaderFileImpl) Unref() {
 }
 
 func (r *RefResourceImporterShaderFileImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterShaderFile(reference ResourceImporterShaderFile) RefResourceImporterShaderFile {
 	return (RefResourceImporterShaderFile)(NewTypedRef[ResourceImporterShaderFile](reference))
 }
 
-func newRefResourceImporterShaderFileAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterShaderFile](reference.(ResourceImporterShaderFile)))
+func NewRefResourceImporterShaderFileAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterShaderFile](reference.(ResourceImporterShaderFile)))
 }
 
-func newRefResourceImporterShaderFileGDExtensionIternalConstructor(reference ResourceImporterShaderFile) RefResourceImporterShaderFile {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterShaderFile](reference)
+func NewRefResourceImporterShaderFileGDExtensionIternalConstructor(reference ResourceImporterShaderFile) RefResourceImporterShaderFile {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterShaderFile](reference)
 }
 
 var _ RefResourceImporterTexture = &RefResourceImporterTextureImpl{}
@@ -16357,19 +16357,19 @@ func (r *RefResourceImporterTextureImpl) Unref() {
 }
 
 func (r *RefResourceImporterTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterTexture(reference ResourceImporterTexture) RefResourceImporterTexture {
 	return (RefResourceImporterTexture)(NewTypedRef[ResourceImporterTexture](reference))
 }
 
-func newRefResourceImporterTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterTexture](reference.(ResourceImporterTexture)))
+func NewRefResourceImporterTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterTexture](reference.(ResourceImporterTexture)))
 }
 
-func newRefResourceImporterTextureGDExtensionIternalConstructor(reference ResourceImporterTexture) RefResourceImporterTexture {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterTexture](reference)
+func NewRefResourceImporterTextureGDExtensionIternalConstructor(reference ResourceImporterTexture) RefResourceImporterTexture {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterTexture](reference)
 }
 
 var _ RefResourceImporterTextureAtlas = &RefResourceImporterTextureAtlasImpl{}
@@ -16404,19 +16404,19 @@ func (r *RefResourceImporterTextureAtlasImpl) Unref() {
 }
 
 func (r *RefResourceImporterTextureAtlasImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterTextureAtlas(reference ResourceImporterTextureAtlas) RefResourceImporterTextureAtlas {
 	return (RefResourceImporterTextureAtlas)(NewTypedRef[ResourceImporterTextureAtlas](reference))
 }
 
-func newRefResourceImporterTextureAtlasAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterTextureAtlas](reference.(ResourceImporterTextureAtlas)))
+func NewRefResourceImporterTextureAtlasAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterTextureAtlas](reference.(ResourceImporterTextureAtlas)))
 }
 
-func newRefResourceImporterTextureAtlasGDExtensionIternalConstructor(reference ResourceImporterTextureAtlas) RefResourceImporterTextureAtlas {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterTextureAtlas](reference)
+func NewRefResourceImporterTextureAtlasGDExtensionIternalConstructor(reference ResourceImporterTextureAtlas) RefResourceImporterTextureAtlas {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterTextureAtlas](reference)
 }
 
 var _ RefResourceImporterWAV = &RefResourceImporterWAVImpl{}
@@ -16451,19 +16451,19 @@ func (r *RefResourceImporterWAVImpl) Unref() {
 }
 
 func (r *RefResourceImporterWAVImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefResourceImporterWAV(reference ResourceImporterWAV) RefResourceImporterWAV {
 	return (RefResourceImporterWAV)(NewTypedRef[ResourceImporterWAV](reference))
 }
 
-func newRefResourceImporterWAVAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ResourceImporterWAV](reference.(ResourceImporterWAV)))
+func NewRefResourceImporterWAVAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ResourceImporterWAV](reference.(ResourceImporterWAV)))
 }
 
-func newRefResourceImporterWAVGDExtensionIternalConstructor(reference ResourceImporterWAV) RefResourceImporterWAV {
-	return newTypedRefGDExtensionIternalConstructor[ResourceImporterWAV](reference)
+func NewRefResourceImporterWAVGDExtensionIternalConstructor(reference ResourceImporterWAV) RefResourceImporterWAV {
+	return NewTypedRefGDExtensionIternalConstructor[ResourceImporterWAV](reference)
 }
 
 var _ RefRibbonTrailMesh = &RefRibbonTrailMeshImpl{}
@@ -16498,19 +16498,19 @@ func (r *RefRibbonTrailMeshImpl) Unref() {
 }
 
 func (r *RefRibbonTrailMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRibbonTrailMesh(reference RibbonTrailMesh) RefRibbonTrailMesh {
 	return (RefRibbonTrailMesh)(NewTypedRef[RibbonTrailMesh](reference))
 }
 
-func newRefRibbonTrailMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RibbonTrailMesh](reference.(RibbonTrailMesh)))
+func NewRefRibbonTrailMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RibbonTrailMesh](reference.(RibbonTrailMesh)))
 }
 
-func newRefRibbonTrailMeshGDExtensionIternalConstructor(reference RibbonTrailMesh) RefRibbonTrailMesh {
-	return newTypedRefGDExtensionIternalConstructor[RibbonTrailMesh](reference)
+func NewRefRibbonTrailMeshGDExtensionIternalConstructor(reference RibbonTrailMesh) RefRibbonTrailMesh {
+	return NewTypedRefGDExtensionIternalConstructor[RibbonTrailMesh](reference)
 }
 
 var _ RefRichTextEffect = &RefRichTextEffectImpl{}
@@ -16545,19 +16545,19 @@ func (r *RefRichTextEffectImpl) Unref() {
 }
 
 func (r *RefRichTextEffectImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefRichTextEffect(reference RichTextEffect) RefRichTextEffect {
 	return (RefRichTextEffect)(NewTypedRef[RichTextEffect](reference))
 }
 
-func newRefRichTextEffectAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[RichTextEffect](reference.(RichTextEffect)))
+func NewRefRichTextEffectAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RichTextEffect](reference.(RichTextEffect)))
 }
 
-func newRefRichTextEffectGDExtensionIternalConstructor(reference RichTextEffect) RefRichTextEffect {
-	return newTypedRefGDExtensionIternalConstructor[RichTextEffect](reference)
+func NewRefRichTextEffectGDExtensionIternalConstructor(reference RichTextEffect) RefRichTextEffect {
+	return NewTypedRefGDExtensionIternalConstructor[RichTextEffect](reference)
 }
 
 var _ RefSceneMultiplayer = &RefSceneMultiplayerImpl{}
@@ -16592,19 +16592,19 @@ func (r *RefSceneMultiplayerImpl) Unref() {
 }
 
 func (r *RefSceneMultiplayerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSceneMultiplayer(reference SceneMultiplayer) RefSceneMultiplayer {
 	return (RefSceneMultiplayer)(NewTypedRef[SceneMultiplayer](reference))
 }
 
-func newRefSceneMultiplayerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SceneMultiplayer](reference.(SceneMultiplayer)))
+func NewRefSceneMultiplayerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SceneMultiplayer](reference.(SceneMultiplayer)))
 }
 
-func newRefSceneMultiplayerGDExtensionIternalConstructor(reference SceneMultiplayer) RefSceneMultiplayer {
-	return newTypedRefGDExtensionIternalConstructor[SceneMultiplayer](reference)
+func NewRefSceneMultiplayerGDExtensionIternalConstructor(reference SceneMultiplayer) RefSceneMultiplayer {
+	return NewTypedRefGDExtensionIternalConstructor[SceneMultiplayer](reference)
 }
 
 var _ RefSceneReplicationConfig = &RefSceneReplicationConfigImpl{}
@@ -16639,19 +16639,19 @@ func (r *RefSceneReplicationConfigImpl) Unref() {
 }
 
 func (r *RefSceneReplicationConfigImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSceneReplicationConfig(reference SceneReplicationConfig) RefSceneReplicationConfig {
 	return (RefSceneReplicationConfig)(NewTypedRef[SceneReplicationConfig](reference))
 }
 
-func newRefSceneReplicationConfigAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SceneReplicationConfig](reference.(SceneReplicationConfig)))
+func NewRefSceneReplicationConfigAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SceneReplicationConfig](reference.(SceneReplicationConfig)))
 }
 
-func newRefSceneReplicationConfigGDExtensionIternalConstructor(reference SceneReplicationConfig) RefSceneReplicationConfig {
-	return newTypedRefGDExtensionIternalConstructor[SceneReplicationConfig](reference)
+func NewRefSceneReplicationConfigGDExtensionIternalConstructor(reference SceneReplicationConfig) RefSceneReplicationConfig {
+	return NewTypedRefGDExtensionIternalConstructor[SceneReplicationConfig](reference)
 }
 
 var _ RefSceneState = &RefSceneStateImpl{}
@@ -16686,19 +16686,19 @@ func (r *RefSceneStateImpl) Unref() {
 }
 
 func (r *RefSceneStateImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSceneState(reference SceneState) RefSceneState {
 	return (RefSceneState)(NewTypedRef[SceneState](reference))
 }
 
-func newRefSceneStateAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SceneState](reference.(SceneState)))
+func NewRefSceneStateAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SceneState](reference.(SceneState)))
 }
 
-func newRefSceneStateGDExtensionIternalConstructor(reference SceneState) RefSceneState {
-	return newTypedRefGDExtensionIternalConstructor[SceneState](reference)
+func NewRefSceneStateGDExtensionIternalConstructor(reference SceneState) RefSceneState {
+	return NewTypedRefGDExtensionIternalConstructor[SceneState](reference)
 }
 
 var _ RefSceneTreeTimer = &RefSceneTreeTimerImpl{}
@@ -16733,19 +16733,19 @@ func (r *RefSceneTreeTimerImpl) Unref() {
 }
 
 func (r *RefSceneTreeTimerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSceneTreeTimer(reference SceneTreeTimer) RefSceneTreeTimer {
 	return (RefSceneTreeTimer)(NewTypedRef[SceneTreeTimer](reference))
 }
 
-func newRefSceneTreeTimerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SceneTreeTimer](reference.(SceneTreeTimer)))
+func NewRefSceneTreeTimerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SceneTreeTimer](reference.(SceneTreeTimer)))
 }
 
-func newRefSceneTreeTimerGDExtensionIternalConstructor(reference SceneTreeTimer) RefSceneTreeTimer {
-	return newTypedRefGDExtensionIternalConstructor[SceneTreeTimer](reference)
+func NewRefSceneTreeTimerGDExtensionIternalConstructor(reference SceneTreeTimer) RefSceneTreeTimer {
+	return NewTypedRefGDExtensionIternalConstructor[SceneTreeTimer](reference)
 }
 
 var _ RefScript = &RefScriptImpl{}
@@ -16780,19 +16780,19 @@ func (r *RefScriptImpl) Unref() {
 }
 
 func (r *RefScriptImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefScript(reference Script) RefScript {
 	return (RefScript)(NewTypedRef[Script](reference))
 }
 
-func newRefScriptAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Script](reference.(Script)))
+func NewRefScriptAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Script](reference.(Script)))
 }
 
-func newRefScriptGDExtensionIternalConstructor(reference Script) RefScript {
-	return newTypedRefGDExtensionIternalConstructor[Script](reference)
+func NewRefScriptGDExtensionIternalConstructor(reference Script) RefScript {
+	return NewTypedRefGDExtensionIternalConstructor[Script](reference)
 }
 
 var _ RefScriptExtension = &RefScriptExtensionImpl{}
@@ -16827,19 +16827,19 @@ func (r *RefScriptExtensionImpl) Unref() {
 }
 
 func (r *RefScriptExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefScriptExtension(reference ScriptExtension) RefScriptExtension {
 	return (RefScriptExtension)(NewTypedRef[ScriptExtension](reference))
 }
 
-func newRefScriptExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ScriptExtension](reference.(ScriptExtension)))
+func NewRefScriptExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ScriptExtension](reference.(ScriptExtension)))
 }
 
-func newRefScriptExtensionGDExtensionIternalConstructor(reference ScriptExtension) RefScriptExtension {
-	return newTypedRefGDExtensionIternalConstructor[ScriptExtension](reference)
+func NewRefScriptExtensionGDExtensionIternalConstructor(reference ScriptExtension) RefScriptExtension {
+	return NewTypedRefGDExtensionIternalConstructor[ScriptExtension](reference)
 }
 
 var _ RefSegmentShape2D = &RefSegmentShape2DImpl{}
@@ -16874,19 +16874,19 @@ func (r *RefSegmentShape2DImpl) Unref() {
 }
 
 func (r *RefSegmentShape2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSegmentShape2D(reference SegmentShape2D) RefSegmentShape2D {
 	return (RefSegmentShape2D)(NewTypedRef[SegmentShape2D](reference))
 }
 
-func newRefSegmentShape2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SegmentShape2D](reference.(SegmentShape2D)))
+func NewRefSegmentShape2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SegmentShape2D](reference.(SegmentShape2D)))
 }
 
-func newRefSegmentShape2DGDExtensionIternalConstructor(reference SegmentShape2D) RefSegmentShape2D {
-	return newTypedRefGDExtensionIternalConstructor[SegmentShape2D](reference)
+func NewRefSegmentShape2DGDExtensionIternalConstructor(reference SegmentShape2D) RefSegmentShape2D {
+	return NewTypedRefGDExtensionIternalConstructor[SegmentShape2D](reference)
 }
 
 var _ RefSemaphore = &RefSemaphoreImpl{}
@@ -16921,19 +16921,19 @@ func (r *RefSemaphoreImpl) Unref() {
 }
 
 func (r *RefSemaphoreImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSemaphore(reference Semaphore) RefSemaphore {
 	return (RefSemaphore)(NewTypedRef[Semaphore](reference))
 }
 
-func newRefSemaphoreAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Semaphore](reference.(Semaphore)))
+func NewRefSemaphoreAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Semaphore](reference.(Semaphore)))
 }
 
-func newRefSemaphoreGDExtensionIternalConstructor(reference Semaphore) RefSemaphore {
-	return newTypedRefGDExtensionIternalConstructor[Semaphore](reference)
+func NewRefSemaphoreGDExtensionIternalConstructor(reference Semaphore) RefSemaphore {
+	return NewTypedRefGDExtensionIternalConstructor[Semaphore](reference)
 }
 
 var _ RefSeparationRayShape2D = &RefSeparationRayShape2DImpl{}
@@ -16968,19 +16968,19 @@ func (r *RefSeparationRayShape2DImpl) Unref() {
 }
 
 func (r *RefSeparationRayShape2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSeparationRayShape2D(reference SeparationRayShape2D) RefSeparationRayShape2D {
 	return (RefSeparationRayShape2D)(NewTypedRef[SeparationRayShape2D](reference))
 }
 
-func newRefSeparationRayShape2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SeparationRayShape2D](reference.(SeparationRayShape2D)))
+func NewRefSeparationRayShape2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SeparationRayShape2D](reference.(SeparationRayShape2D)))
 }
 
-func newRefSeparationRayShape2DGDExtensionIternalConstructor(reference SeparationRayShape2D) RefSeparationRayShape2D {
-	return newTypedRefGDExtensionIternalConstructor[SeparationRayShape2D](reference)
+func NewRefSeparationRayShape2DGDExtensionIternalConstructor(reference SeparationRayShape2D) RefSeparationRayShape2D {
+	return NewTypedRefGDExtensionIternalConstructor[SeparationRayShape2D](reference)
 }
 
 var _ RefSeparationRayShape3D = &RefSeparationRayShape3DImpl{}
@@ -17015,19 +17015,19 @@ func (r *RefSeparationRayShape3DImpl) Unref() {
 }
 
 func (r *RefSeparationRayShape3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSeparationRayShape3D(reference SeparationRayShape3D) RefSeparationRayShape3D {
 	return (RefSeparationRayShape3D)(NewTypedRef[SeparationRayShape3D](reference))
 }
 
-func newRefSeparationRayShape3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SeparationRayShape3D](reference.(SeparationRayShape3D)))
+func NewRefSeparationRayShape3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SeparationRayShape3D](reference.(SeparationRayShape3D)))
 }
 
-func newRefSeparationRayShape3DGDExtensionIternalConstructor(reference SeparationRayShape3D) RefSeparationRayShape3D {
-	return newTypedRefGDExtensionIternalConstructor[SeparationRayShape3D](reference)
+func NewRefSeparationRayShape3DGDExtensionIternalConstructor(reference SeparationRayShape3D) RefSeparationRayShape3D {
+	return NewTypedRefGDExtensionIternalConstructor[SeparationRayShape3D](reference)
 }
 
 var _ RefShader = &RefShaderImpl{}
@@ -17062,19 +17062,19 @@ func (r *RefShaderImpl) Unref() {
 }
 
 func (r *RefShaderImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefShader(reference Shader) RefShader {
 	return (RefShader)(NewTypedRef[Shader](reference))
 }
 
-func newRefShaderAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Shader](reference.(Shader)))
+func NewRefShaderAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Shader](reference.(Shader)))
 }
 
-func newRefShaderGDExtensionIternalConstructor(reference Shader) RefShader {
-	return newTypedRefGDExtensionIternalConstructor[Shader](reference)
+func NewRefShaderGDExtensionIternalConstructor(reference Shader) RefShader {
+	return NewTypedRefGDExtensionIternalConstructor[Shader](reference)
 }
 
 var _ RefShaderInclude = &RefShaderIncludeImpl{}
@@ -17109,19 +17109,19 @@ func (r *RefShaderIncludeImpl) Unref() {
 }
 
 func (r *RefShaderIncludeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefShaderInclude(reference ShaderInclude) RefShaderInclude {
 	return (RefShaderInclude)(NewTypedRef[ShaderInclude](reference))
 }
 
-func newRefShaderIncludeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ShaderInclude](reference.(ShaderInclude)))
+func NewRefShaderIncludeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ShaderInclude](reference.(ShaderInclude)))
 }
 
-func newRefShaderIncludeGDExtensionIternalConstructor(reference ShaderInclude) RefShaderInclude {
-	return newTypedRefGDExtensionIternalConstructor[ShaderInclude](reference)
+func NewRefShaderIncludeGDExtensionIternalConstructor(reference ShaderInclude) RefShaderInclude {
+	return NewTypedRefGDExtensionIternalConstructor[ShaderInclude](reference)
 }
 
 var _ RefShaderMaterial = &RefShaderMaterialImpl{}
@@ -17156,19 +17156,19 @@ func (r *RefShaderMaterialImpl) Unref() {
 }
 
 func (r *RefShaderMaterialImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefShaderMaterial(reference ShaderMaterial) RefShaderMaterial {
 	return (RefShaderMaterial)(NewTypedRef[ShaderMaterial](reference))
 }
 
-func newRefShaderMaterialAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ShaderMaterial](reference.(ShaderMaterial)))
+func NewRefShaderMaterialAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ShaderMaterial](reference.(ShaderMaterial)))
 }
 
-func newRefShaderMaterialGDExtensionIternalConstructor(reference ShaderMaterial) RefShaderMaterial {
-	return newTypedRefGDExtensionIternalConstructor[ShaderMaterial](reference)
+func NewRefShaderMaterialGDExtensionIternalConstructor(reference ShaderMaterial) RefShaderMaterial {
+	return NewTypedRefGDExtensionIternalConstructor[ShaderMaterial](reference)
 }
 
 var _ RefShape2D = &RefShape2DImpl{}
@@ -17203,19 +17203,19 @@ func (r *RefShape2DImpl) Unref() {
 }
 
 func (r *RefShape2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefShape2D(reference Shape2D) RefShape2D {
 	return (RefShape2D)(NewTypedRef[Shape2D](reference))
 }
 
-func newRefShape2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Shape2D](reference.(Shape2D)))
+func NewRefShape2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Shape2D](reference.(Shape2D)))
 }
 
-func newRefShape2DGDExtensionIternalConstructor(reference Shape2D) RefShape2D {
-	return newTypedRefGDExtensionIternalConstructor[Shape2D](reference)
+func NewRefShape2DGDExtensionIternalConstructor(reference Shape2D) RefShape2D {
+	return NewTypedRefGDExtensionIternalConstructor[Shape2D](reference)
 }
 
 var _ RefShape3D = &RefShape3DImpl{}
@@ -17250,19 +17250,19 @@ func (r *RefShape3DImpl) Unref() {
 }
 
 func (r *RefShape3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefShape3D(reference Shape3D) RefShape3D {
 	return (RefShape3D)(NewTypedRef[Shape3D](reference))
 }
 
-func newRefShape3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Shape3D](reference.(Shape3D)))
+func NewRefShape3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Shape3D](reference.(Shape3D)))
 }
 
-func newRefShape3DGDExtensionIternalConstructor(reference Shape3D) RefShape3D {
-	return newTypedRefGDExtensionIternalConstructor[Shape3D](reference)
+func NewRefShape3DGDExtensionIternalConstructor(reference Shape3D) RefShape3D {
+	return NewTypedRefGDExtensionIternalConstructor[Shape3D](reference)
 }
 
 var _ RefShortcut = &RefShortcutImpl{}
@@ -17297,19 +17297,19 @@ func (r *RefShortcutImpl) Unref() {
 }
 
 func (r *RefShortcutImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefShortcut(reference Shortcut) RefShortcut {
 	return (RefShortcut)(NewTypedRef[Shortcut](reference))
 }
 
-func newRefShortcutAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Shortcut](reference.(Shortcut)))
+func NewRefShortcutAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Shortcut](reference.(Shortcut)))
 }
 
-func newRefShortcutGDExtensionIternalConstructor(reference Shortcut) RefShortcut {
-	return newTypedRefGDExtensionIternalConstructor[Shortcut](reference)
+func NewRefShortcutGDExtensionIternalConstructor(reference Shortcut) RefShortcut {
+	return NewTypedRefGDExtensionIternalConstructor[Shortcut](reference)
 }
 
 var _ RefSkeletonModification2D = &RefSkeletonModification2DImpl{}
@@ -17344,19 +17344,19 @@ func (r *RefSkeletonModification2DImpl) Unref() {
 }
 
 func (r *RefSkeletonModification2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkeletonModification2D(reference SkeletonModification2D) RefSkeletonModification2D {
 	return (RefSkeletonModification2D)(NewTypedRef[SkeletonModification2D](reference))
 }
 
-func newRefSkeletonModification2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkeletonModification2D](reference.(SkeletonModification2D)))
+func NewRefSkeletonModification2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkeletonModification2D](reference.(SkeletonModification2D)))
 }
 
-func newRefSkeletonModification2DGDExtensionIternalConstructor(reference SkeletonModification2D) RefSkeletonModification2D {
-	return newTypedRefGDExtensionIternalConstructor[SkeletonModification2D](reference)
+func NewRefSkeletonModification2DGDExtensionIternalConstructor(reference SkeletonModification2D) RefSkeletonModification2D {
+	return NewTypedRefGDExtensionIternalConstructor[SkeletonModification2D](reference)
 }
 
 var _ RefSkeletonModification2DCCDIK = &RefSkeletonModification2DCCDIKImpl{}
@@ -17391,19 +17391,19 @@ func (r *RefSkeletonModification2DCCDIKImpl) Unref() {
 }
 
 func (r *RefSkeletonModification2DCCDIKImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkeletonModification2DCCDIK(reference SkeletonModification2DCCDIK) RefSkeletonModification2DCCDIK {
 	return (RefSkeletonModification2DCCDIK)(NewTypedRef[SkeletonModification2DCCDIK](reference))
 }
 
-func newRefSkeletonModification2DCCDIKAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkeletonModification2DCCDIK](reference.(SkeletonModification2DCCDIK)))
+func NewRefSkeletonModification2DCCDIKAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DCCDIK](reference.(SkeletonModification2DCCDIK)))
 }
 
-func newRefSkeletonModification2DCCDIKGDExtensionIternalConstructor(reference SkeletonModification2DCCDIK) RefSkeletonModification2DCCDIK {
-	return newTypedRefGDExtensionIternalConstructor[SkeletonModification2DCCDIK](reference)
+func NewRefSkeletonModification2DCCDIKGDExtensionIternalConstructor(reference SkeletonModification2DCCDIK) RefSkeletonModification2DCCDIK {
+	return NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DCCDIK](reference)
 }
 
 var _ RefSkeletonModification2DFABRIK = &RefSkeletonModification2DFABRIKImpl{}
@@ -17438,19 +17438,19 @@ func (r *RefSkeletonModification2DFABRIKImpl) Unref() {
 }
 
 func (r *RefSkeletonModification2DFABRIKImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkeletonModification2DFABRIK(reference SkeletonModification2DFABRIK) RefSkeletonModification2DFABRIK {
 	return (RefSkeletonModification2DFABRIK)(NewTypedRef[SkeletonModification2DFABRIK](reference))
 }
 
-func newRefSkeletonModification2DFABRIKAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkeletonModification2DFABRIK](reference.(SkeletonModification2DFABRIK)))
+func NewRefSkeletonModification2DFABRIKAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DFABRIK](reference.(SkeletonModification2DFABRIK)))
 }
 
-func newRefSkeletonModification2DFABRIKGDExtensionIternalConstructor(reference SkeletonModification2DFABRIK) RefSkeletonModification2DFABRIK {
-	return newTypedRefGDExtensionIternalConstructor[SkeletonModification2DFABRIK](reference)
+func NewRefSkeletonModification2DFABRIKGDExtensionIternalConstructor(reference SkeletonModification2DFABRIK) RefSkeletonModification2DFABRIK {
+	return NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DFABRIK](reference)
 }
 
 var _ RefSkeletonModification2DJiggle = &RefSkeletonModification2DJiggleImpl{}
@@ -17485,19 +17485,19 @@ func (r *RefSkeletonModification2DJiggleImpl) Unref() {
 }
 
 func (r *RefSkeletonModification2DJiggleImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkeletonModification2DJiggle(reference SkeletonModification2DJiggle) RefSkeletonModification2DJiggle {
 	return (RefSkeletonModification2DJiggle)(NewTypedRef[SkeletonModification2DJiggle](reference))
 }
 
-func newRefSkeletonModification2DJiggleAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkeletonModification2DJiggle](reference.(SkeletonModification2DJiggle)))
+func NewRefSkeletonModification2DJiggleAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DJiggle](reference.(SkeletonModification2DJiggle)))
 }
 
-func newRefSkeletonModification2DJiggleGDExtensionIternalConstructor(reference SkeletonModification2DJiggle) RefSkeletonModification2DJiggle {
-	return newTypedRefGDExtensionIternalConstructor[SkeletonModification2DJiggle](reference)
+func NewRefSkeletonModification2DJiggleGDExtensionIternalConstructor(reference SkeletonModification2DJiggle) RefSkeletonModification2DJiggle {
+	return NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DJiggle](reference)
 }
 
 var _ RefSkeletonModification2DLookAt = &RefSkeletonModification2DLookAtImpl{}
@@ -17532,19 +17532,19 @@ func (r *RefSkeletonModification2DLookAtImpl) Unref() {
 }
 
 func (r *RefSkeletonModification2DLookAtImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkeletonModification2DLookAt(reference SkeletonModification2DLookAt) RefSkeletonModification2DLookAt {
 	return (RefSkeletonModification2DLookAt)(NewTypedRef[SkeletonModification2DLookAt](reference))
 }
 
-func newRefSkeletonModification2DLookAtAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkeletonModification2DLookAt](reference.(SkeletonModification2DLookAt)))
+func NewRefSkeletonModification2DLookAtAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DLookAt](reference.(SkeletonModification2DLookAt)))
 }
 
-func newRefSkeletonModification2DLookAtGDExtensionIternalConstructor(reference SkeletonModification2DLookAt) RefSkeletonModification2DLookAt {
-	return newTypedRefGDExtensionIternalConstructor[SkeletonModification2DLookAt](reference)
+func NewRefSkeletonModification2DLookAtGDExtensionIternalConstructor(reference SkeletonModification2DLookAt) RefSkeletonModification2DLookAt {
+	return NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DLookAt](reference)
 }
 
 var _ RefSkeletonModification2DPhysicalBones = &RefSkeletonModification2DPhysicalBonesImpl{}
@@ -17579,19 +17579,19 @@ func (r *RefSkeletonModification2DPhysicalBonesImpl) Unref() {
 }
 
 func (r *RefSkeletonModification2DPhysicalBonesImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkeletonModification2DPhysicalBones(reference SkeletonModification2DPhysicalBones) RefSkeletonModification2DPhysicalBones {
 	return (RefSkeletonModification2DPhysicalBones)(NewTypedRef[SkeletonModification2DPhysicalBones](reference))
 }
 
-func newRefSkeletonModification2DPhysicalBonesAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkeletonModification2DPhysicalBones](reference.(SkeletonModification2DPhysicalBones)))
+func NewRefSkeletonModification2DPhysicalBonesAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DPhysicalBones](reference.(SkeletonModification2DPhysicalBones)))
 }
 
-func newRefSkeletonModification2DPhysicalBonesGDExtensionIternalConstructor(reference SkeletonModification2DPhysicalBones) RefSkeletonModification2DPhysicalBones {
-	return newTypedRefGDExtensionIternalConstructor[SkeletonModification2DPhysicalBones](reference)
+func NewRefSkeletonModification2DPhysicalBonesGDExtensionIternalConstructor(reference SkeletonModification2DPhysicalBones) RefSkeletonModification2DPhysicalBones {
+	return NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DPhysicalBones](reference)
 }
 
 var _ RefSkeletonModification2DStackHolder = &RefSkeletonModification2DStackHolderImpl{}
@@ -17626,19 +17626,19 @@ func (r *RefSkeletonModification2DStackHolderImpl) Unref() {
 }
 
 func (r *RefSkeletonModification2DStackHolderImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkeletonModification2DStackHolder(reference SkeletonModification2DStackHolder) RefSkeletonModification2DStackHolder {
 	return (RefSkeletonModification2DStackHolder)(NewTypedRef[SkeletonModification2DStackHolder](reference))
 }
 
-func newRefSkeletonModification2DStackHolderAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkeletonModification2DStackHolder](reference.(SkeletonModification2DStackHolder)))
+func NewRefSkeletonModification2DStackHolderAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DStackHolder](reference.(SkeletonModification2DStackHolder)))
 }
 
-func newRefSkeletonModification2DStackHolderGDExtensionIternalConstructor(reference SkeletonModification2DStackHolder) RefSkeletonModification2DStackHolder {
-	return newTypedRefGDExtensionIternalConstructor[SkeletonModification2DStackHolder](reference)
+func NewRefSkeletonModification2DStackHolderGDExtensionIternalConstructor(reference SkeletonModification2DStackHolder) RefSkeletonModification2DStackHolder {
+	return NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DStackHolder](reference)
 }
 
 var _ RefSkeletonModification2DTwoBoneIK = &RefSkeletonModification2DTwoBoneIKImpl{}
@@ -17673,19 +17673,19 @@ func (r *RefSkeletonModification2DTwoBoneIKImpl) Unref() {
 }
 
 func (r *RefSkeletonModification2DTwoBoneIKImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkeletonModification2DTwoBoneIK(reference SkeletonModification2DTwoBoneIK) RefSkeletonModification2DTwoBoneIK {
 	return (RefSkeletonModification2DTwoBoneIK)(NewTypedRef[SkeletonModification2DTwoBoneIK](reference))
 }
 
-func newRefSkeletonModification2DTwoBoneIKAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkeletonModification2DTwoBoneIK](reference.(SkeletonModification2DTwoBoneIK)))
+func NewRefSkeletonModification2DTwoBoneIKAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DTwoBoneIK](reference.(SkeletonModification2DTwoBoneIK)))
 }
 
-func newRefSkeletonModification2DTwoBoneIKGDExtensionIternalConstructor(reference SkeletonModification2DTwoBoneIK) RefSkeletonModification2DTwoBoneIK {
-	return newTypedRefGDExtensionIternalConstructor[SkeletonModification2DTwoBoneIK](reference)
+func NewRefSkeletonModification2DTwoBoneIKGDExtensionIternalConstructor(reference SkeletonModification2DTwoBoneIK) RefSkeletonModification2DTwoBoneIK {
+	return NewTypedRefGDExtensionIternalConstructor[SkeletonModification2DTwoBoneIK](reference)
 }
 
 var _ RefSkeletonModificationStack2D = &RefSkeletonModificationStack2DImpl{}
@@ -17720,19 +17720,19 @@ func (r *RefSkeletonModificationStack2DImpl) Unref() {
 }
 
 func (r *RefSkeletonModificationStack2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkeletonModificationStack2D(reference SkeletonModificationStack2D) RefSkeletonModificationStack2D {
 	return (RefSkeletonModificationStack2D)(NewTypedRef[SkeletonModificationStack2D](reference))
 }
 
-func newRefSkeletonModificationStack2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkeletonModificationStack2D](reference.(SkeletonModificationStack2D)))
+func NewRefSkeletonModificationStack2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkeletonModificationStack2D](reference.(SkeletonModificationStack2D)))
 }
 
-func newRefSkeletonModificationStack2DGDExtensionIternalConstructor(reference SkeletonModificationStack2D) RefSkeletonModificationStack2D {
-	return newTypedRefGDExtensionIternalConstructor[SkeletonModificationStack2D](reference)
+func NewRefSkeletonModificationStack2DGDExtensionIternalConstructor(reference SkeletonModificationStack2D) RefSkeletonModificationStack2D {
+	return NewTypedRefGDExtensionIternalConstructor[SkeletonModificationStack2D](reference)
 }
 
 var _ RefSkeletonProfile = &RefSkeletonProfileImpl{}
@@ -17767,19 +17767,19 @@ func (r *RefSkeletonProfileImpl) Unref() {
 }
 
 func (r *RefSkeletonProfileImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkeletonProfile(reference SkeletonProfile) RefSkeletonProfile {
 	return (RefSkeletonProfile)(NewTypedRef[SkeletonProfile](reference))
 }
 
-func newRefSkeletonProfileAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkeletonProfile](reference.(SkeletonProfile)))
+func NewRefSkeletonProfileAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkeletonProfile](reference.(SkeletonProfile)))
 }
 
-func newRefSkeletonProfileGDExtensionIternalConstructor(reference SkeletonProfile) RefSkeletonProfile {
-	return newTypedRefGDExtensionIternalConstructor[SkeletonProfile](reference)
+func NewRefSkeletonProfileGDExtensionIternalConstructor(reference SkeletonProfile) RefSkeletonProfile {
+	return NewTypedRefGDExtensionIternalConstructor[SkeletonProfile](reference)
 }
 
 var _ RefSkeletonProfileHumanoid = &RefSkeletonProfileHumanoidImpl{}
@@ -17814,19 +17814,19 @@ func (r *RefSkeletonProfileHumanoidImpl) Unref() {
 }
 
 func (r *RefSkeletonProfileHumanoidImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkeletonProfileHumanoid(reference SkeletonProfileHumanoid) RefSkeletonProfileHumanoid {
 	return (RefSkeletonProfileHumanoid)(NewTypedRef[SkeletonProfileHumanoid](reference))
 }
 
-func newRefSkeletonProfileHumanoidAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkeletonProfileHumanoid](reference.(SkeletonProfileHumanoid)))
+func NewRefSkeletonProfileHumanoidAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkeletonProfileHumanoid](reference.(SkeletonProfileHumanoid)))
 }
 
-func newRefSkeletonProfileHumanoidGDExtensionIternalConstructor(reference SkeletonProfileHumanoid) RefSkeletonProfileHumanoid {
-	return newTypedRefGDExtensionIternalConstructor[SkeletonProfileHumanoid](reference)
+func NewRefSkeletonProfileHumanoidGDExtensionIternalConstructor(reference SkeletonProfileHumanoid) RefSkeletonProfileHumanoid {
+	return NewTypedRefGDExtensionIternalConstructor[SkeletonProfileHumanoid](reference)
 }
 
 var _ RefSkin = &RefSkinImpl{}
@@ -17861,19 +17861,19 @@ func (r *RefSkinImpl) Unref() {
 }
 
 func (r *RefSkinImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkin(reference Skin) RefSkin {
 	return (RefSkin)(NewTypedRef[Skin](reference))
 }
 
-func newRefSkinAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Skin](reference.(Skin)))
+func NewRefSkinAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Skin](reference.(Skin)))
 }
 
-func newRefSkinGDExtensionIternalConstructor(reference Skin) RefSkin {
-	return newTypedRefGDExtensionIternalConstructor[Skin](reference)
+func NewRefSkinGDExtensionIternalConstructor(reference Skin) RefSkin {
+	return NewTypedRefGDExtensionIternalConstructor[Skin](reference)
 }
 
 var _ RefSkinReference = &RefSkinReferenceImpl{}
@@ -17908,19 +17908,19 @@ func (r *RefSkinReferenceImpl) Unref() {
 }
 
 func (r *RefSkinReferenceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSkinReference(reference SkinReference) RefSkinReference {
 	return (RefSkinReference)(NewTypedRef[SkinReference](reference))
 }
 
-func newRefSkinReferenceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SkinReference](reference.(SkinReference)))
+func NewRefSkinReferenceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SkinReference](reference.(SkinReference)))
 }
 
-func newRefSkinReferenceGDExtensionIternalConstructor(reference SkinReference) RefSkinReference {
-	return newTypedRefGDExtensionIternalConstructor[SkinReference](reference)
+func NewRefSkinReferenceGDExtensionIternalConstructor(reference SkinReference) RefSkinReference {
+	return NewTypedRefGDExtensionIternalConstructor[SkinReference](reference)
 }
 
 var _ RefSky = &RefSkyImpl{}
@@ -17955,19 +17955,19 @@ func (r *RefSkyImpl) Unref() {
 }
 
 func (r *RefSkyImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSky(reference Sky) RefSky {
 	return (RefSky)(NewTypedRef[Sky](reference))
 }
 
-func newRefSkyAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Sky](reference.(Sky)))
+func NewRefSkyAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Sky](reference.(Sky)))
 }
 
-func newRefSkyGDExtensionIternalConstructor(reference Sky) RefSky {
-	return newTypedRefGDExtensionIternalConstructor[Sky](reference)
+func NewRefSkyGDExtensionIternalConstructor(reference Sky) RefSky {
+	return NewTypedRefGDExtensionIternalConstructor[Sky](reference)
 }
 
 var _ RefSphereMesh = &RefSphereMeshImpl{}
@@ -18002,19 +18002,19 @@ func (r *RefSphereMeshImpl) Unref() {
 }
 
 func (r *RefSphereMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSphereMesh(reference SphereMesh) RefSphereMesh {
 	return (RefSphereMesh)(NewTypedRef[SphereMesh](reference))
 }
 
-func newRefSphereMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SphereMesh](reference.(SphereMesh)))
+func NewRefSphereMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SphereMesh](reference.(SphereMesh)))
 }
 
-func newRefSphereMeshGDExtensionIternalConstructor(reference SphereMesh) RefSphereMesh {
-	return newTypedRefGDExtensionIternalConstructor[SphereMesh](reference)
+func NewRefSphereMeshGDExtensionIternalConstructor(reference SphereMesh) RefSphereMesh {
+	return NewTypedRefGDExtensionIternalConstructor[SphereMesh](reference)
 }
 
 var _ RefSphereOccluder3D = &RefSphereOccluder3DImpl{}
@@ -18049,19 +18049,19 @@ func (r *RefSphereOccluder3DImpl) Unref() {
 }
 
 func (r *RefSphereOccluder3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSphereOccluder3D(reference SphereOccluder3D) RefSphereOccluder3D {
 	return (RefSphereOccluder3D)(NewTypedRef[SphereOccluder3D](reference))
 }
 
-func newRefSphereOccluder3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SphereOccluder3D](reference.(SphereOccluder3D)))
+func NewRefSphereOccluder3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SphereOccluder3D](reference.(SphereOccluder3D)))
 }
 
-func newRefSphereOccluder3DGDExtensionIternalConstructor(reference SphereOccluder3D) RefSphereOccluder3D {
-	return newTypedRefGDExtensionIternalConstructor[SphereOccluder3D](reference)
+func NewRefSphereOccluder3DGDExtensionIternalConstructor(reference SphereOccluder3D) RefSphereOccluder3D {
+	return NewTypedRefGDExtensionIternalConstructor[SphereOccluder3D](reference)
 }
 
 var _ RefSphereShape3D = &RefSphereShape3DImpl{}
@@ -18096,19 +18096,19 @@ func (r *RefSphereShape3DImpl) Unref() {
 }
 
 func (r *RefSphereShape3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSphereShape3D(reference SphereShape3D) RefSphereShape3D {
 	return (RefSphereShape3D)(NewTypedRef[SphereShape3D](reference))
 }
 
-func newRefSphereShape3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SphereShape3D](reference.(SphereShape3D)))
+func NewRefSphereShape3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SphereShape3D](reference.(SphereShape3D)))
 }
 
-func newRefSphereShape3DGDExtensionIternalConstructor(reference SphereShape3D) RefSphereShape3D {
-	return newTypedRefGDExtensionIternalConstructor[SphereShape3D](reference)
+func NewRefSphereShape3DGDExtensionIternalConstructor(reference SphereShape3D) RefSphereShape3D {
+	return NewTypedRefGDExtensionIternalConstructor[SphereShape3D](reference)
 }
 
 var _ RefSpriteFrames = &RefSpriteFramesImpl{}
@@ -18143,19 +18143,19 @@ func (r *RefSpriteFramesImpl) Unref() {
 }
 
 func (r *RefSpriteFramesImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSpriteFrames(reference SpriteFrames) RefSpriteFrames {
 	return (RefSpriteFrames)(NewTypedRef[SpriteFrames](reference))
 }
 
-func newRefSpriteFramesAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SpriteFrames](reference.(SpriteFrames)))
+func NewRefSpriteFramesAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SpriteFrames](reference.(SpriteFrames)))
 }
 
-func newRefSpriteFramesGDExtensionIternalConstructor(reference SpriteFrames) RefSpriteFrames {
-	return newTypedRefGDExtensionIternalConstructor[SpriteFrames](reference)
+func NewRefSpriteFramesGDExtensionIternalConstructor(reference SpriteFrames) RefSpriteFrames {
+	return NewTypedRefGDExtensionIternalConstructor[SpriteFrames](reference)
 }
 
 var _ RefStandardMaterial3D = &RefStandardMaterial3DImpl{}
@@ -18190,19 +18190,19 @@ func (r *RefStandardMaterial3DImpl) Unref() {
 }
 
 func (r *RefStandardMaterial3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStandardMaterial3D(reference StandardMaterial3D) RefStandardMaterial3D {
 	return (RefStandardMaterial3D)(NewTypedRef[StandardMaterial3D](reference))
 }
 
-func newRefStandardMaterial3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StandardMaterial3D](reference.(StandardMaterial3D)))
+func NewRefStandardMaterial3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StandardMaterial3D](reference.(StandardMaterial3D)))
 }
 
-func newRefStandardMaterial3DGDExtensionIternalConstructor(reference StandardMaterial3D) RefStandardMaterial3D {
-	return newTypedRefGDExtensionIternalConstructor[StandardMaterial3D](reference)
+func NewRefStandardMaterial3DGDExtensionIternalConstructor(reference StandardMaterial3D) RefStandardMaterial3D {
+	return NewTypedRefGDExtensionIternalConstructor[StandardMaterial3D](reference)
 }
 
 var _ RefStreamPeer = &RefStreamPeerImpl{}
@@ -18237,19 +18237,19 @@ func (r *RefStreamPeerImpl) Unref() {
 }
 
 func (r *RefStreamPeerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStreamPeer(reference StreamPeer) RefStreamPeer {
 	return (RefStreamPeer)(NewTypedRef[StreamPeer](reference))
 }
 
-func newRefStreamPeerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StreamPeer](reference.(StreamPeer)))
+func NewRefStreamPeerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StreamPeer](reference.(StreamPeer)))
 }
 
-func newRefStreamPeerGDExtensionIternalConstructor(reference StreamPeer) RefStreamPeer {
-	return newTypedRefGDExtensionIternalConstructor[StreamPeer](reference)
+func NewRefStreamPeerGDExtensionIternalConstructor(reference StreamPeer) RefStreamPeer {
+	return NewTypedRefGDExtensionIternalConstructor[StreamPeer](reference)
 }
 
 var _ RefStreamPeerBuffer = &RefStreamPeerBufferImpl{}
@@ -18284,19 +18284,19 @@ func (r *RefStreamPeerBufferImpl) Unref() {
 }
 
 func (r *RefStreamPeerBufferImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStreamPeerBuffer(reference StreamPeerBuffer) RefStreamPeerBuffer {
 	return (RefStreamPeerBuffer)(NewTypedRef[StreamPeerBuffer](reference))
 }
 
-func newRefStreamPeerBufferAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StreamPeerBuffer](reference.(StreamPeerBuffer)))
+func NewRefStreamPeerBufferAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StreamPeerBuffer](reference.(StreamPeerBuffer)))
 }
 
-func newRefStreamPeerBufferGDExtensionIternalConstructor(reference StreamPeerBuffer) RefStreamPeerBuffer {
-	return newTypedRefGDExtensionIternalConstructor[StreamPeerBuffer](reference)
+func NewRefStreamPeerBufferGDExtensionIternalConstructor(reference StreamPeerBuffer) RefStreamPeerBuffer {
+	return NewTypedRefGDExtensionIternalConstructor[StreamPeerBuffer](reference)
 }
 
 var _ RefStreamPeerExtension = &RefStreamPeerExtensionImpl{}
@@ -18331,19 +18331,19 @@ func (r *RefStreamPeerExtensionImpl) Unref() {
 }
 
 func (r *RefStreamPeerExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStreamPeerExtension(reference StreamPeerExtension) RefStreamPeerExtension {
 	return (RefStreamPeerExtension)(NewTypedRef[StreamPeerExtension](reference))
 }
 
-func newRefStreamPeerExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StreamPeerExtension](reference.(StreamPeerExtension)))
+func NewRefStreamPeerExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StreamPeerExtension](reference.(StreamPeerExtension)))
 }
 
-func newRefStreamPeerExtensionGDExtensionIternalConstructor(reference StreamPeerExtension) RefStreamPeerExtension {
-	return newTypedRefGDExtensionIternalConstructor[StreamPeerExtension](reference)
+func NewRefStreamPeerExtensionGDExtensionIternalConstructor(reference StreamPeerExtension) RefStreamPeerExtension {
+	return NewTypedRefGDExtensionIternalConstructor[StreamPeerExtension](reference)
 }
 
 var _ RefStreamPeerGZIP = &RefStreamPeerGZIPImpl{}
@@ -18378,19 +18378,19 @@ func (r *RefStreamPeerGZIPImpl) Unref() {
 }
 
 func (r *RefStreamPeerGZIPImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStreamPeerGZIP(reference StreamPeerGZIP) RefStreamPeerGZIP {
 	return (RefStreamPeerGZIP)(NewTypedRef[StreamPeerGZIP](reference))
 }
 
-func newRefStreamPeerGZIPAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StreamPeerGZIP](reference.(StreamPeerGZIP)))
+func NewRefStreamPeerGZIPAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StreamPeerGZIP](reference.(StreamPeerGZIP)))
 }
 
-func newRefStreamPeerGZIPGDExtensionIternalConstructor(reference StreamPeerGZIP) RefStreamPeerGZIP {
-	return newTypedRefGDExtensionIternalConstructor[StreamPeerGZIP](reference)
+func NewRefStreamPeerGZIPGDExtensionIternalConstructor(reference StreamPeerGZIP) RefStreamPeerGZIP {
+	return NewTypedRefGDExtensionIternalConstructor[StreamPeerGZIP](reference)
 }
 
 var _ RefStreamPeerTCP = &RefStreamPeerTCPImpl{}
@@ -18425,19 +18425,19 @@ func (r *RefStreamPeerTCPImpl) Unref() {
 }
 
 func (r *RefStreamPeerTCPImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStreamPeerTCP(reference StreamPeerTCP) RefStreamPeerTCP {
 	return (RefStreamPeerTCP)(NewTypedRef[StreamPeerTCP](reference))
 }
 
-func newRefStreamPeerTCPAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StreamPeerTCP](reference.(StreamPeerTCP)))
+func NewRefStreamPeerTCPAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StreamPeerTCP](reference.(StreamPeerTCP)))
 }
 
-func newRefStreamPeerTCPGDExtensionIternalConstructor(reference StreamPeerTCP) RefStreamPeerTCP {
-	return newTypedRefGDExtensionIternalConstructor[StreamPeerTCP](reference)
+func NewRefStreamPeerTCPGDExtensionIternalConstructor(reference StreamPeerTCP) RefStreamPeerTCP {
+	return NewTypedRefGDExtensionIternalConstructor[StreamPeerTCP](reference)
 }
 
 var _ RefStreamPeerTLS = &RefStreamPeerTLSImpl{}
@@ -18472,19 +18472,19 @@ func (r *RefStreamPeerTLSImpl) Unref() {
 }
 
 func (r *RefStreamPeerTLSImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStreamPeerTLS(reference StreamPeerTLS) RefStreamPeerTLS {
 	return (RefStreamPeerTLS)(NewTypedRef[StreamPeerTLS](reference))
 }
 
-func newRefStreamPeerTLSAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StreamPeerTLS](reference.(StreamPeerTLS)))
+func NewRefStreamPeerTLSAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StreamPeerTLS](reference.(StreamPeerTLS)))
 }
 
-func newRefStreamPeerTLSGDExtensionIternalConstructor(reference StreamPeerTLS) RefStreamPeerTLS {
-	return newTypedRefGDExtensionIternalConstructor[StreamPeerTLS](reference)
+func NewRefStreamPeerTLSGDExtensionIternalConstructor(reference StreamPeerTLS) RefStreamPeerTLS {
+	return NewTypedRefGDExtensionIternalConstructor[StreamPeerTLS](reference)
 }
 
 var _ RefStyleBox = &RefStyleBoxImpl{}
@@ -18519,19 +18519,19 @@ func (r *RefStyleBoxImpl) Unref() {
 }
 
 func (r *RefStyleBoxImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStyleBox(reference StyleBox) RefStyleBox {
 	return (RefStyleBox)(NewTypedRef[StyleBox](reference))
 }
 
-func newRefStyleBoxAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StyleBox](reference.(StyleBox)))
+func NewRefStyleBoxAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StyleBox](reference.(StyleBox)))
 }
 
-func newRefStyleBoxGDExtensionIternalConstructor(reference StyleBox) RefStyleBox {
-	return newTypedRefGDExtensionIternalConstructor[StyleBox](reference)
+func NewRefStyleBoxGDExtensionIternalConstructor(reference StyleBox) RefStyleBox {
+	return NewTypedRefGDExtensionIternalConstructor[StyleBox](reference)
 }
 
 var _ RefStyleBoxEmpty = &RefStyleBoxEmptyImpl{}
@@ -18566,19 +18566,19 @@ func (r *RefStyleBoxEmptyImpl) Unref() {
 }
 
 func (r *RefStyleBoxEmptyImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStyleBoxEmpty(reference StyleBoxEmpty) RefStyleBoxEmpty {
 	return (RefStyleBoxEmpty)(NewTypedRef[StyleBoxEmpty](reference))
 }
 
-func newRefStyleBoxEmptyAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StyleBoxEmpty](reference.(StyleBoxEmpty)))
+func NewRefStyleBoxEmptyAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StyleBoxEmpty](reference.(StyleBoxEmpty)))
 }
 
-func newRefStyleBoxEmptyGDExtensionIternalConstructor(reference StyleBoxEmpty) RefStyleBoxEmpty {
-	return newTypedRefGDExtensionIternalConstructor[StyleBoxEmpty](reference)
+func NewRefStyleBoxEmptyGDExtensionIternalConstructor(reference StyleBoxEmpty) RefStyleBoxEmpty {
+	return NewTypedRefGDExtensionIternalConstructor[StyleBoxEmpty](reference)
 }
 
 var _ RefStyleBoxFlat = &RefStyleBoxFlatImpl{}
@@ -18613,19 +18613,19 @@ func (r *RefStyleBoxFlatImpl) Unref() {
 }
 
 func (r *RefStyleBoxFlatImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStyleBoxFlat(reference StyleBoxFlat) RefStyleBoxFlat {
 	return (RefStyleBoxFlat)(NewTypedRef[StyleBoxFlat](reference))
 }
 
-func newRefStyleBoxFlatAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StyleBoxFlat](reference.(StyleBoxFlat)))
+func NewRefStyleBoxFlatAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StyleBoxFlat](reference.(StyleBoxFlat)))
 }
 
-func newRefStyleBoxFlatGDExtensionIternalConstructor(reference StyleBoxFlat) RefStyleBoxFlat {
-	return newTypedRefGDExtensionIternalConstructor[StyleBoxFlat](reference)
+func NewRefStyleBoxFlatGDExtensionIternalConstructor(reference StyleBoxFlat) RefStyleBoxFlat {
+	return NewTypedRefGDExtensionIternalConstructor[StyleBoxFlat](reference)
 }
 
 var _ RefStyleBoxLine = &RefStyleBoxLineImpl{}
@@ -18660,19 +18660,19 @@ func (r *RefStyleBoxLineImpl) Unref() {
 }
 
 func (r *RefStyleBoxLineImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStyleBoxLine(reference StyleBoxLine) RefStyleBoxLine {
 	return (RefStyleBoxLine)(NewTypedRef[StyleBoxLine](reference))
 }
 
-func newRefStyleBoxLineAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StyleBoxLine](reference.(StyleBoxLine)))
+func NewRefStyleBoxLineAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StyleBoxLine](reference.(StyleBoxLine)))
 }
 
-func newRefStyleBoxLineGDExtensionIternalConstructor(reference StyleBoxLine) RefStyleBoxLine {
-	return newTypedRefGDExtensionIternalConstructor[StyleBoxLine](reference)
+func NewRefStyleBoxLineGDExtensionIternalConstructor(reference StyleBoxLine) RefStyleBoxLine {
+	return NewTypedRefGDExtensionIternalConstructor[StyleBoxLine](reference)
 }
 
 var _ RefStyleBoxTexture = &RefStyleBoxTextureImpl{}
@@ -18707,19 +18707,19 @@ func (r *RefStyleBoxTextureImpl) Unref() {
 }
 
 func (r *RefStyleBoxTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefStyleBoxTexture(reference StyleBoxTexture) RefStyleBoxTexture {
 	return (RefStyleBoxTexture)(NewTypedRef[StyleBoxTexture](reference))
 }
 
-func newRefStyleBoxTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[StyleBoxTexture](reference.(StyleBoxTexture)))
+func NewRefStyleBoxTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StyleBoxTexture](reference.(StyleBoxTexture)))
 }
 
-func newRefStyleBoxTextureGDExtensionIternalConstructor(reference StyleBoxTexture) RefStyleBoxTexture {
-	return newTypedRefGDExtensionIternalConstructor[StyleBoxTexture](reference)
+func NewRefStyleBoxTextureGDExtensionIternalConstructor(reference StyleBoxTexture) RefStyleBoxTexture {
+	return NewTypedRefGDExtensionIternalConstructor[StyleBoxTexture](reference)
 }
 
 var _ RefSurfaceTool = &RefSurfaceToolImpl{}
@@ -18754,19 +18754,19 @@ func (r *RefSurfaceToolImpl) Unref() {
 }
 
 func (r *RefSurfaceToolImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSurfaceTool(reference SurfaceTool) RefSurfaceTool {
 	return (RefSurfaceTool)(NewTypedRef[SurfaceTool](reference))
 }
 
-func newRefSurfaceToolAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SurfaceTool](reference.(SurfaceTool)))
+func NewRefSurfaceToolAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SurfaceTool](reference.(SurfaceTool)))
 }
 
-func newRefSurfaceToolGDExtensionIternalConstructor(reference SurfaceTool) RefSurfaceTool {
-	return newTypedRefGDExtensionIternalConstructor[SurfaceTool](reference)
+func NewRefSurfaceToolGDExtensionIternalConstructor(reference SurfaceTool) RefSurfaceTool {
+	return NewTypedRefGDExtensionIternalConstructor[SurfaceTool](reference)
 }
 
 var _ RefSyntaxHighlighter = &RefSyntaxHighlighterImpl{}
@@ -18801,19 +18801,19 @@ func (r *RefSyntaxHighlighterImpl) Unref() {
 }
 
 func (r *RefSyntaxHighlighterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSyntaxHighlighter(reference SyntaxHighlighter) RefSyntaxHighlighter {
 	return (RefSyntaxHighlighter)(NewTypedRef[SyntaxHighlighter](reference))
 }
 
-func newRefSyntaxHighlighterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SyntaxHighlighter](reference.(SyntaxHighlighter)))
+func NewRefSyntaxHighlighterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SyntaxHighlighter](reference.(SyntaxHighlighter)))
 }
 
-func newRefSyntaxHighlighterGDExtensionIternalConstructor(reference SyntaxHighlighter) RefSyntaxHighlighter {
-	return newTypedRefGDExtensionIternalConstructor[SyntaxHighlighter](reference)
+func NewRefSyntaxHighlighterGDExtensionIternalConstructor(reference SyntaxHighlighter) RefSyntaxHighlighter {
+	return NewTypedRefGDExtensionIternalConstructor[SyntaxHighlighter](reference)
 }
 
 var _ RefSystemFont = &RefSystemFontImpl{}
@@ -18848,19 +18848,19 @@ func (r *RefSystemFontImpl) Unref() {
 }
 
 func (r *RefSystemFontImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefSystemFont(reference SystemFont) RefSystemFont {
 	return (RefSystemFont)(NewTypedRef[SystemFont](reference))
 }
 
-func newRefSystemFontAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[SystemFont](reference.(SystemFont)))
+func NewRefSystemFontAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SystemFont](reference.(SystemFont)))
 }
 
-func newRefSystemFontGDExtensionIternalConstructor(reference SystemFont) RefSystemFont {
-	return newTypedRefGDExtensionIternalConstructor[SystemFont](reference)
+func NewRefSystemFontGDExtensionIternalConstructor(reference SystemFont) RefSystemFont {
+	return NewTypedRefGDExtensionIternalConstructor[SystemFont](reference)
 }
 
 var _ RefTCPServer = &RefTCPServerImpl{}
@@ -18895,19 +18895,19 @@ func (r *RefTCPServerImpl) Unref() {
 }
 
 func (r *RefTCPServerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTCPServer(reference TCPServer) RefTCPServer {
 	return (RefTCPServer)(NewTypedRef[TCPServer](reference))
 }
 
-func newRefTCPServerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TCPServer](reference.(TCPServer)))
+func NewRefTCPServerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TCPServer](reference.(TCPServer)))
 }
 
-func newRefTCPServerGDExtensionIternalConstructor(reference TCPServer) RefTCPServer {
-	return newTypedRefGDExtensionIternalConstructor[TCPServer](reference)
+func NewRefTCPServerGDExtensionIternalConstructor(reference TCPServer) RefTCPServer {
+	return NewTypedRefGDExtensionIternalConstructor[TCPServer](reference)
 }
 
 var _ RefTLSOptions = &RefTLSOptionsImpl{}
@@ -18942,19 +18942,19 @@ func (r *RefTLSOptionsImpl) Unref() {
 }
 
 func (r *RefTLSOptionsImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTLSOptions(reference TLSOptions) RefTLSOptions {
 	return (RefTLSOptions)(NewTypedRef[TLSOptions](reference))
 }
 
-func newRefTLSOptionsAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TLSOptions](reference.(TLSOptions)))
+func NewRefTLSOptionsAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TLSOptions](reference.(TLSOptions)))
 }
 
-func newRefTLSOptionsGDExtensionIternalConstructor(reference TLSOptions) RefTLSOptions {
-	return newTypedRefGDExtensionIternalConstructor[TLSOptions](reference)
+func NewRefTLSOptionsGDExtensionIternalConstructor(reference TLSOptions) RefTLSOptions {
+	return NewTypedRefGDExtensionIternalConstructor[TLSOptions](reference)
 }
 
 var _ RefTextLine = &RefTextLineImpl{}
@@ -18989,19 +18989,19 @@ func (r *RefTextLineImpl) Unref() {
 }
 
 func (r *RefTextLineImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTextLine(reference TextLine) RefTextLine {
 	return (RefTextLine)(NewTypedRef[TextLine](reference))
 }
 
-func newRefTextLineAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TextLine](reference.(TextLine)))
+func NewRefTextLineAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TextLine](reference.(TextLine)))
 }
 
-func newRefTextLineGDExtensionIternalConstructor(reference TextLine) RefTextLine {
-	return newTypedRefGDExtensionIternalConstructor[TextLine](reference)
+func NewRefTextLineGDExtensionIternalConstructor(reference TextLine) RefTextLine {
+	return NewTypedRefGDExtensionIternalConstructor[TextLine](reference)
 }
 
 var _ RefTextMesh = &RefTextMeshImpl{}
@@ -19036,19 +19036,19 @@ func (r *RefTextMeshImpl) Unref() {
 }
 
 func (r *RefTextMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTextMesh(reference TextMesh) RefTextMesh {
 	return (RefTextMesh)(NewTypedRef[TextMesh](reference))
 }
 
-func newRefTextMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TextMesh](reference.(TextMesh)))
+func NewRefTextMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TextMesh](reference.(TextMesh)))
 }
 
-func newRefTextMeshGDExtensionIternalConstructor(reference TextMesh) RefTextMesh {
-	return newTypedRefGDExtensionIternalConstructor[TextMesh](reference)
+func NewRefTextMeshGDExtensionIternalConstructor(reference TextMesh) RefTextMesh {
+	return NewTypedRefGDExtensionIternalConstructor[TextMesh](reference)
 }
 
 var _ RefTextParagraph = &RefTextParagraphImpl{}
@@ -19083,19 +19083,19 @@ func (r *RefTextParagraphImpl) Unref() {
 }
 
 func (r *RefTextParagraphImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTextParagraph(reference TextParagraph) RefTextParagraph {
 	return (RefTextParagraph)(NewTypedRef[TextParagraph](reference))
 }
 
-func newRefTextParagraphAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TextParagraph](reference.(TextParagraph)))
+func NewRefTextParagraphAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TextParagraph](reference.(TextParagraph)))
 }
 
-func newRefTextParagraphGDExtensionIternalConstructor(reference TextParagraph) RefTextParagraph {
-	return newTypedRefGDExtensionIternalConstructor[TextParagraph](reference)
+func NewRefTextParagraphGDExtensionIternalConstructor(reference TextParagraph) RefTextParagraph {
+	return NewTypedRefGDExtensionIternalConstructor[TextParagraph](reference)
 }
 
 var _ RefTextServer = &RefTextServerImpl{}
@@ -19130,19 +19130,19 @@ func (r *RefTextServerImpl) Unref() {
 }
 
 func (r *RefTextServerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTextServer(reference TextServer) RefTextServer {
 	return (RefTextServer)(NewTypedRef[TextServer](reference))
 }
 
-func newRefTextServerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TextServer](reference.(TextServer)))
+func NewRefTextServerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TextServer](reference.(TextServer)))
 }
 
-func newRefTextServerGDExtensionIternalConstructor(reference TextServer) RefTextServer {
-	return newTypedRefGDExtensionIternalConstructor[TextServer](reference)
+func NewRefTextServerGDExtensionIternalConstructor(reference TextServer) RefTextServer {
+	return NewTypedRefGDExtensionIternalConstructor[TextServer](reference)
 }
 
 var _ RefTextServerAdvanced = &RefTextServerAdvancedImpl{}
@@ -19177,19 +19177,19 @@ func (r *RefTextServerAdvancedImpl) Unref() {
 }
 
 func (r *RefTextServerAdvancedImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTextServerAdvanced(reference TextServerAdvanced) RefTextServerAdvanced {
 	return (RefTextServerAdvanced)(NewTypedRef[TextServerAdvanced](reference))
 }
 
-func newRefTextServerAdvancedAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TextServerAdvanced](reference.(TextServerAdvanced)))
+func NewRefTextServerAdvancedAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TextServerAdvanced](reference.(TextServerAdvanced)))
 }
 
-func newRefTextServerAdvancedGDExtensionIternalConstructor(reference TextServerAdvanced) RefTextServerAdvanced {
-	return newTypedRefGDExtensionIternalConstructor[TextServerAdvanced](reference)
+func NewRefTextServerAdvancedGDExtensionIternalConstructor(reference TextServerAdvanced) RefTextServerAdvanced {
+	return NewTypedRefGDExtensionIternalConstructor[TextServerAdvanced](reference)
 }
 
 var _ RefTextServerDummy = &RefTextServerDummyImpl{}
@@ -19224,19 +19224,19 @@ func (r *RefTextServerDummyImpl) Unref() {
 }
 
 func (r *RefTextServerDummyImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTextServerDummy(reference TextServerDummy) RefTextServerDummy {
 	return (RefTextServerDummy)(NewTypedRef[TextServerDummy](reference))
 }
 
-func newRefTextServerDummyAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TextServerDummy](reference.(TextServerDummy)))
+func NewRefTextServerDummyAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TextServerDummy](reference.(TextServerDummy)))
 }
 
-func newRefTextServerDummyGDExtensionIternalConstructor(reference TextServerDummy) RefTextServerDummy {
-	return newTypedRefGDExtensionIternalConstructor[TextServerDummy](reference)
+func NewRefTextServerDummyGDExtensionIternalConstructor(reference TextServerDummy) RefTextServerDummy {
+	return NewTypedRefGDExtensionIternalConstructor[TextServerDummy](reference)
 }
 
 var _ RefTextServerExtension = &RefTextServerExtensionImpl{}
@@ -19271,19 +19271,19 @@ func (r *RefTextServerExtensionImpl) Unref() {
 }
 
 func (r *RefTextServerExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTextServerExtension(reference TextServerExtension) RefTextServerExtension {
 	return (RefTextServerExtension)(NewTypedRef[TextServerExtension](reference))
 }
 
-func newRefTextServerExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TextServerExtension](reference.(TextServerExtension)))
+func NewRefTextServerExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TextServerExtension](reference.(TextServerExtension)))
 }
 
-func newRefTextServerExtensionGDExtensionIternalConstructor(reference TextServerExtension) RefTextServerExtension {
-	return newTypedRefGDExtensionIternalConstructor[TextServerExtension](reference)
+func NewRefTextServerExtensionGDExtensionIternalConstructor(reference TextServerExtension) RefTextServerExtension {
+	return NewTypedRefGDExtensionIternalConstructor[TextServerExtension](reference)
 }
 
 var _ RefTexture = &RefTextureImpl{}
@@ -19318,19 +19318,19 @@ func (r *RefTextureImpl) Unref() {
 }
 
 func (r *RefTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTexture(reference Texture) RefTexture {
 	return (RefTexture)(NewTypedRef[Texture](reference))
 }
 
-func newRefTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Texture](reference.(Texture)))
+func NewRefTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Texture](reference.(Texture)))
 }
 
-func newRefTextureGDExtensionIternalConstructor(reference Texture) RefTexture {
-	return newTypedRefGDExtensionIternalConstructor[Texture](reference)
+func NewRefTextureGDExtensionIternalConstructor(reference Texture) RefTexture {
+	return NewTypedRefGDExtensionIternalConstructor[Texture](reference)
 }
 
 var _ RefTexture2D = &RefTexture2DImpl{}
@@ -19365,19 +19365,19 @@ func (r *RefTexture2DImpl) Unref() {
 }
 
 func (r *RefTexture2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTexture2D(reference Texture2D) RefTexture2D {
 	return (RefTexture2D)(NewTypedRef[Texture2D](reference))
 }
 
-func newRefTexture2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Texture2D](reference.(Texture2D)))
+func NewRefTexture2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Texture2D](reference.(Texture2D)))
 }
 
-func newRefTexture2DGDExtensionIternalConstructor(reference Texture2D) RefTexture2D {
-	return newTypedRefGDExtensionIternalConstructor[Texture2D](reference)
+func NewRefTexture2DGDExtensionIternalConstructor(reference Texture2D) RefTexture2D {
+	return NewTypedRefGDExtensionIternalConstructor[Texture2D](reference)
 }
 
 var _ RefTexture2DArray = &RefTexture2DArrayImpl{}
@@ -19412,19 +19412,19 @@ func (r *RefTexture2DArrayImpl) Unref() {
 }
 
 func (r *RefTexture2DArrayImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTexture2DArray(reference Texture2DArray) RefTexture2DArray {
 	return (RefTexture2DArray)(NewTypedRef[Texture2DArray](reference))
 }
 
-func newRefTexture2DArrayAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Texture2DArray](reference.(Texture2DArray)))
+func NewRefTexture2DArrayAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Texture2DArray](reference.(Texture2DArray)))
 }
 
-func newRefTexture2DArrayGDExtensionIternalConstructor(reference Texture2DArray) RefTexture2DArray {
-	return newTypedRefGDExtensionIternalConstructor[Texture2DArray](reference)
+func NewRefTexture2DArrayGDExtensionIternalConstructor(reference Texture2DArray) RefTexture2DArray {
+	return NewTypedRefGDExtensionIternalConstructor[Texture2DArray](reference)
 }
 
 var _ RefTexture2DArrayRD = &RefTexture2DArrayRDImpl{}
@@ -19459,19 +19459,19 @@ func (r *RefTexture2DArrayRDImpl) Unref() {
 }
 
 func (r *RefTexture2DArrayRDImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTexture2DArrayRD(reference Texture2DArrayRD) RefTexture2DArrayRD {
 	return (RefTexture2DArrayRD)(NewTypedRef[Texture2DArrayRD](reference))
 }
 
-func newRefTexture2DArrayRDAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Texture2DArrayRD](reference.(Texture2DArrayRD)))
+func NewRefTexture2DArrayRDAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Texture2DArrayRD](reference.(Texture2DArrayRD)))
 }
 
-func newRefTexture2DArrayRDGDExtensionIternalConstructor(reference Texture2DArrayRD) RefTexture2DArrayRD {
-	return newTypedRefGDExtensionIternalConstructor[Texture2DArrayRD](reference)
+func NewRefTexture2DArrayRDGDExtensionIternalConstructor(reference Texture2DArrayRD) RefTexture2DArrayRD {
+	return NewTypedRefGDExtensionIternalConstructor[Texture2DArrayRD](reference)
 }
 
 var _ RefTexture2DRD = &RefTexture2DRDImpl{}
@@ -19506,19 +19506,19 @@ func (r *RefTexture2DRDImpl) Unref() {
 }
 
 func (r *RefTexture2DRDImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTexture2DRD(reference Texture2DRD) RefTexture2DRD {
 	return (RefTexture2DRD)(NewTypedRef[Texture2DRD](reference))
 }
 
-func newRefTexture2DRDAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Texture2DRD](reference.(Texture2DRD)))
+func NewRefTexture2DRDAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Texture2DRD](reference.(Texture2DRD)))
 }
 
-func newRefTexture2DRDGDExtensionIternalConstructor(reference Texture2DRD) RefTexture2DRD {
-	return newTypedRefGDExtensionIternalConstructor[Texture2DRD](reference)
+func NewRefTexture2DRDGDExtensionIternalConstructor(reference Texture2DRD) RefTexture2DRD {
+	return NewTypedRefGDExtensionIternalConstructor[Texture2DRD](reference)
 }
 
 var _ RefTexture3D = &RefTexture3DImpl{}
@@ -19553,19 +19553,19 @@ func (r *RefTexture3DImpl) Unref() {
 }
 
 func (r *RefTexture3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTexture3D(reference Texture3D) RefTexture3D {
 	return (RefTexture3D)(NewTypedRef[Texture3D](reference))
 }
 
-func newRefTexture3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Texture3D](reference.(Texture3D)))
+func NewRefTexture3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Texture3D](reference.(Texture3D)))
 }
 
-func newRefTexture3DGDExtensionIternalConstructor(reference Texture3D) RefTexture3D {
-	return newTypedRefGDExtensionIternalConstructor[Texture3D](reference)
+func NewRefTexture3DGDExtensionIternalConstructor(reference Texture3D) RefTexture3D {
+	return NewTypedRefGDExtensionIternalConstructor[Texture3D](reference)
 }
 
 var _ RefTexture3DRD = &RefTexture3DRDImpl{}
@@ -19600,19 +19600,19 @@ func (r *RefTexture3DRDImpl) Unref() {
 }
 
 func (r *RefTexture3DRDImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTexture3DRD(reference Texture3DRD) RefTexture3DRD {
 	return (RefTexture3DRD)(NewTypedRef[Texture3DRD](reference))
 }
 
-func newRefTexture3DRDAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Texture3DRD](reference.(Texture3DRD)))
+func NewRefTexture3DRDAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Texture3DRD](reference.(Texture3DRD)))
 }
 
-func newRefTexture3DRDGDExtensionIternalConstructor(reference Texture3DRD) RefTexture3DRD {
-	return newTypedRefGDExtensionIternalConstructor[Texture3DRD](reference)
+func NewRefTexture3DRDGDExtensionIternalConstructor(reference Texture3DRD) RefTexture3DRD {
+	return NewTypedRefGDExtensionIternalConstructor[Texture3DRD](reference)
 }
 
 var _ RefTextureCubemapArrayRD = &RefTextureCubemapArrayRDImpl{}
@@ -19647,19 +19647,19 @@ func (r *RefTextureCubemapArrayRDImpl) Unref() {
 }
 
 func (r *RefTextureCubemapArrayRDImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTextureCubemapArrayRD(reference TextureCubemapArrayRD) RefTextureCubemapArrayRD {
 	return (RefTextureCubemapArrayRD)(NewTypedRef[TextureCubemapArrayRD](reference))
 }
 
-func newRefTextureCubemapArrayRDAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TextureCubemapArrayRD](reference.(TextureCubemapArrayRD)))
+func NewRefTextureCubemapArrayRDAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TextureCubemapArrayRD](reference.(TextureCubemapArrayRD)))
 }
 
-func newRefTextureCubemapArrayRDGDExtensionIternalConstructor(reference TextureCubemapArrayRD) RefTextureCubemapArrayRD {
-	return newTypedRefGDExtensionIternalConstructor[TextureCubemapArrayRD](reference)
+func NewRefTextureCubemapArrayRDGDExtensionIternalConstructor(reference TextureCubemapArrayRD) RefTextureCubemapArrayRD {
+	return NewTypedRefGDExtensionIternalConstructor[TextureCubemapArrayRD](reference)
 }
 
 var _ RefTextureCubemapRD = &RefTextureCubemapRDImpl{}
@@ -19694,19 +19694,19 @@ func (r *RefTextureCubemapRDImpl) Unref() {
 }
 
 func (r *RefTextureCubemapRDImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTextureCubemapRD(reference TextureCubemapRD) RefTextureCubemapRD {
 	return (RefTextureCubemapRD)(NewTypedRef[TextureCubemapRD](reference))
 }
 
-func newRefTextureCubemapRDAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TextureCubemapRD](reference.(TextureCubemapRD)))
+func NewRefTextureCubemapRDAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TextureCubemapRD](reference.(TextureCubemapRD)))
 }
 
-func newRefTextureCubemapRDGDExtensionIternalConstructor(reference TextureCubemapRD) RefTextureCubemapRD {
-	return newTypedRefGDExtensionIternalConstructor[TextureCubemapRD](reference)
+func NewRefTextureCubemapRDGDExtensionIternalConstructor(reference TextureCubemapRD) RefTextureCubemapRD {
+	return NewTypedRefGDExtensionIternalConstructor[TextureCubemapRD](reference)
 }
 
 var _ RefTextureLayered = &RefTextureLayeredImpl{}
@@ -19741,19 +19741,19 @@ func (r *RefTextureLayeredImpl) Unref() {
 }
 
 func (r *RefTextureLayeredImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTextureLayered(reference TextureLayered) RefTextureLayered {
 	return (RefTextureLayered)(NewTypedRef[TextureLayered](reference))
 }
 
-func newRefTextureLayeredAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TextureLayered](reference.(TextureLayered)))
+func NewRefTextureLayeredAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TextureLayered](reference.(TextureLayered)))
 }
 
-func newRefTextureLayeredGDExtensionIternalConstructor(reference TextureLayered) RefTextureLayered {
-	return newTypedRefGDExtensionIternalConstructor[TextureLayered](reference)
+func NewRefTextureLayeredGDExtensionIternalConstructor(reference TextureLayered) RefTextureLayered {
+	return NewTypedRefGDExtensionIternalConstructor[TextureLayered](reference)
 }
 
 var _ RefTextureLayeredRD = &RefTextureLayeredRDImpl{}
@@ -19788,19 +19788,19 @@ func (r *RefTextureLayeredRDImpl) Unref() {
 }
 
 func (r *RefTextureLayeredRDImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTextureLayeredRD(reference TextureLayeredRD) RefTextureLayeredRD {
 	return (RefTextureLayeredRD)(NewTypedRef[TextureLayeredRD](reference))
 }
 
-func newRefTextureLayeredRDAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TextureLayeredRD](reference.(TextureLayeredRD)))
+func NewRefTextureLayeredRDAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TextureLayeredRD](reference.(TextureLayeredRD)))
 }
 
-func newRefTextureLayeredRDGDExtensionIternalConstructor(reference TextureLayeredRD) RefTextureLayeredRD {
-	return newTypedRefGDExtensionIternalConstructor[TextureLayeredRD](reference)
+func NewRefTextureLayeredRDGDExtensionIternalConstructor(reference TextureLayeredRD) RefTextureLayeredRD {
+	return NewTypedRefGDExtensionIternalConstructor[TextureLayeredRD](reference)
 }
 
 var _ RefTheme = &RefThemeImpl{}
@@ -19835,19 +19835,19 @@ func (r *RefThemeImpl) Unref() {
 }
 
 func (r *RefThemeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTheme(reference Theme) RefTheme {
 	return (RefTheme)(NewTypedRef[Theme](reference))
 }
 
-func newRefThemeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Theme](reference.(Theme)))
+func NewRefThemeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Theme](reference.(Theme)))
 }
 
-func newRefThemeGDExtensionIternalConstructor(reference Theme) RefTheme {
-	return newTypedRefGDExtensionIternalConstructor[Theme](reference)
+func NewRefThemeGDExtensionIternalConstructor(reference Theme) RefTheme {
+	return NewTypedRefGDExtensionIternalConstructor[Theme](reference)
 }
 
 var _ RefThread = &RefThreadImpl{}
@@ -19882,19 +19882,19 @@ func (r *RefThreadImpl) Unref() {
 }
 
 func (r *RefThreadImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefThread(reference Thread) RefThread {
 	return (RefThread)(NewTypedRef[Thread](reference))
 }
 
-func newRefThreadAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Thread](reference.(Thread)))
+func NewRefThreadAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Thread](reference.(Thread)))
 }
 
-func newRefThreadGDExtensionIternalConstructor(reference Thread) RefThread {
-	return newTypedRefGDExtensionIternalConstructor[Thread](reference)
+func NewRefThreadGDExtensionIternalConstructor(reference Thread) RefThread {
+	return NewTypedRefGDExtensionIternalConstructor[Thread](reference)
 }
 
 var _ RefTileMapPattern = &RefTileMapPatternImpl{}
@@ -19929,19 +19929,19 @@ func (r *RefTileMapPatternImpl) Unref() {
 }
 
 func (r *RefTileMapPatternImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTileMapPattern(reference TileMapPattern) RefTileMapPattern {
 	return (RefTileMapPattern)(NewTypedRef[TileMapPattern](reference))
 }
 
-func newRefTileMapPatternAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TileMapPattern](reference.(TileMapPattern)))
+func NewRefTileMapPatternAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TileMapPattern](reference.(TileMapPattern)))
 }
 
-func newRefTileMapPatternGDExtensionIternalConstructor(reference TileMapPattern) RefTileMapPattern {
-	return newTypedRefGDExtensionIternalConstructor[TileMapPattern](reference)
+func NewRefTileMapPatternGDExtensionIternalConstructor(reference TileMapPattern) RefTileMapPattern {
+	return NewTypedRefGDExtensionIternalConstructor[TileMapPattern](reference)
 }
 
 var _ RefTileSet = &RefTileSetImpl{}
@@ -19976,19 +19976,19 @@ func (r *RefTileSetImpl) Unref() {
 }
 
 func (r *RefTileSetImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTileSet(reference TileSet) RefTileSet {
 	return (RefTileSet)(NewTypedRef[TileSet](reference))
 }
 
-func newRefTileSetAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TileSet](reference.(TileSet)))
+func NewRefTileSetAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TileSet](reference.(TileSet)))
 }
 
-func newRefTileSetGDExtensionIternalConstructor(reference TileSet) RefTileSet {
-	return newTypedRefGDExtensionIternalConstructor[TileSet](reference)
+func NewRefTileSetGDExtensionIternalConstructor(reference TileSet) RefTileSet {
+	return NewTypedRefGDExtensionIternalConstructor[TileSet](reference)
 }
 
 var _ RefTileSetAtlasSource = &RefTileSetAtlasSourceImpl{}
@@ -20023,19 +20023,19 @@ func (r *RefTileSetAtlasSourceImpl) Unref() {
 }
 
 func (r *RefTileSetAtlasSourceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTileSetAtlasSource(reference TileSetAtlasSource) RefTileSetAtlasSource {
 	return (RefTileSetAtlasSource)(NewTypedRef[TileSetAtlasSource](reference))
 }
 
-func newRefTileSetAtlasSourceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TileSetAtlasSource](reference.(TileSetAtlasSource)))
+func NewRefTileSetAtlasSourceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TileSetAtlasSource](reference.(TileSetAtlasSource)))
 }
 
-func newRefTileSetAtlasSourceGDExtensionIternalConstructor(reference TileSetAtlasSource) RefTileSetAtlasSource {
-	return newTypedRefGDExtensionIternalConstructor[TileSetAtlasSource](reference)
+func NewRefTileSetAtlasSourceGDExtensionIternalConstructor(reference TileSetAtlasSource) RefTileSetAtlasSource {
+	return NewTypedRefGDExtensionIternalConstructor[TileSetAtlasSource](reference)
 }
 
 var _ RefTileSetScenesCollectionSource = &RefTileSetScenesCollectionSourceImpl{}
@@ -20070,19 +20070,19 @@ func (r *RefTileSetScenesCollectionSourceImpl) Unref() {
 }
 
 func (r *RefTileSetScenesCollectionSourceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTileSetScenesCollectionSource(reference TileSetScenesCollectionSource) RefTileSetScenesCollectionSource {
 	return (RefTileSetScenesCollectionSource)(NewTypedRef[TileSetScenesCollectionSource](reference))
 }
 
-func newRefTileSetScenesCollectionSourceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TileSetScenesCollectionSource](reference.(TileSetScenesCollectionSource)))
+func NewRefTileSetScenesCollectionSourceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TileSetScenesCollectionSource](reference.(TileSetScenesCollectionSource)))
 }
 
-func newRefTileSetScenesCollectionSourceGDExtensionIternalConstructor(reference TileSetScenesCollectionSource) RefTileSetScenesCollectionSource {
-	return newTypedRefGDExtensionIternalConstructor[TileSetScenesCollectionSource](reference)
+func NewRefTileSetScenesCollectionSourceGDExtensionIternalConstructor(reference TileSetScenesCollectionSource) RefTileSetScenesCollectionSource {
+	return NewTypedRefGDExtensionIternalConstructor[TileSetScenesCollectionSource](reference)
 }
 
 var _ RefTileSetSource = &RefTileSetSourceImpl{}
@@ -20117,19 +20117,19 @@ func (r *RefTileSetSourceImpl) Unref() {
 }
 
 func (r *RefTileSetSourceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTileSetSource(reference TileSetSource) RefTileSetSource {
 	return (RefTileSetSource)(NewTypedRef[TileSetSource](reference))
 }
 
-func newRefTileSetSourceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TileSetSource](reference.(TileSetSource)))
+func NewRefTileSetSourceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TileSetSource](reference.(TileSetSource)))
 }
 
-func newRefTileSetSourceGDExtensionIternalConstructor(reference TileSetSource) RefTileSetSource {
-	return newTypedRefGDExtensionIternalConstructor[TileSetSource](reference)
+func NewRefTileSetSourceGDExtensionIternalConstructor(reference TileSetSource) RefTileSetSource {
+	return NewTypedRefGDExtensionIternalConstructor[TileSetSource](reference)
 }
 
 var _ RefTorusMesh = &RefTorusMeshImpl{}
@@ -20164,19 +20164,19 @@ func (r *RefTorusMeshImpl) Unref() {
 }
 
 func (r *RefTorusMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTorusMesh(reference TorusMesh) RefTorusMesh {
 	return (RefTorusMesh)(NewTypedRef[TorusMesh](reference))
 }
 
-func newRefTorusMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TorusMesh](reference.(TorusMesh)))
+func NewRefTorusMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TorusMesh](reference.(TorusMesh)))
 }
 
-func newRefTorusMeshGDExtensionIternalConstructor(reference TorusMesh) RefTorusMesh {
-	return newTypedRefGDExtensionIternalConstructor[TorusMesh](reference)
+func NewRefTorusMeshGDExtensionIternalConstructor(reference TorusMesh) RefTorusMesh {
+	return NewTypedRefGDExtensionIternalConstructor[TorusMesh](reference)
 }
 
 var _ RefTranslation = &RefTranslationImpl{}
@@ -20211,19 +20211,19 @@ func (r *RefTranslationImpl) Unref() {
 }
 
 func (r *RefTranslationImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTranslation(reference Translation) RefTranslation {
 	return (RefTranslation)(NewTypedRef[Translation](reference))
 }
 
-func newRefTranslationAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Translation](reference.(Translation)))
+func NewRefTranslationAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Translation](reference.(Translation)))
 }
 
-func newRefTranslationGDExtensionIternalConstructor(reference Translation) RefTranslation {
-	return newTypedRefGDExtensionIternalConstructor[Translation](reference)
+func NewRefTranslationGDExtensionIternalConstructor(reference Translation) RefTranslation {
+	return NewTypedRefGDExtensionIternalConstructor[Translation](reference)
 }
 
 var _ RefTriangleMesh = &RefTriangleMeshImpl{}
@@ -20258,19 +20258,19 @@ func (r *RefTriangleMeshImpl) Unref() {
 }
 
 func (r *RefTriangleMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTriangleMesh(reference TriangleMesh) RefTriangleMesh {
 	return (RefTriangleMesh)(NewTypedRef[TriangleMesh](reference))
 }
 
-func newRefTriangleMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TriangleMesh](reference.(TriangleMesh)))
+func NewRefTriangleMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TriangleMesh](reference.(TriangleMesh)))
 }
 
-func newRefTriangleMeshGDExtensionIternalConstructor(reference TriangleMesh) RefTriangleMesh {
-	return newTypedRefGDExtensionIternalConstructor[TriangleMesh](reference)
+func NewRefTriangleMeshGDExtensionIternalConstructor(reference TriangleMesh) RefTriangleMesh {
+	return NewTypedRefGDExtensionIternalConstructor[TriangleMesh](reference)
 }
 
 var _ RefTubeTrailMesh = &RefTubeTrailMeshImpl{}
@@ -20305,19 +20305,19 @@ func (r *RefTubeTrailMeshImpl) Unref() {
 }
 
 func (r *RefTubeTrailMeshImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTubeTrailMesh(reference TubeTrailMesh) RefTubeTrailMesh {
 	return (RefTubeTrailMesh)(NewTypedRef[TubeTrailMesh](reference))
 }
 
-func newRefTubeTrailMeshAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[TubeTrailMesh](reference.(TubeTrailMesh)))
+func NewRefTubeTrailMeshAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[TubeTrailMesh](reference.(TubeTrailMesh)))
 }
 
-func newRefTubeTrailMeshGDExtensionIternalConstructor(reference TubeTrailMesh) RefTubeTrailMesh {
-	return newTypedRefGDExtensionIternalConstructor[TubeTrailMesh](reference)
+func NewRefTubeTrailMeshGDExtensionIternalConstructor(reference TubeTrailMesh) RefTubeTrailMesh {
+	return NewTypedRefGDExtensionIternalConstructor[TubeTrailMesh](reference)
 }
 
 var _ RefTween = &RefTweenImpl{}
@@ -20352,19 +20352,19 @@ func (r *RefTweenImpl) Unref() {
 }
 
 func (r *RefTweenImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTween(reference Tween) RefTween {
 	return (RefTween)(NewTypedRef[Tween](reference))
 }
 
-func newRefTweenAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Tween](reference.(Tween)))
+func NewRefTweenAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Tween](reference.(Tween)))
 }
 
-func newRefTweenGDExtensionIternalConstructor(reference Tween) RefTween {
-	return newTypedRefGDExtensionIternalConstructor[Tween](reference)
+func NewRefTweenGDExtensionIternalConstructor(reference Tween) RefTween {
+	return NewTypedRefGDExtensionIternalConstructor[Tween](reference)
 }
 
 var _ RefTweener = &RefTweenerImpl{}
@@ -20399,19 +20399,19 @@ func (r *RefTweenerImpl) Unref() {
 }
 
 func (r *RefTweenerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefTweener(reference Tweener) RefTweener {
 	return (RefTweener)(NewTypedRef[Tweener](reference))
 }
 
-func newRefTweenerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[Tweener](reference.(Tweener)))
+func NewRefTweenerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Tweener](reference.(Tweener)))
 }
 
-func newRefTweenerGDExtensionIternalConstructor(reference Tweener) RefTweener {
-	return newTypedRefGDExtensionIternalConstructor[Tweener](reference)
+func NewRefTweenerGDExtensionIternalConstructor(reference Tweener) RefTweener {
+	return NewTypedRefGDExtensionIternalConstructor[Tweener](reference)
 }
 
 var _ RefUDPServer = &RefUDPServerImpl{}
@@ -20446,19 +20446,19 @@ func (r *RefUDPServerImpl) Unref() {
 }
 
 func (r *RefUDPServerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefUDPServer(reference UDPServer) RefUDPServer {
 	return (RefUDPServer)(NewTypedRef[UDPServer](reference))
 }
 
-func newRefUDPServerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[UDPServer](reference.(UDPServer)))
+func NewRefUDPServerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[UDPServer](reference.(UDPServer)))
 }
 
-func newRefUDPServerGDExtensionIternalConstructor(reference UDPServer) RefUDPServer {
-	return newTypedRefGDExtensionIternalConstructor[UDPServer](reference)
+func NewRefUDPServerGDExtensionIternalConstructor(reference UDPServer) RefUDPServer {
+	return NewTypedRefGDExtensionIternalConstructor[UDPServer](reference)
 }
 
 var _ RefUPNP = &RefUPNPImpl{}
@@ -20493,19 +20493,19 @@ func (r *RefUPNPImpl) Unref() {
 }
 
 func (r *RefUPNPImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefUPNP(reference UPNP) RefUPNP {
 	return (RefUPNP)(NewTypedRef[UPNP](reference))
 }
 
-func newRefUPNPAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[UPNP](reference.(UPNP)))
+func NewRefUPNPAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[UPNP](reference.(UPNP)))
 }
 
-func newRefUPNPGDExtensionIternalConstructor(reference UPNP) RefUPNP {
-	return newTypedRefGDExtensionIternalConstructor[UPNP](reference)
+func NewRefUPNPGDExtensionIternalConstructor(reference UPNP) RefUPNP {
+	return NewTypedRefGDExtensionIternalConstructor[UPNP](reference)
 }
 
 var _ RefUPNPDevice = &RefUPNPDeviceImpl{}
@@ -20540,19 +20540,19 @@ func (r *RefUPNPDeviceImpl) Unref() {
 }
 
 func (r *RefUPNPDeviceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefUPNPDevice(reference UPNPDevice) RefUPNPDevice {
 	return (RefUPNPDevice)(NewTypedRef[UPNPDevice](reference))
 }
 
-func newRefUPNPDeviceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[UPNPDevice](reference.(UPNPDevice)))
+func NewRefUPNPDeviceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[UPNPDevice](reference.(UPNPDevice)))
 }
 
-func newRefUPNPDeviceGDExtensionIternalConstructor(reference UPNPDevice) RefUPNPDevice {
-	return newTypedRefGDExtensionIternalConstructor[UPNPDevice](reference)
+func NewRefUPNPDeviceGDExtensionIternalConstructor(reference UPNPDevice) RefUPNPDevice {
+	return NewTypedRefGDExtensionIternalConstructor[UPNPDevice](reference)
 }
 
 var _ RefVideoStream = &RefVideoStreamImpl{}
@@ -20587,19 +20587,19 @@ func (r *RefVideoStreamImpl) Unref() {
 }
 
 func (r *RefVideoStreamImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVideoStream(reference VideoStream) RefVideoStream {
 	return (RefVideoStream)(NewTypedRef[VideoStream](reference))
 }
 
-func newRefVideoStreamAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VideoStream](reference.(VideoStream)))
+func NewRefVideoStreamAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VideoStream](reference.(VideoStream)))
 }
 
-func newRefVideoStreamGDExtensionIternalConstructor(reference VideoStream) RefVideoStream {
-	return newTypedRefGDExtensionIternalConstructor[VideoStream](reference)
+func NewRefVideoStreamGDExtensionIternalConstructor(reference VideoStream) RefVideoStream {
+	return NewTypedRefGDExtensionIternalConstructor[VideoStream](reference)
 }
 
 var _ RefVideoStreamPlayback = &RefVideoStreamPlaybackImpl{}
@@ -20634,19 +20634,19 @@ func (r *RefVideoStreamPlaybackImpl) Unref() {
 }
 
 func (r *RefVideoStreamPlaybackImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVideoStreamPlayback(reference VideoStreamPlayback) RefVideoStreamPlayback {
 	return (RefVideoStreamPlayback)(NewTypedRef[VideoStreamPlayback](reference))
 }
 
-func newRefVideoStreamPlaybackAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VideoStreamPlayback](reference.(VideoStreamPlayback)))
+func NewRefVideoStreamPlaybackAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VideoStreamPlayback](reference.(VideoStreamPlayback)))
 }
 
-func newRefVideoStreamPlaybackGDExtensionIternalConstructor(reference VideoStreamPlayback) RefVideoStreamPlayback {
-	return newTypedRefGDExtensionIternalConstructor[VideoStreamPlayback](reference)
+func NewRefVideoStreamPlaybackGDExtensionIternalConstructor(reference VideoStreamPlayback) RefVideoStreamPlayback {
+	return NewTypedRefGDExtensionIternalConstructor[VideoStreamPlayback](reference)
 }
 
 var _ RefVideoStreamTheora = &RefVideoStreamTheoraImpl{}
@@ -20681,19 +20681,19 @@ func (r *RefVideoStreamTheoraImpl) Unref() {
 }
 
 func (r *RefVideoStreamTheoraImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVideoStreamTheora(reference VideoStreamTheora) RefVideoStreamTheora {
 	return (RefVideoStreamTheora)(NewTypedRef[VideoStreamTheora](reference))
 }
 
-func newRefVideoStreamTheoraAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VideoStreamTheora](reference.(VideoStreamTheora)))
+func NewRefVideoStreamTheoraAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VideoStreamTheora](reference.(VideoStreamTheora)))
 }
 
-func newRefVideoStreamTheoraGDExtensionIternalConstructor(reference VideoStreamTheora) RefVideoStreamTheora {
-	return newTypedRefGDExtensionIternalConstructor[VideoStreamTheora](reference)
+func NewRefVideoStreamTheoraGDExtensionIternalConstructor(reference VideoStreamTheora) RefVideoStreamTheora {
+	return NewTypedRefGDExtensionIternalConstructor[VideoStreamTheora](reference)
 }
 
 var _ RefViewportTexture = &RefViewportTextureImpl{}
@@ -20728,19 +20728,19 @@ func (r *RefViewportTextureImpl) Unref() {
 }
 
 func (r *RefViewportTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefViewportTexture(reference ViewportTexture) RefViewportTexture {
 	return (RefViewportTexture)(NewTypedRef[ViewportTexture](reference))
 }
 
-func newRefViewportTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ViewportTexture](reference.(ViewportTexture)))
+func NewRefViewportTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ViewportTexture](reference.(ViewportTexture)))
 }
 
-func newRefViewportTextureGDExtensionIternalConstructor(reference ViewportTexture) RefViewportTexture {
-	return newTypedRefGDExtensionIternalConstructor[ViewportTexture](reference)
+func NewRefViewportTextureGDExtensionIternalConstructor(reference ViewportTexture) RefViewportTexture {
+	return NewTypedRefGDExtensionIternalConstructor[ViewportTexture](reference)
 }
 
 var _ RefVisualShader = &RefVisualShaderImpl{}
@@ -20775,19 +20775,19 @@ func (r *RefVisualShaderImpl) Unref() {
 }
 
 func (r *RefVisualShaderImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShader(reference VisualShader) RefVisualShader {
 	return (RefVisualShader)(NewTypedRef[VisualShader](reference))
 }
 
-func newRefVisualShaderAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShader](reference.(VisualShader)))
+func NewRefVisualShaderAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShader](reference.(VisualShader)))
 }
 
-func newRefVisualShaderGDExtensionIternalConstructor(reference VisualShader) RefVisualShader {
-	return newTypedRefGDExtensionIternalConstructor[VisualShader](reference)
+func NewRefVisualShaderGDExtensionIternalConstructor(reference VisualShader) RefVisualShader {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShader](reference)
 }
 
 var _ RefVisualShaderNode = &RefVisualShaderNodeImpl{}
@@ -20822,19 +20822,19 @@ func (r *RefVisualShaderNodeImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNode(reference VisualShaderNode) RefVisualShaderNode {
 	return (RefVisualShaderNode)(NewTypedRef[VisualShaderNode](reference))
 }
 
-func newRefVisualShaderNodeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNode](reference.(VisualShaderNode)))
+func NewRefVisualShaderNodeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNode](reference.(VisualShaderNode)))
 }
 
-func newRefVisualShaderNodeGDExtensionIternalConstructor(reference VisualShaderNode) RefVisualShaderNode {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNode](reference)
+func NewRefVisualShaderNodeGDExtensionIternalConstructor(reference VisualShaderNode) RefVisualShaderNode {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNode](reference)
 }
 
 var _ RefVisualShaderNodeBillboard = &RefVisualShaderNodeBillboardImpl{}
@@ -20869,19 +20869,19 @@ func (r *RefVisualShaderNodeBillboardImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeBillboardImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeBillboard(reference VisualShaderNodeBillboard) RefVisualShaderNodeBillboard {
 	return (RefVisualShaderNodeBillboard)(NewTypedRef[VisualShaderNodeBillboard](reference))
 }
 
-func newRefVisualShaderNodeBillboardAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeBillboard](reference.(VisualShaderNodeBillboard)))
+func NewRefVisualShaderNodeBillboardAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeBillboard](reference.(VisualShaderNodeBillboard)))
 }
 
-func newRefVisualShaderNodeBillboardGDExtensionIternalConstructor(reference VisualShaderNodeBillboard) RefVisualShaderNodeBillboard {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeBillboard](reference)
+func NewRefVisualShaderNodeBillboardGDExtensionIternalConstructor(reference VisualShaderNodeBillboard) RefVisualShaderNodeBillboard {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeBillboard](reference)
 }
 
 var _ RefVisualShaderNodeBooleanConstant = &RefVisualShaderNodeBooleanConstantImpl{}
@@ -20916,19 +20916,19 @@ func (r *RefVisualShaderNodeBooleanConstantImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeBooleanConstantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeBooleanConstant(reference VisualShaderNodeBooleanConstant) RefVisualShaderNodeBooleanConstant {
 	return (RefVisualShaderNodeBooleanConstant)(NewTypedRef[VisualShaderNodeBooleanConstant](reference))
 }
 
-func newRefVisualShaderNodeBooleanConstantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeBooleanConstant](reference.(VisualShaderNodeBooleanConstant)))
+func NewRefVisualShaderNodeBooleanConstantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeBooleanConstant](reference.(VisualShaderNodeBooleanConstant)))
 }
 
-func newRefVisualShaderNodeBooleanConstantGDExtensionIternalConstructor(reference VisualShaderNodeBooleanConstant) RefVisualShaderNodeBooleanConstant {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeBooleanConstant](reference)
+func NewRefVisualShaderNodeBooleanConstantGDExtensionIternalConstructor(reference VisualShaderNodeBooleanConstant) RefVisualShaderNodeBooleanConstant {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeBooleanConstant](reference)
 }
 
 var _ RefVisualShaderNodeBooleanParameter = &RefVisualShaderNodeBooleanParameterImpl{}
@@ -20963,19 +20963,19 @@ func (r *RefVisualShaderNodeBooleanParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeBooleanParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeBooleanParameter(reference VisualShaderNodeBooleanParameter) RefVisualShaderNodeBooleanParameter {
 	return (RefVisualShaderNodeBooleanParameter)(NewTypedRef[VisualShaderNodeBooleanParameter](reference))
 }
 
-func newRefVisualShaderNodeBooleanParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeBooleanParameter](reference.(VisualShaderNodeBooleanParameter)))
+func NewRefVisualShaderNodeBooleanParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeBooleanParameter](reference.(VisualShaderNodeBooleanParameter)))
 }
 
-func newRefVisualShaderNodeBooleanParameterGDExtensionIternalConstructor(reference VisualShaderNodeBooleanParameter) RefVisualShaderNodeBooleanParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeBooleanParameter](reference)
+func NewRefVisualShaderNodeBooleanParameterGDExtensionIternalConstructor(reference VisualShaderNodeBooleanParameter) RefVisualShaderNodeBooleanParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeBooleanParameter](reference)
 }
 
 var _ RefVisualShaderNodeClamp = &RefVisualShaderNodeClampImpl{}
@@ -21010,19 +21010,19 @@ func (r *RefVisualShaderNodeClampImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeClampImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeClamp(reference VisualShaderNodeClamp) RefVisualShaderNodeClamp {
 	return (RefVisualShaderNodeClamp)(NewTypedRef[VisualShaderNodeClamp](reference))
 }
 
-func newRefVisualShaderNodeClampAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeClamp](reference.(VisualShaderNodeClamp)))
+func NewRefVisualShaderNodeClampAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeClamp](reference.(VisualShaderNodeClamp)))
 }
 
-func newRefVisualShaderNodeClampGDExtensionIternalConstructor(reference VisualShaderNodeClamp) RefVisualShaderNodeClamp {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeClamp](reference)
+func NewRefVisualShaderNodeClampGDExtensionIternalConstructor(reference VisualShaderNodeClamp) RefVisualShaderNodeClamp {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeClamp](reference)
 }
 
 var _ RefVisualShaderNodeColorConstant = &RefVisualShaderNodeColorConstantImpl{}
@@ -21057,19 +21057,19 @@ func (r *RefVisualShaderNodeColorConstantImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeColorConstantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeColorConstant(reference VisualShaderNodeColorConstant) RefVisualShaderNodeColorConstant {
 	return (RefVisualShaderNodeColorConstant)(NewTypedRef[VisualShaderNodeColorConstant](reference))
 }
 
-func newRefVisualShaderNodeColorConstantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorConstant](reference.(VisualShaderNodeColorConstant)))
+func NewRefVisualShaderNodeColorConstantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorConstant](reference.(VisualShaderNodeColorConstant)))
 }
 
-func newRefVisualShaderNodeColorConstantGDExtensionIternalConstructor(reference VisualShaderNodeColorConstant) RefVisualShaderNodeColorConstant {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorConstant](reference)
+func NewRefVisualShaderNodeColorConstantGDExtensionIternalConstructor(reference VisualShaderNodeColorConstant) RefVisualShaderNodeColorConstant {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorConstant](reference)
 }
 
 var _ RefVisualShaderNodeColorFunc = &RefVisualShaderNodeColorFuncImpl{}
@@ -21104,19 +21104,19 @@ func (r *RefVisualShaderNodeColorFuncImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeColorFuncImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeColorFunc(reference VisualShaderNodeColorFunc) RefVisualShaderNodeColorFunc {
 	return (RefVisualShaderNodeColorFunc)(NewTypedRef[VisualShaderNodeColorFunc](reference))
 }
 
-func newRefVisualShaderNodeColorFuncAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorFunc](reference.(VisualShaderNodeColorFunc)))
+func NewRefVisualShaderNodeColorFuncAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorFunc](reference.(VisualShaderNodeColorFunc)))
 }
 
-func newRefVisualShaderNodeColorFuncGDExtensionIternalConstructor(reference VisualShaderNodeColorFunc) RefVisualShaderNodeColorFunc {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorFunc](reference)
+func NewRefVisualShaderNodeColorFuncGDExtensionIternalConstructor(reference VisualShaderNodeColorFunc) RefVisualShaderNodeColorFunc {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorFunc](reference)
 }
 
 var _ RefVisualShaderNodeColorOp = &RefVisualShaderNodeColorOpImpl{}
@@ -21151,19 +21151,19 @@ func (r *RefVisualShaderNodeColorOpImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeColorOpImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeColorOp(reference VisualShaderNodeColorOp) RefVisualShaderNodeColorOp {
 	return (RefVisualShaderNodeColorOp)(NewTypedRef[VisualShaderNodeColorOp](reference))
 }
 
-func newRefVisualShaderNodeColorOpAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorOp](reference.(VisualShaderNodeColorOp)))
+func NewRefVisualShaderNodeColorOpAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorOp](reference.(VisualShaderNodeColorOp)))
 }
 
-func newRefVisualShaderNodeColorOpGDExtensionIternalConstructor(reference VisualShaderNodeColorOp) RefVisualShaderNodeColorOp {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorOp](reference)
+func NewRefVisualShaderNodeColorOpGDExtensionIternalConstructor(reference VisualShaderNodeColorOp) RefVisualShaderNodeColorOp {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorOp](reference)
 }
 
 var _ RefVisualShaderNodeColorParameter = &RefVisualShaderNodeColorParameterImpl{}
@@ -21198,19 +21198,19 @@ func (r *RefVisualShaderNodeColorParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeColorParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeColorParameter(reference VisualShaderNodeColorParameter) RefVisualShaderNodeColorParameter {
 	return (RefVisualShaderNodeColorParameter)(NewTypedRef[VisualShaderNodeColorParameter](reference))
 }
 
-func newRefVisualShaderNodeColorParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorParameter](reference.(VisualShaderNodeColorParameter)))
+func NewRefVisualShaderNodeColorParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorParameter](reference.(VisualShaderNodeColorParameter)))
 }
 
-func newRefVisualShaderNodeColorParameterGDExtensionIternalConstructor(reference VisualShaderNodeColorParameter) RefVisualShaderNodeColorParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorParameter](reference)
+func NewRefVisualShaderNodeColorParameterGDExtensionIternalConstructor(reference VisualShaderNodeColorParameter) RefVisualShaderNodeColorParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeColorParameter](reference)
 }
 
 var _ RefVisualShaderNodeComment = &RefVisualShaderNodeCommentImpl{}
@@ -21245,19 +21245,19 @@ func (r *RefVisualShaderNodeCommentImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeCommentImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeComment(reference VisualShaderNodeComment) RefVisualShaderNodeComment {
 	return (RefVisualShaderNodeComment)(NewTypedRef[VisualShaderNodeComment](reference))
 }
 
-func newRefVisualShaderNodeCommentAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeComment](reference.(VisualShaderNodeComment)))
+func NewRefVisualShaderNodeCommentAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeComment](reference.(VisualShaderNodeComment)))
 }
 
-func newRefVisualShaderNodeCommentGDExtensionIternalConstructor(reference VisualShaderNodeComment) RefVisualShaderNodeComment {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeComment](reference)
+func NewRefVisualShaderNodeCommentGDExtensionIternalConstructor(reference VisualShaderNodeComment) RefVisualShaderNodeComment {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeComment](reference)
 }
 
 var _ RefVisualShaderNodeCompare = &RefVisualShaderNodeCompareImpl{}
@@ -21292,19 +21292,19 @@ func (r *RefVisualShaderNodeCompareImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeCompareImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeCompare(reference VisualShaderNodeCompare) RefVisualShaderNodeCompare {
 	return (RefVisualShaderNodeCompare)(NewTypedRef[VisualShaderNodeCompare](reference))
 }
 
-func newRefVisualShaderNodeCompareAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCompare](reference.(VisualShaderNodeCompare)))
+func NewRefVisualShaderNodeCompareAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCompare](reference.(VisualShaderNodeCompare)))
 }
 
-func newRefVisualShaderNodeCompareGDExtensionIternalConstructor(reference VisualShaderNodeCompare) RefVisualShaderNodeCompare {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCompare](reference)
+func NewRefVisualShaderNodeCompareGDExtensionIternalConstructor(reference VisualShaderNodeCompare) RefVisualShaderNodeCompare {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCompare](reference)
 }
 
 var _ RefVisualShaderNodeConstant = &RefVisualShaderNodeConstantImpl{}
@@ -21339,19 +21339,19 @@ func (r *RefVisualShaderNodeConstantImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeConstantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeConstant(reference VisualShaderNodeConstant) RefVisualShaderNodeConstant {
 	return (RefVisualShaderNodeConstant)(NewTypedRef[VisualShaderNodeConstant](reference))
 }
 
-func newRefVisualShaderNodeConstantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeConstant](reference.(VisualShaderNodeConstant)))
+func NewRefVisualShaderNodeConstantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeConstant](reference.(VisualShaderNodeConstant)))
 }
 
-func newRefVisualShaderNodeConstantGDExtensionIternalConstructor(reference VisualShaderNodeConstant) RefVisualShaderNodeConstant {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeConstant](reference)
+func NewRefVisualShaderNodeConstantGDExtensionIternalConstructor(reference VisualShaderNodeConstant) RefVisualShaderNodeConstant {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeConstant](reference)
 }
 
 var _ RefVisualShaderNodeCubemap = &RefVisualShaderNodeCubemapImpl{}
@@ -21386,19 +21386,19 @@ func (r *RefVisualShaderNodeCubemapImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeCubemapImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeCubemap(reference VisualShaderNodeCubemap) RefVisualShaderNodeCubemap {
 	return (RefVisualShaderNodeCubemap)(NewTypedRef[VisualShaderNodeCubemap](reference))
 }
 
-func newRefVisualShaderNodeCubemapAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCubemap](reference.(VisualShaderNodeCubemap)))
+func NewRefVisualShaderNodeCubemapAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCubemap](reference.(VisualShaderNodeCubemap)))
 }
 
-func newRefVisualShaderNodeCubemapGDExtensionIternalConstructor(reference VisualShaderNodeCubemap) RefVisualShaderNodeCubemap {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCubemap](reference)
+func NewRefVisualShaderNodeCubemapGDExtensionIternalConstructor(reference VisualShaderNodeCubemap) RefVisualShaderNodeCubemap {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCubemap](reference)
 }
 
 var _ RefVisualShaderNodeCubemapParameter = &RefVisualShaderNodeCubemapParameterImpl{}
@@ -21433,19 +21433,19 @@ func (r *RefVisualShaderNodeCubemapParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeCubemapParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeCubemapParameter(reference VisualShaderNodeCubemapParameter) RefVisualShaderNodeCubemapParameter {
 	return (RefVisualShaderNodeCubemapParameter)(NewTypedRef[VisualShaderNodeCubemapParameter](reference))
 }
 
-func newRefVisualShaderNodeCubemapParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCubemapParameter](reference.(VisualShaderNodeCubemapParameter)))
+func NewRefVisualShaderNodeCubemapParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCubemapParameter](reference.(VisualShaderNodeCubemapParameter)))
 }
 
-func newRefVisualShaderNodeCubemapParameterGDExtensionIternalConstructor(reference VisualShaderNodeCubemapParameter) RefVisualShaderNodeCubemapParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCubemapParameter](reference)
+func NewRefVisualShaderNodeCubemapParameterGDExtensionIternalConstructor(reference VisualShaderNodeCubemapParameter) RefVisualShaderNodeCubemapParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCubemapParameter](reference)
 }
 
 var _ RefVisualShaderNodeCurveTexture = &RefVisualShaderNodeCurveTextureImpl{}
@@ -21480,19 +21480,19 @@ func (r *RefVisualShaderNodeCurveTextureImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeCurveTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeCurveTexture(reference VisualShaderNodeCurveTexture) RefVisualShaderNodeCurveTexture {
 	return (RefVisualShaderNodeCurveTexture)(NewTypedRef[VisualShaderNodeCurveTexture](reference))
 }
 
-func newRefVisualShaderNodeCurveTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCurveTexture](reference.(VisualShaderNodeCurveTexture)))
+func NewRefVisualShaderNodeCurveTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCurveTexture](reference.(VisualShaderNodeCurveTexture)))
 }
 
-func newRefVisualShaderNodeCurveTextureGDExtensionIternalConstructor(reference VisualShaderNodeCurveTexture) RefVisualShaderNodeCurveTexture {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCurveTexture](reference)
+func NewRefVisualShaderNodeCurveTextureGDExtensionIternalConstructor(reference VisualShaderNodeCurveTexture) RefVisualShaderNodeCurveTexture {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCurveTexture](reference)
 }
 
 var _ RefVisualShaderNodeCurveXYZTexture = &RefVisualShaderNodeCurveXYZTextureImpl{}
@@ -21527,19 +21527,19 @@ func (r *RefVisualShaderNodeCurveXYZTextureImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeCurveXYZTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeCurveXYZTexture(reference VisualShaderNodeCurveXYZTexture) RefVisualShaderNodeCurveXYZTexture {
 	return (RefVisualShaderNodeCurveXYZTexture)(NewTypedRef[VisualShaderNodeCurveXYZTexture](reference))
 }
 
-func newRefVisualShaderNodeCurveXYZTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCurveXYZTexture](reference.(VisualShaderNodeCurveXYZTexture)))
+func NewRefVisualShaderNodeCurveXYZTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCurveXYZTexture](reference.(VisualShaderNodeCurveXYZTexture)))
 }
 
-func newRefVisualShaderNodeCurveXYZTextureGDExtensionIternalConstructor(reference VisualShaderNodeCurveXYZTexture) RefVisualShaderNodeCurveXYZTexture {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCurveXYZTexture](reference)
+func NewRefVisualShaderNodeCurveXYZTextureGDExtensionIternalConstructor(reference VisualShaderNodeCurveXYZTexture) RefVisualShaderNodeCurveXYZTexture {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCurveXYZTexture](reference)
 }
 
 var _ RefVisualShaderNodeCustom = &RefVisualShaderNodeCustomImpl{}
@@ -21574,19 +21574,19 @@ func (r *RefVisualShaderNodeCustomImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeCustomImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeCustom(reference VisualShaderNodeCustom) RefVisualShaderNodeCustom {
 	return (RefVisualShaderNodeCustom)(NewTypedRef[VisualShaderNodeCustom](reference))
 }
 
-func newRefVisualShaderNodeCustomAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCustom](reference.(VisualShaderNodeCustom)))
+func NewRefVisualShaderNodeCustomAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCustom](reference.(VisualShaderNodeCustom)))
 }
 
-func newRefVisualShaderNodeCustomGDExtensionIternalConstructor(reference VisualShaderNodeCustom) RefVisualShaderNodeCustom {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeCustom](reference)
+func NewRefVisualShaderNodeCustomGDExtensionIternalConstructor(reference VisualShaderNodeCustom) RefVisualShaderNodeCustom {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeCustom](reference)
 }
 
 var _ RefVisualShaderNodeDerivativeFunc = &RefVisualShaderNodeDerivativeFuncImpl{}
@@ -21621,19 +21621,19 @@ func (r *RefVisualShaderNodeDerivativeFuncImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeDerivativeFuncImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeDerivativeFunc(reference VisualShaderNodeDerivativeFunc) RefVisualShaderNodeDerivativeFunc {
 	return (RefVisualShaderNodeDerivativeFunc)(NewTypedRef[VisualShaderNodeDerivativeFunc](reference))
 }
 
-func newRefVisualShaderNodeDerivativeFuncAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeDerivativeFunc](reference.(VisualShaderNodeDerivativeFunc)))
+func NewRefVisualShaderNodeDerivativeFuncAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeDerivativeFunc](reference.(VisualShaderNodeDerivativeFunc)))
 }
 
-func newRefVisualShaderNodeDerivativeFuncGDExtensionIternalConstructor(reference VisualShaderNodeDerivativeFunc) RefVisualShaderNodeDerivativeFunc {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeDerivativeFunc](reference)
+func NewRefVisualShaderNodeDerivativeFuncGDExtensionIternalConstructor(reference VisualShaderNodeDerivativeFunc) RefVisualShaderNodeDerivativeFunc {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeDerivativeFunc](reference)
 }
 
 var _ RefVisualShaderNodeDeterminant = &RefVisualShaderNodeDeterminantImpl{}
@@ -21668,19 +21668,19 @@ func (r *RefVisualShaderNodeDeterminantImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeDeterminantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeDeterminant(reference VisualShaderNodeDeterminant) RefVisualShaderNodeDeterminant {
 	return (RefVisualShaderNodeDeterminant)(NewTypedRef[VisualShaderNodeDeterminant](reference))
 }
 
-func newRefVisualShaderNodeDeterminantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeDeterminant](reference.(VisualShaderNodeDeterminant)))
+func NewRefVisualShaderNodeDeterminantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeDeterminant](reference.(VisualShaderNodeDeterminant)))
 }
 
-func newRefVisualShaderNodeDeterminantGDExtensionIternalConstructor(reference VisualShaderNodeDeterminant) RefVisualShaderNodeDeterminant {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeDeterminant](reference)
+func NewRefVisualShaderNodeDeterminantGDExtensionIternalConstructor(reference VisualShaderNodeDeterminant) RefVisualShaderNodeDeterminant {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeDeterminant](reference)
 }
 
 var _ RefVisualShaderNodeDistanceFade = &RefVisualShaderNodeDistanceFadeImpl{}
@@ -21715,19 +21715,19 @@ func (r *RefVisualShaderNodeDistanceFadeImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeDistanceFadeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeDistanceFade(reference VisualShaderNodeDistanceFade) RefVisualShaderNodeDistanceFade {
 	return (RefVisualShaderNodeDistanceFade)(NewTypedRef[VisualShaderNodeDistanceFade](reference))
 }
 
-func newRefVisualShaderNodeDistanceFadeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeDistanceFade](reference.(VisualShaderNodeDistanceFade)))
+func NewRefVisualShaderNodeDistanceFadeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeDistanceFade](reference.(VisualShaderNodeDistanceFade)))
 }
 
-func newRefVisualShaderNodeDistanceFadeGDExtensionIternalConstructor(reference VisualShaderNodeDistanceFade) RefVisualShaderNodeDistanceFade {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeDistanceFade](reference)
+func NewRefVisualShaderNodeDistanceFadeGDExtensionIternalConstructor(reference VisualShaderNodeDistanceFade) RefVisualShaderNodeDistanceFade {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeDistanceFade](reference)
 }
 
 var _ RefVisualShaderNodeDotProduct = &RefVisualShaderNodeDotProductImpl{}
@@ -21762,19 +21762,19 @@ func (r *RefVisualShaderNodeDotProductImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeDotProductImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeDotProduct(reference VisualShaderNodeDotProduct) RefVisualShaderNodeDotProduct {
 	return (RefVisualShaderNodeDotProduct)(NewTypedRef[VisualShaderNodeDotProduct](reference))
 }
 
-func newRefVisualShaderNodeDotProductAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeDotProduct](reference.(VisualShaderNodeDotProduct)))
+func NewRefVisualShaderNodeDotProductAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeDotProduct](reference.(VisualShaderNodeDotProduct)))
 }
 
-func newRefVisualShaderNodeDotProductGDExtensionIternalConstructor(reference VisualShaderNodeDotProduct) RefVisualShaderNodeDotProduct {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeDotProduct](reference)
+func NewRefVisualShaderNodeDotProductGDExtensionIternalConstructor(reference VisualShaderNodeDotProduct) RefVisualShaderNodeDotProduct {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeDotProduct](reference)
 }
 
 var _ RefVisualShaderNodeExpression = &RefVisualShaderNodeExpressionImpl{}
@@ -21809,19 +21809,19 @@ func (r *RefVisualShaderNodeExpressionImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeExpressionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeExpression(reference VisualShaderNodeExpression) RefVisualShaderNodeExpression {
 	return (RefVisualShaderNodeExpression)(NewTypedRef[VisualShaderNodeExpression](reference))
 }
 
-func newRefVisualShaderNodeExpressionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeExpression](reference.(VisualShaderNodeExpression)))
+func NewRefVisualShaderNodeExpressionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeExpression](reference.(VisualShaderNodeExpression)))
 }
 
-func newRefVisualShaderNodeExpressionGDExtensionIternalConstructor(reference VisualShaderNodeExpression) RefVisualShaderNodeExpression {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeExpression](reference)
+func NewRefVisualShaderNodeExpressionGDExtensionIternalConstructor(reference VisualShaderNodeExpression) RefVisualShaderNodeExpression {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeExpression](reference)
 }
 
 var _ RefVisualShaderNodeFaceForward = &RefVisualShaderNodeFaceForwardImpl{}
@@ -21856,19 +21856,19 @@ func (r *RefVisualShaderNodeFaceForwardImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeFaceForwardImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeFaceForward(reference VisualShaderNodeFaceForward) RefVisualShaderNodeFaceForward {
 	return (RefVisualShaderNodeFaceForward)(NewTypedRef[VisualShaderNodeFaceForward](reference))
 }
 
-func newRefVisualShaderNodeFaceForwardAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFaceForward](reference.(VisualShaderNodeFaceForward)))
+func NewRefVisualShaderNodeFaceForwardAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFaceForward](reference.(VisualShaderNodeFaceForward)))
 }
 
-func newRefVisualShaderNodeFaceForwardGDExtensionIternalConstructor(reference VisualShaderNodeFaceForward) RefVisualShaderNodeFaceForward {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFaceForward](reference)
+func NewRefVisualShaderNodeFaceForwardGDExtensionIternalConstructor(reference VisualShaderNodeFaceForward) RefVisualShaderNodeFaceForward {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFaceForward](reference)
 }
 
 var _ RefVisualShaderNodeFloatConstant = &RefVisualShaderNodeFloatConstantImpl{}
@@ -21903,19 +21903,19 @@ func (r *RefVisualShaderNodeFloatConstantImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeFloatConstantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeFloatConstant(reference VisualShaderNodeFloatConstant) RefVisualShaderNodeFloatConstant {
 	return (RefVisualShaderNodeFloatConstant)(NewTypedRef[VisualShaderNodeFloatConstant](reference))
 }
 
-func newRefVisualShaderNodeFloatConstantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatConstant](reference.(VisualShaderNodeFloatConstant)))
+func NewRefVisualShaderNodeFloatConstantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatConstant](reference.(VisualShaderNodeFloatConstant)))
 }
 
-func newRefVisualShaderNodeFloatConstantGDExtensionIternalConstructor(reference VisualShaderNodeFloatConstant) RefVisualShaderNodeFloatConstant {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatConstant](reference)
+func NewRefVisualShaderNodeFloatConstantGDExtensionIternalConstructor(reference VisualShaderNodeFloatConstant) RefVisualShaderNodeFloatConstant {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatConstant](reference)
 }
 
 var _ RefVisualShaderNodeFloatFunc = &RefVisualShaderNodeFloatFuncImpl{}
@@ -21950,19 +21950,19 @@ func (r *RefVisualShaderNodeFloatFuncImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeFloatFuncImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeFloatFunc(reference VisualShaderNodeFloatFunc) RefVisualShaderNodeFloatFunc {
 	return (RefVisualShaderNodeFloatFunc)(NewTypedRef[VisualShaderNodeFloatFunc](reference))
 }
 
-func newRefVisualShaderNodeFloatFuncAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatFunc](reference.(VisualShaderNodeFloatFunc)))
+func NewRefVisualShaderNodeFloatFuncAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatFunc](reference.(VisualShaderNodeFloatFunc)))
 }
 
-func newRefVisualShaderNodeFloatFuncGDExtensionIternalConstructor(reference VisualShaderNodeFloatFunc) RefVisualShaderNodeFloatFunc {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatFunc](reference)
+func NewRefVisualShaderNodeFloatFuncGDExtensionIternalConstructor(reference VisualShaderNodeFloatFunc) RefVisualShaderNodeFloatFunc {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatFunc](reference)
 }
 
 var _ RefVisualShaderNodeFloatOp = &RefVisualShaderNodeFloatOpImpl{}
@@ -21997,19 +21997,19 @@ func (r *RefVisualShaderNodeFloatOpImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeFloatOpImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeFloatOp(reference VisualShaderNodeFloatOp) RefVisualShaderNodeFloatOp {
 	return (RefVisualShaderNodeFloatOp)(NewTypedRef[VisualShaderNodeFloatOp](reference))
 }
 
-func newRefVisualShaderNodeFloatOpAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatOp](reference.(VisualShaderNodeFloatOp)))
+func NewRefVisualShaderNodeFloatOpAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatOp](reference.(VisualShaderNodeFloatOp)))
 }
 
-func newRefVisualShaderNodeFloatOpGDExtensionIternalConstructor(reference VisualShaderNodeFloatOp) RefVisualShaderNodeFloatOp {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatOp](reference)
+func NewRefVisualShaderNodeFloatOpGDExtensionIternalConstructor(reference VisualShaderNodeFloatOp) RefVisualShaderNodeFloatOp {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatOp](reference)
 }
 
 var _ RefVisualShaderNodeFloatParameter = &RefVisualShaderNodeFloatParameterImpl{}
@@ -22044,19 +22044,19 @@ func (r *RefVisualShaderNodeFloatParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeFloatParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeFloatParameter(reference VisualShaderNodeFloatParameter) RefVisualShaderNodeFloatParameter {
 	return (RefVisualShaderNodeFloatParameter)(NewTypedRef[VisualShaderNodeFloatParameter](reference))
 }
 
-func newRefVisualShaderNodeFloatParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatParameter](reference.(VisualShaderNodeFloatParameter)))
+func NewRefVisualShaderNodeFloatParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatParameter](reference.(VisualShaderNodeFloatParameter)))
 }
 
-func newRefVisualShaderNodeFloatParameterGDExtensionIternalConstructor(reference VisualShaderNodeFloatParameter) RefVisualShaderNodeFloatParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatParameter](reference)
+func NewRefVisualShaderNodeFloatParameterGDExtensionIternalConstructor(reference VisualShaderNodeFloatParameter) RefVisualShaderNodeFloatParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatParameter](reference)
 }
 
 var _ RefVisualShaderNodeFresnel = &RefVisualShaderNodeFresnelImpl{}
@@ -22091,19 +22091,19 @@ func (r *RefVisualShaderNodeFresnelImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeFresnelImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeFresnel(reference VisualShaderNodeFresnel) RefVisualShaderNodeFresnel {
 	return (RefVisualShaderNodeFresnel)(NewTypedRef[VisualShaderNodeFresnel](reference))
 }
 
-func newRefVisualShaderNodeFresnelAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFresnel](reference.(VisualShaderNodeFresnel)))
+func NewRefVisualShaderNodeFresnelAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFresnel](reference.(VisualShaderNodeFresnel)))
 }
 
-func newRefVisualShaderNodeFresnelGDExtensionIternalConstructor(reference VisualShaderNodeFresnel) RefVisualShaderNodeFresnel {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeFresnel](reference)
+func NewRefVisualShaderNodeFresnelGDExtensionIternalConstructor(reference VisualShaderNodeFresnel) RefVisualShaderNodeFresnel {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFresnel](reference)
 }
 
 var _ RefVisualShaderNodeGlobalExpression = &RefVisualShaderNodeGlobalExpressionImpl{}
@@ -22138,19 +22138,19 @@ func (r *RefVisualShaderNodeGlobalExpressionImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeGlobalExpressionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeGlobalExpression(reference VisualShaderNodeGlobalExpression) RefVisualShaderNodeGlobalExpression {
 	return (RefVisualShaderNodeGlobalExpression)(NewTypedRef[VisualShaderNodeGlobalExpression](reference))
 }
 
-func newRefVisualShaderNodeGlobalExpressionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeGlobalExpression](reference.(VisualShaderNodeGlobalExpression)))
+func NewRefVisualShaderNodeGlobalExpressionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeGlobalExpression](reference.(VisualShaderNodeGlobalExpression)))
 }
 
-func newRefVisualShaderNodeGlobalExpressionGDExtensionIternalConstructor(reference VisualShaderNodeGlobalExpression) RefVisualShaderNodeGlobalExpression {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeGlobalExpression](reference)
+func NewRefVisualShaderNodeGlobalExpressionGDExtensionIternalConstructor(reference VisualShaderNodeGlobalExpression) RefVisualShaderNodeGlobalExpression {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeGlobalExpression](reference)
 }
 
 var _ RefVisualShaderNodeGroupBase = &RefVisualShaderNodeGroupBaseImpl{}
@@ -22185,19 +22185,19 @@ func (r *RefVisualShaderNodeGroupBaseImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeGroupBaseImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeGroupBase(reference VisualShaderNodeGroupBase) RefVisualShaderNodeGroupBase {
 	return (RefVisualShaderNodeGroupBase)(NewTypedRef[VisualShaderNodeGroupBase](reference))
 }
 
-func newRefVisualShaderNodeGroupBaseAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeGroupBase](reference.(VisualShaderNodeGroupBase)))
+func NewRefVisualShaderNodeGroupBaseAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeGroupBase](reference.(VisualShaderNodeGroupBase)))
 }
 
-func newRefVisualShaderNodeGroupBaseGDExtensionIternalConstructor(reference VisualShaderNodeGroupBase) RefVisualShaderNodeGroupBase {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeGroupBase](reference)
+func NewRefVisualShaderNodeGroupBaseGDExtensionIternalConstructor(reference VisualShaderNodeGroupBase) RefVisualShaderNodeGroupBase {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeGroupBase](reference)
 }
 
 var _ RefVisualShaderNodeIf = &RefVisualShaderNodeIfImpl{}
@@ -22232,19 +22232,19 @@ func (r *RefVisualShaderNodeIfImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeIfImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeIf(reference VisualShaderNodeIf) RefVisualShaderNodeIf {
 	return (RefVisualShaderNodeIf)(NewTypedRef[VisualShaderNodeIf](reference))
 }
 
-func newRefVisualShaderNodeIfAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIf](reference.(VisualShaderNodeIf)))
+func NewRefVisualShaderNodeIfAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIf](reference.(VisualShaderNodeIf)))
 }
 
-func newRefVisualShaderNodeIfGDExtensionIternalConstructor(reference VisualShaderNodeIf) RefVisualShaderNodeIf {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIf](reference)
+func NewRefVisualShaderNodeIfGDExtensionIternalConstructor(reference VisualShaderNodeIf) RefVisualShaderNodeIf {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIf](reference)
 }
 
 var _ RefVisualShaderNodeInput = &RefVisualShaderNodeInputImpl{}
@@ -22279,19 +22279,19 @@ func (r *RefVisualShaderNodeInputImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeInputImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeInput(reference VisualShaderNodeInput) RefVisualShaderNodeInput {
 	return (RefVisualShaderNodeInput)(NewTypedRef[VisualShaderNodeInput](reference))
 }
 
-func newRefVisualShaderNodeInputAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeInput](reference.(VisualShaderNodeInput)))
+func NewRefVisualShaderNodeInputAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeInput](reference.(VisualShaderNodeInput)))
 }
 
-func newRefVisualShaderNodeInputGDExtensionIternalConstructor(reference VisualShaderNodeInput) RefVisualShaderNodeInput {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeInput](reference)
+func NewRefVisualShaderNodeInputGDExtensionIternalConstructor(reference VisualShaderNodeInput) RefVisualShaderNodeInput {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeInput](reference)
 }
 
 var _ RefVisualShaderNodeIntConstant = &RefVisualShaderNodeIntConstantImpl{}
@@ -22326,19 +22326,19 @@ func (r *RefVisualShaderNodeIntConstantImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeIntConstantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeIntConstant(reference VisualShaderNodeIntConstant) RefVisualShaderNodeIntConstant {
 	return (RefVisualShaderNodeIntConstant)(NewTypedRef[VisualShaderNodeIntConstant](reference))
 }
 
-func newRefVisualShaderNodeIntConstantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntConstant](reference.(VisualShaderNodeIntConstant)))
+func NewRefVisualShaderNodeIntConstantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntConstant](reference.(VisualShaderNodeIntConstant)))
 }
 
-func newRefVisualShaderNodeIntConstantGDExtensionIternalConstructor(reference VisualShaderNodeIntConstant) RefVisualShaderNodeIntConstant {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntConstant](reference)
+func NewRefVisualShaderNodeIntConstantGDExtensionIternalConstructor(reference VisualShaderNodeIntConstant) RefVisualShaderNodeIntConstant {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntConstant](reference)
 }
 
 var _ RefVisualShaderNodeIntFunc = &RefVisualShaderNodeIntFuncImpl{}
@@ -22373,19 +22373,19 @@ func (r *RefVisualShaderNodeIntFuncImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeIntFuncImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeIntFunc(reference VisualShaderNodeIntFunc) RefVisualShaderNodeIntFunc {
 	return (RefVisualShaderNodeIntFunc)(NewTypedRef[VisualShaderNodeIntFunc](reference))
 }
 
-func newRefVisualShaderNodeIntFuncAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntFunc](reference.(VisualShaderNodeIntFunc)))
+func NewRefVisualShaderNodeIntFuncAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntFunc](reference.(VisualShaderNodeIntFunc)))
 }
 
-func newRefVisualShaderNodeIntFuncGDExtensionIternalConstructor(reference VisualShaderNodeIntFunc) RefVisualShaderNodeIntFunc {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntFunc](reference)
+func NewRefVisualShaderNodeIntFuncGDExtensionIternalConstructor(reference VisualShaderNodeIntFunc) RefVisualShaderNodeIntFunc {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntFunc](reference)
 }
 
 var _ RefVisualShaderNodeIntOp = &RefVisualShaderNodeIntOpImpl{}
@@ -22420,19 +22420,19 @@ func (r *RefVisualShaderNodeIntOpImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeIntOpImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeIntOp(reference VisualShaderNodeIntOp) RefVisualShaderNodeIntOp {
 	return (RefVisualShaderNodeIntOp)(NewTypedRef[VisualShaderNodeIntOp](reference))
 }
 
-func newRefVisualShaderNodeIntOpAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntOp](reference.(VisualShaderNodeIntOp)))
+func NewRefVisualShaderNodeIntOpAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntOp](reference.(VisualShaderNodeIntOp)))
 }
 
-func newRefVisualShaderNodeIntOpGDExtensionIternalConstructor(reference VisualShaderNodeIntOp) RefVisualShaderNodeIntOp {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntOp](reference)
+func NewRefVisualShaderNodeIntOpGDExtensionIternalConstructor(reference VisualShaderNodeIntOp) RefVisualShaderNodeIntOp {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntOp](reference)
 }
 
 var _ RefVisualShaderNodeIntParameter = &RefVisualShaderNodeIntParameterImpl{}
@@ -22467,19 +22467,19 @@ func (r *RefVisualShaderNodeIntParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeIntParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeIntParameter(reference VisualShaderNodeIntParameter) RefVisualShaderNodeIntParameter {
 	return (RefVisualShaderNodeIntParameter)(NewTypedRef[VisualShaderNodeIntParameter](reference))
 }
 
-func newRefVisualShaderNodeIntParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntParameter](reference.(VisualShaderNodeIntParameter)))
+func NewRefVisualShaderNodeIntParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntParameter](reference.(VisualShaderNodeIntParameter)))
 }
 
-func newRefVisualShaderNodeIntParameterGDExtensionIternalConstructor(reference VisualShaderNodeIntParameter) RefVisualShaderNodeIntParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntParameter](reference)
+func NewRefVisualShaderNodeIntParameterGDExtensionIternalConstructor(reference VisualShaderNodeIntParameter) RefVisualShaderNodeIntParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIntParameter](reference)
 }
 
 var _ RefVisualShaderNodeIs = &RefVisualShaderNodeIsImpl{}
@@ -22514,19 +22514,19 @@ func (r *RefVisualShaderNodeIsImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeIsImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeIs(reference VisualShaderNodeIs) RefVisualShaderNodeIs {
 	return (RefVisualShaderNodeIs)(NewTypedRef[VisualShaderNodeIs](reference))
 }
 
-func newRefVisualShaderNodeIsAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIs](reference.(VisualShaderNodeIs)))
+func NewRefVisualShaderNodeIsAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIs](reference.(VisualShaderNodeIs)))
 }
 
-func newRefVisualShaderNodeIsGDExtensionIternalConstructor(reference VisualShaderNodeIs) RefVisualShaderNodeIs {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeIs](reference)
+func NewRefVisualShaderNodeIsGDExtensionIternalConstructor(reference VisualShaderNodeIs) RefVisualShaderNodeIs {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeIs](reference)
 }
 
 var _ RefVisualShaderNodeLinearSceneDepth = &RefVisualShaderNodeLinearSceneDepthImpl{}
@@ -22561,19 +22561,19 @@ func (r *RefVisualShaderNodeLinearSceneDepthImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeLinearSceneDepthImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeLinearSceneDepth(reference VisualShaderNodeLinearSceneDepth) RefVisualShaderNodeLinearSceneDepth {
 	return (RefVisualShaderNodeLinearSceneDepth)(NewTypedRef[VisualShaderNodeLinearSceneDepth](reference))
 }
 
-func newRefVisualShaderNodeLinearSceneDepthAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeLinearSceneDepth](reference.(VisualShaderNodeLinearSceneDepth)))
+func NewRefVisualShaderNodeLinearSceneDepthAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeLinearSceneDepth](reference.(VisualShaderNodeLinearSceneDepth)))
 }
 
-func newRefVisualShaderNodeLinearSceneDepthGDExtensionIternalConstructor(reference VisualShaderNodeLinearSceneDepth) RefVisualShaderNodeLinearSceneDepth {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeLinearSceneDepth](reference)
+func NewRefVisualShaderNodeLinearSceneDepthGDExtensionIternalConstructor(reference VisualShaderNodeLinearSceneDepth) RefVisualShaderNodeLinearSceneDepth {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeLinearSceneDepth](reference)
 }
 
 var _ RefVisualShaderNodeMix = &RefVisualShaderNodeMixImpl{}
@@ -22608,19 +22608,19 @@ func (r *RefVisualShaderNodeMixImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeMixImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeMix(reference VisualShaderNodeMix) RefVisualShaderNodeMix {
 	return (RefVisualShaderNodeMix)(NewTypedRef[VisualShaderNodeMix](reference))
 }
 
-func newRefVisualShaderNodeMixAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeMix](reference.(VisualShaderNodeMix)))
+func NewRefVisualShaderNodeMixAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeMix](reference.(VisualShaderNodeMix)))
 }
 
-func newRefVisualShaderNodeMixGDExtensionIternalConstructor(reference VisualShaderNodeMix) RefVisualShaderNodeMix {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeMix](reference)
+func NewRefVisualShaderNodeMixGDExtensionIternalConstructor(reference VisualShaderNodeMix) RefVisualShaderNodeMix {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeMix](reference)
 }
 
 var _ RefVisualShaderNodeMultiplyAdd = &RefVisualShaderNodeMultiplyAddImpl{}
@@ -22655,19 +22655,19 @@ func (r *RefVisualShaderNodeMultiplyAddImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeMultiplyAddImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeMultiplyAdd(reference VisualShaderNodeMultiplyAdd) RefVisualShaderNodeMultiplyAdd {
 	return (RefVisualShaderNodeMultiplyAdd)(NewTypedRef[VisualShaderNodeMultiplyAdd](reference))
 }
 
-func newRefVisualShaderNodeMultiplyAddAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeMultiplyAdd](reference.(VisualShaderNodeMultiplyAdd)))
+func NewRefVisualShaderNodeMultiplyAddAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeMultiplyAdd](reference.(VisualShaderNodeMultiplyAdd)))
 }
 
-func newRefVisualShaderNodeMultiplyAddGDExtensionIternalConstructor(reference VisualShaderNodeMultiplyAdd) RefVisualShaderNodeMultiplyAdd {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeMultiplyAdd](reference)
+func NewRefVisualShaderNodeMultiplyAddGDExtensionIternalConstructor(reference VisualShaderNodeMultiplyAdd) RefVisualShaderNodeMultiplyAdd {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeMultiplyAdd](reference)
 }
 
 var _ RefVisualShaderNodeOuterProduct = &RefVisualShaderNodeOuterProductImpl{}
@@ -22702,19 +22702,19 @@ func (r *RefVisualShaderNodeOuterProductImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeOuterProductImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeOuterProduct(reference VisualShaderNodeOuterProduct) RefVisualShaderNodeOuterProduct {
 	return (RefVisualShaderNodeOuterProduct)(NewTypedRef[VisualShaderNodeOuterProduct](reference))
 }
 
-func newRefVisualShaderNodeOuterProductAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeOuterProduct](reference.(VisualShaderNodeOuterProduct)))
+func NewRefVisualShaderNodeOuterProductAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeOuterProduct](reference.(VisualShaderNodeOuterProduct)))
 }
 
-func newRefVisualShaderNodeOuterProductGDExtensionIternalConstructor(reference VisualShaderNodeOuterProduct) RefVisualShaderNodeOuterProduct {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeOuterProduct](reference)
+func NewRefVisualShaderNodeOuterProductGDExtensionIternalConstructor(reference VisualShaderNodeOuterProduct) RefVisualShaderNodeOuterProduct {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeOuterProduct](reference)
 }
 
 var _ RefVisualShaderNodeOutput = &RefVisualShaderNodeOutputImpl{}
@@ -22749,19 +22749,19 @@ func (r *RefVisualShaderNodeOutputImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeOutputImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeOutput(reference VisualShaderNodeOutput) RefVisualShaderNodeOutput {
 	return (RefVisualShaderNodeOutput)(NewTypedRef[VisualShaderNodeOutput](reference))
 }
 
-func newRefVisualShaderNodeOutputAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeOutput](reference.(VisualShaderNodeOutput)))
+func NewRefVisualShaderNodeOutputAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeOutput](reference.(VisualShaderNodeOutput)))
 }
 
-func newRefVisualShaderNodeOutputGDExtensionIternalConstructor(reference VisualShaderNodeOutput) RefVisualShaderNodeOutput {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeOutput](reference)
+func NewRefVisualShaderNodeOutputGDExtensionIternalConstructor(reference VisualShaderNodeOutput) RefVisualShaderNodeOutput {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeOutput](reference)
 }
 
 var _ RefVisualShaderNodeParameter = &RefVisualShaderNodeParameterImpl{}
@@ -22796,19 +22796,19 @@ func (r *RefVisualShaderNodeParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParameter(reference VisualShaderNodeParameter) RefVisualShaderNodeParameter {
 	return (RefVisualShaderNodeParameter)(NewTypedRef[VisualShaderNodeParameter](reference))
 }
 
-func newRefVisualShaderNodeParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParameter](reference.(VisualShaderNodeParameter)))
+func NewRefVisualShaderNodeParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParameter](reference.(VisualShaderNodeParameter)))
 }
 
-func newRefVisualShaderNodeParameterGDExtensionIternalConstructor(reference VisualShaderNodeParameter) RefVisualShaderNodeParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParameter](reference)
+func NewRefVisualShaderNodeParameterGDExtensionIternalConstructor(reference VisualShaderNodeParameter) RefVisualShaderNodeParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParameter](reference)
 }
 
 var _ RefVisualShaderNodeParameterRef = &RefVisualShaderNodeParameterRefImpl{}
@@ -22843,19 +22843,19 @@ func (r *RefVisualShaderNodeParameterRefImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParameterRefImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParameterRef(reference VisualShaderNodeParameterRef) RefVisualShaderNodeParameterRef {
 	return (RefVisualShaderNodeParameterRef)(NewTypedRef[VisualShaderNodeParameterRef](reference))
 }
 
-func newRefVisualShaderNodeParameterRefAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParameterRef](reference.(VisualShaderNodeParameterRef)))
+func NewRefVisualShaderNodeParameterRefAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParameterRef](reference.(VisualShaderNodeParameterRef)))
 }
 
-func newRefVisualShaderNodeParameterRefGDExtensionIternalConstructor(reference VisualShaderNodeParameterRef) RefVisualShaderNodeParameterRef {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParameterRef](reference)
+func NewRefVisualShaderNodeParameterRefGDExtensionIternalConstructor(reference VisualShaderNodeParameterRef) RefVisualShaderNodeParameterRef {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParameterRef](reference)
 }
 
 var _ RefVisualShaderNodeParticleAccelerator = &RefVisualShaderNodeParticleAcceleratorImpl{}
@@ -22890,19 +22890,19 @@ func (r *RefVisualShaderNodeParticleAcceleratorImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParticleAcceleratorImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParticleAccelerator(reference VisualShaderNodeParticleAccelerator) RefVisualShaderNodeParticleAccelerator {
 	return (RefVisualShaderNodeParticleAccelerator)(NewTypedRef[VisualShaderNodeParticleAccelerator](reference))
 }
 
-func newRefVisualShaderNodeParticleAcceleratorAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleAccelerator](reference.(VisualShaderNodeParticleAccelerator)))
+func NewRefVisualShaderNodeParticleAcceleratorAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleAccelerator](reference.(VisualShaderNodeParticleAccelerator)))
 }
 
-func newRefVisualShaderNodeParticleAcceleratorGDExtensionIternalConstructor(reference VisualShaderNodeParticleAccelerator) RefVisualShaderNodeParticleAccelerator {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleAccelerator](reference)
+func NewRefVisualShaderNodeParticleAcceleratorGDExtensionIternalConstructor(reference VisualShaderNodeParticleAccelerator) RefVisualShaderNodeParticleAccelerator {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleAccelerator](reference)
 }
 
 var _ RefVisualShaderNodeParticleBoxEmitter = &RefVisualShaderNodeParticleBoxEmitterImpl{}
@@ -22937,19 +22937,19 @@ func (r *RefVisualShaderNodeParticleBoxEmitterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParticleBoxEmitterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParticleBoxEmitter(reference VisualShaderNodeParticleBoxEmitter) RefVisualShaderNodeParticleBoxEmitter {
 	return (RefVisualShaderNodeParticleBoxEmitter)(NewTypedRef[VisualShaderNodeParticleBoxEmitter](reference))
 }
 
-func newRefVisualShaderNodeParticleBoxEmitterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleBoxEmitter](reference.(VisualShaderNodeParticleBoxEmitter)))
+func NewRefVisualShaderNodeParticleBoxEmitterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleBoxEmitter](reference.(VisualShaderNodeParticleBoxEmitter)))
 }
 
-func newRefVisualShaderNodeParticleBoxEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleBoxEmitter) RefVisualShaderNodeParticleBoxEmitter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleBoxEmitter](reference)
+func NewRefVisualShaderNodeParticleBoxEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleBoxEmitter) RefVisualShaderNodeParticleBoxEmitter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleBoxEmitter](reference)
 }
 
 var _ RefVisualShaderNodeParticleConeVelocity = &RefVisualShaderNodeParticleConeVelocityImpl{}
@@ -22984,19 +22984,19 @@ func (r *RefVisualShaderNodeParticleConeVelocityImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParticleConeVelocityImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParticleConeVelocity(reference VisualShaderNodeParticleConeVelocity) RefVisualShaderNodeParticleConeVelocity {
 	return (RefVisualShaderNodeParticleConeVelocity)(NewTypedRef[VisualShaderNodeParticleConeVelocity](reference))
 }
 
-func newRefVisualShaderNodeParticleConeVelocityAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleConeVelocity](reference.(VisualShaderNodeParticleConeVelocity)))
+func NewRefVisualShaderNodeParticleConeVelocityAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleConeVelocity](reference.(VisualShaderNodeParticleConeVelocity)))
 }
 
-func newRefVisualShaderNodeParticleConeVelocityGDExtensionIternalConstructor(reference VisualShaderNodeParticleConeVelocity) RefVisualShaderNodeParticleConeVelocity {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleConeVelocity](reference)
+func NewRefVisualShaderNodeParticleConeVelocityGDExtensionIternalConstructor(reference VisualShaderNodeParticleConeVelocity) RefVisualShaderNodeParticleConeVelocity {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleConeVelocity](reference)
 }
 
 var _ RefVisualShaderNodeParticleEmit = &RefVisualShaderNodeParticleEmitImpl{}
@@ -23031,19 +23031,19 @@ func (r *RefVisualShaderNodeParticleEmitImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParticleEmitImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParticleEmit(reference VisualShaderNodeParticleEmit) RefVisualShaderNodeParticleEmit {
 	return (RefVisualShaderNodeParticleEmit)(NewTypedRef[VisualShaderNodeParticleEmit](reference))
 }
 
-func newRefVisualShaderNodeParticleEmitAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleEmit](reference.(VisualShaderNodeParticleEmit)))
+func NewRefVisualShaderNodeParticleEmitAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleEmit](reference.(VisualShaderNodeParticleEmit)))
 }
 
-func newRefVisualShaderNodeParticleEmitGDExtensionIternalConstructor(reference VisualShaderNodeParticleEmit) RefVisualShaderNodeParticleEmit {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleEmit](reference)
+func NewRefVisualShaderNodeParticleEmitGDExtensionIternalConstructor(reference VisualShaderNodeParticleEmit) RefVisualShaderNodeParticleEmit {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleEmit](reference)
 }
 
 var _ RefVisualShaderNodeParticleEmitter = &RefVisualShaderNodeParticleEmitterImpl{}
@@ -23078,19 +23078,19 @@ func (r *RefVisualShaderNodeParticleEmitterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParticleEmitterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParticleEmitter(reference VisualShaderNodeParticleEmitter) RefVisualShaderNodeParticleEmitter {
 	return (RefVisualShaderNodeParticleEmitter)(NewTypedRef[VisualShaderNodeParticleEmitter](reference))
 }
 
-func newRefVisualShaderNodeParticleEmitterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleEmitter](reference.(VisualShaderNodeParticleEmitter)))
+func NewRefVisualShaderNodeParticleEmitterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleEmitter](reference.(VisualShaderNodeParticleEmitter)))
 }
 
-func newRefVisualShaderNodeParticleEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleEmitter) RefVisualShaderNodeParticleEmitter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleEmitter](reference)
+func NewRefVisualShaderNodeParticleEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleEmitter) RefVisualShaderNodeParticleEmitter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleEmitter](reference)
 }
 
 var _ RefVisualShaderNodeParticleMeshEmitter = &RefVisualShaderNodeParticleMeshEmitterImpl{}
@@ -23125,19 +23125,19 @@ func (r *RefVisualShaderNodeParticleMeshEmitterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParticleMeshEmitterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParticleMeshEmitter(reference VisualShaderNodeParticleMeshEmitter) RefVisualShaderNodeParticleMeshEmitter {
 	return (RefVisualShaderNodeParticleMeshEmitter)(NewTypedRef[VisualShaderNodeParticleMeshEmitter](reference))
 }
 
-func newRefVisualShaderNodeParticleMeshEmitterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleMeshEmitter](reference.(VisualShaderNodeParticleMeshEmitter)))
+func NewRefVisualShaderNodeParticleMeshEmitterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleMeshEmitter](reference.(VisualShaderNodeParticleMeshEmitter)))
 }
 
-func newRefVisualShaderNodeParticleMeshEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleMeshEmitter) RefVisualShaderNodeParticleMeshEmitter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleMeshEmitter](reference)
+func NewRefVisualShaderNodeParticleMeshEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleMeshEmitter) RefVisualShaderNodeParticleMeshEmitter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleMeshEmitter](reference)
 }
 
 var _ RefVisualShaderNodeParticleMultiplyByAxisAngle = &RefVisualShaderNodeParticleMultiplyByAxisAngleImpl{}
@@ -23172,19 +23172,19 @@ func (r *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParticleMultiplyByAxisAngle(reference VisualShaderNodeParticleMultiplyByAxisAngle) RefVisualShaderNodeParticleMultiplyByAxisAngle {
 	return (RefVisualShaderNodeParticleMultiplyByAxisAngle)(NewTypedRef[VisualShaderNodeParticleMultiplyByAxisAngle](reference))
 }
 
-func newRefVisualShaderNodeParticleMultiplyByAxisAngleAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleMultiplyByAxisAngle](reference.(VisualShaderNodeParticleMultiplyByAxisAngle)))
+func NewRefVisualShaderNodeParticleMultiplyByAxisAngleAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleMultiplyByAxisAngle](reference.(VisualShaderNodeParticleMultiplyByAxisAngle)))
 }
 
-func newRefVisualShaderNodeParticleMultiplyByAxisAngleGDExtensionIternalConstructor(reference VisualShaderNodeParticleMultiplyByAxisAngle) RefVisualShaderNodeParticleMultiplyByAxisAngle {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleMultiplyByAxisAngle](reference)
+func NewRefVisualShaderNodeParticleMultiplyByAxisAngleGDExtensionIternalConstructor(reference VisualShaderNodeParticleMultiplyByAxisAngle) RefVisualShaderNodeParticleMultiplyByAxisAngle {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleMultiplyByAxisAngle](reference)
 }
 
 var _ RefVisualShaderNodeParticleOutput = &RefVisualShaderNodeParticleOutputImpl{}
@@ -23219,19 +23219,19 @@ func (r *RefVisualShaderNodeParticleOutputImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParticleOutputImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParticleOutput(reference VisualShaderNodeParticleOutput) RefVisualShaderNodeParticleOutput {
 	return (RefVisualShaderNodeParticleOutput)(NewTypedRef[VisualShaderNodeParticleOutput](reference))
 }
 
-func newRefVisualShaderNodeParticleOutputAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleOutput](reference.(VisualShaderNodeParticleOutput)))
+func NewRefVisualShaderNodeParticleOutputAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleOutput](reference.(VisualShaderNodeParticleOutput)))
 }
 
-func newRefVisualShaderNodeParticleOutputGDExtensionIternalConstructor(reference VisualShaderNodeParticleOutput) RefVisualShaderNodeParticleOutput {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleOutput](reference)
+func NewRefVisualShaderNodeParticleOutputGDExtensionIternalConstructor(reference VisualShaderNodeParticleOutput) RefVisualShaderNodeParticleOutput {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleOutput](reference)
 }
 
 var _ RefVisualShaderNodeParticleRandomness = &RefVisualShaderNodeParticleRandomnessImpl{}
@@ -23266,19 +23266,19 @@ func (r *RefVisualShaderNodeParticleRandomnessImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParticleRandomnessImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParticleRandomness(reference VisualShaderNodeParticleRandomness) RefVisualShaderNodeParticleRandomness {
 	return (RefVisualShaderNodeParticleRandomness)(NewTypedRef[VisualShaderNodeParticleRandomness](reference))
 }
 
-func newRefVisualShaderNodeParticleRandomnessAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleRandomness](reference.(VisualShaderNodeParticleRandomness)))
+func NewRefVisualShaderNodeParticleRandomnessAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleRandomness](reference.(VisualShaderNodeParticleRandomness)))
 }
 
-func newRefVisualShaderNodeParticleRandomnessGDExtensionIternalConstructor(reference VisualShaderNodeParticleRandomness) RefVisualShaderNodeParticleRandomness {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleRandomness](reference)
+func NewRefVisualShaderNodeParticleRandomnessGDExtensionIternalConstructor(reference VisualShaderNodeParticleRandomness) RefVisualShaderNodeParticleRandomness {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleRandomness](reference)
 }
 
 var _ RefVisualShaderNodeParticleRingEmitter = &RefVisualShaderNodeParticleRingEmitterImpl{}
@@ -23313,19 +23313,19 @@ func (r *RefVisualShaderNodeParticleRingEmitterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParticleRingEmitterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParticleRingEmitter(reference VisualShaderNodeParticleRingEmitter) RefVisualShaderNodeParticleRingEmitter {
 	return (RefVisualShaderNodeParticleRingEmitter)(NewTypedRef[VisualShaderNodeParticleRingEmitter](reference))
 }
 
-func newRefVisualShaderNodeParticleRingEmitterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleRingEmitter](reference.(VisualShaderNodeParticleRingEmitter)))
+func NewRefVisualShaderNodeParticleRingEmitterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleRingEmitter](reference.(VisualShaderNodeParticleRingEmitter)))
 }
 
-func newRefVisualShaderNodeParticleRingEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleRingEmitter) RefVisualShaderNodeParticleRingEmitter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleRingEmitter](reference)
+func NewRefVisualShaderNodeParticleRingEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleRingEmitter) RefVisualShaderNodeParticleRingEmitter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleRingEmitter](reference)
 }
 
 var _ RefVisualShaderNodeParticleSphereEmitter = &RefVisualShaderNodeParticleSphereEmitterImpl{}
@@ -23360,19 +23360,19 @@ func (r *RefVisualShaderNodeParticleSphereEmitterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeParticleSphereEmitterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeParticleSphereEmitter(reference VisualShaderNodeParticleSphereEmitter) RefVisualShaderNodeParticleSphereEmitter {
 	return (RefVisualShaderNodeParticleSphereEmitter)(NewTypedRef[VisualShaderNodeParticleSphereEmitter](reference))
 }
 
-func newRefVisualShaderNodeParticleSphereEmitterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleSphereEmitter](reference.(VisualShaderNodeParticleSphereEmitter)))
+func NewRefVisualShaderNodeParticleSphereEmitterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleSphereEmitter](reference.(VisualShaderNodeParticleSphereEmitter)))
 }
 
-func newRefVisualShaderNodeParticleSphereEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleSphereEmitter) RefVisualShaderNodeParticleSphereEmitter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleSphereEmitter](reference)
+func NewRefVisualShaderNodeParticleSphereEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleSphereEmitter) RefVisualShaderNodeParticleSphereEmitter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeParticleSphereEmitter](reference)
 }
 
 var _ RefVisualShaderNodeProximityFade = &RefVisualShaderNodeProximityFadeImpl{}
@@ -23407,19 +23407,19 @@ func (r *RefVisualShaderNodeProximityFadeImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeProximityFadeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeProximityFade(reference VisualShaderNodeProximityFade) RefVisualShaderNodeProximityFade {
 	return (RefVisualShaderNodeProximityFade)(NewTypedRef[VisualShaderNodeProximityFade](reference))
 }
 
-func newRefVisualShaderNodeProximityFadeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeProximityFade](reference.(VisualShaderNodeProximityFade)))
+func NewRefVisualShaderNodeProximityFadeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeProximityFade](reference.(VisualShaderNodeProximityFade)))
 }
 
-func newRefVisualShaderNodeProximityFadeGDExtensionIternalConstructor(reference VisualShaderNodeProximityFade) RefVisualShaderNodeProximityFade {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeProximityFade](reference)
+func NewRefVisualShaderNodeProximityFadeGDExtensionIternalConstructor(reference VisualShaderNodeProximityFade) RefVisualShaderNodeProximityFade {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeProximityFade](reference)
 }
 
 var _ RefVisualShaderNodeRandomRange = &RefVisualShaderNodeRandomRangeImpl{}
@@ -23454,19 +23454,19 @@ func (r *RefVisualShaderNodeRandomRangeImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeRandomRangeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeRandomRange(reference VisualShaderNodeRandomRange) RefVisualShaderNodeRandomRange {
 	return (RefVisualShaderNodeRandomRange)(NewTypedRef[VisualShaderNodeRandomRange](reference))
 }
 
-func newRefVisualShaderNodeRandomRangeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeRandomRange](reference.(VisualShaderNodeRandomRange)))
+func NewRefVisualShaderNodeRandomRangeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeRandomRange](reference.(VisualShaderNodeRandomRange)))
 }
 
-func newRefVisualShaderNodeRandomRangeGDExtensionIternalConstructor(reference VisualShaderNodeRandomRange) RefVisualShaderNodeRandomRange {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeRandomRange](reference)
+func NewRefVisualShaderNodeRandomRangeGDExtensionIternalConstructor(reference VisualShaderNodeRandomRange) RefVisualShaderNodeRandomRange {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeRandomRange](reference)
 }
 
 var _ RefVisualShaderNodeRemap = &RefVisualShaderNodeRemapImpl{}
@@ -23501,19 +23501,19 @@ func (r *RefVisualShaderNodeRemapImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeRemapImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeRemap(reference VisualShaderNodeRemap) RefVisualShaderNodeRemap {
 	return (RefVisualShaderNodeRemap)(NewTypedRef[VisualShaderNodeRemap](reference))
 }
 
-func newRefVisualShaderNodeRemapAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeRemap](reference.(VisualShaderNodeRemap)))
+func NewRefVisualShaderNodeRemapAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeRemap](reference.(VisualShaderNodeRemap)))
 }
 
-func newRefVisualShaderNodeRemapGDExtensionIternalConstructor(reference VisualShaderNodeRemap) RefVisualShaderNodeRemap {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeRemap](reference)
+func NewRefVisualShaderNodeRemapGDExtensionIternalConstructor(reference VisualShaderNodeRemap) RefVisualShaderNodeRemap {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeRemap](reference)
 }
 
 var _ RefVisualShaderNodeResizableBase = &RefVisualShaderNodeResizableBaseImpl{}
@@ -23548,19 +23548,19 @@ func (r *RefVisualShaderNodeResizableBaseImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeResizableBaseImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeResizableBase(reference VisualShaderNodeResizableBase) RefVisualShaderNodeResizableBase {
 	return (RefVisualShaderNodeResizableBase)(NewTypedRef[VisualShaderNodeResizableBase](reference))
 }
 
-func newRefVisualShaderNodeResizableBaseAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeResizableBase](reference.(VisualShaderNodeResizableBase)))
+func NewRefVisualShaderNodeResizableBaseAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeResizableBase](reference.(VisualShaderNodeResizableBase)))
 }
 
-func newRefVisualShaderNodeResizableBaseGDExtensionIternalConstructor(reference VisualShaderNodeResizableBase) RefVisualShaderNodeResizableBase {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeResizableBase](reference)
+func NewRefVisualShaderNodeResizableBaseGDExtensionIternalConstructor(reference VisualShaderNodeResizableBase) RefVisualShaderNodeResizableBase {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeResizableBase](reference)
 }
 
 var _ RefVisualShaderNodeRotationByAxis = &RefVisualShaderNodeRotationByAxisImpl{}
@@ -23595,19 +23595,19 @@ func (r *RefVisualShaderNodeRotationByAxisImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeRotationByAxisImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeRotationByAxis(reference VisualShaderNodeRotationByAxis) RefVisualShaderNodeRotationByAxis {
 	return (RefVisualShaderNodeRotationByAxis)(NewTypedRef[VisualShaderNodeRotationByAxis](reference))
 }
 
-func newRefVisualShaderNodeRotationByAxisAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeRotationByAxis](reference.(VisualShaderNodeRotationByAxis)))
+func NewRefVisualShaderNodeRotationByAxisAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeRotationByAxis](reference.(VisualShaderNodeRotationByAxis)))
 }
 
-func newRefVisualShaderNodeRotationByAxisGDExtensionIternalConstructor(reference VisualShaderNodeRotationByAxis) RefVisualShaderNodeRotationByAxis {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeRotationByAxis](reference)
+func NewRefVisualShaderNodeRotationByAxisGDExtensionIternalConstructor(reference VisualShaderNodeRotationByAxis) RefVisualShaderNodeRotationByAxis {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeRotationByAxis](reference)
 }
 
 var _ RefVisualShaderNodeSDFRaymarch = &RefVisualShaderNodeSDFRaymarchImpl{}
@@ -23642,19 +23642,19 @@ func (r *RefVisualShaderNodeSDFRaymarchImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeSDFRaymarchImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeSDFRaymarch(reference VisualShaderNodeSDFRaymarch) RefVisualShaderNodeSDFRaymarch {
 	return (RefVisualShaderNodeSDFRaymarch)(NewTypedRef[VisualShaderNodeSDFRaymarch](reference))
 }
 
-func newRefVisualShaderNodeSDFRaymarchAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeSDFRaymarch](reference.(VisualShaderNodeSDFRaymarch)))
+func NewRefVisualShaderNodeSDFRaymarchAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeSDFRaymarch](reference.(VisualShaderNodeSDFRaymarch)))
 }
 
-func newRefVisualShaderNodeSDFRaymarchGDExtensionIternalConstructor(reference VisualShaderNodeSDFRaymarch) RefVisualShaderNodeSDFRaymarch {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeSDFRaymarch](reference)
+func NewRefVisualShaderNodeSDFRaymarchGDExtensionIternalConstructor(reference VisualShaderNodeSDFRaymarch) RefVisualShaderNodeSDFRaymarch {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeSDFRaymarch](reference)
 }
 
 var _ RefVisualShaderNodeSDFToScreenUV = &RefVisualShaderNodeSDFToScreenUVImpl{}
@@ -23689,19 +23689,19 @@ func (r *RefVisualShaderNodeSDFToScreenUVImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeSDFToScreenUVImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeSDFToScreenUV(reference VisualShaderNodeSDFToScreenUV) RefVisualShaderNodeSDFToScreenUV {
 	return (RefVisualShaderNodeSDFToScreenUV)(NewTypedRef[VisualShaderNodeSDFToScreenUV](reference))
 }
 
-func newRefVisualShaderNodeSDFToScreenUVAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeSDFToScreenUV](reference.(VisualShaderNodeSDFToScreenUV)))
+func NewRefVisualShaderNodeSDFToScreenUVAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeSDFToScreenUV](reference.(VisualShaderNodeSDFToScreenUV)))
 }
 
-func newRefVisualShaderNodeSDFToScreenUVGDExtensionIternalConstructor(reference VisualShaderNodeSDFToScreenUV) RefVisualShaderNodeSDFToScreenUV {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeSDFToScreenUV](reference)
+func NewRefVisualShaderNodeSDFToScreenUVGDExtensionIternalConstructor(reference VisualShaderNodeSDFToScreenUV) RefVisualShaderNodeSDFToScreenUV {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeSDFToScreenUV](reference)
 }
 
 var _ RefVisualShaderNodeSample3D = &RefVisualShaderNodeSample3DImpl{}
@@ -23736,19 +23736,19 @@ func (r *RefVisualShaderNodeSample3DImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeSample3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeSample3D(reference VisualShaderNodeSample3D) RefVisualShaderNodeSample3D {
 	return (RefVisualShaderNodeSample3D)(NewTypedRef[VisualShaderNodeSample3D](reference))
 }
 
-func newRefVisualShaderNodeSample3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeSample3D](reference.(VisualShaderNodeSample3D)))
+func NewRefVisualShaderNodeSample3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeSample3D](reference.(VisualShaderNodeSample3D)))
 }
 
-func newRefVisualShaderNodeSample3DGDExtensionIternalConstructor(reference VisualShaderNodeSample3D) RefVisualShaderNodeSample3D {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeSample3D](reference)
+func NewRefVisualShaderNodeSample3DGDExtensionIternalConstructor(reference VisualShaderNodeSample3D) RefVisualShaderNodeSample3D {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeSample3D](reference)
 }
 
 var _ RefVisualShaderNodeScreenNormalWorldSpace = &RefVisualShaderNodeScreenNormalWorldSpaceImpl{}
@@ -23783,19 +23783,19 @@ func (r *RefVisualShaderNodeScreenNormalWorldSpaceImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeScreenNormalWorldSpaceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeScreenNormalWorldSpace(reference VisualShaderNodeScreenNormalWorldSpace) RefVisualShaderNodeScreenNormalWorldSpace {
 	return (RefVisualShaderNodeScreenNormalWorldSpace)(NewTypedRef[VisualShaderNodeScreenNormalWorldSpace](reference))
 }
 
-func newRefVisualShaderNodeScreenNormalWorldSpaceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeScreenNormalWorldSpace](reference.(VisualShaderNodeScreenNormalWorldSpace)))
+func NewRefVisualShaderNodeScreenNormalWorldSpaceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeScreenNormalWorldSpace](reference.(VisualShaderNodeScreenNormalWorldSpace)))
 }
 
-func newRefVisualShaderNodeScreenNormalWorldSpaceGDExtensionIternalConstructor(reference VisualShaderNodeScreenNormalWorldSpace) RefVisualShaderNodeScreenNormalWorldSpace {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeScreenNormalWorldSpace](reference)
+func NewRefVisualShaderNodeScreenNormalWorldSpaceGDExtensionIternalConstructor(reference VisualShaderNodeScreenNormalWorldSpace) RefVisualShaderNodeScreenNormalWorldSpace {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeScreenNormalWorldSpace](reference)
 }
 
 var _ RefVisualShaderNodeScreenUVToSDF = &RefVisualShaderNodeScreenUVToSDFImpl{}
@@ -23830,19 +23830,19 @@ func (r *RefVisualShaderNodeScreenUVToSDFImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeScreenUVToSDFImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeScreenUVToSDF(reference VisualShaderNodeScreenUVToSDF) RefVisualShaderNodeScreenUVToSDF {
 	return (RefVisualShaderNodeScreenUVToSDF)(NewTypedRef[VisualShaderNodeScreenUVToSDF](reference))
 }
 
-func newRefVisualShaderNodeScreenUVToSDFAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeScreenUVToSDF](reference.(VisualShaderNodeScreenUVToSDF)))
+func NewRefVisualShaderNodeScreenUVToSDFAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeScreenUVToSDF](reference.(VisualShaderNodeScreenUVToSDF)))
 }
 
-func newRefVisualShaderNodeScreenUVToSDFGDExtensionIternalConstructor(reference VisualShaderNodeScreenUVToSDF) RefVisualShaderNodeScreenUVToSDF {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeScreenUVToSDF](reference)
+func NewRefVisualShaderNodeScreenUVToSDFGDExtensionIternalConstructor(reference VisualShaderNodeScreenUVToSDF) RefVisualShaderNodeScreenUVToSDF {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeScreenUVToSDF](reference)
 }
 
 var _ RefVisualShaderNodeSmoothStep = &RefVisualShaderNodeSmoothStepImpl{}
@@ -23877,19 +23877,19 @@ func (r *RefVisualShaderNodeSmoothStepImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeSmoothStepImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeSmoothStep(reference VisualShaderNodeSmoothStep) RefVisualShaderNodeSmoothStep {
 	return (RefVisualShaderNodeSmoothStep)(NewTypedRef[VisualShaderNodeSmoothStep](reference))
 }
 
-func newRefVisualShaderNodeSmoothStepAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeSmoothStep](reference.(VisualShaderNodeSmoothStep)))
+func NewRefVisualShaderNodeSmoothStepAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeSmoothStep](reference.(VisualShaderNodeSmoothStep)))
 }
 
-func newRefVisualShaderNodeSmoothStepGDExtensionIternalConstructor(reference VisualShaderNodeSmoothStep) RefVisualShaderNodeSmoothStep {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeSmoothStep](reference)
+func NewRefVisualShaderNodeSmoothStepGDExtensionIternalConstructor(reference VisualShaderNodeSmoothStep) RefVisualShaderNodeSmoothStep {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeSmoothStep](reference)
 }
 
 var _ RefVisualShaderNodeStep = &RefVisualShaderNodeStepImpl{}
@@ -23924,19 +23924,19 @@ func (r *RefVisualShaderNodeStepImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeStepImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeStep(reference VisualShaderNodeStep) RefVisualShaderNodeStep {
 	return (RefVisualShaderNodeStep)(NewTypedRef[VisualShaderNodeStep](reference))
 }
 
-func newRefVisualShaderNodeStepAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeStep](reference.(VisualShaderNodeStep)))
+func NewRefVisualShaderNodeStepAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeStep](reference.(VisualShaderNodeStep)))
 }
 
-func newRefVisualShaderNodeStepGDExtensionIternalConstructor(reference VisualShaderNodeStep) RefVisualShaderNodeStep {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeStep](reference)
+func NewRefVisualShaderNodeStepGDExtensionIternalConstructor(reference VisualShaderNodeStep) RefVisualShaderNodeStep {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeStep](reference)
 }
 
 var _ RefVisualShaderNodeSwitch = &RefVisualShaderNodeSwitchImpl{}
@@ -23971,19 +23971,19 @@ func (r *RefVisualShaderNodeSwitchImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeSwitchImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeSwitch(reference VisualShaderNodeSwitch) RefVisualShaderNodeSwitch {
 	return (RefVisualShaderNodeSwitch)(NewTypedRef[VisualShaderNodeSwitch](reference))
 }
 
-func newRefVisualShaderNodeSwitchAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeSwitch](reference.(VisualShaderNodeSwitch)))
+func NewRefVisualShaderNodeSwitchAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeSwitch](reference.(VisualShaderNodeSwitch)))
 }
 
-func newRefVisualShaderNodeSwitchGDExtensionIternalConstructor(reference VisualShaderNodeSwitch) RefVisualShaderNodeSwitch {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeSwitch](reference)
+func NewRefVisualShaderNodeSwitchGDExtensionIternalConstructor(reference VisualShaderNodeSwitch) RefVisualShaderNodeSwitch {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeSwitch](reference)
 }
 
 var _ RefVisualShaderNodeTexture = &RefVisualShaderNodeTextureImpl{}
@@ -24018,19 +24018,19 @@ func (r *RefVisualShaderNodeTextureImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTextureImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTexture(reference VisualShaderNodeTexture) RefVisualShaderNodeTexture {
 	return (RefVisualShaderNodeTexture)(NewTypedRef[VisualShaderNodeTexture](reference))
 }
 
-func newRefVisualShaderNodeTextureAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture](reference.(VisualShaderNodeTexture)))
+func NewRefVisualShaderNodeTextureAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture](reference.(VisualShaderNodeTexture)))
 }
 
-func newRefVisualShaderNodeTextureGDExtensionIternalConstructor(reference VisualShaderNodeTexture) RefVisualShaderNodeTexture {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture](reference)
+func NewRefVisualShaderNodeTextureGDExtensionIternalConstructor(reference VisualShaderNodeTexture) RefVisualShaderNodeTexture {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture](reference)
 }
 
 var _ RefVisualShaderNodeTexture2DArray = &RefVisualShaderNodeTexture2DArrayImpl{}
@@ -24065,19 +24065,19 @@ func (r *RefVisualShaderNodeTexture2DArrayImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTexture2DArrayImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTexture2DArray(reference VisualShaderNodeTexture2DArray) RefVisualShaderNodeTexture2DArray {
 	return (RefVisualShaderNodeTexture2DArray)(NewTypedRef[VisualShaderNodeTexture2DArray](reference))
 }
 
-func newRefVisualShaderNodeTexture2DArrayAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DArray](reference.(VisualShaderNodeTexture2DArray)))
+func NewRefVisualShaderNodeTexture2DArrayAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DArray](reference.(VisualShaderNodeTexture2DArray)))
 }
 
-func newRefVisualShaderNodeTexture2DArrayGDExtensionIternalConstructor(reference VisualShaderNodeTexture2DArray) RefVisualShaderNodeTexture2DArray {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DArray](reference)
+func NewRefVisualShaderNodeTexture2DArrayGDExtensionIternalConstructor(reference VisualShaderNodeTexture2DArray) RefVisualShaderNodeTexture2DArray {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DArray](reference)
 }
 
 var _ RefVisualShaderNodeTexture2DArrayParameter = &RefVisualShaderNodeTexture2DArrayParameterImpl{}
@@ -24112,19 +24112,19 @@ func (r *RefVisualShaderNodeTexture2DArrayParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTexture2DArrayParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTexture2DArrayParameter(reference VisualShaderNodeTexture2DArrayParameter) RefVisualShaderNodeTexture2DArrayParameter {
 	return (RefVisualShaderNodeTexture2DArrayParameter)(NewTypedRef[VisualShaderNodeTexture2DArrayParameter](reference))
 }
 
-func newRefVisualShaderNodeTexture2DArrayParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DArrayParameter](reference.(VisualShaderNodeTexture2DArrayParameter)))
+func NewRefVisualShaderNodeTexture2DArrayParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DArrayParameter](reference.(VisualShaderNodeTexture2DArrayParameter)))
 }
 
-func newRefVisualShaderNodeTexture2DArrayParameterGDExtensionIternalConstructor(reference VisualShaderNodeTexture2DArrayParameter) RefVisualShaderNodeTexture2DArrayParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DArrayParameter](reference)
+func NewRefVisualShaderNodeTexture2DArrayParameterGDExtensionIternalConstructor(reference VisualShaderNodeTexture2DArrayParameter) RefVisualShaderNodeTexture2DArrayParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DArrayParameter](reference)
 }
 
 var _ RefVisualShaderNodeTexture2DParameter = &RefVisualShaderNodeTexture2DParameterImpl{}
@@ -24159,19 +24159,19 @@ func (r *RefVisualShaderNodeTexture2DParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTexture2DParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTexture2DParameter(reference VisualShaderNodeTexture2DParameter) RefVisualShaderNodeTexture2DParameter {
 	return (RefVisualShaderNodeTexture2DParameter)(NewTypedRef[VisualShaderNodeTexture2DParameter](reference))
 }
 
-func newRefVisualShaderNodeTexture2DParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DParameter](reference.(VisualShaderNodeTexture2DParameter)))
+func NewRefVisualShaderNodeTexture2DParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DParameter](reference.(VisualShaderNodeTexture2DParameter)))
 }
 
-func newRefVisualShaderNodeTexture2DParameterGDExtensionIternalConstructor(reference VisualShaderNodeTexture2DParameter) RefVisualShaderNodeTexture2DParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DParameter](reference)
+func NewRefVisualShaderNodeTexture2DParameterGDExtensionIternalConstructor(reference VisualShaderNodeTexture2DParameter) RefVisualShaderNodeTexture2DParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture2DParameter](reference)
 }
 
 var _ RefVisualShaderNodeTexture3D = &RefVisualShaderNodeTexture3DImpl{}
@@ -24206,19 +24206,19 @@ func (r *RefVisualShaderNodeTexture3DImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTexture3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTexture3D(reference VisualShaderNodeTexture3D) RefVisualShaderNodeTexture3D {
 	return (RefVisualShaderNodeTexture3D)(NewTypedRef[VisualShaderNodeTexture3D](reference))
 }
 
-func newRefVisualShaderNodeTexture3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture3D](reference.(VisualShaderNodeTexture3D)))
+func NewRefVisualShaderNodeTexture3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture3D](reference.(VisualShaderNodeTexture3D)))
 }
 
-func newRefVisualShaderNodeTexture3DGDExtensionIternalConstructor(reference VisualShaderNodeTexture3D) RefVisualShaderNodeTexture3D {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture3D](reference)
+func NewRefVisualShaderNodeTexture3DGDExtensionIternalConstructor(reference VisualShaderNodeTexture3D) RefVisualShaderNodeTexture3D {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture3D](reference)
 }
 
 var _ RefVisualShaderNodeTexture3DParameter = &RefVisualShaderNodeTexture3DParameterImpl{}
@@ -24253,19 +24253,19 @@ func (r *RefVisualShaderNodeTexture3DParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTexture3DParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTexture3DParameter(reference VisualShaderNodeTexture3DParameter) RefVisualShaderNodeTexture3DParameter {
 	return (RefVisualShaderNodeTexture3DParameter)(NewTypedRef[VisualShaderNodeTexture3DParameter](reference))
 }
 
-func newRefVisualShaderNodeTexture3DParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture3DParameter](reference.(VisualShaderNodeTexture3DParameter)))
+func NewRefVisualShaderNodeTexture3DParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture3DParameter](reference.(VisualShaderNodeTexture3DParameter)))
 }
 
-func newRefVisualShaderNodeTexture3DParameterGDExtensionIternalConstructor(reference VisualShaderNodeTexture3DParameter) RefVisualShaderNodeTexture3DParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture3DParameter](reference)
+func NewRefVisualShaderNodeTexture3DParameterGDExtensionIternalConstructor(reference VisualShaderNodeTexture3DParameter) RefVisualShaderNodeTexture3DParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTexture3DParameter](reference)
 }
 
 var _ RefVisualShaderNodeTextureParameter = &RefVisualShaderNodeTextureParameterImpl{}
@@ -24300,19 +24300,19 @@ func (r *RefVisualShaderNodeTextureParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTextureParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTextureParameter(reference VisualShaderNodeTextureParameter) RefVisualShaderNodeTextureParameter {
 	return (RefVisualShaderNodeTextureParameter)(NewTypedRef[VisualShaderNodeTextureParameter](reference))
 }
 
-func newRefVisualShaderNodeTextureParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureParameter](reference.(VisualShaderNodeTextureParameter)))
+func NewRefVisualShaderNodeTextureParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureParameter](reference.(VisualShaderNodeTextureParameter)))
 }
 
-func newRefVisualShaderNodeTextureParameterGDExtensionIternalConstructor(reference VisualShaderNodeTextureParameter) RefVisualShaderNodeTextureParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureParameter](reference)
+func NewRefVisualShaderNodeTextureParameterGDExtensionIternalConstructor(reference VisualShaderNodeTextureParameter) RefVisualShaderNodeTextureParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureParameter](reference)
 }
 
 var _ RefVisualShaderNodeTextureParameterTriplanar = &RefVisualShaderNodeTextureParameterTriplanarImpl{}
@@ -24347,19 +24347,19 @@ func (r *RefVisualShaderNodeTextureParameterTriplanarImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTextureParameterTriplanarImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTextureParameterTriplanar(reference VisualShaderNodeTextureParameterTriplanar) RefVisualShaderNodeTextureParameterTriplanar {
 	return (RefVisualShaderNodeTextureParameterTriplanar)(NewTypedRef[VisualShaderNodeTextureParameterTriplanar](reference))
 }
 
-func newRefVisualShaderNodeTextureParameterTriplanarAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureParameterTriplanar](reference.(VisualShaderNodeTextureParameterTriplanar)))
+func NewRefVisualShaderNodeTextureParameterTriplanarAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureParameterTriplanar](reference.(VisualShaderNodeTextureParameterTriplanar)))
 }
 
-func newRefVisualShaderNodeTextureParameterTriplanarGDExtensionIternalConstructor(reference VisualShaderNodeTextureParameterTriplanar) RefVisualShaderNodeTextureParameterTriplanar {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureParameterTriplanar](reference)
+func NewRefVisualShaderNodeTextureParameterTriplanarGDExtensionIternalConstructor(reference VisualShaderNodeTextureParameterTriplanar) RefVisualShaderNodeTextureParameterTriplanar {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureParameterTriplanar](reference)
 }
 
 var _ RefVisualShaderNodeTextureSDF = &RefVisualShaderNodeTextureSDFImpl{}
@@ -24394,19 +24394,19 @@ func (r *RefVisualShaderNodeTextureSDFImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTextureSDFImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTextureSDF(reference VisualShaderNodeTextureSDF) RefVisualShaderNodeTextureSDF {
 	return (RefVisualShaderNodeTextureSDF)(NewTypedRef[VisualShaderNodeTextureSDF](reference))
 }
 
-func newRefVisualShaderNodeTextureSDFAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureSDF](reference.(VisualShaderNodeTextureSDF)))
+func NewRefVisualShaderNodeTextureSDFAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureSDF](reference.(VisualShaderNodeTextureSDF)))
 }
 
-func newRefVisualShaderNodeTextureSDFGDExtensionIternalConstructor(reference VisualShaderNodeTextureSDF) RefVisualShaderNodeTextureSDF {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureSDF](reference)
+func NewRefVisualShaderNodeTextureSDFGDExtensionIternalConstructor(reference VisualShaderNodeTextureSDF) RefVisualShaderNodeTextureSDF {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureSDF](reference)
 }
 
 var _ RefVisualShaderNodeTextureSDFNormal = &RefVisualShaderNodeTextureSDFNormalImpl{}
@@ -24441,19 +24441,19 @@ func (r *RefVisualShaderNodeTextureSDFNormalImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTextureSDFNormalImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTextureSDFNormal(reference VisualShaderNodeTextureSDFNormal) RefVisualShaderNodeTextureSDFNormal {
 	return (RefVisualShaderNodeTextureSDFNormal)(NewTypedRef[VisualShaderNodeTextureSDFNormal](reference))
 }
 
-func newRefVisualShaderNodeTextureSDFNormalAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureSDFNormal](reference.(VisualShaderNodeTextureSDFNormal)))
+func NewRefVisualShaderNodeTextureSDFNormalAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureSDFNormal](reference.(VisualShaderNodeTextureSDFNormal)))
 }
 
-func newRefVisualShaderNodeTextureSDFNormalGDExtensionIternalConstructor(reference VisualShaderNodeTextureSDFNormal) RefVisualShaderNodeTextureSDFNormal {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureSDFNormal](reference)
+func NewRefVisualShaderNodeTextureSDFNormalGDExtensionIternalConstructor(reference VisualShaderNodeTextureSDFNormal) RefVisualShaderNodeTextureSDFNormal {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTextureSDFNormal](reference)
 }
 
 var _ RefVisualShaderNodeTransformCompose = &RefVisualShaderNodeTransformComposeImpl{}
@@ -24488,19 +24488,19 @@ func (r *RefVisualShaderNodeTransformComposeImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTransformComposeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTransformCompose(reference VisualShaderNodeTransformCompose) RefVisualShaderNodeTransformCompose {
 	return (RefVisualShaderNodeTransformCompose)(NewTypedRef[VisualShaderNodeTransformCompose](reference))
 }
 
-func newRefVisualShaderNodeTransformComposeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformCompose](reference.(VisualShaderNodeTransformCompose)))
+func NewRefVisualShaderNodeTransformComposeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformCompose](reference.(VisualShaderNodeTransformCompose)))
 }
 
-func newRefVisualShaderNodeTransformComposeGDExtensionIternalConstructor(reference VisualShaderNodeTransformCompose) RefVisualShaderNodeTransformCompose {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformCompose](reference)
+func NewRefVisualShaderNodeTransformComposeGDExtensionIternalConstructor(reference VisualShaderNodeTransformCompose) RefVisualShaderNodeTransformCompose {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformCompose](reference)
 }
 
 var _ RefVisualShaderNodeTransformConstant = &RefVisualShaderNodeTransformConstantImpl{}
@@ -24535,19 +24535,19 @@ func (r *RefVisualShaderNodeTransformConstantImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTransformConstantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTransformConstant(reference VisualShaderNodeTransformConstant) RefVisualShaderNodeTransformConstant {
 	return (RefVisualShaderNodeTransformConstant)(NewTypedRef[VisualShaderNodeTransformConstant](reference))
 }
 
-func newRefVisualShaderNodeTransformConstantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformConstant](reference.(VisualShaderNodeTransformConstant)))
+func NewRefVisualShaderNodeTransformConstantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformConstant](reference.(VisualShaderNodeTransformConstant)))
 }
 
-func newRefVisualShaderNodeTransformConstantGDExtensionIternalConstructor(reference VisualShaderNodeTransformConstant) RefVisualShaderNodeTransformConstant {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformConstant](reference)
+func NewRefVisualShaderNodeTransformConstantGDExtensionIternalConstructor(reference VisualShaderNodeTransformConstant) RefVisualShaderNodeTransformConstant {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformConstant](reference)
 }
 
 var _ RefVisualShaderNodeTransformDecompose = &RefVisualShaderNodeTransformDecomposeImpl{}
@@ -24582,19 +24582,19 @@ func (r *RefVisualShaderNodeTransformDecomposeImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTransformDecomposeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTransformDecompose(reference VisualShaderNodeTransformDecompose) RefVisualShaderNodeTransformDecompose {
 	return (RefVisualShaderNodeTransformDecompose)(NewTypedRef[VisualShaderNodeTransformDecompose](reference))
 }
 
-func newRefVisualShaderNodeTransformDecomposeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformDecompose](reference.(VisualShaderNodeTransformDecompose)))
+func NewRefVisualShaderNodeTransformDecomposeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformDecompose](reference.(VisualShaderNodeTransformDecompose)))
 }
 
-func newRefVisualShaderNodeTransformDecomposeGDExtensionIternalConstructor(reference VisualShaderNodeTransformDecompose) RefVisualShaderNodeTransformDecompose {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformDecompose](reference)
+func NewRefVisualShaderNodeTransformDecomposeGDExtensionIternalConstructor(reference VisualShaderNodeTransformDecompose) RefVisualShaderNodeTransformDecompose {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformDecompose](reference)
 }
 
 var _ RefVisualShaderNodeTransformFunc = &RefVisualShaderNodeTransformFuncImpl{}
@@ -24629,19 +24629,19 @@ func (r *RefVisualShaderNodeTransformFuncImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTransformFuncImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTransformFunc(reference VisualShaderNodeTransformFunc) RefVisualShaderNodeTransformFunc {
 	return (RefVisualShaderNodeTransformFunc)(NewTypedRef[VisualShaderNodeTransformFunc](reference))
 }
 
-func newRefVisualShaderNodeTransformFuncAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformFunc](reference.(VisualShaderNodeTransformFunc)))
+func NewRefVisualShaderNodeTransformFuncAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformFunc](reference.(VisualShaderNodeTransformFunc)))
 }
 
-func newRefVisualShaderNodeTransformFuncGDExtensionIternalConstructor(reference VisualShaderNodeTransformFunc) RefVisualShaderNodeTransformFunc {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformFunc](reference)
+func NewRefVisualShaderNodeTransformFuncGDExtensionIternalConstructor(reference VisualShaderNodeTransformFunc) RefVisualShaderNodeTransformFunc {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformFunc](reference)
 }
 
 var _ RefVisualShaderNodeTransformOp = &RefVisualShaderNodeTransformOpImpl{}
@@ -24676,19 +24676,19 @@ func (r *RefVisualShaderNodeTransformOpImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTransformOpImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTransformOp(reference VisualShaderNodeTransformOp) RefVisualShaderNodeTransformOp {
 	return (RefVisualShaderNodeTransformOp)(NewTypedRef[VisualShaderNodeTransformOp](reference))
 }
 
-func newRefVisualShaderNodeTransformOpAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformOp](reference.(VisualShaderNodeTransformOp)))
+func NewRefVisualShaderNodeTransformOpAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformOp](reference.(VisualShaderNodeTransformOp)))
 }
 
-func newRefVisualShaderNodeTransformOpGDExtensionIternalConstructor(reference VisualShaderNodeTransformOp) RefVisualShaderNodeTransformOp {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformOp](reference)
+func NewRefVisualShaderNodeTransformOpGDExtensionIternalConstructor(reference VisualShaderNodeTransformOp) RefVisualShaderNodeTransformOp {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformOp](reference)
 }
 
 var _ RefVisualShaderNodeTransformParameter = &RefVisualShaderNodeTransformParameterImpl{}
@@ -24723,19 +24723,19 @@ func (r *RefVisualShaderNodeTransformParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTransformParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTransformParameter(reference VisualShaderNodeTransformParameter) RefVisualShaderNodeTransformParameter {
 	return (RefVisualShaderNodeTransformParameter)(NewTypedRef[VisualShaderNodeTransformParameter](reference))
 }
 
-func newRefVisualShaderNodeTransformParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformParameter](reference.(VisualShaderNodeTransformParameter)))
+func NewRefVisualShaderNodeTransformParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformParameter](reference.(VisualShaderNodeTransformParameter)))
 }
 
-func newRefVisualShaderNodeTransformParameterGDExtensionIternalConstructor(reference VisualShaderNodeTransformParameter) RefVisualShaderNodeTransformParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformParameter](reference)
+func NewRefVisualShaderNodeTransformParameterGDExtensionIternalConstructor(reference VisualShaderNodeTransformParameter) RefVisualShaderNodeTransformParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformParameter](reference)
 }
 
 var _ RefVisualShaderNodeTransformVecMult = &RefVisualShaderNodeTransformVecMultImpl{}
@@ -24770,19 +24770,19 @@ func (r *RefVisualShaderNodeTransformVecMultImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeTransformVecMultImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeTransformVecMult(reference VisualShaderNodeTransformVecMult) RefVisualShaderNodeTransformVecMult {
 	return (RefVisualShaderNodeTransformVecMult)(NewTypedRef[VisualShaderNodeTransformVecMult](reference))
 }
 
-func newRefVisualShaderNodeTransformVecMultAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformVecMult](reference.(VisualShaderNodeTransformVecMult)))
+func NewRefVisualShaderNodeTransformVecMultAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformVecMult](reference.(VisualShaderNodeTransformVecMult)))
 }
 
-func newRefVisualShaderNodeTransformVecMultGDExtensionIternalConstructor(reference VisualShaderNodeTransformVecMult) RefVisualShaderNodeTransformVecMult {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformVecMult](reference)
+func NewRefVisualShaderNodeTransformVecMultGDExtensionIternalConstructor(reference VisualShaderNodeTransformVecMult) RefVisualShaderNodeTransformVecMult {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeTransformVecMult](reference)
 }
 
 var _ RefVisualShaderNodeUIntConstant = &RefVisualShaderNodeUIntConstantImpl{}
@@ -24817,19 +24817,19 @@ func (r *RefVisualShaderNodeUIntConstantImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeUIntConstantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeUIntConstant(reference VisualShaderNodeUIntConstant) RefVisualShaderNodeUIntConstant {
 	return (RefVisualShaderNodeUIntConstant)(NewTypedRef[VisualShaderNodeUIntConstant](reference))
 }
 
-func newRefVisualShaderNodeUIntConstantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntConstant](reference.(VisualShaderNodeUIntConstant)))
+func NewRefVisualShaderNodeUIntConstantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntConstant](reference.(VisualShaderNodeUIntConstant)))
 }
 
-func newRefVisualShaderNodeUIntConstantGDExtensionIternalConstructor(reference VisualShaderNodeUIntConstant) RefVisualShaderNodeUIntConstant {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntConstant](reference)
+func NewRefVisualShaderNodeUIntConstantGDExtensionIternalConstructor(reference VisualShaderNodeUIntConstant) RefVisualShaderNodeUIntConstant {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntConstant](reference)
 }
 
 var _ RefVisualShaderNodeUIntFunc = &RefVisualShaderNodeUIntFuncImpl{}
@@ -24864,19 +24864,19 @@ func (r *RefVisualShaderNodeUIntFuncImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeUIntFuncImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeUIntFunc(reference VisualShaderNodeUIntFunc) RefVisualShaderNodeUIntFunc {
 	return (RefVisualShaderNodeUIntFunc)(NewTypedRef[VisualShaderNodeUIntFunc](reference))
 }
 
-func newRefVisualShaderNodeUIntFuncAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntFunc](reference.(VisualShaderNodeUIntFunc)))
+func NewRefVisualShaderNodeUIntFuncAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntFunc](reference.(VisualShaderNodeUIntFunc)))
 }
 
-func newRefVisualShaderNodeUIntFuncGDExtensionIternalConstructor(reference VisualShaderNodeUIntFunc) RefVisualShaderNodeUIntFunc {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntFunc](reference)
+func NewRefVisualShaderNodeUIntFuncGDExtensionIternalConstructor(reference VisualShaderNodeUIntFunc) RefVisualShaderNodeUIntFunc {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntFunc](reference)
 }
 
 var _ RefVisualShaderNodeUIntOp = &RefVisualShaderNodeUIntOpImpl{}
@@ -24911,19 +24911,19 @@ func (r *RefVisualShaderNodeUIntOpImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeUIntOpImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeUIntOp(reference VisualShaderNodeUIntOp) RefVisualShaderNodeUIntOp {
 	return (RefVisualShaderNodeUIntOp)(NewTypedRef[VisualShaderNodeUIntOp](reference))
 }
 
-func newRefVisualShaderNodeUIntOpAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntOp](reference.(VisualShaderNodeUIntOp)))
+func NewRefVisualShaderNodeUIntOpAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntOp](reference.(VisualShaderNodeUIntOp)))
 }
 
-func newRefVisualShaderNodeUIntOpGDExtensionIternalConstructor(reference VisualShaderNodeUIntOp) RefVisualShaderNodeUIntOp {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntOp](reference)
+func NewRefVisualShaderNodeUIntOpGDExtensionIternalConstructor(reference VisualShaderNodeUIntOp) RefVisualShaderNodeUIntOp {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntOp](reference)
 }
 
 var _ RefVisualShaderNodeUIntParameter = &RefVisualShaderNodeUIntParameterImpl{}
@@ -24958,19 +24958,19 @@ func (r *RefVisualShaderNodeUIntParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeUIntParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeUIntParameter(reference VisualShaderNodeUIntParameter) RefVisualShaderNodeUIntParameter {
 	return (RefVisualShaderNodeUIntParameter)(NewTypedRef[VisualShaderNodeUIntParameter](reference))
 }
 
-func newRefVisualShaderNodeUIntParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntParameter](reference.(VisualShaderNodeUIntParameter)))
+func NewRefVisualShaderNodeUIntParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntParameter](reference.(VisualShaderNodeUIntParameter)))
 }
 
-func newRefVisualShaderNodeUIntParameterGDExtensionIternalConstructor(reference VisualShaderNodeUIntParameter) RefVisualShaderNodeUIntParameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntParameter](reference)
+func NewRefVisualShaderNodeUIntParameterGDExtensionIternalConstructor(reference VisualShaderNodeUIntParameter) RefVisualShaderNodeUIntParameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUIntParameter](reference)
 }
 
 var _ RefVisualShaderNodeUVFunc = &RefVisualShaderNodeUVFuncImpl{}
@@ -25005,19 +25005,19 @@ func (r *RefVisualShaderNodeUVFuncImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeUVFuncImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeUVFunc(reference VisualShaderNodeUVFunc) RefVisualShaderNodeUVFunc {
 	return (RefVisualShaderNodeUVFunc)(NewTypedRef[VisualShaderNodeUVFunc](reference))
 }
 
-func newRefVisualShaderNodeUVFuncAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUVFunc](reference.(VisualShaderNodeUVFunc)))
+func NewRefVisualShaderNodeUVFuncAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUVFunc](reference.(VisualShaderNodeUVFunc)))
 }
 
-func newRefVisualShaderNodeUVFuncGDExtensionIternalConstructor(reference VisualShaderNodeUVFunc) RefVisualShaderNodeUVFunc {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUVFunc](reference)
+func NewRefVisualShaderNodeUVFuncGDExtensionIternalConstructor(reference VisualShaderNodeUVFunc) RefVisualShaderNodeUVFunc {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUVFunc](reference)
 }
 
 var _ RefVisualShaderNodeUVPolarCoord = &RefVisualShaderNodeUVPolarCoordImpl{}
@@ -25052,19 +25052,19 @@ func (r *RefVisualShaderNodeUVPolarCoordImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeUVPolarCoordImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeUVPolarCoord(reference VisualShaderNodeUVPolarCoord) RefVisualShaderNodeUVPolarCoord {
 	return (RefVisualShaderNodeUVPolarCoord)(NewTypedRef[VisualShaderNodeUVPolarCoord](reference))
 }
 
-func newRefVisualShaderNodeUVPolarCoordAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUVPolarCoord](reference.(VisualShaderNodeUVPolarCoord)))
+func NewRefVisualShaderNodeUVPolarCoordAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUVPolarCoord](reference.(VisualShaderNodeUVPolarCoord)))
 }
 
-func newRefVisualShaderNodeUVPolarCoordGDExtensionIternalConstructor(reference VisualShaderNodeUVPolarCoord) RefVisualShaderNodeUVPolarCoord {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeUVPolarCoord](reference)
+func NewRefVisualShaderNodeUVPolarCoordGDExtensionIternalConstructor(reference VisualShaderNodeUVPolarCoord) RefVisualShaderNodeUVPolarCoord {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeUVPolarCoord](reference)
 }
 
 var _ RefVisualShaderNodeVarying = &RefVisualShaderNodeVaryingImpl{}
@@ -25099,19 +25099,19 @@ func (r *RefVisualShaderNodeVaryingImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVaryingImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVarying(reference VisualShaderNodeVarying) RefVisualShaderNodeVarying {
 	return (RefVisualShaderNodeVarying)(NewTypedRef[VisualShaderNodeVarying](reference))
 }
 
-func newRefVisualShaderNodeVaryingAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVarying](reference.(VisualShaderNodeVarying)))
+func NewRefVisualShaderNodeVaryingAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVarying](reference.(VisualShaderNodeVarying)))
 }
 
-func newRefVisualShaderNodeVaryingGDExtensionIternalConstructor(reference VisualShaderNodeVarying) RefVisualShaderNodeVarying {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVarying](reference)
+func NewRefVisualShaderNodeVaryingGDExtensionIternalConstructor(reference VisualShaderNodeVarying) RefVisualShaderNodeVarying {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVarying](reference)
 }
 
 var _ RefVisualShaderNodeVaryingGetter = &RefVisualShaderNodeVaryingGetterImpl{}
@@ -25146,19 +25146,19 @@ func (r *RefVisualShaderNodeVaryingGetterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVaryingGetterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVaryingGetter(reference VisualShaderNodeVaryingGetter) RefVisualShaderNodeVaryingGetter {
 	return (RefVisualShaderNodeVaryingGetter)(NewTypedRef[VisualShaderNodeVaryingGetter](reference))
 }
 
-func newRefVisualShaderNodeVaryingGetterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVaryingGetter](reference.(VisualShaderNodeVaryingGetter)))
+func NewRefVisualShaderNodeVaryingGetterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVaryingGetter](reference.(VisualShaderNodeVaryingGetter)))
 }
 
-func newRefVisualShaderNodeVaryingGetterGDExtensionIternalConstructor(reference VisualShaderNodeVaryingGetter) RefVisualShaderNodeVaryingGetter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVaryingGetter](reference)
+func NewRefVisualShaderNodeVaryingGetterGDExtensionIternalConstructor(reference VisualShaderNodeVaryingGetter) RefVisualShaderNodeVaryingGetter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVaryingGetter](reference)
 }
 
 var _ RefVisualShaderNodeVaryingSetter = &RefVisualShaderNodeVaryingSetterImpl{}
@@ -25193,19 +25193,19 @@ func (r *RefVisualShaderNodeVaryingSetterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVaryingSetterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVaryingSetter(reference VisualShaderNodeVaryingSetter) RefVisualShaderNodeVaryingSetter {
 	return (RefVisualShaderNodeVaryingSetter)(NewTypedRef[VisualShaderNodeVaryingSetter](reference))
 }
 
-func newRefVisualShaderNodeVaryingSetterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVaryingSetter](reference.(VisualShaderNodeVaryingSetter)))
+func NewRefVisualShaderNodeVaryingSetterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVaryingSetter](reference.(VisualShaderNodeVaryingSetter)))
 }
 
-func newRefVisualShaderNodeVaryingSetterGDExtensionIternalConstructor(reference VisualShaderNodeVaryingSetter) RefVisualShaderNodeVaryingSetter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVaryingSetter](reference)
+func NewRefVisualShaderNodeVaryingSetterGDExtensionIternalConstructor(reference VisualShaderNodeVaryingSetter) RefVisualShaderNodeVaryingSetter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVaryingSetter](reference)
 }
 
 var _ RefVisualShaderNodeVec2Constant = &RefVisualShaderNodeVec2ConstantImpl{}
@@ -25240,19 +25240,19 @@ func (r *RefVisualShaderNodeVec2ConstantImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVec2ConstantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVec2Constant(reference VisualShaderNodeVec2Constant) RefVisualShaderNodeVec2Constant {
 	return (RefVisualShaderNodeVec2Constant)(NewTypedRef[VisualShaderNodeVec2Constant](reference))
 }
 
-func newRefVisualShaderNodeVec2ConstantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec2Constant](reference.(VisualShaderNodeVec2Constant)))
+func NewRefVisualShaderNodeVec2ConstantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec2Constant](reference.(VisualShaderNodeVec2Constant)))
 }
 
-func newRefVisualShaderNodeVec2ConstantGDExtensionIternalConstructor(reference VisualShaderNodeVec2Constant) RefVisualShaderNodeVec2Constant {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec2Constant](reference)
+func NewRefVisualShaderNodeVec2ConstantGDExtensionIternalConstructor(reference VisualShaderNodeVec2Constant) RefVisualShaderNodeVec2Constant {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec2Constant](reference)
 }
 
 var _ RefVisualShaderNodeVec2Parameter = &RefVisualShaderNodeVec2ParameterImpl{}
@@ -25287,19 +25287,19 @@ func (r *RefVisualShaderNodeVec2ParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVec2ParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVec2Parameter(reference VisualShaderNodeVec2Parameter) RefVisualShaderNodeVec2Parameter {
 	return (RefVisualShaderNodeVec2Parameter)(NewTypedRef[VisualShaderNodeVec2Parameter](reference))
 }
 
-func newRefVisualShaderNodeVec2ParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec2Parameter](reference.(VisualShaderNodeVec2Parameter)))
+func NewRefVisualShaderNodeVec2ParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec2Parameter](reference.(VisualShaderNodeVec2Parameter)))
 }
 
-func newRefVisualShaderNodeVec2ParameterGDExtensionIternalConstructor(reference VisualShaderNodeVec2Parameter) RefVisualShaderNodeVec2Parameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec2Parameter](reference)
+func NewRefVisualShaderNodeVec2ParameterGDExtensionIternalConstructor(reference VisualShaderNodeVec2Parameter) RefVisualShaderNodeVec2Parameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec2Parameter](reference)
 }
 
 var _ RefVisualShaderNodeVec3Constant = &RefVisualShaderNodeVec3ConstantImpl{}
@@ -25334,19 +25334,19 @@ func (r *RefVisualShaderNodeVec3ConstantImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVec3ConstantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVec3Constant(reference VisualShaderNodeVec3Constant) RefVisualShaderNodeVec3Constant {
 	return (RefVisualShaderNodeVec3Constant)(NewTypedRef[VisualShaderNodeVec3Constant](reference))
 }
 
-func newRefVisualShaderNodeVec3ConstantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec3Constant](reference.(VisualShaderNodeVec3Constant)))
+func NewRefVisualShaderNodeVec3ConstantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec3Constant](reference.(VisualShaderNodeVec3Constant)))
 }
 
-func newRefVisualShaderNodeVec3ConstantGDExtensionIternalConstructor(reference VisualShaderNodeVec3Constant) RefVisualShaderNodeVec3Constant {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec3Constant](reference)
+func NewRefVisualShaderNodeVec3ConstantGDExtensionIternalConstructor(reference VisualShaderNodeVec3Constant) RefVisualShaderNodeVec3Constant {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec3Constant](reference)
 }
 
 var _ RefVisualShaderNodeVec3Parameter = &RefVisualShaderNodeVec3ParameterImpl{}
@@ -25381,19 +25381,19 @@ func (r *RefVisualShaderNodeVec3ParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVec3ParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVec3Parameter(reference VisualShaderNodeVec3Parameter) RefVisualShaderNodeVec3Parameter {
 	return (RefVisualShaderNodeVec3Parameter)(NewTypedRef[VisualShaderNodeVec3Parameter](reference))
 }
 
-func newRefVisualShaderNodeVec3ParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec3Parameter](reference.(VisualShaderNodeVec3Parameter)))
+func NewRefVisualShaderNodeVec3ParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec3Parameter](reference.(VisualShaderNodeVec3Parameter)))
 }
 
-func newRefVisualShaderNodeVec3ParameterGDExtensionIternalConstructor(reference VisualShaderNodeVec3Parameter) RefVisualShaderNodeVec3Parameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec3Parameter](reference)
+func NewRefVisualShaderNodeVec3ParameterGDExtensionIternalConstructor(reference VisualShaderNodeVec3Parameter) RefVisualShaderNodeVec3Parameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec3Parameter](reference)
 }
 
 var _ RefVisualShaderNodeVec4Constant = &RefVisualShaderNodeVec4ConstantImpl{}
@@ -25428,19 +25428,19 @@ func (r *RefVisualShaderNodeVec4ConstantImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVec4ConstantImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVec4Constant(reference VisualShaderNodeVec4Constant) RefVisualShaderNodeVec4Constant {
 	return (RefVisualShaderNodeVec4Constant)(NewTypedRef[VisualShaderNodeVec4Constant](reference))
 }
 
-func newRefVisualShaderNodeVec4ConstantAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec4Constant](reference.(VisualShaderNodeVec4Constant)))
+func NewRefVisualShaderNodeVec4ConstantAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec4Constant](reference.(VisualShaderNodeVec4Constant)))
 }
 
-func newRefVisualShaderNodeVec4ConstantGDExtensionIternalConstructor(reference VisualShaderNodeVec4Constant) RefVisualShaderNodeVec4Constant {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec4Constant](reference)
+func NewRefVisualShaderNodeVec4ConstantGDExtensionIternalConstructor(reference VisualShaderNodeVec4Constant) RefVisualShaderNodeVec4Constant {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec4Constant](reference)
 }
 
 var _ RefVisualShaderNodeVec4Parameter = &RefVisualShaderNodeVec4ParameterImpl{}
@@ -25475,19 +25475,19 @@ func (r *RefVisualShaderNodeVec4ParameterImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVec4ParameterImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVec4Parameter(reference VisualShaderNodeVec4Parameter) RefVisualShaderNodeVec4Parameter {
 	return (RefVisualShaderNodeVec4Parameter)(NewTypedRef[VisualShaderNodeVec4Parameter](reference))
 }
 
-func newRefVisualShaderNodeVec4ParameterAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec4Parameter](reference.(VisualShaderNodeVec4Parameter)))
+func NewRefVisualShaderNodeVec4ParameterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec4Parameter](reference.(VisualShaderNodeVec4Parameter)))
 }
 
-func newRefVisualShaderNodeVec4ParameterGDExtensionIternalConstructor(reference VisualShaderNodeVec4Parameter) RefVisualShaderNodeVec4Parameter {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec4Parameter](reference)
+func NewRefVisualShaderNodeVec4ParameterGDExtensionIternalConstructor(reference VisualShaderNodeVec4Parameter) RefVisualShaderNodeVec4Parameter {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVec4Parameter](reference)
 }
 
 var _ RefVisualShaderNodeVectorBase = &RefVisualShaderNodeVectorBaseImpl{}
@@ -25522,19 +25522,19 @@ func (r *RefVisualShaderNodeVectorBaseImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVectorBaseImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVectorBase(reference VisualShaderNodeVectorBase) RefVisualShaderNodeVectorBase {
 	return (RefVisualShaderNodeVectorBase)(NewTypedRef[VisualShaderNodeVectorBase](reference))
 }
 
-func newRefVisualShaderNodeVectorBaseAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorBase](reference.(VisualShaderNodeVectorBase)))
+func NewRefVisualShaderNodeVectorBaseAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorBase](reference.(VisualShaderNodeVectorBase)))
 }
 
-func newRefVisualShaderNodeVectorBaseGDExtensionIternalConstructor(reference VisualShaderNodeVectorBase) RefVisualShaderNodeVectorBase {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorBase](reference)
+func NewRefVisualShaderNodeVectorBaseGDExtensionIternalConstructor(reference VisualShaderNodeVectorBase) RefVisualShaderNodeVectorBase {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorBase](reference)
 }
 
 var _ RefVisualShaderNodeVectorCompose = &RefVisualShaderNodeVectorComposeImpl{}
@@ -25569,19 +25569,19 @@ func (r *RefVisualShaderNodeVectorComposeImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVectorComposeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVectorCompose(reference VisualShaderNodeVectorCompose) RefVisualShaderNodeVectorCompose {
 	return (RefVisualShaderNodeVectorCompose)(NewTypedRef[VisualShaderNodeVectorCompose](reference))
 }
 
-func newRefVisualShaderNodeVectorComposeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorCompose](reference.(VisualShaderNodeVectorCompose)))
+func NewRefVisualShaderNodeVectorComposeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorCompose](reference.(VisualShaderNodeVectorCompose)))
 }
 
-func newRefVisualShaderNodeVectorComposeGDExtensionIternalConstructor(reference VisualShaderNodeVectorCompose) RefVisualShaderNodeVectorCompose {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorCompose](reference)
+func NewRefVisualShaderNodeVectorComposeGDExtensionIternalConstructor(reference VisualShaderNodeVectorCompose) RefVisualShaderNodeVectorCompose {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorCompose](reference)
 }
 
 var _ RefVisualShaderNodeVectorDecompose = &RefVisualShaderNodeVectorDecomposeImpl{}
@@ -25616,19 +25616,19 @@ func (r *RefVisualShaderNodeVectorDecomposeImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVectorDecomposeImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVectorDecompose(reference VisualShaderNodeVectorDecompose) RefVisualShaderNodeVectorDecompose {
 	return (RefVisualShaderNodeVectorDecompose)(NewTypedRef[VisualShaderNodeVectorDecompose](reference))
 }
 
-func newRefVisualShaderNodeVectorDecomposeAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorDecompose](reference.(VisualShaderNodeVectorDecompose)))
+func NewRefVisualShaderNodeVectorDecomposeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorDecompose](reference.(VisualShaderNodeVectorDecompose)))
 }
 
-func newRefVisualShaderNodeVectorDecomposeGDExtensionIternalConstructor(reference VisualShaderNodeVectorDecompose) RefVisualShaderNodeVectorDecompose {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorDecompose](reference)
+func NewRefVisualShaderNodeVectorDecomposeGDExtensionIternalConstructor(reference VisualShaderNodeVectorDecompose) RefVisualShaderNodeVectorDecompose {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorDecompose](reference)
 }
 
 var _ RefVisualShaderNodeVectorDistance = &RefVisualShaderNodeVectorDistanceImpl{}
@@ -25663,19 +25663,19 @@ func (r *RefVisualShaderNodeVectorDistanceImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVectorDistanceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVectorDistance(reference VisualShaderNodeVectorDistance) RefVisualShaderNodeVectorDistance {
 	return (RefVisualShaderNodeVectorDistance)(NewTypedRef[VisualShaderNodeVectorDistance](reference))
 }
 
-func newRefVisualShaderNodeVectorDistanceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorDistance](reference.(VisualShaderNodeVectorDistance)))
+func NewRefVisualShaderNodeVectorDistanceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorDistance](reference.(VisualShaderNodeVectorDistance)))
 }
 
-func newRefVisualShaderNodeVectorDistanceGDExtensionIternalConstructor(reference VisualShaderNodeVectorDistance) RefVisualShaderNodeVectorDistance {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorDistance](reference)
+func NewRefVisualShaderNodeVectorDistanceGDExtensionIternalConstructor(reference VisualShaderNodeVectorDistance) RefVisualShaderNodeVectorDistance {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorDistance](reference)
 }
 
 var _ RefVisualShaderNodeVectorFunc = &RefVisualShaderNodeVectorFuncImpl{}
@@ -25710,19 +25710,19 @@ func (r *RefVisualShaderNodeVectorFuncImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVectorFuncImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVectorFunc(reference VisualShaderNodeVectorFunc) RefVisualShaderNodeVectorFunc {
 	return (RefVisualShaderNodeVectorFunc)(NewTypedRef[VisualShaderNodeVectorFunc](reference))
 }
 
-func newRefVisualShaderNodeVectorFuncAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorFunc](reference.(VisualShaderNodeVectorFunc)))
+func NewRefVisualShaderNodeVectorFuncAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorFunc](reference.(VisualShaderNodeVectorFunc)))
 }
 
-func newRefVisualShaderNodeVectorFuncGDExtensionIternalConstructor(reference VisualShaderNodeVectorFunc) RefVisualShaderNodeVectorFunc {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorFunc](reference)
+func NewRefVisualShaderNodeVectorFuncGDExtensionIternalConstructor(reference VisualShaderNodeVectorFunc) RefVisualShaderNodeVectorFunc {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorFunc](reference)
 }
 
 var _ RefVisualShaderNodeVectorLen = &RefVisualShaderNodeVectorLenImpl{}
@@ -25757,19 +25757,19 @@ func (r *RefVisualShaderNodeVectorLenImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVectorLenImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVectorLen(reference VisualShaderNodeVectorLen) RefVisualShaderNodeVectorLen {
 	return (RefVisualShaderNodeVectorLen)(NewTypedRef[VisualShaderNodeVectorLen](reference))
 }
 
-func newRefVisualShaderNodeVectorLenAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorLen](reference.(VisualShaderNodeVectorLen)))
+func NewRefVisualShaderNodeVectorLenAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorLen](reference.(VisualShaderNodeVectorLen)))
 }
 
-func newRefVisualShaderNodeVectorLenGDExtensionIternalConstructor(reference VisualShaderNodeVectorLen) RefVisualShaderNodeVectorLen {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorLen](reference)
+func NewRefVisualShaderNodeVectorLenGDExtensionIternalConstructor(reference VisualShaderNodeVectorLen) RefVisualShaderNodeVectorLen {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorLen](reference)
 }
 
 var _ RefVisualShaderNodeVectorOp = &RefVisualShaderNodeVectorOpImpl{}
@@ -25804,19 +25804,19 @@ func (r *RefVisualShaderNodeVectorOpImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVectorOpImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVectorOp(reference VisualShaderNodeVectorOp) RefVisualShaderNodeVectorOp {
 	return (RefVisualShaderNodeVectorOp)(NewTypedRef[VisualShaderNodeVectorOp](reference))
 }
 
-func newRefVisualShaderNodeVectorOpAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorOp](reference.(VisualShaderNodeVectorOp)))
+func NewRefVisualShaderNodeVectorOpAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorOp](reference.(VisualShaderNodeVectorOp)))
 }
 
-func newRefVisualShaderNodeVectorOpGDExtensionIternalConstructor(reference VisualShaderNodeVectorOp) RefVisualShaderNodeVectorOp {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorOp](reference)
+func NewRefVisualShaderNodeVectorOpGDExtensionIternalConstructor(reference VisualShaderNodeVectorOp) RefVisualShaderNodeVectorOp {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorOp](reference)
 }
 
 var _ RefVisualShaderNodeVectorRefract = &RefVisualShaderNodeVectorRefractImpl{}
@@ -25851,19 +25851,19 @@ func (r *RefVisualShaderNodeVectorRefractImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeVectorRefractImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeVectorRefract(reference VisualShaderNodeVectorRefract) RefVisualShaderNodeVectorRefract {
 	return (RefVisualShaderNodeVectorRefract)(NewTypedRef[VisualShaderNodeVectorRefract](reference))
 }
 
-func newRefVisualShaderNodeVectorRefractAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorRefract](reference.(VisualShaderNodeVectorRefract)))
+func NewRefVisualShaderNodeVectorRefractAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorRefract](reference.(VisualShaderNodeVectorRefract)))
 }
 
-func newRefVisualShaderNodeVectorRefractGDExtensionIternalConstructor(reference VisualShaderNodeVectorRefract) RefVisualShaderNodeVectorRefract {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorRefract](reference)
+func NewRefVisualShaderNodeVectorRefractGDExtensionIternalConstructor(reference VisualShaderNodeVectorRefract) RefVisualShaderNodeVectorRefract {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeVectorRefract](reference)
 }
 
 var _ RefVisualShaderNodeWorldPositionFromDepth = &RefVisualShaderNodeWorldPositionFromDepthImpl{}
@@ -25898,19 +25898,19 @@ func (r *RefVisualShaderNodeWorldPositionFromDepthImpl) Unref() {
 }
 
 func (r *RefVisualShaderNodeWorldPositionFromDepthImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVisualShaderNodeWorldPositionFromDepth(reference VisualShaderNodeWorldPositionFromDepth) RefVisualShaderNodeWorldPositionFromDepth {
 	return (RefVisualShaderNodeWorldPositionFromDepth)(NewTypedRef[VisualShaderNodeWorldPositionFromDepth](reference))
 }
 
-func newRefVisualShaderNodeWorldPositionFromDepthAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VisualShaderNodeWorldPositionFromDepth](reference.(VisualShaderNodeWorldPositionFromDepth)))
+func NewRefVisualShaderNodeWorldPositionFromDepthAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeWorldPositionFromDepth](reference.(VisualShaderNodeWorldPositionFromDepth)))
 }
 
-func newRefVisualShaderNodeWorldPositionFromDepthGDExtensionIternalConstructor(reference VisualShaderNodeWorldPositionFromDepth) RefVisualShaderNodeWorldPositionFromDepth {
-	return newTypedRefGDExtensionIternalConstructor[VisualShaderNodeWorldPositionFromDepth](reference)
+func NewRefVisualShaderNodeWorldPositionFromDepthGDExtensionIternalConstructor(reference VisualShaderNodeWorldPositionFromDepth) RefVisualShaderNodeWorldPositionFromDepth {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeWorldPositionFromDepth](reference)
 }
 
 var _ RefVoxelGIData = &RefVoxelGIDataImpl{}
@@ -25945,19 +25945,19 @@ func (r *RefVoxelGIDataImpl) Unref() {
 }
 
 func (r *RefVoxelGIDataImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefVoxelGIData(reference VoxelGIData) RefVoxelGIData {
 	return (RefVoxelGIData)(NewTypedRef[VoxelGIData](reference))
 }
 
-func newRefVoxelGIDataAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[VoxelGIData](reference.(VoxelGIData)))
+func NewRefVoxelGIDataAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VoxelGIData](reference.(VoxelGIData)))
 }
 
-func newRefVoxelGIDataGDExtensionIternalConstructor(reference VoxelGIData) RefVoxelGIData {
-	return newTypedRefGDExtensionIternalConstructor[VoxelGIData](reference)
+func NewRefVoxelGIDataGDExtensionIternalConstructor(reference VoxelGIData) RefVoxelGIData {
+	return NewTypedRefGDExtensionIternalConstructor[VoxelGIData](reference)
 }
 
 var _ RefWeakRef = &RefWeakRefImpl{}
@@ -25992,19 +25992,19 @@ func (r *RefWeakRefImpl) Unref() {
 }
 
 func (r *RefWeakRefImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWeakRef(reference WeakRef) RefWeakRef {
 	return (RefWeakRef)(NewTypedRef[WeakRef](reference))
 }
 
-func newRefWeakRefAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[WeakRef](reference.(WeakRef)))
+func NewRefWeakRefAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[WeakRef](reference.(WeakRef)))
 }
 
-func newRefWeakRefGDExtensionIternalConstructor(reference WeakRef) RefWeakRef {
-	return newTypedRefGDExtensionIternalConstructor[WeakRef](reference)
+func NewRefWeakRefGDExtensionIternalConstructor(reference WeakRef) RefWeakRef {
+	return NewTypedRefGDExtensionIternalConstructor[WeakRef](reference)
 }
 
 var _ RefWebRTCDataChannel = &RefWebRTCDataChannelImpl{}
@@ -26039,19 +26039,19 @@ func (r *RefWebRTCDataChannelImpl) Unref() {
 }
 
 func (r *RefWebRTCDataChannelImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWebRTCDataChannel(reference WebRTCDataChannel) RefWebRTCDataChannel {
 	return (RefWebRTCDataChannel)(NewTypedRef[WebRTCDataChannel](reference))
 }
 
-func newRefWebRTCDataChannelAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[WebRTCDataChannel](reference.(WebRTCDataChannel)))
+func NewRefWebRTCDataChannelAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[WebRTCDataChannel](reference.(WebRTCDataChannel)))
 }
 
-func newRefWebRTCDataChannelGDExtensionIternalConstructor(reference WebRTCDataChannel) RefWebRTCDataChannel {
-	return newTypedRefGDExtensionIternalConstructor[WebRTCDataChannel](reference)
+func NewRefWebRTCDataChannelGDExtensionIternalConstructor(reference WebRTCDataChannel) RefWebRTCDataChannel {
+	return NewTypedRefGDExtensionIternalConstructor[WebRTCDataChannel](reference)
 }
 
 var _ RefWebRTCDataChannelExtension = &RefWebRTCDataChannelExtensionImpl{}
@@ -26086,19 +26086,19 @@ func (r *RefWebRTCDataChannelExtensionImpl) Unref() {
 }
 
 func (r *RefWebRTCDataChannelExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWebRTCDataChannelExtension(reference WebRTCDataChannelExtension) RefWebRTCDataChannelExtension {
 	return (RefWebRTCDataChannelExtension)(NewTypedRef[WebRTCDataChannelExtension](reference))
 }
 
-func newRefWebRTCDataChannelExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[WebRTCDataChannelExtension](reference.(WebRTCDataChannelExtension)))
+func NewRefWebRTCDataChannelExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[WebRTCDataChannelExtension](reference.(WebRTCDataChannelExtension)))
 }
 
-func newRefWebRTCDataChannelExtensionGDExtensionIternalConstructor(reference WebRTCDataChannelExtension) RefWebRTCDataChannelExtension {
-	return newTypedRefGDExtensionIternalConstructor[WebRTCDataChannelExtension](reference)
+func NewRefWebRTCDataChannelExtensionGDExtensionIternalConstructor(reference WebRTCDataChannelExtension) RefWebRTCDataChannelExtension {
+	return NewTypedRefGDExtensionIternalConstructor[WebRTCDataChannelExtension](reference)
 }
 
 var _ RefWebRTCMultiplayerPeer = &RefWebRTCMultiplayerPeerImpl{}
@@ -26133,19 +26133,19 @@ func (r *RefWebRTCMultiplayerPeerImpl) Unref() {
 }
 
 func (r *RefWebRTCMultiplayerPeerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWebRTCMultiplayerPeer(reference WebRTCMultiplayerPeer) RefWebRTCMultiplayerPeer {
 	return (RefWebRTCMultiplayerPeer)(NewTypedRef[WebRTCMultiplayerPeer](reference))
 }
 
-func newRefWebRTCMultiplayerPeerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[WebRTCMultiplayerPeer](reference.(WebRTCMultiplayerPeer)))
+func NewRefWebRTCMultiplayerPeerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[WebRTCMultiplayerPeer](reference.(WebRTCMultiplayerPeer)))
 }
 
-func newRefWebRTCMultiplayerPeerGDExtensionIternalConstructor(reference WebRTCMultiplayerPeer) RefWebRTCMultiplayerPeer {
-	return newTypedRefGDExtensionIternalConstructor[WebRTCMultiplayerPeer](reference)
+func NewRefWebRTCMultiplayerPeerGDExtensionIternalConstructor(reference WebRTCMultiplayerPeer) RefWebRTCMultiplayerPeer {
+	return NewTypedRefGDExtensionIternalConstructor[WebRTCMultiplayerPeer](reference)
 }
 
 var _ RefWebRTCPeerConnection = &RefWebRTCPeerConnectionImpl{}
@@ -26180,19 +26180,19 @@ func (r *RefWebRTCPeerConnectionImpl) Unref() {
 }
 
 func (r *RefWebRTCPeerConnectionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWebRTCPeerConnection(reference WebRTCPeerConnection) RefWebRTCPeerConnection {
 	return (RefWebRTCPeerConnection)(NewTypedRef[WebRTCPeerConnection](reference))
 }
 
-func newRefWebRTCPeerConnectionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[WebRTCPeerConnection](reference.(WebRTCPeerConnection)))
+func NewRefWebRTCPeerConnectionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[WebRTCPeerConnection](reference.(WebRTCPeerConnection)))
 }
 
-func newRefWebRTCPeerConnectionGDExtensionIternalConstructor(reference WebRTCPeerConnection) RefWebRTCPeerConnection {
-	return newTypedRefGDExtensionIternalConstructor[WebRTCPeerConnection](reference)
+func NewRefWebRTCPeerConnectionGDExtensionIternalConstructor(reference WebRTCPeerConnection) RefWebRTCPeerConnection {
+	return NewTypedRefGDExtensionIternalConstructor[WebRTCPeerConnection](reference)
 }
 
 var _ RefWebRTCPeerConnectionExtension = &RefWebRTCPeerConnectionExtensionImpl{}
@@ -26227,19 +26227,19 @@ func (r *RefWebRTCPeerConnectionExtensionImpl) Unref() {
 }
 
 func (r *RefWebRTCPeerConnectionExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWebRTCPeerConnectionExtension(reference WebRTCPeerConnectionExtension) RefWebRTCPeerConnectionExtension {
 	return (RefWebRTCPeerConnectionExtension)(NewTypedRef[WebRTCPeerConnectionExtension](reference))
 }
 
-func newRefWebRTCPeerConnectionExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[WebRTCPeerConnectionExtension](reference.(WebRTCPeerConnectionExtension)))
+func NewRefWebRTCPeerConnectionExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[WebRTCPeerConnectionExtension](reference.(WebRTCPeerConnectionExtension)))
 }
 
-func newRefWebRTCPeerConnectionExtensionGDExtensionIternalConstructor(reference WebRTCPeerConnectionExtension) RefWebRTCPeerConnectionExtension {
-	return newTypedRefGDExtensionIternalConstructor[WebRTCPeerConnectionExtension](reference)
+func NewRefWebRTCPeerConnectionExtensionGDExtensionIternalConstructor(reference WebRTCPeerConnectionExtension) RefWebRTCPeerConnectionExtension {
+	return NewTypedRefGDExtensionIternalConstructor[WebRTCPeerConnectionExtension](reference)
 }
 
 var _ RefWebSocketMultiplayerPeer = &RefWebSocketMultiplayerPeerImpl{}
@@ -26274,19 +26274,19 @@ func (r *RefWebSocketMultiplayerPeerImpl) Unref() {
 }
 
 func (r *RefWebSocketMultiplayerPeerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWebSocketMultiplayerPeer(reference WebSocketMultiplayerPeer) RefWebSocketMultiplayerPeer {
 	return (RefWebSocketMultiplayerPeer)(NewTypedRef[WebSocketMultiplayerPeer](reference))
 }
 
-func newRefWebSocketMultiplayerPeerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[WebSocketMultiplayerPeer](reference.(WebSocketMultiplayerPeer)))
+func NewRefWebSocketMultiplayerPeerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[WebSocketMultiplayerPeer](reference.(WebSocketMultiplayerPeer)))
 }
 
-func newRefWebSocketMultiplayerPeerGDExtensionIternalConstructor(reference WebSocketMultiplayerPeer) RefWebSocketMultiplayerPeer {
-	return newTypedRefGDExtensionIternalConstructor[WebSocketMultiplayerPeer](reference)
+func NewRefWebSocketMultiplayerPeerGDExtensionIternalConstructor(reference WebSocketMultiplayerPeer) RefWebSocketMultiplayerPeer {
+	return NewTypedRefGDExtensionIternalConstructor[WebSocketMultiplayerPeer](reference)
 }
 
 var _ RefWebSocketPeer = &RefWebSocketPeerImpl{}
@@ -26321,19 +26321,19 @@ func (r *RefWebSocketPeerImpl) Unref() {
 }
 
 func (r *RefWebSocketPeerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWebSocketPeer(reference WebSocketPeer) RefWebSocketPeer {
 	return (RefWebSocketPeer)(NewTypedRef[WebSocketPeer](reference))
 }
 
-func newRefWebSocketPeerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[WebSocketPeer](reference.(WebSocketPeer)))
+func NewRefWebSocketPeerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[WebSocketPeer](reference.(WebSocketPeer)))
 }
 
-func newRefWebSocketPeerGDExtensionIternalConstructor(reference WebSocketPeer) RefWebSocketPeer {
-	return newTypedRefGDExtensionIternalConstructor[WebSocketPeer](reference)
+func NewRefWebSocketPeerGDExtensionIternalConstructor(reference WebSocketPeer) RefWebSocketPeer {
+	return NewTypedRefGDExtensionIternalConstructor[WebSocketPeer](reference)
 }
 
 var _ RefWebXRInterface = &RefWebXRInterfaceImpl{}
@@ -26368,19 +26368,19 @@ func (r *RefWebXRInterfaceImpl) Unref() {
 }
 
 func (r *RefWebXRInterfaceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWebXRInterface(reference WebXRInterface) RefWebXRInterface {
 	return (RefWebXRInterface)(NewTypedRef[WebXRInterface](reference))
 }
 
-func newRefWebXRInterfaceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[WebXRInterface](reference.(WebXRInterface)))
+func NewRefWebXRInterfaceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[WebXRInterface](reference.(WebXRInterface)))
 }
 
-func newRefWebXRInterfaceGDExtensionIternalConstructor(reference WebXRInterface) RefWebXRInterface {
-	return newTypedRefGDExtensionIternalConstructor[WebXRInterface](reference)
+func NewRefWebXRInterfaceGDExtensionIternalConstructor(reference WebXRInterface) RefWebXRInterface {
+	return NewTypedRefGDExtensionIternalConstructor[WebXRInterface](reference)
 }
 
 var _ RefWorld2D = &RefWorld2DImpl{}
@@ -26415,19 +26415,19 @@ func (r *RefWorld2DImpl) Unref() {
 }
 
 func (r *RefWorld2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWorld2D(reference World2D) RefWorld2D {
 	return (RefWorld2D)(NewTypedRef[World2D](reference))
 }
 
-func newRefWorld2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[World2D](reference.(World2D)))
+func NewRefWorld2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[World2D](reference.(World2D)))
 }
 
-func newRefWorld2DGDExtensionIternalConstructor(reference World2D) RefWorld2D {
-	return newTypedRefGDExtensionIternalConstructor[World2D](reference)
+func NewRefWorld2DGDExtensionIternalConstructor(reference World2D) RefWorld2D {
+	return NewTypedRefGDExtensionIternalConstructor[World2D](reference)
 }
 
 var _ RefWorld3D = &RefWorld3DImpl{}
@@ -26462,19 +26462,19 @@ func (r *RefWorld3DImpl) Unref() {
 }
 
 func (r *RefWorld3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWorld3D(reference World3D) RefWorld3D {
 	return (RefWorld3D)(NewTypedRef[World3D](reference))
 }
 
-func newRefWorld3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[World3D](reference.(World3D)))
+func NewRefWorld3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[World3D](reference.(World3D)))
 }
 
-func newRefWorld3DGDExtensionIternalConstructor(reference World3D) RefWorld3D {
-	return newTypedRefGDExtensionIternalConstructor[World3D](reference)
+func NewRefWorld3DGDExtensionIternalConstructor(reference World3D) RefWorld3D {
+	return NewTypedRefGDExtensionIternalConstructor[World3D](reference)
 }
 
 var _ RefWorldBoundaryShape2D = &RefWorldBoundaryShape2DImpl{}
@@ -26509,19 +26509,19 @@ func (r *RefWorldBoundaryShape2DImpl) Unref() {
 }
 
 func (r *RefWorldBoundaryShape2DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWorldBoundaryShape2D(reference WorldBoundaryShape2D) RefWorldBoundaryShape2D {
 	return (RefWorldBoundaryShape2D)(NewTypedRef[WorldBoundaryShape2D](reference))
 }
 
-func newRefWorldBoundaryShape2DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[WorldBoundaryShape2D](reference.(WorldBoundaryShape2D)))
+func NewRefWorldBoundaryShape2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[WorldBoundaryShape2D](reference.(WorldBoundaryShape2D)))
 }
 
-func newRefWorldBoundaryShape2DGDExtensionIternalConstructor(reference WorldBoundaryShape2D) RefWorldBoundaryShape2D {
-	return newTypedRefGDExtensionIternalConstructor[WorldBoundaryShape2D](reference)
+func NewRefWorldBoundaryShape2DGDExtensionIternalConstructor(reference WorldBoundaryShape2D) RefWorldBoundaryShape2D {
+	return NewTypedRefGDExtensionIternalConstructor[WorldBoundaryShape2D](reference)
 }
 
 var _ RefWorldBoundaryShape3D = &RefWorldBoundaryShape3DImpl{}
@@ -26556,19 +26556,19 @@ func (r *RefWorldBoundaryShape3DImpl) Unref() {
 }
 
 func (r *RefWorldBoundaryShape3DImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefWorldBoundaryShape3D(reference WorldBoundaryShape3D) RefWorldBoundaryShape3D {
 	return (RefWorldBoundaryShape3D)(NewTypedRef[WorldBoundaryShape3D](reference))
 }
 
-func newRefWorldBoundaryShape3DAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[WorldBoundaryShape3D](reference.(WorldBoundaryShape3D)))
+func NewRefWorldBoundaryShape3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[WorldBoundaryShape3D](reference.(WorldBoundaryShape3D)))
 }
 
-func newRefWorldBoundaryShape3DGDExtensionIternalConstructor(reference WorldBoundaryShape3D) RefWorldBoundaryShape3D {
-	return newTypedRefGDExtensionIternalConstructor[WorldBoundaryShape3D](reference)
+func NewRefWorldBoundaryShape3DGDExtensionIternalConstructor(reference WorldBoundaryShape3D) RefWorldBoundaryShape3D {
+	return NewTypedRefGDExtensionIternalConstructor[WorldBoundaryShape3D](reference)
 }
 
 var _ RefX509Certificate = &RefX509CertificateImpl{}
@@ -26603,19 +26603,19 @@ func (r *RefX509CertificateImpl) Unref() {
 }
 
 func (r *RefX509CertificateImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefX509Certificate(reference X509Certificate) RefX509Certificate {
 	return (RefX509Certificate)(NewTypedRef[X509Certificate](reference))
 }
 
-func newRefX509CertificateAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[X509Certificate](reference.(X509Certificate)))
+func NewRefX509CertificateAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[X509Certificate](reference.(X509Certificate)))
 }
 
-func newRefX509CertificateGDExtensionIternalConstructor(reference X509Certificate) RefX509Certificate {
-	return newTypedRefGDExtensionIternalConstructor[X509Certificate](reference)
+func NewRefX509CertificateGDExtensionIternalConstructor(reference X509Certificate) RefX509Certificate {
+	return NewTypedRefGDExtensionIternalConstructor[X509Certificate](reference)
 }
 
 var _ RefXMLParser = &RefXMLParserImpl{}
@@ -26650,19 +26650,19 @@ func (r *RefXMLParserImpl) Unref() {
 }
 
 func (r *RefXMLParserImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefXMLParser(reference XMLParser) RefXMLParser {
 	return (RefXMLParser)(NewTypedRef[XMLParser](reference))
 }
 
-func newRefXMLParserAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[XMLParser](reference.(XMLParser)))
+func NewRefXMLParserAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[XMLParser](reference.(XMLParser)))
 }
 
-func newRefXMLParserGDExtensionIternalConstructor(reference XMLParser) RefXMLParser {
-	return newTypedRefGDExtensionIternalConstructor[XMLParser](reference)
+func NewRefXMLParserGDExtensionIternalConstructor(reference XMLParser) RefXMLParser {
+	return NewTypedRefGDExtensionIternalConstructor[XMLParser](reference)
 }
 
 var _ RefXRInterface = &RefXRInterfaceImpl{}
@@ -26697,19 +26697,19 @@ func (r *RefXRInterfaceImpl) Unref() {
 }
 
 func (r *RefXRInterfaceImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefXRInterface(reference XRInterface) RefXRInterface {
 	return (RefXRInterface)(NewTypedRef[XRInterface](reference))
 }
 
-func newRefXRInterfaceAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[XRInterface](reference.(XRInterface)))
+func NewRefXRInterfaceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[XRInterface](reference.(XRInterface)))
 }
 
-func newRefXRInterfaceGDExtensionIternalConstructor(reference XRInterface) RefXRInterface {
-	return newTypedRefGDExtensionIternalConstructor[XRInterface](reference)
+func NewRefXRInterfaceGDExtensionIternalConstructor(reference XRInterface) RefXRInterface {
+	return NewTypedRefGDExtensionIternalConstructor[XRInterface](reference)
 }
 
 var _ RefXRInterfaceExtension = &RefXRInterfaceExtensionImpl{}
@@ -26744,19 +26744,19 @@ func (r *RefXRInterfaceExtensionImpl) Unref() {
 }
 
 func (r *RefXRInterfaceExtensionImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefXRInterfaceExtension(reference XRInterfaceExtension) RefXRInterfaceExtension {
 	return (RefXRInterfaceExtension)(NewTypedRef[XRInterfaceExtension](reference))
 }
 
-func newRefXRInterfaceExtensionAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[XRInterfaceExtension](reference.(XRInterfaceExtension)))
+func NewRefXRInterfaceExtensionAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[XRInterfaceExtension](reference.(XRInterfaceExtension)))
 }
 
-func newRefXRInterfaceExtensionGDExtensionIternalConstructor(reference XRInterfaceExtension) RefXRInterfaceExtension {
-	return newTypedRefGDExtensionIternalConstructor[XRInterfaceExtension](reference)
+func NewRefXRInterfaceExtensionGDExtensionIternalConstructor(reference XRInterfaceExtension) RefXRInterfaceExtension {
+	return NewTypedRefGDExtensionIternalConstructor[XRInterfaceExtension](reference)
 }
 
 var _ RefXRPose = &RefXRPoseImpl{}
@@ -26791,19 +26791,19 @@ func (r *RefXRPoseImpl) Unref() {
 }
 
 func (r *RefXRPoseImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefXRPose(reference XRPose) RefXRPose {
 	return (RefXRPose)(NewTypedRef[XRPose](reference))
 }
 
-func newRefXRPoseAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[XRPose](reference.(XRPose)))
+func NewRefXRPoseAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[XRPose](reference.(XRPose)))
 }
 
-func newRefXRPoseGDExtensionIternalConstructor(reference XRPose) RefXRPose {
-	return newTypedRefGDExtensionIternalConstructor[XRPose](reference)
+func NewRefXRPoseGDExtensionIternalConstructor(reference XRPose) RefXRPose {
+	return NewTypedRefGDExtensionIternalConstructor[XRPose](reference)
 }
 
 var _ RefXRPositionalTracker = &RefXRPositionalTrackerImpl{}
@@ -26838,19 +26838,19 @@ func (r *RefXRPositionalTrackerImpl) Unref() {
 }
 
 func (r *RefXRPositionalTrackerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefXRPositionalTracker(reference XRPositionalTracker) RefXRPositionalTracker {
 	return (RefXRPositionalTracker)(NewTypedRef[XRPositionalTracker](reference))
 }
 
-func newRefXRPositionalTrackerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[XRPositionalTracker](reference.(XRPositionalTracker)))
+func NewRefXRPositionalTrackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[XRPositionalTracker](reference.(XRPositionalTracker)))
 }
 
-func newRefXRPositionalTrackerGDExtensionIternalConstructor(reference XRPositionalTracker) RefXRPositionalTracker {
-	return newTypedRefGDExtensionIternalConstructor[XRPositionalTracker](reference)
+func NewRefXRPositionalTrackerGDExtensionIternalConstructor(reference XRPositionalTracker) RefXRPositionalTracker {
+	return NewTypedRefGDExtensionIternalConstructor[XRPositionalTracker](reference)
 }
 
 var _ RefZIPPacker = &RefZIPPackerImpl{}
@@ -26885,19 +26885,19 @@ func (r *RefZIPPackerImpl) Unref() {
 }
 
 func (r *RefZIPPackerImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefZIPPacker(reference ZIPPacker) RefZIPPacker {
 	return (RefZIPPacker)(NewTypedRef[ZIPPacker](reference))
 }
 
-func newRefZIPPackerAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ZIPPacker](reference.(ZIPPacker)))
+func NewRefZIPPackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ZIPPacker](reference.(ZIPPacker)))
 }
 
-func newRefZIPPackerGDExtensionIternalConstructor(reference ZIPPacker) RefZIPPacker {
-	return newTypedRefGDExtensionIternalConstructor[ZIPPacker](reference)
+func NewRefZIPPackerGDExtensionIternalConstructor(reference ZIPPacker) RefZIPPacker {
+	return NewTypedRefGDExtensionIternalConstructor[ZIPPacker](reference)
 }
 
 var _ RefZIPReader = &RefZIPReaderImpl{}
@@ -26932,593 +26932,17 @@ func (r *RefZIPReaderImpl) Unref() {
 }
 
 func (r *RefZIPReaderImpl) IsValid() bool {
-	return r != nil && r.reference != nil
+	return r != nil && r.Reference != nil
 }
 
 func NewRefZIPReader(reference ZIPReader) RefZIPReader {
 	return (RefZIPReader)(NewTypedRef[ZIPReader](reference))
 }
 
-func newRefZIPReaderAsRef(reference RefCounted) Ref {
-	return (Ref)(newTypedRefGDExtensionIternalConstructor[ZIPReader](reference.(ZIPReader)))
+func NewRefZIPReaderAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[ZIPReader](reference.(ZIPReader)))
 }
 
-func newRefZIPReaderGDExtensionIternalConstructor(reference ZIPReader) RefZIPReader {
-	return newTypedRefGDExtensionIternalConstructor[ZIPReader](reference)
-}
-func RegisterEngineClassRefs() {
-	gdClassRefConstructors.Clear()
-	gdClassRefConstructors.Set("AESContext", newRefAESContextAsRef)
-	gdClassRefConstructors.Set("AStar2D", newRefAStar2DAsRef)
-	gdClassRefConstructors.Set("AStar3D", newRefAStar3DAsRef)
-	gdClassRefConstructors.Set("AStarGrid2D", newRefAStarGrid2DAsRef)
-	gdClassRefConstructors.Set("AnimatedTexture", newRefAnimatedTextureAsRef)
-	gdClassRefConstructors.Set("Animation", newRefAnimationAsRef)
-	gdClassRefConstructors.Set("AnimationLibrary", newRefAnimationLibraryAsRef)
-	gdClassRefConstructors.Set("AnimationNode", newRefAnimationNodeAsRef)
-	gdClassRefConstructors.Set("AnimationNodeAdd2", newRefAnimationNodeAdd2AsRef)
-	gdClassRefConstructors.Set("AnimationNodeAdd3", newRefAnimationNodeAdd3AsRef)
-	gdClassRefConstructors.Set("AnimationNodeAnimation", newRefAnimationNodeAnimationAsRef)
-	gdClassRefConstructors.Set("AnimationNodeBlend2", newRefAnimationNodeBlend2AsRef)
-	gdClassRefConstructors.Set("AnimationNodeBlend3", newRefAnimationNodeBlend3AsRef)
-	gdClassRefConstructors.Set("AnimationNodeBlendSpace1D", newRefAnimationNodeBlendSpace1DAsRef)
-	gdClassRefConstructors.Set("AnimationNodeBlendSpace2D", newRefAnimationNodeBlendSpace2DAsRef)
-	gdClassRefConstructors.Set("AnimationNodeBlendTree", newRefAnimationNodeBlendTreeAsRef)
-	gdClassRefConstructors.Set("AnimationNodeOneShot", newRefAnimationNodeOneShotAsRef)
-	gdClassRefConstructors.Set("AnimationNodeOutput", newRefAnimationNodeOutputAsRef)
-	gdClassRefConstructors.Set("AnimationNodeStateMachine", newRefAnimationNodeStateMachineAsRef)
-	gdClassRefConstructors.Set("AnimationNodeStateMachinePlayback", newRefAnimationNodeStateMachinePlaybackAsRef)
-	gdClassRefConstructors.Set("AnimationNodeStateMachineTransition", newRefAnimationNodeStateMachineTransitionAsRef)
-	gdClassRefConstructors.Set("AnimationNodeSub2", newRefAnimationNodeSub2AsRef)
-	gdClassRefConstructors.Set("AnimationNodeSync", newRefAnimationNodeSyncAsRef)
-	gdClassRefConstructors.Set("AnimationNodeTimeScale", newRefAnimationNodeTimeScaleAsRef)
-	gdClassRefConstructors.Set("AnimationNodeTimeSeek", newRefAnimationNodeTimeSeekAsRef)
-	gdClassRefConstructors.Set("AnimationNodeTransition", newRefAnimationNodeTransitionAsRef)
-	gdClassRefConstructors.Set("AnimationRootNode", newRefAnimationRootNodeAsRef)
-	gdClassRefConstructors.Set("ArrayMesh", newRefArrayMeshAsRef)
-	gdClassRefConstructors.Set("ArrayOccluder3D", newRefArrayOccluder3DAsRef)
-	gdClassRefConstructors.Set("AtlasTexture", newRefAtlasTextureAsRef)
-	gdClassRefConstructors.Set("AudioBusLayout", newRefAudioBusLayoutAsRef)
-	gdClassRefConstructors.Set("AudioEffect", newRefAudioEffectAsRef)
-	gdClassRefConstructors.Set("AudioEffectAmplify", newRefAudioEffectAmplifyAsRef)
-	gdClassRefConstructors.Set("AudioEffectBandLimitFilter", newRefAudioEffectBandLimitFilterAsRef)
-	gdClassRefConstructors.Set("AudioEffectBandPassFilter", newRefAudioEffectBandPassFilterAsRef)
-	gdClassRefConstructors.Set("AudioEffectCapture", newRefAudioEffectCaptureAsRef)
-	gdClassRefConstructors.Set("AudioEffectChorus", newRefAudioEffectChorusAsRef)
-	gdClassRefConstructors.Set("AudioEffectCompressor", newRefAudioEffectCompressorAsRef)
-	gdClassRefConstructors.Set("AudioEffectDelay", newRefAudioEffectDelayAsRef)
-	gdClassRefConstructors.Set("AudioEffectDistortion", newRefAudioEffectDistortionAsRef)
-	gdClassRefConstructors.Set("AudioEffectEQ", newRefAudioEffectEQAsRef)
-	gdClassRefConstructors.Set("AudioEffectEQ10", newRefAudioEffectEQ10AsRef)
-	gdClassRefConstructors.Set("AudioEffectEQ21", newRefAudioEffectEQ21AsRef)
-	gdClassRefConstructors.Set("AudioEffectEQ6", newRefAudioEffectEQ6AsRef)
-	gdClassRefConstructors.Set("AudioEffectFilter", newRefAudioEffectFilterAsRef)
-	gdClassRefConstructors.Set("AudioEffectHighPassFilter", newRefAudioEffectHighPassFilterAsRef)
-	gdClassRefConstructors.Set("AudioEffectHighShelfFilter", newRefAudioEffectHighShelfFilterAsRef)
-	gdClassRefConstructors.Set("AudioEffectInstance", newRefAudioEffectInstanceAsRef)
-	gdClassRefConstructors.Set("AudioEffectLimiter", newRefAudioEffectLimiterAsRef)
-	gdClassRefConstructors.Set("AudioEffectLowPassFilter", newRefAudioEffectLowPassFilterAsRef)
-	gdClassRefConstructors.Set("AudioEffectLowShelfFilter", newRefAudioEffectLowShelfFilterAsRef)
-	gdClassRefConstructors.Set("AudioEffectNotchFilter", newRefAudioEffectNotchFilterAsRef)
-	gdClassRefConstructors.Set("AudioEffectPanner", newRefAudioEffectPannerAsRef)
-	gdClassRefConstructors.Set("AudioEffectPhaser", newRefAudioEffectPhaserAsRef)
-	gdClassRefConstructors.Set("AudioEffectPitchShift", newRefAudioEffectPitchShiftAsRef)
-	gdClassRefConstructors.Set("AudioEffectRecord", newRefAudioEffectRecordAsRef)
-	gdClassRefConstructors.Set("AudioEffectReverb", newRefAudioEffectReverbAsRef)
-	gdClassRefConstructors.Set("AudioEffectSpectrumAnalyzer", newRefAudioEffectSpectrumAnalyzerAsRef)
-	gdClassRefConstructors.Set("AudioEffectSpectrumAnalyzerInstance", newRefAudioEffectSpectrumAnalyzerInstanceAsRef)
-	gdClassRefConstructors.Set("AudioEffectStereoEnhance", newRefAudioEffectStereoEnhanceAsRef)
-	gdClassRefConstructors.Set("AudioStream", newRefAudioStreamAsRef)
-	gdClassRefConstructors.Set("AudioStreamGenerator", newRefAudioStreamGeneratorAsRef)
-	gdClassRefConstructors.Set("AudioStreamGeneratorPlayback", newRefAudioStreamGeneratorPlaybackAsRef)
-	gdClassRefConstructors.Set("AudioStreamMP3", newRefAudioStreamMP3AsRef)
-	gdClassRefConstructors.Set("AudioStreamMicrophone", newRefAudioStreamMicrophoneAsRef)
-	gdClassRefConstructors.Set("AudioStreamOggVorbis", newRefAudioStreamOggVorbisAsRef)
-	gdClassRefConstructors.Set("AudioStreamPlayback", newRefAudioStreamPlaybackAsRef)
-	gdClassRefConstructors.Set("AudioStreamPlaybackOggVorbis", newRefAudioStreamPlaybackOggVorbisAsRef)
-	gdClassRefConstructors.Set("AudioStreamPlaybackPolyphonic", newRefAudioStreamPlaybackPolyphonicAsRef)
-	gdClassRefConstructors.Set("AudioStreamPlaybackResampled", newRefAudioStreamPlaybackResampledAsRef)
-	gdClassRefConstructors.Set("AudioStreamPolyphonic", newRefAudioStreamPolyphonicAsRef)
-	gdClassRefConstructors.Set("AudioStreamRandomizer", newRefAudioStreamRandomizerAsRef)
-	gdClassRefConstructors.Set("AudioStreamWAV", newRefAudioStreamWAVAsRef)
-	gdClassRefConstructors.Set("BaseMaterial3D", newRefBaseMaterial3DAsRef)
-	gdClassRefConstructors.Set("BitMap", newRefBitMapAsRef)
-	gdClassRefConstructors.Set("BoneMap", newRefBoneMapAsRef)
-	gdClassRefConstructors.Set("BoxMesh", newRefBoxMeshAsRef)
-	gdClassRefConstructors.Set("BoxOccluder3D", newRefBoxOccluder3DAsRef)
-	gdClassRefConstructors.Set("BoxShape3D", newRefBoxShape3DAsRef)
-	gdClassRefConstructors.Set("ButtonGroup", newRefButtonGroupAsRef)
-	gdClassRefConstructors.Set("CallbackTweener", newRefCallbackTweenerAsRef)
-	gdClassRefConstructors.Set("CameraAttributes", newRefCameraAttributesAsRef)
-	gdClassRefConstructors.Set("CameraAttributesPhysical", newRefCameraAttributesPhysicalAsRef)
-	gdClassRefConstructors.Set("CameraAttributesPractical", newRefCameraAttributesPracticalAsRef)
-	gdClassRefConstructors.Set("CameraFeed", newRefCameraFeedAsRef)
-	gdClassRefConstructors.Set("CameraTexture", newRefCameraTextureAsRef)
-	gdClassRefConstructors.Set("CanvasItemMaterial", newRefCanvasItemMaterialAsRef)
-	gdClassRefConstructors.Set("CanvasTexture", newRefCanvasTextureAsRef)
-	gdClassRefConstructors.Set("CapsuleMesh", newRefCapsuleMeshAsRef)
-	gdClassRefConstructors.Set("CapsuleShape2D", newRefCapsuleShape2DAsRef)
-	gdClassRefConstructors.Set("CapsuleShape3D", newRefCapsuleShape3DAsRef)
-	gdClassRefConstructors.Set("CharFXTransform", newRefCharFXTransformAsRef)
-	gdClassRefConstructors.Set("CircleShape2D", newRefCircleShape2DAsRef)
-	gdClassRefConstructors.Set("CodeHighlighter", newRefCodeHighlighterAsRef)
-	gdClassRefConstructors.Set("CompressedCubemap", newRefCompressedCubemapAsRef)
-	gdClassRefConstructors.Set("CompressedCubemapArray", newRefCompressedCubemapArrayAsRef)
-	gdClassRefConstructors.Set("CompressedTexture2D", newRefCompressedTexture2DAsRef)
-	gdClassRefConstructors.Set("CompressedTexture2DArray", newRefCompressedTexture2DArrayAsRef)
-	gdClassRefConstructors.Set("CompressedTexture3D", newRefCompressedTexture3DAsRef)
-	gdClassRefConstructors.Set("CompressedTextureLayered", newRefCompressedTextureLayeredAsRef)
-	gdClassRefConstructors.Set("ConcavePolygonShape2D", newRefConcavePolygonShape2DAsRef)
-	gdClassRefConstructors.Set("ConcavePolygonShape3D", newRefConcavePolygonShape3DAsRef)
-	gdClassRefConstructors.Set("ConfigFile", newRefConfigFileAsRef)
-	gdClassRefConstructors.Set("ConvexPolygonShape2D", newRefConvexPolygonShape2DAsRef)
-	gdClassRefConstructors.Set("ConvexPolygonShape3D", newRefConvexPolygonShape3DAsRef)
-	gdClassRefConstructors.Set("Crypto", newRefCryptoAsRef)
-	gdClassRefConstructors.Set("CryptoKey", newRefCryptoKeyAsRef)
-	gdClassRefConstructors.Set("Cubemap", newRefCubemapAsRef)
-	gdClassRefConstructors.Set("CubemapArray", newRefCubemapArrayAsRef)
-	gdClassRefConstructors.Set("Curve", newRefCurveAsRef)
-	gdClassRefConstructors.Set("Curve2D", newRefCurve2DAsRef)
-	gdClassRefConstructors.Set("Curve3D", newRefCurve3DAsRef)
-	gdClassRefConstructors.Set("CurveTexture", newRefCurveTextureAsRef)
-	gdClassRefConstructors.Set("CurveXYZTexture", newRefCurveXYZTextureAsRef)
-	gdClassRefConstructors.Set("CylinderMesh", newRefCylinderMeshAsRef)
-	gdClassRefConstructors.Set("CylinderShape3D", newRefCylinderShape3DAsRef)
-	gdClassRefConstructors.Set("DTLSServer", newRefDTLSServerAsRef)
-	gdClassRefConstructors.Set("DirAccess", newRefDirAccessAsRef)
-	gdClassRefConstructors.Set("ENetConnection", newRefENetConnectionAsRef)
-	gdClassRefConstructors.Set("ENetMultiplayerPeer", newRefENetMultiplayerPeerAsRef)
-	gdClassRefConstructors.Set("ENetPacketPeer", newRefENetPacketPeerAsRef)
-	gdClassRefConstructors.Set("EditorDebuggerPlugin", newRefEditorDebuggerPluginAsRef)
-	gdClassRefConstructors.Set("EditorDebuggerSession", newRefEditorDebuggerSessionAsRef)
-	gdClassRefConstructors.Set("EditorExportPlatform", newRefEditorExportPlatformAsRef)
-	gdClassRefConstructors.Set("EditorExportPlatformAndroid", newRefEditorExportPlatformAndroidAsRef)
-	gdClassRefConstructors.Set("EditorExportPlatformIOS", newRefEditorExportPlatformIOSAsRef)
-	gdClassRefConstructors.Set("EditorExportPlatformLinuxBSD", newRefEditorExportPlatformLinuxBSDAsRef)
-	gdClassRefConstructors.Set("EditorExportPlatformMacOS", newRefEditorExportPlatformMacOSAsRef)
-	gdClassRefConstructors.Set("EditorExportPlatformPC", newRefEditorExportPlatformPCAsRef)
-	gdClassRefConstructors.Set("EditorExportPlatformWeb", newRefEditorExportPlatformWebAsRef)
-	gdClassRefConstructors.Set("EditorExportPlatformWindows", newRefEditorExportPlatformWindowsAsRef)
-	gdClassRefConstructors.Set("EditorExportPlugin", newRefEditorExportPluginAsRef)
-	gdClassRefConstructors.Set("EditorFeatureProfile", newRefEditorFeatureProfileAsRef)
-	gdClassRefConstructors.Set("EditorFileSystemImportFormatSupportQuery", newRefEditorFileSystemImportFormatSupportQueryAsRef)
-	gdClassRefConstructors.Set("EditorImportPlugin", newRefEditorImportPluginAsRef)
-	gdClassRefConstructors.Set("EditorInspectorPlugin", newRefEditorInspectorPluginAsRef)
-	gdClassRefConstructors.Set("EditorNode3DGizmo", newRefEditorNode3DGizmoAsRef)
-	gdClassRefConstructors.Set("EditorNode3DGizmoPlugin", newRefEditorNode3DGizmoPluginAsRef)
-	gdClassRefConstructors.Set("EditorResourceConversionPlugin", newRefEditorResourceConversionPluginAsRef)
-	gdClassRefConstructors.Set("EditorResourcePreviewGenerator", newRefEditorResourcePreviewGeneratorAsRef)
-	gdClassRefConstructors.Set("EditorResourceTooltipPlugin", newRefEditorResourceTooltipPluginAsRef)
-	gdClassRefConstructors.Set("EditorSceneFormatImporter", newRefEditorSceneFormatImporterAsRef)
-	gdClassRefConstructors.Set("EditorSceneFormatImporterBlend", newRefEditorSceneFormatImporterBlendAsRef)
-	gdClassRefConstructors.Set("EditorSceneFormatImporterFBX", newRefEditorSceneFormatImporterFBXAsRef)
-	gdClassRefConstructors.Set("EditorSceneFormatImporterGLTF", newRefEditorSceneFormatImporterGLTFAsRef)
-	gdClassRefConstructors.Set("EditorScenePostImport", newRefEditorScenePostImportAsRef)
-	gdClassRefConstructors.Set("EditorScenePostImportPlugin", newRefEditorScenePostImportPluginAsRef)
-	gdClassRefConstructors.Set("EditorScript", newRefEditorScriptAsRef)
-	gdClassRefConstructors.Set("EditorSettings", newRefEditorSettingsAsRef)
-	gdClassRefConstructors.Set("EditorSyntaxHighlighter", newRefEditorSyntaxHighlighterAsRef)
-	gdClassRefConstructors.Set("EditorTranslationParserPlugin", newRefEditorTranslationParserPluginAsRef)
-	gdClassRefConstructors.Set("EncodedObjectAsID", newRefEncodedObjectAsIDAsRef)
-	gdClassRefConstructors.Set("EngineProfiler", newRefEngineProfilerAsRef)
-	gdClassRefConstructors.Set("Environment", newRefEnvironmentAsRef)
-	gdClassRefConstructors.Set("Expression", newRefExpressionAsRef)
-	gdClassRefConstructors.Set("FastNoiseLite", newRefFastNoiseLiteAsRef)
-	gdClassRefConstructors.Set("FileAccess", newRefFileAccessAsRef)
-	gdClassRefConstructors.Set("FogMaterial", newRefFogMaterialAsRef)
-	gdClassRefConstructors.Set("Font", newRefFontAsRef)
-	gdClassRefConstructors.Set("FontFile", newRefFontFileAsRef)
-	gdClassRefConstructors.Set("FontVariation", newRefFontVariationAsRef)
-	gdClassRefConstructors.Set("GDExtension", newRefGDExtensionAsRef)
-	gdClassRefConstructors.Set("GDScript", newRefGDScriptAsRef)
-	gdClassRefConstructors.Set("GLTFAccessor", newRefGLTFAccessorAsRef)
-	gdClassRefConstructors.Set("GLTFAnimation", newRefGLTFAnimationAsRef)
-	gdClassRefConstructors.Set("GLTFBufferView", newRefGLTFBufferViewAsRef)
-	gdClassRefConstructors.Set("GLTFCamera", newRefGLTFCameraAsRef)
-	gdClassRefConstructors.Set("GLTFDocument", newRefGLTFDocumentAsRef)
-	gdClassRefConstructors.Set("GLTFDocumentExtension", newRefGLTFDocumentExtensionAsRef)
-	gdClassRefConstructors.Set("GLTFDocumentExtensionConvertImporterMesh", newRefGLTFDocumentExtensionConvertImporterMeshAsRef)
-	gdClassRefConstructors.Set("GLTFLight", newRefGLTFLightAsRef)
-	gdClassRefConstructors.Set("GLTFMesh", newRefGLTFMeshAsRef)
-	gdClassRefConstructors.Set("GLTFNode", newRefGLTFNodeAsRef)
-	gdClassRefConstructors.Set("GLTFPhysicsBody", newRefGLTFPhysicsBodyAsRef)
-	gdClassRefConstructors.Set("GLTFPhysicsShape", newRefGLTFPhysicsShapeAsRef)
-	gdClassRefConstructors.Set("GLTFSkeleton", newRefGLTFSkeletonAsRef)
-	gdClassRefConstructors.Set("GLTFSkin", newRefGLTFSkinAsRef)
-	gdClassRefConstructors.Set("GLTFSpecGloss", newRefGLTFSpecGlossAsRef)
-	gdClassRefConstructors.Set("GLTFState", newRefGLTFStateAsRef)
-	gdClassRefConstructors.Set("GLTFTexture", newRefGLTFTextureAsRef)
-	gdClassRefConstructors.Set("GLTFTextureSampler", newRefGLTFTextureSamplerAsRef)
-	gdClassRefConstructors.Set("Gradient", newRefGradientAsRef)
-	gdClassRefConstructors.Set("GradientTexture1D", newRefGradientTexture1DAsRef)
-	gdClassRefConstructors.Set("GradientTexture2D", newRefGradientTexture2DAsRef)
-	gdClassRefConstructors.Set("HMACContext", newRefHMACContextAsRef)
-	gdClassRefConstructors.Set("HTTPClient", newRefHTTPClientAsRef)
-	gdClassRefConstructors.Set("HashingContext", newRefHashingContextAsRef)
-	gdClassRefConstructors.Set("HeightMapShape3D", newRefHeightMapShape3DAsRef)
-	gdClassRefConstructors.Set("Image", newRefImageAsRef)
-	gdClassRefConstructors.Set("ImageFormatLoader", newRefImageFormatLoaderAsRef)
-	gdClassRefConstructors.Set("ImageFormatLoaderExtension", newRefImageFormatLoaderExtensionAsRef)
-	gdClassRefConstructors.Set("ImageTexture", newRefImageTextureAsRef)
-	gdClassRefConstructors.Set("ImageTexture3D", newRefImageTexture3DAsRef)
-	gdClassRefConstructors.Set("ImageTextureLayered", newRefImageTextureLayeredAsRef)
-	gdClassRefConstructors.Set("ImmediateMesh", newRefImmediateMeshAsRef)
-	gdClassRefConstructors.Set("ImporterMesh", newRefImporterMeshAsRef)
-	gdClassRefConstructors.Set("InputEvent", newRefInputEventAsRef)
-	gdClassRefConstructors.Set("InputEventAction", newRefInputEventActionAsRef)
-	gdClassRefConstructors.Set("InputEventFromWindow", newRefInputEventFromWindowAsRef)
-	gdClassRefConstructors.Set("InputEventGesture", newRefInputEventGestureAsRef)
-	gdClassRefConstructors.Set("InputEventJoypadButton", newRefInputEventJoypadButtonAsRef)
-	gdClassRefConstructors.Set("InputEventJoypadMotion", newRefInputEventJoypadMotionAsRef)
-	gdClassRefConstructors.Set("InputEventKey", newRefInputEventKeyAsRef)
-	gdClassRefConstructors.Set("InputEventMIDI", newRefInputEventMIDIAsRef)
-	gdClassRefConstructors.Set("InputEventMagnifyGesture", newRefInputEventMagnifyGestureAsRef)
-	gdClassRefConstructors.Set("InputEventMouse", newRefInputEventMouseAsRef)
-	gdClassRefConstructors.Set("InputEventMouseButton", newRefInputEventMouseButtonAsRef)
-	gdClassRefConstructors.Set("InputEventMouseMotion", newRefInputEventMouseMotionAsRef)
-	gdClassRefConstructors.Set("InputEventPanGesture", newRefInputEventPanGestureAsRef)
-	gdClassRefConstructors.Set("InputEventScreenDrag", newRefInputEventScreenDragAsRef)
-	gdClassRefConstructors.Set("InputEventScreenTouch", newRefInputEventScreenTouchAsRef)
-	gdClassRefConstructors.Set("InputEventShortcut", newRefInputEventShortcutAsRef)
-	gdClassRefConstructors.Set("InputEventWithModifiers", newRefInputEventWithModifiersAsRef)
-	gdClassRefConstructors.Set("IntervalTweener", newRefIntervalTweenerAsRef)
-	gdClassRefConstructors.Set("JSON", newRefJSONAsRef)
-	gdClassRefConstructors.Set("JavaClass", newRefJavaClassAsRef)
-	gdClassRefConstructors.Set("JavaScriptObject", newRefJavaScriptObjectAsRef)
-	gdClassRefConstructors.Set("KinematicCollision2D", newRefKinematicCollision2DAsRef)
-	gdClassRefConstructors.Set("KinematicCollision3D", newRefKinematicCollision3DAsRef)
-	gdClassRefConstructors.Set("LabelSettings", newRefLabelSettingsAsRef)
-	gdClassRefConstructors.Set("LightmapGIData", newRefLightmapGIDataAsRef)
-	gdClassRefConstructors.Set("Lightmapper", newRefLightmapperAsRef)
-	gdClassRefConstructors.Set("LightmapperRD", newRefLightmapperRDAsRef)
-	gdClassRefConstructors.Set("Material", newRefMaterialAsRef)
-	gdClassRefConstructors.Set("Mesh", newRefMeshAsRef)
-	gdClassRefConstructors.Set("MeshConvexDecompositionSettings", newRefMeshConvexDecompositionSettingsAsRef)
-	gdClassRefConstructors.Set("MeshDataTool", newRefMeshDataToolAsRef)
-	gdClassRefConstructors.Set("MeshLibrary", newRefMeshLibraryAsRef)
-	gdClassRefConstructors.Set("MeshTexture", newRefMeshTextureAsRef)
-	gdClassRefConstructors.Set("MethodTweener", newRefMethodTweenerAsRef)
-	gdClassRefConstructors.Set("MissingResource", newRefMissingResourceAsRef)
-	gdClassRefConstructors.Set("MobileVRInterface", newRefMobileVRInterfaceAsRef)
-	gdClassRefConstructors.Set("MultiMesh", newRefMultiMeshAsRef)
-	gdClassRefConstructors.Set("MultiplayerAPI", newRefMultiplayerAPIAsRef)
-	gdClassRefConstructors.Set("MultiplayerAPIExtension", newRefMultiplayerAPIExtensionAsRef)
-	gdClassRefConstructors.Set("MultiplayerPeer", newRefMultiplayerPeerAsRef)
-	gdClassRefConstructors.Set("MultiplayerPeerExtension", newRefMultiplayerPeerExtensionAsRef)
-	gdClassRefConstructors.Set("Mutex", newRefMutexAsRef)
-	gdClassRefConstructors.Set("NavigationMesh", newRefNavigationMeshAsRef)
-	gdClassRefConstructors.Set("NavigationMeshSourceGeometryData2D", newRefNavigationMeshSourceGeometryData2DAsRef)
-	gdClassRefConstructors.Set("NavigationMeshSourceGeometryData3D", newRefNavigationMeshSourceGeometryData3DAsRef)
-	gdClassRefConstructors.Set("NavigationPathQueryParameters2D", newRefNavigationPathQueryParameters2DAsRef)
-	gdClassRefConstructors.Set("NavigationPathQueryParameters3D", newRefNavigationPathQueryParameters3DAsRef)
-	gdClassRefConstructors.Set("NavigationPathQueryResult2D", newRefNavigationPathQueryResult2DAsRef)
-	gdClassRefConstructors.Set("NavigationPathQueryResult3D", newRefNavigationPathQueryResult3DAsRef)
-	gdClassRefConstructors.Set("NavigationPolygon", newRefNavigationPolygonAsRef)
-	gdClassRefConstructors.Set("Node3DGizmo", newRefNode3DGizmoAsRef)
-	gdClassRefConstructors.Set("Noise", newRefNoiseAsRef)
-	gdClassRefConstructors.Set("NoiseTexture2D", newRefNoiseTexture2DAsRef)
-	gdClassRefConstructors.Set("NoiseTexture3D", newRefNoiseTexture3DAsRef)
-	gdClassRefConstructors.Set("ORMMaterial3D", newRefORMMaterial3DAsRef)
-	gdClassRefConstructors.Set("Occluder3D", newRefOccluder3DAsRef)
-	gdClassRefConstructors.Set("OccluderPolygon2D", newRefOccluderPolygon2DAsRef)
-	gdClassRefConstructors.Set("OfflineMultiplayerPeer", newRefOfflineMultiplayerPeerAsRef)
-	gdClassRefConstructors.Set("OggPacketSequence", newRefOggPacketSequenceAsRef)
-	gdClassRefConstructors.Set("OggPacketSequencePlayback", newRefOggPacketSequencePlaybackAsRef)
-	gdClassRefConstructors.Set("OpenXRAPIExtension", newRefOpenXRAPIExtensionAsRef)
-	gdClassRefConstructors.Set("OpenXRAction", newRefOpenXRActionAsRef)
-	gdClassRefConstructors.Set("OpenXRActionMap", newRefOpenXRActionMapAsRef)
-	gdClassRefConstructors.Set("OpenXRActionSet", newRefOpenXRActionSetAsRef)
-	gdClassRefConstructors.Set("OpenXRIPBinding", newRefOpenXRIPBindingAsRef)
-	gdClassRefConstructors.Set("OpenXRInteractionProfile", newRefOpenXRInteractionProfileAsRef)
-	gdClassRefConstructors.Set("OpenXRInterface", newRefOpenXRInterfaceAsRef)
-	gdClassRefConstructors.Set("OptimizedTranslation", newRefOptimizedTranslationAsRef)
-	gdClassRefConstructors.Set("PCKPacker", newRefPCKPackerAsRef)
-	gdClassRefConstructors.Set("PackedDataContainer", newRefPackedDataContainerAsRef)
-	gdClassRefConstructors.Set("PackedDataContainerRef", newRefPackedDataContainerRefAsRef)
-	gdClassRefConstructors.Set("PackedScene", newRefPackedSceneAsRef)
-	gdClassRefConstructors.Set("PacketPeer", newRefPacketPeerAsRef)
-	gdClassRefConstructors.Set("PacketPeerDTLS", newRefPacketPeerDTLSAsRef)
-	gdClassRefConstructors.Set("PacketPeerExtension", newRefPacketPeerExtensionAsRef)
-	gdClassRefConstructors.Set("PacketPeerStream", newRefPacketPeerStreamAsRef)
-	gdClassRefConstructors.Set("PacketPeerUDP", newRefPacketPeerUDPAsRef)
-	gdClassRefConstructors.Set("PanoramaSkyMaterial", newRefPanoramaSkyMaterialAsRef)
-	gdClassRefConstructors.Set("ParticleProcessMaterial", newRefParticleProcessMaterialAsRef)
-	gdClassRefConstructors.Set("PhysicalSkyMaterial", newRefPhysicalSkyMaterialAsRef)
-	gdClassRefConstructors.Set("PhysicsMaterial", newRefPhysicsMaterialAsRef)
-	gdClassRefConstructors.Set("PhysicsPointQueryParameters2D", newRefPhysicsPointQueryParameters2DAsRef)
-	gdClassRefConstructors.Set("PhysicsPointQueryParameters3D", newRefPhysicsPointQueryParameters3DAsRef)
-	gdClassRefConstructors.Set("PhysicsRayQueryParameters2D", newRefPhysicsRayQueryParameters2DAsRef)
-	gdClassRefConstructors.Set("PhysicsRayQueryParameters3D", newRefPhysicsRayQueryParameters3DAsRef)
-	gdClassRefConstructors.Set("PhysicsShapeQueryParameters2D", newRefPhysicsShapeQueryParameters2DAsRef)
-	gdClassRefConstructors.Set("PhysicsShapeQueryParameters3D", newRefPhysicsShapeQueryParameters3DAsRef)
-	gdClassRefConstructors.Set("PhysicsTestMotionParameters2D", newRefPhysicsTestMotionParameters2DAsRef)
-	gdClassRefConstructors.Set("PhysicsTestMotionParameters3D", newRefPhysicsTestMotionParameters3DAsRef)
-	gdClassRefConstructors.Set("PhysicsTestMotionResult2D", newRefPhysicsTestMotionResult2DAsRef)
-	gdClassRefConstructors.Set("PhysicsTestMotionResult3D", newRefPhysicsTestMotionResult3DAsRef)
-	gdClassRefConstructors.Set("PlaceholderCubemap", newRefPlaceholderCubemapAsRef)
-	gdClassRefConstructors.Set("PlaceholderCubemapArray", newRefPlaceholderCubemapArrayAsRef)
-	gdClassRefConstructors.Set("PlaceholderMaterial", newRefPlaceholderMaterialAsRef)
-	gdClassRefConstructors.Set("PlaceholderMesh", newRefPlaceholderMeshAsRef)
-	gdClassRefConstructors.Set("PlaceholderTexture2D", newRefPlaceholderTexture2DAsRef)
-	gdClassRefConstructors.Set("PlaceholderTexture2DArray", newRefPlaceholderTexture2DArrayAsRef)
-	gdClassRefConstructors.Set("PlaceholderTexture3D", newRefPlaceholderTexture3DAsRef)
-	gdClassRefConstructors.Set("PlaceholderTextureLayered", newRefPlaceholderTextureLayeredAsRef)
-	gdClassRefConstructors.Set("PlaneMesh", newRefPlaneMeshAsRef)
-	gdClassRefConstructors.Set("PointMesh", newRefPointMeshAsRef)
-	gdClassRefConstructors.Set("PolygonOccluder3D", newRefPolygonOccluder3DAsRef)
-	gdClassRefConstructors.Set("PolygonPathFinder", newRefPolygonPathFinderAsRef)
-	gdClassRefConstructors.Set("PortableCompressedTexture2D", newRefPortableCompressedTexture2DAsRef)
-	gdClassRefConstructors.Set("PrimitiveMesh", newRefPrimitiveMeshAsRef)
-	gdClassRefConstructors.Set("PrismMesh", newRefPrismMeshAsRef)
-	gdClassRefConstructors.Set("ProceduralSkyMaterial", newRefProceduralSkyMaterialAsRef)
-	gdClassRefConstructors.Set("PropertyTweener", newRefPropertyTweenerAsRef)
-	gdClassRefConstructors.Set("QuadMesh", newRefQuadMeshAsRef)
-	gdClassRefConstructors.Set("QuadOccluder3D", newRefQuadOccluder3DAsRef)
-	gdClassRefConstructors.Set("RDAttachmentFormat", newRefRDAttachmentFormatAsRef)
-	gdClassRefConstructors.Set("RDFramebufferPass", newRefRDFramebufferPassAsRef)
-	gdClassRefConstructors.Set("RDPipelineColorBlendState", newRefRDPipelineColorBlendStateAsRef)
-	gdClassRefConstructors.Set("RDPipelineColorBlendStateAttachment", newRefRDPipelineColorBlendStateAttachmentAsRef)
-	gdClassRefConstructors.Set("RDPipelineDepthStencilState", newRefRDPipelineDepthStencilStateAsRef)
-	gdClassRefConstructors.Set("RDPipelineMultisampleState", newRefRDPipelineMultisampleStateAsRef)
-	gdClassRefConstructors.Set("RDPipelineRasterizationState", newRefRDPipelineRasterizationStateAsRef)
-	gdClassRefConstructors.Set("RDPipelineSpecializationConstant", newRefRDPipelineSpecializationConstantAsRef)
-	gdClassRefConstructors.Set("RDSamplerState", newRefRDSamplerStateAsRef)
-	gdClassRefConstructors.Set("RDShaderFile", newRefRDShaderFileAsRef)
-	gdClassRefConstructors.Set("RDShaderSPIRV", newRefRDShaderSPIRVAsRef)
-	gdClassRefConstructors.Set("RDShaderSource", newRefRDShaderSourceAsRef)
-	gdClassRefConstructors.Set("RDTextureFormat", newRefRDTextureFormatAsRef)
-	gdClassRefConstructors.Set("RDTextureView", newRefRDTextureViewAsRef)
-	gdClassRefConstructors.Set("RDUniform", newRefRDUniformAsRef)
-	gdClassRefConstructors.Set("RDVertexAttribute", newRefRDVertexAttributeAsRef)
-	gdClassRefConstructors.Set("RandomNumberGenerator", newRefRandomNumberGeneratorAsRef)
-	gdClassRefConstructors.Set("RectangleShape2D", newRefRectangleShape2DAsRef)
-	gdClassRefConstructors.Set("RefCounted", newRefRefCountedAsRef)
-	gdClassRefConstructors.Set("RegEx", newRefRegExAsRef)
-	gdClassRefConstructors.Set("RegExMatch", newRefRegExMatchAsRef)
-	gdClassRefConstructors.Set("RenderSceneBuffers", newRefRenderSceneBuffersAsRef)
-	gdClassRefConstructors.Set("RenderSceneBuffersConfiguration", newRefRenderSceneBuffersConfigurationAsRef)
-	gdClassRefConstructors.Set("RenderSceneBuffersExtension", newRefRenderSceneBuffersExtensionAsRef)
-	gdClassRefConstructors.Set("RenderSceneBuffersRD", newRefRenderSceneBuffersRDAsRef)
-	gdClassRefConstructors.Set("Resource", newRefResourceAsRef)
-	gdClassRefConstructors.Set("ResourceFormatLoader", newRefResourceFormatLoaderAsRef)
-	gdClassRefConstructors.Set("ResourceFormatSaver", newRefResourceFormatSaverAsRef)
-	gdClassRefConstructors.Set("ResourceImporter", newRefResourceImporterAsRef)
-	gdClassRefConstructors.Set("ResourceImporterBMFont", newRefResourceImporterBMFontAsRef)
-	gdClassRefConstructors.Set("ResourceImporterBitMap", newRefResourceImporterBitMapAsRef)
-	gdClassRefConstructors.Set("ResourceImporterCSVTranslation", newRefResourceImporterCSVTranslationAsRef)
-	gdClassRefConstructors.Set("ResourceImporterDynamicFont", newRefResourceImporterDynamicFontAsRef)
-	gdClassRefConstructors.Set("ResourceImporterImage", newRefResourceImporterImageAsRef)
-	gdClassRefConstructors.Set("ResourceImporterImageFont", newRefResourceImporterImageFontAsRef)
-	gdClassRefConstructors.Set("ResourceImporterLayeredTexture", newRefResourceImporterLayeredTextureAsRef)
-	gdClassRefConstructors.Set("ResourceImporterMP3", newRefResourceImporterMP3AsRef)
-	gdClassRefConstructors.Set("ResourceImporterOBJ", newRefResourceImporterOBJAsRef)
-	gdClassRefConstructors.Set("ResourceImporterOggVorbis", newRefResourceImporterOggVorbisAsRef)
-	gdClassRefConstructors.Set("ResourceImporterScene", newRefResourceImporterSceneAsRef)
-	gdClassRefConstructors.Set("ResourceImporterShaderFile", newRefResourceImporterShaderFileAsRef)
-	gdClassRefConstructors.Set("ResourceImporterTexture", newRefResourceImporterTextureAsRef)
-	gdClassRefConstructors.Set("ResourceImporterTextureAtlas", newRefResourceImporterTextureAtlasAsRef)
-	gdClassRefConstructors.Set("ResourceImporterWAV", newRefResourceImporterWAVAsRef)
-	gdClassRefConstructors.Set("RibbonTrailMesh", newRefRibbonTrailMeshAsRef)
-	gdClassRefConstructors.Set("RichTextEffect", newRefRichTextEffectAsRef)
-	gdClassRefConstructors.Set("SceneMultiplayer", newRefSceneMultiplayerAsRef)
-	gdClassRefConstructors.Set("SceneReplicationConfig", newRefSceneReplicationConfigAsRef)
-	gdClassRefConstructors.Set("SceneState", newRefSceneStateAsRef)
-	gdClassRefConstructors.Set("SceneTreeTimer", newRefSceneTreeTimerAsRef)
-	gdClassRefConstructors.Set("Script", newRefScriptAsRef)
-	gdClassRefConstructors.Set("ScriptExtension", newRefScriptExtensionAsRef)
-	gdClassRefConstructors.Set("SegmentShape2D", newRefSegmentShape2DAsRef)
-	gdClassRefConstructors.Set("Semaphore", newRefSemaphoreAsRef)
-	gdClassRefConstructors.Set("SeparationRayShape2D", newRefSeparationRayShape2DAsRef)
-	gdClassRefConstructors.Set("SeparationRayShape3D", newRefSeparationRayShape3DAsRef)
-	gdClassRefConstructors.Set("Shader", newRefShaderAsRef)
-	gdClassRefConstructors.Set("ShaderInclude", newRefShaderIncludeAsRef)
-	gdClassRefConstructors.Set("ShaderMaterial", newRefShaderMaterialAsRef)
-	gdClassRefConstructors.Set("Shape2D", newRefShape2DAsRef)
-	gdClassRefConstructors.Set("Shape3D", newRefShape3DAsRef)
-	gdClassRefConstructors.Set("Shortcut", newRefShortcutAsRef)
-	gdClassRefConstructors.Set("SkeletonModification2D", newRefSkeletonModification2DAsRef)
-	gdClassRefConstructors.Set("SkeletonModification2DCCDIK", newRefSkeletonModification2DCCDIKAsRef)
-	gdClassRefConstructors.Set("SkeletonModification2DFABRIK", newRefSkeletonModification2DFABRIKAsRef)
-	gdClassRefConstructors.Set("SkeletonModification2DJiggle", newRefSkeletonModification2DJiggleAsRef)
-	gdClassRefConstructors.Set("SkeletonModification2DLookAt", newRefSkeletonModification2DLookAtAsRef)
-	gdClassRefConstructors.Set("SkeletonModification2DPhysicalBones", newRefSkeletonModification2DPhysicalBonesAsRef)
-	gdClassRefConstructors.Set("SkeletonModification2DStackHolder", newRefSkeletonModification2DStackHolderAsRef)
-	gdClassRefConstructors.Set("SkeletonModification2DTwoBoneIK", newRefSkeletonModification2DTwoBoneIKAsRef)
-	gdClassRefConstructors.Set("SkeletonModificationStack2D", newRefSkeletonModificationStack2DAsRef)
-	gdClassRefConstructors.Set("SkeletonProfile", newRefSkeletonProfileAsRef)
-	gdClassRefConstructors.Set("SkeletonProfileHumanoid", newRefSkeletonProfileHumanoidAsRef)
-	gdClassRefConstructors.Set("Skin", newRefSkinAsRef)
-	gdClassRefConstructors.Set("SkinReference", newRefSkinReferenceAsRef)
-	gdClassRefConstructors.Set("Sky", newRefSkyAsRef)
-	gdClassRefConstructors.Set("SphereMesh", newRefSphereMeshAsRef)
-	gdClassRefConstructors.Set("SphereOccluder3D", newRefSphereOccluder3DAsRef)
-	gdClassRefConstructors.Set("SphereShape3D", newRefSphereShape3DAsRef)
-	gdClassRefConstructors.Set("SpriteFrames", newRefSpriteFramesAsRef)
-	gdClassRefConstructors.Set("StandardMaterial3D", newRefStandardMaterial3DAsRef)
-	gdClassRefConstructors.Set("StreamPeer", newRefStreamPeerAsRef)
-	gdClassRefConstructors.Set("StreamPeerBuffer", newRefStreamPeerBufferAsRef)
-	gdClassRefConstructors.Set("StreamPeerExtension", newRefStreamPeerExtensionAsRef)
-	gdClassRefConstructors.Set("StreamPeerGZIP", newRefStreamPeerGZIPAsRef)
-	gdClassRefConstructors.Set("StreamPeerTCP", newRefStreamPeerTCPAsRef)
-	gdClassRefConstructors.Set("StreamPeerTLS", newRefStreamPeerTLSAsRef)
-	gdClassRefConstructors.Set("StyleBox", newRefStyleBoxAsRef)
-	gdClassRefConstructors.Set("StyleBoxEmpty", newRefStyleBoxEmptyAsRef)
-	gdClassRefConstructors.Set("StyleBoxFlat", newRefStyleBoxFlatAsRef)
-	gdClassRefConstructors.Set("StyleBoxLine", newRefStyleBoxLineAsRef)
-	gdClassRefConstructors.Set("StyleBoxTexture", newRefStyleBoxTextureAsRef)
-	gdClassRefConstructors.Set("SurfaceTool", newRefSurfaceToolAsRef)
-	gdClassRefConstructors.Set("SyntaxHighlighter", newRefSyntaxHighlighterAsRef)
-	gdClassRefConstructors.Set("SystemFont", newRefSystemFontAsRef)
-	gdClassRefConstructors.Set("TCPServer", newRefTCPServerAsRef)
-	gdClassRefConstructors.Set("TLSOptions", newRefTLSOptionsAsRef)
-	gdClassRefConstructors.Set("TextLine", newRefTextLineAsRef)
-	gdClassRefConstructors.Set("TextMesh", newRefTextMeshAsRef)
-	gdClassRefConstructors.Set("TextParagraph", newRefTextParagraphAsRef)
-	gdClassRefConstructors.Set("TextServer", newRefTextServerAsRef)
-	gdClassRefConstructors.Set("TextServerAdvanced", newRefTextServerAdvancedAsRef)
-	gdClassRefConstructors.Set("TextServerDummy", newRefTextServerDummyAsRef)
-	gdClassRefConstructors.Set("TextServerExtension", newRefTextServerExtensionAsRef)
-	gdClassRefConstructors.Set("Texture", newRefTextureAsRef)
-	gdClassRefConstructors.Set("Texture2D", newRefTexture2DAsRef)
-	gdClassRefConstructors.Set("Texture2DArray", newRefTexture2DArrayAsRef)
-	gdClassRefConstructors.Set("Texture2DArrayRD", newRefTexture2DArrayRDAsRef)
-	gdClassRefConstructors.Set("Texture2DRD", newRefTexture2DRDAsRef)
-	gdClassRefConstructors.Set("Texture3D", newRefTexture3DAsRef)
-	gdClassRefConstructors.Set("Texture3DRD", newRefTexture3DRDAsRef)
-	gdClassRefConstructors.Set("TextureCubemapArrayRD", newRefTextureCubemapArrayRDAsRef)
-	gdClassRefConstructors.Set("TextureCubemapRD", newRefTextureCubemapRDAsRef)
-	gdClassRefConstructors.Set("TextureLayered", newRefTextureLayeredAsRef)
-	gdClassRefConstructors.Set("TextureLayeredRD", newRefTextureLayeredRDAsRef)
-	gdClassRefConstructors.Set("Theme", newRefThemeAsRef)
-	gdClassRefConstructors.Set("Thread", newRefThreadAsRef)
-	gdClassRefConstructors.Set("TileMapPattern", newRefTileMapPatternAsRef)
-	gdClassRefConstructors.Set("TileSet", newRefTileSetAsRef)
-	gdClassRefConstructors.Set("TileSetAtlasSource", newRefTileSetAtlasSourceAsRef)
-	gdClassRefConstructors.Set("TileSetScenesCollectionSource", newRefTileSetScenesCollectionSourceAsRef)
-	gdClassRefConstructors.Set("TileSetSource", newRefTileSetSourceAsRef)
-	gdClassRefConstructors.Set("TorusMesh", newRefTorusMeshAsRef)
-	gdClassRefConstructors.Set("Translation", newRefTranslationAsRef)
-	gdClassRefConstructors.Set("TriangleMesh", newRefTriangleMeshAsRef)
-	gdClassRefConstructors.Set("TubeTrailMesh", newRefTubeTrailMeshAsRef)
-	gdClassRefConstructors.Set("Tween", newRefTweenAsRef)
-	gdClassRefConstructors.Set("Tweener", newRefTweenerAsRef)
-	gdClassRefConstructors.Set("UDPServer", newRefUDPServerAsRef)
-	gdClassRefConstructors.Set("UPNP", newRefUPNPAsRef)
-	gdClassRefConstructors.Set("UPNPDevice", newRefUPNPDeviceAsRef)
-	gdClassRefConstructors.Set("VideoStream", newRefVideoStreamAsRef)
-	gdClassRefConstructors.Set("VideoStreamPlayback", newRefVideoStreamPlaybackAsRef)
-	gdClassRefConstructors.Set("VideoStreamTheora", newRefVideoStreamTheoraAsRef)
-	gdClassRefConstructors.Set("ViewportTexture", newRefViewportTextureAsRef)
-	gdClassRefConstructors.Set("VisualShader", newRefVisualShaderAsRef)
-	gdClassRefConstructors.Set("VisualShaderNode", newRefVisualShaderNodeAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeBillboard", newRefVisualShaderNodeBillboardAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeBooleanConstant", newRefVisualShaderNodeBooleanConstantAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeBooleanParameter", newRefVisualShaderNodeBooleanParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeClamp", newRefVisualShaderNodeClampAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeColorConstant", newRefVisualShaderNodeColorConstantAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeColorFunc", newRefVisualShaderNodeColorFuncAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeColorOp", newRefVisualShaderNodeColorOpAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeColorParameter", newRefVisualShaderNodeColorParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeComment", newRefVisualShaderNodeCommentAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeCompare", newRefVisualShaderNodeCompareAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeConstant", newRefVisualShaderNodeConstantAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeCubemap", newRefVisualShaderNodeCubemapAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeCubemapParameter", newRefVisualShaderNodeCubemapParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeCurveTexture", newRefVisualShaderNodeCurveTextureAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeCurveXYZTexture", newRefVisualShaderNodeCurveXYZTextureAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeCustom", newRefVisualShaderNodeCustomAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeDerivativeFunc", newRefVisualShaderNodeDerivativeFuncAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeDeterminant", newRefVisualShaderNodeDeterminantAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeDistanceFade", newRefVisualShaderNodeDistanceFadeAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeDotProduct", newRefVisualShaderNodeDotProductAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeExpression", newRefVisualShaderNodeExpressionAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeFaceForward", newRefVisualShaderNodeFaceForwardAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeFloatConstant", newRefVisualShaderNodeFloatConstantAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeFloatFunc", newRefVisualShaderNodeFloatFuncAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeFloatOp", newRefVisualShaderNodeFloatOpAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeFloatParameter", newRefVisualShaderNodeFloatParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeFresnel", newRefVisualShaderNodeFresnelAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeGlobalExpression", newRefVisualShaderNodeGlobalExpressionAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeGroupBase", newRefVisualShaderNodeGroupBaseAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeIf", newRefVisualShaderNodeIfAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeInput", newRefVisualShaderNodeInputAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeIntConstant", newRefVisualShaderNodeIntConstantAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeIntFunc", newRefVisualShaderNodeIntFuncAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeIntOp", newRefVisualShaderNodeIntOpAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeIntParameter", newRefVisualShaderNodeIntParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeIs", newRefVisualShaderNodeIsAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeLinearSceneDepth", newRefVisualShaderNodeLinearSceneDepthAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeMix", newRefVisualShaderNodeMixAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeMultiplyAdd", newRefVisualShaderNodeMultiplyAddAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeOuterProduct", newRefVisualShaderNodeOuterProductAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeOutput", newRefVisualShaderNodeOutputAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParameter", newRefVisualShaderNodeParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParameterRef", newRefVisualShaderNodeParameterRefAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParticleAccelerator", newRefVisualShaderNodeParticleAcceleratorAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParticleBoxEmitter", newRefVisualShaderNodeParticleBoxEmitterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParticleConeVelocity", newRefVisualShaderNodeParticleConeVelocityAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParticleEmit", newRefVisualShaderNodeParticleEmitAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParticleEmitter", newRefVisualShaderNodeParticleEmitterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParticleMeshEmitter", newRefVisualShaderNodeParticleMeshEmitterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParticleMultiplyByAxisAngle", newRefVisualShaderNodeParticleMultiplyByAxisAngleAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParticleOutput", newRefVisualShaderNodeParticleOutputAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParticleRandomness", newRefVisualShaderNodeParticleRandomnessAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParticleRingEmitter", newRefVisualShaderNodeParticleRingEmitterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeParticleSphereEmitter", newRefVisualShaderNodeParticleSphereEmitterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeProximityFade", newRefVisualShaderNodeProximityFadeAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeRandomRange", newRefVisualShaderNodeRandomRangeAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeRemap", newRefVisualShaderNodeRemapAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeResizableBase", newRefVisualShaderNodeResizableBaseAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeRotationByAxis", newRefVisualShaderNodeRotationByAxisAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeSDFRaymarch", newRefVisualShaderNodeSDFRaymarchAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeSDFToScreenUV", newRefVisualShaderNodeSDFToScreenUVAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeSample3D", newRefVisualShaderNodeSample3DAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeScreenNormalWorldSpace", newRefVisualShaderNodeScreenNormalWorldSpaceAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeScreenUVToSDF", newRefVisualShaderNodeScreenUVToSDFAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeSmoothStep", newRefVisualShaderNodeSmoothStepAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeStep", newRefVisualShaderNodeStepAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeSwitch", newRefVisualShaderNodeSwitchAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTexture", newRefVisualShaderNodeTextureAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTexture2DArray", newRefVisualShaderNodeTexture2DArrayAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTexture2DArrayParameter", newRefVisualShaderNodeTexture2DArrayParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTexture2DParameter", newRefVisualShaderNodeTexture2DParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTexture3D", newRefVisualShaderNodeTexture3DAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTexture3DParameter", newRefVisualShaderNodeTexture3DParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTextureParameter", newRefVisualShaderNodeTextureParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTextureParameterTriplanar", newRefVisualShaderNodeTextureParameterTriplanarAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTextureSDF", newRefVisualShaderNodeTextureSDFAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTextureSDFNormal", newRefVisualShaderNodeTextureSDFNormalAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTransformCompose", newRefVisualShaderNodeTransformComposeAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTransformConstant", newRefVisualShaderNodeTransformConstantAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTransformDecompose", newRefVisualShaderNodeTransformDecomposeAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTransformFunc", newRefVisualShaderNodeTransformFuncAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTransformOp", newRefVisualShaderNodeTransformOpAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTransformParameter", newRefVisualShaderNodeTransformParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeTransformVecMult", newRefVisualShaderNodeTransformVecMultAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeUIntConstant", newRefVisualShaderNodeUIntConstantAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeUIntFunc", newRefVisualShaderNodeUIntFuncAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeUIntOp", newRefVisualShaderNodeUIntOpAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeUIntParameter", newRefVisualShaderNodeUIntParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeUVFunc", newRefVisualShaderNodeUVFuncAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeUVPolarCoord", newRefVisualShaderNodeUVPolarCoordAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVarying", newRefVisualShaderNodeVaryingAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVaryingGetter", newRefVisualShaderNodeVaryingGetterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVaryingSetter", newRefVisualShaderNodeVaryingSetterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVec2Constant", newRefVisualShaderNodeVec2ConstantAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVec2Parameter", newRefVisualShaderNodeVec2ParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVec3Constant", newRefVisualShaderNodeVec3ConstantAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVec3Parameter", newRefVisualShaderNodeVec3ParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVec4Constant", newRefVisualShaderNodeVec4ConstantAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVec4Parameter", newRefVisualShaderNodeVec4ParameterAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVectorBase", newRefVisualShaderNodeVectorBaseAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVectorCompose", newRefVisualShaderNodeVectorComposeAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVectorDecompose", newRefVisualShaderNodeVectorDecomposeAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVectorDistance", newRefVisualShaderNodeVectorDistanceAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVectorFunc", newRefVisualShaderNodeVectorFuncAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVectorLen", newRefVisualShaderNodeVectorLenAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVectorOp", newRefVisualShaderNodeVectorOpAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeVectorRefract", newRefVisualShaderNodeVectorRefractAsRef)
-	gdClassRefConstructors.Set("VisualShaderNodeWorldPositionFromDepth", newRefVisualShaderNodeWorldPositionFromDepthAsRef)
-	gdClassRefConstructors.Set("VoxelGIData", newRefVoxelGIDataAsRef)
-	gdClassRefConstructors.Set("WeakRef", newRefWeakRefAsRef)
-	gdClassRefConstructors.Set("WebRTCDataChannel", newRefWebRTCDataChannelAsRef)
-	gdClassRefConstructors.Set("WebRTCDataChannelExtension", newRefWebRTCDataChannelExtensionAsRef)
-	gdClassRefConstructors.Set("WebRTCMultiplayerPeer", newRefWebRTCMultiplayerPeerAsRef)
-	gdClassRefConstructors.Set("WebRTCPeerConnection", newRefWebRTCPeerConnectionAsRef)
-	gdClassRefConstructors.Set("WebRTCPeerConnectionExtension", newRefWebRTCPeerConnectionExtensionAsRef)
-	gdClassRefConstructors.Set("WebSocketMultiplayerPeer", newRefWebSocketMultiplayerPeerAsRef)
-	gdClassRefConstructors.Set("WebSocketPeer", newRefWebSocketPeerAsRef)
-	gdClassRefConstructors.Set("WebXRInterface", newRefWebXRInterfaceAsRef)
-	gdClassRefConstructors.Set("World2D", newRefWorld2DAsRef)
-	gdClassRefConstructors.Set("World3D", newRefWorld3DAsRef)
-	gdClassRefConstructors.Set("WorldBoundaryShape2D", newRefWorldBoundaryShape2DAsRef)
-	gdClassRefConstructors.Set("WorldBoundaryShape3D", newRefWorldBoundaryShape3DAsRef)
-	gdClassRefConstructors.Set("X509Certificate", newRefX509CertificateAsRef)
-	gdClassRefConstructors.Set("XMLParser", newRefXMLParserAsRef)
-	gdClassRefConstructors.Set("XRInterface", newRefXRInterfaceAsRef)
-	gdClassRefConstructors.Set("XRInterfaceExtension", newRefXRInterfaceExtensionAsRef)
-	gdClassRefConstructors.Set("XRPose", newRefXRPoseAsRef)
-	gdClassRefConstructors.Set("XRPositionalTracker", newRefXRPositionalTrackerAsRef)
-	gdClassRefConstructors.Set("ZIPPacker", newRefZIPPackerAsRef)
-	gdClassRefConstructors.Set("ZIPReader", newRefZIPReaderAsRef)
+func NewRefZIPReaderGDExtensionIternalConstructor(reference ZIPReader) RefZIPReader {
+	return NewTypedRefGDExtensionIternalConstructor[ZIPReader](reference)
 }

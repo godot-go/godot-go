@@ -15,8 +15,9 @@ package gdclass
 import (
 	"unsafe"
 
+	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/ffi"
-	. "github.com/godot-go/godot-go/pkg/global"
+	. "github.com/godot-go/godot-go/pkg/constant"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )
@@ -43,7 +44,7 @@ func New{{ $c.Name }}WithGodotOwnerObject(owner *GodotObject) {{ if $view.IsRefc
 	inst.Owner = owner
 
 	{{ if $view.IsRefcountedClassName $c.Name -}}
-	return newRef{{ $c.Name }}GDExtensionIternalConstructor(inst)
+	return NewRef{{ $c.Name }}GDExtensionIternalConstructor(inst)
 	{{ else -}}
 	return inst
 	{{ end -}}
@@ -117,7 +118,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	{{ range $j, $a := $m.Arguments -}}
 	v{{ $j }} := {{ (goVariantFunc $a.Type (goArgumentName $a.Name) $view.Classes) }}
-	argPtrSlice[{{ $j }}] = v{{ $j }}.nativeConstPtr()
+	argPtrSlice[{{ $j }}] = v{{ $j }}.NativeConstPtr()
 	{{ end -}}
 	for i := range varargs {
 		argPtrSlice[i + {{ len $m.Arguments }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&varargs[i])) // variant
@@ -145,7 +146,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	{{ end -}}
 	{{ with $fnReturnType -}}
 	{{ if $view.IsRefcountedClassName $fnReturnType -}}
-	return newRef{{ $fnReturnType }}GDExtensionIternalConstructor(&ret)
+	return NewRef{{ $fnReturnType }}GDExtensionIternalConstructor(&ret)
 	{{ else if $view.ContainsClassName $fnReturnType -}}
 	return &ret
 	{{ else -}}

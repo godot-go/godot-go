@@ -149,6 +149,6 @@ func initPrimativeTypeEncoders() {
 	GoStringUtf8Encoder = createGoStringEncoder(Utf8GoStringFormat)
 	GoStringLatin1Encoder = createGoStringEncoder(Latin1GoStringFormat)
 
-	ObjectEncoder = createObjectEncoder[Object]()
+	ObjectEncoder = CreateObjectEncoder[Object]()
 	VariantEncoder = createVariantEncoder()
 }

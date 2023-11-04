@@ -202,7 +202,7 @@ func (cx *String) Destroy() {
 }
 
 // copy funuctions
-func newStringWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) String {
+func NewStringWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) String {
 	ret := String{}
 	typedSrc := (*String)(src)
 
@@ -3272,7 +3272,7 @@ func NewVector2WithFloat32Float32(x float32, y float32) Vector2 {
 }
 
 // copy funuctions
-func newVector2WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector2 {
+func NewVector2WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector2 {
 	ret := Vector2{}
 	typedSrc := (*Vector2)(src)
 
@@ -4635,7 +4635,7 @@ func NewVector2iWithInt64Int64(x int64, y int64) Vector2i {
 }
 
 // copy funuctions
-func newVector2iWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector2i {
+func NewVector2iWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector2i {
 	ret := Vector2i{}
 	typedSrc := (*Vector2i)(src)
 
@@ -5145,7 +5145,7 @@ func NewRect2WithFloat32Float32Float32Float32(x float32, y float32, width float3
 }
 
 // copy funuctions
-func newRect2WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Rect2 {
+func NewRect2WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Rect2 {
 	ret := Rect2{}
 	typedSrc := (*Rect2)(src)
 
@@ -5716,7 +5716,7 @@ func NewRect2iWithInt64Int64Int64Int64(x int64, y int64, width int64, height int
 }
 
 // copy funuctions
-func newRect2iWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Rect2i {
+func NewRect2iWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Rect2i {
 	ret := Rect2i{}
 	typedSrc := (*Rect2i)(src)
 
@@ -6213,7 +6213,7 @@ func NewVector3WithFloat32Float32Float32(x float32, y float32, z float32) Vector
 }
 
 // copy funuctions
-func newVector3WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector3 {
+func NewVector3WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector3 {
 	ret := Vector3{}
 	typedSrc := (*Vector3)(src)
 
@@ -7609,7 +7609,7 @@ func NewVector3iWithInt64Int64Int64(x int64, y int64, z int64) Vector3i {
 }
 
 // copy funuctions
-func newVector3iWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector3i {
+func NewVector3iWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector3i {
 	ret := Vector3i{}
 	typedSrc := (*Vector3i)(src)
 
@@ -8112,7 +8112,7 @@ func NewTransform2DWithVector2Vector2Vector2(x_axis Vector2, y_axis Vector2, ori
 }
 
 // copy funuctions
-func newTransform2DWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Transform2D {
+func NewTransform2DWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Transform2D {
 	ret := Transform2D{}
 	typedSrc := (*Transform2D)(src)
 
@@ -8848,7 +8848,7 @@ func NewVector4WithFloat32Float32Float32Float32(x float32, y float32, z float32,
 }
 
 // copy funuctions
-func newVector4WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector4 {
+func NewVector4WithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector4 {
 	ret := Vector4{}
 	typedSrc := (*Vector4)(src)
 
@@ -9786,7 +9786,7 @@ func NewVector4iWithInt64Int64Int64Int64(x int64, y int64, z int64, w int64) Vec
 }
 
 // copy funuctions
-func newVector4iWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector4i {
+func NewVector4iWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Vector4i {
 	ret := Vector4i{}
 	typedSrc := (*Vector4i)(src)
 
@@ -10321,7 +10321,7 @@ func NewPlaneWithFloat32Float32Float32Float32(a float32, b float32, c float32, d
 }
 
 // copy funuctions
-func newPlaneWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Plane {
+func NewPlaneWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Plane {
 	ret := Plane{}
 	typedSrc := (*Plane)(src)
 
@@ -10834,7 +10834,7 @@ func NewQuaternionWithFloat32Float32Float32Float32(x float32, y float32, z float
 }
 
 // copy funuctions
-func newQuaternionWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Quaternion {
+func NewQuaternionWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Quaternion {
 	ret := Quaternion{}
 	typedSrc := (*Quaternion)(src)
 
@@ -11558,7 +11558,7 @@ func NewAABBWithVector3Vector3(position Vector3, size Vector3) AABB {
 }
 
 // copy funuctions
-func newAABBWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) AABB {
+func NewAABBWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) AABB {
 	ret := AABB{}
 	typedSrc := (*AABB)(src)
 
@@ -12349,7 +12349,7 @@ func NewBasisWithVector3Vector3Vector3(x_axis Vector3, y_axis Vector3, z_axis Ve
 }
 
 // copy funuctions
-func newBasisWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Basis {
+func NewBasisWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Basis {
 	ret := Basis{}
 	typedSrc := (*Basis)(src)
 
@@ -13055,7 +13055,7 @@ func NewTransform3DWithProjection(from Projection) Transform3D {
 }
 
 // copy funuctions
-func newTransform3DWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Transform3D {
+func NewTransform3DWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Transform3D {
 	ret := Transform3D{}
 	typedSrc := (*Transform3D)(src)
 
@@ -13602,7 +13602,7 @@ func NewProjectionWithVector4Vector4Vector4Vector4(x_axis Vector4, y_axis Vector
 }
 
 // copy funuctions
-func newProjectionWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Projection {
+func NewProjectionWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Projection {
 	ret := Projection{}
 	typedSrc := (*Projection)(src)
 
@@ -14560,7 +14560,7 @@ func NewColorWithStringFloat32(code String, alpha float32) Color {
 }
 
 // copy funuctions
-func newColorWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Color {
+func NewColorWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Color {
 	ret := Color{}
 	typedSrc := (*Color)(src)
 
@@ -15501,7 +15501,7 @@ func (cx *StringName) Destroy() {
 }
 
 // copy funuctions
-func newStringNameWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) StringName {
+func NewStringNameWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) StringName {
 	ret := StringName{}
 	typedSrc := (*StringName)(src)
 
@@ -18372,7 +18372,7 @@ func (cx *NodePath) Destroy() {
 }
 
 // copy funuctions
-func newNodePathWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) NodePath {
+func NewNodePathWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) NodePath {
 	ret := NodePath{}
 	typedSrc := (*NodePath)(src)
 
@@ -18705,7 +18705,7 @@ func NewRIDWithRID(from RID) RID {
 }
 
 // copy funuctions
-func newRIDWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) RID {
+func NewRIDWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) RID {
 	ret := RID{}
 	typedSrc := (*RID)(src)
 
@@ -18893,7 +18893,7 @@ func (cx *Callable) Destroy() {
 }
 
 // copy funuctions
-func newCallableWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Callable {
+func NewCallableWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Callable {
 	ret := Callable{}
 	typedSrc := (*Callable)(src)
 
@@ -19316,7 +19316,7 @@ func (cx *Signal) Destroy() {
 }
 
 // copy funuctions
-func newSignalWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Signal {
+func NewSignalWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Signal {
 	ret := Signal{}
 	typedSrc := (*Signal)(src)
 
@@ -19620,7 +19620,7 @@ func (cx *Dictionary) Destroy() {
 }
 
 // copy funuctions
-func newDictionaryWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Dictionary {
+func NewDictionaryWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Dictionary {
 	ret := Dictionary{}
 	typedSrc := (*Dictionary)(src)
 
@@ -20265,7 +20265,7 @@ func (cx *Array) Destroy() {
 }
 
 // copy funuctions
-func newArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Array {
+func NewArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) Array {
 	ret := Array{}
 	typedSrc := (*Array)(src)
 
@@ -21577,7 +21577,7 @@ func (cx *PackedByteArray) Destroy() {
 }
 
 // copy funuctions
-func newPackedByteArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedByteArray {
+func NewPackedByteArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedByteArray {
 	ret := PackedByteArray{}
 	typedSrc := (*PackedByteArray)(src)
 
@@ -23260,7 +23260,7 @@ func (cx *PackedInt32Array) Destroy() {
 }
 
 // copy funuctions
-func newPackedInt32ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedInt32Array {
+func NewPackedInt32ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedInt32Array {
 	ret := PackedInt32Array{}
 	typedSrc := (*PackedInt32Array)(src)
 
@@ -23946,7 +23946,7 @@ func (cx *PackedInt64Array) Destroy() {
 }
 
 // copy funuctions
-func newPackedInt64ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedInt64Array {
+func NewPackedInt64ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedInt64Array {
 	ret := PackedInt64Array{}
 	typedSrc := (*PackedInt64Array)(src)
 
@@ -24632,7 +24632,7 @@ func (cx *PackedFloat32Array) Destroy() {
 }
 
 // copy funuctions
-func newPackedFloat32ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedFloat32Array {
+func NewPackedFloat32ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedFloat32Array {
 	ret := PackedFloat32Array{}
 	typedSrc := (*PackedFloat32Array)(src)
 
@@ -25318,7 +25318,7 @@ func (cx *PackedFloat64Array) Destroy() {
 }
 
 // copy funuctions
-func newPackedFloat64ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedFloat64Array {
+func NewPackedFloat64ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedFloat64Array {
 	ret := PackedFloat64Array{}
 	typedSrc := (*PackedFloat64Array)(src)
 
@@ -26004,7 +26004,7 @@ func (cx *PackedStringArray) Destroy() {
 }
 
 // copy funuctions
-func newPackedStringArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedStringArray {
+func NewPackedStringArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedStringArray {
 	ret := PackedStringArray{}
 	typedSrc := (*PackedStringArray)(src)
 
@@ -26690,7 +26690,7 @@ func (cx *PackedVector2Array) Destroy() {
 }
 
 // copy funuctions
-func newPackedVector2ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedVector2Array {
+func NewPackedVector2ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedVector2Array {
 	ret := PackedVector2Array{}
 	typedSrc := (*PackedVector2Array)(src)
 
@@ -27383,7 +27383,7 @@ func (cx *PackedVector3Array) Destroy() {
 }
 
 // copy funuctions
-func newPackedVector3ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedVector3Array {
+func NewPackedVector3ArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedVector3Array {
 	ret := PackedVector3Array{}
 	typedSrc := (*PackedVector3Array)(src)
 
@@ -28076,7 +28076,7 @@ func (cx *PackedColorArray) Destroy() {
 }
 
 // copy funuctions
-func newPackedColorArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedColorArray {
+func NewPackedColorArrayWithGDExtensionConstTypePtr(src GDExtensionConstTypePtr) PackedColorArray {
 	ret := PackedColorArray{}
 	typedSrc := (*PackedColorArray)(src)
 

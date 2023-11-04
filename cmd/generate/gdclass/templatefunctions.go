@@ -144,17 +144,12 @@ func goVariantFunc(t string, arg string, classes []extensionapiparser.Class) str
 	case "Variant":
 		return arg
 	default:
-		found := false
 		for _, c := range classes {
 			if c.Name == t {
-				t = "Object"
-				found = true
-				break
+				return fmt.Sprintf("NewVariantGodotObject(%s.GetGodotObjectOwner())", arg)
 			}
 		}
-		if !found {
-			t = strcase.ToCamel(t)
-		}
+		t = strcase.ToCamel(t)
 	}
 	return fmt.Sprintf("NewVariant%s(%s)", t, arg)
 }

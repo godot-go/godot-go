@@ -8,8 +8,6 @@ test/project/libs/libgodotgo-test-darwin-10.6-amd64.dylib
 logs/
 .env
 playground
-test/core
-core
 cmd/generate/gdnativewrapper/gdnative_interface.intermediate.h
 __debug_bin
 *.so

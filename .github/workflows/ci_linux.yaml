@@ -71,6 +71,8 @@ jobs:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
 
+      - run: git diff
+
       - name: Code Generation
         run: make generate
         env:

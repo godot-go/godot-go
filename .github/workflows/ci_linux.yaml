@@ -32,6 +32,8 @@ jobs:
           - amd64
 
     runs-on: ubuntu-latest
+    env:
+      GODOT: /usr/local/bin/godot
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
@@ -48,6 +50,7 @@ jobs:
           wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta4/Godot_v4.2-beta4_linux.x86_64.zip
           sudo unzip Godot_v4.2-beta4_linux.x86_64.zip -d /usr/local/bin
           sudo ln -s Godot_v4.2-beta4_linux.x86_64 /usr/local/bin/godot
+          ls -alh /usr/local/bin/
 
       # - name: Download Godot binary
       #   uses: dawidd6/action-download-artifact@v2
@@ -69,7 +72,6 @@ jobs:
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
-          GODOT: ./bin/godot.linuxbsd.editor.x86_64
 
       - name: Code Generation
         run: make generate
@@ -97,7 +99,6 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: ./bin/godot.linuxbsd.editor.x86_64
 
       - name: Test
         if: ${{ matrix.os == 'linux' }}
@@ -108,4 +109,3 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
-          GODOT: ./bin/godot.linuxbsd.editor.x86_64

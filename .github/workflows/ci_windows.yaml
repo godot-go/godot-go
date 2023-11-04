@@ -25,6 +25,7 @@ on:
 
 jobs:
   run_test:
+    name: "run tests"
     strategy:
       fail-fast: true
       matrix:

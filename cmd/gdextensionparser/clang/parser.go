@@ -19,6 +19,16 @@ type CHeaderFileAST struct {
 	Expr []Expr `parser:" @@* " json:",omitempty"`
 }
 
+func (a CHeaderFileAST) FindVariantType() *TypedefEnum {
+	for _, e := range a.Expr {
+		if e.Enum != nil && e.Enum.Name != nil && *e.Enum.Name == "GDExtensionVariantType" {
+			return e.Enum
+		}
+	}
+
+	return nil
+}
+
 func (a CHeaderFileAST) CollectFunctions() []TypedefFunction {
 	// there's a duplicate of GDExtensionClassGetPropertyList
 	distinct := map[string]struct{}{}

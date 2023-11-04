@@ -8,8 +8,16 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/godot-go/godot-go/cmd/generate/extensionapi"
-	"github.com/godot-go/godot-go/cmd/generate/gdextensionwrapper"
+	"github.com/godot-go/godot-go/cmd/extensionapiparser"
+	"github.com/godot-go/godot-go/cmd/gdextensionparser"
+	"github.com/godot-go/godot-go/cmd/gdextensionparser/clang"
+	"github.com/godot-go/godot-go/cmd/generate/builtin"
+	"github.com/godot-go/godot-go/cmd/generate/constant"
+	"github.com/godot-go/godot-go/cmd/generate/ffi"
+	"github.com/godot-go/godot-go/cmd/generate/gdclass"
+	"github.com/godot-go/godot-go/cmd/generate/globalstate"
+	"github.com/godot-go/godot-go/cmd/generate/nativestructure"
+	"github.com/godot-go/godot-go/cmd/generate/utility"
 
 	"github.com/spf13/cobra"
 )
@@ -21,7 +29,7 @@ var (
 	cleanTypes       bool
 	cleanClasses     bool
 	genClangAPI      bool
-	genExtensionApi  bool
+	genExtensionAPI  bool
 	packagePath      string
 	godotPath        string
 	parsedASTPath    string
@@ -40,7 +48,7 @@ func init() {
 	}
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "Toggle extra debug output")
 	rootCmd.PersistentFlags().BoolVarP(&genClangAPI, "clang-api", "", false, "Generate GDExtension C wrapper")
-	rootCmd.PersistentFlags().BoolVarP(&genExtensionApi, "extension-api", "", false, "Generate Extension API")
+	rootCmd.PersistentFlags().BoolVarP(&genExtensionAPI, "extension-api", "", false, "Generate Extension API")
 	rootCmd.PersistentFlags().StringVarP(&packagePath, "package-path", "p", absPath, "Specified package path")
 	rootCmd.PersistentFlags().StringVarP(&godotPath, "godot-path", "", "godot", "Specified path where the Godot executable is located")
 	rootCmd.PersistentFlags().StringVarP(&parsedASTPath, "parsed-ast-path", "", "_debug_parsed_ast.json", "Specified path where the AST structure should be written to")
@@ -48,49 +56,106 @@ func init() {
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "godot-go",
-	Short: "Godot Go",
+	Use:        "godot-go",
+	Aliases:    []string{},
+	SuggestFor: []string{},
+	Short:      "Godot Go",
+	Long:       "",
+	Example:    "",
+	ValidArgs:  []string{},
+	Args: func(cmd *cobra.Command, args []string) error {
+		return nil
+	},
+	ArgAliases:             []string{},
+	BashCompletionFunction: "",
+	Deprecated:             "",
+	Hidden:                 false,
+	Annotations:            map[string]string{},
+	Version:                "",
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {
+	},
+	PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
+		return nil
+	},
+	PreRun: func(cmd *cobra.Command, args []string) {
+	},
+	PreRunE: func(cmd *cobra.Command, args []string) error {
+		return nil
+	},
+	Run: func(cmd *cobra.Command, args []string) {
+	},
 	RunE: func(cmd *cobra.Command, args []string) error {
-		hasGen := false
-
+		var (
+			hasGen = false
+			ast    clang.CHeaderFileAST
+			eapi   extensionapiparser.ExtensionApi
+			err    error
+		)
 		if verbose {
 			println(fmt.Sprintf(`build configuration "%s" selected`, buildConfig))
 		}
-
+		if genClangAPI {
+			ast, err = gdextensionparser.GenerateGDExtensionInterfaceAST(packagePath, parsedASTPath)
+			if err != nil {
+				panic(err)
+			}
+		}
+		if genExtensionAPI {
+			eapi, err = extensionapiparser.GenerateExtensionAPI(packagePath, buildConfig)
+			if err != nil {
+				panic(err)
+			}
+		}
 		if genClangAPI {
 			if verbose {
 				println("Generating gdextension C wrapper functions...")
 			}
-			gdextensionwrapper.Generate(packagePath, parsedASTPath)
-
+			ffi.Generate(packagePath, ast)
 			hasGen = true
 		}
-
-		if genExtensionApi {
+		if genExtensionAPI {
 			if verbose {
 				println("Generating extension api...")
 			}
-			extensionapi.Generate(packagePath, buildConfig)
-
+			builtin.Generate(packagePath, ast, eapi)
+			globalstate.Generate(packagePath, eapi)
+			gdclass.Generate(packagePath, eapi)
+			constant.Generate(packagePath, eapi)
+			nativestructure.Generate(packagePath, eapi)
+			utility.Generate(packagePath, eapi)
 			hasGen = true
 		}
-
 		if hasGen {
-			outputPackageDirectoryPath := filepath.Join(packagePath, "pkg", "gdextension")
-
+			packagePaths := []string{"builtin", "ffi", "gdclass", "globalstate", "constant", "nativestructure", "utility"}
 			log.Println("running go fmt on files.")
-			execGoFmt(outputPackageDirectoryPath)
-
-			// log.Println("running goimports on files.")
-			// execGoImports(outputPackageDirectoryPath)
+			for _, p := range packagePaths {
+				execGoFmt(filepath.Join(packagePath, "pkg", p))
+			}
 		}
-
 		if verbose {
 			println("cli tool done")
 		}
-
 		return nil
 	},
+	PostRun: func(cmd *cobra.Command, args []string) {
+	},
+	PostRunE: func(cmd *cobra.Command, args []string) error {
+		return nil
+	},
+	PersistentPostRun: func(cmd *cobra.Command, args []string) {
+	},
+	PersistentPostRunE: func(cmd *cobra.Command, args []string) error {
+		return nil
+	},
+	SilenceErrors:              false,
+	SilenceUsage:               false,
+	DisableFlagParsing:         false,
+	DisableAutoGenTag:          false,
+	DisableFlagsInUseLine:      false,
+	DisableSuggestions:         false,
+	SuggestionsMinimumDistance: 0,
+	TraverseChildren:           false,
+	FParseErrWhitelist:         cobra.FParseErrWhitelist{},
 }
 
 func execGoFmt(filePath string) {

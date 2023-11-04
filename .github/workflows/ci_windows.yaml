@@ -2,26 +2,27 @@ name: godot-go CI on Windows
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - "**/*.gdextension"
+      - ".github/workflows/ci_windows.yaml"
 
-# on:
-#   pull_request:
-#     paths:
-#       - "**/*.go"
-#       - "**/*.c"
-#       - "**/*.h"
-#       - ".github/workflows/ci_windows.yaml"
-
-#   push:
-#     branches:
-#       - main
-#     paths:
-#       - "**/*.go"
-#       - "**/*.c"
-#       - "**/*.h"
-#       - ".github/workflows/ci_windows.yaml"
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - "**/*.gdextension"
+      - ".github/workflows/ci_windows.yaml"
 
 jobs:
   run_test:
+    name: "run tests"
     strategy:
       fail-fast: true
       matrix:
@@ -29,7 +30,7 @@ jobs:
           - windows/amd64
     runs-on: windows-latest
     env:
-      GODOT: ./Godot_v4.2-beta1_win64.exe
+      GODOT: ./Godot_v4.2-beta4_win64.exe
     timeout-minutes: 20
     steps:
       - name: Add Go 1.21.x To System Path
@@ -50,10 +51,10 @@ jobs:
         with:
           submodules: true
 
-      - name: Install Godot 4.2 beta1
+      - name: Install Godot 4.2 beta4
         run: |
-          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta1/Godot_v4.2-beta1_win64.exe.zip
-          unzip Godot_v4.2-beta1_win64.exe.zip -d ./
+          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta4/Godot_v4.2-beta4_win64.exe.zip
+          unzip Godot_v4.2-beta4_win64.exe.zip -d ./
         shell: bash
 
       # Download custom build of godot for windows

@@ -65,8 +65,8 @@ jobs:
 
       - name: Install Godot 4.2 beta4
         run: |
-          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta4/Godot_v4.2-beta4_win64.exe.zip
-          unzip Godot_v4.2-beta4_win64.exe.zip -d ./
+          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta4/Godot_v4.2-beta4_linux.x86_64.zip
+          unzip Godot_v4.2-beta4_linux.x86_64.zip -d ./
         shell: bash
 
       - name: Update Godot Headers

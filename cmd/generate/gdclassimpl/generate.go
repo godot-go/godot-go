@@ -85,21 +85,21 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 
 func GenerateClassRefs(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
 	tmpl, err := template.New("classes.refs.gen.go").
-	Funcs(template.FuncMap{
-		"isSetterMethodName":   isSetterMethodName,
-		"goVariantConstructor": goVariantConstructor,
-		"goMethodName":         goMethodName,
-		"goArgumentName":       goArgumentName,
-		"goArgumentType":       goArgumentType,
-		"goVariantFunc":        goVariantFunc,
-		"goReturnType":         goReturnType,
-		"goClassEnumName":      goClassEnumName,
-		"goClassStructName":    goClassStructName,
-		"goClassInterfaceName": goClassInterfaceName,
-		"goEncoder":            goEncoder,
-		"goEncodeIsReference":  goEncodeIsReference,
-		"coalesce":             coalesce,
-	}).
+		Funcs(template.FuncMap{
+			"isSetterMethodName":   isSetterMethodName,
+			"goVariantConstructor": goVariantConstructor,
+			"goMethodName":         goMethodName,
+			"goArgumentName":       goArgumentName,
+			"goArgumentType":       goArgumentType,
+			"goVariantFunc":        goVariantFunc,
+			"goReturnType":         goReturnType,
+			"goClassEnumName":      goClassEnumName,
+			"goClassStructName":    goClassStructName,
+			"goClassInterfaceName": goClassInterfaceName,
+			"goEncoder":            goEncoder,
+			"goEncodeIsReference":  goEncodeIsReference,
+			"coalesce":             coalesce,
+		}).
 		Parse(classesRefsText)
 
 	if err != nil {

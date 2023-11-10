@@ -85,7 +85,7 @@ func typeHasPtr(t string) bool {
 
 func goDecodeNumberType(t string) string {
 	switch t {
-	case "uint","int","uint8","int8","uint16","int16","uint32","int32","uint64":
+	case "uint", "int", "uint8", "int8", "uint16", "int16", "uint32", "int32", "uint64":
 		return "int64"
 	case "float32", "float64":
 		return "float64"
@@ -168,7 +168,7 @@ func goArgumentType(t string) string {
 	}
 
 	var (
-		indirection int
+		indirection  int
 		isTypedArray bool
 	)
 
@@ -346,7 +346,6 @@ func snakeCase(v string) string {
 	ret = strings.Replace(ret, "_4", "4", 1)
 	ret = strings.Replace(ret, "_3", "3", 1)
 	ret = strings.Replace(ret, "_2", "2", 1)
-
 
 	return ret
 }

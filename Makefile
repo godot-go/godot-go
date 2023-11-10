@@ -65,7 +65,7 @@ clean: clean_src
 remote_debug_test:
 	CI=1 \
 	LOG_LEVEL=info \
-	GOTRACEBACK=crash \e
+	GOTRACEBACK=crash \
 	GODEBUG=sbrk=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	gdbserver --once :55555 $(GODOT) --headless --verbose --debug --path test/demo/
 

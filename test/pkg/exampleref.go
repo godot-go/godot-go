@@ -10,7 +10,7 @@ import (
 
 var (
 	ExampleRef_InstanceCount int32
-	ExampleRef_LastId int32
+	ExampleRef_LastId        int32
 )
 
 // ExampleRef implements GDClass evidence

@@ -6,10 +6,10 @@ import (
 	"strings"
 
 	. "github.com/godot-go/godot-go/pkg/gdextension/builtin"
+	. "github.com/godot-go/godot-go/pkg/gdextension/constant"
 	. "github.com/godot-go/godot-go/pkg/gdextension/core"
 	. "github.com/godot-go/godot-go/pkg/gdextension/ffi"
 	. "github.com/godot-go/godot-go/pkg/gdextension/gdclassimpl"
-	. "github.com/godot-go/godot-go/pkg/gdextension/constant"
 	. "github.com/godot-go/godot-go/pkg/gdextension/utility"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
@@ -33,7 +33,7 @@ type Example struct {
 	ControlImpl
 	customPosition   Vector2
 	propertyFromList Vector3
-	dprop [3]Vector2
+	dprop            [3]Vector2
 }
 
 func (c *Example) GetClassName() string {
@@ -245,7 +245,7 @@ func (e *Example) VarargsFunc(args ...Variant) Variant {
 }
 
 func (e *Example) VarargsFuncVoid(args ...Variant) {
-	e.EmitCustomSignal("varargs_func_void", int64(len(args) + 1))
+	e.EmitCustomSignal("varargs_func_void", int64(len(args)+1))
 }
 
 func (e *Example) VarargsFuncNv(args ...Variant) int {
@@ -273,13 +273,13 @@ func (e *Example) V_Set(name string, value Variant) bool {
 			)
 		}
 		e.dprop[index] = value.ToVector2()
-		return true;
+		return true
 	}
 	if name == "property_from_list" {
 		e.propertyFromList = value.ToVector3()
-		return true;
+		return true
 	}
-	return false;
+	return false
 }
 
 func (e *Example) V_Get(name string) (Variant, bool) {
@@ -458,7 +458,7 @@ func (e *Example) TestInstanceFromIdUtility() Object {
 func ValidateExampleProperty(property *GDExtensionPropertyInfo) {
 	gdsnName := (*StringName)(property.Name())
 	// Test hiding the "mouse_filter" property from the editor.
-	if (gdsnName.ToUtf8() == "mouse_filter") {
+	if gdsnName.ToUtf8() == "mouse_filter" {
 		property.SetUsage(PROPERTY_USAGE_NO_EDITOR)
 	}
 }

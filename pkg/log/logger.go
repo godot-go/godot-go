@@ -86,7 +86,7 @@ func init() {
 			zapcore.Lock(zapcore.AddSync(output)),
 			atomicLevel,
 		),
-		options...
+		options...,
 	)
 }
 

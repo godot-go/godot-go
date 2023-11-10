@@ -86,9 +86,9 @@ var rootCmd = &cobra.Command{
 	},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var (
-			ast    clang.CHeaderFileAST
-			eapi   extensionapiparser.ExtensionApi
-			err    error
+			ast  clang.CHeaderFileAST
+			eapi extensionapiparser.ExtensionApi
+			err  error
 		)
 		if verbose {
 			println(fmt.Sprintf(`build configuration "%s" selected`, buildConfig))

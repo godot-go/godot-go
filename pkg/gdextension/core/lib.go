@@ -14,8 +14,8 @@ import (
 
 	. "github.com/godot-go/godot-go/pkg/gdextension/builtin"
 	. "github.com/godot-go/godot-go/pkg/gdextension/ffi"
-	. "github.com/godot-go/godot-go/pkg/util"
 	"github.com/godot-go/godot-go/pkg/log"
+	. "github.com/godot-go/godot-go/pkg/util"
 	"go.uber.org/zap"
 )
 
@@ -25,8 +25,8 @@ type InternalImpl struct {
 }
 
 var (
-	nullptr = unsafe.Pointer(nil)
-	Internal InternalImpl
+	nullptr                              = unsafe.Pointer(nil)
+	Internal                             InternalImpl
 	GDExtensionBindingInitCallbacks      [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
 	GDExtensionBindingTerminateCallbacks [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
 )

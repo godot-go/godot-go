@@ -227,10 +227,10 @@ func GenerateClassRefInterfaces(projectPath string, extensionApi extensionapipar
 
 func GenerateVariantGoFile(projectPath string, ast clang.CHeaderFileAST) error {
 	funcs := template.FuncMap{
-		"snakeCase":           strcase.ToSnake,
-		"camelCase":           strcase.ToCamel,
-		"goEncoder":           goEncoder,
-		"astVariantMetadata":  astVariantMetadata,
+		"snakeCase":          strcase.ToSnake,
+		"camelCase":          strcase.ToCamel,
+		"goEncoder":          goEncoder,
+		"astVariantMetadata": astVariantMetadata,
 	}
 
 	tmpl, err := template.New("variant.gen.go").

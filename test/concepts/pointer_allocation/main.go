@@ -52,7 +52,7 @@ func TestPointerAdd(mem cgoalloc.Allocator) {
 	4: &{4 40 400}
 	*/
 	for i := 0; i < 5; i++ {
-		obj := (*TestOpaque)(unsafe.Add(ptr, int(unsafe.Sizeof(TestOpaque{})) * i))
+		obj := (*TestOpaque)(unsafe.Add(ptr, int(unsafe.Sizeof(TestOpaque{}))*i))
 		fmt.Printf("%d: %v\n", i, obj)
 	}
 
@@ -94,9 +94,9 @@ func TestAllocCopy(mem cgoalloc.Allocator) {
 	fmt.Printf("sizeof C.char: %d\n", C.sizeof_char)
 
 	slice := []*TestOpaque{
-		{1,2,3},
-		{40,50,60},
-		{700,800,900},
+		{1, 2, 3},
+		{40, 50, 60},
+		{700, 800, 900},
 	}
 
 	// this is required to prevent go panic because of AllocCopy through cgo:
@@ -119,12 +119,12 @@ func TestAllocCopy(mem cgoalloc.Allocator) {
 	fmt.Printf("header.Len: %d\n", len(slice))
 	fmt.Printf("header.Cap: %d\n", cap(slice))
 
-	copiedData := AllocCopy(mem, unsafe.Pointer(unsafe.SliceData(slice)), int(unsafe.Sizeof(uintptr(0))) * len(slice))
+	copiedData := AllocCopy(mem, unsafe.Pointer(unsafe.SliceData(slice)), int(unsafe.Sizeof(uintptr(0)))*len(slice))
 
 	fmt.Printf("copiedData: %+v\n", unsafe.Pointer(copiedData))
-	fmt.Printf("copiedData[0]: %+v\n", *(**TestOpaque)(unsafe.Add(copiedData, int(unsafe.Sizeof(uintptr(0))) * 0)))
-	fmt.Printf("copiedData[1]: %+v\n", *(**TestOpaque)(unsafe.Add(copiedData, int(unsafe.Sizeof(uintptr(0))) * 1)))
-	fmt.Printf("copiedData[2]: %+v \n", *(**TestOpaque)(unsafe.Add(copiedData, int(unsafe.Sizeof(uintptr(0))) * 2)))
+	fmt.Printf("copiedData[0]: %+v\n", *(**TestOpaque)(unsafe.Add(copiedData, int(unsafe.Sizeof(uintptr(0)))*0)))
+	fmt.Printf("copiedData[1]: %+v\n", *(**TestOpaque)(unsafe.Add(copiedData, int(unsafe.Sizeof(uintptr(0)))*1)))
+	fmt.Printf("copiedData[2]: %+v \n", *(**TestOpaque)(unsafe.Add(copiedData, int(unsafe.Sizeof(uintptr(0)))*2)))
 }
 
 func AllocCopy(mem cgoalloc.Allocator, src unsafe.Pointer, bytes int) unsafe.Pointer {

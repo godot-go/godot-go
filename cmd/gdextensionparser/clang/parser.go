@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	legacyGDExtentionInterfaceFunctionNames []string = []string {
+	legacyGDExtentionInterfaceFunctionNames []string = []string{
 		"GDExtensionInterfaceFunctionPtr",
 	}
 )
@@ -226,8 +226,8 @@ type StructFunction struct {
 
 // void (*p_func)(void *, uint32_t)
 type Argument struct {
-	Type      Type       `parser:" @@                               " json:",omitempty"`
-	Name      string     `parser:" ( @Ident | '(' '*' @Ident ')' )? " json:",omitempty"`
+	Type Type   `parser:" @@                               " json:",omitempty"`
+	Name string `parser:" ( @Ident | '(' '*' @Ident ')' )? " json:",omitempty"`
 }
 
 func (a Argument) IsPinnable() bool {

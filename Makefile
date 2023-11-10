@@ -29,6 +29,7 @@ goenv:
 
 installdeps:
 	go install golang.org/x/tools/cmd/goimports@latest
+	ls -alh $(GOPATH)
 
 generate: installdeps clean
 	go generate

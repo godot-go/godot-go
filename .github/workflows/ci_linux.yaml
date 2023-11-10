@@ -45,7 +45,7 @@ jobs:
 
       - run: mkdir -p bin/
 
-      - run: go env GOPATH
+      - run: ls -alh $(go env GOPATH)
 
       - name: Install Godot 4.2 beta4
         run: |

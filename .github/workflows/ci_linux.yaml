@@ -77,7 +77,7 @@ jobs:
 
       - name: Code Generation
         run: |
-          PATH=$PATH:$(go env GOPATH/bin) make generate
+          PATH=$PATH:$(go env GOPATH)/bin make generate
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}

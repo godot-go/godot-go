@@ -45,6 +45,8 @@ jobs:
 
       - run: mkdir -p bin/
 
+      - run: go env GOPATH
+
       - name: Install Godot 4.2 beta4
         run: |
           wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta4/Godot_v4.2-beta4_linux.x86_64.zip
@@ -75,7 +77,6 @@ jobs:
 
       - name: Code Generation
         run: |
-          go env
           make generate
         env:
           GOOS: ${{ matrix.os }}

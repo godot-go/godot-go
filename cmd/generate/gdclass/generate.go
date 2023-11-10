@@ -64,7 +64,7 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdclass", fmt.Sprintf("classes.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "gdextension", "gdclass", fmt.Sprintf("classes.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -114,7 +114,7 @@ func GenerateClassRefs(projectPath string, extensionApi extensionapiparser.Exten
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdclass", fmt.Sprintf("classes.refs.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "gdextension", "gdclass", fmt.Sprintf("classes.refs.gen.go"))
 
 	f, err := os.Create(filename)
 

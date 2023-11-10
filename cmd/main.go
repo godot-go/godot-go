@@ -126,11 +126,12 @@ var rootCmd = &cobra.Command{
 			hasGen = true
 		}
 		if hasGen {
-			packagePaths := []string{"builtin", "ffi", "gdclass", "globalstate", "constant", "nativestructure", "utility"}
+			packagePaths := []string{"builtin", "ffi", "gdclass", "constant", "nativestructure", "utility"}
 			log.Println("running go fmt on files.")
 			for _, p := range packagePaths {
-				execGoFmt(filepath.Join(packagePath, "pkg", p))
+				execGoFmt(filepath.Join(packagePath, "pkg", "gdextension", p))
 			}
+			execGoFmt(filepath.Join(packagePath, "pkg", "globalstate"))
 		}
 		if verbose {
 			println("cli tool done")

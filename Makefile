@@ -28,16 +28,16 @@ goenv:
 generate: clean
 	go generate
 	if [ ! -z "$(CLANG_FORMAT)" ]; then \
-		$(CLANG_FORMAT) -i pkg/ffi/ffi_wrapper.gen.h; \
-		$(CLANG_FORMAT) -i pkg/ffi/ffi_wrapper.gen.c; \
+		$(CLANG_FORMAT) -i pkg/gdextension/ffi/ffi_wrapper.gen.h; \
+		$(CLANG_FORMAT) -i pkg/gdextension/ffi/ffi_wrapper.gen.c; \
 	fi
-	go fmt pkg/builtin/*.gen.go
-	go fmt pkg/constant/*.gen.go
-	go fmt pkg/ffi/*.gen.go
-	go fmt pkg/gdclass/*.gen.go
+	go fmt pkg/gdextension/builtin/*.gen.go
+	go fmt pkg/gdextension/constant/*.gen.go
+	go fmt pkg/gdextension/ffi/*.gen.go
+	go fmt pkg/gdextension/gdclass/*.gen.go
 	go fmt pkg/globalstate/*.gen.go
-	go fmt pkg/nativestructure/*.gen.go
-	go fmt pkg/utility/*.gen.go
+	go fmt pkg/gdextension/nativestructure/*.gen.go
+	go fmt pkg/gdextension/utility/*.gen.go
 
 update_godot_headers_from_binary: ## update godot_headers from the godot binary
 	DISPLAY=:0 $(GODOT) --dump-extension-api --headless; \
@@ -54,27 +54,27 @@ build: goenv
 	go build -gcflags=all="-v -N -l -L -clobberdead -clobberdeadreg -dwarf -dwarflocationlists=false" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
 clean_src:
-	rm -f pkg/ffi/*.gen.c
-	rm -f pkg/ffi/*.gen.h
-	rm -f pkg/ffi/*.gen.go
-	rm -f pkg/builtin/*.gen.c
-	rm -f pkg/builtin/*.gen.h
-	rm -f pkg/builtin/*.gen.go
-	rm -f pkg/constant/*.gen.c
-	rm -f pkg/constant/*.gen.h
-	rm -f pkg/constant/*.gen.go
-	rm -f pkg/gdclass/*.gen.c
-	rm -f pkg/gdclass/*.gen.h
-	rm -f pkg/gdclass/*.gen.go
+	rm -f pkg/gdextension/ffi/*.gen.c
+	rm -f pkg/gdextension/ffi/*.gen.h
+	rm -f pkg/gdextension/ffi/*.gen.go
+	rm -f pkg/gdextension/builtin/*.gen.c
+	rm -f pkg/gdextension/builtin/*.gen.h
+	rm -f pkg/gdextension/builtin/*.gen.go
+	rm -f pkg/gdextension/constant/*.gen.c
+	rm -f pkg/gdextension/constant/*.gen.h
+	rm -f pkg/gdextension/constant/*.gen.go
+	rm -f pkg/gdextension/gdclass/*.gen.c
+	rm -f pkg/gdextension/gdclass/*.gen.h
+	rm -f pkg/gdextension/gdclass/*.gen.go
 	rm -f pkg/globalstate/*.gen.c
 	rm -f pkg/globalstate/*.gen.h
 	rm -f pkg/globalstate/*.gen.go
-	rm -f pkg/nativestructure/*.gen.c
-	rm -f pkg/nativestructure/*.gen.h
-	rm -f pkg/nativestructure/*.gen.go
-	rm -f pkg/utility/*.gen.c
-	rm -f pkg/utility/*.gen.h
-	rm -f pkg/utility/*.gen.go
+	rm -f pkg/gdextension/nativestructure/*.gen.c
+	rm -f pkg/gdextension/nativestructure/*.gen.h
+	rm -f pkg/gdextension/nativestructure/*.gen.go
+	rm -f pkg/gdextension/utility/*.gen.c
+	rm -f pkg/gdextension/utility/*.gen.h
+	rm -f pkg/gdextension/utility/*.gen.go
 
 clean: clean_src
 	rm -f test/demo/lib/libgodotgo-*

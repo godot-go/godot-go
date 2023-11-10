@@ -2,6 +2,7 @@
 
 GOOS?=$(shell go env GOOS)
 GOARCH?=$(shell go env GOARCH)
+GOIMPORTS?=$(shell which goimports)
 CLANG_FORMAT?=$(shell which clang-format | which clang-format-10 | which clang-format-11 | which clang-format-12)
 GODOT?=$(shell which godot)
 CWD=$(shell pwd)
@@ -27,7 +28,6 @@ goenv:
 
 installdeps:
 	go install golang.org/x/tools/cmd/goimports@latest
-	ls -alh $(GOPATH)
 
 generate: installdeps clean
 	go generate
@@ -42,6 +42,9 @@ generate: installdeps clean
 	go fmt pkg/gdextension/gdclassinit/*.gen.go
 	go fmt pkg/gdextension/nativestructure/*.gen.go
 	go fmt pkg/gdextension/utility/*.gen.go
+	if [ ! -z "$(GOIMPORTS)" ]; then \
+		find pkg/gdextension -name *.gen.go -exec $(GOIMPORTS) -w {} \; ; \
+	fi
 
 update_godot_headers_from_binary: ## update godot_headers from the godot binary
 	DISPLAY=:0 $(GODOT) --dump-extension-api --headless; \

@@ -86,7 +86,6 @@ var rootCmd = &cobra.Command{
 	},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var (
-			hasGen = false
 			ast    clang.CHeaderFileAST
 			eapi   extensionapiparser.ExtensionApi
 			err    error
@@ -111,7 +110,6 @@ var rootCmd = &cobra.Command{
 				println("Generating gdextension C wrapper functions...")
 			}
 			ffi.Generate(packagePath, ast)
-			hasGen = true
 		}
 		if genExtensionAPI {
 			if verbose {
@@ -123,15 +121,6 @@ var rootCmd = &cobra.Command{
 			constant.Generate(packagePath, eapi)
 			nativestructure.Generate(packagePath, eapi)
 			utility.Generate(packagePath, eapi)
-			hasGen = true
-		}
-		if hasGen {
-			packagePaths := []string{"builtin", "ffi", "gdclassimpl", "gdclassinit", "constant", "nativestructure", "utility"}
-			log.Println("running go fmt on files.")
-			for _, p := range packagePaths {
-				execGoFmt(filepath.Join(packagePath, "pkg", "gdextension", p))
-				execGoImports(filepath.Join(packagePath, "pkg", "gdextension", p))
-			}
 		}
 		if verbose {
 			println("cli tool done")
@@ -171,7 +160,7 @@ func execGoImports(filePath string) {
 	cmd := exec.Command("goimports", "-w", filePath)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		log.Panic(fmt.Errorf("error running goimports: \n%s\n%w", output, err))
+		log.Print(fmt.Errorf("error running goimports: \n%s\n%w", output, err))
 	}
 }
 

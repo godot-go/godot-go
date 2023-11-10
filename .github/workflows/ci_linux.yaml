@@ -74,7 +74,8 @@ jobs:
       - run: git diff
 
       - name: Code Generation
-        run: make generate
+        run: |
+          PATH=$PATH:$(go env GOPATH)/bin make generate
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}

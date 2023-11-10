@@ -34,7 +34,7 @@ func ParseExtensionApiJson(projectPath string) (ExtensionApi, error) {
 func GenerateExtensionAPI(projectPath, buildConfig string) (ExtensionApi, error) {
 	var (
 		eapi ExtensionApi
-		err error
+		err  error
 	)
 	if eapi, err = ParseExtensionApiJson(projectPath); err != nil {
 		return ExtensionApi{}, err

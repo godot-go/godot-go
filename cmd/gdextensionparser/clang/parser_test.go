@@ -323,7 +323,6 @@ func TestParseTypedefFunction2(t *testing.T) {
 	require.Len(t, f.Expr[0].Function.Arguments, 2)
 }
 
-
 func TestParseTypedefFuncPointer(t *testing.T) {
 	content := `
 	typedef GDExtensionInterfaceFunctionPtr (*GDExtensionInterfaceGetProcAddress)(const char *p_function_name);

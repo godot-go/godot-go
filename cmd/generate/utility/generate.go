@@ -31,12 +31,12 @@ func Generate(projectPath string, eapi extensionapiparser.ExtensionApi) {
 func GenerateUtilityFunctions(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
 	tmpl, err := template.New("utilityfunctions.gen.go").
 		Funcs(template.FuncMap{
-			"camelCase":      strcase.ToCamel,
-			"goArgumentName": goArgumentName,
-			"goArgumentType": goArgumentType,
-			"goEncoder":      goEncoder,
-			"goReturnType":   goReturnType,
-			"coalesce":       coalesce,
+			"camelCase":           strcase.ToCamel,
+			"goArgumentName":      goArgumentName,
+			"goArgumentType":      goArgumentType,
+			"goEncoder":           goEncoder,
+			"goReturnType":        goReturnType,
+			"coalesce":            coalesce,
 			"goEncodeIsReference": goEncodeIsReference,
 		}).
 		Parse(utilityFunctionsText)
@@ -53,7 +53,7 @@ func GenerateUtilityFunctions(projectPath string, extensionApi extensionapiparse
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "utility", fmt.Sprintf("utilityfunctions.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "gdextension", "utility", fmt.Sprintf("utilityfunctions.gen.go"))
 
 	f, err := os.Create(filename)
 

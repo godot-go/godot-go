@@ -2,6 +2,7 @@
 
 GOOS?=$(shell go env GOOS)
 GOARCH?=$(shell go env GOARCH)
+GOIMPORTS?=$(shell which goimports)
 CLANG_FORMAT?=$(shell which clang-format | which clang-format-10 | which clang-format-11 | which clang-format-12)
 GODOT?=$(shell which godot)
 CWD=$(shell pwd)
@@ -20,24 +21,24 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
-.PHONY: goenv generate update_godot_headers_from_binary build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
+.PHONY: goenv installdeps generate update_godot_headers_from_binary build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
 
 goenv:
 	go env
 
-generate: clean
+installdeps:
+	go install golang.org/x/tools/cmd/goimports@latest
+
+generate: installdeps clean
 	go generate
 	if [ ! -z "$(CLANG_FORMAT)" ]; then \
-		$(CLANG_FORMAT) -i pkg/ffi/ffi_wrapper.gen.h; \
-		$(CLANG_FORMAT) -i pkg/ffi/ffi_wrapper.gen.c; \
+		$(CLANG_FORMAT) -i pkg/gdextension/ffi/ffi_wrapper.gen.h; \
+		$(CLANG_FORMAT) -i pkg/gdextension/ffi/ffi_wrapper.gen.c; \
 	fi
-	go fmt pkg/builtin/*.gen.go
-	go fmt pkg/constant/*.gen.go
-	go fmt pkg/ffi/*.gen.go
-	go fmt pkg/gdclass/*.gen.go
-	go fmt pkg/globalstate/*.gen.go
-	go fmt pkg/nativestructure/*.gen.go
-	go fmt pkg/utility/*.gen.go
+	find pkg/gdextension -name *.gen.go -exec go fmt {} \;
+	if [ ! -z "$(GOIMPORTS)" ]; then \
+		find pkg/gdextension -name *.gen.go -exec $(GOIMPORTS) -w {} \; ; \
+	fi
 
 update_godot_headers_from_binary: ## update godot_headers from the godot binary
 	DISPLAY=:0 $(GODOT) --dump-extension-api --headless; \
@@ -54,27 +55,9 @@ build: goenv
 	go build -gcflags=all="-v -N -l -L -clobberdead -clobberdeadreg -dwarf -dwarflocationlists=false" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
 clean_src:
-	rm -f pkg/ffi/*.gen.c
-	rm -f pkg/ffi/*.gen.h
-	rm -f pkg/ffi/*.gen.go
-	rm -f pkg/builtin/*.gen.c
-	rm -f pkg/builtin/*.gen.h
-	rm -f pkg/builtin/*.gen.go
-	rm -f pkg/constant/*.gen.c
-	rm -f pkg/constant/*.gen.h
-	rm -f pkg/constant/*.gen.go
-	rm -f pkg/gdclass/*.gen.c
-	rm -f pkg/gdclass/*.gen.h
-	rm -f pkg/gdclass/*.gen.go
-	rm -f pkg/globalstate/*.gen.c
-	rm -f pkg/globalstate/*.gen.h
-	rm -f pkg/globalstate/*.gen.go
-	rm -f pkg/nativestructure/*.gen.c
-	rm -f pkg/nativestructure/*.gen.h
-	rm -f pkg/nativestructure/*.gen.go
-	rm -f pkg/utility/*.gen.c
-	rm -f pkg/utility/*.gen.h
-	rm -f pkg/utility/*.gen.go
+	find pkg/gdextension -name *.gen.go -delete
+	find pkg/gdextension -name *.gen.c -delete
+	find pkg/gdextension -name *.gen.h -delete
 
 clean: clean_src
 	rm -f test/demo/lib/libgodotgo-*
@@ -82,7 +65,7 @@ clean: clean_src
 remote_debug_test:
 	CI=1 \
 	LOG_LEVEL=info \
-	GOTRACEBACK=crash \e
+	GOTRACEBACK=crash \
 	GODEBUG=sbrk=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	gdbserver --once :55555 $(GODOT) --headless --verbose --debug --path test/demo/
 
@@ -112,6 +95,3 @@ open_demo_in_editor:
 	GOTRACEBACK=1 \
 	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	$(GODOT) --verbose --debug --path test/demo/ --editor
-
-godot_unit_test:
-	$(GODOT) --test

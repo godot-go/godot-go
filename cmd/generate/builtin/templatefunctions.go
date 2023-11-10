@@ -8,6 +8,7 @@ import (
 
 	"github.com/godot-go/godot-go/cmd/extensionapiparser"
 	"github.com/iancoleman/strcase"
+	"golang.org/x/exp/maps"
 	"golang.org/x/exp/slices"
 )
 
@@ -30,23 +31,6 @@ func screamingSnake(v string) string {
 	v = strcase.ToScreamingSnake(v)
 
 	return digitDRe.ReplaceAllString(underscoreDigitRe.ReplaceAllString(v, `$1`), `${1}${2}`)
-}
-
-func goVariantConstructor(t, innerText string) string {
-	switch t {
-	case "float", "real_t", "double":
-		return fmt.Sprintf("NewVariantFloat64(%s)", innerText)
-	case "int", "uint64_t":
-		return fmt.Sprintf("NewVariantInt64(int64(%s))", innerText)
-	case "bool":
-		return fmt.Sprintf("NewVariantBool(%s)", innerText)
-	case "String":
-		return fmt.Sprintf("NewVariantString(%s)", innerText)
-	case "StringName":
-		return fmt.Sprintf("NewVariantStringName(%s)", innerText)
-	default:
-		return fmt.Sprintf("NewVariantObject(%s)", innerText)
-	}
 }
 
 func goArgumentName(t string) string {
@@ -85,7 +69,7 @@ func typeHasPtr(t string) bool {
 
 func goDecodeNumberType(t string) string {
 	switch t {
-	case "uint","int","uint8","int8","uint16","int16","uint32","int32","uint64":
+	case "uint", "int", "uint8", "int8", "uint16", "int16", "uint32", "int32", "uint64":
 		return "int64"
 	case "float32", "float64":
 		return "float64"
@@ -173,7 +157,7 @@ func goArgumentType(t string) string {
 	}
 
 	var (
-		indirection int
+		indirection  int
 		isTypedArray bool
 	)
 
@@ -323,18 +307,6 @@ func goClassInterfaceName(c string) string {
 	return c
 }
 
-func goClassStructName(c string) string {
-	return fmt.Sprintf("%sImpl", c)
-}
-
-func goClassEnumName(c, e, n string) string {
-	return fmt.Sprintf("%s_%s_%s",
-		strings.ToUpper(strcase.ToSnake(c)),
-		strings.ToUpper(strcase.ToSnake(e)),
-		strings.ToUpper(strcase.ToSnake(n)),
-	)
-}
-
 func snakeCase(v string) string {
 	ret := strcase.ToSnake(v)
 
@@ -351,7 +323,6 @@ func snakeCase(v string) string {
 	ret = strings.Replace(ret, "_4", "4", 1)
 	ret = strings.Replace(ret, "_3", "3", 1)
 	ret = strings.Replace(ret, "_2", "2", 1)
-
 
 	return ret
 }
@@ -483,50 +454,289 @@ func goEncoder(goType string) string {
 	return upperFirstChar(goType) + "Encoder"
 }
 
-var referenceEncoderTypes = []string{
-	"Vector2",
-	"Vector2i",
-	"Vector3",
-	"Vector3i",
-	"Transform2D",
-	"Vector4",
-	"Vector4i",
-	"Plane",
-	"Quaternion",
-	"AABB",
-	"Basis",
-	"Transform3D",
-	"Projection",
-	"Color",
-	"String",
-	"StringName",
-	"NodePath",
-	"RID",
-	"Callable",
-	"Signal",
-	"Dictionary",
-	"Array",
-	"PackedByteArray",
-	"PackedInt32Array",
-	"PackedInt64Array",
-	"PackedFloat32Array",
-	"PackedFloat64Array",
-	"PackedStringArray",
-	"PackedVector2Array",
-	"PackedVector3Array",
-	"PackedColorArray",
-	"Variant",
-	"Object",
+type encoderTypeMetadata struct {
+	IsReference bool
+	Encodings   []encoding
 }
+
+type encoding struct {
+	Name       string
+	NativeType string
+	EncodeType string
+}
+
+var encoderTypeMap = map[string]encoderTypeMetadata{
+	"GDEXTENSION_VARIANT_TYPE_NIL": {
+		IsReference: false,
+		Encodings: []encoding{
+			{"Nil", "Nil", "Nil"},
+		},
+	},
+
+	/*  atomic types */
+	"GDEXTENSION_VARIANT_TYPE_BOOL": {
+		IsReference: false,
+		Encodings: []encoding{
+			{"Bool", "bool", "uint8"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_INT": {
+		IsReference: false,
+		Encodings: []encoding{
+			{"Uint", "uint", "int64"},
+			{"Int", "int", "int64"},
+			{"Uint8", "uint8", "int64"},
+			{"Int8", "int8", "int64"},
+			{"Uint16", "uint16", "int64"},
+			{"Int16", "int16", "int64"},
+			{"Uint32", "uint32", "int64"},
+			{"Int32", "int32", "int64"},
+			{"Uint64", "uint64", "int64"},
+			{"Int64", "int64", "int64"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_FLOAT": {
+		IsReference: false,
+		Encodings: []encoding{
+			{"Float32", "float32", "float64"},
+			{"Float64", "float64", "float64"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_STRING": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"String", "String", "String"},
+		},
+	},
+
+	/* math types */
+	"GDEXTENSION_VARIANT_TYPE_VECTOR2": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Vector2", "Vector2", "Vector2"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_VECTOR2I": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Vector2i", "Vector2i", "Vector2i"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_VECTOR3": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Vector3", "Vector3", "Vector3"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_VECTOR3I": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Vector3i", "Vector3i", "Vector3i"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_TRANSFORM2D": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Transform2D", "Transform2D", "Transform2D"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_VECTOR4": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Vector4", "Vector4", "Vector4"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_VECTOR4I": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Vector4i", "Vector4i", "Vector4i"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_PLANE": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Plane", "Plane", "Plane"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_QUATERNION": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Quaternion", "Quaternion", "Quaternion"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_AABB": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"AABB", "AABB", "AABB"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_BASIS": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Basis", "Basis", "Basis"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_TRANSFORM3D": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Transform3D", "Transform3D", "Transform3D"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_PROJECTION": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Projection", "Projection", "Projection"},
+		},
+	},
+
+	/* misc types */
+	"GDEXTENSION_VARIANT_TYPE_COLOR": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Color", "Color", "Color"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_STRING_NAME": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"StringName", "StringName", "StringName"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_NODE_PATH": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"NodePath", "NodePath", "NodePath"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_RID": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"RID", "RID", "RID"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_OBJECT": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"GodotObject", "GodotObject", "GodotObject"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_CALLABLE": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Callable", "Callable", "Callable"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_SIGNAL": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Signal", "Signal", "Signal"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_DICTIONARY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Dictionary", "Dictionary", "Dictionary"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_ARRAY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Array", "Array", "Array"},
+		},
+	},
+
+	/* typed arrays */
+	"GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"PackedByteArray", "PackedByteArray", "PackedByteArray"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"PackedInt32Array", "PackedInt32Array", "PackedInt32Array"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"PackedInt64Array", "PackedInt64Array", "PackedInt64Array"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"PackedFloat32Array", "PackedFloat32Array", "PackedFloat32Array"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"PackedFloat64Array", "PackedFloat64Array", "PackedFloat64Array"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"PackedStringArray", "PackedStringArray", "PackedStringArray"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"PackedVector2Array", "PackedVector2Array", "PackedVector2Array"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"PackedVector3Array", "PackedVector3Array", "PackedVector3Array"},
+		},
+	},
+	"GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"PackedColorArray", "PackedColorArray", "PackedColorArray"},
+		},
+	},
+
+	// variant
+	"GDEXTENSION_VARIANT_TYPE_VARIANT_MAX": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"Variant", "Variant", "Variant"},
+		},
+	},
+}
+
+func filterReferences(mds []encoderTypeMetadata) []encoderTypeMetadata {
+	filtered := make([]encoderTypeMetadata, 0, len(mds))
+	for i := range mds {
+		if mds[i].IsReference {
+			filtered = append(filtered, mds[i])
+		}
+	}
+	return filtered
+}
+
+func mapEncodingNames(mds []encoderTypeMetadata) []string {
+	values := make([]string, 0, len(mds)*2)
+	for i := range mds {
+		for j := range mds[i].Encodings {
+			values = append(values, mds[i].Encodings[j].Name)
+		}
+	}
+	return values
+}
+
+var values = maps.Values(encoderTypeMap)
+var referenceEncoderTypeNames = mapEncodingNames(filterReferences(values))
 
 func goEncodeIsReference(goType string) bool {
-	return slices.Contains(referenceEncoderTypes, goType)
+	return slices.Contains(referenceEncoderTypeNames, goType)
 }
 
-func isRefcounted(goType string) bool {
-	return slices.Contains(referenceEncoderTypes, goType)
-}
-
-func isSetterMethodName(methodName string) bool {
-	return strings.HasPrefix(methodName, "Set")
+func astVariantMetadata(cEnumVariantType string) encoderTypeMetadata {
+	return encoderTypeMap[cEnumVariantType]
 }

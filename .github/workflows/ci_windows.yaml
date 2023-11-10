@@ -72,7 +72,7 @@ jobs:
 
       - name: Code Generation
         run: |
-          make generate
+          PATH=$PATH:$(go env GOPATH)/bin make generate
         shell: bash
 
       - name: Build

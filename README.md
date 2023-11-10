@@ -23,11 +23,11 @@ Requirements:
 * clang-format
 * gcc
 * go 1.21.x
+* goimport
 
 ### Building Godot-Go
 
 In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of [Godot 4.2-beta4](https://github.com/godotengine/godot-builds/releases/tag/4.2-beta4).
-
 
     # exports the latest gdextension_interface.h and extension_api.json from the godot binary
     GODOT=/some_path/bin/godot make update_godot_headers_from_binary
@@ -37,7 +37,6 @@ In order for godot-go to work correctly, you must make sure the godot_headers ar
 
     # build godot-go
     make build
-
 
 ### Test
 
@@ -51,12 +50,11 @@ From here on out, you will just need to run the following command to iteratively
 
 This will run the demo project in the test directory.
 
-The expected output can be found in [CI logs](https://github.com/godot-go/godot-go/actions/runs/6373041267/job/17296433849#step:11:131)
+The expected output can be found in [CI logs](https://github.com/godot-go/godot-go/actions/runs/6827642726/job/18570187586#step:13:147)
 
 ## Contact
 
 I'm happy to help out anyone interested in the project. Please leave a message in the [Discussion boards](https://github.com/godot-go/godot-go/discussions) or you can add me (surgical#3758) as a friend on the [Godot Engine Discord](https://discord.gg/qZHMsDg) servers. I primarily frequent the **gdnative-dev** room.
-
 
 ## References
 
@@ -67,7 +65,6 @@ I'm happy to help out anyone interested in the project. Please leave a message i
 * Check [unsafe pointer conversion](https://blog.gopheracademy.com/advent-2019/safe-use-of-unsafe-pointer/)
 * Loading nativescript libraries with a godot server build requires manual modification to the library [.tres](https://godotengine.org/qa/63890/how-to-open-gdnative-projects-with-headless-server-godot).
 * Working with [GDB Go extension](https://nanxiao.me/en/the-tips-of-using-gdb-to-debug-golang-program/)
-
 
 ## Credit
 

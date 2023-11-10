@@ -21,8 +21,8 @@ import (
 
 type TestOpaque struct {
 	Opaque [24]uint8
-	X int64
-	Y int64
+	X      int64
+	Y      int64
 }
 
 func (c *TestOpaque) ptr() unsafe.Pointer {

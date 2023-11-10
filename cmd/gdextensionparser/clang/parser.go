@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	legacyGDExtentionInterfaceFunctionNames []string = []string {
+	legacyGDExtentionInterfaceFunctionNames []string = []string{
 		"GDExtensionInterfaceFunctionPtr",
 	}
 )
@@ -19,13 +19,12 @@ type CHeaderFileAST struct {
 	Expr []Expr `parser:" @@* " json:",omitempty"`
 }
 
-func (a CHeaderFileAST) FindVariantType() *TypedefEnum {
+func (a CHeaderFileAST) FindVariantEnumType() *TypedefEnum {
 	for _, e := range a.Expr {
 		if e.Enum != nil && e.Enum.Name != nil && *e.Enum.Name == "GDExtensionVariantType" {
 			return e.Enum
 		}
 	}
-
 	return nil
 }
 
@@ -227,8 +226,8 @@ type StructFunction struct {
 
 // void (*p_func)(void *, uint32_t)
 type Argument struct {
-	Type      Type       `parser:" @@                               " json:",omitempty"`
-	Name      string     `parser:" ( @Ident | '(' '*' @Ident ')' )? " json:",omitempty"`
+	Type Type   `parser:" @@                               " json:",omitempty"`
+	Name string `parser:" ( @Ident | '(' '*' @Ident ')' )? " json:",omitempty"`
 }
 
 func (a Argument) IsPinnable() bool {

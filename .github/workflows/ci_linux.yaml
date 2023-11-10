@@ -45,7 +45,7 @@ jobs:
 
       - run: mkdir -p bin/
 
-      - run: go env GOPATH
+      - run: go env
 
       - name: Install Godot 4.2 beta4
         run: |
@@ -81,6 +81,7 @@ jobs:
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
+          PATH: /home/runner/go/bin
 
       - name: Build
         run: make build

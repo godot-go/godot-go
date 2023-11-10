@@ -16,10 +16,11 @@ package utility
 // #include <stdlib.h>
 import "C"
 import (
+	"unsafe"
+
 	. "github.com/godot-go/godot-go/pkg/gdextension/builtin"
 	. "github.com/godot-go/godot-go/pkg/gdextension/ffi"
 	. "github.com/godot-go/godot-go/pkg/gdextension/gdclassimpl"
-	"unsafe"
 )
 
 // utility functions

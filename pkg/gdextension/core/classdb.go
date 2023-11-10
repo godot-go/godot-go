@@ -15,7 +15,7 @@ import (
 	. "github.com/godot-go/godot-go/pkg/gdextension/builtin"
 	. "github.com/godot-go/godot-go/pkg/gdextension/constant"
 	. "github.com/godot-go/godot-go/pkg/gdextension/ffi"
-	. "github.com/godot-go/godot-go/pkg/globalstate"
+	. "github.com/godot-go/godot-go/pkg/gdextension/gdclassinit"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )

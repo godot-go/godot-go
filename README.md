@@ -23,6 +23,12 @@ Requirements:
 * clang-format
 * gcc
 * go 1.21.x
+* goimport
+
+
+    # install goimport
+    go install golang.org/x/tools/cmd/goimports@latest
+
 
 ### Building Godot-Go
 

@@ -13,8 +13,7 @@ import (
 
 	. "github.com/godot-go/godot-go/pkg/gdextension/builtin"
 	. "github.com/godot-go/godot-go/pkg/gdextension/ffi"
-	. "github.com/godot-go/godot-go/pkg/globalstate"
-	. "github.com/godot-go/godot-go/pkg/gdextension/nativestructure"
+	. "github.com/godot-go/godot-go/pkg/gdextension/gdclassinit"
 	. "github.com/godot-go/godot-go/pkg/util"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
@@ -28,7 +27,6 @@ func _GDExtensionBindingInit(
 	// uncomment to print out C stacktraces when logging at debug log level
 	// C.enablePrintStacktrace = log.GetLevel() == log.DebugLevel
 
-	Internal.GDNativeInstances = NewSyncMap[ObjectID, GDExtensionClass]()
 	Internal.GDClassInstances = NewSyncMap[GDObjectInstanceID, GDClass]()
 	Internal.GDRegisteredGDClasses = NewSyncMap[string, *ClassInfo]()
 

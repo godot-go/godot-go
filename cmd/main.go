@@ -14,8 +14,8 @@ import (
 	"github.com/godot-go/godot-go/cmd/generate/builtin"
 	"github.com/godot-go/godot-go/cmd/generate/constant"
 	"github.com/godot-go/godot-go/cmd/generate/ffi"
-	"github.com/godot-go/godot-go/cmd/generate/gdclass"
-	"github.com/godot-go/godot-go/cmd/generate/globalstate"
+	"github.com/godot-go/godot-go/cmd/generate/gdclassimpl"
+	"github.com/godot-go/godot-go/cmd/generate/gdclassinit"
 	"github.com/godot-go/godot-go/cmd/generate/nativestructure"
 	"github.com/godot-go/godot-go/cmd/generate/utility"
 
@@ -118,20 +118,20 @@ var rootCmd = &cobra.Command{
 				println("Generating extension api...")
 			}
 			builtin.Generate(packagePath, ast, eapi)
-			globalstate.Generate(packagePath, eapi)
-			gdclass.Generate(packagePath, eapi)
+			gdclassinit.Generate(packagePath, eapi)
+			gdclassimpl.Generate(packagePath, eapi)
 			constant.Generate(packagePath, eapi)
 			nativestructure.Generate(packagePath, eapi)
 			utility.Generate(packagePath, eapi)
 			hasGen = true
 		}
 		if hasGen {
-			packagePaths := []string{"builtin", "ffi", "gdclass", "constant", "nativestructure", "utility"}
+			packagePaths := []string{"builtin", "ffi", "gdclassimpl", "gdclassinit", "constant", "nativestructure", "utility"}
 			log.Println("running go fmt on files.")
 			for _, p := range packagePaths {
 				execGoFmt(filepath.Join(packagePath, "pkg", "gdextension", p))
+				execGoImports(filepath.Join(packagePath, "pkg", "gdextension", p))
 			}
-			execGoFmt(filepath.Join(packagePath, "pkg", "globalstate"))
 		}
 		if verbose {
 			println("cli tool done")

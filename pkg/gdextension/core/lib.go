@@ -14,14 +14,12 @@ import (
 
 	. "github.com/godot-go/godot-go/pkg/gdextension/builtin"
 	. "github.com/godot-go/godot-go/pkg/gdextension/ffi"
-	. "github.com/godot-go/godot-go/pkg/gdextension/nativestructure"
 	. "github.com/godot-go/godot-go/pkg/util"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )
 
 type InternalImpl struct {
-	GDNativeInstances     *SyncMap[ObjectID, GDExtensionClass]
 	GDClassInstances      *SyncMap[GDObjectInstanceID, GDClass]
 	GDRegisteredGDClasses *SyncMap[string, *ClassInfo]
 }

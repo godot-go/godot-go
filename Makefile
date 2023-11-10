@@ -20,12 +20,15 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
-.PHONY: goenv generate update_godot_headers_from_binary build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
+.PHONY: goenv installdeps generate update_godot_headers_from_binary build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
 
 goenv:
 	go env
 
-generate: clean
+installdeps:
+	go install golang.org/x/tools/cmd/goimports@latest
+
+generate: installdeps clean
 	go generate
 	if [ ! -z "$(CLANG_FORMAT)" ]; then \
 		$(CLANG_FORMAT) -i pkg/gdextension/ffi/ffi_wrapper.gen.h; \
@@ -34,8 +37,8 @@ generate: clean
 	go fmt pkg/gdextension/builtin/*.gen.go
 	go fmt pkg/gdextension/constant/*.gen.go
 	go fmt pkg/gdextension/ffi/*.gen.go
-	go fmt pkg/gdextension/gdclass/*.gen.go
-	go fmt pkg/globalstate/*.gen.go
+	go fmt pkg/gdextension/gdclassimpl/*.gen.go
+	go fmt pkg/gdextension/gdclassinit/*.gen.go
 	go fmt pkg/gdextension/nativestructure/*.gen.go
 	go fmt pkg/gdextension/utility/*.gen.go
 
@@ -63,12 +66,12 @@ clean_src:
 	rm -f pkg/gdextension/constant/*.gen.c
 	rm -f pkg/gdextension/constant/*.gen.h
 	rm -f pkg/gdextension/constant/*.gen.go
-	rm -f pkg/gdextension/gdclass/*.gen.c
-	rm -f pkg/gdextension/gdclass/*.gen.h
-	rm -f pkg/gdextension/gdclass/*.gen.go
-	rm -f pkg/globalstate/*.gen.c
-	rm -f pkg/globalstate/*.gen.h
-	rm -f pkg/globalstate/*.gen.go
+	rm -f pkg/gdextension/gdclassimpl/*.gen.c
+	rm -f pkg/gdextension/gdclassimpl/*.gen.h
+	rm -f pkg/gdextension/gdclassimpl/*.gen.go
+	rm -f pkg/gdextension/gdclassinit/*.gen.c
+	rm -f pkg/gdextension/gdclassinit/*.gen.h
+	rm -f pkg/gdextension/gdclassinit/*.gen.go
 	rm -f pkg/gdextension/nativestructure/*.gen.c
 	rm -f pkg/gdextension/nativestructure/*.gen.h
 	rm -f pkg/gdextension/nativestructure/*.gen.go

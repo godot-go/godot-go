@@ -41,7 +41,7 @@ jobs:
       - name: Add Go 1.21.x To System Path
         run: |
           echo "${GOROOT_1_21_X64}/bin" >> $GITHUB_PATH
-          echo "go env GOPATH" >> $GOPATH
+          echo "${GOROOT_1_21_X64}/bin/go env GOPATH" >> $GOPATH
           echo "GITHUB_PATH=${GITHUB_PATH}:${GOPATH}"
 
       - run: mkdir -p bin/

@@ -3,10 +3,10 @@
 GOOS?=$(shell go env GOOS)
 GOARCH?=$(shell go env GOARCH)
 GOPATH?=$(shell go env GOPATH)
+PATH?=$(PATH):$(GOPATH)/bin
 CLANG_FORMAT?=$(shell which clang-format | which clang-format-10 | which clang-format-11 | which clang-format-12)
 GODOT?=$(shell which godot)
 CWD=$(shell pwd)
-PATH?=$(PATH):$(GOPATH)/bin
 
 OUTPUT_PATH=test/demo/lib
 CGO_ENABLED=1

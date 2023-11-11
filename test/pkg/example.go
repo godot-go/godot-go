@@ -10,7 +10,7 @@ import (
 	. "github.com/godot-go/godot-go/pkg/core"
 	. "github.com/godot-go/godot-go/pkg/ffi"
 	. "github.com/godot-go/godot-go/pkg/gdclassimpl"
-	. "github.com/godot-go/godot-go/pkg/utility"
+	. "github.com/godot-go/godot-go/pkg/gdutilfunc"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )

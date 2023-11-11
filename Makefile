@@ -74,7 +74,9 @@ ci_gen_test_project_files:
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
-	$(GODOT) --verbose --path test/demo/ --editor --quit
+	$(GODOT) --headless --verbose --path test/demo/ --editor --quit
+	# hack until fix lands: https://github.com/godotengine/godot/issues/84460
+	echo 'res://example.gdextension' >> test/demo/.godot/extension_list.cfg
 
 test:
 	CI=1 \

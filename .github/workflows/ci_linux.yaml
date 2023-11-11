@@ -45,11 +45,11 @@ jobs:
 
       - run: mkdir -p bin/
 
-      - name: Install Godot 4.2 beta4
+      - name: Install Godot 4.2 beta5
         run: |
-          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta4/Godot_v4.2-beta4_linux.x86_64.zip
-          sudo unzip Godot_v4.2-beta4_linux.x86_64.zip -d /usr/local/bin
-          sudo ln -s Godot_v4.2-beta4_linux.x86_64 /usr/local/bin/godot
+          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta5/Godot_v4.2-beta5_linux.x86_64.zip
+          sudo unzip Godot_v4.2-beta5_linux.x86_64.zip -d /usr/local/bin
+          sudo ln -s Godot_v4.2-beta5_linux.x86_64 /usr/local/bin/godot
 
       # - name: Download Godot binary
       #   uses: dawidd6/action-download-artifact@v2
@@ -71,14 +71,14 @@ jobs:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
 
-      - run: git diff
-
       - name: Code Generation
         run: |
           PATH=$PATH:$(go env GOPATH)/bin make generate
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
+
+      - run: git diff
 
       - name: Build
         run: make build

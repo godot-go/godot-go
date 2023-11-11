@@ -88,37 +88,6 @@ func GDExtensionBindingDeinitializeLevel(userdata unsafe.Pointer, pLevel C.GDExt
 	}
 }
 
-// func GDExtensionBindingCreateInstanceCallback(pToken unsafe.Pointer, pInstance unsafe.Pointer) Wrapped {
-// 	if pToken != unsafe.Pointer(FFI.Library) {
-// 		panic("Asking for creating instance with invalid token.")
-// 	}
-
-// 	owner := (*GodotObject)(pInstance)
-
-// 	id := CallFunc_GDExtensionInterfaceObjectGetInstanceId((GDExtensionConstObjectPtr)(owner))
-
-// 	log.Debug("GDExtensionBindingCreateInstanceCallback called", zap.Any("id", id))
-
-// 	obj := NewGDExtensionClassFromObjectOwner(owner).(Object)
-
-// 	strClass := obj.GetClass()
-
-// 	cn := strClass.ToAscii()
-
-// 	w := obj.CastTo(cn)
-// 	return w
-// }
-
-// func GDExtensionBindingFreeInstanceCallback(pToken unsafe.Pointer, pInstance unsafe.Pointer, pBinding unsafe.Pointer) {
-// 	if pToken != unsafe.Pointer(FFI.Library) {
-// 		panic("Asking for freeing instance with invalid token.")
-// 	}
-
-// 	w := (*WrappedImpl)(pBinding)
-
-// 	CallFunc_GDExtensionInterfaceObjectDestroy((GDExtensionObjectPtr)(w.Owner))
-// }
-
 type InitObject struct {
 	getProcAddress GDExtensionInterfaceGetProcAddress
 	library        GDExtensionClassLibraryPtr

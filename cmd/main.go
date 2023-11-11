@@ -16,8 +16,8 @@ import (
 	"github.com/godot-go/godot-go/cmd/generate/ffi"
 	"github.com/godot-go/godot-go/cmd/generate/gdclassimpl"
 	"github.com/godot-go/godot-go/cmd/generate/gdclassinit"
+	"github.com/godot-go/godot-go/cmd/generate/gdutilfunc"
 	"github.com/godot-go/godot-go/cmd/generate/nativestructure"
-	"github.com/godot-go/godot-go/cmd/generate/utility"
 
 	"github.com/spf13/cobra"
 )
@@ -120,7 +120,7 @@ var rootCmd = &cobra.Command{
 			gdclassimpl.Generate(packagePath, eapi)
 			constant.Generate(packagePath, eapi)
 			nativestructure.Generate(packagePath, eapi)
-			utility.Generate(packagePath, eapi)
+			gdutilfunc.Generate(packagePath, eapi)
 		}
 		if verbose {
 			println("cli tool done")

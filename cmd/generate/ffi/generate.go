@@ -63,7 +63,7 @@ func GenerateGDExtensionWrapperHeaderFile(projectPath string, ast clang.CHeaderF
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "ffi", "ffi_wrapper.gen.h")
+	filename := filepath.Join(projectPath, "pkg", "ffi", "ffi_wrapper.gen.h")
 	f, err := os.Create(filename)
 	if err != nil {
 		return err
@@ -93,7 +93,7 @@ func GenerateGDExtensionWrapperSrcFile(projectPath string, ast clang.CHeaderFile
 		return err
 	}
 
-	headerFileName := filepath.Join(projectPath, "pkg", "gdextension", "ffi", "ffi_wrapper.gen.c")
+	headerFileName := filepath.Join(projectPath, "pkg", "ffi", "ffi_wrapper.gen.c")
 	f, err := os.Create(headerFileName)
 	f.Write(b.Bytes())
 	f.Close()
@@ -127,7 +127,7 @@ func GenerateGDExtensionWrapperGoFile(projectPath string, ast clang.CHeaderFileA
 		return err
 	}
 
-	headerFileName := filepath.Join(projectPath, "pkg", "gdextension", "ffi", "ffi_wrapper.gen.go")
+	headerFileName := filepath.Join(projectPath, "pkg", "ffi", "ffi_wrapper.gen.go")
 	f, err := os.Create(headerFileName)
 	f.Write(b.Bytes())
 	f.Close()
@@ -163,7 +163,7 @@ func GenerateGDExtensionInterfaceGoFile(projectPath string, ast clang.CHeaderFil
 		return err
 	}
 
-	headerFileName := filepath.Join(projectPath, "pkg", "gdextension", "ffi", "ffi.gen.go")
+	headerFileName := filepath.Join(projectPath, "pkg", "ffi", "ffi.gen.go")
 	f, err := os.Create(headerFileName)
 	f.Write(b.Bytes())
 	f.Close()

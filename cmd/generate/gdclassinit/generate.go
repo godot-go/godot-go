@@ -66,7 +66,7 @@ func GenerateClassInit(projectPath string, extensionApi extensionapiparser.Exten
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "gdclassinit", fmt.Sprintf("classes.init.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "gdclassinit", fmt.Sprintf("classes.init.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -109,7 +109,7 @@ func GenerateCHeaderClassCallbacks(projectPath string, extensionApi extensionapi
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "gdclassinit", fmt.Sprintf("classes.callbacks.gen.h"))
+	filename := filepath.Join(projectPath, "pkg", "gdclassinit", fmt.Sprintf("classes.callbacks.gen.h"))
 
 	f, err := os.Create(filename)
 
@@ -152,7 +152,7 @@ func GenerateCClassCallbacks(projectPath string, extensionApi extensionapiparser
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "gdclassinit", fmt.Sprintf("classes.callbacks.gen.c"))
+	filename := filepath.Join(projectPath, "pkg", "gdclassinit", fmt.Sprintf("classes.callbacks.gen.c"))
 
 	f, err := os.Create(filename)
 

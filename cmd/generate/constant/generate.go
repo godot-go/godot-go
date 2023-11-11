@@ -73,7 +73,7 @@ func GenerateClassConstants(projectPath string, extensionApi extensionapiparser.
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "constant", fmt.Sprintf("classes.constants.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "constant", fmt.Sprintf("classes.constants.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -119,7 +119,7 @@ func GenerateClassEnums(projectPath string, extensionApi extensionapiparser.Exte
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "constant", fmt.Sprintf("classes.enums.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "constant", fmt.Sprintf("classes.enums.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -158,7 +158,7 @@ func GenerateGlobalConstants(projectPath string, extensionApi extensionapiparser
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "constant", fmt.Sprintf("globalconstants.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "constant", fmt.Sprintf("globalconstants.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -197,7 +197,7 @@ func GenerateGlobalEnums(projectPath string, extensionApi extensionapiparser.Ext
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "constant", fmt.Sprintf("globalenums.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "constant", fmt.Sprintf("globalenums.gen.go"))
 
 	f, err := os.Create(filename)
 

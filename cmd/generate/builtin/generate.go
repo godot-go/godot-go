@@ -82,7 +82,7 @@ func GenerateBuiltinClasses(projectPath string, extensionApi extensionapiparser.
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "builtin", fmt.Sprintf("builtinclasses.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "builtin", fmt.Sprintf("builtinclasses.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -124,7 +124,7 @@ func GenerateBuiltinClassBindings(projectPath string, extensionApi extensionapip
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "builtin", fmt.Sprintf("builtinclasses.bindings.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "builtin", fmt.Sprintf("builtinclasses.bindings.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -167,7 +167,7 @@ func GenerateClassInterfaces(projectPath string, extensionApi extensionapiparser
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "builtin", fmt.Sprintf("classes.interfaces.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "builtin", fmt.Sprintf("classes.interfaces.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -206,7 +206,7 @@ func GenerateClassRefInterfaces(projectPath string, extensionApi extensionapipar
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "builtin", fmt.Sprintf("classes.ref.interfaces.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "builtin", fmt.Sprintf("classes.ref.interfaces.gen.go"))
 
 	f, err := os.Create(filename)
 
@@ -246,7 +246,7 @@ func GenerateVariantGoFile(projectPath string, ast clang.CHeaderFileAST) error {
 		return err
 	}
 
-	goFileName := filepath.Join(projectPath, "pkg", "gdextension", "builtin", "variant.gen.go")
+	goFileName := filepath.Join(projectPath, "pkg", "builtin", "variant.gen.go")
 	f, err := os.Create(goFileName)
 	f.Write(b.Bytes())
 	f.Close()

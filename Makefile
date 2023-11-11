@@ -32,12 +32,12 @@ installdeps:
 generate: installdeps clean
 	go generate
 	if [ ! -z "$(CLANG_FORMAT)" ]; then \
-		$(CLANG_FORMAT) -i pkg/gdextension/ffi/ffi_wrapper.gen.h; \
-		$(CLANG_FORMAT) -i pkg/gdextension/ffi/ffi_wrapper.gen.c; \
+		$(CLANG_FORMAT) -i pkg/ffi/ffi_wrapper.gen.h; \
+		$(CLANG_FORMAT) -i pkg/ffi/ffi_wrapper.gen.c; \
 	fi
-	find pkg/gdextension -name *.gen.go -exec go fmt {} \;
+	find pkg -name *.gen.go -exec go fmt {} \;
 	if [ ! -z "$(GOIMPORTS)" ]; then \
-		find pkg/gdextension -name *.gen.go -exec $(GOIMPORTS) -w {} \; ; \
+		find pkg -name *.gen.go -exec $(GOIMPORTS) -w {} \; ; \
 	fi
 
 update_godot_headers_from_binary: ## update godot_headers from the godot binary
@@ -55,9 +55,9 @@ build: goenv
 	go build -gcflags=all="-v -N -l -L -clobberdead -clobberdeadreg -dwarf -dwarflocationlists=false" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
 clean_src:
-	find pkg/gdextension -name *.gen.go -delete
-	find pkg/gdextension -name *.gen.c -delete
-	find pkg/gdextension -name *.gen.h -delete
+	find pkg -name *.gen.go -delete
+	find pkg -name *.gen.c -delete
+	find pkg -name *.gen.h -delete
 
 clean: clean_src
 	rm -f test/demo/lib/libgodotgo-*

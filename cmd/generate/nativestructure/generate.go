@@ -48,7 +48,7 @@ func GenerateNativeStrucutres(projectPath string, extensionApi extensionapiparse
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "nativestructure", fmt.Sprintf("nativestructures.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "nativestructure", fmt.Sprintf("nativestructures.gen.go"))
 
 	f, err := os.Create(filename)
 

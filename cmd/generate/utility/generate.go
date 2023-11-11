@@ -53,7 +53,7 @@ func GenerateUtilityFunctions(projectPath string, extensionApi extensionapiparse
 		return err
 	}
 
-	filename := filepath.Join(projectPath, "pkg", "gdextension", "utility", fmt.Sprintf("utilityfunctions.gen.go"))
+	filename := filepath.Join(projectPath, "pkg", "utility", fmt.Sprintf("utilityfunctions.gen.go"))
 
 	f, err := os.Create(filename)
 

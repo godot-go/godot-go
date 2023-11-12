@@ -116,16 +116,16 @@ Works fine and partially tested in the tests.
 
 | GDScript Type | Go Type | Description |
 | --- | --- | --- |
-| `Array` | `Array` | TODO: explore implementing natively as `[]Variant`. |
-| `PackedByteArray` | `PackedByteArray` | TODO: implement natively as `[]byte`. |
-| `PackedInt32Array` | `PackedInt32Array` | TODO: implement natively as `[]int32`. |
-| `PackedInt64Array` | `PackedInt64Array` | TODO: implement natively as `[]int64`. |
-| `PackedFloat32Array` | `PackedFloat32Array` | TODO: implement natively as `[]float32`. |
-| `PackedFloat64Array` | `PackedFloat64Array` | TODO: implement natively as `[]float64`. |
-| `PackedStringArray` | `PackedStringArray` | TODO: implement natively as `[]string`. |
-| `PackedVector2Array` | `PackedVector2Array` | TODO: implement natively as `[]Vector2`. |
-| `PackedVector3Array` | `PackedVector3Array` | TODO: implement natively as `[]Vector3`. |
-| `PackedColorArray` | `PackedColorArray` | TODO: implement natively as `[]color`. |
+| `Array` | `Array` | __(NOT YET IMPLEMENTED)__ `[]Variant`. |
+| `PackedByteArray` | `PackedByteArray` | __(NOT YET IMPLEMENTED)__ `[]byte`. |
+| `PackedInt32Array` | `PackedInt32Array` | __(NOT YET IMPLEMENTED)__ `[]int32`. |
+| `PackedInt64Array` | `PackedInt64Array` | __(NOT YET IMPLEMENTED)__ `[]int64`. |
+| `PackedFloat32Array` | `PackedFloat32Array` | __(NOT YET IMPLEMENTED)__ `[]float32`. |
+| `PackedFloat64Array` | `PackedFloat64Array` | __(NOT YET IMPLEMENTED)__ `[]float64`. |
+| `PackedStringArray` | `PackedStringArray` | __(NOT YET IMPLEMENTED)__ `[]string`. |
+| `PackedVector2Array` | `PackedVector2Array` | __(NOT YET IMPLEMENTED)__ `[]Vector2`. |
+| `PackedVector3Array` | `PackedVector3Array` | __(NOT YET IMPLEMENTED)__ `[]Vector3`. |
+| `PackedColorArray` | `PackedColorArray` | __(NOT YET IMPLEMENTED)__ `[]color`. |
 | `Dictionary` | `Dictionary` | No additioanl work needed. |
 | `Signal` | `Signal` | No additioanl work needed. |
 | `Callable` | `Callable` | No additioanl work needed. |

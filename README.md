@@ -52,6 +52,10 @@ This will run the demo project in the test directory.
 
 The expected output can be found in [CI logs](https://github.com/godot-go/godot-go/actions/runs/6827642726/job/18570187586#step:13:147)
 
+## Documentation
+
+A living doc of godot-go is maintained at [docs/overview.md](docs/overview.md).
+
 ## Contact
 
 I'm happy to help out anyone interested in the project. Please leave a message in the [Discussion boards](https://github.com/godot-go/godot-go/discussions) or you can add me (surgical#3758) as a friend on the [Godot Engine Discord](https://discord.gg/qZHMsDg) servers. I primarily frequent the **gdnative-dev** room.

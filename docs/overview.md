@@ -12,15 +12,18 @@ Default parameters are currently not supported.
 
 ## Class Inheritance
 
-Go does not support classical class inheritance. Instead, composition with struct embedding is used in it's place. Lets take a look at the following custom example class:
+Go does not support classical class inheritance. Instead, composition with struct embedding is used in it's place. Lets take a look at the following example user-defined class:
 
 ```go
 type PlayerCharacter struct {
 	CharacterBody2DImpl
 }
+
+// interface test evidence
+var _ CharacterBody2D = &PlayerCharacter{}
 ```
 
-`PlayerCharacter` extends the `CharacterBody2D` interface by embedding the `CharacterBody2DImpl` struct. Following the definition of `CharacterBody2DImpl` we see the following definition:
+The user-defined `PlayerCharacter` class extends the `CharacterBody2D` interface by embedding the `CharacterBody2DImpl` struct. Following the definition of `CharacterBody2DImpl` we see the following definition:
 
 ```go
 type CharacterBody2DImpl struct {

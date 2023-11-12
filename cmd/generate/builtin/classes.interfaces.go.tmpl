@@ -24,34 +24,32 @@ var _ = unsafe.Pointer(nil)
 
 {{ range $i, $c := $view.Classes -}}
 type {{ goClassInterfaceName $c.Name }} interface {
-	{{ if $c.Inherits }}
-	{{ goClassInterfaceName $c.Inherits }}
-	{{ else }}
+	{{ if $c.Inherits -}}
+	{{ goClassInterfaceName $c.Inherits -}}
+	{{ else -}}
 	GDExtensionClass
-	{{ end -}}
-
+	{{ end }}
 	{{ range $j, $m := $c.Methods -}}
-	{{ $fnReturnType := goReturnType (coalesce $m.ReturnValue.Meta $m.ReturnValue.Type) }}
-	{{ $hasSomeArguments := (or $m.Arguments $m.IsVararg) }}
+	{{ $fnReturnType := goReturnType (coalesce $m.ReturnValue.Meta $m.ReturnValue.Type) -}}
+	{{ $hasSomeArguments := (or $m.Arguments $m.IsVararg) -}}
 
 	{{ if $m.IsVirtual -}}
-	{{/* TODO: deal with virtual functions */}}
-	// VIRTUAL: {{ goMethodName $m.Name }}(
+	// TODO: Implement virtual method: {{ goMethodName $m.Name }}(
 	{{- range $k, $a := $m.Arguments -}}
-	{{ $fnArgType := goArgumentType (coalesce $a.Meta $a.Type) -}}
+	{{- $fnArgType := goArgumentType (coalesce $a.Meta $a.Type) -}}
 	{{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $fnArgType }}Ref{{ $fnArgType }}{{ else }}{{ $fnArgType }}{{ end -}},
 	{{- end -}}
 	{{- if $m.IsVararg }}varargs ...Variant,{{- end -}}
-	) {{ if $view.IsRefcountedClassName $fnReturnType }}Ref{{ $fnReturnType }}{{ else }}{{ $fnReturnType }}{{ end -}}
+	) {{ if $view.IsRefcountedClassName $fnReturnType }}Ref{{ $fnReturnType }}{{ else }}{{ $fnReturnType }}{{ end }}
 	{{ else -}}
 	{{ goMethodName $m.Name }}(
 	{{- range $k, $a := $m.Arguments -}}
 	{{ $fnArgType := goArgumentType (coalesce $a.Meta $a.Type) -}}
-	{{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $fnArgType }}Ref{{ $fnArgType }}{{ else }}{{ $fnArgType }}{{ end -}},
+	{{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $fnArgType }}Ref{{ $fnArgType }}{{ else }}{{ $fnArgType }}{{ end }},
 	{{- end -}}
-	{{- if $m.IsVararg }}varargs ...Variant,{{- end -}}
-	) {{ if $view.IsRefcountedClassName $fnReturnType }}Ref{{ $fnReturnType }}{{ else }}{{ $fnReturnType }}{{ end -}}
-	{{- end }}
-	{{- end }}
+	{{ if $m.IsVararg }}varargs ...Variant,{{- end -}}
+	) {{ if $view.IsRefcountedClassName $fnReturnType }}Ref{{ $fnReturnType }}{{ else }}{{ $fnReturnType }}{{ end }}
+	{{ end -}}
+	{{ end }}
 }
 {{ end -}}

@@ -43,7 +43,7 @@ func (e *Example) V_Ready() { ... }
 ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
 ```
 
-(__NOT YET IMPLEMENTED__): The eventual best practice will be the following example:
+__(NOT YET IMPLEMENTED)__ The eventual best practice will be the following example:
 
 ```go
 func (e *Example) V_Example_Ready() { ... }
@@ -64,13 +64,19 @@ Go does not support default parameter values. Default argument will show up in t
 
 ## Static Methods
 
-Go does not support static methods on structs. Registering static methods will not be supported.
+Go does not support static methods in structs. Registering static methods is not supported.
+
+## Static Variables
+
+Go does not support static variables in structs. __(NOT YET IMPLEMENTED)__ Global variables can be registered as gdscript static variables.
 
 ## Packed Arrays
 
 Works fine and partially tested in the tests.
 
-## Basic Built-in Types
+## Built-in Types
+
+### Basic Built-in Types
 
 | GDScript Type | Go Type | Description |
 | --- | --- | --- |
@@ -82,7 +88,7 @@ Works fine and partially tested in the tests.
 | `StringName` | `StringName` | There are helper functions to convert to go native `string`. |
 | `NodePath` | `NodePath` | |
 
-## Vector Built-in Types
+### Vector Built-in Types
 
 | GDScript Type | Go Type |
 | --- | --- |
@@ -98,7 +104,7 @@ Works fine and partially tested in the tests.
 | `Basis` | `Basis` |
 | `Transform3D` | `Transform3D` |
 
-## Engine built-in Types
+### Engine built-in Types
 
 | GDScript Type | Go Type |
 | --- | --- |
@@ -106,7 +112,7 @@ Works fine and partially tested in the tests.
 | `RID` | `RID` |
 | `Object` | `Object` |
 
-## Container Built-in Types
+### Container Built-in Types
 
 | GDScript Type | Go Type | Description |
 | --- | --- | --- |

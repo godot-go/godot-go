@@ -445,6 +445,19 @@ func (e *Example) TestStrUtility() string {
 	return gds.ToUtf8()
 }
 
+func (e *Example) TestVectorOps() int32 {
+	arr := NewPackedInt32Array()
+	arr.PushBack(20)
+	arr.PushBack(10)
+	arr.PushBack(30)
+	arr.PushBack(45)
+	ret := int32(0)
+	for i:=int64(0); i<arr.Size(); i++ {
+		ret += int32(arr.GetIndexed(i));
+	}
+	return ret
+}
+
 func (e *Example) TestInstanceFromIdUtility() Object {
 	id := e.GetInstanceId()
 	obj := InstanceFromId(int64(id))
@@ -493,6 +506,7 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestNodeArgument", "test_node_argument", []string{"example"}, nil)
 		ClassDBBindMethod(t, "TestStringOps", "test_string_ops", nil, nil)
 		ClassDBBindMethod(t, "TestStrUtility", "test_str_utility", nil, nil)
+		ClassDBBindMethod(t, "TestVectorOps", "test_vector_ops", nil, nil)
 		ClassDBBindMethod(t, "TestInstanceFromIdUtility", "test_instance_from_id_utility", nil, nil)
 
 		// varargs

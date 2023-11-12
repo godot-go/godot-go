@@ -95,7 +95,7 @@ func _ready():
 	assert_equal(example.test_instance_from_id_utility(), example)
 
 	# PackedArray iterators
-	# assert_equal(example.test_vector_ops(), 105)
+	assert_equal(example.test_vector_ops(), 105)
 
 	# Properties.
 	assert_equal(example.group_subgroup_custom_position, Vector2(0, 0))

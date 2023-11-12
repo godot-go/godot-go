@@ -165,11 +165,9 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     {{- end -}}
 ) {{ $fnReturnType }} {
     mb := global{{ $c.Name }}MethodBindings.method_{{ $m.Name }}
-
     if mb == nil {
         log.Panic("method bind cannot be nil")
     }
-
     {{ if $m.IsStatic -}}
     bx := (GDExtensionTypePtr)(nullptr)
     {{ else -}}
@@ -179,7 +177,6 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     if bx == nil {
         log.Panic("object cannot be nil")
     }
-
     {{ if $hasSomeArguments -}}
     sz := {{ len $m.Arguments -}} {{ if $m.IsVararg -}} + len(varargs) + 1 {{- end }}
 	args := make([]GDExtensionTypePtr, sz, sz)
@@ -194,12 +191,11 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&{{ goArgumentName $arg.Name }}))
     {{ else -}}
     args[{{ $j }}] = {{ goEncoder (goArgumentType $arg.Type) }}.EncodeTypePtr({{ goArgumentName $arg.Name }})
-    {{/* args[{{ $j }}] = (GDExtensionTypePtr)(eArg{{ $j }}) */}}
     {{ end -}}
     {{ else -}}
     args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&{{ goArgumentName $arg.Name }}))
     {{ end }}
-    {{ end }}{{/* range $m.Arguments */}}
+    {{ end -}}{{/* range $m.Arguments */}}
 
     {{ if $m.IsVararg -}}
     for i := range varargs {
@@ -211,14 +207,12 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     ret := CallBuiltinMethodPtrRet[{{ $fnReturnType }}](mb, bx, {{ if $hasSomeArguments -}}args...{{ else }}nil{{ end }})
     {{ if $hasSomeArguments -}}
     runtime.KeepAlive(args)
-    // C.free(argBytes)
     {{ end -}}
     return ret
-    {{ else -}}
+    {{- else -}}
     CallBuiltinMethodPtrNoRet(mb, bx, {{ if $hasSomeArguments -}}args...{{ else }}nil{{ end }})
     {{ if $hasSomeArguments -}}
     runtime.KeepAlive(args)
-    // C.free(argBytes)
     {{ end -}}
     {{ end -}}{{/* if fnReturnType */}}
 }

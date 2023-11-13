@@ -45,13 +45,12 @@ func (p *GDExtensionPropertyInfo) Destroy() {
 	cp := (*C.GDExtensionPropertyInfo)(p)
 	stringNameDestructor := (GDExtensionPtrDestructor)(CallFunc_GDExtensionInterfaceVariantGetPtrDestructor(GDEXTENSION_VARIANT_TYPE_STRING_NAME))
 	stringDestructor := (GDExtensionPtrDestructor)(CallFunc_GDExtensionInterfaceVariantGetPtrDestructor(GDEXTENSION_VARIANT_TYPE_STRING))
-	if cp.name != nil {
+	switch {
+	case cp.name != nil:
 		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(unsafe.Pointer(cp.name)))
-	}
-	if cp.class_name != nil {
+	case cp.class_name != nil:
 		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(unsafe.Pointer(cp.class_name)))
-	}
-	if cp.hint_string != nil {
+	case cp.hint_string != nil:
 		CallFunc_GDExtensionPtrDestructor(stringDestructor, (GDExtensionTypePtr)(unsafe.Pointer(cp.hint_string)))
 	}
 }

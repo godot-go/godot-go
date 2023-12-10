@@ -77,6 +77,10 @@ Go does not support static variables in structs. __(NOT YET IMPLEMENTED)__ Globa
 
 Works fine and partially tested in the tests.
 
+## Coroutines
+
+Go does not support coroutines; this means we do not have acess to `await` (or `yield`). Without a coroutine alternative, a cumbersome pattern of chaining method calls will be required.  __(NOT YET IMPLEMENTED)__ Instead, we have goroutines to wrap `signal` and `callable`.
+
 ## Built-in Types
 
 ### Basic Built-in Types

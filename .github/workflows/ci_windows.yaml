@@ -30,7 +30,7 @@ jobs:
           - windows/amd64
     runs-on: windows-latest
     env:
-      GODOT: ./Godot_v4.2-beta5_win64.exe
+      GODOT: ./Godot_v4.2-stable_win64.exe
     timeout-minutes: 20
     steps:
       - name: Add Go 1.21.x To System Path
@@ -51,10 +51,10 @@ jobs:
         with:
           submodules: true
 
-      - name: Install Godot 4.2 beta5
+      - name: Install Godot 4.2 stable
         run: |
-          wget https://github.com/godotengine/godot-builds/releases/download/4.2-beta5/Godot_v4.2-beta5_win64.exe.zip
-          unzip Godot_v4.2-beta5_win64.exe.zip -d ./
+          wget https://github.com/godotengine/godot-builds/releases/download/4.2-stable/Godot_v4.2-stable_win64.exe.zip
+          unzip Godot_v4.2-stable_win64.exe.zip -d ./
         shell: bash
 
       # Download custom build of godot for windows

@@ -13,6 +13,7 @@ __debug_bin
 *.so
 test/libs/
 .*.md
+*.bak
 .deprecated*/
 tmp/
 test/demo/lib

@@ -12,12 +12,6 @@ func CallBuiltinConstructor(constructor GDExtensionPtrConstructor, base GDExtens
 	if c == nil {
 		log.Panic("constructor is null")
 	}
-	// var a *GDExtensionConstTypePtr
-	// if len(args) > 0 {
-	// 	a = (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	// } else {
-	// 	a = (*GDExtensionConstTypePtr)(nullptr)
-	// }
 	a := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
 	CallFunc_GDExtensionPtrConstructor(c, b, a)
 }
@@ -25,12 +19,6 @@ func CallBuiltinConstructor(constructor GDExtensionPtrConstructor, base GDExtens
 func CallBuiltinMethodPtrRet[T any](method GDExtensionPtrBuiltInMethod, base GDExtensionTypePtr, args ...GDExtensionTypePtr) T {
 	m := (GDExtensionPtrBuiltInMethod)(method)
 	b := (GDExtensionTypePtr)(base)
-	// var a *GDExtensionConstTypePtr
-	// if len(args) > 0 {
-	// 	a = (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	// } else {
-	// 	a = (*GDExtensionConstTypePtr)(nullptr)
-	// }
 	a := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
 	ca := (int32)(len(args))
 	var ret T
@@ -42,12 +30,6 @@ func CallBuiltinMethodPtrRet[T any](method GDExtensionPtrBuiltInMethod, base GDE
 func CallBuiltinMethodPtrNoRet(method GDExtensionPtrBuiltInMethod, base GDExtensionTypePtr, args ...GDExtensionTypePtr) {
 	m := (GDExtensionPtrBuiltInMethod)(method)
 	b := (GDExtensionTypePtr)(base)
-	// var a *GDExtensionConstTypePtr
-	// if len(args) > 0 {
-	// 	a = (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	// } else {
-	// 	a = (*GDExtensionConstTypePtr)(nullptr)
-	// }
 	a := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
 	ca := (int32)(len(args))
 	CallFunc_GDExtensionPtrBuiltInMethod(m, b, a, nil, ca)

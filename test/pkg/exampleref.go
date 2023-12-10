@@ -8,11 +8,6 @@ import (
 	"github.com/godot-go/godot-go/pkg/log"
 )
 
-var (
-	ExampleRef_InstanceCount int32
-	ExampleRef_LastId        int32
-)
-
 // ExampleRef implements GDClass evidence
 var _ RefCounted = new(ExampleRef)
 

@@ -3,7 +3,7 @@
 GOOS?=$(shell go env GOOS)
 GOARCH?=$(shell go env GOARCH)
 GOIMPORTS?=$(shell which goimports)
-CLANG_FORMAT?=$(shell which clang-format | which clang-format-10 | which clang-format-11 | which clang-format-12)
+CLANG_FORMAT?=$(shell which clang-format || which clang-format-10 || which clang-format-11 || which clang-format-12)
 GODOT?=$(shell which godot)
 CWD=$(shell pwd)
 
@@ -32,8 +32,8 @@ installdeps:
 generate: installdeps clean
 	go generate
 	if [ ! -z "$(CLANG_FORMAT)" ]; then \
-		$(CLANG_FORMAT) -i pkg/ffi/ffi_wrapper.gen.h; \
-		$(CLANG_FORMAT) -i pkg/ffi/ffi_wrapper.gen.c; \
+		"$(CLANG_FORMAT)" -i pkg/ffi/ffi_wrapper.gen.h; \
+		"$(CLANG_FORMAT)" -i pkg/ffi/ffi_wrapper.gen.c; \
 	fi
 	find pkg -name *.gen.go -exec go fmt {} \;
 	if [ ! -z "$(GOIMPORTS)" ]; then \

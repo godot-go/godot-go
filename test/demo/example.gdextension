@@ -5,9 +5,13 @@ compatibility_minimum = 4.1
 
 [libraries]
 
-macos.debug = "res://lib/libgodotgo-test-macos-amd64.framework"
-macos.release = "res://lib/libgodotgo-test-macos-amd64.framework"
+macos.debug.x86_64 = "res://lib/libgodotgo-test-macos-amd64.framework"
+macos.release.x86_64 = "res://lib/libgodotgo-test-macos-amd64.framework"
+macos.debug.arm64 = "res://lib/libgodotgo-test-macos-arm64.framework"
+macos.release.arm64 = "res://lib/libgodotgo-test-macos-arm64.framework"
 windows.debug.x86_64 = "res://lib/libgodotgo-test-windows-amd64.dll"
 windows.release.x86_64 = "res://lib/libgodotgo-test-windows-amd64.dll"
 linux.debug.x86_64 = "res://lib/libgodotgo-test-linux-amd64.so"
 linux.release.x86_64 = "res://lib/libgodotgo-test-linux-amd64.so"
+linux.debug.arm64 = "res://lib/libgodotgo-test-linux-arm64.so"
+linux.release.arm64 = "res://lib/libgodotgo-test-linux-arm64.so"

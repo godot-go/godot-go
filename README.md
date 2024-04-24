@@ -1,4 +1,5 @@
-[![Build Status](https://github.com/godot-go/godot-go/actions/workflows/ci_linux.yaml/badge.svg)](https://github.com/godot-go/godot-go/actions/workflows/ci_linux.yaml)
+[![godot-go CI on Linux](https://github.com/godot-go/godot-go/actions/workflows/ci_linux.yaml/badge.svg?branch=main)](https://github.com/godot-go/godot-go/actions/workflows/ci_linux.yaml)
+[![godot-go CI on Windows](https://github.com/godot-go/godot-go/actions/workflows/ci_windows.yaml/badge.svg?branch=main)](https://github.com/godot-go/godot-go/actions/workflows/ci_windows.yaml)
 
 ---
 
@@ -50,7 +51,7 @@ From here on out, you will just need to run the following command to iteratively
 
 This will run the demo project in the test directory.
 
-The expected output can be found in [CI logs](https://github.com/godot-go/godot-go/actions/runs/6827642726/job/18570187586#step:13:147)
+The expected output can be found in the CI logs.
 
 ## Documentation
 

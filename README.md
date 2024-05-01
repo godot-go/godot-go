@@ -53,6 +53,10 @@ This will run the demo project in the test directory.
 
 The expected output can be found in the CI logs.
 
+## Using Godot-Go
+
+Checkout the [godot-go demos](https://github.com/godot-go/godot-go-demo-projects) to get a feel of how to use the library.
+
 ## Documentation
 
 A living doc of godot-go is maintained at [docs/overview.md](docs/overview.md).

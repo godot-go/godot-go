@@ -133,6 +133,6 @@ Go does not support coroutines; this means we do not have acess to `await` (or `
 | `PackedVector2Array` | `PackedVector2Array` | __(NOT YET IMPLEMENTED)__ `[]Vector2`. |
 | `PackedVector3Array` | `PackedVector3Array` | __(NOT YET IMPLEMENTED)__ `[]Vector3`. |
 | `PackedColorArray` | `PackedColorArray` | __(NOT YET IMPLEMENTED)__ `[]color`. |
-| `Dictionary` | `Dictionary` | No additioanl work needed. |
-| `Signal` | `Signal` | No additioanl work needed. |
-| `Callable` | `Callable` | No additioanl work needed. |
+| `Dictionary` | `Dictionary` | No additional work needed. |
+| `Signal` | `Signal` | No additional work needed. |
+| `Callable` | `Callable` | No additional work needed. |

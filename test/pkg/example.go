@@ -161,6 +161,15 @@ func (e *Example) TestArray() Array {
 	return ret
 }
 
+func (e *Example) TestTArrayArg(arr PackedInt64Array) int64 {
+	sum := int64(0)
+	sz := arr.Size();
+	for i := int64(0); i < sz; i++ {
+		sum += arr.GetIndexed(i)
+	}
+	return sum;
+}
+
 func (e *Example) TestDictionary() Dictionary {
 	dict := NewDictionary()
 	world := NewVariantGoString("world")
@@ -502,6 +511,7 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
 
 		ClassDBBindMethod(t, "TestArray", "test_array", nil, nil)
+		ClassDBBindMethod(t, "TestTArrayArg", "test_tarray_arg", []string{"array"}, nil)
 		ClassDBBindMethod(t, "TestDictionary", "test_dictionary", nil, nil)
 		ClassDBBindMethod(t, "TestNodeArgument", "test_node_argument", []string{"example"}, nil)
 		ClassDBBindMethod(t, "TestStringOps", "test_string_ops", nil, nil)

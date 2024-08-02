@@ -82,8 +82,8 @@ func _ready():
 	assert_equal(example.test_array(), [1, 2])
 	# assert_equal(example.test_tarray(), [ Vector2(1, 2), Vector2(2, 3) ])
 	assert_equal(example.test_dictionary(), {"hello": "world", "foo": "bar"})
-	# var array: Array[int] = [1, 2, 3]
-	# assert_equal(example.test_tarray_arg(array), 6)
+	var array: Array[int] = [1, 2, 3]
+	assert_equal(example.test_tarray_arg(array), 6)
 
 	# String += operator
 	assert_equal(example.test_string_ops(), "ABCĎE")

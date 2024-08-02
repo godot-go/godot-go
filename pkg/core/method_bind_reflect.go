@@ -29,6 +29,8 @@ var (
 	refType              = reflect.TypeOf((*Ref)(nil)).Elem()
 )
 
+// reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs is called for each
+// function call argument that needs to be translated when GDScript calls into Go.
 func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(reciever GDClass, suppliedArgs []Variant, expectedArgTypes []reflect.Type) []reflect.Value {
 	argsCount := len(expectedArgTypes)
 	args := make([]reflect.Value, argsCount+1)
@@ -250,6 +252,42 @@ func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(reciever GDClass
 				args[i+1] = reflect.ValueOf(v)
 			case Vector4i:
 				v := arg.ToVector4i()
+				args[i+1] = reflect.ValueOf(v)
+			case PackedByteArray:
+				v := arg.ToPackedByteArray()
+				args[i+1] = reflect.ValueOf(v)
+			case PackedInt32Array:
+				v := arg.ToPackedInt32Array()
+				args[i+1] = reflect.ValueOf(v)
+			case PackedInt64Array:
+				v := arg.ToPackedInt64Array()
+				args[i+1] = reflect.ValueOf(v)
+			case PackedFloat32Array:
+				v := arg.ToPackedFloat32Array()
+				args[i+1] = reflect.ValueOf(v)
+			case PackedFloat64Array:
+				v := arg.ToPackedFloat64Array()
+				args[i+1] = reflect.ValueOf(v)
+			case PackedStringArray:
+				v := arg.ToPackedStringArray()
+				args[i+1] = reflect.ValueOf(v)
+			case PackedVector2Array:
+				v := arg.ToPackedVector2Array()
+				args[i+1] = reflect.ValueOf(v)
+			case PackedVector3Array:
+				v := arg.ToPackedVector3Array()
+				args[i+1] = reflect.ValueOf(v)
+			case PackedColorArray:
+				v := arg.ToPackedColorArray()
+				args[i+1] = reflect.ValueOf(v)
+			case Dictionary:
+				v := arg.ToDictionary()
+				args[i+1] = reflect.ValueOf(v)
+			case Signal:
+				v := arg.ToSignal()
+				args[i+1] = reflect.ValueOf(v)
+			case Callable:
+				v := arg.ToCallable()
 				args[i+1] = reflect.ValueOf(v)
 			default:
 				log.Panic("unsupported array type",

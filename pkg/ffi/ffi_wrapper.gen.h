@@ -86,6 +86,10 @@ void cgo_callfn_GDExtensionClassFreePropertyList(
     const GDExtensionClassFreePropertyList fn,
     GDExtensionClassInstancePtr p_instance,
     const GDExtensionPropertyInfo *p_list);
+void cgo_callfn_GDExtensionClassFreePropertyList2(
+    const GDExtensionClassFreePropertyList2 fn,
+    GDExtensionClassInstancePtr p_instance,
+    const GDExtensionPropertyInfo *p_list, uint32_t p_count);
 GDExtensionBool cgo_callfn_GDExtensionClassPropertyCanRevert(
     const GDExtensionClassPropertyCanRevert fn,
     GDExtensionClassInstancePtr p_instance,
@@ -171,6 +175,9 @@ GDExtensionBool cgo_callfn_GDExtensionCallableCustomLessThan(
 void cgo_callfn_GDExtensionCallableCustomToString(
     const GDExtensionCallableCustomToString fn, void *callable_userdata,
     GDExtensionBool *r_is_valid, GDExtensionStringPtr r_out);
+GDExtensionInt cgo_callfn_GDExtensionCallableCustomGetArgumentCount(
+    const GDExtensionCallableCustomGetArgumentCount fn, void *callable_userdata,
+    GDExtensionBool *r_is_valid);
 GDExtensionBool cgo_callfn_GDExtensionScriptInstanceSet(
     const GDExtensionScriptInstanceSet fn,
     GDExtensionScriptInstanceDataPtr p_instance,
@@ -187,6 +194,10 @@ void cgo_callfn_GDExtensionScriptInstanceFreePropertyList(
     const GDExtensionScriptInstanceFreePropertyList fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     const GDExtensionPropertyInfo *p_list);
+void cgo_callfn_GDExtensionScriptInstanceFreePropertyList2(
+    const GDExtensionScriptInstanceFreePropertyList2 fn,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    const GDExtensionPropertyInfo *p_list, uint32_t p_count);
 GDExtensionBool cgo_callfn_GDExtensionScriptInstanceGetClassCategory(
     const GDExtensionScriptInstanceGetClassCategory fn,
     GDExtensionScriptInstanceDataPtr p_instance,
@@ -225,10 +236,18 @@ void cgo_callfn_GDExtensionScriptInstanceFreeMethodList(
     const GDExtensionScriptInstanceFreeMethodList fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     const GDExtensionMethodInfo *p_list);
+void cgo_callfn_GDExtensionScriptInstanceFreeMethodList2(
+    const GDExtensionScriptInstanceFreeMethodList2 fn,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    const GDExtensionMethodInfo *p_list, uint32_t p_count);
 GDExtensionBool cgo_callfn_GDExtensionScriptInstanceHasMethod(
     const GDExtensionScriptInstanceHasMethod fn,
     GDExtensionScriptInstanceDataPtr p_instance,
     GDExtensionConstStringNamePtr p_name);
+GDExtensionInt cgo_callfn_GDExtensionScriptInstanceGetMethodArgumentCount(
+    const GDExtensionScriptInstanceGetMethodArgumentCount fn,
+    GDExtensionScriptInstanceDataPtr p_instance,
+    GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid);
 void cgo_callfn_GDExtensionScriptInstanceCall(
     const GDExtensionScriptInstanceCall fn,
     GDExtensionScriptInstanceDataPtr p_self,
@@ -508,10 +527,18 @@ void cgo_callfn_GDExtensionInterfaceStringNewWithUtf8CharsAndLen(
     const GDExtensionInterfaceStringNewWithUtf8CharsAndLen fn,
     GDExtensionUninitializedStringPtr r_dest, const char *p_contents,
     GDExtensionInt p_size);
+GDExtensionInt cgo_callfn_GDExtensionInterfaceStringNewWithUtf8CharsAndLen2(
+    const GDExtensionInterfaceStringNewWithUtf8CharsAndLen2 fn,
+    GDExtensionUninitializedStringPtr r_dest, const char *p_contents,
+    GDExtensionInt p_size);
 void cgo_callfn_GDExtensionInterfaceStringNewWithUtf16CharsAndLen(
     const GDExtensionInterfaceStringNewWithUtf16CharsAndLen fn,
     GDExtensionUninitializedStringPtr r_dest, const char16_t *p_contents,
     GDExtensionInt p_char_count);
+GDExtensionInt cgo_callfn_GDExtensionInterfaceStringNewWithUtf16CharsAndLen2(
+    const GDExtensionInterfaceStringNewWithUtf16CharsAndLen2 fn,
+    GDExtensionUninitializedStringPtr r_dest, const char16_t *p_contents,
+    GDExtensionInt p_char_count, GDExtensionBool p_default_little_endian);
 void cgo_callfn_GDExtensionInterfaceStringNewWithUtf32CharsAndLen(
     const GDExtensionInterfaceStringNewWithUtf32CharsAndLen fn,
     GDExtensionUninitializedStringPtr r_dest, const char32_t *p_contents,
@@ -584,6 +611,12 @@ void cgo_callfn_GDExtensionInterfaceFileAccessStoreBuffer(
 uint64_t cgo_callfn_GDExtensionInterfaceFileAccessGetBuffer(
     const GDExtensionInterfaceFileAccessGetBuffer fn,
     GDExtensionConstObjectPtr p_instance, uint8_t *p_dst, uint64_t p_length);
+uint8_t *
+cgo_callfn_GDExtensionInterfaceImagePtrw(const GDExtensionInterfaceImagePtrw fn,
+                                         GDExtensionObjectPtr p_instance);
+const uint8_t *
+cgo_callfn_GDExtensionInterfaceImagePtr(const GDExtensionInterfaceImagePtr fn,
+                                        GDExtensionObjectPtr p_instance);
 int64_t cgo_callfn_GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask(
     const GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask fn,
     GDExtensionObjectPtr p_instance, void (*p_func)(void *, uint32_t),
@@ -598,13 +631,6 @@ uint8_t *cgo_callfn_GDExtensionInterfacePackedByteArrayOperatorIndex(
     GDExtensionTypePtr p_self, GDExtensionInt p_index);
 const uint8_t *cgo_callfn_GDExtensionInterfacePackedByteArrayOperatorIndexConst(
     const GDExtensionInterfacePackedByteArrayOperatorIndexConst fn,
-    GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
-GDExtensionTypePtr cgo_callfn_GDExtensionInterfacePackedColorArrayOperatorIndex(
-    const GDExtensionInterfacePackedColorArrayOperatorIndex fn,
-    GDExtensionTypePtr p_self, GDExtensionInt p_index);
-GDExtensionTypePtr
-cgo_callfn_GDExtensionInterfacePackedColorArrayOperatorIndexConst(
-    const GDExtensionInterfacePackedColorArrayOperatorIndexConst fn,
     GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 float *cgo_callfn_GDExtensionInterfacePackedFloat32ArrayOperatorIndex(
     const GDExtensionInterfacePackedFloat32ArrayOperatorIndex fn,
@@ -657,6 +683,21 @@ cgo_callfn_GDExtensionInterfacePackedVector3ArrayOperatorIndex(
 GDExtensionTypePtr
 cgo_callfn_GDExtensionInterfacePackedVector3ArrayOperatorIndexConst(
     const GDExtensionInterfacePackedVector3ArrayOperatorIndexConst fn,
+    GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
+GDExtensionTypePtr
+cgo_callfn_GDExtensionInterfacePackedVector4ArrayOperatorIndex(
+    const GDExtensionInterfacePackedVector4ArrayOperatorIndex fn,
+    GDExtensionTypePtr p_self, GDExtensionInt p_index);
+GDExtensionTypePtr
+cgo_callfn_GDExtensionInterfacePackedVector4ArrayOperatorIndexConst(
+    const GDExtensionInterfacePackedVector4ArrayOperatorIndexConst fn,
+    GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
+GDExtensionTypePtr cgo_callfn_GDExtensionInterfacePackedColorArrayOperatorIndex(
+    const GDExtensionInterfacePackedColorArrayOperatorIndex fn,
+    GDExtensionTypePtr p_self, GDExtensionInt p_index);
+GDExtensionTypePtr
+cgo_callfn_GDExtensionInterfacePackedColorArrayOperatorIndexConst(
+    const GDExtensionInterfacePackedColorArrayOperatorIndexConst fn,
     GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 GDExtensionVariantPtr cgo_callfn_GDExtensionInterfaceArrayOperatorIndex(
     const GDExtensionInterfaceArrayOperatorIndex fn, GDExtensionTypePtr p_self,
@@ -720,6 +761,14 @@ GDExtensionObjectPtr cgo_callfn_GDExtensionInterfaceObjectGetInstanceFromId(
 GDObjectInstanceID cgo_callfn_GDExtensionInterfaceObjectGetInstanceId(
     const GDExtensionInterfaceObjectGetInstanceId fn,
     GDExtensionConstObjectPtr p_object);
+GDExtensionBool cgo_callfn_GDExtensionInterfaceObjectHasScriptMethod(
+    const GDExtensionInterfaceObjectHasScriptMethod fn,
+    GDExtensionConstObjectPtr p_object, GDExtensionConstStringNamePtr p_method);
+void cgo_callfn_GDExtensionInterfaceObjectCallScriptMethod(
+    const GDExtensionInterfaceObjectCallScriptMethod fn,
+    GDExtensionObjectPtr p_object, GDExtensionConstStringNamePtr p_method,
+    const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count,
+    GDExtensionUninitializedVariantPtr r_return, GDExtensionCallError *r_error);
 GDExtensionObjectPtr cgo_callfn_GDExtensionInterfaceRefGetObject(
     const GDExtensionInterfaceRefGetObject fn, GDExtensionConstRefPtr p_ref);
 void cgo_callfn_GDExtensionInterfaceRefSetObject(
@@ -734,6 +783,11 @@ GDExtensionScriptInstancePtr
 cgo_callfn_GDExtensionInterfaceScriptInstanceCreate2(
     const GDExtensionInterfaceScriptInstanceCreate2 fn,
     const GDExtensionScriptInstanceInfo2 *p_info,
+    GDExtensionScriptInstanceDataPtr p_instance_data);
+GDExtensionScriptInstancePtr
+cgo_callfn_GDExtensionInterfaceScriptInstanceCreate3(
+    const GDExtensionInterfaceScriptInstanceCreate3 fn,
+    const GDExtensionScriptInstanceInfo3 *p_info,
     GDExtensionScriptInstanceDataPtr p_instance_data);
 GDExtensionScriptInstancePtr
 cgo_callfn_GDExtensionInterfacePlaceHolderScriptInstanceCreate(
@@ -752,6 +806,10 @@ void cgo_callfn_GDExtensionInterfaceCallableCustomCreate(
     const GDExtensionInterfaceCallableCustomCreate fn,
     GDExtensionUninitializedTypePtr r_callable,
     GDExtensionCallableCustomInfo *p_callable_custom_info);
+void cgo_callfn_GDExtensionInterfaceCallableCustomCreate2(
+    const GDExtensionInterfaceCallableCustomCreate2 fn,
+    GDExtensionUninitializedTypePtr r_callable,
+    GDExtensionCallableCustomInfo2 *p_callable_custom_info);
 void *cgo_callfn_GDExtensionInterfaceCallableCustomGetUserData(
     const GDExtensionInterfaceCallableCustomGetUserData fn,
     GDExtensionConstTypePtr p_callable, void *p_token);
@@ -777,11 +835,22 @@ void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass2(
     GDExtensionConstStringNamePtr p_class_name,
     GDExtensionConstStringNamePtr p_parent_class_name,
     const GDExtensionClassCreationInfo2 *p_extension_funcs);
+void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass3(
+    const GDExtensionInterfaceClassdbRegisterExtensionClass3 fn,
+    GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstStringNamePtr p_parent_class_name,
+    const GDExtensionClassCreationInfo3 *p_extension_funcs);
 void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClassMethod(
     const GDExtensionInterfaceClassdbRegisterExtensionClassMethod fn,
     GDExtensionClassLibraryPtr p_library,
     GDExtensionConstStringNamePtr p_class_name,
     const GDExtensionClassMethodInfo *p_method_info);
+void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod(
+    const GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod fn,
+    GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    const GDExtensionClassVirtualMethodInfo *p_method_info);
 void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant(
     const GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant fn,
     GDExtensionClassLibraryPtr p_library,
@@ -835,8 +904,14 @@ void cgo_callfn_GDExtensionInterfaceEditorAddPlugin(
 void cgo_callfn_GDExtensionInterfaceEditorRemovePlugin(
     const GDExtensionInterfaceEditorRemovePlugin fn,
     GDExtensionConstStringNamePtr p_class_name);
+void cgo_callfn_GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars(
+    const GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars fn,
+    const char *p_data);
+void cgo_callfn_GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen(
+    const GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen fn,
+    const char *p_data, GDExtensionInt p_size);
 // section: structs
-/* struct (10) GDExtensionInitialization */
+/* struct (14) GDExtensionInitialization */
 void cgo_callfn_GDExtensionInitialization_initialize(
     const GDExtensionInitialization *p_struct, void *userdata,
     GDExtensionInitializationLevel p_level);

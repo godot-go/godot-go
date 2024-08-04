@@ -302,6 +302,14 @@ const (
 	KEY_MASK_GROUP_SWITCH                 = 1073741824
 )
 
+type KeyLocation int
+
+const (
+	KEY_LOCATION_UNSPECIFIED KeyLocation = 0
+	KEY_LOCATION_LEFT                    = 1
+	KEY_LOCATION_RIGHT                   = 2
+)
+
 type MouseButton int
 
 const (
@@ -583,7 +591,8 @@ const (
 	TYPE_PACKED_VECTOR2_ARRAY             = 35
 	TYPE_PACKED_VECTOR3_ARRAY             = 36
 	TYPE_PACKED_COLOR_ARRAY               = 37
-	TYPE_MAX                              = 38
+	TYPE_PACKED_VECTOR4_ARRAY             = 38
+	TYPE_MAX                              = 39
 )
 
 type VariantOperator int

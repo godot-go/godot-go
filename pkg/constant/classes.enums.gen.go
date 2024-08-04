@@ -41,6 +41,15 @@ const (
 	A_STAR_GRID_2_D_DIAGONAL_MODE_DIAGONAL_MODE_MAX                                           = 4
 )
 
+type AStarGrid2DCellShape int
+
+const (
+	A_STAR_GRID_2_D_CELL_SHAPE_CELL_SHAPE_SQUARE          AStarGrid2DCellShape = 0
+	A_STAR_GRID_2_D_CELL_SHAPE_CELL_SHAPE_ISOMETRIC_RIGHT                      = 1
+	A_STAR_GRID_2_D_CELL_SHAPE_CELL_SHAPE_ISOMETRIC_DOWN                       = 2
+	A_STAR_GRID_2_D_CELL_SHAPE_CELL_SHAPE_MAX                                  = 3
+)
+
 type AnimationTrackType int
 
 const (
@@ -110,6 +119,14 @@ type AnimationMixerAnimationCallbackModeMethod int
 const (
 	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_METHOD_ANIMATION_CALLBACK_MODE_METHOD_DEFERRED  AnimationMixerAnimationCallbackModeMethod = 0
 	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_METHOD_ANIMATION_CALLBACK_MODE_METHOD_IMMEDIATE                                           = 1
+)
+
+type AnimationMixerAnimationCallbackModeDiscrete int
+
+const (
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_DISCRETE_ANIMATION_CALLBACK_MODE_DISCRETE_DOMINANT         AnimationMixerAnimationCallbackModeDiscrete = 0
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_DISCRETE_ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE                                                    = 1
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_DISCRETE_ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS                                             = 2
 )
 
 type AnimationNodeFilterAction int
@@ -301,6 +318,15 @@ const (
 	AUDIO_SERVER_SPEAKER_MODE_SPEAKER_SURROUND_71                        = 3
 )
 
+type AudioServerPlaybackType int
+
+const (
+	AUDIO_SERVER_PLAYBACK_TYPE_PLAYBACK_TYPE_DEFAULT AudioServerPlaybackType = 0
+	AUDIO_SERVER_PLAYBACK_TYPE_PLAYBACK_TYPE_STREAM                          = 1
+	AUDIO_SERVER_PLAYBACK_TYPE_PLAYBACK_TYPE_SAMPLE                          = 2
+	AUDIO_SERVER_PLAYBACK_TYPE_PLAYBACK_TYPE_MAX                             = 3
+)
+
 type AudioStreamPlayerMixTarget int
 
 const (
@@ -340,6 +366,7 @@ const (
 	AUDIO_STREAM_WAV_FORMAT_FORMAT_8_BITS    AudioStreamWAVFormat = 0
 	AUDIO_STREAM_WAV_FORMAT_FORMAT_16_BITS                        = 1
 	AUDIO_STREAM_WAV_FORMAT_FORMAT_IMA_ADPCM                      = 2
+	AUDIO_STREAM_WAV_FORMAT_FORMAT_QOA                            = 3
 )
 
 type AudioStreamWAVLoopMode int
@@ -460,10 +487,11 @@ const (
 type BaseMaterial3DBlendMode int
 
 const (
-	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_MIX BaseMaterial3DBlendMode = 0
-	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_ADD                         = 1
-	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_SUB                         = 2
-	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_MUL                         = 3
+	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_MIX           BaseMaterial3DBlendMode = 0
+	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_ADD                                   = 1
+	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_SUB                                   = 2
+	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_MUL                                   = 3
+	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_PREMULT_ALPHA                         = 4
 )
 
 type BaseMaterial3DAlphaAntiAliasing int
@@ -912,6 +940,17 @@ const (
 	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_NONE                                     = 4
 )
 
+type CompositorEffectEffectCallbackType int
+
+const (
+	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_PRE_OPAQUE       CompositorEffectEffectCallbackType = 0
+	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_POST_OPAQUE                                         = 1
+	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_POST_SKY                                            = 2
+	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT                                     = 3
+	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_POST_TRANSPARENT                                    = 4
+	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_MAX                                                 = 5
+)
+
 type ConeTwistJoint3DParam int
 
 const (
@@ -1100,6 +1139,10 @@ const (
 	DISPLAY_SERVER_FEATURE_FEATURE_TEXT_TO_SPEECH                           = 19
 	DISPLAY_SERVER_FEATURE_FEATURE_EXTEND_TO_TITLE                          = 20
 	DISPLAY_SERVER_FEATURE_FEATURE_SCREEN_CAPTURE                           = 21
+	DISPLAY_SERVER_FEATURE_FEATURE_STATUS_INDICATOR                         = 22
+	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_HELP                              = 23
+	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_DIALOG_INPUT                      = 24
+	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_DIALOG_FILE                       = 25
 )
 
 type DisplayServerMouseMode int
@@ -1463,6 +1506,13 @@ const (
 	ENVIRONMENT_GLOW_BLEND_MODE_GLOW_BLEND_MODE_MIX                                = 4
 )
 
+type EnvironmentFogMode int
+
+const (
+	ENVIRONMENT_FOG_MODE_FOG_MODE_EXPONENTIAL EnvironmentFogMode = 0
+	ENVIRONMENT_FOG_MODE_FOG_MODE_DEPTH                          = 1
+)
+
 type EnvironmentSDFGIYScale int
 
 const (
@@ -1590,6 +1640,15 @@ const (
 	FLOW_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_END                               = 2
 )
 
+type FlowContainerLastWrapAlignmentMode int
+
+const (
+	FLOW_CONTAINER_LAST_WRAP_ALIGNMENT_MODE_LAST_WRAP_ALIGNMENT_INHERIT FlowContainerLastWrapAlignmentMode = 0
+	FLOW_CONTAINER_LAST_WRAP_ALIGNMENT_MODE_LAST_WRAP_ALIGNMENT_BEGIN                                      = 1
+	FLOW_CONTAINER_LAST_WRAP_ALIGNMENT_MODE_LAST_WRAP_ALIGNMENT_CENTER                                     = 2
+	FLOW_CONTAINER_LAST_WRAP_ALIGNMENT_MODE_LAST_WRAP_ALIGNMENT_END                                        = 3
+)
+
 type GDExtensionManagerLoadStatus int
 
 const (
@@ -1598,6 +1657,18 @@ const (
 	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_ALREADY_LOADED                              = 2
 	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_NOT_LOADED                                  = 3
 	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_NEEDS_RESTART                               = 4
+)
+
+type GLTFAccessorGLTFAccessorType int
+
+const (
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_SCALAR GLTFAccessorGLTFAccessorType = 0
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_VEC_2                               = 1
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_VEC_3                               = 2
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_VEC_4                               = 3
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_MAT_2                               = 4
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_MAT_3                               = 5
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_MAT_4                               = 6
 )
 
 type GLTFDocumentRootNodeMode int
@@ -1824,6 +1895,13 @@ type GraphEditPanningScheme int
 const (
 	GRAPH_EDIT_PANNING_SCHEME_SCROLL_ZOOMS GraphEditPanningScheme = 0
 	GRAPH_EDIT_PANNING_SCHEME_SCROLL_PANS                         = 1
+)
+
+type GraphEditGridPattern int
+
+const (
+	GRAPH_EDIT_GRID_PATTERN_GRID_PATTERN_LINES GraphEditGridPattern = 0
+	GRAPH_EDIT_GRID_PATTERN_GRID_PATTERN_DOTS                       = 1
 )
 
 type HTTPClientMethod int
@@ -2255,6 +2333,8 @@ const (
 	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_CANT_CREATE_IMAGE                          = 7
 	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_USER_ABORTED                               = 8
 	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_TEXTURE_SIZE_TOO_SMALL                     = 9
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_LIGHTMAP_TOO_SMALL                         = 10
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_ATLAS_TOO_SMALL                            = 11
 )
 
 type LightmapGIEnvironmentMode int
@@ -2475,6 +2555,27 @@ const (
 	MULTIPLAYER_SYNCHRONIZER_VISIBILITY_UPDATE_MODE_VISIBILITY_PROCESS_NONE                                                = 2
 )
 
+type NativeMenuFeature int
+
+const (
+	NATIVE_MENU_FEATURE_FEATURE_GLOBAL_MENU         NativeMenuFeature = 0
+	NATIVE_MENU_FEATURE_FEATURE_POPUP_MENU                            = 1
+	NATIVE_MENU_FEATURE_FEATURE_OPEN_CLOSE_CALLBACK                   = 2
+	NATIVE_MENU_FEATURE_FEATURE_HOVER_CALLBACK                        = 3
+	NATIVE_MENU_FEATURE_FEATURE_KEY_CALLBACK                          = 4
+)
+
+type NativeMenuSystemMenus int
+
+const (
+	NATIVE_MENU_SYSTEM_MENUS_INVALID_MENU_ID     NativeMenuSystemMenus = 0
+	NATIVE_MENU_SYSTEM_MENUS_MAIN_MENU_ID                              = 1
+	NATIVE_MENU_SYSTEM_MENUS_APPLICATION_MENU_ID                       = 2
+	NATIVE_MENU_SYSTEM_MENUS_WINDOW_MENU_ID                            = 3
+	NATIVE_MENU_SYSTEM_MENUS_HELP_MENU_ID                              = 4
+	NATIVE_MENU_SYSTEM_MENUS_DOCK_MENU_ID                              = 5
+)
+
 type NavigationMeshSamplePartitionType int
 
 const (
@@ -2628,6 +2729,14 @@ const (
 	NODE_PROCESS_THREAD_MESSAGES_FLAG_PROCESS_THREAD_MESSAGES_ALL                               = 3
 )
 
+type NodePhysicsInterpolationMode int
+
+const (
+	NODE_PHYSICS_INTERPOLATION_MODE_PHYSICS_INTERPOLATION_MODE_INHERIT NodePhysicsInterpolationMode = 0
+	NODE_PHYSICS_INTERPOLATION_MODE_PHYSICS_INTERPOLATION_MODE_ON                                   = 1
+	NODE_PHYSICS_INTERPOLATION_MODE_PHYSICS_INTERPOLATION_MODE_OFF                                  = 2
+)
+
 type NodeDuplicateFlags int
 
 const (
@@ -2645,6 +2754,14 @@ const (
 	NODE_INTERNAL_MODE_INTERNAL_MODE_BACK                      = 2
 )
 
+type NodeAutoTranslateMode int
+
+const (
+	NODE_AUTO_TRANSLATE_MODE_AUTO_TRANSLATE_MODE_INHERIT  NodeAutoTranslateMode = 0
+	NODE_AUTO_TRANSLATE_MODE_AUTO_TRANSLATE_MODE_ALWAYS                         = 1
+	NODE_AUTO_TRANSLATE_MODE_AUTO_TRANSLATE_MODE_DISABLED                       = 2
+)
+
 type Node3DRotationEditMode int
 
 const (
@@ -2658,6 +2775,7 @@ type OSRenderingDriver int
 const (
 	OS_RENDERING_DRIVER_RENDERING_DRIVER_VULKAN   OSRenderingDriver = 0
 	OS_RENDERING_DRIVER_RENDERING_DRIVER_OPENGL_3                   = 1
+	OS_RENDERING_DRIVER_RENDERING_DRIVER_D_3_D_12                   = 2
 )
 
 type OSSystemDir int
@@ -2697,6 +2815,14 @@ const (
 	OMNI_LIGHT_3_D_SHADOW_MODE_SHADOW_CUBE                                  = 1
 )
 
+type OpenXRAPIExtensionOpenXRAlphaBlendModeSupport int
+
+const (
+	OPEN_XRAPI_EXTENSION_OPEN_XR_ALPHA_BLEND_MODE_SUPPORT_OPENXR_ALPHA_BLEND_MODE_SUPPORT_NONE      OpenXRAPIExtensionOpenXRAlphaBlendModeSupport = 0
+	OPEN_XRAPI_EXTENSION_OPEN_XR_ALPHA_BLEND_MODE_SUPPORT_OPENXR_ALPHA_BLEND_MODE_SUPPORT_REAL                                                    = 1
+	OPEN_XRAPI_EXTENSION_OPEN_XR_ALPHA_BLEND_MODE_SUPPORT_OPENXR_ALPHA_BLEND_MODE_SUPPORT_EMULATING                                               = 2
+)
+
 type OpenXRActionActionType int
 
 const (
@@ -2722,6 +2848,22 @@ const (
 	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_MAX                                         = 2
 )
 
+type OpenXRHandSkeletonRig int
+
+const (
+	OPEN_XR_HAND_SKELETON_RIG_SKELETON_RIG_OPENXR   OpenXRHandSkeletonRig = 0
+	OPEN_XR_HAND_SKELETON_RIG_SKELETON_RIG_HUMANOID                       = 1
+	OPEN_XR_HAND_SKELETON_RIG_SKELETON_RIG_MAX                            = 2
+)
+
+type OpenXRHandBoneUpdate int
+
+const (
+	OPEN_XR_HAND_BONE_UPDATE_BONE_UPDATE_FULL          OpenXRHandBoneUpdate = 0
+	OPEN_XR_HAND_BONE_UPDATE_BONE_UPDATE_ROTATION_ONLY                      = 1
+	OPEN_XR_HAND_BONE_UPDATE_BONE_UPDATE_MAX                                = 2
+)
+
 type OpenXRInterfaceHand int
 
 const (
@@ -2736,6 +2878,15 @@ const (
 	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_UNOBSTRUCTED          OpenXRInterfaceHandMotionRange = 0
 	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_CONFORM_TO_CONTROLLER                                = 1
 	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_MAX                                                  = 2
+)
+
+type OpenXRInterfaceHandTrackedSource int
+
+const (
+	OPEN_XR_INTERFACE_HAND_TRACKED_SOURCE_HAND_TRACKED_SOURCE_UNKNOWN      OpenXRInterfaceHandTrackedSource = 0
+	OPEN_XR_INTERFACE_HAND_TRACKED_SOURCE_HAND_TRACKED_SOURCE_UNOBSTRUCTED                                  = 1
+	OPEN_XR_INTERFACE_HAND_TRACKED_SOURCE_HAND_TRACKED_SOURCE_CONTROLLER                                    = 2
+	OPEN_XR_INTERFACE_HAND_TRACKED_SOURCE_HAND_TRACKED_SOURCE_MAX                                           = 3
 )
 
 type OpenXRInterfaceHandJoints int
@@ -3173,31 +3324,41 @@ const (
 type PhysicsServer3DG6DOFJointAxisParam int
 
 const (
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_LOWER_LIMIT            PhysicsServer3DG6DOFJointAxisParam = 0
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_UPPER_LIMIT                                               = 1
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_LIMIT_SOFTNESS                                            = 2
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_RESTITUTION                                               = 3
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_DAMPING                                                   = 4
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_MOTOR_TARGET_VELOCITY                                     = 5
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_MOTOR_FORCE_LIMIT                                         = 6
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_LOWER_LIMIT                                              = 10
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_UPPER_LIMIT                                              = 11
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_LIMIT_SOFTNESS                                           = 12
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_DAMPING                                                  = 13
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_RESTITUTION                                              = 14
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_FORCE_LIMIT                                              = 15
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_ERP                                                      = 16
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_MOTOR_TARGET_VELOCITY                                    = 17
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_MOTOR_FORCE_LIMIT                                        = 18
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_LOWER_LIMIT               PhysicsServer3DG6DOFJointAxisParam = 0
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_UPPER_LIMIT                                                  = 1
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_LIMIT_SOFTNESS                                               = 2
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_RESTITUTION                                                  = 3
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_DAMPING                                                      = 4
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_MOTOR_TARGET_VELOCITY                                        = 5
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_MOTOR_FORCE_LIMIT                                            = 6
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_SPRING_STIFFNESS                                             = 7
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_SPRING_DAMPING                                               = 8
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_SPRING_EQUILIBRIUM_POINT                                     = 9
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_LOWER_LIMIT                                                 = 10
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_UPPER_LIMIT                                                 = 11
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_LIMIT_SOFTNESS                                              = 12
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_DAMPING                                                     = 13
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_RESTITUTION                                                 = 14
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_FORCE_LIMIT                                                 = 15
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_ERP                                                         = 16
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_MOTOR_TARGET_VELOCITY                                       = 17
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_MOTOR_FORCE_LIMIT                                           = 18
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_SPRING_STIFFNESS                                            = 19
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_SPRING_DAMPING                                              = 20
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_SPRING_EQUILIBRIUM_POINT                                    = 21
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_MAX                                                                 = 22
 )
 
 type PhysicsServer3DG6DOFJointAxisFlag int
 
 const (
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_LINEAR_LIMIT  PhysicsServer3DG6DOFJointAxisFlag = 0
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_ANGULAR_LIMIT                                   = 1
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_MOTOR                                           = 4
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_LINEAR_MOTOR                                    = 5
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_LINEAR_LIMIT   PhysicsServer3DG6DOFJointAxisFlag = 0
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_ANGULAR_LIMIT                                    = 1
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_ANGULAR_SPRING                                   = 2
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_LINEAR_SPRING                                    = 3
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_MOTOR                                            = 4
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_LINEAR_MOTOR                                     = 5
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_MAX                                                     = 6
 )
 
 type PhysicsServer3DShapeType int
@@ -3391,7 +3552,20 @@ const (
 type RenderingDeviceDriverResource int
 
 const (
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_DEVICE                      RenderingDeviceDriverResource = 0
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_LOGICAL_DEVICE                     RenderingDeviceDriverResource = 0
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_PHYSICAL_DEVICE                                                  = 1
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TOPMOST_OBJECT                                                   = 2
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_COMMAND_QUEUE                                                    = 3
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_QUEUE_FAMILY                                                     = 4
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TEXTURE                                                          = 5
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TEXTURE_VIEW                                                     = 6
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TEXTURE_DATA_FORMAT                                              = 7
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_SAMPLER                                                          = 8
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_UNIFORM_SET                                                      = 9
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_BUFFER                                                           = 10
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_COMPUTE_PIPELINE                                                 = 11
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_RENDER_PIPELINE                                                  = 12
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_DEVICE                                                    = 0
 	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_PHYSICAL_DEVICE                                           = 1
 	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_INSTANCE                                                  = 2
 	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_QUEUE                                                     = 3
@@ -3903,22 +4077,25 @@ const (
 type RenderingDeviceInitialAction int
 
 const (
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CLEAR                 RenderingDeviceInitialAction = 0
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_LOAD                  RenderingDeviceInitialAction = 0
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CLEAR                                              = 1
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_DISCARD                                            = 2
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_MAX                                                = 3
 	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CLEAR_REGION                                       = 1
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CLEAR_REGION_CONTINUE                              = 2
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_KEEP                                               = 3
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_DROP                                               = 4
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CONTINUE                                           = 5
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_MAX                                                = 6
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CLEAR_REGION_CONTINUE                              = 1
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_KEEP                                               = 0
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_DROP                                               = 2
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CONTINUE                                           = 0
 )
 
 type RenderingDeviceFinalAction int
 
 const (
-	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_READ     RenderingDeviceFinalAction = 0
+	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_STORE    RenderingDeviceFinalAction = 0
 	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_DISCARD                             = 1
-	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_CONTINUE                            = 2
-	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_MAX                                 = 3
+	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_MAX                                 = 2
+	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_READ                                = 0
+	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_CONTINUE                            = 0
 )
 
 type RenderingDeviceShaderStage int
@@ -4415,7 +4592,8 @@ type RenderingServerViewportRenderInfoType int
 const (
 	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_VISIBLE RenderingServerViewportRenderInfoType = 0
 	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_SHADOW                                        = 1
-	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_MAX                                           = 2
+	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_CANVAS                                        = 2
+	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_MAX                                           = 3
 )
 
 type RenderingServerViewportDebugDraw int
@@ -4459,6 +4637,15 @@ const (
 	RENDERING_SERVER_VIEWPORT_VRS_MODE_VIEWPORT_VRS_MAX                                     = 3
 )
 
+type RenderingServerViewportVRSUpdateMode int
+
+const (
+	RENDERING_SERVER_VIEWPORT_VRS_UPDATE_MODE_VIEWPORT_VRS_UPDATE_DISABLED RenderingServerViewportVRSUpdateMode = 0
+	RENDERING_SERVER_VIEWPORT_VRS_UPDATE_MODE_VIEWPORT_VRS_UPDATE_ONCE                                          = 1
+	RENDERING_SERVER_VIEWPORT_VRS_UPDATE_MODE_VIEWPORT_VRS_UPDATE_ALWAYS                                        = 2
+	RENDERING_SERVER_VIEWPORT_VRS_UPDATE_MODE_VIEWPORT_VRS_UPDATE_MAX                                           = 3
+)
+
 type RenderingServerSkyMode int
 
 const (
@@ -4466,6 +4653,27 @@ const (
 	RENDERING_SERVER_SKY_MODE_SKY_MODE_QUALITY                            = 1
 	RENDERING_SERVER_SKY_MODE_SKY_MODE_INCREMENTAL                        = 2
 	RENDERING_SERVER_SKY_MODE_SKY_MODE_REALTIME                           = 3
+)
+
+type RenderingServerCompositorEffectFlags int
+
+const (
+	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_ACCESS_RESOLVED_COLOR   RenderingServerCompositorEffectFlags = 1
+	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_ACCESS_RESOLVED_DEPTH                                        = 2
+	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_NEEDS_MOTION_VECTORS                                         = 4
+	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_NEEDS_ROUGHNESS                                              = 8
+	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_NEEDS_SEPARATE_SPECULAR                                      = 16
+)
+
+type RenderingServerCompositorEffectCallbackType int
+
+const (
+	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_PRE_OPAQUE       RenderingServerCompositorEffectCallbackType = 0
+	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_OPAQUE                                                  = 1
+	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_SKY                                                     = 2
+	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT                                              = 3
+	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_TRANSPARENT                                             = 4
+	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_ANY                                                          = -1
 )
 
 type RenderingServerEnvironmentBG int
@@ -4505,6 +4713,13 @@ const (
 	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_SOFTLIGHT                                         = 2
 	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_REPLACE                                           = 3
 	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_MIX                                               = 4
+)
+
+type RenderingServerEnvironmentFogMode int
+
+const (
+	RENDERING_SERVER_ENVIRONMENT_FOG_MODE_ENV_FOG_MODE_EXPONENTIAL RenderingServerEnvironmentFogMode = 0
+	RENDERING_SERVER_ENVIRONMENT_FOG_MODE_ENV_FOG_MODE_DEPTH                                         = 1
 )
 
 type RenderingServerEnvironmentToneMapper int
@@ -4806,9 +5021,11 @@ const (
 type ResourceFormatLoaderCacheMode int
 
 const (
-	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_IGNORE  ResourceFormatLoaderCacheMode = 0
-	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_REUSE                                 = 1
-	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_REPLACE                               = 2
+	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_IGNORE       ResourceFormatLoaderCacheMode = 0
+	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_REUSE                                      = 1
+	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_REPLACE                                    = 2
+	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_IGNORE_DEEP                                = 3
+	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_REPLACE_DEEP                               = 4
 )
 
 type ResourceImporterImportOrder int
@@ -4830,9 +5047,11 @@ const (
 type ResourceLoaderCacheMode int
 
 const (
-	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_IGNORE  ResourceLoaderCacheMode = 0
-	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_REUSE                           = 1
-	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_REPLACE                         = 2
+	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_IGNORE       ResourceLoaderCacheMode = 0
+	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_REUSE                                = 1
+	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_REPLACE                              = 2
+	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_IGNORE_DEEP                          = 3
+	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_REPLACE_DEEP                         = 4
 )
 
 type ResourceSaverSaverFlags int
@@ -4870,6 +5089,14 @@ const (
 	RICH_TEXT_LABEL_MENU_ITEMS_MENU_COPY       RichTextLabelMenuItems = 0
 	RICH_TEXT_LABEL_MENU_ITEMS_MENU_SELECT_ALL                        = 1
 	RICH_TEXT_LABEL_MENU_ITEMS_MENU_MAX                               = 2
+)
+
+type RichTextLabelMetaUnderline int
+
+const (
+	RICH_TEXT_LABEL_META_UNDERLINE_META_UNDERLINE_NEVER    RichTextLabelMetaUnderline = 0
+	RICH_TEXT_LABEL_META_UNDERLINE_META_UNDERLINE_ALWAYS                              = 1
+	RICH_TEXT_LABEL_META_UNDERLINE_META_UNDERLINE_ON_HOVER                            = 2
 )
 
 type RichTextLabelImageUpdateMask int
@@ -4961,6 +5188,15 @@ const (
 	SCENE_TREE_GROUP_CALL_FLAGS_GROUP_CALL_UNIQUE                           = 4
 )
 
+type ScriptLanguageScriptNameCasing int
+
+const (
+	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_AUTO        ScriptLanguageScriptNameCasing = 0
+	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_PASCAL_CASE                                = 1
+	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_SNAKE_CASE                                 = 2
+	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_KEBAB_CASE                                 = 3
+)
+
 type ScriptLanguageExtensionLookupResultType int
 
 const (
@@ -5018,6 +5254,13 @@ const (
 	SHADER_MODE_MODE_PARTICLES              = 2
 	SHADER_MODE_MODE_SKY                    = 3
 	SHADER_MODE_MODE_FOG                    = 4
+)
+
+type Skeleton3DModifierCallbackModeProcess int
+
+const (
+	SKELETON_3_D_MODIFIER_CALLBACK_MODE_PROCESS_MODIFIER_CALLBACK_MODE_PROCESS_PHYSICS Skeleton3DModifierCallbackModeProcess = 0
+	SKELETON_3_D_MODIFIER_CALLBACK_MODE_PROCESS_MODIFIER_CALLBACK_MODE_PROCESS_IDLE                                          = 1
 )
 
 type SkeletonProfileTailDirection int
@@ -5197,6 +5440,14 @@ const (
 	TAB_BAR_CLOSE_BUTTON_DISPLAY_POLICY_CLOSE_BUTTON_MAX                                             = 3
 )
 
+type TabContainerTabPosition int
+
+const (
+	TAB_CONTAINER_TAB_POSITION_POSITION_TOP    TabContainerTabPosition = 0
+	TAB_CONTAINER_TAB_POSITION_POSITION_BOTTOM                         = 1
+	TAB_CONTAINER_TAB_POSITION_POSITION_MAX                            = 2
+)
+
 type TextEditMenuItems int
 
 const (
@@ -5349,6 +5600,7 @@ const (
 	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_GRAPHEME_BOUND                           = 4
 	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_ADAPTIVE                                 = 8
 	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_TRIM_EDGE_SPACES                         = 16
+	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_TRIM_INDENT                              = 32
 )
 
 type TextServerVisibleCharactersBehavior int
@@ -5398,6 +5650,7 @@ const (
 	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_CONNECTED                                     = 1024
 	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_SAFE_TO_INSERT_TATWEEL                        = 2048
 	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_EMBEDDED_OBJECT                               = 4096
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_SOFT_HYPHEN                                   = 8192
 )
 
 type TextServerHinting int
@@ -5568,6 +5821,14 @@ const (
 	TILE_MAP_VISIBILITY_MODE_VISIBILITY_MODE_DEFAULT    TileMapVisibilityMode = 0
 	TILE_MAP_VISIBILITY_MODE_VISIBILITY_MODE_FORCE_HIDE                       = 2
 	TILE_MAP_VISIBILITY_MODE_VISIBILITY_MODE_FORCE_SHOW                       = 1
+)
+
+type TileMapLayerDebugVisibilityMode int
+
+const (
+	TILE_MAP_LAYER_DEBUG_VISIBILITY_MODE_DEBUG_VISIBILITY_MODE_DEFAULT    TileMapLayerDebugVisibilityMode = 0
+	TILE_MAP_LAYER_DEBUG_VISIBILITY_MODE_DEBUG_VISIBILITY_MODE_FORCE_HIDE                                 = 2
+	TILE_MAP_LAYER_DEBUG_VISIBILITY_MODE_DEBUG_VISIBILITY_MODE_FORCE_SHOW                                 = 1
 )
 
 type TileSetTileShape int
@@ -5855,7 +6116,8 @@ type ViewportRenderInfoType int
 const (
 	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_VISIBLE ViewportRenderInfoType = 0
 	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_SHADOW                         = 1
-	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_MAX                            = 2
+	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_CANVAS                         = 2
+	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_MAX                            = 3
 )
 
 type ViewportDebugDraw int
@@ -5935,6 +6197,15 @@ const (
 	VIEWPORT_VRS_MODE_VRS_TEXTURE                  = 1
 	VIEWPORT_VRS_MODE_VRS_XR                       = 2
 	VIEWPORT_VRS_MODE_VRS_MAX                      = 3
+)
+
+type ViewportVRSUpdateMode int
+
+const (
+	VIEWPORT_VRS_UPDATE_MODE_VRS_UPDATE_DISABLED ViewportVRSUpdateMode = 0
+	VIEWPORT_VRS_UPDATE_MODE_VRS_UPDATE_ONCE                           = 1
+	VIEWPORT_VRS_UPDATE_MODE_VRS_UPDATE_ALWAYS                         = 2
+	VIEWPORT_VRS_UPDATE_MODE_VRS_UPDATE_MAX                            = 3
 )
 
 type VisibleOnScreenEnabler2DEnableMode int
@@ -6718,6 +6989,330 @@ const (
 	XML_PARSER_NODE_TYPE_NODE_UNKNOWN                       = 6
 )
 
+type XRBodyModifier3DBodyUpdate int
+
+const (
+	XR_BODY_MODIFIER_3_D_BODY_UPDATE_BODY_UPDATE_UPPER_BODY XRBodyModifier3DBodyUpdate = 1
+	XR_BODY_MODIFIER_3_D_BODY_UPDATE_BODY_UPDATE_LOWER_BODY                            = 2
+	XR_BODY_MODIFIER_3_D_BODY_UPDATE_BODY_UPDATE_HANDS                                 = 4
+)
+
+type XRBodyModifier3DBoneUpdate int
+
+const (
+	XR_BODY_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_FULL          XRBodyModifier3DBoneUpdate = 0
+	XR_BODY_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_ROTATION_ONLY                            = 1
+	XR_BODY_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_MAX                                      = 2
+)
+
+type XRBodyTrackerBodyFlags int
+
+const (
+	XR_BODY_TRACKER_BODY_FLAGS_BODY_FLAG_UPPER_BODY_SUPPORTED XRBodyTrackerBodyFlags = 1
+	XR_BODY_TRACKER_BODY_FLAGS_BODY_FLAG_LOWER_BODY_SUPPORTED                        = 2
+	XR_BODY_TRACKER_BODY_FLAGS_BODY_FLAG_HANDS_SUPPORTED                             = 4
+)
+
+type XRBodyTrackerJoint int
+
+const (
+	XR_BODY_TRACKER_JOINT_JOINT_ROOT                                     XRBodyTrackerJoint = 0
+	XR_BODY_TRACKER_JOINT_JOINT_HIPS                                                        = 1
+	XR_BODY_TRACKER_JOINT_JOINT_SPINE                                                       = 2
+	XR_BODY_TRACKER_JOINT_JOINT_CHEST                                                       = 3
+	XR_BODY_TRACKER_JOINT_JOINT_UPPER_CHEST                                                 = 4
+	XR_BODY_TRACKER_JOINT_JOINT_NECK                                                        = 5
+	XR_BODY_TRACKER_JOINT_JOINT_HEAD                                                        = 6
+	XR_BODY_TRACKER_JOINT_JOINT_HEAD_TIP                                                    = 7
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_SHOULDER                                               = 8
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_UPPER_ARM                                              = 9
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_LOWER_ARM                                              = 10
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_SHOULDER                                              = 11
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_UPPER_ARM                                             = 12
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_LOWER_ARM                                             = 13
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_UPPER_LEG                                              = 14
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_LOWER_LEG                                              = 15
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_FOOT                                                   = 16
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_TOES                                                   = 17
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_UPPER_LEG                                             = 18
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_LOWER_LEG                                             = 19
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_FOOT                                                  = 20
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_TOES                                                  = 21
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_HAND                                                   = 22
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PALM                                                   = 23
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_WRIST                                                  = 24
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_METACARPAL                                       = 25
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_PHALANX_PROXIMAL                                 = 26
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_PHALANX_DISTAL                                   = 27
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_TIP                                              = 28
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_METACARPAL                                = 29
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_PHALANX_PROXIMAL                          = 30
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_PHALANX_INTERMEDIATE                      = 31
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_PHALANX_DISTAL                            = 32
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_TIP                                       = 33
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_METACARPAL                               = 34
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_PHALANX_PROXIMAL                         = 35
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_PHALANX_INTERMEDIATE                     = 36
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_PHALANX_DISTAL                           = 37
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_TIP                                      = 38
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_METACARPAL                                 = 39
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_PHALANX_PROXIMAL                           = 40
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_PHALANX_INTERMEDIATE                       = 41
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_PHALANX_DISTAL                             = 42
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_TIP                                        = 43
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_METACARPAL                                = 44
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_PHALANX_PROXIMAL                          = 45
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_PHALANX_INTERMEDIATE                      = 46
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_PHALANX_DISTAL                            = 47
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_TIP                                       = 48
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_HAND                                                  = 49
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PALM                                                  = 50
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_WRIST                                                 = 51
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_METACARPAL                                      = 52
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_PHALANX_PROXIMAL                                = 53
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_PHALANX_DISTAL                                  = 54
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_TIP                                             = 55
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_METACARPAL                               = 56
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_PHALANX_PROXIMAL                         = 57
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_PHALANX_INTERMEDIATE                     = 58
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_PHALANX_DISTAL                           = 59
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_TIP                                      = 60
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_METACARPAL                              = 61
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_PROXIMAL                        = 62
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_INTERMEDIATE                    = 63
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_DISTAL                          = 64
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_TIP                                     = 65
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_METACARPAL                                = 66
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_PHALANX_PROXIMAL                          = 67
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_PHALANX_INTERMEDIATE                      = 68
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_PHALANX_DISTAL                            = 69
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_TIP                                       = 70
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_METACARPAL                               = 71
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_PHALANX_PROXIMAL                         = 72
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_PHALANX_INTERMEDIATE                     = 73
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_PHALANX_DISTAL                           = 74
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_TIP                                      = 75
+	XR_BODY_TRACKER_JOINT_JOINT_MAX                                                         = 76
+)
+
+type XRBodyTrackerJointFlags int
+
+const (
+	XR_BODY_TRACKER_JOINT_FLAGS_JOINT_FLAG_ORIENTATION_VALID   XRBodyTrackerJointFlags = 1
+	XR_BODY_TRACKER_JOINT_FLAGS_JOINT_FLAG_ORIENTATION_TRACKED                         = 2
+	XR_BODY_TRACKER_JOINT_FLAGS_JOINT_FLAG_POSITION_VALID                              = 4
+	XR_BODY_TRACKER_JOINT_FLAGS_JOINT_FLAG_POSITION_TRACKED                            = 8
+)
+
+type XRFaceTrackerBlendShapeEntry int
+
+const (
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_OUT_RIGHT       XRFaceTrackerBlendShapeEntry = 0
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_IN_RIGHT                                     = 1
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_UP_RIGHT                                     = 2
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_DOWN_RIGHT                                   = 3
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_OUT_LEFT                                     = 4
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_IN_LEFT                                      = 5
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_UP_LEFT                                      = 6
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_DOWN_LEFT                                    = 7
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CLOSED_RIGHT                                      = 8
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CLOSED_LEFT                                       = 9
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_SQUINT_RIGHT                                      = 10
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_SQUINT_LEFT                                       = 11
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_WIDE_RIGHT                                        = 12
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_WIDE_LEFT                                         = 13
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_DILATION_RIGHT                                    = 14
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_DILATION_LEFT                                     = 15
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CONSTRICT_RIGHT                                   = 16
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CONSTRICT_LEFT                                    = 17
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_PINCH_RIGHT                                      = 18
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_PINCH_LEFT                                       = 19
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_LOWERER_RIGHT                                    = 20
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_LOWERER_LEFT                                     = 21
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_INNER_UP_RIGHT                                   = 22
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_INNER_UP_LEFT                                    = 23
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_OUTER_UP_RIGHT                                   = 24
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_OUTER_UP_LEFT                                    = 25
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NOSE_SNEER_RIGHT                                      = 26
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NOSE_SNEER_LEFT                                       = 27
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_DILATION_RIGHT                                  = 28
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_DILATION_LEFT                                   = 29
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_CONSTRICT_RIGHT                                 = 30
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_CONSTRICT_LEFT                                  = 31
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SQUINT_RIGHT                                    = 32
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SQUINT_LEFT                                     = 33
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_PUFF_RIGHT                                      = 34
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_PUFF_LEFT                                       = 35
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SUCK_RIGHT                                      = 36
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SUCK_LEFT                                       = 37
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_OPEN                                              = 38
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CLOSED                                          = 39
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_RIGHT                                             = 40
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_LEFT                                              = 41
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_FORWARD                                           = 42
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_BACKWARD                                          = 43
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_CLENCH                                            = 44
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_MANDIBLE_RAISE                                    = 45
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_UPPER_RIGHT                                  = 46
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_UPPER_LEFT                                   = 47
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_LOWER_RIGHT                                  = 48
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_LOWER_LEFT                                   = 49
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_CORNER_RIGHT                                 = 50
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_CORNER_LEFT                                  = 51
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_UPPER_RIGHT                                = 52
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_UPPER_LEFT                                 = 53
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_LOWER_RIGHT                                = 54
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_LOWER_LEFT                                 = 55
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_UPPER_RIGHT                                = 56
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_UPPER_LEFT                                 = 57
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_LOWER_RIGHT                                = 58
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_LOWER_LEFT                                 = 59
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_UP_RIGHT                                  = 60
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_UP_LEFT                                   = 61
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_DOWN_RIGHT                                = 62
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_DOWN_LEFT                                 = 63
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_DEEPEN_RIGHT                              = 64
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_DEEPEN_LEFT                               = 65
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_RIGHT                                     = 66
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_LEFT                                      = 67
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_RIGHT                                     = 68
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_LEFT                                      = 69
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_PULL_RIGHT                               = 70
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_PULL_LEFT                                = 71
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_SLANT_RIGHT                              = 72
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_SLANT_LEFT                               = 73
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_FROWN_RIGHT                                     = 74
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_FROWN_LEFT                                      = 75
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_STRETCH_RIGHT                                   = 76
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_STRETCH_LEFT                                    = 77
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_DIMPLE_RIGHT                                    = 78
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_DIMPLE_LEFT                                     = 79
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_RAISER_UPPER                                    = 80
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_RAISER_LOWER                                    = 81
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_PRESS_RIGHT                                     = 82
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_PRESS_LEFT                                      = 83
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_TIGHTENER_RIGHT                                 = 84
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_TIGHTENER_LEFT                                  = 85
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_OUT                                            = 86
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_UP                                             = 87
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_DOWN                                           = 88
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_RIGHT                                          = 89
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_LEFT                                           = 90
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_ROLL                                           = 91
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_BLEND_DOWN                                     = 92
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_CURL_UP                                        = 93
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_SQUISH                                         = 94
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_FLAT                                           = 95
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_TWIST_RIGHT                                    = 96
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_TWIST_LEFT                                     = 97
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_SOFT_PALATE_CLOSE                                     = 98
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_THROAT_SWALLOW                                        = 99
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NECK_FLEX_RIGHT                                       = 100
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NECK_FLEX_LEFT                                        = 101
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CLOSED                                            = 102
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_WIDE                                              = 103
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_SQUINT                                            = 104
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_DILATION                                          = 105
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CONSTRICT                                         = 106
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_DOWN_RIGHT                                       = 107
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_DOWN_LEFT                                        = 108
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_DOWN                                             = 109
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_UP_RIGHT                                         = 110
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_UP_LEFT                                          = 111
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_UP                                               = 112
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NOSE_SNEER                                            = 113
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_DILATION                                        = 114
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_CONSTRICT                                       = 115
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_PUFF                                            = 116
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SUCK                                            = 117
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SQUINT                                          = 118
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_UPPER                                        = 119
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_LOWER                                        = 120
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK                                              = 121
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_UPPER                                      = 122
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_LOWER                                      = 123
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL                                            = 124
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_UPPER                                      = 125
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_LOWER                                      = 126
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER                                            = 127
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_UP                                        = 128
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_DOWN                                      = 129
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_OPEN                                            = 130
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_RIGHT                                           = 131
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LEFT                                            = 132
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SMILE_RIGHT                                     = 133
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SMILE_LEFT                                      = 134
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SMILE                                           = 135
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SAD_RIGHT                                       = 136
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SAD_LEFT                                        = 137
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SAD                                             = 138
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_STRETCH                                         = 139
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_DIMPLE                                          = 140
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_TIGHTENER                                       = 141
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_PRESS                                           = 142
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MAX                                                   = 143
+)
+
+type XRHandModifier3DBoneUpdate int
+
+const (
+	XR_HAND_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_FULL          XRHandModifier3DBoneUpdate = 0
+	XR_HAND_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_ROTATION_ONLY                            = 1
+	XR_HAND_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_MAX                                      = 2
+)
+
+type XRHandTrackerHandTrackingSource int
+
+const (
+	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_UNKNOWN      XRHandTrackerHandTrackingSource = 0
+	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_UNOBSTRUCTED                                 = 1
+	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_CONTROLLER                                   = 2
+	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_MAX                                          = 3
+)
+
+type XRHandTrackerHandJoint int
+
+const (
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PALM                               XRHandTrackerHandJoint = 0
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_WRIST                                                     = 1
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_METACARPAL                                          = 2
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_PHALANX_PROXIMAL                                    = 3
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_PHALANX_DISTAL                                      = 4
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_TIP                                                 = 5
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_METACARPAL                                   = 6
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_PHALANX_PROXIMAL                             = 7
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_PHALANX_INTERMEDIATE                         = 8
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_PHALANX_DISTAL                               = 9
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_TIP                                          = 10
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_METACARPAL                                  = 11
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_PHALANX_PROXIMAL                            = 12
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_PHALANX_INTERMEDIATE                        = 13
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_PHALANX_DISTAL                              = 14
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_TIP                                         = 15
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_METACARPAL                                    = 16
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_PHALANX_PROXIMAL                              = 17
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_PHALANX_INTERMEDIATE                          = 18
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_PHALANX_DISTAL                                = 19
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_TIP                                           = 20
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_METACARPAL                                   = 21
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_PHALANX_PROXIMAL                             = 22
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_PHALANX_INTERMEDIATE                         = 23
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_PHALANX_DISTAL                               = 24
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_TIP                                          = 25
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MAX                                                       = 26
+)
+
+type XRHandTrackerHandJointFlags int
+
+const (
+	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_ORIENTATION_VALID      XRHandTrackerHandJointFlags = 1
+	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_ORIENTATION_TRACKED                                = 2
+	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_POSITION_VALID                                     = 4
+	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_POSITION_TRACKED                                   = 8
+	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_LINEAR_VELOCITY_VALID                              = 16
+	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_ANGULAR_VELOCITY_VALID                             = 32
+)
+
 type XRInterfaceCapabilities int
 
 const (
@@ -6772,6 +7367,7 @@ const (
 	XR_POSITIONAL_TRACKER_TRACKER_HAND_TRACKER_HAND_UNKNOWN XRPositionalTrackerTrackerHand = 0
 	XR_POSITIONAL_TRACKER_TRACKER_HAND_TRACKER_HAND_LEFT                                   = 1
 	XR_POSITIONAL_TRACKER_TRACKER_HAND_TRACKER_HAND_RIGHT                                  = 2
+	XR_POSITIONAL_TRACKER_TRACKER_HAND_TRACKER_HAND_MAX                                    = 3
 )
 
 type XRServerTrackerType int
@@ -6781,6 +7377,9 @@ const (
 	XR_SERVER_TRACKER_TYPE_TRACKER_CONTROLLER                      = 2
 	XR_SERVER_TRACKER_TYPE_TRACKER_BASESTATION                     = 4
 	XR_SERVER_TRACKER_TYPE_TRACKER_ANCHOR                          = 8
+	XR_SERVER_TRACKER_TYPE_TRACKER_HAND                            = 16
+	XR_SERVER_TRACKER_TYPE_TRACKER_BODY                            = 32
+	XR_SERVER_TRACKER_TYPE_TRACKER_FACE                            = 64
 	XR_SERVER_TRACKER_TYPE_TRACKER_ANY_KNOWN                       = 127
 	XR_SERVER_TRACKER_TYPE_TRACKER_UNKNOWN                         = 128
 	XR_SERVER_TRACKER_TYPE_TRACKER_ANY                             = 255

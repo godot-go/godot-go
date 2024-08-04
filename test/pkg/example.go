@@ -26,6 +26,14 @@ const (
 	EXAMPLE_ENUM_CONSTANT_WITHOUT_ENUM = 314
 )
 
+
+type ExampleBitfieldFlag int64
+
+const (
+	FlagOne ExampleBitfieldFlag = 1
+	FlagTwo ExampleBitfieldFlag = 1 << 1
+)
+
 // Example implements GDClass evidence
 var _ GDClass = new(Example)
 
@@ -168,6 +176,15 @@ func (e *Example) TestTArrayArg(arr PackedInt64Array) int64 {
 		sum += arr.GetIndexed(i)
 	}
 	return sum;
+}
+
+func (e *Example) TestTArray() Array {
+	parr := NewPackedVector2Array()
+	parr.Resize(2)
+	parr.Set(0, NewVector2WithFloat32Float32(1.0, 2.0))
+	parr.Set(1, NewVector2WithFloat32Float32(2.0, 3.0))
+	arr := NewArrayWithPackedVector2Array(parr)
+	return arr
 }
 
 func (e *Example) TestDictionary() Dictionary {
@@ -477,6 +494,25 @@ func (e *Example) TestInstanceFromIdUtility() Object {
 	return obj
 }
 
+// TestBitfield, TODO: change argument to accept type ExampleBitfieldFlag
+func (e *Example) TestBitfield(flags int64) ExampleBitfieldFlag {
+	return (ExampleBitfieldFlag)(flags)
+}
+
+func (e *Example) CallableBind() {
+	methodName := NewStringNameWithLatin1Chars("emit_custom_signal")
+	c := NewCallableWithObjectStringName(e, methodName)
+	args := NewArray()
+	args.Append(NewVariantGoString("bound"))
+	args.Append(NewVariantInt(11))
+	c.Callv(args);
+}
+
+func (e *Example) TestVariantVector2iConversion(v Variant) Vector2i {
+	return v.ToVector2i()
+}
+
+
 func ValidateExampleProperty(property *GDExtensionPropertyInfo) {
 	gdsnName := (*StringName)(property.Name())
 	// Test hiding the "mouse_filter" property from the editor.
@@ -495,7 +531,7 @@ func GetExamplePropertyList() []GDExtensionPropertyInfo {
 }
 
 func RegisterClassExample() {
-	ClassDBRegisterClass[*Example](&Example{}, GetExamplePropertyList(), ValidateExampleProperty, func(t GDClass) {
+	ClassDBRegisterClass(&Example{}, GetExamplePropertyList(), ValidateExampleProperty, func(t GDClass) {
 		// virtuals
 		ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
 		ClassDBBindMethodVirtual(t, "V_Input", "_input", []string{"event"}, nil)
@@ -512,6 +548,7 @@ func RegisterClassExample() {
 
 		ClassDBBindMethod(t, "TestArray", "test_array", nil, nil)
 		ClassDBBindMethod(t, "TestTArrayArg", "test_tarray_arg", []string{"array"}, nil)
+		ClassDBBindMethod(t, "TestTArray", "test_tarray", nil, nil)
 		ClassDBBindMethod(t, "TestDictionary", "test_dictionary", nil, nil)
 		ClassDBBindMethod(t, "TestNodeArgument", "test_node_argument", []string{"example"}, nil)
 		ClassDBBindMethod(t, "TestStringOps", "test_string_ops", nil, nil)
@@ -554,9 +591,16 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "EmitCustomSignal", "emit_custom_signal", []string{"name", "value"}, nil)
 
 		// constants
-		ClassDBBindEnumConstant(t, "ExampleEnum", "FIRST", int(ExampleFirst))
-		ClassDBBindEnumConstant(t, "ExampleEnum", "ANSWER_TO_EVERYTHING", int(AnswerToEverything))
+		ClassDBBindEnumConstant(t, "Example.ExampleEnum", "FIRST", int(ExampleFirst))
+		ClassDBBindEnumConstant(t, "Example.ExampleEnum", "ANSWER_TO_EVERYTHING", int(AnswerToEverything))
 		ClassDBBindConstant(t, "CONSTANT_WITHOUT_ENUM", int(EXAMPLE_ENUM_CONSTANT_WITHOUT_ENUM))
+		ClassDBBindBitfieldFlag(t, "Example.ExampleBitfieldFlag", "FLAG_ONE", int(FlagOne))
+		ClassDBBindBitfieldFlag(t, "Example.ExampleBitfieldFlag", "FLAG_TWO", int(FlagTwo))
+
+		ClassDBBindMethod(t, "TestBitfield", "test_bitfield", []string{"flags"}, nil)
+
+		ClassDBBindMethod(t, "CallableBind", "callable_bind", nil, nil)
+		ClassDBBindMethod(t, "TestVariantVector2iConversion", "test_variant_vector2i_conversion", []string{"variant"}, nil)
 
 		// others
 		// ClassDBBindMethod(t, "TestCastTo", "test_cast_to", nil, nil)

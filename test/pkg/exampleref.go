@@ -33,7 +33,7 @@ func (e *ExampleRef) GetId() int32 {
 }
 
 func RegisterClassExampleRef() {
-	ClassDBRegisterClass[*ExampleRef](&ExampleRef{}, []GDExtensionPropertyInfo{}, nil, func(t GDClass) {
+	ClassDBRegisterClass(&ExampleRef{}, []GDExtensionPropertyInfo{}, nil, func(t GDClass) {
 		ClassDBBindMethod(t, "GetId", "get_id", nil, nil)
 		ClassDBBindMethod(t, "SetId", "set_id", []string{"id"}, nil)
 		ClassDBAddProperty(t, GDEXTENSION_VARIANT_TYPE_INT, "group_subgroup_id", "set_id", "get_id")

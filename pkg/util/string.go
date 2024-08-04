@@ -13,6 +13,8 @@ func ReflectValueSliceToString(values []reflect.Value) string {
 			sb.WriteString(",")
 		}
 		sb.WriteString(values[i].Type().Name())
+		sb.WriteString("/")
+		sb.WriteString(values[i].Kind().String())
 		sb.WriteString("(")
 		sb.WriteString(values[i].String())
 		sb.WriteString(")")

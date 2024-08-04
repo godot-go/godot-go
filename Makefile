@@ -27,7 +27,7 @@ goenv:
 	go env
 
 installdeps:
-	go install golang.org/x/tools/cmd/goimports@latest
+	# go install golang.org/x/tools/cmd/goimports@latest
 
 generate: installdeps clean
 	go generate
@@ -46,13 +46,22 @@ update_godot_headers_from_binary: ## update godot_headers from the godot binary
 	DISPLAY=:0 $(GODOT) --dump-gdextension-interface --headless; \
 	mv gdextension_interface.h godot_headers/godot/
 
+# https://medium.com/@aviad.hayumi/debug-golang-applications-with-c-c-bindings-f254b3f1259e
 build: goenv
+	CGO_ENABLED=1 \
+	GOOS=$(GOOS) \
+	GOARCH=$(GOARCH) \
+	CGO_CFLAGS='-fPIC -g -ggdb -O0' \
+	CGO_LDFLAGS='-g3 -g -O0' \
+	go build -gcflags="all=-N -l" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
+
+build-full: goenv
 	CGO_ENABLED=1 \
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \
 	CGO_CFLAGS='-g3 -g -gdwarf -DX86=1 -fPIC -O0' \
 	CGO_LDFLAGS='-g3 -g' \
-	go build -gcflags=all="-v -N -l -L -clobberdead -clobberdeadreg -dwarf -dwarflocationlists=false" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
+	go build -gcflags=all="-v -N -l -L -clobberdead -clobberdeadreg -dwarf -dwarflocationlists=false" -ldflags=-compressdwarf=false -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
 clean_src:
 	find pkg -name *.gen.go -delete

@@ -2131,6 +2131,53 @@ func NewRefAudioEffectFilterGDExtensionIternalConstructor(reference AudioEffectF
 	return NewTypedRefGDExtensionIternalConstructor[AudioEffectFilter](reference)
 }
 
+var _ RefAudioEffectHardLimiter = &RefAudioEffectHardLimiterImpl{}
+var _ Ref = &RefAudioEffectHardLimiterImpl{}
+
+type RefAudioEffectHardLimiterImpl TypedRef[AudioEffectHardLimiter]
+
+func (r *RefAudioEffectHardLimiterImpl) Ptr() RefCounted {
+	rg := (*TypedRef[AudioEffectHardLimiter])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefAudioEffectHardLimiterImpl) TypedPtr() AudioEffectHardLimiter {
+	rg := (*TypedRef[AudioEffectHardLimiter])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefAudioEffectHardLimiterImpl) Ref(from Ref) {
+	rg := (*TypedRef[AudioEffectHardLimiter])(r)
+	rg.Ref(from)
+}
+
+func (r *RefAudioEffectHardLimiterImpl) TypedRef(from *RefAudioEffectHardLimiterImpl) {
+	rg := (*TypedRef[AudioEffectHardLimiter])(r)
+	t := (*TypedRef[AudioEffectHardLimiter])(from)
+	rg.TypedRef((*TypedRef[AudioEffectHardLimiter])(t))
+}
+
+func (r *RefAudioEffectHardLimiterImpl) Unref() {
+	rg := (*TypedRef[AudioEffectHardLimiter])(r)
+	rg.Unref()
+}
+
+func (r *RefAudioEffectHardLimiterImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefAudioEffectHardLimiter(reference AudioEffectHardLimiter) RefAudioEffectHardLimiter {
+	return (RefAudioEffectHardLimiter)(NewTypedRef[AudioEffectHardLimiter](reference))
+}
+
+func NewRefAudioEffectHardLimiterAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioEffectHardLimiter](reference.(AudioEffectHardLimiter)))
+}
+
+func NewRefAudioEffectHardLimiterGDExtensionIternalConstructor(reference AudioEffectHardLimiter) RefAudioEffectHardLimiter {
+	return NewTypedRefGDExtensionIternalConstructor[AudioEffectHardLimiter](reference)
+}
+
 var _ RefAudioEffectHighPassFilter = &RefAudioEffectHighPassFilterImpl{}
 var _ Ref = &RefAudioEffectHighPassFilterImpl{}
 
@@ -2834,6 +2881,100 @@ func NewRefAudioEffectStereoEnhanceAsRef(reference RefCounted) Ref {
 
 func NewRefAudioEffectStereoEnhanceGDExtensionIternalConstructor(reference AudioEffectStereoEnhance) RefAudioEffectStereoEnhance {
 	return NewTypedRefGDExtensionIternalConstructor[AudioEffectStereoEnhance](reference)
+}
+
+var _ RefAudioSample = &RefAudioSampleImpl{}
+var _ Ref = &RefAudioSampleImpl{}
+
+type RefAudioSampleImpl TypedRef[AudioSample]
+
+func (r *RefAudioSampleImpl) Ptr() RefCounted {
+	rg := (*TypedRef[AudioSample])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefAudioSampleImpl) TypedPtr() AudioSample {
+	rg := (*TypedRef[AudioSample])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefAudioSampleImpl) Ref(from Ref) {
+	rg := (*TypedRef[AudioSample])(r)
+	rg.Ref(from)
+}
+
+func (r *RefAudioSampleImpl) TypedRef(from *RefAudioSampleImpl) {
+	rg := (*TypedRef[AudioSample])(r)
+	t := (*TypedRef[AudioSample])(from)
+	rg.TypedRef((*TypedRef[AudioSample])(t))
+}
+
+func (r *RefAudioSampleImpl) Unref() {
+	rg := (*TypedRef[AudioSample])(r)
+	rg.Unref()
+}
+
+func (r *RefAudioSampleImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefAudioSample(reference AudioSample) RefAudioSample {
+	return (RefAudioSample)(NewTypedRef[AudioSample](reference))
+}
+
+func NewRefAudioSampleAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioSample](reference.(AudioSample)))
+}
+
+func NewRefAudioSampleGDExtensionIternalConstructor(reference AudioSample) RefAudioSample {
+	return NewTypedRefGDExtensionIternalConstructor[AudioSample](reference)
+}
+
+var _ RefAudioSamplePlayback = &RefAudioSamplePlaybackImpl{}
+var _ Ref = &RefAudioSamplePlaybackImpl{}
+
+type RefAudioSamplePlaybackImpl TypedRef[AudioSamplePlayback]
+
+func (r *RefAudioSamplePlaybackImpl) Ptr() RefCounted {
+	rg := (*TypedRef[AudioSamplePlayback])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefAudioSamplePlaybackImpl) TypedPtr() AudioSamplePlayback {
+	rg := (*TypedRef[AudioSamplePlayback])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefAudioSamplePlaybackImpl) Ref(from Ref) {
+	rg := (*TypedRef[AudioSamplePlayback])(r)
+	rg.Ref(from)
+}
+
+func (r *RefAudioSamplePlaybackImpl) TypedRef(from *RefAudioSamplePlaybackImpl) {
+	rg := (*TypedRef[AudioSamplePlayback])(r)
+	t := (*TypedRef[AudioSamplePlayback])(from)
+	rg.TypedRef((*TypedRef[AudioSamplePlayback])(t))
+}
+
+func (r *RefAudioSamplePlaybackImpl) Unref() {
+	rg := (*TypedRef[AudioSamplePlayback])(r)
+	rg.Unref()
+}
+
+func (r *RefAudioSamplePlaybackImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefAudioSamplePlayback(reference AudioSamplePlayback) RefAudioSamplePlayback {
+	return (RefAudioSamplePlayback)(NewTypedRef[AudioSamplePlayback](reference))
+}
+
+func NewRefAudioSamplePlaybackAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AudioSamplePlayback](reference.(AudioSamplePlayback)))
+}
+
+func NewRefAudioSamplePlaybackGDExtensionIternalConstructor(reference AudioSamplePlayback) RefAudioSamplePlayback {
+	return NewTypedRefGDExtensionIternalConstructor[AudioSamplePlayback](reference)
 }
 
 var _ RefAudioStream = &RefAudioStreamImpl{}
@@ -4432,6 +4573,100 @@ func NewRefCodeHighlighterAsRef(reference RefCounted) Ref {
 
 func NewRefCodeHighlighterGDExtensionIternalConstructor(reference CodeHighlighter) RefCodeHighlighter {
 	return NewTypedRefGDExtensionIternalConstructor[CodeHighlighter](reference)
+}
+
+var _ RefCompositor = &RefCompositorImpl{}
+var _ Ref = &RefCompositorImpl{}
+
+type RefCompositorImpl TypedRef[Compositor]
+
+func (r *RefCompositorImpl) Ptr() RefCounted {
+	rg := (*TypedRef[Compositor])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefCompositorImpl) TypedPtr() Compositor {
+	rg := (*TypedRef[Compositor])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefCompositorImpl) Ref(from Ref) {
+	rg := (*TypedRef[Compositor])(r)
+	rg.Ref(from)
+}
+
+func (r *RefCompositorImpl) TypedRef(from *RefCompositorImpl) {
+	rg := (*TypedRef[Compositor])(r)
+	t := (*TypedRef[Compositor])(from)
+	rg.TypedRef((*TypedRef[Compositor])(t))
+}
+
+func (r *RefCompositorImpl) Unref() {
+	rg := (*TypedRef[Compositor])(r)
+	rg.Unref()
+}
+
+func (r *RefCompositorImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefCompositor(reference Compositor) RefCompositor {
+	return (RefCompositor)(NewTypedRef[Compositor](reference))
+}
+
+func NewRefCompositorAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[Compositor](reference.(Compositor)))
+}
+
+func NewRefCompositorGDExtensionIternalConstructor(reference Compositor) RefCompositor {
+	return NewTypedRefGDExtensionIternalConstructor[Compositor](reference)
+}
+
+var _ RefCompositorEffect = &RefCompositorEffectImpl{}
+var _ Ref = &RefCompositorEffectImpl{}
+
+type RefCompositorEffectImpl TypedRef[CompositorEffect]
+
+func (r *RefCompositorEffectImpl) Ptr() RefCounted {
+	rg := (*TypedRef[CompositorEffect])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefCompositorEffectImpl) TypedPtr() CompositorEffect {
+	rg := (*TypedRef[CompositorEffect])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefCompositorEffectImpl) Ref(from Ref) {
+	rg := (*TypedRef[CompositorEffect])(r)
+	rg.Ref(from)
+}
+
+func (r *RefCompositorEffectImpl) TypedRef(from *RefCompositorEffectImpl) {
+	rg := (*TypedRef[CompositorEffect])(r)
+	t := (*TypedRef[CompositorEffect])(from)
+	rg.TypedRef((*TypedRef[CompositorEffect])(t))
+}
+
+func (r *RefCompositorEffectImpl) Unref() {
+	rg := (*TypedRef[CompositorEffect])(r)
+	rg.Unref()
+}
+
+func (r *RefCompositorEffectImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefCompositorEffect(reference CompositorEffect) RefCompositorEffect {
+	return (RefCompositorEffect)(NewTypedRef[CompositorEffect](reference))
+}
+
+func NewRefCompositorEffectAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[CompositorEffect](reference.(CompositorEffect)))
+}
+
+func NewRefCompositorEffectGDExtensionIternalConstructor(reference CompositorEffect) RefCompositorEffect {
+	return NewTypedRefGDExtensionIternalConstructor[CompositorEffect](reference)
 }
 
 var _ RefCompressedCubemap = &RefCompressedCubemapImpl{}
@@ -6735,53 +6970,6 @@ func NewRefEditorSceneFormatImporterBlendAsRef(reference RefCounted) Ref {
 
 func NewRefEditorSceneFormatImporterBlendGDExtensionIternalConstructor(reference EditorSceneFormatImporterBlend) RefEditorSceneFormatImporterBlend {
 	return NewTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterBlend](reference)
-}
-
-var _ RefEditorSceneFormatImporterFBX = &RefEditorSceneFormatImporterFBXImpl{}
-var _ Ref = &RefEditorSceneFormatImporterFBXImpl{}
-
-type RefEditorSceneFormatImporterFBXImpl TypedRef[EditorSceneFormatImporterFBX]
-
-func (r *RefEditorSceneFormatImporterFBXImpl) Ptr() RefCounted {
-	rg := (*TypedRef[EditorSceneFormatImporterFBX])(r)
-	return rg.Ptr().(RefCounted)
-}
-
-func (r *RefEditorSceneFormatImporterFBXImpl) TypedPtr() EditorSceneFormatImporterFBX {
-	rg := (*TypedRef[EditorSceneFormatImporterFBX])(r)
-	return rg.TypedPtr()
-}
-
-func (r *RefEditorSceneFormatImporterFBXImpl) Ref(from Ref) {
-	rg := (*TypedRef[EditorSceneFormatImporterFBX])(r)
-	rg.Ref(from)
-}
-
-func (r *RefEditorSceneFormatImporterFBXImpl) TypedRef(from *RefEditorSceneFormatImporterFBXImpl) {
-	rg := (*TypedRef[EditorSceneFormatImporterFBX])(r)
-	t := (*TypedRef[EditorSceneFormatImporterFBX])(from)
-	rg.TypedRef((*TypedRef[EditorSceneFormatImporterFBX])(t))
-}
-
-func (r *RefEditorSceneFormatImporterFBXImpl) Unref() {
-	rg := (*TypedRef[EditorSceneFormatImporterFBX])(r)
-	rg.Unref()
-}
-
-func (r *RefEditorSceneFormatImporterFBXImpl) IsValid() bool {
-	return r != nil && r.Reference != nil
-}
-
-func NewRefEditorSceneFormatImporterFBX(reference EditorSceneFormatImporterFBX) RefEditorSceneFormatImporterFBX {
-	return (RefEditorSceneFormatImporterFBX)(NewTypedRef[EditorSceneFormatImporterFBX](reference))
-}
-
-func NewRefEditorSceneFormatImporterFBXAsRef(reference RefCounted) Ref {
-	return (Ref)(NewTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterFBX](reference.(EditorSceneFormatImporterFBX)))
-}
-
-func NewRefEditorSceneFormatImporterFBXGDExtensionIternalConstructor(reference EditorSceneFormatImporterFBX) RefEditorSceneFormatImporterFBX {
-	return NewTypedRefGDExtensionIternalConstructor[EditorSceneFormatImporterFBX](reference)
 }
 
 var _ RefEditorSceneFormatImporterGLTF = &RefEditorSceneFormatImporterGLTFImpl{}
@@ -22059,6 +22247,53 @@ func NewRefVisualShaderNodeFloatParameterGDExtensionIternalConstructor(reference
 	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFloatParameter](reference)
 }
 
+var _ RefVisualShaderNodeFrame = &RefVisualShaderNodeFrameImpl{}
+var _ Ref = &RefVisualShaderNodeFrameImpl{}
+
+type RefVisualShaderNodeFrameImpl TypedRef[VisualShaderNodeFrame]
+
+func (r *RefVisualShaderNodeFrameImpl) Ptr() RefCounted {
+	rg := (*TypedRef[VisualShaderNodeFrame])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefVisualShaderNodeFrameImpl) TypedPtr() VisualShaderNodeFrame {
+	rg := (*TypedRef[VisualShaderNodeFrame])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefVisualShaderNodeFrameImpl) Ref(from Ref) {
+	rg := (*TypedRef[VisualShaderNodeFrame])(r)
+	rg.Ref(from)
+}
+
+func (r *RefVisualShaderNodeFrameImpl) TypedRef(from *RefVisualShaderNodeFrameImpl) {
+	rg := (*TypedRef[VisualShaderNodeFrame])(r)
+	t := (*TypedRef[VisualShaderNodeFrame])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeFrame])(t))
+}
+
+func (r *RefVisualShaderNodeFrameImpl) Unref() {
+	rg := (*TypedRef[VisualShaderNodeFrame])(r)
+	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeFrameImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefVisualShaderNodeFrame(reference VisualShaderNodeFrame) RefVisualShaderNodeFrame {
+	return (RefVisualShaderNodeFrame)(NewTypedRef[VisualShaderNodeFrame](reference))
+}
+
+func NewRefVisualShaderNodeFrameAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFrame](reference.(VisualShaderNodeFrame)))
+}
+
+func NewRefVisualShaderNodeFrameGDExtensionIternalConstructor(reference VisualShaderNodeFrame) RefVisualShaderNodeFrame {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeFrame](reference)
+}
+
 var _ RefVisualShaderNodeFresnel = &RefVisualShaderNodeFresnelImpl{}
 var _ Ref = &RefVisualShaderNodeFresnelImpl{}
 
@@ -23514,6 +23749,53 @@ func NewRefVisualShaderNodeRemapAsRef(reference RefCounted) Ref {
 
 func NewRefVisualShaderNodeRemapGDExtensionIternalConstructor(reference VisualShaderNodeRemap) RefVisualShaderNodeRemap {
 	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeRemap](reference)
+}
+
+var _ RefVisualShaderNodeReroute = &RefVisualShaderNodeRerouteImpl{}
+var _ Ref = &RefVisualShaderNodeRerouteImpl{}
+
+type RefVisualShaderNodeRerouteImpl TypedRef[VisualShaderNodeReroute]
+
+func (r *RefVisualShaderNodeRerouteImpl) Ptr() RefCounted {
+	rg := (*TypedRef[VisualShaderNodeReroute])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefVisualShaderNodeRerouteImpl) TypedPtr() VisualShaderNodeReroute {
+	rg := (*TypedRef[VisualShaderNodeReroute])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefVisualShaderNodeRerouteImpl) Ref(from Ref) {
+	rg := (*TypedRef[VisualShaderNodeReroute])(r)
+	rg.Ref(from)
+}
+
+func (r *RefVisualShaderNodeRerouteImpl) TypedRef(from *RefVisualShaderNodeRerouteImpl) {
+	rg := (*TypedRef[VisualShaderNodeReroute])(r)
+	t := (*TypedRef[VisualShaderNodeReroute])(from)
+	rg.TypedRef((*TypedRef[VisualShaderNodeReroute])(t))
+}
+
+func (r *RefVisualShaderNodeRerouteImpl) Unref() {
+	rg := (*TypedRef[VisualShaderNodeReroute])(r)
+	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeRerouteImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefVisualShaderNodeReroute(reference VisualShaderNodeReroute) RefVisualShaderNodeReroute {
+	return (RefVisualShaderNodeReroute)(NewTypedRef[VisualShaderNodeReroute](reference))
+}
+
+func NewRefVisualShaderNodeRerouteAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeReroute](reference.(VisualShaderNodeReroute)))
+}
+
+func NewRefVisualShaderNodeRerouteGDExtensionIternalConstructor(reference VisualShaderNodeReroute) RefVisualShaderNodeReroute {
+	return NewTypedRefGDExtensionIternalConstructor[VisualShaderNodeReroute](reference)
 }
 
 var _ RefVisualShaderNodeResizableBase = &RefVisualShaderNodeResizableBaseImpl{}
@@ -26665,6 +26947,194 @@ func NewRefXMLParserGDExtensionIternalConstructor(reference XMLParser) RefXMLPar
 	return NewTypedRefGDExtensionIternalConstructor[XMLParser](reference)
 }
 
+var _ RefXRBodyTracker = &RefXRBodyTrackerImpl{}
+var _ Ref = &RefXRBodyTrackerImpl{}
+
+type RefXRBodyTrackerImpl TypedRef[XRBodyTracker]
+
+func (r *RefXRBodyTrackerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[XRBodyTracker])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefXRBodyTrackerImpl) TypedPtr() XRBodyTracker {
+	rg := (*TypedRef[XRBodyTracker])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefXRBodyTrackerImpl) Ref(from Ref) {
+	rg := (*TypedRef[XRBodyTracker])(r)
+	rg.Ref(from)
+}
+
+func (r *RefXRBodyTrackerImpl) TypedRef(from *RefXRBodyTrackerImpl) {
+	rg := (*TypedRef[XRBodyTracker])(r)
+	t := (*TypedRef[XRBodyTracker])(from)
+	rg.TypedRef((*TypedRef[XRBodyTracker])(t))
+}
+
+func (r *RefXRBodyTrackerImpl) Unref() {
+	rg := (*TypedRef[XRBodyTracker])(r)
+	rg.Unref()
+}
+
+func (r *RefXRBodyTrackerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefXRBodyTracker(reference XRBodyTracker) RefXRBodyTracker {
+	return (RefXRBodyTracker)(NewTypedRef[XRBodyTracker](reference))
+}
+
+func NewRefXRBodyTrackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[XRBodyTracker](reference.(XRBodyTracker)))
+}
+
+func NewRefXRBodyTrackerGDExtensionIternalConstructor(reference XRBodyTracker) RefXRBodyTracker {
+	return NewTypedRefGDExtensionIternalConstructor[XRBodyTracker](reference)
+}
+
+var _ RefXRControllerTracker = &RefXRControllerTrackerImpl{}
+var _ Ref = &RefXRControllerTrackerImpl{}
+
+type RefXRControllerTrackerImpl TypedRef[XRControllerTracker]
+
+func (r *RefXRControllerTrackerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[XRControllerTracker])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefXRControllerTrackerImpl) TypedPtr() XRControllerTracker {
+	rg := (*TypedRef[XRControllerTracker])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefXRControllerTrackerImpl) Ref(from Ref) {
+	rg := (*TypedRef[XRControllerTracker])(r)
+	rg.Ref(from)
+}
+
+func (r *RefXRControllerTrackerImpl) TypedRef(from *RefXRControllerTrackerImpl) {
+	rg := (*TypedRef[XRControllerTracker])(r)
+	t := (*TypedRef[XRControllerTracker])(from)
+	rg.TypedRef((*TypedRef[XRControllerTracker])(t))
+}
+
+func (r *RefXRControllerTrackerImpl) Unref() {
+	rg := (*TypedRef[XRControllerTracker])(r)
+	rg.Unref()
+}
+
+func (r *RefXRControllerTrackerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefXRControllerTracker(reference XRControllerTracker) RefXRControllerTracker {
+	return (RefXRControllerTracker)(NewTypedRef[XRControllerTracker](reference))
+}
+
+func NewRefXRControllerTrackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[XRControllerTracker](reference.(XRControllerTracker)))
+}
+
+func NewRefXRControllerTrackerGDExtensionIternalConstructor(reference XRControllerTracker) RefXRControllerTracker {
+	return NewTypedRefGDExtensionIternalConstructor[XRControllerTracker](reference)
+}
+
+var _ RefXRFaceTracker = &RefXRFaceTrackerImpl{}
+var _ Ref = &RefXRFaceTrackerImpl{}
+
+type RefXRFaceTrackerImpl TypedRef[XRFaceTracker]
+
+func (r *RefXRFaceTrackerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[XRFaceTracker])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefXRFaceTrackerImpl) TypedPtr() XRFaceTracker {
+	rg := (*TypedRef[XRFaceTracker])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefXRFaceTrackerImpl) Ref(from Ref) {
+	rg := (*TypedRef[XRFaceTracker])(r)
+	rg.Ref(from)
+}
+
+func (r *RefXRFaceTrackerImpl) TypedRef(from *RefXRFaceTrackerImpl) {
+	rg := (*TypedRef[XRFaceTracker])(r)
+	t := (*TypedRef[XRFaceTracker])(from)
+	rg.TypedRef((*TypedRef[XRFaceTracker])(t))
+}
+
+func (r *RefXRFaceTrackerImpl) Unref() {
+	rg := (*TypedRef[XRFaceTracker])(r)
+	rg.Unref()
+}
+
+func (r *RefXRFaceTrackerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefXRFaceTracker(reference XRFaceTracker) RefXRFaceTracker {
+	return (RefXRFaceTracker)(NewTypedRef[XRFaceTracker](reference))
+}
+
+func NewRefXRFaceTrackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[XRFaceTracker](reference.(XRFaceTracker)))
+}
+
+func NewRefXRFaceTrackerGDExtensionIternalConstructor(reference XRFaceTracker) RefXRFaceTracker {
+	return NewTypedRefGDExtensionIternalConstructor[XRFaceTracker](reference)
+}
+
+var _ RefXRHandTracker = &RefXRHandTrackerImpl{}
+var _ Ref = &RefXRHandTrackerImpl{}
+
+type RefXRHandTrackerImpl TypedRef[XRHandTracker]
+
+func (r *RefXRHandTrackerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[XRHandTracker])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefXRHandTrackerImpl) TypedPtr() XRHandTracker {
+	rg := (*TypedRef[XRHandTracker])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefXRHandTrackerImpl) Ref(from Ref) {
+	rg := (*TypedRef[XRHandTracker])(r)
+	rg.Ref(from)
+}
+
+func (r *RefXRHandTrackerImpl) TypedRef(from *RefXRHandTrackerImpl) {
+	rg := (*TypedRef[XRHandTracker])(r)
+	t := (*TypedRef[XRHandTracker])(from)
+	rg.TypedRef((*TypedRef[XRHandTracker])(t))
+}
+
+func (r *RefXRHandTrackerImpl) Unref() {
+	rg := (*TypedRef[XRHandTracker])(r)
+	rg.Unref()
+}
+
+func (r *RefXRHandTrackerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefXRHandTracker(reference XRHandTracker) RefXRHandTracker {
+	return (RefXRHandTracker)(NewTypedRef[XRHandTracker](reference))
+}
+
+func NewRefXRHandTrackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[XRHandTracker](reference.(XRHandTracker)))
+}
+
+func NewRefXRHandTrackerGDExtensionIternalConstructor(reference XRHandTracker) RefXRHandTracker {
+	return NewTypedRefGDExtensionIternalConstructor[XRHandTracker](reference)
+}
+
 var _ RefXRInterface = &RefXRInterfaceImpl{}
 var _ Ref = &RefXRInterfaceImpl{}
 
@@ -26851,6 +27321,53 @@ func NewRefXRPositionalTrackerAsRef(reference RefCounted) Ref {
 
 func NewRefXRPositionalTrackerGDExtensionIternalConstructor(reference XRPositionalTracker) RefXRPositionalTracker {
 	return NewTypedRefGDExtensionIternalConstructor[XRPositionalTracker](reference)
+}
+
+var _ RefXRTracker = &RefXRTrackerImpl{}
+var _ Ref = &RefXRTrackerImpl{}
+
+type RefXRTrackerImpl TypedRef[XRTracker]
+
+func (r *RefXRTrackerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[XRTracker])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefXRTrackerImpl) TypedPtr() XRTracker {
+	rg := (*TypedRef[XRTracker])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefXRTrackerImpl) Ref(from Ref) {
+	rg := (*TypedRef[XRTracker])(r)
+	rg.Ref(from)
+}
+
+func (r *RefXRTrackerImpl) TypedRef(from *RefXRTrackerImpl) {
+	rg := (*TypedRef[XRTracker])(r)
+	t := (*TypedRef[XRTracker])(from)
+	rg.TypedRef((*TypedRef[XRTracker])(t))
+}
+
+func (r *RefXRTrackerImpl) Unref() {
+	rg := (*TypedRef[XRTracker])(r)
+	rg.Unref()
+}
+
+func (r *RefXRTrackerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefXRTracker(reference XRTracker) RefXRTracker {
+	return (RefXRTracker)(NewTypedRef[XRTracker](reference))
+}
+
+func NewRefXRTrackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[XRTracker](reference.(XRTracker)))
+}
+
+func NewRefXRTrackerGDExtensionIternalConstructor(reference XRTracker) RefXRTracker {
+	return NewTypedRefGDExtensionIternalConstructor[XRTracker](reference)
 }
 
 var _ RefZIPPacker = &RefZIPPackerImpl{}

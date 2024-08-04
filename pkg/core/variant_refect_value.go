@@ -141,6 +141,83 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 				zap.Any("kind", k),
 			)
 		}
+	case reflect.Array:
+		switch inst := value.Interface().(type) {
+		case Variant:
+			VariantEncoder.EncodeTypePtrArg(inst, rOut)
+		case String:
+			StringEncoder.EncodeTypePtrArg(inst, rOut)
+		case Vector2:
+			Vector2Encoder.EncodeTypePtrArg(inst, rOut)
+		case Vector2i:
+			Vector2iEncoder.EncodeTypePtrArg(inst, rOut)
+		case Rect2:
+			Rect2Encoder.EncodeTypePtrArg(inst, rOut)
+		case Rect2i:
+			Rect2iEncoder.EncodeTypePtrArg(inst, rOut)
+		case Vector3:
+			Vector3Encoder.EncodeTypePtrArg(inst, rOut)
+		case Vector3i:
+			Vector3iEncoder.EncodeTypePtrArg(inst, rOut)
+		case Transform2D:
+			Transform2DEncoder.EncodeTypePtrArg(inst, rOut)
+		case Vector4:
+			Vector4Encoder.EncodeTypePtrArg(inst, rOut)
+		case Vector4i:
+			Vector4iEncoder.EncodeTypePtrArg(inst, rOut)
+		case Plane:
+			PlaneEncoder.EncodeTypePtrArg(inst, rOut)
+		case Quaternion:
+			QuaternionEncoder.EncodeTypePtrArg(inst, rOut)
+		case AABB:
+			AABBEncoder.EncodeTypePtrArg(inst, rOut)
+		case Basis:
+			BasisEncoder.EncodeTypePtrArg(inst, rOut)
+		case Transform3D:
+			Transform3DEncoder.EncodeTypePtrArg(inst, rOut)
+		case Projection:
+			ProjectionEncoder.EncodeTypePtrArg(inst, rOut)
+		case Color:
+			ColorEncoder.EncodeTypePtrArg(inst, rOut)
+		case StringName:
+			StringNameEncoder.EncodeTypePtrArg(inst, rOut)
+		case NodePath:
+			NodePathEncoder.EncodeTypePtrArg(inst, rOut)
+		case RID:
+			RIDEncoder.EncodeTypePtrArg(inst, rOut)
+		case Callable:
+			CallableEncoder.EncodeTypePtrArg(inst, rOut)
+		case Signal:
+			SignalEncoder.EncodeTypePtrArg(inst, rOut)
+		case Dictionary:
+			DictionaryEncoder.EncodeTypePtrArg(inst, rOut)
+		case Array:
+			ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		case PackedByteArray:
+			PackedByteArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		case PackedInt32Array:
+			PackedInt32ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		case PackedInt64Array:
+			PackedInt64ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		case PackedFloat32Array:
+			PackedFloat32ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		case PackedFloat64Array:
+			PackedFloat64ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		case PackedStringArray:
+			PackedStringArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		case PackedVector2Array:
+			PackedVector2ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		case PackedVector3Array:
+			PackedVector3ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		case PackedColorArray:
+			PackedColorArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		default:
+			log.Panic("unhandled array value type to GDExtensionTypePtr",
+				zap.Any("value", value),
+				zap.Any("kind", k),
+				zap.Any("inst", inst),
+			)
+		}
 	default:
 		log.Panic("unhandled native value to GDExtensionTypePtr",
 			zap.Any("value", value),

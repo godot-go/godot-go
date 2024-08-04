@@ -28,7 +28,7 @@ func UnregisterExampleTypes() {
 
 //export TestDemoInit
 func TestDemoInit(p_get_proc_address unsafe.Pointer, p_library unsafe.Pointer, r_initialization unsafe.Pointer) bool {
-	log.Debug("TestDemoInit called")
+	log.Info("TestDemoInit called")
 	initObj := NewInitObject(
 		(ffi.GDExtensionInterfaceGetProcAddress)(p_get_proc_address),
 		(ffi.GDExtensionClassLibraryPtr)(p_library),

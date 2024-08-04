@@ -31,6 +31,11 @@ func ClassDBAddPropertyGroup(t GDClass, p_name string, p_prefix string) {
 	defer name.Destroy()
 	prefix := NewStringWithUtf8Chars(p_prefix)
 	defer prefix.Destroy()
+	log.Info("register property group",
+		zap.String("class", cn),
+		zap.String("name", p_name),
+		zap.String("prefix", p_prefix),
+	)
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup(
 		FFI.Library,
 		className.AsGDExtensionConstStringNamePtr(),
@@ -50,6 +55,11 @@ func ClassDBAddPropertySubgroup(t GDClass, p_name string, p_prefix string) {
 	defer name.Destroy()
 	prefix := NewStringWithUtf8Chars(p_prefix)
 	defer prefix.Destroy()
+	log.Info("register property sub-group",
+		zap.String("class", cn),
+		zap.String("name", p_name),
+		zap.String("prefix", p_prefix),
+	)
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup(
 		FFI.Library,
 		className.AsGDExtensionConstStringNamePtr(),
@@ -131,12 +141,18 @@ func ClassDBAddProperty(
 	defer snSetterGDName.Destroy()
 	snGetterGDName := NewStringNameWithLatin1Chars(getter.MethodName)
 	defer snGetterGDName.Destroy()
-	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassProperty(
+	log.Info("register property",
+		zap.String("class", cn),
+		zap.String("name", p_property_name),
+		zap.Int("variant_type", int(p_property_type)),
+	)
+	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed(
 		FFI.Library,
 		ci.NameAsStringNamePtr,
 		&prop_info,
 		snSetterGDName.AsGDExtensionConstStringNamePtr(),
 		snGetterGDName.AsGDExtensionConstStringNamePtr(),
+		-1,
 	)
 }
 
@@ -189,6 +205,10 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 	defer snTypeName.Destroy()
 	snSignalName := NewStringNameWithLatin1Chars(signalName)
 	defer snSignalName.Destroy()
+	log.Info("register signal",
+		zap.String("class", typeName),
+		zap.String("name", signalName),
+	)
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassSignal(
 		FFI.Library,
 		snTypeName.AsGDExtensionConstStringNamePtr(),
@@ -231,7 +251,7 @@ func classDBBindMethod(
 	t := reflect.TypeOf(inst)
 	className := inst.GetClassName()
 	log.Debug("classDBBindMethod called",
-		zap.Reflect("inst", inst),
+		zap.Any("inst", inst),
 		zap.String("go_name", goMethodName),
 		zap.String("gd_name", methodName),
 		zap.Any("flags", methodFlags),
@@ -245,6 +265,9 @@ func classDBBindMethod(
 			zap.String("method_name", goMethodName),
 		)
 	}
+	log.Debug("method found",
+		zap.Reflect("method", m),
+	)
 	ptrcallFunc := m.Func
 	methodMetadata := NewMethodMetadata(m, className, methodName, argNames, defaultValues, methodFlags)
 	if methodMetadata.IsVirtual {
@@ -260,7 +283,7 @@ func classDBBindMethod(
 		className,
 		methodName,
 		goMethodName,
-		*methodMetadata,
+		methodMetadata,
 		ptrcallFunc,
 	)
 	cmi := NewGDExtensionClassMethodInfoFromMethodBind(mb)
@@ -288,11 +311,20 @@ func classDBBindMethod(
 		)
 		return nil
 	}
-	// register our method bind within our plugin
+	hasVarargs := (methodFlags & METHOD_FLAG_VARARG) == METHOD_FLAG_VARARG
+	// keep track of the method
 	if (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL {
 		ci.VirtualMethodMap[methodName] = bi
+		log.Info("register class virtual method",
+			zap.String("bind", bi.MethodBind.String()),
+			zap.Bool("has_varargs", hasVarargs),
+		)
 	} else {
 		ci.MethodMap[methodName] = bi
+		log.Info("register class method",
+			zap.String("bind", bi.MethodBind.String()),
+			zap.Bool("has_varargs", hasVarargs),
+		)
 	}
 	// and register with godot
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassMethod(
@@ -325,41 +357,38 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 		zap.Any("value", p_constant_value),
 		zap.Any("is_bitfield", p_is_bitfield),
 	)
-
 	var (
 		ci *ClassInfo
 		ok bool
 	)
 	typeName := t.GetClassName()
-
 	if ci, ok = Internal.GDRegisteredGDClasses.Get(typeName); !ok {
 		log.Panic("Class doesn't exist.", zap.String("class", typeName))
 		return
 	}
-
 	if _, ok = ci.ConstantNameMap[p_constant_name]; ok {
 		log.Panic("Constant already registered.", zap.String("class", typeName))
 		return
 	}
-
 	ci.ConstantNameMap[p_constant_name] = struct{}{}
-
 	var bitfield GDExtensionBool
 	if p_is_bitfield {
 		bitfield = (GDExtensionBool)(1)
 	} else {
 		bitfield = (GDExtensionBool)(0)
 	}
-
 	snTypeName := NewStringNameWithLatin1Chars(typeName)
 	defer snTypeName.Destroy()
-
 	snEnumName := NewStringNameWithLatin1Chars(p_enum_name)
 	defer snEnumName.Destroy()
-
 	snConstantName := NewStringNameWithLatin1Chars(p_constant_name)
 	defer snConstantName.Destroy()
-
+	log.Info("register int constant",
+		zap.String("type", snTypeName.ToUtf8()),
+		zap.String("enum", snEnumName.ToUtf8()),
+		zap.String("const", snConstantName.ToUtf8()),
+		zap.Int("value", (int)(p_constant_value)),
+	)
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant(
 		FFI.Library,
 		snTypeName.AsGDExtensionConstStringNamePtr(),
@@ -436,13 +465,12 @@ func ClassDBRegisterClass[T Object](
 	}
 	GDRegisteredGDClassEncoders.Set(className, CreateObjectEncoder[T]())
 	GDClassRegisterInstanceBindingCallbacks(className)
-	log.Info("gdclass registered",
-		zap.String("class", className),
-		zap.String("parent_type", parentName),
-	)
 	cName := C.CString(className)
 	// Register this class with Godot
 	info := NewGDExtensionClassCreationInfo2(
+		GDExtensionBool(0),
+		GDExtensionBool(0),
+		GDExtensionBool(1),
 		(GDExtensionClassCreateInstance)(C.cgo_classcreationinfo_createinstance),
 		(GDExtensionClassFreeInstance)(C.cgo_classcreationinfo_freeinstance),
 		(GDExtensionClassGetVirtualCallData)(C.cgo_classcreationinfo_getvirtualcallwithdata),
@@ -462,6 +490,10 @@ func ClassDBRegisterClass[T Object](
 	defer snName.Destroy()
 	snParentName := NewStringNameWithLatin1Chars(parentName)
 	defer snParentName.Destroy()
+	log.Info("gdclass registered",
+		zap.String("class", className),
+		zap.String("parent_type", parentName),
+	)
 	// register with Godot
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass2(
 		(GDExtensionClassLibraryPtr)(FFI.Library),

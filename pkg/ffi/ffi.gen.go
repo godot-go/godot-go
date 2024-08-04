@@ -90,7 +90,9 @@ type GDExtensionInterface struct {
 	StringNewWithWideChars                        GDExtensionInterfaceStringNewWithWideChars
 	StringNewWithLatin1CharsAndLen                GDExtensionInterfaceStringNewWithLatin1CharsAndLen
 	StringNewWithUtf8CharsAndLen                  GDExtensionInterfaceStringNewWithUtf8CharsAndLen
+	StringNewWithUtf8CharsAndLen2                 GDExtensionInterfaceStringNewWithUtf8CharsAndLen2
 	StringNewWithUtf16CharsAndLen                 GDExtensionInterfaceStringNewWithUtf16CharsAndLen
+	StringNewWithUtf16CharsAndLen2                GDExtensionInterfaceStringNewWithUtf16CharsAndLen2
 	StringNewWithUtf32CharsAndLen                 GDExtensionInterfaceStringNewWithUtf32CharsAndLen
 	StringNewWithWideCharsAndLen                  GDExtensionInterfaceStringNewWithWideCharsAndLen
 	StringToLatin1Chars                           GDExtensionInterfaceStringToLatin1Chars
@@ -112,12 +114,12 @@ type GDExtensionInterface struct {
 	XmlParserOpenBuffer                           GDExtensionInterfaceXmlParserOpenBuffer
 	FileAccessStoreBuffer                         GDExtensionInterfaceFileAccessStoreBuffer
 	FileAccessGetBuffer                           GDExtensionInterfaceFileAccessGetBuffer
+	ImagePtrw                                     GDExtensionInterfaceImagePtrw
+	ImagePtr                                      GDExtensionInterfaceImagePtr
 	WorkerThreadPoolAddNativeGroupTask            GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask
 	WorkerThreadPoolAddNativeTask                 GDExtensionInterfaceWorkerThreadPoolAddNativeTask
 	PackedByteArrayOperatorIndex                  GDExtensionInterfacePackedByteArrayOperatorIndex
 	PackedByteArrayOperatorIndexConst             GDExtensionInterfacePackedByteArrayOperatorIndexConst
-	PackedColorArrayOperatorIndex                 GDExtensionInterfacePackedColorArrayOperatorIndex
-	PackedColorArrayOperatorIndexConst            GDExtensionInterfacePackedColorArrayOperatorIndexConst
 	PackedFloat32ArrayOperatorIndex               GDExtensionInterfacePackedFloat32ArrayOperatorIndex
 	PackedFloat32ArrayOperatorIndexConst          GDExtensionInterfacePackedFloat32ArrayOperatorIndexConst
 	PackedFloat64ArrayOperatorIndex               GDExtensionInterfacePackedFloat64ArrayOperatorIndex
@@ -132,6 +134,10 @@ type GDExtensionInterface struct {
 	PackedVector2ArrayOperatorIndexConst          GDExtensionInterfacePackedVector2ArrayOperatorIndexConst
 	PackedVector3ArrayOperatorIndex               GDExtensionInterfacePackedVector3ArrayOperatorIndex
 	PackedVector3ArrayOperatorIndexConst          GDExtensionInterfacePackedVector3ArrayOperatorIndexConst
+	PackedVector4ArrayOperatorIndex               GDExtensionInterfacePackedVector4ArrayOperatorIndex
+	PackedVector4ArrayOperatorIndexConst          GDExtensionInterfacePackedVector4ArrayOperatorIndexConst
+	PackedColorArrayOperatorIndex                 GDExtensionInterfacePackedColorArrayOperatorIndex
+	PackedColorArrayOperatorIndexConst            GDExtensionInterfacePackedColorArrayOperatorIndexConst
 	ArrayOperatorIndex                            GDExtensionInterfaceArrayOperatorIndex
 	ArrayOperatorIndexConst                       GDExtensionInterfaceArrayOperatorIndexConst
 	ArrayRef                                      GDExtensionInterfaceArrayRef
@@ -150,21 +156,27 @@ type GDExtensionInterface struct {
 	ObjectCastTo                                  GDExtensionInterfaceObjectCastTo
 	ObjectGetInstanceFromId                       GDExtensionInterfaceObjectGetInstanceFromId
 	ObjectGetInstanceId                           GDExtensionInterfaceObjectGetInstanceId
+	ObjectHasScriptMethod                         GDExtensionInterfaceObjectHasScriptMethod
+	ObjectCallScriptMethod                        GDExtensionInterfaceObjectCallScriptMethod
 	RefGetObject                                  GDExtensionInterfaceRefGetObject
 	RefSetObject                                  GDExtensionInterfaceRefSetObject
 	ScriptInstanceCreate                          GDExtensionInterfaceScriptInstanceCreate
 	ScriptInstanceCreate2                         GDExtensionInterfaceScriptInstanceCreate2
+	ScriptInstanceCreate3                         GDExtensionInterfaceScriptInstanceCreate3
 	PlaceHolderScriptInstanceCreate               GDExtensionInterfacePlaceHolderScriptInstanceCreate
 	PlaceHolderScriptInstanceUpdate               GDExtensionInterfacePlaceHolderScriptInstanceUpdate
 	ObjectGetScriptInstance                       GDExtensionInterfaceObjectGetScriptInstance
 	CallableCustomCreate                          GDExtensionInterfaceCallableCustomCreate
+	CallableCustomCreate2                         GDExtensionInterfaceCallableCustomCreate2
 	CallableCustomGetUserData                     GDExtensionInterfaceCallableCustomGetUserData
 	ClassdbConstructObject                        GDExtensionInterfaceClassdbConstructObject
 	ClassdbGetMethodBind                          GDExtensionInterfaceClassdbGetMethodBind
 	ClassdbGetClassTag                            GDExtensionInterfaceClassdbGetClassTag
 	ClassdbRegisterExtensionClass                 GDExtensionInterfaceClassdbRegisterExtensionClass
 	ClassdbRegisterExtensionClass2                GDExtensionInterfaceClassdbRegisterExtensionClass2
+	ClassdbRegisterExtensionClass3                GDExtensionInterfaceClassdbRegisterExtensionClass3
 	ClassdbRegisterExtensionClassMethod           GDExtensionInterfaceClassdbRegisterExtensionClassMethod
+	ClassdbRegisterExtensionClassVirtualMethod    GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod
 	ClassdbRegisterExtensionClassIntegerConstant  GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
 	ClassdbRegisterExtensionClassProperty         GDExtensionInterfaceClassdbRegisterExtensionClassProperty
 	ClassdbRegisterExtensionClassPropertyIndexed  GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed
@@ -249,7 +261,9 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.StringNewWithWideChars = (GDExtensionInterfaceStringNewWithWideChars)(LoadProcAddress("string_new_with_wide_chars"))
 	x.StringNewWithLatin1CharsAndLen = (GDExtensionInterfaceStringNewWithLatin1CharsAndLen)(LoadProcAddress("string_new_with_latin1_chars_and_len"))
 	x.StringNewWithUtf8CharsAndLen = (GDExtensionInterfaceStringNewWithUtf8CharsAndLen)(LoadProcAddress("string_new_with_utf8_chars_and_len"))
+	x.StringNewWithUtf8CharsAndLen2 = (GDExtensionInterfaceStringNewWithUtf8CharsAndLen2)(LoadProcAddress("string_new_with_utf8_chars_and_len2"))
 	x.StringNewWithUtf16CharsAndLen = (GDExtensionInterfaceStringNewWithUtf16CharsAndLen)(LoadProcAddress("string_new_with_utf16_chars_and_len"))
+	x.StringNewWithUtf16CharsAndLen2 = (GDExtensionInterfaceStringNewWithUtf16CharsAndLen2)(LoadProcAddress("string_new_with_utf16_chars_and_len2"))
 	x.StringNewWithUtf32CharsAndLen = (GDExtensionInterfaceStringNewWithUtf32CharsAndLen)(LoadProcAddress("string_new_with_utf32_chars_and_len"))
 	x.StringNewWithWideCharsAndLen = (GDExtensionInterfaceStringNewWithWideCharsAndLen)(LoadProcAddress("string_new_with_wide_chars_and_len"))
 	x.StringToLatin1Chars = (GDExtensionInterfaceStringToLatin1Chars)(LoadProcAddress("string_to_latin1_chars"))
@@ -271,12 +285,12 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.XmlParserOpenBuffer = (GDExtensionInterfaceXmlParserOpenBuffer)(LoadProcAddress("xml_parser_open_buffer"))
 	x.FileAccessStoreBuffer = (GDExtensionInterfaceFileAccessStoreBuffer)(LoadProcAddress("file_access_store_buffer"))
 	x.FileAccessGetBuffer = (GDExtensionInterfaceFileAccessGetBuffer)(LoadProcAddress("file_access_get_buffer"))
+	x.ImagePtrw = (GDExtensionInterfaceImagePtrw)(LoadProcAddress("image_ptrw"))
+	x.ImagePtr = (GDExtensionInterfaceImagePtr)(LoadProcAddress("image_ptr"))
 	x.WorkerThreadPoolAddNativeGroupTask = (GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask)(LoadProcAddress("worker_thread_pool_add_native_group_task"))
 	x.WorkerThreadPoolAddNativeTask = (GDExtensionInterfaceWorkerThreadPoolAddNativeTask)(LoadProcAddress("worker_thread_pool_add_native_task"))
 	x.PackedByteArrayOperatorIndex = (GDExtensionInterfacePackedByteArrayOperatorIndex)(LoadProcAddress("packed_byte_array_operator_index"))
 	x.PackedByteArrayOperatorIndexConst = (GDExtensionInterfacePackedByteArrayOperatorIndexConst)(LoadProcAddress("packed_byte_array_operator_index_const"))
-	x.PackedColorArrayOperatorIndex = (GDExtensionInterfacePackedColorArrayOperatorIndex)(LoadProcAddress("packed_color_array_operator_index"))
-	x.PackedColorArrayOperatorIndexConst = (GDExtensionInterfacePackedColorArrayOperatorIndexConst)(LoadProcAddress("packed_color_array_operator_index_const"))
 	x.PackedFloat32ArrayOperatorIndex = (GDExtensionInterfacePackedFloat32ArrayOperatorIndex)(LoadProcAddress("packed_float32_array_operator_index"))
 	x.PackedFloat32ArrayOperatorIndexConst = (GDExtensionInterfacePackedFloat32ArrayOperatorIndexConst)(LoadProcAddress("packed_float32_array_operator_index_const"))
 	x.PackedFloat64ArrayOperatorIndex = (GDExtensionInterfacePackedFloat64ArrayOperatorIndex)(LoadProcAddress("packed_float64_array_operator_index"))
@@ -291,6 +305,10 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.PackedVector2ArrayOperatorIndexConst = (GDExtensionInterfacePackedVector2ArrayOperatorIndexConst)(LoadProcAddress("packed_vector2_array_operator_index_const"))
 	x.PackedVector3ArrayOperatorIndex = (GDExtensionInterfacePackedVector3ArrayOperatorIndex)(LoadProcAddress("packed_vector3_array_operator_index"))
 	x.PackedVector3ArrayOperatorIndexConst = (GDExtensionInterfacePackedVector3ArrayOperatorIndexConst)(LoadProcAddress("packed_vector3_array_operator_index_const"))
+	x.PackedVector4ArrayOperatorIndex = (GDExtensionInterfacePackedVector4ArrayOperatorIndex)(LoadProcAddress("packed_vector4_array_operator_index"))
+	x.PackedVector4ArrayOperatorIndexConst = (GDExtensionInterfacePackedVector4ArrayOperatorIndexConst)(LoadProcAddress("packed_vector4_array_operator_index_const"))
+	x.PackedColorArrayOperatorIndex = (GDExtensionInterfacePackedColorArrayOperatorIndex)(LoadProcAddress("packed_color_array_operator_index"))
+	x.PackedColorArrayOperatorIndexConst = (GDExtensionInterfacePackedColorArrayOperatorIndexConst)(LoadProcAddress("packed_color_array_operator_index_const"))
 	x.ArrayOperatorIndex = (GDExtensionInterfaceArrayOperatorIndex)(LoadProcAddress("array_operator_index"))
 	x.ArrayOperatorIndexConst = (GDExtensionInterfaceArrayOperatorIndexConst)(LoadProcAddress("array_operator_index_const"))
 	x.ArrayRef = (GDExtensionInterfaceArrayRef)(LoadProcAddress("array_ref"))
@@ -309,21 +327,27 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.ObjectCastTo = (GDExtensionInterfaceObjectCastTo)(LoadProcAddress("object_cast_to"))
 	x.ObjectGetInstanceFromId = (GDExtensionInterfaceObjectGetInstanceFromId)(LoadProcAddress("object_get_instance_from_id"))
 	x.ObjectGetInstanceId = (GDExtensionInterfaceObjectGetInstanceId)(LoadProcAddress("object_get_instance_id"))
+	x.ObjectHasScriptMethod = (GDExtensionInterfaceObjectHasScriptMethod)(LoadProcAddress("object_has_script_method"))
+	x.ObjectCallScriptMethod = (GDExtensionInterfaceObjectCallScriptMethod)(LoadProcAddress("object_call_script_method"))
 	x.RefGetObject = (GDExtensionInterfaceRefGetObject)(LoadProcAddress("ref_get_object"))
 	x.RefSetObject = (GDExtensionInterfaceRefSetObject)(LoadProcAddress("ref_set_object"))
 	x.ScriptInstanceCreate = (GDExtensionInterfaceScriptInstanceCreate)(LoadProcAddress("script_instance_create"))
 	x.ScriptInstanceCreate2 = (GDExtensionInterfaceScriptInstanceCreate2)(LoadProcAddress("script_instance_create2"))
+	x.ScriptInstanceCreate3 = (GDExtensionInterfaceScriptInstanceCreate3)(LoadProcAddress("script_instance_create3"))
 	x.PlaceHolderScriptInstanceCreate = (GDExtensionInterfacePlaceHolderScriptInstanceCreate)(LoadProcAddress("placeholder_script_instance_create"))
 	x.PlaceHolderScriptInstanceUpdate = (GDExtensionInterfacePlaceHolderScriptInstanceUpdate)(LoadProcAddress("placeholder_script_instance_update"))
 	x.ObjectGetScriptInstance = (GDExtensionInterfaceObjectGetScriptInstance)(LoadProcAddress("object_get_script_instance"))
 	x.CallableCustomCreate = (GDExtensionInterfaceCallableCustomCreate)(LoadProcAddress("callable_custom_create"))
+	x.CallableCustomCreate2 = (GDExtensionInterfaceCallableCustomCreate2)(LoadProcAddress("callable_custom_create2"))
 	x.CallableCustomGetUserData = (GDExtensionInterfaceCallableCustomGetUserData)(LoadProcAddress("callable_custom_get_user_data"))
 	x.ClassdbConstructObject = (GDExtensionInterfaceClassdbConstructObject)(LoadProcAddress("classdb_construct_object"))
 	x.ClassdbGetMethodBind = (GDExtensionInterfaceClassdbGetMethodBind)(LoadProcAddress("classdb_get_method_bind"))
 	x.ClassdbGetClassTag = (GDExtensionInterfaceClassdbGetClassTag)(LoadProcAddress("classdb_get_class_tag"))
 	x.ClassdbRegisterExtensionClass = (GDExtensionInterfaceClassdbRegisterExtensionClass)(LoadProcAddress("classdb_register_extension_class"))
 	x.ClassdbRegisterExtensionClass2 = (GDExtensionInterfaceClassdbRegisterExtensionClass2)(LoadProcAddress("classdb_register_extension_class2"))
+	x.ClassdbRegisterExtensionClass3 = (GDExtensionInterfaceClassdbRegisterExtensionClass3)(LoadProcAddress("classdb_register_extension_class3"))
 	x.ClassdbRegisterExtensionClassMethod = (GDExtensionInterfaceClassdbRegisterExtensionClassMethod)(LoadProcAddress("classdb_register_extension_class_method"))
+	x.ClassdbRegisterExtensionClassVirtualMethod = (GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod)(LoadProcAddress("classdb_register_extension_class_virtual_method"))
 	x.ClassdbRegisterExtensionClassIntegerConstant = (GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant)(LoadProcAddress("classdb_register_extension_class_integer_constant"))
 	x.ClassdbRegisterExtensionClassProperty = (GDExtensionInterfaceClassdbRegisterExtensionClassProperty)(LoadProcAddress("classdb_register_extension_class_property"))
 	x.ClassdbRegisterExtensionClassPropertyIndexed = (GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed)(LoadProcAddress("classdb_register_extension_class_property_indexed"))

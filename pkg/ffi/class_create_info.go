@@ -13,6 +13,9 @@ import (
 )
 
 func NewGDExtensionClassCreationInfo2(
+	isVirtual GDExtensionBool,
+	isAbstract GDExtensionBool,
+	isExposed GDExtensionBool,
 	createInstanceFunc GDExtensionClassCreateInstance,
 	freeInstanceFunc GDExtensionClassFreeInstance,
 	getVirtualCallDataFunc GDExtensionClassGetVirtualCallData,
@@ -29,6 +32,9 @@ func NewGDExtensionClassCreationInfo2(
 	classUserdata unsafe.Pointer,
 ) GDExtensionClassCreationInfo2 {
 	return (GDExtensionClassCreationInfo2)(C.GDExtensionClassCreationInfo2{
+		is_virtual:                  (C.GDExtensionBool)(isVirtual),
+		is_abstract:                 (C.GDExtensionBool)(isAbstract),
+		is_exposed:                  (C.GDExtensionBool)(isExposed),
 		create_instance_func:        (C.GDExtensionClassCreateInstance)(createInstanceFunc),
 		free_instance_func:          (C.GDExtensionClassFreeInstance)(freeInstanceFunc),
 		get_virtual_call_data_func:  (C.GDExtensionClassGetVirtualCallData)(getVirtualCallDataFunc),

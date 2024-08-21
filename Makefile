@@ -27,9 +27,9 @@ goenv:
 	go env
 
 installdeps:
-	# go install golang.org/x/tools/cmd/goimports@latest
+	go install golang.org/x/tools/cmd/goimports@latest
 
-generate: installdeps clean
+generate: clean
 	go generate
 	if [ ! -z "$(CLANG_FORMAT)" ]; then \
 		"$(CLANG_FORMAT)" -i pkg/ffi/ffi_wrapper.gen.h; \

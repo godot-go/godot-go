@@ -30,6 +30,9 @@ Requirements:
 
 In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of [Godot 4.3](https://github.com/godotengine/godot-builds/releases/tag/4.3-stable).
 
+    # Install go dependencies
+    make installdeps
+
     # exports the latest gdextension_interface.h and extension_api.json from the godot binary
     GODOT=/some_path/bin/godot make update_godot_headers_from_binary
 

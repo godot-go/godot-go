@@ -260,7 +260,7 @@ func (b *MethodBindImpl) Ptrcall(
 	exepctedArgTypes := b.MethodMetadata.GoArgumentTypes
 	args := reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst, gdArgs, exepctedArgTypes)
 	ret := b.PtrcallFunc.Call(args)
-	log.Info("Ptrcall",
+	log.Debug("Ptrcall",
 		zap.String("bind", b.String()),
 		zap.String("ret", util.ReflectValueSliceToString(ret)),
 	)

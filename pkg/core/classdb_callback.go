@@ -147,8 +147,8 @@ func GoCallback_ClassCreationInfoGetPropertyList(pInstance C.GDExtensionClassIns
 	return (*C.GDExtensionPropertyInfo)(unsafe.Pointer(unsafe.SliceData(ci.PropertyList)))
 }
 
-//export GoCallback_ClassCreationInfoFreePropertyList
-func GoCallback_ClassCreationInfoFreePropertyList(pInstance C.GDExtensionClassInstancePtr, pList *C.GDExtensionPropertyInfo) {
+//export GoCallback_ClassCreationInfoFreePropertyList2
+func GoCallback_ClassCreationInfoFreePropertyList2(pInstance C.GDExtensionClassInstancePtr, pList *C.GDExtensionPropertyInfo, pCount C.uint32_t) {
 
 }
 

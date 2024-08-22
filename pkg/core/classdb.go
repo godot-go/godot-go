@@ -467,10 +467,11 @@ func ClassDBRegisterClass[T Object](
 	GDClassRegisterInstanceBindingCallbacks(className)
 	cName := C.CString(className)
 	// Register this class with Godot
-	info := NewGDExtensionClassCreationInfo2(
+	info := NewGDExtensionClassCreationInfo3(
 		GDExtensionBool(0),
 		GDExtensionBool(0),
 		GDExtensionBool(1),
+		GDExtensionBool(0),
 		(GDExtensionClassCreateInstance)(C.cgo_classcreationinfo_createinstance),
 		(GDExtensionClassFreeInstance)(C.cgo_classcreationinfo_freeinstance),
 		(GDExtensionClassGetVirtualCallData)(C.cgo_classcreationinfo_getvirtualcallwithdata),
@@ -479,7 +480,7 @@ func ClassDBRegisterClass[T Object](
 		(GDExtensionClassSet)(C.cgo_classcreationinfo_set),
 		(GDExtensionClassGet)(C.cgo_classcreationinfo_get),
 		(GDExtensionClassGetPropertyList)(C.cgo_classcreationinfo_getpropertylist),
-		(GDExtensionClassFreePropertyList)(C.cgo_classcreationinfo_freepropertylist),
+		(GDExtensionClassFreePropertyList2)(C.cgo_classcreationinfo_freepropertylist2),
 		(GDExtensionClassPropertyCanRevert)(C.cgo_classcreationinfo_propertycanrevert),
 		(GDExtensionClassPropertyGetRevert)(C.cgo_classcreationinfo_propertygetrevert),
 		(GDExtensionClassValidateProperty)(C.cgo_classcreationinfo_validateproperty),
@@ -495,7 +496,7 @@ func ClassDBRegisterClass[T Object](
 		zap.String("parent_type", parentName),
 	)
 	// register with Godot
-	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass2(
+	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass3(
 		(GDExtensionClassLibraryPtr)(FFI.Library),
 		snName.AsGDExtensionConstStringNamePtr(),
 		snParentName.AsGDExtensionConstStringNamePtr(),

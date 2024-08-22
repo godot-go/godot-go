@@ -5,7 +5,7 @@
 #include "stacktrace.h"
 
 extern GDExtensionPropertyInfo* GoCallback_ClassCreationInfoGetPropertyList(GDExtensionClassInstancePtr p_instance, uint32_t *r_count);
-extern void GoCallback_ClassCreationInfoFreePropertyList(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list);
+extern void GoCallback_ClassCreationInfoFreePropertyList2(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list, uint32_t p_count);
 extern GDExtensionBool GoCallback_ClassCreationInfoPropertyCanRevert(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name);
 extern GDExtensionBool GoCallback_ClassCreationInfoPropertyGetRevert(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
 extern GDExtensionBool GoCallback_ClassCreationInfoValidateProperty(GDExtensionClassInstancePtr p_instance, GDExtensionPropertyInfo *p_property);
@@ -24,9 +24,9 @@ void cgo_classcreationinfo_getpropertylist(GDExtensionClassInstancePtr p_instanc
     GoCallback_ClassCreationInfoGetPropertyList(p_instance, r_count);
 }
 
-void cgo_classcreationinfo_freepropertylist(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list) {
+void cgo_classcreationinfo_freepropertylist2(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list, uint32_t p_count) {
     printStacktrace();
-    GoCallback_ClassCreationInfoFreePropertyList(p_instance, p_list);
+    GoCallback_ClassCreationInfoFreePropertyList2(p_instance, p_list, p_count);
 }
 
 GDExtensionBool cgo_classcreationinfo_propertycanrevert(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name) {

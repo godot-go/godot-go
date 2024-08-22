@@ -2,7 +2,7 @@
 
 ## Debugging with VSCode
 
-To debug with `gdb`, you can setup Visual Studio Code `launch.json`:
+To debug with `gdb` with `vscode`, you will need to setup the proper `pathSubstitutions` mappings for breakpoints to work. Here's an example `launch.json`:
 ```
 {
     "version": "0.2.0",

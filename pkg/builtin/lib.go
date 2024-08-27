@@ -18,8 +18,9 @@ import (
 type GodotObject unsafe.Pointer
 type GDExtensionBindingCallback func()
 type GDExtensionClassGoConstructorFromOwner func(*GodotObject) GDExtensionClass
+type GDClassGoConstructorFromOwner func(*GodotObject) GDClass
 type RefCountedConstructor func(reference RefCounted) Ref
-type GDClassGoConstructor func(data unsafe.Pointer) GDExtensionObjectPtr
+// type GDClassGoConstructor func(data unsafe.Pointer) GDExtensionObjectPtr
 
 var (
 	variantFromTypeConstructor                            [GDEXTENSION_VARIANT_TYPE_VARIANT_MAX]GDExtensionVariantFromTypeConstructorFunc

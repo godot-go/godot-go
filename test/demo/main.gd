@@ -61,8 +61,8 @@ func _ready():
 	# var ret_ref = example.return_extended_ref()
 	# assert_not_equal(ret_ref.get_instance_id(), 0)
 	# assert_equal(ret_ref.get_id(), 0)
-	# assert_equal(example.get_v4(), Vector4(1.2, 3.4, 5.6, 7.8))
-	# assert_equal(example.test_node_argument(example), example)
+	assert_equal(example.get_v4(), Vector4(1.2, 3.4, 5.6, 7.8))
+	assert_equal(example.test_node_argument(example), example)
 
 	# VarArg method calls.
 	# var var_ref = ExampleRef.new()
@@ -247,11 +247,11 @@ func _ready():
 	assert_equal(example.get_size(), Vector2(100, 200))
 	# example.test_cast_to()
 
-	# var body = CharacterBody2D.new()
-	# var motion = Vector2(1.0, 2.0)
-	# body.move_and_collide(motion, true, 0.5, true)
-	# example.test_character_body_2d(body)
-	# body.queue_free()
+	var body = CharacterBody2D.new()
+	var motion = Vector2(1.0, 2.0)
+	body.move_and_collide(motion, true, 0.5, true)
+	example.test_character_body_2d(body)
+	body.queue_free()
 
 	assert_equal(example.test_parent_is_nil(), null)
 

@@ -401,6 +401,7 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 
 func ClassDBRegisterClass[T Object](
 	in T,
+	constructor GDClassGoConstructorFromOwner,
 	propertyList []GDExtensionPropertyInfo,
 	validateProperty func(*GDExtensionPropertyInfo),
 	bindMethodsFunc func(t GDClass),
@@ -463,6 +464,7 @@ func ClassDBRegisterClass[T Object](
 	if _, ok := GDNativeConstructors.Get(parentName); !ok {
 		log.Panic("Missing GDExtensionClass interface: unhandled inherits type", zap.Any("class_type", classType), zap.Any("parent_type", parentName))
 	}
+	Internal.GDClassConstructors.Set(className, constructor)
 	GDRegisteredGDClassEncoders.Set(className, CreateObjectEncoder[T]())
 	GDClassRegisterInstanceBindingCallbacks(className)
 	cName := C.CString(className)

@@ -642,10 +642,32 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				)
 			}
 		case reflect.Pointer:
-			log.Panic("unsupported pointer type",
-				zap.Int("arg_index", i),
-				zap.Any("type", t),
-			)
+			switch {
+			case t.Implements(refType):
+				log.Panic("TODO: missing ref pointer type",
+					zap.Int("arg_index", i),
+					zap.Any("type", t),
+				)
+			case t.Implements(gdClassType):
+				className := t.Elem().Name()
+				constructor, ok := Internal.GDClassConstructors.Get(className)
+				if !ok {
+					log.Panic("TODO: missing user gd class constructor",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+						zap.Any("class_name", className),
+					)
+				}
+				owner := (**GodotObject)(arg)
+				obj := constructor(*owner)
+				args[i+1] = reflect.ValueOf(obj)
+				break
+			default:
+				log.Panic("unsupported pointer type",
+					zap.Int("arg_index", i),
+					zap.Any("type", t),
+				)
+			}
 		default:
 			log.Panic(fmt.Sprintf("MethodBind.Ptrcall does not support kind %s and type: %s", k, t.Name()))
 		}

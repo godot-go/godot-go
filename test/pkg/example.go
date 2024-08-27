@@ -106,6 +106,12 @@ func (e *Example) GetV4() Vector4 {
 }
 
 func (e *Example) TestNodeArgument(node *Example) *Example {
+	log.Debug("example instances should be the same",
+		zap.Any("reciever_owner", fmt.Sprintf("%p", e.Owner)),
+		zap.Any("reciever_id", e.GetInstanceId()),
+		zap.Any("arg_owner", fmt.Sprintf("%p", node.Owner)),
+		// zap.Any("arg_id", node.GetInstanceId()),
+	)
 	return node
 }
 
@@ -512,6 +518,11 @@ func (e *Example) TestVariantVector2iConversion(v Variant) Vector2i {
 	return v.ToVector2i()
 }
 
+func NewExampleFromOwnerObject(owner *GodotObject) GDClass {
+	obj := &Example{}
+	obj.SetGodotObjectOwner(owner)
+	return obj
+}
 
 func ValidateExampleProperty(property *GDExtensionPropertyInfo) {
 	gdsnName := (*StringName)(property.Name())
@@ -531,7 +542,7 @@ func GetExamplePropertyList() []GDExtensionPropertyInfo {
 }
 
 func RegisterClassExample() {
-	ClassDBRegisterClass(&Example{}, GetExamplePropertyList(), ValidateExampleProperty, func(t GDClass) {
+	ClassDBRegisterClass(&Example{}, NewExampleFromOwnerObject, GetExamplePropertyList(), ValidateExampleProperty, func(t GDClass) {
 		// virtuals
 		ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
 		ClassDBBindMethodVirtual(t, "V_Input", "_input", []string{"event"}, nil)

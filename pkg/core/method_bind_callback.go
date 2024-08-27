@@ -66,7 +66,7 @@ func GoCallback_MethodBindMethodPtrcall(
 	}
 	cn := inst.GetClass()
 	defer cn.Destroy()
-	log.Info("GoCallback_MethodBindMethodPtrcall called",
+	log.Debug("GoCallback_MethodBindMethodPtrcall called",
 		zap.String("class", cn.ToUtf8()),
 		zap.String("method", bind.String()),
 	)

@@ -29,6 +29,7 @@ func _GDExtensionBindingInit(
 
 	Internal.GDClassInstances = NewSyncMap[GDObjectInstanceID, GDClass]()
 	Internal.GDRegisteredGDClasses = NewSyncMap[string, *ClassInfo]()
+	Internal.GDClassConstructors = NewSyncMap[string, GDClassGoConstructorFromOwner]()
 
 	FFI.LoadProcAddresses(pGetProcAddress, pLibrary)
 

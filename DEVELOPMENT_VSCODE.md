@@ -11,7 +11,7 @@ To debug with `gdb` with `vscode`, it's important to setup the proper `pathSubst
             "type": "gdb",
             "request": "launch",
             "name": "Godot",
-            "target": "/home/pcting/bin/godot",
+            "target": "__YOUR_GODOT_BIN_PATH__/godot",
             "cwd": "${workspaceFolder:godot-go}",
             "valuesFormatting": "parseText",
             "arguments": "--headless --verbose --path test/demo/ --quit",

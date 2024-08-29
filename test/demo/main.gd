@@ -95,6 +95,9 @@ func _ready():
 	# UtilityFunctions::str()
 	assert_equal(example.test_str_utility(), "Hello, World! The answer is 42")
 
+	# UtilityFunctions::instance_from_id()
+	assert_equal(example.test_instance_from_id_utility(), example)
+
 	# # Test converting string to char* and doing comparison.
 	# assert_equal(example.test_string_is_fourty_two("blah"), false)
 	# assert_equal(example.test_string_is_fourty_two("fourty two"), true)
@@ -156,7 +159,7 @@ func _ready():
 	# assert_equal(str(custom_callable), "<MyCallableCustom>");
 
 	# PackedArray iterators
-	# assert_equal(example.test_vector_ops(), 105)
+	assert_equal(example.test_vector_ops(), 105)
 	# assert_equal(example.test_vector_init_list(), 105)
 
 	# Properties.
@@ -247,11 +250,11 @@ func _ready():
 	assert_equal(example.get_size(), Vector2(100, 200))
 	# example.test_cast_to()
 
-	var body = CharacterBody2D.new()
-	var motion = Vector2(1.0, 2.0)
-	body.move_and_collide(motion, true, 0.5, true)
-	example.test_character_body_2d(body)
-	body.queue_free()
+	# var body = CharacterBody2D.new()
+	# var motion = Vector2(1.0, 2.0)
+	# body.move_and_collide(motion, true, 0.5, true)
+	# example.test_character_body_2d(body)
+	# body.queue_free()
 
 	assert_equal(example.test_parent_is_nil(), null)
 

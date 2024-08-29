@@ -70,7 +70,8 @@ func GoCallback_MethodBindMethodPtrcall(
 		zap.String("class", cn.ToUtf8()),
 		zap.String("method", bind.String()),
 	)
-	argsSlice := unsafe.Slice((*GDExtensionConstTypePtr)(unsafe.Pointer(argPtrs)), len(bind.MethodMetadata.GoArgumentTypes))
+	sliceLen := len(bind.MethodMetadata.GoArgumentTypes)
+	argsSlice := unsafe.Slice((*GDExtensionConstTypePtr)(unsafe.Pointer(argPtrs)), sliceLen)
 	bind.Ptrcall(
 		inst,
 		argsSlice,

@@ -22,6 +22,7 @@ import (
 type InternalImpl struct {
 	GDClassInstances      *SyncMap[GDObjectInstanceID, GDClass]
 	GDRegisteredGDClasses *SyncMap[string, *ClassInfo]
+	GDClassConstructors   *SyncMap[string, GDClassGoConstructorFromOwner]
 }
 
 var (

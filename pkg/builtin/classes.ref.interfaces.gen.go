@@ -192,6 +192,10 @@ type RefAudioEffectFilter interface {
 	Ref
 	TypedPtr() AudioEffectFilter
 }
+type RefAudioEffectHardLimiter interface {
+	Ref
+	TypedPtr() AudioEffectHardLimiter
+}
 type RefAudioEffectHighPassFilter interface {
 	Ref
 	TypedPtr() AudioEffectHighPassFilter
@@ -251,6 +255,14 @@ type RefAudioEffectSpectrumAnalyzerInstance interface {
 type RefAudioEffectStereoEnhance interface {
 	Ref
 	TypedPtr() AudioEffectStereoEnhance
+}
+type RefAudioSample interface {
+	Ref
+	TypedPtr() AudioSample
+}
+type RefAudioSamplePlayback interface {
+	Ref
+	TypedPtr() AudioSamplePlayback
 }
 type RefAudioStream interface {
 	Ref
@@ -387,6 +399,14 @@ type RefCircleShape2D interface {
 type RefCodeHighlighter interface {
 	Ref
 	TypedPtr() CodeHighlighter
+}
+type RefCompositor interface {
+	Ref
+	TypedPtr() Compositor
+}
+type RefCompositorEffect interface {
+	Ref
+	TypedPtr() CompositorEffect
 }
 type RefCompressedCubemap interface {
 	Ref
@@ -583,10 +603,6 @@ type RefEditorSceneFormatImporter interface {
 type RefEditorSceneFormatImporterBlend interface {
 	Ref
 	TypedPtr() EditorSceneFormatImporterBlend
-}
-type RefEditorSceneFormatImporterFBX interface {
-	Ref
-	TypedPtr() EditorSceneFormatImporterFBX
 }
 type RefEditorSceneFormatImporterGLTF interface {
 	Ref
@@ -1888,6 +1904,10 @@ type RefVisualShaderNodeFloatParameter interface {
 	Ref
 	TypedPtr() VisualShaderNodeFloatParameter
 }
+type RefVisualShaderNodeFrame interface {
+	Ref
+	TypedPtr() VisualShaderNodeFrame
+}
 type RefVisualShaderNodeFresnel interface {
 	Ref
 	TypedPtr() VisualShaderNodeFresnel
@@ -2011,6 +2031,10 @@ type RefVisualShaderNodeRandomRange interface {
 type RefVisualShaderNodeRemap interface {
 	Ref
 	TypedPtr() VisualShaderNodeRemap
+}
+type RefVisualShaderNodeReroute interface {
+	Ref
+	TypedPtr() VisualShaderNodeReroute
 }
 type RefVisualShaderNodeResizableBase interface {
 	Ref
@@ -2280,6 +2304,22 @@ type RefXMLParser interface {
 	Ref
 	TypedPtr() XMLParser
 }
+type RefXRBodyTracker interface {
+	Ref
+	TypedPtr() XRBodyTracker
+}
+type RefXRControllerTracker interface {
+	Ref
+	TypedPtr() XRControllerTracker
+}
+type RefXRFaceTracker interface {
+	Ref
+	TypedPtr() XRFaceTracker
+}
+type RefXRHandTracker interface {
+	Ref
+	TypedPtr() XRHandTracker
+}
 type RefXRInterface interface {
 	Ref
 	TypedPtr() XRInterface
@@ -2295,6 +2335,10 @@ type RefXRPose interface {
 type RefXRPositionalTracker interface {
 	Ref
 	TypedPtr() XRPositionalTracker
+}
+type RefXRTracker interface {
+	Ref
+	TypedPtr() XRTracker
 }
 type RefZIPPacker interface {
 	Ref

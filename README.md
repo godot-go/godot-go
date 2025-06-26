@@ -46,11 +46,11 @@ In order for godot-go to work correctly, you must make sure the godot_headers ar
 
 Once the project successfully builds, run the following commands to generate cached files for the test demo project for the first time (don't be concerned if it fails):
 
-    make ci_gen_test_project_files
+    GODOT=/some_path/bin/godot make ci_gen_test_project_files
 
 From here on out, you will just need to run the following command to iteratively test:
 
-    make test
+    GODOT=/some_path/bin/godot make test
 
 This will run the demo project in the test directory.
 

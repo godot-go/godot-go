@@ -16,20 +16,17 @@ func GoCallback_GDExtensionBindingCreate(p_type_name *C.char, p_token unsafe.Poi
 		zap.String("class", typeName),
 	)
 	fn, ok := GDNativeConstructors.Get(typeName)
-
 	if !ok {
 		log.Panic("unable to find GDExtension constructor", zap.String("type", typeName))
 	}
-
 	owner := (*GodotObject)(p_instance)
-
 	inst := fn(owner).(Object)
-
 	if inst == nil {
 		log.Panic("no instance returned")
 	}
-
-	return (unsafe.Pointer)(&inst)
+	ptr := &inst
+	pnr.Pin(ptr)
+	return (unsafe.Pointer)(ptr)
 }
 
 //export GoCallback_GDExtensionBindingFree

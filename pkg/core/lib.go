@@ -10,6 +10,7 @@ import "C"
 import (
 	"fmt"
 	"reflect"
+	"runtime"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -30,6 +31,7 @@ var (
 	Internal                             InternalImpl
 	GDExtensionBindingInitCallbacks      [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
 	GDExtensionBindingTerminateCallbacks [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
+	pnr                                  runtime.Pinner
 )
 
 func CreateGDClassInstance(tn string) GDClass {

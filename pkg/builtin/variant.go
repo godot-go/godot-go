@@ -32,7 +32,9 @@ func VariantInitBindings() {
 
 func NewVariantNativeCopy(NativeConstPtr GDExtensionConstVariantPtr) Variant {
 	ret := Variant{}
-	CallFunc_GDExtensionInterfaceVariantNewCopy((GDExtensionUninitializedVariantPtr)(ret.NativePtr()), NativeConstPtr)
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	CallFunc_GDExtensionInterfaceVariantNewCopy((GDExtensionUninitializedVariantPtr)(ptr), NativeConstPtr)
 	return ret
 }
 
@@ -43,18 +45,20 @@ func NewVariantCopy(dst, src Variant) {
 func NewVariantNil() Variant {
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
+	pnr.Pin(ptr)
 	GDExtensionVariantPtrWithNil(ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrWithNil(rOut GDExtensionUninitializedVariantPtr) {
+	pnr.Pin(rOut)
 	CallFunc_GDExtensionInterfaceVariantNewNil(rOut)
 }
 
 func NewVariantCopyWithGDExtensionConstVariantPtr(ptr GDExtensionConstVariantPtr) Variant {
 	ret := Variant{}
 	typedSrc := (*[VariantSize]uint8)(ptr)
-
+	pnr.Pin(ptr)
 	for i := 0; i < VariantSize; i++ {
 		ret[i] = typedSrc[i]
 	}
@@ -63,16 +67,22 @@ func NewVariantCopyWithGDExtensionConstVariantPtr(ptr GDExtensionConstVariantPtr
 
 func NewVariantGodotObject(owner *GodotObject) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromGodotObjectPtr(owner, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	pnr.Pin(owner)
+	GDExtensionVariantPtrFromGodotObjectPtr(owner, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromGodotObjectPtr(owner *GodotObject, rOut GDExtensionUninitializedVariantPtr) {
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_OBJECT]
+	pnr.Pin(rOut)
+	ownerPtr := unsafe.Pointer(&owner)
+	pnr.Pin(ownerPtr)
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
 		rOut,
-		(GDExtensionTypePtr)(unsafe.Pointer(&owner)),
+		(GDExtensionTypePtr)(ownerPtr),
 	)
 }
 
@@ -82,9 +92,12 @@ func (c *Variant) ToObject() Object {
 	}
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_OBJECT]
 	var engineObject *GodotObject
+	pnr.Pin(engineObject)
+	engineObjectPtr := unsafe.Pointer(&engineObject)
+	pnr.Pin(engineObjectPtr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(&engineObject)),
+		(GDExtensionUninitializedTypePtr)(engineObjectPtr),
 		c.NativePtr(),
 	)
 	ret := GetObjectInstanceBinding(engineObject)
@@ -95,7 +108,9 @@ func NewVariantGoString(v string) Variant {
 	gdStr := NewStringWithUtf8Chars(v)
 	defer gdStr.Destroy()
 	ret := Variant{}
-	GDExtensionVariantPtrFromString(gdStr, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromString(gdStr, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 

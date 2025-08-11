@@ -235,14 +235,15 @@ func (a Argument) IsPinnable() bool {
 	case a.Type.Function != nil:
 		return false
 	case a.Type.Primative != nil:
-		switch a.Type.Primative.Name {
-		case "char":
+		switch {
+		case a.Type.Primative.Name == "char":
 			return false
+		case strings.HasPrefix(a.Name, "GDExtensionInterface"):
+			return true
 		default:
 			return a.Type.Primative.IsPointer
 		}
 	}
-
 	return false
 }
 

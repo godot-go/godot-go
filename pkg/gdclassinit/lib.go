@@ -6,6 +6,7 @@ package gdclassinit
 */
 import "C"
 import (
+	"runtime"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -17,4 +18,5 @@ var (
 	GDNativeConstructors        = NewSyncMap[string, GDExtensionClassGoConstructorFromOwner]()
 	GDClassRefConstructors      = NewSyncMap[string, RefCountedConstructor]()
 	GDRegisteredGDClassEncoders = NewSyncMap[string, ArgumentEncoder]()
+	pnr                         runtime.Pinner
 )

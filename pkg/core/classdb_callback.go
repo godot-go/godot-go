@@ -79,10 +79,10 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 		)
 		return
 	}
-	mb := m.MethodBind
+	mb := m.GoMethodMetadata
 	args := unsafe.Slice(
 		(*GDExtensionConstTypePtr)(unsafe.Pointer(p_args)),
-		len(mb.MethodMetadata.GoArgumentTypes),
+		len(mb.GoArgumentTypes),
 	)
 	mb.Ptrcall(
 		inst,
@@ -144,7 +144,9 @@ func GoCallback_ClassCreationInfoGetPropertyList(pInstance C.GDExtensionClassIns
 		return (*C.GDExtensionPropertyInfo)(nil)
 	}
 	*rCount = (C.uint32_t)(len(ci.PropertyList))
-	return (*C.GDExtensionPropertyInfo)(unsafe.Pointer(unsafe.SliceData(ci.PropertyList)))
+	ptr := unsafe.SliceData(ci.PropertyList)
+	pnr.Pin(ptr)
+	return (*C.GDExtensionPropertyInfo)(unsafe.Pointer(ptr))
 }
 
 //export GoCallback_ClassCreationInfoFreePropertyList2
@@ -227,7 +229,7 @@ func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pN
 		reflect.ValueOf(wci.Instance),
 		reflect.ValueOf(name),
 	}
-	reflectedRet := mcmi.MethodBind.PtrcallFunc.Call(args)
+	reflectedRet := mcmi.GoMethodMetadata.Func.Call(args)
 	v, ok := reflectedRet[0].Interface().(Variant)
 	if !ok {
 		log.Panic("invalid return value: expected Variant",
@@ -282,7 +284,7 @@ func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pN
 		reflect.ValueOf(name),
 		reflect.ValueOf(v),
 	}
-	reflectedRet := mcmi.MethodBind.PtrcallFunc.Call(args)
+	reflectedRet := mcmi.GoMethodMetadata.Func.Call(args)
 	log.Info("reflect method called",
 		zap.String("ret", util.ReflectValueSliceToString(reflectedRet)),
 	)

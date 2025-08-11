@@ -44,28 +44,24 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 			zap.String("w.GetGodotObjectOwner()", fmt.Sprintf("%p", owner)),
 		)
 	}
-
 	snExtensionClassName := NewStringNameWithLatin1Chars(extensionClassName)
 	defer snExtensionClassName.Destroy()
-
 	callbacks, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(extensionClassName)
-
 	if !ok {
 		log.Panic("unable to retrieve binding callbacks", zap.String("type", extensionClassName))
 	}
-
 	cnPtr := snExtensionClassName.AsGDExtensionConstStringNamePtr()
-
 	obj, ok := w.(Object)
-
 	if !ok {
 		log.Panic("unable to cast to Object")
 	}
-
 	inst := &WrappedClassInstance{
 		Instance: obj,
 	}
-
+	pnr.Pin(obj)
+	pnr.Pin(owner)
+	pnr.Pin(inst)
+	pnr.Pin(cnPtr)
 	if cnPtr != nil {
 		CallFunc_GDExtensionInterfaceObjectSetInstance(
 			(GDExtensionObjectPtr)(owner),
@@ -73,7 +69,6 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 			(GDExtensionClassInstancePtr)(unsafe.Pointer(inst)),
 		)
 	}
-
 	CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(
 		(GDExtensionObjectPtr)(owner),
 		unsafe.Pointer(FFI.Token),

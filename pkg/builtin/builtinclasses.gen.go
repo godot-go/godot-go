@@ -170,6 +170,8 @@ func (c *String) NativePtr() GDExtensionTypePtr {
 func NewString() String {
 	cx := String{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalStringMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -178,10 +180,13 @@ func NewString() String {
 func NewStringWithStringName(from StringName) String {
 	cx := String{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// StringName
 	// StringNameEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalStringMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -190,10 +195,13 @@ func NewStringWithStringName(from StringName) String {
 func NewStringWithNodePath(from NodePath) String {
 	cx := String{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// NodePath
 	// NodePathEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalStringMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -201,6 +209,7 @@ func NewStringWithNodePath(from NodePath) String {
 func (cx *String) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalStringMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -236,12 +245,16 @@ func (cx *String) CasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -258,12 +271,16 @@ func (cx *String) NocasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -280,12 +297,16 @@ func (cx *String) NaturalcasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -302,12 +323,16 @@ func (cx *String) NaturalnocasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -324,12 +349,16 @@ func (cx *String) FilecasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -346,12 +375,16 @@ func (cx *String) FilenocasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -368,6 +401,8 @@ func (cx *String) Length() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -386,6 +421,8 @@ func (cx *String) Substr(from int64, len int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -393,7 +430,10 @@ func (cx *String) Substr(from int64, len int64) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(from)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(len)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -410,6 +450,8 @@ func (cx *String) GetSlice(delimiter String, slice int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -417,7 +459,10 @@ func (cx *String) GetSlice(delimiter String, slice int64) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(slice)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -434,6 +479,8 @@ func (cx *String) GetSlicec(delimiter int64, slice int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -441,7 +488,10 @@ func (cx *String) GetSlicec(delimiter int64, slice int64) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(delimiter)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(slice)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -458,12 +508,16 @@ func (cx *String) GetSliceCount(delimiter String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -480,6 +534,8 @@ func (cx *String) Find(what String, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -487,7 +543,10 @@ func (cx *String) Find(what String, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -504,6 +563,8 @@ func (cx *String) Findn(what String, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -511,7 +572,10 @@ func (cx *String) Findn(what String, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -528,6 +592,8 @@ func (cx *String) Count(what String, from int64, to int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -535,9 +601,13 @@ func (cx *String) Count(what String, from int64, to int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
 
+	pnr.Pin(args[1])
 	args[2] = Int64Encoder.EncodeTypePtr(to)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -554,6 +624,8 @@ func (cx *String) Countn(what String, from int64, to int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -561,9 +633,13 @@ func (cx *String) Countn(what String, from int64, to int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
 
+	pnr.Pin(args[1])
 	args[2] = Int64Encoder.EncodeTypePtr(to)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -580,6 +656,8 @@ func (cx *String) Rfind(what String, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -587,7 +665,10 @@ func (cx *String) Rfind(what String, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -604,6 +685,8 @@ func (cx *String) Rfindn(what String, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -611,7 +694,10 @@ func (cx *String) Rfindn(what String, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -628,12 +714,16 @@ func (cx *String) Match(expr String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&expr))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -650,12 +740,16 @@ func (cx *String) Matchn(expr String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&expr))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -672,12 +766,16 @@ func (cx *String) BeginsWith(text String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -694,12 +792,16 @@ func (cx *String) EndsWith(text String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -716,12 +818,16 @@ func (cx *String) IsSubsequenceOf(text String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -738,12 +844,16 @@ func (cx *String) IsSubsequenceOfn(text String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -760,6 +870,8 @@ func (cx *String) Bigrams() PackedStringArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -778,12 +890,16 @@ func (cx *String) Similarity(text String) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -800,6 +916,8 @@ func (cx *String) Format(values Variant, placeholder String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -807,7 +925,10 @@ func (cx *String) Format(values Variant, placeholder String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&values))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&placeholder))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -824,6 +945,8 @@ func (cx *String) Replace(what String, forwhat String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -831,7 +954,10 @@ func (cx *String) Replace(what String, forwhat String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&forwhat))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -848,6 +974,8 @@ func (cx *String) Replacen(what String, forwhat String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -855,7 +983,10 @@ func (cx *String) Replacen(what String, forwhat String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&forwhat))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -872,12 +1003,16 @@ func (cx *String) Repeat(count int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(count)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -894,6 +1029,8 @@ func (cx *String) Reverse() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -912,6 +1049,8 @@ func (cx *String) Insert(position int64, what String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -919,7 +1058,10 @@ func (cx *String) Insert(position int64, what String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(position)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -936,6 +1078,8 @@ func (cx *String) Erase(position int64, chars int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -943,7 +1087,10 @@ func (cx *String) Erase(position int64, chars int64) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(position)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(chars)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -960,6 +1107,8 @@ func (cx *String) Capitalize() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -978,6 +1127,8 @@ func (cx *String) ToCamelCase() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -996,6 +1147,8 @@ func (cx *String) ToPascalCase() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1014,6 +1167,8 @@ func (cx *String) ToSnakeCase() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1032,6 +1187,8 @@ func (cx *String) Split(delimiter String, allow_empty bool, maxsplit int64) Pack
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1039,9 +1196,13 @@ func (cx *String) Split(delimiter String, allow_empty bool, maxsplit int64) Pack
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(allow_empty)
 
+	pnr.Pin(args[1])
 	args[2] = Int64Encoder.EncodeTypePtr(maxsplit)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1058,6 +1219,8 @@ func (cx *String) Rsplit(delimiter String, allow_empty bool, maxsplit int64) Pac
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1065,9 +1228,13 @@ func (cx *String) Rsplit(delimiter String, allow_empty bool, maxsplit int64) Pac
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(allow_empty)
 
+	pnr.Pin(args[1])
 	args[2] = Int64Encoder.EncodeTypePtr(maxsplit)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1084,6 +1251,8 @@ func (cx *String) SplitFloats(delimiter String, allow_empty bool) PackedFloat64A
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1091,7 +1260,10 @@ func (cx *String) SplitFloats(delimiter String, allow_empty bool) PackedFloat64A
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(allow_empty)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1108,12 +1280,16 @@ func (cx *String) Join(parts PackedStringArray) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&parts))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1130,6 +1306,8 @@ func (cx *String) ToUpper() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1148,6 +1326,8 @@ func (cx *String) ToLower() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1166,12 +1346,16 @@ func (cx *String) Left(length int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(length)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1188,12 +1372,16 @@ func (cx *String) Right(length int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(length)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1210,6 +1398,8 @@ func (cx *String) StripEdges(left bool, right bool) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1217,7 +1407,10 @@ func (cx *String) StripEdges(left bool, right bool) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.EncodeTypePtr(left)
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(right)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1234,6 +1427,8 @@ func (cx *String) StripEscapes() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1252,12 +1447,16 @@ func (cx *String) Lstrip(chars String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&chars))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1274,12 +1473,16 @@ func (cx *String) Rstrip(chars String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&chars))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1296,6 +1499,8 @@ func (cx *String) GetExtension() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1314,6 +1519,8 @@ func (cx *String) GetBasename() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1332,12 +1539,16 @@ func (cx *String) PathJoin(file String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&file))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1354,12 +1565,16 @@ func (cx *String) UnicodeAt(at int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1376,12 +1591,16 @@ func (cx *String) Indent(prefix String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&prefix))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1398,6 +1617,8 @@ func (cx *String) Dedent() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1416,6 +1637,8 @@ func (cx *String) Hash() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1434,6 +1657,8 @@ func (cx *String) Md5Text() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1452,6 +1677,8 @@ func (cx *String) Sha1Text() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1470,6 +1697,8 @@ func (cx *String) Sha256Text() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1488,6 +1717,8 @@ func (cx *String) Md5Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1506,6 +1737,8 @@ func (cx *String) Sha1Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1524,6 +1757,8 @@ func (cx *String) Sha256Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1542,6 +1777,8 @@ func (cx *String) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1560,12 +1797,16 @@ func (cx *String) Contains(what String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1582,12 +1823,16 @@ func (cx *String) Containsn(what String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1604,6 +1849,8 @@ func (cx *String) IsAbsolutePath() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1622,6 +1869,8 @@ func (cx *String) IsRelativePath() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1640,6 +1889,8 @@ func (cx *String) SimplifyPath() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1658,6 +1909,8 @@ func (cx *String) GetBaseDir() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1676,6 +1929,8 @@ func (cx *String) GetFile() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1694,12 +1949,16 @@ func (cx *String) XmlEscape(escape_quotes bool) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.EncodeTypePtr(escape_quotes)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1716,6 +1975,8 @@ func (cx *String) XmlUnescape() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1734,6 +1995,8 @@ func (cx *String) UriEncode() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1752,6 +2015,8 @@ func (cx *String) UriDecode() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1770,6 +2035,8 @@ func (cx *String) CEscape() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1788,6 +2055,8 @@ func (cx *String) CUnescape() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1806,6 +2075,8 @@ func (cx *String) JsonEscape() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1824,6 +2095,8 @@ func (cx *String) ValidateNodeName() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1842,11 +2115,53 @@ func (cx *String) ValidateFilename() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
+	return ret
+}
+
+/* IsValidAsciiIdentifier : is_valid_ascii_identifier
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *String) IsValidAsciiIdentifier() bool {
+	mb := globalStringMethodBindings.method_is_valid_ascii_identifier
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
+	return ret
+}
+
+/* IsValidUnicodeIdentifier : is_valid_unicode_identifier
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *String) IsValidUnicodeIdentifier() bool {
+	mb := globalStringMethodBindings.method_is_valid_unicode_identifier
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 }
 
@@ -1860,6 +2175,8 @@ func (cx *String) IsValidIdentifier() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1878,6 +2195,8 @@ func (cx *String) IsValidInt() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1896,6 +2215,8 @@ func (cx *String) IsValidFloat() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1914,12 +2235,16 @@ func (cx *String) IsValidHexNumber(with_prefix bool) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.EncodeTypePtr(with_prefix)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -1936,6 +2261,8 @@ func (cx *String) IsValidHtmlColor() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1954,6 +2281,8 @@ func (cx *String) IsValidIpAddress() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1972,6 +2301,8 @@ func (cx *String) IsValidFilename() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -1990,6 +2321,8 @@ func (cx *String) ToInt() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2008,6 +2341,8 @@ func (cx *String) ToFloat() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2026,6 +2361,8 @@ func (cx *String) HexToInt() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2044,6 +2381,8 @@ func (cx *String) BinToInt() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2062,6 +2401,8 @@ func (cx *String) Lpad(min_length int64, character String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2069,7 +2410,10 @@ func (cx *String) Lpad(min_length int64, character String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(min_length)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&character))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2086,6 +2430,8 @@ func (cx *String) Rpad(min_length int64, character String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2093,7 +2439,10 @@ func (cx *String) Rpad(min_length int64, character String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(min_length)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&character))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2110,12 +2459,16 @@ func (cx *String) PadDecimals(digits int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(digits)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2132,12 +2485,16 @@ func (cx *String) PadZeros(digits int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(digits)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2154,12 +2511,16 @@ func (cx *String) TrimPrefix(prefix String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&prefix))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2176,12 +2537,16 @@ func (cx *String) TrimSuffix(suffix String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&suffix))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2198,6 +2563,8 @@ func (cx *String) ToAsciiBuffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2216,6 +2583,8 @@ func (cx *String) ToUtf8Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2234,6 +2603,8 @@ func (cx *String) ToUtf16Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2252,6 +2623,8 @@ func (cx *String) ToUtf32Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2270,6 +2643,8 @@ func (cx *String) HexDecode() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2288,6 +2663,8 @@ func (cx *String) ToWcharBuffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2306,12 +2683,16 @@ func (cx *String) NumScientific(number float32) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(number)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2328,6 +2709,8 @@ func (cx *String) Num(number float32, decimals int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2335,7 +2718,10 @@ func (cx *String) Num(number float32, decimals int64) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(number)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(decimals)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2352,6 +2738,8 @@ func (cx *String) NumInt64(number int64, base int64, capitalize_hex bool) String
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2359,9 +2747,13 @@ func (cx *String) NumInt64(number int64, base int64, capitalize_hex bool) String
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(number)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(base)
 
+	pnr.Pin(args[1])
 	args[2] = BoolEncoder.EncodeTypePtr(capitalize_hex)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2378,6 +2770,8 @@ func (cx *String) NumUint64(number int64, base int64, capitalize_hex bool) Strin
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2385,9 +2779,13 @@ func (cx *String) NumUint64(number int64, base int64, capitalize_hex bool) Strin
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(number)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(base)
 
+	pnr.Pin(args[1])
 	args[2] = BoolEncoder.EncodeTypePtr(capitalize_hex)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2404,12 +2802,16 @@ func (cx *String) Chr(char int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(char)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2426,12 +2828,16 @@ func (cx *String) HumanizeSize(size int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -2889,6 +3295,8 @@ func (c *Vector2) NativePtr() GDExtensionTypePtr {
 func NewVector2() Vector2 {
 	cx := Vector2{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalVector2MethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -2897,10 +3305,13 @@ func NewVector2() Vector2 {
 func NewVector2WithVector2(from Vector2) Vector2 {
 	cx := Vector2{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector2
 	// Vector2Encoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector2MethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -2909,10 +3320,13 @@ func NewVector2WithVector2(from Vector2) Vector2 {
 func NewVector2WithVector2i(from Vector2i) Vector2 {
 	cx := Vector2{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector2i
 	// Vector2iEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector2MethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -2921,11 +3335,15 @@ func NewVector2WithVector2i(from Vector2i) Vector2 {
 func NewVector2WithFloat32Float32(x float32, y float32) Vector2 {
 	cx := Vector2{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// float
 	args[0] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(x))
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(y))
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalVector2MethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
@@ -2962,6 +3380,8 @@ func (cx *Vector2) Angle() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -2980,12 +3400,16 @@ func (cx *Vector2) AngleTo(to Vector2) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3002,12 +3426,16 @@ func (cx *Vector2) AngleToPoint(to Vector2) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3024,12 +3452,16 @@ func (cx *Vector2) DirectionTo(to Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3046,12 +3478,16 @@ func (cx *Vector2) DistanceTo(to Vector2) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3068,12 +3504,16 @@ func (cx *Vector2) DistanceSquaredTo(to Vector2) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3090,6 +3530,8 @@ func (cx *Vector2) Length() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3108,6 +3550,8 @@ func (cx *Vector2) LengthSquared() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3126,12 +3570,16 @@ func (cx *Vector2) LimitLength(length float32) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(length)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3148,6 +3596,8 @@ func (cx *Vector2) Normalized() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3166,6 +3616,8 @@ func (cx *Vector2) IsNormalized() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3184,12 +3636,16 @@ func (cx *Vector2) IsEqualApprox(to Vector2) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3206,6 +3662,8 @@ func (cx *Vector2) IsZeroApprox() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3224,6 +3682,8 @@ func (cx *Vector2) IsFinite() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3242,12 +3702,16 @@ func (cx *Vector2) Posmod(mod float32) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(mod)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3264,12 +3728,16 @@ func (cx *Vector2) Posmodv(modv Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&modv))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3286,12 +3754,16 @@ func (cx *Vector2) Project(b Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3308,6 +3780,8 @@ func (cx *Vector2) Lerp(to Vector2, weight float32) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3315,7 +3789,10 @@ func (cx *Vector2) Lerp(to Vector2, weight float32) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3332,6 +3809,8 @@ func (cx *Vector2) Slerp(to Vector2, weight float32) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3339,7 +3818,10 @@ func (cx *Vector2) Slerp(to Vector2, weight float32) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3356,6 +3838,8 @@ func (cx *Vector2) CubicInterpolate(b Vector2, pre_a Vector2, post_b Vector2, we
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3363,11 +3847,16 @@ func (cx *Vector2) CubicInterpolate(b Vector2, pre_a Vector2, post_b Vector2, we
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&pre_a))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&post_b))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3384,6 +3873,8 @@ func (cx *Vector2) CubicInterpolateInTime(b Vector2, pre_a Vector2, post_b Vecto
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3391,17 +3882,25 @@ func (cx *Vector2) CubicInterpolateInTime(b Vector2, pre_a Vector2, post_b Vecto
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&pre_a))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&post_b))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(weight)
 
+	pnr.Pin(args[3])
 	args[4] = Float32Encoder.EncodeTypePtr(b_t)
 
+	pnr.Pin(args[4])
 	args[5] = Float32Encoder.EncodeTypePtr(pre_a_t)
 
+	pnr.Pin(args[5])
 	args[6] = Float32Encoder.EncodeTypePtr(post_b_t)
+
+	pnr.Pin(args[6])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3418,6 +3917,8 @@ func (cx *Vector2) BezierInterpolate(control_1 Vector2, control_2 Vector2, end V
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3425,11 +3926,16 @@ func (cx *Vector2) BezierInterpolate(control_1 Vector2, control_2 Vector2, end V
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&control_1))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&control_2))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&end))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(t)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3446,6 +3952,8 @@ func (cx *Vector2) BezierDerivative(control_1 Vector2, control_2 Vector2, end Ve
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3453,11 +3961,16 @@ func (cx *Vector2) BezierDerivative(control_1 Vector2, control_2 Vector2, end Ve
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&control_1))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&control_2))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&end))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(t)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3474,6 +3987,8 @@ func (cx *Vector2) MaxAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3492,6 +4007,8 @@ func (cx *Vector2) MinAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3510,6 +4027,8 @@ func (cx *Vector2) MoveToward(to Vector2, delta float32) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3517,7 +4036,10 @@ func (cx *Vector2) MoveToward(to Vector2, delta float32) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(delta)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3534,12 +4056,16 @@ func (cx *Vector2) Rotated(angle float32) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(angle)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3556,6 +4082,8 @@ func (cx *Vector2) Orthogonal() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3574,6 +4102,8 @@ func (cx *Vector2) Floor() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3592,6 +4122,8 @@ func (cx *Vector2) Ceil() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3610,6 +4142,8 @@ func (cx *Vector2) Round() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3628,6 +4162,8 @@ func (cx *Vector2) Aspect() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3646,12 +4182,16 @@ func (cx *Vector2) Dot(with Vector2) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3668,12 +4208,16 @@ func (cx *Vector2) Slide(n Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&n))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3690,12 +4234,16 @@ func (cx *Vector2) Bounce(n Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&n))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3712,12 +4260,16 @@ func (cx *Vector2) Reflect(line Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&line))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3734,12 +4286,16 @@ func (cx *Vector2) Cross(with Vector2) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3756,6 +4312,8 @@ func (cx *Vector2) Abs() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3774,6 +4332,8 @@ func (cx *Vector2) Sign() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3792,6 +4352,8 @@ func (cx *Vector2) Clamp(min Vector2, max Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3799,7 +4361,10 @@ func (cx *Vector2) Clamp(min Vector2, max Vector2) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&min))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3816,6 +4381,8 @@ func (cx *Vector2) Clampf(min float32, max float32) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -3823,7 +4390,10 @@ func (cx *Vector2) Clampf(min float32, max float32) Vector2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(min)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(max)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3840,12 +4410,16 @@ func (cx *Vector2) Snapped(step Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3862,12 +4436,16 @@ func (cx *Vector2) Snappedf(step float32) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(step)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3884,12 +4462,16 @@ func (cx *Vector2) Min(with Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3906,12 +4488,16 @@ func (cx *Vector2) Minf(with float32) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3928,12 +4514,16 @@ func (cx *Vector2) Max(with Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3950,12 +4540,16 @@ func (cx *Vector2) Maxf(with float32) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -3972,12 +4566,16 @@ func (cx *Vector2) FromAngle(angle float32) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(angle)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -4208,6 +4806,8 @@ func (c *Vector2i) NativePtr() GDExtensionTypePtr {
 func NewVector2i() Vector2i {
 	cx := Vector2i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalVector2iMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -4216,10 +4816,13 @@ func NewVector2i() Vector2i {
 func NewVector2iWithVector2i(from Vector2i) Vector2i {
 	cx := Vector2i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector2i
 	// Vector2iEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector2iMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -4228,10 +4831,13 @@ func NewVector2iWithVector2i(from Vector2i) Vector2i {
 func NewVector2iWithVector2(from Vector2) Vector2i {
 	cx := Vector2i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector2
 	// Vector2Encoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector2iMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -4240,11 +4846,15 @@ func NewVector2iWithVector2(from Vector2) Vector2i {
 func NewVector2iWithInt64Int64(x int64, y int64) Vector2i {
 	cx := Vector2i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// int
 	args[0] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(x))
+	pnr.Pin(args[0])
 	// int
 	args[1] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(y))
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalVector2iMethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
@@ -4281,6 +4891,8 @@ func (cx *Vector2i) Aspect() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4299,6 +4911,8 @@ func (cx *Vector2i) MaxAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4317,6 +4931,8 @@ func (cx *Vector2i) MinAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4335,12 +4951,16 @@ func (cx *Vector2i) DistanceTo(to Vector2i) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -4357,12 +4977,16 @@ func (cx *Vector2i) DistanceSquaredTo(to Vector2i) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -4379,6 +5003,8 @@ func (cx *Vector2i) Length() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4397,6 +5023,8 @@ func (cx *Vector2i) LengthSquared() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4415,6 +5043,8 @@ func (cx *Vector2i) Sign() Vector2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4433,6 +5063,8 @@ func (cx *Vector2i) Abs() Vector2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4451,6 +5083,8 @@ func (cx *Vector2i) Clamp(min Vector2i, max Vector2i) Vector2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4458,7 +5092,10 @@ func (cx *Vector2i) Clamp(min Vector2i, max Vector2i) Vector2i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&min))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -4475,6 +5112,8 @@ func (cx *Vector2i) Clampi(min int64, max int64) Vector2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4482,7 +5121,10 @@ func (cx *Vector2i) Clampi(min int64, max int64) Vector2i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(min)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(max)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -4499,12 +5141,16 @@ func (cx *Vector2i) Snapped(step Vector2i) Vector2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -4521,12 +5167,16 @@ func (cx *Vector2i) Snappedi(step int64) Vector2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(step)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -4543,12 +5193,16 @@ func (cx *Vector2i) Min(with Vector2i) Vector2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -4565,12 +5219,16 @@ func (cx *Vector2i) Mini(with int64) Vector2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -4587,12 +5245,16 @@ func (cx *Vector2i) Max(with Vector2i) Vector2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -4609,12 +5271,16 @@ func (cx *Vector2i) Maxi(with int64) Vector2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -4846,6 +5512,8 @@ func (c *Rect2) NativePtr() GDExtensionTypePtr {
 func NewRect2() Rect2 {
 	cx := Rect2{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalRect2MethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -4854,10 +5522,13 @@ func NewRect2() Rect2 {
 func NewRect2WithRect2(from Rect2) Rect2 {
 	cx := Rect2{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Rect2
 	// Rect2Encoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalRect2MethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -4866,10 +5537,13 @@ func NewRect2WithRect2(from Rect2) Rect2 {
 func NewRect2WithRect2i(from Rect2i) Rect2 {
 	cx := Rect2{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Rect2i
 	// Rect2iEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalRect2MethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -4878,13 +5552,17 @@ func NewRect2WithRect2i(from Rect2i) Rect2 {
 func NewRect2WithVector2Vector2(position Vector2, size Vector2) Rect2 {
 	cx := Rect2{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Vector2
 	// Vector2Encoder
 	args[0] = position.NativeConstPtr()
+	pnr.Pin(args[0])
 	// Vector2
 	// Vector2Encoder
 	args[1] = size.NativeConstPtr()
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalRect2MethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
@@ -4893,15 +5571,21 @@ func NewRect2WithVector2Vector2(position Vector2, size Vector2) Rect2 {
 func NewRect2WithFloat32Float32Float32Float32(x float32, y float32, width float32, height float32) Rect2 {
 	cx := Rect2{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [4]GDExtensionConstTypePtr
 	// float
 	args[0] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(x))
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(y))
+	pnr.Pin(args[1])
 	// float
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(width))
+	pnr.Pin(args[2])
 	// float
 	args[3] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(height))
+	pnr.Pin(args[3])
 	CallBuiltinConstructor(globalRect2MethodBindings.constructor_4, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
@@ -4938,6 +5622,8 @@ func (cx *Rect2) GetCenter() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4956,6 +5642,8 @@ func (cx *Rect2) GetArea() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4974,6 +5662,8 @@ func (cx *Rect2) HasArea() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -4992,12 +5682,16 @@ func (cx *Rect2) HasPoint(point Vector2) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5014,12 +5708,16 @@ func (cx *Rect2) IsEqualApprox(rect Rect2) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2Encoder.EncodeTypePtr(rect)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5036,6 +5734,8 @@ func (cx *Rect2) IsFinite() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5054,6 +5754,8 @@ func (cx *Rect2) Intersects(b Rect2, include_borders bool) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5061,7 +5763,10 @@ func (cx *Rect2) Intersects(b Rect2, include_borders bool) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2Encoder.EncodeTypePtr(b)
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(include_borders)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5078,12 +5783,16 @@ func (cx *Rect2) Encloses(b Rect2) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2Encoder.EncodeTypePtr(b)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5100,12 +5809,16 @@ func (cx *Rect2) Intersection(b Rect2) Rect2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2Encoder.EncodeTypePtr(b)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5122,12 +5835,16 @@ func (cx *Rect2) Merge(b Rect2) Rect2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2Encoder.EncodeTypePtr(b)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5144,6 +5861,8 @@ func (cx *Rect2) Expand(to Vector2) Rect2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5151,7 +5870,35 @@ func (cx *Rect2) Expand(to Vector2) Rect2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
+
 	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* GetSupport : get_support
+ * is_vararg = false, is_static = false
+ * goReturnType(Vector2) -> Vector2
+ */
+func (cx *Rect2) GetSupport(direction Vector2) Vector2 {
+	mb := globalRect2MethodBindings.method_get_support
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&direction))
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
 	return ret
 }
@@ -5166,12 +5913,16 @@ func (cx *Rect2) Grow(amount float32) Rect2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(amount)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5188,6 +5939,8 @@ func (cx *Rect2) GrowSide(side int64, amount float32) Rect2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5195,7 +5948,10 @@ func (cx *Rect2) GrowSide(side int64, amount float32) Rect2 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(side)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(amount)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5212,6 +5968,8 @@ func (cx *Rect2) GrowIndividual(left float32, top float32, right float32, bottom
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5219,11 +5977,16 @@ func (cx *Rect2) GrowIndividual(left float32, top float32, right float32, bottom
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(left)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(top)
 
+	pnr.Pin(args[1])
 	args[2] = Float32Encoder.EncodeTypePtr(right)
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(bottom)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Rect2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5240,6 +6003,8 @@ func (cx *Rect2) Abs() Rect2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5352,6 +6117,8 @@ func (c *Rect2i) NativePtr() GDExtensionTypePtr {
 func NewRect2i() Rect2i {
 	cx := Rect2i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalRect2iMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -5360,10 +6127,13 @@ func NewRect2i() Rect2i {
 func NewRect2iWithRect2i(from Rect2i) Rect2i {
 	cx := Rect2i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Rect2i
 	// Rect2iEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalRect2iMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -5372,10 +6142,13 @@ func NewRect2iWithRect2i(from Rect2i) Rect2i {
 func NewRect2iWithRect2(from Rect2) Rect2i {
 	cx := Rect2i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Rect2
 	// Rect2Encoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalRect2iMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -5384,13 +6157,17 @@ func NewRect2iWithRect2(from Rect2) Rect2i {
 func NewRect2iWithVector2iVector2i(position Vector2i, size Vector2i) Rect2i {
 	cx := Rect2i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Vector2i
 	// Vector2iEncoder
 	args[0] = position.NativeConstPtr()
+	pnr.Pin(args[0])
 	// Vector2i
 	// Vector2iEncoder
 	args[1] = size.NativeConstPtr()
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalRect2iMethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
@@ -5399,15 +6176,21 @@ func NewRect2iWithVector2iVector2i(position Vector2i, size Vector2i) Rect2i {
 func NewRect2iWithInt64Int64Int64Int64(x int64, y int64, width int64, height int64) Rect2i {
 	cx := Rect2i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [4]GDExtensionConstTypePtr
 	// int
 	args[0] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(x))
+	pnr.Pin(args[0])
 	// int
 	args[1] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(y))
+	pnr.Pin(args[1])
 	// int
 	args[2] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(width))
+	pnr.Pin(args[2])
 	// int
 	args[3] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(height))
+	pnr.Pin(args[3])
 	CallBuiltinConstructor(globalRect2iMethodBindings.constructor_4, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
@@ -5444,6 +6227,8 @@ func (cx *Rect2i) GetCenter() Vector2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5462,6 +6247,8 @@ func (cx *Rect2i) GetArea() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5480,6 +6267,8 @@ func (cx *Rect2i) HasArea() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5498,12 +6287,16 @@ func (cx *Rect2i) HasPoint(point Vector2i) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5520,12 +6313,16 @@ func (cx *Rect2i) Intersects(b Rect2i) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2iEncoder.EncodeTypePtr(b)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5542,12 +6339,16 @@ func (cx *Rect2i) Encloses(b Rect2i) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2iEncoder.EncodeTypePtr(b)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5564,12 +6365,16 @@ func (cx *Rect2i) Intersection(b Rect2i) Rect2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2iEncoder.EncodeTypePtr(b)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5586,12 +6391,16 @@ func (cx *Rect2i) Merge(b Rect2i) Rect2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2iEncoder.EncodeTypePtr(b)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5608,12 +6417,16 @@ func (cx *Rect2i) Expand(to Vector2i) Rect2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5630,12 +6443,16 @@ func (cx *Rect2i) Grow(amount int64) Rect2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(amount)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5652,6 +6469,8 @@ func (cx *Rect2i) GrowSide(side int64, amount int64) Rect2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5659,7 +6478,10 @@ func (cx *Rect2i) GrowSide(side int64, amount int64) Rect2i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(side)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(amount)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5676,6 +6498,8 @@ func (cx *Rect2i) GrowIndividual(left int64, top int64, right int64, bottom int6
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5683,11 +6507,16 @@ func (cx *Rect2i) GrowIndividual(left int64, top int64, right int64, bottom int6
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(left)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(top)
 
+	pnr.Pin(args[1])
 	args[2] = Int64Encoder.EncodeTypePtr(right)
 
+	pnr.Pin(args[2])
 	args[3] = Int64Encoder.EncodeTypePtr(bottom)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Rect2i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5704,6 +6533,8 @@ func (cx *Rect2i) Abs() Rect2i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5809,6 +6640,8 @@ func (c *Vector3) NativePtr() GDExtensionTypePtr {
 func NewVector3() Vector3 {
 	cx := Vector3{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalVector3MethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -5817,10 +6650,13 @@ func NewVector3() Vector3 {
 func NewVector3WithVector3(from Vector3) Vector3 {
 	cx := Vector3{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector3MethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -5829,10 +6665,13 @@ func NewVector3WithVector3(from Vector3) Vector3 {
 func NewVector3WithVector3i(from Vector3i) Vector3 {
 	cx := Vector3{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector3i
 	// Vector3iEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector3MethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -5841,13 +6680,18 @@ func NewVector3WithVector3i(from Vector3i) Vector3 {
 func NewVector3WithFloat32Float32Float32(x float32, y float32, z float32) Vector3 {
 	cx := Vector3{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [3]GDExtensionConstTypePtr
 	// float
 	args[0] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(x))
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(y))
+	pnr.Pin(args[1])
 	// float
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(z))
+	pnr.Pin(args[2])
 	CallBuiltinConstructor(globalVector3MethodBindings.constructor_3, ptr, args[0], args[1], args[2])
 	return cx
 }
@@ -5884,6 +6728,8 @@ func (cx *Vector3) MinAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5902,6 +6748,8 @@ func (cx *Vector3) MaxAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5920,12 +6768,16 @@ func (cx *Vector3) AngleTo(to Vector3) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5942,6 +6794,8 @@ func (cx *Vector3) SignedAngleTo(to Vector3, axis Vector3) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -5949,7 +6803,10 @@ func (cx *Vector3) SignedAngleTo(to Vector3, axis Vector3) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&axis))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5966,12 +6823,16 @@ func (cx *Vector3) DirectionTo(to Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -5988,12 +6849,16 @@ func (cx *Vector3) DistanceTo(to Vector3) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6010,12 +6875,16 @@ func (cx *Vector3) DistanceSquaredTo(to Vector3) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6032,6 +6901,8 @@ func (cx *Vector3) Length() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6050,6 +6921,8 @@ func (cx *Vector3) LengthSquared() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6068,12 +6941,16 @@ func (cx *Vector3) LimitLength(length float32) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(length)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6090,6 +6967,8 @@ func (cx *Vector3) Normalized() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6108,6 +6987,8 @@ func (cx *Vector3) IsNormalized() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6126,12 +7007,16 @@ func (cx *Vector3) IsEqualApprox(to Vector3) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6148,6 +7033,8 @@ func (cx *Vector3) IsZeroApprox() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6166,6 +7053,8 @@ func (cx *Vector3) IsFinite() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6184,6 +7073,8 @@ func (cx *Vector3) Inverse() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6202,6 +7093,8 @@ func (cx *Vector3) Clamp(min Vector3, max Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6209,7 +7102,10 @@ func (cx *Vector3) Clamp(min Vector3, max Vector3) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&min))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6226,6 +7122,8 @@ func (cx *Vector3) Clampf(min float32, max float32) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6233,7 +7131,10 @@ func (cx *Vector3) Clampf(min float32, max float32) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(min)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(max)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6250,12 +7151,16 @@ func (cx *Vector3) Snapped(step Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6272,12 +7177,16 @@ func (cx *Vector3) Snappedf(step float32) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(step)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6294,6 +7203,8 @@ func (cx *Vector3) Rotated(axis Vector3, angle float32) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6301,7 +7212,10 @@ func (cx *Vector3) Rotated(axis Vector3, angle float32) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&axis))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(angle)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6318,6 +7232,8 @@ func (cx *Vector3) Lerp(to Vector3, weight float32) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6325,7 +7241,10 @@ func (cx *Vector3) Lerp(to Vector3, weight float32) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6342,6 +7261,8 @@ func (cx *Vector3) Slerp(to Vector3, weight float32) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6349,7 +7270,10 @@ func (cx *Vector3) Slerp(to Vector3, weight float32) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6366,6 +7290,8 @@ func (cx *Vector3) CubicInterpolate(b Vector3, pre_a Vector3, post_b Vector3, we
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6373,11 +7299,16 @@ func (cx *Vector3) CubicInterpolate(b Vector3, pre_a Vector3, post_b Vector3, we
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&pre_a))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&post_b))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6394,6 +7325,8 @@ func (cx *Vector3) CubicInterpolateInTime(b Vector3, pre_a Vector3, post_b Vecto
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6401,17 +7334,25 @@ func (cx *Vector3) CubicInterpolateInTime(b Vector3, pre_a Vector3, post_b Vecto
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&pre_a))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&post_b))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(weight)
 
+	pnr.Pin(args[3])
 	args[4] = Float32Encoder.EncodeTypePtr(b_t)
 
+	pnr.Pin(args[4])
 	args[5] = Float32Encoder.EncodeTypePtr(pre_a_t)
 
+	pnr.Pin(args[5])
 	args[6] = Float32Encoder.EncodeTypePtr(post_b_t)
+
+	pnr.Pin(args[6])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6428,6 +7369,8 @@ func (cx *Vector3) BezierInterpolate(control_1 Vector3, control_2 Vector3, end V
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6435,11 +7378,16 @@ func (cx *Vector3) BezierInterpolate(control_1 Vector3, control_2 Vector3, end V
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&control_1))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&control_2))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&end))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(t)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6456,6 +7404,8 @@ func (cx *Vector3) BezierDerivative(control_1 Vector3, control_2 Vector3, end Ve
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6463,11 +7413,16 @@ func (cx *Vector3) BezierDerivative(control_1 Vector3, control_2 Vector3, end Ve
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&control_1))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&control_2))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&end))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(t)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6484,6 +7439,8 @@ func (cx *Vector3) MoveToward(to Vector3, delta float32) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6491,7 +7448,10 @@ func (cx *Vector3) MoveToward(to Vector3, delta float32) Vector3 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(delta)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6508,12 +7468,16 @@ func (cx *Vector3) Dot(with Vector3) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6530,12 +7494,16 @@ func (cx *Vector3) Cross(with Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6552,12 +7520,16 @@ func (cx *Vector3) Outer(with Vector3) Basis {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6574,6 +7546,8 @@ func (cx *Vector3) Abs() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6592,6 +7566,8 @@ func (cx *Vector3) Floor() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6610,6 +7586,8 @@ func (cx *Vector3) Ceil() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6628,6 +7606,8 @@ func (cx *Vector3) Round() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6646,12 +7626,16 @@ func (cx *Vector3) Posmod(mod float32) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(mod)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6668,12 +7652,16 @@ func (cx *Vector3) Posmodv(modv Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&modv))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6690,12 +7678,16 @@ func (cx *Vector3) Project(b Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6712,12 +7704,16 @@ func (cx *Vector3) Slide(n Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&n))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6734,12 +7730,16 @@ func (cx *Vector3) Bounce(n Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&n))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6756,12 +7756,16 @@ func (cx *Vector3) Reflect(n Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&n))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6778,6 +7782,8 @@ func (cx *Vector3) Sign() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6796,6 +7802,8 @@ func (cx *Vector3) OctahedronEncode() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -6814,12 +7822,16 @@ func (cx *Vector3) Min(with Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6836,12 +7848,16 @@ func (cx *Vector3) Minf(with float32) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6858,12 +7874,16 @@ func (cx *Vector3) Max(with Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6880,12 +7900,16 @@ func (cx *Vector3) Maxf(with float32) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -6902,12 +7926,16 @@ func (cx *Vector3) OctahedronDecode(uv Vector2) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&uv))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -7159,6 +8187,8 @@ func (c *Vector3i) NativePtr() GDExtensionTypePtr {
 func NewVector3i() Vector3i {
 	cx := Vector3i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalVector3iMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -7167,10 +8197,13 @@ func NewVector3i() Vector3i {
 func NewVector3iWithVector3i(from Vector3i) Vector3i {
 	cx := Vector3i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector3i
 	// Vector3iEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector3iMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -7179,10 +8212,13 @@ func NewVector3iWithVector3i(from Vector3i) Vector3i {
 func NewVector3iWithVector3(from Vector3) Vector3i {
 	cx := Vector3i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector3iMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -7191,13 +8227,18 @@ func NewVector3iWithVector3(from Vector3) Vector3i {
 func NewVector3iWithInt64Int64Int64(x int64, y int64, z int64) Vector3i {
 	cx := Vector3i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [3]GDExtensionConstTypePtr
 	// int
 	args[0] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(x))
+	pnr.Pin(args[0])
 	// int
 	args[1] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(y))
+	pnr.Pin(args[1])
 	// int
 	args[2] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(z))
+	pnr.Pin(args[2])
 	CallBuiltinConstructor(globalVector3iMethodBindings.constructor_3, ptr, args[0], args[1], args[2])
 	return cx
 }
@@ -7234,6 +8275,8 @@ func (cx *Vector3i) MinAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7252,6 +8295,8 @@ func (cx *Vector3i) MaxAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7270,12 +8315,16 @@ func (cx *Vector3i) DistanceTo(to Vector3i) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -7292,12 +8341,16 @@ func (cx *Vector3i) DistanceSquaredTo(to Vector3i) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -7314,6 +8367,8 @@ func (cx *Vector3i) Length() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7332,6 +8387,8 @@ func (cx *Vector3i) LengthSquared() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7350,6 +8407,8 @@ func (cx *Vector3i) Sign() Vector3i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7368,6 +8427,8 @@ func (cx *Vector3i) Abs() Vector3i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7386,6 +8447,8 @@ func (cx *Vector3i) Clamp(min Vector3i, max Vector3i) Vector3i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7393,7 +8456,10 @@ func (cx *Vector3i) Clamp(min Vector3i, max Vector3i) Vector3i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&min))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -7410,6 +8476,8 @@ func (cx *Vector3i) Clampi(min int64, max int64) Vector3i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7417,7 +8485,10 @@ func (cx *Vector3i) Clampi(min int64, max int64) Vector3i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(min)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(max)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -7434,12 +8505,16 @@ func (cx *Vector3i) Snapped(step Vector3i) Vector3i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -7456,12 +8531,16 @@ func (cx *Vector3i) Snappedi(step int64) Vector3i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(step)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -7478,12 +8557,16 @@ func (cx *Vector3i) Min(with Vector3i) Vector3i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -7500,12 +8583,16 @@ func (cx *Vector3i) Mini(with int64) Vector3i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -7522,12 +8609,16 @@ func (cx *Vector3i) Max(with Vector3i) Vector3i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -7544,12 +8635,16 @@ func (cx *Vector3i) Maxi(with int64) Vector3i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -7788,6 +8883,8 @@ func (c *Transform2D) NativePtr() GDExtensionTypePtr {
 func NewTransform2D() Transform2D {
 	cx := Transform2D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalTransform2DMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -7796,10 +8893,13 @@ func NewTransform2D() Transform2D {
 func NewTransform2DWithTransform2D(from Transform2D) Transform2D {
 	cx := Transform2D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Transform2D
 	// Transform2DEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalTransform2DMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -7808,12 +8908,16 @@ func NewTransform2DWithTransform2D(from Transform2D) Transform2D {
 func NewTransform2DWithFloat32Vector2(rotation float32, position Vector2) Transform2D {
 	cx := Transform2D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// float
 	args[0] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(rotation))
+	pnr.Pin(args[0])
 	// Vector2
 	// Vector2Encoder
 	args[1] = position.NativeConstPtr()
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalTransform2DMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
@@ -7822,17 +8926,23 @@ func NewTransform2DWithFloat32Vector2(rotation float32, position Vector2) Transf
 func NewTransform2DWithFloat32Vector2Float32Vector2(rotation float32, scale Vector2, skew float32, position Vector2) Transform2D {
 	cx := Transform2D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [4]GDExtensionConstTypePtr
 	// float
 	args[0] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(rotation))
+	pnr.Pin(args[0])
 	// Vector2
 	// Vector2Encoder
 	args[1] = scale.NativeConstPtr()
+	pnr.Pin(args[1])
 	// float
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(skew))
+	pnr.Pin(args[2])
 	// Vector2
 	// Vector2Encoder
 	args[3] = position.NativeConstPtr()
+	pnr.Pin(args[3])
 	CallBuiltinConstructor(globalTransform2DMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
@@ -7841,16 +8951,21 @@ func NewTransform2DWithFloat32Vector2Float32Vector2(rotation float32, scale Vect
 func NewTransform2DWithVector2Vector2Vector2(x_axis Vector2, y_axis Vector2, origin Vector2) Transform2D {
 	cx := Transform2D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [3]GDExtensionConstTypePtr
 	// Vector2
 	// Vector2Encoder
 	args[0] = x_axis.NativeConstPtr()
+	pnr.Pin(args[0])
 	// Vector2
 	// Vector2Encoder
 	args[1] = y_axis.NativeConstPtr()
+	pnr.Pin(args[1])
 	// Vector2
 	// Vector2Encoder
 	args[2] = origin.NativeConstPtr()
+	pnr.Pin(args[2])
 	CallBuiltinConstructor(globalTransform2DMethodBindings.constructor_4, ptr, args[0], args[1], args[2])
 	return cx
 }
@@ -7887,6 +9002,8 @@ func (cx *Transform2D) Inverse() Transform2D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7905,6 +9022,8 @@ func (cx *Transform2D) AffineInverse() Transform2D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7923,6 +9042,8 @@ func (cx *Transform2D) GetRotation() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7941,6 +9062,8 @@ func (cx *Transform2D) GetOrigin() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7959,6 +9082,8 @@ func (cx *Transform2D) GetScale() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7977,6 +9102,8 @@ func (cx *Transform2D) GetSkew() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -7995,6 +9122,8 @@ func (cx *Transform2D) Orthonormalized() Transform2D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8013,12 +9142,16 @@ func (cx *Transform2D) Rotated(angle float32) Transform2D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(angle)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8035,12 +9168,16 @@ func (cx *Transform2D) RotatedLocal(angle float32) Transform2D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(angle)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8057,12 +9194,16 @@ func (cx *Transform2D) Scaled(scale Vector2) Transform2D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8079,12 +9220,16 @@ func (cx *Transform2D) ScaledLocal(scale Vector2) Transform2D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8101,12 +9246,16 @@ func (cx *Transform2D) Translated(offset Vector2) Transform2D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&offset))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8123,12 +9272,16 @@ func (cx *Transform2D) TranslatedLocal(offset Vector2) Transform2D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&offset))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8145,6 +9298,8 @@ func (cx *Transform2D) Determinant() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8163,12 +9318,16 @@ func (cx *Transform2D) BasisXform(v Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&v))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8185,12 +9344,16 @@ func (cx *Transform2D) BasisXformInv(v Vector2) Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&v))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8207,6 +9370,8 @@ func (cx *Transform2D) InterpolateWith(xform Transform2D, weight float32) Transf
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8214,7 +9379,10 @@ func (cx *Transform2D) InterpolateWith(xform Transform2D, weight float32) Transf
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&xform))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8231,6 +9399,8 @@ func (cx *Transform2D) IsConformal() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8249,12 +9419,16 @@ func (cx *Transform2D) IsEqualApprox(xform Transform2D) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&xform))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8271,6 +9445,8 @@ func (cx *Transform2D) IsFinite() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8289,12 +9465,16 @@ func (cx *Transform2D) LookingAt(target Vector2) Transform2D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&target))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Transform2D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8477,6 +9657,8 @@ func (c *Vector4) NativePtr() GDExtensionTypePtr {
 func NewVector4() Vector4 {
 	cx := Vector4{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalVector4MethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -8485,10 +9667,13 @@ func NewVector4() Vector4 {
 func NewVector4WithVector4(from Vector4) Vector4 {
 	cx := Vector4{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector4
 	// Vector4Encoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector4MethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -8497,10 +9682,13 @@ func NewVector4WithVector4(from Vector4) Vector4 {
 func NewVector4WithVector4i(from Vector4i) Vector4 {
 	cx := Vector4{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector4i
 	// Vector4iEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector4MethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -8509,15 +9697,21 @@ func NewVector4WithVector4i(from Vector4i) Vector4 {
 func NewVector4WithFloat32Float32Float32Float32(x float32, y float32, z float32, w float32) Vector4 {
 	cx := Vector4{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [4]GDExtensionConstTypePtr
 	// float
 	args[0] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(x))
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(y))
+	pnr.Pin(args[1])
 	// float
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(z))
+	pnr.Pin(args[2])
 	// float
 	args[3] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(w))
+	pnr.Pin(args[3])
 	CallBuiltinConstructor(globalVector4MethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
@@ -8554,6 +9748,8 @@ func (cx *Vector4) MinAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8572,6 +9768,8 @@ func (cx *Vector4) MaxAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8590,6 +9788,8 @@ func (cx *Vector4) Length() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8608,6 +9808,8 @@ func (cx *Vector4) LengthSquared() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8626,6 +9828,8 @@ func (cx *Vector4) Abs() Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8644,6 +9848,8 @@ func (cx *Vector4) Sign() Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8662,6 +9868,8 @@ func (cx *Vector4) Floor() Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8680,6 +9888,8 @@ func (cx *Vector4) Ceil() Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8698,6 +9908,8 @@ func (cx *Vector4) Round() Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8716,6 +9928,8 @@ func (cx *Vector4) Lerp(to Vector4, weight float32) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8723,7 +9937,10 @@ func (cx *Vector4) Lerp(to Vector4, weight float32) Vector4 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8740,6 +9957,8 @@ func (cx *Vector4) CubicInterpolate(b Vector4, pre_a Vector4, post_b Vector4, we
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8747,11 +9966,16 @@ func (cx *Vector4) CubicInterpolate(b Vector4, pre_a Vector4, post_b Vector4, we
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&pre_a))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&post_b))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8768,6 +9992,8 @@ func (cx *Vector4) CubicInterpolateInTime(b Vector4, pre_a Vector4, post_b Vecto
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8775,17 +10001,25 @@ func (cx *Vector4) CubicInterpolateInTime(b Vector4, pre_a Vector4, post_b Vecto
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&pre_a))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&post_b))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(weight)
 
+	pnr.Pin(args[3])
 	args[4] = Float32Encoder.EncodeTypePtr(b_t)
 
+	pnr.Pin(args[4])
 	args[5] = Float32Encoder.EncodeTypePtr(pre_a_t)
 
+	pnr.Pin(args[5])
 	args[6] = Float32Encoder.EncodeTypePtr(post_b_t)
+
+	pnr.Pin(args[6])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8802,12 +10036,16 @@ func (cx *Vector4) Posmod(mod float32) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(mod)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8824,12 +10062,16 @@ func (cx *Vector4) Posmodv(modv Vector4) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&modv))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8846,12 +10088,16 @@ func (cx *Vector4) Snapped(step Vector4) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8868,12 +10114,16 @@ func (cx *Vector4) Snappedf(step float32) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(step)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8890,6 +10140,8 @@ func (cx *Vector4) Clamp(min Vector4, max Vector4) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8897,7 +10149,10 @@ func (cx *Vector4) Clamp(min Vector4, max Vector4) Vector4 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&min))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8914,6 +10169,8 @@ func (cx *Vector4) Clampf(min float32, max float32) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8921,7 +10178,10 @@ func (cx *Vector4) Clampf(min float32, max float32) Vector4 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(min)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(max)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8938,6 +10198,8 @@ func (cx *Vector4) Normalized() Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8956,6 +10218,8 @@ func (cx *Vector4) IsNormalized() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -8974,12 +10238,16 @@ func (cx *Vector4) DirectionTo(to Vector4) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -8996,12 +10264,16 @@ func (cx *Vector4) DistanceTo(to Vector4) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9018,12 +10290,16 @@ func (cx *Vector4) DistanceSquaredTo(to Vector4) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9040,12 +10316,16 @@ func (cx *Vector4) Dot(with Vector4) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9062,6 +10342,8 @@ func (cx *Vector4) Inverse() Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -9080,12 +10362,16 @@ func (cx *Vector4) IsEqualApprox(to Vector4) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9102,6 +10388,8 @@ func (cx *Vector4) IsZeroApprox() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -9120,6 +10408,8 @@ func (cx *Vector4) IsFinite() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -9138,12 +10428,16 @@ func (cx *Vector4) Min(with Vector4) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9160,12 +10454,16 @@ func (cx *Vector4) Minf(with float32) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9182,12 +10480,16 @@ func (cx *Vector4) Max(with Vector4) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9204,12 +10506,16 @@ func (cx *Vector4) Maxf(with float32) Vector4 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9455,6 +10761,8 @@ func (c *Vector4i) NativePtr() GDExtensionTypePtr {
 func NewVector4i() Vector4i {
 	cx := Vector4i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalVector4iMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -9463,10 +10771,13 @@ func NewVector4i() Vector4i {
 func NewVector4iWithVector4i(from Vector4i) Vector4i {
 	cx := Vector4i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector4i
 	// Vector4iEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector4iMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -9475,10 +10786,13 @@ func NewVector4iWithVector4i(from Vector4i) Vector4i {
 func NewVector4iWithVector4(from Vector4) Vector4i {
 	cx := Vector4i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector4
 	// Vector4Encoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalVector4iMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -9487,15 +10801,21 @@ func NewVector4iWithVector4(from Vector4) Vector4i {
 func NewVector4iWithInt64Int64Int64Int64(x int64, y int64, z int64, w int64) Vector4i {
 	cx := Vector4i{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [4]GDExtensionConstTypePtr
 	// int
 	args[0] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(x))
+	pnr.Pin(args[0])
 	// int
 	args[1] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(y))
+	pnr.Pin(args[1])
 	// int
 	args[2] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(z))
+	pnr.Pin(args[2])
 	// int
 	args[3] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(w))
+	pnr.Pin(args[3])
 	CallBuiltinConstructor(globalVector4iMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
@@ -9532,6 +10852,8 @@ func (cx *Vector4i) MinAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -9550,6 +10872,8 @@ func (cx *Vector4i) MaxAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -9568,6 +10892,8 @@ func (cx *Vector4i) Length() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -9586,6 +10912,8 @@ func (cx *Vector4i) LengthSquared() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -9604,6 +10932,8 @@ func (cx *Vector4i) Sign() Vector4i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -9622,6 +10952,8 @@ func (cx *Vector4i) Abs() Vector4i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -9640,6 +10972,8 @@ func (cx *Vector4i) Clamp(min Vector4i, max Vector4i) Vector4i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -9647,7 +10981,10 @@ func (cx *Vector4i) Clamp(min Vector4i, max Vector4i) Vector4i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&min))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9664,6 +11001,8 @@ func (cx *Vector4i) Clampi(min int64, max int64) Vector4i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -9671,7 +11010,10 @@ func (cx *Vector4i) Clampi(min int64, max int64) Vector4i {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(min)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(max)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9688,12 +11030,16 @@ func (cx *Vector4i) Snapped(step Vector4i) Vector4i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&step))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9710,12 +11056,16 @@ func (cx *Vector4i) Snappedi(step int64) Vector4i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(step)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9732,12 +11082,16 @@ func (cx *Vector4i) Min(with Vector4i) Vector4i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9754,12 +11108,16 @@ func (cx *Vector4i) Mini(with int64) Vector4i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9776,12 +11134,16 @@ func (cx *Vector4i) Max(with Vector4i) Vector4i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9798,12 +11160,16 @@ func (cx *Vector4i) Maxi(with int64) Vector4i {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(with)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector4i](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9820,12 +11186,16 @@ func (cx *Vector4i) DistanceTo(to Vector4i) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -9842,12 +11212,16 @@ func (cx *Vector4i) DistanceSquaredTo(to Vector4i) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10093,6 +11467,8 @@ func (c *Plane) NativePtr() GDExtensionTypePtr {
 func NewPlane() Plane {
 	cx := Plane{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -10101,10 +11477,13 @@ func NewPlane() Plane {
 func NewPlaneWithPlane(from Plane) Plane {
 	cx := Plane{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Plane
 	// PlaneEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -10113,10 +11492,13 @@ func NewPlaneWithPlane(from Plane) Plane {
 func NewPlaneWithVector3(normal Vector3) Plane {
 	cx := Plane{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = normal.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -10125,12 +11507,16 @@ func NewPlaneWithVector3(normal Vector3) Plane {
 func NewPlaneWithVector3Float32(normal Vector3, d float32) Plane {
 	cx := Plane{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = normal.NativeConstPtr()
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(d))
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
@@ -10139,13 +11525,17 @@ func NewPlaneWithVector3Float32(normal Vector3, d float32) Plane {
 func NewPlaneWithVector3Vector3(normal Vector3, point Vector3) Plane {
 	cx := Plane{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = normal.NativeConstPtr()
+	pnr.Pin(args[0])
 	// Vector3
 	// Vector3Encoder
 	args[1] = point.NativeConstPtr()
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_4, ptr, args[0], args[1])
 	return cx
 }
@@ -10154,16 +11544,21 @@ func NewPlaneWithVector3Vector3(normal Vector3, point Vector3) Plane {
 func NewPlaneWithVector3Vector3Vector3(point1 Vector3, point2 Vector3, point3 Vector3) Plane {
 	cx := Plane{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [3]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = point1.NativeConstPtr()
+	pnr.Pin(args[0])
 	// Vector3
 	// Vector3Encoder
 	args[1] = point2.NativeConstPtr()
+	pnr.Pin(args[1])
 	// Vector3
 	// Vector3Encoder
 	args[2] = point3.NativeConstPtr()
+	pnr.Pin(args[2])
 	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_5, ptr, args[0], args[1], args[2])
 	return cx
 }
@@ -10172,15 +11567,21 @@ func NewPlaneWithVector3Vector3Vector3(point1 Vector3, point2 Vector3, point3 Ve
 func NewPlaneWithFloat32Float32Float32Float32(a float32, b float32, c float32, d float32) Plane {
 	cx := Plane{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [4]GDExtensionConstTypePtr
 	// float
 	args[0] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(a))
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(b))
+	pnr.Pin(args[1])
 	// float
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(c))
+	pnr.Pin(args[2])
 	// float
 	args[3] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(d))
+	pnr.Pin(args[3])
 	CallBuiltinConstructor(globalPlaneMethodBindings.constructor_6, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
@@ -10217,6 +11618,8 @@ func (cx *Plane) Normalized() Plane {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10235,6 +11638,8 @@ func (cx *Plane) GetCenter() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10253,12 +11658,16 @@ func (cx *Plane) IsEqualApprox(to_plane Plane) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to_plane))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10275,6 +11684,8 @@ func (cx *Plane) IsFinite() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10293,12 +11704,16 @@ func (cx *Plane) IsPointOver(point Vector3) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10315,12 +11730,16 @@ func (cx *Plane) DistanceTo(point Vector3) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10337,6 +11756,8 @@ func (cx *Plane) HasPoint(point Vector3, tolerance float32) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10344,7 +11765,10 @@ func (cx *Plane) HasPoint(point Vector3, tolerance float32) bool {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(tolerance)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10361,12 +11785,16 @@ func (cx *Plane) Project(point Vector3) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10383,6 +11811,8 @@ func (cx *Plane) Intersect3(b Plane, c Plane) Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10390,7 +11820,10 @@ func (cx *Plane) Intersect3(b Plane, c Plane) Variant {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&c))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10407,6 +11840,8 @@ func (cx *Plane) IntersectsRay(from Vector3, dir Vector3) Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10414,7 +11849,10 @@ func (cx *Plane) IntersectsRay(from Vector3, dir Vector3) Variant {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&from))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&dir))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10431,6 +11869,8 @@ func (cx *Plane) IntersectsSegment(from Vector3, to Vector3) Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10438,7 +11878,10 @@ func (cx *Plane) IntersectsSegment(from Vector3, to Vector3) Variant {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&from))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10575,6 +12018,8 @@ func (c *Quaternion) NativePtr() GDExtensionTypePtr {
 func NewQuaternion() Quaternion {
 	cx := Quaternion{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -10583,10 +12028,13 @@ func NewQuaternion() Quaternion {
 func NewQuaternionWithQuaternion(from Quaternion) Quaternion {
 	cx := Quaternion{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Quaternion
 	// QuaternionEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -10595,10 +12043,13 @@ func NewQuaternionWithQuaternion(from Quaternion) Quaternion {
 func NewQuaternionWithBasis(from Basis) Quaternion {
 	cx := Quaternion{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Basis
 	// BasisEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -10607,12 +12058,16 @@ func NewQuaternionWithBasis(from Basis) Quaternion {
 func NewQuaternionWithVector3Float32(axis Vector3, angle float32) Quaternion {
 	cx := Quaternion{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = axis.NativeConstPtr()
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(angle))
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
@@ -10621,13 +12076,17 @@ func NewQuaternionWithVector3Float32(axis Vector3, angle float32) Quaternion {
 func NewQuaternionWithVector3Vector3(arc_from Vector3, arc_to Vector3) Quaternion {
 	cx := Quaternion{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = arc_from.NativeConstPtr()
+	pnr.Pin(args[0])
 	// Vector3
 	// Vector3Encoder
 	args[1] = arc_to.NativeConstPtr()
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_4, ptr, args[0], args[1])
 	return cx
 }
@@ -10636,15 +12095,21 @@ func NewQuaternionWithVector3Vector3(arc_from Vector3, arc_to Vector3) Quaternio
 func NewQuaternionWithFloat32Float32Float32Float32(x float32, y float32, z float32, w float32) Quaternion {
 	cx := Quaternion{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [4]GDExtensionConstTypePtr
 	// float
 	args[0] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(x))
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(y))
+	pnr.Pin(args[1])
 	// float
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(z))
+	pnr.Pin(args[2])
 	// float
 	args[3] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(w))
+	pnr.Pin(args[3])
 	CallBuiltinConstructor(globalQuaternionMethodBindings.constructor_5, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
@@ -10681,6 +12146,8 @@ func (cx *Quaternion) Length() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10699,6 +12166,8 @@ func (cx *Quaternion) LengthSquared() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10717,6 +12186,8 @@ func (cx *Quaternion) Normalized() Quaternion {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10735,6 +12206,8 @@ func (cx *Quaternion) IsNormalized() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10753,12 +12226,16 @@ func (cx *Quaternion) IsEqualApprox(to Quaternion) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10775,6 +12252,8 @@ func (cx *Quaternion) IsFinite() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10793,6 +12272,8 @@ func (cx *Quaternion) Inverse() Quaternion {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10811,6 +12292,8 @@ func (cx *Quaternion) Log() Quaternion {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10829,6 +12312,8 @@ func (cx *Quaternion) Exp() Quaternion {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10847,12 +12332,16 @@ func (cx *Quaternion) AngleTo(to Quaternion) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10869,12 +12358,16 @@ func (cx *Quaternion) Dot(with Quaternion) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10891,6 +12384,8 @@ func (cx *Quaternion) Slerp(to Quaternion, weight float32) Quaternion {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10898,7 +12393,10 @@ func (cx *Quaternion) Slerp(to Quaternion, weight float32) Quaternion {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10915,6 +12413,8 @@ func (cx *Quaternion) Slerpni(to Quaternion, weight float32) Quaternion {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10922,7 +12422,10 @@ func (cx *Quaternion) Slerpni(to Quaternion, weight float32) Quaternion {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10939,6 +12442,8 @@ func (cx *Quaternion) SphericalCubicInterpolate(b Quaternion, pre_a Quaternion, 
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10946,11 +12451,16 @@ func (cx *Quaternion) SphericalCubicInterpolate(b Quaternion, pre_a Quaternion, 
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&pre_a))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&post_b))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -10967,6 +12477,8 @@ func (cx *Quaternion) SphericalCubicInterpolateInTime(b Quaternion, pre_a Quater
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -10974,17 +12486,25 @@ func (cx *Quaternion) SphericalCubicInterpolateInTime(b Quaternion, pre_a Quater
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&pre_a))
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&post_b))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(weight)
 
+	pnr.Pin(args[3])
 	args[4] = Float32Encoder.EncodeTypePtr(b_t)
 
+	pnr.Pin(args[4])
 	args[5] = Float32Encoder.EncodeTypePtr(pre_a_t)
 
+	pnr.Pin(args[5])
 	args[6] = Float32Encoder.EncodeTypePtr(post_b_t)
+
+	pnr.Pin(args[6])
 
 	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11001,12 +12521,16 @@ func (cx *Quaternion) GetEuler(order int64) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(order)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11023,12 +12547,16 @@ func (cx *Quaternion) FromEuler(euler Vector3) Quaternion {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&euler))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Quaternion](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11045,6 +12573,8 @@ func (cx *Quaternion) GetAxis() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11063,6 +12593,8 @@ func (cx *Quaternion) GetAngle() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11267,6 +12799,8 @@ func (c *AABB) NativePtr() GDExtensionTypePtr {
 func NewAABB() AABB {
 	cx := AABB{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalAABBMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -11275,10 +12809,13 @@ func NewAABB() AABB {
 func NewAABBWithAABB(from AABB) AABB {
 	cx := AABB{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// AABB
 	// AABBEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalAABBMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -11287,13 +12824,17 @@ func NewAABBWithAABB(from AABB) AABB {
 func NewAABBWithVector3Vector3(position Vector3, size Vector3) AABB {
 	cx := AABB{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = position.NativeConstPtr()
+	pnr.Pin(args[0])
 	// Vector3
 	// Vector3Encoder
 	args[1] = size.NativeConstPtr()
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalAABBMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
@@ -11330,6 +12871,8 @@ func (cx *AABB) Abs() AABB {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11348,6 +12891,8 @@ func (cx *AABB) GetCenter() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11366,6 +12911,8 @@ func (cx *AABB) GetVolume() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11384,6 +12931,8 @@ func (cx *AABB) HasVolume() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11402,6 +12951,8 @@ func (cx *AABB) HasSurface() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11420,12 +12971,16 @@ func (cx *AABB) HasPoint(point Vector3) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&point))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11442,12 +12997,16 @@ func (cx *AABB) IsEqualApprox(aabb AABB) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&aabb))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11464,6 +13023,8 @@ func (cx *AABB) IsFinite() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11482,12 +13043,16 @@ func (cx *AABB) Intersects(with AABB) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11504,12 +13069,16 @@ func (cx *AABB) Encloses(with AABB) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11526,12 +13095,16 @@ func (cx *AABB) IntersectsPlane(plane Plane) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&plane))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11548,12 +13121,16 @@ func (cx *AABB) Intersection(with AABB) AABB {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[AABB](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11570,12 +13147,16 @@ func (cx *AABB) Merge(with AABB) AABB {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[AABB](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11592,12 +13173,16 @@ func (cx *AABB) Expand(to_point Vector3) AABB {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to_point))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[AABB](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11614,12 +13199,16 @@ func (cx *AABB) Grow(by float32) AABB {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(by)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[AABB](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11630,18 +13219,22 @@ func (cx *AABB) Grow(by float32) AABB {
  * is_vararg = false, is_static = false
  * goReturnType(Vector3) -> Vector3
  */
-func (cx *AABB) GetSupport(dir Vector3) Vector3 {
+func (cx *AABB) GetSupport(direction Vector3) Vector3 {
 	mb := globalAABBMethodBindings.method_get_support
 	if mb == nil {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&dir))
+	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&direction))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11658,6 +13251,8 @@ func (cx *AABB) GetLongestAxis() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11676,6 +13271,8 @@ func (cx *AABB) GetLongestAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11694,6 +13291,8 @@ func (cx *AABB) GetLongestAxisSize() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11712,6 +13311,8 @@ func (cx *AABB) GetShortestAxis() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11730,6 +13331,8 @@ func (cx *AABB) GetShortestAxisIndex() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11748,6 +13351,8 @@ func (cx *AABB) GetShortestAxisSize() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11766,12 +13371,16 @@ func (cx *AABB) GetEndpoint(idx int64) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(idx)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11788,6 +13397,8 @@ func (cx *AABB) IntersectsSegment(from Vector3, to Vector3) Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11795,7 +13406,10 @@ func (cx *AABB) IntersectsSegment(from Vector3, to Vector3) Variant {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&from))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11812,6 +13426,8 @@ func (cx *AABB) IntersectsRay(from Vector3, dir Vector3) Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -11819,7 +13435,10 @@ func (cx *AABB) IntersectsRay(from Vector3, dir Vector3) Variant {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&from))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&dir))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -11928,6 +13547,8 @@ func (c *Basis) NativePtr() GDExtensionTypePtr {
 func NewBasis() Basis {
 	cx := Basis{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalBasisMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -11936,10 +13557,13 @@ func NewBasis() Basis {
 func NewBasisWithBasis(from Basis) Basis {
 	cx := Basis{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Basis
 	// BasisEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalBasisMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -11948,10 +13572,13 @@ func NewBasisWithBasis(from Basis) Basis {
 func NewBasisWithQuaternion(from Quaternion) Basis {
 	cx := Basis{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Quaternion
 	// QuaternionEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalBasisMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -11960,12 +13587,16 @@ func NewBasisWithQuaternion(from Quaternion) Basis {
 func NewBasisWithVector3Float32(axis Vector3, angle float32) Basis {
 	cx := Basis{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = axis.NativeConstPtr()
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(angle))
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalBasisMethodBindings.constructor_3, ptr, args[0], args[1])
 	return cx
 }
@@ -11974,16 +13605,21 @@ func NewBasisWithVector3Float32(axis Vector3, angle float32) Basis {
 func NewBasisWithVector3Vector3Vector3(x_axis Vector3, y_axis Vector3, z_axis Vector3) Basis {
 	cx := Basis{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [3]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = x_axis.NativeConstPtr()
+	pnr.Pin(args[0])
 	// Vector3
 	// Vector3Encoder
 	args[1] = y_axis.NativeConstPtr()
+	pnr.Pin(args[1])
 	// Vector3
 	// Vector3Encoder
 	args[2] = z_axis.NativeConstPtr()
+	pnr.Pin(args[2])
 	CallBuiltinConstructor(globalBasisMethodBindings.constructor_4, ptr, args[0], args[1], args[2])
 	return cx
 }
@@ -12020,6 +13656,8 @@ func (cx *Basis) Inverse() Basis {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12038,6 +13676,8 @@ func (cx *Basis) Transposed() Basis {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12056,6 +13696,8 @@ func (cx *Basis) Orthonormalized() Basis {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12074,6 +13716,8 @@ func (cx *Basis) Determinant() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12092,6 +13736,8 @@ func (cx *Basis) Rotated(axis Vector3, angle float32) Basis {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12099,7 +13745,10 @@ func (cx *Basis) Rotated(axis Vector3, angle float32) Basis {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&axis))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(angle)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12116,12 +13765,16 @@ func (cx *Basis) Scaled(scale Vector3) Basis {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12138,6 +13791,8 @@ func (cx *Basis) GetScale() Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12156,12 +13811,16 @@ func (cx *Basis) GetEuler(order int64) Vector3 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(order)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12178,12 +13837,16 @@ func (cx *Basis) Tdotx(with Vector3) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12200,12 +13863,16 @@ func (cx *Basis) Tdoty(with Vector3) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12222,12 +13889,16 @@ func (cx *Basis) Tdotz(with Vector3) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&with))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12244,6 +13915,8 @@ func (cx *Basis) Slerp(to Basis, weight float32) Basis {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12251,7 +13924,10 @@ func (cx *Basis) Slerp(to Basis, weight float32) Basis {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12268,6 +13944,8 @@ func (cx *Basis) IsConformal() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12286,12 +13964,16 @@ func (cx *Basis) IsEqualApprox(b Basis) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&b))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12308,6 +13990,8 @@ func (cx *Basis) IsFinite() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12326,6 +14010,8 @@ func (cx *Basis) GetRotationQuaternion() Quaternion {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12344,6 +14030,8 @@ func (cx *Basis) LookingAt(target Vector3, up Vector3, use_model_front bool) Bas
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12351,9 +14039,13 @@ func (cx *Basis) LookingAt(target Vector3, up Vector3, use_model_front bool) Bas
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&target))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&up))
 
+	pnr.Pin(args[1])
 	args[2] = BoolEncoder.EncodeTypePtr(use_model_front)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12370,12 +14062,16 @@ func (cx *Basis) FromScale(scale Vector3) Basis {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12392,6 +14088,8 @@ func (cx *Basis) FromEuler(euler Vector3, order int64) Basis {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12399,7 +14097,10 @@ func (cx *Basis) FromEuler(euler Vector3, order int64) Basis {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&euler))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(order)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Basis](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12567,6 +14268,8 @@ func (c *Transform3D) NativePtr() GDExtensionTypePtr {
 func NewTransform3D() Transform3D {
 	cx := Transform3D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalTransform3DMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -12575,10 +14278,13 @@ func NewTransform3D() Transform3D {
 func NewTransform3DWithTransform3D(from Transform3D) Transform3D {
 	cx := Transform3D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Transform3D
 	// Transform3DEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalTransform3DMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -12587,13 +14293,17 @@ func NewTransform3DWithTransform3D(from Transform3D) Transform3D {
 func NewTransform3DWithBasisVector3(basis Basis, origin Vector3) Transform3D {
 	cx := Transform3D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Basis
 	// BasisEncoder
 	args[0] = basis.NativeConstPtr()
+	pnr.Pin(args[0])
 	// Vector3
 	// Vector3Encoder
 	args[1] = origin.NativeConstPtr()
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalTransform3DMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
@@ -12602,19 +14312,25 @@ func NewTransform3DWithBasisVector3(basis Basis, origin Vector3) Transform3D {
 func NewTransform3DWithVector3Vector3Vector3Vector3(x_axis Vector3, y_axis Vector3, z_axis Vector3, origin Vector3) Transform3D {
 	cx := Transform3D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [4]GDExtensionConstTypePtr
 	// Vector3
 	// Vector3Encoder
 	args[0] = x_axis.NativeConstPtr()
+	pnr.Pin(args[0])
 	// Vector3
 	// Vector3Encoder
 	args[1] = y_axis.NativeConstPtr()
+	pnr.Pin(args[1])
 	// Vector3
 	// Vector3Encoder
 	args[2] = z_axis.NativeConstPtr()
+	pnr.Pin(args[2])
 	// Vector3
 	// Vector3Encoder
 	args[3] = origin.NativeConstPtr()
+	pnr.Pin(args[3])
 	CallBuiltinConstructor(globalTransform3DMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
@@ -12623,10 +14339,13 @@ func NewTransform3DWithVector3Vector3Vector3Vector3(x_axis Vector3, y_axis Vecto
 func NewTransform3DWithProjection(from Projection) Transform3D {
 	cx := Transform3D{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Projection
 	// ProjectionEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalTransform3DMethodBindings.constructor_4, ptr, args[0])
 	return cx
 }
@@ -12663,6 +14382,8 @@ func (cx *Transform3D) Inverse() Transform3D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12681,6 +14402,8 @@ func (cx *Transform3D) AffineInverse() Transform3D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12699,6 +14422,8 @@ func (cx *Transform3D) Orthonormalized() Transform3D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12717,6 +14442,8 @@ func (cx *Transform3D) Rotated(axis Vector3, angle float32) Transform3D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12724,7 +14451,10 @@ func (cx *Transform3D) Rotated(axis Vector3, angle float32) Transform3D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&axis))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(angle)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12741,6 +14471,8 @@ func (cx *Transform3D) RotatedLocal(axis Vector3, angle float32) Transform3D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12748,7 +14480,10 @@ func (cx *Transform3D) RotatedLocal(axis Vector3, angle float32) Transform3D {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&axis))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(angle)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12765,12 +14500,16 @@ func (cx *Transform3D) Scaled(scale Vector3) Transform3D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12787,12 +14526,16 @@ func (cx *Transform3D) ScaledLocal(scale Vector3) Transform3D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&scale))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12809,12 +14552,16 @@ func (cx *Transform3D) Translated(offset Vector3) Transform3D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&offset))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12831,12 +14578,16 @@ func (cx *Transform3D) TranslatedLocal(offset Vector3) Transform3D {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&offset))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12853,6 +14604,8 @@ func (cx *Transform3D) LookingAt(target Vector3, up Vector3, use_model_front boo
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12860,9 +14613,13 @@ func (cx *Transform3D) LookingAt(target Vector3, up Vector3, use_model_front boo
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&target))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&up))
 
+	pnr.Pin(args[1])
 	args[2] = BoolEncoder.EncodeTypePtr(use_model_front)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12879,6 +14636,8 @@ func (cx *Transform3D) InterpolateWith(xform Transform3D, weight float32) Transf
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -12886,7 +14645,10 @@ func (cx *Transform3D) InterpolateWith(xform Transform3D, weight float32) Transf
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&xform))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Transform3D](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12903,12 +14665,16 @@ func (cx *Transform3D) IsEqualApprox(xform Transform3D) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&xform))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -12925,6 +14691,8 @@ func (cx *Transform3D) IsFinite() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13088,6 +14856,8 @@ func (c *Projection) NativePtr() GDExtensionTypePtr {
 func NewProjection() Projection {
 	cx := Projection{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalProjectionMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -13096,10 +14866,13 @@ func NewProjection() Projection {
 func NewProjectionWithProjection(from Projection) Projection {
 	cx := Projection{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Projection
 	// ProjectionEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalProjectionMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -13108,10 +14881,13 @@ func NewProjectionWithProjection(from Projection) Projection {
 func NewProjectionWithTransform3D(from Transform3D) Projection {
 	cx := Projection{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Transform3D
 	// Transform3DEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalProjectionMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -13120,19 +14896,25 @@ func NewProjectionWithTransform3D(from Transform3D) Projection {
 func NewProjectionWithVector4Vector4Vector4Vector4(x_axis Vector4, y_axis Vector4, z_axis Vector4, w_axis Vector4) Projection {
 	cx := Projection{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [4]GDExtensionConstTypePtr
 	// Vector4
 	// Vector4Encoder
 	args[0] = x_axis.NativeConstPtr()
+	pnr.Pin(args[0])
 	// Vector4
 	// Vector4Encoder
 	args[1] = y_axis.NativeConstPtr()
+	pnr.Pin(args[1])
 	// Vector4
 	// Vector4Encoder
 	args[2] = z_axis.NativeConstPtr()
+	pnr.Pin(args[2])
 	// Vector4
 	// Vector4Encoder
 	args[3] = w_axis.NativeConstPtr()
+	pnr.Pin(args[3])
 	CallBuiltinConstructor(globalProjectionMethodBindings.constructor_3, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
@@ -13169,12 +14951,16 @@ func (cx *Projection) CreateDepthCorrection(flip_y bool) Projection {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.EncodeTypePtr(flip_y)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13191,12 +14977,16 @@ func (cx *Projection) CreateLightAtlasRect(rect Rect2) Projection {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Rect2Encoder.EncodeTypePtr(rect)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13213,6 +15003,8 @@ func (cx *Projection) CreatePerspective(fovy float32, aspect float32, z_near flo
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13220,13 +15012,19 @@ func (cx *Projection) CreatePerspective(fovy float32, aspect float32, z_near flo
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(fovy)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(aspect)
 
+	pnr.Pin(args[1])
 	args[2] = Float32Encoder.EncodeTypePtr(z_near)
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(z_far)
 
+	pnr.Pin(args[3])
 	args[4] = BoolEncoder.EncodeTypePtr(flip_fov)
+
+	pnr.Pin(args[4])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13243,6 +15041,8 @@ func (cx *Projection) CreatePerspectiveHmd(fovy float32, aspect float32, z_near 
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13250,19 +15050,28 @@ func (cx *Projection) CreatePerspectiveHmd(fovy float32, aspect float32, z_near 
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(fovy)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(aspect)
 
+	pnr.Pin(args[1])
 	args[2] = Float32Encoder.EncodeTypePtr(z_near)
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(z_far)
 
+	pnr.Pin(args[3])
 	args[4] = BoolEncoder.EncodeTypePtr(flip_fov)
 
+	pnr.Pin(args[4])
 	args[5] = Int64Encoder.EncodeTypePtr(eye)
 
+	pnr.Pin(args[5])
 	args[6] = Float32Encoder.EncodeTypePtr(intraocular_dist)
 
+	pnr.Pin(args[6])
 	args[7] = Float32Encoder.EncodeTypePtr(convergence_dist)
+
+	pnr.Pin(args[7])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13279,6 +15088,8 @@ func (cx *Projection) CreateForHmd(eye int64, aspect float32, intraocular_dist f
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13286,19 +15097,28 @@ func (cx *Projection) CreateForHmd(eye int64, aspect float32, intraocular_dist f
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(eye)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(aspect)
 
+	pnr.Pin(args[1])
 	args[2] = Float32Encoder.EncodeTypePtr(intraocular_dist)
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(display_width)
 
+	pnr.Pin(args[3])
 	args[4] = Float32Encoder.EncodeTypePtr(display_to_lens)
 
+	pnr.Pin(args[4])
 	args[5] = Float32Encoder.EncodeTypePtr(oversample)
 
+	pnr.Pin(args[5])
 	args[6] = Float32Encoder.EncodeTypePtr(z_near)
 
+	pnr.Pin(args[6])
 	args[7] = Float32Encoder.EncodeTypePtr(z_far)
+
+	pnr.Pin(args[7])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13315,6 +15135,8 @@ func (cx *Projection) CreateOrthogonal(left float32, right float32, bottom float
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13322,15 +15144,22 @@ func (cx *Projection) CreateOrthogonal(left float32, right float32, bottom float
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(left)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(right)
 
+	pnr.Pin(args[1])
 	args[2] = Float32Encoder.EncodeTypePtr(bottom)
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(top)
 
+	pnr.Pin(args[3])
 	args[4] = Float32Encoder.EncodeTypePtr(z_near)
 
+	pnr.Pin(args[4])
 	args[5] = Float32Encoder.EncodeTypePtr(z_far)
+
+	pnr.Pin(args[5])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13347,6 +15176,8 @@ func (cx *Projection) CreateOrthogonalAspect(size float32, aspect float32, z_nea
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13354,13 +15185,19 @@ func (cx *Projection) CreateOrthogonalAspect(size float32, aspect float32, z_nea
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(size)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(aspect)
 
+	pnr.Pin(args[1])
 	args[2] = Float32Encoder.EncodeTypePtr(z_near)
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(z_far)
 
+	pnr.Pin(args[3])
 	args[4] = BoolEncoder.EncodeTypePtr(flip_fov)
+
+	pnr.Pin(args[4])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13377,6 +15214,8 @@ func (cx *Projection) CreateFrustum(left float32, right float32, bottom float32,
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13384,15 +15223,22 @@ func (cx *Projection) CreateFrustum(left float32, right float32, bottom float32,
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(left)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(right)
 
+	pnr.Pin(args[1])
 	args[2] = Float32Encoder.EncodeTypePtr(bottom)
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(top)
 
+	pnr.Pin(args[3])
 	args[4] = Float32Encoder.EncodeTypePtr(z_near)
 
+	pnr.Pin(args[4])
 	args[5] = Float32Encoder.EncodeTypePtr(z_far)
+
+	pnr.Pin(args[5])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13409,6 +15255,8 @@ func (cx *Projection) CreateFrustumAspect(size float32, aspect float32, offset V
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13416,15 +15264,22 @@ func (cx *Projection) CreateFrustumAspect(size float32, aspect float32, offset V
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(size)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(aspect)
 
+	pnr.Pin(args[1])
 	args[2] = (GDExtensionTypePtr)(unsafe.Pointer(&offset))
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(z_near)
 
+	pnr.Pin(args[3])
 	args[4] = Float32Encoder.EncodeTypePtr(z_far)
 
+	pnr.Pin(args[4])
 	args[5] = BoolEncoder.EncodeTypePtr(flip_fov)
+
+	pnr.Pin(args[5])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13441,12 +15296,16 @@ func (cx *Projection) CreateFitAabb(aabb AABB) Projection {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&aabb))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13463,6 +15322,8 @@ func (cx *Projection) Determinant() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13481,12 +15342,16 @@ func (cx *Projection) PerspectiveZnearAdjusted(new_znear float32) Projection {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(new_znear)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13503,12 +15368,16 @@ func (cx *Projection) GetProjectionPlane(plane int64) Plane {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(plane)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Plane](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13525,6 +15394,8 @@ func (cx *Projection) FlippedY() Projection {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13543,12 +15414,16 @@ func (cx *Projection) JitterOffseted(offset Vector2) Projection {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&offset))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Projection](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13565,6 +15440,8 @@ func (cx *Projection) GetFovy(fovx float32, aspect float32) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13572,7 +15449,10 @@ func (cx *Projection) GetFovy(fovx float32, aspect float32) float32 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(fovx)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(aspect)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13589,6 +15469,8 @@ func (cx *Projection) GetZFar() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13607,6 +15489,8 @@ func (cx *Projection) GetZNear() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13625,6 +15509,8 @@ func (cx *Projection) GetAspect() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13643,6 +15529,8 @@ func (cx *Projection) GetFov() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13661,6 +15549,8 @@ func (cx *Projection) IsOrthogonal() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13679,6 +15569,8 @@ func (cx *Projection) GetViewportHalfExtents() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13697,6 +15589,8 @@ func (cx *Projection) GetFarPlaneHalfExtents() Vector2 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13715,6 +15609,8 @@ func (cx *Projection) Inverse() Projection {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13733,12 +15629,16 @@ func (cx *Projection) GetPixelsPerMeter(for_pixel_width int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(for_pixel_width)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -13755,6 +15655,8 @@ func (cx *Projection) GetLodMultiplier() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -13899,6 +15801,8 @@ func (c *Color) NativePtr() GDExtensionTypePtr {
 func NewColor() Color {
 	cx := Color{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalColorMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -13907,10 +15811,13 @@ func NewColor() Color {
 func NewColorWithColor(from Color) Color {
 	cx := Color{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Color
 	// ColorEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalColorMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -13919,12 +15826,16 @@ func NewColorWithColor(from Color) Color {
 func NewColorWithColorFloat32(from Color, alpha float32) Color {
 	cx := Color{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Color
 	// ColorEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(alpha))
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalColorMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
@@ -13933,13 +15844,18 @@ func NewColorWithColorFloat32(from Color, alpha float32) Color {
 func NewColorWithFloat32Float32Float32(r float32, g float32, b float32) Color {
 	cx := Color{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [3]GDExtensionConstTypePtr
 	// float
 	args[0] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(r))
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(g))
+	pnr.Pin(args[1])
 	// float
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(b))
+	pnr.Pin(args[2])
 	CallBuiltinConstructor(globalColorMethodBindings.constructor_3, ptr, args[0], args[1], args[2])
 	return cx
 }
@@ -13948,15 +15864,21 @@ func NewColorWithFloat32Float32Float32(r float32, g float32, b float32) Color {
 func NewColorWithFloat32Float32Float32Float32(r float32, g float32, b float32, a float32) Color {
 	cx := Color{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [4]GDExtensionConstTypePtr
 	// float
 	args[0] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(r))
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(g))
+	pnr.Pin(args[1])
 	// float
 	args[2] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(b))
+	pnr.Pin(args[2])
 	// float
 	args[3] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(a))
+	pnr.Pin(args[3])
 	CallBuiltinConstructor(globalColorMethodBindings.constructor_4, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
@@ -13965,10 +15887,13 @@ func NewColorWithFloat32Float32Float32Float32(r float32, g float32, b float32, a
 func NewColorWithString(code String) Color {
 	cx := Color{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// String
 	// StringEncoder
 	args[0] = code.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalColorMethodBindings.constructor_5, ptr, args[0])
 	return cx
 }
@@ -13977,12 +15902,16 @@ func NewColorWithString(code String) Color {
 func NewColorWithStringFloat32(code String, alpha float32) Color {
 	cx := Color{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// String
 	// StringEncoder
 	args[0] = code.NativeConstPtr()
+	pnr.Pin(args[0])
 	// float
 	args[1] = (GDExtensionConstTypePtr)(Float32Encoder.EncodeTypePtr(alpha))
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalColorMethodBindings.constructor_6, ptr, args[0], args[1])
 	return cx
 }
@@ -14019,6 +15948,8 @@ func (cx *Color) ToArgb32() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14037,6 +15968,8 @@ func (cx *Color) ToAbgr32() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14055,6 +15988,8 @@ func (cx *Color) ToRgba32() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14073,6 +16008,8 @@ func (cx *Color) ToArgb64() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14091,6 +16028,8 @@ func (cx *Color) ToAbgr64() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14109,6 +16048,8 @@ func (cx *Color) ToRgba64() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14127,12 +16068,16 @@ func (cx *Color) ToHtml(with_alpha bool) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.EncodeTypePtr(with_alpha)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14149,6 +16094,8 @@ func (cx *Color) Clamp(min Color, max Color) Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14156,7 +16103,10 @@ func (cx *Color) Clamp(min Color, max Color) Color {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&min))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&max))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14173,6 +16123,8 @@ func (cx *Color) Inverted() Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14191,6 +16143,8 @@ func (cx *Color) Lerp(to Color, weight float32) Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14198,7 +16152,10 @@ func (cx *Color) Lerp(to Color, weight float32) Color {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(weight)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14215,12 +16172,16 @@ func (cx *Color) Lightened(amount float32) Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(amount)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14237,12 +16198,16 @@ func (cx *Color) Darkened(amount float32) Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(amount)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14259,12 +16224,16 @@ func (cx *Color) Blend(over Color) Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&over))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14281,6 +16250,8 @@ func (cx *Color) GetLuminance() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14299,6 +16270,8 @@ func (cx *Color) SrgbToLinear() Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14317,6 +16290,8 @@ func (cx *Color) LinearToSrgb() Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14335,12 +16310,16 @@ func (cx *Color) IsEqualApprox(to Color) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14357,12 +16336,16 @@ func (cx *Color) Hex(hex int64) Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(hex)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14379,12 +16362,16 @@ func (cx *Color) Hex64(hex int64) Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(hex)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14401,12 +16388,16 @@ func (cx *Color) Html(rgba String) Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&rgba))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14423,12 +16414,16 @@ func (cx *Color) HtmlIsValid(color String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&color))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14445,6 +16440,8 @@ func (cx *Color) FromString(str String, defaultName Color) Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14452,7 +16449,10 @@ func (cx *Color) FromString(str String, defaultName Color) Color {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&str))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&defaultName))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14469,6 +16469,8 @@ func (cx *Color) FromHsv(h float32, s float32, v float32, alpha float32) Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14476,11 +16478,16 @@ func (cx *Color) FromHsv(h float32, s float32, v float32, alpha float32) Color {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(h)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(s)
 
+	pnr.Pin(args[1])
 	args[2] = Float32Encoder.EncodeTypePtr(v)
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(alpha)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14497,6 +16504,8 @@ func (cx *Color) FromOkHsl(h float32, s float32, l float32, alpha float32) Color
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -14504,11 +16513,16 @@ func (cx *Color) FromOkHsl(h float32, s float32, l float32, alpha float32) Color
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(h)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(s)
 
+	pnr.Pin(args[1])
 	args[2] = Float32Encoder.EncodeTypePtr(l)
 
+	pnr.Pin(args[2])
 	args[3] = Float32Encoder.EncodeTypePtr(alpha)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14525,12 +16539,51 @@ func (cx *Color) FromRgbe9995(rgbe int64) Color {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(rgbe)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* FromRgba8 : from_rgba8
+ * is_vararg = false, is_static = true
+ * goReturnType(Color) -> Color
+ */
+func (cx *Color) FromRgba8(r8 int64, g8 int64, b8 int64, a8 int64) Color {
+	mb := globalColorMethodBindings.method_from_rgba8
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 4
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(r8)
+
+	pnr.Pin(args[0])
+	args[1] = Int64Encoder.EncodeTypePtr(g8)
+
+	pnr.Pin(args[1])
+	args[2] = Int64Encoder.EncodeTypePtr(b8)
+
+	pnr.Pin(args[2])
+	args[3] = Int64Encoder.EncodeTypePtr(a8)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14632,6 +16685,27 @@ func (cx *Color) MemberGets() float32 {
 func (cx *Color) MemberGetv() float32 {
 	bx := cx.NativeConstPtr()
 	ret := CallBuiltinPtrGetter[float64](globalColorMethodBindings.member_v_getter, bx)
+	return Float32Encoder.DecodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
+
+}
+
+func (cx *Color) MemberGetokHslH() float32 {
+	bx := cx.NativeConstPtr()
+	ret := CallBuiltinPtrGetter[float64](globalColorMethodBindings.member_ok_hsl_h_getter, bx)
+	return Float32Encoder.DecodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
+
+}
+
+func (cx *Color) MemberGetokHslS() float32 {
+	bx := cx.NativeConstPtr()
+	ret := CallBuiltinPtrGetter[float64](globalColorMethodBindings.member_ok_hsl_s_getter, bx)
+	return Float32Encoder.DecodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
+
+}
+
+func (cx *Color) MemberGetokHslL() float32 {
+	bx := cx.NativeConstPtr()
+	ret := CallBuiltinPtrGetter[float64](globalColorMethodBindings.member_ok_hsl_l_getter, bx)
 	return Float32Encoder.DecodeTypePtr((GDExtensionConstTypePtr)(unsafe.Pointer(&ret)))
 
 }
@@ -14789,6 +16863,8 @@ func (c *StringName) NativePtr() GDExtensionTypePtr {
 func NewStringName() StringName {
 	cx := StringName{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalStringNameMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -14797,10 +16873,13 @@ func NewStringName() StringName {
 func NewStringNameWithStringName(from StringName) StringName {
 	cx := StringName{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// StringName
 	// StringNameEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalStringNameMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -14809,10 +16888,13 @@ func NewStringNameWithStringName(from StringName) StringName {
 func NewStringNameWithString(from String) StringName {
 	cx := StringName{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// String
 	// StringEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalStringNameMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -14820,6 +16902,7 @@ func NewStringNameWithString(from String) StringName {
 func (cx *StringName) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalStringNameMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -14855,12 +16938,16 @@ func (cx *StringName) CasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14877,12 +16964,16 @@ func (cx *StringName) NocasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14899,12 +16990,16 @@ func (cx *StringName) NaturalcasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14921,12 +17016,16 @@ func (cx *StringName) NaturalnocasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14943,12 +17042,16 @@ func (cx *StringName) FilecasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14965,12 +17068,16 @@ func (cx *StringName) FilenocasecmpTo(to String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&to))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -14987,6 +17094,8 @@ func (cx *StringName) Length() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15005,6 +17114,8 @@ func (cx *StringName) Substr(from int64, len int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15012,7 +17123,10 @@ func (cx *StringName) Substr(from int64, len int64) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(from)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(len)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15029,6 +17143,8 @@ func (cx *StringName) GetSlice(delimiter String, slice int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15036,7 +17152,10 @@ func (cx *StringName) GetSlice(delimiter String, slice int64) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(slice)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15053,6 +17172,8 @@ func (cx *StringName) GetSlicec(delimiter int64, slice int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15060,7 +17181,10 @@ func (cx *StringName) GetSlicec(delimiter int64, slice int64) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(delimiter)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(slice)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15077,12 +17201,16 @@ func (cx *StringName) GetSliceCount(delimiter String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15099,6 +17227,8 @@ func (cx *StringName) Find(what String, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15106,7 +17236,10 @@ func (cx *StringName) Find(what String, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15123,6 +17256,8 @@ func (cx *StringName) Findn(what String, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15130,7 +17265,10 @@ func (cx *StringName) Findn(what String, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15147,6 +17285,8 @@ func (cx *StringName) Count(what String, from int64, to int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15154,9 +17294,13 @@ func (cx *StringName) Count(what String, from int64, to int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
 
+	pnr.Pin(args[1])
 	args[2] = Int64Encoder.EncodeTypePtr(to)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15173,6 +17317,8 @@ func (cx *StringName) Countn(what String, from int64, to int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15180,9 +17326,13 @@ func (cx *StringName) Countn(what String, from int64, to int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
 
+	pnr.Pin(args[1])
 	args[2] = Int64Encoder.EncodeTypePtr(to)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15199,6 +17349,8 @@ func (cx *StringName) Rfind(what String, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15206,7 +17358,10 @@ func (cx *StringName) Rfind(what String, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15223,6 +17378,8 @@ func (cx *StringName) Rfindn(what String, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15230,7 +17387,10 @@ func (cx *StringName) Rfindn(what String, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15247,12 +17407,16 @@ func (cx *StringName) Match(expr String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&expr))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15269,12 +17433,16 @@ func (cx *StringName) Matchn(expr String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&expr))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15291,12 +17459,16 @@ func (cx *StringName) BeginsWith(text String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15313,12 +17485,16 @@ func (cx *StringName) EndsWith(text String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15335,12 +17511,16 @@ func (cx *StringName) IsSubsequenceOf(text String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15357,12 +17537,16 @@ func (cx *StringName) IsSubsequenceOfn(text String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15379,6 +17563,8 @@ func (cx *StringName) Bigrams() PackedStringArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15397,12 +17583,16 @@ func (cx *StringName) Similarity(text String) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&text))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15419,6 +17609,8 @@ func (cx *StringName) Format(values Variant, placeholder String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15426,7 +17618,10 @@ func (cx *StringName) Format(values Variant, placeholder String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&values))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&placeholder))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15443,6 +17638,8 @@ func (cx *StringName) Replace(what String, forwhat String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15450,7 +17647,10 @@ func (cx *StringName) Replace(what String, forwhat String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&forwhat))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15467,6 +17667,8 @@ func (cx *StringName) Replacen(what String, forwhat String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15474,7 +17676,10 @@ func (cx *StringName) Replacen(what String, forwhat String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&forwhat))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15491,12 +17696,16 @@ func (cx *StringName) Repeat(count int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(count)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15513,6 +17722,8 @@ func (cx *StringName) Reverse() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15531,6 +17742,8 @@ func (cx *StringName) Insert(position int64, what String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15538,7 +17751,10 @@ func (cx *StringName) Insert(position int64, what String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(position)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15555,6 +17771,8 @@ func (cx *StringName) Erase(position int64, chars int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15562,7 +17780,10 @@ func (cx *StringName) Erase(position int64, chars int64) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(position)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(chars)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15579,6 +17800,8 @@ func (cx *StringName) Capitalize() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15597,6 +17820,8 @@ func (cx *StringName) ToCamelCase() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15615,6 +17840,8 @@ func (cx *StringName) ToPascalCase() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15633,6 +17860,8 @@ func (cx *StringName) ToSnakeCase() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15651,6 +17880,8 @@ func (cx *StringName) Split(delimiter String, allow_empty bool, maxsplit int64) 
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15658,9 +17889,13 @@ func (cx *StringName) Split(delimiter String, allow_empty bool, maxsplit int64) 
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(allow_empty)
 
+	pnr.Pin(args[1])
 	args[2] = Int64Encoder.EncodeTypePtr(maxsplit)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15677,6 +17912,8 @@ func (cx *StringName) Rsplit(delimiter String, allow_empty bool, maxsplit int64)
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15684,9 +17921,13 @@ func (cx *StringName) Rsplit(delimiter String, allow_empty bool, maxsplit int64)
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(allow_empty)
 
+	pnr.Pin(args[1])
 	args[2] = Int64Encoder.EncodeTypePtr(maxsplit)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15703,6 +17944,8 @@ func (cx *StringName) SplitFloats(delimiter String, allow_empty bool) PackedFloa
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15710,7 +17953,10 @@ func (cx *StringName) SplitFloats(delimiter String, allow_empty bool) PackedFloa
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&delimiter))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(allow_empty)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15727,12 +17973,16 @@ func (cx *StringName) Join(parts PackedStringArray) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&parts))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15749,6 +17999,8 @@ func (cx *StringName) ToUpper() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15767,6 +18019,8 @@ func (cx *StringName) ToLower() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15785,12 +18039,16 @@ func (cx *StringName) Left(length int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(length)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15807,12 +18065,16 @@ func (cx *StringName) Right(length int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(length)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15829,6 +18091,8 @@ func (cx *StringName) StripEdges(left bool, right bool) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15836,7 +18100,10 @@ func (cx *StringName) StripEdges(left bool, right bool) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.EncodeTypePtr(left)
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(right)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15853,6 +18120,8 @@ func (cx *StringName) StripEscapes() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15871,12 +18140,16 @@ func (cx *StringName) Lstrip(chars String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&chars))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15893,12 +18166,16 @@ func (cx *StringName) Rstrip(chars String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&chars))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15915,6 +18192,8 @@ func (cx *StringName) GetExtension() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15933,6 +18212,8 @@ func (cx *StringName) GetBasename() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -15951,12 +18232,16 @@ func (cx *StringName) PathJoin(file String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&file))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15973,12 +18258,16 @@ func (cx *StringName) UnicodeAt(at int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -15995,12 +18284,16 @@ func (cx *StringName) Indent(prefix String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&prefix))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -16017,6 +18310,8 @@ func (cx *StringName) Dedent() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16035,6 +18330,8 @@ func (cx *StringName) Md5Text() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16053,6 +18350,8 @@ func (cx *StringName) Sha1Text() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16071,6 +18370,8 @@ func (cx *StringName) Sha256Text() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16089,6 +18390,8 @@ func (cx *StringName) Md5Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16107,6 +18410,8 @@ func (cx *StringName) Sha1Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16125,6 +18430,8 @@ func (cx *StringName) Sha256Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16143,6 +18450,8 @@ func (cx *StringName) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16161,12 +18470,16 @@ func (cx *StringName) Contains(what String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -16183,12 +18496,16 @@ func (cx *StringName) Containsn(what String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -16205,6 +18522,8 @@ func (cx *StringName) IsAbsolutePath() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16223,6 +18542,8 @@ func (cx *StringName) IsRelativePath() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16241,6 +18562,8 @@ func (cx *StringName) SimplifyPath() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16259,6 +18582,8 @@ func (cx *StringName) GetBaseDir() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16277,6 +18602,8 @@ func (cx *StringName) GetFile() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16295,12 +18622,16 @@ func (cx *StringName) XmlEscape(escape_quotes bool) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.EncodeTypePtr(escape_quotes)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -16317,6 +18648,8 @@ func (cx *StringName) XmlUnescape() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16335,6 +18668,8 @@ func (cx *StringName) UriEncode() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16353,6 +18688,8 @@ func (cx *StringName) UriDecode() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16371,6 +18708,8 @@ func (cx *StringName) CEscape() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16389,6 +18728,8 @@ func (cx *StringName) CUnescape() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16407,6 +18748,8 @@ func (cx *StringName) JsonEscape() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16425,6 +18768,8 @@ func (cx *StringName) ValidateNodeName() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16443,11 +18788,53 @@ func (cx *StringName) ValidateFilename() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, nil)
+	return ret
+}
+
+/* IsValidAsciiIdentifier : is_valid_ascii_identifier
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *StringName) IsValidAsciiIdentifier() bool {
+	mb := globalStringNameMethodBindings.method_is_valid_ascii_identifier
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
+	return ret
+}
+
+/* IsValidUnicodeIdentifier : is_valid_unicode_identifier
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *StringName) IsValidUnicodeIdentifier() bool {
+	mb := globalStringNameMethodBindings.method_is_valid_unicode_identifier
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 }
 
@@ -16461,6 +18848,8 @@ func (cx *StringName) IsValidIdentifier() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16479,6 +18868,8 @@ func (cx *StringName) IsValidInt() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16497,6 +18888,8 @@ func (cx *StringName) IsValidFloat() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16515,12 +18908,16 @@ func (cx *StringName) IsValidHexNumber(with_prefix bool) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.EncodeTypePtr(with_prefix)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -16537,6 +18934,8 @@ func (cx *StringName) IsValidHtmlColor() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16555,6 +18954,8 @@ func (cx *StringName) IsValidIpAddress() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16573,6 +18974,8 @@ func (cx *StringName) IsValidFilename() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16591,6 +18994,8 @@ func (cx *StringName) ToInt() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16609,6 +19014,8 @@ func (cx *StringName) ToFloat() float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16627,6 +19034,8 @@ func (cx *StringName) HexToInt() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16645,6 +19054,8 @@ func (cx *StringName) BinToInt() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16663,6 +19074,8 @@ func (cx *StringName) Lpad(min_length int64, character String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16670,7 +19083,10 @@ func (cx *StringName) Lpad(min_length int64, character String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(min_length)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&character))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -16687,6 +19103,8 @@ func (cx *StringName) Rpad(min_length int64, character String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16694,7 +19112,10 @@ func (cx *StringName) Rpad(min_length int64, character String) String {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(min_length)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&character))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -16711,12 +19132,16 @@ func (cx *StringName) PadDecimals(digits int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(digits)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -16733,12 +19158,16 @@ func (cx *StringName) PadZeros(digits int64) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(digits)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -16755,12 +19184,16 @@ func (cx *StringName) TrimPrefix(prefix String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&prefix))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -16777,12 +19210,16 @@ func (cx *StringName) TrimSuffix(suffix String) String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&suffix))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -16799,6 +19236,8 @@ func (cx *StringName) ToAsciiBuffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16817,6 +19256,8 @@ func (cx *StringName) ToUtf8Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16835,6 +19276,8 @@ func (cx *StringName) ToUtf16Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16853,6 +19296,8 @@ func (cx *StringName) ToUtf32Buffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16871,6 +19316,8 @@ func (cx *StringName) HexDecode() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16889,6 +19336,8 @@ func (cx *StringName) ToWcharBuffer() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -16907,6 +19356,8 @@ func (cx *StringName) Hash() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17346,6 +19797,8 @@ func (c *NodePath) NativePtr() GDExtensionTypePtr {
 func NewNodePath() NodePath {
 	cx := NodePath{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalNodePathMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -17354,10 +19807,13 @@ func NewNodePath() NodePath {
 func NewNodePathWithNodePath(from NodePath) NodePath {
 	cx := NodePath{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// NodePath
 	// NodePathEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalNodePathMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -17366,10 +19822,13 @@ func NewNodePathWithNodePath(from NodePath) NodePath {
 func NewNodePathWithString(from String) NodePath {
 	cx := NodePath{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// String
 	// StringEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalNodePathMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -17377,6 +19836,7 @@ func NewNodePathWithString(from String) NodePath {
 func (cx *NodePath) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalNodePathMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -17412,6 +19872,8 @@ func (cx *NodePath) IsAbsolute() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17430,6 +19892,8 @@ func (cx *NodePath) GetNameCount() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17448,12 +19912,16 @@ func (cx *NodePath) GetName(idx int64) StringName {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(idx)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[StringName](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -17470,6 +19938,8 @@ func (cx *NodePath) GetSubnameCount() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17488,6 +19958,8 @@ func (cx *NodePath) Hash() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17506,12 +19978,16 @@ func (cx *NodePath) GetSubname(idx int64) StringName {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(idx)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[StringName](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -17528,6 +20004,8 @@ func (cx *NodePath) GetConcatenatedNames() StringName {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17546,6 +20024,8 @@ func (cx *NodePath) GetConcatenatedSubnames() StringName {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17564,6 +20044,8 @@ func (cx *NodePath) Slice(begin int64, end int64) NodePath {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17571,7 +20053,10 @@ func (cx *NodePath) Slice(begin int64, end int64) NodePath {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[NodePath](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -17588,6 +20073,8 @@ func (cx *NodePath) GetAsPropertyPath() NodePath {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17606,6 +20093,8 @@ func (cx *NodePath) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17687,6 +20176,8 @@ func (c *RID) NativePtr() GDExtensionTypePtr {
 func NewRID() RID {
 	cx := RID{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalRIDMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -17695,10 +20186,13 @@ func NewRID() RID {
 func NewRIDWithRID(from RID) RID {
 	cx := RID{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// RID
 	// RIDEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalRIDMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -17735,6 +20229,8 @@ func (cx *RID) IsValid() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17753,6 +20249,8 @@ func (cx *RID) GetId() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17825,6 +20323,20 @@ func (cx *RID) Greater_equal_RID(right RID) bool {
 	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_greater_equal_RID, lt, rt)
 }
 
+// In_Dictionary operator
+func (cx *RID) In_Dictionary(right Dictionary) bool {
+	lt := cx.NativeConstPtr()
+	rt := right.NativeConstPtr()
+	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_in_Dictionary, lt, rt)
+}
+
+// In_Array operator
+func (cx *RID) In_Array(right Array) bool {
+	lt := cx.NativeConstPtr()
+	rt := right.NativeConstPtr()
+	return CallBuiltinOperatorPtr[bool](globalRIDMethodBindings.operator_in_Array, lt, rt)
+}
+
 var _ GDBuiltInDestroyableClass = &Callable{}
 
 /*
@@ -17848,6 +20360,8 @@ func (c *Callable) NativePtr() GDExtensionTypePtr {
 func NewCallable() Callable {
 	cx := Callable{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalCallableMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -17856,10 +20370,13 @@ func NewCallable() Callable {
 func NewCallableWithCallable(from Callable) Callable {
 	cx := Callable{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Callable
 	// CallableEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalCallableMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -17868,13 +20385,17 @@ func NewCallableWithCallable(from Callable) Callable {
 func NewCallableWithObjectStringName(object Object, method StringName) Callable {
 	cx := Callable{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Object
 	arg0 := object.GetGodotObjectOwner()
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&arg0))
+	pnr.Pin(args[0])
 	// StringName
 	// StringNameEncoder
 	args[1] = method.NativeConstPtr()
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalCallableMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
@@ -17882,6 +20403,7 @@ func NewCallableWithObjectStringName(object Object, method StringName) Callable 
 func (cx *Callable) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalCallableMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -17917,6 +20439,8 @@ func (cx *Callable) Create(variant Variant, method StringName) Callable {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17924,7 +20448,10 @@ func (cx *Callable) Create(variant Variant, method StringName) Callable {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&variant))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Callable](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -17941,12 +20468,16 @@ func (cx *Callable) Callv(arguments Array) Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&arguments))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -17963,6 +20494,8 @@ func (cx *Callable) IsNull() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17981,6 +20514,8 @@ func (cx *Callable) IsCustom() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -17999,6 +20534,8 @@ func (cx *Callable) IsStandard() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18017,6 +20554,8 @@ func (cx *Callable) IsValid() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18035,6 +20574,8 @@ func (cx *Callable) GetObject() Object {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18053,6 +20594,8 @@ func (cx *Callable) GetObjectId() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18071,6 +20614,8 @@ func (cx *Callable) GetMethod() StringName {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18089,6 +20634,8 @@ func (cx *Callable) GetArgumentCount() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18107,6 +20654,8 @@ func (cx *Callable) GetBoundArgumentsCount() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18125,11 +20674,33 @@ func (cx *Callable) GetBoundArguments() Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[Array](mb, bx, nil)
+	return ret
+}
+
+/* GetUnboundArgumentsCount : get_unbound_arguments_count
+ * is_vararg = false, is_static = false
+ * goReturnType(int) -> int64
+ */
+func (cx *Callable) GetUnboundArgumentsCount() int64 {
+	mb := globalCallableMethodBindings.method_get_unbound_arguments_count
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[int64](mb, bx, nil)
 	return ret
 }
 
@@ -18143,6 +20714,8 @@ func (cx *Callable) Hash() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18161,12 +20734,16 @@ func (cx *Callable) Bindv(arguments Array) Callable {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&arguments))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Callable](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18183,12 +20760,16 @@ func (cx *Callable) Unbind(argcount int64) Callable {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(argcount)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Callable](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18268,6 +20849,8 @@ func (c *Signal) NativePtr() GDExtensionTypePtr {
 func NewSignal() Signal {
 	cx := Signal{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalSignalMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -18276,10 +20859,13 @@ func NewSignal() Signal {
 func NewSignalWithSignal(from Signal) Signal {
 	cx := Signal{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Signal
 	// SignalEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalSignalMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -18288,13 +20874,17 @@ func NewSignalWithSignal(from Signal) Signal {
 func NewSignalWithObjectStringName(object Object, signal StringName) Signal {
 	cx := Signal{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [2]GDExtensionConstTypePtr
 	// Object
 	arg0 := object.GetGodotObjectOwner()
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&arg0))
+	pnr.Pin(args[0])
 	// StringName
 	// StringNameEncoder
 	args[1] = signal.NativeConstPtr()
+	pnr.Pin(args[1])
 	CallBuiltinConstructor(globalSignalMethodBindings.constructor_2, ptr, args[0], args[1])
 	return cx
 }
@@ -18302,6 +20892,7 @@ func NewSignalWithObjectStringName(object Object, signal StringName) Signal {
 func (cx *Signal) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalSignalMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -18337,6 +20928,8 @@ func (cx *Signal) IsNull() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18355,6 +20948,8 @@ func (cx *Signal) GetObject() Object {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18373,6 +20968,8 @@ func (cx *Signal) GetObjectId() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18391,6 +20988,8 @@ func (cx *Signal) GetName() StringName {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18409,6 +21008,8 @@ func (cx *Signal) Connect(callable Callable, flags int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18416,7 +21017,10 @@ func (cx *Signal) Connect(callable Callable, flags int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&callable))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(flags)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18433,12 +21037,16 @@ func (cx *Signal) Disconnect(callable Callable) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&callable))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18455,12 +21063,16 @@ func (cx *Signal) IsConnected(callable Callable) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&callable))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18477,11 +21089,33 @@ func (cx *Signal) GetConnections() Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[Array](mb, bx, nil)
+	return ret
+}
+
+/* HasConnections : has_connections
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Signal) HasConnections() bool {
+	mb := globalSignalMethodBindings.method_has_connections
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
 }
 
@@ -18558,6 +21192,8 @@ func (c *Dictionary) NativePtr() GDExtensionTypePtr {
 func NewDictionary() Dictionary {
 	cx := Dictionary{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalDictionaryMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -18566,17 +21202,56 @@ func NewDictionary() Dictionary {
 func NewDictionaryWithDictionary(from Dictionary) Dictionary {
 	cx := Dictionary{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Dictionary
 	// DictionaryEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalDictionaryMethodBindings.constructor_1, ptr, args[0])
+	return cx
+}
+
+// NewDictionary, index: 2
+func NewDictionaryWithDictionaryInt64StringNameVariantInt64StringNameVariant(base Dictionary, key_type int64, key_class_name StringName, key_script Variant, value_type int64, value_class_name StringName, value_script Variant) Dictionary {
+	cx := Dictionary{}
+	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
+	var args [7]GDExtensionConstTypePtr
+	// Dictionary
+	// DictionaryEncoder
+	args[0] = base.NativeConstPtr()
+	pnr.Pin(args[0])
+	// int
+	args[1] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(key_type))
+	pnr.Pin(args[1])
+	// StringName
+	// StringNameEncoder
+	args[2] = key_class_name.NativeConstPtr()
+	pnr.Pin(args[2])
+	// Variant
+	args[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key_script))
+	pnr.Pin(args[3])
+	// int
+	args[4] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(value_type))
+	pnr.Pin(args[4])
+	// StringName
+	// StringNameEncoder
+	args[5] = value_class_name.NativeConstPtr()
+	pnr.Pin(args[5])
+	// Variant
+	args[6] = (GDExtensionConstTypePtr)(unsafe.Pointer(&value_script))
+	pnr.Pin(args[6])
+	CallBuiltinConstructor(globalDictionaryMethodBindings.constructor_2, ptr, args[0], args[1], args[2], args[3], args[4], args[5], args[6])
 	return cx
 }
 
 func (cx *Dictionary) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalDictionaryMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -18612,6 +21287,8 @@ func (cx *Dictionary) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18630,6 +21307,8 @@ func (cx *Dictionary) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18648,6 +21327,54 @@ func (cx *Dictionary) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	CallBuiltinMethodPtrNoRet(mb, bx, nil)
+
+}
+
+/* Assign : assign
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *Dictionary) Assign(dictionary Dictionary) {
+	mb := globalDictionaryMethodBindings.method_assign
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&dictionary))
+
+	pnr.Pin(args[0])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
+/* Sort : sort
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *Dictionary) Sort() {
+	mb := globalDictionaryMethodBindings.method_sort
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18666,6 +21393,8 @@ func (cx *Dictionary) Merge(dictionary Dictionary, overwrite bool) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18673,7 +21402,10 @@ func (cx *Dictionary) Merge(dictionary Dictionary, overwrite bool) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&dictionary))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(overwrite)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18690,6 +21422,8 @@ func (cx *Dictionary) Merged(dictionary Dictionary, overwrite bool) Dictionary {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18697,7 +21431,10 @@ func (cx *Dictionary) Merged(dictionary Dictionary, overwrite bool) Dictionary {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&dictionary))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(overwrite)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Dictionary](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18714,12 +21451,16 @@ func (cx *Dictionary) Has(key Variant) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&key))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18736,12 +21477,16 @@ func (cx *Dictionary) HasAll(keys Array) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&keys))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18758,12 +21503,16 @@ func (cx *Dictionary) FindKey(value Variant) Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18780,12 +21529,16 @@ func (cx *Dictionary) Erase(key Variant) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&key))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18802,6 +21555,8 @@ func (cx *Dictionary) Hash() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18820,6 +21575,8 @@ func (cx *Dictionary) Keys() Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18838,6 +21595,8 @@ func (cx *Dictionary) Values() Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18856,12 +21615,16 @@ func (cx *Dictionary) Duplicate(deep bool) Dictionary {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.EncodeTypePtr(deep)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Dictionary](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18878,6 +21641,8 @@ func (cx *Dictionary) Get(key Variant, defaultName Variant) Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18885,7 +21650,10 @@ func (cx *Dictionary) Get(key Variant, defaultName Variant) Variant {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&key))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&defaultName))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -18902,6 +21670,8 @@ func (cx *Dictionary) GetOrAdd(key Variant, defaultName Variant) Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18909,10 +21679,300 @@ func (cx *Dictionary) GetOrAdd(key Variant, defaultName Variant) Variant {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&key))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&defaultName))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Dictionary) Set(key Variant, value Variant) bool {
+	mb := globalDictionaryMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&key))
+
+	pnr.Pin(args[0])
+	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* IsTyped : is_typed
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Dictionary) IsTyped() bool {
+	mb := globalDictionaryMethodBindings.method_is_typed
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
+	return ret
+}
+
+/* IsTypedKey : is_typed_key
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Dictionary) IsTypedKey() bool {
+	mb := globalDictionaryMethodBindings.method_is_typed_key
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
+	return ret
+}
+
+/* IsTypedValue : is_typed_value
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Dictionary) IsTypedValue() bool {
+	mb := globalDictionaryMethodBindings.method_is_typed_value
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
+	return ret
+}
+
+/* IsSameTyped : is_same_typed
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Dictionary) IsSameTyped(dictionary Dictionary) bool {
+	mb := globalDictionaryMethodBindings.method_is_same_typed
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&dictionary))
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* IsSameTypedKey : is_same_typed_key
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Dictionary) IsSameTypedKey(dictionary Dictionary) bool {
+	mb := globalDictionaryMethodBindings.method_is_same_typed_key
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&dictionary))
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* IsSameTypedValue : is_same_typed_value
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Dictionary) IsSameTypedValue(dictionary Dictionary) bool {
+	mb := globalDictionaryMethodBindings.method_is_same_typed_value
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&dictionary))
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* GetTypedKeyBuiltin : get_typed_key_builtin
+ * is_vararg = false, is_static = false
+ * goReturnType(int) -> int64
+ */
+func (cx *Dictionary) GetTypedKeyBuiltin() int64 {
+	mb := globalDictionaryMethodBindings.method_get_typed_key_builtin
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[int64](mb, bx, nil)
+	return ret
+}
+
+/* GetTypedValueBuiltin : get_typed_value_builtin
+ * is_vararg = false, is_static = false
+ * goReturnType(int) -> int64
+ */
+func (cx *Dictionary) GetTypedValueBuiltin() int64 {
+	mb := globalDictionaryMethodBindings.method_get_typed_value_builtin
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[int64](mb, bx, nil)
+	return ret
+}
+
+/* GetTypedKeyClassName : get_typed_key_class_name
+ * is_vararg = false, is_static = false
+ * goReturnType(StringName) -> StringName
+ */
+func (cx *Dictionary) GetTypedKeyClassName() StringName {
+	mb := globalDictionaryMethodBindings.method_get_typed_key_class_name
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[StringName](mb, bx, nil)
+	return ret
+}
+
+/* GetTypedValueClassName : get_typed_value_class_name
+ * is_vararg = false, is_static = false
+ * goReturnType(StringName) -> StringName
+ */
+func (cx *Dictionary) GetTypedValueClassName() StringName {
+	mb := globalDictionaryMethodBindings.method_get_typed_value_class_name
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[StringName](mb, bx, nil)
+	return ret
+}
+
+/* GetTypedKeyScript : get_typed_key_script
+ * is_vararg = false, is_static = false
+ * goReturnType(Variant) -> Variant
+ */
+func (cx *Dictionary) GetTypedKeyScript() Variant {
+	mb := globalDictionaryMethodBindings.method_get_typed_key_script
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, nil)
+	return ret
+}
+
+/* GetTypedValueScript : get_typed_value_script
+ * is_vararg = false, is_static = false
+ * goReturnType(Variant) -> Variant
+ */
+func (cx *Dictionary) GetTypedValueScript() Variant {
+	mb := globalDictionaryMethodBindings.method_get_typed_value_script
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, nil)
 	return ret
 }
 
@@ -18926,6 +21986,8 @@ func (cx *Dictionary) MakeReadOnly() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18944,6 +22006,8 @@ func (cx *Dictionary) IsReadOnly() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18962,6 +22026,8 @@ func (cx *Dictionary) RecursiveEqual(dictionary Dictionary, recursion_count int6
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -18969,7 +22035,10 @@ func (cx *Dictionary) RecursiveEqual(dictionary Dictionary, recursion_count int6
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&dictionary))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(recursion_count)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19092,6 +22161,8 @@ func (c *Array) NativePtr() GDExtensionTypePtr {
 func NewArray() Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -19100,10 +22171,13 @@ func NewArray() Array {
 func NewArrayWithArray(from Array) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -19112,17 +22186,23 @@ func NewArrayWithArray(from Array) Array {
 func NewArrayWithArrayInt64StringNameVariant(base Array, typeName int64, class_name StringName, script Variant) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [4]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = base.NativeConstPtr()
+	pnr.Pin(args[0])
 	// int
 	args[1] = (GDExtensionConstTypePtr)(Int64Encoder.EncodeTypePtr(typeName))
+	pnr.Pin(args[1])
 	// StringName
 	// StringNameEncoder
 	args[2] = class_name.NativeConstPtr()
+	pnr.Pin(args[2])
 	// Variant
 	args[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&script))
+	pnr.Pin(args[3])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_2, ptr, args[0], args[1], args[2], args[3])
 	return cx
 }
@@ -19131,10 +22211,13 @@ func NewArrayWithArrayInt64StringNameVariant(base Array, typeName int64, class_n
 func NewArrayWithPackedByteArray(from PackedByteArray) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedByteArray
 	// PackedByteArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_3, ptr, args[0])
 	return cx
 }
@@ -19143,10 +22226,13 @@ func NewArrayWithPackedByteArray(from PackedByteArray) Array {
 func NewArrayWithPackedInt32Array(from PackedInt32Array) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedInt32Array
 	// PackedInt32ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_4, ptr, args[0])
 	return cx
 }
@@ -19155,10 +22241,13 @@ func NewArrayWithPackedInt32Array(from PackedInt32Array) Array {
 func NewArrayWithPackedInt64Array(from PackedInt64Array) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedInt64Array
 	// PackedInt64ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_5, ptr, args[0])
 	return cx
 }
@@ -19167,10 +22256,13 @@ func NewArrayWithPackedInt64Array(from PackedInt64Array) Array {
 func NewArrayWithPackedFloat32Array(from PackedFloat32Array) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedFloat32Array
 	// PackedFloat32ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_6, ptr, args[0])
 	return cx
 }
@@ -19179,10 +22271,13 @@ func NewArrayWithPackedFloat32Array(from PackedFloat32Array) Array {
 func NewArrayWithPackedFloat64Array(from PackedFloat64Array) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedFloat64Array
 	// PackedFloat64ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_7, ptr, args[0])
 	return cx
 }
@@ -19191,10 +22286,13 @@ func NewArrayWithPackedFloat64Array(from PackedFloat64Array) Array {
 func NewArrayWithPackedStringArray(from PackedStringArray) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedStringArray
 	// PackedStringArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_8, ptr, args[0])
 	return cx
 }
@@ -19203,10 +22301,13 @@ func NewArrayWithPackedStringArray(from PackedStringArray) Array {
 func NewArrayWithPackedVector2Array(from PackedVector2Array) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedVector2Array
 	// PackedVector2ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_9, ptr, args[0])
 	return cx
 }
@@ -19215,10 +22316,13 @@ func NewArrayWithPackedVector2Array(from PackedVector2Array) Array {
 func NewArrayWithPackedVector3Array(from PackedVector3Array) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedVector3Array
 	// PackedVector3ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_10, ptr, args[0])
 	return cx
 }
@@ -19227,10 +22331,13 @@ func NewArrayWithPackedVector3Array(from PackedVector3Array) Array {
 func NewArrayWithPackedColorArray(from PackedColorArray) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedColorArray
 	// PackedColorArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_11, ptr, args[0])
 	return cx
 }
@@ -19239,10 +22346,13 @@ func NewArrayWithPackedColorArray(from PackedColorArray) Array {
 func NewArrayWithPackedVector4Array(from PackedVector4Array) Array {
 	cx := Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedVector4Array
 	// PackedVector4ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalArrayMethodBindings.constructor_12, ptr, args[0])
 	return cx
 }
@@ -19250,6 +22360,7 @@ func NewArrayWithPackedVector4Array(from PackedVector4Array) Array {
 func (cx *Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalArrayMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -19285,6 +22396,8 @@ func (cx *Array) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19303,6 +22416,8 @@ func (cx *Array) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19321,6 +22436,8 @@ func (cx *Array) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19339,6 +22456,8 @@ func (cx *Array) Hash() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19357,12 +22476,71 @@ func (cx *Array) Assign(array Array) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
+/* Get : get
+ * is_vararg = false, is_static = false
+ * goReturnType(Variant) -> Variant
+ */
+func (cx *Array) Get(index int64) Variant {
+	mb := globalArrayMethodBindings.method_get
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *Array) Set(index int64, value Variant) {
+	mb := globalArrayMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19379,12 +22557,16 @@ func (cx *Array) PushBack(value Variant) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19401,12 +22583,16 @@ func (cx *Array) PushFront(value Variant) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19423,12 +22609,16 @@ func (cx *Array) Append(value Variant) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19445,12 +22635,16 @@ func (cx *Array) AppendArray(array Array) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19467,12 +22661,16 @@ func (cx *Array) Resize(size int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19489,6 +22687,8 @@ func (cx *Array) Insert(position int64, value Variant) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19496,7 +22696,10 @@ func (cx *Array) Insert(position int64, value Variant) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(position)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19513,12 +22716,16 @@ func (cx *Array) RemoveAt(position int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(position)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19535,12 +22742,16 @@ func (cx *Array) Fill(value Variant) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19557,12 +22768,16 @@ func (cx *Array) Erase(value Variant) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19579,6 +22794,8 @@ func (cx *Array) Front() Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19597,6 +22814,8 @@ func (cx *Array) Back() Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19615,6 +22834,8 @@ func (cx *Array) PickRandom() Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19633,6 +22854,8 @@ func (cx *Array) Find(what Variant, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19640,7 +22863,39 @@ func (cx *Array) Find(what Variant, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
+
+	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* FindCustom : find_custom
+ * is_vararg = false, is_static = false
+ * goReturnType(int) -> int64
+ */
+func (cx *Array) FindCustom(method Callable, from int64) int64 {
+	mb := globalArrayMethodBindings.method_find_custom
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
+
+	pnr.Pin(args[0])
+	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19657,6 +22912,8 @@ func (cx *Array) Rfind(what Variant, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19664,7 +22921,39 @@ func (cx *Array) Rfind(what Variant, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&what))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
+
+	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* RfindCustom : rfind_custom
+ * is_vararg = false, is_static = false
+ * goReturnType(int) -> int64
+ */
+func (cx *Array) RfindCustom(method Callable, from int64) int64 {
+	mb := globalArrayMethodBindings.method_rfind_custom
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
+
+	pnr.Pin(args[0])
+	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19681,12 +22970,16 @@ func (cx *Array) Count(value Variant) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19703,12 +22996,16 @@ func (cx *Array) Has(value Variant) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19725,6 +23022,8 @@ func (cx *Array) PopBack() Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19743,6 +23042,8 @@ func (cx *Array) PopFront() Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19761,12 +23062,16 @@ func (cx *Array) PopAt(position int64) Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(position)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19783,6 +23088,8 @@ func (cx *Array) Sort() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19801,12 +23108,16 @@ func (cx *Array) SortCustom(callbackFunc Callable) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&callbackFunc))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19823,6 +23134,8 @@ func (cx *Array) Shuffle() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19841,6 +23154,8 @@ func (cx *Array) Bsearch(value Variant, before bool) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19848,7 +23163,10 @@ func (cx *Array) Bsearch(value Variant, before bool) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19865,6 +23183,8 @@ func (cx *Array) BsearchCustom(value Variant, callbackFunc Callable, before bool
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19872,9 +23192,13 @@ func (cx *Array) BsearchCustom(value Variant, callbackFunc Callable, before bool
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&callbackFunc))
 
+	pnr.Pin(args[1])
 	args[2] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19891,6 +23215,8 @@ func (cx *Array) Reverse() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19909,12 +23235,16 @@ func (cx *Array) Duplicate(deep bool) Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = BoolEncoder.EncodeTypePtr(deep)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19931,6 +23261,8 @@ func (cx *Array) Slice(begin int64, end int64, step int64, deep bool) Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -19938,11 +23270,16 @@ func (cx *Array) Slice(begin int64, end int64, step int64, deep bool) Array {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
 
+	pnr.Pin(args[1])
 	args[2] = Int64Encoder.EncodeTypePtr(step)
 
+	pnr.Pin(args[2])
 	args[3] = BoolEncoder.EncodeTypePtr(deep)
+
+	pnr.Pin(args[3])
 
 	ret := CallBuiltinMethodPtrRet[Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19959,12 +23296,16 @@ func (cx *Array) Filter(method Callable) Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -19981,12 +23322,16 @@ func (cx *Array) Map(method Callable) Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20003,6 +23348,8 @@ func (cx *Array) Reduce(method Callable, accum Variant) Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20010,7 +23357,10 @@ func (cx *Array) Reduce(method Callable, accum Variant) Variant {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&accum))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20027,12 +23377,16 @@ func (cx *Array) Any(method Callable) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20049,12 +23403,16 @@ func (cx *Array) All(method Callable) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&method))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20071,6 +23429,8 @@ func (cx *Array) Max() Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20089,6 +23449,8 @@ func (cx *Array) Min() Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20107,6 +23469,8 @@ func (cx *Array) IsTyped() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20125,12 +23489,16 @@ func (cx *Array) IsSameTyped(array Array) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20147,6 +23515,8 @@ func (cx *Array) GetTypedBuiltin() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20165,6 +23535,8 @@ func (cx *Array) GetTypedClassName() StringName {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20183,6 +23555,8 @@ func (cx *Array) GetTypedScript() Variant {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20201,6 +23575,8 @@ func (cx *Array) MakeReadOnly() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20219,6 +23595,8 @@ func (cx *Array) IsReadOnly() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20355,6 +23733,8 @@ func (c *PackedByteArray) NativePtr() GDExtensionTypePtr {
 func NewPackedByteArray() PackedByteArray {
 	cx := PackedByteArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalPackedByteArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -20363,10 +23743,13 @@ func NewPackedByteArray() PackedByteArray {
 func NewPackedByteArrayWithPackedByteArray(from PackedByteArray) PackedByteArray {
 	cx := PackedByteArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedByteArray
 	// PackedByteArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedByteArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -20375,10 +23758,13 @@ func NewPackedByteArrayWithPackedByteArray(from PackedByteArray) PackedByteArray
 func NewPackedByteArrayWithArray(from Array) PackedByteArray {
 	cx := PackedByteArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedByteArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -20386,6 +23772,7 @@ func NewPackedByteArrayWithArray(from Array) PackedByteArray {
 func (cx *PackedByteArray) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedByteArrayMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -20411,6 +23798,61 @@ func copyPackedByteArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDExt
 
 // methods
 
+/* Get : get
+ * is_vararg = false, is_static = false
+ * goReturnType(int) -> int64
+ */
+func (cx *PackedByteArray) Get(index int64) int64 {
+	mb := globalPackedByteArrayMethodBindings.method_get
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *PackedByteArray) Set(index int64, value int64) {
+	mb := globalPackedByteArrayMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
 /* Size : size
  * is_vararg = false, is_static = false
  * goReturnType(int) -> int64
@@ -20421,6 +23863,8 @@ func (cx *PackedByteArray) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20439,36 +23883,14 @@ func (cx *PackedByteArray) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
-}
-
-/* Set : set
- * is_vararg = false, is_static = false
- * goReturnType() ->
- */
-func (cx *PackedByteArray) Set(index int64, value int64) {
-	mb := globalPackedByteArrayMethodBindings.method_set
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-	bx := cx.NativePtr()
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-	sz := 2
-	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = Int64Encoder.EncodeTypePtr(index)
-
-	args[1] = Int64Encoder.EncodeTypePtr(value)
-
-	CallBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-
 }
 
 /* PushBack : push_back
@@ -20481,12 +23903,16 @@ func (cx *PackedByteArray) PushBack(value int64) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20503,12 +23929,16 @@ func (cx *PackedByteArray) Append(value int64) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20525,12 +23955,16 @@ func (cx *PackedByteArray) AppendArray(array PackedByteArray) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20547,12 +23981,16 @@ func (cx *PackedByteArray) RemoveAt(index int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20569,6 +24007,8 @@ func (cx *PackedByteArray) Insert(at_index int64, value int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20576,7 +24016,10 @@ func (cx *PackedByteArray) Insert(at_index int64, value int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at_index)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20593,12 +24036,16 @@ func (cx *PackedByteArray) Fill(value int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20615,12 +24062,16 @@ func (cx *PackedByteArray) Resize(new_size int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(new_size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20637,6 +24088,8 @@ func (cx *PackedByteArray) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20655,12 +24108,16 @@ func (cx *PackedByteArray) Has(value int64) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20677,6 +24134,8 @@ func (cx *PackedByteArray) Reverse() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20695,6 +24154,8 @@ func (cx *PackedByteArray) Slice(begin int64, end int64) PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20702,7 +24163,10 @@ func (cx *PackedByteArray) Slice(begin int64, end int64) PackedByteArray {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20719,6 +24183,8 @@ func (cx *PackedByteArray) Sort() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20737,6 +24203,8 @@ func (cx *PackedByteArray) Bsearch(value int64, before bool) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20744,7 +24212,10 @@ func (cx *PackedByteArray) Bsearch(value int64, before bool) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20761,6 +24232,8 @@ func (cx *PackedByteArray) Duplicate() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20779,6 +24252,8 @@ func (cx *PackedByteArray) Find(value int64, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20786,7 +24261,10 @@ func (cx *PackedByteArray) Find(value int64, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20803,6 +24281,8 @@ func (cx *PackedByteArray) Rfind(value int64, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20810,7 +24290,10 @@ func (cx *PackedByteArray) Rfind(value int64, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20827,12 +24310,16 @@ func (cx *PackedByteArray) Count(value int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20849,6 +24336,8 @@ func (cx *PackedByteArray) GetStringFromAscii() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20867,6 +24356,8 @@ func (cx *PackedByteArray) GetStringFromUtf8() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20885,6 +24376,8 @@ func (cx *PackedByteArray) GetStringFromUtf16() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20903,6 +24396,8 @@ func (cx *PackedByteArray) GetStringFromUtf32() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20921,6 +24416,8 @@ func (cx *PackedByteArray) GetStringFromWchar() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20939,6 +24436,8 @@ func (cx *PackedByteArray) HexEncode() String {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20957,12 +24456,16 @@ func (cx *PackedByteArray) Compress(compression_mode int64) PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(compression_mode)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -20979,6 +24482,8 @@ func (cx *PackedByteArray) Decompress(buffer_size int64, compression_mode int64)
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -20986,7 +24491,10 @@ func (cx *PackedByteArray) Decompress(buffer_size int64, compression_mode int64)
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(buffer_size)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(compression_mode)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21003,6 +24511,8 @@ func (cx *PackedByteArray) DecompressDynamic(max_output_size int64, compression_
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21010,7 +24520,10 @@ func (cx *PackedByteArray) DecompressDynamic(max_output_size int64, compression_
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(max_output_size)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(compression_mode)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedByteArray](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21027,12 +24540,16 @@ func (cx *PackedByteArray) DecodeU8(byte_offset int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21049,12 +24566,16 @@ func (cx *PackedByteArray) DecodeS8(byte_offset int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21071,12 +24592,16 @@ func (cx *PackedByteArray) DecodeU16(byte_offset int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21093,12 +24618,16 @@ func (cx *PackedByteArray) DecodeS16(byte_offset int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21115,12 +24644,16 @@ func (cx *PackedByteArray) DecodeU32(byte_offset int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21137,12 +24670,16 @@ func (cx *PackedByteArray) DecodeS32(byte_offset int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21159,12 +24696,16 @@ func (cx *PackedByteArray) DecodeU64(byte_offset int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21181,12 +24722,16 @@ func (cx *PackedByteArray) DecodeS64(byte_offset int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21203,12 +24748,16 @@ func (cx *PackedByteArray) DecodeHalf(byte_offset int64) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21225,12 +24774,16 @@ func (cx *PackedByteArray) DecodeFloat(byte_offset int64) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21247,12 +24800,16 @@ func (cx *PackedByteArray) DecodeDouble(byte_offset int64) float32 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21269,6 +24826,8 @@ func (cx *PackedByteArray) HasEncodedVar(byte_offset int64, allow_objects bool) 
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21276,7 +24835,10 @@ func (cx *PackedByteArray) HasEncodedVar(byte_offset int64, allow_objects bool) 
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(allow_objects)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21293,6 +24855,8 @@ func (cx *PackedByteArray) DecodeVar(byte_offset int64, allow_objects bool) Vari
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21300,7 +24864,10 @@ func (cx *PackedByteArray) DecodeVar(byte_offset int64, allow_objects bool) Vari
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(allow_objects)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[Variant](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21317,6 +24884,8 @@ func (cx *PackedByteArray) DecodeVarSize(byte_offset int64, allow_objects bool) 
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21324,7 +24893,10 @@ func (cx *PackedByteArray) DecodeVarSize(byte_offset int64, allow_objects bool) 
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(allow_objects)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21341,6 +24913,8 @@ func (cx *PackedByteArray) ToInt32Array() PackedInt32Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21359,6 +24933,8 @@ func (cx *PackedByteArray) ToInt64Array() PackedInt64Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21377,6 +24953,8 @@ func (cx *PackedByteArray) ToFloat32Array() PackedFloat32Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21395,6 +24973,8 @@ func (cx *PackedByteArray) ToFloat64Array() PackedFloat64Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21413,6 +24993,8 @@ func (cx *PackedByteArray) EncodeU8(byte_offset int64, value int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21420,7 +25002,10 @@ func (cx *PackedByteArray) EncodeU8(byte_offset int64, value int64) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21437,6 +25022,8 @@ func (cx *PackedByteArray) EncodeS8(byte_offset int64, value int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21444,7 +25031,10 @@ func (cx *PackedByteArray) EncodeS8(byte_offset int64, value int64) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21461,6 +25051,8 @@ func (cx *PackedByteArray) EncodeU16(byte_offset int64, value int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21468,7 +25060,10 @@ func (cx *PackedByteArray) EncodeU16(byte_offset int64, value int64) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21485,6 +25080,8 @@ func (cx *PackedByteArray) EncodeS16(byte_offset int64, value int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21492,7 +25089,10 @@ func (cx *PackedByteArray) EncodeS16(byte_offset int64, value int64) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21509,6 +25109,8 @@ func (cx *PackedByteArray) EncodeU32(byte_offset int64, value int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21516,7 +25118,10 @@ func (cx *PackedByteArray) EncodeU32(byte_offset int64, value int64) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21533,6 +25138,8 @@ func (cx *PackedByteArray) EncodeS32(byte_offset int64, value int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21540,7 +25147,10 @@ func (cx *PackedByteArray) EncodeS32(byte_offset int64, value int64) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21557,6 +25167,8 @@ func (cx *PackedByteArray) EncodeU64(byte_offset int64, value int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21564,7 +25176,10 @@ func (cx *PackedByteArray) EncodeU64(byte_offset int64, value int64) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21581,6 +25196,8 @@ func (cx *PackedByteArray) EncodeS64(byte_offset int64, value int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21588,7 +25205,10 @@ func (cx *PackedByteArray) EncodeS64(byte_offset int64, value int64) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21605,6 +25225,8 @@ func (cx *PackedByteArray) EncodeHalf(byte_offset int64, value float32) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21612,7 +25234,10 @@ func (cx *PackedByteArray) EncodeHalf(byte_offset int64, value float32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21629,6 +25254,8 @@ func (cx *PackedByteArray) EncodeFloat(byte_offset int64, value float32) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21636,7 +25263,10 @@ func (cx *PackedByteArray) EncodeFloat(byte_offset int64, value float32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21653,6 +25283,8 @@ func (cx *PackedByteArray) EncodeDouble(byte_offset int64, value float32) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21660,7 +25292,10 @@ func (cx *PackedByteArray) EncodeDouble(byte_offset int64, value float32) {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21677,6 +25312,8 @@ func (cx *PackedByteArray) EncodeVar(byte_offset int64, value Variant, allow_obj
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21684,9 +25321,13 @@ func (cx *PackedByteArray) EncodeVar(byte_offset int64, value Variant, allow_obj
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(byte_offset)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[1])
 	args[2] = BoolEncoder.EncodeTypePtr(allow_objects)
+
+	pnr.Pin(args[2])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21793,6 +25434,8 @@ func (c *PackedInt32Array) NativePtr() GDExtensionTypePtr {
 func NewPackedInt32Array() PackedInt32Array {
 	cx := PackedInt32Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalPackedInt32ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -21801,10 +25444,13 @@ func NewPackedInt32Array() PackedInt32Array {
 func NewPackedInt32ArrayWithPackedInt32Array(from PackedInt32Array) PackedInt32Array {
 	cx := PackedInt32Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedInt32Array
 	// PackedInt32ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedInt32ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -21813,10 +25459,13 @@ func NewPackedInt32ArrayWithPackedInt32Array(from PackedInt32Array) PackedInt32A
 func NewPackedInt32ArrayWithArray(from Array) PackedInt32Array {
 	cx := PackedInt32Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedInt32ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -21824,6 +25473,7 @@ func NewPackedInt32ArrayWithArray(from Array) PackedInt32Array {
 func (cx *PackedInt32Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedInt32ArrayMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -21849,6 +25499,61 @@ func copyPackedInt32ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDEx
 
 // methods
 
+/* Get : get
+ * is_vararg = false, is_static = false
+ * goReturnType(int) -> int64
+ */
+func (cx *PackedInt32Array) Get(index int64) int64 {
+	mb := globalPackedInt32ArrayMethodBindings.method_get
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *PackedInt32Array) Set(index int64, value int64) {
+	mb := globalPackedInt32ArrayMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
 /* Size : size
  * is_vararg = false, is_static = false
  * goReturnType(int) -> int64
@@ -21859,6 +25564,8 @@ func (cx *PackedInt32Array) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -21877,36 +25584,14 @@ func (cx *PackedInt32Array) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
-}
-
-/* Set : set
- * is_vararg = false, is_static = false
- * goReturnType() ->
- */
-func (cx *PackedInt32Array) Set(index int64, value int64) {
-	mb := globalPackedInt32ArrayMethodBindings.method_set
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-	bx := cx.NativePtr()
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-	sz := 2
-	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = Int64Encoder.EncodeTypePtr(index)
-
-	args[1] = Int64Encoder.EncodeTypePtr(value)
-
-	CallBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-
 }
 
 /* PushBack : push_back
@@ -21919,12 +25604,16 @@ func (cx *PackedInt32Array) PushBack(value int64) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21941,12 +25630,16 @@ func (cx *PackedInt32Array) Append(value int64) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21963,12 +25656,16 @@ func (cx *PackedInt32Array) AppendArray(array PackedInt32Array) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -21985,12 +25682,16 @@ func (cx *PackedInt32Array) RemoveAt(index int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22007,6 +25708,8 @@ func (cx *PackedInt32Array) Insert(at_index int64, value int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22014,7 +25717,10 @@ func (cx *PackedInt32Array) Insert(at_index int64, value int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at_index)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22031,12 +25737,16 @@ func (cx *PackedInt32Array) Fill(value int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22053,12 +25763,16 @@ func (cx *PackedInt32Array) Resize(new_size int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(new_size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22075,6 +25789,8 @@ func (cx *PackedInt32Array) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22093,12 +25809,16 @@ func (cx *PackedInt32Array) Has(value int64) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22115,6 +25835,8 @@ func (cx *PackedInt32Array) Reverse() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22133,6 +25855,8 @@ func (cx *PackedInt32Array) Slice(begin int64, end int64) PackedInt32Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22140,7 +25864,10 @@ func (cx *PackedInt32Array) Slice(begin int64, end int64) PackedInt32Array {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedInt32Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22157,6 +25884,8 @@ func (cx *PackedInt32Array) ToByteArray() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22175,6 +25904,8 @@ func (cx *PackedInt32Array) Sort() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22193,6 +25924,8 @@ func (cx *PackedInt32Array) Bsearch(value int64, before bool) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22200,7 +25933,10 @@ func (cx *PackedInt32Array) Bsearch(value int64, before bool) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22217,6 +25953,8 @@ func (cx *PackedInt32Array) Duplicate() PackedInt32Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22235,6 +25973,8 @@ func (cx *PackedInt32Array) Find(value int64, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22242,7 +25982,10 @@ func (cx *PackedInt32Array) Find(value int64, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22259,6 +26002,8 @@ func (cx *PackedInt32Array) Rfind(value int64, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22266,7 +26011,10 @@ func (cx *PackedInt32Array) Rfind(value int64, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22283,12 +26031,16 @@ func (cx *PackedInt32Array) Count(value int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22395,6 +26147,8 @@ func (c *PackedInt64Array) NativePtr() GDExtensionTypePtr {
 func NewPackedInt64Array() PackedInt64Array {
 	cx := PackedInt64Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalPackedInt64ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -22403,10 +26157,13 @@ func NewPackedInt64Array() PackedInt64Array {
 func NewPackedInt64ArrayWithPackedInt64Array(from PackedInt64Array) PackedInt64Array {
 	cx := PackedInt64Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedInt64Array
 	// PackedInt64ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedInt64ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -22415,10 +26172,13 @@ func NewPackedInt64ArrayWithPackedInt64Array(from PackedInt64Array) PackedInt64A
 func NewPackedInt64ArrayWithArray(from Array) PackedInt64Array {
 	cx := PackedInt64Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedInt64ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -22426,6 +26186,7 @@ func NewPackedInt64ArrayWithArray(from Array) PackedInt64Array {
 func (cx *PackedInt64Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedInt64ArrayMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -22451,6 +26212,61 @@ func copyPackedInt64ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDEx
 
 // methods
 
+/* Get : get
+ * is_vararg = false, is_static = false
+ * goReturnType(int) -> int64
+ */
+func (cx *PackedInt64Array) Get(index int64) int64 {
+	mb := globalPackedInt64ArrayMethodBindings.method_get
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *PackedInt64Array) Set(index int64, value int64) {
+	mb := globalPackedInt64ArrayMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
 /* Size : size
  * is_vararg = false, is_static = false
  * goReturnType(int) -> int64
@@ -22461,6 +26277,8 @@ func (cx *PackedInt64Array) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22479,36 +26297,14 @@ func (cx *PackedInt64Array) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
-}
-
-/* Set : set
- * is_vararg = false, is_static = false
- * goReturnType() ->
- */
-func (cx *PackedInt64Array) Set(index int64, value int64) {
-	mb := globalPackedInt64ArrayMethodBindings.method_set
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-	bx := cx.NativePtr()
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-	sz := 2
-	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = Int64Encoder.EncodeTypePtr(index)
-
-	args[1] = Int64Encoder.EncodeTypePtr(value)
-
-	CallBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-
 }
 
 /* PushBack : push_back
@@ -22521,12 +26317,16 @@ func (cx *PackedInt64Array) PushBack(value int64) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22543,12 +26343,16 @@ func (cx *PackedInt64Array) Append(value int64) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22565,12 +26369,16 @@ func (cx *PackedInt64Array) AppendArray(array PackedInt64Array) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22587,12 +26395,16 @@ func (cx *PackedInt64Array) RemoveAt(index int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22609,6 +26421,8 @@ func (cx *PackedInt64Array) Insert(at_index int64, value int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22616,7 +26430,10 @@ func (cx *PackedInt64Array) Insert(at_index int64, value int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at_index)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22633,12 +26450,16 @@ func (cx *PackedInt64Array) Fill(value int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22655,12 +26476,16 @@ func (cx *PackedInt64Array) Resize(new_size int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(new_size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22677,6 +26502,8 @@ func (cx *PackedInt64Array) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22695,12 +26522,16 @@ func (cx *PackedInt64Array) Has(value int64) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22717,6 +26548,8 @@ func (cx *PackedInt64Array) Reverse() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22735,6 +26568,8 @@ func (cx *PackedInt64Array) Slice(begin int64, end int64) PackedInt64Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22742,7 +26577,10 @@ func (cx *PackedInt64Array) Slice(begin int64, end int64) PackedInt64Array {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedInt64Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22759,6 +26597,8 @@ func (cx *PackedInt64Array) ToByteArray() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22777,6 +26617,8 @@ func (cx *PackedInt64Array) Sort() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22795,6 +26637,8 @@ func (cx *PackedInt64Array) Bsearch(value int64, before bool) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22802,7 +26646,10 @@ func (cx *PackedInt64Array) Bsearch(value int64, before bool) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22819,6 +26666,8 @@ func (cx *PackedInt64Array) Duplicate() PackedInt64Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22837,6 +26686,8 @@ func (cx *PackedInt64Array) Find(value int64, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22844,7 +26695,10 @@ func (cx *PackedInt64Array) Find(value int64, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22861,6 +26715,8 @@ func (cx *PackedInt64Array) Rfind(value int64, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -22868,7 +26724,10 @@ func (cx *PackedInt64Array) Rfind(value int64, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22885,12 +26744,16 @@ func (cx *PackedInt64Array) Count(value int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -22997,6 +26860,8 @@ func (c *PackedFloat32Array) NativePtr() GDExtensionTypePtr {
 func NewPackedFloat32Array() PackedFloat32Array {
 	cx := PackedFloat32Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalPackedFloat32ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -23005,10 +26870,13 @@ func NewPackedFloat32Array() PackedFloat32Array {
 func NewPackedFloat32ArrayWithPackedFloat32Array(from PackedFloat32Array) PackedFloat32Array {
 	cx := PackedFloat32Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedFloat32Array
 	// PackedFloat32ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedFloat32ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -23017,10 +26885,13 @@ func NewPackedFloat32ArrayWithPackedFloat32Array(from PackedFloat32Array) Packed
 func NewPackedFloat32ArrayWithArray(from Array) PackedFloat32Array {
 	cx := PackedFloat32Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedFloat32ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -23028,6 +26899,7 @@ func NewPackedFloat32ArrayWithArray(from Array) PackedFloat32Array {
 func (cx *PackedFloat32Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedFloat32ArrayMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -23053,6 +26925,61 @@ func copyPackedFloat32ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GD
 
 // methods
 
+/* Get : get
+ * is_vararg = false, is_static = false
+ * goReturnType(float) -> float32
+ */
+func (cx *PackedFloat32Array) Get(index int64) float32 {
+	mb := globalPackedFloat32ArrayMethodBindings.method_get
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *PackedFloat32Array) Set(index int64, value float32) {
+	mb := globalPackedFloat32ArrayMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+	args[1] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
 /* Size : size
  * is_vararg = false, is_static = false
  * goReturnType(int) -> int64
@@ -23063,6 +26990,8 @@ func (cx *PackedFloat32Array) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23081,36 +27010,14 @@ func (cx *PackedFloat32Array) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
-}
-
-/* Set : set
- * is_vararg = false, is_static = false
- * goReturnType() ->
- */
-func (cx *PackedFloat32Array) Set(index int64, value float32) {
-	mb := globalPackedFloat32ArrayMethodBindings.method_set
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-	bx := cx.NativePtr()
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-	sz := 2
-	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = Int64Encoder.EncodeTypePtr(index)
-
-	args[1] = Float32Encoder.EncodeTypePtr(value)
-
-	CallBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-
 }
 
 /* PushBack : push_back
@@ -23123,12 +27030,16 @@ func (cx *PackedFloat32Array) PushBack(value float32) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23145,12 +27056,16 @@ func (cx *PackedFloat32Array) Append(value float32) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23167,12 +27082,16 @@ func (cx *PackedFloat32Array) AppendArray(array PackedFloat32Array) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23189,12 +27108,16 @@ func (cx *PackedFloat32Array) RemoveAt(index int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23211,6 +27134,8 @@ func (cx *PackedFloat32Array) Insert(at_index int64, value float32) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23218,7 +27143,10 @@ func (cx *PackedFloat32Array) Insert(at_index int64, value float32) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at_index)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23235,12 +27163,16 @@ func (cx *PackedFloat32Array) Fill(value float32) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23257,12 +27189,16 @@ func (cx *PackedFloat32Array) Resize(new_size int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(new_size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23279,6 +27215,8 @@ func (cx *PackedFloat32Array) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23297,12 +27235,16 @@ func (cx *PackedFloat32Array) Has(value float32) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23319,6 +27261,8 @@ func (cx *PackedFloat32Array) Reverse() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23337,6 +27281,8 @@ func (cx *PackedFloat32Array) Slice(begin int64, end int64) PackedFloat32Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23344,7 +27290,10 @@ func (cx *PackedFloat32Array) Slice(begin int64, end int64) PackedFloat32Array {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedFloat32Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23361,6 +27310,8 @@ func (cx *PackedFloat32Array) ToByteArray() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23379,6 +27330,8 @@ func (cx *PackedFloat32Array) Sort() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23397,6 +27350,8 @@ func (cx *PackedFloat32Array) Bsearch(value float32, before bool) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23404,7 +27359,10 @@ func (cx *PackedFloat32Array) Bsearch(value float32, before bool) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23421,6 +27379,8 @@ func (cx *PackedFloat32Array) Duplicate() PackedFloat32Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23439,6 +27399,8 @@ func (cx *PackedFloat32Array) Find(value float32, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23446,7 +27408,10 @@ func (cx *PackedFloat32Array) Find(value float32, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23463,6 +27428,8 @@ func (cx *PackedFloat32Array) Rfind(value float32, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23470,7 +27437,10 @@ func (cx *PackedFloat32Array) Rfind(value float32, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23487,12 +27457,16 @@ func (cx *PackedFloat32Array) Count(value float32) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23599,6 +27573,8 @@ func (c *PackedFloat64Array) NativePtr() GDExtensionTypePtr {
 func NewPackedFloat64Array() PackedFloat64Array {
 	cx := PackedFloat64Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalPackedFloat64ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -23607,10 +27583,13 @@ func NewPackedFloat64Array() PackedFloat64Array {
 func NewPackedFloat64ArrayWithPackedFloat64Array(from PackedFloat64Array) PackedFloat64Array {
 	cx := PackedFloat64Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedFloat64Array
 	// PackedFloat64ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedFloat64ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -23619,10 +27598,13 @@ func NewPackedFloat64ArrayWithPackedFloat64Array(from PackedFloat64Array) Packed
 func NewPackedFloat64ArrayWithArray(from Array) PackedFloat64Array {
 	cx := PackedFloat64Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedFloat64ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -23630,6 +27612,7 @@ func NewPackedFloat64ArrayWithArray(from Array) PackedFloat64Array {
 func (cx *PackedFloat64Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedFloat64ArrayMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -23655,6 +27638,61 @@ func copyPackedFloat64ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GD
 
 // methods
 
+/* Get : get
+ * is_vararg = false, is_static = false
+ * goReturnType(float) -> float32
+ */
+func (cx *PackedFloat64Array) Get(index int64) float32 {
+	mb := globalPackedFloat64ArrayMethodBindings.method_get
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[float32](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *PackedFloat64Array) Set(index int64, value float32) {
+	mb := globalPackedFloat64ArrayMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+	args[1] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
 /* Size : size
  * is_vararg = false, is_static = false
  * goReturnType(int) -> int64
@@ -23665,6 +27703,8 @@ func (cx *PackedFloat64Array) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23683,36 +27723,14 @@ func (cx *PackedFloat64Array) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
-}
-
-/* Set : set
- * is_vararg = false, is_static = false
- * goReturnType() ->
- */
-func (cx *PackedFloat64Array) Set(index int64, value float32) {
-	mb := globalPackedFloat64ArrayMethodBindings.method_set
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-	bx := cx.NativePtr()
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-	sz := 2
-	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = Int64Encoder.EncodeTypePtr(index)
-
-	args[1] = Float32Encoder.EncodeTypePtr(value)
-
-	CallBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-
 }
 
 /* PushBack : push_back
@@ -23725,12 +27743,16 @@ func (cx *PackedFloat64Array) PushBack(value float32) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23747,12 +27769,16 @@ func (cx *PackedFloat64Array) Append(value float32) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23769,12 +27795,16 @@ func (cx *PackedFloat64Array) AppendArray(array PackedFloat64Array) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23791,12 +27821,16 @@ func (cx *PackedFloat64Array) RemoveAt(index int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23813,6 +27847,8 @@ func (cx *PackedFloat64Array) Insert(at_index int64, value float32) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23820,7 +27856,10 @@ func (cx *PackedFloat64Array) Insert(at_index int64, value float32) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at_index)
 
+	pnr.Pin(args[0])
 	args[1] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23837,12 +27876,16 @@ func (cx *PackedFloat64Array) Fill(value float32) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23859,12 +27902,16 @@ func (cx *PackedFloat64Array) Resize(new_size int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(new_size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23881,6 +27928,8 @@ func (cx *PackedFloat64Array) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23899,12 +27948,16 @@ func (cx *PackedFloat64Array) Has(value float32) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23921,6 +27974,8 @@ func (cx *PackedFloat64Array) Reverse() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23939,6 +27994,8 @@ func (cx *PackedFloat64Array) Slice(begin int64, end int64) PackedFloat64Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23946,7 +28003,10 @@ func (cx *PackedFloat64Array) Slice(begin int64, end int64) PackedFloat64Array {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedFloat64Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -23963,6 +28023,8 @@ func (cx *PackedFloat64Array) ToByteArray() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23981,6 +28043,8 @@ func (cx *PackedFloat64Array) Sort() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -23999,6 +28063,8 @@ func (cx *PackedFloat64Array) Bsearch(value float32, before bool) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24006,7 +28072,10 @@ func (cx *PackedFloat64Array) Bsearch(value float32, before bool) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24023,6 +28092,8 @@ func (cx *PackedFloat64Array) Duplicate() PackedFloat64Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24041,6 +28112,8 @@ func (cx *PackedFloat64Array) Find(value float32, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24048,7 +28121,10 @@ func (cx *PackedFloat64Array) Find(value float32, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24065,6 +28141,8 @@ func (cx *PackedFloat64Array) Rfind(value float32, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24072,7 +28150,10 @@ func (cx *PackedFloat64Array) Rfind(value float32, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24089,12 +28170,16 @@ func (cx *PackedFloat64Array) Count(value float32) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Float32Encoder.EncodeTypePtr(value)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24201,6 +28286,8 @@ func (c *PackedStringArray) NativePtr() GDExtensionTypePtr {
 func NewPackedStringArray() PackedStringArray {
 	cx := PackedStringArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalPackedStringArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -24209,10 +28296,13 @@ func NewPackedStringArray() PackedStringArray {
 func NewPackedStringArrayWithPackedStringArray(from PackedStringArray) PackedStringArray {
 	cx := PackedStringArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedStringArray
 	// PackedStringArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedStringArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -24221,10 +28311,13 @@ func NewPackedStringArrayWithPackedStringArray(from PackedStringArray) PackedStr
 func NewPackedStringArrayWithArray(from Array) PackedStringArray {
 	cx := PackedStringArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedStringArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -24232,6 +28325,7 @@ func NewPackedStringArrayWithArray(from Array) PackedStringArray {
 func (cx *PackedStringArray) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedStringArrayMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -24257,6 +28351,61 @@ func copyPackedStringArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDE
 
 // methods
 
+/* Get : get
+ * is_vararg = false, is_static = false
+ * goReturnType(String) -> String
+ */
+func (cx *PackedStringArray) Get(index int64) String {
+	mb := globalPackedStringArrayMethodBindings.method_get
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[String](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *PackedStringArray) Set(index int64, value String) {
+	mb := globalPackedStringArrayMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
 /* Size : size
  * is_vararg = false, is_static = false
  * goReturnType(int) -> int64
@@ -24267,6 +28416,8 @@ func (cx *PackedStringArray) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24285,36 +28436,14 @@ func (cx *PackedStringArray) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
-}
-
-/* Set : set
- * is_vararg = false, is_static = false
- * goReturnType() ->
- */
-func (cx *PackedStringArray) Set(index int64, value String) {
-	mb := globalPackedStringArrayMethodBindings.method_set
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-	bx := cx.NativePtr()
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-	sz := 2
-	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = Int64Encoder.EncodeTypePtr(index)
-
-	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
-
-	CallBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-
 }
 
 /* PushBack : push_back
@@ -24327,12 +28456,16 @@ func (cx *PackedStringArray) PushBack(value String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24349,12 +28482,16 @@ func (cx *PackedStringArray) Append(value String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24371,12 +28508,16 @@ func (cx *PackedStringArray) AppendArray(array PackedStringArray) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24393,12 +28534,16 @@ func (cx *PackedStringArray) RemoveAt(index int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24415,6 +28560,8 @@ func (cx *PackedStringArray) Insert(at_index int64, value String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24422,7 +28569,10 @@ func (cx *PackedStringArray) Insert(at_index int64, value String) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at_index)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24439,12 +28589,16 @@ func (cx *PackedStringArray) Fill(value String) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24461,12 +28615,16 @@ func (cx *PackedStringArray) Resize(new_size int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(new_size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24483,6 +28641,8 @@ func (cx *PackedStringArray) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24501,12 +28661,16 @@ func (cx *PackedStringArray) Has(value String) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24523,6 +28687,8 @@ func (cx *PackedStringArray) Reverse() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24541,6 +28707,8 @@ func (cx *PackedStringArray) Slice(begin int64, end int64) PackedStringArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24548,7 +28716,10 @@ func (cx *PackedStringArray) Slice(begin int64, end int64) PackedStringArray {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedStringArray](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24565,6 +28736,8 @@ func (cx *PackedStringArray) ToByteArray() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24583,6 +28756,8 @@ func (cx *PackedStringArray) Sort() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24601,6 +28776,8 @@ func (cx *PackedStringArray) Bsearch(value String, before bool) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24608,7 +28785,10 @@ func (cx *PackedStringArray) Bsearch(value String, before bool) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24625,6 +28805,8 @@ func (cx *PackedStringArray) Duplicate() PackedStringArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24643,6 +28825,8 @@ func (cx *PackedStringArray) Find(value String, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24650,7 +28834,10 @@ func (cx *PackedStringArray) Find(value String, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24667,6 +28854,8 @@ func (cx *PackedStringArray) Rfind(value String, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24674,7 +28863,10 @@ func (cx *PackedStringArray) Rfind(value String, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24691,12 +28883,16 @@ func (cx *PackedStringArray) Count(value String) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24803,6 +28999,8 @@ func (c *PackedVector2Array) NativePtr() GDExtensionTypePtr {
 func NewPackedVector2Array() PackedVector2Array {
 	cx := PackedVector2Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalPackedVector2ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -24811,10 +29009,13 @@ func NewPackedVector2Array() PackedVector2Array {
 func NewPackedVector2ArrayWithPackedVector2Array(from PackedVector2Array) PackedVector2Array {
 	cx := PackedVector2Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedVector2Array
 	// PackedVector2ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedVector2ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -24823,10 +29024,13 @@ func NewPackedVector2ArrayWithPackedVector2Array(from PackedVector2Array) Packed
 func NewPackedVector2ArrayWithArray(from Array) PackedVector2Array {
 	cx := PackedVector2Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedVector2ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -24834,6 +29038,7 @@ func NewPackedVector2ArrayWithArray(from Array) PackedVector2Array {
 func (cx *PackedVector2Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedVector2ArrayMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -24859,6 +29064,61 @@ func copyPackedVector2ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GD
 
 // methods
 
+/* Get : get
+ * is_vararg = false, is_static = false
+ * goReturnType(Vector2) -> Vector2
+ */
+func (cx *PackedVector2Array) Get(index int64) Vector2 {
+	mb := globalPackedVector2ArrayMethodBindings.method_get
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[Vector2](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *PackedVector2Array) Set(index int64, value Vector2) {
+	mb := globalPackedVector2ArrayMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
 /* Size : size
  * is_vararg = false, is_static = false
  * goReturnType(int) -> int64
@@ -24869,6 +29129,8 @@ func (cx *PackedVector2Array) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -24887,36 +29149,14 @@ func (cx *PackedVector2Array) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
-}
-
-/* Set : set
- * is_vararg = false, is_static = false
- * goReturnType() ->
- */
-func (cx *PackedVector2Array) Set(index int64, value Vector2) {
-	mb := globalPackedVector2ArrayMethodBindings.method_set
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-	bx := cx.NativePtr()
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-	sz := 2
-	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = Int64Encoder.EncodeTypePtr(index)
-
-	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
-
-	CallBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-
 }
 
 /* PushBack : push_back
@@ -24929,12 +29169,16 @@ func (cx *PackedVector2Array) PushBack(value Vector2) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24951,12 +29195,16 @@ func (cx *PackedVector2Array) Append(value Vector2) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24973,12 +29221,16 @@ func (cx *PackedVector2Array) AppendArray(array PackedVector2Array) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -24995,12 +29247,16 @@ func (cx *PackedVector2Array) RemoveAt(index int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25017,6 +29273,8 @@ func (cx *PackedVector2Array) Insert(at_index int64, value Vector2) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25024,7 +29282,10 @@ func (cx *PackedVector2Array) Insert(at_index int64, value Vector2) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at_index)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25041,12 +29302,16 @@ func (cx *PackedVector2Array) Fill(value Vector2) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25063,12 +29328,16 @@ func (cx *PackedVector2Array) Resize(new_size int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(new_size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25085,6 +29354,8 @@ func (cx *PackedVector2Array) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25103,12 +29374,16 @@ func (cx *PackedVector2Array) Has(value Vector2) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25125,6 +29400,8 @@ func (cx *PackedVector2Array) Reverse() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25143,6 +29420,8 @@ func (cx *PackedVector2Array) Slice(begin int64, end int64) PackedVector2Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25150,7 +29429,10 @@ func (cx *PackedVector2Array) Slice(begin int64, end int64) PackedVector2Array {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedVector2Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25167,6 +29449,8 @@ func (cx *PackedVector2Array) ToByteArray() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25185,6 +29469,8 @@ func (cx *PackedVector2Array) Sort() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25203,6 +29489,8 @@ func (cx *PackedVector2Array) Bsearch(value Vector2, before bool) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25210,7 +29498,10 @@ func (cx *PackedVector2Array) Bsearch(value Vector2, before bool) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25227,6 +29518,8 @@ func (cx *PackedVector2Array) Duplicate() PackedVector2Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25245,6 +29538,8 @@ func (cx *PackedVector2Array) Find(value Vector2, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25252,7 +29547,10 @@ func (cx *PackedVector2Array) Find(value Vector2, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25269,6 +29567,8 @@ func (cx *PackedVector2Array) Rfind(value Vector2, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25276,7 +29576,10 @@ func (cx *PackedVector2Array) Rfind(value Vector2, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25293,12 +29596,16 @@ func (cx *PackedVector2Array) Count(value Vector2) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25412,6 +29719,8 @@ func (c *PackedVector3Array) NativePtr() GDExtensionTypePtr {
 func NewPackedVector3Array() PackedVector3Array {
 	cx := PackedVector3Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalPackedVector3ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -25420,10 +29729,13 @@ func NewPackedVector3Array() PackedVector3Array {
 func NewPackedVector3ArrayWithPackedVector3Array(from PackedVector3Array) PackedVector3Array {
 	cx := PackedVector3Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedVector3Array
 	// PackedVector3ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedVector3ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -25432,10 +29744,13 @@ func NewPackedVector3ArrayWithPackedVector3Array(from PackedVector3Array) Packed
 func NewPackedVector3ArrayWithArray(from Array) PackedVector3Array {
 	cx := PackedVector3Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedVector3ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -25443,6 +29758,7 @@ func NewPackedVector3ArrayWithArray(from Array) PackedVector3Array {
 func (cx *PackedVector3Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedVector3ArrayMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -25468,6 +29784,61 @@ func copyPackedVector3ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GD
 
 // methods
 
+/* Get : get
+ * is_vararg = false, is_static = false
+ * goReturnType(Vector3) -> Vector3
+ */
+func (cx *PackedVector3Array) Get(index int64) Vector3 {
+	mb := globalPackedVector3ArrayMethodBindings.method_get
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[Vector3](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *PackedVector3Array) Set(index int64, value Vector3) {
+	mb := globalPackedVector3ArrayMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
 /* Size : size
  * is_vararg = false, is_static = false
  * goReturnType(int) -> int64
@@ -25478,6 +29849,8 @@ func (cx *PackedVector3Array) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25496,36 +29869,14 @@ func (cx *PackedVector3Array) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
-}
-
-/* Set : set
- * is_vararg = false, is_static = false
- * goReturnType() ->
- */
-func (cx *PackedVector3Array) Set(index int64, value Vector3) {
-	mb := globalPackedVector3ArrayMethodBindings.method_set
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-	bx := cx.NativePtr()
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-	sz := 2
-	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = Int64Encoder.EncodeTypePtr(index)
-
-	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
-
-	CallBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-
 }
 
 /* PushBack : push_back
@@ -25538,12 +29889,16 @@ func (cx *PackedVector3Array) PushBack(value Vector3) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25560,12 +29915,16 @@ func (cx *PackedVector3Array) Append(value Vector3) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25582,12 +29941,16 @@ func (cx *PackedVector3Array) AppendArray(array PackedVector3Array) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25604,12 +29967,16 @@ func (cx *PackedVector3Array) RemoveAt(index int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25626,6 +29993,8 @@ func (cx *PackedVector3Array) Insert(at_index int64, value Vector3) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25633,7 +30002,10 @@ func (cx *PackedVector3Array) Insert(at_index int64, value Vector3) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at_index)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25650,12 +30022,16 @@ func (cx *PackedVector3Array) Fill(value Vector3) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25672,12 +30048,16 @@ func (cx *PackedVector3Array) Resize(new_size int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(new_size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25694,6 +30074,8 @@ func (cx *PackedVector3Array) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25712,12 +30094,16 @@ func (cx *PackedVector3Array) Has(value Vector3) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25734,6 +30120,8 @@ func (cx *PackedVector3Array) Reverse() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25752,6 +30140,8 @@ func (cx *PackedVector3Array) Slice(begin int64, end int64) PackedVector3Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25759,7 +30149,10 @@ func (cx *PackedVector3Array) Slice(begin int64, end int64) PackedVector3Array {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedVector3Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25776,6 +30169,8 @@ func (cx *PackedVector3Array) ToByteArray() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25794,6 +30189,8 @@ func (cx *PackedVector3Array) Sort() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25812,6 +30209,8 @@ func (cx *PackedVector3Array) Bsearch(value Vector3, before bool) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25819,7 +30218,10 @@ func (cx *PackedVector3Array) Bsearch(value Vector3, before bool) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25836,6 +30238,8 @@ func (cx *PackedVector3Array) Duplicate() PackedVector3Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25854,6 +30258,8 @@ func (cx *PackedVector3Array) Find(value Vector3, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25861,7 +30267,10 @@ func (cx *PackedVector3Array) Find(value Vector3, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25878,6 +30287,8 @@ func (cx *PackedVector3Array) Rfind(value Vector3, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -25885,7 +30296,10 @@ func (cx *PackedVector3Array) Rfind(value Vector3, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -25902,12 +30316,16 @@ func (cx *PackedVector3Array) Count(value Vector3) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26021,6 +30439,8 @@ func (c *PackedColorArray) NativePtr() GDExtensionTypePtr {
 func NewPackedColorArray() PackedColorArray {
 	cx := PackedColorArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -26029,10 +30449,13 @@ func NewPackedColorArray() PackedColorArray {
 func NewPackedColorArrayWithPackedColorArray(from PackedColorArray) PackedColorArray {
 	cx := PackedColorArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedColorArray
 	// PackedColorArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -26041,10 +30464,13 @@ func NewPackedColorArrayWithPackedColorArray(from PackedColorArray) PackedColorA
 func NewPackedColorArrayWithArray(from Array) PackedColorArray {
 	cx := PackedColorArray{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -26052,6 +30478,7 @@ func NewPackedColorArrayWithArray(from Array) PackedColorArray {
 func (cx *PackedColorArray) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedColorArrayMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -26077,6 +30504,61 @@ func copyPackedColorArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GDEx
 
 // methods
 
+/* Get : get
+ * is_vararg = false, is_static = false
+ * goReturnType(Color) -> Color
+ */
+func (cx *PackedColorArray) Get(index int64) Color {
+	mb := globalPackedColorArrayMethodBindings.method_get
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[Color](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *PackedColorArray) Set(index int64, value Color) {
+	mb := globalPackedColorArrayMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
 /* Size : size
  * is_vararg = false, is_static = false
  * goReturnType(int) -> int64
@@ -26087,6 +30569,8 @@ func (cx *PackedColorArray) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26105,36 +30589,14 @@ func (cx *PackedColorArray) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
-}
-
-/* Set : set
- * is_vararg = false, is_static = false
- * goReturnType() ->
- */
-func (cx *PackedColorArray) Set(index int64, value Color) {
-	mb := globalPackedColorArrayMethodBindings.method_set
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-	bx := cx.NativePtr()
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-	sz := 2
-	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = Int64Encoder.EncodeTypePtr(index)
-
-	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
-
-	CallBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-
 }
 
 /* PushBack : push_back
@@ -26147,12 +30609,16 @@ func (cx *PackedColorArray) PushBack(value Color) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26169,12 +30635,16 @@ func (cx *PackedColorArray) Append(value Color) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26191,12 +30661,16 @@ func (cx *PackedColorArray) AppendArray(array PackedColorArray) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&array))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26213,12 +30687,16 @@ func (cx *PackedColorArray) RemoveAt(index int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26235,6 +30713,8 @@ func (cx *PackedColorArray) Insert(at_index int64, value Color) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26242,7 +30722,10 @@ func (cx *PackedColorArray) Insert(at_index int64, value Color) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at_index)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26259,12 +30742,16 @@ func (cx *PackedColorArray) Fill(value Color) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26281,12 +30768,16 @@ func (cx *PackedColorArray) Resize(new_size int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(new_size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26303,6 +30794,8 @@ func (cx *PackedColorArray) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26321,12 +30814,16 @@ func (cx *PackedColorArray) Has(value Color) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26343,6 +30840,8 @@ func (cx *PackedColorArray) Reverse() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26361,6 +30860,8 @@ func (cx *PackedColorArray) Slice(begin int64, end int64) PackedColorArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26368,7 +30869,10 @@ func (cx *PackedColorArray) Slice(begin int64, end int64) PackedColorArray {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedColorArray](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26385,6 +30889,8 @@ func (cx *PackedColorArray) ToByteArray() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26403,6 +30909,8 @@ func (cx *PackedColorArray) Sort() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26421,6 +30929,8 @@ func (cx *PackedColorArray) Bsearch(value Color, before bool) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26428,7 +30938,10 @@ func (cx *PackedColorArray) Bsearch(value Color, before bool) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26445,6 +30958,8 @@ func (cx *PackedColorArray) Duplicate() PackedColorArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26463,6 +30978,8 @@ func (cx *PackedColorArray) Find(value Color, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26470,7 +30987,10 @@ func (cx *PackedColorArray) Find(value Color, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26487,6 +31007,8 @@ func (cx *PackedColorArray) Rfind(value Color, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26494,7 +31016,10 @@ func (cx *PackedColorArray) Rfind(value Color, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26511,12 +31036,16 @@ func (cx *PackedColorArray) Count(value Color) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26623,6 +31152,8 @@ func (c *PackedVector4Array) NativePtr() GDExtensionTypePtr {
 func NewPackedVector4Array() PackedVector4Array {
 	cx := PackedVector4Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	CallBuiltinConstructor(globalPackedVector4ArrayMethodBindings.constructor_0, ptr)
 	return cx
 }
@@ -26631,10 +31162,13 @@ func NewPackedVector4Array() PackedVector4Array {
 func NewPackedVector4ArrayWithPackedVector4Array(from PackedVector4Array) PackedVector4Array {
 	cx := PackedVector4Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// PackedVector4Array
 	// PackedVector4ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedVector4ArrayMethodBindings.constructor_1, ptr, args[0])
 	return cx
 }
@@ -26643,10 +31177,13 @@ func NewPackedVector4ArrayWithPackedVector4Array(from PackedVector4Array) Packed
 func NewPackedVector4ArrayWithArray(from Array) PackedVector4Array {
 	cx := PackedVector4Array{}
 	ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(&cx)
+	pnr.Pin(ptr)
 	var args [1]GDExtensionConstTypePtr
 	// Array
 	// ArrayEncoder
 	args[0] = from.NativeConstPtr()
+	pnr.Pin(args[0])
 	CallBuiltinConstructor(globalPackedVector4ArrayMethodBindings.constructor_2, ptr, args[0])
 	return cx
 }
@@ -26654,6 +31191,7 @@ func NewPackedVector4ArrayWithArray(from Array) PackedVector4Array {
 func (cx *PackedVector4Array) Destroy() {
 	md := (GDExtensionPtrDestructor)(globalPackedVector4ArrayMethodBindings.destructor)
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
 	CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 
@@ -26679,6 +31217,61 @@ func copyPackedVector4ArrayWithGDExtensionTypePtr(dst GDExtensionTypePtr, src GD
 
 // methods
 
+/* Get : get
+ * is_vararg = false, is_static = false
+ * goReturnType(Vector4) -> Vector4
+ */
+func (cx *PackedVector4Array) Get(index int64) Vector4 {
+	mb := globalPackedVector4ArrayMethodBindings.method_get
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 1
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+
+	ret := CallBuiltinMethodPtrRet[Vector4](mb, bx, args...)
+	runtime.KeepAlive(args)
+	return ret
+}
+
+/* Set : set
+ * is_vararg = false, is_static = false
+ * goReturnType() ->
+ */
+func (cx *PackedVector4Array) Set(index int64, value Vector4) {
+	mb := globalPackedVector4ArrayMethodBindings.method_set
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+	sz := 2
+	args := make([]GDExtensionTypePtr, sz, sz)
+	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
+	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
+
+	CallBuiltinMethodPtrNoRet(mb, bx, args...)
+	runtime.KeepAlive(args)
+
+}
+
 /* Size : size
  * is_vararg = false, is_static = false
  * goReturnType(int) -> int64
@@ -26689,6 +31282,8 @@ func (cx *PackedVector4Array) Size() int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26707,36 +31302,14 @@ func (cx *PackedVector4Array) IsEmpty() bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
 	return ret
-}
-
-/* Set : set
- * is_vararg = false, is_static = false
- * goReturnType() ->
- */
-func (cx *PackedVector4Array) Set(index int64, value Vector4) {
-	mb := globalPackedVector4ArrayMethodBindings.method_set
-	if mb == nil {
-		log.Panic("method bind cannot be nil")
-	}
-	bx := cx.NativePtr()
-	if bx == nil {
-		log.Panic("object cannot be nil")
-	}
-	sz := 2
-	args := make([]GDExtensionTypePtr, sz, sz)
-	args[0] = Int64Encoder.EncodeTypePtr(index)
-
-	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
-
-	CallBuiltinMethodPtrNoRet(mb, bx, args...)
-	runtime.KeepAlive(args)
-
 }
 
 /* PushBack : push_back
@@ -26749,12 +31322,16 @@ func (cx *PackedVector4Array) PushBack(value Vector4) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26771,12 +31348,16 @@ func (cx *PackedVector4Array) Append(value Vector4) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26793,12 +31374,16 @@ func (cx *PackedVector4Array) AppendArray(array PackedVector4Array) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = PackedVector4ArrayEncoder.EncodeTypePtr(array)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26815,12 +31400,16 @@ func (cx *PackedVector4Array) RemoveAt(index int64) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(index)
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26837,6 +31426,8 @@ func (cx *PackedVector4Array) Insert(at_index int64, value Vector4) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26844,7 +31435,10 @@ func (cx *PackedVector4Array) Insert(at_index int64, value Vector4) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(at_index)
 
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26861,12 +31455,16 @@ func (cx *PackedVector4Array) Fill(value Vector4) {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	CallBuiltinMethodPtrNoRet(mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26883,12 +31481,16 @@ func (cx *PackedVector4Array) Resize(new_size int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(new_size)
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26905,6 +31507,8 @@ func (cx *PackedVector4Array) Clear() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26923,12 +31527,16 @@ func (cx *PackedVector4Array) Has(value Vector4) bool {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[bool](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26945,6 +31553,8 @@ func (cx *PackedVector4Array) Reverse() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26963,6 +31573,8 @@ func (cx *PackedVector4Array) Slice(begin int64, end int64) PackedVector4Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -26970,7 +31582,10 @@ func (cx *PackedVector4Array) Slice(begin int64, end int64) PackedVector4Array {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = Int64Encoder.EncodeTypePtr(begin)
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(end)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[PackedVector4Array](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -26987,6 +31602,8 @@ func (cx *PackedVector4Array) ToByteArray() PackedByteArray {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -27005,6 +31622,8 @@ func (cx *PackedVector4Array) Sort() {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -27023,6 +31642,8 @@ func (cx *PackedVector4Array) Bsearch(value Vector4, before bool) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -27030,7 +31651,10 @@ func (cx *PackedVector4Array) Bsearch(value Vector4, before bool) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = BoolEncoder.EncodeTypePtr(before)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -27047,6 +31671,8 @@ func (cx *PackedVector4Array) Duplicate() PackedVector4Array {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -27065,6 +31691,8 @@ func (cx *PackedVector4Array) Find(value Vector4, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -27072,7 +31700,10 @@ func (cx *PackedVector4Array) Find(value Vector4, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -27089,6 +31720,8 @@ func (cx *PackedVector4Array) Rfind(value Vector4, from int64) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
@@ -27096,7 +31729,10 @@ func (cx *PackedVector4Array) Rfind(value Vector4, from int64) int64 {
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
 
+	pnr.Pin(args[0])
 	args[1] = Int64Encoder.EncodeTypePtr(from)
+
+	pnr.Pin(args[1])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)
@@ -27113,12 +31749,16 @@ func (cx *PackedVector4Array) Count(value Vector4) int64 {
 		log.Panic("method bind cannot be nil")
 	}
 	bx := cx.NativePtr()
+	pnr.Pin(bx)
+
 	if bx == nil {
 		log.Panic("object cannot be nil")
 	}
 	sz := 1
 	args := make([]GDExtensionTypePtr, sz, sz)
 	args[0] = (GDExtensionTypePtr)(unsafe.Pointer(&value))
+
+	pnr.Pin(args[0])
 
 	ret := CallBuiltinMethodPtrRet[int64](mb, bx, args...)
 	runtime.KeepAlive(args)

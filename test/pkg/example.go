@@ -26,7 +26,6 @@ const (
 	EXAMPLE_ENUM_CONSTANT_WITHOUT_ENUM = 314
 )
 
-
 type ExampleBitfieldFlag int64
 
 const (
@@ -35,7 +34,7 @@ const (
 )
 
 // Example implements GDClass evidence
-var _ GDClass = new(Example)
+var _ GDClass = (*Example)(nil)
 
 type Example struct {
 	ControlImpl
@@ -177,11 +176,11 @@ func (e *Example) TestArray() Array {
 
 func (e *Example) TestTArrayArg(arr PackedInt64Array) int64 {
 	sum := int64(0)
-	sz := arr.Size();
+	sz := arr.Size()
 	for i := int64(0); i < sz; i++ {
 		sum += arr.GetIndexed(i)
 	}
-	return sum;
+	return sum
 }
 
 func (e *Example) TestTArray() Array {
@@ -484,8 +483,8 @@ func (e *Example) TestVectorOps() int32 {
 	arr.PushBack(30)
 	arr.PushBack(45)
 	ret := int32(0)
-	for i:=int64(0); i<arr.Size(); i++ {
-		ret += int32(arr.GetIndexed(i));
+	for i := int64(0); i < arr.Size(); i++ {
+		ret += int32(arr.GetIndexed(i))
 	}
 	return ret
 }
@@ -511,7 +510,7 @@ func (e *Example) CallableBind() {
 	args := NewArray()
 	args.Append(NewVariantGoString("bound"))
 	args.Append(NewVariantInt(11))
-	c.Callv(args);
+	c.Callv(args)
 }
 
 func (e *Example) TestVariantVector2iConversion(v Variant) Vector2i {
@@ -520,6 +519,7 @@ func (e *Example) TestVariantVector2iConversion(v Variant) Vector2i {
 
 func NewExampleFromOwnerObject(owner *GodotObject) GDClass {
 	obj := &Example{}
+	pnr.Pin(obj)
 	obj.SetGodotObjectOwner(owner)
 	return obj
 }
@@ -542,7 +542,9 @@ func GetExamplePropertyList() []GDExtensionPropertyInfo {
 }
 
 func RegisterClassExample() {
-	ClassDBRegisterClass(&Example{}, NewExampleFromOwnerObject, GetExamplePropertyList(), ValidateExampleProperty, func(t GDClass) {
+	obj := &Example{}
+	pnr.Pin(obj)
+	ClassDBRegisterClass(obj, NewExampleFromOwnerObject, GetExamplePropertyList(), ValidateExampleProperty, func(t GDClass) {
 		// virtuals
 		ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
 		ClassDBBindMethodVirtual(t, "V_Input", "_input", []string{"event"}, nil)

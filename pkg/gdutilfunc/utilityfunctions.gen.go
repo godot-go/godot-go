@@ -36,10 +36,13 @@ func Sin(angle_rad float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(angle_rad))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -57,10 +60,13 @@ func Cos(angle_rad float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(angle_rad))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -78,10 +84,13 @@ func Tan(angle_rad float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(angle_rad))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -99,10 +108,13 @@ func Sinh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -120,10 +132,13 @@ func Cosh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -141,10 +156,13 @@ func Tanh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -162,10 +180,13 @@ func Asin(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -183,10 +204,13 @@ func Acos(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -204,10 +228,13 @@ func Atan(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -225,11 +252,15 @@ func Atan2(y float32, x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(y))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -247,10 +278,13 @@ func Asinh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -268,10 +302,13 @@ func Acosh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -289,10 +326,13 @@ func Atanh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -310,10 +350,13 @@ func Sqrt(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -331,11 +374,15 @@ func Fmod(x float32, y float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(y))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -353,11 +400,15 @@ func Fposmod(x float32, y float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(y))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -375,11 +426,15 @@ func Posmod(x int64, y int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(y))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -397,10 +452,13 @@ func Floor(x Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -418,10 +476,13 @@ func Floorf(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -439,10 +500,13 @@ func Floori(x float32) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -460,10 +524,13 @@ func Ceil(x Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -481,10 +548,13 @@ func Ceilf(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -502,10 +572,13 @@ func Ceili(x float32) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -523,10 +596,13 @@ func Round(x Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -544,10 +620,13 @@ func Roundf(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -565,10 +644,13 @@ func Roundi(x float32) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -586,10 +668,13 @@ func Abs(x Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -607,10 +692,13 @@ func Absf(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -628,10 +716,13 @@ func Absi(x int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -649,10 +740,13 @@ func Sign(x Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -670,10 +764,13 @@ func Signf(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -691,10 +788,13 @@ func Signi(x int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -712,11 +812,15 @@ func Snapped(x Variant, step Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(step))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -734,11 +838,15 @@ func Snappedf(x float32, step float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(step))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -756,11 +864,15 @@ func Snappedi(x float32, step int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(step))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -778,11 +890,15 @@ func Pow(base float32, exp float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(base))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(exp))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -800,10 +916,13 @@ func Log(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -821,10 +940,13 @@ func Exp(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -842,10 +964,13 @@ func IsNan(x float32) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -863,10 +988,13 @@ func IsInf(x float32) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -884,11 +1012,15 @@ func IsEqualApprox(a float32, b float32) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(b))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -906,10 +1038,13 @@ func IsZeroApprox(x float32) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -927,10 +1062,13 @@ func IsFinite(x float32) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -948,11 +1086,15 @@ func Ease(x float32, curve float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(curve))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -970,10 +1112,13 @@ func StepDecimals(x float32) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -991,12 +1136,17 @@ func Lerp(from Variant, to Variant, weight Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(weight))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1014,12 +1164,17 @@ func Lerpf(from float32, to float32, weight float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(weight))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1037,6 +1192,7 @@ func CubicInterpolate(from float32, to float32, pre float32, post float32, weigh
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [5]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
@@ -1044,7 +1200,13 @@ func CubicInterpolate(from float32, to float32, pre float32, post float32, weigh
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(post))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(weight))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
+	pnr.Pin(args[3])
+	pnr.Pin(args[4])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(5)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1062,6 +1224,7 @@ func CubicInterpolateAngle(from float32, to float32, pre float32, post float32, 
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [5]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
@@ -1069,7 +1232,13 @@ func CubicInterpolateAngle(from float32, to float32, pre float32, post float32, 
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(post))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(weight))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
+	pnr.Pin(args[3])
+	pnr.Pin(args[4])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(5)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1087,6 +1256,7 @@ func CubicInterpolateInTime(from float32, to float32, pre float32, post float32,
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [8]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
@@ -1097,7 +1267,16 @@ func CubicInterpolateInTime(from float32, to float32, pre float32, post float32,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(pre_t))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(post_t))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
+	pnr.Pin(args[3])
+	pnr.Pin(args[4])
+	pnr.Pin(args[5])
+	pnr.Pin(args[6])
+	pnr.Pin(args[7])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(8)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1115,6 +1294,7 @@ func CubicInterpolateAngleInTime(from float32, to float32, pre float32, post flo
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [8]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
@@ -1125,7 +1305,16 @@ func CubicInterpolateAngleInTime(from float32, to float32, pre float32, post flo
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(pre_t))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(post_t))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
+	pnr.Pin(args[3])
+	pnr.Pin(args[4])
+	pnr.Pin(args[5])
+	pnr.Pin(args[6])
+	pnr.Pin(args[7])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(8)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1143,6 +1332,7 @@ func BezierInterpolate(start float32, control_1 float32, control_2 float32, end 
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [5]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(start))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(control_1))),
@@ -1150,7 +1340,13 @@ func BezierInterpolate(start float32, control_1 float32, control_2 float32, end 
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(end))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(t))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
+	pnr.Pin(args[3])
+	pnr.Pin(args[4])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(5)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1168,6 +1364,7 @@ func BezierDerivative(start float32, control_1 float32, control_2 float32, end f
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [5]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(start))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(control_1))),
@@ -1175,7 +1372,13 @@ func BezierDerivative(start float32, control_1 float32, control_2 float32, end f
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(end))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(t))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
+	pnr.Pin(args[3])
+	pnr.Pin(args[4])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(5)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1193,11 +1396,15 @@ func AngleDifference(from float32, to float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1215,12 +1422,17 @@ func LerpAngle(from float32, to float32, weight float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(weight))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1238,12 +1450,17 @@ func InverseLerp(from float32, to float32, weight float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(weight))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1261,6 +1478,7 @@ func Remap(value float32, istart float32, istop float32, ostart float32, ostop f
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [5]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(istart))),
@@ -1268,7 +1486,13 @@ func Remap(value float32, istart float32, istop float32, ostart float32, ostop f
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(ostart))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(ostop))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
+	pnr.Pin(args[3])
+	pnr.Pin(args[4])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(5)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1286,12 +1510,17 @@ func Smoothstep(from float32, to float32, x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1309,12 +1538,17 @@ func MoveToward(from float32, to float32, delta float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(delta))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1332,12 +1566,17 @@ func RotateToward(from float32, to float32, delta float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(delta))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1355,10 +1594,13 @@ func DegToRad(deg float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(deg))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1376,10 +1618,13 @@ func RadToDeg(rad float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(rad))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1397,10 +1642,13 @@ func LinearToDb(lin float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(lin))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1418,10 +1666,13 @@ func DbToLinear(db float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(db))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1439,12 +1690,17 @@ func Wrap(value Variant, min Variant, max Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(max))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1462,12 +1718,17 @@ func Wrapi(value int64, min int64, max int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(max))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1485,12 +1746,17 @@ func Wrapf(value float32, min float32, max float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(max))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1508,14 +1774,19 @@ func Max(arg1 Variant, arg2 Variant, varargs ...Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	sz := 2
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg2)))
+	pnr.Pin(args[1])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1533,11 +1804,15 @@ func Maxi(a int64, b int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(b))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1555,11 +1830,15 @@ func Maxf(a float32, b float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(b))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1577,14 +1856,19 @@ func Min(arg1 Variant, arg2 Variant, varargs ...Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	sz := 2
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	args[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg2)))
+	pnr.Pin(args[1])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1602,11 +1886,15 @@ func Mini(a int64, b int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(b))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1624,11 +1912,15 @@ func Minf(a float32, b float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(b))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1646,12 +1938,17 @@ func Clamp(value Variant, min Variant, max Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(max))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1669,12 +1966,17 @@ func Clampi(value int64, min int64, max int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(max))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1692,12 +1994,17 @@ func Clampf(value float32, min float32, max float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(max))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
+	pnr.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1715,10 +2022,13 @@ func NearestPo2(value int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(value))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1736,11 +2046,15 @@ func Pingpong(value float32, length float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(length))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1755,7 +2069,9 @@ func Randomize() {
 		panic("could not find utility function randomize (1691721052)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
 	typePtrArgs := (*GDExtensionConstTypePtr)(nil)
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(0)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
@@ -1772,7 +2088,9 @@ func Randi() int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	typePtrArgs := (*GDExtensionConstTypePtr)(nil)
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(0)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1790,7 +2108,9 @@ func Randf() float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	typePtrArgs := (*GDExtensionConstTypePtr)(nil)
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(0)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1808,11 +2128,15 @@ func RandiRange(from int64, to int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(to))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1830,11 +2154,15 @@ func RandfRange(from float32, to float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1852,11 +2180,15 @@ func Randfn(mean float32, deviation float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(mean))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(deviation))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1871,10 +2203,13 @@ func Seed(base int64) {
 		panic("could not find utility function seed (382931173)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(base))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
@@ -1891,10 +2226,13 @@ func RandFromSeed(seed int64) PackedInt64Array {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(seed))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1912,10 +2250,13 @@ func Weakref(obj Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(obj))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1933,10 +2274,13 @@ func Typeof(variable Variant) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variable))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1954,11 +2298,15 @@ func TypeConvert(variant Variant, typeName int64) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variant))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(typeName))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1976,13 +2324,17 @@ func Str(arg1 Variant, varargs ...Variant) String {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2000,10 +2352,13 @@ func ErrorString(error int64) String {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(error))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2021,10 +2376,13 @@ func TypeString(typeName int64) String {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(typeName))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2039,13 +2397,17 @@ func Print(arg1 Variant, varargs ...Variant) {
 		panic("could not find utility function print (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
@@ -2059,13 +2421,17 @@ func PrintRich(arg1 Variant, varargs ...Variant) {
 		panic("could not find utility function print_rich (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
@@ -2079,13 +2445,17 @@ func Printerr(arg1 Variant, varargs ...Variant) {
 		panic("could not find utility function printerr (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
@@ -2099,13 +2469,17 @@ func Printt(arg1 Variant, varargs ...Variant) {
 		panic("could not find utility function printt (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
@@ -2119,13 +2493,17 @@ func Prints(arg1 Variant, varargs ...Variant) {
 		panic("could not find utility function prints (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
@@ -2139,13 +2517,17 @@ func Printraw(arg1 Variant, varargs ...Variant) {
 		panic("could not find utility function printraw (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
@@ -2159,13 +2541,17 @@ func PrintVerbose(arg1 Variant, varargs ...Variant) {
 		panic("could not find utility function print_verbose (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
@@ -2179,13 +2565,17 @@ func PushError(arg1 Variant, varargs ...Variant) {
 		panic("could not find utility function push_error (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
@@ -2199,13 +2589,17 @@ func PushWarning(arg1 Variant, varargs ...Variant) {
 		panic("could not find utility function push_warning (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
+	pnr.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
@@ -2222,10 +2616,13 @@ func VarToStr(variable Variant) String {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variable))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2243,10 +2640,13 @@ func StrToVar(strValue String) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(StringEncoder.EncodeTypePtr(strValue))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2264,10 +2664,13 @@ func VarToBytes(variable Variant) PackedByteArray {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variable))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2285,10 +2688,13 @@ func BytesToVar(bytes PackedByteArray) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(PackedByteArrayEncoder.EncodeTypePtr(bytes))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2306,10 +2712,13 @@ func VarToBytesWithObjects(variable Variant) PackedByteArray {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variable))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2327,10 +2736,13 @@ func BytesToVarWithObjects(bytes PackedByteArray) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(PackedByteArrayEncoder.EncodeTypePtr(bytes))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2348,10 +2760,13 @@ func Hash(variable Variant) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variable))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2370,10 +2785,13 @@ func InstanceFromId(instance_id int64) Object {
 	ret = &ObjectImpl{}
 	retPtr := ret.AsGDExtensionTypePtr()
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(instance_id))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2391,10 +2809,13 @@ func IsInstanceIdValid(id int64) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(id))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2412,10 +2833,13 @@ func IsInstanceValid(instance Variant) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(instance))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2433,7 +2857,9 @@ func RidAllocateId() int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	typePtrArgs := (*GDExtensionConstTypePtr)(nil)
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(0)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2451,10 +2877,13 @@ func RidFromInt64(base int64) RID {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
+	pnr.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(base))),
 	}
+	pnr.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2472,11 +2901,15 @@ func IsSame(a Variant, b Variant) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
+	pnr.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(b))),
 	}
+	pnr.Pin(args[0])
+	pnr.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret

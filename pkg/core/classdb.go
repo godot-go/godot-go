@@ -91,8 +91,8 @@ func ClassDBAddProperty(
 		panic(fmt.Sprintf(`Property "%s" already exists in class "%s".`, pn, cn))
 	}
 	var (
-		setter *MethodBindImpl
-		getter *MethodBindImpl
+		setter *GoMethodMetadata
+		getter *GoMethodMetadata
 	)
 	if len(p_getter) == 0 {
 		log.Panic(`Getter method must be specified.`)
@@ -103,8 +103,8 @@ func ClassDBAddProperty(
 			zap.String("getter", p_getter),
 		)
 	}
-	getter = mci.MethodBind
-	if len(getter.MethodMetadata.GoArgumentTypes) != 0 {
+	getter = mci.GoMethodMetadata
+	if len(getter.GoArgumentTypes) != 0 {
 		panic(fmt.Sprintf(`getter method "%s" must take a single argument.`, p_getter))
 	}
 	// specifying a setter is optional
@@ -115,8 +115,8 @@ func ClassDBAddProperty(
 				zap.String("setter", p_setter),
 			)
 		}
-		setter = mci.MethodBind
-		if len(setter.MethodMetadata.GoArgumentTypes) != 1 {
+		setter = mci.GoMethodMetadata
+		if len(setter.GoArgumentTypes) != 1 {
 			panic(fmt.Sprintf(`Setter method "%s" must take a single argument.`, p_setter))
 		}
 	}
@@ -137,9 +137,9 @@ func ClassDBAddProperty(
 		hint.AsGDExtensionConstStringPtr(),
 		uint32(PROPERTY_USAGE_DEFAULT),
 	)
-	snSetterGDName := NewStringNameWithLatin1Chars(setter.MethodName)
+	snSetterGDName := NewStringNameWithLatin1Chars(setter.GdMethodName)
 	defer snSetterGDName.Destroy()
-	snGetterGDName := NewStringNameWithLatin1Chars(getter.MethodName)
+	snGetterGDName := NewStringNameWithLatin1Chars(getter.GdMethodName)
 	defer snGetterGDName.Destroy()
 	log.Info("register property",
 		zap.String("class", cn),
@@ -217,8 +217,14 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 		GDExtensionInt(len(params)))
 }
 
-func ClassDBBindMethod(inst GDClass, goMethodName string, gdMethodName string, argNames []string, defaultValues []Variant) *MethodBindImpl {
-	return classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues)
+func ClassDBBindMethod(
+	inst GDClass,
+	goMethodName string,
+	gdMethodName string,
+	argNames []string,
+	defaultValues []Variant,
+) {
+	classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues)
 }
 
 // TODO: golang does not have static methods
@@ -226,8 +232,14 @@ func ClassDBBindMethod(inst GDClass, goMethodName string, gdMethodName string, a
 // 	return classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues)
 // }
 
-func ClassDBBindMethodVirtual(inst GDClass, goMethodName string, gdMethodName string, argNames []string, defaultValues []Variant) *MethodBindImpl {
-	return classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues)
+func ClassDBBindMethodVirtual(
+	inst GDClass,
+	goMethodName string,
+	gdMethodName string,
+	argNames []string,
+	defaultValues []Variant,
+) {
+	classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues)
 }
 
 func ClassDBBindMethodVarargs(
@@ -236,24 +248,24 @@ func ClassDBBindMethodVarargs(
 	gdMethodName string,
 	argNames []string,
 	defaultValues []Variant,
-) *MethodBindImpl {
-	return classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAG_VARARG, argNames, defaultValues)
+) {
+	classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAG_VARARG, argNames, defaultValues)
 }
 
 func classDBBindMethod(
 	inst GDClass,
 	goMethodName string,
-	methodName string,
+	gdMethodName string,
 	methodFlags MethodFlags,
 	argNames []string,
 	defaultValues []Variant,
-) *MethodBindImpl {
+) {
 	t := reflect.TypeOf(inst)
 	className := inst.GetClassName()
 	log.Debug("classDBBindMethod called",
 		zap.Any("inst", inst),
 		zap.String("go_name", goMethodName),
-		zap.String("gd_name", methodName),
+		zap.String("gd_name", gdMethodName),
 		zap.Any("flags", methodFlags),
 		zap.Any("t", t),
 		zap.Any("class", className),
@@ -268,9 +280,8 @@ func classDBBindMethod(
 	log.Debug("method found",
 		zap.Reflect("method", m),
 	)
-	ptrcallFunc := m.Func
-	methodMetadata := NewMethodMetadata(m, className, methodName, argNames, defaultValues, methodFlags)
-	if methodMetadata.IsVirtual {
+	md := NewGoMethodMetadata(m, className, gdMethodName, goMethodName, argNames, defaultValues, methodFlags)
+	if md.IsVirtual {
 		if !strings.HasPrefix(goMethodName, "V_") {
 			log.Panic(`virtual method name must have a prefix of "V_".`)
 		}
@@ -279,50 +290,42 @@ func classDBBindMethod(
 			log.Panic(`method name cannot have a prefix of "V_".`)
 		}
 	}
-	mb := NewMethodBind(
-		className,
-		methodName,
-		goMethodName,
-		methodMetadata,
-		ptrcallFunc,
-	)
-	cmi := NewGDExtensionClassMethodInfoFromMethodBind(mb)
+	cmi := NewGDExtensionClassMethodInfoFromMethodBind(md)
 	bi := &MethodBindAndClassMethodInfo{
-		MethodBind:      mb,
-		ClassMethodInfo: cmi,
+		GoMethodMetadata: md,
+		ClassMethodInfo:  cmi,
 	}
-
 	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
 	if !ok {
 		log.Panic("Class doesn't exist.", zap.String("class", className))
-		return nil
+		return
 	}
-	if _, ok = ci.MethodMap[methodName]; ok {
+	if _, ok = ci.MethodMap[gdMethodName]; ok {
 		log.Panic("Binding duplicate method.",
 			zap.String("go_name", goMethodName),
-			zap.String("gd_name", methodName),
+			zap.String("gd_name", gdMethodName),
 		)
-		return nil
+		return
 	}
-	if _, ok = ci.VirtualMethodMap[methodName]; ok {
+	if _, ok = ci.VirtualMethodMap[gdMethodName]; ok {
 		log.Panic("Method already bound as virtual.",
 			zap.String("go_name", goMethodName),
-			zap.String("gd_name", methodName),
+			zap.String("gd_name", gdMethodName),
 		)
-		return nil
+		return
 	}
 	hasVarargs := (methodFlags & METHOD_FLAG_VARARG) == METHOD_FLAG_VARARG
 	// keep track of the method
 	if (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL {
-		ci.VirtualMethodMap[methodName] = bi
+		ci.VirtualMethodMap[gdMethodName] = bi
 		log.Info("register class virtual method",
-			zap.String("bind", bi.MethodBind.String()),
+			zap.String("bind", bi.GoMethodMetadata.String()),
 			zap.Bool("has_varargs", hasVarargs),
 		)
 	} else {
-		ci.MethodMap[methodName] = bi
+		ci.MethodMap[gdMethodName] = bi
 		log.Info("register class method",
-			zap.String("bind", bi.MethodBind.String()),
+			zap.String("bind", bi.GoMethodMetadata.String()),
 			zap.Bool("has_varargs", hasVarargs),
 		)
 	}
@@ -332,7 +335,6 @@ func classDBBindMethod(
 		ci.NameAsStringNamePtr,
 		cmi,
 	)
-	return mb
 }
 
 // ClassDBBindConstant binds a constant in godot.
@@ -469,16 +471,12 @@ func ClassDBRegisterClass[T Object](
 	GDClassRegisterInstanceBindingCallbacks(className)
 	cName := C.CString(className)
 	// Register this class with Godot
-	info := NewGDExtensionClassCreationInfo3(
+	info := NewGDExtensionClassCreationInfo4(
 		GDExtensionBool(0),
 		GDExtensionBool(0),
 		GDExtensionBool(1),
 		GDExtensionBool(0),
-		(GDExtensionClassCreateInstance)(C.cgo_classcreationinfo_createinstance),
-		(GDExtensionClassFreeInstance)(C.cgo_classcreationinfo_freeinstance),
-		(GDExtensionClassGetVirtualCallData)(C.cgo_classcreationinfo_getvirtualcallwithdata),
-		(GDExtensionClassCallVirtualWithData)(C.cgo_classcreationinfo_callvirtualwithdata),
-		(GDExtensionClassToString)(C.cgo_classcreationinfo_tostring),
+		(GDExtensionConstStringPtr)(nil),
 		(GDExtensionClassSet)(C.cgo_classcreationinfo_set),
 		(GDExtensionClassGet)(C.cgo_classcreationinfo_get),
 		(GDExtensionClassGetPropertyList)(C.cgo_classcreationinfo_getpropertylist),
@@ -487,6 +485,14 @@ func ClassDBRegisterClass[T Object](
 		(GDExtensionClassPropertyGetRevert)(C.cgo_classcreationinfo_propertygetrevert),
 		(GDExtensionClassValidateProperty)(C.cgo_classcreationinfo_validateproperty),
 		(GDExtensionClassNotification2)(C.cgo_classcreationinfo_notification),
+		(GDExtensionClassToString)(C.cgo_classcreationinfo_tostring),
+		(GDExtensionClassReference)(nil),
+		(GDExtensionClassUnreference)(nil),
+		(GDExtensionClassCreateInstance2)(C.cgo_classcreationinfo_createinstance),
+		(GDExtensionClassFreeInstance)(C.cgo_classcreationinfo_freeinstance),
+		(GDExtensionClassRecreateInstance)(nil),
+		(GDExtensionClassGetVirtualCallData2)(C.cgo_classcreationinfo_getvirtualcallwithdata2),
+		(GDExtensionClassCallVirtualWithData)(C.cgo_classcreationinfo_callvirtualwithdata),
 		unsafe.Pointer(cName),
 	)
 	snName := NewStringNameWithLatin1Chars(className)
@@ -498,7 +504,7 @@ func ClassDBRegisterClass[T Object](
 		zap.String("parent_type", parentName),
 	)
 	// register with Godot
-	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass3(
+	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass4(
 		(GDExtensionClassLibraryPtr)(FFI.Library),
 		snName.AsGDExtensionConstStringNamePtr(),
 		snParentName.AsGDExtensionConstStringNamePtr(),

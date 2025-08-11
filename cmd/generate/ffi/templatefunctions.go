@@ -251,6 +251,21 @@ func cgoCleanUpArgument(a clang.Argument, index int) string {
 	panic("unhandled type")
 }
 
+func cgoPinReturnType(t clang.PrimativeType, argName string) string {
+	n := strings.TrimSpace(t.Name)
+
+	switch n {
+	case "void":
+		if t.IsPointer {
+			return fmt.Sprintf("pnr.Pin(%s)", argName)
+		} else {
+			return ""
+		}
+	default:
+		return ""
+	}
+}
+
 func cgoCastReturnType(t clang.PrimativeType, argName string) string {
 	n := strings.TrimSpace(t.Name)
 

@@ -25,7 +25,7 @@ func _GDExtensionBindingInit(
 	rInitialization *GDExtensionInitialization,
 ) bool {
 	// uncomment to print out C stacktraces when logging at debug log level
-	// C.enablePrintStacktrace = log.GetLevel() == log.DebugLevel
+	C.enablePrintStacktrace = log.GetLevel() == log.DebugLevel
 
 	Internal.GDClassInstances = NewSyncMap[GDObjectInstanceID, GDClass]()
 	Internal.GDRegisteredGDClasses = NewSyncMap[string, *ClassInfo]()
@@ -34,7 +34,7 @@ func _GDExtensionBindingInit(
 	FFI.LoadProcAddresses(pGetProcAddress, pLibrary)
 
 	// Load the Godot version.
-	CallFunc_GDExtensionInterfaceGetGodotVersion(&FFI.GodotVersion)
+	CallFunc_GDExtensionInterfaceGetGodotVersion(FFI.GodotVersion)
 
 	log.Info("godot version",
 		zap.Int32("major", FFI.GodotVersion.GetMajor()),
@@ -136,9 +136,10 @@ func NewInitObject(
 	library GDExtensionClassLibraryPtr,
 	initialization *GDExtensionInitialization,
 ) *InitObject {
-	return &InitObject{
+	ret := &InitObject{
 		getProcAddress: getProcAddress,
 		library:        library,
 		initialization: initialization,
 	}
+	return ret
 }

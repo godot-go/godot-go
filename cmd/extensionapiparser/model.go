@@ -93,6 +93,7 @@ type UtilityFunction struct {
 	ReturnType        string     `json:"return_type"`
 	Category          string     `json:"category"`
 	IsVararg          bool       `json:"is_vararg"`
+	IsRequired        bool       `json:"is_required"`
 	Hash              int        `json:"hash"`
 	HashCompatibility []int      `json:"hash_compatibility"`
 	Arguments         []Argument `json:"arguments"`
@@ -116,6 +117,7 @@ type BuiltInClassMethod struct {
 	IsConst           bool       `json:"is_const"`
 	IsVararg          bool       `json:"is_vararg"`
 	IsStatic          bool       `json:"is_static"`
+	IsRequired        bool       `json:"is_required"`
 	Hash              int        `json:"hash"`
 	HashCompatibility []int      `json:"hash_compatibility"`
 	Arguments         []Argument `json:"arguments"`
@@ -225,6 +227,7 @@ type ClassMethod struct {
 	IsVararg          bool                   `json:"is_vararg"`
 	IsVirtual         bool                   `json:"is_virtual"`
 	IsStatic          bool                   `json:"is_static"`
+	IsRequired        bool                   `json:"is_required"`
 	Hash              int                    `json:"hash"`
 	HashCompatibility []int                  `json:"hash_compatibility"`
 	Arguments         []Argument             `json:"arguments"`

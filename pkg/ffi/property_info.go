@@ -10,6 +10,8 @@ package ffi
 import "C"
 import (
 	"unsafe"
+
+	"github.com/godot-go/godot-go/pkg/constant"
 )
 
 func NewGDExtensionPropertyInfo(
@@ -31,7 +33,7 @@ func NewGDExtensionPropertyInfo(
 	})
 }
 
-func (p *GDExtensionPropertyInfo) SetUsage(usage uint32) {
+func (p *GDExtensionPropertyInfo) SetUsage(usage constant.PropertyUsageFlags) {
 	typed := (*C.GDExtensionPropertyInfo)(p)
 	typed.usage = (C.uint32_t)(usage)
 }

@@ -34,12 +34,15 @@ func (e *ExampleRef) GetId() int32 {
 
 func NewExampleRefFromOwnerObject(owner *GodotObject) GDClass {
 	obj := &ExampleRef{}
+	pnr.Pin(obj)
 	obj.SetGodotObjectOwner(owner)
 	return obj
 }
 
 func RegisterClassExampleRef() {
-	ClassDBRegisterClass(&ExampleRef{}, NewExampleRefFromOwnerObject, []GDExtensionPropertyInfo{}, nil, func(t GDClass) {
+	obj := &ExampleRef{}
+	pnr.Pin(obj)
+	ClassDBRegisterClass(obj, NewExampleRefFromOwnerObject, []GDExtensionPropertyInfo{}, nil, func(t GDClass) {
 		ClassDBBindMethod(t, "GetId", "get_id", nil, nil)
 		ClassDBBindMethod(t, "SetId", "set_id", []string{"id"}, nil)
 		ClassDBAddProperty(t, GDEXTENSION_VARIANT_TYPE_INT, "group_subgroup_id", "set_id", "get_id")

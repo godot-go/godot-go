@@ -6,6 +6,7 @@ package core
 // #include <stdlib.h>
 import "C"
 import (
+	"runtime/cgo"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -26,28 +27,33 @@ func GoCallback_MethodBindMethodCall(
 	rError *C.GDExtensionCallError,
 ) {
 	// TODO: implement rError checking
-	bind := (*MethodBindImpl)(methodUserData)
-	if bind == nil {
+	ud := (cgo.Handle)(methodUserData)
+	bind, ok := ud.Value().(*GoMethodMetadata)
+	if !ok || bind == nil {
 		log.Panic("unable to retrieve methodUserData")
 	}
+	pnr.Pin(instPtr)
 	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(instPtr))
 	if inst == nil {
 		log.Panic("GDExtensionClassInstancePtr canoot be null")
 	}
+	pnr.Pin(inst)
 	cn := inst.GetClass()
-	defer cn.Destroy()
+	// defer cn.Destroy()
 	log.Debug("GoCallback_MethodBindMethodCall called",
 		zap.String("class", cn.ToUtf8()),
-		zap.String("method", bind.MethodName),
+		zap.String("method", bind.GdMethodName),
 		zap.String("bind", bind.String()),
 	)
 	argPtrSlice := unsafe.Slice((*GDExtensionConstVariantPtr)(argPtrs), int(argumentCount))
 	args := make([]Variant, argumentCount)
 	for i := range argPtrSlice {
+		pnr.Pin(argPtrSlice[i])
 		args[i] = NewVariantCopyWithGDExtensionConstVariantPtr(argPtrSlice[i])
 	}
-	retCall := bind.Call(inst, args)
+	retCall := bind.Call(inst, args...)
 	*(*Variant)(unsafe.Pointer(rReturn)) = retCall
+	pnr.Pin(rReturn)
 }
 
 // called when godot calls into golang code
@@ -59,7 +65,11 @@ func GoCallback_MethodBindMethodPtrcall(
 	argPtrs *C.GDExtensionConstTypePtr,
 	rReturn C.GDExtensionTypePtr,
 ) {
-	bind := (*MethodBindImpl)(methodUserData)
+	ud := (cgo.Handle)(methodUserData)
+	bind, ok := ud.Value().(*GoMethodMetadata)
+	if !ok || bind == nil {
+		log.Panic("unable to retrieve methodUserData")
+	}
 	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(instPtr))
 	if inst == nil {
 		log.Panic("GDExtensionClassInstancePtr canoot be null")
@@ -70,11 +80,12 @@ func GoCallback_MethodBindMethodPtrcall(
 		zap.String("class", cn.ToUtf8()),
 		zap.String("method", bind.String()),
 	)
-	sliceLen := len(bind.MethodMetadata.GoArgumentTypes)
+	sliceLen := len(bind.GoArgumentTypes)
 	argsSlice := unsafe.Slice((*GDExtensionConstTypePtr)(unsafe.Pointer(argPtrs)), sliceLen)
 	bind.Ptrcall(
 		inst,
 		argsSlice,
 		(GDExtensionUninitializedTypePtr)(rReturn),
 	)
+	pnr.Pin(rReturn)
 }

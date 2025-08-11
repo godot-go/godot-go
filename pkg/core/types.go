@@ -14,14 +14,14 @@ type PropertySetGet struct {
 	Index   int
 	Setter  string
 	Getter  string
-	_setptr *MethodBindImpl
-	_getptr *MethodBindImpl
+	_setptr *GoMethodMetadata
+	_getptr *GoMethodMetadata
 	Type    GDExtensionVariantType
 }
 
 type MethodBindAndClassMethodInfo struct {
-	MethodBind      *MethodBindImpl
-	ClassMethodInfo *GDExtensionClassMethodInfo
+	GoMethodMetadata *GoMethodMetadata
+	ClassMethodInfo  *GDExtensionClassMethodInfo
 }
 
 type ClassInfo struct {
@@ -79,7 +79,7 @@ func NewClassInfo(
 	propertyList []GDExtensionPropertyInfo,
 	validateProperty func(*GDExtensionPropertyInfo),
 ) *ClassInfo {
-	return &ClassInfo{
+	ret := &ClassInfo{
 		Name:                name,
 		NameAsStringNamePtr: NewStringNameWithLatin1Chars(name).AsGDExtensionConstStringNamePtr(),
 		ParentName:          parentName,
@@ -95,6 +95,8 @@ func NewClassInfo(
 		PropertyList:        propertyList,
 		ValidateProperty:    validateProperty,
 	}
+	pnr.Pin(ret)
+	return ret
 }
 
 var (

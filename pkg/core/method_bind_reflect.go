@@ -661,7 +661,6 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				owner := (**GodotObject)(arg)
 				obj := constructor(*owner)
 				args[i+1] = reflect.ValueOf(obj)
-				break
 			default:
 				log.Panic("unsupported pointer type",
 					zap.Int("arg_index", i),

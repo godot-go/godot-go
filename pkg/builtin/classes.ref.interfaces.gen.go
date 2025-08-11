@@ -76,6 +76,10 @@ type RefAnimationNodeBlendTree interface {
 	Ref
 	TypedPtr() AnimationNodeBlendTree
 }
+type RefAnimationNodeExtension interface {
+	Ref
+	TypedPtr() AnimationNodeExtension
+}
 type RefAnimationNodeOneShot interface {
 	Ref
 	TypedPtr() AnimationNodeOneShot
@@ -276,6 +280,10 @@ type RefAudioStreamGeneratorPlayback interface {
 	Ref
 	TypedPtr() AudioStreamGeneratorPlayback
 }
+type RefAudioStreamInteractive interface {
+	Ref
+	TypedPtr() AudioStreamInteractive
+}
 type RefAudioStreamMP3 interface {
 	Ref
 	TypedPtr() AudioStreamMP3
@@ -292,9 +300,17 @@ type RefAudioStreamPlayback interface {
 	Ref
 	TypedPtr() AudioStreamPlayback
 }
+type RefAudioStreamPlaybackInteractive interface {
+	Ref
+	TypedPtr() AudioStreamPlaybackInteractive
+}
 type RefAudioStreamPlaybackOggVorbis interface {
 	Ref
 	TypedPtr() AudioStreamPlaybackOggVorbis
+}
+type RefAudioStreamPlaybackPlaylist interface {
+	Ref
+	TypedPtr() AudioStreamPlaybackPlaylist
 }
 type RefAudioStreamPlaybackPolyphonic interface {
 	Ref
@@ -304,6 +320,14 @@ type RefAudioStreamPlaybackResampled interface {
 	Ref
 	TypedPtr() AudioStreamPlaybackResampled
 }
+type RefAudioStreamPlaybackSynchronized interface {
+	Ref
+	TypedPtr() AudioStreamPlaybackSynchronized
+}
+type RefAudioStreamPlaylist interface {
+	Ref
+	TypedPtr() AudioStreamPlaylist
+}
 type RefAudioStreamPolyphonic interface {
 	Ref
 	TypedPtr() AudioStreamPolyphonic
@@ -311,6 +335,10 @@ type RefAudioStreamPolyphonic interface {
 type RefAudioStreamRandomizer interface {
 	Ref
 	TypedPtr() AudioStreamRandomizer
+}
+type RefAudioStreamSynchronized interface {
+	Ref
+	TypedPtr() AudioStreamSynchronized
 }
 type RefAudioStreamWAV interface {
 	Ref
@@ -399,6 +427,10 @@ type RefCircleShape2D interface {
 type RefCodeHighlighter interface {
 	Ref
 	TypedPtr() CodeHighlighter
+}
+type RefColorPalette interface {
+	Ref
+	TypedPtr() ColorPalette
 }
 type RefCompositor interface {
 	Ref
@@ -516,6 +548,10 @@ type RefENetPacketPeer interface {
 	Ref
 	TypedPtr() ENetPacketPeer
 }
+type RefEditorContextMenuPlugin interface {
+	Ref
+	TypedPtr() EditorContextMenuPlugin
+}
 type RefEditorDebuggerPlugin interface {
 	Ref
 	TypedPtr() EditorDebuggerPlugin
@@ -531,6 +567,10 @@ type RefEditorExportPlatform interface {
 type RefEditorExportPlatformAndroid interface {
 	Ref
 	TypedPtr() EditorExportPlatformAndroid
+}
+type RefEditorExportPlatformExtension interface {
+	Ref
+	TypedPtr() EditorExportPlatformExtension
 }
 type RefEditorExportPlatformIOS interface {
 	Ref
@@ -559,6 +599,10 @@ type RefEditorExportPlatformWindows interface {
 type RefEditorExportPlugin interface {
 	Ref
 	TypedPtr() EditorExportPlugin
+}
+type RefEditorExportPreset interface {
+	Ref
+	TypedPtr() EditorExportPreset
 }
 type RefEditorFeatureProfile interface {
 	Ref
@@ -604,9 +648,17 @@ type RefEditorSceneFormatImporterBlend interface {
 	Ref
 	TypedPtr() EditorSceneFormatImporterBlend
 }
+type RefEditorSceneFormatImporterFBX2GLTF interface {
+	Ref
+	TypedPtr() EditorSceneFormatImporterFBX2GLTF
+}
 type RefEditorSceneFormatImporterGLTF interface {
 	Ref
 	TypedPtr() EditorSceneFormatImporterGLTF
+}
+type RefEditorSceneFormatImporterUFBX interface {
+	Ref
+	TypedPtr() EditorSceneFormatImporterUFBX
 }
 type RefEditorScenePostImport interface {
 	Ref
@@ -648,6 +700,18 @@ type RefExpression interface {
 	Ref
 	TypedPtr() Expression
 }
+type RefExternalTexture interface {
+	Ref
+	TypedPtr() ExternalTexture
+}
+type RefFBXDocument interface {
+	Ref
+	TypedPtr() FBXDocument
+}
+type RefFBXState interface {
+	Ref
+	TypedPtr() FBXState
+}
 type RefFastNoiseLite interface {
 	Ref
 	TypedPtr() FastNoiseLite
@@ -679,6 +743,10 @@ type RefGDExtension interface {
 type RefGDScript interface {
 	Ref
 	TypedPtr() GDScript
+}
+type RefGDScriptSyntaxHighlighter interface {
+	Ref
+	TypedPtr() GDScriptSyntaxHighlighter
 }
 type RefGLTFAccessor interface {
 	Ref
@@ -719,6 +787,10 @@ type RefGLTFMesh interface {
 type RefGLTFNode interface {
 	Ref
 	TypedPtr() GLTFNode
+}
+type RefGLTFObjectModelProperty interface {
+	Ref
+	TypedPtr() GLTFObjectModelProperty
 }
 type RefGLTFPhysicsBody interface {
 	Ref
@@ -892,6 +964,10 @@ type RefJavaClass interface {
 	Ref
 	TypedPtr() JavaClass
 }
+type RefJavaObject interface {
+	Ref
+	TypedPtr() JavaObject
+}
 type RefJavaScriptObject interface {
 	Ref
 	TypedPtr() JavaScriptObject
@@ -1060,6 +1136,10 @@ type RefOpenXRAction interface {
 	Ref
 	TypedPtr() OpenXRAction
 }
+type RefOpenXRActionBindingModifier interface {
+	Ref
+	TypedPtr() OpenXRActionBindingModifier
+}
 type RefOpenXRActionMap interface {
 	Ref
 	TypedPtr() OpenXRActionMap
@@ -1068,9 +1148,33 @@ type RefOpenXRActionSet interface {
 	Ref
 	TypedPtr() OpenXRActionSet
 }
+type RefOpenXRAnalogThresholdModifier interface {
+	Ref
+	TypedPtr() OpenXRAnalogThresholdModifier
+}
+type RefOpenXRBindingModifier interface {
+	Ref
+	TypedPtr() OpenXRBindingModifier
+}
+type RefOpenXRDpadBindingModifier interface {
+	Ref
+	TypedPtr() OpenXRDpadBindingModifier
+}
+type RefOpenXRHapticBase interface {
+	Ref
+	TypedPtr() OpenXRHapticBase
+}
+type RefOpenXRHapticVibration interface {
+	Ref
+	TypedPtr() OpenXRHapticVibration
+}
 type RefOpenXRIPBinding interface {
 	Ref
 	TypedPtr() OpenXRIPBinding
+}
+type RefOpenXRIPBindingModifier interface {
+	Ref
+	TypedPtr() OpenXRIPBindingModifier
 }
 type RefOpenXRInteractionProfile interface {
 	Ref
@@ -1620,6 +1724,10 @@ type RefStyleBoxTexture interface {
 	Ref
 	TypedPtr() StyleBoxTexture
 }
+type RefSubtweenTweener interface {
+	Ref
+	TypedPtr() SubtweenTweener
+}
 type RefSurfaceTool interface {
 	Ref
 	TypedPtr() SurfaceTool
@@ -1747,6 +1855,10 @@ type RefTorusMesh interface {
 type RefTranslation interface {
 	Ref
 	TypedPtr() Translation
+}
+type RefTranslationDomain interface {
+	Ref
+	TypedPtr() TranslationDomain
 }
 type RefTriangleMesh interface {
 	Ref

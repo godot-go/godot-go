@@ -22,7 +22,7 @@ import (
 type GDExtensionInterface struct {
 	Library        GDExtensionClassLibraryPtr
 	Token          unsafe.Pointer
-	GodotVersion GDExtensionGodotVersion
+	GodotVersion   *GDExtensionGodotVersion
 
 	// All of the GDExtension interface functions.
 	{{ range $i, $f := $view.CollectGDExtensionInterfaceFunctions -}}
@@ -38,6 +38,9 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.Library = pLibrary
 	x.Token = unsafe.Pointer(&pLibrary)
 
+	{{/* pnr.Pin(x.GetProcAddress)
+	pnr.Pin(x.Library)
+	pnr.Pin(x.Token) */}}
 	{{ range $i, $f := $view.CollectGDExtensionInterfaceFunctions -}}
 	{{ if eq $f.Name "GDExtensionInterfaceGetProcAddress" -}}{{ continue }}{{ end -}}
 	x.{{ trimPrefix $f.Name "GDExtensionInterface" }} = ({{ $f.Name }})(LoadProcAddress("{{ loadProcAddressName $f.Name }}"))
@@ -55,7 +58,9 @@ func LoadProcAddress(funcName string) unsafe.Pointer {
 			zap.String("name", funcName),
 		)
 	}
-	return unsafe.Pointer(ret)
+	ptr := unsafe.Pointer(ret)
+	pnr.Pin(ptr)
+	return ptr
 }
 
 func (gv GDExtensionGodotVersion) GetMajor() int32 {

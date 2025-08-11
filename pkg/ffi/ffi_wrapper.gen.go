@@ -178,6 +178,8 @@ const (
 	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT64
 	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT
 	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR16
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR32
 )
 
 type GDExtensionInitializationLevel C.GDExtensionInitializationLevel
@@ -193,6 +195,7 @@ const (
 // C function aliases
 type GDExtensionVariantFromTypeConstructorFunc C.GDExtensionVariantFromTypeConstructorFunc
 type GDExtensionTypeFromVariantConstructorFunc C.GDExtensionTypeFromVariantConstructorFunc
+type GDExtensionVariantGetInternalPtrFunc C.GDExtensionVariantGetInternalPtrFunc
 type GDExtensionPtrOperatorEvaluator C.GDExtensionPtrOperatorEvaluator
 type GDExtensionPtrBuiltInMethod C.GDExtensionPtrBuiltInMethod
 type GDExtensionPtrConstructor C.GDExtensionPtrConstructor
@@ -225,10 +228,13 @@ type GDExtensionClassReference C.GDExtensionClassReference
 type GDExtensionClassUnreference C.GDExtensionClassUnreference
 type GDExtensionClassCallVirtual C.GDExtensionClassCallVirtual
 type GDExtensionClassCreateInstance C.GDExtensionClassCreateInstance
+type GDExtensionClassCreateInstance2 C.GDExtensionClassCreateInstance2
 type GDExtensionClassFreeInstance C.GDExtensionClassFreeInstance
 type GDExtensionClassRecreateInstance C.GDExtensionClassRecreateInstance
 type GDExtensionClassGetVirtual C.GDExtensionClassGetVirtual
+type GDExtensionClassGetVirtual2 C.GDExtensionClassGetVirtual2
 type GDExtensionClassGetVirtualCallData C.GDExtensionClassGetVirtualCallData
+type GDExtensionClassGetVirtualCallData2 C.GDExtensionClassGetVirtualCallData2
 type GDExtensionClassCallVirtualWithData C.GDExtensionClassCallVirtualWithData
 type GDExtensionClassMethodCall C.GDExtensionClassMethodCall
 type GDExtensionClassMethodValidatedCall C.GDExtensionClassMethodValidatedCall
@@ -310,11 +316,13 @@ type GDExtensionInterfaceVariantGetType C.GDExtensionInterfaceVariantGetType
 type GDExtensionInterfaceVariantHasMethod C.GDExtensionInterfaceVariantHasMethod
 type GDExtensionInterfaceVariantHasMember C.GDExtensionInterfaceVariantHasMember
 type GDExtensionInterfaceVariantHasKey C.GDExtensionInterfaceVariantHasKey
+type GDExtensionInterfaceVariantGetObjectInstanceId C.GDExtensionInterfaceVariantGetObjectInstanceId
 type GDExtensionInterfaceVariantGetTypeName C.GDExtensionInterfaceVariantGetTypeName
 type GDExtensionInterfaceVariantCanConvert C.GDExtensionInterfaceVariantCanConvert
 type GDExtensionInterfaceVariantCanConvertStrict C.GDExtensionInterfaceVariantCanConvertStrict
 type GDExtensionInterfaceGetVariantFromTypeConstructor C.GDExtensionInterfaceGetVariantFromTypeConstructor
 type GDExtensionInterfaceGetVariantToTypeConstructor C.GDExtensionInterfaceGetVariantToTypeConstructor
+type GDExtensionInterfaceGetVariantGetInternalPtrFunc C.GDExtensionInterfaceGetVariantGetInternalPtrFunc
 type GDExtensionInterfaceVariantGetPtrOperatorEvaluator C.GDExtensionInterfaceVariantGetPtrOperatorEvaluator
 type GDExtensionInterfaceVariantGetPtrBuiltinMethod C.GDExtensionInterfaceVariantGetPtrBuiltinMethod
 type GDExtensionInterfaceVariantGetPtrConstructor C.GDExtensionInterfaceVariantGetPtrConstructor
@@ -390,6 +398,7 @@ type GDExtensionInterfaceArrayRef C.GDExtensionInterfaceArrayRef
 type GDExtensionInterfaceArraySetTyped C.GDExtensionInterfaceArraySetTyped
 type GDExtensionInterfaceDictionaryOperatorIndex C.GDExtensionInterfaceDictionaryOperatorIndex
 type GDExtensionInterfaceDictionaryOperatorIndexConst C.GDExtensionInterfaceDictionaryOperatorIndexConst
+type GDExtensionInterfaceDictionarySetTyped C.GDExtensionInterfaceDictionarySetTyped
 type GDExtensionInterfaceObjectMethodBindCall C.GDExtensionInterfaceObjectMethodBindCall
 type GDExtensionInterfaceObjectMethodBindPtrcall C.GDExtensionInterfaceObjectMethodBindPtrcall
 type GDExtensionInterfaceObjectDestroy C.GDExtensionInterfaceObjectDestroy
@@ -416,11 +425,13 @@ type GDExtensionInterfaceCallableCustomCreate C.GDExtensionInterfaceCallableCust
 type GDExtensionInterfaceCallableCustomCreate2 C.GDExtensionInterfaceCallableCustomCreate2
 type GDExtensionInterfaceCallableCustomGetUserData C.GDExtensionInterfaceCallableCustomGetUserData
 type GDExtensionInterfaceClassdbConstructObject C.GDExtensionInterfaceClassdbConstructObject
+type GDExtensionInterfaceClassdbConstructObject2 C.GDExtensionInterfaceClassdbConstructObject2
 type GDExtensionInterfaceClassdbGetMethodBind C.GDExtensionInterfaceClassdbGetMethodBind
 type GDExtensionInterfaceClassdbGetClassTag C.GDExtensionInterfaceClassdbGetClassTag
 type GDExtensionInterfaceClassdbRegisterExtensionClass C.GDExtensionInterfaceClassdbRegisterExtensionClass
 type GDExtensionInterfaceClassdbRegisterExtensionClass2 C.GDExtensionInterfaceClassdbRegisterExtensionClass2
 type GDExtensionInterfaceClassdbRegisterExtensionClass3 C.GDExtensionInterfaceClassdbRegisterExtensionClass3
+type GDExtensionInterfaceClassdbRegisterExtensionClass4 C.GDExtensionInterfaceClassdbRegisterExtensionClass4
 type GDExtensionInterfaceClassdbRegisterExtensionClassMethod C.GDExtensionInterfaceClassdbRegisterExtensionClassMethod
 type GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod C.GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod
 type GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant C.GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
@@ -466,6 +477,22 @@ func CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 
 	C.cgo_callfn_GDExtensionTypeFromVariantConstructorFunc(arg0, arg1, arg2)
 
+}
+
+func CallFunc_GDExtensionVariantGetInternalPtrFunc(
+	fn GDExtensionVariantGetInternalPtrFunc,
+	inArg1 GDExtensionVariantPtr,
+) unsafe.Pointer {
+	arg0 := (C.GDExtensionVariantGetInternalPtrFunc)(fn)
+	arg1 := (C.GDExtensionVariantPtr)(inArg1)
+
+	log.Debug("called C.cgo_callfn_GDExtensionVariantGetInternalPtrFunc")
+
+	ret := C.cgo_callfn_GDExtensionVariantGetInternalPtrFunc(arg0, arg1)
+
+	pnr.Pin(ret)
+
+	return unsafe.Pointer(ret)
 }
 
 func CallFunc_GDExtensionPtrOperatorEvaluator(
@@ -643,7 +670,6 @@ func CallFunc_GDExtensionPtrKeyedChecker(
 
 	ret := C.cgo_callfn_GDExtensionPtrKeyedChecker(arg0, arg1, arg2)
 
-	// uint32_t
 	return uint32(ret)
 }
 
@@ -673,7 +699,6 @@ func CallFunc_GDExtensionClassConstructor(
 
 	ret := C.cgo_callfn_GDExtensionClassConstructor(arg0)
 
-	// GDExtensionObjectPtr
 	return (GDExtensionObjectPtr)(ret)
 }
 
@@ -690,7 +715,8 @@ func CallFunc_GDExtensionInstanceBindingCreateCallback(
 
 	ret := C.cgo_callfn_GDExtensionInstanceBindingCreateCallback(arg0, arg1, arg2)
 
-	// void *
+	pnr.Pin(ret)
+
 	return unsafe.Pointer(ret)
 }
 
@@ -726,7 +752,6 @@ func CallFunc_GDExtensionInstanceBindingReferenceCallback(
 
 	ret := C.cgo_callfn_GDExtensionInstanceBindingReferenceCallback(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -745,7 +770,6 @@ func CallFunc_GDExtensionClassSet(
 
 	ret := C.cgo_callfn_GDExtensionClassSet(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -764,7 +788,6 @@ func CallFunc_GDExtensionClassGet(
 
 	ret := C.cgo_callfn_GDExtensionClassGet(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -779,7 +802,6 @@ func CallFunc_GDExtensionClassGetRID(
 
 	ret := C.cgo_callfn_GDExtensionClassGetRID(arg0, arg1)
 
-	// uint64_t
 	return uint64(ret)
 }
 
@@ -796,7 +818,6 @@ func CallFunc_GDExtensionClassGetPropertyList(
 
 	ret := C.cgo_callfn_GDExtensionClassGetPropertyList(arg0, arg1, arg2)
 
-	// const GDExtensionPropertyInfo *
 	return (*GDExtensionPropertyInfo)(ret)
 }
 
@@ -845,7 +866,6 @@ func CallFunc_GDExtensionClassPropertyCanRevert(
 
 	ret := C.cgo_callfn_GDExtensionClassPropertyCanRevert(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -864,7 +884,6 @@ func CallFunc_GDExtensionClassPropertyGetRevert(
 
 	ret := C.cgo_callfn_GDExtensionClassPropertyGetRevert(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -881,7 +900,6 @@ func CallFunc_GDExtensionClassValidateProperty(
 
 	ret := C.cgo_callfn_GDExtensionClassValidateProperty(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -988,7 +1006,22 @@ func CallFunc_GDExtensionClassCreateInstance(
 
 	ret := C.cgo_callfn_GDExtensionClassCreateInstance(arg0, arg1)
 
-	// GDExtensionObjectPtr
+	return (GDExtensionObjectPtr)(ret)
+}
+
+func CallFunc_GDExtensionClassCreateInstance2(
+	fn GDExtensionClassCreateInstance2,
+	p_class_userdata unsafe.Pointer,
+	p_notify_postinitialize GDExtensionBool,
+) GDExtensionObjectPtr {
+	arg0 := (C.GDExtensionClassCreateInstance2)(fn)
+	arg1 := unsafe.Pointer(p_class_userdata)
+	arg2 := (C.GDExtensionBool)(p_notify_postinitialize)
+
+	log.Debug("called C.cgo_callfn_GDExtensionClassCreateInstance2")
+
+	ret := C.cgo_callfn_GDExtensionClassCreateInstance2(arg0, arg1, arg2)
+
 	return (GDExtensionObjectPtr)(ret)
 }
 
@@ -1020,7 +1053,6 @@ func CallFunc_GDExtensionClassRecreateInstance(
 
 	ret := C.cgo_callfn_GDExtensionClassRecreateInstance(arg0, arg1, arg2)
 
-	// GDExtensionClassInstancePtr
 	return (GDExtensionClassInstancePtr)(ret)
 }
 
@@ -1037,7 +1069,24 @@ func CallFunc_GDExtensionClassGetVirtual(
 
 	ret := C.cgo_callfn_GDExtensionClassGetVirtual(arg0, arg1, arg2)
 
-	// GDExtensionClassCallVirtual
+	return (GDExtensionClassCallVirtual)(ret)
+}
+
+func CallFunc_GDExtensionClassGetVirtual2(
+	fn GDExtensionClassGetVirtual2,
+	p_class_userdata unsafe.Pointer,
+	p_name GDExtensionConstStringNamePtr,
+	p_hash Uint32T,
+) GDExtensionClassCallVirtual {
+	arg0 := (C.GDExtensionClassGetVirtual2)(fn)
+	arg1 := unsafe.Pointer(p_class_userdata)
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_name)
+	arg3 := (C.uint32_t)(p_hash)
+
+	log.Debug("called C.cgo_callfn_GDExtensionClassGetVirtual2")
+
+	ret := C.cgo_callfn_GDExtensionClassGetVirtual2(arg0, arg1, arg2, arg3)
+
 	return (GDExtensionClassCallVirtual)(ret)
 }
 
@@ -1054,7 +1103,28 @@ func CallFunc_GDExtensionClassGetVirtualCallData(
 
 	ret := C.cgo_callfn_GDExtensionClassGetVirtualCallData(arg0, arg1, arg2)
 
-	// void *
+	pnr.Pin(ret)
+
+	return unsafe.Pointer(ret)
+}
+
+func CallFunc_GDExtensionClassGetVirtualCallData2(
+	fn GDExtensionClassGetVirtualCallData2,
+	p_class_userdata unsafe.Pointer,
+	p_name GDExtensionConstStringNamePtr,
+	p_hash Uint32T,
+) unsafe.Pointer {
+	arg0 := (C.GDExtensionClassGetVirtualCallData2)(fn)
+	arg1 := unsafe.Pointer(p_class_userdata)
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_name)
+	arg3 := (C.uint32_t)(p_hash)
+
+	log.Debug("called C.cgo_callfn_GDExtensionClassGetVirtualCallData2")
+
+	ret := C.cgo_callfn_GDExtensionClassGetVirtualCallData2(arg0, arg1, arg2, arg3)
+
+	pnr.Pin(ret)
+
 	return unsafe.Pointer(ret)
 }
 
@@ -1172,7 +1242,6 @@ func CallFunc_GDExtensionCallableCustomIsValid(
 
 	ret := C.cgo_callfn_GDExtensionCallableCustomIsValid(arg0, arg1)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1200,7 +1269,6 @@ func CallFunc_GDExtensionCallableCustomHash(
 
 	ret := C.cgo_callfn_GDExtensionCallableCustomHash(arg0, arg1)
 
-	// uint32_t
 	return uint32(ret)
 }
 
@@ -1217,7 +1285,6 @@ func CallFunc_GDExtensionCallableCustomEqual(
 
 	ret := C.cgo_callfn_GDExtensionCallableCustomEqual(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1234,7 +1301,6 @@ func CallFunc_GDExtensionCallableCustomLessThan(
 
 	ret := C.cgo_callfn_GDExtensionCallableCustomLessThan(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1268,7 +1334,6 @@ func CallFunc_GDExtensionCallableCustomGetArgumentCount(
 
 	ret := C.cgo_callfn_GDExtensionCallableCustomGetArgumentCount(arg0, arg1, arg2)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -1287,7 +1352,6 @@ func CallFunc_GDExtensionScriptInstanceSet(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceSet(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1306,7 +1370,6 @@ func CallFunc_GDExtensionScriptInstanceGet(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceGet(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1323,7 +1386,6 @@ func CallFunc_GDExtensionScriptInstanceGetPropertyList(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceGetPropertyList(arg0, arg1, arg2)
 
-	// const GDExtensionPropertyInfo *
 	return (*GDExtensionPropertyInfo)(ret)
 }
 
@@ -1372,7 +1434,6 @@ func CallFunc_GDExtensionScriptInstanceGetClassCategory(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceGetClassCategory(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1391,7 +1452,6 @@ func CallFunc_GDExtensionScriptInstanceGetPropertyType(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceGetPropertyType(arg0, arg1, arg2, arg3)
 
-	// GDExtensionVariantType
 	return (GDExtensionVariantType)(ret)
 }
 
@@ -1408,7 +1468,6 @@ func CallFunc_GDExtensionScriptInstanceValidateProperty(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceValidateProperty(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1425,7 +1484,6 @@ func CallFunc_GDExtensionScriptInstancePropertyCanRevert(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstancePropertyCanRevert(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1444,7 +1502,6 @@ func CallFunc_GDExtensionScriptInstancePropertyGetRevert(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstancePropertyGetRevert(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1459,7 +1516,6 @@ func CallFunc_GDExtensionScriptInstanceGetOwner(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceGetOwner(arg0, arg1)
 
-	// GDExtensionObjectPtr
 	return (GDExtensionObjectPtr)(ret)
 }
 
@@ -1510,7 +1566,6 @@ func CallFunc_GDExtensionScriptInstanceGetMethodList(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceGetMethodList(arg0, arg1, arg2)
 
-	// const GDExtensionMethodInfo *
 	return (*GDExtensionMethodInfo)(ret)
 }
 
@@ -1559,7 +1614,6 @@ func CallFunc_GDExtensionScriptInstanceHasMethod(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceHasMethod(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1578,7 +1632,6 @@ func CallFunc_GDExtensionScriptInstanceGetMethodArgumentCount(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceGetMethodArgumentCount(arg0, arg1, arg2, arg3)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -1678,7 +1731,6 @@ func CallFunc_GDExtensionScriptInstanceRefCountDecremented(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceRefCountDecremented(arg0, arg1)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1693,7 +1745,6 @@ func CallFunc_GDExtensionScriptInstanceGetScript(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceGetScript(arg0, arg1)
 
-	// GDExtensionObjectPtr
 	return (GDExtensionObjectPtr)(ret)
 }
 
@@ -1708,7 +1759,6 @@ func CallFunc_GDExtensionScriptInstanceIsPlaceholder(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceIsPlaceholder(arg0, arg1)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1723,7 +1773,6 @@ func CallFunc_GDExtensionScriptInstanceGetLanguage(
 
 	ret := C.cgo_callfn_GDExtensionScriptInstanceGetLanguage(arg0, arg1)
 
-	// GDExtensionScriptLanguagePtr
 	return (GDExtensionScriptLanguagePtr)(ret)
 }
 
@@ -1755,7 +1804,6 @@ func CallFunc_GDExtensionInitializationFunction(
 
 	ret := C.cgo_callfn_GDExtensionInitializationFunction(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -1771,6 +1819,7 @@ func CallFunc_GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars(
 	C.cgo_callfn_GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars(arg0, arg1)
 
 	C.free(unsafe.Pointer(arg1))
+
 }
 
 func CallFunc_GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen(
@@ -1804,7 +1853,6 @@ func CallFunc_GDExtensionInterfaceGetProcAddress(
 
 	C.free(unsafe.Pointer(arg1))
 
-	// GDExtensionInterfaceFunctionPtr
 	return (GDExtensionInterfaceFunctionPtr)(ret)
 }
 
@@ -1830,7 +1878,8 @@ func CallFunc_GDExtensionInterfaceMemAlloc(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceMemAlloc(arg0, arg1)
 
-	// void *
+	pnr.Pin(ret)
+
 	return unsafe.Pointer(ret)
 }
 
@@ -1846,7 +1895,8 @@ func CallFunc_GDExtensionInterfaceMemRealloc(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceMemRealloc(arg0, arg1, arg2)
 
-	// void *
+	pnr.Pin(ret)
+
 	return unsafe.Pointer(ret)
 }
 
@@ -2025,7 +2075,6 @@ func CallFunc_GDExtensionInterfaceGetNativeStructSize(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceGetNativeStructSize(arg0, arg1)
 
-	// uint64_t
 	return uint64(ret)
 }
 
@@ -2293,7 +2342,6 @@ func CallFunc_GDExtensionInterfaceVariantIterInit(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantIterInit(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -2311,7 +2359,6 @@ func CallFunc_GDExtensionInterfaceVariantIterNext(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantIterNext(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -2343,7 +2390,6 @@ func CallFunc_GDExtensionInterfaceVariantHash(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantHash(arg0, arg1)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -2359,7 +2405,6 @@ func CallFunc_GDExtensionInterfaceVariantRecursiveHash(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantRecursiveHash(arg0, arg1, arg2)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -2375,7 +2420,6 @@ func CallFunc_GDExtensionInterfaceVariantHashCompare(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantHashCompare(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -2389,7 +2433,6 @@ func CallFunc_GDExtensionInterfaceVariantBooleanize(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantBooleanize(arg0, arg1)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -2433,7 +2476,6 @@ func CallFunc_GDExtensionInterfaceVariantGetType(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetType(arg0, arg1)
 
-	// GDExtensionVariantType
 	return (GDExtensionVariantType)(ret)
 }
 
@@ -2449,7 +2491,6 @@ func CallFunc_GDExtensionInterfaceVariantHasMethod(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantHasMethod(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -2465,7 +2506,6 @@ func CallFunc_GDExtensionInterfaceVariantHasMember(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantHasMember(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -2483,8 +2523,20 @@ func CallFunc_GDExtensionInterfaceVariantHasKey(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantHasKey(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
+}
+
+func CallFunc_GDExtensionInterfaceVariantGetObjectInstanceId(
+	p_self GDExtensionConstVariantPtr,
+) GDObjectInstanceID {
+	arg0 := (C.GDExtensionInterfaceVariantGetObjectInstanceId)(FFI.VariantGetObjectInstanceId)
+	arg1 := (C.GDExtensionConstVariantPtr)(p_self)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceVariantGetObjectInstanceId")
+
+	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetObjectInstanceId(arg0, arg1)
+
+	return (GDObjectInstanceID)(ret)
 }
 
 func CallFunc_GDExtensionInterfaceVariantGetTypeName(
@@ -2513,7 +2565,6 @@ func CallFunc_GDExtensionInterfaceVariantCanConvert(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantCanConvert(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -2529,7 +2580,6 @@ func CallFunc_GDExtensionInterfaceVariantCanConvertStrict(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantCanConvertStrict(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -2543,7 +2593,6 @@ func CallFunc_GDExtensionInterfaceGetVariantFromTypeConstructor(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceGetVariantFromTypeConstructor(arg0, arg1)
 
-	// GDExtensionVariantFromTypeConstructorFunc
 	return (GDExtensionVariantFromTypeConstructorFunc)(ret)
 }
 
@@ -2557,8 +2606,20 @@ func CallFunc_GDExtensionInterfaceGetVariantToTypeConstructor(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceGetVariantToTypeConstructor(arg0, arg1)
 
-	// GDExtensionTypeFromVariantConstructorFunc
 	return (GDExtensionTypeFromVariantConstructorFunc)(ret)
+}
+
+func CallFunc_GDExtensionInterfaceGetVariantGetInternalPtrFunc(
+	p_type GDExtensionVariantType,
+) GDExtensionVariantGetInternalPtrFunc {
+	arg0 := (C.GDExtensionInterfaceGetVariantGetInternalPtrFunc)(FFI.GetVariantGetInternalPtrFunc)
+	arg1 := (C.GDExtensionVariantType)(p_type)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceGetVariantGetInternalPtrFunc")
+
+	ret := C.cgo_callfn_GDExtensionInterfaceGetVariantGetInternalPtrFunc(arg0, arg1)
+
+	return (GDExtensionVariantGetInternalPtrFunc)(ret)
 }
 
 func CallFunc_GDExtensionInterfaceVariantGetPtrOperatorEvaluator(
@@ -2575,7 +2636,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrOperatorEvaluator(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrOperatorEvaluator(arg0, arg1, arg2, arg3)
 
-	// GDExtensionPtrOperatorEvaluator
 	return (GDExtensionPtrOperatorEvaluator)(ret)
 }
 
@@ -2593,7 +2653,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrBuiltinMethod(arg0, arg1, arg2, arg3)
 
-	// GDExtensionPtrBuiltInMethod
 	return (GDExtensionPtrBuiltInMethod)(ret)
 }
 
@@ -2609,7 +2668,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrConstructor(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrConstructor(arg0, arg1, arg2)
 
-	// GDExtensionPtrConstructor
 	return (GDExtensionPtrConstructor)(ret)
 }
 
@@ -2623,7 +2681,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrDestructor(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrDestructor(arg0, arg1)
 
-	// GDExtensionPtrDestructor
 	return (GDExtensionPtrDestructor)(ret)
 }
 
@@ -2659,7 +2716,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrSetter(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrSetter(arg0, arg1, arg2)
 
-	// GDExtensionPtrSetter
 	return (GDExtensionPtrSetter)(ret)
 }
 
@@ -2675,7 +2731,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrGetter(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrGetter(arg0, arg1, arg2)
 
-	// GDExtensionPtrGetter
 	return (GDExtensionPtrGetter)(ret)
 }
 
@@ -2689,7 +2744,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrIndexedSetter(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrIndexedSetter(arg0, arg1)
 
-	// GDExtensionPtrIndexedSetter
 	return (GDExtensionPtrIndexedSetter)(ret)
 }
 
@@ -2703,7 +2757,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrIndexedGetter(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrIndexedGetter(arg0, arg1)
 
-	// GDExtensionPtrIndexedGetter
 	return (GDExtensionPtrIndexedGetter)(ret)
 }
 
@@ -2717,7 +2770,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrKeyedSetter(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrKeyedSetter(arg0, arg1)
 
-	// GDExtensionPtrKeyedSetter
 	return (GDExtensionPtrKeyedSetter)(ret)
 }
 
@@ -2731,7 +2783,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrKeyedGetter(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrKeyedGetter(arg0, arg1)
 
-	// GDExtensionPtrKeyedGetter
 	return (GDExtensionPtrKeyedGetter)(ret)
 }
 
@@ -2745,7 +2796,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrKeyedChecker(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrKeyedChecker(arg0, arg1)
 
-	// GDExtensionPtrKeyedChecker
 	return (GDExtensionPtrKeyedChecker)(ret)
 }
 
@@ -2777,7 +2827,6 @@ func CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetPtrUtilityFunction(arg0, arg1, arg2)
 
-	// GDExtensionPtrUtilityFunction
 	return (GDExtensionPtrUtilityFunction)(ret)
 }
 
@@ -2794,6 +2843,7 @@ func CallFunc_GDExtensionInterfaceStringNewWithLatin1Chars(
 	C.cgo_callfn_GDExtensionInterfaceStringNewWithLatin1Chars(arg0, arg1, arg2)
 
 	C.free(unsafe.Pointer(arg2))
+
 }
 
 func CallFunc_GDExtensionInterfaceStringNewWithUtf8Chars(
@@ -2809,6 +2859,7 @@ func CallFunc_GDExtensionInterfaceStringNewWithUtf8Chars(
 	C.cgo_callfn_GDExtensionInterfaceStringNewWithUtf8Chars(arg0, arg1, arg2)
 
 	C.free(unsafe.Pointer(arg2))
+
 }
 
 func CallFunc_GDExtensionInterfaceStringNewWithUtf16Chars(
@@ -2905,7 +2956,6 @@ func CallFunc_GDExtensionInterfaceStringNewWithUtf8CharsAndLen2(
 
 	C.free(unsafe.Pointer(arg2))
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -2941,7 +2991,6 @@ func CallFunc_GDExtensionInterfaceStringNewWithUtf16CharsAndLen2(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceStringNewWithUtf16CharsAndLen2(arg0, arg1, arg2, arg3, arg4)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -2991,7 +3040,6 @@ func CallFunc_GDExtensionInterfaceStringToLatin1Chars(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceStringToLatin1Chars(arg0, arg1, arg2, arg3)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -3009,7 +3057,6 @@ func CallFunc_GDExtensionInterfaceStringToUtf8Chars(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceStringToUtf8Chars(arg0, arg1, arg2, arg3)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -3027,7 +3074,6 @@ func CallFunc_GDExtensionInterfaceStringToUtf16Chars(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceStringToUtf16Chars(arg0, arg1, arg2, arg3)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -3045,7 +3091,6 @@ func CallFunc_GDExtensionInterfaceStringToUtf32Chars(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceStringToUtf32Chars(arg0, arg1, arg2, arg3)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -3063,7 +3108,6 @@ func CallFunc_GDExtensionInterfaceStringToWideChars(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceStringToWideChars(arg0, arg1, arg2, arg3)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -3079,7 +3123,6 @@ func CallFunc_GDExtensionInterfaceStringOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceStringOperatorIndex(arg0, arg1, arg2)
 
-	// char32_t *
 	return (*Char32T)(ret)
 }
 
@@ -3095,7 +3138,6 @@ func CallFunc_GDExtensionInterfaceStringOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceStringOperatorIndexConst(arg0, arg1, arg2)
 
-	// const char32_t *
 	return (*Char32T)(ret)
 }
 
@@ -3140,6 +3182,7 @@ func CallFunc_GDExtensionInterfaceStringOperatorPlusEqCstr(
 	C.cgo_callfn_GDExtensionInterfaceStringOperatorPlusEqCstr(arg0, arg1, arg2)
 
 	C.free(unsafe.Pointer(arg2))
+
 }
 
 func CallFunc_GDExtensionInterfaceStringOperatorPlusEqWcstr(
@@ -3182,7 +3225,6 @@ func CallFunc_GDExtensionInterfaceStringResize(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceStringResize(arg0, arg1, arg2)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -3217,6 +3259,7 @@ func CallFunc_GDExtensionInterfaceStringNameNewWithUtf8Chars(
 	C.cgo_callfn_GDExtensionInterfaceStringNameNewWithUtf8Chars(arg0, arg1, arg2)
 
 	C.free(unsafe.Pointer(arg2))
+
 }
 
 func CallFunc_GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen(
@@ -3251,7 +3294,6 @@ func CallFunc_GDExtensionInterfaceXmlParserOpenBuffer(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceXmlParserOpenBuffer(arg0, arg1, arg2, arg3)
 
-	// GDExtensionInt
 	return (GDExtensionInt)(ret)
 }
 
@@ -3285,7 +3327,6 @@ func CallFunc_GDExtensionInterfaceFileAccessGetBuffer(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceFileAccessGetBuffer(arg0, arg1, arg2, arg3)
 
-	// uint64_t
 	return uint64(ret)
 }
 
@@ -3299,7 +3340,6 @@ func CallFunc_GDExtensionInterfaceImagePtrw(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceImagePtrw(arg0, arg1)
 
-	// uint8_t *
 	return (*uint8)(ret)
 }
 
@@ -3313,7 +3353,6 @@ func CallFunc_GDExtensionInterfaceImagePtr(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceImagePtr(arg0, arg1)
 
-	// const uint8_t *
 	return (*uint8)(ret)
 }
 
@@ -3339,7 +3378,6 @@ func CallFunc_GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
 
-	// int64_t
 	return int64(ret)
 }
 
@@ -3361,7 +3399,6 @@ func CallFunc_GDExtensionInterfaceWorkerThreadPoolAddNativeTask(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceWorkerThreadPoolAddNativeTask(arg0, arg1, arg2, arg3, arg4, arg5)
 
-	// int64_t
 	return int64(ret)
 }
 
@@ -3377,7 +3414,6 @@ func CallFunc_GDExtensionInterfacePackedByteArrayOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedByteArrayOperatorIndex(arg0, arg1, arg2)
 
-	// uint8_t *
 	return (*uint8)(ret)
 }
 
@@ -3393,7 +3429,6 @@ func CallFunc_GDExtensionInterfacePackedByteArrayOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedByteArrayOperatorIndexConst(arg0, arg1, arg2)
 
-	// const uint8_t *
 	return (*uint8)(ret)
 }
 
@@ -3409,7 +3444,6 @@ func CallFunc_GDExtensionInterfacePackedFloat32ArrayOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedFloat32ArrayOperatorIndex(arg0, arg1, arg2)
 
-	// float *
 	return (*float32)(ret)
 }
 
@@ -3425,7 +3459,6 @@ func CallFunc_GDExtensionInterfacePackedFloat32ArrayOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedFloat32ArrayOperatorIndexConst(arg0, arg1, arg2)
 
-	// const float *
 	return (*float32)(ret)
 }
 
@@ -3441,7 +3474,6 @@ func CallFunc_GDExtensionInterfacePackedFloat64ArrayOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedFloat64ArrayOperatorIndex(arg0, arg1, arg2)
 
-	// double *
 	return (*float64)(ret)
 }
 
@@ -3457,7 +3489,6 @@ func CallFunc_GDExtensionInterfacePackedFloat64ArrayOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedFloat64ArrayOperatorIndexConst(arg0, arg1, arg2)
 
-	// const double *
 	return (*float64)(ret)
 }
 
@@ -3473,7 +3504,6 @@ func CallFunc_GDExtensionInterfacePackedInt32ArrayOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedInt32ArrayOperatorIndex(arg0, arg1, arg2)
 
-	// int32_t *
 	return (*int32)(ret)
 }
 
@@ -3489,7 +3519,6 @@ func CallFunc_GDExtensionInterfacePackedInt32ArrayOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedInt32ArrayOperatorIndexConst(arg0, arg1, arg2)
 
-	// const int32_t *
 	return (*int32)(ret)
 }
 
@@ -3505,7 +3534,6 @@ func CallFunc_GDExtensionInterfacePackedInt64ArrayOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedInt64ArrayOperatorIndex(arg0, arg1, arg2)
 
-	// int64_t *
 	return (*int64)(ret)
 }
 
@@ -3521,7 +3549,6 @@ func CallFunc_GDExtensionInterfacePackedInt64ArrayOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedInt64ArrayOperatorIndexConst(arg0, arg1, arg2)
 
-	// const int64_t *
 	return (*int64)(ret)
 }
 
@@ -3537,7 +3564,6 @@ func CallFunc_GDExtensionInterfacePackedStringArrayOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedStringArrayOperatorIndex(arg0, arg1, arg2)
 
-	// GDExtensionStringPtr
 	return (GDExtensionStringPtr)(ret)
 }
 
@@ -3553,7 +3579,6 @@ func CallFunc_GDExtensionInterfacePackedStringArrayOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedStringArrayOperatorIndexConst(arg0, arg1, arg2)
 
-	// GDExtensionStringPtr
 	return (GDExtensionStringPtr)(ret)
 }
 
@@ -3569,7 +3594,6 @@ func CallFunc_GDExtensionInterfacePackedVector2ArrayOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedVector2ArrayOperatorIndex(arg0, arg1, arg2)
 
-	// GDExtensionTypePtr
 	return (GDExtensionTypePtr)(ret)
 }
 
@@ -3585,7 +3609,6 @@ func CallFunc_GDExtensionInterfacePackedVector2ArrayOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedVector2ArrayOperatorIndexConst(arg0, arg1, arg2)
 
-	// GDExtensionTypePtr
 	return (GDExtensionTypePtr)(ret)
 }
 
@@ -3601,7 +3624,6 @@ func CallFunc_GDExtensionInterfacePackedVector3ArrayOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedVector3ArrayOperatorIndex(arg0, arg1, arg2)
 
-	// GDExtensionTypePtr
 	return (GDExtensionTypePtr)(ret)
 }
 
@@ -3617,7 +3639,6 @@ func CallFunc_GDExtensionInterfacePackedVector3ArrayOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedVector3ArrayOperatorIndexConst(arg0, arg1, arg2)
 
-	// GDExtensionTypePtr
 	return (GDExtensionTypePtr)(ret)
 }
 
@@ -3633,7 +3654,6 @@ func CallFunc_GDExtensionInterfacePackedVector4ArrayOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedVector4ArrayOperatorIndex(arg0, arg1, arg2)
 
-	// GDExtensionTypePtr
 	return (GDExtensionTypePtr)(ret)
 }
 
@@ -3649,7 +3669,6 @@ func CallFunc_GDExtensionInterfacePackedVector4ArrayOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedVector4ArrayOperatorIndexConst(arg0, arg1, arg2)
 
-	// GDExtensionTypePtr
 	return (GDExtensionTypePtr)(ret)
 }
 
@@ -3665,7 +3684,6 @@ func CallFunc_GDExtensionInterfacePackedColorArrayOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedColorArrayOperatorIndex(arg0, arg1, arg2)
 
-	// GDExtensionTypePtr
 	return (GDExtensionTypePtr)(ret)
 }
 
@@ -3681,7 +3699,6 @@ func CallFunc_GDExtensionInterfacePackedColorArrayOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePackedColorArrayOperatorIndexConst(arg0, arg1, arg2)
 
-	// GDExtensionTypePtr
 	return (GDExtensionTypePtr)(ret)
 }
 
@@ -3697,7 +3714,6 @@ func CallFunc_GDExtensionInterfaceArrayOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceArrayOperatorIndex(arg0, arg1, arg2)
 
-	// GDExtensionVariantPtr
 	return (GDExtensionVariantPtr)(ret)
 }
 
@@ -3713,7 +3729,6 @@ func CallFunc_GDExtensionInterfaceArrayOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceArrayOperatorIndexConst(arg0, arg1, arg2)
 
-	// GDExtensionVariantPtr
 	return (GDExtensionVariantPtr)(ret)
 }
 
@@ -3761,7 +3776,6 @@ func CallFunc_GDExtensionInterfaceDictionaryOperatorIndex(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceDictionaryOperatorIndex(arg0, arg1, arg2)
 
-	// GDExtensionVariantPtr
 	return (GDExtensionVariantPtr)(ret)
 }
 
@@ -3777,8 +3791,31 @@ func CallFunc_GDExtensionInterfaceDictionaryOperatorIndexConst(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceDictionaryOperatorIndexConst(arg0, arg1, arg2)
 
-	// GDExtensionVariantPtr
 	return (GDExtensionVariantPtr)(ret)
+}
+
+func CallFunc_GDExtensionInterfaceDictionarySetTyped(
+	p_self GDExtensionTypePtr,
+	p_key_type GDExtensionVariantType,
+	p_key_class_name GDExtensionConstStringNamePtr,
+	p_key_script GDExtensionConstVariantPtr,
+	p_value_type GDExtensionVariantType,
+	p_value_class_name GDExtensionConstStringNamePtr,
+	p_value_script GDExtensionConstVariantPtr,
+) {
+	arg0 := (C.GDExtensionInterfaceDictionarySetTyped)(FFI.DictionarySetTyped)
+	arg1 := (C.GDExtensionTypePtr)(p_self)
+	arg2 := (C.GDExtensionVariantType)(p_key_type)
+	arg3 := (C.GDExtensionConstStringNamePtr)(p_key_class_name)
+	arg4 := (C.GDExtensionConstVariantPtr)(p_key_script)
+	arg5 := (C.GDExtensionVariantType)(p_value_type)
+	arg6 := (C.GDExtensionConstStringNamePtr)(p_value_class_name)
+	arg7 := (C.GDExtensionConstVariantPtr)(p_value_script)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceDictionarySetTyped")
+
+	C.cgo_callfn_GDExtensionInterfaceDictionarySetTyped(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+
 }
 
 func CallFunc_GDExtensionInterfaceObjectMethodBindCall(
@@ -3843,7 +3880,6 @@ func CallFunc_GDExtensionInterfaceGlobalGetSingleton(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceGlobalGetSingleton(arg0, arg1)
 
-	// GDExtensionObjectPtr
 	return (GDExtensionObjectPtr)(ret)
 }
 
@@ -3861,7 +3897,8 @@ func CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceObjectGetInstanceBinding(arg0, arg1, arg2, arg3)
 
-	// void *
+	pnr.Pin(ret)
+
 	return unsafe.Pointer(ret)
 }
 
@@ -3927,7 +3964,6 @@ func CallFunc_GDExtensionInterfaceObjectGetClassName(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceObjectGetClassName(arg0, arg1, arg2, arg3)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -3943,7 +3979,6 @@ func CallFunc_GDExtensionInterfaceObjectCastTo(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceObjectCastTo(arg0, arg1, arg2)
 
-	// GDExtensionObjectPtr
 	return (GDExtensionObjectPtr)(ret)
 }
 
@@ -3957,7 +3992,6 @@ func CallFunc_GDExtensionInterfaceObjectGetInstanceFromId(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceObjectGetInstanceFromId(arg0, arg1)
 
-	// GDExtensionObjectPtr
 	return (GDExtensionObjectPtr)(ret)
 }
 
@@ -3971,7 +4005,6 @@ func CallFunc_GDExtensionInterfaceObjectGetInstanceId(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceObjectGetInstanceId(arg0, arg1)
 
-	// GDObjectInstanceID
 	return (GDObjectInstanceID)(ret)
 }
 
@@ -3987,7 +4020,6 @@ func CallFunc_GDExtensionInterfaceObjectHasScriptMethod(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceObjectHasScriptMethod(arg0, arg1, arg2)
 
-	// GDExtensionBool
 	return (GDExtensionBool)(ret)
 }
 
@@ -4023,7 +4055,6 @@ func CallFunc_GDExtensionInterfaceRefGetObject(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceRefGetObject(arg0, arg1)
 
-	// GDExtensionObjectPtr
 	return (GDExtensionObjectPtr)(ret)
 }
 
@@ -4053,7 +4084,6 @@ func CallFunc_GDExtensionInterfaceScriptInstanceCreate(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceScriptInstanceCreate(arg0, arg1, arg2)
 
-	// GDExtensionScriptInstancePtr
 	return (GDExtensionScriptInstancePtr)(ret)
 }
 
@@ -4069,7 +4099,6 @@ func CallFunc_GDExtensionInterfaceScriptInstanceCreate2(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceScriptInstanceCreate2(arg0, arg1, arg2)
 
-	// GDExtensionScriptInstancePtr
 	return (GDExtensionScriptInstancePtr)(ret)
 }
 
@@ -4085,7 +4114,6 @@ func CallFunc_GDExtensionInterfaceScriptInstanceCreate3(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceScriptInstanceCreate3(arg0, arg1, arg2)
 
-	// GDExtensionScriptInstancePtr
 	return (GDExtensionScriptInstancePtr)(ret)
 }
 
@@ -4103,7 +4131,6 @@ func CallFunc_GDExtensionInterfacePlaceHolderScriptInstanceCreate(
 
 	ret := C.cgo_callfn_GDExtensionInterfacePlaceHolderScriptInstanceCreate(arg0, arg1, arg2, arg3)
 
-	// GDExtensionScriptInstancePtr
 	return (GDExtensionScriptInstancePtr)(ret)
 }
 
@@ -4135,7 +4162,6 @@ func CallFunc_GDExtensionInterfaceObjectGetScriptInstance(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceObjectGetScriptInstance(arg0, arg1, arg2)
 
-	// GDExtensionScriptInstanceDataPtr
 	return (GDExtensionScriptInstanceDataPtr)(ret)
 }
 
@@ -4179,7 +4205,8 @@ func CallFunc_GDExtensionInterfaceCallableCustomGetUserData(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceCallableCustomGetUserData(arg0, arg1, arg2)
 
-	// void *
+	pnr.Pin(ret)
+
 	return unsafe.Pointer(ret)
 }
 
@@ -4193,7 +4220,19 @@ func CallFunc_GDExtensionInterfaceClassdbConstructObject(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceClassdbConstructObject(arg0, arg1)
 
-	// GDExtensionObjectPtr
+	return (GDExtensionObjectPtr)(ret)
+}
+
+func CallFunc_GDExtensionInterfaceClassdbConstructObject2(
+	p_classname GDExtensionConstStringNamePtr,
+) GDExtensionObjectPtr {
+	arg0 := (C.GDExtensionInterfaceClassdbConstructObject2)(FFI.ClassdbConstructObject2)
+	arg1 := (C.GDExtensionConstStringNamePtr)(p_classname)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceClassdbConstructObject2")
+
+	ret := C.cgo_callfn_GDExtensionInterfaceClassdbConstructObject2(arg0, arg1)
+
 	return (GDExtensionObjectPtr)(ret)
 }
 
@@ -4211,7 +4250,6 @@ func CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceClassdbGetMethodBind(arg0, arg1, arg2, arg3)
 
-	// GDExtensionMethodBindPtr
 	return (GDExtensionMethodBindPtr)(ret)
 }
 
@@ -4225,7 +4263,8 @@ func CallFunc_GDExtensionInterfaceClassdbGetClassTag(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceClassdbGetClassTag(arg0, arg1)
 
-	// void *
+	pnr.Pin(ret)
+
 	return unsafe.Pointer(ret)
 }
 
@@ -4280,6 +4319,24 @@ func CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass3(
 	log.Debug("called C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass3")
 
 	C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass3(arg0, arg1, arg2, arg3, arg4)
+
+}
+
+func CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass4(
+	p_library GDExtensionClassLibraryPtr,
+	p_class_name GDExtensionConstStringNamePtr,
+	p_parent_class_name GDExtensionConstStringNamePtr,
+	p_extension_funcs *GDExtensionClassCreationInfo4,
+) {
+	arg0 := (C.GDExtensionInterfaceClassdbRegisterExtensionClass4)(FFI.ClassdbRegisterExtensionClass4)
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library)
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_class_name)
+	arg3 := (C.GDExtensionConstStringNamePtr)(p_parent_class_name)
+	arg4 := (*C.GDExtensionClassCreationInfo4)(p_extension_funcs)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass4")
+
+	C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass4(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -4495,6 +4552,7 @@ type GDExtensionMethodInfo C.GDExtensionMethodInfo
 type GDExtensionClassCreationInfo C.GDExtensionClassCreationInfo
 type GDExtensionClassCreationInfo2 C.GDExtensionClassCreationInfo2
 type GDExtensionClassCreationInfo3 C.GDExtensionClassCreationInfo3
+type GDExtensionClassCreationInfo4 C.GDExtensionClassCreationInfo4
 type GDExtensionClassMethodInfo C.GDExtensionClassMethodInfo
 type GDExtensionClassVirtualMethodInfo C.GDExtensionClassVirtualMethodInfo
 type GDExtensionCallableCustomInfo C.GDExtensionCallableCustomInfo
@@ -4506,7 +4564,7 @@ type GDExtensionInitialization C.GDExtensionInitialization
 type GDExtensionGodotVersion C.GDExtensionGodotVersion
 
 // struct functions
-/* struct (14) GDExtensionInitialization */
+/* struct (15) GDExtensionInitialization */
 
 func GDExtensionInitialization_initialize(p_struct *GDExtensionInitialization, userdata unsafe.Pointer, p_level GDExtensionInitializationLevel) {
 	arg0 := (*C.GDExtensionInitialization)(p_struct)    // GDExtensionInitialization

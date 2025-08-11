@@ -29,7 +29,7 @@ func NewGDExtensionClassMethodInfo(
 	defaultArgumentCount uint32,
 	defaultArguments *GDExtensionVariantPtr,
 ) *GDExtensionClassMethodInfo {
-	return (*GDExtensionClassMethodInfo)(&C.GDExtensionClassMethodInfo{
+	ret := (*GDExtensionClassMethodInfo)(&C.GDExtensionClassMethodInfo{
 		name:            (C.GDExtensionStringNamePtr)(unsafe.Pointer(name)),
 		method_userdata: methodUserdata,
 		call_func:       (C.GDExtensionClassMethodCall)(callFunc),
@@ -54,6 +54,8 @@ func NewGDExtensionClassMethodInfo(
 		default_argument_count: (C.uint32_t)(defaultArgumentCount),
 		default_arguments:      (*C.GDExtensionVariantPtr)(defaultArguments),
 	})
+	pnr.Pin(ret)
+	return ret
 }
 
 func (m *GDExtensionClassMethodInfo) Destroy() {

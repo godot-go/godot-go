@@ -229,6 +229,8 @@ func goArgumentType(t string) string {
 		t = "uint32"
 	case "uint64", "uint64_t":
 		t = "uint64"
+	case "char32", "char32_t":
+		t = "Char32T"
 	case "bool":
 		t = "bool"
 	case "String":

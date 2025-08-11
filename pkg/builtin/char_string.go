@@ -17,6 +17,7 @@ import (
 
 func NewStringNameWithGDExtensionConstStringNamePtr(ptr GDExtensionConstStringNamePtr) StringName {
 	cx := StringName{}
+	pnr.Pin(&cx)
 	typedSrc := (*[StringNameSize]uint8)(ptr)
 	for i := 0; i < 8; i++ {
 		cx[i] = typedSrc[i]
@@ -27,6 +28,7 @@ func NewStringNameWithGDExtensionConstStringNamePtr(ptr GDExtensionConstStringNa
 func NewStringNameWithLatin1Chars(content string) StringName {
 	cx := String{}
 	ptr := (GDExtensionUninitializedStringPtr)(unsafe.Pointer(&cx))
+	pnr.Pin(ptr)
 	log.Debug("create string name",
 		zap.String("ptr", fmt.Sprintf("%p", ptr)),
 		zap.Uintptr("ptr_int", uintptr(unsafe.Pointer(ptr))),
@@ -40,6 +42,7 @@ func NewStringNameWithLatin1Chars(content string) StringName {
 func NewStringNameWithUtf8Chars(content string) StringName {
 	cx := String{}
 	ptr := (GDExtensionUninitializedStringPtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(ptr)
 	log.Debug("create string name",
 		zap.String("ptr", fmt.Sprintf("%p", ptr)),
 		zap.Uintptr("ptr_int", uintptr(unsafe.Pointer(ptr))),
@@ -52,8 +55,6 @@ func NewStringNameWithUtf8Chars(content string) StringName {
 
 func (cx *StringName) AsString() String {
 	buf := cx.ToUtf8Buffer()
-	var str String
-	defer str.Destroy()
 	return buf.GetStringFromUtf8()
 }
 
@@ -63,7 +64,9 @@ func (cx *StringName) ToUtf8() string {
 }
 
 func (cx StringName) AsGDExtensionConstStringNamePtr() GDExtensionConstStringNamePtr {
-	return (GDExtensionConstStringNamePtr)(unsafe.Pointer(&cx))
+	ret := unsafe.Pointer(&cx)
+	pnr.Pin(ret)
+	return (GDExtensionConstStringNamePtr)(ret)
 }
 
 func GDExtensionStringPtrWithUtf8Chars(ptr GDExtensionStringPtr, content string) {
@@ -77,6 +80,7 @@ func GDExtensionStringPtrWithLatin1Chars(ptr GDExtensionStringPtr, content strin
 func NewStringWithLatin1Chars(content string) String {
 	cx := String{}
 	ptr := (GDExtensionUninitializedStringPtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionInterfaceStringNewWithLatin1Chars(ptr, content)
 	return cx
 }
@@ -84,6 +88,7 @@ func NewStringWithLatin1Chars(content string) String {
 func NewStringWithUtf8Chars(content string) String {
 	cx := String{}
 	ptr := (GDExtensionUninitializedStringPtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionInterfaceStringNewWithUtf8Chars(ptr, content)
 	return cx
 }
@@ -91,28 +96,37 @@ func NewStringWithUtf8Chars(content string) String {
 func NewStringWithUtf32Char(content Char32T) String {
 	cx := String{}
 	ptr := (GDExtensionUninitializedStringPtr)(unsafe.Pointer(cx.NativePtr()))
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionInterfaceStringNewWithUtf32Chars(ptr, &content)
 	return cx
 }
 
 func (cx String) AsGDExtensionConstStringPtr() GDExtensionConstStringPtr {
-	return (GDExtensionConstStringPtr)(unsafe.Pointer(&cx))
+	ptr := unsafe.Pointer(&cx)
+	pnr.Pin(ptr)
+	return (GDExtensionConstStringPtr)(ptr)
 }
 
 func (cx *String) ToAscii() string {
-	size := CallFunc_GDExtensionInterfaceStringToLatin1Chars((GDExtensionConstStringPtr)(cx.NativeConstPtr()), (*Char)(nullptr), (GDExtensionInt)(0))
+	ptr := cx.NativeConstPtr()
+	pnr.Pin(ptr)
+	size := CallFunc_GDExtensionInterfaceStringToLatin1Chars((GDExtensionConstStringPtr)(ptr), (*Char)(nullptr), (GDExtensionInt)(0))
 	cstrSlice := make([]C.char, int(size)+1)
 	cstr := unsafe.SliceData(cstrSlice)
-	CallFunc_GDExtensionInterfaceStringToLatin1Chars((GDExtensionConstStringPtr)(cx.NativeConstPtr()), (*Char)(cstr), (GDExtensionInt)(size+1))
+	pnr.Pin(cstr)
+	CallFunc_GDExtensionInterfaceStringToLatin1Chars((GDExtensionConstStringPtr)(ptr), (*Char)(cstr), (GDExtensionInt)(size+1))
 	ret := C.GoString(cstr)[:]
 	return ret
 }
 
 func (cx *String) ToUtf8() string {
-	size := CallFunc_GDExtensionInterfaceStringToUtf8Chars((GDExtensionConstStringPtr)(cx.NativeConstPtr()), (*Char)(nullptr), (GDExtensionInt)(0))
+	ptr := cx.NativeConstPtr()
+	pnr.Pin(ptr)
+	size := CallFunc_GDExtensionInterfaceStringToUtf8Chars((GDExtensionConstStringPtr)(ptr), (*Char)(nullptr), (GDExtensionInt)(0))
 	cstrSlice := make([]C.char, int(size)+1)
 	cstr := unsafe.SliceData(cstrSlice)
-	CallFunc_GDExtensionInterfaceStringToUtf8Chars((GDExtensionConstStringPtr)(cx.NativeConstPtr()), (*Char)(cstr), (GDExtensionInt)(size+1))
+	pnr.Pin(cstr)
+	CallFunc_GDExtensionInterfaceStringToUtf8Chars((GDExtensionConstStringPtr)(ptr), (*Char)(cstr), (GDExtensionInt)(size+1))
 	ret := C.GoString(cstr)[:]
 	return ret
 }

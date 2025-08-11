@@ -8,7 +8,9 @@ import (
 
 func NewVariantBool(v bool) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromBool(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromBool(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -28,6 +30,7 @@ func (c *Variant) ToBool() bool {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_BOOL]
 	var v uint8
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -40,7 +43,9 @@ func (c *Variant) ToBool() bool {
 
 func NewVariantUint(v uint) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromUint(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromUint(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -60,6 +65,7 @@ func (c *Variant) ToUint() uint {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -72,7 +78,9 @@ func (c *Variant) ToUint() uint {
 
 func NewVariantInt(v int) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromInt(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromInt(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -92,6 +100,7 @@ func (c *Variant) ToInt() int {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -104,7 +113,9 @@ func (c *Variant) ToInt() int {
 
 func NewVariantUint8(v uint8) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromUint8(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromUint8(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -124,6 +135,7 @@ func (c *Variant) ToUint8() uint8 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -136,7 +148,9 @@ func (c *Variant) ToUint8() uint8 {
 
 func NewVariantInt8(v int8) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromInt8(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromInt8(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -156,6 +170,7 @@ func (c *Variant) ToInt8() int8 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -168,7 +183,9 @@ func (c *Variant) ToInt8() int8 {
 
 func NewVariantUint16(v uint16) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromUint16(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromUint16(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -188,6 +205,7 @@ func (c *Variant) ToUint16() uint16 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -200,7 +218,9 @@ func (c *Variant) ToUint16() uint16 {
 
 func NewVariantInt16(v int16) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromInt16(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromInt16(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -220,6 +240,7 @@ func (c *Variant) ToInt16() int16 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -232,7 +253,9 @@ func (c *Variant) ToInt16() int16 {
 
 func NewVariantUint32(v uint32) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromUint32(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromUint32(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -252,6 +275,7 @@ func (c *Variant) ToUint32() uint32 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -264,7 +288,9 @@ func (c *Variant) ToUint32() uint32 {
 
 func NewVariantInt32(v int32) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromInt32(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromInt32(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -284,6 +310,7 @@ func (c *Variant) ToInt32() int32 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -296,7 +323,9 @@ func (c *Variant) ToInt32() int32 {
 
 func NewVariantUint64(v uint64) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromUint64(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromUint64(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -316,6 +345,7 @@ func (c *Variant) ToUint64() uint64 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -328,7 +358,9 @@ func (c *Variant) ToUint64() uint64 {
 
 func NewVariantInt64(v int64) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromInt64(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromInt64(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -348,6 +380,7 @@ func (c *Variant) ToInt64() int64 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -360,7 +393,9 @@ func (c *Variant) ToInt64() int64 {
 
 func NewVariantFloat32(v float32) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromFloat32(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromFloat32(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -380,6 +415,7 @@ func (c *Variant) ToFloat32() float32 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_FLOAT]
 	var v float64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -392,7 +428,9 @@ func (c *Variant) ToFloat32() float32 {
 
 func NewVariantFloat64(v float64) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromFloat64(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromFloat64(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -412,6 +450,7 @@ func (c *Variant) ToFloat64() float64 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_FLOAT]
 	var v float64
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -424,13 +463,16 @@ func (c *Variant) ToFloat64() float64 {
 
 func NewVariantString(v String) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromString(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromString(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromString(v String, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded String
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	StringEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_STRING]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -444,6 +486,7 @@ func (c *Variant) ToString() String {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_STRING]
 	var v String
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -454,13 +497,16 @@ func (c *Variant) ToString() String {
 
 func NewVariantVector2(v Vector2) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromVector2(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromVector2(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector2(v Vector2, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Vector2
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	Vector2Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR2]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -474,6 +520,7 @@ func (c *Variant) ToVector2() Vector2 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR2]
 	var v Vector2
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -484,13 +531,16 @@ func (c *Variant) ToVector2() Vector2 {
 
 func NewVariantVector2i(v Vector2i) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromVector2i(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromVector2i(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector2i(v Vector2i, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Vector2i
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	Vector2iEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR2I]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -504,6 +554,7 @@ func (c *Variant) ToVector2i() Vector2i {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR2I]
 	var v Vector2i
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -514,13 +565,16 @@ func (c *Variant) ToVector2i() Vector2i {
 
 func NewVariantVector3(v Vector3) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromVector3(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromVector3(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector3(v Vector3, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Vector3
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	Vector3Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR3]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -534,6 +588,7 @@ func (c *Variant) ToVector3() Vector3 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR3]
 	var v Vector3
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -544,13 +599,16 @@ func (c *Variant) ToVector3() Vector3 {
 
 func NewVariantVector3i(v Vector3i) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromVector3i(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromVector3i(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector3i(v Vector3i, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Vector3i
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	Vector3iEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR3I]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -564,6 +622,7 @@ func (c *Variant) ToVector3i() Vector3i {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR3I]
 	var v Vector3i
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -574,13 +633,16 @@ func (c *Variant) ToVector3i() Vector3i {
 
 func NewVariantTransform2D(v Transform2D) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromTransform2D(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromTransform2D(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromTransform2D(v Transform2D, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Transform2D
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	Transform2DEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_TRANSFORM2D]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -594,6 +656,7 @@ func (c *Variant) ToTransform2D() Transform2D {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_TRANSFORM2D]
 	var v Transform2D
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -604,13 +667,16 @@ func (c *Variant) ToTransform2D() Transform2D {
 
 func NewVariantVector4(v Vector4) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromVector4(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromVector4(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector4(v Vector4, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Vector4
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	Vector4Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR4]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -624,6 +690,7 @@ func (c *Variant) ToVector4() Vector4 {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR4]
 	var v Vector4
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -634,13 +701,16 @@ func (c *Variant) ToVector4() Vector4 {
 
 func NewVariantVector4i(v Vector4i) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromVector4i(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromVector4i(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector4i(v Vector4i, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Vector4i
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	Vector4iEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR4I]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -654,6 +724,7 @@ func (c *Variant) ToVector4i() Vector4i {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR4I]
 	var v Vector4i
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -664,13 +735,16 @@ func (c *Variant) ToVector4i() Vector4i {
 
 func NewVariantPlane(v Plane) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromPlane(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromPlane(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromPlane(v Plane, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Plane
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	PlaneEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PLANE]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -684,6 +758,7 @@ func (c *Variant) ToPlane() Plane {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PLANE]
 	var v Plane
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -694,13 +769,16 @@ func (c *Variant) ToPlane() Plane {
 
 func NewVariantQuaternion(v Quaternion) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromQuaternion(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromQuaternion(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromQuaternion(v Quaternion, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Quaternion
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	QuaternionEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_QUATERNION]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -714,6 +792,7 @@ func (c *Variant) ToQuaternion() Quaternion {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_QUATERNION]
 	var v Quaternion
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -724,13 +803,16 @@ func (c *Variant) ToQuaternion() Quaternion {
 
 func NewVariantAABB(v AABB) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromAABB(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromAABB(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromAABB(v AABB, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded AABB
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	AABBEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_AABB]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -744,6 +826,7 @@ func (c *Variant) ToAABB() AABB {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_AABB]
 	var v AABB
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -754,13 +837,16 @@ func (c *Variant) ToAABB() AABB {
 
 func NewVariantBasis(v Basis) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromBasis(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromBasis(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromBasis(v Basis, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Basis
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	BasisEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_BASIS]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -774,6 +860,7 @@ func (c *Variant) ToBasis() Basis {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_BASIS]
 	var v Basis
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -784,13 +871,16 @@ func (c *Variant) ToBasis() Basis {
 
 func NewVariantTransform3D(v Transform3D) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromTransform3D(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromTransform3D(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromTransform3D(v Transform3D, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Transform3D
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	Transform3DEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_TRANSFORM3D]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -804,6 +894,7 @@ func (c *Variant) ToTransform3D() Transform3D {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_TRANSFORM3D]
 	var v Transform3D
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -814,13 +905,16 @@ func (c *Variant) ToTransform3D() Transform3D {
 
 func NewVariantProjection(v Projection) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromProjection(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromProjection(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromProjection(v Projection, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Projection
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	ProjectionEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PROJECTION]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -834,6 +928,7 @@ func (c *Variant) ToProjection() Projection {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PROJECTION]
 	var v Projection
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -844,13 +939,16 @@ func (c *Variant) ToProjection() Projection {
 
 func NewVariantColor(v Color) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromColor(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromColor(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromColor(v Color, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Color
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	ColorEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_COLOR]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -864,6 +962,7 @@ func (c *Variant) ToColor() Color {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_COLOR]
 	var v Color
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -874,13 +973,16 @@ func (c *Variant) ToColor() Color {
 
 func NewVariantStringName(v StringName) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromStringName(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromStringName(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromStringName(v StringName, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded StringName
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	StringNameEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_STRING_NAME]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -894,6 +996,7 @@ func (c *Variant) ToStringName() StringName {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_STRING_NAME]
 	var v StringName
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -904,13 +1007,16 @@ func (c *Variant) ToStringName() StringName {
 
 func NewVariantNodePath(v NodePath) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromNodePath(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromNodePath(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromNodePath(v NodePath, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded NodePath
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	NodePathEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_NODE_PATH]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -924,6 +1030,7 @@ func (c *Variant) ToNodePath() NodePath {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_NODE_PATH]
 	var v NodePath
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -934,13 +1041,16 @@ func (c *Variant) ToNodePath() NodePath {
 
 func NewVariantRID(v RID) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromRID(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromRID(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromRID(v RID, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded RID
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	RIDEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_RID]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -954,6 +1064,7 @@ func (c *Variant) ToRID() RID {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_RID]
 	var v RID
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -964,13 +1075,16 @@ func (c *Variant) ToRID() RID {
 
 func NewVariantCallable(v Callable) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromCallable(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromCallable(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromCallable(v Callable, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Callable
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	CallableEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_CALLABLE]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -984,6 +1098,7 @@ func (c *Variant) ToCallable() Callable {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_CALLABLE]
 	var v Callable
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -994,13 +1109,16 @@ func (c *Variant) ToCallable() Callable {
 
 func NewVariantSignal(v Signal) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromSignal(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromSignal(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromSignal(v Signal, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Signal
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	SignalEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_SIGNAL]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1014,6 +1132,7 @@ func (c *Variant) ToSignal() Signal {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_SIGNAL]
 	var v Signal
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1024,13 +1143,16 @@ func (c *Variant) ToSignal() Signal {
 
 func NewVariantDictionary(v Dictionary) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromDictionary(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromDictionary(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromDictionary(v Dictionary, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Dictionary
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	DictionaryEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_DICTIONARY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1044,6 +1166,7 @@ func (c *Variant) ToDictionary() Dictionary {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_DICTIONARY]
 	var v Dictionary
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1054,13 +1177,16 @@ func (c *Variant) ToDictionary() Dictionary {
 
 func NewVariantArray(v Array) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromArray(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromArray(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromArray(v Array, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1074,6 +1200,7 @@ func (c *Variant) ToArray() Array {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_ARRAY]
 	var v Array
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1084,13 +1211,16 @@ func (c *Variant) ToArray() Array {
 
 func NewVariantPackedByteArray(v PackedByteArray) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromPackedByteArray(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromPackedByteArray(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedByteArray(v PackedByteArray, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded PackedByteArray
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	PackedByteArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1104,6 +1234,7 @@ func (c *Variant) ToPackedByteArray() PackedByteArray {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY]
 	var v PackedByteArray
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1114,13 +1245,16 @@ func (c *Variant) ToPackedByteArray() PackedByteArray {
 
 func NewVariantPackedInt32Array(v PackedInt32Array) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromPackedInt32Array(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromPackedInt32Array(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedInt32Array(v PackedInt32Array, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded PackedInt32Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	PackedInt32ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1134,6 +1268,7 @@ func (c *Variant) ToPackedInt32Array() PackedInt32Array {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY]
 	var v PackedInt32Array
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1144,13 +1279,16 @@ func (c *Variant) ToPackedInt32Array() PackedInt32Array {
 
 func NewVariantPackedInt64Array(v PackedInt64Array) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromPackedInt64Array(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromPackedInt64Array(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedInt64Array(v PackedInt64Array, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded PackedInt64Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	PackedInt64ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1164,6 +1302,7 @@ func (c *Variant) ToPackedInt64Array() PackedInt64Array {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY]
 	var v PackedInt64Array
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1174,13 +1313,16 @@ func (c *Variant) ToPackedInt64Array() PackedInt64Array {
 
 func NewVariantPackedFloat32Array(v PackedFloat32Array) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromPackedFloat32Array(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromPackedFloat32Array(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedFloat32Array(v PackedFloat32Array, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded PackedFloat32Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	PackedFloat32ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1194,6 +1336,7 @@ func (c *Variant) ToPackedFloat32Array() PackedFloat32Array {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY]
 	var v PackedFloat32Array
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1204,13 +1347,16 @@ func (c *Variant) ToPackedFloat32Array() PackedFloat32Array {
 
 func NewVariantPackedFloat64Array(v PackedFloat64Array) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromPackedFloat64Array(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromPackedFloat64Array(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedFloat64Array(v PackedFloat64Array, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded PackedFloat64Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	PackedFloat64ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1224,6 +1370,7 @@ func (c *Variant) ToPackedFloat64Array() PackedFloat64Array {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY]
 	var v PackedFloat64Array
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1234,13 +1381,16 @@ func (c *Variant) ToPackedFloat64Array() PackedFloat64Array {
 
 func NewVariantPackedStringArray(v PackedStringArray) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromPackedStringArray(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromPackedStringArray(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedStringArray(v PackedStringArray, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded PackedStringArray
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	PackedStringArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1254,6 +1404,7 @@ func (c *Variant) ToPackedStringArray() PackedStringArray {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY]
 	var v PackedStringArray
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1264,13 +1415,16 @@ func (c *Variant) ToPackedStringArray() PackedStringArray {
 
 func NewVariantPackedVector2Array(v PackedVector2Array) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromPackedVector2Array(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromPackedVector2Array(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedVector2Array(v PackedVector2Array, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded PackedVector2Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	PackedVector2ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1284,6 +1438,7 @@ func (c *Variant) ToPackedVector2Array() PackedVector2Array {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY]
 	var v PackedVector2Array
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1294,13 +1449,16 @@ func (c *Variant) ToPackedVector2Array() PackedVector2Array {
 
 func NewVariantPackedVector3Array(v PackedVector3Array) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromPackedVector3Array(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromPackedVector3Array(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedVector3Array(v PackedVector3Array, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded PackedVector3Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	PackedVector3ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1314,6 +1472,7 @@ func (c *Variant) ToPackedVector3Array() PackedVector3Array {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY]
 	var v PackedVector3Array
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1324,13 +1483,16 @@ func (c *Variant) ToPackedVector3Array() PackedVector3Array {
 
 func NewVariantPackedColorArray(v PackedColorArray) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromPackedColorArray(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromPackedColorArray(v, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedColorArray(v PackedColorArray, rOut GDExtensionUninitializedVariantPtr) {
 	var encoded PackedColorArray
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	PackedColorArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1344,6 +1506,7 @@ func (c *Variant) ToPackedColorArray() PackedColorArray {
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY]
 	var v PackedColorArray
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),

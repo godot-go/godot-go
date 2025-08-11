@@ -78,15 +78,18 @@ func ObjectCastTo(obj Object, className string) Object {
 		)
 		return nil
 	}
+	cbsPtr := &cbs
+	pnr.Pin(casted)
+	pnr.Pin(cbsPtr)
 	// TODO: validate this is working as expected
 	inst := CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
 		casted,
 		FFI.Token,
-		&cbs)
+		cbsPtr)
 	wci := (*WrappedClassInstance)(inst)
 	wrapperClassName := wci.Instance.GetClassName()
 	gdStrClassName := wci.Instance.GetClass()
-	defer gdStrClassName.Destroy()
+	// defer gdStrClassName.Destroy()
 	log.Info("ObjectCastTo casted",
 		zap.String("class", gdStrClassName.ToUtf8()),
 		zap.String("className", wrapperClassName),

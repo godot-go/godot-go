@@ -90,6 +90,8 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
 ) {{ $c.Name }} {
     cx := {{ $c.Name }}{}
     ptr := (GDExtensionUninitializedTypePtr)(unsafe.Pointer(cx.NativePtr()))
+    pnr.Pin(&cx)
+    pnr.Pin(ptr)
     {{ if $con.Arguments -}}
     var args [{{ len $con.Arguments }}]GDExtensionConstTypePtr
     {{ range $k, $arg := $con.Arguments -}}
@@ -112,6 +114,7 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
         {{ else -}}
         args[{{ $k }}] = (GDExtensionConstTypePtr)({{ goEncoder $argType }}.EncodeTypePtr({{ $argName }}))
         {{ end -}}
+        pnr.Pin(args[{{ $k }}])
         {{ end -}}
 	{{ end -}}
     {{ end -}}
@@ -124,6 +127,7 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
 func (cx *{{ $c.Name }}) Destroy() {
     md := (GDExtensionPtrDestructor)(global{{ $c.Name }}MethodBindings.destructor)
     bx := cx.NativePtr()
+    pnr.Pin(bx)
     CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 {{ end }}
@@ -173,6 +177,7 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     {{ else -}}
     bx := cx.NativePtr()
     {{ end -}}
+    pnr.Pin(bx)
 
     if bx == nil {
         log.Panic("object cannot be nil")
@@ -195,11 +200,13 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     {{ else -}}
     args[{{ $j }}] = (GDExtensionTypePtr)(unsafe.Pointer(&{{ goArgumentName $arg.Name }}))
     {{ end }}
+    pnr.Pin(args[{{ $j }}])
     {{ end -}}{{/* range $m.Arguments */}}
 
     {{ if $m.IsVararg -}}
     for i := range varargs {
         args[i + {{ len $m.Arguments }}] = (GDExtensionTypePtr)(unsafe.Pointer(&varargs[i]))
+        pnr.Pin(args[i + {{ len $m.Arguments }}])
     }
     {{ end -}}
 

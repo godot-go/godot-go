@@ -37,11 +37,12 @@ func (f PreprocessorHeaderFileAST) eval(vars PreprocVars) string {
 }
 
 type Directive struct {
-	Ifndef  *IfndefDirective  `parser:" EOL* ( @@          "`
-	Ifdef   *IfdefDirective   `parser:"   | @@        "`
-	Define  *DefineDirective  `parser:"   | @@        "`
-	Include *IncludeDirective `parser:"   | @@        "`
-	Source  string            `parser:"   | @Source ) "`
+	Ifndef     *IfndefDirective     `parser:" EOL* ( @@     "`
+	Ifdef      *IfdefDirective      `parser:"   | @@        "`
+	Define     *DefineDirective     `parser:"   | @@        "`
+	Include    *IncludeDirective    `parser:"   | @@        "`
+	PragmaOnce *PragmaOnceDirective `parser:"   | @@        "`
+	Source     string               `parser:"   | @Source ) "`
 }
 
 func (d Directive) Eval(vars PreprocVars) string {
@@ -59,8 +60,9 @@ func (d Directive) Eval(vars PreprocVars) string {
 }
 
 type IfndefDirective struct {
-	Name       string      `parser:" @Ifndef EOL      "`
-	Directives []Directive `parser:" @@* '#endif' EOL "`
+	Name           string      `parser:" @Ifndef EOL                "`
+	Directives     []Directive `parser:" @@*                        "`
+	ElseDirectives []Directive `parser:" ( Else EOL @@* )? Endif EOL"`
 }
 
 func (d IfndefDirective) Eval(vars PreprocVars) string {
@@ -81,8 +83,9 @@ func (d IfndefDirective) Eval(vars PreprocVars) string {
 }
 
 type IfdefDirective struct {
-	Name       string      `parser:" @Ifdef EOL       "`
-	Directives []Directive `parser:" @@* '#endif' EOL "`
+	Name           string      `parser:" @Ifdef EOL                 "`
+	Directives     []Directive `parser:" @@*                        "`
+	ElseDirectives []Directive `parser:" ( Else EOL @@* )? Endif EOL"`
 }
 
 func (d IfdefDirective) Eval(vars PreprocVars) string {
@@ -126,13 +129,31 @@ func (d IncludeDirective) Eval(vars PreprocVars) string {
 	return ""
 }
 
+type PragmaOnceDirective struct {
+	Name string `parser:" @PragmaOnce EOL" `
+}
+
+func (d PragmaOnceDirective) Eval(vars PreprocVars) string {
+	return ""
+}
+
+type ElseDirective struct {
+	Name string `parser:" @Else EOL" `
+}
+
+func (d ElseDirective) Eval(vars PreprocVars) string {
+	return ""
+}
+
 func ParsePreprocessorString(s string) (*PreprocessorHeaderFileAST, error) {
 	var preprocessorHeaderFileLexer = MustStateful(Rules{
 		"Root": {
 			{`Ifdef`, `#ifdef[ \t]+[a-zA-Z_][a-zA-Z0-9_]*`, Push("Root")},
 			{`Ifndef`, `#ifndef[ \t]+[a-zA-Z_][a-zA-Z0-9_]*`, Push("Root")},
 			{`Define`, `#define[ \t]+[a-zA-Z_][a-zA-Z0-9_]*`, nil},
-			{`Include`, `#include[ \t]+<[A-Za-z0-9_]+\.h>`, nil},
+			{`Include`, `#include[ \t]+<[A-Za-z0-9_.]+>`, nil},
+			{`PragmaOnce`, `#pragma[ \t]+once`, nil},
+			{`Else`, `#else`, nil},
 			{`Endif`, `#endif`, Pop()},
 			{`Whitespace`, `[ \t]+`, nil},
 			{`Comment`, `(\/\/[^\n]*)|(\/\*(.|[\r\n])*?\*\/)`, nil},

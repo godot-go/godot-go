@@ -116,6 +116,17 @@ type TypedefEnum struct {
 	Name   *string     `parser:" @Ident                                                                       " json:",omitempty"`
 }
 
+func (a TypedefEnum) CollectValuesWithoutDefault() []EnumValue {
+	values := make([]EnumValue, 0, len(a.Values))
+	for _, e := range a.Values {
+		if strings.HasSuffix(e.Name, "DEFAULT") {
+			continue
+		}
+		values = append(values, e)
+	}
+	return values
+}
+
 type EnumValue struct {
 	Name          string  `parser:" @Ident                     " json:",omitempty"`
 	IntValue      *int    `parser:" ( '=' ( @Int               " json:",omitempty"`
@@ -235,14 +246,15 @@ func (a Argument) IsPinnable() bool {
 	case a.Type.Function != nil:
 		return false
 	case a.Type.Primative != nil:
-		switch a.Type.Primative.Name {
-		case "char":
+		switch {
+		case a.Type.Primative.Name == "char":
 			return false
+		case strings.HasPrefix(a.Name, "GDExtensionInterface"):
+			return true
 		default:
 			return a.Type.Primative.IsPointer
 		}
 	}
-
 	return false
 }
 

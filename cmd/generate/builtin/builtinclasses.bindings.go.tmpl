@@ -93,7 +93,7 @@ func {{ lowerFirstChar $c.Name }}InitMethodBindings() {
     {{ range $j, $mb := $c.FilteredMethods -}}
     methodName{{ $j }} := NewStringNameWithLatin1Chars("{{ $mb.Name }}")
     defer methodName{{ $j }}.Destroy()
-    log.Debug("global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }}")
+    log.Debug("global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }}", zap.Any("value", methodName{{ $j }}))
     global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }} = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod({{ $enumTypeName }}, methodName{{ $j }}.AsGDExtensionConstStringNamePtr(), {{ $mb.Hash }})
     if global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }} == nil {
         missingMethods = append(missingMethods, "global{{ $c.Name }}MethodBindings.method_{{ $mb.Name }}")
@@ -101,7 +101,7 @@ func {{ lowerFirstChar $c.Name }}InitMethodBindings() {
     {{ end -}}
 
     if len(missingMethods) > 0 {
-        log.Panic("missing method binds", zap.Any("missing", missingMethods))
+        log.Panic("missing method binds", zap.Int("count", len(missingMethods)), zap.Any("missing", missingMethods))
     }
 
     {{ range $j, $mb := $c.Members -}}

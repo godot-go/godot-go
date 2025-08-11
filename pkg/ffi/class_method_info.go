@@ -11,6 +11,7 @@ import "C"
 import (
 	"unsafe"
 
+	"github.com/godot-go/godot-go/pkg/log"
 	"github.com/godot-go/godot-go/pkg/util"
 )
 
@@ -29,8 +30,8 @@ func NewGDExtensionClassMethodInfo(
 	defaultArgumentCount uint32,
 	defaultArguments *GDExtensionVariantPtr,
 ) *GDExtensionClassMethodInfo {
-	return (*GDExtensionClassMethodInfo)(&C.GDExtensionClassMethodInfo{
-		name:            (C.GDExtensionStringNamePtr)(unsafe.Pointer(name)),
+	ret := (*GDExtensionClassMethodInfo)(&C.GDExtensionClassMethodInfo{
+		name:            (C.GDExtensionStringNamePtr)(name),
 		method_userdata: methodUserdata,
 		call_func:       (C.GDExtensionClassMethodCall)(callFunc),
 		ptrcall_func:    (C.GDExtensionClassMethodPtrCall)(ptrcallFunc),
@@ -54,15 +55,35 @@ func NewGDExtensionClassMethodInfo(
 		default_argument_count: (C.uint32_t)(defaultArgumentCount),
 		default_arguments:      (*C.GDExtensionVariantPtr)(defaultArguments),
 	})
+	pnr.Pin(ret)
+	return ret
 }
 
 func (m *GDExtensionClassMethodInfo) Destroy() {
+	stringDestructor := (GDExtensionPtrDestructor)(CallFunc_GDExtensionInterfaceVariantGetPtrDestructor(GDEXTENSION_VARIANT_TYPE_STRING))
+	if stringDestructor == nil {
+		log.Panic("unable to get String Destructor")
+	}
 	stringNameDestructor := (GDExtensionPtrDestructor)(CallFunc_GDExtensionInterfaceVariantGetPtrDestructor(GDEXTENSION_VARIANT_TYPE_STRING_NAME))
+	if stringNameDestructor == nil {
+		log.Panic("unable to get StringName Destructor")
+	}
 	CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(m.name))
 	cm := (*C.GDExtensionClassMethodInfo)(m)
 	if cm != nil {
-		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(unsafe.Pointer(cm.name)))
+		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(cm.name))
 	}
+	argTypesSlice := unsafe.Slice(cm.arguments_info, cm.argument_count)
+	for i := range argTypesSlice {
+		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(argTypesSlice[i].name))
+		CallFunc_GDExtensionPtrDestructor(stringDestructor, (GDExtensionTypePtr)(argTypesSlice[i].hint_string))
+		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(argTypesSlice[i].class_name))
+	}
+	// defaultsSlice := unsafe.Slice(cm.default_arguments, cm.default_argument_count)
+	// for i := range defaultsSlice {
+	// 	builtin.NewVariant
+	// }
+
 	if cm.return_value_info != nil {
 		(*GDExtensionPropertyInfo)(cm.return_value_info).Destroy()
 	}

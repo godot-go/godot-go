@@ -6,9 +6,11 @@ package gdutilfunc
 */
 import "C"
 import (
+	"runtime"
 	"unsafe"
 )
 
 var (
 	nullptr = unsafe.Pointer(nil)
+	pnr     runtime.Pinner
 )

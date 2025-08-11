@@ -8,7 +8,17 @@ class TestClass:
 
 func _ready():
 	var example: Example = $Example
+	test_suite(1, example)
+	# example.group_subgroup_custom_position = Vector2(0, 0)
+	# custom_signal_emitted = null
+	# var t = get_tree()
+	# if t != null:
+	# 	await t.create_timer(3.0).timeout
+	# test_suite(2, example)
+	exit_with_status()
 
+func test_suite(i: int, example: Example):
+	print("test suite run %d" % [i])
 	# Signal.
 	example.emit_custom_signal("Button", 42)
 	assert_equal(custom_signal_emitted, ["Button", 42])
@@ -56,8 +66,8 @@ func _ready():
 	# Return values.
 	assert_equal(example.return_something("some string", 7.0/6, 7.0/6 * 1000, 2147483647, -127, -32768, 2147483647, 9223372036854775807), "1. some string42, 2. %.6f, 3. %f, 4. 2147483647, 5. -127, 6. -32768, 7. 2147483647, 8. 9223372036854775807" % [7.0/6, 7.0/6 * 1000])
 	assert_equal(example.return_something_const(), get_viewport())
-	# var null_ref = example.return_empty_ref()
-	# assert_equal(null_ref, null)
+	var null_ref = example.return_empty_ref()
+	assert_equal(null_ref, null)
 	# var ret_ref = example.return_extended_ref()
 	# assert_not_equal(ret_ref.get_instance_id(), 0)
 	# assert_equal(ret_ref.get_id(), 0)
@@ -257,8 +267,6 @@ func _ready():
 	# body.queue_free()
 
 	assert_equal(example.test_parent_is_nil(), null)
-
-	exit_with_status()
 
 func _on_Example_custom_signal(signal_name, value):
 	custom_signal_emitted = [signal_name, value]

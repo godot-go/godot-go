@@ -65,7 +65,7 @@ func createGoStringEncoder(format GoStringFormat) argumentEncoder[string, String
 		var enc String
 		pEnc := (GDExtensionTypePtr)(unsafe.Pointer(&enc))
 		CallFunc_GDExtensionTypeFromVariantConstructorFunc(tfn, (GDExtensionUninitializedTypePtr)(pEnc), (GDExtensionVariantPtr)(ptr))
-		defer enc.Destroy()
+		// defer enc.Destroy()
 		decodeTypePtrArg((GDExtensionConstTypePtr)(pEnc), pOut)
 	}
 	decodeVariantPtr := func(ptr GDExtensionConstVariantPtr) string {
@@ -78,7 +78,7 @@ func createGoStringEncoder(format GoStringFormat) argumentEncoder[string, String
 		pEnc := (GDExtensionTypePtr)(unsafe.Pointer(&enc))
 		encodeTypePtrArg(in, (GDExtensionUninitializedTypePtr)(pEnc))
 		CallFunc_GDExtensionVariantFromTypeConstructorFunc(vfn, pOut, pEnc)
-		defer enc.Destroy()
+		// defer enc.Destroy()
 	}
 	encodeVariantPtr := func(in string) GDExtensionVariantPtr {
 		var out Variant

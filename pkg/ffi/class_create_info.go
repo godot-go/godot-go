@@ -12,16 +12,12 @@ import (
 	"unsafe"
 )
 
-func NewGDExtensionClassCreationInfo3(
+func NewGDExtensionClassCreationInfo4(
 	isVirtual GDExtensionBool,
 	isAbstract GDExtensionBool,
 	isExposed GDExtensionBool,
 	isRuntime GDExtensionBool,
-	createInstanceFunc GDExtensionClassCreateInstance,
-	freeInstanceFunc GDExtensionClassFreeInstance,
-	getVirtualCallDataFunc GDExtensionClassGetVirtualCallData,
-	callVirtualFunc GDExtensionClassCallVirtualWithData,
-	toStringFunc GDExtensionClassToString,
+	iconPath GDExtensionConstStringPtr,
 	setFunc GDExtensionClassSet,
 	getFunc GDExtensionClassGet,
 	getPropertyListFunc GDExtensionClassGetPropertyList,
@@ -30,18 +26,22 @@ func NewGDExtensionClassCreationInfo3(
 	propertyGetRevertFunc GDExtensionClassPropertyGetRevert,
 	validatePropertyFunc GDExtensionClassValidateProperty,
 	notificationFunc GDExtensionClassNotification2,
+	toStringFunc GDExtensionClassToString,
+	referenceFunc GDExtensionClassReference,
+	unreferenceFunc GDExtensionClassUnreference,
+	createInstanceFunc GDExtensionClassCreateInstance2,
+	freeInstanceFunc GDExtensionClassFreeInstance,
+	recreateInstanceFunc GDExtensionClassRecreateInstance,
+	getVirtualCallDataFunc GDExtensionClassGetVirtualCallData2,
+	callVirtualFunc GDExtensionClassCallVirtualWithData,
 	classUserdata unsafe.Pointer,
-) GDExtensionClassCreationInfo3 {
-	return (GDExtensionClassCreationInfo3)(C.GDExtensionClassCreationInfo3{
+) GDExtensionClassCreationInfo4 {
+	return (GDExtensionClassCreationInfo4)(C.GDExtensionClassCreationInfo4{
 		is_virtual:                  (C.GDExtensionBool)(isVirtual),
 		is_abstract:                 (C.GDExtensionBool)(isAbstract),
 		is_exposed:                  (C.GDExtensionBool)(isExposed),
 		is_runtime:                  (C.GDExtensionBool)(isRuntime),
-		create_instance_func:        (C.GDExtensionClassCreateInstance)(createInstanceFunc),
-		free_instance_func:          (C.GDExtensionClassFreeInstance)(freeInstanceFunc),
-		get_virtual_call_data_func:  (C.GDExtensionClassGetVirtualCallData)(getVirtualCallDataFunc),
-		call_virtual_with_data_func: (C.GDExtensionClassCallVirtualWithData)(callVirtualFunc),
-		to_string_func:              (C.GDExtensionClassToString)(toStringFunc),
+		icon_path:                   (C.GDExtensionConstStringPtr)(iconPath),
 		set_func:                    (C.GDExtensionClassSet)(setFunc),
 		get_func:                    (C.GDExtensionClassGet)(getFunc),
 		get_property_list_func:      (C.GDExtensionClassGetPropertyList)(getPropertyListFunc),
@@ -50,12 +50,20 @@ func NewGDExtensionClassCreationInfo3(
 		property_get_revert_func:    (C.GDExtensionClassPropertyGetRevert)(propertyGetRevertFunc),
 		validate_property_func:      (C.GDExtensionClassValidateProperty)(validatePropertyFunc),
 		notification_func:           (C.GDExtensionClassNotification2)(notificationFunc),
+		to_string_func:              (C.GDExtensionClassToString)(toStringFunc),
+		reference_func:              (C.GDExtensionClassReference)(referenceFunc),
+		unreference_func:            (C.GDExtensionClassUnreference)(unreferenceFunc),
+		create_instance_func:        (C.GDExtensionClassCreateInstance2)(createInstanceFunc),
+		free_instance_func:          (C.GDExtensionClassFreeInstance)(freeInstanceFunc),
+		recreate_instance_func:      (C.GDExtensionClassRecreateInstance)(recreateInstanceFunc),
+		get_virtual_call_data_func:  (C.GDExtensionClassGetVirtualCallData2)(getVirtualCallDataFunc),
+		call_virtual_with_data_func: (C.GDExtensionClassCallVirtualWithData)(callVirtualFunc),
 		class_userdata:              classUserdata,
 	})
 }
 
-func (m *GDExtensionClassCreationInfo2) Destroy() {
-	cm := (*C.GDExtensionClassCreationInfo2)(m)
+func (m *GDExtensionClassCreationInfo4) Destroy() {
+	cm := (*C.GDExtensionClassCreationInfo4)(m)
 	if cm.class_userdata != nil {
 		C.free(cm.class_userdata)
 	}

@@ -18,7 +18,9 @@ import (
 {{ range $j, $e := $md.Encodings }}
 func NewVariant{{ $e.Name }}(v {{ $e.NativeType }}) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFrom{{ $e.Name }}(v, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFrom{{ $e.Name }}(v, ptr)
 	return ret
 }
 
@@ -26,6 +28,7 @@ func GDExtensionVariantPtrFrom{{ $e.Name }}(v {{ $e.NativeType }}, rOut GDExtens
 	{{ if $md.IsReference -}}
 	var encoded {{ $e.EncodeType }}
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
 	{{ $e.Name }}Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[{{ $v.Name }}]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -46,11 +49,12 @@ func GDExtensionVariantPtrFrom{{ $e.Name }}(v {{ $e.NativeType }}, rOut GDExtens
 	{{ end -}}
 }
 
-func (c *Variant) To{{ $e.Name }}() {{ $e.NativeType }} {
+func (c Variant) To{{ $e.Name }}() {{ $e.NativeType }} {
 	fn := typeFromVariantConstructor[{{ $v.Name }}]
 	var v {{ $e.EncodeType }}
 	{{ if $md.IsReference -}}
 	ptr := v.NativePtr()
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -59,6 +63,7 @@ func (c *Variant) To{{ $e.Name }}() {{ $e.NativeType }} {
 	return v
 	{{ else -}}
 	ptr := (GDExtensionTypePtr)(&v)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),

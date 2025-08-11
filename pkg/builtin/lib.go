@@ -7,6 +7,7 @@ package builtin
 */
 import "C"
 import (
+	"runtime"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/ffi"
@@ -20,6 +21,7 @@ type GDExtensionBindingCallback func()
 type GDExtensionClassGoConstructorFromOwner func(*GodotObject) GDExtensionClass
 type GDClassGoConstructorFromOwner func(*GodotObject) GDClass
 type RefCountedConstructor func(reference RefCounted) Ref
+
 // type GDClassGoConstructor func(data unsafe.Pointer) GDExtensionObjectPtr
 
 var (
@@ -27,57 +29,8 @@ var (
 	typeFromVariantConstructor                            [GDEXTENSION_VARIANT_TYPE_VARIANT_MAX]GDExtensionTypeFromVariantConstructorFunc
 	nullptr                                               = unsafe.Pointer(nil)
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks = NewSyncMap[string, GDExtensionInstanceBindingCallbacks]()
+	pnr                                                   = runtime.Pinner{}
 )
-
-func GetObjectInstanceBinding(engineObject *GodotObject) Object {
-	if engineObject == nil {
-		return nil
-	}
-	// Get existing instance binding, if one already exists.
-	instPtr := (*Object)(CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
-		(GDExtensionObjectPtr)(engineObject),
-		FFI.Token,
-		nil))
-	if instPtr != nil && *instPtr != nil {
-		return *instPtr
-	}
-	snClassName := StringName{}
-	cok := CallFunc_GDExtensionInterfaceObjectGetClassName(
-		(GDExtensionConstObjectPtr)(engineObject),
-		FFI.Library,
-		(GDExtensionUninitializedStringNamePtr)(snClassName.NativePtr()),
-	)
-	if cok == 0 {
-		log.Panic("failed to get class name",
-			zap.Any("owner", engineObject),
-		)
-	}
-	defer snClassName.Destroy()
-	className := snClassName.ToUtf8()
-	// const GDExtensionInstanceBindingCallbacks *binding_callbacks = nullptr;
-	// Otherwise, try to look up the correct binding callbacks.
-	cbs, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
-	if !ok {
-		log.Warn("unable to find callbacks for Object")
-		return nil
-	}
-	instPtr = (*Object)(CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
-		(GDExtensionObjectPtr)(engineObject),
-		FFI.Token,
-		&cbs))
-	if instPtr == nil || *instPtr == nil {
-		log.Panic("unable to get instance")
-		return nil
-	}
-	wrapperClassName := (*instPtr).GetClassName()
-	gdStrClassName := (*instPtr).GetClass()
-	defer gdStrClassName.Destroy()
-	log.Info("GetObjectInstanceBinding casted",
-		zap.String("class", gdStrClassName.ToUtf8()),
-		zap.String("className", wrapperClassName),
-	)
-	return *instPtr
-}
 
 func GDClassRegisterInstanceBindingCallbacks(tn string) {
 	// substitute for:
@@ -86,17 +39,20 @@ func GDClassRegisterInstanceBindingCallbacks(tn string) {
 	// 	___binding_free_callback,
 	// 	___binding_reference_callback,
 	// };
+	createPtr := (*[0]byte)(C.cgo_gdclass_binding_create_callback)
+	freePtr := (*[0]byte)(C.cgo_gdclass_binding_free_callback)
+	referencePtr := (*[0]byte)(C.cgo_gdclass_binding_reference_callback)
+	pnr.Pin(createPtr)
+	pnr.Pin(freePtr)
+	pnr.Pin(referencePtr)
 	cbs := NewGDExtensionInstanceBindingCallbacks(
-		(*[0]byte)(C.cgo_gdclass_binding_create_callback),
-		(*[0]byte)(C.cgo_gdclass_binding_free_callback),
-		(*[0]byte)(C.cgo_gdclass_binding_reference_callback),
+		createPtr,
+		freePtr,
+		referencePtr,
 	)
-
 	_, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(tn)
-
 	if ok {
 		log.Panic("Class with the same name already initialized", zap.String("class", tn))
 	}
-
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set(tn, (GDExtensionInstanceBindingCallbacks)(cbs))
 }

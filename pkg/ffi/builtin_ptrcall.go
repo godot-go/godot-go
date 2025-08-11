@@ -7,13 +7,12 @@ import (
 )
 
 func CallBuiltinConstructor(constructor GDExtensionPtrConstructor, base GDExtensionUninitializedTypePtr, args ...GDExtensionConstTypePtr) {
-	c := (GDExtensionPtrConstructor)(constructor)
-	b := (GDExtensionUninitializedTypePtr)(base)
-	if c == nil {
+	if constructor == nil {
 		log.Panic("constructor is null")
 	}
-	a := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	CallFunc_GDExtensionPtrConstructor(c, b, a)
+	argsPtr := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
+	pnr.Pin(argsPtr)
+	CallFunc_GDExtensionPtrConstructor(constructor, base, argsPtr)
 }
 
 func CallBuiltinMethodPtrRet[T any](method GDExtensionPtrBuiltInMethod, base GDExtensionTypePtr, args ...GDExtensionTypePtr) T {
@@ -23,6 +22,8 @@ func CallBuiltinMethodPtrRet[T any](method GDExtensionPtrBuiltInMethod, base GDE
 	ca := (int32)(len(args))
 	var ret T
 	ptr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+	pnr.Pin(a)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionPtrBuiltInMethod(m, b, a, ptr, ca)
 	return ret
 }
@@ -32,6 +33,7 @@ func CallBuiltinMethodPtrNoRet(method GDExtensionPtrBuiltInMethod, base GDExtens
 	b := (GDExtensionTypePtr)(base)
 	a := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
 	ca := (int32)(len(args))
+	pnr.Pin(a)
 	CallFunc_GDExtensionPtrBuiltInMethod(m, b, a, nil, ca)
 }
 
@@ -41,6 +43,9 @@ func CallBuiltinOperatorPtr[T any](operator GDExtensionPtrOperatorEvaluator, lef
 	r := (GDExtensionConstTypePtr)(right)
 	var ret T
 	ptr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+	pnr.Pin(l)
+	pnr.Pin(r)
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionPtrOperatorEvaluator(op, l, r, ptr)
 	return ret
 }
@@ -50,6 +55,7 @@ func CallBuiltinPtrGetter[T any](getter GDExtensionPtrGetter, base GDExtensionCo
 	b := (GDExtensionConstTypePtr)(base)
 	var ret T
 	ptr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionPtrGetter(g, b, ptr)
 	return ret
 }
@@ -59,6 +65,7 @@ func CallBuiltinPtrSetter[T any](setter GDExtensionPtrSetter, base GDExtensionTy
 	b := (GDExtensionTypePtr)(base)
 	var ret T
 	ptr := (GDExtensionConstTypePtr)(unsafe.Pointer(&ret))
+	pnr.Pin(ptr)
 	CallFunc_GDExtensionPtrSetter(g, b, ptr)
 	return ret
 }

@@ -20,7 +20,7 @@ package constant
 type {{ $c.Name }}{{ $e.GoName }} int
 const (
 	{{ range $j, $v := $e.Values -}}
-	{{ goClassEnumName $c.Name $e.GoName $v.Name }} {{ if eq $j 0 }}{{ $c.Name }}{{ $e.GoName }}{{ end }} = {{ $v.Value }}
+	{{ goClassEnumName $c.Name $e.GoName $v.Name }} {{ $c.Name }}{{ $e.GoName }} = {{ $v.Value }}
 	{{ end -}}
 )
 {{ end -}}

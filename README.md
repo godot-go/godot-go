@@ -3,7 +3,7 @@
 
 ---
 
-# godot-go: Go bindings for Godot 4.3
+# godot-go: Go bindings for Godot 4.5
 
 [Go](https://golang.org/) bindings for the [Godot Game Engine](https://github.com/godotengine/godot) cross-platform game engine. godot-go integrates into Godot through the Godot GDExtension API through cgo.
 
@@ -12,7 +12,7 @@ The project is currently under heavy development. The API should be considered _
 ## Current State of the Project
 
 Here are some high level bullet points:
-* You must have a minimum of Godot 4.3.
+* You must have a minimum of Godot 4.5.
 * The tests confirm basic functionality.
 * The bindings are more than likely leaking memory.
 * Not all variant types have been tested.
@@ -23,12 +23,12 @@ Here are some high level bullet points:
 Requirements:
 * clang-format
 * gcc
-* go 1.21.x
+* go 1.25.x
 * goimport
 
 ### Building Godot-Go
 
-In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of [Godot 4.3](https://github.com/godotengine/godot-builds/releases/tag/4.3-stable).
+In order for godot-go to work correctly, you must make sure the godot_headers are in sync between your godot binary and godot-go. Development is built and tested off of [Godot 4.5](https://github.com/godotengine/godot-builds/releases/tag/4.5-stable).
 
     # Install go dependencies
     make installdeps

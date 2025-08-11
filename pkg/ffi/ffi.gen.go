@@ -22,11 +22,12 @@ import (
 type GDExtensionInterface struct {
 	Library      GDExtensionClassLibraryPtr
 	Token        unsafe.Pointer
-	GodotVersion GDExtensionGodotVersion
+	GodotVersion *GDExtensionGodotVersion
 
 	// All of the GDExtension interface functions.
 	GetProcAddress                                GDExtensionInterfaceGetProcAddress
 	GetGodotVersion                               GDExtensionInterfaceGetGodotVersion
+	GetGodotVersion2                              GDExtensionInterfaceGetGodotVersion2
 	MemAlloc                                      GDExtensionInterfaceMemAlloc
 	MemRealloc                                    GDExtensionInterfaceMemRealloc
 	MemFree                                       GDExtensionInterfaceMemFree
@@ -64,11 +65,13 @@ type GDExtensionInterface struct {
 	VariantHasMethod                              GDExtensionInterfaceVariantHasMethod
 	VariantHasMember                              GDExtensionInterfaceVariantHasMember
 	VariantHasKey                                 GDExtensionInterfaceVariantHasKey
+	VariantGetObjectInstanceId                    GDExtensionInterfaceVariantGetObjectInstanceId
 	VariantGetTypeName                            GDExtensionInterfaceVariantGetTypeName
 	VariantCanConvert                             GDExtensionInterfaceVariantCanConvert
 	VariantCanConvertStrict                       GDExtensionInterfaceVariantCanConvertStrict
 	GetVariantFromTypeConstructor                 GDExtensionInterfaceGetVariantFromTypeConstructor
 	GetVariantToTypeConstructor                   GDExtensionInterfaceGetVariantToTypeConstructor
+	GetVariantGetInternalPtrFunc                  GDExtensionInterfaceGetVariantGetInternalPtrFunc
 	VariantGetPtrOperatorEvaluator                GDExtensionInterfaceVariantGetPtrOperatorEvaluator
 	VariantGetPtrBuiltinMethod                    GDExtensionInterfaceVariantGetPtrBuiltinMethod
 	VariantGetPtrConstructor                      GDExtensionInterfaceVariantGetPtrConstructor
@@ -144,6 +147,7 @@ type GDExtensionInterface struct {
 	ArraySetTyped                                 GDExtensionInterfaceArraySetTyped
 	DictionaryOperatorIndex                       GDExtensionInterfaceDictionaryOperatorIndex
 	DictionaryOperatorIndexConst                  GDExtensionInterfaceDictionaryOperatorIndexConst
+	DictionarySetTyped                            GDExtensionInterfaceDictionarySetTyped
 	ObjectMethodBindCall                          GDExtensionInterfaceObjectMethodBindCall
 	ObjectMethodBindPtrcall                       GDExtensionInterfaceObjectMethodBindPtrcall
 	ObjectDestroy                                 GDExtensionInterfaceObjectDestroy
@@ -166,15 +170,19 @@ type GDExtensionInterface struct {
 	PlaceHolderScriptInstanceCreate               GDExtensionInterfacePlaceHolderScriptInstanceCreate
 	PlaceHolderScriptInstanceUpdate               GDExtensionInterfacePlaceHolderScriptInstanceUpdate
 	ObjectGetScriptInstance                       GDExtensionInterfaceObjectGetScriptInstance
+	ObjectSetScriptInstance                       GDExtensionInterfaceObjectSetScriptInstance
 	CallableCustomCreate                          GDExtensionInterfaceCallableCustomCreate
 	CallableCustomCreate2                         GDExtensionInterfaceCallableCustomCreate2
 	CallableCustomGetUserData                     GDExtensionInterfaceCallableCustomGetUserData
 	ClassdbConstructObject                        GDExtensionInterfaceClassdbConstructObject
+	ClassdbConstructObject2                       GDExtensionInterfaceClassdbConstructObject2
 	ClassdbGetMethodBind                          GDExtensionInterfaceClassdbGetMethodBind
 	ClassdbGetClassTag                            GDExtensionInterfaceClassdbGetClassTag
 	ClassdbRegisterExtensionClass                 GDExtensionInterfaceClassdbRegisterExtensionClass
 	ClassdbRegisterExtensionClass2                GDExtensionInterfaceClassdbRegisterExtensionClass2
 	ClassdbRegisterExtensionClass3                GDExtensionInterfaceClassdbRegisterExtensionClass3
+	ClassdbRegisterExtensionClass4                GDExtensionInterfaceClassdbRegisterExtensionClass4
+	ClassdbRegisterExtensionClass5                GDExtensionInterfaceClassdbRegisterExtensionClass5
 	ClassdbRegisterExtensionClassMethod           GDExtensionInterfaceClassdbRegisterExtensionClassMethod
 	ClassdbRegisterExtensionClassVirtualMethod    GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod
 	ClassdbRegisterExtensionClassIntegerConstant  GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
@@ -187,6 +195,8 @@ type GDExtensionInterface struct {
 	GetLibraryPath                                GDExtensionInterfaceGetLibraryPath
 	EditorAddPlugin                               GDExtensionInterfaceEditorAddPlugin
 	EditorRemovePlugin                            GDExtensionInterfaceEditorRemovePlugin
+	EditorRegisterGetClassesUsedCallback          GDExtensionInterfaceEditorRegisterGetClassesUsedCallback
+	RegisterMainLoopCallbacks                     GDExtensionInterfaceRegisterMainLoopCallbacks
 }
 
 func (x *GDExtensionInterface) LoadProcAddresses(
@@ -198,6 +208,7 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.Token = unsafe.Pointer(&pLibrary)
 
 	x.GetGodotVersion = (GDExtensionInterfaceGetGodotVersion)(LoadProcAddress("get_godot_version"))
+	x.GetGodotVersion2 = (GDExtensionInterfaceGetGodotVersion2)(LoadProcAddress("get_godot_version2"))
 	x.MemAlloc = (GDExtensionInterfaceMemAlloc)(LoadProcAddress("mem_alloc"))
 	x.MemRealloc = (GDExtensionInterfaceMemRealloc)(LoadProcAddress("mem_realloc"))
 	x.MemFree = (GDExtensionInterfaceMemFree)(LoadProcAddress("mem_free"))
@@ -235,11 +246,13 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.VariantHasMethod = (GDExtensionInterfaceVariantHasMethod)(LoadProcAddress("variant_has_method"))
 	x.VariantHasMember = (GDExtensionInterfaceVariantHasMember)(LoadProcAddress("variant_has_member"))
 	x.VariantHasKey = (GDExtensionInterfaceVariantHasKey)(LoadProcAddress("variant_has_key"))
+	x.VariantGetObjectInstanceId = (GDExtensionInterfaceVariantGetObjectInstanceId)(LoadProcAddress("variant_get_object_instance_id"))
 	x.VariantGetTypeName = (GDExtensionInterfaceVariantGetTypeName)(LoadProcAddress("variant_get_type_name"))
 	x.VariantCanConvert = (GDExtensionInterfaceVariantCanConvert)(LoadProcAddress("variant_can_convert"))
 	x.VariantCanConvertStrict = (GDExtensionInterfaceVariantCanConvertStrict)(LoadProcAddress("variant_can_convert_strict"))
 	x.GetVariantFromTypeConstructor = (GDExtensionInterfaceGetVariantFromTypeConstructor)(LoadProcAddress("get_variant_from_type_constructor"))
 	x.GetVariantToTypeConstructor = (GDExtensionInterfaceGetVariantToTypeConstructor)(LoadProcAddress("get_variant_to_type_constructor"))
+	x.GetVariantGetInternalPtrFunc = (GDExtensionInterfaceGetVariantGetInternalPtrFunc)(LoadProcAddress("get_variant_get_internal_ptr_func"))
 	x.VariantGetPtrOperatorEvaluator = (GDExtensionInterfaceVariantGetPtrOperatorEvaluator)(LoadProcAddress("variant_get_ptr_operator_evaluator"))
 	x.VariantGetPtrBuiltinMethod = (GDExtensionInterfaceVariantGetPtrBuiltinMethod)(LoadProcAddress("variant_get_ptr_builtin_method"))
 	x.VariantGetPtrConstructor = (GDExtensionInterfaceVariantGetPtrConstructor)(LoadProcAddress("variant_get_ptr_constructor"))
@@ -315,6 +328,7 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.ArraySetTyped = (GDExtensionInterfaceArraySetTyped)(LoadProcAddress("array_set_typed"))
 	x.DictionaryOperatorIndex = (GDExtensionInterfaceDictionaryOperatorIndex)(LoadProcAddress("dictionary_operator_index"))
 	x.DictionaryOperatorIndexConst = (GDExtensionInterfaceDictionaryOperatorIndexConst)(LoadProcAddress("dictionary_operator_index_const"))
+	x.DictionarySetTyped = (GDExtensionInterfaceDictionarySetTyped)(LoadProcAddress("dictionary_set_typed"))
 	x.ObjectMethodBindCall = (GDExtensionInterfaceObjectMethodBindCall)(LoadProcAddress("object_method_bind_call"))
 	x.ObjectMethodBindPtrcall = (GDExtensionInterfaceObjectMethodBindPtrcall)(LoadProcAddress("object_method_bind_ptrcall"))
 	x.ObjectDestroy = (GDExtensionInterfaceObjectDestroy)(LoadProcAddress("object_destroy"))
@@ -337,15 +351,19 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.PlaceHolderScriptInstanceCreate = (GDExtensionInterfacePlaceHolderScriptInstanceCreate)(LoadProcAddress("placeholder_script_instance_create"))
 	x.PlaceHolderScriptInstanceUpdate = (GDExtensionInterfacePlaceHolderScriptInstanceUpdate)(LoadProcAddress("placeholder_script_instance_update"))
 	x.ObjectGetScriptInstance = (GDExtensionInterfaceObjectGetScriptInstance)(LoadProcAddress("object_get_script_instance"))
+	x.ObjectSetScriptInstance = (GDExtensionInterfaceObjectSetScriptInstance)(LoadProcAddress("object_set_script_instance"))
 	x.CallableCustomCreate = (GDExtensionInterfaceCallableCustomCreate)(LoadProcAddress("callable_custom_create"))
 	x.CallableCustomCreate2 = (GDExtensionInterfaceCallableCustomCreate2)(LoadProcAddress("callable_custom_create2"))
 	x.CallableCustomGetUserData = (GDExtensionInterfaceCallableCustomGetUserData)(LoadProcAddress("callable_custom_get_user_data"))
 	x.ClassdbConstructObject = (GDExtensionInterfaceClassdbConstructObject)(LoadProcAddress("classdb_construct_object"))
+	x.ClassdbConstructObject2 = (GDExtensionInterfaceClassdbConstructObject2)(LoadProcAddress("classdb_construct_object2"))
 	x.ClassdbGetMethodBind = (GDExtensionInterfaceClassdbGetMethodBind)(LoadProcAddress("classdb_get_method_bind"))
 	x.ClassdbGetClassTag = (GDExtensionInterfaceClassdbGetClassTag)(LoadProcAddress("classdb_get_class_tag"))
 	x.ClassdbRegisterExtensionClass = (GDExtensionInterfaceClassdbRegisterExtensionClass)(LoadProcAddress("classdb_register_extension_class"))
 	x.ClassdbRegisterExtensionClass2 = (GDExtensionInterfaceClassdbRegisterExtensionClass2)(LoadProcAddress("classdb_register_extension_class2"))
 	x.ClassdbRegisterExtensionClass3 = (GDExtensionInterfaceClassdbRegisterExtensionClass3)(LoadProcAddress("classdb_register_extension_class3"))
+	x.ClassdbRegisterExtensionClass4 = (GDExtensionInterfaceClassdbRegisterExtensionClass4)(LoadProcAddress("classdb_register_extension_class4"))
+	x.ClassdbRegisterExtensionClass5 = (GDExtensionInterfaceClassdbRegisterExtensionClass5)(LoadProcAddress("classdb_register_extension_class_5"))
 	x.ClassdbRegisterExtensionClassMethod = (GDExtensionInterfaceClassdbRegisterExtensionClassMethod)(LoadProcAddress("classdb_register_extension_class_method"))
 	x.ClassdbRegisterExtensionClassVirtualMethod = (GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod)(LoadProcAddress("classdb_register_extension_class_virtual_method"))
 	x.ClassdbRegisterExtensionClassIntegerConstant = (GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant)(LoadProcAddress("classdb_register_extension_class_integer_constant"))
@@ -358,6 +376,8 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.GetLibraryPath = (GDExtensionInterfaceGetLibraryPath)(LoadProcAddress("get_library_path"))
 	x.EditorAddPlugin = (GDExtensionInterfaceEditorAddPlugin)(LoadProcAddress("editor_add_plugin"))
 	x.EditorRemovePlugin = (GDExtensionInterfaceEditorRemovePlugin)(LoadProcAddress("editor_remove_plugin"))
+	x.EditorRegisterGetClassesUsedCallback = (GDExtensionInterfaceEditorRegisterGetClassesUsedCallback)(LoadProcAddress("editor_register_get_classes_used_callback"))
+	x.RegisterMainLoopCallbacks = (GDExtensionInterfaceRegisterMainLoopCallbacks)(LoadProcAddress("register_main_loop_callbacks"))
 }
 
 var (
@@ -371,7 +391,9 @@ func LoadProcAddress(funcName string) unsafe.Pointer {
 			zap.String("name", funcName),
 		)
 	}
-	return unsafe.Pointer(ret)
+	ptr := unsafe.Pointer(ret)
+	pnr.Pin(ptr)
+	return ptr
 }
 
 func (gv GDExtensionGodotVersion) GetMajor() int32 {

@@ -3,6 +3,8 @@ package core
 // #include <godot/gdextension_interface.h>
 import "C"
 import (
+	"unsafe"
+
 	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/constant"
 	. "github.com/godot-go/godot-go/pkg/ffi"
@@ -13,12 +15,21 @@ func NewSimpleGDExtensionPropertyInfo(
 	variantType GDExtensionVariantType,
 	name string,
 ) GDExtensionPropertyInfo {
-	return NewGDExtensionPropertyInfo(
-		NewStringNameWithLatin1Chars(className).AsGDExtensionConstStringNamePtr(),
+	classNameStringName := NewStringNameWithLatin1Chars(className)
+	classNamePtr := classNameStringName.AsGDExtensionConstStringNamePtr()
+	nameStringName := NewStringNameWithLatin1Chars(name)
+	namePtr := nameStringName.AsGDExtensionConstStringNamePtr()
+	hintString := NewStringWithUtf8Chars("")
+	hintPtr := hintString.AsGDExtensionConstStringPtr()
+	ret := NewGDExtensionPropertyInfo(
+		classNamePtr,
 		variantType,
-		NewStringNameWithLatin1Chars(name).AsGDExtensionConstStringNamePtr(),
+		namePtr,
 		uint32(PROPERTY_HINT_NONE),
-		NewStringWithUtf8Chars("").AsGDExtensionConstStringPtr(),
+		hintPtr,
 		uint32(PROPERTY_USAGE_DEFAULT),
 	)
+	ptr := unsafe.Pointer(&ret)
+	pnr.Pin(ptr)
+	return ret
 }

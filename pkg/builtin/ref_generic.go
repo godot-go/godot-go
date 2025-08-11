@@ -57,7 +57,7 @@ func (cx *TypedRef[T]) RefPointer(r T) {
 func (cx *TypedRef[T]) Unref() {
 	var zero T
 	if cx.Reference != zero && cx.Reference.Unreference() {
-		cx.Reference.Destroy()
+		// cx.Reference.Destroy()
 		// release memory
 		// runtime.Unpin(cx.reference)
 	}
@@ -71,11 +71,15 @@ func (cx *TypedRef[T]) IsValid() bool {
 func NewTypedRef[T TypedRefT](reference T) *TypedRef[T] {
 	ref := TypedRef[T]{}
 	ref.RefPointer(reference)
-	return &ref
+	ptr := &ref
+	pnr.Pin(ptr)
+	return ptr
 }
 
 func NewTypedRefGDExtensionIternalConstructor[T TypedRefT](reference T) *TypedRef[T] {
 	ref := TypedRef[T]{}
 	ref.Reference = reference
-	return &ref
+	ptr := &ref
+	pnr.Pin(ptr)
+	return ptr
 }

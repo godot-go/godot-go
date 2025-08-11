@@ -19,6 +19,9 @@ package ffi
 // #include <stdlib.h>
 import "C"
 import (
+	{{/* "runtime" */}}
+	{{/* "runtime/cgo" */}}
+	"runtime/cgo"
 	"unsafe"
 
 	"github.com/godot-go/godot-go/pkg/log"
@@ -46,6 +49,12 @@ const (
 	{{ $v.Name }} {{ if eq $j 0 }}{{ $e.Name }}{{ end }} {{ with $z := (goEnumValue $v $j) -}} = {{ $z }} {{- end }}
 	{{ end -}}
 )
+
+var {{ $e.Name }}StringMap = map[{{ $e.Name }}]string {
+	{{ range $j, $v := $e.CollectValuesWithoutDefault -}}
+	{{ $v.Name }}: "{{ $v.Name }}",
+	{{ end -}}
+}
 {{ end }}
 
 // C function aliases
@@ -76,9 +85,12 @@ func CallFunc_{{ $f.Name }}(
 	{{/* pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 
+	pinner.Pin(arg0)
 	{{ range $j, $arg := $f.Arguments -}}
 		{{ if $arg.IsPinnable -}}
 		pinner.Pin(arg{{ add $j 1 }})
+		{{ else -}}
+		// {{ if $arg.Type.Primative }}{{ $arg.Type.Primative.Name }}{{ end }}
 		{{ end -}}
 	{{ end }} */}}
 
@@ -93,11 +105,11 @@ func CallFunc_{{ $f.Name }}(
 
 	{{ range $j, $arg := $f.Arguments -}}
 		{{ cgoCleanUpArgument $arg (add $j 1) }}
-	{{ end }}
+	{{ end -}}
 
-	{{- if $rt }}
+	{{ cgoPinReturnType $f.ReturnType "ret" }}
 
-	// {{ $f.ReturnType.CStyleString }}
+	{{ if $rt -}}
 	return {{ cgoCastReturnType $f.ReturnType "ret" }}
 	{{ end -}}
 }
@@ -125,9 +137,12 @@ func CallFunc_{{ $f.Name }}(
 	{{/* pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 
+	pinner.Pin(arg0)
 	{{ range $j, $arg := $f.Arguments -}}
 		{{ if $arg.IsPinnable -}}
 		pinner.Pin(arg{{ add $j 1 }})
+		{{ else -}}
+		// {{ if $arg.Type.Primative }}{{ $arg.Type.Primative.Name }}{{ end }}
 		{{ end -}}
 	{{ end }} */}}
 
@@ -144,9 +159,9 @@ func CallFunc_{{ $f.Name }}(
 		{{ cgoCleanUpArgument $arg (add $j 1) }}
 	{{ end }}
 
-	{{- if $rt }}
+	{{ cgoPinReturnType $f.ReturnType "ret" }}
 
-	// {{ $f.ReturnType.CStyleString }}
+	{{ if $rt -}}
 	return {{ cgoCastReturnType $f.ReturnType "ret" }}
 	{{ end -}}
 }
@@ -177,9 +192,12 @@ func CallFunc_{{ $f.Name }}(
 			{{/* pinner := runtime.Pinner{}
 			defer pinner.Unpin()
 
+			pinner.Pin(arg0)
 			{{ range $j, $arg := $f.Arguments -}}
 				{{ if $arg.IsPinnable -}}
 				pinner.Pin(arg{{ add $j 1 }})
+				{{ else -}}
+				// {{ if $arg.Type.Primative }}{{ $arg.Type.Primative.Name }}{{ end }}
 				{{ end -}}
 			{{ end }} */}}
 
@@ -196,9 +214,9 @@ func CallFunc_{{ $f.Name }}(
 				{{ cgoCleanUpArgument $arg (add $j 1) }}
 			{{ end }}
 
-			{{- if $rt }}
+			{{ cgoPinReturnType $f.ReturnType "ret" }}
 
-			// {{ $f.ReturnType.CStyleString }}
+			{{ if $rt -}}
 			return {{ cgoCastReturnType $f.ReturnType "ret" }}
 			{{ end -}}
 		}

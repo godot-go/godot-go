@@ -38,7 +38,7 @@ func TestPointerAdd(mem cgoalloc.Allocator) {
 	ptr := mem.Malloc(int(unsafe.Sizeof(TestOpaque{}) * uintptr(len)))
 	arr := (*[5]TestOpaque)(ptr)
 
-	for i := 0; i < 5; i++ {
+	for i := range 5 {
 		arr[i].A = i
 		arr[i].B = i * 10
 		arr[i].C = i * 100
@@ -51,7 +51,7 @@ func TestPointerAdd(mem cgoalloc.Allocator) {
 	3: &{3 30 300}
 	4: &{4 40 400}
 	*/
-	for i := 0; i < 5; i++ {
+	for i := range 5 {
 		obj := (*TestOpaque)(unsafe.Add(ptr, int(unsafe.Sizeof(TestOpaque{}))*i))
 		fmt.Printf("%d: %v\n", i, obj)
 	}

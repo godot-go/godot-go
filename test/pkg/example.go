@@ -26,7 +26,6 @@ const (
 	EXAMPLE_ENUM_CONSTANT_WITHOUT_ENUM = 314
 )
 
-
 type ExampleBitfieldFlag int64
 
 const (
@@ -35,7 +34,7 @@ const (
 )
 
 // Example implements GDClass evidence
-var _ GDClass = new(Example)
+var _ GDClass = (*Example)(nil)
 
 type Example struct {
 	ControlImpl
@@ -177,11 +176,11 @@ func (e *Example) TestArray() Array {
 
 func (e *Example) TestTArrayArg(arr PackedInt64Array) int64 {
 	sum := int64(0)
-	sz := arr.Size();
-	for i := int64(0); i < sz; i++ {
+	sz := arr.Size()
+	for i := range sz {
 		sum += arr.GetIndexed(i)
 	}
-	return sum;
+	return sum
 }
 
 func (e *Example) TestTArray() Array {
@@ -196,9 +195,9 @@ func (e *Example) TestTArray() Array {
 func (e *Example) TestDictionary() Dictionary {
 	dict := NewDictionary()
 	world := NewVariantGoString("world")
-	defer world.Destroy()
+	// defer world.Destroy()
 	bar := NewVariantGoString("bar")
-	defer bar.Destroy()
+	// defer bar.Destroy()
 	dict.SetKeyed("hello", world)
 	dict.SetKeyed("foo", bar)
 	return dict
@@ -229,10 +228,14 @@ func (e *Example) EmitCustomSignal(name string, value int64) {
 		zap.String("name", name),
 		zap.Int64("value", value),
 	)
+	arg0 := NewVariantString(snName)
+	defer arg0.Destroy()
+	arg1 := NewVariantInt64(value)
+	defer arg1.Destroy()
 	e.EmitSignal(
 		customSignal,
-		NewVariantString(snName),
-		NewVariantInt64(value),
+		arg0,
+		arg1,
 	)
 }
 
@@ -286,6 +289,7 @@ func (e *Example) VarargsFuncNv(args ...Variant) int {
 
 func (e *Example) V_PropertyCanRevert(p_name StringName) bool {
 	gdSn := NewStringNameWithLatin1Chars("property_from_list")
+	defer gdSn.Destroy()
 	vec3 := NewVector3WithFloat32Float32Float32(42, 42, 42)
 	return p_name.Equal_StringName(gdSn) && !e.propertyFromList.Equal_Vector3(vec3)
 }
@@ -416,6 +420,7 @@ func (e *Example) V_Input(refEvent RefInputEvent) {
 		return
 	}
 	gdStringKeyLabel := keyEvent.AsTextKeyLabel()
+	defer gdStringKeyLabel.Destroy()
 	keyLabel := gdStringKeyLabel.ToUtf8()
 	v := int64(keyEvent.GetUnicode())
 	e.EmitCustomSignal(fmt.Sprintf("_input: %s", keyLabel), v)
@@ -427,8 +432,12 @@ func (e *Example) TestSetPositionAndSize(pos, size Vector2) {
 }
 
 func (e *Example) TestGetChildNode(nodePath string) Node {
-	np := NewNodePathWithString(NewStringWithUtf8Chars(nodePath))
+	npStr := NewStringWithUtf8Chars(nodePath)
+	defer npStr.Destroy()
+	np := NewNodePathWithString(npStr)
+	defer np.Destroy()
 	names := np.GetConcatenatedNames()
+	defer names.Destroy()
 	log.Info("node path", zap.String("node_path", names.ToUtf8()))
 	return e.GetNode(np)
 }
@@ -447,7 +456,7 @@ func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 		return
 	}
 	gdStrBody := body.ToString()
-	defer gdStrBody.Destroy()
+	// defer gdStrBody.Destroy()
 	log.Info("TestCharacterBody2D called",
 		zap.String("body", gdStrBody.ToUtf8()),
 	)
@@ -479,13 +488,14 @@ func (e *Example) TestStrUtility() string {
 
 func (e *Example) TestVectorOps() int32 {
 	arr := NewPackedInt32Array()
+	defer arr.Destroy()
 	arr.PushBack(20)
 	arr.PushBack(10)
 	arr.PushBack(30)
 	arr.PushBack(45)
 	ret := int32(0)
-	for i:=int64(0); i<arr.Size(); i++ {
-		ret += int32(arr.GetIndexed(i));
+	for i := range arr.Size() {
+		ret += int32(arr.GetIndexed(i))
 	}
 	return ret
 }
@@ -507,15 +517,22 @@ func (e *Example) TestBitfield(flags int64) ExampleBitfieldFlag {
 
 func (e *Example) CallableBind() {
 	methodName := NewStringNameWithLatin1Chars("emit_custom_signal")
+	defer methodName.Destroy()
 	c := NewCallableWithObjectStringName(e, methodName)
+	defer c.Destroy()
 	args := NewArray()
+	defer args.Destroy()
 	args.Append(NewVariantGoString("bound"))
 	args.Append(NewVariantInt(11))
-	c.Callv(args);
+	c.Callv(args)
 }
 
 func (e *Example) TestVariantVector2iConversion(v Variant) Vector2i {
 	return v.ToVector2i()
+}
+
+func (e *Example) V_ToString() string {
+	return fmt.Sprintf("[ GDExtension::Example <--> Instance ID:%d ]", e.GetInstanceId())
 }
 
 func NewExampleFromOwnerObject(owner *GodotObject) GDClass {
@@ -542,8 +559,9 @@ func GetExamplePropertyList() []GDExtensionPropertyInfo {
 }
 
 func RegisterClassExample() {
-	ClassDBRegisterClass(&Example{}, NewExampleFromOwnerObject, GetExamplePropertyList(), ValidateExampleProperty, func(t GDClass) {
+	ClassDBRegisterClass(NewExampleFromOwnerObject, GetExamplePropertyList(), ValidateExampleProperty, func(t *Example) {
 		// virtuals
+		ClassDBBindMethodVirtual(t, "V_ToString", "to_string", nil, nil)
 		ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
 		ClassDBBindMethodVirtual(t, "V_Input", "_input", []string{"event"}, nil)
 		ClassDBBindMethodVirtual(t, "V_Set", "_set", []string{"name", "value"}, nil)
@@ -556,6 +574,7 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "ImageRefFunc", "image_ref_func", []string{"image"}, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
+		ClassDBBindMethod(t, "ReturnEmptyRef", "return_empty_ref", nil, nil)
 
 		ClassDBBindMethod(t, "TestArray", "test_array", nil, nil)
 		ClassDBBindMethod(t, "TestTArrayArg", "test_tarray_arg", []string{"array"}, nil)
@@ -620,4 +639,6 @@ func RegisterClassExample() {
 }
 
 func UnregisterClassExample() {
+	ClassDBUnregisterClass[*Example]()
+	log.Debug("Example unregistered")
 }

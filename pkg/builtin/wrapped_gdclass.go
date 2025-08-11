@@ -5,6 +5,7 @@ package builtin
 import "C"
 import (
 	"fmt"
+	"runtime/cgo"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/ffi"
@@ -23,14 +24,11 @@ func ObjectClassFromGDExtensionClassInstancePtr(p_instance GDExtensionClassInsta
 	if p_instance == nil {
 		return nil
 	}
-
-	wci := (*WrappedClassInstance)(unsafe.Pointer(p_instance))
-
+	wci := cgo.Handle(p_instance).Value().(*WrappedClassInstance)
 	if wci.Instance == nil {
 		log.Panic("unexpected nil instance")
 		return nil
 	}
-
 	return wci.Instance
 }
 
@@ -44,40 +42,36 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 			zap.String("w.GetGodotObjectOwner()", fmt.Sprintf("%p", owner)),
 		)
 	}
-
 	snExtensionClassName := NewStringNameWithLatin1Chars(extensionClassName)
 	defer snExtensionClassName.Destroy()
-
 	callbacks, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(extensionClassName)
-
 	if !ok {
 		log.Panic("unable to retrieve binding callbacks", zap.String("type", extensionClassName))
 	}
-
 	cnPtr := snExtensionClassName.AsGDExtensionConstStringNamePtr()
-
 	obj, ok := w.(Object)
-
 	if !ok {
 		log.Panic("unable to cast to Object")
 	}
-
 	inst := &WrappedClassInstance{
 		Instance: obj,
 	}
-
+	pnr.Pin(obj)
+	pnr.Pin(owner)
+	pnr.Pin(inst)
+	pnr.Pin(cnPtr)
+	instHandle := cgo.NewHandle(inst)
 	if cnPtr != nil {
 		CallFunc_GDExtensionInterfaceObjectSetInstance(
 			(GDExtensionObjectPtr)(owner),
 			cnPtr,
-			(GDExtensionClassInstancePtr)(unsafe.Pointer(inst)),
+			(GDExtensionClassInstancePtr)(instHandle),
 		)
 	}
-
 	CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(
 		(GDExtensionObjectPtr)(owner),
 		unsafe.Pointer(FFI.Token),
-		unsafe.Pointer(inst),
+		instHandle,
 		&callbacks,
 	)
 }

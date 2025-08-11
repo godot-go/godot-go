@@ -49,7 +49,7 @@ void cgo_classcreationinfo_notification(GDExtensionClassInstancePtr p_instance, 
     GoCallback_ClassCreationInfoNotification(p_instance, p_what, p_reversed);
 }
 
-void* cgo_classcreationinfo_getvirtualcallwithdata(void *p_userdata, GDExtensionConstStringNamePtr p_name) {
+void* cgo_classcreationinfo_getvirtualcallwithdata2(void *p_userdata, GDExtensionConstStringNamePtr p_name, uint32_t p_hash) {
     printStacktrace();
     return GoCallback_ClassCreationInfoGetVirtualCallWithData(p_userdata, p_name);
 }

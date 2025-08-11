@@ -36,13 +36,14 @@ type {{ goClassStructName $c.Name }} struct {
 func NewGDExtensionClassFrom{{ $c.Name }}Owner(owner *GodotObject) GDExtensionClass {
 	inst := &{{ goClassStructName $c.Name }}{}
 	inst.Owner = owner
+	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
 }
 
 func New{{ $c.Name }}WithGodotOwnerObject(owner *GodotObject) {{ if $view.IsRefcountedClassName $c.Name }}Ref{{ $c.Name }}{{ else }}{{ $c.Name }}{{ end }} {
 	inst := &{{ goClassStructName $c.Name }}{}
 	inst.Owner = owner
-
+	pnr.Pin(inst)
 	{{ if $view.IsRefcountedClassName $c.Name -}}
 	return NewRef{{ $c.Name }}GDExtensionIternalConstructor(inst)
 	{{ else -}}
@@ -103,25 +104,30 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	retPtr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(&ret))
 	{{ else -}}
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-	{{ end -}}
-	{{- else -}}
+	{{ end }}
+	{{ else -}}
 	{{ if $m.IsVararg}}
 	retPtr := (GDExtensionUninitializedVariantPtr)(nullptr)
 	{{ else -}}
 	retPtr := (GDExtensionTypePtr)(nullptr)
 	{{ end -}}
-	{{- end -}}
+	{{ end -}}
+	pnr.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
 	{{ if $m.IsVararg -}}
 	callArgCount := {{ len $m.Arguments }} + len(varargs)
 	argPtrSlice := make([]GDExtensionConstVariantPtr, int(callArgCount))
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
 	{{ range $j, $a := $m.Arguments -}}
 	v{{ $j }} := {{ (goVariantFunc $a.Type (goArgumentName $a.Name) $view.Classes) }}
 	argPtrSlice[{{ $j }}] = v{{ $j }}.NativeConstPtr()
+	pnr.Pin(argPtrSlice[{{ $j }}])
 	{{ end -}}
 	for i := range varargs {
 		argPtrSlice[i + {{ len $m.Arguments }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&varargs[i])) // variant
+		pnr.Pin(argPtrSlice[i + {{ len $m.Arguments }}])
     }
 	var err GDExtensionCallError
 	CallFunc_GDExtensionInterfaceObjectMethodBindCall(fn, cOwner, cArgs, (GDExtensionInt)(callArgCount), retPtr, &err)
@@ -132,6 +138,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	callArgCount := {{ len $m.Arguments }}
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
 	{{ range $j, $a := $m.Arguments -}}
 		{{ if $view.ContainsClassName (goArgumentType (coalesce $a.Meta $a.Type)) -}}
 		{{ if and (eq $j 0) (and (isSetterMethodName (goMethodName $m.Name)) ($view.IsRefcountedClassName (goArgumentType (coalesce $a.Meta $a.Type)))) -}}
@@ -141,7 +148,8 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 		{{ else -}}
 		argPtrSlice[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))
 		{{ end -}}
-	{{- end -}}
+		pnr.Pin(argPtrSlice[{{ $j }}])
+	{{ end -}}
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	{{ end -}}
 	{{ with $fnReturnType -}}

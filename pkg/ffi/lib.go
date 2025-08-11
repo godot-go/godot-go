@@ -10,11 +10,12 @@ package ffi
 */
 import "C"
 import (
-	"unsafe"
+	"runtime"
+	// "github.com/CannibalVox/cgoalloc"
 )
 
 var (
-	nullptr = unsafe.Pointer(nil)
+	pnr = runtime.Pinner{}
 )
 
 func NewGDExtensionInstanceBindingCallbacks(
@@ -39,4 +40,12 @@ func (e *GDExtensionInitialization) SetCallbacks(
 
 func (e *GDExtensionInitialization) SetInitializationLevel(level GDExtensionInitializationLevel) {
 	e.minimum_initialization_level = (C.GDExtensionInitializationLevel)(level)
+}
+
+func init() {
+	FFI.GodotVersion = new(GDExtensionGodotVersion)
+	pnr.Pin(FFI.GodotVersion)
+	// mem := cgoalloc.DefaultAllocator{}
+
+	// FFI.GodotVersion = (*GDExtensionGodotVersion)(mem.Malloc(int(unsafe.Sizeof(GDExtensionGodotVersion{}))))
 }

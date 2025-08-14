@@ -30,7 +30,7 @@ jobs:
           - windows/amd64
     runs-on: windows-latest
     env:
-      GODOT: ./Godot_v4.3-stable_win64.exe
+      GODOT: ./Godot_v4.4-stable_win64.exe
     timeout-minutes: 20
     steps:
       - name: Add Go 1.22.x To System Path
@@ -51,10 +51,10 @@ jobs:
         with:
           submodules: true
 
-      - name: Install Godot 4.3 stable
+      - name: Install Godot 4.4 stable
         run: |
-          wget https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_win64.exe.zip
-          unzip Godot_v4.3-stable_win64.exe.zip -d ./
+          wget https://github.com/godotengine/godot-builds/releases/download/4.4-stable/Godot_v4.4-stable_win64.exe.zip
+          unzip Godot_v4.4-stable_win64.exe.zip -d ./
         shell: bash
 
       # Download custom build of godot for windows

@@ -12,6 +12,7 @@ import (
 	. "github.com/godot-go/godot-go/pkg/core"
 	"github.com/godot-go/godot-go/pkg/ffi"
 	"github.com/godot-go/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/util"
 )
 
 var (
@@ -35,6 +36,8 @@ var threadName = "godot-go"
 
 //export TestDemoInit
 func TestDemoInit(p_get_proc_address unsafe.Pointer, p_library unsafe.Pointer, r_initialization unsafe.Pointer) bool {
+	util.SetThreadName("test-demo")
+
 	initObj := NewInitObject(
 		(ffi.GDExtensionInterfaceGetProcAddress)(p_get_proc_address),
 		(ffi.GDExtensionClassLibraryPtr)(p_library),

@@ -41,9 +41,9 @@ generate: clean
 	fi
 
 update_godot_headers_from_binary: ## update godot_headers from the godot binary
-	DISPLAY=:0 $(GODOT) --dump-extension-api --headless; \
+	DISPLAY=:0 "$(GODOT)" --dump-extension-api --headless; \
 	mv extension_api.json godot_headers/extension_api.json; \
-	DISPLAY=:0 $(GODOT) --dump-gdextension-interface --headless; \
+	DISPLAY=:0 "$(GODOT)" --dump-gdextension-interface --headless; \
 	mv gdextension_interface.h godot_headers/godot/
 
 # https://medium.com/@aviad.hayumi/debug-golang-applications-with-c-c-bindings-f254b3f1259e
@@ -76,14 +76,14 @@ remote_debug_test:
 	LOG_LEVEL=info \
 	GOTRACEBACK=crash \
 	GODEBUG=sbrk=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
-	gdbserver --once :55555 $(GODOT) --headless --verbose --debug --path test/demo/
+	gdbserver --once :55555 "$(GODOT)" --headless --verbose --debug --path test/demo/
 
 ci_gen_test_project_files:
 	CI=1 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
-	$(GODOT) --headless --verbose --path test/demo/ --editor --quit
+	"$(GODOT)" --headless --verbose --path test/demo/ --editor --quit
 	# hack until fix lands: https://github.com/godotengine/godot/issues/84460
 	if [ ! -f "test/demo/.godot/extension_list.cfg" ]; then \
 		echo 'res://example.gdextension' >> test/demo/.godot/extension_list.cfg; \
@@ -94,17 +94,17 @@ test:
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
-	$(GODOT) --headless --verbose --path test/demo/ --quit
+	"$(GODOT)" --headless --verbose --path test/demo/ --quit
 
 interactive_test:
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
-	$(GODOT) --verbose --debug --path test/demo/
+	"$(GODOT)" --verbose --debug --path test/demo/
 
 open_demo_in_editor:
 	DISPLAY=:0 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=sbrk=1,gctrace=1,asyncpreemptoff=1,cgocheck=0,invalidptr=1,clobberfree=1,tracebackancestors=5 \
-	$(GODOT) --verbose --debug --path test/demo/ --editor
+	"$(GODOT)" --verbose --debug --path test/demo/ --editor

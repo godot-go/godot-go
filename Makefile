@@ -54,7 +54,6 @@ build: goenv
 	GOARCH=$(GOARCH) \
 	CGO_CFLAGS='-fPIC -g -ggdb -O0' \
 	CGO_LDFLAGS='-g3 -g -O0' \
-	CC=clang \
 	GOEXPERIMENT=$(GOEXPERIMENT) \
 	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
@@ -64,7 +63,6 @@ build-full: goenv
 	GOARCH=$(GOARCH) \
 	CGO_CFLAGS='-g3 -g -gdwarf -DX86=1 -fPIC -O0' \
 	CGO_LDFLAGS='-g3 -g' \
-	CC=clang \
 	GOEXPERIMENT=$(GOEXPERIMENT) \
 	go build -gcflags="-N -l" -ldflags=-compressdwarf=0 -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 

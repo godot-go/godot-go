@@ -33,11 +33,11 @@ jobs:
       GODOT: ./Godot_v4.4-stable_win64.exe
     timeout-minutes: 20
     steps:
-      - name: Add Go 1.22.x To System Path
-        shell: bash
-        run: |
-          echo "${GOROOT_1_22_X64}/bin" >> $GITHUB_PATH
-          echo "GITHUB_PATH=${GITHUB_PATH}"
+      - name: Add Go 1.25 To System Path
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.0'
+      - run: go version
       - name: Set up scoop
         uses: MinoruSekine/setup-scoop@main
         with:
@@ -47,7 +47,7 @@ jobs:
       - name: Install scoop packages
         run: scoop install wget unzip
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
 

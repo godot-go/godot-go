@@ -6,9 +6,7 @@ package pkg
 import "C"
 
 import (
-	"fmt"
 	"runtime"
-	"syscall"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/core"
@@ -34,16 +32,9 @@ func UnregisterExampleTypes() {
 }
 
 var threadName = "godot-go"
+
 //export TestDemoInit
 func TestDemoInit(p_get_proc_address unsafe.Pointer, p_library unsafe.Pointer, r_initialization unsafe.Pointer) bool {
-	if runtime.GOOS == "linux" {
-		// PR_SET_NAME is 15 on Linux
-		_, _, errno := syscall.Syscall6(syscall.SYS_PRCTL, syscall.PR_SET_NAME, uintptr(unsafe.Pointer(syscall.StringBytePtr(threadName))), 0, 0, 0, 0)
-		if errno != 0 {
-			fmt.Printf("Error setting thread name: %v\n", errno)
-		}
-	}
-
 	initObj := NewInitObject(
 		(ffi.GDExtensionInterfaceGetProcAddress)(p_get_proc_address),
 		(ffi.GDExtensionClassLibraryPtr)(p_library),

@@ -10,6 +10,8 @@ package ffi
 import "C"
 import (
 	"unsafe"
+
+	"github.com/godot-go/godot-go/pkg/constant"
 )
 
 func NewGDExtensionPropertyInfo(
@@ -23,15 +25,15 @@ func NewGDExtensionPropertyInfo(
 	// TODO: create StringName locally here
 	return (GDExtensionPropertyInfo)(C.GDExtensionPropertyInfo{
 		_type:       (C.GDExtensionVariantType)(propertyType),
-		name:        (C.GDExtensionStringNamePtr)(unsafe.Pointer(propertyName)),
-		class_name:  (C.GDExtensionStringNamePtr)(unsafe.Pointer(className)),
+		name:        (C.GDExtensionStringNamePtr)(propertyName),
+		class_name:  (C.GDExtensionStringNamePtr)(className),
 		hint:        (C.uint32_t)(hint),
-		hint_string: (C.GDExtensionStringPtr)(unsafe.Pointer(hintString)),
+		hint_string: (C.GDExtensionStringPtr)(hintString),
 		usage:       (C.uint32_t)(usage),
 	})
 }
 
-func (p *GDExtensionPropertyInfo) SetUsage(usage uint32) {
+func (p *GDExtensionPropertyInfo) SetUsage(usage constant.PropertyUsageFlags) {
 	typed := (*C.GDExtensionPropertyInfo)(p)
 	typed.usage = (C.uint32_t)(usage)
 }

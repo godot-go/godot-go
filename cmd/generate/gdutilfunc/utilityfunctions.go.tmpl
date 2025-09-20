@@ -53,19 +53,21 @@ func {{ camelCase $f.Name }}(
     {{ else -}}
     retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
     {{ end -}}
-
 	{{ else -}}
 	retPtr := (GDExtensionTypePtr)(nullptr)
 	{{- end }}
+	pnr.Pin(retPtr)
 	{{ if $f.Arguments -}}
 	{{ if $f.IsVararg -}}
 	sz := {{ len $f.Arguments }}
 	args := make([]GDExtensionConstTypePtr, sz + len(varargs))
 	{{ range $j, $arg := $f.Arguments -}}
 		args[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer({{ goEncoder (goArgumentType $arg.Type) }}.EncodeTypePtr({{ goArgumentName $arg.Name }})))
+		pnr.Pin(args[{{ $j }}])
 	{{ end -}}
 	for i := range varargs {
 		args[sz + i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
+		pnr.Pin(args[sz + i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
 	{{ else -}}
@@ -74,11 +76,15 @@ func {{ camelCase $f.Name }}(
 		(GDExtensionConstTypePtr)(unsafe.Pointer({{ goEncoder (goArgumentType $arg.Type) }}.EncodeTypePtr({{ goArgumentName $arg.Name }}))),
 	{{ end -}}
 	}
+	{{ range $j, $arg := $f.Arguments -}}
+		pnr.Pin(args[{{ $j }}])
+	{{ end -}}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
 	{{ end -}}
 	{{ else -}}
 	typePtrArgs := (*GDExtensionConstTypePtr)(nil)
 	{{ end -}}
+	pnr.Pin(typePtrArgs)
 	argCount := (int32)({{ len $f.Arguments }}{{ if $f.IsVararg -}} + len(varargs){{ end }})
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	{{- with $fnReturnType }}

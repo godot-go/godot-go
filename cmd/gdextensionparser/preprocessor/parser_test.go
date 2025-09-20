@@ -18,8 +18,14 @@ func TestPreprocessorParseHeaderFile(t *testing.T) {
 #include <test.h>
 
 #ifndef __cplusplus
+#include <stddef.h>
+#include <stdint.h>
+
 typedef uint32_t char32_t;
 typedef uint16_t char16_t;
+#else
+#include <cstddef>
+#include <cstdint>
 #endif
 
 #ifdef __cplusplus
@@ -46,8 +52,10 @@ typedef void *GDExtensionVariantPtr;
 	require.NotNil(t, ast.Directives[0].Ifndef.Directives[1].Include)
 	require.NotNil(t, ast.Directives[0].Ifndef.Directives[2].Ifndef)
 	require.Equal(t, "__cplusplus", ast.Directives[0].Ifndef.Directives[2].Ifndef.Name)
+	require.Len(t, ast.Directives[0].Ifndef.Directives[2].Ifndef.ElseDirectives, 2)
+	require.Equal(t, "cstddef", ast.Directives[0].Ifndef.Directives[2].Ifndef.ElseDirectives[0].Include.Name)
+	require.Equal(t, "cstdint", ast.Directives[0].Ifndef.Directives[2].Ifndef.ElseDirectives[1].Include.Name)
 	require.NotNil(t, ast.Directives[0].Ifndef.Directives[3].Ifdef)
-	require.Equal(t, "__cplusplus", ast.Directives[0].Ifndef.Directives[3].Ifdef.Name)
 	require.Len(t, ast.Directives[0].Ifndef.Directives[3].Ifdef.Directives, 1)
 	require.Equal(t, "extern \"C\" {\n", ast.Directives[0].Ifndef.Directives[3].Ifdef.Directives[0].Source)
 	require.Equal(t, "typedef void *GDExtensionVariantPtr;\n\n", ast.Directives[0].Ifndef.Directives[4].Source)
@@ -55,7 +63,7 @@ typedef void *GDExtensionVariantPtr;
 	require.Len(t, ast.Directives[0].Ifndef.Directives[5].Ifdef.Directives, 1)
 	require.Equal(t, "__cplusplus", ast.Directives[0].Ifndef.Directives[5].Ifdef.Name)
 	require.Equal(t, "}\n", ast.Directives[0].Ifndef.Directives[5].Ifdef.Directives[0].Source)
-	require.Equal(t, "\n\ntypedef uint32_t char32_t;\ntypedef uint16_t char16_t;\n\n\n\ntypedef void *GDExtensionVariantPtr;\n\n\n\n\n", ast.Eval(false))
+	require.Equal(t, "\n\n\n\ntypedef uint32_t char32_t;\ntypedef uint16_t char16_t;\n\n\n\ntypedef void *GDExtensionVariantPtr;\n\n\n\n\n", ast.Eval(false))
 }
 
 func TestParseCommentRegression(t *testing.T) {

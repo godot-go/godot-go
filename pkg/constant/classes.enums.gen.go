@@ -15,2592 +15,3075 @@ type AESContextMode int
 
 const (
 	AES_CONTEXT_MODE_MODE_ECB_ENCRYPT AESContextMode = 0
-	AES_CONTEXT_MODE_MODE_ECB_DECRYPT                = 1
-	AES_CONTEXT_MODE_MODE_CBC_ENCRYPT                = 2
-	AES_CONTEXT_MODE_MODE_CBC_DECRYPT                = 3
-	AES_CONTEXT_MODE_MODE_MAX                        = 4
+	AES_CONTEXT_MODE_MODE_ECB_DECRYPT AESContextMode = 1
+	AES_CONTEXT_MODE_MODE_CBC_ENCRYPT AESContextMode = 2
+	AES_CONTEXT_MODE_MODE_CBC_DECRYPT AESContextMode = 3
+	AES_CONTEXT_MODE_MODE_MAX         AESContextMode = 4
 )
 
 type AStarGrid2DHeuristic int
 
 const (
 	A_STAR_GRID_2_D_HEURISTIC_HEURISTIC_EUCLIDEAN AStarGrid2DHeuristic = 0
-	A_STAR_GRID_2_D_HEURISTIC_HEURISTIC_MANHATTAN                      = 1
-	A_STAR_GRID_2_D_HEURISTIC_HEURISTIC_OCTILE                         = 2
-	A_STAR_GRID_2_D_HEURISTIC_HEURISTIC_CHEBYSHEV                      = 3
-	A_STAR_GRID_2_D_HEURISTIC_HEURISTIC_MAX                            = 4
+	A_STAR_GRID_2_D_HEURISTIC_HEURISTIC_MANHATTAN AStarGrid2DHeuristic = 1
+	A_STAR_GRID_2_D_HEURISTIC_HEURISTIC_OCTILE    AStarGrid2DHeuristic = 2
+	A_STAR_GRID_2_D_HEURISTIC_HEURISTIC_CHEBYSHEV AStarGrid2DHeuristic = 3
+	A_STAR_GRID_2_D_HEURISTIC_HEURISTIC_MAX       AStarGrid2DHeuristic = 4
 )
 
 type AStarGrid2DDiagonalMode int
 
 const (
 	A_STAR_GRID_2_D_DIAGONAL_MODE_DIAGONAL_MODE_ALWAYS                AStarGrid2DDiagonalMode = 0
-	A_STAR_GRID_2_D_DIAGONAL_MODE_DIAGONAL_MODE_NEVER                                         = 1
-	A_STAR_GRID_2_D_DIAGONAL_MODE_DIAGONAL_MODE_AT_LEAST_ONE_WALKABLE                         = 2
-	A_STAR_GRID_2_D_DIAGONAL_MODE_DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES                          = 3
-	A_STAR_GRID_2_D_DIAGONAL_MODE_DIAGONAL_MODE_MAX                                           = 4
+	A_STAR_GRID_2_D_DIAGONAL_MODE_DIAGONAL_MODE_NEVER                 AStarGrid2DDiagonalMode = 1
+	A_STAR_GRID_2_D_DIAGONAL_MODE_DIAGONAL_MODE_AT_LEAST_ONE_WALKABLE AStarGrid2DDiagonalMode = 2
+	A_STAR_GRID_2_D_DIAGONAL_MODE_DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES  AStarGrid2DDiagonalMode = 3
+	A_STAR_GRID_2_D_DIAGONAL_MODE_DIAGONAL_MODE_MAX                   AStarGrid2DDiagonalMode = 4
 )
 
 type AStarGrid2DCellShape int
 
 const (
 	A_STAR_GRID_2_D_CELL_SHAPE_CELL_SHAPE_SQUARE          AStarGrid2DCellShape = 0
-	A_STAR_GRID_2_D_CELL_SHAPE_CELL_SHAPE_ISOMETRIC_RIGHT                      = 1
-	A_STAR_GRID_2_D_CELL_SHAPE_CELL_SHAPE_ISOMETRIC_DOWN                       = 2
-	A_STAR_GRID_2_D_CELL_SHAPE_CELL_SHAPE_MAX                                  = 3
+	A_STAR_GRID_2_D_CELL_SHAPE_CELL_SHAPE_ISOMETRIC_RIGHT AStarGrid2DCellShape = 1
+	A_STAR_GRID_2_D_CELL_SHAPE_CELL_SHAPE_ISOMETRIC_DOWN  AStarGrid2DCellShape = 2
+	A_STAR_GRID_2_D_CELL_SHAPE_CELL_SHAPE_MAX             AStarGrid2DCellShape = 3
 )
 
 type AnimationTrackType int
 
 const (
 	ANIMATION_TRACK_TYPE_TYPE_VALUE        AnimationTrackType = 0
-	ANIMATION_TRACK_TYPE_TYPE_POSITION_3_D                    = 1
-	ANIMATION_TRACK_TYPE_TYPE_ROTATION_3_D                    = 2
-	ANIMATION_TRACK_TYPE_TYPE_SCALE_3_D                       = 3
-	ANIMATION_TRACK_TYPE_TYPE_BLEND_SHAPE                     = 4
-	ANIMATION_TRACK_TYPE_TYPE_METHOD                          = 5
-	ANIMATION_TRACK_TYPE_TYPE_BEZIER                          = 6
-	ANIMATION_TRACK_TYPE_TYPE_AUDIO                           = 7
-	ANIMATION_TRACK_TYPE_TYPE_ANIMATION                       = 8
+	ANIMATION_TRACK_TYPE_TYPE_POSITION_3_D AnimationTrackType = 1
+	ANIMATION_TRACK_TYPE_TYPE_ROTATION_3_D AnimationTrackType = 2
+	ANIMATION_TRACK_TYPE_TYPE_SCALE_3_D    AnimationTrackType = 3
+	ANIMATION_TRACK_TYPE_TYPE_BLEND_SHAPE  AnimationTrackType = 4
+	ANIMATION_TRACK_TYPE_TYPE_METHOD       AnimationTrackType = 5
+	ANIMATION_TRACK_TYPE_TYPE_BEZIER       AnimationTrackType = 6
+	ANIMATION_TRACK_TYPE_TYPE_AUDIO        AnimationTrackType = 7
+	ANIMATION_TRACK_TYPE_TYPE_ANIMATION    AnimationTrackType = 8
 )
 
 type AnimationInterpolationType int
 
 const (
 	ANIMATION_INTERPOLATION_TYPE_INTERPOLATION_NEAREST      AnimationInterpolationType = 0
-	ANIMATION_INTERPOLATION_TYPE_INTERPOLATION_LINEAR                                  = 1
-	ANIMATION_INTERPOLATION_TYPE_INTERPOLATION_CUBIC                                   = 2
-	ANIMATION_INTERPOLATION_TYPE_INTERPOLATION_LINEAR_ANGLE                            = 3
-	ANIMATION_INTERPOLATION_TYPE_INTERPOLATION_CUBIC_ANGLE                             = 4
+	ANIMATION_INTERPOLATION_TYPE_INTERPOLATION_LINEAR       AnimationInterpolationType = 1
+	ANIMATION_INTERPOLATION_TYPE_INTERPOLATION_CUBIC        AnimationInterpolationType = 2
+	ANIMATION_INTERPOLATION_TYPE_INTERPOLATION_LINEAR_ANGLE AnimationInterpolationType = 3
+	ANIMATION_INTERPOLATION_TYPE_INTERPOLATION_CUBIC_ANGLE  AnimationInterpolationType = 4
 )
 
 type AnimationUpdateMode int
 
 const (
 	ANIMATION_UPDATE_MODE_UPDATE_CONTINUOUS AnimationUpdateMode = 0
-	ANIMATION_UPDATE_MODE_UPDATE_DISCRETE                       = 1
-	ANIMATION_UPDATE_MODE_UPDATE_CAPTURE                        = 2
+	ANIMATION_UPDATE_MODE_UPDATE_DISCRETE   AnimationUpdateMode = 1
+	ANIMATION_UPDATE_MODE_UPDATE_CAPTURE    AnimationUpdateMode = 2
 )
 
 type AnimationLoopMode int
 
 const (
 	ANIMATION_LOOP_MODE_LOOP_NONE     AnimationLoopMode = 0
-	ANIMATION_LOOP_MODE_LOOP_LINEAR                     = 1
-	ANIMATION_LOOP_MODE_LOOP_PINGPONG                   = 2
+	ANIMATION_LOOP_MODE_LOOP_LINEAR   AnimationLoopMode = 1
+	ANIMATION_LOOP_MODE_LOOP_PINGPONG AnimationLoopMode = 2
 )
 
 type AnimationLoopedFlag int
 
 const (
 	ANIMATION_LOOPED_FLAG_LOOPED_FLAG_NONE  AnimationLoopedFlag = 0
-	ANIMATION_LOOPED_FLAG_LOOPED_FLAG_END                       = 1
-	ANIMATION_LOOPED_FLAG_LOOPED_FLAG_START                     = 2
+	ANIMATION_LOOPED_FLAG_LOOPED_FLAG_END   AnimationLoopedFlag = 1
+	ANIMATION_LOOPED_FLAG_LOOPED_FLAG_START AnimationLoopedFlag = 2
 )
 
 type AnimationFindMode int
 
 const (
 	ANIMATION_FIND_MODE_FIND_MODE_NEAREST AnimationFindMode = 0
-	ANIMATION_FIND_MODE_FIND_MODE_APPROX                    = 1
-	ANIMATION_FIND_MODE_FIND_MODE_EXACT                     = 2
+	ANIMATION_FIND_MODE_FIND_MODE_APPROX  AnimationFindMode = 1
+	ANIMATION_FIND_MODE_FIND_MODE_EXACT   AnimationFindMode = 2
 )
 
 type AnimationMixerAnimationCallbackModeProcess int
 
 const (
 	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_PROCESS_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS AnimationMixerAnimationCallbackModeProcess = 0
-	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_PROCESS_ANIMATION_CALLBACK_MODE_PROCESS_IDLE                                               = 1
-	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_PROCESS_ANIMATION_CALLBACK_MODE_PROCESS_MANUAL                                             = 2
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_PROCESS_ANIMATION_CALLBACK_MODE_PROCESS_IDLE    AnimationMixerAnimationCallbackModeProcess = 1
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_PROCESS_ANIMATION_CALLBACK_MODE_PROCESS_MANUAL  AnimationMixerAnimationCallbackModeProcess = 2
 )
 
 type AnimationMixerAnimationCallbackModeMethod int
 
 const (
 	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_METHOD_ANIMATION_CALLBACK_MODE_METHOD_DEFERRED  AnimationMixerAnimationCallbackModeMethod = 0
-	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_METHOD_ANIMATION_CALLBACK_MODE_METHOD_IMMEDIATE                                           = 1
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_METHOD_ANIMATION_CALLBACK_MODE_METHOD_IMMEDIATE AnimationMixerAnimationCallbackModeMethod = 1
 )
 
 type AnimationMixerAnimationCallbackModeDiscrete int
 
 const (
 	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_DISCRETE_ANIMATION_CALLBACK_MODE_DISCRETE_DOMINANT         AnimationMixerAnimationCallbackModeDiscrete = 0
-	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_DISCRETE_ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE                                                    = 1
-	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_DISCRETE_ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS                                             = 2
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_DISCRETE_ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE        AnimationMixerAnimationCallbackModeDiscrete = 1
+	ANIMATION_MIXER_ANIMATION_CALLBACK_MODE_DISCRETE_ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS AnimationMixerAnimationCallbackModeDiscrete = 2
 )
 
 type AnimationNodeFilterAction int
 
 const (
 	ANIMATION_NODE_FILTER_ACTION_FILTER_IGNORE AnimationNodeFilterAction = 0
-	ANIMATION_NODE_FILTER_ACTION_FILTER_PASS                             = 1
-	ANIMATION_NODE_FILTER_ACTION_FILTER_STOP                             = 2
-	ANIMATION_NODE_FILTER_ACTION_FILTER_BLEND                            = 3
+	ANIMATION_NODE_FILTER_ACTION_FILTER_PASS   AnimationNodeFilterAction = 1
+	ANIMATION_NODE_FILTER_ACTION_FILTER_STOP   AnimationNodeFilterAction = 2
+	ANIMATION_NODE_FILTER_ACTION_FILTER_BLEND  AnimationNodeFilterAction = 3
 )
 
 type AnimationNodeAnimationPlayMode int
 
 const (
 	ANIMATION_NODE_ANIMATION_PLAY_MODE_PLAY_MODE_FORWARD  AnimationNodeAnimationPlayMode = 0
-	ANIMATION_NODE_ANIMATION_PLAY_MODE_PLAY_MODE_BACKWARD                                = 1
+	ANIMATION_NODE_ANIMATION_PLAY_MODE_PLAY_MODE_BACKWARD AnimationNodeAnimationPlayMode = 1
 )
 
 type AnimationNodeBlendSpace1DBlendMode int
 
 const (
 	ANIMATION_NODE_BLEND_SPACE_1_D_BLEND_MODE_BLEND_MODE_INTERPOLATED   AnimationNodeBlendSpace1DBlendMode = 0
-	ANIMATION_NODE_BLEND_SPACE_1_D_BLEND_MODE_BLEND_MODE_DISCRETE                                          = 1
-	ANIMATION_NODE_BLEND_SPACE_1_D_BLEND_MODE_BLEND_MODE_DISCRETE_CARRY                                    = 2
+	ANIMATION_NODE_BLEND_SPACE_1_D_BLEND_MODE_BLEND_MODE_DISCRETE       AnimationNodeBlendSpace1DBlendMode = 1
+	ANIMATION_NODE_BLEND_SPACE_1_D_BLEND_MODE_BLEND_MODE_DISCRETE_CARRY AnimationNodeBlendSpace1DBlendMode = 2
 )
 
 type AnimationNodeBlendSpace2DBlendMode int
 
 const (
 	ANIMATION_NODE_BLEND_SPACE_2_D_BLEND_MODE_BLEND_MODE_INTERPOLATED   AnimationNodeBlendSpace2DBlendMode = 0
-	ANIMATION_NODE_BLEND_SPACE_2_D_BLEND_MODE_BLEND_MODE_DISCRETE                                          = 1
-	ANIMATION_NODE_BLEND_SPACE_2_D_BLEND_MODE_BLEND_MODE_DISCRETE_CARRY                                    = 2
+	ANIMATION_NODE_BLEND_SPACE_2_D_BLEND_MODE_BLEND_MODE_DISCRETE       AnimationNodeBlendSpace2DBlendMode = 1
+	ANIMATION_NODE_BLEND_SPACE_2_D_BLEND_MODE_BLEND_MODE_DISCRETE_CARRY AnimationNodeBlendSpace2DBlendMode = 2
 )
 
 type AnimationNodeOneShotOneShotRequest int
 
 const (
 	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_NONE     AnimationNodeOneShotOneShotRequest = 0
-	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_FIRE                                        = 1
-	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_ABORT                                       = 2
-	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_FADE_OUT                                    = 3
+	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_FIRE     AnimationNodeOneShotOneShotRequest = 1
+	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_ABORT    AnimationNodeOneShotOneShotRequest = 2
+	ANIMATION_NODE_ONE_SHOT_ONE_SHOT_REQUEST_ONE_SHOT_REQUEST_FADE_OUT AnimationNodeOneShotOneShotRequest = 3
 )
 
 type AnimationNodeOneShotMixMode int
 
 const (
 	ANIMATION_NODE_ONE_SHOT_MIX_MODE_MIX_MODE_BLEND AnimationNodeOneShotMixMode = 0
-	ANIMATION_NODE_ONE_SHOT_MIX_MODE_MIX_MODE_ADD                               = 1
+	ANIMATION_NODE_ONE_SHOT_MIX_MODE_MIX_MODE_ADD   AnimationNodeOneShotMixMode = 1
 )
 
 type AnimationNodeStateMachineStateMachineType int
 
 const (
 	ANIMATION_NODE_STATE_MACHINE_STATE_MACHINE_TYPE_STATE_MACHINE_TYPE_ROOT    AnimationNodeStateMachineStateMachineType = 0
-	ANIMATION_NODE_STATE_MACHINE_STATE_MACHINE_TYPE_STATE_MACHINE_TYPE_NESTED                                            = 1
-	ANIMATION_NODE_STATE_MACHINE_STATE_MACHINE_TYPE_STATE_MACHINE_TYPE_GROUPED                                           = 2
+	ANIMATION_NODE_STATE_MACHINE_STATE_MACHINE_TYPE_STATE_MACHINE_TYPE_NESTED  AnimationNodeStateMachineStateMachineType = 1
+	ANIMATION_NODE_STATE_MACHINE_STATE_MACHINE_TYPE_STATE_MACHINE_TYPE_GROUPED AnimationNodeStateMachineStateMachineType = 2
 )
 
 type AnimationNodeStateMachineTransitionSwitchMode int
 
 const (
 	ANIMATION_NODE_STATE_MACHINE_TRANSITION_SWITCH_MODE_SWITCH_MODE_IMMEDIATE AnimationNodeStateMachineTransitionSwitchMode = 0
-	ANIMATION_NODE_STATE_MACHINE_TRANSITION_SWITCH_MODE_SWITCH_MODE_SYNC                                                    = 1
-	ANIMATION_NODE_STATE_MACHINE_TRANSITION_SWITCH_MODE_SWITCH_MODE_AT_END                                                  = 2
+	ANIMATION_NODE_STATE_MACHINE_TRANSITION_SWITCH_MODE_SWITCH_MODE_SYNC      AnimationNodeStateMachineTransitionSwitchMode = 1
+	ANIMATION_NODE_STATE_MACHINE_TRANSITION_SWITCH_MODE_SWITCH_MODE_AT_END    AnimationNodeStateMachineTransitionSwitchMode = 2
 )
 
 type AnimationNodeStateMachineTransitionAdvanceMode int
 
 const (
 	ANIMATION_NODE_STATE_MACHINE_TRANSITION_ADVANCE_MODE_ADVANCE_MODE_DISABLED AnimationNodeStateMachineTransitionAdvanceMode = 0
-	ANIMATION_NODE_STATE_MACHINE_TRANSITION_ADVANCE_MODE_ADVANCE_MODE_ENABLED                                                 = 1
-	ANIMATION_NODE_STATE_MACHINE_TRANSITION_ADVANCE_MODE_ADVANCE_MODE_AUTO                                                    = 2
+	ANIMATION_NODE_STATE_MACHINE_TRANSITION_ADVANCE_MODE_ADVANCE_MODE_ENABLED  AnimationNodeStateMachineTransitionAdvanceMode = 1
+	ANIMATION_NODE_STATE_MACHINE_TRANSITION_ADVANCE_MODE_ADVANCE_MODE_AUTO     AnimationNodeStateMachineTransitionAdvanceMode = 2
 )
 
 type AnimationPlayerAnimationProcessCallback int
 
 const (
 	ANIMATION_PLAYER_ANIMATION_PROCESS_CALLBACK_ANIMATION_PROCESS_PHYSICS AnimationPlayerAnimationProcessCallback = 0
-	ANIMATION_PLAYER_ANIMATION_PROCESS_CALLBACK_ANIMATION_PROCESS_IDLE                                            = 1
-	ANIMATION_PLAYER_ANIMATION_PROCESS_CALLBACK_ANIMATION_PROCESS_MANUAL                                          = 2
+	ANIMATION_PLAYER_ANIMATION_PROCESS_CALLBACK_ANIMATION_PROCESS_IDLE    AnimationPlayerAnimationProcessCallback = 1
+	ANIMATION_PLAYER_ANIMATION_PROCESS_CALLBACK_ANIMATION_PROCESS_MANUAL  AnimationPlayerAnimationProcessCallback = 2
 )
 
 type AnimationPlayerAnimationMethodCallMode int
 
 const (
 	ANIMATION_PLAYER_ANIMATION_METHOD_CALL_MODE_ANIMATION_METHOD_CALL_DEFERRED  AnimationPlayerAnimationMethodCallMode = 0
-	ANIMATION_PLAYER_ANIMATION_METHOD_CALL_MODE_ANIMATION_METHOD_CALL_IMMEDIATE                                        = 1
+	ANIMATION_PLAYER_ANIMATION_METHOD_CALL_MODE_ANIMATION_METHOD_CALL_IMMEDIATE AnimationPlayerAnimationMethodCallMode = 1
 )
 
 type AnimationTreeAnimationProcessCallback int
 
 const (
 	ANIMATION_TREE_ANIMATION_PROCESS_CALLBACK_ANIMATION_PROCESS_PHYSICS AnimationTreeAnimationProcessCallback = 0
-	ANIMATION_TREE_ANIMATION_PROCESS_CALLBACK_ANIMATION_PROCESS_IDLE                                          = 1
-	ANIMATION_TREE_ANIMATION_PROCESS_CALLBACK_ANIMATION_PROCESS_MANUAL                                        = 2
+	ANIMATION_TREE_ANIMATION_PROCESS_CALLBACK_ANIMATION_PROCESS_IDLE    AnimationTreeAnimationProcessCallback = 1
+	ANIMATION_TREE_ANIMATION_PROCESS_CALLBACK_ANIMATION_PROCESS_MANUAL  AnimationTreeAnimationProcessCallback = 2
 )
 
 type Area2DSpaceOverride int
 
 const (
 	AREA_2_D_SPACE_OVERRIDE_SPACE_OVERRIDE_DISABLED        Area2DSpaceOverride = 0
-	AREA_2_D_SPACE_OVERRIDE_SPACE_OVERRIDE_COMBINE                             = 1
-	AREA_2_D_SPACE_OVERRIDE_SPACE_OVERRIDE_COMBINE_REPLACE                     = 2
-	AREA_2_D_SPACE_OVERRIDE_SPACE_OVERRIDE_REPLACE                             = 3
-	AREA_2_D_SPACE_OVERRIDE_SPACE_OVERRIDE_REPLACE_COMBINE                     = 4
+	AREA_2_D_SPACE_OVERRIDE_SPACE_OVERRIDE_COMBINE         Area2DSpaceOverride = 1
+	AREA_2_D_SPACE_OVERRIDE_SPACE_OVERRIDE_COMBINE_REPLACE Area2DSpaceOverride = 2
+	AREA_2_D_SPACE_OVERRIDE_SPACE_OVERRIDE_REPLACE         Area2DSpaceOverride = 3
+	AREA_2_D_SPACE_OVERRIDE_SPACE_OVERRIDE_REPLACE_COMBINE Area2DSpaceOverride = 4
 )
 
 type Area3DSpaceOverride int
 
 const (
 	AREA_3_D_SPACE_OVERRIDE_SPACE_OVERRIDE_DISABLED        Area3DSpaceOverride = 0
-	AREA_3_D_SPACE_OVERRIDE_SPACE_OVERRIDE_COMBINE                             = 1
-	AREA_3_D_SPACE_OVERRIDE_SPACE_OVERRIDE_COMBINE_REPLACE                     = 2
-	AREA_3_D_SPACE_OVERRIDE_SPACE_OVERRIDE_REPLACE                             = 3
-	AREA_3_D_SPACE_OVERRIDE_SPACE_OVERRIDE_REPLACE_COMBINE                     = 4
+	AREA_3_D_SPACE_OVERRIDE_SPACE_OVERRIDE_COMBINE         Area3DSpaceOverride = 1
+	AREA_3_D_SPACE_OVERRIDE_SPACE_OVERRIDE_COMBINE_REPLACE Area3DSpaceOverride = 2
+	AREA_3_D_SPACE_OVERRIDE_SPACE_OVERRIDE_REPLACE         Area3DSpaceOverride = 3
+	AREA_3_D_SPACE_OVERRIDE_SPACE_OVERRIDE_REPLACE_COMBINE Area3DSpaceOverride = 4
 )
 
 type AspectRatioContainerStretchMode int
 
 const (
 	ASPECT_RATIO_CONTAINER_STRETCH_MODE_STRETCH_WIDTH_CONTROLS_HEIGHT AspectRatioContainerStretchMode = 0
-	ASPECT_RATIO_CONTAINER_STRETCH_MODE_STRETCH_HEIGHT_CONTROLS_WIDTH                                 = 1
-	ASPECT_RATIO_CONTAINER_STRETCH_MODE_STRETCH_FIT                                                   = 2
-	ASPECT_RATIO_CONTAINER_STRETCH_MODE_STRETCH_COVER                                                 = 3
+	ASPECT_RATIO_CONTAINER_STRETCH_MODE_STRETCH_HEIGHT_CONTROLS_WIDTH AspectRatioContainerStretchMode = 1
+	ASPECT_RATIO_CONTAINER_STRETCH_MODE_STRETCH_FIT                   AspectRatioContainerStretchMode = 2
+	ASPECT_RATIO_CONTAINER_STRETCH_MODE_STRETCH_COVER                 AspectRatioContainerStretchMode = 3
 )
 
 type AspectRatioContainerAlignmentMode int
 
 const (
 	ASPECT_RATIO_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_BEGIN  AspectRatioContainerAlignmentMode = 0
-	ASPECT_RATIO_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_CENTER                                   = 1
-	ASPECT_RATIO_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_END                                      = 2
+	ASPECT_RATIO_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_CENTER AspectRatioContainerAlignmentMode = 1
+	ASPECT_RATIO_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_END    AspectRatioContainerAlignmentMode = 2
 )
 
 type AudioEffectDistortionMode int
 
 const (
 	AUDIO_EFFECT_DISTORTION_MODE_MODE_CLIP      AudioEffectDistortionMode = 0
-	AUDIO_EFFECT_DISTORTION_MODE_MODE_ATAN                                = 1
-	AUDIO_EFFECT_DISTORTION_MODE_MODE_LOFI                                = 2
-	AUDIO_EFFECT_DISTORTION_MODE_MODE_OVERDRIVE                           = 3
-	AUDIO_EFFECT_DISTORTION_MODE_MODE_WAVESHAPE                           = 4
+	AUDIO_EFFECT_DISTORTION_MODE_MODE_ATAN      AudioEffectDistortionMode = 1
+	AUDIO_EFFECT_DISTORTION_MODE_MODE_LOFI      AudioEffectDistortionMode = 2
+	AUDIO_EFFECT_DISTORTION_MODE_MODE_OVERDRIVE AudioEffectDistortionMode = 3
+	AUDIO_EFFECT_DISTORTION_MODE_MODE_WAVESHAPE AudioEffectDistortionMode = 4
 )
 
 type AudioEffectFilterFilterDB int
 
 const (
 	AUDIO_EFFECT_FILTER_FILTER_DB_FILTER_6_DB  AudioEffectFilterFilterDB = 0
-	AUDIO_EFFECT_FILTER_FILTER_DB_FILTER_12_DB                           = 1
-	AUDIO_EFFECT_FILTER_FILTER_DB_FILTER_18_DB                           = 2
-	AUDIO_EFFECT_FILTER_FILTER_DB_FILTER_24_DB                           = 3
+	AUDIO_EFFECT_FILTER_FILTER_DB_FILTER_12_DB AudioEffectFilterFilterDB = 1
+	AUDIO_EFFECT_FILTER_FILTER_DB_FILTER_18_DB AudioEffectFilterFilterDB = 2
+	AUDIO_EFFECT_FILTER_FILTER_DB_FILTER_24_DB AudioEffectFilterFilterDB = 3
 )
 
 type AudioEffectPitchShiftFFTSize int
 
 const (
 	AUDIO_EFFECT_PITCH_SHIFT_FFT_SIZE_FFT_SIZE_256  AudioEffectPitchShiftFFTSize = 0
-	AUDIO_EFFECT_PITCH_SHIFT_FFT_SIZE_FFT_SIZE_512                               = 1
-	AUDIO_EFFECT_PITCH_SHIFT_FFT_SIZE_FFT_SIZE_1024                              = 2
-	AUDIO_EFFECT_PITCH_SHIFT_FFT_SIZE_FFT_SIZE_2048                              = 3
-	AUDIO_EFFECT_PITCH_SHIFT_FFT_SIZE_FFT_SIZE_4096                              = 4
-	AUDIO_EFFECT_PITCH_SHIFT_FFT_SIZE_FFT_SIZE_MAX                               = 5
+	AUDIO_EFFECT_PITCH_SHIFT_FFT_SIZE_FFT_SIZE_512  AudioEffectPitchShiftFFTSize = 1
+	AUDIO_EFFECT_PITCH_SHIFT_FFT_SIZE_FFT_SIZE_1024 AudioEffectPitchShiftFFTSize = 2
+	AUDIO_EFFECT_PITCH_SHIFT_FFT_SIZE_FFT_SIZE_2048 AudioEffectPitchShiftFFTSize = 3
+	AUDIO_EFFECT_PITCH_SHIFT_FFT_SIZE_FFT_SIZE_4096 AudioEffectPitchShiftFFTSize = 4
+	AUDIO_EFFECT_PITCH_SHIFT_FFT_SIZE_FFT_SIZE_MAX  AudioEffectPitchShiftFFTSize = 5
 )
 
 type AudioEffectSpectrumAnalyzerFFTSize int
 
 const (
 	AUDIO_EFFECT_SPECTRUM_ANALYZER_FFT_SIZE_FFT_SIZE_256  AudioEffectSpectrumAnalyzerFFTSize = 0
-	AUDIO_EFFECT_SPECTRUM_ANALYZER_FFT_SIZE_FFT_SIZE_512                                     = 1
-	AUDIO_EFFECT_SPECTRUM_ANALYZER_FFT_SIZE_FFT_SIZE_1024                                    = 2
-	AUDIO_EFFECT_SPECTRUM_ANALYZER_FFT_SIZE_FFT_SIZE_2048                                    = 3
-	AUDIO_EFFECT_SPECTRUM_ANALYZER_FFT_SIZE_FFT_SIZE_4096                                    = 4
-	AUDIO_EFFECT_SPECTRUM_ANALYZER_FFT_SIZE_FFT_SIZE_MAX                                     = 5
+	AUDIO_EFFECT_SPECTRUM_ANALYZER_FFT_SIZE_FFT_SIZE_512  AudioEffectSpectrumAnalyzerFFTSize = 1
+	AUDIO_EFFECT_SPECTRUM_ANALYZER_FFT_SIZE_FFT_SIZE_1024 AudioEffectSpectrumAnalyzerFFTSize = 2
+	AUDIO_EFFECT_SPECTRUM_ANALYZER_FFT_SIZE_FFT_SIZE_2048 AudioEffectSpectrumAnalyzerFFTSize = 3
+	AUDIO_EFFECT_SPECTRUM_ANALYZER_FFT_SIZE_FFT_SIZE_4096 AudioEffectSpectrumAnalyzerFFTSize = 4
+	AUDIO_EFFECT_SPECTRUM_ANALYZER_FFT_SIZE_FFT_SIZE_MAX  AudioEffectSpectrumAnalyzerFFTSize = 5
 )
 
 type AudioEffectSpectrumAnalyzerInstanceMagnitudeMode int
 
 const (
 	AUDIO_EFFECT_SPECTRUM_ANALYZER_INSTANCE_MAGNITUDE_MODE_MAGNITUDE_AVERAGE AudioEffectSpectrumAnalyzerInstanceMagnitudeMode = 0
-	AUDIO_EFFECT_SPECTRUM_ANALYZER_INSTANCE_MAGNITUDE_MODE_MAGNITUDE_MAX                                                      = 1
+	AUDIO_EFFECT_SPECTRUM_ANALYZER_INSTANCE_MAGNITUDE_MODE_MAGNITUDE_MAX     AudioEffectSpectrumAnalyzerInstanceMagnitudeMode = 1
+)
+
+type AudioListener3DDopplerTracking int
+
+const (
+	AUDIO_LISTENER_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_DISABLED     AudioListener3DDopplerTracking = 0
+	AUDIO_LISTENER_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_IDLE_STEP    AudioListener3DDopplerTracking = 1
+	AUDIO_LISTENER_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_PHYSICS_STEP AudioListener3DDopplerTracking = 2
 )
 
 type AudioServerSpeakerMode int
 
 const (
 	AUDIO_SERVER_SPEAKER_MODE_SPEAKER_MODE_STEREO AudioServerSpeakerMode = 0
-	AUDIO_SERVER_SPEAKER_MODE_SPEAKER_SURROUND_31                        = 1
-	AUDIO_SERVER_SPEAKER_MODE_SPEAKER_SURROUND_51                        = 2
-	AUDIO_SERVER_SPEAKER_MODE_SPEAKER_SURROUND_71                        = 3
+	AUDIO_SERVER_SPEAKER_MODE_SPEAKER_SURROUND_31 AudioServerSpeakerMode = 1
+	AUDIO_SERVER_SPEAKER_MODE_SPEAKER_SURROUND_51 AudioServerSpeakerMode = 2
+	AUDIO_SERVER_SPEAKER_MODE_SPEAKER_SURROUND_71 AudioServerSpeakerMode = 3
 )
 
 type AudioServerPlaybackType int
 
 const (
 	AUDIO_SERVER_PLAYBACK_TYPE_PLAYBACK_TYPE_DEFAULT AudioServerPlaybackType = 0
-	AUDIO_SERVER_PLAYBACK_TYPE_PLAYBACK_TYPE_STREAM                          = 1
-	AUDIO_SERVER_PLAYBACK_TYPE_PLAYBACK_TYPE_SAMPLE                          = 2
-	AUDIO_SERVER_PLAYBACK_TYPE_PLAYBACK_TYPE_MAX                             = 3
+	AUDIO_SERVER_PLAYBACK_TYPE_PLAYBACK_TYPE_STREAM  AudioServerPlaybackType = 1
+	AUDIO_SERVER_PLAYBACK_TYPE_PLAYBACK_TYPE_SAMPLE  AudioServerPlaybackType = 2
+	AUDIO_SERVER_PLAYBACK_TYPE_PLAYBACK_TYPE_MAX     AudioServerPlaybackType = 3
+)
+
+type AudioStreamGeneratorAudioStreamGeneratorMixRate int
+
+const (
+	AUDIO_STREAM_GENERATOR_AUDIO_STREAM_GENERATOR_MIX_RATE_MIX_RATE_OUTPUT AudioStreamGeneratorAudioStreamGeneratorMixRate = 0
+	AUDIO_STREAM_GENERATOR_AUDIO_STREAM_GENERATOR_MIX_RATE_MIX_RATE_INPUT  AudioStreamGeneratorAudioStreamGeneratorMixRate = 1
+	AUDIO_STREAM_GENERATOR_AUDIO_STREAM_GENERATOR_MIX_RATE_MIX_RATE_CUSTOM AudioStreamGeneratorAudioStreamGeneratorMixRate = 2
+	AUDIO_STREAM_GENERATOR_AUDIO_STREAM_GENERATOR_MIX_RATE_MIX_RATE_MAX    AudioStreamGeneratorAudioStreamGeneratorMixRate = 3
+)
+
+type AudioStreamInteractiveTransitionFromTime int
+
+const (
+	AUDIO_STREAM_INTERACTIVE_TRANSITION_FROM_TIME_TRANSITION_FROM_TIME_IMMEDIATE AudioStreamInteractiveTransitionFromTime = 0
+	AUDIO_STREAM_INTERACTIVE_TRANSITION_FROM_TIME_TRANSITION_FROM_TIME_NEXT_BEAT AudioStreamInteractiveTransitionFromTime = 1
+	AUDIO_STREAM_INTERACTIVE_TRANSITION_FROM_TIME_TRANSITION_FROM_TIME_NEXT_BAR  AudioStreamInteractiveTransitionFromTime = 2
+	AUDIO_STREAM_INTERACTIVE_TRANSITION_FROM_TIME_TRANSITION_FROM_TIME_END       AudioStreamInteractiveTransitionFromTime = 3
+)
+
+type AudioStreamInteractiveTransitionToTime int
+
+const (
+	AUDIO_STREAM_INTERACTIVE_TRANSITION_TO_TIME_TRANSITION_TO_TIME_SAME_POSITION AudioStreamInteractiveTransitionToTime = 0
+	AUDIO_STREAM_INTERACTIVE_TRANSITION_TO_TIME_TRANSITION_TO_TIME_START         AudioStreamInteractiveTransitionToTime = 1
+)
+
+type AudioStreamInteractiveFadeMode int
+
+const (
+	AUDIO_STREAM_INTERACTIVE_FADE_MODE_FADE_DISABLED  AudioStreamInteractiveFadeMode = 0
+	AUDIO_STREAM_INTERACTIVE_FADE_MODE_FADE_IN        AudioStreamInteractiveFadeMode = 1
+	AUDIO_STREAM_INTERACTIVE_FADE_MODE_FADE_OUT       AudioStreamInteractiveFadeMode = 2
+	AUDIO_STREAM_INTERACTIVE_FADE_MODE_FADE_CROSS     AudioStreamInteractiveFadeMode = 3
+	AUDIO_STREAM_INTERACTIVE_FADE_MODE_FADE_AUTOMATIC AudioStreamInteractiveFadeMode = 4
+)
+
+type AudioStreamInteractiveAutoAdvanceMode int
+
+const (
+	AUDIO_STREAM_INTERACTIVE_AUTO_ADVANCE_MODE_AUTO_ADVANCE_DISABLED       AudioStreamInteractiveAutoAdvanceMode = 0
+	AUDIO_STREAM_INTERACTIVE_AUTO_ADVANCE_MODE_AUTO_ADVANCE_ENABLED        AudioStreamInteractiveAutoAdvanceMode = 1
+	AUDIO_STREAM_INTERACTIVE_AUTO_ADVANCE_MODE_AUTO_ADVANCE_RETURN_TO_HOLD AudioStreamInteractiveAutoAdvanceMode = 2
 )
 
 type AudioStreamPlayerMixTarget int
 
 const (
 	AUDIO_STREAM_PLAYER_MIX_TARGET_MIX_TARGET_STEREO   AudioStreamPlayerMixTarget = 0
-	AUDIO_STREAM_PLAYER_MIX_TARGET_MIX_TARGET_SURROUND                            = 1
-	AUDIO_STREAM_PLAYER_MIX_TARGET_MIX_TARGET_CENTER                              = 2
+	AUDIO_STREAM_PLAYER_MIX_TARGET_MIX_TARGET_SURROUND AudioStreamPlayerMixTarget = 1
+	AUDIO_STREAM_PLAYER_MIX_TARGET_MIX_TARGET_CENTER   AudioStreamPlayerMixTarget = 2
 )
 
 type AudioStreamPlayer3DAttenuationModel int
 
 const (
 	AUDIO_STREAM_PLAYER_3_D_ATTENUATION_MODEL_ATTENUATION_INVERSE_DISTANCE        AudioStreamPlayer3DAttenuationModel = 0
-	AUDIO_STREAM_PLAYER_3_D_ATTENUATION_MODEL_ATTENUATION_INVERSE_SQUARE_DISTANCE                                     = 1
-	AUDIO_STREAM_PLAYER_3_D_ATTENUATION_MODEL_ATTENUATION_LOGARITHMIC                                                 = 2
-	AUDIO_STREAM_PLAYER_3_D_ATTENUATION_MODEL_ATTENUATION_DISABLED                                                    = 3
+	AUDIO_STREAM_PLAYER_3_D_ATTENUATION_MODEL_ATTENUATION_INVERSE_SQUARE_DISTANCE AudioStreamPlayer3DAttenuationModel = 1
+	AUDIO_STREAM_PLAYER_3_D_ATTENUATION_MODEL_ATTENUATION_LOGARITHMIC             AudioStreamPlayer3DAttenuationModel = 2
+	AUDIO_STREAM_PLAYER_3_D_ATTENUATION_MODEL_ATTENUATION_DISABLED                AudioStreamPlayer3DAttenuationModel = 3
 )
 
 type AudioStreamPlayer3DDopplerTracking int
 
 const (
 	AUDIO_STREAM_PLAYER_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_DISABLED     AudioStreamPlayer3DDopplerTracking = 0
-	AUDIO_STREAM_PLAYER_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_IDLE_STEP                                       = 1
-	AUDIO_STREAM_PLAYER_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_PHYSICS_STEP                                    = 2
+	AUDIO_STREAM_PLAYER_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_IDLE_STEP    AudioStreamPlayer3DDopplerTracking = 1
+	AUDIO_STREAM_PLAYER_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_PHYSICS_STEP AudioStreamPlayer3DDopplerTracking = 2
 )
 
 type AudioStreamRandomizerPlaybackMode int
 
 const (
 	AUDIO_STREAM_RANDOMIZER_PLAYBACK_MODE_PLAYBACK_RANDOM_NO_REPEATS AudioStreamRandomizerPlaybackMode = 0
-	AUDIO_STREAM_RANDOMIZER_PLAYBACK_MODE_PLAYBACK_RANDOM                                              = 1
-	AUDIO_STREAM_RANDOMIZER_PLAYBACK_MODE_PLAYBACK_SEQUENTIAL                                          = 2
+	AUDIO_STREAM_RANDOMIZER_PLAYBACK_MODE_PLAYBACK_RANDOM            AudioStreamRandomizerPlaybackMode = 1
+	AUDIO_STREAM_RANDOMIZER_PLAYBACK_MODE_PLAYBACK_SEQUENTIAL        AudioStreamRandomizerPlaybackMode = 2
 )
 
 type AudioStreamWAVFormat int
 
 const (
 	AUDIO_STREAM_WAV_FORMAT_FORMAT_8_BITS    AudioStreamWAVFormat = 0
-	AUDIO_STREAM_WAV_FORMAT_FORMAT_16_BITS                        = 1
-	AUDIO_STREAM_WAV_FORMAT_FORMAT_IMA_ADPCM                      = 2
-	AUDIO_STREAM_WAV_FORMAT_FORMAT_QOA                            = 3
+	AUDIO_STREAM_WAV_FORMAT_FORMAT_16_BITS   AudioStreamWAVFormat = 1
+	AUDIO_STREAM_WAV_FORMAT_FORMAT_IMA_ADPCM AudioStreamWAVFormat = 2
+	AUDIO_STREAM_WAV_FORMAT_FORMAT_QOA       AudioStreamWAVFormat = 3
 )
 
 type AudioStreamWAVLoopMode int
 
 const (
 	AUDIO_STREAM_WAV_LOOP_MODE_LOOP_DISABLED AudioStreamWAVLoopMode = 0
-	AUDIO_STREAM_WAV_LOOP_MODE_LOOP_FORWARD                         = 1
-	AUDIO_STREAM_WAV_LOOP_MODE_LOOP_PINGPONG                        = 2
-	AUDIO_STREAM_WAV_LOOP_MODE_LOOP_BACKWARD                        = 3
+	AUDIO_STREAM_WAV_LOOP_MODE_LOOP_FORWARD  AudioStreamWAVLoopMode = 1
+	AUDIO_STREAM_WAV_LOOP_MODE_LOOP_PINGPONG AudioStreamWAVLoopMode = 2
+	AUDIO_STREAM_WAV_LOOP_MODE_LOOP_BACKWARD AudioStreamWAVLoopMode = 3
 )
 
 type BackBufferCopyCopyMode int
 
 const (
 	BACK_BUFFER_COPY_COPY_MODE_COPY_MODE_DISABLED BackBufferCopyCopyMode = 0
-	BACK_BUFFER_COPY_COPY_MODE_COPY_MODE_RECT                            = 1
-	BACK_BUFFER_COPY_COPY_MODE_COPY_MODE_VIEWPORT                        = 2
+	BACK_BUFFER_COPY_COPY_MODE_COPY_MODE_RECT     BackBufferCopyCopyMode = 1
+	BACK_BUFFER_COPY_COPY_MODE_COPY_MODE_VIEWPORT BackBufferCopyCopyMode = 2
 )
 
 type BaseButtonDrawMode int
 
 const (
 	BASE_BUTTON_DRAW_MODE_DRAW_NORMAL        BaseButtonDrawMode = 0
-	BASE_BUTTON_DRAW_MODE_DRAW_PRESSED                          = 1
-	BASE_BUTTON_DRAW_MODE_DRAW_HOVER                            = 2
-	BASE_BUTTON_DRAW_MODE_DRAW_DISABLED                         = 3
-	BASE_BUTTON_DRAW_MODE_DRAW_HOVER_PRESSED                    = 4
+	BASE_BUTTON_DRAW_MODE_DRAW_PRESSED       BaseButtonDrawMode = 1
+	BASE_BUTTON_DRAW_MODE_DRAW_HOVER         BaseButtonDrawMode = 2
+	BASE_BUTTON_DRAW_MODE_DRAW_DISABLED      BaseButtonDrawMode = 3
+	BASE_BUTTON_DRAW_MODE_DRAW_HOVER_PRESSED BaseButtonDrawMode = 4
 )
 
 type BaseButtonActionMode int
 
 const (
 	BASE_BUTTON_ACTION_MODE_ACTION_MODE_BUTTON_PRESS   BaseButtonActionMode = 0
-	BASE_BUTTON_ACTION_MODE_ACTION_MODE_BUTTON_RELEASE                      = 1
+	BASE_BUTTON_ACTION_MODE_ACTION_MODE_BUTTON_RELEASE BaseButtonActionMode = 1
 )
 
 type BaseMaterial3DTextureParam int
 
 const (
 	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_ALBEDO                   BaseMaterial3DTextureParam = 0
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_METALLIC                                            = 1
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_ROUGHNESS                                           = 2
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_EMISSION                                            = 3
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_NORMAL                                              = 4
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_RIM                                                 = 5
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_CLEARCOAT                                           = 6
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_FLOWMAP                                             = 7
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_AMBIENT_OCCLUSION                                   = 8
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_HEIGHTMAP                                           = 9
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_SUBSURFACE_SCATTERING                               = 10
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_SUBSURFACE_TRANSMITTANCE                            = 11
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_BACKLIGHT                                           = 12
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_REFRACTION                                          = 13
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_DETAIL_MASK                                         = 14
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_DETAIL_ALBEDO                                       = 15
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_DETAIL_NORMAL                                       = 16
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_ORM                                                 = 17
-	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_MAX                                                 = 18
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_METALLIC                 BaseMaterial3DTextureParam = 1
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_ROUGHNESS                BaseMaterial3DTextureParam = 2
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_EMISSION                 BaseMaterial3DTextureParam = 3
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_NORMAL                   BaseMaterial3DTextureParam = 4
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_BENT_NORMAL              BaseMaterial3DTextureParam = 18
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_RIM                      BaseMaterial3DTextureParam = 5
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_CLEARCOAT                BaseMaterial3DTextureParam = 6
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_FLOWMAP                  BaseMaterial3DTextureParam = 7
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_AMBIENT_OCCLUSION        BaseMaterial3DTextureParam = 8
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_HEIGHTMAP                BaseMaterial3DTextureParam = 9
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_SUBSURFACE_SCATTERING    BaseMaterial3DTextureParam = 10
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_SUBSURFACE_TRANSMITTANCE BaseMaterial3DTextureParam = 11
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_BACKLIGHT                BaseMaterial3DTextureParam = 12
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_REFRACTION               BaseMaterial3DTextureParam = 13
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_DETAIL_MASK              BaseMaterial3DTextureParam = 14
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_DETAIL_ALBEDO            BaseMaterial3DTextureParam = 15
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_DETAIL_NORMAL            BaseMaterial3DTextureParam = 16
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_ORM                      BaseMaterial3DTextureParam = 17
+	BASE_MATERIAL_3_D_TEXTURE_PARAM_TEXTURE_MAX                      BaseMaterial3DTextureParam = 19
 )
 
 type BaseMaterial3DTextureFilter int
 
 const (
 	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_NEAREST                          BaseMaterial3DTextureFilter = 0
-	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR                                                       = 1
-	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS                                         = 2
-	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS                                          = 3
-	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS_ANISOTROPIC                             = 4
-	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC                              = 5
-	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_MAX                                                          = 6
+	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR                           BaseMaterial3DTextureFilter = 1
+	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS             BaseMaterial3DTextureFilter = 2
+	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS              BaseMaterial3DTextureFilter = 3
+	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS_ANISOTROPIC BaseMaterial3DTextureFilter = 4
+	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC  BaseMaterial3DTextureFilter = 5
+	BASE_MATERIAL_3_D_TEXTURE_FILTER_TEXTURE_FILTER_MAX                              BaseMaterial3DTextureFilter = 6
 )
 
 type BaseMaterial3DDetailUV int
 
 const (
 	BASE_MATERIAL_3_D_DETAIL_UV_DETAIL_UV_1 BaseMaterial3DDetailUV = 0
-	BASE_MATERIAL_3_D_DETAIL_UV_DETAIL_UV_2                        = 1
+	BASE_MATERIAL_3_D_DETAIL_UV_DETAIL_UV_2 BaseMaterial3DDetailUV = 1
 )
 
 type BaseMaterial3DTransparency int
 
 const (
 	BASE_MATERIAL_3_D_TRANSPARENCY_TRANSPARENCY_DISABLED             BaseMaterial3DTransparency = 0
-	BASE_MATERIAL_3_D_TRANSPARENCY_TRANSPARENCY_ALPHA                                           = 1
-	BASE_MATERIAL_3_D_TRANSPARENCY_TRANSPARENCY_ALPHA_SCISSOR                                   = 2
-	BASE_MATERIAL_3_D_TRANSPARENCY_TRANSPARENCY_ALPHA_HASH                                      = 3
-	BASE_MATERIAL_3_D_TRANSPARENCY_TRANSPARENCY_ALPHA_DEPTH_PRE_PASS                            = 4
-	BASE_MATERIAL_3_D_TRANSPARENCY_TRANSPARENCY_MAX                                             = 5
+	BASE_MATERIAL_3_D_TRANSPARENCY_TRANSPARENCY_ALPHA                BaseMaterial3DTransparency = 1
+	BASE_MATERIAL_3_D_TRANSPARENCY_TRANSPARENCY_ALPHA_SCISSOR        BaseMaterial3DTransparency = 2
+	BASE_MATERIAL_3_D_TRANSPARENCY_TRANSPARENCY_ALPHA_HASH           BaseMaterial3DTransparency = 3
+	BASE_MATERIAL_3_D_TRANSPARENCY_TRANSPARENCY_ALPHA_DEPTH_PRE_PASS BaseMaterial3DTransparency = 4
+	BASE_MATERIAL_3_D_TRANSPARENCY_TRANSPARENCY_MAX                  BaseMaterial3DTransparency = 5
 )
 
 type BaseMaterial3DShadingMode int
 
 const (
 	BASE_MATERIAL_3_D_SHADING_MODE_SHADING_MODE_UNSHADED   BaseMaterial3DShadingMode = 0
-	BASE_MATERIAL_3_D_SHADING_MODE_SHADING_MODE_PER_PIXEL                            = 1
-	BASE_MATERIAL_3_D_SHADING_MODE_SHADING_MODE_PER_VERTEX                           = 2
-	BASE_MATERIAL_3_D_SHADING_MODE_SHADING_MODE_MAX                                  = 3
+	BASE_MATERIAL_3_D_SHADING_MODE_SHADING_MODE_PER_PIXEL  BaseMaterial3DShadingMode = 1
+	BASE_MATERIAL_3_D_SHADING_MODE_SHADING_MODE_PER_VERTEX BaseMaterial3DShadingMode = 2
+	BASE_MATERIAL_3_D_SHADING_MODE_SHADING_MODE_MAX        BaseMaterial3DShadingMode = 3
 )
 
 type BaseMaterial3DFeature int
 
 const (
 	BASE_MATERIAL_3_D_FEATURE_FEATURE_EMISSION                 BaseMaterial3DFeature = 0
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_NORMAL_MAPPING                                 = 1
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_RIM                                            = 2
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_CLEARCOAT                                      = 3
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_ANISOTROPY                                     = 4
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_AMBIENT_OCCLUSION                              = 5
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_HEIGHT_MAPPING                                 = 6
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_SUBSURFACE_SCATTERING                          = 7
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_SUBSURFACE_TRANSMITTANCE                       = 8
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_BACKLIGHT                                      = 9
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_REFRACTION                                     = 10
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_DETAIL                                         = 11
-	BASE_MATERIAL_3_D_FEATURE_FEATURE_MAX                                            = 12
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_NORMAL_MAPPING           BaseMaterial3DFeature = 1
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_RIM                      BaseMaterial3DFeature = 2
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_CLEARCOAT                BaseMaterial3DFeature = 3
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_ANISOTROPY               BaseMaterial3DFeature = 4
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_AMBIENT_OCCLUSION        BaseMaterial3DFeature = 5
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_HEIGHT_MAPPING           BaseMaterial3DFeature = 6
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_SUBSURFACE_SCATTERING    BaseMaterial3DFeature = 7
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_SUBSURFACE_TRANSMITTANCE BaseMaterial3DFeature = 8
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_BACKLIGHT                BaseMaterial3DFeature = 9
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_REFRACTION               BaseMaterial3DFeature = 10
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_DETAIL                   BaseMaterial3DFeature = 11
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_BENT_NORMAL_MAPPING      BaseMaterial3DFeature = 12
+	BASE_MATERIAL_3_D_FEATURE_FEATURE_MAX                      BaseMaterial3DFeature = 13
 )
 
 type BaseMaterial3DBlendMode int
 
 const (
 	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_MIX           BaseMaterial3DBlendMode = 0
-	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_ADD                                   = 1
-	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_SUB                                   = 2
-	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_MUL                                   = 3
-	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_PREMULT_ALPHA                         = 4
+	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_ADD           BaseMaterial3DBlendMode = 1
+	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_SUB           BaseMaterial3DBlendMode = 2
+	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_MUL           BaseMaterial3DBlendMode = 3
+	BASE_MATERIAL_3_D_BLEND_MODE_BLEND_MODE_PREMULT_ALPHA BaseMaterial3DBlendMode = 4
 )
 
 type BaseMaterial3DAlphaAntiAliasing int
 
 const (
 	BASE_MATERIAL_3_D_ALPHA_ANTI_ALIASING_ALPHA_ANTIALIASING_OFF                          BaseMaterial3DAlphaAntiAliasing = 0
-	BASE_MATERIAL_3_D_ALPHA_ANTI_ALIASING_ALPHA_ANTIALIASING_ALPHA_TO_COVERAGE                                            = 1
-	BASE_MATERIAL_3_D_ALPHA_ANTI_ALIASING_ALPHA_ANTIALIASING_ALPHA_TO_COVERAGE_AND_TO_ONE                                 = 2
+	BASE_MATERIAL_3_D_ALPHA_ANTI_ALIASING_ALPHA_ANTIALIASING_ALPHA_TO_COVERAGE            BaseMaterial3DAlphaAntiAliasing = 1
+	BASE_MATERIAL_3_D_ALPHA_ANTI_ALIASING_ALPHA_ANTIALIASING_ALPHA_TO_COVERAGE_AND_TO_ONE BaseMaterial3DAlphaAntiAliasing = 2
 )
 
 type BaseMaterial3DDepthDrawMode int
 
 const (
 	BASE_MATERIAL_3_D_DEPTH_DRAW_MODE_DEPTH_DRAW_OPAQUE_ONLY BaseMaterial3DDepthDrawMode = 0
-	BASE_MATERIAL_3_D_DEPTH_DRAW_MODE_DEPTH_DRAW_ALWAYS                                  = 1
-	BASE_MATERIAL_3_D_DEPTH_DRAW_MODE_DEPTH_DRAW_DISABLED                                = 2
+	BASE_MATERIAL_3_D_DEPTH_DRAW_MODE_DEPTH_DRAW_ALWAYS      BaseMaterial3DDepthDrawMode = 1
+	BASE_MATERIAL_3_D_DEPTH_DRAW_MODE_DEPTH_DRAW_DISABLED    BaseMaterial3DDepthDrawMode = 2
+)
+
+type BaseMaterial3DDepthTest int
+
+const (
+	BASE_MATERIAL_3_D_DEPTH_TEST_DEPTH_TEST_DEFAULT  BaseMaterial3DDepthTest = 0
+	BASE_MATERIAL_3_D_DEPTH_TEST_DEPTH_TEST_INVERTED BaseMaterial3DDepthTest = 1
 )
 
 type BaseMaterial3DCullMode int
 
 const (
 	BASE_MATERIAL_3_D_CULL_MODE_CULL_BACK     BaseMaterial3DCullMode = 0
-	BASE_MATERIAL_3_D_CULL_MODE_CULL_FRONT                           = 1
-	BASE_MATERIAL_3_D_CULL_MODE_CULL_DISABLED                        = 2
+	BASE_MATERIAL_3_D_CULL_MODE_CULL_FRONT    BaseMaterial3DCullMode = 1
+	BASE_MATERIAL_3_D_CULL_MODE_CULL_DISABLED BaseMaterial3DCullMode = 2
 )
 
 type BaseMaterial3DFlags int
 
 const (
-	BASE_MATERIAL_3_D_FLAGS_FLAG_DISABLE_DEPTH_TEST        BaseMaterial3DFlags = 0
-	BASE_MATERIAL_3_D_FLAGS_FLAG_ALBEDO_FROM_VERTEX_COLOR                      = 1
-	BASE_MATERIAL_3_D_FLAGS_FLAG_SRGB_VERTEX_COLOR                             = 2
-	BASE_MATERIAL_3_D_FLAGS_FLAG_USE_POINT_SIZE                                = 3
-	BASE_MATERIAL_3_D_FLAGS_FLAG_FIXED_SIZE                                    = 4
-	BASE_MATERIAL_3_D_FLAGS_FLAG_BILLBOARD_KEEP_SCALE                          = 5
-	BASE_MATERIAL_3_D_FLAGS_FLAG_UV_1_USE_TRIPLANAR                            = 6
-	BASE_MATERIAL_3_D_FLAGS_FLAG_UV_2_USE_TRIPLANAR                            = 7
-	BASE_MATERIAL_3_D_FLAGS_FLAG_UV_1_USE_WORLD_TRIPLANAR                      = 8
-	BASE_MATERIAL_3_D_FLAGS_FLAG_UV_2_USE_WORLD_TRIPLANAR                      = 9
-	BASE_MATERIAL_3_D_FLAGS_FLAG_AO_ON_UV_2                                    = 10
-	BASE_MATERIAL_3_D_FLAGS_FLAG_EMISSION_ON_UV_2                              = 11
-	BASE_MATERIAL_3_D_FLAGS_FLAG_ALBEDO_TEXTURE_FORCE_SRGB                     = 12
-	BASE_MATERIAL_3_D_FLAGS_FLAG_DONT_RECEIVE_SHADOWS                          = 13
-	BASE_MATERIAL_3_D_FLAGS_FLAG_DISABLE_AMBIENT_LIGHT                         = 14
-	BASE_MATERIAL_3_D_FLAGS_FLAG_USE_SHADOW_TO_OPACITY                         = 15
-	BASE_MATERIAL_3_D_FLAGS_FLAG_USE_TEXTURE_REPEAT                            = 16
-	BASE_MATERIAL_3_D_FLAGS_FLAG_INVERT_HEIGHTMAP                              = 17
-	BASE_MATERIAL_3_D_FLAGS_FLAG_SUBSURFACE_MODE_SKIN                          = 18
-	BASE_MATERIAL_3_D_FLAGS_FLAG_PARTICLE_TRAILS_MODE                          = 19
-	BASE_MATERIAL_3_D_FLAGS_FLAG_ALBEDO_TEXTURE_MSDF                           = 20
-	BASE_MATERIAL_3_D_FLAGS_FLAG_DISABLE_FOG                                   = 21
-	BASE_MATERIAL_3_D_FLAGS_FLAG_MAX                                           = 22
+	BASE_MATERIAL_3_D_FLAGS_FLAG_DISABLE_DEPTH_TEST         BaseMaterial3DFlags = 0
+	BASE_MATERIAL_3_D_FLAGS_FLAG_ALBEDO_FROM_VERTEX_COLOR   BaseMaterial3DFlags = 1
+	BASE_MATERIAL_3_D_FLAGS_FLAG_SRGB_VERTEX_COLOR          BaseMaterial3DFlags = 2
+	BASE_MATERIAL_3_D_FLAGS_FLAG_USE_POINT_SIZE             BaseMaterial3DFlags = 3
+	BASE_MATERIAL_3_D_FLAGS_FLAG_FIXED_SIZE                 BaseMaterial3DFlags = 4
+	BASE_MATERIAL_3_D_FLAGS_FLAG_BILLBOARD_KEEP_SCALE       BaseMaterial3DFlags = 5
+	BASE_MATERIAL_3_D_FLAGS_FLAG_UV_1_USE_TRIPLANAR         BaseMaterial3DFlags = 6
+	BASE_MATERIAL_3_D_FLAGS_FLAG_UV_2_USE_TRIPLANAR         BaseMaterial3DFlags = 7
+	BASE_MATERIAL_3_D_FLAGS_FLAG_UV_1_USE_WORLD_TRIPLANAR   BaseMaterial3DFlags = 8
+	BASE_MATERIAL_3_D_FLAGS_FLAG_UV_2_USE_WORLD_TRIPLANAR   BaseMaterial3DFlags = 9
+	BASE_MATERIAL_3_D_FLAGS_FLAG_AO_ON_UV_2                 BaseMaterial3DFlags = 10
+	BASE_MATERIAL_3_D_FLAGS_FLAG_EMISSION_ON_UV_2           BaseMaterial3DFlags = 11
+	BASE_MATERIAL_3_D_FLAGS_FLAG_ALBEDO_TEXTURE_FORCE_SRGB  BaseMaterial3DFlags = 12
+	BASE_MATERIAL_3_D_FLAGS_FLAG_DONT_RECEIVE_SHADOWS       BaseMaterial3DFlags = 13
+	BASE_MATERIAL_3_D_FLAGS_FLAG_DISABLE_AMBIENT_LIGHT      BaseMaterial3DFlags = 14
+	BASE_MATERIAL_3_D_FLAGS_FLAG_USE_SHADOW_TO_OPACITY      BaseMaterial3DFlags = 15
+	BASE_MATERIAL_3_D_FLAGS_FLAG_USE_TEXTURE_REPEAT         BaseMaterial3DFlags = 16
+	BASE_MATERIAL_3_D_FLAGS_FLAG_INVERT_HEIGHTMAP           BaseMaterial3DFlags = 17
+	BASE_MATERIAL_3_D_FLAGS_FLAG_SUBSURFACE_MODE_SKIN       BaseMaterial3DFlags = 18
+	BASE_MATERIAL_3_D_FLAGS_FLAG_PARTICLE_TRAILS_MODE       BaseMaterial3DFlags = 19
+	BASE_MATERIAL_3_D_FLAGS_FLAG_ALBEDO_TEXTURE_MSDF        BaseMaterial3DFlags = 20
+	BASE_MATERIAL_3_D_FLAGS_FLAG_DISABLE_FOG                BaseMaterial3DFlags = 21
+	BASE_MATERIAL_3_D_FLAGS_FLAG_DISABLE_SPECULAR_OCCLUSION BaseMaterial3DFlags = 22
+	BASE_MATERIAL_3_D_FLAGS_FLAG_USE_Z_CLIP_SCALE           BaseMaterial3DFlags = 23
+	BASE_MATERIAL_3_D_FLAGS_FLAG_USE_FOV_OVERRIDE           BaseMaterial3DFlags = 24
+	BASE_MATERIAL_3_D_FLAGS_FLAG_MAX                        BaseMaterial3DFlags = 25
 )
 
 type BaseMaterial3DDiffuseMode int
 
 const (
 	BASE_MATERIAL_3_D_DIFFUSE_MODE_DIFFUSE_BURLEY       BaseMaterial3DDiffuseMode = 0
-	BASE_MATERIAL_3_D_DIFFUSE_MODE_DIFFUSE_LAMBERT                                = 1
-	BASE_MATERIAL_3_D_DIFFUSE_MODE_DIFFUSE_LAMBERT_WRAP                           = 2
-	BASE_MATERIAL_3_D_DIFFUSE_MODE_DIFFUSE_TOON                                   = 3
+	BASE_MATERIAL_3_D_DIFFUSE_MODE_DIFFUSE_LAMBERT      BaseMaterial3DDiffuseMode = 1
+	BASE_MATERIAL_3_D_DIFFUSE_MODE_DIFFUSE_LAMBERT_WRAP BaseMaterial3DDiffuseMode = 2
+	BASE_MATERIAL_3_D_DIFFUSE_MODE_DIFFUSE_TOON         BaseMaterial3DDiffuseMode = 3
 )
 
 type BaseMaterial3DSpecularMode int
 
 const (
 	BASE_MATERIAL_3_D_SPECULAR_MODE_SPECULAR_SCHLICK_GGX BaseMaterial3DSpecularMode = 0
-	BASE_MATERIAL_3_D_SPECULAR_MODE_SPECULAR_TOON                                   = 1
-	BASE_MATERIAL_3_D_SPECULAR_MODE_SPECULAR_DISABLED                               = 2
+	BASE_MATERIAL_3_D_SPECULAR_MODE_SPECULAR_TOON        BaseMaterial3DSpecularMode = 1
+	BASE_MATERIAL_3_D_SPECULAR_MODE_SPECULAR_DISABLED    BaseMaterial3DSpecularMode = 2
 )
 
 type BaseMaterial3DBillboardMode int
 
 const (
 	BASE_MATERIAL_3_D_BILLBOARD_MODE_BILLBOARD_DISABLED  BaseMaterial3DBillboardMode = 0
-	BASE_MATERIAL_3_D_BILLBOARD_MODE_BILLBOARD_ENABLED                               = 1
-	BASE_MATERIAL_3_D_BILLBOARD_MODE_BILLBOARD_FIXED_Y                               = 2
-	BASE_MATERIAL_3_D_BILLBOARD_MODE_BILLBOARD_PARTICLES                             = 3
+	BASE_MATERIAL_3_D_BILLBOARD_MODE_BILLBOARD_ENABLED   BaseMaterial3DBillboardMode = 1
+	BASE_MATERIAL_3_D_BILLBOARD_MODE_BILLBOARD_FIXED_Y   BaseMaterial3DBillboardMode = 2
+	BASE_MATERIAL_3_D_BILLBOARD_MODE_BILLBOARD_PARTICLES BaseMaterial3DBillboardMode = 3
 )
 
 type BaseMaterial3DTextureChannel int
 
 const (
 	BASE_MATERIAL_3_D_TEXTURE_CHANNEL_TEXTURE_CHANNEL_RED       BaseMaterial3DTextureChannel = 0
-	BASE_MATERIAL_3_D_TEXTURE_CHANNEL_TEXTURE_CHANNEL_GREEN                                  = 1
-	BASE_MATERIAL_3_D_TEXTURE_CHANNEL_TEXTURE_CHANNEL_BLUE                                   = 2
-	BASE_MATERIAL_3_D_TEXTURE_CHANNEL_TEXTURE_CHANNEL_ALPHA                                  = 3
-	BASE_MATERIAL_3_D_TEXTURE_CHANNEL_TEXTURE_CHANNEL_GRAYSCALE                              = 4
+	BASE_MATERIAL_3_D_TEXTURE_CHANNEL_TEXTURE_CHANNEL_GREEN     BaseMaterial3DTextureChannel = 1
+	BASE_MATERIAL_3_D_TEXTURE_CHANNEL_TEXTURE_CHANNEL_BLUE      BaseMaterial3DTextureChannel = 2
+	BASE_MATERIAL_3_D_TEXTURE_CHANNEL_TEXTURE_CHANNEL_ALPHA     BaseMaterial3DTextureChannel = 3
+	BASE_MATERIAL_3_D_TEXTURE_CHANNEL_TEXTURE_CHANNEL_GRAYSCALE BaseMaterial3DTextureChannel = 4
 )
 
 type BaseMaterial3DEmissionOperator int
 
 const (
 	BASE_MATERIAL_3_D_EMISSION_OPERATOR_EMISSION_OP_ADD      BaseMaterial3DEmissionOperator = 0
-	BASE_MATERIAL_3_D_EMISSION_OPERATOR_EMISSION_OP_MULTIPLY                                = 1
+	BASE_MATERIAL_3_D_EMISSION_OPERATOR_EMISSION_OP_MULTIPLY BaseMaterial3DEmissionOperator = 1
 )
 
 type BaseMaterial3DDistanceFadeMode int
 
 const (
 	BASE_MATERIAL_3_D_DISTANCE_FADE_MODE_DISTANCE_FADE_DISABLED      BaseMaterial3DDistanceFadeMode = 0
-	BASE_MATERIAL_3_D_DISTANCE_FADE_MODE_DISTANCE_FADE_PIXEL_ALPHA                                  = 1
-	BASE_MATERIAL_3_D_DISTANCE_FADE_MODE_DISTANCE_FADE_PIXEL_DITHER                                 = 2
-	BASE_MATERIAL_3_D_DISTANCE_FADE_MODE_DISTANCE_FADE_OBJECT_DITHER                                = 3
+	BASE_MATERIAL_3_D_DISTANCE_FADE_MODE_DISTANCE_FADE_PIXEL_ALPHA   BaseMaterial3DDistanceFadeMode = 1
+	BASE_MATERIAL_3_D_DISTANCE_FADE_MODE_DISTANCE_FADE_PIXEL_DITHER  BaseMaterial3DDistanceFadeMode = 2
+	BASE_MATERIAL_3_D_DISTANCE_FADE_MODE_DISTANCE_FADE_OBJECT_DITHER BaseMaterial3DDistanceFadeMode = 3
+)
+
+type BaseMaterial3DStencilMode int
+
+const (
+	BASE_MATERIAL_3_D_STENCIL_MODE_STENCIL_MODE_DISABLED BaseMaterial3DStencilMode = 0
+	BASE_MATERIAL_3_D_STENCIL_MODE_STENCIL_MODE_OUTLINE  BaseMaterial3DStencilMode = 1
+	BASE_MATERIAL_3_D_STENCIL_MODE_STENCIL_MODE_XRAY     BaseMaterial3DStencilMode = 2
+	BASE_MATERIAL_3_D_STENCIL_MODE_STENCIL_MODE_CUSTOM   BaseMaterial3DStencilMode = 3
+)
+
+type BaseMaterial3DStencilFlags int
+
+const (
+	BASE_MATERIAL_3_D_STENCIL_FLAGS_STENCIL_FLAG_READ             BaseMaterial3DStencilFlags = 1
+	BASE_MATERIAL_3_D_STENCIL_FLAGS_STENCIL_FLAG_WRITE            BaseMaterial3DStencilFlags = 2
+	BASE_MATERIAL_3_D_STENCIL_FLAGS_STENCIL_FLAG_WRITE_DEPTH_FAIL BaseMaterial3DStencilFlags = 4
+)
+
+type BaseMaterial3DStencilCompare int
+
+const (
+	BASE_MATERIAL_3_D_STENCIL_COMPARE_STENCIL_COMPARE_ALWAYS           BaseMaterial3DStencilCompare = 0
+	BASE_MATERIAL_3_D_STENCIL_COMPARE_STENCIL_COMPARE_LESS             BaseMaterial3DStencilCompare = 1
+	BASE_MATERIAL_3_D_STENCIL_COMPARE_STENCIL_COMPARE_EQUAL            BaseMaterial3DStencilCompare = 2
+	BASE_MATERIAL_3_D_STENCIL_COMPARE_STENCIL_COMPARE_LESS_OR_EQUAL    BaseMaterial3DStencilCompare = 3
+	BASE_MATERIAL_3_D_STENCIL_COMPARE_STENCIL_COMPARE_GREATER          BaseMaterial3DStencilCompare = 4
+	BASE_MATERIAL_3_D_STENCIL_COMPARE_STENCIL_COMPARE_NOT_EQUAL        BaseMaterial3DStencilCompare = 5
+	BASE_MATERIAL_3_D_STENCIL_COMPARE_STENCIL_COMPARE_GREATER_OR_EQUAL BaseMaterial3DStencilCompare = 6
 )
 
 type BoxContainerAlignmentMode int
 
 const (
 	BOX_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_BEGIN  BoxContainerAlignmentMode = 0
-	BOX_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_CENTER                           = 1
-	BOX_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_END                              = 2
+	BOX_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_CENTER BoxContainerAlignmentMode = 1
+	BOX_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_END    BoxContainerAlignmentMode = 2
 )
 
 type CPUParticles2DDrawOrder int
 
 const (
 	CPU_PARTICLES_2_D_DRAW_ORDER_DRAW_ORDER_INDEX    CPUParticles2DDrawOrder = 0
-	CPU_PARTICLES_2_D_DRAW_ORDER_DRAW_ORDER_LIFETIME                         = 1
+	CPU_PARTICLES_2_D_DRAW_ORDER_DRAW_ORDER_LIFETIME CPUParticles2DDrawOrder = 1
 )
 
 type CPUParticles2DParameter int
 
 const (
 	CPU_PARTICLES_2_D_PARAMETER_PARAM_INITIAL_LINEAR_VELOCITY CPUParticles2DParameter = 0
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_ANGULAR_VELOCITY                                = 1
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_ORBIT_VELOCITY                                  = 2
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_LINEAR_ACCEL                                    = 3
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_RADIAL_ACCEL                                    = 4
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_TANGENTIAL_ACCEL                                = 5
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_DAMPING                                         = 6
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_ANGLE                                           = 7
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_SCALE                                           = 8
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_HUE_VARIATION                                   = 9
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_ANIM_SPEED                                      = 10
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_ANIM_OFFSET                                     = 11
-	CPU_PARTICLES_2_D_PARAMETER_PARAM_MAX                                             = 12
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_ANGULAR_VELOCITY        CPUParticles2DParameter = 1
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_ORBIT_VELOCITY          CPUParticles2DParameter = 2
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_LINEAR_ACCEL            CPUParticles2DParameter = 3
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_RADIAL_ACCEL            CPUParticles2DParameter = 4
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_TANGENTIAL_ACCEL        CPUParticles2DParameter = 5
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_DAMPING                 CPUParticles2DParameter = 6
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_ANGLE                   CPUParticles2DParameter = 7
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_SCALE                   CPUParticles2DParameter = 8
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_HUE_VARIATION           CPUParticles2DParameter = 9
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_ANIM_SPEED              CPUParticles2DParameter = 10
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_ANIM_OFFSET             CPUParticles2DParameter = 11
+	CPU_PARTICLES_2_D_PARAMETER_PARAM_MAX                     CPUParticles2DParameter = 12
 )
 
 type CPUParticles2DParticleFlags int
 
 const (
 	CPU_PARTICLES_2_D_PARTICLE_FLAGS_PARTICLE_FLAG_ALIGN_Y_TO_VELOCITY CPUParticles2DParticleFlags = 0
-	CPU_PARTICLES_2_D_PARTICLE_FLAGS_PARTICLE_FLAG_ROTATE_Y                                        = 1
-	CPU_PARTICLES_2_D_PARTICLE_FLAGS_PARTICLE_FLAG_DISABLE_Z                                       = 2
-	CPU_PARTICLES_2_D_PARTICLE_FLAGS_PARTICLE_FLAG_MAX                                             = 3
+	CPU_PARTICLES_2_D_PARTICLE_FLAGS_PARTICLE_FLAG_ROTATE_Y            CPUParticles2DParticleFlags = 1
+	CPU_PARTICLES_2_D_PARTICLE_FLAGS_PARTICLE_FLAG_DISABLE_Z           CPUParticles2DParticleFlags = 2
+	CPU_PARTICLES_2_D_PARTICLE_FLAGS_PARTICLE_FLAG_MAX                 CPUParticles2DParticleFlags = 3
 )
 
 type CPUParticles2DEmissionShape int
 
 const (
 	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_POINT           CPUParticles2DEmissionShape = 0
-	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE                                      = 1
-	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE_SURFACE                              = 2
-	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_RECTANGLE                                   = 3
-	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_POINTS                                      = 4
-	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_DIRECTED_POINTS                             = 5
-	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_MAX                                         = 6
+	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE          CPUParticles2DEmissionShape = 1
+	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE_SURFACE  CPUParticles2DEmissionShape = 2
+	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_RECTANGLE       CPUParticles2DEmissionShape = 3
+	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_POINTS          CPUParticles2DEmissionShape = 4
+	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_DIRECTED_POINTS CPUParticles2DEmissionShape = 5
+	CPU_PARTICLES_2_D_EMISSION_SHAPE_EMISSION_SHAPE_MAX             CPUParticles2DEmissionShape = 6
 )
 
 type CPUParticles3DDrawOrder int
 
 const (
 	CPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_INDEX      CPUParticles3DDrawOrder = 0
-	CPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_LIFETIME                           = 1
-	CPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_VIEW_DEPTH                         = 2
+	CPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_LIFETIME   CPUParticles3DDrawOrder = 1
+	CPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_VIEW_DEPTH CPUParticles3DDrawOrder = 2
 )
 
 type CPUParticles3DParameter int
 
 const (
 	CPU_PARTICLES_3_D_PARAMETER_PARAM_INITIAL_LINEAR_VELOCITY CPUParticles3DParameter = 0
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_ANGULAR_VELOCITY                                = 1
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_ORBIT_VELOCITY                                  = 2
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_LINEAR_ACCEL                                    = 3
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_RADIAL_ACCEL                                    = 4
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_TANGENTIAL_ACCEL                                = 5
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_DAMPING                                         = 6
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_ANGLE                                           = 7
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_SCALE                                           = 8
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_HUE_VARIATION                                   = 9
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_ANIM_SPEED                                      = 10
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_ANIM_OFFSET                                     = 11
-	CPU_PARTICLES_3_D_PARAMETER_PARAM_MAX                                             = 12
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_ANGULAR_VELOCITY        CPUParticles3DParameter = 1
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_ORBIT_VELOCITY          CPUParticles3DParameter = 2
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_LINEAR_ACCEL            CPUParticles3DParameter = 3
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_RADIAL_ACCEL            CPUParticles3DParameter = 4
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_TANGENTIAL_ACCEL        CPUParticles3DParameter = 5
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_DAMPING                 CPUParticles3DParameter = 6
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_ANGLE                   CPUParticles3DParameter = 7
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_SCALE                   CPUParticles3DParameter = 8
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_HUE_VARIATION           CPUParticles3DParameter = 9
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_ANIM_SPEED              CPUParticles3DParameter = 10
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_ANIM_OFFSET             CPUParticles3DParameter = 11
+	CPU_PARTICLES_3_D_PARAMETER_PARAM_MAX                     CPUParticles3DParameter = 12
 )
 
 type CPUParticles3DParticleFlags int
 
 const (
 	CPU_PARTICLES_3_D_PARTICLE_FLAGS_PARTICLE_FLAG_ALIGN_Y_TO_VELOCITY CPUParticles3DParticleFlags = 0
-	CPU_PARTICLES_3_D_PARTICLE_FLAGS_PARTICLE_FLAG_ROTATE_Y                                        = 1
-	CPU_PARTICLES_3_D_PARTICLE_FLAGS_PARTICLE_FLAG_DISABLE_Z                                       = 2
-	CPU_PARTICLES_3_D_PARTICLE_FLAGS_PARTICLE_FLAG_MAX                                             = 3
+	CPU_PARTICLES_3_D_PARTICLE_FLAGS_PARTICLE_FLAG_ROTATE_Y            CPUParticles3DParticleFlags = 1
+	CPU_PARTICLES_3_D_PARTICLE_FLAGS_PARTICLE_FLAG_DISABLE_Z           CPUParticles3DParticleFlags = 2
+	CPU_PARTICLES_3_D_PARTICLE_FLAGS_PARTICLE_FLAG_MAX                 CPUParticles3DParticleFlags = 3
 )
 
 type CPUParticles3DEmissionShape int
 
 const (
 	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_POINT           CPUParticles3DEmissionShape = 0
-	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE                                      = 1
-	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE_SURFACE                              = 2
-	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_BOX                                         = 3
-	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_POINTS                                      = 4
-	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_DIRECTED_POINTS                             = 5
-	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_RING                                        = 6
-	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_MAX                                         = 7
+	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE          CPUParticles3DEmissionShape = 1
+	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE_SURFACE  CPUParticles3DEmissionShape = 2
+	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_BOX             CPUParticles3DEmissionShape = 3
+	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_POINTS          CPUParticles3DEmissionShape = 4
+	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_DIRECTED_POINTS CPUParticles3DEmissionShape = 5
+	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_RING            CPUParticles3DEmissionShape = 6
+	CPU_PARTICLES_3_D_EMISSION_SHAPE_EMISSION_SHAPE_MAX             CPUParticles3DEmissionShape = 7
 )
 
 type CSGPolygon3DMode int
 
 const (
 	CSG_POLYGON_3_D_MODE_MODE_DEPTH CSGPolygon3DMode = 0
-	CSG_POLYGON_3_D_MODE_MODE_SPIN                   = 1
-	CSG_POLYGON_3_D_MODE_MODE_PATH                   = 2
+	CSG_POLYGON_3_D_MODE_MODE_SPIN  CSGPolygon3DMode = 1
+	CSG_POLYGON_3_D_MODE_MODE_PATH  CSGPolygon3DMode = 2
 )
 
 type CSGPolygon3DPathRotation int
 
 const (
 	CSG_POLYGON_3_D_PATH_ROTATION_PATH_ROTATION_POLYGON     CSGPolygon3DPathRotation = 0
-	CSG_POLYGON_3_D_PATH_ROTATION_PATH_ROTATION_PATH                                 = 1
-	CSG_POLYGON_3_D_PATH_ROTATION_PATH_ROTATION_PATH_FOLLOW                          = 2
+	CSG_POLYGON_3_D_PATH_ROTATION_PATH_ROTATION_PATH        CSGPolygon3DPathRotation = 1
+	CSG_POLYGON_3_D_PATH_ROTATION_PATH_ROTATION_PATH_FOLLOW CSGPolygon3DPathRotation = 2
 )
 
 type CSGPolygon3DPathIntervalType int
 
 const (
 	CSG_POLYGON_3_D_PATH_INTERVAL_TYPE_PATH_INTERVAL_DISTANCE  CSGPolygon3DPathIntervalType = 0
-	CSG_POLYGON_3_D_PATH_INTERVAL_TYPE_PATH_INTERVAL_SUBDIVIDE                              = 1
+	CSG_POLYGON_3_D_PATH_INTERVAL_TYPE_PATH_INTERVAL_SUBDIVIDE CSGPolygon3DPathIntervalType = 1
 )
 
 type CSGShape3DOperation int
 
 const (
 	CSG_SHAPE_3_D_OPERATION_OPERATION_UNION        CSGShape3DOperation = 0
-	CSG_SHAPE_3_D_OPERATION_OPERATION_INTERSECTION                     = 1
-	CSG_SHAPE_3_D_OPERATION_OPERATION_SUBTRACTION                      = 2
+	CSG_SHAPE_3_D_OPERATION_OPERATION_INTERSECTION CSGShape3DOperation = 1
+	CSG_SHAPE_3_D_OPERATION_OPERATION_SUBTRACTION  CSGShape3DOperation = 2
 )
 
 type Camera2DAnchorMode int
 
 const (
 	CAMERA_2_D_ANCHOR_MODE_ANCHOR_MODE_FIXED_TOP_LEFT Camera2DAnchorMode = 0
-	CAMERA_2_D_ANCHOR_MODE_ANCHOR_MODE_DRAG_CENTER                       = 1
+	CAMERA_2_D_ANCHOR_MODE_ANCHOR_MODE_DRAG_CENTER    Camera2DAnchorMode = 1
 )
 
 type Camera2DCamera2DProcessCallback int
 
 const (
 	CAMERA_2_D_CAMERA_2_D_PROCESS_CALLBACK_CAMERA_2_D_PROCESS_PHYSICS Camera2DCamera2DProcessCallback = 0
-	CAMERA_2_D_CAMERA_2_D_PROCESS_CALLBACK_CAMERA_2_D_PROCESS_IDLE                                    = 1
+	CAMERA_2_D_CAMERA_2_D_PROCESS_CALLBACK_CAMERA_2_D_PROCESS_IDLE    Camera2DCamera2DProcessCallback = 1
 )
 
 type Camera3DProjectionType int
 
 const (
 	CAMERA_3_D_PROJECTION_TYPE_PROJECTION_PERSPECTIVE Camera3DProjectionType = 0
-	CAMERA_3_D_PROJECTION_TYPE_PROJECTION_ORTHOGONAL                         = 1
-	CAMERA_3_D_PROJECTION_TYPE_PROJECTION_FRUSTUM                            = 2
+	CAMERA_3_D_PROJECTION_TYPE_PROJECTION_ORTHOGONAL  Camera3DProjectionType = 1
+	CAMERA_3_D_PROJECTION_TYPE_PROJECTION_FRUSTUM     Camera3DProjectionType = 2
 )
 
 type Camera3DKeepAspect int
 
 const (
 	CAMERA_3_D_KEEP_ASPECT_KEEP_WIDTH  Camera3DKeepAspect = 0
-	CAMERA_3_D_KEEP_ASPECT_KEEP_HEIGHT                    = 1
+	CAMERA_3_D_KEEP_ASPECT_KEEP_HEIGHT Camera3DKeepAspect = 1
 )
 
 type Camera3DDopplerTracking int
 
 const (
 	CAMERA_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_DISABLED     Camera3DDopplerTracking = 0
-	CAMERA_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_IDLE_STEP                            = 1
-	CAMERA_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_PHYSICS_STEP                         = 2
+	CAMERA_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_IDLE_STEP    Camera3DDopplerTracking = 1
+	CAMERA_3_D_DOPPLER_TRACKING_DOPPLER_TRACKING_PHYSICS_STEP Camera3DDopplerTracking = 2
 )
 
 type CameraFeedFeedDataType int
 
 const (
 	CAMERA_FEED_FEED_DATA_TYPE_FEED_NOIMAGE   CameraFeedFeedDataType = 0
-	CAMERA_FEED_FEED_DATA_TYPE_FEED_RGB                              = 1
-	CAMERA_FEED_FEED_DATA_TYPE_FEED_YCBCR                            = 2
-	CAMERA_FEED_FEED_DATA_TYPE_FEED_YCBCR_SEP                        = 3
+	CAMERA_FEED_FEED_DATA_TYPE_FEED_RGB       CameraFeedFeedDataType = 1
+	CAMERA_FEED_FEED_DATA_TYPE_FEED_YCBCR     CameraFeedFeedDataType = 2
+	CAMERA_FEED_FEED_DATA_TYPE_FEED_YCBCR_SEP CameraFeedFeedDataType = 3
+	CAMERA_FEED_FEED_DATA_TYPE_FEED_EXTERNAL  CameraFeedFeedDataType = 4
 )
 
 type CameraFeedFeedPosition int
 
 const (
 	CAMERA_FEED_FEED_POSITION_FEED_UNSPECIFIED CameraFeedFeedPosition = 0
-	CAMERA_FEED_FEED_POSITION_FEED_FRONT                              = 1
-	CAMERA_FEED_FEED_POSITION_FEED_BACK                               = 2
+	CAMERA_FEED_FEED_POSITION_FEED_FRONT       CameraFeedFeedPosition = 1
+	CAMERA_FEED_FEED_POSITION_FEED_BACK        CameraFeedFeedPosition = 2
 )
 
 type CameraServerFeedImage int
 
 const (
 	CAMERA_SERVER_FEED_IMAGE_FEED_RGBA_IMAGE  CameraServerFeedImage = 0
-	CAMERA_SERVER_FEED_IMAGE_FEED_YCBCR_IMAGE                       = 0
-	CAMERA_SERVER_FEED_IMAGE_FEED_Y_IMAGE                           = 0
-	CAMERA_SERVER_FEED_IMAGE_FEED_CBCR_IMAGE                        = 1
+	CAMERA_SERVER_FEED_IMAGE_FEED_YCBCR_IMAGE CameraServerFeedImage = 0
+	CAMERA_SERVER_FEED_IMAGE_FEED_Y_IMAGE     CameraServerFeedImage = 0
+	CAMERA_SERVER_FEED_IMAGE_FEED_CBCR_IMAGE  CameraServerFeedImage = 1
 )
 
 type CanvasItemTextureFilter int
 
 const (
 	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_PARENT_NODE                      CanvasItemTextureFilter = 0
-	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_NEAREST                                                  = 1
-	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR                                                   = 2
-	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS                                     = 3
-	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS                                      = 4
-	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS_ANISOTROPIC                         = 5
-	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC                          = 6
-	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_MAX                                                      = 7
+	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_NEAREST                          CanvasItemTextureFilter = 1
+	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR                           CanvasItemTextureFilter = 2
+	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS             CanvasItemTextureFilter = 3
+	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS              CanvasItemTextureFilter = 4
+	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS_ANISOTROPIC CanvasItemTextureFilter = 5
+	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC  CanvasItemTextureFilter = 6
+	CANVAS_ITEM_TEXTURE_FILTER_TEXTURE_FILTER_MAX                              CanvasItemTextureFilter = 7
 )
 
 type CanvasItemTextureRepeat int
 
 const (
 	CANVAS_ITEM_TEXTURE_REPEAT_TEXTURE_REPEAT_PARENT_NODE CanvasItemTextureRepeat = 0
-	CANVAS_ITEM_TEXTURE_REPEAT_TEXTURE_REPEAT_DISABLED                            = 1
-	CANVAS_ITEM_TEXTURE_REPEAT_TEXTURE_REPEAT_ENABLED                             = 2
-	CANVAS_ITEM_TEXTURE_REPEAT_TEXTURE_REPEAT_MIRROR                              = 3
-	CANVAS_ITEM_TEXTURE_REPEAT_TEXTURE_REPEAT_MAX                                 = 4
+	CANVAS_ITEM_TEXTURE_REPEAT_TEXTURE_REPEAT_DISABLED    CanvasItemTextureRepeat = 1
+	CANVAS_ITEM_TEXTURE_REPEAT_TEXTURE_REPEAT_ENABLED     CanvasItemTextureRepeat = 2
+	CANVAS_ITEM_TEXTURE_REPEAT_TEXTURE_REPEAT_MIRROR      CanvasItemTextureRepeat = 3
+	CANVAS_ITEM_TEXTURE_REPEAT_TEXTURE_REPEAT_MAX         CanvasItemTextureRepeat = 4
 )
 
 type CanvasItemClipChildrenMode int
 
 const (
 	CANVAS_ITEM_CLIP_CHILDREN_MODE_CLIP_CHILDREN_DISABLED CanvasItemClipChildrenMode = 0
-	CANVAS_ITEM_CLIP_CHILDREN_MODE_CLIP_CHILDREN_ONLY                                = 1
-	CANVAS_ITEM_CLIP_CHILDREN_MODE_CLIP_CHILDREN_AND_DRAW                            = 2
-	CANVAS_ITEM_CLIP_CHILDREN_MODE_CLIP_CHILDREN_MAX                                 = 3
+	CANVAS_ITEM_CLIP_CHILDREN_MODE_CLIP_CHILDREN_ONLY     CanvasItemClipChildrenMode = 1
+	CANVAS_ITEM_CLIP_CHILDREN_MODE_CLIP_CHILDREN_AND_DRAW CanvasItemClipChildrenMode = 2
+	CANVAS_ITEM_CLIP_CHILDREN_MODE_CLIP_CHILDREN_MAX      CanvasItemClipChildrenMode = 3
 )
 
 type CanvasItemMaterialBlendMode int
 
 const (
 	CANVAS_ITEM_MATERIAL_BLEND_MODE_BLEND_MODE_MIX           CanvasItemMaterialBlendMode = 0
-	CANVAS_ITEM_MATERIAL_BLEND_MODE_BLEND_MODE_ADD                                       = 1
-	CANVAS_ITEM_MATERIAL_BLEND_MODE_BLEND_MODE_SUB                                       = 2
-	CANVAS_ITEM_MATERIAL_BLEND_MODE_BLEND_MODE_MUL                                       = 3
-	CANVAS_ITEM_MATERIAL_BLEND_MODE_BLEND_MODE_PREMULT_ALPHA                             = 4
+	CANVAS_ITEM_MATERIAL_BLEND_MODE_BLEND_MODE_ADD           CanvasItemMaterialBlendMode = 1
+	CANVAS_ITEM_MATERIAL_BLEND_MODE_BLEND_MODE_SUB           CanvasItemMaterialBlendMode = 2
+	CANVAS_ITEM_MATERIAL_BLEND_MODE_BLEND_MODE_MUL           CanvasItemMaterialBlendMode = 3
+	CANVAS_ITEM_MATERIAL_BLEND_MODE_BLEND_MODE_PREMULT_ALPHA CanvasItemMaterialBlendMode = 4
 )
 
 type CanvasItemMaterialLightMode int
 
 const (
 	CANVAS_ITEM_MATERIAL_LIGHT_MODE_LIGHT_MODE_NORMAL     CanvasItemMaterialLightMode = 0
-	CANVAS_ITEM_MATERIAL_LIGHT_MODE_LIGHT_MODE_UNSHADED                               = 1
-	CANVAS_ITEM_MATERIAL_LIGHT_MODE_LIGHT_MODE_LIGHT_ONLY                             = 2
+	CANVAS_ITEM_MATERIAL_LIGHT_MODE_LIGHT_MODE_UNSHADED   CanvasItemMaterialLightMode = 1
+	CANVAS_ITEM_MATERIAL_LIGHT_MODE_LIGHT_MODE_LIGHT_ONLY CanvasItemMaterialLightMode = 2
 )
 
 type CharacterBody2DMotionMode int
 
 const (
 	CHARACTER_BODY_2_D_MOTION_MODE_MOTION_MODE_GROUNDED CharacterBody2DMotionMode = 0
-	CHARACTER_BODY_2_D_MOTION_MODE_MOTION_MODE_FLOATING                           = 1
+	CHARACTER_BODY_2_D_MOTION_MODE_MOTION_MODE_FLOATING CharacterBody2DMotionMode = 1
 )
 
 type CharacterBody2DPlatformOnLeave int
 
 const (
 	CHARACTER_BODY_2_D_PLATFORM_ON_LEAVE_PLATFORM_ON_LEAVE_ADD_VELOCITY        CharacterBody2DPlatformOnLeave = 0
-	CHARACTER_BODY_2_D_PLATFORM_ON_LEAVE_PLATFORM_ON_LEAVE_ADD_UPWARD_VELOCITY                                = 1
-	CHARACTER_BODY_2_D_PLATFORM_ON_LEAVE_PLATFORM_ON_LEAVE_DO_NOTHING                                         = 2
+	CHARACTER_BODY_2_D_PLATFORM_ON_LEAVE_PLATFORM_ON_LEAVE_ADD_UPWARD_VELOCITY CharacterBody2DPlatformOnLeave = 1
+	CHARACTER_BODY_2_D_PLATFORM_ON_LEAVE_PLATFORM_ON_LEAVE_DO_NOTHING          CharacterBody2DPlatformOnLeave = 2
 )
 
 type CharacterBody3DMotionMode int
 
 const (
 	CHARACTER_BODY_3_D_MOTION_MODE_MOTION_MODE_GROUNDED CharacterBody3DMotionMode = 0
-	CHARACTER_BODY_3_D_MOTION_MODE_MOTION_MODE_FLOATING                           = 1
+	CHARACTER_BODY_3_D_MOTION_MODE_MOTION_MODE_FLOATING CharacterBody3DMotionMode = 1
 )
 
 type CharacterBody3DPlatformOnLeave int
 
 const (
 	CHARACTER_BODY_3_D_PLATFORM_ON_LEAVE_PLATFORM_ON_LEAVE_ADD_VELOCITY        CharacterBody3DPlatformOnLeave = 0
-	CHARACTER_BODY_3_D_PLATFORM_ON_LEAVE_PLATFORM_ON_LEAVE_ADD_UPWARD_VELOCITY                                = 1
-	CHARACTER_BODY_3_D_PLATFORM_ON_LEAVE_PLATFORM_ON_LEAVE_DO_NOTHING                                         = 2
+	CHARACTER_BODY_3_D_PLATFORM_ON_LEAVE_PLATFORM_ON_LEAVE_ADD_UPWARD_VELOCITY CharacterBody3DPlatformOnLeave = 1
+	CHARACTER_BODY_3_D_PLATFORM_ON_LEAVE_PLATFORM_ON_LEAVE_DO_NOTHING          CharacterBody3DPlatformOnLeave = 2
+)
+
+type ClassDBAPIType int
+
+const (
+	CLASS_DB_API_TYPE_API_CORE             ClassDBAPIType = 0
+	CLASS_DB_API_TYPE_API_EDITOR           ClassDBAPIType = 1
+	CLASS_DB_API_TYPE_API_EXTENSION        ClassDBAPIType = 2
+	CLASS_DB_API_TYPE_API_EDITOR_EXTENSION ClassDBAPIType = 3
+	CLASS_DB_API_TYPE_API_NONE             ClassDBAPIType = 4
 )
 
 type CodeEditCodeCompletionKind int
 
 const (
 	CODE_EDIT_CODE_COMPLETION_KIND_KIND_CLASS      CodeEditCodeCompletionKind = 0
-	CODE_EDIT_CODE_COMPLETION_KIND_KIND_FUNCTION                              = 1
-	CODE_EDIT_CODE_COMPLETION_KIND_KIND_SIGNAL                                = 2
-	CODE_EDIT_CODE_COMPLETION_KIND_KIND_VARIABLE                              = 3
-	CODE_EDIT_CODE_COMPLETION_KIND_KIND_MEMBER                                = 4
-	CODE_EDIT_CODE_COMPLETION_KIND_KIND_ENUM                                  = 5
-	CODE_EDIT_CODE_COMPLETION_KIND_KIND_CONSTANT                              = 6
-	CODE_EDIT_CODE_COMPLETION_KIND_KIND_NODE_PATH                             = 7
-	CODE_EDIT_CODE_COMPLETION_KIND_KIND_FILE_PATH                             = 8
-	CODE_EDIT_CODE_COMPLETION_KIND_KIND_PLAIN_TEXT                            = 9
+	CODE_EDIT_CODE_COMPLETION_KIND_KIND_FUNCTION   CodeEditCodeCompletionKind = 1
+	CODE_EDIT_CODE_COMPLETION_KIND_KIND_SIGNAL     CodeEditCodeCompletionKind = 2
+	CODE_EDIT_CODE_COMPLETION_KIND_KIND_VARIABLE   CodeEditCodeCompletionKind = 3
+	CODE_EDIT_CODE_COMPLETION_KIND_KIND_MEMBER     CodeEditCodeCompletionKind = 4
+	CODE_EDIT_CODE_COMPLETION_KIND_KIND_ENUM       CodeEditCodeCompletionKind = 5
+	CODE_EDIT_CODE_COMPLETION_KIND_KIND_CONSTANT   CodeEditCodeCompletionKind = 6
+	CODE_EDIT_CODE_COMPLETION_KIND_KIND_NODE_PATH  CodeEditCodeCompletionKind = 7
+	CODE_EDIT_CODE_COMPLETION_KIND_KIND_FILE_PATH  CodeEditCodeCompletionKind = 8
+	CODE_EDIT_CODE_COMPLETION_KIND_KIND_PLAIN_TEXT CodeEditCodeCompletionKind = 9
 )
 
 type CodeEditCodeCompletionLocation int
 
 const (
 	CODE_EDIT_CODE_COMPLETION_LOCATION_LOCATION_LOCAL           CodeEditCodeCompletionLocation = 0
-	CODE_EDIT_CODE_COMPLETION_LOCATION_LOCATION_PARENT_MASK                                    = 256
-	CODE_EDIT_CODE_COMPLETION_LOCATION_LOCATION_OTHER_USER_CODE                                = 512
-	CODE_EDIT_CODE_COMPLETION_LOCATION_LOCATION_OTHER                                          = 1024
+	CODE_EDIT_CODE_COMPLETION_LOCATION_LOCATION_PARENT_MASK     CodeEditCodeCompletionLocation = 256
+	CODE_EDIT_CODE_COMPLETION_LOCATION_LOCATION_OTHER_USER_CODE CodeEditCodeCompletionLocation = 512
+	CODE_EDIT_CODE_COMPLETION_LOCATION_LOCATION_OTHER           CodeEditCodeCompletionLocation = 1024
 )
 
 type CollisionObject2DDisableMode int
 
 const (
 	COLLISION_OBJECT_2_D_DISABLE_MODE_DISABLE_MODE_REMOVE      CollisionObject2DDisableMode = 0
-	COLLISION_OBJECT_2_D_DISABLE_MODE_DISABLE_MODE_MAKE_STATIC                              = 1
-	COLLISION_OBJECT_2_D_DISABLE_MODE_DISABLE_MODE_KEEP_ACTIVE                              = 2
+	COLLISION_OBJECT_2_D_DISABLE_MODE_DISABLE_MODE_MAKE_STATIC CollisionObject2DDisableMode = 1
+	COLLISION_OBJECT_2_D_DISABLE_MODE_DISABLE_MODE_KEEP_ACTIVE CollisionObject2DDisableMode = 2
 )
 
 type CollisionObject3DDisableMode int
 
 const (
 	COLLISION_OBJECT_3_D_DISABLE_MODE_DISABLE_MODE_REMOVE      CollisionObject3DDisableMode = 0
-	COLLISION_OBJECT_3_D_DISABLE_MODE_DISABLE_MODE_MAKE_STATIC                              = 1
-	COLLISION_OBJECT_3_D_DISABLE_MODE_DISABLE_MODE_KEEP_ACTIVE                              = 2
+	COLLISION_OBJECT_3_D_DISABLE_MODE_DISABLE_MODE_MAKE_STATIC CollisionObject3DDisableMode = 1
+	COLLISION_OBJECT_3_D_DISABLE_MODE_DISABLE_MODE_KEEP_ACTIVE CollisionObject3DDisableMode = 2
 )
 
 type CollisionPolygon2DBuildMode int
 
 const (
 	COLLISION_POLYGON_2_D_BUILD_MODE_BUILD_SOLIDS   CollisionPolygon2DBuildMode = 0
-	COLLISION_POLYGON_2_D_BUILD_MODE_BUILD_SEGMENTS                             = 1
+	COLLISION_POLYGON_2_D_BUILD_MODE_BUILD_SEGMENTS CollisionPolygon2DBuildMode = 1
 )
 
 type ColorPickerColorModeType int
 
 const (
-	COLOR_PICKER_COLOR_MODE_TYPE_MODE_RGB   ColorPickerColorModeType = 0
-	COLOR_PICKER_COLOR_MODE_TYPE_MODE_HSV                            = 1
-	COLOR_PICKER_COLOR_MODE_TYPE_MODE_RAW                            = 2
-	COLOR_PICKER_COLOR_MODE_TYPE_MODE_OKHSL                          = 3
+	COLOR_PICKER_COLOR_MODE_TYPE_MODE_RGB    ColorPickerColorModeType = 0
+	COLOR_PICKER_COLOR_MODE_TYPE_MODE_HSV    ColorPickerColorModeType = 1
+	COLOR_PICKER_COLOR_MODE_TYPE_MODE_RAW    ColorPickerColorModeType = 2
+	COLOR_PICKER_COLOR_MODE_TYPE_MODE_LINEAR ColorPickerColorModeType = 2
+	COLOR_PICKER_COLOR_MODE_TYPE_MODE_OKHSL  ColorPickerColorModeType = 3
 )
 
 type ColorPickerPickerShapeType int
 
 const (
-	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_HSV_RECTANGLE ColorPickerPickerShapeType = 0
-	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_HSV_WHEEL                                = 1
-	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_VHS_CIRCLE                               = 2
-	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_OKHSL_CIRCLE                             = 3
-	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_NONE                                     = 4
+	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_HSV_RECTANGLE   ColorPickerPickerShapeType = 0
+	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_HSV_WHEEL       ColorPickerPickerShapeType = 1
+	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_VHS_CIRCLE      ColorPickerPickerShapeType = 2
+	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_OKHSL_CIRCLE    ColorPickerPickerShapeType = 3
+	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_NONE            ColorPickerPickerShapeType = 4
+	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_OK_HS_RECTANGLE ColorPickerPickerShapeType = 5
+	COLOR_PICKER_PICKER_SHAPE_TYPE_SHAPE_OK_HL_RECTANGLE ColorPickerPickerShapeType = 6
 )
 
 type CompositorEffectEffectCallbackType int
 
 const (
 	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_PRE_OPAQUE       CompositorEffectEffectCallbackType = 0
-	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_POST_OPAQUE                                         = 1
-	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_POST_SKY                                            = 2
-	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT                                     = 3
-	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_POST_TRANSPARENT                                    = 4
-	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_MAX                                                 = 5
+	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_POST_OPAQUE      CompositorEffectEffectCallbackType = 1
+	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_POST_SKY         CompositorEffectEffectCallbackType = 2
+	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT  CompositorEffectEffectCallbackType = 3
+	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_POST_TRANSPARENT CompositorEffectEffectCallbackType = 4
+	COMPOSITOR_EFFECT_EFFECT_CALLBACK_TYPE_EFFECT_CALLBACK_TYPE_MAX              CompositorEffectEffectCallbackType = 5
 )
 
 type ConeTwistJoint3DParam int
 
 const (
 	CONE_TWIST_JOINT_3_D_PARAM_PARAM_SWING_SPAN ConeTwistJoint3DParam = 0
-	CONE_TWIST_JOINT_3_D_PARAM_PARAM_TWIST_SPAN                       = 1
-	CONE_TWIST_JOINT_3_D_PARAM_PARAM_BIAS                             = 2
-	CONE_TWIST_JOINT_3_D_PARAM_PARAM_SOFTNESS                         = 3
-	CONE_TWIST_JOINT_3_D_PARAM_PARAM_RELAXATION                       = 4
-	CONE_TWIST_JOINT_3_D_PARAM_PARAM_MAX                              = 5
+	CONE_TWIST_JOINT_3_D_PARAM_PARAM_TWIST_SPAN ConeTwistJoint3DParam = 1
+	CONE_TWIST_JOINT_3_D_PARAM_PARAM_BIAS       ConeTwistJoint3DParam = 2
+	CONE_TWIST_JOINT_3_D_PARAM_PARAM_SOFTNESS   ConeTwistJoint3DParam = 3
+	CONE_TWIST_JOINT_3_D_PARAM_PARAM_RELAXATION ConeTwistJoint3DParam = 4
+	CONE_TWIST_JOINT_3_D_PARAM_PARAM_MAX        ConeTwistJoint3DParam = 5
 )
 
 type ControlFocusMode int
 
 const (
-	CONTROL_FOCUS_MODE_FOCUS_NONE  ControlFocusMode = 0
-	CONTROL_FOCUS_MODE_FOCUS_CLICK                  = 1
-	CONTROL_FOCUS_MODE_FOCUS_ALL                    = 2
+	CONTROL_FOCUS_MODE_FOCUS_NONE          ControlFocusMode = 0
+	CONTROL_FOCUS_MODE_FOCUS_CLICK         ControlFocusMode = 1
+	CONTROL_FOCUS_MODE_FOCUS_ALL           ControlFocusMode = 2
+	CONTROL_FOCUS_MODE_FOCUS_ACCESSIBILITY ControlFocusMode = 3
+)
+
+type ControlFocusBehaviorRecursive int
+
+const (
+	CONTROL_FOCUS_BEHAVIOR_RECURSIVE_FOCUS_BEHAVIOR_INHERITED ControlFocusBehaviorRecursive = 0
+	CONTROL_FOCUS_BEHAVIOR_RECURSIVE_FOCUS_BEHAVIOR_DISABLED  ControlFocusBehaviorRecursive = 1
+	CONTROL_FOCUS_BEHAVIOR_RECURSIVE_FOCUS_BEHAVIOR_ENABLED   ControlFocusBehaviorRecursive = 2
+)
+
+type ControlMouseBehaviorRecursive int
+
+const (
+	CONTROL_MOUSE_BEHAVIOR_RECURSIVE_MOUSE_BEHAVIOR_INHERITED ControlMouseBehaviorRecursive = 0
+	CONTROL_MOUSE_BEHAVIOR_RECURSIVE_MOUSE_BEHAVIOR_DISABLED  ControlMouseBehaviorRecursive = 1
+	CONTROL_MOUSE_BEHAVIOR_RECURSIVE_MOUSE_BEHAVIOR_ENABLED   ControlMouseBehaviorRecursive = 2
 )
 
 type ControlCursorShape int
 
 const (
 	CONTROL_CURSOR_SHAPE_CURSOR_ARROW         ControlCursorShape = 0
-	CONTROL_CURSOR_SHAPE_CURSOR_IBEAM                            = 1
-	CONTROL_CURSOR_SHAPE_CURSOR_POINTING_HAND                    = 2
-	CONTROL_CURSOR_SHAPE_CURSOR_CROSS                            = 3
-	CONTROL_CURSOR_SHAPE_CURSOR_WAIT                             = 4
-	CONTROL_CURSOR_SHAPE_CURSOR_BUSY                             = 5
-	CONTROL_CURSOR_SHAPE_CURSOR_DRAG                             = 6
-	CONTROL_CURSOR_SHAPE_CURSOR_CAN_DROP                         = 7
-	CONTROL_CURSOR_SHAPE_CURSOR_FORBIDDEN                        = 8
-	CONTROL_CURSOR_SHAPE_CURSOR_VSIZE                            = 9
-	CONTROL_CURSOR_SHAPE_CURSOR_HSIZE                            = 10
-	CONTROL_CURSOR_SHAPE_CURSOR_BDIAGSIZE                        = 11
-	CONTROL_CURSOR_SHAPE_CURSOR_FDIAGSIZE                        = 12
-	CONTROL_CURSOR_SHAPE_CURSOR_MOVE                             = 13
-	CONTROL_CURSOR_SHAPE_CURSOR_VSPLIT                           = 14
-	CONTROL_CURSOR_SHAPE_CURSOR_HSPLIT                           = 15
-	CONTROL_CURSOR_SHAPE_CURSOR_HELP                             = 16
+	CONTROL_CURSOR_SHAPE_CURSOR_IBEAM         ControlCursorShape = 1
+	CONTROL_CURSOR_SHAPE_CURSOR_POINTING_HAND ControlCursorShape = 2
+	CONTROL_CURSOR_SHAPE_CURSOR_CROSS         ControlCursorShape = 3
+	CONTROL_CURSOR_SHAPE_CURSOR_WAIT          ControlCursorShape = 4
+	CONTROL_CURSOR_SHAPE_CURSOR_BUSY          ControlCursorShape = 5
+	CONTROL_CURSOR_SHAPE_CURSOR_DRAG          ControlCursorShape = 6
+	CONTROL_CURSOR_SHAPE_CURSOR_CAN_DROP      ControlCursorShape = 7
+	CONTROL_CURSOR_SHAPE_CURSOR_FORBIDDEN     ControlCursorShape = 8
+	CONTROL_CURSOR_SHAPE_CURSOR_VSIZE         ControlCursorShape = 9
+	CONTROL_CURSOR_SHAPE_CURSOR_HSIZE         ControlCursorShape = 10
+	CONTROL_CURSOR_SHAPE_CURSOR_BDIAGSIZE     ControlCursorShape = 11
+	CONTROL_CURSOR_SHAPE_CURSOR_FDIAGSIZE     ControlCursorShape = 12
+	CONTROL_CURSOR_SHAPE_CURSOR_MOVE          ControlCursorShape = 13
+	CONTROL_CURSOR_SHAPE_CURSOR_VSPLIT        ControlCursorShape = 14
+	CONTROL_CURSOR_SHAPE_CURSOR_HSPLIT        ControlCursorShape = 15
+	CONTROL_CURSOR_SHAPE_CURSOR_HELP          ControlCursorShape = 16
 )
 
 type ControlLayoutPreset int
 
 const (
 	CONTROL_LAYOUT_PRESET_PRESET_TOP_LEFT      ControlLayoutPreset = 0
-	CONTROL_LAYOUT_PRESET_PRESET_TOP_RIGHT                         = 1
-	CONTROL_LAYOUT_PRESET_PRESET_BOTTOM_LEFT                       = 2
-	CONTROL_LAYOUT_PRESET_PRESET_BOTTOM_RIGHT                      = 3
-	CONTROL_LAYOUT_PRESET_PRESET_CENTER_LEFT                       = 4
-	CONTROL_LAYOUT_PRESET_PRESET_CENTER_TOP                        = 5
-	CONTROL_LAYOUT_PRESET_PRESET_CENTER_RIGHT                      = 6
-	CONTROL_LAYOUT_PRESET_PRESET_CENTER_BOTTOM                     = 7
-	CONTROL_LAYOUT_PRESET_PRESET_CENTER                            = 8
-	CONTROL_LAYOUT_PRESET_PRESET_LEFT_WIDE                         = 9
-	CONTROL_LAYOUT_PRESET_PRESET_TOP_WIDE                          = 10
-	CONTROL_LAYOUT_PRESET_PRESET_RIGHT_WIDE                        = 11
-	CONTROL_LAYOUT_PRESET_PRESET_BOTTOM_WIDE                       = 12
-	CONTROL_LAYOUT_PRESET_PRESET_VCENTER_WIDE                      = 13
-	CONTROL_LAYOUT_PRESET_PRESET_HCENTER_WIDE                      = 14
-	CONTROL_LAYOUT_PRESET_PRESET_FULL_RECT                         = 15
+	CONTROL_LAYOUT_PRESET_PRESET_TOP_RIGHT     ControlLayoutPreset = 1
+	CONTROL_LAYOUT_PRESET_PRESET_BOTTOM_LEFT   ControlLayoutPreset = 2
+	CONTROL_LAYOUT_PRESET_PRESET_BOTTOM_RIGHT  ControlLayoutPreset = 3
+	CONTROL_LAYOUT_PRESET_PRESET_CENTER_LEFT   ControlLayoutPreset = 4
+	CONTROL_LAYOUT_PRESET_PRESET_CENTER_TOP    ControlLayoutPreset = 5
+	CONTROL_LAYOUT_PRESET_PRESET_CENTER_RIGHT  ControlLayoutPreset = 6
+	CONTROL_LAYOUT_PRESET_PRESET_CENTER_BOTTOM ControlLayoutPreset = 7
+	CONTROL_LAYOUT_PRESET_PRESET_CENTER        ControlLayoutPreset = 8
+	CONTROL_LAYOUT_PRESET_PRESET_LEFT_WIDE     ControlLayoutPreset = 9
+	CONTROL_LAYOUT_PRESET_PRESET_TOP_WIDE      ControlLayoutPreset = 10
+	CONTROL_LAYOUT_PRESET_PRESET_RIGHT_WIDE    ControlLayoutPreset = 11
+	CONTROL_LAYOUT_PRESET_PRESET_BOTTOM_WIDE   ControlLayoutPreset = 12
+	CONTROL_LAYOUT_PRESET_PRESET_VCENTER_WIDE  ControlLayoutPreset = 13
+	CONTROL_LAYOUT_PRESET_PRESET_HCENTER_WIDE  ControlLayoutPreset = 14
+	CONTROL_LAYOUT_PRESET_PRESET_FULL_RECT     ControlLayoutPreset = 15
 )
 
 type ControlLayoutPresetMode int
 
 const (
 	CONTROL_LAYOUT_PRESET_MODE_PRESET_MODE_MINSIZE     ControlLayoutPresetMode = 0
-	CONTROL_LAYOUT_PRESET_MODE_PRESET_MODE_KEEP_WIDTH                          = 1
-	CONTROL_LAYOUT_PRESET_MODE_PRESET_MODE_KEEP_HEIGHT                         = 2
-	CONTROL_LAYOUT_PRESET_MODE_PRESET_MODE_KEEP_SIZE                           = 3
+	CONTROL_LAYOUT_PRESET_MODE_PRESET_MODE_KEEP_WIDTH  ControlLayoutPresetMode = 1
+	CONTROL_LAYOUT_PRESET_MODE_PRESET_MODE_KEEP_HEIGHT ControlLayoutPresetMode = 2
+	CONTROL_LAYOUT_PRESET_MODE_PRESET_MODE_KEEP_SIZE   ControlLayoutPresetMode = 3
 )
 
 type ControlSizeFlags int
 
 const (
 	CONTROL_SIZE_FLAGS_SIZE_SHRINK_BEGIN  ControlSizeFlags = 0
-	CONTROL_SIZE_FLAGS_SIZE_FILL                           = 1
-	CONTROL_SIZE_FLAGS_SIZE_EXPAND                         = 2
-	CONTROL_SIZE_FLAGS_SIZE_EXPAND_FILL                    = 3
-	CONTROL_SIZE_FLAGS_SIZE_SHRINK_CENTER                  = 4
-	CONTROL_SIZE_FLAGS_SIZE_SHRINK_END                     = 8
+	CONTROL_SIZE_FLAGS_SIZE_FILL          ControlSizeFlags = 1
+	CONTROL_SIZE_FLAGS_SIZE_EXPAND        ControlSizeFlags = 2
+	CONTROL_SIZE_FLAGS_SIZE_EXPAND_FILL   ControlSizeFlags = 3
+	CONTROL_SIZE_FLAGS_SIZE_SHRINK_CENTER ControlSizeFlags = 4
+	CONTROL_SIZE_FLAGS_SIZE_SHRINK_END    ControlSizeFlags = 8
 )
 
 type ControlMouseFilter int
 
 const (
 	CONTROL_MOUSE_FILTER_MOUSE_FILTER_STOP   ControlMouseFilter = 0
-	CONTROL_MOUSE_FILTER_MOUSE_FILTER_PASS                      = 1
-	CONTROL_MOUSE_FILTER_MOUSE_FILTER_IGNORE                    = 2
+	CONTROL_MOUSE_FILTER_MOUSE_FILTER_PASS   ControlMouseFilter = 1
+	CONTROL_MOUSE_FILTER_MOUSE_FILTER_IGNORE ControlMouseFilter = 2
 )
 
 type ControlGrowDirection int
 
 const (
 	CONTROL_GROW_DIRECTION_GROW_DIRECTION_BEGIN ControlGrowDirection = 0
-	CONTROL_GROW_DIRECTION_GROW_DIRECTION_END                        = 1
-	CONTROL_GROW_DIRECTION_GROW_DIRECTION_BOTH                       = 2
+	CONTROL_GROW_DIRECTION_GROW_DIRECTION_END   ControlGrowDirection = 1
+	CONTROL_GROW_DIRECTION_GROW_DIRECTION_BOTH  ControlGrowDirection = 2
 )
 
 type ControlAnchor int
 
 const (
 	CONTROL_ANCHOR_ANCHOR_BEGIN ControlAnchor = 0
-	CONTROL_ANCHOR_ANCHOR_END                 = 1
+	CONTROL_ANCHOR_ANCHOR_END   ControlAnchor = 1
 )
 
 type ControlLayoutDirection int
 
 const (
-	CONTROL_LAYOUT_DIRECTION_LAYOUT_DIRECTION_INHERITED ControlLayoutDirection = 0
-	CONTROL_LAYOUT_DIRECTION_LAYOUT_DIRECTION_LOCALE                           = 1
-	CONTROL_LAYOUT_DIRECTION_LAYOUT_DIRECTION_LTR                              = 2
-	CONTROL_LAYOUT_DIRECTION_LAYOUT_DIRECTION_RTL                              = 3
+	CONTROL_LAYOUT_DIRECTION_LAYOUT_DIRECTION_INHERITED          ControlLayoutDirection = 0
+	CONTROL_LAYOUT_DIRECTION_LAYOUT_DIRECTION_APPLICATION_LOCALE ControlLayoutDirection = 1
+	CONTROL_LAYOUT_DIRECTION_LAYOUT_DIRECTION_LTR                ControlLayoutDirection = 2
+	CONTROL_LAYOUT_DIRECTION_LAYOUT_DIRECTION_RTL                ControlLayoutDirection = 3
+	CONTROL_LAYOUT_DIRECTION_LAYOUT_DIRECTION_SYSTEM_LOCALE      ControlLayoutDirection = 4
+	CONTROL_LAYOUT_DIRECTION_LAYOUT_DIRECTION_MAX                ControlLayoutDirection = 5
+	CONTROL_LAYOUT_DIRECTION_LAYOUT_DIRECTION_LOCALE             ControlLayoutDirection = 1
 )
 
 type ControlTextDirection int
 
 const (
 	CONTROL_TEXT_DIRECTION_TEXT_DIRECTION_INHERITED ControlTextDirection = 3
-	CONTROL_TEXT_DIRECTION_TEXT_DIRECTION_AUTO                           = 0
-	CONTROL_TEXT_DIRECTION_TEXT_DIRECTION_LTR                            = 1
-	CONTROL_TEXT_DIRECTION_TEXT_DIRECTION_RTL                            = 2
+	CONTROL_TEXT_DIRECTION_TEXT_DIRECTION_AUTO      ControlTextDirection = 0
+	CONTROL_TEXT_DIRECTION_TEXT_DIRECTION_LTR       ControlTextDirection = 1
+	CONTROL_TEXT_DIRECTION_TEXT_DIRECTION_RTL       ControlTextDirection = 2
+)
+
+type ConvertTransformModifier3DTransformMode int
+
+const (
+	CONVERT_TRANSFORM_MODIFIER_3_D_TRANSFORM_MODE_TRANSFORM_MODE_POSITION ConvertTransformModifier3DTransformMode = 0
+	CONVERT_TRANSFORM_MODIFIER_3_D_TRANSFORM_MODE_TRANSFORM_MODE_ROTATION ConvertTransformModifier3DTransformMode = 1
+	CONVERT_TRANSFORM_MODIFIER_3_D_TRANSFORM_MODE_TRANSFORM_MODE_SCALE    ConvertTransformModifier3DTransformMode = 2
+)
+
+type CopyTransformModifier3DTransformFlag int
+
+const (
+	COPY_TRANSFORM_MODIFIER_3_D_TRANSFORM_FLAG_TRANSFORM_FLAG_POSITION CopyTransformModifier3DTransformFlag = 1
+	COPY_TRANSFORM_MODIFIER_3_D_TRANSFORM_FLAG_TRANSFORM_FLAG_ROTATION CopyTransformModifier3DTransformFlag = 2
+	COPY_TRANSFORM_MODIFIER_3_D_TRANSFORM_FLAG_TRANSFORM_FLAG_SCALE    CopyTransformModifier3DTransformFlag = 4
+	COPY_TRANSFORM_MODIFIER_3_D_TRANSFORM_FLAG_TRANSFORM_FLAG_ALL      CopyTransformModifier3DTransformFlag = 7
+)
+
+type CopyTransformModifier3DAxisFlag int
+
+const (
+	COPY_TRANSFORM_MODIFIER_3_D_AXIS_FLAG_AXIS_FLAG_X   CopyTransformModifier3DAxisFlag = 1
+	COPY_TRANSFORM_MODIFIER_3_D_AXIS_FLAG_AXIS_FLAG_Y   CopyTransformModifier3DAxisFlag = 2
+	COPY_TRANSFORM_MODIFIER_3_D_AXIS_FLAG_AXIS_FLAG_Z   CopyTransformModifier3DAxisFlag = 4
+	COPY_TRANSFORM_MODIFIER_3_D_AXIS_FLAG_AXIS_FLAG_ALL CopyTransformModifier3DAxisFlag = 7
 )
 
 type CurveTangentMode int
 
 const (
 	CURVE_TANGENT_MODE_TANGENT_FREE       CurveTangentMode = 0
-	CURVE_TANGENT_MODE_TANGENT_LINEAR                      = 1
-	CURVE_TANGENT_MODE_TANGENT_MODE_COUNT                  = 2
+	CURVE_TANGENT_MODE_TANGENT_LINEAR     CurveTangentMode = 1
+	CURVE_TANGENT_MODE_TANGENT_MODE_COUNT CurveTangentMode = 2
 )
 
 type CurveTextureTextureMode int
 
 const (
 	CURVE_TEXTURE_TEXTURE_MODE_TEXTURE_MODE_RGB CurveTextureTextureMode = 0
-	CURVE_TEXTURE_TEXTURE_MODE_TEXTURE_MODE_RED                         = 1
+	CURVE_TEXTURE_TEXTURE_MODE_TEXTURE_MODE_RED CurveTextureTextureMode = 1
 )
 
 type DecalDecalTexture int
 
 const (
 	DECAL_DECAL_TEXTURE_TEXTURE_ALBEDO   DecalDecalTexture = 0
-	DECAL_DECAL_TEXTURE_TEXTURE_NORMAL                     = 1
-	DECAL_DECAL_TEXTURE_TEXTURE_ORM                        = 2
-	DECAL_DECAL_TEXTURE_TEXTURE_EMISSION                   = 3
-	DECAL_DECAL_TEXTURE_TEXTURE_MAX                        = 4
+	DECAL_DECAL_TEXTURE_TEXTURE_NORMAL   DecalDecalTexture = 1
+	DECAL_DECAL_TEXTURE_TEXTURE_ORM      DecalDecalTexture = 2
+	DECAL_DECAL_TEXTURE_TEXTURE_EMISSION DecalDecalTexture = 3
+	DECAL_DECAL_TEXTURE_TEXTURE_MAX      DecalDecalTexture = 4
 )
 
 type DirectionalLight3DShadowMode int
 
 const (
 	DIRECTIONAL_LIGHT_3_D_SHADOW_MODE_SHADOW_ORTHOGONAL        DirectionalLight3DShadowMode = 0
-	DIRECTIONAL_LIGHT_3_D_SHADOW_MODE_SHADOW_PARALLEL_2_SPLITS                              = 1
-	DIRECTIONAL_LIGHT_3_D_SHADOW_MODE_SHADOW_PARALLEL_4_SPLITS                              = 2
+	DIRECTIONAL_LIGHT_3_D_SHADOW_MODE_SHADOW_PARALLEL_2_SPLITS DirectionalLight3DShadowMode = 1
+	DIRECTIONAL_LIGHT_3_D_SHADOW_MODE_SHADOW_PARALLEL_4_SPLITS DirectionalLight3DShadowMode = 2
 )
 
 type DirectionalLight3DSkyMode int
 
 const (
 	DIRECTIONAL_LIGHT_3_D_SKY_MODE_SKY_MODE_LIGHT_AND_SKY DirectionalLight3DSkyMode = 0
-	DIRECTIONAL_LIGHT_3_D_SKY_MODE_SKY_MODE_LIGHT_ONLY                              = 1
-	DIRECTIONAL_LIGHT_3_D_SKY_MODE_SKY_MODE_SKY_ONLY                                = 2
+	DIRECTIONAL_LIGHT_3_D_SKY_MODE_SKY_MODE_LIGHT_ONLY    DirectionalLight3DSkyMode = 1
+	DIRECTIONAL_LIGHT_3_D_SKY_MODE_SKY_MODE_SKY_ONLY      DirectionalLight3DSkyMode = 2
 )
 
 type DisplayServerFeature int
 
 const (
-	DISPLAY_SERVER_FEATURE_FEATURE_GLOBAL_MENU         DisplayServerFeature = 0
-	DISPLAY_SERVER_FEATURE_FEATURE_SUBWINDOWS                               = 1
-	DISPLAY_SERVER_FEATURE_FEATURE_TOUCHSCREEN                              = 2
-	DISPLAY_SERVER_FEATURE_FEATURE_MOUSE                                    = 3
-	DISPLAY_SERVER_FEATURE_FEATURE_MOUSE_WARP                               = 4
-	DISPLAY_SERVER_FEATURE_FEATURE_CLIPBOARD                                = 5
-	DISPLAY_SERVER_FEATURE_FEATURE_VIRTUAL_KEYBOARD                         = 6
-	DISPLAY_SERVER_FEATURE_FEATURE_CURSOR_SHAPE                             = 7
-	DISPLAY_SERVER_FEATURE_FEATURE_CUSTOM_CURSOR_SHAPE                      = 8
-	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_DIALOG                            = 9
-	DISPLAY_SERVER_FEATURE_FEATURE_IME                                      = 10
-	DISPLAY_SERVER_FEATURE_FEATURE_WINDOW_TRANSPARENCY                      = 11
-	DISPLAY_SERVER_FEATURE_FEATURE_HIDPI                                    = 12
-	DISPLAY_SERVER_FEATURE_FEATURE_ICON                                     = 13
-	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_ICON                              = 14
-	DISPLAY_SERVER_FEATURE_FEATURE_ORIENTATION                              = 15
-	DISPLAY_SERVER_FEATURE_FEATURE_SWAP_BUFFERS                             = 16
-	DISPLAY_SERVER_FEATURE_FEATURE_CLIPBOARD_PRIMARY                        = 18
-	DISPLAY_SERVER_FEATURE_FEATURE_TEXT_TO_SPEECH                           = 19
-	DISPLAY_SERVER_FEATURE_FEATURE_EXTEND_TO_TITLE                          = 20
-	DISPLAY_SERVER_FEATURE_FEATURE_SCREEN_CAPTURE                           = 21
-	DISPLAY_SERVER_FEATURE_FEATURE_STATUS_INDICATOR                         = 22
-	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_HELP                              = 23
-	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_DIALOG_INPUT                      = 24
-	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_DIALOG_FILE                       = 25
+	DISPLAY_SERVER_FEATURE_FEATURE_GLOBAL_MENU                 DisplayServerFeature = 0
+	DISPLAY_SERVER_FEATURE_FEATURE_SUBWINDOWS                  DisplayServerFeature = 1
+	DISPLAY_SERVER_FEATURE_FEATURE_TOUCHSCREEN                 DisplayServerFeature = 2
+	DISPLAY_SERVER_FEATURE_FEATURE_MOUSE                       DisplayServerFeature = 3
+	DISPLAY_SERVER_FEATURE_FEATURE_MOUSE_WARP                  DisplayServerFeature = 4
+	DISPLAY_SERVER_FEATURE_FEATURE_CLIPBOARD                   DisplayServerFeature = 5
+	DISPLAY_SERVER_FEATURE_FEATURE_VIRTUAL_KEYBOARD            DisplayServerFeature = 6
+	DISPLAY_SERVER_FEATURE_FEATURE_CURSOR_SHAPE                DisplayServerFeature = 7
+	DISPLAY_SERVER_FEATURE_FEATURE_CUSTOM_CURSOR_SHAPE         DisplayServerFeature = 8
+	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_DIALOG               DisplayServerFeature = 9
+	DISPLAY_SERVER_FEATURE_FEATURE_IME                         DisplayServerFeature = 10
+	DISPLAY_SERVER_FEATURE_FEATURE_WINDOW_TRANSPARENCY         DisplayServerFeature = 11
+	DISPLAY_SERVER_FEATURE_FEATURE_HIDPI                       DisplayServerFeature = 12
+	DISPLAY_SERVER_FEATURE_FEATURE_ICON                        DisplayServerFeature = 13
+	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_ICON                 DisplayServerFeature = 14
+	DISPLAY_SERVER_FEATURE_FEATURE_ORIENTATION                 DisplayServerFeature = 15
+	DISPLAY_SERVER_FEATURE_FEATURE_SWAP_BUFFERS                DisplayServerFeature = 16
+	DISPLAY_SERVER_FEATURE_FEATURE_CLIPBOARD_PRIMARY           DisplayServerFeature = 18
+	DISPLAY_SERVER_FEATURE_FEATURE_TEXT_TO_SPEECH              DisplayServerFeature = 19
+	DISPLAY_SERVER_FEATURE_FEATURE_EXTEND_TO_TITLE             DisplayServerFeature = 20
+	DISPLAY_SERVER_FEATURE_FEATURE_SCREEN_CAPTURE              DisplayServerFeature = 21
+	DISPLAY_SERVER_FEATURE_FEATURE_STATUS_INDICATOR            DisplayServerFeature = 22
+	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_HELP                 DisplayServerFeature = 23
+	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_DIALOG_INPUT         DisplayServerFeature = 24
+	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_DIALOG_FILE          DisplayServerFeature = 25
+	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_DIALOG_FILE_EXTRA    DisplayServerFeature = 26
+	DISPLAY_SERVER_FEATURE_FEATURE_WINDOW_DRAG                 DisplayServerFeature = 27
+	DISPLAY_SERVER_FEATURE_FEATURE_SCREEN_EXCLUDE_FROM_CAPTURE DisplayServerFeature = 28
+	DISPLAY_SERVER_FEATURE_FEATURE_WINDOW_EMBEDDING            DisplayServerFeature = 29
+	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_DIALOG_FILE_MIME     DisplayServerFeature = 30
+	DISPLAY_SERVER_FEATURE_FEATURE_EMOJI_AND_SYMBOL_PICKER     DisplayServerFeature = 31
+	DISPLAY_SERVER_FEATURE_FEATURE_NATIVE_COLOR_PICKER         DisplayServerFeature = 32
+	DISPLAY_SERVER_FEATURE_FEATURE_SELF_FITTING_WINDOWS        DisplayServerFeature = 33
+	DISPLAY_SERVER_FEATURE_FEATURE_ACCESSIBILITY_SCREEN_READER DisplayServerFeature = 34
+)
+
+type DisplayServerAccessibilityRole int
+
+const (
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_UNKNOWN              DisplayServerAccessibilityRole = 0
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_DEFAULT_BUTTON       DisplayServerAccessibilityRole = 1
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_AUDIO                DisplayServerAccessibilityRole = 2
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_VIDEO                DisplayServerAccessibilityRole = 3
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_STATIC_TEXT          DisplayServerAccessibilityRole = 4
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_CONTAINER            DisplayServerAccessibilityRole = 5
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_PANEL                DisplayServerAccessibilityRole = 6
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_BUTTON               DisplayServerAccessibilityRole = 7
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_LINK                 DisplayServerAccessibilityRole = 8
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_CHECK_BOX            DisplayServerAccessibilityRole = 9
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_RADIO_BUTTON         DisplayServerAccessibilityRole = 10
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_CHECK_BUTTON         DisplayServerAccessibilityRole = 11
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_SCROLL_BAR           DisplayServerAccessibilityRole = 12
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_SCROLL_VIEW          DisplayServerAccessibilityRole = 13
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_SPLITTER             DisplayServerAccessibilityRole = 14
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_SLIDER               DisplayServerAccessibilityRole = 15
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_SPIN_BUTTON          DisplayServerAccessibilityRole = 16
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_PROGRESS_INDICATOR   DisplayServerAccessibilityRole = 17
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_TEXT_FIELD           DisplayServerAccessibilityRole = 18
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_MULTILINE_TEXT_FIELD DisplayServerAccessibilityRole = 19
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_COLOR_PICKER         DisplayServerAccessibilityRole = 20
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_TABLE                DisplayServerAccessibilityRole = 21
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_CELL                 DisplayServerAccessibilityRole = 22
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_ROW                  DisplayServerAccessibilityRole = 23
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_ROW_GROUP            DisplayServerAccessibilityRole = 24
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_ROW_HEADER           DisplayServerAccessibilityRole = 25
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_COLUMN_HEADER        DisplayServerAccessibilityRole = 26
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_TREE                 DisplayServerAccessibilityRole = 27
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_TREE_ITEM            DisplayServerAccessibilityRole = 28
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_LIST                 DisplayServerAccessibilityRole = 29
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_LIST_ITEM            DisplayServerAccessibilityRole = 30
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_LIST_BOX             DisplayServerAccessibilityRole = 31
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_LIST_BOX_OPTION      DisplayServerAccessibilityRole = 32
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_TAB_BAR              DisplayServerAccessibilityRole = 33
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_TAB                  DisplayServerAccessibilityRole = 34
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_TAB_PANEL            DisplayServerAccessibilityRole = 35
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_MENU_BAR             DisplayServerAccessibilityRole = 36
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_MENU                 DisplayServerAccessibilityRole = 37
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_MENU_ITEM            DisplayServerAccessibilityRole = 38
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_MENU_ITEM_CHECK_BOX  DisplayServerAccessibilityRole = 39
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_MENU_ITEM_RADIO      DisplayServerAccessibilityRole = 40
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_IMAGE                DisplayServerAccessibilityRole = 41
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_WINDOW               DisplayServerAccessibilityRole = 42
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_TITLE_BAR            DisplayServerAccessibilityRole = 43
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_DIALOG               DisplayServerAccessibilityRole = 44
+	DISPLAY_SERVER_ACCESSIBILITY_ROLE_ROLE_TOOLTIP              DisplayServerAccessibilityRole = 45
+)
+
+type DisplayServerAccessibilityPopupType int
+
+const (
+	DISPLAY_SERVER_ACCESSIBILITY_POPUP_TYPE_POPUP_MENU   DisplayServerAccessibilityPopupType = 0
+	DISPLAY_SERVER_ACCESSIBILITY_POPUP_TYPE_POPUP_LIST   DisplayServerAccessibilityPopupType = 1
+	DISPLAY_SERVER_ACCESSIBILITY_POPUP_TYPE_POPUP_TREE   DisplayServerAccessibilityPopupType = 2
+	DISPLAY_SERVER_ACCESSIBILITY_POPUP_TYPE_POPUP_DIALOG DisplayServerAccessibilityPopupType = 3
+)
+
+type DisplayServerAccessibilityFlags int
+
+const (
+	DISPLAY_SERVER_ACCESSIBILITY_FLAGS_FLAG_HIDDEN            DisplayServerAccessibilityFlags = 0
+	DISPLAY_SERVER_ACCESSIBILITY_FLAGS_FLAG_MULTISELECTABLE   DisplayServerAccessibilityFlags = 1
+	DISPLAY_SERVER_ACCESSIBILITY_FLAGS_FLAG_REQUIRED          DisplayServerAccessibilityFlags = 2
+	DISPLAY_SERVER_ACCESSIBILITY_FLAGS_FLAG_VISITED           DisplayServerAccessibilityFlags = 3
+	DISPLAY_SERVER_ACCESSIBILITY_FLAGS_FLAG_BUSY              DisplayServerAccessibilityFlags = 4
+	DISPLAY_SERVER_ACCESSIBILITY_FLAGS_FLAG_MODAL             DisplayServerAccessibilityFlags = 5
+	DISPLAY_SERVER_ACCESSIBILITY_FLAGS_FLAG_TOUCH_PASSTHROUGH DisplayServerAccessibilityFlags = 6
+	DISPLAY_SERVER_ACCESSIBILITY_FLAGS_FLAG_READONLY          DisplayServerAccessibilityFlags = 7
+	DISPLAY_SERVER_ACCESSIBILITY_FLAGS_FLAG_DISABLED          DisplayServerAccessibilityFlags = 8
+	DISPLAY_SERVER_ACCESSIBILITY_FLAGS_FLAG_CLIPS_CHILDREN    DisplayServerAccessibilityFlags = 9
+)
+
+type DisplayServerAccessibilityAction int
+
+const (
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_CLICK                 DisplayServerAccessibilityAction = 0
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_FOCUS                 DisplayServerAccessibilityAction = 1
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_BLUR                  DisplayServerAccessibilityAction = 2
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_COLLAPSE              DisplayServerAccessibilityAction = 3
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_EXPAND                DisplayServerAccessibilityAction = 4
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_DECREMENT             DisplayServerAccessibilityAction = 5
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_INCREMENT             DisplayServerAccessibilityAction = 6
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_HIDE_TOOLTIP          DisplayServerAccessibilityAction = 7
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SHOW_TOOLTIP          DisplayServerAccessibilityAction = 8
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SET_TEXT_SELECTION    DisplayServerAccessibilityAction = 9
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_REPLACE_SELECTED_TEXT DisplayServerAccessibilityAction = 10
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SCROLL_BACKWARD       DisplayServerAccessibilityAction = 11
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SCROLL_DOWN           DisplayServerAccessibilityAction = 12
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SCROLL_FORWARD        DisplayServerAccessibilityAction = 13
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SCROLL_LEFT           DisplayServerAccessibilityAction = 14
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SCROLL_RIGHT          DisplayServerAccessibilityAction = 15
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SCROLL_UP             DisplayServerAccessibilityAction = 16
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SCROLL_INTO_VIEW      DisplayServerAccessibilityAction = 17
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SCROLL_TO_POINT       DisplayServerAccessibilityAction = 18
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SET_SCROLL_OFFSET     DisplayServerAccessibilityAction = 19
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SET_VALUE             DisplayServerAccessibilityAction = 20
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_SHOW_CONTEXT_MENU     DisplayServerAccessibilityAction = 21
+	DISPLAY_SERVER_ACCESSIBILITY_ACTION_ACTION_CUSTOM                DisplayServerAccessibilityAction = 22
+)
+
+type DisplayServerAccessibilityLiveMode int
+
+const (
+	DISPLAY_SERVER_ACCESSIBILITY_LIVE_MODE_LIVE_OFF       DisplayServerAccessibilityLiveMode = 0
+	DISPLAY_SERVER_ACCESSIBILITY_LIVE_MODE_LIVE_POLITE    DisplayServerAccessibilityLiveMode = 1
+	DISPLAY_SERVER_ACCESSIBILITY_LIVE_MODE_LIVE_ASSERTIVE DisplayServerAccessibilityLiveMode = 2
+)
+
+type DisplayServerAccessibilityScrollUnit int
+
+const (
+	DISPLAY_SERVER_ACCESSIBILITY_SCROLL_UNIT_SCROLL_UNIT_ITEM DisplayServerAccessibilityScrollUnit = 0
+	DISPLAY_SERVER_ACCESSIBILITY_SCROLL_UNIT_SCROLL_UNIT_PAGE DisplayServerAccessibilityScrollUnit = 1
+)
+
+type DisplayServerAccessibilityScrollHint int
+
+const (
+	DISPLAY_SERVER_ACCESSIBILITY_SCROLL_HINT_SCROLL_HINT_TOP_LEFT     DisplayServerAccessibilityScrollHint = 0
+	DISPLAY_SERVER_ACCESSIBILITY_SCROLL_HINT_SCROLL_HINT_BOTTOM_RIGHT DisplayServerAccessibilityScrollHint = 1
+	DISPLAY_SERVER_ACCESSIBILITY_SCROLL_HINT_SCROLL_HINT_TOP_EDGE     DisplayServerAccessibilityScrollHint = 2
+	DISPLAY_SERVER_ACCESSIBILITY_SCROLL_HINT_SCROLL_HINT_BOTTOM_EDGE  DisplayServerAccessibilityScrollHint = 3
+	DISPLAY_SERVER_ACCESSIBILITY_SCROLL_HINT_SCROLL_HINT_LEFT_EDGE    DisplayServerAccessibilityScrollHint = 4
+	DISPLAY_SERVER_ACCESSIBILITY_SCROLL_HINT_SCROLL_HINT_RIGHT_EDGE   DisplayServerAccessibilityScrollHint = 5
 )
 
 type DisplayServerMouseMode int
 
 const (
 	DISPLAY_SERVER_MOUSE_MODE_MOUSE_MODE_VISIBLE         DisplayServerMouseMode = 0
-	DISPLAY_SERVER_MOUSE_MODE_MOUSE_MODE_HIDDEN                                 = 1
-	DISPLAY_SERVER_MOUSE_MODE_MOUSE_MODE_CAPTURED                               = 2
-	DISPLAY_SERVER_MOUSE_MODE_MOUSE_MODE_CONFINED                               = 3
-	DISPLAY_SERVER_MOUSE_MODE_MOUSE_MODE_CONFINED_HIDDEN                        = 4
+	DISPLAY_SERVER_MOUSE_MODE_MOUSE_MODE_HIDDEN          DisplayServerMouseMode = 1
+	DISPLAY_SERVER_MOUSE_MODE_MOUSE_MODE_CAPTURED        DisplayServerMouseMode = 2
+	DISPLAY_SERVER_MOUSE_MODE_MOUSE_MODE_CONFINED        DisplayServerMouseMode = 3
+	DISPLAY_SERVER_MOUSE_MODE_MOUSE_MODE_CONFINED_HIDDEN DisplayServerMouseMode = 4
+	DISPLAY_SERVER_MOUSE_MODE_MOUSE_MODE_MAX             DisplayServerMouseMode = 5
 )
 
 type DisplayServerScreenOrientation int
 
 const (
 	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_LANDSCAPE         DisplayServerScreenOrientation = 0
-	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_PORTRAIT                                         = 1
-	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_REVERSE_LANDSCAPE                                = 2
-	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_REVERSE_PORTRAIT                                 = 3
-	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_SENSOR_LANDSCAPE                                 = 4
-	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_SENSOR_PORTRAIT                                  = 5
-	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_SENSOR                                           = 6
+	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_PORTRAIT          DisplayServerScreenOrientation = 1
+	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_REVERSE_LANDSCAPE DisplayServerScreenOrientation = 2
+	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_REVERSE_PORTRAIT  DisplayServerScreenOrientation = 3
+	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_SENSOR_LANDSCAPE  DisplayServerScreenOrientation = 4
+	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_SENSOR_PORTRAIT   DisplayServerScreenOrientation = 5
+	DISPLAY_SERVER_SCREEN_ORIENTATION_SCREEN_SENSOR            DisplayServerScreenOrientation = 6
 )
 
 type DisplayServerVirtualKeyboardType int
 
 const (
 	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_DEFAULT        DisplayServerVirtualKeyboardType = 0
-	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_MULTILINE                                       = 1
-	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_NUMBER                                          = 2
-	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_NUMBER_DECIMAL                                  = 3
-	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_PHONE                                           = 4
-	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_EMAIL_ADDRESS                                   = 5
-	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_PASSWORD                                        = 6
-	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_URL                                             = 7
+	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_MULTILINE      DisplayServerVirtualKeyboardType = 1
+	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_NUMBER         DisplayServerVirtualKeyboardType = 2
+	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_NUMBER_DECIMAL DisplayServerVirtualKeyboardType = 3
+	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_PHONE          DisplayServerVirtualKeyboardType = 4
+	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_EMAIL_ADDRESS  DisplayServerVirtualKeyboardType = 5
+	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_PASSWORD       DisplayServerVirtualKeyboardType = 6
+	DISPLAY_SERVER_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_URL            DisplayServerVirtualKeyboardType = 7
 )
 
 type DisplayServerCursorShape int
 
 const (
 	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_ARROW         DisplayServerCursorShape = 0
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_IBEAM                                  = 1
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_POINTING_HAND                          = 2
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_CROSS                                  = 3
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_WAIT                                   = 4
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_BUSY                                   = 5
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_DRAG                                   = 6
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_CAN_DROP                               = 7
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_FORBIDDEN                              = 8
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_VSIZE                                  = 9
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_HSIZE                                  = 10
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_BDIAGSIZE                              = 11
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_FDIAGSIZE                              = 12
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_MOVE                                   = 13
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_VSPLIT                                 = 14
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_HSPLIT                                 = 15
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_HELP                                   = 16
-	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_MAX                                    = 17
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_IBEAM         DisplayServerCursorShape = 1
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_POINTING_HAND DisplayServerCursorShape = 2
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_CROSS         DisplayServerCursorShape = 3
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_WAIT          DisplayServerCursorShape = 4
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_BUSY          DisplayServerCursorShape = 5
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_DRAG          DisplayServerCursorShape = 6
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_CAN_DROP      DisplayServerCursorShape = 7
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_FORBIDDEN     DisplayServerCursorShape = 8
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_VSIZE         DisplayServerCursorShape = 9
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_HSIZE         DisplayServerCursorShape = 10
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_BDIAGSIZE     DisplayServerCursorShape = 11
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_FDIAGSIZE     DisplayServerCursorShape = 12
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_MOVE          DisplayServerCursorShape = 13
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_VSPLIT        DisplayServerCursorShape = 14
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_HSPLIT        DisplayServerCursorShape = 15
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_HELP          DisplayServerCursorShape = 16
+	DISPLAY_SERVER_CURSOR_SHAPE_CURSOR_MAX           DisplayServerCursorShape = 17
 )
 
 type DisplayServerFileDialogMode int
 
 const (
 	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_FILE  DisplayServerFileDialogMode = 0
-	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_FILES                             = 1
-	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_DIR                               = 2
-	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_ANY                               = 3
-	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_SAVE_FILE                              = 4
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_FILES DisplayServerFileDialogMode = 1
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_DIR   DisplayServerFileDialogMode = 2
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_OPEN_ANY   DisplayServerFileDialogMode = 3
+	DISPLAY_SERVER_FILE_DIALOG_MODE_FILE_DIALOG_MODE_SAVE_FILE  DisplayServerFileDialogMode = 4
 )
 
 type DisplayServerWindowMode int
 
 const (
 	DISPLAY_SERVER_WINDOW_MODE_WINDOW_MODE_WINDOWED             DisplayServerWindowMode = 0
-	DISPLAY_SERVER_WINDOW_MODE_WINDOW_MODE_MINIMIZED                                    = 1
-	DISPLAY_SERVER_WINDOW_MODE_WINDOW_MODE_MAXIMIZED                                    = 2
-	DISPLAY_SERVER_WINDOW_MODE_WINDOW_MODE_FULLSCREEN                                   = 3
-	DISPLAY_SERVER_WINDOW_MODE_WINDOW_MODE_EXCLUSIVE_FULLSCREEN                         = 4
+	DISPLAY_SERVER_WINDOW_MODE_WINDOW_MODE_MINIMIZED            DisplayServerWindowMode = 1
+	DISPLAY_SERVER_WINDOW_MODE_WINDOW_MODE_MAXIMIZED            DisplayServerWindowMode = 2
+	DISPLAY_SERVER_WINDOW_MODE_WINDOW_MODE_FULLSCREEN           DisplayServerWindowMode = 3
+	DISPLAY_SERVER_WINDOW_MODE_WINDOW_MODE_EXCLUSIVE_FULLSCREEN DisplayServerWindowMode = 4
 )
 
 type DisplayServerWindowFlags int
 
 const (
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_RESIZE_DISABLED   DisplayServerWindowFlags = 0
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_BORDERLESS                                 = 1
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_ALWAYS_ON_TOP                              = 2
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_TRANSPARENT                                = 3
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_NO_FOCUS                                   = 4
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_POPUP                                      = 5
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_EXTEND_TO_TITLE                            = 6
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_MOUSE_PASSTHROUGH                          = 7
-	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_MAX                                        = 8
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_RESIZE_DISABLED      DisplayServerWindowFlags = 0
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_BORDERLESS           DisplayServerWindowFlags = 1
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_ALWAYS_ON_TOP        DisplayServerWindowFlags = 2
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_TRANSPARENT          DisplayServerWindowFlags = 3
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_NO_FOCUS             DisplayServerWindowFlags = 4
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_POPUP                DisplayServerWindowFlags = 5
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_EXTEND_TO_TITLE      DisplayServerWindowFlags = 6
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_MOUSE_PASSTHROUGH    DisplayServerWindowFlags = 7
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_SHARP_CORNERS        DisplayServerWindowFlags = 8
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_EXCLUDE_FROM_CAPTURE DisplayServerWindowFlags = 9
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_POPUP_WM_HINT        DisplayServerWindowFlags = 10
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_MINIMIZE_DISABLED    DisplayServerWindowFlags = 11
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_MAXIMIZE_DISABLED    DisplayServerWindowFlags = 12
+	DISPLAY_SERVER_WINDOW_FLAGS_WINDOW_FLAG_MAX                  DisplayServerWindowFlags = 13
 )
 
 type DisplayServerWindowEvent int
 
 const (
 	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_MOUSE_ENTER     DisplayServerWindowEvent = 0
-	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_MOUSE_EXIT                               = 1
-	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_FOCUS_IN                                 = 2
-	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_FOCUS_OUT                                = 3
-	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_CLOSE_REQUEST                            = 4
-	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_GO_BACK_REQUEST                          = 5
-	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_DPI_CHANGE                               = 6
-	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_TITLEBAR_CHANGE                          = 7
+	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_MOUSE_EXIT      DisplayServerWindowEvent = 1
+	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_FOCUS_IN        DisplayServerWindowEvent = 2
+	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_FOCUS_OUT       DisplayServerWindowEvent = 3
+	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_CLOSE_REQUEST   DisplayServerWindowEvent = 4
+	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_GO_BACK_REQUEST DisplayServerWindowEvent = 5
+	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_DPI_CHANGE      DisplayServerWindowEvent = 6
+	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_TITLEBAR_CHANGE DisplayServerWindowEvent = 7
+	DISPLAY_SERVER_WINDOW_EVENT_WINDOW_EVENT_FORCE_CLOSE     DisplayServerWindowEvent = 8
+)
+
+type DisplayServerWindowResizeEdge int
+
+const (
+	DISPLAY_SERVER_WINDOW_RESIZE_EDGE_WINDOW_EDGE_TOP_LEFT     DisplayServerWindowResizeEdge = 0
+	DISPLAY_SERVER_WINDOW_RESIZE_EDGE_WINDOW_EDGE_TOP          DisplayServerWindowResizeEdge = 1
+	DISPLAY_SERVER_WINDOW_RESIZE_EDGE_WINDOW_EDGE_TOP_RIGHT    DisplayServerWindowResizeEdge = 2
+	DISPLAY_SERVER_WINDOW_RESIZE_EDGE_WINDOW_EDGE_LEFT         DisplayServerWindowResizeEdge = 3
+	DISPLAY_SERVER_WINDOW_RESIZE_EDGE_WINDOW_EDGE_RIGHT        DisplayServerWindowResizeEdge = 4
+	DISPLAY_SERVER_WINDOW_RESIZE_EDGE_WINDOW_EDGE_BOTTOM_LEFT  DisplayServerWindowResizeEdge = 5
+	DISPLAY_SERVER_WINDOW_RESIZE_EDGE_WINDOW_EDGE_BOTTOM       DisplayServerWindowResizeEdge = 6
+	DISPLAY_SERVER_WINDOW_RESIZE_EDGE_WINDOW_EDGE_BOTTOM_RIGHT DisplayServerWindowResizeEdge = 7
+	DISPLAY_SERVER_WINDOW_RESIZE_EDGE_WINDOW_EDGE_MAX          DisplayServerWindowResizeEdge = 8
 )
 
 type DisplayServerVSyncMode int
 
 const (
 	DISPLAY_SERVER_V_SYNC_MODE_VSYNC_DISABLED DisplayServerVSyncMode = 0
-	DISPLAY_SERVER_V_SYNC_MODE_VSYNC_ENABLED                         = 1
-	DISPLAY_SERVER_V_SYNC_MODE_VSYNC_ADAPTIVE                        = 2
-	DISPLAY_SERVER_V_SYNC_MODE_VSYNC_MAILBOX                         = 3
+	DISPLAY_SERVER_V_SYNC_MODE_VSYNC_ENABLED  DisplayServerVSyncMode = 1
+	DISPLAY_SERVER_V_SYNC_MODE_VSYNC_ADAPTIVE DisplayServerVSyncMode = 2
+	DISPLAY_SERVER_V_SYNC_MODE_VSYNC_MAILBOX  DisplayServerVSyncMode = 3
 )
 
 type DisplayServerHandleType int
 
 const (
 	DISPLAY_SERVER_HANDLE_TYPE_DISPLAY_HANDLE DisplayServerHandleType = 0
-	DISPLAY_SERVER_HANDLE_TYPE_WINDOW_HANDLE                          = 1
-	DISPLAY_SERVER_HANDLE_TYPE_WINDOW_VIEW                            = 2
-	DISPLAY_SERVER_HANDLE_TYPE_OPENGL_CONTEXT                         = 3
+	DISPLAY_SERVER_HANDLE_TYPE_WINDOW_HANDLE  DisplayServerHandleType = 1
+	DISPLAY_SERVER_HANDLE_TYPE_WINDOW_VIEW    DisplayServerHandleType = 2
+	DISPLAY_SERVER_HANDLE_TYPE_OPENGL_CONTEXT DisplayServerHandleType = 3
+	DISPLAY_SERVER_HANDLE_TYPE_EGL_DISPLAY    DisplayServerHandleType = 4
+	DISPLAY_SERVER_HANDLE_TYPE_EGL_CONFIG     DisplayServerHandleType = 5
 )
 
 type DisplayServerTTSUtteranceEvent int
 
 const (
 	DISPLAY_SERVER_TTS_UTTERANCE_EVENT_TTS_UTTERANCE_STARTED  DisplayServerTTSUtteranceEvent = 0
-	DISPLAY_SERVER_TTS_UTTERANCE_EVENT_TTS_UTTERANCE_ENDED                                   = 1
-	DISPLAY_SERVER_TTS_UTTERANCE_EVENT_TTS_UTTERANCE_CANCELED                                = 2
-	DISPLAY_SERVER_TTS_UTTERANCE_EVENT_TTS_UTTERANCE_BOUNDARY                                = 3
+	DISPLAY_SERVER_TTS_UTTERANCE_EVENT_TTS_UTTERANCE_ENDED    DisplayServerTTSUtteranceEvent = 1
+	DISPLAY_SERVER_TTS_UTTERANCE_EVENT_TTS_UTTERANCE_CANCELED DisplayServerTTSUtteranceEvent = 2
+	DISPLAY_SERVER_TTS_UTTERANCE_EVENT_TTS_UTTERANCE_BOUNDARY DisplayServerTTSUtteranceEvent = 3
 )
 
 type ENetConnectionCompressionMode int
 
 const (
 	E_NET_CONNECTION_COMPRESSION_MODE_COMPRESS_NONE        ENetConnectionCompressionMode = 0
-	E_NET_CONNECTION_COMPRESSION_MODE_COMPRESS_RANGE_CODER                               = 1
-	E_NET_CONNECTION_COMPRESSION_MODE_COMPRESS_FASTLZ                                    = 2
-	E_NET_CONNECTION_COMPRESSION_MODE_COMPRESS_ZLIB                                      = 3
-	E_NET_CONNECTION_COMPRESSION_MODE_COMPRESS_ZSTD                                      = 4
+	E_NET_CONNECTION_COMPRESSION_MODE_COMPRESS_RANGE_CODER ENetConnectionCompressionMode = 1
+	E_NET_CONNECTION_COMPRESSION_MODE_COMPRESS_FASTLZ      ENetConnectionCompressionMode = 2
+	E_NET_CONNECTION_COMPRESSION_MODE_COMPRESS_ZLIB        ENetConnectionCompressionMode = 3
+	E_NET_CONNECTION_COMPRESSION_MODE_COMPRESS_ZSTD        ENetConnectionCompressionMode = 4
 )
 
 type ENetConnectionEventType int
 
 const (
 	E_NET_CONNECTION_EVENT_TYPE_EVENT_ERROR      ENetConnectionEventType = -1
-	E_NET_CONNECTION_EVENT_TYPE_EVENT_NONE                               = 0
-	E_NET_CONNECTION_EVENT_TYPE_EVENT_CONNECT                            = 1
-	E_NET_CONNECTION_EVENT_TYPE_EVENT_DISCONNECT                         = 2
-	E_NET_CONNECTION_EVENT_TYPE_EVENT_RECEIVE                            = 3
+	E_NET_CONNECTION_EVENT_TYPE_EVENT_NONE       ENetConnectionEventType = 0
+	E_NET_CONNECTION_EVENT_TYPE_EVENT_CONNECT    ENetConnectionEventType = 1
+	E_NET_CONNECTION_EVENT_TYPE_EVENT_DISCONNECT ENetConnectionEventType = 2
+	E_NET_CONNECTION_EVENT_TYPE_EVENT_RECEIVE    ENetConnectionEventType = 3
 )
 
 type ENetConnectionHostStatistic int
 
 const (
 	E_NET_CONNECTION_HOST_STATISTIC_HOST_TOTAL_SENT_DATA        ENetConnectionHostStatistic = 0
-	E_NET_CONNECTION_HOST_STATISTIC_HOST_TOTAL_SENT_PACKETS                                 = 1
-	E_NET_CONNECTION_HOST_STATISTIC_HOST_TOTAL_RECEIVED_DATA                                = 2
-	E_NET_CONNECTION_HOST_STATISTIC_HOST_TOTAL_RECEIVED_PACKETS                             = 3
+	E_NET_CONNECTION_HOST_STATISTIC_HOST_TOTAL_SENT_PACKETS     ENetConnectionHostStatistic = 1
+	E_NET_CONNECTION_HOST_STATISTIC_HOST_TOTAL_RECEIVED_DATA    ENetConnectionHostStatistic = 2
+	E_NET_CONNECTION_HOST_STATISTIC_HOST_TOTAL_RECEIVED_PACKETS ENetConnectionHostStatistic = 3
 )
 
 type ENetPacketPeerPeerState int
 
 const (
 	E_NET_PACKET_PEER_PEER_STATE_STATE_DISCONNECTED             ENetPacketPeerPeerState = 0
-	E_NET_PACKET_PEER_PEER_STATE_STATE_CONNECTING                                       = 1
-	E_NET_PACKET_PEER_PEER_STATE_STATE_ACKNOWLEDGING_CONNECT                            = 2
-	E_NET_PACKET_PEER_PEER_STATE_STATE_CONNECTION_PENDING                               = 3
-	E_NET_PACKET_PEER_PEER_STATE_STATE_CONNECTION_SUCCEEDED                             = 4
-	E_NET_PACKET_PEER_PEER_STATE_STATE_CONNECTED                                        = 5
-	E_NET_PACKET_PEER_PEER_STATE_STATE_DISCONNECT_LATER                                 = 6
-	E_NET_PACKET_PEER_PEER_STATE_STATE_DISCONNECTING                                    = 7
-	E_NET_PACKET_PEER_PEER_STATE_STATE_ACKNOWLEDGING_DISCONNECT                         = 8
-	E_NET_PACKET_PEER_PEER_STATE_STATE_ZOMBIE                                           = 9
+	E_NET_PACKET_PEER_PEER_STATE_STATE_CONNECTING               ENetPacketPeerPeerState = 1
+	E_NET_PACKET_PEER_PEER_STATE_STATE_ACKNOWLEDGING_CONNECT    ENetPacketPeerPeerState = 2
+	E_NET_PACKET_PEER_PEER_STATE_STATE_CONNECTION_PENDING       ENetPacketPeerPeerState = 3
+	E_NET_PACKET_PEER_PEER_STATE_STATE_CONNECTION_SUCCEEDED     ENetPacketPeerPeerState = 4
+	E_NET_PACKET_PEER_PEER_STATE_STATE_CONNECTED                ENetPacketPeerPeerState = 5
+	E_NET_PACKET_PEER_PEER_STATE_STATE_DISCONNECT_LATER         ENetPacketPeerPeerState = 6
+	E_NET_PACKET_PEER_PEER_STATE_STATE_DISCONNECTING            ENetPacketPeerPeerState = 7
+	E_NET_PACKET_PEER_PEER_STATE_STATE_ACKNOWLEDGING_DISCONNECT ENetPacketPeerPeerState = 8
+	E_NET_PACKET_PEER_PEER_STATE_STATE_ZOMBIE                   ENetPacketPeerPeerState = 9
 )
 
 type ENetPacketPeerPeerStatistic int
 
 const (
 	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_LOSS                   ENetPacketPeerPeerStatistic = 0
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_LOSS_VARIANCE                                      = 1
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_LOSS_EPOCH                                         = 2
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_ROUND_TRIP_TIME                                           = 3
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_ROUND_TRIP_TIME_VARIANCE                                  = 4
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_LAST_ROUND_TRIP_TIME                                      = 5
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_LAST_ROUND_TRIP_TIME_VARIANCE                             = 6
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE                                           = 7
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_LIMIT                                     = 8
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_COUNTER                                   = 9
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_EPOCH                                     = 10
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_ACCELERATION                              = 11
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_DECELERATION                              = 12
-	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_INTERVAL                                  = 13
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_LOSS_VARIANCE          ENetPacketPeerPeerStatistic = 1
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_LOSS_EPOCH             ENetPacketPeerPeerStatistic = 2
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_ROUND_TRIP_TIME               ENetPacketPeerPeerStatistic = 3
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_ROUND_TRIP_TIME_VARIANCE      ENetPacketPeerPeerStatistic = 4
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_LAST_ROUND_TRIP_TIME          ENetPacketPeerPeerStatistic = 5
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_LAST_ROUND_TRIP_TIME_VARIANCE ENetPacketPeerPeerStatistic = 6
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE               ENetPacketPeerPeerStatistic = 7
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_LIMIT         ENetPacketPeerPeerStatistic = 8
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_COUNTER       ENetPacketPeerPeerStatistic = 9
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_EPOCH         ENetPacketPeerPeerStatistic = 10
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_ACCELERATION  ENetPacketPeerPeerStatistic = 11
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_DECELERATION  ENetPacketPeerPeerStatistic = 12
+	E_NET_PACKET_PEER_PEER_STATISTIC_PEER_PACKET_THROTTLE_INTERVAL      ENetPacketPeerPeerStatistic = 13
+)
+
+type EditorContextMenuPluginContextMenuSlot int
+
+const (
+	EDITOR_CONTEXT_MENU_PLUGIN_CONTEXT_MENU_SLOT_CONTEXT_SLOT_SCENE_TREE         EditorContextMenuPluginContextMenuSlot = 0
+	EDITOR_CONTEXT_MENU_PLUGIN_CONTEXT_MENU_SLOT_CONTEXT_SLOT_FILESYSTEM         EditorContextMenuPluginContextMenuSlot = 1
+	EDITOR_CONTEXT_MENU_PLUGIN_CONTEXT_MENU_SLOT_CONTEXT_SLOT_SCRIPT_EDITOR      EditorContextMenuPluginContextMenuSlot = 2
+	EDITOR_CONTEXT_MENU_PLUGIN_CONTEXT_MENU_SLOT_CONTEXT_SLOT_FILESYSTEM_CREATE  EditorContextMenuPluginContextMenuSlot = 3
+	EDITOR_CONTEXT_MENU_PLUGIN_CONTEXT_MENU_SLOT_CONTEXT_SLOT_SCRIPT_EDITOR_CODE EditorContextMenuPluginContextMenuSlot = 4
+	EDITOR_CONTEXT_MENU_PLUGIN_CONTEXT_MENU_SLOT_CONTEXT_SLOT_SCENE_TABS         EditorContextMenuPluginContextMenuSlot = 5
+	EDITOR_CONTEXT_MENU_PLUGIN_CONTEXT_MENU_SLOT_CONTEXT_SLOT_2_D_EDITOR         EditorContextMenuPluginContextMenuSlot = 6
+)
+
+type EditorExportPlatformExportMessageType int
+
+const (
+	EDITOR_EXPORT_PLATFORM_EXPORT_MESSAGE_TYPE_EXPORT_MESSAGE_NONE    EditorExportPlatformExportMessageType = 0
+	EDITOR_EXPORT_PLATFORM_EXPORT_MESSAGE_TYPE_EXPORT_MESSAGE_INFO    EditorExportPlatformExportMessageType = 1
+	EDITOR_EXPORT_PLATFORM_EXPORT_MESSAGE_TYPE_EXPORT_MESSAGE_WARNING EditorExportPlatformExportMessageType = 2
+	EDITOR_EXPORT_PLATFORM_EXPORT_MESSAGE_TYPE_EXPORT_MESSAGE_ERROR   EditorExportPlatformExportMessageType = 3
+)
+
+type EditorExportPlatformDebugFlags int
+
+const (
+	EDITOR_EXPORT_PLATFORM_DEBUG_FLAGS_DEBUG_FLAG_DUMB_CLIENT            EditorExportPlatformDebugFlags = 1
+	EDITOR_EXPORT_PLATFORM_DEBUG_FLAGS_DEBUG_FLAG_REMOTE_DEBUG           EditorExportPlatformDebugFlags = 2
+	EDITOR_EXPORT_PLATFORM_DEBUG_FLAGS_DEBUG_FLAG_REMOTE_DEBUG_LOCALHOST EditorExportPlatformDebugFlags = 4
+	EDITOR_EXPORT_PLATFORM_DEBUG_FLAGS_DEBUG_FLAG_VIEW_COLLISIONS        EditorExportPlatformDebugFlags = 8
+	EDITOR_EXPORT_PLATFORM_DEBUG_FLAGS_DEBUG_FLAG_VIEW_NAVIGATION        EditorExportPlatformDebugFlags = 16
+)
+
+type EditorExportPresetExportFilter int
+
+const (
+	EDITOR_EXPORT_PRESET_EXPORT_FILTER_EXPORT_ALL_RESOURCES       EditorExportPresetExportFilter = 0
+	EDITOR_EXPORT_PRESET_EXPORT_FILTER_EXPORT_SELECTED_SCENES     EditorExportPresetExportFilter = 1
+	EDITOR_EXPORT_PRESET_EXPORT_FILTER_EXPORT_SELECTED_RESOURCES  EditorExportPresetExportFilter = 2
+	EDITOR_EXPORT_PRESET_EXPORT_FILTER_EXCLUDE_SELECTED_RESOURCES EditorExportPresetExportFilter = 3
+	EDITOR_EXPORT_PRESET_EXPORT_FILTER_EXPORT_CUSTOMIZED          EditorExportPresetExportFilter = 4
+)
+
+type EditorExportPresetFileExportMode int
+
+const (
+	EDITOR_EXPORT_PRESET_FILE_EXPORT_MODE_MODE_FILE_NOT_CUSTOMIZED EditorExportPresetFileExportMode = 0
+	EDITOR_EXPORT_PRESET_FILE_EXPORT_MODE_MODE_FILE_STRIP          EditorExportPresetFileExportMode = 1
+	EDITOR_EXPORT_PRESET_FILE_EXPORT_MODE_MODE_FILE_KEEP           EditorExportPresetFileExportMode = 2
+	EDITOR_EXPORT_PRESET_FILE_EXPORT_MODE_MODE_FILE_REMOVE         EditorExportPresetFileExportMode = 3
+)
+
+type EditorExportPresetScriptExportMode int
+
+const (
+	EDITOR_EXPORT_PRESET_SCRIPT_EXPORT_MODE_MODE_SCRIPT_TEXT                     EditorExportPresetScriptExportMode = 0
+	EDITOR_EXPORT_PRESET_SCRIPT_EXPORT_MODE_MODE_SCRIPT_BINARY_TOKENS            EditorExportPresetScriptExportMode = 1
+	EDITOR_EXPORT_PRESET_SCRIPT_EXPORT_MODE_MODE_SCRIPT_BINARY_TOKENS_COMPRESSED EditorExportPresetScriptExportMode = 2
 )
 
 type EditorFeatureProfileFeature int
 
 const (
 	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_3_D             EditorFeatureProfileFeature = 0
-	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_SCRIPT                                      = 1
-	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_ASSET_LIB                                   = 2
-	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_SCENE_TREE                                  = 3
-	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_NODE_DOCK                                   = 4
-	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_FILESYSTEM_DOCK                             = 5
-	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_IMPORT_DOCK                                 = 6
-	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_HISTORY_DOCK                                = 7
-	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_MAX                                         = 8
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_SCRIPT          EditorFeatureProfileFeature = 1
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_ASSET_LIB       EditorFeatureProfileFeature = 2
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_SCENE_TREE      EditorFeatureProfileFeature = 3
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_NODE_DOCK       EditorFeatureProfileFeature = 4
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_FILESYSTEM_DOCK EditorFeatureProfileFeature = 5
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_IMPORT_DOCK     EditorFeatureProfileFeature = 6
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_HISTORY_DOCK    EditorFeatureProfileFeature = 7
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_GAME            EditorFeatureProfileFeature = 8
+	EDITOR_FEATURE_PROFILE_FEATURE_FEATURE_MAX             EditorFeatureProfileFeature = 9
 )
 
 type EditorFileDialogFileMode int
 
 const (
 	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_FILE  EditorFileDialogFileMode = 0
-	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_FILES                          = 1
-	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_DIR                            = 2
-	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_ANY                            = 3
-	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_SAVE_FILE                           = 4
+	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_FILES EditorFileDialogFileMode = 1
+	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_DIR   EditorFileDialogFileMode = 2
+	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_ANY   EditorFileDialogFileMode = 3
+	EDITOR_FILE_DIALOG_FILE_MODE_FILE_MODE_SAVE_FILE  EditorFileDialogFileMode = 4
 )
 
 type EditorFileDialogAccess int
 
 const (
 	EDITOR_FILE_DIALOG_ACCESS_ACCESS_RESOURCES  EditorFileDialogAccess = 0
-	EDITOR_FILE_DIALOG_ACCESS_ACCESS_USERDATA                          = 1
-	EDITOR_FILE_DIALOG_ACCESS_ACCESS_FILESYSTEM                        = 2
+	EDITOR_FILE_DIALOG_ACCESS_ACCESS_USERDATA   EditorFileDialogAccess = 1
+	EDITOR_FILE_DIALOG_ACCESS_ACCESS_FILESYSTEM EditorFileDialogAccess = 2
 )
 
 type EditorFileDialogDisplayMode int
 
 const (
 	EDITOR_FILE_DIALOG_DISPLAY_MODE_DISPLAY_THUMBNAILS EditorFileDialogDisplayMode = 0
-	EDITOR_FILE_DIALOG_DISPLAY_MODE_DISPLAY_LIST                                   = 1
+	EDITOR_FILE_DIALOG_DISPLAY_MODE_DISPLAY_LIST       EditorFileDialogDisplayMode = 1
 )
 
 type EditorPluginCustomControlContainer int
 
 const (
 	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_TOOLBAR                   EditorPluginCustomControlContainer = 0
-	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_MENU                                          = 1
-	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_SIDE_LEFT                                     = 2
-	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_SIDE_RIGHT                                    = 3
-	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_BOTTOM                                        = 4
-	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_MENU                                           = 5
-	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_SIDE_LEFT                                      = 6
-	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_SIDE_RIGHT                                     = 7
-	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_BOTTOM                                         = 8
-	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_INSPECTOR_BOTTOM                                             = 9
-	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_PROJECT_SETTING_TAB_LEFT                                     = 10
-	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_PROJECT_SETTING_TAB_RIGHT                                    = 11
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_MENU       EditorPluginCustomControlContainer = 1
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_SIDE_LEFT  EditorPluginCustomControlContainer = 2
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_SIDE_RIGHT EditorPluginCustomControlContainer = 3
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_SPATIAL_EDITOR_BOTTOM     EditorPluginCustomControlContainer = 4
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_MENU        EditorPluginCustomControlContainer = 5
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_SIDE_LEFT   EditorPluginCustomControlContainer = 6
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_SIDE_RIGHT  EditorPluginCustomControlContainer = 7
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_CANVAS_EDITOR_BOTTOM      EditorPluginCustomControlContainer = 8
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_INSPECTOR_BOTTOM          EditorPluginCustomControlContainer = 9
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_PROJECT_SETTING_TAB_LEFT  EditorPluginCustomControlContainer = 10
+	EDITOR_PLUGIN_CUSTOM_CONTROL_CONTAINER_CONTAINER_PROJECT_SETTING_TAB_RIGHT EditorPluginCustomControlContainer = 11
 )
 
 type EditorPluginDockSlot int
 
 const (
 	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_LEFT_UL  EditorPluginDockSlot = 0
-	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_LEFT_BL                       = 1
-	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_LEFT_UR                       = 2
-	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_LEFT_BR                       = 3
-	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_UL                      = 4
-	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_BL                      = 5
-	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_UR                      = 6
-	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_BR                      = 7
-	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_MAX                           = 8
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_LEFT_BL  EditorPluginDockSlot = 1
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_LEFT_UR  EditorPluginDockSlot = 2
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_LEFT_BR  EditorPluginDockSlot = 3
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_UL EditorPluginDockSlot = 4
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_BL EditorPluginDockSlot = 5
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_UR EditorPluginDockSlot = 6
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_RIGHT_BR EditorPluginDockSlot = 7
+	EDITOR_PLUGIN_DOCK_SLOT_DOCK_SLOT_MAX      EditorPluginDockSlot = 8
 )
 
 type EditorPluginAfterGUIInput int
 
 const (
 	EDITOR_PLUGIN_AFTER_GUI_INPUT_AFTER_GUI_INPUT_PASS   EditorPluginAfterGUIInput = 0
-	EDITOR_PLUGIN_AFTER_GUI_INPUT_AFTER_GUI_INPUT_STOP                             = 1
-	EDITOR_PLUGIN_AFTER_GUI_INPUT_AFTER_GUI_INPUT_CUSTOM                           = 2
+	EDITOR_PLUGIN_AFTER_GUI_INPUT_AFTER_GUI_INPUT_STOP   EditorPluginAfterGUIInput = 1
+	EDITOR_PLUGIN_AFTER_GUI_INPUT_AFTER_GUI_INPUT_CUSTOM EditorPluginAfterGUIInput = 2
 )
 
 type EditorScenePostImportPluginInternalImportCategory int
 
 const (
 	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_NODE              EditorScenePostImportPluginInternalImportCategory = 0
-	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MESH_3_D_NODE                                                       = 1
-	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MESH                                                                = 2
-	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MATERIAL                                                            = 3
-	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_ANIMATION                                                           = 4
-	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_ANIMATION_NODE                                                      = 5
-	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_SKELETON_3_D_NODE                                                   = 6
-	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MAX                                                                 = 7
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MESH_3_D_NODE     EditorScenePostImportPluginInternalImportCategory = 1
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MESH              EditorScenePostImportPluginInternalImportCategory = 2
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MATERIAL          EditorScenePostImportPluginInternalImportCategory = 3
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_ANIMATION         EditorScenePostImportPluginInternalImportCategory = 4
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_ANIMATION_NODE    EditorScenePostImportPluginInternalImportCategory = 5
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_SKELETON_3_D_NODE EditorScenePostImportPluginInternalImportCategory = 6
+	EDITOR_SCENE_POST_IMPORT_PLUGIN_INTERNAL_IMPORT_CATEGORY_INTERNAL_IMPORT_CATEGORY_MAX               EditorScenePostImportPluginInternalImportCategory = 7
+)
+
+type EditorToasterSeverity int
+
+const (
+	EDITOR_TOASTER_SEVERITY_SEVERITY_INFO    EditorToasterSeverity = 0
+	EDITOR_TOASTER_SEVERITY_SEVERITY_WARNING EditorToasterSeverity = 1
+	EDITOR_TOASTER_SEVERITY_SEVERITY_ERROR   EditorToasterSeverity = 2
 )
 
 type EditorUndoRedoManagerSpecialHistory int
 
 const (
 	EDITOR_UNDO_REDO_MANAGER_SPECIAL_HISTORY_GLOBAL_HISTORY  EditorUndoRedoManagerSpecialHistory = 0
-	EDITOR_UNDO_REDO_MANAGER_SPECIAL_HISTORY_REMOTE_HISTORY                                      = -9
-	EDITOR_UNDO_REDO_MANAGER_SPECIAL_HISTORY_INVALID_HISTORY                                     = -99
+	EDITOR_UNDO_REDO_MANAGER_SPECIAL_HISTORY_REMOTE_HISTORY  EditorUndoRedoManagerSpecialHistory = -9
+	EDITOR_UNDO_REDO_MANAGER_SPECIAL_HISTORY_INVALID_HISTORY EditorUndoRedoManagerSpecialHistory = -99
 )
 
 type EditorVCSInterfaceChangeType int
 
 const (
 	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_NEW        EditorVCSInterfaceChangeType = 0
-	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_MODIFIED                                = 1
-	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_RENAMED                                 = 2
-	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_DELETED                                 = 3
-	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_TYPECHANGE                              = 4
-	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_UNMERGED                                = 5
+	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_MODIFIED   EditorVCSInterfaceChangeType = 1
+	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_RENAMED    EditorVCSInterfaceChangeType = 2
+	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_DELETED    EditorVCSInterfaceChangeType = 3
+	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_TYPECHANGE EditorVCSInterfaceChangeType = 4
+	EDITOR_VCS_INTERFACE_CHANGE_TYPE_CHANGE_TYPE_UNMERGED   EditorVCSInterfaceChangeType = 5
 )
 
 type EditorVCSInterfaceTreeArea int
 
 const (
 	EDITOR_VCS_INTERFACE_TREE_AREA_TREE_AREA_COMMIT   EditorVCSInterfaceTreeArea = 0
-	EDITOR_VCS_INTERFACE_TREE_AREA_TREE_AREA_STAGED                              = 1
-	EDITOR_VCS_INTERFACE_TREE_AREA_TREE_AREA_UNSTAGED                            = 2
+	EDITOR_VCS_INTERFACE_TREE_AREA_TREE_AREA_STAGED   EditorVCSInterfaceTreeArea = 1
+	EDITOR_VCS_INTERFACE_TREE_AREA_TREE_AREA_UNSTAGED EditorVCSInterfaceTreeArea = 2
 )
 
 type EnvironmentBGMode int
 
 const (
 	ENVIRONMENT_BG_MODE_BG_CLEAR_COLOR EnvironmentBGMode = 0
-	ENVIRONMENT_BG_MODE_BG_COLOR                         = 1
-	ENVIRONMENT_BG_MODE_BG_SKY                           = 2
-	ENVIRONMENT_BG_MODE_BG_CANVAS                        = 3
-	ENVIRONMENT_BG_MODE_BG_KEEP                          = 4
-	ENVIRONMENT_BG_MODE_BG_CAMERA_FEED                   = 5
-	ENVIRONMENT_BG_MODE_BG_MAX                           = 6
+	ENVIRONMENT_BG_MODE_BG_COLOR       EnvironmentBGMode = 1
+	ENVIRONMENT_BG_MODE_BG_SKY         EnvironmentBGMode = 2
+	ENVIRONMENT_BG_MODE_BG_CANVAS      EnvironmentBGMode = 3
+	ENVIRONMENT_BG_MODE_BG_KEEP        EnvironmentBGMode = 4
+	ENVIRONMENT_BG_MODE_BG_CAMERA_FEED EnvironmentBGMode = 5
+	ENVIRONMENT_BG_MODE_BG_MAX         EnvironmentBGMode = 6
 )
 
 type EnvironmentAmbientSource int
 
 const (
 	ENVIRONMENT_AMBIENT_SOURCE_AMBIENT_SOURCE_BG       EnvironmentAmbientSource = 0
-	ENVIRONMENT_AMBIENT_SOURCE_AMBIENT_SOURCE_DISABLED                          = 1
-	ENVIRONMENT_AMBIENT_SOURCE_AMBIENT_SOURCE_COLOR                             = 2
-	ENVIRONMENT_AMBIENT_SOURCE_AMBIENT_SOURCE_SKY                               = 3
+	ENVIRONMENT_AMBIENT_SOURCE_AMBIENT_SOURCE_DISABLED EnvironmentAmbientSource = 1
+	ENVIRONMENT_AMBIENT_SOURCE_AMBIENT_SOURCE_COLOR    EnvironmentAmbientSource = 2
+	ENVIRONMENT_AMBIENT_SOURCE_AMBIENT_SOURCE_SKY      EnvironmentAmbientSource = 3
 )
 
 type EnvironmentReflectionSource int
 
 const (
 	ENVIRONMENT_REFLECTION_SOURCE_REFLECTION_SOURCE_BG       EnvironmentReflectionSource = 0
-	ENVIRONMENT_REFLECTION_SOURCE_REFLECTION_SOURCE_DISABLED                             = 1
-	ENVIRONMENT_REFLECTION_SOURCE_REFLECTION_SOURCE_SKY                                  = 2
+	ENVIRONMENT_REFLECTION_SOURCE_REFLECTION_SOURCE_DISABLED EnvironmentReflectionSource = 1
+	ENVIRONMENT_REFLECTION_SOURCE_REFLECTION_SOURCE_SKY      EnvironmentReflectionSource = 2
 )
 
 type EnvironmentToneMapper int
 
 const (
 	ENVIRONMENT_TONE_MAPPER_TONE_MAPPER_LINEAR    EnvironmentToneMapper = 0
-	ENVIRONMENT_TONE_MAPPER_TONE_MAPPER_REINHARDT                       = 1
-	ENVIRONMENT_TONE_MAPPER_TONE_MAPPER_FILMIC                          = 2
-	ENVIRONMENT_TONE_MAPPER_TONE_MAPPER_ACES                            = 3
+	ENVIRONMENT_TONE_MAPPER_TONE_MAPPER_REINHARDT EnvironmentToneMapper = 1
+	ENVIRONMENT_TONE_MAPPER_TONE_MAPPER_FILMIC    EnvironmentToneMapper = 2
+	ENVIRONMENT_TONE_MAPPER_TONE_MAPPER_ACES      EnvironmentToneMapper = 3
+	ENVIRONMENT_TONE_MAPPER_TONE_MAPPER_AGX       EnvironmentToneMapper = 4
 )
 
 type EnvironmentGlowBlendMode int
 
 const (
 	ENVIRONMENT_GLOW_BLEND_MODE_GLOW_BLEND_MODE_ADDITIVE  EnvironmentGlowBlendMode = 0
-	ENVIRONMENT_GLOW_BLEND_MODE_GLOW_BLEND_MODE_SCREEN                             = 1
-	ENVIRONMENT_GLOW_BLEND_MODE_GLOW_BLEND_MODE_SOFTLIGHT                          = 2
-	ENVIRONMENT_GLOW_BLEND_MODE_GLOW_BLEND_MODE_REPLACE                            = 3
-	ENVIRONMENT_GLOW_BLEND_MODE_GLOW_BLEND_MODE_MIX                                = 4
+	ENVIRONMENT_GLOW_BLEND_MODE_GLOW_BLEND_MODE_SCREEN    EnvironmentGlowBlendMode = 1
+	ENVIRONMENT_GLOW_BLEND_MODE_GLOW_BLEND_MODE_SOFTLIGHT EnvironmentGlowBlendMode = 2
+	ENVIRONMENT_GLOW_BLEND_MODE_GLOW_BLEND_MODE_REPLACE   EnvironmentGlowBlendMode = 3
+	ENVIRONMENT_GLOW_BLEND_MODE_GLOW_BLEND_MODE_MIX       EnvironmentGlowBlendMode = 4
 )
 
 type EnvironmentFogMode int
 
 const (
 	ENVIRONMENT_FOG_MODE_FOG_MODE_EXPONENTIAL EnvironmentFogMode = 0
-	ENVIRONMENT_FOG_MODE_FOG_MODE_DEPTH                          = 1
+	ENVIRONMENT_FOG_MODE_FOG_MODE_DEPTH       EnvironmentFogMode = 1
 )
 
 type EnvironmentSDFGIYScale int
 
 const (
 	ENVIRONMENT_SDFGIY_SCALE_SDFGI_Y_SCALE_50_PERCENT  EnvironmentSDFGIYScale = 0
-	ENVIRONMENT_SDFGIY_SCALE_SDFGI_Y_SCALE_75_PERCENT                         = 1
-	ENVIRONMENT_SDFGIY_SCALE_SDFGI_Y_SCALE_100_PERCENT                        = 2
+	ENVIRONMENT_SDFGIY_SCALE_SDFGI_Y_SCALE_75_PERCENT  EnvironmentSDFGIYScale = 1
+	ENVIRONMENT_SDFGIY_SCALE_SDFGI_Y_SCALE_100_PERCENT EnvironmentSDFGIYScale = 2
 )
 
 type FastNoiseLiteNoiseType int
 
 const (
 	FAST_NOISE_LITE_NOISE_TYPE_TYPE_VALUE          FastNoiseLiteNoiseType = 5
-	FAST_NOISE_LITE_NOISE_TYPE_TYPE_VALUE_CUBIC                           = 4
-	FAST_NOISE_LITE_NOISE_TYPE_TYPE_PERLIN                                = 3
-	FAST_NOISE_LITE_NOISE_TYPE_TYPE_CELLULAR                              = 2
-	FAST_NOISE_LITE_NOISE_TYPE_TYPE_SIMPLEX                               = 0
-	FAST_NOISE_LITE_NOISE_TYPE_TYPE_SIMPLEX_SMOOTH                        = 1
+	FAST_NOISE_LITE_NOISE_TYPE_TYPE_VALUE_CUBIC    FastNoiseLiteNoiseType = 4
+	FAST_NOISE_LITE_NOISE_TYPE_TYPE_PERLIN         FastNoiseLiteNoiseType = 3
+	FAST_NOISE_LITE_NOISE_TYPE_TYPE_CELLULAR       FastNoiseLiteNoiseType = 2
+	FAST_NOISE_LITE_NOISE_TYPE_TYPE_SIMPLEX        FastNoiseLiteNoiseType = 0
+	FAST_NOISE_LITE_NOISE_TYPE_TYPE_SIMPLEX_SMOOTH FastNoiseLiteNoiseType = 1
 )
 
 type FastNoiseLiteFractalType int
 
 const (
 	FAST_NOISE_LITE_FRACTAL_TYPE_FRACTAL_NONE      FastNoiseLiteFractalType = 0
-	FAST_NOISE_LITE_FRACTAL_TYPE_FRACTAL_FBM                                = 1
-	FAST_NOISE_LITE_FRACTAL_TYPE_FRACTAL_RIDGED                             = 2
-	FAST_NOISE_LITE_FRACTAL_TYPE_FRACTAL_PING_PONG                          = 3
+	FAST_NOISE_LITE_FRACTAL_TYPE_FRACTAL_FBM       FastNoiseLiteFractalType = 1
+	FAST_NOISE_LITE_FRACTAL_TYPE_FRACTAL_RIDGED    FastNoiseLiteFractalType = 2
+	FAST_NOISE_LITE_FRACTAL_TYPE_FRACTAL_PING_PONG FastNoiseLiteFractalType = 3
 )
 
 type FastNoiseLiteCellularDistanceFunction int
 
 const (
 	FAST_NOISE_LITE_CELLULAR_DISTANCE_FUNCTION_DISTANCE_EUCLIDEAN         FastNoiseLiteCellularDistanceFunction = 0
-	FAST_NOISE_LITE_CELLULAR_DISTANCE_FUNCTION_DISTANCE_EUCLIDEAN_SQUARED                                       = 1
-	FAST_NOISE_LITE_CELLULAR_DISTANCE_FUNCTION_DISTANCE_MANHATTAN                                               = 2
-	FAST_NOISE_LITE_CELLULAR_DISTANCE_FUNCTION_DISTANCE_HYBRID                                                  = 3
+	FAST_NOISE_LITE_CELLULAR_DISTANCE_FUNCTION_DISTANCE_EUCLIDEAN_SQUARED FastNoiseLiteCellularDistanceFunction = 1
+	FAST_NOISE_LITE_CELLULAR_DISTANCE_FUNCTION_DISTANCE_MANHATTAN         FastNoiseLiteCellularDistanceFunction = 2
+	FAST_NOISE_LITE_CELLULAR_DISTANCE_FUNCTION_DISTANCE_HYBRID            FastNoiseLiteCellularDistanceFunction = 3
 )
 
 type FastNoiseLiteCellularReturnType int
 
 const (
 	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_CELL_VALUE     FastNoiseLiteCellularReturnType = 0
-	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE                                       = 1
-	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE_2                                     = 2
-	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE_2_ADD                                 = 3
-	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE_2_SUB                                 = 4
-	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE_2_MUL                                 = 5
-	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE_2_DIV                                 = 6
+	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE       FastNoiseLiteCellularReturnType = 1
+	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE_2     FastNoiseLiteCellularReturnType = 2
+	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE_2_ADD FastNoiseLiteCellularReturnType = 3
+	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE_2_SUB FastNoiseLiteCellularReturnType = 4
+	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE_2_MUL FastNoiseLiteCellularReturnType = 5
+	FAST_NOISE_LITE_CELLULAR_RETURN_TYPE_RETURN_DISTANCE_2_DIV FastNoiseLiteCellularReturnType = 6
 )
 
 type FastNoiseLiteDomainWarpType int
 
 const (
 	FAST_NOISE_LITE_DOMAIN_WARP_TYPE_DOMAIN_WARP_SIMPLEX         FastNoiseLiteDomainWarpType = 0
-	FAST_NOISE_LITE_DOMAIN_WARP_TYPE_DOMAIN_WARP_SIMPLEX_REDUCED                             = 1
-	FAST_NOISE_LITE_DOMAIN_WARP_TYPE_DOMAIN_WARP_BASIC_GRID                                  = 2
+	FAST_NOISE_LITE_DOMAIN_WARP_TYPE_DOMAIN_WARP_SIMPLEX_REDUCED FastNoiseLiteDomainWarpType = 1
+	FAST_NOISE_LITE_DOMAIN_WARP_TYPE_DOMAIN_WARP_BASIC_GRID      FastNoiseLiteDomainWarpType = 2
 )
 
 type FastNoiseLiteDomainWarpFractalType int
 
 const (
 	FAST_NOISE_LITE_DOMAIN_WARP_FRACTAL_TYPE_DOMAIN_WARP_FRACTAL_NONE        FastNoiseLiteDomainWarpFractalType = 0
-	FAST_NOISE_LITE_DOMAIN_WARP_FRACTAL_TYPE_DOMAIN_WARP_FRACTAL_PROGRESSIVE                                    = 1
-	FAST_NOISE_LITE_DOMAIN_WARP_FRACTAL_TYPE_DOMAIN_WARP_FRACTAL_INDEPENDENT                                    = 2
+	FAST_NOISE_LITE_DOMAIN_WARP_FRACTAL_TYPE_DOMAIN_WARP_FRACTAL_PROGRESSIVE FastNoiseLiteDomainWarpFractalType = 1
+	FAST_NOISE_LITE_DOMAIN_WARP_FRACTAL_TYPE_DOMAIN_WARP_FRACTAL_INDEPENDENT FastNoiseLiteDomainWarpFractalType = 2
 )
 
 type FileAccessModeFlags int
 
 const (
 	FILE_ACCESS_MODE_FLAGS_READ       FileAccessModeFlags = 1
-	FILE_ACCESS_MODE_FLAGS_WRITE                          = 2
-	FILE_ACCESS_MODE_FLAGS_READ_WRITE                     = 3
-	FILE_ACCESS_MODE_FLAGS_WRITE_READ                     = 7
+	FILE_ACCESS_MODE_FLAGS_WRITE      FileAccessModeFlags = 2
+	FILE_ACCESS_MODE_FLAGS_READ_WRITE FileAccessModeFlags = 3
+	FILE_ACCESS_MODE_FLAGS_WRITE_READ FileAccessModeFlags = 7
 )
 
 type FileAccessCompressionMode int
 
 const (
 	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_FASTLZ  FileAccessCompressionMode = 0
-	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_DEFLATE                           = 1
-	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_ZSTD                              = 2
-	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_GZIP                              = 3
-	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_BROTLI                            = 4
+	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_DEFLATE FileAccessCompressionMode = 1
+	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_ZSTD    FileAccessCompressionMode = 2
+	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_GZIP    FileAccessCompressionMode = 3
+	FILE_ACCESS_COMPRESSION_MODE_COMPRESSION_BROTLI  FileAccessCompressionMode = 4
 )
 
 type FileAccessUnixPermissionFlags int
 
 const (
 	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_READ_OWNER        FileAccessUnixPermissionFlags = 256
-	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_OWNER                                     = 128
-	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_OWNER                                   = 64
-	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_READ_GROUP                                      = 32
-	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_GROUP                                     = 16
-	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_GROUP                                   = 8
-	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_READ_OTHER                                      = 4
-	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_OTHER                                     = 2
-	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_OTHER                                   = 1
-	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_SET_USER_ID                                     = 2048
-	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_SET_GROUP_ID                                    = 1024
-	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_RESTRICTED_DELETE                               = 512
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_OWNER       FileAccessUnixPermissionFlags = 128
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_OWNER     FileAccessUnixPermissionFlags = 64
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_READ_GROUP        FileAccessUnixPermissionFlags = 32
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_GROUP       FileAccessUnixPermissionFlags = 16
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_GROUP     FileAccessUnixPermissionFlags = 8
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_READ_OTHER        FileAccessUnixPermissionFlags = 4
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_WRITE_OTHER       FileAccessUnixPermissionFlags = 2
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_EXECUTE_OTHER     FileAccessUnixPermissionFlags = 1
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_SET_USER_ID       FileAccessUnixPermissionFlags = 2048
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_SET_GROUP_ID      FileAccessUnixPermissionFlags = 1024
+	FILE_ACCESS_UNIX_PERMISSION_FLAGS_UNIX_RESTRICTED_DELETE FileAccessUnixPermissionFlags = 512
 )
 
 type FileDialogFileMode int
 
 const (
 	FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_FILE  FileDialogFileMode = 0
-	FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_FILES                    = 1
-	FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_DIR                      = 2
-	FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_ANY                      = 3
-	FILE_DIALOG_FILE_MODE_FILE_MODE_SAVE_FILE                     = 4
+	FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_FILES FileDialogFileMode = 1
+	FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_DIR   FileDialogFileMode = 2
+	FILE_DIALOG_FILE_MODE_FILE_MODE_OPEN_ANY   FileDialogFileMode = 3
+	FILE_DIALOG_FILE_MODE_FILE_MODE_SAVE_FILE  FileDialogFileMode = 4
 )
 
 type FileDialogAccess int
 
 const (
 	FILE_DIALOG_ACCESS_ACCESS_RESOURCES  FileDialogAccess = 0
-	FILE_DIALOG_ACCESS_ACCESS_USERDATA                    = 1
-	FILE_DIALOG_ACCESS_ACCESS_FILESYSTEM                  = 2
+	FILE_DIALOG_ACCESS_ACCESS_USERDATA   FileDialogAccess = 1
+	FILE_DIALOG_ACCESS_ACCESS_FILESYSTEM FileDialogAccess = 2
+)
+
+type FileDialogDisplayMode int
+
+const (
+	FILE_DIALOG_DISPLAY_MODE_DISPLAY_THUMBNAILS FileDialogDisplayMode = 0
+	FILE_DIALOG_DISPLAY_MODE_DISPLAY_LIST       FileDialogDisplayMode = 1
+)
+
+type FileDialogCustomization int
+
+const (
+	FILE_DIALOG_CUSTOMIZATION_CUSTOMIZATION_HIDDEN_FILES  FileDialogCustomization = 0
+	FILE_DIALOG_CUSTOMIZATION_CUSTOMIZATION_CREATE_FOLDER FileDialogCustomization = 1
+	FILE_DIALOG_CUSTOMIZATION_CUSTOMIZATION_FILE_FILTER   FileDialogCustomization = 2
+	FILE_DIALOG_CUSTOMIZATION_CUSTOMIZATION_FILE_SORT     FileDialogCustomization = 3
+	FILE_DIALOG_CUSTOMIZATION_CUSTOMIZATION_FAVORITES     FileDialogCustomization = 4
+	FILE_DIALOG_CUSTOMIZATION_CUSTOMIZATION_RECENT        FileDialogCustomization = 5
+	FILE_DIALOG_CUSTOMIZATION_CUSTOMIZATION_LAYOUT        FileDialogCustomization = 6
 )
 
 type FlowContainerAlignmentMode int
 
 const (
 	FLOW_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_BEGIN  FlowContainerAlignmentMode = 0
-	FLOW_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_CENTER                            = 1
-	FLOW_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_END                               = 2
+	FLOW_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_CENTER FlowContainerAlignmentMode = 1
+	FLOW_CONTAINER_ALIGNMENT_MODE_ALIGNMENT_END    FlowContainerAlignmentMode = 2
 )
 
 type FlowContainerLastWrapAlignmentMode int
 
 const (
 	FLOW_CONTAINER_LAST_WRAP_ALIGNMENT_MODE_LAST_WRAP_ALIGNMENT_INHERIT FlowContainerLastWrapAlignmentMode = 0
-	FLOW_CONTAINER_LAST_WRAP_ALIGNMENT_MODE_LAST_WRAP_ALIGNMENT_BEGIN                                      = 1
-	FLOW_CONTAINER_LAST_WRAP_ALIGNMENT_MODE_LAST_WRAP_ALIGNMENT_CENTER                                     = 2
-	FLOW_CONTAINER_LAST_WRAP_ALIGNMENT_MODE_LAST_WRAP_ALIGNMENT_END                                        = 3
+	FLOW_CONTAINER_LAST_WRAP_ALIGNMENT_MODE_LAST_WRAP_ALIGNMENT_BEGIN   FlowContainerLastWrapAlignmentMode = 1
+	FLOW_CONTAINER_LAST_WRAP_ALIGNMENT_MODE_LAST_WRAP_ALIGNMENT_CENTER  FlowContainerLastWrapAlignmentMode = 2
+	FLOW_CONTAINER_LAST_WRAP_ALIGNMENT_MODE_LAST_WRAP_ALIGNMENT_END     FlowContainerLastWrapAlignmentMode = 3
+)
+
+type FoldableContainerTitlePosition int
+
+const (
+	FOLDABLE_CONTAINER_TITLE_POSITION_POSITION_TOP    FoldableContainerTitlePosition = 0
+	FOLDABLE_CONTAINER_TITLE_POSITION_POSITION_BOTTOM FoldableContainerTitlePosition = 1
 )
 
 type GDExtensionManagerLoadStatus int
 
 const (
 	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_OK             GDExtensionManagerLoadStatus = 0
-	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_FAILED                                      = 1
-	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_ALREADY_LOADED                              = 2
-	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_NOT_LOADED                                  = 3
-	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_NEEDS_RESTART                               = 4
+	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_FAILED         GDExtensionManagerLoadStatus = 1
+	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_ALREADY_LOADED GDExtensionManagerLoadStatus = 2
+	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_NOT_LOADED     GDExtensionManagerLoadStatus = 3
+	GD_EXTENSION_MANAGER_LOAD_STATUS_LOAD_STATUS_NEEDS_RESTART  GDExtensionManagerLoadStatus = 4
 )
 
 type GLTFAccessorGLTFAccessorType int
 
 const (
 	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_SCALAR GLTFAccessorGLTFAccessorType = 0
-	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_VEC_2                               = 1
-	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_VEC_3                               = 2
-	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_VEC_4                               = 3
-	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_MAT_2                               = 4
-	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_MAT_3                               = 5
-	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_MAT_4                               = 6
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_VEC_2  GLTFAccessorGLTFAccessorType = 1
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_VEC_3  GLTFAccessorGLTFAccessorType = 2
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_VEC_4  GLTFAccessorGLTFAccessorType = 3
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_MAT_2  GLTFAccessorGLTFAccessorType = 4
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_MAT_3  GLTFAccessorGLTFAccessorType = 5
+	GLTF_ACCESSOR_GLTF_ACCESSOR_TYPE_TYPE_MAT_4  GLTFAccessorGLTFAccessorType = 6
+)
+
+type GLTFAccessorGLTFComponentType int
+
+const (
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_NONE           GLTFAccessorGLTFComponentType = 0
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_SIGNED_BYTE    GLTFAccessorGLTFComponentType = 5120
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_UNSIGNED_BYTE  GLTFAccessorGLTFComponentType = 5121
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_SIGNED_SHORT   GLTFAccessorGLTFComponentType = 5122
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_UNSIGNED_SHORT GLTFAccessorGLTFComponentType = 5123
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_SIGNED_INT     GLTFAccessorGLTFComponentType = 5124
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_UNSIGNED_INT   GLTFAccessorGLTFComponentType = 5125
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_SINGLE_FLOAT   GLTFAccessorGLTFComponentType = 5126
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_DOUBLE_FLOAT   GLTFAccessorGLTFComponentType = 5130
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_HALF_FLOAT     GLTFAccessorGLTFComponentType = 5131
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_SIGNED_LONG    GLTFAccessorGLTFComponentType = 5134
+	GLTF_ACCESSOR_GLTF_COMPONENT_TYPE_COMPONENT_TYPE_UNSIGNED_LONG  GLTFAccessorGLTFComponentType = 5135
 )
 
 type GLTFDocumentRootNodeMode int
 
 const (
 	GLTF_DOCUMENT_ROOT_NODE_MODE_ROOT_NODE_MODE_SINGLE_ROOT GLTFDocumentRootNodeMode = 0
-	GLTF_DOCUMENT_ROOT_NODE_MODE_ROOT_NODE_MODE_KEEP_ROOT                            = 1
-	GLTF_DOCUMENT_ROOT_NODE_MODE_ROOT_NODE_MODE_MULTI_ROOT                           = 2
+	GLTF_DOCUMENT_ROOT_NODE_MODE_ROOT_NODE_MODE_KEEP_ROOT   GLTFDocumentRootNodeMode = 1
+	GLTF_DOCUMENT_ROOT_NODE_MODE_ROOT_NODE_MODE_MULTI_ROOT  GLTFDocumentRootNodeMode = 2
+)
+
+type GLTFDocumentVisibilityMode int
+
+const (
+	GLTF_DOCUMENT_VISIBILITY_MODE_VISIBILITY_MODE_INCLUDE_REQUIRED GLTFDocumentVisibilityMode = 0
+	GLTF_DOCUMENT_VISIBILITY_MODE_VISIBILITY_MODE_INCLUDE_OPTIONAL GLTFDocumentVisibilityMode = 1
+	GLTF_DOCUMENT_VISIBILITY_MODE_VISIBILITY_MODE_EXCLUDE          GLTFDocumentVisibilityMode = 2
+)
+
+type GLTFObjectModelPropertyGLTFObjectModelType int
+
+const (
+	GLTF_OBJECT_MODEL_PROPERTY_GLTF_OBJECT_MODEL_TYPE_GLTF_OBJECT_MODEL_TYPE_UNKNOWN     GLTFObjectModelPropertyGLTFObjectModelType = 0
+	GLTF_OBJECT_MODEL_PROPERTY_GLTF_OBJECT_MODEL_TYPE_GLTF_OBJECT_MODEL_TYPE_BOOL        GLTFObjectModelPropertyGLTFObjectModelType = 1
+	GLTF_OBJECT_MODEL_PROPERTY_GLTF_OBJECT_MODEL_TYPE_GLTF_OBJECT_MODEL_TYPE_FLOAT       GLTFObjectModelPropertyGLTFObjectModelType = 2
+	GLTF_OBJECT_MODEL_PROPERTY_GLTF_OBJECT_MODEL_TYPE_GLTF_OBJECT_MODEL_TYPE_FLOAT_ARRAY GLTFObjectModelPropertyGLTFObjectModelType = 3
+	GLTF_OBJECT_MODEL_PROPERTY_GLTF_OBJECT_MODEL_TYPE_GLTF_OBJECT_MODEL_TYPE_FLOAT_2     GLTFObjectModelPropertyGLTFObjectModelType = 4
+	GLTF_OBJECT_MODEL_PROPERTY_GLTF_OBJECT_MODEL_TYPE_GLTF_OBJECT_MODEL_TYPE_FLOAT_3     GLTFObjectModelPropertyGLTFObjectModelType = 5
+	GLTF_OBJECT_MODEL_PROPERTY_GLTF_OBJECT_MODEL_TYPE_GLTF_OBJECT_MODEL_TYPE_FLOAT_4     GLTFObjectModelPropertyGLTFObjectModelType = 6
+	GLTF_OBJECT_MODEL_PROPERTY_GLTF_OBJECT_MODEL_TYPE_GLTF_OBJECT_MODEL_TYPE_FLOAT_2_X_2 GLTFObjectModelPropertyGLTFObjectModelType = 7
+	GLTF_OBJECT_MODEL_PROPERTY_GLTF_OBJECT_MODEL_TYPE_GLTF_OBJECT_MODEL_TYPE_FLOAT_3_X_3 GLTFObjectModelPropertyGLTFObjectModelType = 8
+	GLTF_OBJECT_MODEL_PROPERTY_GLTF_OBJECT_MODEL_TYPE_GLTF_OBJECT_MODEL_TYPE_FLOAT_4_X_4 GLTFObjectModelPropertyGLTFObjectModelType = 9
+	GLTF_OBJECT_MODEL_PROPERTY_GLTF_OBJECT_MODEL_TYPE_GLTF_OBJECT_MODEL_TYPE_INT         GLTFObjectModelPropertyGLTFObjectModelType = 10
 )
 
 type GPUParticles2DDrawOrder int
 
 const (
 	GPU_PARTICLES_2_D_DRAW_ORDER_DRAW_ORDER_INDEX            GPUParticles2DDrawOrder = 0
-	GPU_PARTICLES_2_D_DRAW_ORDER_DRAW_ORDER_LIFETIME                                 = 1
-	GPU_PARTICLES_2_D_DRAW_ORDER_DRAW_ORDER_REVERSE_LIFETIME                         = 2
+	GPU_PARTICLES_2_D_DRAW_ORDER_DRAW_ORDER_LIFETIME         GPUParticles2DDrawOrder = 1
+	GPU_PARTICLES_2_D_DRAW_ORDER_DRAW_ORDER_REVERSE_LIFETIME GPUParticles2DDrawOrder = 2
 )
 
 type GPUParticles2DEmitFlags int
 
 const (
 	GPU_PARTICLES_2_D_EMIT_FLAGS_EMIT_FLAG_POSITION       GPUParticles2DEmitFlags = 1
-	GPU_PARTICLES_2_D_EMIT_FLAGS_EMIT_FLAG_ROTATION_SCALE                         = 2
-	GPU_PARTICLES_2_D_EMIT_FLAGS_EMIT_FLAG_VELOCITY                               = 4
-	GPU_PARTICLES_2_D_EMIT_FLAGS_EMIT_FLAG_COLOR                                  = 8
-	GPU_PARTICLES_2_D_EMIT_FLAGS_EMIT_FLAG_CUSTOM                                 = 16
+	GPU_PARTICLES_2_D_EMIT_FLAGS_EMIT_FLAG_ROTATION_SCALE GPUParticles2DEmitFlags = 2
+	GPU_PARTICLES_2_D_EMIT_FLAGS_EMIT_FLAG_VELOCITY       GPUParticles2DEmitFlags = 4
+	GPU_PARTICLES_2_D_EMIT_FLAGS_EMIT_FLAG_COLOR          GPUParticles2DEmitFlags = 8
+	GPU_PARTICLES_2_D_EMIT_FLAGS_EMIT_FLAG_CUSTOM         GPUParticles2DEmitFlags = 16
 )
 
 type GPUParticles3DDrawOrder int
 
 const (
 	GPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_INDEX            GPUParticles3DDrawOrder = 0
-	GPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_LIFETIME                                 = 1
-	GPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_REVERSE_LIFETIME                         = 2
-	GPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_VIEW_DEPTH                               = 3
+	GPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_LIFETIME         GPUParticles3DDrawOrder = 1
+	GPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_REVERSE_LIFETIME GPUParticles3DDrawOrder = 2
+	GPU_PARTICLES_3_D_DRAW_ORDER_DRAW_ORDER_VIEW_DEPTH       GPUParticles3DDrawOrder = 3
 )
 
 type GPUParticles3DEmitFlags int
 
 const (
 	GPU_PARTICLES_3_D_EMIT_FLAGS_EMIT_FLAG_POSITION       GPUParticles3DEmitFlags = 1
-	GPU_PARTICLES_3_D_EMIT_FLAGS_EMIT_FLAG_ROTATION_SCALE                         = 2
-	GPU_PARTICLES_3_D_EMIT_FLAGS_EMIT_FLAG_VELOCITY                               = 4
-	GPU_PARTICLES_3_D_EMIT_FLAGS_EMIT_FLAG_COLOR                                  = 8
-	GPU_PARTICLES_3_D_EMIT_FLAGS_EMIT_FLAG_CUSTOM                                 = 16
+	GPU_PARTICLES_3_D_EMIT_FLAGS_EMIT_FLAG_ROTATION_SCALE GPUParticles3DEmitFlags = 2
+	GPU_PARTICLES_3_D_EMIT_FLAGS_EMIT_FLAG_VELOCITY       GPUParticles3DEmitFlags = 4
+	GPU_PARTICLES_3_D_EMIT_FLAGS_EMIT_FLAG_COLOR          GPUParticles3DEmitFlags = 8
+	GPU_PARTICLES_3_D_EMIT_FLAGS_EMIT_FLAG_CUSTOM         GPUParticles3DEmitFlags = 16
 )
 
 type GPUParticles3DTransformAlign int
 
 const (
 	GPU_PARTICLES_3_D_TRANSFORM_ALIGN_TRANSFORM_ALIGN_DISABLED                  GPUParticles3DTransformAlign = 0
-	GPU_PARTICLES_3_D_TRANSFORM_ALIGN_TRANSFORM_ALIGN_Z_BILLBOARD                                            = 1
-	GPU_PARTICLES_3_D_TRANSFORM_ALIGN_TRANSFORM_ALIGN_Y_TO_VELOCITY                                          = 2
-	GPU_PARTICLES_3_D_TRANSFORM_ALIGN_TRANSFORM_ALIGN_Z_BILLBOARD_Y_TO_VELOCITY                              = 3
+	GPU_PARTICLES_3_D_TRANSFORM_ALIGN_TRANSFORM_ALIGN_Z_BILLBOARD               GPUParticles3DTransformAlign = 1
+	GPU_PARTICLES_3_D_TRANSFORM_ALIGN_TRANSFORM_ALIGN_Y_TO_VELOCITY             GPUParticles3DTransformAlign = 2
+	GPU_PARTICLES_3_D_TRANSFORM_ALIGN_TRANSFORM_ALIGN_Z_BILLBOARD_Y_TO_VELOCITY GPUParticles3DTransformAlign = 3
 )
 
 type GPUParticlesCollisionHeightField3DResolution int
 
 const (
 	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_256  GPUParticlesCollisionHeightField3DResolution = 0
-	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_512                                               = 1
-	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_1024                                              = 2
-	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_2048                                              = 3
-	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_4096                                              = 4
-	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_8192                                              = 5
-	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_MAX                                               = 6
+	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_512  GPUParticlesCollisionHeightField3DResolution = 1
+	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_1024 GPUParticlesCollisionHeightField3DResolution = 2
+	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_2048 GPUParticlesCollisionHeightField3DResolution = 3
+	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_4096 GPUParticlesCollisionHeightField3DResolution = 4
+	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_8192 GPUParticlesCollisionHeightField3DResolution = 5
+	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_RESOLUTION_RESOLUTION_MAX  GPUParticlesCollisionHeightField3DResolution = 6
 )
 
 type GPUParticlesCollisionHeightField3DUpdateMode int
 
 const (
 	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_UPDATE_MODE_UPDATE_MODE_WHEN_MOVED GPUParticlesCollisionHeightField3DUpdateMode = 0
-	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_UPDATE_MODE_UPDATE_MODE_ALWAYS                                                  = 1
+	GPU_PARTICLES_COLLISION_HEIGHT_FIELD_3_D_UPDATE_MODE_UPDATE_MODE_ALWAYS     GPUParticlesCollisionHeightField3DUpdateMode = 1
 )
 
 type GPUParticlesCollisionSDF3DResolution int
 
 const (
 	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_16  GPUParticlesCollisionSDF3DResolution = 0
-	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_32                                       = 1
-	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_64                                       = 2
-	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_128                                      = 3
-	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_256                                      = 4
-	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_512                                      = 5
-	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_MAX                                      = 6
+	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_32  GPUParticlesCollisionSDF3DResolution = 1
+	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_64  GPUParticlesCollisionSDF3DResolution = 2
+	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_128 GPUParticlesCollisionSDF3DResolution = 3
+	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_256 GPUParticlesCollisionSDF3DResolution = 4
+	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_512 GPUParticlesCollisionSDF3DResolution = 5
+	GPU_PARTICLES_COLLISION_SDF_3_D_RESOLUTION_RESOLUTION_MAX GPUParticlesCollisionSDF3DResolution = 6
 )
 
 type Generic6DOFJoint3DParam int
 
 const (
 	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_LOWER_LIMIT               Generic6DOFJoint3DParam = 0
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_UPPER_LIMIT                                       = 1
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_LIMIT_SOFTNESS                                    = 2
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_RESTITUTION                                       = 3
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_DAMPING                                           = 4
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_MOTOR_TARGET_VELOCITY                             = 5
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_MOTOR_FORCE_LIMIT                                 = 6
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_SPRING_STIFFNESS                                  = 7
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_SPRING_DAMPING                                    = 8
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_SPRING_EQUILIBRIUM_POINT                          = 9
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_LOWER_LIMIT                                      = 10
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_UPPER_LIMIT                                      = 11
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_SOFTNESS                                   = 12
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_DAMPING                                          = 13
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_RESTITUTION                                      = 14
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_FORCE_LIMIT                                      = 15
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_ERP                                              = 16
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_MOTOR_TARGET_VELOCITY                            = 17
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_MOTOR_FORCE_LIMIT                                = 18
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_SPRING_STIFFNESS                                 = 19
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_SPRING_DAMPING                                   = 20
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_SPRING_EQUILIBRIUM_POINT                         = 21
-	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_MAX                                                      = 22
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_UPPER_LIMIT               Generic6DOFJoint3DParam = 1
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_LIMIT_SOFTNESS            Generic6DOFJoint3DParam = 2
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_RESTITUTION               Generic6DOFJoint3DParam = 3
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_DAMPING                   Generic6DOFJoint3DParam = 4
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_MOTOR_TARGET_VELOCITY     Generic6DOFJoint3DParam = 5
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_MOTOR_FORCE_LIMIT         Generic6DOFJoint3DParam = 6
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_SPRING_STIFFNESS          Generic6DOFJoint3DParam = 7
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_SPRING_DAMPING            Generic6DOFJoint3DParam = 8
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_LINEAR_SPRING_EQUILIBRIUM_POINT  Generic6DOFJoint3DParam = 9
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_LOWER_LIMIT              Generic6DOFJoint3DParam = 10
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_UPPER_LIMIT              Generic6DOFJoint3DParam = 11
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_SOFTNESS           Generic6DOFJoint3DParam = 12
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_DAMPING                  Generic6DOFJoint3DParam = 13
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_RESTITUTION              Generic6DOFJoint3DParam = 14
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_FORCE_LIMIT              Generic6DOFJoint3DParam = 15
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_ERP                      Generic6DOFJoint3DParam = 16
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_MOTOR_TARGET_VELOCITY    Generic6DOFJoint3DParam = 17
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_MOTOR_FORCE_LIMIT        Generic6DOFJoint3DParam = 18
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_SPRING_STIFFNESS         Generic6DOFJoint3DParam = 19
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_SPRING_DAMPING           Generic6DOFJoint3DParam = 20
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_ANGULAR_SPRING_EQUILIBRIUM_POINT Generic6DOFJoint3DParam = 21
+	GENERIC_6_DOF_JOINT_3_D_PARAM_PARAM_MAX                              Generic6DOFJoint3DParam = 22
 )
 
 type Generic6DOFJoint3DFlag int
 
 const (
 	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_ENABLE_LINEAR_LIMIT   Generic6DOFJoint3DFlag = 0
-	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_ENABLE_ANGULAR_LIMIT                         = 1
-	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_ENABLE_LINEAR_SPRING                         = 3
-	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_ENABLE_ANGULAR_SPRING                        = 2
-	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_ENABLE_MOTOR                                 = 4
-	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_ENABLE_LINEAR_MOTOR                          = 5
-	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_MAX                                          = 6
+	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_ENABLE_ANGULAR_LIMIT  Generic6DOFJoint3DFlag = 1
+	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_ENABLE_LINEAR_SPRING  Generic6DOFJoint3DFlag = 3
+	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_ENABLE_ANGULAR_SPRING Generic6DOFJoint3DFlag = 2
+	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_ENABLE_MOTOR          Generic6DOFJoint3DFlag = 4
+	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_ENABLE_LINEAR_MOTOR   Generic6DOFJoint3DFlag = 5
+	GENERIC_6_DOF_JOINT_3_D_FLAG_FLAG_MAX                   Generic6DOFJoint3DFlag = 6
 )
 
 type Geometry2DPolyBooleanOperation int
 
 const (
 	GEOMETRY_2_D_POLY_BOOLEAN_OPERATION_OPERATION_UNION        Geometry2DPolyBooleanOperation = 0
-	GEOMETRY_2_D_POLY_BOOLEAN_OPERATION_OPERATION_DIFFERENCE                                  = 1
-	GEOMETRY_2_D_POLY_BOOLEAN_OPERATION_OPERATION_INTERSECTION                                = 2
-	GEOMETRY_2_D_POLY_BOOLEAN_OPERATION_OPERATION_XOR                                         = 3
+	GEOMETRY_2_D_POLY_BOOLEAN_OPERATION_OPERATION_DIFFERENCE   Geometry2DPolyBooleanOperation = 1
+	GEOMETRY_2_D_POLY_BOOLEAN_OPERATION_OPERATION_INTERSECTION Geometry2DPolyBooleanOperation = 2
+	GEOMETRY_2_D_POLY_BOOLEAN_OPERATION_OPERATION_XOR          Geometry2DPolyBooleanOperation = 3
 )
 
 type Geometry2DPolyJoinType int
 
 const (
 	GEOMETRY_2_D_POLY_JOIN_TYPE_JOIN_SQUARE Geometry2DPolyJoinType = 0
-	GEOMETRY_2_D_POLY_JOIN_TYPE_JOIN_ROUND                         = 1
-	GEOMETRY_2_D_POLY_JOIN_TYPE_JOIN_MITER                         = 2
+	GEOMETRY_2_D_POLY_JOIN_TYPE_JOIN_ROUND  Geometry2DPolyJoinType = 1
+	GEOMETRY_2_D_POLY_JOIN_TYPE_JOIN_MITER  Geometry2DPolyJoinType = 2
 )
 
 type Geometry2DPolyEndType int
 
 const (
 	GEOMETRY_2_D_POLY_END_TYPE_END_POLYGON Geometry2DPolyEndType = 0
-	GEOMETRY_2_D_POLY_END_TYPE_END_JOINED                        = 1
-	GEOMETRY_2_D_POLY_END_TYPE_END_BUTT                          = 2
-	GEOMETRY_2_D_POLY_END_TYPE_END_SQUARE                        = 3
-	GEOMETRY_2_D_POLY_END_TYPE_END_ROUND                         = 4
+	GEOMETRY_2_D_POLY_END_TYPE_END_JOINED  Geometry2DPolyEndType = 1
+	GEOMETRY_2_D_POLY_END_TYPE_END_BUTT    Geometry2DPolyEndType = 2
+	GEOMETRY_2_D_POLY_END_TYPE_END_SQUARE  Geometry2DPolyEndType = 3
+	GEOMETRY_2_D_POLY_END_TYPE_END_ROUND   Geometry2DPolyEndType = 4
 )
 
 type GeometryInstance3DShadowCastingSetting int
 
 const (
 	GEOMETRY_INSTANCE_3_D_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_OFF          GeometryInstance3DShadowCastingSetting = 0
-	GEOMETRY_INSTANCE_3_D_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_ON                                                  = 1
-	GEOMETRY_INSTANCE_3_D_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_DOUBLE_SIDED                                        = 2
-	GEOMETRY_INSTANCE_3_D_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_SHADOWS_ONLY                                        = 3
+	GEOMETRY_INSTANCE_3_D_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_ON           GeometryInstance3DShadowCastingSetting = 1
+	GEOMETRY_INSTANCE_3_D_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_DOUBLE_SIDED GeometryInstance3DShadowCastingSetting = 2
+	GEOMETRY_INSTANCE_3_D_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_SHADOWS_ONLY GeometryInstance3DShadowCastingSetting = 3
 )
 
 type GeometryInstance3DGIMode int
 
 const (
 	GEOMETRY_INSTANCE_3_D_GI_MODE_GI_MODE_DISABLED GeometryInstance3DGIMode = 0
-	GEOMETRY_INSTANCE_3_D_GI_MODE_GI_MODE_STATIC                            = 1
-	GEOMETRY_INSTANCE_3_D_GI_MODE_GI_MODE_DYNAMIC                           = 2
+	GEOMETRY_INSTANCE_3_D_GI_MODE_GI_MODE_STATIC   GeometryInstance3DGIMode = 1
+	GEOMETRY_INSTANCE_3_D_GI_MODE_GI_MODE_DYNAMIC  GeometryInstance3DGIMode = 2
 )
 
 type GeometryInstance3DLightmapScale int
 
 const (
 	GEOMETRY_INSTANCE_3_D_LIGHTMAP_SCALE_LIGHTMAP_SCALE_1_X GeometryInstance3DLightmapScale = 0
-	GEOMETRY_INSTANCE_3_D_LIGHTMAP_SCALE_LIGHTMAP_SCALE_2_X                                 = 1
-	GEOMETRY_INSTANCE_3_D_LIGHTMAP_SCALE_LIGHTMAP_SCALE_4_X                                 = 2
-	GEOMETRY_INSTANCE_3_D_LIGHTMAP_SCALE_LIGHTMAP_SCALE_8_X                                 = 3
-	GEOMETRY_INSTANCE_3_D_LIGHTMAP_SCALE_LIGHTMAP_SCALE_MAX                                 = 4
+	GEOMETRY_INSTANCE_3_D_LIGHTMAP_SCALE_LIGHTMAP_SCALE_2_X GeometryInstance3DLightmapScale = 1
+	GEOMETRY_INSTANCE_3_D_LIGHTMAP_SCALE_LIGHTMAP_SCALE_4_X GeometryInstance3DLightmapScale = 2
+	GEOMETRY_INSTANCE_3_D_LIGHTMAP_SCALE_LIGHTMAP_SCALE_8_X GeometryInstance3DLightmapScale = 3
+	GEOMETRY_INSTANCE_3_D_LIGHTMAP_SCALE_LIGHTMAP_SCALE_MAX GeometryInstance3DLightmapScale = 4
 )
 
 type GeometryInstance3DVisibilityRangeFadeMode int
 
 const (
 	GEOMETRY_INSTANCE_3_D_VISIBILITY_RANGE_FADE_MODE_VISIBILITY_RANGE_FADE_DISABLED     GeometryInstance3DVisibilityRangeFadeMode = 0
-	GEOMETRY_INSTANCE_3_D_VISIBILITY_RANGE_FADE_MODE_VISIBILITY_RANGE_FADE_SELF                                                   = 1
-	GEOMETRY_INSTANCE_3_D_VISIBILITY_RANGE_FADE_MODE_VISIBILITY_RANGE_FADE_DEPENDENCIES                                           = 2
+	GEOMETRY_INSTANCE_3_D_VISIBILITY_RANGE_FADE_MODE_VISIBILITY_RANGE_FADE_SELF         GeometryInstance3DVisibilityRangeFadeMode = 1
+	GEOMETRY_INSTANCE_3_D_VISIBILITY_RANGE_FADE_MODE_VISIBILITY_RANGE_FADE_DEPENDENCIES GeometryInstance3DVisibilityRangeFadeMode = 2
 )
 
 type GradientInterpolationMode int
 
 const (
 	GRADIENT_INTERPOLATION_MODE_GRADIENT_INTERPOLATE_LINEAR   GradientInterpolationMode = 0
-	GRADIENT_INTERPOLATION_MODE_GRADIENT_INTERPOLATE_CONSTANT                           = 1
-	GRADIENT_INTERPOLATION_MODE_GRADIENT_INTERPOLATE_CUBIC                              = 2
+	GRADIENT_INTERPOLATION_MODE_GRADIENT_INTERPOLATE_CONSTANT GradientInterpolationMode = 1
+	GRADIENT_INTERPOLATION_MODE_GRADIENT_INTERPOLATE_CUBIC    GradientInterpolationMode = 2
 )
 
 type GradientColorSpace int
 
 const (
 	GRADIENT_COLOR_SPACE_GRADIENT_COLOR_SPACE_SRGB        GradientColorSpace = 0
-	GRADIENT_COLOR_SPACE_GRADIENT_COLOR_SPACE_LINEAR_SRGB                    = 1
-	GRADIENT_COLOR_SPACE_GRADIENT_COLOR_SPACE_OKLAB                          = 2
+	GRADIENT_COLOR_SPACE_GRADIENT_COLOR_SPACE_LINEAR_SRGB GradientColorSpace = 1
+	GRADIENT_COLOR_SPACE_GRADIENT_COLOR_SPACE_OKLAB       GradientColorSpace = 2
 )
 
 type GradientTexture2DFill int
 
 const (
 	GRADIENT_TEXTURE_2_D_FILL_FILL_LINEAR GradientTexture2DFill = 0
-	GRADIENT_TEXTURE_2_D_FILL_FILL_RADIAL                       = 1
-	GRADIENT_TEXTURE_2_D_FILL_FILL_SQUARE                       = 2
+	GRADIENT_TEXTURE_2_D_FILL_FILL_RADIAL GradientTexture2DFill = 1
+	GRADIENT_TEXTURE_2_D_FILL_FILL_SQUARE GradientTexture2DFill = 2
 )
 
 type GradientTexture2DRepeat int
 
 const (
 	GRADIENT_TEXTURE_2_D_REPEAT_REPEAT_NONE   GradientTexture2DRepeat = 0
-	GRADIENT_TEXTURE_2_D_REPEAT_REPEAT                                = 1
-	GRADIENT_TEXTURE_2_D_REPEAT_REPEAT_MIRROR                         = 2
+	GRADIENT_TEXTURE_2_D_REPEAT_REPEAT        GradientTexture2DRepeat = 1
+	GRADIENT_TEXTURE_2_D_REPEAT_REPEAT_MIRROR GradientTexture2DRepeat = 2
 )
 
 type GraphEditPanningScheme int
 
 const (
 	GRAPH_EDIT_PANNING_SCHEME_SCROLL_ZOOMS GraphEditPanningScheme = 0
-	GRAPH_EDIT_PANNING_SCHEME_SCROLL_PANS                         = 1
+	GRAPH_EDIT_PANNING_SCHEME_SCROLL_PANS  GraphEditPanningScheme = 1
 )
 
 type GraphEditGridPattern int
 
 const (
 	GRAPH_EDIT_GRID_PATTERN_GRID_PATTERN_LINES GraphEditGridPattern = 0
-	GRAPH_EDIT_GRID_PATTERN_GRID_PATTERN_DOTS                       = 1
+	GRAPH_EDIT_GRID_PATTERN_GRID_PATTERN_DOTS  GraphEditGridPattern = 1
 )
 
 type HTTPClientMethod int
 
 const (
 	HTTP_CLIENT_METHOD_METHOD_GET     HTTPClientMethod = 0
-	HTTP_CLIENT_METHOD_METHOD_HEAD                     = 1
-	HTTP_CLIENT_METHOD_METHOD_POST                     = 2
-	HTTP_CLIENT_METHOD_METHOD_PUT                      = 3
-	HTTP_CLIENT_METHOD_METHOD_DELETE                   = 4
-	HTTP_CLIENT_METHOD_METHOD_OPTIONS                  = 5
-	HTTP_CLIENT_METHOD_METHOD_TRACE                    = 6
-	HTTP_CLIENT_METHOD_METHOD_CONNECT                  = 7
-	HTTP_CLIENT_METHOD_METHOD_PATCH                    = 8
-	HTTP_CLIENT_METHOD_METHOD_MAX                      = 9
+	HTTP_CLIENT_METHOD_METHOD_HEAD    HTTPClientMethod = 1
+	HTTP_CLIENT_METHOD_METHOD_POST    HTTPClientMethod = 2
+	HTTP_CLIENT_METHOD_METHOD_PUT     HTTPClientMethod = 3
+	HTTP_CLIENT_METHOD_METHOD_DELETE  HTTPClientMethod = 4
+	HTTP_CLIENT_METHOD_METHOD_OPTIONS HTTPClientMethod = 5
+	HTTP_CLIENT_METHOD_METHOD_TRACE   HTTPClientMethod = 6
+	HTTP_CLIENT_METHOD_METHOD_CONNECT HTTPClientMethod = 7
+	HTTP_CLIENT_METHOD_METHOD_PATCH   HTTPClientMethod = 8
+	HTTP_CLIENT_METHOD_METHOD_MAX     HTTPClientMethod = 9
 )
 
 type HTTPClientStatus int
 
 const (
 	HTTP_CLIENT_STATUS_STATUS_DISCONNECTED        HTTPClientStatus = 0
-	HTTP_CLIENT_STATUS_STATUS_RESOLVING                            = 1
-	HTTP_CLIENT_STATUS_STATUS_CANT_RESOLVE                         = 2
-	HTTP_CLIENT_STATUS_STATUS_CONNECTING                           = 3
-	HTTP_CLIENT_STATUS_STATUS_CANT_CONNECT                         = 4
-	HTTP_CLIENT_STATUS_STATUS_CONNECTED                            = 5
-	HTTP_CLIENT_STATUS_STATUS_REQUESTING                           = 6
-	HTTP_CLIENT_STATUS_STATUS_BODY                                 = 7
-	HTTP_CLIENT_STATUS_STATUS_CONNECTION_ERROR                     = 8
-	HTTP_CLIENT_STATUS_STATUS_TLS_HANDSHAKE_ERROR                  = 9
+	HTTP_CLIENT_STATUS_STATUS_RESOLVING           HTTPClientStatus = 1
+	HTTP_CLIENT_STATUS_STATUS_CANT_RESOLVE        HTTPClientStatus = 2
+	HTTP_CLIENT_STATUS_STATUS_CONNECTING          HTTPClientStatus = 3
+	HTTP_CLIENT_STATUS_STATUS_CANT_CONNECT        HTTPClientStatus = 4
+	HTTP_CLIENT_STATUS_STATUS_CONNECTED           HTTPClientStatus = 5
+	HTTP_CLIENT_STATUS_STATUS_REQUESTING          HTTPClientStatus = 6
+	HTTP_CLIENT_STATUS_STATUS_BODY                HTTPClientStatus = 7
+	HTTP_CLIENT_STATUS_STATUS_CONNECTION_ERROR    HTTPClientStatus = 8
+	HTTP_CLIENT_STATUS_STATUS_TLS_HANDSHAKE_ERROR HTTPClientStatus = 9
 )
 
 type HTTPClientResponseCode int
 
 const (
 	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_CONTINUE                        HTTPClientResponseCode = 100
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_SWITCHING_PROTOCOLS                                    = 101
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PROCESSING                                             = 102
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_OK                                                     = 200
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_CREATED                                                = 201
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_ACCEPTED                                               = 202
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NON_AUTHORITATIVE_INFORMATION                          = 203
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NO_CONTENT                                             = 204
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_RESET_CONTENT                                          = 205
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PARTIAL_CONTENT                                        = 206
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_MULTI_STATUS                                           = 207
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_ALREADY_REPORTED                                       = 208
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_IM_USED                                                = 226
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_MULTIPLE_CHOICES                                       = 300
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_MOVED_PERMANENTLY                                      = 301
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_FOUND                                                  = 302
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_SEE_OTHER                                              = 303
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NOT_MODIFIED                                           = 304
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_USE_PROXY                                              = 305
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_SWITCH_PROXY                                           = 306
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_TEMPORARY_REDIRECT                                     = 307
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PERMANENT_REDIRECT                                     = 308
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_BAD_REQUEST                                            = 400
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_UNAUTHORIZED                                           = 401
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PAYMENT_REQUIRED                                       = 402
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_FORBIDDEN                                              = 403
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NOT_FOUND                                              = 404
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_METHOD_NOT_ALLOWED                                     = 405
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NOT_ACCEPTABLE                                         = 406
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PROXY_AUTHENTICATION_REQUIRED                          = 407
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_REQUEST_TIMEOUT                                        = 408
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_CONFLICT                                               = 409
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_GONE                                                   = 410
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_LENGTH_REQUIRED                                        = 411
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PRECONDITION_FAILED                                    = 412
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_REQUEST_ENTITY_TOO_LARGE                               = 413
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_REQUEST_URI_TOO_LONG                                   = 414
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_UNSUPPORTED_MEDIA_TYPE                                 = 415
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_REQUESTED_RANGE_NOT_SATISFIABLE                        = 416
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_EXPECTATION_FAILED                                     = 417
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_IM_A_TEAPOT                                            = 418
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_MISDIRECTED_REQUEST                                    = 421
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_UNPROCESSABLE_ENTITY                                   = 422
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_LOCKED                                                 = 423
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_FAILED_DEPENDENCY                                      = 424
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_UPGRADE_REQUIRED                                       = 426
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PRECONDITION_REQUIRED                                  = 428
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_TOO_MANY_REQUESTS                                      = 429
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_REQUEST_HEADER_FIELDS_TOO_LARGE                        = 431
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_UNAVAILABLE_FOR_LEGAL_REASONS                          = 451
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_INTERNAL_SERVER_ERROR                                  = 500
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NOT_IMPLEMENTED                                        = 501
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_BAD_GATEWAY                                            = 502
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_SERVICE_UNAVAILABLE                                    = 503
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_GATEWAY_TIMEOUT                                        = 504
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_HTTP_VERSION_NOT_SUPPORTED                             = 505
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_VARIANT_ALSO_NEGOTIATES                                = 506
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_INSUFFICIENT_STORAGE                                   = 507
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_LOOP_DETECTED                                          = 508
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NOT_EXTENDED                                           = 510
-	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NETWORK_AUTH_REQUIRED                                  = 511
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_SWITCHING_PROTOCOLS             HTTPClientResponseCode = 101
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PROCESSING                      HTTPClientResponseCode = 102
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_OK                              HTTPClientResponseCode = 200
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_CREATED                         HTTPClientResponseCode = 201
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_ACCEPTED                        HTTPClientResponseCode = 202
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NON_AUTHORITATIVE_INFORMATION   HTTPClientResponseCode = 203
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NO_CONTENT                      HTTPClientResponseCode = 204
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_RESET_CONTENT                   HTTPClientResponseCode = 205
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PARTIAL_CONTENT                 HTTPClientResponseCode = 206
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_MULTI_STATUS                    HTTPClientResponseCode = 207
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_ALREADY_REPORTED                HTTPClientResponseCode = 208
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_IM_USED                         HTTPClientResponseCode = 226
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_MULTIPLE_CHOICES                HTTPClientResponseCode = 300
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_MOVED_PERMANENTLY               HTTPClientResponseCode = 301
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_FOUND                           HTTPClientResponseCode = 302
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_SEE_OTHER                       HTTPClientResponseCode = 303
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NOT_MODIFIED                    HTTPClientResponseCode = 304
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_USE_PROXY                       HTTPClientResponseCode = 305
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_SWITCH_PROXY                    HTTPClientResponseCode = 306
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_TEMPORARY_REDIRECT              HTTPClientResponseCode = 307
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PERMANENT_REDIRECT              HTTPClientResponseCode = 308
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_BAD_REQUEST                     HTTPClientResponseCode = 400
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_UNAUTHORIZED                    HTTPClientResponseCode = 401
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PAYMENT_REQUIRED                HTTPClientResponseCode = 402
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_FORBIDDEN                       HTTPClientResponseCode = 403
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NOT_FOUND                       HTTPClientResponseCode = 404
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_METHOD_NOT_ALLOWED              HTTPClientResponseCode = 405
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NOT_ACCEPTABLE                  HTTPClientResponseCode = 406
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PROXY_AUTHENTICATION_REQUIRED   HTTPClientResponseCode = 407
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_REQUEST_TIMEOUT                 HTTPClientResponseCode = 408
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_CONFLICT                        HTTPClientResponseCode = 409
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_GONE                            HTTPClientResponseCode = 410
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_LENGTH_REQUIRED                 HTTPClientResponseCode = 411
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PRECONDITION_FAILED             HTTPClientResponseCode = 412
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_REQUEST_ENTITY_TOO_LARGE        HTTPClientResponseCode = 413
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_REQUEST_URI_TOO_LONG            HTTPClientResponseCode = 414
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_UNSUPPORTED_MEDIA_TYPE          HTTPClientResponseCode = 415
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_REQUESTED_RANGE_NOT_SATISFIABLE HTTPClientResponseCode = 416
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_EXPECTATION_FAILED              HTTPClientResponseCode = 417
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_IM_A_TEAPOT                     HTTPClientResponseCode = 418
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_MISDIRECTED_REQUEST             HTTPClientResponseCode = 421
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_UNPROCESSABLE_ENTITY            HTTPClientResponseCode = 422
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_LOCKED                          HTTPClientResponseCode = 423
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_FAILED_DEPENDENCY               HTTPClientResponseCode = 424
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_UPGRADE_REQUIRED                HTTPClientResponseCode = 426
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_PRECONDITION_REQUIRED           HTTPClientResponseCode = 428
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_TOO_MANY_REQUESTS               HTTPClientResponseCode = 429
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_REQUEST_HEADER_FIELDS_TOO_LARGE HTTPClientResponseCode = 431
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_UNAVAILABLE_FOR_LEGAL_REASONS   HTTPClientResponseCode = 451
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_INTERNAL_SERVER_ERROR           HTTPClientResponseCode = 500
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NOT_IMPLEMENTED                 HTTPClientResponseCode = 501
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_BAD_GATEWAY                     HTTPClientResponseCode = 502
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_SERVICE_UNAVAILABLE             HTTPClientResponseCode = 503
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_GATEWAY_TIMEOUT                 HTTPClientResponseCode = 504
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_HTTP_VERSION_NOT_SUPPORTED      HTTPClientResponseCode = 505
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_VARIANT_ALSO_NEGOTIATES         HTTPClientResponseCode = 506
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_INSUFFICIENT_STORAGE            HTTPClientResponseCode = 507
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_LOOP_DETECTED                   HTTPClientResponseCode = 508
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NOT_EXTENDED                    HTTPClientResponseCode = 510
+	HTTP_CLIENT_RESPONSE_CODE_RESPONSE_NETWORK_AUTH_REQUIRED           HTTPClientResponseCode = 511
 )
 
 type HTTPRequestResult int
 
 const (
 	HTTP_REQUEST_RESULT_RESULT_SUCCESS                    HTTPRequestResult = 0
-	HTTP_REQUEST_RESULT_RESULT_CHUNKED_BODY_SIZE_MISMATCH                   = 1
-	HTTP_REQUEST_RESULT_RESULT_CANT_CONNECT                                 = 2
-	HTTP_REQUEST_RESULT_RESULT_CANT_RESOLVE                                 = 3
-	HTTP_REQUEST_RESULT_RESULT_CONNECTION_ERROR                             = 4
-	HTTP_REQUEST_RESULT_RESULT_TLS_HANDSHAKE_ERROR                          = 5
-	HTTP_REQUEST_RESULT_RESULT_NO_RESPONSE                                  = 6
-	HTTP_REQUEST_RESULT_RESULT_BODY_SIZE_LIMIT_EXCEEDED                     = 7
-	HTTP_REQUEST_RESULT_RESULT_BODY_DECOMPRESS_FAILED                       = 8
-	HTTP_REQUEST_RESULT_RESULT_REQUEST_FAILED                               = 9
-	HTTP_REQUEST_RESULT_RESULT_DOWNLOAD_FILE_CANT_OPEN                      = 10
-	HTTP_REQUEST_RESULT_RESULT_DOWNLOAD_FILE_WRITE_ERROR                    = 11
-	HTTP_REQUEST_RESULT_RESULT_REDIRECT_LIMIT_REACHED                       = 12
-	HTTP_REQUEST_RESULT_RESULT_TIMEOUT                                      = 13
+	HTTP_REQUEST_RESULT_RESULT_CHUNKED_BODY_SIZE_MISMATCH HTTPRequestResult = 1
+	HTTP_REQUEST_RESULT_RESULT_CANT_CONNECT               HTTPRequestResult = 2
+	HTTP_REQUEST_RESULT_RESULT_CANT_RESOLVE               HTTPRequestResult = 3
+	HTTP_REQUEST_RESULT_RESULT_CONNECTION_ERROR           HTTPRequestResult = 4
+	HTTP_REQUEST_RESULT_RESULT_TLS_HANDSHAKE_ERROR        HTTPRequestResult = 5
+	HTTP_REQUEST_RESULT_RESULT_NO_RESPONSE                HTTPRequestResult = 6
+	HTTP_REQUEST_RESULT_RESULT_BODY_SIZE_LIMIT_EXCEEDED   HTTPRequestResult = 7
+	HTTP_REQUEST_RESULT_RESULT_BODY_DECOMPRESS_FAILED     HTTPRequestResult = 8
+	HTTP_REQUEST_RESULT_RESULT_REQUEST_FAILED             HTTPRequestResult = 9
+	HTTP_REQUEST_RESULT_RESULT_DOWNLOAD_FILE_CANT_OPEN    HTTPRequestResult = 10
+	HTTP_REQUEST_RESULT_RESULT_DOWNLOAD_FILE_WRITE_ERROR  HTTPRequestResult = 11
+	HTTP_REQUEST_RESULT_RESULT_REDIRECT_LIMIT_REACHED     HTTPRequestResult = 12
+	HTTP_REQUEST_RESULT_RESULT_TIMEOUT                    HTTPRequestResult = 13
 )
 
 type HashingContextHashType int
 
 const (
 	HASHING_CONTEXT_HASH_TYPE_HASH_MD_5    HashingContextHashType = 0
-	HASHING_CONTEXT_HASH_TYPE_HASH_SHA_1                          = 1
-	HASHING_CONTEXT_HASH_TYPE_HASH_SHA_256                        = 2
+	HASHING_CONTEXT_HASH_TYPE_HASH_SHA_1   HashingContextHashType = 1
+	HASHING_CONTEXT_HASH_TYPE_HASH_SHA_256 HashingContextHashType = 2
 )
 
 type HingeJoint3DParam int
 
 const (
 	HINGE_JOINT_3_D_PARAM_PARAM_BIAS                  HingeJoint3DParam = 0
-	HINGE_JOINT_3_D_PARAM_PARAM_LIMIT_UPPER                             = 1
-	HINGE_JOINT_3_D_PARAM_PARAM_LIMIT_LOWER                             = 2
-	HINGE_JOINT_3_D_PARAM_PARAM_LIMIT_BIAS                              = 3
-	HINGE_JOINT_3_D_PARAM_PARAM_LIMIT_SOFTNESS                          = 4
-	HINGE_JOINT_3_D_PARAM_PARAM_LIMIT_RELAXATION                        = 5
-	HINGE_JOINT_3_D_PARAM_PARAM_MOTOR_TARGET_VELOCITY                   = 6
-	HINGE_JOINT_3_D_PARAM_PARAM_MOTOR_MAX_IMPULSE                       = 7
-	HINGE_JOINT_3_D_PARAM_PARAM_MAX                                     = 8
+	HINGE_JOINT_3_D_PARAM_PARAM_LIMIT_UPPER           HingeJoint3DParam = 1
+	HINGE_JOINT_3_D_PARAM_PARAM_LIMIT_LOWER           HingeJoint3DParam = 2
+	HINGE_JOINT_3_D_PARAM_PARAM_LIMIT_BIAS            HingeJoint3DParam = 3
+	HINGE_JOINT_3_D_PARAM_PARAM_LIMIT_SOFTNESS        HingeJoint3DParam = 4
+	HINGE_JOINT_3_D_PARAM_PARAM_LIMIT_RELAXATION      HingeJoint3DParam = 5
+	HINGE_JOINT_3_D_PARAM_PARAM_MOTOR_TARGET_VELOCITY HingeJoint3DParam = 6
+	HINGE_JOINT_3_D_PARAM_PARAM_MOTOR_MAX_IMPULSE     HingeJoint3DParam = 7
+	HINGE_JOINT_3_D_PARAM_PARAM_MAX                   HingeJoint3DParam = 8
 )
 
 type HingeJoint3DFlag int
 
 const (
 	HINGE_JOINT_3_D_FLAG_FLAG_USE_LIMIT    HingeJoint3DFlag = 0
-	HINGE_JOINT_3_D_FLAG_FLAG_ENABLE_MOTOR                  = 1
-	HINGE_JOINT_3_D_FLAG_FLAG_MAX                           = 2
+	HINGE_JOINT_3_D_FLAG_FLAG_ENABLE_MOTOR HingeJoint3DFlag = 1
+	HINGE_JOINT_3_D_FLAG_FLAG_MAX          HingeJoint3DFlag = 2
 )
 
 type IPResolverStatus int
 
 const (
 	IP_RESOLVER_STATUS_RESOLVER_STATUS_NONE    IPResolverStatus = 0
-	IP_RESOLVER_STATUS_RESOLVER_STATUS_WAITING                  = 1
-	IP_RESOLVER_STATUS_RESOLVER_STATUS_DONE                     = 2
-	IP_RESOLVER_STATUS_RESOLVER_STATUS_ERROR                    = 3
+	IP_RESOLVER_STATUS_RESOLVER_STATUS_WAITING IPResolverStatus = 1
+	IP_RESOLVER_STATUS_RESOLVER_STATUS_DONE    IPResolverStatus = 2
+	IP_RESOLVER_STATUS_RESOLVER_STATUS_ERROR   IPResolverStatus = 3
 )
 
 type IPType int
 
 const (
 	IP_TYPE_TYPE_NONE  IPType = 0
-	IP_TYPE_TYPE_IPV_4        = 1
-	IP_TYPE_TYPE_IPV_6        = 2
-	IP_TYPE_TYPE_ANY          = 3
+	IP_TYPE_TYPE_IPV_4 IPType = 1
+	IP_TYPE_TYPE_IPV_6 IPType = 2
+	IP_TYPE_TYPE_ANY   IPType = 3
 )
 
 type ImageFormat int
 
 const (
 	IMAGE_FORMAT_FORMAT_L_8             ImageFormat = 0
-	IMAGE_FORMAT_FORMAT_LA_8                        = 1
-	IMAGE_FORMAT_FORMAT_R_8                         = 2
-	IMAGE_FORMAT_FORMAT_RG_8                        = 3
-	IMAGE_FORMAT_FORMAT_RGB_8                       = 4
-	IMAGE_FORMAT_FORMAT_RGBA_8                      = 5
-	IMAGE_FORMAT_FORMAT_RGBA_4444                   = 6
-	IMAGE_FORMAT_FORMAT_RGB_565                     = 7
-	IMAGE_FORMAT_FORMAT_RF                          = 8
-	IMAGE_FORMAT_FORMAT_RGF                         = 9
-	IMAGE_FORMAT_FORMAT_RGBF                        = 10
-	IMAGE_FORMAT_FORMAT_RGBAF                       = 11
-	IMAGE_FORMAT_FORMAT_RH                          = 12
-	IMAGE_FORMAT_FORMAT_RGH                         = 13
-	IMAGE_FORMAT_FORMAT_RGBH                        = 14
-	IMAGE_FORMAT_FORMAT_RGBAH                       = 15
-	IMAGE_FORMAT_FORMAT_RGBE_9995                   = 16
-	IMAGE_FORMAT_FORMAT_DXT_1                       = 17
-	IMAGE_FORMAT_FORMAT_DXT_3                       = 18
-	IMAGE_FORMAT_FORMAT_DXT_5                       = 19
-	IMAGE_FORMAT_FORMAT_RGTC_R                      = 20
-	IMAGE_FORMAT_FORMAT_RGTC_RG                     = 21
-	IMAGE_FORMAT_FORMAT_BPTC_RGBA                   = 22
-	IMAGE_FORMAT_FORMAT_BPTC_RGBF                   = 23
-	IMAGE_FORMAT_FORMAT_BPTC_RGBFU                  = 24
-	IMAGE_FORMAT_FORMAT_ETC                         = 25
-	IMAGE_FORMAT_FORMAT_ETC_2_R_11                  = 26
-	IMAGE_FORMAT_FORMAT_ETC_2_R_11_S                = 27
-	IMAGE_FORMAT_FORMAT_ETC_2_RG_11                 = 28
-	IMAGE_FORMAT_FORMAT_ETC_2_RG_11_S               = 29
-	IMAGE_FORMAT_FORMAT_ETC_2_RGB_8                 = 30
-	IMAGE_FORMAT_FORMAT_ETC_2_RGBA_8                = 31
-	IMAGE_FORMAT_FORMAT_ETC_2_RGB_8_A_1             = 32
-	IMAGE_FORMAT_FORMAT_ETC_2_RA_AS_RG              = 33
-	IMAGE_FORMAT_FORMAT_DXT_5_RA_AS_RG              = 34
-	IMAGE_FORMAT_FORMAT_ASTC_4_X_4                  = 35
-	IMAGE_FORMAT_FORMAT_ASTC_4_X_4_HDR              = 36
-	IMAGE_FORMAT_FORMAT_ASTC_8_X_8                  = 37
-	IMAGE_FORMAT_FORMAT_ASTC_8_X_8_HDR              = 38
-	IMAGE_FORMAT_FORMAT_MAX                         = 39
+	IMAGE_FORMAT_FORMAT_LA_8            ImageFormat = 1
+	IMAGE_FORMAT_FORMAT_R_8             ImageFormat = 2
+	IMAGE_FORMAT_FORMAT_RG_8            ImageFormat = 3
+	IMAGE_FORMAT_FORMAT_RGB_8           ImageFormat = 4
+	IMAGE_FORMAT_FORMAT_RGBA_8          ImageFormat = 5
+	IMAGE_FORMAT_FORMAT_RGBA_4444       ImageFormat = 6
+	IMAGE_FORMAT_FORMAT_RGB_565         ImageFormat = 7
+	IMAGE_FORMAT_FORMAT_RF              ImageFormat = 8
+	IMAGE_FORMAT_FORMAT_RGF             ImageFormat = 9
+	IMAGE_FORMAT_FORMAT_RGBF            ImageFormat = 10
+	IMAGE_FORMAT_FORMAT_RGBAF           ImageFormat = 11
+	IMAGE_FORMAT_FORMAT_RH              ImageFormat = 12
+	IMAGE_FORMAT_FORMAT_RGH             ImageFormat = 13
+	IMAGE_FORMAT_FORMAT_RGBH            ImageFormat = 14
+	IMAGE_FORMAT_FORMAT_RGBAH           ImageFormat = 15
+	IMAGE_FORMAT_FORMAT_RGBE_9995       ImageFormat = 16
+	IMAGE_FORMAT_FORMAT_DXT_1           ImageFormat = 17
+	IMAGE_FORMAT_FORMAT_DXT_3           ImageFormat = 18
+	IMAGE_FORMAT_FORMAT_DXT_5           ImageFormat = 19
+	IMAGE_FORMAT_FORMAT_RGTC_R          ImageFormat = 20
+	IMAGE_FORMAT_FORMAT_RGTC_RG         ImageFormat = 21
+	IMAGE_FORMAT_FORMAT_BPTC_RGBA       ImageFormat = 22
+	IMAGE_FORMAT_FORMAT_BPTC_RGBF       ImageFormat = 23
+	IMAGE_FORMAT_FORMAT_BPTC_RGBFU      ImageFormat = 24
+	IMAGE_FORMAT_FORMAT_ETC             ImageFormat = 25
+	IMAGE_FORMAT_FORMAT_ETC_2_R_11      ImageFormat = 26
+	IMAGE_FORMAT_FORMAT_ETC_2_R_11_S    ImageFormat = 27
+	IMAGE_FORMAT_FORMAT_ETC_2_RG_11     ImageFormat = 28
+	IMAGE_FORMAT_FORMAT_ETC_2_RG_11_S   ImageFormat = 29
+	IMAGE_FORMAT_FORMAT_ETC_2_RGB_8     ImageFormat = 30
+	IMAGE_FORMAT_FORMAT_ETC_2_RGBA_8    ImageFormat = 31
+	IMAGE_FORMAT_FORMAT_ETC_2_RGB_8_A_1 ImageFormat = 32
+	IMAGE_FORMAT_FORMAT_ETC_2_RA_AS_RG  ImageFormat = 33
+	IMAGE_FORMAT_FORMAT_DXT_5_RA_AS_RG  ImageFormat = 34
+	IMAGE_FORMAT_FORMAT_ASTC_4_X_4      ImageFormat = 35
+	IMAGE_FORMAT_FORMAT_ASTC_4_X_4_HDR  ImageFormat = 36
+	IMAGE_FORMAT_FORMAT_ASTC_8_X_8      ImageFormat = 37
+	IMAGE_FORMAT_FORMAT_ASTC_8_X_8_HDR  ImageFormat = 38
+	IMAGE_FORMAT_FORMAT_MAX             ImageFormat = 39
 )
 
 type ImageInterpolation int
 
 const (
 	IMAGE_INTERPOLATION_INTERPOLATE_NEAREST   ImageInterpolation = 0
-	IMAGE_INTERPOLATION_INTERPOLATE_BILINEAR                     = 1
-	IMAGE_INTERPOLATION_INTERPOLATE_CUBIC                        = 2
-	IMAGE_INTERPOLATION_INTERPOLATE_TRILINEAR                    = 3
-	IMAGE_INTERPOLATION_INTERPOLATE_LANCZOS                      = 4
+	IMAGE_INTERPOLATION_INTERPOLATE_BILINEAR  ImageInterpolation = 1
+	IMAGE_INTERPOLATION_INTERPOLATE_CUBIC     ImageInterpolation = 2
+	IMAGE_INTERPOLATION_INTERPOLATE_TRILINEAR ImageInterpolation = 3
+	IMAGE_INTERPOLATION_INTERPOLATE_LANCZOS   ImageInterpolation = 4
 )
 
 type ImageAlphaMode int
 
 const (
 	IMAGE_ALPHA_MODE_ALPHA_NONE  ImageAlphaMode = 0
-	IMAGE_ALPHA_MODE_ALPHA_BIT                  = 1
-	IMAGE_ALPHA_MODE_ALPHA_BLEND                = 2
+	IMAGE_ALPHA_MODE_ALPHA_BIT   ImageAlphaMode = 1
+	IMAGE_ALPHA_MODE_ALPHA_BLEND ImageAlphaMode = 2
 )
 
 type ImageCompressMode int
 
 const (
 	IMAGE_COMPRESS_MODE_COMPRESS_S_3_TC ImageCompressMode = 0
-	IMAGE_COMPRESS_MODE_COMPRESS_ETC                      = 1
-	IMAGE_COMPRESS_MODE_COMPRESS_ETC_2                    = 2
-	IMAGE_COMPRESS_MODE_COMPRESS_BPTC                     = 3
-	IMAGE_COMPRESS_MODE_COMPRESS_ASTC                     = 4
-	IMAGE_COMPRESS_MODE_COMPRESS_MAX                      = 5
+	IMAGE_COMPRESS_MODE_COMPRESS_ETC    ImageCompressMode = 1
+	IMAGE_COMPRESS_MODE_COMPRESS_ETC_2  ImageCompressMode = 2
+	IMAGE_COMPRESS_MODE_COMPRESS_BPTC   ImageCompressMode = 3
+	IMAGE_COMPRESS_MODE_COMPRESS_ASTC   ImageCompressMode = 4
+	IMAGE_COMPRESS_MODE_COMPRESS_MAX    ImageCompressMode = 5
 )
 
 type ImageUsedChannels int
 
 const (
 	IMAGE_USED_CHANNELS_USED_CHANNELS_L    ImageUsedChannels = 0
-	IMAGE_USED_CHANNELS_USED_CHANNELS_LA                     = 1
-	IMAGE_USED_CHANNELS_USED_CHANNELS_R                      = 2
-	IMAGE_USED_CHANNELS_USED_CHANNELS_RG                     = 3
-	IMAGE_USED_CHANNELS_USED_CHANNELS_RGB                    = 4
-	IMAGE_USED_CHANNELS_USED_CHANNELS_RGBA                   = 5
+	IMAGE_USED_CHANNELS_USED_CHANNELS_LA   ImageUsedChannels = 1
+	IMAGE_USED_CHANNELS_USED_CHANNELS_R    ImageUsedChannels = 2
+	IMAGE_USED_CHANNELS_USED_CHANNELS_RG   ImageUsedChannels = 3
+	IMAGE_USED_CHANNELS_USED_CHANNELS_RGB  ImageUsedChannels = 4
+	IMAGE_USED_CHANNELS_USED_CHANNELS_RGBA ImageUsedChannels = 5
 )
 
 type ImageCompressSource int
 
 const (
 	IMAGE_COMPRESS_SOURCE_COMPRESS_SOURCE_GENERIC ImageCompressSource = 0
-	IMAGE_COMPRESS_SOURCE_COMPRESS_SOURCE_SRGB                        = 1
-	IMAGE_COMPRESS_SOURCE_COMPRESS_SOURCE_NORMAL                      = 2
+	IMAGE_COMPRESS_SOURCE_COMPRESS_SOURCE_SRGB    ImageCompressSource = 1
+	IMAGE_COMPRESS_SOURCE_COMPRESS_SOURCE_NORMAL  ImageCompressSource = 2
 )
 
 type ImageASTCFormat int
 
 const (
 	IMAGE_ASTC_FORMAT_ASTC_FORMAT_4_X_4 ImageASTCFormat = 0
-	IMAGE_ASTC_FORMAT_ASTC_FORMAT_8_X_8                 = 1
+	IMAGE_ASTC_FORMAT_ASTC_FORMAT_8_X_8 ImageASTCFormat = 1
 )
 
 type ImageFormatLoaderLoaderFlags int
 
 const (
 	IMAGE_FORMAT_LOADER_LOADER_FLAGS_FLAG_NONE           ImageFormatLoaderLoaderFlags = 0
-	IMAGE_FORMAT_LOADER_LOADER_FLAGS_FLAG_FORCE_LINEAR                                = 1
-	IMAGE_FORMAT_LOADER_LOADER_FLAGS_FLAG_CONVERT_COLORS                              = 2
+	IMAGE_FORMAT_LOADER_LOADER_FLAGS_FLAG_FORCE_LINEAR   ImageFormatLoaderLoaderFlags = 1
+	IMAGE_FORMAT_LOADER_LOADER_FLAGS_FLAG_CONVERT_COLORS ImageFormatLoaderLoaderFlags = 2
 )
 
 type InputMouseMode int
 
 const (
 	INPUT_MOUSE_MODE_MOUSE_MODE_VISIBLE         InputMouseMode = 0
-	INPUT_MOUSE_MODE_MOUSE_MODE_HIDDEN                         = 1
-	INPUT_MOUSE_MODE_MOUSE_MODE_CAPTURED                       = 2
-	INPUT_MOUSE_MODE_MOUSE_MODE_CONFINED                       = 3
-	INPUT_MOUSE_MODE_MOUSE_MODE_CONFINED_HIDDEN                = 4
+	INPUT_MOUSE_MODE_MOUSE_MODE_HIDDEN          InputMouseMode = 1
+	INPUT_MOUSE_MODE_MOUSE_MODE_CAPTURED        InputMouseMode = 2
+	INPUT_MOUSE_MODE_MOUSE_MODE_CONFINED        InputMouseMode = 3
+	INPUT_MOUSE_MODE_MOUSE_MODE_CONFINED_HIDDEN InputMouseMode = 4
+	INPUT_MOUSE_MODE_MOUSE_MODE_MAX             InputMouseMode = 5
 )
 
 type InputCursorShape int
 
 const (
 	INPUT_CURSOR_SHAPE_CURSOR_ARROW         InputCursorShape = 0
-	INPUT_CURSOR_SHAPE_CURSOR_IBEAM                          = 1
-	INPUT_CURSOR_SHAPE_CURSOR_POINTING_HAND                  = 2
-	INPUT_CURSOR_SHAPE_CURSOR_CROSS                          = 3
-	INPUT_CURSOR_SHAPE_CURSOR_WAIT                           = 4
-	INPUT_CURSOR_SHAPE_CURSOR_BUSY                           = 5
-	INPUT_CURSOR_SHAPE_CURSOR_DRAG                           = 6
-	INPUT_CURSOR_SHAPE_CURSOR_CAN_DROP                       = 7
-	INPUT_CURSOR_SHAPE_CURSOR_FORBIDDEN                      = 8
-	INPUT_CURSOR_SHAPE_CURSOR_VSIZE                          = 9
-	INPUT_CURSOR_SHAPE_CURSOR_HSIZE                          = 10
-	INPUT_CURSOR_SHAPE_CURSOR_BDIAGSIZE                      = 11
-	INPUT_CURSOR_SHAPE_CURSOR_FDIAGSIZE                      = 12
-	INPUT_CURSOR_SHAPE_CURSOR_MOVE                           = 13
-	INPUT_CURSOR_SHAPE_CURSOR_VSPLIT                         = 14
-	INPUT_CURSOR_SHAPE_CURSOR_HSPLIT                         = 15
-	INPUT_CURSOR_SHAPE_CURSOR_HELP                           = 16
+	INPUT_CURSOR_SHAPE_CURSOR_IBEAM         InputCursorShape = 1
+	INPUT_CURSOR_SHAPE_CURSOR_POINTING_HAND InputCursorShape = 2
+	INPUT_CURSOR_SHAPE_CURSOR_CROSS         InputCursorShape = 3
+	INPUT_CURSOR_SHAPE_CURSOR_WAIT          InputCursorShape = 4
+	INPUT_CURSOR_SHAPE_CURSOR_BUSY          InputCursorShape = 5
+	INPUT_CURSOR_SHAPE_CURSOR_DRAG          InputCursorShape = 6
+	INPUT_CURSOR_SHAPE_CURSOR_CAN_DROP      InputCursorShape = 7
+	INPUT_CURSOR_SHAPE_CURSOR_FORBIDDEN     InputCursorShape = 8
+	INPUT_CURSOR_SHAPE_CURSOR_VSIZE         InputCursorShape = 9
+	INPUT_CURSOR_SHAPE_CURSOR_HSIZE         InputCursorShape = 10
+	INPUT_CURSOR_SHAPE_CURSOR_BDIAGSIZE     InputCursorShape = 11
+	INPUT_CURSOR_SHAPE_CURSOR_FDIAGSIZE     InputCursorShape = 12
+	INPUT_CURSOR_SHAPE_CURSOR_MOVE          InputCursorShape = 13
+	INPUT_CURSOR_SHAPE_CURSOR_VSPLIT        InputCursorShape = 14
+	INPUT_CURSOR_SHAPE_CURSOR_HSPLIT        InputCursorShape = 15
+	INPUT_CURSOR_SHAPE_CURSOR_HELP          InputCursorShape = 16
 )
 
 type ItemListIconMode int
 
 const (
 	ITEM_LIST_ICON_MODE_ICON_MODE_TOP  ItemListIconMode = 0
-	ITEM_LIST_ICON_MODE_ICON_MODE_LEFT                  = 1
+	ITEM_LIST_ICON_MODE_ICON_MODE_LEFT ItemListIconMode = 1
 )
 
 type ItemListSelectMode int
 
 const (
 	ITEM_LIST_SELECT_MODE_SELECT_SINGLE ItemListSelectMode = 0
-	ITEM_LIST_SELECT_MODE_SELECT_MULTI                     = 1
+	ITEM_LIST_SELECT_MODE_SELECT_MULTI  ItemListSelectMode = 1
+	ITEM_LIST_SELECT_MODE_SELECT_TOGGLE ItemListSelectMode = 2
 )
 
 type JSONRPCErrorCode int
 
 const (
 	JSONRPC_ERROR_CODE_PARSE_ERROR      JSONRPCErrorCode = -32700
-	JSONRPC_ERROR_CODE_INVALID_REQUEST                   = -32600
-	JSONRPC_ERROR_CODE_METHOD_NOT_FOUND                  = -32601
-	JSONRPC_ERROR_CODE_INVALID_PARAMS                    = -32602
-	JSONRPC_ERROR_CODE_INTERNAL_ERROR                    = -32603
+	JSONRPC_ERROR_CODE_INVALID_REQUEST  JSONRPCErrorCode = -32600
+	JSONRPC_ERROR_CODE_METHOD_NOT_FOUND JSONRPCErrorCode = -32601
+	JSONRPC_ERROR_CODE_INVALID_PARAMS   JSONRPCErrorCode = -32602
+	JSONRPC_ERROR_CODE_INTERNAL_ERROR   JSONRPCErrorCode = -32603
 )
 
 type Label3DDrawFlags int
 
 const (
 	LABEL_3_D_DRAW_FLAGS_FLAG_SHADED             Label3DDrawFlags = 0
-	LABEL_3_D_DRAW_FLAGS_FLAG_DOUBLE_SIDED                        = 1
-	LABEL_3_D_DRAW_FLAGS_FLAG_DISABLE_DEPTH_TEST                  = 2
-	LABEL_3_D_DRAW_FLAGS_FLAG_FIXED_SIZE                          = 3
-	LABEL_3_D_DRAW_FLAGS_FLAG_MAX                                 = 4
+	LABEL_3_D_DRAW_FLAGS_FLAG_DOUBLE_SIDED       Label3DDrawFlags = 1
+	LABEL_3_D_DRAW_FLAGS_FLAG_DISABLE_DEPTH_TEST Label3DDrawFlags = 2
+	LABEL_3_D_DRAW_FLAGS_FLAG_FIXED_SIZE         Label3DDrawFlags = 3
+	LABEL_3_D_DRAW_FLAGS_FLAG_MAX                Label3DDrawFlags = 4
 )
 
 type Label3DAlphaCutMode int
 
 const (
 	LABEL_3_D_ALPHA_CUT_MODE_ALPHA_CUT_DISABLED       Label3DAlphaCutMode = 0
-	LABEL_3_D_ALPHA_CUT_MODE_ALPHA_CUT_DISCARD                            = 1
-	LABEL_3_D_ALPHA_CUT_MODE_ALPHA_CUT_OPAQUE_PREPASS                     = 2
-	LABEL_3_D_ALPHA_CUT_MODE_ALPHA_CUT_HASH                               = 3
+	LABEL_3_D_ALPHA_CUT_MODE_ALPHA_CUT_DISCARD        Label3DAlphaCutMode = 1
+	LABEL_3_D_ALPHA_CUT_MODE_ALPHA_CUT_OPAQUE_PREPASS Label3DAlphaCutMode = 2
+	LABEL_3_D_ALPHA_CUT_MODE_ALPHA_CUT_HASH           Label3DAlphaCutMode = 3
 )
 
 type Light2DShadowFilter int
 
 const (
 	LIGHT_2_D_SHADOW_FILTER_SHADOW_FILTER_NONE   Light2DShadowFilter = 0
-	LIGHT_2_D_SHADOW_FILTER_SHADOW_FILTER_PCF_5                      = 1
-	LIGHT_2_D_SHADOW_FILTER_SHADOW_FILTER_PCF_13                     = 2
+	LIGHT_2_D_SHADOW_FILTER_SHADOW_FILTER_PCF_5  Light2DShadowFilter = 1
+	LIGHT_2_D_SHADOW_FILTER_SHADOW_FILTER_PCF_13 Light2DShadowFilter = 2
 )
 
 type Light2DBlendMode int
 
 const (
 	LIGHT_2_D_BLEND_MODE_BLEND_MODE_ADD Light2DBlendMode = 0
-	LIGHT_2_D_BLEND_MODE_BLEND_MODE_SUB                  = 1
-	LIGHT_2_D_BLEND_MODE_BLEND_MODE_MIX                  = 2
+	LIGHT_2_D_BLEND_MODE_BLEND_MODE_SUB Light2DBlendMode = 1
+	LIGHT_2_D_BLEND_MODE_BLEND_MODE_MIX Light2DBlendMode = 2
 )
 
 type Light3DParam int
 
 const (
 	LIGHT_3_D_PARAM_PARAM_ENERGY                Light3DParam = 0
-	LIGHT_3_D_PARAM_PARAM_INDIRECT_ENERGY                    = 1
-	LIGHT_3_D_PARAM_PARAM_VOLUMETRIC_FOG_ENERGY              = 2
-	LIGHT_3_D_PARAM_PARAM_SPECULAR                           = 3
-	LIGHT_3_D_PARAM_PARAM_RANGE                              = 4
-	LIGHT_3_D_PARAM_PARAM_SIZE                               = 5
-	LIGHT_3_D_PARAM_PARAM_ATTENUATION                        = 6
-	LIGHT_3_D_PARAM_PARAM_SPOT_ANGLE                         = 7
-	LIGHT_3_D_PARAM_PARAM_SPOT_ATTENUATION                   = 8
-	LIGHT_3_D_PARAM_PARAM_SHADOW_MAX_DISTANCE                = 9
-	LIGHT_3_D_PARAM_PARAM_SHADOW_SPLIT_1_OFFSET              = 10
-	LIGHT_3_D_PARAM_PARAM_SHADOW_SPLIT_2_OFFSET              = 11
-	LIGHT_3_D_PARAM_PARAM_SHADOW_SPLIT_3_OFFSET              = 12
-	LIGHT_3_D_PARAM_PARAM_SHADOW_FADE_START                  = 13
-	LIGHT_3_D_PARAM_PARAM_SHADOW_NORMAL_BIAS                 = 14
-	LIGHT_3_D_PARAM_PARAM_SHADOW_BIAS                        = 15
-	LIGHT_3_D_PARAM_PARAM_SHADOW_PANCAKE_SIZE                = 16
-	LIGHT_3_D_PARAM_PARAM_SHADOW_OPACITY                     = 17
-	LIGHT_3_D_PARAM_PARAM_SHADOW_BLUR                        = 18
-	LIGHT_3_D_PARAM_PARAM_TRANSMITTANCE_BIAS                 = 19
-	LIGHT_3_D_PARAM_PARAM_INTENSITY                          = 20
-	LIGHT_3_D_PARAM_PARAM_MAX                                = 21
+	LIGHT_3_D_PARAM_PARAM_INDIRECT_ENERGY       Light3DParam = 1
+	LIGHT_3_D_PARAM_PARAM_VOLUMETRIC_FOG_ENERGY Light3DParam = 2
+	LIGHT_3_D_PARAM_PARAM_SPECULAR              Light3DParam = 3
+	LIGHT_3_D_PARAM_PARAM_RANGE                 Light3DParam = 4
+	LIGHT_3_D_PARAM_PARAM_SIZE                  Light3DParam = 5
+	LIGHT_3_D_PARAM_PARAM_ATTENUATION           Light3DParam = 6
+	LIGHT_3_D_PARAM_PARAM_SPOT_ANGLE            Light3DParam = 7
+	LIGHT_3_D_PARAM_PARAM_SPOT_ATTENUATION      Light3DParam = 8
+	LIGHT_3_D_PARAM_PARAM_SHADOW_MAX_DISTANCE   Light3DParam = 9
+	LIGHT_3_D_PARAM_PARAM_SHADOW_SPLIT_1_OFFSET Light3DParam = 10
+	LIGHT_3_D_PARAM_PARAM_SHADOW_SPLIT_2_OFFSET Light3DParam = 11
+	LIGHT_3_D_PARAM_PARAM_SHADOW_SPLIT_3_OFFSET Light3DParam = 12
+	LIGHT_3_D_PARAM_PARAM_SHADOW_FADE_START     Light3DParam = 13
+	LIGHT_3_D_PARAM_PARAM_SHADOW_NORMAL_BIAS    Light3DParam = 14
+	LIGHT_3_D_PARAM_PARAM_SHADOW_BIAS           Light3DParam = 15
+	LIGHT_3_D_PARAM_PARAM_SHADOW_PANCAKE_SIZE   Light3DParam = 16
+	LIGHT_3_D_PARAM_PARAM_SHADOW_OPACITY        Light3DParam = 17
+	LIGHT_3_D_PARAM_PARAM_SHADOW_BLUR           Light3DParam = 18
+	LIGHT_3_D_PARAM_PARAM_TRANSMITTANCE_BIAS    Light3DParam = 19
+	LIGHT_3_D_PARAM_PARAM_INTENSITY             Light3DParam = 20
+	LIGHT_3_D_PARAM_PARAM_MAX                   Light3DParam = 21
 )
 
 type Light3DBakeMode int
 
 const (
 	LIGHT_3_D_BAKE_MODE_BAKE_DISABLED Light3DBakeMode = 0
-	LIGHT_3_D_BAKE_MODE_BAKE_STATIC                   = 1
-	LIGHT_3_D_BAKE_MODE_BAKE_DYNAMIC                  = 2
+	LIGHT_3_D_BAKE_MODE_BAKE_STATIC   Light3DBakeMode = 1
+	LIGHT_3_D_BAKE_MODE_BAKE_DYNAMIC  Light3DBakeMode = 2
 )
 
 type LightmapGIBakeQuality int
 
 const (
 	LIGHTMAP_GI_BAKE_QUALITY_BAKE_QUALITY_LOW    LightmapGIBakeQuality = 0
-	LIGHTMAP_GI_BAKE_QUALITY_BAKE_QUALITY_MEDIUM                       = 1
-	LIGHTMAP_GI_BAKE_QUALITY_BAKE_QUALITY_HIGH                         = 2
-	LIGHTMAP_GI_BAKE_QUALITY_BAKE_QUALITY_ULTRA                        = 3
+	LIGHTMAP_GI_BAKE_QUALITY_BAKE_QUALITY_MEDIUM LightmapGIBakeQuality = 1
+	LIGHTMAP_GI_BAKE_QUALITY_BAKE_QUALITY_HIGH   LightmapGIBakeQuality = 2
+	LIGHTMAP_GI_BAKE_QUALITY_BAKE_QUALITY_ULTRA  LightmapGIBakeQuality = 3
 )
 
 type LightmapGIGenerateProbes int
 
 const (
 	LIGHTMAP_GI_GENERATE_PROBES_GENERATE_PROBES_DISABLED  LightmapGIGenerateProbes = 0
-	LIGHTMAP_GI_GENERATE_PROBES_GENERATE_PROBES_SUBDIV_4                           = 1
-	LIGHTMAP_GI_GENERATE_PROBES_GENERATE_PROBES_SUBDIV_8                           = 2
-	LIGHTMAP_GI_GENERATE_PROBES_GENERATE_PROBES_SUBDIV_16                          = 3
-	LIGHTMAP_GI_GENERATE_PROBES_GENERATE_PROBES_SUBDIV_32                          = 4
+	LIGHTMAP_GI_GENERATE_PROBES_GENERATE_PROBES_SUBDIV_4  LightmapGIGenerateProbes = 1
+	LIGHTMAP_GI_GENERATE_PROBES_GENERATE_PROBES_SUBDIV_8  LightmapGIGenerateProbes = 2
+	LIGHTMAP_GI_GENERATE_PROBES_GENERATE_PROBES_SUBDIV_16 LightmapGIGenerateProbes = 3
+	LIGHTMAP_GI_GENERATE_PROBES_GENERATE_PROBES_SUBDIV_32 LightmapGIGenerateProbes = 4
 )
 
 type LightmapGIBakeError int
 
 const (
 	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_OK                     LightmapGIBakeError = 0
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SCENE_ROOT                              = 1
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_FOREIGN_DATA                               = 2
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_LIGHTMAPPER                             = 3
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SAVE_PATH                               = 4
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_MESHES                                  = 5
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_MESHES_INVALID                             = 6
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_CANT_CREATE_IMAGE                          = 7
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_USER_ABORTED                               = 8
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_TEXTURE_SIZE_TOO_SMALL                     = 9
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_LIGHTMAP_TOO_SMALL                         = 10
-	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_ATLAS_TOO_SMALL                            = 11
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SCENE_ROOT          LightmapGIBakeError = 1
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_FOREIGN_DATA           LightmapGIBakeError = 2
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_LIGHTMAPPER         LightmapGIBakeError = 3
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_SAVE_PATH           LightmapGIBakeError = 4
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_NO_MESHES              LightmapGIBakeError = 5
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_MESHES_INVALID         LightmapGIBakeError = 6
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_CANT_CREATE_IMAGE      LightmapGIBakeError = 7
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_USER_ABORTED           LightmapGIBakeError = 8
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_TEXTURE_SIZE_TOO_SMALL LightmapGIBakeError = 9
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_LIGHTMAP_TOO_SMALL     LightmapGIBakeError = 10
+	LIGHTMAP_GI_BAKE_ERROR_BAKE_ERROR_ATLAS_TOO_SMALL        LightmapGIBakeError = 11
 )
 
 type LightmapGIEnvironmentMode int
 
 const (
 	LIGHTMAP_GI_ENVIRONMENT_MODE_ENVIRONMENT_MODE_DISABLED     LightmapGIEnvironmentMode = 0
-	LIGHTMAP_GI_ENVIRONMENT_MODE_ENVIRONMENT_MODE_SCENE                                  = 1
-	LIGHTMAP_GI_ENVIRONMENT_MODE_ENVIRONMENT_MODE_CUSTOM_SKY                             = 2
-	LIGHTMAP_GI_ENVIRONMENT_MODE_ENVIRONMENT_MODE_CUSTOM_COLOR                           = 3
+	LIGHTMAP_GI_ENVIRONMENT_MODE_ENVIRONMENT_MODE_SCENE        LightmapGIEnvironmentMode = 1
+	LIGHTMAP_GI_ENVIRONMENT_MODE_ENVIRONMENT_MODE_CUSTOM_SKY   LightmapGIEnvironmentMode = 2
+	LIGHTMAP_GI_ENVIRONMENT_MODE_ENVIRONMENT_MODE_CUSTOM_COLOR LightmapGIEnvironmentMode = 3
+)
+
+type LightmapGIDataShadowmaskMode int
+
+const (
+	LIGHTMAP_GI_DATA_SHADOWMASK_MODE_SHADOWMASK_MODE_NONE    LightmapGIDataShadowmaskMode = 0
+	LIGHTMAP_GI_DATA_SHADOWMASK_MODE_SHADOWMASK_MODE_REPLACE LightmapGIDataShadowmaskMode = 1
+	LIGHTMAP_GI_DATA_SHADOWMASK_MODE_SHADOWMASK_MODE_OVERLAY LightmapGIDataShadowmaskMode = 2
 )
 
 type Line2DLineJointMode int
 
 const (
 	LINE_2_D_LINE_JOINT_MODE_LINE_JOINT_SHARP Line2DLineJointMode = 0
-	LINE_2_D_LINE_JOINT_MODE_LINE_JOINT_BEVEL                     = 1
-	LINE_2_D_LINE_JOINT_MODE_LINE_JOINT_ROUND                     = 2
+	LINE_2_D_LINE_JOINT_MODE_LINE_JOINT_BEVEL Line2DLineJointMode = 1
+	LINE_2_D_LINE_JOINT_MODE_LINE_JOINT_ROUND Line2DLineJointMode = 2
 )
 
 type Line2DLineCapMode int
 
 const (
 	LINE_2_D_LINE_CAP_MODE_LINE_CAP_NONE  Line2DLineCapMode = 0
-	LINE_2_D_LINE_CAP_MODE_LINE_CAP_BOX                     = 1
-	LINE_2_D_LINE_CAP_MODE_LINE_CAP_ROUND                   = 2
+	LINE_2_D_LINE_CAP_MODE_LINE_CAP_BOX   Line2DLineCapMode = 1
+	LINE_2_D_LINE_CAP_MODE_LINE_CAP_ROUND Line2DLineCapMode = 2
 )
 
 type Line2DLineTextureMode int
 
 const (
 	LINE_2_D_LINE_TEXTURE_MODE_LINE_TEXTURE_NONE    Line2DLineTextureMode = 0
-	LINE_2_D_LINE_TEXTURE_MODE_LINE_TEXTURE_TILE                          = 1
-	LINE_2_D_LINE_TEXTURE_MODE_LINE_TEXTURE_STRETCH                       = 2
+	LINE_2_D_LINE_TEXTURE_MODE_LINE_TEXTURE_TILE    Line2DLineTextureMode = 1
+	LINE_2_D_LINE_TEXTURE_MODE_LINE_TEXTURE_STRETCH Line2DLineTextureMode = 2
 )
 
 type LineEditMenuItems int
 
 const (
 	LINE_EDIT_MENU_ITEMS_MENU_CUT                LineEditMenuItems = 0
-	LINE_EDIT_MENU_ITEMS_MENU_COPY                                 = 1
-	LINE_EDIT_MENU_ITEMS_MENU_PASTE                                = 2
-	LINE_EDIT_MENU_ITEMS_MENU_CLEAR                                = 3
-	LINE_EDIT_MENU_ITEMS_MENU_SELECT_ALL                           = 4
-	LINE_EDIT_MENU_ITEMS_MENU_UNDO                                 = 5
-	LINE_EDIT_MENU_ITEMS_MENU_REDO                                 = 6
-	LINE_EDIT_MENU_ITEMS_MENU_SUBMENU_TEXT_DIR                     = 7
-	LINE_EDIT_MENU_ITEMS_MENU_DIR_INHERITED                        = 8
-	LINE_EDIT_MENU_ITEMS_MENU_DIR_AUTO                             = 9
-	LINE_EDIT_MENU_ITEMS_MENU_DIR_LTR                              = 10
-	LINE_EDIT_MENU_ITEMS_MENU_DIR_RTL                              = 11
-	LINE_EDIT_MENU_ITEMS_MENU_DISPLAY_UCC                          = 12
-	LINE_EDIT_MENU_ITEMS_MENU_SUBMENU_INSERT_UCC                   = 13
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRM                           = 14
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLM                           = 15
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRE                           = 16
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLE                           = 17
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRO                           = 18
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLO                           = 19
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_PDF                           = 20
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ALM                           = 21
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRI                           = 22
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLI                           = 23
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_FSI                           = 24
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_PDI                           = 25
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ZWJ                           = 26
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ZWNJ                          = 27
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_WJ                            = 28
-	LINE_EDIT_MENU_ITEMS_MENU_INSERT_SHY                           = 29
-	LINE_EDIT_MENU_ITEMS_MENU_MAX                                  = 30
+	LINE_EDIT_MENU_ITEMS_MENU_COPY               LineEditMenuItems = 1
+	LINE_EDIT_MENU_ITEMS_MENU_PASTE              LineEditMenuItems = 2
+	LINE_EDIT_MENU_ITEMS_MENU_CLEAR              LineEditMenuItems = 3
+	LINE_EDIT_MENU_ITEMS_MENU_SELECT_ALL         LineEditMenuItems = 4
+	LINE_EDIT_MENU_ITEMS_MENU_UNDO               LineEditMenuItems = 5
+	LINE_EDIT_MENU_ITEMS_MENU_REDO               LineEditMenuItems = 6
+	LINE_EDIT_MENU_ITEMS_MENU_SUBMENU_TEXT_DIR   LineEditMenuItems = 7
+	LINE_EDIT_MENU_ITEMS_MENU_DIR_INHERITED      LineEditMenuItems = 8
+	LINE_EDIT_MENU_ITEMS_MENU_DIR_AUTO           LineEditMenuItems = 9
+	LINE_EDIT_MENU_ITEMS_MENU_DIR_LTR            LineEditMenuItems = 10
+	LINE_EDIT_MENU_ITEMS_MENU_DIR_RTL            LineEditMenuItems = 11
+	LINE_EDIT_MENU_ITEMS_MENU_DISPLAY_UCC        LineEditMenuItems = 12
+	LINE_EDIT_MENU_ITEMS_MENU_SUBMENU_INSERT_UCC LineEditMenuItems = 13
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRM         LineEditMenuItems = 14
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLM         LineEditMenuItems = 15
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRE         LineEditMenuItems = 16
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLE         LineEditMenuItems = 17
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRO         LineEditMenuItems = 18
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLO         LineEditMenuItems = 19
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_PDF         LineEditMenuItems = 20
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ALM         LineEditMenuItems = 21
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_LRI         LineEditMenuItems = 22
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_RLI         LineEditMenuItems = 23
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_FSI         LineEditMenuItems = 24
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_PDI         LineEditMenuItems = 25
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ZWJ         LineEditMenuItems = 26
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_ZWNJ        LineEditMenuItems = 27
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_WJ          LineEditMenuItems = 28
+	LINE_EDIT_MENU_ITEMS_MENU_INSERT_SHY         LineEditMenuItems = 29
+	LINE_EDIT_MENU_ITEMS_MENU_EMOJI_AND_SYMBOL   LineEditMenuItems = 30
+	LINE_EDIT_MENU_ITEMS_MENU_MAX                LineEditMenuItems = 31
 )
 
 type LineEditVirtualKeyboardType int
 
 const (
 	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_DEFAULT        LineEditVirtualKeyboardType = 0
-	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_MULTILINE                                  = 1
-	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_NUMBER                                     = 2
-	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_NUMBER_DECIMAL                             = 3
-	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_PHONE                                      = 4
-	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_EMAIL_ADDRESS                              = 5
-	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_PASSWORD                                   = 6
-	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_URL                                        = 7
+	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_MULTILINE      LineEditVirtualKeyboardType = 1
+	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_NUMBER         LineEditVirtualKeyboardType = 2
+	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_NUMBER_DECIMAL LineEditVirtualKeyboardType = 3
+	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_PHONE          LineEditVirtualKeyboardType = 4
+	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_EMAIL_ADDRESS  LineEditVirtualKeyboardType = 5
+	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_PASSWORD       LineEditVirtualKeyboardType = 6
+	LINE_EDIT_VIRTUAL_KEYBOARD_TYPE_KEYBOARD_TYPE_URL            LineEditVirtualKeyboardType = 7
 )
 
 type LinkButtonUnderlineMode int
 
 const (
 	LINK_BUTTON_UNDERLINE_MODE_UNDERLINE_MODE_ALWAYS   LinkButtonUnderlineMode = 0
-	LINK_BUTTON_UNDERLINE_MODE_UNDERLINE_MODE_ON_HOVER                         = 1
-	LINK_BUTTON_UNDERLINE_MODE_UNDERLINE_MODE_NEVER                            = 2
+	LINK_BUTTON_UNDERLINE_MODE_UNDERLINE_MODE_ON_HOVER LinkButtonUnderlineMode = 1
+	LINK_BUTTON_UNDERLINE_MODE_UNDERLINE_MODE_NEVER    LinkButtonUnderlineMode = 2
+)
+
+type LoggerErrorType int
+
+const (
+	LOGGER_ERROR_TYPE_ERROR_TYPE_ERROR   LoggerErrorType = 0
+	LOGGER_ERROR_TYPE_ERROR_TYPE_WARNING LoggerErrorType = 1
+	LOGGER_ERROR_TYPE_ERROR_TYPE_SCRIPT  LoggerErrorType = 2
+	LOGGER_ERROR_TYPE_ERROR_TYPE_SHADER  LoggerErrorType = 3
+)
+
+type LookAtModifier3DOriginFrom int
+
+const (
+	LOOK_AT_MODIFIER_3_D_ORIGIN_FROM_ORIGIN_FROM_SELF          LookAtModifier3DOriginFrom = 0
+	LOOK_AT_MODIFIER_3_D_ORIGIN_FROM_ORIGIN_FROM_SPECIFIC_BONE LookAtModifier3DOriginFrom = 1
+	LOOK_AT_MODIFIER_3_D_ORIGIN_FROM_ORIGIN_FROM_EXTERNAL_NODE LookAtModifier3DOriginFrom = 2
 )
 
 type MeshPrimitiveType int
 
 const (
 	MESH_PRIMITIVE_TYPE_PRIMITIVE_POINTS         MeshPrimitiveType = 0
-	MESH_PRIMITIVE_TYPE_PRIMITIVE_LINES                            = 1
-	MESH_PRIMITIVE_TYPE_PRIMITIVE_LINE_STRIP                       = 2
-	MESH_PRIMITIVE_TYPE_PRIMITIVE_TRIANGLES                        = 3
-	MESH_PRIMITIVE_TYPE_PRIMITIVE_TRIANGLE_STRIP                   = 4
+	MESH_PRIMITIVE_TYPE_PRIMITIVE_LINES          MeshPrimitiveType = 1
+	MESH_PRIMITIVE_TYPE_PRIMITIVE_LINE_STRIP     MeshPrimitiveType = 2
+	MESH_PRIMITIVE_TYPE_PRIMITIVE_TRIANGLES      MeshPrimitiveType = 3
+	MESH_PRIMITIVE_TYPE_PRIMITIVE_TRIANGLE_STRIP MeshPrimitiveType = 4
 )
 
 type MeshArrayType int
 
 const (
 	MESH_ARRAY_TYPE_ARRAY_VERTEX   MeshArrayType = 0
-	MESH_ARRAY_TYPE_ARRAY_NORMAL                 = 1
-	MESH_ARRAY_TYPE_ARRAY_TANGENT                = 2
-	MESH_ARRAY_TYPE_ARRAY_COLOR                  = 3
-	MESH_ARRAY_TYPE_ARRAY_TEX_UV                 = 4
-	MESH_ARRAY_TYPE_ARRAY_TEX_UV_2               = 5
-	MESH_ARRAY_TYPE_ARRAY_CUSTOM_0               = 6
-	MESH_ARRAY_TYPE_ARRAY_CUSTOM_1               = 7
-	MESH_ARRAY_TYPE_ARRAY_CUSTOM_2               = 8
-	MESH_ARRAY_TYPE_ARRAY_CUSTOM_3               = 9
-	MESH_ARRAY_TYPE_ARRAY_BONES                  = 10
-	MESH_ARRAY_TYPE_ARRAY_WEIGHTS                = 11
-	MESH_ARRAY_TYPE_ARRAY_INDEX                  = 12
-	MESH_ARRAY_TYPE_ARRAY_MAX                    = 13
+	MESH_ARRAY_TYPE_ARRAY_NORMAL   MeshArrayType = 1
+	MESH_ARRAY_TYPE_ARRAY_TANGENT  MeshArrayType = 2
+	MESH_ARRAY_TYPE_ARRAY_COLOR    MeshArrayType = 3
+	MESH_ARRAY_TYPE_ARRAY_TEX_UV   MeshArrayType = 4
+	MESH_ARRAY_TYPE_ARRAY_TEX_UV_2 MeshArrayType = 5
+	MESH_ARRAY_TYPE_ARRAY_CUSTOM_0 MeshArrayType = 6
+	MESH_ARRAY_TYPE_ARRAY_CUSTOM_1 MeshArrayType = 7
+	MESH_ARRAY_TYPE_ARRAY_CUSTOM_2 MeshArrayType = 8
+	MESH_ARRAY_TYPE_ARRAY_CUSTOM_3 MeshArrayType = 9
+	MESH_ARRAY_TYPE_ARRAY_BONES    MeshArrayType = 10
+	MESH_ARRAY_TYPE_ARRAY_WEIGHTS  MeshArrayType = 11
+	MESH_ARRAY_TYPE_ARRAY_INDEX    MeshArrayType = 12
+	MESH_ARRAY_TYPE_ARRAY_MAX      MeshArrayType = 13
 )
 
 type MeshArrayCustomFormat int
 
 const (
 	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_8_UNORM MeshArrayCustomFormat = 0
-	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_8_SNORM                       = 1
-	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RG_HALF                            = 2
-	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_HALF                          = 3
-	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_R_FLOAT                            = 4
-	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RG_FLOAT                           = 5
-	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGB_FLOAT                          = 6
-	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_FLOAT                         = 7
-	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_MAX                                = 8
+	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_8_SNORM MeshArrayCustomFormat = 1
+	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RG_HALF      MeshArrayCustomFormat = 2
+	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_HALF    MeshArrayCustomFormat = 3
+	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_R_FLOAT      MeshArrayCustomFormat = 4
+	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RG_FLOAT     MeshArrayCustomFormat = 5
+	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGB_FLOAT    MeshArrayCustomFormat = 6
+	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_FLOAT   MeshArrayCustomFormat = 7
+	MESH_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_MAX          MeshArrayCustomFormat = 8
 )
 
 type MeshArrayFormat int
 
 const (
 	MESH_ARRAY_FORMAT_ARRAY_FORMAT_VERTEX                MeshArrayFormat = 1
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_NORMAL                                = 2
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TANGENT                               = 4
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_COLOR                                 = 8
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV                                = 16
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV_2                              = 32
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0                              = 64
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1                              = 128
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2                              = 256
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3                              = 512
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_BONES                                 = 1024
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_WEIGHTS                               = 2048
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_INDEX                                 = 4096
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_BLEND_SHAPE_MASK                      = 7
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BASE                           = 13
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BITS                           = 3
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0_SHIFT                        = 13
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1_SHIFT                        = 16
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2_SHIFT                        = 19
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3_SHIFT                        = 22
-	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_MASK                           = 7
-	MESH_ARRAY_FORMAT_ARRAY_COMPRESS_FLAGS_BASE                          = 25
-	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_2_D_VERTICES                        = 33554432
-	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_DYNAMIC_UPDATE                      = 67108864
-	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_8_BONE_WEIGHTS                      = 134217728
-	MESH_ARRAY_FORMAT_ARRAY_FLAG_USES_EMPTY_VERTEX_ARRAY                 = 268435456
-	MESH_ARRAY_FORMAT_ARRAY_FLAG_COMPRESS_ATTRIBUTES                     = 536870912
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_NORMAL                MeshArrayFormat = 2
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TANGENT               MeshArrayFormat = 4
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_COLOR                 MeshArrayFormat = 8
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV                MeshArrayFormat = 16
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV_2              MeshArrayFormat = 32
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0              MeshArrayFormat = 64
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1              MeshArrayFormat = 128
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2              MeshArrayFormat = 256
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3              MeshArrayFormat = 512
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_BONES                 MeshArrayFormat = 1024
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_WEIGHTS               MeshArrayFormat = 2048
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_INDEX                 MeshArrayFormat = 4096
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_BLEND_SHAPE_MASK      MeshArrayFormat = 7
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BASE           MeshArrayFormat = 13
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BITS           MeshArrayFormat = 3
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0_SHIFT        MeshArrayFormat = 13
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1_SHIFT        MeshArrayFormat = 16
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2_SHIFT        MeshArrayFormat = 19
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3_SHIFT        MeshArrayFormat = 22
+	MESH_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_MASK           MeshArrayFormat = 7
+	MESH_ARRAY_FORMAT_ARRAY_COMPRESS_FLAGS_BASE          MeshArrayFormat = 25
+	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_2_D_VERTICES        MeshArrayFormat = 33554432
+	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_DYNAMIC_UPDATE      MeshArrayFormat = 67108864
+	MESH_ARRAY_FORMAT_ARRAY_FLAG_USE_8_BONE_WEIGHTS      MeshArrayFormat = 134217728
+	MESH_ARRAY_FORMAT_ARRAY_FLAG_USES_EMPTY_VERTEX_ARRAY MeshArrayFormat = 268435456
+	MESH_ARRAY_FORMAT_ARRAY_FLAG_COMPRESS_ATTRIBUTES     MeshArrayFormat = 536870912
 )
 
 type MeshBlendShapeMode int
 
 const (
 	MESH_BLEND_SHAPE_MODE_BLEND_SHAPE_MODE_NORMALIZED MeshBlendShapeMode = 0
-	MESH_BLEND_SHAPE_MODE_BLEND_SHAPE_MODE_RELATIVE                      = 1
+	MESH_BLEND_SHAPE_MODE_BLEND_SHAPE_MODE_RELATIVE   MeshBlendShapeMode = 1
 )
 
 type MeshConvexDecompositionSettingsMode int
 
 const (
 	MESH_CONVEX_DECOMPOSITION_SETTINGS_MODE_CONVEX_DECOMPOSITION_MODE_VOXEL       MeshConvexDecompositionSettingsMode = 0
-	MESH_CONVEX_DECOMPOSITION_SETTINGS_MODE_CONVEX_DECOMPOSITION_MODE_TETRAHEDRON                                     = 1
+	MESH_CONVEX_DECOMPOSITION_SETTINGS_MODE_CONVEX_DECOMPOSITION_MODE_TETRAHEDRON MeshConvexDecompositionSettingsMode = 1
 )
 
 type MultiMeshTransformFormat int
 
 const (
 	MULTI_MESH_TRANSFORM_FORMAT_TRANSFORM_2_D MultiMeshTransformFormat = 0
-	MULTI_MESH_TRANSFORM_FORMAT_TRANSFORM_3_D                          = 1
+	MULTI_MESH_TRANSFORM_FORMAT_TRANSFORM_3_D MultiMeshTransformFormat = 1
+)
+
+type MultiMeshPhysicsInterpolationQuality int
+
+const (
+	MULTI_MESH_PHYSICS_INTERPOLATION_QUALITY_INTERP_QUALITY_FAST MultiMeshPhysicsInterpolationQuality = 0
+	MULTI_MESH_PHYSICS_INTERPOLATION_QUALITY_INTERP_QUALITY_HIGH MultiMeshPhysicsInterpolationQuality = 1
 )
 
 type MultiplayerAPIRPCMode int
 
 const (
 	MULTIPLAYER_API_RPC_MODE_RPC_MODE_DISABLED  MultiplayerAPIRPCMode = 0
-	MULTIPLAYER_API_RPC_MODE_RPC_MODE_ANY_PEER                        = 1
-	MULTIPLAYER_API_RPC_MODE_RPC_MODE_AUTHORITY                       = 2
+	MULTIPLAYER_API_RPC_MODE_RPC_MODE_ANY_PEER  MultiplayerAPIRPCMode = 1
+	MULTIPLAYER_API_RPC_MODE_RPC_MODE_AUTHORITY MultiplayerAPIRPCMode = 2
 )
 
 type MultiplayerPeerConnectionStatus int
 
 const (
 	MULTIPLAYER_PEER_CONNECTION_STATUS_CONNECTION_DISCONNECTED MultiplayerPeerConnectionStatus = 0
-	MULTIPLAYER_PEER_CONNECTION_STATUS_CONNECTION_CONNECTING                                   = 1
-	MULTIPLAYER_PEER_CONNECTION_STATUS_CONNECTION_CONNECTED                                    = 2
+	MULTIPLAYER_PEER_CONNECTION_STATUS_CONNECTION_CONNECTING   MultiplayerPeerConnectionStatus = 1
+	MULTIPLAYER_PEER_CONNECTION_STATUS_CONNECTION_CONNECTED    MultiplayerPeerConnectionStatus = 2
 )
 
 type MultiplayerPeerTransferMode int
 
 const (
 	MULTIPLAYER_PEER_TRANSFER_MODE_TRANSFER_MODE_UNRELIABLE         MultiplayerPeerTransferMode = 0
-	MULTIPLAYER_PEER_TRANSFER_MODE_TRANSFER_MODE_UNRELIABLE_ORDERED                             = 1
-	MULTIPLAYER_PEER_TRANSFER_MODE_TRANSFER_MODE_RELIABLE                                       = 2
+	MULTIPLAYER_PEER_TRANSFER_MODE_TRANSFER_MODE_UNRELIABLE_ORDERED MultiplayerPeerTransferMode = 1
+	MULTIPLAYER_PEER_TRANSFER_MODE_TRANSFER_MODE_RELIABLE           MultiplayerPeerTransferMode = 2
 )
 
 type MultiplayerSynchronizerVisibilityUpdateMode int
 
 const (
 	MULTIPLAYER_SYNCHRONIZER_VISIBILITY_UPDATE_MODE_VISIBILITY_PROCESS_IDLE    MultiplayerSynchronizerVisibilityUpdateMode = 0
-	MULTIPLAYER_SYNCHRONIZER_VISIBILITY_UPDATE_MODE_VISIBILITY_PROCESS_PHYSICS                                             = 1
-	MULTIPLAYER_SYNCHRONIZER_VISIBILITY_UPDATE_MODE_VISIBILITY_PROCESS_NONE                                                = 2
+	MULTIPLAYER_SYNCHRONIZER_VISIBILITY_UPDATE_MODE_VISIBILITY_PROCESS_PHYSICS MultiplayerSynchronizerVisibilityUpdateMode = 1
+	MULTIPLAYER_SYNCHRONIZER_VISIBILITY_UPDATE_MODE_VISIBILITY_PROCESS_NONE    MultiplayerSynchronizerVisibilityUpdateMode = 2
 )
 
 type NativeMenuFeature int
 
 const (
 	NATIVE_MENU_FEATURE_FEATURE_GLOBAL_MENU         NativeMenuFeature = 0
-	NATIVE_MENU_FEATURE_FEATURE_POPUP_MENU                            = 1
-	NATIVE_MENU_FEATURE_FEATURE_OPEN_CLOSE_CALLBACK                   = 2
-	NATIVE_MENU_FEATURE_FEATURE_HOVER_CALLBACK                        = 3
-	NATIVE_MENU_FEATURE_FEATURE_KEY_CALLBACK                          = 4
+	NATIVE_MENU_FEATURE_FEATURE_POPUP_MENU          NativeMenuFeature = 1
+	NATIVE_MENU_FEATURE_FEATURE_OPEN_CLOSE_CALLBACK NativeMenuFeature = 2
+	NATIVE_MENU_FEATURE_FEATURE_HOVER_CALLBACK      NativeMenuFeature = 3
+	NATIVE_MENU_FEATURE_FEATURE_KEY_CALLBACK        NativeMenuFeature = 4
 )
 
 type NativeMenuSystemMenus int
 
 const (
 	NATIVE_MENU_SYSTEM_MENUS_INVALID_MENU_ID     NativeMenuSystemMenus = 0
-	NATIVE_MENU_SYSTEM_MENUS_MAIN_MENU_ID                              = 1
-	NATIVE_MENU_SYSTEM_MENUS_APPLICATION_MENU_ID                       = 2
-	NATIVE_MENU_SYSTEM_MENUS_WINDOW_MENU_ID                            = 3
-	NATIVE_MENU_SYSTEM_MENUS_HELP_MENU_ID                              = 4
-	NATIVE_MENU_SYSTEM_MENUS_DOCK_MENU_ID                              = 5
+	NATIVE_MENU_SYSTEM_MENUS_MAIN_MENU_ID        NativeMenuSystemMenus = 1
+	NATIVE_MENU_SYSTEM_MENUS_APPLICATION_MENU_ID NativeMenuSystemMenus = 2
+	NATIVE_MENU_SYSTEM_MENUS_WINDOW_MENU_ID      NativeMenuSystemMenus = 3
+	NATIVE_MENU_SYSTEM_MENUS_HELP_MENU_ID        NativeMenuSystemMenus = 4
+	NATIVE_MENU_SYSTEM_MENUS_DOCK_MENU_ID        NativeMenuSystemMenus = 5
 )
 
 type NavigationMeshSamplePartitionType int
 
 const (
 	NAVIGATION_MESH_SAMPLE_PARTITION_TYPE_SAMPLE_PARTITION_WATERSHED NavigationMeshSamplePartitionType = 0
-	NAVIGATION_MESH_SAMPLE_PARTITION_TYPE_SAMPLE_PARTITION_MONOTONE                                    = 1
-	NAVIGATION_MESH_SAMPLE_PARTITION_TYPE_SAMPLE_PARTITION_LAYERS                                      = 2
-	NAVIGATION_MESH_SAMPLE_PARTITION_TYPE_SAMPLE_PARTITION_MAX                                         = 3
+	NAVIGATION_MESH_SAMPLE_PARTITION_TYPE_SAMPLE_PARTITION_MONOTONE  NavigationMeshSamplePartitionType = 1
+	NAVIGATION_MESH_SAMPLE_PARTITION_TYPE_SAMPLE_PARTITION_LAYERS    NavigationMeshSamplePartitionType = 2
+	NAVIGATION_MESH_SAMPLE_PARTITION_TYPE_SAMPLE_PARTITION_MAX       NavigationMeshSamplePartitionType = 3
 )
 
 type NavigationMeshParsedGeometryType int
 
 const (
 	NAVIGATION_MESH_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_MESH_INSTANCES   NavigationMeshParsedGeometryType = 0
-	NAVIGATION_MESH_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_STATIC_COLLIDERS                                  = 1
-	NAVIGATION_MESH_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_BOTH                                              = 2
-	NAVIGATION_MESH_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_MAX                                               = 3
+	NAVIGATION_MESH_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_STATIC_COLLIDERS NavigationMeshParsedGeometryType = 1
+	NAVIGATION_MESH_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_BOTH             NavigationMeshParsedGeometryType = 2
+	NAVIGATION_MESH_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_MAX              NavigationMeshParsedGeometryType = 3
 )
 
 type NavigationMeshSourceGeometryMode int
 
 const (
 	NAVIGATION_MESH_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_ROOT_NODE_CHILDREN   NavigationMeshSourceGeometryMode = 0
-	NAVIGATION_MESH_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN                                  = 1
-	NAVIGATION_MESH_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_EXPLICIT                                       = 2
-	NAVIGATION_MESH_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_MAX                                                   = 3
+	NAVIGATION_MESH_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN NavigationMeshSourceGeometryMode = 1
+	NAVIGATION_MESH_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_EXPLICIT      NavigationMeshSourceGeometryMode = 2
+	NAVIGATION_MESH_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_MAX                  NavigationMeshSourceGeometryMode = 3
 )
 
 type NavigationPathQueryParameters2DPathfindingAlgorithm int
@@ -2613,17 +3096,18 @@ type NavigationPathQueryParameters2DPathPostProcessing int
 
 const (
 	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_POST_PROCESSING_PATH_POSTPROCESSING_CORRIDORFUNNEL NavigationPathQueryParameters2DPathPostProcessing = 0
-	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_POST_PROCESSING_PATH_POSTPROCESSING_EDGECENTERED                                                     = 1
+	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_POST_PROCESSING_PATH_POSTPROCESSING_EDGECENTERED   NavigationPathQueryParameters2DPathPostProcessing = 1
+	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_POST_PROCESSING_PATH_POSTPROCESSING_NONE           NavigationPathQueryParameters2DPathPostProcessing = 2
 )
 
 type NavigationPathQueryParameters2DPathMetadataFlags int
 
 const (
 	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_NONE   NavigationPathQueryParameters2DPathMetadataFlags = 0
-	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_TYPES                                                   = 1
-	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_RIDS                                                    = 2
-	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_OWNERS                                                  = 4
-	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_ALL                                                     = 7
+	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_TYPES  NavigationPathQueryParameters2DPathMetadataFlags = 1
+	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_RIDS   NavigationPathQueryParameters2DPathMetadataFlags = 2
+	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_OWNERS NavigationPathQueryParameters2DPathMetadataFlags = 4
+	NAVIGATION_PATH_QUERY_PARAMETERS_2_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_ALL    NavigationPathQueryParameters2DPathMetadataFlags = 7
 )
 
 type NavigationPathQueryParameters3DPathfindingAlgorithm int
@@ -2636,1290 +3120,1462 @@ type NavigationPathQueryParameters3DPathPostProcessing int
 
 const (
 	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_POST_PROCESSING_PATH_POSTPROCESSING_CORRIDORFUNNEL NavigationPathQueryParameters3DPathPostProcessing = 0
-	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_POST_PROCESSING_PATH_POSTPROCESSING_EDGECENTERED                                                     = 1
+	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_POST_PROCESSING_PATH_POSTPROCESSING_EDGECENTERED   NavigationPathQueryParameters3DPathPostProcessing = 1
+	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_POST_PROCESSING_PATH_POSTPROCESSING_NONE           NavigationPathQueryParameters3DPathPostProcessing = 2
 )
 
 type NavigationPathQueryParameters3DPathMetadataFlags int
 
 const (
 	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_NONE   NavigationPathQueryParameters3DPathMetadataFlags = 0
-	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_TYPES                                                   = 1
-	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_RIDS                                                    = 2
-	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_OWNERS                                                  = 4
-	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_ALL                                                     = 7
+	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_TYPES  NavigationPathQueryParameters3DPathMetadataFlags = 1
+	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_RIDS   NavigationPathQueryParameters3DPathMetadataFlags = 2
+	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_OWNERS NavigationPathQueryParameters3DPathMetadataFlags = 4
+	NAVIGATION_PATH_QUERY_PARAMETERS_3_D_PATH_METADATA_FLAGS_PATH_METADATA_INCLUDE_ALL    NavigationPathQueryParameters3DPathMetadataFlags = 7
 )
 
 type NavigationPathQueryResult2DPathSegmentType int
 
 const (
 	NAVIGATION_PATH_QUERY_RESULT_2_D_PATH_SEGMENT_TYPE_PATH_SEGMENT_TYPE_REGION NavigationPathQueryResult2DPathSegmentType = 0
-	NAVIGATION_PATH_QUERY_RESULT_2_D_PATH_SEGMENT_TYPE_PATH_SEGMENT_TYPE_LINK                                              = 1
+	NAVIGATION_PATH_QUERY_RESULT_2_D_PATH_SEGMENT_TYPE_PATH_SEGMENT_TYPE_LINK   NavigationPathQueryResult2DPathSegmentType = 1
 )
 
 type NavigationPathQueryResult3DPathSegmentType int
 
 const (
 	NAVIGATION_PATH_QUERY_RESULT_3_D_PATH_SEGMENT_TYPE_PATH_SEGMENT_TYPE_REGION NavigationPathQueryResult3DPathSegmentType = 0
-	NAVIGATION_PATH_QUERY_RESULT_3_D_PATH_SEGMENT_TYPE_PATH_SEGMENT_TYPE_LINK                                              = 1
+	NAVIGATION_PATH_QUERY_RESULT_3_D_PATH_SEGMENT_TYPE_PATH_SEGMENT_TYPE_LINK   NavigationPathQueryResult3DPathSegmentType = 1
+)
+
+type NavigationPolygonSamplePartitionType int
+
+const (
+	NAVIGATION_POLYGON_SAMPLE_PARTITION_TYPE_SAMPLE_PARTITION_CONVEX_PARTITION NavigationPolygonSamplePartitionType = 0
+	NAVIGATION_POLYGON_SAMPLE_PARTITION_TYPE_SAMPLE_PARTITION_TRIANGULATE      NavigationPolygonSamplePartitionType = 1
+	NAVIGATION_POLYGON_SAMPLE_PARTITION_TYPE_SAMPLE_PARTITION_MAX              NavigationPolygonSamplePartitionType = 2
 )
 
 type NavigationPolygonParsedGeometryType int
 
 const (
 	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_MESH_INSTANCES   NavigationPolygonParsedGeometryType = 0
-	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_STATIC_COLLIDERS                                     = 1
-	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_BOTH                                                 = 2
-	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_MAX                                                  = 3
+	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_STATIC_COLLIDERS NavigationPolygonParsedGeometryType = 1
+	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_BOTH             NavigationPolygonParsedGeometryType = 2
+	NAVIGATION_POLYGON_PARSED_GEOMETRY_TYPE_PARSED_GEOMETRY_MAX              NavigationPolygonParsedGeometryType = 3
 )
 
 type NavigationPolygonSourceGeometryMode int
 
 const (
 	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_ROOT_NODE_CHILDREN   NavigationPolygonSourceGeometryMode = 0
-	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN                                     = 1
-	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_EXPLICIT                                          = 2
-	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_MAX                                                      = 3
+	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN NavigationPolygonSourceGeometryMode = 1
+	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_GROUPS_EXPLICIT      NavigationPolygonSourceGeometryMode = 2
+	NAVIGATION_POLYGON_SOURCE_GEOMETRY_MODE_SOURCE_GEOMETRY_MAX                  NavigationPolygonSourceGeometryMode = 3
+)
+
+type NavigationServer2DProcessInfo int
+
+const (
+	NAVIGATION_SERVER_2_D_PROCESS_INFO_INFO_ACTIVE_MAPS           NavigationServer2DProcessInfo = 0
+	NAVIGATION_SERVER_2_D_PROCESS_INFO_INFO_REGION_COUNT          NavigationServer2DProcessInfo = 1
+	NAVIGATION_SERVER_2_D_PROCESS_INFO_INFO_AGENT_COUNT           NavigationServer2DProcessInfo = 2
+	NAVIGATION_SERVER_2_D_PROCESS_INFO_INFO_LINK_COUNT            NavigationServer2DProcessInfo = 3
+	NAVIGATION_SERVER_2_D_PROCESS_INFO_INFO_POLYGON_COUNT         NavigationServer2DProcessInfo = 4
+	NAVIGATION_SERVER_2_D_PROCESS_INFO_INFO_EDGE_COUNT            NavigationServer2DProcessInfo = 5
+	NAVIGATION_SERVER_2_D_PROCESS_INFO_INFO_EDGE_MERGE_COUNT      NavigationServer2DProcessInfo = 6
+	NAVIGATION_SERVER_2_D_PROCESS_INFO_INFO_EDGE_CONNECTION_COUNT NavigationServer2DProcessInfo = 7
+	NAVIGATION_SERVER_2_D_PROCESS_INFO_INFO_EDGE_FREE_COUNT       NavigationServer2DProcessInfo = 8
+	NAVIGATION_SERVER_2_D_PROCESS_INFO_INFO_OBSTACLE_COUNT        NavigationServer2DProcessInfo = 9
 )
 
 type NavigationServer3DProcessInfo int
 
 const (
 	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_ACTIVE_MAPS           NavigationServer3DProcessInfo = 0
-	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_REGION_COUNT                                        = 1
-	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_AGENT_COUNT                                         = 2
-	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_LINK_COUNT                                          = 3
-	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_POLYGON_COUNT                                       = 4
-	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_COUNT                                          = 5
-	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_MERGE_COUNT                                    = 6
-	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_CONNECTION_COUNT                               = 7
-	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_FREE_COUNT                                     = 8
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_REGION_COUNT          NavigationServer3DProcessInfo = 1
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_AGENT_COUNT           NavigationServer3DProcessInfo = 2
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_LINK_COUNT            NavigationServer3DProcessInfo = 3
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_POLYGON_COUNT         NavigationServer3DProcessInfo = 4
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_COUNT            NavigationServer3DProcessInfo = 5
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_MERGE_COUNT      NavigationServer3DProcessInfo = 6
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_CONNECTION_COUNT NavigationServer3DProcessInfo = 7
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_EDGE_FREE_COUNT       NavigationServer3DProcessInfo = 8
+	NAVIGATION_SERVER_3_D_PROCESS_INFO_INFO_OBSTACLE_COUNT        NavigationServer3DProcessInfo = 9
 )
 
 type NinePatchRectAxisStretchMode int
 
 const (
 	NINE_PATCH_RECT_AXIS_STRETCH_MODE_AXIS_STRETCH_MODE_STRETCH  NinePatchRectAxisStretchMode = 0
-	NINE_PATCH_RECT_AXIS_STRETCH_MODE_AXIS_STRETCH_MODE_TILE                                  = 1
-	NINE_PATCH_RECT_AXIS_STRETCH_MODE_AXIS_STRETCH_MODE_TILE_FIT                              = 2
+	NINE_PATCH_RECT_AXIS_STRETCH_MODE_AXIS_STRETCH_MODE_TILE     NinePatchRectAxisStretchMode = 1
+	NINE_PATCH_RECT_AXIS_STRETCH_MODE_AXIS_STRETCH_MODE_TILE_FIT NinePatchRectAxisStretchMode = 2
 )
 
 type NodeProcessMode int
 
 const (
 	NODE_PROCESS_MODE_PROCESS_MODE_INHERIT     NodeProcessMode = 0
-	NODE_PROCESS_MODE_PROCESS_MODE_PAUSABLE                    = 1
-	NODE_PROCESS_MODE_PROCESS_MODE_WHEN_PAUSED                 = 2
-	NODE_PROCESS_MODE_PROCESS_MODE_ALWAYS                      = 3
-	NODE_PROCESS_MODE_PROCESS_MODE_DISABLED                    = 4
+	NODE_PROCESS_MODE_PROCESS_MODE_PAUSABLE    NodeProcessMode = 1
+	NODE_PROCESS_MODE_PROCESS_MODE_WHEN_PAUSED NodeProcessMode = 2
+	NODE_PROCESS_MODE_PROCESS_MODE_ALWAYS      NodeProcessMode = 3
+	NODE_PROCESS_MODE_PROCESS_MODE_DISABLED    NodeProcessMode = 4
 )
 
 type NodeProcessThreadGroup int
 
 const (
 	NODE_PROCESS_THREAD_GROUP_PROCESS_THREAD_GROUP_INHERIT     NodeProcessThreadGroup = 0
-	NODE_PROCESS_THREAD_GROUP_PROCESS_THREAD_GROUP_MAIN_THREAD                        = 1
-	NODE_PROCESS_THREAD_GROUP_PROCESS_THREAD_GROUP_SUB_THREAD                         = 2
+	NODE_PROCESS_THREAD_GROUP_PROCESS_THREAD_GROUP_MAIN_THREAD NodeProcessThreadGroup = 1
+	NODE_PROCESS_THREAD_GROUP_PROCESS_THREAD_GROUP_SUB_THREAD  NodeProcessThreadGroup = 2
 )
 
 type NodeProcessThreadMessages int
 
 const (
 	NODE_PROCESS_THREAD_MESSAGES_FLAG_PROCESS_THREAD_MESSAGES         NodeProcessThreadMessages = 1
-	NODE_PROCESS_THREAD_MESSAGES_FLAG_PROCESS_THREAD_MESSAGES_PHYSICS                           = 2
-	NODE_PROCESS_THREAD_MESSAGES_FLAG_PROCESS_THREAD_MESSAGES_ALL                               = 3
+	NODE_PROCESS_THREAD_MESSAGES_FLAG_PROCESS_THREAD_MESSAGES_PHYSICS NodeProcessThreadMessages = 2
+	NODE_PROCESS_THREAD_MESSAGES_FLAG_PROCESS_THREAD_MESSAGES_ALL     NodeProcessThreadMessages = 3
 )
 
 type NodePhysicsInterpolationMode int
 
 const (
 	NODE_PHYSICS_INTERPOLATION_MODE_PHYSICS_INTERPOLATION_MODE_INHERIT NodePhysicsInterpolationMode = 0
-	NODE_PHYSICS_INTERPOLATION_MODE_PHYSICS_INTERPOLATION_MODE_ON                                   = 1
-	NODE_PHYSICS_INTERPOLATION_MODE_PHYSICS_INTERPOLATION_MODE_OFF                                  = 2
+	NODE_PHYSICS_INTERPOLATION_MODE_PHYSICS_INTERPOLATION_MODE_ON      NodePhysicsInterpolationMode = 1
+	NODE_PHYSICS_INTERPOLATION_MODE_PHYSICS_INTERPOLATION_MODE_OFF     NodePhysicsInterpolationMode = 2
 )
 
 type NodeDuplicateFlags int
 
 const (
 	NODE_DUPLICATE_FLAGS_DUPLICATE_SIGNALS           NodeDuplicateFlags = 1
-	NODE_DUPLICATE_FLAGS_DUPLICATE_GROUPS                               = 2
-	NODE_DUPLICATE_FLAGS_DUPLICATE_SCRIPTS                              = 4
-	NODE_DUPLICATE_FLAGS_DUPLICATE_USE_INSTANTIATION                    = 8
+	NODE_DUPLICATE_FLAGS_DUPLICATE_GROUPS            NodeDuplicateFlags = 2
+	NODE_DUPLICATE_FLAGS_DUPLICATE_SCRIPTS           NodeDuplicateFlags = 4
+	NODE_DUPLICATE_FLAGS_DUPLICATE_USE_INSTANTIATION NodeDuplicateFlags = 8
 )
 
 type NodeInternalMode int
 
 const (
 	NODE_INTERNAL_MODE_INTERNAL_MODE_DISABLED NodeInternalMode = 0
-	NODE_INTERNAL_MODE_INTERNAL_MODE_FRONT                     = 1
-	NODE_INTERNAL_MODE_INTERNAL_MODE_BACK                      = 2
+	NODE_INTERNAL_MODE_INTERNAL_MODE_FRONT    NodeInternalMode = 1
+	NODE_INTERNAL_MODE_INTERNAL_MODE_BACK     NodeInternalMode = 2
 )
 
 type NodeAutoTranslateMode int
 
 const (
 	NODE_AUTO_TRANSLATE_MODE_AUTO_TRANSLATE_MODE_INHERIT  NodeAutoTranslateMode = 0
-	NODE_AUTO_TRANSLATE_MODE_AUTO_TRANSLATE_MODE_ALWAYS                         = 1
-	NODE_AUTO_TRANSLATE_MODE_AUTO_TRANSLATE_MODE_DISABLED                       = 2
+	NODE_AUTO_TRANSLATE_MODE_AUTO_TRANSLATE_MODE_ALWAYS   NodeAutoTranslateMode = 1
+	NODE_AUTO_TRANSLATE_MODE_AUTO_TRANSLATE_MODE_DISABLED NodeAutoTranslateMode = 2
 )
 
 type Node3DRotationEditMode int
 
 const (
 	NODE_3_D_ROTATION_EDIT_MODE_ROTATION_EDIT_MODE_EULER      Node3DRotationEditMode = 0
-	NODE_3_D_ROTATION_EDIT_MODE_ROTATION_EDIT_MODE_QUATERNION                        = 1
-	NODE_3_D_ROTATION_EDIT_MODE_ROTATION_EDIT_MODE_BASIS                             = 2
+	NODE_3_D_ROTATION_EDIT_MODE_ROTATION_EDIT_MODE_QUATERNION Node3DRotationEditMode = 1
+	NODE_3_D_ROTATION_EDIT_MODE_ROTATION_EDIT_MODE_BASIS      Node3DRotationEditMode = 2
 )
 
 type OSRenderingDriver int
 
 const (
 	OS_RENDERING_DRIVER_RENDERING_DRIVER_VULKAN   OSRenderingDriver = 0
-	OS_RENDERING_DRIVER_RENDERING_DRIVER_OPENGL_3                   = 1
-	OS_RENDERING_DRIVER_RENDERING_DRIVER_D_3_D_12                   = 2
+	OS_RENDERING_DRIVER_RENDERING_DRIVER_OPENGL_3 OSRenderingDriver = 1
+	OS_RENDERING_DRIVER_RENDERING_DRIVER_D_3_D_12 OSRenderingDriver = 2
+	OS_RENDERING_DRIVER_RENDERING_DRIVER_METAL    OSRenderingDriver = 3
 )
 
 type OSSystemDir int
 
 const (
 	OS_SYSTEM_DIR_SYSTEM_DIR_DESKTOP   OSSystemDir = 0
-	OS_SYSTEM_DIR_SYSTEM_DIR_DCIM                  = 1
-	OS_SYSTEM_DIR_SYSTEM_DIR_DOCUMENTS             = 2
-	OS_SYSTEM_DIR_SYSTEM_DIR_DOWNLOADS             = 3
-	OS_SYSTEM_DIR_SYSTEM_DIR_MOVIES                = 4
-	OS_SYSTEM_DIR_SYSTEM_DIR_MUSIC                 = 5
-	OS_SYSTEM_DIR_SYSTEM_DIR_PICTURES              = 6
-	OS_SYSTEM_DIR_SYSTEM_DIR_RINGTONES             = 7
+	OS_SYSTEM_DIR_SYSTEM_DIR_DCIM      OSSystemDir = 1
+	OS_SYSTEM_DIR_SYSTEM_DIR_DOCUMENTS OSSystemDir = 2
+	OS_SYSTEM_DIR_SYSTEM_DIR_DOWNLOADS OSSystemDir = 3
+	OS_SYSTEM_DIR_SYSTEM_DIR_MOVIES    OSSystemDir = 4
+	OS_SYSTEM_DIR_SYSTEM_DIR_MUSIC     OSSystemDir = 5
+	OS_SYSTEM_DIR_SYSTEM_DIR_PICTURES  OSSystemDir = 6
+	OS_SYSTEM_DIR_SYSTEM_DIR_RINGTONES OSSystemDir = 7
+)
+
+type OSStdHandleType int
+
+const (
+	OS_STD_HANDLE_TYPE_STD_HANDLE_INVALID OSStdHandleType = 0
+	OS_STD_HANDLE_TYPE_STD_HANDLE_CONSOLE OSStdHandleType = 1
+	OS_STD_HANDLE_TYPE_STD_HANDLE_FILE    OSStdHandleType = 2
+	OS_STD_HANDLE_TYPE_STD_HANDLE_PIPE    OSStdHandleType = 3
+	OS_STD_HANDLE_TYPE_STD_HANDLE_UNKNOWN OSStdHandleType = 4
 )
 
 type ObjectConnectFlags int
 
 const (
-	OBJECT_CONNECT_FLAGS_CONNECT_DEFERRED          ObjectConnectFlags = 1
-	OBJECT_CONNECT_FLAGS_CONNECT_PERSIST                              = 2
-	OBJECT_CONNECT_FLAGS_CONNECT_ONE_SHOT                             = 4
-	OBJECT_CONNECT_FLAGS_CONNECT_REFERENCE_COUNTED                    = 8
+	OBJECT_CONNECT_FLAGS_CONNECT_DEFERRED             ObjectConnectFlags = 1
+	OBJECT_CONNECT_FLAGS_CONNECT_PERSIST              ObjectConnectFlags = 2
+	OBJECT_CONNECT_FLAGS_CONNECT_ONE_SHOT             ObjectConnectFlags = 4
+	OBJECT_CONNECT_FLAGS_CONNECT_REFERENCE_COUNTED    ObjectConnectFlags = 8
+	OBJECT_CONNECT_FLAGS_CONNECT_APPEND_SOURCE_OBJECT ObjectConnectFlags = 16
 )
 
 type OccluderPolygon2DCullMode int
 
 const (
 	OCCLUDER_POLYGON_2_D_CULL_MODE_CULL_DISABLED          OccluderPolygon2DCullMode = 0
-	OCCLUDER_POLYGON_2_D_CULL_MODE_CULL_CLOCKWISE                                   = 1
-	OCCLUDER_POLYGON_2_D_CULL_MODE_CULL_COUNTER_CLOCKWISE                           = 2
+	OCCLUDER_POLYGON_2_D_CULL_MODE_CULL_CLOCKWISE         OccluderPolygon2DCullMode = 1
+	OCCLUDER_POLYGON_2_D_CULL_MODE_CULL_COUNTER_CLOCKWISE OccluderPolygon2DCullMode = 2
 )
 
 type OmniLight3DShadowMode int
 
 const (
 	OMNI_LIGHT_3_D_SHADOW_MODE_SHADOW_DUAL_PARABOLOID OmniLight3DShadowMode = 0
-	OMNI_LIGHT_3_D_SHADOW_MODE_SHADOW_CUBE                                  = 1
+	OMNI_LIGHT_3_D_SHADOW_MODE_SHADOW_CUBE            OmniLight3DShadowMode = 1
 )
 
 type OpenXRAPIExtensionOpenXRAlphaBlendModeSupport int
 
 const (
 	OPEN_XRAPI_EXTENSION_OPEN_XR_ALPHA_BLEND_MODE_SUPPORT_OPENXR_ALPHA_BLEND_MODE_SUPPORT_NONE      OpenXRAPIExtensionOpenXRAlphaBlendModeSupport = 0
-	OPEN_XRAPI_EXTENSION_OPEN_XR_ALPHA_BLEND_MODE_SUPPORT_OPENXR_ALPHA_BLEND_MODE_SUPPORT_REAL                                                    = 1
-	OPEN_XRAPI_EXTENSION_OPEN_XR_ALPHA_BLEND_MODE_SUPPORT_OPENXR_ALPHA_BLEND_MODE_SUPPORT_EMULATING                                               = 2
+	OPEN_XRAPI_EXTENSION_OPEN_XR_ALPHA_BLEND_MODE_SUPPORT_OPENXR_ALPHA_BLEND_MODE_SUPPORT_REAL      OpenXRAPIExtensionOpenXRAlphaBlendModeSupport = 1
+	OPEN_XRAPI_EXTENSION_OPEN_XR_ALPHA_BLEND_MODE_SUPPORT_OPENXR_ALPHA_BLEND_MODE_SUPPORT_EMULATING OpenXRAPIExtensionOpenXRAlphaBlendModeSupport = 2
 )
 
 type OpenXRActionActionType int
 
 const (
 	OPEN_XR_ACTION_ACTION_TYPE_OPENXR_ACTION_BOOL     OpenXRActionActionType = 0
-	OPEN_XR_ACTION_ACTION_TYPE_OPENXR_ACTION_FLOAT                           = 1
-	OPEN_XR_ACTION_ACTION_TYPE_OPENXR_ACTION_VECTOR_2                        = 2
-	OPEN_XR_ACTION_ACTION_TYPE_OPENXR_ACTION_POSE                            = 3
+	OPEN_XR_ACTION_ACTION_TYPE_OPENXR_ACTION_FLOAT    OpenXRActionActionType = 1
+	OPEN_XR_ACTION_ACTION_TYPE_OPENXR_ACTION_VECTOR_2 OpenXRActionActionType = 2
+	OPEN_XR_ACTION_ACTION_TYPE_OPENXR_ACTION_POSE     OpenXRActionActionType = 3
+)
+
+type OpenXRCompositionLayerFilter int
+
+const (
+	OPEN_XR_COMPOSITION_LAYER_FILTER_FILTER_NEAREST OpenXRCompositionLayerFilter = 0
+	OPEN_XR_COMPOSITION_LAYER_FILTER_FILTER_LINEAR  OpenXRCompositionLayerFilter = 1
+	OPEN_XR_COMPOSITION_LAYER_FILTER_FILTER_CUBIC   OpenXRCompositionLayerFilter = 2
+)
+
+type OpenXRCompositionLayerMipmapMode int
+
+const (
+	OPEN_XR_COMPOSITION_LAYER_MIPMAP_MODE_MIPMAP_MODE_DISABLED OpenXRCompositionLayerMipmapMode = 0
+	OPEN_XR_COMPOSITION_LAYER_MIPMAP_MODE_MIPMAP_MODE_NEAREST  OpenXRCompositionLayerMipmapMode = 1
+	OPEN_XR_COMPOSITION_LAYER_MIPMAP_MODE_MIPMAP_MODE_LINEAR   OpenXRCompositionLayerMipmapMode = 2
+)
+
+type OpenXRCompositionLayerWrap int
+
+const (
+	OPEN_XR_COMPOSITION_LAYER_WRAP_WRAP_CLAMP_TO_BORDER      OpenXRCompositionLayerWrap = 0
+	OPEN_XR_COMPOSITION_LAYER_WRAP_WRAP_CLAMP_TO_EDGE        OpenXRCompositionLayerWrap = 1
+	OPEN_XR_COMPOSITION_LAYER_WRAP_WRAP_REPEAT               OpenXRCompositionLayerWrap = 2
+	OPEN_XR_COMPOSITION_LAYER_WRAP_WRAP_MIRRORED_REPEAT      OpenXRCompositionLayerWrap = 3
+	OPEN_XR_COMPOSITION_LAYER_WRAP_WRAP_MIRROR_CLAMP_TO_EDGE OpenXRCompositionLayerWrap = 4
+)
+
+type OpenXRCompositionLayerSwizzle int
+
+const (
+	OPEN_XR_COMPOSITION_LAYER_SWIZZLE_SWIZZLE_RED   OpenXRCompositionLayerSwizzle = 0
+	OPEN_XR_COMPOSITION_LAYER_SWIZZLE_SWIZZLE_GREEN OpenXRCompositionLayerSwizzle = 1
+	OPEN_XR_COMPOSITION_LAYER_SWIZZLE_SWIZZLE_BLUE  OpenXRCompositionLayerSwizzle = 2
+	OPEN_XR_COMPOSITION_LAYER_SWIZZLE_SWIZZLE_ALPHA OpenXRCompositionLayerSwizzle = 3
+	OPEN_XR_COMPOSITION_LAYER_SWIZZLE_SWIZZLE_ZERO  OpenXRCompositionLayerSwizzle = 4
+	OPEN_XR_COMPOSITION_LAYER_SWIZZLE_SWIZZLE_ONE   OpenXRCompositionLayerSwizzle = 5
+)
+
+type OpenXRFutureResultResultStatus int
+
+const (
+	OPEN_XR_FUTURE_RESULT_RESULT_STATUS_RESULT_RUNNING   OpenXRFutureResultResultStatus = 0
+	OPEN_XR_FUTURE_RESULT_RESULT_STATUS_RESULT_FINISHED  OpenXRFutureResultResultStatus = 1
+	OPEN_XR_FUTURE_RESULT_RESULT_STATUS_RESULT_CANCELLED OpenXRFutureResultResultStatus = 2
 )
 
 type OpenXRHandHands int
 
 const (
 	OPEN_XR_HAND_HANDS_HAND_LEFT  OpenXRHandHands = 0
-	OPEN_XR_HAND_HANDS_HAND_RIGHT                 = 1
-	OPEN_XR_HAND_HANDS_HAND_MAX                   = 2
+	OPEN_XR_HAND_HANDS_HAND_RIGHT OpenXRHandHands = 1
+	OPEN_XR_HAND_HANDS_HAND_MAX   OpenXRHandHands = 2
 )
 
 type OpenXRHandMotionRange int
 
 const (
 	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_UNOBSTRUCTED          OpenXRHandMotionRange = 0
-	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_CONFORM_TO_CONTROLLER                       = 1
-	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_MAX                                         = 2
+	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_CONFORM_TO_CONTROLLER OpenXRHandMotionRange = 1
+	OPEN_XR_HAND_MOTION_RANGE_MOTION_RANGE_MAX                   OpenXRHandMotionRange = 2
 )
 
 type OpenXRHandSkeletonRig int
 
 const (
 	OPEN_XR_HAND_SKELETON_RIG_SKELETON_RIG_OPENXR   OpenXRHandSkeletonRig = 0
-	OPEN_XR_HAND_SKELETON_RIG_SKELETON_RIG_HUMANOID                       = 1
-	OPEN_XR_HAND_SKELETON_RIG_SKELETON_RIG_MAX                            = 2
+	OPEN_XR_HAND_SKELETON_RIG_SKELETON_RIG_HUMANOID OpenXRHandSkeletonRig = 1
+	OPEN_XR_HAND_SKELETON_RIG_SKELETON_RIG_MAX      OpenXRHandSkeletonRig = 2
 )
 
 type OpenXRHandBoneUpdate int
 
 const (
 	OPEN_XR_HAND_BONE_UPDATE_BONE_UPDATE_FULL          OpenXRHandBoneUpdate = 0
-	OPEN_XR_HAND_BONE_UPDATE_BONE_UPDATE_ROTATION_ONLY                      = 1
-	OPEN_XR_HAND_BONE_UPDATE_BONE_UPDATE_MAX                                = 2
+	OPEN_XR_HAND_BONE_UPDATE_BONE_UPDATE_ROTATION_ONLY OpenXRHandBoneUpdate = 1
+	OPEN_XR_HAND_BONE_UPDATE_BONE_UPDATE_MAX           OpenXRHandBoneUpdate = 2
+)
+
+type OpenXRInterfaceSessionState int
+
+const (
+	OPEN_XR_INTERFACE_SESSION_STATE_SESSION_STATE_UNKNOWN      OpenXRInterfaceSessionState = 0
+	OPEN_XR_INTERFACE_SESSION_STATE_SESSION_STATE_IDLE         OpenXRInterfaceSessionState = 1
+	OPEN_XR_INTERFACE_SESSION_STATE_SESSION_STATE_READY        OpenXRInterfaceSessionState = 2
+	OPEN_XR_INTERFACE_SESSION_STATE_SESSION_STATE_SYNCHRONIZED OpenXRInterfaceSessionState = 3
+	OPEN_XR_INTERFACE_SESSION_STATE_SESSION_STATE_VISIBLE      OpenXRInterfaceSessionState = 4
+	OPEN_XR_INTERFACE_SESSION_STATE_SESSION_STATE_FOCUSED      OpenXRInterfaceSessionState = 5
+	OPEN_XR_INTERFACE_SESSION_STATE_SESSION_STATE_STOPPING     OpenXRInterfaceSessionState = 6
+	OPEN_XR_INTERFACE_SESSION_STATE_SESSION_STATE_LOSS_PENDING OpenXRInterfaceSessionState = 7
+	OPEN_XR_INTERFACE_SESSION_STATE_SESSION_STATE_EXITING      OpenXRInterfaceSessionState = 8
 )
 
 type OpenXRInterfaceHand int
 
 const (
 	OPEN_XR_INTERFACE_HAND_HAND_LEFT  OpenXRInterfaceHand = 0
-	OPEN_XR_INTERFACE_HAND_HAND_RIGHT                     = 1
-	OPEN_XR_INTERFACE_HAND_HAND_MAX                       = 2
+	OPEN_XR_INTERFACE_HAND_HAND_RIGHT OpenXRInterfaceHand = 1
+	OPEN_XR_INTERFACE_HAND_HAND_MAX   OpenXRInterfaceHand = 2
 )
 
 type OpenXRInterfaceHandMotionRange int
 
 const (
 	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_UNOBSTRUCTED          OpenXRInterfaceHandMotionRange = 0
-	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_CONFORM_TO_CONTROLLER                                = 1
-	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_MAX                                                  = 2
+	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_CONFORM_TO_CONTROLLER OpenXRInterfaceHandMotionRange = 1
+	OPEN_XR_INTERFACE_HAND_MOTION_RANGE_HAND_MOTION_RANGE_MAX                   OpenXRInterfaceHandMotionRange = 2
 )
 
 type OpenXRInterfaceHandTrackedSource int
 
 const (
 	OPEN_XR_INTERFACE_HAND_TRACKED_SOURCE_HAND_TRACKED_SOURCE_UNKNOWN      OpenXRInterfaceHandTrackedSource = 0
-	OPEN_XR_INTERFACE_HAND_TRACKED_SOURCE_HAND_TRACKED_SOURCE_UNOBSTRUCTED                                  = 1
-	OPEN_XR_INTERFACE_HAND_TRACKED_SOURCE_HAND_TRACKED_SOURCE_CONTROLLER                                    = 2
-	OPEN_XR_INTERFACE_HAND_TRACKED_SOURCE_HAND_TRACKED_SOURCE_MAX                                           = 3
+	OPEN_XR_INTERFACE_HAND_TRACKED_SOURCE_HAND_TRACKED_SOURCE_UNOBSTRUCTED OpenXRInterfaceHandTrackedSource = 1
+	OPEN_XR_INTERFACE_HAND_TRACKED_SOURCE_HAND_TRACKED_SOURCE_CONTROLLER   OpenXRInterfaceHandTrackedSource = 2
+	OPEN_XR_INTERFACE_HAND_TRACKED_SOURCE_HAND_TRACKED_SOURCE_MAX          OpenXRInterfaceHandTrackedSource = 3
 )
 
 type OpenXRInterfaceHandJoints int
 
 const (
 	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_PALM                OpenXRInterfaceHandJoints = 0
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_WRIST                                         = 1
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_METACARPAL                              = 2
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_PROXIMAL                                = 3
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_DISTAL                                  = 4
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_TIP                                     = 5
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_METACARPAL                              = 6
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_PROXIMAL                                = 7
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_INTERMEDIATE                            = 8
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_DISTAL                                  = 9
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_TIP                                     = 10
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_METACARPAL                             = 11
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_PROXIMAL                               = 12
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_INTERMEDIATE                           = 13
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_DISTAL                                 = 14
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_TIP                                    = 15
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_METACARPAL                               = 16
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_PROXIMAL                                 = 17
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_INTERMEDIATE                             = 18
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_DISTAL                                   = 19
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_TIP                                      = 20
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_METACARPAL                             = 21
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_PROXIMAL                               = 22
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_INTERMEDIATE                           = 23
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_DISTAL                                 = 24
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_TIP                                    = 25
-	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MAX                                           = 26
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_WRIST               OpenXRInterfaceHandJoints = 1
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_METACARPAL    OpenXRInterfaceHandJoints = 2
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_PROXIMAL      OpenXRInterfaceHandJoints = 3
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_DISTAL        OpenXRInterfaceHandJoints = 4
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_THUMB_TIP           OpenXRInterfaceHandJoints = 5
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_METACARPAL    OpenXRInterfaceHandJoints = 6
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_PROXIMAL      OpenXRInterfaceHandJoints = 7
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_INTERMEDIATE  OpenXRInterfaceHandJoints = 8
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_DISTAL        OpenXRInterfaceHandJoints = 9
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_INDEX_TIP           OpenXRInterfaceHandJoints = 10
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_METACARPAL   OpenXRInterfaceHandJoints = 11
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_PROXIMAL     OpenXRInterfaceHandJoints = 12
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_INTERMEDIATE OpenXRInterfaceHandJoints = 13
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_DISTAL       OpenXRInterfaceHandJoints = 14
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MIDDLE_TIP          OpenXRInterfaceHandJoints = 15
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_METACARPAL     OpenXRInterfaceHandJoints = 16
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_PROXIMAL       OpenXRInterfaceHandJoints = 17
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_INTERMEDIATE   OpenXRInterfaceHandJoints = 18
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_DISTAL         OpenXRInterfaceHandJoints = 19
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_RING_TIP            OpenXRInterfaceHandJoints = 20
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_METACARPAL   OpenXRInterfaceHandJoints = 21
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_PROXIMAL     OpenXRInterfaceHandJoints = 22
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_INTERMEDIATE OpenXRInterfaceHandJoints = 23
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_DISTAL       OpenXRInterfaceHandJoints = 24
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_LITTLE_TIP          OpenXRInterfaceHandJoints = 25
+	OPEN_XR_INTERFACE_HAND_JOINTS_HAND_JOINT_MAX                 OpenXRInterfaceHandJoints = 26
+)
+
+type OpenXRInterfacePerfSettingsLevel int
+
+const (
+	OPEN_XR_INTERFACE_PERF_SETTINGS_LEVEL_PERF_SETTINGS_LEVEL_POWER_SAVINGS  OpenXRInterfacePerfSettingsLevel = 0
+	OPEN_XR_INTERFACE_PERF_SETTINGS_LEVEL_PERF_SETTINGS_LEVEL_SUSTAINED_LOW  OpenXRInterfacePerfSettingsLevel = 1
+	OPEN_XR_INTERFACE_PERF_SETTINGS_LEVEL_PERF_SETTINGS_LEVEL_SUSTAINED_HIGH OpenXRInterfacePerfSettingsLevel = 2
+	OPEN_XR_INTERFACE_PERF_SETTINGS_LEVEL_PERF_SETTINGS_LEVEL_BOOST          OpenXRInterfacePerfSettingsLevel = 3
+)
+
+type OpenXRInterfacePerfSettingsSubDomain int
+
+const (
+	OPEN_XR_INTERFACE_PERF_SETTINGS_SUB_DOMAIN_PERF_SETTINGS_SUB_DOMAIN_COMPOSITING OpenXRInterfacePerfSettingsSubDomain = 0
+	OPEN_XR_INTERFACE_PERF_SETTINGS_SUB_DOMAIN_PERF_SETTINGS_SUB_DOMAIN_RENDERING   OpenXRInterfacePerfSettingsSubDomain = 1
+	OPEN_XR_INTERFACE_PERF_SETTINGS_SUB_DOMAIN_PERF_SETTINGS_SUB_DOMAIN_THERMAL     OpenXRInterfacePerfSettingsSubDomain = 2
+)
+
+type OpenXRInterfacePerfSettingsNotificationLevel int
+
+const (
+	OPEN_XR_INTERFACE_PERF_SETTINGS_NOTIFICATION_LEVEL_PERF_SETTINGS_NOTIF_LEVEL_NORMAL   OpenXRInterfacePerfSettingsNotificationLevel = 0
+	OPEN_XR_INTERFACE_PERF_SETTINGS_NOTIFICATION_LEVEL_PERF_SETTINGS_NOTIF_LEVEL_WARNING  OpenXRInterfacePerfSettingsNotificationLevel = 1
+	OPEN_XR_INTERFACE_PERF_SETTINGS_NOTIFICATION_LEVEL_PERF_SETTINGS_NOTIF_LEVEL_IMPAIRED OpenXRInterfacePerfSettingsNotificationLevel = 2
 )
 
 type OpenXRInterfaceHandJointFlags int
 
 const (
 	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_NONE                   OpenXRInterfaceHandJointFlags = 0
-	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_ORIENTATION_VALID                                    = 1
-	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_ORIENTATION_TRACKED                                  = 2
-	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_POSITION_VALID                                       = 4
-	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_POSITION_TRACKED                                     = 8
-	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_LINEAR_VELOCITY_VALID                                = 16
-	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_ANGULAR_VELOCITY_VALID                               = 32
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_ORIENTATION_VALID      OpenXRInterfaceHandJointFlags = 1
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_ORIENTATION_TRACKED    OpenXRInterfaceHandJointFlags = 2
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_POSITION_VALID         OpenXRInterfaceHandJointFlags = 4
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_POSITION_TRACKED       OpenXRInterfaceHandJointFlags = 8
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_LINEAR_VELOCITY_VALID  OpenXRInterfaceHandJointFlags = 16
+	OPEN_XR_INTERFACE_HAND_JOINT_FLAGS_HAND_JOINT_ANGULAR_VELOCITY_VALID OpenXRInterfaceHandJointFlags = 32
+)
+
+type OpenXRRenderModelManagerRenderModelTracker int
+
+const (
+	OPEN_XR_RENDER_MODEL_MANAGER_RENDER_MODEL_TRACKER_RENDER_MODEL_TRACKER_ANY        OpenXRRenderModelManagerRenderModelTracker = 0
+	OPEN_XR_RENDER_MODEL_MANAGER_RENDER_MODEL_TRACKER_RENDER_MODEL_TRACKER_NONE_SET   OpenXRRenderModelManagerRenderModelTracker = 1
+	OPEN_XR_RENDER_MODEL_MANAGER_RENDER_MODEL_TRACKER_RENDER_MODEL_TRACKER_LEFT_HAND  OpenXRRenderModelManagerRenderModelTracker = 2
+	OPEN_XR_RENDER_MODEL_MANAGER_RENDER_MODEL_TRACKER_RENDER_MODEL_TRACKER_RIGHT_HAND OpenXRRenderModelManagerRenderModelTracker = 3
 )
 
 type PackedSceneGenEditState int
 
 const (
 	PACKED_SCENE_GEN_EDIT_STATE_GEN_EDIT_STATE_DISABLED       PackedSceneGenEditState = 0
-	PACKED_SCENE_GEN_EDIT_STATE_GEN_EDIT_STATE_INSTANCE                               = 1
-	PACKED_SCENE_GEN_EDIT_STATE_GEN_EDIT_STATE_MAIN                                   = 2
-	PACKED_SCENE_GEN_EDIT_STATE_GEN_EDIT_STATE_MAIN_INHERITED                         = 3
+	PACKED_SCENE_GEN_EDIT_STATE_GEN_EDIT_STATE_INSTANCE       PackedSceneGenEditState = 1
+	PACKED_SCENE_GEN_EDIT_STATE_GEN_EDIT_STATE_MAIN           PackedSceneGenEditState = 2
+	PACKED_SCENE_GEN_EDIT_STATE_GEN_EDIT_STATE_MAIN_INHERITED PackedSceneGenEditState = 3
 )
 
 type PacketPeerDTLSStatus int
 
 const (
 	PACKET_PEER_DTLS_STATUS_STATUS_DISCONNECTED            PacketPeerDTLSStatus = 0
-	PACKET_PEER_DTLS_STATUS_STATUS_HANDSHAKING                                  = 1
-	PACKET_PEER_DTLS_STATUS_STATUS_CONNECTED                                    = 2
-	PACKET_PEER_DTLS_STATUS_STATUS_ERROR                                        = 3
-	PACKET_PEER_DTLS_STATUS_STATUS_ERROR_HOSTNAME_MISMATCH                      = 4
+	PACKET_PEER_DTLS_STATUS_STATUS_HANDSHAKING             PacketPeerDTLSStatus = 1
+	PACKET_PEER_DTLS_STATUS_STATUS_CONNECTED               PacketPeerDTLSStatus = 2
+	PACKET_PEER_DTLS_STATUS_STATUS_ERROR                   PacketPeerDTLSStatus = 3
+	PACKET_PEER_DTLS_STATUS_STATUS_ERROR_HOSTNAME_MISMATCH PacketPeerDTLSStatus = 4
 )
 
 type ParticleProcessMaterialParameter int
 
 const (
 	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_INITIAL_LINEAR_VELOCITY  ParticleProcessMaterialParameter = 0
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ANGULAR_VELOCITY                                          = 1
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ORBIT_VELOCITY                                            = 2
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_LINEAR_ACCEL                                              = 3
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_RADIAL_ACCEL                                              = 4
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_TANGENTIAL_ACCEL                                          = 5
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_DAMPING                                                   = 6
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ANGLE                                                     = 7
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_SCALE                                                     = 8
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_HUE_VARIATION                                             = 9
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ANIM_SPEED                                                = 10
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ANIM_OFFSET                                               = 11
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_RADIAL_VELOCITY                                           = 15
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_DIRECTIONAL_VELOCITY                                      = 16
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_SCALE_OVER_VELOCITY                                       = 17
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_MAX                                                       = 18
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_TURB_VEL_INFLUENCE                                        = 13
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_TURB_INIT_DISPLACEMENT                                    = 14
-	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_TURB_INFLUENCE_OVER_LIFE                                  = 12
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ANGULAR_VELOCITY         ParticleProcessMaterialParameter = 1
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ORBIT_VELOCITY           ParticleProcessMaterialParameter = 2
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_LINEAR_ACCEL             ParticleProcessMaterialParameter = 3
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_RADIAL_ACCEL             ParticleProcessMaterialParameter = 4
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_TANGENTIAL_ACCEL         ParticleProcessMaterialParameter = 5
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_DAMPING                  ParticleProcessMaterialParameter = 6
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ANGLE                    ParticleProcessMaterialParameter = 7
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_SCALE                    ParticleProcessMaterialParameter = 8
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_HUE_VARIATION            ParticleProcessMaterialParameter = 9
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ANIM_SPEED               ParticleProcessMaterialParameter = 10
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_ANIM_OFFSET              ParticleProcessMaterialParameter = 11
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_RADIAL_VELOCITY          ParticleProcessMaterialParameter = 15
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_DIRECTIONAL_VELOCITY     ParticleProcessMaterialParameter = 16
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_SCALE_OVER_VELOCITY      ParticleProcessMaterialParameter = 17
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_MAX                      ParticleProcessMaterialParameter = 18
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_TURB_VEL_INFLUENCE       ParticleProcessMaterialParameter = 13
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_TURB_INIT_DISPLACEMENT   ParticleProcessMaterialParameter = 14
+	PARTICLE_PROCESS_MATERIAL_PARAMETER_PARAM_TURB_INFLUENCE_OVER_LIFE ParticleProcessMaterialParameter = 12
 )
 
 type ParticleProcessMaterialParticleFlags int
 
 const (
 	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_ALIGN_Y_TO_VELOCITY ParticleProcessMaterialParticleFlags = 0
-	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_ROTATE_Y                                                 = 1
-	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_DISABLE_Z                                                = 2
-	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_DAMPING_AS_FRICTION                                      = 3
-	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_MAX                                                      = 4
+	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_ROTATE_Y            ParticleProcessMaterialParticleFlags = 1
+	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_DISABLE_Z           ParticleProcessMaterialParticleFlags = 2
+	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_DAMPING_AS_FRICTION ParticleProcessMaterialParticleFlags = 3
+	PARTICLE_PROCESS_MATERIAL_PARTICLE_FLAGS_PARTICLE_FLAG_MAX                 ParticleProcessMaterialParticleFlags = 4
 )
 
 type ParticleProcessMaterialEmissionShape int
 
 const (
 	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_POINT           ParticleProcessMaterialEmissionShape = 0
-	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE                                               = 1
-	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE_SURFACE                                       = 2
-	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_BOX                                                  = 3
-	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_POINTS                                               = 4
-	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_DIRECTED_POINTS                                      = 5
-	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_RING                                                 = 6
-	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_MAX                                                  = 7
+	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE          ParticleProcessMaterialEmissionShape = 1
+	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_SPHERE_SURFACE  ParticleProcessMaterialEmissionShape = 2
+	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_BOX             ParticleProcessMaterialEmissionShape = 3
+	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_POINTS          ParticleProcessMaterialEmissionShape = 4
+	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_DIRECTED_POINTS ParticleProcessMaterialEmissionShape = 5
+	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_RING            ParticleProcessMaterialEmissionShape = 6
+	PARTICLE_PROCESS_MATERIAL_EMISSION_SHAPE_EMISSION_SHAPE_MAX             ParticleProcessMaterialEmissionShape = 7
 )
 
 type ParticleProcessMaterialSubEmitterMode int
 
 const (
 	PARTICLE_PROCESS_MATERIAL_SUB_EMITTER_MODE_SUB_EMITTER_DISABLED     ParticleProcessMaterialSubEmitterMode = 0
-	PARTICLE_PROCESS_MATERIAL_SUB_EMITTER_MODE_SUB_EMITTER_CONSTANT                                           = 1
-	PARTICLE_PROCESS_MATERIAL_SUB_EMITTER_MODE_SUB_EMITTER_AT_END                                             = 2
-	PARTICLE_PROCESS_MATERIAL_SUB_EMITTER_MODE_SUB_EMITTER_AT_COLLISION                                       = 3
-	PARTICLE_PROCESS_MATERIAL_SUB_EMITTER_MODE_SUB_EMITTER_MAX                                                = 4
+	PARTICLE_PROCESS_MATERIAL_SUB_EMITTER_MODE_SUB_EMITTER_CONSTANT     ParticleProcessMaterialSubEmitterMode = 1
+	PARTICLE_PROCESS_MATERIAL_SUB_EMITTER_MODE_SUB_EMITTER_AT_END       ParticleProcessMaterialSubEmitterMode = 2
+	PARTICLE_PROCESS_MATERIAL_SUB_EMITTER_MODE_SUB_EMITTER_AT_COLLISION ParticleProcessMaterialSubEmitterMode = 3
+	PARTICLE_PROCESS_MATERIAL_SUB_EMITTER_MODE_SUB_EMITTER_AT_START     ParticleProcessMaterialSubEmitterMode = 4
+	PARTICLE_PROCESS_MATERIAL_SUB_EMITTER_MODE_SUB_EMITTER_MAX          ParticleProcessMaterialSubEmitterMode = 5
 )
 
 type ParticleProcessMaterialCollisionMode int
 
 const (
 	PARTICLE_PROCESS_MATERIAL_COLLISION_MODE_COLLISION_DISABLED        ParticleProcessMaterialCollisionMode = 0
-	PARTICLE_PROCESS_MATERIAL_COLLISION_MODE_COLLISION_RIGID                                                = 1
-	PARTICLE_PROCESS_MATERIAL_COLLISION_MODE_COLLISION_HIDE_ON_CONTACT                                      = 2
-	PARTICLE_PROCESS_MATERIAL_COLLISION_MODE_COLLISION_MAX                                                  = 3
+	PARTICLE_PROCESS_MATERIAL_COLLISION_MODE_COLLISION_RIGID           ParticleProcessMaterialCollisionMode = 1
+	PARTICLE_PROCESS_MATERIAL_COLLISION_MODE_COLLISION_HIDE_ON_CONTACT ParticleProcessMaterialCollisionMode = 2
+	PARTICLE_PROCESS_MATERIAL_COLLISION_MODE_COLLISION_MAX             ParticleProcessMaterialCollisionMode = 3
 )
 
 type PathFollow3DRotationMode int
 
 const (
 	PATH_FOLLOW_3_D_ROTATION_MODE_ROTATION_NONE     PathFollow3DRotationMode = 0
-	PATH_FOLLOW_3_D_ROTATION_MODE_ROTATION_Y                                 = 1
-	PATH_FOLLOW_3_D_ROTATION_MODE_ROTATION_XY                                = 2
-	PATH_FOLLOW_3_D_ROTATION_MODE_ROTATION_XYZ                               = 3
-	PATH_FOLLOW_3_D_ROTATION_MODE_ROTATION_ORIENTED                          = 4
+	PATH_FOLLOW_3_D_ROTATION_MODE_ROTATION_Y        PathFollow3DRotationMode = 1
+	PATH_FOLLOW_3_D_ROTATION_MODE_ROTATION_XY       PathFollow3DRotationMode = 2
+	PATH_FOLLOW_3_D_ROTATION_MODE_ROTATION_XYZ      PathFollow3DRotationMode = 3
+	PATH_FOLLOW_3_D_ROTATION_MODE_ROTATION_ORIENTED PathFollow3DRotationMode = 4
 )
 
 type PerformanceMonitor int
 
 const (
-	PERFORMANCE_MONITOR_TIME_FPS                         PerformanceMonitor = 0
-	PERFORMANCE_MONITOR_TIME_PROCESS                                        = 1
-	PERFORMANCE_MONITOR_TIME_PHYSICS_PROCESS                                = 2
-	PERFORMANCE_MONITOR_TIME_NAVIGATION_PROCESS                             = 3
-	PERFORMANCE_MONITOR_MEMORY_STATIC                                       = 4
-	PERFORMANCE_MONITOR_MEMORY_STATIC_MAX                                   = 5
-	PERFORMANCE_MONITOR_MEMORY_MESSAGE_BUFFER_MAX                           = 6
-	PERFORMANCE_MONITOR_OBJECT_COUNT                                        = 7
-	PERFORMANCE_MONITOR_OBJECT_RESOURCE_COUNT                               = 8
-	PERFORMANCE_MONITOR_OBJECT_NODE_COUNT                                   = 9
-	PERFORMANCE_MONITOR_OBJECT_ORPHAN_NODE_COUNT                            = 10
-	PERFORMANCE_MONITOR_RENDER_TOTAL_OBJECTS_IN_FRAME                       = 11
-	PERFORMANCE_MONITOR_RENDER_TOTAL_PRIMITIVES_IN_FRAME                    = 12
-	PERFORMANCE_MONITOR_RENDER_TOTAL_DRAW_CALLS_IN_FRAME                    = 13
-	PERFORMANCE_MONITOR_RENDER_VIDEO_MEM_USED                               = 14
-	PERFORMANCE_MONITOR_RENDER_TEXTURE_MEM_USED                             = 15
-	PERFORMANCE_MONITOR_RENDER_BUFFER_MEM_USED                              = 16
-	PERFORMANCE_MONITOR_PHYSICS_2_D_ACTIVE_OBJECTS                          = 17
-	PERFORMANCE_MONITOR_PHYSICS_2_D_COLLISION_PAIRS                         = 18
-	PERFORMANCE_MONITOR_PHYSICS_2_D_ISLAND_COUNT                            = 19
-	PERFORMANCE_MONITOR_PHYSICS_3_D_ACTIVE_OBJECTS                          = 20
-	PERFORMANCE_MONITOR_PHYSICS_3_D_COLLISION_PAIRS                         = 21
-	PERFORMANCE_MONITOR_PHYSICS_3_D_ISLAND_COUNT                            = 22
-	PERFORMANCE_MONITOR_AUDIO_OUTPUT_LATENCY                                = 23
-	PERFORMANCE_MONITOR_NAVIGATION_ACTIVE_MAPS                              = 24
-	PERFORMANCE_MONITOR_NAVIGATION_REGION_COUNT                             = 25
-	PERFORMANCE_MONITOR_NAVIGATION_AGENT_COUNT                              = 26
-	PERFORMANCE_MONITOR_NAVIGATION_LINK_COUNT                               = 27
-	PERFORMANCE_MONITOR_NAVIGATION_POLYGON_COUNT                            = 28
-	PERFORMANCE_MONITOR_NAVIGATION_EDGE_COUNT                               = 29
-	PERFORMANCE_MONITOR_NAVIGATION_EDGE_MERGE_COUNT                         = 30
-	PERFORMANCE_MONITOR_NAVIGATION_EDGE_CONNECTION_COUNT                    = 31
-	PERFORMANCE_MONITOR_NAVIGATION_EDGE_FREE_COUNT                          = 32
-	PERFORMANCE_MONITOR_MONITOR_MAX                                         = 33
+	PERFORMANCE_MONITOR_TIME_FPS                             PerformanceMonitor = 0
+	PERFORMANCE_MONITOR_TIME_PROCESS                         PerformanceMonitor = 1
+	PERFORMANCE_MONITOR_TIME_PHYSICS_PROCESS                 PerformanceMonitor = 2
+	PERFORMANCE_MONITOR_TIME_NAVIGATION_PROCESS              PerformanceMonitor = 3
+	PERFORMANCE_MONITOR_MEMORY_STATIC                        PerformanceMonitor = 4
+	PERFORMANCE_MONITOR_MEMORY_STATIC_MAX                    PerformanceMonitor = 5
+	PERFORMANCE_MONITOR_MEMORY_MESSAGE_BUFFER_MAX            PerformanceMonitor = 6
+	PERFORMANCE_MONITOR_OBJECT_COUNT                         PerformanceMonitor = 7
+	PERFORMANCE_MONITOR_OBJECT_RESOURCE_COUNT                PerformanceMonitor = 8
+	PERFORMANCE_MONITOR_OBJECT_NODE_COUNT                    PerformanceMonitor = 9
+	PERFORMANCE_MONITOR_OBJECT_ORPHAN_NODE_COUNT             PerformanceMonitor = 10
+	PERFORMANCE_MONITOR_RENDER_TOTAL_OBJECTS_IN_FRAME        PerformanceMonitor = 11
+	PERFORMANCE_MONITOR_RENDER_TOTAL_PRIMITIVES_IN_FRAME     PerformanceMonitor = 12
+	PERFORMANCE_MONITOR_RENDER_TOTAL_DRAW_CALLS_IN_FRAME     PerformanceMonitor = 13
+	PERFORMANCE_MONITOR_RENDER_VIDEO_MEM_USED                PerformanceMonitor = 14
+	PERFORMANCE_MONITOR_RENDER_TEXTURE_MEM_USED              PerformanceMonitor = 15
+	PERFORMANCE_MONITOR_RENDER_BUFFER_MEM_USED               PerformanceMonitor = 16
+	PERFORMANCE_MONITOR_PHYSICS_2_D_ACTIVE_OBJECTS           PerformanceMonitor = 17
+	PERFORMANCE_MONITOR_PHYSICS_2_D_COLLISION_PAIRS          PerformanceMonitor = 18
+	PERFORMANCE_MONITOR_PHYSICS_2_D_ISLAND_COUNT             PerformanceMonitor = 19
+	PERFORMANCE_MONITOR_PHYSICS_3_D_ACTIVE_OBJECTS           PerformanceMonitor = 20
+	PERFORMANCE_MONITOR_PHYSICS_3_D_COLLISION_PAIRS          PerformanceMonitor = 21
+	PERFORMANCE_MONITOR_PHYSICS_3_D_ISLAND_COUNT             PerformanceMonitor = 22
+	PERFORMANCE_MONITOR_AUDIO_OUTPUT_LATENCY                 PerformanceMonitor = 23
+	PERFORMANCE_MONITOR_NAVIGATION_ACTIVE_MAPS               PerformanceMonitor = 24
+	PERFORMANCE_MONITOR_NAVIGATION_REGION_COUNT              PerformanceMonitor = 25
+	PERFORMANCE_MONITOR_NAVIGATION_AGENT_COUNT               PerformanceMonitor = 26
+	PERFORMANCE_MONITOR_NAVIGATION_LINK_COUNT                PerformanceMonitor = 27
+	PERFORMANCE_MONITOR_NAVIGATION_POLYGON_COUNT             PerformanceMonitor = 28
+	PERFORMANCE_MONITOR_NAVIGATION_EDGE_COUNT                PerformanceMonitor = 29
+	PERFORMANCE_MONITOR_NAVIGATION_EDGE_MERGE_COUNT          PerformanceMonitor = 30
+	PERFORMANCE_MONITOR_NAVIGATION_EDGE_CONNECTION_COUNT     PerformanceMonitor = 31
+	PERFORMANCE_MONITOR_NAVIGATION_EDGE_FREE_COUNT           PerformanceMonitor = 32
+	PERFORMANCE_MONITOR_NAVIGATION_OBSTACLE_COUNT            PerformanceMonitor = 33
+	PERFORMANCE_MONITOR_PIPELINE_COMPILATIONS_CANVAS         PerformanceMonitor = 34
+	PERFORMANCE_MONITOR_PIPELINE_COMPILATIONS_MESH           PerformanceMonitor = 35
+	PERFORMANCE_MONITOR_PIPELINE_COMPILATIONS_SURFACE        PerformanceMonitor = 36
+	PERFORMANCE_MONITOR_PIPELINE_COMPILATIONS_DRAW           PerformanceMonitor = 37
+	PERFORMANCE_MONITOR_PIPELINE_COMPILATIONS_SPECIALIZATION PerformanceMonitor = 38
+	PERFORMANCE_MONITOR_NAVIGATION_2_D_ACTIVE_MAPS           PerformanceMonitor = 39
+	PERFORMANCE_MONITOR_NAVIGATION_2_D_REGION_COUNT          PerformanceMonitor = 40
+	PERFORMANCE_MONITOR_NAVIGATION_2_D_AGENT_COUNT           PerformanceMonitor = 41
+	PERFORMANCE_MONITOR_NAVIGATION_2_D_LINK_COUNT            PerformanceMonitor = 42
+	PERFORMANCE_MONITOR_NAVIGATION_2_D_POLYGON_COUNT         PerformanceMonitor = 43
+	PERFORMANCE_MONITOR_NAVIGATION_2_D_EDGE_COUNT            PerformanceMonitor = 44
+	PERFORMANCE_MONITOR_NAVIGATION_2_D_EDGE_MERGE_COUNT      PerformanceMonitor = 45
+	PERFORMANCE_MONITOR_NAVIGATION_2_D_EDGE_CONNECTION_COUNT PerformanceMonitor = 46
+	PERFORMANCE_MONITOR_NAVIGATION_2_D_EDGE_FREE_COUNT       PerformanceMonitor = 47
+	PERFORMANCE_MONITOR_NAVIGATION_2_D_OBSTACLE_COUNT        PerformanceMonitor = 48
+	PERFORMANCE_MONITOR_NAVIGATION_3_D_ACTIVE_MAPS           PerformanceMonitor = 49
+	PERFORMANCE_MONITOR_NAVIGATION_3_D_REGION_COUNT          PerformanceMonitor = 50
+	PERFORMANCE_MONITOR_NAVIGATION_3_D_AGENT_COUNT           PerformanceMonitor = 51
+	PERFORMANCE_MONITOR_NAVIGATION_3_D_LINK_COUNT            PerformanceMonitor = 52
+	PERFORMANCE_MONITOR_NAVIGATION_3_D_POLYGON_COUNT         PerformanceMonitor = 53
+	PERFORMANCE_MONITOR_NAVIGATION_3_D_EDGE_COUNT            PerformanceMonitor = 54
+	PERFORMANCE_MONITOR_NAVIGATION_3_D_EDGE_MERGE_COUNT      PerformanceMonitor = 55
+	PERFORMANCE_MONITOR_NAVIGATION_3_D_EDGE_CONNECTION_COUNT PerformanceMonitor = 56
+	PERFORMANCE_MONITOR_NAVIGATION_3_D_EDGE_FREE_COUNT       PerformanceMonitor = 57
+	PERFORMANCE_MONITOR_NAVIGATION_3_D_OBSTACLE_COUNT        PerformanceMonitor = 58
+	PERFORMANCE_MONITOR_MONITOR_MAX                          PerformanceMonitor = 59
 )
 
 type PhysicalBone3DDampMode int
 
 const (
 	PHYSICAL_BONE_3_D_DAMP_MODE_DAMP_MODE_COMBINE PhysicalBone3DDampMode = 0
-	PHYSICAL_BONE_3_D_DAMP_MODE_DAMP_MODE_REPLACE                        = 1
+	PHYSICAL_BONE_3_D_DAMP_MODE_DAMP_MODE_REPLACE PhysicalBone3DDampMode = 1
 )
 
 type PhysicalBone3DJointType int
 
 const (
 	PHYSICAL_BONE_3_D_JOINT_TYPE_JOINT_TYPE_NONE   PhysicalBone3DJointType = 0
-	PHYSICAL_BONE_3_D_JOINT_TYPE_JOINT_TYPE_PIN                            = 1
-	PHYSICAL_BONE_3_D_JOINT_TYPE_JOINT_TYPE_CONE                           = 2
-	PHYSICAL_BONE_3_D_JOINT_TYPE_JOINT_TYPE_HINGE                          = 3
-	PHYSICAL_BONE_3_D_JOINT_TYPE_JOINT_TYPE_SLIDER                         = 4
-	PHYSICAL_BONE_3_D_JOINT_TYPE_JOINT_TYPE_6_DOF                          = 5
+	PHYSICAL_BONE_3_D_JOINT_TYPE_JOINT_TYPE_PIN    PhysicalBone3DJointType = 1
+	PHYSICAL_BONE_3_D_JOINT_TYPE_JOINT_TYPE_CONE   PhysicalBone3DJointType = 2
+	PHYSICAL_BONE_3_D_JOINT_TYPE_JOINT_TYPE_HINGE  PhysicalBone3DJointType = 3
+	PHYSICAL_BONE_3_D_JOINT_TYPE_JOINT_TYPE_SLIDER PhysicalBone3DJointType = 4
+	PHYSICAL_BONE_3_D_JOINT_TYPE_JOINT_TYPE_6_DOF  PhysicalBone3DJointType = 5
 )
 
 type PhysicsServer2DSpaceParameter int
 
 const (
 	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_RECYCLE_RADIUS                PhysicsServer2DSpaceParameter = 0
-	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_MAX_SEPARATION                                              = 1
-	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_MAX_ALLOWED_PENETRATION                                     = 2
-	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_DEFAULT_BIAS                                                = 3
-	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_BODY_LINEAR_VELOCITY_SLEEP_THRESHOLD                                = 4
-	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD                               = 5
-	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_BODY_TIME_TO_SLEEP                                                  = 6
-	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_CONSTRAINT_DEFAULT_BIAS                                             = 7
-	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_SOLVER_ITERATIONS                                                   = 8
+	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_MAX_SEPARATION                PhysicsServer2DSpaceParameter = 1
+	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_MAX_ALLOWED_PENETRATION       PhysicsServer2DSpaceParameter = 2
+	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_DEFAULT_BIAS                  PhysicsServer2DSpaceParameter = 3
+	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_BODY_LINEAR_VELOCITY_SLEEP_THRESHOLD  PhysicsServer2DSpaceParameter = 4
+	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD PhysicsServer2DSpaceParameter = 5
+	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_BODY_TIME_TO_SLEEP                    PhysicsServer2DSpaceParameter = 6
+	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_CONSTRAINT_DEFAULT_BIAS               PhysicsServer2DSpaceParameter = 7
+	PHYSICS_SERVER_2_D_SPACE_PARAMETER_SPACE_PARAM_SOLVER_ITERATIONS                     PhysicsServer2DSpaceParameter = 8
 )
 
 type PhysicsServer2DShapeType int
 
 const (
 	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_WORLD_BOUNDARY  PhysicsServer2DShapeType = 0
-	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_SEPARATION_RAY                           = 1
-	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_SEGMENT                                  = 2
-	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_CIRCLE                                   = 3
-	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_RECTANGLE                                = 4
-	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_CAPSULE                                  = 5
-	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_CONVEX_POLYGON                           = 6
-	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_CONCAVE_POLYGON                          = 7
-	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_CUSTOM                                   = 8
+	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_SEPARATION_RAY  PhysicsServer2DShapeType = 1
+	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_SEGMENT         PhysicsServer2DShapeType = 2
+	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_CIRCLE          PhysicsServer2DShapeType = 3
+	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_RECTANGLE       PhysicsServer2DShapeType = 4
+	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_CAPSULE         PhysicsServer2DShapeType = 5
+	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_CONVEX_POLYGON  PhysicsServer2DShapeType = 6
+	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_CONCAVE_POLYGON PhysicsServer2DShapeType = 7
+	PHYSICS_SERVER_2_D_SHAPE_TYPE_SHAPE_CUSTOM          PhysicsServer2DShapeType = 8
 )
 
 type PhysicsServer2DAreaParameter int
 
 const (
 	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_OVERRIDE_MODE       PhysicsServer2DAreaParameter = 0
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY                                                  = 1
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_VECTOR                                           = 2
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_IS_POINT                                         = 3
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_POINT_UNIT_DISTANCE                              = 4
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE                                = 5
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP                                              = 6
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE                               = 7
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP                                             = 8
-	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_PRIORITY                                                 = 9
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY                     PhysicsServer2DAreaParameter = 1
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_VECTOR              PhysicsServer2DAreaParameter = 2
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_IS_POINT            PhysicsServer2DAreaParameter = 3
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_POINT_UNIT_DISTANCE PhysicsServer2DAreaParameter = 4
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE   PhysicsServer2DAreaParameter = 5
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP                 PhysicsServer2DAreaParameter = 6
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE  PhysicsServer2DAreaParameter = 7
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP                PhysicsServer2DAreaParameter = 8
+	PHYSICS_SERVER_2_D_AREA_PARAMETER_AREA_PARAM_PRIORITY                    PhysicsServer2DAreaParameter = 9
 )
 
 type PhysicsServer2DAreaSpaceOverrideMode int
 
 const (
 	PHYSICS_SERVER_2_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_DISABLED        PhysicsServer2DAreaSpaceOverrideMode = 0
-	PHYSICS_SERVER_2_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_COMBINE                                              = 1
-	PHYSICS_SERVER_2_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_COMBINE_REPLACE                                      = 2
-	PHYSICS_SERVER_2_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_REPLACE                                              = 3
-	PHYSICS_SERVER_2_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_REPLACE_COMBINE                                      = 4
+	PHYSICS_SERVER_2_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_COMBINE         PhysicsServer2DAreaSpaceOverrideMode = 1
+	PHYSICS_SERVER_2_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_COMBINE_REPLACE PhysicsServer2DAreaSpaceOverrideMode = 2
+	PHYSICS_SERVER_2_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_REPLACE         PhysicsServer2DAreaSpaceOverrideMode = 3
+	PHYSICS_SERVER_2_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_REPLACE_COMBINE PhysicsServer2DAreaSpaceOverrideMode = 4
 )
 
 type PhysicsServer2DBodyMode int
 
 const (
 	PHYSICS_SERVER_2_D_BODY_MODE_BODY_MODE_STATIC       PhysicsServer2DBodyMode = 0
-	PHYSICS_SERVER_2_D_BODY_MODE_BODY_MODE_KINEMATIC                            = 1
-	PHYSICS_SERVER_2_D_BODY_MODE_BODY_MODE_RIGID                                = 2
-	PHYSICS_SERVER_2_D_BODY_MODE_BODY_MODE_RIGID_LINEAR                         = 3
+	PHYSICS_SERVER_2_D_BODY_MODE_BODY_MODE_KINEMATIC    PhysicsServer2DBodyMode = 1
+	PHYSICS_SERVER_2_D_BODY_MODE_BODY_MODE_RIGID        PhysicsServer2DBodyMode = 2
+	PHYSICS_SERVER_2_D_BODY_MODE_BODY_MODE_RIGID_LINEAR PhysicsServer2DBodyMode = 3
 )
 
 type PhysicsServer2DBodyParameter int
 
 const (
 	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_BOUNCE            PhysicsServer2DBodyParameter = 0
-	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_FRICTION                                       = 1
-	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_MASS                                           = 2
-	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_INERTIA                                        = 3
-	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_CENTER_OF_MASS                                 = 4
-	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_GRAVITY_SCALE                                  = 5
-	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_LINEAR_DAMP_MODE                               = 6
-	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_ANGULAR_DAMP_MODE                              = 7
-	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_LINEAR_DAMP                                    = 8
-	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_ANGULAR_DAMP                                   = 9
-	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_MAX                                            = 10
+	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_FRICTION          PhysicsServer2DBodyParameter = 1
+	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_MASS              PhysicsServer2DBodyParameter = 2
+	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_INERTIA           PhysicsServer2DBodyParameter = 3
+	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_CENTER_OF_MASS    PhysicsServer2DBodyParameter = 4
+	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_GRAVITY_SCALE     PhysicsServer2DBodyParameter = 5
+	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_LINEAR_DAMP_MODE  PhysicsServer2DBodyParameter = 6
+	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_ANGULAR_DAMP_MODE PhysicsServer2DBodyParameter = 7
+	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_LINEAR_DAMP       PhysicsServer2DBodyParameter = 8
+	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_ANGULAR_DAMP      PhysicsServer2DBodyParameter = 9
+	PHYSICS_SERVER_2_D_BODY_PARAMETER_BODY_PARAM_MAX               PhysicsServer2DBodyParameter = 10
 )
 
 type PhysicsServer2DBodyDampMode int
 
 const (
 	PHYSICS_SERVER_2_D_BODY_DAMP_MODE_BODY_DAMP_MODE_COMBINE PhysicsServer2DBodyDampMode = 0
-	PHYSICS_SERVER_2_D_BODY_DAMP_MODE_BODY_DAMP_MODE_REPLACE                             = 1
+	PHYSICS_SERVER_2_D_BODY_DAMP_MODE_BODY_DAMP_MODE_REPLACE PhysicsServer2DBodyDampMode = 1
 )
 
 type PhysicsServer2DBodyState int
 
 const (
 	PHYSICS_SERVER_2_D_BODY_STATE_BODY_STATE_TRANSFORM        PhysicsServer2DBodyState = 0
-	PHYSICS_SERVER_2_D_BODY_STATE_BODY_STATE_LINEAR_VELOCITY                           = 1
-	PHYSICS_SERVER_2_D_BODY_STATE_BODY_STATE_ANGULAR_VELOCITY                          = 2
-	PHYSICS_SERVER_2_D_BODY_STATE_BODY_STATE_SLEEPING                                  = 3
-	PHYSICS_SERVER_2_D_BODY_STATE_BODY_STATE_CAN_SLEEP                                 = 4
+	PHYSICS_SERVER_2_D_BODY_STATE_BODY_STATE_LINEAR_VELOCITY  PhysicsServer2DBodyState = 1
+	PHYSICS_SERVER_2_D_BODY_STATE_BODY_STATE_ANGULAR_VELOCITY PhysicsServer2DBodyState = 2
+	PHYSICS_SERVER_2_D_BODY_STATE_BODY_STATE_SLEEPING         PhysicsServer2DBodyState = 3
+	PHYSICS_SERVER_2_D_BODY_STATE_BODY_STATE_CAN_SLEEP        PhysicsServer2DBodyState = 4
 )
 
 type PhysicsServer2DJointType int
 
 const (
 	PHYSICS_SERVER_2_D_JOINT_TYPE_JOINT_TYPE_PIN           PhysicsServer2DJointType = 0
-	PHYSICS_SERVER_2_D_JOINT_TYPE_JOINT_TYPE_GROOVE                                 = 1
-	PHYSICS_SERVER_2_D_JOINT_TYPE_JOINT_TYPE_DAMPED_SPRING                          = 2
-	PHYSICS_SERVER_2_D_JOINT_TYPE_JOINT_TYPE_MAX                                    = 3
+	PHYSICS_SERVER_2_D_JOINT_TYPE_JOINT_TYPE_GROOVE        PhysicsServer2DJointType = 1
+	PHYSICS_SERVER_2_D_JOINT_TYPE_JOINT_TYPE_DAMPED_SPRING PhysicsServer2DJointType = 2
+	PHYSICS_SERVER_2_D_JOINT_TYPE_JOINT_TYPE_MAX           PhysicsServer2DJointType = 3
 )
 
 type PhysicsServer2DJointParam int
 
 const (
 	PHYSICS_SERVER_2_D_JOINT_PARAM_JOINT_PARAM_BIAS      PhysicsServer2DJointParam = 0
-	PHYSICS_SERVER_2_D_JOINT_PARAM_JOINT_PARAM_MAX_BIAS                            = 1
-	PHYSICS_SERVER_2_D_JOINT_PARAM_JOINT_PARAM_MAX_FORCE                           = 2
+	PHYSICS_SERVER_2_D_JOINT_PARAM_JOINT_PARAM_MAX_BIAS  PhysicsServer2DJointParam = 1
+	PHYSICS_SERVER_2_D_JOINT_PARAM_JOINT_PARAM_MAX_FORCE PhysicsServer2DJointParam = 2
 )
 
 type PhysicsServer2DPinJointParam int
 
 const (
 	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_SOFTNESS              PhysicsServer2DPinJointParam = 0
-	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_LIMIT_UPPER                                        = 1
-	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_LIMIT_LOWER                                        = 2
-	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_MOTOR_TARGET_VELOCITY                              = 3
+	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_LIMIT_UPPER           PhysicsServer2DPinJointParam = 1
+	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_LIMIT_LOWER           PhysicsServer2DPinJointParam = 2
+	PHYSICS_SERVER_2_D_PIN_JOINT_PARAM_PIN_JOINT_MOTOR_TARGET_VELOCITY PhysicsServer2DPinJointParam = 3
 )
 
 type PhysicsServer2DPinJointFlag int
 
 const (
 	PHYSICS_SERVER_2_D_PIN_JOINT_FLAG_PIN_JOINT_FLAG_ANGULAR_LIMIT_ENABLED PhysicsServer2DPinJointFlag = 0
-	PHYSICS_SERVER_2_D_PIN_JOINT_FLAG_PIN_JOINT_FLAG_MOTOR_ENABLED                                     = 1
+	PHYSICS_SERVER_2_D_PIN_JOINT_FLAG_PIN_JOINT_FLAG_MOTOR_ENABLED         PhysicsServer2DPinJointFlag = 1
 )
 
 type PhysicsServer2DDampedSpringParam int
 
 const (
 	PHYSICS_SERVER_2_D_DAMPED_SPRING_PARAM_DAMPED_SPRING_REST_LENGTH PhysicsServer2DDampedSpringParam = 0
-	PHYSICS_SERVER_2_D_DAMPED_SPRING_PARAM_DAMPED_SPRING_STIFFNESS                                    = 1
-	PHYSICS_SERVER_2_D_DAMPED_SPRING_PARAM_DAMPED_SPRING_DAMPING                                      = 2
+	PHYSICS_SERVER_2_D_DAMPED_SPRING_PARAM_DAMPED_SPRING_STIFFNESS   PhysicsServer2DDampedSpringParam = 1
+	PHYSICS_SERVER_2_D_DAMPED_SPRING_PARAM_DAMPED_SPRING_DAMPING     PhysicsServer2DDampedSpringParam = 2
 )
 
 type PhysicsServer2DCCDMode int
 
 const (
 	PHYSICS_SERVER_2_D_CCD_MODE_CCD_MODE_DISABLED   PhysicsServer2DCCDMode = 0
-	PHYSICS_SERVER_2_D_CCD_MODE_CCD_MODE_CAST_RAY                          = 1
-	PHYSICS_SERVER_2_D_CCD_MODE_CCD_MODE_CAST_SHAPE                        = 2
+	PHYSICS_SERVER_2_D_CCD_MODE_CCD_MODE_CAST_RAY   PhysicsServer2DCCDMode = 1
+	PHYSICS_SERVER_2_D_CCD_MODE_CCD_MODE_CAST_SHAPE PhysicsServer2DCCDMode = 2
 )
 
 type PhysicsServer2DAreaBodyStatus int
 
 const (
 	PHYSICS_SERVER_2_D_AREA_BODY_STATUS_AREA_BODY_ADDED   PhysicsServer2DAreaBodyStatus = 0
-	PHYSICS_SERVER_2_D_AREA_BODY_STATUS_AREA_BODY_REMOVED                               = 1
+	PHYSICS_SERVER_2_D_AREA_BODY_STATUS_AREA_BODY_REMOVED PhysicsServer2DAreaBodyStatus = 1
 )
 
 type PhysicsServer2DProcessInfo int
 
 const (
 	PHYSICS_SERVER_2_D_PROCESS_INFO_INFO_ACTIVE_OBJECTS  PhysicsServer2DProcessInfo = 0
-	PHYSICS_SERVER_2_D_PROCESS_INFO_INFO_COLLISION_PAIRS                            = 1
-	PHYSICS_SERVER_2_D_PROCESS_INFO_INFO_ISLAND_COUNT                               = 2
+	PHYSICS_SERVER_2_D_PROCESS_INFO_INFO_COLLISION_PAIRS PhysicsServer2DProcessInfo = 1
+	PHYSICS_SERVER_2_D_PROCESS_INFO_INFO_ISLAND_COUNT    PhysicsServer2DProcessInfo = 2
 )
 
 type PhysicsServer3DJointType int
 
 const (
 	PHYSICS_SERVER_3_D_JOINT_TYPE_JOINT_TYPE_PIN        PhysicsServer3DJointType = 0
-	PHYSICS_SERVER_3_D_JOINT_TYPE_JOINT_TYPE_HINGE                               = 1
-	PHYSICS_SERVER_3_D_JOINT_TYPE_JOINT_TYPE_SLIDER                              = 2
-	PHYSICS_SERVER_3_D_JOINT_TYPE_JOINT_TYPE_CONE_TWIST                          = 3
-	PHYSICS_SERVER_3_D_JOINT_TYPE_JOINT_TYPE_6_DOF                               = 4
-	PHYSICS_SERVER_3_D_JOINT_TYPE_JOINT_TYPE_MAX                                 = 5
+	PHYSICS_SERVER_3_D_JOINT_TYPE_JOINT_TYPE_HINGE      PhysicsServer3DJointType = 1
+	PHYSICS_SERVER_3_D_JOINT_TYPE_JOINT_TYPE_SLIDER     PhysicsServer3DJointType = 2
+	PHYSICS_SERVER_3_D_JOINT_TYPE_JOINT_TYPE_CONE_TWIST PhysicsServer3DJointType = 3
+	PHYSICS_SERVER_3_D_JOINT_TYPE_JOINT_TYPE_6_DOF      PhysicsServer3DJointType = 4
+	PHYSICS_SERVER_3_D_JOINT_TYPE_JOINT_TYPE_MAX        PhysicsServer3DJointType = 5
 )
 
 type PhysicsServer3DPinJointParam int
 
 const (
 	PHYSICS_SERVER_3_D_PIN_JOINT_PARAM_PIN_JOINT_BIAS          PhysicsServer3DPinJointParam = 0
-	PHYSICS_SERVER_3_D_PIN_JOINT_PARAM_PIN_JOINT_DAMPING                                    = 1
-	PHYSICS_SERVER_3_D_PIN_JOINT_PARAM_PIN_JOINT_IMPULSE_CLAMP                              = 2
+	PHYSICS_SERVER_3_D_PIN_JOINT_PARAM_PIN_JOINT_DAMPING       PhysicsServer3DPinJointParam = 1
+	PHYSICS_SERVER_3_D_PIN_JOINT_PARAM_PIN_JOINT_IMPULSE_CLAMP PhysicsServer3DPinJointParam = 2
 )
 
 type PhysicsServer3DHingeJointParam int
 
 const (
 	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_BIAS                  PhysicsServer3DHingeJointParam = 0
-	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_LIMIT_UPPER                                          = 1
-	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_LIMIT_LOWER                                          = 2
-	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_LIMIT_BIAS                                           = 3
-	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_LIMIT_SOFTNESS                                       = 4
-	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_LIMIT_RELAXATION                                     = 5
-	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_MOTOR_TARGET_VELOCITY                                = 6
-	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_MOTOR_MAX_IMPULSE                                    = 7
+	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_LIMIT_UPPER           PhysicsServer3DHingeJointParam = 1
+	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_LIMIT_LOWER           PhysicsServer3DHingeJointParam = 2
+	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_LIMIT_BIAS            PhysicsServer3DHingeJointParam = 3
+	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_LIMIT_SOFTNESS        PhysicsServer3DHingeJointParam = 4
+	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_LIMIT_RELAXATION      PhysicsServer3DHingeJointParam = 5
+	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_MOTOR_TARGET_VELOCITY PhysicsServer3DHingeJointParam = 6
+	PHYSICS_SERVER_3_D_HINGE_JOINT_PARAM_HINGE_JOINT_MOTOR_MAX_IMPULSE     PhysicsServer3DHingeJointParam = 7
 )
 
 type PhysicsServer3DHingeJointFlag int
 
 const (
 	PHYSICS_SERVER_3_D_HINGE_JOINT_FLAG_HINGE_JOINT_FLAG_USE_LIMIT    PhysicsServer3DHingeJointFlag = 0
-	PHYSICS_SERVER_3_D_HINGE_JOINT_FLAG_HINGE_JOINT_FLAG_ENABLE_MOTOR                               = 1
+	PHYSICS_SERVER_3_D_HINGE_JOINT_FLAG_HINGE_JOINT_FLAG_ENABLE_MOTOR PhysicsServer3DHingeJointFlag = 1
 )
 
 type PhysicsServer3DSliderJointParam int
 
 const (
 	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_LIMIT_UPPER             PhysicsServer3DSliderJointParam = 0
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_LIMIT_LOWER                                             = 1
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_LIMIT_SOFTNESS                                          = 2
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_LIMIT_RESTITUTION                                       = 3
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_LIMIT_DAMPING                                           = 4
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_MOTION_SOFTNESS                                         = 5
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_MOTION_RESTITUTION                                      = 6
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_MOTION_DAMPING                                          = 7
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_ORTHOGONAL_SOFTNESS                                     = 8
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_ORTHOGONAL_RESTITUTION                                  = 9
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_ORTHOGONAL_DAMPING                                      = 10
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_LIMIT_UPPER                                            = 11
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_LIMIT_LOWER                                            = 12
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_LIMIT_SOFTNESS                                         = 13
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_LIMIT_RESTITUTION                                      = 14
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_LIMIT_DAMPING                                          = 15
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_MOTION_SOFTNESS                                        = 16
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_MOTION_RESTITUTION                                     = 17
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_MOTION_DAMPING                                         = 18
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_ORTHOGONAL_SOFTNESS                                    = 19
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_ORTHOGONAL_RESTITUTION                                 = 20
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_ORTHOGONAL_DAMPING                                     = 21
-	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_MAX                                                            = 22
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_LIMIT_LOWER             PhysicsServer3DSliderJointParam = 1
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_LIMIT_SOFTNESS          PhysicsServer3DSliderJointParam = 2
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_LIMIT_RESTITUTION       PhysicsServer3DSliderJointParam = 3
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_LIMIT_DAMPING           PhysicsServer3DSliderJointParam = 4
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_MOTION_SOFTNESS         PhysicsServer3DSliderJointParam = 5
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_MOTION_RESTITUTION      PhysicsServer3DSliderJointParam = 6
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_MOTION_DAMPING          PhysicsServer3DSliderJointParam = 7
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_ORTHOGONAL_SOFTNESS     PhysicsServer3DSliderJointParam = 8
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_ORTHOGONAL_RESTITUTION  PhysicsServer3DSliderJointParam = 9
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_LINEAR_ORTHOGONAL_DAMPING      PhysicsServer3DSliderJointParam = 10
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_LIMIT_UPPER            PhysicsServer3DSliderJointParam = 11
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_LIMIT_LOWER            PhysicsServer3DSliderJointParam = 12
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_LIMIT_SOFTNESS         PhysicsServer3DSliderJointParam = 13
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_LIMIT_RESTITUTION      PhysicsServer3DSliderJointParam = 14
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_LIMIT_DAMPING          PhysicsServer3DSliderJointParam = 15
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_MOTION_SOFTNESS        PhysicsServer3DSliderJointParam = 16
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_MOTION_RESTITUTION     PhysicsServer3DSliderJointParam = 17
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_MOTION_DAMPING         PhysicsServer3DSliderJointParam = 18
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_ORTHOGONAL_SOFTNESS    PhysicsServer3DSliderJointParam = 19
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_ORTHOGONAL_RESTITUTION PhysicsServer3DSliderJointParam = 20
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_ANGULAR_ORTHOGONAL_DAMPING     PhysicsServer3DSliderJointParam = 21
+	PHYSICS_SERVER_3_D_SLIDER_JOINT_PARAM_SLIDER_JOINT_MAX                            PhysicsServer3DSliderJointParam = 22
 )
 
 type PhysicsServer3DConeTwistJointParam int
 
 const (
 	PHYSICS_SERVER_3_D_CONE_TWIST_JOINT_PARAM_CONE_TWIST_JOINT_SWING_SPAN PhysicsServer3DConeTwistJointParam = 0
-	PHYSICS_SERVER_3_D_CONE_TWIST_JOINT_PARAM_CONE_TWIST_JOINT_TWIST_SPAN                                    = 1
-	PHYSICS_SERVER_3_D_CONE_TWIST_JOINT_PARAM_CONE_TWIST_JOINT_BIAS                                          = 2
-	PHYSICS_SERVER_3_D_CONE_TWIST_JOINT_PARAM_CONE_TWIST_JOINT_SOFTNESS                                      = 3
-	PHYSICS_SERVER_3_D_CONE_TWIST_JOINT_PARAM_CONE_TWIST_JOINT_RELAXATION                                    = 4
+	PHYSICS_SERVER_3_D_CONE_TWIST_JOINT_PARAM_CONE_TWIST_JOINT_TWIST_SPAN PhysicsServer3DConeTwistJointParam = 1
+	PHYSICS_SERVER_3_D_CONE_TWIST_JOINT_PARAM_CONE_TWIST_JOINT_BIAS       PhysicsServer3DConeTwistJointParam = 2
+	PHYSICS_SERVER_3_D_CONE_TWIST_JOINT_PARAM_CONE_TWIST_JOINT_SOFTNESS   PhysicsServer3DConeTwistJointParam = 3
+	PHYSICS_SERVER_3_D_CONE_TWIST_JOINT_PARAM_CONE_TWIST_JOINT_RELAXATION PhysicsServer3DConeTwistJointParam = 4
 )
 
 type PhysicsServer3DG6DOFJointAxisParam int
 
 const (
 	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_LOWER_LIMIT               PhysicsServer3DG6DOFJointAxisParam = 0
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_UPPER_LIMIT                                                  = 1
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_LIMIT_SOFTNESS                                               = 2
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_RESTITUTION                                                  = 3
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_DAMPING                                                      = 4
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_MOTOR_TARGET_VELOCITY                                        = 5
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_MOTOR_FORCE_LIMIT                                            = 6
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_SPRING_STIFFNESS                                             = 7
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_SPRING_DAMPING                                               = 8
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_SPRING_EQUILIBRIUM_POINT                                     = 9
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_LOWER_LIMIT                                                 = 10
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_UPPER_LIMIT                                                 = 11
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_LIMIT_SOFTNESS                                              = 12
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_DAMPING                                                     = 13
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_RESTITUTION                                                 = 14
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_FORCE_LIMIT                                                 = 15
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_ERP                                                         = 16
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_MOTOR_TARGET_VELOCITY                                       = 17
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_MOTOR_FORCE_LIMIT                                           = 18
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_SPRING_STIFFNESS                                            = 19
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_SPRING_DAMPING                                              = 20
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_SPRING_EQUILIBRIUM_POINT                                    = 21
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_MAX                                                                 = 22
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_UPPER_LIMIT               PhysicsServer3DG6DOFJointAxisParam = 1
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_LIMIT_SOFTNESS            PhysicsServer3DG6DOFJointAxisParam = 2
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_RESTITUTION               PhysicsServer3DG6DOFJointAxisParam = 3
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_DAMPING                   PhysicsServer3DG6DOFJointAxisParam = 4
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_MOTOR_TARGET_VELOCITY     PhysicsServer3DG6DOFJointAxisParam = 5
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_MOTOR_FORCE_LIMIT         PhysicsServer3DG6DOFJointAxisParam = 6
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_SPRING_STIFFNESS          PhysicsServer3DG6DOFJointAxisParam = 7
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_SPRING_DAMPING            PhysicsServer3DG6DOFJointAxisParam = 8
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_LINEAR_SPRING_EQUILIBRIUM_POINT  PhysicsServer3DG6DOFJointAxisParam = 9
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_LOWER_LIMIT              PhysicsServer3DG6DOFJointAxisParam = 10
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_UPPER_LIMIT              PhysicsServer3DG6DOFJointAxisParam = 11
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_LIMIT_SOFTNESS           PhysicsServer3DG6DOFJointAxisParam = 12
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_DAMPING                  PhysicsServer3DG6DOFJointAxisParam = 13
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_RESTITUTION              PhysicsServer3DG6DOFJointAxisParam = 14
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_FORCE_LIMIT              PhysicsServer3DG6DOFJointAxisParam = 15
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_ERP                      PhysicsServer3DG6DOFJointAxisParam = 16
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_MOTOR_TARGET_VELOCITY    PhysicsServer3DG6DOFJointAxisParam = 17
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_MOTOR_FORCE_LIMIT        PhysicsServer3DG6DOFJointAxisParam = 18
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_SPRING_STIFFNESS         PhysicsServer3DG6DOFJointAxisParam = 19
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_SPRING_DAMPING           PhysicsServer3DG6DOFJointAxisParam = 20
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_ANGULAR_SPRING_EQUILIBRIUM_POINT PhysicsServer3DG6DOFJointAxisParam = 21
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_PARAM_G_6_DOF_JOINT_MAX                              PhysicsServer3DG6DOFJointAxisParam = 22
 )
 
 type PhysicsServer3DG6DOFJointAxisFlag int
 
 const (
 	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_LINEAR_LIMIT   PhysicsServer3DG6DOFJointAxisFlag = 0
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_ANGULAR_LIMIT                                    = 1
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_ANGULAR_SPRING                                   = 2
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_LINEAR_SPRING                                    = 3
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_MOTOR                                            = 4
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_LINEAR_MOTOR                                     = 5
-	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_MAX                                                     = 6
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_ANGULAR_LIMIT  PhysicsServer3DG6DOFJointAxisFlag = 1
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_ANGULAR_SPRING PhysicsServer3DG6DOFJointAxisFlag = 2
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_LINEAR_SPRING  PhysicsServer3DG6DOFJointAxisFlag = 3
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_MOTOR          PhysicsServer3DG6DOFJointAxisFlag = 4
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_ENABLE_LINEAR_MOTOR   PhysicsServer3DG6DOFJointAxisFlag = 5
+	PHYSICS_SERVER_3_D_G_6_DOF_JOINT_AXIS_FLAG_G_6_DOF_JOINT_FLAG_MAX                   PhysicsServer3DG6DOFJointAxisFlag = 6
 )
 
 type PhysicsServer3DShapeType int
 
 const (
 	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_WORLD_BOUNDARY  PhysicsServer3DShapeType = 0
-	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_SEPARATION_RAY                           = 1
-	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_SPHERE                                   = 2
-	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_BOX                                      = 3
-	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_CAPSULE                                  = 4
-	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_CYLINDER                                 = 5
-	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_CONVEX_POLYGON                           = 6
-	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_CONCAVE_POLYGON                          = 7
-	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_HEIGHTMAP                                = 8
-	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_SOFT_BODY                                = 9
-	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_CUSTOM                                   = 10
+	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_SEPARATION_RAY  PhysicsServer3DShapeType = 1
+	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_SPHERE          PhysicsServer3DShapeType = 2
+	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_BOX             PhysicsServer3DShapeType = 3
+	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_CAPSULE         PhysicsServer3DShapeType = 4
+	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_CYLINDER        PhysicsServer3DShapeType = 5
+	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_CONVEX_POLYGON  PhysicsServer3DShapeType = 6
+	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_CONCAVE_POLYGON PhysicsServer3DShapeType = 7
+	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_HEIGHTMAP       PhysicsServer3DShapeType = 8
+	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_SOFT_BODY       PhysicsServer3DShapeType = 9
+	PHYSICS_SERVER_3_D_SHAPE_TYPE_SHAPE_CUSTOM          PhysicsServer3DShapeType = 10
 )
 
 type PhysicsServer3DAreaParameter int
 
 const (
 	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_OVERRIDE_MODE       PhysicsServer3DAreaParameter = 0
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY                                                  = 1
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_VECTOR                                           = 2
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_IS_POINT                                         = 3
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_POINT_UNIT_DISTANCE                              = 4
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE                                = 5
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP                                              = 6
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE                               = 7
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP                                             = 8
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_PRIORITY                                                 = 9
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_FORCE_MAGNITUDE                                     = 10
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_SOURCE                                              = 11
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_DIRECTION                                           = 12
-	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_ATTENUATION_FACTOR                                  = 13
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY                     PhysicsServer3DAreaParameter = 1
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_VECTOR              PhysicsServer3DAreaParameter = 2
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_IS_POINT            PhysicsServer3DAreaParameter = 3
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_GRAVITY_POINT_UNIT_DISTANCE PhysicsServer3DAreaParameter = 4
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE   PhysicsServer3DAreaParameter = 5
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_LINEAR_DAMP                 PhysicsServer3DAreaParameter = 6
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE  PhysicsServer3DAreaParameter = 7
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_ANGULAR_DAMP                PhysicsServer3DAreaParameter = 8
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_PRIORITY                    PhysicsServer3DAreaParameter = 9
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_FORCE_MAGNITUDE        PhysicsServer3DAreaParameter = 10
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_SOURCE                 PhysicsServer3DAreaParameter = 11
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_DIRECTION              PhysicsServer3DAreaParameter = 12
+	PHYSICS_SERVER_3_D_AREA_PARAMETER_AREA_PARAM_WIND_ATTENUATION_FACTOR     PhysicsServer3DAreaParameter = 13
 )
 
 type PhysicsServer3DAreaSpaceOverrideMode int
 
 const (
 	PHYSICS_SERVER_3_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_DISABLED        PhysicsServer3DAreaSpaceOverrideMode = 0
-	PHYSICS_SERVER_3_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_COMBINE                                              = 1
-	PHYSICS_SERVER_3_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_COMBINE_REPLACE                                      = 2
-	PHYSICS_SERVER_3_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_REPLACE                                              = 3
-	PHYSICS_SERVER_3_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_REPLACE_COMBINE                                      = 4
+	PHYSICS_SERVER_3_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_COMBINE         PhysicsServer3DAreaSpaceOverrideMode = 1
+	PHYSICS_SERVER_3_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_COMBINE_REPLACE PhysicsServer3DAreaSpaceOverrideMode = 2
+	PHYSICS_SERVER_3_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_REPLACE         PhysicsServer3DAreaSpaceOverrideMode = 3
+	PHYSICS_SERVER_3_D_AREA_SPACE_OVERRIDE_MODE_AREA_SPACE_OVERRIDE_REPLACE_COMBINE PhysicsServer3DAreaSpaceOverrideMode = 4
 )
 
 type PhysicsServer3DBodyMode int
 
 const (
 	PHYSICS_SERVER_3_D_BODY_MODE_BODY_MODE_STATIC       PhysicsServer3DBodyMode = 0
-	PHYSICS_SERVER_3_D_BODY_MODE_BODY_MODE_KINEMATIC                            = 1
-	PHYSICS_SERVER_3_D_BODY_MODE_BODY_MODE_RIGID                                = 2
-	PHYSICS_SERVER_3_D_BODY_MODE_BODY_MODE_RIGID_LINEAR                         = 3
+	PHYSICS_SERVER_3_D_BODY_MODE_BODY_MODE_KINEMATIC    PhysicsServer3DBodyMode = 1
+	PHYSICS_SERVER_3_D_BODY_MODE_BODY_MODE_RIGID        PhysicsServer3DBodyMode = 2
+	PHYSICS_SERVER_3_D_BODY_MODE_BODY_MODE_RIGID_LINEAR PhysicsServer3DBodyMode = 3
 )
 
 type PhysicsServer3DBodyParameter int
 
 const (
 	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_BOUNCE            PhysicsServer3DBodyParameter = 0
-	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_FRICTION                                       = 1
-	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_MASS                                           = 2
-	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_INERTIA                                        = 3
-	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_CENTER_OF_MASS                                 = 4
-	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_GRAVITY_SCALE                                  = 5
-	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_LINEAR_DAMP_MODE                               = 6
-	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_ANGULAR_DAMP_MODE                              = 7
-	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_LINEAR_DAMP                                    = 8
-	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_ANGULAR_DAMP                                   = 9
-	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_MAX                                            = 10
+	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_FRICTION          PhysicsServer3DBodyParameter = 1
+	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_MASS              PhysicsServer3DBodyParameter = 2
+	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_INERTIA           PhysicsServer3DBodyParameter = 3
+	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_CENTER_OF_MASS    PhysicsServer3DBodyParameter = 4
+	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_GRAVITY_SCALE     PhysicsServer3DBodyParameter = 5
+	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_LINEAR_DAMP_MODE  PhysicsServer3DBodyParameter = 6
+	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_ANGULAR_DAMP_MODE PhysicsServer3DBodyParameter = 7
+	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_LINEAR_DAMP       PhysicsServer3DBodyParameter = 8
+	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_ANGULAR_DAMP      PhysicsServer3DBodyParameter = 9
+	PHYSICS_SERVER_3_D_BODY_PARAMETER_BODY_PARAM_MAX               PhysicsServer3DBodyParameter = 10
 )
 
 type PhysicsServer3DBodyDampMode int
 
 const (
 	PHYSICS_SERVER_3_D_BODY_DAMP_MODE_BODY_DAMP_MODE_COMBINE PhysicsServer3DBodyDampMode = 0
-	PHYSICS_SERVER_3_D_BODY_DAMP_MODE_BODY_DAMP_MODE_REPLACE                             = 1
+	PHYSICS_SERVER_3_D_BODY_DAMP_MODE_BODY_DAMP_MODE_REPLACE PhysicsServer3DBodyDampMode = 1
 )
 
 type PhysicsServer3DBodyState int
 
 const (
 	PHYSICS_SERVER_3_D_BODY_STATE_BODY_STATE_TRANSFORM        PhysicsServer3DBodyState = 0
-	PHYSICS_SERVER_3_D_BODY_STATE_BODY_STATE_LINEAR_VELOCITY                           = 1
-	PHYSICS_SERVER_3_D_BODY_STATE_BODY_STATE_ANGULAR_VELOCITY                          = 2
-	PHYSICS_SERVER_3_D_BODY_STATE_BODY_STATE_SLEEPING                                  = 3
-	PHYSICS_SERVER_3_D_BODY_STATE_BODY_STATE_CAN_SLEEP                                 = 4
+	PHYSICS_SERVER_3_D_BODY_STATE_BODY_STATE_LINEAR_VELOCITY  PhysicsServer3DBodyState = 1
+	PHYSICS_SERVER_3_D_BODY_STATE_BODY_STATE_ANGULAR_VELOCITY PhysicsServer3DBodyState = 2
+	PHYSICS_SERVER_3_D_BODY_STATE_BODY_STATE_SLEEPING         PhysicsServer3DBodyState = 3
+	PHYSICS_SERVER_3_D_BODY_STATE_BODY_STATE_CAN_SLEEP        PhysicsServer3DBodyState = 4
 )
 
 type PhysicsServer3DAreaBodyStatus int
 
 const (
 	PHYSICS_SERVER_3_D_AREA_BODY_STATUS_AREA_BODY_ADDED   PhysicsServer3DAreaBodyStatus = 0
-	PHYSICS_SERVER_3_D_AREA_BODY_STATUS_AREA_BODY_REMOVED                               = 1
+	PHYSICS_SERVER_3_D_AREA_BODY_STATUS_AREA_BODY_REMOVED PhysicsServer3DAreaBodyStatus = 1
 )
 
 type PhysicsServer3DProcessInfo int
 
 const (
 	PHYSICS_SERVER_3_D_PROCESS_INFO_INFO_ACTIVE_OBJECTS  PhysicsServer3DProcessInfo = 0
-	PHYSICS_SERVER_3_D_PROCESS_INFO_INFO_COLLISION_PAIRS                            = 1
-	PHYSICS_SERVER_3_D_PROCESS_INFO_INFO_ISLAND_COUNT                               = 2
+	PHYSICS_SERVER_3_D_PROCESS_INFO_INFO_COLLISION_PAIRS PhysicsServer3DProcessInfo = 1
+	PHYSICS_SERVER_3_D_PROCESS_INFO_INFO_ISLAND_COUNT    PhysicsServer3DProcessInfo = 2
 )
 
 type PhysicsServer3DSpaceParameter int
 
 const (
 	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_RECYCLE_RADIUS                PhysicsServer3DSpaceParameter = 0
-	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_MAX_SEPARATION                                              = 1
-	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_MAX_ALLOWED_PENETRATION                                     = 2
-	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_DEFAULT_BIAS                                                = 3
-	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_BODY_LINEAR_VELOCITY_SLEEP_THRESHOLD                                = 4
-	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD                               = 5
-	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_BODY_TIME_TO_SLEEP                                                  = 6
-	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_SOLVER_ITERATIONS                                                   = 7
+	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_MAX_SEPARATION                PhysicsServer3DSpaceParameter = 1
+	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_MAX_ALLOWED_PENETRATION       PhysicsServer3DSpaceParameter = 2
+	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_CONTACT_DEFAULT_BIAS                  PhysicsServer3DSpaceParameter = 3
+	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_BODY_LINEAR_VELOCITY_SLEEP_THRESHOLD  PhysicsServer3DSpaceParameter = 4
+	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD PhysicsServer3DSpaceParameter = 5
+	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_BODY_TIME_TO_SLEEP                    PhysicsServer3DSpaceParameter = 6
+	PHYSICS_SERVER_3_D_SPACE_PARAMETER_SPACE_PARAM_SOLVER_ITERATIONS                     PhysicsServer3DSpaceParameter = 7
 )
 
 type PhysicsServer3DBodyAxis int
 
 const (
 	PHYSICS_SERVER_3_D_BODY_AXIS_BODY_AXIS_LINEAR_X  PhysicsServer3DBodyAxis = 1
-	PHYSICS_SERVER_3_D_BODY_AXIS_BODY_AXIS_LINEAR_Y                          = 2
-	PHYSICS_SERVER_3_D_BODY_AXIS_BODY_AXIS_LINEAR_Z                          = 4
-	PHYSICS_SERVER_3_D_BODY_AXIS_BODY_AXIS_ANGULAR_X                         = 8
-	PHYSICS_SERVER_3_D_BODY_AXIS_BODY_AXIS_ANGULAR_Y                         = 16
-	PHYSICS_SERVER_3_D_BODY_AXIS_BODY_AXIS_ANGULAR_Z                         = 32
+	PHYSICS_SERVER_3_D_BODY_AXIS_BODY_AXIS_LINEAR_Y  PhysicsServer3DBodyAxis = 2
+	PHYSICS_SERVER_3_D_BODY_AXIS_BODY_AXIS_LINEAR_Z  PhysicsServer3DBodyAxis = 4
+	PHYSICS_SERVER_3_D_BODY_AXIS_BODY_AXIS_ANGULAR_X PhysicsServer3DBodyAxis = 8
+	PHYSICS_SERVER_3_D_BODY_AXIS_BODY_AXIS_ANGULAR_Y PhysicsServer3DBodyAxis = 16
+	PHYSICS_SERVER_3_D_BODY_AXIS_BODY_AXIS_ANGULAR_Z PhysicsServer3DBodyAxis = 32
 )
 
 type PinJoint3DParam int
 
 const (
 	PIN_JOINT_3_D_PARAM_PARAM_BIAS          PinJoint3DParam = 0
-	PIN_JOINT_3_D_PARAM_PARAM_DAMPING                       = 1
-	PIN_JOINT_3_D_PARAM_PARAM_IMPULSE_CLAMP                 = 2
+	PIN_JOINT_3_D_PARAM_PARAM_DAMPING       PinJoint3DParam = 1
+	PIN_JOINT_3_D_PARAM_PARAM_IMPULSE_CLAMP PinJoint3DParam = 2
 )
 
 type PlaneMeshOrientation int
 
 const (
 	PLANE_MESH_ORIENTATION_FACE_X PlaneMeshOrientation = 0
-	PLANE_MESH_ORIENTATION_FACE_Y                      = 1
-	PLANE_MESH_ORIENTATION_FACE_Z                      = 2
+	PLANE_MESH_ORIENTATION_FACE_Y PlaneMeshOrientation = 1
+	PLANE_MESH_ORIENTATION_FACE_Z PlaneMeshOrientation = 2
 )
 
 type PortableCompressedTexture2DCompressionMode int
 
 const (
 	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_LOSSLESS        PortableCompressedTexture2DCompressionMode = 0
-	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_LOSSY                                                      = 1
-	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_BASIS_UNIVERSAL                                            = 2
-	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_S_3_TC                                                     = 3
-	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_ETC_2                                                      = 4
-	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_BPTC                                                       = 5
+	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_LOSSY           PortableCompressedTexture2DCompressionMode = 1
+	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_BASIS_UNIVERSAL PortableCompressedTexture2DCompressionMode = 2
+	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_S_3_TC          PortableCompressedTexture2DCompressionMode = 3
+	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_ETC_2           PortableCompressedTexture2DCompressionMode = 4
+	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_BPTC            PortableCompressedTexture2DCompressionMode = 5
+	PORTABLE_COMPRESSED_TEXTURE_2_D_COMPRESSION_MODE_COMPRESSION_MODE_ASTC            PortableCompressedTexture2DCompressionMode = 6
 )
 
 type ProgressBarFillMode int
 
 const (
 	PROGRESS_BAR_FILL_MODE_FILL_BEGIN_TO_END  ProgressBarFillMode = 0
-	PROGRESS_BAR_FILL_MODE_FILL_END_TO_BEGIN                      = 1
-	PROGRESS_BAR_FILL_MODE_FILL_TOP_TO_BOTTOM                     = 2
-	PROGRESS_BAR_FILL_MODE_FILL_BOTTOM_TO_TOP                     = 3
+	PROGRESS_BAR_FILL_MODE_FILL_END_TO_BEGIN  ProgressBarFillMode = 1
+	PROGRESS_BAR_FILL_MODE_FILL_TOP_TO_BOTTOM ProgressBarFillMode = 2
+	PROGRESS_BAR_FILL_MODE_FILL_BOTTOM_TO_TOP ProgressBarFillMode = 3
 )
 
 type ReflectionProbeUpdateMode int
 
 const (
 	REFLECTION_PROBE_UPDATE_MODE_UPDATE_ONCE   ReflectionProbeUpdateMode = 0
-	REFLECTION_PROBE_UPDATE_MODE_UPDATE_ALWAYS                           = 1
+	REFLECTION_PROBE_UPDATE_MODE_UPDATE_ALWAYS ReflectionProbeUpdateMode = 1
 )
 
 type ReflectionProbeAmbientMode int
 
 const (
 	REFLECTION_PROBE_AMBIENT_MODE_AMBIENT_DISABLED    ReflectionProbeAmbientMode = 0
-	REFLECTION_PROBE_AMBIENT_MODE_AMBIENT_ENVIRONMENT                            = 1
-	REFLECTION_PROBE_AMBIENT_MODE_AMBIENT_COLOR                                  = 2
+	REFLECTION_PROBE_AMBIENT_MODE_AMBIENT_ENVIRONMENT ReflectionProbeAmbientMode = 1
+	REFLECTION_PROBE_AMBIENT_MODE_AMBIENT_COLOR       ReflectionProbeAmbientMode = 2
 )
 
 type RenderingDeviceDeviceType int
 
 const (
 	RENDERING_DEVICE_DEVICE_TYPE_DEVICE_TYPE_OTHER          RenderingDeviceDeviceType = 0
-	RENDERING_DEVICE_DEVICE_TYPE_DEVICE_TYPE_INTEGRATED_GPU                           = 1
-	RENDERING_DEVICE_DEVICE_TYPE_DEVICE_TYPE_DISCRETE_GPU                             = 2
-	RENDERING_DEVICE_DEVICE_TYPE_DEVICE_TYPE_VIRTUAL_GPU                              = 3
-	RENDERING_DEVICE_DEVICE_TYPE_DEVICE_TYPE_CPU                                      = 4
-	RENDERING_DEVICE_DEVICE_TYPE_DEVICE_TYPE_MAX                                      = 5
+	RENDERING_DEVICE_DEVICE_TYPE_DEVICE_TYPE_INTEGRATED_GPU RenderingDeviceDeviceType = 1
+	RENDERING_DEVICE_DEVICE_TYPE_DEVICE_TYPE_DISCRETE_GPU   RenderingDeviceDeviceType = 2
+	RENDERING_DEVICE_DEVICE_TYPE_DEVICE_TYPE_VIRTUAL_GPU    RenderingDeviceDeviceType = 3
+	RENDERING_DEVICE_DEVICE_TYPE_DEVICE_TYPE_CPU            RenderingDeviceDeviceType = 4
+	RENDERING_DEVICE_DEVICE_TYPE_DEVICE_TYPE_MAX            RenderingDeviceDeviceType = 5
 )
 
 type RenderingDeviceDriverResource int
 
 const (
 	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_LOGICAL_DEVICE                     RenderingDeviceDriverResource = 0
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_PHYSICAL_DEVICE                                                  = 1
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TOPMOST_OBJECT                                                   = 2
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_COMMAND_QUEUE                                                    = 3
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_QUEUE_FAMILY                                                     = 4
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TEXTURE                                                          = 5
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TEXTURE_VIEW                                                     = 6
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TEXTURE_DATA_FORMAT                                              = 7
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_SAMPLER                                                          = 8
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_UNIFORM_SET                                                      = 9
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_BUFFER                                                           = 10
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_COMPUTE_PIPELINE                                                 = 11
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_RENDER_PIPELINE                                                  = 12
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_DEVICE                                                    = 0
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_PHYSICAL_DEVICE                                           = 1
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_INSTANCE                                                  = 2
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_QUEUE                                                     = 3
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_QUEUE_FAMILY_INDEX                                        = 4
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_IMAGE                                                     = 5
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_IMAGE_VIEW                                                = 6
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_IMAGE_NATIVE_TEXTURE_FORMAT                               = 7
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_SAMPLER                                                   = 8
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_DESCRIPTOR_SET                                            = 9
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_BUFFER                                                    = 10
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_COMPUTE_PIPELINE                                          = 11
-	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_RENDER_PIPELINE                                           = 12
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_PHYSICAL_DEVICE                    RenderingDeviceDriverResource = 1
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TOPMOST_OBJECT                     RenderingDeviceDriverResource = 2
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_COMMAND_QUEUE                      RenderingDeviceDriverResource = 3
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_QUEUE_FAMILY                       RenderingDeviceDriverResource = 4
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TEXTURE                            RenderingDeviceDriverResource = 5
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TEXTURE_VIEW                       RenderingDeviceDriverResource = 6
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_TEXTURE_DATA_FORMAT                RenderingDeviceDriverResource = 7
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_SAMPLER                            RenderingDeviceDriverResource = 8
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_UNIFORM_SET                        RenderingDeviceDriverResource = 9
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_BUFFER                             RenderingDeviceDriverResource = 10
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_COMPUTE_PIPELINE                   RenderingDeviceDriverResource = 11
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_RENDER_PIPELINE                    RenderingDeviceDriverResource = 12
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_DEVICE                      RenderingDeviceDriverResource = 0
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_PHYSICAL_DEVICE             RenderingDeviceDriverResource = 1
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_INSTANCE                    RenderingDeviceDriverResource = 2
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_QUEUE                       RenderingDeviceDriverResource = 3
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_QUEUE_FAMILY_INDEX          RenderingDeviceDriverResource = 4
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_IMAGE                       RenderingDeviceDriverResource = 5
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_IMAGE_VIEW                  RenderingDeviceDriverResource = 6
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_IMAGE_NATIVE_TEXTURE_FORMAT RenderingDeviceDriverResource = 7
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_SAMPLER                     RenderingDeviceDriverResource = 8
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_DESCRIPTOR_SET              RenderingDeviceDriverResource = 9
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_BUFFER                      RenderingDeviceDriverResource = 10
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_COMPUTE_PIPELINE            RenderingDeviceDriverResource = 11
+	RENDERING_DEVICE_DRIVER_RESOURCE_DRIVER_RESOURCE_VULKAN_RENDER_PIPELINE             RenderingDeviceDriverResource = 12
 )
 
 type RenderingDeviceDataFormat int
 
 const (
 	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_4_G_4_UNORM_PACK_8                                    RenderingDeviceDataFormat = 0
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_4_G_4_B_4_A_4_UNORM_PACK_16                                                     = 1
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_4_G_4_R_4_A_4_UNORM_PACK_16                                                     = 2
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_5_G_6_B_5_UNORM_PACK_16                                                         = 3
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_5_G_6_R_5_UNORM_PACK_16                                                         = 4
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_5_G_5_B_5_A_1_UNORM_PACK_16                                                     = 5
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_5_G_5_R_5_A_1_UNORM_PACK_16                                                     = 6
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_1_R_5_G_5_B_5_UNORM_PACK_16                                                     = 7
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_UNORM                                                                         = 8
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_SNORM                                                                         = 9
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_USCALED                                                                       = 10
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_SSCALED                                                                       = 11
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_UINT                                                                          = 12
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_SINT                                                                          = 13
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_SRGB                                                                          = 14
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_UNORM                                                                     = 15
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_SNORM                                                                     = 16
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_USCALED                                                                   = 17
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_SSCALED                                                                   = 18
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_UINT                                                                      = 19
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_SINT                                                                      = 20
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_SRGB                                                                      = 21
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_UNORM                                                                 = 22
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_SNORM                                                                 = 23
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_USCALED                                                               = 24
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_SSCALED                                                               = 25
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_UINT                                                                  = 26
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_SINT                                                                  = 27
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_SRGB                                                                  = 28
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_UNORM                                                                 = 29
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_SNORM                                                                 = 30
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_USCALED                                                               = 31
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_SSCALED                                                               = 32
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_UINT                                                                  = 33
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_SINT                                                                  = 34
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_SRGB                                                                  = 35
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_UNORM                                                             = 36
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_SNORM                                                             = 37
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_USCALED                                                           = 38
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_SSCALED                                                           = 39
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_UINT                                                              = 40
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_SINT                                                              = 41
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_SRGB                                                              = 42
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_UNORM                                                             = 43
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_SNORM                                                             = 44
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_USCALED                                                           = 45
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_SSCALED                                                           = 46
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_UINT                                                              = 47
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_SINT                                                              = 48
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_SRGB                                                              = 49
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_UNORM_PACK_32                                                     = 50
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_SNORM_PACK_32                                                     = 51
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_USCALED_PACK_32                                                   = 52
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_SSCALED_PACK_32                                                   = 53
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_UINT_PACK_32                                                      = 54
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_SINT_PACK_32                                                      = 55
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_SRGB_PACK_32                                                      = 56
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_UNORM_PACK_32                                                  = 57
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_SNORM_PACK_32                                                  = 58
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_USCALED_PACK_32                                                = 59
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_SSCALED_PACK_32                                                = 60
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_UINT_PACK_32                                                   = 61
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_SINT_PACK_32                                                   = 62
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_UNORM_PACK_32                                                  = 63
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_SNORM_PACK_32                                                  = 64
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_USCALED_PACK_32                                                = 65
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_SSCALED_PACK_32                                                = 66
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_UINT_PACK_32                                                   = 67
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_SINT_PACK_32                                                   = 68
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_UNORM                                                                        = 69
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_SNORM                                                                        = 70
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_USCALED                                                                      = 71
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_SSCALED                                                                      = 72
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_UINT                                                                         = 73
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_SINT                                                                         = 74
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_SFLOAT                                                                       = 75
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_UNORM                                                                   = 76
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_SNORM                                                                   = 77
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_USCALED                                                                 = 78
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_SSCALED                                                                 = 79
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_UINT                                                                    = 80
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_SINT                                                                    = 81
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_SFLOAT                                                                  = 82
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_UNORM                                                              = 83
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_SNORM                                                              = 84
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_USCALED                                                            = 85
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_SSCALED                                                            = 86
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_UINT                                                               = 87
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_SINT                                                               = 88
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_SFLOAT                                                             = 89
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_UNORM                                                         = 90
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_SNORM                                                         = 91
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_USCALED                                                       = 92
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_SSCALED                                                       = 93
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_UINT                                                          = 94
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_SINT                                                          = 95
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_SFLOAT                                                        = 96
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_UINT                                                                         = 97
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_SINT                                                                         = 98
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_SFLOAT                                                                       = 99
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_UINT                                                                    = 100
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_SINT                                                                    = 101
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_SFLOAT                                                                  = 102
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_UINT                                                               = 103
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_SINT                                                               = 104
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_SFLOAT                                                             = 105
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_A_32_UINT                                                          = 106
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_A_32_SINT                                                          = 107
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_A_32_SFLOAT                                                        = 108
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_UINT                                                                         = 109
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_SINT                                                                         = 110
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_SFLOAT                                                                       = 111
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_UINT                                                                    = 112
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_SINT                                                                    = 113
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_SFLOAT                                                                  = 114
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_UINT                                                               = 115
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_SINT                                                               = 116
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_SFLOAT                                                             = 117
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_A_64_UINT                                                          = 118
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_A_64_SINT                                                          = 119
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_A_64_SFLOAT                                                        = 120
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_10_G_11_R_11_UFLOAT_PACK_32                                                     = 121
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_E_5_B_9_G_9_R_9_UFLOAT_PACK_32                                                    = 122
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_D_16_UNORM                                                                        = 123
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_X_8_D_24_UNORM_PACK_32                                                            = 124
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_D_32_SFLOAT                                                                       = 125
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_S_8_UINT                                                                          = 126
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_D_16_UNORM_S_8_UINT                                                               = 127
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_D_24_UNORM_S_8_UINT                                                               = 128
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_D_32_SFLOAT_S_8_UINT                                                              = 129
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_1_RGB_UNORM_BLOCK                                                              = 130
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_1_RGB_SRGB_BLOCK                                                               = 131
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_1_RGBA_UNORM_BLOCK                                                             = 132
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_1_RGBA_SRGB_BLOCK                                                              = 133
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_2_UNORM_BLOCK                                                                  = 134
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_2_SRGB_BLOCK                                                                   = 135
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_3_UNORM_BLOCK                                                                  = 136
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_3_SRGB_BLOCK                                                                   = 137
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_4_UNORM_BLOCK                                                                  = 138
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_4_SNORM_BLOCK                                                                  = 139
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_5_UNORM_BLOCK                                                                  = 140
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_5_SNORM_BLOCK                                                                  = 141
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_6_H_UFLOAT_BLOCK                                                               = 142
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_6_H_SFLOAT_BLOCK                                                               = 143
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_7_UNORM_BLOCK                                                                  = 144
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_7_SRGB_BLOCK                                                                   = 145
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_UNORM_BLOCK                                                     = 146
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_SRGB_BLOCK                                                      = 147
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_A_1_UNORM_BLOCK                                                 = 148
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_A_1_SRGB_BLOCK                                                  = 149
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_A_8_UNORM_BLOCK                                                 = 150
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_A_8_SRGB_BLOCK                                                  = 151
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_EAC_R_11_UNORM_BLOCK                                                              = 152
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_EAC_R_11_SNORM_BLOCK                                                              = 153
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_EAC_R_11_G_11_UNORM_BLOCK                                                         = 154
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_EAC_R_11_G_11_SNORM_BLOCK                                                         = 155
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_4_X_4_UNORM_BLOCK                                                            = 156
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_4_X_4_SRGB_BLOCK                                                             = 157
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_5_X_4_UNORM_BLOCK                                                            = 158
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_5_X_4_SRGB_BLOCK                                                             = 159
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_5_X_5_UNORM_BLOCK                                                            = 160
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_5_X_5_SRGB_BLOCK                                                             = 161
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_6_X_5_UNORM_BLOCK                                                            = 162
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_6_X_5_SRGB_BLOCK                                                             = 163
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_6_X_6_UNORM_BLOCK                                                            = 164
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_6_X_6_SRGB_BLOCK                                                             = 165
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_5_UNORM_BLOCK                                                            = 166
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_5_SRGB_BLOCK                                                             = 167
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_6_UNORM_BLOCK                                                            = 168
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_6_SRGB_BLOCK                                                             = 169
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_8_UNORM_BLOCK                                                            = 170
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_8_SRGB_BLOCK                                                             = 171
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_5_UNORM_BLOCK                                                           = 172
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_5_SRGB_BLOCK                                                            = 173
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_6_UNORM_BLOCK                                                           = 174
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_6_SRGB_BLOCK                                                            = 175
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_8_UNORM_BLOCK                                                           = 176
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_8_SRGB_BLOCK                                                            = 177
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_10_UNORM_BLOCK                                                          = 178
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_10_SRGB_BLOCK                                                           = 179
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_12_X_10_UNORM_BLOCK                                                          = 180
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_12_X_10_SRGB_BLOCK                                                           = 181
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_12_X_12_UNORM_BLOCK                                                          = 182
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_12_X_12_SRGB_BLOCK                                                           = 183
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_G_8_R_8_422_UNORM                                                         = 184
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_G_8_422_UNORM                                                         = 185
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_R_8_3_PLANE_420_UNORM                                                     = 186
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_R_8_2_PLANE_420_UNORM                                                     = 187
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_R_8_3_PLANE_422_UNORM                                                     = 188
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_R_8_2_PLANE_422_UNORM                                                     = 189
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_R_8_3_PLANE_444_UNORM                                                     = 190
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_10_X_6_UNORM_PACK_16                                                            = 191
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_10_X_6_G_10_X_6_UNORM_2_PACK_16                                                 = 192
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_10_X_6_G_10_X_6_B_10_X_6_A_10_X_6_UNORM_4_PACK_16                               = 193
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_G_10_X_6_R_10_X_6_422_UNORM_4_PACK_16                           = 194
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_10_X_6_G_10_X_6_R_10_X_6_G_10_X_6_422_UNORM_4_PACK_16                           = 195
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_R_10_X_6_3_PLANE_420_UNORM_3_PACK_16                            = 196
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_R_10_X_6_2_PLANE_420_UNORM_3_PACK_16                            = 197
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_R_10_X_6_3_PLANE_422_UNORM_3_PACK_16                            = 198
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_R_10_X_6_2_PLANE_422_UNORM_3_PACK_16                            = 199
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_R_10_X_6_3_PLANE_444_UNORM_3_PACK_16                            = 200
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_12_X_4_UNORM_PACK_16                                                            = 201
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_12_X_4_G_12_X_4_UNORM_2_PACK_16                                                 = 202
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_12_X_4_G_12_X_4_B_12_X_4_A_12_X_4_UNORM_4_PACK_16                               = 203
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_G_12_X_4_R_12_X_4_422_UNORM_4_PACK_16                           = 204
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_12_X_4_G_12_X_4_R_12_X_4_G_12_X_4_422_UNORM_4_PACK_16                           = 205
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_R_12_X_4_3_PLANE_420_UNORM_3_PACK_16                            = 206
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_R_12_X_4_2_PLANE_420_UNORM_3_PACK_16                            = 207
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_R_12_X_4_3_PLANE_422_UNORM_3_PACK_16                            = 208
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_R_12_X_4_2_PLANE_422_UNORM_3_PACK_16                            = 209
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_R_12_X_4_3_PLANE_444_UNORM_3_PACK_16                            = 210
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_G_16_R_16_422_UNORM                                                     = 211
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_16_G_16_R_16_G_16_422_UNORM                                                     = 212
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_R_16_3_PLANE_420_UNORM                                                  = 213
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_R_16_2_PLANE_420_UNORM                                                  = 214
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_R_16_3_PLANE_422_UNORM                                                  = 215
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_R_16_2_PLANE_422_UNORM                                                  = 216
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_R_16_3_PLANE_444_UNORM                                                  = 217
-	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_MAX                                                                               = 218
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_4_G_4_B_4_A_4_UNORM_PACK_16                           RenderingDeviceDataFormat = 1
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_4_G_4_R_4_A_4_UNORM_PACK_16                           RenderingDeviceDataFormat = 2
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_5_G_6_B_5_UNORM_PACK_16                               RenderingDeviceDataFormat = 3
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_5_G_6_R_5_UNORM_PACK_16                               RenderingDeviceDataFormat = 4
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_5_G_5_B_5_A_1_UNORM_PACK_16                           RenderingDeviceDataFormat = 5
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_5_G_5_R_5_A_1_UNORM_PACK_16                           RenderingDeviceDataFormat = 6
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_1_R_5_G_5_B_5_UNORM_PACK_16                           RenderingDeviceDataFormat = 7
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_UNORM                                               RenderingDeviceDataFormat = 8
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_SNORM                                               RenderingDeviceDataFormat = 9
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_USCALED                                             RenderingDeviceDataFormat = 10
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_SSCALED                                             RenderingDeviceDataFormat = 11
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_UINT                                                RenderingDeviceDataFormat = 12
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_SINT                                                RenderingDeviceDataFormat = 13
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_SRGB                                                RenderingDeviceDataFormat = 14
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_UNORM                                           RenderingDeviceDataFormat = 15
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_SNORM                                           RenderingDeviceDataFormat = 16
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_USCALED                                         RenderingDeviceDataFormat = 17
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_SSCALED                                         RenderingDeviceDataFormat = 18
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_UINT                                            RenderingDeviceDataFormat = 19
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_SINT                                            RenderingDeviceDataFormat = 20
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_SRGB                                            RenderingDeviceDataFormat = 21
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_UNORM                                       RenderingDeviceDataFormat = 22
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_SNORM                                       RenderingDeviceDataFormat = 23
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_USCALED                                     RenderingDeviceDataFormat = 24
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_SSCALED                                     RenderingDeviceDataFormat = 25
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_UINT                                        RenderingDeviceDataFormat = 26
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_SINT                                        RenderingDeviceDataFormat = 27
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_SRGB                                        RenderingDeviceDataFormat = 28
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_UNORM                                       RenderingDeviceDataFormat = 29
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_SNORM                                       RenderingDeviceDataFormat = 30
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_USCALED                                     RenderingDeviceDataFormat = 31
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_SSCALED                                     RenderingDeviceDataFormat = 32
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_UINT                                        RenderingDeviceDataFormat = 33
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_SINT                                        RenderingDeviceDataFormat = 34
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_SRGB                                        RenderingDeviceDataFormat = 35
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_UNORM                                   RenderingDeviceDataFormat = 36
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_SNORM                                   RenderingDeviceDataFormat = 37
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_USCALED                                 RenderingDeviceDataFormat = 38
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_SSCALED                                 RenderingDeviceDataFormat = 39
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_UINT                                    RenderingDeviceDataFormat = 40
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_SINT                                    RenderingDeviceDataFormat = 41
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_8_G_8_B_8_A_8_SRGB                                    RenderingDeviceDataFormat = 42
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_UNORM                                   RenderingDeviceDataFormat = 43
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_SNORM                                   RenderingDeviceDataFormat = 44
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_USCALED                                 RenderingDeviceDataFormat = 45
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_SSCALED                                 RenderingDeviceDataFormat = 46
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_UINT                                    RenderingDeviceDataFormat = 47
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_SINT                                    RenderingDeviceDataFormat = 48
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_A_8_SRGB                                    RenderingDeviceDataFormat = 49
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_UNORM_PACK_32                           RenderingDeviceDataFormat = 50
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_SNORM_PACK_32                           RenderingDeviceDataFormat = 51
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_USCALED_PACK_32                         RenderingDeviceDataFormat = 52
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_SSCALED_PACK_32                         RenderingDeviceDataFormat = 53
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_UINT_PACK_32                            RenderingDeviceDataFormat = 54
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_SINT_PACK_32                            RenderingDeviceDataFormat = 55
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_8_B_8_G_8_R_8_SRGB_PACK_32                            RenderingDeviceDataFormat = 56
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_UNORM_PACK_32                        RenderingDeviceDataFormat = 57
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_SNORM_PACK_32                        RenderingDeviceDataFormat = 58
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_USCALED_PACK_32                      RenderingDeviceDataFormat = 59
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_SSCALED_PACK_32                      RenderingDeviceDataFormat = 60
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_UINT_PACK_32                         RenderingDeviceDataFormat = 61
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_R_10_G_10_B_10_SINT_PACK_32                         RenderingDeviceDataFormat = 62
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_UNORM_PACK_32                        RenderingDeviceDataFormat = 63
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_SNORM_PACK_32                        RenderingDeviceDataFormat = 64
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_USCALED_PACK_32                      RenderingDeviceDataFormat = 65
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_SSCALED_PACK_32                      RenderingDeviceDataFormat = 66
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_UINT_PACK_32                         RenderingDeviceDataFormat = 67
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_A_2_B_10_G_10_R_10_SINT_PACK_32                         RenderingDeviceDataFormat = 68
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_UNORM                                              RenderingDeviceDataFormat = 69
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_SNORM                                              RenderingDeviceDataFormat = 70
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_USCALED                                            RenderingDeviceDataFormat = 71
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_SSCALED                                            RenderingDeviceDataFormat = 72
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_UINT                                               RenderingDeviceDataFormat = 73
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_SINT                                               RenderingDeviceDataFormat = 74
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_SFLOAT                                             RenderingDeviceDataFormat = 75
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_UNORM                                         RenderingDeviceDataFormat = 76
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_SNORM                                         RenderingDeviceDataFormat = 77
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_USCALED                                       RenderingDeviceDataFormat = 78
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_SSCALED                                       RenderingDeviceDataFormat = 79
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_UINT                                          RenderingDeviceDataFormat = 80
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_SINT                                          RenderingDeviceDataFormat = 81
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_SFLOAT                                        RenderingDeviceDataFormat = 82
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_UNORM                                    RenderingDeviceDataFormat = 83
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_SNORM                                    RenderingDeviceDataFormat = 84
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_USCALED                                  RenderingDeviceDataFormat = 85
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_SSCALED                                  RenderingDeviceDataFormat = 86
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_UINT                                     RenderingDeviceDataFormat = 87
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_SINT                                     RenderingDeviceDataFormat = 88
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_SFLOAT                                   RenderingDeviceDataFormat = 89
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_UNORM                               RenderingDeviceDataFormat = 90
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_SNORM                               RenderingDeviceDataFormat = 91
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_USCALED                             RenderingDeviceDataFormat = 92
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_SSCALED                             RenderingDeviceDataFormat = 93
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_UINT                                RenderingDeviceDataFormat = 94
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_SINT                                RenderingDeviceDataFormat = 95
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_16_G_16_B_16_A_16_SFLOAT                              RenderingDeviceDataFormat = 96
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_UINT                                               RenderingDeviceDataFormat = 97
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_SINT                                               RenderingDeviceDataFormat = 98
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_SFLOAT                                             RenderingDeviceDataFormat = 99
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_UINT                                          RenderingDeviceDataFormat = 100
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_SINT                                          RenderingDeviceDataFormat = 101
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_SFLOAT                                        RenderingDeviceDataFormat = 102
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_UINT                                     RenderingDeviceDataFormat = 103
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_SINT                                     RenderingDeviceDataFormat = 104
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_SFLOAT                                   RenderingDeviceDataFormat = 105
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_A_32_UINT                                RenderingDeviceDataFormat = 106
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_A_32_SINT                                RenderingDeviceDataFormat = 107
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_32_G_32_B_32_A_32_SFLOAT                              RenderingDeviceDataFormat = 108
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_UINT                                               RenderingDeviceDataFormat = 109
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_SINT                                               RenderingDeviceDataFormat = 110
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_SFLOAT                                             RenderingDeviceDataFormat = 111
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_UINT                                          RenderingDeviceDataFormat = 112
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_SINT                                          RenderingDeviceDataFormat = 113
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_SFLOAT                                        RenderingDeviceDataFormat = 114
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_UINT                                     RenderingDeviceDataFormat = 115
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_SINT                                     RenderingDeviceDataFormat = 116
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_SFLOAT                                   RenderingDeviceDataFormat = 117
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_A_64_UINT                                RenderingDeviceDataFormat = 118
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_A_64_SINT                                RenderingDeviceDataFormat = 119
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_64_G_64_B_64_A_64_SFLOAT                              RenderingDeviceDataFormat = 120
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_10_G_11_R_11_UFLOAT_PACK_32                           RenderingDeviceDataFormat = 121
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_E_5_B_9_G_9_R_9_UFLOAT_PACK_32                          RenderingDeviceDataFormat = 122
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_D_16_UNORM                                              RenderingDeviceDataFormat = 123
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_X_8_D_24_UNORM_PACK_32                                  RenderingDeviceDataFormat = 124
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_D_32_SFLOAT                                             RenderingDeviceDataFormat = 125
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_S_8_UINT                                                RenderingDeviceDataFormat = 126
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_D_16_UNORM_S_8_UINT                                     RenderingDeviceDataFormat = 127
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_D_24_UNORM_S_8_UINT                                     RenderingDeviceDataFormat = 128
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_D_32_SFLOAT_S_8_UINT                                    RenderingDeviceDataFormat = 129
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_1_RGB_UNORM_BLOCK                                    RenderingDeviceDataFormat = 130
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_1_RGB_SRGB_BLOCK                                     RenderingDeviceDataFormat = 131
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_1_RGBA_UNORM_BLOCK                                   RenderingDeviceDataFormat = 132
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_1_RGBA_SRGB_BLOCK                                    RenderingDeviceDataFormat = 133
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_2_UNORM_BLOCK                                        RenderingDeviceDataFormat = 134
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_2_SRGB_BLOCK                                         RenderingDeviceDataFormat = 135
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_3_UNORM_BLOCK                                        RenderingDeviceDataFormat = 136
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_3_SRGB_BLOCK                                         RenderingDeviceDataFormat = 137
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_4_UNORM_BLOCK                                        RenderingDeviceDataFormat = 138
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_4_SNORM_BLOCK                                        RenderingDeviceDataFormat = 139
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_5_UNORM_BLOCK                                        RenderingDeviceDataFormat = 140
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_5_SNORM_BLOCK                                        RenderingDeviceDataFormat = 141
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_6_H_UFLOAT_BLOCK                                     RenderingDeviceDataFormat = 142
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_6_H_SFLOAT_BLOCK                                     RenderingDeviceDataFormat = 143
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_7_UNORM_BLOCK                                        RenderingDeviceDataFormat = 144
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_BC_7_SRGB_BLOCK                                         RenderingDeviceDataFormat = 145
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_UNORM_BLOCK                           RenderingDeviceDataFormat = 146
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_SRGB_BLOCK                            RenderingDeviceDataFormat = 147
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_A_1_UNORM_BLOCK                       RenderingDeviceDataFormat = 148
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_A_1_SRGB_BLOCK                        RenderingDeviceDataFormat = 149
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_A_8_UNORM_BLOCK                       RenderingDeviceDataFormat = 150
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ETC_2_R_8_G_8_B_8_A_8_SRGB_BLOCK                        RenderingDeviceDataFormat = 151
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_EAC_R_11_UNORM_BLOCK                                    RenderingDeviceDataFormat = 152
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_EAC_R_11_SNORM_BLOCK                                    RenderingDeviceDataFormat = 153
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_EAC_R_11_G_11_UNORM_BLOCK                               RenderingDeviceDataFormat = 154
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_EAC_R_11_G_11_SNORM_BLOCK                               RenderingDeviceDataFormat = 155
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_4_X_4_UNORM_BLOCK                                  RenderingDeviceDataFormat = 156
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_4_X_4_SRGB_BLOCK                                   RenderingDeviceDataFormat = 157
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_5_X_4_UNORM_BLOCK                                  RenderingDeviceDataFormat = 158
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_5_X_4_SRGB_BLOCK                                   RenderingDeviceDataFormat = 159
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_5_X_5_UNORM_BLOCK                                  RenderingDeviceDataFormat = 160
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_5_X_5_SRGB_BLOCK                                   RenderingDeviceDataFormat = 161
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_6_X_5_UNORM_BLOCK                                  RenderingDeviceDataFormat = 162
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_6_X_5_SRGB_BLOCK                                   RenderingDeviceDataFormat = 163
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_6_X_6_UNORM_BLOCK                                  RenderingDeviceDataFormat = 164
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_6_X_6_SRGB_BLOCK                                   RenderingDeviceDataFormat = 165
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_5_UNORM_BLOCK                                  RenderingDeviceDataFormat = 166
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_5_SRGB_BLOCK                                   RenderingDeviceDataFormat = 167
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_6_UNORM_BLOCK                                  RenderingDeviceDataFormat = 168
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_6_SRGB_BLOCK                                   RenderingDeviceDataFormat = 169
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_8_UNORM_BLOCK                                  RenderingDeviceDataFormat = 170
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_8_SRGB_BLOCK                                   RenderingDeviceDataFormat = 171
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_5_UNORM_BLOCK                                 RenderingDeviceDataFormat = 172
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_5_SRGB_BLOCK                                  RenderingDeviceDataFormat = 173
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_6_UNORM_BLOCK                                 RenderingDeviceDataFormat = 174
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_6_SRGB_BLOCK                                  RenderingDeviceDataFormat = 175
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_8_UNORM_BLOCK                                 RenderingDeviceDataFormat = 176
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_8_SRGB_BLOCK                                  RenderingDeviceDataFormat = 177
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_10_UNORM_BLOCK                                RenderingDeviceDataFormat = 178
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_10_SRGB_BLOCK                                 RenderingDeviceDataFormat = 179
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_12_X_10_UNORM_BLOCK                                RenderingDeviceDataFormat = 180
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_12_X_10_SRGB_BLOCK                                 RenderingDeviceDataFormat = 181
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_12_X_12_UNORM_BLOCK                                RenderingDeviceDataFormat = 182
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_12_X_12_SRGB_BLOCK                                 RenderingDeviceDataFormat = 183
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_G_8_R_8_422_UNORM                               RenderingDeviceDataFormat = 184
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_8_G_8_R_8_G_8_422_UNORM                               RenderingDeviceDataFormat = 185
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_R_8_3_PLANE_420_UNORM                           RenderingDeviceDataFormat = 186
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_R_8_2_PLANE_420_UNORM                           RenderingDeviceDataFormat = 187
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_R_8_3_PLANE_422_UNORM                           RenderingDeviceDataFormat = 188
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_R_8_2_PLANE_422_UNORM                           RenderingDeviceDataFormat = 189
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_8_B_8_R_8_3_PLANE_444_UNORM                           RenderingDeviceDataFormat = 190
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_10_X_6_UNORM_PACK_16                                  RenderingDeviceDataFormat = 191
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_10_X_6_G_10_X_6_UNORM_2_PACK_16                       RenderingDeviceDataFormat = 192
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_10_X_6_G_10_X_6_B_10_X_6_A_10_X_6_UNORM_4_PACK_16     RenderingDeviceDataFormat = 193
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_G_10_X_6_R_10_X_6_422_UNORM_4_PACK_16 RenderingDeviceDataFormat = 194
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_10_X_6_G_10_X_6_R_10_X_6_G_10_X_6_422_UNORM_4_PACK_16 RenderingDeviceDataFormat = 195
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_R_10_X_6_3_PLANE_420_UNORM_3_PACK_16  RenderingDeviceDataFormat = 196
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_R_10_X_6_2_PLANE_420_UNORM_3_PACK_16  RenderingDeviceDataFormat = 197
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_R_10_X_6_3_PLANE_422_UNORM_3_PACK_16  RenderingDeviceDataFormat = 198
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_R_10_X_6_2_PLANE_422_UNORM_3_PACK_16  RenderingDeviceDataFormat = 199
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_10_X_6_B_10_X_6_R_10_X_6_3_PLANE_444_UNORM_3_PACK_16  RenderingDeviceDataFormat = 200
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_12_X_4_UNORM_PACK_16                                  RenderingDeviceDataFormat = 201
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_12_X_4_G_12_X_4_UNORM_2_PACK_16                       RenderingDeviceDataFormat = 202
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_R_12_X_4_G_12_X_4_B_12_X_4_A_12_X_4_UNORM_4_PACK_16     RenderingDeviceDataFormat = 203
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_G_12_X_4_R_12_X_4_422_UNORM_4_PACK_16 RenderingDeviceDataFormat = 204
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_12_X_4_G_12_X_4_R_12_X_4_G_12_X_4_422_UNORM_4_PACK_16 RenderingDeviceDataFormat = 205
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_R_12_X_4_3_PLANE_420_UNORM_3_PACK_16  RenderingDeviceDataFormat = 206
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_R_12_X_4_2_PLANE_420_UNORM_3_PACK_16  RenderingDeviceDataFormat = 207
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_R_12_X_4_3_PLANE_422_UNORM_3_PACK_16  RenderingDeviceDataFormat = 208
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_R_12_X_4_2_PLANE_422_UNORM_3_PACK_16  RenderingDeviceDataFormat = 209
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_12_X_4_B_12_X_4_R_12_X_4_3_PLANE_444_UNORM_3_PACK_16  RenderingDeviceDataFormat = 210
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_G_16_R_16_422_UNORM                           RenderingDeviceDataFormat = 211
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_B_16_G_16_R_16_G_16_422_UNORM                           RenderingDeviceDataFormat = 212
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_R_16_3_PLANE_420_UNORM                        RenderingDeviceDataFormat = 213
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_R_16_2_PLANE_420_UNORM                        RenderingDeviceDataFormat = 214
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_R_16_3_PLANE_422_UNORM                        RenderingDeviceDataFormat = 215
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_R_16_2_PLANE_422_UNORM                        RenderingDeviceDataFormat = 216
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_G_16_B_16_R_16_3_PLANE_444_UNORM                        RenderingDeviceDataFormat = 217
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_4_X_4_SFLOAT_BLOCK                                 RenderingDeviceDataFormat = 218
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_5_X_4_SFLOAT_BLOCK                                 RenderingDeviceDataFormat = 219
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_5_X_5_SFLOAT_BLOCK                                 RenderingDeviceDataFormat = 220
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_6_X_5_SFLOAT_BLOCK                                 RenderingDeviceDataFormat = 221
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_6_X_6_SFLOAT_BLOCK                                 RenderingDeviceDataFormat = 222
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_5_SFLOAT_BLOCK                                 RenderingDeviceDataFormat = 223
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_6_SFLOAT_BLOCK                                 RenderingDeviceDataFormat = 224
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_8_X_8_SFLOAT_BLOCK                                 RenderingDeviceDataFormat = 225
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_5_SFLOAT_BLOCK                                RenderingDeviceDataFormat = 226
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_6_SFLOAT_BLOCK                                RenderingDeviceDataFormat = 227
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_8_SFLOAT_BLOCK                                RenderingDeviceDataFormat = 228
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_10_X_10_SFLOAT_BLOCK                               RenderingDeviceDataFormat = 229
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_12_X_10_SFLOAT_BLOCK                               RenderingDeviceDataFormat = 230
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_ASTC_12_X_12_SFLOAT_BLOCK                               RenderingDeviceDataFormat = 231
+	RENDERING_DEVICE_DATA_FORMAT_DATA_FORMAT_MAX                                                     RenderingDeviceDataFormat = 232
 )
 
 type RenderingDeviceBarrierMask int
 
 const (
 	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_VERTEX       RenderingDeviceBarrierMask = 1
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_FRAGMENT                                = 8
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_COMPUTE                                 = 2
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_TRANSFER                                = 4
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_RASTER                                  = 9
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_ALL_BARRIERS                            = 32767
-	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_NO_BARRIER                              = 32768
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_FRAGMENT     RenderingDeviceBarrierMask = 8
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_COMPUTE      RenderingDeviceBarrierMask = 2
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_TRANSFER     RenderingDeviceBarrierMask = 4
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_RASTER       RenderingDeviceBarrierMask = 9
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_ALL_BARRIERS RenderingDeviceBarrierMask = 32767
+	RENDERING_DEVICE_BARRIER_MASK_BARRIER_MASK_NO_BARRIER   RenderingDeviceBarrierMask = 32768
 )
 
 type RenderingDeviceTextureType int
 
 const (
 	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_1_D        RenderingDeviceTextureType = 0
-	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_2_D                                   = 1
-	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_3_D                                   = 2
-	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_CUBE                                  = 3
-	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_1_D_ARRAY                             = 4
-	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_2_D_ARRAY                             = 5
-	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_CUBE_ARRAY                            = 6
-	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_MAX                                   = 7
+	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_2_D        RenderingDeviceTextureType = 1
+	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_3_D        RenderingDeviceTextureType = 2
+	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_CUBE       RenderingDeviceTextureType = 3
+	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_1_D_ARRAY  RenderingDeviceTextureType = 4
+	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_2_D_ARRAY  RenderingDeviceTextureType = 5
+	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_CUBE_ARRAY RenderingDeviceTextureType = 6
+	RENDERING_DEVICE_TEXTURE_TYPE_TEXTURE_TYPE_MAX        RenderingDeviceTextureType = 7
 )
 
 type RenderingDeviceTextureSamples int
 
 const (
 	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_1   RenderingDeviceTextureSamples = 0
-	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_2                                 = 1
-	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_4                                 = 2
-	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_8                                 = 3
-	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_16                                = 4
-	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_32                                = 5
-	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_64                                = 6
-	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_MAX                               = 7
+	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_2   RenderingDeviceTextureSamples = 1
+	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_4   RenderingDeviceTextureSamples = 2
+	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_8   RenderingDeviceTextureSamples = 3
+	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_16  RenderingDeviceTextureSamples = 4
+	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_32  RenderingDeviceTextureSamples = 5
+	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_64  RenderingDeviceTextureSamples = 6
+	RENDERING_DEVICE_TEXTURE_SAMPLES_TEXTURE_SAMPLES_MAX RenderingDeviceTextureSamples = 7
 )
 
 type RenderingDeviceTextureUsageBits int
 
 const (
 	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_SAMPLING_BIT                 RenderingDeviceTextureUsageBits = 1
-	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_COLOR_ATTACHMENT_BIT                                         = 2
-	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT                                 = 4
-	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_STORAGE_BIT                                                  = 8
-	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_STORAGE_ATOMIC_BIT                                           = 16
-	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_CPU_READ_BIT                                                 = 32
-	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_CAN_UPDATE_BIT                                               = 64
-	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_CAN_COPY_FROM_BIT                                            = 128
-	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_CAN_COPY_TO_BIT                                              = 256
-	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_INPUT_ATTACHMENT_BIT                                         = 512
+	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_COLOR_ATTACHMENT_BIT         RenderingDeviceTextureUsageBits = 2
+	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT RenderingDeviceTextureUsageBits = 4
+	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_STORAGE_BIT                  RenderingDeviceTextureUsageBits = 8
+	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_STORAGE_ATOMIC_BIT           RenderingDeviceTextureUsageBits = 16
+	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_CPU_READ_BIT                 RenderingDeviceTextureUsageBits = 32
+	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_CAN_UPDATE_BIT               RenderingDeviceTextureUsageBits = 64
+	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_CAN_COPY_FROM_BIT            RenderingDeviceTextureUsageBits = 128
+	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_CAN_COPY_TO_BIT              RenderingDeviceTextureUsageBits = 256
+	RENDERING_DEVICE_TEXTURE_USAGE_BITS_TEXTURE_USAGE_INPUT_ATTACHMENT_BIT         RenderingDeviceTextureUsageBits = 512
 )
 
 type RenderingDeviceTextureSwizzle int
 
 const (
 	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_IDENTITY RenderingDeviceTextureSwizzle = 0
-	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_ZERO                                   = 1
-	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_ONE                                    = 2
-	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_R                                      = 3
-	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_G                                      = 4
-	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_B                                      = 5
-	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_A                                      = 6
-	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_MAX                                    = 7
+	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_ZERO     RenderingDeviceTextureSwizzle = 1
+	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_ONE      RenderingDeviceTextureSwizzle = 2
+	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_R        RenderingDeviceTextureSwizzle = 3
+	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_G        RenderingDeviceTextureSwizzle = 4
+	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_B        RenderingDeviceTextureSwizzle = 5
+	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_A        RenderingDeviceTextureSwizzle = 6
+	RENDERING_DEVICE_TEXTURE_SWIZZLE_TEXTURE_SWIZZLE_MAX      RenderingDeviceTextureSwizzle = 7
 )
 
 type RenderingDeviceTextureSliceType int
 
 const (
 	RENDERING_DEVICE_TEXTURE_SLICE_TYPE_TEXTURE_SLICE_2_D     RenderingDeviceTextureSliceType = 0
-	RENDERING_DEVICE_TEXTURE_SLICE_TYPE_TEXTURE_SLICE_CUBEMAP                                 = 1
-	RENDERING_DEVICE_TEXTURE_SLICE_TYPE_TEXTURE_SLICE_3_D                                     = 2
+	RENDERING_DEVICE_TEXTURE_SLICE_TYPE_TEXTURE_SLICE_CUBEMAP RenderingDeviceTextureSliceType = 1
+	RENDERING_DEVICE_TEXTURE_SLICE_TYPE_TEXTURE_SLICE_3_D     RenderingDeviceTextureSliceType = 2
 )
 
 type RenderingDeviceSamplerFilter int
 
 const (
 	RENDERING_DEVICE_SAMPLER_FILTER_SAMPLER_FILTER_NEAREST RenderingDeviceSamplerFilter = 0
-	RENDERING_DEVICE_SAMPLER_FILTER_SAMPLER_FILTER_LINEAR                               = 1
+	RENDERING_DEVICE_SAMPLER_FILTER_SAMPLER_FILTER_LINEAR  RenderingDeviceSamplerFilter = 1
 )
 
 type RenderingDeviceSamplerRepeatMode int
 
 const (
 	RENDERING_DEVICE_SAMPLER_REPEAT_MODE_SAMPLER_REPEAT_MODE_REPEAT               RenderingDeviceSamplerRepeatMode = 0
-	RENDERING_DEVICE_SAMPLER_REPEAT_MODE_SAMPLER_REPEAT_MODE_MIRRORED_REPEAT                                       = 1
-	RENDERING_DEVICE_SAMPLER_REPEAT_MODE_SAMPLER_REPEAT_MODE_CLAMP_TO_EDGE                                         = 2
-	RENDERING_DEVICE_SAMPLER_REPEAT_MODE_SAMPLER_REPEAT_MODE_CLAMP_TO_BORDER                                       = 3
-	RENDERING_DEVICE_SAMPLER_REPEAT_MODE_SAMPLER_REPEAT_MODE_MIRROR_CLAMP_TO_EDGE                                  = 4
-	RENDERING_DEVICE_SAMPLER_REPEAT_MODE_SAMPLER_REPEAT_MODE_MAX                                                   = 5
+	RENDERING_DEVICE_SAMPLER_REPEAT_MODE_SAMPLER_REPEAT_MODE_MIRRORED_REPEAT      RenderingDeviceSamplerRepeatMode = 1
+	RENDERING_DEVICE_SAMPLER_REPEAT_MODE_SAMPLER_REPEAT_MODE_CLAMP_TO_EDGE        RenderingDeviceSamplerRepeatMode = 2
+	RENDERING_DEVICE_SAMPLER_REPEAT_MODE_SAMPLER_REPEAT_MODE_CLAMP_TO_BORDER      RenderingDeviceSamplerRepeatMode = 3
+	RENDERING_DEVICE_SAMPLER_REPEAT_MODE_SAMPLER_REPEAT_MODE_MIRROR_CLAMP_TO_EDGE RenderingDeviceSamplerRepeatMode = 4
+	RENDERING_DEVICE_SAMPLER_REPEAT_MODE_SAMPLER_REPEAT_MODE_MAX                  RenderingDeviceSamplerRepeatMode = 5
 )
 
 type RenderingDeviceSamplerBorderColor int
 
 const (
 	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK RenderingDeviceSamplerBorderColor = 0
-	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_INT_TRANSPARENT_BLACK                                     = 1
-	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_FLOAT_OPAQUE_BLACK                                        = 2
-	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_INT_OPAQUE_BLACK                                          = 3
-	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_FLOAT_OPAQUE_WHITE                                        = 4
-	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_INT_OPAQUE_WHITE                                          = 5
-	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_MAX                                                       = 6
+	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_INT_TRANSPARENT_BLACK   RenderingDeviceSamplerBorderColor = 1
+	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_FLOAT_OPAQUE_BLACK      RenderingDeviceSamplerBorderColor = 2
+	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_INT_OPAQUE_BLACK        RenderingDeviceSamplerBorderColor = 3
+	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_FLOAT_OPAQUE_WHITE      RenderingDeviceSamplerBorderColor = 4
+	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_INT_OPAQUE_WHITE        RenderingDeviceSamplerBorderColor = 5
+	RENDERING_DEVICE_SAMPLER_BORDER_COLOR_SAMPLER_BORDER_COLOR_MAX                     RenderingDeviceSamplerBorderColor = 6
 )
 
 type RenderingDeviceVertexFrequency int
 
 const (
 	RENDERING_DEVICE_VERTEX_FREQUENCY_VERTEX_FREQUENCY_VERTEX   RenderingDeviceVertexFrequency = 0
-	RENDERING_DEVICE_VERTEX_FREQUENCY_VERTEX_FREQUENCY_INSTANCE                                = 1
+	RENDERING_DEVICE_VERTEX_FREQUENCY_VERTEX_FREQUENCY_INSTANCE RenderingDeviceVertexFrequency = 1
 )
 
 type RenderingDeviceIndexBufferFormat int
 
 const (
 	RENDERING_DEVICE_INDEX_BUFFER_FORMAT_INDEX_BUFFER_FORMAT_UINT_16 RenderingDeviceIndexBufferFormat = 0
-	RENDERING_DEVICE_INDEX_BUFFER_FORMAT_INDEX_BUFFER_FORMAT_UINT_32                                  = 1
+	RENDERING_DEVICE_INDEX_BUFFER_FORMAT_INDEX_BUFFER_FORMAT_UINT_32 RenderingDeviceIndexBufferFormat = 1
 )
 
 type RenderingDeviceStorageBufferUsage int
@@ -3928,3475 +4584,3735 @@ const (
 	RENDERING_DEVICE_STORAGE_BUFFER_USAGE_STORAGE_BUFFER_USAGE_DISPATCH_INDIRECT RenderingDeviceStorageBufferUsage = 1
 )
 
+type RenderingDeviceBufferCreationBits int
+
+const (
+	RENDERING_DEVICE_BUFFER_CREATION_BITS_BUFFER_CREATION_DEVICE_ADDRESS_BIT RenderingDeviceBufferCreationBits = 1
+	RENDERING_DEVICE_BUFFER_CREATION_BITS_BUFFER_CREATION_AS_STORAGE_BIT     RenderingDeviceBufferCreationBits = 2
+)
+
 type RenderingDeviceUniformType int
 
 const (
 	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_SAMPLER                     RenderingDeviceUniformType = 0
-	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_SAMPLER_WITH_TEXTURE                                   = 1
-	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_TEXTURE                                                = 2
-	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_IMAGE                                                  = 3
-	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_TEXTURE_BUFFER                                         = 4
-	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_SAMPLER_WITH_TEXTURE_BUFFER                            = 5
-	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_IMAGE_BUFFER                                           = 6
-	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_UNIFORM_BUFFER                                         = 7
-	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_STORAGE_BUFFER                                         = 8
-	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_INPUT_ATTACHMENT                                       = 9
-	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_MAX                                                    = 10
+	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_SAMPLER_WITH_TEXTURE        RenderingDeviceUniformType = 1
+	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_TEXTURE                     RenderingDeviceUniformType = 2
+	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_IMAGE                       RenderingDeviceUniformType = 3
+	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_TEXTURE_BUFFER              RenderingDeviceUniformType = 4
+	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_SAMPLER_WITH_TEXTURE_BUFFER RenderingDeviceUniformType = 5
+	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_IMAGE_BUFFER                RenderingDeviceUniformType = 6
+	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_UNIFORM_BUFFER              RenderingDeviceUniformType = 7
+	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_STORAGE_BUFFER              RenderingDeviceUniformType = 8
+	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_INPUT_ATTACHMENT            RenderingDeviceUniformType = 9
+	RENDERING_DEVICE_UNIFORM_TYPE_UNIFORM_TYPE_MAX                         RenderingDeviceUniformType = 10
 )
 
 type RenderingDeviceRenderPrimitive int
 
 const (
 	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_POINTS                             RenderingDeviceRenderPrimitive = 0
-	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_LINES                                                             = 1
-	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_LINES_WITH_ADJACENCY                                              = 2
-	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_LINESTRIPS                                                        = 3
-	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_LINESTRIPS_WITH_ADJACENCY                                         = 4
-	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TRIANGLES                                                         = 5
-	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TRIANGLES_WITH_ADJACENCY                                          = 6
-	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TRIANGLE_STRIPS                                                   = 7
-	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TRIANGLE_STRIPS_WITH_AJACENCY                                     = 8
-	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TRIANGLE_STRIPS_WITH_RESTART_INDEX                                = 9
-	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TESSELATION_PATCH                                                 = 10
-	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_MAX                                                               = 11
+	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_LINES                              RenderingDeviceRenderPrimitive = 1
+	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_LINES_WITH_ADJACENCY               RenderingDeviceRenderPrimitive = 2
+	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_LINESTRIPS                         RenderingDeviceRenderPrimitive = 3
+	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_LINESTRIPS_WITH_ADJACENCY          RenderingDeviceRenderPrimitive = 4
+	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TRIANGLES                          RenderingDeviceRenderPrimitive = 5
+	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TRIANGLES_WITH_ADJACENCY           RenderingDeviceRenderPrimitive = 6
+	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TRIANGLE_STRIPS                    RenderingDeviceRenderPrimitive = 7
+	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TRIANGLE_STRIPS_WITH_AJACENCY      RenderingDeviceRenderPrimitive = 8
+	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TRIANGLE_STRIPS_WITH_RESTART_INDEX RenderingDeviceRenderPrimitive = 9
+	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_TESSELATION_PATCH                  RenderingDeviceRenderPrimitive = 10
+	RENDERING_DEVICE_RENDER_PRIMITIVE_RENDER_PRIMITIVE_MAX                                RenderingDeviceRenderPrimitive = 11
 )
 
 type RenderingDevicePolygonCullMode int
 
 const (
 	RENDERING_DEVICE_POLYGON_CULL_MODE_POLYGON_CULL_DISABLED RenderingDevicePolygonCullMode = 0
-	RENDERING_DEVICE_POLYGON_CULL_MODE_POLYGON_CULL_FRONT                                   = 1
-	RENDERING_DEVICE_POLYGON_CULL_MODE_POLYGON_CULL_BACK                                    = 2
+	RENDERING_DEVICE_POLYGON_CULL_MODE_POLYGON_CULL_FRONT    RenderingDevicePolygonCullMode = 1
+	RENDERING_DEVICE_POLYGON_CULL_MODE_POLYGON_CULL_BACK     RenderingDevicePolygonCullMode = 2
 )
 
 type RenderingDevicePolygonFrontFace int
 
 const (
 	RENDERING_DEVICE_POLYGON_FRONT_FACE_POLYGON_FRONT_FACE_CLOCKWISE         RenderingDevicePolygonFrontFace = 0
-	RENDERING_DEVICE_POLYGON_FRONT_FACE_POLYGON_FRONT_FACE_COUNTER_CLOCKWISE                                 = 1
+	RENDERING_DEVICE_POLYGON_FRONT_FACE_POLYGON_FRONT_FACE_COUNTER_CLOCKWISE RenderingDevicePolygonFrontFace = 1
 )
 
 type RenderingDeviceStencilOperation int
 
 const (
 	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_KEEP                RenderingDeviceStencilOperation = 0
-	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_ZERO                                                = 1
-	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_REPLACE                                             = 2
-	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_INCREMENT_AND_CLAMP                                 = 3
-	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_DECREMENT_AND_CLAMP                                 = 4
-	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_INVERT                                              = 5
-	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_INCREMENT_AND_WRAP                                  = 6
-	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_DECREMENT_AND_WRAP                                  = 7
-	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_MAX                                                 = 8
+	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_ZERO                RenderingDeviceStencilOperation = 1
+	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_REPLACE             RenderingDeviceStencilOperation = 2
+	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_INCREMENT_AND_CLAMP RenderingDeviceStencilOperation = 3
+	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_DECREMENT_AND_CLAMP RenderingDeviceStencilOperation = 4
+	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_INVERT              RenderingDeviceStencilOperation = 5
+	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_INCREMENT_AND_WRAP  RenderingDeviceStencilOperation = 6
+	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_DECREMENT_AND_WRAP  RenderingDeviceStencilOperation = 7
+	RENDERING_DEVICE_STENCIL_OPERATION_STENCIL_OP_MAX                 RenderingDeviceStencilOperation = 8
 )
 
 type RenderingDeviceCompareOperator int
 
 const (
 	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_NEVER            RenderingDeviceCompareOperator = 0
-	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_LESS                                            = 1
-	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_EQUAL                                           = 2
-	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_LESS_OR_EQUAL                                   = 3
-	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_GREATER                                         = 4
-	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_NOT_EQUAL                                       = 5
-	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_GREATER_OR_EQUAL                                = 6
-	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_ALWAYS                                          = 7
-	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_MAX                                             = 8
+	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_LESS             RenderingDeviceCompareOperator = 1
+	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_EQUAL            RenderingDeviceCompareOperator = 2
+	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_LESS_OR_EQUAL    RenderingDeviceCompareOperator = 3
+	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_GREATER          RenderingDeviceCompareOperator = 4
+	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_NOT_EQUAL        RenderingDeviceCompareOperator = 5
+	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_GREATER_OR_EQUAL RenderingDeviceCompareOperator = 6
+	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_ALWAYS           RenderingDeviceCompareOperator = 7
+	RENDERING_DEVICE_COMPARE_OPERATOR_COMPARE_OP_MAX              RenderingDeviceCompareOperator = 8
 )
 
 type RenderingDeviceLogicOperation int
 
 const (
 	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_CLEAR         RenderingDeviceLogicOperation = 0
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_AND                                         = 1
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_AND_REVERSE                                 = 2
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_COPY                                        = 3
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_AND_INVERTED                                = 4
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_NO_OP                                       = 5
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_XOR                                         = 6
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_OR                                          = 7
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_NOR                                         = 8
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_EQUIVALENT                                  = 9
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_INVERT                                      = 10
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_OR_REVERSE                                  = 11
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_COPY_INVERTED                               = 12
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_OR_INVERTED                                 = 13
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_NAND                                        = 14
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_SET                                         = 15
-	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_MAX                                         = 16
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_AND           RenderingDeviceLogicOperation = 1
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_AND_REVERSE   RenderingDeviceLogicOperation = 2
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_COPY          RenderingDeviceLogicOperation = 3
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_AND_INVERTED  RenderingDeviceLogicOperation = 4
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_NO_OP         RenderingDeviceLogicOperation = 5
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_XOR           RenderingDeviceLogicOperation = 6
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_OR            RenderingDeviceLogicOperation = 7
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_NOR           RenderingDeviceLogicOperation = 8
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_EQUIVALENT    RenderingDeviceLogicOperation = 9
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_INVERT        RenderingDeviceLogicOperation = 10
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_OR_REVERSE    RenderingDeviceLogicOperation = 11
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_COPY_INVERTED RenderingDeviceLogicOperation = 12
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_OR_INVERTED   RenderingDeviceLogicOperation = 13
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_NAND          RenderingDeviceLogicOperation = 14
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_SET           RenderingDeviceLogicOperation = 15
+	RENDERING_DEVICE_LOGIC_OPERATION_LOGIC_OP_MAX           RenderingDeviceLogicOperation = 16
 )
 
 type RenderingDeviceBlendFactor int
 
 const (
 	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ZERO                     RenderingDeviceBlendFactor = 0
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE                                                 = 1
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_SRC_COLOR                                           = 2
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_SRC_COLOR                                 = 3
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_DST_COLOR                                           = 4
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_DST_COLOR                                 = 5
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_SRC_ALPHA                                           = 6
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA                                 = 7
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_DST_ALPHA                                           = 8
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_DST_ALPHA                                 = 9
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_CONSTANT_COLOR                                      = 10
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR                            = 11
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_CONSTANT_ALPHA                                      = 12
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA                            = 13
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_SRC_ALPHA_SATURATE                                  = 14
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_SRC_1_COLOR                                         = 15
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_SRC_1_COLOR                               = 16
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_SRC_1_ALPHA                                         = 17
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_SRC_1_ALPHA                               = 18
-	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_MAX                                                 = 19
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE                      RenderingDeviceBlendFactor = 1
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_SRC_COLOR                RenderingDeviceBlendFactor = 2
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_SRC_COLOR      RenderingDeviceBlendFactor = 3
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_DST_COLOR                RenderingDeviceBlendFactor = 4
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_DST_COLOR      RenderingDeviceBlendFactor = 5
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_SRC_ALPHA                RenderingDeviceBlendFactor = 6
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA      RenderingDeviceBlendFactor = 7
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_DST_ALPHA                RenderingDeviceBlendFactor = 8
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_DST_ALPHA      RenderingDeviceBlendFactor = 9
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_CONSTANT_COLOR           RenderingDeviceBlendFactor = 10
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR RenderingDeviceBlendFactor = 11
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_CONSTANT_ALPHA           RenderingDeviceBlendFactor = 12
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA RenderingDeviceBlendFactor = 13
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_SRC_ALPHA_SATURATE       RenderingDeviceBlendFactor = 14
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_SRC_1_COLOR              RenderingDeviceBlendFactor = 15
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_SRC_1_COLOR    RenderingDeviceBlendFactor = 16
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_SRC_1_ALPHA              RenderingDeviceBlendFactor = 17
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_ONE_MINUS_SRC_1_ALPHA    RenderingDeviceBlendFactor = 18
+	RENDERING_DEVICE_BLEND_FACTOR_BLEND_FACTOR_MAX                      RenderingDeviceBlendFactor = 19
 )
 
 type RenderingDeviceBlendOperation int
 
 const (
 	RENDERING_DEVICE_BLEND_OPERATION_BLEND_OP_ADD              RenderingDeviceBlendOperation = 0
-	RENDERING_DEVICE_BLEND_OPERATION_BLEND_OP_SUBTRACT                                       = 1
-	RENDERING_DEVICE_BLEND_OPERATION_BLEND_OP_REVERSE_SUBTRACT                               = 2
-	RENDERING_DEVICE_BLEND_OPERATION_BLEND_OP_MINIMUM                                        = 3
-	RENDERING_DEVICE_BLEND_OPERATION_BLEND_OP_MAXIMUM                                        = 4
-	RENDERING_DEVICE_BLEND_OPERATION_BLEND_OP_MAX                                            = 5
+	RENDERING_DEVICE_BLEND_OPERATION_BLEND_OP_SUBTRACT         RenderingDeviceBlendOperation = 1
+	RENDERING_DEVICE_BLEND_OPERATION_BLEND_OP_REVERSE_SUBTRACT RenderingDeviceBlendOperation = 2
+	RENDERING_DEVICE_BLEND_OPERATION_BLEND_OP_MINIMUM          RenderingDeviceBlendOperation = 3
+	RENDERING_DEVICE_BLEND_OPERATION_BLEND_OP_MAXIMUM          RenderingDeviceBlendOperation = 4
+	RENDERING_DEVICE_BLEND_OPERATION_BLEND_OP_MAX              RenderingDeviceBlendOperation = 5
 )
 
 type RenderingDevicePipelineDynamicStateFlags int
 
 const (
 	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_LINE_WIDTH           RenderingDevicePipelineDynamicStateFlags = 1
-	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_DEPTH_BIAS                                                    = 2
-	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_BLEND_CONSTANTS                                               = 4
-	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_DEPTH_BOUNDS                                                  = 8
-	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_STENCIL_COMPARE_MASK                                          = 16
-	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_STENCIL_WRITE_MASK                                            = 32
-	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_STENCIL_REFERENCE                                             = 64
+	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_DEPTH_BIAS           RenderingDevicePipelineDynamicStateFlags = 2
+	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_BLEND_CONSTANTS      RenderingDevicePipelineDynamicStateFlags = 4
+	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_DEPTH_BOUNDS         RenderingDevicePipelineDynamicStateFlags = 8
+	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_STENCIL_COMPARE_MASK RenderingDevicePipelineDynamicStateFlags = 16
+	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_STENCIL_WRITE_MASK   RenderingDevicePipelineDynamicStateFlags = 32
+	RENDERING_DEVICE_PIPELINE_DYNAMIC_STATE_FLAGS_DYNAMIC_STATE_STENCIL_REFERENCE    RenderingDevicePipelineDynamicStateFlags = 64
 )
 
 type RenderingDeviceInitialAction int
 
 const (
 	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_LOAD                  RenderingDeviceInitialAction = 0
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CLEAR                                              = 1
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_DISCARD                                            = 2
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_MAX                                                = 3
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CLEAR_REGION                                       = 1
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CLEAR_REGION_CONTINUE                              = 1
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_KEEP                                               = 0
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_DROP                                               = 2
-	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CONTINUE                                           = 0
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CLEAR                 RenderingDeviceInitialAction = 1
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_DISCARD               RenderingDeviceInitialAction = 2
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_MAX                   RenderingDeviceInitialAction = 3
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CLEAR_REGION          RenderingDeviceInitialAction = 1
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CLEAR_REGION_CONTINUE RenderingDeviceInitialAction = 1
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_KEEP                  RenderingDeviceInitialAction = 0
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_DROP                  RenderingDeviceInitialAction = 2
+	RENDERING_DEVICE_INITIAL_ACTION_INITIAL_ACTION_CONTINUE              RenderingDeviceInitialAction = 0
 )
 
 type RenderingDeviceFinalAction int
 
 const (
 	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_STORE    RenderingDeviceFinalAction = 0
-	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_DISCARD                             = 1
-	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_MAX                                 = 2
-	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_READ                                = 0
-	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_CONTINUE                            = 0
+	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_DISCARD  RenderingDeviceFinalAction = 1
+	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_MAX      RenderingDeviceFinalAction = 2
+	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_READ     RenderingDeviceFinalAction = 0
+	RENDERING_DEVICE_FINAL_ACTION_FINAL_ACTION_CONTINUE RenderingDeviceFinalAction = 0
 )
 
 type RenderingDeviceShaderStage int
 
 const (
 	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_VERTEX                     RenderingDeviceShaderStage = 0
-	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_FRAGMENT                                              = 1
-	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_TESSELATION_CONTROL                                   = 2
-	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_TESSELATION_EVALUATION                                = 3
-	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_COMPUTE                                               = 4
-	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_MAX                                                   = 5
-	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_VERTEX_BIT                                            = 1
-	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_FRAGMENT_BIT                                          = 2
-	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_TESSELATION_CONTROL_BIT                               = 4
-	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_TESSELATION_EVALUATION_BIT                            = 8
-	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_COMPUTE_BIT                                           = 16
+	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_FRAGMENT                   RenderingDeviceShaderStage = 1
+	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_TESSELATION_CONTROL        RenderingDeviceShaderStage = 2
+	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_TESSELATION_EVALUATION     RenderingDeviceShaderStage = 3
+	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_COMPUTE                    RenderingDeviceShaderStage = 4
+	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_MAX                        RenderingDeviceShaderStage = 5
+	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_VERTEX_BIT                 RenderingDeviceShaderStage = 1
+	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_FRAGMENT_BIT               RenderingDeviceShaderStage = 2
+	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_TESSELATION_CONTROL_BIT    RenderingDeviceShaderStage = 4
+	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_TESSELATION_EVALUATION_BIT RenderingDeviceShaderStage = 8
+	RENDERING_DEVICE_SHADER_STAGE_SHADER_STAGE_COMPUTE_BIT                RenderingDeviceShaderStage = 16
 )
 
 type RenderingDeviceShaderLanguage int
 
 const (
 	RENDERING_DEVICE_SHADER_LANGUAGE_SHADER_LANGUAGE_GLSL RenderingDeviceShaderLanguage = 0
-	RENDERING_DEVICE_SHADER_LANGUAGE_SHADER_LANGUAGE_HLSL                               = 1
+	RENDERING_DEVICE_SHADER_LANGUAGE_SHADER_LANGUAGE_HLSL RenderingDeviceShaderLanguage = 1
 )
 
 type RenderingDevicePipelineSpecializationConstantType int
 
 const (
 	RENDERING_DEVICE_PIPELINE_SPECIALIZATION_CONSTANT_TYPE_PIPELINE_SPECIALIZATION_CONSTANT_TYPE_BOOL  RenderingDevicePipelineSpecializationConstantType = 0
-	RENDERING_DEVICE_PIPELINE_SPECIALIZATION_CONSTANT_TYPE_PIPELINE_SPECIALIZATION_CONSTANT_TYPE_INT                                                     = 1
-	RENDERING_DEVICE_PIPELINE_SPECIALIZATION_CONSTANT_TYPE_PIPELINE_SPECIALIZATION_CONSTANT_TYPE_FLOAT                                                   = 2
+	RENDERING_DEVICE_PIPELINE_SPECIALIZATION_CONSTANT_TYPE_PIPELINE_SPECIALIZATION_CONSTANT_TYPE_INT   RenderingDevicePipelineSpecializationConstantType = 1
+	RENDERING_DEVICE_PIPELINE_SPECIALIZATION_CONSTANT_TYPE_PIPELINE_SPECIALIZATION_CONSTANT_TYPE_FLOAT RenderingDevicePipelineSpecializationConstantType = 2
+)
+
+type RenderingDeviceFeatures int
+
+const (
+	RENDERING_DEVICE_FEATURES_SUPPORTS_METALFX_SPATIAL       RenderingDeviceFeatures = 3
+	RENDERING_DEVICE_FEATURES_SUPPORTS_METALFX_TEMPORAL      RenderingDeviceFeatures = 4
+	RENDERING_DEVICE_FEATURES_SUPPORTS_BUFFER_DEVICE_ADDRESS RenderingDeviceFeatures = 6
+	RENDERING_DEVICE_FEATURES_SUPPORTS_IMAGE_ATOMIC_32_BIT   RenderingDeviceFeatures = 7
 )
 
 type RenderingDeviceLimit int
 
 const (
 	RENDERING_DEVICE_LIMIT_LIMIT_MAX_BOUND_UNIFORM_SETS               RenderingDeviceLimit = 0
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_FRAMEBUFFER_COLOR_ATTACHMENTS                         = 1
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURES_PER_UNIFORM_SET                              = 2
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_SAMPLERS_PER_UNIFORM_SET                              = 3
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_STORAGE_BUFFERS_PER_UNIFORM_SET                       = 4
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_STORAGE_IMAGES_PER_UNIFORM_SET                        = 5
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_UNIFORM_BUFFERS_PER_UNIFORM_SET                       = 6
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_DRAW_INDEXED_INDEX                                    = 7
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_FRAMEBUFFER_HEIGHT                                    = 8
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_FRAMEBUFFER_WIDTH                                     = 9
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURE_ARRAY_LAYERS                                  = 10
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURE_SIZE_1_D                                      = 11
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURE_SIZE_2_D                                      = 12
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURE_SIZE_3_D                                      = 13
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURE_SIZE_CUBE                                     = 14
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURES_PER_SHADER_STAGE                             = 15
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_SAMPLERS_PER_SHADER_STAGE                             = 16
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_STORAGE_BUFFERS_PER_SHADER_STAGE                      = 17
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_STORAGE_IMAGES_PER_SHADER_STAGE                       = 18
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_UNIFORM_BUFFERS_PER_SHADER_STAGE                      = 19
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_PUSH_CONSTANT_SIZE                                    = 20
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_UNIFORM_BUFFER_SIZE                                   = 21
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VERTEX_INPUT_ATTRIBUTE_OFFSET                         = 22
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VERTEX_INPUT_ATTRIBUTES                               = 23
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VERTEX_INPUT_BINDINGS                                 = 24
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VERTEX_INPUT_BINDING_STRIDE                           = 25
-	RENDERING_DEVICE_LIMIT_LIMIT_MIN_UNIFORM_BUFFER_OFFSET_ALIGNMENT                       = 26
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_SHARED_MEMORY_SIZE                            = 27
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_COUNT_X                             = 28
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_COUNT_Y                             = 29
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_COUNT_Z                             = 30
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_INVOCATIONS                         = 31
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_SIZE_X                              = 32
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_SIZE_Y                              = 33
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_SIZE_Z                              = 34
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VIEWPORT_DIMENSIONS_X                                 = 35
-	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VIEWPORT_DIMENSIONS_Y                                 = 36
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_FRAMEBUFFER_COLOR_ATTACHMENTS    RenderingDeviceLimit = 1
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURES_PER_UNIFORM_SET         RenderingDeviceLimit = 2
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_SAMPLERS_PER_UNIFORM_SET         RenderingDeviceLimit = 3
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_STORAGE_BUFFERS_PER_UNIFORM_SET  RenderingDeviceLimit = 4
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_STORAGE_IMAGES_PER_UNIFORM_SET   RenderingDeviceLimit = 5
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_UNIFORM_BUFFERS_PER_UNIFORM_SET  RenderingDeviceLimit = 6
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_DRAW_INDEXED_INDEX               RenderingDeviceLimit = 7
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_FRAMEBUFFER_HEIGHT               RenderingDeviceLimit = 8
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_FRAMEBUFFER_WIDTH                RenderingDeviceLimit = 9
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURE_ARRAY_LAYERS             RenderingDeviceLimit = 10
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURE_SIZE_1_D                 RenderingDeviceLimit = 11
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURE_SIZE_2_D                 RenderingDeviceLimit = 12
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURE_SIZE_3_D                 RenderingDeviceLimit = 13
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURE_SIZE_CUBE                RenderingDeviceLimit = 14
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_TEXTURES_PER_SHADER_STAGE        RenderingDeviceLimit = 15
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_SAMPLERS_PER_SHADER_STAGE        RenderingDeviceLimit = 16
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_STORAGE_BUFFERS_PER_SHADER_STAGE RenderingDeviceLimit = 17
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_STORAGE_IMAGES_PER_SHADER_STAGE  RenderingDeviceLimit = 18
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_UNIFORM_BUFFERS_PER_SHADER_STAGE RenderingDeviceLimit = 19
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_PUSH_CONSTANT_SIZE               RenderingDeviceLimit = 20
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_UNIFORM_BUFFER_SIZE              RenderingDeviceLimit = 21
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VERTEX_INPUT_ATTRIBUTE_OFFSET    RenderingDeviceLimit = 22
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VERTEX_INPUT_ATTRIBUTES          RenderingDeviceLimit = 23
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VERTEX_INPUT_BINDINGS            RenderingDeviceLimit = 24
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VERTEX_INPUT_BINDING_STRIDE      RenderingDeviceLimit = 25
+	RENDERING_DEVICE_LIMIT_LIMIT_MIN_UNIFORM_BUFFER_OFFSET_ALIGNMENT  RenderingDeviceLimit = 26
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_SHARED_MEMORY_SIZE       RenderingDeviceLimit = 27
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_COUNT_X        RenderingDeviceLimit = 28
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_COUNT_Y        RenderingDeviceLimit = 29
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_COUNT_Z        RenderingDeviceLimit = 30
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_INVOCATIONS    RenderingDeviceLimit = 31
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_SIZE_X         RenderingDeviceLimit = 32
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_SIZE_Y         RenderingDeviceLimit = 33
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_COMPUTE_WORKGROUP_SIZE_Z         RenderingDeviceLimit = 34
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VIEWPORT_DIMENSIONS_X            RenderingDeviceLimit = 35
+	RENDERING_DEVICE_LIMIT_LIMIT_MAX_VIEWPORT_DIMENSIONS_Y            RenderingDeviceLimit = 36
+	RENDERING_DEVICE_LIMIT_LIMIT_METALFX_TEMPORAL_SCALER_MIN_SCALE    RenderingDeviceLimit = 46
+	RENDERING_DEVICE_LIMIT_LIMIT_METALFX_TEMPORAL_SCALER_MAX_SCALE    RenderingDeviceLimit = 47
 )
 
 type RenderingDeviceMemoryType int
 
 const (
 	RENDERING_DEVICE_MEMORY_TYPE_MEMORY_TEXTURES RenderingDeviceMemoryType = 0
-	RENDERING_DEVICE_MEMORY_TYPE_MEMORY_BUFFERS                            = 1
-	RENDERING_DEVICE_MEMORY_TYPE_MEMORY_TOTAL                              = 2
+	RENDERING_DEVICE_MEMORY_TYPE_MEMORY_BUFFERS  RenderingDeviceMemoryType = 1
+	RENDERING_DEVICE_MEMORY_TYPE_MEMORY_TOTAL    RenderingDeviceMemoryType = 2
+)
+
+type RenderingDeviceBreadcrumbMarker int
+
+const (
+	RENDERING_DEVICE_BREADCRUMB_MARKER_NONE                    RenderingDeviceBreadcrumbMarker = 0
+	RENDERING_DEVICE_BREADCRUMB_MARKER_REFLECTION_PROBES       RenderingDeviceBreadcrumbMarker = 65536
+	RENDERING_DEVICE_BREADCRUMB_MARKER_SKY_PASS                RenderingDeviceBreadcrumbMarker = 131072
+	RENDERING_DEVICE_BREADCRUMB_MARKER_LIGHTMAPPER_PASS        RenderingDeviceBreadcrumbMarker = 196608
+	RENDERING_DEVICE_BREADCRUMB_MARKER_SHADOW_PASS_DIRECTIONAL RenderingDeviceBreadcrumbMarker = 262144
+	RENDERING_DEVICE_BREADCRUMB_MARKER_SHADOW_PASS_CUBE        RenderingDeviceBreadcrumbMarker = 327680
+	RENDERING_DEVICE_BREADCRUMB_MARKER_OPAQUE_PASS             RenderingDeviceBreadcrumbMarker = 393216
+	RENDERING_DEVICE_BREADCRUMB_MARKER_ALPHA_PASS              RenderingDeviceBreadcrumbMarker = 458752
+	RENDERING_DEVICE_BREADCRUMB_MARKER_TRANSPARENT_PASS        RenderingDeviceBreadcrumbMarker = 524288
+	RENDERING_DEVICE_BREADCRUMB_MARKER_POST_PROCESSING_PASS    RenderingDeviceBreadcrumbMarker = 589824
+	RENDERING_DEVICE_BREADCRUMB_MARKER_BLIT_PASS               RenderingDeviceBreadcrumbMarker = 655360
+	RENDERING_DEVICE_BREADCRUMB_MARKER_UI_PASS                 RenderingDeviceBreadcrumbMarker = 720896
+	RENDERING_DEVICE_BREADCRUMB_MARKER_DEBUG_PASS              RenderingDeviceBreadcrumbMarker = 786432
+)
+
+type RenderingDeviceDrawFlags int
+
+const (
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_DEFAULT_ALL       RenderingDeviceDrawFlags = 0
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_COLOR_0     RenderingDeviceDrawFlags = 1
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_COLOR_1     RenderingDeviceDrawFlags = 2
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_COLOR_2     RenderingDeviceDrawFlags = 4
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_COLOR_3     RenderingDeviceDrawFlags = 8
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_COLOR_4     RenderingDeviceDrawFlags = 16
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_COLOR_5     RenderingDeviceDrawFlags = 32
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_COLOR_6     RenderingDeviceDrawFlags = 64
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_COLOR_7     RenderingDeviceDrawFlags = 128
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_COLOR_MASK  RenderingDeviceDrawFlags = 255
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_COLOR_ALL   RenderingDeviceDrawFlags = 255
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_COLOR_0    RenderingDeviceDrawFlags = 256
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_COLOR_1    RenderingDeviceDrawFlags = 512
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_COLOR_2    RenderingDeviceDrawFlags = 1024
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_COLOR_3    RenderingDeviceDrawFlags = 2048
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_COLOR_4    RenderingDeviceDrawFlags = 4096
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_COLOR_5    RenderingDeviceDrawFlags = 8192
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_COLOR_6    RenderingDeviceDrawFlags = 16384
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_COLOR_7    RenderingDeviceDrawFlags = 32768
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_COLOR_MASK RenderingDeviceDrawFlags = 65280
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_COLOR_ALL  RenderingDeviceDrawFlags = 65280
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_DEPTH       RenderingDeviceDrawFlags = 65536
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_DEPTH      RenderingDeviceDrawFlags = 131072
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_STENCIL     RenderingDeviceDrawFlags = 262144
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_STENCIL    RenderingDeviceDrawFlags = 524288
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_CLEAR_ALL         RenderingDeviceDrawFlags = 327935
+	RENDERING_DEVICE_DRAW_FLAGS_DRAW_IGNORE_ALL        RenderingDeviceDrawFlags = 720640
+)
+
+type RenderingServerTextureType int
+
+const (
+	RENDERING_SERVER_TEXTURE_TYPE_TEXTURE_TYPE_2_D     RenderingServerTextureType = 0
+	RENDERING_SERVER_TEXTURE_TYPE_TEXTURE_TYPE_LAYERED RenderingServerTextureType = 1
+	RENDERING_SERVER_TEXTURE_TYPE_TEXTURE_TYPE_3_D     RenderingServerTextureType = 2
 )
 
 type RenderingServerTextureLayeredType int
 
 const (
 	RENDERING_SERVER_TEXTURE_LAYERED_TYPE_TEXTURE_LAYERED_2_D_ARRAY     RenderingServerTextureLayeredType = 0
-	RENDERING_SERVER_TEXTURE_LAYERED_TYPE_TEXTURE_LAYERED_CUBEMAP                                         = 1
-	RENDERING_SERVER_TEXTURE_LAYERED_TYPE_TEXTURE_LAYERED_CUBEMAP_ARRAY                                   = 2
+	RENDERING_SERVER_TEXTURE_LAYERED_TYPE_TEXTURE_LAYERED_CUBEMAP       RenderingServerTextureLayeredType = 1
+	RENDERING_SERVER_TEXTURE_LAYERED_TYPE_TEXTURE_LAYERED_CUBEMAP_ARRAY RenderingServerTextureLayeredType = 2
 )
 
 type RenderingServerCubeMapLayer int
 
 const (
 	RENDERING_SERVER_CUBE_MAP_LAYER_CUBEMAP_LAYER_LEFT   RenderingServerCubeMapLayer = 0
-	RENDERING_SERVER_CUBE_MAP_LAYER_CUBEMAP_LAYER_RIGHT                              = 1
-	RENDERING_SERVER_CUBE_MAP_LAYER_CUBEMAP_LAYER_BOTTOM                             = 2
-	RENDERING_SERVER_CUBE_MAP_LAYER_CUBEMAP_LAYER_TOP                                = 3
-	RENDERING_SERVER_CUBE_MAP_LAYER_CUBEMAP_LAYER_FRONT                              = 4
-	RENDERING_SERVER_CUBE_MAP_LAYER_CUBEMAP_LAYER_BACK                               = 5
+	RENDERING_SERVER_CUBE_MAP_LAYER_CUBEMAP_LAYER_RIGHT  RenderingServerCubeMapLayer = 1
+	RENDERING_SERVER_CUBE_MAP_LAYER_CUBEMAP_LAYER_BOTTOM RenderingServerCubeMapLayer = 2
+	RENDERING_SERVER_CUBE_MAP_LAYER_CUBEMAP_LAYER_TOP    RenderingServerCubeMapLayer = 3
+	RENDERING_SERVER_CUBE_MAP_LAYER_CUBEMAP_LAYER_FRONT  RenderingServerCubeMapLayer = 4
+	RENDERING_SERVER_CUBE_MAP_LAYER_CUBEMAP_LAYER_BACK   RenderingServerCubeMapLayer = 5
 )
 
 type RenderingServerShaderMode int
 
 const (
 	RENDERING_SERVER_SHADER_MODE_SHADER_SPATIAL     RenderingServerShaderMode = 0
-	RENDERING_SERVER_SHADER_MODE_SHADER_CANVAS_ITEM                           = 1
-	RENDERING_SERVER_SHADER_MODE_SHADER_PARTICLES                             = 2
-	RENDERING_SERVER_SHADER_MODE_SHADER_SKY                                   = 3
-	RENDERING_SERVER_SHADER_MODE_SHADER_FOG                                   = 4
-	RENDERING_SERVER_SHADER_MODE_SHADER_MAX                                   = 5
+	RENDERING_SERVER_SHADER_MODE_SHADER_CANVAS_ITEM RenderingServerShaderMode = 1
+	RENDERING_SERVER_SHADER_MODE_SHADER_PARTICLES   RenderingServerShaderMode = 2
+	RENDERING_SERVER_SHADER_MODE_SHADER_SKY         RenderingServerShaderMode = 3
+	RENDERING_SERVER_SHADER_MODE_SHADER_FOG         RenderingServerShaderMode = 4
+	RENDERING_SERVER_SHADER_MODE_SHADER_MAX         RenderingServerShaderMode = 5
 )
 
 type RenderingServerArrayType int
 
 const (
 	RENDERING_SERVER_ARRAY_TYPE_ARRAY_VERTEX   RenderingServerArrayType = 0
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_NORMAL                            = 1
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_TANGENT                           = 2
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_COLOR                             = 3
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_TEX_UV                            = 4
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_TEX_UV_2                          = 5
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_CUSTOM_0                          = 6
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_CUSTOM_1                          = 7
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_CUSTOM_2                          = 8
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_CUSTOM_3                          = 9
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_BONES                             = 10
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_WEIGHTS                           = 11
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_INDEX                             = 12
-	RENDERING_SERVER_ARRAY_TYPE_ARRAY_MAX                               = 13
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_NORMAL   RenderingServerArrayType = 1
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_TANGENT  RenderingServerArrayType = 2
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_COLOR    RenderingServerArrayType = 3
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_TEX_UV   RenderingServerArrayType = 4
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_TEX_UV_2 RenderingServerArrayType = 5
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_CUSTOM_0 RenderingServerArrayType = 6
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_CUSTOM_1 RenderingServerArrayType = 7
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_CUSTOM_2 RenderingServerArrayType = 8
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_CUSTOM_3 RenderingServerArrayType = 9
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_BONES    RenderingServerArrayType = 10
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_WEIGHTS  RenderingServerArrayType = 11
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_INDEX    RenderingServerArrayType = 12
+	RENDERING_SERVER_ARRAY_TYPE_ARRAY_MAX      RenderingServerArrayType = 13
 )
 
 type RenderingServerArrayCustomFormat int
 
 const (
 	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_8_UNORM RenderingServerArrayCustomFormat = 0
-	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_8_SNORM                                  = 1
-	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RG_HALF                                       = 2
-	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_HALF                                     = 3
-	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_R_FLOAT                                       = 4
-	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RG_FLOAT                                      = 5
-	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGB_FLOAT                                     = 6
-	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_FLOAT                                    = 7
-	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_MAX                                           = 8
+	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_8_SNORM RenderingServerArrayCustomFormat = 1
+	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RG_HALF      RenderingServerArrayCustomFormat = 2
+	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_HALF    RenderingServerArrayCustomFormat = 3
+	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_R_FLOAT      RenderingServerArrayCustomFormat = 4
+	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RG_FLOAT     RenderingServerArrayCustomFormat = 5
+	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGB_FLOAT    RenderingServerArrayCustomFormat = 6
+	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_RGBA_FLOAT   RenderingServerArrayCustomFormat = 7
+	RENDERING_SERVER_ARRAY_CUSTOM_FORMAT_ARRAY_CUSTOM_MAX          RenderingServerArrayCustomFormat = 8
 )
 
 type RenderingServerArrayFormat int
 
 const (
 	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_VERTEX                RenderingServerArrayFormat = 1
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_NORMAL                                           = 2
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TANGENT                                          = 4
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_COLOR                                            = 8
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV                                           = 16
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV_2                                         = 32
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0                                         = 64
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1                                         = 128
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2                                         = 256
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3                                         = 512
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_BONES                                            = 1024
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_WEIGHTS                                          = 2048
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_INDEX                                            = 4096
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_BLEND_SHAPE_MASK                                 = 7
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BASE                                      = 13
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BITS                                      = 3
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0_SHIFT                                   = 13
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1_SHIFT                                   = 16
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2_SHIFT                                   = 19
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3_SHIFT                                   = 22
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_MASK                                      = 7
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_COMPRESS_FLAGS_BASE                                     = 25
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_2_D_VERTICES                                   = 33554432
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_DYNAMIC_UPDATE                                 = 67108864
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_8_BONE_WEIGHTS                                 = 134217728
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USES_EMPTY_VERTEX_ARRAY                            = 268435456
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_COMPRESS_ATTRIBUTES                                = 536870912
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_BASE                                = 35
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_SHIFT                               = 35
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_1                                   = 0
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_2                                   = 34359738368
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_CURRENT_VERSION                             = 34359738368
-	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_MASK                                = 255
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_NORMAL                RenderingServerArrayFormat = 2
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TANGENT               RenderingServerArrayFormat = 4
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_COLOR                 RenderingServerArrayFormat = 8
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV                RenderingServerArrayFormat = 16
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_TEX_UV_2              RenderingServerArrayFormat = 32
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0              RenderingServerArrayFormat = 64
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1              RenderingServerArrayFormat = 128
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2              RenderingServerArrayFormat = 256
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3              RenderingServerArrayFormat = 512
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_BONES                 RenderingServerArrayFormat = 1024
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_WEIGHTS               RenderingServerArrayFormat = 2048
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_INDEX                 RenderingServerArrayFormat = 4096
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_BLEND_SHAPE_MASK      RenderingServerArrayFormat = 7
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BASE           RenderingServerArrayFormat = 13
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_BITS           RenderingServerArrayFormat = 3
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_0_SHIFT        RenderingServerArrayFormat = 13
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_1_SHIFT        RenderingServerArrayFormat = 16
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_2_SHIFT        RenderingServerArrayFormat = 19
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_3_SHIFT        RenderingServerArrayFormat = 22
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FORMAT_CUSTOM_MASK           RenderingServerArrayFormat = 7
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_COMPRESS_FLAGS_BASE          RenderingServerArrayFormat = 25
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_2_D_VERTICES        RenderingServerArrayFormat = 33554432
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_DYNAMIC_UPDATE      RenderingServerArrayFormat = 67108864
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USE_8_BONE_WEIGHTS      RenderingServerArrayFormat = 134217728
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_USES_EMPTY_VERTEX_ARRAY RenderingServerArrayFormat = 268435456
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_COMPRESS_ATTRIBUTES     RenderingServerArrayFormat = 536870912
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_BASE     RenderingServerArrayFormat = 35
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_SHIFT    RenderingServerArrayFormat = 35
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_1        RenderingServerArrayFormat = 0
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_2        RenderingServerArrayFormat = 34359738368
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_CURRENT_VERSION  RenderingServerArrayFormat = 34359738368
+	RENDERING_SERVER_ARRAY_FORMAT_ARRAY_FLAG_FORMAT_VERSION_MASK     RenderingServerArrayFormat = 255
 )
 
 type RenderingServerPrimitiveType int
 
 const (
 	RENDERING_SERVER_PRIMITIVE_TYPE_PRIMITIVE_POINTS         RenderingServerPrimitiveType = 0
-	RENDERING_SERVER_PRIMITIVE_TYPE_PRIMITIVE_LINES                                       = 1
-	RENDERING_SERVER_PRIMITIVE_TYPE_PRIMITIVE_LINE_STRIP                                  = 2
-	RENDERING_SERVER_PRIMITIVE_TYPE_PRIMITIVE_TRIANGLES                                   = 3
-	RENDERING_SERVER_PRIMITIVE_TYPE_PRIMITIVE_TRIANGLE_STRIP                              = 4
-	RENDERING_SERVER_PRIMITIVE_TYPE_PRIMITIVE_MAX                                         = 5
+	RENDERING_SERVER_PRIMITIVE_TYPE_PRIMITIVE_LINES          RenderingServerPrimitiveType = 1
+	RENDERING_SERVER_PRIMITIVE_TYPE_PRIMITIVE_LINE_STRIP     RenderingServerPrimitiveType = 2
+	RENDERING_SERVER_PRIMITIVE_TYPE_PRIMITIVE_TRIANGLES      RenderingServerPrimitiveType = 3
+	RENDERING_SERVER_PRIMITIVE_TYPE_PRIMITIVE_TRIANGLE_STRIP RenderingServerPrimitiveType = 4
+	RENDERING_SERVER_PRIMITIVE_TYPE_PRIMITIVE_MAX            RenderingServerPrimitiveType = 5
 )
 
 type RenderingServerBlendShapeMode int
 
 const (
 	RENDERING_SERVER_BLEND_SHAPE_MODE_BLEND_SHAPE_MODE_NORMALIZED RenderingServerBlendShapeMode = 0
-	RENDERING_SERVER_BLEND_SHAPE_MODE_BLEND_SHAPE_MODE_RELATIVE                                 = 1
+	RENDERING_SERVER_BLEND_SHAPE_MODE_BLEND_SHAPE_MODE_RELATIVE   RenderingServerBlendShapeMode = 1
 )
 
 type RenderingServerMultimeshTransformFormat int
 
 const (
 	RENDERING_SERVER_MULTIMESH_TRANSFORM_FORMAT_MULTIMESH_TRANSFORM_2_D RenderingServerMultimeshTransformFormat = 0
-	RENDERING_SERVER_MULTIMESH_TRANSFORM_FORMAT_MULTIMESH_TRANSFORM_3_D                                         = 1
+	RENDERING_SERVER_MULTIMESH_TRANSFORM_FORMAT_MULTIMESH_TRANSFORM_3_D RenderingServerMultimeshTransformFormat = 1
+)
+
+type RenderingServerMultimeshPhysicsInterpolationQuality int
+
+const (
+	RENDERING_SERVER_MULTIMESH_PHYSICS_INTERPOLATION_QUALITY_MULTIMESH_INTERP_QUALITY_FAST RenderingServerMultimeshPhysicsInterpolationQuality = 0
+	RENDERING_SERVER_MULTIMESH_PHYSICS_INTERPOLATION_QUALITY_MULTIMESH_INTERP_QUALITY_HIGH RenderingServerMultimeshPhysicsInterpolationQuality = 1
 )
 
 type RenderingServerLightProjectorFilter int
 
 const (
 	RENDERING_SERVER_LIGHT_PROJECTOR_FILTER_LIGHT_PROJECTOR_FILTER_NEAREST                     RenderingServerLightProjectorFilter = 0
-	RENDERING_SERVER_LIGHT_PROJECTOR_FILTER_LIGHT_PROJECTOR_FILTER_LINEAR                                                          = 1
-	RENDERING_SERVER_LIGHT_PROJECTOR_FILTER_LIGHT_PROJECTOR_FILTER_NEAREST_MIPMAPS                                                 = 2
-	RENDERING_SERVER_LIGHT_PROJECTOR_FILTER_LIGHT_PROJECTOR_FILTER_LINEAR_MIPMAPS                                                  = 3
-	RENDERING_SERVER_LIGHT_PROJECTOR_FILTER_LIGHT_PROJECTOR_FILTER_NEAREST_MIPMAPS_ANISOTROPIC                                     = 4
-	RENDERING_SERVER_LIGHT_PROJECTOR_FILTER_LIGHT_PROJECTOR_FILTER_LINEAR_MIPMAPS_ANISOTROPIC                                      = 5
+	RENDERING_SERVER_LIGHT_PROJECTOR_FILTER_LIGHT_PROJECTOR_FILTER_LINEAR                      RenderingServerLightProjectorFilter = 1
+	RENDERING_SERVER_LIGHT_PROJECTOR_FILTER_LIGHT_PROJECTOR_FILTER_NEAREST_MIPMAPS             RenderingServerLightProjectorFilter = 2
+	RENDERING_SERVER_LIGHT_PROJECTOR_FILTER_LIGHT_PROJECTOR_FILTER_LINEAR_MIPMAPS              RenderingServerLightProjectorFilter = 3
+	RENDERING_SERVER_LIGHT_PROJECTOR_FILTER_LIGHT_PROJECTOR_FILTER_NEAREST_MIPMAPS_ANISOTROPIC RenderingServerLightProjectorFilter = 4
+	RENDERING_SERVER_LIGHT_PROJECTOR_FILTER_LIGHT_PROJECTOR_FILTER_LINEAR_MIPMAPS_ANISOTROPIC  RenderingServerLightProjectorFilter = 5
 )
 
 type RenderingServerLightType int
 
 const (
 	RENDERING_SERVER_LIGHT_TYPE_LIGHT_DIRECTIONAL RenderingServerLightType = 0
-	RENDERING_SERVER_LIGHT_TYPE_LIGHT_OMNI                                 = 1
-	RENDERING_SERVER_LIGHT_TYPE_LIGHT_SPOT                                 = 2
+	RENDERING_SERVER_LIGHT_TYPE_LIGHT_OMNI        RenderingServerLightType = 1
+	RENDERING_SERVER_LIGHT_TYPE_LIGHT_SPOT        RenderingServerLightType = 2
 )
 
 type RenderingServerLightParam int
 
 const (
 	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_ENERGY                RenderingServerLightParam = 0
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_INDIRECT_ENERGY                                 = 1
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_VOLUMETRIC_FOG_ENERGY                           = 2
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SPECULAR                                        = 3
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_RANGE                                           = 4
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SIZE                                            = 5
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_ATTENUATION                                     = 6
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SPOT_ANGLE                                      = 7
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SPOT_ATTENUATION                                = 8
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_MAX_DISTANCE                             = 9
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_SPLIT_1_OFFSET                           = 10
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_SPLIT_2_OFFSET                           = 11
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_SPLIT_3_OFFSET                           = 12
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_FADE_START                               = 13
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_NORMAL_BIAS                              = 14
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_BIAS                                     = 15
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_PANCAKE_SIZE                             = 16
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_OPACITY                                  = 17
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_BLUR                                     = 18
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_TRANSMITTANCE_BIAS                              = 19
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_INTENSITY                                       = 20
-	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_MAX                                             = 21
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_INDIRECT_ENERGY       RenderingServerLightParam = 1
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_VOLUMETRIC_FOG_ENERGY RenderingServerLightParam = 2
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SPECULAR              RenderingServerLightParam = 3
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_RANGE                 RenderingServerLightParam = 4
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SIZE                  RenderingServerLightParam = 5
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_ATTENUATION           RenderingServerLightParam = 6
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SPOT_ANGLE            RenderingServerLightParam = 7
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SPOT_ATTENUATION      RenderingServerLightParam = 8
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_MAX_DISTANCE   RenderingServerLightParam = 9
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_SPLIT_1_OFFSET RenderingServerLightParam = 10
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_SPLIT_2_OFFSET RenderingServerLightParam = 11
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_SPLIT_3_OFFSET RenderingServerLightParam = 12
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_FADE_START     RenderingServerLightParam = 13
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_NORMAL_BIAS    RenderingServerLightParam = 14
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_BIAS           RenderingServerLightParam = 15
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_PANCAKE_SIZE   RenderingServerLightParam = 16
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_OPACITY        RenderingServerLightParam = 17
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_SHADOW_BLUR           RenderingServerLightParam = 18
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_TRANSMITTANCE_BIAS    RenderingServerLightParam = 19
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_INTENSITY             RenderingServerLightParam = 20
+	RENDERING_SERVER_LIGHT_PARAM_LIGHT_PARAM_MAX                   RenderingServerLightParam = 21
 )
 
 type RenderingServerLightBakeMode int
 
 const (
 	RENDERING_SERVER_LIGHT_BAKE_MODE_LIGHT_BAKE_DISABLED RenderingServerLightBakeMode = 0
-	RENDERING_SERVER_LIGHT_BAKE_MODE_LIGHT_BAKE_STATIC                                = 1
-	RENDERING_SERVER_LIGHT_BAKE_MODE_LIGHT_BAKE_DYNAMIC                               = 2
+	RENDERING_SERVER_LIGHT_BAKE_MODE_LIGHT_BAKE_STATIC   RenderingServerLightBakeMode = 1
+	RENDERING_SERVER_LIGHT_BAKE_MODE_LIGHT_BAKE_DYNAMIC  RenderingServerLightBakeMode = 2
 )
 
 type RenderingServerLightOmniShadowMode int
 
 const (
 	RENDERING_SERVER_LIGHT_OMNI_SHADOW_MODE_LIGHT_OMNI_SHADOW_DUAL_PARABOLOID RenderingServerLightOmniShadowMode = 0
-	RENDERING_SERVER_LIGHT_OMNI_SHADOW_MODE_LIGHT_OMNI_SHADOW_CUBE                                               = 1
+	RENDERING_SERVER_LIGHT_OMNI_SHADOW_MODE_LIGHT_OMNI_SHADOW_CUBE            RenderingServerLightOmniShadowMode = 1
 )
 
 type RenderingServerLightDirectionalShadowMode int
 
 const (
 	RENDERING_SERVER_LIGHT_DIRECTIONAL_SHADOW_MODE_LIGHT_DIRECTIONAL_SHADOW_ORTHOGONAL        RenderingServerLightDirectionalShadowMode = 0
-	RENDERING_SERVER_LIGHT_DIRECTIONAL_SHADOW_MODE_LIGHT_DIRECTIONAL_SHADOW_PARALLEL_2_SPLITS                                           = 1
-	RENDERING_SERVER_LIGHT_DIRECTIONAL_SHADOW_MODE_LIGHT_DIRECTIONAL_SHADOW_PARALLEL_4_SPLITS                                           = 2
+	RENDERING_SERVER_LIGHT_DIRECTIONAL_SHADOW_MODE_LIGHT_DIRECTIONAL_SHADOW_PARALLEL_2_SPLITS RenderingServerLightDirectionalShadowMode = 1
+	RENDERING_SERVER_LIGHT_DIRECTIONAL_SHADOW_MODE_LIGHT_DIRECTIONAL_SHADOW_PARALLEL_4_SPLITS RenderingServerLightDirectionalShadowMode = 2
 )
 
 type RenderingServerLightDirectionalSkyMode int
 
 const (
 	RENDERING_SERVER_LIGHT_DIRECTIONAL_SKY_MODE_LIGHT_DIRECTIONAL_SKY_MODE_LIGHT_AND_SKY RenderingServerLightDirectionalSkyMode = 0
-	RENDERING_SERVER_LIGHT_DIRECTIONAL_SKY_MODE_LIGHT_DIRECTIONAL_SKY_MODE_LIGHT_ONLY                                           = 1
-	RENDERING_SERVER_LIGHT_DIRECTIONAL_SKY_MODE_LIGHT_DIRECTIONAL_SKY_MODE_SKY_ONLY                                             = 2
+	RENDERING_SERVER_LIGHT_DIRECTIONAL_SKY_MODE_LIGHT_DIRECTIONAL_SKY_MODE_LIGHT_ONLY    RenderingServerLightDirectionalSkyMode = 1
+	RENDERING_SERVER_LIGHT_DIRECTIONAL_SKY_MODE_LIGHT_DIRECTIONAL_SKY_MODE_SKY_ONLY      RenderingServerLightDirectionalSkyMode = 2
 )
 
 type RenderingServerShadowQuality int
 
 const (
 	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_HARD          RenderingServerShadowQuality = 0
-	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_SOFT_VERY_LOW                              = 1
-	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_SOFT_LOW                                   = 2
-	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_SOFT_MEDIUM                                = 3
-	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_SOFT_HIGH                                  = 4
-	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_SOFT_ULTRA                                 = 5
-	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_MAX                                        = 6
+	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_SOFT_VERY_LOW RenderingServerShadowQuality = 1
+	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_SOFT_LOW      RenderingServerShadowQuality = 2
+	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_SOFT_MEDIUM   RenderingServerShadowQuality = 3
+	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_SOFT_HIGH     RenderingServerShadowQuality = 4
+	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_SOFT_ULTRA    RenderingServerShadowQuality = 5
+	RENDERING_SERVER_SHADOW_QUALITY_SHADOW_QUALITY_MAX           RenderingServerShadowQuality = 6
 )
 
 type RenderingServerReflectionProbeUpdateMode int
 
 const (
 	RENDERING_SERVER_REFLECTION_PROBE_UPDATE_MODE_REFLECTION_PROBE_UPDATE_ONCE   RenderingServerReflectionProbeUpdateMode = 0
-	RENDERING_SERVER_REFLECTION_PROBE_UPDATE_MODE_REFLECTION_PROBE_UPDATE_ALWAYS                                          = 1
+	RENDERING_SERVER_REFLECTION_PROBE_UPDATE_MODE_REFLECTION_PROBE_UPDATE_ALWAYS RenderingServerReflectionProbeUpdateMode = 1
 )
 
 type RenderingServerReflectionProbeAmbientMode int
 
 const (
 	RENDERING_SERVER_REFLECTION_PROBE_AMBIENT_MODE_REFLECTION_PROBE_AMBIENT_DISABLED    RenderingServerReflectionProbeAmbientMode = 0
-	RENDERING_SERVER_REFLECTION_PROBE_AMBIENT_MODE_REFLECTION_PROBE_AMBIENT_ENVIRONMENT                                           = 1
-	RENDERING_SERVER_REFLECTION_PROBE_AMBIENT_MODE_REFLECTION_PROBE_AMBIENT_COLOR                                                 = 2
+	RENDERING_SERVER_REFLECTION_PROBE_AMBIENT_MODE_REFLECTION_PROBE_AMBIENT_ENVIRONMENT RenderingServerReflectionProbeAmbientMode = 1
+	RENDERING_SERVER_REFLECTION_PROBE_AMBIENT_MODE_REFLECTION_PROBE_AMBIENT_COLOR       RenderingServerReflectionProbeAmbientMode = 2
 )
 
 type RenderingServerDecalTexture int
 
 const (
 	RENDERING_SERVER_DECAL_TEXTURE_DECAL_TEXTURE_ALBEDO   RenderingServerDecalTexture = 0
-	RENDERING_SERVER_DECAL_TEXTURE_DECAL_TEXTURE_NORMAL                               = 1
-	RENDERING_SERVER_DECAL_TEXTURE_DECAL_TEXTURE_ORM                                  = 2
-	RENDERING_SERVER_DECAL_TEXTURE_DECAL_TEXTURE_EMISSION                             = 3
-	RENDERING_SERVER_DECAL_TEXTURE_DECAL_TEXTURE_MAX                                  = 4
+	RENDERING_SERVER_DECAL_TEXTURE_DECAL_TEXTURE_NORMAL   RenderingServerDecalTexture = 1
+	RENDERING_SERVER_DECAL_TEXTURE_DECAL_TEXTURE_ORM      RenderingServerDecalTexture = 2
+	RENDERING_SERVER_DECAL_TEXTURE_DECAL_TEXTURE_EMISSION RenderingServerDecalTexture = 3
+	RENDERING_SERVER_DECAL_TEXTURE_DECAL_TEXTURE_MAX      RenderingServerDecalTexture = 4
 )
 
 type RenderingServerDecalFilter int
 
 const (
 	RENDERING_SERVER_DECAL_FILTER_DECAL_FILTER_NEAREST                     RenderingServerDecalFilter = 0
-	RENDERING_SERVER_DECAL_FILTER_DECAL_FILTER_LINEAR                                                 = 1
-	RENDERING_SERVER_DECAL_FILTER_DECAL_FILTER_NEAREST_MIPMAPS                                        = 2
-	RENDERING_SERVER_DECAL_FILTER_DECAL_FILTER_LINEAR_MIPMAPS                                         = 3
-	RENDERING_SERVER_DECAL_FILTER_DECAL_FILTER_NEAREST_MIPMAPS_ANISOTROPIC                            = 4
-	RENDERING_SERVER_DECAL_FILTER_DECAL_FILTER_LINEAR_MIPMAPS_ANISOTROPIC                             = 5
+	RENDERING_SERVER_DECAL_FILTER_DECAL_FILTER_LINEAR                      RenderingServerDecalFilter = 1
+	RENDERING_SERVER_DECAL_FILTER_DECAL_FILTER_NEAREST_MIPMAPS             RenderingServerDecalFilter = 2
+	RENDERING_SERVER_DECAL_FILTER_DECAL_FILTER_LINEAR_MIPMAPS              RenderingServerDecalFilter = 3
+	RENDERING_SERVER_DECAL_FILTER_DECAL_FILTER_NEAREST_MIPMAPS_ANISOTROPIC RenderingServerDecalFilter = 4
+	RENDERING_SERVER_DECAL_FILTER_DECAL_FILTER_LINEAR_MIPMAPS_ANISOTROPIC  RenderingServerDecalFilter = 5
 )
 
 type RenderingServerVoxelGIQuality int
 
 const (
 	RENDERING_SERVER_VOXEL_GI_QUALITY_VOXEL_GI_QUALITY_LOW  RenderingServerVoxelGIQuality = 0
-	RENDERING_SERVER_VOXEL_GI_QUALITY_VOXEL_GI_QUALITY_HIGH                               = 1
+	RENDERING_SERVER_VOXEL_GI_QUALITY_VOXEL_GI_QUALITY_HIGH RenderingServerVoxelGIQuality = 1
 )
 
 type RenderingServerParticlesMode int
 
 const (
 	RENDERING_SERVER_PARTICLES_MODE_PARTICLES_MODE_2_D RenderingServerParticlesMode = 0
-	RENDERING_SERVER_PARTICLES_MODE_PARTICLES_MODE_3_D                              = 1
+	RENDERING_SERVER_PARTICLES_MODE_PARTICLES_MODE_3_D RenderingServerParticlesMode = 1
 )
 
 type RenderingServerParticlesTransformAlign int
 
 const (
 	RENDERING_SERVER_PARTICLES_TRANSFORM_ALIGN_PARTICLES_TRANSFORM_ALIGN_DISABLED                  RenderingServerParticlesTransformAlign = 0
-	RENDERING_SERVER_PARTICLES_TRANSFORM_ALIGN_PARTICLES_TRANSFORM_ALIGN_Z_BILLBOARD                                                      = 1
-	RENDERING_SERVER_PARTICLES_TRANSFORM_ALIGN_PARTICLES_TRANSFORM_ALIGN_Y_TO_VELOCITY                                                    = 2
-	RENDERING_SERVER_PARTICLES_TRANSFORM_ALIGN_PARTICLES_TRANSFORM_ALIGN_Z_BILLBOARD_Y_TO_VELOCITY                                        = 3
+	RENDERING_SERVER_PARTICLES_TRANSFORM_ALIGN_PARTICLES_TRANSFORM_ALIGN_Z_BILLBOARD               RenderingServerParticlesTransformAlign = 1
+	RENDERING_SERVER_PARTICLES_TRANSFORM_ALIGN_PARTICLES_TRANSFORM_ALIGN_Y_TO_VELOCITY             RenderingServerParticlesTransformAlign = 2
+	RENDERING_SERVER_PARTICLES_TRANSFORM_ALIGN_PARTICLES_TRANSFORM_ALIGN_Z_BILLBOARD_Y_TO_VELOCITY RenderingServerParticlesTransformAlign = 3
 )
 
 type RenderingServerParticlesDrawOrder int
 
 const (
 	RENDERING_SERVER_PARTICLES_DRAW_ORDER_PARTICLES_DRAW_ORDER_INDEX            RenderingServerParticlesDrawOrder = 0
-	RENDERING_SERVER_PARTICLES_DRAW_ORDER_PARTICLES_DRAW_ORDER_LIFETIME                                           = 1
-	RENDERING_SERVER_PARTICLES_DRAW_ORDER_PARTICLES_DRAW_ORDER_REVERSE_LIFETIME                                   = 2
-	RENDERING_SERVER_PARTICLES_DRAW_ORDER_PARTICLES_DRAW_ORDER_VIEW_DEPTH                                         = 3
+	RENDERING_SERVER_PARTICLES_DRAW_ORDER_PARTICLES_DRAW_ORDER_LIFETIME         RenderingServerParticlesDrawOrder = 1
+	RENDERING_SERVER_PARTICLES_DRAW_ORDER_PARTICLES_DRAW_ORDER_REVERSE_LIFETIME RenderingServerParticlesDrawOrder = 2
+	RENDERING_SERVER_PARTICLES_DRAW_ORDER_PARTICLES_DRAW_ORDER_VIEW_DEPTH       RenderingServerParticlesDrawOrder = 3
 )
 
 type RenderingServerParticlesCollisionType int
 
 const (
 	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_SPHERE_ATTRACT       RenderingServerParticlesCollisionType = 0
-	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_BOX_ATTRACT                                                = 1
-	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_VECTOR_FIELD_ATTRACT                                       = 2
-	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_SPHERE_COLLIDE                                             = 3
-	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_BOX_COLLIDE                                                = 4
-	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_SDF_COLLIDE                                                = 5
-	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_HEIGHTFIELD_COLLIDE                                        = 6
+	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_BOX_ATTRACT          RenderingServerParticlesCollisionType = 1
+	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_VECTOR_FIELD_ATTRACT RenderingServerParticlesCollisionType = 2
+	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_SPHERE_COLLIDE       RenderingServerParticlesCollisionType = 3
+	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_BOX_COLLIDE          RenderingServerParticlesCollisionType = 4
+	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_SDF_COLLIDE          RenderingServerParticlesCollisionType = 5
+	RENDERING_SERVER_PARTICLES_COLLISION_TYPE_PARTICLES_COLLISION_TYPE_HEIGHTFIELD_COLLIDE  RenderingServerParticlesCollisionType = 6
 )
 
 type RenderingServerParticlesCollisionHeightfieldResolution int
 
 const (
 	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_256  RenderingServerParticlesCollisionHeightfieldResolution = 0
-	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_512                                                         = 1
-	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_1024                                                        = 2
-	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_2048                                                        = 3
-	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_4096                                                        = 4
-	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_8192                                                        = 5
-	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_MAX                                                         = 6
+	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_512  RenderingServerParticlesCollisionHeightfieldResolution = 1
+	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_1024 RenderingServerParticlesCollisionHeightfieldResolution = 2
+	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_2048 RenderingServerParticlesCollisionHeightfieldResolution = 3
+	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_4096 RenderingServerParticlesCollisionHeightfieldResolution = 4
+	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_8192 RenderingServerParticlesCollisionHeightfieldResolution = 5
+	RENDERING_SERVER_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_MAX  RenderingServerParticlesCollisionHeightfieldResolution = 6
 )
 
 type RenderingServerFogVolumeShape int
 
 const (
 	RENDERING_SERVER_FOG_VOLUME_SHAPE_FOG_VOLUME_SHAPE_ELLIPSOID RenderingServerFogVolumeShape = 0
-	RENDERING_SERVER_FOG_VOLUME_SHAPE_FOG_VOLUME_SHAPE_CONE                                    = 1
-	RENDERING_SERVER_FOG_VOLUME_SHAPE_FOG_VOLUME_SHAPE_CYLINDER                                = 2
-	RENDERING_SERVER_FOG_VOLUME_SHAPE_FOG_VOLUME_SHAPE_BOX                                     = 3
-	RENDERING_SERVER_FOG_VOLUME_SHAPE_FOG_VOLUME_SHAPE_WORLD                                   = 4
-	RENDERING_SERVER_FOG_VOLUME_SHAPE_FOG_VOLUME_SHAPE_MAX                                     = 5
+	RENDERING_SERVER_FOG_VOLUME_SHAPE_FOG_VOLUME_SHAPE_CONE      RenderingServerFogVolumeShape = 1
+	RENDERING_SERVER_FOG_VOLUME_SHAPE_FOG_VOLUME_SHAPE_CYLINDER  RenderingServerFogVolumeShape = 2
+	RENDERING_SERVER_FOG_VOLUME_SHAPE_FOG_VOLUME_SHAPE_BOX       RenderingServerFogVolumeShape = 3
+	RENDERING_SERVER_FOG_VOLUME_SHAPE_FOG_VOLUME_SHAPE_WORLD     RenderingServerFogVolumeShape = 4
+	RENDERING_SERVER_FOG_VOLUME_SHAPE_FOG_VOLUME_SHAPE_MAX       RenderingServerFogVolumeShape = 5
 )
 
 type RenderingServerViewportScaling3DMode int
 
 const (
-	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_BILINEAR RenderingServerViewportScaling3DMode = 0
-	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_FSR                                           = 1
-	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_FSR_2                                         = 2
-	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_MAX                                           = 3
+	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_BILINEAR         RenderingServerViewportScaling3DMode = 0
+	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_FSR              RenderingServerViewportScaling3DMode = 1
+	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_FSR_2            RenderingServerViewportScaling3DMode = 2
+	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_METALFX_SPATIAL  RenderingServerViewportScaling3DMode = 3
+	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_METALFX_TEMPORAL RenderingServerViewportScaling3DMode = 4
+	RENDERING_SERVER_VIEWPORT_SCALING_3_D_MODE_VIEWPORT_SCALING_3_D_MODE_MAX              RenderingServerViewportScaling3DMode = 5
 )
 
 type RenderingServerViewportUpdateMode int
 
 const (
 	RENDERING_SERVER_VIEWPORT_UPDATE_MODE_VIEWPORT_UPDATE_DISABLED            RenderingServerViewportUpdateMode = 0
-	RENDERING_SERVER_VIEWPORT_UPDATE_MODE_VIEWPORT_UPDATE_ONCE                                                  = 1
-	RENDERING_SERVER_VIEWPORT_UPDATE_MODE_VIEWPORT_UPDATE_WHEN_VISIBLE                                          = 2
-	RENDERING_SERVER_VIEWPORT_UPDATE_MODE_VIEWPORT_UPDATE_WHEN_PARENT_VISIBLE                                   = 3
-	RENDERING_SERVER_VIEWPORT_UPDATE_MODE_VIEWPORT_UPDATE_ALWAYS                                                = 4
+	RENDERING_SERVER_VIEWPORT_UPDATE_MODE_VIEWPORT_UPDATE_ONCE                RenderingServerViewportUpdateMode = 1
+	RENDERING_SERVER_VIEWPORT_UPDATE_MODE_VIEWPORT_UPDATE_WHEN_VISIBLE        RenderingServerViewportUpdateMode = 2
+	RENDERING_SERVER_VIEWPORT_UPDATE_MODE_VIEWPORT_UPDATE_WHEN_PARENT_VISIBLE RenderingServerViewportUpdateMode = 3
+	RENDERING_SERVER_VIEWPORT_UPDATE_MODE_VIEWPORT_UPDATE_ALWAYS              RenderingServerViewportUpdateMode = 4
 )
 
 type RenderingServerViewportClearMode int
 
 const (
 	RENDERING_SERVER_VIEWPORT_CLEAR_MODE_VIEWPORT_CLEAR_ALWAYS          RenderingServerViewportClearMode = 0
-	RENDERING_SERVER_VIEWPORT_CLEAR_MODE_VIEWPORT_CLEAR_NEVER                                            = 1
-	RENDERING_SERVER_VIEWPORT_CLEAR_MODE_VIEWPORT_CLEAR_ONLY_NEXT_FRAME                                  = 2
+	RENDERING_SERVER_VIEWPORT_CLEAR_MODE_VIEWPORT_CLEAR_NEVER           RenderingServerViewportClearMode = 1
+	RENDERING_SERVER_VIEWPORT_CLEAR_MODE_VIEWPORT_CLEAR_ONLY_NEXT_FRAME RenderingServerViewportClearMode = 2
 )
 
 type RenderingServerViewportEnvironmentMode int
 
 const (
 	RENDERING_SERVER_VIEWPORT_ENVIRONMENT_MODE_VIEWPORT_ENVIRONMENT_DISABLED RenderingServerViewportEnvironmentMode = 0
-	RENDERING_SERVER_VIEWPORT_ENVIRONMENT_MODE_VIEWPORT_ENVIRONMENT_ENABLED                                         = 1
-	RENDERING_SERVER_VIEWPORT_ENVIRONMENT_MODE_VIEWPORT_ENVIRONMENT_INHERIT                                         = 2
-	RENDERING_SERVER_VIEWPORT_ENVIRONMENT_MODE_VIEWPORT_ENVIRONMENT_MAX                                             = 3
+	RENDERING_SERVER_VIEWPORT_ENVIRONMENT_MODE_VIEWPORT_ENVIRONMENT_ENABLED  RenderingServerViewportEnvironmentMode = 1
+	RENDERING_SERVER_VIEWPORT_ENVIRONMENT_MODE_VIEWPORT_ENVIRONMENT_INHERIT  RenderingServerViewportEnvironmentMode = 2
+	RENDERING_SERVER_VIEWPORT_ENVIRONMENT_MODE_VIEWPORT_ENVIRONMENT_MAX      RenderingServerViewportEnvironmentMode = 3
 )
 
 type RenderingServerViewportSDFOversize int
 
 const (
 	RENDERING_SERVER_VIEWPORT_SDF_OVERSIZE_VIEWPORT_SDF_OVERSIZE_100_PERCENT RenderingServerViewportSDFOversize = 0
-	RENDERING_SERVER_VIEWPORT_SDF_OVERSIZE_VIEWPORT_SDF_OVERSIZE_120_PERCENT                                    = 1
-	RENDERING_SERVER_VIEWPORT_SDF_OVERSIZE_VIEWPORT_SDF_OVERSIZE_150_PERCENT                                    = 2
-	RENDERING_SERVER_VIEWPORT_SDF_OVERSIZE_VIEWPORT_SDF_OVERSIZE_200_PERCENT                                    = 3
-	RENDERING_SERVER_VIEWPORT_SDF_OVERSIZE_VIEWPORT_SDF_OVERSIZE_MAX                                            = 4
+	RENDERING_SERVER_VIEWPORT_SDF_OVERSIZE_VIEWPORT_SDF_OVERSIZE_120_PERCENT RenderingServerViewportSDFOversize = 1
+	RENDERING_SERVER_VIEWPORT_SDF_OVERSIZE_VIEWPORT_SDF_OVERSIZE_150_PERCENT RenderingServerViewportSDFOversize = 2
+	RENDERING_SERVER_VIEWPORT_SDF_OVERSIZE_VIEWPORT_SDF_OVERSIZE_200_PERCENT RenderingServerViewportSDFOversize = 3
+	RENDERING_SERVER_VIEWPORT_SDF_OVERSIZE_VIEWPORT_SDF_OVERSIZE_MAX         RenderingServerViewportSDFOversize = 4
 )
 
 type RenderingServerViewportSDFScale int
 
 const (
 	RENDERING_SERVER_VIEWPORT_SDF_SCALE_VIEWPORT_SDF_SCALE_100_PERCENT RenderingServerViewportSDFScale = 0
-	RENDERING_SERVER_VIEWPORT_SDF_SCALE_VIEWPORT_SDF_SCALE_50_PERCENT                                  = 1
-	RENDERING_SERVER_VIEWPORT_SDF_SCALE_VIEWPORT_SDF_SCALE_25_PERCENT                                  = 2
-	RENDERING_SERVER_VIEWPORT_SDF_SCALE_VIEWPORT_SDF_SCALE_MAX                                         = 3
+	RENDERING_SERVER_VIEWPORT_SDF_SCALE_VIEWPORT_SDF_SCALE_50_PERCENT  RenderingServerViewportSDFScale = 1
+	RENDERING_SERVER_VIEWPORT_SDF_SCALE_VIEWPORT_SDF_SCALE_25_PERCENT  RenderingServerViewportSDFScale = 2
+	RENDERING_SERVER_VIEWPORT_SDF_SCALE_VIEWPORT_SDF_SCALE_MAX         RenderingServerViewportSDFScale = 3
 )
 
 type RenderingServerViewportMSAA int
 
 const (
 	RENDERING_SERVER_VIEWPORT_MSAA_VIEWPORT_MSAA_DISABLED RenderingServerViewportMSAA = 0
-	RENDERING_SERVER_VIEWPORT_MSAA_VIEWPORT_MSAA_2_X                                  = 1
-	RENDERING_SERVER_VIEWPORT_MSAA_VIEWPORT_MSAA_4_X                                  = 2
-	RENDERING_SERVER_VIEWPORT_MSAA_VIEWPORT_MSAA_8_X                                  = 3
-	RENDERING_SERVER_VIEWPORT_MSAA_VIEWPORT_MSAA_MAX                                  = 4
+	RENDERING_SERVER_VIEWPORT_MSAA_VIEWPORT_MSAA_2_X      RenderingServerViewportMSAA = 1
+	RENDERING_SERVER_VIEWPORT_MSAA_VIEWPORT_MSAA_4_X      RenderingServerViewportMSAA = 2
+	RENDERING_SERVER_VIEWPORT_MSAA_VIEWPORT_MSAA_8_X      RenderingServerViewportMSAA = 3
+	RENDERING_SERVER_VIEWPORT_MSAA_VIEWPORT_MSAA_MAX      RenderingServerViewportMSAA = 4
+)
+
+type RenderingServerViewportAnisotropicFiltering int
+
+const (
+	RENDERING_SERVER_VIEWPORT_ANISOTROPIC_FILTERING_VIEWPORT_ANISOTROPY_DISABLED RenderingServerViewportAnisotropicFiltering = 0
+	RENDERING_SERVER_VIEWPORT_ANISOTROPIC_FILTERING_VIEWPORT_ANISOTROPY_2_X      RenderingServerViewportAnisotropicFiltering = 1
+	RENDERING_SERVER_VIEWPORT_ANISOTROPIC_FILTERING_VIEWPORT_ANISOTROPY_4_X      RenderingServerViewportAnisotropicFiltering = 2
+	RENDERING_SERVER_VIEWPORT_ANISOTROPIC_FILTERING_VIEWPORT_ANISOTROPY_8_X      RenderingServerViewportAnisotropicFiltering = 3
+	RENDERING_SERVER_VIEWPORT_ANISOTROPIC_FILTERING_VIEWPORT_ANISOTROPY_16_X     RenderingServerViewportAnisotropicFiltering = 4
+	RENDERING_SERVER_VIEWPORT_ANISOTROPIC_FILTERING_VIEWPORT_ANISOTROPY_MAX      RenderingServerViewportAnisotropicFiltering = 5
 )
 
 type RenderingServerViewportScreenSpaceAA int
 
 const (
 	RENDERING_SERVER_VIEWPORT_SCREEN_SPACE_AA_VIEWPORT_SCREEN_SPACE_AA_DISABLED RenderingServerViewportScreenSpaceAA = 0
-	RENDERING_SERVER_VIEWPORT_SCREEN_SPACE_AA_VIEWPORT_SCREEN_SPACE_AA_FXAA                                          = 1
-	RENDERING_SERVER_VIEWPORT_SCREEN_SPACE_AA_VIEWPORT_SCREEN_SPACE_AA_MAX                                           = 2
+	RENDERING_SERVER_VIEWPORT_SCREEN_SPACE_AA_VIEWPORT_SCREEN_SPACE_AA_FXAA     RenderingServerViewportScreenSpaceAA = 1
+	RENDERING_SERVER_VIEWPORT_SCREEN_SPACE_AA_VIEWPORT_SCREEN_SPACE_AA_SMAA     RenderingServerViewportScreenSpaceAA = 2
+	RENDERING_SERVER_VIEWPORT_SCREEN_SPACE_AA_VIEWPORT_SCREEN_SPACE_AA_MAX      RenderingServerViewportScreenSpaceAA = 3
 )
 
 type RenderingServerViewportOcclusionCullingBuildQuality int
 
 const (
 	RENDERING_SERVER_VIEWPORT_OCCLUSION_CULLING_BUILD_QUALITY_VIEWPORT_OCCLUSION_BUILD_QUALITY_LOW    RenderingServerViewportOcclusionCullingBuildQuality = 0
-	RENDERING_SERVER_VIEWPORT_OCCLUSION_CULLING_BUILD_QUALITY_VIEWPORT_OCCLUSION_BUILD_QUALITY_MEDIUM                                                     = 1
-	RENDERING_SERVER_VIEWPORT_OCCLUSION_CULLING_BUILD_QUALITY_VIEWPORT_OCCLUSION_BUILD_QUALITY_HIGH                                                       = 2
+	RENDERING_SERVER_VIEWPORT_OCCLUSION_CULLING_BUILD_QUALITY_VIEWPORT_OCCLUSION_BUILD_QUALITY_MEDIUM RenderingServerViewportOcclusionCullingBuildQuality = 1
+	RENDERING_SERVER_VIEWPORT_OCCLUSION_CULLING_BUILD_QUALITY_VIEWPORT_OCCLUSION_BUILD_QUALITY_HIGH   RenderingServerViewportOcclusionCullingBuildQuality = 2
 )
 
 type RenderingServerViewportRenderInfo int
 
 const (
 	RENDERING_SERVER_VIEWPORT_RENDER_INFO_VIEWPORT_RENDER_INFO_OBJECTS_IN_FRAME    RenderingServerViewportRenderInfo = 0
-	RENDERING_SERVER_VIEWPORT_RENDER_INFO_VIEWPORT_RENDER_INFO_PRIMITIVES_IN_FRAME                                   = 1
-	RENDERING_SERVER_VIEWPORT_RENDER_INFO_VIEWPORT_RENDER_INFO_DRAW_CALLS_IN_FRAME                                   = 2
-	RENDERING_SERVER_VIEWPORT_RENDER_INFO_VIEWPORT_RENDER_INFO_MAX                                                   = 3
+	RENDERING_SERVER_VIEWPORT_RENDER_INFO_VIEWPORT_RENDER_INFO_PRIMITIVES_IN_FRAME RenderingServerViewportRenderInfo = 1
+	RENDERING_SERVER_VIEWPORT_RENDER_INFO_VIEWPORT_RENDER_INFO_DRAW_CALLS_IN_FRAME RenderingServerViewportRenderInfo = 2
+	RENDERING_SERVER_VIEWPORT_RENDER_INFO_VIEWPORT_RENDER_INFO_MAX                 RenderingServerViewportRenderInfo = 3
 )
 
 type RenderingServerViewportRenderInfoType int
 
 const (
 	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_VISIBLE RenderingServerViewportRenderInfoType = 0
-	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_SHADOW                                        = 1
-	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_CANVAS                                        = 2
-	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_MAX                                           = 3
+	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_SHADOW  RenderingServerViewportRenderInfoType = 1
+	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_CANVAS  RenderingServerViewportRenderInfoType = 2
+	RENDERING_SERVER_VIEWPORT_RENDER_INFO_TYPE_VIEWPORT_RENDER_INFO_TYPE_MAX     RenderingServerViewportRenderInfoType = 3
 )
 
 type RenderingServerViewportDebugDraw int
 
 const (
 	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_DISABLED                  RenderingServerViewportDebugDraw = 0
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_UNSHADED                                                   = 1
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_LIGHTING                                                   = 2
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_OVERDRAW                                                   = 3
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_WIREFRAME                                                  = 4
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_NORMAL_BUFFER                                              = 5
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_VOXEL_GI_ALBEDO                                            = 6
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_VOXEL_GI_LIGHTING                                          = 7
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_VOXEL_GI_EMISSION                                          = 8
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SHADOW_ATLAS                                               = 9
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_DIRECTIONAL_SHADOW_ATLAS                                   = 10
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SCENE_LUMINANCE                                            = 11
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SSAO                                                       = 12
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SSIL                                                       = 13
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_PSSM_SPLITS                                                = 14
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_DECAL_ATLAS                                                = 15
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SDFGI                                                      = 16
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SDFGI_PROBES                                               = 17
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_GI_BUFFER                                                  = 18
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_DISABLE_LOD                                                = 19
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_CLUSTER_OMNI_LIGHTS                                        = 20
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_CLUSTER_SPOT_LIGHTS                                        = 21
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_CLUSTER_DECALS                                             = 22
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_CLUSTER_REFLECTION_PROBES                                  = 23
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_OCCLUDERS                                                  = 24
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_MOTION_VECTORS                                             = 25
-	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_INTERNAL_BUFFER                                            = 26
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_UNSHADED                  RenderingServerViewportDebugDraw = 1
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_LIGHTING                  RenderingServerViewportDebugDraw = 2
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_OVERDRAW                  RenderingServerViewportDebugDraw = 3
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_WIREFRAME                 RenderingServerViewportDebugDraw = 4
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_NORMAL_BUFFER             RenderingServerViewportDebugDraw = 5
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_VOXEL_GI_ALBEDO           RenderingServerViewportDebugDraw = 6
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_VOXEL_GI_LIGHTING         RenderingServerViewportDebugDraw = 7
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_VOXEL_GI_EMISSION         RenderingServerViewportDebugDraw = 8
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SHADOW_ATLAS              RenderingServerViewportDebugDraw = 9
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_DIRECTIONAL_SHADOW_ATLAS  RenderingServerViewportDebugDraw = 10
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SCENE_LUMINANCE           RenderingServerViewportDebugDraw = 11
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SSAO                      RenderingServerViewportDebugDraw = 12
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SSIL                      RenderingServerViewportDebugDraw = 13
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_PSSM_SPLITS               RenderingServerViewportDebugDraw = 14
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_DECAL_ATLAS               RenderingServerViewportDebugDraw = 15
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SDFGI                     RenderingServerViewportDebugDraw = 16
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_SDFGI_PROBES              RenderingServerViewportDebugDraw = 17
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_GI_BUFFER                 RenderingServerViewportDebugDraw = 18
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_DISABLE_LOD               RenderingServerViewportDebugDraw = 19
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_CLUSTER_OMNI_LIGHTS       RenderingServerViewportDebugDraw = 20
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_CLUSTER_SPOT_LIGHTS       RenderingServerViewportDebugDraw = 21
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_CLUSTER_DECALS            RenderingServerViewportDebugDraw = 22
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_CLUSTER_REFLECTION_PROBES RenderingServerViewportDebugDraw = 23
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_OCCLUDERS                 RenderingServerViewportDebugDraw = 24
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_MOTION_VECTORS            RenderingServerViewportDebugDraw = 25
+	RENDERING_SERVER_VIEWPORT_DEBUG_DRAW_VIEWPORT_DEBUG_DRAW_INTERNAL_BUFFER           RenderingServerViewportDebugDraw = 26
 )
 
 type RenderingServerViewportVRSMode int
 
 const (
 	RENDERING_SERVER_VIEWPORT_VRS_MODE_VIEWPORT_VRS_DISABLED RenderingServerViewportVRSMode = 0
-	RENDERING_SERVER_VIEWPORT_VRS_MODE_VIEWPORT_VRS_TEXTURE                                 = 1
-	RENDERING_SERVER_VIEWPORT_VRS_MODE_VIEWPORT_VRS_XR                                      = 2
-	RENDERING_SERVER_VIEWPORT_VRS_MODE_VIEWPORT_VRS_MAX                                     = 3
+	RENDERING_SERVER_VIEWPORT_VRS_MODE_VIEWPORT_VRS_TEXTURE  RenderingServerViewportVRSMode = 1
+	RENDERING_SERVER_VIEWPORT_VRS_MODE_VIEWPORT_VRS_XR       RenderingServerViewportVRSMode = 2
+	RENDERING_SERVER_VIEWPORT_VRS_MODE_VIEWPORT_VRS_MAX      RenderingServerViewportVRSMode = 3
 )
 
 type RenderingServerViewportVRSUpdateMode int
 
 const (
 	RENDERING_SERVER_VIEWPORT_VRS_UPDATE_MODE_VIEWPORT_VRS_UPDATE_DISABLED RenderingServerViewportVRSUpdateMode = 0
-	RENDERING_SERVER_VIEWPORT_VRS_UPDATE_MODE_VIEWPORT_VRS_UPDATE_ONCE                                          = 1
-	RENDERING_SERVER_VIEWPORT_VRS_UPDATE_MODE_VIEWPORT_VRS_UPDATE_ALWAYS                                        = 2
-	RENDERING_SERVER_VIEWPORT_VRS_UPDATE_MODE_VIEWPORT_VRS_UPDATE_MAX                                           = 3
+	RENDERING_SERVER_VIEWPORT_VRS_UPDATE_MODE_VIEWPORT_VRS_UPDATE_ONCE     RenderingServerViewportVRSUpdateMode = 1
+	RENDERING_SERVER_VIEWPORT_VRS_UPDATE_MODE_VIEWPORT_VRS_UPDATE_ALWAYS   RenderingServerViewportVRSUpdateMode = 2
+	RENDERING_SERVER_VIEWPORT_VRS_UPDATE_MODE_VIEWPORT_VRS_UPDATE_MAX      RenderingServerViewportVRSUpdateMode = 3
 )
 
 type RenderingServerSkyMode int
 
 const (
 	RENDERING_SERVER_SKY_MODE_SKY_MODE_AUTOMATIC   RenderingServerSkyMode = 0
-	RENDERING_SERVER_SKY_MODE_SKY_MODE_QUALITY                            = 1
-	RENDERING_SERVER_SKY_MODE_SKY_MODE_INCREMENTAL                        = 2
-	RENDERING_SERVER_SKY_MODE_SKY_MODE_REALTIME                           = 3
+	RENDERING_SERVER_SKY_MODE_SKY_MODE_QUALITY     RenderingServerSkyMode = 1
+	RENDERING_SERVER_SKY_MODE_SKY_MODE_INCREMENTAL RenderingServerSkyMode = 2
+	RENDERING_SERVER_SKY_MODE_SKY_MODE_REALTIME    RenderingServerSkyMode = 3
 )
 
 type RenderingServerCompositorEffectFlags int
 
 const (
 	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_ACCESS_RESOLVED_COLOR   RenderingServerCompositorEffectFlags = 1
-	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_ACCESS_RESOLVED_DEPTH                                        = 2
-	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_NEEDS_MOTION_VECTORS                                         = 4
-	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_NEEDS_ROUGHNESS                                              = 8
-	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_NEEDS_SEPARATE_SPECULAR                                      = 16
+	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_ACCESS_RESOLVED_DEPTH   RenderingServerCompositorEffectFlags = 2
+	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_NEEDS_MOTION_VECTORS    RenderingServerCompositorEffectFlags = 4
+	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_NEEDS_ROUGHNESS         RenderingServerCompositorEffectFlags = 8
+	RENDERING_SERVER_COMPOSITOR_EFFECT_FLAGS_COMPOSITOR_EFFECT_FLAG_NEEDS_SEPARATE_SPECULAR RenderingServerCompositorEffectFlags = 16
 )
 
 type RenderingServerCompositorEffectCallbackType int
 
 const (
 	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_PRE_OPAQUE       RenderingServerCompositorEffectCallbackType = 0
-	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_OPAQUE                                                  = 1
-	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_SKY                                                     = 2
-	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT                                              = 3
-	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_TRANSPARENT                                             = 4
-	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_ANY                                                          = -1
+	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_OPAQUE      RenderingServerCompositorEffectCallbackType = 1
+	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_SKY         RenderingServerCompositorEffectCallbackType = 2
+	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT  RenderingServerCompositorEffectCallbackType = 3
+	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_TRANSPARENT RenderingServerCompositorEffectCallbackType = 4
+	RENDERING_SERVER_COMPOSITOR_EFFECT_CALLBACK_TYPE_COMPOSITOR_EFFECT_CALLBACK_TYPE_ANY              RenderingServerCompositorEffectCallbackType = -1
 )
 
 type RenderingServerEnvironmentBG int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_CLEAR_COLOR RenderingServerEnvironmentBG = 0
-	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_COLOR                                    = 1
-	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_SKY                                      = 2
-	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_CANVAS                                   = 3
-	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_KEEP                                     = 4
-	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_CAMERA_FEED                              = 5
-	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_MAX                                      = 6
+	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_COLOR       RenderingServerEnvironmentBG = 1
+	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_SKY         RenderingServerEnvironmentBG = 2
+	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_CANVAS      RenderingServerEnvironmentBG = 3
+	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_KEEP        RenderingServerEnvironmentBG = 4
+	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_CAMERA_FEED RenderingServerEnvironmentBG = 5
+	RENDERING_SERVER_ENVIRONMENT_BG_ENV_BG_MAX         RenderingServerEnvironmentBG = 6
 )
 
 type RenderingServerEnvironmentAmbientSource int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_AMBIENT_SOURCE_ENV_AMBIENT_SOURCE_BG       RenderingServerEnvironmentAmbientSource = 0
-	RENDERING_SERVER_ENVIRONMENT_AMBIENT_SOURCE_ENV_AMBIENT_SOURCE_DISABLED                                         = 1
-	RENDERING_SERVER_ENVIRONMENT_AMBIENT_SOURCE_ENV_AMBIENT_SOURCE_COLOR                                            = 2
-	RENDERING_SERVER_ENVIRONMENT_AMBIENT_SOURCE_ENV_AMBIENT_SOURCE_SKY                                              = 3
+	RENDERING_SERVER_ENVIRONMENT_AMBIENT_SOURCE_ENV_AMBIENT_SOURCE_DISABLED RenderingServerEnvironmentAmbientSource = 1
+	RENDERING_SERVER_ENVIRONMENT_AMBIENT_SOURCE_ENV_AMBIENT_SOURCE_COLOR    RenderingServerEnvironmentAmbientSource = 2
+	RENDERING_SERVER_ENVIRONMENT_AMBIENT_SOURCE_ENV_AMBIENT_SOURCE_SKY      RenderingServerEnvironmentAmbientSource = 3
 )
 
 type RenderingServerEnvironmentReflectionSource int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_REFLECTION_SOURCE_ENV_REFLECTION_SOURCE_BG       RenderingServerEnvironmentReflectionSource = 0
-	RENDERING_SERVER_ENVIRONMENT_REFLECTION_SOURCE_ENV_REFLECTION_SOURCE_DISABLED                                            = 1
-	RENDERING_SERVER_ENVIRONMENT_REFLECTION_SOURCE_ENV_REFLECTION_SOURCE_SKY                                                 = 2
+	RENDERING_SERVER_ENVIRONMENT_REFLECTION_SOURCE_ENV_REFLECTION_SOURCE_DISABLED RenderingServerEnvironmentReflectionSource = 1
+	RENDERING_SERVER_ENVIRONMENT_REFLECTION_SOURCE_ENV_REFLECTION_SOURCE_SKY      RenderingServerEnvironmentReflectionSource = 2
 )
 
 type RenderingServerEnvironmentGlowBlendMode int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_ADDITIVE  RenderingServerEnvironmentGlowBlendMode = 0
-	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_SCREEN                                            = 1
-	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_SOFTLIGHT                                         = 2
-	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_REPLACE                                           = 3
-	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_MIX                                               = 4
+	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_SCREEN    RenderingServerEnvironmentGlowBlendMode = 1
+	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_SOFTLIGHT RenderingServerEnvironmentGlowBlendMode = 2
+	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_REPLACE   RenderingServerEnvironmentGlowBlendMode = 3
+	RENDERING_SERVER_ENVIRONMENT_GLOW_BLEND_MODE_ENV_GLOW_BLEND_MODE_MIX       RenderingServerEnvironmentGlowBlendMode = 4
 )
 
 type RenderingServerEnvironmentFogMode int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_FOG_MODE_ENV_FOG_MODE_EXPONENTIAL RenderingServerEnvironmentFogMode = 0
-	RENDERING_SERVER_ENVIRONMENT_FOG_MODE_ENV_FOG_MODE_DEPTH                                         = 1
+	RENDERING_SERVER_ENVIRONMENT_FOG_MODE_ENV_FOG_MODE_DEPTH       RenderingServerEnvironmentFogMode = 1
 )
 
 type RenderingServerEnvironmentToneMapper int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_TONE_MAPPER_ENV_TONE_MAPPER_LINEAR   RenderingServerEnvironmentToneMapper = 0
-	RENDERING_SERVER_ENVIRONMENT_TONE_MAPPER_ENV_TONE_MAPPER_REINHARD                                      = 1
-	RENDERING_SERVER_ENVIRONMENT_TONE_MAPPER_ENV_TONE_MAPPER_FILMIC                                        = 2
-	RENDERING_SERVER_ENVIRONMENT_TONE_MAPPER_ENV_TONE_MAPPER_ACES                                          = 3
+	RENDERING_SERVER_ENVIRONMENT_TONE_MAPPER_ENV_TONE_MAPPER_REINHARD RenderingServerEnvironmentToneMapper = 1
+	RENDERING_SERVER_ENVIRONMENT_TONE_MAPPER_ENV_TONE_MAPPER_FILMIC   RenderingServerEnvironmentToneMapper = 2
+	RENDERING_SERVER_ENVIRONMENT_TONE_MAPPER_ENV_TONE_MAPPER_ACES     RenderingServerEnvironmentToneMapper = 3
+	RENDERING_SERVER_ENVIRONMENT_TONE_MAPPER_ENV_TONE_MAPPER_AGX      RenderingServerEnvironmentToneMapper = 4
 )
 
 type RenderingServerEnvironmentSSRRoughnessQuality int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_SSR_ROUGHNESS_QUALITY_ENV_SSR_ROUGHNESS_QUALITY_DISABLED RenderingServerEnvironmentSSRRoughnessQuality = 0
-	RENDERING_SERVER_ENVIRONMENT_SSR_ROUGHNESS_QUALITY_ENV_SSR_ROUGHNESS_QUALITY_LOW                                                    = 1
-	RENDERING_SERVER_ENVIRONMENT_SSR_ROUGHNESS_QUALITY_ENV_SSR_ROUGHNESS_QUALITY_MEDIUM                                                 = 2
-	RENDERING_SERVER_ENVIRONMENT_SSR_ROUGHNESS_QUALITY_ENV_SSR_ROUGHNESS_QUALITY_HIGH                                                   = 3
+	RENDERING_SERVER_ENVIRONMENT_SSR_ROUGHNESS_QUALITY_ENV_SSR_ROUGHNESS_QUALITY_LOW      RenderingServerEnvironmentSSRRoughnessQuality = 1
+	RENDERING_SERVER_ENVIRONMENT_SSR_ROUGHNESS_QUALITY_ENV_SSR_ROUGHNESS_QUALITY_MEDIUM   RenderingServerEnvironmentSSRRoughnessQuality = 2
+	RENDERING_SERVER_ENVIRONMENT_SSR_ROUGHNESS_QUALITY_ENV_SSR_ROUGHNESS_QUALITY_HIGH     RenderingServerEnvironmentSSRRoughnessQuality = 3
 )
 
 type RenderingServerEnvironmentSSAOQuality int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_SSAO_QUALITY_ENV_SSAO_QUALITY_VERY_LOW RenderingServerEnvironmentSSAOQuality = 0
-	RENDERING_SERVER_ENVIRONMENT_SSAO_QUALITY_ENV_SSAO_QUALITY_LOW                                            = 1
-	RENDERING_SERVER_ENVIRONMENT_SSAO_QUALITY_ENV_SSAO_QUALITY_MEDIUM                                         = 2
-	RENDERING_SERVER_ENVIRONMENT_SSAO_QUALITY_ENV_SSAO_QUALITY_HIGH                                           = 3
-	RENDERING_SERVER_ENVIRONMENT_SSAO_QUALITY_ENV_SSAO_QUALITY_ULTRA                                          = 4
+	RENDERING_SERVER_ENVIRONMENT_SSAO_QUALITY_ENV_SSAO_QUALITY_LOW      RenderingServerEnvironmentSSAOQuality = 1
+	RENDERING_SERVER_ENVIRONMENT_SSAO_QUALITY_ENV_SSAO_QUALITY_MEDIUM   RenderingServerEnvironmentSSAOQuality = 2
+	RENDERING_SERVER_ENVIRONMENT_SSAO_QUALITY_ENV_SSAO_QUALITY_HIGH     RenderingServerEnvironmentSSAOQuality = 3
+	RENDERING_SERVER_ENVIRONMENT_SSAO_QUALITY_ENV_SSAO_QUALITY_ULTRA    RenderingServerEnvironmentSSAOQuality = 4
 )
 
 type RenderingServerEnvironmentSSILQuality int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_SSIL_QUALITY_ENV_SSIL_QUALITY_VERY_LOW RenderingServerEnvironmentSSILQuality = 0
-	RENDERING_SERVER_ENVIRONMENT_SSIL_QUALITY_ENV_SSIL_QUALITY_LOW                                            = 1
-	RENDERING_SERVER_ENVIRONMENT_SSIL_QUALITY_ENV_SSIL_QUALITY_MEDIUM                                         = 2
-	RENDERING_SERVER_ENVIRONMENT_SSIL_QUALITY_ENV_SSIL_QUALITY_HIGH                                           = 3
-	RENDERING_SERVER_ENVIRONMENT_SSIL_QUALITY_ENV_SSIL_QUALITY_ULTRA                                          = 4
+	RENDERING_SERVER_ENVIRONMENT_SSIL_QUALITY_ENV_SSIL_QUALITY_LOW      RenderingServerEnvironmentSSILQuality = 1
+	RENDERING_SERVER_ENVIRONMENT_SSIL_QUALITY_ENV_SSIL_QUALITY_MEDIUM   RenderingServerEnvironmentSSILQuality = 2
+	RENDERING_SERVER_ENVIRONMENT_SSIL_QUALITY_ENV_SSIL_QUALITY_HIGH     RenderingServerEnvironmentSSILQuality = 3
+	RENDERING_SERVER_ENVIRONMENT_SSIL_QUALITY_ENV_SSIL_QUALITY_ULTRA    RenderingServerEnvironmentSSILQuality = 4
 )
 
 type RenderingServerEnvironmentSDFGIYScale int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_SDFGIY_SCALE_ENV_SDFGI_Y_SCALE_50_PERCENT  RenderingServerEnvironmentSDFGIYScale = 0
-	RENDERING_SERVER_ENVIRONMENT_SDFGIY_SCALE_ENV_SDFGI_Y_SCALE_75_PERCENT                                        = 1
-	RENDERING_SERVER_ENVIRONMENT_SDFGIY_SCALE_ENV_SDFGI_Y_SCALE_100_PERCENT                                       = 2
+	RENDERING_SERVER_ENVIRONMENT_SDFGIY_SCALE_ENV_SDFGI_Y_SCALE_75_PERCENT  RenderingServerEnvironmentSDFGIYScale = 1
+	RENDERING_SERVER_ENVIRONMENT_SDFGIY_SCALE_ENV_SDFGI_Y_SCALE_100_PERCENT RenderingServerEnvironmentSDFGIYScale = 2
 )
 
 type RenderingServerEnvironmentSDFGIRayCount int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_4   RenderingServerEnvironmentSDFGIRayCount = 0
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_8                                           = 1
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_16                                          = 2
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_32                                          = 3
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_64                                          = 4
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_96                                          = 5
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_128                                         = 6
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_MAX                                         = 7
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_8   RenderingServerEnvironmentSDFGIRayCount = 1
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_16  RenderingServerEnvironmentSDFGIRayCount = 2
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_32  RenderingServerEnvironmentSDFGIRayCount = 3
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_64  RenderingServerEnvironmentSDFGIRayCount = 4
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_96  RenderingServerEnvironmentSDFGIRayCount = 5
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_128 RenderingServerEnvironmentSDFGIRayCount = 6
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_RAY_COUNT_ENV_SDFGI_RAY_COUNT_MAX RenderingServerEnvironmentSDFGIRayCount = 7
 )
 
 type RenderingServerEnvironmentSDFGIFramesToConverge int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_IN_5_FRAMES  RenderingServerEnvironmentSDFGIFramesToConverge = 0
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_IN_10_FRAMES                                                 = 1
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_IN_15_FRAMES                                                 = 2
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_IN_20_FRAMES                                                 = 3
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_IN_25_FRAMES                                                 = 4
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_IN_30_FRAMES                                                 = 5
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_MAX                                                          = 6
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_IN_10_FRAMES RenderingServerEnvironmentSDFGIFramesToConverge = 1
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_IN_15_FRAMES RenderingServerEnvironmentSDFGIFramesToConverge = 2
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_IN_20_FRAMES RenderingServerEnvironmentSDFGIFramesToConverge = 3
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_IN_25_FRAMES RenderingServerEnvironmentSDFGIFramesToConverge = 4
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_IN_30_FRAMES RenderingServerEnvironmentSDFGIFramesToConverge = 5
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_CONVERGE_ENV_SDFGI_CONVERGE_MAX          RenderingServerEnvironmentSDFGIFramesToConverge = 6
 )
 
 type RenderingServerEnvironmentSDFGIFramesToUpdateLight int
 
 const (
 	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_UPDATE_LIGHT_ENV_SDFGI_UPDATE_LIGHT_IN_1_FRAME   RenderingServerEnvironmentSDFGIFramesToUpdateLight = 0
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_UPDATE_LIGHT_ENV_SDFGI_UPDATE_LIGHT_IN_2_FRAMES                                                     = 1
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_UPDATE_LIGHT_ENV_SDFGI_UPDATE_LIGHT_IN_4_FRAMES                                                     = 2
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_UPDATE_LIGHT_ENV_SDFGI_UPDATE_LIGHT_IN_8_FRAMES                                                     = 3
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_UPDATE_LIGHT_ENV_SDFGI_UPDATE_LIGHT_IN_16_FRAMES                                                    = 4
-	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_UPDATE_LIGHT_ENV_SDFGI_UPDATE_LIGHT_MAX                                                             = 5
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_UPDATE_LIGHT_ENV_SDFGI_UPDATE_LIGHT_IN_2_FRAMES  RenderingServerEnvironmentSDFGIFramesToUpdateLight = 1
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_UPDATE_LIGHT_ENV_SDFGI_UPDATE_LIGHT_IN_4_FRAMES  RenderingServerEnvironmentSDFGIFramesToUpdateLight = 2
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_UPDATE_LIGHT_ENV_SDFGI_UPDATE_LIGHT_IN_8_FRAMES  RenderingServerEnvironmentSDFGIFramesToUpdateLight = 3
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_UPDATE_LIGHT_ENV_SDFGI_UPDATE_LIGHT_IN_16_FRAMES RenderingServerEnvironmentSDFGIFramesToUpdateLight = 4
+	RENDERING_SERVER_ENVIRONMENT_SDFGI_FRAMES_TO_UPDATE_LIGHT_ENV_SDFGI_UPDATE_LIGHT_MAX          RenderingServerEnvironmentSDFGIFramesToUpdateLight = 5
 )
 
 type RenderingServerSubSurfaceScatteringQuality int
 
 const (
 	RENDERING_SERVER_SUB_SURFACE_SCATTERING_QUALITY_SUB_SURFACE_SCATTERING_QUALITY_DISABLED RenderingServerSubSurfaceScatteringQuality = 0
-	RENDERING_SERVER_SUB_SURFACE_SCATTERING_QUALITY_SUB_SURFACE_SCATTERING_QUALITY_LOW                                                 = 1
-	RENDERING_SERVER_SUB_SURFACE_SCATTERING_QUALITY_SUB_SURFACE_SCATTERING_QUALITY_MEDIUM                                              = 2
-	RENDERING_SERVER_SUB_SURFACE_SCATTERING_QUALITY_SUB_SURFACE_SCATTERING_QUALITY_HIGH                                                = 3
+	RENDERING_SERVER_SUB_SURFACE_SCATTERING_QUALITY_SUB_SURFACE_SCATTERING_QUALITY_LOW      RenderingServerSubSurfaceScatteringQuality = 1
+	RENDERING_SERVER_SUB_SURFACE_SCATTERING_QUALITY_SUB_SURFACE_SCATTERING_QUALITY_MEDIUM   RenderingServerSubSurfaceScatteringQuality = 2
+	RENDERING_SERVER_SUB_SURFACE_SCATTERING_QUALITY_SUB_SURFACE_SCATTERING_QUALITY_HIGH     RenderingServerSubSurfaceScatteringQuality = 3
 )
 
 type RenderingServerDOFBokehShape int
 
 const (
 	RENDERING_SERVER_DOF_BOKEH_SHAPE_DOF_BOKEH_BOX     RenderingServerDOFBokehShape = 0
-	RENDERING_SERVER_DOF_BOKEH_SHAPE_DOF_BOKEH_HEXAGON                              = 1
-	RENDERING_SERVER_DOF_BOKEH_SHAPE_DOF_BOKEH_CIRCLE                               = 2
+	RENDERING_SERVER_DOF_BOKEH_SHAPE_DOF_BOKEH_HEXAGON RenderingServerDOFBokehShape = 1
+	RENDERING_SERVER_DOF_BOKEH_SHAPE_DOF_BOKEH_CIRCLE  RenderingServerDOFBokehShape = 2
 )
 
 type RenderingServerDOFBlurQuality int
 
 const (
 	RENDERING_SERVER_DOF_BLUR_QUALITY_DOF_BLUR_QUALITY_VERY_LOW RenderingServerDOFBlurQuality = 0
-	RENDERING_SERVER_DOF_BLUR_QUALITY_DOF_BLUR_QUALITY_LOW                                    = 1
-	RENDERING_SERVER_DOF_BLUR_QUALITY_DOF_BLUR_QUALITY_MEDIUM                                 = 2
-	RENDERING_SERVER_DOF_BLUR_QUALITY_DOF_BLUR_QUALITY_HIGH                                   = 3
+	RENDERING_SERVER_DOF_BLUR_QUALITY_DOF_BLUR_QUALITY_LOW      RenderingServerDOFBlurQuality = 1
+	RENDERING_SERVER_DOF_BLUR_QUALITY_DOF_BLUR_QUALITY_MEDIUM   RenderingServerDOFBlurQuality = 2
+	RENDERING_SERVER_DOF_BLUR_QUALITY_DOF_BLUR_QUALITY_HIGH     RenderingServerDOFBlurQuality = 3
 )
 
 type RenderingServerInstanceType int
 
 const (
 	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_NONE                RenderingServerInstanceType = 0
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_MESH                                            = 1
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_MULTIMESH                                       = 2
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_PARTICLES                                       = 3
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_PARTICLES_COLLISION                             = 4
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_LIGHT                                           = 5
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_REFLECTION_PROBE                                = 6
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_DECAL                                           = 7
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_VOXEL_GI                                        = 8
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_LIGHTMAP                                        = 9
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_OCCLUDER                                        = 10
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_VISIBLITY_NOTIFIER                              = 11
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_FOG_VOLUME                                      = 12
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_MAX                                             = 13
-	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_GEOMETRY_MASK                                   = 14
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_MESH                RenderingServerInstanceType = 1
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_MULTIMESH           RenderingServerInstanceType = 2
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_PARTICLES           RenderingServerInstanceType = 3
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_PARTICLES_COLLISION RenderingServerInstanceType = 4
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_LIGHT               RenderingServerInstanceType = 5
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_REFLECTION_PROBE    RenderingServerInstanceType = 6
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_DECAL               RenderingServerInstanceType = 7
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_VOXEL_GI            RenderingServerInstanceType = 8
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_LIGHTMAP            RenderingServerInstanceType = 9
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_OCCLUDER            RenderingServerInstanceType = 10
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_VISIBLITY_NOTIFIER  RenderingServerInstanceType = 11
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_FOG_VOLUME          RenderingServerInstanceType = 12
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_MAX                 RenderingServerInstanceType = 13
+	RENDERING_SERVER_INSTANCE_TYPE_INSTANCE_GEOMETRY_MASK       RenderingServerInstanceType = 14
 )
 
 type RenderingServerInstanceFlags int
 
 const (
 	RENDERING_SERVER_INSTANCE_FLAGS_INSTANCE_FLAG_USE_BAKED_LIGHT            RenderingServerInstanceFlags = 0
-	RENDERING_SERVER_INSTANCE_FLAGS_INSTANCE_FLAG_USE_DYNAMIC_GI                                          = 1
-	RENDERING_SERVER_INSTANCE_FLAGS_INSTANCE_FLAG_DRAW_NEXT_FRAME_IF_VISIBLE                              = 2
-	RENDERING_SERVER_INSTANCE_FLAGS_INSTANCE_FLAG_IGNORE_OCCLUSION_CULLING                                = 3
-	RENDERING_SERVER_INSTANCE_FLAGS_INSTANCE_FLAG_MAX                                                     = 4
+	RENDERING_SERVER_INSTANCE_FLAGS_INSTANCE_FLAG_USE_DYNAMIC_GI             RenderingServerInstanceFlags = 1
+	RENDERING_SERVER_INSTANCE_FLAGS_INSTANCE_FLAG_DRAW_NEXT_FRAME_IF_VISIBLE RenderingServerInstanceFlags = 2
+	RENDERING_SERVER_INSTANCE_FLAGS_INSTANCE_FLAG_IGNORE_OCCLUSION_CULLING   RenderingServerInstanceFlags = 3
+	RENDERING_SERVER_INSTANCE_FLAGS_INSTANCE_FLAG_MAX                        RenderingServerInstanceFlags = 4
 )
 
 type RenderingServerShadowCastingSetting int
 
 const (
 	RENDERING_SERVER_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_OFF          RenderingServerShadowCastingSetting = 0
-	RENDERING_SERVER_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_ON                                               = 1
-	RENDERING_SERVER_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_DOUBLE_SIDED                                     = 2
-	RENDERING_SERVER_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_SHADOWS_ONLY                                     = 3
+	RENDERING_SERVER_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_ON           RenderingServerShadowCastingSetting = 1
+	RENDERING_SERVER_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_DOUBLE_SIDED RenderingServerShadowCastingSetting = 2
+	RENDERING_SERVER_SHADOW_CASTING_SETTING_SHADOW_CASTING_SETTING_SHADOWS_ONLY RenderingServerShadowCastingSetting = 3
 )
 
 type RenderingServerVisibilityRangeFadeMode int
 
 const (
 	RENDERING_SERVER_VISIBILITY_RANGE_FADE_MODE_VISIBILITY_RANGE_FADE_DISABLED     RenderingServerVisibilityRangeFadeMode = 0
-	RENDERING_SERVER_VISIBILITY_RANGE_FADE_MODE_VISIBILITY_RANGE_FADE_SELF                                                = 1
-	RENDERING_SERVER_VISIBILITY_RANGE_FADE_MODE_VISIBILITY_RANGE_FADE_DEPENDENCIES                                        = 2
+	RENDERING_SERVER_VISIBILITY_RANGE_FADE_MODE_VISIBILITY_RANGE_FADE_SELF         RenderingServerVisibilityRangeFadeMode = 1
+	RENDERING_SERVER_VISIBILITY_RANGE_FADE_MODE_VISIBILITY_RANGE_FADE_DEPENDENCIES RenderingServerVisibilityRangeFadeMode = 2
 )
 
 type RenderingServerBakeChannels int
 
 const (
 	RENDERING_SERVER_BAKE_CHANNELS_BAKE_CHANNEL_ALBEDO_ALPHA RenderingServerBakeChannels = 0
-	RENDERING_SERVER_BAKE_CHANNELS_BAKE_CHANNEL_NORMAL                                   = 1
-	RENDERING_SERVER_BAKE_CHANNELS_BAKE_CHANNEL_ORM                                      = 2
-	RENDERING_SERVER_BAKE_CHANNELS_BAKE_CHANNEL_EMISSION                                 = 3
+	RENDERING_SERVER_BAKE_CHANNELS_BAKE_CHANNEL_NORMAL       RenderingServerBakeChannels = 1
+	RENDERING_SERVER_BAKE_CHANNELS_BAKE_CHANNEL_ORM          RenderingServerBakeChannels = 2
+	RENDERING_SERVER_BAKE_CHANNELS_BAKE_CHANNEL_EMISSION     RenderingServerBakeChannels = 3
 )
 
 type RenderingServerCanvasTextureChannel int
 
 const (
 	RENDERING_SERVER_CANVAS_TEXTURE_CHANNEL_CANVAS_TEXTURE_CHANNEL_DIFFUSE  RenderingServerCanvasTextureChannel = 0
-	RENDERING_SERVER_CANVAS_TEXTURE_CHANNEL_CANVAS_TEXTURE_CHANNEL_NORMAL                                       = 1
-	RENDERING_SERVER_CANVAS_TEXTURE_CHANNEL_CANVAS_TEXTURE_CHANNEL_SPECULAR                                     = 2
+	RENDERING_SERVER_CANVAS_TEXTURE_CHANNEL_CANVAS_TEXTURE_CHANNEL_NORMAL   RenderingServerCanvasTextureChannel = 1
+	RENDERING_SERVER_CANVAS_TEXTURE_CHANNEL_CANVAS_TEXTURE_CHANNEL_SPECULAR RenderingServerCanvasTextureChannel = 2
 )
 
 type RenderingServerNinePatchAxisMode int
 
 const (
 	RENDERING_SERVER_NINE_PATCH_AXIS_MODE_NINE_PATCH_STRETCH  RenderingServerNinePatchAxisMode = 0
-	RENDERING_SERVER_NINE_PATCH_AXIS_MODE_NINE_PATCH_TILE                                      = 1
-	RENDERING_SERVER_NINE_PATCH_AXIS_MODE_NINE_PATCH_TILE_FIT                                  = 2
+	RENDERING_SERVER_NINE_PATCH_AXIS_MODE_NINE_PATCH_TILE     RenderingServerNinePatchAxisMode = 1
+	RENDERING_SERVER_NINE_PATCH_AXIS_MODE_NINE_PATCH_TILE_FIT RenderingServerNinePatchAxisMode = 2
 )
 
 type RenderingServerCanvasItemTextureFilter int
 
 const (
 	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_DEFAULT                          RenderingServerCanvasItemTextureFilter = 0
-	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_NEAREST                                                                 = 1
-	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_LINEAR                                                                  = 2
-	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS                                                    = 3
-	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS                                                     = 4
-	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS_ANISOTROPIC                                        = 5
-	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC                                         = 6
-	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_MAX                                                                     = 7
+	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_NEAREST                          RenderingServerCanvasItemTextureFilter = 1
+	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_LINEAR                           RenderingServerCanvasItemTextureFilter = 2
+	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS             RenderingServerCanvasItemTextureFilter = 3
+	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS              RenderingServerCanvasItemTextureFilter = 4
+	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS_ANISOTROPIC RenderingServerCanvasItemTextureFilter = 5
+	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC  RenderingServerCanvasItemTextureFilter = 6
+	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_FILTER_CANVAS_ITEM_TEXTURE_FILTER_MAX                              RenderingServerCanvasItemTextureFilter = 7
 )
 
 type RenderingServerCanvasItemTextureRepeat int
 
 const (
 	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_REPEAT_CANVAS_ITEM_TEXTURE_REPEAT_DEFAULT  RenderingServerCanvasItemTextureRepeat = 0
-	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_REPEAT_CANVAS_ITEM_TEXTURE_REPEAT_DISABLED                                        = 1
-	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_REPEAT_CANVAS_ITEM_TEXTURE_REPEAT_ENABLED                                         = 2
-	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_REPEAT_CANVAS_ITEM_TEXTURE_REPEAT_MIRROR                                          = 3
-	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_REPEAT_CANVAS_ITEM_TEXTURE_REPEAT_MAX                                             = 4
+	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_REPEAT_CANVAS_ITEM_TEXTURE_REPEAT_DISABLED RenderingServerCanvasItemTextureRepeat = 1
+	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_REPEAT_CANVAS_ITEM_TEXTURE_REPEAT_ENABLED  RenderingServerCanvasItemTextureRepeat = 2
+	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_REPEAT_CANVAS_ITEM_TEXTURE_REPEAT_MIRROR   RenderingServerCanvasItemTextureRepeat = 3
+	RENDERING_SERVER_CANVAS_ITEM_TEXTURE_REPEAT_CANVAS_ITEM_TEXTURE_REPEAT_MAX      RenderingServerCanvasItemTextureRepeat = 4
 )
 
 type RenderingServerCanvasGroupMode int
 
 const (
 	RENDERING_SERVER_CANVAS_GROUP_MODE_CANVAS_GROUP_MODE_DISABLED      RenderingServerCanvasGroupMode = 0
-	RENDERING_SERVER_CANVAS_GROUP_MODE_CANVAS_GROUP_MODE_CLIP_ONLY                                    = 1
-	RENDERING_SERVER_CANVAS_GROUP_MODE_CANVAS_GROUP_MODE_CLIP_AND_DRAW                                = 2
-	RENDERING_SERVER_CANVAS_GROUP_MODE_CANVAS_GROUP_MODE_TRANSPARENT                                  = 3
+	RENDERING_SERVER_CANVAS_GROUP_MODE_CANVAS_GROUP_MODE_CLIP_ONLY     RenderingServerCanvasGroupMode = 1
+	RENDERING_SERVER_CANVAS_GROUP_MODE_CANVAS_GROUP_MODE_CLIP_AND_DRAW RenderingServerCanvasGroupMode = 2
+	RENDERING_SERVER_CANVAS_GROUP_MODE_CANVAS_GROUP_MODE_TRANSPARENT   RenderingServerCanvasGroupMode = 3
 )
 
 type RenderingServerCanvasLightMode int
 
 const (
 	RENDERING_SERVER_CANVAS_LIGHT_MODE_CANVAS_LIGHT_MODE_POINT       RenderingServerCanvasLightMode = 0
-	RENDERING_SERVER_CANVAS_LIGHT_MODE_CANVAS_LIGHT_MODE_DIRECTIONAL                                = 1
+	RENDERING_SERVER_CANVAS_LIGHT_MODE_CANVAS_LIGHT_MODE_DIRECTIONAL RenderingServerCanvasLightMode = 1
 )
 
 type RenderingServerCanvasLightBlendMode int
 
 const (
 	RENDERING_SERVER_CANVAS_LIGHT_BLEND_MODE_CANVAS_LIGHT_BLEND_MODE_ADD RenderingServerCanvasLightBlendMode = 0
-	RENDERING_SERVER_CANVAS_LIGHT_BLEND_MODE_CANVAS_LIGHT_BLEND_MODE_SUB                                     = 1
-	RENDERING_SERVER_CANVAS_LIGHT_BLEND_MODE_CANVAS_LIGHT_BLEND_MODE_MIX                                     = 2
+	RENDERING_SERVER_CANVAS_LIGHT_BLEND_MODE_CANVAS_LIGHT_BLEND_MODE_SUB RenderingServerCanvasLightBlendMode = 1
+	RENDERING_SERVER_CANVAS_LIGHT_BLEND_MODE_CANVAS_LIGHT_BLEND_MODE_MIX RenderingServerCanvasLightBlendMode = 2
 )
 
 type RenderingServerCanvasLightShadowFilter int
 
 const (
 	RENDERING_SERVER_CANVAS_LIGHT_SHADOW_FILTER_CANVAS_LIGHT_FILTER_NONE   RenderingServerCanvasLightShadowFilter = 0
-	RENDERING_SERVER_CANVAS_LIGHT_SHADOW_FILTER_CANVAS_LIGHT_FILTER_PCF_5                                         = 1
-	RENDERING_SERVER_CANVAS_LIGHT_SHADOW_FILTER_CANVAS_LIGHT_FILTER_PCF_13                                        = 2
-	RENDERING_SERVER_CANVAS_LIGHT_SHADOW_FILTER_CANVAS_LIGHT_FILTER_MAX                                           = 3
+	RENDERING_SERVER_CANVAS_LIGHT_SHADOW_FILTER_CANVAS_LIGHT_FILTER_PCF_5  RenderingServerCanvasLightShadowFilter = 1
+	RENDERING_SERVER_CANVAS_LIGHT_SHADOW_FILTER_CANVAS_LIGHT_FILTER_PCF_13 RenderingServerCanvasLightShadowFilter = 2
+	RENDERING_SERVER_CANVAS_LIGHT_SHADOW_FILTER_CANVAS_LIGHT_FILTER_MAX    RenderingServerCanvasLightShadowFilter = 3
 )
 
 type RenderingServerCanvasOccluderPolygonCullMode int
 
 const (
 	RENDERING_SERVER_CANVAS_OCCLUDER_POLYGON_CULL_MODE_CANVAS_OCCLUDER_POLYGON_CULL_DISABLED          RenderingServerCanvasOccluderPolygonCullMode = 0
-	RENDERING_SERVER_CANVAS_OCCLUDER_POLYGON_CULL_MODE_CANVAS_OCCLUDER_POLYGON_CULL_CLOCKWISE                                                      = 1
-	RENDERING_SERVER_CANVAS_OCCLUDER_POLYGON_CULL_MODE_CANVAS_OCCLUDER_POLYGON_CULL_COUNTER_CLOCKWISE                                              = 2
+	RENDERING_SERVER_CANVAS_OCCLUDER_POLYGON_CULL_MODE_CANVAS_OCCLUDER_POLYGON_CULL_CLOCKWISE         RenderingServerCanvasOccluderPolygonCullMode = 1
+	RENDERING_SERVER_CANVAS_OCCLUDER_POLYGON_CULL_MODE_CANVAS_OCCLUDER_POLYGON_CULL_COUNTER_CLOCKWISE RenderingServerCanvasOccluderPolygonCullMode = 2
 )
 
 type RenderingServerGlobalShaderParameterType int
 
 const (
 	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_BOOL             RenderingServerGlobalShaderParameterType = 0
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_BVEC_2                                                    = 1
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_BVEC_3                                                    = 2
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_BVEC_4                                                    = 3
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_INT                                                       = 4
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_IVEC_2                                                    = 5
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_IVEC_3                                                    = 6
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_IVEC_4                                                    = 7
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_RECT_2_I                                                  = 8
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_UINT                                                      = 9
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_UVEC_2                                                    = 10
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_UVEC_3                                                    = 11
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_UVEC_4                                                    = 12
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_FLOAT                                                     = 13
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_VEC_2                                                     = 14
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_VEC_3                                                     = 15
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_VEC_4                                                     = 16
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_COLOR                                                     = 17
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_RECT_2                                                    = 18
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_MAT_2                                                     = 19
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_MAT_3                                                     = 20
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_MAT_4                                                     = 21
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_TRANSFORM_2_D                                             = 22
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_TRANSFORM                                                 = 23
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_SAMPLER_2_D                                               = 24
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_SAMPLER_2_DARRAY                                          = 25
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_SAMPLER_3_D                                               = 26
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_SAMPLERCUBE                                               = 27
-	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_MAX                                                       = 28
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_BVEC_2           RenderingServerGlobalShaderParameterType = 1
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_BVEC_3           RenderingServerGlobalShaderParameterType = 2
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_BVEC_4           RenderingServerGlobalShaderParameterType = 3
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_INT              RenderingServerGlobalShaderParameterType = 4
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_IVEC_2           RenderingServerGlobalShaderParameterType = 5
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_IVEC_3           RenderingServerGlobalShaderParameterType = 6
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_IVEC_4           RenderingServerGlobalShaderParameterType = 7
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_RECT_2_I         RenderingServerGlobalShaderParameterType = 8
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_UINT             RenderingServerGlobalShaderParameterType = 9
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_UVEC_2           RenderingServerGlobalShaderParameterType = 10
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_UVEC_3           RenderingServerGlobalShaderParameterType = 11
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_UVEC_4           RenderingServerGlobalShaderParameterType = 12
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_FLOAT            RenderingServerGlobalShaderParameterType = 13
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_VEC_2            RenderingServerGlobalShaderParameterType = 14
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_VEC_3            RenderingServerGlobalShaderParameterType = 15
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_VEC_4            RenderingServerGlobalShaderParameterType = 16
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_COLOR            RenderingServerGlobalShaderParameterType = 17
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_RECT_2           RenderingServerGlobalShaderParameterType = 18
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_MAT_2            RenderingServerGlobalShaderParameterType = 19
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_MAT_3            RenderingServerGlobalShaderParameterType = 20
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_MAT_4            RenderingServerGlobalShaderParameterType = 21
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_TRANSFORM_2_D    RenderingServerGlobalShaderParameterType = 22
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_TRANSFORM        RenderingServerGlobalShaderParameterType = 23
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_SAMPLER_2_D      RenderingServerGlobalShaderParameterType = 24
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_SAMPLER_2_DARRAY RenderingServerGlobalShaderParameterType = 25
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_SAMPLER_3_D      RenderingServerGlobalShaderParameterType = 26
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_SAMPLERCUBE      RenderingServerGlobalShaderParameterType = 27
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_SAMPLEREXT       RenderingServerGlobalShaderParameterType = 28
+	RENDERING_SERVER_GLOBAL_SHADER_PARAMETER_TYPE_GLOBAL_VAR_TYPE_MAX              RenderingServerGlobalShaderParameterType = 29
 )
 
 type RenderingServerRenderingInfo int
 
 const (
-	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_TOTAL_OBJECTS_IN_FRAME    RenderingServerRenderingInfo = 0
-	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_TOTAL_PRIMITIVES_IN_FRAME                              = 1
-	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME                              = 2
-	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_TEXTURE_MEM_USED                                       = 3
-	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_BUFFER_MEM_USED                                        = 4
-	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_VIDEO_MEM_USED                                         = 5
+	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_TOTAL_OBJECTS_IN_FRAME               RenderingServerRenderingInfo = 0
+	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_TOTAL_PRIMITIVES_IN_FRAME            RenderingServerRenderingInfo = 1
+	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME            RenderingServerRenderingInfo = 2
+	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_TEXTURE_MEM_USED                     RenderingServerRenderingInfo = 3
+	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_BUFFER_MEM_USED                      RenderingServerRenderingInfo = 4
+	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_VIDEO_MEM_USED                       RenderingServerRenderingInfo = 5
+	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_PIPELINE_COMPILATIONS_CANVAS         RenderingServerRenderingInfo = 6
+	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_PIPELINE_COMPILATIONS_MESH           RenderingServerRenderingInfo = 7
+	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_PIPELINE_COMPILATIONS_SURFACE        RenderingServerRenderingInfo = 8
+	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_PIPELINE_COMPILATIONS_DRAW           RenderingServerRenderingInfo = 9
+	RENDERING_SERVER_RENDERING_INFO_RENDERING_INFO_PIPELINE_COMPILATIONS_SPECIALIZATION RenderingServerRenderingInfo = 10
+)
+
+type RenderingServerPipelineSource int
+
+const (
+	RENDERING_SERVER_PIPELINE_SOURCE_PIPELINE_SOURCE_CANVAS         RenderingServerPipelineSource = 0
+	RENDERING_SERVER_PIPELINE_SOURCE_PIPELINE_SOURCE_MESH           RenderingServerPipelineSource = 1
+	RENDERING_SERVER_PIPELINE_SOURCE_PIPELINE_SOURCE_SURFACE        RenderingServerPipelineSource = 2
+	RENDERING_SERVER_PIPELINE_SOURCE_PIPELINE_SOURCE_DRAW           RenderingServerPipelineSource = 3
+	RENDERING_SERVER_PIPELINE_SOURCE_PIPELINE_SOURCE_SPECIALIZATION RenderingServerPipelineSource = 4
+	RENDERING_SERVER_PIPELINE_SOURCE_PIPELINE_SOURCE_MAX            RenderingServerPipelineSource = 5
 )
 
 type RenderingServerFeatures int
 
 const (
 	RENDERING_SERVER_FEATURES_FEATURE_SHADERS       RenderingServerFeatures = 0
-	RENDERING_SERVER_FEATURES_FEATURE_MULTITHREADED                         = 1
+	RENDERING_SERVER_FEATURES_FEATURE_MULTITHREADED RenderingServerFeatures = 1
+)
+
+type ResourceDeepDuplicateMode int
+
+const (
+	RESOURCE_DEEP_DUPLICATE_MODE_DEEP_DUPLICATE_NONE     ResourceDeepDuplicateMode = 0
+	RESOURCE_DEEP_DUPLICATE_MODE_DEEP_DUPLICATE_INTERNAL ResourceDeepDuplicateMode = 1
+	RESOURCE_DEEP_DUPLICATE_MODE_DEEP_DUPLICATE_ALL      ResourceDeepDuplicateMode = 2
 )
 
 type ResourceFormatLoaderCacheMode int
 
 const (
 	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_IGNORE       ResourceFormatLoaderCacheMode = 0
-	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_REUSE                                      = 1
-	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_REPLACE                                    = 2
-	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_IGNORE_DEEP                                = 3
-	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_REPLACE_DEEP                               = 4
+	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_REUSE        ResourceFormatLoaderCacheMode = 1
+	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_REPLACE      ResourceFormatLoaderCacheMode = 2
+	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_IGNORE_DEEP  ResourceFormatLoaderCacheMode = 3
+	RESOURCE_FORMAT_LOADER_CACHE_MODE_CACHE_MODE_REPLACE_DEEP ResourceFormatLoaderCacheMode = 4
 )
 
 type ResourceImporterImportOrder int
 
 const (
 	RESOURCE_IMPORTER_IMPORT_ORDER_IMPORT_ORDER_DEFAULT ResourceImporterImportOrder = 0
-	RESOURCE_IMPORTER_IMPORT_ORDER_IMPORT_ORDER_SCENE                               = 100
+	RESOURCE_IMPORTER_IMPORT_ORDER_IMPORT_ORDER_SCENE   ResourceImporterImportOrder = 100
 )
 
 type ResourceLoaderThreadLoadStatus int
 
 const (
 	RESOURCE_LOADER_THREAD_LOAD_STATUS_THREAD_LOAD_INVALID_RESOURCE ResourceLoaderThreadLoadStatus = 0
-	RESOURCE_LOADER_THREAD_LOAD_STATUS_THREAD_LOAD_IN_PROGRESS                                     = 1
-	RESOURCE_LOADER_THREAD_LOAD_STATUS_THREAD_LOAD_FAILED                                          = 2
-	RESOURCE_LOADER_THREAD_LOAD_STATUS_THREAD_LOAD_LOADED                                          = 3
+	RESOURCE_LOADER_THREAD_LOAD_STATUS_THREAD_LOAD_IN_PROGRESS      ResourceLoaderThreadLoadStatus = 1
+	RESOURCE_LOADER_THREAD_LOAD_STATUS_THREAD_LOAD_FAILED           ResourceLoaderThreadLoadStatus = 2
+	RESOURCE_LOADER_THREAD_LOAD_STATUS_THREAD_LOAD_LOADED           ResourceLoaderThreadLoadStatus = 3
 )
 
 type ResourceLoaderCacheMode int
 
 const (
 	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_IGNORE       ResourceLoaderCacheMode = 0
-	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_REUSE                                = 1
-	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_REPLACE                              = 2
-	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_IGNORE_DEEP                          = 3
-	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_REPLACE_DEEP                         = 4
+	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_REUSE        ResourceLoaderCacheMode = 1
+	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_REPLACE      ResourceLoaderCacheMode = 2
+	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_IGNORE_DEEP  ResourceLoaderCacheMode = 3
+	RESOURCE_LOADER_CACHE_MODE_CACHE_MODE_REPLACE_DEEP ResourceLoaderCacheMode = 4
 )
 
 type ResourceSaverSaverFlags int
 
 const (
 	RESOURCE_SAVER_SAVER_FLAGS_FLAG_NONE                      ResourceSaverSaverFlags = 0
-	RESOURCE_SAVER_SAVER_FLAGS_FLAG_RELATIVE_PATHS                                    = 1
-	RESOURCE_SAVER_SAVER_FLAGS_FLAG_BUNDLE_RESOURCES                                  = 2
-	RESOURCE_SAVER_SAVER_FLAGS_FLAG_CHANGE_PATH                                       = 4
-	RESOURCE_SAVER_SAVER_FLAGS_FLAG_OMIT_EDITOR_PROPERTIES                            = 8
-	RESOURCE_SAVER_SAVER_FLAGS_FLAG_SAVE_BIG_ENDIAN                                   = 16
-	RESOURCE_SAVER_SAVER_FLAGS_FLAG_COMPRESS                                          = 32
-	RESOURCE_SAVER_SAVER_FLAGS_FLAG_REPLACE_SUBRESOURCE_PATHS                         = 64
+	RESOURCE_SAVER_SAVER_FLAGS_FLAG_RELATIVE_PATHS            ResourceSaverSaverFlags = 1
+	RESOURCE_SAVER_SAVER_FLAGS_FLAG_BUNDLE_RESOURCES          ResourceSaverSaverFlags = 2
+	RESOURCE_SAVER_SAVER_FLAGS_FLAG_CHANGE_PATH               ResourceSaverSaverFlags = 4
+	RESOURCE_SAVER_SAVER_FLAGS_FLAG_OMIT_EDITOR_PROPERTIES    ResourceSaverSaverFlags = 8
+	RESOURCE_SAVER_SAVER_FLAGS_FLAG_SAVE_BIG_ENDIAN           ResourceSaverSaverFlags = 16
+	RESOURCE_SAVER_SAVER_FLAGS_FLAG_COMPRESS                  ResourceSaverSaverFlags = 32
+	RESOURCE_SAVER_SAVER_FLAGS_FLAG_REPLACE_SUBRESOURCE_PATHS ResourceSaverSaverFlags = 64
+)
+
+type RetargetModifier3DTransformFlag int
+
+const (
+	RETARGET_MODIFIER_3_D_TRANSFORM_FLAG_TRANSFORM_FLAG_POSITION RetargetModifier3DTransformFlag = 1
+	RETARGET_MODIFIER_3_D_TRANSFORM_FLAG_TRANSFORM_FLAG_ROTATION RetargetModifier3DTransformFlag = 2
+	RETARGET_MODIFIER_3_D_TRANSFORM_FLAG_TRANSFORM_FLAG_SCALE    RetargetModifier3DTransformFlag = 4
+	RETARGET_MODIFIER_3_D_TRANSFORM_FLAG_TRANSFORM_FLAG_ALL      RetargetModifier3DTransformFlag = 7
 )
 
 type RibbonTrailMeshShape int
 
 const (
 	RIBBON_TRAIL_MESH_SHAPE_SHAPE_FLAT  RibbonTrailMeshShape = 0
-	RIBBON_TRAIL_MESH_SHAPE_SHAPE_CROSS                      = 1
+	RIBBON_TRAIL_MESH_SHAPE_SHAPE_CROSS RibbonTrailMeshShape = 1
 )
 
 type RichTextLabelListType int
 
 const (
 	RICH_TEXT_LABEL_LIST_TYPE_LIST_NUMBERS RichTextLabelListType = 0
-	RICH_TEXT_LABEL_LIST_TYPE_LIST_LETTERS                       = 1
-	RICH_TEXT_LABEL_LIST_TYPE_LIST_ROMAN                         = 2
-	RICH_TEXT_LABEL_LIST_TYPE_LIST_DOTS                          = 3
+	RICH_TEXT_LABEL_LIST_TYPE_LIST_LETTERS RichTextLabelListType = 1
+	RICH_TEXT_LABEL_LIST_TYPE_LIST_ROMAN   RichTextLabelListType = 2
+	RICH_TEXT_LABEL_LIST_TYPE_LIST_DOTS    RichTextLabelListType = 3
 )
 
 type RichTextLabelMenuItems int
 
 const (
 	RICH_TEXT_LABEL_MENU_ITEMS_MENU_COPY       RichTextLabelMenuItems = 0
-	RICH_TEXT_LABEL_MENU_ITEMS_MENU_SELECT_ALL                        = 1
-	RICH_TEXT_LABEL_MENU_ITEMS_MENU_MAX                               = 2
+	RICH_TEXT_LABEL_MENU_ITEMS_MENU_SELECT_ALL RichTextLabelMenuItems = 1
+	RICH_TEXT_LABEL_MENU_ITEMS_MENU_MAX        RichTextLabelMenuItems = 2
 )
 
 type RichTextLabelMetaUnderline int
 
 const (
 	RICH_TEXT_LABEL_META_UNDERLINE_META_UNDERLINE_NEVER    RichTextLabelMetaUnderline = 0
-	RICH_TEXT_LABEL_META_UNDERLINE_META_UNDERLINE_ALWAYS                              = 1
-	RICH_TEXT_LABEL_META_UNDERLINE_META_UNDERLINE_ON_HOVER                            = 2
+	RICH_TEXT_LABEL_META_UNDERLINE_META_UNDERLINE_ALWAYS   RichTextLabelMetaUnderline = 1
+	RICH_TEXT_LABEL_META_UNDERLINE_META_UNDERLINE_ON_HOVER RichTextLabelMetaUnderline = 2
 )
 
 type RichTextLabelImageUpdateMask int
 
 const (
 	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_TEXTURE          RichTextLabelImageUpdateMask = 1
-	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_SIZE                                          = 2
-	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_COLOR                                         = 4
-	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_ALIGNMENT                                     = 8
-	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_REGION                                        = 16
-	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_PAD                                           = 32
-	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_TOOLTIP                                       = 64
-	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_WIDTH_IN_PERCENT                              = 128
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_SIZE             RichTextLabelImageUpdateMask = 2
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_COLOR            RichTextLabelImageUpdateMask = 4
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_ALIGNMENT        RichTextLabelImageUpdateMask = 8
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_REGION           RichTextLabelImageUpdateMask = 16
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_PAD              RichTextLabelImageUpdateMask = 32
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_TOOLTIP          RichTextLabelImageUpdateMask = 64
+	RICH_TEXT_LABEL_IMAGE_UPDATE_MASK_UPDATE_WIDTH_IN_PERCENT RichTextLabelImageUpdateMask = 128
 )
 
 type RigidBody2DFreezeMode int
 
 const (
 	RIGID_BODY_2_D_FREEZE_MODE_FREEZE_MODE_STATIC    RigidBody2DFreezeMode = 0
-	RIGID_BODY_2_D_FREEZE_MODE_FREEZE_MODE_KINEMATIC                       = 1
+	RIGID_BODY_2_D_FREEZE_MODE_FREEZE_MODE_KINEMATIC RigidBody2DFreezeMode = 1
 )
 
 type RigidBody2DCenterOfMassMode int
 
 const (
 	RIGID_BODY_2_D_CENTER_OF_MASS_MODE_CENTER_OF_MASS_MODE_AUTO   RigidBody2DCenterOfMassMode = 0
-	RIGID_BODY_2_D_CENTER_OF_MASS_MODE_CENTER_OF_MASS_MODE_CUSTOM                             = 1
+	RIGID_BODY_2_D_CENTER_OF_MASS_MODE_CENTER_OF_MASS_MODE_CUSTOM RigidBody2DCenterOfMassMode = 1
 )
 
 type RigidBody2DDampMode int
 
 const (
 	RIGID_BODY_2_D_DAMP_MODE_DAMP_MODE_COMBINE RigidBody2DDampMode = 0
-	RIGID_BODY_2_D_DAMP_MODE_DAMP_MODE_REPLACE                     = 1
+	RIGID_BODY_2_D_DAMP_MODE_DAMP_MODE_REPLACE RigidBody2DDampMode = 1
 )
 
 type RigidBody2DCCDMode int
 
 const (
 	RIGID_BODY_2_D_CCD_MODE_CCD_MODE_DISABLED   RigidBody2DCCDMode = 0
-	RIGID_BODY_2_D_CCD_MODE_CCD_MODE_CAST_RAY                      = 1
-	RIGID_BODY_2_D_CCD_MODE_CCD_MODE_CAST_SHAPE                    = 2
+	RIGID_BODY_2_D_CCD_MODE_CCD_MODE_CAST_RAY   RigidBody2DCCDMode = 1
+	RIGID_BODY_2_D_CCD_MODE_CCD_MODE_CAST_SHAPE RigidBody2DCCDMode = 2
 )
 
 type RigidBody3DFreezeMode int
 
 const (
 	RIGID_BODY_3_D_FREEZE_MODE_FREEZE_MODE_STATIC    RigidBody3DFreezeMode = 0
-	RIGID_BODY_3_D_FREEZE_MODE_FREEZE_MODE_KINEMATIC                       = 1
+	RIGID_BODY_3_D_FREEZE_MODE_FREEZE_MODE_KINEMATIC RigidBody3DFreezeMode = 1
 )
 
 type RigidBody3DCenterOfMassMode int
 
 const (
 	RIGID_BODY_3_D_CENTER_OF_MASS_MODE_CENTER_OF_MASS_MODE_AUTO   RigidBody3DCenterOfMassMode = 0
-	RIGID_BODY_3_D_CENTER_OF_MASS_MODE_CENTER_OF_MASS_MODE_CUSTOM                             = 1
+	RIGID_BODY_3_D_CENTER_OF_MASS_MODE_CENTER_OF_MASS_MODE_CUSTOM RigidBody3DCenterOfMassMode = 1
 )
 
 type RigidBody3DDampMode int
 
 const (
 	RIGID_BODY_3_D_DAMP_MODE_DAMP_MODE_COMBINE RigidBody3DDampMode = 0
-	RIGID_BODY_3_D_DAMP_MODE_DAMP_MODE_REPLACE                     = 1
+	RIGID_BODY_3_D_DAMP_MODE_DAMP_MODE_REPLACE RigidBody3DDampMode = 1
 )
 
 type SceneReplicationConfigReplicationMode int
 
 const (
 	SCENE_REPLICATION_CONFIG_REPLICATION_MODE_REPLICATION_MODE_NEVER     SceneReplicationConfigReplicationMode = 0
-	SCENE_REPLICATION_CONFIG_REPLICATION_MODE_REPLICATION_MODE_ALWAYS                                          = 1
-	SCENE_REPLICATION_CONFIG_REPLICATION_MODE_REPLICATION_MODE_ON_CHANGE                                       = 2
+	SCENE_REPLICATION_CONFIG_REPLICATION_MODE_REPLICATION_MODE_ALWAYS    SceneReplicationConfigReplicationMode = 1
+	SCENE_REPLICATION_CONFIG_REPLICATION_MODE_REPLICATION_MODE_ON_CHANGE SceneReplicationConfigReplicationMode = 2
 )
 
 type SceneStateGenEditState int
 
 const (
 	SCENE_STATE_GEN_EDIT_STATE_GEN_EDIT_STATE_DISABLED       SceneStateGenEditState = 0
-	SCENE_STATE_GEN_EDIT_STATE_GEN_EDIT_STATE_INSTANCE                              = 1
-	SCENE_STATE_GEN_EDIT_STATE_GEN_EDIT_STATE_MAIN                                  = 2
-	SCENE_STATE_GEN_EDIT_STATE_GEN_EDIT_STATE_MAIN_INHERITED                        = 3
+	SCENE_STATE_GEN_EDIT_STATE_GEN_EDIT_STATE_INSTANCE       SceneStateGenEditState = 1
+	SCENE_STATE_GEN_EDIT_STATE_GEN_EDIT_STATE_MAIN           SceneStateGenEditState = 2
+	SCENE_STATE_GEN_EDIT_STATE_GEN_EDIT_STATE_MAIN_INHERITED SceneStateGenEditState = 3
 )
 
 type SceneTreeGroupCallFlags int
 
 const (
 	SCENE_TREE_GROUP_CALL_FLAGS_GROUP_CALL_DEFAULT  SceneTreeGroupCallFlags = 0
-	SCENE_TREE_GROUP_CALL_FLAGS_GROUP_CALL_REVERSE                          = 1
-	SCENE_TREE_GROUP_CALL_FLAGS_GROUP_CALL_DEFERRED                         = 2
-	SCENE_TREE_GROUP_CALL_FLAGS_GROUP_CALL_UNIQUE                           = 4
+	SCENE_TREE_GROUP_CALL_FLAGS_GROUP_CALL_REVERSE  SceneTreeGroupCallFlags = 1
+	SCENE_TREE_GROUP_CALL_FLAGS_GROUP_CALL_DEFERRED SceneTreeGroupCallFlags = 2
+	SCENE_TREE_GROUP_CALL_FLAGS_GROUP_CALL_UNIQUE   SceneTreeGroupCallFlags = 4
 )
 
 type ScriptLanguageScriptNameCasing int
 
 const (
 	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_AUTO        ScriptLanguageScriptNameCasing = 0
-	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_PASCAL_CASE                                = 1
-	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_SNAKE_CASE                                 = 2
-	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_KEBAB_CASE                                 = 3
+	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_PASCAL_CASE ScriptLanguageScriptNameCasing = 1
+	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_SNAKE_CASE  ScriptLanguageScriptNameCasing = 2
+	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_KEBAB_CASE  ScriptLanguageScriptNameCasing = 3
+	SCRIPT_LANGUAGE_SCRIPT_NAME_CASING_SCRIPT_NAME_CASING_CAMEL_CASE  ScriptLanguageScriptNameCasing = 4
 )
 
 type ScriptLanguageExtensionLookupResultType int
 
 const (
 	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_SCRIPT_LOCATION       ScriptLanguageExtensionLookupResultType = 0
-	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS                                                         = 1
-	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_CONSTANT                                                = 2
-	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_PROPERTY                                                = 3
-	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_METHOD                                                  = 4
-	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_SIGNAL                                                  = 5
-	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_ENUM                                                    = 6
-	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_TBD_GLOBALSCOPE                                         = 7
-	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_ANNOTATION                                              = 8
-	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_MAX                                                           = 9
+	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS                 ScriptLanguageExtensionLookupResultType = 1
+	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_CONSTANT        ScriptLanguageExtensionLookupResultType = 2
+	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_PROPERTY        ScriptLanguageExtensionLookupResultType = 3
+	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_METHOD          ScriptLanguageExtensionLookupResultType = 4
+	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_SIGNAL          ScriptLanguageExtensionLookupResultType = 5
+	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_ENUM            ScriptLanguageExtensionLookupResultType = 6
+	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_TBD_GLOBALSCOPE ScriptLanguageExtensionLookupResultType = 7
+	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_CLASS_ANNOTATION      ScriptLanguageExtensionLookupResultType = 8
+	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_LOCAL_CONSTANT        ScriptLanguageExtensionLookupResultType = 9
+	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_LOCAL_VARIABLE        ScriptLanguageExtensionLookupResultType = 10
+	SCRIPT_LANGUAGE_EXTENSION_LOOKUP_RESULT_TYPE_LOOKUP_RESULT_MAX                   ScriptLanguageExtensionLookupResultType = 11
 )
 
 type ScriptLanguageExtensionCodeCompletionLocation int
 
 const (
 	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_LOCATION_LOCATION_LOCAL           ScriptLanguageExtensionCodeCompletionLocation = 0
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_LOCATION_LOCATION_PARENT_MASK                                                   = 256
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_LOCATION_LOCATION_OTHER_USER_CODE                                               = 512
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_LOCATION_LOCATION_OTHER                                                         = 1024
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_LOCATION_LOCATION_PARENT_MASK     ScriptLanguageExtensionCodeCompletionLocation = 256
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_LOCATION_LOCATION_OTHER_USER_CODE ScriptLanguageExtensionCodeCompletionLocation = 512
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_LOCATION_LOCATION_OTHER           ScriptLanguageExtensionCodeCompletionLocation = 1024
 )
 
 type ScriptLanguageExtensionCodeCompletionKind int
 
 const (
 	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_CLASS      ScriptLanguageExtensionCodeCompletionKind = 0
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_FUNCTION                                             = 1
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_SIGNAL                                               = 2
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_VARIABLE                                             = 3
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_MEMBER                                               = 4
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_ENUM                                                 = 5
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_CONSTANT                                             = 6
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_NODE_PATH                                            = 7
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_FILE_PATH                                            = 8
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_PLAIN_TEXT                                           = 9
-	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_MAX                                                  = 10
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_FUNCTION   ScriptLanguageExtensionCodeCompletionKind = 1
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_SIGNAL     ScriptLanguageExtensionCodeCompletionKind = 2
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_VARIABLE   ScriptLanguageExtensionCodeCompletionKind = 3
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_MEMBER     ScriptLanguageExtensionCodeCompletionKind = 4
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_ENUM       ScriptLanguageExtensionCodeCompletionKind = 5
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_CONSTANT   ScriptLanguageExtensionCodeCompletionKind = 6
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_NODE_PATH  ScriptLanguageExtensionCodeCompletionKind = 7
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_FILE_PATH  ScriptLanguageExtensionCodeCompletionKind = 8
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_PLAIN_TEXT ScriptLanguageExtensionCodeCompletionKind = 9
+	SCRIPT_LANGUAGE_EXTENSION_CODE_COMPLETION_KIND_CODE_COMPLETION_KIND_MAX        ScriptLanguageExtensionCodeCompletionKind = 10
 )
 
 type ScrollContainerScrollMode int
 
 const (
 	SCROLL_CONTAINER_SCROLL_MODE_SCROLL_MODE_DISABLED    ScrollContainerScrollMode = 0
-	SCROLL_CONTAINER_SCROLL_MODE_SCROLL_MODE_AUTO                                  = 1
-	SCROLL_CONTAINER_SCROLL_MODE_SCROLL_MODE_SHOW_ALWAYS                           = 2
-	SCROLL_CONTAINER_SCROLL_MODE_SCROLL_MODE_SHOW_NEVER                            = 3
+	SCROLL_CONTAINER_SCROLL_MODE_SCROLL_MODE_AUTO        ScrollContainerScrollMode = 1
+	SCROLL_CONTAINER_SCROLL_MODE_SCROLL_MODE_SHOW_ALWAYS ScrollContainerScrollMode = 2
+	SCROLL_CONTAINER_SCROLL_MODE_SCROLL_MODE_SHOW_NEVER  ScrollContainerScrollMode = 3
+	SCROLL_CONTAINER_SCROLL_MODE_SCROLL_MODE_RESERVE     ScrollContainerScrollMode = 4
 )
 
 type ShaderMode int
 
 const (
 	SHADER_MODE_MODE_SPATIAL     ShaderMode = 0
-	SHADER_MODE_MODE_CANVAS_ITEM            = 1
-	SHADER_MODE_MODE_PARTICLES              = 2
-	SHADER_MODE_MODE_SKY                    = 3
-	SHADER_MODE_MODE_FOG                    = 4
+	SHADER_MODE_MODE_CANVAS_ITEM ShaderMode = 1
+	SHADER_MODE_MODE_PARTICLES   ShaderMode = 2
+	SHADER_MODE_MODE_SKY         ShaderMode = 3
+	SHADER_MODE_MODE_FOG         ShaderMode = 4
 )
 
 type Skeleton3DModifierCallbackModeProcess int
 
 const (
 	SKELETON_3_D_MODIFIER_CALLBACK_MODE_PROCESS_MODIFIER_CALLBACK_MODE_PROCESS_PHYSICS Skeleton3DModifierCallbackModeProcess = 0
-	SKELETON_3_D_MODIFIER_CALLBACK_MODE_PROCESS_MODIFIER_CALLBACK_MODE_PROCESS_IDLE                                          = 1
+	SKELETON_3_D_MODIFIER_CALLBACK_MODE_PROCESS_MODIFIER_CALLBACK_MODE_PROCESS_IDLE    Skeleton3DModifierCallbackModeProcess = 1
+	SKELETON_3_D_MODIFIER_CALLBACK_MODE_PROCESS_MODIFIER_CALLBACK_MODE_PROCESS_MANUAL  Skeleton3DModifierCallbackModeProcess = 2
+)
+
+type SkeletonModifier3DBoneAxis int
+
+const (
+	SKELETON_MODIFIER_3_D_BONE_AXIS_BONE_AXIS_PLUS_X  SkeletonModifier3DBoneAxis = 0
+	SKELETON_MODIFIER_3_D_BONE_AXIS_BONE_AXIS_MINUS_X SkeletonModifier3DBoneAxis = 1
+	SKELETON_MODIFIER_3_D_BONE_AXIS_BONE_AXIS_PLUS_Y  SkeletonModifier3DBoneAxis = 2
+	SKELETON_MODIFIER_3_D_BONE_AXIS_BONE_AXIS_MINUS_Y SkeletonModifier3DBoneAxis = 3
+	SKELETON_MODIFIER_3_D_BONE_AXIS_BONE_AXIS_PLUS_Z  SkeletonModifier3DBoneAxis = 4
+	SKELETON_MODIFIER_3_D_BONE_AXIS_BONE_AXIS_MINUS_Z SkeletonModifier3DBoneAxis = 5
 )
 
 type SkeletonProfileTailDirection int
 
 const (
 	SKELETON_PROFILE_TAIL_DIRECTION_TAIL_DIRECTION_AVERAGE_CHILDREN SkeletonProfileTailDirection = 0
-	SKELETON_PROFILE_TAIL_DIRECTION_TAIL_DIRECTION_SPECIFIC_CHILD                                = 1
-	SKELETON_PROFILE_TAIL_DIRECTION_TAIL_DIRECTION_END                                           = 2
+	SKELETON_PROFILE_TAIL_DIRECTION_TAIL_DIRECTION_SPECIFIC_CHILD   SkeletonProfileTailDirection = 1
+	SKELETON_PROFILE_TAIL_DIRECTION_TAIL_DIRECTION_END              SkeletonProfileTailDirection = 2
 )
 
 type SkyRadianceSize int
 
 const (
 	SKY_RADIANCE_SIZE_RADIANCE_SIZE_32   SkyRadianceSize = 0
-	SKY_RADIANCE_SIZE_RADIANCE_SIZE_64                   = 1
-	SKY_RADIANCE_SIZE_RADIANCE_SIZE_128                  = 2
-	SKY_RADIANCE_SIZE_RADIANCE_SIZE_256                  = 3
-	SKY_RADIANCE_SIZE_RADIANCE_SIZE_512                  = 4
-	SKY_RADIANCE_SIZE_RADIANCE_SIZE_1024                 = 5
-	SKY_RADIANCE_SIZE_RADIANCE_SIZE_2048                 = 6
-	SKY_RADIANCE_SIZE_RADIANCE_SIZE_MAX                  = 7
+	SKY_RADIANCE_SIZE_RADIANCE_SIZE_64   SkyRadianceSize = 1
+	SKY_RADIANCE_SIZE_RADIANCE_SIZE_128  SkyRadianceSize = 2
+	SKY_RADIANCE_SIZE_RADIANCE_SIZE_256  SkyRadianceSize = 3
+	SKY_RADIANCE_SIZE_RADIANCE_SIZE_512  SkyRadianceSize = 4
+	SKY_RADIANCE_SIZE_RADIANCE_SIZE_1024 SkyRadianceSize = 5
+	SKY_RADIANCE_SIZE_RADIANCE_SIZE_2048 SkyRadianceSize = 6
+	SKY_RADIANCE_SIZE_RADIANCE_SIZE_MAX  SkyRadianceSize = 7
 )
 
 type SkyProcessMode int
 
 const (
 	SKY_PROCESS_MODE_PROCESS_MODE_AUTOMATIC   SkyProcessMode = 0
-	SKY_PROCESS_MODE_PROCESS_MODE_QUALITY                    = 1
-	SKY_PROCESS_MODE_PROCESS_MODE_INCREMENTAL                = 2
-	SKY_PROCESS_MODE_PROCESS_MODE_REALTIME                   = 3
+	SKY_PROCESS_MODE_PROCESS_MODE_QUALITY     SkyProcessMode = 1
+	SKY_PROCESS_MODE_PROCESS_MODE_INCREMENTAL SkyProcessMode = 2
+	SKY_PROCESS_MODE_PROCESS_MODE_REALTIME    SkyProcessMode = 3
+)
+
+type SliderTickPosition int
+
+const (
+	SLIDER_TICK_POSITION_TICK_POSITION_BOTTOM_RIGHT SliderTickPosition = 0
+	SLIDER_TICK_POSITION_TICK_POSITION_TOP_LEFT     SliderTickPosition = 1
+	SLIDER_TICK_POSITION_TICK_POSITION_BOTH         SliderTickPosition = 2
+	SLIDER_TICK_POSITION_TICK_POSITION_CENTER       SliderTickPosition = 3
 )
 
 type SliderJoint3DParam int
 
 const (
 	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_LIMIT_UPPER             SliderJoint3DParam = 0
-	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_LIMIT_LOWER                                = 1
-	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_LIMIT_SOFTNESS                             = 2
-	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_LIMIT_RESTITUTION                          = 3
-	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_LIMIT_DAMPING                              = 4
-	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_MOTION_SOFTNESS                            = 5
-	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_MOTION_RESTITUTION                         = 6
-	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_MOTION_DAMPING                             = 7
-	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_ORTHOGONAL_SOFTNESS                        = 8
-	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_ORTHOGONAL_RESTITUTION                     = 9
-	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_ORTHOGONAL_DAMPING                         = 10
-	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_UPPER                               = 11
-	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_LOWER                               = 12
-	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_SOFTNESS                            = 13
-	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_RESTITUTION                         = 14
-	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_DAMPING                             = 15
-	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_MOTION_SOFTNESS                           = 16
-	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_MOTION_RESTITUTION                        = 17
-	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_MOTION_DAMPING                            = 18
-	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_ORTHOGONAL_SOFTNESS                       = 19
-	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_ORTHOGONAL_RESTITUTION                    = 20
-	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_ORTHOGONAL_DAMPING                        = 21
-	SLIDER_JOINT_3_D_PARAM_PARAM_MAX                                               = 22
+	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_LIMIT_LOWER             SliderJoint3DParam = 1
+	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_LIMIT_SOFTNESS          SliderJoint3DParam = 2
+	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_LIMIT_RESTITUTION       SliderJoint3DParam = 3
+	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_LIMIT_DAMPING           SliderJoint3DParam = 4
+	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_MOTION_SOFTNESS         SliderJoint3DParam = 5
+	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_MOTION_RESTITUTION      SliderJoint3DParam = 6
+	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_MOTION_DAMPING          SliderJoint3DParam = 7
+	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_ORTHOGONAL_SOFTNESS     SliderJoint3DParam = 8
+	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_ORTHOGONAL_RESTITUTION  SliderJoint3DParam = 9
+	SLIDER_JOINT_3_D_PARAM_PARAM_LINEAR_ORTHOGONAL_DAMPING      SliderJoint3DParam = 10
+	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_UPPER            SliderJoint3DParam = 11
+	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_LOWER            SliderJoint3DParam = 12
+	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_SOFTNESS         SliderJoint3DParam = 13
+	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_RESTITUTION      SliderJoint3DParam = 14
+	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_LIMIT_DAMPING          SliderJoint3DParam = 15
+	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_MOTION_SOFTNESS        SliderJoint3DParam = 16
+	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_MOTION_RESTITUTION     SliderJoint3DParam = 17
+	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_MOTION_DAMPING         SliderJoint3DParam = 18
+	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_ORTHOGONAL_SOFTNESS    SliderJoint3DParam = 19
+	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_ORTHOGONAL_RESTITUTION SliderJoint3DParam = 20
+	SLIDER_JOINT_3_D_PARAM_PARAM_ANGULAR_ORTHOGONAL_DAMPING     SliderJoint3DParam = 21
+	SLIDER_JOINT_3_D_PARAM_PARAM_MAX                            SliderJoint3DParam = 22
 )
 
 type SoftBody3DDisableMode int
 
 const (
 	SOFT_BODY_3_D_DISABLE_MODE_DISABLE_MODE_REMOVE      SoftBody3DDisableMode = 0
-	SOFT_BODY_3_D_DISABLE_MODE_DISABLE_MODE_KEEP_ACTIVE                       = 1
+	SOFT_BODY_3_D_DISABLE_MODE_DISABLE_MODE_KEEP_ACTIVE SoftBody3DDisableMode = 1
 )
 
 type SplitContainerDraggerVisibility int
 
 const (
 	SPLIT_CONTAINER_DRAGGER_VISIBILITY_DRAGGER_VISIBLE          SplitContainerDraggerVisibility = 0
-	SPLIT_CONTAINER_DRAGGER_VISIBILITY_DRAGGER_HIDDEN                                           = 1
-	SPLIT_CONTAINER_DRAGGER_VISIBILITY_DRAGGER_HIDDEN_COLLAPSED                                 = 2
+	SPLIT_CONTAINER_DRAGGER_VISIBILITY_DRAGGER_HIDDEN           SplitContainerDraggerVisibility = 1
+	SPLIT_CONTAINER_DRAGGER_VISIBILITY_DRAGGER_HIDDEN_COLLAPSED SplitContainerDraggerVisibility = 2
+)
+
+type SpringBoneSimulator3DBoneDirection int
+
+const (
+	SPRING_BONE_SIMULATOR_3_D_BONE_DIRECTION_BONE_DIRECTION_PLUS_X      SpringBoneSimulator3DBoneDirection = 0
+	SPRING_BONE_SIMULATOR_3_D_BONE_DIRECTION_BONE_DIRECTION_MINUS_X     SpringBoneSimulator3DBoneDirection = 1
+	SPRING_BONE_SIMULATOR_3_D_BONE_DIRECTION_BONE_DIRECTION_PLUS_Y      SpringBoneSimulator3DBoneDirection = 2
+	SPRING_BONE_SIMULATOR_3_D_BONE_DIRECTION_BONE_DIRECTION_MINUS_Y     SpringBoneSimulator3DBoneDirection = 3
+	SPRING_BONE_SIMULATOR_3_D_BONE_DIRECTION_BONE_DIRECTION_PLUS_Z      SpringBoneSimulator3DBoneDirection = 4
+	SPRING_BONE_SIMULATOR_3_D_BONE_DIRECTION_BONE_DIRECTION_MINUS_Z     SpringBoneSimulator3DBoneDirection = 5
+	SPRING_BONE_SIMULATOR_3_D_BONE_DIRECTION_BONE_DIRECTION_FROM_PARENT SpringBoneSimulator3DBoneDirection = 6
+)
+
+type SpringBoneSimulator3DCenterFrom int
+
+const (
+	SPRING_BONE_SIMULATOR_3_D_CENTER_FROM_CENTER_FROM_WORLD_ORIGIN SpringBoneSimulator3DCenterFrom = 0
+	SPRING_BONE_SIMULATOR_3_D_CENTER_FROM_CENTER_FROM_NODE         SpringBoneSimulator3DCenterFrom = 1
+	SPRING_BONE_SIMULATOR_3_D_CENTER_FROM_CENTER_FROM_BONE         SpringBoneSimulator3DCenterFrom = 2
+)
+
+type SpringBoneSimulator3DRotationAxis int
+
+const (
+	SPRING_BONE_SIMULATOR_3_D_ROTATION_AXIS_ROTATION_AXIS_X      SpringBoneSimulator3DRotationAxis = 0
+	SPRING_BONE_SIMULATOR_3_D_ROTATION_AXIS_ROTATION_AXIS_Y      SpringBoneSimulator3DRotationAxis = 1
+	SPRING_BONE_SIMULATOR_3_D_ROTATION_AXIS_ROTATION_AXIS_Z      SpringBoneSimulator3DRotationAxis = 2
+	SPRING_BONE_SIMULATOR_3_D_ROTATION_AXIS_ROTATION_AXIS_ALL    SpringBoneSimulator3DRotationAxis = 3
+	SPRING_BONE_SIMULATOR_3_D_ROTATION_AXIS_ROTATION_AXIS_CUSTOM SpringBoneSimulator3DRotationAxis = 4
 )
 
 type SpriteBase3DDrawFlags int
 
 const (
 	SPRITE_BASE_3_D_DRAW_FLAGS_FLAG_TRANSPARENT        SpriteBase3DDrawFlags = 0
-	SPRITE_BASE_3_D_DRAW_FLAGS_FLAG_SHADED                                   = 1
-	SPRITE_BASE_3_D_DRAW_FLAGS_FLAG_DOUBLE_SIDED                             = 2
-	SPRITE_BASE_3_D_DRAW_FLAGS_FLAG_DISABLE_DEPTH_TEST                       = 3
-	SPRITE_BASE_3_D_DRAW_FLAGS_FLAG_FIXED_SIZE                               = 4
-	SPRITE_BASE_3_D_DRAW_FLAGS_FLAG_MAX                                      = 5
+	SPRITE_BASE_3_D_DRAW_FLAGS_FLAG_SHADED             SpriteBase3DDrawFlags = 1
+	SPRITE_BASE_3_D_DRAW_FLAGS_FLAG_DOUBLE_SIDED       SpriteBase3DDrawFlags = 2
+	SPRITE_BASE_3_D_DRAW_FLAGS_FLAG_DISABLE_DEPTH_TEST SpriteBase3DDrawFlags = 3
+	SPRITE_BASE_3_D_DRAW_FLAGS_FLAG_FIXED_SIZE         SpriteBase3DDrawFlags = 4
+	SPRITE_BASE_3_D_DRAW_FLAGS_FLAG_MAX                SpriteBase3DDrawFlags = 5
 )
 
 type SpriteBase3DAlphaCutMode int
 
 const (
 	SPRITE_BASE_3_D_ALPHA_CUT_MODE_ALPHA_CUT_DISABLED       SpriteBase3DAlphaCutMode = 0
-	SPRITE_BASE_3_D_ALPHA_CUT_MODE_ALPHA_CUT_DISCARD                                 = 1
-	SPRITE_BASE_3_D_ALPHA_CUT_MODE_ALPHA_CUT_OPAQUE_PREPASS                          = 2
-	SPRITE_BASE_3_D_ALPHA_CUT_MODE_ALPHA_CUT_HASH                                    = 3
+	SPRITE_BASE_3_D_ALPHA_CUT_MODE_ALPHA_CUT_DISCARD        SpriteBase3DAlphaCutMode = 1
+	SPRITE_BASE_3_D_ALPHA_CUT_MODE_ALPHA_CUT_OPAQUE_PREPASS SpriteBase3DAlphaCutMode = 2
+	SPRITE_BASE_3_D_ALPHA_CUT_MODE_ALPHA_CUT_HASH           SpriteBase3DAlphaCutMode = 3
 )
 
 type StreamPeerTCPStatus int
 
 const (
 	STREAM_PEER_TCP_STATUS_STATUS_NONE       StreamPeerTCPStatus = 0
-	STREAM_PEER_TCP_STATUS_STATUS_CONNECTING                     = 1
-	STREAM_PEER_TCP_STATUS_STATUS_CONNECTED                      = 2
-	STREAM_PEER_TCP_STATUS_STATUS_ERROR                          = 3
+	STREAM_PEER_TCP_STATUS_STATUS_CONNECTING StreamPeerTCPStatus = 1
+	STREAM_PEER_TCP_STATUS_STATUS_CONNECTED  StreamPeerTCPStatus = 2
+	STREAM_PEER_TCP_STATUS_STATUS_ERROR      StreamPeerTCPStatus = 3
 )
 
 type StreamPeerTLSStatus int
 
 const (
 	STREAM_PEER_TLS_STATUS_STATUS_DISCONNECTED            StreamPeerTLSStatus = 0
-	STREAM_PEER_TLS_STATUS_STATUS_HANDSHAKING                                 = 1
-	STREAM_PEER_TLS_STATUS_STATUS_CONNECTED                                   = 2
-	STREAM_PEER_TLS_STATUS_STATUS_ERROR                                       = 3
-	STREAM_PEER_TLS_STATUS_STATUS_ERROR_HOSTNAME_MISMATCH                     = 4
+	STREAM_PEER_TLS_STATUS_STATUS_HANDSHAKING             StreamPeerTLSStatus = 1
+	STREAM_PEER_TLS_STATUS_STATUS_CONNECTED               StreamPeerTLSStatus = 2
+	STREAM_PEER_TLS_STATUS_STATUS_ERROR                   StreamPeerTLSStatus = 3
+	STREAM_PEER_TLS_STATUS_STATUS_ERROR_HOSTNAME_MISMATCH StreamPeerTLSStatus = 4
 )
 
 type StyleBoxTextureAxisStretchMode int
 
 const (
 	STYLE_BOX_TEXTURE_AXIS_STRETCH_MODE_AXIS_STRETCH_MODE_STRETCH  StyleBoxTextureAxisStretchMode = 0
-	STYLE_BOX_TEXTURE_AXIS_STRETCH_MODE_AXIS_STRETCH_MODE_TILE                                    = 1
-	STYLE_BOX_TEXTURE_AXIS_STRETCH_MODE_AXIS_STRETCH_MODE_TILE_FIT                                = 2
+	STYLE_BOX_TEXTURE_AXIS_STRETCH_MODE_AXIS_STRETCH_MODE_TILE     StyleBoxTextureAxisStretchMode = 1
+	STYLE_BOX_TEXTURE_AXIS_STRETCH_MODE_AXIS_STRETCH_MODE_TILE_FIT StyleBoxTextureAxisStretchMode = 2
 )
 
 type SubViewportClearMode int
 
 const (
 	SUB_VIEWPORT_CLEAR_MODE_CLEAR_MODE_ALWAYS SubViewportClearMode = 0
-	SUB_VIEWPORT_CLEAR_MODE_CLEAR_MODE_NEVER                       = 1
-	SUB_VIEWPORT_CLEAR_MODE_CLEAR_MODE_ONCE                        = 2
+	SUB_VIEWPORT_CLEAR_MODE_CLEAR_MODE_NEVER  SubViewportClearMode = 1
+	SUB_VIEWPORT_CLEAR_MODE_CLEAR_MODE_ONCE   SubViewportClearMode = 2
 )
 
 type SubViewportUpdateMode int
 
 const (
 	SUB_VIEWPORT_UPDATE_MODE_UPDATE_DISABLED            SubViewportUpdateMode = 0
-	SUB_VIEWPORT_UPDATE_MODE_UPDATE_ONCE                                      = 1
-	SUB_VIEWPORT_UPDATE_MODE_UPDATE_WHEN_VISIBLE                              = 2
-	SUB_VIEWPORT_UPDATE_MODE_UPDATE_WHEN_PARENT_VISIBLE                       = 3
-	SUB_VIEWPORT_UPDATE_MODE_UPDATE_ALWAYS                                    = 4
+	SUB_VIEWPORT_UPDATE_MODE_UPDATE_ONCE                SubViewportUpdateMode = 1
+	SUB_VIEWPORT_UPDATE_MODE_UPDATE_WHEN_VISIBLE        SubViewportUpdateMode = 2
+	SUB_VIEWPORT_UPDATE_MODE_UPDATE_WHEN_PARENT_VISIBLE SubViewportUpdateMode = 3
+	SUB_VIEWPORT_UPDATE_MODE_UPDATE_ALWAYS              SubViewportUpdateMode = 4
 )
 
 type SurfaceToolCustomFormat int
 
 const (
 	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RGBA_8_UNORM SurfaceToolCustomFormat = 0
-	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RGBA_8_SNORM                         = 1
-	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RG_HALF                              = 2
-	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RGBA_HALF                            = 3
-	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_R_FLOAT                              = 4
-	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RG_FLOAT                             = 5
-	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RGB_FLOAT                            = 6
-	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RGBA_FLOAT                           = 7
-	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_MAX                                  = 8
+	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RGBA_8_SNORM SurfaceToolCustomFormat = 1
+	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RG_HALF      SurfaceToolCustomFormat = 2
+	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RGBA_HALF    SurfaceToolCustomFormat = 3
+	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_R_FLOAT      SurfaceToolCustomFormat = 4
+	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RG_FLOAT     SurfaceToolCustomFormat = 5
+	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RGB_FLOAT    SurfaceToolCustomFormat = 6
+	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_RGBA_FLOAT   SurfaceToolCustomFormat = 7
+	SURFACE_TOOL_CUSTOM_FORMAT_CUSTOM_MAX          SurfaceToolCustomFormat = 8
 )
 
 type SurfaceToolSkinWeightCount int
 
 const (
 	SURFACE_TOOL_SKIN_WEIGHT_COUNT_SKIN_4_WEIGHTS SurfaceToolSkinWeightCount = 0
-	SURFACE_TOOL_SKIN_WEIGHT_COUNT_SKIN_8_WEIGHTS                            = 1
+	SURFACE_TOOL_SKIN_WEIGHT_COUNT_SKIN_8_WEIGHTS SurfaceToolSkinWeightCount = 1
 )
 
 type TabBarAlignmentMode int
 
 const (
 	TAB_BAR_ALIGNMENT_MODE_ALIGNMENT_LEFT   TabBarAlignmentMode = 0
-	TAB_BAR_ALIGNMENT_MODE_ALIGNMENT_CENTER                     = 1
-	TAB_BAR_ALIGNMENT_MODE_ALIGNMENT_RIGHT                      = 2
-	TAB_BAR_ALIGNMENT_MODE_ALIGNMENT_MAX                        = 3
+	TAB_BAR_ALIGNMENT_MODE_ALIGNMENT_CENTER TabBarAlignmentMode = 1
+	TAB_BAR_ALIGNMENT_MODE_ALIGNMENT_RIGHT  TabBarAlignmentMode = 2
+	TAB_BAR_ALIGNMENT_MODE_ALIGNMENT_MAX    TabBarAlignmentMode = 3
 )
 
 type TabBarCloseButtonDisplayPolicy int
 
 const (
 	TAB_BAR_CLOSE_BUTTON_DISPLAY_POLICY_CLOSE_BUTTON_SHOW_NEVER       TabBarCloseButtonDisplayPolicy = 0
-	TAB_BAR_CLOSE_BUTTON_DISPLAY_POLICY_CLOSE_BUTTON_SHOW_ACTIVE_ONLY                                = 1
-	TAB_BAR_CLOSE_BUTTON_DISPLAY_POLICY_CLOSE_BUTTON_SHOW_ALWAYS                                     = 2
-	TAB_BAR_CLOSE_BUTTON_DISPLAY_POLICY_CLOSE_BUTTON_MAX                                             = 3
+	TAB_BAR_CLOSE_BUTTON_DISPLAY_POLICY_CLOSE_BUTTON_SHOW_ACTIVE_ONLY TabBarCloseButtonDisplayPolicy = 1
+	TAB_BAR_CLOSE_BUTTON_DISPLAY_POLICY_CLOSE_BUTTON_SHOW_ALWAYS      TabBarCloseButtonDisplayPolicy = 2
+	TAB_BAR_CLOSE_BUTTON_DISPLAY_POLICY_CLOSE_BUTTON_MAX              TabBarCloseButtonDisplayPolicy = 3
 )
 
 type TabContainerTabPosition int
 
 const (
 	TAB_CONTAINER_TAB_POSITION_POSITION_TOP    TabContainerTabPosition = 0
-	TAB_CONTAINER_TAB_POSITION_POSITION_BOTTOM                         = 1
-	TAB_CONTAINER_TAB_POSITION_POSITION_MAX                            = 2
+	TAB_CONTAINER_TAB_POSITION_POSITION_BOTTOM TabContainerTabPosition = 1
+	TAB_CONTAINER_TAB_POSITION_POSITION_MAX    TabContainerTabPosition = 2
 )
 
 type TextEditMenuItems int
 
 const (
 	TEXT_EDIT_MENU_ITEMS_MENU_CUT                TextEditMenuItems = 0
-	TEXT_EDIT_MENU_ITEMS_MENU_COPY                                 = 1
-	TEXT_EDIT_MENU_ITEMS_MENU_PASTE                                = 2
-	TEXT_EDIT_MENU_ITEMS_MENU_CLEAR                                = 3
-	TEXT_EDIT_MENU_ITEMS_MENU_SELECT_ALL                           = 4
-	TEXT_EDIT_MENU_ITEMS_MENU_UNDO                                 = 5
-	TEXT_EDIT_MENU_ITEMS_MENU_REDO                                 = 6
-	TEXT_EDIT_MENU_ITEMS_MENU_SUBMENU_TEXT_DIR                     = 7
-	TEXT_EDIT_MENU_ITEMS_MENU_DIR_INHERITED                        = 8
-	TEXT_EDIT_MENU_ITEMS_MENU_DIR_AUTO                             = 9
-	TEXT_EDIT_MENU_ITEMS_MENU_DIR_LTR                              = 10
-	TEXT_EDIT_MENU_ITEMS_MENU_DIR_RTL                              = 11
-	TEXT_EDIT_MENU_ITEMS_MENU_DISPLAY_UCC                          = 12
-	TEXT_EDIT_MENU_ITEMS_MENU_SUBMENU_INSERT_UCC                   = 13
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRM                           = 14
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLM                           = 15
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRE                           = 16
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLE                           = 17
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRO                           = 18
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLO                           = 19
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_PDF                           = 20
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ALM                           = 21
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRI                           = 22
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLI                           = 23
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_FSI                           = 24
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_PDI                           = 25
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ZWJ                           = 26
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ZWNJ                          = 27
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_WJ                            = 28
-	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_SHY                           = 29
-	TEXT_EDIT_MENU_ITEMS_MENU_MAX                                  = 30
+	TEXT_EDIT_MENU_ITEMS_MENU_COPY               TextEditMenuItems = 1
+	TEXT_EDIT_MENU_ITEMS_MENU_PASTE              TextEditMenuItems = 2
+	TEXT_EDIT_MENU_ITEMS_MENU_CLEAR              TextEditMenuItems = 3
+	TEXT_EDIT_MENU_ITEMS_MENU_SELECT_ALL         TextEditMenuItems = 4
+	TEXT_EDIT_MENU_ITEMS_MENU_UNDO               TextEditMenuItems = 5
+	TEXT_EDIT_MENU_ITEMS_MENU_REDO               TextEditMenuItems = 6
+	TEXT_EDIT_MENU_ITEMS_MENU_SUBMENU_TEXT_DIR   TextEditMenuItems = 7
+	TEXT_EDIT_MENU_ITEMS_MENU_DIR_INHERITED      TextEditMenuItems = 8
+	TEXT_EDIT_MENU_ITEMS_MENU_DIR_AUTO           TextEditMenuItems = 9
+	TEXT_EDIT_MENU_ITEMS_MENU_DIR_LTR            TextEditMenuItems = 10
+	TEXT_EDIT_MENU_ITEMS_MENU_DIR_RTL            TextEditMenuItems = 11
+	TEXT_EDIT_MENU_ITEMS_MENU_DISPLAY_UCC        TextEditMenuItems = 12
+	TEXT_EDIT_MENU_ITEMS_MENU_SUBMENU_INSERT_UCC TextEditMenuItems = 13
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRM         TextEditMenuItems = 14
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLM         TextEditMenuItems = 15
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRE         TextEditMenuItems = 16
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLE         TextEditMenuItems = 17
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRO         TextEditMenuItems = 18
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLO         TextEditMenuItems = 19
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_PDF         TextEditMenuItems = 20
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ALM         TextEditMenuItems = 21
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_LRI         TextEditMenuItems = 22
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_RLI         TextEditMenuItems = 23
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_FSI         TextEditMenuItems = 24
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_PDI         TextEditMenuItems = 25
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ZWJ         TextEditMenuItems = 26
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_ZWNJ        TextEditMenuItems = 27
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_WJ          TextEditMenuItems = 28
+	TEXT_EDIT_MENU_ITEMS_MENU_INSERT_SHY         TextEditMenuItems = 29
+	TEXT_EDIT_MENU_ITEMS_MENU_EMOJI_AND_SYMBOL   TextEditMenuItems = 30
+	TEXT_EDIT_MENU_ITEMS_MENU_MAX                TextEditMenuItems = 31
 )
 
 type TextEditEditAction int
 
 const (
 	TEXT_EDIT_EDIT_ACTION_ACTION_NONE      TextEditEditAction = 0
-	TEXT_EDIT_EDIT_ACTION_ACTION_TYPING                       = 1
-	TEXT_EDIT_EDIT_ACTION_ACTION_BACKSPACE                    = 2
-	TEXT_EDIT_EDIT_ACTION_ACTION_DELETE                       = 3
+	TEXT_EDIT_EDIT_ACTION_ACTION_TYPING    TextEditEditAction = 1
+	TEXT_EDIT_EDIT_ACTION_ACTION_BACKSPACE TextEditEditAction = 2
+	TEXT_EDIT_EDIT_ACTION_ACTION_DELETE    TextEditEditAction = 3
 )
 
 type TextEditSearchFlags int
 
 const (
 	TEXT_EDIT_SEARCH_FLAGS_SEARCH_MATCH_CASE  TextEditSearchFlags = 1
-	TEXT_EDIT_SEARCH_FLAGS_SEARCH_WHOLE_WORDS                     = 2
-	TEXT_EDIT_SEARCH_FLAGS_SEARCH_BACKWARDS                       = 4
+	TEXT_EDIT_SEARCH_FLAGS_SEARCH_WHOLE_WORDS TextEditSearchFlags = 2
+	TEXT_EDIT_SEARCH_FLAGS_SEARCH_BACKWARDS   TextEditSearchFlags = 4
 )
 
 type TextEditCaretType int
 
 const (
 	TEXT_EDIT_CARET_TYPE_CARET_TYPE_LINE  TextEditCaretType = 0
-	TEXT_EDIT_CARET_TYPE_CARET_TYPE_BLOCK                   = 1
+	TEXT_EDIT_CARET_TYPE_CARET_TYPE_BLOCK TextEditCaretType = 1
 )
 
 type TextEditSelectionMode int
 
 const (
 	TEXT_EDIT_SELECTION_MODE_SELECTION_MODE_NONE    TextEditSelectionMode = 0
-	TEXT_EDIT_SELECTION_MODE_SELECTION_MODE_SHIFT                         = 1
-	TEXT_EDIT_SELECTION_MODE_SELECTION_MODE_POINTER                       = 2
-	TEXT_EDIT_SELECTION_MODE_SELECTION_MODE_WORD                          = 3
-	TEXT_EDIT_SELECTION_MODE_SELECTION_MODE_LINE                          = 4
+	TEXT_EDIT_SELECTION_MODE_SELECTION_MODE_SHIFT   TextEditSelectionMode = 1
+	TEXT_EDIT_SELECTION_MODE_SELECTION_MODE_POINTER TextEditSelectionMode = 2
+	TEXT_EDIT_SELECTION_MODE_SELECTION_MODE_WORD    TextEditSelectionMode = 3
+	TEXT_EDIT_SELECTION_MODE_SELECTION_MODE_LINE    TextEditSelectionMode = 4
 )
 
 type TextEditLineWrappingMode int
 
 const (
 	TEXT_EDIT_LINE_WRAPPING_MODE_LINE_WRAPPING_NONE     TextEditLineWrappingMode = 0
-	TEXT_EDIT_LINE_WRAPPING_MODE_LINE_WRAPPING_BOUNDARY                          = 1
+	TEXT_EDIT_LINE_WRAPPING_MODE_LINE_WRAPPING_BOUNDARY TextEditLineWrappingMode = 1
 )
 
 type TextEditGutterType int
 
 const (
 	TEXT_EDIT_GUTTER_TYPE_GUTTER_TYPE_STRING TextEditGutterType = 0
-	TEXT_EDIT_GUTTER_TYPE_GUTTER_TYPE_ICON                      = 1
-	TEXT_EDIT_GUTTER_TYPE_GUTTER_TYPE_CUSTOM                    = 2
+	TEXT_EDIT_GUTTER_TYPE_GUTTER_TYPE_ICON   TextEditGutterType = 1
+	TEXT_EDIT_GUTTER_TYPE_GUTTER_TYPE_CUSTOM TextEditGutterType = 2
 )
 
 type TextServerFontAntialiasing int
 
 const (
 	TEXT_SERVER_FONT_ANTIALIASING_FONT_ANTIALIASING_NONE TextServerFontAntialiasing = 0
-	TEXT_SERVER_FONT_ANTIALIASING_FONT_ANTIALIASING_GRAY                            = 1
-	TEXT_SERVER_FONT_ANTIALIASING_FONT_ANTIALIASING_LCD                             = 2
+	TEXT_SERVER_FONT_ANTIALIASING_FONT_ANTIALIASING_GRAY TextServerFontAntialiasing = 1
+	TEXT_SERVER_FONT_ANTIALIASING_FONT_ANTIALIASING_LCD  TextServerFontAntialiasing = 2
 )
 
 type TextServerFontLCDSubpixelLayout int
 
 const (
 	TEXT_SERVER_FONT_LCD_SUBPIXEL_LAYOUT_FONT_LCD_SUBPIXEL_LAYOUT_NONE TextServerFontLCDSubpixelLayout = 0
-	TEXT_SERVER_FONT_LCD_SUBPIXEL_LAYOUT_FONT_LCD_SUBPIXEL_LAYOUT_HRGB                                 = 1
-	TEXT_SERVER_FONT_LCD_SUBPIXEL_LAYOUT_FONT_LCD_SUBPIXEL_LAYOUT_HBGR                                 = 2
-	TEXT_SERVER_FONT_LCD_SUBPIXEL_LAYOUT_FONT_LCD_SUBPIXEL_LAYOUT_VRGB                                 = 3
-	TEXT_SERVER_FONT_LCD_SUBPIXEL_LAYOUT_FONT_LCD_SUBPIXEL_LAYOUT_VBGR                                 = 4
-	TEXT_SERVER_FONT_LCD_SUBPIXEL_LAYOUT_FONT_LCD_SUBPIXEL_LAYOUT_MAX                                  = 5
+	TEXT_SERVER_FONT_LCD_SUBPIXEL_LAYOUT_FONT_LCD_SUBPIXEL_LAYOUT_HRGB TextServerFontLCDSubpixelLayout = 1
+	TEXT_SERVER_FONT_LCD_SUBPIXEL_LAYOUT_FONT_LCD_SUBPIXEL_LAYOUT_HBGR TextServerFontLCDSubpixelLayout = 2
+	TEXT_SERVER_FONT_LCD_SUBPIXEL_LAYOUT_FONT_LCD_SUBPIXEL_LAYOUT_VRGB TextServerFontLCDSubpixelLayout = 3
+	TEXT_SERVER_FONT_LCD_SUBPIXEL_LAYOUT_FONT_LCD_SUBPIXEL_LAYOUT_VBGR TextServerFontLCDSubpixelLayout = 4
+	TEXT_SERVER_FONT_LCD_SUBPIXEL_LAYOUT_FONT_LCD_SUBPIXEL_LAYOUT_MAX  TextServerFontLCDSubpixelLayout = 5
 )
 
 type TextServerDirection int
 
 const (
 	TEXT_SERVER_DIRECTION_DIRECTION_AUTO      TextServerDirection = 0
-	TEXT_SERVER_DIRECTION_DIRECTION_LTR                           = 1
-	TEXT_SERVER_DIRECTION_DIRECTION_RTL                           = 2
-	TEXT_SERVER_DIRECTION_DIRECTION_INHERITED                     = 3
+	TEXT_SERVER_DIRECTION_DIRECTION_LTR       TextServerDirection = 1
+	TEXT_SERVER_DIRECTION_DIRECTION_RTL       TextServerDirection = 2
+	TEXT_SERVER_DIRECTION_DIRECTION_INHERITED TextServerDirection = 3
 )
 
 type TextServerOrientation int
 
 const (
 	TEXT_SERVER_ORIENTATION_ORIENTATION_HORIZONTAL TextServerOrientation = 0
-	TEXT_SERVER_ORIENTATION_ORIENTATION_VERTICAL                         = 1
+	TEXT_SERVER_ORIENTATION_ORIENTATION_VERTICAL   TextServerOrientation = 1
 )
 
 type TextServerJustificationFlag int
 
 const (
 	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_NONE                              TextServerJustificationFlag = 0
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_KASHIDA                                                       = 1
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_WORD_BOUND                                                    = 2
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_TRIM_EDGE_SPACES                                              = 4
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_AFTER_LAST_TAB                                                = 8
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_CONSTRAIN_ELLIPSIS                                            = 16
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_SKIP_LAST_LINE                                                = 32
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_SKIP_LAST_LINE_WITH_VISIBLE_CHARS                             = 64
-	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_DO_NOT_SKIP_SINGLE_LINE                                       = 128
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_KASHIDA                           TextServerJustificationFlag = 1
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_WORD_BOUND                        TextServerJustificationFlag = 2
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_TRIM_EDGE_SPACES                  TextServerJustificationFlag = 4
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_AFTER_LAST_TAB                    TextServerJustificationFlag = 8
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_CONSTRAIN_ELLIPSIS                TextServerJustificationFlag = 16
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_SKIP_LAST_LINE                    TextServerJustificationFlag = 32
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_SKIP_LAST_LINE_WITH_VISIBLE_CHARS TextServerJustificationFlag = 64
+	TEXT_SERVER_JUSTIFICATION_FLAG_JUSTIFICATION_DO_NOT_SKIP_SINGLE_LINE           TextServerJustificationFlag = 128
 )
 
 type TextServerAutowrapMode int
 
 const (
 	TEXT_SERVER_AUTOWRAP_MODE_AUTOWRAP_OFF        TextServerAutowrapMode = 0
-	TEXT_SERVER_AUTOWRAP_MODE_AUTOWRAP_ARBITRARY                         = 1
-	TEXT_SERVER_AUTOWRAP_MODE_AUTOWRAP_WORD                              = 2
-	TEXT_SERVER_AUTOWRAP_MODE_AUTOWRAP_WORD_SMART                        = 3
+	TEXT_SERVER_AUTOWRAP_MODE_AUTOWRAP_ARBITRARY  TextServerAutowrapMode = 1
+	TEXT_SERVER_AUTOWRAP_MODE_AUTOWRAP_WORD       TextServerAutowrapMode = 2
+	TEXT_SERVER_AUTOWRAP_MODE_AUTOWRAP_WORD_SMART TextServerAutowrapMode = 3
 )
 
 type TextServerLineBreakFlag int
 
 const (
-	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_NONE             TextServerLineBreakFlag = 0
-	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_MANDATORY                                = 1
-	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_WORD_BOUND                               = 2
-	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_GRAPHEME_BOUND                           = 4
-	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_ADAPTIVE                                 = 8
-	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_TRIM_EDGE_SPACES                         = 16
-	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_TRIM_INDENT                              = 32
+	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_NONE                   TextServerLineBreakFlag = 0
+	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_MANDATORY              TextServerLineBreakFlag = 1
+	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_WORD_BOUND             TextServerLineBreakFlag = 2
+	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_GRAPHEME_BOUND         TextServerLineBreakFlag = 4
+	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_ADAPTIVE               TextServerLineBreakFlag = 8
+	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_TRIM_EDGE_SPACES       TextServerLineBreakFlag = 16
+	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_TRIM_INDENT            TextServerLineBreakFlag = 32
+	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_TRIM_START_EDGE_SPACES TextServerLineBreakFlag = 64
+	TEXT_SERVER_LINE_BREAK_FLAG_BREAK_TRIM_END_EDGE_SPACES   TextServerLineBreakFlag = 128
 )
 
 type TextServerVisibleCharactersBehavior int
 
 const (
 	TEXT_SERVER_VISIBLE_CHARACTERS_BEHAVIOR_VC_CHARS_BEFORE_SHAPING TextServerVisibleCharactersBehavior = 0
-	TEXT_SERVER_VISIBLE_CHARACTERS_BEHAVIOR_VC_CHARS_AFTER_SHAPING                                      = 1
-	TEXT_SERVER_VISIBLE_CHARACTERS_BEHAVIOR_VC_GLYPHS_AUTO                                              = 2
-	TEXT_SERVER_VISIBLE_CHARACTERS_BEHAVIOR_VC_GLYPHS_LTR                                               = 3
-	TEXT_SERVER_VISIBLE_CHARACTERS_BEHAVIOR_VC_GLYPHS_RTL                                               = 4
+	TEXT_SERVER_VISIBLE_CHARACTERS_BEHAVIOR_VC_CHARS_AFTER_SHAPING  TextServerVisibleCharactersBehavior = 1
+	TEXT_SERVER_VISIBLE_CHARACTERS_BEHAVIOR_VC_GLYPHS_AUTO          TextServerVisibleCharactersBehavior = 2
+	TEXT_SERVER_VISIBLE_CHARACTERS_BEHAVIOR_VC_GLYPHS_LTR           TextServerVisibleCharactersBehavior = 3
+	TEXT_SERVER_VISIBLE_CHARACTERS_BEHAVIOR_VC_GLYPHS_RTL           TextServerVisibleCharactersBehavior = 4
 )
 
 type TextServerOverrunBehavior int
 
 const (
-	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_NO_TRIMMING        TextServerOverrunBehavior = 0
-	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_TRIM_CHAR                                    = 1
-	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_TRIM_WORD                                    = 2
-	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_TRIM_ELLIPSIS                                = 3
-	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_TRIM_WORD_ELLIPSIS                           = 4
+	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_NO_TRIMMING              TextServerOverrunBehavior = 0
+	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_TRIM_CHAR                TextServerOverrunBehavior = 1
+	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_TRIM_WORD                TextServerOverrunBehavior = 2
+	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_TRIM_ELLIPSIS            TextServerOverrunBehavior = 3
+	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_TRIM_WORD_ELLIPSIS       TextServerOverrunBehavior = 4
+	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_TRIM_ELLIPSIS_FORCE      TextServerOverrunBehavior = 5
+	TEXT_SERVER_OVERRUN_BEHAVIOR_OVERRUN_TRIM_WORD_ELLIPSIS_FORCE TextServerOverrunBehavior = 6
 )
 
 type TextServerTextOverrunFlag int
 
 const (
 	TEXT_SERVER_TEXT_OVERRUN_FLAG_OVERRUN_NO_TRIM             TextServerTextOverrunFlag = 0
-	TEXT_SERVER_TEXT_OVERRUN_FLAG_OVERRUN_TRIM                                          = 1
-	TEXT_SERVER_TEXT_OVERRUN_FLAG_OVERRUN_TRIM_WORD_ONLY                                = 2
-	TEXT_SERVER_TEXT_OVERRUN_FLAG_OVERRUN_ADD_ELLIPSIS                                  = 4
-	TEXT_SERVER_TEXT_OVERRUN_FLAG_OVERRUN_ENFORCE_ELLIPSIS                              = 8
-	TEXT_SERVER_TEXT_OVERRUN_FLAG_OVERRUN_JUSTIFICATION_AWARE                           = 16
+	TEXT_SERVER_TEXT_OVERRUN_FLAG_OVERRUN_TRIM                TextServerTextOverrunFlag = 1
+	TEXT_SERVER_TEXT_OVERRUN_FLAG_OVERRUN_TRIM_WORD_ONLY      TextServerTextOverrunFlag = 2
+	TEXT_SERVER_TEXT_OVERRUN_FLAG_OVERRUN_ADD_ELLIPSIS        TextServerTextOverrunFlag = 4
+	TEXT_SERVER_TEXT_OVERRUN_FLAG_OVERRUN_ENFORCE_ELLIPSIS    TextServerTextOverrunFlag = 8
+	TEXT_SERVER_TEXT_OVERRUN_FLAG_OVERRUN_JUSTIFICATION_AWARE TextServerTextOverrunFlag = 16
 )
 
 type TextServerGraphemeFlag int
 
 const (
 	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_VALID                  TextServerGraphemeFlag = 1
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_RTL                                           = 2
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_VIRTUAL                                       = 4
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_SPACE                                         = 8
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_BREAK_HARD                                    = 16
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_BREAK_SOFT                                    = 32
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_TAB                                           = 64
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_ELONGATION                                    = 128
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_PUNCTUATION                                   = 256
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_UNDERSCORE                                    = 512
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_CONNECTED                                     = 1024
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_SAFE_TO_INSERT_TATWEEL                        = 2048
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_EMBEDDED_OBJECT                               = 4096
-	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_SOFT_HYPHEN                                   = 8192
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_RTL                    TextServerGraphemeFlag = 2
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_VIRTUAL                TextServerGraphemeFlag = 4
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_SPACE                  TextServerGraphemeFlag = 8
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_BREAK_HARD             TextServerGraphemeFlag = 16
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_BREAK_SOFT             TextServerGraphemeFlag = 32
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_TAB                    TextServerGraphemeFlag = 64
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_ELONGATION             TextServerGraphemeFlag = 128
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_PUNCTUATION            TextServerGraphemeFlag = 256
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_UNDERSCORE             TextServerGraphemeFlag = 512
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_CONNECTED              TextServerGraphemeFlag = 1024
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_SAFE_TO_INSERT_TATWEEL TextServerGraphemeFlag = 2048
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_EMBEDDED_OBJECT        TextServerGraphemeFlag = 4096
+	TEXT_SERVER_GRAPHEME_FLAG_GRAPHEME_IS_SOFT_HYPHEN            TextServerGraphemeFlag = 8192
 )
 
 type TextServerHinting int
 
 const (
 	TEXT_SERVER_HINTING_HINTING_NONE   TextServerHinting = 0
-	TEXT_SERVER_HINTING_HINTING_LIGHT                    = 1
-	TEXT_SERVER_HINTING_HINTING_NORMAL                   = 2
+	TEXT_SERVER_HINTING_HINTING_LIGHT  TextServerHinting = 1
+	TEXT_SERVER_HINTING_HINTING_NORMAL TextServerHinting = 2
 )
 
 type TextServerSubpixelPositioning int
 
 const (
 	TEXT_SERVER_SUBPIXEL_POSITIONING_SUBPIXEL_POSITIONING_DISABLED             TextServerSubpixelPositioning = 0
-	TEXT_SERVER_SUBPIXEL_POSITIONING_SUBPIXEL_POSITIONING_AUTO                                               = 1
-	TEXT_SERVER_SUBPIXEL_POSITIONING_SUBPIXEL_POSITIONING_ONE_HALF                                           = 2
-	TEXT_SERVER_SUBPIXEL_POSITIONING_SUBPIXEL_POSITIONING_ONE_QUARTER                                        = 3
-	TEXT_SERVER_SUBPIXEL_POSITIONING_SUBPIXEL_POSITIONING_ONE_HALF_MAX_SIZE                                  = 20
-	TEXT_SERVER_SUBPIXEL_POSITIONING_SUBPIXEL_POSITIONING_ONE_QUARTER_MAX_SIZE                               = 16
+	TEXT_SERVER_SUBPIXEL_POSITIONING_SUBPIXEL_POSITIONING_AUTO                 TextServerSubpixelPositioning = 1
+	TEXT_SERVER_SUBPIXEL_POSITIONING_SUBPIXEL_POSITIONING_ONE_HALF             TextServerSubpixelPositioning = 2
+	TEXT_SERVER_SUBPIXEL_POSITIONING_SUBPIXEL_POSITIONING_ONE_QUARTER          TextServerSubpixelPositioning = 3
+	TEXT_SERVER_SUBPIXEL_POSITIONING_SUBPIXEL_POSITIONING_ONE_HALF_MAX_SIZE    TextServerSubpixelPositioning = 20
+	TEXT_SERVER_SUBPIXEL_POSITIONING_SUBPIXEL_POSITIONING_ONE_QUARTER_MAX_SIZE TextServerSubpixelPositioning = 16
 )
 
 type TextServerFeature int
 
 const (
 	TEXT_SERVER_FEATURE_FEATURE_SIMPLE_LAYOUT                     TextServerFeature = 1
-	TEXT_SERVER_FEATURE_FEATURE_BIDI_LAYOUT                                         = 2
-	TEXT_SERVER_FEATURE_FEATURE_VERTICAL_LAYOUT                                     = 4
-	TEXT_SERVER_FEATURE_FEATURE_SHAPING                                             = 8
-	TEXT_SERVER_FEATURE_FEATURE_KASHIDA_JUSTIFICATION                               = 16
-	TEXT_SERVER_FEATURE_FEATURE_BREAK_ITERATORS                                     = 32
-	TEXT_SERVER_FEATURE_FEATURE_FONT_BITMAP                                         = 64
-	TEXT_SERVER_FEATURE_FEATURE_FONT_DYNAMIC                                        = 128
-	TEXT_SERVER_FEATURE_FEATURE_FONT_MSDF                                           = 256
-	TEXT_SERVER_FEATURE_FEATURE_FONT_SYSTEM                                         = 512
-	TEXT_SERVER_FEATURE_FEATURE_FONT_VARIABLE                                       = 1024
-	TEXT_SERVER_FEATURE_FEATURE_CONTEXT_SENSITIVE_CASE_CONVERSION                   = 2048
-	TEXT_SERVER_FEATURE_FEATURE_USE_SUPPORT_DATA                                    = 4096
-	TEXT_SERVER_FEATURE_FEATURE_UNICODE_IDENTIFIERS                                 = 8192
-	TEXT_SERVER_FEATURE_FEATURE_UNICODE_SECURITY                                    = 16384
+	TEXT_SERVER_FEATURE_FEATURE_BIDI_LAYOUT                       TextServerFeature = 2
+	TEXT_SERVER_FEATURE_FEATURE_VERTICAL_LAYOUT                   TextServerFeature = 4
+	TEXT_SERVER_FEATURE_FEATURE_SHAPING                           TextServerFeature = 8
+	TEXT_SERVER_FEATURE_FEATURE_KASHIDA_JUSTIFICATION             TextServerFeature = 16
+	TEXT_SERVER_FEATURE_FEATURE_BREAK_ITERATORS                   TextServerFeature = 32
+	TEXT_SERVER_FEATURE_FEATURE_FONT_BITMAP                       TextServerFeature = 64
+	TEXT_SERVER_FEATURE_FEATURE_FONT_DYNAMIC                      TextServerFeature = 128
+	TEXT_SERVER_FEATURE_FEATURE_FONT_MSDF                         TextServerFeature = 256
+	TEXT_SERVER_FEATURE_FEATURE_FONT_SYSTEM                       TextServerFeature = 512
+	TEXT_SERVER_FEATURE_FEATURE_FONT_VARIABLE                     TextServerFeature = 1024
+	TEXT_SERVER_FEATURE_FEATURE_CONTEXT_SENSITIVE_CASE_CONVERSION TextServerFeature = 2048
+	TEXT_SERVER_FEATURE_FEATURE_USE_SUPPORT_DATA                  TextServerFeature = 4096
+	TEXT_SERVER_FEATURE_FEATURE_UNICODE_IDENTIFIERS               TextServerFeature = 8192
+	TEXT_SERVER_FEATURE_FEATURE_UNICODE_SECURITY                  TextServerFeature = 16384
 )
 
 type TextServerContourPointTag int
 
 const (
 	TEXT_SERVER_CONTOUR_POINT_TAG_CONTOUR_CURVE_TAG_ON        TextServerContourPointTag = 1
-	TEXT_SERVER_CONTOUR_POINT_TAG_CONTOUR_CURVE_TAG_OFF_CONIC                           = 0
-	TEXT_SERVER_CONTOUR_POINT_TAG_CONTOUR_CURVE_TAG_OFF_CUBIC                           = 2
+	TEXT_SERVER_CONTOUR_POINT_TAG_CONTOUR_CURVE_TAG_OFF_CONIC TextServerContourPointTag = 0
+	TEXT_SERVER_CONTOUR_POINT_TAG_CONTOUR_CURVE_TAG_OFF_CUBIC TextServerContourPointTag = 2
 )
 
 type TextServerSpacingType int
 
 const (
 	TEXT_SERVER_SPACING_TYPE_SPACING_GLYPH  TextServerSpacingType = 0
-	TEXT_SERVER_SPACING_TYPE_SPACING_SPACE                        = 1
-	TEXT_SERVER_SPACING_TYPE_SPACING_TOP                          = 2
-	TEXT_SERVER_SPACING_TYPE_SPACING_BOTTOM                       = 3
-	TEXT_SERVER_SPACING_TYPE_SPACING_MAX                          = 4
+	TEXT_SERVER_SPACING_TYPE_SPACING_SPACE  TextServerSpacingType = 1
+	TEXT_SERVER_SPACING_TYPE_SPACING_TOP    TextServerSpacingType = 2
+	TEXT_SERVER_SPACING_TYPE_SPACING_BOTTOM TextServerSpacingType = 3
+	TEXT_SERVER_SPACING_TYPE_SPACING_MAX    TextServerSpacingType = 4
 )
 
 type TextServerFontStyle int
 
 const (
 	TEXT_SERVER_FONT_STYLE_FONT_BOLD        TextServerFontStyle = 1
-	TEXT_SERVER_FONT_STYLE_FONT_ITALIC                          = 2
-	TEXT_SERVER_FONT_STYLE_FONT_FIXED_WIDTH                     = 4
+	TEXT_SERVER_FONT_STYLE_FONT_ITALIC      TextServerFontStyle = 2
+	TEXT_SERVER_FONT_STYLE_FONT_FIXED_WIDTH TextServerFontStyle = 4
 )
 
 type TextServerStructuredTextParser int
 
 const (
 	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_DEFAULT  TextServerStructuredTextParser = 0
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_URI                                     = 1
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_FILE                                    = 2
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_EMAIL                                   = 3
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_LIST                                    = 4
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_GDSCRIPT                                = 5
-	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_CUSTOM                                  = 6
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_URI      TextServerStructuredTextParser = 1
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_FILE     TextServerStructuredTextParser = 2
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_EMAIL    TextServerStructuredTextParser = 3
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_LIST     TextServerStructuredTextParser = 4
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_GDSCRIPT TextServerStructuredTextParser = 5
+	TEXT_SERVER_STRUCTURED_TEXT_PARSER_STRUCTURED_TEXT_CUSTOM   TextServerStructuredTextParser = 6
 )
 
 type TextServerFixedSizeScaleMode int
 
 const (
 	TEXT_SERVER_FIXED_SIZE_SCALE_MODE_FIXED_SIZE_SCALE_DISABLE      TextServerFixedSizeScaleMode = 0
-	TEXT_SERVER_FIXED_SIZE_SCALE_MODE_FIXED_SIZE_SCALE_INTEGER_ONLY                              = 1
-	TEXT_SERVER_FIXED_SIZE_SCALE_MODE_FIXED_SIZE_SCALE_ENABLED                                   = 2
+	TEXT_SERVER_FIXED_SIZE_SCALE_MODE_FIXED_SIZE_SCALE_INTEGER_ONLY TextServerFixedSizeScaleMode = 1
+	TEXT_SERVER_FIXED_SIZE_SCALE_MODE_FIXED_SIZE_SCALE_ENABLED      TextServerFixedSizeScaleMode = 2
 )
 
 type TextureButtonStretchMode int
 
 const (
 	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_SCALE                TextureButtonStretchMode = 0
-	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_TILE                                          = 1
-	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_KEEP                                          = 2
-	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_KEEP_CENTERED                                 = 3
-	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_KEEP_ASPECT                                   = 4
-	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_KEEP_ASPECT_CENTERED                          = 5
-	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_KEEP_ASPECT_COVERED                           = 6
+	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_TILE                 TextureButtonStretchMode = 1
+	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_KEEP                 TextureButtonStretchMode = 2
+	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_KEEP_CENTERED        TextureButtonStretchMode = 3
+	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_KEEP_ASPECT          TextureButtonStretchMode = 4
+	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_KEEP_ASPECT_CENTERED TextureButtonStretchMode = 5
+	TEXTURE_BUTTON_STRETCH_MODE_STRETCH_KEEP_ASPECT_COVERED  TextureButtonStretchMode = 6
 )
 
 type TextureLayeredLayeredType int
 
 const (
 	TEXTURE_LAYERED_LAYERED_TYPE_LAYERED_TYPE_2_D_ARRAY     TextureLayeredLayeredType = 0
-	TEXTURE_LAYERED_LAYERED_TYPE_LAYERED_TYPE_CUBEMAP                                 = 1
-	TEXTURE_LAYERED_LAYERED_TYPE_LAYERED_TYPE_CUBEMAP_ARRAY                           = 2
+	TEXTURE_LAYERED_LAYERED_TYPE_LAYERED_TYPE_CUBEMAP       TextureLayeredLayeredType = 1
+	TEXTURE_LAYERED_LAYERED_TYPE_LAYERED_TYPE_CUBEMAP_ARRAY TextureLayeredLayeredType = 2
 )
 
 type TextureProgressBarFillMode int
 
 const (
 	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_LEFT_TO_RIGHT                   TextureProgressBarFillMode = 0
-	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_RIGHT_TO_LEFT                                              = 1
-	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_TOP_TO_BOTTOM                                              = 2
-	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_BOTTOM_TO_TOP                                              = 3
-	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_CLOCKWISE                                                  = 4
-	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_COUNTER_CLOCKWISE                                          = 5
-	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_BILINEAR_LEFT_AND_RIGHT                                    = 6
-	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_BILINEAR_TOP_AND_BOTTOM                                    = 7
-	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_CLOCKWISE_AND_COUNTER_CLOCKWISE                            = 8
+	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_RIGHT_TO_LEFT                   TextureProgressBarFillMode = 1
+	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_TOP_TO_BOTTOM                   TextureProgressBarFillMode = 2
+	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_BOTTOM_TO_TOP                   TextureProgressBarFillMode = 3
+	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_CLOCKWISE                       TextureProgressBarFillMode = 4
+	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_COUNTER_CLOCKWISE               TextureProgressBarFillMode = 5
+	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_BILINEAR_LEFT_AND_RIGHT         TextureProgressBarFillMode = 6
+	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_BILINEAR_TOP_AND_BOTTOM         TextureProgressBarFillMode = 7
+	TEXTURE_PROGRESS_BAR_FILL_MODE_FILL_CLOCKWISE_AND_COUNTER_CLOCKWISE TextureProgressBarFillMode = 8
 )
 
 type TextureRectExpandMode int
 
 const (
 	TEXTURE_RECT_EXPAND_MODE_EXPAND_KEEP_SIZE               TextureRectExpandMode = 0
-	TEXTURE_RECT_EXPAND_MODE_EXPAND_IGNORE_SIZE                                   = 1
-	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_WIDTH                                     = 2
-	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_WIDTH_PROPORTIONAL                        = 3
-	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_HEIGHT                                    = 4
-	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_HEIGHT_PROPORTIONAL                       = 5
+	TEXTURE_RECT_EXPAND_MODE_EXPAND_IGNORE_SIZE             TextureRectExpandMode = 1
+	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_WIDTH               TextureRectExpandMode = 2
+	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_WIDTH_PROPORTIONAL  TextureRectExpandMode = 3
+	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_HEIGHT              TextureRectExpandMode = 4
+	TEXTURE_RECT_EXPAND_MODE_EXPAND_FIT_HEIGHT_PROPORTIONAL TextureRectExpandMode = 5
 )
 
 type TextureRectStretchMode int
 
 const (
 	TEXTURE_RECT_STRETCH_MODE_STRETCH_SCALE                TextureRectStretchMode = 0
-	TEXTURE_RECT_STRETCH_MODE_STRETCH_TILE                                        = 1
-	TEXTURE_RECT_STRETCH_MODE_STRETCH_KEEP                                        = 2
-	TEXTURE_RECT_STRETCH_MODE_STRETCH_KEEP_CENTERED                               = 3
-	TEXTURE_RECT_STRETCH_MODE_STRETCH_KEEP_ASPECT                                 = 4
-	TEXTURE_RECT_STRETCH_MODE_STRETCH_KEEP_ASPECT_CENTERED                        = 5
-	TEXTURE_RECT_STRETCH_MODE_STRETCH_KEEP_ASPECT_COVERED                         = 6
+	TEXTURE_RECT_STRETCH_MODE_STRETCH_TILE                 TextureRectStretchMode = 1
+	TEXTURE_RECT_STRETCH_MODE_STRETCH_KEEP                 TextureRectStretchMode = 2
+	TEXTURE_RECT_STRETCH_MODE_STRETCH_KEEP_CENTERED        TextureRectStretchMode = 3
+	TEXTURE_RECT_STRETCH_MODE_STRETCH_KEEP_ASPECT          TextureRectStretchMode = 4
+	TEXTURE_RECT_STRETCH_MODE_STRETCH_KEEP_ASPECT_CENTERED TextureRectStretchMode = 5
+	TEXTURE_RECT_STRETCH_MODE_STRETCH_KEEP_ASPECT_COVERED  TextureRectStretchMode = 6
 )
 
 type ThemeDataType int
 
 const (
 	THEME_DATA_TYPE_DATA_TYPE_COLOR     ThemeDataType = 0
-	THEME_DATA_TYPE_DATA_TYPE_CONSTANT                = 1
-	THEME_DATA_TYPE_DATA_TYPE_FONT                    = 2
-	THEME_DATA_TYPE_DATA_TYPE_FONT_SIZE               = 3
-	THEME_DATA_TYPE_DATA_TYPE_ICON                    = 4
-	THEME_DATA_TYPE_DATA_TYPE_STYLEBOX                = 5
-	THEME_DATA_TYPE_DATA_TYPE_MAX                     = 6
+	THEME_DATA_TYPE_DATA_TYPE_CONSTANT  ThemeDataType = 1
+	THEME_DATA_TYPE_DATA_TYPE_FONT      ThemeDataType = 2
+	THEME_DATA_TYPE_DATA_TYPE_FONT_SIZE ThemeDataType = 3
+	THEME_DATA_TYPE_DATA_TYPE_ICON      ThemeDataType = 4
+	THEME_DATA_TYPE_DATA_TYPE_STYLEBOX  ThemeDataType = 5
+	THEME_DATA_TYPE_DATA_TYPE_MAX       ThemeDataType = 6
 )
 
 type ThreadPriority int
 
 const (
 	THREAD_PRIORITY_PRIORITY_LOW    ThreadPriority = 0
-	THREAD_PRIORITY_PRIORITY_NORMAL                = 1
-	THREAD_PRIORITY_PRIORITY_HIGH                  = 2
+	THREAD_PRIORITY_PRIORITY_NORMAL ThreadPriority = 1
+	THREAD_PRIORITY_PRIORITY_HIGH   ThreadPriority = 2
 )
 
 type TileMapVisibilityMode int
 
 const (
 	TILE_MAP_VISIBILITY_MODE_VISIBILITY_MODE_DEFAULT    TileMapVisibilityMode = 0
-	TILE_MAP_VISIBILITY_MODE_VISIBILITY_MODE_FORCE_HIDE                       = 2
-	TILE_MAP_VISIBILITY_MODE_VISIBILITY_MODE_FORCE_SHOW                       = 1
+	TILE_MAP_VISIBILITY_MODE_VISIBILITY_MODE_FORCE_HIDE TileMapVisibilityMode = 2
+	TILE_MAP_VISIBILITY_MODE_VISIBILITY_MODE_FORCE_SHOW TileMapVisibilityMode = 1
 )
 
 type TileMapLayerDebugVisibilityMode int
 
 const (
 	TILE_MAP_LAYER_DEBUG_VISIBILITY_MODE_DEBUG_VISIBILITY_MODE_DEFAULT    TileMapLayerDebugVisibilityMode = 0
-	TILE_MAP_LAYER_DEBUG_VISIBILITY_MODE_DEBUG_VISIBILITY_MODE_FORCE_HIDE                                 = 2
-	TILE_MAP_LAYER_DEBUG_VISIBILITY_MODE_DEBUG_VISIBILITY_MODE_FORCE_SHOW                                 = 1
+	TILE_MAP_LAYER_DEBUG_VISIBILITY_MODE_DEBUG_VISIBILITY_MODE_FORCE_HIDE TileMapLayerDebugVisibilityMode = 2
+	TILE_MAP_LAYER_DEBUG_VISIBILITY_MODE_DEBUG_VISIBILITY_MODE_FORCE_SHOW TileMapLayerDebugVisibilityMode = 1
 )
 
 type TileSetTileShape int
 
 const (
 	TILE_SET_TILE_SHAPE_TILE_SHAPE_SQUARE             TileSetTileShape = 0
-	TILE_SET_TILE_SHAPE_TILE_SHAPE_ISOMETRIC                           = 1
-	TILE_SET_TILE_SHAPE_TILE_SHAPE_HALF_OFFSET_SQUARE                  = 2
-	TILE_SET_TILE_SHAPE_TILE_SHAPE_HEXAGON                             = 3
+	TILE_SET_TILE_SHAPE_TILE_SHAPE_ISOMETRIC          TileSetTileShape = 1
+	TILE_SET_TILE_SHAPE_TILE_SHAPE_HALF_OFFSET_SQUARE TileSetTileShape = 2
+	TILE_SET_TILE_SHAPE_TILE_SHAPE_HEXAGON            TileSetTileShape = 3
 )
 
 type TileSetTileLayout int
 
 const (
 	TILE_SET_TILE_LAYOUT_TILE_LAYOUT_STACKED        TileSetTileLayout = 0
-	TILE_SET_TILE_LAYOUT_TILE_LAYOUT_STACKED_OFFSET                   = 1
-	TILE_SET_TILE_LAYOUT_TILE_LAYOUT_STAIRS_RIGHT                     = 2
-	TILE_SET_TILE_LAYOUT_TILE_LAYOUT_STAIRS_DOWN                      = 3
-	TILE_SET_TILE_LAYOUT_TILE_LAYOUT_DIAMOND_RIGHT                    = 4
-	TILE_SET_TILE_LAYOUT_TILE_LAYOUT_DIAMOND_DOWN                     = 5
+	TILE_SET_TILE_LAYOUT_TILE_LAYOUT_STACKED_OFFSET TileSetTileLayout = 1
+	TILE_SET_TILE_LAYOUT_TILE_LAYOUT_STAIRS_RIGHT   TileSetTileLayout = 2
+	TILE_SET_TILE_LAYOUT_TILE_LAYOUT_STAIRS_DOWN    TileSetTileLayout = 3
+	TILE_SET_TILE_LAYOUT_TILE_LAYOUT_DIAMOND_RIGHT  TileSetTileLayout = 4
+	TILE_SET_TILE_LAYOUT_TILE_LAYOUT_DIAMOND_DOWN   TileSetTileLayout = 5
 )
 
 type TileSetTileOffsetAxis int
 
 const (
 	TILE_SET_TILE_OFFSET_AXIS_TILE_OFFSET_AXIS_HORIZONTAL TileSetTileOffsetAxis = 0
-	TILE_SET_TILE_OFFSET_AXIS_TILE_OFFSET_AXIS_VERTICAL                         = 1
+	TILE_SET_TILE_OFFSET_AXIS_TILE_OFFSET_AXIS_VERTICAL   TileSetTileOffsetAxis = 1
 )
 
 type TileSetCellNeighbor int
 
 const (
 	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_RIGHT_SIDE          TileSetCellNeighbor = 0
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_RIGHT_CORNER                            = 1
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE                       = 2
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_RIGHT_CORNER                     = 3
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_SIDE                             = 4
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_CORNER                           = 5
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_LEFT_SIDE                        = 6
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_LEFT_CORNER                      = 7
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_LEFT_SIDE                               = 8
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_LEFT_CORNER                             = 9
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_LEFT_SIDE                           = 10
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_LEFT_CORNER                         = 11
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_SIDE                                = 12
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_CORNER                              = 13
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_RIGHT_SIDE                          = 14
-	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_RIGHT_CORNER                        = 15
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_RIGHT_CORNER        TileSetCellNeighbor = 1
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE   TileSetCellNeighbor = 2
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_RIGHT_CORNER TileSetCellNeighbor = 3
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_SIDE         TileSetCellNeighbor = 4
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_CORNER       TileSetCellNeighbor = 5
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_LEFT_SIDE    TileSetCellNeighbor = 6
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_BOTTOM_LEFT_CORNER  TileSetCellNeighbor = 7
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_LEFT_SIDE           TileSetCellNeighbor = 8
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_LEFT_CORNER         TileSetCellNeighbor = 9
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_LEFT_SIDE       TileSetCellNeighbor = 10
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_LEFT_CORNER     TileSetCellNeighbor = 11
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_SIDE            TileSetCellNeighbor = 12
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_CORNER          TileSetCellNeighbor = 13
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_RIGHT_SIDE      TileSetCellNeighbor = 14
+	TILE_SET_CELL_NEIGHBOR_CELL_NEIGHBOR_TOP_RIGHT_CORNER    TileSetCellNeighbor = 15
 )
 
 type TileSetTerrainMode int
 
 const (
 	TILE_SET_TERRAIN_MODE_TERRAIN_MODE_MATCH_CORNERS_AND_SIDES TileSetTerrainMode = 0
-	TILE_SET_TERRAIN_MODE_TERRAIN_MODE_MATCH_CORNERS                              = 1
-	TILE_SET_TERRAIN_MODE_TERRAIN_MODE_MATCH_SIDES                                = 2
+	TILE_SET_TERRAIN_MODE_TERRAIN_MODE_MATCH_CORNERS           TileSetTerrainMode = 1
+	TILE_SET_TERRAIN_MODE_TERRAIN_MODE_MATCH_SIDES             TileSetTerrainMode = 2
 )
 
 type TileSetAtlasSourceTileAnimationMode int
 
 const (
 	TILE_SET_ATLAS_SOURCE_TILE_ANIMATION_MODE_TILE_ANIMATION_MODE_DEFAULT            TileSetAtlasSourceTileAnimationMode = 0
-	TILE_SET_ATLAS_SOURCE_TILE_ANIMATION_MODE_TILE_ANIMATION_MODE_RANDOM_START_TIMES                                     = 1
-	TILE_SET_ATLAS_SOURCE_TILE_ANIMATION_MODE_TILE_ANIMATION_MODE_MAX                                                    = 2
+	TILE_SET_ATLAS_SOURCE_TILE_ANIMATION_MODE_TILE_ANIMATION_MODE_RANDOM_START_TIMES TileSetAtlasSourceTileAnimationMode = 1
+	TILE_SET_ATLAS_SOURCE_TILE_ANIMATION_MODE_TILE_ANIMATION_MODE_MAX                TileSetAtlasSourceTileAnimationMode = 2
 )
 
 type TimeMonth int
 
 const (
 	TIME_MONTH_MONTH_JANUARY   TimeMonth = 1
-	TIME_MONTH_MONTH_FEBRUARY            = 2
-	TIME_MONTH_MONTH_MARCH               = 3
-	TIME_MONTH_MONTH_APRIL               = 4
-	TIME_MONTH_MONTH_MAY                 = 5
-	TIME_MONTH_MONTH_JUNE                = 6
-	TIME_MONTH_MONTH_JULY                = 7
-	TIME_MONTH_MONTH_AUGUST              = 8
-	TIME_MONTH_MONTH_SEPTEMBER           = 9
-	TIME_MONTH_MONTH_OCTOBER             = 10
-	TIME_MONTH_MONTH_NOVEMBER            = 11
-	TIME_MONTH_MONTH_DECEMBER            = 12
+	TIME_MONTH_MONTH_FEBRUARY  TimeMonth = 2
+	TIME_MONTH_MONTH_MARCH     TimeMonth = 3
+	TIME_MONTH_MONTH_APRIL     TimeMonth = 4
+	TIME_MONTH_MONTH_MAY       TimeMonth = 5
+	TIME_MONTH_MONTH_JUNE      TimeMonth = 6
+	TIME_MONTH_MONTH_JULY      TimeMonth = 7
+	TIME_MONTH_MONTH_AUGUST    TimeMonth = 8
+	TIME_MONTH_MONTH_SEPTEMBER TimeMonth = 9
+	TIME_MONTH_MONTH_OCTOBER   TimeMonth = 10
+	TIME_MONTH_MONTH_NOVEMBER  TimeMonth = 11
+	TIME_MONTH_MONTH_DECEMBER  TimeMonth = 12
 )
 
 type TimeWeekday int
 
 const (
 	TIME_WEEKDAY_WEEKDAY_SUNDAY    TimeWeekday = 0
-	TIME_WEEKDAY_WEEKDAY_MONDAY                = 1
-	TIME_WEEKDAY_WEEKDAY_TUESDAY               = 2
-	TIME_WEEKDAY_WEEKDAY_WEDNESDAY             = 3
-	TIME_WEEKDAY_WEEKDAY_THURSDAY              = 4
-	TIME_WEEKDAY_WEEKDAY_FRIDAY                = 5
-	TIME_WEEKDAY_WEEKDAY_SATURDAY              = 6
+	TIME_WEEKDAY_WEEKDAY_MONDAY    TimeWeekday = 1
+	TIME_WEEKDAY_WEEKDAY_TUESDAY   TimeWeekday = 2
+	TIME_WEEKDAY_WEEKDAY_WEDNESDAY TimeWeekday = 3
+	TIME_WEEKDAY_WEEKDAY_THURSDAY  TimeWeekday = 4
+	TIME_WEEKDAY_WEEKDAY_FRIDAY    TimeWeekday = 5
+	TIME_WEEKDAY_WEEKDAY_SATURDAY  TimeWeekday = 6
 )
 
 type TimerTimerProcessCallback int
 
 const (
 	TIMER_TIMER_PROCESS_CALLBACK_TIMER_PROCESS_PHYSICS TimerTimerProcessCallback = 0
-	TIMER_TIMER_PROCESS_CALLBACK_TIMER_PROCESS_IDLE                              = 1
+	TIMER_TIMER_PROCESS_CALLBACK_TIMER_PROCESS_IDLE    TimerTimerProcessCallback = 1
 )
 
 type TouchScreenButtonVisibilityMode int
 
 const (
 	TOUCH_SCREEN_BUTTON_VISIBILITY_MODE_VISIBILITY_ALWAYS           TouchScreenButtonVisibilityMode = 0
-	TOUCH_SCREEN_BUTTON_VISIBILITY_MODE_VISIBILITY_TOUCHSCREEN_ONLY                                 = 1
+	TOUCH_SCREEN_BUTTON_VISIBILITY_MODE_VISIBILITY_TOUCHSCREEN_ONLY TouchScreenButtonVisibilityMode = 1
 )
 
 type TreeSelectMode int
 
 const (
 	TREE_SELECT_MODE_SELECT_SINGLE TreeSelectMode = 0
-	TREE_SELECT_MODE_SELECT_ROW                   = 1
-	TREE_SELECT_MODE_SELECT_MULTI                 = 2
+	TREE_SELECT_MODE_SELECT_ROW    TreeSelectMode = 1
+	TREE_SELECT_MODE_SELECT_MULTI  TreeSelectMode = 2
 )
 
 type TreeDropModeFlags int
 
 const (
 	TREE_DROP_MODE_FLAGS_DROP_MODE_DISABLED  TreeDropModeFlags = 0
-	TREE_DROP_MODE_FLAGS_DROP_MODE_ON_ITEM                     = 1
-	TREE_DROP_MODE_FLAGS_DROP_MODE_INBETWEEN                   = 2
+	TREE_DROP_MODE_FLAGS_DROP_MODE_ON_ITEM   TreeDropModeFlags = 1
+	TREE_DROP_MODE_FLAGS_DROP_MODE_INBETWEEN TreeDropModeFlags = 2
 )
 
 type TreeItemTreeCellMode int
 
 const (
 	TREE_ITEM_TREE_CELL_MODE_CELL_MODE_STRING TreeItemTreeCellMode = 0
-	TREE_ITEM_TREE_CELL_MODE_CELL_MODE_CHECK                       = 1
-	TREE_ITEM_TREE_CELL_MODE_CELL_MODE_RANGE                       = 2
-	TREE_ITEM_TREE_CELL_MODE_CELL_MODE_ICON                        = 3
-	TREE_ITEM_TREE_CELL_MODE_CELL_MODE_CUSTOM                      = 4
+	TREE_ITEM_TREE_CELL_MODE_CELL_MODE_CHECK  TreeItemTreeCellMode = 1
+	TREE_ITEM_TREE_CELL_MODE_CELL_MODE_RANGE  TreeItemTreeCellMode = 2
+	TREE_ITEM_TREE_CELL_MODE_CELL_MODE_ICON   TreeItemTreeCellMode = 3
+	TREE_ITEM_TREE_CELL_MODE_CELL_MODE_CUSTOM TreeItemTreeCellMode = 4
 )
 
 type TweenTweenProcessMode int
 
 const (
 	TWEEN_TWEEN_PROCESS_MODE_TWEEN_PROCESS_PHYSICS TweenTweenProcessMode = 0
-	TWEEN_TWEEN_PROCESS_MODE_TWEEN_PROCESS_IDLE                          = 1
+	TWEEN_TWEEN_PROCESS_MODE_TWEEN_PROCESS_IDLE    TweenTweenProcessMode = 1
 )
 
 type TweenTweenPauseMode int
 
 const (
 	TWEEN_TWEEN_PAUSE_MODE_TWEEN_PAUSE_BOUND   TweenTweenPauseMode = 0
-	TWEEN_TWEEN_PAUSE_MODE_TWEEN_PAUSE_STOP                        = 1
-	TWEEN_TWEEN_PAUSE_MODE_TWEEN_PAUSE_PROCESS                     = 2
+	TWEEN_TWEEN_PAUSE_MODE_TWEEN_PAUSE_STOP    TweenTweenPauseMode = 1
+	TWEEN_TWEEN_PAUSE_MODE_TWEEN_PAUSE_PROCESS TweenTweenPauseMode = 2
 )
 
 type TweenTransitionType int
 
 const (
 	TWEEN_TRANSITION_TYPE_TRANS_LINEAR  TweenTransitionType = 0
-	TWEEN_TRANSITION_TYPE_TRANS_SINE                        = 1
-	TWEEN_TRANSITION_TYPE_TRANS_QUINT                       = 2
-	TWEEN_TRANSITION_TYPE_TRANS_QUART                       = 3
-	TWEEN_TRANSITION_TYPE_TRANS_QUAD                        = 4
-	TWEEN_TRANSITION_TYPE_TRANS_EXPO                        = 5
-	TWEEN_TRANSITION_TYPE_TRANS_ELASTIC                     = 6
-	TWEEN_TRANSITION_TYPE_TRANS_CUBIC                       = 7
-	TWEEN_TRANSITION_TYPE_TRANS_CIRC                        = 8
-	TWEEN_TRANSITION_TYPE_TRANS_BOUNCE                      = 9
-	TWEEN_TRANSITION_TYPE_TRANS_BACK                        = 10
-	TWEEN_TRANSITION_TYPE_TRANS_SPRING                      = 11
+	TWEEN_TRANSITION_TYPE_TRANS_SINE    TweenTransitionType = 1
+	TWEEN_TRANSITION_TYPE_TRANS_QUINT   TweenTransitionType = 2
+	TWEEN_TRANSITION_TYPE_TRANS_QUART   TweenTransitionType = 3
+	TWEEN_TRANSITION_TYPE_TRANS_QUAD    TweenTransitionType = 4
+	TWEEN_TRANSITION_TYPE_TRANS_EXPO    TweenTransitionType = 5
+	TWEEN_TRANSITION_TYPE_TRANS_ELASTIC TweenTransitionType = 6
+	TWEEN_TRANSITION_TYPE_TRANS_CUBIC   TweenTransitionType = 7
+	TWEEN_TRANSITION_TYPE_TRANS_CIRC    TweenTransitionType = 8
+	TWEEN_TRANSITION_TYPE_TRANS_BOUNCE  TweenTransitionType = 9
+	TWEEN_TRANSITION_TYPE_TRANS_BACK    TweenTransitionType = 10
+	TWEEN_TRANSITION_TYPE_TRANS_SPRING  TweenTransitionType = 11
 )
 
 type TweenEaseType int
 
 const (
 	TWEEN_EASE_TYPE_EASE_IN     TweenEaseType = 0
-	TWEEN_EASE_TYPE_EASE_OUT                  = 1
-	TWEEN_EASE_TYPE_EASE_IN_OUT               = 2
-	TWEEN_EASE_TYPE_EASE_OUT_IN               = 3
+	TWEEN_EASE_TYPE_EASE_OUT    TweenEaseType = 1
+	TWEEN_EASE_TYPE_EASE_IN_OUT TweenEaseType = 2
+	TWEEN_EASE_TYPE_EASE_OUT_IN TweenEaseType = 3
 )
 
 type UPNPUPNPResult int
 
 const (
 	UPNP_UPNP_RESULT_UPNP_RESULT_SUCCESS                         UPNPUPNPResult = 0
-	UPNP_UPNP_RESULT_UPNP_RESULT_NOT_AUTHORIZED                                 = 1
-	UPNP_UPNP_RESULT_UPNP_RESULT_PORT_MAPPING_NOT_FOUND                         = 2
-	UPNP_UPNP_RESULT_UPNP_RESULT_INCONSISTENT_PARAMETERS                        = 3
-	UPNP_UPNP_RESULT_UPNP_RESULT_NO_SUCH_ENTRY_IN_ARRAY                         = 4
-	UPNP_UPNP_RESULT_UPNP_RESULT_ACTION_FAILED                                  = 5
-	UPNP_UPNP_RESULT_UPNP_RESULT_SRC_IP_WILDCARD_NOT_PERMITTED                  = 6
-	UPNP_UPNP_RESULT_UPNP_RESULT_EXT_PORT_WILDCARD_NOT_PERMITTED                = 7
-	UPNP_UPNP_RESULT_UPNP_RESULT_INT_PORT_WILDCARD_NOT_PERMITTED                = 8
-	UPNP_UPNP_RESULT_UPNP_RESULT_REMOTE_HOST_MUST_BE_WILDCARD                   = 9
-	UPNP_UPNP_RESULT_UPNP_RESULT_EXT_PORT_MUST_BE_WILDCARD                      = 10
-	UPNP_UPNP_RESULT_UPNP_RESULT_NO_PORT_MAPS_AVAILABLE                         = 11
-	UPNP_UPNP_RESULT_UPNP_RESULT_CONFLICT_WITH_OTHER_MECHANISM                  = 12
-	UPNP_UPNP_RESULT_UPNP_RESULT_CONFLICT_WITH_OTHER_MAPPING                    = 13
-	UPNP_UPNP_RESULT_UPNP_RESULT_SAME_PORT_VALUES_REQUIRED                      = 14
-	UPNP_UPNP_RESULT_UPNP_RESULT_ONLY_PERMANENT_LEASE_SUPPORTED                 = 15
-	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_GATEWAY                                = 16
-	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_PORT                                   = 17
-	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_PROTOCOL                               = 18
-	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_DURATION                               = 19
-	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_ARGS                                   = 20
-	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_RESPONSE                               = 21
-	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_PARAM                                  = 22
-	UPNP_UPNP_RESULT_UPNP_RESULT_HTTP_ERROR                                     = 23
-	UPNP_UPNP_RESULT_UPNP_RESULT_SOCKET_ERROR                                   = 24
-	UPNP_UPNP_RESULT_UPNP_RESULT_MEM_ALLOC_ERROR                                = 25
-	UPNP_UPNP_RESULT_UPNP_RESULT_NO_GATEWAY                                     = 26
-	UPNP_UPNP_RESULT_UPNP_RESULT_NO_DEVICES                                     = 27
-	UPNP_UPNP_RESULT_UPNP_RESULT_UNKNOWN_ERROR                                  = 28
+	UPNP_UPNP_RESULT_UPNP_RESULT_NOT_AUTHORIZED                  UPNPUPNPResult = 1
+	UPNP_UPNP_RESULT_UPNP_RESULT_PORT_MAPPING_NOT_FOUND          UPNPUPNPResult = 2
+	UPNP_UPNP_RESULT_UPNP_RESULT_INCONSISTENT_PARAMETERS         UPNPUPNPResult = 3
+	UPNP_UPNP_RESULT_UPNP_RESULT_NO_SUCH_ENTRY_IN_ARRAY          UPNPUPNPResult = 4
+	UPNP_UPNP_RESULT_UPNP_RESULT_ACTION_FAILED                   UPNPUPNPResult = 5
+	UPNP_UPNP_RESULT_UPNP_RESULT_SRC_IP_WILDCARD_NOT_PERMITTED   UPNPUPNPResult = 6
+	UPNP_UPNP_RESULT_UPNP_RESULT_EXT_PORT_WILDCARD_NOT_PERMITTED UPNPUPNPResult = 7
+	UPNP_UPNP_RESULT_UPNP_RESULT_INT_PORT_WILDCARD_NOT_PERMITTED UPNPUPNPResult = 8
+	UPNP_UPNP_RESULT_UPNP_RESULT_REMOTE_HOST_MUST_BE_WILDCARD    UPNPUPNPResult = 9
+	UPNP_UPNP_RESULT_UPNP_RESULT_EXT_PORT_MUST_BE_WILDCARD       UPNPUPNPResult = 10
+	UPNP_UPNP_RESULT_UPNP_RESULT_NO_PORT_MAPS_AVAILABLE          UPNPUPNPResult = 11
+	UPNP_UPNP_RESULT_UPNP_RESULT_CONFLICT_WITH_OTHER_MECHANISM   UPNPUPNPResult = 12
+	UPNP_UPNP_RESULT_UPNP_RESULT_CONFLICT_WITH_OTHER_MAPPING     UPNPUPNPResult = 13
+	UPNP_UPNP_RESULT_UPNP_RESULT_SAME_PORT_VALUES_REQUIRED       UPNPUPNPResult = 14
+	UPNP_UPNP_RESULT_UPNP_RESULT_ONLY_PERMANENT_LEASE_SUPPORTED  UPNPUPNPResult = 15
+	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_GATEWAY                 UPNPUPNPResult = 16
+	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_PORT                    UPNPUPNPResult = 17
+	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_PROTOCOL                UPNPUPNPResult = 18
+	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_DURATION                UPNPUPNPResult = 19
+	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_ARGS                    UPNPUPNPResult = 20
+	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_RESPONSE                UPNPUPNPResult = 21
+	UPNP_UPNP_RESULT_UPNP_RESULT_INVALID_PARAM                   UPNPUPNPResult = 22
+	UPNP_UPNP_RESULT_UPNP_RESULT_HTTP_ERROR                      UPNPUPNPResult = 23
+	UPNP_UPNP_RESULT_UPNP_RESULT_SOCKET_ERROR                    UPNPUPNPResult = 24
+	UPNP_UPNP_RESULT_UPNP_RESULT_MEM_ALLOC_ERROR                 UPNPUPNPResult = 25
+	UPNP_UPNP_RESULT_UPNP_RESULT_NO_GATEWAY                      UPNPUPNPResult = 26
+	UPNP_UPNP_RESULT_UPNP_RESULT_NO_DEVICES                      UPNPUPNPResult = 27
+	UPNP_UPNP_RESULT_UPNP_RESULT_UNKNOWN_ERROR                   UPNPUPNPResult = 28
 )
 
 type UPNPDeviceIGDStatus int
 
 const (
 	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_OK              UPNPDeviceIGDStatus = 0
-	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_HTTP_ERROR                          = 1
-	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_HTTP_EMPTY                          = 2
-	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_NO_URLS                             = 3
-	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_NO_IGD                              = 4
-	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_DISCONNECTED                        = 5
-	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_UNKNOWN_DEVICE                      = 6
-	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_INVALID_CONTROL                     = 7
-	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_MALLOC_ERROR                        = 8
-	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_UNKNOWN_ERROR                       = 9
+	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_HTTP_ERROR      UPNPDeviceIGDStatus = 1
+	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_HTTP_EMPTY      UPNPDeviceIGDStatus = 2
+	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_NO_URLS         UPNPDeviceIGDStatus = 3
+	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_NO_IGD          UPNPDeviceIGDStatus = 4
+	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_DISCONNECTED    UPNPDeviceIGDStatus = 5
+	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_UNKNOWN_DEVICE  UPNPDeviceIGDStatus = 6
+	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_INVALID_CONTROL UPNPDeviceIGDStatus = 7
+	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_MALLOC_ERROR    UPNPDeviceIGDStatus = 8
+	UPNP_DEVICE_IGD_STATUS_IGD_STATUS_UNKNOWN_ERROR   UPNPDeviceIGDStatus = 9
 )
 
 type UndoRedoMergeMode int
 
 const (
 	UNDO_REDO_MERGE_MODE_MERGE_DISABLE UndoRedoMergeMode = 0
-	UNDO_REDO_MERGE_MODE_MERGE_ENDS                      = 1
-	UNDO_REDO_MERGE_MODE_MERGE_ALL                       = 2
+	UNDO_REDO_MERGE_MODE_MERGE_ENDS    UndoRedoMergeMode = 1
+	UNDO_REDO_MERGE_MODE_MERGE_ALL     UndoRedoMergeMode = 2
 )
 
 type ViewportPositionalShadowAtlasQuadrantSubdiv int
 
 const (
 	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_DISABLED ViewportPositionalShadowAtlasQuadrantSubdiv = 0
-	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_1                                                    = 1
-	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_4                                                    = 2
-	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_16                                                   = 3
-	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_64                                                   = 4
-	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_256                                                  = 5
-	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_1024                                                 = 6
-	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_MAX                                                  = 7
+	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_1        ViewportPositionalShadowAtlasQuadrantSubdiv = 1
+	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_4        ViewportPositionalShadowAtlasQuadrantSubdiv = 2
+	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_16       ViewportPositionalShadowAtlasQuadrantSubdiv = 3
+	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_64       ViewportPositionalShadowAtlasQuadrantSubdiv = 4
+	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_256      ViewportPositionalShadowAtlasQuadrantSubdiv = 5
+	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_1024     ViewportPositionalShadowAtlasQuadrantSubdiv = 6
+	VIEWPORT_POSITIONAL_SHADOW_ATLAS_QUADRANT_SUBDIV_SHADOW_ATLAS_QUADRANT_SUBDIV_MAX      ViewportPositionalShadowAtlasQuadrantSubdiv = 7
 )
 
 type ViewportScaling3DMode int
 
 const (
-	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_BILINEAR ViewportScaling3DMode = 0
-	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_FSR                            = 1
-	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_FSR_2                          = 2
-	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_MAX                            = 3
+	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_BILINEAR         ViewportScaling3DMode = 0
+	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_FSR              ViewportScaling3DMode = 1
+	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_FSR_2            ViewportScaling3DMode = 2
+	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_METALFX_SPATIAL  ViewportScaling3DMode = 3
+	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_METALFX_TEMPORAL ViewportScaling3DMode = 4
+	VIEWPORT_SCALING_3_D_MODE_SCALING_3_D_MODE_MAX              ViewportScaling3DMode = 5
 )
 
 type ViewportMSAA int
 
 const (
 	VIEWPORT_MSAA_MSAA_DISABLED ViewportMSAA = 0
-	VIEWPORT_MSAA_MSAA_2_X                   = 1
-	VIEWPORT_MSAA_MSAA_4_X                   = 2
-	VIEWPORT_MSAA_MSAA_8_X                   = 3
-	VIEWPORT_MSAA_MSAA_MAX                   = 4
+	VIEWPORT_MSAA_MSAA_2_X      ViewportMSAA = 1
+	VIEWPORT_MSAA_MSAA_4_X      ViewportMSAA = 2
+	VIEWPORT_MSAA_MSAA_8_X      ViewportMSAA = 3
+	VIEWPORT_MSAA_MSAA_MAX      ViewportMSAA = 4
+)
+
+type ViewportAnisotropicFiltering int
+
+const (
+	VIEWPORT_ANISOTROPIC_FILTERING_ANISOTROPY_DISABLED ViewportAnisotropicFiltering = 0
+	VIEWPORT_ANISOTROPIC_FILTERING_ANISOTROPY_2_X      ViewportAnisotropicFiltering = 1
+	VIEWPORT_ANISOTROPIC_FILTERING_ANISOTROPY_4_X      ViewportAnisotropicFiltering = 2
+	VIEWPORT_ANISOTROPIC_FILTERING_ANISOTROPY_8_X      ViewportAnisotropicFiltering = 3
+	VIEWPORT_ANISOTROPIC_FILTERING_ANISOTROPY_16_X     ViewportAnisotropicFiltering = 4
+	VIEWPORT_ANISOTROPIC_FILTERING_ANISOTROPY_MAX      ViewportAnisotropicFiltering = 5
 )
 
 type ViewportScreenSpaceAA int
 
 const (
 	VIEWPORT_SCREEN_SPACE_AA_SCREEN_SPACE_AA_DISABLED ViewportScreenSpaceAA = 0
-	VIEWPORT_SCREEN_SPACE_AA_SCREEN_SPACE_AA_FXAA                           = 1
-	VIEWPORT_SCREEN_SPACE_AA_SCREEN_SPACE_AA_MAX                            = 2
+	VIEWPORT_SCREEN_SPACE_AA_SCREEN_SPACE_AA_FXAA     ViewportScreenSpaceAA = 1
+	VIEWPORT_SCREEN_SPACE_AA_SCREEN_SPACE_AA_SMAA     ViewportScreenSpaceAA = 2
+	VIEWPORT_SCREEN_SPACE_AA_SCREEN_SPACE_AA_MAX      ViewportScreenSpaceAA = 3
 )
 
 type ViewportRenderInfo int
 
 const (
 	VIEWPORT_RENDER_INFO_RENDER_INFO_OBJECTS_IN_FRAME    ViewportRenderInfo = 0
-	VIEWPORT_RENDER_INFO_RENDER_INFO_PRIMITIVES_IN_FRAME                    = 1
-	VIEWPORT_RENDER_INFO_RENDER_INFO_DRAW_CALLS_IN_FRAME                    = 2
-	VIEWPORT_RENDER_INFO_RENDER_INFO_MAX                                    = 3
+	VIEWPORT_RENDER_INFO_RENDER_INFO_PRIMITIVES_IN_FRAME ViewportRenderInfo = 1
+	VIEWPORT_RENDER_INFO_RENDER_INFO_DRAW_CALLS_IN_FRAME ViewportRenderInfo = 2
+	VIEWPORT_RENDER_INFO_RENDER_INFO_MAX                 ViewportRenderInfo = 3
 )
 
 type ViewportRenderInfoType int
 
 const (
 	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_VISIBLE ViewportRenderInfoType = 0
-	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_SHADOW                         = 1
-	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_CANVAS                         = 2
-	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_MAX                            = 3
+	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_SHADOW  ViewportRenderInfoType = 1
+	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_CANVAS  ViewportRenderInfoType = 2
+	VIEWPORT_RENDER_INFO_TYPE_RENDER_INFO_TYPE_MAX     ViewportRenderInfoType = 3
 )
 
 type ViewportDebugDraw int
 
 const (
 	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_DISABLED                  ViewportDebugDraw = 0
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_UNSHADED                                    = 1
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_LIGHTING                                    = 2
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_OVERDRAW                                    = 3
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_WIREFRAME                                   = 4
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_NORMAL_BUFFER                               = 5
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_VOXEL_GI_ALBEDO                             = 6
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_VOXEL_GI_LIGHTING                           = 7
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_VOXEL_GI_EMISSION                           = 8
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SHADOW_ATLAS                                = 9
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_DIRECTIONAL_SHADOW_ATLAS                    = 10
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SCENE_LUMINANCE                             = 11
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SSAO                                        = 12
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SSIL                                        = 13
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_PSSM_SPLITS                                 = 14
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_DECAL_ATLAS                                 = 15
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SDFGI                                       = 16
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SDFGI_PROBES                                = 17
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_GI_BUFFER                                   = 18
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_DISABLE_LOD                                 = 19
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_CLUSTER_OMNI_LIGHTS                         = 20
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_CLUSTER_SPOT_LIGHTS                         = 21
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_CLUSTER_DECALS                              = 22
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_CLUSTER_REFLECTION_PROBES                   = 23
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_OCCLUDERS                                   = 24
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_MOTION_VECTORS                              = 25
-	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_INTERNAL_BUFFER                             = 26
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_UNSHADED                  ViewportDebugDraw = 1
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_LIGHTING                  ViewportDebugDraw = 2
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_OVERDRAW                  ViewportDebugDraw = 3
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_WIREFRAME                 ViewportDebugDraw = 4
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_NORMAL_BUFFER             ViewportDebugDraw = 5
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_VOXEL_GI_ALBEDO           ViewportDebugDraw = 6
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_VOXEL_GI_LIGHTING         ViewportDebugDraw = 7
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_VOXEL_GI_EMISSION         ViewportDebugDraw = 8
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SHADOW_ATLAS              ViewportDebugDraw = 9
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_DIRECTIONAL_SHADOW_ATLAS  ViewportDebugDraw = 10
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SCENE_LUMINANCE           ViewportDebugDraw = 11
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SSAO                      ViewportDebugDraw = 12
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SSIL                      ViewportDebugDraw = 13
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_PSSM_SPLITS               ViewportDebugDraw = 14
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_DECAL_ATLAS               ViewportDebugDraw = 15
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SDFGI                     ViewportDebugDraw = 16
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_SDFGI_PROBES              ViewportDebugDraw = 17
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_GI_BUFFER                 ViewportDebugDraw = 18
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_DISABLE_LOD               ViewportDebugDraw = 19
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_CLUSTER_OMNI_LIGHTS       ViewportDebugDraw = 20
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_CLUSTER_SPOT_LIGHTS       ViewportDebugDraw = 21
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_CLUSTER_DECALS            ViewportDebugDraw = 22
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_CLUSTER_REFLECTION_PROBES ViewportDebugDraw = 23
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_OCCLUDERS                 ViewportDebugDraw = 24
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_MOTION_VECTORS            ViewportDebugDraw = 25
+	VIEWPORT_DEBUG_DRAW_DEBUG_DRAW_INTERNAL_BUFFER           ViewportDebugDraw = 26
 )
 
 type ViewportDefaultCanvasItemTextureFilter int
 
 const (
 	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST              ViewportDefaultCanvasItemTextureFilter = 0
-	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_LINEAR                                                      = 1
-	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS                                         = 2
-	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS                                        = 3
-	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_MAX                                                         = 4
+	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_LINEAR               ViewportDefaultCanvasItemTextureFilter = 1
+	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS  ViewportDefaultCanvasItemTextureFilter = 2
+	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS ViewportDefaultCanvasItemTextureFilter = 3
+	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_MAX                  ViewportDefaultCanvasItemTextureFilter = 4
 )
 
 type ViewportDefaultCanvasItemTextureRepeat int
 
 const (
 	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_DISABLED ViewportDefaultCanvasItemTextureRepeat = 0
-	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_ENABLED                                         = 1
-	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_MIRROR                                          = 2
-	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_MAX                                             = 3
+	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_ENABLED  ViewportDefaultCanvasItemTextureRepeat = 1
+	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_MIRROR   ViewportDefaultCanvasItemTextureRepeat = 2
+	VIEWPORT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_MAX      ViewportDefaultCanvasItemTextureRepeat = 3
 )
 
 type ViewportSDFOversize int
 
 const (
 	VIEWPORT_SDF_OVERSIZE_SDF_OVERSIZE_100_PERCENT ViewportSDFOversize = 0
-	VIEWPORT_SDF_OVERSIZE_SDF_OVERSIZE_120_PERCENT                     = 1
-	VIEWPORT_SDF_OVERSIZE_SDF_OVERSIZE_150_PERCENT                     = 2
-	VIEWPORT_SDF_OVERSIZE_SDF_OVERSIZE_200_PERCENT                     = 3
-	VIEWPORT_SDF_OVERSIZE_SDF_OVERSIZE_MAX                             = 4
+	VIEWPORT_SDF_OVERSIZE_SDF_OVERSIZE_120_PERCENT ViewportSDFOversize = 1
+	VIEWPORT_SDF_OVERSIZE_SDF_OVERSIZE_150_PERCENT ViewportSDFOversize = 2
+	VIEWPORT_SDF_OVERSIZE_SDF_OVERSIZE_200_PERCENT ViewportSDFOversize = 3
+	VIEWPORT_SDF_OVERSIZE_SDF_OVERSIZE_MAX         ViewportSDFOversize = 4
 )
 
 type ViewportSDFScale int
 
 const (
 	VIEWPORT_SDF_SCALE_SDF_SCALE_100_PERCENT ViewportSDFScale = 0
-	VIEWPORT_SDF_SCALE_SDF_SCALE_50_PERCENT                   = 1
-	VIEWPORT_SDF_SCALE_SDF_SCALE_25_PERCENT                   = 2
-	VIEWPORT_SDF_SCALE_SDF_SCALE_MAX                          = 3
+	VIEWPORT_SDF_SCALE_SDF_SCALE_50_PERCENT  ViewportSDFScale = 1
+	VIEWPORT_SDF_SCALE_SDF_SCALE_25_PERCENT  ViewportSDFScale = 2
+	VIEWPORT_SDF_SCALE_SDF_SCALE_MAX         ViewportSDFScale = 3
 )
 
 type ViewportVRSMode int
 
 const (
 	VIEWPORT_VRS_MODE_VRS_DISABLED ViewportVRSMode = 0
-	VIEWPORT_VRS_MODE_VRS_TEXTURE                  = 1
-	VIEWPORT_VRS_MODE_VRS_XR                       = 2
-	VIEWPORT_VRS_MODE_VRS_MAX                      = 3
+	VIEWPORT_VRS_MODE_VRS_TEXTURE  ViewportVRSMode = 1
+	VIEWPORT_VRS_MODE_VRS_XR       ViewportVRSMode = 2
+	VIEWPORT_VRS_MODE_VRS_MAX      ViewportVRSMode = 3
 )
 
 type ViewportVRSUpdateMode int
 
 const (
 	VIEWPORT_VRS_UPDATE_MODE_VRS_UPDATE_DISABLED ViewportVRSUpdateMode = 0
-	VIEWPORT_VRS_UPDATE_MODE_VRS_UPDATE_ONCE                           = 1
-	VIEWPORT_VRS_UPDATE_MODE_VRS_UPDATE_ALWAYS                         = 2
-	VIEWPORT_VRS_UPDATE_MODE_VRS_UPDATE_MAX                            = 3
+	VIEWPORT_VRS_UPDATE_MODE_VRS_UPDATE_ONCE     ViewportVRSUpdateMode = 1
+	VIEWPORT_VRS_UPDATE_MODE_VRS_UPDATE_ALWAYS   ViewportVRSUpdateMode = 2
+	VIEWPORT_VRS_UPDATE_MODE_VRS_UPDATE_MAX      ViewportVRSUpdateMode = 3
 )
 
 type VisibleOnScreenEnabler2DEnableMode int
 
 const (
 	VISIBLE_ON_SCREEN_ENABLER_2_D_ENABLE_MODE_ENABLE_MODE_INHERIT     VisibleOnScreenEnabler2DEnableMode = 0
-	VISIBLE_ON_SCREEN_ENABLER_2_D_ENABLE_MODE_ENABLE_MODE_ALWAYS                                         = 1
-	VISIBLE_ON_SCREEN_ENABLER_2_D_ENABLE_MODE_ENABLE_MODE_WHEN_PAUSED                                    = 2
+	VISIBLE_ON_SCREEN_ENABLER_2_D_ENABLE_MODE_ENABLE_MODE_ALWAYS      VisibleOnScreenEnabler2DEnableMode = 1
+	VISIBLE_ON_SCREEN_ENABLER_2_D_ENABLE_MODE_ENABLE_MODE_WHEN_PAUSED VisibleOnScreenEnabler2DEnableMode = 2
 )
 
 type VisibleOnScreenEnabler3DEnableMode int
 
 const (
 	VISIBLE_ON_SCREEN_ENABLER_3_D_ENABLE_MODE_ENABLE_MODE_INHERIT     VisibleOnScreenEnabler3DEnableMode = 0
-	VISIBLE_ON_SCREEN_ENABLER_3_D_ENABLE_MODE_ENABLE_MODE_ALWAYS                                         = 1
-	VISIBLE_ON_SCREEN_ENABLER_3_D_ENABLE_MODE_ENABLE_MODE_WHEN_PAUSED                                    = 2
+	VISIBLE_ON_SCREEN_ENABLER_3_D_ENABLE_MODE_ENABLE_MODE_ALWAYS      VisibleOnScreenEnabler3DEnableMode = 1
+	VISIBLE_ON_SCREEN_ENABLER_3_D_ENABLE_MODE_ENABLE_MODE_WHEN_PAUSED VisibleOnScreenEnabler3DEnableMode = 2
 )
 
 type VisualShaderType int
 
 const (
 	VISUAL_SHADER_TYPE_TYPE_VERTEX         VisualShaderType = 0
-	VISUAL_SHADER_TYPE_TYPE_FRAGMENT                        = 1
-	VISUAL_SHADER_TYPE_TYPE_LIGHT                           = 2
-	VISUAL_SHADER_TYPE_TYPE_START                           = 3
-	VISUAL_SHADER_TYPE_TYPE_PROCESS                         = 4
-	VISUAL_SHADER_TYPE_TYPE_COLLIDE                         = 5
-	VISUAL_SHADER_TYPE_TYPE_START_CUSTOM                    = 6
-	VISUAL_SHADER_TYPE_TYPE_PROCESS_CUSTOM                  = 7
-	VISUAL_SHADER_TYPE_TYPE_SKY                             = 8
-	VISUAL_SHADER_TYPE_TYPE_FOG                             = 9
-	VISUAL_SHADER_TYPE_TYPE_MAX                             = 10
+	VISUAL_SHADER_TYPE_TYPE_FRAGMENT       VisualShaderType = 1
+	VISUAL_SHADER_TYPE_TYPE_LIGHT          VisualShaderType = 2
+	VISUAL_SHADER_TYPE_TYPE_START          VisualShaderType = 3
+	VISUAL_SHADER_TYPE_TYPE_PROCESS        VisualShaderType = 4
+	VISUAL_SHADER_TYPE_TYPE_COLLIDE        VisualShaderType = 5
+	VISUAL_SHADER_TYPE_TYPE_START_CUSTOM   VisualShaderType = 6
+	VISUAL_SHADER_TYPE_TYPE_PROCESS_CUSTOM VisualShaderType = 7
+	VISUAL_SHADER_TYPE_TYPE_SKY            VisualShaderType = 8
+	VISUAL_SHADER_TYPE_TYPE_FOG            VisualShaderType = 9
+	VISUAL_SHADER_TYPE_TYPE_MAX            VisualShaderType = 10
 )
 
 type VisualShaderVaryingMode int
 
 const (
 	VISUAL_SHADER_VARYING_MODE_VARYING_MODE_VERTEX_TO_FRAG_LIGHT VisualShaderVaryingMode = 0
-	VISUAL_SHADER_VARYING_MODE_VARYING_MODE_FRAG_TO_LIGHT                                = 1
-	VISUAL_SHADER_VARYING_MODE_VARYING_MODE_MAX                                          = 2
+	VISUAL_SHADER_VARYING_MODE_VARYING_MODE_FRAG_TO_LIGHT        VisualShaderVaryingMode = 1
+	VISUAL_SHADER_VARYING_MODE_VARYING_MODE_MAX                  VisualShaderVaryingMode = 2
 )
 
 type VisualShaderVaryingType int
 
 const (
 	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_FLOAT      VisualShaderVaryingType = 0
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_INT                                = 1
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_UINT                               = 2
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_2_D                         = 3
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_3_D                         = 4
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_4_D                         = 5
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_BOOLEAN                            = 6
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_TRANSFORM                          = 7
-	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_MAX                                = 8
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_INT        VisualShaderVaryingType = 1
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_UINT       VisualShaderVaryingType = 2
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_2_D VisualShaderVaryingType = 3
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_3_D VisualShaderVaryingType = 4
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_VECTOR_4_D VisualShaderVaryingType = 5
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_BOOLEAN    VisualShaderVaryingType = 6
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_TRANSFORM  VisualShaderVaryingType = 7
+	VISUAL_SHADER_VARYING_TYPE_VARYING_TYPE_MAX        VisualShaderVaryingType = 8
 )
 
 type VisualShaderNodePortType int
 
 const (
 	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SCALAR      VisualShaderNodePortType = 0
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SCALAR_INT                           = 1
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SCALAR_UINT                          = 2
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_2_D                           = 3
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_3_D                           = 4
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_4_D                           = 5
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_BOOLEAN                              = 6
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_TRANSFORM                            = 7
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SAMPLER                              = 8
-	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_MAX                                  = 9
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SCALAR_INT  VisualShaderNodePortType = 1
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SCALAR_UINT VisualShaderNodePortType = 2
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_2_D  VisualShaderNodePortType = 3
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_3_D  VisualShaderNodePortType = 4
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_VECTOR_4_D  VisualShaderNodePortType = 5
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_BOOLEAN     VisualShaderNodePortType = 6
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_TRANSFORM   VisualShaderNodePortType = 7
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_SAMPLER     VisualShaderNodePortType = 8
+	VISUAL_SHADER_NODE_PORT_TYPE_PORT_TYPE_MAX         VisualShaderNodePortType = 9
 )
 
 type VisualShaderNodeBillboardBillboardType int
 
 const (
 	VISUAL_SHADER_NODE_BILLBOARD_BILLBOARD_TYPE_BILLBOARD_TYPE_DISABLED  VisualShaderNodeBillboardBillboardType = 0
-	VISUAL_SHADER_NODE_BILLBOARD_BILLBOARD_TYPE_BILLBOARD_TYPE_ENABLED                                          = 1
-	VISUAL_SHADER_NODE_BILLBOARD_BILLBOARD_TYPE_BILLBOARD_TYPE_FIXED_Y                                          = 2
-	VISUAL_SHADER_NODE_BILLBOARD_BILLBOARD_TYPE_BILLBOARD_TYPE_PARTICLES                                        = 3
-	VISUAL_SHADER_NODE_BILLBOARD_BILLBOARD_TYPE_BILLBOARD_TYPE_MAX                                              = 4
+	VISUAL_SHADER_NODE_BILLBOARD_BILLBOARD_TYPE_BILLBOARD_TYPE_ENABLED   VisualShaderNodeBillboardBillboardType = 1
+	VISUAL_SHADER_NODE_BILLBOARD_BILLBOARD_TYPE_BILLBOARD_TYPE_FIXED_Y   VisualShaderNodeBillboardBillboardType = 2
+	VISUAL_SHADER_NODE_BILLBOARD_BILLBOARD_TYPE_BILLBOARD_TYPE_PARTICLES VisualShaderNodeBillboardBillboardType = 3
+	VISUAL_SHADER_NODE_BILLBOARD_BILLBOARD_TYPE_BILLBOARD_TYPE_MAX       VisualShaderNodeBillboardBillboardType = 4
 )
 
 type VisualShaderNodeClampOpType int
 
 const (
 	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_FLOAT      VisualShaderNodeClampOpType = 0
-	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_INT                                    = 1
-	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_UINT                                   = 2
-	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_2_D                             = 3
-	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_3_D                             = 4
-	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_4_D                             = 5
-	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_MAX                                    = 6
+	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_INT        VisualShaderNodeClampOpType = 1
+	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_UINT       VisualShaderNodeClampOpType = 2
+	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_2_D VisualShaderNodeClampOpType = 3
+	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_3_D VisualShaderNodeClampOpType = 4
+	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_VECTOR_4_D VisualShaderNodeClampOpType = 5
+	VISUAL_SHADER_NODE_CLAMP_OP_TYPE_OP_TYPE_MAX        VisualShaderNodeClampOpType = 6
 )
 
 type VisualShaderNodeColorFuncFunction int
 
 const (
-	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_GRAYSCALE VisualShaderNodeColorFuncFunction = 0
-	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_HSV_2_RGB                                   = 1
-	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_RGB_2_HSV                                   = 2
-	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_SEPIA                                       = 3
-	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_MAX                                         = 4
+	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_GRAYSCALE      VisualShaderNodeColorFuncFunction = 0
+	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_HSV_2_RGB      VisualShaderNodeColorFuncFunction = 1
+	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_RGB_2_HSV      VisualShaderNodeColorFuncFunction = 2
+	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_SEPIA          VisualShaderNodeColorFuncFunction = 3
+	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_LINEAR_TO_SRGB VisualShaderNodeColorFuncFunction = 4
+	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_SRGB_TO_LINEAR VisualShaderNodeColorFuncFunction = 5
+	VISUAL_SHADER_NODE_COLOR_FUNC_FUNCTION_FUNC_MAX            VisualShaderNodeColorFuncFunction = 6
 )
 
 type VisualShaderNodeColorOpOperator int
 
 const (
 	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_SCREEN     VisualShaderNodeColorOpOperator = 0
-	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_DIFFERENCE                                 = 1
-	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_DARKEN                                     = 2
-	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_LIGHTEN                                    = 3
-	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_OVERLAY                                    = 4
-	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_DODGE                                      = 5
-	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_BURN                                       = 6
-	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_SOFT_LIGHT                                 = 7
-	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_HARD_LIGHT                                 = 8
-	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_MAX                                        = 9
+	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_DIFFERENCE VisualShaderNodeColorOpOperator = 1
+	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_DARKEN     VisualShaderNodeColorOpOperator = 2
+	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_LIGHTEN    VisualShaderNodeColorOpOperator = 3
+	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_OVERLAY    VisualShaderNodeColorOpOperator = 4
+	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_DODGE      VisualShaderNodeColorOpOperator = 5
+	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_BURN       VisualShaderNodeColorOpOperator = 6
+	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_SOFT_LIGHT VisualShaderNodeColorOpOperator = 7
+	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_HARD_LIGHT VisualShaderNodeColorOpOperator = 8
+	VISUAL_SHADER_NODE_COLOR_OP_OPERATOR_OP_MAX        VisualShaderNodeColorOpOperator = 9
 )
 
 type VisualShaderNodeCompareComparisonType int
 
 const (
 	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_SCALAR      VisualShaderNodeCompareComparisonType = 0
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_SCALAR_INT                                        = 1
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_SCALAR_UINT                                       = 2
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_2_D                                        = 3
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_3_D                                        = 4
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_4_D                                        = 5
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_BOOLEAN                                           = 6
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_TRANSFORM                                         = 7
-	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_MAX                                               = 8
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_SCALAR_INT  VisualShaderNodeCompareComparisonType = 1
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_SCALAR_UINT VisualShaderNodeCompareComparisonType = 2
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_2_D  VisualShaderNodeCompareComparisonType = 3
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_3_D  VisualShaderNodeCompareComparisonType = 4
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_VECTOR_4_D  VisualShaderNodeCompareComparisonType = 5
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_BOOLEAN     VisualShaderNodeCompareComparisonType = 6
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_TRANSFORM   VisualShaderNodeCompareComparisonType = 7
+	VISUAL_SHADER_NODE_COMPARE_COMPARISON_TYPE_CTYPE_MAX         VisualShaderNodeCompareComparisonType = 8
 )
 
 type VisualShaderNodeCompareFunction int
 
 const (
 	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_EQUAL              VisualShaderNodeCompareFunction = 0
-	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_NOT_EQUAL                                          = 1
-	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_GREATER_THAN                                       = 2
-	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_GREATER_THAN_EQUAL                                 = 3
-	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_LESS_THAN                                          = 4
-	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_LESS_THAN_EQUAL                                    = 5
-	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_MAX                                                = 6
+	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_NOT_EQUAL          VisualShaderNodeCompareFunction = 1
+	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_GREATER_THAN       VisualShaderNodeCompareFunction = 2
+	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_GREATER_THAN_EQUAL VisualShaderNodeCompareFunction = 3
+	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_LESS_THAN          VisualShaderNodeCompareFunction = 4
+	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_LESS_THAN_EQUAL    VisualShaderNodeCompareFunction = 5
+	VISUAL_SHADER_NODE_COMPARE_FUNCTION_FUNC_MAX                VisualShaderNodeCompareFunction = 6
 )
 
 type VisualShaderNodeCompareCondition int
 
 const (
 	VISUAL_SHADER_NODE_COMPARE_CONDITION_COND_ALL VisualShaderNodeCompareCondition = 0
-	VISUAL_SHADER_NODE_COMPARE_CONDITION_COND_ANY                                  = 1
-	VISUAL_SHADER_NODE_COMPARE_CONDITION_COND_MAX                                  = 2
+	VISUAL_SHADER_NODE_COMPARE_CONDITION_COND_ANY VisualShaderNodeCompareCondition = 1
+	VISUAL_SHADER_NODE_COMPARE_CONDITION_COND_MAX VisualShaderNodeCompareCondition = 2
 )
 
 type VisualShaderNodeCubemapSource int
 
 const (
 	VISUAL_SHADER_NODE_CUBEMAP_SOURCE_SOURCE_TEXTURE VisualShaderNodeCubemapSource = 0
-	VISUAL_SHADER_NODE_CUBEMAP_SOURCE_SOURCE_PORT                                  = 1
-	VISUAL_SHADER_NODE_CUBEMAP_SOURCE_SOURCE_MAX                                   = 2
+	VISUAL_SHADER_NODE_CUBEMAP_SOURCE_SOURCE_PORT    VisualShaderNodeCubemapSource = 1
+	VISUAL_SHADER_NODE_CUBEMAP_SOURCE_SOURCE_MAX     VisualShaderNodeCubemapSource = 2
 )
 
 type VisualShaderNodeCubemapTextureType int
 
 const (
 	VISUAL_SHADER_NODE_CUBEMAP_TEXTURE_TYPE_TYPE_DATA       VisualShaderNodeCubemapTextureType = 0
-	VISUAL_SHADER_NODE_CUBEMAP_TEXTURE_TYPE_TYPE_COLOR                                         = 1
-	VISUAL_SHADER_NODE_CUBEMAP_TEXTURE_TYPE_TYPE_NORMAL_MAP                                    = 2
-	VISUAL_SHADER_NODE_CUBEMAP_TEXTURE_TYPE_TYPE_MAX                                           = 3
+	VISUAL_SHADER_NODE_CUBEMAP_TEXTURE_TYPE_TYPE_COLOR      VisualShaderNodeCubemapTextureType = 1
+	VISUAL_SHADER_NODE_CUBEMAP_TEXTURE_TYPE_TYPE_NORMAL_MAP VisualShaderNodeCubemapTextureType = 2
+	VISUAL_SHADER_NODE_CUBEMAP_TEXTURE_TYPE_TYPE_MAX        VisualShaderNodeCubemapTextureType = 3
 )
 
 type VisualShaderNodeDerivativeFuncOpType int
 
 const (
 	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_OP_TYPE_OP_TYPE_SCALAR     VisualShaderNodeDerivativeFuncOpType = 0
-	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_OP_TYPE_OP_TYPE_VECTOR_2_D                                      = 1
-	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_OP_TYPE_OP_TYPE_VECTOR_3_D                                      = 2
-	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_OP_TYPE_OP_TYPE_VECTOR_4_D                                      = 3
-	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_OP_TYPE_OP_TYPE_MAX                                             = 4
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_OP_TYPE_OP_TYPE_VECTOR_2_D VisualShaderNodeDerivativeFuncOpType = 1
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_OP_TYPE_OP_TYPE_VECTOR_3_D VisualShaderNodeDerivativeFuncOpType = 2
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_OP_TYPE_OP_TYPE_VECTOR_4_D VisualShaderNodeDerivativeFuncOpType = 3
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_OP_TYPE_OP_TYPE_MAX        VisualShaderNodeDerivativeFuncOpType = 4
 )
 
 type VisualShaderNodeDerivativeFuncFunction int
 
 const (
 	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_FUNCTION_FUNC_SUM VisualShaderNodeDerivativeFuncFunction = 0
-	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_FUNCTION_FUNC_X                                          = 1
-	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_FUNCTION_FUNC_Y                                          = 2
-	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_FUNCTION_FUNC_MAX                                        = 3
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_FUNCTION_FUNC_X   VisualShaderNodeDerivativeFuncFunction = 1
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_FUNCTION_FUNC_Y   VisualShaderNodeDerivativeFuncFunction = 2
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_FUNCTION_FUNC_MAX VisualShaderNodeDerivativeFuncFunction = 3
 )
 
 type VisualShaderNodeDerivativeFuncPrecision int
 
 const (
 	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_PRECISION_PRECISION_NONE   VisualShaderNodeDerivativeFuncPrecision = 0
-	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_PRECISION_PRECISION_COARSE                                         = 1
-	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_PRECISION_PRECISION_FINE                                           = 2
-	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_PRECISION_PRECISION_MAX                                            = 3
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_PRECISION_PRECISION_COARSE VisualShaderNodeDerivativeFuncPrecision = 1
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_PRECISION_PRECISION_FINE   VisualShaderNodeDerivativeFuncPrecision = 2
+	VISUAL_SHADER_NODE_DERIVATIVE_FUNC_PRECISION_PRECISION_MAX    VisualShaderNodeDerivativeFuncPrecision = 3
 )
 
 type VisualShaderNodeFloatFuncFunction int
 
 const (
 	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_SIN          VisualShaderNodeFloatFuncFunction = 0
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_COS                                            = 1
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_TAN                                            = 2
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ASIN                                           = 3
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ACOS                                           = 4
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ATAN                                           = 5
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_SINH                                           = 6
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_COSH                                           = 7
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_TANH                                           = 8
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_LOG                                            = 9
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_EXP                                            = 10
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_SQRT                                           = 11
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ABS                                            = 12
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_SIGN                                           = 13
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_FLOOR                                          = 14
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ROUND                                          = 15
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_CEIL                                           = 16
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_FRACT                                          = 17
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_SATURATE                                       = 18
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_NEGATE                                         = 19
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ACOSH                                          = 20
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ASINH                                          = 21
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ATANH                                          = 22
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_DEGREES                                        = 23
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_EXP_2                                          = 24
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_INVERSE_SQRT                                   = 25
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_LOG_2                                          = 26
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_RADIANS                                        = 27
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_RECIPROCAL                                     = 28
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ROUNDEVEN                                      = 29
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_TRUNC                                          = 30
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ONEMINUS                                       = 31
-	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_MAX                                            = 32
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_COS          VisualShaderNodeFloatFuncFunction = 1
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_TAN          VisualShaderNodeFloatFuncFunction = 2
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ASIN         VisualShaderNodeFloatFuncFunction = 3
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ACOS         VisualShaderNodeFloatFuncFunction = 4
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ATAN         VisualShaderNodeFloatFuncFunction = 5
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_SINH         VisualShaderNodeFloatFuncFunction = 6
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_COSH         VisualShaderNodeFloatFuncFunction = 7
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_TANH         VisualShaderNodeFloatFuncFunction = 8
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_LOG          VisualShaderNodeFloatFuncFunction = 9
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_EXP          VisualShaderNodeFloatFuncFunction = 10
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_SQRT         VisualShaderNodeFloatFuncFunction = 11
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ABS          VisualShaderNodeFloatFuncFunction = 12
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_SIGN         VisualShaderNodeFloatFuncFunction = 13
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_FLOOR        VisualShaderNodeFloatFuncFunction = 14
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ROUND        VisualShaderNodeFloatFuncFunction = 15
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_CEIL         VisualShaderNodeFloatFuncFunction = 16
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_FRACT        VisualShaderNodeFloatFuncFunction = 17
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_SATURATE     VisualShaderNodeFloatFuncFunction = 18
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_NEGATE       VisualShaderNodeFloatFuncFunction = 19
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ACOSH        VisualShaderNodeFloatFuncFunction = 20
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ASINH        VisualShaderNodeFloatFuncFunction = 21
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ATANH        VisualShaderNodeFloatFuncFunction = 22
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_DEGREES      VisualShaderNodeFloatFuncFunction = 23
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_EXP_2        VisualShaderNodeFloatFuncFunction = 24
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_INVERSE_SQRT VisualShaderNodeFloatFuncFunction = 25
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_LOG_2        VisualShaderNodeFloatFuncFunction = 26
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_RADIANS      VisualShaderNodeFloatFuncFunction = 27
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_RECIPROCAL   VisualShaderNodeFloatFuncFunction = 28
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ROUNDEVEN    VisualShaderNodeFloatFuncFunction = 29
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_TRUNC        VisualShaderNodeFloatFuncFunction = 30
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_ONEMINUS     VisualShaderNodeFloatFuncFunction = 31
+	VISUAL_SHADER_NODE_FLOAT_FUNC_FUNCTION_FUNC_MAX          VisualShaderNodeFloatFuncFunction = 32
 )
 
 type VisualShaderNodeFloatOpOperator int
 
 const (
 	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_ADD       VisualShaderNodeFloatOpOperator = 0
-	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_SUB                                       = 1
-	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_MUL                                       = 2
-	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_DIV                                       = 3
-	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_MOD                                       = 4
-	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_POW                                       = 5
-	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_MAX                                       = 6
-	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_MIN                                       = 7
-	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_ATAN_2                                    = 8
-	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_STEP                                      = 9
-	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_ENUM_SIZE                                 = 10
+	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_SUB       VisualShaderNodeFloatOpOperator = 1
+	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_MUL       VisualShaderNodeFloatOpOperator = 2
+	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_DIV       VisualShaderNodeFloatOpOperator = 3
+	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_MOD       VisualShaderNodeFloatOpOperator = 4
+	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_POW       VisualShaderNodeFloatOpOperator = 5
+	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_MAX       VisualShaderNodeFloatOpOperator = 6
+	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_MIN       VisualShaderNodeFloatOpOperator = 7
+	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_ATAN_2    VisualShaderNodeFloatOpOperator = 8
+	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_STEP      VisualShaderNodeFloatOpOperator = 9
+	VISUAL_SHADER_NODE_FLOAT_OP_OPERATOR_OP_ENUM_SIZE VisualShaderNodeFloatOpOperator = 10
 )
 
 type VisualShaderNodeFloatParameterHint int
 
 const (
 	VISUAL_SHADER_NODE_FLOAT_PARAMETER_HINT_HINT_NONE       VisualShaderNodeFloatParameterHint = 0
-	VISUAL_SHADER_NODE_FLOAT_PARAMETER_HINT_HINT_RANGE                                         = 1
-	VISUAL_SHADER_NODE_FLOAT_PARAMETER_HINT_HINT_RANGE_STEP                                    = 2
-	VISUAL_SHADER_NODE_FLOAT_PARAMETER_HINT_HINT_MAX                                           = 3
+	VISUAL_SHADER_NODE_FLOAT_PARAMETER_HINT_HINT_RANGE      VisualShaderNodeFloatParameterHint = 1
+	VISUAL_SHADER_NODE_FLOAT_PARAMETER_HINT_HINT_RANGE_STEP VisualShaderNodeFloatParameterHint = 2
+	VISUAL_SHADER_NODE_FLOAT_PARAMETER_HINT_HINT_MAX        VisualShaderNodeFloatParameterHint = 3
 )
 
 type VisualShaderNodeIntFuncFunction int
 
 const (
 	VISUAL_SHADER_NODE_INT_FUNC_FUNCTION_FUNC_ABS         VisualShaderNodeIntFuncFunction = 0
-	VISUAL_SHADER_NODE_INT_FUNC_FUNCTION_FUNC_NEGATE                                      = 1
-	VISUAL_SHADER_NODE_INT_FUNC_FUNCTION_FUNC_SIGN                                        = 2
-	VISUAL_SHADER_NODE_INT_FUNC_FUNCTION_FUNC_BITWISE_NOT                                 = 3
-	VISUAL_SHADER_NODE_INT_FUNC_FUNCTION_FUNC_MAX                                         = 4
+	VISUAL_SHADER_NODE_INT_FUNC_FUNCTION_FUNC_NEGATE      VisualShaderNodeIntFuncFunction = 1
+	VISUAL_SHADER_NODE_INT_FUNC_FUNCTION_FUNC_SIGN        VisualShaderNodeIntFuncFunction = 2
+	VISUAL_SHADER_NODE_INT_FUNC_FUNCTION_FUNC_BITWISE_NOT VisualShaderNodeIntFuncFunction = 3
+	VISUAL_SHADER_NODE_INT_FUNC_FUNCTION_FUNC_MAX         VisualShaderNodeIntFuncFunction = 4
 )
 
 type VisualShaderNodeIntOpOperator int
 
 const (
 	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_ADD                 VisualShaderNodeIntOpOperator = 0
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_SUB                                               = 1
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_MUL                                               = 2
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_DIV                                               = 3
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_MOD                                               = 4
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_MAX                                               = 5
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_MIN                                               = 6
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_BITWISE_AND                                       = 7
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_BITWISE_OR                                        = 8
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_BITWISE_XOR                                       = 9
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_BITWISE_LEFT_SHIFT                                = 10
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_BITWISE_RIGHT_SHIFT                               = 11
-	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_ENUM_SIZE                                         = 12
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_SUB                 VisualShaderNodeIntOpOperator = 1
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_MUL                 VisualShaderNodeIntOpOperator = 2
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_DIV                 VisualShaderNodeIntOpOperator = 3
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_MOD                 VisualShaderNodeIntOpOperator = 4
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_MAX                 VisualShaderNodeIntOpOperator = 5
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_MIN                 VisualShaderNodeIntOpOperator = 6
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_BITWISE_AND         VisualShaderNodeIntOpOperator = 7
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_BITWISE_OR          VisualShaderNodeIntOpOperator = 8
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_BITWISE_XOR         VisualShaderNodeIntOpOperator = 9
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_BITWISE_LEFT_SHIFT  VisualShaderNodeIntOpOperator = 10
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_BITWISE_RIGHT_SHIFT VisualShaderNodeIntOpOperator = 11
+	VISUAL_SHADER_NODE_INT_OP_OPERATOR_OP_ENUM_SIZE           VisualShaderNodeIntOpOperator = 12
 )
 
 type VisualShaderNodeIntParameterHint int
 
 const (
 	VISUAL_SHADER_NODE_INT_PARAMETER_HINT_HINT_NONE       VisualShaderNodeIntParameterHint = 0
-	VISUAL_SHADER_NODE_INT_PARAMETER_HINT_HINT_RANGE                                       = 1
-	VISUAL_SHADER_NODE_INT_PARAMETER_HINT_HINT_RANGE_STEP                                  = 2
-	VISUAL_SHADER_NODE_INT_PARAMETER_HINT_HINT_MAX                                         = 3
+	VISUAL_SHADER_NODE_INT_PARAMETER_HINT_HINT_RANGE      VisualShaderNodeIntParameterHint = 1
+	VISUAL_SHADER_NODE_INT_PARAMETER_HINT_HINT_RANGE_STEP VisualShaderNodeIntParameterHint = 2
+	VISUAL_SHADER_NODE_INT_PARAMETER_HINT_HINT_ENUM       VisualShaderNodeIntParameterHint = 3
+	VISUAL_SHADER_NODE_INT_PARAMETER_HINT_HINT_MAX        VisualShaderNodeIntParameterHint = 4
 )
 
 type VisualShaderNodeIsFunction int
 
 const (
 	VISUAL_SHADER_NODE_IS_FUNCTION_FUNC_IS_INF VisualShaderNodeIsFunction = 0
-	VISUAL_SHADER_NODE_IS_FUNCTION_FUNC_IS_NAN                            = 1
-	VISUAL_SHADER_NODE_IS_FUNCTION_FUNC_MAX                               = 2
+	VISUAL_SHADER_NODE_IS_FUNCTION_FUNC_IS_NAN VisualShaderNodeIsFunction = 1
+	VISUAL_SHADER_NODE_IS_FUNCTION_FUNC_MAX    VisualShaderNodeIsFunction = 2
 )
 
 type VisualShaderNodeMixOpType int
 
 const (
 	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_SCALAR            VisualShaderNodeMixOpType = 0
-	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_2_D                                  = 1
-	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_2_D_SCALAR                           = 2
-	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_3_D                                  = 3
-	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_3_D_SCALAR                           = 4
-	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_4_D                                  = 5
-	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_4_D_SCALAR                           = 6
-	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_MAX                                         = 7
+	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_2_D        VisualShaderNodeMixOpType = 1
+	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_2_D_SCALAR VisualShaderNodeMixOpType = 2
+	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_3_D        VisualShaderNodeMixOpType = 3
+	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_3_D_SCALAR VisualShaderNodeMixOpType = 4
+	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_4_D        VisualShaderNodeMixOpType = 5
+	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_VECTOR_4_D_SCALAR VisualShaderNodeMixOpType = 6
+	VISUAL_SHADER_NODE_MIX_OP_TYPE_OP_TYPE_MAX               VisualShaderNodeMixOpType = 7
 )
 
 type VisualShaderNodeMultiplyAddOpType int
 
 const (
 	VISUAL_SHADER_NODE_MULTIPLY_ADD_OP_TYPE_OP_TYPE_SCALAR     VisualShaderNodeMultiplyAddOpType = 0
-	VISUAL_SHADER_NODE_MULTIPLY_ADD_OP_TYPE_OP_TYPE_VECTOR_2_D                                   = 1
-	VISUAL_SHADER_NODE_MULTIPLY_ADD_OP_TYPE_OP_TYPE_VECTOR_3_D                                   = 2
-	VISUAL_SHADER_NODE_MULTIPLY_ADD_OP_TYPE_OP_TYPE_VECTOR_4_D                                   = 3
-	VISUAL_SHADER_NODE_MULTIPLY_ADD_OP_TYPE_OP_TYPE_MAX                                          = 4
+	VISUAL_SHADER_NODE_MULTIPLY_ADD_OP_TYPE_OP_TYPE_VECTOR_2_D VisualShaderNodeMultiplyAddOpType = 1
+	VISUAL_SHADER_NODE_MULTIPLY_ADD_OP_TYPE_OP_TYPE_VECTOR_3_D VisualShaderNodeMultiplyAddOpType = 2
+	VISUAL_SHADER_NODE_MULTIPLY_ADD_OP_TYPE_OP_TYPE_VECTOR_4_D VisualShaderNodeMultiplyAddOpType = 3
+	VISUAL_SHADER_NODE_MULTIPLY_ADD_OP_TYPE_OP_TYPE_MAX        VisualShaderNodeMultiplyAddOpType = 4
 )
 
 type VisualShaderNodeParameterQualifier int
 
 const (
 	VISUAL_SHADER_NODE_PARAMETER_QUALIFIER_QUAL_NONE     VisualShaderNodeParameterQualifier = 0
-	VISUAL_SHADER_NODE_PARAMETER_QUALIFIER_QUAL_GLOBAL                                      = 1
-	VISUAL_SHADER_NODE_PARAMETER_QUALIFIER_QUAL_INSTANCE                                    = 2
-	VISUAL_SHADER_NODE_PARAMETER_QUALIFIER_QUAL_MAX                                         = 3
+	VISUAL_SHADER_NODE_PARAMETER_QUALIFIER_QUAL_GLOBAL   VisualShaderNodeParameterQualifier = 1
+	VISUAL_SHADER_NODE_PARAMETER_QUALIFIER_QUAL_INSTANCE VisualShaderNodeParameterQualifier = 2
+	VISUAL_SHADER_NODE_PARAMETER_QUALIFIER_QUAL_MAX      VisualShaderNodeParameterQualifier = 3
 )
 
 type VisualShaderNodeParticleAcceleratorMode int
 
 const (
 	VISUAL_SHADER_NODE_PARTICLE_ACCELERATOR_MODE_MODE_LINEAR     VisualShaderNodeParticleAcceleratorMode = 0
-	VISUAL_SHADER_NODE_PARTICLE_ACCELERATOR_MODE_MODE_RADIAL                                             = 1
-	VISUAL_SHADER_NODE_PARTICLE_ACCELERATOR_MODE_MODE_TANGENTIAL                                         = 2
-	VISUAL_SHADER_NODE_PARTICLE_ACCELERATOR_MODE_MODE_MAX                                                = 3
+	VISUAL_SHADER_NODE_PARTICLE_ACCELERATOR_MODE_MODE_RADIAL     VisualShaderNodeParticleAcceleratorMode = 1
+	VISUAL_SHADER_NODE_PARTICLE_ACCELERATOR_MODE_MODE_TANGENTIAL VisualShaderNodeParticleAcceleratorMode = 2
+	VISUAL_SHADER_NODE_PARTICLE_ACCELERATOR_MODE_MODE_MAX        VisualShaderNodeParticleAcceleratorMode = 3
 )
 
 type VisualShaderNodeParticleEmitEmitFlags int
 
 const (
 	VISUAL_SHADER_NODE_PARTICLE_EMIT_EMIT_FLAGS_EMIT_FLAG_POSITION  VisualShaderNodeParticleEmitEmitFlags = 1
-	VISUAL_SHADER_NODE_PARTICLE_EMIT_EMIT_FLAGS_EMIT_FLAG_ROT_SCALE                                       = 2
-	VISUAL_SHADER_NODE_PARTICLE_EMIT_EMIT_FLAGS_EMIT_FLAG_VELOCITY                                        = 4
-	VISUAL_SHADER_NODE_PARTICLE_EMIT_EMIT_FLAGS_EMIT_FLAG_COLOR                                           = 8
-	VISUAL_SHADER_NODE_PARTICLE_EMIT_EMIT_FLAGS_EMIT_FLAG_CUSTOM                                          = 16
+	VISUAL_SHADER_NODE_PARTICLE_EMIT_EMIT_FLAGS_EMIT_FLAG_ROT_SCALE VisualShaderNodeParticleEmitEmitFlags = 2
+	VISUAL_SHADER_NODE_PARTICLE_EMIT_EMIT_FLAGS_EMIT_FLAG_VELOCITY  VisualShaderNodeParticleEmitEmitFlags = 4
+	VISUAL_SHADER_NODE_PARTICLE_EMIT_EMIT_FLAGS_EMIT_FLAG_COLOR     VisualShaderNodeParticleEmitEmitFlags = 8
+	VISUAL_SHADER_NODE_PARTICLE_EMIT_EMIT_FLAGS_EMIT_FLAG_CUSTOM    VisualShaderNodeParticleEmitEmitFlags = 16
 )
 
 type VisualShaderNodeParticleRandomnessOpType int
 
 const (
 	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_SCALAR     VisualShaderNodeParticleRandomnessOpType = 0
-	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_VECTOR_2_D                                          = 1
-	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_VECTOR_3_D                                          = 2
-	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_VECTOR_4_D                                          = 3
-	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_MAX                                                 = 4
+	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_VECTOR_2_D VisualShaderNodeParticleRandomnessOpType = 1
+	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_VECTOR_3_D VisualShaderNodeParticleRandomnessOpType = 2
+	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_VECTOR_4_D VisualShaderNodeParticleRandomnessOpType = 3
+	VISUAL_SHADER_NODE_PARTICLE_RANDOMNESS_OP_TYPE_OP_TYPE_MAX        VisualShaderNodeParticleRandomnessOpType = 4
+)
+
+type VisualShaderNodeRemapOpType int
+
+const (
+	VISUAL_SHADER_NODE_REMAP_OP_TYPE_OP_TYPE_SCALAR            VisualShaderNodeRemapOpType = 0
+	VISUAL_SHADER_NODE_REMAP_OP_TYPE_OP_TYPE_VECTOR_2_D        VisualShaderNodeRemapOpType = 1
+	VISUAL_SHADER_NODE_REMAP_OP_TYPE_OP_TYPE_VECTOR_2_D_SCALAR VisualShaderNodeRemapOpType = 2
+	VISUAL_SHADER_NODE_REMAP_OP_TYPE_OP_TYPE_VECTOR_3_D        VisualShaderNodeRemapOpType = 3
+	VISUAL_SHADER_NODE_REMAP_OP_TYPE_OP_TYPE_VECTOR_3_D_SCALAR VisualShaderNodeRemapOpType = 4
+	VISUAL_SHADER_NODE_REMAP_OP_TYPE_OP_TYPE_VECTOR_4_D        VisualShaderNodeRemapOpType = 5
+	VISUAL_SHADER_NODE_REMAP_OP_TYPE_OP_TYPE_VECTOR_4_D_SCALAR VisualShaderNodeRemapOpType = 6
+	VISUAL_SHADER_NODE_REMAP_OP_TYPE_OP_TYPE_MAX               VisualShaderNodeRemapOpType = 7
 )
 
 type VisualShaderNodeSample3DSource int
 
 const (
 	VISUAL_SHADER_NODE_SAMPLE_3_D_SOURCE_SOURCE_TEXTURE VisualShaderNodeSample3DSource = 0
-	VISUAL_SHADER_NODE_SAMPLE_3_D_SOURCE_SOURCE_PORT                                   = 1
-	VISUAL_SHADER_NODE_SAMPLE_3_D_SOURCE_SOURCE_MAX                                    = 2
+	VISUAL_SHADER_NODE_SAMPLE_3_D_SOURCE_SOURCE_PORT    VisualShaderNodeSample3DSource = 1
+	VISUAL_SHADER_NODE_SAMPLE_3_D_SOURCE_SOURCE_MAX     VisualShaderNodeSample3DSource = 2
 )
 
 type VisualShaderNodeSmoothStepOpType int
 
 const (
 	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_SCALAR            VisualShaderNodeSmoothStepOpType = 0
-	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_2_D                                         = 1
-	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_2_D_SCALAR                                  = 2
-	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_3_D                                         = 3
-	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_3_D_SCALAR                                  = 4
-	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_4_D                                         = 5
-	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_4_D_SCALAR                                  = 6
-	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_MAX                                                = 7
+	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_2_D        VisualShaderNodeSmoothStepOpType = 1
+	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_2_D_SCALAR VisualShaderNodeSmoothStepOpType = 2
+	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_3_D        VisualShaderNodeSmoothStepOpType = 3
+	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_3_D_SCALAR VisualShaderNodeSmoothStepOpType = 4
+	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_4_D        VisualShaderNodeSmoothStepOpType = 5
+	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_VECTOR_4_D_SCALAR VisualShaderNodeSmoothStepOpType = 6
+	VISUAL_SHADER_NODE_SMOOTH_STEP_OP_TYPE_OP_TYPE_MAX               VisualShaderNodeSmoothStepOpType = 7
 )
 
 type VisualShaderNodeStepOpType int
 
 const (
 	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_SCALAR            VisualShaderNodeStepOpType = 0
-	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_2_D                                   = 1
-	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_2_D_SCALAR                            = 2
-	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_3_D                                   = 3
-	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_3_D_SCALAR                            = 4
-	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_4_D                                   = 5
-	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_4_D_SCALAR                            = 6
-	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_MAX                                          = 7
+	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_2_D        VisualShaderNodeStepOpType = 1
+	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_2_D_SCALAR VisualShaderNodeStepOpType = 2
+	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_3_D        VisualShaderNodeStepOpType = 3
+	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_3_D_SCALAR VisualShaderNodeStepOpType = 4
+	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_4_D        VisualShaderNodeStepOpType = 5
+	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_VECTOR_4_D_SCALAR VisualShaderNodeStepOpType = 6
+	VISUAL_SHADER_NODE_STEP_OP_TYPE_OP_TYPE_MAX               VisualShaderNodeStepOpType = 7
 )
 
 type VisualShaderNodeSwitchOpType int
 
 const (
 	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_FLOAT      VisualShaderNodeSwitchOpType = 0
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_INT                                     = 1
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_UINT                                    = 2
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_2_D                              = 3
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_3_D                              = 4
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_4_D                              = 5
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_BOOLEAN                                 = 6
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_TRANSFORM                               = 7
-	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_MAX                                     = 8
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_INT        VisualShaderNodeSwitchOpType = 1
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_UINT       VisualShaderNodeSwitchOpType = 2
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_2_D VisualShaderNodeSwitchOpType = 3
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_3_D VisualShaderNodeSwitchOpType = 4
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_VECTOR_4_D VisualShaderNodeSwitchOpType = 5
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_BOOLEAN    VisualShaderNodeSwitchOpType = 6
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_TRANSFORM  VisualShaderNodeSwitchOpType = 7
+	VISUAL_SHADER_NODE_SWITCH_OP_TYPE_OP_TYPE_MAX        VisualShaderNodeSwitchOpType = 8
 )
 
 type VisualShaderNodeTextureSource int
 
 const (
 	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_TEXTURE     VisualShaderNodeTextureSource = 0
-	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_SCREEN                                    = 1
-	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_2_D_TEXTURE                               = 2
-	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_2_D_NORMAL                                = 3
-	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_DEPTH                                     = 4
-	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_PORT                                      = 5
-	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_3_D_NORMAL                                = 6
-	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_ROUGHNESS                                 = 7
-	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_MAX                                       = 8
+	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_SCREEN      VisualShaderNodeTextureSource = 1
+	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_2_D_TEXTURE VisualShaderNodeTextureSource = 2
+	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_2_D_NORMAL  VisualShaderNodeTextureSource = 3
+	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_DEPTH       VisualShaderNodeTextureSource = 4
+	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_PORT        VisualShaderNodeTextureSource = 5
+	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_3_D_NORMAL  VisualShaderNodeTextureSource = 6
+	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_ROUGHNESS   VisualShaderNodeTextureSource = 7
+	VISUAL_SHADER_NODE_TEXTURE_SOURCE_SOURCE_MAX         VisualShaderNodeTextureSource = 8
 )
 
 type VisualShaderNodeTextureTextureType int
 
 const (
 	VISUAL_SHADER_NODE_TEXTURE_TEXTURE_TYPE_TYPE_DATA       VisualShaderNodeTextureTextureType = 0
-	VISUAL_SHADER_NODE_TEXTURE_TEXTURE_TYPE_TYPE_COLOR                                         = 1
-	VISUAL_SHADER_NODE_TEXTURE_TEXTURE_TYPE_TYPE_NORMAL_MAP                                    = 2
-	VISUAL_SHADER_NODE_TEXTURE_TEXTURE_TYPE_TYPE_MAX                                           = 3
+	VISUAL_SHADER_NODE_TEXTURE_TEXTURE_TYPE_TYPE_COLOR      VisualShaderNodeTextureTextureType = 1
+	VISUAL_SHADER_NODE_TEXTURE_TEXTURE_TYPE_TYPE_NORMAL_MAP VisualShaderNodeTextureTextureType = 2
+	VISUAL_SHADER_NODE_TEXTURE_TEXTURE_TYPE_TYPE_MAX        VisualShaderNodeTextureTextureType = 3
 )
 
 type VisualShaderNodeTextureParameterTextureType int
 
 const (
 	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_TYPE_TYPE_DATA       VisualShaderNodeTextureParameterTextureType = 0
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_TYPE_TYPE_COLOR                                                  = 1
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_TYPE_TYPE_NORMAL_MAP                                             = 2
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_TYPE_TYPE_ANISOTROPY                                             = 3
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_TYPE_TYPE_MAX                                                    = 4
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_TYPE_TYPE_COLOR      VisualShaderNodeTextureParameterTextureType = 1
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_TYPE_TYPE_NORMAL_MAP VisualShaderNodeTextureParameterTextureType = 2
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_TYPE_TYPE_ANISOTROPY VisualShaderNodeTextureParameterTextureType = 3
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_TYPE_TYPE_MAX        VisualShaderNodeTextureParameterTextureType = 4
 )
 
 type VisualShaderNodeTextureParameterColorDefault int
 
 const (
 	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_COLOR_DEFAULT_COLOR_DEFAULT_WHITE       VisualShaderNodeTextureParameterColorDefault = 0
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_COLOR_DEFAULT_COLOR_DEFAULT_BLACK                                                    = 1
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_COLOR_DEFAULT_COLOR_DEFAULT_TRANSPARENT                                              = 2
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_COLOR_DEFAULT_COLOR_DEFAULT_MAX                                                      = 3
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_COLOR_DEFAULT_COLOR_DEFAULT_BLACK       VisualShaderNodeTextureParameterColorDefault = 1
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_COLOR_DEFAULT_COLOR_DEFAULT_TRANSPARENT VisualShaderNodeTextureParameterColorDefault = 2
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_COLOR_DEFAULT_COLOR_DEFAULT_MAX         VisualShaderNodeTextureParameterColorDefault = 3
 )
 
 type VisualShaderNodeTextureParameterTextureFilter int
 
 const (
 	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_DEFAULT                    VisualShaderNodeTextureParameterTextureFilter = 0
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_NEAREST                                                                  = 1
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_LINEAR                                                                   = 2
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_NEAREST_MIPMAP                                                           = 3
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_LINEAR_MIPMAP                                                            = 4
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_NEAREST_MIPMAP_ANISOTROPIC                                               = 5
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_LINEAR_MIPMAP_ANISOTROPIC                                                = 6
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_MAX                                                                      = 7
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_NEAREST                    VisualShaderNodeTextureParameterTextureFilter = 1
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_LINEAR                     VisualShaderNodeTextureParameterTextureFilter = 2
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_NEAREST_MIPMAP             VisualShaderNodeTextureParameterTextureFilter = 3
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_LINEAR_MIPMAP              VisualShaderNodeTextureParameterTextureFilter = 4
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_NEAREST_MIPMAP_ANISOTROPIC VisualShaderNodeTextureParameterTextureFilter = 5
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_LINEAR_MIPMAP_ANISOTROPIC  VisualShaderNodeTextureParameterTextureFilter = 6
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_FILTER_FILTER_MAX                        VisualShaderNodeTextureParameterTextureFilter = 7
 )
 
 type VisualShaderNodeTextureParameterTextureRepeat int
 
 const (
 	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_REPEAT_REPEAT_DEFAULT  VisualShaderNodeTextureParameterTextureRepeat = 0
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_REPEAT_REPEAT_ENABLED                                                = 1
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_REPEAT_REPEAT_DISABLED                                               = 2
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_REPEAT_REPEAT_MAX                                                    = 3
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_REPEAT_REPEAT_ENABLED  VisualShaderNodeTextureParameterTextureRepeat = 1
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_REPEAT_REPEAT_DISABLED VisualShaderNodeTextureParameterTextureRepeat = 2
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_REPEAT_REPEAT_MAX      VisualShaderNodeTextureParameterTextureRepeat = 3
 )
 
 type VisualShaderNodeTextureParameterTextureSource int
 
 const (
 	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_NONE             VisualShaderNodeTextureParameterTextureSource = 0
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_SCREEN                                                         = 1
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_DEPTH                                                          = 2
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_NORMAL_ROUGHNESS                                               = 3
-	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_MAX                                                            = 4
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_SCREEN           VisualShaderNodeTextureParameterTextureSource = 1
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_DEPTH            VisualShaderNodeTextureParameterTextureSource = 2
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_NORMAL_ROUGHNESS VisualShaderNodeTextureParameterTextureSource = 3
+	VISUAL_SHADER_NODE_TEXTURE_PARAMETER_TEXTURE_SOURCE_SOURCE_MAX              VisualShaderNodeTextureParameterTextureSource = 4
 )
 
 type VisualShaderNodeTransformFuncFunction int
 
 const (
 	VISUAL_SHADER_NODE_TRANSFORM_FUNC_FUNCTION_FUNC_INVERSE   VisualShaderNodeTransformFuncFunction = 0
-	VISUAL_SHADER_NODE_TRANSFORM_FUNC_FUNCTION_FUNC_TRANSPOSE                                       = 1
-	VISUAL_SHADER_NODE_TRANSFORM_FUNC_FUNCTION_FUNC_MAX                                             = 2
+	VISUAL_SHADER_NODE_TRANSFORM_FUNC_FUNCTION_FUNC_TRANSPOSE VisualShaderNodeTransformFuncFunction = 1
+	VISUAL_SHADER_NODE_TRANSFORM_FUNC_FUNCTION_FUNC_MAX       VisualShaderNodeTransformFuncFunction = 2
 )
 
 type VisualShaderNodeTransformOpOperator int
 
 const (
 	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_AX_B      VisualShaderNodeTransformOpOperator = 0
-	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_BX_A                                          = 1
-	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_AX_B_COMP                                     = 2
-	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_BX_A_COMP                                     = 3
-	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_ADD                                           = 4
-	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_A_MINUS_B                                     = 5
-	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_B_MINUS_A                                     = 6
-	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_A_DIV_B                                       = 7
-	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_B_DIV_A                                       = 8
-	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_MAX                                           = 9
+	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_BX_A      VisualShaderNodeTransformOpOperator = 1
+	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_AX_B_COMP VisualShaderNodeTransformOpOperator = 2
+	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_BX_A_COMP VisualShaderNodeTransformOpOperator = 3
+	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_ADD       VisualShaderNodeTransformOpOperator = 4
+	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_A_MINUS_B VisualShaderNodeTransformOpOperator = 5
+	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_B_MINUS_A VisualShaderNodeTransformOpOperator = 6
+	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_A_DIV_B   VisualShaderNodeTransformOpOperator = 7
+	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_B_DIV_A   VisualShaderNodeTransformOpOperator = 8
+	VISUAL_SHADER_NODE_TRANSFORM_OP_OPERATOR_OP_MAX       VisualShaderNodeTransformOpOperator = 9
 )
 
 type VisualShaderNodeTransformVecMultOperator int
 
 const (
 	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_AX_B       VisualShaderNodeTransformVecMultOperator = 0
-	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_BX_A                                                = 1
-	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_3_X_3_AX_B                                          = 2
-	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_3_X_3_BX_A                                          = 3
-	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_MAX                                                 = 4
+	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_BX_A       VisualShaderNodeTransformVecMultOperator = 1
+	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_3_X_3_AX_B VisualShaderNodeTransformVecMultOperator = 2
+	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_3_X_3_BX_A VisualShaderNodeTransformVecMultOperator = 3
+	VISUAL_SHADER_NODE_TRANSFORM_VEC_MULT_OPERATOR_OP_MAX        VisualShaderNodeTransformVecMultOperator = 4
 )
 
 type VisualShaderNodeUIntFuncFunction int
 
 const (
 	VISUAL_SHADER_NODE_U_INT_FUNC_FUNCTION_FUNC_NEGATE      VisualShaderNodeUIntFuncFunction = 0
-	VISUAL_SHADER_NODE_U_INT_FUNC_FUNCTION_FUNC_BITWISE_NOT                                  = 1
-	VISUAL_SHADER_NODE_U_INT_FUNC_FUNCTION_FUNC_MAX                                          = 2
+	VISUAL_SHADER_NODE_U_INT_FUNC_FUNCTION_FUNC_BITWISE_NOT VisualShaderNodeUIntFuncFunction = 1
+	VISUAL_SHADER_NODE_U_INT_FUNC_FUNCTION_FUNC_MAX         VisualShaderNodeUIntFuncFunction = 2
 )
 
 type VisualShaderNodeUIntOpOperator int
 
 const (
 	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_ADD                 VisualShaderNodeUIntOpOperator = 0
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_SUB                                                = 1
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MUL                                                = 2
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_DIV                                                = 3
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MOD                                                = 4
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MAX                                                = 5
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MIN                                                = 6
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_AND                                        = 7
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_OR                                         = 8
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_XOR                                        = 9
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_LEFT_SHIFT                                 = 10
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_RIGHT_SHIFT                                = 11
-	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_ENUM_SIZE                                          = 12
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_SUB                 VisualShaderNodeUIntOpOperator = 1
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MUL                 VisualShaderNodeUIntOpOperator = 2
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_DIV                 VisualShaderNodeUIntOpOperator = 3
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MOD                 VisualShaderNodeUIntOpOperator = 4
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MAX                 VisualShaderNodeUIntOpOperator = 5
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_MIN                 VisualShaderNodeUIntOpOperator = 6
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_AND         VisualShaderNodeUIntOpOperator = 7
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_OR          VisualShaderNodeUIntOpOperator = 8
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_XOR         VisualShaderNodeUIntOpOperator = 9
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_LEFT_SHIFT  VisualShaderNodeUIntOpOperator = 10
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_BITWISE_RIGHT_SHIFT VisualShaderNodeUIntOpOperator = 11
+	VISUAL_SHADER_NODE_U_INT_OP_OPERATOR_OP_ENUM_SIZE           VisualShaderNodeUIntOpOperator = 12
 )
 
 type VisualShaderNodeUVFuncFunction int
 
 const (
 	VISUAL_SHADER_NODE_UV_FUNC_FUNCTION_FUNC_PANNING VisualShaderNodeUVFuncFunction = 0
-	VISUAL_SHADER_NODE_UV_FUNC_FUNCTION_FUNC_SCALING                                = 1
-	VISUAL_SHADER_NODE_UV_FUNC_FUNCTION_FUNC_MAX                                    = 2
+	VISUAL_SHADER_NODE_UV_FUNC_FUNCTION_FUNC_SCALING VisualShaderNodeUVFuncFunction = 1
+	VISUAL_SHADER_NODE_UV_FUNC_FUNCTION_FUNC_MAX     VisualShaderNodeUVFuncFunction = 2
 )
 
 type VisualShaderNodeVectorBaseOpType int
 
 const (
 	VISUAL_SHADER_NODE_VECTOR_BASE_OP_TYPE_OP_TYPE_VECTOR_2_D VisualShaderNodeVectorBaseOpType = 0
-	VISUAL_SHADER_NODE_VECTOR_BASE_OP_TYPE_OP_TYPE_VECTOR_3_D                                  = 1
-	VISUAL_SHADER_NODE_VECTOR_BASE_OP_TYPE_OP_TYPE_VECTOR_4_D                                  = 2
-	VISUAL_SHADER_NODE_VECTOR_BASE_OP_TYPE_OP_TYPE_MAX                                         = 3
+	VISUAL_SHADER_NODE_VECTOR_BASE_OP_TYPE_OP_TYPE_VECTOR_3_D VisualShaderNodeVectorBaseOpType = 1
+	VISUAL_SHADER_NODE_VECTOR_BASE_OP_TYPE_OP_TYPE_VECTOR_4_D VisualShaderNodeVectorBaseOpType = 2
+	VISUAL_SHADER_NODE_VECTOR_BASE_OP_TYPE_OP_TYPE_MAX        VisualShaderNodeVectorBaseOpType = 3
 )
 
 type VisualShaderNodeVectorFuncFunction int
 
 const (
 	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_NORMALIZE    VisualShaderNodeVectorFuncFunction = 0
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_SATURATE                                        = 1
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_NEGATE                                          = 2
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_RECIPROCAL                                      = 3
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ABS                                             = 4
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ACOS                                            = 5
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ACOSH                                           = 6
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ASIN                                            = 7
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ASINH                                           = 8
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ATAN                                            = 9
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ATANH                                           = 10
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_CEIL                                            = 11
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_COS                                             = 12
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_COSH                                            = 13
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_DEGREES                                         = 14
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_EXP                                             = 15
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_EXP_2                                           = 16
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_FLOOR                                           = 17
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_FRACT                                           = 18
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_INVERSE_SQRT                                    = 19
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_LOG                                             = 20
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_LOG_2                                           = 21
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_RADIANS                                         = 22
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ROUND                                           = 23
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ROUNDEVEN                                       = 24
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_SIGN                                            = 25
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_SIN                                             = 26
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_SINH                                            = 27
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_SQRT                                            = 28
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_TAN                                             = 29
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_TANH                                            = 30
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_TRUNC                                           = 31
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ONEMINUS                                        = 32
-	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_MAX                                             = 33
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_SATURATE     VisualShaderNodeVectorFuncFunction = 1
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_NEGATE       VisualShaderNodeVectorFuncFunction = 2
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_RECIPROCAL   VisualShaderNodeVectorFuncFunction = 3
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ABS          VisualShaderNodeVectorFuncFunction = 4
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ACOS         VisualShaderNodeVectorFuncFunction = 5
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ACOSH        VisualShaderNodeVectorFuncFunction = 6
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ASIN         VisualShaderNodeVectorFuncFunction = 7
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ASINH        VisualShaderNodeVectorFuncFunction = 8
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ATAN         VisualShaderNodeVectorFuncFunction = 9
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ATANH        VisualShaderNodeVectorFuncFunction = 10
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_CEIL         VisualShaderNodeVectorFuncFunction = 11
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_COS          VisualShaderNodeVectorFuncFunction = 12
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_COSH         VisualShaderNodeVectorFuncFunction = 13
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_DEGREES      VisualShaderNodeVectorFuncFunction = 14
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_EXP          VisualShaderNodeVectorFuncFunction = 15
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_EXP_2        VisualShaderNodeVectorFuncFunction = 16
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_FLOOR        VisualShaderNodeVectorFuncFunction = 17
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_FRACT        VisualShaderNodeVectorFuncFunction = 18
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_INVERSE_SQRT VisualShaderNodeVectorFuncFunction = 19
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_LOG          VisualShaderNodeVectorFuncFunction = 20
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_LOG_2        VisualShaderNodeVectorFuncFunction = 21
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_RADIANS      VisualShaderNodeVectorFuncFunction = 22
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ROUND        VisualShaderNodeVectorFuncFunction = 23
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ROUNDEVEN    VisualShaderNodeVectorFuncFunction = 24
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_SIGN         VisualShaderNodeVectorFuncFunction = 25
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_SIN          VisualShaderNodeVectorFuncFunction = 26
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_SINH         VisualShaderNodeVectorFuncFunction = 27
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_SQRT         VisualShaderNodeVectorFuncFunction = 28
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_TAN          VisualShaderNodeVectorFuncFunction = 29
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_TANH         VisualShaderNodeVectorFuncFunction = 30
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_TRUNC        VisualShaderNodeVectorFuncFunction = 31
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_ONEMINUS     VisualShaderNodeVectorFuncFunction = 32
+	VISUAL_SHADER_NODE_VECTOR_FUNC_FUNCTION_FUNC_MAX          VisualShaderNodeVectorFuncFunction = 33
 )
 
 type VisualShaderNodeVectorOpOperator int
 
 const (
 	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_ADD       VisualShaderNodeVectorOpOperator = 0
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_SUB                                        = 1
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_MUL                                        = 2
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_DIV                                        = 3
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_MOD                                        = 4
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_POW                                        = 5
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_MAX                                        = 6
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_MIN                                        = 7
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_CROSS                                      = 8
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_ATAN_2                                     = 9
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_REFLECT                                    = 10
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_STEP                                       = 11
-	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_ENUM_SIZE                                  = 12
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_SUB       VisualShaderNodeVectorOpOperator = 1
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_MUL       VisualShaderNodeVectorOpOperator = 2
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_DIV       VisualShaderNodeVectorOpOperator = 3
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_MOD       VisualShaderNodeVectorOpOperator = 4
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_POW       VisualShaderNodeVectorOpOperator = 5
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_MAX       VisualShaderNodeVectorOpOperator = 6
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_MIN       VisualShaderNodeVectorOpOperator = 7
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_CROSS     VisualShaderNodeVectorOpOperator = 8
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_ATAN_2    VisualShaderNodeVectorOpOperator = 9
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_REFLECT   VisualShaderNodeVectorOpOperator = 10
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_STEP      VisualShaderNodeVectorOpOperator = 11
+	VISUAL_SHADER_NODE_VECTOR_OP_OPERATOR_OP_ENUM_SIZE VisualShaderNodeVectorOpOperator = 12
 )
 
 type VoxelGISubdiv int
 
 const (
 	VOXEL_GI_SUBDIV_SUBDIV_64  VoxelGISubdiv = 0
-	VOXEL_GI_SUBDIV_SUBDIV_128               = 1
-	VOXEL_GI_SUBDIV_SUBDIV_256               = 2
-	VOXEL_GI_SUBDIV_SUBDIV_512               = 3
-	VOXEL_GI_SUBDIV_SUBDIV_MAX               = 4
+	VOXEL_GI_SUBDIV_SUBDIV_128 VoxelGISubdiv = 1
+	VOXEL_GI_SUBDIV_SUBDIV_256 VoxelGISubdiv = 2
+	VOXEL_GI_SUBDIV_SUBDIV_512 VoxelGISubdiv = 3
+	VOXEL_GI_SUBDIV_SUBDIV_MAX VoxelGISubdiv = 4
 )
 
 type WebRTCDataChannelWriteMode int
 
 const (
 	WEB_RTC_DATA_CHANNEL_WRITE_MODE_WRITE_MODE_TEXT   WebRTCDataChannelWriteMode = 0
-	WEB_RTC_DATA_CHANNEL_WRITE_MODE_WRITE_MODE_BINARY                            = 1
+	WEB_RTC_DATA_CHANNEL_WRITE_MODE_WRITE_MODE_BINARY WebRTCDataChannelWriteMode = 1
 )
 
 type WebRTCDataChannelChannelState int
 
 const (
 	WEB_RTC_DATA_CHANNEL_CHANNEL_STATE_STATE_CONNECTING WebRTCDataChannelChannelState = 0
-	WEB_RTC_DATA_CHANNEL_CHANNEL_STATE_STATE_OPEN                                     = 1
-	WEB_RTC_DATA_CHANNEL_CHANNEL_STATE_STATE_CLOSING                                  = 2
-	WEB_RTC_DATA_CHANNEL_CHANNEL_STATE_STATE_CLOSED                                   = 3
+	WEB_RTC_DATA_CHANNEL_CHANNEL_STATE_STATE_OPEN       WebRTCDataChannelChannelState = 1
+	WEB_RTC_DATA_CHANNEL_CHANNEL_STATE_STATE_CLOSING    WebRTCDataChannelChannelState = 2
+	WEB_RTC_DATA_CHANNEL_CHANNEL_STATE_STATE_CLOSED     WebRTCDataChannelChannelState = 3
 )
 
 type WebRTCPeerConnectionConnectionState int
 
 const (
 	WEB_RTC_PEER_CONNECTION_CONNECTION_STATE_STATE_NEW          WebRTCPeerConnectionConnectionState = 0
-	WEB_RTC_PEER_CONNECTION_CONNECTION_STATE_STATE_CONNECTING                                       = 1
-	WEB_RTC_PEER_CONNECTION_CONNECTION_STATE_STATE_CONNECTED                                        = 2
-	WEB_RTC_PEER_CONNECTION_CONNECTION_STATE_STATE_DISCONNECTED                                     = 3
-	WEB_RTC_PEER_CONNECTION_CONNECTION_STATE_STATE_FAILED                                           = 4
-	WEB_RTC_PEER_CONNECTION_CONNECTION_STATE_STATE_CLOSED                                           = 5
+	WEB_RTC_PEER_CONNECTION_CONNECTION_STATE_STATE_CONNECTING   WebRTCPeerConnectionConnectionState = 1
+	WEB_RTC_PEER_CONNECTION_CONNECTION_STATE_STATE_CONNECTED    WebRTCPeerConnectionConnectionState = 2
+	WEB_RTC_PEER_CONNECTION_CONNECTION_STATE_STATE_DISCONNECTED WebRTCPeerConnectionConnectionState = 3
+	WEB_RTC_PEER_CONNECTION_CONNECTION_STATE_STATE_FAILED       WebRTCPeerConnectionConnectionState = 4
+	WEB_RTC_PEER_CONNECTION_CONNECTION_STATE_STATE_CLOSED       WebRTCPeerConnectionConnectionState = 5
 )
 
 type WebRTCPeerConnectionGatheringState int
 
 const (
 	WEB_RTC_PEER_CONNECTION_GATHERING_STATE_GATHERING_STATE_NEW       WebRTCPeerConnectionGatheringState = 0
-	WEB_RTC_PEER_CONNECTION_GATHERING_STATE_GATHERING_STATE_GATHERING                                    = 1
-	WEB_RTC_PEER_CONNECTION_GATHERING_STATE_GATHERING_STATE_COMPLETE                                     = 2
+	WEB_RTC_PEER_CONNECTION_GATHERING_STATE_GATHERING_STATE_GATHERING WebRTCPeerConnectionGatheringState = 1
+	WEB_RTC_PEER_CONNECTION_GATHERING_STATE_GATHERING_STATE_COMPLETE  WebRTCPeerConnectionGatheringState = 2
 )
 
 type WebRTCPeerConnectionSignalingState int
 
 const (
 	WEB_RTC_PEER_CONNECTION_SIGNALING_STATE_SIGNALING_STATE_STABLE               WebRTCPeerConnectionSignalingState = 0
-	WEB_RTC_PEER_CONNECTION_SIGNALING_STATE_SIGNALING_STATE_HAVE_LOCAL_OFFER                                        = 1
-	WEB_RTC_PEER_CONNECTION_SIGNALING_STATE_SIGNALING_STATE_HAVE_REMOTE_OFFER                                       = 2
-	WEB_RTC_PEER_CONNECTION_SIGNALING_STATE_SIGNALING_STATE_HAVE_LOCAL_PRANSWER                                     = 3
-	WEB_RTC_PEER_CONNECTION_SIGNALING_STATE_SIGNALING_STATE_HAVE_REMOTE_PRANSWER                                    = 4
-	WEB_RTC_PEER_CONNECTION_SIGNALING_STATE_SIGNALING_STATE_CLOSED                                                  = 5
+	WEB_RTC_PEER_CONNECTION_SIGNALING_STATE_SIGNALING_STATE_HAVE_LOCAL_OFFER     WebRTCPeerConnectionSignalingState = 1
+	WEB_RTC_PEER_CONNECTION_SIGNALING_STATE_SIGNALING_STATE_HAVE_REMOTE_OFFER    WebRTCPeerConnectionSignalingState = 2
+	WEB_RTC_PEER_CONNECTION_SIGNALING_STATE_SIGNALING_STATE_HAVE_LOCAL_PRANSWER  WebRTCPeerConnectionSignalingState = 3
+	WEB_RTC_PEER_CONNECTION_SIGNALING_STATE_SIGNALING_STATE_HAVE_REMOTE_PRANSWER WebRTCPeerConnectionSignalingState = 4
+	WEB_RTC_PEER_CONNECTION_SIGNALING_STATE_SIGNALING_STATE_CLOSED               WebRTCPeerConnectionSignalingState = 5
 )
 
 type WebSocketPeerWriteMode int
 
 const (
 	WEB_SOCKET_PEER_WRITE_MODE_WRITE_MODE_TEXT   WebSocketPeerWriteMode = 0
-	WEB_SOCKET_PEER_WRITE_MODE_WRITE_MODE_BINARY                        = 1
+	WEB_SOCKET_PEER_WRITE_MODE_WRITE_MODE_BINARY WebSocketPeerWriteMode = 1
 )
 
 type WebSocketPeerState int
 
 const (
 	WEB_SOCKET_PEER_STATE_STATE_CONNECTING WebSocketPeerState = 0
-	WEB_SOCKET_PEER_STATE_STATE_OPEN                          = 1
-	WEB_SOCKET_PEER_STATE_STATE_CLOSING                       = 2
-	WEB_SOCKET_PEER_STATE_STATE_CLOSED                        = 3
+	WEB_SOCKET_PEER_STATE_STATE_OPEN       WebSocketPeerState = 1
+	WEB_SOCKET_PEER_STATE_STATE_CLOSING    WebSocketPeerState = 2
+	WEB_SOCKET_PEER_STATE_STATE_CLOSED     WebSocketPeerState = 3
 )
 
 type WebXRInterfaceTargetRayMode int
 
 const (
 	WEB_XR_INTERFACE_TARGET_RAY_MODE_TARGET_RAY_MODE_UNKNOWN         WebXRInterfaceTargetRayMode = 0
-	WEB_XR_INTERFACE_TARGET_RAY_MODE_TARGET_RAY_MODE_GAZE                                        = 1
-	WEB_XR_INTERFACE_TARGET_RAY_MODE_TARGET_RAY_MODE_TRACKED_POINTER                             = 2
-	WEB_XR_INTERFACE_TARGET_RAY_MODE_TARGET_RAY_MODE_SCREEN                                      = 3
+	WEB_XR_INTERFACE_TARGET_RAY_MODE_TARGET_RAY_MODE_GAZE            WebXRInterfaceTargetRayMode = 1
+	WEB_XR_INTERFACE_TARGET_RAY_MODE_TARGET_RAY_MODE_TRACKED_POINTER WebXRInterfaceTargetRayMode = 2
+	WEB_XR_INTERFACE_TARGET_RAY_MODE_TARGET_RAY_MODE_SCREEN          WebXRInterfaceTargetRayMode = 3
 )
 
 type WindowMode int
 
 const (
 	WINDOW_MODE_MODE_WINDOWED             WindowMode = 0
-	WINDOW_MODE_MODE_MINIMIZED                       = 1
-	WINDOW_MODE_MODE_MAXIMIZED                       = 2
-	WINDOW_MODE_MODE_FULLSCREEN                      = 3
-	WINDOW_MODE_MODE_EXCLUSIVE_FULLSCREEN            = 4
+	WINDOW_MODE_MODE_MINIMIZED            WindowMode = 1
+	WINDOW_MODE_MODE_MAXIMIZED            WindowMode = 2
+	WINDOW_MODE_MODE_FULLSCREEN           WindowMode = 3
+	WINDOW_MODE_MODE_EXCLUSIVE_FULLSCREEN WindowMode = 4
 )
 
 type WindowFlags int
 
 const (
-	WINDOW_FLAGS_FLAG_RESIZE_DISABLED   WindowFlags = 0
-	WINDOW_FLAGS_FLAG_BORDERLESS                    = 1
-	WINDOW_FLAGS_FLAG_ALWAYS_ON_TOP                 = 2
-	WINDOW_FLAGS_FLAG_TRANSPARENT                   = 3
-	WINDOW_FLAGS_FLAG_NO_FOCUS                      = 4
-	WINDOW_FLAGS_FLAG_POPUP                         = 5
-	WINDOW_FLAGS_FLAG_EXTEND_TO_TITLE               = 6
-	WINDOW_FLAGS_FLAG_MOUSE_PASSTHROUGH             = 7
-	WINDOW_FLAGS_FLAG_MAX                           = 8
+	WINDOW_FLAGS_FLAG_RESIZE_DISABLED      WindowFlags = 0
+	WINDOW_FLAGS_FLAG_BORDERLESS           WindowFlags = 1
+	WINDOW_FLAGS_FLAG_ALWAYS_ON_TOP        WindowFlags = 2
+	WINDOW_FLAGS_FLAG_TRANSPARENT          WindowFlags = 3
+	WINDOW_FLAGS_FLAG_NO_FOCUS             WindowFlags = 4
+	WINDOW_FLAGS_FLAG_POPUP                WindowFlags = 5
+	WINDOW_FLAGS_FLAG_EXTEND_TO_TITLE      WindowFlags = 6
+	WINDOW_FLAGS_FLAG_MOUSE_PASSTHROUGH    WindowFlags = 7
+	WINDOW_FLAGS_FLAG_SHARP_CORNERS        WindowFlags = 8
+	WINDOW_FLAGS_FLAG_EXCLUDE_FROM_CAPTURE WindowFlags = 9
+	WINDOW_FLAGS_FLAG_POPUP_WM_HINT        WindowFlags = 10
+	WINDOW_FLAGS_FLAG_MINIMIZE_DISABLED    WindowFlags = 11
+	WINDOW_FLAGS_FLAG_MAXIMIZE_DISABLED    WindowFlags = 12
+	WINDOW_FLAGS_FLAG_MAX                  WindowFlags = 13
 )
 
 type WindowContentScaleMode int
 
 const (
 	WINDOW_CONTENT_SCALE_MODE_CONTENT_SCALE_MODE_DISABLED     WindowContentScaleMode = 0
-	WINDOW_CONTENT_SCALE_MODE_CONTENT_SCALE_MODE_CANVAS_ITEMS                        = 1
-	WINDOW_CONTENT_SCALE_MODE_CONTENT_SCALE_MODE_VIEWPORT                            = 2
+	WINDOW_CONTENT_SCALE_MODE_CONTENT_SCALE_MODE_CANVAS_ITEMS WindowContentScaleMode = 1
+	WINDOW_CONTENT_SCALE_MODE_CONTENT_SCALE_MODE_VIEWPORT     WindowContentScaleMode = 2
 )
 
 type WindowContentScaleAspect int
 
 const (
 	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_IGNORE      WindowContentScaleAspect = 0
-	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_KEEP                                 = 1
-	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_KEEP_WIDTH                           = 2
-	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_KEEP_HEIGHT                          = 3
-	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_EXPAND                               = 4
+	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_KEEP        WindowContentScaleAspect = 1
+	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_KEEP_WIDTH  WindowContentScaleAspect = 2
+	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_KEEP_HEIGHT WindowContentScaleAspect = 3
+	WINDOW_CONTENT_SCALE_ASPECT_CONTENT_SCALE_ASPECT_EXPAND      WindowContentScaleAspect = 4
 )
 
 type WindowContentScaleStretch int
 
 const (
 	WINDOW_CONTENT_SCALE_STRETCH_CONTENT_SCALE_STRETCH_FRACTIONAL WindowContentScaleStretch = 0
-	WINDOW_CONTENT_SCALE_STRETCH_CONTENT_SCALE_STRETCH_INTEGER                              = 1
+	WINDOW_CONTENT_SCALE_STRETCH_CONTENT_SCALE_STRETCH_INTEGER    WindowContentScaleStretch = 1
 )
 
 type WindowLayoutDirection int
 
 const (
-	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_INHERITED WindowLayoutDirection = 0
-	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_LOCALE                          = 1
-	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_LTR                             = 2
-	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_RTL                             = 3
+	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_INHERITED          WindowLayoutDirection = 0
+	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_APPLICATION_LOCALE WindowLayoutDirection = 1
+	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_LTR                WindowLayoutDirection = 2
+	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_RTL                WindowLayoutDirection = 3
+	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_SYSTEM_LOCALE      WindowLayoutDirection = 4
+	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_MAX                WindowLayoutDirection = 5
+	WINDOW_LAYOUT_DIRECTION_LAYOUT_DIRECTION_LOCALE             WindowLayoutDirection = 1
 )
 
 type WindowWindowInitialPosition int
 
 const (
 	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_ABSOLUTE                          WindowWindowInitialPosition = 0
-	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN                                         = 1
-	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_MAIN_WINDOW_SCREEN                                     = 2
-	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_OTHER_SCREEN                                           = 3
-	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_MOUSE_FOCUS                                = 4
-	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_KEYBOARD_FOCUS                             = 5
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN             WindowWindowInitialPosition = 1
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_MAIN_WINDOW_SCREEN         WindowWindowInitialPosition = 2
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_OTHER_SCREEN               WindowWindowInitialPosition = 3
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_MOUSE_FOCUS    WindowWindowInitialPosition = 4
+	WINDOW_WINDOW_INITIAL_POSITION_WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_KEYBOARD_FOCUS WindowWindowInitialPosition = 5
 )
 
 type XMLParserNodeType int
 
 const (
 	XML_PARSER_NODE_TYPE_NODE_NONE        XMLParserNodeType = 0
-	XML_PARSER_NODE_TYPE_NODE_ELEMENT                       = 1
-	XML_PARSER_NODE_TYPE_NODE_ELEMENT_END                   = 2
-	XML_PARSER_NODE_TYPE_NODE_TEXT                          = 3
-	XML_PARSER_NODE_TYPE_NODE_COMMENT                       = 4
-	XML_PARSER_NODE_TYPE_NODE_CDATA                         = 5
-	XML_PARSER_NODE_TYPE_NODE_UNKNOWN                       = 6
+	XML_PARSER_NODE_TYPE_NODE_ELEMENT     XMLParserNodeType = 1
+	XML_PARSER_NODE_TYPE_NODE_ELEMENT_END XMLParserNodeType = 2
+	XML_PARSER_NODE_TYPE_NODE_TEXT        XMLParserNodeType = 3
+	XML_PARSER_NODE_TYPE_NODE_COMMENT     XMLParserNodeType = 4
+	XML_PARSER_NODE_TYPE_NODE_CDATA       XMLParserNodeType = 5
+	XML_PARSER_NODE_TYPE_NODE_UNKNOWN     XMLParserNodeType = 6
 )
 
 type XRBodyModifier3DBodyUpdate int
 
 const (
 	XR_BODY_MODIFIER_3_D_BODY_UPDATE_BODY_UPDATE_UPPER_BODY XRBodyModifier3DBodyUpdate = 1
-	XR_BODY_MODIFIER_3_D_BODY_UPDATE_BODY_UPDATE_LOWER_BODY                            = 2
-	XR_BODY_MODIFIER_3_D_BODY_UPDATE_BODY_UPDATE_HANDS                                 = 4
+	XR_BODY_MODIFIER_3_D_BODY_UPDATE_BODY_UPDATE_LOWER_BODY XRBodyModifier3DBodyUpdate = 2
+	XR_BODY_MODIFIER_3_D_BODY_UPDATE_BODY_UPDATE_HANDS      XRBodyModifier3DBodyUpdate = 4
 )
 
 type XRBodyModifier3DBoneUpdate int
 
 const (
 	XR_BODY_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_FULL          XRBodyModifier3DBoneUpdate = 0
-	XR_BODY_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_ROTATION_ONLY                            = 1
-	XR_BODY_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_MAX                                      = 2
+	XR_BODY_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_ROTATION_ONLY XRBodyModifier3DBoneUpdate = 1
+	XR_BODY_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_MAX           XRBodyModifier3DBoneUpdate = 2
 )
 
 type XRBodyTrackerBodyFlags int
 
 const (
 	XR_BODY_TRACKER_BODY_FLAGS_BODY_FLAG_UPPER_BODY_SUPPORTED XRBodyTrackerBodyFlags = 1
-	XR_BODY_TRACKER_BODY_FLAGS_BODY_FLAG_LOWER_BODY_SUPPORTED                        = 2
-	XR_BODY_TRACKER_BODY_FLAGS_BODY_FLAG_HANDS_SUPPORTED                             = 4
+	XR_BODY_TRACKER_BODY_FLAGS_BODY_FLAG_LOWER_BODY_SUPPORTED XRBodyTrackerBodyFlags = 2
+	XR_BODY_TRACKER_BODY_FLAGS_BODY_FLAG_HANDS_SUPPORTED      XRBodyTrackerBodyFlags = 4
 )
 
 type XRBodyTrackerJoint int
 
 const (
 	XR_BODY_TRACKER_JOINT_JOINT_ROOT                                     XRBodyTrackerJoint = 0
-	XR_BODY_TRACKER_JOINT_JOINT_HIPS                                                        = 1
-	XR_BODY_TRACKER_JOINT_JOINT_SPINE                                                       = 2
-	XR_BODY_TRACKER_JOINT_JOINT_CHEST                                                       = 3
-	XR_BODY_TRACKER_JOINT_JOINT_UPPER_CHEST                                                 = 4
-	XR_BODY_TRACKER_JOINT_JOINT_NECK                                                        = 5
-	XR_BODY_TRACKER_JOINT_JOINT_HEAD                                                        = 6
-	XR_BODY_TRACKER_JOINT_JOINT_HEAD_TIP                                                    = 7
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_SHOULDER                                               = 8
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_UPPER_ARM                                              = 9
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_LOWER_ARM                                              = 10
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_SHOULDER                                              = 11
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_UPPER_ARM                                             = 12
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_LOWER_ARM                                             = 13
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_UPPER_LEG                                              = 14
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_LOWER_LEG                                              = 15
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_FOOT                                                   = 16
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_TOES                                                   = 17
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_UPPER_LEG                                             = 18
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_LOWER_LEG                                             = 19
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_FOOT                                                  = 20
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_TOES                                                  = 21
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_HAND                                                   = 22
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PALM                                                   = 23
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_WRIST                                                  = 24
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_METACARPAL                                       = 25
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_PHALANX_PROXIMAL                                 = 26
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_PHALANX_DISTAL                                   = 27
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_TIP                                              = 28
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_METACARPAL                                = 29
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_PHALANX_PROXIMAL                          = 30
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_PHALANX_INTERMEDIATE                      = 31
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_PHALANX_DISTAL                            = 32
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_TIP                                       = 33
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_METACARPAL                               = 34
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_PHALANX_PROXIMAL                         = 35
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_PHALANX_INTERMEDIATE                     = 36
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_PHALANX_DISTAL                           = 37
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_TIP                                      = 38
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_METACARPAL                                 = 39
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_PHALANX_PROXIMAL                           = 40
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_PHALANX_INTERMEDIATE                       = 41
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_PHALANX_DISTAL                             = 42
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_TIP                                        = 43
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_METACARPAL                                = 44
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_PHALANX_PROXIMAL                          = 45
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_PHALANX_INTERMEDIATE                      = 46
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_PHALANX_DISTAL                            = 47
-	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_TIP                                       = 48
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_HAND                                                  = 49
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PALM                                                  = 50
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_WRIST                                                 = 51
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_METACARPAL                                      = 52
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_PHALANX_PROXIMAL                                = 53
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_PHALANX_DISTAL                                  = 54
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_TIP                                             = 55
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_METACARPAL                               = 56
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_PHALANX_PROXIMAL                         = 57
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_PHALANX_INTERMEDIATE                     = 58
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_PHALANX_DISTAL                           = 59
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_TIP                                      = 60
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_METACARPAL                              = 61
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_PROXIMAL                        = 62
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_INTERMEDIATE                    = 63
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_DISTAL                          = 64
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_TIP                                     = 65
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_METACARPAL                                = 66
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_PHALANX_PROXIMAL                          = 67
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_PHALANX_INTERMEDIATE                      = 68
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_PHALANX_DISTAL                            = 69
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_TIP                                       = 70
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_METACARPAL                               = 71
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_PHALANX_PROXIMAL                         = 72
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_PHALANX_INTERMEDIATE                     = 73
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_PHALANX_DISTAL                           = 74
-	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_TIP                                      = 75
-	XR_BODY_TRACKER_JOINT_JOINT_MAX                                                         = 76
+	XR_BODY_TRACKER_JOINT_JOINT_HIPS                                     XRBodyTrackerJoint = 1
+	XR_BODY_TRACKER_JOINT_JOINT_SPINE                                    XRBodyTrackerJoint = 2
+	XR_BODY_TRACKER_JOINT_JOINT_CHEST                                    XRBodyTrackerJoint = 3
+	XR_BODY_TRACKER_JOINT_JOINT_UPPER_CHEST                              XRBodyTrackerJoint = 4
+	XR_BODY_TRACKER_JOINT_JOINT_NECK                                     XRBodyTrackerJoint = 5
+	XR_BODY_TRACKER_JOINT_JOINT_HEAD                                     XRBodyTrackerJoint = 6
+	XR_BODY_TRACKER_JOINT_JOINT_HEAD_TIP                                 XRBodyTrackerJoint = 7
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_SHOULDER                            XRBodyTrackerJoint = 8
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_UPPER_ARM                           XRBodyTrackerJoint = 9
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_LOWER_ARM                           XRBodyTrackerJoint = 10
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_SHOULDER                           XRBodyTrackerJoint = 11
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_UPPER_ARM                          XRBodyTrackerJoint = 12
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_LOWER_ARM                          XRBodyTrackerJoint = 13
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_UPPER_LEG                           XRBodyTrackerJoint = 14
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_LOWER_LEG                           XRBodyTrackerJoint = 15
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_FOOT                                XRBodyTrackerJoint = 16
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_TOES                                XRBodyTrackerJoint = 17
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_UPPER_LEG                          XRBodyTrackerJoint = 18
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_LOWER_LEG                          XRBodyTrackerJoint = 19
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_FOOT                               XRBodyTrackerJoint = 20
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_TOES                               XRBodyTrackerJoint = 21
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_HAND                                XRBodyTrackerJoint = 22
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PALM                                XRBodyTrackerJoint = 23
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_WRIST                               XRBodyTrackerJoint = 24
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_METACARPAL                    XRBodyTrackerJoint = 25
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_PHALANX_PROXIMAL              XRBodyTrackerJoint = 26
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_PHALANX_DISTAL                XRBodyTrackerJoint = 27
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_THUMB_TIP                           XRBodyTrackerJoint = 28
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_METACARPAL             XRBodyTrackerJoint = 29
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_PHALANX_PROXIMAL       XRBodyTrackerJoint = 30
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_PHALANX_INTERMEDIATE   XRBodyTrackerJoint = 31
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_PHALANX_DISTAL         XRBodyTrackerJoint = 32
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_INDEX_FINGER_TIP                    XRBodyTrackerJoint = 33
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_METACARPAL            XRBodyTrackerJoint = 34
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_PHALANX_PROXIMAL      XRBodyTrackerJoint = 35
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_PHALANX_INTERMEDIATE  XRBodyTrackerJoint = 36
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_PHALANX_DISTAL        XRBodyTrackerJoint = 37
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FINGER_TIP                   XRBodyTrackerJoint = 38
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_METACARPAL              XRBodyTrackerJoint = 39
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_PHALANX_PROXIMAL        XRBodyTrackerJoint = 40
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_PHALANX_INTERMEDIATE    XRBodyTrackerJoint = 41
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_PHALANX_DISTAL          XRBodyTrackerJoint = 42
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_RING_FINGER_TIP                     XRBodyTrackerJoint = 43
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_METACARPAL             XRBodyTrackerJoint = 44
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_PHALANX_PROXIMAL       XRBodyTrackerJoint = 45
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_PHALANX_INTERMEDIATE   XRBodyTrackerJoint = 46
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_PHALANX_DISTAL         XRBodyTrackerJoint = 47
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_PINKY_FINGER_TIP                    XRBodyTrackerJoint = 48
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_HAND                               XRBodyTrackerJoint = 49
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PALM                               XRBodyTrackerJoint = 50
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_WRIST                              XRBodyTrackerJoint = 51
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_METACARPAL                   XRBodyTrackerJoint = 52
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_PHALANX_PROXIMAL             XRBodyTrackerJoint = 53
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_PHALANX_DISTAL               XRBodyTrackerJoint = 54
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_THUMB_TIP                          XRBodyTrackerJoint = 55
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_METACARPAL            XRBodyTrackerJoint = 56
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_PHALANX_PROXIMAL      XRBodyTrackerJoint = 57
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_PHALANX_INTERMEDIATE  XRBodyTrackerJoint = 58
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_PHALANX_DISTAL        XRBodyTrackerJoint = 59
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_INDEX_FINGER_TIP                   XRBodyTrackerJoint = 60
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_METACARPAL           XRBodyTrackerJoint = 61
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_PROXIMAL     XRBodyTrackerJoint = 62
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_INTERMEDIATE XRBodyTrackerJoint = 63
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_DISTAL       XRBodyTrackerJoint = 64
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FINGER_TIP                  XRBodyTrackerJoint = 65
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_METACARPAL             XRBodyTrackerJoint = 66
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_PHALANX_PROXIMAL       XRBodyTrackerJoint = 67
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_PHALANX_INTERMEDIATE   XRBodyTrackerJoint = 68
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_PHALANX_DISTAL         XRBodyTrackerJoint = 69
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_RING_FINGER_TIP                    XRBodyTrackerJoint = 70
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_METACARPAL            XRBodyTrackerJoint = 71
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_PHALANX_PROXIMAL      XRBodyTrackerJoint = 72
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_PHALANX_INTERMEDIATE  XRBodyTrackerJoint = 73
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_PHALANX_DISTAL        XRBodyTrackerJoint = 74
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_PINKY_FINGER_TIP                   XRBodyTrackerJoint = 75
+	XR_BODY_TRACKER_JOINT_JOINT_LOWER_CHEST                              XRBodyTrackerJoint = 76
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_SCAPULA                             XRBodyTrackerJoint = 77
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_WRIST_TWIST                         XRBodyTrackerJoint = 78
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_SCAPULA                            XRBodyTrackerJoint = 79
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_WRIST_TWIST                        XRBodyTrackerJoint = 80
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_FOOT_TWIST                          XRBodyTrackerJoint = 81
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_HEEL                                XRBodyTrackerJoint = 82
+	XR_BODY_TRACKER_JOINT_JOINT_LEFT_MIDDLE_FOOT                         XRBodyTrackerJoint = 83
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_FOOT_TWIST                         XRBodyTrackerJoint = 84
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_HEEL                               XRBodyTrackerJoint = 85
+	XR_BODY_TRACKER_JOINT_JOINT_RIGHT_MIDDLE_FOOT                        XRBodyTrackerJoint = 86
+	XR_BODY_TRACKER_JOINT_JOINT_MAX                                      XRBodyTrackerJoint = 87
 )
 
 type XRBodyTrackerJointFlags int
 
 const (
 	XR_BODY_TRACKER_JOINT_FLAGS_JOINT_FLAG_ORIENTATION_VALID   XRBodyTrackerJointFlags = 1
-	XR_BODY_TRACKER_JOINT_FLAGS_JOINT_FLAG_ORIENTATION_TRACKED                         = 2
-	XR_BODY_TRACKER_JOINT_FLAGS_JOINT_FLAG_POSITION_VALID                              = 4
-	XR_BODY_TRACKER_JOINT_FLAGS_JOINT_FLAG_POSITION_TRACKED                            = 8
+	XR_BODY_TRACKER_JOINT_FLAGS_JOINT_FLAG_ORIENTATION_TRACKED XRBodyTrackerJointFlags = 2
+	XR_BODY_TRACKER_JOINT_FLAGS_JOINT_FLAG_POSITION_VALID      XRBodyTrackerJointFlags = 4
+	XR_BODY_TRACKER_JOINT_FLAGS_JOINT_FLAG_POSITION_TRACKED    XRBodyTrackerJointFlags = 8
 )
 
 type XRFaceTrackerBlendShapeEntry int
 
 const (
 	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_OUT_RIGHT       XRFaceTrackerBlendShapeEntry = 0
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_IN_RIGHT                                     = 1
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_UP_RIGHT                                     = 2
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_DOWN_RIGHT                                   = 3
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_OUT_LEFT                                     = 4
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_IN_LEFT                                      = 5
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_UP_LEFT                                      = 6
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_DOWN_LEFT                                    = 7
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CLOSED_RIGHT                                      = 8
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CLOSED_LEFT                                       = 9
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_SQUINT_RIGHT                                      = 10
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_SQUINT_LEFT                                       = 11
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_WIDE_RIGHT                                        = 12
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_WIDE_LEFT                                         = 13
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_DILATION_RIGHT                                    = 14
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_DILATION_LEFT                                     = 15
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CONSTRICT_RIGHT                                   = 16
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CONSTRICT_LEFT                                    = 17
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_PINCH_RIGHT                                      = 18
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_PINCH_LEFT                                       = 19
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_LOWERER_RIGHT                                    = 20
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_LOWERER_LEFT                                     = 21
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_INNER_UP_RIGHT                                   = 22
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_INNER_UP_LEFT                                    = 23
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_OUTER_UP_RIGHT                                   = 24
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_OUTER_UP_LEFT                                    = 25
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NOSE_SNEER_RIGHT                                      = 26
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NOSE_SNEER_LEFT                                       = 27
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_DILATION_RIGHT                                  = 28
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_DILATION_LEFT                                   = 29
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_CONSTRICT_RIGHT                                 = 30
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_CONSTRICT_LEFT                                  = 31
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SQUINT_RIGHT                                    = 32
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SQUINT_LEFT                                     = 33
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_PUFF_RIGHT                                      = 34
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_PUFF_LEFT                                       = 35
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SUCK_RIGHT                                      = 36
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SUCK_LEFT                                       = 37
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_OPEN                                              = 38
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CLOSED                                          = 39
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_RIGHT                                             = 40
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_LEFT                                              = 41
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_FORWARD                                           = 42
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_BACKWARD                                          = 43
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_CLENCH                                            = 44
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_MANDIBLE_RAISE                                    = 45
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_UPPER_RIGHT                                  = 46
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_UPPER_LEFT                                   = 47
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_LOWER_RIGHT                                  = 48
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_LOWER_LEFT                                   = 49
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_CORNER_RIGHT                                 = 50
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_CORNER_LEFT                                  = 51
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_UPPER_RIGHT                                = 52
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_UPPER_LEFT                                 = 53
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_LOWER_RIGHT                                = 54
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_LOWER_LEFT                                 = 55
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_UPPER_RIGHT                                = 56
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_UPPER_LEFT                                 = 57
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_LOWER_RIGHT                                = 58
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_LOWER_LEFT                                 = 59
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_UP_RIGHT                                  = 60
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_UP_LEFT                                   = 61
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_DOWN_RIGHT                                = 62
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_DOWN_LEFT                                 = 63
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_DEEPEN_RIGHT                              = 64
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_DEEPEN_LEFT                               = 65
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_RIGHT                                     = 66
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_LEFT                                      = 67
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_RIGHT                                     = 68
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_LEFT                                      = 69
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_PULL_RIGHT                               = 70
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_PULL_LEFT                                = 71
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_SLANT_RIGHT                              = 72
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_SLANT_LEFT                               = 73
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_FROWN_RIGHT                                     = 74
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_FROWN_LEFT                                      = 75
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_STRETCH_RIGHT                                   = 76
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_STRETCH_LEFT                                    = 77
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_DIMPLE_RIGHT                                    = 78
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_DIMPLE_LEFT                                     = 79
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_RAISER_UPPER                                    = 80
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_RAISER_LOWER                                    = 81
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_PRESS_RIGHT                                     = 82
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_PRESS_LEFT                                      = 83
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_TIGHTENER_RIGHT                                 = 84
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_TIGHTENER_LEFT                                  = 85
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_OUT                                            = 86
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_UP                                             = 87
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_DOWN                                           = 88
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_RIGHT                                          = 89
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_LEFT                                           = 90
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_ROLL                                           = 91
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_BLEND_DOWN                                     = 92
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_CURL_UP                                        = 93
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_SQUISH                                         = 94
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_FLAT                                           = 95
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_TWIST_RIGHT                                    = 96
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_TWIST_LEFT                                     = 97
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_SOFT_PALATE_CLOSE                                     = 98
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_THROAT_SWALLOW                                        = 99
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NECK_FLEX_RIGHT                                       = 100
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NECK_FLEX_LEFT                                        = 101
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CLOSED                                            = 102
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_WIDE                                              = 103
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_SQUINT                                            = 104
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_DILATION                                          = 105
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CONSTRICT                                         = 106
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_DOWN_RIGHT                                       = 107
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_DOWN_LEFT                                        = 108
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_DOWN                                             = 109
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_UP_RIGHT                                         = 110
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_UP_LEFT                                          = 111
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_UP                                               = 112
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NOSE_SNEER                                            = 113
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_DILATION                                        = 114
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_CONSTRICT                                       = 115
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_PUFF                                            = 116
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SUCK                                            = 117
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SQUINT                                          = 118
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_UPPER                                        = 119
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_LOWER                                        = 120
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK                                              = 121
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_UPPER                                      = 122
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_LOWER                                      = 123
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL                                            = 124
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_UPPER                                      = 125
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_LOWER                                      = 126
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER                                            = 127
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_UP                                        = 128
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_DOWN                                      = 129
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_OPEN                                            = 130
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_RIGHT                                           = 131
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LEFT                                            = 132
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SMILE_RIGHT                                     = 133
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SMILE_LEFT                                      = 134
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SMILE                                           = 135
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SAD_RIGHT                                       = 136
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SAD_LEFT                                        = 137
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SAD                                             = 138
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_STRETCH                                         = 139
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_DIMPLE                                          = 140
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_TIGHTENER                                       = 141
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_PRESS                                           = 142
-	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MAX                                                   = 143
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_IN_RIGHT        XRFaceTrackerBlendShapeEntry = 1
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_UP_RIGHT        XRFaceTrackerBlendShapeEntry = 2
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_DOWN_RIGHT      XRFaceTrackerBlendShapeEntry = 3
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_OUT_LEFT        XRFaceTrackerBlendShapeEntry = 4
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_IN_LEFT         XRFaceTrackerBlendShapeEntry = 5
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_UP_LEFT         XRFaceTrackerBlendShapeEntry = 6
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_LOOK_DOWN_LEFT       XRFaceTrackerBlendShapeEntry = 7
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CLOSED_RIGHT         XRFaceTrackerBlendShapeEntry = 8
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CLOSED_LEFT          XRFaceTrackerBlendShapeEntry = 9
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_SQUINT_RIGHT         XRFaceTrackerBlendShapeEntry = 10
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_SQUINT_LEFT          XRFaceTrackerBlendShapeEntry = 11
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_WIDE_RIGHT           XRFaceTrackerBlendShapeEntry = 12
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_WIDE_LEFT            XRFaceTrackerBlendShapeEntry = 13
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_DILATION_RIGHT       XRFaceTrackerBlendShapeEntry = 14
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_DILATION_LEFT        XRFaceTrackerBlendShapeEntry = 15
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CONSTRICT_RIGHT      XRFaceTrackerBlendShapeEntry = 16
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CONSTRICT_LEFT       XRFaceTrackerBlendShapeEntry = 17
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_PINCH_RIGHT         XRFaceTrackerBlendShapeEntry = 18
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_PINCH_LEFT          XRFaceTrackerBlendShapeEntry = 19
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_LOWERER_RIGHT       XRFaceTrackerBlendShapeEntry = 20
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_LOWERER_LEFT        XRFaceTrackerBlendShapeEntry = 21
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_INNER_UP_RIGHT      XRFaceTrackerBlendShapeEntry = 22
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_INNER_UP_LEFT       XRFaceTrackerBlendShapeEntry = 23
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_OUTER_UP_RIGHT      XRFaceTrackerBlendShapeEntry = 24
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_OUTER_UP_LEFT       XRFaceTrackerBlendShapeEntry = 25
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NOSE_SNEER_RIGHT         XRFaceTrackerBlendShapeEntry = 26
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NOSE_SNEER_LEFT          XRFaceTrackerBlendShapeEntry = 27
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_DILATION_RIGHT     XRFaceTrackerBlendShapeEntry = 28
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_DILATION_LEFT      XRFaceTrackerBlendShapeEntry = 29
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_CONSTRICT_RIGHT    XRFaceTrackerBlendShapeEntry = 30
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_CONSTRICT_LEFT     XRFaceTrackerBlendShapeEntry = 31
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SQUINT_RIGHT       XRFaceTrackerBlendShapeEntry = 32
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SQUINT_LEFT        XRFaceTrackerBlendShapeEntry = 33
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_PUFF_RIGHT         XRFaceTrackerBlendShapeEntry = 34
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_PUFF_LEFT          XRFaceTrackerBlendShapeEntry = 35
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SUCK_RIGHT         XRFaceTrackerBlendShapeEntry = 36
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SUCK_LEFT          XRFaceTrackerBlendShapeEntry = 37
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_OPEN                 XRFaceTrackerBlendShapeEntry = 38
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CLOSED             XRFaceTrackerBlendShapeEntry = 39
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_RIGHT                XRFaceTrackerBlendShapeEntry = 40
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_LEFT                 XRFaceTrackerBlendShapeEntry = 41
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_FORWARD              XRFaceTrackerBlendShapeEntry = 42
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_BACKWARD             XRFaceTrackerBlendShapeEntry = 43
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_CLENCH               XRFaceTrackerBlendShapeEntry = 44
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_JAW_MANDIBLE_RAISE       XRFaceTrackerBlendShapeEntry = 45
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_UPPER_RIGHT     XRFaceTrackerBlendShapeEntry = 46
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_UPPER_LEFT      XRFaceTrackerBlendShapeEntry = 47
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_LOWER_RIGHT     XRFaceTrackerBlendShapeEntry = 48
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_LOWER_LEFT      XRFaceTrackerBlendShapeEntry = 49
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_CORNER_RIGHT    XRFaceTrackerBlendShapeEntry = 50
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_CORNER_LEFT     XRFaceTrackerBlendShapeEntry = 51
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_UPPER_RIGHT   XRFaceTrackerBlendShapeEntry = 52
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_UPPER_LEFT    XRFaceTrackerBlendShapeEntry = 53
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_LOWER_RIGHT   XRFaceTrackerBlendShapeEntry = 54
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_LOWER_LEFT    XRFaceTrackerBlendShapeEntry = 55
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_UPPER_RIGHT   XRFaceTrackerBlendShapeEntry = 56
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_UPPER_LEFT    XRFaceTrackerBlendShapeEntry = 57
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_LOWER_RIGHT   XRFaceTrackerBlendShapeEntry = 58
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_LOWER_LEFT    XRFaceTrackerBlendShapeEntry = 59
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_UP_RIGHT     XRFaceTrackerBlendShapeEntry = 60
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_UP_LEFT      XRFaceTrackerBlendShapeEntry = 61
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_DOWN_RIGHT   XRFaceTrackerBlendShapeEntry = 62
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_DOWN_LEFT    XRFaceTrackerBlendShapeEntry = 63
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_DEEPEN_RIGHT XRFaceTrackerBlendShapeEntry = 64
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_DEEPEN_LEFT  XRFaceTrackerBlendShapeEntry = 65
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_RIGHT        XRFaceTrackerBlendShapeEntry = 66
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_LEFT         XRFaceTrackerBlendShapeEntry = 67
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_RIGHT        XRFaceTrackerBlendShapeEntry = 68
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_LEFT         XRFaceTrackerBlendShapeEntry = 69
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_PULL_RIGHT  XRFaceTrackerBlendShapeEntry = 70
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_PULL_LEFT   XRFaceTrackerBlendShapeEntry = 71
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_SLANT_RIGHT XRFaceTrackerBlendShapeEntry = 72
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_CORNER_SLANT_LEFT  XRFaceTrackerBlendShapeEntry = 73
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_FROWN_RIGHT        XRFaceTrackerBlendShapeEntry = 74
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_FROWN_LEFT         XRFaceTrackerBlendShapeEntry = 75
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_STRETCH_RIGHT      XRFaceTrackerBlendShapeEntry = 76
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_STRETCH_LEFT       XRFaceTrackerBlendShapeEntry = 77
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_DIMPLE_RIGHT       XRFaceTrackerBlendShapeEntry = 78
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_DIMPLE_LEFT        XRFaceTrackerBlendShapeEntry = 79
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_RAISER_UPPER       XRFaceTrackerBlendShapeEntry = 80
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_RAISER_LOWER       XRFaceTrackerBlendShapeEntry = 81
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_PRESS_RIGHT        XRFaceTrackerBlendShapeEntry = 82
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_PRESS_LEFT         XRFaceTrackerBlendShapeEntry = 83
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_TIGHTENER_RIGHT    XRFaceTrackerBlendShapeEntry = 84
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_TIGHTENER_LEFT     XRFaceTrackerBlendShapeEntry = 85
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_OUT               XRFaceTrackerBlendShapeEntry = 86
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_UP                XRFaceTrackerBlendShapeEntry = 87
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_DOWN              XRFaceTrackerBlendShapeEntry = 88
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_RIGHT             XRFaceTrackerBlendShapeEntry = 89
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_LEFT              XRFaceTrackerBlendShapeEntry = 90
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_ROLL              XRFaceTrackerBlendShapeEntry = 91
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_BLEND_DOWN        XRFaceTrackerBlendShapeEntry = 92
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_CURL_UP           XRFaceTrackerBlendShapeEntry = 93
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_SQUISH            XRFaceTrackerBlendShapeEntry = 94
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_FLAT              XRFaceTrackerBlendShapeEntry = 95
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_TWIST_RIGHT       XRFaceTrackerBlendShapeEntry = 96
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_TONGUE_TWIST_LEFT        XRFaceTrackerBlendShapeEntry = 97
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_SOFT_PALATE_CLOSE        XRFaceTrackerBlendShapeEntry = 98
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_THROAT_SWALLOW           XRFaceTrackerBlendShapeEntry = 99
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NECK_FLEX_RIGHT          XRFaceTrackerBlendShapeEntry = 100
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NECK_FLEX_LEFT           XRFaceTrackerBlendShapeEntry = 101
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CLOSED               XRFaceTrackerBlendShapeEntry = 102
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_WIDE                 XRFaceTrackerBlendShapeEntry = 103
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_SQUINT               XRFaceTrackerBlendShapeEntry = 104
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_DILATION             XRFaceTrackerBlendShapeEntry = 105
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_EYE_CONSTRICT            XRFaceTrackerBlendShapeEntry = 106
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_DOWN_RIGHT          XRFaceTrackerBlendShapeEntry = 107
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_DOWN_LEFT           XRFaceTrackerBlendShapeEntry = 108
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_DOWN                XRFaceTrackerBlendShapeEntry = 109
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_UP_RIGHT            XRFaceTrackerBlendShapeEntry = 110
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_UP_LEFT             XRFaceTrackerBlendShapeEntry = 111
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_BROW_UP                  XRFaceTrackerBlendShapeEntry = 112
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NOSE_SNEER               XRFaceTrackerBlendShapeEntry = 113
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_DILATION           XRFaceTrackerBlendShapeEntry = 114
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_NASAL_CONSTRICT          XRFaceTrackerBlendShapeEntry = 115
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_PUFF               XRFaceTrackerBlendShapeEntry = 116
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SUCK               XRFaceTrackerBlendShapeEntry = 117
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_CHEEK_SQUINT             XRFaceTrackerBlendShapeEntry = 118
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_UPPER           XRFaceTrackerBlendShapeEntry = 119
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK_LOWER           XRFaceTrackerBlendShapeEntry = 120
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_SUCK                 XRFaceTrackerBlendShapeEntry = 121
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_UPPER         XRFaceTrackerBlendShapeEntry = 122
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL_LOWER         XRFaceTrackerBlendShapeEntry = 123
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_FUNNEL               XRFaceTrackerBlendShapeEntry = 124
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_UPPER         XRFaceTrackerBlendShapeEntry = 125
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER_LOWER         XRFaceTrackerBlendShapeEntry = 126
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_LIP_PUCKER               XRFaceTrackerBlendShapeEntry = 127
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_UPPER_UP           XRFaceTrackerBlendShapeEntry = 128
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LOWER_DOWN         XRFaceTrackerBlendShapeEntry = 129
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_OPEN               XRFaceTrackerBlendShapeEntry = 130
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_RIGHT              XRFaceTrackerBlendShapeEntry = 131
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_LEFT               XRFaceTrackerBlendShapeEntry = 132
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SMILE_RIGHT        XRFaceTrackerBlendShapeEntry = 133
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SMILE_LEFT         XRFaceTrackerBlendShapeEntry = 134
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SMILE              XRFaceTrackerBlendShapeEntry = 135
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SAD_RIGHT          XRFaceTrackerBlendShapeEntry = 136
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SAD_LEFT           XRFaceTrackerBlendShapeEntry = 137
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_SAD                XRFaceTrackerBlendShapeEntry = 138
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_STRETCH            XRFaceTrackerBlendShapeEntry = 139
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_DIMPLE             XRFaceTrackerBlendShapeEntry = 140
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_TIGHTENER          XRFaceTrackerBlendShapeEntry = 141
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MOUTH_PRESS              XRFaceTrackerBlendShapeEntry = 142
+	XR_FACE_TRACKER_BLEND_SHAPE_ENTRY_FT_MAX                      XRFaceTrackerBlendShapeEntry = 143
 )
 
 type XRHandModifier3DBoneUpdate int
 
 const (
 	XR_HAND_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_FULL          XRHandModifier3DBoneUpdate = 0
-	XR_HAND_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_ROTATION_ONLY                            = 1
-	XR_HAND_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_MAX                                      = 2
+	XR_HAND_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_ROTATION_ONLY XRHandModifier3DBoneUpdate = 1
+	XR_HAND_MODIFIER_3_D_BONE_UPDATE_BONE_UPDATE_MAX           XRHandModifier3DBoneUpdate = 2
 )
 
 type XRHandTrackerHandTrackingSource int
 
 const (
 	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_UNKNOWN      XRHandTrackerHandTrackingSource = 0
-	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_UNOBSTRUCTED                                 = 1
-	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_CONTROLLER                                   = 2
-	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_MAX                                          = 3
+	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_UNOBSTRUCTED XRHandTrackerHandTrackingSource = 1
+	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_CONTROLLER   XRHandTrackerHandTrackingSource = 2
+	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_NOT_TRACKED  XRHandTrackerHandTrackingSource = 3
+	XR_HAND_TRACKER_HAND_TRACKING_SOURCE_HAND_TRACKING_SOURCE_MAX          XRHandTrackerHandTrackingSource = 4
 )
 
 type XRHandTrackerHandJoint int
 
 const (
 	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PALM                               XRHandTrackerHandJoint = 0
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_WRIST                                                     = 1
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_METACARPAL                                          = 2
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_PHALANX_PROXIMAL                                    = 3
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_PHALANX_DISTAL                                      = 4
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_TIP                                                 = 5
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_METACARPAL                                   = 6
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_PHALANX_PROXIMAL                             = 7
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_PHALANX_INTERMEDIATE                         = 8
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_PHALANX_DISTAL                               = 9
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_TIP                                          = 10
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_METACARPAL                                  = 11
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_PHALANX_PROXIMAL                            = 12
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_PHALANX_INTERMEDIATE                        = 13
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_PHALANX_DISTAL                              = 14
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_TIP                                         = 15
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_METACARPAL                                    = 16
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_PHALANX_PROXIMAL                              = 17
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_PHALANX_INTERMEDIATE                          = 18
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_PHALANX_DISTAL                                = 19
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_TIP                                           = 20
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_METACARPAL                                   = 21
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_PHALANX_PROXIMAL                             = 22
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_PHALANX_INTERMEDIATE                         = 23
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_PHALANX_DISTAL                               = 24
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_TIP                                          = 25
-	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MAX                                                       = 26
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_WRIST                              XRHandTrackerHandJoint = 1
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_METACARPAL                   XRHandTrackerHandJoint = 2
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_PHALANX_PROXIMAL             XRHandTrackerHandJoint = 3
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_PHALANX_DISTAL               XRHandTrackerHandJoint = 4
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_THUMB_TIP                          XRHandTrackerHandJoint = 5
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_METACARPAL            XRHandTrackerHandJoint = 6
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_PHALANX_PROXIMAL      XRHandTrackerHandJoint = 7
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_PHALANX_INTERMEDIATE  XRHandTrackerHandJoint = 8
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_PHALANX_DISTAL        XRHandTrackerHandJoint = 9
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_INDEX_FINGER_TIP                   XRHandTrackerHandJoint = 10
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_METACARPAL           XRHandTrackerHandJoint = 11
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_PHALANX_PROXIMAL     XRHandTrackerHandJoint = 12
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_PHALANX_INTERMEDIATE XRHandTrackerHandJoint = 13
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_PHALANX_DISTAL       XRHandTrackerHandJoint = 14
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MIDDLE_FINGER_TIP                  XRHandTrackerHandJoint = 15
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_METACARPAL             XRHandTrackerHandJoint = 16
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_PHALANX_PROXIMAL       XRHandTrackerHandJoint = 17
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_PHALANX_INTERMEDIATE   XRHandTrackerHandJoint = 18
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_PHALANX_DISTAL         XRHandTrackerHandJoint = 19
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_RING_FINGER_TIP                    XRHandTrackerHandJoint = 20
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_METACARPAL            XRHandTrackerHandJoint = 21
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_PHALANX_PROXIMAL      XRHandTrackerHandJoint = 22
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_PHALANX_INTERMEDIATE  XRHandTrackerHandJoint = 23
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_PHALANX_DISTAL        XRHandTrackerHandJoint = 24
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_PINKY_FINGER_TIP                   XRHandTrackerHandJoint = 25
+	XR_HAND_TRACKER_HAND_JOINT_HAND_JOINT_MAX                                XRHandTrackerHandJoint = 26
 )
 
 type XRHandTrackerHandJointFlags int
 
 const (
 	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_ORIENTATION_VALID      XRHandTrackerHandJointFlags = 1
-	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_ORIENTATION_TRACKED                                = 2
-	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_POSITION_VALID                                     = 4
-	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_POSITION_TRACKED                                   = 8
-	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_LINEAR_VELOCITY_VALID                              = 16
-	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_ANGULAR_VELOCITY_VALID                             = 32
+	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_ORIENTATION_TRACKED    XRHandTrackerHandJointFlags = 2
+	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_POSITION_VALID         XRHandTrackerHandJointFlags = 4
+	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_POSITION_TRACKED       XRHandTrackerHandJointFlags = 8
+	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_LINEAR_VELOCITY_VALID  XRHandTrackerHandJointFlags = 16
+	XR_HAND_TRACKER_HAND_JOINT_FLAGS_HAND_JOINT_FLAG_ANGULAR_VELOCITY_VALID XRHandTrackerHandJointFlags = 32
 )
 
 type XRInterfaceCapabilities int
 
 const (
 	XR_INTERFACE_CAPABILITIES_XR_NONE     XRInterfaceCapabilities = 0
-	XR_INTERFACE_CAPABILITIES_XR_MONO                             = 1
-	XR_INTERFACE_CAPABILITIES_XR_STEREO                           = 2
-	XR_INTERFACE_CAPABILITIES_XR_QUAD                             = 4
-	XR_INTERFACE_CAPABILITIES_XR_VR                               = 8
-	XR_INTERFACE_CAPABILITIES_XR_AR                               = 16
-	XR_INTERFACE_CAPABILITIES_XR_EXTERNAL                         = 32
+	XR_INTERFACE_CAPABILITIES_XR_MONO     XRInterfaceCapabilities = 1
+	XR_INTERFACE_CAPABILITIES_XR_STEREO   XRInterfaceCapabilities = 2
+	XR_INTERFACE_CAPABILITIES_XR_QUAD     XRInterfaceCapabilities = 4
+	XR_INTERFACE_CAPABILITIES_XR_VR       XRInterfaceCapabilities = 8
+	XR_INTERFACE_CAPABILITIES_XR_AR       XRInterfaceCapabilities = 16
+	XR_INTERFACE_CAPABILITIES_XR_EXTERNAL XRInterfaceCapabilities = 32
 )
 
 type XRInterfaceTrackingStatus int
 
 const (
 	XR_INTERFACE_TRACKING_STATUS_XR_NORMAL_TRACKING       XRInterfaceTrackingStatus = 0
-	XR_INTERFACE_TRACKING_STATUS_XR_EXCESSIVE_MOTION                                = 1
-	XR_INTERFACE_TRACKING_STATUS_XR_INSUFFICIENT_FEATURES                           = 2
-	XR_INTERFACE_TRACKING_STATUS_XR_UNKNOWN_TRACKING                                = 3
-	XR_INTERFACE_TRACKING_STATUS_XR_NOT_TRACKING                                    = 4
+	XR_INTERFACE_TRACKING_STATUS_XR_EXCESSIVE_MOTION      XRInterfaceTrackingStatus = 1
+	XR_INTERFACE_TRACKING_STATUS_XR_INSUFFICIENT_FEATURES XRInterfaceTrackingStatus = 2
+	XR_INTERFACE_TRACKING_STATUS_XR_UNKNOWN_TRACKING      XRInterfaceTrackingStatus = 3
+	XR_INTERFACE_TRACKING_STATUS_XR_NOT_TRACKING          XRInterfaceTrackingStatus = 4
 )
 
 type XRInterfacePlayAreaMode int
 
 const (
 	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_UNKNOWN   XRInterfacePlayAreaMode = 0
-	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_3_DOF                             = 1
-	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_SITTING                           = 2
-	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_ROOMSCALE                         = 3
-	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_STAGE                             = 4
+	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_3_DOF     XRInterfacePlayAreaMode = 1
+	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_SITTING   XRInterfacePlayAreaMode = 2
+	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_ROOMSCALE XRInterfacePlayAreaMode = 3
+	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_STAGE     XRInterfacePlayAreaMode = 4
+	XR_INTERFACE_PLAY_AREA_MODE_XR_PLAY_AREA_CUSTOM    XRInterfacePlayAreaMode = 2147483647
 )
 
 type XRInterfaceEnvironmentBlendMode int
 
 const (
 	XR_INTERFACE_ENVIRONMENT_BLEND_MODE_XR_ENV_BLEND_MODE_OPAQUE      XRInterfaceEnvironmentBlendMode = 0
-	XR_INTERFACE_ENVIRONMENT_BLEND_MODE_XR_ENV_BLEND_MODE_ADDITIVE                                    = 1
-	XR_INTERFACE_ENVIRONMENT_BLEND_MODE_XR_ENV_BLEND_MODE_ALPHA_BLEND                                 = 2
+	XR_INTERFACE_ENVIRONMENT_BLEND_MODE_XR_ENV_BLEND_MODE_ADDITIVE    XRInterfaceEnvironmentBlendMode = 1
+	XR_INTERFACE_ENVIRONMENT_BLEND_MODE_XR_ENV_BLEND_MODE_ALPHA_BLEND XRInterfaceEnvironmentBlendMode = 2
+)
+
+type XRInterfaceVRSTextureFormat int
+
+const (
+	XR_INTERFACE_VRS_TEXTURE_FORMAT_XR_VRS_TEXTURE_FORMAT_UNIFIED               XRInterfaceVRSTextureFormat = 0
+	XR_INTERFACE_VRS_TEXTURE_FORMAT_XR_VRS_TEXTURE_FORMAT_FRAGMENT_SHADING_RATE XRInterfaceVRSTextureFormat = 1
+	XR_INTERFACE_VRS_TEXTURE_FORMAT_XR_VRS_TEXTURE_FORMAT_FRAGMENT_DENSITY_MAP  XRInterfaceVRSTextureFormat = 2
 )
 
 type XRPoseTrackingConfidence int
 
 const (
 	XR_POSE_TRACKING_CONFIDENCE_XR_TRACKING_CONFIDENCE_NONE XRPoseTrackingConfidence = 0
-	XR_POSE_TRACKING_CONFIDENCE_XR_TRACKING_CONFIDENCE_LOW                           = 1
-	XR_POSE_TRACKING_CONFIDENCE_XR_TRACKING_CONFIDENCE_HIGH                          = 2
+	XR_POSE_TRACKING_CONFIDENCE_XR_TRACKING_CONFIDENCE_LOW  XRPoseTrackingConfidence = 1
+	XR_POSE_TRACKING_CONFIDENCE_XR_TRACKING_CONFIDENCE_HIGH XRPoseTrackingConfidence = 2
 )
 
 type XRPositionalTrackerTrackerHand int
 
 const (
 	XR_POSITIONAL_TRACKER_TRACKER_HAND_TRACKER_HAND_UNKNOWN XRPositionalTrackerTrackerHand = 0
-	XR_POSITIONAL_TRACKER_TRACKER_HAND_TRACKER_HAND_LEFT                                   = 1
-	XR_POSITIONAL_TRACKER_TRACKER_HAND_TRACKER_HAND_RIGHT                                  = 2
-	XR_POSITIONAL_TRACKER_TRACKER_HAND_TRACKER_HAND_MAX                                    = 3
+	XR_POSITIONAL_TRACKER_TRACKER_HAND_TRACKER_HAND_LEFT    XRPositionalTrackerTrackerHand = 1
+	XR_POSITIONAL_TRACKER_TRACKER_HAND_TRACKER_HAND_RIGHT   XRPositionalTrackerTrackerHand = 2
+	XR_POSITIONAL_TRACKER_TRACKER_HAND_TRACKER_HAND_MAX     XRPositionalTrackerTrackerHand = 3
 )
 
 type XRServerTrackerType int
 
 const (
 	XR_SERVER_TRACKER_TYPE_TRACKER_HEAD        XRServerTrackerType = 1
-	XR_SERVER_TRACKER_TYPE_TRACKER_CONTROLLER                      = 2
-	XR_SERVER_TRACKER_TYPE_TRACKER_BASESTATION                     = 4
-	XR_SERVER_TRACKER_TYPE_TRACKER_ANCHOR                          = 8
-	XR_SERVER_TRACKER_TYPE_TRACKER_HAND                            = 16
-	XR_SERVER_TRACKER_TYPE_TRACKER_BODY                            = 32
-	XR_SERVER_TRACKER_TYPE_TRACKER_FACE                            = 64
-	XR_SERVER_TRACKER_TYPE_TRACKER_ANY_KNOWN                       = 127
-	XR_SERVER_TRACKER_TYPE_TRACKER_UNKNOWN                         = 128
-	XR_SERVER_TRACKER_TYPE_TRACKER_ANY                             = 255
+	XR_SERVER_TRACKER_TYPE_TRACKER_CONTROLLER  XRServerTrackerType = 2
+	XR_SERVER_TRACKER_TYPE_TRACKER_BASESTATION XRServerTrackerType = 4
+	XR_SERVER_TRACKER_TYPE_TRACKER_ANCHOR      XRServerTrackerType = 8
+	XR_SERVER_TRACKER_TYPE_TRACKER_HAND        XRServerTrackerType = 16
+	XR_SERVER_TRACKER_TYPE_TRACKER_BODY        XRServerTrackerType = 32
+	XR_SERVER_TRACKER_TYPE_TRACKER_FACE        XRServerTrackerType = 64
+	XR_SERVER_TRACKER_TYPE_TRACKER_ANY_KNOWN   XRServerTrackerType = 127
+	XR_SERVER_TRACKER_TYPE_TRACKER_UNKNOWN     XRServerTrackerType = 128
+	XR_SERVER_TRACKER_TYPE_TRACKER_ANY         XRServerTrackerType = 255
 )
 
 type XRServerRotationMode int
 
 const (
 	XR_SERVER_ROTATION_MODE_RESET_FULL_ROTATION XRServerRotationMode = 0
-	XR_SERVER_ROTATION_MODE_RESET_BUT_KEEP_TILT                      = 1
-	XR_SERVER_ROTATION_MODE_DONT_RESET_ROTATION                      = 2
+	XR_SERVER_ROTATION_MODE_RESET_BUT_KEEP_TILT XRServerRotationMode = 1
+	XR_SERVER_ROTATION_MODE_DONT_RESET_ROTATION XRServerRotationMode = 2
 )
 
 type ZIPPackerZipAppend int
 
 const (
 	ZIP_PACKER_ZIP_APPEND_APPEND_CREATE      ZIPPackerZipAppend = 0
-	ZIP_PACKER_ZIP_APPEND_APPEND_CREATEAFTER                    = 1
-	ZIP_PACKER_ZIP_APPEND_APPEND_ADDINZIP                       = 2
+	ZIP_PACKER_ZIP_APPEND_APPEND_CREATEAFTER ZIPPackerZipAppend = 1
+	ZIP_PACKER_ZIP_APPEND_APPEND_ADDINZIP    ZIPPackerZipAppend = 2
+)
+
+type ZIPPackerCompressionLevel int
+
+const (
+	ZIP_PACKER_COMPRESSION_LEVEL_COMPRESSION_DEFAULT ZIPPackerCompressionLevel = -1
+	ZIP_PACKER_COMPRESSION_LEVEL_COMPRESSION_NONE    ZIPPackerCompressionLevel = 0
+	ZIP_PACKER_COMPRESSION_LEVEL_COMPRESSION_FAST    ZIPPackerCompressionLevel = 1
+	ZIP_PACKER_COMPRESSION_LEVEL_COMPRESSION_BEST    ZIPPackerCompressionLevel = 9
 )

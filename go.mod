@@ -1,6 +1,6 @@
 module github.com/godot-go/godot-go
 
-go 1.21.4
+go 1.25.0
 
 require (
 	github.com/pkg/errors v0.9.1 // indirect

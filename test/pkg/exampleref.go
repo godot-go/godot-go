@@ -9,7 +9,7 @@ import (
 )
 
 // ExampleRef implements GDClass evidence
-var _ RefCounted = new(ExampleRef)
+var _ RefCounted = (*ExampleRef)(nil)
 
 type ExampleRef struct {
 	RefCountedImpl
@@ -39,7 +39,7 @@ func NewExampleRefFromOwnerObject(owner *GodotObject) GDClass {
 }
 
 func RegisterClassExampleRef() {
-	ClassDBRegisterClass(&ExampleRef{}, NewExampleRefFromOwnerObject, []GDExtensionPropertyInfo{}, nil, func(t GDClass) {
+	ClassDBRegisterClass(NewExampleRefFromOwnerObject, []GDExtensionPropertyInfo{}, nil, func(t *ExampleRef) {
 		ClassDBBindMethod(t, "GetId", "get_id", nil, nil)
 		ClassDBBindMethod(t, "SetId", "set_id", []string{"id"}, nil)
 		ClassDBAddProperty(t, GDEXTENSION_VARIANT_TYPE_INT, "group_subgroup_id", "set_id", "get_id")

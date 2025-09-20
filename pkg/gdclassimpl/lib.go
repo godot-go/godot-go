@@ -1,6 +1,7 @@
 package gdclassimpl
 
 import (
+	"runtime"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -8,6 +9,7 @@ import (
 
 var (
 	nullptr = unsafe.Pointer(nil)
+	pnr     runtime.Pinner
 )
 
 func (cx *ObjectImpl) ToGoString() string {

@@ -188,6 +188,7 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 			}
 			obj := arg.ToObject()
 			gdsClass := obj.GetClass()
+			defer gdsClass.Destroy()
 			className := gdsClass.ToUtf8()
 			log.Debug("found object arg",
 				zap.String("class", obj.GetClassName()),
@@ -561,16 +562,37 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 			inst := v.Interface()
 			switch inst.(type) {
 			case Vector4:
-				v := NewVector4WithGDExtensionConstTypePtr((GDExtensionConstTypePtr)(arg))
+				pV := (*Vector4)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector4WithVector4(*pV)
 				args[i+1] = reflect.ValueOf(v)
 			case Vector2:
-				v := NewVector2WithGDExtensionConstTypePtr((GDExtensionConstTypePtr)(arg))
+				pV := (*Vector2)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector2WithVector2(*pV)
 				args[i+1] = reflect.ValueOf(v)
 			case Variant:
 				v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
 			case PackedInt64Array:
-				v := NewPackedInt64ArrayWithGDExtensionConstTypePtr((GDExtensionConstTypePtr)(arg))
+				pV := (*PackedInt64Array)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPackedInt64ArrayWithPackedInt64Array(*pV)
 				log.Debug("reflect PackedInt64Array", zap.Any("v", Stringify(NewVariantPackedInt64Array(v))))
 				args[i+1] = reflect.ValueOf(v)
 			default:
@@ -581,10 +603,24 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 			inst := v.Interface()
 			switch inst.(type) {
 			case Vector4:
-				v := NewVector4WithGDExtensionConstTypePtr((GDExtensionConstTypePtr)(arg))
+				pV := (*Vector4)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector4WithVector4(*pV)
 				args[i+1] = reflect.ValueOf(v)
 			case Vector2:
-				v := NewVector2WithGDExtensionConstTypePtr((GDExtensionConstTypePtr)(arg))
+				pV := (*Vector2)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector2WithVector2(*pV)
 				args[i+1] = reflect.ValueOf(v)
 			case Variant:
 				v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(arg))
@@ -661,7 +697,6 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				owner := (**GodotObject)(arg)
 				obj := constructor(*owner)
 				args[i+1] = reflect.ValueOf(obj)
-				break
 			default:
 				log.Panic("unsupported pointer type",
 					zap.Int("arg_index", i),
@@ -679,7 +714,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 }
 
 func validateReturnValues(reflectedRet []reflect.Value, returnStyle ReturnStyle, expectedReturnType reflect.Type) error {
-	log.Info("validateReturnValues called",
+	log.Debug("validateReturnValues called",
 		zap.Any("return_style", returnStyle),
 		zap.Any("expected_return_type", expectedReturnType),
 	)

@@ -9,7 +9,7 @@ import (
 )
 
 type WrappedImpl struct {
-	// Must be public but you should not touch this.
+	// Owner must be public but do not directly modify.
 	Owner *GodotObject
 }
 
@@ -78,11 +78,14 @@ func ObjectCastTo(obj Object, className string) Object {
 		)
 		return nil
 	}
+	cbsPtr := &cbs
+	pnr.Pin(casted)
+	pnr.Pin(cbsPtr)
 	// TODO: validate this is working as expected
 	inst := CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
 		casted,
 		FFI.Token,
-		&cbs)
+		cbsPtr)
 	wci := (*WrappedClassInstance)(inst)
 	wrapperClassName := wci.Instance.GetClassName()
 	gdStrClassName := wci.Instance.GetClass()

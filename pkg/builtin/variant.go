@@ -4,11 +4,13 @@ package builtin
 import "C"
 import (
 	"fmt"
+	"runtime"
 	"strings"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/ffi"
 	"github.com/godot-go/godot-go/pkg/log"
+	"github.com/godot-go/godot-go/pkg/util"
 	"go.uber.org/zap"
 )
 
@@ -24,7 +26,6 @@ func VariantInitBindings() {
 		variantFromTypeConstructor[i] = CallFunc_GDExtensionInterfaceGetVariantFromTypeConstructor(i)
 		typeFromVariantConstructor[i] = CallFunc_GDExtensionInterfaceGetVariantToTypeConstructor(i)
 	}
-
 	initPrimativeTypeEncoders()
 	initBuiltinClassEncoders()
 	builtinClassesInitBindings()
@@ -32,7 +33,9 @@ func VariantInitBindings() {
 
 func NewVariantNativeCopy(NativeConstPtr GDExtensionConstVariantPtr) Variant {
 	ret := Variant{}
-	CallFunc_GDExtensionInterfaceVariantNewCopy((GDExtensionUninitializedVariantPtr)(ret.NativePtr()), NativeConstPtr)
+	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
+	pnr.Pin(ptr)
+	CallFunc_GDExtensionInterfaceVariantNewCopy(ptr, NativeConstPtr)
 	return ret
 }
 
@@ -43,19 +46,21 @@ func NewVariantCopy(dst, src Variant) {
 func NewVariantNil() Variant {
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
+	pnr.Pin(ptr)
 	GDExtensionVariantPtrWithNil(ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrWithNil(rOut GDExtensionUninitializedVariantPtr) {
+	pnr.Pin(rOut)
 	CallFunc_GDExtensionInterfaceVariantNewNil(rOut)
 }
 
 func NewVariantCopyWithGDExtensionConstVariantPtr(ptr GDExtensionConstVariantPtr) Variant {
 	ret := Variant{}
 	typedSrc := (*[VariantSize]uint8)(ptr)
-
-	for i := 0; i < VariantSize; i++ {
+	pnr.Pin(ptr)
+	for i := range VariantSize {
 		ret[i] = typedSrc[i]
 	}
 	return ret
@@ -63,16 +68,22 @@ func NewVariantCopyWithGDExtensionConstVariantPtr(ptr GDExtensionConstVariantPtr
 
 func NewVariantGodotObject(owner *GodotObject) Variant {
 	ret := Variant{}
-	GDExtensionVariantPtrFromGodotObjectPtr(owner, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
+	pnr.Pin(ptr)
+	pnr.Pin(owner)
+	GDExtensionVariantPtrFromGodotObjectPtr(owner, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromGodotObjectPtr(owner *GodotObject, rOut GDExtensionUninitializedVariantPtr) {
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_OBJECT]
+	pnr.Pin(rOut)
+	ownerPtr := unsafe.Pointer(&owner)
+	pnr.Pin(ownerPtr)
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 		(GDExtensionVariantFromTypeConstructorFunc)(fn),
 		rOut,
-		(GDExtensionTypePtr)(unsafe.Pointer(&owner)),
+		(GDExtensionTypePtr)(ownerPtr),
 	)
 }
 
@@ -82,20 +93,89 @@ func (c *Variant) ToObject() Object {
 	}
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_OBJECT]
 	var engineObject *GodotObject
+	engineObjectPtr := &engineObject
+	pnr.Pin(engineObjectPtr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
-		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(&engineObject)),
+		(GDExtensionUninitializedTypePtr)(engineObjectPtr),
 		c.NativePtr(),
 	)
-	ret := GetObjectInstanceBinding(engineObject)
+	ret := getObjectInstanceBinding(engineObject)
 	return ret
+}
+
+func getObjectInstanceBinding(engineObject *GodotObject) Object {
+	if engineObject == nil {
+		return nil
+	}
+	// Get existing instance binding, if one already exists.
+	instPtr := (*Object)(CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
+		(GDExtensionObjectPtr)(engineObject),
+		FFI.Token,
+		nil))
+	if instPtr != nil && *instPtr != nil {
+		return *instPtr
+	}
+	snClassName := StringName{}
+	snClassNamePtr := snClassName.NativePtr()
+	pnr.Pin(snClassNamePtr)
+	cok := CallFunc_GDExtensionInterfaceObjectGetClassName(
+		(GDExtensionConstObjectPtr)(engineObject),
+		FFI.Library,
+		(GDExtensionUninitializedStringNamePtr)(snClassNamePtr),
+	)
+	if cok == 0 {
+		log.Panic("failed to get class name",
+			zap.Any("owner", engineObject),
+		)
+	}
+	pnr.Pin(snClassNamePtr)
+	// defer snClassName.Destroy()
+	className := snClassName.ToUtf8()
+	// const GDExtensionInstanceBindingCallbacks *binding_callbacks = nullptr;
+	// Otherwise, try to look up the correct binding callbacks.
+	cbs, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
+	if !ok {
+		log.Warn("unable to find callbacks for Object")
+		return nil
+	}
+	cbsPtr := &cbs
+	pnr.Pin(cbsPtr)
+	pnr.Pin(engineObject)
+	pnr.Pin(FFI.Token)
+
+	util.CgoTestCall(unsafe.Pointer(cbsPtr))
+	util.CgoTestCall(unsafe.Pointer(engineObject))
+	util.CgoTestCall(FFI.Token)
+	instPtr = (*Object)(CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
+		(GDExtensionObjectPtr)(engineObject),
+		FFI.Token,
+		cbsPtr))
+	runtime.KeepAlive(engineObject)
+	runtime.KeepAlive(FFI.Token)
+	runtime.KeepAlive(cbsPtr)
+	if instPtr == nil || *instPtr == nil {
+		log.Panic("unable to get instance")
+		return nil
+	}
+	pnr.Pin(instPtr)
+	wrapperClassName := (*instPtr).GetClassName()
+	gdStrClassName := (*instPtr).GetClass()
+	defer gdStrClassName.Destroy()
+	log.Info("GetObjectInstanceBinding casted",
+		zap.String("class", gdStrClassName.ToUtf8()),
+		zap.String("className", wrapperClassName),
+	)
+	return *instPtr
 }
 
 func NewVariantGoString(v string) Variant {
 	gdStr := NewStringWithUtf8Chars(v)
 	defer gdStr.Destroy()
 	ret := Variant{}
-	GDExtensionVariantPtrFromString(gdStr, (GDExtensionUninitializedVariantPtr)(ret.NativePtr()))
+	ptr := ret.NativePtr()
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromString(gdStr, (GDExtensionUninitializedVariantPtr)(ptr))
 	return ret
 }
 
@@ -205,7 +285,6 @@ func (c *Variant) CallStatic(
 	sn := NewStringNameWithLatin1Chars(method)
 	defer sn.Destroy()
 	callArgs = (*GDExtensionConstVariantPtr)(unsafe.Pointer(unsafe.SliceData(args)))
-
 	callArgCount := len(args)
 	var err GDExtensionCallError
 	CallFunc_GDExtensionInterfaceVariantCallStatic(
@@ -375,21 +454,21 @@ func ZapVariant(key string, v Variant) zap.Field {
 
 func ZapVector2(key string, v Vector2) zap.Field {
 	variant := NewVariantVector2(v)
-	defer variant.Destroy()
+	// defer variant.Destroy()
 	value := variant.Stringify()
 	return zap.String(key, value)
 }
 
 func ZapVector3(key string, v Vector3) zap.Field {
 	variant := NewVariantVector3(v)
-	defer variant.Destroy()
+	// defer variant.Destroy()
 	value := variant.Stringify()
 	return zap.String(key, value)
 }
 
 func ZapVector4(key string, v Vector4) zap.Field {
 	variant := NewVariantVector4(v)
-	defer variant.Destroy()
+	// defer variant.Destroy()
 	value := variant.Stringify()
 	return zap.String(key, value)
 }

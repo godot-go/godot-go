@@ -111,6 +111,7 @@ func GenerateGDExtensionWrapperGoFile(projectPath string, ast clang.CHeaderFileA
 		"add":                add,
 		"cgoCastArgument":    cgoCastArgument,
 		"cgoCastReturnType":  cgoCastReturnType,
+		"cgoPinReturnType":   cgoPinReturnType,
 		"cgoCleanUpArgument": cgoCleanUpArgument,
 	}
 

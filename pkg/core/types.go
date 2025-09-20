@@ -10,19 +10,21 @@ import (
 )
 
 // PropertySetGet holds metadata of the getter and setting functions of a Godot property.
-type PropertySetGet struct {
-	Index   int
-	Setter  string
-	Getter  string
-	_setptr *MethodBindImpl
-	_getptr *MethodBindImpl
-	Type    GDExtensionVariantType
-}
+// type PropertySetGet struct {
+// 	Index   int
+// 	Setter  string
+// 	Getter  string
+// 	_setptr *GoMethodMetadata
+// 	_getptr *GoMethodMetadata
+// 	Type    GDExtensionVariantType
+// }
 
 type MethodBindAndClassMethodInfo struct {
-	MethodBind      *MethodBindImpl
-	ClassMethodInfo *GDExtensionClassMethodInfo
+	GoMethodMetadata *GoMethodMetadata
+	ClassMethodInfo  *GDExtensionClassMethodInfo
 }
+
+type StringSet map[string]struct{}
 
 type ClassInfo struct {
 	Name                      string
@@ -31,10 +33,10 @@ type ClassInfo struct {
 	ParentNameAsStringNamePtr GDExtensionConstStringNamePtr
 	Level                     GDExtensionInitializationLevel
 	MethodMap                 map[string]*MethodBindAndClassMethodInfo
-	SignalNameMap             map[string]struct{}
 	VirtualMethodMap          map[string]*MethodBindAndClassMethodInfo
-	PropertyNameMap           map[string]struct{}
-	ConstantNameMap           map[string]struct{}
+	SignalNameSet             StringSet
+	PropertyNameSet           StringSet
+	ConstantNameSet           StringSet
 	ParentPtr                 *ClassInfo
 	ClassType                 reflect.Type
 	InheritType               reflect.Type
@@ -62,13 +64,13 @@ func (c *ClassInfo) Destroy() {
 		parentName.Destroy()
 	}
 
-	for _, v := range c.VirtualMethodMap {
-		v.ClassMethodInfo.Destroy()
-	}
+	// for _, v := range c.VirtualMethodMap {
+	// 	v.ClassMethodInfo.Destroy()
+	// }
 
-	for _, v := range c.MethodMap {
-		v.ClassMethodInfo.Destroy()
-	}
+	// for _, v := range c.MethodMap {
+	// 	v.ClassMethodInfo.Destroy()
+	// }
 }
 
 func NewClassInfo(
@@ -79,22 +81,25 @@ func NewClassInfo(
 	propertyList []GDExtensionPropertyInfo,
 	validateProperty func(*GDExtensionPropertyInfo),
 ) *ClassInfo {
-	return &ClassInfo{
+	nameStringName := NewStringNameWithLatin1Chars(name)
+	ret := &ClassInfo{
 		Name:                name,
-		NameAsStringNamePtr: NewStringNameWithLatin1Chars(name).AsGDExtensionConstStringNamePtr(),
+		NameAsStringNamePtr: nameStringName.AsGDExtensionConstStringNamePtr(),
 		ParentName:          parentName,
 		Level:               level,
 		MethodMap:           map[string]*MethodBindAndClassMethodInfo{},
-		SignalNameMap:       map[string]struct{}{},
+		SignalNameSet:       map[string]struct{}{},
 		VirtualMethodMap:    map[string]*MethodBindAndClassMethodInfo{},
-		PropertyNameMap:     map[string]struct{}{},
-		ConstantNameMap:     map[string]struct{}{},
+		PropertyNameSet:     map[string]struct{}{},
+		ConstantNameSet:     map[string]struct{}{},
 		ParentPtr:           parentPtr,
 		ClassType:           classType,
 		InheritType:         inheritType,
 		PropertyList:        propertyList,
 		ValidateProperty:    validateProperty,
 	}
+	pnr.Pin(ret)
+	return ret
 }
 
 var (

@@ -26,7 +26,7 @@ void cgo_classcreationinfo_tostring(GDExtensionClassInstancePtr p_instance, GDEx
 
 // cgo_classcreationinfo_getvirtualcallwithdata should match GDExtensionClassGetVirtualCallData
 // callback when godot wants to get the virtual function call
-void* cgo_classcreationinfo_getvirtualcallwithdata(void *p_userdata, GDExtensionConstStringNamePtr p_name);
+void* cgo_classcreationinfo_getvirtualcallwithdata2(void *p_userdata, GDExtensionConstStringNamePtr p_name, uint32_t p_hash);
 
 // cgo_classcreationinfo_callvirtualwithdata should match GDExtensionClassCallVirtualWithData
 // callback when godot wants to call a method in go marked as a virtual

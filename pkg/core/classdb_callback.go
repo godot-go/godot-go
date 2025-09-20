@@ -10,6 +10,7 @@ import "C"
 import (
 	"fmt"
 	"reflect"
+	"runtime/cgo"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -24,11 +25,14 @@ func GoCallback_ClassCreationInfoToString(
 	p_instance C.GDExtensionClassInstancePtr,
 	r_is_valid *C.GDExtensionBool,
 	p_out C.GDExtensionStringPtr) {
-	log.Debug("GoCallback_ClassCreationInfoToString",
-		zap.String("&p_instance", fmt.Sprintf("%p", p_instance)),
-		// zap.Reflect("p_instance", p_instance),
+	wci := cgo.Handle(p_instance).Value().(*WrappedClassInstance)
+	if wci == nil {
+		log.Panic("wci should not be null")
+	}
+	log.Info("GoCallback_ClassCreationInfoToString",
+		zap.String("class_name", wci.Instance.GetClassName()),
 	)
-	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(p_instance))
+	inst := wci.Instance
 	className := inst.GetClassName()
 	instanceId := inst.GetInstanceId()
 	value := fmt.Sprintf("[ GDExtension::%s <--> Instance ID:%d ]", className, instanceId)
@@ -39,33 +43,48 @@ func GoCallback_ClassCreationInfoToString(
 
 //export GoCallback_ClassCreationInfoGetVirtualCallWithData
 func GoCallback_ClassCreationInfoGetVirtualCallWithData(pUserdata unsafe.Pointer, pName C.GDExtensionConstStringNamePtr) unsafe.Pointer {
-	// name := C.GoString((*C.char)(pUserdata))
-	// snMethodName := (*StringName)(unsafe.Pointer(pName))
-	// sMethodName := snMethodName.AsString()
-	// methodName := (&sMethodName).ToUft8()
-	// log.Debug("GoCallback_ClassCreationInfoGetVirtualCallWithData called",
-	// 	zap.String("class_name_from_user_data", name),
-	// 	zap.String("method_name", methodName),
-	// )
+	name := C.GoString((*C.char)(pUserdata))
+	snMethodName := (*StringName)(pName)
+	sMethodName := snMethodName.AsString()
+	defer sMethodName.Destroy()
+	methodName := sMethodName.ToUtf8()
+	log.Info("GoCallback_ClassCreationInfoGetVirtualCallWithData called",
+		zap.String("class_name_from_user_data", name),
+		zap.String("method_name", methodName),
+	)
 	return pUserdata
 }
 
 //export GoCallback_ClassCreationInfoCallVirtualWithData
 func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClassInstancePtr, pName C.GDExtensionConstStringNamePtr, pUserdata unsafe.Pointer, p_args *C.GDExtensionConstTypePtr, rRet C.GDExtensionTypePtr) {
-	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(pInstance))
-	if inst == nil {
-		log.Panic("GDExtensionClassInstancePtr cannot be null")
+	// inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(pInstance))
+	// if inst == nil {
+	// 	log.Panic("GDExtensionClassInstancePtr cannot be null")
+	// }
+	wci := cgo.Handle(pInstance).Value().(*WrappedClassInstance)
+	if wci == nil {
+		log.Panic("wci should not be null")
 	}
+	inst := wci.Instance
 	className := inst.GetClassName()
-	snMethodName := (*StringName)(unsafe.Pointer(pName))
+	snMethodName := (*StringName)(pName)
 	sMethodName := snMethodName.AsString()
+	defer sMethodName.Destroy()
 	methodName := (&sMethodName).ToAscii()
-	userData := C.GoString((*C.char)(pUserdata))
-	log.Debug("GoCallback_ClassCreationInfoCallVirtualWithData called",
+	var userData string
+	if pUserdata != nil {
+		userData = C.GoString((*C.char)(pUserdata))
+	} else {
+		log.Warn("user data is nil")
+	}
+	log.Info("GoCallback_ClassCreationInfoCallVirtualWithData called",
 		zap.String("type", className),
 		zap.String("userData", userData),
 		zap.String("method", methodName),
 	)
+	if len(methodName) == 0 {
+		log.Panic("call virtual with data method was empty")
+	}
 	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
 	if !ok {
 		log.Warn("class not found", zap.String("className", className))
@@ -79,10 +98,10 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 		)
 		return
 	}
-	mb := m.MethodBind
+	mb := m.GoMethodMetadata
 	args := unsafe.Slice(
-		(*GDExtensionConstTypePtr)(unsafe.Pointer(p_args)),
-		len(mb.MethodMetadata.GoArgumentTypes),
+		(*GDExtensionConstTypePtr)(p_args),
+		len(mb.GoArgumentTypes),
 	)
 	mb.Ptrcall(
 		inst,
@@ -105,7 +124,9 @@ func GoCallback_ClassCreationInfoFreeInstance(data unsafe.Pointer, ptr C.GDExten
 	tn := C.GoString((*C.char)(data))
 	// ptr is assigned in function WrappedPostInitialize as a (*Wrapped)
 	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(ptr))
+	defer inst.Destroy()
 	goStr := inst.ToString()
+	defer goStr.Destroy()
 	log.Info("GoCallback_ClassCreationInfoFreeInstance called",
 		zap.String("type_name", tn),
 		zap.String("ptr", fmt.Sprintf("%p", ptr)),
@@ -122,13 +143,13 @@ func GoCallback_ClassCreationInfoFreeInstance(data unsafe.Pointer, ptr C.GDExten
 
 //export GoCallback_ClassCreationInfoGetPropertyList
 func GoCallback_ClassCreationInfoGetPropertyList(pInstance C.GDExtensionClassInstancePtr, rCount *C.uint32_t) *C.GDExtensionPropertyInfo {
-	wci := (*WrappedClassInstance)(unsafe.Pointer(pInstance))
+	wci := cgo.Handle(pInstance).Value().(*WrappedClassInstance)
 	if wci == nil {
 		*rCount = (C.uint32_t)(0)
 		return (*C.GDExtensionPropertyInfo)(nil)
 	}
-
 	gdStrClass := wci.Instance.GetClass()
+	defer gdStrClass.Destroy()
 	className := gdStrClass.ToUtf8()
 	log.Debug("GoCallback_ClassCreationInfoGetPropertyList called",
 		zap.String("class", className),
@@ -144,12 +165,24 @@ func GoCallback_ClassCreationInfoGetPropertyList(pInstance C.GDExtensionClassIns
 		return (*C.GDExtensionPropertyInfo)(nil)
 	}
 	*rCount = (C.uint32_t)(len(ci.PropertyList))
-	return (*C.GDExtensionPropertyInfo)(unsafe.Pointer(unsafe.SliceData(ci.PropertyList)))
+	ptr := unsafe.SliceData(ci.PropertyList)
+	pnr.Pin(ptr)
+	return (*C.GDExtensionPropertyInfo)(unsafe.Pointer(ptr))
 }
 
 //export GoCallback_ClassCreationInfoFreePropertyList2
 func GoCallback_ClassCreationInfoFreePropertyList2(pInstance C.GDExtensionClassInstancePtr, pList *C.GDExtensionPropertyInfo, pCount C.uint32_t) {
-
+	listSlice := unsafe.Slice(pList, pCount)
+	for i := range listSlice {
+		sn := (*StringName)(listSlice[i].class_name)
+		sn.Destroy()
+		n := (*StringName)(listSlice[i].name)
+		n.Destroy()
+		h := (*String)(listSlice[i].hint_string)
+		if h != nil {
+			h.Destroy()
+		}
+	}
 }
 
 //export GoCallback_ClassCreationInfoPropertyCanRevert
@@ -164,12 +197,12 @@ func GoCallback_ClassCreationInfoPropertyGetRevert(p_instance C.GDExtensionClass
 
 //export GoCallback_ClassCreationInfoValidateProperty
 func GoCallback_ClassCreationInfoValidateProperty(pInstance C.GDExtensionClassInstancePtr, pProperty *C.GDExtensionPropertyInfo) C.GDExtensionBool {
-	wci := (*WrappedClassInstance)(unsafe.Pointer(pInstance))
+	wci := cgo.Handle(pInstance).Value().(*WrappedClassInstance)
 	if wci == nil {
 		return 0
 	}
-
 	gdStrClass := wci.Instance.GetClass()
+	defer gdStrClass.Destroy()
 	className := gdStrClass.ToUtf8()
 	log.Debug("GoCallback_ClassCreationInfoValidateProperty called",
 		zap.String("class", className),
@@ -196,13 +229,14 @@ func GoCallback_ClassCreationInfoNotification(p_instance C.GDExtensionClassInsta
 
 //export GoCallback_ClassCreationInfoGet
 func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pName C.GDExtensionConstStringNamePtr, rRet C.GDExtensionVariantPtr) C.GDExtensionBool {
-	wci := (*WrappedClassInstance)(unsafe.Pointer(pInstance))
+	wci := cgo.Handle(pInstance).Value().(*WrappedClassInstance)
 	if wci == nil {
 		return 0
 	}
 	gdStrClass := wci.Instance.GetClass()
+	defer gdStrClass.Destroy()
 	className := gdStrClass.ToUtf8()
-	gdName := NewStringNameWithGDExtensionConstStringNamePtr((GDExtensionConstStringNamePtr)(pName))
+	gdName := (*StringName)(pName)
 	name := gdName.ToUtf8()
 	log.Debug("GoCallback_ClassCreationInfoGet called",
 		zap.String("class", className),
@@ -227,7 +261,7 @@ func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pN
 		reflect.ValueOf(wci.Instance),
 		reflect.ValueOf(name),
 	}
-	reflectedRet := mcmi.MethodBind.PtrcallFunc.Call(args)
+	reflectedRet := mcmi.GoMethodMetadata.Func.Call(args)
 	v, ok := reflectedRet[0].Interface().(Variant)
 	if !ok {
 		log.Panic("invalid return value: expected Variant",
@@ -250,13 +284,14 @@ func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pN
 
 //export GoCallback_ClassCreationInfoSet
 func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pName C.GDExtensionConstStringNamePtr, pValue C.GDExtensionConstVariantPtr) C.GDExtensionBool {
-	wci := (*WrappedClassInstance)(unsafe.Pointer(pInstance))
+	wci := cgo.Handle(pInstance).Value().(*WrappedClassInstance)
 	if wci == nil {
 		return 0
 	}
 	gdStrClass := wci.Instance.GetClass()
+	defer gdStrClass.Destroy()
 	className := gdStrClass.ToUtf8()
-	gdName := NewStringNameWithGDExtensionConstStringNamePtr((GDExtensionConstStringNamePtr)(pName))
+	gdName := (*StringName)(pName)
 	name := gdName.ToUtf8()
 	v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(pValue))
 	log.Info("GoCallback_ClassCreationInfoSet called",
@@ -282,7 +317,7 @@ func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pN
 		reflect.ValueOf(name),
 		reflect.ValueOf(v),
 	}
-	reflectedRet := mcmi.MethodBind.PtrcallFunc.Call(args)
+	reflectedRet := mcmi.GoMethodMetadata.Func.Call(args)
 	log.Info("reflect method called",
 		zap.String("ret", util.ReflectValueSliceToString(reflectedRet)),
 	)

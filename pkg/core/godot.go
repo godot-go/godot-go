@@ -34,7 +34,7 @@ func _GDExtensionBindingInit(
 	FFI.LoadProcAddresses(pGetProcAddress, pLibrary)
 
 	// Load the Godot version.
-	CallFunc_GDExtensionInterfaceGetGodotVersion(&FFI.GodotVersion)
+	CallFunc_GDExtensionInterfaceGetGodotVersion(FFI.GodotVersion)
 
 	log.Info("godot version",
 		zap.Int32("major", FFI.GodotVersion.GetMajor()),
@@ -48,7 +48,7 @@ func _GDExtensionBindingInit(
 
 	var hasInit bool
 
-	for i := GDExtensionInitializationLevel(0); i < GDEXTENSION_MAX_INITIALIZATION_LEVEL; i++ {
+	for i := range GDEXTENSION_MAX_INITIALIZATION_LEVEL {
 		if GDExtensionBindingInitCallbacks[i] != nil {
 			rInitialization.SetInitializationLevel(i)
 			hasInit = true
@@ -75,14 +75,11 @@ func GDExtensionBindingInitializeLevel(userdata unsafe.Pointer, pLevel C.GDExten
 		log.Debug("GDExtensionBindingInitializeLevel init", zap.Int32("level", (int32)(pLevel)))
 		fn()
 	}
-
-	classDBInitialize(classdbCurrentLevel)
 }
 
 //export GDExtensionBindingDeinitializeLevel
 func GDExtensionBindingDeinitializeLevel(userdata unsafe.Pointer, pLevel C.GDExtensionInitializationLevel) {
 	classdbCurrentLevel = (GDExtensionInitializationLevel)(pLevel)
-	classDBDeinitialize(classdbCurrentLevel)
 
 	if GDExtensionBindingTerminateCallbacks[pLevel] != nil {
 		GDExtensionBindingTerminateCallbacks[pLevel]()
@@ -136,9 +133,10 @@ func NewInitObject(
 	library GDExtensionClassLibraryPtr,
 	initialization *GDExtensionInitialization,
 ) *InitObject {
-	return &InitObject{
+	ret := &InitObject{
 		getProcAddress: getProcAddress,
 		library:        library,
 		initialization: initialization,
 	}
+	return ret
 }

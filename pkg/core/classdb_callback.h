@@ -32,8 +32,8 @@ void* cgo_classcreationinfo_getvirtualcallwithdata2(void *p_userdata, GDExtensio
 // callback when godot wants to call a method in go marked as a virtual
 void cgo_classcreationinfo_callvirtualwithdata(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, void *p_userdata, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 
-// cgo_classcreationinfo_createinstance signature should match GDExtensionClassCreateInstance
-GDExtensionObjectPtr cgo_classcreationinfo_createinstance(void *data);
+// cgo_classcreationinfo_createinstance signature should match GDExtensionClassCreateInstance2
+GDExtensionObjectPtr cgo_classcreationinfo_createinstance(void *data, GDExtensionBool p_notify_postinitialize);
 
 // cgo_classcreationinfo_freeinstance signature shuold match GDExtensionClassFreeInstance
 void cgo_classcreationinfo_freeinstance(void *data, GDExtensionClassInstancePtr ptr);

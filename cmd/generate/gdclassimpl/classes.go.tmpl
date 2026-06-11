@@ -122,6 +122,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	pnr.Pin(cArgs)
 	{{ range $j, $a := $m.Arguments -}}
 	v{{ $j }} := {{ (goVariantFunc $a.Type (goArgumentName $a.Name) $view.Classes) }}
+	defer v{{ $j }}.Destroy()
 	argPtrSlice[{{ $j }}] = v{{ $j }}.NativeConstPtr()
 	pnr.Pin(argPtrSlice[{{ $j }}])
 	{{ end -}}

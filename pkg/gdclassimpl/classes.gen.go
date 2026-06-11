@@ -79577,9 +79577,11 @@ func (cx *ClassDBImpl) ClassCallStatic(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(class)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(method)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	for i := range varargs {
@@ -135691,9 +135693,11 @@ func (cx *EditorUndoRedoManagerImpl) AddDoMethod(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantGodotObject(object.GetGodotObjectOwner())
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(method)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	for i := range varargs {
@@ -135738,9 +135742,11 @@ func (cx *EditorUndoRedoManagerImpl) AddUndoMethod(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantGodotObject(object.GetGodotObjectOwner())
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(method)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	for i := range varargs {
@@ -208306,6 +208312,7 @@ func (cx *JavaScriptBridgeImpl) CreateObject(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantString(object)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -273920,6 +273927,7 @@ func (cx *NodeImpl) Rpc(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -273968,9 +273976,11 @@ func (cx *NodeImpl) RpcId(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantInt64(int64(peer_id))
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(method)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	for i := range varargs {
@@ -274048,6 +274058,7 @@ func (cx *NodeImpl) CallDeferredThreadGroup(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -274166,6 +274177,7 @@ func (cx *NodeImpl) CallThreadSafe(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -283404,6 +283416,7 @@ func (cx *ObjectImpl) EmitSignal(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(signal)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -283451,6 +283464,7 @@ func (cx *ObjectImpl) Call(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -283498,6 +283512,7 @@ func (cx *ObjectImpl) CallDeferred(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -396748,12 +396763,15 @@ func (cx *SceneTreeImpl) CallGroupFlags(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantInt64(int64(flags))
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(group)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	v2 := NewVariantStringName(method)
+	defer v2.Destroy()
 	argPtrSlice[2] = v2.NativeConstPtr()
 	pnr.Pin(argPtrSlice[2])
 	for i := range varargs {
@@ -396881,9 +396899,11 @@ func (cx *SceneTreeImpl) CallGroup(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(group)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(method)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	for i := range varargs {
@@ -492162,6 +492182,7 @@ func (cx *TreeItemImpl) CallRecursive(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {

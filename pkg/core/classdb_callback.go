@@ -1,5 +1,27 @@
 package core
 
+/*
+Godot-Owned StringName Pointer Safety
+
+Several callback functions in this file receive `GDExtensionConstStringNamePtr`
+parameters from Godot (e.g., pName in Get/Set/ValidateProperty callbacks).
+These pointers reference StringName objects owned and managed by Godot's internal
+refcounted interned hash table.
+
+CRITICAL RULE: NEVER call .Destroy() on these Godot-owned StringName pointers.
+Doing so would decrement Godot's internal refcount, potentially corrupting the
+shared StringName table and causing use-after-free or double-free errors.
+
+Safe operations on Godot-owned StringName pointers:
+  - Casting to *StringName and calling read-only methods (AsString(), ToUtf8(), etc.)
+  - Passing to Godot API functions that expect GDExtensionConstStringNamePtr
+
+The result of .AsString() returns a NEW String object that IS owned by the caller
+and should be destroyed with defer when done.
+
+See: Task 5.4 in fix-orphan-stringname change.
+*/
+
 // #include <godot/gdextension_interface.h>
 // #include "classdb_callback.h"
 // #include "method_bind.h"
@@ -44,6 +66,7 @@ func GoCallback_ClassCreationInfoToString(
 //export GoCallback_ClassCreationInfoGetVirtualCallWithData
 func GoCallback_ClassCreationInfoGetVirtualCallWithData(pUserdata unsafe.Pointer, pName C.GDExtensionConstStringNamePtr) unsafe.Pointer {
 	name := C.GoString((*C.char)(pUserdata))
+	// pName is Godot-owned — safe to read via AsString(), NEVER Destroy() pName itself
 	snMethodName := (*StringName)(pName)
 	sMethodName := snMethodName.AsString()
 	defer sMethodName.Destroy()
@@ -67,6 +90,7 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 	}
 	inst := wci.Instance
 	className := inst.GetClassName()
+	// pName is Godot-owned — safe to read via AsString(), NEVER Destroy() pName itself
 	snMethodName := (*StringName)(pName)
 	sMethodName := snMethodName.AsString()
 	defer sMethodName.Destroy()
@@ -113,7 +137,7 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 // GoCallback_ClassCreationInfoCreateInstance is registered as a callback when a new GDScript instance is created.
 //
 //export GoCallback_ClassCreationInfoCreateInstance
-func GoCallback_ClassCreationInfoCreateInstance(data unsafe.Pointer) C.GDExtensionObjectPtr {
+func GoCallback_ClassCreationInfoCreateInstance(data unsafe.Pointer, p_notify_postinitialize C.GDExtensionBool) C.GDExtensionObjectPtr {
 	tn := C.GoString((*C.char)(data))
 	inst := CreateGDClassInstance(tn)
 	return (C.GDExtensionObjectPtr)(unsafe.Pointer(inst.GetGodotObjectOwner()))
@@ -172,16 +196,22 @@ func GoCallback_ClassCreationInfoGetPropertyList(pInstance C.GDExtensionClassIns
 
 //export GoCallback_ClassCreationInfoFreePropertyList2
 func GoCallback_ClassCreationInfoFreePropertyList2(pInstance C.GDExtensionClassInstancePtr, pList *C.GDExtensionPropertyInfo, pCount C.uint32_t) {
+	wci := cgo.Handle(pInstance).Value().(*WrappedClassInstance)
+	if wci == nil {
+		return
+	}
+	gdStrClass := wci.Instance.GetClass()
+	defer gdStrClass.Destroy()
+	className := gdStrClass.ToUtf8()
+	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
+	if !ok {
+		return
+	}
+	ci.PropertyList = nil
 	listSlice := unsafe.Slice(pList, pCount)
 	for i := range listSlice {
-		sn := (*StringName)(listSlice[i].class_name)
-		sn.Destroy()
-		n := (*StringName)(listSlice[i].name)
-		n.Destroy()
-		h := (*String)(listSlice[i].hint_string)
-		if h != nil {
-			h.Destroy()
-		}
+		cp := (*GDExtensionPropertyInfo)(unsafe.Pointer(&listSlice[i]))
+		cp.Destroy()
 	}
 }
 
@@ -236,6 +266,7 @@ func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pN
 	gdStrClass := wci.Instance.GetClass()
 	defer gdStrClass.Destroy()
 	className := gdStrClass.ToUtf8()
+	// pName is Godot-owned — safe to read via ToUtf8(), NEVER Destroy() pName itself
 	gdName := (*StringName)(pName)
 	name := gdName.ToUtf8()
 	log.Debug("GoCallback_ClassCreationInfoGet called",
@@ -291,6 +322,7 @@ func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pN
 	gdStrClass := wci.Instance.GetClass()
 	defer gdStrClass.Destroy()
 	className := gdStrClass.ToUtf8()
+	// pName is Godot-owned — safe to read via ToUtf8(), NEVER Destroy() pName itself
 	gdName := (*StringName)(pName)
 	name := gdName.ToUtf8()
 	v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(pValue))

@@ -51,6 +51,10 @@ func (r *{{ $refStructName }}) Unref() {
 	rg.Unref()
 }
 
+func (r *{{ $refStructName }}) Clone() Ref {
+	return (*RefCountedRef[{{ $c.Name }}])(r).Clone()
+}
+
 func (r *{{ $refStructName }}) IsValid() bool {
 	return r != nil && r.Reference != nil
 }

@@ -15,6 +15,8 @@ extern void GoCallback_ClassCreationInfoCallVirtualWithData(GDExtensionClassInst
 extern GDExtensionBool GoCallback_ClassCreationInfoGet(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
 extern GDExtensionBool GoCallback_ClassCreationInfoSet(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value);
 extern void GoCallback_ClassCreationInfoToString(GDExtensionClassInstancePtr p_instance, GDExtensionBool *r_is_valid, GDExtensionStringPtr p_out);
+extern void GoCallback_ClassCreationInfoReference(GDExtensionClassInstancePtr p_instance);
+extern void GoCallback_ClassCreationInfoUnreference(GDExtensionClassInstancePtr p_instance);
 extern GDExtensionClassCallVirtual GoCallback_ClassCreationInfoGetVirtual(void *p_userdata, GDExtensionConstStringNamePtr p_name);
 extern GDExtensionObjectPtr GoCallback_ClassCreationInfoCreateInstance(void *data, GDExtensionBool p_notify_postinitialize);
 extern void GoCallback_ClassCreationInfoFreeInstance(void *data, GDExtensionClassInstancePtr ptr);
@@ -82,4 +84,14 @@ GDExtensionBool cgo_classcreationinfo_get(GDExtensionClassInstancePtr p_instance
 GDExtensionBool cgo_classcreationinfo_set(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value) {
     printStacktrace();
     return GoCallback_ClassCreationInfoSet(p_instance, p_name, p_value);
+}
+
+void cgo_classcreationinfo_reference(GDExtensionClassInstancePtr p_instance) {
+    printStacktrace();
+    GoCallback_ClassCreationInfoReference(p_instance);
+}
+
+void cgo_classcreationinfo_unreference(GDExtensionClassInstancePtr p_instance) {
+    printStacktrace();
+    GoCallback_ClassCreationInfoUnreference(p_instance);
 }

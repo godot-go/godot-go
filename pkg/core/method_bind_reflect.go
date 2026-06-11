@@ -291,16 +291,20 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 	case reflect.Pointer:
 		switch {
 		case t.Implements(refType):
-			// TODO: is this coming out as a Ref type here?
 			obj := arg.ToObject()
-			ref, ok := obj.(Ref)
+			if obj == nil {
+				return reflect.Zero(t), nil
+			}
+			refTypeName := t.Name()
+			constructor, ok := GDClassRefConstructors.Get(refTypeName[3:])
 			if !ok {
-				log.Panic("not a ref instance",
-					zap.String("value", arg.Stringify()),
+				log.Fatal("unable to get ref constructor",
+					zap.String("type", t.Name()),
 				)
 			}
+			ref := constructor(obj.(RefCounted))
 			log.Debug("ptrcall arg parsed",
-				zap.String("type", "Ref"),
+				zap.String("type", t.Name()),
 			)
 			return reflect.ValueOf(ref), nil
 		case t.Implements(gdClassType):
@@ -315,16 +319,20 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 	case reflect.Struct:
 		switch {
 		case t.Implements(refType):
-			// TODO: is this coming out as a Ref type here?
 			obj := arg.ToObject()
-			ref, ok := obj.(Ref)
+			if obj == nil {
+				return reflect.Zero(t), nil
+			}
+			refTypeName := t.Name()
+			constructor, ok := GDClassRefConstructors.Get(refTypeName[3:])
 			if !ok {
-				log.Panic("not a ref instance",
-					zap.String("value", arg.Stringify()),
+				log.Fatal("unable to get ref constructor",
+					zap.String("type", t.Name()),
 				)
 			}
+			ref := constructor(obj.(RefCounted))
 			log.Debug("ptrcall arg parsed",
-				zap.String("type", "Ref"),
+				zap.String("type", t.Name()),
 			)
 			return reflect.ValueOf(ref), nil
 		default:

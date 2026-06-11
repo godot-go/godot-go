@@ -87,5 +87,16 @@ func GoCallback_GDClassBindingFree(p_token unsafe.Pointer, p_instance unsafe.Poi
 
 //export GoCallback_GDClassBindingReference
 func GoCallback_GDClassBindingReference(p_token unsafe.Pointer, p_instance unsafe.Pointer, p_reference C.GDExtensionBool) C.GDExtensionBool {
+	wci := cgo.Handle(p_instance).Value().(*WrappedClassInstance)
+	if wci == nil || wci.Instance == nil {
+		return 1
+	}
+	if rc, ok := wci.Instance.(RefCounted); ok {
+		if p_reference != 0 {
+			rc.Reference()
+		} else {
+			rc.Unreference()
+		}
+	}
 	return 1
 }

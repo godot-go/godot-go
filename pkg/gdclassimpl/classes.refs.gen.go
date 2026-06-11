@@ -47,6 +47,10 @@ func (r *RefAESContextImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAESContextImpl) Clone() Ref {
+	return (*RefCountedRef[AESContext])(r).Clone()
+}
+
 func (r *RefAESContextImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -92,6 +96,10 @@ func (r *RefAStar2DImpl) TypedRef(from *RefAStar2DImpl) {
 func (r *RefAStar2DImpl) Unref() {
 	rg := (*TypedRef[AStar2D])(r)
 	rg.Unref()
+}
+
+func (r *RefAStar2DImpl) Clone() Ref {
+	return (*RefCountedRef[AStar2D])(r).Clone()
 }
 
 func (r *RefAStar2DImpl) IsValid() bool {
@@ -141,6 +149,10 @@ func (r *RefAStar3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAStar3DImpl) Clone() Ref {
+	return (*RefCountedRef[AStar3D])(r).Clone()
+}
+
 func (r *RefAStar3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -186,6 +198,10 @@ func (r *RefAStarGrid2DImpl) TypedRef(from *RefAStarGrid2DImpl) {
 func (r *RefAStarGrid2DImpl) Unref() {
 	rg := (*TypedRef[AStarGrid2D])(r)
 	rg.Unref()
+}
+
+func (r *RefAStarGrid2DImpl) Clone() Ref {
+	return (*RefCountedRef[AStarGrid2D])(r).Clone()
 }
 
 func (r *RefAStarGrid2DImpl) IsValid() bool {
@@ -235,6 +251,10 @@ func (r *RefAnimatedTextureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimatedTextureImpl) Clone() Ref {
+	return (*RefCountedRef[AnimatedTexture])(r).Clone()
+}
+
 func (r *RefAnimatedTextureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -280,6 +300,10 @@ func (r *RefAnimationImpl) TypedRef(from *RefAnimationImpl) {
 func (r *RefAnimationImpl) Unref() {
 	rg := (*TypedRef[Animation])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationImpl) Clone() Ref {
+	return (*RefCountedRef[Animation])(r).Clone()
 }
 
 func (r *RefAnimationImpl) IsValid() bool {
@@ -329,6 +353,10 @@ func (r *RefAnimationLibraryImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimationLibraryImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationLibrary])(r).Clone()
+}
+
 func (r *RefAnimationLibraryImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -374,6 +402,10 @@ func (r *RefAnimationNodeImpl) TypedRef(from *RefAnimationNodeImpl) {
 func (r *RefAnimationNodeImpl) Unref() {
 	rg := (*TypedRef[AnimationNode])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationNodeImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNode])(r).Clone()
 }
 
 func (r *RefAnimationNodeImpl) IsValid() bool {
@@ -423,6 +455,10 @@ func (r *RefAnimationNodeAdd2Impl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimationNodeAdd2Impl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeAdd2])(r).Clone()
+}
+
 func (r *RefAnimationNodeAdd2Impl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -468,6 +504,10 @@ func (r *RefAnimationNodeAdd3Impl) TypedRef(from *RefAnimationNodeAdd3Impl) {
 func (r *RefAnimationNodeAdd3Impl) Unref() {
 	rg := (*TypedRef[AnimationNodeAdd3])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationNodeAdd3Impl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeAdd3])(r).Clone()
 }
 
 func (r *RefAnimationNodeAdd3Impl) IsValid() bool {
@@ -517,6 +557,10 @@ func (r *RefAnimationNodeAnimationImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimationNodeAnimationImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeAnimation])(r).Clone()
+}
+
 func (r *RefAnimationNodeAnimationImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -562,6 +606,10 @@ func (r *RefAnimationNodeBlend2Impl) TypedRef(from *RefAnimationNodeBlend2Impl) 
 func (r *RefAnimationNodeBlend2Impl) Unref() {
 	rg := (*TypedRef[AnimationNodeBlend2])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationNodeBlend2Impl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeBlend2])(r).Clone()
 }
 
 func (r *RefAnimationNodeBlend2Impl) IsValid() bool {
@@ -611,6 +659,10 @@ func (r *RefAnimationNodeBlend3Impl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimationNodeBlend3Impl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeBlend3])(r).Clone()
+}
+
 func (r *RefAnimationNodeBlend3Impl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -656,6 +708,10 @@ func (r *RefAnimationNodeBlendSpace1DImpl) TypedRef(from *RefAnimationNodeBlendS
 func (r *RefAnimationNodeBlendSpace1DImpl) Unref() {
 	rg := (*TypedRef[AnimationNodeBlendSpace1D])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationNodeBlendSpace1DImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeBlendSpace1D])(r).Clone()
 }
 
 func (r *RefAnimationNodeBlendSpace1DImpl) IsValid() bool {
@@ -705,6 +761,10 @@ func (r *RefAnimationNodeBlendSpace2DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimationNodeBlendSpace2DImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeBlendSpace2D])(r).Clone()
+}
+
 func (r *RefAnimationNodeBlendSpace2DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -750,6 +810,10 @@ func (r *RefAnimationNodeBlendTreeImpl) TypedRef(from *RefAnimationNodeBlendTree
 func (r *RefAnimationNodeBlendTreeImpl) Unref() {
 	rg := (*TypedRef[AnimationNodeBlendTree])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationNodeBlendTreeImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeBlendTree])(r).Clone()
 }
 
 func (r *RefAnimationNodeBlendTreeImpl) IsValid() bool {
@@ -799,6 +863,10 @@ func (r *RefAnimationNodeExtensionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimationNodeExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeExtension])(r).Clone()
+}
+
 func (r *RefAnimationNodeExtensionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -844,6 +912,10 @@ func (r *RefAnimationNodeOneShotImpl) TypedRef(from *RefAnimationNodeOneShotImpl
 func (r *RefAnimationNodeOneShotImpl) Unref() {
 	rg := (*TypedRef[AnimationNodeOneShot])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationNodeOneShotImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeOneShot])(r).Clone()
 }
 
 func (r *RefAnimationNodeOneShotImpl) IsValid() bool {
@@ -893,6 +965,10 @@ func (r *RefAnimationNodeOutputImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimationNodeOutputImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeOutput])(r).Clone()
+}
+
 func (r *RefAnimationNodeOutputImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -938,6 +1014,10 @@ func (r *RefAnimationNodeStateMachineImpl) TypedRef(from *RefAnimationNodeStateM
 func (r *RefAnimationNodeStateMachineImpl) Unref() {
 	rg := (*TypedRef[AnimationNodeStateMachine])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationNodeStateMachineImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeStateMachine])(r).Clone()
 }
 
 func (r *RefAnimationNodeStateMachineImpl) IsValid() bool {
@@ -987,6 +1067,10 @@ func (r *RefAnimationNodeStateMachinePlaybackImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimationNodeStateMachinePlaybackImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeStateMachinePlayback])(r).Clone()
+}
+
 func (r *RefAnimationNodeStateMachinePlaybackImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -1032,6 +1116,10 @@ func (r *RefAnimationNodeStateMachineTransitionImpl) TypedRef(from *RefAnimation
 func (r *RefAnimationNodeStateMachineTransitionImpl) Unref() {
 	rg := (*TypedRef[AnimationNodeStateMachineTransition])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationNodeStateMachineTransitionImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeStateMachineTransition])(r).Clone()
 }
 
 func (r *RefAnimationNodeStateMachineTransitionImpl) IsValid() bool {
@@ -1081,6 +1169,10 @@ func (r *RefAnimationNodeSub2Impl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimationNodeSub2Impl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeSub2])(r).Clone()
+}
+
 func (r *RefAnimationNodeSub2Impl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -1126,6 +1218,10 @@ func (r *RefAnimationNodeSyncImpl) TypedRef(from *RefAnimationNodeSyncImpl) {
 func (r *RefAnimationNodeSyncImpl) Unref() {
 	rg := (*TypedRef[AnimationNodeSync])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationNodeSyncImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeSync])(r).Clone()
 }
 
 func (r *RefAnimationNodeSyncImpl) IsValid() bool {
@@ -1175,6 +1271,10 @@ func (r *RefAnimationNodeTimeScaleImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimationNodeTimeScaleImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeTimeScale])(r).Clone()
+}
+
 func (r *RefAnimationNodeTimeScaleImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -1220,6 +1320,10 @@ func (r *RefAnimationNodeTimeSeekImpl) TypedRef(from *RefAnimationNodeTimeSeekIm
 func (r *RefAnimationNodeTimeSeekImpl) Unref() {
 	rg := (*TypedRef[AnimationNodeTimeSeek])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationNodeTimeSeekImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeTimeSeek])(r).Clone()
 }
 
 func (r *RefAnimationNodeTimeSeekImpl) IsValid() bool {
@@ -1269,6 +1373,10 @@ func (r *RefAnimationNodeTransitionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAnimationNodeTransitionImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationNodeTransition])(r).Clone()
+}
+
 func (r *RefAnimationNodeTransitionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -1314,6 +1422,10 @@ func (r *RefAnimationRootNodeImpl) TypedRef(from *RefAnimationRootNodeImpl) {
 func (r *RefAnimationRootNodeImpl) Unref() {
 	rg := (*TypedRef[AnimationRootNode])(r)
 	rg.Unref()
+}
+
+func (r *RefAnimationRootNodeImpl) Clone() Ref {
+	return (*RefCountedRef[AnimationRootNode])(r).Clone()
 }
 
 func (r *RefAnimationRootNodeImpl) IsValid() bool {
@@ -1363,6 +1475,10 @@ func (r *RefArrayMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefArrayMeshImpl) Clone() Ref {
+	return (*RefCountedRef[ArrayMesh])(r).Clone()
+}
+
 func (r *RefArrayMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -1408,6 +1524,10 @@ func (r *RefArrayOccluder3DImpl) TypedRef(from *RefArrayOccluder3DImpl) {
 func (r *RefArrayOccluder3DImpl) Unref() {
 	rg := (*TypedRef[ArrayOccluder3D])(r)
 	rg.Unref()
+}
+
+func (r *RefArrayOccluder3DImpl) Clone() Ref {
+	return (*RefCountedRef[ArrayOccluder3D])(r).Clone()
 }
 
 func (r *RefArrayOccluder3DImpl) IsValid() bool {
@@ -1457,6 +1577,10 @@ func (r *RefAtlasTextureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAtlasTextureImpl) Clone() Ref {
+	return (*RefCountedRef[AtlasTexture])(r).Clone()
+}
+
 func (r *RefAtlasTextureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -1502,6 +1626,10 @@ func (r *RefAudioBusLayoutImpl) TypedRef(from *RefAudioBusLayoutImpl) {
 func (r *RefAudioBusLayoutImpl) Unref() {
 	rg := (*TypedRef[AudioBusLayout])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioBusLayoutImpl) Clone() Ref {
+	return (*RefCountedRef[AudioBusLayout])(r).Clone()
 }
 
 func (r *RefAudioBusLayoutImpl) IsValid() bool {
@@ -1551,6 +1679,10 @@ func (r *RefAudioEffectImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffect])(r).Clone()
+}
+
 func (r *RefAudioEffectImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -1596,6 +1728,10 @@ func (r *RefAudioEffectAmplifyImpl) TypedRef(from *RefAudioEffectAmplifyImpl) {
 func (r *RefAudioEffectAmplifyImpl) Unref() {
 	rg := (*TypedRef[AudioEffectAmplify])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectAmplifyImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectAmplify])(r).Clone()
 }
 
 func (r *RefAudioEffectAmplifyImpl) IsValid() bool {
@@ -1645,6 +1781,10 @@ func (r *RefAudioEffectBandLimitFilterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectBandLimitFilterImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectBandLimitFilter])(r).Clone()
+}
+
 func (r *RefAudioEffectBandLimitFilterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -1690,6 +1830,10 @@ func (r *RefAudioEffectBandPassFilterImpl) TypedRef(from *RefAudioEffectBandPass
 func (r *RefAudioEffectBandPassFilterImpl) Unref() {
 	rg := (*TypedRef[AudioEffectBandPassFilter])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectBandPassFilterImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectBandPassFilter])(r).Clone()
 }
 
 func (r *RefAudioEffectBandPassFilterImpl) IsValid() bool {
@@ -1739,6 +1883,10 @@ func (r *RefAudioEffectCaptureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectCaptureImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectCapture])(r).Clone()
+}
+
 func (r *RefAudioEffectCaptureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -1784,6 +1932,10 @@ func (r *RefAudioEffectChorusImpl) TypedRef(from *RefAudioEffectChorusImpl) {
 func (r *RefAudioEffectChorusImpl) Unref() {
 	rg := (*TypedRef[AudioEffectChorus])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectChorusImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectChorus])(r).Clone()
 }
 
 func (r *RefAudioEffectChorusImpl) IsValid() bool {
@@ -1833,6 +1985,10 @@ func (r *RefAudioEffectCompressorImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectCompressorImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectCompressor])(r).Clone()
+}
+
 func (r *RefAudioEffectCompressorImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -1878,6 +2034,10 @@ func (r *RefAudioEffectDelayImpl) TypedRef(from *RefAudioEffectDelayImpl) {
 func (r *RefAudioEffectDelayImpl) Unref() {
 	rg := (*TypedRef[AudioEffectDelay])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectDelayImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectDelay])(r).Clone()
 }
 
 func (r *RefAudioEffectDelayImpl) IsValid() bool {
@@ -1927,6 +2087,10 @@ func (r *RefAudioEffectDistortionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectDistortionImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectDistortion])(r).Clone()
+}
+
 func (r *RefAudioEffectDistortionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -1972,6 +2136,10 @@ func (r *RefAudioEffectEQImpl) TypedRef(from *RefAudioEffectEQImpl) {
 func (r *RefAudioEffectEQImpl) Unref() {
 	rg := (*TypedRef[AudioEffectEQ])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectEQImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectEQ])(r).Clone()
 }
 
 func (r *RefAudioEffectEQImpl) IsValid() bool {
@@ -2021,6 +2189,10 @@ func (r *RefAudioEffectEQ10Impl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectEQ10Impl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectEQ10])(r).Clone()
+}
+
 func (r *RefAudioEffectEQ10Impl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -2066,6 +2238,10 @@ func (r *RefAudioEffectEQ21Impl) TypedRef(from *RefAudioEffectEQ21Impl) {
 func (r *RefAudioEffectEQ21Impl) Unref() {
 	rg := (*TypedRef[AudioEffectEQ21])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectEQ21Impl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectEQ21])(r).Clone()
 }
 
 func (r *RefAudioEffectEQ21Impl) IsValid() bool {
@@ -2115,6 +2291,10 @@ func (r *RefAudioEffectEQ6Impl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectEQ6Impl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectEQ6])(r).Clone()
+}
+
 func (r *RefAudioEffectEQ6Impl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -2160,6 +2340,10 @@ func (r *RefAudioEffectFilterImpl) TypedRef(from *RefAudioEffectFilterImpl) {
 func (r *RefAudioEffectFilterImpl) Unref() {
 	rg := (*TypedRef[AudioEffectFilter])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectFilterImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectFilter])(r).Clone()
 }
 
 func (r *RefAudioEffectFilterImpl) IsValid() bool {
@@ -2209,6 +2393,10 @@ func (r *RefAudioEffectHardLimiterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectHardLimiterImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectHardLimiter])(r).Clone()
+}
+
 func (r *RefAudioEffectHardLimiterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -2254,6 +2442,10 @@ func (r *RefAudioEffectHighPassFilterImpl) TypedRef(from *RefAudioEffectHighPass
 func (r *RefAudioEffectHighPassFilterImpl) Unref() {
 	rg := (*TypedRef[AudioEffectHighPassFilter])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectHighPassFilterImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectHighPassFilter])(r).Clone()
 }
 
 func (r *RefAudioEffectHighPassFilterImpl) IsValid() bool {
@@ -2303,6 +2495,10 @@ func (r *RefAudioEffectHighShelfFilterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectHighShelfFilterImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectHighShelfFilter])(r).Clone()
+}
+
 func (r *RefAudioEffectHighShelfFilterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -2348,6 +2544,10 @@ func (r *RefAudioEffectInstanceImpl) TypedRef(from *RefAudioEffectInstanceImpl) 
 func (r *RefAudioEffectInstanceImpl) Unref() {
 	rg := (*TypedRef[AudioEffectInstance])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectInstanceImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectInstance])(r).Clone()
 }
 
 func (r *RefAudioEffectInstanceImpl) IsValid() bool {
@@ -2397,6 +2597,10 @@ func (r *RefAudioEffectLimiterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectLimiterImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectLimiter])(r).Clone()
+}
+
 func (r *RefAudioEffectLimiterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -2442,6 +2646,10 @@ func (r *RefAudioEffectLowPassFilterImpl) TypedRef(from *RefAudioEffectLowPassFi
 func (r *RefAudioEffectLowPassFilterImpl) Unref() {
 	rg := (*TypedRef[AudioEffectLowPassFilter])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectLowPassFilterImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectLowPassFilter])(r).Clone()
 }
 
 func (r *RefAudioEffectLowPassFilterImpl) IsValid() bool {
@@ -2491,6 +2699,10 @@ func (r *RefAudioEffectLowShelfFilterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectLowShelfFilterImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectLowShelfFilter])(r).Clone()
+}
+
 func (r *RefAudioEffectLowShelfFilterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -2536,6 +2748,10 @@ func (r *RefAudioEffectNotchFilterImpl) TypedRef(from *RefAudioEffectNotchFilter
 func (r *RefAudioEffectNotchFilterImpl) Unref() {
 	rg := (*TypedRef[AudioEffectNotchFilter])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectNotchFilterImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectNotchFilter])(r).Clone()
 }
 
 func (r *RefAudioEffectNotchFilterImpl) IsValid() bool {
@@ -2585,6 +2801,10 @@ func (r *RefAudioEffectPannerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectPannerImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectPanner])(r).Clone()
+}
+
 func (r *RefAudioEffectPannerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -2630,6 +2850,10 @@ func (r *RefAudioEffectPhaserImpl) TypedRef(from *RefAudioEffectPhaserImpl) {
 func (r *RefAudioEffectPhaserImpl) Unref() {
 	rg := (*TypedRef[AudioEffectPhaser])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectPhaserImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectPhaser])(r).Clone()
 }
 
 func (r *RefAudioEffectPhaserImpl) IsValid() bool {
@@ -2679,6 +2903,10 @@ func (r *RefAudioEffectPitchShiftImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectPitchShiftImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectPitchShift])(r).Clone()
+}
+
 func (r *RefAudioEffectPitchShiftImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -2724,6 +2952,10 @@ func (r *RefAudioEffectRecordImpl) TypedRef(from *RefAudioEffectRecordImpl) {
 func (r *RefAudioEffectRecordImpl) Unref() {
 	rg := (*TypedRef[AudioEffectRecord])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectRecordImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectRecord])(r).Clone()
 }
 
 func (r *RefAudioEffectRecordImpl) IsValid() bool {
@@ -2773,6 +3005,10 @@ func (r *RefAudioEffectReverbImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectReverbImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectReverb])(r).Clone()
+}
+
 func (r *RefAudioEffectReverbImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -2818,6 +3054,10 @@ func (r *RefAudioEffectSpectrumAnalyzerImpl) TypedRef(from *RefAudioEffectSpectr
 func (r *RefAudioEffectSpectrumAnalyzerImpl) Unref() {
 	rg := (*TypedRef[AudioEffectSpectrumAnalyzer])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectSpectrumAnalyzerImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectSpectrumAnalyzer])(r).Clone()
 }
 
 func (r *RefAudioEffectSpectrumAnalyzerImpl) IsValid() bool {
@@ -2867,6 +3107,10 @@ func (r *RefAudioEffectSpectrumAnalyzerInstanceImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioEffectSpectrumAnalyzerInstanceImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectSpectrumAnalyzerInstance])(r).Clone()
+}
+
 func (r *RefAudioEffectSpectrumAnalyzerInstanceImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -2912,6 +3156,10 @@ func (r *RefAudioEffectStereoEnhanceImpl) TypedRef(from *RefAudioEffectStereoEnh
 func (r *RefAudioEffectStereoEnhanceImpl) Unref() {
 	rg := (*TypedRef[AudioEffectStereoEnhance])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioEffectStereoEnhanceImpl) Clone() Ref {
+	return (*RefCountedRef[AudioEffectStereoEnhance])(r).Clone()
 }
 
 func (r *RefAudioEffectStereoEnhanceImpl) IsValid() bool {
@@ -2961,6 +3209,10 @@ func (r *RefAudioSampleImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioSampleImpl) Clone() Ref {
+	return (*RefCountedRef[AudioSample])(r).Clone()
+}
+
 func (r *RefAudioSampleImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -3006,6 +3258,10 @@ func (r *RefAudioSamplePlaybackImpl) TypedRef(from *RefAudioSamplePlaybackImpl) 
 func (r *RefAudioSamplePlaybackImpl) Unref() {
 	rg := (*TypedRef[AudioSamplePlayback])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioSamplePlaybackImpl) Clone() Ref {
+	return (*RefCountedRef[AudioSamplePlayback])(r).Clone()
 }
 
 func (r *RefAudioSamplePlaybackImpl) IsValid() bool {
@@ -3055,6 +3311,10 @@ func (r *RefAudioStreamImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioStreamImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStream])(r).Clone()
+}
+
 func (r *RefAudioStreamImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -3100,6 +3360,10 @@ func (r *RefAudioStreamGeneratorImpl) TypedRef(from *RefAudioStreamGeneratorImpl
 func (r *RefAudioStreamGeneratorImpl) Unref() {
 	rg := (*TypedRef[AudioStreamGenerator])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioStreamGeneratorImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamGenerator])(r).Clone()
 }
 
 func (r *RefAudioStreamGeneratorImpl) IsValid() bool {
@@ -3149,6 +3413,10 @@ func (r *RefAudioStreamGeneratorPlaybackImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioStreamGeneratorPlaybackImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamGeneratorPlayback])(r).Clone()
+}
+
 func (r *RefAudioStreamGeneratorPlaybackImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -3194,6 +3462,10 @@ func (r *RefAudioStreamInteractiveImpl) TypedRef(from *RefAudioStreamInteractive
 func (r *RefAudioStreamInteractiveImpl) Unref() {
 	rg := (*TypedRef[AudioStreamInteractive])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioStreamInteractiveImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamInteractive])(r).Clone()
 }
 
 func (r *RefAudioStreamInteractiveImpl) IsValid() bool {
@@ -3243,6 +3515,10 @@ func (r *RefAudioStreamMP3Impl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioStreamMP3Impl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamMP3])(r).Clone()
+}
+
 func (r *RefAudioStreamMP3Impl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -3288,6 +3564,10 @@ func (r *RefAudioStreamMicrophoneImpl) TypedRef(from *RefAudioStreamMicrophoneIm
 func (r *RefAudioStreamMicrophoneImpl) Unref() {
 	rg := (*TypedRef[AudioStreamMicrophone])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioStreamMicrophoneImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamMicrophone])(r).Clone()
 }
 
 func (r *RefAudioStreamMicrophoneImpl) IsValid() bool {
@@ -3337,6 +3617,10 @@ func (r *RefAudioStreamOggVorbisImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioStreamOggVorbisImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamOggVorbis])(r).Clone()
+}
+
 func (r *RefAudioStreamOggVorbisImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -3382,6 +3666,10 @@ func (r *RefAudioStreamPlaybackImpl) TypedRef(from *RefAudioStreamPlaybackImpl) 
 func (r *RefAudioStreamPlaybackImpl) Unref() {
 	rg := (*TypedRef[AudioStreamPlayback])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioStreamPlaybackImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamPlayback])(r).Clone()
 }
 
 func (r *RefAudioStreamPlaybackImpl) IsValid() bool {
@@ -3431,6 +3719,10 @@ func (r *RefAudioStreamPlaybackInteractiveImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioStreamPlaybackInteractiveImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamPlaybackInteractive])(r).Clone()
+}
+
 func (r *RefAudioStreamPlaybackInteractiveImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -3476,6 +3768,10 @@ func (r *RefAudioStreamPlaybackOggVorbisImpl) TypedRef(from *RefAudioStreamPlayb
 func (r *RefAudioStreamPlaybackOggVorbisImpl) Unref() {
 	rg := (*TypedRef[AudioStreamPlaybackOggVorbis])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioStreamPlaybackOggVorbisImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamPlaybackOggVorbis])(r).Clone()
 }
 
 func (r *RefAudioStreamPlaybackOggVorbisImpl) IsValid() bool {
@@ -3525,6 +3821,10 @@ func (r *RefAudioStreamPlaybackPlaylistImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioStreamPlaybackPlaylistImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamPlaybackPlaylist])(r).Clone()
+}
+
 func (r *RefAudioStreamPlaybackPlaylistImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -3570,6 +3870,10 @@ func (r *RefAudioStreamPlaybackPolyphonicImpl) TypedRef(from *RefAudioStreamPlay
 func (r *RefAudioStreamPlaybackPolyphonicImpl) Unref() {
 	rg := (*TypedRef[AudioStreamPlaybackPolyphonic])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioStreamPlaybackPolyphonicImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamPlaybackPolyphonic])(r).Clone()
 }
 
 func (r *RefAudioStreamPlaybackPolyphonicImpl) IsValid() bool {
@@ -3619,6 +3923,10 @@ func (r *RefAudioStreamPlaybackResampledImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioStreamPlaybackResampledImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamPlaybackResampled])(r).Clone()
+}
+
 func (r *RefAudioStreamPlaybackResampledImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -3664,6 +3972,10 @@ func (r *RefAudioStreamPlaybackSynchronizedImpl) TypedRef(from *RefAudioStreamPl
 func (r *RefAudioStreamPlaybackSynchronizedImpl) Unref() {
 	rg := (*TypedRef[AudioStreamPlaybackSynchronized])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioStreamPlaybackSynchronizedImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamPlaybackSynchronized])(r).Clone()
 }
 
 func (r *RefAudioStreamPlaybackSynchronizedImpl) IsValid() bool {
@@ -3713,6 +4025,10 @@ func (r *RefAudioStreamPlaylistImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioStreamPlaylistImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamPlaylist])(r).Clone()
+}
+
 func (r *RefAudioStreamPlaylistImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -3758,6 +4074,10 @@ func (r *RefAudioStreamPolyphonicImpl) TypedRef(from *RefAudioStreamPolyphonicIm
 func (r *RefAudioStreamPolyphonicImpl) Unref() {
 	rg := (*TypedRef[AudioStreamPolyphonic])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioStreamPolyphonicImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamPolyphonic])(r).Clone()
 }
 
 func (r *RefAudioStreamPolyphonicImpl) IsValid() bool {
@@ -3807,6 +4127,10 @@ func (r *RefAudioStreamRandomizerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioStreamRandomizerImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamRandomizer])(r).Clone()
+}
+
 func (r *RefAudioStreamRandomizerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -3852,6 +4176,10 @@ func (r *RefAudioStreamSynchronizedImpl) TypedRef(from *RefAudioStreamSynchroniz
 func (r *RefAudioStreamSynchronizedImpl) Unref() {
 	rg := (*TypedRef[AudioStreamSynchronized])(r)
 	rg.Unref()
+}
+
+func (r *RefAudioStreamSynchronizedImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamSynchronized])(r).Clone()
 }
 
 func (r *RefAudioStreamSynchronizedImpl) IsValid() bool {
@@ -3901,6 +4229,10 @@ func (r *RefAudioStreamWAVImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefAudioStreamWAVImpl) Clone() Ref {
+	return (*RefCountedRef[AudioStreamWAV])(r).Clone()
+}
+
 func (r *RefAudioStreamWAVImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -3946,6 +4278,10 @@ func (r *RefBaseMaterial3DImpl) TypedRef(from *RefBaseMaterial3DImpl) {
 func (r *RefBaseMaterial3DImpl) Unref() {
 	rg := (*TypedRef[BaseMaterial3D])(r)
 	rg.Unref()
+}
+
+func (r *RefBaseMaterial3DImpl) Clone() Ref {
+	return (*RefCountedRef[BaseMaterial3D])(r).Clone()
 }
 
 func (r *RefBaseMaterial3DImpl) IsValid() bool {
@@ -3995,6 +4331,10 @@ func (r *RefBitMapImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefBitMapImpl) Clone() Ref {
+	return (*RefCountedRef[BitMap])(r).Clone()
+}
+
 func (r *RefBitMapImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -4040,6 +4380,10 @@ func (r *RefBoneMapImpl) TypedRef(from *RefBoneMapImpl) {
 func (r *RefBoneMapImpl) Unref() {
 	rg := (*TypedRef[BoneMap])(r)
 	rg.Unref()
+}
+
+func (r *RefBoneMapImpl) Clone() Ref {
+	return (*RefCountedRef[BoneMap])(r).Clone()
 }
 
 func (r *RefBoneMapImpl) IsValid() bool {
@@ -4089,6 +4433,10 @@ func (r *RefBoxMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefBoxMeshImpl) Clone() Ref {
+	return (*RefCountedRef[BoxMesh])(r).Clone()
+}
+
 func (r *RefBoxMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -4134,6 +4482,10 @@ func (r *RefBoxOccluder3DImpl) TypedRef(from *RefBoxOccluder3DImpl) {
 func (r *RefBoxOccluder3DImpl) Unref() {
 	rg := (*TypedRef[BoxOccluder3D])(r)
 	rg.Unref()
+}
+
+func (r *RefBoxOccluder3DImpl) Clone() Ref {
+	return (*RefCountedRef[BoxOccluder3D])(r).Clone()
 }
 
 func (r *RefBoxOccluder3DImpl) IsValid() bool {
@@ -4183,6 +4535,10 @@ func (r *RefBoxShape3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefBoxShape3DImpl) Clone() Ref {
+	return (*RefCountedRef[BoxShape3D])(r).Clone()
+}
+
 func (r *RefBoxShape3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -4228,6 +4584,10 @@ func (r *RefButtonGroupImpl) TypedRef(from *RefButtonGroupImpl) {
 func (r *RefButtonGroupImpl) Unref() {
 	rg := (*TypedRef[ButtonGroup])(r)
 	rg.Unref()
+}
+
+func (r *RefButtonGroupImpl) Clone() Ref {
+	return (*RefCountedRef[ButtonGroup])(r).Clone()
 }
 
 func (r *RefButtonGroupImpl) IsValid() bool {
@@ -4277,6 +4637,10 @@ func (r *RefCallbackTweenerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCallbackTweenerImpl) Clone() Ref {
+	return (*RefCountedRef[CallbackTweener])(r).Clone()
+}
+
 func (r *RefCallbackTweenerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -4322,6 +4686,10 @@ func (r *RefCameraAttributesImpl) TypedRef(from *RefCameraAttributesImpl) {
 func (r *RefCameraAttributesImpl) Unref() {
 	rg := (*TypedRef[CameraAttributes])(r)
 	rg.Unref()
+}
+
+func (r *RefCameraAttributesImpl) Clone() Ref {
+	return (*RefCountedRef[CameraAttributes])(r).Clone()
 }
 
 func (r *RefCameraAttributesImpl) IsValid() bool {
@@ -4371,6 +4739,10 @@ func (r *RefCameraAttributesPhysicalImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCameraAttributesPhysicalImpl) Clone() Ref {
+	return (*RefCountedRef[CameraAttributesPhysical])(r).Clone()
+}
+
 func (r *RefCameraAttributesPhysicalImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -4416,6 +4788,10 @@ func (r *RefCameraAttributesPracticalImpl) TypedRef(from *RefCameraAttributesPra
 func (r *RefCameraAttributesPracticalImpl) Unref() {
 	rg := (*TypedRef[CameraAttributesPractical])(r)
 	rg.Unref()
+}
+
+func (r *RefCameraAttributesPracticalImpl) Clone() Ref {
+	return (*RefCountedRef[CameraAttributesPractical])(r).Clone()
 }
 
 func (r *RefCameraAttributesPracticalImpl) IsValid() bool {
@@ -4465,6 +4841,10 @@ func (r *RefCameraFeedImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCameraFeedImpl) Clone() Ref {
+	return (*RefCountedRef[CameraFeed])(r).Clone()
+}
+
 func (r *RefCameraFeedImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -4510,6 +4890,10 @@ func (r *RefCameraTextureImpl) TypedRef(from *RefCameraTextureImpl) {
 func (r *RefCameraTextureImpl) Unref() {
 	rg := (*TypedRef[CameraTexture])(r)
 	rg.Unref()
+}
+
+func (r *RefCameraTextureImpl) Clone() Ref {
+	return (*RefCountedRef[CameraTexture])(r).Clone()
 }
 
 func (r *RefCameraTextureImpl) IsValid() bool {
@@ -4559,6 +4943,10 @@ func (r *RefCanvasItemMaterialImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCanvasItemMaterialImpl) Clone() Ref {
+	return (*RefCountedRef[CanvasItemMaterial])(r).Clone()
+}
+
 func (r *RefCanvasItemMaterialImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -4604,6 +4992,10 @@ func (r *RefCanvasTextureImpl) TypedRef(from *RefCanvasTextureImpl) {
 func (r *RefCanvasTextureImpl) Unref() {
 	rg := (*TypedRef[CanvasTexture])(r)
 	rg.Unref()
+}
+
+func (r *RefCanvasTextureImpl) Clone() Ref {
+	return (*RefCountedRef[CanvasTexture])(r).Clone()
 }
 
 func (r *RefCanvasTextureImpl) IsValid() bool {
@@ -4653,6 +5045,10 @@ func (r *RefCapsuleMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCapsuleMeshImpl) Clone() Ref {
+	return (*RefCountedRef[CapsuleMesh])(r).Clone()
+}
+
 func (r *RefCapsuleMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -4698,6 +5094,10 @@ func (r *RefCapsuleShape2DImpl) TypedRef(from *RefCapsuleShape2DImpl) {
 func (r *RefCapsuleShape2DImpl) Unref() {
 	rg := (*TypedRef[CapsuleShape2D])(r)
 	rg.Unref()
+}
+
+func (r *RefCapsuleShape2DImpl) Clone() Ref {
+	return (*RefCountedRef[CapsuleShape2D])(r).Clone()
 }
 
 func (r *RefCapsuleShape2DImpl) IsValid() bool {
@@ -4747,6 +5147,10 @@ func (r *RefCapsuleShape3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCapsuleShape3DImpl) Clone() Ref {
+	return (*RefCountedRef[CapsuleShape3D])(r).Clone()
+}
+
 func (r *RefCapsuleShape3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -4792,6 +5196,10 @@ func (r *RefCharFXTransformImpl) TypedRef(from *RefCharFXTransformImpl) {
 func (r *RefCharFXTransformImpl) Unref() {
 	rg := (*TypedRef[CharFXTransform])(r)
 	rg.Unref()
+}
+
+func (r *RefCharFXTransformImpl) Clone() Ref {
+	return (*RefCountedRef[CharFXTransform])(r).Clone()
 }
 
 func (r *RefCharFXTransformImpl) IsValid() bool {
@@ -4841,6 +5249,10 @@ func (r *RefCircleShape2DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCircleShape2DImpl) Clone() Ref {
+	return (*RefCountedRef[CircleShape2D])(r).Clone()
+}
+
 func (r *RefCircleShape2DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -4886,6 +5298,10 @@ func (r *RefCodeHighlighterImpl) TypedRef(from *RefCodeHighlighterImpl) {
 func (r *RefCodeHighlighterImpl) Unref() {
 	rg := (*TypedRef[CodeHighlighter])(r)
 	rg.Unref()
+}
+
+func (r *RefCodeHighlighterImpl) Clone() Ref {
+	return (*RefCountedRef[CodeHighlighter])(r).Clone()
 }
 
 func (r *RefCodeHighlighterImpl) IsValid() bool {
@@ -4935,6 +5351,10 @@ func (r *RefColorPaletteImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefColorPaletteImpl) Clone() Ref {
+	return (*RefCountedRef[ColorPalette])(r).Clone()
+}
+
 func (r *RefColorPaletteImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -4980,6 +5400,10 @@ func (r *RefCompositorImpl) TypedRef(from *RefCompositorImpl) {
 func (r *RefCompositorImpl) Unref() {
 	rg := (*TypedRef[Compositor])(r)
 	rg.Unref()
+}
+
+func (r *RefCompositorImpl) Clone() Ref {
+	return (*RefCountedRef[Compositor])(r).Clone()
 }
 
 func (r *RefCompositorImpl) IsValid() bool {
@@ -5029,6 +5453,10 @@ func (r *RefCompositorEffectImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCompositorEffectImpl) Clone() Ref {
+	return (*RefCountedRef[CompositorEffect])(r).Clone()
+}
+
 func (r *RefCompositorEffectImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -5074,6 +5502,10 @@ func (r *RefCompressedCubemapImpl) TypedRef(from *RefCompressedCubemapImpl) {
 func (r *RefCompressedCubemapImpl) Unref() {
 	rg := (*TypedRef[CompressedCubemap])(r)
 	rg.Unref()
+}
+
+func (r *RefCompressedCubemapImpl) Clone() Ref {
+	return (*RefCountedRef[CompressedCubemap])(r).Clone()
 }
 
 func (r *RefCompressedCubemapImpl) IsValid() bool {
@@ -5123,6 +5555,10 @@ func (r *RefCompressedCubemapArrayImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCompressedCubemapArrayImpl) Clone() Ref {
+	return (*RefCountedRef[CompressedCubemapArray])(r).Clone()
+}
+
 func (r *RefCompressedCubemapArrayImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -5168,6 +5604,10 @@ func (r *RefCompressedTexture2DImpl) TypedRef(from *RefCompressedTexture2DImpl) 
 func (r *RefCompressedTexture2DImpl) Unref() {
 	rg := (*TypedRef[CompressedTexture2D])(r)
 	rg.Unref()
+}
+
+func (r *RefCompressedTexture2DImpl) Clone() Ref {
+	return (*RefCountedRef[CompressedTexture2D])(r).Clone()
 }
 
 func (r *RefCompressedTexture2DImpl) IsValid() bool {
@@ -5217,6 +5657,10 @@ func (r *RefCompressedTexture2DArrayImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCompressedTexture2DArrayImpl) Clone() Ref {
+	return (*RefCountedRef[CompressedTexture2DArray])(r).Clone()
+}
+
 func (r *RefCompressedTexture2DArrayImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -5262,6 +5706,10 @@ func (r *RefCompressedTexture3DImpl) TypedRef(from *RefCompressedTexture3DImpl) 
 func (r *RefCompressedTexture3DImpl) Unref() {
 	rg := (*TypedRef[CompressedTexture3D])(r)
 	rg.Unref()
+}
+
+func (r *RefCompressedTexture3DImpl) Clone() Ref {
+	return (*RefCountedRef[CompressedTexture3D])(r).Clone()
 }
 
 func (r *RefCompressedTexture3DImpl) IsValid() bool {
@@ -5311,6 +5759,10 @@ func (r *RefCompressedTextureLayeredImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCompressedTextureLayeredImpl) Clone() Ref {
+	return (*RefCountedRef[CompressedTextureLayered])(r).Clone()
+}
+
 func (r *RefCompressedTextureLayeredImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -5356,6 +5808,10 @@ func (r *RefConcavePolygonShape2DImpl) TypedRef(from *RefConcavePolygonShape2DIm
 func (r *RefConcavePolygonShape2DImpl) Unref() {
 	rg := (*TypedRef[ConcavePolygonShape2D])(r)
 	rg.Unref()
+}
+
+func (r *RefConcavePolygonShape2DImpl) Clone() Ref {
+	return (*RefCountedRef[ConcavePolygonShape2D])(r).Clone()
 }
 
 func (r *RefConcavePolygonShape2DImpl) IsValid() bool {
@@ -5405,6 +5861,10 @@ func (r *RefConcavePolygonShape3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefConcavePolygonShape3DImpl) Clone() Ref {
+	return (*RefCountedRef[ConcavePolygonShape3D])(r).Clone()
+}
+
 func (r *RefConcavePolygonShape3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -5450,6 +5910,10 @@ func (r *RefConfigFileImpl) TypedRef(from *RefConfigFileImpl) {
 func (r *RefConfigFileImpl) Unref() {
 	rg := (*TypedRef[ConfigFile])(r)
 	rg.Unref()
+}
+
+func (r *RefConfigFileImpl) Clone() Ref {
+	return (*RefCountedRef[ConfigFile])(r).Clone()
 }
 
 func (r *RefConfigFileImpl) IsValid() bool {
@@ -5499,6 +5963,10 @@ func (r *RefConvexPolygonShape2DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefConvexPolygonShape2DImpl) Clone() Ref {
+	return (*RefCountedRef[ConvexPolygonShape2D])(r).Clone()
+}
+
 func (r *RefConvexPolygonShape2DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -5544,6 +6012,10 @@ func (r *RefConvexPolygonShape3DImpl) TypedRef(from *RefConvexPolygonShape3DImpl
 func (r *RefConvexPolygonShape3DImpl) Unref() {
 	rg := (*TypedRef[ConvexPolygonShape3D])(r)
 	rg.Unref()
+}
+
+func (r *RefConvexPolygonShape3DImpl) Clone() Ref {
+	return (*RefCountedRef[ConvexPolygonShape3D])(r).Clone()
 }
 
 func (r *RefConvexPolygonShape3DImpl) IsValid() bool {
@@ -5593,6 +6065,10 @@ func (r *RefCryptoImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCryptoImpl) Clone() Ref {
+	return (*RefCountedRef[Crypto])(r).Clone()
+}
+
 func (r *RefCryptoImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -5638,6 +6114,10 @@ func (r *RefCryptoKeyImpl) TypedRef(from *RefCryptoKeyImpl) {
 func (r *RefCryptoKeyImpl) Unref() {
 	rg := (*TypedRef[CryptoKey])(r)
 	rg.Unref()
+}
+
+func (r *RefCryptoKeyImpl) Clone() Ref {
+	return (*RefCountedRef[CryptoKey])(r).Clone()
 }
 
 func (r *RefCryptoKeyImpl) IsValid() bool {
@@ -5687,6 +6167,10 @@ func (r *RefCubemapImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCubemapImpl) Clone() Ref {
+	return (*RefCountedRef[Cubemap])(r).Clone()
+}
+
 func (r *RefCubemapImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -5732,6 +6216,10 @@ func (r *RefCubemapArrayImpl) TypedRef(from *RefCubemapArrayImpl) {
 func (r *RefCubemapArrayImpl) Unref() {
 	rg := (*TypedRef[CubemapArray])(r)
 	rg.Unref()
+}
+
+func (r *RefCubemapArrayImpl) Clone() Ref {
+	return (*RefCountedRef[CubemapArray])(r).Clone()
 }
 
 func (r *RefCubemapArrayImpl) IsValid() bool {
@@ -5781,6 +6269,10 @@ func (r *RefCurveImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCurveImpl) Clone() Ref {
+	return (*RefCountedRef[Curve])(r).Clone()
+}
+
 func (r *RefCurveImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -5826,6 +6318,10 @@ func (r *RefCurve2DImpl) TypedRef(from *RefCurve2DImpl) {
 func (r *RefCurve2DImpl) Unref() {
 	rg := (*TypedRef[Curve2D])(r)
 	rg.Unref()
+}
+
+func (r *RefCurve2DImpl) Clone() Ref {
+	return (*RefCountedRef[Curve2D])(r).Clone()
 }
 
 func (r *RefCurve2DImpl) IsValid() bool {
@@ -5875,6 +6371,10 @@ func (r *RefCurve3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCurve3DImpl) Clone() Ref {
+	return (*RefCountedRef[Curve3D])(r).Clone()
+}
+
 func (r *RefCurve3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -5920,6 +6420,10 @@ func (r *RefCurveTextureImpl) TypedRef(from *RefCurveTextureImpl) {
 func (r *RefCurveTextureImpl) Unref() {
 	rg := (*TypedRef[CurveTexture])(r)
 	rg.Unref()
+}
+
+func (r *RefCurveTextureImpl) Clone() Ref {
+	return (*RefCountedRef[CurveTexture])(r).Clone()
 }
 
 func (r *RefCurveTextureImpl) IsValid() bool {
@@ -5969,6 +6473,10 @@ func (r *RefCurveXYZTextureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCurveXYZTextureImpl) Clone() Ref {
+	return (*RefCountedRef[CurveXYZTexture])(r).Clone()
+}
+
 func (r *RefCurveXYZTextureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -6014,6 +6522,10 @@ func (r *RefCylinderMeshImpl) TypedRef(from *RefCylinderMeshImpl) {
 func (r *RefCylinderMeshImpl) Unref() {
 	rg := (*TypedRef[CylinderMesh])(r)
 	rg.Unref()
+}
+
+func (r *RefCylinderMeshImpl) Clone() Ref {
+	return (*RefCountedRef[CylinderMesh])(r).Clone()
 }
 
 func (r *RefCylinderMeshImpl) IsValid() bool {
@@ -6063,6 +6575,10 @@ func (r *RefCylinderShape3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefCylinderShape3DImpl) Clone() Ref {
+	return (*RefCountedRef[CylinderShape3D])(r).Clone()
+}
+
 func (r *RefCylinderShape3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -6108,6 +6624,10 @@ func (r *RefDPITextureImpl) TypedRef(from *RefDPITextureImpl) {
 func (r *RefDPITextureImpl) Unref() {
 	rg := (*TypedRef[DPITexture])(r)
 	rg.Unref()
+}
+
+func (r *RefDPITextureImpl) Clone() Ref {
+	return (*RefCountedRef[DPITexture])(r).Clone()
 }
 
 func (r *RefDPITextureImpl) IsValid() bool {
@@ -6157,6 +6677,10 @@ func (r *RefDTLSServerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefDTLSServerImpl) Clone() Ref {
+	return (*RefCountedRef[DTLSServer])(r).Clone()
+}
+
 func (r *RefDTLSServerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -6202,6 +6726,10 @@ func (r *RefDirAccessImpl) TypedRef(from *RefDirAccessImpl) {
 func (r *RefDirAccessImpl) Unref() {
 	rg := (*TypedRef[DirAccess])(r)
 	rg.Unref()
+}
+
+func (r *RefDirAccessImpl) Clone() Ref {
+	return (*RefCountedRef[DirAccess])(r).Clone()
 }
 
 func (r *RefDirAccessImpl) IsValid() bool {
@@ -6251,6 +6779,10 @@ func (r *RefENetConnectionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefENetConnectionImpl) Clone() Ref {
+	return (*RefCountedRef[ENetConnection])(r).Clone()
+}
+
 func (r *RefENetConnectionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -6296,6 +6828,10 @@ func (r *RefENetMultiplayerPeerImpl) TypedRef(from *RefENetMultiplayerPeerImpl) 
 func (r *RefENetMultiplayerPeerImpl) Unref() {
 	rg := (*TypedRef[ENetMultiplayerPeer])(r)
 	rg.Unref()
+}
+
+func (r *RefENetMultiplayerPeerImpl) Clone() Ref {
+	return (*RefCountedRef[ENetMultiplayerPeer])(r).Clone()
 }
 
 func (r *RefENetMultiplayerPeerImpl) IsValid() bool {
@@ -6345,6 +6881,10 @@ func (r *RefENetPacketPeerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefENetPacketPeerImpl) Clone() Ref {
+	return (*RefCountedRef[ENetPacketPeer])(r).Clone()
+}
+
 func (r *RefENetPacketPeerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -6390,6 +6930,10 @@ func (r *RefEditorContextMenuPluginImpl) TypedRef(from *RefEditorContextMenuPlug
 func (r *RefEditorContextMenuPluginImpl) Unref() {
 	rg := (*TypedRef[EditorContextMenuPlugin])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorContextMenuPluginImpl) Clone() Ref {
+	return (*RefCountedRef[EditorContextMenuPlugin])(r).Clone()
 }
 
 func (r *RefEditorContextMenuPluginImpl) IsValid() bool {
@@ -6439,6 +6983,10 @@ func (r *RefEditorDebuggerPluginImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorDebuggerPluginImpl) Clone() Ref {
+	return (*RefCountedRef[EditorDebuggerPlugin])(r).Clone()
+}
+
 func (r *RefEditorDebuggerPluginImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -6484,6 +7032,10 @@ func (r *RefEditorDebuggerSessionImpl) TypedRef(from *RefEditorDebuggerSessionIm
 func (r *RefEditorDebuggerSessionImpl) Unref() {
 	rg := (*TypedRef[EditorDebuggerSession])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorDebuggerSessionImpl) Clone() Ref {
+	return (*RefCountedRef[EditorDebuggerSession])(r).Clone()
 }
 
 func (r *RefEditorDebuggerSessionImpl) IsValid() bool {
@@ -6533,6 +7085,10 @@ func (r *RefEditorExportPlatformImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorExportPlatformImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlatform])(r).Clone()
+}
+
 func (r *RefEditorExportPlatformImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -6578,6 +7134,10 @@ func (r *RefEditorExportPlatformAndroidImpl) TypedRef(from *RefEditorExportPlatf
 func (r *RefEditorExportPlatformAndroidImpl) Unref() {
 	rg := (*TypedRef[EditorExportPlatformAndroid])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorExportPlatformAndroidImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlatformAndroid])(r).Clone()
 }
 
 func (r *RefEditorExportPlatformAndroidImpl) IsValid() bool {
@@ -6627,6 +7187,10 @@ func (r *RefEditorExportPlatformAppleEmbeddedImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorExportPlatformAppleEmbeddedImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlatformAppleEmbedded])(r).Clone()
+}
+
 func (r *RefEditorExportPlatformAppleEmbeddedImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -6672,6 +7236,10 @@ func (r *RefEditorExportPlatformExtensionImpl) TypedRef(from *RefEditorExportPla
 func (r *RefEditorExportPlatformExtensionImpl) Unref() {
 	rg := (*TypedRef[EditorExportPlatformExtension])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorExportPlatformExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlatformExtension])(r).Clone()
 }
 
 func (r *RefEditorExportPlatformExtensionImpl) IsValid() bool {
@@ -6721,6 +7289,10 @@ func (r *RefEditorExportPlatformIOSImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorExportPlatformIOSImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlatformIOS])(r).Clone()
+}
+
 func (r *RefEditorExportPlatformIOSImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -6766,6 +7338,10 @@ func (r *RefEditorExportPlatformLinuxBSDImpl) TypedRef(from *RefEditorExportPlat
 func (r *RefEditorExportPlatformLinuxBSDImpl) Unref() {
 	rg := (*TypedRef[EditorExportPlatformLinuxBSD])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorExportPlatformLinuxBSDImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlatformLinuxBSD])(r).Clone()
 }
 
 func (r *RefEditorExportPlatformLinuxBSDImpl) IsValid() bool {
@@ -6815,6 +7391,10 @@ func (r *RefEditorExportPlatformMacOSImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorExportPlatformMacOSImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlatformMacOS])(r).Clone()
+}
+
 func (r *RefEditorExportPlatformMacOSImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -6860,6 +7440,10 @@ func (r *RefEditorExportPlatformPCImpl) TypedRef(from *RefEditorExportPlatformPC
 func (r *RefEditorExportPlatformPCImpl) Unref() {
 	rg := (*TypedRef[EditorExportPlatformPC])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorExportPlatformPCImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlatformPC])(r).Clone()
 }
 
 func (r *RefEditorExportPlatformPCImpl) IsValid() bool {
@@ -6909,6 +7493,10 @@ func (r *RefEditorExportPlatformVisionOSImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorExportPlatformVisionOSImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlatformVisionOS])(r).Clone()
+}
+
 func (r *RefEditorExportPlatformVisionOSImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -6954,6 +7542,10 @@ func (r *RefEditorExportPlatformWebImpl) TypedRef(from *RefEditorExportPlatformW
 func (r *RefEditorExportPlatformWebImpl) Unref() {
 	rg := (*TypedRef[EditorExportPlatformWeb])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorExportPlatformWebImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlatformWeb])(r).Clone()
 }
 
 func (r *RefEditorExportPlatformWebImpl) IsValid() bool {
@@ -7003,6 +7595,10 @@ func (r *RefEditorExportPlatformWindowsImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorExportPlatformWindowsImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlatformWindows])(r).Clone()
+}
+
 func (r *RefEditorExportPlatformWindowsImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -7048,6 +7644,10 @@ func (r *RefEditorExportPluginImpl) TypedRef(from *RefEditorExportPluginImpl) {
 func (r *RefEditorExportPluginImpl) Unref() {
 	rg := (*TypedRef[EditorExportPlugin])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorExportPluginImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPlugin])(r).Clone()
 }
 
 func (r *RefEditorExportPluginImpl) IsValid() bool {
@@ -7097,6 +7697,10 @@ func (r *RefEditorExportPresetImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorExportPresetImpl) Clone() Ref {
+	return (*RefCountedRef[EditorExportPreset])(r).Clone()
+}
+
 func (r *RefEditorExportPresetImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -7142,6 +7746,10 @@ func (r *RefEditorFeatureProfileImpl) TypedRef(from *RefEditorFeatureProfileImpl
 func (r *RefEditorFeatureProfileImpl) Unref() {
 	rg := (*TypedRef[EditorFeatureProfile])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorFeatureProfileImpl) Clone() Ref {
+	return (*RefCountedRef[EditorFeatureProfile])(r).Clone()
 }
 
 func (r *RefEditorFeatureProfileImpl) IsValid() bool {
@@ -7191,6 +7799,10 @@ func (r *RefEditorFileSystemImportFormatSupportQueryImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorFileSystemImportFormatSupportQueryImpl) Clone() Ref {
+	return (*RefCountedRef[EditorFileSystemImportFormatSupportQuery])(r).Clone()
+}
+
 func (r *RefEditorFileSystemImportFormatSupportQueryImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -7236,6 +7848,10 @@ func (r *RefEditorImportPluginImpl) TypedRef(from *RefEditorImportPluginImpl) {
 func (r *RefEditorImportPluginImpl) Unref() {
 	rg := (*TypedRef[EditorImportPlugin])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorImportPluginImpl) Clone() Ref {
+	return (*RefCountedRef[EditorImportPlugin])(r).Clone()
 }
 
 func (r *RefEditorImportPluginImpl) IsValid() bool {
@@ -7285,6 +7901,10 @@ func (r *RefEditorInspectorPluginImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorInspectorPluginImpl) Clone() Ref {
+	return (*RefCountedRef[EditorInspectorPlugin])(r).Clone()
+}
+
 func (r *RefEditorInspectorPluginImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -7330,6 +7950,10 @@ func (r *RefEditorNode3DGizmoImpl) TypedRef(from *RefEditorNode3DGizmoImpl) {
 func (r *RefEditorNode3DGizmoImpl) Unref() {
 	rg := (*TypedRef[EditorNode3DGizmo])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorNode3DGizmoImpl) Clone() Ref {
+	return (*RefCountedRef[EditorNode3DGizmo])(r).Clone()
 }
 
 func (r *RefEditorNode3DGizmoImpl) IsValid() bool {
@@ -7379,6 +8003,10 @@ func (r *RefEditorNode3DGizmoPluginImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorNode3DGizmoPluginImpl) Clone() Ref {
+	return (*RefCountedRef[EditorNode3DGizmoPlugin])(r).Clone()
+}
+
 func (r *RefEditorNode3DGizmoPluginImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -7424,6 +8052,10 @@ func (r *RefEditorResourceConversionPluginImpl) TypedRef(from *RefEditorResource
 func (r *RefEditorResourceConversionPluginImpl) Unref() {
 	rg := (*TypedRef[EditorResourceConversionPlugin])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorResourceConversionPluginImpl) Clone() Ref {
+	return (*RefCountedRef[EditorResourceConversionPlugin])(r).Clone()
 }
 
 func (r *RefEditorResourceConversionPluginImpl) IsValid() bool {
@@ -7473,6 +8105,10 @@ func (r *RefEditorResourcePreviewGeneratorImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorResourcePreviewGeneratorImpl) Clone() Ref {
+	return (*RefCountedRef[EditorResourcePreviewGenerator])(r).Clone()
+}
+
 func (r *RefEditorResourcePreviewGeneratorImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -7518,6 +8154,10 @@ func (r *RefEditorResourceTooltipPluginImpl) TypedRef(from *RefEditorResourceToo
 func (r *RefEditorResourceTooltipPluginImpl) Unref() {
 	rg := (*TypedRef[EditorResourceTooltipPlugin])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorResourceTooltipPluginImpl) Clone() Ref {
+	return (*RefCountedRef[EditorResourceTooltipPlugin])(r).Clone()
 }
 
 func (r *RefEditorResourceTooltipPluginImpl) IsValid() bool {
@@ -7567,6 +8207,10 @@ func (r *RefEditorSceneFormatImporterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorSceneFormatImporterImpl) Clone() Ref {
+	return (*RefCountedRef[EditorSceneFormatImporter])(r).Clone()
+}
+
 func (r *RefEditorSceneFormatImporterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -7612,6 +8256,10 @@ func (r *RefEditorSceneFormatImporterBlendImpl) TypedRef(from *RefEditorSceneFor
 func (r *RefEditorSceneFormatImporterBlendImpl) Unref() {
 	rg := (*TypedRef[EditorSceneFormatImporterBlend])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorSceneFormatImporterBlendImpl) Clone() Ref {
+	return (*RefCountedRef[EditorSceneFormatImporterBlend])(r).Clone()
 }
 
 func (r *RefEditorSceneFormatImporterBlendImpl) IsValid() bool {
@@ -7661,6 +8309,10 @@ func (r *RefEditorSceneFormatImporterFBX2GLTFImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorSceneFormatImporterFBX2GLTFImpl) Clone() Ref {
+	return (*RefCountedRef[EditorSceneFormatImporterFBX2GLTF])(r).Clone()
+}
+
 func (r *RefEditorSceneFormatImporterFBX2GLTFImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -7706,6 +8358,10 @@ func (r *RefEditorSceneFormatImporterGLTFImpl) TypedRef(from *RefEditorSceneForm
 func (r *RefEditorSceneFormatImporterGLTFImpl) Unref() {
 	rg := (*TypedRef[EditorSceneFormatImporterGLTF])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorSceneFormatImporterGLTFImpl) Clone() Ref {
+	return (*RefCountedRef[EditorSceneFormatImporterGLTF])(r).Clone()
 }
 
 func (r *RefEditorSceneFormatImporterGLTFImpl) IsValid() bool {
@@ -7755,6 +8411,10 @@ func (r *RefEditorSceneFormatImporterUFBXImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorSceneFormatImporterUFBXImpl) Clone() Ref {
+	return (*RefCountedRef[EditorSceneFormatImporterUFBX])(r).Clone()
+}
+
 func (r *RefEditorSceneFormatImporterUFBXImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -7800,6 +8460,10 @@ func (r *RefEditorScenePostImportImpl) TypedRef(from *RefEditorScenePostImportIm
 func (r *RefEditorScenePostImportImpl) Unref() {
 	rg := (*TypedRef[EditorScenePostImport])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorScenePostImportImpl) Clone() Ref {
+	return (*RefCountedRef[EditorScenePostImport])(r).Clone()
 }
 
 func (r *RefEditorScenePostImportImpl) IsValid() bool {
@@ -7849,6 +8513,10 @@ func (r *RefEditorScenePostImportPluginImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorScenePostImportPluginImpl) Clone() Ref {
+	return (*RefCountedRef[EditorScenePostImportPlugin])(r).Clone()
+}
+
 func (r *RefEditorScenePostImportPluginImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -7894,6 +8562,10 @@ func (r *RefEditorScriptImpl) TypedRef(from *RefEditorScriptImpl) {
 func (r *RefEditorScriptImpl) Unref() {
 	rg := (*TypedRef[EditorScript])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorScriptImpl) Clone() Ref {
+	return (*RefCountedRef[EditorScript])(r).Clone()
 }
 
 func (r *RefEditorScriptImpl) IsValid() bool {
@@ -7943,6 +8615,10 @@ func (r *RefEditorSettingsImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorSettingsImpl) Clone() Ref {
+	return (*RefCountedRef[EditorSettings])(r).Clone()
+}
+
 func (r *RefEditorSettingsImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -7988,6 +8664,10 @@ func (r *RefEditorSyntaxHighlighterImpl) TypedRef(from *RefEditorSyntaxHighlight
 func (r *RefEditorSyntaxHighlighterImpl) Unref() {
 	rg := (*TypedRef[EditorSyntaxHighlighter])(r)
 	rg.Unref()
+}
+
+func (r *RefEditorSyntaxHighlighterImpl) Clone() Ref {
+	return (*RefCountedRef[EditorSyntaxHighlighter])(r).Clone()
 }
 
 func (r *RefEditorSyntaxHighlighterImpl) IsValid() bool {
@@ -8037,6 +8717,10 @@ func (r *RefEditorTranslationParserPluginImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEditorTranslationParserPluginImpl) Clone() Ref {
+	return (*RefCountedRef[EditorTranslationParserPlugin])(r).Clone()
+}
+
 func (r *RefEditorTranslationParserPluginImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -8082,6 +8766,10 @@ func (r *RefEncodedObjectAsIDImpl) TypedRef(from *RefEncodedObjectAsIDImpl) {
 func (r *RefEncodedObjectAsIDImpl) Unref() {
 	rg := (*TypedRef[EncodedObjectAsID])(r)
 	rg.Unref()
+}
+
+func (r *RefEncodedObjectAsIDImpl) Clone() Ref {
+	return (*RefCountedRef[EncodedObjectAsID])(r).Clone()
 }
 
 func (r *RefEncodedObjectAsIDImpl) IsValid() bool {
@@ -8131,6 +8819,10 @@ func (r *RefEngineProfilerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefEngineProfilerImpl) Clone() Ref {
+	return (*RefCountedRef[EngineProfiler])(r).Clone()
+}
+
 func (r *RefEngineProfilerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -8176,6 +8868,10 @@ func (r *RefEnvironmentImpl) TypedRef(from *RefEnvironmentImpl) {
 func (r *RefEnvironmentImpl) Unref() {
 	rg := (*TypedRef[Environment])(r)
 	rg.Unref()
+}
+
+func (r *RefEnvironmentImpl) Clone() Ref {
+	return (*RefCountedRef[Environment])(r).Clone()
 }
 
 func (r *RefEnvironmentImpl) IsValid() bool {
@@ -8225,6 +8921,10 @@ func (r *RefExpressionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefExpressionImpl) Clone() Ref {
+	return (*RefCountedRef[Expression])(r).Clone()
+}
+
 func (r *RefExpressionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -8270,6 +8970,10 @@ func (r *RefExternalTextureImpl) TypedRef(from *RefExternalTextureImpl) {
 func (r *RefExternalTextureImpl) Unref() {
 	rg := (*TypedRef[ExternalTexture])(r)
 	rg.Unref()
+}
+
+func (r *RefExternalTextureImpl) Clone() Ref {
+	return (*RefCountedRef[ExternalTexture])(r).Clone()
 }
 
 func (r *RefExternalTextureImpl) IsValid() bool {
@@ -8319,6 +9023,10 @@ func (r *RefFBXDocumentImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefFBXDocumentImpl) Clone() Ref {
+	return (*RefCountedRef[FBXDocument])(r).Clone()
+}
+
 func (r *RefFBXDocumentImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -8364,6 +9072,10 @@ func (r *RefFBXStateImpl) TypedRef(from *RefFBXStateImpl) {
 func (r *RefFBXStateImpl) Unref() {
 	rg := (*TypedRef[FBXState])(r)
 	rg.Unref()
+}
+
+func (r *RefFBXStateImpl) Clone() Ref {
+	return (*RefCountedRef[FBXState])(r).Clone()
 }
 
 func (r *RefFBXStateImpl) IsValid() bool {
@@ -8413,6 +9125,10 @@ func (r *RefFastNoiseLiteImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefFastNoiseLiteImpl) Clone() Ref {
+	return (*RefCountedRef[FastNoiseLite])(r).Clone()
+}
+
 func (r *RefFastNoiseLiteImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -8458,6 +9174,10 @@ func (r *RefFileAccessImpl) TypedRef(from *RefFileAccessImpl) {
 func (r *RefFileAccessImpl) Unref() {
 	rg := (*TypedRef[FileAccess])(r)
 	rg.Unref()
+}
+
+func (r *RefFileAccessImpl) Clone() Ref {
+	return (*RefCountedRef[FileAccess])(r).Clone()
 }
 
 func (r *RefFileAccessImpl) IsValid() bool {
@@ -8507,6 +9227,10 @@ func (r *RefFogMaterialImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefFogMaterialImpl) Clone() Ref {
+	return (*RefCountedRef[FogMaterial])(r).Clone()
+}
+
 func (r *RefFogMaterialImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -8552,6 +9276,10 @@ func (r *RefFoldableGroupImpl) TypedRef(from *RefFoldableGroupImpl) {
 func (r *RefFoldableGroupImpl) Unref() {
 	rg := (*TypedRef[FoldableGroup])(r)
 	rg.Unref()
+}
+
+func (r *RefFoldableGroupImpl) Clone() Ref {
+	return (*RefCountedRef[FoldableGroup])(r).Clone()
 }
 
 func (r *RefFoldableGroupImpl) IsValid() bool {
@@ -8601,6 +9329,10 @@ func (r *RefFontImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefFontImpl) Clone() Ref {
+	return (*RefCountedRef[Font])(r).Clone()
+}
+
 func (r *RefFontImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -8646,6 +9378,10 @@ func (r *RefFontFileImpl) TypedRef(from *RefFontFileImpl) {
 func (r *RefFontFileImpl) Unref() {
 	rg := (*TypedRef[FontFile])(r)
 	rg.Unref()
+}
+
+func (r *RefFontFileImpl) Clone() Ref {
+	return (*RefCountedRef[FontFile])(r).Clone()
 }
 
 func (r *RefFontFileImpl) IsValid() bool {
@@ -8695,6 +9431,10 @@ func (r *RefFontVariationImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefFontVariationImpl) Clone() Ref {
+	return (*RefCountedRef[FontVariation])(r).Clone()
+}
+
 func (r *RefFontVariationImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -8740,6 +9480,10 @@ func (r *RefGDExtensionImpl) TypedRef(from *RefGDExtensionImpl) {
 func (r *RefGDExtensionImpl) Unref() {
 	rg := (*TypedRef[GDExtension])(r)
 	rg.Unref()
+}
+
+func (r *RefGDExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[GDExtension])(r).Clone()
 }
 
 func (r *RefGDExtensionImpl) IsValid() bool {
@@ -8789,6 +9533,10 @@ func (r *RefGDScriptImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGDScriptImpl) Clone() Ref {
+	return (*RefCountedRef[GDScript])(r).Clone()
+}
+
 func (r *RefGDScriptImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -8834,6 +9582,10 @@ func (r *RefGDScriptSyntaxHighlighterImpl) TypedRef(from *RefGDScriptSyntaxHighl
 func (r *RefGDScriptSyntaxHighlighterImpl) Unref() {
 	rg := (*TypedRef[GDScriptSyntaxHighlighter])(r)
 	rg.Unref()
+}
+
+func (r *RefGDScriptSyntaxHighlighterImpl) Clone() Ref {
+	return (*RefCountedRef[GDScriptSyntaxHighlighter])(r).Clone()
 }
 
 func (r *RefGDScriptSyntaxHighlighterImpl) IsValid() bool {
@@ -8883,6 +9635,10 @@ func (r *RefGLTFAccessorImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGLTFAccessorImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFAccessor])(r).Clone()
+}
+
 func (r *RefGLTFAccessorImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -8928,6 +9684,10 @@ func (r *RefGLTFAnimationImpl) TypedRef(from *RefGLTFAnimationImpl) {
 func (r *RefGLTFAnimationImpl) Unref() {
 	rg := (*TypedRef[GLTFAnimation])(r)
 	rg.Unref()
+}
+
+func (r *RefGLTFAnimationImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFAnimation])(r).Clone()
 }
 
 func (r *RefGLTFAnimationImpl) IsValid() bool {
@@ -8977,6 +9737,10 @@ func (r *RefGLTFBufferViewImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGLTFBufferViewImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFBufferView])(r).Clone()
+}
+
 func (r *RefGLTFBufferViewImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -9022,6 +9786,10 @@ func (r *RefGLTFCameraImpl) TypedRef(from *RefGLTFCameraImpl) {
 func (r *RefGLTFCameraImpl) Unref() {
 	rg := (*TypedRef[GLTFCamera])(r)
 	rg.Unref()
+}
+
+func (r *RefGLTFCameraImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFCamera])(r).Clone()
 }
 
 func (r *RefGLTFCameraImpl) IsValid() bool {
@@ -9071,6 +9839,10 @@ func (r *RefGLTFDocumentImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGLTFDocumentImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFDocument])(r).Clone()
+}
+
 func (r *RefGLTFDocumentImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -9116,6 +9888,10 @@ func (r *RefGLTFDocumentExtensionImpl) TypedRef(from *RefGLTFDocumentExtensionIm
 func (r *RefGLTFDocumentExtensionImpl) Unref() {
 	rg := (*TypedRef[GLTFDocumentExtension])(r)
 	rg.Unref()
+}
+
+func (r *RefGLTFDocumentExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFDocumentExtension])(r).Clone()
 }
 
 func (r *RefGLTFDocumentExtensionImpl) IsValid() bool {
@@ -9165,6 +9941,10 @@ func (r *RefGLTFDocumentExtensionConvertImporterMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGLTFDocumentExtensionConvertImporterMeshImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFDocumentExtensionConvertImporterMesh])(r).Clone()
+}
+
 func (r *RefGLTFDocumentExtensionConvertImporterMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -9210,6 +9990,10 @@ func (r *RefGLTFLightImpl) TypedRef(from *RefGLTFLightImpl) {
 func (r *RefGLTFLightImpl) Unref() {
 	rg := (*TypedRef[GLTFLight])(r)
 	rg.Unref()
+}
+
+func (r *RefGLTFLightImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFLight])(r).Clone()
 }
 
 func (r *RefGLTFLightImpl) IsValid() bool {
@@ -9259,6 +10043,10 @@ func (r *RefGLTFMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGLTFMeshImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFMesh])(r).Clone()
+}
+
 func (r *RefGLTFMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -9304,6 +10092,10 @@ func (r *RefGLTFNodeImpl) TypedRef(from *RefGLTFNodeImpl) {
 func (r *RefGLTFNodeImpl) Unref() {
 	rg := (*TypedRef[GLTFNode])(r)
 	rg.Unref()
+}
+
+func (r *RefGLTFNodeImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFNode])(r).Clone()
 }
 
 func (r *RefGLTFNodeImpl) IsValid() bool {
@@ -9353,6 +10145,10 @@ func (r *RefGLTFObjectModelPropertyImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGLTFObjectModelPropertyImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFObjectModelProperty])(r).Clone()
+}
+
 func (r *RefGLTFObjectModelPropertyImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -9398,6 +10194,10 @@ func (r *RefGLTFPhysicsBodyImpl) TypedRef(from *RefGLTFPhysicsBodyImpl) {
 func (r *RefGLTFPhysicsBodyImpl) Unref() {
 	rg := (*TypedRef[GLTFPhysicsBody])(r)
 	rg.Unref()
+}
+
+func (r *RefGLTFPhysicsBodyImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFPhysicsBody])(r).Clone()
 }
 
 func (r *RefGLTFPhysicsBodyImpl) IsValid() bool {
@@ -9447,6 +10247,10 @@ func (r *RefGLTFPhysicsShapeImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGLTFPhysicsShapeImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFPhysicsShape])(r).Clone()
+}
+
 func (r *RefGLTFPhysicsShapeImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -9492,6 +10296,10 @@ func (r *RefGLTFSkeletonImpl) TypedRef(from *RefGLTFSkeletonImpl) {
 func (r *RefGLTFSkeletonImpl) Unref() {
 	rg := (*TypedRef[GLTFSkeleton])(r)
 	rg.Unref()
+}
+
+func (r *RefGLTFSkeletonImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFSkeleton])(r).Clone()
 }
 
 func (r *RefGLTFSkeletonImpl) IsValid() bool {
@@ -9541,6 +10349,10 @@ func (r *RefGLTFSkinImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGLTFSkinImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFSkin])(r).Clone()
+}
+
 func (r *RefGLTFSkinImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -9586,6 +10398,10 @@ func (r *RefGLTFSpecGlossImpl) TypedRef(from *RefGLTFSpecGlossImpl) {
 func (r *RefGLTFSpecGlossImpl) Unref() {
 	rg := (*TypedRef[GLTFSpecGloss])(r)
 	rg.Unref()
+}
+
+func (r *RefGLTFSpecGlossImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFSpecGloss])(r).Clone()
 }
 
 func (r *RefGLTFSpecGlossImpl) IsValid() bool {
@@ -9635,6 +10451,10 @@ func (r *RefGLTFStateImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGLTFStateImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFState])(r).Clone()
+}
+
 func (r *RefGLTFStateImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -9680,6 +10500,10 @@ func (r *RefGLTFTextureImpl) TypedRef(from *RefGLTFTextureImpl) {
 func (r *RefGLTFTextureImpl) Unref() {
 	rg := (*TypedRef[GLTFTexture])(r)
 	rg.Unref()
+}
+
+func (r *RefGLTFTextureImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFTexture])(r).Clone()
 }
 
 func (r *RefGLTFTextureImpl) IsValid() bool {
@@ -9729,6 +10553,10 @@ func (r *RefGLTFTextureSamplerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGLTFTextureSamplerImpl) Clone() Ref {
+	return (*RefCountedRef[GLTFTextureSampler])(r).Clone()
+}
+
 func (r *RefGLTFTextureSamplerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -9774,6 +10602,10 @@ func (r *RefGradientImpl) TypedRef(from *RefGradientImpl) {
 func (r *RefGradientImpl) Unref() {
 	rg := (*TypedRef[Gradient])(r)
 	rg.Unref()
+}
+
+func (r *RefGradientImpl) Clone() Ref {
+	return (*RefCountedRef[Gradient])(r).Clone()
 }
 
 func (r *RefGradientImpl) IsValid() bool {
@@ -9823,6 +10655,10 @@ func (r *RefGradientTexture1DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefGradientTexture1DImpl) Clone() Ref {
+	return (*RefCountedRef[GradientTexture1D])(r).Clone()
+}
+
 func (r *RefGradientTexture1DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -9868,6 +10704,10 @@ func (r *RefGradientTexture2DImpl) TypedRef(from *RefGradientTexture2DImpl) {
 func (r *RefGradientTexture2DImpl) Unref() {
 	rg := (*TypedRef[GradientTexture2D])(r)
 	rg.Unref()
+}
+
+func (r *RefGradientTexture2DImpl) Clone() Ref {
+	return (*RefCountedRef[GradientTexture2D])(r).Clone()
 }
 
 func (r *RefGradientTexture2DImpl) IsValid() bool {
@@ -9917,6 +10757,10 @@ func (r *RefHMACContextImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefHMACContextImpl) Clone() Ref {
+	return (*RefCountedRef[HMACContext])(r).Clone()
+}
+
 func (r *RefHMACContextImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -9962,6 +10806,10 @@ func (r *RefHTTPClientImpl) TypedRef(from *RefHTTPClientImpl) {
 func (r *RefHTTPClientImpl) Unref() {
 	rg := (*TypedRef[HTTPClient])(r)
 	rg.Unref()
+}
+
+func (r *RefHTTPClientImpl) Clone() Ref {
+	return (*RefCountedRef[HTTPClient])(r).Clone()
 }
 
 func (r *RefHTTPClientImpl) IsValid() bool {
@@ -10011,6 +10859,10 @@ func (r *RefHashingContextImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefHashingContextImpl) Clone() Ref {
+	return (*RefCountedRef[HashingContext])(r).Clone()
+}
+
 func (r *RefHashingContextImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -10056,6 +10908,10 @@ func (r *RefHeightMapShape3DImpl) TypedRef(from *RefHeightMapShape3DImpl) {
 func (r *RefHeightMapShape3DImpl) Unref() {
 	rg := (*TypedRef[HeightMapShape3D])(r)
 	rg.Unref()
+}
+
+func (r *RefHeightMapShape3DImpl) Clone() Ref {
+	return (*RefCountedRef[HeightMapShape3D])(r).Clone()
 }
 
 func (r *RefHeightMapShape3DImpl) IsValid() bool {
@@ -10105,6 +10961,10 @@ func (r *RefImageImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefImageImpl) Clone() Ref {
+	return (*RefCountedRef[Image])(r).Clone()
+}
+
 func (r *RefImageImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -10150,6 +11010,10 @@ func (r *RefImageFormatLoaderImpl) TypedRef(from *RefImageFormatLoaderImpl) {
 func (r *RefImageFormatLoaderImpl) Unref() {
 	rg := (*TypedRef[ImageFormatLoader])(r)
 	rg.Unref()
+}
+
+func (r *RefImageFormatLoaderImpl) Clone() Ref {
+	return (*RefCountedRef[ImageFormatLoader])(r).Clone()
 }
 
 func (r *RefImageFormatLoaderImpl) IsValid() bool {
@@ -10199,6 +11063,10 @@ func (r *RefImageFormatLoaderExtensionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefImageFormatLoaderExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[ImageFormatLoaderExtension])(r).Clone()
+}
+
 func (r *RefImageFormatLoaderExtensionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -10244,6 +11112,10 @@ func (r *RefImageTextureImpl) TypedRef(from *RefImageTextureImpl) {
 func (r *RefImageTextureImpl) Unref() {
 	rg := (*TypedRef[ImageTexture])(r)
 	rg.Unref()
+}
+
+func (r *RefImageTextureImpl) Clone() Ref {
+	return (*RefCountedRef[ImageTexture])(r).Clone()
 }
 
 func (r *RefImageTextureImpl) IsValid() bool {
@@ -10293,6 +11165,10 @@ func (r *RefImageTexture3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefImageTexture3DImpl) Clone() Ref {
+	return (*RefCountedRef[ImageTexture3D])(r).Clone()
+}
+
 func (r *RefImageTexture3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -10338,6 +11214,10 @@ func (r *RefImageTextureLayeredImpl) TypedRef(from *RefImageTextureLayeredImpl) 
 func (r *RefImageTextureLayeredImpl) Unref() {
 	rg := (*TypedRef[ImageTextureLayered])(r)
 	rg.Unref()
+}
+
+func (r *RefImageTextureLayeredImpl) Clone() Ref {
+	return (*RefCountedRef[ImageTextureLayered])(r).Clone()
 }
 
 func (r *RefImageTextureLayeredImpl) IsValid() bool {
@@ -10387,6 +11267,10 @@ func (r *RefImmediateMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefImmediateMeshImpl) Clone() Ref {
+	return (*RefCountedRef[ImmediateMesh])(r).Clone()
+}
+
 func (r *RefImmediateMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -10432,6 +11316,10 @@ func (r *RefImporterMeshImpl) TypedRef(from *RefImporterMeshImpl) {
 func (r *RefImporterMeshImpl) Unref() {
 	rg := (*TypedRef[ImporterMesh])(r)
 	rg.Unref()
+}
+
+func (r *RefImporterMeshImpl) Clone() Ref {
+	return (*RefCountedRef[ImporterMesh])(r).Clone()
 }
 
 func (r *RefImporterMeshImpl) IsValid() bool {
@@ -10481,6 +11369,10 @@ func (r *RefInputEventImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefInputEventImpl) Clone() Ref {
+	return (*RefCountedRef[InputEvent])(r).Clone()
+}
+
 func (r *RefInputEventImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -10526,6 +11418,10 @@ func (r *RefInputEventActionImpl) TypedRef(from *RefInputEventActionImpl) {
 func (r *RefInputEventActionImpl) Unref() {
 	rg := (*TypedRef[InputEventAction])(r)
 	rg.Unref()
+}
+
+func (r *RefInputEventActionImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventAction])(r).Clone()
 }
 
 func (r *RefInputEventActionImpl) IsValid() bool {
@@ -10575,6 +11471,10 @@ func (r *RefInputEventFromWindowImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefInputEventFromWindowImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventFromWindow])(r).Clone()
+}
+
 func (r *RefInputEventFromWindowImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -10620,6 +11520,10 @@ func (r *RefInputEventGestureImpl) TypedRef(from *RefInputEventGestureImpl) {
 func (r *RefInputEventGestureImpl) Unref() {
 	rg := (*TypedRef[InputEventGesture])(r)
 	rg.Unref()
+}
+
+func (r *RefInputEventGestureImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventGesture])(r).Clone()
 }
 
 func (r *RefInputEventGestureImpl) IsValid() bool {
@@ -10669,6 +11573,10 @@ func (r *RefInputEventJoypadButtonImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefInputEventJoypadButtonImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventJoypadButton])(r).Clone()
+}
+
 func (r *RefInputEventJoypadButtonImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -10714,6 +11622,10 @@ func (r *RefInputEventJoypadMotionImpl) TypedRef(from *RefInputEventJoypadMotion
 func (r *RefInputEventJoypadMotionImpl) Unref() {
 	rg := (*TypedRef[InputEventJoypadMotion])(r)
 	rg.Unref()
+}
+
+func (r *RefInputEventJoypadMotionImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventJoypadMotion])(r).Clone()
 }
 
 func (r *RefInputEventJoypadMotionImpl) IsValid() bool {
@@ -10763,6 +11675,10 @@ func (r *RefInputEventKeyImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefInputEventKeyImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventKey])(r).Clone()
+}
+
 func (r *RefInputEventKeyImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -10808,6 +11724,10 @@ func (r *RefInputEventMIDIImpl) TypedRef(from *RefInputEventMIDIImpl) {
 func (r *RefInputEventMIDIImpl) Unref() {
 	rg := (*TypedRef[InputEventMIDI])(r)
 	rg.Unref()
+}
+
+func (r *RefInputEventMIDIImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventMIDI])(r).Clone()
 }
 
 func (r *RefInputEventMIDIImpl) IsValid() bool {
@@ -10857,6 +11777,10 @@ func (r *RefInputEventMagnifyGestureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefInputEventMagnifyGestureImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventMagnifyGesture])(r).Clone()
+}
+
 func (r *RefInputEventMagnifyGestureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -10902,6 +11826,10 @@ func (r *RefInputEventMouseImpl) TypedRef(from *RefInputEventMouseImpl) {
 func (r *RefInputEventMouseImpl) Unref() {
 	rg := (*TypedRef[InputEventMouse])(r)
 	rg.Unref()
+}
+
+func (r *RefInputEventMouseImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventMouse])(r).Clone()
 }
 
 func (r *RefInputEventMouseImpl) IsValid() bool {
@@ -10951,6 +11879,10 @@ func (r *RefInputEventMouseButtonImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefInputEventMouseButtonImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventMouseButton])(r).Clone()
+}
+
 func (r *RefInputEventMouseButtonImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -10996,6 +11928,10 @@ func (r *RefInputEventMouseMotionImpl) TypedRef(from *RefInputEventMouseMotionIm
 func (r *RefInputEventMouseMotionImpl) Unref() {
 	rg := (*TypedRef[InputEventMouseMotion])(r)
 	rg.Unref()
+}
+
+func (r *RefInputEventMouseMotionImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventMouseMotion])(r).Clone()
 }
 
 func (r *RefInputEventMouseMotionImpl) IsValid() bool {
@@ -11045,6 +11981,10 @@ func (r *RefInputEventPanGestureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefInputEventPanGestureImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventPanGesture])(r).Clone()
+}
+
 func (r *RefInputEventPanGestureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -11090,6 +12030,10 @@ func (r *RefInputEventScreenDragImpl) TypedRef(from *RefInputEventScreenDragImpl
 func (r *RefInputEventScreenDragImpl) Unref() {
 	rg := (*TypedRef[InputEventScreenDrag])(r)
 	rg.Unref()
+}
+
+func (r *RefInputEventScreenDragImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventScreenDrag])(r).Clone()
 }
 
 func (r *RefInputEventScreenDragImpl) IsValid() bool {
@@ -11139,6 +12083,10 @@ func (r *RefInputEventScreenTouchImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefInputEventScreenTouchImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventScreenTouch])(r).Clone()
+}
+
 func (r *RefInputEventScreenTouchImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -11184,6 +12132,10 @@ func (r *RefInputEventShortcutImpl) TypedRef(from *RefInputEventShortcutImpl) {
 func (r *RefInputEventShortcutImpl) Unref() {
 	rg := (*TypedRef[InputEventShortcut])(r)
 	rg.Unref()
+}
+
+func (r *RefInputEventShortcutImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventShortcut])(r).Clone()
 }
 
 func (r *RefInputEventShortcutImpl) IsValid() bool {
@@ -11233,6 +12185,10 @@ func (r *RefInputEventWithModifiersImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefInputEventWithModifiersImpl) Clone() Ref {
+	return (*RefCountedRef[InputEventWithModifiers])(r).Clone()
+}
+
 func (r *RefInputEventWithModifiersImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -11278,6 +12234,10 @@ func (r *RefIntervalTweenerImpl) TypedRef(from *RefIntervalTweenerImpl) {
 func (r *RefIntervalTweenerImpl) Unref() {
 	rg := (*TypedRef[IntervalTweener])(r)
 	rg.Unref()
+}
+
+func (r *RefIntervalTweenerImpl) Clone() Ref {
+	return (*RefCountedRef[IntervalTweener])(r).Clone()
 }
 
 func (r *RefIntervalTweenerImpl) IsValid() bool {
@@ -11327,6 +12287,10 @@ func (r *RefJSONImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefJSONImpl) Clone() Ref {
+	return (*RefCountedRef[JSON])(r).Clone()
+}
+
 func (r *RefJSONImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -11372,6 +12336,10 @@ func (r *RefJavaClassImpl) TypedRef(from *RefJavaClassImpl) {
 func (r *RefJavaClassImpl) Unref() {
 	rg := (*TypedRef[JavaClass])(r)
 	rg.Unref()
+}
+
+func (r *RefJavaClassImpl) Clone() Ref {
+	return (*RefCountedRef[JavaClass])(r).Clone()
 }
 
 func (r *RefJavaClassImpl) IsValid() bool {
@@ -11421,6 +12389,10 @@ func (r *RefJavaObjectImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefJavaObjectImpl) Clone() Ref {
+	return (*RefCountedRef[JavaObject])(r).Clone()
+}
+
 func (r *RefJavaObjectImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -11466,6 +12438,10 @@ func (r *RefJavaScriptObjectImpl) TypedRef(from *RefJavaScriptObjectImpl) {
 func (r *RefJavaScriptObjectImpl) Unref() {
 	rg := (*TypedRef[JavaScriptObject])(r)
 	rg.Unref()
+}
+
+func (r *RefJavaScriptObjectImpl) Clone() Ref {
+	return (*RefCountedRef[JavaScriptObject])(r).Clone()
 }
 
 func (r *RefJavaScriptObjectImpl) IsValid() bool {
@@ -11515,6 +12491,10 @@ func (r *RefJointLimitation3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefJointLimitation3DImpl) Clone() Ref {
+	return (*RefCountedRef[JointLimitation3D])(r).Clone()
+}
+
 func (r *RefJointLimitation3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -11560,6 +12540,10 @@ func (r *RefJointLimitationCone3DImpl) TypedRef(from *RefJointLimitationCone3DIm
 func (r *RefJointLimitationCone3DImpl) Unref() {
 	rg := (*TypedRef[JointLimitationCone3D])(r)
 	rg.Unref()
+}
+
+func (r *RefJointLimitationCone3DImpl) Clone() Ref {
+	return (*RefCountedRef[JointLimitationCone3D])(r).Clone()
 }
 
 func (r *RefJointLimitationCone3DImpl) IsValid() bool {
@@ -11609,6 +12593,10 @@ func (r *RefKinematicCollision2DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefKinematicCollision2DImpl) Clone() Ref {
+	return (*RefCountedRef[KinematicCollision2D])(r).Clone()
+}
+
 func (r *RefKinematicCollision2DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -11654,6 +12642,10 @@ func (r *RefKinematicCollision3DImpl) TypedRef(from *RefKinematicCollision3DImpl
 func (r *RefKinematicCollision3DImpl) Unref() {
 	rg := (*TypedRef[KinematicCollision3D])(r)
 	rg.Unref()
+}
+
+func (r *RefKinematicCollision3DImpl) Clone() Ref {
+	return (*RefCountedRef[KinematicCollision3D])(r).Clone()
 }
 
 func (r *RefKinematicCollision3DImpl) IsValid() bool {
@@ -11703,6 +12695,10 @@ func (r *RefLabelSettingsImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefLabelSettingsImpl) Clone() Ref {
+	return (*RefCountedRef[LabelSettings])(r).Clone()
+}
+
 func (r *RefLabelSettingsImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -11748,6 +12744,10 @@ func (r *RefLightmapGIDataImpl) TypedRef(from *RefLightmapGIDataImpl) {
 func (r *RefLightmapGIDataImpl) Unref() {
 	rg := (*TypedRef[LightmapGIData])(r)
 	rg.Unref()
+}
+
+func (r *RefLightmapGIDataImpl) Clone() Ref {
+	return (*RefCountedRef[LightmapGIData])(r).Clone()
 }
 
 func (r *RefLightmapGIDataImpl) IsValid() bool {
@@ -11797,6 +12797,10 @@ func (r *RefLightmapperImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefLightmapperImpl) Clone() Ref {
+	return (*RefCountedRef[Lightmapper])(r).Clone()
+}
+
 func (r *RefLightmapperImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -11842,6 +12846,10 @@ func (r *RefLightmapperRDImpl) TypedRef(from *RefLightmapperRDImpl) {
 func (r *RefLightmapperRDImpl) Unref() {
 	rg := (*TypedRef[LightmapperRD])(r)
 	rg.Unref()
+}
+
+func (r *RefLightmapperRDImpl) Clone() Ref {
+	return (*RefCountedRef[LightmapperRD])(r).Clone()
 }
 
 func (r *RefLightmapperRDImpl) IsValid() bool {
@@ -11891,6 +12899,10 @@ func (r *RefLoggerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefLoggerImpl) Clone() Ref {
+	return (*RefCountedRef[Logger])(r).Clone()
+}
+
 func (r *RefLoggerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -11936,6 +12948,10 @@ func (r *RefMaterialImpl) TypedRef(from *RefMaterialImpl) {
 func (r *RefMaterialImpl) Unref() {
 	rg := (*TypedRef[Material])(r)
 	rg.Unref()
+}
+
+func (r *RefMaterialImpl) Clone() Ref {
+	return (*RefCountedRef[Material])(r).Clone()
 }
 
 func (r *RefMaterialImpl) IsValid() bool {
@@ -11985,6 +13001,10 @@ func (r *RefMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefMeshImpl) Clone() Ref {
+	return (*RefCountedRef[Mesh])(r).Clone()
+}
+
 func (r *RefMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -12030,6 +13050,10 @@ func (r *RefMeshConvexDecompositionSettingsImpl) TypedRef(from *RefMeshConvexDec
 func (r *RefMeshConvexDecompositionSettingsImpl) Unref() {
 	rg := (*TypedRef[MeshConvexDecompositionSettings])(r)
 	rg.Unref()
+}
+
+func (r *RefMeshConvexDecompositionSettingsImpl) Clone() Ref {
+	return (*RefCountedRef[MeshConvexDecompositionSettings])(r).Clone()
 }
 
 func (r *RefMeshConvexDecompositionSettingsImpl) IsValid() bool {
@@ -12079,6 +13103,10 @@ func (r *RefMeshDataToolImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefMeshDataToolImpl) Clone() Ref {
+	return (*RefCountedRef[MeshDataTool])(r).Clone()
+}
+
 func (r *RefMeshDataToolImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -12124,6 +13152,10 @@ func (r *RefMeshLibraryImpl) TypedRef(from *RefMeshLibraryImpl) {
 func (r *RefMeshLibraryImpl) Unref() {
 	rg := (*TypedRef[MeshLibrary])(r)
 	rg.Unref()
+}
+
+func (r *RefMeshLibraryImpl) Clone() Ref {
+	return (*RefCountedRef[MeshLibrary])(r).Clone()
 }
 
 func (r *RefMeshLibraryImpl) IsValid() bool {
@@ -12173,6 +13205,10 @@ func (r *RefMeshTextureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefMeshTextureImpl) Clone() Ref {
+	return (*RefCountedRef[MeshTexture])(r).Clone()
+}
+
 func (r *RefMeshTextureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -12218,6 +13254,10 @@ func (r *RefMethodTweenerImpl) TypedRef(from *RefMethodTweenerImpl) {
 func (r *RefMethodTweenerImpl) Unref() {
 	rg := (*TypedRef[MethodTweener])(r)
 	rg.Unref()
+}
+
+func (r *RefMethodTweenerImpl) Clone() Ref {
+	return (*RefCountedRef[MethodTweener])(r).Clone()
 }
 
 func (r *RefMethodTweenerImpl) IsValid() bool {
@@ -12267,6 +13307,10 @@ func (r *RefMissingResourceImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefMissingResourceImpl) Clone() Ref {
+	return (*RefCountedRef[MissingResource])(r).Clone()
+}
+
 func (r *RefMissingResourceImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -12312,6 +13356,10 @@ func (r *RefMobileVRInterfaceImpl) TypedRef(from *RefMobileVRInterfaceImpl) {
 func (r *RefMobileVRInterfaceImpl) Unref() {
 	rg := (*TypedRef[MobileVRInterface])(r)
 	rg.Unref()
+}
+
+func (r *RefMobileVRInterfaceImpl) Clone() Ref {
+	return (*RefCountedRef[MobileVRInterface])(r).Clone()
 }
 
 func (r *RefMobileVRInterfaceImpl) IsValid() bool {
@@ -12361,6 +13409,10 @@ func (r *RefMultiMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefMultiMeshImpl) Clone() Ref {
+	return (*RefCountedRef[MultiMesh])(r).Clone()
+}
+
 func (r *RefMultiMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -12406,6 +13458,10 @@ func (r *RefMultiplayerAPIImpl) TypedRef(from *RefMultiplayerAPIImpl) {
 func (r *RefMultiplayerAPIImpl) Unref() {
 	rg := (*TypedRef[MultiplayerAPI])(r)
 	rg.Unref()
+}
+
+func (r *RefMultiplayerAPIImpl) Clone() Ref {
+	return (*RefCountedRef[MultiplayerAPI])(r).Clone()
 }
 
 func (r *RefMultiplayerAPIImpl) IsValid() bool {
@@ -12455,6 +13511,10 @@ func (r *RefMultiplayerAPIExtensionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefMultiplayerAPIExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[MultiplayerAPIExtension])(r).Clone()
+}
+
 func (r *RefMultiplayerAPIExtensionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -12500,6 +13560,10 @@ func (r *RefMultiplayerPeerImpl) TypedRef(from *RefMultiplayerPeerImpl) {
 func (r *RefMultiplayerPeerImpl) Unref() {
 	rg := (*TypedRef[MultiplayerPeer])(r)
 	rg.Unref()
+}
+
+func (r *RefMultiplayerPeerImpl) Clone() Ref {
+	return (*RefCountedRef[MultiplayerPeer])(r).Clone()
 }
 
 func (r *RefMultiplayerPeerImpl) IsValid() bool {
@@ -12549,6 +13613,10 @@ func (r *RefMultiplayerPeerExtensionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefMultiplayerPeerExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[MultiplayerPeerExtension])(r).Clone()
+}
+
 func (r *RefMultiplayerPeerExtensionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -12594,6 +13662,10 @@ func (r *RefMutexImpl) TypedRef(from *RefMutexImpl) {
 func (r *RefMutexImpl) Unref() {
 	rg := (*TypedRef[Mutex])(r)
 	rg.Unref()
+}
+
+func (r *RefMutexImpl) Clone() Ref {
+	return (*RefCountedRef[Mutex])(r).Clone()
 }
 
 func (r *RefMutexImpl) IsValid() bool {
@@ -12643,6 +13715,10 @@ func (r *RefNavigationMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefNavigationMeshImpl) Clone() Ref {
+	return (*RefCountedRef[NavigationMesh])(r).Clone()
+}
+
 func (r *RefNavigationMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -12688,6 +13764,10 @@ func (r *RefNavigationMeshSourceGeometryData2DImpl) TypedRef(from *RefNavigation
 func (r *RefNavigationMeshSourceGeometryData2DImpl) Unref() {
 	rg := (*TypedRef[NavigationMeshSourceGeometryData2D])(r)
 	rg.Unref()
+}
+
+func (r *RefNavigationMeshSourceGeometryData2DImpl) Clone() Ref {
+	return (*RefCountedRef[NavigationMeshSourceGeometryData2D])(r).Clone()
 }
 
 func (r *RefNavigationMeshSourceGeometryData2DImpl) IsValid() bool {
@@ -12737,6 +13817,10 @@ func (r *RefNavigationMeshSourceGeometryData3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefNavigationMeshSourceGeometryData3DImpl) Clone() Ref {
+	return (*RefCountedRef[NavigationMeshSourceGeometryData3D])(r).Clone()
+}
+
 func (r *RefNavigationMeshSourceGeometryData3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -12782,6 +13866,10 @@ func (r *RefNavigationPathQueryParameters2DImpl) TypedRef(from *RefNavigationPat
 func (r *RefNavigationPathQueryParameters2DImpl) Unref() {
 	rg := (*TypedRef[NavigationPathQueryParameters2D])(r)
 	rg.Unref()
+}
+
+func (r *RefNavigationPathQueryParameters2DImpl) Clone() Ref {
+	return (*RefCountedRef[NavigationPathQueryParameters2D])(r).Clone()
 }
 
 func (r *RefNavigationPathQueryParameters2DImpl) IsValid() bool {
@@ -12831,6 +13919,10 @@ func (r *RefNavigationPathQueryParameters3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefNavigationPathQueryParameters3DImpl) Clone() Ref {
+	return (*RefCountedRef[NavigationPathQueryParameters3D])(r).Clone()
+}
+
 func (r *RefNavigationPathQueryParameters3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -12876,6 +13968,10 @@ func (r *RefNavigationPathQueryResult2DImpl) TypedRef(from *RefNavigationPathQue
 func (r *RefNavigationPathQueryResult2DImpl) Unref() {
 	rg := (*TypedRef[NavigationPathQueryResult2D])(r)
 	rg.Unref()
+}
+
+func (r *RefNavigationPathQueryResult2DImpl) Clone() Ref {
+	return (*RefCountedRef[NavigationPathQueryResult2D])(r).Clone()
 }
 
 func (r *RefNavigationPathQueryResult2DImpl) IsValid() bool {
@@ -12925,6 +14021,10 @@ func (r *RefNavigationPathQueryResult3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefNavigationPathQueryResult3DImpl) Clone() Ref {
+	return (*RefCountedRef[NavigationPathQueryResult3D])(r).Clone()
+}
+
 func (r *RefNavigationPathQueryResult3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -12970,6 +14070,10 @@ func (r *RefNavigationPolygonImpl) TypedRef(from *RefNavigationPolygonImpl) {
 func (r *RefNavigationPolygonImpl) Unref() {
 	rg := (*TypedRef[NavigationPolygon])(r)
 	rg.Unref()
+}
+
+func (r *RefNavigationPolygonImpl) Clone() Ref {
+	return (*RefCountedRef[NavigationPolygon])(r).Clone()
 }
 
 func (r *RefNavigationPolygonImpl) IsValid() bool {
@@ -13019,6 +14123,10 @@ func (r *RefNode3DGizmoImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefNode3DGizmoImpl) Clone() Ref {
+	return (*RefCountedRef[Node3DGizmo])(r).Clone()
+}
+
 func (r *RefNode3DGizmoImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -13064,6 +14172,10 @@ func (r *RefNoiseImpl) TypedRef(from *RefNoiseImpl) {
 func (r *RefNoiseImpl) Unref() {
 	rg := (*TypedRef[Noise])(r)
 	rg.Unref()
+}
+
+func (r *RefNoiseImpl) Clone() Ref {
+	return (*RefCountedRef[Noise])(r).Clone()
 }
 
 func (r *RefNoiseImpl) IsValid() bool {
@@ -13113,6 +14225,10 @@ func (r *RefNoiseTexture2DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefNoiseTexture2DImpl) Clone() Ref {
+	return (*RefCountedRef[NoiseTexture2D])(r).Clone()
+}
+
 func (r *RefNoiseTexture2DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -13158,6 +14274,10 @@ func (r *RefNoiseTexture3DImpl) TypedRef(from *RefNoiseTexture3DImpl) {
 func (r *RefNoiseTexture3DImpl) Unref() {
 	rg := (*TypedRef[NoiseTexture3D])(r)
 	rg.Unref()
+}
+
+func (r *RefNoiseTexture3DImpl) Clone() Ref {
+	return (*RefCountedRef[NoiseTexture3D])(r).Clone()
 }
 
 func (r *RefNoiseTexture3DImpl) IsValid() bool {
@@ -13207,6 +14327,10 @@ func (r *RefORMMaterial3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefORMMaterial3DImpl) Clone() Ref {
+	return (*RefCountedRef[ORMMaterial3D])(r).Clone()
+}
+
 func (r *RefORMMaterial3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -13252,6 +14376,10 @@ func (r *RefOccluder3DImpl) TypedRef(from *RefOccluder3DImpl) {
 func (r *RefOccluder3DImpl) Unref() {
 	rg := (*TypedRef[Occluder3D])(r)
 	rg.Unref()
+}
+
+func (r *RefOccluder3DImpl) Clone() Ref {
+	return (*RefCountedRef[Occluder3D])(r).Clone()
 }
 
 func (r *RefOccluder3DImpl) IsValid() bool {
@@ -13301,6 +14429,10 @@ func (r *RefOccluderPolygon2DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOccluderPolygon2DImpl) Clone() Ref {
+	return (*RefCountedRef[OccluderPolygon2D])(r).Clone()
+}
+
 func (r *RefOccluderPolygon2DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -13346,6 +14478,10 @@ func (r *RefOfflineMultiplayerPeerImpl) TypedRef(from *RefOfflineMultiplayerPeer
 func (r *RefOfflineMultiplayerPeerImpl) Unref() {
 	rg := (*TypedRef[OfflineMultiplayerPeer])(r)
 	rg.Unref()
+}
+
+func (r *RefOfflineMultiplayerPeerImpl) Clone() Ref {
+	return (*RefCountedRef[OfflineMultiplayerPeer])(r).Clone()
 }
 
 func (r *RefOfflineMultiplayerPeerImpl) IsValid() bool {
@@ -13395,6 +14531,10 @@ func (r *RefOggPacketSequenceImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOggPacketSequenceImpl) Clone() Ref {
+	return (*RefCountedRef[OggPacketSequence])(r).Clone()
+}
+
 func (r *RefOggPacketSequenceImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -13440,6 +14580,10 @@ func (r *RefOggPacketSequencePlaybackImpl) TypedRef(from *RefOggPacketSequencePl
 func (r *RefOggPacketSequencePlaybackImpl) Unref() {
 	rg := (*TypedRef[OggPacketSequencePlayback])(r)
 	rg.Unref()
+}
+
+func (r *RefOggPacketSequencePlaybackImpl) Clone() Ref {
+	return (*RefCountedRef[OggPacketSequencePlayback])(r).Clone()
 }
 
 func (r *RefOggPacketSequencePlaybackImpl) IsValid() bool {
@@ -13489,6 +14633,10 @@ func (r *RefOpenXRAPIExtensionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRAPIExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRAPIExtension])(r).Clone()
+}
+
 func (r *RefOpenXRAPIExtensionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -13534,6 +14682,10 @@ func (r *RefOpenXRActionImpl) TypedRef(from *RefOpenXRActionImpl) {
 func (r *RefOpenXRActionImpl) Unref() {
 	rg := (*TypedRef[OpenXRAction])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRActionImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRAction])(r).Clone()
 }
 
 func (r *RefOpenXRActionImpl) IsValid() bool {
@@ -13583,6 +14735,10 @@ func (r *RefOpenXRActionBindingModifierImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRActionBindingModifierImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRActionBindingModifier])(r).Clone()
+}
+
 func (r *RefOpenXRActionBindingModifierImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -13628,6 +14784,10 @@ func (r *RefOpenXRActionMapImpl) TypedRef(from *RefOpenXRActionMapImpl) {
 func (r *RefOpenXRActionMapImpl) Unref() {
 	rg := (*TypedRef[OpenXRActionMap])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRActionMapImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRActionMap])(r).Clone()
 }
 
 func (r *RefOpenXRActionMapImpl) IsValid() bool {
@@ -13677,6 +14837,10 @@ func (r *RefOpenXRActionSetImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRActionSetImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRActionSet])(r).Clone()
+}
+
 func (r *RefOpenXRActionSetImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -13722,6 +14886,10 @@ func (r *RefOpenXRAnalogThresholdModifierImpl) TypedRef(from *RefOpenXRAnalogThr
 func (r *RefOpenXRAnalogThresholdModifierImpl) Unref() {
 	rg := (*TypedRef[OpenXRAnalogThresholdModifier])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRAnalogThresholdModifierImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRAnalogThresholdModifier])(r).Clone()
 }
 
 func (r *RefOpenXRAnalogThresholdModifierImpl) IsValid() bool {
@@ -13771,6 +14939,10 @@ func (r *RefOpenXRAnchorTrackerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRAnchorTrackerImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRAnchorTracker])(r).Clone()
+}
+
 func (r *RefOpenXRAnchorTrackerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -13816,6 +14988,10 @@ func (r *RefOpenXRBindingModifierImpl) TypedRef(from *RefOpenXRBindingModifierIm
 func (r *RefOpenXRBindingModifierImpl) Unref() {
 	rg := (*TypedRef[OpenXRBindingModifier])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRBindingModifierImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRBindingModifier])(r).Clone()
 }
 
 func (r *RefOpenXRBindingModifierImpl) IsValid() bool {
@@ -13865,6 +15041,10 @@ func (r *RefOpenXRDpadBindingModifierImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRDpadBindingModifierImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRDpadBindingModifier])(r).Clone()
+}
+
 func (r *RefOpenXRDpadBindingModifierImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -13910,6 +15090,10 @@ func (r *RefOpenXRFutureResultImpl) TypedRef(from *RefOpenXRFutureResultImpl) {
 func (r *RefOpenXRFutureResultImpl) Unref() {
 	rg := (*TypedRef[OpenXRFutureResult])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRFutureResultImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRFutureResult])(r).Clone()
 }
 
 func (r *RefOpenXRFutureResultImpl) IsValid() bool {
@@ -13959,6 +15143,10 @@ func (r *RefOpenXRHapticBaseImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRHapticBaseImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRHapticBase])(r).Clone()
+}
+
 func (r *RefOpenXRHapticBaseImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -14004,6 +15192,10 @@ func (r *RefOpenXRHapticVibrationImpl) TypedRef(from *RefOpenXRHapticVibrationIm
 func (r *RefOpenXRHapticVibrationImpl) Unref() {
 	rg := (*TypedRef[OpenXRHapticVibration])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRHapticVibrationImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRHapticVibration])(r).Clone()
 }
 
 func (r *RefOpenXRHapticVibrationImpl) IsValid() bool {
@@ -14053,6 +15245,10 @@ func (r *RefOpenXRIPBindingImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRIPBindingImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRIPBinding])(r).Clone()
+}
+
 func (r *RefOpenXRIPBindingImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -14098,6 +15294,10 @@ func (r *RefOpenXRIPBindingModifierImpl) TypedRef(from *RefOpenXRIPBindingModifi
 func (r *RefOpenXRIPBindingModifierImpl) Unref() {
 	rg := (*TypedRef[OpenXRIPBindingModifier])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRIPBindingModifierImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRIPBindingModifier])(r).Clone()
 }
 
 func (r *RefOpenXRIPBindingModifierImpl) IsValid() bool {
@@ -14147,6 +15347,10 @@ func (r *RefOpenXRInteractionProfileImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRInteractionProfileImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRInteractionProfile])(r).Clone()
+}
+
 func (r *RefOpenXRInteractionProfileImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -14192,6 +15396,10 @@ func (r *RefOpenXRInterfaceImpl) TypedRef(from *RefOpenXRInterfaceImpl) {
 func (r *RefOpenXRInterfaceImpl) Unref() {
 	rg := (*TypedRef[OpenXRInterface])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRInterfaceImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRInterface])(r).Clone()
 }
 
 func (r *RefOpenXRInterfaceImpl) IsValid() bool {
@@ -14241,6 +15449,10 @@ func (r *RefOpenXRMarkerTrackerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRMarkerTrackerImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRMarkerTracker])(r).Clone()
+}
+
 func (r *RefOpenXRMarkerTrackerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -14286,6 +15498,10 @@ func (r *RefOpenXRPlaneTrackerImpl) TypedRef(from *RefOpenXRPlaneTrackerImpl) {
 func (r *RefOpenXRPlaneTrackerImpl) Unref() {
 	rg := (*TypedRef[OpenXRPlaneTracker])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRPlaneTrackerImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRPlaneTracker])(r).Clone()
 }
 
 func (r *RefOpenXRPlaneTrackerImpl) IsValid() bool {
@@ -14335,6 +15551,10 @@ func (r *RefOpenXRSpatialCapabilityConfigurationAnchorImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRSpatialCapabilityConfigurationAnchorImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialCapabilityConfigurationAnchor])(r).Clone()
+}
+
 func (r *RefOpenXRSpatialCapabilityConfigurationAnchorImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -14380,6 +15600,10 @@ func (r *RefOpenXRSpatialCapabilityConfigurationAprilTagImpl) TypedRef(from *Ref
 func (r *RefOpenXRSpatialCapabilityConfigurationAprilTagImpl) Unref() {
 	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAprilTag])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAprilTagImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialCapabilityConfigurationAprilTag])(r).Clone()
 }
 
 func (r *RefOpenXRSpatialCapabilityConfigurationAprilTagImpl) IsValid() bool {
@@ -14429,6 +15653,10 @@ func (r *RefOpenXRSpatialCapabilityConfigurationArucoImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRSpatialCapabilityConfigurationArucoImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialCapabilityConfigurationAruco])(r).Clone()
+}
+
 func (r *RefOpenXRSpatialCapabilityConfigurationArucoImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -14474,6 +15702,10 @@ func (r *RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl) TypedRef(from *R
 func (r *RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl) Unref() {
 	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationBaseHeader])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialCapabilityConfigurationBaseHeader])(r).Clone()
 }
 
 func (r *RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl) IsValid() bool {
@@ -14523,6 +15755,10 @@ func (r *RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialCapabilityConfigurationMicroQrCode])(r).Clone()
+}
+
 func (r *RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -14568,6 +15804,10 @@ func (r *RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) TypedRef(from
 func (r *RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) Unref() {
 	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationPlaneTracking])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialCapabilityConfigurationPlaneTracking])(r).Clone()
 }
 
 func (r *RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) IsValid() bool {
@@ -14617,6 +15857,10 @@ func (r *RefOpenXRSpatialCapabilityConfigurationQrCodeImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRSpatialCapabilityConfigurationQrCodeImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialCapabilityConfigurationQrCode])(r).Clone()
+}
+
 func (r *RefOpenXRSpatialCapabilityConfigurationQrCodeImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -14662,6 +15906,10 @@ func (r *RefOpenXRSpatialComponentAnchorListImpl) TypedRef(from *RefOpenXRSpatia
 func (r *RefOpenXRSpatialComponentAnchorListImpl) Unref() {
 	rg := (*TypedRef[OpenXRSpatialComponentAnchorList])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentAnchorListImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentAnchorList])(r).Clone()
 }
 
 func (r *RefOpenXRSpatialComponentAnchorListImpl) IsValid() bool {
@@ -14711,6 +15959,10 @@ func (r *RefOpenXRSpatialComponentBounded2DListImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRSpatialComponentBounded2DListImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentBounded2DList])(r).Clone()
+}
+
 func (r *RefOpenXRSpatialComponentBounded2DListImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -14756,6 +16008,10 @@ func (r *RefOpenXRSpatialComponentBounded3DListImpl) TypedRef(from *RefOpenXRSpa
 func (r *RefOpenXRSpatialComponentBounded3DListImpl) Unref() {
 	rg := (*TypedRef[OpenXRSpatialComponentBounded3DList])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentBounded3DListImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentBounded3DList])(r).Clone()
 }
 
 func (r *RefOpenXRSpatialComponentBounded3DListImpl) IsValid() bool {
@@ -14805,6 +16061,10 @@ func (r *RefOpenXRSpatialComponentDataImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRSpatialComponentDataImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentData])(r).Clone()
+}
+
 func (r *RefOpenXRSpatialComponentDataImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -14850,6 +16110,10 @@ func (r *RefOpenXRSpatialComponentMarkerListImpl) TypedRef(from *RefOpenXRSpatia
 func (r *RefOpenXRSpatialComponentMarkerListImpl) Unref() {
 	rg := (*TypedRef[OpenXRSpatialComponentMarkerList])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentMarkerListImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentMarkerList])(r).Clone()
 }
 
 func (r *RefOpenXRSpatialComponentMarkerListImpl) IsValid() bool {
@@ -14899,6 +16163,10 @@ func (r *RefOpenXRSpatialComponentMesh2DListImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRSpatialComponentMesh2DListImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentMesh2DList])(r).Clone()
+}
+
 func (r *RefOpenXRSpatialComponentMesh2DListImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -14944,6 +16212,10 @@ func (r *RefOpenXRSpatialComponentMesh3DListImpl) TypedRef(from *RefOpenXRSpatia
 func (r *RefOpenXRSpatialComponentMesh3DListImpl) Unref() {
 	rg := (*TypedRef[OpenXRSpatialComponentMesh3DList])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentMesh3DListImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentMesh3DList])(r).Clone()
 }
 
 func (r *RefOpenXRSpatialComponentMesh3DListImpl) IsValid() bool {
@@ -14993,6 +16265,10 @@ func (r *RefOpenXRSpatialComponentParentListImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRSpatialComponentParentListImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentParentList])(r).Clone()
+}
+
 func (r *RefOpenXRSpatialComponentParentListImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -15038,6 +16314,10 @@ func (r *RefOpenXRSpatialComponentPersistenceListImpl) TypedRef(from *RefOpenXRS
 func (r *RefOpenXRSpatialComponentPersistenceListImpl) Unref() {
 	rg := (*TypedRef[OpenXRSpatialComponentPersistenceList])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentPersistenceListImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentPersistenceList])(r).Clone()
 }
 
 func (r *RefOpenXRSpatialComponentPersistenceListImpl) IsValid() bool {
@@ -15087,6 +16367,10 @@ func (r *RefOpenXRSpatialComponentPlaneAlignmentListImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRSpatialComponentPlaneAlignmentListImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentPlaneAlignmentList])(r).Clone()
+}
+
 func (r *RefOpenXRSpatialComponentPlaneAlignmentListImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -15132,6 +16416,10 @@ func (r *RefOpenXRSpatialComponentPlaneSemanticLabelListImpl) TypedRef(from *Ref
 func (r *RefOpenXRSpatialComponentPlaneSemanticLabelListImpl) Unref() {
 	rg := (*TypedRef[OpenXRSpatialComponentPlaneSemanticLabelList])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentPlaneSemanticLabelListImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentPlaneSemanticLabelList])(r).Clone()
 }
 
 func (r *RefOpenXRSpatialComponentPlaneSemanticLabelListImpl) IsValid() bool {
@@ -15181,6 +16469,10 @@ func (r *RefOpenXRSpatialComponentPolygon2DListImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRSpatialComponentPolygon2DListImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialComponentPolygon2DList])(r).Clone()
+}
+
 func (r *RefOpenXRSpatialComponentPolygon2DListImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -15226,6 +16518,10 @@ func (r *RefOpenXRSpatialContextPersistenceConfigImpl) TypedRef(from *RefOpenXRS
 func (r *RefOpenXRSpatialContextPersistenceConfigImpl) Unref() {
 	rg := (*TypedRef[OpenXRSpatialContextPersistenceConfig])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialContextPersistenceConfigImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialContextPersistenceConfig])(r).Clone()
 }
 
 func (r *RefOpenXRSpatialContextPersistenceConfigImpl) IsValid() bool {
@@ -15275,6 +16571,10 @@ func (r *RefOpenXRSpatialEntityTrackerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRSpatialEntityTrackerImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialEntityTracker])(r).Clone()
+}
+
 func (r *RefOpenXRSpatialEntityTrackerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -15320,6 +16620,10 @@ func (r *RefOpenXRSpatialQueryResultDataImpl) TypedRef(from *RefOpenXRSpatialQue
 func (r *RefOpenXRSpatialQueryResultDataImpl) Unref() {
 	rg := (*TypedRef[OpenXRSpatialQueryResultData])(r)
 	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialQueryResultDataImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRSpatialQueryResultData])(r).Clone()
 }
 
 func (r *RefOpenXRSpatialQueryResultDataImpl) IsValid() bool {
@@ -15369,6 +16673,10 @@ func (r *RefOpenXRStructureBaseImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefOpenXRStructureBaseImpl) Clone() Ref {
+	return (*RefCountedRef[OpenXRStructureBase])(r).Clone()
+}
+
 func (r *RefOpenXRStructureBaseImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -15414,6 +16722,10 @@ func (r *RefOptimizedTranslationImpl) TypedRef(from *RefOptimizedTranslationImpl
 func (r *RefOptimizedTranslationImpl) Unref() {
 	rg := (*TypedRef[OptimizedTranslation])(r)
 	rg.Unref()
+}
+
+func (r *RefOptimizedTranslationImpl) Clone() Ref {
+	return (*RefCountedRef[OptimizedTranslation])(r).Clone()
 }
 
 func (r *RefOptimizedTranslationImpl) IsValid() bool {
@@ -15463,6 +16775,10 @@ func (r *RefPCKPackerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPCKPackerImpl) Clone() Ref {
+	return (*RefCountedRef[PCKPacker])(r).Clone()
+}
+
 func (r *RefPCKPackerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -15508,6 +16824,10 @@ func (r *RefPackedDataContainerImpl) TypedRef(from *RefPackedDataContainerImpl) 
 func (r *RefPackedDataContainerImpl) Unref() {
 	rg := (*TypedRef[PackedDataContainer])(r)
 	rg.Unref()
+}
+
+func (r *RefPackedDataContainerImpl) Clone() Ref {
+	return (*RefCountedRef[PackedDataContainer])(r).Clone()
 }
 
 func (r *RefPackedDataContainerImpl) IsValid() bool {
@@ -15557,6 +16877,10 @@ func (r *RefPackedDataContainerRefImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPackedDataContainerRefImpl) Clone() Ref {
+	return (*RefCountedRef[PackedDataContainerRef])(r).Clone()
+}
+
 func (r *RefPackedDataContainerRefImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -15602,6 +16926,10 @@ func (r *RefPackedSceneImpl) TypedRef(from *RefPackedSceneImpl) {
 func (r *RefPackedSceneImpl) Unref() {
 	rg := (*TypedRef[PackedScene])(r)
 	rg.Unref()
+}
+
+func (r *RefPackedSceneImpl) Clone() Ref {
+	return (*RefCountedRef[PackedScene])(r).Clone()
 }
 
 func (r *RefPackedSceneImpl) IsValid() bool {
@@ -15651,6 +16979,10 @@ func (r *RefPacketPeerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPacketPeerImpl) Clone() Ref {
+	return (*RefCountedRef[PacketPeer])(r).Clone()
+}
+
 func (r *RefPacketPeerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -15696,6 +17028,10 @@ func (r *RefPacketPeerDTLSImpl) TypedRef(from *RefPacketPeerDTLSImpl) {
 func (r *RefPacketPeerDTLSImpl) Unref() {
 	rg := (*TypedRef[PacketPeerDTLS])(r)
 	rg.Unref()
+}
+
+func (r *RefPacketPeerDTLSImpl) Clone() Ref {
+	return (*RefCountedRef[PacketPeerDTLS])(r).Clone()
 }
 
 func (r *RefPacketPeerDTLSImpl) IsValid() bool {
@@ -15745,6 +17081,10 @@ func (r *RefPacketPeerExtensionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPacketPeerExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[PacketPeerExtension])(r).Clone()
+}
+
 func (r *RefPacketPeerExtensionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -15790,6 +17130,10 @@ func (r *RefPacketPeerStreamImpl) TypedRef(from *RefPacketPeerStreamImpl) {
 func (r *RefPacketPeerStreamImpl) Unref() {
 	rg := (*TypedRef[PacketPeerStream])(r)
 	rg.Unref()
+}
+
+func (r *RefPacketPeerStreamImpl) Clone() Ref {
+	return (*RefCountedRef[PacketPeerStream])(r).Clone()
 }
 
 func (r *RefPacketPeerStreamImpl) IsValid() bool {
@@ -15839,6 +17183,10 @@ func (r *RefPacketPeerUDPImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPacketPeerUDPImpl) Clone() Ref {
+	return (*RefCountedRef[PacketPeerUDP])(r).Clone()
+}
+
 func (r *RefPacketPeerUDPImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -15884,6 +17232,10 @@ func (r *RefPanoramaSkyMaterialImpl) TypedRef(from *RefPanoramaSkyMaterialImpl) 
 func (r *RefPanoramaSkyMaterialImpl) Unref() {
 	rg := (*TypedRef[PanoramaSkyMaterial])(r)
 	rg.Unref()
+}
+
+func (r *RefPanoramaSkyMaterialImpl) Clone() Ref {
+	return (*RefCountedRef[PanoramaSkyMaterial])(r).Clone()
 }
 
 func (r *RefPanoramaSkyMaterialImpl) IsValid() bool {
@@ -15933,6 +17285,10 @@ func (r *RefParticleProcessMaterialImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefParticleProcessMaterialImpl) Clone() Ref {
+	return (*RefCountedRef[ParticleProcessMaterial])(r).Clone()
+}
+
 func (r *RefParticleProcessMaterialImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -15978,6 +17334,10 @@ func (r *RefPhysicalSkyMaterialImpl) TypedRef(from *RefPhysicalSkyMaterialImpl) 
 func (r *RefPhysicalSkyMaterialImpl) Unref() {
 	rg := (*TypedRef[PhysicalSkyMaterial])(r)
 	rg.Unref()
+}
+
+func (r *RefPhysicalSkyMaterialImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicalSkyMaterial])(r).Clone()
 }
 
 func (r *RefPhysicalSkyMaterialImpl) IsValid() bool {
@@ -16027,6 +17387,10 @@ func (r *RefPhysicsMaterialImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPhysicsMaterialImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicsMaterial])(r).Clone()
+}
+
 func (r *RefPhysicsMaterialImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -16072,6 +17436,10 @@ func (r *RefPhysicsPointQueryParameters2DImpl) TypedRef(from *RefPhysicsPointQue
 func (r *RefPhysicsPointQueryParameters2DImpl) Unref() {
 	rg := (*TypedRef[PhysicsPointQueryParameters2D])(r)
 	rg.Unref()
+}
+
+func (r *RefPhysicsPointQueryParameters2DImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicsPointQueryParameters2D])(r).Clone()
 }
 
 func (r *RefPhysicsPointQueryParameters2DImpl) IsValid() bool {
@@ -16121,6 +17489,10 @@ func (r *RefPhysicsPointQueryParameters3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPhysicsPointQueryParameters3DImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicsPointQueryParameters3D])(r).Clone()
+}
+
 func (r *RefPhysicsPointQueryParameters3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -16166,6 +17538,10 @@ func (r *RefPhysicsRayQueryParameters2DImpl) TypedRef(from *RefPhysicsRayQueryPa
 func (r *RefPhysicsRayQueryParameters2DImpl) Unref() {
 	rg := (*TypedRef[PhysicsRayQueryParameters2D])(r)
 	rg.Unref()
+}
+
+func (r *RefPhysicsRayQueryParameters2DImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicsRayQueryParameters2D])(r).Clone()
 }
 
 func (r *RefPhysicsRayQueryParameters2DImpl) IsValid() bool {
@@ -16215,6 +17591,10 @@ func (r *RefPhysicsRayQueryParameters3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPhysicsRayQueryParameters3DImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicsRayQueryParameters3D])(r).Clone()
+}
+
 func (r *RefPhysicsRayQueryParameters3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -16260,6 +17640,10 @@ func (r *RefPhysicsShapeQueryParameters2DImpl) TypedRef(from *RefPhysicsShapeQue
 func (r *RefPhysicsShapeQueryParameters2DImpl) Unref() {
 	rg := (*TypedRef[PhysicsShapeQueryParameters2D])(r)
 	rg.Unref()
+}
+
+func (r *RefPhysicsShapeQueryParameters2DImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicsShapeQueryParameters2D])(r).Clone()
 }
 
 func (r *RefPhysicsShapeQueryParameters2DImpl) IsValid() bool {
@@ -16309,6 +17693,10 @@ func (r *RefPhysicsShapeQueryParameters3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPhysicsShapeQueryParameters3DImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicsShapeQueryParameters3D])(r).Clone()
+}
+
 func (r *RefPhysicsShapeQueryParameters3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -16354,6 +17742,10 @@ func (r *RefPhysicsTestMotionParameters2DImpl) TypedRef(from *RefPhysicsTestMoti
 func (r *RefPhysicsTestMotionParameters2DImpl) Unref() {
 	rg := (*TypedRef[PhysicsTestMotionParameters2D])(r)
 	rg.Unref()
+}
+
+func (r *RefPhysicsTestMotionParameters2DImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicsTestMotionParameters2D])(r).Clone()
 }
 
 func (r *RefPhysicsTestMotionParameters2DImpl) IsValid() bool {
@@ -16403,6 +17795,10 @@ func (r *RefPhysicsTestMotionParameters3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPhysicsTestMotionParameters3DImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicsTestMotionParameters3D])(r).Clone()
+}
+
 func (r *RefPhysicsTestMotionParameters3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -16448,6 +17844,10 @@ func (r *RefPhysicsTestMotionResult2DImpl) TypedRef(from *RefPhysicsTestMotionRe
 func (r *RefPhysicsTestMotionResult2DImpl) Unref() {
 	rg := (*TypedRef[PhysicsTestMotionResult2D])(r)
 	rg.Unref()
+}
+
+func (r *RefPhysicsTestMotionResult2DImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicsTestMotionResult2D])(r).Clone()
 }
 
 func (r *RefPhysicsTestMotionResult2DImpl) IsValid() bool {
@@ -16497,6 +17897,10 @@ func (r *RefPhysicsTestMotionResult3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPhysicsTestMotionResult3DImpl) Clone() Ref {
+	return (*RefCountedRef[PhysicsTestMotionResult3D])(r).Clone()
+}
+
 func (r *RefPhysicsTestMotionResult3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -16542,6 +17946,10 @@ func (r *RefPlaceholderCubemapImpl) TypedRef(from *RefPlaceholderCubemapImpl) {
 func (r *RefPlaceholderCubemapImpl) Unref() {
 	rg := (*TypedRef[PlaceholderCubemap])(r)
 	rg.Unref()
+}
+
+func (r *RefPlaceholderCubemapImpl) Clone() Ref {
+	return (*RefCountedRef[PlaceholderCubemap])(r).Clone()
 }
 
 func (r *RefPlaceholderCubemapImpl) IsValid() bool {
@@ -16591,6 +17999,10 @@ func (r *RefPlaceholderCubemapArrayImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPlaceholderCubemapArrayImpl) Clone() Ref {
+	return (*RefCountedRef[PlaceholderCubemapArray])(r).Clone()
+}
+
 func (r *RefPlaceholderCubemapArrayImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -16636,6 +18048,10 @@ func (r *RefPlaceholderMaterialImpl) TypedRef(from *RefPlaceholderMaterialImpl) 
 func (r *RefPlaceholderMaterialImpl) Unref() {
 	rg := (*TypedRef[PlaceholderMaterial])(r)
 	rg.Unref()
+}
+
+func (r *RefPlaceholderMaterialImpl) Clone() Ref {
+	return (*RefCountedRef[PlaceholderMaterial])(r).Clone()
 }
 
 func (r *RefPlaceholderMaterialImpl) IsValid() bool {
@@ -16685,6 +18101,10 @@ func (r *RefPlaceholderMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPlaceholderMeshImpl) Clone() Ref {
+	return (*RefCountedRef[PlaceholderMesh])(r).Clone()
+}
+
 func (r *RefPlaceholderMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -16730,6 +18150,10 @@ func (r *RefPlaceholderTexture2DImpl) TypedRef(from *RefPlaceholderTexture2DImpl
 func (r *RefPlaceholderTexture2DImpl) Unref() {
 	rg := (*TypedRef[PlaceholderTexture2D])(r)
 	rg.Unref()
+}
+
+func (r *RefPlaceholderTexture2DImpl) Clone() Ref {
+	return (*RefCountedRef[PlaceholderTexture2D])(r).Clone()
 }
 
 func (r *RefPlaceholderTexture2DImpl) IsValid() bool {
@@ -16779,6 +18203,10 @@ func (r *RefPlaceholderTexture2DArrayImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPlaceholderTexture2DArrayImpl) Clone() Ref {
+	return (*RefCountedRef[PlaceholderTexture2DArray])(r).Clone()
+}
+
 func (r *RefPlaceholderTexture2DArrayImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -16824,6 +18252,10 @@ func (r *RefPlaceholderTexture3DImpl) TypedRef(from *RefPlaceholderTexture3DImpl
 func (r *RefPlaceholderTexture3DImpl) Unref() {
 	rg := (*TypedRef[PlaceholderTexture3D])(r)
 	rg.Unref()
+}
+
+func (r *RefPlaceholderTexture3DImpl) Clone() Ref {
+	return (*RefCountedRef[PlaceholderTexture3D])(r).Clone()
 }
 
 func (r *RefPlaceholderTexture3DImpl) IsValid() bool {
@@ -16873,6 +18305,10 @@ func (r *RefPlaceholderTextureLayeredImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPlaceholderTextureLayeredImpl) Clone() Ref {
+	return (*RefCountedRef[PlaceholderTextureLayered])(r).Clone()
+}
+
 func (r *RefPlaceholderTextureLayeredImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -16918,6 +18354,10 @@ func (r *RefPlaneMeshImpl) TypedRef(from *RefPlaneMeshImpl) {
 func (r *RefPlaneMeshImpl) Unref() {
 	rg := (*TypedRef[PlaneMesh])(r)
 	rg.Unref()
+}
+
+func (r *RefPlaneMeshImpl) Clone() Ref {
+	return (*RefCountedRef[PlaneMesh])(r).Clone()
 }
 
 func (r *RefPlaneMeshImpl) IsValid() bool {
@@ -16967,6 +18407,10 @@ func (r *RefPointMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPointMeshImpl) Clone() Ref {
+	return (*RefCountedRef[PointMesh])(r).Clone()
+}
+
 func (r *RefPointMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -17012,6 +18456,10 @@ func (r *RefPolygonOccluder3DImpl) TypedRef(from *RefPolygonOccluder3DImpl) {
 func (r *RefPolygonOccluder3DImpl) Unref() {
 	rg := (*TypedRef[PolygonOccluder3D])(r)
 	rg.Unref()
+}
+
+func (r *RefPolygonOccluder3DImpl) Clone() Ref {
+	return (*RefCountedRef[PolygonOccluder3D])(r).Clone()
 }
 
 func (r *RefPolygonOccluder3DImpl) IsValid() bool {
@@ -17061,6 +18509,10 @@ func (r *RefPolygonPathFinderImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPolygonPathFinderImpl) Clone() Ref {
+	return (*RefCountedRef[PolygonPathFinder])(r).Clone()
+}
+
 func (r *RefPolygonPathFinderImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -17106,6 +18558,10 @@ func (r *RefPortableCompressedTexture2DImpl) TypedRef(from *RefPortableCompresse
 func (r *RefPortableCompressedTexture2DImpl) Unref() {
 	rg := (*TypedRef[PortableCompressedTexture2D])(r)
 	rg.Unref()
+}
+
+func (r *RefPortableCompressedTexture2DImpl) Clone() Ref {
+	return (*RefCountedRef[PortableCompressedTexture2D])(r).Clone()
 }
 
 func (r *RefPortableCompressedTexture2DImpl) IsValid() bool {
@@ -17155,6 +18611,10 @@ func (r *RefPrimitiveMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefPrimitiveMeshImpl) Clone() Ref {
+	return (*RefCountedRef[PrimitiveMesh])(r).Clone()
+}
+
 func (r *RefPrimitiveMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -17200,6 +18660,10 @@ func (r *RefPrismMeshImpl) TypedRef(from *RefPrismMeshImpl) {
 func (r *RefPrismMeshImpl) Unref() {
 	rg := (*TypedRef[PrismMesh])(r)
 	rg.Unref()
+}
+
+func (r *RefPrismMeshImpl) Clone() Ref {
+	return (*RefCountedRef[PrismMesh])(r).Clone()
 }
 
 func (r *RefPrismMeshImpl) IsValid() bool {
@@ -17249,6 +18713,10 @@ func (r *RefProceduralSkyMaterialImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefProceduralSkyMaterialImpl) Clone() Ref {
+	return (*RefCountedRef[ProceduralSkyMaterial])(r).Clone()
+}
+
 func (r *RefProceduralSkyMaterialImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -17294,6 +18762,10 @@ func (r *RefPropertyTweenerImpl) TypedRef(from *RefPropertyTweenerImpl) {
 func (r *RefPropertyTweenerImpl) Unref() {
 	rg := (*TypedRef[PropertyTweener])(r)
 	rg.Unref()
+}
+
+func (r *RefPropertyTweenerImpl) Clone() Ref {
+	return (*RefCountedRef[PropertyTweener])(r).Clone()
 }
 
 func (r *RefPropertyTweenerImpl) IsValid() bool {
@@ -17343,6 +18815,10 @@ func (r *RefQuadMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefQuadMeshImpl) Clone() Ref {
+	return (*RefCountedRef[QuadMesh])(r).Clone()
+}
+
 func (r *RefQuadMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -17388,6 +18864,10 @@ func (r *RefQuadOccluder3DImpl) TypedRef(from *RefQuadOccluder3DImpl) {
 func (r *RefQuadOccluder3DImpl) Unref() {
 	rg := (*TypedRef[QuadOccluder3D])(r)
 	rg.Unref()
+}
+
+func (r *RefQuadOccluder3DImpl) Clone() Ref {
+	return (*RefCountedRef[QuadOccluder3D])(r).Clone()
 }
 
 func (r *RefQuadOccluder3DImpl) IsValid() bool {
@@ -17437,6 +18917,10 @@ func (r *RefRDAttachmentFormatImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRDAttachmentFormatImpl) Clone() Ref {
+	return (*RefCountedRef[RDAttachmentFormat])(r).Clone()
+}
+
 func (r *RefRDAttachmentFormatImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -17482,6 +18966,10 @@ func (r *RefRDFramebufferPassImpl) TypedRef(from *RefRDFramebufferPassImpl) {
 func (r *RefRDFramebufferPassImpl) Unref() {
 	rg := (*TypedRef[RDFramebufferPass])(r)
 	rg.Unref()
+}
+
+func (r *RefRDFramebufferPassImpl) Clone() Ref {
+	return (*RefCountedRef[RDFramebufferPass])(r).Clone()
 }
 
 func (r *RefRDFramebufferPassImpl) IsValid() bool {
@@ -17531,6 +19019,10 @@ func (r *RefRDPipelineColorBlendStateImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRDPipelineColorBlendStateImpl) Clone() Ref {
+	return (*RefCountedRef[RDPipelineColorBlendState])(r).Clone()
+}
+
 func (r *RefRDPipelineColorBlendStateImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -17576,6 +19068,10 @@ func (r *RefRDPipelineColorBlendStateAttachmentImpl) TypedRef(from *RefRDPipelin
 func (r *RefRDPipelineColorBlendStateAttachmentImpl) Unref() {
 	rg := (*TypedRef[RDPipelineColorBlendStateAttachment])(r)
 	rg.Unref()
+}
+
+func (r *RefRDPipelineColorBlendStateAttachmentImpl) Clone() Ref {
+	return (*RefCountedRef[RDPipelineColorBlendStateAttachment])(r).Clone()
 }
 
 func (r *RefRDPipelineColorBlendStateAttachmentImpl) IsValid() bool {
@@ -17625,6 +19121,10 @@ func (r *RefRDPipelineDepthStencilStateImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRDPipelineDepthStencilStateImpl) Clone() Ref {
+	return (*RefCountedRef[RDPipelineDepthStencilState])(r).Clone()
+}
+
 func (r *RefRDPipelineDepthStencilStateImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -17670,6 +19170,10 @@ func (r *RefRDPipelineMultisampleStateImpl) TypedRef(from *RefRDPipelineMultisam
 func (r *RefRDPipelineMultisampleStateImpl) Unref() {
 	rg := (*TypedRef[RDPipelineMultisampleState])(r)
 	rg.Unref()
+}
+
+func (r *RefRDPipelineMultisampleStateImpl) Clone() Ref {
+	return (*RefCountedRef[RDPipelineMultisampleState])(r).Clone()
 }
 
 func (r *RefRDPipelineMultisampleStateImpl) IsValid() bool {
@@ -17719,6 +19223,10 @@ func (r *RefRDPipelineRasterizationStateImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRDPipelineRasterizationStateImpl) Clone() Ref {
+	return (*RefCountedRef[RDPipelineRasterizationState])(r).Clone()
+}
+
 func (r *RefRDPipelineRasterizationStateImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -17764,6 +19272,10 @@ func (r *RefRDPipelineSpecializationConstantImpl) TypedRef(from *RefRDPipelineSp
 func (r *RefRDPipelineSpecializationConstantImpl) Unref() {
 	rg := (*TypedRef[RDPipelineSpecializationConstant])(r)
 	rg.Unref()
+}
+
+func (r *RefRDPipelineSpecializationConstantImpl) Clone() Ref {
+	return (*RefCountedRef[RDPipelineSpecializationConstant])(r).Clone()
 }
 
 func (r *RefRDPipelineSpecializationConstantImpl) IsValid() bool {
@@ -17813,6 +19325,10 @@ func (r *RefRDSamplerStateImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRDSamplerStateImpl) Clone() Ref {
+	return (*RefCountedRef[RDSamplerState])(r).Clone()
+}
+
 func (r *RefRDSamplerStateImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -17858,6 +19374,10 @@ func (r *RefRDShaderFileImpl) TypedRef(from *RefRDShaderFileImpl) {
 func (r *RefRDShaderFileImpl) Unref() {
 	rg := (*TypedRef[RDShaderFile])(r)
 	rg.Unref()
+}
+
+func (r *RefRDShaderFileImpl) Clone() Ref {
+	return (*RefCountedRef[RDShaderFile])(r).Clone()
 }
 
 func (r *RefRDShaderFileImpl) IsValid() bool {
@@ -17907,6 +19427,10 @@ func (r *RefRDShaderSPIRVImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRDShaderSPIRVImpl) Clone() Ref {
+	return (*RefCountedRef[RDShaderSPIRV])(r).Clone()
+}
+
 func (r *RefRDShaderSPIRVImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -17952,6 +19476,10 @@ func (r *RefRDShaderSourceImpl) TypedRef(from *RefRDShaderSourceImpl) {
 func (r *RefRDShaderSourceImpl) Unref() {
 	rg := (*TypedRef[RDShaderSource])(r)
 	rg.Unref()
+}
+
+func (r *RefRDShaderSourceImpl) Clone() Ref {
+	return (*RefCountedRef[RDShaderSource])(r).Clone()
 }
 
 func (r *RefRDShaderSourceImpl) IsValid() bool {
@@ -18001,6 +19529,10 @@ func (r *RefRDTextureFormatImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRDTextureFormatImpl) Clone() Ref {
+	return (*RefCountedRef[RDTextureFormat])(r).Clone()
+}
+
 func (r *RefRDTextureFormatImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -18046,6 +19578,10 @@ func (r *RefRDTextureViewImpl) TypedRef(from *RefRDTextureViewImpl) {
 func (r *RefRDTextureViewImpl) Unref() {
 	rg := (*TypedRef[RDTextureView])(r)
 	rg.Unref()
+}
+
+func (r *RefRDTextureViewImpl) Clone() Ref {
+	return (*RefCountedRef[RDTextureView])(r).Clone()
 }
 
 func (r *RefRDTextureViewImpl) IsValid() bool {
@@ -18095,6 +19631,10 @@ func (r *RefRDUniformImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRDUniformImpl) Clone() Ref {
+	return (*RefCountedRef[RDUniform])(r).Clone()
+}
+
 func (r *RefRDUniformImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -18140,6 +19680,10 @@ func (r *RefRDVertexAttributeImpl) TypedRef(from *RefRDVertexAttributeImpl) {
 func (r *RefRDVertexAttributeImpl) Unref() {
 	rg := (*TypedRef[RDVertexAttribute])(r)
 	rg.Unref()
+}
+
+func (r *RefRDVertexAttributeImpl) Clone() Ref {
+	return (*RefCountedRef[RDVertexAttribute])(r).Clone()
 }
 
 func (r *RefRDVertexAttributeImpl) IsValid() bool {
@@ -18189,6 +19733,10 @@ func (r *RefRandomNumberGeneratorImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRandomNumberGeneratorImpl) Clone() Ref {
+	return (*RefCountedRef[RandomNumberGenerator])(r).Clone()
+}
+
 func (r *RefRandomNumberGeneratorImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -18234,6 +19782,10 @@ func (r *RefRectangleShape2DImpl) TypedRef(from *RefRectangleShape2DImpl) {
 func (r *RefRectangleShape2DImpl) Unref() {
 	rg := (*TypedRef[RectangleShape2D])(r)
 	rg.Unref()
+}
+
+func (r *RefRectangleShape2DImpl) Clone() Ref {
+	return (*RefCountedRef[RectangleShape2D])(r).Clone()
 }
 
 func (r *RefRectangleShape2DImpl) IsValid() bool {
@@ -18283,6 +19835,10 @@ func (r *RefRefCountedImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRefCountedImpl) Clone() Ref {
+	return (*RefCountedRef[RefCounted])(r).Clone()
+}
+
 func (r *RefRefCountedImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -18328,6 +19884,10 @@ func (r *RefRegExImpl) TypedRef(from *RefRegExImpl) {
 func (r *RefRegExImpl) Unref() {
 	rg := (*TypedRef[RegEx])(r)
 	rg.Unref()
+}
+
+func (r *RefRegExImpl) Clone() Ref {
+	return (*RefCountedRef[RegEx])(r).Clone()
 }
 
 func (r *RefRegExImpl) IsValid() bool {
@@ -18377,6 +19937,10 @@ func (r *RefRegExMatchImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRegExMatchImpl) Clone() Ref {
+	return (*RefCountedRef[RegExMatch])(r).Clone()
+}
+
 func (r *RefRegExMatchImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -18422,6 +19986,10 @@ func (r *RefRenderSceneBuffersImpl) TypedRef(from *RefRenderSceneBuffersImpl) {
 func (r *RefRenderSceneBuffersImpl) Unref() {
 	rg := (*TypedRef[RenderSceneBuffers])(r)
 	rg.Unref()
+}
+
+func (r *RefRenderSceneBuffersImpl) Clone() Ref {
+	return (*RefCountedRef[RenderSceneBuffers])(r).Clone()
 }
 
 func (r *RefRenderSceneBuffersImpl) IsValid() bool {
@@ -18471,6 +20039,10 @@ func (r *RefRenderSceneBuffersConfigurationImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRenderSceneBuffersConfigurationImpl) Clone() Ref {
+	return (*RefCountedRef[RenderSceneBuffersConfiguration])(r).Clone()
+}
+
 func (r *RefRenderSceneBuffersConfigurationImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -18516,6 +20088,10 @@ func (r *RefRenderSceneBuffersExtensionImpl) TypedRef(from *RefRenderSceneBuffer
 func (r *RefRenderSceneBuffersExtensionImpl) Unref() {
 	rg := (*TypedRef[RenderSceneBuffersExtension])(r)
 	rg.Unref()
+}
+
+func (r *RefRenderSceneBuffersExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[RenderSceneBuffersExtension])(r).Clone()
 }
 
 func (r *RefRenderSceneBuffersExtensionImpl) IsValid() bool {
@@ -18565,6 +20141,10 @@ func (r *RefRenderSceneBuffersRDImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRenderSceneBuffersRDImpl) Clone() Ref {
+	return (*RefCountedRef[RenderSceneBuffersRD])(r).Clone()
+}
+
 func (r *RefRenderSceneBuffersRDImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -18610,6 +20190,10 @@ func (r *RefResourceImpl) TypedRef(from *RefResourceImpl) {
 func (r *RefResourceImpl) Unref() {
 	rg := (*TypedRef[Resource])(r)
 	rg.Unref()
+}
+
+func (r *RefResourceImpl) Clone() Ref {
+	return (*RefCountedRef[Resource])(r).Clone()
 }
 
 func (r *RefResourceImpl) IsValid() bool {
@@ -18659,6 +20243,10 @@ func (r *RefResourceFormatLoaderImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefResourceFormatLoaderImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceFormatLoader])(r).Clone()
+}
+
 func (r *RefResourceFormatLoaderImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -18704,6 +20292,10 @@ func (r *RefResourceFormatSaverImpl) TypedRef(from *RefResourceFormatSaverImpl) 
 func (r *RefResourceFormatSaverImpl) Unref() {
 	rg := (*TypedRef[ResourceFormatSaver])(r)
 	rg.Unref()
+}
+
+func (r *RefResourceFormatSaverImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceFormatSaver])(r).Clone()
 }
 
 func (r *RefResourceFormatSaverImpl) IsValid() bool {
@@ -18753,6 +20345,10 @@ func (r *RefResourceImporterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefResourceImporterImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporter])(r).Clone()
+}
+
 func (r *RefResourceImporterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -18798,6 +20394,10 @@ func (r *RefResourceImporterBMFontImpl) TypedRef(from *RefResourceImporterBMFont
 func (r *RefResourceImporterBMFontImpl) Unref() {
 	rg := (*TypedRef[ResourceImporterBMFont])(r)
 	rg.Unref()
+}
+
+func (r *RefResourceImporterBMFontImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterBMFont])(r).Clone()
 }
 
 func (r *RefResourceImporterBMFontImpl) IsValid() bool {
@@ -18847,6 +20447,10 @@ func (r *RefResourceImporterBitMapImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefResourceImporterBitMapImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterBitMap])(r).Clone()
+}
+
 func (r *RefResourceImporterBitMapImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -18892,6 +20496,10 @@ func (r *RefResourceImporterCSVTranslationImpl) TypedRef(from *RefResourceImport
 func (r *RefResourceImporterCSVTranslationImpl) Unref() {
 	rg := (*TypedRef[ResourceImporterCSVTranslation])(r)
 	rg.Unref()
+}
+
+func (r *RefResourceImporterCSVTranslationImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterCSVTranslation])(r).Clone()
 }
 
 func (r *RefResourceImporterCSVTranslationImpl) IsValid() bool {
@@ -18941,6 +20549,10 @@ func (r *RefResourceImporterDynamicFontImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefResourceImporterDynamicFontImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterDynamicFont])(r).Clone()
+}
+
 func (r *RefResourceImporterDynamicFontImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -18986,6 +20598,10 @@ func (r *RefResourceImporterImageImpl) TypedRef(from *RefResourceImporterImageIm
 func (r *RefResourceImporterImageImpl) Unref() {
 	rg := (*TypedRef[ResourceImporterImage])(r)
 	rg.Unref()
+}
+
+func (r *RefResourceImporterImageImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterImage])(r).Clone()
 }
 
 func (r *RefResourceImporterImageImpl) IsValid() bool {
@@ -19035,6 +20651,10 @@ func (r *RefResourceImporterImageFontImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefResourceImporterImageFontImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterImageFont])(r).Clone()
+}
+
 func (r *RefResourceImporterImageFontImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -19080,6 +20700,10 @@ func (r *RefResourceImporterLayeredTextureImpl) TypedRef(from *RefResourceImport
 func (r *RefResourceImporterLayeredTextureImpl) Unref() {
 	rg := (*TypedRef[ResourceImporterLayeredTexture])(r)
 	rg.Unref()
+}
+
+func (r *RefResourceImporterLayeredTextureImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterLayeredTexture])(r).Clone()
 }
 
 func (r *RefResourceImporterLayeredTextureImpl) IsValid() bool {
@@ -19129,6 +20753,10 @@ func (r *RefResourceImporterMP3Impl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefResourceImporterMP3Impl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterMP3])(r).Clone()
+}
+
 func (r *RefResourceImporterMP3Impl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -19174,6 +20802,10 @@ func (r *RefResourceImporterOBJImpl) TypedRef(from *RefResourceImporterOBJImpl) 
 func (r *RefResourceImporterOBJImpl) Unref() {
 	rg := (*TypedRef[ResourceImporterOBJ])(r)
 	rg.Unref()
+}
+
+func (r *RefResourceImporterOBJImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterOBJ])(r).Clone()
 }
 
 func (r *RefResourceImporterOBJImpl) IsValid() bool {
@@ -19223,6 +20855,10 @@ func (r *RefResourceImporterOggVorbisImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefResourceImporterOggVorbisImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterOggVorbis])(r).Clone()
+}
+
 func (r *RefResourceImporterOggVorbisImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -19268,6 +20904,10 @@ func (r *RefResourceImporterSVGImpl) TypedRef(from *RefResourceImporterSVGImpl) 
 func (r *RefResourceImporterSVGImpl) Unref() {
 	rg := (*TypedRef[ResourceImporterSVG])(r)
 	rg.Unref()
+}
+
+func (r *RefResourceImporterSVGImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterSVG])(r).Clone()
 }
 
 func (r *RefResourceImporterSVGImpl) IsValid() bool {
@@ -19317,6 +20957,10 @@ func (r *RefResourceImporterSceneImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefResourceImporterSceneImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterScene])(r).Clone()
+}
+
 func (r *RefResourceImporterSceneImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -19362,6 +21006,10 @@ func (r *RefResourceImporterShaderFileImpl) TypedRef(from *RefResourceImporterSh
 func (r *RefResourceImporterShaderFileImpl) Unref() {
 	rg := (*TypedRef[ResourceImporterShaderFile])(r)
 	rg.Unref()
+}
+
+func (r *RefResourceImporterShaderFileImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterShaderFile])(r).Clone()
 }
 
 func (r *RefResourceImporterShaderFileImpl) IsValid() bool {
@@ -19411,6 +21059,10 @@ func (r *RefResourceImporterTextureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefResourceImporterTextureImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterTexture])(r).Clone()
+}
+
 func (r *RefResourceImporterTextureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -19456,6 +21108,10 @@ func (r *RefResourceImporterTextureAtlasImpl) TypedRef(from *RefResourceImporter
 func (r *RefResourceImporterTextureAtlasImpl) Unref() {
 	rg := (*TypedRef[ResourceImporterTextureAtlas])(r)
 	rg.Unref()
+}
+
+func (r *RefResourceImporterTextureAtlasImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterTextureAtlas])(r).Clone()
 }
 
 func (r *RefResourceImporterTextureAtlasImpl) IsValid() bool {
@@ -19505,6 +21161,10 @@ func (r *RefResourceImporterWAVImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefResourceImporterWAVImpl) Clone() Ref {
+	return (*RefCountedRef[ResourceImporterWAV])(r).Clone()
+}
+
 func (r *RefResourceImporterWAVImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -19550,6 +21210,10 @@ func (r *RefRibbonTrailMeshImpl) TypedRef(from *RefRibbonTrailMeshImpl) {
 func (r *RefRibbonTrailMeshImpl) Unref() {
 	rg := (*TypedRef[RibbonTrailMesh])(r)
 	rg.Unref()
+}
+
+func (r *RefRibbonTrailMeshImpl) Clone() Ref {
+	return (*RefCountedRef[RibbonTrailMesh])(r).Clone()
 }
 
 func (r *RefRibbonTrailMeshImpl) IsValid() bool {
@@ -19599,6 +21263,10 @@ func (r *RefRichTextEffectImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefRichTextEffectImpl) Clone() Ref {
+	return (*RefCountedRef[RichTextEffect])(r).Clone()
+}
+
 func (r *RefRichTextEffectImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -19644,6 +21312,10 @@ func (r *RefSceneMultiplayerImpl) TypedRef(from *RefSceneMultiplayerImpl) {
 func (r *RefSceneMultiplayerImpl) Unref() {
 	rg := (*TypedRef[SceneMultiplayer])(r)
 	rg.Unref()
+}
+
+func (r *RefSceneMultiplayerImpl) Clone() Ref {
+	return (*RefCountedRef[SceneMultiplayer])(r).Clone()
 }
 
 func (r *RefSceneMultiplayerImpl) IsValid() bool {
@@ -19693,6 +21365,10 @@ func (r *RefSceneReplicationConfigImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSceneReplicationConfigImpl) Clone() Ref {
+	return (*RefCountedRef[SceneReplicationConfig])(r).Clone()
+}
+
 func (r *RefSceneReplicationConfigImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -19738,6 +21414,10 @@ func (r *RefSceneStateImpl) TypedRef(from *RefSceneStateImpl) {
 func (r *RefSceneStateImpl) Unref() {
 	rg := (*TypedRef[SceneState])(r)
 	rg.Unref()
+}
+
+func (r *RefSceneStateImpl) Clone() Ref {
+	return (*RefCountedRef[SceneState])(r).Clone()
 }
 
 func (r *RefSceneStateImpl) IsValid() bool {
@@ -19787,6 +21467,10 @@ func (r *RefSceneTreeTimerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSceneTreeTimerImpl) Clone() Ref {
+	return (*RefCountedRef[SceneTreeTimer])(r).Clone()
+}
+
 func (r *RefSceneTreeTimerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -19832,6 +21516,10 @@ func (r *RefScriptImpl) TypedRef(from *RefScriptImpl) {
 func (r *RefScriptImpl) Unref() {
 	rg := (*TypedRef[Script])(r)
 	rg.Unref()
+}
+
+func (r *RefScriptImpl) Clone() Ref {
+	return (*RefCountedRef[Script])(r).Clone()
 }
 
 func (r *RefScriptImpl) IsValid() bool {
@@ -19881,6 +21569,10 @@ func (r *RefScriptBacktraceImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefScriptBacktraceImpl) Clone() Ref {
+	return (*RefCountedRef[ScriptBacktrace])(r).Clone()
+}
+
 func (r *RefScriptBacktraceImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -19926,6 +21618,10 @@ func (r *RefScriptExtensionImpl) TypedRef(from *RefScriptExtensionImpl) {
 func (r *RefScriptExtensionImpl) Unref() {
 	rg := (*TypedRef[ScriptExtension])(r)
 	rg.Unref()
+}
+
+func (r *RefScriptExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[ScriptExtension])(r).Clone()
 }
 
 func (r *RefScriptExtensionImpl) IsValid() bool {
@@ -19975,6 +21671,10 @@ func (r *RefSegmentShape2DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSegmentShape2DImpl) Clone() Ref {
+	return (*RefCountedRef[SegmentShape2D])(r).Clone()
+}
+
 func (r *RefSegmentShape2DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -20020,6 +21720,10 @@ func (r *RefSemaphoreImpl) TypedRef(from *RefSemaphoreImpl) {
 func (r *RefSemaphoreImpl) Unref() {
 	rg := (*TypedRef[Semaphore])(r)
 	rg.Unref()
+}
+
+func (r *RefSemaphoreImpl) Clone() Ref {
+	return (*RefCountedRef[Semaphore])(r).Clone()
 }
 
 func (r *RefSemaphoreImpl) IsValid() bool {
@@ -20069,6 +21773,10 @@ func (r *RefSeparationRayShape2DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSeparationRayShape2DImpl) Clone() Ref {
+	return (*RefCountedRef[SeparationRayShape2D])(r).Clone()
+}
+
 func (r *RefSeparationRayShape2DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -20114,6 +21822,10 @@ func (r *RefSeparationRayShape3DImpl) TypedRef(from *RefSeparationRayShape3DImpl
 func (r *RefSeparationRayShape3DImpl) Unref() {
 	rg := (*TypedRef[SeparationRayShape3D])(r)
 	rg.Unref()
+}
+
+func (r *RefSeparationRayShape3DImpl) Clone() Ref {
+	return (*RefCountedRef[SeparationRayShape3D])(r).Clone()
 }
 
 func (r *RefSeparationRayShape3DImpl) IsValid() bool {
@@ -20163,6 +21875,10 @@ func (r *RefShaderImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefShaderImpl) Clone() Ref {
+	return (*RefCountedRef[Shader])(r).Clone()
+}
+
 func (r *RefShaderImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -20208,6 +21924,10 @@ func (r *RefShaderIncludeImpl) TypedRef(from *RefShaderIncludeImpl) {
 func (r *RefShaderIncludeImpl) Unref() {
 	rg := (*TypedRef[ShaderInclude])(r)
 	rg.Unref()
+}
+
+func (r *RefShaderIncludeImpl) Clone() Ref {
+	return (*RefCountedRef[ShaderInclude])(r).Clone()
 }
 
 func (r *RefShaderIncludeImpl) IsValid() bool {
@@ -20257,6 +21977,10 @@ func (r *RefShaderMaterialImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefShaderMaterialImpl) Clone() Ref {
+	return (*RefCountedRef[ShaderMaterial])(r).Clone()
+}
+
 func (r *RefShaderMaterialImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -20302,6 +22026,10 @@ func (r *RefShape2DImpl) TypedRef(from *RefShape2DImpl) {
 func (r *RefShape2DImpl) Unref() {
 	rg := (*TypedRef[Shape2D])(r)
 	rg.Unref()
+}
+
+func (r *RefShape2DImpl) Clone() Ref {
+	return (*RefCountedRef[Shape2D])(r).Clone()
 }
 
 func (r *RefShape2DImpl) IsValid() bool {
@@ -20351,6 +22079,10 @@ func (r *RefShape3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefShape3DImpl) Clone() Ref {
+	return (*RefCountedRef[Shape3D])(r).Clone()
+}
+
 func (r *RefShape3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -20396,6 +22128,10 @@ func (r *RefShortcutImpl) TypedRef(from *RefShortcutImpl) {
 func (r *RefShortcutImpl) Unref() {
 	rg := (*TypedRef[Shortcut])(r)
 	rg.Unref()
+}
+
+func (r *RefShortcutImpl) Clone() Ref {
+	return (*RefCountedRef[Shortcut])(r).Clone()
 }
 
 func (r *RefShortcutImpl) IsValid() bool {
@@ -20445,6 +22181,10 @@ func (r *RefSkeletonModification2DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSkeletonModification2DImpl) Clone() Ref {
+	return (*RefCountedRef[SkeletonModification2D])(r).Clone()
+}
+
 func (r *RefSkeletonModification2DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -20490,6 +22230,10 @@ func (r *RefSkeletonModification2DCCDIKImpl) TypedRef(from *RefSkeletonModificat
 func (r *RefSkeletonModification2DCCDIKImpl) Unref() {
 	rg := (*TypedRef[SkeletonModification2DCCDIK])(r)
 	rg.Unref()
+}
+
+func (r *RefSkeletonModification2DCCDIKImpl) Clone() Ref {
+	return (*RefCountedRef[SkeletonModification2DCCDIK])(r).Clone()
 }
 
 func (r *RefSkeletonModification2DCCDIKImpl) IsValid() bool {
@@ -20539,6 +22283,10 @@ func (r *RefSkeletonModification2DFABRIKImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSkeletonModification2DFABRIKImpl) Clone() Ref {
+	return (*RefCountedRef[SkeletonModification2DFABRIK])(r).Clone()
+}
+
 func (r *RefSkeletonModification2DFABRIKImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -20584,6 +22332,10 @@ func (r *RefSkeletonModification2DJiggleImpl) TypedRef(from *RefSkeletonModifica
 func (r *RefSkeletonModification2DJiggleImpl) Unref() {
 	rg := (*TypedRef[SkeletonModification2DJiggle])(r)
 	rg.Unref()
+}
+
+func (r *RefSkeletonModification2DJiggleImpl) Clone() Ref {
+	return (*RefCountedRef[SkeletonModification2DJiggle])(r).Clone()
 }
 
 func (r *RefSkeletonModification2DJiggleImpl) IsValid() bool {
@@ -20633,6 +22385,10 @@ func (r *RefSkeletonModification2DLookAtImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSkeletonModification2DLookAtImpl) Clone() Ref {
+	return (*RefCountedRef[SkeletonModification2DLookAt])(r).Clone()
+}
+
 func (r *RefSkeletonModification2DLookAtImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -20678,6 +22434,10 @@ func (r *RefSkeletonModification2DPhysicalBonesImpl) TypedRef(from *RefSkeletonM
 func (r *RefSkeletonModification2DPhysicalBonesImpl) Unref() {
 	rg := (*TypedRef[SkeletonModification2DPhysicalBones])(r)
 	rg.Unref()
+}
+
+func (r *RefSkeletonModification2DPhysicalBonesImpl) Clone() Ref {
+	return (*RefCountedRef[SkeletonModification2DPhysicalBones])(r).Clone()
 }
 
 func (r *RefSkeletonModification2DPhysicalBonesImpl) IsValid() bool {
@@ -20727,6 +22487,10 @@ func (r *RefSkeletonModification2DStackHolderImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSkeletonModification2DStackHolderImpl) Clone() Ref {
+	return (*RefCountedRef[SkeletonModification2DStackHolder])(r).Clone()
+}
+
 func (r *RefSkeletonModification2DStackHolderImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -20772,6 +22536,10 @@ func (r *RefSkeletonModification2DTwoBoneIKImpl) TypedRef(from *RefSkeletonModif
 func (r *RefSkeletonModification2DTwoBoneIKImpl) Unref() {
 	rg := (*TypedRef[SkeletonModification2DTwoBoneIK])(r)
 	rg.Unref()
+}
+
+func (r *RefSkeletonModification2DTwoBoneIKImpl) Clone() Ref {
+	return (*RefCountedRef[SkeletonModification2DTwoBoneIK])(r).Clone()
 }
 
 func (r *RefSkeletonModification2DTwoBoneIKImpl) IsValid() bool {
@@ -20821,6 +22589,10 @@ func (r *RefSkeletonModificationStack2DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSkeletonModificationStack2DImpl) Clone() Ref {
+	return (*RefCountedRef[SkeletonModificationStack2D])(r).Clone()
+}
+
 func (r *RefSkeletonModificationStack2DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -20866,6 +22638,10 @@ func (r *RefSkeletonProfileImpl) TypedRef(from *RefSkeletonProfileImpl) {
 func (r *RefSkeletonProfileImpl) Unref() {
 	rg := (*TypedRef[SkeletonProfile])(r)
 	rg.Unref()
+}
+
+func (r *RefSkeletonProfileImpl) Clone() Ref {
+	return (*RefCountedRef[SkeletonProfile])(r).Clone()
 }
 
 func (r *RefSkeletonProfileImpl) IsValid() bool {
@@ -20915,6 +22691,10 @@ func (r *RefSkeletonProfileHumanoidImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSkeletonProfileHumanoidImpl) Clone() Ref {
+	return (*RefCountedRef[SkeletonProfileHumanoid])(r).Clone()
+}
+
 func (r *RefSkeletonProfileHumanoidImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -20960,6 +22740,10 @@ func (r *RefSkinImpl) TypedRef(from *RefSkinImpl) {
 func (r *RefSkinImpl) Unref() {
 	rg := (*TypedRef[Skin])(r)
 	rg.Unref()
+}
+
+func (r *RefSkinImpl) Clone() Ref {
+	return (*RefCountedRef[Skin])(r).Clone()
 }
 
 func (r *RefSkinImpl) IsValid() bool {
@@ -21009,6 +22793,10 @@ func (r *RefSkinReferenceImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSkinReferenceImpl) Clone() Ref {
+	return (*RefCountedRef[SkinReference])(r).Clone()
+}
+
 func (r *RefSkinReferenceImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -21054,6 +22842,10 @@ func (r *RefSkyImpl) TypedRef(from *RefSkyImpl) {
 func (r *RefSkyImpl) Unref() {
 	rg := (*TypedRef[Sky])(r)
 	rg.Unref()
+}
+
+func (r *RefSkyImpl) Clone() Ref {
+	return (*RefCountedRef[Sky])(r).Clone()
 }
 
 func (r *RefSkyImpl) IsValid() bool {
@@ -21103,6 +22895,10 @@ func (r *RefSocketServerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSocketServerImpl) Clone() Ref {
+	return (*RefCountedRef[SocketServer])(r).Clone()
+}
+
 func (r *RefSocketServerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -21148,6 +22944,10 @@ func (r *RefSphereMeshImpl) TypedRef(from *RefSphereMeshImpl) {
 func (r *RefSphereMeshImpl) Unref() {
 	rg := (*TypedRef[SphereMesh])(r)
 	rg.Unref()
+}
+
+func (r *RefSphereMeshImpl) Clone() Ref {
+	return (*RefCountedRef[SphereMesh])(r).Clone()
 }
 
 func (r *RefSphereMeshImpl) IsValid() bool {
@@ -21197,6 +22997,10 @@ func (r *RefSphereOccluder3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSphereOccluder3DImpl) Clone() Ref {
+	return (*RefCountedRef[SphereOccluder3D])(r).Clone()
+}
+
 func (r *RefSphereOccluder3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -21242,6 +23046,10 @@ func (r *RefSphereShape3DImpl) TypedRef(from *RefSphereShape3DImpl) {
 func (r *RefSphereShape3DImpl) Unref() {
 	rg := (*TypedRef[SphereShape3D])(r)
 	rg.Unref()
+}
+
+func (r *RefSphereShape3DImpl) Clone() Ref {
+	return (*RefCountedRef[SphereShape3D])(r).Clone()
 }
 
 func (r *RefSphereShape3DImpl) IsValid() bool {
@@ -21291,6 +23099,10 @@ func (r *RefSpriteFramesImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSpriteFramesImpl) Clone() Ref {
+	return (*RefCountedRef[SpriteFrames])(r).Clone()
+}
+
 func (r *RefSpriteFramesImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -21336,6 +23148,10 @@ func (r *RefStandardMaterial3DImpl) TypedRef(from *RefStandardMaterial3DImpl) {
 func (r *RefStandardMaterial3DImpl) Unref() {
 	rg := (*TypedRef[StandardMaterial3D])(r)
 	rg.Unref()
+}
+
+func (r *RefStandardMaterial3DImpl) Clone() Ref {
+	return (*RefCountedRef[StandardMaterial3D])(r).Clone()
 }
 
 func (r *RefStandardMaterial3DImpl) IsValid() bool {
@@ -21385,6 +23201,10 @@ func (r *RefStreamPeerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefStreamPeerImpl) Clone() Ref {
+	return (*RefCountedRef[StreamPeer])(r).Clone()
+}
+
 func (r *RefStreamPeerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -21430,6 +23250,10 @@ func (r *RefStreamPeerBufferImpl) TypedRef(from *RefStreamPeerBufferImpl) {
 func (r *RefStreamPeerBufferImpl) Unref() {
 	rg := (*TypedRef[StreamPeerBuffer])(r)
 	rg.Unref()
+}
+
+func (r *RefStreamPeerBufferImpl) Clone() Ref {
+	return (*RefCountedRef[StreamPeerBuffer])(r).Clone()
 }
 
 func (r *RefStreamPeerBufferImpl) IsValid() bool {
@@ -21479,6 +23303,10 @@ func (r *RefStreamPeerExtensionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefStreamPeerExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[StreamPeerExtension])(r).Clone()
+}
+
 func (r *RefStreamPeerExtensionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -21524,6 +23352,10 @@ func (r *RefStreamPeerGZIPImpl) TypedRef(from *RefStreamPeerGZIPImpl) {
 func (r *RefStreamPeerGZIPImpl) Unref() {
 	rg := (*TypedRef[StreamPeerGZIP])(r)
 	rg.Unref()
+}
+
+func (r *RefStreamPeerGZIPImpl) Clone() Ref {
+	return (*RefCountedRef[StreamPeerGZIP])(r).Clone()
 }
 
 func (r *RefStreamPeerGZIPImpl) IsValid() bool {
@@ -21573,6 +23405,10 @@ func (r *RefStreamPeerSocketImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefStreamPeerSocketImpl) Clone() Ref {
+	return (*RefCountedRef[StreamPeerSocket])(r).Clone()
+}
+
 func (r *RefStreamPeerSocketImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -21618,6 +23454,10 @@ func (r *RefStreamPeerTCPImpl) TypedRef(from *RefStreamPeerTCPImpl) {
 func (r *RefStreamPeerTCPImpl) Unref() {
 	rg := (*TypedRef[StreamPeerTCP])(r)
 	rg.Unref()
+}
+
+func (r *RefStreamPeerTCPImpl) Clone() Ref {
+	return (*RefCountedRef[StreamPeerTCP])(r).Clone()
 }
 
 func (r *RefStreamPeerTCPImpl) IsValid() bool {
@@ -21667,6 +23507,10 @@ func (r *RefStreamPeerTLSImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefStreamPeerTLSImpl) Clone() Ref {
+	return (*RefCountedRef[StreamPeerTLS])(r).Clone()
+}
+
 func (r *RefStreamPeerTLSImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -21712,6 +23556,10 @@ func (r *RefStreamPeerUDSImpl) TypedRef(from *RefStreamPeerUDSImpl) {
 func (r *RefStreamPeerUDSImpl) Unref() {
 	rg := (*TypedRef[StreamPeerUDS])(r)
 	rg.Unref()
+}
+
+func (r *RefStreamPeerUDSImpl) Clone() Ref {
+	return (*RefCountedRef[StreamPeerUDS])(r).Clone()
 }
 
 func (r *RefStreamPeerUDSImpl) IsValid() bool {
@@ -21761,6 +23609,10 @@ func (r *RefStyleBoxImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefStyleBoxImpl) Clone() Ref {
+	return (*RefCountedRef[StyleBox])(r).Clone()
+}
+
 func (r *RefStyleBoxImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -21806,6 +23658,10 @@ func (r *RefStyleBoxEmptyImpl) TypedRef(from *RefStyleBoxEmptyImpl) {
 func (r *RefStyleBoxEmptyImpl) Unref() {
 	rg := (*TypedRef[StyleBoxEmpty])(r)
 	rg.Unref()
+}
+
+func (r *RefStyleBoxEmptyImpl) Clone() Ref {
+	return (*RefCountedRef[StyleBoxEmpty])(r).Clone()
 }
 
 func (r *RefStyleBoxEmptyImpl) IsValid() bool {
@@ -21855,6 +23711,10 @@ func (r *RefStyleBoxFlatImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefStyleBoxFlatImpl) Clone() Ref {
+	return (*RefCountedRef[StyleBoxFlat])(r).Clone()
+}
+
 func (r *RefStyleBoxFlatImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -21900,6 +23760,10 @@ func (r *RefStyleBoxLineImpl) TypedRef(from *RefStyleBoxLineImpl) {
 func (r *RefStyleBoxLineImpl) Unref() {
 	rg := (*TypedRef[StyleBoxLine])(r)
 	rg.Unref()
+}
+
+func (r *RefStyleBoxLineImpl) Clone() Ref {
+	return (*RefCountedRef[StyleBoxLine])(r).Clone()
 }
 
 func (r *RefStyleBoxLineImpl) IsValid() bool {
@@ -21949,6 +23813,10 @@ func (r *RefStyleBoxTextureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefStyleBoxTextureImpl) Clone() Ref {
+	return (*RefCountedRef[StyleBoxTexture])(r).Clone()
+}
+
 func (r *RefStyleBoxTextureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -21994,6 +23862,10 @@ func (r *RefSubtweenTweenerImpl) TypedRef(from *RefSubtweenTweenerImpl) {
 func (r *RefSubtweenTweenerImpl) Unref() {
 	rg := (*TypedRef[SubtweenTweener])(r)
 	rg.Unref()
+}
+
+func (r *RefSubtweenTweenerImpl) Clone() Ref {
+	return (*RefCountedRef[SubtweenTweener])(r).Clone()
 }
 
 func (r *RefSubtweenTweenerImpl) IsValid() bool {
@@ -22043,6 +23915,10 @@ func (r *RefSurfaceToolImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSurfaceToolImpl) Clone() Ref {
+	return (*RefCountedRef[SurfaceTool])(r).Clone()
+}
+
 func (r *RefSurfaceToolImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -22088,6 +23964,10 @@ func (r *RefSyntaxHighlighterImpl) TypedRef(from *RefSyntaxHighlighterImpl) {
 func (r *RefSyntaxHighlighterImpl) Unref() {
 	rg := (*TypedRef[SyntaxHighlighter])(r)
 	rg.Unref()
+}
+
+func (r *RefSyntaxHighlighterImpl) Clone() Ref {
+	return (*RefCountedRef[SyntaxHighlighter])(r).Clone()
 }
 
 func (r *RefSyntaxHighlighterImpl) IsValid() bool {
@@ -22137,6 +24017,10 @@ func (r *RefSystemFontImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefSystemFontImpl) Clone() Ref {
+	return (*RefCountedRef[SystemFont])(r).Clone()
+}
+
 func (r *RefSystemFontImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -22182,6 +24066,10 @@ func (r *RefTCPServerImpl) TypedRef(from *RefTCPServerImpl) {
 func (r *RefTCPServerImpl) Unref() {
 	rg := (*TypedRef[TCPServer])(r)
 	rg.Unref()
+}
+
+func (r *RefTCPServerImpl) Clone() Ref {
+	return (*RefCountedRef[TCPServer])(r).Clone()
 }
 
 func (r *RefTCPServerImpl) IsValid() bool {
@@ -22231,6 +24119,10 @@ func (r *RefTLSOptionsImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTLSOptionsImpl) Clone() Ref {
+	return (*RefCountedRef[TLSOptions])(r).Clone()
+}
+
 func (r *RefTLSOptionsImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -22276,6 +24168,10 @@ func (r *RefTextLineImpl) TypedRef(from *RefTextLineImpl) {
 func (r *RefTextLineImpl) Unref() {
 	rg := (*TypedRef[TextLine])(r)
 	rg.Unref()
+}
+
+func (r *RefTextLineImpl) Clone() Ref {
+	return (*RefCountedRef[TextLine])(r).Clone()
 }
 
 func (r *RefTextLineImpl) IsValid() bool {
@@ -22325,6 +24221,10 @@ func (r *RefTextMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTextMeshImpl) Clone() Ref {
+	return (*RefCountedRef[TextMesh])(r).Clone()
+}
+
 func (r *RefTextMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -22370,6 +24270,10 @@ func (r *RefTextParagraphImpl) TypedRef(from *RefTextParagraphImpl) {
 func (r *RefTextParagraphImpl) Unref() {
 	rg := (*TypedRef[TextParagraph])(r)
 	rg.Unref()
+}
+
+func (r *RefTextParagraphImpl) Clone() Ref {
+	return (*RefCountedRef[TextParagraph])(r).Clone()
 }
 
 func (r *RefTextParagraphImpl) IsValid() bool {
@@ -22419,6 +24323,10 @@ func (r *RefTextServerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTextServerImpl) Clone() Ref {
+	return (*RefCountedRef[TextServer])(r).Clone()
+}
+
 func (r *RefTextServerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -22464,6 +24372,10 @@ func (r *RefTextServerAdvancedImpl) TypedRef(from *RefTextServerAdvancedImpl) {
 func (r *RefTextServerAdvancedImpl) Unref() {
 	rg := (*TypedRef[TextServerAdvanced])(r)
 	rg.Unref()
+}
+
+func (r *RefTextServerAdvancedImpl) Clone() Ref {
+	return (*RefCountedRef[TextServerAdvanced])(r).Clone()
 }
 
 func (r *RefTextServerAdvancedImpl) IsValid() bool {
@@ -22513,6 +24425,10 @@ func (r *RefTextServerDummyImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTextServerDummyImpl) Clone() Ref {
+	return (*RefCountedRef[TextServerDummy])(r).Clone()
+}
+
 func (r *RefTextServerDummyImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -22558,6 +24474,10 @@ func (r *RefTextServerExtensionImpl) TypedRef(from *RefTextServerExtensionImpl) 
 func (r *RefTextServerExtensionImpl) Unref() {
 	rg := (*TypedRef[TextServerExtension])(r)
 	rg.Unref()
+}
+
+func (r *RefTextServerExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[TextServerExtension])(r).Clone()
 }
 
 func (r *RefTextServerExtensionImpl) IsValid() bool {
@@ -22607,6 +24527,10 @@ func (r *RefTextureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTextureImpl) Clone() Ref {
+	return (*RefCountedRef[Texture])(r).Clone()
+}
+
 func (r *RefTextureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -22652,6 +24576,10 @@ func (r *RefTexture2DImpl) TypedRef(from *RefTexture2DImpl) {
 func (r *RefTexture2DImpl) Unref() {
 	rg := (*TypedRef[Texture2D])(r)
 	rg.Unref()
+}
+
+func (r *RefTexture2DImpl) Clone() Ref {
+	return (*RefCountedRef[Texture2D])(r).Clone()
 }
 
 func (r *RefTexture2DImpl) IsValid() bool {
@@ -22701,6 +24629,10 @@ func (r *RefTexture2DArrayImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTexture2DArrayImpl) Clone() Ref {
+	return (*RefCountedRef[Texture2DArray])(r).Clone()
+}
+
 func (r *RefTexture2DArrayImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -22746,6 +24678,10 @@ func (r *RefTexture2DArrayRDImpl) TypedRef(from *RefTexture2DArrayRDImpl) {
 func (r *RefTexture2DArrayRDImpl) Unref() {
 	rg := (*TypedRef[Texture2DArrayRD])(r)
 	rg.Unref()
+}
+
+func (r *RefTexture2DArrayRDImpl) Clone() Ref {
+	return (*RefCountedRef[Texture2DArrayRD])(r).Clone()
 }
 
 func (r *RefTexture2DArrayRDImpl) IsValid() bool {
@@ -22795,6 +24731,10 @@ func (r *RefTexture2DRDImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTexture2DRDImpl) Clone() Ref {
+	return (*RefCountedRef[Texture2DRD])(r).Clone()
+}
+
 func (r *RefTexture2DRDImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -22840,6 +24780,10 @@ func (r *RefTexture3DImpl) TypedRef(from *RefTexture3DImpl) {
 func (r *RefTexture3DImpl) Unref() {
 	rg := (*TypedRef[Texture3D])(r)
 	rg.Unref()
+}
+
+func (r *RefTexture3DImpl) Clone() Ref {
+	return (*RefCountedRef[Texture3D])(r).Clone()
 }
 
 func (r *RefTexture3DImpl) IsValid() bool {
@@ -22889,6 +24833,10 @@ func (r *RefTexture3DRDImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTexture3DRDImpl) Clone() Ref {
+	return (*RefCountedRef[Texture3DRD])(r).Clone()
+}
+
 func (r *RefTexture3DRDImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -22934,6 +24882,10 @@ func (r *RefTextureCubemapArrayRDImpl) TypedRef(from *RefTextureCubemapArrayRDIm
 func (r *RefTextureCubemapArrayRDImpl) Unref() {
 	rg := (*TypedRef[TextureCubemapArrayRD])(r)
 	rg.Unref()
+}
+
+func (r *RefTextureCubemapArrayRDImpl) Clone() Ref {
+	return (*RefCountedRef[TextureCubemapArrayRD])(r).Clone()
 }
 
 func (r *RefTextureCubemapArrayRDImpl) IsValid() bool {
@@ -22983,6 +24935,10 @@ func (r *RefTextureCubemapRDImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTextureCubemapRDImpl) Clone() Ref {
+	return (*RefCountedRef[TextureCubemapRD])(r).Clone()
+}
+
 func (r *RefTextureCubemapRDImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -23028,6 +24984,10 @@ func (r *RefTextureLayeredImpl) TypedRef(from *RefTextureLayeredImpl) {
 func (r *RefTextureLayeredImpl) Unref() {
 	rg := (*TypedRef[TextureLayered])(r)
 	rg.Unref()
+}
+
+func (r *RefTextureLayeredImpl) Clone() Ref {
+	return (*RefCountedRef[TextureLayered])(r).Clone()
 }
 
 func (r *RefTextureLayeredImpl) IsValid() bool {
@@ -23077,6 +25037,10 @@ func (r *RefTextureLayeredRDImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTextureLayeredRDImpl) Clone() Ref {
+	return (*RefCountedRef[TextureLayeredRD])(r).Clone()
+}
+
 func (r *RefTextureLayeredRDImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -23122,6 +25086,10 @@ func (r *RefThemeImpl) TypedRef(from *RefThemeImpl) {
 func (r *RefThemeImpl) Unref() {
 	rg := (*TypedRef[Theme])(r)
 	rg.Unref()
+}
+
+func (r *RefThemeImpl) Clone() Ref {
+	return (*RefCountedRef[Theme])(r).Clone()
 }
 
 func (r *RefThemeImpl) IsValid() bool {
@@ -23171,6 +25139,10 @@ func (r *RefThreadImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefThreadImpl) Clone() Ref {
+	return (*RefCountedRef[Thread])(r).Clone()
+}
+
 func (r *RefThreadImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -23216,6 +25188,10 @@ func (r *RefTileMapPatternImpl) TypedRef(from *RefTileMapPatternImpl) {
 func (r *RefTileMapPatternImpl) Unref() {
 	rg := (*TypedRef[TileMapPattern])(r)
 	rg.Unref()
+}
+
+func (r *RefTileMapPatternImpl) Clone() Ref {
+	return (*RefCountedRef[TileMapPattern])(r).Clone()
 }
 
 func (r *RefTileMapPatternImpl) IsValid() bool {
@@ -23265,6 +25241,10 @@ func (r *RefTileSetImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTileSetImpl) Clone() Ref {
+	return (*RefCountedRef[TileSet])(r).Clone()
+}
+
 func (r *RefTileSetImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -23310,6 +25290,10 @@ func (r *RefTileSetAtlasSourceImpl) TypedRef(from *RefTileSetAtlasSourceImpl) {
 func (r *RefTileSetAtlasSourceImpl) Unref() {
 	rg := (*TypedRef[TileSetAtlasSource])(r)
 	rg.Unref()
+}
+
+func (r *RefTileSetAtlasSourceImpl) Clone() Ref {
+	return (*RefCountedRef[TileSetAtlasSource])(r).Clone()
 }
 
 func (r *RefTileSetAtlasSourceImpl) IsValid() bool {
@@ -23359,6 +25343,10 @@ func (r *RefTileSetScenesCollectionSourceImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTileSetScenesCollectionSourceImpl) Clone() Ref {
+	return (*RefCountedRef[TileSetScenesCollectionSource])(r).Clone()
+}
+
 func (r *RefTileSetScenesCollectionSourceImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -23404,6 +25392,10 @@ func (r *RefTileSetSourceImpl) TypedRef(from *RefTileSetSourceImpl) {
 func (r *RefTileSetSourceImpl) Unref() {
 	rg := (*TypedRef[TileSetSource])(r)
 	rg.Unref()
+}
+
+func (r *RefTileSetSourceImpl) Clone() Ref {
+	return (*RefCountedRef[TileSetSource])(r).Clone()
 }
 
 func (r *RefTileSetSourceImpl) IsValid() bool {
@@ -23453,6 +25445,10 @@ func (r *RefTorusMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTorusMeshImpl) Clone() Ref {
+	return (*RefCountedRef[TorusMesh])(r).Clone()
+}
+
 func (r *RefTorusMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -23498,6 +25494,10 @@ func (r *RefTranslationImpl) TypedRef(from *RefTranslationImpl) {
 func (r *RefTranslationImpl) Unref() {
 	rg := (*TypedRef[Translation])(r)
 	rg.Unref()
+}
+
+func (r *RefTranslationImpl) Clone() Ref {
+	return (*RefCountedRef[Translation])(r).Clone()
 }
 
 func (r *RefTranslationImpl) IsValid() bool {
@@ -23547,6 +25547,10 @@ func (r *RefTranslationDomainImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTranslationDomainImpl) Clone() Ref {
+	return (*RefCountedRef[TranslationDomain])(r).Clone()
+}
+
 func (r *RefTranslationDomainImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -23592,6 +25596,10 @@ func (r *RefTriangleMeshImpl) TypedRef(from *RefTriangleMeshImpl) {
 func (r *RefTriangleMeshImpl) Unref() {
 	rg := (*TypedRef[TriangleMesh])(r)
 	rg.Unref()
+}
+
+func (r *RefTriangleMeshImpl) Clone() Ref {
+	return (*RefCountedRef[TriangleMesh])(r).Clone()
 }
 
 func (r *RefTriangleMeshImpl) IsValid() bool {
@@ -23641,6 +25649,10 @@ func (r *RefTubeTrailMeshImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTubeTrailMeshImpl) Clone() Ref {
+	return (*RefCountedRef[TubeTrailMesh])(r).Clone()
+}
+
 func (r *RefTubeTrailMeshImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -23686,6 +25698,10 @@ func (r *RefTweenImpl) TypedRef(from *RefTweenImpl) {
 func (r *RefTweenImpl) Unref() {
 	rg := (*TypedRef[Tween])(r)
 	rg.Unref()
+}
+
+func (r *RefTweenImpl) Clone() Ref {
+	return (*RefCountedRef[Tween])(r).Clone()
 }
 
 func (r *RefTweenImpl) IsValid() bool {
@@ -23735,6 +25751,10 @@ func (r *RefTweenerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefTweenerImpl) Clone() Ref {
+	return (*RefCountedRef[Tweener])(r).Clone()
+}
+
 func (r *RefTweenerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -23780,6 +25800,10 @@ func (r *RefUDPServerImpl) TypedRef(from *RefUDPServerImpl) {
 func (r *RefUDPServerImpl) Unref() {
 	rg := (*TypedRef[UDPServer])(r)
 	rg.Unref()
+}
+
+func (r *RefUDPServerImpl) Clone() Ref {
+	return (*RefCountedRef[UDPServer])(r).Clone()
 }
 
 func (r *RefUDPServerImpl) IsValid() bool {
@@ -23829,6 +25853,10 @@ func (r *RefUDSServerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefUDSServerImpl) Clone() Ref {
+	return (*RefCountedRef[UDSServer])(r).Clone()
+}
+
 func (r *RefUDSServerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -23874,6 +25902,10 @@ func (r *RefUPNPImpl) TypedRef(from *RefUPNPImpl) {
 func (r *RefUPNPImpl) Unref() {
 	rg := (*TypedRef[UPNP])(r)
 	rg.Unref()
+}
+
+func (r *RefUPNPImpl) Clone() Ref {
+	return (*RefCountedRef[UPNP])(r).Clone()
 }
 
 func (r *RefUPNPImpl) IsValid() bool {
@@ -23923,6 +25955,10 @@ func (r *RefUPNPDeviceImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefUPNPDeviceImpl) Clone() Ref {
+	return (*RefCountedRef[UPNPDevice])(r).Clone()
+}
+
 func (r *RefUPNPDeviceImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -23968,6 +26004,10 @@ func (r *RefVideoStreamImpl) TypedRef(from *RefVideoStreamImpl) {
 func (r *RefVideoStreamImpl) Unref() {
 	rg := (*TypedRef[VideoStream])(r)
 	rg.Unref()
+}
+
+func (r *RefVideoStreamImpl) Clone() Ref {
+	return (*RefCountedRef[VideoStream])(r).Clone()
 }
 
 func (r *RefVideoStreamImpl) IsValid() bool {
@@ -24017,6 +26057,10 @@ func (r *RefVideoStreamPlaybackImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVideoStreamPlaybackImpl) Clone() Ref {
+	return (*RefCountedRef[VideoStreamPlayback])(r).Clone()
+}
+
 func (r *RefVideoStreamPlaybackImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -24062,6 +26106,10 @@ func (r *RefVideoStreamTheoraImpl) TypedRef(from *RefVideoStreamTheoraImpl) {
 func (r *RefVideoStreamTheoraImpl) Unref() {
 	rg := (*TypedRef[VideoStreamTheora])(r)
 	rg.Unref()
+}
+
+func (r *RefVideoStreamTheoraImpl) Clone() Ref {
+	return (*RefCountedRef[VideoStreamTheora])(r).Clone()
 }
 
 func (r *RefVideoStreamTheoraImpl) IsValid() bool {
@@ -24111,6 +26159,10 @@ func (r *RefViewportTextureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefViewportTextureImpl) Clone() Ref {
+	return (*RefCountedRef[ViewportTexture])(r).Clone()
+}
+
 func (r *RefViewportTextureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -24156,6 +26208,10 @@ func (r *RefVisualShaderImpl) TypedRef(from *RefVisualShaderImpl) {
 func (r *RefVisualShaderImpl) Unref() {
 	rg := (*TypedRef[VisualShader])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShader])(r).Clone()
 }
 
 func (r *RefVisualShaderImpl) IsValid() bool {
@@ -24205,6 +26261,10 @@ func (r *RefVisualShaderNodeImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNode])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -24250,6 +26310,10 @@ func (r *RefVisualShaderNodeBillboardImpl) TypedRef(from *RefVisualShaderNodeBil
 func (r *RefVisualShaderNodeBillboardImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeBillboard])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeBillboardImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeBillboard])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeBillboardImpl) IsValid() bool {
@@ -24299,6 +26363,10 @@ func (r *RefVisualShaderNodeBooleanConstantImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeBooleanConstantImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeBooleanConstant])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeBooleanConstantImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -24344,6 +26412,10 @@ func (r *RefVisualShaderNodeBooleanParameterImpl) TypedRef(from *RefVisualShader
 func (r *RefVisualShaderNodeBooleanParameterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeBooleanParameter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeBooleanParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeBooleanParameter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeBooleanParameterImpl) IsValid() bool {
@@ -24393,6 +26465,10 @@ func (r *RefVisualShaderNodeClampImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeClampImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeClamp])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeClampImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -24438,6 +26514,10 @@ func (r *RefVisualShaderNodeColorConstantImpl) TypedRef(from *RefVisualShaderNod
 func (r *RefVisualShaderNodeColorConstantImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeColorConstant])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeColorConstantImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeColorConstant])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeColorConstantImpl) IsValid() bool {
@@ -24487,6 +26567,10 @@ func (r *RefVisualShaderNodeColorFuncImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeColorFuncImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeColorFunc])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeColorFuncImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -24532,6 +26616,10 @@ func (r *RefVisualShaderNodeColorOpImpl) TypedRef(from *RefVisualShaderNodeColor
 func (r *RefVisualShaderNodeColorOpImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeColorOp])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeColorOpImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeColorOp])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeColorOpImpl) IsValid() bool {
@@ -24581,6 +26669,10 @@ func (r *RefVisualShaderNodeColorParameterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeColorParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeColorParameter])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeColorParameterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -24626,6 +26718,10 @@ func (r *RefVisualShaderNodeCommentImpl) TypedRef(from *RefVisualShaderNodeComme
 func (r *RefVisualShaderNodeCommentImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeComment])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeCommentImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeComment])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeCommentImpl) IsValid() bool {
@@ -24675,6 +26771,10 @@ func (r *RefVisualShaderNodeCompareImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeCompareImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeCompare])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeCompareImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -24720,6 +26820,10 @@ func (r *RefVisualShaderNodeConstantImpl) TypedRef(from *RefVisualShaderNodeCons
 func (r *RefVisualShaderNodeConstantImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeConstant])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeConstantImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeConstant])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeConstantImpl) IsValid() bool {
@@ -24769,6 +26873,10 @@ func (r *RefVisualShaderNodeCubemapImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeCubemapImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeCubemap])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeCubemapImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -24814,6 +26922,10 @@ func (r *RefVisualShaderNodeCubemapParameterImpl) TypedRef(from *RefVisualShader
 func (r *RefVisualShaderNodeCubemapParameterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeCubemapParameter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeCubemapParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeCubemapParameter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeCubemapParameterImpl) IsValid() bool {
@@ -24863,6 +26975,10 @@ func (r *RefVisualShaderNodeCurveTextureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeCurveTextureImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeCurveTexture])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeCurveTextureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -24908,6 +27024,10 @@ func (r *RefVisualShaderNodeCurveXYZTextureImpl) TypedRef(from *RefVisualShaderN
 func (r *RefVisualShaderNodeCurveXYZTextureImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeCurveXYZTexture])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeCurveXYZTextureImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeCurveXYZTexture])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeCurveXYZTextureImpl) IsValid() bool {
@@ -24957,6 +27077,10 @@ func (r *RefVisualShaderNodeCustomImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeCustomImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeCustom])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeCustomImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -25002,6 +27126,10 @@ func (r *RefVisualShaderNodeDerivativeFuncImpl) TypedRef(from *RefVisualShaderNo
 func (r *RefVisualShaderNodeDerivativeFuncImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeDerivativeFunc])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeDerivativeFuncImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeDerivativeFunc])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeDerivativeFuncImpl) IsValid() bool {
@@ -25051,6 +27179,10 @@ func (r *RefVisualShaderNodeDeterminantImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeDeterminantImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeDeterminant])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeDeterminantImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -25096,6 +27228,10 @@ func (r *RefVisualShaderNodeDistanceFadeImpl) TypedRef(from *RefVisualShaderNode
 func (r *RefVisualShaderNodeDistanceFadeImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeDistanceFade])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeDistanceFadeImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeDistanceFade])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeDistanceFadeImpl) IsValid() bool {
@@ -25145,6 +27281,10 @@ func (r *RefVisualShaderNodeDotProductImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeDotProductImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeDotProduct])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeDotProductImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -25190,6 +27330,10 @@ func (r *RefVisualShaderNodeExpressionImpl) TypedRef(from *RefVisualShaderNodeEx
 func (r *RefVisualShaderNodeExpressionImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeExpression])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeExpressionImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeExpression])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeExpressionImpl) IsValid() bool {
@@ -25239,6 +27383,10 @@ func (r *RefVisualShaderNodeFaceForwardImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeFaceForwardImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeFaceForward])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeFaceForwardImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -25284,6 +27432,10 @@ func (r *RefVisualShaderNodeFloatConstantImpl) TypedRef(from *RefVisualShaderNod
 func (r *RefVisualShaderNodeFloatConstantImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeFloatConstant])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeFloatConstantImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeFloatConstant])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeFloatConstantImpl) IsValid() bool {
@@ -25333,6 +27485,10 @@ func (r *RefVisualShaderNodeFloatFuncImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeFloatFuncImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeFloatFunc])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeFloatFuncImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -25378,6 +27534,10 @@ func (r *RefVisualShaderNodeFloatOpImpl) TypedRef(from *RefVisualShaderNodeFloat
 func (r *RefVisualShaderNodeFloatOpImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeFloatOp])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeFloatOpImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeFloatOp])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeFloatOpImpl) IsValid() bool {
@@ -25427,6 +27587,10 @@ func (r *RefVisualShaderNodeFloatParameterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeFloatParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeFloatParameter])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeFloatParameterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -25472,6 +27636,10 @@ func (r *RefVisualShaderNodeFrameImpl) TypedRef(from *RefVisualShaderNodeFrameIm
 func (r *RefVisualShaderNodeFrameImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeFrame])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeFrameImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeFrame])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeFrameImpl) IsValid() bool {
@@ -25521,6 +27689,10 @@ func (r *RefVisualShaderNodeFresnelImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeFresnelImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeFresnel])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeFresnelImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -25566,6 +27738,10 @@ func (r *RefVisualShaderNodeGlobalExpressionImpl) TypedRef(from *RefVisualShader
 func (r *RefVisualShaderNodeGlobalExpressionImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeGlobalExpression])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeGlobalExpressionImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeGlobalExpression])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeGlobalExpressionImpl) IsValid() bool {
@@ -25615,6 +27791,10 @@ func (r *RefVisualShaderNodeGroupBaseImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeGroupBaseImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeGroupBase])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeGroupBaseImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -25660,6 +27840,10 @@ func (r *RefVisualShaderNodeIfImpl) TypedRef(from *RefVisualShaderNodeIfImpl) {
 func (r *RefVisualShaderNodeIfImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeIf])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeIfImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeIf])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeIfImpl) IsValid() bool {
@@ -25709,6 +27893,10 @@ func (r *RefVisualShaderNodeInputImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeInputImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeInput])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeInputImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -25754,6 +27942,10 @@ func (r *RefVisualShaderNodeIntConstantImpl) TypedRef(from *RefVisualShaderNodeI
 func (r *RefVisualShaderNodeIntConstantImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeIntConstant])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeIntConstantImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeIntConstant])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeIntConstantImpl) IsValid() bool {
@@ -25803,6 +27995,10 @@ func (r *RefVisualShaderNodeIntFuncImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeIntFuncImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeIntFunc])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeIntFuncImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -25848,6 +28044,10 @@ func (r *RefVisualShaderNodeIntOpImpl) TypedRef(from *RefVisualShaderNodeIntOpIm
 func (r *RefVisualShaderNodeIntOpImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeIntOp])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeIntOpImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeIntOp])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeIntOpImpl) IsValid() bool {
@@ -25897,6 +28097,10 @@ func (r *RefVisualShaderNodeIntParameterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeIntParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeIntParameter])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeIntParameterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -25942,6 +28146,10 @@ func (r *RefVisualShaderNodeIsImpl) TypedRef(from *RefVisualShaderNodeIsImpl) {
 func (r *RefVisualShaderNodeIsImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeIs])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeIsImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeIs])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeIsImpl) IsValid() bool {
@@ -25991,6 +28199,10 @@ func (r *RefVisualShaderNodeLinearSceneDepthImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeLinearSceneDepthImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeLinearSceneDepth])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeLinearSceneDepthImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -26036,6 +28248,10 @@ func (r *RefVisualShaderNodeMixImpl) TypedRef(from *RefVisualShaderNodeMixImpl) 
 func (r *RefVisualShaderNodeMixImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeMix])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeMixImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeMix])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeMixImpl) IsValid() bool {
@@ -26085,6 +28301,10 @@ func (r *RefVisualShaderNodeMultiplyAddImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeMultiplyAddImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeMultiplyAdd])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeMultiplyAddImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -26130,6 +28350,10 @@ func (r *RefVisualShaderNodeOuterProductImpl) TypedRef(from *RefVisualShaderNode
 func (r *RefVisualShaderNodeOuterProductImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeOuterProduct])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeOuterProductImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeOuterProduct])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeOuterProductImpl) IsValid() bool {
@@ -26179,6 +28403,10 @@ func (r *RefVisualShaderNodeOutputImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeOutputImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeOutput])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeOutputImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -26224,6 +28452,10 @@ func (r *RefVisualShaderNodeParameterImpl) TypedRef(from *RefVisualShaderNodePar
 func (r *RefVisualShaderNodeParameterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeParameter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParameter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeParameterImpl) IsValid() bool {
@@ -26273,6 +28505,10 @@ func (r *RefVisualShaderNodeParameterRefImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeParameterRefImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParameterRef])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeParameterRefImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -26318,6 +28554,10 @@ func (r *RefVisualShaderNodeParticleAcceleratorImpl) TypedRef(from *RefVisualSha
 func (r *RefVisualShaderNodeParticleAcceleratorImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeParticleAccelerator])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeParticleAcceleratorImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParticleAccelerator])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeParticleAcceleratorImpl) IsValid() bool {
@@ -26367,6 +28607,10 @@ func (r *RefVisualShaderNodeParticleBoxEmitterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeParticleBoxEmitterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParticleBoxEmitter])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeParticleBoxEmitterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -26412,6 +28656,10 @@ func (r *RefVisualShaderNodeParticleConeVelocityImpl) TypedRef(from *RefVisualSh
 func (r *RefVisualShaderNodeParticleConeVelocityImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeParticleConeVelocity])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeParticleConeVelocityImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParticleConeVelocity])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeParticleConeVelocityImpl) IsValid() bool {
@@ -26461,6 +28709,10 @@ func (r *RefVisualShaderNodeParticleEmitImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeParticleEmitImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParticleEmit])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeParticleEmitImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -26506,6 +28758,10 @@ func (r *RefVisualShaderNodeParticleEmitterImpl) TypedRef(from *RefVisualShaderN
 func (r *RefVisualShaderNodeParticleEmitterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeParticleEmitter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeParticleEmitterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParticleEmitter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeParticleEmitterImpl) IsValid() bool {
@@ -26555,6 +28811,10 @@ func (r *RefVisualShaderNodeParticleMeshEmitterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeParticleMeshEmitterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParticleMeshEmitter])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeParticleMeshEmitterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -26600,6 +28860,10 @@ func (r *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) TypedRef(from *RefV
 func (r *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParticleMultiplyByAxisAngle])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeParticleMultiplyByAxisAngleImpl) IsValid() bool {
@@ -26649,6 +28913,10 @@ func (r *RefVisualShaderNodeParticleOutputImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeParticleOutputImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParticleOutput])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeParticleOutputImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -26694,6 +28962,10 @@ func (r *RefVisualShaderNodeParticleRandomnessImpl) TypedRef(from *RefVisualShad
 func (r *RefVisualShaderNodeParticleRandomnessImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeParticleRandomness])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeParticleRandomnessImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParticleRandomness])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeParticleRandomnessImpl) IsValid() bool {
@@ -26743,6 +29015,10 @@ func (r *RefVisualShaderNodeParticleRingEmitterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeParticleRingEmitterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParticleRingEmitter])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeParticleRingEmitterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -26788,6 +29064,10 @@ func (r *RefVisualShaderNodeParticleSphereEmitterImpl) TypedRef(from *RefVisualS
 func (r *RefVisualShaderNodeParticleSphereEmitterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeParticleSphereEmitter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeParticleSphereEmitterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeParticleSphereEmitter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeParticleSphereEmitterImpl) IsValid() bool {
@@ -26837,6 +29117,10 @@ func (r *RefVisualShaderNodeProximityFadeImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeProximityFadeImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeProximityFade])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeProximityFadeImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -26882,6 +29166,10 @@ func (r *RefVisualShaderNodeRandomRangeImpl) TypedRef(from *RefVisualShaderNodeR
 func (r *RefVisualShaderNodeRandomRangeImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeRandomRange])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeRandomRangeImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeRandomRange])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeRandomRangeImpl) IsValid() bool {
@@ -26931,6 +29219,10 @@ func (r *RefVisualShaderNodeRemapImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeRemapImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeRemap])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeRemapImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -26976,6 +29268,10 @@ func (r *RefVisualShaderNodeRerouteImpl) TypedRef(from *RefVisualShaderNodeRerou
 func (r *RefVisualShaderNodeRerouteImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeReroute])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeRerouteImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeReroute])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeRerouteImpl) IsValid() bool {
@@ -27025,6 +29321,10 @@ func (r *RefVisualShaderNodeResizableBaseImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeResizableBaseImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeResizableBase])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeResizableBaseImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -27070,6 +29370,10 @@ func (r *RefVisualShaderNodeRotationByAxisImpl) TypedRef(from *RefVisualShaderNo
 func (r *RefVisualShaderNodeRotationByAxisImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeRotationByAxis])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeRotationByAxisImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeRotationByAxis])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeRotationByAxisImpl) IsValid() bool {
@@ -27119,6 +29423,10 @@ func (r *RefVisualShaderNodeSDFRaymarchImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeSDFRaymarchImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeSDFRaymarch])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeSDFRaymarchImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -27164,6 +29472,10 @@ func (r *RefVisualShaderNodeSDFToScreenUVImpl) TypedRef(from *RefVisualShaderNod
 func (r *RefVisualShaderNodeSDFToScreenUVImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeSDFToScreenUV])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeSDFToScreenUVImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeSDFToScreenUV])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeSDFToScreenUVImpl) IsValid() bool {
@@ -27213,6 +29525,10 @@ func (r *RefVisualShaderNodeSample3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeSample3DImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeSample3D])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeSample3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -27258,6 +29574,10 @@ func (r *RefVisualShaderNodeScreenNormalWorldSpaceImpl) TypedRef(from *RefVisual
 func (r *RefVisualShaderNodeScreenNormalWorldSpaceImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeScreenNormalWorldSpace])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeScreenNormalWorldSpaceImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeScreenNormalWorldSpace])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeScreenNormalWorldSpaceImpl) IsValid() bool {
@@ -27307,6 +29627,10 @@ func (r *RefVisualShaderNodeScreenUVToSDFImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeScreenUVToSDFImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeScreenUVToSDF])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeScreenUVToSDFImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -27352,6 +29676,10 @@ func (r *RefVisualShaderNodeSmoothStepImpl) TypedRef(from *RefVisualShaderNodeSm
 func (r *RefVisualShaderNodeSmoothStepImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeSmoothStep])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeSmoothStepImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeSmoothStep])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeSmoothStepImpl) IsValid() bool {
@@ -27401,6 +29729,10 @@ func (r *RefVisualShaderNodeStepImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeStepImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeStep])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeStepImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -27446,6 +29778,10 @@ func (r *RefVisualShaderNodeSwitchImpl) TypedRef(from *RefVisualShaderNodeSwitch
 func (r *RefVisualShaderNodeSwitchImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeSwitch])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeSwitchImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeSwitch])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeSwitchImpl) IsValid() bool {
@@ -27495,6 +29831,10 @@ func (r *RefVisualShaderNodeTextureImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeTextureImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTexture])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeTextureImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -27540,6 +29880,10 @@ func (r *RefVisualShaderNodeTexture2DArrayImpl) TypedRef(from *RefVisualShaderNo
 func (r *RefVisualShaderNodeTexture2DArrayImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeTexture2DArray])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeTexture2DArrayImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTexture2DArray])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeTexture2DArrayImpl) IsValid() bool {
@@ -27589,6 +29933,10 @@ func (r *RefVisualShaderNodeTexture2DArrayParameterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeTexture2DArrayParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTexture2DArrayParameter])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeTexture2DArrayParameterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -27634,6 +29982,10 @@ func (r *RefVisualShaderNodeTexture2DParameterImpl) TypedRef(from *RefVisualShad
 func (r *RefVisualShaderNodeTexture2DParameterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeTexture2DParameter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeTexture2DParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTexture2DParameter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeTexture2DParameterImpl) IsValid() bool {
@@ -27683,6 +30035,10 @@ func (r *RefVisualShaderNodeTexture3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeTexture3DImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTexture3D])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeTexture3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -27728,6 +30084,10 @@ func (r *RefVisualShaderNodeTexture3DParameterImpl) TypedRef(from *RefVisualShad
 func (r *RefVisualShaderNodeTexture3DParameterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeTexture3DParameter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeTexture3DParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTexture3DParameter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeTexture3DParameterImpl) IsValid() bool {
@@ -27777,6 +30137,10 @@ func (r *RefVisualShaderNodeTextureParameterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeTextureParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTextureParameter])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeTextureParameterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -27822,6 +30186,10 @@ func (r *RefVisualShaderNodeTextureParameterTriplanarImpl) TypedRef(from *RefVis
 func (r *RefVisualShaderNodeTextureParameterTriplanarImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeTextureParameterTriplanar])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeTextureParameterTriplanarImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTextureParameterTriplanar])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeTextureParameterTriplanarImpl) IsValid() bool {
@@ -27871,6 +30239,10 @@ func (r *RefVisualShaderNodeTextureSDFImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeTextureSDFImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTextureSDF])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeTextureSDFImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -27916,6 +30288,10 @@ func (r *RefVisualShaderNodeTextureSDFNormalImpl) TypedRef(from *RefVisualShader
 func (r *RefVisualShaderNodeTextureSDFNormalImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeTextureSDFNormal])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeTextureSDFNormalImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTextureSDFNormal])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeTextureSDFNormalImpl) IsValid() bool {
@@ -27965,6 +30341,10 @@ func (r *RefVisualShaderNodeTransformComposeImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeTransformComposeImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTransformCompose])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeTransformComposeImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -28010,6 +30390,10 @@ func (r *RefVisualShaderNodeTransformConstantImpl) TypedRef(from *RefVisualShade
 func (r *RefVisualShaderNodeTransformConstantImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeTransformConstant])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeTransformConstantImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTransformConstant])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeTransformConstantImpl) IsValid() bool {
@@ -28059,6 +30443,10 @@ func (r *RefVisualShaderNodeTransformDecomposeImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeTransformDecomposeImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTransformDecompose])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeTransformDecomposeImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -28104,6 +30492,10 @@ func (r *RefVisualShaderNodeTransformFuncImpl) TypedRef(from *RefVisualShaderNod
 func (r *RefVisualShaderNodeTransformFuncImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeTransformFunc])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeTransformFuncImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTransformFunc])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeTransformFuncImpl) IsValid() bool {
@@ -28153,6 +30545,10 @@ func (r *RefVisualShaderNodeTransformOpImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeTransformOpImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTransformOp])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeTransformOpImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -28198,6 +30594,10 @@ func (r *RefVisualShaderNodeTransformParameterImpl) TypedRef(from *RefVisualShad
 func (r *RefVisualShaderNodeTransformParameterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeTransformParameter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeTransformParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTransformParameter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeTransformParameterImpl) IsValid() bool {
@@ -28247,6 +30647,10 @@ func (r *RefVisualShaderNodeTransformVecMultImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeTransformVecMultImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeTransformVecMult])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeTransformVecMultImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -28292,6 +30696,10 @@ func (r *RefVisualShaderNodeUIntConstantImpl) TypedRef(from *RefVisualShaderNode
 func (r *RefVisualShaderNodeUIntConstantImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeUIntConstant])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeUIntConstantImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeUIntConstant])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeUIntConstantImpl) IsValid() bool {
@@ -28341,6 +30749,10 @@ func (r *RefVisualShaderNodeUIntFuncImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeUIntFuncImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeUIntFunc])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeUIntFuncImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -28386,6 +30798,10 @@ func (r *RefVisualShaderNodeUIntOpImpl) TypedRef(from *RefVisualShaderNodeUIntOp
 func (r *RefVisualShaderNodeUIntOpImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeUIntOp])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeUIntOpImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeUIntOp])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeUIntOpImpl) IsValid() bool {
@@ -28435,6 +30851,10 @@ func (r *RefVisualShaderNodeUIntParameterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeUIntParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeUIntParameter])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeUIntParameterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -28480,6 +30900,10 @@ func (r *RefVisualShaderNodeUVFuncImpl) TypedRef(from *RefVisualShaderNodeUVFunc
 func (r *RefVisualShaderNodeUVFuncImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeUVFunc])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeUVFuncImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeUVFunc])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeUVFuncImpl) IsValid() bool {
@@ -28529,6 +30953,10 @@ func (r *RefVisualShaderNodeUVPolarCoordImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeUVPolarCoordImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeUVPolarCoord])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeUVPolarCoordImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -28574,6 +31002,10 @@ func (r *RefVisualShaderNodeVaryingImpl) TypedRef(from *RefVisualShaderNodeVaryi
 func (r *RefVisualShaderNodeVaryingImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeVarying])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeVaryingImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVarying])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeVaryingImpl) IsValid() bool {
@@ -28623,6 +31055,10 @@ func (r *RefVisualShaderNodeVaryingGetterImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeVaryingGetterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVaryingGetter])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeVaryingGetterImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -28668,6 +31104,10 @@ func (r *RefVisualShaderNodeVaryingSetterImpl) TypedRef(from *RefVisualShaderNod
 func (r *RefVisualShaderNodeVaryingSetterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeVaryingSetter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeVaryingSetterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVaryingSetter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeVaryingSetterImpl) IsValid() bool {
@@ -28717,6 +31157,10 @@ func (r *RefVisualShaderNodeVec2ConstantImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeVec2ConstantImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVec2Constant])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeVec2ConstantImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -28762,6 +31206,10 @@ func (r *RefVisualShaderNodeVec2ParameterImpl) TypedRef(from *RefVisualShaderNod
 func (r *RefVisualShaderNodeVec2ParameterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeVec2Parameter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeVec2ParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVec2Parameter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeVec2ParameterImpl) IsValid() bool {
@@ -28811,6 +31259,10 @@ func (r *RefVisualShaderNodeVec3ConstantImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeVec3ConstantImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVec3Constant])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeVec3ConstantImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -28856,6 +31308,10 @@ func (r *RefVisualShaderNodeVec3ParameterImpl) TypedRef(from *RefVisualShaderNod
 func (r *RefVisualShaderNodeVec3ParameterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeVec3Parameter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeVec3ParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVec3Parameter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeVec3ParameterImpl) IsValid() bool {
@@ -28905,6 +31361,10 @@ func (r *RefVisualShaderNodeVec4ConstantImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeVec4ConstantImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVec4Constant])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeVec4ConstantImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -28950,6 +31410,10 @@ func (r *RefVisualShaderNodeVec4ParameterImpl) TypedRef(from *RefVisualShaderNod
 func (r *RefVisualShaderNodeVec4ParameterImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeVec4Parameter])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeVec4ParameterImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVec4Parameter])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeVec4ParameterImpl) IsValid() bool {
@@ -28999,6 +31463,10 @@ func (r *RefVisualShaderNodeVectorBaseImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeVectorBaseImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVectorBase])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeVectorBaseImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -29044,6 +31512,10 @@ func (r *RefVisualShaderNodeVectorComposeImpl) TypedRef(from *RefVisualShaderNod
 func (r *RefVisualShaderNodeVectorComposeImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeVectorCompose])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeVectorComposeImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVectorCompose])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeVectorComposeImpl) IsValid() bool {
@@ -29093,6 +31565,10 @@ func (r *RefVisualShaderNodeVectorDecomposeImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeVectorDecomposeImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVectorDecompose])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeVectorDecomposeImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -29138,6 +31614,10 @@ func (r *RefVisualShaderNodeVectorDistanceImpl) TypedRef(from *RefVisualShaderNo
 func (r *RefVisualShaderNodeVectorDistanceImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeVectorDistance])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeVectorDistanceImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVectorDistance])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeVectorDistanceImpl) IsValid() bool {
@@ -29187,6 +31667,10 @@ func (r *RefVisualShaderNodeVectorFuncImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeVectorFuncImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVectorFunc])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeVectorFuncImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -29232,6 +31716,10 @@ func (r *RefVisualShaderNodeVectorLenImpl) TypedRef(from *RefVisualShaderNodeVec
 func (r *RefVisualShaderNodeVectorLenImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeVectorLen])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeVectorLenImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVectorLen])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeVectorLenImpl) IsValid() bool {
@@ -29281,6 +31769,10 @@ func (r *RefVisualShaderNodeVectorOpImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeVectorOpImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVectorOp])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeVectorOpImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -29326,6 +31818,10 @@ func (r *RefVisualShaderNodeVectorRefractImpl) TypedRef(from *RefVisualShaderNod
 func (r *RefVisualShaderNodeVectorRefractImpl) Unref() {
 	rg := (*TypedRef[VisualShaderNodeVectorRefract])(r)
 	rg.Unref()
+}
+
+func (r *RefVisualShaderNodeVectorRefractImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeVectorRefract])(r).Clone()
 }
 
 func (r *RefVisualShaderNodeVectorRefractImpl) IsValid() bool {
@@ -29375,6 +31871,10 @@ func (r *RefVisualShaderNodeWorldPositionFromDepthImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefVisualShaderNodeWorldPositionFromDepthImpl) Clone() Ref {
+	return (*RefCountedRef[VisualShaderNodeWorldPositionFromDepth])(r).Clone()
+}
+
 func (r *RefVisualShaderNodeWorldPositionFromDepthImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -29420,6 +31920,10 @@ func (r *RefVoxelGIDataImpl) TypedRef(from *RefVoxelGIDataImpl) {
 func (r *RefVoxelGIDataImpl) Unref() {
 	rg := (*TypedRef[VoxelGIData])(r)
 	rg.Unref()
+}
+
+func (r *RefVoxelGIDataImpl) Clone() Ref {
+	return (*RefCountedRef[VoxelGIData])(r).Clone()
 }
 
 func (r *RefVoxelGIDataImpl) IsValid() bool {
@@ -29469,6 +31973,10 @@ func (r *RefWeakRefImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefWeakRefImpl) Clone() Ref {
+	return (*RefCountedRef[WeakRef])(r).Clone()
+}
+
 func (r *RefWeakRefImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -29514,6 +32022,10 @@ func (r *RefWebRTCDataChannelImpl) TypedRef(from *RefWebRTCDataChannelImpl) {
 func (r *RefWebRTCDataChannelImpl) Unref() {
 	rg := (*TypedRef[WebRTCDataChannel])(r)
 	rg.Unref()
+}
+
+func (r *RefWebRTCDataChannelImpl) Clone() Ref {
+	return (*RefCountedRef[WebRTCDataChannel])(r).Clone()
 }
 
 func (r *RefWebRTCDataChannelImpl) IsValid() bool {
@@ -29563,6 +32075,10 @@ func (r *RefWebRTCDataChannelExtensionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefWebRTCDataChannelExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[WebRTCDataChannelExtension])(r).Clone()
+}
+
 func (r *RefWebRTCDataChannelExtensionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -29608,6 +32124,10 @@ func (r *RefWebRTCMultiplayerPeerImpl) TypedRef(from *RefWebRTCMultiplayerPeerIm
 func (r *RefWebRTCMultiplayerPeerImpl) Unref() {
 	rg := (*TypedRef[WebRTCMultiplayerPeer])(r)
 	rg.Unref()
+}
+
+func (r *RefWebRTCMultiplayerPeerImpl) Clone() Ref {
+	return (*RefCountedRef[WebRTCMultiplayerPeer])(r).Clone()
 }
 
 func (r *RefWebRTCMultiplayerPeerImpl) IsValid() bool {
@@ -29657,6 +32177,10 @@ func (r *RefWebRTCPeerConnectionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefWebRTCPeerConnectionImpl) Clone() Ref {
+	return (*RefCountedRef[WebRTCPeerConnection])(r).Clone()
+}
+
 func (r *RefWebRTCPeerConnectionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -29702,6 +32226,10 @@ func (r *RefWebRTCPeerConnectionExtensionImpl) TypedRef(from *RefWebRTCPeerConne
 func (r *RefWebRTCPeerConnectionExtensionImpl) Unref() {
 	rg := (*TypedRef[WebRTCPeerConnectionExtension])(r)
 	rg.Unref()
+}
+
+func (r *RefWebRTCPeerConnectionExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[WebRTCPeerConnectionExtension])(r).Clone()
 }
 
 func (r *RefWebRTCPeerConnectionExtensionImpl) IsValid() bool {
@@ -29751,6 +32279,10 @@ func (r *RefWebSocketMultiplayerPeerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefWebSocketMultiplayerPeerImpl) Clone() Ref {
+	return (*RefCountedRef[WebSocketMultiplayerPeer])(r).Clone()
+}
+
 func (r *RefWebSocketMultiplayerPeerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -29796,6 +32328,10 @@ func (r *RefWebSocketPeerImpl) TypedRef(from *RefWebSocketPeerImpl) {
 func (r *RefWebSocketPeerImpl) Unref() {
 	rg := (*TypedRef[WebSocketPeer])(r)
 	rg.Unref()
+}
+
+func (r *RefWebSocketPeerImpl) Clone() Ref {
+	return (*RefCountedRef[WebSocketPeer])(r).Clone()
 }
 
 func (r *RefWebSocketPeerImpl) IsValid() bool {
@@ -29845,6 +32381,10 @@ func (r *RefWebXRInterfaceImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefWebXRInterfaceImpl) Clone() Ref {
+	return (*RefCountedRef[WebXRInterface])(r).Clone()
+}
+
 func (r *RefWebXRInterfaceImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -29890,6 +32430,10 @@ func (r *RefWorld2DImpl) TypedRef(from *RefWorld2DImpl) {
 func (r *RefWorld2DImpl) Unref() {
 	rg := (*TypedRef[World2D])(r)
 	rg.Unref()
+}
+
+func (r *RefWorld2DImpl) Clone() Ref {
+	return (*RefCountedRef[World2D])(r).Clone()
 }
 
 func (r *RefWorld2DImpl) IsValid() bool {
@@ -29939,6 +32483,10 @@ func (r *RefWorld3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefWorld3DImpl) Clone() Ref {
+	return (*RefCountedRef[World3D])(r).Clone()
+}
+
 func (r *RefWorld3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -29984,6 +32532,10 @@ func (r *RefWorldBoundaryShape2DImpl) TypedRef(from *RefWorldBoundaryShape2DImpl
 func (r *RefWorldBoundaryShape2DImpl) Unref() {
 	rg := (*TypedRef[WorldBoundaryShape2D])(r)
 	rg.Unref()
+}
+
+func (r *RefWorldBoundaryShape2DImpl) Clone() Ref {
+	return (*RefCountedRef[WorldBoundaryShape2D])(r).Clone()
 }
 
 func (r *RefWorldBoundaryShape2DImpl) IsValid() bool {
@@ -30033,6 +32585,10 @@ func (r *RefWorldBoundaryShape3DImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefWorldBoundaryShape3DImpl) Clone() Ref {
+	return (*RefCountedRef[WorldBoundaryShape3D])(r).Clone()
+}
+
 func (r *RefWorldBoundaryShape3DImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -30078,6 +32634,10 @@ func (r *RefX509CertificateImpl) TypedRef(from *RefX509CertificateImpl) {
 func (r *RefX509CertificateImpl) Unref() {
 	rg := (*TypedRef[X509Certificate])(r)
 	rg.Unref()
+}
+
+func (r *RefX509CertificateImpl) Clone() Ref {
+	return (*RefCountedRef[X509Certificate])(r).Clone()
 }
 
 func (r *RefX509CertificateImpl) IsValid() bool {
@@ -30127,6 +32687,10 @@ func (r *RefXMLParserImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefXMLParserImpl) Clone() Ref {
+	return (*RefCountedRef[XMLParser])(r).Clone()
+}
+
 func (r *RefXMLParserImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -30172,6 +32736,10 @@ func (r *RefXRBodyTrackerImpl) TypedRef(from *RefXRBodyTrackerImpl) {
 func (r *RefXRBodyTrackerImpl) Unref() {
 	rg := (*TypedRef[XRBodyTracker])(r)
 	rg.Unref()
+}
+
+func (r *RefXRBodyTrackerImpl) Clone() Ref {
+	return (*RefCountedRef[XRBodyTracker])(r).Clone()
 }
 
 func (r *RefXRBodyTrackerImpl) IsValid() bool {
@@ -30221,6 +32789,10 @@ func (r *RefXRControllerTrackerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefXRControllerTrackerImpl) Clone() Ref {
+	return (*RefCountedRef[XRControllerTracker])(r).Clone()
+}
+
 func (r *RefXRControllerTrackerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -30266,6 +32838,10 @@ func (r *RefXRFaceTrackerImpl) TypedRef(from *RefXRFaceTrackerImpl) {
 func (r *RefXRFaceTrackerImpl) Unref() {
 	rg := (*TypedRef[XRFaceTracker])(r)
 	rg.Unref()
+}
+
+func (r *RefXRFaceTrackerImpl) Clone() Ref {
+	return (*RefCountedRef[XRFaceTracker])(r).Clone()
 }
 
 func (r *RefXRFaceTrackerImpl) IsValid() bool {
@@ -30315,6 +32891,10 @@ func (r *RefXRHandTrackerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefXRHandTrackerImpl) Clone() Ref {
+	return (*RefCountedRef[XRHandTracker])(r).Clone()
+}
+
 func (r *RefXRHandTrackerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -30360,6 +32940,10 @@ func (r *RefXRInterfaceImpl) TypedRef(from *RefXRInterfaceImpl) {
 func (r *RefXRInterfaceImpl) Unref() {
 	rg := (*TypedRef[XRInterface])(r)
 	rg.Unref()
+}
+
+func (r *RefXRInterfaceImpl) Clone() Ref {
+	return (*RefCountedRef[XRInterface])(r).Clone()
 }
 
 func (r *RefXRInterfaceImpl) IsValid() bool {
@@ -30409,6 +32993,10 @@ func (r *RefXRInterfaceExtensionImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefXRInterfaceExtensionImpl) Clone() Ref {
+	return (*RefCountedRef[XRInterfaceExtension])(r).Clone()
+}
+
 func (r *RefXRInterfaceExtensionImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -30454,6 +33042,10 @@ func (r *RefXRPoseImpl) TypedRef(from *RefXRPoseImpl) {
 func (r *RefXRPoseImpl) Unref() {
 	rg := (*TypedRef[XRPose])(r)
 	rg.Unref()
+}
+
+func (r *RefXRPoseImpl) Clone() Ref {
+	return (*RefCountedRef[XRPose])(r).Clone()
 }
 
 func (r *RefXRPoseImpl) IsValid() bool {
@@ -30503,6 +33095,10 @@ func (r *RefXRPositionalTrackerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefXRPositionalTrackerImpl) Clone() Ref {
+	return (*RefCountedRef[XRPositionalTracker])(r).Clone()
+}
+
 func (r *RefXRPositionalTrackerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -30548,6 +33144,10 @@ func (r *RefXRTrackerImpl) TypedRef(from *RefXRTrackerImpl) {
 func (r *RefXRTrackerImpl) Unref() {
 	rg := (*TypedRef[XRTracker])(r)
 	rg.Unref()
+}
+
+func (r *RefXRTrackerImpl) Clone() Ref {
+	return (*RefCountedRef[XRTracker])(r).Clone()
 }
 
 func (r *RefXRTrackerImpl) IsValid() bool {
@@ -30597,6 +33197,10 @@ func (r *RefZIPPackerImpl) Unref() {
 	rg.Unref()
 }
 
+func (r *RefZIPPackerImpl) Clone() Ref {
+	return (*RefCountedRef[ZIPPacker])(r).Clone()
+}
+
 func (r *RefZIPPackerImpl) IsValid() bool {
 	return r != nil && r.Reference != nil
 }
@@ -30642,6 +33246,10 @@ func (r *RefZIPReaderImpl) TypedRef(from *RefZIPReaderImpl) {
 func (r *RefZIPReaderImpl) Unref() {
 	rg := (*TypedRef[ZIPReader])(r)
 	rg.Unref()
+}
+
+func (r *RefZIPReaderImpl) Clone() Ref {
+	return (*RefCountedRef[ZIPReader])(r).Clone()
 }
 
 func (r *RefZIPReaderImpl) IsValid() bool {

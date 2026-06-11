@@ -46,6 +46,16 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 			zap.String("name", value.Type().Name()),
 		)
 		switch inst := value.Interface().(type) {
+		case Ref:
+			// Extract underlying Object from Ref and encode as Object*
+			obj := inst.Ptr()
+			if objObj, ok := obj.(Object); ok {
+				ObjectEncoder.EncodeTypePtrArg(objObj, rOut)
+			} else {
+				log.Panic("Ref does not contain Object",
+					zap.Any("value", value),
+					zap.Any("kind", k))
+			}
 		case Object:
 			ObjectEncoder.EncodeTypePtrArg(inst, rOut)
 			// *(*C.GDExtensionObjectPtr)(rOut) = (C.GDExtensionObjectPtr)(inst.AsGDExtensionObjectPtr())
@@ -132,6 +142,16 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 		}
 	case reflect.Pointer:
 		switch {
+		case value.Type().Implements(refType):
+			inst := value.Interface().(Ref)
+			obj := inst.Ptr()
+			if objObj, ok := obj.(Object); ok {
+				ObjectEncoder.EncodeTypePtrArg(objObj, rOut)
+			} else {
+				log.Panic("Ref does not contain Object",
+					zap.Any("value", value),
+					zap.Any("kind", k))
+			}
 		case value.Type().Implements(gdObjectType):
 			inst := value.Interface().(Object)
 			ObjectEncoder.EncodeTypePtrArg(inst, rOut)

@@ -358,3 +358,27 @@ func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pN
 	}
 	return 1
 }
+
+//export GoCallback_ClassCreationInfoReference
+func GoCallback_ClassCreationInfoReference(p_instance C.GDExtensionClassInstancePtr) {
+	wci := cgo.Handle(p_instance).Value().(*WrappedClassInstance)
+	if wci == nil || wci.Instance == nil {
+		return
+	}
+	if rc, ok := wci.Instance.(RefCounted); ok {
+		rc.Reference()
+	}
+	// Non-RefCounted classes (Node, etc.) hit the !ok branch — safe no-op
+}
+
+//export GoCallback_ClassCreationInfoUnreference
+func GoCallback_ClassCreationInfoUnreference(p_instance C.GDExtensionClassInstancePtr) {
+	wci := cgo.Handle(p_instance).Value().(*WrappedClassInstance)
+	if wci == nil || wci.Instance == nil {
+		return
+	}
+	if rc, ok := wci.Instance.(RefCounted); ok {
+		rc.Unreference()
+	}
+	// Non-RefCounted classes (Node, etc.) hit the !ok branch — safe no-op
+}

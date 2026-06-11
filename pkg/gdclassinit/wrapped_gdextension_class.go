@@ -2,6 +2,7 @@ package gdclassinit
 
 import "C"
 import (
+	"runtime/cgo"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -40,5 +41,16 @@ func GoCallback_GDExtensionBindingFree(p_type_name *C.char, p_token unsafe.Point
 
 //export GoCallback_GDExtensionBindingReference
 func GoCallback_GDExtensionBindingReference(p_type_name *C.char, p_token unsafe.Pointer, p_instance unsafe.Pointer, p_reference bool) bool {
+	wci := cgo.Handle(p_instance).Value().(*WrappedClassInstance)
+	if wci == nil || wci.Instance == nil {
+		return true
+	}
+	if rc, ok := wci.Instance.(RefCounted); ok {
+		if p_reference {
+			rc.Reference()
+		} else {
+			rc.Unreference()
+		}
+	}
 	return true
 }

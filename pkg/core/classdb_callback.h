@@ -48,4 +48,10 @@ GDExtensionBool cgo_classcreationinfo_get(GDExtensionClassInstancePtr p_instance
 // callback when godot wants to set a property of a class
 GDExtensionBool cgo_classcreationinfo_set(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value);
 
+// cgo_classcreationinfo_reference should match GDExtensionClassReference
+void cgo_classcreationinfo_reference(GDExtensionClassInstancePtr p_instance);
+
+// cgo_classcreationinfo_unreference should match GDExtensionClassUnreference
+void cgo_classcreationinfo_unreference(GDExtensionClassInstancePtr p_instance);
+
 #endif

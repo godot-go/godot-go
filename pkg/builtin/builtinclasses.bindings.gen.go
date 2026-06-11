@@ -8724,14 +8724,14 @@ func packedByteArrayInitMethodBindings() {
 	methodName16 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName16.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_bsearch", zap.Any("value", methodName16))
-	globalPackedByteArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName16.AsGDExtensionConstStringNamePtr(), 3380005890)
+	globalPackedByteArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName16.AsGDExtensionConstStringNamePtr(), 954237325)
 	if globalPackedByteArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_bsearch")
 	}
 	methodName17 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedByteArrayMethodBindings.method_duplicate", zap.Any("value", methodName17))
-	globalPackedByteArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 851781288)
+	globalPackedByteArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 247621236)
 	if globalPackedByteArrayMethodBindings.method_duplicate == nil {
 		missingMethods = append(missingMethods, "globalPackedByteArrayMethodBindings.method_duplicate")
 	}
@@ -9301,14 +9301,14 @@ func packedInt32ArrayInitMethodBindings() {
 	methodName17 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_bsearch", zap.Any("value", methodName17))
-	globalPackedInt32ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 3380005890)
+	globalPackedInt32ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 954237325)
 	if globalPackedInt32ArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_bsearch")
 	}
 	methodName18 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedInt32ArrayMethodBindings.method_duplicate", zap.Any("value", methodName18))
-	globalPackedInt32ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 1997843129)
+	globalPackedInt32ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 3158844420)
 	if globalPackedInt32ArrayMethodBindings.method_duplicate == nil {
 		missingMethods = append(missingMethods, "globalPackedInt32ArrayMethodBindings.method_duplicate")
 	}
@@ -9549,14 +9549,14 @@ func packedInt64ArrayInitMethodBindings() {
 	methodName17 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_bsearch", zap.Any("value", methodName17))
-	globalPackedInt64ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 3380005890)
+	globalPackedInt64ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 954237325)
 	if globalPackedInt64ArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_bsearch")
 	}
 	methodName18 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedInt64ArrayMethodBindings.method_duplicate", zap.Any("value", methodName18))
-	globalPackedInt64ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 2376370016)
+	globalPackedInt64ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 1961294120)
 	if globalPackedInt64ArrayMethodBindings.method_duplicate == nil {
 		missingMethods = append(missingMethods, "globalPackedInt64ArrayMethodBindings.method_duplicate")
 	}
@@ -9797,14 +9797,14 @@ func packedFloat32ArrayInitMethodBindings() {
 	methodName17 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_bsearch", zap.Any("value", methodName17))
-	globalPackedFloat32ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 1188816338)
+	globalPackedFloat32ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 1175118842)
 	if globalPackedFloat32ArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_bsearch")
 	}
 	methodName18 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedFloat32ArrayMethodBindings.method_duplicate", zap.Any("value", methodName18))
-	globalPackedFloat32ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 831114784)
+	globalPackedFloat32ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 3575107827)
 	if globalPackedFloat32ArrayMethodBindings.method_duplicate == nil {
 		missingMethods = append(missingMethods, "globalPackedFloat32ArrayMethodBindings.method_duplicate")
 	}
@@ -10045,14 +10045,14 @@ func packedFloat64ArrayInitMethodBindings() {
 	methodName17 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_bsearch", zap.Any("value", methodName17))
-	globalPackedFloat64ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 1188816338)
+	globalPackedFloat64ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 1175118842)
 	if globalPackedFloat64ArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_bsearch")
 	}
 	methodName18 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedFloat64ArrayMethodBindings.method_duplicate", zap.Any("value", methodName18))
-	globalPackedFloat64ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 949266573)
+	globalPackedFloat64ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 1627308337)
 	if globalPackedFloat64ArrayMethodBindings.method_duplicate == nil {
 		missingMethods = append(missingMethods, "globalPackedFloat64ArrayMethodBindings.method_duplicate")
 	}
@@ -10293,14 +10293,14 @@ func packedStringArrayInitMethodBindings() {
 	methodName17 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_bsearch", zap.Any("value", methodName17))
-	globalPackedStringArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 328976671)
+	globalPackedStringArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 1171495151)
 	if globalPackedStringArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_bsearch")
 	}
 	methodName18 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedStringArrayMethodBindings.method_duplicate", zap.Any("value", methodName18))
-	globalPackedStringArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 2991231410)
+	globalPackedStringArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 747180633)
 	if globalPackedStringArrayMethodBindings.method_duplicate == nil {
 		missingMethods = append(missingMethods, "globalPackedStringArrayMethodBindings.method_duplicate")
 	}
@@ -10542,14 +10542,14 @@ func packedVector2ArrayInitMethodBindings() {
 	methodName17 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_bsearch", zap.Any("value", methodName17))
-	globalPackedVector2ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 3778035805)
+	globalPackedVector2ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 3341588170)
 	if globalPackedVector2ArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_bsearch")
 	}
 	methodName18 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedVector2ArrayMethodBindings.method_duplicate", zap.Any("value", methodName18))
-	globalPackedVector2ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 3763646812)
+	globalPackedVector2ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 1660374357)
 	if globalPackedVector2ArrayMethodBindings.method_duplicate == nil {
 		missingMethods = append(missingMethods, "globalPackedVector2ArrayMethodBindings.method_duplicate")
 	}
@@ -10793,14 +10793,14 @@ func packedVector3ArrayInitMethodBindings() {
 	methodName17 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_bsearch", zap.Any("value", methodName17))
-	globalPackedVector3ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 219263630)
+	globalPackedVector3ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 1259277637)
 	if globalPackedVector3ArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_bsearch")
 	}
 	methodName18 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedVector3ArrayMethodBindings.method_duplicate", zap.Any("value", methodName18))
-	globalPackedVector3ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 2754175465)
+	globalPackedVector3ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 4171207452)
 	if globalPackedVector3ArrayMethodBindings.method_duplicate == nil {
 		missingMethods = append(missingMethods, "globalPackedVector3ArrayMethodBindings.method_duplicate")
 	}
@@ -11043,14 +11043,14 @@ func packedColorArrayInitMethodBindings() {
 	methodName17 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_bsearch", zap.Any("value", methodName17))
-	globalPackedColorArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 314143821)
+	globalPackedColorArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 2639732838)
 	if globalPackedColorArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_bsearch")
 	}
 	methodName18 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedColorArrayMethodBindings.method_duplicate", zap.Any("value", methodName18))
-	globalPackedColorArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 1011903421)
+	globalPackedColorArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 3072026941)
 	if globalPackedColorArrayMethodBindings.method_duplicate == nil {
 		missingMethods = append(missingMethods, "globalPackedColorArrayMethodBindings.method_duplicate")
 	}
@@ -11291,14 +11291,14 @@ func packedVector4ArrayInitMethodBindings() {
 	methodName17 := NewStringNameWithLatin1Chars("bsearch")
 	defer methodName17.Destroy()
 	log.Debug("globalPackedVector4ArrayMethodBindings.method_bsearch", zap.Any("value", methodName17))
-	globalPackedVector4ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 735671678)
+	globalPackedVector4ArrayMethodBindings.method_bsearch = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY, methodName17.AsGDExtensionConstStringNamePtr(), 1822067054)
 	if globalPackedVector4ArrayMethodBindings.method_bsearch == nil {
 		missingMethods = append(missingMethods, "globalPackedVector4ArrayMethodBindings.method_bsearch")
 	}
 	methodName18 := NewStringNameWithLatin1Chars("duplicate")
 	defer methodName18.Destroy()
 	log.Debug("globalPackedVector4ArrayMethodBindings.method_duplicate", zap.Any("value", methodName18))
-	globalPackedVector4ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 3186305013)
+	globalPackedVector4ArrayMethodBindings.method_duplicate = CallFunc_GDExtensionInterfaceVariantGetPtrBuiltinMethod(GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY, methodName18.AsGDExtensionConstStringNamePtr(), 146203628)
 	if globalPackedVector4ArrayMethodBindings.method_duplicate == nil {
 		missingMethods = append(missingMethods, "globalPackedVector4ArrayMethodBindings.method_duplicate")
 	}

@@ -30,13 +30,13 @@ type {{ goClassInterfaceName $c.Name }} interface {
 	GDExtensionClass
 	{{ end }}
 	{{ range $j, $m := $c.Methods -}}
-	{{ $fnReturnType := goReturnType (coalesce $m.ReturnValue.Meta $m.ReturnValue.Type) -}}
+	{{ $fnReturnType := goReturnType (typeOrMeta $m.ReturnValue.Meta $m.ReturnValue.Type) -}}
 	{{ $hasSomeArguments := (or $m.Arguments $m.IsVararg) -}}
 
 	{{ if $m.IsVirtual -}}
 	// TODO: Implement virtual method: {{ goMethodName $m.Name }}(
 	{{- range $k, $a := $m.Arguments -}}
-	{{- $fnArgType := goArgumentType (coalesce $a.Meta $a.Type) -}}
+	{{- $fnArgType := goArgumentType (typeOrMeta $a.Meta $a.Type) -}}
 	{{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $fnArgType }}Ref{{ $fnArgType }}{{ else }}{{ $fnArgType }}{{ end -}},
 	{{- end -}}
 	{{- if $m.IsVararg }}varargs ...Variant,{{- end -}}
@@ -44,7 +44,7 @@ type {{ goClassInterfaceName $c.Name }} interface {
 	{{ else -}}
 	{{ goMethodName $m.Name }}(
 	{{- range $k, $a := $m.Arguments -}}
-	{{ $fnArgType := goArgumentType (coalesce $a.Meta $a.Type) -}}
+	{{ $fnArgType := goArgumentType (typeOrMeta $a.Meta $a.Type) -}}
 	{{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $fnArgType }}Ref{{ $fnArgType }}{{ else }}{{ $fnArgType }}{{ end }},
 	{{- end -}}
 	{{ if $m.IsVararg }}varargs ...Variant,{{- end -}}

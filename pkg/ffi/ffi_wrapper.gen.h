@@ -28,7 +28,7 @@ void cgo_callfn_GDExtensionPtrOperatorEvaluator(
 void cgo_callfn_GDExtensionPtrBuiltInMethod(
     const GDExtensionPtrBuiltInMethod fn, GDExtensionTypePtr p_base,
     const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_return,
-    int p_argument_count);
+    int32_t p_argument_count);
 void cgo_callfn_GDExtensionPtrConstructor(
     const GDExtensionPtrConstructor fn, GDExtensionUninitializedTypePtr p_base,
     const GDExtensionConstTypePtr *p_args);
@@ -60,7 +60,7 @@ cgo_callfn_GDExtensionPtrKeyedChecker(const GDExtensionPtrKeyedChecker fn,
                                       GDExtensionConstVariantPtr p_key);
 void cgo_callfn_GDExtensionPtrUtilityFunction(
     const GDExtensionPtrUtilityFunction fn, GDExtensionTypePtr r_return,
-    const GDExtensionConstTypePtr *p_args, int p_argument_count);
+    const GDExtensionConstTypePtr *p_args, int32_t p_argument_count);
 GDExtensionObjectPtr
 cgo_callfn_GDExtensionClassConstructor(const GDExtensionClassConstructor fn);
 void *cgo_callfn_GDExtensionInstanceBindingCreateCallback(
@@ -335,6 +335,16 @@ void *cgo_callfn_GDExtensionInterfaceMemRealloc(
     const GDExtensionInterfaceMemRealloc fn, void *p_ptr, size_t p_bytes);
 void cgo_callfn_GDExtensionInterfaceMemFree(
     const GDExtensionInterfaceMemFree fn, void *p_ptr);
+void *
+cgo_callfn_GDExtensionInterfaceMemAlloc2(const GDExtensionInterfaceMemAlloc2 fn,
+                                         size_t p_bytes,
+                                         GDExtensionBool p_pad_align);
+void *cgo_callfn_GDExtensionInterfaceMemRealloc2(
+    const GDExtensionInterfaceMemRealloc2 fn, void *p_ptr, size_t p_bytes,
+    GDExtensionBool p_pad_align);
+void cgo_callfn_GDExtensionInterfaceMemFree2(
+    const GDExtensionInterfaceMemFree2 fn, void *p_ptr,
+    GDExtensionBool p_pad_align);
 void cgo_callfn_GDExtensionInterfacePrintError(
     const GDExtensionInterfacePrintError fn, const char *p_description,
     const char *p_function, const char *p_file, int32_t p_line,
@@ -661,7 +671,7 @@ int64_t cgo_callfn_GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask(
     const GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask fn,
     GDExtensionObjectPtr p_instance,
     GDExtensionWorkerThreadPoolGroupTask p_func, void *p_userdata,
-    int p_elements, int p_tasks, GDExtensionBool p_high_priority,
+    int32_t p_elements, int32_t p_tasks, GDExtensionBool p_high_priority,
     GDExtensionConstStringPtr p_description);
 int64_t cgo_callfn_GDExtensionInterfaceWorkerThreadPoolAddNativeTask(
     const GDExtensionInterfaceWorkerThreadPoolAddNativeTask fn,

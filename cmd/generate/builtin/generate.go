@@ -152,6 +152,7 @@ func GenerateClassInterfaces(projectPath string, extensionApi extensionapiparser
 			"goReturnType":         goReturnType,
 			"goClassInterfaceName": goClassInterfaceName,
 			"coalesce":             coalesce,
+			"typeOrMeta":           typeOrMeta,
 		}).
 		Parse(classesInterfacesText)
 

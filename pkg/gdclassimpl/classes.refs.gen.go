@@ -11484,6 +11484,100 @@ func NewRefJavaScriptObjectGDExtensionIternalConstructor(reference JavaScriptObj
 	return NewTypedRefGDExtensionIternalConstructor[JavaScriptObject](reference)
 }
 
+var _ RefJointLimitation3D = &RefJointLimitation3DImpl{}
+var _ Ref = &RefJointLimitation3DImpl{}
+
+type RefJointLimitation3DImpl TypedRef[JointLimitation3D]
+
+func (r *RefJointLimitation3DImpl) Ptr() RefCounted {
+	rg := (*TypedRef[JointLimitation3D])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefJointLimitation3DImpl) TypedPtr() JointLimitation3D {
+	rg := (*TypedRef[JointLimitation3D])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefJointLimitation3DImpl) Ref(from Ref) {
+	rg := (*TypedRef[JointLimitation3D])(r)
+	rg.Ref(from)
+}
+
+func (r *RefJointLimitation3DImpl) TypedRef(from *RefJointLimitation3DImpl) {
+	rg := (*TypedRef[JointLimitation3D])(r)
+	t := (*TypedRef[JointLimitation3D])(from)
+	rg.TypedRef((*TypedRef[JointLimitation3D])(t))
+}
+
+func (r *RefJointLimitation3DImpl) Unref() {
+	rg := (*TypedRef[JointLimitation3D])(r)
+	rg.Unref()
+}
+
+func (r *RefJointLimitation3DImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefJointLimitation3D(reference JointLimitation3D) RefJointLimitation3D {
+	return (RefJointLimitation3D)(NewTypedRef[JointLimitation3D](reference))
+}
+
+func NewRefJointLimitation3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[JointLimitation3D](reference.(JointLimitation3D)))
+}
+
+func NewRefJointLimitation3DGDExtensionIternalConstructor(reference JointLimitation3D) RefJointLimitation3D {
+	return NewTypedRefGDExtensionIternalConstructor[JointLimitation3D](reference)
+}
+
+var _ RefJointLimitationCone3D = &RefJointLimitationCone3DImpl{}
+var _ Ref = &RefJointLimitationCone3DImpl{}
+
+type RefJointLimitationCone3DImpl TypedRef[JointLimitationCone3D]
+
+func (r *RefJointLimitationCone3DImpl) Ptr() RefCounted {
+	rg := (*TypedRef[JointLimitationCone3D])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefJointLimitationCone3DImpl) TypedPtr() JointLimitationCone3D {
+	rg := (*TypedRef[JointLimitationCone3D])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefJointLimitationCone3DImpl) Ref(from Ref) {
+	rg := (*TypedRef[JointLimitationCone3D])(r)
+	rg.Ref(from)
+}
+
+func (r *RefJointLimitationCone3DImpl) TypedRef(from *RefJointLimitationCone3DImpl) {
+	rg := (*TypedRef[JointLimitationCone3D])(r)
+	t := (*TypedRef[JointLimitationCone3D])(from)
+	rg.TypedRef((*TypedRef[JointLimitationCone3D])(t))
+}
+
+func (r *RefJointLimitationCone3DImpl) Unref() {
+	rg := (*TypedRef[JointLimitationCone3D])(r)
+	rg.Unref()
+}
+
+func (r *RefJointLimitationCone3DImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefJointLimitationCone3D(reference JointLimitationCone3D) RefJointLimitationCone3D {
+	return (RefJointLimitationCone3D)(NewTypedRef[JointLimitationCone3D](reference))
+}
+
+func NewRefJointLimitationCone3DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[JointLimitationCone3D](reference.(JointLimitationCone3D)))
+}
+
+func NewRefJointLimitationCone3DGDExtensionIternalConstructor(reference JointLimitationCone3D) RefJointLimitationCone3D {
+	return NewTypedRefGDExtensionIternalConstructor[JointLimitationCone3D](reference)
+}
+
 var _ RefKinematicCollision2D = &RefKinematicCollision2DImpl{}
 var _ Ref = &RefKinematicCollision2DImpl{}
 
@@ -13646,6 +13740,53 @@ func NewRefOpenXRAnalogThresholdModifierGDExtensionIternalConstructor(reference 
 	return NewTypedRefGDExtensionIternalConstructor[OpenXRAnalogThresholdModifier](reference)
 }
 
+var _ RefOpenXRAnchorTracker = &RefOpenXRAnchorTrackerImpl{}
+var _ Ref = &RefOpenXRAnchorTrackerImpl{}
+
+type RefOpenXRAnchorTrackerImpl TypedRef[OpenXRAnchorTracker]
+
+func (r *RefOpenXRAnchorTrackerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRAnchorTracker])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRAnchorTrackerImpl) TypedPtr() OpenXRAnchorTracker {
+	rg := (*TypedRef[OpenXRAnchorTracker])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRAnchorTrackerImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRAnchorTracker])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRAnchorTrackerImpl) TypedRef(from *RefOpenXRAnchorTrackerImpl) {
+	rg := (*TypedRef[OpenXRAnchorTracker])(r)
+	t := (*TypedRef[OpenXRAnchorTracker])(from)
+	rg.TypedRef((*TypedRef[OpenXRAnchorTracker])(t))
+}
+
+func (r *RefOpenXRAnchorTrackerImpl) Unref() {
+	rg := (*TypedRef[OpenXRAnchorTracker])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRAnchorTrackerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRAnchorTracker(reference OpenXRAnchorTracker) RefOpenXRAnchorTracker {
+	return (RefOpenXRAnchorTracker)(NewTypedRef[OpenXRAnchorTracker](reference))
+}
+
+func NewRefOpenXRAnchorTrackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRAnchorTracker](reference.(OpenXRAnchorTracker)))
+}
+
+func NewRefOpenXRAnchorTrackerGDExtensionIternalConstructor(reference OpenXRAnchorTracker) RefOpenXRAnchorTracker {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRAnchorTracker](reference)
+}
+
 var _ RefOpenXRBindingModifier = &RefOpenXRBindingModifierImpl{}
 var _ Ref = &RefOpenXRBindingModifierImpl{}
 
@@ -14067,6 +14208,1181 @@ func NewRefOpenXRInterfaceAsRef(reference RefCounted) Ref {
 
 func NewRefOpenXRInterfaceGDExtensionIternalConstructor(reference OpenXRInterface) RefOpenXRInterface {
 	return NewTypedRefGDExtensionIternalConstructor[OpenXRInterface](reference)
+}
+
+var _ RefOpenXRMarkerTracker = &RefOpenXRMarkerTrackerImpl{}
+var _ Ref = &RefOpenXRMarkerTrackerImpl{}
+
+type RefOpenXRMarkerTrackerImpl TypedRef[OpenXRMarkerTracker]
+
+func (r *RefOpenXRMarkerTrackerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRMarkerTracker])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRMarkerTrackerImpl) TypedPtr() OpenXRMarkerTracker {
+	rg := (*TypedRef[OpenXRMarkerTracker])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRMarkerTrackerImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRMarkerTracker])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRMarkerTrackerImpl) TypedRef(from *RefOpenXRMarkerTrackerImpl) {
+	rg := (*TypedRef[OpenXRMarkerTracker])(r)
+	t := (*TypedRef[OpenXRMarkerTracker])(from)
+	rg.TypedRef((*TypedRef[OpenXRMarkerTracker])(t))
+}
+
+func (r *RefOpenXRMarkerTrackerImpl) Unref() {
+	rg := (*TypedRef[OpenXRMarkerTracker])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRMarkerTrackerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRMarkerTracker(reference OpenXRMarkerTracker) RefOpenXRMarkerTracker {
+	return (RefOpenXRMarkerTracker)(NewTypedRef[OpenXRMarkerTracker](reference))
+}
+
+func NewRefOpenXRMarkerTrackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRMarkerTracker](reference.(OpenXRMarkerTracker)))
+}
+
+func NewRefOpenXRMarkerTrackerGDExtensionIternalConstructor(reference OpenXRMarkerTracker) RefOpenXRMarkerTracker {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRMarkerTracker](reference)
+}
+
+var _ RefOpenXRPlaneTracker = &RefOpenXRPlaneTrackerImpl{}
+var _ Ref = &RefOpenXRPlaneTrackerImpl{}
+
+type RefOpenXRPlaneTrackerImpl TypedRef[OpenXRPlaneTracker]
+
+func (r *RefOpenXRPlaneTrackerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRPlaneTracker])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRPlaneTrackerImpl) TypedPtr() OpenXRPlaneTracker {
+	rg := (*TypedRef[OpenXRPlaneTracker])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRPlaneTrackerImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRPlaneTracker])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRPlaneTrackerImpl) TypedRef(from *RefOpenXRPlaneTrackerImpl) {
+	rg := (*TypedRef[OpenXRPlaneTracker])(r)
+	t := (*TypedRef[OpenXRPlaneTracker])(from)
+	rg.TypedRef((*TypedRef[OpenXRPlaneTracker])(t))
+}
+
+func (r *RefOpenXRPlaneTrackerImpl) Unref() {
+	rg := (*TypedRef[OpenXRPlaneTracker])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRPlaneTrackerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRPlaneTracker(reference OpenXRPlaneTracker) RefOpenXRPlaneTracker {
+	return (RefOpenXRPlaneTracker)(NewTypedRef[OpenXRPlaneTracker](reference))
+}
+
+func NewRefOpenXRPlaneTrackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRPlaneTracker](reference.(OpenXRPlaneTracker)))
+}
+
+func NewRefOpenXRPlaneTrackerGDExtensionIternalConstructor(reference OpenXRPlaneTracker) RefOpenXRPlaneTracker {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRPlaneTracker](reference)
+}
+
+var _ RefOpenXRSpatialCapabilityConfigurationAnchor = &RefOpenXRSpatialCapabilityConfigurationAnchorImpl{}
+var _ Ref = &RefOpenXRSpatialCapabilityConfigurationAnchorImpl{}
+
+type RefOpenXRSpatialCapabilityConfigurationAnchorImpl TypedRef[OpenXRSpatialCapabilityConfigurationAnchor]
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAnchorImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAnchor])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAnchorImpl) TypedPtr() OpenXRSpatialCapabilityConfigurationAnchor {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAnchor])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAnchorImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAnchor])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAnchorImpl) TypedRef(from *RefOpenXRSpatialCapabilityConfigurationAnchorImpl) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAnchor])(r)
+	t := (*TypedRef[OpenXRSpatialCapabilityConfigurationAnchor])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialCapabilityConfigurationAnchor])(t))
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAnchorImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAnchor])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAnchorImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationAnchor(reference OpenXRSpatialCapabilityConfigurationAnchor) RefOpenXRSpatialCapabilityConfigurationAnchor {
+	return (RefOpenXRSpatialCapabilityConfigurationAnchor)(NewTypedRef[OpenXRSpatialCapabilityConfigurationAnchor](reference))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationAnchorAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationAnchor](reference.(OpenXRSpatialCapabilityConfigurationAnchor)))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationAnchorGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationAnchor) RefOpenXRSpatialCapabilityConfigurationAnchor {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationAnchor](reference)
+}
+
+var _ RefOpenXRSpatialCapabilityConfigurationAprilTag = &RefOpenXRSpatialCapabilityConfigurationAprilTagImpl{}
+var _ Ref = &RefOpenXRSpatialCapabilityConfigurationAprilTagImpl{}
+
+type RefOpenXRSpatialCapabilityConfigurationAprilTagImpl TypedRef[OpenXRSpatialCapabilityConfigurationAprilTag]
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAprilTagImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAprilTag])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAprilTagImpl) TypedPtr() OpenXRSpatialCapabilityConfigurationAprilTag {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAprilTag])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAprilTagImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAprilTag])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAprilTagImpl) TypedRef(from *RefOpenXRSpatialCapabilityConfigurationAprilTagImpl) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAprilTag])(r)
+	t := (*TypedRef[OpenXRSpatialCapabilityConfigurationAprilTag])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialCapabilityConfigurationAprilTag])(t))
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAprilTagImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAprilTag])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationAprilTagImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationAprilTag(reference OpenXRSpatialCapabilityConfigurationAprilTag) RefOpenXRSpatialCapabilityConfigurationAprilTag {
+	return (RefOpenXRSpatialCapabilityConfigurationAprilTag)(NewTypedRef[OpenXRSpatialCapabilityConfigurationAprilTag](reference))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationAprilTagAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationAprilTag](reference.(OpenXRSpatialCapabilityConfigurationAprilTag)))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationAprilTagGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationAprilTag) RefOpenXRSpatialCapabilityConfigurationAprilTag {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationAprilTag](reference)
+}
+
+var _ RefOpenXRSpatialCapabilityConfigurationAruco = &RefOpenXRSpatialCapabilityConfigurationArucoImpl{}
+var _ Ref = &RefOpenXRSpatialCapabilityConfigurationArucoImpl{}
+
+type RefOpenXRSpatialCapabilityConfigurationArucoImpl TypedRef[OpenXRSpatialCapabilityConfigurationAruco]
+
+func (r *RefOpenXRSpatialCapabilityConfigurationArucoImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAruco])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationArucoImpl) TypedPtr() OpenXRSpatialCapabilityConfigurationAruco {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAruco])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationArucoImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAruco])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationArucoImpl) TypedRef(from *RefOpenXRSpatialCapabilityConfigurationArucoImpl) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAruco])(r)
+	t := (*TypedRef[OpenXRSpatialCapabilityConfigurationAruco])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialCapabilityConfigurationAruco])(t))
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationArucoImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationAruco])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationArucoImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationAruco(reference OpenXRSpatialCapabilityConfigurationAruco) RefOpenXRSpatialCapabilityConfigurationAruco {
+	return (RefOpenXRSpatialCapabilityConfigurationAruco)(NewTypedRef[OpenXRSpatialCapabilityConfigurationAruco](reference))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationArucoAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationAruco](reference.(OpenXRSpatialCapabilityConfigurationAruco)))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationArucoGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationAruco) RefOpenXRSpatialCapabilityConfigurationAruco {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationAruco](reference)
+}
+
+var _ RefOpenXRSpatialCapabilityConfigurationBaseHeader = &RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl{}
+var _ Ref = &RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl{}
+
+type RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl TypedRef[OpenXRSpatialCapabilityConfigurationBaseHeader]
+
+func (r *RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationBaseHeader])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl) TypedPtr() OpenXRSpatialCapabilityConfigurationBaseHeader {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationBaseHeader])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationBaseHeader])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl) TypedRef(from *RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationBaseHeader])(r)
+	t := (*TypedRef[OpenXRSpatialCapabilityConfigurationBaseHeader])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialCapabilityConfigurationBaseHeader])(t))
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationBaseHeader])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationBaseHeader(reference OpenXRSpatialCapabilityConfigurationBaseHeader) RefOpenXRSpatialCapabilityConfigurationBaseHeader {
+	return (RefOpenXRSpatialCapabilityConfigurationBaseHeader)(NewTypedRef[OpenXRSpatialCapabilityConfigurationBaseHeader](reference))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationBaseHeader](reference.(OpenXRSpatialCapabilityConfigurationBaseHeader)))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationBaseHeader) RefOpenXRSpatialCapabilityConfigurationBaseHeader {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationBaseHeader](reference)
+}
+
+var _ RefOpenXRSpatialCapabilityConfigurationMicroQrCode = &RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl{}
+var _ Ref = &RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl{}
+
+type RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl TypedRef[OpenXRSpatialCapabilityConfigurationMicroQrCode]
+
+func (r *RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationMicroQrCode])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) TypedPtr() OpenXRSpatialCapabilityConfigurationMicroQrCode {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationMicroQrCode])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationMicroQrCode])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) TypedRef(from *RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationMicroQrCode])(r)
+	t := (*TypedRef[OpenXRSpatialCapabilityConfigurationMicroQrCode])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialCapabilityConfigurationMicroQrCode])(t))
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationMicroQrCode])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationMicroQrCode(reference OpenXRSpatialCapabilityConfigurationMicroQrCode) RefOpenXRSpatialCapabilityConfigurationMicroQrCode {
+	return (RefOpenXRSpatialCapabilityConfigurationMicroQrCode)(NewTypedRef[OpenXRSpatialCapabilityConfigurationMicroQrCode](reference))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationMicroQrCode](reference.(OpenXRSpatialCapabilityConfigurationMicroQrCode)))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationMicroQrCode) RefOpenXRSpatialCapabilityConfigurationMicroQrCode {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationMicroQrCode](reference)
+}
+
+var _ RefOpenXRSpatialCapabilityConfigurationPlaneTracking = &RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl{}
+var _ Ref = &RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl{}
+
+type RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl TypedRef[OpenXRSpatialCapabilityConfigurationPlaneTracking]
+
+func (r *RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationPlaneTracking])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) TypedPtr() OpenXRSpatialCapabilityConfigurationPlaneTracking {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationPlaneTracking])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationPlaneTracking])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) TypedRef(from *RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationPlaneTracking])(r)
+	t := (*TypedRef[OpenXRSpatialCapabilityConfigurationPlaneTracking])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialCapabilityConfigurationPlaneTracking])(t))
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationPlaneTracking])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationPlaneTracking(reference OpenXRSpatialCapabilityConfigurationPlaneTracking) RefOpenXRSpatialCapabilityConfigurationPlaneTracking {
+	return (RefOpenXRSpatialCapabilityConfigurationPlaneTracking)(NewTypedRef[OpenXRSpatialCapabilityConfigurationPlaneTracking](reference))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationPlaneTracking](reference.(OpenXRSpatialCapabilityConfigurationPlaneTracking)))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationPlaneTracking) RefOpenXRSpatialCapabilityConfigurationPlaneTracking {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationPlaneTracking](reference)
+}
+
+var _ RefOpenXRSpatialCapabilityConfigurationQrCode = &RefOpenXRSpatialCapabilityConfigurationQrCodeImpl{}
+var _ Ref = &RefOpenXRSpatialCapabilityConfigurationQrCodeImpl{}
+
+type RefOpenXRSpatialCapabilityConfigurationQrCodeImpl TypedRef[OpenXRSpatialCapabilityConfigurationQrCode]
+
+func (r *RefOpenXRSpatialCapabilityConfigurationQrCodeImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationQrCode])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationQrCodeImpl) TypedPtr() OpenXRSpatialCapabilityConfigurationQrCode {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationQrCode])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationQrCodeImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationQrCode])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationQrCodeImpl) TypedRef(from *RefOpenXRSpatialCapabilityConfigurationQrCodeImpl) {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationQrCode])(r)
+	t := (*TypedRef[OpenXRSpatialCapabilityConfigurationQrCode])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialCapabilityConfigurationQrCode])(t))
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationQrCodeImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialCapabilityConfigurationQrCode])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialCapabilityConfigurationQrCodeImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationQrCode(reference OpenXRSpatialCapabilityConfigurationQrCode) RefOpenXRSpatialCapabilityConfigurationQrCode {
+	return (RefOpenXRSpatialCapabilityConfigurationQrCode)(NewTypedRef[OpenXRSpatialCapabilityConfigurationQrCode](reference))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationQrCodeAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationQrCode](reference.(OpenXRSpatialCapabilityConfigurationQrCode)))
+}
+
+func NewRefOpenXRSpatialCapabilityConfigurationQrCodeGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationQrCode) RefOpenXRSpatialCapabilityConfigurationQrCode {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialCapabilityConfigurationQrCode](reference)
+}
+
+var _ RefOpenXRSpatialComponentAnchorList = &RefOpenXRSpatialComponentAnchorListImpl{}
+var _ Ref = &RefOpenXRSpatialComponentAnchorListImpl{}
+
+type RefOpenXRSpatialComponentAnchorListImpl TypedRef[OpenXRSpatialComponentAnchorList]
+
+func (r *RefOpenXRSpatialComponentAnchorListImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentAnchorList])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentAnchorListImpl) TypedPtr() OpenXRSpatialComponentAnchorList {
+	rg := (*TypedRef[OpenXRSpatialComponentAnchorList])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentAnchorListImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentAnchorList])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentAnchorListImpl) TypedRef(from *RefOpenXRSpatialComponentAnchorListImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentAnchorList])(r)
+	t := (*TypedRef[OpenXRSpatialComponentAnchorList])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentAnchorList])(t))
+}
+
+func (r *RefOpenXRSpatialComponentAnchorListImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentAnchorList])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentAnchorListImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentAnchorList(reference OpenXRSpatialComponentAnchorList) RefOpenXRSpatialComponentAnchorList {
+	return (RefOpenXRSpatialComponentAnchorList)(NewTypedRef[OpenXRSpatialComponentAnchorList](reference))
+}
+
+func NewRefOpenXRSpatialComponentAnchorListAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentAnchorList](reference.(OpenXRSpatialComponentAnchorList)))
+}
+
+func NewRefOpenXRSpatialComponentAnchorListGDExtensionIternalConstructor(reference OpenXRSpatialComponentAnchorList) RefOpenXRSpatialComponentAnchorList {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentAnchorList](reference)
+}
+
+var _ RefOpenXRSpatialComponentBounded2DList = &RefOpenXRSpatialComponentBounded2DListImpl{}
+var _ Ref = &RefOpenXRSpatialComponentBounded2DListImpl{}
+
+type RefOpenXRSpatialComponentBounded2DListImpl TypedRef[OpenXRSpatialComponentBounded2DList]
+
+func (r *RefOpenXRSpatialComponentBounded2DListImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentBounded2DList])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentBounded2DListImpl) TypedPtr() OpenXRSpatialComponentBounded2DList {
+	rg := (*TypedRef[OpenXRSpatialComponentBounded2DList])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentBounded2DListImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentBounded2DList])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentBounded2DListImpl) TypedRef(from *RefOpenXRSpatialComponentBounded2DListImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentBounded2DList])(r)
+	t := (*TypedRef[OpenXRSpatialComponentBounded2DList])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentBounded2DList])(t))
+}
+
+func (r *RefOpenXRSpatialComponentBounded2DListImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentBounded2DList])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentBounded2DListImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentBounded2DList(reference OpenXRSpatialComponentBounded2DList) RefOpenXRSpatialComponentBounded2DList {
+	return (RefOpenXRSpatialComponentBounded2DList)(NewTypedRef[OpenXRSpatialComponentBounded2DList](reference))
+}
+
+func NewRefOpenXRSpatialComponentBounded2DListAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentBounded2DList](reference.(OpenXRSpatialComponentBounded2DList)))
+}
+
+func NewRefOpenXRSpatialComponentBounded2DListGDExtensionIternalConstructor(reference OpenXRSpatialComponentBounded2DList) RefOpenXRSpatialComponentBounded2DList {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentBounded2DList](reference)
+}
+
+var _ RefOpenXRSpatialComponentBounded3DList = &RefOpenXRSpatialComponentBounded3DListImpl{}
+var _ Ref = &RefOpenXRSpatialComponentBounded3DListImpl{}
+
+type RefOpenXRSpatialComponentBounded3DListImpl TypedRef[OpenXRSpatialComponentBounded3DList]
+
+func (r *RefOpenXRSpatialComponentBounded3DListImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentBounded3DList])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentBounded3DListImpl) TypedPtr() OpenXRSpatialComponentBounded3DList {
+	rg := (*TypedRef[OpenXRSpatialComponentBounded3DList])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentBounded3DListImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentBounded3DList])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentBounded3DListImpl) TypedRef(from *RefOpenXRSpatialComponentBounded3DListImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentBounded3DList])(r)
+	t := (*TypedRef[OpenXRSpatialComponentBounded3DList])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentBounded3DList])(t))
+}
+
+func (r *RefOpenXRSpatialComponentBounded3DListImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentBounded3DList])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentBounded3DListImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentBounded3DList(reference OpenXRSpatialComponentBounded3DList) RefOpenXRSpatialComponentBounded3DList {
+	return (RefOpenXRSpatialComponentBounded3DList)(NewTypedRef[OpenXRSpatialComponentBounded3DList](reference))
+}
+
+func NewRefOpenXRSpatialComponentBounded3DListAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentBounded3DList](reference.(OpenXRSpatialComponentBounded3DList)))
+}
+
+func NewRefOpenXRSpatialComponentBounded3DListGDExtensionIternalConstructor(reference OpenXRSpatialComponentBounded3DList) RefOpenXRSpatialComponentBounded3DList {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentBounded3DList](reference)
+}
+
+var _ RefOpenXRSpatialComponentData = &RefOpenXRSpatialComponentDataImpl{}
+var _ Ref = &RefOpenXRSpatialComponentDataImpl{}
+
+type RefOpenXRSpatialComponentDataImpl TypedRef[OpenXRSpatialComponentData]
+
+func (r *RefOpenXRSpatialComponentDataImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentData])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentDataImpl) TypedPtr() OpenXRSpatialComponentData {
+	rg := (*TypedRef[OpenXRSpatialComponentData])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentDataImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentData])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentDataImpl) TypedRef(from *RefOpenXRSpatialComponentDataImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentData])(r)
+	t := (*TypedRef[OpenXRSpatialComponentData])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentData])(t))
+}
+
+func (r *RefOpenXRSpatialComponentDataImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentData])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentDataImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentData(reference OpenXRSpatialComponentData) RefOpenXRSpatialComponentData {
+	return (RefOpenXRSpatialComponentData)(NewTypedRef[OpenXRSpatialComponentData](reference))
+}
+
+func NewRefOpenXRSpatialComponentDataAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentData](reference.(OpenXRSpatialComponentData)))
+}
+
+func NewRefOpenXRSpatialComponentDataGDExtensionIternalConstructor(reference OpenXRSpatialComponentData) RefOpenXRSpatialComponentData {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentData](reference)
+}
+
+var _ RefOpenXRSpatialComponentMarkerList = &RefOpenXRSpatialComponentMarkerListImpl{}
+var _ Ref = &RefOpenXRSpatialComponentMarkerListImpl{}
+
+type RefOpenXRSpatialComponentMarkerListImpl TypedRef[OpenXRSpatialComponentMarkerList]
+
+func (r *RefOpenXRSpatialComponentMarkerListImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentMarkerList])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentMarkerListImpl) TypedPtr() OpenXRSpatialComponentMarkerList {
+	rg := (*TypedRef[OpenXRSpatialComponentMarkerList])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentMarkerListImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentMarkerList])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentMarkerListImpl) TypedRef(from *RefOpenXRSpatialComponentMarkerListImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentMarkerList])(r)
+	t := (*TypedRef[OpenXRSpatialComponentMarkerList])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentMarkerList])(t))
+}
+
+func (r *RefOpenXRSpatialComponentMarkerListImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentMarkerList])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentMarkerListImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentMarkerList(reference OpenXRSpatialComponentMarkerList) RefOpenXRSpatialComponentMarkerList {
+	return (RefOpenXRSpatialComponentMarkerList)(NewTypedRef[OpenXRSpatialComponentMarkerList](reference))
+}
+
+func NewRefOpenXRSpatialComponentMarkerListAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentMarkerList](reference.(OpenXRSpatialComponentMarkerList)))
+}
+
+func NewRefOpenXRSpatialComponentMarkerListGDExtensionIternalConstructor(reference OpenXRSpatialComponentMarkerList) RefOpenXRSpatialComponentMarkerList {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentMarkerList](reference)
+}
+
+var _ RefOpenXRSpatialComponentMesh2DList = &RefOpenXRSpatialComponentMesh2DListImpl{}
+var _ Ref = &RefOpenXRSpatialComponentMesh2DListImpl{}
+
+type RefOpenXRSpatialComponentMesh2DListImpl TypedRef[OpenXRSpatialComponentMesh2DList]
+
+func (r *RefOpenXRSpatialComponentMesh2DListImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentMesh2DList])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentMesh2DListImpl) TypedPtr() OpenXRSpatialComponentMesh2DList {
+	rg := (*TypedRef[OpenXRSpatialComponentMesh2DList])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentMesh2DListImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentMesh2DList])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentMesh2DListImpl) TypedRef(from *RefOpenXRSpatialComponentMesh2DListImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentMesh2DList])(r)
+	t := (*TypedRef[OpenXRSpatialComponentMesh2DList])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentMesh2DList])(t))
+}
+
+func (r *RefOpenXRSpatialComponentMesh2DListImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentMesh2DList])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentMesh2DListImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentMesh2DList(reference OpenXRSpatialComponentMesh2DList) RefOpenXRSpatialComponentMesh2DList {
+	return (RefOpenXRSpatialComponentMesh2DList)(NewTypedRef[OpenXRSpatialComponentMesh2DList](reference))
+}
+
+func NewRefOpenXRSpatialComponentMesh2DListAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentMesh2DList](reference.(OpenXRSpatialComponentMesh2DList)))
+}
+
+func NewRefOpenXRSpatialComponentMesh2DListGDExtensionIternalConstructor(reference OpenXRSpatialComponentMesh2DList) RefOpenXRSpatialComponentMesh2DList {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentMesh2DList](reference)
+}
+
+var _ RefOpenXRSpatialComponentMesh3DList = &RefOpenXRSpatialComponentMesh3DListImpl{}
+var _ Ref = &RefOpenXRSpatialComponentMesh3DListImpl{}
+
+type RefOpenXRSpatialComponentMesh3DListImpl TypedRef[OpenXRSpatialComponentMesh3DList]
+
+func (r *RefOpenXRSpatialComponentMesh3DListImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentMesh3DList])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentMesh3DListImpl) TypedPtr() OpenXRSpatialComponentMesh3DList {
+	rg := (*TypedRef[OpenXRSpatialComponentMesh3DList])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentMesh3DListImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentMesh3DList])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentMesh3DListImpl) TypedRef(from *RefOpenXRSpatialComponentMesh3DListImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentMesh3DList])(r)
+	t := (*TypedRef[OpenXRSpatialComponentMesh3DList])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentMesh3DList])(t))
+}
+
+func (r *RefOpenXRSpatialComponentMesh3DListImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentMesh3DList])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentMesh3DListImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentMesh3DList(reference OpenXRSpatialComponentMesh3DList) RefOpenXRSpatialComponentMesh3DList {
+	return (RefOpenXRSpatialComponentMesh3DList)(NewTypedRef[OpenXRSpatialComponentMesh3DList](reference))
+}
+
+func NewRefOpenXRSpatialComponentMesh3DListAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentMesh3DList](reference.(OpenXRSpatialComponentMesh3DList)))
+}
+
+func NewRefOpenXRSpatialComponentMesh3DListGDExtensionIternalConstructor(reference OpenXRSpatialComponentMesh3DList) RefOpenXRSpatialComponentMesh3DList {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentMesh3DList](reference)
+}
+
+var _ RefOpenXRSpatialComponentParentList = &RefOpenXRSpatialComponentParentListImpl{}
+var _ Ref = &RefOpenXRSpatialComponentParentListImpl{}
+
+type RefOpenXRSpatialComponentParentListImpl TypedRef[OpenXRSpatialComponentParentList]
+
+func (r *RefOpenXRSpatialComponentParentListImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentParentList])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentParentListImpl) TypedPtr() OpenXRSpatialComponentParentList {
+	rg := (*TypedRef[OpenXRSpatialComponentParentList])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentParentListImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentParentList])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentParentListImpl) TypedRef(from *RefOpenXRSpatialComponentParentListImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentParentList])(r)
+	t := (*TypedRef[OpenXRSpatialComponentParentList])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentParentList])(t))
+}
+
+func (r *RefOpenXRSpatialComponentParentListImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentParentList])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentParentListImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentParentList(reference OpenXRSpatialComponentParentList) RefOpenXRSpatialComponentParentList {
+	return (RefOpenXRSpatialComponentParentList)(NewTypedRef[OpenXRSpatialComponentParentList](reference))
+}
+
+func NewRefOpenXRSpatialComponentParentListAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentParentList](reference.(OpenXRSpatialComponentParentList)))
+}
+
+func NewRefOpenXRSpatialComponentParentListGDExtensionIternalConstructor(reference OpenXRSpatialComponentParentList) RefOpenXRSpatialComponentParentList {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentParentList](reference)
+}
+
+var _ RefOpenXRSpatialComponentPersistenceList = &RefOpenXRSpatialComponentPersistenceListImpl{}
+var _ Ref = &RefOpenXRSpatialComponentPersistenceListImpl{}
+
+type RefOpenXRSpatialComponentPersistenceListImpl TypedRef[OpenXRSpatialComponentPersistenceList]
+
+func (r *RefOpenXRSpatialComponentPersistenceListImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentPersistenceList])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentPersistenceListImpl) TypedPtr() OpenXRSpatialComponentPersistenceList {
+	rg := (*TypedRef[OpenXRSpatialComponentPersistenceList])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentPersistenceListImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentPersistenceList])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentPersistenceListImpl) TypedRef(from *RefOpenXRSpatialComponentPersistenceListImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentPersistenceList])(r)
+	t := (*TypedRef[OpenXRSpatialComponentPersistenceList])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentPersistenceList])(t))
+}
+
+func (r *RefOpenXRSpatialComponentPersistenceListImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentPersistenceList])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentPersistenceListImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentPersistenceList(reference OpenXRSpatialComponentPersistenceList) RefOpenXRSpatialComponentPersistenceList {
+	return (RefOpenXRSpatialComponentPersistenceList)(NewTypedRef[OpenXRSpatialComponentPersistenceList](reference))
+}
+
+func NewRefOpenXRSpatialComponentPersistenceListAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentPersistenceList](reference.(OpenXRSpatialComponentPersistenceList)))
+}
+
+func NewRefOpenXRSpatialComponentPersistenceListGDExtensionIternalConstructor(reference OpenXRSpatialComponentPersistenceList) RefOpenXRSpatialComponentPersistenceList {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentPersistenceList](reference)
+}
+
+var _ RefOpenXRSpatialComponentPlaneAlignmentList = &RefOpenXRSpatialComponentPlaneAlignmentListImpl{}
+var _ Ref = &RefOpenXRSpatialComponentPlaneAlignmentListImpl{}
+
+type RefOpenXRSpatialComponentPlaneAlignmentListImpl TypedRef[OpenXRSpatialComponentPlaneAlignmentList]
+
+func (r *RefOpenXRSpatialComponentPlaneAlignmentListImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentPlaneAlignmentList])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentPlaneAlignmentListImpl) TypedPtr() OpenXRSpatialComponentPlaneAlignmentList {
+	rg := (*TypedRef[OpenXRSpatialComponentPlaneAlignmentList])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentPlaneAlignmentListImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentPlaneAlignmentList])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentPlaneAlignmentListImpl) TypedRef(from *RefOpenXRSpatialComponentPlaneAlignmentListImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentPlaneAlignmentList])(r)
+	t := (*TypedRef[OpenXRSpatialComponentPlaneAlignmentList])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentPlaneAlignmentList])(t))
+}
+
+func (r *RefOpenXRSpatialComponentPlaneAlignmentListImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentPlaneAlignmentList])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentPlaneAlignmentListImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentPlaneAlignmentList(reference OpenXRSpatialComponentPlaneAlignmentList) RefOpenXRSpatialComponentPlaneAlignmentList {
+	return (RefOpenXRSpatialComponentPlaneAlignmentList)(NewTypedRef[OpenXRSpatialComponentPlaneAlignmentList](reference))
+}
+
+func NewRefOpenXRSpatialComponentPlaneAlignmentListAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentPlaneAlignmentList](reference.(OpenXRSpatialComponentPlaneAlignmentList)))
+}
+
+func NewRefOpenXRSpatialComponentPlaneAlignmentListGDExtensionIternalConstructor(reference OpenXRSpatialComponentPlaneAlignmentList) RefOpenXRSpatialComponentPlaneAlignmentList {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentPlaneAlignmentList](reference)
+}
+
+var _ RefOpenXRSpatialComponentPlaneSemanticLabelList = &RefOpenXRSpatialComponentPlaneSemanticLabelListImpl{}
+var _ Ref = &RefOpenXRSpatialComponentPlaneSemanticLabelListImpl{}
+
+type RefOpenXRSpatialComponentPlaneSemanticLabelListImpl TypedRef[OpenXRSpatialComponentPlaneSemanticLabelList]
+
+func (r *RefOpenXRSpatialComponentPlaneSemanticLabelListImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentPlaneSemanticLabelList])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentPlaneSemanticLabelListImpl) TypedPtr() OpenXRSpatialComponentPlaneSemanticLabelList {
+	rg := (*TypedRef[OpenXRSpatialComponentPlaneSemanticLabelList])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentPlaneSemanticLabelListImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentPlaneSemanticLabelList])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentPlaneSemanticLabelListImpl) TypedRef(from *RefOpenXRSpatialComponentPlaneSemanticLabelListImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentPlaneSemanticLabelList])(r)
+	t := (*TypedRef[OpenXRSpatialComponentPlaneSemanticLabelList])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentPlaneSemanticLabelList])(t))
+}
+
+func (r *RefOpenXRSpatialComponentPlaneSemanticLabelListImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentPlaneSemanticLabelList])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentPlaneSemanticLabelListImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentPlaneSemanticLabelList(reference OpenXRSpatialComponentPlaneSemanticLabelList) RefOpenXRSpatialComponentPlaneSemanticLabelList {
+	return (RefOpenXRSpatialComponentPlaneSemanticLabelList)(NewTypedRef[OpenXRSpatialComponentPlaneSemanticLabelList](reference))
+}
+
+func NewRefOpenXRSpatialComponentPlaneSemanticLabelListAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentPlaneSemanticLabelList](reference.(OpenXRSpatialComponentPlaneSemanticLabelList)))
+}
+
+func NewRefOpenXRSpatialComponentPlaneSemanticLabelListGDExtensionIternalConstructor(reference OpenXRSpatialComponentPlaneSemanticLabelList) RefOpenXRSpatialComponentPlaneSemanticLabelList {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentPlaneSemanticLabelList](reference)
+}
+
+var _ RefOpenXRSpatialComponentPolygon2DList = &RefOpenXRSpatialComponentPolygon2DListImpl{}
+var _ Ref = &RefOpenXRSpatialComponentPolygon2DListImpl{}
+
+type RefOpenXRSpatialComponentPolygon2DListImpl TypedRef[OpenXRSpatialComponentPolygon2DList]
+
+func (r *RefOpenXRSpatialComponentPolygon2DListImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialComponentPolygon2DList])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialComponentPolygon2DListImpl) TypedPtr() OpenXRSpatialComponentPolygon2DList {
+	rg := (*TypedRef[OpenXRSpatialComponentPolygon2DList])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialComponentPolygon2DListImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialComponentPolygon2DList])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialComponentPolygon2DListImpl) TypedRef(from *RefOpenXRSpatialComponentPolygon2DListImpl) {
+	rg := (*TypedRef[OpenXRSpatialComponentPolygon2DList])(r)
+	t := (*TypedRef[OpenXRSpatialComponentPolygon2DList])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialComponentPolygon2DList])(t))
+}
+
+func (r *RefOpenXRSpatialComponentPolygon2DListImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialComponentPolygon2DList])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialComponentPolygon2DListImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialComponentPolygon2DList(reference OpenXRSpatialComponentPolygon2DList) RefOpenXRSpatialComponentPolygon2DList {
+	return (RefOpenXRSpatialComponentPolygon2DList)(NewTypedRef[OpenXRSpatialComponentPolygon2DList](reference))
+}
+
+func NewRefOpenXRSpatialComponentPolygon2DListAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentPolygon2DList](reference.(OpenXRSpatialComponentPolygon2DList)))
+}
+
+func NewRefOpenXRSpatialComponentPolygon2DListGDExtensionIternalConstructor(reference OpenXRSpatialComponentPolygon2DList) RefOpenXRSpatialComponentPolygon2DList {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialComponentPolygon2DList](reference)
+}
+
+var _ RefOpenXRSpatialContextPersistenceConfig = &RefOpenXRSpatialContextPersistenceConfigImpl{}
+var _ Ref = &RefOpenXRSpatialContextPersistenceConfigImpl{}
+
+type RefOpenXRSpatialContextPersistenceConfigImpl TypedRef[OpenXRSpatialContextPersistenceConfig]
+
+func (r *RefOpenXRSpatialContextPersistenceConfigImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialContextPersistenceConfig])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialContextPersistenceConfigImpl) TypedPtr() OpenXRSpatialContextPersistenceConfig {
+	rg := (*TypedRef[OpenXRSpatialContextPersistenceConfig])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialContextPersistenceConfigImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialContextPersistenceConfig])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialContextPersistenceConfigImpl) TypedRef(from *RefOpenXRSpatialContextPersistenceConfigImpl) {
+	rg := (*TypedRef[OpenXRSpatialContextPersistenceConfig])(r)
+	t := (*TypedRef[OpenXRSpatialContextPersistenceConfig])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialContextPersistenceConfig])(t))
+}
+
+func (r *RefOpenXRSpatialContextPersistenceConfigImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialContextPersistenceConfig])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialContextPersistenceConfigImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialContextPersistenceConfig(reference OpenXRSpatialContextPersistenceConfig) RefOpenXRSpatialContextPersistenceConfig {
+	return (RefOpenXRSpatialContextPersistenceConfig)(NewTypedRef[OpenXRSpatialContextPersistenceConfig](reference))
+}
+
+func NewRefOpenXRSpatialContextPersistenceConfigAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialContextPersistenceConfig](reference.(OpenXRSpatialContextPersistenceConfig)))
+}
+
+func NewRefOpenXRSpatialContextPersistenceConfigGDExtensionIternalConstructor(reference OpenXRSpatialContextPersistenceConfig) RefOpenXRSpatialContextPersistenceConfig {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialContextPersistenceConfig](reference)
+}
+
+var _ RefOpenXRSpatialEntityTracker = &RefOpenXRSpatialEntityTrackerImpl{}
+var _ Ref = &RefOpenXRSpatialEntityTrackerImpl{}
+
+type RefOpenXRSpatialEntityTrackerImpl TypedRef[OpenXRSpatialEntityTracker]
+
+func (r *RefOpenXRSpatialEntityTrackerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialEntityTracker])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialEntityTrackerImpl) TypedPtr() OpenXRSpatialEntityTracker {
+	rg := (*TypedRef[OpenXRSpatialEntityTracker])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialEntityTrackerImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialEntityTracker])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialEntityTrackerImpl) TypedRef(from *RefOpenXRSpatialEntityTrackerImpl) {
+	rg := (*TypedRef[OpenXRSpatialEntityTracker])(r)
+	t := (*TypedRef[OpenXRSpatialEntityTracker])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialEntityTracker])(t))
+}
+
+func (r *RefOpenXRSpatialEntityTrackerImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialEntityTracker])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialEntityTrackerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialEntityTracker(reference OpenXRSpatialEntityTracker) RefOpenXRSpatialEntityTracker {
+	return (RefOpenXRSpatialEntityTracker)(NewTypedRef[OpenXRSpatialEntityTracker](reference))
+}
+
+func NewRefOpenXRSpatialEntityTrackerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialEntityTracker](reference.(OpenXRSpatialEntityTracker)))
+}
+
+func NewRefOpenXRSpatialEntityTrackerGDExtensionIternalConstructor(reference OpenXRSpatialEntityTracker) RefOpenXRSpatialEntityTracker {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialEntityTracker](reference)
+}
+
+var _ RefOpenXRSpatialQueryResultData = &RefOpenXRSpatialQueryResultDataImpl{}
+var _ Ref = &RefOpenXRSpatialQueryResultDataImpl{}
+
+type RefOpenXRSpatialQueryResultDataImpl TypedRef[OpenXRSpatialQueryResultData]
+
+func (r *RefOpenXRSpatialQueryResultDataImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRSpatialQueryResultData])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRSpatialQueryResultDataImpl) TypedPtr() OpenXRSpatialQueryResultData {
+	rg := (*TypedRef[OpenXRSpatialQueryResultData])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRSpatialQueryResultDataImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRSpatialQueryResultData])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRSpatialQueryResultDataImpl) TypedRef(from *RefOpenXRSpatialQueryResultDataImpl) {
+	rg := (*TypedRef[OpenXRSpatialQueryResultData])(r)
+	t := (*TypedRef[OpenXRSpatialQueryResultData])(from)
+	rg.TypedRef((*TypedRef[OpenXRSpatialQueryResultData])(t))
+}
+
+func (r *RefOpenXRSpatialQueryResultDataImpl) Unref() {
+	rg := (*TypedRef[OpenXRSpatialQueryResultData])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRSpatialQueryResultDataImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRSpatialQueryResultData(reference OpenXRSpatialQueryResultData) RefOpenXRSpatialQueryResultData {
+	return (RefOpenXRSpatialQueryResultData)(NewTypedRef[OpenXRSpatialQueryResultData](reference))
+}
+
+func NewRefOpenXRSpatialQueryResultDataAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialQueryResultData](reference.(OpenXRSpatialQueryResultData)))
+}
+
+func NewRefOpenXRSpatialQueryResultDataGDExtensionIternalConstructor(reference OpenXRSpatialQueryResultData) RefOpenXRSpatialQueryResultData {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRSpatialQueryResultData](reference)
+}
+
+var _ RefOpenXRStructureBase = &RefOpenXRStructureBaseImpl{}
+var _ Ref = &RefOpenXRStructureBaseImpl{}
+
+type RefOpenXRStructureBaseImpl TypedRef[OpenXRStructureBase]
+
+func (r *RefOpenXRStructureBaseImpl) Ptr() RefCounted {
+	rg := (*TypedRef[OpenXRStructureBase])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefOpenXRStructureBaseImpl) TypedPtr() OpenXRStructureBase {
+	rg := (*TypedRef[OpenXRStructureBase])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefOpenXRStructureBaseImpl) Ref(from Ref) {
+	rg := (*TypedRef[OpenXRStructureBase])(r)
+	rg.Ref(from)
+}
+
+func (r *RefOpenXRStructureBaseImpl) TypedRef(from *RefOpenXRStructureBaseImpl) {
+	rg := (*TypedRef[OpenXRStructureBase])(r)
+	t := (*TypedRef[OpenXRStructureBase])(from)
+	rg.TypedRef((*TypedRef[OpenXRStructureBase])(t))
+}
+
+func (r *RefOpenXRStructureBaseImpl) Unref() {
+	rg := (*TypedRef[OpenXRStructureBase])(r)
+	rg.Unref()
+}
+
+func (r *RefOpenXRStructureBaseImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefOpenXRStructureBase(reference OpenXRStructureBase) RefOpenXRStructureBase {
+	return (RefOpenXRStructureBase)(NewTypedRef[OpenXRStructureBase](reference))
+}
+
+func NewRefOpenXRStructureBaseAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[OpenXRStructureBase](reference.(OpenXRStructureBase)))
+}
+
+func NewRefOpenXRStructureBaseGDExtensionIternalConstructor(reference OpenXRStructureBase) RefOpenXRStructureBase {
+	return NewTypedRefGDExtensionIternalConstructor[OpenXRStructureBase](reference)
 }
 
 var _ RefOptimizedTranslation = &RefOptimizedTranslationImpl{}
@@ -19756,6 +21072,53 @@ func NewRefSkyGDExtensionIternalConstructor(reference Sky) RefSky {
 	return NewTypedRefGDExtensionIternalConstructor[Sky](reference)
 }
 
+var _ RefSocketServer = &RefSocketServerImpl{}
+var _ Ref = &RefSocketServerImpl{}
+
+type RefSocketServerImpl TypedRef[SocketServer]
+
+func (r *RefSocketServerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[SocketServer])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefSocketServerImpl) TypedPtr() SocketServer {
+	rg := (*TypedRef[SocketServer])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefSocketServerImpl) Ref(from Ref) {
+	rg := (*TypedRef[SocketServer])(r)
+	rg.Ref(from)
+}
+
+func (r *RefSocketServerImpl) TypedRef(from *RefSocketServerImpl) {
+	rg := (*TypedRef[SocketServer])(r)
+	t := (*TypedRef[SocketServer])(from)
+	rg.TypedRef((*TypedRef[SocketServer])(t))
+}
+
+func (r *RefSocketServerImpl) Unref() {
+	rg := (*TypedRef[SocketServer])(r)
+	rg.Unref()
+}
+
+func (r *RefSocketServerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefSocketServer(reference SocketServer) RefSocketServer {
+	return (RefSocketServer)(NewTypedRef[SocketServer](reference))
+}
+
+func NewRefSocketServerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[SocketServer](reference.(SocketServer)))
+}
+
+func NewRefSocketServerGDExtensionIternalConstructor(reference SocketServer) RefSocketServer {
+	return NewTypedRefGDExtensionIternalConstructor[SocketServer](reference)
+}
+
 var _ RefSphereMesh = &RefSphereMeshImpl{}
 var _ Ref = &RefSphereMeshImpl{}
 
@@ -20179,6 +21542,53 @@ func NewRefStreamPeerGZIPGDExtensionIternalConstructor(reference StreamPeerGZIP)
 	return NewTypedRefGDExtensionIternalConstructor[StreamPeerGZIP](reference)
 }
 
+var _ RefStreamPeerSocket = &RefStreamPeerSocketImpl{}
+var _ Ref = &RefStreamPeerSocketImpl{}
+
+type RefStreamPeerSocketImpl TypedRef[StreamPeerSocket]
+
+func (r *RefStreamPeerSocketImpl) Ptr() RefCounted {
+	rg := (*TypedRef[StreamPeerSocket])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefStreamPeerSocketImpl) TypedPtr() StreamPeerSocket {
+	rg := (*TypedRef[StreamPeerSocket])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefStreamPeerSocketImpl) Ref(from Ref) {
+	rg := (*TypedRef[StreamPeerSocket])(r)
+	rg.Ref(from)
+}
+
+func (r *RefStreamPeerSocketImpl) TypedRef(from *RefStreamPeerSocketImpl) {
+	rg := (*TypedRef[StreamPeerSocket])(r)
+	t := (*TypedRef[StreamPeerSocket])(from)
+	rg.TypedRef((*TypedRef[StreamPeerSocket])(t))
+}
+
+func (r *RefStreamPeerSocketImpl) Unref() {
+	rg := (*TypedRef[StreamPeerSocket])(r)
+	rg.Unref()
+}
+
+func (r *RefStreamPeerSocketImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefStreamPeerSocket(reference StreamPeerSocket) RefStreamPeerSocket {
+	return (RefStreamPeerSocket)(NewTypedRef[StreamPeerSocket](reference))
+}
+
+func NewRefStreamPeerSocketAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StreamPeerSocket](reference.(StreamPeerSocket)))
+}
+
+func NewRefStreamPeerSocketGDExtensionIternalConstructor(reference StreamPeerSocket) RefStreamPeerSocket {
+	return NewTypedRefGDExtensionIternalConstructor[StreamPeerSocket](reference)
+}
+
 var _ RefStreamPeerTCP = &RefStreamPeerTCPImpl{}
 var _ Ref = &RefStreamPeerTCPImpl{}
 
@@ -20271,6 +21681,53 @@ func NewRefStreamPeerTLSAsRef(reference RefCounted) Ref {
 
 func NewRefStreamPeerTLSGDExtensionIternalConstructor(reference StreamPeerTLS) RefStreamPeerTLS {
 	return NewTypedRefGDExtensionIternalConstructor[StreamPeerTLS](reference)
+}
+
+var _ RefStreamPeerUDS = &RefStreamPeerUDSImpl{}
+var _ Ref = &RefStreamPeerUDSImpl{}
+
+type RefStreamPeerUDSImpl TypedRef[StreamPeerUDS]
+
+func (r *RefStreamPeerUDSImpl) Ptr() RefCounted {
+	rg := (*TypedRef[StreamPeerUDS])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefStreamPeerUDSImpl) TypedPtr() StreamPeerUDS {
+	rg := (*TypedRef[StreamPeerUDS])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefStreamPeerUDSImpl) Ref(from Ref) {
+	rg := (*TypedRef[StreamPeerUDS])(r)
+	rg.Ref(from)
+}
+
+func (r *RefStreamPeerUDSImpl) TypedRef(from *RefStreamPeerUDSImpl) {
+	rg := (*TypedRef[StreamPeerUDS])(r)
+	t := (*TypedRef[StreamPeerUDS])(from)
+	rg.TypedRef((*TypedRef[StreamPeerUDS])(t))
+}
+
+func (r *RefStreamPeerUDSImpl) Unref() {
+	rg := (*TypedRef[StreamPeerUDS])(r)
+	rg.Unref()
+}
+
+func (r *RefStreamPeerUDSImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefStreamPeerUDS(reference StreamPeerUDS) RefStreamPeerUDS {
+	return (RefStreamPeerUDS)(NewTypedRef[StreamPeerUDS](reference))
+}
+
+func NewRefStreamPeerUDSAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[StreamPeerUDS](reference.(StreamPeerUDS)))
+}
+
+func NewRefStreamPeerUDSGDExtensionIternalConstructor(reference StreamPeerUDS) RefStreamPeerUDS {
+	return NewTypedRefGDExtensionIternalConstructor[StreamPeerUDS](reference)
 }
 
 var _ RefStyleBox = &RefStyleBoxImpl{}
@@ -22339,6 +23796,53 @@ func NewRefUDPServerAsRef(reference RefCounted) Ref {
 
 func NewRefUDPServerGDExtensionIternalConstructor(reference UDPServer) RefUDPServer {
 	return NewTypedRefGDExtensionIternalConstructor[UDPServer](reference)
+}
+
+var _ RefUDSServer = &RefUDSServerImpl{}
+var _ Ref = &RefUDSServerImpl{}
+
+type RefUDSServerImpl TypedRef[UDSServer]
+
+func (r *RefUDSServerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[UDSServer])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefUDSServerImpl) TypedPtr() UDSServer {
+	rg := (*TypedRef[UDSServer])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefUDSServerImpl) Ref(from Ref) {
+	rg := (*TypedRef[UDSServer])(r)
+	rg.Ref(from)
+}
+
+func (r *RefUDSServerImpl) TypedRef(from *RefUDSServerImpl) {
+	rg := (*TypedRef[UDSServer])(r)
+	t := (*TypedRef[UDSServer])(from)
+	rg.TypedRef((*TypedRef[UDSServer])(t))
+}
+
+func (r *RefUDSServerImpl) Unref() {
+	rg := (*TypedRef[UDSServer])(r)
+	rg.Unref()
+}
+
+func (r *RefUDSServerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefUDSServer(reference UDSServer) RefUDSServer {
+	return (RefUDSServer)(NewTypedRef[UDSServer](reference))
+}
+
+func NewRefUDSServerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[UDSServer](reference.(UDSServer)))
+}
+
+func NewRefUDSServerGDExtensionIternalConstructor(reference UDSServer) RefUDSServer {
+	return NewTypedRefGDExtensionIternalConstructor[UDSServer](reference)
 }
 
 var _ RefUPNP = &RefUPNPImpl{}

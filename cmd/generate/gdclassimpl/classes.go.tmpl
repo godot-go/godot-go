@@ -63,7 +63,7 @@ func (cx *{{ goClassStructName $c.Name }}) GetParentClassName() string {
 }
 
 {{ range $j, $m := $c.Methods -}}
-{{ $fnReturnType := goReturnType (coalesce $m.ReturnValue.Meta $m.ReturnValue.Type) }}
+{{ $fnReturnType := goReturnType (typeOrMeta $m.ReturnValue.Meta $m.ReturnValue.Type) }}
 {{ $hasSomeArguments := (or $m.Arguments $m.IsVararg) }}
 
 {{ if $m.IsVirtual -}}
@@ -75,7 +75,7 @@ func (cx *{{ goClassStructName $c.Name }}) GetParentClassName() string {
  */
 func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 {{range $k, $a := $m.Arguments -}}
-{{ $fnArgType := goArgumentType (coalesce $a.Meta $a.Type) -}}
+{{ $fnArgType := goArgumentType (typeOrMeta $a.Meta $a.Type) -}}
 {{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $fnArgType }}Ref{{ $fnArgType }}{{ else }}{{ $fnArgType }}{{ end -}},
 {{end -}}
 {{- if $m.IsVararg }}varargs ...Variant,{{ end -}}
@@ -141,8 +141,8 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	{{ range $j, $a := $m.Arguments -}}
-		{{ if $view.ContainsClassName (goArgumentType (coalesce $a.Meta $a.Type)) -}}
-		{{ if and (eq $j 0) (and (isSetterMethodName (goMethodName $m.Name)) ($view.IsRefcountedClassName (goArgumentType (coalesce $a.Meta $a.Type)))) -}}
+		{{ if $view.ContainsClassName (goArgumentType (typeOrMeta $a.Meta $a.Type)) -}}
+		{{ if and (eq $j 0) (and (isSetterMethodName (goMethodName $m.Name)) ($view.IsRefcountedClassName (goArgumentType (typeOrMeta $a.Meta $a.Type)))) -}}
 		{{/* {{ goArgumentName $a.Name }}.Reference() */}}
 		{{ end -}}
 		argPtrSlice[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))

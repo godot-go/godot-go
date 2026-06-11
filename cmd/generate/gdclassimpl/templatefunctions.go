@@ -254,6 +254,15 @@ func coalesce(params ...string) string {
 	return ""
 }
 
+// typeOrMeta returns the actual type for a method argument or return value.
+// Godot 4.6.3+ uses meta="required" as a non-null annotation (not a type override).
+func typeOrMeta(meta string, typ string) string {
+	if meta == "required" || meta == "" {
+		return typ
+	}
+	return meta
+}
+
 func goHasArgumentTypeEncoder(t string) bool {
 	if strings.HasPrefix(t, "enum::") {
 		t = t[6:]

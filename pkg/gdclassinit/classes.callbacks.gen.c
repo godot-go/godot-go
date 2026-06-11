@@ -1865,6 +1865,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_BoneMap(void *p
 
 
 
+void *cgo_gdextension_class_binding_create_callback_BoneTwistDisperser3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("BoneTwistDisperser3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_BoneTwistDisperser3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("BoneTwistDisperser3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_BoneTwistDisperser3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("BoneTwistDisperser3D", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_BoxContainer(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("BoxContainer", p_token, p_instance);
@@ -1963,6 +1980,23 @@ void cgo_gdextension_class_binding_free_callback_ButtonGroup(void *p_token, void
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_ButtonGroup(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("ButtonGroup", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_CCDIK3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("CCDIK3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_CCDIK3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("CCDIK3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_CCDIK3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("CCDIK3D", p_token, p_instance, p_reference);
 }
 
 
@@ -2473,6 +2507,23 @@ void cgo_gdextension_class_binding_free_callback_CenterContainer(void *p_token, 
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_CenterContainer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("CenterContainer", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_ChainIK3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("ChainIK3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_ChainIK3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("ChainIK3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_ChainIK3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("ChainIK3D", p_token, p_instance, p_reference);
 }
 
 
@@ -3565,6 +3616,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_EditorDebuggerS
 
 
 
+void *cgo_gdextension_class_binding_create_callback_EditorDock(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("EditorDock", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_EditorDock(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("EditorDock", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_EditorDock(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("EditorDock", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_EditorExportPlatform(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("EditorExportPlatform", p_token, p_instance);
@@ -4517,6 +4585,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_ExternalTexture
 
 
 
+void *cgo_gdextension_class_binding_create_callback_FABRIK3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("FABRIK3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_FABRIK3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("FABRIK3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_FABRIK3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("FABRIK3D", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_FBXDocument(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("FBXDocument", p_token, p_instance);
@@ -5418,6 +5503,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_GeometryInstanc
 
 
 
+void *cgo_gdextension_class_binding_create_callback_GodotInstance(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("GodotInstance", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_GodotInstance(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("GodotInstance", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_GodotInstance(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("GodotInstance", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_Gradient(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("Gradient", p_token, p_instance);
@@ -5805,6 +5907,23 @@ void cgo_gdextension_class_binding_free_callback_HingeJoint3D(void *p_token, voi
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_HingeJoint3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("HingeJoint3D", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_IKModifier3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("IKModifier3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_IKModifier3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("IKModifier3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_IKModifier3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("IKModifier3D", p_token, p_instance, p_reference);
 }
 
 
@@ -6353,6 +6472,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_ItemList(void *
 
 
 
+void *cgo_gdextension_class_binding_create_callback_IterateIK3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("IterateIK3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_IterateIK3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("IterateIK3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_IterateIK3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("IterateIK3D", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_JNISingleton(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("JNISingleton", p_token, p_instance);
@@ -6400,6 +6536,23 @@ void cgo_gdextension_class_binding_free_callback_JSONRPC(void *p_token, void *p_
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_JSONRPC(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("JSONRPC", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_JacobianIK3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("JacobianIK3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_JacobianIK3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("JacobianIK3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_JacobianIK3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("JacobianIK3D", p_token, p_instance, p_reference);
 }
 
 
@@ -6519,6 +6672,40 @@ void cgo_gdextension_class_binding_free_callback_Joint3D(void *p_token, void *p_
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_Joint3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("Joint3D", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_JointLimitation3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("JointLimitation3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_JointLimitation3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("JointLimitation3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_JointLimitation3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("JointLimitation3D", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_JointLimitationCone3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("JointLimitationCone3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_JointLimitationCone3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("JointLimitationCone3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_JointLimitationCone3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("JointLimitationCone3D", p_token, p_instance, p_reference);
 }
 
 
@@ -6740,6 +6927,23 @@ void cgo_gdextension_class_binding_free_callback_LightmapperRD(void *p_token, vo
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_LightmapperRD(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("LightmapperRD", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_LimitAngularVelocityModifier3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("LimitAngularVelocityModifier3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_LimitAngularVelocityModifier3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("LimitAngularVelocityModifier3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_LimitAngularVelocityModifier3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("LimitAngularVelocityModifier3D", p_token, p_instance, p_reference);
 }
 
 
@@ -7679,6 +7883,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_NavigationServe
 
 
 
+void *cgo_gdextension_class_binding_create_callback_NavigationServer2DManager(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("NavigationServer2DManager", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_NavigationServer2DManager(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("NavigationServer2DManager", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_NavigationServer2DManager(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("NavigationServer2DManager", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_NavigationServer3D(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("NavigationServer3D", p_token, p_instance);
@@ -7692,6 +7913,23 @@ void cgo_gdextension_class_binding_free_callback_NavigationServer3D(void *p_toke
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_NavigationServer3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("NavigationServer3D", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_NavigationServer3DManager(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("NavigationServer3DManager", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_NavigationServer3DManager(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("NavigationServer3DManager", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_NavigationServer3DManager(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("NavigationServer3DManager", p_token, p_instance, p_reference);
 }
 
 
@@ -8104,6 +8342,40 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRAnalogThr
 
 
 
+void *cgo_gdextension_class_binding_create_callback_OpenXRAnchorTracker(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRAnchorTracker", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRAnchorTracker(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRAnchorTracker", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRAnchorTracker(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRAnchorTracker", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRAndroidThreadSettingsExtension(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRAndroidThreadSettingsExtension", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRAndroidThreadSettingsExtension(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRAndroidThreadSettingsExtension", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRAndroidThreadSettingsExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRAndroidThreadSettingsExtension", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_OpenXRBindingModifier(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("OpenXRBindingModifier", p_token, p_instance);
@@ -8253,6 +8525,23 @@ void cgo_gdextension_class_binding_free_callback_OpenXRExtensionWrapperExtension
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRExtensionWrapperExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("OpenXRExtensionWrapperExtension", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRFrameSynthesisExtension(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRFrameSynthesisExtension", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRFrameSynthesisExtension(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRFrameSynthesisExtension", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRFrameSynthesisExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRFrameSynthesisExtension", p_token, p_instance, p_reference);
 }
 
 
@@ -8461,6 +8750,40 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRInterface
 
 
 
+void *cgo_gdextension_class_binding_create_callback_OpenXRMarkerTracker(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRMarkerTracker", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRMarkerTracker(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRMarkerTracker", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRMarkerTracker(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRMarkerTracker", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRPlaneTracker(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRPlaneTracker", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRPlaneTracker(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRPlaneTracker", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRPlaneTracker(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRPlaneTracker", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_OpenXRRenderModel(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("OpenXRRenderModel", p_token, p_instance);
@@ -8508,6 +8831,465 @@ void cgo_gdextension_class_binding_free_callback_OpenXRRenderModelManager(void *
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRRenderModelManager(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("OpenXRRenderModelManager", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialAnchorCapability(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialAnchorCapability", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialAnchorCapability(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialAnchorCapability", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialAnchorCapability(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialAnchorCapability", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationAnchor(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialCapabilityConfigurationAnchor", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationAnchor(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialCapabilityConfigurationAnchor", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationAnchor(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialCapabilityConfigurationAnchor", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationAprilTag(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialCapabilityConfigurationAprilTag", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationAprilTag(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialCapabilityConfigurationAprilTag", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationAprilTag(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialCapabilityConfigurationAprilTag", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationAruco(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialCapabilityConfigurationAruco", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationAruco(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialCapabilityConfigurationAruco", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationAruco(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialCapabilityConfigurationAruco", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationBaseHeader(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialCapabilityConfigurationBaseHeader", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationBaseHeader(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialCapabilityConfigurationBaseHeader", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationBaseHeader(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialCapabilityConfigurationBaseHeader", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationMicroQrCode(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialCapabilityConfigurationMicroQrCode", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationMicroQrCode(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialCapabilityConfigurationMicroQrCode", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationMicroQrCode(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialCapabilityConfigurationMicroQrCode", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationPlaneTracking(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialCapabilityConfigurationPlaneTracking", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationPlaneTracking(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialCapabilityConfigurationPlaneTracking", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationPlaneTracking(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialCapabilityConfigurationPlaneTracking", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationQrCode(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialCapabilityConfigurationQrCode", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationQrCode(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialCapabilityConfigurationQrCode", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationQrCode(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialCapabilityConfigurationQrCode", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentAnchorList(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentAnchorList", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentAnchorList(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentAnchorList", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentAnchorList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentAnchorList", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentBounded2DList(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentBounded2DList", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentBounded2DList(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentBounded2DList", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentBounded2DList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentBounded2DList", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentBounded3DList(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentBounded3DList", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentBounded3DList(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentBounded3DList", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentBounded3DList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentBounded3DList", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentData(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentData", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentData(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentData", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentData(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentData", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentMarkerList(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentMarkerList", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentMarkerList(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentMarkerList", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentMarkerList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentMarkerList", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentMesh2DList(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentMesh2DList", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentMesh2DList(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentMesh2DList", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentMesh2DList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentMesh2DList", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentMesh3DList(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentMesh3DList", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentMesh3DList(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentMesh3DList", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentMesh3DList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentMesh3DList", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentParentList(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentParentList", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentParentList(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentParentList", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentParentList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentParentList", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentPersistenceList(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentPersistenceList", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentPersistenceList(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentPersistenceList", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentPersistenceList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentPersistenceList", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentPlaneAlignmentList(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentPlaneAlignmentList", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentPlaneAlignmentList(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentPlaneAlignmentList", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentPlaneAlignmentList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentPlaneAlignmentList", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentPlaneSemanticLabelList(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentPlaneSemanticLabelList", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentPlaneSemanticLabelList(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentPlaneSemanticLabelList", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentPlaneSemanticLabelList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentPlaneSemanticLabelList", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentPolygon2DList(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialComponentPolygon2DList", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentPolygon2DList(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialComponentPolygon2DList", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentPolygon2DList(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialComponentPolygon2DList", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialContextPersistenceConfig(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialContextPersistenceConfig", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialContextPersistenceConfig(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialContextPersistenceConfig", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialContextPersistenceConfig(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialContextPersistenceConfig", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialEntityExtension(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialEntityExtension", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialEntityExtension(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialEntityExtension", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialEntityExtension(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialEntityExtension", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialEntityTracker(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialEntityTracker", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialEntityTracker(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialEntityTracker", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialEntityTracker(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialEntityTracker", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialMarkerTrackingCapability(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialMarkerTrackingCapability", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialMarkerTrackingCapability(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialMarkerTrackingCapability", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialMarkerTrackingCapability(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialMarkerTrackingCapability", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialPlaneTrackingCapability(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialPlaneTrackingCapability", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialPlaneTrackingCapability(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialPlaneTrackingCapability", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialPlaneTrackingCapability(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialPlaneTrackingCapability", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRSpatialQueryResultData(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRSpatialQueryResultData", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRSpatialQueryResultData(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRSpatialQueryResultData", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRSpatialQueryResultData(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRSpatialQueryResultData", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_OpenXRStructureBase(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("OpenXRStructureBase", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_OpenXRStructureBase(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("OpenXRStructureBase", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_OpenXRStructureBase(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("OpenXRStructureBase", p_token, p_instance, p_reference);
 }
 
 
@@ -11997,6 +12779,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_SliderJoint3D(v
 
 
 
+void *cgo_gdextension_class_binding_create_callback_SocketServer(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("SocketServer", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_SocketServer(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("SocketServer", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_SocketServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("SocketServer", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_SoftBody3D(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("SoftBody3D", p_token, p_instance);
@@ -12078,6 +12877,23 @@ void cgo_gdextension_class_binding_free_callback_SpinBox(void *p_token, void *p_
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_SpinBox(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("SpinBox", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_SplineIK3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("SplineIK3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_SplineIK3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("SplineIK3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_SplineIK3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("SplineIK3D", p_token, p_instance, p_reference);
 }
 
 
@@ -12422,6 +13238,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_StreamPeerGZIP(
 
 
 
+void *cgo_gdextension_class_binding_create_callback_StreamPeerSocket(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("StreamPeerSocket", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_StreamPeerSocket(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("StreamPeerSocket", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_StreamPeerSocket(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("StreamPeerSocket", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_StreamPeerTCP(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("StreamPeerTCP", p_token, p_instance);
@@ -12452,6 +13285,23 @@ void cgo_gdextension_class_binding_free_callback_StreamPeerTLS(void *p_token, vo
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_StreamPeerTLS(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("StreamPeerTLS", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_StreamPeerUDS(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("StreamPeerUDS", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_StreamPeerUDS(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("StreamPeerUDS", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_StreamPeerUDS(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("StreamPeerUDS", p_token, p_instance, p_reference);
 }
 
 
@@ -13510,6 +14360,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_Tweener(void *p
 
 
 
+void *cgo_gdextension_class_binding_create_callback_TwoBoneIK3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("TwoBoneIK3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_TwoBoneIK3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("TwoBoneIK3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_TwoBoneIK3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("TwoBoneIK3D", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_UDPServer(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("UDPServer", p_token, p_instance);
@@ -13523,6 +14390,23 @@ void cgo_gdextension_class_binding_free_callback_UDPServer(void *p_token, void *
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_UDPServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("UDPServer", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_UDSServer(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("UDSServer", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_UDSServer(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("UDSServer", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_UDSServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("UDSServer", p_token, p_instance, p_reference);
 }
 
 

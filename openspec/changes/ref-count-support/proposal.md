@@ -13,8 +13,8 @@ godot-go has a `TypedRef[T]` type that exists but is incomplete and unused. It l
 ### Core `Ref[T]` Type
 - **Replace `TypedRef[T]` with `Ref[T]`**: Stores `T` directly (not `RefCounted` base), eliminating type assertions. `Ptr()` returns `T` for transparent access (godot-cpp `operator->` equivalent).
 - **Two constructors**: `NewRef[T](obj)` for Godot-owned objects (calls `Reference()`), `NewRefInit[T](obj)` for user-owned objects (calls `InitRef()` then `Reference()`).
-- **Copy semantics**: `Ref(from *Ref[T])` — unrefs old, refs new, with self-assignment guard.
-- **Unref safety**: `Unref()` zeroes `m_ref` after `Unreference()`, making double-unref a safe no-op.
+- **Pure finalizer lifecycle**: `runtime.SetFinalizer` guarantees exactly-one `Unreference()` per `*Ref[T]` allocation. No manual `Unref()` — Go GC manages the entire lifecycle.
+- **Clone for sharing**: `Clone()` creates an independent claim on the same underlying object. Each clone has its own finalizer and calls `Reference()`.
 
 ### GDExtension Ref Integration
 - **Wire `referenceFunc`/`unreferenceFunc`** in `NewGDExtensionClassCreationInfo4` — currently `nil`, which causes refcount drift for user-defined `RefCounted` classes. Callbacks extract `WrappedClassInstance` and call `RefCounted.Reference()`/`Unreference()`.
@@ -26,10 +26,10 @@ godot-go has a `TypedRef[T]` type that exists but is incomplete and unused. It l
 
 ### Codegen Updates
 - **Generated `RefImageImpl TypedRef[Image]`** → **`RefImage struct { *Ref[Image] }`** — thin wrappers via embedding. Eliminates ~15 delegation methods per type (~3000 lines → ~600 lines across ~200 types).
-- **Template changes**: `cmd/generate/gdclassimpl/` templates for Ref type generation.
+- **Template changes**: `cmd/generate/gdclassimpl/` templates for Ref type generation. No `Unref()`/`Ref()` delegation needed — finalizer handles everything.
 
 ### Test Coverage
-- Ref counting: create, copy, unref, verify refcount via `GetReferenceCount()`.
+- Ref counting: create, clone, GC collect, verify refcount via `GetReferenceCount()`.
 - Godot round-trip: Go returns `Ref[T]`, Godot receives it correctly.
 - User-defined `RefCounted`: custom class extending `Resource` with `Ref[CustomResource]`.
 - Binding lifecycle: Godot copies/destroys `Ref` to user class, refcount stays correct.
@@ -37,7 +37,7 @@ godot-go has a `TypedRef[T]` type that exists but is incomplete and unused. It l
 ## Capabilities
 
 ### New Capabilities
-- `ref-smart-pointer`: Implements `Ref[T]` as a type-safe reference-counted smart pointer for Godot `RefCounted` objects, with copy/move semantics, variant encoding, and GDExtension integration.
+- `ref-smart-pointer`: Implements `Ref[T]` as a type-safe reference-counted smart pointer for Godot `RefCounted` objects, with finalizer-based lifecycle management, variant encoding, and GDExtension integration.
 
 ### Modified Capabilities
 - None
@@ -47,7 +47,7 @@ godot-go has a `TypedRef[T]` type that exists but is incomplete and unused. It l
 ### Files Changed
 | File | Change |
 |------|--------|
-| `pkg/builtin/ref_generic.go` | Rewrite `TypedRef[T]` → `Ref[T]`, add `NewRef`/`NewRefInit` constructors |
+| `pkg/builtin/ref_generic.go` | Rewrite `TypedRef[T]` → `Ref[T]` with `runtime.SetFinalizer`, no `Unref()` |
 | `pkg/builtin/lib.go` | Update `RefCountedConstructor` type signature |
 | `pkg/builtin/wrapped_gdclass.go` | Fix `GoCallback_GDClassBindingReference` to call `Reference()`/`Unreference()` |
 | `pkg/gdclassinit/wrapped_gdextension_class.go` | Fix `GoCallback_GDExtensionBindingReference` |
@@ -72,6 +72,6 @@ godot-go has a `TypedRef[T]` type that exists but is incomplete and unused. It l
 
 ### Verification
 - 43/43 existing tests still pass
-- New tests: Ref create/copy/unref lifecycle, Godot round-trip, user-defined RefCounted class
+- New tests: Ref create/clone/GC lifecycle, Godot round-trip, user-defined RefCounted class
 - `GetReferenceCount()` verifies correct refcount at each step
 - No memory leaks on extension unload (valgrind)

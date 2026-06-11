@@ -28,12 +28,14 @@ Two callback paths exist for ref counting in GDExtension, with different respons
 - Go methods returning `Ref[T]` encode correctly to Godot (ptrcall and varcall).
 - Go methods accepting `Ref[T]` arguments decode correctly from Godot.
 - API is ergonomic: `ref.Ptr().Method()` not `ref.TypedPtr().Method()`.
+- Go GC manages ref lifecycle — no manual `Unref()` required.
 - Support user-defined GDExtension classes that extend `RefCounted` (Resources, etc.).
 
 **Non-Goals:**
 - Changing the general-purpose `Object` lifecycle or binding system.
 - Implementing custom allocators or ref-counted memory pools.
 - Modifying generated code in `*.gen.*` files directly — only template changes.
+- Providing deterministic cleanup (finalizer fires "eventually").
 
 ## Decisions
 
@@ -59,7 +61,7 @@ type Ref[T RefCounted] struct {
 func (r *Ref[T]) Ptr() T { return r.m_ref }
 ```
 
-**Rationale**: Eliminates type assertions, stores the exact type, matches godot-cpp's `Ref<T>` pattern. `Ptr()` is the godot-cpp equivalent of `operator->`.
+**Rationale**: Eliminates type assertions, stores the exact type. `Ptr()` returns the concrete type directly.
 
 ### 2. Two Constructors — Godot-Owned vs User-Owned
 
@@ -69,60 +71,62 @@ func (r *Ref[T]) Ptr() T { return r.m_ref }
 func NewRef[T RefCounted](obj T) *Ref[T] {
     r := &Ref[T]{m_ref: obj}
     obj.Reference()  // claim our Go-side reference
-    pnr.Pin(r)
+    runtime.SetFinalizer(r, func(r *Ref[T]) {
+        r.m_ref.Unreference()
+    })
     return r
 }
 
 // User-owned object (newly created, e.g., NewImage())
-// Calls InitRef() to mark as ref-counted, then Reference().
+// Calls InitRef() to mark as ref-counted, then delegates to NewRef.
 func NewRefInit[T RefCounted](obj T) *Ref[T] {
     if !obj.InitRef() {
         return nil  // failed — object doesn't support ref counting
     }
-    r := &Ref[T]{m_ref: obj}
-    obj.Reference()  // claim our Go-side reference
-    pnr.Pin(r)
-    return r
+    return NewRef[T](obj)  // calls Reference() + SetFinalizer
 }
 ```
 
-**Rationale**: `InitRef()` marks an object as ref-counted (can only be called once). Godot-owned objects are already initialized. User-owned objects need initialization. This mirrors godot-cpp's `_gde_internal_constructor` for Godot-owned objects.
+**Rationale**: `InitRef()` marks an object as ref-counted (can only be called once). Godot-owned objects are already initialized. User-owned objects need initialization. `NewRefInit` delegates to `NewRef` after init — no duplication of finalizer setup. No `Pin(r)` — `Ref[T]` stores Go interface (GC-stable).
 
-### 3. Ref Copy and Unref Semantics
+### 3. Pure Finalizer — No Manual Unref
+
+**Decision**: Go's GC manages the entire refcounting lifecycle via `runtime.SetFinalizer`. The user never calls `Unref()`.
 
 ```go
-// Copy reference from another Ref, managing refcounts.
-// After this, both refs share the same underlying object.
-func (r *Ref[T]) Ref(from *Ref[T]) {
-    if from == nil {
-        r.Unref()
-        return
-    }
-    var zero T
-    if from.m_ref == nil {
-        r.Unref()
-        return
-    }
-    if r.m_ref == from.m_ref {
-        return  // self-assignment, no-op
-    }
-    r.Unref()
-    r.m_ref = from.m_ref
-    r.m_ref.Reference()
+// Clone creates an independent claim on the same underlying object.
+// Each clone has its own finalizer — both must go out of scope
+// before the object is freed.
+func (r *Ref[T]) Clone() *Ref[T] {
+    return NewRef(r.m_ref)  // Reference() + new finalizer
 }
 
-// Release this reference. If refcount drops to zero, the
-// underlying Godot object is freed. Safe to call multiple times.
-func (r *Ref[T]) Unref() {
-    var zero T
-    if r.m_ref != nil && r.m_ref != zero {
-        r.m_ref.Unreference()
-    }
-    r.m_ref = zero  // prevents double-unref
+// Ptr returns the underlying RefCounted object for method access.
+func (r *Ref[T]) Ptr() T {
+    return r.m_ref
 }
 ```
 
-**Rationale**: Self-assignment guard prevents accidental double-ref. `Unref()` zeroes `m_ref` to make double-unref a safe no-op.
+**Rationale**: Go is a garbage-collected language. Manual `Unref()` is error-prone (forget to call it = leak, call it too early = use-after-free). `runtime.SetFinalizer` guarantees exactly-one `Unreference()` per `*Ref[T]` allocation.
+
+**Sharing model**:
+```go
+ref1 := NewRef[Image](img)     // Reference() → Godot refcount: 1, finalizer A
+ref2 := ref1.Clone()           // Reference() → Godot refcount: 2, finalizer B
+
+ref1 = nil  // finalizer A fires eventually → refcount: 1
+ref2 = nil  // finalizer B fires eventually → refcount: 0, Godot frees
+```
+
+**Pointer copy is shared ownership** (no count bump):
+```go
+ref2 := ref1  // same *Ref[T], same finalizer — NOT a new claim
+```
+
+**`Clone()` is new ownership** (count bump):
+```go
+ref2 := ref1.Clone()  // new *Ref[T], new finalizer, Reference() called
+```
 
 ### 4. Ref Encoding — Extract `Ptr()` as `Object*`
 
@@ -230,7 +234,7 @@ func GoCallback_GDClassBindingReference(p_token, p_instance, p_reference) C.GDEx
 
 **Rationale**: These complement the class-level `referenceFunc`/`unreferenceFunc`. The binding callbacks manage the Go-side binding wrapper lifecycle. Both layers need correct refcounting.
 
-### 7. Generated Ref Types — Thin Wrappers via Embedding
+### 7. Generated Ref Types — Minimal Wrappers via Embedding
 
 Current generated code uses type alias and delegation (~15 methods per type, ~200 types):
 
@@ -254,30 +258,32 @@ type RefImage struct {
 }
 
 func (r *RefImage) Ptr() Image { return r.Ref.Ptr() }
+func (r *RefImage) Clone() *Ref[Image] { return r.Ref.Clone() }
 
-func NewRefImage(ref Image) RefImage {
-    return RefImage{Ref: NewRefInit[Image](ref)}
+func NewRefImage(img Image) *RefImage {
+    return &RefImage{Ref: NewRefInit[Image](img)}
 }
 
-func NewRefImageAsRef(ref RefCounted) Ref {
-    return NewRef[Image](ref.(Image))
+func NewRefImageAsRef(rc RefCounted) *Ref[Image] {
+    return NewRef[Image](rc.(Image))
 }
 ```
 
-**Rationale**: Embedding eliminates ~15 delegation methods per type. `Ref[T]` methods (`Ref()`, `Unref()`, `IsValid()`) are inherited automatically via embedding.
+**Rationale**: With pure finalizer semantics, there's no `Unref()`, `Ref()`, `TypedRef()` to delegate. Each generated type is just `Ptr()`, `Clone()`, and constructors. `Ref[T]` methods (`Clone()`, `Ptr()`) are inherited automatically via embedding.
 
 ## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│  Ref[T] Data Flow                                                    │
+│  Ref[T] Data Flow (Finalizer-Based)                                  │
 │                                                                      │
 │  ┌─────────────────────────────────────────────────────────────────┐ │
 │  │  Go creates Ref<Image>:                                         │ │
 │  │    img := NewImage()                                            │ │
 │  │    ref := NewRefInit[Image](img)  → InitRef() + Reference()     │ │
+│  │                         → runtime.SetFinalizer(r, Unreference)  │ │
 │  │    ref.Ptr().GetWidth()            → direct method access        │ │
-│  │    ref.Unref()                     → Unreference()               │ │
+│  │    (GC collects ref eventually → Unreference() automatically)   │ │
 │  └─────────────────────────────────────────────────────────────────┘ │
 │                                                                      │
 │  ┌─────────────────────────────────────────────────────────────────┐ │
@@ -302,7 +308,14 @@ func NewRefImageAsRef(ref RefCounted) Ref {
 │  │    Godot: variant = sprite.GetTexture()                         │ │
 │  │      → Variant.ToObject() → GodotObject                         │ │
 │  │      → GDClassRefConstructors → NewRefImageAsRef()              │ │
-│  │      → NewRef[Image](obj) → Reference()                         │ │
+│  │      → NewRef[Image](obj) → Reference() + SetFinalizer          │ │
+│  └─────────────────────────────────────────────────────────────────┘ │
+│                                                                      │
+│  ┌─────────────────────────────────────────────────────────────────┐ │
+│  │  Go shares Ref<Image> with another variable:                    │ │
+│  │    ref2 := ref1.Clone()  → Reference() + new finalizer          │ │
+│  │    ref1 = nil   → finalizer A fires eventually → Unreference()  │ │
+│  │    ref2 = nil   → finalizer B fires eventually → Unreference()  │ │
 │  └─────────────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────┘
 ```
@@ -311,23 +324,19 @@ func NewRefImageAsRef(ref RefCounted) Ref {
 
 | Risk | Mitigation |
 |------|------------|
-| Double `Unref()` — user calls `Unref()`, then GC finalizer also calls it | `Unref()` zeroes `m_ref` — second call is safe no-op |
-| `Pin(r)` holds GC hostage for `Ref[T]` lifetime | `Ref[T]` stores Go interface (GC-stable). Verify with cgocheck=1. Remove pin if unnecessary. |
-| Godot frees object while Go `Ref[T]` still holds interface | `NewRef()` calls `Reference()` — Go holds a refcount. Shared-ownership semantics. |
+| Pointer copy without `Clone()` — user copies `*Ref[T]`, both variables share one finalizer | **By design** — pointer copy is shared ownership. `Clone()` creates new claim. Document clearly. |
+| Finalizer timing — object freed "eventually" after last ref dies | Godot refcount is shared between Go and Godot sides. As long as Godot-side `Ref<T>` still holds a ref, the object stays alive regardless of Go finalizer timing. |
+| Global map holds `*Ref[T]` forever — finalizer never fires | **Expected** — cache entry keeps object alive. User deletes from map to release. Same as any manual ref system. |
+| No `Pin(r)` — is `Ref[T]` GC-stable? | `Ref[T]` stores Go interface `T` (GC-stable pointer + type). Verify with cgocheck=1. No C pointers in struct. |
+| Godot frees object while Go `Ref[T]` still holds interface | `NewRef()` calls `Reference()` — Go holds a refcount. Shared-ownership semantics. Godot won't free while Go holds ref. |
 | Non-RefCounted class gets reference callbacks | Type assertion `wci.Instance.(RefCounted)` — fails for Node/etc., safe no-op |
 | Template changes affect ~200 types | Mechanical regeneration. Verify with `make generate` + test suite. |
-
-## Trade-off: Pin vs No-Pin for `Ref[T]`
-
-`Ref[T]` stores a Go interface (`T`), which is already GC-stable (the interface header is on the stack, the data pointer is heap-allocated and stable). The `pnr.Pin(r)` may be unnecessary — the struct itself doesn't contain C pointers that would be moved by GC.
-
-**Investigation needed**: Remove `pnr.Pin(r)` and verify with `cgocheck=1` that no cgo pointer issues arise. If safe, remove pin to avoid holding GC hostage indefinitely.
 
 ## File Changes
 
 | File | Change |
 |------|--------|
-| `pkg/builtin/ref_generic.go` | Rewrite: `TypedRef[T]` → `Ref[T]`, add `NewRef`/`NewRefInit` constructors |
+| `pkg/builtin/ref_generic.go` | Rewrite: `TypedRef[T]` → `Ref[T]` with `runtime.SetFinalizer`, no `Unref()` |
 | `pkg/builtin/wrapped_gdclass.go` | Fix `GoCallback_GDClassBindingReference` to call `Reference()`/`Unreference()` |
 | `pkg/gdclassinit/wrapped_gdextension_class.go` | Fix `GoCallback_GDExtensionBindingReference` |
 | `pkg/core/classdb.go` | Wire `referenceFunc`/`unreferenceFunc` in `NewGDExtensionClassCreationInfo4` |
@@ -335,5 +344,5 @@ func NewRefImageAsRef(ref RefCounted) Ref {
 | `pkg/core/method_bind_reflect.go` | Add Ref detection in return encoding (`GDExtensionTypePtrFromReflectValue`) |
 | `pkg/core/variant_reflect_type.go` | Ensure `Ref[T]` maps to `VARIANT_TYPE_OBJECT` |
 | `cmd/generate/gdclassimpl/templatefunctions.go` | Update `goEncodeIsReference` and related helpers |
-| `cmd/generate/gdclassimpl/templates/` | Update Ref type template for embedding struct |
+| `cmd/generate/gdclassimpl/templates/` | Update Ref type template for embedding struct (no Unref/Ref delegation) |
 | `test/demo/` | Add Ref lifecycle test cases |

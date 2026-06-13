@@ -2,7 +2,6 @@ package gdclassinit
 
 import "C"
 import (
-	"runtime/cgo"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -25,7 +24,10 @@ func GoCallback_GDExtensionBindingCreate(p_type_name *C.char, p_token unsafe.Poi
 	if inst == nil {
 		log.Panic("no instance returned")
 	}
-	ptr := &inst
+	// Heap-allocate the Object interface value so the pointer remains stable
+	// after this function returns. Godot stores this pointer as the binding.
+	ptr := new(Object)
+	*ptr = inst
 	pnr.Pin(ptr)
 	return (unsafe.Pointer)(ptr)
 }
@@ -40,12 +42,17 @@ func GoCallback_GDExtensionBindingFree(p_type_name *C.char, p_token unsafe.Point
 }
 
 //export GoCallback_GDExtensionBindingReference
-func GoCallback_GDExtensionBindingReference(p_type_name *C.char, p_token unsafe.Pointer, p_instance unsafe.Pointer, p_reference bool) bool {
-	wci := cgo.Handle(p_instance).Value().(*WrappedClassInstance)
-	if wci == nil || wci.Instance == nil {
+func GoCallback_GDExtensionBindingReference(p_type_name *C.char, p_token unsafe.Pointer, p_binding unsafe.Pointer, p_reference bool) bool {
+	if p_binding == nil {
 		return true
 	}
-	if rc, ok := wci.Instance.(RefCounted); ok {
+	// p_binding is the heap-allocated *Object returned from GoCallback_GDExtensionBindingCreate.
+	ptr := (*Object)(p_binding)
+	obj := *ptr
+	if obj == nil {
+		return true
+	}
+	if rc, ok := obj.(RefCounted); ok {
 		if p_reference {
 			rc.Reference()
 		} else {

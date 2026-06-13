@@ -25,9 +25,9 @@ void cgo_gdextension_class_binding_free_callback_{{ $c.Name }}(void *p_token, vo
 	GoCallback_GDExtensionBindingFree("{{ $c.Name }}", p_token, p_instance, p_binding);
 }
 
-GDExtensionBool cgo_gdextension_class_binding_reference_callback_{{ $c.Name }}(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_{{ $c.Name }}(void *p_token, void *p_binding, GDExtensionBool p_reference) {
 	printStacktrace();
-	return GoCallback_GDExtensionBindingReference("{{ $c.Name }}", p_token, p_instance, p_reference);
+	return GoCallback_GDExtensionBindingReference("{{ $c.Name }}", p_token, p_binding, p_reference);
 }
 
 {{/*

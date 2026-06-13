@@ -133,3 +133,10 @@ The project includes a test demo at `test/demo/` that:
 - gcc for compilation
 
 The project is experimental and under active development with API subject to change.
+
+<!-- lean-ctx -->
+## lean-ctx
+
+Prefer lean-ctx MCP tools over native equivalents for token savings.
+Full rules: @LEAN-CTX.md
+<!-- /lean-ctx -->

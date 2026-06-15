@@ -32,12 +32,10 @@ func GoCallback_MethodBindMethodCall(
 	if !ok || bind == nil {
 		log.Panic("unable to retrieve methodUserData")
 	}
-	pnr.Pin(instPtr)
 	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(instPtr))
 	if inst == nil {
 		log.Panic("GDExtensionClassInstancePtr canoot be null")
 	}
-	pnr.Pin(inst)
 	cn := inst.GetClass()
 	defer cn.Destroy()
 	log.Debug("GoCallback_MethodBindMethodCall called",
@@ -45,15 +43,13 @@ func GoCallback_MethodBindMethodCall(
 		zap.String("method", bind.GdMethodName),
 		zap.String("bind", bind.String()),
 	)
-	argPtrSlice := unsafe.Slice((*GDExtensionConstVariantPtr)(argPtrs), int(argumentCount))
+	argPtrSlice := unsafe.Slice((*GDExtensionConstVariantPtr)(unsafe.Pointer(argPtrs)), int(argumentCount))
 	args := make([]Variant, argumentCount)
 	for i := range argPtrSlice {
-		pnr.Pin(argPtrSlice[i])
 		args[i] = NewVariantCopyWithGDExtensionConstVariantPtr(argPtrSlice[i])
 	}
 	retCall := bind.Call(inst, args...)
 	*(*Variant)(unsafe.Pointer(rReturn)) = retCall
-	pnr.Pin(rReturn)
 }
 
 // called when godot calls into golang code
@@ -87,5 +83,4 @@ func GoCallback_MethodBindMethodPtrcall(
 		argsSlice,
 		(GDExtensionUninitializedTypePtr)(rReturn),
 	)
-	pnr.Pin(rReturn)
 }

@@ -4,13 +4,11 @@ package builtin
 import "C"
 import (
 	"fmt"
-	"runtime"
 	"strings"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/ffi"
 	"github.com/godot-go/godot-go/pkg/log"
-	"github.com/godot-go/godot-go/pkg/util"
 	"go.uber.org/zap"
 )
 
@@ -108,66 +106,44 @@ func getObjectInstanceBinding(engineObject *GodotObject) Object {
 	if engineObject == nil {
 		return nil
 	}
-	// Get existing instance binding, if one already exists.
-	instPtr := (*Object)(CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
-		(GDExtensionObjectPtr)(engineObject),
-		FFI.Token,
-		nil))
-	if instPtr != nil && *instPtr != nil {
-		return *instPtr
+
+	// Look up the wrapper in the cache using the engine object pointer.
+	// The create callback (GoCallback_GDExtensionBindingCreate) stores wrappers
+	// keyed by the engine pointer. This avoids returning Go pointers across
+	// the CGO boundary which triggers:
+	// "panic: runtime error: cgo result is unpinned Go pointer or points to unpinned Go pointer"
+	wci := GetBindingWrapper(unsafe.Pointer(engineObject))
+	if wci != nil && wci.Instance != nil {
+		return wci.Instance
 	}
+
+	// Cache miss — try the registered fallback factory if one exists.
+	if GetObjectInstanceFactory != nil {
+		return GetObjectInstanceFactory(engineObject)
+	}
+
+	// Get class name via C API for logging.
 	snClassName := StringName{}
 	snClassNamePtr := snClassName.NativePtr()
 	pnr.Pin(snClassNamePtr)
-	cok := CallFunc_GDExtensionInterfaceObjectGetClassName(
+	CallFunc_GDExtensionInterfaceObjectGetClassName(
 		(GDExtensionConstObjectPtr)(engineObject),
 		FFI.Library,
 		(GDExtensionUninitializedStringNamePtr)(snClassNamePtr),
 	)
-	if cok == 0 {
-		log.Panic("failed to get class name",
-			zap.Any("owner", engineObject),
-		)
-	}
-	pnr.Pin(snClassNamePtr)
-	// defer snClassName.Destroy()
 	className := snClassName.ToUtf8()
-	// const GDExtensionInstanceBindingCallbacks *binding_callbacks = nullptr;
-	// Otherwise, try to look up the correct binding callbacks.
-	cbs, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
-	if !ok {
-		log.Warn("unable to find callbacks for Object")
-		return nil
-	}
-	cbsPtr := &cbs
-	pnr.Pin(cbsPtr)
-	pnr.Pin(engineObject)
-	pnr.Pin(FFI.Token)
+	_ = className // avoid unused variable if logging is disabled
 
-	util.CgoTestCall(unsafe.Pointer(cbsPtr))
-	util.CgoTestCall(unsafe.Pointer(engineObject))
-	util.CgoTestCall(FFI.Token)
-	instPtr = (*Object)(CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
-		(GDExtensionObjectPtr)(engineObject),
-		FFI.Token,
-		cbsPtr))
-	runtime.KeepAlive(engineObject)
-	runtime.KeepAlive(FFI.Token)
-	runtime.KeepAlive(cbsPtr)
-	if instPtr == nil || *instPtr == nil {
-		log.Panic("unable to get instance")
-		return nil
-	}
-	pnr.Pin(instPtr)
-	wrapperClassName := (*instPtr).GetClassName()
-	gdStrClassName := (*instPtr).GetClass()
-	defer gdStrClassName.Destroy()
-	log.Info("GetObjectInstanceBinding casted",
-		zap.String("class", gdStrClassName.ToUtf8()),
-		zap.String("className", wrapperClassName),
+	log.Warn("unable to find binding wrapper for object",
+		zap.String("class", className),
 	)
-	return *instPtr
+	return nil
 }
+
+// GetObjectInstanceFactory is a fallback factory invoked when getObjectInstanceBinding
+// misses the cache. It is set during gdclassinit registration so builtin does not
+// need to import gdclassinit (avoids a cycle).
+var GetObjectInstanceFactory func(*GodotObject) Object
 
 func NewVariantGoString(v string) Variant {
 	gdStr := NewStringWithUtf8Chars(v)

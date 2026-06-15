@@ -55,11 +55,15 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 	}
 	inst := &WrappedClassInstance{
 		Instance: obj,
+		Owner:    owner,
 	}
-	pnr.Pin(obj)
-	pnr.Pin(owner)
-	pnr.Pin(inst)
-	pnr.Pin(cnPtr)
+	// Pin through the per-object pinner so we can selectively unpin on free.
+	// The global pnr pins FFI.GodotVersion which must never be unpinned.
+	inst.PinSelf()
+	inst.pinner.Pin(obj)
+	// Note: cnPtr is already pinned by AsGDExtensionConstStringNamePtr().
+	// It is only needed for the ObjectSetInstance call below, and the StringName
+	// is destroyed by defer snExtensionClassName.Destroy(). No need to pin it again.
 	instHandle := cgo.NewHandle(inst)
 	if cnPtr != nil {
 		CallFunc_GDExtensionInterfaceObjectSetInstance(
@@ -83,6 +87,18 @@ func GoCallback_GDClassBindingCreate(p_token unsafe.Pointer, p_instance unsafe.P
 
 //export GoCallback_GDClassBindingFree
 func GoCallback_GDClassBindingFree(p_token unsafe.Pointer, p_instance unsafe.Pointer, p_binding unsafe.Pointer) {
+	// p_binding is the cgo.Handle value for the WrappedClassInstance.
+	// Unpin all pinned pointers and destroy the handle.
+	if p_binding == nil {
+		return
+	}
+	h := cgo.Handle(p_binding)
+	wci := h.Value().(*WrappedClassInstance)
+
+	// Unpin all objects that were pinned for this specific instance.
+	// runtime.Pinner.Unpin() takes no args — it unpins everything pinned by this pinner.
+	wci.pinner.Unpin()
+	h.Delete()
 }
 
 //export GoCallback_GDClassBindingReference

@@ -24,21 +24,36 @@ func GoCallback_GDExtensionBindingCreate(p_type_name *C.char, p_token unsafe.Poi
 	if inst == nil {
 		log.Panic("no instance returned")
 	}
-	// Heap-allocate the Object interface value so the pointer remains stable
-	// after this function returns. Godot stores this pointer as the binding.
-	ptr := new(Object)
-	*ptr = inst
-	pnr.Pin(ptr)
-	return (unsafe.Pointer)(ptr)
+	// Create the wrapper and pin it so GC won't move it while Godot holds the binding.
+	wci := &WrappedClassInstance{
+		Instance: inst,
+		Owner:    owner,
+	}
+	wci.PinSelf()
+	// Store in cache keyed by the engine object pointer.
+	SetBindingWrapper(p_instance, wci)
+	// Return the engine object pointer itself — NOT a Go pointer.
+	// Godot stores this value and passes it back in the free callback.
+	// Returning a Go pointer across the CGO boundary triggers:
+	// "panic: runtime error: cgo result is unpinned Go pointer or points to unpinned Go pointer"
+	return p_instance
 }
 
 //export GoCallback_GDExtensionBindingFree
 func GoCallback_GDExtensionBindingFree(p_type_name *C.char, p_token unsafe.Pointer, p_instance unsafe.Pointer, p_binding unsafe.Pointer) {
-	// typeName := C.GoString(p_type_name)
-	// log.Debug("GoCallback_GDExtensionBindingFree called",
-	// 	zap.String("class", typeName),
-	// )
-	// GDNativeConstructors.Delete(typeName)
+	if p_binding == nil {
+		return
+	}
+	// p_binding is the engine object pointer returned from GoCallback_GDExtensionBindingCreate.
+	// Look up the wrapper from the cache and clean it up.
+	wci := GetBindingWrapper(p_binding)
+	if wci == nil {
+		return
+	}
+	// Remove from cache before unpinning so concurrent lookups won't find a stale entry.
+	DeleteBindingWrapper(p_binding)
+	// Unpin all objects pinned by this wrapper's pinner.
+	wci.Unpin()
 }
 
 //export GoCallback_GDExtensionBindingReference
@@ -46,9 +61,12 @@ func GoCallback_GDExtensionBindingReference(p_type_name *C.char, p_token unsafe.
 	if p_binding == nil {
 		return true
 	}
-	// p_binding is the heap-allocated *Object returned from GoCallback_GDExtensionBindingCreate.
-	ptr := (*Object)(p_binding)
-	obj := *ptr
+	// p_binding is the engine object pointer. Look up the wrapper from the cache.
+	wci := GetBindingWrapper(p_binding)
+	if wci == nil {
+		return true
+	}
+	obj := wci.Instance
 	if obj == nil {
 		return true
 	}
